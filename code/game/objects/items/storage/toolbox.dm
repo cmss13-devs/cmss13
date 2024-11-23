@@ -6,7 +6,7 @@
 	item_state = "toolbox_red"
 	pickup_sound = 'sound/handling/toolbox_pickup.ogg'
 	drop_sound = 'sound/handling/toolbox_drop.ogg'
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_SNOW_TYPE
 	force = 5
 	throwforce = 10
 	throw_speed = SPEED_FAST

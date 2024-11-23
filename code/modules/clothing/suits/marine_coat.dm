@@ -68,8 +68,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/Initialize()
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type)
+	if(select_gamemode_skin(type))
 		initial_icon_state = icon_state
 	if(has_buttons)
 		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle

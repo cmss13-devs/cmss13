@@ -160,7 +160,7 @@
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_SNOW_TYPE
 	force = 8
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_LARGE

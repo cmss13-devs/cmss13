@@ -1096,20 +1096,6 @@
 	icon_state = "grass_clear"
 	icon_spawn_state = "grass1"
 
-/turf/open/jungle/path
-	bushes_spawn = 0
-	name = "dirt"
-	desc = "it is very dirty."
-	icon = 'icons/turf/floors/jungle.dmi'
-	icon_state = "grass_path"
-	icon_spawn_state = "dirt"
-	minimap_color = MINIMAP_DIRT
-
-/turf/open/jungle/path/Initialize(mapload, ...)
-	. = ..()
-	for(var/obj/structure/flora/jungle/thickbush/B in src)
-		qdel(B)
-
 /turf/open/jungle/impenetrable
 	bushes_spawn = FALSE
 	icon_state = "grass_impenetrable"
@@ -1334,38 +1320,50 @@
 /turf/open/shuttle/escapepod/floor0/north
 	dir = NORTH
 
+/turf/open/shuttle/escapepod/floor0/east
+	dir = EAST
+
 /turf/open/shuttle/escapepod/floor0/west
 	dir = WEST
 
 /turf/open/shuttle/escapepod/floor1
 	icon_state = "floor1"
 
+/turf/open/shuttle/escapepod/floor1/north
+	dir = NORTH
+
 /turf/open/shuttle/escapepod/floor1/east
 	dir = EAST
 
-/turf/open/shuttle/escapepod/floor11
-	icon_state = "floor11"
-
-/turf/open/shuttle/escapepod/floor12
-	icon_state = "floor12"
+/turf/open/shuttle/escapepod/floor1/west
+	dir = WEST
 
 /turf/open/shuttle/escapepod/floor2
 	icon_state = "floor2"
 
+/turf/open/shuttle/escapepod/floor2/north
+	dir = NORTH
+
+/turf/open/shuttle/escapepod/floor2/east
+	dir = EAST
+
+/turf/open/shuttle/escapepod/floor2/west
+	dir = WEST
+
+/turf/open/shuttle/escapepod/floor3
+	icon_state = "floor3"
+
+/turf/open/shuttle/escapepod/floor3/north
+	dir = NORTH
+
+/turf/open/shuttle/escapepod/floor3/east
+	dir = EAST
+
+/turf/open/shuttle/escapepod/floor3/west
+	dir = WEST
+
 /turf/open/shuttle/escapepod/floor4
 	icon_state = "floor4"
-
-/turf/open/shuttle/escapepod/floor5
-	icon_state = "floor5"
-
-/turf/open/shuttle/escapepod/floor7
-	icon_state = "floor7"
-
-/turf/open/shuttle/escapepod/floor8
-	icon_state = "floor8"
-
-/turf/open/shuttle/escapepod/floor9
-	icon_state = "floor9"
 
 /turf/open/shuttle/lifeboat
 	icon = 'icons/turf/almayer.dmi'

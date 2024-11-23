@@ -5,8 +5,14 @@
 	/// Make sure this location is also present in tools/deploy.sh
 	/// If you need additional paths ontop of this second one, you can add another generate_possible_icon_states_list("your/folder/path/") below the if(additional_icon_location) block in Run(), and make sure to add that path to tools/deploy.sh as well.
 	var/additional_icon_location = null
+	/// A cache of known bads to skip calling icon_exists unnecessarily
 	var/list/bad_list = list()
+	/// States to not search for matches in other files (too common)
 	var/list/states_to_ignore = list("", "blank", "door_closed", "door_open", "door_opening")
+	/// Additional item slots to test (in addition to defined item_state_slots and item_icons lists).
+	/// Use this to specify when all of a slot should have sprites if applicable.
+	var/list/additional_slots_to_test = list()
+	//var/list/additional_slots_to_test = list(WEAR_L_HAND, WEAR_R_HAND, WEAR_FACE, WEAR_BACK, WEAR_JACKET, WEAR_HANDS, WEAR_FEET, WEAR_WAIST, WEAR_EYES, WEAR_HEAD, WEAR_L_EAR, WEAR_R_EAR, WEAR_BODY, WEAR_ID, WEAR_L_STORE, WEAR_R_STORE)
 
 /datum/unit_test/missing_icons/proc/generate_possible_icon_states_list(directory_path)
 	if(!directory_path)
@@ -33,49 +39,126 @@
 	var/original_turf_type = spawn_at.type
 	var/original_baseturfs = islist(spawn_at.baseturfs) ? spawn_at.baseturfs.Copy() : spawn_at.baseturfs
 
+	// Check objects:
 	for(var/obj/obj_path as anything in subtypesof(/obj) - GLOB.create_and_destroy_ignore_paths)
 		if(ispath(obj_path, /obj/item))
 			var/obj/item/item_path = obj_path
 			if(initial(item_path.flags_item) & ITEM_ABSTRACT)
-				continue
+				continue // Ignore abstract
+
+		// Ensure that its not invisible/honk in mapping
+		var/initial_icon = initial(obj_path.icon)
+		var/initial_icon_state = initial(obj_path.icon_state)
+		if(!isnull(initial_icon) && !isnull(initial_icon_state))
+			check(obj_path, initial_icon, initial_icon_state, check_null=FALSE)
+
+		// Defence specific checks:
+		if(ispath(obj_path, /obj/structure/machinery/defenses))
+			var/obj/structure/machinery/defenses/defense_path = obj_path
+			if(ispath(obj_path, /obj/structure/machinery/defenses/sentry))
+				var/obj/structure/machinery/defenses/sentry/sentry_path = obj_path
+				var/sentry_icon = initial(defense_path.icon)
+				var/base_state = "[initial(sentry_path.defense_type)] [initial(sentry_path.sentry_type)]"
+				check(sentry_path, sentry_icon, base_state, "This icon_state is needed for overlays", check_null=FALSE)
+				check(sentry_path, sentry_icon, "[base_state]_on", "This icon_state is needed for overlays", check_null=FALSE)
+				check(sentry_path, sentry_icon, "[base_state]_noammo", "This icon_state is needed for overlays", check_null=FALSE)
+				check(sentry_path, sentry_icon, "[base_state]_destroyed", "This icon_state is needed for overlays", check_null=FALSE)
+			if(!initial(defense_path.composite_icon))
+				continue // Will just have a null icon_state after update_icon
 
 		var/obj/spawned = new obj_path(spawn_at)
 		check_atom(obj_path, spawned)
+
+		// Item specific checks:
+		if(ispath(obj_path, /obj/item))
+			var/obj/item/item = spawned
+			// Can explicitly ignore a slot in the item as null e.g. item_state_slots = list(WEAR_R_HAND = null, WEAR_L_HAND = null)
+			var/list/ignored_slots = list()
+			var/list/defined_slots = list()
+			for(var/slot in item.item_state_slots)
+				if(isnull(item.item_state_slots[slot]))
+					ignored_slots += slot
+					continue
+				defined_slots += slot
+			for(var/slot in item.item_icons)
+				if(isnull(item.item_icons[slot]))
+					ignored_slots |= slot
+					continue
+				defined_slots |= slot
+			for(var/slot in defined_slots)
+				var/image/result = item.get_mob_overlay(slot = slot, default_bodytype = "Human")
+				// States specified in item_state_slots and item_icons (warning only currently)
+				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
+			for(var/slot in additional_slots_to_test)
+				if(!item.is_valid_slot(slot))
+					continue
+				if(slot in defined_slots)
+					continue
+				if(slot in ignored_slots)
+					continue
+				var/image/result = item.get_mob_overlay(slot = slot, default_bodytype = "Human")
+				// States specified in additional_slots_to_test not already tested above (warning only currently)
+				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
+
+			// Attachable specific checks:
+			if(ispath(obj_path, /obj/item/attachable))
+				var/obj/item/attachable/attachable = spawned
+				check(obj_path, attachable.icon, attachable.attach_icon, variable_name="attach_icon")
+			// Clothing under specific checks:
+			else if(ispath(obj_path, /obj/item/clothing/under))
+				var/obj/item/clothing/under/under = spawned
+				check(obj_path, under.icon, under.worn_state, variable_name="worn_state")
+			// Belt specific checks:
+			else if(ispath(obj_path, /obj/item/storage/belt))
+				var/obj/item/storage/belt/belt = spawned
+				if(!belt.skip_fullness_overlays)
+					var/base_state = belt.icon_state
+					if(ispath(obj_path, /obj/item/storage/belt/gun))
+						var/obj/item/storage/belt/gun/belt_gun = spawned
+						base_state = belt_gun.base_icon
+					check(obj_path, belt.icon, "+[base_state]_half", "This icon_state is needed for overlays", check_null=FALSE)
+					check(obj_path, belt.icon, "+[base_state]_full", "This icon_state is needed for overlays", check_null=FALSE)
+
 		qdel(spawned)
 
+
+	// Check turfs:
 	for(var/turf/turf_path as anything in subtypesof(/turf) - GLOB.create_and_destroy_ignore_paths)
 		var/turf/spawned = spawn_at.ChangeTurf(turf_path)
 		check_atom(turf_path, spawned)
 
+		// Open floor specific checks:
 		if(istype(spawned, /turf/open/floor))
 			var/turf/open/floor/floor = spawned
 			if(floor.breakable_tile && !floor.hull_floor)
 				floor.break_tile()
-				check_atom(turf_path, spawned, "This icon_state is needed for break_tile().")
+				check_atom(turf_path, spawned, "This icon_state is needed for break_tile()")
 				floor.broken = FALSE
 			if(floor.burnable_tile && !floor.hull_floor)
 				floor.burn_tile()
-				check_atom(turf_path, spawned, "This icon_state is needed for burn_tile().")
+				check_atom(turf_path, spawned, "This icon_state is needed for burn_tile()")
 				floor.burnt = FALSE
 
 		spawn_at.ChangeTurf(original_turf_type, original_baseturfs)
 
+
+	// Check mobs:
 	for(var/mob/mob_path as anything in subtypesof(/mob) - GLOB.create_and_destroy_ignore_paths)
 		var/mob/spawned = new mob_path(spawn_at)
 		check_atom(mob_path, spawned)
 		qdel(spawned)
 
 /datum/unit_test/missing_icons/proc/check_atom(atom_path, atom/thing, note)
-	if(isnull(initial(thing.icon)))
-		return
-
-	if(isnull(initial(thing.icon_state)))
-		return
-
 	check(atom_path, thing.icon, thing.icon_state, note)
 
-/datum/unit_test/missing_icons/proc/check(thing_path, icon, icon_state, note)
-	if(length(bad_list) && (icon_state in bad_list[icon]))
+/datum/unit_test/missing_icons/proc/check(thing_path, icon, icon_state, note, variable_name="icon_state", check_null=TRUE, warning_only=FALSE)
+	if(check_null)
+		if(isnull(icon))
+			return
+		if(isnull(icon_state))
+			return
+
+	if(icon_state in bad_list[icon])
 		return
 
 	if(icon_exists(icon, icon_state))
@@ -86,9 +169,13 @@
 	var/match_message
 	if(!(icon_state in states_to_ignore) && (icon_state in possible_icon_states))
 		for(var/file_place in possible_icon_states[icon_state])
-			match_message += (match_message ? " & '[file_place]'" : " - Matching sprite found in: '[file_place]'")
+			match_message += (match_message ? " & '[file_place]'" : "\n\tMatching sprite found in: '[file_place]'")
 
 	if(note)
-		note = "\n[note]"
+		note = " ([note])"
 
-	TEST_FAIL("Missing icon_state for [thing_path] in '[icon]'.[note]\n\ticon_state = \"[icon_state]\"[match_message]")
+	var/msg = "Missing sprite for [thing_path]\n\t[variable_name]=[isnull(icon_state) ? "null" : "\"[icon_state]\""] icon=[isnull(icon) ? "null" : "'[icon]'"][note][match_message]"
+	if(!warning_only)
+		TEST_FAIL(msg)
+	else
+		log_test(msg)

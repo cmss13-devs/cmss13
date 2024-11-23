@@ -2102,6 +2102,7 @@
 
 /turf/open/floor/interior
 	icon = 'icons/turf/floors/interior.dmi'
+	icon_state = null
 
 /turf/open/floor/interior/wood
 	name = "wooden floor"
@@ -3497,7 +3498,7 @@
 	icon_state = "blueyellowfull"
 
 /turf/open/floor/cafeteria
-	icon_state = "cafeteria"
+	icon_state = "cafeteriaold"
 
 /turf/open/floor/cmo
 	icon_state = "cmo"

@@ -25,9 +25,9 @@
 	/// The dmi where the grayscale squad overlays are contained
 	var/squad_overlay_icon = 'icons/mob/humans/onmob/hands_garb.dmi'
 
-/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot)
+/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot, default_bodytype = "Default")
 	var/image/ret = ..()
-	if(!adopts_squad_color || !(current_human.assigned_squad && current_human.assigned_squad.equipment_color))
+	if(!adopts_squad_color || !(current_human?.assigned_squad?.equipment_color))
 		return ret
 	var/image/glove_overlay = image(squad_overlay_icon, icon_state = "std-gloves")
 	glove_overlay.alpha = current_human.assigned_squad.armor_alpha

@@ -422,8 +422,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		else
 			name += " helmet"
 
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type, null, new_protection)
+	select_gamemode_skin(type, null, new_protection)
 
 	helmet_overlays = list() //To make things simple.
 
@@ -1314,7 +1313,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
 	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
-	select_gamemode_skin(type,, new_protection)
+	select_gamemode_skin(type, override_protection = new_protection)
 	..()
 	switch(icon_state)
 		if("s_skullcapm")

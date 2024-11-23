@@ -1323,19 +1323,21 @@
 	desc = "A large backpack, used by Tanya Edenia. DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	flags_atom = parent_type::flags_atom | NO_SNOW_TYPE // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	flags_atom = parent_type::flags_atom | NO_SNOW_TYPE // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "tactical radiopack"
 	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
 	icon_state = "skinnerpack"
 	item_state = "securitypack"
-	has_gamemode_skin = FALSE //same sprite for all gamemodes.
+	flags_atom = parent_type::flags_atom | NO_SNOW_TYPE // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"
@@ -1361,6 +1363,8 @@
 	desc = "Belt worn by the dreaded Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "swordbelt_u"
 	item_state = "swordbelt_u"
+	flags_atom = parent_type::flags_atom | NO_SNOW_TYPE // same sprite for all gamemodes
+	skip_fullness_overlays = TRUE
 
 //CUSTOM ITEMS - NO TEMPLATES - ALL UNIQUE ////////////////////////
 /obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex

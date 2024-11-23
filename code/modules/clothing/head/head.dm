@@ -290,8 +290,7 @@
 
 /obj/item/clothing/head/cmcap/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type)
+	select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
 
@@ -332,7 +331,7 @@
 		var/mob/M = loc
 		M.update_inv_head()
 
-/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/return_image = ..()
 	if(slot != WEAR_HEAD)
 		return return_image

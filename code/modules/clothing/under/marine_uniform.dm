@@ -33,9 +33,8 @@
 			name += " snow uniform"
 		else
 			name += " uniform"
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type, override_icon_state, new_protection)
-	. = ..() //Done after above in case gamemode skin is missing sprites.
+	select_gamemode_skin(type, override_icon_state, new_protection)
+	return ..() //Done after above in case gamemode skin is missing sprites.
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
@@ -48,6 +47,7 @@
 	for(var/i in map_variants_roll_accessories)
 		if(findtext(icon_state, i, 1, 3))
 			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
+	return .
 
 /obj/item/clothing/under/marine/medic
 	name = "\improper USCM corpsman uniform"
@@ -142,6 +142,7 @@
 	flags_jumpsuit = FALSE
 	specialty = "marine officer"
 	black_market_value = 25
+	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
 
 /obj/item/clothing/under/marine/officer/intel
 	name = "\improper marine intelligence officer sweatsuit"

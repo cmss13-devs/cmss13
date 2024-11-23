@@ -239,13 +239,20 @@
 /obj/item/proc/suicide_act(mob/user)
 	return
 
-/*Global item proc for all of your unique item skin needs. Works with any
-item, and will change the skin to whatever you specify here. You can also
-manually override the icon with a unique skin if wanted, for the outlier
-cases. Override_icon_state should be a list.*/
+/**
+ * Global item proc for all of your unique item skin needs. Works with any
+ * item, and will change the skin to whatever you specify here. You can also
+ * manually override the icon with a unique skin if wanted, for the outlier
+ * cases. Override_icon_state should be a list. Generally requires NO_SNOW_TYPE
+ * to not be set for changes to be applied.
+ *
+ * Returns whether changes were applied.
+ */
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(type != expected_type)
-		return
+		return FALSE
+	if(flags_atom & NO_SNOW_TYPE)
+		return FALSE
 
 	var/new_icon_state
 	var/new_protection
@@ -266,6 +273,8 @@ cases. Override_icon_state should be a list.*/
 			item_state = new_item_state ? new_item_state : "c_" + item_state
 	if(new_protection)
 		min_cold_protection_temperature = new_protection
+
+	return TRUE
 
 /obj/item/get_examine_text(mob/user)
 	. = list()

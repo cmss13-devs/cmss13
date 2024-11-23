@@ -115,8 +115,7 @@
 		else
 			name += " armor"
 
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type)
+	select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	if(armor_variation && mapload)
 		set_armor_style("Random")
@@ -314,6 +313,7 @@
 	specialty = "M3 pattern general"
 	item_state_slots = list(WEAR_JACKET = "general")
 	w_class = SIZE_MEDIUM
+	flags_atom = FPRINT|CONDUCT|NO_SNOW_TYPE // same sprite for all gamemodes
 
 /obj/item/clothing/suit/storage/marine/MP/SO
 	name = "\improper M3 pattern officer armor"

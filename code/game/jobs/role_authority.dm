@@ -623,6 +623,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/predalien
 		if(XENO_CASTE_HELLHOUND)
 			M = /mob/living/carbon/xenomorph/hellhound
+		if(XENO_CASTE_KING)
+			M = /mob/living/carbon/xenomorph/king
 	return M
 
 

@@ -199,6 +199,8 @@
 		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
 
+	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
+
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
 		return FALSE

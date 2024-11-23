@@ -118,38 +118,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_upp_commanding_officer, list(
 /obj/structure/machinery/cm_vending/clothing/upp_commanding_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_upp_commanding_officer
 
-//------------DRESS VENDOR---------------
-
-GLOBAL_LIST_INIT(cm_vending_clothing_upp_dress_commander, list(
-		list("Undergarmants", 0, null, null, null),
-		list("Officer Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/officer, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-		list("Soldier Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-
-		list("Overgarments", 0, null, null, null),
-		list("UL4 senior officer jacket", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-
-		list("Headwear", 0, null, null, null),
-		list("UL3 beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-		list("UL3 peaked cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-		list("UL8 ushanka", 0, /obj/item/clothing/head/uppcap/ushanka, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-
-		list("Extra", 0, null, null, null),
-		list("Ceramonial Sword", 0, /obj/item/storage/large_holster/ceremonial_sword/full, MARINE_CAN_BUY_DRESS, VENDOR_ITEM_MANDATORY),
-	))
-
-/obj/structure/machinery/cm_vending/clothing/upp_dress_commander
-	name = "\improper UnionAraratCorp Automated Commander Uniform Closet"
-	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
-	req_access = list(ACCESS_UPP_LEADERSHIP)
-	vendor_role = list(JOB_UPP_MAY_OFFICER, JOB_UPP_LTKOL_OFFICER, JOB_UPP_KOL_OFFICER)
-	icon_state = "dress"
-	vendor_theme = VENDOR_THEME_UPP
-
-	use_snowflake_points = TRUE
-
-/obj/structure/machinery/cm_vending/clothing/upp_dress_commander/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_upp_dress_commander
-
 /obj/effect/essentials_set/upp_commanding_officer
 	spawned_gear_list = list(
 		/obj/item/device/binoculars/range/designator,

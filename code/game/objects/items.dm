@@ -243,7 +243,7 @@
  * Global item proc for all of your unique item skin needs. Works with any
  * item, and will change the skin to whatever you specify here. You can also
  * manually override the icon with a unique skin if wanted, for the outlier
- * cases. Override_icon_state should be a list. Generally requires NO_SNOW_TYPE
+ * cases. Override_icon_state should be a list. Generally requires NO_GAMEMODE_SKIN
  * to not be set for changes to be applied.
  *
  * Returns whether changes were applied.
@@ -251,7 +251,7 @@
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(type != expected_type)
 		return FALSE
-	if(flags_atom & NO_SNOW_TYPE)
+	if(flags_atom & NO_GAMEMODE_SKIN)
 		return FALSE
 
 	var/new_icon_state

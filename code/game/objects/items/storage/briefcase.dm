@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "briefcase"
 	item_state = "briefcase"
-	flags_atom = FPRINT|CONDUCT|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4

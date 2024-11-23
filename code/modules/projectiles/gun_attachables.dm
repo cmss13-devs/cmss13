@@ -3615,7 +3615,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "vulture_bipod"
 	heavy_bipod = TRUE
 	// Disable gamemode skin for item state, but we explicitly force attach_icon gamemode skins
-	flags_atom = FPRINT|CONDUCT|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 
 /obj/item/attachable/bipod/vulture/Initialize(mapload, ...)
 	. = ..()

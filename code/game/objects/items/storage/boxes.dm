@@ -736,7 +736,7 @@
 	type_icon = null
 	grenade_type = /obj/item/explosive/grenade/high_explosive/training
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
@@ -746,7 +746,7 @@
 	type_icon = null
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas/fill_preset_inventory()
 	..()

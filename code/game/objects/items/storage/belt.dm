@@ -364,7 +364,7 @@
 	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics."
 	icon_state = "medicbag_u"
 	item_state = "medicbag_u"
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/medical/lifesaver/upp/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -690,7 +690,7 @@
 	item_state_slots = list(
 		WEAR_L_HAND = "marinebelt",
 		WEAR_R_HAND = "marinebelt")
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/marine/upp
@@ -698,7 +698,7 @@
 	desc = "The Type 41 load rig is the standard-issue load-bearing equipment of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
 	icon_state = "upp_belt"
 	item_state = "upp_belt"
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 //version full of type 71 mags
 /obj/item/storage/belt/marine/upp/full/fill_preset_inventory()
@@ -741,7 +741,7 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/ammo_magazine/m56d,
 	)
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/shotgun
 	name = "\improper M276 pattern shotgun shell loading rig"
@@ -795,7 +795,7 @@
 	storage_slots = null
 	max_storage_space = 20
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	item_state_slots = list(
 		WEAR_J_STORE = "van_bandolier_10",
 		WEAR_BACK = "van_bandolier_10",
@@ -879,7 +879,7 @@
 		WEAR_R_HAND = "marinebelt")
 	name = "Mrs. Quackers"
 	desc = "She always did have a meaner temper."
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/knifepouch
@@ -1304,7 +1304,7 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/ammo_magazine/smg/nailgun,
 	)
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
@@ -1430,7 +1430,7 @@
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list("icon_x" = -9, "icon_y" = -3),
 		"2" = list("icon_x" = 9, "icon_y" = -3))
@@ -1679,7 +1679,7 @@
 	icon_state = "ivan_belt"
 	storage_slots = 56
 	max_storage_space = 56
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_w_class = SIZE_MASSIVE
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
@@ -1772,7 +1772,7 @@
 		/obj/item/weapon/gun/revolver/m44/custom/webley,
 		/obj/item/ammo_magazine/revolver,
 	)
-	flags_atom = FPRINT|NO_SNOW_TYPE // same sprite for all gamemodes
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
@@ -1993,7 +1993,7 @@
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
 	icon_state = "rmc_ammo"
 	item_state = "rmc_ammo"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
@@ -2008,14 +2008,14 @@
 	desc = "The L75 is the standard load-bearing equipment of the RMC. It consists of a modular belt with various clips. This version is designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "rmc_medical"
 	item_state = "rmc_medical"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/gun/l905
 	name = "\improper L905 gunbelt"
 	desc = "Finely-tooled leather, a L905, and six magazines. More than enough for the standard RMC commando."
 	icon_state = "rmc_pistol"
 	item_state = "rmc_pistol"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/vp78,

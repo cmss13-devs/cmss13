@@ -216,7 +216,7 @@
 	name = "\improper L6 pattern combat gloves"
 	desc = "Standard issue tactical gloves used by the royal marines."
 	icon_state = "rmc_gloves"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/gloves/marine/veteran/cbrn
 	name = "\improper M3 MOPP gloves"

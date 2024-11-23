@@ -8,7 +8,7 @@
 /obj/item/storage
 	name = "storage"
 	w_class = SIZE_MEDIUM
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit

@@ -384,7 +384,7 @@
 
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
@@ -396,7 +396,7 @@
 	icon_state = "co_formalhat_white"
 	desc = "A formal cover worn by senior officers of the USCM."
 	flags_marine_hat = HAT_GARB_OVERLAY
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/co/formal/black
 	name = "\improper USCM formal Commanding Officer's black cap"
@@ -406,13 +406,13 @@
 	name = "\improper USCM quartermaster cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "rocap"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/bridge
 	name = "\improper USCM officer cap"
@@ -431,7 +431,7 @@
 	desc = "A faithful cap for any terrain war correspondents may find themselves in."
 	icon_state = "cc_flagcap"
 	item_state = "cc_flagcap"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmo
@@ -778,7 +778,7 @@
 	icon_state = "duragblack"
 	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/durag/Initialize(mapload, ...)
 	. = ..()
@@ -847,7 +847,7 @@
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

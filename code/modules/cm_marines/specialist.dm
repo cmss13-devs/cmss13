@@ -74,6 +74,8 @@
 /datum/specialist_set/New()
 	. = ..()
 	incompatible_sets += type
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(HEAVY_SPECIALISTS))
+		available_vendor_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
 	SHOULD_CALL_PARENT(TRUE)

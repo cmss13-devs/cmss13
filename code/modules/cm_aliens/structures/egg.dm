@@ -16,6 +16,10 @@
 	var/on_fire = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
+	/// The weed strength that needs to be maintained in order for this egg to not decay; null disables check
+	var/weed_strength_required = WEED_LEVEL_HIVE
+	/// Whether to convert/orphan once EGG_BURSTING is complete
+	var/convert_on_release = FALSE
 
 /obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
@@ -30,6 +34,10 @@
 	update_icon()
 	addtimer(CALLBACK(src, PROC_REF(Grow)), rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 
+	var/turf/my_turf = get_turf(src)
+	if(my_turf?.weeds && !isnull(weed_strength_required))
+		RegisterSignal(my_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
+
 /obj/effect/alien/egg/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
@@ -37,6 +45,49 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+/// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of weeds to potentially orphan this egg
+/obj/effect/alien/egg/proc/on_weed_deletion()
+	SIGNAL_HANDLER
+
+	if(!can_convert())
+		return
+
+	// Orphan later?
+	if(status == EGG_BURSTING)
+		convert_on_release = TRUE
+		return
+
+	convert()
+
+/// Whether this egg meets the requirements to convert/orphan
+/obj/effect/alien/egg/proc/can_convert()
+	if(on_fire)
+		return FALSE
+	if(status == EGG_DESTROYED)
+		return FALSE
+
+	return TRUE
+
+/// Actually converts/orphan this egg
+/obj/effect/alien/egg/proc/convert()
+	if(!can_convert())
+		return
+
+	var/turf/my_turf = get_turf(src)
+	var/obj/effect/alien/egg/carrier_egg/orphan/newegg = new(my_turf, hivenumber, weed_strength_required)
+	newegg.flags_embryo = flags_embryo
+	newegg.fingerprintshidden = fingerprintshidden
+	newegg.fingerprintslast = fingerprintslast
+	switch(status)
+		if(EGG_GROWN)
+			newegg.Grow()
+		if(EGG_BURSTING, EGG_BURST)
+			newegg.status = EGG_BURST
+			newegg.hide_egg_triggers()
+			newegg.icon_state = "Egg Opened"
+
+	qdel(src)
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
@@ -92,14 +143,16 @@
 	return XENO_NONCOMBAT_ACTION
 
 /obj/effect/alien/egg/clicked(mob/user, list/mods)
+	if(..())
+		return TRUE
+
 	if(isobserver(user) || get_dist(src, user) > 1)
 		return
+
 	var/mob/living/carbon/xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
 		Burst(FALSE, FALSE, X)
 		return TRUE
-
-	return ..()
 
 /obj/effect/alien/egg/proc/Grow()
 	if(status == EGG_GROWING)
@@ -135,13 +188,13 @@
 		status = EGG_DESTROYED
 		icon_state = "Egg Exploded"
 		flick("Egg Exploding", src)
-		playsound(src.loc, "sound/effects/alien_egg_burst.ogg", 25)
+		playsound(loc, "sound/effects/alien_egg_burst.ogg", 25)
 	else if(status == EGG_GROWN || status == EGG_GROWING)
 		status = EGG_BURSTING
 		hide_egg_triggers()
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
-		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
+		playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
 		addtimer(CALLBACK(src, PROC_REF(release_hugger), instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
 /obj/effect/alien/egg/proc/release_hugger(instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled = FALSE)
@@ -150,6 +203,8 @@
 
 	status = EGG_BURST
 	if(is_hugger_player_controlled)
+		if(convert_on_release)
+			convert()
 		return //Don't need to spawn a hugger, a player controls it already!
 	var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
 
@@ -158,6 +213,8 @@
 
 	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand)) //sanity checks
 		X.put_in_hands(child)
+		if(convert_on_release)
+			convert()
 		return
 
 	if(instant_trigger)
@@ -165,6 +222,9 @@
 			child.return_to_egg(src)
 	else
 		child.go_idle()
+
+	if(convert_on_release)
+		convert()
 
 /obj/effect/alien/egg/bullet_act(obj/projectile/P)
 	..()
@@ -322,6 +382,7 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg
 	name = "fragile egg"
 	desc = "It looks like a weird, fragile egg."
+	weed_strength_required = null
 	///Owner of the fragile egg, must be a mob/living/carbon/xenomorph/carrier
 	var/mob/living/carbon/xenomorph/carrier/owner = null
 	///Time that the carrier was last within refresh range of the egg (14 tiles)
@@ -332,13 +393,13 @@ SPECIAL EGG USED BY EGG CARRIER
 /obj/effect/alien/egg/carrier_egg/Initialize(mapload, hivenumber, planter = null)
 	. = ..()
 	last_refreshed = world.time
-	if(!planter)
-		//If we have no owner when created... this really shouldn't happen but start decaying the egg immediately.
-		start_unstoppable_decay()
-	else
+	if(iscarrier(planter))
 		//Die after maximum lifetime
 		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 		set_owner(planter)
+	else if(isnull(planter))
+		//If we have no owner when created... this really shouldn't happen but start decaying the egg immediately.
+		start_unstoppable_decay()
 
 /obj/effect/alien/egg/carrier_egg/Destroy()
 	if(life_timer)
@@ -373,5 +434,83 @@ SPECIAL EGG USED BY EGG CARRIER
 	if(owner)
 		var/datum/behavior_delegate/carrier_eggsac/behavior = owner.behavior_delegate
 		behavior.remove_egg_owner(src)
+	if(kill && life_timer)
+		deltimer(life_timer)
+
+/obj/effect/alien/egg/carrier_egg/on_weed_deletion()
+	return
+
+/*
+SPECIAL EGG USED WHEN WEEDS LOST
+*/
+
+#define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES // Should be longer than HIVECORE_COOLDOWN
+
+/obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, hivenumber, weed_strength_required)
+	src.weed_strength_required = weed_strength_required
+
+	. = ..()
+
+	if(isnull(weed_strength_required))
+		return .
+
+	if(hivenumber != XENO_HIVE_FORSAKEN)
+		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), ORPHAN_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+
+	var/my_turf = get_turf(src)
+	if(my_turf)
+		RegisterSignal(my_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_weed_growth))
+
+/// SIGNAL_HANDLER for COMSIG_WEEDNODE_GROWTH to potentially restore this orphan
+/obj/effect/alien/egg/carrier_egg/orphan/proc/on_weed_growth()
+	SIGNAL_HANDLER
+
+	if(!can_convert())
+		return
+
+	// Convert later?
+	if(status == EGG_BURSTING)
+		convert_on_release = TRUE
+		return
+
+	convert()
+
+/obj/effect/alien/egg/carrier_egg/orphan/forsaken_handling()
+	. = ..()
 	if(life_timer)
 		deltimer(life_timer)
+
+/obj/effect/alien/egg/carrier_egg/orphan/can_convert()
+	if(!..())
+		return FALSE
+
+	// Check weed strength
+	if(isnull(weed_strength_required))
+		return FALSE
+	var/turf/my_turf = get_turf(src)
+	var/obj/effect/alien/weeds/weed = my_turf?.weeds
+	if(!weed)
+		return FALSE
+	if(weed.weed_strength < weed_strength_required)
+		return FALSE
+
+	return TRUE
+
+/obj/effect/alien/egg/carrier_egg/orphan/convert()
+	if(!can_convert())
+		return
+
+	var/turf/my_turf = get_turf(src)
+	var/obj/effect/alien/egg/newegg = new(my_turf, hivenumber)
+	newegg.flags_embryo = flags_embryo
+	newegg.fingerprintshidden = fingerprintshidden
+	newegg.fingerprintslast = fingerprintslast
+	switch(status)
+		if(EGG_GROWN)
+			newegg.Grow()
+		if(EGG_BURSTING, EGG_BURST)
+			newegg.status = EGG_BURST
+			newegg.hide_egg_triggers()
+			newegg.icon_state = "Egg Opened"
+
+	qdel(src)

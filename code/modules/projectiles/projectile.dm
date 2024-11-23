@@ -1205,7 +1205,7 @@
 
 /obj/item/bullet_act(obj/projectile/P)
 	bullet_ping(P)
-	if(P.ammo.damage_type == BRUTE)
+	if(P.ammo.damage_type == BRUTE && !(P.ammo.flags_ammo_behavior & AMMO_XENO))
 		explosion_throw(P.damage/2, P.dir, 4)
 	return TRUE
 

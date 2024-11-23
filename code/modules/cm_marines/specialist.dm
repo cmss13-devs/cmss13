@@ -192,3 +192,17 @@
 	skill_to_give = SKILL_SPEC_PYRO
 	trait_to_give = "pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro
+
+/datum/specialist_set/heavy
+	name = "Heavy Armor Set (HvH Only)"
+	role_name = "Heavy"
+	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
+	trait_to_give = "heavy"
+	kit_typepath = /obj/item/storage/box/spec/B18
+
+
+/datum/specialist_set/heavy/New()
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(HEAVY_SPECIALISTS))
+		available_vendor_num = 4
+	else
+		available_vendor_num = 0

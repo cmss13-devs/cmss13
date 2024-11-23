@@ -50,4 +50,4 @@
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 
-	return 1
+	return TRUE

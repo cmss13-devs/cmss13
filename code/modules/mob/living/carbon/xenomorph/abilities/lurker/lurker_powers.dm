@@ -167,7 +167,7 @@
 				break
 	if(!iscarbon(carbon_target) || carbon_target.stat == DEAD)
 		owner.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lack the target to rush at. Wait a moment to try again."))
-		apply_cooldown_override(click_miss_cooldown)
+		apply_cooldown(cooldown_modifier = 0.25)
 		return FALSE
 	. = ..(carbon_target)
 	if(!.)
@@ -298,7 +298,7 @@
 				break
 
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
-		to_chat(xeno, SPAN_XENODANGER("We slam [hit_target], throwing them back with our tail!"))
+		to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
 	else
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
@@ -309,10 +309,7 @@
 	var/stab_direction
 
 	stab_direction = turn(get_dir(xeno, targeted_atom), 180)
-	if(prob(1))
-		playsound(hit_target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
-	else
-		playsound(hit_target, "punch", 50, TRUE)
+	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 
 	var/direction = Get_Compass_Dir(xeno, targeted_atom) //More precise than get_dir.
 
@@ -321,12 +318,7 @@
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
-		if(hit_target.mob_size < MOB_SIZE_BIG)
-			hit_target.KnockDown(1)
-		else
-			hit_target.Slow(1)
-	else
-		if(hit_target.mob_size < MOB_SIZE_BIG)
+		if (hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)
 		else
 			hit_target.Slow(0.5)
@@ -341,11 +333,14 @@
 	var/new_dir = xeno.dir
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
+	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
+	hit_target.Slow(0.5)
 
 	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
 
 	apply_cooldown()
+	xeno_attack_delay(xeno)
 	return ..()
 
 /datum/action/xeno_action/activable/tail_jab/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)

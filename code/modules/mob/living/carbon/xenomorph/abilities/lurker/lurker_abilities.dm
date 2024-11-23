@@ -53,8 +53,6 @@
 	knockdown = FALSE
 	freeze_self = FALSE
 
-	var/click_miss_cooldown = 15
-
 /datum/action/xeno_action/activable/flurry
 	name = "Flurry"
 	action_icon_state = "rav_spike"
@@ -70,6 +68,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 7 SECONDS
+	charge_time = 1 SECONDS
 
 /datum/action/xeno_action/activable/headbite
 	name = "Headbite"

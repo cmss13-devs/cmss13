@@ -5,6 +5,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns
 	name = "\improper UnionAraratCorp Automated Armaments Vendor"
 	desc = "An automated supply rack hooked up to a big storage of various firearms, explosives, load carrying equipment and other miscellaneous items. Can be accessed by Logistic Technicians."
+	icon_state = "upp_guns"
 	req_access = list(ACCESS_UPP_GENERAL)
 	vendor_theme = VENDOR_THEME_UPP
 
@@ -203,7 +204,7 @@
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_uniform
 	name = "\improper UnionAraratCorp Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a big storage of standard marine uniforms. Can be accessed by the Logistic Technicians."
-	icon_state = "clothing"
+	icon_state = "upp_clothing"
 	req_access = list()
 	req_one_access = list(ACCESS_UPP_GENERAL)
 	vendor_theme = VENDOR_THEME_UPP

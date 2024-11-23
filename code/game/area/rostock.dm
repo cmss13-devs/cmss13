@@ -10,8 +10,8 @@
 	// ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
 	flags_area = AREA_NOTUNNEL
-	requires_power = TRUE
-	unlimited_power = TRUE
+//	requires_power = TRUE
+//	unlimited_power = TRUE
 	ceiling = CEILING_METAL
 	powernet_name = "rostock"
 	sound_environment = SOUND_ENVIRONMENT_ROOM

@@ -226,6 +226,9 @@
 	},
 /obj/structure/window/framed/upp/hull,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/rostock/engineering/reactor)
 "ajg" = (
@@ -4280,7 +4283,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "dtF" = (
@@ -17425,7 +17428,9 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "nfR" = (
-/obj/docking_port/stationary/marine_dropship/upp_hangar_2,
+/obj/docking_port/stationary/marine_dropship/upp_hangar_2{
+	faction = "UPP"
+	},
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "nfS" = (
@@ -17483,6 +17488,8 @@
 "nku" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/mechanical,
+/obj/item/device/multitool,
+/obj/item/device/multitool,
 /turf/open/floor/prison/floor_plate,
 /area/rostock/engineering/reactor)
 "nkU" = (
@@ -18718,7 +18725,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "omj" = (
-/obj/docking_port/stationary/marine_dropship/upp_hangar_1,
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1{
+	faction = "UPP"
+	},
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "omm" = (
@@ -21702,9 +21711,9 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_accessway)
 "qui" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/multitool,
-/obj/item/device/multitool,
+/obj/structure/machinery/power/monitor{
+	name = "Main Power Grid Monitoring"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/rostock/engineering/reactor)
 "qum" = (
@@ -23830,7 +23839,7 @@
 /turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_a)
 "seH" = (
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "seY" = (
@@ -28590,7 +28599,7 @@
 /area/rostock/engineering/main_area)
 "vPO" = (
 /obj/structure/machinery/light,
-/obj/structure/prop/invuln/fusion_reactor,
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "vPR" = (

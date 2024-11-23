@@ -403,17 +403,14 @@
 	else
 		linked_cam.status = TRUE
 		linked_cam.forceMove(loc)
-	to_chat(world, "test")
 
 /obj/item/device/broadcasting/dropped(mob/user)
 	. = ..()
 	linked_cam.view_range = 4
-	to_chat(world, "test2")
 
 /obj/item/device/broadcasting/pickup(mob/user, silent)
 	. = ..()
 	linked_cam.view_range = 7
-	to_chat(world, "test3")
 
 /obj/item/device/broadcasting/attack_self(mob/user)
 	. = ..()
@@ -425,7 +422,6 @@
 /obj/item/device/broadcasting/attack_alien(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	if(!active)
-		to_chat(xeno, SPAN_WARNING("We stare at [src] cluelessly."))
 		return
 	xeno.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)

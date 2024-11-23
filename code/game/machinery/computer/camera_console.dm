@@ -262,6 +262,8 @@
 	if(!anchored)
 		src.stat |= MAINT
 		clear_camera()
+		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 	else
 		src.stat &= ~MAINT
 	update_icon()

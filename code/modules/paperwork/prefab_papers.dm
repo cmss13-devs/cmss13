@@ -81,13 +81,28 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	remaining_documents = 60
 
 /obj/structure/filingcabinet/documentation/highcom/wy
-	available_categories = list(PAPER_CATEGORY_WEYYU)
+	available_categories = list(PAPER_CATEGORY_WEYYU_HC)
 
 /obj/structure/filingcabinet/documentation/highcom/uscm
 	available_categories = list(PAPER_CATEGORY_USCM_HC)
 
 /obj/structure/filingcabinet/documentation/highcom/provost
 	available_categories = list(PAPER_CATEGORY_PROVOST)
+
+/obj/structure/filingcabinet/documentation/highcom/upp
+	available_categories = list(PAPER_CATEGORY_UPP_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/twe
+	available_categories = list(PAPER_CATEGORY_TWE_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/cmb
+	available_categories = list(PAPER_CATEGORY_CMB_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/press
+	available_categories = list(PAPER_CATEGORY_PRESS_HC)
+
+/obj/structure/filingcabinet/documentation/highcom/clf
+	available_categories = list(PAPER_CATEGORY_CLF_HC)
 
 
 //########################################
@@ -168,7 +183,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 
 /obj/item/paper/prefab/wey_yu
 	name = "Blank WYC Document"
-	document_category = PAPER_CATEGORY_WEYYU
+	document_category = PAPER_CATEGORY_WEYYU_HC
 
 /obj/item/paper/prefab/wey_yu/standard
 	document_title = "WY101 - Directorate Communication"

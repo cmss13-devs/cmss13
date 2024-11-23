@@ -809,6 +809,14 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/lower_deck/m_hallway)
+"aEQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
+	name = "Brig Lobby";
+	req_one_access = list(230, 240);
+	req_access = null
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/hangar/hangarbay)
 "aGe" = (
 /obj/item/trash/popcorn{
 	pixel_y = -10;
@@ -3549,6 +3557,13 @@
 	icon_state = "NW-out";
 	pixel_x = -1;
 	pixel_y = 1
+	},
+/obj/structure/machinery/door_control{
+	pixel_x = -5;
+	pixel_y = -25;
+	id = "uppentrancebrig";
+	name = "Entrance Shutter";
+	req_one_access = list(230, 240)
 	},
 /turf/open/floor/strata/floor3,
 /area/rostock/security/brig_holding_area)
@@ -12243,7 +12258,8 @@
 	pixel_x = 6;
 	pixel_y = -25;
 	id = "uppentrancebrig";
-	name = "Entrance Shutter"
+	name = "Entrance Shutter";
+	req_one_access = list(230, 240)
 	},
 /turf/open/floor/strata/red2,
 /area/rostock/security/brig_entryway)
@@ -23193,13 +23209,15 @@
 	pixel_x = 6;
 	pixel_y = 9;
 	id = "uppbrig1";
-	name = "Brig Lockdown"
+	name = "Brig Lockdown";
+	req_one_access = list(230, 240)
 	},
 /obj/structure/machinery/door_control{
 	pixel_x = 6;
 	pixel_y = -1;
 	id = "uppcourtyard";
-	name = "Viewing Shutter"
+	name = "Viewing Shutter";
+	req_one_access = list(230, 240)
 	},
 /obj/item/reagent_container/food/snacks/donut{
 	pixel_y = 6;
@@ -25773,6 +25791,15 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/command/cic)
+"tMi" = (
+/obj/structure/machinery/door_control{
+	id = "synth";
+	name = "Open Exit";
+	pixel_x = -28;
+	pixel_y = 4
+	},
+/turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
 "tMn" = (
 /obj/effect/decal/warning_stripes{
@@ -48134,7 +48161,7 @@ eWx
 eWx
 qAw
 eWx
-eWx
+aEQ
 wFu
 adA
 guf
@@ -53850,7 +53877,7 @@ tBk
 oJE
 nrA
 vdJ
-bWb
+tMi
 nFZ
 qEc
 lFB

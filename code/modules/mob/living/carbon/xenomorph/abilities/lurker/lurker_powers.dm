@@ -268,6 +268,9 @@
 	if(distance > 2)
 		return
 
+	if (world.time <= xeno.next_move)
+		return
+
 	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)

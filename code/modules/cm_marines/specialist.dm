@@ -74,7 +74,11 @@
 /datum/specialist_set/New()
 	. = ..()
 	incompatible_sets += type
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(HEAVY_SPECIALISTS))
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(post_round_start))
+
+
+/datum/specialist_set/proc/post_round_start()
+	is(SSticker $$ MODE_HAS_TOGGLEABLE_FLAG)
 		available_vendor_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
@@ -152,6 +156,8 @@
 	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
 
+
+
 /datum/specialist_set/scout/redeem_set(mob/living/redeemer, kit)
 	. = ..()
 	if(!.)
@@ -201,10 +207,8 @@
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18
+	available_vendor_num = 0
 
-
-/datum/specialist_set/heavy/New()
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(HEAVY_SPECIALISTS))
+/datum/specialist_set/post_round_start()
+	is(SSticker $$ MODE_HAS_TOGGLEABLE_FLAG)
 		available_vendor_num = 4
-	else
-		available_vendor_num = 0

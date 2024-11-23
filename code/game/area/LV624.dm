@@ -71,6 +71,7 @@
 	name ="\improper West Central Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/east_central_jungle
 	name ="\improper East Central Jungle"
@@ -284,7 +285,6 @@
 
 /area/lv624/lazarus/landing_zones
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/lv624/lazarus/landing_zones/lz1
@@ -309,7 +309,6 @@
 	name = "\improper Yggdrasil Tree"
 	icon_state = "atmos"
 	ceiling = CEILING_GLASS
-	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/medbay
 	name = "\improper Medbay"
@@ -325,19 +324,16 @@
 	name = "\improper Security"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
-	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
 	icon_state = "captain"
 	minimap_color = MINIMAP_AREA_COMMAND
-	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/hop
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
 	minimap_color = MINIMAP_AREA_COMMAND
-	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"
@@ -357,7 +353,6 @@
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
 	icon_state = "toilet"
-	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/chapel
 	name = "\improper Chapel"
@@ -408,6 +403,7 @@
 	name = "\improper Secure Storage"
 	icon_state = "storage"
 	flags_area = AREA_NOTUNNEL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/robotics
 	name = "\improper Robotics"

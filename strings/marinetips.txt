@@ -105,3 +105,4 @@ The Queen can unbolt and break dropship doors by prying them open, even if they 
 If you jump out of a dropship with a parachute on (when there is no paradrop system active), you will land at a random location on the map.
 If you push crates out of a dropship when paradropping, it will land near the paradrop drop point.
 When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.
+Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.

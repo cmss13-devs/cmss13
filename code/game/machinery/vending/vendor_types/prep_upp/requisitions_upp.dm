@@ -24,14 +24,13 @@
 
 		list("RESTRICTED FIREARMS", -1, null, null),
 		list("M240 Incinerator Unit", floor(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
-		list("XM51 Breaching Scattergun", floor(scale * 3), /obj/item/storage/box/guncase/xm51, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
 		list("Type 6 Shrapnel Grenade", floor(scale * 25), /obj/item/explosive/grenade/high_explosive/upp, VENDOR_ITEM_REGULAR),
 		list("Type 8 WP Grenade", floor(scale * 4), /obj/item/explosive/grenade/phosphorus/upp, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", floor(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
-		list("Plastic Explosives", floor(scale * 3), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
-		list("Breaching Charge", floor(scale * 2), /obj/item/explosive/plastic/breaching_charge, VENDOR_ITEM_REGULAR),
+		list("Plastic Explosives", floor(scale * 4), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR),
+		list("Breaching Charge", floor(scale * 4), /obj/item/explosive/plastic/breaching_charge, VENDOR_ITEM_REGULAR),
 
 		list("WEBBINGS", -1, null, null),
 		list("Black Webbing Vest", floor(scale * 2), /obj/item/clothing/accessory/storage/black_vest, VENDOR_ITEM_REGULAR),
@@ -53,7 +52,6 @@
 
 		list("BELTS", -1, null, null),
 		list("Type 41 Ammo Load Rig", floor(scale * 15), /obj/item/storage/belt/marine/upp, VENDOR_ITEM_REGULAR),
-		list("Type 41 Pistol Holster Rig", floor(scale * 10), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("NPZ92 Pistol Holster Rig", floor(scale * 15), /obj/item/storage/belt/gun/type47, VENDOR_ITEM_REGULAR),
 		list("G8-A General Utility Pouch", floor(scale * 2), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
 		list("M276 Knife Rig", floor(scale * 5), /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
@@ -109,6 +107,8 @@
 
 		list("EXPLOSIVES BOXES", -1, null, null),
 		list("M15 Fragmentation Grenade Packet", 0, /obj/item/storage/box/packet/m15, VENDOR_ITEM_REGULAR),
+		list("Type 8 WP grenade packet", 0, /obj/item/storage/box/packet/phosphorus/upp, VENDOR_ITEM_REGULAR),
+		list("HSDP grenade packet", 0, /obj/item/storage/box/packet/smoke, VENDOR_ITEM_REGULAR),
 		list("M40 HEDP Grenade Packet", 0, /obj/item/storage/box/packet/high_explosive, VENDOR_ITEM_REGULAR),
 		list("M40 HEDP Grenade Box", 0, /obj/item/storage/box/nade_box, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Grenade Packet", 0, /obj/item/storage/box/packet/incendiary, VENDOR_ITEM_REGULAR),
@@ -137,16 +137,16 @@
 		list("Type 71 Magazine (5.45x39mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
 		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
+		list("Handful of Heavy Slug Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
+		list("Handful of Heavy Flechette Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
 		list("Type 73 Magazine (7.62x25mm Tokarev)", floor(scale * 40), /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Speed Loader (7.62x38mmR)", floor(scale * 40), /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
 		list("NP92 Magazine (9x18mm Makarov)", floor(scale * 40), /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
-
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/type71/ap, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
 		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
-		list("XM51 Magazine (16g)", floor(scale * 3), /obj/item/ammo_magazine/rifle/xm51, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),
 		list("Magazine box (Type 71 Rifle x 10)", 0, /obj/item/ammo_box/magazine/type71, VENDOR_ITEM_REGULAR),
@@ -155,7 +155,6 @@
 		list("Magazine box (Type 73 Pistol x 16)", 0, /obj/item/ammo_box/magazine/type73, VENDOR_ITEM_REGULAR),
 		list("Speed loaders box (ZhNK-72 x 12)", 0, /obj/item/ammo_box/magazine/zhnk, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (16g) (Breaching x 120)", 0, /obj/item/ammo_box/magazine/shotgun/light/breaching, VENDOR_ITEM_REGULAR),
-		list("Magazine Box (XM51 x 8)", 0, /obj/item/ammo_box/magazine/xm51, VENDOR_ITEM_REGULAR),
 		list("Flamer Tank Box (UT-Napthal Fuel x 8)", 0, /obj/item/ammo_box/magazine/flamer, VENDOR_ITEM_REGULAR),
 		)
 

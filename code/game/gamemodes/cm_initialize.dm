@@ -348,10 +348,9 @@ Additional game mode variables.
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_fax_responder_late_join is running its own checks.
 	fax_responder_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
-	new_responder.assigned_equipment_preset?.load_name(new_responder)
 	SSticker.minds += new_responder.mind
 
-	message_admins(FONT_SIZE_XL(SPAN_RED("([new_responder.key]) joined as a [sub_job], [new_responder.real_name].")))
+	message_admins(FONT_SIZE_XL(SPAN_RED("[key_name(new_responder)] joined as a [sub_job].")))
 	new_responder.add_fax_responder()
 
 	return TRUE

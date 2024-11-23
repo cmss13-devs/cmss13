@@ -8,6 +8,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_FAX
 
+	uses_special_name = TRUE
+
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	skills = /datum/skills/civilian/fax_responder
 	idtype = /obj/item/card/id/lanyard

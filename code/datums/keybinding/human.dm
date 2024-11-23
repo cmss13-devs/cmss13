@@ -154,6 +154,8 @@
 		return FALSE
 	if(grabbed_atom.anchored)
 		return FALSE
+	if(istype(grabbed_atom, /obj/structure))
+		return FALSE
 	return TRUE
 
 /datum/keybinding/human/pixel_shift/north

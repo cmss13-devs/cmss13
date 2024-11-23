@@ -77,7 +77,7 @@
 #define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
 #define MODE_LZ_HAZARD_ACTIVATED (1<<15) // Distress Signal: Spawns miasma 3 minutes after round start
 #define MODE_MORTAR_LASER_WARNING (1<<16) // Blinking laser before mortar impact
-#define HEAVY_SPECIALISTS (1<<17) //uscm get standardized spec kit
+#define MODE_HEAVY_SPECIALISTS (1<<17) //uscm get standardized spec kit
 
 
 #define ROUNDSTATUS_FOG_DOWN 1

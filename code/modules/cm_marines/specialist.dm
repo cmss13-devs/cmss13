@@ -78,7 +78,7 @@
 
 
 /datum/specialist_set/proc/post_round_start()
-	is(SSticker $$ MODE_HAS_TOGGLEABLE_FLAG)
+	if(SSticker && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
 		available_vendor_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
@@ -207,8 +207,10 @@
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18
-	available_vendor_num = 0
 
-/datum/specialist_set/post_round_start()
-	is(SSticker $$ MODE_HAS_TOGGLEABLE_FLAG)
+
+/datum/specialist_set/heavy/post_round_start()
+	if(SSticker && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
 		available_vendor_num = 4
+	else
+		available_vendor_num = 0

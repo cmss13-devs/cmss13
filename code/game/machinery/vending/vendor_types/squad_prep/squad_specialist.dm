@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
 /obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(HEAVY_SPECIALISTS))
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
 		return GLOB.cm_vending_gear_spec_heavy
 	return GLOB.cm_vending_gear_spec
 

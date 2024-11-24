@@ -371,12 +371,10 @@ SUBSYSTEM_DEF(minimaps)
 /proc/get_tacmap_data_png(faction)
 	var/list/map_list
 
-	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_flat_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
+	if(faction == XENO_HIVE_NORMAL)
 		map_list = GLOB.xeno_flat_tacmap_data
 	else
-		return null
+		map_list = GLOB.uscm_flat_tacmap_data
 
 	var/map_length = length(map_list)
 
@@ -394,8 +392,11 @@ SUBSYSTEM_DEF(minimaps)
 /proc/get_unannounced_tacmap_data_png(faction)
 	if(faction == FACTION_MARINE)
 		return GLOB.uscm_unannounced_map
-	else if(faction == XENO_HIVE_NORMAL)
+	if(faction == FACTION_UPP)
+		return GLOB.upp_unannounced_map
+	if(faction == XENO_HIVE_NORMAL)
 		return GLOB.xeno_unannounced_map
+
 
 	return null
 
@@ -500,10 +501,11 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 
-	if(faction == FACTION_MARINE)
-		GLOB.uscm_unannounced_map = new_flat
-	else //if(faction == XENO_HIVE_NORMAL)
+
+	if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_unannounced_map = new_flat
+	else
+		GLOB.uscm_unannounced_map = new_flat
 
 	return TRUE
 
@@ -961,31 +963,32 @@ SUBSYSTEM_DEF(minimaps)
 
 			if(!istype(params["image"], /list)) // potentially very serious?
 				return FALSE
-
-			var/cooldown_satisfied = FALSE
+			var/cooldown_satisfied = TRUE
 			if(faction == FACTION_MARINE)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
 			else if(faction == XENO_HIVE_NORMAL)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, xeno_canvas_cooldown)
+
 			if(!cooldown_satisfied)
 				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
 				return FALSE
-
-			if(faction == FACTION_MARINE)
-				GLOB.uscm_flat_tacmap_data += new_current_map
-				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
-				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
-				var/mob/living/carbon/human/human_leader = user
-				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
-				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
-				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
-			else if(faction == XENO_HIVE_NORMAL)
+			if(faction == XENO_HIVE_NORMAL)
 				GLOB.xeno_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
 				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
 				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
+			else
+				GLOB.uscm_flat_tacmap_data += new_current_map
+				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+					if(faction == current_squad.faction)
+						current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
+				var/mob/living/carbon/human/human_leader = user
+				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
+				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
+				notify_ghosts(header = "Tactical Map", message = "The [faction] tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
+
 
 			store_current_svg_coords(faction, params["image"], user)
 			current_svg = get_tacmap_data_svg(faction)

@@ -107,6 +107,7 @@ GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
 // latest unannounced flat tacmap for xenos and marines
 GLOBAL_VAR(uscm_unannounced_map)
 GLOBAL_VAR(xeno_unannounced_map)
+GLOBAL_VAR(upp_unannounced_map)
 
 //global tacmaps for action button access
 

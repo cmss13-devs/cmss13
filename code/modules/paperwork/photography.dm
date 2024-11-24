@@ -283,9 +283,7 @@
 		return
 	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return
-	if(!(flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You need to wield the [src] with both hands to take a photo!"))
-		return
+
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 	pictures_left--
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))

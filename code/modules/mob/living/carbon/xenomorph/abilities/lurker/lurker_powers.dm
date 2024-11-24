@@ -166,8 +166,7 @@
 			if(carbon_target.stat != DEAD)
 				break
 	if(!iscarbon(carbon_target) || carbon_target.stat == DEAD)
-		owner.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lack the target to rush at. Wait a moment to try again."))
-		apply_cooldown(cooldown_modifier = 0.25)
+		to_chat(xeno, SPAN_XENOWARNING("We need a target to rush at, hostile or not."))
 		return FALSE
 	. = ..(carbon_target)
 	if(!.)
@@ -321,10 +320,11 @@
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
-		if (hit_target.mob_size < MOB_SIZE_BIG)
-			hit_target.KnockDown(0.5)
-		else
-			hit_target.Slow(0.5)
+
+	if (hit_target.mob_size < MOB_SIZE_BIG)
+		hit_target.KnockDown(0.5)
+	else
+		hit_target.Slow(0.5)
 
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir

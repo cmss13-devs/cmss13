@@ -29,6 +29,8 @@
 	var/skill_level = SKILL_MEDICAL_MEDIC
 	var/skill_to_check_alt = null
 	var/skill_level_alt = 0
+	/// If the defib can be used by anyone.
+	var/noskill = FALSE
 
 /mob/living/carbon/human/proc/check_tod()
 	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
@@ -85,7 +87,7 @@
 		return
 
 	//Job knowledge requirement
-	if(istype(user))
+	if(istype(user) && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
@@ -321,3 +323,9 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/device/defibrillator/synthetic/noskill
+	name = "SMART synthetic reset key"
+	desc = "Functioning similarly to a defibrillator, this device is designed to restart a synthetic unit that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	icon_state = "reset_key_ns"
+	noskill = TRUE

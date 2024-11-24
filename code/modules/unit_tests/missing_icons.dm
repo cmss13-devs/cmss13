@@ -40,7 +40,7 @@
 	var/original_baseturfs = islist(spawn_at.baseturfs) ? spawn_at.baseturfs.Copy() : spawn_at.baseturfs
 
 	// Check objects:
-	for(var/obj/obj_path as anything in subtypesof(/obj) - GLOB.create_and_destroy_ignore_paths)
+	for(var/obj/obj_path as anything in subtypesof(/obj))
 		if(ispath(obj_path, /obj/item))
 			var/obj/item/item_path = obj_path
 			if(initial(item_path.flags_item) & ITEM_ABSTRACT)
@@ -51,6 +51,9 @@
 		var/initial_icon_state = initial(obj_path.icon_state)
 		if(!isnull(initial_icon) && !isnull(initial_icon_state))
 			check(obj_path, initial_icon, initial_icon_state, check_null=FALSE)
+
+		if(obj_path in GLOB.create_and_destroy_ignore_paths)
+			continue
 
 		// Defence specific checks:
 		if(ispath(obj_path, /obj/structure/machinery/defenses))

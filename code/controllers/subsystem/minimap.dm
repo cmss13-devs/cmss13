@@ -415,6 +415,8 @@ SUBSYSTEM_DEF(minimaps)
 		map_list = GLOB.uscm_svg_tacmap_data
 	else if(faction == XENO_HIVE_NORMAL)
 		map_list = GLOB.xeno_svg_tacmap_data
+	else if(faction == FACTION_UPP)
+		map_list = GLOB.uscm_svg_tacmap_data
 	else
 		return null
 
@@ -506,9 +508,9 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_unannounced_map = new_flat
-	if(faction = FACTION_MARINE)
+	if(faction == FACTION_MARINE)
 		GLOB.uscm_unannounced_map = new_flat
-	if(faction = FACTION_UPP)
+	if(faction == FACTION_UPP)
 		GLOB.upp_unannounced_map = new_flat
 
 	return TRUE
@@ -528,11 +530,13 @@ SUBSYSTEM_DEF(minimaps)
 		GLOB.uscm_svg_tacmap_data += svg_store_overlay
 	else if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_svg_tacmap_data += svg_store_overlay
+	else if(faction == FACTION_UPP)
+		GLOB.upp_svg_tacmap_data += svg_store_overlay
 	else
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
+#define can_draw(faction, user) (( skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"

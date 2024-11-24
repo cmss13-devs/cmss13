@@ -1293,13 +1293,8 @@
 /turf/open/floor/strata,
 /area/rostock/lower_deck/m_hallway)
 "aXs" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
-/obj/item/clothing/under/marine/veteran/UPP/officer,
-/obj/item/clothing/suit/storage/webbing,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
@@ -1322,9 +1317,11 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
 	},
-/obj/item/clothing/under/marine/veteran/UPP/officer,
-/obj/item/clothing/suit/storage/webbing,
 /obj/structure/machinery/power/apc/power/north,
+/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/suit/storage/webbing,
+/obj/item/clothing/under/marine/veteran/UPP/officer,
+/obj/item/clothing/under/marine/veteran/UPP/officer,
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "aZc" = (
@@ -10965,12 +10962,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/almayer/upp,
 /area/rostock/upperdeck_maint/p_a)
-"imq" = (
-/obj/structure/stairs/perspective{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/command/cic)
 "imC" = (
 /obj/structure/window/framed/upp/hull,
 /turf/open/floor/plating,
@@ -12062,7 +12053,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
-	name = "UPP Command Fax Machine";
+	name = "UPP Commander Fax Machine";
 	network = "UPP Encrypted Network"
 	},
 /turf/open/floor/carpet,
@@ -12199,11 +12190,11 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/obj/structure/machinery/light,
 /obj/effect/landmark/start/upp{
 	job_list = list("UPP Starshiy Leytenant");
 	name = "UPP Senior SO"
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "jgP" = (
@@ -14635,7 +14626,7 @@
 /area/rostock/req)
 "kPP" = (
 /obj/structure/stairs/perspective,
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/command/cic)
 "kQf" = (
 /obj/vehicle/powerloader/jd,
@@ -18649,7 +18640,8 @@
 /obj/structure/machinery/light,
 /obj/structure/machinery/faxmachine{
 	department = "UPP Political Officer";
-	target_department = "UPP High Command"
+	target_department = "UPP High Command";
+	network = "UPP Encrypted Network"
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -19247,11 +19239,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "oIO" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
-/obj/item/clothing/under/marine/veteran/UPP/officer,
-/obj/item/clothing/suit/storage/webbing,
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "oIV" = (
@@ -20084,7 +20071,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine{
 	department = "UPP Executive Officer";
-	target_department = "UPP High Command"
+	target_department = "UPP High Command";
+	network = "UPP Encrypted Network"
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
@@ -31725,8 +31713,9 @@
 	req_access = null
 	},
 /obj/item/clothing/under/marine/veteran/UPP/officer,
+/obj/item/clothing/under/marine/veteran/UPP/officer,
 /obj/item/clothing/suit/storage/webbing,
-/obj/structure/machinery/light,
+/obj/item/clothing/suit/storage/webbing,
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "yfV" = (
@@ -52085,8 +52074,8 @@ uRe
 aYY
 hYa
 oIO
-uRe
 aXs
+oIO
 hYa
 yfz
 uRe
@@ -52266,11 +52255,11 @@ pNi
 pNi
 dpC
 lqx
-jgO
-uRe
+okw
+oIO
 kfY
 lqx
-okw
+jgO
 uRe
 fxr
 qjG
@@ -54799,7 +54788,7 @@ hjw
 kPP
 nrA
 nrA
-imq
+kmU
 kxh
 bLE
 cvF
@@ -54981,7 +54970,7 @@ hjw
 kPP
 nrA
 nrA
-imq
+kmU
 kxh
 sOQ
 cvF

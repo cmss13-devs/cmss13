@@ -373,8 +373,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(faction == XENO_HIVE_NORMAL)
 		map_list = GLOB.xeno_flat_tacmap_data
-	else
+	if(faction == FACTION_MARINE)
 		map_list = GLOB.uscm_flat_tacmap_data
+	if(faction == FACTION_UPP)
+		map_list = GLOB.upp_flat_tacmap_data
 
 	var/map_length = length(map_list)
 
@@ -504,8 +506,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_unannounced_map = new_flat
-	else
+	if(faction = FACTION_MARINE)
 		GLOB.uscm_unannounced_map = new_flat
+	if(faction = FACTION_UPP)
+		GLOB.upp_unannounced_map = new_flat
 
 	return TRUE
 
@@ -737,6 +741,11 @@ SUBSYSTEM_DEF(minimaps)
 	allowed_flags = MINIMAP_FLAG_XENO
 	owner = xeno_tacmap
 
+/datum/tacmap/drawing/status_tab_view/upp/New()
+	var/datum/tacmap/drawing/status_tab_view/xeno/upp_tacmap
+	allowed_flags = MINIMAP_FLAG_UPP
+	owner = upp_tacmap
+
 /datum/tacmap/Destroy()
 	map_holder = null
 	owner = null
@@ -823,8 +832,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(isxeno(user))
 		data["canvasCooldown"] = max(GLOB.xeno_canvas_cooldown - world.time, 0)
-	else
+	if(allowed_flags == MINIMAP_FLAG_USCM)
 		data["canvasCooldown"] = max(GLOB.uscm_canvas_cooldown - world.time, 0)
+	if(allowed_flags == MINIMAP_FLAG_UPP)
+		data["canvasCooldown"] = max(GLOB.upp_canvas_cooldown - world.time, 0)
 
 	data["updatedCanvas"] = updated_canvas
 
@@ -968,6 +979,8 @@ SUBSYSTEM_DEF(minimaps)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
 			else if(faction == XENO_HIVE_NORMAL)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, xeno_canvas_cooldown)
+			else if (faction == FACTION_UPP)
+				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, upp_canvas_cooldown)
 
 			if(!cooldown_satisfied)
 				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
@@ -979,8 +992,12 @@ SUBSYSTEM_DEF(minimaps)
 				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
 				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 			else
-				GLOB.uscm_flat_tacmap_data += new_current_map
-				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				if(faction == FACTION_MARINE)
+					GLOB.uscm_flat_tacmap_data += new_current_map
+					COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				if(faction == FACTION_UPP)
+					GLOB.upp_flat_tacmap_data += new_current_map
+					COOLDOWN_START(GLOB, upp_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 					if(faction == current_squad.faction)
 						current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")

@@ -99,6 +99,7 @@ GLOBAL_VAR(ooc_color_override)
 // tacmap cooldown for xenos and marines
 GLOBAL_VAR_INIT(uscm_canvas_cooldown, 0)
 GLOBAL_VAR_INIT(xeno_canvas_cooldown, 0)
+GLOBAL_VAR_INIT(upp_canvas_cooldown, 0)
 
 // getFlatIcon cooldown for xenos and marines
 GLOBAL_VAR_INIT(uscm_flatten_map_icon_cooldown, 0)
@@ -113,6 +114,7 @@ GLOBAL_VAR(upp_unannounced_map)
 
 GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/drawing/status_tab_view, new)
 GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/drawing/status_tab_view/xeno, new)
+GLOBAL_DATUM_INIT(upp_tacmap_status, /datum/tacmap/drawing/status_tab_view/upp, new)
 
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_EMPTY(gamemode_roles)

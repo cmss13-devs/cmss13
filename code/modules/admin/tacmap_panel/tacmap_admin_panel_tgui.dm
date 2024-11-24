@@ -8,6 +8,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	var/uscm_selection = LATEST_SELECTION
 	/// The index picked last for Xenos (zero indexed), -1 will try to select latest if it exists
 	var/xeno_selection = LATEST_SELECTION
+	///The index picked last for UPP (zero indexed), -1 will try to select latest if it exists
+	var/upp_selection = LATEST_SELECTION
 	/// A url that will point to the wiki map for the current map as a fall back image
 	var/static/wiki_map_fallback
 	/// The last time the map selection was changed - used as a key to trick react into updating the map
@@ -38,10 +40,13 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	var/list/data = list()
 	var/list/uscm_ckeys = list()
 	var/list/xeno_ckeys = list()
+	var/list/upp_ckeys = list()
 	var/list/uscm_names = list()
 	var/list/xeno_names = list()
+	var/list/upp_names = list()
 	var/list/uscm_times = list()
 	var/list/xeno_times = list()
+	var/list/upp_times = list()
 
 	// Assumption: Length of flat_tacmap_data is the same as svg_tacmap_data
 	var/uscm_length = length(GLOB.uscm_svg_tacmap_data)
@@ -68,6 +73,18 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	data["xeno_names"] = xeno_names
 	data["xeno_times"] = xeno_times
 
+	var/upp_length = length(GLOB.upp_svg_tacmap_data)
+	if(upp_selection < 0 || upp_selection >= upp_length)
+		upp_selection = xeno_length - 1
+	for(var/i = 1, i <= xeno_length, i++)
+		var/datum/svg_overlay/current_svg = GLOB.upp_svg_tacmap_data[i]
+		upp_ckeys += current_svg.ckey
+		upp_names += current_svg.name
+		upp_times += current_svg.time
+	data["upp_ckeys"] = upp_ckeys
+	data["upp_names"] = upp_names
+	data["upp_times"] = upp_times
+
 	if(uscm_selection == LATEST_SELECTION)
 		data["uscm_map"] = null
 		data["uscm_svg"] = null
@@ -86,8 +103,18 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		data["xeno_map"] = selected_flat.flat_tacmap
 		data["xeno_svg"] = selected_svg.svg_data
 
+	if(upp_selection == LATEST_SELECTION)
+		data["upp_map"] = null
+		data["upp_svg"] = null
+	else
+		var/datum/flattened_tacmap/selected_flat = GLOB.upp_flat_tacmap_data[upp_selection + 1]
+		var/datum/svg_overlay/selected_svg = GLOB.upp_svg_tacmap_data[upp_selection + 1]
+		data["upp_map"] = selected_flat.flat_tacmap
+		data["upp_svg"] = selected_svg.svg_data
+
 	data["uscm_selection"] = uscm_selection
 	data["xeno_selection"] = xeno_selection
+	data["upp_selection"] = upp_selection
 	data["map_fallback"] = wiki_map_fallback
 	data["last_update_time"] = last_update_time
 

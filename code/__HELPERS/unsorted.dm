@@ -46,8 +46,8 @@
 #define format_frequency(f) "[floor((f) / 10)].[(f) % 10]"
 
 #define reverse_direction(direction) ( \
-											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
-											( dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0 ) \
+											( direction & (NORTH|SOUTH) ? ~direction & (NORTH|SOUTH) : 0 ) | \
+											( direction & (EAST|WEST) ? ~direction & (EAST|WEST) : 0 ) \
 										)
 
 // The sane, counter-clockwise angle to turn to get from /direction/ A to /direction/ B
@@ -1340,29 +1340,35 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /// Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
-/proc/dview(range = world.view, center, invis_flags = 0)
+/proc/dview(range = world.view, atom/center, invis_flags = 0)
 	if(!center)
 		return
 
-	GLOB.dview_mob.loc = center
-
+	GLOB.dview_mob.loc = isturf(center) ? center : center.loc
 	GLOB.dview_mob.see_invisible = invis_flags
 
-	. = view(range, GLOB.dview_mob)
+	. = oview(range, GLOB.dview_mob)
 	GLOB.dview_mob.loc = null
+
+/// Version of oview() which ignores darkness
+/proc/doview(range, atom/center, invis_flags)
+	if(!center)
+		return
+
+	return dview(range, center, invis_flags) - center
 
 /mob/dview
 	name = "INTERNAL DVIEW MOB"
-	invisibility = 101
+	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
-	see_in_dark = 1e6
+	see_in_dark = INFINITY
 	var/ready_to_die = FALSE
 
 /mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
 	SHOULD_CALL_PARENT(FALSE)
-	if(flags_atom & INITIALIZED)
+	if(CHECK_BITFIELD(flags_atom, INITIALIZED))
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags_atom |= INITIALIZED
+	ENABLE_BITFIELD(flags_atom, INITIALIZED)
 	return INITIALIZE_HINT_NORMAL
 
 /mob/dview/Destroy(force = FALSE)
@@ -1378,11 +1384,18 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 #define FOR_DVIEW(type, range, center, invis_flags) \
-	GLOB.dview_mob.loc = center;           \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
 	GLOB.dview_mob.see_invisible = invis_flags; \
-	for(type in view(range, GLOB.dview_mob))
+	for(type in oview(range, GLOB.dview_mob))
 
 #define FOR_DVIEW_END GLOB.dview_mob.loc = null
+
+#define FOR_DOVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in oview(range, GLOB.dview_mob) - (center))
+
+#define FOR_DOVIEW_END FOR_DVIEW_END
 
 /proc/get_turf_pixel(atom/AM)
 	if(!istype(AM))
@@ -1423,7 +1436,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	if(isRemoteControlling(user))
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+	if(user.get_ability_mouse_key() == XENO_ABILITY_CLICK_SHIFT)
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/X = user
 			if(X.selected_ability)
@@ -1437,6 +1450,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return TRUE
 
 #define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
+#define VARSET_LIST_REMOVE_CALLBACK(target, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarsetlistremove), ##target, ##var_value)
 //dupe code because dm can't handle 3 level deep macros
 #define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
 /// Same as VARSET_CALLBACK, but uses a weakref to the datum.
@@ -1460,6 +1474,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		datum.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
 	else
 		datum.vars[var_name] = var_value
+
+/proc/___callbackvarsetlistremove(list, var_value)
+	if(length(list))
+		list -= var_value
 
 //don't question just accept
 /proc/pass(...)

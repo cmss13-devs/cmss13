@@ -124,6 +124,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/request_start()
 	if(current_state == GAME_STATE_PREGAME)
 		time_left = 0
+		delay_start = FALSE
 
 	// Killswitch if hanging or interrupted
 	if(SSnightmare.stat != NIGHTMARE_STATUS_DONE)
@@ -424,7 +425,8 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/M = J.spawn_in_player(player)
 		if(istype(M))
 			J.equip_job(M)
-			EquipCustomItems(M)
+			if(player.ckey in GLOB.donator_items)
+				to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
 			if(M.client)
 				var/client/C = M.client
@@ -454,7 +456,9 @@ SUBSYSTEM_DEF(ticker)
 				captainless = FALSE
 			if(player.job)
 				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
-				EquipCustomItems(player)
+				if(player.ckey in GLOB.donator_items)
+					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+
 			if(player.client)
 				var/client/C = player.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)

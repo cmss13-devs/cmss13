@@ -6,7 +6,7 @@
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_access = list(ACCESS_MARINE_SENIOR)
 	var/on = TRUE // 0 for off
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
@@ -104,7 +104,7 @@
 				return FALSE
 
 			var/input = stripped_multiline_input(user, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in view(1, src)))
+			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
@@ -177,3 +177,15 @@
 	announcement_faction = FACTION_PMC
 
 	minimap_type = MINIMAP_FLAG_PMC
+
+/obj/item/device/cotablet/upp
+
+	desc = "A special device used by field UPP commanders."
+
+	tablet_name = "UPP Field Commander's Tablet"
+
+	announcement_title = UPP_COMMAND_ANNOUNCE
+	announcement_faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_LEADERSHIP)
+
+	minimap_type = MINIMAP_FLAG_UPP

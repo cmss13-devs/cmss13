@@ -187,7 +187,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
+/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
@@ -230,6 +230,7 @@
 
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
+		randomize_speed = FALSE
 		ammo.fire_bonus_projectiles(src)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
@@ -241,8 +242,11 @@
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
-	src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
-	src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
+	if (randomize_speed)
+		src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
+
+	// Safety to avoid loop hazards
+	src.speed = clamp(src.speed, 0.1, 100)
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4
@@ -336,12 +340,6 @@
 	var/alpha_new = LERP(0, 255, alpha_interpolant)
 
 	//Animate the visuals from starting position to new position
-
-	if(projectile_flags & PROJECTILE_SHRAPNEL) //there can be a LOT of shrapnel especially from a cluster OB, not important enough for the expense of an animate()
-		alpha = alpha_new
-		pixel_x = pixel_x_rel_new
-		pixel_y = pixel_y_rel_new
-		return
 
 	var/anim_time = delta_time * 0.1
 	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
@@ -841,8 +839,10 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
-	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NO_STRAY)) && src != P.original)
+	if(HAS_TRAIT(src, TRAIT_NO_STRAY) && src != P.original)
 		return FALSE
+	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS)
+		return FALSE // Fixes for buckshot projectiles not hitting stunned targets
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))
@@ -1205,7 +1205,7 @@
 
 /obj/item/bullet_act(obj/projectile/P)
 	bullet_ping(P)
-	if(P.ammo.damage_type == BRUTE)
+	if(P.ammo.damage_type == BRUTE && !(P.ammo.flags_ammo_behavior & AMMO_XENO))
 		explosion_throw(P.damage/2, P.dir, 4)
 	return TRUE
 

@@ -3,7 +3,7 @@
 /obj/item/storage/large_holster
 	name = "\improper Rifle Holster"
 	desc = "holster"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "m37_holster"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK

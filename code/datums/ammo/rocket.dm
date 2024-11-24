@@ -32,7 +32,7 @@
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(mob))
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
-		mob.ex_act(350, projectile.dir, projectile.weapon_cause_data, 100)
+		mob.ex_act(350, null, projectile.weapon_cause_data, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/object, obj/projectile/projectile)
@@ -69,7 +69,7 @@
 	mob.apply_effect(3, WEAKEN)
 	mob.apply_effect(3, PARALYZE)
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
-		mob.ex_act(300, projectile.dir, projectile.weapon_cause_data, 100)
+		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
@@ -277,8 +277,9 @@
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"
-	accurate_range = 8
-	max_range = 8
+	accuracy = HIT_ACCURACY_TIER_5
+	accurate_range = 7
+	max_range = 7
 
 /datum/ammo/rocket/custom/proc/prime(atom/atom, obj/projectile/projectile)
 	var/obj/item/weapon/gun/launcher/rocket/launcher = projectile.shot_from

@@ -178,7 +178,9 @@
 /// 2 tiles of full and 2 of partial impairment
 #define VISION_IMPAIR_STRONG 5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX 6
+#define VISION_IMPAIR_ULTRA 6
+/// Full blindness, 1 tile visibility
+#define VISION_IMPAIR_MAX 7
 
 //VISION IMPAIRMENT LEVELS===========================================================================
 
@@ -467,6 +469,8 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_DECOR "Decor"
 #define ACCESSORY_SLOT_MEDAL "Medal"
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
+#define ACCESSORY_SLOT_TROPHY "Trophy"
+#define ACCESSORY_SLOT_MASK "Mask"
 
 /// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"
@@ -526,22 +530,35 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 
 
 // Storage flags
-#define STORAGE_ALLOW_EMPTY (1<<0) // Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
-#define STORAGE_QUICK_EMPTY (1<<1) // Whether the storage object can quickly be emptied (no delay)
-#define STORAGE_QUICK_GATHER (1<<2) // Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
-#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE (1<<3) // Whether this storage object can have its items drawn (pouches)
-#define STORAGE_USING_DRAWING_METHOD (1<<4) // Whether this storage object has its items drawn (versus just opening it)
-#define STORAGE_USING_FIFO_DRAWING (1<<5) // Wether the storage object can have items in it's leftmost slot be drawn
-#define STORAGE_CLICK_EMPTY (1<<6) // Whether you can click to empty an item
-#define STORAGE_CLICK_GATHER (1<<7) // Whether it is possible to use this storage object in an inverse way,
-													// so you can have the item in your hand and click items on the floor to pick them up
-#define STORAGE_SHOW_FULLNESS (1<<8) // Whether our storage object on hud changes color when full
-#define STORAGE_CONTENT_NUM_DISPLAY (1<<9) // Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
-#define STORAGE_GATHER_SIMULTAENOUSLY (1<<10) // Whether the storage object can pick up all the items in a tile
-#define STORAGE_ALLOW_QUICKDRAW (1<<11) // Whether the storage can be drawn with E or Holster verb
+/// Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
+#define STORAGE_ALLOW_EMPTY (1<<0)
+/// Whether the storage object can quickly be emptied (no delay)
+#define STORAGE_QUICK_EMPTY (1<<1)
+/// Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
+#define STORAGE_QUICK_GATHER (1<<2)
+/// Whether this storage object can have its items drawn (pouches)
+#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE (1<<3)
+/// Whether this storage object has its items drawn (versus just opening it)
+#define STORAGE_USING_DRAWING_METHOD (1<<4)
+/// Wether the storage object can have items in it's leftmost slot be drawn
+#define STORAGE_USING_FIFO_DRAWING (1<<5)
+/// Whether you can click to empty an item
+#define STORAGE_CLICK_EMPTY (1<<6)
+/// Whether it is possible to use this storage object in an inverse way, so you can have the item in your hand and click items on the floor to pick them up
+#define STORAGE_CLICK_GATHER (1<<7)
+/// Whether our storage object on hud changes color when full
+#define STORAGE_SHOW_FULLNESS (1<<8)
+/// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
+#define STORAGE_CONTENT_NUM_DISPLAY (1<<9)
+/// Whether the storage object can pick up all the items in a tile
+#define STORAGE_GATHER_SIMULTAENOUSLY (1<<10)
+/// Whether the storage can be drawn with E or Holster verb
+#define STORAGE_ALLOW_QUICKDRAW (1<<11)
+/// Whether using this item will try not to empty it if possible
+#define STORAGE_DISABLE_USE_EMPTY (1<<12)
 
 #define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
-#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
 

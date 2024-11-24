@@ -15,7 +15,7 @@
 
 /datum/emergency_call/cryo_squad/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	leaders = cryo_squad.num_leaders
+	leaders = cryo_squad.roles_in[JOB_SQUAD_LEADER]
 	. = ..()
 	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
 	if(mob_max > length(members))
@@ -37,14 +37,15 @@
 		human.create_hud()
 
 	if(!mind)
-		for(var/obj/structure/machinery/cryopod/pod in view(7,human))
+		FOR_DVIEW(var/obj/structure/machinery/cryopod/pod, 7, human, HIDE_INVISIBLE_OBSERVER)
 			if(pod && !pod.occupant)
 				pod.go_in_cryopod(human, silent = TRUE)
 				break
+		FOR_DVIEW_END
 
 	sleep(5)
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
-	if(leaders < cryo_squad.max_leaders && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
+	if(leaders < cryo_squad.roles_cap[JOB_SQUAD_LEADER] && (!mind || (HAS_FLAG(human.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(human.client, JOB_SQUAD_LEADER, time_required_for_job))))
 		leader = human
 		leaders++
 		human.client?.prefs.copy_all_to(human, JOB_SQUAD_LEADER, TRUE, TRUE)

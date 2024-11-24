@@ -7,7 +7,6 @@
 
 /obj/item/storage
 	name = "storage"
-	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
@@ -858,7 +857,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
 	if(length(contents))
-		empty(user)
+		if (!(storage_flags & STORAGE_DISABLE_USE_EMPTY))
+			empty(user)
 		return
 
 	//Otherwise we'll try to fold it.

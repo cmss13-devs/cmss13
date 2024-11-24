@@ -18,6 +18,8 @@
 	minimap_icon = "facehugger"
 
 /mob/living/carbon/xenomorph/facehugger
+	AUTOWIKI_SKIP(TRUE)
+
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
@@ -122,7 +124,7 @@
 		if(morpher.linked_hive.hivenumber != hivenumber)
 			to_chat(src, SPAN_XENOWARNING("This isn't your hive's eggmorpher!"))
 			return
-		if(morpher.stored_huggers >= morpher.huggers_to_grow_max)
+		if(morpher.stored_huggers >= morpher.huggers_max_amount)
 			to_chat(src, SPAN_XENOWARNING("\The [morpher] is already full of children."))
 			return
 		visible_message(SPAN_WARNING("\The [src] climbs back into \the [morpher]."), SPAN_XENONOTICE("You climb into \the [morpher]."))

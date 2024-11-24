@@ -153,9 +153,10 @@
 
 	// Group warnings together
 	if(length(warnings))
-		log_test("::group::Warnings:")
+		log_test("::group::[type] warnings")
 		for(var/warning in warnings)
 			log_test(warning)
+		log_test("::endgroup::")
 
 /datum/unit_test/missing_icons/proc/check_atom(atom_path, atom/thing, note)
 	check(atom_path, thing.icon, thing.icon_state, note)

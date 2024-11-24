@@ -18,6 +18,12 @@ const PAGES = [
     color: 'purple',
     icon: 'star',
   },
+  {
+    title: 'UPP',
+    component: () => FactionPage,
+    color: 'darkgreen',
+    icon: 'medal',
+  },
 ];
 
 export const TacmapAdminPanel = (props) => {

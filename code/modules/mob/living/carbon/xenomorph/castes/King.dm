@@ -83,17 +83,17 @@
 	for(var/mob/living/carbon/carbon in new_loc.contents)
 		if(isxeno(carbon))
 			var/mob/living/carbon/xenomorph/xeno = carbon
-			if(xeno.hivenumber == src.hivenumber)
+			if(xeno.hivenumber == src.hivenumber && !(king.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 				xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
-			else
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+			else if(xeno.hivenumber != src.hivenumber)
 				xeno.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		else
 			if(carbon.stat != DEAD)
 				carbon.apply_armoured_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
-
-		playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 /mob/living/carbon/xenomorph/king/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 

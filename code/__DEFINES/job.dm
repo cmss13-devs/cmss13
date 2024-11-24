@@ -77,11 +77,11 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
 #define JOB_SO "Staff Officer"
+#define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_COMMAND_ROLES /datum/timelock/command
 #define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO, JOB_AUXILIARY_OFFICER)
 GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
-#define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_CAS_PILOT "Gunship Pilot"
 #define JOB_DROPSHIP_PILOT "Dropship Pilot"
 #define JOB_TANK_CREW "Tank Crew"

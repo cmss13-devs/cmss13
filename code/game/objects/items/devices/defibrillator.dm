@@ -285,31 +285,32 @@
 
 
 /obj/item/device/defibrillator/synthetic
-	name = "synthetic sparker"
-	desc = "Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock."
-	icon = 'icons/obj/items/experimental_tools.dmi'
-	icon_state = "sparker"
+	name = "synthetic reset key"
+	desc = "Functioning similarly to a defibrillator, this device is designed to restart a synthetic unit that has suffered critical failure. It can only be used once before being reset."
+	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
+	icon_state = "reset_key"
 	item_state = "defib"
 	w_class = SIZE_SMALL
-	charge_cost = 300
+	charge_cost = 1000
 	skill_to_check_alt = SKILL_ENGINEER
 	skill_level_alt = SKILL_ENGINEER_ENGI
+	blocked_by_suit = FALSE
 
 /obj/item/device/defibrillator/synthetic/update_icon()
 	icon_state = initial(icon_state)
 	overlays.Cut()
 	if(ready)
-		icon_state += "_out"
+		icon_state += "_on"
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
 		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
 		return FALSE
 	if(!ready)
-		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
+		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
 		return FALSE
 	if(dcell.charge < charge_cost)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] has already been used! It needs to be recharged."))
 		return FALSE
 	if(H.stat != DEAD)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Function signs detected. Aborting."))
@@ -319,13 +320,4 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Unit's general condition does not allow reactivation."))
 		return FALSE
 
-	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
-		return FALSE
-
 	return TRUE
-
-/obj/item/device/defibrillator/synthetic/one_shot
-	desc = "Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock. This one can only be used once before needing a recharge and is intended for rebooting Working Joes."
-	charge_cost = 1000
-	icon_state = "sparker_once"

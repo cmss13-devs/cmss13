@@ -1,0 +1,4 @@
+author: "efzapa"
+delete-after: True
+changes:
+  - maptweak: "Replaced a shutter in Lambda on Solaris Ridge so Larva aren't hard trapped on roundstart."

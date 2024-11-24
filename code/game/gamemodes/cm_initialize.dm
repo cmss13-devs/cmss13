@@ -48,6 +48,7 @@ Additional game mode variables.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/predators	= list()
 	var/list/joes		= list()
+	var/list/fax_responders = list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
@@ -119,10 +120,10 @@ Additional game mode variables.
 	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
 	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
 	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-		if(sq)
-			sq.max_engineers = engi_slot_formula(marine_starting_num)
-			sq.max_medics = medic_slot_formula(marine_starting_num)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(marine_starting_num)
+			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(marine_starting_num)
 
 	for(var/i in GLOB.RoleAuthority.roles_by_name)
 		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
@@ -254,6 +255,105 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	return new_predator
+
+//===================================================\\
+
+			//FAX RESPONDER INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/check_fax_responder_late_join(mob/responder, show_warning = TRUE)
+	if(!responder.client)
+		return FALSE
+	if(!(responder?.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
+		if(show_warning)
+			to_chat(responder, SPAN_WARNING("You are not whitelisted!"))
+		return FALSE
+	if(show_warning && tgui_alert(responder, "Confirm joining as a Fax Responder.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+	if(!get_fax_responder_slots(responder))
+		if(show_warning)
+			to_chat(responder, SPAN_WARNING("No slots available!"))
+		return FALSE
+	return TRUE
+
+/datum/game_mode/proc/get_fax_responder_slots(mob/responder_candidate)
+	var/list/options = list()
+	if(!responder_candidate.client)
+		return FALSE
+	if(!(responder_candidate.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
+		to_chat(responder_candidate, SPAN_WARNING("You are not whitelisted!"))
+		return FALSE
+
+	for(var/job in FAX_RESPONDER_JOB_LIST)
+		var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[job]
+		var/job_max = fax_responder_job.total_positions
+		if((fax_responder_job.current_positions < job_max) && fax_responder_job.can_play_role(responder_candidate.client))
+			options += job
+	return options
+
+/datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate, from_lobby = FALSE)
+	var/list/options = get_fax_responder_slots(responder_candidate)
+	if(!options || !options.len)
+		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
+		if(from_lobby)
+			var/mob/new_player/lobbied = responder_candidate
+			lobbied.new_player_panel()
+		return FALSE
+
+	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
+	if(!(choice in FAX_RESPONDER_JOB_LIST))
+		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
+		if(from_lobby)
+			var/mob/new_player/lobbied = responder_candidate
+			lobbied.new_player_panel()
+		return FALSE
+
+	if(!transform_fax_responder(responder_candidate, choice))
+		if(from_lobby)
+			var/mob/new_player/lobbied = responder_candidate
+			lobbied.new_player_panel()
+		return FALSE
+
+	if(responder_candidate)
+		responder_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+	return TRUE
+
+/datum/game_mode/proc/transform_fax_responder(mob/responder_candidate, sub_job)
+	if(!(sub_job in FAX_RESPONDER_JOB_LIST))
+		return FALSE
+
+	if(!responder_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_fax_responder")
+		return FALSE
+	if(!loaded_fax_base)
+		loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+		if(!loaded_fax_base)
+			log_debug("Error loading fax response base!")
+			return FALSE
+
+	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
+
+	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[sub_job]))
+	var/mob/living/carbon/human/new_responder = new(spawn_point)
+	responder_candidate.mind.transfer_to(new_responder, TRUE)
+	new_responder.client?.prefs.copy_all_to(new_responder, JOB_FAX_RESPONDER, TRUE, TRUE)
+
+	var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[sub_job]
+
+	if(!fax_responder_job)
+		qdel(new_responder)
+		return FALSE
+
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_fax_responder_late_join is running its own checks.
+	fax_responder_job.current_positions++
+	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
+	SSticker.minds += new_responder.mind
+
+	message_admins(FONT_SIZE_XL(SPAN_RED("([new_responder.key]) joined as a [sub_job], [new_responder.real_name].")))
+	new_responder.add_fax_responder()
+
+	return TRUE
 
 
 //===================================================\\

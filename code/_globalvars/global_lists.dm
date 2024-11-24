@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY(uscm_svg_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_svg_tacmap_data)
 GLOBAL_LIST_EMPTY(upp_svg_tacmap_data)
 
+
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 GLOBAL_LIST_EMPTY(larva_burst_by_hive)
 

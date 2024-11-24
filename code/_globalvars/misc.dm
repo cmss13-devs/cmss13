@@ -103,6 +103,7 @@ GLOBAL_VAR_INIT(upp_canvas_cooldown, 0)
 
 // getFlatIcon cooldown for xenos and marines
 GLOBAL_VAR_INIT(uscm_flatten_map_icon_cooldown, 0)
+GLOBAL_VAR_INIT(upp_flatten_map_icon_cooldown, 0)
 GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
 
 // latest unannounced flat tacmap for xenos and marines

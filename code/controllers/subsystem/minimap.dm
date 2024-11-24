@@ -474,6 +474,10 @@ SUBSYSTEM_DEF(minimaps)
 		if(!COOLDOWN_FINISHED(GLOB, xeno_flatten_map_icon_cooldown))
 			return FALSE
 		COOLDOWN_START(GLOB, xeno_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
+	else if(faction == FACTION_UPP)
+		if(!COOLDOWN_FINISHED(GLOB, upp_flatten_map_icon_cooldown))
+			return FALSE
+		COOLDOWN_START(GLOB, upp_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
 	else
 		return FALSE
 

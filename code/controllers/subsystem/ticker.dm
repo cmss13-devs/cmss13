@@ -237,6 +237,8 @@ SUBSYSTEM_DEF(ticker)
 
 	// We need stats to track roundstart role distribution.
 	mode.setup_round_stats()
+	// Loads up the fax responder platform.
+	mode.load_fax_base()
 
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))

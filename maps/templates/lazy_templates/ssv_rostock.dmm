@@ -813,12 +813,8 @@
 /turf/open/floor/plating,
 /area/rostock/lower_deck/m_hallway)
 "aEQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
-	name = "Brig Lobby";
-	req_one_access = list(230, 240);
-	req_access = null
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/turf/open/floor/strata/floor3,
 /area/rostock/hangar/hangarbay)
 "aGe" = (
 /obj/item/trash/popcorn{
@@ -1612,7 +1608,8 @@
 	name = "Hangar Lockdown";
 	pixel_y = 13;
 	throw_range = 15;
-	pixel_x = -6
+	pixel_x = -6;
+	req_access_txt = "240"
 	},
 /obj/structure/machinery/door_control{
 	id = "upp_cic_maint";
@@ -2328,7 +2325,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/corsat/gamma,
+/turf/open/floor/corsat/theta,
 /area/rostock/command/cic)
 "bMB" = (
 /obj/structure/machinery/power/apc/power/south,
@@ -6210,6 +6207,9 @@
 	dir = 8;
 	invisibility = 101
 	},
+/obj/structure/bed/chair/comfy/lime{
+	dir = 4
+	},
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "eIf" = (
@@ -8350,6 +8350,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/upper_deck/hallway)
 "grx" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 4
+	},
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "grM" = (
@@ -8571,7 +8574,7 @@
 /turf/open/floor/corsat/cargo,
 /area/rostock/railgun)
 "gDB" = (
-/turf/open/floor/corsat/theta,
+/turf/open/floor/corsat/gamma,
 /area/rostock/command/cic)
 "gEC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9203,11 +9206,10 @@
 /turf/open/floor/plating,
 /area/rostock/upper_deck/hallway)
 "haM" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/s_a_hallway)
 "haU" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -13646,7 +13648,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(240)
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/corsat/marked,
 /area/rostock/airoom)
 "kfk" = (
 /obj/structure/ladder{
@@ -16459,11 +16461,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lower_deck/briefing)
-"msx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/dropship_equipment/fuel/fuel_enhancer,
-/turf/open/floor/corsat/marked,
-/area/rostock/hangar/hangarbay)
 "msL" = (
 /obj/structure/cargo_container/seegson/left,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -17428,9 +17425,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "nfR" = (
-/obj/docking_port/stationary/marine_dropship/upp_hangar_2{
-	faction = "UPP"
-	},
+/obj/docking_port/stationary/marine_dropship/upp_hangar_2,
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "nfS" = (
@@ -18237,8 +18232,12 @@
 /turf/open/floor/plating,
 /area/rostock/engineering/reactor)
 "nQl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /obj/structure/dropship_equipment/fuel/cooling_system,
-/turf/open/floor/corsat/marked,
+/turf/open/floor/strata/multi_tiles/west,
 /area/rostock/hangar/hangarbay)
 "nQo" = (
 /turf/open/floor/strata/cyan3/southwest,
@@ -18725,9 +18724,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "omj" = (
-/obj/docking_port/stationary/marine_dropship/upp_hangar_1{
-	faction = "UPP"
-	},
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1,
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "omm" = (
@@ -23867,7 +23864,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240)
 	},
-/turf/closed/wall/almayer/upp,
+/turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/m_hallway)
 "sfu" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -25829,7 +25826,7 @@
 	name = "\improper Rest and Relaxation Area";
 	dir = 2
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/kitchen)
 "tMN" = (
 /obj/effect/decal/warning_stripes{
@@ -25845,11 +25842,12 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_a)
 "tMY" = (
-/obj/structure/bed/chair/bolted{
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/closed/wall/almayer/upp/reinforced,
-/area/rostock/security/brig_office)
+/turf/open/floor/corsat/marked,
+/area/rostock/lower_deck/kitchen)
 "tNA" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -26246,7 +26244,6 @@
 /turf/open/floor/almayer,
 /area/rostock/vehiclehangar)
 "tZH" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/vents/pump/on{
 	dir = 8
 	},
@@ -26254,7 +26251,7 @@
 	pixel_x = 32;
 	pixel_y = -40
 	},
-/turf/open/floor/plating,
+/turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/s_a_hallway)
 "tZN" = (
 /obj/structure/machinery/light{
@@ -40594,7 +40591,7 @@ eyD
 grM
 kZL
 kZL
-tqt
+eKH
 eyD
 bHY
 kZL
@@ -40958,7 +40955,7 @@ eyD
 pXn
 sep
 oKR
-eKH
+tqt
 eyD
 pXn
 sep
@@ -41870,7 +41867,7 @@ uVK
 uVK
 uVK
 uVK
-pml
+tMY
 tMI
 uVK
 uVK
@@ -43983,7 +43980,7 @@ coh
 jWe
 cZM
 fje
-tMY
+iQG
 iQG
 tWr
 fje
@@ -48170,7 +48167,7 @@ eWx
 eWx
 qAw
 eWx
-aEQ
+eWx
 wFu
 adA
 guf
@@ -48519,7 +48516,7 @@ amf
 amf
 amf
 pCV
-msx
+ixD
 bbY
 pCV
 pCV
@@ -48885,7 +48882,7 @@ eFn
 pCV
 pCV
 pCV
-nQl
+pCV
 pCV
 gRI
 uen
@@ -52705,7 +52702,7 @@ tdb
 dEd
 ueI
 ueI
-ueI
+aEQ
 ueI
 ueI
 ueI
@@ -52890,7 +52887,7 @@ vpO
 vpO
 vpO
 vpO
-vpO
+nQl
 vpO
 vpO
 qVJ

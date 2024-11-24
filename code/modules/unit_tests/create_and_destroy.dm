@@ -12,9 +12,10 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 		/obj/item/seeds/cutting,
 		//lighting singleton
 		/mob/dview,
-		// These use walkaway() after initialization, which causes false positives
+		// These use walk_away() after initialization, which causes false positives
 		/obj/item/explosive/grenade/flashbang/cluster/segment,
 		/obj/item/explosive/grenade/flashbang/cluster_piece,
+		/mob/living/simple_animal/hostile/retaliate/giant_lizard,
 		/obj/effect/fake_attacker,
 		/atom/movable/lighting_mask, //leave it alone
 		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.

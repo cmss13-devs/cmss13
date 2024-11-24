@@ -193,7 +193,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	// Group warnings together
 	var/list/warn_reasons = test.warn_reasons
 	if(length(warn_reasons))
-		log_world("::group::[test_path] warnings")
+		log_world("::group::[test_path] Warnings")
 
 		log_entry = list()
 		for(var/reasonID in 1 to length(warn_reasons))

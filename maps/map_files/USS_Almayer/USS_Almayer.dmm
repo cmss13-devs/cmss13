@@ -21494,7 +21494,7 @@
 	},
 /obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 8;
-	vent_tag = "Quarters";
+	vent_tag = "WY Liaison Quarters";
 	network_id = "CL_Security"
 	},
 /turf/open/floor/wood/ship,
@@ -51353,7 +51353,7 @@
 "rmd" = (
 /obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 1;
-	vent_tag = "Office";
+	vent_tag = "WY Liaison Office";
 	network_id = "CL_Security"
 	},
 /turf/open/floor/wood/ship,

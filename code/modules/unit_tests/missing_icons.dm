@@ -182,3 +182,8 @@
 		TEST_FAIL(msg)
 	else
 		TEST_WARN(msg)
+
+/datum/unit_test/missing_icons/log_for_test(text, priority, file, line)
+	if(priority == "warning")
+		return // TODO: For now 849 warning annotations is just too much noise to be fixed
+	return ..()

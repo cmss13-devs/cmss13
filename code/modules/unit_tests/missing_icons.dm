@@ -13,8 +13,6 @@
 	/// Use this to specify when all of a slot should have sprites if applicable.
 	var/list/additional_slots_to_test = list()
 	//var/list/additional_slots_to_test = list(WEAR_L_HAND, WEAR_R_HAND, WEAR_FACE, WEAR_BACK, WEAR_JACKET, WEAR_HANDS, WEAR_FEET, WEAR_WAIST, WEAR_EYES, WEAR_HEAD, WEAR_L_EAR, WEAR_R_EAR, WEAR_BODY, WEAR_ID, WEAR_L_STORE, WEAR_R_STORE)
-	/// List of warnings to print out together
-	var/list/warnings = list()
 
 /datum/unit_test/missing_icons/proc/generate_possible_icon_states_list(directory_path)
 	if(!directory_path)
@@ -150,14 +148,6 @@
 		check_atom(mob_path, spawned)
 		qdel(spawned)
 
-
-	// Group warnings together
-	if(length(warnings))
-		log_test("::group::[type] warnings")
-		for(var/warning in warnings)
-			log_test(warning)
-		log_test("::endgroup::")
-
 /datum/unit_test/missing_icons/proc/check_atom(atom_path, atom/thing, note)
 	check(atom_path, thing.icon, thing.icon_state, note)
 
@@ -188,4 +178,4 @@
 	if(!warning_only)
 		TEST_FAIL(msg)
 	else
-		warnings += msg
+		TEST_WARN(msg)

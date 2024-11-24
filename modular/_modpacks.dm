@@ -31,6 +31,8 @@ SUBSYSTEM_DEF(modpacks)
 		if(fail_msg)
 			CRASH("Modpack [(istype(package) && package.name) || "Unknown"] failed to post-initialize: [fail_msg]")
 
+	return SS_INIT_SUCCESS
+
 /client/verb/modpacks_list()
 	set name = "Modpacks List"
 	set category = "OOC"

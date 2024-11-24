@@ -416,7 +416,7 @@ SUBSYSTEM_DEF(minimaps)
 	else if(faction == XENO_HIVE_NORMAL)
 		map_list = GLOB.xeno_svg_tacmap_data
 	else if(faction == FACTION_UPP)
-		map_list = GLOB.uscm_svg_tacmap_data
+		map_list = GLOB.upp_svg_tacmap_data
 	else
 		return null
 
@@ -746,7 +746,7 @@ SUBSYSTEM_DEF(minimaps)
 	owner = xeno_tacmap
 
 /datum/tacmap/drawing/status_tab_view/upp/New()
-	var/datum/tacmap/drawing/status_tab_view/xeno/upp_tacmap
+	var/datum/tacmap/drawing/status_tab_view/upp/upp_tacmap
 	allowed_flags = MINIMAP_FLAG_UPP
 	owner = upp_tacmap
 

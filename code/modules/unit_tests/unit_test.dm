@@ -206,8 +206,8 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 			// Normal log message
 			log_entry += "\tWARNING #[reasonID]: [text] at [file]:[line]"
 
-		var/message = log_entry.Join("\n")
-		log_test(message)
+		var/warn_messages = log_entry.Join("\n")
+		log_test(warn_messages)
 
 		log_test("::endgroup::")
 

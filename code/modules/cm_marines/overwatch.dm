@@ -47,7 +47,7 @@
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
-		tacmap = new(src, minimap_type) // Non-drawing version
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
@@ -897,6 +897,7 @@
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
+
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
 	minimap_type = MINIMAP_FLAG_UPP

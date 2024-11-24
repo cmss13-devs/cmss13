@@ -152,6 +152,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alternative_shuttles()
 	. = list()
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
+		if(use_factions && shuttle.faction != faction)
+			continue
 		. += list(
 			list(
 				"id" = shuttle.id, "name" = shuttle)
@@ -640,3 +642,7 @@
 	is_remote = TRUE
 	needs_power = TRUE
 	can_change_shuttle = TRUE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp
+	req_one_access = list(ACCESS_UPP_FLIGHT)
+	faction = FACTION_UPP

@@ -30,6 +30,7 @@
 	var/automated_delay
 	var/automated_timer
 	var/datum/cas_signal/paradrop_signal
+	var/faction = FACTION_MARINE
 
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
@@ -157,6 +158,7 @@
 	name = "Morana"
 	id = DROPSHIP_MORANA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	faction = FACTION_UPP
 
 /obj/docking_port/mobile/marine_dropship/morana/get_transit_path_type()
 	return /turf/open/space/transit/dropship/morana
@@ -165,6 +167,7 @@
 	name = "Devana"
 	id = DROPSHIP_DEVANA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	faction = FACTION_UPP
 
 /obj/docking_port/mobile/marine_dropship/devana/get_transit_path_type()
 	return /turf/open/space/transit/dropship/devana

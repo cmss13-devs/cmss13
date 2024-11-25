@@ -39,11 +39,11 @@
 	var/datum/ammo/ammo_secondary //Toggled ammo type
 	var/datum/ammo/ammo_primary_def = /datum/ammo/bullet/smartgun
 	var/datum/ammo/ammo_secondary_def = /datum/ammo/bullet/smartgun/armor_piercing
-	//Frontline mode changes the SG to use 2 new bullet types (alt) for each variant of the SG so we can change falloff/damage/range parameters.
+	///Frontline mode changes the SG to use 2 new bullet types (alt) for each variant of the SG in order to change falloff/damage/range parameters.
 	var/datum/ammo/ammo_primary_alt = /datum/ammo/bullet/smartgun/alt
 	var/datum/ammo/ammo_secondary_alt = /datum/ammo/bullet/smartgun/armor_piercing/alt
 	var/iff_enabled = TRUE //Begin with the safety on.
-	//This controls if frontline mode is enabled roundstart. E.g. var/frontline_enabled = FALSE means the SG starts with frontline mode disabled.
+	///This controls if frontline mode is enabled roundstart. E.g. var/frontline_enabled = FALSE means the SG starts with frontline mode disabled.
 	var/frontline_enabled = FALSE
 	var/secondary_toggled = 0 //which ammo we use
 	var/recoil_compensation = 0

@@ -203,9 +203,7 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 
 /datum/ammo/bullet/rifle/type71/setup_faction_clash_values()
-	if(istype(src,/datum/ammo/bullet/rifle/type71/ap)||istype(src,/datum/ammo/bullet/rifle/type71/heap))
-		penetration = ARMOR_PENETRATION_TIER_6
-	else
+	if(penetration <= ARMOR_PENETRATION_TIER_3) //so we only reduce AP of normal ammo here
 		penetration = ARMOR_PENETRATION_TIER_1
 	. = ..()
 

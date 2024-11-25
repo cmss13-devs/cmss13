@@ -773,6 +773,7 @@
 	if(buffing_target.get_filter("raging"))
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
 		return
+
 	if (!action_cooldown_check())
 		return
 
@@ -841,7 +842,7 @@
 	var/mob/living/carbon/xenomorph/valkyrie = owner
 	var/mob/living/carbon/target_carbon = affected_atom //for marine
 
-	if(!action_cooldown_check())
+	if (!action_cooldown_check())
 		return
 
 	if (target_carbon.stat == DEAD)

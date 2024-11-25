@@ -33,8 +33,8 @@
 
 	// Config
 	var/fury_max = 200
-	var/fury_per_attack = 25
-	var/fury_per_life = 15
+	var/fury_per_attack = 15
+	var/fury_per_life = 5
 	var/heal_range =  3
 	var/raging = FALSE
 
@@ -74,17 +74,16 @@
 		return
 
 	for(var/mob/living/carbon/xenomorph/xeno_in_range in range(heal_range, bound_xeno))
+		if(xeno_in_range.on_fire)
+			continue
 		xeno_in_range.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(raging == TRUE)
 			xeno_in_range.gain_health(15)
+			transferred_healing += 15
 		else
 			xeno_in_range.gain_health(8)
+			transferred_healing += 8
 
-
-	bound_xeno.emote("roar")
-	bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
-	bound_xeno.xeno_jitter(1 SECONDS)
-	bound_xeno.gain_health(8) // you heal 10 in total per slash taking the other effect in count
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/add_base_fury(amount)
 	if (amount > 0)

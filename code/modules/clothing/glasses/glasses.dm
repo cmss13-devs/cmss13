@@ -2,6 +2,10 @@
 	name = "glasses"
 	gender = PLURAL
 	icon = 'icons/obj/items/clothing/glasses.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+	)
 	w_class = SIZE_SMALL
 	var/vision_flags = 0
 	var/darkness_view = 0 //Base human is 2

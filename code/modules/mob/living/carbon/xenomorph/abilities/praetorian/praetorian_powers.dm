@@ -941,6 +941,12 @@
 	var/mob/living/carbon/xenomorph/target = atom
 
 
+	var/distance = get_dist(extuingisher_tail, target)
+
+	if (distance > 2)
+		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
+		return
+
 	if (!action_cooldown_check())
 		return
 

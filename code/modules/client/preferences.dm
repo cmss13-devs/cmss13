@@ -1390,21 +1390,29 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("fax_name")
 					var/faction = href_list["fax_faction"]
-					var/raw_name = input(user, "Choose your Fax Responder's name:", "Character Preference")  as text|null
+					var/raw_name = tgui_input_text(user, "Choose your Fax Responder's name:", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(!new_name)
-							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+							to_chat(user, SPAN_RED("Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
 						else
 							switch(faction)
-								if("uscm") fax_name_uscm = new_name
-								if("pvst") fax_name_pvst = new_name
-								if("wy") fax_name_wy = new_name
-								if("upp") fax_name_upp = new_name
-								if("twe") fax_name_twe = new_name
-								if("cmb") fax_name_cmb = new_name
-								if("press") fax_name_press = new_name
-								if("clf") fax_name_clf = new_name
+								if("uscm")
+									fax_name_uscm = new_name
+								if("pvst")
+									fax_name_pvst = new_name
+								if("wy")
+									fax_name_wy = new_name
+								if("upp")
+									fax_name_upp = new_name
+								if("twe")
+									fax_name_twe = new_name
+								if("cmb")
+									fax_name_cmb = new_name
+								if("press")
+									fax_name_press = new_name
+								if("clf")
+									fax_name_clf = new_name
 
 				if("xeno_prefix")
 					if(xeno_name_ban)

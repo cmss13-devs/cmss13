@@ -176,12 +176,12 @@
 	if(src != user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)) // level 2 is enough to repair damaged NVG
 		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
 		return
 
 	if(shape == NVG_SHAPE_BROKEN)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 3 is needed to repair broken NVG
 			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
 			return
 

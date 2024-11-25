@@ -190,7 +190,7 @@
 
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"
-	desc = "It contains, by default, autoinjectors. But it may also hold ointments, bandages, and pill packets."
+	desc = "A small pouch that can hold basic medical equipment, such as autoinjectors and bandages."
 	icon_state = "firstaid"
 	storage_slots = 4
 	can_hold = list(
@@ -202,7 +202,7 @@
 	)
 
 /obj/item/storage/pouch/firstaid/full
-	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
+	desc = "Contains a variety of autoinjectors for quickly treating injuries."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
@@ -210,11 +210,17 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
+/obj/item/storage/pouch/firstaid/full/alternate
+	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
+
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
+
+/obj/item/storage/pouch/firstaid/full/pills
+	desc = "Contains a variety of pill packets for treating many injuries."
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
@@ -802,6 +808,28 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/syringe(src)
 
+/obj/item/storage/pouch/engikit
+	name = "engineer kit pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
+	icon_state = "construction"
+	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
+	storage_slots = 6
+	can_hold_skill = list(
+		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/flashlight = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/clothing/glasses/welding = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/analyzer = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/demo_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/reagent_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/t_scanner = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stack/cable_coil = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/cell = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/device/assembly = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stock_parts = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+	)
+	can_hold_skill_only = TRUE
+
 /obj/item/storage/pouch/medkit
 	name = "medical kit pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
@@ -897,7 +925,7 @@
 	. = ..()
 	fill_with("oxycodone")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
@@ -908,6 +936,21 @@
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("tricordrazine", A.volume/3)
+		A.update_uses_left()
+		A.update_icon()
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
+	. = ..()
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("peridaxon", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		A.reagents.add_reagent("adrenaline", A.volume/3)
+		A.reagents.add_reagent("inaprovaline", A.volume/3)
+		A.reagents.add_reagent("peridaxon", A.volume/3)
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()
@@ -1375,6 +1418,7 @@
 	icon_state = "cassette_pouch_closed"
 	var/base_icon_state = "cassette_pouch"
 	w_class = SIZE_SMALL
+	flags_obj = OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
 
@@ -1404,7 +1448,7 @@
 /obj/item/storage/pouch/machete
 	name = "\improper H6B pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "macheteB_holster"
 	item_state = "machete_holster"
 	max_w_class = SIZE_LARGE

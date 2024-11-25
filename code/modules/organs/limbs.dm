@@ -182,11 +182,18 @@
 	if(severity == 2)
 		probability = 1
 		damage = 3
-	if(prob(probability))
+	if(can_emp_delimb() && prob(probability))
 		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
+		for(var/datum/internal_organ/internal_organ in internal_organs)
+			if(internal_organ.robotic == FALSE)
+				continue
+			internal_organ.emp_act(severity)
 
+/// If this limb can be dropped as a result of an EMP
+/obj/limb/proc/can_emp_delimb()
+	return TRUE
 
 /obj/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
@@ -277,6 +284,7 @@
 
 	var/previous_brute = brute_dam
 	var/previous_burn = burn_dam
+	var/previous_bonebreak = (status & LIMB_BROKEN)
 
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)
@@ -370,7 +378,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (status & LIMB_BROKEN))
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && previous_bonebreak) //delimbable only if broken before this hit
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -531,6 +539,9 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(internal && !can_bleed_internally)
 		internal = FALSE
+	if(internal && SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_INTERNAL_BLEEDING))
+		internal = FALSE
+
 
 	if(length(bleeding_effects_list))
 		if(!internal)
@@ -1309,6 +1320,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
 
+/obj/limb/groin/can_emp_delimb()
+	if(status & (LIMB_ROBOT | LIMB_SYNTHSKIN))
+		return FALSE
+
+	return TRUE
+
 /obj/limb/leg
 	name = "leg"
 	display_name = "leg"
@@ -1424,7 +1441,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	has_stump_icon = TRUE
 	splint_icon_amount = 4
 	bandage_icon_amount = 4
-	var/disfigured = 0 //whether the head is disfigured.
 
 	var/eyes_r
 	var/eyes_g
@@ -1448,6 +1464,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
 	. += eyes
 
+	if(HAS_TRAIT(owner, TRAIT_INTENT_EYES))
+		. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
+
 	if(lip_style && (species && species.flags & HAS_LIPS))
 		var/image/lips = image('icons/mob/humans/onmob/human_face.dmi', "paint_[lip_style]", layer = -BODYPARTS_LAYER)
 		. += lips
@@ -1462,25 +1481,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
 	. = ..()
-	if (!disfigured)
-		if (brute_dam > 50 || brute_dam > 40 && prob(50))
-			disfigure("brute")
-		if (burn_dam > 40)
-			disfigure("burn")
-
-/obj/limb/head/proc/disfigure(type = "brute")
-	if (disfigured)
-		return
-	if(type == "brute")
-		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."), \
-		SPAN_DANGER("<b>Your face becomes an unrecognizible mangled mess!</b>"), \
-		SPAN_DANGER("You hear a sickening crack."))
-	else
-		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into a mangled mess!"), \
-		SPAN_DANGER("<b>Your face melts off!</b>"), \
-		SPAN_DANGER("You hear a sickening sizzle."))
-	disfigured = 1
-	owner.name = owner.get_visible_name()
 
 /obj/limb/head/reset_limb_surgeries()
 	for(var/zone in list("head", "eyes", "mouth"))

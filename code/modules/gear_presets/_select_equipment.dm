@@ -15,7 +15,7 @@
 	var/list/access = list()
 	var/assignment
 	var/rank
-	var/paygrade
+	var/list/paygrades = list("???")
 	var/role_comm_title
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
@@ -23,7 +23,7 @@
 	var/origin_override
 
 	var/minimap_icon = "private"
-	var/minimap_background = MINIMAP_ICON_BACKGROUND_USCM
+	var/minimap_background = "background"
 	var/always_minimap_visible = TRUE
 
 	//Uniform data
@@ -95,8 +95,33 @@
 	if(minimum_age && new_human.age < minimum_age)
 		new_human.age = minimum_age
 
-/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)
-	return paygrade
+/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)//Beagle-Code
+	if(paygrades.len == 1)
+		return paygrades[1]
+	var/playtime
+	if(!mob_client)
+		playtime = JOB_PLAYTIME_TIER_1
+	else
+		playtime = get_job_playtime(mob_client, rank)
+		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
+			playtime = JOB_PLAYTIME_TIER_1
+	var/final_paygrade
+	for(var/current_paygrade as anything in paygrades)
+		var/required_time = paygrades[current_paygrade]
+		if(required_time - playtime > 0)
+			break
+		final_paygrade = current_paygrade
+	if(rank == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
+		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
+			return PAY_SHORT_ME2
+		else
+			GLOB.data_core.leveled_riflemen++
+			return final_paygrade
+	if(!final_paygrade)
+		. = "???"
+		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
+
+	return final_paygrade
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	return
@@ -110,6 +135,8 @@
 /datum/equipment_preset/proc/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(!idtype)
 		return
+	if(!mob_client)
+		mob_client = new_human.client
 	var/obj/item/card/id/ID = new idtype()
 	ID.name = "[new_human.real_name]'s ID Card"
 	if(assignment)
@@ -123,7 +150,7 @@
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid
 	ID.blood_type = new_human.blood_type
-	ID.paygrade = load_rank(new_human) || ID.paygrade
+	ID.paygrade = load_rank(new_human, mob_client) || ID.paygrade
 	ID.uniform_sets = uniform_sets
 	new_human.equip_to_slot_or_del(ID, WEAR_ID)
 	new_human.faction = faction
@@ -188,7 +215,7 @@
 				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)
 
 	//Gives ranks to the ranked
-	var/current_rank = paygrade
+	var/current_rank = paygrades[1]
 	var/obj/item/card/id/I = new_human.get_idcard()
 	if(I)
 		current_rank = I.paygrade
@@ -255,17 +282,11 @@
 		return
 
 	for(var/trait in real_client.prefs.traits)
-		var/datum/character_trait/CT = GLOB.character_traits[trait]
-		CT.apply_trait(new_human, src)
+		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
+		character_trait.apply_trait(new_human, src)
 
 /datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
-	if(user.assigned_squad)
-		background.color = user.assigned_squad.minimap_color
-	else if(minimap_background)
-		background.color = minimap_background
-	else
-		background.color = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', user.assigned_squad?.background_icon ? user.assigned_squad.background_icon : minimap_background)
 
 	if(islist(minimap_icon))
 		for(var/icons in minimap_icon)
@@ -812,9 +833,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/small(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/small(new_human), WEAR_IN_BACK)
 
-
-/datum/equipment_preset/proc/add_pmc_survivor_weapon(mob/living/carbon/human/new_human) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equiped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
-	var/random_weapon = rand(0,6)
+/datum/equipment_preset/proc/add_merc_survivor_weapon(mob/living/carbon/human/new_human) // Random Weapons an unaffiliated mercenary may have.
+	var/random_weapon = rand(0,5)
 	switch(random_weapon)
 		if(0)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(new_human), WEAR_L_HAND)
@@ -826,17 +846,39 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/nsg23(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(new_human), WEAR_WAIST)
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mar40(new_human), WEAR_WAIST)
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
-		if(6)
+
+/datum/equipment_preset/proc/add_pmc_survivor_weapon(mob/living/carbon/human/new_human) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equiped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
+	var/random_weapon = rand(0,19)
+	switch(random_weapon)
+		if(0 to 4)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
+		if(5 to 9)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23(new_human), WEAR_IN_BACK)
+		if(10 to 13)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/corporate/no_lock, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BACK)
+		if(14 to 17)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000/pmc(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000(new_human), WEAR_IN_BACK)
+		if(18,19)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
 
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.

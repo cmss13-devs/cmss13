@@ -43,6 +43,17 @@
 	targ_y = deobfuscate_y(0)
 	internal_camera = new(loc)
 
+	var/new_icon_state
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("classic")
+			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+		if("desert")
+			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+		if("snow")
+			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+		if("urban")
+			icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+
 /obj/structure/mortar/Destroy()
 	QDEL_NULL(internal_camera)
 	return ..()
@@ -91,7 +102,7 @@
 	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 	if(busy)
@@ -213,7 +224,7 @@
 		var/obj/item/mortar_shell/mortar_shell = item
 		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
 		var/area/target_area = get_area(target_turf)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
 			return
 		if(busy)
@@ -277,7 +288,7 @@
 			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
 		if(fixed)
@@ -354,6 +365,8 @@
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_MORTAR_LASER_WARNING))
+		new /obj/effect/overlay/temp/blinking_laser(target)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)
 	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
@@ -400,6 +413,10 @@
 	unacidable = TRUE
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
 
+/obj/item/mortar_kit/Initialize(...)
+	. = ..()
+	select_gamemode_skin(type)
+
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
@@ -410,7 +427,7 @@
 	var/turf/deploy_turf = get_turf(user)
 	if(!deploy_turf)
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
 	var/area/area = get_area(deploy_turf)

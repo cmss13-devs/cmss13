@@ -1,9 +1,19 @@
 [
 	{ "type": "map_sprinkle", "path": "sprinkles/" },
-	{ "type": "pick",     "chance": 0.40, "choices": [
-		{ "type": "map_insert", "landmark": "crashlanding-offices", "path": "standalone/crashlanding-offices.dmm", "when": { "lvevent": "none" } },
-		{ "type": "map_insert", "landmark": "crashlanding-eva",   "path": "standalone/crashlanding-eva.dmm", "when": { "lvevent": "none" } }
-	]},
+    {
+		"type": "map_insert",
+		"landmark": "crashlanding-offices",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-offices.dmm",
+		"when": { "lvevent": "pmccrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "crashlanding-eva",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-eva.dmm",
+		"when": { "lvevent": "pmccrash" }
+	},
 	{ "type": "map_insert", "chance": 0.50, "landmark": "lambda-graveyard", "path": "standalone/lambda-graveyard.dmm" },
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "type": "map_insert", "landmark": "lambda-cave-mushroom", "path": "standalone/lambda-cave_mushroom.dmm" },

@@ -37,6 +37,10 @@
 		to_chat(X, SPAN_XENOWARNING("There already is a tunnel here."))
 		return
 
+	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in X.loc)
+		to_chat(X, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		return
+
 	if(X.tunnel_delay)
 		to_chat(X, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
 		return
@@ -51,7 +55,7 @@
 	var/area/AR = get_area(T)
 
 	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -101,7 +105,6 @@
 /datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"
 	action_icon_state = "screech"
-	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
@@ -140,16 +143,18 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
-	for(var/mob/mob in view())
+	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
 		if(mob && mob.client)
 			if(isxeno(mob))
 				shake_camera(mob, 10, 1)
 			else
 				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+	FOR_DVIEW_END
 
 	var/list/mobs_in_view = list()
-	for(var/mob/living/carbon/M in oview(7, xeno))
+	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
 		mobs_in_view += M
+	FOR_DOVIEW_END
 	for(var/mob/living/carbon/M in orange(10, xeno))
 		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
@@ -162,7 +167,6 @@
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
 	action_icon_state = "gut"
-	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 MINUTES
@@ -200,13 +204,13 @@
 	if(!xeno_player.check_state(TRUE))
 		return
 
-	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
+	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper] (AREA: [get_area_name(target_mob)])")
 		if(!istype(target_mob, /mob/living/carbon/xenomorph))
-			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[whisper]\""))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[whisper]\""))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
 		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
 
 		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
@@ -216,7 +220,7 @@
 				var/rendered_message
 				var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
 				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
-				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [xeno_player.real_name][xeno_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [xeno_player.real_name][xeno_track] to [target_mob.real_name][target_track], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
 				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 
 	return ..()
@@ -240,17 +244,18 @@
 	if(!xeno_player.check_state(TRUE))
 		return
 	var/list/target_list = list()
-	var/whisper = strip_html(input("Message:", "Psychic Radiance") as text|null)
+	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Radiance")
 	if(!whisper || !xeno_player.check_state(TRUE))
 		return
-	for(var/mob/living/possible_target in view(12, xeno_player))
+	FOR_DVIEW(var/mob/living/possible_target, 12, xeno_player, HIDE_INVISIBLE_OBSERVER)
 		if(possible_target == xeno_player || !possible_target.client)
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[whisper]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[whisper]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+	FOR_DVIEW_END
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)
@@ -262,7 +267,7 @@
 		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 			var/rendered_message
 			var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
-			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[whisper]'</span>")
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
 			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return ..()
 
@@ -275,7 +280,6 @@
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"
-	ability_name = "give plasma"
 	plasma_cost = 400
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
 	action_type = XENO_ACTION_CLICK

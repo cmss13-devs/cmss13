@@ -1,8 +1,6 @@
 /obj
 	/// Used to store information about the contents of the object.
 	var/list/matter
-	/// determines whether or not the object can be destroyed by an explosion
-	var/indestructible = FALSE
 	var/health = null
 	/// Used by SOME devices to determine how reliable they are.
 	var/reliability = 100
@@ -265,7 +263,7 @@
 					SPAN_NOTICE("You hear metal clanking."))
 			else
 				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
+					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),\
 					SPAN_NOTICE("You unbuckle yourself from [src]."),\
 					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle(buckled_mob)
@@ -277,18 +275,17 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+		return
+
+	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return
 
 	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
-		return
-
-	// mobs that become immobilized should not be able to buckle themselves.
-	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
-		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
 		return
 
 	if(density)

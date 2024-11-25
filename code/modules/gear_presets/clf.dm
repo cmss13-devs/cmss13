@@ -3,9 +3,10 @@
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
 	rank = FACTION_CLF
-	paygrade = PAY_SHORT_REB
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
+	minimap_background = "background_clf"
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()
@@ -53,6 +54,8 @@
 	assignment = JOB_CLF
 	rank = JOB_CLF
 	role_comm_title = "GRL"
+
+	minimap_icon = "clf_mil"
 
 	skills = /datum/skills/clf
 
@@ -158,6 +161,8 @@
 	assignment = JOB_CLF_ENGI
 	rank = JOB_CLF_ENGI
 	role_comm_title = "TECH"
+
+	minimap_icon = "clf_engi"
 
 	skills = /datum/skills/clf/combat_engineer
 
@@ -283,7 +288,8 @@
 	assignment = JOB_CLF_MEDIC
 	rank = JOB_CLF_MEDIC
 	role_comm_title = "MED"
-	paygrade = PAY_SHORT_CDOC
+	minimap_icon = "clf_med"
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/clf/combat_medic
 
 /datum/equipment_preset/clf/medic/load_gear(mob/living/carbon/human/new_human)
@@ -441,6 +447,9 @@
 	assignment = JOB_CLF_SPECIALIST
 	rank = JOB_CLF_SPECIALIST
 	role_comm_title = "SPC"
+
+	minimap_icon = "clf_spec"
+
 	skills = /datum/skills/clf/specialist
 
 /datum/equipment_preset/clf/specialist/New()
@@ -565,6 +574,9 @@
 	assignment = JOB_CLF_LEADER
 	rank = JOB_CLF_LEADER
 	role_comm_title = "LDR"
+
+	minimap_icon = "clf_sl"
+
 	skills = /datum/skills/clf/leader
 
 /datum/equipment_preset/clf/leader/New()
@@ -715,8 +727,10 @@
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
-	paygrade = PAY_SHORT_SYN
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
+
+	minimap_icon = "clf_synth"
 
 /datum/equipment_preset/clf/synth/New()
 	. = ..()
@@ -959,8 +973,11 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
 	rank = JOB_CLF_COMMANDER
-	paygrade = PAY_SHORT_REBC
+	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
+
+	minimap_icon = "deputy"
+
 	skills = /datum/skills/clf/commander
 
 /datum/equipment_preset/clf/commander/New()

@@ -1015,11 +1015,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/residential/researcher)
 "adW" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/red/west,
 /area/corsat/gamma/hangar)
 "adX" = (
@@ -1512,7 +1508,7 @@
 /area/corsat/gamma/sigmaremote/teleporter)
 "agd" = (
 /obj/structure/window/reinforced,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "age" = (
@@ -2782,11 +2778,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "akY" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/airlock/south/id)
 "akZ" = (
@@ -2868,14 +2860,6 @@
 /obj/item/device/flashlight/lamp/green,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
-"als" = (
-/obj/structure/stairs,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
-/turf/open/floor/corsat/tan/north,
-/area/corsat/gamma/residential/west)
 "alt" = (
 /turf/open/floor/corsat/redcorner,
 /area/corsat/gamma/residential)
@@ -2949,9 +2933,7 @@
 /turf/open/floor/corsat/brown/northwest,
 /area/corsat/gamma/cargo)
 "alG" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
@@ -2971,10 +2953,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/rnr/bar)
 "alL" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
@@ -3071,18 +3050,12 @@
 /turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/gamma/residential)
 "amc" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/residential/maint)
 "amd" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/white/west,
 /area/corsat/sigma/dorms)
 "ame" = (
@@ -3094,18 +3067,11 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "amf" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/east,
 /area/corsat/sigma/dorms)
 "amg" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/arcade)
 "amh" = (
@@ -3375,10 +3341,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/sigma/airlock/south)
 "and" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/corsat/white/north,
 /area/corsat/sigma/dorms)
@@ -3394,10 +3357,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/cargo/disposal)
 "anh" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/white/north,
 /area/corsat/sigma/dorms)
 "ani" = (
@@ -3419,18 +3379,14 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "anl" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/north,
 /area/corsat/sigma/dorms)
 "anm" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/sigma/dorms)
@@ -3438,10 +3394,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/cargo/lobby)
 "ano" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/sigma/dorms)
@@ -3641,9 +3594,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/omega/complex)
 "aod" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/white/west,
 /area/corsat/gamma/hallwaysouth)
 "aoe" = (
@@ -3919,11 +3870,7 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "apn" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/omega/hangar/security)
 "apo" = (
@@ -4090,11 +4037,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/airlock/north)
 "apU" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /obj/structure/flora/pottedplant,
 /turf/open/floor/corsat/bluegrey/northeast,
 /area/corsat/gamma/airlock/north)
@@ -4433,10 +4376,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "arv" = (
@@ -4608,11 +4548,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
 "asj" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/bluegrey/west,
 /area/corsat/gamma/hangar/flightcontrol)
 "ask" = (
@@ -5227,11 +5163,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
 "auV" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/south)
 "auW" = (
@@ -5291,11 +5223,7 @@
 /turf/open/floor/corsat/bluegreycorner,
 /area/corsat/gamma/airlock/north)
 "ave" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/evidencebag,
 /obj/item/evidencebag,
@@ -5315,11 +5243,7 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/checkpoint)
 "avh" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/yellow/northwest,
 /area/corsat/gamma/engineering/core)
 "avj" = (
@@ -5382,19 +5306,11 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/security)
 "avx" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/gamma/residential/lavatory)
 "avy" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/brown/north,
 /area/corsat/omega/cargo)
 "avz" = (
@@ -5448,11 +5364,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/cargo)
 "avM" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/southeast)
 "avN" = (
@@ -5583,11 +5495,7 @@
 /turf/open/floor/corsat/greenwhite/north,
 /area/corsat/gamma/medbay/chemistry)
 "awn" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/greenwhitecorner/north,
 /area/corsat/gamma/medbay/chemistry)
 "awo" = (
@@ -5843,10 +5751,9 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/checkpoint)
 "axc" = (
-/obj/structure/machinery/vending/coffee,
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/vending/coffee{
+	layer = 3
 	},
 /turf/open/floor/corsat/white/northwest,
 /area/corsat/gamma/hallwaysouth)
@@ -6161,11 +6068,7 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/hallwaysouth)
 "ayi" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/redcorner/north,
 /area/corsat/sigma/hangar/id)
 "ayj" = (
@@ -6287,11 +6190,7 @@
 /turf/open/floor/corsat/red,
 /area/corsat/sigma/hangar/id)
 "ayG" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
@@ -6416,11 +6315,7 @@
 /turf/open/floor/corsat/bluegrey/north,
 /area/corsat/sigma/airlock/east)
 "ayX" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /obj/structure/flora/pottedplant,
 /turf/open/floor/corsat/bluegrey/northeast,
 /area/corsat/sigma/airlock/east)
@@ -6653,11 +6548,7 @@
 /turf/open/floor/corsat/blue/west,
 /area/corsat/sigma/south)
 "azQ" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/machinery/light,
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
@@ -6813,11 +6704,7 @@
 /turf/open/floor/corsat/bluegrey/east,
 /area/corsat/sigma/airlock/south)
 "aAr" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/whitetan/north,
 /area/corsat/gamma/canteen)
 "aAs" = (
@@ -6922,11 +6809,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/gamma/medbay/lobby)
 "aAM" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/greenwhitecorner/west,
 /area/corsat/gamma/medbay/surgery)
 "aAN" = (
@@ -6939,11 +6822,7 @@
 /turf/open/floor/corsat/red,
 /area/corsat/gamma/hangar/checkpoint)
 "aAO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/greenwhite/northwest,
 /area/corsat/gamma/medbay/lobby)
 "aAP" = (
@@ -6956,11 +6835,7 @@
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/sigma/hangar/checkpoint)
 "aAR" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/sigma/airlock/south)
 "aAS" = (
@@ -7220,11 +7095,7 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/airlock/south)
 "aBZ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/yellow/northwest,
 /area/corsat/omega/maint)
 "aCa" = (
@@ -7439,11 +7310,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/airlock/south)
 "aCL" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -7510,11 +7377,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/hangar/checkpoint)
 "aCW" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/checkpoint)
 "aCX" = (
@@ -7610,11 +7473,7 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/sigma/north)
 "aDo" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/sigma/laundry)
 "aDp" = (
@@ -7643,11 +7502,7 @@
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/sigma/laundry)
 "aDu" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/browncorner/north,
 /area/corsat/sigma/cargo)
 "aDv" = (
@@ -7674,11 +7529,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "aDz" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "aDA" = (
@@ -7732,11 +7583,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/theta/airlock/east)
 "aDG" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/sigma/lavatory)
 "aDH" = (
@@ -7797,11 +7644,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hangar/arrivals)
 "aDQ" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/bluecorner/north,
 /area/corsat/sigma/hangar)
 "aDR" = (
@@ -7815,11 +7658,7 @@
 /turf/open/floor/corsat/darkgreen/northwest,
 /area/corsat/gamma/hangar/arrivals)
 "aDT" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -8313,11 +8152,7 @@
 /turf/open/floor/corsat/darkgreencorner/west,
 /area/corsat/gamma/foyer)
 "aFL" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/bluegreycorner/north,
 /area/corsat/theta/airlock/east)
 "aFM" = (
@@ -8421,10 +8256,7 @@
 "aGd" = (
 /obj/structure/surface/table,
 /obj/item/folder/yellow,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -8440,10 +8272,8 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/control)
 "aGg" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
@@ -8493,11 +8323,7 @@
 /turf/open/floor/corsat/browncorner/north,
 /area/corsat/gamma/cargo)
 "aGo" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/residential/lounge)
@@ -8697,11 +8523,7 @@
 /turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/southeast/datalab)
 "aGX" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/blue/north,
 /area/corsat/sigma/southeast/datalab)
 "aGY" = (
@@ -9023,11 +8845,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/hydroponics)
 "aHR" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/freezer)
 "aHS" = (
@@ -9455,11 +9273,7 @@
 /turf/open/floor/corsat/red/west,
 /area/corsat/sigma/south)
 "aJA" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -9526,11 +9340,7 @@
 /turf/open/floor/corsat/arrow_east,
 /area/corsat/gamma/cargo)
 "aJQ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/south/security)
 "aJR" = (
@@ -9571,13 +9381,8 @@
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/control)
 "aKb" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
 "aKc" = (
@@ -9898,11 +9703,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/control)
 "aLw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/gamma/airlock/south/id)
 "aLx" = (
@@ -9924,11 +9725,7 @@
 /turf/open/floor/corsat/bluegrey,
 /area/corsat/sigma/southeast/dataoffice)
 "aLD" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/brown/west,
 /area/corsat/omega/cargo)
 "aLE" = (
@@ -10123,11 +9920,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/security)
 "aMs" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /obj/structure/closet/wardrobe/medic_white,
 /turf/open/floor/corsat/greenwhite/north,
 /area/corsat/gamma/medbay)
@@ -10160,11 +9953,7 @@
 /area/corsat/omega/airlocknorth/id)
 "aMx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/computer/station_alert,
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/airlocknorth/id)
@@ -10333,11 +10122,7 @@
 /turf/open/floor/corsat/bluegrey/north,
 /area/corsat/sigma/southeast/dataoffice)
 "aNe" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/bluegrey/north,
 /area/corsat/sigma/southeast/dataoffice)
 "aNg" = (
@@ -10358,11 +10143,7 @@
 "aNj" = (
 /obj/structure/surface/rack,
 /obj/item/evidencebag,
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/red/southwest,
 /area/corsat/theta/airlock/east/id)
 "aNk" = (
@@ -10450,11 +10231,7 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/south/offices)
 "aNB" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/south/offices)
@@ -10605,11 +10382,7 @@
 /turf/open/floor/corsat/purplecorner/east,
 /area/corsat/sigma/south)
 "aOh" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/foyer)
 "aOi" = (
@@ -10779,10 +10552,8 @@
 /area/corsat/inaccessible)
 "aOR" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
-/obj/structure/platform{
-	density = 0;
-	dir = 1;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/north{
+	density = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
@@ -10791,10 +10562,8 @@
 	icon_state = "processor";
 	name = "Processor Unit"
 	},
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
@@ -10818,11 +10587,7 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/gamma/hangar/office)
 "aOY" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/bluegrey/west,
 /area/corsat/gamma/hangar/office)
 "aOZ" = (
@@ -10852,10 +10617,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/emergency_access)
 "aPd" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/upgraded/power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/gamma/security/armory)
 "aPe" = (
@@ -10870,11 +10632,7 @@
 /turf/open/floor/corsat/red,
 /area/corsat/gamma/security)
 "aPh" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/red/west,
 /area/corsat/gamma/hangar/security)
 "aPj" = (
@@ -10972,11 +10730,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar)
 "aPz" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/red/west,
 /area/corsat/gamma/hangar/checkpoint)
 "aPA" = (
@@ -11153,11 +10907,7 @@
 	},
 /area/prison/hangar_storage/research/shuttle)
 "aQh" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/omega/hangar/office)
 "aQi" = (
@@ -12910,10 +12660,7 @@
 /area/corsat/omega/cargo)
 "aWj" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
@@ -12931,10 +12678,7 @@
 "aWl" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/crap_item,
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
@@ -13018,11 +12762,7 @@
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/sigma/south/complex)
 "aWC" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/almayer/tcomms,
 /area/corsat/sigma/southeast/telecomm)
 "aWD" = (
@@ -13753,9 +13493,7 @@
 /area/corsat/omega/hangar/office)
 "aZh" = (
 /obj/structure/stairs,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "aZi" = (
@@ -13785,19 +13523,13 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "aZn" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "aZo" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/omega/checkpoint)
 "aZp" = (
@@ -13825,10 +13557,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/corsat/sigma/biodome/scrapyard)
 "aZt" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -13840,10 +13569,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -13926,10 +13652,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -13937,10 +13660,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -13962,10 +13682,8 @@
 /area/corsat/omega/offices)
 "aZK" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -13977,10 +13695,7 @@
 /area/corsat/sigma/south/complex)
 "aZM" = (
 /obj/structure/stairs,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "aZN" = (
@@ -14008,10 +13723,8 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/southeast/datamaint)
 "aZT" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -14055,10 +13768,7 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/omega/control)
 "bab" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "bac" = (
@@ -14126,10 +13836,7 @@
 /area/corsat/omega/hangar/security)
 "bak" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "bal" = (
@@ -14312,11 +14019,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/checkpoint)
 "baL" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/omega,
 /area/corsat/omega/control)
 "baM" = (
@@ -16531,11 +16234,7 @@
 /area/corsat/omega/hallways)
 "biZ" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hydroponics)
 "bja" = (
@@ -16788,11 +16487,7 @@
 /turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "bjQ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera,
 /turf/open/floor/corsat/purplewhite/north,
@@ -17317,19 +17012,11 @@
 /turf/open/floor/corsat,
 /area/corsat/gamma/hangar/cargo)
 "blO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/west,
 /area/corsat/gamma/hangar/cargo)
 "blP" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/blue/east,
 /area/corsat/gamma/hangar/arrivals)
 "blQ" = (
@@ -17373,11 +17060,7 @@
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/hangar/monorail/control)
 "bma" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/yellow/northwest,
 /area/corsat/sigma/hangar/monorail/control)
 "bmb" = (
@@ -17647,11 +17330,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/engineering/core)
 "bnm" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/browncorner/north,
 /area/corsat/gamma/cargo)
 "bnn" = (
@@ -17943,11 +17622,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/hangar)
 "boK" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/hangar)
 "boL" = (
@@ -19250,11 +18925,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hangar)
 "buL" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/closet/wardrobe/virology_white,
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/biodome/virology)
@@ -19662,11 +19333,7 @@
 /turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/sigma/south/engineering)
 "bww" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/southeast/generator)
 "bwx" = (
@@ -19951,11 +19618,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/south/engineering)
 "bxN" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/rack,
 /obj/item/powerloader_clamp,
 /turf/open/floor/corsat/yellow/north,
@@ -20394,11 +20057,7 @@
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/omega/complex)
 "bzl" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/omega/complex)
 "bzm" = (
@@ -21784,11 +21443,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/gamma/administration)
 "bED" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -22213,10 +21868,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/gamma/residential/maint)
 "bGp" = (
-/obj/structure/machinery/power/apc/hyper{
-	pixel_y = -30;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/south,
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hangar/monorail)
@@ -22225,11 +21877,7 @@
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/hangar/monorail/control)
 "bGr" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/closet/jcloset,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/hangar/monorail/control)
@@ -22245,11 +21893,7 @@
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/hangar/monorail/control)
 "bGu" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/darkgreen/north,
 /area/corsat/sigma/hangar/monorail)
 "bGy" = (
@@ -22418,9 +22062,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/rnr)
 "bHl" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/white/north,
 /area/corsat/gamma/residential/east)
 "bHy" = (
@@ -23782,11 +23424,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/gamma/residential/maint)
 "bOH" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /turf/open/floor/corsat/brown/northwest,
@@ -24041,11 +23679,7 @@
 /turf/open/floor/corsat/brown/southeast,
 /area/corsat/sigma/cargo)
 "bPM" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/north)
 "bPO" = (
@@ -24059,11 +23693,7 @@
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/engineering/atmos)
 "bPR" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/yellowcorner/east,
 /area/corsat/gamma/engineering/atmos)
 "bPS" = (
@@ -24128,11 +23758,7 @@
 /turf/open/floor/corsat/yellowcorner,
 /area/corsat/sigma/north)
 "bQe" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 15
@@ -24243,11 +23869,7 @@
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
 "bQw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/rack,
 /obj/item/device/lightreplacer,
 /obj/item/storage/box/lights,
@@ -24683,11 +24305,7 @@
 /turf/open/floor/corsat/redcorner/west,
 /area/corsat/omega/checkpoint)
 "bSr" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/red/east,
 /area/corsat/sigma/hangar/security)
 "bSx" = (
@@ -24733,20 +24351,14 @@
 /area/corsat/sigma/hangar)
 "bSZ" = (
 /obj/structure/bed/chair,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "bTb" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "bTh" = (
@@ -24911,7 +24523,6 @@
 /area/corsat/sigma/south/complex)
 "bTM" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/suit_cooling_unit,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTN" = (
@@ -24920,17 +24531,13 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /obj/structure/closet/l3closet/scientist,
 /turf/open/floor/corsat/purplewhite/east,
 /area/corsat/gamma/biodome/complex)
 "bTQ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/gripper,
+/obj/item/prop/gripper,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTU" = (
@@ -25209,11 +24816,7 @@
 /turf/open/floor/corsat/blue/north,
 /area/corsat/gamma/airlock/control)
 "bVs" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/airlock/control)
@@ -25223,11 +24826,7 @@
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
 "bVw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/theta/airlock/control)
@@ -26240,11 +25839,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/gamma/biodome/toxins)
 "bZK" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/closet/wardrobe/toxins_white,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/gamma/biodome/toxins)
@@ -26280,19 +25875,11 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/theta/biodome/complex)
 "cah" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/purplewhitecorner/north,
 /area/corsat/theta/biodome/hydrowest)
 "cai" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/purplewhitecorner/east,
 /area/corsat/theta/biodome/hydroeast)
 "cak" = (
@@ -26345,19 +25932,11 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/theta/biodome/hydroeast)
 "cau" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/purplewhite/southwest,
 /area/corsat/theta/biodome/complex)
 "caw" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/testgrounds)
 "caA" = (
@@ -26993,10 +26572,8 @@
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/engineering)
 "cJU" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/north,
 /area/corsat/sigma/south)
@@ -27209,11 +26786,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/airlock/control)
 "cXt" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
@@ -27273,10 +26846,7 @@
 /area/corsat/sigma/southeast/datalab)
 "dbn" = (
 /obj/structure/surface/table,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/paper,
 /obj/item/tool/pen/blue,
 /turf/open/floor/corsat/tan/north,
@@ -27652,27 +27222,14 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/engineering/core)
 "duC" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/white/northwest,
 /area/corsat/sigma/south)
 "duW" = (
 /obj/structure/machinery/blackbox_recorder,
 /turf/open/floor/corsat/lightplate,
 /area/corsat/theta/biodome/complex)
-"duY" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
-/turf/open/floor/corsat/white/west,
-/area/corsat/gamma/hallwaysouth)
 "dvn" = (
 /turf/open/floor/corsat/whitecorner,
 /area/corsat/gamma/hallwaysouth)
@@ -27681,7 +27238,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "dvx" = (
@@ -27863,11 +27420,7 @@
 /turf/open/floor/corsat/darkgreen/east,
 /area/corsat/gamma/foyer)
 "dEe" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat,
 /area/corsat/gamma/sigmaremote)
 "dET" = (
@@ -28435,11 +27988,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "eiQ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/west,
 /turf/open/floor/corsat/darkgreen/west,
 /area/corsat/gamma/rnr)
 "eiR" = (
@@ -28658,14 +28207,8 @@
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/omega/complex)
 "erP" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/corsat/white/northwest,
 /area/corsat/gamma/residential/east)
@@ -29012,9 +28555,8 @@
 /turf/open/floor/almayer/research/containment/corner/north,
 /area/corsat/sigma/south/complex)
 "eNI" = (
-/obj/structure/platform{
-	density = 0;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner,
 /area/corsat/sigma/south)
@@ -29359,11 +28901,7 @@
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/gamma/residential/showers)
 "fgN" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/south/engineering)
 "fha" = (
@@ -30111,11 +29649,7 @@
 /turf/open/floor/corsat/yellowcorner/north,
 /area/corsat/sigma/airlock/control)
 "fXE" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/residential)
@@ -30944,10 +30478,7 @@
 /turf/open/floor/corsat/purple,
 /area/corsat/omega/complex)
 "gNt" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "gOk" = (
@@ -30995,13 +30526,6 @@
 	},
 /turf/open/floor/corsat/darkgreencorner/east,
 /area/corsat/gamma/foyer)
-"gPo" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
-/turf/open/floor/corsat/white/east,
-/area/corsat/gamma/hallwaysouth)
 "gPC" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/corsat/darkgreen,
@@ -31061,10 +30585,6 @@
 /obj/structure/closet/wardrobe/science_white,
 /turf/open/floor/corsat/purplewhite/east,
 /area/corsat/gamma/biodome/complex)
-"gRH" = (
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/corsat/retrosquareslight,
-/area/corsat/sigma/south/complex)
 "gRP" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "Morgue";
@@ -31165,10 +30685,7 @@
 /area/corsat/sigma/south/robotics)
 "gWS" = (
 /obj/structure/surface/table,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -31230,9 +30747,7 @@
 /turf/open/floor/corsat/tcomms/southwest,
 /area/corsat/gamma/sigmaremote)
 "gZc" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/theta/biodome/complex)
 "gZj" = (
@@ -31242,13 +30757,6 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/corsat/bluegrey/west,
 /area/corsat/sigma/southeast/dataoffice)
-"gZs" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
-/turf/open/floor/corsat/white/east,
-/area/corsat/sigma/south)
 "gZw" = (
 /obj/effect/landmark/corpsespawner/chef,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -31349,9 +30857,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/cargo)
 "hei" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/theta/biodome/complex)
@@ -31381,10 +30887,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "hgB" = (
@@ -31477,11 +30980,7 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/complex)
 "hlC" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/redcorner/east,
 /area/corsat/omega/security)
 "hlM" = (
@@ -31592,10 +31091,7 @@
 "hsJ" = (
 /obj/structure/surface/table,
 /obj/item/paper,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/item/tool/pen/blue,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
@@ -31733,10 +31229,8 @@
 /turf/open/floor/corsat/redcorner,
 /area/corsat/omega/security)
 "hwV" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
@@ -32290,14 +31784,8 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/hangar/office)
 "hTr" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/gamma/hallwaysouth)
 "hTI" = (
@@ -32541,11 +32029,7 @@
 /area/corsat/theta/biodome)
 "iiS" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/gamma/airlock/south)
@@ -33129,9 +32613,8 @@
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/biodome/toxins)
 "iPn" = (
-/obj/structure/platform{
-	density = 0;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer{
+	density = 0
 	},
 /turf/open/floor/corsat/white/east,
 /area/corsat/gamma/residential/east)
@@ -33194,10 +32677,8 @@
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/arrivals)
 "iTt" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 1;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/north{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/west,
 /area/corsat/gamma/hallwaysouth)
@@ -33273,10 +32754,7 @@
 /turf/open/floor/corsat/yellowcorner,
 /area/corsat/gamma/engineering/core)
 "iZu" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/corsat/white/north,
 /area/corsat/gamma/hallwaysouth)
@@ -33303,9 +32781,8 @@
 /turf/open/floor/corsat/whitetan/north,
 /area/corsat/sigma/dorms)
 "jai" = (
-/obj/structure/platform{
-	density = 0;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner,
 /area/corsat/gamma/hallwaysouth)
@@ -33370,11 +32847,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/theta/biodome/complex)
 "jee" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/plate,
 /area/corsat/theta/airlock/west/id)
 "jeE" = (
@@ -33421,9 +32894,7 @@
 /turf/open/floor/corsat/lightplate,
 /area/corsat/gamma/biodome/complex)
 "jhz" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/theta/biodome/complex)
 "jhL" = (
@@ -33748,11 +33219,7 @@
 /area/corsat/sigma/hangar/security)
 "jAz" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/bluegrey/north,
 /area/corsat/omega/offices)
 "jAE" = (
@@ -33808,11 +33275,7 @@
 /turf/open/floor/corsat/whitetancorner/west,
 /area/corsat/gamma/residential/west)
 "jFF" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/residential/researcher)
 "jFJ" = (
@@ -33834,10 +33297,8 @@
 /turf/open/floor/corsat/whitetan/southwest,
 /area/corsat/sigma/dorms)
 "jGd" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 1;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/north{
+	density = 0
 	},
 /turf/open/floor/corsat/white/west,
 /area/corsat/gamma/hallwaysouth)
@@ -33933,10 +33394,7 @@
 /area/corsat/gamma/biodome)
 "jLT" = (
 /obj/structure/bed/chair,
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "jLU" = (
@@ -34159,9 +33617,7 @@
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "kbS" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/mech_bay_recharge_port{
 	pixel_x = 8
 	},
@@ -34432,9 +33888,7 @@
 /turf/open/floor/corsat/whitetan/northeast,
 /area/corsat/gamma/residential/west)
 "krn" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/shuttle/escapepod/floor1,
 /area/corsat/theta/biodome/complex)
 "krK" = (
@@ -34743,11 +34197,7 @@
 /turf/open/floor/corsat/purplewhite/northwest,
 /area/corsat/gamma/biodome/virology)
 "kKs" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/dorms)
 "kKw" = (
@@ -34779,10 +34229,8 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/hangar/security)
 "kMZ" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/north,
 /area/corsat/gamma/residential/east)
@@ -35030,10 +34478,7 @@
 /turf/open/floor/corsat/red/north,
 /area/corsat/gamma/foyer)
 "kZy" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/structure/machinery/power/apc/upgraded/power/north,
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/theta/airlock/west)
 "lac" = (
@@ -35100,10 +34545,8 @@
 /obj/structure/sign/safety/laser{
 	pixel_x = 32
 	},
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/purplewhite/east,
 /area/corsat/theta/biodome/complex)
@@ -35163,10 +34606,8 @@
 /turf/open/floor/almayer/tcomms,
 /area/corsat/sigma/southeast/datalab)
 "lgt" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/north,
 /area/corsat/gamma/hallwaysouth)
@@ -35286,9 +34727,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/lounge)
 "llM" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/white/north,
 /area/corsat/sigma/south)
 "lmx" = (
@@ -35543,10 +34982,9 @@
 /turf/open/floor/corsat/lightplate,
 /area/corsat/theta/biodome/complex)
 "lBx" = (
-/obj/structure/machinery/vending/snack,
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/vending/snack{
+	layer = 3
 	},
 /turf/open/floor/corsat/white/north,
 /area/corsat/gamma/hallwaysouth)
@@ -35674,10 +35112,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/omega/complex)
-"lHI" = (
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/corsat/retrosquareslight,
-/area/corsat/sigma/south/complex)
 "lHK" = (
 /turf/open/floor/corsat/bluegrey/west,
 /area/corsat/sigma/south/offices)
@@ -35729,12 +35163,8 @@
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/sigma/south/complex)
 "lIY" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/white/north,
 /area/corsat/sigma/south)
 "lJj" = (
@@ -35799,10 +35229,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/theta/airlock/east)
 "lOM" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/east,
 /area/corsat/gamma/residential/east)
 "lON" = (
@@ -35977,7 +35404,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "lVW" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/shallow/pool,
 /area/corsat/gamma/residential/showers)
 "lWf" = (
@@ -36037,9 +35464,7 @@
 /area/corsat/omega/complex)
 "lYt" = (
 /obj/structure/sign/safety/high_voltage,
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/stack/sheet/metal{
 	pixel_x = 1
 	},
@@ -36244,10 +35669,8 @@
 /area/corsat/sigma/checkpoint)
 "mhq" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/sigma/south)
@@ -36498,9 +35921,8 @@
 /turf/open/floor/corsat/lightplate,
 /area/corsat/gamma/biodome/virology)
 "mxa" = (
-/obj/structure/platform{
-	density = 0;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer{
+	density = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
@@ -36844,10 +36266,8 @@
 /turf/open/floor/corsat/purplewhite/southwest,
 /area/corsat/gamma/sigmaremote)
 "mQU" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/gamma/residential/east)
@@ -37014,14 +36434,8 @@
 /turf/open/floor/corsat/marked,
 /area/corsat/sigma/south/complex)
 "mZf" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/gamma/residential/east)
@@ -37098,11 +36512,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/corsat/sigma/biodome)
 "ndF" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/gamma/residential/laundry)
 "nen" = (
@@ -37454,10 +36864,7 @@
 /turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/omega/control)
 "nvA" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/gamma/residential/east)
@@ -37572,14 +36979,8 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/biodome/complex)
 "nBi" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/sigma/south)
 "nBk" = (
@@ -38231,11 +37632,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
 "ome" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/whitetan/east,
 /area/corsat/gamma/residential/west)
 "omw" = (
@@ -38346,9 +37743,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/gamma/biodome)
 "ost" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
 "osY" = (
@@ -38897,10 +38292,7 @@
 /turf/open/floor/corsat/whitetan/southwest,
 /area/corsat/gamma/residential/west)
 "oYP" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/white/west,
 /area/corsat/gamma/residential/east)
 "oYY" = (
@@ -39322,10 +38714,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
 "pya" = (
@@ -39601,11 +38990,8 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/corsat/sigma/biodome)
 "pRX" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/southeast,
 /area/corsat/sigma/south)
 "pSb" = (
@@ -40261,10 +39647,7 @@
 "qww" = (
 /obj/structure/surface/table,
 /obj/item/folder,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "qwM" = (
@@ -40541,11 +39924,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/gamma/airlock/control)
 "qLo" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/gamma/hallwaysouth)
 "qLz" = (
@@ -40681,10 +40060,8 @@
 /area/corsat/gamma/sigmaremote)
 "qTd" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/gamma/hallwaysouth)
@@ -40713,15 +40090,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/gamma/engineering/atmos)
 "qVd" = (
-/obj/structure/machinery/gravity_generator{
-	desc = "Absorbs and redirects radiation, hopefully away from you.";
-	name = "Radiation Collector";
-	pixel_x = 15;
-	pixel_y = -5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/shuttle/escapepod/floor5,
 /area/corsat/theta/biodome/complex)
 "qVe" = (
@@ -40748,10 +40117,8 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/biodome)
 "qVF" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 1;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/north{
+	density = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
@@ -41162,11 +40529,7 @@
 /turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
 /area/corsat/gamma/sigmaremote)
 "rvC" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/redcorner/east,
 /area/corsat/sigma/airlock/east/id)
 "rvD" = (
@@ -41189,10 +40552,8 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "rws" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 1;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/north{
+	density = 0
 	},
 /turf/open/floor/corsat/white/west,
 /area/corsat/gamma/residential/east)
@@ -41553,11 +40914,8 @@
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/omega/hangar/security)
 "rRm" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/corsat/white/southwest,
 /area/corsat/gamma/hallwaysouth)
 "rRR" = (
@@ -41597,10 +40955,7 @@
 /area/corsat/sigma/hangar/monorail)
 "rTf" = (
 /obj/structure/surface/table,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "rTj" = (
@@ -42073,9 +41428,8 @@
 /turf/open/floor/corsat/darkgreen/north,
 /area/corsat/sigma/hangar)
 "snP" = (
-/obj/structure/platform{
-	density = 0;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer{
+	density = 0
 	},
 /turf/open/floor/corsat/white/east,
 /area/corsat/gamma/hallwaysouth)
@@ -42540,9 +41894,7 @@
 /area/corsat/omega/hangar/security)
 "sOq" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/white/north,
 /area/corsat/sigma/south)
 "sOt" = (
@@ -42582,10 +41934,7 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/omega/offices)
 "sQI" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs,
 /turf/open/floor/corsat/white/northwest,
 /area/corsat/gamma/residential/east)
@@ -42902,11 +42251,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/freezer)
 "thv" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/whitebluefull/southwest,
 /area/corsat/gamma/residential/showers)
 "tja" = (
@@ -42942,10 +42287,7 @@
 /turf/open/floor/corsat/red/north,
 /area/corsat/theta/airlock/control)
 "tlP" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/east,
 /area/corsat/sigma/south)
 "tlX" = (
@@ -43010,11 +42352,7 @@
 /turf/open/floor/corsat/greenwhite/west,
 /area/corsat/gamma/medbay)
 "tpA" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /turf/open/floor/corsat/spiralplate,
@@ -43075,11 +42413,7 @@
 /turf/open/floor/corsat/whitetan/north,
 /area/corsat/gamma/residential/west)
 "ttJ" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hallwaysouth)
 "ttK" = (
@@ -43122,11 +42456,7 @@
 /turf/open/floor/corsat/redcorner/north,
 /area/corsat/theta/airlock/control)
 "tvO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/greencorner/east,
 /area/corsat/gamma/medbay/morgue)
 "tvW" = (
@@ -43959,11 +43289,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/engineering/core)
 "upN" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
 "uqb" = (
@@ -44136,14 +43462,8 @@
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/hangar/monorail)
 "uzS" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/corsat/white/northwest,
 /area/corsat/gamma/hallwaysouth)
 "uzW" = (
@@ -44568,10 +43888,7 @@
 	layer = 2;
 	name = "coolant feed"
 	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat,
 /area/corsat/gamma/sigmaremote)
 "uUW" = (
@@ -44819,11 +44136,7 @@
 /turf/open/floor/corsat/whitetan/southeast,
 /area/corsat/gamma/residential/west)
 "vhS" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/hangar/checkpoint)
 "vhU" = (
@@ -45366,9 +44679,7 @@
 /turf/open/floor/corsat/bluegrey/northeast,
 /area/corsat/omega/offices)
 "vMA" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /turf/open/floor/corsat/white/north,
 /area/corsat/gamma/residential)
 "vMI" = (
@@ -45544,10 +44855,8 @@
 /turf/open/floor/corsat/white,
 /area/corsat/gamma/residential/researcher)
 "vXy" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/sigma/south)
@@ -46153,10 +45462,8 @@
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/sigma/airlock/control)
 "wDw" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/north,
 /area/corsat/gamma/residential)
@@ -46367,9 +45674,7 @@
 /turf/open/floor/corsat/marked,
 /area/corsat/omega/cargo)
 "wMg" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/item/stack/sheet/metal{
 	pixel_x = 3
 	},
@@ -46582,10 +45887,8 @@
 /turf/open/floor/corsat/whitecorner,
 /area/corsat/gamma/residential/east)
 "wZC" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/gamma/residential)
@@ -46600,18 +45903,15 @@
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/biodome/complex)
 "xaQ" = (
-/obj/structure/machinery/vending/coffee,
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.7
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/vending/coffee{
+	layer = 3
 	},
 /turf/open/floor/corsat/white/northeast,
 /area/corsat/gamma/hallwaysouth)
 "xbu" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/whitecorner/east,
 /area/corsat/gamma/hallwaysouth)
@@ -46736,10 +46036,7 @@
 /area/corsat/gamma/medbay/morgue)
 "xld" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/east,
 /area/corsat/sigma/south)
 "xlg" = (
@@ -46885,11 +46182,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "xtO" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/library)
 "xtR" = (
@@ -47147,11 +46440,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south)
 "xJB" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
+/obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/omega/airlocknorth/id)
 "xJH" = (
@@ -47308,11 +46597,8 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/hangar/arrivals)
 "xRb" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2
-	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/southeast,
 /area/corsat/gamma/hallwaysouth)
 "xRq" = (
@@ -47456,17 +46742,12 @@
 /turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/sigma/south/robotics)
 "ybv" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/east,
 /area/corsat/gamma/hallwaysouth)
 "ybJ" = (
-/obj/structure/platform{
-	density = 0;
-	dir = 8;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration/metal/almayer/west{
+	density = 0
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/north)
@@ -53353,7 +52634,7 @@ gvl
 adJ
 pPp
 ulb
-als
+aZM
 aZn
 aZM
 aZn
@@ -68370,7 +67651,7 @@ anw
 anw
 anw
 jGd
-duY
+aod
 xFf
 xFf
 xFf
@@ -68384,7 +67665,7 @@ uzS
 xFf
 xFf
 xFf
-duY
+aod
 anw
 aqs
 aqs
@@ -68620,11 +67901,11 @@ aqH
 aqH
 aqH
 iTt
-duY
-duY
-duY
-duY
-duY
+aod
+aod
+aod
+aod
+aod
 lgt
 aqH
 aqH
@@ -77435,7 +76716,7 @@ anw
 anw
 anw
 snP
-gPo
+ybv
 lgx
 lgx
 lgx
@@ -92181,7 +91462,7 @@ aje
 akd
 bwc
 aHZ
-lHI
+bTM
 bTW
 aks
 akd
@@ -93162,7 +92443,7 @@ akd
 bDa
 aHZ
 uSc
-gRH
+bTM
 aks
 akd
 eWX
@@ -98569,11 +97850,11 @@ lIq
 ahu
 ahu
 eNI
-gZs
-gZs
-gZs
+tlP
+tlP
+tlP
 xld
-gZs
+tlP
 vXy
 ahu
 ahu
@@ -98808,8 +98089,8 @@ okE
 arJ
 arJ
 arJ
-gZs
-gZs
+tlP
+tlP
 dCP
 dCP
 dCP

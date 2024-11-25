@@ -113,7 +113,7 @@
 #define CANROOT (1<<6)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
-#define DISFIGURED (1<<14) //I'll probably move this elsewhere if I ever get wround to writing a bitflag mob-damage system
+//#define DISFIGURED (1<<14) //unused
 #define XENO_HOST (1<<15) //Tracks whether we're gonna be a baby alien's mummy.
 #define IMMOBILE_ACTION (1<<16) // If you are performing an action that prevents you from being pushed by your own people.
 #define PERMANENTLY_DEAD (1<<17)
@@ -166,8 +166,9 @@
 #define ORGAN_ROBOT 2
 
 #define ORGAN_HEALTHY 0
-#define ORGAN_BRUISED 1
-#define ORGAN_BROKEN 2
+#define ORGAN_LITTLE_BRUISED 1 //used by stethoscopes and penlights
+#define ORGAN_BRUISED 2
+#define ORGAN_BROKEN 3
 
 //=================================================
 
@@ -217,6 +218,7 @@
 #define SPECIAL_BONEBREAK (1<<13) //species do not get their bonebreak chance modified by endurance
 #define NO_SHRAPNEL (1<<14)
 #define HAS_HARDCRIT (1<<15)
+#define NO_OVERLAYS (1<<16) // Stop OnMob overlays from appearing on sprite
 
 //=================================================
 
@@ -345,6 +347,7 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define SPECIES_HUMAN "Human"
 #define SPECIES_YAUTJA "Yautja"
 #define SPECIES_SYNTHETIC "Synthetic"
+#define SPECIES_SYNTHETIC_K9 "Synthetic K9"
 #define SPECIES_MONKEY "Monkey"
 #define SPECIES_ZOMBIE "Zombie"
 
@@ -383,3 +386,12 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
+
+/// Sleeps for X and will perform return if A is qdeleted or a dead mob.
+#define SLEEP_CHECK_DEATH(X, A) \
+	sleep(X); \
+	if(QDELETED(A)) return; \
+	if(ismob(A)) { \
+		var/mob/sleep_check_death_mob = A; \
+		if(sleep_check_death_mob.stat == DEAD) return; \
+	}

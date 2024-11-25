@@ -303,7 +303,7 @@
 /turf/open/floor/darkish,
 /area/bigredv2/outside/chapel)
 "bm" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},

@@ -49,9 +49,20 @@
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/flamethrower/tank_flamer
-	flamer_reagent_id = "napalmx"
-
+	flamer_reagent_id = "highdamagenapalm"
 	max_range = 8
+
+/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/turf, datum/cause_data/cause_data)
+	if(!istype(turf))
+		return
+
+	var/datum/reagent/napalm/high_damage/reagent = new()
+	new /obj/flamer_fire(turf, cause_data, reagent, 1)
+
+	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread
+	landingsmoke.set_up(1, 0, turf, null, 4, cause_data)
+	landingsmoke.start()
+	landingsmoke = null
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
@@ -173,7 +184,7 @@
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 1)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2)
 	))
 
 /datum/ammo/souto

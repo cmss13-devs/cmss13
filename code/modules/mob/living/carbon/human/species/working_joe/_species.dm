@@ -4,7 +4,7 @@
 	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
 	uses_skin_color = FALSE
 	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE, TRAIT_IRON_TEETH)
 
 	slowdown = 0.45
 	hair_color = "#000000"
@@ -65,7 +65,7 @@
 /datum/joe_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "JoeEmotes")
+		ui = new(user, src, "Emotes", "Working Joe Voice Synthesizer")
 		ui.open()
 
 
@@ -84,6 +84,7 @@
 /datum/joe_emote_panel/ui_static_data(mob/user)
 	var/list/data = list()
 
+	data["theme"] = "crtblue"
 	data["categories"] = GLOB.wj_categories
 	data["emotes"] = list()
 

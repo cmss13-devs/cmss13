@@ -6,6 +6,7 @@
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
+	minimap_background = "background_cmb"
 	access = list(
 		ACCESS_LIST_UA,
 	)
@@ -14,12 +15,13 @@
 
 /datum/equipment_preset/survivor/cmb/standard
 	name = "Survivor - Colonial Marshal Deputy(Riot Response)"
-	paygrade = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
 	skills = /datum/skills/cmb
+	minimap_icon = "deputy"
 
 /datum/equipment_preset/survivor/cmb/standard/load_gear(mob/living/carbon/human/new_human)
 
@@ -89,7 +91,7 @@
 
 /datum/equipment_preset/synth/survivor/cmb/synth
 	name = "Survivor - Synthetic - CMB Investigative Synthetic(Riot Response)"
-	paygrade = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -97,6 +99,8 @@
 	rank = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic/cmb
+	minimap_icon = "cmb_syn"
+	minimap_background = "background_cmb"
 
 /datum/equipment_preset/synth/survivor/cmb/synth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY)
@@ -150,11 +154,13 @@
 
 /datum/equipment_preset/survivor/cmb/ua
 	name = "Survivor - United Americas Riot Officer(Riot Response)"
-	paygrade = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA RCP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "United Americas Police Officer"
 	skills = /datum/skills/civilian/survivor/marshal
+	minimap_icon = "mp"
+	minimap_background = "background_ua"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/survivor/cmb/ua/load_gear(mob/living/carbon/human/new_human)
@@ -229,12 +235,14 @@
 // ua synth
 /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	name = "Survivor - Synthetic - UA Police Synthetic(Riot Response)"
-	paygrade = PAY_SHORT_CMBS
+	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "UA Police Synthetic"
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/colonial_synthetic
+	minimap_icon = "synth"
+	minimap_background = "background_ua"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/synth/survivor/cmb/ua_synth/load_race(mob/living/carbon/human/new_human)

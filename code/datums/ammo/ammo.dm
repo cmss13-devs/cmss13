@@ -173,6 +173,10 @@
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/proc/slowdown(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(isxeno(living_mob))
+		var/mob/living/carbon/xenomorph/xeno = living_mob
+		if(xeno.caste.tier > 2 || (xeno.caste.tier == 0 && xeno.mob_size >= MOB_SIZE_BIG))
+			return //tier 3 and big tier 0 (like queen) are not affected
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(1, SUPERSLOW)
@@ -236,7 +240,7 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
+		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(turf))

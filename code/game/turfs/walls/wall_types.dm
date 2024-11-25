@@ -297,11 +297,10 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
-	icon = 'icons/lobby/title.dmi'
-	icon_state = ""
-// icon_state = "title_holiday"
+	icon = 'icons/lobby/title_loading.dmi'
+	icon_state = "title"
 	layer = FLY_LAYER
-	special_icon = 1
+	special_icon = TRUE
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
@@ -309,16 +308,19 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /proc/force_lobby_art(art_id)
 	GLOB.displayed_lobby_art = art_id
-	var/turf/closed/wall/indestructible/splashscreen/SS = locate("LOBBYART")
+	var/turf/closed/wall/indestructible/splashscreen/lobby_art = locate("LOBBYART")
 	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	SS.icon_state = lobby_arts[GLOB.displayed_lobby_art]
-	SS.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
-	for(var/client/C in GLOB.clients)
+	lobby_art.icon = 'icons/lobby/title.dmi'
+	lobby_art.icon_state = lobby_arts[GLOB.displayed_lobby_art]
+	lobby_art.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
+	lobby_art.pixel_x = -288
+	lobby_art.pixel_y = -288
+	for(var/client/player in GLOB.clients)
 		if(GLOB.displayed_lobby_art != -1)
 			var/author = lobby_authors[GLOB.displayed_lobby_art]
 			if(author != "Unknown")
-				to_chat_forced(C, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
+				to_chat_forced(player, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
@@ -625,6 +627,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	hull = 1
+	baseturfs = /turf/open/mars_cave/mars_cave_2
 
 
 
@@ -762,6 +765,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+	if(!hull)
+		var/area/area = get_area(src)
+		if(area && area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER

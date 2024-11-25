@@ -79,6 +79,12 @@
 		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 
+			if(istype(T, /turf/closed/wall))
+				var/turf/closed/wall/neighbour_wall = T
+
+				neighbour_wall.update_connections()
+				neighbour_wall.update_icon()
+
 			//nearby glowshrooms updated
 			for(var/obj/effect/glowshroom/shroom in T)
 				if(!shroom.floor) //shrooms drop to the floor
@@ -566,7 +572,7 @@
 
 	// Check again for presence of objects
 	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
-		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		to_chat(user, SPAN_WARNING("You seem to have misplaced the repair material!"))
 		return FALSE
 
 	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < (4*amount_needed-1))

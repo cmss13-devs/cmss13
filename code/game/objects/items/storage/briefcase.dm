@@ -1,6 +1,7 @@
 /obj/item/storage/briefcase
 	name = "briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	icon = 'icons/obj/items/storage/briefcases.dmi'
 	icon_state = "briefcase"
 	item_state = "briefcase"
 	flags_atom = FPRINT|CONDUCT

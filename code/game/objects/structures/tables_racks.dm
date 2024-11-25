@@ -304,7 +304,7 @@
 	if(W.flags_item & ITEM_ABSTRACT)
 		return
 
-	if(istype(W, /obj/item/weapon/wristblades))
+	if(istype(W, /obj/item/weapon/bracer_attachment))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
@@ -385,9 +385,11 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	for(var/mob/living/mob_behind_table in oview(src, 0))
+	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
 		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		FOR_DVIEW_END
 		return FALSE
+	FOR_DVIEW_END
 
 	var/list/directions = list()
 	if(direction)

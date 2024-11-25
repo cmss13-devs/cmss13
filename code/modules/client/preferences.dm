@@ -1390,7 +1390,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("fax_name")
 					var/faction = href_list["fax_faction"]
-					var/raw_name = tgui_input_text(user, "Choose your Fax Responder's name:", "Character Preference")  as text|null
+					var/raw_name = tgui_input_text(user, "Choose your Fax Responder's name:", "Responder Name")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(!new_name)

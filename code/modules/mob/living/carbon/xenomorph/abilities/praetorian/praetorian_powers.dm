@@ -830,9 +830,9 @@
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
 		target_xeno.armor_modifier -= target_armor_buff
 		target_xeno.remove_filter("raging")
-		armor_buffs_active_target = FALSE
 		target_xeno.recalculate_armor()
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	armor_buffs_active_target = FALSE
 
 
 

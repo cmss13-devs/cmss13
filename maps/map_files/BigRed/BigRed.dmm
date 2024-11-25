@@ -3090,12 +3090,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/warnplate/north,
 /area/bigredv2/caves/lambda/xenobiology)
-"anR" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4
-	},
-/turf/open/floor/plating/warnplate/northeast,
-/area/bigredv2/caves/lambda/xenobiology)
 "anS" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/warnwhite/west,
@@ -77690,7 +77684,7 @@ adZ
 alO
 amM
 adZ
-anR
+alO
 amM
 adZ
 adZ

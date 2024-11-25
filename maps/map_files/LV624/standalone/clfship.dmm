@@ -474,6 +474,14 @@
 /obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
+"oO" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	density = 1;
+	closed = 0
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/crashed_ship)
 "oW" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -500,14 +508,6 @@
 "qu" = (
 /obj/item/ammo_casing/shell{
 	icon_state = "casing_2_1"
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/crashed_ship)
-"qJ" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3";
-	density = 1;
-	closed = 0
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
@@ -593,14 +593,6 @@
 "ug" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/damaged3/west,
-/area/lv624/lazarus/crashed_ship)
-"um" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	density = 1;
-	closed = 0
-	},
-/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "uq" = (
 /obj/item/tool/warning_cone,
@@ -839,6 +831,14 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
+"AT" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "Bc" = (
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
@@ -1299,6 +1299,11 @@
 /obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
+"Px" = (
+/obj/structure/machinery/autolathe,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/almayer/orange/northwest,
+/area/lv624/lazarus/crashed_ship)
 "PA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -1390,14 +1395,6 @@
 /obj/item/attachable/attached_gun/flamer,
 /turf/open/floor/almayer/bluecorner,
 /area/lv624/lazarus/crashed_ship)
-"Sw" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
-	density = 1;
-	closed = 0
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
 "Sx" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer,
@@ -1487,6 +1484,14 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"UD" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/crashed_ship)
 "UV" = (
 /turf/open/floor/platingdmg1,
 /area/lv624/ground/caves/south_west_caves)
@@ -1581,11 +1586,6 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan25"
 	},
-/area/lv624/lazarus/crashed_ship)
-"WI" = (
-/obj/structure/machinery/autolathe,
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/almayer/orange/northwest,
 /area/lv624/lazarus/crashed_ship)
 "WJ" = (
 /obj/structure/largecrate/supply/supplies/flares,
@@ -2030,7 +2030,7 @@ mK
 Xm
 Ab
 Ns
-WI
+Px
 Cq
 nj
 lr
@@ -2467,7 +2467,7 @@ Wt
 SW
 Qf
 rw
-um
+UD
 mS
 mS
 Bc
@@ -2514,7 +2514,7 @@ dN
 oI
 rX
 mS
-qJ
+oO
 ro
 Qf
 lD
@@ -2966,7 +2966,7 @@ gt
 Vs
 rf
 mH
-Sw
+AT
 Ab
 Ab
 Ab

@@ -134,12 +134,3 @@
 	. = ..()
 	imp = new /obj/item/implant/dexplosive( src )
 
-
-/obj/item/implantcase/health
-	name = "Glass Case - 'Health'"
-	desc = "A case containing a health tracking implant."
-	icon_state = "implantcase-b"
-
-/obj/item/implantcase/health/Initialize(mapload, ...)
-	. = ..()
-	imp = new /obj/item/implant/health( src )

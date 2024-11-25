@@ -791,7 +791,7 @@
 	behavior.raging = TRUE
 
 	playsound(get_turf(raging_valkyrie), "alien_roar", 40)
-	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("Our rage drives us forward, our healing and armor is increased."))
+	to_chat(raging_valkyrie, SPAN_XENODANGER("Our rage drives us forward, our healing and armor is increased."))
 	raging_valkyrie.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 	raging_valkyrie.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 	raging_valkyrie.balloon_alert(raging_valkyrie, "we feel an overwhelming rage", text_color = "#93ec78")

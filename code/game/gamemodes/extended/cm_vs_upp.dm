@@ -10,6 +10,7 @@
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/post_setup()
 	. = ..()
+	SHUTTLE_TIME_LOCK = 10 MINUTES
 	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash)
 	for(var/area/area in GLOB.all_areas)
 		area.base_lighting_alpha = 150

@@ -261,17 +261,17 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	macro_path = /datum/action/xeno_action/verb/verb_prae_rage
 	plasma_cost = 50
-	xeno_cooldown = 5 SECONDS
+	xeno_cooldown = 7 SECONDS
 	var/datum/weakref/focus_rage = null
 
 	//rage configs
 	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
-	var/target_armor_buff = 30
+	var/target_armor_buff = 15 // 30 armor was too much, trying half of it.
 	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
 	var/armor_buffs_targer_dur = 3 SECONDS
 	var/armor_buffs_active_target = FALSE
 	var/armor_buffs_active = FALSE
-	var/rage_cost = 50
+	var/rage_cost = 75
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"
@@ -284,7 +284,7 @@
 	// jump range and such
 	var/gallop_jumprange = 5
 	var/gallop_actv_delay = 1 SECONDS
-	var/gallop_damage = 45
+	var/gallop_damage = 30
 
 /datum/action/xeno_action/onclick/fight_or_flight
 	name = "Fight or Flight"

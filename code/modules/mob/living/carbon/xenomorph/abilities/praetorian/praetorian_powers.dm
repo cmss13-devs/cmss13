@@ -873,10 +873,19 @@
 			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 	else
 		valkyrie.throw_atom(get_step_towards(affected_atom, valkyrie), gallop_jumprange, SPEED_FAST, valkyrie)
+		if (!valkyrie.Adjacent(target_carbon))
+			to_chat(valkyrie, SPAN_XENOWARNING("We must be adjacent to our target!")) // check if youre actually next to them
+			return
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
 		ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
 		valkyrie.anchored = TRUE
 		if(do_after(valkyrie, gallop_actv_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			if (!valkyrie.Adjacent(target_carbon))
+				to_chat(valkyrie, SPAN_XENOWARNING("We must be adjacent to our target!")) // check one more time to see if they are flinged away or something
+				REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
+				valkyrie.anchored = FALSE
+				unroot_human(target_carbon, TRAIT_SOURCE_ABILITY("High Gallop"))
+				return
 			valkyrie.visible_message(SPAN_XENOHIGHDANGER("[valkyrie] rips open the guts of [target_carbon]!"), SPAN_XENOHIGHDANGER("We rapidly slice into [target_carbon]!"))
 			target_carbon.spawn_gibs()
 			playsound(get_turf(target_carbon), 'sound/effects/gibbed.ogg', 50, 1)

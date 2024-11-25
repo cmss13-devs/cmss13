@@ -23,7 +23,6 @@
 
 /datum/xeno_strain/valkyrie/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.damage_modifier += XENO_DAMAGE_MOD_SMALL
 	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
 	prae.recalculate_everything()
 

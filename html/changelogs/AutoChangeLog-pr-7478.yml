@@ -1,0 +1,4 @@
+author: "Drdodo"
+delete-after: True
+changes:
+  - bugfix: "now CEs can buy all of their essentials"

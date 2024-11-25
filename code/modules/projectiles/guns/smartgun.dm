@@ -359,6 +359,15 @@
 	balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
+
+///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
+	if (!frontline_enabled)
+		muzzle_flash = "muzzle_flash_blue"
+		muzzle_flash_color = COLOR_MUZZLE_BLUE
+	else
+		muzzle_flash = "muzzle_flash"
+		muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
+
 	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	recalculate_attachment_bonuses()
 

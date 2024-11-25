@@ -6,7 +6,7 @@
 
 /datum/ammo/bullet/smartgun
 	name = "smartgun bullet"
-	icon_state = "redbullet"
+	icon_state = "bullet_IFF"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
@@ -17,15 +17,15 @@
 	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/alt
+	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
-
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	damage = 36
+	damage = 34
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "armor-piercing smartgun bullet"
-	icon_state = "bullet"
+	icon_state = "bulletAP_IFF"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	accurate_range = 12
@@ -36,12 +36,14 @@
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/armor_piercing/alt
+	icon_state = "bullet"
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	damage = 25
+	damage = 23
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"
+	icon_state = "bullet_IFF"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
@@ -52,12 +54,13 @@
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/alt
+	icon_state = "redbullet"
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
-	damage = 48
+	damage = 44
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
-	icon_state = "bullet"
+	icon_state = "bulletAP_IFF"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	accurate_range = 22
@@ -67,12 +70,14 @@
 	damage_armor_punch = 3
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
-	damage = 36
+	icon_state = "bullet"
+	damage = 33
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun bullet"
+	icon_state = "bullet_IFF"
 	damage = 30
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 15
@@ -82,7 +87,8 @@
 	var/stack_loss_multiplier = 1
 
 /datum/ammo/bullet/smartgun/holo_target/alt
-	damage = 36
+	name = "redbullet"
+	damage = 34
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
@@ -92,7 +98,7 @@
 
 /datum/ammo/bullet/smartgun/holo_target/ap
 	name = "armor-piercing smartgun bullet"
-	icon_state = "bullet"
+	icon_state = "bulletAP_IFF"
 
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
@@ -101,7 +107,8 @@
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/holo_target/ap/alt
-	damage = 25
+	icon_state = "bullet"
+	damage = 23
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 

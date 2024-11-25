@@ -68,6 +68,10 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	var/machine_id_tag
 	/// Whether or not the ID tag can be changed by proc.
 	var/fixed_id_tag = FALSE
+	/// Whether or not the next fax to be sent is a priority one.
+	var/is_priority_fax = FALSE
+	/// If this machine can send priority faxes.
+	var/can_send_priority = FALSE
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
@@ -274,43 +278,54 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	data["nextfaxtime"] = send_cooldown
 	data["faxcooldown"] = fax_cooldown
 
+	data["can_send_priority"] = can_send_priority
+	data["is_priority_fax"] = is_priority_fax
+
+
 	return data
 
 /obj/structure/machinery/faxmachine/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+	var/mob/user = ui.user
 
 	switch(action)
+		if("toggle_priority")
+			is_priority_fax = !is_priority_fax
+			to_chat(user, SPAN_NOTICE("Priority Alert is now [is_priority_fax ? "Enabled" : "Disabled"]."))
+			. = TRUE
+
 		if("send")
 			if(!original_fax)
-				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
+				to_chat(user, SPAN_NOTICE("No paper loaded."))
 				return
 
 			if(istype(original_fax, /obj/item/paper_bundle))
 				var/obj/item/paper_bundle/bundle = original_fax
 				if(bundle.amount > 5)
-					to_chat(ui.user, SPAN_NOTICE("\The [src] is jammed!"))
+					to_chat(user, SPAN_NOTICE("\The [src] is jammed!"))
 					return
 
 			copy_fax_paper()
 
-			outgoing_fax_message(ui.user)
+			outgoing_fax_message(user, is_priority_fax)
+			is_priority_fax = FALSE
 
 			COOLDOWN_START(src, send_cooldown, fax_cooldown)
-			to_chat(ui.user, "Message transmitted successfully.")
+			to_chat(user, "Message transmitted successfully.")
 			. = TRUE
 
 		if("ejectpaper")
 			if(!original_fax)
-				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
-			if(!ishuman(ui.user))
-				to_chat(ui.user, SPAN_NOTICE("You can't do that."))
+				to_chat(user, SPAN_NOTICE("No paper loaded."))
+			if(!ishuman(user))
+				to_chat(user, SPAN_NOTICE("You can't do that."))
 				return
 
-			original_fax.forceMove(ui.user.loc)
-			ui.user.put_in_hands(original_fax)
-			to_chat(ui.user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
+			original_fax.forceMove(user.loc)
+			user.put_in_hands(original_fax)
+			to_chat(user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
 			original_fax = null
 			fax_paper_copy = null
 			photo_list = null
@@ -318,31 +333,31 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 		if("insertpaper")
 			var/jammed = FALSE
-			var/obj/item/I = ui.user.get_active_hand()
+			var/obj/item/I = user.get_active_hand()
 			if(istype(I, /obj/item/paper_bundle))
 				var/obj/item/paper_bundle/bundle = I
 				if(bundle.amount > 5)
 					jammed = TRUE
 				// Repeating code? This is not ideal. Why not put this functionality inside of a proc?
 			if(istype(I, /obj/item/paper) || istype(I, /obj/item/paper_bundle) || istype(I, /obj/item/photo))
-				ui.user.drop_inv_item_to_loc(I, src)
+				user.drop_inv_item_to_loc(I, src)
 				original_fax = I
 				if(!jammed)
-					to_chat(ui.user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
+					to_chat(user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
 				else
-					to_chat(ui.user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
+					to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
 				flick("[initial(icon_state)]send", src)
 			. = TRUE
 
 		if("ejectid")
-			if(!scan || !ishuman(ui.user))
-				to_chat(ui.user, SPAN_WARNING("You can't do that."))
+			if(!scan || !ishuman(user))
+				to_chat(user, SPAN_WARNING("You can't do that."))
 				return
-			to_chat(ui.user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
-			scan.forceMove(ui.user.loc)
-			if(!ui.user.get_active_hand())
-				ui.user.put_in_hands(scan)
+			to_chat(user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
+			scan.forceMove(user.loc)
+			if(!user.get_active_hand())
+				user.put_in_hands(scan)
 				scan = null
 			else
 				scan.forceMove(src.loc)
@@ -353,11 +368,11 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(ui.user, "Which department?", "Choose a department", GLOB.all_fax_departments)
+			target_department = tgui_input_list(user, "Which department?", "Choose a department", GLOB.all_fax_departments)
 			if(!target_department)
 				target_department = last_target_department
 			if(target_department == DEPARTMENT_TARGET)
-				var/new_target_machine_id = tgui_input_list(ui.user, "Which machine?", "Choose a machine code", GLOB.all_faxcodes)
+				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code", GLOB.all_faxcodes)
 				if(!new_target_machine_id)
 					target_department = last_target_department
 				else
@@ -375,7 +390,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 			authenticated = FALSE
 			. = TRUE
 
-	add_fingerprint(ui.user)
+	add_fingerprint(user)
 
 /obj/structure/machinery/faxmachine/vv_get_dropdown()
 	. = ..()
@@ -422,7 +437,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
 			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='192'/>"
 
-/obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
+/obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user, sending_priority)
 
 	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name)
 
@@ -472,7 +487,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[the_target_department]: </font></b>")
 	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
-	send_fax(faxcontents)
+	send_fax(faxcontents, sending_priority)
 
 	announce_fax(msg_admin, msg_ghost)
 
@@ -500,7 +515,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 				C << 'sound/effects/incoming-fax.ogg'
 
 
-/obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)
+/obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents, sending_priority)
 	var/list/target_machines = list()
 	for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.all_faxmachines)
 		if(target_department == DEPARTMENT_TARGET)
@@ -517,6 +532,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 			flick("[initial(icon_state)]receive", target)
 
+			playsound(target.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
 			spawn(30)
 				var/obj/item/paper/P = new(target.loc,faxcontents.photo_list)
@@ -564,7 +580,10 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 				else
 					P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
 				P.overlays += stampoverlay
-				playsound(target.loc, "sound/items/polaroid1.ogg", 15, 1)
+				if(sending_priority)
+					playsound(target.loc, "sound/machines/twobeep.ogg", 45)
+					target.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, target), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+					target.visible_message("[SPAN_BOLD(target)] beeps with a priority message.")
 		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
@@ -584,6 +603,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	department = DEPARTMENT_WY
 	target_department = "W-Y Liaison"
 	network = FAX_NET_WY_HC
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm
 	name = "\improper USCM Military Fax Machine"
@@ -596,11 +616,13 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/uscm/command/capt
 	department = "Commanding Officer"
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm/command/highcom
 	department = DEPARTMENT_HC
 	target_department = "Commanding Officer"
 	network = FAX_NET_USCM_HC
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm/brig
 	name = "\improper USCM Provost Fax Machine"
@@ -614,6 +636,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	department = DEPARTMENT_PROVOST
 	target_department = "Brig"
 	network = FAX_NET_USCM_HC
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/upp
 	name = "\improper UPP Military Fax Machine"
@@ -625,6 +648,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	department = DEPARTMENT_UPP
 	network = FAX_NET_UPP_HC
 	target_department = "UPP Local Operations"
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/clf
 	name = "\improper Hacked General Purpose Fax Machine"
@@ -636,6 +660,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	department = DEPARTMENT_CLF
 	network = FAX_NET_CLF_HC
 	target_department = "CLF Local Operations"
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/twe
 	name = "\improper TWE Military Fax Machine"
@@ -647,11 +672,13 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	department = DEPARTMENT_TWE
 	network = FAX_NET_TWE_HC
 	target_department = "TWE Local Operations"
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/press/highcom
 	department = DEPARTMENT_PRESS
 	network = FAX_NET_PRESS_HC
 	target_department = "General Public"
+	can_send_priority = TRUE
 
 ///The deployed fax machine backpack
 /obj/structure/machinery/faxmachine/backpack

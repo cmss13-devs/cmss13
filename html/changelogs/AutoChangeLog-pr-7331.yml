@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - qol: "Added examine text to vendors that are connected via medlink"
-  - balance: "Blood vendors restock blood bags when connected via medlink (requires 20 mins from round start)"
-  - maptweak: "Added more medlinks to the Almayer"

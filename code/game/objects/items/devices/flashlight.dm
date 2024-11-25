@@ -302,14 +302,14 @@
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
 	light_power = 2
-	light_range = 5
+	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE
 	var/burnt_out = FALSE
-	var/fuel = 0
+	var/fuel = 16 MINUTES
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
@@ -327,7 +327,6 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(9.5 MINUTES, 10.5 MINUTES)
 	set_light_color(flame_tint)
 
 /obj/item/device/flashlight/flare/update_icon()
@@ -362,8 +361,27 @@
 
 /obj/item/device/flashlight/flare/process(delta_time)
 	fuel -= fuel_rate * delta_time
+	flare_burn_down()
 	if(fuel <= 0 || !on)
 		burn_out()
+
+/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overriden by children, or they will be forced to use this light behavior.
+	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
+		if(15.25 MINUTES to 16 MINUTES)
+			set_light_range(7)
+		if(14.5 MINUTES to 15.24 MINUTES)
+			set_light_range(6)
+		if(6.5 MINUTES to 14.49 MINUTES)
+			set_light_range(5)
+		if(5.0 MINUTES to 6.49 MINUTES)
+			set_light_range(4)
+		if(3.5 MINUTES to 4.99 MINUTES)
+			set_light_range(3)
+		if(2.0 MINUTES to 3.49 MINUTES)
+			set_light_range(2)
+		if(0 MINUTES to 1.99 MINUTES)
+			set_light_range(1)
+			set_light_power(0.5) // A power of 2 results in no light at all, while .5 results in a small light.
 
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
@@ -450,10 +468,14 @@
 	icon_state = "" //No sprite
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	show_flame = FALSE
+	light_range = 7
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
-	fuel = rand(4.5 MINUTES, 5.5 MINUTES) // Half the duration of a flare, but justified since it's invincible
+	fuel = rand(5.0 MINUTES, 6.0 MINUTES) // Approximately half the effective duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/flare_burn_down() // Empty proc to override parent.
+	return
 
 /obj/item/device/flashlight/flare/on/illumination/update_icon()
 	return
@@ -472,12 +494,29 @@
 	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE
+	light_range = 6
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
 		return INITIALIZE_HINT_QDEL
 	. = ..()
-	fuel = rand(30 SECONDS,	60 SECONDS)
+	fuel = rand(6.0 MINUTES, 6.5 MINUTES)
+
+/obj/item/device/flashlight/flare/on/starshell_ash/flare_burn_down() // Starshell's own burn_down curve, overrides parent flare.
+	switch(fuel)
+		if(6.0 MINUTES to 6.5 MINUTES)
+			set_light_range(6)
+		if(2.5 MINUTES to 5.99 MINUTES)
+			set_light_range(5)
+		if(2.0 MINUTES to 2.49 MINUTES)
+			set_light_range(4)
+		if(1.5 MINUTES to 1.99 MINUTES)
+			set_light_range(3)
+		if(1.0 MINUTES to 1.49 MINUTES)
+			set_light_range(2)
+		if(0 MINUTES to 0.99 MINUTES)
+			set_light_range(1)
+			set_light_power(0.5)
 
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
@@ -485,11 +524,17 @@
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	light_range = floor(amount * 0.04)
-	if(!light_range)
+	if(amount < 1)
 		return INITIALIZE_HINT_QDEL
-	set_light(light_range)
-	fuel = amount * 5 SECONDS
+	var/square_amount = sqrt(amount)
+	// Fuel quickly ramps up to about 15.5 mins then tapers off the more volume there is (6s min)
+	fuel = max(((-150 / square_amount) - 2 * sqrt(amount + 2000) + 120), 0.1) MINUTES
+	// Range gradually ramps up from 1 to 15
+	light_range = max(min(square_amount - 3, 15), MINIMUM_USEFUL_LIGHT_RANGE)
+	// Power slowly ramps up from 1 to 5
+	light_power = min(0.1 * square_amount + 1, 5)
+	set_light(light_range, light_power)
+
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL
@@ -534,6 +579,7 @@
 	item_state = "cas_flare"
 	layer = ABOVE_FLY_LAYER
 	ammo_datum = /datum/ammo/flare/signal
+	light_range = 5
 	var/faction = ""
 	var/datum/cas_signal/signal
 	var/activate_message = TRUE
@@ -543,6 +589,9 @@
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
 	fuel = rand(160 SECONDS, 200 SECONDS)
+
+/obj/item/device/flashlight/flare/signal/flare_burn_down() // Empty proc to override parent.
+	return
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))

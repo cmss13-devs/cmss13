@@ -133,12 +133,30 @@
 
 	var/list/available_nicknumbers = list()
 
+
+	/// Hive buffs
+	var/buff_points = HIVE_STARTING_BUFFPOINTS
+	var/max_buff_points = HIVE_MAX_BUFFPOINTS
+
+	/// List of references to the currently active hivebuffs
+	var/list/active_hivebuffs
+	/// List of references to used hivebuffs
+	var/list/used_hivebuffs
+	/// List of references to used hivebuffs currently on cooldown
+	var/list/cooldown_hivebuffs
+
+	/// List of references to hive pylons active in the game world
+	var/list/active_endgame_pylons
+
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
 	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
 	*/
 	var/static/list/evolution_menu_images
+
+	/// Has a King hatchery
+	var/has_hatchery = FALSE
 
 /datum/hive_status/New()
 	hive_ui = new(src)
@@ -150,6 +168,10 @@
 		internal_faction = name
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
+	LAZYINITLIST(active_hivebuffs)
+	LAZYINITLIST(used_hivebuffs)
+	LAZYINITLIST(active_endgame_pylons)
+
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
@@ -729,6 +751,10 @@
 	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
+
+	// No buffs in hijack
+	for(var/datum/hivebuff/buff in active_hivebuffs)
+		buff._on_cease()
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
@@ -1372,6 +1398,65 @@
 	if(!length(personal_allies))
 		return
 	clear_personal_allies(TRUE)
+/// Hive buffs
+
+/// Get a list of hivebuffs which can be bought now.
+/datum/hive_status/proc/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
+					break
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs
+
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu
@@ -1433,3 +1518,4 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
+

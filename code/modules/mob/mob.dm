@@ -905,7 +905,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			conga_line += S.buckled
 	while(!end_of_conga)
 		var/atom/movable/A = S.pulling
-		if(A in conga_line || A.anchored) //No loops, nor moving anchored things.
+		if((A in conga_line) || A.anchored) //No loops, nor moving anchored things.
 			end_of_conga = TRUE
 			break
 		conga_line += A

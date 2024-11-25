@@ -32,6 +32,19 @@
 	/// If the defib can be used by anyone.
 	var/noskill = FALSE
 
+	var/should_spark = TRUE
+
+	var/fluff_tool = "paddles"
+	var/fluff_target_part = "chest"
+	var/fluff_revive_message = "Defibrillation successful"
+
+	var/sound_charge = 'sound/items/defib_charge.ogg'
+	var/sound_failed = 'sound/items/defib_failed.ogg'
+	var/sound_success = 'sound/items/defib_success.ogg'
+	var/sound_safety_on = 'sound/items/defib_safetyOn.ogg'
+	var/sound_safety_off = 'sound/items/defib_safetyOff.ogg'
+	var/sound_release = 'sound/items/defib_release.ogg'
+
 /mob/living/carbon/human/proc/check_tod()
 	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
 		return TRUE
@@ -40,14 +53,16 @@
 /obj/item/device/defibrillator/Initialize(mapload, ...)
 	. = ..()
 
-	sparks.set_up(5, 0, src)
-	sparks.attach(src)
+	if(should_spark)
+		sparks.set_up(5, 0, src)
+		sparks.attach(src)
 	dcell = new/obj/item/cell(src)
 	update_icon()
 
 /obj/item/device/defibrillator/Destroy()
 	QDEL_NULL(dcell)
-	QDEL_NULL(sparks)
+	if(should_spark)
+		QDEL_NULL(sparks)
 	return ..()
 
 /obj/item/device/defibrillator/update_icon()
@@ -95,15 +110,16 @@
 
 	defib_cooldown = world.time + 10 //1 second cooldown every time the defib is toggled
 	ready = !ready
-	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the paddles out" : "off and puts the paddles back in"]."),
-	SPAN_NOTICE("You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"]."))
-	playsound(get_turf(src), "sparks", 15, 1, 0)
+	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the [fluff_tool] out" : "off and puts the [fluff_tool] back in"]."),
+	SPAN_NOTICE("You turn [src] [ready? "on and take the [fluff_tool] out" : "off and put the [fluff_tool] back in"]."))
+	if(should_spark)
+		playsound(get_turf(src), "sparks", 15, 1, 0)
 	if(ready)
 		w_class = SIZE_LARGE
-		playsound(get_turf(src), 'sound/items/defib_safetyOn.ogg', 25, 0)
+		playsound(get_turf(src), sound_safety_on, 25, 0)
 	else
 		w_class = initial(w_class)
-		playsound(get_turf(src), 'sound/items/defib_safetyOff.ogg', 25, 0)
+		playsound(get_turf(src), sound_safety_off, 25, 0)
 	update_icon()
 	add_fingerprint(user)
 
@@ -129,10 +145,10 @@
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!ishuman(H) || isyautja(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
+		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the [fluff_tool]!"))
 		return
 	if(!ready)
-		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
+		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
 		return
 	if(dcell.charge < charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
@@ -180,14 +196,14 @@
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
 			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
 
-	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [target]'s chest"), \
-		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[target]</b>'s chest."))
-	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
+	user.visible_message(SPAN_NOTICE("[user] starts setting up the [fluff_tool] on [target]'s [fluff_target_part]"), \
+		SPAN_HELPFUL("You start <b>setting up</b> the [fluff_tool] on <b>[target]</b>'s [fluff_target_part]."))
+	playsound(get_turf(src), sound_charge, 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
 	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		user.visible_message(SPAN_WARNING("[user] stops setting up the paddles on [target]'s chest."), \
-		SPAN_WARNING("You stop setting up the paddles on [target]'s chest."))
+		user.visible_message(SPAN_WARNING("[user] stops setting up the [fluff_tool] on [target]'s [fluff_target_part]."), \
+		SPAN_WARNING("You stop setting up the [fluff_tool] on [target]'s [fluff_target_part]."))
 		return FALSE
 
 	if(!check_revive(target, user))
@@ -203,16 +219,16 @@
 	sparks.start()
 	dcell.use(charge_cost)
 	update_icon()
-	playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] shocks [target] with the paddles."),
-		SPAN_HELPFUL("You shock <b>[target]</b> with the paddles."))
+	playsound(get_turf(src), sound_release, 25, 1)
+	user.visible_message(SPAN_NOTICE("[user] shocks [target] with the [fluff_tool]."),
+		SPAN_HELPFUL("You shock <b>[target]</b> with the [fluff_tool]."))
 	target.visible_message(SPAN_DANGER("[target]'s body convulses a bit."))
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = target.internal_organs_by_name["heart"]
 
 	if(!target.is_revivable())
-		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
+		playsound(get_turf(src), sound_failed, 25, 0)
 		if(heart && heart.organ_status >= ORGAN_BROKEN)
 			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
 			msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of heart damage.")
@@ -244,9 +260,9 @@
 				target.reagents.remove_reagent(R.id, 1)
 				break
 	if(target.health > HEALTH_THRESHOLD_DEAD)
-		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
+		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: [fluff_revive_message]."))
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
-		playsound(get_turf(src), 'sound/items/defib_success.ogg', 25, 0)
+		playsound(get_turf(src), sound_success, 25, 0)
 		user.track_life_saved(user.job)
 		user.life_revives_total++
 		target.handle_revive()
@@ -259,7 +275,7 @@
 	else
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of weak vitals.")
-		playsound(get_turf(src), 'sound/items/defib_failed.ogg', 25, 0)
+		playsound(get_turf(src), sound_failed, 25, 0)
 		if(heart && prob(25))
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
 
@@ -288,7 +304,7 @@
 
 /obj/item/device/defibrillator/synthetic
 	name = "synthetic reset key"
-	desc = "Functioning similarly to a defibrillator, this device is designed to restart a synthetic unit that has suffered critical failure. It can only be used once before being reset."
+	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
 	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
 	icon_state = "reset_key"
 	item_state = "defib"
@@ -297,6 +313,18 @@
 	skill_to_check_alt = SKILL_ENGINEER
 	skill_level_alt = SKILL_ENGINEER_ENGI
 	blocked_by_suit = FALSE
+	should_spark = FALSE
+
+	fluff_tool = "electrodes"
+	fluff_target_part = "insertion port"
+	fluff_revive_message = "Reset complete"
+
+	sound_charge = 'sound/mecha/powerup.ogg'
+	sound_failed = 'sound/items/synth_reset_key/shortbeep.ogg'
+	sound_success = 'sound/items/synth_reset_key/boot_on.ogg'
+	sound_safety_on = 'sound/machines/click.ogg'
+	sound_safety_off = 'sound/machines/click.ogg'
+	sound_release = 'sound/items/synth_reset_key/release.ogg'
 
 /obj/item/device/defibrillator/synthetic/update_icon()
 	icon_state = initial(icon_state)
@@ -326,6 +354,6 @@
 
 /obj/item/device/defibrillator/synthetic/noskill
 	name = "SMART synthetic reset key"
-	desc = "Functioning similarly to a defibrillator, this device is designed to restart a synthetic unit that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
 	icon_state = "reset_key_ns"
 	noskill = TRUE

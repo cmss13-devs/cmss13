@@ -52,7 +52,7 @@
 
 	var/area/area = get_area(turf)
 	if(isnull(area) || !(area.is_resin_allowed))
-		if(area.flags_area & AREA_UNWEEDABLE)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
 			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -241,7 +241,7 @@
 	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * 2)
+				apply_cooldown_override(xeno_cooldown * 3)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
 			if(xeno_cooldown)
@@ -384,14 +384,14 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [ability_name] from here!"))
+		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
 	if(!X.check_state())
 		return
 
 	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("We can't [ability_name] with that thing on our leg!"))
+		to_chat(X, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -418,7 +418,7 @@
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("We cancel our [ability_name]!"))
+			to_chat(X, SPAN_XENODANGER("We cancel our [action_text]!"))
 			if (!windup_interruptable)
 				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
@@ -430,7 +430,7 @@
 			X.anchored = FALSE
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [ability_name] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
 
 	pre_pounce_effects()
 
@@ -456,7 +456,7 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [ability_name] from here!"))
+		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
 	if(!X.check_state() || X.action_busy)
@@ -614,7 +614,7 @@
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))

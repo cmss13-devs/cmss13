@@ -20,6 +20,7 @@
 	name = "armor-piercing smartgun bullet"
 	icon_state = "bullet"
 
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20

@@ -935,3 +935,23 @@
 	apply_cooldown()
 	return ..()
 
+
+/datum/action/xeno_action/activable/tail_stab/tail_fountain/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/extuingisher_tail = owner
+	var/mob/living/carbon/xenomorph/target = atom
+
+
+	if (!action_cooldown_check())
+		return
+
+	if (!extuingisher_tail.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return FALSE
+
+	playsound(extuingisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
+	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
+	apply_cooldown()
+	xeno_attack_delay(extuingisher_tail)
+	return ..()

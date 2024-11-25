@@ -253,7 +253,16 @@
 	activation_delay = TRUE
 	activation_delay_length = 5
 
-///////////////////////// VALKYR PRAE
+///////////////////////// VALKYRIE PRAE
+
+/datum/action/xeno_action/activable/tail_stab/tail_fountain //no verbmacrohotkey, its just tail stab.
+	name = "Tail Fountain"
+	action_icon_state = "tail_seize"
+	action_type = XENO_ACTION_CLICK
+	charge_time = 0.5 SECONDS
+	xeno_cooldown = 20 SECONDS
+	ability_primacy = XENO_TAIL_STAB
+
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
@@ -297,5 +306,5 @@
 
 	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
 	var/low_rage_range = 3
-	var/high_rage_range = 7
+	var/high_rage_range = 5
 	var/rejuvenate_cost = 75

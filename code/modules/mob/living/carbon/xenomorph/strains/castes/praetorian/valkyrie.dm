@@ -5,6 +5,7 @@
 	icon_state_prefix = "Warden"
 
 	actions_to_remove = list(
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
@@ -12,6 +13,7 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	actions_to_add = list(
+		/datum/action/xeno_action/activable/tail_stab/tail_fountain,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/valkyrie_rage,
 		/datum/action/xeno_action/activable/high_gallop,

@@ -382,3 +382,66 @@
   - maptweak: Readds LV522 LZ1 shortfog
   realforest2001:
   - bugfix: Staff can properly access Fax Responder WL.
+2024-11-23:
+  MaximusRex:
+  - balance: Increased flare duration from a variable 9.5 --> 10.5 minute length to
+      16 minutes flat.
+  - balance: Flares start out strong (7 radius) and burn down to nothingness.
+  - balance: Increased flare_damage from acid by 20% across the board.
+  - balance: 'Weak Acid: 150-->180'
+  - balance: 'Medium Acid: 500-->600'
+  - balance: 'Strong Acid: 1875 -->2250 (RIP flare)'
+  - balance: Starshell ash fuel variance changed from (4.5 to 6.0) minutes ----> (6.0
+      to 6.5) minute variance.
+  - balance: Starshell ash starts out semi-bright (6 radius) and burns down to nothingness.
+  - balance: Flare Mortars now have a static 7 tile radius , and variably last from
+      5 to 6 minutes.
+  - balance: Flare gun unique-action now produces a static 7 tile radius light for
+      3 minutes. Slightly lower luminosity than normal.
+  - code_imp: Implemented a new proc, flare_burn_down, and incorporated it into process(delta_time).
+  Nivrak Birdtalon Wei Zenith:
+  - rscdel: Removed passive larva gain from pylons
+  - rscadd: Added a new currency, Royal resin which is gained 1 per 5 minutes per
+      pylon which can be used to buy various buffs. Minor buffs require one pylon
+      while major buffs require both.
+  - rscadd: Current royal resin can be viewed on the Queen's status panel and buffs
+      can be bought through Manage the Hive ability.
+  - rscadd: Minor Hive buff - Larva Surge - Costs 5 royal resin, Gives 5 larva, one
+      time use
+  - rscadd: Minor Hive Buff - Boon of Evolution - Costs 1 royal resin, Gain 2x evolution
+      speed for 5 minutes
+  - rscadd: Minor Hive Buff - Boon of Defense - Costs 1 royal resin, Gain 2.5 additional
+      armor for 5 minutes
+  - rscadd: Minor Hive Buff - Boon of Aggression - Costs 1 royal resin, Gain 5 additional
+      damage for 5 minutes
+  - rscadd: Major variants of Plenty, Defense and Aggression, Each costing 2 royal
+      resin, having usually twice as strong effect and duration. Major boon of evolution
+      also allows gaining evolution with the Queen out of ovi.
+  - balance: Pylons will have OB protection while the King is hatching.
+  - rscadd: Major Hive Buff - His Grace - Costs 0 royal resin, Can only be bought
+      between 1:35 and 1:55 minutes (random). Spawns a cocoon of the King. The cocoon
+      requires both comms to be held for 10 minutes. If any of the comms are lost
+      or the cocoon itself is the destroyed it will despawn and will be on cooldown
+      for 5-15 minutes. Can be rebought like most other buffs. All living xenos can
+      vote for a candidate after which one of the top 2 will be randomally picked,
+      otherwise a player is randomly selected from all living xenos > 50 hours (will
+      fallbacks to ghosts and then again with no playtime requirements). Evacuating
+      while the destroyer is hatching will cause it to instantly hatch.
+  - rscadd: The King - A new xenomorph caste which is serves as the xeno's counterpart
+      to a nuke and is designed to end sieges. Has a rend to attack around it, a light
+      extinguishing smoke, a gigantic leap, group bulwark shield that caps all incoming
+      damage, and very strong pheromones. Cannot be body blocked.
+  - imageadd: Sprites by Mikoka Wei and Zenith
+2024-11-25:
+  Drathek:
+  - balance: emp_pulse, flash_powder, and foam reactions are no longer possible in
+      mobs
+  - balance: flash_powder has been reworked to attach to its holder (so it can be
+      destroyed), and values retuned/capped.
+  - refactor: Refactored the metabolize proc for chemistry reactors (removed required_other
+      and changed required_container to use a path check instead)
+  efzapa:
+  - maptweak: Replaced a shutter in Lambda on Solaris Ridge so Larva aren't hard trapped
+      on roundstart.
+  realforest2001:
+  - maptweak: Lifeboat air pipes are now reinforced (again) and no longer explode.

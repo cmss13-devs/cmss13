@@ -111,7 +111,7 @@
 
 
 /obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
-	if(isobserver(passer) || isxeno(passer))
+	if(isobserver(passer) || isxeno(passer) || ishologram(passer))
 		return FALSE
 	if(!passer)
 		return FALSE

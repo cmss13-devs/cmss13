@@ -14,3 +14,7 @@
 	for(var/area/area in GLOB.all_areas)
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/announce()
+	marine_announcement("good day USCM", "ARES", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("good day UPP", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_MARINE)

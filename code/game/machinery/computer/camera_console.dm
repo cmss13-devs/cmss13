@@ -244,8 +244,8 @@
 	if(!current)
 		clear_camera()
 
-/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/inoperable(additional_flags)
-	return ..(MAINT)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/inoperable(additional_flags = 0)
+	return ..(MAINT|additional_flags)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/attackby(obj/item/wrench, mob/user)
 	if(HAS_TRAIT(wrench, TRAIT_TOOL_WRENCH))

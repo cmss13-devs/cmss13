@@ -770,6 +770,9 @@
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
 		return
 
+	if(buffing_target.get_filter("raging"))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
+		return
 	if (!action_cooldown_check())
 		return
 
@@ -825,11 +828,9 @@
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_rage()
 	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
-		var/datum/behavior_delegate/praetorian_valkyrie/behavior = target_xeno.behavior_delegate
 		target_xeno.armor_modifier -= target_armor_buff
 		target_xeno.remove_filter("raging")
 		armor_buffs_active_target = FALSE
-		behavior.raging = FALSE
 		target_xeno.recalculate_armor()
 		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 

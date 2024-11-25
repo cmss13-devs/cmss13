@@ -7,6 +7,7 @@
 
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_FAX
+	faction_group = list(FACTION_FAX)
 
 	uses_special_name = TRUE
 
@@ -71,6 +72,7 @@
 	name = "Fax Responder - USCM HC"
 	assignment = JOB_FAX_RESPONDER_USCM_HC
 	rank = JOB_FAX_RESPONDER_USCM_HC
+	faction_group = list(FACTION_FAX, FACTION_MARINE)
 
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	idtype = /obj/item/card/id/gold
@@ -93,6 +95,7 @@
 	name = "Fax Responder - USCM Provost"
 	assignment = JOB_FAX_RESPONDER_USCM_PVST
 	rank = JOB_FAX_RESPONDER_USCM_PVST
+	faction_group = list(FACTION_FAX, FACTION_MARINE)
 	idtype = /obj/item/card/id/provost
 
 /datum/equipment_preset/fax_responder/uscm/provost/load_gear(mob/living/carbon/human/new_human)
@@ -113,6 +116,7 @@
 	name = "Fax Responder - WY"
 	assignment = JOB_FAX_RESPONDER_WY
 	rank = JOB_FAX_RESPONDER_WY
+	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_WY, FACTION_WY_DEATHSQUAD, FACTION_PMC)
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_3)
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_EXEC, ACCESS_WY_GENERAL, ACCESS_WY_LEADERSHIP)
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -132,6 +136,7 @@
 	name = "Fax Responder - UPP"
 	assignment = JOB_FAX_RESPONDER_UPP
 	rank = JOB_FAX_RESPONDER_UPP
+	faction_group = list(FACTION_FAX, FACTION_UPP)
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/upp/kapitan
 	headset_type = /obj/item/device/radio/headset/distress/UPP/kdo/command
@@ -162,6 +167,7 @@
 	name = "Fax Responder - TWE"
 	assignment = JOB_FAX_RESPONDER_TWE
 	rank = JOB_FAX_RESPONDER_TWE
+	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_TWE)
 	headset_type = /obj/item/device/radio/headset/distress/royal_marine
 	idtype = /obj/item/card/id/gold
 	paygrades = list(PAY_SHORT_RNO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_RNO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_RNO4 = JOB_PLAYTIME_TIER_3)
@@ -182,6 +188,7 @@
 	name = "Fax Responder - CLF"
 	assignment = JOB_FAX_RESPONDER_CLF
 	rank = JOB_FAX_RESPONDER_CLF
+	faction_group = list(FACTION_FAX, FACTION_CLF)
 	headset_type = /obj/item/device/radio/headset/distress/CLF/command
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 
@@ -202,6 +209,7 @@
 	name = "Fax Responder - CMB"
 	assignment = JOB_FAX_RESPONDER_CMB
 	rank = JOB_FAX_RESPONDER_CMB
+	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_MARSHAL)
 	headset_type = /obj/item/device/radio/headset/distress/CMB
 	idtype = /obj/item/card/id/marshal
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
@@ -227,6 +235,7 @@
 	name = "Fax Responder - Press"
 	assignment = JOB_FAX_RESPONDER_PRESS
 	rank = JOB_FAX_RESPONDER_PRESS
+	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_COLONIST)
 	headset_type = /obj/item/device/radio/headset/almayer/reporter
 	idtype = /obj/item/card/id/silver/cl
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)

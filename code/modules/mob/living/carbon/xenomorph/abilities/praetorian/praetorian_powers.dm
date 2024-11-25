@@ -874,6 +874,7 @@
 			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 	else
 		valkyrie.throw_atom(get_step_towards(affected_atom, valkyrie), gallop_jumprange, SPEED_FAST, valkyrie)
+		apply_cooldown()
 		if (!valkyrie.Adjacent(target_carbon))
 			to_chat(valkyrie, SPAN_XENOWARNING("We must be adjacent to our target!")) // check if youre actually next to them
 			return
@@ -904,8 +905,6 @@
 		valkyrie.animation_attack_on(target_carbon, 10) // i wish we had a way of making multiple slashes appear on the same person.
 
 
-
-	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/onclick/fight_or_flight/use_ability(atom/A)
@@ -948,6 +947,10 @@
 		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
 		return
 
+	if(!iscarbon(atom))
+		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to target something."))
+		return
+
 	if (!action_cooldown_check())
 		return
 
@@ -960,5 +963,6 @@
 	playsound(extuingisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
 	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
 	apply_cooldown()
+	extuingisher_tail.visible_message(SPAN_XENODANGER("[extuingisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
 	xeno_attack_delay(extuingisher_tail)
 	return ..()

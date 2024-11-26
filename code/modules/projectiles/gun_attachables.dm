@@ -58,6 +58,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
 	var/light_mod = 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
+	var/set_light_color = 0 //I don't know what this does, testing
 	var/delay_mod = 0 //Changes firing delay. Cannot go below 0.
 	var/burst_mod = 0 //Changes burst rate. 1 == 0.
 	var/size_mod = 0 //Increases the weight class.
@@ -755,6 +756,7 @@ Defined in conflicts.dm of the #defines folder.
 		attached_gun.set_light_range(attached_gun.light_range + light_mod)
 		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
 		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
+			attached_gun.set_light_color(COLOR_WHITE)
 			attached_gun.set_light_on(TRUE)
 			light_on = TRUE
 			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON

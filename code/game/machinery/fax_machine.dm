@@ -325,7 +325,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 			original_fax.forceMove(user.loc)
 			user.put_in_hands(original_fax)
-			to_chat(user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
+			to_chat(user, SPAN_NOTICE("You take the [original_fax.name] out of [src]."))
 			original_fax = null
 			fax_paper_copy = null
 			photo_list = null
@@ -343,9 +343,9 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 				user.drop_inv_item_to_loc(I, src)
 				original_fax = I
 				if(!jammed)
-					to_chat(user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
+					to_chat(user, SPAN_NOTICE("You put the [original_fax.name] into [src]."))
 				else
-					to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
+					to_chat(user, SPAN_NOTICE("[src] jammed! It can only accept up to five papers at once."))
 					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
 				flick("[initial(icon_state)]send", src)
 			. = TRUE
@@ -354,7 +354,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 			if(!scan || !ishuman(user))
 				to_chat(user, SPAN_WARNING("You can't do that."))
 				return
-			to_chat(user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
+			to_chat(user, SPAN_NOTICE("You take [scan] out of [src]."))
 			scan.forceMove(user.loc)
 			if(!user.get_active_hand())
 				user.put_in_hands(scan)

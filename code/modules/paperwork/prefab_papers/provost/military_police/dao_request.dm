@@ -118,6 +118,7 @@
 	dat += ""
 	dat += "<div class=\"message-body-text\">"
 	dat += "<p class=\"subheading\"><b style=\"color:blue;\"><u>To be completed by Military Police</u></b></p><br>"
+	dat += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"
 	dat += "<b>Appeal Reference Number:</b> <span class=\"paper_field\"></span><br>"
 	dat += "<b>Department Representative:</b> <span class=\"paper_field\"></span><br>"
 	dat += "<b>Charges of the accused, with reasoning:</b><br><span class=\"paper_field\"></span><br><br>"

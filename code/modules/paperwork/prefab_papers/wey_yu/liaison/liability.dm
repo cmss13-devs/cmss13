@@ -121,7 +121,7 @@
 	dat += "<!-- Message -->"
 	dat += "<div class='message-body-text'>"
 	dat += "<p>I, <span class=\"paper_field\"></span>, forfeit all right to bring a suit against the Weyland Yutani (Space) Corporation for any reason on the <span class=\"paper_field\"></span> site. This agreement releases the Weyland Yutani (Space) Corporation from all liability relating to injuries and financial responsibilities for injuries that may occur on the <span class=\"paper_field\"></span> site.</p>"
-	dat += "<p>Signature: <span class=\"paper_field\"></span><br>Liaison Signature: <span class=\"paper_field\"></span><br>Date: <span class=\"paper_field\"></span></p>"
+	dat += "<p>Signature: <span class=\"paper_field\"></span><br>Liaison Signature: <span class=\"paper_field\"></span><b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font></p>"
 	dat += "</div> <!-- /message-body-text -->"
 	dat += ""
 	dat += "<div class='message-signature-text'>"

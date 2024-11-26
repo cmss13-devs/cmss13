@@ -97,6 +97,7 @@
 	dat += ""
 	dat += ""
 	dat += "<div class=\"message-body-text\">"
+	dat += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"
 	dat += "<b>Person Identification:</b><br><span class=\"paper_field\"></span>"
 	dat += "<br><br>"
 	dat += "<b>Reasoning:</b><br><span class=\"paper_field\"></span>"

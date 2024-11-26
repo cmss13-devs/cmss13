@@ -118,6 +118,7 @@
 	dat += ""
 	dat += "<div class=\"message-body-text\">"
 	dat += "<p class=\"subheading\"><b style=\"color:red;\"><u>DAO Request Decision</u></b></p><br>"
+	dat += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"
 	dat += "<b>Appeal Reference Number:</b> <span class=\"paper_field\"></span><br>"
 	dat += "<b>Determinant Officer:</b> <span class=\"paper_field\"></span><br>"
 	dat += "<b>Reason of Response:</b><br><span class=\"paper_field\"></span><br><br>"

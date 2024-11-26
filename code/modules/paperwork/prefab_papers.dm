@@ -144,6 +144,14 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "PR201 - Provost Missive"
 	doc_datum_type = /datum/prefab_document/provost/highcom/standard
 
+/obj/item/paper/prefab/provost/arrest_warrant
+	document_title = "UAM211 - Arrest Warrant"
+	doc_datum_type = /datum/prefab_document/provost/highcom/arrest_warrant
+
+/obj/item/paper/prefab/provost/custody_transfer
+	document_title = "PR238 - Custody Transfer Order"
+	doc_datum_type = /datum/prefab_document/provost/highcom/custody_transfer
+
 /obj/item/paper/prefab/provost/dao_response
 	document_title = "PR301c - Delayed Action Order"
 	doc_datum_type = /datum/prefab_document/provost/highcom/dao_response
@@ -151,6 +159,14 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/uscm_highcom
 	name = "Blank USCMHC Document"
 	document_category = PAPER_CATEGORY_USCM_HC
+
+/obj/item/paper/prefab/uscm_highcom/arrest_warrant
+	document_title = "UAM211 - Arrest Warrant"
+	doc_datum_type = /datum/prefab_document/uscm/highcom/arrest_warrant
+
+/obj/item/paper/prefab/uscm_highcom/custody_transfer
+	document_title = "UAM238 - Custody Transfer Order"
+	doc_datum_type = /datum/prefab_document/uscm/highcom/custody_transfer
 
 /obj/item/paper/prefab/uscm_highcom/standard
 	document_title = "UAM422 - USCM High Command Missive"

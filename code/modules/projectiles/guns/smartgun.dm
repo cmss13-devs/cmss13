@@ -296,7 +296,7 @@
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Frontline Mode"
-	action_icon_state = "iff_toggle_on"
+	action_icon_state = "frontline_toggle_off"
 	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
 	button.name = name
 	button.overlays.Cut()
@@ -307,16 +307,16 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_frontline_mode(owner)
 	if(G.frontline_enabled)
-		action_icon_state = "iff_toggle_off"
+		action_icon_state = "frontline_toggle_on"
 	else
-		action_icon_state = "iff_toggle_on"
+		action_icon_state = "frontline_toggle_off"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle IFF"
-	action_icon_state = "id_lock_locked"
+	action_icon_state = "iff_toggle_on"
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -326,9 +326,9 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_lethal_mode(usr)
 	if(G.iff_enabled)
-		action_icon_state = "id_lock_locked"
+		action_icon_state = "iff_toggle_on"
 	else
-		action_icon_state = "id_lock_unlocked"
+		action_icon_state = "iff_toggle_off"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 

@@ -132,40 +132,53 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 
 	switch(action)
 		if("recache")
-			var/is_uscm = params["uscm"]
+			var/page = params["page"]
 			var/datum/flattened_tacmap/selected_flat
-			if(is_uscm)
-				if(uscm_selection == LATEST_SELECTION)
-					return TRUE
-				selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
-			else
-				if(xeno_selection == LATEST_SELECTION)
-					return TRUE
-				selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+			switch(page)
+				if(0)
+					if(uscm_selection == LATEST_SELECTION)
+						return TRUE
+					selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+				if(1)
+					if(xeno_selection == LATEST_SELECTION)
+						return TRUE
+					selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+				if(2)
+					if(upp_selection == LATEST_SELECTION)
+						return TRUE
+					selected_flat = GLOB.upp_flat_tacmap_data[upp_selection + 1]
 			SSassets.transport.send_assets(client_user, selected_flat.asset_key)
 			last_update_time = world.time
 			return TRUE
 
 		if("change_selection")
-			var/is_uscm = params["uscm"]
-			if(is_uscm)
-				uscm_selection = params["index"]
-			else
-				xeno_selection = params["index"]
+			var/page = params["page"]
+			switch(page)
+				if(0)
+					uscm_selection = params["index"]
+				if(1)
+					xeno_selection = params["index"]
+				if(2)
+					upp_selection = params["index"]
 			last_update_time = world.time
 			return TRUE
 
 		if("delete")
-			var/is_uscm = params["uscm"]
+			var/page = params["page"]
 			var/datum/svg_overlay/selected_svg
-			if(is_uscm)
-				if(uscm_selection == LATEST_SELECTION)
-					return TRUE
-				selected_svg = GLOB.uscm_svg_tacmap_data[uscm_selection + 1]
-			else
-				if(xeno_selection == LATEST_SELECTION)
-					return TRUE
-				selected_svg = GLOB.xeno_svg_tacmap_data[xeno_selection + 1]
+			switch(page)
+				if(0)
+					if(uscm_selection == LATEST_SELECTION)
+						return TRUE
+					selected_svg = GLOB.uscm_svg_tacmap_data[uscm_selection + 1]
+				if(1)
+					if(xeno_selection == LATEST_SELECTION)
+						return TRUE
+					selected_svg = GLOB.xeno_svg_tacmap_data[xeno_selection + 1]
+				if(2)
+					if(upp_selection == LATEST_SELECTION)
+						return TRUE
+					selected_svg = GLOB.upp_svg_tacmap_data[upp_selection + 1]
 			selected_svg.svg_data = null
 			last_update_time = world.time
 			message_admins("[key_name_admin(usr)] deleted the <a href='?tacmaps_panel=1'>tactical map drawing</a> by [selected_svg.ckey].")

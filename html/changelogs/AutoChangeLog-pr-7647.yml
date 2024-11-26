@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - qol: "when lobby joining as UPP you getassigned to equivalen of prefered USCM squad if possible"

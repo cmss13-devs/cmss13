@@ -731,6 +731,7 @@
 /obj/item/clothing/glasses/welding/superior/prescription
 	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
 	prescription = TRUE
+
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
@@ -767,6 +768,14 @@
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/glasses/sunglasses/big/fake
+	name = "\improper BiMax personal shades"
+	desc = "These are a bargain-bin pair of BiMex-style sunglasses—emphasis on the style. Marketed as 'BiMax,' with an 'A' to sidestep copyright, these knockoffs are popular with penny-pinching spacers and wannabe badasses. While the real deal boasts patented mirror refraction for atomic flash, solar radiation, and targeting laser protection, these cut-rate imitations barely keep UV rays at bay. As for that famous story of a laser pistol reflecting off the originals? Good luck finding anyone who believes these could pull it off. But hey, they’re cheap, and their 'Save the Budget and Look Cool Doing It' slogan really sells it."
+	icon_state = "bigsunglasses"
+	item_state = "bigsunglasses"
+	eye_protection = FALSE
+	clothing_traits = FALSE
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"

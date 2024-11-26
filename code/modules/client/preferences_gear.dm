@@ -151,6 +151,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/sunglasses/big
 	cost = 4
 
+/datum/gear/eyewear/bimax_shades
+	display_name = "BiMax personal shades"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake
+
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
@@ -1057,11 +1061,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/smoking/wypacket
 	display_name = "Pack Of Weyland-Yutani Gold"
 	path = /obj/item/storage/fancy/cigarettes/wypacket
-	cost = 2
-
-/datum/gear/smoking/blackpack
-	display_name = "Pack Of Executive Select"
-	path = /obj/item/storage/fancy/cigarettes/blackpack
 	cost = 2
 
 /datum/gear/smoking/kpack

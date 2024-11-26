@@ -66,6 +66,7 @@
 		// the docking port.
 
 		for(var/obj/docking_port/mobile/port in place)
+			port.calculate_docking_port_information(src)
 			SSatoms.InitializeAtoms(list(port))
 			if(register)
 				port.register()

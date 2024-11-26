@@ -11,7 +11,7 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "m" = (
-/obj/effect/landmark/ert_spawns,
+/obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "r" = (
@@ -38,7 +38,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/landmark/ert_spawns,
+/obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "A" = (
@@ -46,12 +46,8 @@
 	icon_state = "W";
 	dir = 1
 	},
-/obj/effect/landmark/ert_spawns,
+/obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert)
-"B" = (
-/obj/docking_port/mobile/umbilical_cord,
-/turf/closed/wall/almayer/white,
 /area/shuttle/ert)
 "H" = (
 /obj/effect/decal/warning_stripes{
@@ -64,6 +60,12 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "Q" = (
+/turf/closed/wall/almayer/white,
+/area/shuttle/ert)
+"S" = (
+/obj/docking_port/mobile/port_umbilical_cord{
+	dir = 4
+	},
 /turf/closed/wall/almayer/white,
 /area/shuttle/ert)
 "Z" = (
@@ -88,7 +90,7 @@ a
 a
 a
 a
-B
+S
 "}
 (2,1,1) = {"
 a

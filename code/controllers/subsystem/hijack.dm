@@ -123,6 +123,21 @@ SUBSYSTEM_DEF(hijack)
 		spaceport = new spaceport_to_use
 
 	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
+		if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_POSTHIJACK_ERT))
+			return
+
+		var/to_spawn = pick(spaceport.allies)
+		var/datum/emergency_call/emergency_call = new to_spawn
+		if(!emergency_call)
+			return
+
+		emergency_call.name_of_spawn = /obj/effect/landmark/ert_spawns/umbilical
+		emergency_call.activate(TRUE, FALSE)
+
+		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
+
+		return
+
 
 	if(current_progress >= required_progress)
 		if(hijack_status < HIJACK_OBJECTIVES_COMPLETE)
@@ -476,6 +491,21 @@ SUBSYSTEM_DEF(hijack)
 	marine_announcement(spaceport.docking_message, spaceport.name)
 	hijack_status = HIJACK_OBJECTIVES_DOCKED
 
+	var/obj/docking_port/stationary/dock_at = pick(/obj/docking_port/stationary/emergency_response/external/hangar_port, /obj/docking_port/stationary/emergency_response/external/hangar_starboard)
+	var/stationary = SSshuttle.getDock(dock_at::id)
+	var/datum/map_template/shuttle
+
+	switch(dock_at)
+		if(/obj/docking_port/stationary/emergency_response/external/hangar_port)
+			shuttle = SSmapping.shuttle_templates[/datum/map_template/shuttle/port_umbilical_cord::shuttle_id]
+		if(/obj/docking_port/stationary/emergency_response/external/hangar_starboard)
+			shuttle = SSmapping.shuttle_templates[/datum/map_template/shuttle/starboard_umbilical_cord::shuttle_id]
+
+	if(!shuttle || !stationary)
+		return
+
+	SSshuttle.action_load(shuttle, stationary)
+
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE)
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
@@ -515,8 +545,14 @@ SUBSYSTEM_DEF(hijack)
 		drop = TRUE,
 	)
 
-/obj/docking_port/mobile/umbilical_cord
-	name = "Umbilical Cord"
-	id = "umbilical_cord"
+/obj/docking_port/mobile/port_umbilical_cord
+	name = "Port Umbilical Cord"
+	id = "port_umbilical_cord"
+	preferred_direction = WEST
 
-/obj/effect/landmark/ert_spawns
+/obj/docking_port/mobile/starboard_umbilical_cord
+	name = "Starboard Umbilical Cord"
+	id = "starboard_umbilical_cord"
+	preferred_direction = WEST
+
+/obj/effect/landmark/ert_spawns/umbilical

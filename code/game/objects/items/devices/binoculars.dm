@@ -72,6 +72,7 @@
 /obj/item/device/binoculars/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 	UnregisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION)
+	set_raised(FALSE, user)
 
 /obj/item/device/binoculars/proc/interaction_handler()
 	return COMPONENT_HUMAN_MOVEMENT_KEEP_USING

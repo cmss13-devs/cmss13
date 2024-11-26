@@ -136,7 +136,9 @@
 								if("classic")
 									prefix = "c_"
 						for(var/obj/item/weapon/gun/guntype as anything in guntypes)
-							check(obj_path, belt_gun.icon, prefix + initial(guntype.base_gun_icon), guntype, "gun_underlay")
+							if(isnull(initial(guntype.icon_state)))
+								continue
+							check(obj_path, belt_gun.icon, prefix + initial(guntype.icon_state), guntype, "gun_underlay")
 					check(obj_path, belt.icon, "+[base_state]_half", "This icon_state is needed for fullness overlays", check_null=FALSE)
 					check(obj_path, belt.icon, "+[base_state]_full", "This icon_state is needed for fullness overlays", check_null=FALSE)
 		qdel(spawned)

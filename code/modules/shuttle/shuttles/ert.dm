@@ -362,3 +362,7 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/umbilical_cord
+	name = "Umbilical Cord"
+	shuttle_id = /obj/docking_port/mobile/umbilical_cord::id

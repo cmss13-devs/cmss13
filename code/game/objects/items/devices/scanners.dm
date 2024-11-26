@@ -439,7 +439,7 @@ K9 SCANNER
 /obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
 	. = ..()
 	overlays.Cut()
-	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
+	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_flash")
 	if(scanning)
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
 		switch(scan_value)

@@ -445,3 +445,6 @@
       on roundstart.
   realforest2001:
   - maptweak: Lifeboat air pipes are now reinforced (again) and no longer explode.
+2024-11-26:
+  Drdodo:
+  - bugfix: now CEs can buy all of their essentials

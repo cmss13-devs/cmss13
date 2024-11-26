@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscdel: "removes navbeacon code"

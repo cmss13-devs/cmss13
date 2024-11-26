@@ -432,3 +432,19 @@
       extinguishing smoke, a gigantic leap, group bulwark shield that caps all incoming
       damage, and very strong pheromones. Cannot be body blocked.
   - imageadd: Sprites by Mikoka Wei and Zenith
+2024-11-25:
+  Drathek:
+  - balance: emp_pulse, flash_powder, and foam reactions are no longer possible in
+      mobs
+  - balance: flash_powder has been reworked to attach to its holder (so it can be
+      destroyed), and values retuned/capped.
+  - refactor: Refactored the metabolize proc for chemistry reactors (removed required_other
+      and changed required_container to use a path check instead)
+  efzapa:
+  - maptweak: Replaced a shutter in Lambda on Solaris Ridge so Larva aren't hard trapped
+      on roundstart.
+  realforest2001:
+  - maptweak: Lifeboat air pipes are now reinforced (again) and no longer explode.
+2024-11-26:
+  Drdodo:
+  - bugfix: now CEs can buy all of their essentials

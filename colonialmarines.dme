@@ -883,7 +883,6 @@
 #include "code\game\machinery\machinery.dm"
 #include "code\game\machinery\mining.dm"
 #include "code\game\machinery\misc.dm"
-#include "code\game\machinery\navbeacon.dm"
 #include "code\game\machinery\newscaster.dm"
 #include "code\game\machinery\nuclearbomb.dm"
 #include "code\game\machinery\OpTable.dm"

@@ -6,7 +6,7 @@
 
 /datum/ammo/bullet/smartgun
 	name = "smartgun bullet"
-	icon_state = "bullet_IFF"
+	icon_state = "bullet_iff"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
@@ -25,7 +25,7 @@
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "armor-piercing smartgun bullet"
-	icon_state = "bulletAP_IFF"
+	icon_state = "bullet_ap_iff"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	accurate_range = 12
@@ -43,7 +43,7 @@
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"
-	icon_state = "bullet_IFF"
+	icon_state = "bullet_iff"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
@@ -60,7 +60,7 @@
 	damage = 44
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
-	icon_state = "bulletAP_IFF"
+	icon_state = "bullet_ap_iff"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	accurate_range = 22
@@ -77,7 +77,7 @@
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun bullet"
-	icon_state = "bullet_IFF"
+	icon_state = "bullet_iff"
 	damage = 30
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 15
@@ -98,7 +98,7 @@
 
 /datum/ammo/bullet/smartgun/holo_target/ap
 	name = "armor-piercing smartgun bullet"
-	icon_state = "bulletAP_IFF"
+	icon_state = "bullet_ap_iff"
 
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2

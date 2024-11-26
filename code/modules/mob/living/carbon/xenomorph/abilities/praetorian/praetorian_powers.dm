@@ -870,8 +870,8 @@
 			if(!check_clear_path_to_target(valkyrie, human))
 				continue
 			shake_camera(human, 2, 3)
-			playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
 			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
+		playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
 	else
 		valkyrie.throw_atom(get_step_towards(affected_atom, valkyrie), gallop_jumprange, SPEED_FAST, valkyrie)
 		apply_cooldown()

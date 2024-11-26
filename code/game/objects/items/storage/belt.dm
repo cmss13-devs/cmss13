@@ -50,13 +50,15 @@
 
 /obj/item/storage/belt/update_icon()
 	overlays.Cut()
+
 	if(skip_fullness_overlays)
 		return
 	if(!length(contents))
 		return
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
-	else if(length(contents) <= storage_slots * 0.5)
+
+	if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -1024,6 +1026,17 @@
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
 	)
+	cant_hold = list(
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/es4, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
 
 /obj/item/storage/belt/gun/post_skin_selection()
 	base_icon = icon_state
@@ -1036,11 +1049,14 @@
 /obj/item/storage/belt/gun/update_icon()
 	overlays.Cut()
 
+	if(skip_fullness_overlays)
+		return
 	if(content_watchers && flap)
 		return
 	var/magazines = length(contents) - length(holstered_guns)
 	if(!magazines)
 		return
+
 	if(magazines <= (storage_slots - length(holster_slots)) * 0.5) //Don't count slots reserved for guns, even if they're empty.
 		overlays += "+[base_icon]_half"
 	else
@@ -1203,6 +1219,15 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/es4, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
 	)
 	flags_atom = FPRINT // has gamemode skin
 
@@ -1699,9 +1724,23 @@
 		/obj/item/ammo_magazine/pistol/rubber,
 		/obj/item/ammo_magazine/pistol/mod88/rubber) //Ivan doesn't bring children's ammo.
 
+	var/list/bad_guns = list(
+		/obj/item/weapon/gun/pistol/m4a3/training,
+		/obj/item/weapon/gun/pistol/mod88/training,
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/es4, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
+
 	var/list/picklist = subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags + training_mags)
 	var/random_mag = pick(picklist)
-	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - list(/obj/item/weapon/gun/pistol/m4a3/training, /obj/item/weapon/gun/pistol/mod88/training))
+	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - bad_guns)
 	handle_item_insertion(new guntype())
 	for(var/total_storage_slots in 2 to storage_slots) //minus templates
 		new random_mag(src)

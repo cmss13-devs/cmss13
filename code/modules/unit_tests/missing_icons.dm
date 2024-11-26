@@ -119,9 +119,26 @@
 					if(ispath(obj_path, /obj/item/storage/belt/gun))
 						var/obj/item/storage/belt/gun/belt_gun = spawned
 						base_state = belt_gun.base_icon
-					check(obj_path, belt.icon, "+[base_state]_half", "This icon_state is needed for overlays", check_null=FALSE)
-					check(obj_path, belt.icon, "+[base_state]_full", "This icon_state is needed for overlays", check_null=FALSE)
-
+						var/list/guntypes = list()
+						for(var/path in belt_gun.can_hold)
+							if(ispath(path, /obj/item/weapon/gun))
+								guntypes |= typesof(path)
+						for(var/path in belt_gun.cant_hold)
+							if(ispath(path, /obj/item/weapon/gun))
+								guntypes -= typesof(path)
+						var/prefix = ""
+						if(belt_gun.gun_has_gamemode_skin)
+							switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+								if("snow")
+									prefix = "s_"
+								if("desert")
+									prefix = "d_"
+								if("classic")
+									prefix = "c_"
+						for(var/obj/item/weapon/gun/guntype as anything in guntypes)
+							check(obj_path, belt_gun.icon, prefix + initial(guntype.base_gun_icon), guntype, "gun_underlay")
+					check(obj_path, belt.icon, "+[base_state]_half", "This icon_state is needed for fullness overlays", check_null=FALSE)
+					check(obj_path, belt.icon, "+[base_state]_full", "This icon_state is needed for fullness overlays", check_null=FALSE)
 		qdel(spawned)
 
 
@@ -158,8 +175,12 @@
 		var/overlay_note = note ? note + " - Overlay" : "Overlay"
 		var/underlay_note = note ? note + " - Underlay" : "Underlay"
 		for(var/mutable_appearance/layer as anything in thing.overlays)
+			if(!layer.icon_state)
+				continue // overlay icon_state is never null it seems
 			check(atom_path, layer.icon || thing.icon, layer.icon_state, overlay_note)
 		for(var/mutable_appearance/layer as anything in thing.underlays)
+			if(!layer.icon_state)
+				continue // underlay icon_state is never null it seems
 			check(atom_path, layer.icon || thing.icon, layer.icon_state, underlay_note)
 
 /datum/unit_test/missing_icons/proc/check(thing_path, icon, icon_state, note, variable_name="icon_state", check_null=TRUE, warning_only=FALSE)

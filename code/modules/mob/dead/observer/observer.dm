@@ -63,8 +63,10 @@
 	var/datum/action/minimap/observer/minimap
 	///The last message for this player with their larva queue information
 	var/larva_queue_cached_message
-	///Used to bypass time of death checks such as when being selected for larva.
+	///Used to bypass time of death checks such as when being selected for larva
 	var/bypass_time_of_death_checks = FALSE
+	///Used to bypass time of death checks for a successful hug
+	var/bypass_time_of_death_checks_hugger = FALSE
 
 	alpha = 127
 

@@ -163,6 +163,7 @@
 		return
 	if(client)
 		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	timeofdeath = world.time
 	qdel(src)
 	return did_hug
 

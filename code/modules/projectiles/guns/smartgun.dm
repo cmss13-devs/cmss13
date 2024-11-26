@@ -361,7 +361,6 @@
 	balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
-
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
 	if (!frontline_enabled)
 		muzzle_flash = "muzzle_flash_blue"
@@ -372,6 +371,9 @@
 
 	SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	recalculate_attachment_bonuses()
+///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
+///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
+	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
@@ -427,6 +429,9 @@
 		MD.iff_signal = null
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
 		recalculate_attachment_bonuses()
+///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
+///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
+	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!requires_battery)

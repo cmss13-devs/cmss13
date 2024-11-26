@@ -75,8 +75,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 
 	var/upp_length = length(GLOB.upp_svg_tacmap_data)
 	if(upp_selection < 0 || upp_selection >= upp_length)
-		upp_selection = xeno_length - 1
-	for(var/i = 1, i <= xeno_length, i++)
+		upp_selection = upp_length - 1
+	for(var/i = 1, i <= upp_length, i++)
 		var/datum/svg_overlay/current_svg = GLOB.upp_svg_tacmap_data[i]
 		upp_ckeys += current_svg.ckey
 		upp_names += current_svg.name

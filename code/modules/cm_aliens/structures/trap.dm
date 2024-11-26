@@ -191,7 +191,6 @@
 						continue
 					SP.apply_spray(H)
 			clear_tripwires()
-	set_state()
 	if(!A)
 		return
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)

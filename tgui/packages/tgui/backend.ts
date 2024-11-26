@@ -269,6 +269,7 @@ type BackendState<TData> = {
       name: string;
       observer: number;
     };
+    styles: string;
   };
   data: TData;
   shared: Record<string, any>;

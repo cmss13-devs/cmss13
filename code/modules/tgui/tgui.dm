@@ -245,6 +245,7 @@
 		"status" = status,
 		"interface" = interface,
 		"refreshing" = refreshing,
+		"styles" = MAP_STYLESHEET,
 		"window" = list(
 			"key" = window_key,
 			"size" = window_size,

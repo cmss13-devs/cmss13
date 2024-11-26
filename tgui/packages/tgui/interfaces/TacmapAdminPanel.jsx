@@ -8,19 +8,16 @@ import { DrawnMap } from './DrawnMap';
 const PAGES = [
   {
     title: 'USCM',
-    component: () => FactionPage,
     color: 'blue',
     icon: 'medal',
   },
   {
     title: 'Hive',
-    component: () => FactionPage,
     color: 'purple',
     icon: 'star',
   },
   {
     title: 'UPP',
-    component: () => FactionPage,
     color: 'darkgreen',
     icon: 'medal',
   },
@@ -53,7 +50,12 @@ export const TacmapAdminPanel = (props) => {
 
   const [pageIndex, setPageIndex] = useState(0);
 
-  const PageComponent = PAGES[pageIndex].component();
+  const maps = [uscm_map, xeno_map, upp_map];
+  const svgs = [uscm_svg, xeno_svg, upp_svg];
+  const ckeys = [uscm_ckeys, xeno_ckeys, upp_ckeys];
+  const names = [uscm_names, xeno_names, upp_names];
+  const times = [uscm_times, xeno_times, upp_times];
+  const selections = [uscm_selection, xeno_selection, upp_selection];
 
   return (
     <Window
@@ -66,41 +68,35 @@ export const TacmapAdminPanel = (props) => {
         <Stack direction="column" fill>
           <Stack.Item basis="content" grow={0} pb={1}>
             <Tabs>
-              {PAGES.map((page, i) => {
-                if (page.canAccess && !page.canAccess(data)) {
-                  return;
-                }
-
-                return (
-                  <Tabs.Tab
-                    key={i}
-                    color={page.color}
-                    selected={i === pageIndex}
-                    icon={page.icon}
-                    onClick={() => setPageIndex(i)}
-                  >
-                    {page.title}
-                  </Tabs.Tab>
-                );
-              })}
+              {PAGES.map((page, i) => (
+                <Tabs.Tab
+                  key={i}
+                  color={page.color}
+                  selected={i === pageIndex}
+                  icon={page.icon}
+                  onClick={() => setPageIndex(i)}
+                >
+                  {page.title}
+                </Tabs.Tab>
+              ))}
             </Tabs>
           </Stack.Item>
           <Stack.Item mx={0} basis="content">
-            <PageComponent
-              svg={pageIndex === 0 ? uscm_svg : xeno_svg}
-              ckeys={pageIndex === 0 ? uscm_ckeys : xeno_ckeys}
-              names={pageIndex === 0 ? uscm_names : xeno_names}
-              times={pageIndex === 0 ? uscm_times : xeno_times}
-              selected_map={pageIndex === 0 ? uscm_selection : xeno_selection}
-              is_uscm={pageIndex === 0}
+            <FactionPage
+              pageIndex={pageIndex}
+              svg={svgs[pageIndex]}
+              ckeys={ckeys[pageIndex]}
+              names={names[pageIndex]}
+              times={times[pageIndex]}
+              selected_map={selections[pageIndex]}
             />
           </Stack.Item>
           <Stack.Item mx={0} grow={0}>
             <div justify="center" align="center" fontSize="30px">
               <DrawnMap
                 key={last_update_time + pageIndex}
-                svgData={pageIndex === 0 ? uscm_svg : xeno_svg}
-                flatImage={pageIndex === 0 ? uscm_map : xeno_map}
+                svgData={svgs[pageIndex]}
+                flatImage={maps[pageIndex]}
                 backupImage={map_fallback}
               />
             </div>
@@ -113,11 +109,11 @@ export const TacmapAdminPanel = (props) => {
 
 const FactionPage = (props) => {
   const { act } = useBackend();
-  const { svg, ckeys, names, times, selected_map, is_uscm } = props;
+  const { svg, ckeys, names, times, selected_map, pageIndex } = props;
 
   return (
     <Section
-      title={is_uscm ? 'USCM Maps' : 'Xenomorph Maps'}
+      title={`${PAGES[pageIndex].title} Maps`}
       buttons={
         <Button
           icon="fa-solid fa-download"
@@ -126,7 +122,7 @@ const FactionPage = (props) => {
           ml={0.5}
           onClick={() =>
             act('recache', {
-              uscm: is_uscm,
+              page: pageIndex,
             })
           }
         >
@@ -148,7 +144,7 @@ const FactionPage = (props) => {
               disabled={selected_map === ckey_index}
               onClick={() =>
                 act('change_selection', {
-                  uscm: is_uscm,
+                  page: pageIndex,
                   index: ckey_index,
                 })
               }
@@ -170,7 +166,7 @@ const FactionPage = (props) => {
               disabled={selected_map !== ckey_index || svg === null}
               onClick={() =>
                 act('delete', {
-                  uscm: is_uscm,
+                  page: pageIndex,
                   index: ckey_index,
                 })
               }

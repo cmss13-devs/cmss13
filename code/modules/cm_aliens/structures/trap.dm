@@ -170,7 +170,6 @@
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
 			FH.hivenumber = hivenumber
 			set_hive_data(FH, hivenumber)
-			set_state()
 			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
 			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
@@ -179,7 +178,6 @@
 			trap_type_name = "gas"
 			smoke_system.set_up(2, 0, src.loc)
 			smoke_system.start()
-			set_state()
 			clear_tripwires()
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trap_type_name = "acid"
@@ -192,8 +190,8 @@
 					if(H.ally_of_hivenumber(hivenumber))
 						continue
 					SP.apply_spray(H)
-			set_state()
 			clear_tripwires()
+	set_state()
 	if(!A)
 		return
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)

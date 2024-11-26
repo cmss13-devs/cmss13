@@ -359,7 +359,6 @@
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	var/active = FALSE
 	var/obj/structure/machinery/camera/correspondent/linked_cam
-	var/next_time_activate = 0
 
 /obj/item/device/broadcasting/Initialize(mapload, ...)
 	. = ..()
@@ -380,10 +379,6 @@
 
 
 /obj/item/device/broadcasting/proc/turn_on(mob/user)
-	if(world.time < next_time_activate)
-		to_chat(user, SPAN_WARNING("[src] is not ready to go live yet, try again."))
-		return
-	next_time_activate = world.time + 2.5 SECONDS
 	active = TRUE
 	flags_atom |= (USES_HEARING|USES_SEEING)
 	handle_move()

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 /turf/open/space
 	icon = 'icons/turf/floors/space.dmi'
 	name = "\proper space"
@@ -26,6 +20,9 @@
 	. = ..()
 	if(!istype(src, /turf/open/space/transit))
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
+	if(is_mainship_level(z))
+		SShijack.ftl_turfs += src
 
 /turf/open/space/attack_hand(mob/user)
 	if ((user.is_mob_restrained() || !( user.pulling )))

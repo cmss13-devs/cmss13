@@ -5,10 +5,13 @@ SUBSYSTEM_DEF(hijack)
 	priority   = SS_PRIORITY_HIJACK
 	init_order = SS_INIT_HIJACK
 
-	///Required progress to evacuate safely via lifeboats
+	///Required progress to safely arrive at our destination
 	var/required_progress = 100
 
-	///Current progress towards evacuating safely via lifeboats
+	/// The progress at which the ship will enter FTL
+	var/ftl_required_progress = 50
+
+	///Current progress towards the FTL jump
 	var/current_progress = 0
 
 	/// How much progress is required to early launch
@@ -83,6 +86,15 @@ SUBSYSTEM_DEF(hijack)
 	/// If ARES has announced the 50% point yet for SD
 	var/ares_sd_announced = FALSE
 
+	/// If the ship is currently transiting in FTL
+	var/in_ftl = FALSE
+
+	/// Where this ship is currently transiting to
+	var/datum/spaceport/spaceport
+
+	/// A list of turfs to edit to FTL-ness
+	var/list/ftl_turfs = list()
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
@@ -107,10 +119,19 @@ SUBSYSTEM_DEF(hijack)
 		hijack_status = HIJACK_OBJECTIVES_STARTED
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
+		var/spaceport_to_use = pick(subtypesof(/datum/spaceport))
+		spaceport = new spaceport_to_use
+
+	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
+
 	if(current_progress >= required_progress)
 		if(hijack_status < HIJACK_OBJECTIVES_COMPLETE)
 			hijack_status = HIJACK_OBJECTIVES_COMPLETE
+			leave_ftl()
+			addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
+		return
 
+	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH)
 		if(sd_unlocked && overloaded_generators)
 			sd_time_remaining -= wait
 			if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
@@ -155,10 +176,16 @@ SUBSYSTEM_DEF(hijack)
 	else
 		estimated_time_left = INFINITY
 
+		if(in_ftl)
+			initiate_ftl_crash()
+
 	if(current_progress >= announce_checkpoint)
 		announce_progress()
 		announce_checkpoint += initial(announce_checkpoint)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
+
+	if(current_progress >= ftl_required_progress && !in_ftl)
+		enter_ftl()
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
@@ -171,7 +198,7 @@ SUBSYSTEM_DEF(hijack)
 		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
 		progress_areas[cycled_area] = cycled_area.power_equip
 
-	message += "\nDue to low orbit, extra fuel is required for non-surface evacuations.\nMaintain fueling functionality for optimal evacuation conditions."
+	message += "\nCritical damage sustained to ship systems. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
@@ -218,15 +245,14 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat emergency early launch is now available.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 50 percent. Tachyon field accelerators currently charging.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 100 percent. Tachyon field accelerators fully charged, quantum jump initiating. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
-			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
-			if(!admin_sd_blocked)
-				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
+			marine_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name].", HIJACK_ANNOUNCE)
+
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
@@ -299,7 +325,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct()
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
-	marine_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
+	marine_announcement("Hyperdrive tachyon shunt no longer operable. Remaining fuel transferred to emergency escape vessels and on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/reactor/source, new_overloading)
 	SIGNAL_HANDLER
@@ -429,3 +455,68 @@ SUBSYSTEM_DEF(hijack)
 		sleep(30 SECONDS)
 		log_game("Rebooting due to nuclear detonation.")
 		world.Reboot()
+
+
+/datum/controller/subsystem/hijack/proc/toggle_ftl_status()
+	in_ftl = !in_ftl
+
+	if(in_ftl)
+		for(var/turf/open/space/space_turf as anything in ftl_turfs)
+			var/which_turf = ((space_turf.x - 9 * space_turf.y) % 15) + 1
+			if(which_turf < 1)
+				which_turf += 15
+
+			space_turf.icon_state = "speedspace_ew_[which_turf]"
+		return
+
+	for(var/turf/open/space/space_turf as anything in ftl_turfs)
+		space_turf.icon_state = "[((space_turf.x + space_turf.y) ^ ~(space_turf.x * space_turf.y) + space_turf.z) % 25]"
+
+/datum/controller/subsystem/hijack/proc/initiate_docking_procedures()
+	marine_announcement(spaceport.docking_message, spaceport.name)
+	hijack_status = HIJACK_OBJECTIVES_DOCKED
+
+/datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
+	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE)
+	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
+
+	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
+
+	if(!admin_sd_blocked)
+		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 15 SECONDS)
+
+/datum/controller/subsystem/hijack/proc/enter_ftl()
+	shakeship(
+		sstrength = 2,
+		stime = 1,
+		drop = FALSE,
+		osound = FALSE
+	)
+
+	toggle_ftl_status()
+
+	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE)
+
+/datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally)
+	toggle_ftl_status()
+
+	if(!unintentionally)
+		shakeship(
+			sstrength = 2,
+			stime = 1,
+			drop = FALSE,
+			osound = FALSE
+		)
+		return
+
+	shakeship(
+		sstrength = 5,
+		stime = 3,
+		drop = TRUE,
+	)
+
+/obj/docking_port/mobile/umbilical_cord
+	name = "Umbilical Cord"
+	id = "umbilical_cord"
+
+/obj/effect/landmark/ert_spawns

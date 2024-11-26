@@ -152,16 +152,141 @@
 	sharp = 0
 	throw_range = 6
 	w_class = SIZE_SMALL  // Size for all modes
+	var/mode = "swiss_stock"
+	attack_verb = list("hit")
+	var/loaded
 
 // The tool modes list
 	var/list/tool_modes = list(
-	"/obj/item/weapon/swiss_army_knife/knife",
-	"/obj/item/weapon/swiss_army_knife/screwdriver",
-	"/obj/item/weapon/swiss_army_knife/wirecutters",
-	"/obj/item/weapon/swiss_army_knife/spoon",
-	"/obj/item/weapon/swiss_army_knife/can_opener",
-	"/obj/item/weapon/swiss_army_knife/corkscrew"
+	"swiss_stock",
+	"swiss_knife",
+	"swiss_screwdriver",
+	"swiss_cutters",
+	"swiss_spoon",
+	"swiss_opener",
+	"swiss_corkscrew"
 )
+
+/obj/item/weapon/swiss_army_knife/Initialize(mapload, ...)
+	. = ..()
+	create_reagents(5)
+
+/obj/item/weapon/swiss_army_knife/attack_self(mob/user)
+	. = ..()
+	if(mode != "swiss_stock")
+		switch_tool("swiss_stock")
+	else
+		switch_tool(pick(tool_modes))
+
+/obj/item/weapon/swiss_army_knife/attack(mob/living/carbon/mob as mob, mob/living/carbon/user as mob)
+	if(mode == "swiss_cutters")
+		if((mob.handcuffed) && (istype(mob.handcuffed, /obj/item/restraint/adjustable/cable)))
+			user.visible_message("\The [usr] cuts \the [mob]'s restraints with \the [src]!",\
+			"You cut \the [mob]'s restraints with \the [src]!",\
+			"You hear cable being cut.")
+			mob.handcuffed = null
+			mob.handcuff_update()
+			return
+		else
+			..()
+	if(mode == "swiss_spoon")
+		if(!istype(mob))
+			return ..()
+		if(user.a_intent != INTENT_HELP)
+			return ..()
+
+		if (reagents.total_volume > 0)
+
+			var/fullness = mob.nutrition + (mob.reagents.get_reagent_amount("nutriment") * 25)
+			if(fullness > NUTRITION_HIGH)
+				to_chat(user, SPAN_WARNING("[user == mob ? "You" : "They"] don't feel like eating more right now."))
+				return
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(mob, reagents.total_volume)
+			if(mob == user)
+				for(var/mob/O in viewers(mob, null))
+					O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
+				mob.reagents.add_reagent("nutriment", 1)
+			else
+				for(var/mob/O in viewers(mob, null))
+					O.show_message(SPAN_NOTICE("[user] feeds [mob] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
+				mob.reagents.add_reagent("nutriment", 1)
+			playsound(mob.loc,'sound/items/eatfood.ogg', 15, 1)
+			overlays.Cut()
+			return
+
+/obj/item/weapon/swiss_army_knife/proc/switch_tool(new_state)
+	switch(new_state)
+		if("swiss_stock")
+			desc = initial(desc)
+			force = initial(force)
+			throwforce = initial(throwforce)
+			sharp = initial(sharp)
+			attack_verb = initial(attack_verb)
+			flags_item = initial(flags_item)
+			icon_state = initial(icon_state)
+			attack_speed = initial(attack_speed)
+			flags_atom = initial(flags_atom)
+			REMOVE_TRAITS_IN(src,src)
+		if("swiss_knife")
+			desc = "A sharp knife for cutting things."
+			sharp = IS_SHARP_ITEM_ACCURATE
+			force = MELEE_FORCE_NORMAL
+			throwforce = MELEE_FORCE_NORMAL
+			throw_speed = SPEED_VERY_FAST
+			throw_range = 6
+			hitsound = 'sound/weapons/slash.ogg'
+			attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+			attack_speed = 9
+			flags_item = CAN_DIG_SHRAPNEL
+		if("swiss_screwdriver")
+			desc = "A trusty screwdriver for all your fastening needs."
+			force = 2
+			throwforce = 0
+			flags_atom = FPRINT|CONDUCT
+			matter = list("metal" = 75)
+			attack_verb = list("stabbed")
+			flags_item = CAN_DIG_SHRAPNEL
+			ADD_TRAIT(src,TRAIT_TOOL_SCREWDRIVER,src)
+		if("swiss_cutters")
+			desc = "Cutters for cutting through wires and various materials."
+			attack_verb = list("pinched", "nipped")
+			force = 5
+			throwforce = 0
+			flags_atom = FPRINT|CONDUCT
+			sharp = IS_SHARP_ITEM_SIMPLE
+			edge = 1
+			ADD_TRAIT(src,TRAIT_TOOL_WIRECUTTERS,src)
+		if("swiss_spoon")
+			desc = "A simple spoon."
+			attack_verb = list("scoop", "stir")
+			force = 0
+			throwforce = 0
+			sharp = 0
+		if("swiss_opener")
+			desc = "A simple can opener, can be used as a knife, although weaker."
+			sharp = IS_SHARP_ITEM_ACCURATE
+			force = MELEE_FORCE_WEAK
+			throwforce = MELEE_FORCE_WEAK
+			throw_speed = SPEED_VERY_FAST
+			throw_range = 6
+			hitsound = 'sound/weapons/slash.ogg'
+			attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+			attack_speed = 9
+			flags_item = CAN_DIG_SHRAPNEL
+		if("swiss_corkscrew")
+			desc = "A trusty screwdriver for all your fastening needs."
+			force = 2
+			throwforce = 0
+			flags_atom = FPRINT|CONDUCT
+			attack_verb = list("stabbed")
+			flags_item = CAN_DIG_SHRAPNEL
+			ADD_TRAIT(src,TRAIT_TOOL_SCREWDRIVER,src)
+	mode = new_state
+	icon_state = new_state
+	update_icon()
+
+
 
 /obj/item/weapon/swiss_army_knife/knife
 	icon_state = "swiss_knife"
@@ -185,15 +310,15 @@
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
 	flags_item = CAN_DIG_SHRAPNEL
-	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
+	_status_traits = list(TRAIT_TOOL_SCREWDRIVER)
 
-/obj/item/weapon/swiss_army_knife/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M))
+/obj/item/weapon/swiss_army_knife/screwdriver/attack(mob/living/carbon/mob as mob, mob/living/carbon/user as mob)
+	if(!istype(mob))
 		return ..()
 	if(user.zone_selected != "eyes") // && user.zone_selected != "head")
 		return ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(mob))
+		var/mob/living/carbon/human/H = mob
 		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 		if(E)
 			var/safety = H.get_eye_protection()
@@ -212,15 +337,15 @@
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
-	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
+	_status_traits = list(TRAIT_TOOL_WIRECUTTERS)
 
-/obj/item/weapon/swiss_army_knife/wirecutters/attack(mob/living/carbon/C, mob/user)
-	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))
-		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
-		"You cut \the [C]'s restraints with \the [src]!",\
+/obj/item/weapon/swiss_army_knife/wirecutters/attack(mob/living/carbon/mob, mob/user)
+	if((mob.handcuffed) && (istype(mob.handcuffed, /obj/item/restraint/adjustable/cable)))
+		user.visible_message("\The [usr] cuts \the [mob]'s restraints with \the [src]!",\
+		"You cut \the [mob]'s restraints with \the [src]!",\
 		"You hear cable being cut.")
-		C.handcuffed = null
-		C.handcuff_update()
+		mob.handcuffed = null
+		mob.handcuff_update()
 		return
 	else
 		..()
@@ -233,41 +358,40 @@
 	throwforce = 0
 	sharp = 0
 
-	var/loaded
 
-	/obj/item/weapon/swiss_army_knife/spoon/Initialize()
-		. = ..()
-		if (prob(60))
-			src.pixel_y = rand(0, 4)
-		create_reagents(5)
-		return
+/obj/item/weapon/swiss_army_knife/spoon/Initialize()
+	. = ..()
+	if (prob(60))
+		src.pixel_y = rand(0, 4)
+	create_reagents(5)
+	return
 
-	/obj/item/weapon/swiss_army_knife/spoon/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-		if(!istype(M))
-			return ..()
-		if(user.a_intent != INTENT_HELP)
-			return ..()
+/obj/item/weapon/swiss_army_knife/spoon/attack(mob/living/carbon/mob as mob, mob/living/carbon/user as mob)
+	if(!istype(mob))
+		return ..()
+	if(user.a_intent != INTENT_HELP)
+		return ..()
 
-		if (reagents.total_volume > 0)
-			var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
-			if(fullness > NUTRITION_HIGH)
-				to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
-				return
-			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, reagents.total_volume)
-			if(M == user)
-				for(var/mob/O in viewers(M, null))
-					O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
-				M.reagents.add_reagent("nutriment", 1)
-			else
-				for(var/mob/O in viewers(M, null))
-					O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
-				M.reagents.add_reagent("nutriment", 1)
-			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
-			overlays.Cut()
+	if (reagents.total_volume > 0)
+		var/fullness = mob.nutrition + (mob.reagents.get_reagent_amount("nutriment") * 25)
+		if(fullness > NUTRITION_HIGH)
+			to_chat(user, SPAN_WARNING("[user == mob ? "You" : "They"] don't feel like eating more right now."))
 			return
+		reagents.set_source_mob(user)
+		reagents.trans_to_ingest(mob, reagents.total_volume)
+		if(mob == user)
+			for(var/mob/O in viewers(mob, null))
+				O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
+			mob.reagents.add_reagent("nutriment", 1)
 		else
-			..()
+			for(var/mob/O in viewers(mob, null))
+				O.show_message(SPAN_NOTICE("[user] feeds [mob] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
+			mob.reagents.add_reagent("nutriment", 1)
+		playsound(mob.loc,'sound/items/eatfood.ogg', 15, 1)
+		overlays.Cut()
+		return
+	else
+		..()
 
 /obj/item/weapon/swiss_army_knife/can_opener
 	icon = 'icons/obj/items/weapons/weapons.dmi'

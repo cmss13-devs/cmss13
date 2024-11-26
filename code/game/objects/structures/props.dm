@@ -436,7 +436,7 @@
 /obj/structure/prop/brazier
 	name = "brazier"
 	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bonfire.dmi'
 	icon_state = "brazier"
 	density = TRUE
 	health = 150
@@ -513,7 +513,7 @@
 
 /obj/item/prop/torch_frame
 	name = "unlit torch"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bonfire.dmi'
 	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
 	icon_state = "torch_frame"
 
@@ -533,7 +533,7 @@
 /obj/structure/prop/brazier/campfire
 	name = "campfire"
 	desc = "A circle of stones surrounding a burning pile of wood. The fire is roaring and you can hear its crackle. You could probably stomp the fire out."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bonfire.dmi'
 	icon_state = "campfire_on"
 	density = FALSE
 	///How many tiles the heating and sound goes

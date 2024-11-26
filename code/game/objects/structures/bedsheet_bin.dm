@@ -81,7 +81,7 @@ LINEN BINS
 /obj/structure/bedsheetbin
 	name = "linen bin"
 	desc = "A linen bin. It looks rather cosy."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE
 	var/amount = 20

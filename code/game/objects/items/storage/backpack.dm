@@ -601,7 +601,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "Use Phone"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/items/tools.dmi', button, "rpb_phone")
+	var/image/IMG = image('icons/obj/structures/phone.dmi', button, "rpb_phone")
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()

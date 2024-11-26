@@ -32752,7 +32752,7 @@
 "rQs" = (
 /obj/structure/bed/sofa/south{
 	desc = "An old rusty ladder";
-	icon = 'icons/obj/structures/structures.dmi';
+	icon = 'icons/obj/structures/ladders.dmi';
 	icon_state = "ladder11";
 	name = "Old Ladder"
 	},

@@ -777,6 +777,26 @@
 	eye_protection = FALSE
 	clothing_traits = FALSE
 
+/obj/item/clothing/glasses/sunglasses/big/fake/red
+	icon_state = "bigsunglasses_red"
+	item_state = "bigsunglasses_red"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/orange
+	icon_state = "bigsunglasses_orange"
+	item_state = "bigsunglasses_orange"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/yellow
+	icon_state = "bigsunglasses_yellow"
+	item_state = "bigsunglasses_yellow"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/green
+	icon_state = "bigsunglasses_green"
+	item_state = "bigsunglasses_green"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/blue
+	icon_state = "bigsunglasses_blue"
+	item_state = "bigsunglasses_blue"
+
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
 	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."

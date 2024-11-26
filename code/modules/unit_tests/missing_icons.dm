@@ -151,8 +151,16 @@
 		check_atom(mob_path, spawned)
 		qdel(spawned)
 
-/datum/unit_test/missing_icons/proc/check_atom(atom_path, atom/thing, note)
+/datum/unit_test/missing_icons/proc/check_atom(atom_path, atom/thing, note, skip_overlays_underlays=FALSE)
 	check(atom_path, thing.icon, thing.icon_state, note)
+
+	if(!skip_overlays_underlays)
+		var/overlay_note = note ? note + " - Overlay" : "Overlay"
+		var/underlay_note = note ? note + " - Underlay" : "Underlay"
+		for(var/mutable_appearance/layer as anything in thing.overlays)
+			check(atom_path, layer.icon || thing.icon, layer.icon_state, overlay_note)
+		for(var/mutable_appearance/layer as anything in thing.underlays)
+			check(atom_path, layer.icon || thing.icon, layer.icon_state, underlay_note)
 
 /datum/unit_test/missing_icons/proc/check(thing_path, icon, icon_state, note, variable_name="icon_state", check_null=TRUE, warning_only=FALSE)
 	if(check_null)

@@ -40,8 +40,6 @@
 	else
 		set_raised(TRUE, user)
 
-	zoom(user, 11, 12)
-
 	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
 		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
 	else

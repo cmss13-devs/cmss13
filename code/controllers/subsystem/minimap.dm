@@ -399,7 +399,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(faction == XENO_HIVE_NORMAL)
 		return GLOB.xeno_unannounced_map
 
-
 	return null
 
 /**
@@ -508,7 +507,6 @@ SUBSYSTEM_DEF(minimaps)
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
-
 
 	if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_unannounced_map = new_flat
@@ -979,9 +977,9 @@ SUBSYSTEM_DEF(minimaps)
 			if(!drawing_allowed)
 				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
 				return FALSE
-
 			if(!istype(params["image"], /list)) // potentially very serious?
 				return FALSE
+
 			var/cooldown_satisfied = TRUE
 			if(faction == FACTION_MARINE)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)

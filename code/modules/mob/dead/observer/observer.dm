@@ -370,7 +370,6 @@
 		join_as_alien()
 	if(href_list[NOTIFY_USCM_TACMAP])
 		GLOB.uscm_tacmap_status.tgui_interact(src)
-		GLOB.upp_tacmap_status.tgui_interact(src)
 	if(href_list[NOTIFY_XENO_TACMAP])
 		GLOB.xeno_tacmap_status.tgui_interact(src)
 

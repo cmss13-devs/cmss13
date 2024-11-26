@@ -451,6 +451,10 @@ Additional game mode variables.
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
+	var/mob/dead/observer/candidate_observer = null
+	if(isobserver(xeno_candidate))
+		candidate_observer = xeno_candidate
+
 	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
@@ -520,10 +524,8 @@ Additional game mode variables.
 			to_chat(candidate_new_player, SPAN_XENONOTICE(candidate_new_player.larva_queue_cached_message))
 			return FALSE
 
-		if(!isobserver(xeno_candidate))
+		if(!candidate_observer)
 			return FALSE
-
-		var/mob/dead/observer/candidate_observer = xeno_candidate
 
 		// If an observing mod wants to join as a xeno, disable their larva protection so that they can enter the queue.
 		if(check_client_rights(candidate_observer.client, R_MOD, FALSE))
@@ -618,7 +620,7 @@ Additional game mode variables.
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
 				deathtime = XENO_JOIN_DEAD_TIME //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			if(deathtime < XENO_JOIN_DEAD_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE) && !cur_obs.bypass_time_of_death_checks)
+			if(deathtime < XENO_JOIN_DEAD_TIME && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE) && !candidate_observer.bypass_time_of_death_checks)
 				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 				message = SPAN_WARNING("[message]")
 				to_chat(xeno_candidate, message)
@@ -635,8 +637,10 @@ Additional game mode variables.
 			if(((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 				return FALSE
-		else return FALSE
-	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
+		else
+			return FALSE
+	else
+		new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 		if(isnewplayer(xeno_candidate))
 			var/mob/new_player/noob = xeno_candidate

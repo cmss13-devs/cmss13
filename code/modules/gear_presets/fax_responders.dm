@@ -76,7 +76,6 @@
 
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	idtype = /obj/item/card/id/gold
-	skills = /datum/skills/XO
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIG, ACCESS_MARINE_AI)
 	headset_type = /obj/item/device/radio/headset/almayer/highcom
 	idtype = /obj/item/card/id/gold
@@ -142,7 +141,6 @@
 	rank = JOB_FAX_RESPONDER_UPP
 	faction_group = list(FACTION_FAX, FACTION_UPP)
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_3)
-	skills = /datum/skills/upp/kapitan
 	headset_type = /obj/item/device/radio/headset/distress/UPP/kdo/command
 	idtype = /obj/item/card/id/gold
 

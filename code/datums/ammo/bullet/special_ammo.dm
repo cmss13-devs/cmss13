@@ -5,7 +5,7 @@
 */
 
 /datum/ammo/bullet/smartgun
-	name = "smartgun bullet"
+	name = "smartgun tracer bullet"
 	icon_state = "bullet_iff"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
@@ -17,6 +17,7 @@
 	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/alt
+	name = "smartgun bullet"
 	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
@@ -24,7 +25,7 @@
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/armor_piercing
-	name = "armor-piercing smartgun bullet"
+	name = "AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
@@ -36,13 +37,14 @@
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/armor_piercing/alt
+	name = "AP smartgun bullet"
 	icon_state = "bullet"
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	damage = 23
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty
-	name = "irradiated smartgun bullet"
+	name = "irradiated smartgun tracer bullet"
 	icon_state = "bullet_iff"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
@@ -54,12 +56,14 @@
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/alt
+	name = "irradiated smartgun bullet"
 	icon_state = "redbullet"
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 	damage = 44
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
+	name = "irradiated AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
@@ -70,13 +74,14 @@
 	damage_armor_punch = 3
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
+	name = "irradiated AP smartgun bullet"
 	icon_state = "bullet"
 	damage = 33
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
-	name = "holo-targeting smartgun bullet"
+	name = "holo-targeting smartgun tracer bullet"
 	icon_state = "bullet_iff"
 	damage = 30
 	/// inflicts this many holo stacks per bullet hit
@@ -87,7 +92,8 @@
 	var/stack_loss_multiplier = 1
 
 /datum/ammo/bullet/smartgun/holo_target/alt
-	name = "redbullet"
+	name = "holo-targeting smartgun bullet"
+	icon_state = "redbullet"
 	damage = 34
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
@@ -97,7 +103,7 @@
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
 
 /datum/ammo/bullet/smartgun/holo_target/ap
-	name = "armor-piercing smartgun bullet"
+	name = "holo-targeting AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 
 	accurate_range = 12
@@ -107,6 +113,7 @@
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/holo_target/ap/alt
+	name = "holo-targeting AP smartgun bullet"
 	icon_state = "bullet"
 	damage = 23
 	effective_range_max = 7

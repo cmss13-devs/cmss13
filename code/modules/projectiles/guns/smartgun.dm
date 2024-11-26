@@ -84,6 +84,8 @@
 	ammo_secondary = ammo_secondary_def
 	MD = new(src)
 	battery = new /obj/item/smartgun_battery(src)
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	. = ..()
 	AddComponent(/datum/component/iff_fire_prevention)
 	update_icon()

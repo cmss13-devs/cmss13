@@ -335,6 +335,7 @@ Class Procs:
 	name = "\improper Mill"
 	desc = "It is a machine that grinds produce."
 	icon_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
 	anchored = TRUE
 

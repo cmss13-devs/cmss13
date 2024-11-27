@@ -269,7 +269,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	macro_path = /datum/action/xeno_action/verb/verb_prae_rage
-	plasma_cost = 50
+	plasma_cost = 100
 	xeno_cooldown = 7 SECONDS
 	var/datum/weakref/focus_rage = null
 
@@ -302,7 +302,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	macro_path = /datum/action/xeno_action/verb/verb_prae_fight_or_flight
 	xeno_cooldown = 45 SECONDS
-	plasma_cost = 100
+	plasma_cost = 300
 
 	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
 	var/low_rage_range = 3

@@ -777,6 +777,9 @@
 	if (!action_cooldown_check())
 		return
 
+	if (!check_and_use_plasma_owner())
+		return
+
 	if (!isxeno_human(target))
 		return
 
@@ -911,7 +914,6 @@
 	var/mob/living/carbon/xenomorph/valkyrie_flight = owner
 
 	var/datum/behavior_delegate/praetorian_valkyrie/behavior = valkyrie_flight.behavior_delegate
-	var/image/effect_overlay = get_busy_icon(ACTION_PURPLE_POWER_UP)
 
 
 	if (!valkyrie_flight.check_state())
@@ -923,6 +925,9 @@
 	if (!behavior.use_internal_fury_ability(rejuvenate_cost))
 		return
 
+	if (!check_and_use_plasma_owner())
+		return
+
 	var/range = behavior.base_fury < 75 ? low_rage_range : high_rage_range
 	playsound(valkyrie_flight, 'sound/voice/xenos_roaring.ogg', 125)
 	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
@@ -930,43 +935,42 @@
 		valkyrie_flight.create_shriekwave(3)
 		allied_xenomorphs.xeno_jitter(1 SECONDS,)
 		allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
-		effect_overlay.flick_overlay(allied_xenomorphs, 20)
 
 	apply_cooldown()
 	return ..()
 
 
 /datum/action/xeno_action/activable/tail_stab/tail_fountain/use_ability(atom/atom)
-	var/mob/living/carbon/xenomorph/extuingisher_tail = owner
+	var/mob/living/carbon/xenomorph/extinguisher_tail = owner
 	var/mob/living/carbon/xenomorph/target = atom
 
 
-	var/distance = get_dist(extuingisher_tail, target)
+	var/distance = get_dist(extinguisher_tail, target)
 
 	if (distance > 2)
-		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
 		return
 
-	if(atom ==	extuingisher_tail)
-		to_chat(extuingisher_tail, SPAN_XENOWARNING("We can't extuingish ourselves."))
+	if(atom	== extinguisher_tail)
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We can't extuingish ourselves."))
 		return
 
 	if(!iscarbon(atom))
-		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to target something."))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We need to target something."))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!extuingisher_tail.check_state())
+	if (!extinguisher_tail.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return FALSE
 
-	playsound(extuingisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
+	playsound(extinguisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
 	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
 	apply_cooldown()
-	extuingisher_tail.visible_message(SPAN_XENODANGER("[extuingisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
-	xeno_attack_delay(extuingisher_tail)
+	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
+	xeno_attack_delay(extinguisher_tail)
 	return ..()

@@ -947,6 +947,10 @@
 		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
 		return
 
+	if(atom ==	extuingisher_tail)
+		to_chat(extuingisher_tail, SPAN_XENOWARNING("We can't extuingish ourselves."))
+		return
+
 	if(!iscarbon(atom))
 		to_chat(extuingisher_tail, SPAN_XENOWARNING("We need to target something."))
 		return

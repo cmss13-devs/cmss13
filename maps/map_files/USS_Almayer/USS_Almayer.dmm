@@ -68482,7 +68482,9 @@
 /obj/structure/platform{
 	layer = 2.9
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station{
+	layer = 2.89
+	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/living/synthcloset)
 "xLi" = (

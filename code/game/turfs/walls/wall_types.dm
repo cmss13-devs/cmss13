@@ -686,13 +686,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
 /turf/closed/wall/shiva
 	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
+	walltype = WALL_SHIVA_ICE
 
 /turf/closed/wall/shiva/ice
 	name = "black ice slabs"
 	icon_state = "shiva_ice"
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
-	hull = 1 //Can't break this ice.
+	hull = TRUE //Can't break this ice.
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"

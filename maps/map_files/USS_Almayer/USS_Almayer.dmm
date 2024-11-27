@@ -39,6 +39,13 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/bridgebunks)
+"aaj" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/almayer/lifeboat_pumps/north1)
 "aak" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2696,6 +2703,7 @@
 	pixel_y = -1
 	},
 /obj/item/frame/rack,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/almayer/lifeboat_pumps/north1)
 "ahF" = (
@@ -35298,6 +35306,9 @@
 /area/almayer/hallways/upper/fore_hallway)
 "kng" = (
 /obj/item/storage/toolbox/electrical,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/almayer/lifeboat_pumps/north1)
 "knl" = (
@@ -94744,7 +94755,7 @@ akc
 buc
 adq
 ahF
-ahH
+aaj
 ahH
 aal
 aaD

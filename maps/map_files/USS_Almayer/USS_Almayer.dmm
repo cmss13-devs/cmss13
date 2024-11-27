@@ -33,6 +33,12 @@
 "aah" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
+"aai" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/living/bridgebunks)
 "aak" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -544,6 +550,10 @@
 "abJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/prop/magazine/book/theartofwar,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -21
+	},
 /turf/open/floor/almayer/blue/west,
 /area/almayer/living/bridgebunks)
 "abK" = (
@@ -959,6 +969,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/bridgebunks)
 "acI" = (
@@ -48654,6 +48667,9 @@
 /area/almayer/shipboard/brig/perma)
 "pQy" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/living/bridgebunks)
 "pQz" = (
@@ -89480,7 +89496,7 @@ asN
 wVW
 aTj
 acT
-tYX
+aai
 abu
 ceK
 aZy

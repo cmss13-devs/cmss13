@@ -11,9 +11,10 @@
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_icon = "private"
 	minimap_background = "background_pmc"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -33,6 +34,7 @@
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/hvh, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
 	add_pmc_survivor_weapon(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
@@ -40,10 +42,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 
-	..()
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
 
 /datum/equipment_preset/survivor/pmc/medic
@@ -56,6 +59,7 @@
 	minimap_icon = "pmc_md"
 
 /datum/equipment_preset/survivor/pmc/medic/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/medic/hvh, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
@@ -80,12 +84,33 @@
 	minimap_icon = "engi"
 
 /datum/equipment_preset/survivor/pmc/engineer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/cct/hvh, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/cct/hvh, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
+
+	..()
+// /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
+
+/datum/equipment_preset/survivor/pmc/pmc_leader
+	name = "Survivor - PMC Leader"
+	assignment = JOB_PMC_LEADER
+	rank = JOB_PMC_LEADER
+	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "SL"
+	skills = /datum/skills/civilian/survivor/pmc/lead
+	minimap_icon = "pmc_ld"
+
+/datum/equipment_preset/survivor/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/leader, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 
 	..()
 
@@ -101,7 +126,7 @@
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -128,6 +153,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
@@ -136,10 +162,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	add_pmc_survivor_weapon(new_human)
 	add_random_cl_survivor_loot(new_human)
 
-	..()
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/pmc
 	name = "Survivor - Synthetic - PMC Support Synth"
@@ -164,7 +190,6 @@
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	rank = JOB_PMC_SYNTH
-	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic
 	minimap_icon = "pmc_syn"

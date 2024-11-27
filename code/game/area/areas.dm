@@ -115,6 +115,10 @@
 	if(unoviable_timer)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
 
+	if((flags_area & AREA_UNWEEDABLE) && is_resin_allowed)
+		is_resin_allowed = FALSE
+		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
+
 /area/proc/initialize_power(override_power)
 	if(requires_power)
 		if(override_power) //Reset everything if you want to override.

@@ -275,13 +275,12 @@
 			attack_speed = 9
 			flags_item = CAN_DIG_SHRAPNEL
 		if("swiss_corkscrew")
-			desc = "A trusty screwdriver for all your fastening needs."
+			desc = "A simple corkscrew."
 			force = 2
 			throwforce = 0
 			flags_atom = FPRINT|CONDUCT
 			attack_verb = list("stabbed")
 			flags_item = CAN_DIG_SHRAPNEL
-			ADD_TRAIT(src,TRAIT_TOOL_SCREWDRIVER,src)
 	mode = new_state
 	icon_state = new_state
 	update_icon()

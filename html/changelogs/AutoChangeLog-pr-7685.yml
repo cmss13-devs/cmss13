@@ -1,0 +1,4 @@
+author: "FslashN"
+delete-after: True
+changes:
+  - bugfix: "preds not spawning with correct legacy armor sprites"

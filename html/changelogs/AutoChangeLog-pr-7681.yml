@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "makes langchat readable through tgui menus."

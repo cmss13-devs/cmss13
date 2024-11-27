@@ -38,6 +38,7 @@
 	var/turf/spawn_at = run_loc_floor_top_right
 	var/original_turf_type = spawn_at.type
 	var/original_baseturfs = islist(spawn_at.baseturfs) ? spawn_at.baseturfs.Copy() : spawn_at.baseturfs
+	var/original_baseturf_count = length(original_baseturfs)
 
 	// Check objects:
 	for(var/obj/obj_path as anything in subtypesof(/obj))
@@ -162,6 +163,11 @@
 				floor.burnt = FALSE
 
 		spawn_at.ChangeTurf(original_turf_type, original_baseturfs)
+		if(original_baseturf_count != length(spawn_at.baseturfs))
+			TEST_FAIL("[turf_path] changed the amount of baseturfs from [original_baseturf_count] to [length(spawn_at.baseturfs)]; [english_list(original_baseturfs)] to [islist(spawn_at.baseturfs) ? english_list(spawn_at.baseturfs) : spawn_at.baseturfs]")
+			//Warn if it changes again
+			original_baseturfs = islist(spawn_at.baseturfs) ? spawn_at.baseturfs.Copy() : spawn_at.baseturfs
+			original_baseturf_count = length(original_baseturfs)
 
 
 	// Check mobs:

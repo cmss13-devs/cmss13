@@ -265,6 +265,7 @@
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
 	var/covered = TRUE
+	var/covered_icon_state = "catwalk"
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 	. = ..()
@@ -275,7 +276,7 @@
 /turf/open/floor/plating/plating_catwalk/update_icon()
 	. = ..()
 	if(covered)
-		overlays += image(icon, src, "catwalk", CATWALK_LAYER)
+		overlays += image(icon, src, covered_icon_state, CATWALK_LAYER)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
@@ -324,19 +325,11 @@
 	icon_state = "ai_plating_catwalk"
 	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
 	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
-
-/turf/open/floor/plating/plating_catwalk/aicore/update_icon()
-	. = ..()
-	if(covered)
-		overlays += image(icon, src, "ai_catwalk", CATWALK_LAYER)
+	covered_icon_state = "ai_catwalk"
 
 /turf/open/floor/plating/plating_catwalk/aicore/white
 	icon_state = "w_ai_plating_catwalk"
-
-/turf/open/floor/plating/plating_catwalk/aicore/white/update_icon()
-	. = ..()
-	if(covered)
-		overlays += image(icon, src, "w_ai_catwalk", CATWALK_LAYER)
+	covered_icon_state = "w_ai_catwalk"
 
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"

@@ -1,9 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/effect/landmark/late_join/responder/uscm,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ab" = (
@@ -27,6 +24,9 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
+"ad" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/space)
 "am" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
@@ -523,7 +523,6 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "NP" = (
-/obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
 	pixel_x = 6
@@ -535,12 +534,6 @@
 	networks_transmit = list("USCM","Colonist","Fax Responders");
 	phone_id = "Provost Communications Officer";
 	phone_color = "red"
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
-"OA" = (
-/obj/structure/machinery/light{
-	dir = 8
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -907,14 +900,14 @@ Yy
 xX
 BC
 YR
-OA
+gu
 xb
 fr
 BC
 vc
 wz
 YR
-OA
+gu
 VV
 fr
 wz
@@ -1330,14 +1323,14 @@ Yy
 xX
 jh
 YR
-OA
+gu
 tM
 fr
 jh
 vc
 xc
 YR
-OA
+gu
 XZ
 fr
 xc
@@ -1753,14 +1746,14 @@ Yy
 xX
 Dy
 nB
-OA
+gu
 wv
 fr
 Dy
 vc
 Ml
 YR
-OA
+gu
 Bz
 fr
 Ml
@@ -2080,19 +2073,19 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Ei
+ad
+ad
+ad
+xX
 vc
 vc
 vc
 vc
 vc
-vc
-Ei
-Yy
-Yy
+xX
+xX
+ad
+ad
 Yy
 Yy
 Yy
@@ -2127,7 +2120,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 Ei
 Ei
@@ -2139,7 +2132,7 @@ ab
 Ei
 Ei
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2174,10 +2167,10 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 YR
-OA
+gu
 rV
 fr
 Ei
@@ -2186,7 +2179,7 @@ gu
 aa
 fr
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2221,7 +2214,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 EI
 gu
@@ -2233,7 +2226,7 @@ gu
 gu
 gu
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2268,7 +2261,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 gu
 gu
@@ -2280,7 +2273,7 @@ gu
 gu
 gu
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2315,7 +2308,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 UB
 ST
@@ -2327,7 +2320,7 @@ ST
 gu
 tq
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2362,7 +2355,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 Du
 sZ
@@ -2374,7 +2367,7 @@ sZ
 Bp
 sx
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2409,7 +2402,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+ad
 Ei
 Ei
 Ei
@@ -2421,7 +2414,7 @@ Ei
 Ei
 Ei
 Ei
-Yy
+ad
 Yy
 Yy
 Yy
@@ -2456,19 +2449,19 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
-Yy
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 Yy
 Yy
 Yy

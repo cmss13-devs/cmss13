@@ -1032,6 +1032,7 @@
 		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
@@ -1224,6 +1225,7 @@
 		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
@@ -1735,6 +1737,7 @@
 		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently

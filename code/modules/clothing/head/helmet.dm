@@ -277,6 +277,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/eyepatch/left = "eyepatch_left",
 	/obj/item/clothing/glasses/eyepatch/white = "eyepatch_white",
 	/obj/item/clothing/glasses/eyepatch/white/left = "eyepatch_white_left",
+	/obj/item/clothing/glasses/eyepatch/white = "eyepatch_green",
+	/obj/item/clothing/glasses/eyepatch/white/left = "eyepatch_green_left",
 	/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
 	/obj/item/clothing/glasses/regular = "persc-glasses",
 	/obj/item/clothing/glasses/mbcg = "persc-glasses",

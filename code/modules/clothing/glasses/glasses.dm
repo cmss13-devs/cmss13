@@ -207,6 +207,14 @@
 	icon_state = "eyepatch_white_left"
 	item_state = "eyepatch_white_left"
 
+/obj/item/clothing/glasses/eyepatch/green
+	icon_state = "eyepatch_green"
+	item_state = "eyepatch_green"
+
+/obj/item/clothing/glasses/eyepatch/green/left
+	icon_state = "eyepatch_green_left"
+	item_state = "eyepatch_green_left"
+
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	gender = NEUTER

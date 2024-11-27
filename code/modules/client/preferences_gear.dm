@@ -49,6 +49,14 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Eyepatch, white flipped"
 	path = /obj/item/clothing/glasses/eyepatch/white/left
 
+/datum/gear/eyewear/eyepatch/green
+	display_name = "Eyepatch, green"
+	path = /obj/item/clothing/glasses/eyepatch/green
+
+/datum/gear/eyewear/eyepatch/green/left
+	display_name = "Eyepatch, green flipped"
+	path = /obj/item/clothing/glasses/eyepatch/green/left
+
 /datum/gear/eyewear/rpg_glasses
 	display_name = "Marine RPG Glasses"
 	path = /obj/item/clothing/glasses/regular

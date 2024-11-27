@@ -95,8 +95,14 @@ SUBSYSTEM_DEF(hijack)
 	/// A list of turfs to edit to FTL-ness
 	var/list/ftl_turfs = list()
 
+	var/list/obj/structure/machinery/fuelpump/fuelpumps = list()
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
+
+	var/spaceport_to_use = pick(subtypesof(/datum/spaceport))
+	spaceport = new spaceport_to_use
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/hijack/stat_entry(msg)
@@ -119,8 +125,6 @@ SUBSYSTEM_DEF(hijack)
 		hijack_status = HIJACK_OBJECTIVES_STARTED
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
-		var/spaceport_to_use = pick(subtypesof(/datum/spaceport))
-		spaceport = new spaceport_to_use
 
 	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
 		if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_POSTHIJACK_ERT))
@@ -161,8 +165,8 @@ SUBSYSTEM_DEF(hijack)
 
 		return
 
-	if(!length(SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP))))
-		marine_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating tachyon field emitters."]")
+	if(!SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)))
+		marine_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating hyperdrive charge cycle."]")
 		can_fire = FALSE
 		return
 
@@ -203,7 +207,7 @@ SUBSYSTEM_DEF(hijack)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
 	if(current_progress >= ftl_required_progress && !in_ftl)
-		enter_ftl()
+		charge_ftl()
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
@@ -510,13 +514,17 @@ SUBSYSTEM_DEF(hijack)
 	SSshuttle.action_load(shuttle, stationary)
 
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
-	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE)
+	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
 
 	if(!admin_sd_blocked)
-		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 30 SECONDS)
+
+/datum/controller/subsystem/hijack/proc/charge_ftl()
+	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
 /datum/controller/subsystem/hijack/proc/enter_ftl()
 	shakeship(
@@ -527,8 +535,6 @@ SUBSYSTEM_DEF(hijack)
 	)
 
 	toggle_ftl_status()
-
-	marine_announcement("Initiating quantum jump. Opening virtual mass field.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/leave_ftl(unintentionally)
 	toggle_ftl_status()
@@ -547,6 +553,20 @@ SUBSYSTEM_DEF(hijack)
 		stime = 3,
 		drop = TRUE,
 	)
+
+	for(var/mob/mob as anything in GLOB.player_list)
+		if(!is_mainship_level(mob.z))
+			continue
+
+		playsound_client(mob.client, get_sfx("bigboom"))
+
+	marine_announcement("Alert: Build up detected within pumping systems. Overload in 10 seconds.", HIJACK_ANNOUNCE)
+	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), 10 SECONDS)
+
+/datum/controller/subsystem/hijack/proc/explode_pumps()
+	var/datum/space_weapon_ammo/rocket_launcher/swing_rockets/rockets = new
+	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
+		rockets.hit_target(get_turf(pump), shake = FALSE)
 
 /obj/docking_port/mobile/port_umbilical_cord
 	name = "Port Umbilical Cord"

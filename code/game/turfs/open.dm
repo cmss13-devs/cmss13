@@ -1029,7 +1029,7 @@
 		if(prob(90))
 			var/image/I
 			if(prob(35))
-				I = image('icons/obj/structures/props/jungleplants.dmi',"plant[rand(1,7)]")
+				I = image('icons/obj/structures/props/jungleplants.dmi',"plant_[rand(1,7)]")
 			else
 				if(prob(30))
 					I = image('icons/obj/structures/props/ausflora.dmi',"reedbush_[rand(1,4)]")
@@ -1113,7 +1113,7 @@
 	bushes_spawn = 0
 	name = "murky water"
 	desc = "thick, murky water"
-	icon = 'icons/turf/floors//beach.dmi'
+	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"
 	can_bloody = FALSE

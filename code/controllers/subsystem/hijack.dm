@@ -135,9 +135,7 @@ SUBSYSTEM_DEF(hijack)
 		emergency_call.activate(TRUE, FALSE)
 
 		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
-
 		return
-
 
 	if(current_progress >= required_progress)
 		if(hijack_status < HIJACK_OBJECTIVES_COMPLETE)
@@ -161,6 +159,11 @@ SUBSYSTEM_DEF(hijack)
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()
 
+		return
+
+	if(!length(SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP))))
+		marine_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating tachyon field emitters."]")
+		can_fire = FALSE
 		return
 
 	if(!resumed)

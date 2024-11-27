@@ -135,7 +135,6 @@
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
 	var/fleshcolor = "#830303"
-	var/has_giblet_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
 	overlays.Cut()
@@ -143,9 +142,6 @@
 	if(basecolor == "rainbow")
 		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 	color = basecolor
-
-	if(!has_giblet_overlay)
-		return
 
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
 	if(!fleshcolor || fleshcolor == "rainbow")
@@ -162,7 +158,6 @@
 
 /obj/effect/decal/cleanable/blood/gibs/body
 	random_icon_states = list("gibhead", "gibtorso")
-	has_giblet_overlay = FALSE // No gibhead_flesh exists
 
 /obj/effect/decal/cleanable/blood/gibs/limb
 	random_icon_states = list("gibleg", "gibarm")

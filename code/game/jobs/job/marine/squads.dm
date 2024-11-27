@@ -27,6 +27,8 @@
 /datum/squad
 	/// Name of the squad
 	var/name
+	/// Equivalent name so that lobby prefered squad gets used for other factions
+	var/equivalent_name
 	/// Squads ID that is set on New()
 	var/tracking_id = null //Used for the tracking subsystem
 	/// Maximum number allowed in a squad. Defaults to infinite
@@ -271,21 +273,25 @@
 
 /datum/squad/upp/one
 	name = SQUAD_UPP_1
+	equivalent_name = SQUAD_MARINE_1
 	equipment_color = "#e61919"
 	chat_color = "#e67d7d"
 
-/datum/squad/upp/twp
+/datum/squad/upp/two
 	name = SQUAD_UPP_2
+	equivalent_name = SQUAD_MARINE_2
 	equipment_color = "#ffc32d"
 	chat_color = "#ffe650"
 
 /datum/squad/upp/three
 	name = SQUAD_UPP_3
+	equivalent_name = SQUAD_MARINE_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
 
 /datum/squad/upp/four
 	name = SQUAD_UPP_4
+	equivalent_name = SQUAD_MARINE_4
 	equipment_color = "#4148c8"
 	chat_color = "#828cff"
 

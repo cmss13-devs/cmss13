@@ -1,8 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/landmark/late_join/responder/uscm,
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
+/turf/closed/wall/r_wall/unmeltable,
+/area/space)
 "ab" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	unacidable = 1;
@@ -25,8 +24,20 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ad" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/space)
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "Provost Communications Officer";
+	phone_color = "red"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "am" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
@@ -522,21 +533,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"NP" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/folder/red{
-	pixel_x = 6
-	},
-/obj/item/folder/black{
-	pixel_x = 12
-	},
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "Provost Communications Officer";
-	phone_color = "red"
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "Pn" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/wood/ship,
@@ -640,6 +636,10 @@
 "Yy" = (
 /turf/open/space/basic,
 /area/space)
+"YO" = (
+/obj/effect/landmark/late_join/responder/uscm,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "YR" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
 	pixel_y = 16;
@@ -2073,9 +2073,9 @@ Yy
 Yy
 Yy
 Yy
-ad
-ad
-ad
+aa
+aa
+aa
 xX
 vc
 vc
@@ -2084,8 +2084,8 @@ vc
 vc
 xX
 xX
-ad
-ad
+aa
+aa
 Yy
 Yy
 Yy
@@ -2120,7 +2120,7 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 Ei
 Ei
@@ -2132,7 +2132,7 @@ ab
 Ei
 Ei
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2167,7 +2167,7 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 YR
 gu
@@ -2176,10 +2176,10 @@ fr
 Ei
 nB
 gu
-aa
+YO
 fr
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2214,7 +2214,7 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 EI
 gu
@@ -2226,7 +2226,7 @@ gu
 gu
 gu
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2261,7 +2261,7 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 gu
 gu
@@ -2273,7 +2273,7 @@ gu
 gu
 gu
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2308,19 +2308,19 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 UB
 ST
 gu
-NP
+ad
 Pn
 ov
 ST
 gu
 tq
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2355,7 +2355,7 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 Du
 sZ
@@ -2367,7 +2367,7 @@ sZ
 Bp
 sx
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2402,7 +2402,7 @@ Yy
 Yy
 Yy
 Yy
-ad
+aa
 Ei
 Ei
 Ei
@@ -2414,7 +2414,7 @@ Ei
 Ei
 Ei
 Ei
-ad
+aa
 Yy
 Yy
 Yy
@@ -2449,19 +2449,19 @@ Yy
 Yy
 Yy
 Yy
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 Yy
 Yy
 Yy

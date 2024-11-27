@@ -195,6 +195,11 @@
 	hijack_evacuation_weight = 1.1
 	hijack_evacuation_type = EVACUATION_TYPE_MULTIPLICATIVE
 
+/area/almayer/living/pilotbunks
+	name = "\improper Pilot's Bunks"
+	icon_state = "livingspace"
+	fake_zlevel = 2
+
 /area/almayer/shipboard/panic
 	name = "\improper Hangar Panic Room"
 	icon_state = "brig"
@@ -617,11 +622,6 @@
 	name = "\improper Captain's Mess"
 	icon_state = "briefing"
 	fake_zlevel = 1 // upperdeck
-
-/area/almayer/living/pilotbunks
-	name = "\improper Pilot's Bunks"
-	icon_state = "livingspace"
-	fake_zlevel = 2
 
 /area/almayer/living/bridgebunks
 	name = "\improper Staff Officer Bunks"

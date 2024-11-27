@@ -621,7 +621,7 @@
 /area/almayer/living/pilotbunks
 	name = "\improper Pilot's Bunks"
 	icon_state = "livingspace"
-	fake_zlevel = 1
+	fake_zlevel = 2
 
 /area/almayer/living/bridgebunks
 	name = "\improper Staff Officer Bunks"

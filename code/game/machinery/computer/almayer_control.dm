@@ -236,6 +236,10 @@
 				to_chat(user, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 				return FALSE
 
+			if(SShijack.in_ftl)
+				to_chat(user, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+				return
+
 			if(!COOLDOWN_FINISHED(src, cooldown_request))
 				to_chat(user, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 				return FALSE

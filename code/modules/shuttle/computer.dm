@@ -371,7 +371,7 @@
 	///If true, the lifeboat is in the process of having the xeno override removed by the pilot.
 	var/override_being_removed = FALSE
 	///How long it takes to unlock the console
-	var/remaining_time = 180 SECONDS 
+	var/remaining_time = 180 SECONDS
 
 /obj/structure/machinery/computer/shuttle/lifeboat/ex_act(severity)
 	return
@@ -379,6 +379,7 @@
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+
 	if(lifeboat.status == LIFEBOAT_LOCKED)
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("[src] displays an error message and asks you to contact your pilot to resolve the problem."))
@@ -394,7 +395,7 @@
 				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
 				override_being_removed = FALSE
 				return
-			remaining_time = remaining_time - 20 SECONDS 
+			remaining_time = remaining_time - 20 SECONDS
 			if(remaining_time > 0)
 				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time / 10] seconds left."))
 		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
@@ -405,8 +406,10 @@
 			SPAN_NOTICE("You have successfully taken back control over the lifeboat."))
 		override_being_removed = FALSE
 		return
-	else if(lifeboat.status == LIFEBOAT_INACTIVE)
+
+	if(lifeboat.status == LIFEBOAT_INACTIVE)
 		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
+
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
@@ -424,6 +427,9 @@
 				if(!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
+
+				if(SShijack.in_ftl)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
 
 				if(SShijack.current_progress < SShijack.early_launch_required_progress)
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))

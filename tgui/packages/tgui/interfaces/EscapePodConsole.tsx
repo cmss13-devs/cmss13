@@ -1,3 +1,5 @@
+import { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Box, Button, Flex, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
@@ -8,6 +10,7 @@ interface EscapePodProps {
   door_state: 0 | 1;
   can_delay: 0 | 1;
   launch_without_evac: number;
+  in_ftl: BooleanLike;
 }
 
 export const EscapePodConsole = () => {
@@ -48,6 +51,12 @@ export const EscapePodConsole = () => {
       statusMessage = 'TRAVELLING';
       buttonColor = 'good';
       break;
+  }
+
+  if (data.in_ftl) {
+    statusMessage = 'IN FTL';
+    buttonColor = 'bad';
+    operable = 0;
   }
 
   let doorStatus = 'ERROR';

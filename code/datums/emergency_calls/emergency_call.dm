@@ -243,6 +243,11 @@
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
+	if(SShijack.in_ftl)
+		members = list()
+		candidates = list()
+		return
+
 	//We've got enough!
 	//Trim down the list
 	var/list/datum/mind/picked_candidates = list()

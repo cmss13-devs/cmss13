@@ -60,6 +60,7 @@
 	.["door_state"] = door.density
 	.["door_lock"] = shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED
 	.["can_delay"] = TRUE//launch_status[2]
+	.["in_ftl"] = SShijack.in_ftl
 	.["launch_without_evac"] = launch_without_evac
 
 
@@ -72,6 +73,9 @@
 	switch(action)
 		if("force_launch")
 			if(!launch_without_evac && pod_state != STATE_READY && pod_state != STATE_DELAYED)
+				return
+
+			if(SShijack.in_ftl)
 				return
 
 			shuttle.evac_launch()

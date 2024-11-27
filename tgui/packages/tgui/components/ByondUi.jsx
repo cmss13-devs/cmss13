@@ -8,7 +8,6 @@ import { shallowDiffers } from 'common/react';
 import { debounce } from 'common/timer';
 import { Component, createRef } from 'react';
 
-import { useBackend } from '../backend';
 import { createLogger } from '../logging';
 import { computeBoxProps } from './Box';
 
@@ -30,13 +29,7 @@ const createByondUiElement = (elementId) => {
       logger.log(`rendering '${id}'`);
       byondUiStack[index] = id;
 
-      const { config } = useBackend();
-
-      const paramsWithStyle = {
-        ...params,
-        style: config.styles,
-      };
-      Byond.winset(id, paramsWithStyle);
+      Byond.winset(id, { ...params, style: Byond.styleSheet });
     },
     unmount: () => {
       logger.log(`unmounting '${id}'`);

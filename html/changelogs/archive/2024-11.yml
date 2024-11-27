@@ -448,3 +448,8 @@
 2024-11-26:
   Drdodo:
   - bugfix: now CEs can buy all of their essentials
+2024-11-27:
+  cuberound:
+  - qol: when lobby joining as UPP you getassigned to equivalen of prefered USCM squad
+      if possible
+  - rscdel: removes navbeacon code

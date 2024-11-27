@@ -951,7 +951,7 @@
 		return
 
 	if(atom	== extinguisher_tail)
-		to_chat(extinguisher_tail, SPAN_XENOWARNING("We can't extuingish ourselves."))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("We can't extinguish ourselves."))
 		return
 
 	if(!iscarbon(atom))

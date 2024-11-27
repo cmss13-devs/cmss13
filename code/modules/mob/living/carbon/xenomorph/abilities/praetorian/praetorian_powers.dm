@@ -788,7 +788,6 @@
 
 	if (behavior.raging == TRUE)
 		return
-
 	focus_rage = WEAKREF(buffing_target)
 	armor_buffs_active = TRUE
 	armor_buffs_active_target = TRUE
@@ -935,7 +934,7 @@
 		valkyrie_flight.create_shriekwave(3)
 		allied_xenomorphs.xeno_jitter(1 SECONDS,)
 		allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
-
+		allied_xenomorphs.clear_debuffs()
 	apply_cooldown()
 	return ..()
 

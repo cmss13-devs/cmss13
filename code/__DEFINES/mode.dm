@@ -75,7 +75,11 @@
 #define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
 #define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
 #define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
-#define MODE_NO_BODY_C4 (1<<15) //prevents c4 to be planted on mobs
+#define MODE_LZ_HAZARD_ACTIVATED (1<<15) // Distress Signal: Spawns miasma 3 minutes after round start
+#define MODE_MORTAR_LASER_WARNING (1<<16) // Blinking laser before mortar impact
+#define MODE_NO_BODY_C4 (1<<17) //prevents c4 to be planted on mobs
+#define MODE_WEAKER_EXPLOSIONS (1<<18) // Reduces effects explosions have on humans
+#define MODE_HEAVY_SPECIALISTS (1<<19) //uscm get standardized spec kit
 
 
 #define ROUNDSTATUS_FOG_DOWN 1

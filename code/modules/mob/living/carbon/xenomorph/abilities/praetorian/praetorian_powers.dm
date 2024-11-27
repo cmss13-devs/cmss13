@@ -851,6 +851,9 @@
 		to_chat(valkyrie, SPAN_XENODANGER("[target_carbon] is dead, why would we want to touch it?"))
 		return
 
+	if (!isliving(target_carbon))
+		return
+
 	if (affected_atom == valkyrie)
 		to_chat(valkyrie, SPAN_XENOWARNING("We must target an ally or a hostile."))
 		return

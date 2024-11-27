@@ -2681,13 +2681,6 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/almayer/living/auxiliary_officer_office)
-"ahB" = (
-/obj/item/clothing/head/cmcap/boonie/tan{
-	pixel_y = 7;
-	pixel_x = 10
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/living/auxiliary_officer_office)
 "ahC" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/lifeboat_pumps/north1)
@@ -94347,7 +94340,7 @@ adq
 adq
 ahK
 adq
-ahB
+aal
 kcp
 kcp
 kcp

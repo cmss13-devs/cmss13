@@ -328,7 +328,7 @@
 	return ..()
 
 /obj/item/weapon/swiss_army_knife/wirecutters
-	icon_state = "swiss_wirecutters"
+	icon_state = "swiss_cutters"
 	desc = "Cutters for cutting through wires and various materials."
 	attack_verb = list("pinched", "nipped")
 	force = 5
@@ -394,7 +394,7 @@
 
 /obj/item/weapon/swiss_army_knife/can_opener
 	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "swiss_can_opener"
+	icon_state = "swiss_opener"
 	desc = "A simple can opener, can be used as a knife, although weaker."
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_WEAK

@@ -213,8 +213,10 @@
 
 	if(note)
 		note = " ([note])"
+	var/variable_value = isnull(icon_state) ? "null" : "\"[icon_state]\""
+	var/icon_value = isnull(icon) ? "null" : "'[icon]'"
 
-	var/msg = "Missing sprite for [thing_path]\n\t[variable_name]=[isnull(icon_state) ? "null" : "\"[icon_state]\""] icon=[isnull(icon) ? "null" : "'[icon]'"][note][match_message]"
+	var/msg = "Missing sprite for [thing_path]\n\t[variable_name]=[variable_value] icon=[icon_value][note][match_message]"
 	if(!warning_only)
 		TEST_FAIL(msg)
 	else
@@ -222,5 +224,5 @@
 
 /datum/unit_test/missing_icons/log_for_test(text, priority, file, line)
 	if(priority == "warning")
-		return // TODO: For now 849 warning annotations is just too much noise to be fixed
+		return // TODO: For now 847 warning annotations is just too much noise to be fixed
 	return ..()

@@ -11,7 +11,7 @@
 	name = "bed"
 	desc = "A mattress seated on a rectangular metallic frame. This is used to support a lying person in a comfortable manner, notably for regular sleep. Ancient technology, but still useful."
 	icon_state = "bed"
-	icon = 'icons/obj/structures/props/chairs.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	can_buckle = TRUE
 	buckle_lying = 90
 	throwpass = TRUE

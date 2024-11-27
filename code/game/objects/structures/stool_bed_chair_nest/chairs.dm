@@ -542,7 +542,7 @@
 /obj/item/weapon/twohanded/folded_metal_chair //used for when someone picks up the chair
 	name = "metal folding chair"
 	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
-	icon = 'icons/obj/structures/props/chairs.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "folding_chair"
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")

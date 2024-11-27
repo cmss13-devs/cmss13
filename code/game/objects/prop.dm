@@ -138,7 +138,7 @@
 	name = "dirty bandages"
 	desc = "Some used gauze."
 	icon_state = "bandages_prop"
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 
 /obj/item/prop/colony/used_flare
 	name = "flare"
@@ -246,7 +246,7 @@
 /obj/item/prop/magazine
 	name = "generic prop magazine"
 	desc = "A Magazine with a picture of a pretty girl on it..wait isn't that my mom?"
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	icon_state = "poster15"
 	throw_speed = SPEED_FAST
 	throw_range = 5

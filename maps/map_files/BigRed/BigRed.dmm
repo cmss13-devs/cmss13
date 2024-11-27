@@ -4539,7 +4539,8 @@
 /area/bigredv2/caves/lambda/breakroom)
 "auv" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -10468,7 +10469,8 @@
 /area/bigredv2/outside/telecomm/n_cave)
 "aWz" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -17129,13 +17131,15 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bEl" = (
 /obj/structure/showcase{
-	icon_state = "mechfab1"
+	icon = 'icons/obj/structures/machinery/research.dmi';
+	icon_state = "d_analyzer_la"
 	},
 /turf/open/floor/carpet5_1/west,
 /area/bigredv2/caves/eta/living)
 "bEm" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/carpet9_4/west,
 /area/bigredv2/caves/eta/living)

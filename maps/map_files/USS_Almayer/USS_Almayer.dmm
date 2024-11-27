@@ -25084,6 +25084,7 @@
 /obj/structure/machinery/prop{
 	desc = "It's a server box...";
 	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "server box"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -42039,7 +42040,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/sheet/metal{
 	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
-	icon = 'icons/obj/structures/props/semiotic_standard.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/semiotic_standard.dmi';
 	icon_state = "coffee";
 	name = "coffee semiotic";
 	pixel_x = 20;

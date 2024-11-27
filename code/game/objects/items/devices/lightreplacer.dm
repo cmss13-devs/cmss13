@@ -45,7 +45,7 @@
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
-	item_state = "electronic"
+	item_state = "light_replacer"
 
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

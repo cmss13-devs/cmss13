@@ -49,6 +49,7 @@
 	var/list/data = list()
 
 	var/list/humans = list()
+	var/list/responders = list()
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
@@ -119,6 +120,7 @@
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
+					serialized["background_icon"] = caste.minimap_background
 					serialized["hivenumber"] = xeno.hivenumber
 					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
@@ -142,9 +144,9 @@
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
-					serialized["background_color"] = human.assigned_squad.equipment_color ? human.assigned_squad.equipment_color : human.assigned_squad.minimap_color
+					serialized["background_icon"] = human.assigned_squad.background_icon
 				else
-					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
+					serialized["background_icon"] = human.assigned_equipment_preset?.minimap_background
 
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
@@ -178,6 +180,8 @@
 					marines += list(serialized)
 				else if(issurvivorjob(human.job))
 					survivors += list(serialized)
+				else if(human.job in FAX_RESPONDER_JOB_LIST)
+					responders += list(serialized)
 				else
 					humans += list(serialized)
 				continue
@@ -193,6 +197,7 @@
 	data["clf"] = clf
 	data["wy"] = wy
 	data["twe"] = twe
+	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor
 	data["mercenary"] = mercenary

@@ -1,7 +1,5 @@
 /datum/action/xeno_action
 	icon_file = 'icons/mob/hud/actions_xeno.dmi'
-	var/ability_name // Our name
-
 	var/plasma_cost = 0
 	var/macro_path
 	var/action_type = XENO_ACTION_CLICK // Determines how macros interact with this action. Defines are in xeno.dm in the defines folder.
@@ -63,10 +61,10 @@
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
 	if(!owner)
 		return
-	var/mob/living/carbon/xenomorph/X = owner
-	if (ability_name && GLOB.round_statistics)
-		GLOB.round_statistics.track_ability_usage(ability_name)
-		X.track_ability_usage(ability_name, X.caste_type)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (name && GLOB.round_statistics)
+		GLOB.round_statistics.track_ability_usage(name)
+		xeno.track_ability_usage(name, xeno.caste_type)
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
@@ -169,13 +167,13 @@
 			return // We clicked the same ability in a very short time
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
-		to_chat(xeno, "You will no longer use [ability_name] with [xeno.get_ability_mouse_name()].")
+		to_chat(xeno, "You will no longer use [name] with [xeno.get_ability_mouse_name()].")
 		button.icon_state = "template"
 		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
 	else
-		to_chat(xeno, "You will now use [ability_name] with [xeno.get_ability_mouse_name()].")
+		to_chat(xeno, "You will now use [name] with [xeno.get_ability_mouse_name()].")
 		if(xeno.selected_ability)
 			xeno.selected_ability.action_deselect()
 			if(xeno.selected_ability.charge_time)
@@ -452,3 +450,6 @@
 	track_xeno_ability_stats()
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))
+
+#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

@@ -189,6 +189,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	item_state = "sheet-plastic"
 	matter = list("plastic" = 2000)
 
 	perunit = 2000
@@ -207,6 +208,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	item_state = "sheet-plastic"
 	perunit = 2000
 
 /obj/item/stack/sheet/mineral/gold

@@ -458,7 +458,6 @@
 	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field."
 	max_fuel = 5
 	has_welding_screen = TRUE
-	//inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 	icon_state = "welder_b"
 
 /*

@@ -16,8 +16,8 @@
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_righthand.dmi'
 	)
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
 	flags_equip_slot = SLOT_WAIST

@@ -1765,3 +1765,38 @@
 
 	return .
 
+/// generates realistic-ish pulse output based on preset levels.
+/// method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate
+/mob/living/carbon/human/proc/get_pulse(method) 
+	var/temp = 0 //see setup.dm:694
+
+	if(species && species.flags & NO_BLOOD)
+		pulse = PULSE_NONE //No blood, no pulse.
+
+	else if(stat == DEAD || status_flags & FAKEDEATH)
+		pulse = PULSE_NONE //That's it, you're dead, nothing can influence your pulse
+
+	else if(floor(blood_volume) <= BLOOD_VOLUME_BAD) //How much blood do we have
+		pulse = PULSE_THREADY //not enough :(
+
+	else
+		pulse = PULSE_NORM
+
+	switch(pulse)
+		if(PULSE_NONE)
+			return "0"
+		if(PULSE_SLOW)
+			temp = rand(40, 60)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_NORM)
+			temp = rand(60, 90)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_FAST)
+			temp = rand(90, 120)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_FASTER)
+			temp = rand(120, 160)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_THREADY)
+			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
+// output for machines^ ^^^^^^^output for people^^^^^^^^^

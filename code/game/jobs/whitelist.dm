@@ -18,6 +18,8 @@
 		LAZYADD(., "commander")
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		LAZYADD(., "synthetic")
+	if(player.check_whitelist_status(WHITELIST_FAX_RESPONDER))
+		LAZYADD(., "responder")
 
 /client/load_player_data_info(datum/entity/player/player)
 	. = ..()

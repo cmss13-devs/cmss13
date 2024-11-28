@@ -242,6 +242,20 @@
 /obj/effect/particle_effect/smoke/miasma/ex_act(severity)
 	return
 
+/obj/effect/particle_effect/smoke/weedkiller
+	name = "C10-W Weedkiller"
+	amount = 1
+	time_to_live = 15
+	smokeranking = SMOKE_RANK_HARMLESS
+	opacity = FALSE
+	color = "#c2aac7"
+	alpha = 0
+
+/obj/effect/particle_effect/smoke/weedkiller/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
+	. = ..()
+
+	animate(src, alpha = 75, time = rand(1 SECONDS, 5 SECONDS))
+
 /////////////////////////////////////////////
 // Sleep smoke
 /////////////////////////////////////////////
@@ -768,6 +782,22 @@
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
 
 // XENO SMOKES
+
+/obj/effect/particle_effect/smoke/king
+	opacity = FALSE
+	color = "#000000"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "sparks"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = BELOW_OBJ_LAYER
+	time_to_live = 5
+	spread_speed = 1
+	pixel_x = 0
+	pixel_y = 0
+
+/datum/effect_system/smoke_spread/king_doom
+	smoke_type = /obj/effect/particle_effect/smoke/king
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn

@@ -46,7 +46,7 @@
 	..()
 
 /obj/structure/ex_act(severity, direction)
-	if(indestructible)
+	if(explo_proof)
 		return
 
 	if(src.health) //Prevents unbreakable objects from being destroyed
@@ -110,7 +110,7 @@
 
 /obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
-		return
+		return FALSE
 
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
@@ -120,10 +120,10 @@
 	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
 
 	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
-		return
+		return FALSE
 
 	if(!can_climb(user))
-		return
+		return FALSE
 
 	var/turf/TT = get_turf(src)
 	if(flags_atom & ON_BORDER)
@@ -145,6 +145,7 @@
 	user.forceMove(TT)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(TT)
+	return TRUE
 
 /obj/structure/proc/structure_shaken()
 

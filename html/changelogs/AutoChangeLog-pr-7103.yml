@@ -1,4 +1,0 @@
-author: "BOBAMA"
-delete-after: True
-changes:
-  - bugfix: "fixed monkey spawn on Shiva's LZ2 in fog"

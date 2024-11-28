@@ -1436,7 +1436,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	if(isRemoteControlling(user))
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+	if(user.get_ability_mouse_key() == XENO_ABILITY_CLICK_SHIFT)
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/X = user
 			if(X.selected_ability)
@@ -1450,6 +1450,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return TRUE
 
 #define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
+#define VARSET_LIST_REMOVE_CALLBACK(target, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarsetlistremove), ##target, ##var_value)
 //dupe code because dm can't handle 3 level deep macros
 #define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
 /// Same as VARSET_CALLBACK, but uses a weakref to the datum.
@@ -1473,6 +1474,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		datum.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
 	else
 		datum.vars[var_name] = var_value
+
+/proc/___callbackvarsetlistremove(list, var_value)
+	if(length(list))
+		list -= var_value
 
 //don't question just accept
 /proc/pass(...)

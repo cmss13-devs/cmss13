@@ -31,6 +31,10 @@
 	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "wooden_pole"
 	item_state = "wooden_pole"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+	)
 	force = 20
 	attack_speed = 1.5 SECONDS
 	var/gripped = FALSE

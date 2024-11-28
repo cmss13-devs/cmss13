@@ -130,6 +130,10 @@
 	icon_state = "fireaxe"
 	item_state = "fireaxe"
 	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axe_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axe_righthand.dmi'
+	)
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_LARGE
@@ -184,6 +188,10 @@
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
 	icon = 'icons/obj/items/weapons/melee/energy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+	)
 	force = 3
 	throwforce = 5
 	throw_speed = SPEED_FAST
@@ -226,6 +234,10 @@
 	icon_state = "spearglass"
 	item_state = "spearglass"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	throwforce = 35
@@ -241,6 +253,10 @@
 	icon_state = "lungemine"
 	item_state = "lungemine"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+	)
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
 	force = MELEE_FORCE_WEAK
 	force_wielded = 1

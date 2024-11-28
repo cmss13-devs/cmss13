@@ -100,6 +100,10 @@
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
 	icon = 'icons/obj/items/weapons/melee/shields.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
+	)
 	icon_state = "eshield0" // eshield1 for expanded
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT|NOBLOODY
 	force = 3

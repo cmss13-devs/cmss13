@@ -22,6 +22,10 @@
 	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_NORMAL
 

@@ -15,6 +15,10 @@
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
 	icon_state = "nullrod"
 	item_state = "nullrod"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_righthand.dmi'
+	)
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
 	flags_equip_slot = SLOT_WAIST
 	force = 15
@@ -40,6 +44,10 @@
 	name = "ice axe"
 	desc = "For climbing, mostly. Makes for a good improvised weapon."
 	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axe_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axe_righthand.dmi'
+	)
 	icon_state = "ice_axe"
 	item_state = "ice_axe"
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -62,6 +70,10 @@
 	icon_state = "woodbat"
 	item_state = "woodbat"
 	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	sharp = 0
 	edge = 0
 	w_class = SIZE_MEDIUM
@@ -88,6 +100,10 @@
 	icon_state = "butterflyknife"
 	item_state = null
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
 	hitsound = null
 	var/active = 0
 	w_class = SIZE_TINY

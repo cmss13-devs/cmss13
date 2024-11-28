@@ -158,11 +158,6 @@ type ByondType = {
    * Loads a script into the document.
    */
   loadJs(url: string): void;
-
-  /**
-   * The ByondCSS stylesheet to load into ByondUI components
-   */
-  styleSheet: string;
 };
 
 /**

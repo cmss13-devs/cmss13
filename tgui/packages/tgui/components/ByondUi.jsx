@@ -28,8 +28,7 @@ const createByondUiElement = (elementId) => {
     render: (params) => {
       logger.log(`rendering '${id}'`);
       byondUiStack[index] = id;
-
-      Byond.winset(id, { ...params, style: Byond.styleSheet });
+      Byond.winset(id, params);
     },
     unmount: () => {
       logger.log(`unmounting '${id}'`);

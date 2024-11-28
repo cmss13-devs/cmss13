@@ -580,3 +580,16 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+
+/obj/item/storage/box/kit/UPP_leader_AR
+	name = "\improper Type 71-F Leader Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/attachable/scope(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)

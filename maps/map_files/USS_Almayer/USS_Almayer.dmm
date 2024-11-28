@@ -67288,14 +67288,6 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/lower/port_fore_hallway)
 "xuE" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	dir = 1;
-	id = "Containment Cell 5";
-	locked = 1;
-	name = "\improper Containment Cell 5";
-	req_access = list(200);
-	req_one_access = null
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Containment Cell 5";
 	name = "\improper Containment Cell 5";

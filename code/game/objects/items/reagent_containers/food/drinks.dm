@@ -123,7 +123,7 @@
 	desc = "A golden cup"
 	name = "golden cup"
 	icon_state = "golden_cup"
-	item_state = "" //nope :(
+	item_state = "golden_cup" //nope :(? nope my ass
 	w_class = SIZE_LARGE
 	force = 14
 	throwforce = 10

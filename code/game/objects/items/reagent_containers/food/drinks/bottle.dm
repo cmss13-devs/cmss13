@@ -229,6 +229,7 @@
 	name = "\improper Caccavo Guaranteed Quality tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
 	icon_state = "tequilabottle"
+	item_state = "tequilabottle"
 	center_of_mass = "x=16;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/tequila/Initialize()
@@ -280,6 +281,7 @@
 	name = "Flask of Holy Water"
 	desc = "A flask of the chaplain's holy water."
 	icon_state = "holyflask"
+	item_state = "holyflask"
 	center_of_mass = "x=17;y=10"
 
 /obj/item/reagent_container/food/drinks/bottle/holywater/Initialize()
@@ -331,6 +333,7 @@
 	name = "Doublebeard Bearded Special Wine"
 	desc = "A faint aura of unease and asspainery surrounds the bottle."
 	icon_state = "winebottle"
+	item_state = "winebottle"
 	center_of_mass = "x=16;y=4"
 
 /obj/item/reagent_container/food/drinks/bottle/wine/Initialize()

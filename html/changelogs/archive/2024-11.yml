@@ -448,3 +448,27 @@
 2024-11-26:
   Drdodo:
   - bugfix: now CEs can buy all of their essentials
+2024-11-27:
+  cuberound:
+  - qol: when lobby joining as UPP you getassigned to equivalen of prefered USCM squad
+      if possible
+  - rscdel: removes navbeacon code
+2024-11-28:
+  Drathek:
+  - balance: Player huggers now have to wait 1 minute to respawn as a lesser on successful
+      hug (same as death). They can still immediately respawn as a hugger on successful
+      hug.
+  - balance: Lesser drones respawn time has been increased from 30s to 1 minute.
+  - bugfix: Join as xeno button/verb (much like larva queue) no longer considers a
+      recent hugger/lesser death as a reason to deny it.
+  - bugfix: Fixed join as xeno button/verb allowing 0 health afk xenos to be controlled.
+  - bugfix: Fixed the xeno_bypass_timer gamemode flag skipping inactivity checks.
+  - refactor: Refactored some of the join as xeno code inconsistencies and changed
+      prompts to tgui_alert
+  - spellcheck: Mentioned eggs when using join as facehugger verb.
+  FslashN:
+  - bugfix: preds not spawning with correct legacy armor sprites
+  ihatethisengine:
+  - rscadd: makes langchat readable through tgui menus.
+  realforest2001:
+  - bugfix: Hologram mobs no longer trigger ares sensors.

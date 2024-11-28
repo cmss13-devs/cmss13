@@ -116,9 +116,15 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	. = ..()
 	name = document_title
 
+// ########## Provost MP Forms  ########## \\
+
 /obj/item/paper/prefab/carbon/military_police
 	name = "Blank MP Document"
 	document_category = PAPER_CATEGORY_MP
+
+/obj/item/paper/prefab/carbon/military_police/ops_report
+	document_title = "PR201 - Operations Report"
+	doc_datum_type = /datum/prefab_document/provost/mp/ops_report
 
 /obj/item/paper/prefab/carbon/military_police/appeal_form
 	document_title = "PR301a - Appeals Form"
@@ -136,12 +142,14 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "NJ910 - Apology Notice"
 	doc_datum_type = /datum/prefab_document/provost/mp/apology_notice
 
+// ########## Provost HC Forms  ########## \\
+
 /obj/item/paper/prefab/provost
 	name = "Blank Provost Document"
 	document_category = PAPER_CATEGORY_PROVOST
 
 /obj/item/paper/prefab/provost/standard
-	document_title = "PR201 - Provost Missive"
+	document_title = "PR202 - Provost Missive"
 	doc_datum_type = /datum/prefab_document/provost/highcom/standard
 
 /obj/item/paper/prefab/provost/arrest_warrant
@@ -155,6 +163,18 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/provost/dao_response
 	document_title = "PR301c - Delayed Action Order"
 	doc_datum_type = /datum/prefab_document/provost/highcom/dao_response
+
+// ########## USCM Standard Forms  ########## \\
+
+/obj/item/paper/prefab/uscm
+	name = "Blank USCM Document"
+	document_category = PAPER_CATEGORY_USCM
+
+/obj/item/paper/prefab/uscm/ops_report
+	document_title = "UAM421 - Operations Report"
+	doc_datum_type = /datum/prefab_document/uscm/ops_report
+
+// ########## USCM HC Forms  ########## \\
 
 /obj/item/paper/prefab/uscm_highcom
 	name = "Blank USCMHC Document"
@@ -171,6 +191,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/uscm_highcom/standard
 	document_title = "UAM422 - USCM High Command Missive"
 	doc_datum_type = /datum/prefab_document/uscm/highcom/standard
+
+// ########## Wey-Yu Liaison Forms  ########## \\
 
 /obj/item/paper/prefab/liaison
 	name = "Blank WY Document"
@@ -196,6 +218,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_title = "WY442 - Non Disclosure Agreement"
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_long
 
+// ########## Wey-Yu HC Forms  ########## \\
 
 /obj/item/paper/prefab/wey_yu
 	name = "Blank WYC Document"

@@ -12,9 +12,9 @@
 	/// the borg inside
 	var/mob/living/occupant = null
 	/// Two charged borgs in a row with default cell
-	var/max_internal_charge = 7500
+	var/max_internal_charge = 12500
 	/// Starts charged, to prevent power surges on round start
-	var/current_internal_charge = 7500
+	var/current_internal_charge = 12500
 	/// Active Cap - When cyborg is inside
 	var/charging_cap_active = 25000
 	/// Passive Cap - Recharging internal capacitor when no cyborg is inside
@@ -33,6 +33,7 @@
 		/obj/item/stock_parts/capacitor,
 		/obj/item/stock_parts/capacitor,
 	)
+
 
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)

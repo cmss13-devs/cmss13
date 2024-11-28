@@ -45,8 +45,8 @@
 	desc = "For climbing, mostly. Makes for a good improvised weapon."
 	icon = 'icons/obj/items/weapons/melee/axes.dmi'
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axe_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axe_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
 	)
 	icon_state = "ice_axe"
 	item_state = "ice_axe"

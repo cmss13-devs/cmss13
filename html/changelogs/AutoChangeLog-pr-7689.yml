@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Merge hook installer now can handle duplicate/old hook installs"

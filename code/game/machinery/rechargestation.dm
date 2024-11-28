@@ -12,9 +12,9 @@
 	/// the borg inside
 	var/mob/living/occupant = null
 	/// Two charged borgs in a row with default cell
-	var/max_internal_charge = 15000
+	var/max_internal_charge = 7500
 	/// Starts charged, to prevent power surges on round start
-	var/current_internal_charge = 15000
+	var/current_internal_charge = 7500
 	/// Active Cap - When cyborg is inside
 	var/charging_cap_active = 25000
 	/// Passive Cap - Recharging internal capacitor when no cyborg is inside
@@ -25,6 +25,14 @@
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	///stun time upon exiting, if at all
 	var/exit_stun = 2
+	/// Components
+	var/list/components = list(
+		/obj/item/stock_parts/manipulator
+		/obj/item/stock_parts/micro_laser
+		/obj/item/stock_parts/scanning_module
+		/obj/item/stock_parts/capacitor
+		/obj/item/stock_parts/capacitor
+	)
 
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)

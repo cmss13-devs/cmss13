@@ -96,6 +96,7 @@
 		list("Station Alerts", 2, /obj/item/circuitboard/computer/stationalert, VENDOR_ITEM_REGULAR),
 		list("Arcade", 2, /obj/item/circuitboard/computer/arcade, VENDOR_ITEM_REGULAR),
 		list("Atmospheric Monitor", 2, /obj/item/circuitboard/computer/air_management, VENDOR_ITEM_REGULAR),
+		list("Synthetic Maintenence Station", 2, /obj/item/circuitboard/machine/recharge_station, VENDOR_ITEM_REGULAR"),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag

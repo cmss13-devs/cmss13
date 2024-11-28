@@ -583,10 +583,10 @@
 
 
 /obj/item/storage/box/kit/UPP_leader_AR
-	name = "\improper Type 71-F Leader Kit"
+	name = "\improper Type 71-F Rifle Kit"
 	pro_case_overlay = "pursuit"
 
-/obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
+/obj/item/storage/box/kit/UPP_leader_AR/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/type71/flamer(src)
 	new /obj/item/attachable/reflex(src)
 	new /obj/item/attachable/suppressor(src)

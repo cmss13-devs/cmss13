@@ -17,7 +17,7 @@
  */
 
 /obj/item/storage/fancy
-	icon = 'icons/obj/items/food/donuts.dmi'
+	icon = null // We don't have fancy sprites for the base type, so don't check
 	icon_state = "donutbox"
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."

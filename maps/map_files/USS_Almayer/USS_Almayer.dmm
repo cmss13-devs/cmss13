@@ -1199,7 +1199,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
 "ahN" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ahR" = (
@@ -1587,7 +1587,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/starboard_garden)
 "alg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -1832,7 +1832,7 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
 "anp" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/almayer/medical/upper_medical)
 "anq" = (
@@ -5273,7 +5273,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "aIx" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aIy" = (
@@ -52386,7 +52386,7 @@
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
 "rGc" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},

@@ -1,4 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/south_east_jungle)
+"ab" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/jungle/south_east_jungle)
+"ac" = (
+/obj/structure/flora/jungle/vines/light_2{
+	pixel_y = -22
+	},
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_east_jungle)
 "al" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
@@ -6,10 +19,6 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "aK" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"br" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "cC" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -150,12 +159,6 @@
 "Wl" = (
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
-"Wp" = (
-/obj/structure/flora/jungle/vines/light_2{
-	pixel_y = -22
-	},
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/south_east_jungle)
 "Wr" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
@@ -203,9 +206,6 @@
 	pixel_y = 24
 	},
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_east_jungle)
-"Ze" = (
-/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_east_jungle)
 "Zi" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -328,7 +328,7 @@ Xy
 vt
 Xl
 Xl
-Ze
+aa
 qo
 "}
 (8,1,1) = {"
@@ -344,7 +344,7 @@ Xy
 Xy
 Xl
 Xl
-Ze
+aa
 qo
 "}
 (9,1,1) = {"
@@ -357,7 +357,7 @@ Wl
 yg
 Kj
 Xl
-br
+ab
 EZ
 Wl
 Zi
@@ -369,7 +369,7 @@ aK
 qo
 qo
 qo
-Wp
+ac
 EZ
 Xy
 Xy
@@ -385,7 +385,7 @@ qo
 Zp
 qo
 qo
-Wp
+ac
 EZ
 Xy
 Xy
@@ -401,12 +401,12 @@ qo
 qo
 aK
 qo
-Wp
+ac
 NU
 yg
 EZ
 Xl
-Ze
+aa
 wQ
 qo
 qo

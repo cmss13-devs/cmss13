@@ -12075,6 +12075,7 @@
 /area/rostock/lowerdeck_maint/p_f)
 "jaD" = (
 /obj/structure/machinery/cm_vending/gear/upp_commanding_officer,
+/obj/item/storage/belt/gun/type47/t73/leader,
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
 "jaP" = (

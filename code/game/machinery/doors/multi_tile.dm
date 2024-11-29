@@ -116,16 +116,6 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/obj/structure/machinery/door/airlock/multi_tile/shuttle
-	name = "Shuttle Podlock"
-	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
-	icon_state = "pdoor1"
-	opacity = TRUE
-	openspeed = 12
-	req_access = null
-	not_weldable = 1
-
-
 // ALMAYER
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer

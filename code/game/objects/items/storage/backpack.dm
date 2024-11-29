@@ -411,14 +411,14 @@
 	desc = "The standard-issue pack of the USCM forces. Designed to lug gear into the battlefield."
 	icon_state = "marinepack"
 	item_state = "marinepack"
-	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
+	flags_atom = FPRINT // has gamemode skin
 	xeno_icon_state = "marinepack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/ammo_rack
 	name = "\improper IMP ammo rack"
 	desc = "A bare IMP frame with buckles designed to hold multiple ammo cans, but can fit any cumbersome box thanks to Marine ingenuity. Helps you lug around extra rounds or supplies."
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	storage_slots = 3
 	icon_state = "ammo_pack_0"
 	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade)
@@ -453,10 +453,11 @@
 	xeno_icon_state = "medicpack"
 	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
-/obj/item/storage/backpack/marine/k9_synth/
+/obj/item/storage/backpack/marine/k9_synth
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
 	uniform_restricted = list(/obj/item/clothing/under/rank/synthetic/synth_k9) //K9 Synth only
 	force_overlays_on = TRUE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/k9_synth/cargopack
 	name = "\improper M209 portable K9 backpack"
@@ -528,7 +529,7 @@
 	name = "\improper USCM chestrig"
 	desc = "A chestrig used by some USCM personnel."
 	icon_state = "chestrig"
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
@@ -537,7 +538,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs."
 	icon_state = "rto_backpack"
 	item_state = "rto_backpack"
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE
@@ -690,7 +691,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "tacrucksack"
 	desc = "With a backpack like this, you'll forget you're on a hell march designed to kill you."
 	worn_accessible = TRUE
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/rocketpack
@@ -698,7 +699,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A specially-designed backpack that fits to the IMP mounting frame on standard USCM pattern M3 armors. It's made of two waterproofed reinforced tubes and one smaller satchel slung at the bottom. The two silos are for rockets, but no one is stopping you from cramming other things in there."
 	icon_state = "rocketpack"
 	worn_accessible = TRUE
-	has_gamemode_skin = FALSE //monkeysfist101 never sprited a snowtype but included duplicate icons. Why?? Recolor and touch up sprite at a later date.
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack
@@ -711,7 +712,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	storage_slots = 12
 	can_hold = list(/obj/item/explosive/grenade)
 	is_id_lockable = TRUE
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
@@ -740,7 +741,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "g8pouch"
 	item_state = "g8pouch"
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 	can_hold_skill = list()
 
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
@@ -761,6 +762,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	unacidable = TRUE
 	explo_proof = TRUE
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	var/camo_active = FALSE
 	var/camo_alpha = 10
 	var/allow_gun_usage = FALSE
@@ -921,7 +923,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/fuel_type = "fuel"
 	max_storage_space = 18
 	storage_slots = null
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/engineerpack/Initialize()
@@ -998,7 +1000,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "satchel_marine_welder"
 	item_state = "satchel_marine_welder"
 	max_storage_space = 12
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_fuel = 100
 	worn_accessible = TRUE
 
@@ -1008,7 +1010,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "welder_chestrig"
 	item_state = "welder_chestrig"
 	max_storage_space = 12
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_fuel = 100
 	worn_accessible = TRUE
 
@@ -1019,7 +1021,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "flamethrower_tank"
 	max_fuel = 500
 	fuel_type = "utnapthal"
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/verb/remove_reagents()
 	set name = "Empty canister"
@@ -1079,7 +1081,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "flamethrower_backpack"
 	item_state = "flamethrower_backpack"
 	max_fuel = 350
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 15
 	storage_slots = 3
 	worn_accessible = TRUE
@@ -1101,7 +1103,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper lightweight technician welderpack"
 	desc = "A small, lightweight pack for expeditions and short-range operations. Features a small fueltank for quick blowtorch refueling."
 	icon_state = "ERT_satchel_welder"
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
 	max_fuel = 180
 
@@ -1175,7 +1177,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper UCP3-E technician welderpack"
 	desc = "A special version of the Union Combat Pack MK3 featuring a small fueltank for quick blowtorch refueling. Used by UPP Sappers."
 	icon_state = "satchel_upp_welder"
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
 	max_fuel = 180
 	max_storage_space = 12
@@ -1194,7 +1196,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 //----------TWE SECTION----------
 /obj/item/storage/backpack/rmc
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/backpack/rmc/heavy
 	name = "heavyweight RMC backpack"
@@ -1243,5 +1245,5 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A small, lightweight pouch that can be clipped onto armor to provide additional storage. This new RMC model, while uncomfortable, can also be clipped around the waist."
 	icon_state = "rmc_general"
 	item_state = "rmc_general"
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 15

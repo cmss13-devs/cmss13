@@ -1023,7 +1023,7 @@
 
 /obj/item/ammo_box/magazine/mar30/ext
 	name = "magazine box (MAR30/40 Ext x 8)"
-	overlay_gun_type = "_mar40"
+	overlay_gun_type = "_mar30"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/mar40/extended
 

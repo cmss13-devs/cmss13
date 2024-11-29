@@ -243,6 +243,13 @@
 	display_maptext = TRUE
 	maptext_label = "UZ"
 
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
+	icon_state = uses_left ? "stimpack" : "stimpack0"
+	if((isstorage(loc) || ismob(loc)) && display_maptext)
+		maptext = SPAN_LANGCHAT("[maptext_label]")
+	else
+		maptext = ""
+
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "white autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."

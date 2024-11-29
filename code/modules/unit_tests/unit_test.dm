@@ -38,11 +38,13 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/turf/run_loc_floor_top_right
 	///The priority of the test, the larger it is the later it fires
 	var/priority = TEST_DEFAULT
+
 	//internal shit
 	var/focus = FALSE
 	var/succeeded = TRUE
 	var/list/allocated
 	var/list/fail_reasons
+	var/list/warn_reasons
 
 	var/static/datum/space_level/reservation
 
@@ -81,6 +83,12 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		reason = "FORMATTED: [reason != null ? reason : "NULL"]"
 
 	LAZYADD(fail_reasons, list(list(reason, file, line)))
+
+/datum/unit_test/proc/Warn(reason = "No reason", file = "OUTDATED_TEST", line = 1)
+	if(!istext(reason))
+		reason = "FORMATTED: [reason != null ? reason : "NULL"]"
+
+	LAZYADD(warn_reasons, list(list(reason, file, line)))
 
 /// Allocates an instance of the provided type, and places it somewhere in an available loc
 /// Instances allocated through this proc will be destroyed when the test is over
@@ -182,7 +190,28 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	log_world("::endgroup::")
 
-	if (!test.succeeded)
+	// Group warnings together
+	var/list/warn_reasons = test.warn_reasons
+	if(length(warn_reasons))
+		log_world("::group::[test_path] Warnings")
+
+		log_entry = list()
+		for(var/reasonID in 1 to length(warn_reasons))
+			var/text = warn_reasons[reasonID][1]
+			var/file = warn_reasons[reasonID][2]
+			var/line = warn_reasons[reasonID][3]
+
+			test.log_for_test(text, "warning", file, line)
+
+			// Normal log message
+			log_entry += "\tWARNING #[reasonID]: [text] at [file]:[line]"
+
+		var/warn_messages = log_entry.Join("\n")
+		log_test(warn_messages)
+
+		log_test("::endgroup::")
+
+	if(!test.succeeded)
 		log_world("::error::[TEST_OUTPUT_RED("FAIL")] [test_output_desc]")
 
 	test_results[test_path] = list("status" = test.succeeded ? UNIT_TEST_PASSED : UNIT_TEST_FAILED, "message" = message, "name" = test_path)

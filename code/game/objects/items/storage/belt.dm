@@ -16,6 +16,8 @@
 	cant_hold = list(/obj/item/weapon/throwing_knife)
 	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 	var/flap = TRUE
+	/// Indiciates whether the _half and _full overlays should be applied in update_icon
+	var/skip_fullness_overlays = FALSE
 
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
@@ -29,11 +31,15 @@
 
 /obj/item/storage/belt/update_icon()
 	overlays.Cut()
+
+	if(skip_fullness_overlays)
+		return
 	if(!length(contents))
 		return
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
-	else if(length(contents) <= storage_slots * 0.5)
+
+	if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -58,6 +64,7 @@
 	)
 	storage_slots = 1
 	can_hold = list(/obj/item/clothing/mask/luchador)
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/quackers
 	name = "Mr. Quackers"
@@ -277,7 +284,7 @@
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/medical/lifesaver/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -380,7 +387,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/medical/lifesaver/upp/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -571,7 +578,7 @@
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -721,7 +728,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 //version full of type 71 mags
 /obj/item/storage/belt/marine/upp/full/fill_preset_inventory()
@@ -771,7 +778,7 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/ammo_magazine/m56d,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/shotgun
 	name = "\improper M276 pattern shotgun shell loading rig"
@@ -788,7 +795,7 @@
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
 	flap = FALSE
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/shotgun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -851,12 +858,13 @@
 	storage_slots = null
 	max_storage_space = 20
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	item_state_slots = list(
 		WEAR_J_STORE = "van_bandolier_10",
 		WEAR_BACK = "van_bandolier_10",
 		WEAR_WAIST = "van_bandolier_10"
 	)
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/shotgun/van_bandolier/update_icon()
 	var/mob/living/carbon/human/user = loc
@@ -1099,6 +1107,18 @@
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
 	)
+	cant_hold = list(
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
+		/obj/item/weapon/gun/pistol/es4, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
 
 /obj/item/storage/belt/gun/Initialize()
 	. = ..()
@@ -1140,11 +1160,14 @@
 /obj/item/storage/belt/gun/update_icon()
 	overlays.Cut()
 
+	if(skip_fullness_overlays)
+		return
 	if(content_watchers && flap)
 		return
 	var/magazines = length(contents) - length(holstered_guns)
 	if(!magazines)
 		return
+
 	if(magazines <= (storage_slots - length(holster_slots)) * 0.5) //Don't count slots reserved for guns, even if they're empty.
 		overlays += "+[base_icon]_half"
 	else
@@ -1306,8 +1329,18 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
+		/obj/item/weapon/gun/pistol/es4, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
@@ -1418,7 +1451,7 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/ammo_magazine/smg/nailgun,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
@@ -1443,6 +1476,9 @@
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/ammo_magazine/smg,
 	)
+	cant_hold = list (
+		/obj/item/weapon/gun/smg/m39/elite, // HONKed currently
+	)
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -11,
@@ -1464,7 +1500,7 @@
 	name = "\improper M276 pattern XM51 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
 	icon_state = "xm51_holster"
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 	gun_has_gamemode_skin = TRUE
 	storage_slots = 8
 	max_w_class = 5
@@ -1521,7 +1557,7 @@
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
@@ -1552,16 +1588,17 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list("icon_x" = -9, "icon_y" = -3),
 		"2" = list("icon_x" = 9, "icon_y" = -3))
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/m44/gunslinger/Initialize()
 	var/matrix/M = matrix()
@@ -1631,6 +1668,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
 	)
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/mateba
 	name = "\improper M276 pattern Mateba holster rig"
@@ -1668,7 +1706,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. It was included with the mail-order USCM edition of the Mateba autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "marinebelt"
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/cmateba())
@@ -1835,7 +1873,7 @@
 	icon_state = "ivan_belt"
 	storage_slots = 56
 	max_storage_space = 56
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_w_class = SIZE_MASSIVE
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
@@ -1855,9 +1893,24 @@
 		/obj/item/ammo_magazine/pistol/rubber,
 		/obj/item/ammo_magazine/pistol/mod88/rubber) //Ivan doesn't bring children's ammo.
 
+	var/list/bad_guns = list(
+		/obj/item/weapon/gun/pistol/m4a3/training,
+		/obj/item/weapon/gun/pistol/mod88/training,
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
+		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
+		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
+		/obj/item/weapon/gun/pistol/es4, // HONKed currently
+		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
+		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
+
 	var/list/picklist = subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags + training_mags)
 	var/random_mag = pick(picklist)
-	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - list(/obj/item/weapon/gun/pistol/m4a3/training, /obj/item/weapon/gun/pistol/mod88/training))
+	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - bad_guns)
 	handle_item_insertion(new guntype())
 	for(var/total_storage_slots in 2 to storage_slots) //minus templates
 		new random_mag(src)
@@ -1876,7 +1929,7 @@
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
@@ -1899,7 +1952,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
 	)
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
 		/obj/item/weapon/gun/flare,
 		/obj/item/device/flashlight/flare,
@@ -1960,7 +2013,7 @@
 		/obj/item/weapon/gun/revolver/m44/custom/webley,
 		/obj/item/ammo_magazine/revolver,
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
@@ -1988,7 +2041,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
@@ -2092,7 +2145,7 @@
 		/obj/item/mortar_shell,
 	)
 	bypass_w_limit = list(/obj/item/mortar_shell)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/utility
 	name = "\improper M276 pattern combat toolbelt rig"
@@ -2191,12 +2244,13 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
 	)
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_equip_slot = SLOT_WAIST
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	storage_slots = 8
 	flags_inventory = CANTSTRIP
 	max_w_class = 0 //this belt cannot hold anything
+	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/souto/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -2227,7 +2281,7 @@
 		WEAR_L_HAND = "upp_belt",
 		WEAR_R_HAND = "upp_belt"
 	)
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
@@ -2254,7 +2308,7 @@
 		WEAR_R_HAND = "upp_belt"
 	)
 	has_gamemode_skin = FALSE
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/gun/l905
 	name = "\improper L905 gunbelt"
@@ -2267,13 +2321,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
 	)
-	has_gamemode_skin = FALSE
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,

@@ -75,7 +75,7 @@
 	throw_range = 5
 	matter = list("metal" = 500)
 
-/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot)
+/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	if(slot == WEAR_HANDCUFFS)

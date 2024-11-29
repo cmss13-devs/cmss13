@@ -24,11 +24,11 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmbandana/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(/obj/item/clothing/head/cmbandana)
 
 /obj/item/clothing/head/cmbandana/tan
@@ -88,7 +88,7 @@
 
 /obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(/obj/item/clothing/head/beret/cm)
 
 /obj/item/clothing/head/beret/cm/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -123,22 +123,22 @@
 
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/white
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/black
 	icon_state = "beret_black"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/green
 	icon_state = "beret_green"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
@@ -207,7 +207,7 @@
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(/obj/item/clothing/head/headband)
 
 /obj/item/clothing/head/headband/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -238,7 +238,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/gray
 	icon_state = "headbandgray"
@@ -246,7 +246,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/rebel
 	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
@@ -255,13 +255,13 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/squad
 	var/dummy_icon_state = "headband%SQUAD%"
 
 	var/static/list/valid_icon_states
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/squad/Initialize(mapload, ...)
 	. = ..()
@@ -310,7 +310,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/obj/items/clothing/halloween_clothes.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headset
 	name = "\improper USCM headset"
@@ -382,8 +382,7 @@
 
 /obj/item/clothing/head/cmcap/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type)
+	select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
 
@@ -409,6 +408,10 @@
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+
+/obj/item/clothing/head/cmcap/Destroy()
+	QDEL_NULL(pockets)
+	return ..()
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
@@ -436,7 +439,7 @@
 		var/mob/M = loc
 		M.update_inv_head()
 
-/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/return_image = ..()
 	if(slot != WEAR_HEAD)
 		return return_image
@@ -489,6 +492,7 @@
 
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
@@ -504,7 +508,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 	flags_marine_hat = HAT_GARB_OVERLAY
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/co/formal/black
 	name = "\improper USCM formal Commanding Officer's black cap"
@@ -518,7 +522,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/req/ro
 	name = "\improper USCM quartermaster cap"
@@ -545,7 +549,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmo
@@ -652,7 +656,7 @@
 
 /obj/item/clothing/head/beret/marine/commander/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(/obj/item/clothing/head/beret/marine/commander)
 
 /obj/item/clothing/head/beret/marine/commander/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -679,7 +683,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/marine/commander/black
 	name = "marine major black beret"
@@ -689,7 +693,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"
@@ -699,7 +703,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/marine/commander/councilchief
 	name = "marine colonel beret"
@@ -709,7 +713,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
@@ -976,7 +980,7 @@
 /obj/item/clothing/head/durag/black
 	icon_state = "duragblack"
 	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
@@ -1043,7 +1047,7 @@
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'
 	)

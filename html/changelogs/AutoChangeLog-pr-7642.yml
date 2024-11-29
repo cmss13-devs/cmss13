@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "Fix bug on UPP Synth Snowflake Vendor that prevented some items being vended."

@@ -195,6 +195,10 @@
 "aaS" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
+"aaT" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "aaU" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
@@ -463,6 +467,10 @@
 "abV" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/gamma/hangar)
+"abW" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "abX" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
@@ -481,6 +489,13 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
+"acb" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "acc" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood,
@@ -1061,6 +1076,11 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet6_2/west,
 /area/corsat/gamma/residential/lounge)
+"aeh" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -1069,6 +1089,10 @@
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"aej" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/corsat/theta/biodome)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
@@ -1184,6 +1208,11 @@
 "aeJ" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
+"aeK" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "aeL" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
@@ -1347,6 +1376,10 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
+"afw" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/corsat/theta/biodome)
 "afx" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
@@ -1437,6 +1470,11 @@
 "afN" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/sigma/hangar)
+"afO" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "afP" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/sigma/hangar)
@@ -2281,6 +2319,10 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
+"aiV" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -2668,6 +2710,12 @@
 "akz" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/hangar)
+"akA" = (
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	name = "computer"
+	},
+/turf/open/shuttle/escapepod/floor2/east,
+/area/corsat/theta/biodome/complex)
 "akB" = (
 /turf/closed/wall/biodome,
 /area/corsat/theta/airlock/east)
@@ -2687,6 +2735,11 @@
 	},
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/gamma/sigmaremote)
+"akF" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "akG" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -2731,6 +2784,17 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/security)
+"akO" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Cables"
+	},
+/obj/structure/cryofeed/right{
+	color = "silver";
+	desc = "A bewildering tangle of machinery and pipes.";
+	name = "\improper coolant feed"
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/corsat/theta/biodome/complex)
 "akP" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -2812,6 +2876,16 @@
 /obj/item/device/camera/oldcamera,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"alf" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
+"alg" = (
+/obj/structure/prop/almayer/cannon_cable_connector{
+	name = "\improper Cable connector"
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/corsat/theta/biodome/complex)
 "alh" = (
 /turf/open/floor/corsat/brown/north,
 /area/corsat/gamma/cargo)
@@ -2842,6 +2916,19 @@
 	},
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/residential)
+"alm" = (
+/turf/open/shuttle/escapepod/floor1/north,
+/area/corsat/theta/biodome/complex)
+"aln" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/corsat/theta/biodome/complex)
+"alo" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/shuttle/escapepod/floor1/north,
+/area/corsat/theta/biodome/complex)
 "alp" = (
 /obj/structure/machinery/door_control{
 	id = "GammaAdmin";
@@ -2855,11 +2942,20 @@
 	},
 /turf/open/floor/corsat/bluegrey/east,
 /area/corsat/gamma/administration)
+"alq" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "alr" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"als" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirtgrassborder/south,
+/area/corsat/theta/biodome)
 "alt" = (
 /turf/open/floor/corsat/redcorner,
 /area/corsat/gamma/residential)
@@ -2948,6 +3044,12 @@
 "alI" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/rnr/bar)
+"alJ" = (
+/obj/structure/pipes/standard/cap/hidden{
+	dir = 1
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/corsat/theta/biodome/complex)
 "alK" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -2997,6 +3099,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/plating/northeast,
 /area/corsat/gamma/sigmaremote)
+"alT" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/corsat/theta/biodome)
 "alU" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /obj/item/device/camera,
@@ -4285,22 +4391,6 @@
 "arc" = (
 /turf/closed/shuttle,
 /area/corsat/gamma/hangar/monorail/railcart)
-"ard" = (
-/obj/structure/showcase{
-	icon_state = "broadcast receiver";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Subspace Receiver"
-	},
-/turf/open/floor/almayer/tcomms,
-/area/corsat/sigma/southeast/telecomm)
-"are" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/almayer/tcomms,
-/area/corsat/sigma/southeast/telecomm)
 "arf" = (
 /turf/closed/wall/almayer/white,
 /area/corsat/gamma/medbay/surgery)
@@ -4323,15 +4413,6 @@
 	},
 /turf/open/floor/corsat/greenwhite/west,
 /area/corsat/gamma/medbay/surgery)
-"ark" = (
-/obj/structure/showcase{
-	icon_state = "comm_server";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Communications Server"
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/tcomms,
-/area/corsat/sigma/southeast/telecomm)
 "arl" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/heart,
@@ -4346,6 +4427,13 @@
 "arm" = (
 /turf/open/floor/corsat/browncorner/west,
 /area/corsat/sigma/north)
+"arn" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "aro" = (
 /turf/open/floor/corsat/blue,
 /area/corsat/gamma/hallwaysouth)
@@ -4391,6 +4479,13 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/emergency_access)
+"arw" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "arx" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/freezer)
@@ -4415,6 +4510,17 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/sigma/north)
+"arD" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/obj/structure/platform_decoration/metal/almayer/east{
+	density = 0
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/south/complex)
 "arE" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -4476,6 +4582,14 @@
 "arR" = (
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/arcade)
+"arS" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/sigma/south/complex)
 "arT" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -4491,6 +4605,15 @@
 "arW" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/residential/lavatory)
+"arX" = (
+/obj/structure/showcase{
+	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Communications Server"
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/tcomms,
+/area/corsat/sigma/southeast/telecomm)
 "arY" = (
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/rnr)
@@ -4558,6 +4681,13 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
+"asl" = (
+/obj/structure/showcase{
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	},
+/turf/open/floor/almayer/tcomms,
+/area/corsat/sigma/southeast/telecomm)
 "asm" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/residential/showers)
@@ -4605,6 +4735,14 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
+"asx" = (
+/obj/structure/showcase{
+	icon_state = "hub";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Telecommunication Hub"
+	},
+/turf/open/floor/almayer/tcomms,
+/area/corsat/sigma/southeast/telecomm)
 "asy" = (
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
@@ -4742,6 +4880,10 @@
 "asZ" = (
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/sigma/southeast)
+"ata" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/corsat/theta/biodome)
 "atb" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
@@ -4803,6 +4945,14 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/sigma/southeast/dataoffice)
+"atq" = (
+/obj/structure/showcase{
+	icon_state = "broadcast receiver";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Subspace Receiver"
+	},
+/turf/open/floor/almayer/tcomms,
+/area/corsat/sigma/southeast/telecomm)
 "atr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -4854,6 +5004,14 @@
 "atD" = (
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
+"atE" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/almayer/tcomms,
+/area/corsat/sigma/southeast/telecomm)
 "atF" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/containment)
@@ -5125,6 +5283,14 @@
 "auH" = (
 /turf/closed/wall/biodome,
 /area/corsat/sigma/south/engineering)
+"auI" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "auJ" = (
 /turf/closed/wall/biodome,
 /area/corsat/sigma/south/robotics)
@@ -5135,6 +5301,10 @@
 "auL" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/airlocknorth)
+"auM" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
+/area/corsat/theta/biodome)
 "auN" = (
 /turf/open/floor/corsat/yellow/southeast,
 /area/corsat/sigma/south/engineering)
@@ -5161,6 +5331,10 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/sigma/south/engineering)
+"auT" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirtgrassborder/west,
+/area/corsat/theta/biodome)
 "auU" = (
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/corsat,
@@ -5249,9 +5423,21 @@
 /obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/yellow/northwest,
 /area/corsat/gamma/engineering/core)
+"avi" = (
+/obj/structure/showcase{
+	icon_state = "relay";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Telecommunication Relay"
+	},
+/turf/open/floor/almayer/tcomms,
+/area/corsat/sigma/southeast/telecomm)
 "avj" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/hangar/checkpoint)
+"avk" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/west,
+/area/corsat/theta/biodome)
 "avl" = (
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/sigma/hangar/checkpoint)
@@ -5308,6 +5494,14 @@
 	},
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/security)
+"avw" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat/lightplate,
+/area/corsat/sigma/south/complex)
 "avx" = (
 /obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/whitebluefull/southwest,
@@ -5323,6 +5517,21 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/corsat/red,
 /area/corsat/sigma/airlock/south/id)
+"avB" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat/plate,
+/area/corsat/inaccessible)
+"avC" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "avD" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper,
@@ -5630,6 +5839,11 @@
 	},
 /turf/open/floor/corsat/bluegrey,
 /area/corsat/gamma/airlock/north)
+"awI" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "awJ" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/corsat/cargo,
@@ -5896,6 +6110,10 @@
 	},
 /turf/open/floor/corsat/officesquares,
 /area/corsat/gamma/administration)
+"axA" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/east,
+/area/corsat/theta/biodome)
 "axB" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -5998,6 +6216,10 @@
 /obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/airlock/east/id)
+"axU" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/north,
+/area/corsat/theta/biodome)
 "axV" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
@@ -6690,6 +6912,10 @@
 	},
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/engineering/atmos)
+"aAn" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/corsat/theta/biodome)
 "aAo" = (
 /obj/structure/pipes/unary/outlet_injector{
 	dir = 8;
@@ -6893,6 +7119,13 @@
 "aBc" = (
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/sigma/airlock/south)
+"aBd" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/theta/biodome)
 "aBe" = (
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/omega/hallways)
@@ -6941,6 +7174,11 @@
 "aBo" = (
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/corsat/inaccessible)
+"aBp" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/corsat/theta/biodome)
 "aBq" = (
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/corsat/inaccessible)
@@ -6982,6 +7220,33 @@
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/sigma/airlock/south)
+"aBA" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat,
+/area/corsat/gamma/sigmaremote)
+"aBB" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/corsat/gamma/sigmaremote)
+"aBC" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat/lightplate,
+/area/corsat/gamma/sigmaremote)
 "aBD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/bronze,
@@ -7197,14 +7462,6 @@
 	},
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/sigma/south)
-"aCq" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/corsat/plate,
-/area/corsat/inaccessible)
 "aCr" = (
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/south/engineering)
@@ -10561,17 +10818,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
-"aOS" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/obj/structure/platform_decoration/metal/almayer/east{
-	density = 0
-	},
-/turf/open/floor/corsat/plate,
-/area/corsat/sigma/south/complex)
 "aOT" = (
 /turf/closed/wall/biodome,
 /area/corsat/emergency_access)
@@ -12966,14 +13212,6 @@
 	},
 /turf/open/floor/almayer/tcomms,
 /area/corsat/sigma/southeast/telecomm)
-"aXq" = (
-/obj/structure/showcase{
-	icon_state = "relay";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Telecommunication Relay"
-	},
-/turf/open/floor/almayer/tcomms,
-/area/corsat/sigma/southeast/telecomm)
 "aXr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "Telecommunications";
@@ -14805,14 +15043,6 @@
 "bcT" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/corsat/theta/biodome)
-"bcU" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/corsat/theta/biodome)
-"bcV" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/corsat/theta/biodome)
 "bcW" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -15036,10 +15266,6 @@
 "bef" = (
 /turf/open/mars_cave/mars_cave_4,
 /area/corsat/sigma/biodome/gunrange)
-"beg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "beh" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1/weedable,
@@ -15075,10 +15301,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/corsat/theta/biodome)
-"beo" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bep" = (
 /obj/structure/flora/jungle/planttop1,
@@ -15163,11 +15385,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
-"beJ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "beK" = (
 /turf/open/mars_cave/mars_cave_12,
@@ -16245,14 +16462,6 @@
 /area/corsat/gamma/hydroponics)
 "bja" = (
 /obj/structure/machinery/message_server,
-/turf/open/floor/almayer/tcomms,
-/area/corsat/sigma/southeast/telecomm)
-"bjb" = (
-/obj/structure/showcase{
-	icon_state = "hub";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Telecommunication Hub"
-	},
 /turf/open/floor/almayer/tcomms,
 /area/corsat/sigma/southeast/telecomm)
 "bjc" = (
@@ -22077,13 +22286,6 @@
 /obj/item/ashtray/plastic,
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/maint)
-"bHz" = (
-/obj/structure/showcase{
-	icon_state = "bus";
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	},
-/turf/open/floor/almayer/tcomms,
-/area/corsat/sigma/southeast/telecomm)
 "bHA" = (
 /obj/structure/surface/table,
 /obj/item/trash/plate,
@@ -26630,11 +26832,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/whitetan,
 /area/corsat/gamma/residential/west)
-"cMa" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "cMv" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "ID Checkpoint";
@@ -27001,13 +27198,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars_cave/mars_cave_9,
 /area/corsat/sigma/biodome)
-"diD" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "diI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/tan/north,
@@ -27284,17 +27474,6 @@
 /obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/sigmaremote)
-"dwM" = (
-/obj/structure/prop/almayer/cannon_cables{
-	name = "\improper Cables"
-	},
-/obj/structure/cryofeed/right{
-	color = "silver";
-	desc = "A bewildering tangle of machinery and pipes.";
-	name = "\improper coolant feed"
-	},
-/turf/open/shuttle/escapepod/floor5,
-/area/corsat/theta/biodome/complex)
 "dwS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -28061,13 +28240,6 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/biodome)
-"elR" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "elX" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/vents/pump{
@@ -28164,11 +28336,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/checkpoint)
-"eql" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "eqt" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -28378,10 +28545,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/maint)
-"ezR" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "eAD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28540,14 +28703,6 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
-"eMI" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/corsat,
-/area/corsat/gamma/sigmaremote)
 "eMM" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_spawn,
@@ -29553,10 +29708,6 @@
 	},
 /turf/open/floor/corsat/blue/east,
 /area/corsat/gamma/hallwaysouth)
-"fSA" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/corsat/theta/biodome)
 "fSB" = (
 /turf/open/floor/corsat/darkgreencorner,
 /area/corsat/sigma/hangar/arrivals)
@@ -30017,10 +30168,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/south/engineering)
-"gpP" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/north,
-/area/corsat/theta/biodome)
 "gqd" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data,
@@ -30622,12 +30769,6 @@
 "gSI" = (
 /turf/open/floor/corsat/red/west,
 /area/corsat/omega/hangar/office)
-"gSQ" = (
-/obj/structure/prop/almayer/cannon_cable_connector{
-	name = "\improper Cable connector"
-	},
-/turf/open/shuttle/escapepod/floor5,
-/area/corsat/theta/biodome/complex)
 "gTe" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -31536,10 +31677,6 @@
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/corsat/bluegreycorner/north,
 /area/corsat/gamma/hangar/flightcontrol)
-"hJw" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/east,
-/area/corsat/theta/biodome)
 "hJG" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/darkgreen/east,
@@ -32365,13 +32502,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/purplewhite/southeast,
 /area/corsat/gamma/biodome/toxins)
-"iBg" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "iBo" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -33667,10 +33797,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/lightplate,
 /area/corsat/theta/biodome/hydroeast)
-"keE" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/corsat/theta/biodome)
 "kfc" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -34333,12 +34459,6 @@
 /obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/corsat/bluegrey,
 /area/corsat/omega/offices)
-"kQS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/shuttle/escapepod/floor5,
-/area/corsat/theta/biodome/complex)
 "kRa" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
 	index = "9"
@@ -35809,11 +35929,6 @@
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
-"mrb" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "mrr" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -36489,14 +36604,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
-"nck" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/flora/jungle/vines/light_1,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "ncR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/retrosquareslight,
@@ -36617,11 +36724,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
-"nlm" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "nln" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump{
@@ -36809,9 +36911,6 @@
 	},
 /turf/open/floor/carpet13_5/west,
 /area/corsat/omega/offices)
-"ntg" = (
-/turf/open/shuttle/escapepod/floor5,
-/area/corsat/theta/biodome/complex)
 "ntn" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy13"
@@ -37616,14 +37715,6 @@
 	},
 /turf/open/floor/corsat/blue,
 /area/corsat/theta/airlock/control)
-"olB" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/corsat/lightplate,
-/area/corsat/gamma/sigmaremote)
 "olD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -37682,12 +37773,6 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
-"opf" = (
-/obj/structure/prop/almayer/computers/sensor_computer1{
-	name = "computer"
-	},
-/turf/open/shuttle/escapepod/floor12,
-/area/corsat/theta/biodome/complex)
 "opi" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat/retrosquares,
@@ -38248,13 +38333,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/sigmaremote)
-"oVF" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "oVM" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/corsat/darkgreen/north,
@@ -38875,17 +38953,6 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/corsat/whitetan/north,
 /area/corsat/gamma/residential/west)
-"pJP" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/corsat,
-/area/corsat/gamma/sigmaremote)
 "pJY" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -40100,10 +40167,6 @@
 "qUT" = (
 /turf/open/floor/corsat/yellow,
 /area/corsat/gamma/engineering/atmos)
-"qVd" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/shuttle/escapepod/floor5,
-/area/corsat/theta/biodome/complex)
 "qVe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -41735,10 +41798,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
-"sGQ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder/west,
-/area/corsat/theta/biodome)
 "sGV" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
@@ -42701,10 +42760,6 @@
 /obj/structure/stairs,
 /turf/open/floor/corsat/whitetan/west,
 /area/corsat/gamma/residential/west)
-"tJf" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/corsat/theta/biodome)
 "tJs" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/squares,
@@ -43936,13 +43991,6 @@
 "uXa" = (
 /turf/open/floor/corsat/red,
 /area/corsat/theta/airlock/control)
-"uXk" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "uXw" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/corsat/retrosquares,
@@ -44018,10 +44066,6 @@
 /obj/structure/machinery/optable,
 /turf/open/floor/corsat/purple/west,
 /area/corsat/omega/complex)
-"var" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "vaw" = (
 /obj/structure/machinery/computer/WYresearch,
 /turf/open/floor/corsat/purplewhite/northwest,
@@ -44157,14 +44201,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
-"vic" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/corsat/lightplate,
-/area/corsat/sigma/south/complex)
 "vii" = (
 /turf/open/floor/carpet11_12/west,
 /area/corsat/omega/offices)
@@ -44401,12 +44437,6 @@
 	},
 /turf/open/floor/corsat/whitetan/west,
 /area/corsat/gamma/residential/west)
-"vxv" = (
-/obj/structure/pipes/standard/cap/hidden{
-	dir = 1
-	},
-/turf/open/shuttle/escapepod/floor5,
-/area/corsat/theta/biodome/complex)
 "vyk" = (
 /turf/open/floor/corsat/greenwhitecorner/north,
 /area/corsat/gamma/medbay/morgue)
@@ -44761,11 +44791,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/sigma/hangar)
-"vQg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "vQs" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/folder/black_random,
@@ -45022,10 +45047,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
-"wiJ" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/west,
-/area/corsat/theta/biodome)
 "wiQ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -45151,14 +45172,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/residential/east)
-"wnB" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/corsat/plate,
-/area/corsat/sigma/south/complex)
 "wnJ" = (
 /turf/open/floor/corsat/white/north,
 /area/corsat/gamma/residential/east)
@@ -45327,11 +45340,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/corsat,
 /area/corsat/sigma/south/robotics)
-"wvK" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "wvN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -46614,10 +46622,6 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open/floor/corsat/white/southeast,
 /area/corsat/gamma/hallwaysouth)
-"xRq" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/corsat/theta/biodome)
 "xRM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -46941,10 +46945,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/yellowcorner/north,
 /area/corsat/omega/control)
-"yle" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/dirtgrassborder/south,
-/area/corsat/theta/biodome)
 "ylo" = (
 /turf/open/space,
 /area/space)
@@ -49425,11 +49425,11 @@ ylo
 abF
 vkq
 ldy
-olB
-olB
-olB
-olB
-olB
+aBC
+aBC
+aBC
+aBC
+aBC
 tKy
 qqg
 abf
@@ -53108,10 +53108,10 @@ sVA
 sEb
 gYL
 aax
-eMI
-eMI
-pJP
-eMI
+aBA
+aBA
+aBB
+aBA
 abf
 oVr
 oVT
@@ -67483,7 +67483,7 @@ aKi
 aKi
 aKi
 aKi
-var
+aiV
 aKn
 aJZ
 aJZ
@@ -67737,7 +67737,7 @@ bdP
 bdQ
 bdP
 aJZ
-beg
+abW
 bdP
 bdQ
 aqL
@@ -67975,7 +67975,7 @@ aKi
 bel
 aKi
 bee
-beo
+aaT
 aJZ
 bdS
 bdP
@@ -68196,7 +68196,7 @@ bdS
 vKH
 aKh
 aKh
-bcV
+aej
 bdQ
 bdQ
 bdQ
@@ -68464,7 +68464,7 @@ aKi
 aKi
 bdU
 gXN
-yle
+als
 aJZ
 aJZ
 aKK
@@ -68683,14 +68683,14 @@ bdQ
 bdP
 aKk
 aKi
-var
+aiV
 aKi
 gtX
 aKi
 tfu
 aKh
 aKh
-wiJ
+avk
 aKh
 beG
 bdQ
@@ -68710,7 +68710,7 @@ aKi
 bdU
 eIL
 bea
-beg
+abW
 aJZ
 aKK
 lMf
@@ -68930,7 +68930,7 @@ upr
 rwo
 iTW
 geN
-uXk
+avC
 sTq
 hdB
 rwo
@@ -68943,7 +68943,7 @@ fwq
 fwq
 grD
 jba
-mrb
+afO
 nwj
 upr
 rwo
@@ -68963,7 +68963,7 @@ aKM
 aKM
 aKK
 bdS
-beo
+aaT
 aJZ
 aJZ
 aJZ
@@ -69217,7 +69217,7 @@ bdP
 bdQ
 bdQ
 bdZ
-beg
+abW
 bdP
 aqL
 aqL
@@ -69431,7 +69431,7 @@ gtX
 aKi
 jlL
 aKi
-ezR
+alf
 bdU
 beb
 bcL
@@ -70168,7 +70168,7 @@ aKi
 aKi
 aKi
 aKi
-ezR
+alf
 aKo
 aKl
 aKi
@@ -70193,7 +70193,7 @@ aKs
 aKs
 bdP
 rTj
-beo
+aaT
 aJZ
 aJZ
 aJZ
@@ -70395,7 +70395,7 @@ bdQ
 bdQ
 bdQ
 aJZ
-oVF
+aBd
 cbW
 bdz
 bdC
@@ -70680,7 +70680,7 @@ aKK
 aJZ
 bdZ
 aJZ
-beg
+abW
 aJZ
 aJZ
 gqV
@@ -70691,7 +70691,7 @@ bdP
 bdR
 bdP
 aJZ
-beo
+aaT
 aJZ
 eiG
 aqL
@@ -70901,7 +70901,7 @@ rpZ
 aKp
 bdK
 aJZ
-xRq
+ata
 aKj
 mSo
 aKi
@@ -71143,7 +71143,7 @@ bdD
 bdL
 aKi
 rRR
-keE
+auM
 aJZ
 bdQ
 aJZ
@@ -71182,7 +71182,7 @@ bdP
 bdS
 smP
 aJZ
-beg
+abW
 eiG
 aJZ
 bdS
@@ -71366,7 +71366,7 @@ aSa
 aqL
 aqL
 bdP
-diD
+acb
 lKy
 aJZ
 bdQ
@@ -71668,7 +71668,7 @@ bdQ
 bdQ
 bdQ
 bdP
-beo
+aaT
 bdZ
 aJZ
 lKy
@@ -71915,7 +71915,7 @@ bdR
 bdP
 aJZ
 aJZ
-beg
+abW
 aJZ
 bdS
 bdZ
@@ -72141,7 +72141,7 @@ bdS
 lKy
 aJZ
 aJZ
-beo
+aaT
 aKK
 aKN
 vOK
@@ -72587,7 +72587,7 @@ ylo
 ylo
 ylo
 aqL
-beo
+aaT
 aJZ
 bdP
 aJZ
@@ -72597,7 +72597,7 @@ rUH
 bdQ
 bdQ
 bdQ
-beJ
+aBp
 tDK
 aKi
 bew
@@ -72859,7 +72859,7 @@ tGV
 aKi
 aKi
 aKi
-yle
+als
 bdQ
 bdQ
 smP
@@ -72874,21 +72874,21 @@ aKp
 bdK
 aKt
 svH
-vxv
-ntg
-ntg
+alJ
+alm
+alm
 aKt
 ygx
 fzy
 pCh
 aKt
-qVd
-kQS
-ntg
-gSQ
-dwM
-dwM
-opf
+alo
+aln
+alm
+alg
+akO
+akO
+akA
 nnm
 aKt
 vcs
@@ -73094,7 +73094,7 @@ bdP
 aJZ
 aJZ
 aJZ
-gpP
+axU
 aKi
 gtX
 bel
@@ -73350,7 +73350,7 @@ aKi
 aKi
 jlL
 aKi
-var
+aiV
 aKi
 bdU
 bdU
@@ -73391,7 +73391,7 @@ eGM
 rch
 aKu
 eiG
-beg
+abW
 aJZ
 bdQ
 bdR
@@ -73573,7 +73573,7 @@ bcp
 aJZ
 fip
 jqz
-nlm
+alq
 fwq
 fwq
 fwq
@@ -73585,10 +73585,10 @@ jqz
 bVX
 qGz
 sem
-wvK
+awI
 fYL
 aKp
-keE
+auM
 aKk
 vaI
 aKi
@@ -73828,7 +73828,7 @@ bdR
 bdP
 aJZ
 aJZ
-gpP
+axU
 aKi
 aKi
 gtX
@@ -73881,7 +73881,7 @@ eoZ
 lig
 aKt
 tzY
-cMa
+aeh
 jqz
 jqz
 xdi
@@ -74128,7 +74128,7 @@ aKt
 suf
 bdS
 aJZ
-beg
+abW
 rTj
 bdP
 aqL
@@ -74612,7 +74612,7 @@ aJZ
 lKy
 gqT
 jqz
-cMa
+aeh
 jqz
 fwq
 paH
@@ -74853,7 +74853,7 @@ lCv
 aKu
 aJZ
 bdS
-beo
+aaT
 aJZ
 aJZ
 bdZ
@@ -75352,7 +75352,7 @@ aKt
 aKt
 bdQ
 bdQ
-beg
+abW
 lKy
 eiG
 bdS
@@ -75563,7 +75563,7 @@ aKi
 bel
 aKp
 bdK
-beg
+abW
 aJZ
 rTj
 bdP
@@ -75601,7 +75601,7 @@ aJZ
 smP
 eiG
 aJZ
-beo
+aaT
 aqL
 ylo
 ylo
@@ -75800,7 +75800,7 @@ gtX
 aKi
 aKi
 aKn
-beo
+aaT
 bdQ
 bdQ
 bdW
@@ -76085,7 +76085,7 @@ mqK
 mqK
 xfe
 aKu
-beo
+aaT
 eiG
 bdS
 bdS
@@ -76300,7 +76300,7 @@ bdP
 bdQ
 bdQ
 bdQ
-diD
+acb
 aJZ
 aKu
 bEf
@@ -76780,7 +76780,7 @@ gtX
 aKi
 aKi
 aKn
-beg
+abW
 bdP
 bdP
 bdQ
@@ -77062,7 +77062,7 @@ mqK
 hUR
 xfe
 aKt
-beg
+abW
 rUq
 jqz
 eNM
@@ -77257,9 +77257,9 @@ hqX
 hqX
 gLs
 bdx
-fSA
+aAn
 aKi
-var
+aiV
 aKi
 aKi
 aKo
@@ -77309,9 +77309,9 @@ aKu
 aKt
 bdP
 rTj
-beo
+aaT
 aJZ
-beg
+abW
 bdQ
 bdQ
 bdP
@@ -77516,7 +77516,7 @@ aKi
 aKi
 aKn
 aJZ
-beo
+aaT
 bdQ
 bdQ
 aKk
@@ -77559,7 +77559,7 @@ spU
 bdQ
 bdQ
 bdQ
-beo
+aaT
 aJZ
 aqL
 aqL
@@ -77748,7 +77748,7 @@ bQt
 gLs
 bdW
 aKi
-elR
+arw
 aKi
 jlL
 aKi
@@ -77770,7 +77770,7 @@ btk
 iTW
 ccq
 jqz
-iBg
+arn
 aKu
 bje
 bQZ
@@ -77793,12 +77793,12 @@ rwo
 rwo
 rwo
 rwo
-mrb
+afO
 rwo
 eDM
 pgO
 fwq
-eql
+aeK
 bdP
 bdQ
 bdQ
@@ -77997,7 +77997,7 @@ gtX
 aKi
 aKp
 aKj
-bcU
+afw
 bdQ
 bcY
 aKi
@@ -78501,7 +78501,7 @@ aKh
 beE
 beE
 aKl
-elR
+arw
 aKn
 bdR
 bdQ
@@ -78537,9 +78537,9 @@ bdP
 aJZ
 bdZ
 aJZ
-diD
+acb
 aJZ
-beg
+abW
 bdQ
 aqL
 ylo
@@ -78741,7 +78741,7 @@ aKi
 aKi
 aKi
 aKi
-ezR
+alf
 aKi
 ecX
 rwo
@@ -78771,7 +78771,7 @@ rwo
 fYL
 jIm
 aKi
-var
+aiV
 idU
 aKp
 bdK
@@ -79012,7 +79012,7 @@ bdS
 bdS
 bdY
 aKm
-ezR
+alf
 gtX
 jlL
 bdU
@@ -79240,7 +79240,7 @@ aKp
 tpF
 bdR
 bdQ
-beo
+aaT
 bdP
 aJZ
 aKy
@@ -79747,7 +79747,7 @@ kdA
 aKG
 bsP
 aKy
-beg
+abW
 uRA
 aKj
 wkm
@@ -80002,7 +80002,7 @@ bdQ
 ukb
 bdS
 nln
-beg
+abW
 aJZ
 bdQ
 bdP
@@ -80183,7 +80183,7 @@ ylo
 ylo
 ylo
 aqL
-beg
+abW
 bdP
 bdP
 bdQ
@@ -80211,7 +80211,7 @@ aKi
 aKi
 aKn
 aJZ
-beo
+aaT
 aJZ
 suf
 aJZ
@@ -80239,11 +80239,11 @@ aKy
 aJZ
 lKy
 eiG
-beo
+aaT
 bdQ
 bdQ
 bdQ
-beo
+aaT
 bdx
 bcS
 dcU
@@ -80469,7 +80469,7 @@ bdJ
 aJZ
 lKy
 bdS
-beo
+aaT
 aJZ
 aJZ
 aKL
@@ -80494,9 +80494,9 @@ bdz
 wSg
 bdM
 aKo
-bcV
+aej
 aJZ
-beg
+abW
 aqL
 aqL
 ylo
@@ -80711,7 +80711,7 @@ aKi
 aKi
 aKi
 aKn
-beg
+abW
 smP
 aJZ
 aJZ
@@ -80920,8 +80920,8 @@ aSa
 aSa
 aqL
 aqL
-beg
-beg
+abW
+abW
 bdQ
 bdQ
 wCI
@@ -81166,7 +81166,7 @@ aSa
 aSa
 aqL
 aJZ
-beg
+abW
 aJZ
 aJZ
 kow
@@ -81222,7 +81222,7 @@ rTj
 bdQ
 bdQ
 bdQ
-beg
+abW
 aKk
 bdB
 bdG
@@ -81473,7 +81473,7 @@ aKm
 bdU
 rRR
 aKj
-bcU
+afw
 bdQ
 aqL
 aqL
@@ -81955,7 +81955,7 @@ aJZ
 aJZ
 eiG
 aJZ
-beg
+abW
 bdQ
 bdQ
 bdQ
@@ -82183,7 +82183,7 @@ aKi
 aKi
 bdU
 beb
-bcV
+aej
 xsU
 aJZ
 aJZ
@@ -82200,7 +82200,7 @@ aJZ
 bdS
 eiG
 aJZ
-beo
+aaT
 aJZ
 bdQ
 bdQ
@@ -82431,7 +82431,7 @@ bdU
 bee
 aJZ
 bdZ
-beo
+aaT
 aKL
 eme
 aYf
@@ -82441,7 +82441,7 @@ bdP
 aJZ
 xsU
 aJZ
-beo
+aaT
 aJZ
 tzY
 jqz
@@ -82688,7 +82688,7 @@ bdR
 bdQ
 bdQ
 bdQ
-diD
+acb
 lKy
 bdS
 aJZ
@@ -82937,7 +82937,7 @@ eiG
 bdZ
 bdS
 bdS
-beo
+aaT
 bdP
 bdP
 aqL
@@ -83139,7 +83139,7 @@ vhZ
 aPJ
 aKi
 bdU
-elR
+arw
 aKo
 bdJ
 aJZ
@@ -83178,7 +83178,7 @@ bdQ
 bdQ
 vcx
 pgO
-vQg
+akF
 bdP
 bdP
 aJZ
@@ -83410,12 +83410,12 @@ aKp
 bea
 bdQ
 bdS
-beg
+abW
 bdP
 bdP
 bdQ
 bdQ
-beo
+aaT
 bdP
 bdQ
 bdQ
@@ -83630,7 +83630,7 @@ bdy
 wSb
 aKj
 aKj
-hJw
+axA
 heL
 aJZ
 bdP
@@ -83642,7 +83642,7 @@ bdQ
 bdQ
 bdP
 bdP
-xRq
+ata
 aKm
 jIm
 aKi
@@ -84122,12 +84122,12 @@ bdQ
 bdQ
 aJZ
 eii
-wiJ
+avk
 bdJ
 bdQ
 bdQ
 bdx
-sGQ
+auT
 bdJ
 bdQ
 bdQ
@@ -84141,7 +84141,7 @@ aKi
 gtX
 aKi
 aKi
-tJf
+alT
 bdJ
 bdQ
 bdQ
@@ -84152,7 +84152,7 @@ bdQ
 bdQ
 bdQ
 vcy
-cMa
+aeh
 bVX
 bVX
 jqz
@@ -84376,7 +84376,7 @@ rwo
 wlY
 kDL
 uBH
-nck
+auI
 bdP
 bdQ
 bcD
@@ -84885,7 +84885,7 @@ jqz
 fwq
 pgO
 fwq
-nlm
+alq
 bVH
 aJZ
 aJZ
@@ -85126,7 +85126,7 @@ bcK
 bdR
 bdS
 bdS
-beo
+aaT
 aJZ
 bdR
 bdP
@@ -85372,7 +85372,7 @@ bdQ
 bdQ
 bdZ
 bdZ
-beo
+aaT
 aqL
 aqL
 aQz
@@ -89268,7 +89268,7 @@ dDj
 azA
 aje
 qIU
-aCq
+avB
 aCx
 aCJ
 bzm
@@ -89758,7 +89758,7 @@ ahu
 nJC
 aje
 qIU
-aCq
+avB
 aCx
 aCJ
 bzm
@@ -93446,7 +93446,7 @@ aGE
 aGE
 aKb
 ost
-aOS
+arD
 ajX
 aIh
 aHZ
@@ -93691,7 +93691,7 @@ luQ
 luQ
 luQ
 luQ
-wnB
+arS
 ajX
 aIz
 iTL
@@ -96619,8 +96619,8 @@ nJC
 aje
 ajX
 ajX
-vic
-vic
+avw
+avw
 xZB
 xZB
 xZB
@@ -104467,7 +104467,7 @@ aZH
 eEW
 nXj
 atl
-ard
+atq
 aXy
 aCT
 bUi
@@ -104960,7 +104960,7 @@ aCH
 tLr
 aCH
 aCU
-ark
+arX
 ato
 ylo
 ylo
@@ -105205,7 +105205,7 @@ aXy
 oxk
 aXy
 aXy
-bHz
+asl
 ato
 ylo
 ylo
@@ -105442,14 +105442,14 @@ ati
 ati
 ato
 ato
-aXq
+avi
 aXp
 aXy
-bjb
+asx
 aXy
-are
+atE
 aXy
-bjb
+asx
 ato
 ato
 ylo

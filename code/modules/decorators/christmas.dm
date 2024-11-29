@@ -51,7 +51,7 @@
 	helmet.icon_override = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	helmet.flags_marine_helmet = NO_FLAGS
-	helmet.flags_atom |= NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	helmet.flags_atom |= NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	if(prob(50))
 		helmet.icon_state = "santa_hat_red"
 	else

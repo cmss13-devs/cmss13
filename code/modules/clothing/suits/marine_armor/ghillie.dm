@@ -165,4 +165,4 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
 	)
-	flags_atom = MOB_LOCK_ON_EQUIP|NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE

@@ -1,7 +1,42 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ab" = (
+/obj/structure/platform/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
 "ac" = (
 /obj/structure/target/syndicate,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"ad" = (
+/obj/structure/prop/wooden_cross{
+	pixel_y = 14
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/adminlevel/ert_station/clf_station)
+"ae" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"af" = (
+/obj/item/storage/belt/quackers,
+/turf/open/gm/river,
+/area/adminlevel/ert_station/clf_station)
+"ag" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "at" = (
 /obj/structure/window/reinforced{
@@ -753,10 +788,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
-"ug" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirt,
-/area/adminlevel/ert_station/clf_station)
 "un" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "heavy_1"
@@ -812,14 +843,6 @@
 	pixel_y = 8
 	},
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/clf_station)
-"vy" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "vA" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -1081,10 +1104,6 @@
 /obj/structure/flora/jungle/planttop1,
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"CQ" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "Dn" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -1460,10 +1479,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"OG" = (
-/obj/item/storage/belt/quackers,
-/turf/open/gm/river,
-/area/adminlevel/ert_station/clf_station)
 "OK" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1471,11 +1486,6 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/strata_grass/layer0,
-/area/adminlevel/ert_station/clf_station)
-"ON" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "OY" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -1685,16 +1695,6 @@
 "Wb" = (
 /obj/structure/curtain/red,
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/clf_station)
-"Wc" = (
-/obj/structure/prop/wooden_cross{
-	pixel_y = 14
-	},
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
-	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/adminlevel/ert_station/clf_station)
 "We" = (
 /obj/structure/platform/metal/kutjevo/east,
@@ -1984,7 +1984,7 @@ ax
 yU
 yU
 yU
-OG
+af
 yU
 yU
 Uo
@@ -2070,7 +2070,7 @@ wW
 Qx
 Qx
 Ph
-ug
+ae
 Dn
 Rg
 Rg
@@ -2144,7 +2144,7 @@ KT
 KT
 Rg
 fX
-ug
+ae
 Rg
 Rg
 Rg
@@ -2190,7 +2190,7 @@ Rg
 Ie
 om
 fX
-ug
+ae
 Ie
 OY
 Tr
@@ -2393,7 +2393,7 @@ ax
 DN
 YB
 YB
-CQ
+ag
 QV
 QV
 QV
@@ -2420,9 +2420,9 @@ oI
 oI
 AP
 gj
-ON
+aa
 pk
-ON
+aa
 pk
 pk
 KT
@@ -2436,7 +2436,7 @@ DN
 ts
 sN
 QV
-CQ
+ag
 wI
 ye
 PX
@@ -3593,7 +3593,7 @@ pk
 pk
 bL
 uZ
-vy
+ab
 eH
 uO
 cH
@@ -3634,7 +3634,7 @@ pk
 pk
 pk
 pk
-Wc
+ad
 yS
 eH
 Re

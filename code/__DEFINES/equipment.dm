@@ -27,8 +27,8 @@
 #define ITEM_UNCATCHABLE (1<<9)
 /// Used for nonstandard marine clothing to ignore 'specialty' var.
 #define NO_NAME_OVERRIDE (1<<10)
-/// Used for armors or uniforms that don't have a snow/desert/etc icon state set via select_gamemode_skin (not all item types currently perform this test though).
-#define NO_SNOW_TYPE (1<<11)
+/// Used for armors or uniforms that don't have a snow/desert/etc icon state set via select_gamemode_skin.
+#define NO_GAMEMODE_SKIN (1<<11)
 
 #define INVULNERABLE (1<<12)
 

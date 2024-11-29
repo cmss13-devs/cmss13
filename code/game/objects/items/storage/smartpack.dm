@@ -18,7 +18,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
 	)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 14
 	worn_accessible = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
@@ -113,7 +113,7 @@
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/backpack/marine/smartpack/get_mob_overlay(mob/user_mob, slot)
+/obj/item/storage/backpack/marine/smartpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	var/light = "+lamp_on"

@@ -745,6 +745,10 @@
 
 	power_cell = new(src)
 
+/obj/item/smartgun_battery/Destroy()
+	QDEL_NULL(power_cell)
+	return ..()
+
 /obj/item/smartgun_battery/get_examine_text(mob/user)
 	. = ..()
 

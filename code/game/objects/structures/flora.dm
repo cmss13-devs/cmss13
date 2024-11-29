@@ -178,7 +178,7 @@ ICE GRASS
 
 /obj/structure/flora/grass/ice
 	icon = 'icons/obj/structures/props/natural/vegetation/snowflora.dmi'
-	icon_state = ""
+	icon_state = null
 	variations = 3
 
 //brown
@@ -188,12 +188,15 @@ ICE GRASS
 
 /obj/structure/flora/grass/ice/brown/snowgrassbb_1
 	icon_state = "snowgrassbb_1"
+	icon_tag = null // Don't randomize
 
 /obj/structure/flora/grass/ice/brown/snowgrassbb_2
 	icon_state = "snowgrassbb_2"
+	icon_tag = null // Don't randomize
 
 /obj/structure/flora/grass/ice/brown/snowgrassbb_3
 	icon_state = "snowgrassbb_3"
+	icon_tag = null // Don't randomize
 
 //green
 /obj/structure/flora/grass/ice/green
@@ -212,20 +215,29 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 */
 
 /obj/structure/flora/grass/ice/icey
-	icon_state = "icegrass5" //full patch of grass
+	icon_state = "icegrass_5" //full patch of grass
 	icon_tag = "icegrass"
+	variations = 5
 
 /obj/structure/flora/grass/ice/icey/eightdirection
-	icon_state = "icegrass1" //8 different directional states.
+	icon_state = "icegrass_1" //8 different directional states.
+	icon_tag = null // Don't randomize
 
 /obj/structure/flora/grass/ice/icey/fourdirection
-	icon_state = "icegrass2" //4 different directional states
+	icon_state = "icegrass_2" //4 different directional states
+	icon_tag = null // Don't randomize
 
 /obj/structure/flora/grass/ice/icey/center
-	icon_state = "icegrass3" //1 center piece of grass
+	icon_state = "icegrass_3" //1 center piece of grass
+	icon_tag = null // Don't randomize
 
 /obj/structure/flora/grass/ice/icey/centerfull
-	icon_state = "icegrass4" //More grass.
+	icon_state = "icegrass_4" //More grass.
+	icon_tag = null // Don't randomize
+
+/obj/structure/flora/grass/ice/icey/full
+	icon_state = "icegrass_5" //full patch of grass
+	icon_tag = null // Don't randomize
 
 
 /*
@@ -435,9 +447,9 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_tag = "lavendergrass"
 	layer = BELOW_MOB_LAYER
 
-/obj/structure/flora/bush/ausbushes/ppflowers
-	icon_state = "ppflowers_1"
-	icon_tag = "ppflowers"
+/obj/structure/flora/bush/ausbushes/ywflowers
+	icon_state = "ywflowers_1"
+	icon_tag = "ywflowers"
 	layer = BELOW_MOB_LAYER
 
 /*
@@ -469,14 +481,14 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "sunnybush_1"
 	icon_tag = "sunnybush"
 
-/obj/structure/flora/bush/ausbushes/var3/ywflowers
-	icon_state = "ywflowers_1"
-	icon_tag = "ywflowers"
-	layer = BELOW_MOB_LAYER
-
 /obj/structure/flora/bush/ausbushes/var3/brflowers
 	icon_state = "brflowers_1"
 	icon_tag = "brflowers"
+	layer = BELOW_MOB_LAYER
+
+/obj/structure/flora/bush/ausbushes/var3/ppflowers
+	icon_state = "ppflowers_1"
+	icon_tag = "ppflowers"
 	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass

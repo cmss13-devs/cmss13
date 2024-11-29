@@ -5,6 +5,7 @@
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
 	icon_state = ""
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	item_state = "gun"
 	pickup_sound = "gunequip"
 	drop_sound = "gunrustle"
@@ -546,11 +547,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/new_icon_state = base_gun_icon
 
-	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
-		new_icon_state += "_e"
+	if(!isnull(base_gun_icon))
+		if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+			new_icon_state += "_e"
 
-	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
-		new_icon_state += "_o"
+		if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
+			new_icon_state += "_o"
 
 	icon_state = new_icon_state
 	update_mag_overlay()

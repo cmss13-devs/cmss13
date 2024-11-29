@@ -1,4 +1,32 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/lv624/ground/caves/sand_temple)
+"ab" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/caves/sand_temple)
+"ac" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ad" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "ai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
@@ -364,10 +392,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
-"iN" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/caves/sand_temple)
 "iU" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -652,16 +676,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
-"ue" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "un" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -796,15 +810,6 @@
 "wQ" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/east,
-/area/lv624/ground/caves/sand_temple)
-"wS" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "wU" = (
 /turf/open/gm/coast/beachcorner/north_west,
@@ -1047,11 +1052,6 @@
 "EN" = (
 /obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/caves/sand_temple)
-"Fx" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
 "FF" = (
 /obj/structure/prop/brazier/torch,
@@ -1979,13 +1979,13 @@ GT
 GT
 GT
 xO
-ue
+ad
 ow
 Jc
 Jc
 Jc
 gL
-wS
+ac
 if
 HL
 Ai
@@ -2063,13 +2063,13 @@ GT
 GT
 GT
 Jm
-ue
+ad
 gL
 Jc
 Jc
 Jc
 EL
-wS
+ac
 if
 HL
 Ai
@@ -2147,13 +2147,13 @@ GT
 GT
 GT
 xO
-wS
+ac
 gL
 Jc
 Jc
 Jc
 gL
-ue
+ad
 Jm
 HL
 ax
@@ -2538,7 +2538,7 @@ mv
 mv
 Ai
 Ai
-iN
+aa
 jZ
 mv
 mv
@@ -2658,7 +2658,7 @@ po
 MB
 yH
 ev
-Fx
+ab
 dA
 HL
 Ai

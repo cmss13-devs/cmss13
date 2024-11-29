@@ -243,13 +243,20 @@
 /obj/item/proc/suicide_act(mob/user)
 	return
 
-/*Global item proc for all of your unique item skin needs. Works with any
-item, and will change the skin to whatever you specify here. You can also
-manually override the icon with a unique skin if wanted, for the outlier
-cases. Override_icon_state should be a list.*/
+/**
+ * Global item proc for all of your unique item skin needs. Works with any
+ * item, and will change the skin to whatever you specify here. You can also
+ * manually override the icon with a unique skin if wanted, for the outlier
+ * cases. Override_icon_state should be a list. Generally requires NO_GAMEMODE_SKIN
+ * to not be set for changes to be applied.
+ *
+ * Returns whether changes were applied.
+ */
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(type != expected_type)
-		return
+		return FALSE
+	if(flags_atom & NO_GAMEMODE_SKIN)
+		return FALSE
 
 	var/new_icon_state
 	var/new_protection
@@ -258,23 +265,20 @@ cases. Override_icon_state should be a list.*/
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-	if(new_protection)
-		min_cold_protection_temperature = new_protection
-
 	if(flags_atom & MAP_COLOR_INDEX)
-		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-			if("snow")
-				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-				item_state = new_item_state ? new_item_state : "s_" + item_state
-			if("desert")
-				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if("classic")
-				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-				item_state = new_item_state ? new_item_state : "c_" + item_state
-			if("urban")
-				icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
-				item_state = new_item_state ? new_item_state : "u_" + item_state
+		if(!isnull(icon_state) || new_icon_state || new_item_state)
+			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+				if("snow")
+					icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+					item_state = new_item_state ? new_item_state : "s_" + item_state
+				if("desert")
+					icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+					item_state = new_item_state ? new_item_state : "d_" + item_state
+				if("classic")
+					icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+					item_state = new_item_state ? new_item_state : "c_" + item_state
+		if(new_protection)
+			min_cold_protection_temperature = new_protection
 	else
 		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 			if("jungle")
@@ -292,6 +296,8 @@ cases. Override_icon_state should be a list.*/
 			if("urban")
 				item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
 				item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+
+	return TRUE
 
 /obj/item/get_examine_text(mob/user)
 	. = list()

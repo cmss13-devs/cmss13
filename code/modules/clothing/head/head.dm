@@ -382,7 +382,8 @@
 
 /obj/item/clothing/head/cmcap/Initialize(mapload, ...)
 	. = ..()
-	select_gamemode_skin(type)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
 

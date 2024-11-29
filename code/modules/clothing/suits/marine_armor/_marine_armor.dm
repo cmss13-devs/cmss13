@@ -115,7 +115,8 @@
 		else
 			name += " armor"
 
-	select_gamemode_skin(type)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type)
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	if(armor_variation && mapload)
 		set_armor_style("Random")

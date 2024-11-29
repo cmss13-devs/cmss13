@@ -1,8 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "ab" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
@@ -33,9 +29,6 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
-"ai" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
@@ -53,25 +46,13 @@
 "am" = (
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
-"an" = (
-/obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "ao" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
-"ap" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/north_jungle)
 "aq" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/north_east,
-/area/lv624/ground/river/central_river)
-"ar" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "as" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -178,6 +159,13 @@
 "bu" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/north_jungle)
+"bw" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/north_jungle)
+"by" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/north_jungle)
 "bz" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -256,8 +244,16 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
+"Hi" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/north_jungle)
 "HT" = (
 /obj/structure/flora/jungle/planttop1,
+/turf/open/gm/river,
+/area/lv624/ground/river/central_river)
+"Ir" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "Jl" = (
@@ -268,6 +264,10 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
+"Ow" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/north_jungle)
 "Rp" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/dirt,
@@ -351,7 +351,7 @@ bf
 Nc
 aV
 bf
-ai
+by
 bK
 Ex
 "}
@@ -367,7 +367,7 @@ bf
 DQ
 bf
 bf
-ai
+by
 bH
 Ex
 "}
@@ -400,7 +400,7 @@ YL
 YL
 aO
 Rp
-aa
+Hi
 bK
 "}
 (8,1,1) = {"
@@ -416,7 +416,7 @@ am
 GU
 aW
 oa
-ai
+by
 bK
 "}
 (9,1,1) = {"
@@ -432,7 +432,7 @@ am
 am
 aW
 oa
-ai
+by
 bH
 "}
 (10,1,1) = {"
@@ -448,7 +448,7 @@ am
 am
 aW
 oa
-ai
+by
 bK
 "}
 (11,1,1) = {"
@@ -464,7 +464,7 @@ XY
 XY
 aX
 oa
-ai
+by
 bK
 "}
 (12,1,1) = {"
@@ -495,7 +495,7 @@ aR
 aR
 aZ
 bf
-an
+Ow
 px
 bK
 "}
@@ -511,7 +511,7 @@ uc
 aJ
 aJ
 ba
-ai
+by
 bK
 bK
 "}
@@ -527,7 +527,7 @@ cp
 aK
 aK
 be
-ai
+by
 bD
 bN
 "}
@@ -543,7 +543,7 @@ RE
 aK
 aQ
 be
-ai
+by
 bD
 bN
 "}
@@ -559,7 +559,7 @@ RE
 aQ
 aK
 be
-ap
+bw
 bN
 bN
 "}
@@ -575,7 +575,7 @@ uC
 aR
 aR
 aZ
-ap
+bw
 bE
 bN
 "}
@@ -591,7 +591,7 @@ aJ
 aJ
 ba
 bf
-ap
+bw
 bN
 bq
 "}
@@ -607,7 +607,7 @@ aK
 aK
 be
 bf
-ap
+bw
 bN
 bN
 "}
@@ -623,7 +623,7 @@ aK
 aK
 be
 bf
-ap
+bw
 BA
 bN
 "}
@@ -633,13 +633,13 @@ as
 aK
 aK
 aK
-ar
+Ir
 aK
 aK
 aK
 wp
 bf
-ap
+bw
 bN
 bN
 "}
@@ -655,7 +655,7 @@ ay
 aK
 be
 bf
-ap
+bw
 bN
 bN
 "}
@@ -671,7 +671,7 @@ aK
 aK
 be
 bf
-ap
+bw
 Ex
 bN
 "}
@@ -687,7 +687,7 @@ aQ
 aK
 be
 bf
-ap
+bw
 bN
 bN
 "}
@@ -703,7 +703,7 @@ aK
 aK
 aH
 ba
-ai
+by
 bK
 bN
 "}
@@ -719,7 +719,7 @@ aK
 aK
 aK
 be
-ai
+by
 bH
 bq
 "}
@@ -735,7 +735,7 @@ HT
 YA
 aK
 be
-ai
+by
 bH
 Ex
 "}
@@ -751,7 +751,7 @@ aK
 aK
 aK
 be
-ai
+by
 bK
 bN
 "}
@@ -767,7 +767,7 @@ aK
 aK
 aD
 aZ
-ai
+by
 bK
 bN
 "}

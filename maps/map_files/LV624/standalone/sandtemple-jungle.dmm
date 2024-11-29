@@ -1,19 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/south_west_jungle)
-"ab" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/south_west_jungle)
-"ac" = (
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/south_west_jungle)
-"ad" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_west_jungle)
 "aq" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass2,
@@ -41,6 +26,10 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/far,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"gb" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "hq" = (
@@ -175,6 +164,13 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"Ge" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/south_west_jungle)
+"Gi" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/jungle/south_west_jungle)
 "IP" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -243,6 +239,10 @@
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/south_west_jungle)
+"RS" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/south_west_jungle)
 "Sj" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -346,7 +346,7 @@ dy
 Ok
 Ng
 NU
-aa
+Ge
 AQ
 "}
 (6,1,1) = {"
@@ -358,11 +358,11 @@ uj
 rK
 oD
 oD
-ac
+Gi
 NU
 XG
 NU
-ab
+RS
 LW
 "}
 (7,1,1) = {"
@@ -431,7 +431,7 @@ LW
 "}
 (11,1,1) = {"
 LW
-ad
+gb
 ui
 hq
 WQ

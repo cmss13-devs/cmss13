@@ -1,18 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/east_jungle)
-"ab" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/east_jungle)
-"ac" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/dirtgrassborder/east,
-/area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"ad" = (
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "bw" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/north_east,
@@ -37,6 +23,9 @@
 "gs" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/east_jungle)
+"hc" = (
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "jd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -121,6 +110,10 @@
 "ww" = (
 /turf/open/gm/dirt/desert2,
 /area/lv624/ground/river/east_river)
+"zT" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/east,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Cf" = (
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/east_river)
@@ -180,6 +173,9 @@
 "NJ" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/east_jungle)
+"Ov" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Pb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -191,6 +187,10 @@
 /area/lv624/ground/river/east_river)
 "Pr" = (
 /turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/east_jungle)
+"PE" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "PV" = (
 /turf/open/gm/dirt,
@@ -253,7 +253,7 @@ Ek
 TQ
 GI
 Qz
-aa
+hc
 Pr
 tT
 tT
@@ -275,7 +275,7 @@ TQ
 TQ
 Kd
 Qz
-ab
+PE
 KQ
 Hb
 Pb
@@ -297,13 +297,13 @@ Ek
 Pk
 JA
 Kp
-aa
+hc
 oq
 je
 kf
 "}
 (4,1,1) = {"
-ad
+Ov
 cG
 cG
 cG
@@ -319,13 +319,13 @@ CL
 JA
 Qz
 Qz
-aa
+hc
 tT
 YK
 kf
 "}
 (5,1,1) = {"
-ad
+Ov
 cG
 cG
 tn
@@ -341,7 +341,7 @@ PV
 PZ
 Qz
 Qz
-aa
+hc
 tT
 YK
 kf
@@ -372,7 +372,7 @@ jd
 oA
 Xq
 qk
-ac
+zT
 ci
 cG
 cG

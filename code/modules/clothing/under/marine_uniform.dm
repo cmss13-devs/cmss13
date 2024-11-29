@@ -35,7 +35,8 @@
 			name += " snow uniform"
 		else
 			name += " uniform"
-	select_gamemode_skin(type, override_icon_state, new_protection)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type, override_icon_state, new_protection)
 	return ..() //Done after above in case gamemode skin is missing sprites.
 
 /obj/item/clothing/under/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)

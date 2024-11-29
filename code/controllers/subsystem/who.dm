@@ -245,7 +245,12 @@ SUBSYSTEM_DEF(who)
 			var/rank = client.admin_holder.rank
 			if(client.admin_holder.extra_titles?.len)
 				for(var/srank in client.admin_holder.extra_titles)
+/*
 					rank += " & [srank]"
+*/
+//RUCM START
+					rank += " & [GLOB.admin_ranks_by_id["[srank]"]?.rank_name : srank]"
+//RUCM END
 
 			if(CLIENT_IS_STEALTHED(client))
 				admin_payload["special_color"] = "#b60d0d"

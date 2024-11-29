@@ -280,6 +280,8 @@
 		if(new_protection)
 			min_cold_protection_temperature = new_protection
 		else
+			if(!item_icons)
+				item_icons = list()
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("jungle")
 					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'

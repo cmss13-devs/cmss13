@@ -135,6 +135,9 @@
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
 	random_call.activate()
+//RUCM START
+	REDIS_PUBLISH("byond.round", "type" = "round", "state" = "distress")
+//RUCM END
 	return
 
 /datum/emergency_call/proc/check_timelock(client/C, list/roles, hours)

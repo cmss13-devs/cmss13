@@ -44,12 +44,16 @@
 	if(!user.is_mob_incapacitated())
 		var/list/mob/listeners = get_mobs_in_view(9,V)
 		var/list/mob/langchat_long_listeners = list()
+		//RUCM START
+		var/list/tts_heard_list = list(list(), list())
+		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), user.tts_voice, user.tts_voice_filter, tts_heard_list, FALSE, 50, user.tts_voice_pitch, user.speaking_noise)
+		//RUCM END
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
 				listener.show_message("[V] broadcasts something, but you can't understand it.")
 				continue
 			listener.show_message("<B>[V]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 			langchat_long_listeners += listener
-		V.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())
+		V.langchat_long_speech(message, langchat_long_listeners, user.get_default_language(), tts_heard_list)
 
 		V.next_shout = world.time + 10 SECONDS

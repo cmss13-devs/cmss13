@@ -695,6 +695,7 @@
 
 /datum/equipment_preset/synth/working_joe/upp
 	name = "Synthetic - Dzho Automaton"
+	assignment = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
 	faction = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
@@ -740,7 +741,10 @@
 	new_human.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
+	if(joe_type & JOB_UPP_JOE)
+		new_human.change_real_name(new_human, "Dzho Automaton №[rand(10)][rand(10)][ascii2text(rand(65, 90))][ascii2text(rand(65, 90))]")
+	else
+		new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
 
 //*****************************************************************************************************/
 

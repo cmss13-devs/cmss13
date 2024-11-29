@@ -73,6 +73,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH "Synthetic"
 #define JOB_SYNTH_K9 "Synthetic K9"
 #define JOB_WORKING_JOE "Working Joe"
+#define JOB_UPP_JOE "Dzho Automaton"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"

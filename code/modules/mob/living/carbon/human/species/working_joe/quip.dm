@@ -89,7 +89,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/nu_nu
 	key = "nunu"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/nu-nu.ogg'
-	say_message = "We hope you'll join us for the journey."
+	say_message = "Yeah-yeah."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 

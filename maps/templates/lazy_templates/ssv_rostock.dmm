@@ -6066,9 +6066,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
 "eDM" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/upp_commanding_officer,
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
 "eEo" = (
@@ -12076,9 +12074,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "jaD" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/gear/upp_commanding_officer,
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
 "jaP" = (
@@ -12821,11 +12817,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/accessway)
 "jBy" = (
-/obj/structure/machinery/cm_vending/gear/antag{
-	hacked = 1;
-	name = "\improper Response Team Automated Gear Rack";
-	density = 0
-	},
+/obj/structure/machinery/vending/upp_co,
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
 "jCb" = (

@@ -14,8 +14,8 @@
 	speed = XENO_SPEED_TIER_2
 
 	available_strains = list(
-	/datum/xeno_strain/resin_whisperer,
-	/datum/xeno_strain/designer,
+		/datum/xeno_strain/resin_whisperer,
+		/datum/xeno_strain/designer,
 	)
 
 	evolution_allowed = FALSE

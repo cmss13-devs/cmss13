@@ -229,6 +229,7 @@
 	xeno_cooldown = initial(xeno_cooldown)
 	return ..()
 
+// Greather Resin Surge.
 
 /datum/action/xeno_action/verb/verb_greather_surge()
 	set category = "Alien"

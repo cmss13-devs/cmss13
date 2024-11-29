@@ -803,7 +803,8 @@
 
 	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
 		playsound(get_turf(buffing_target), "alien_roar", 40)
-		buffing_target.create_custom_empower(icolor = "#77a310", ialpha = 200, small_xeno = TRUE)
+		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
+		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.speed_modifier -= speed_buff_amount
 		buffing_target.recalculate_speed()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_speed)), speed_buff_dur)

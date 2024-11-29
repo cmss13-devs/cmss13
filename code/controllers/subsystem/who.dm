@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(who)
 					rank += " & [srank]"
 */
 //RUCM START
-					rank += " & [GLOB.admin_ranks_by_id["[srank]"]?.rank_name : srank]"
+					rank += " & [GLOB.admin_ranks_by_id["[srank]"] ? GLOB.admin_ranks_by_id["[srank]"].rank_name : srank]"
 //RUCM END
 
 			if(CLIENT_IS_STEALTHED(client))

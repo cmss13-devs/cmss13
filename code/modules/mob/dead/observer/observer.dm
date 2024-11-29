@@ -63,8 +63,10 @@
 	var/datum/action/minimap/observer/minimap
 	///The last message for this player with their larva queue information
 	var/larva_queue_cached_message
-	///Used to bypass time of death checks such as when being selected for larva.
+	///Used to bypass time of death checks such as when being selected for larva
 	var/bypass_time_of_death_checks = FALSE
+	///Used to bypass time of death checks for a successful hug
+	var/bypass_time_of_death_checks_hugger = FALSE
 
 	alpha = 127
 
@@ -1139,6 +1141,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_responder()
+	set category = "Ghost.Join"
+	set name = "Join as a Fax Responder"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_fax_responder_late_join(src))
+		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"

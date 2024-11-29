@@ -40,7 +40,7 @@ def insert_into_tree(repo, tree_builder, path, blob_oid):
         tree_builder.insert(first, inner.write(), pygit2.GIT_FILEMODE_TREE)
 
 
-def main(repo):
+def main(repo : pygit2.Repository):
     if repo.index.conflicts:
         print("You need to resolve merge conflicts first.")
         return 1
@@ -51,54 +51,65 @@ def main(repo):
             continue
         if status & STATUS_INDEX:
             print("You have changes staged for commit. Commit them or unstage them first.")
-            print("If you are about to commit maps for the first time, run `Run Before Committing.bat`.")
+            print("If you are about to commit maps for the first time and can't use hooks, run `Run Before Committing.bat`.")
             return 1
         if path.endswith(".dmm") and (status & STATUS_WT):
             print("You have modified maps. Commit them first.")
-            print("If you are about to commit maps for the first time, run `Run Before Committing.bat`.")
+            print("If you are about to commit maps for the first time and can't use hooks, run `Run Before Committing.bat`.")
             return 1
 
-    # Read the HEAD commit.
+    # Set up upstream remote if needed
+    try:
+        repo.remotes.create("upstream", "https://github.com/cmss13-devs/cmss13.git")
+    except ValueError:
+        pass
+    else:
+        print("Adding upstream remote...")
+
+    # Read the HEAD and ancestor commits.
     head_commit = repo[repo.head.target]
-    head_files = {}
+    repo.remotes["upstream"].fetch()
+    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/upstream/master").id)
+    if not ancestor:
+        print("Unable to automatically fix anything because merge base could not be determined.")
+        return 1
+    ancestor_commit = repo[ancestor]
+    print("Determined ancestor commit SHA to be:", ancestor)
+
+    # Walk the head commit tree and convert as needed
+    converted = {}
+    commit_message_lines = []
     for path, blob in walk_tree(head_commit.tree):
         if path.endswith(".dmm"):
-            data = blob.read_raw()
-            if not data.startswith(TGM_HEADER):
-                head_files[path] = dmm.DMM.from_bytes(data)
+            head_data = blob.read_raw()
+            head_map = dmm.DMM.from_bytes(head_data)
 
-    if not head_files:
-        print("All committed maps appear to be in the correct format.")
-        print("If you are about to commit maps for the first time, run `Run Before Committing.bat`.")
-        return 1
-
-    # Work backwards to find a base for each map, converting as found.
-    converted = {}
-    if len(head_commit.parents) != 1:
-        print("Unable to automatically fix anything because HEAD is a merge commit.")
-        return 1
-    commit_message_lines = []
-    working_commit = head_commit.parents[0]
-    while len(converted) < len(head_files):
-        for path in head_files.keys() - converted.keys():
+            # test: does every DMM convert cleanly (including TGM conversion)
             try:
-                blob = working_commit.tree[path]
+                ancestor_blob = ancestor_commit.tree[path]
             except KeyError:
-                commit_message_lines.append(f"{'new':{ABBREV_LEN}}: {path}")
-                print(f"Converting new map: {path}")
-                converted[path] = head_files[path]
+                # New map, no entry in ancestor
+                merged_map = merge_map(head_map, head_map)
+                merged_bytes = merged_map.to_bytes()
+                if head_data != merged_bytes:
+                    print(f"Updating new map: {path}")
+                    commit_message_lines.append(f"{'new':{ABBREV_LEN}}: {path}")
+                    converted[path] = merged_map
             else:
-                data = blob.read_raw()
-                if data.startswith(TGM_HEADER):
-                    str_id = str(working_commit.id)[:ABBREV_LEN]
+                # Entry in ancestor
+                ancestor_map = dmm.DMM.from_bytes(ancestor_blob.read_raw())
+                merged_map = merge_map(head_map, ancestor_map)
+                merged_bytes = merged_map.to_bytes()
+                if head_data != merged_bytes:
+                    print(f"Updating map: {path}")
+                    str_id = str(ancestor_commit.id)[:ABBREV_LEN]
                     commit_message_lines.append(f"{str_id}: {path}")
-                    print(f"Converting map: {path}")
-                    converted[path] = merge_map(head_files[path], dmm.DMM.from_bytes(data))
-        if len(working_commit.parents) != 1:
-            print("A merge commit was encountered before good versions of these maps were found:")
-            print("\n".join(f"    {x}" for x in head_files.keys() - converted.keys()))
-            return 1
-        working_commit = working_commit.parents[0]
+                    converted[path] = merged_map
+
+    if not converted:
+        print("All committed maps appear to be okay.")
+        print("If you are about to commit maps for the first time and can't use hooks, run `Run Before Committing.bat`.")
+        return 1
 
     # Okay, do the actual work.
     tree_builder = repo.TreeBuilder(head_commit.tree)
@@ -118,7 +129,7 @@ def main(repo):
         repo.head.name,
         signature,  # author
         signature,  # committer
-        f'Convert maps to TGM\n\n{joined}\n\nAutomatically commited by: {os.path.relpath(__file__, repo.workdir)}',
+        f'Fixup maps in TGM format\n\n{joined}\n\nAutomatically commited by: {os.path.relpath(__file__, repo.workdir)}',
         tree_builder.write(),
         [head_commit.id],
     )

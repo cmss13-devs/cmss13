@@ -2439,12 +2439,6 @@
 /obj/structure/surface/rack,
 /obj/item/defenses/handheld/sentry/upp,
 /obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
-/obj/item/defenses/handheld/sentry/upp,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "bQe" = (
@@ -5588,96 +5582,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/starboard_aft_accessway)
 "emQ" = (
-/obj/structure/surface/rack,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/autoinjector/full,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/construction,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/first_responder,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/firstaid,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/flare/full,
-/obj/item/storage/pouch/machete/full,
-/obj/item/storage/pouch/machete/full,
-/obj/item/storage/pouch/machete/full,
-/obj/item/storage/pouch/machete/full,
-/obj/item/storage/pouch/machete/full,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/magazine,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/pistol,
-/obj/item/storage/pouch/pistol,
-/obj/item/storage/pouch/pistol,
-/obj/item/storage/pouch/pistol,
-/obj/item/storage/pouch/pistol,
-/obj/item/storage/pouch/shotgun,
-/obj/item/storage/pouch/shotgun,
-/obj/item/storage/pouch/shotgun,
-/obj/item/storage/pouch/shotgun,
-/obj/item/storage/pouch/shotgun,
-/obj/item/storage/pouch/tools/full,
-/obj/item/storage/pouch/tools/full,
-/obj/item/storage/pouch/tools/full,
-/obj/item/storage/pouch/tools/full,
-/obj/item/storage/pouch/tools/full,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns,
 /turf/open/floor/plating,
 /area/rostock/req)
 "enK" = (
@@ -9092,10 +9001,6 @@
 /obj/item/storage/pouch/shotgun/heavyslug,
 /obj/item/storage/pouch/shotgun/heavyslug,
 /obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
 /obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
@@ -9444,8 +9349,6 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/s_a_hallway)
 "hij" = (
-/obj/item/stack/folding_barricade/three,
-/obj/item/stack/folding_barricade/three,
 /obj/item/stack/folding_barricade/three,
 /obj/item/stack/folding_barricade/three,
 /obj/item/stack/folding_barricade/three,
@@ -10926,14 +10829,6 @@
 /area/rostock/req)
 "ilf" = (
 /obj/structure/closet/coffin/woodencrate,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
 /obj/item/weapon/gun/shotgun/type23,
 /obj/item/weapon/gun/shotgun/type23,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -12725,10 +12620,6 @@
 /obj/structure/closet/crate/ammo,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "jyG" = (
@@ -13313,14 +13204,6 @@
 /obj/structure/surface/rack,
 /obj/item/explosive/plastic/breaching_charge,
 /obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "jTh" = (
@@ -13622,15 +13505,11 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/hangar/repairbay)
 "kdz" = (
-/obj/structure/machinery/cm_vending/sorted/attachments{
-	req_access = null;
-	pixel_y = 32
-	},
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/nade_box/frag,
-/obj/item/storage/box/nade_box/frag,
-/obj/item/storage/box/nade_box,
-/obj/item/storage/box/nade_box,
+/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments{
+	pixel_y = 31;
+	density = 0
+	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "kdQ" = (
@@ -14940,14 +14819,6 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/type73,
 /obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
-/obj/item/ammo_box/magazine/type73,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "lai" = (
@@ -15264,10 +15135,6 @@
 /area/rostock/airoom)
 "loz" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
 /obj/item/ammo_magazine/smg/bizon,
 /obj/item/ammo_magazine/smg/bizon,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -16656,14 +16523,6 @@
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "mBh" = (
@@ -16968,31 +16827,7 @@
 	icon_state = "S";
 	pixel_y = -1
 	},
-/obj/structure/closet/crate/freezer/rations{
-	desc = "A crate of UPP food rations.";
-	name = "UPP food Rations"
-	},
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/prep)
 "mNT" = (
@@ -17024,12 +16859,6 @@
 /area/rostock/engineering/main_area)
 "mPW" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
-/obj/item/ammo_box/magazine/type19,
 /obj/item/ammo_box/magazine/type19,
 /obj/item/ammo_box/magazine/type19,
 /obj/effect/decal/warning_stripes{
@@ -17397,14 +17226,6 @@
 /area/rostock/upperdeck_maint/p_m)
 "nex" = (
 /obj/structure/closet/crate/supply,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
 /obj/item/weapon/gun/smg/bizon,
 /obj/item/weapon/gun/smg/bizon,
 /obj/item/weapon/gun/smg/bizon,
@@ -19429,27 +19250,7 @@
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
 "oMZ" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo,
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "oNk" = (
@@ -20246,14 +20047,6 @@
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/weapon/gun/rifle/type71,
 /obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "prk" = (
@@ -20373,13 +20166,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/engineering/main_area)
-"pvi" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/rostock/lower_deck/prep)
 "pvo" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -20414,10 +20200,6 @@
 /area/rostock/lower_deck/ammunition_storage)
 "pwc" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
 /obj/item/storage/pouch/shotgun/heavybuck,
 /obj/item/storage/pouch/shotgun/heavybuck,
 /obj/item/storage/pouch/shotgun/heavybuck,
@@ -20837,10 +20619,6 @@
 /area/rostock/railgun/starboard)
 "pLQ" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
 /obj/item/storage/pouch/shotgun/heavyflechette,
 /obj/item/storage/pouch/shotgun/heavyflechette,
 /obj/item/storage/pouch/shotgun/heavyflechette,
@@ -24486,33 +24264,13 @@
 /turf/open/floor/strata/green4/east,
 /area/rostock/lower_deck/prep)
 "sIw" = (
-/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/engi,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
-/obj/item/device/encryptionkey/upp/medic,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_uniform,
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "sIC" = (
@@ -24928,14 +24686,6 @@
 /obj/structure/surface/rack,
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
-/obj/item/explosive/plastic,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "tax" = (
@@ -25111,12 +24861,6 @@
 /area/rostock/railgun/starboard)
 "tiP" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
-/obj/item/ammo_magazine/sentry/upp,
 /obj/item/ammo_magazine/sentry/upp,
 /obj/item/ammo_magazine/sentry/upp,
 /turf/open/floor/prison/floor_marked/west,
@@ -25483,12 +25227,6 @@
 /area/rostock/lower_deck/engineering_lower_access)
 "tvI" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
-/obj/item/ammo_box/magazine/zhnk,
 /obj/item/ammo_box/magazine/zhnk,
 /obj/item/ammo_box/magazine/zhnk,
 /obj/effect/decal/warning_stripes{
@@ -25991,14 +25729,6 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/type64,
 /obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
-/obj/item/ammo_box/magazine/type64,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "tTJ" = (
@@ -26436,8 +26166,6 @@
 /area/rostock/engineering/main_area)
 "ugl" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/type71/ap,
-/obj/item/ammo_box/magazine/type71/ap,
 /obj/item/ammo_box/magazine/type71/ap,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
@@ -28642,10 +28370,6 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
-/obj/item/ammo_box/magazine/type71,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "vQb" = (
@@ -29002,19 +28726,12 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/security/headquarters_armory)
 "vZg" = (
-/obj/structure/surface/rack,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
-/obj/item/device/binoculars/range,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/backpack/lightpack/five_slot,
+/obj/item/storage/backpack/lightpack/five_slot,
+/obj/item/storage/backpack/lightpack/five_slot,
+/obj/item/storage/backpack/lightpack/five_slot,
+/obj/item/storage/backpack/lightpack/five_slot,
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "vZv" = (
@@ -29226,14 +28943,6 @@
 /area/rostock/upperdeck_maint/p_f)
 "wfL" = (
 /obj/structure/closet/crate/explosives,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
 /obj/item/weapon/gun/pistol/t73,
 /obj/item/weapon/gun/pistol/t73,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -38795,7 +38504,7 @@ vNW
 fVw
 poe
 lBo
-pvi
+mNS
 vtX
 faR
 eTm
@@ -39887,7 +39596,7 @@ vNW
 fVw
 poe
 lBo
-pvi
+mNS
 vtX
 faR
 eTm

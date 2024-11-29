@@ -183,94 +183,10 @@
 	icon_state = "15"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"aaG" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/indoors/b_block/bridge)
-"aaH" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9;
-	layer = 2.9
-	},
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	layer = 3
-	},
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/indoors/b_block/bridge)
 "aaI" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/admin)
-"aaJ" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/newspaper,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/c_block/garage)
-"aaK" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	layer = 3
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/kitchen)
-"aaL" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	layer = 3
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/kitchen)
-"aaM" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/organic/grass,
-/area/lv522/indoors/a_block/garden)
-"aaN" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/floor/grass,
-/area/lv522/indoors/a_block/garden)
-"aaO" = (
-/obj/structure/flora/jungle/planttop1,
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/floor/grass,
-/area/lv522/indoors/a_block/garden)
-"aaP" = (
-/obj/structure/surface/table/almayer,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
-	icon_state = "poster3";
-	name = "\improper torn magazine page";
-	pixel_x = 5;
-	pixel_y = 14
-	},
-/turf/open/floor/prison,
-/area/lv522/outdoors/colony_streets/windbreaker/observation)
 "aaX" = (
 /obj/item/reagent_container/spray/cleaner/drone{
 	pixel_x = -3;
@@ -2034,6 +1950,20 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/kitchen)
+"bgN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Hubba hubba.";
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
+	icon_state = "poster17";
+	name = "\improper torn magazine page";
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/newspaper,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/indoors/c_block/garage)
 "bha" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat,
@@ -3283,6 +3213,11 @@
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
+"bWd" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/grass,
+/area/lv522/indoors/a_block/garden)
 "bWm" = (
 /obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/dirt,
@@ -8253,6 +8188,26 @@
 "ezj" = (
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"ezo" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Hubba hubba.";
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
+	icon_state = "poster17";
+	name = "\improper torn magazine page";
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Hubba hubba.";
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
+	icon_state = "poster3";
+	name = "\improper torn magazine page";
+	pixel_x = 5;
+	pixel_y = 14
+	},
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/windbreaker/observation)
 "ezp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22839,6 +22794,10 @@
 /obj/structure/bed/chair,
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
+"mtI" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/grass,
+/area/lv522/indoors/a_block/garden)
 "mtM" = (
 /obj/structure/transmitter/colony_net{
 	dir = 4;
@@ -23556,6 +23515,15 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
+"mNR" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	layer = 3
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/kitchen)
 "mNU" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/gm/river,
@@ -29341,6 +29309,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/east_central_street)
+"pQQ" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/indoors/b_block/bridge)
 "pRf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38970,6 +38945,17 @@
 /obj/structure/curtain/medical,
 /turf/open/floor/strata/white_cyan3/east,
 /area/lv522/indoors/a_block/medical/glass)
+"uvT" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9;
+	layer = 2.9
+	},
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	layer = 3
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/indoors/b_block/bridge)
 "uwb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -43729,6 +43715,20 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
+"wIE" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/organic/grass,
+/area/lv522/indoors/a_block/garden)
+"wIL" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	layer = 3
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/kitchen)
 "wJb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -64418,7 +64418,7 @@ aZZ
 dbQ
 lxL
 xMa
-aaK
+wIL
 lVp
 lWh
 hLm
@@ -64619,7 +64619,7 @@ mbF
 jft
 xbj
 sjy
-aaL
+mNR
 jvq
 oLd
 wob
@@ -67154,7 +67154,7 @@ yhR
 tOo
 wIr
 wIr
-aaH
+uvT
 auL
 oqp
 qzQ
@@ -68396,7 +68396,7 @@ oLa
 oLa
 fTP
 aPu
-aaG
+pQQ
 wIr
 wIr
 xAR
@@ -70591,7 +70591,7 @@ qUY
 iGX
 aff
 jZc
-aaM
+wIE
 ulZ
 uNB
 pTl
@@ -70792,7 +70792,7 @@ pTl
 uNB
 ulZ
 ulZ
-aaM
+wIE
 icC
 mxg
 ehJ
@@ -70997,12 +70997,12 @@ djM
 xUQ
 uNB
 ulZ
-aaM
+wIE
 eKm
 wzQ
 neQ
 pWB
-aaM
+wIE
 bWA
 ulZ
 uNB
@@ -72409,7 +72409,7 @@ xZE
 xZE
 wDj
 aJS
-aaP
+ezo
 eJR
 iDH
 eJR
@@ -72851,12 +72851,12 @@ djM
 pTl
 uNB
 fkj
-aaN
+mtI
 mHU
 qUY
 iGX
 aff
-aaO
+bWd
 jHi
 fkj
 uNB
@@ -73269,7 +73269,7 @@ wzQ
 neQ
 pWB
 fkj
-aaN
+mtI
 fkj
 uNB
 pTl
@@ -79289,7 +79289,7 @@ xCY
 hUq
 vVp
 xRw
-aaJ
+bgN
 fMS
 cUG
 hMz

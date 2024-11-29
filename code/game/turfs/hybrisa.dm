@@ -12,9 +12,11 @@
 
 /turf/open/floor/plating/engineer_ship
 	icon = 'icons/turf/floors/engineership.dmi'
+	burnable_tile = FALSE
 
 /turf/open/floor/plating/hybrisa_rock
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	burnable_tile = FALSE
 
 // Hybrisa auto-turf
 

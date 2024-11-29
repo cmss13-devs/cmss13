@@ -61,13 +61,6 @@
 		return
 	. = ..()
 
-/obj/item/clothing/under/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	for(var/i in map_variants_roll_accessories)
-		if(findtext(icon_state, i, 1, 3))
-			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
-	return .
-
 /obj/item/clothing/under/marine/medic
 	name = "\improper USCM corpsman uniform"
 	desc = "Standard-issue Marine hospital corpsman fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."

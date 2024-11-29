@@ -5,7 +5,6 @@
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
 	icon_state = ""
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	item_state = "gun"
 	pickup_sound = "gunequip"
 	drop_sound = "gunrustle"

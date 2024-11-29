@@ -651,7 +651,6 @@
 	var/model_icon = "model_m40"
 	var/type_icon = "hedp"
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
-	has_gamemode_skin = TRUE
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
@@ -660,7 +659,7 @@
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
-	if(has_gamemode_skin)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin()
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
 

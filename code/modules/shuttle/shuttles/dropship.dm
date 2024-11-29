@@ -199,7 +199,7 @@
 		return
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
-		if(faction = FACTION_MARINE)
+		if(faction == FACTION_MARINE)
 			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
 
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
@@ -218,7 +218,7 @@
 		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
 	else
 		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
-	if(faction = FACTION_MARINE)
+	if(faction == FACTION_MARINE)
 		ai_silent_announcement("Dropship '[name]' departing.")
 
 /obj/docking_port/stationary/marine_dropship
@@ -232,7 +232,7 @@
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
 	var/xeno_announce = FALSE
-	var/faction = FACTION_MARINE
+	var/faction == FACTION_MARINE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()

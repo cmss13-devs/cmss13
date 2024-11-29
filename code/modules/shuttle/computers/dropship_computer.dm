@@ -248,9 +248,8 @@
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
 			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
-			if(shuttle.faction = FACTION_MARINE)
-				log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
-				log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
+			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
+			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
 		if(shuttle.destination && shuttle.destination.id != linked_lz)
 			to_chat(xeno, "The shuttle not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")

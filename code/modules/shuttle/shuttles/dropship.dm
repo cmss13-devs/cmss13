@@ -32,7 +32,6 @@
 	var/datum/cas_signal/paradrop_signal
 	var/faction = FACTION_MARINE
 
-
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
 	door_control = new()

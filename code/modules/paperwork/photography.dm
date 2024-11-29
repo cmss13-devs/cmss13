@@ -349,10 +349,9 @@
 /obj/item/device/broadcasting
 	name = "Broadcasting Camera"
 	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "broadcastingcamera"
 	item_state = "broadcastingcamera"
-	icon = 'icons/obj/items/tools.dmi'
 	unacidable = TRUE
 	explo_proof = TRUE
 	w_class = SIZE_HUGE

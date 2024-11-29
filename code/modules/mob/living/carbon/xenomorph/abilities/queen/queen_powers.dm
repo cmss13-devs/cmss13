@@ -15,30 +15,24 @@
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] doesn't belong to your hive!"))
 		return
-
 	if(target_xeno.is_ventcrawling)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved here."))
 		return
-
 	if(!isturf(target_xeno.loc))
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved here."))
 		return
-
 	if(target_xeno.health <= 0)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] is too weak to be deevolved."))
 		return
-
 	if(length(target_xeno.caste.deevolves_to) < 1)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved."))
 		return
-
 	if(target_xeno.banished)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] is banished and can't be deevolved."))
 		return
 
 
 	var/newcaste
-
 	if(length(target_xeno.caste.deevolves_to) == 1)
 		newcaste = target_xeno.caste.deevolves_to[1]
 	else if(length(target_xeno.caste.deevolves_to) > 1)
@@ -46,12 +40,10 @@
 
 	if(!newcaste)
 		return
-
-	if(newcaste == "Larva")
+	if(newcaste == XENO_CASTE_LARVA)
 		to_chat(user_xeno, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
 		return
-
-	if (user_xeno.observed_xeno != target_xeno)
+	if(user_xeno.observed_xeno != target_xeno)
 		return
 
 	var/confirm = tgui_alert(user_xeno, "Are you sure you want to deevolve [target_xeno] from [target_xeno.caste.caste_type] to [newcaste]?", "Deevolution", list("Yes", "No"))
@@ -63,33 +55,21 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("You must provide a reason for deevolving [target_xeno]."))
 		return
 
-	if (!check_and_use_plasma_owner(plasma_cost))
+	if(!check_and_use_plasma_owner(plasma_cost))
 		return
+
 
 	to_chat(target_xeno, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
 
-	var/xeno_type
-	var/level_to_switch_to = target_xeno.get_vision_level()
-	switch(newcaste)
-		if(XENO_CASTE_RUNNER)
-			xeno_type = /mob/living/carbon/xenomorph/runner
-		if(XENO_CASTE_DRONE)
-			xeno_type = /mob/living/carbon/xenomorph/drone
-		if(XENO_CASTE_SENTINEL)
-			xeno_type = /mob/living/carbon/xenomorph/sentinel
-		if(XENO_CASTE_SPITTER)
-			xeno_type = /mob/living/carbon/xenomorph/spitter
-		if(XENO_CASTE_LURKER)
-			xeno_type = /mob/living/carbon/xenomorph/lurker
-		if(XENO_CASTE_WARRIOR)
-			xeno_type = /mob/living/carbon/xenomorph/warrior
-		if(XENO_CASTE_DEFENDER)
-			xeno_type = /mob/living/carbon/xenomorph/defender
-		if(XENO_CASTE_BURROWER)
-			xeno_type = /mob/living/carbon/xenomorph/burrower
-	var/obj/item/organ/xeno/organ = locate() in src
+	SEND_SIGNAL(target_xeno, COMSIG_XENO_DEEVOLVE)
+
+	var/obj/item/organ/xeno/organ = locate() in target_xeno
 	if(!isnull(organ))
 		qdel(organ)
+
+	var/level_to_switch_to = target_xeno.get_vision_level()
+	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
+
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(target_xeno), target_xeno)
 
@@ -99,6 +79,9 @@
 		if(new_xeno)
 			qdel(new_xeno)
 		return
+
+	new_xeno.built_structures = target_xeno.built_structures.Copy()
+	target_xeno.built_structures = null
 
 	if(target_xeno.mind)
 		target_xeno.mind.transfer_to(new_xeno)
@@ -113,7 +96,8 @@
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	// If the player has self-deevolved before, don't allow them to do it again
+
+	// If the player has lost the Deevolve verb before, don't allow them to do it again
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in target_xeno.verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
@@ -132,6 +116,7 @@
 		GLOB.round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
+
 	qdel(target_xeno)
 	return
 
@@ -382,7 +367,7 @@
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",)
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
@@ -408,7 +393,75 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
+		if("Purchase Buffs")
+			purchase_buffs()
 	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+
+	var/list/datum/hivebuff/buffs = list()
+	var/list/names = list()
+	var/list/radial_images = list()
+	var/major_available = FALSE
+	for(var/datum/hivebuff/buff as anything in xeno.hive.get_available_hivebuffs())
+		var/buffname = initial(buff.name)
+		names += buffname
+		buffs[buffname] = buff
+		if(!major_available)
+			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
+				major_available = TRUE
+
+	if(!length(buffs))
+		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
+		return
+
+	var/selection
+	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
+
+	if(xeno.client?.prefs?.no_radials_preference)
+		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
+	else
+		var/tier = HIVEBUFF_TIER_MINOR
+		if(major_available)
+			tier = show_radial_menu(xeno, xeno?.client?.eye, radial_images_tiers)
+
+		if(tier == HIVEBUFF_TIER_MAJOR)
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MAJOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+		else
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+
+		selection = show_radial_menu(xeno, xeno?.client?.eye, radial_images, radius = 72, tooltips = TRUE)
+
+	if(!selection)
+		return FALSE
+
+	if(!buffs[selection])
+		to_chat(xeno, "This selection is impossible!")
+		return FALSE
+
+	if(buffs[selection].must_select_pylon)
+		var/list/pylon_to_area_dictionary = list()
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in xeno.hive.active_endgame_pylons)
+			pylon_to_area_dictionary[get_area_name(pylon.loc)] = pylon
+
+		var/choice = tgui_input_list(xeno, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
+
+		if(!choice)
+			to_chat(xeno, "You must choose a pylon.")
+			return FALSE
+
+		xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
+		return TRUE
+
+	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pick(xeno.hive.active_endgame_pylons))
+	return TRUE
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -674,8 +727,8 @@
 		return
 
 	var/area/AR = get_area(T)
-	if(!AR.is_resin_allowed)
-		if(AR.flags_area & AREA_UNWEEDABLE)
+	if(isnull(AR) || !AR.is_resin_allowed)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))

@@ -472,3 +472,8 @@
   - rscadd: makes langchat readable through tgui menus.
   realforest2001:
   - bugfix: Hologram mobs no longer trigger ares sensors.
+2024-11-29:
+  Drathek:
+  - code_imp: Merge hook installer now can handle duplicate/old hook installs
+  irakligabunia:
+  - rscdel: Removes access to pred for legacy WL holders

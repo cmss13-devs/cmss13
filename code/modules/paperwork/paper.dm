@@ -11,6 +11,10 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0

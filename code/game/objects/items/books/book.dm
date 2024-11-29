@@ -5,6 +5,10 @@
 	name = "book"
 	icon = 'icons/obj/items/books.dmi'
 	icon_state ="book"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	/// upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)

@@ -533,6 +533,7 @@
 	name = "\improper Weyland-Yutani Aspen Beer"
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
+	item_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()

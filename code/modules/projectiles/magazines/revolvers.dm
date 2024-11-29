@@ -10,6 +10,10 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m44"
 	item_state = "generic_speedloader"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		)
 	w_class = SIZE_SMALL
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44

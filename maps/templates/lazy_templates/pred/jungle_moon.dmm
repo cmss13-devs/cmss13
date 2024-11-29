@@ -99,7 +99,7 @@
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/prep_room)
 "bn" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
 /area/yautja_grounds/south_west)
 "bo" = (
@@ -333,7 +333,7 @@
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
 "fy" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
 "fC" = (
@@ -348,7 +348,7 @@
 /area/yautja_grounds/south_west)
 "fL" = (
 /obj/structure/flora/jungle/vines,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
 "fT" = (
@@ -373,7 +373,7 @@
 /turf/open/gm/dirt,
 /area/yautja_grounds/temple)
 "gf" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/north)
 "gg" = (
@@ -433,7 +433,7 @@
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/jungle)
 "hw" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
 "hx" = (
@@ -572,7 +572,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
 "jI" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
 /area/yautja_grounds/prep_room)
 "jL" = (
@@ -662,7 +662,7 @@
 /turf/open/gm/dirt,
 /area/yautja_grounds/prep_room)
 "kZ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle/west)
 "lb" = (
@@ -722,7 +722,7 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/yautja_grounds/temple)
 "lV" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_east)
 "lZ" = (
@@ -850,7 +850,7 @@
 /area/yautja_grounds/jungle)
 "nH" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
 "nI" = (
@@ -868,7 +868,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_west)
 "nW" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_east)
 "of" = (
@@ -986,7 +986,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_west)
 "qg" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south_east)
 "qh" = (
@@ -1536,7 +1536,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south_east)
 "yI" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/floor/sandstone/runed,
 /area/yautja_grounds/south)
 "yJ" = (
@@ -1707,7 +1707,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja_grounds/south)
 "Bj" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south_east)
 "By" = (
@@ -1783,7 +1783,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja_grounds/jungle)
 "CK" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle/west)
 "CN" = (
@@ -1865,7 +1865,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south_west)
 "Eh" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
@@ -2325,7 +2325,7 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/yautja_grounds/south_west)
 "LV" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
@@ -2404,7 +2404,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja_grounds/north_east)
 "NA" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
 "NE" = (
@@ -2525,7 +2525,7 @@
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
 "PA" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
 "PC" = (

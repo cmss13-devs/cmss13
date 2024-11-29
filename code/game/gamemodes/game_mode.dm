@@ -40,6 +40,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 	var/hardcore = FALSE
 
+	///Whether or not the fax response station has loaded.
+	var/loaded_fax_base = FALSE
+
 /datum/game_mode/New()
 	..()
 	if(taskbar_icon)

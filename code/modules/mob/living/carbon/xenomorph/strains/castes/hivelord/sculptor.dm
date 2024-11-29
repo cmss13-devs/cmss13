@@ -21,7 +21,7 @@
 
 /datum/xeno_strain/sculptor/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.plasmapool_modifier = 0.6 // -40% plasma pool
-	hivelord.plasmagain_modifier = XENO_PLASMA_GAIN_TIER_10
+	hivelord.plasmagain_modifier = XENO_PLASMA_GAIN_TIER_10 // 20% faster plasma regen
 	hivelord.health_modifier -= XENO_HEALTH_MOD_SCULPTOR
 	hivelord.speed_modifier += XENO_SPEED_FASTMOD_TIER_8
 	hivelord.damage_modifier += XENO_DAMAGE_MOD_SMALL

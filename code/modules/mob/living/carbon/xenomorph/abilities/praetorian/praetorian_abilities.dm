@@ -275,12 +275,18 @@
 
 	//rage configs
 	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
-	var/target_armor_buff = 15 // 30 armor was too much, trying half of it.
 	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
+	var/armor_buffs_active = FALSE
+
+	var/target_armor_buff = 15
 	var/armor_buffs_targer_dur = 3 SECONDS
 	var/armor_buffs_active_target = FALSE
-	var/armor_buffs_active = FALSE
+
+	var/speed_buff_dur = 2 SECONDS // tier 3's get speed boost instead of armor because they become a little broken.
+	var/speed_buff_amount = 0.7
+	var/armor_buffs_speed_target = FALSE
 	var/rage_cost = 75
+
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"

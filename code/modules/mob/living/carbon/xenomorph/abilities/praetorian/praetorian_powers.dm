@@ -801,15 +801,21 @@
 	raging_valkyrie.armor_modifier += armor_buff
 	raging_valkyrie.recalculate_armor()
 
-	if(isxeno(buffing_target))
+	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
+		playsound(get_turf(buffing_target), "alien_roar", 40)
+		buffing_target.create_custom_empower(icolor = "#77a310", ialpha = 200, small_xeno = TRUE)
+		buffing_target.speed_modifier -= speed_buff_amount
+		buffing_target.recalculate_speed()
+		addtimer(CALLBACK(src, PROC_REF(remove_target_speed)), speed_buff_dur)
+	else
 		playsound(get_turf(buffing_target), "alien_roar", 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.armor_modifier += target_armor_buff
 		buffing_target.recalculate_armor()
+		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_rage)), armor_buffs_duration)
-	addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
 
 	apply_cooldown()
 	return ..()
@@ -827,6 +833,14 @@
 
 
 
+/datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_speed()
+	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
+	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
+		target_xeno.speed_modifier += speed_buff_amount
+		target_xeno.remove_filter("raging")
+		target_xeno.recalculate_speed()
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	armor_buffs_speed_target = FALSE
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_rage()
 	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()

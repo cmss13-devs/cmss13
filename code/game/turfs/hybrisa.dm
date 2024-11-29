@@ -845,6 +845,7 @@
 
 /turf/open/floor/plating/hybrisa
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	burnable_tile = FALSE
 
 /turf/open/floor/plating/hybrisa/darkredfull2
 	icon_state = "darkredfull2"

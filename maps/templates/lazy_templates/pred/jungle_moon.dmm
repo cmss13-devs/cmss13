@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds,
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/jungle/north)
 "ab" = (
 /obj/structure/flora/jungle/planttop1,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -6,6 +10,18 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
+"ac" = (
+/obj/structure/machinery/hunt_ground_escape,
+/turf/closed/wall/rock/brown,
+/area/yautja_grounds/jungle/north)
+"ad" = (
+/obj/structure/blocker/preserve_edge,
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/jungle/north)
+"ae" = (
+/obj/structure/blocker/preserve_edge,
+/turf/open/gm/grass/grass2,
+/area/yautja_grounds/jungle/north)
 "ah" = (
 /obj/item/stool,
 /turf/open/floor/engine/cult,
@@ -407,10 +423,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle)
-"gU" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass/grass1,
-/area/yautja_grounds/jungle/north)
 "hc" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -771,10 +783,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south_east)
-"mM" = (
-/obj/effect/landmark/ert_spawns/distress/hunt_spawner,
-/turf/open/gm/grass/grass2,
-/area/yautja_grounds/jungle/north)
 "mN" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -9047,7 +9055,7 @@ Xh
 kO
 ih
 gE
-gU
+ih
 ih
 ih
 ih
@@ -9525,9 +9533,9 @@ oh
 oh
 oh
 oh
-PT
-PT
-PT
+oh
+oh
+oh
 PT
 md
 ih
@@ -9623,10 +9631,10 @@ oh
 oh
 oh
 oh
-PT
-PT
-PT
-PT
+ad
+md
+ih
+aa
 us
 md
 ih
@@ -9639,7 +9647,7 @@ GJ
 PT
 ih
 ih
-gU
+ih
 ih
 ih
 ih
@@ -9722,10 +9730,10 @@ oh
 oh
 oh
 oh
-PT
-PT
-PT
-PT
+ae
+ih
+md
+aa
 us
 GJ
 ih
@@ -9821,10 +9829,10 @@ oh
 oh
 oh
 oh
-PT
-PT
-PT
-PT
+ae
+ih
+ih
+aa
 uJ
 ih
 gf
@@ -9920,12 +9928,12 @@ oh
 oh
 oh
 oh
-oh
-PT
-PT
-PT
+ad
+md
+md
+aa
 ih
-mM
+md
 ih
 ih
 PT
@@ -10020,9 +10028,9 @@ oh
 oh
 oh
 oh
-PT
-PT
-PT
+oh
+oh
+ac
 ih
 ih
 ih
@@ -10119,8 +10127,8 @@ oh
 oh
 oh
 oh
-PT
-PT
+oh
+oh
 PT
 ih
 jo
@@ -10322,7 +10330,7 @@ PT
 PT
 PT
 md
-No
+ih
 ih
 us
 us

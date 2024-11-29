@@ -61,6 +61,59 @@
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/blocker/preserve_edge
+	name = "dense fog"
+	desc = "You think you can see a way through."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	opacity = TRUE
+
+/obj/structure/blocker/preserve_edge/attack_hand(mob/user)
+	. = ..()
+
+	var/mob/living/carbon/human/escaped = user
+
+	if(isyautja(escaped))
+		to_chat(user, SPAN_WARNING("Why would you do this?"))///no leaving for preds
+		return
+
+	var/choice = tgui_alert(escaped, "Are you sure you want to traverse the fog and escape the preserve.", "[src]", list("No", "Yes"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "No")
+		return
+
+	if(choice == "Yes")
+		to_chat(escaped, SPAN_DANGER("You begin to make your escape!"))
+
+	if(!do_after(escaped, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(escaped, SPAN_NOTICE("You Loose your way and come back."))
+		return
+
+	announce_dchat("[escaped.real_name] has escaped from the hunting grounds!")
+	qdel(escaped)
+
+/obj/structure/blocker/preserve_edge/attack_alien(user) ///for if somehow xenos get into the escape
+	attack_hand(user)
+
+	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve.", "[src]", list("No", "Yes"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "No")
+		return
+
+	if(choice == "Yes")
+		to_chat(user, SPAN_DANGER("You begin to make your escape!"))
+
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_NOTICE("You Loose your way and come back."))
+		return
+
+	announce_dchat("[user] has escaped from the hunting grounds!")
+	qdel(user)
+	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"

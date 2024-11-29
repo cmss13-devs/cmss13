@@ -559,7 +559,8 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, yautja_hunt_cooldown))
-		to_chat(user, DisplayTimeText(COOLDOWN_TIMELEFT(src, yautja_hunt_cooldown)))
+		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(src, yautja_hunt_cooldown))
+		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
 		return
 
 	if(!length(potential_prey))
@@ -576,6 +577,60 @@
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
 	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
+
+/obj/structure/machinery/hunt_ground_escape
+	name = "preserve shutter console"
+	desc = "A console for opening a shutter."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "terminal"
+	density = TRUE
+	var/escaped = FALSE
+
+/obj/structure/machinery/hunt_ground_escape/attack_hand(mob/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("The console blerts out two words you can understand: 'Scan' and 'Mask'."))
+		return
+
+	var/choice = tgui_alert(user, "Do you wish to close or open the shutter?", "[src]", list("Open", "Close"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "Open")
+		if(escaped)
+			to_chat(user, SPAN_WARNING("The shutter is already open."))
+			return
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
+		escaped = TRUE
+
+	if(choice == "Close")
+		if(!escaped)
+			to_chat(user, SPAN_WARNING("The shutter is already closed."))
+			return
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_CLOSED)
+		escaped = FALSE
+
+/obj/structure/machinery/hunt_ground_escape/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	var/obj/item/clothing/mask/gas/yautja/hunter/mask = attacking_item
+	if(escaped)
+		to_chat(user, SPAN_NOTICE("The shutter is already open."))
+		return
+
+	if(mask.loc != user)
+		to_chat(user, SPAN_WARNING("You cannot scan [mask] without holding it."))
+		return
+
+	to_chat(user, SPAN_DANGER("You hold the [mask] up to the console and it begins to scan..."))
+	message_all_yautja("Prey is trying to escape the hunting grounds.")
+
+	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))
+		return
+
+	to_chat(user, SPAN_DANGER("The strange console's screen turns green and the shutter opens. Make your escape!"))
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
+	escaped = TRUE
 
 //=================//\\=================\\
 //======================================\\

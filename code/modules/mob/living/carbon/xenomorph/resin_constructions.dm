@@ -350,25 +350,3 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	build_path = /obj/effect/alien/weeds/node
 	build_overlay_icon = /obj/effect/warning/alien/weak
-
-// Designer Strain "design" structures
-
-/datum/resin_construction/resin_obj/design_speed
-	name = "Optimized Design Node"
-	desc = "Allow other xenos to build faster and reduce creation costs."
-	construction_name = "gardener_resin_surge"
-	cost = XENO_RESIN_BASE_COST
-	build_time = 1 SECONDS
-	max_per_xeno = 10
-
-	build_path = /obj/effect/alien/weeds/node/designer/speed
-
-/datum/resin_construction/resin_obj/design_cost
-	name = "Flexible Design Node"
-	desc = "Allow other xenos to build faster and reduce creation costs."
-	construction_name = "gardener_resin_surge"
-	cost = XENO_RESIN_BASE_COST
-	build_time = 1 SECONDS
-	max_per_xeno = 10
-
-	build_path = /obj/effect/alien/weeds/node/designer/cost

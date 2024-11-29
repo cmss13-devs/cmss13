@@ -304,6 +304,10 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
+	// Designer stuff
+	var/list/speed_node_list = list()
+	var/list/cost_node_list = list()
+
 	var/icon_xeno
 	var/icon_xenonid
 

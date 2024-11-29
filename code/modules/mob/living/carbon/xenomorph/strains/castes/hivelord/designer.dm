@@ -6,14 +6,15 @@
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
+		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/secrete_resin/design,
-		/datum/action/xeno_action/activable/target_resin_surge,
+		/datum/action/xeno_action/activable/speed_node_place,
+		/datum/action/xeno_action/activable/cost_node_place,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/onclick/toggle_long_range/designer,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
@@ -32,72 +33,6 @@
 	hivelord.recalculate_pheromones()
 	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
 
-	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_designer)
-	for(var/datum/action/xeno_action/action in hivelord.actions)
-		// Also update the choose_resin icon since it resets
-		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
-			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
-			if(choose_resin_ability)
-				choose_resin_ability.update_button_icon(hivelord.selected_resin)
-				break // Don't need to keep looking
-
-/*
- * Coerce Resin ability
- */
-
-// Remote resin building
-/datum/action/xeno_action/activable/secrete_resin/design
-	name = "Design Resin Construction (50)"
-	action_icon_state = "secrete_resin"
-	xeno_cooldown = 1 SECONDS
-	thick = FALSE
-	make_message = FALSE
-
-	no_cooldown_msg = TRUE
-
-	build_speed_mod = 2 // the actual building part takes twice as long
-
-	macro_path = /datum/action/xeno_action/verb/verb_design_resin
-	action_type = XENO_ACTION_CLICK
-
-	var/last_use = 0
-	var/care_about_adjacency = TRUE
-
-/datum/action/xeno_action/activable/secrete_resin/design/use_ability(atom/target_atom, mods)
-	if(!action_cooldown_check())
-		return
-
-	if(mods["click_catcher"])
-		return
-
-	var/turf/target_turf = get_turf(target_atom)
-	if(!target_turf)
-		return
-
-	if(care_about_adjacency && !(target_turf in view(10, owner)))
-		to_chat(owner, SPAN_XENONOTICE("We must have a direct line of sight!"))
-		return
-
-	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
-	if(care_about_adjacency)
-		if(owner.Adjacent(target_turf))
-			build_speed_mod = 1
-		else
-			build_speed_mod = initial(build_speed_mod)
-
-	var/mob/living/carbon/xenomorph/hivelord = owner
-	if(!..())
-		return
-
-	if(!hivelord.selected_resin)
-		return
-
-	var/datum/resin_construction/resing_construction = GLOB.resin_constructions_list[hivelord.selected_resin]
-	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
-	playsound(target_turf, "alien_resin_build", 25)
-	return TRUE
-
 /datum/action/xeno_action/verb/verb_design_resin()
 	set category = "Alien"
 	set name = "Design Resin"
@@ -111,11 +46,11 @@
 	hibernate = TRUE
 
 /obj/effect/alien/weeds/node/designer/speed
-	name = "Flexible Design Node"
+	name = "Optimized Design Node"
 	icon_state = "weednode"
 
 /obj/effect/alien/weeds/node/designer/cost
-	name = "Optimized Design Node"
+	name = "Flexible Design Node"
 	icon_state = "weednode"
 
 // farsight
@@ -125,27 +60,29 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
 
-/datum/action/xeno_action/verb/target_resin_surge()
+
+
+// Speed Node
+
+/datum/action/xeno_action/verb/verb_speed_node()
 	set category = "Alien"
-	set name = "Destroy Design Nodes"
+	set name = "Place Optimized Node"
 	set hidden = TRUE
-	var/action_name = "Destroy Design Nodes"
+	var/action_name = "Place Optimized Node"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/activable/target_resin_surge
-	name = "Destroy Design Nodes (100)"
+/datum/action/xeno_action/activable/speed_node_place
+	name = "Place Optimized Node (100)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 100
-	xeno_cooldown = 30 SECONDS
-	macro_path = /datum/action/xeno_action/verb/target_resin_surge
+	xeno_cooldown = 1 SECONDS
+	macro_path = /datum/action/xeno_action/verb/verb_speed_node
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	var/max_speed_reach = 10
+	var/max_speed_nodes = 5
 
-
-/datum/action/xeno_action/activable/target_resin_surge/use_ability(atom/target_atom)
-	.=..()
-
-	var/list/design_weeds = list()
+/datum/action/xeno_action/activable/speed_node_place/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -156,8 +93,139 @@
 	if (!xeno.check_state(TRUE))
 		return
 
+	if(mods["click_catcher"])
+		return
+
+	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher
+		if(!can_see(xeno, target_atom, max_speed_reach))
+			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+			return
+	else
+		if(get_dist(xeno, target_atom) > max_speed_reach)
+			to_chat(xeno, SPAN_WARNING("That's too far away!"))
+			return
+
 	if (!check_and_use_plasma_owner())
 		return
 
-	if(/obj/effect/alien/weeds/node/designer/speed as anything in design_weeds)
-		PlaceOnTop(/turf/closed/wall/resin/weak)
+	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+
+	var/turf/target_turf = get_turf(target_atom)
+	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+
+	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
+		SPAN_XENONOTICE("We surge sustinance, creating optimized node!"), null, 5)
+
+		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
+
+		xeno.speed_node_list += speed_nodes
+		playsound(target_turf, "alien_resin_build", 25)
+
+		if(xeno.speed_node_list.len > max_speed_nodes)
+			// Delete the oldest node (the first one in the list)
+			var/obj/effect/alien/weeds/node/designer/speed/oldest_speed_node = xeno.speed_node_list[1]
+			if(oldest_speed_node)
+				var/turf/old_speed_loc = get_turf(oldest_speed_node.loc) // Get the turf of the oldest node
+				if(old_speed_loc) // Ensure the turf exists
+					new /obj/effect/alien/weeds(old_speed_loc) // Replace with a new /obj/effect/alien/weeds
+				qdel(oldest_speed_node) // Safely delete the old node
+			xeno.speed_node_list.Cut(1, 2) // Remove the first element from the list
+
+	else if(target_turf)
+		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
+		return FALSE
+
+	else
+		xeno_cooldown = xeno_cooldown * 0.5
+
+	apply_cooldown()
+
+	xeno_cooldown = initial(xeno_cooldown)
+	return ..()
+
+
+
+// Cost Node
+
+/datum/action/xeno_action/verb/verb_cost_node()
+	set category = "Alien"
+	set name = "Place Flexible Node"
+	set hidden = TRUE
+	var/action_name = "Place Flexible Node"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/activable/cost_node_place
+	name = "Place Flexible Node (125)"
+	action_icon_state = "gardener_resin_surge"
+	plasma_cost = 125
+	xeno_cooldown = 1 SECONDS
+	macro_path = /datum/action/xeno_action/verb/verb_cost_node
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	var/max_cost_reach = 10
+	var/max_cost_nodes = 5
+
+/datum/action/xeno_action/activable/cost_node_place/use_ability(atom/target_atom, mods)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state(TRUE))
+		return
+
+	if(mods["click_catcher"])
+		return
+
+	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher
+		if(!can_see(xeno, target_atom, max_cost_reach))
+			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+			return
+	else
+		if(get_dist(xeno, target_atom) > max_cost_reach)
+			to_chat(xeno, SPAN_WARNING("That's too far away!"))
+			return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+
+	var/turf/target_turf = get_turf(target_atom)
+	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+
+	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
+		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
+		SPAN_XENONOTICE("We surge sustinance, creating flexible node!"), null, 5)
+
+		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
+
+		xeno.cost_node_list += cost_nodes
+		playsound(target_turf, "alien_resin_build", 25)
+
+		if(xeno.cost_node_list.len > max_cost_nodes)
+			// Delete the oldest node (the first one in the list)
+			var/obj/effect/alien/weeds/node/designer/cost/oldest_cost_node = xeno.cost_node_list[1]
+			if(oldest_cost_node)
+				var/turf/old_cost_loc = get_turf(oldest_cost_node.loc) // Get the turf of the oldest node
+				if(old_cost_loc) // Ensure the turf exists
+					new /obj/effect/alien/weeds(old_cost_loc) // Replace with a new /obj/effect/alien/weeds
+				qdel(oldest_cost_node) // Safely delete the old node
+			xeno.cost_node_list.Cut(1, 2) // Remove the first element from the list
+
+	else if(target_turf)
+		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
+		return FALSE
+
+	else
+		xeno_cooldown = xeno_cooldown * 0.5
+
+	apply_cooldown()
+
+	xeno_cooldown = initial(xeno_cooldown)
+	return ..()

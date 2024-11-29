@@ -69,6 +69,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 		.["text_rights"] = flags2rights(rank.rights)
 
 /datum/view_record/admin_rank
+	var/id
 	var/rank_name
 	var/text_rights
 	var/rights = NO_FLAGS
@@ -79,6 +80,7 @@ BSQL_PROTECT_DATUM(/datum/view_record/admin_rank)
 	root_record_type = /datum/entity/admin_rank
 	destination_entity = /datum/view_record/admin_rank
 	fields = list(
+		"id",
 		"rank_name",
 		"text_rights",
 	)

@@ -18,14 +18,26 @@
 	name_plural = "Hazard Joes"
 	emote_panel_type = /datum/joe_emote_panel/hazard
 
+/datum/species/synthetic/colonial/working_joe/upp
+	name = SYNTH_UPP_JOE
+	name_plural = "Dzho Automaton"
+	emote_panel_type = /datum/joe_emote_panel/upp
+
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
 
 // Special death noise for Working Joe
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	var/sound_to_play
 	if(!gibbed) //A gibbed Joe won't have a death rattle
-		playsound(dying_joe.loc, pick_weight(list('sound/voice/joe/death_normal.ogg' = 75, 'sound/voice/joe/death_silence.ogg' = 10, 'sound/voice/joe/death_tomorrow.ogg' = 10,'sound/voice/joe/death_dream.ogg' = 5)), 25, FALSE)
+		if(src.name == SYNTH_WORKING_JOE)
+			sound_to_play = "wj_death"
+		if(src.name == SYNTH_UPP_JOE)
+			sound_to_play = "upp_wj_death"
+		else
+			sound_to_play = "wj_death"
+		playsound(dying_joe.loc, sound_to_play, 25, FALSE)
 	return ..()
 
 /// Open the WJ's emote panel, which allows them to use voicelines
@@ -105,6 +117,23 @@
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.hj_emotes)
+		data["emotes"] += list(list(
+			"id" = initial(emote.key),
+			"text" = (initial(emote.override_say) || initial(emote.say_message)),
+			"category" = initial(emote.category),
+			"path" = "[emote]",
+		))
+
+	return data
+
+/datum/joe_emote_panel/upp/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = VENDOR_THEME_UPP
+	data["categories"] = GLOB.wj_categories
+	data["emotes"] = list()
+
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.uppj_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
 			"text" = (initial(emote.override_say) || initial(emote.say_message)),

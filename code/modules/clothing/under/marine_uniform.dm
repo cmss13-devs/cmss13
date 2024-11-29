@@ -1004,6 +1004,12 @@
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
 
+/obj/item/clothing/under/rank/synthetic/upp_joe
+	name = "android suit"
+	icon_state = "upp_joe"
+	worn_state = "upp_joe"
+	flags_item = NO_CRYO_STORE
+
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."

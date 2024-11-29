@@ -20,16 +20,19 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/be_careful
 	key = "careful"
 	sound = 'sound/voice/joe/be_careful_with_that.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ognestrelnoeoruzie.ogg'
 	say_message = "Be careful with that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/firearm
 	key = "firearm"
 	sound = 'sound/voice/joe/firearm.ogg'
 	haz_sound = 'sound/voice/joe/firearm_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ognestrelnoeoruzie.ogg'
 	say_message = "Firearms can cause serious injury. Let me assist you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/investigate_weapon
 	key = "weapon"
@@ -65,6 +68,13 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/species_upp
+	key = "speciesupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/neizvestnoesuchestvo.ogg'
+	say_message = "Uknown creature."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/beyond_repair
 	key = "beyondrepair"
 	sound = 'sound/voice/joe/beyond_repair.ogg'
@@ -80,3 +90,10 @@
 	say_message = "I will inform APOLLO on your behalf."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/have_to_check
+	key = "havetocheck"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nado-posmotret.ogg'
+	say_message = "I have to check."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

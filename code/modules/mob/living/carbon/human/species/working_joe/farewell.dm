@@ -10,14 +10,23 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
 	key = "gladweresolved"
 	sound = 'sound/voice/joe/glad_we_resolved.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/radchtomiuladili.ogg'
 	say_message = "I'm glad we resolved this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity
 	key = "pity"
 	sound = 'sound/voice/joe/pity.ogg'
 	say_message = "A pity I couldn't be of service."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity_upp
+	key = "pityupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nesmogpomoch.ogg'
+	say_message = "A pity, that I couldn't help."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo
 	key = "requiredbyapollo"
@@ -43,9 +52,10 @@
 	key = "backtowork"
 	sound = 'sound/voice/joe/back_to_work.ogg'
 	haz_sound = 'sound/voice/joe/back_to_work_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/poydurabotat.ogg'
 	say_message = "Back to work."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns
 	key = "otherconcerns"
@@ -54,6 +64,20 @@
 	say_message = "I have other concerns."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns_upp
+	key = "otherconcernsupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/delapovazhnee.ogg'
+	say_message = "I have more important business."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns_upp_alt
+	key = "otherconcernsuppalt"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/drugihdel.ogg'
+	say_message = "I have many other things to do."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/more_pressing_matters
 	key = "morepressingmatters"

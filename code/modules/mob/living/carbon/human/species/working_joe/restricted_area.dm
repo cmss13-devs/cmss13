@@ -19,9 +19,10 @@
 	key = "notallowedthere"
 	sound = 'sound/voice/joe/not_allowed_there.ogg'
 	haz_sound = 'sound/voice/joe/not_allowed_there_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/vamsyduanelza.ogg'
 	say_message = "You're not allowed in there."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/shouldnt_be_here
 	key = "shouldntbehere"
@@ -60,9 +61,10 @@
 	key = "breach"
 	sound = 'sound/voice/joe/breach.ogg'
 	haz_sound = 'sound/voice/joe/breach_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/narusheniekarantina.ogg'
 	say_message = "Hazard Containment breach logged."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"

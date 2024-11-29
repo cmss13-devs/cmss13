@@ -10,6 +10,14 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_upp // THE FUNNY LINE BUT IN RUSSIAN
+	key = "alwaysknowupp"
+	key_third_person = "workingjoeupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/uznatlegko.ogg'
+	say_message = "It's easy to know an android."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/awful_mess
 	key = "awful"
 	key_third_person = "mess"
@@ -65,11 +73,36 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/little_details
 	key = "littledetails"
 	sound = 'sound/voice/joe/little_details.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/malihdetalah.ogg'
 	say_message = "We don't forget the little details when seeing the big picture."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/join_us
 	key = "joinus"
 	sound = 'sound/voice/joe/join_us.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/joinus.ogg'
 	say_message = "We hope you'll join us for the journey."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/nu_nu
+	key = "nunu"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nu-nu.ogg'
+	say_message = "We hope you'll join us for the journey."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/just_a_mistake
+	key = "justamistake"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/oshibka.ogg'
+	say_message = "For sure it's just a mistake."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/want_to_help
+	key = "wanttohelp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/pomoch.ogg'
+	say_message = "I want to help."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

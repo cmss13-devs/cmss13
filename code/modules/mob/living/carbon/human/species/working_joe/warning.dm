@@ -18,8 +18,24 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_run
 	key = "dontrun"
 	sound = 'sound/voice/joe/dont_run.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_begite.ogg'
 	say_message = "Don't run."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/dont_twitch
+	key = "donttwitch"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nedergaytes.ogg'
+	say_message = "Don't twitch."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/no_point_in
+	key = "pointhiding"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/netsmislapryatatsa.ogg'
+	say_message = "Ah you are here, there is no point in hiding."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/running_accidents
 	key = "runningaccidents"
@@ -32,8 +48,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hurt_yourself
 	key = "hurtyourself"
 	sound = 'sound/voice/joe/hurt_yourself.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ushibitsa.ogg'
 	say_message = "You're going to hurt yourself."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/someone_hurt
 	key = "someonehurt"
@@ -63,6 +81,13 @@
 	say_message = "This is a safety breach and will not be tolerated."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/violated_the_rules
+	key = "violatedrules"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/budetenakazani.ogg'
+	say_message = "You have violated the rules, and you will be punished."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/no_need
 	key = "noneed"
 	sound = 'sound/voice/joe/no_need.ogg'
@@ -77,6 +102,13 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical_upp
+	key = "hystericalupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/prekratiteisteriku.ogg'
+	say_message = "Stop the hysteria."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/health_risks
 	key = "healthrisks"
 	sound = 'sound/voice/joe/health_risks.ogg'
@@ -89,23 +121,27 @@
 	key = "dangerousitems"
 	sound = 'sound/voice/joe/dangerous_items.ogg'
 	haz_sound = 'sound/voice/joe/dangerous_items_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/opasniepredmeti.ogg'
 	say_message = "You are carrying some very dangerous items."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
 	key = "patience"
 	sound = 'sound/voice/joe/patience.ogg'
 	haz_sound = 'sound/voice/joe/patience_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/terp.ogg'
 	say_message = "You are starting to test my patience."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/calm_down
 	key = "calmdown"
 	sound = 'sound/voice/joe/calm_down.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/uspokoytes.ogg'
 	say_message = "Please, calm down."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hold_still
 	key = "holdstill"
@@ -118,3 +154,10 @@
 	sound = 'sound/voice/joe/have_a_problem.ogg'
 	say_message = "It seems you and I have a problem."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/report_you_where
+	key = "reportyouupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/mne.ogg'
+	say_message = "I'll have you to report you where necessary."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

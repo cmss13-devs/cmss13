@@ -57,6 +57,13 @@
 	say_message = "Tut tut."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/ay_ya_yay
+	key = "ayayay"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ay-ya-yay.ogg'
+	say_message = "Ay ya yay."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/unwarranted
 	key = "unwarranted"
 	sound = 'sound/voice/joe/unwarranted.ogg'

@@ -4,16 +4,19 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/hello
 	key = "hello"
 	sound = 'sound/voice/joe/hello.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zdravstvuyte.ogg'
 	say_message = "Hello."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/good_day
 	key = "goodday"
 	sound = 'sound/voice/joe/good_day.ogg'
 	haz_sound = 'sound/voice/joe/good_day_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/dobriyden.ogg'
 	say_message = "Good day."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_are_you
 	key = "howareyou"
@@ -25,9 +28,10 @@
 	key = "howcanihelp"
 	sound = 'sound/voice/joe/how_can_i_help.ogg'
 	haz_sound = 'sound/voice/joe/how_can_i_help_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/polezen.ogg'
 	say_message = "How can I help you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/need_to_know
 	key = "needtoknow"
@@ -58,3 +62,10 @@
 	sound = 'sound/voice/joe/been_looking_for_you.ogg'
 	say_message = "I've been looking for you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/greeting/is_that_you_help
+	key = "thatyouhelp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/etovi-yahochupomoch.ogg'
+	say_message = "Is that you? I want to help."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

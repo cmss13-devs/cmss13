@@ -25,9 +25,10 @@
 	key = "followmeplease"
 	sound = 'sound/voice/joe/follow_me_please.ogg'
 	haz_sound = 'sound/voice/joe/follow_me_please_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/proydemte.ogg'
 	say_message = "Follow me please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
 	key = "comewithme"
@@ -39,9 +40,10 @@
 	key = "withyoushortly"
 	sound = 'sound/voice/joe/with_you_shortly.ogg'
 	haz_sound = 'sound/voice/joe/with_you_shortly_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/podoyducherez1.ogg'
 	say_message = "I will be with you shortly."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/take_a_seat
 	key = "takeaseat"

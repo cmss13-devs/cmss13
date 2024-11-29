@@ -29,6 +29,9 @@
 	canister_color = "blue"
 	can_label = 0
 
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/machinery/portable_atmospherics/canister/phoron
 	name = "Canister \[Phoron\]"
 	icon_state = "orange"

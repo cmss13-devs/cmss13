@@ -377,3 +377,8 @@
 	if(!opened)
 		welded = 0
 		open()
+
+/obj/structure/closet/yautja
+	name = "alien closet"
+	desc = "A suspicious dark metal alien closet, what horrors can be stored inside?"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

@@ -157,6 +157,10 @@
 		if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 			break
 
+/obj/structure/machinery/juicer
+	name = "bone grinder"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/closet/crate/juice
 
 /obj/structure/closet/crate/juice/Initialize()

@@ -390,3 +390,9 @@
 	dat += "</body></html>"
 	return dat
 
+/obj/structure/machinery/medical_pod/bodyscanner/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/body_scanconsole/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "sleeperconsole"

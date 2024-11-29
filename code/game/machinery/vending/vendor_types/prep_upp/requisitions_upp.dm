@@ -156,7 +156,6 @@
 		list("Magazine box (Type 64 Bizon x 10)", 0, /obj/item/ammo_box/magazine/type64, VENDOR_ITEM_REGULAR),
 		list("Magazine box (Type 73 Pistol x 16)", 0, /obj/item/ammo_box/magazine/type73, VENDOR_ITEM_REGULAR),
 		list("Speed loaders box (ZhNK-72 x 12)", 0, /obj/item/ammo_box/magazine/zhnk, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (16g) (Breaching x 120)", 0, /obj/item/ammo_box/magazine/shotgun/light/breaching, VENDOR_ITEM_REGULAR),
 		list("Flamer Tank Box (UT-Napthal Fuel x 8)", 0, /obj/item/ammo_box/magazine/flamer, VENDOR_ITEM_REGULAR),
 		)
 

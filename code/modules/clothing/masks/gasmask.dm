@@ -152,4 +152,4 @@
 	name = "\improper L7 gasmask"
 	desc = "The L7 Gasmask used by members of the three world empires royal marines commando."
 	icon_state = "rmc_mask"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN

@@ -260,19 +260,19 @@
 	if(!.)
 		return
 	if(!anchored)
-		src.stat |= MAINT
+		stat |= MAINT
 		clear_camera()
 		current = null
 		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 	else
-		src.stat &= ~MAINT
+		stat &= ~MAINT
 	update_icon()
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/update_icon()
 	. = ..()
-	if(src.stat & BROKEN)
+	if(stat & BROKEN)
 		return
-	if(src.stat & MAINT)
+	if(stat & MAINT)
 		icon_state = initial(icon_state)
 		icon_state += "0"
 

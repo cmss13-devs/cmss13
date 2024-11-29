@@ -119,6 +119,9 @@
 
 	var/has_species_tab_items = FALSE
 
+	///Species specific emote sound lists
+	var/list/burstscreams = list()
+
 	var/fire_sprite_prefix = "Standing"
 	var/fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 

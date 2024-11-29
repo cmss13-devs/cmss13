@@ -101,7 +101,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
-	var/predator_cape_type = "None"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
@@ -559,7 +558,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				dat += "<div id='column3'>"
 				dat += "<h2><b><u>Clothing Setup:</u></b></h2>"
-				dat += "<b>Cape Type:</b> <a href='?_src_=prefs;preference=pred_cape_type;task=input'><b>[capitalize_first_letters(predator_cape_type)]</b></a><br>"
 				dat += "<b>Cape Color:</b> "
 				dat += "<a href='?_src_=prefs;preference=pred_cape_color;task=input'>"
 				dat += "<b>Color</b> <span class='square' style='background-color: [predator_cape_color];'></span>"
@@ -1331,10 +1329,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 					predator_translator_type = new_translator_type
 				if("pred_mask_type")
-					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-12)", "Mask Selection", 1, 12, 1)
+					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, 19, 1)
 					if(new_predator_mask_type) predator_mask_type = floor(text2num(new_predator_mask_type))
 				if("pred_armor_type")
-					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-7)", "Armor Selection", 1, 7, 1)
+					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-8)", "Armor Selection", 1, 8, 1)
 					if(new_predator_armor_type) predator_armor_type = floor(text2num(new_predator_armor_type))
 				if("pred_boot_type")
 					var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, 4, 1)
@@ -1359,20 +1357,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
-				if("pred_cape_type")
-					var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
-					var/whitelist_status = GLOB.clan_ranks_ordered[J.get_whitelist_status(owner)]
-
-					var/list/options = list("None" = "None")
-					for(var/cape_name in GLOB.all_yautja_capes)
-						var/obj/item/clothing/yautja_cape/cape = GLOB.all_yautja_capes[cape_name]
-						if(whitelist_status >= initial(cape.clan_rank_required) || (initial(cape.councillor_override) && (whitelist_flags & (WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY))))
-							options += list(capitalize_first_letters(cape_name) = cape_name)
-
-					var/new_cape = tgui_input_list(user, "Choose your cape type:", "Cape Type", options)
-					if(!new_cape)
-						return
-					predator_cape_type = options[new_cape]
 				if("pred_cape_color")
 					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)

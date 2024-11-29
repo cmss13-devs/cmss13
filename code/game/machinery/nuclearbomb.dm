@@ -640,7 +640,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
 				continue
-			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! Destroy their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! You have about [time_left] to destroy at least one of their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
 	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')

@@ -142,6 +142,7 @@
 #define SS_INIT_RADIO 2
 #define SS_INIT_TIMER   100
 #define SS_INIT_UNSPECIFIED 0
+#define SS_INIT_PREDSHIPS  -19
 #define SS_INIT_ASSETS -20
 #define SS_INIT_VOTE   -23
 #define SS_INIT_DATABASE   -27
@@ -150,7 +151,6 @@
 */
 #define SS_INIT_PLAYTIME   -29
 #define SS_INIT_STICKY -30
-#define SS_INIT_PREDSHIPS  -31
 #define SS_INIT_OBJECTIVES -32
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98

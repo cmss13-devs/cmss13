@@ -489,7 +489,7 @@
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Armor"
 	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
 

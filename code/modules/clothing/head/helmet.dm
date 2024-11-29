@@ -360,7 +360,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		else
 			name += " helmet"
 
-	select_gamemode_skin(type, null, new_protection)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type, null, new_protection)
 
 	helmet_overlays = list() //To make things simple.
 

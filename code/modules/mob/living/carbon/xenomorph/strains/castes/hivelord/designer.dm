@@ -7,16 +7,16 @@
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
 		/datum/action/xeno_action/onclick/choose_resin,
-		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/speed_node_place,
-		/datum/action/xeno_action/activable/cost_node_place,
+		/datum/action/xeno_action/activable/speed_node_place, // macro 2, macro 1 is for planting
+		/datum/action/xeno_action/activable/cost_node_place, // macro 3
+		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 4
+		/datum/action/xeno_action/onclick/greather_resin_surge, // macro 5
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
-		/datum/action/xeno_action/onclick/toggle_long_range/designer,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
@@ -25,12 +25,12 @@
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
 	hivelord.plasmapool_modifier = 0.5 // -50% plasma pool
-	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
-	hivelord.can_stack_builds = TRUE
+	hivelord.tacklestrength_max = 6 // increase +1sec of max tackle time
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
 	hivelord.recalculate_health()
 	hivelord.recalculate_plasma()
 	hivelord.recalculate_pheromones()
+	hivelord.recalculate_tackle()
 	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
 
 /datum/action/xeno_action/verb/verb_design_resin()
@@ -61,7 +61,6 @@
 	delay = 0
 
 
-
 // Speed Node
 
 /datum/action/xeno_action/verb/verb_speed_node()
@@ -73,14 +72,14 @@
 
 /datum/action/xeno_action/activable/speed_node_place
 	name = "Place Optimized Node (100)"
-	action_icon_state = "gardener_resin_surge"
+	action_icon_state = "place_queen_beacon"
 	plasma_cost = 100
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_speed_node
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/max_speed_reach = 10
-	var/max_speed_nodes = 5
+	var/max_speed_nodes = 6
 
 /datum/action/xeno_action/activable/speed_node_place/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -160,12 +159,12 @@
 	name = "Place Flexible Node (125)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 125
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_cost_node
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/max_cost_reach = 10
-	var/max_cost_nodes = 5
+	var/max_cost_nodes = 6
 
 /datum/action/xeno_action/activable/cost_node_place/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -224,6 +223,62 @@
 
 	else
 		xeno_cooldown = xeno_cooldown * 0.5
+
+	apply_cooldown()
+
+	xeno_cooldown = initial(xeno_cooldown)
+	return ..()
+
+
+/datum/action/xeno_action/verb/verb_greather_surge()
+	set category = "Alien"
+	set name = "Greather Resin Surge"
+	set hidden = TRUE
+	var/action_name = "Greather Resin Surge"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/onclick/greather_resin_surge
+	name = "Greather Resin Surge (200)"
+	action_icon_state = "gardener_resin_surge"
+	plasma_cost = 250
+	xeno_cooldown = 30 SECONDS
+	macro_path = /datum/action/xeno_action/verb/verb_greather_surge
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_5
+
+/datum/action/xeno_action/onclick/greather_resin_surge/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state(TRUE))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+
+	for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
+		if(node)
+			var/turf/node_loc = get_turf(node.loc)
+			if(node_loc)
+				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
+			qdel(node) // Delete the node
+	xeno.speed_node_list.Cut() // Clear the speed node list
+
+	// Iterate through the cost node list
+	for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
+		if(node)
+			var/turf/node_loc = get_turf(node.loc)
+			if(node_loc)
+				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
+			qdel(node) // Delete the node
+	xeno.cost_node_list.Cut() // Clear the cost node list
 
 	apply_cooldown()
 

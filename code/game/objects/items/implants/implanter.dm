@@ -1,7 +1,7 @@
 /obj/item/implanter
 	name = "implanter"
 	icon = 'icons/obj/items/syringe.dmi'
-	icon_state = "implanter0"
+	icon_state = "implanter_alt0"
 	item_state = "syringe_0"
 	throw_speed = SPEED_FAST
 	throw_range = 5
@@ -13,9 +13,9 @@
 
 /obj/item/implanter/update()
 	if (src.imp)
-		src.icon_state = "implanter1"
+		src.icon_state = "implanter_alt1"
 	else
-		src.icon_state = "implanter0"
+		src.icon_state = "implanter_alt0"
 	return
 
 

@@ -744,8 +744,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 2;
-	id = "crash_pod1";
-	unacidable = 1
+	id = "crash_pod1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -754,8 +753,7 @@
 "bF" = (
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 2;
-	id = "crash_pod1";
-	unacidable = 1
+	id = "crash_pod1"
 	},
 /turf/closed/shuttle/crash/window{
 	icon_state = "37"
@@ -769,8 +767,7 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 4;
-	id = "crash_pod1";
-	unacidable = 1
+	id = "crash_pod1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -1096,8 +1093,7 @@
 "cv" = (
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 8;
-	id = "crash_pod1";
-	unacidable = 1
+	id = "crash_pod1"
 	},
 /turf/closed/shuttle/crash/window,
 /area/shuttle/uss_crash)
@@ -1119,8 +1115,7 @@
 /area/shuttle/uss_crash)
 "cy" = (
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
-	id = "crash_pod1";
-	unacidable = 1
+	id = "crash_pod1"
 	},
 /turf/closed/shuttle/crash/window{
 	icon_state = "36"
@@ -1133,8 +1128,7 @@
 	name = "\improper Ship Lockdown"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
-	id = "crash_pod1";
-	unacidable = 1
+	id = "crash_pod1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"

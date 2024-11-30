@@ -93,8 +93,10 @@
 	if(stat & BROKEN)
 		icon_state = "slots_broken"
 	else
-		icon_state = "slotsmachine"
-	return ..()
+		if(stat & NOPOWER)
+			icon_state = "slotmachine_off"
+		else
+			icon_state = "slotsmachine"
 
 
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/attackby(obj/item/inserted, mob/user)

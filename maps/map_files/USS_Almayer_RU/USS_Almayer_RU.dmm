@@ -33676,7 +33676,6 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Secretroom";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -80537,7 +80536,6 @@
 "wEg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "agentshuttle";
-	indestructible = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{

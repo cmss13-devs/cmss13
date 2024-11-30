@@ -745,7 +745,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 2;
 	id = "crash_pod1";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -756,7 +755,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 2;
 	id = "crash_pod1";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/closed/shuttle/crash/window{
@@ -772,7 +770,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 4;
 	id = "crash_pod1";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -1066,7 +1063,6 @@
 	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
-	indestructible = 1;
 	name = "\improper Ship Control Room";
 	no_panel = 1;
 	unacidable = 1;
@@ -1101,7 +1097,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	dir = 8;
 	id = "crash_pod1";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/closed/shuttle/crash/window,
@@ -1125,7 +1120,6 @@
 "cy" = (
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	id = "crash_pod1";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/closed/shuttle/crash/window{
@@ -1140,7 +1134,6 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/crash{
 	id = "crash_pod1";
-	indestructible = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{

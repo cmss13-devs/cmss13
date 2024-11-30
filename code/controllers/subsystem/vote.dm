@@ -323,6 +323,8 @@ SUBSYSTEM_DEF(vote)
 
 				choices.Add(maps)
 				if(!length(choices))
+					if(on_end)
+						on_end.Invoke()
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
 
@@ -345,6 +347,8 @@ SUBSYSTEM_DEF(vote)
 					maps += i
 				choices.Add(maps)
 				if(length(choices) < 2)
+					if(on_end)
+						on_end.Invoke()
 					return FALSE
 			if("custom")
 				question = input(usr, "What is the vote for?")
@@ -360,6 +364,8 @@ SUBSYSTEM_DEF(vote)
 					randomize_entries = TRUE
 
 			else
+				if(on_end)
+					on_end.Invoke()
 				return FALSE
 
 		if(randomize_entries)

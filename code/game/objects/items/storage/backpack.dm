@@ -491,6 +491,7 @@
 /obj/item/storage/backpack/marine/k9_synth
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_override = 'icons/mob/humans/species/synth_k9/onmob/synth_k9_overlays.dmi'
+	icon_state = null
 	uniform_restricted = list(/obj/item/clothing/under/rank/synthetic/synth_k9) //K9 Synth only
 	force_overlays_on = TRUE
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes

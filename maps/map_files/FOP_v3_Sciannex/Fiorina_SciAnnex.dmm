@@ -8804,7 +8804,7 @@
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/station/chapel)
 "gTc" = (
-/obj/item/storage/belt/quackers,
+/obj/item/toy/inflatable_duck,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/river/darkred_pool,
 /area/fiorina/station/park)

@@ -605,7 +605,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible,
-		/obj/item/storage/belt/quackers,
+		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,

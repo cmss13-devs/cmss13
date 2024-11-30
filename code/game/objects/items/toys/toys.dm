@@ -323,6 +323,9 @@
 	icon_state = "inflatable"
 	item_state = "inflatable"
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	black_market_value = 20
 

@@ -260,6 +260,7 @@
 /obj/item/clothing/head/headband/squad
 	var/dummy_icon_state = "headband%SQUAD%"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	icon_state = null
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 	)

@@ -66,18 +66,6 @@
 	can_hold = list(/obj/item/clothing/mask/luchador)
 	skip_fullness_overlays = TRUE
 
-/obj/item/storage/belt/quackers
-	name = "Mr. Quackers"
-	desc = "What are we going to do today, Mr. Quackers?"
-	icon_state = "inflatable"
-	item_state = "inflatable"
-	icon = 'icons/obj/items/clothing/belts/misc.dmi'
-	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
-	)
-	storage_slots = 1
-	can_hold = list(/obj/item/toy/bikehorn)
-
 //============================//MARINE BELTS\\==================================\\
 //=======================================================================\\
 

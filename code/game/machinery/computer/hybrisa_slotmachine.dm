@@ -1,7 +1,7 @@
 /*******************************\
 |   Slot Machines |
 |   Original code by Glloyd |
-|   Tgstation port by Miauw |
+|   CM port by Cuberound    |
 \*******************************/
 
 #define SPIN_PRICE 5
@@ -97,10 +97,9 @@
 			icon_state = "slotmachine_off"
 		else
 			if(rolling)
-				icon_state = "slotmachine_old"
+				icon_state = "slotmachine_working"
 			else
-				icon_state = "slotmachine"
-
+				icon_state = "slotmachine_idle"
 
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/attackby(obj/item/inserted, mob/user)
 	if((stat & NOPOWER) || (stat & BROKEN))

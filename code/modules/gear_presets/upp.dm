@@ -17,6 +17,9 @@
 	scaled = FALSE
 	faction_menu = FACTION_UPP
 	minimum_playtime_as_job = 0
+	total_positions = 8
+	spawn_positions = 8
+	allow_additional = 1
 
 	gear_preset = /datum/equipment_preset/upp/soldier
 
@@ -98,9 +101,11 @@
 	role_comm_title = "Sol"
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
-	total_positions = 8
-	spawn_positions = 8
-	allow_additional = 1
+	total_positions = -1
+	spawn_positions = -1
+
+/datum/equipment_preset/upp/soldier/set_spawn_positions(count)
+	spawn_positions = max((floor(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)
 
 /datum/job/antag/upp/rifleman
 	title = JOB_UPP

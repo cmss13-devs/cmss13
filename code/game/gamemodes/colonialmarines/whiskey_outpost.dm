@@ -26,7 +26,7 @@
 		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
 		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
 		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/maint/whiskey = JOB_MAINT_TECH,
 		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
 		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
 		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,

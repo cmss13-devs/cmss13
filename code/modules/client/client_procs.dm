@@ -417,6 +417,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
 
@@ -903,6 +904,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 
 	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
+		return TRUE
+
+	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_STAFF(src))
 		return TRUE
 
 	if(!player_data)

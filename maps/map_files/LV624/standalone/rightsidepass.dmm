@@ -111,7 +111,7 @@
 /turf/open/gm/dirt/desert2,
 /area/lv624/ground/river/east_river)
 "zT" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Cf" = (

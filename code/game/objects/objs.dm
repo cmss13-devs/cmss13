@@ -375,8 +375,8 @@
 		update_health(floor(P.ammo.damage / 2))
 	return 1
 
-/obj/item/proc/get_mob_overlay(mob/user_mob, slot)
-	var/bodytype = "Default"
+/obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+	var/bodytype = default_bodytype
 	var/mob/living/carbon/human/user_human
 	if(ishuman(user_mob))
 		user_human = user_mob

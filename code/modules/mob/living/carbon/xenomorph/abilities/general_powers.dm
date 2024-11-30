@@ -52,7 +52,7 @@
 
 	var/area/area = get_area(turf)
 	if(isnull(area) || !(area.is_resin_allowed))
-		if(area.flags_area & AREA_UNWEEDABLE)
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
 			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -619,7 +619,7 @@
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))

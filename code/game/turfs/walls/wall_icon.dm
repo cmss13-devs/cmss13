@@ -3,7 +3,6 @@
 #define cur_increment(v) floor((v-1)/8)+1
 
 /turf/closed/wall/update_icon()
-	..()
 	if(QDELETED(src))
 		return
 

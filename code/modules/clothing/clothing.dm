@@ -91,7 +91,7 @@
 /obj/item/clothing/proc/update_clothing_icon()
 	return
 
-/obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)

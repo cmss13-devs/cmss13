@@ -16,6 +16,8 @@
 	var/source_sheet_type = /obj/item/stack/sheet/glass
 	var/shardsize
 	var/count = 1
+	/// Whether to add small/medium/large to the end of the icon_state on Initialize
+	var/random_size = TRUE
 	garbage = TRUE
 
 /obj/item/shard/attack(mob/living/carbon/M, mob/living/carbon/user)
@@ -26,22 +28,21 @@
 
 /obj/item/shard/Initialize()
 	. = ..()
-	shardsize = pick("large", "medium", "small")
-	switch(shardsize)
-		if("small")
-			pixel_x = rand(-12, 12)
-			pixel_y = rand(-12, 12)
-			icon_state += shardsize
-		if("medium")
-			pixel_x = rand(-8, 8)
-			pixel_y = rand(-8, 8)
-			icon_state += shardsize
-		if("large")
-			pixel_x = rand(-5, 5)
-			pixel_y = rand(-5, 5)
-			icon_state += shardsize
-
-
+	if(random_size)
+		shardsize = pick("large", "medium", "small")
+		switch(shardsize)
+			if("small")
+				pixel_x = rand(-12, 12)
+				pixel_y = rand(-12, 12)
+				icon_state += shardsize
+			if("medium")
+				pixel_x = rand(-8, 8)
+				pixel_y = rand(-8, 8)
+				icon_state += shardsize
+			if("large")
+				pixel_x = rand(-5, 5)
+				pixel_y = rand(-5, 5)
+				icon_state += shardsize
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
 	if ( iswelder(W))
@@ -237,6 +238,7 @@
 	desc = "Some shrapnel that used to be embedded underneath someone's skin."
 	icon_state = "small"
 	damage_on_move = 2
+	random_size = FALSE
 
 /obj/item/shard/shrapnel/upp/bits
 	name = "tiny shrapnel"
@@ -251,6 +253,7 @@
 	matter = list("bone" = 50)
 	desc = "It looks like it came from a prehistoric animal."
 	damage_on_move = 0.6
+	random_size = FALSE
 
 /obj/item/shard/shrapnel/bone_chips/human
 	name = "human bone fragments"

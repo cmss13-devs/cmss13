@@ -1,1 +1,9 @@
-ckey: name: /path/to/obj
+# Ckey: Variant: Typepath, Typepath, ...
+# Variant is used if there are multiple kits for one ckey
+# Multiple typepaths can be used to make a kit with multiple items
+
+# For example...
+# CKEY: /obj/item/toy/plush/random_plushie
+# CKEY2: /obj/item/toy/plush/farwa, /obj/item/toy/plush/shark
+# CKEY3: Kit1: /obj/item/toy/plush/moth
+# CKEY3: Kit2: /obj/item/toy/plush/therapy/red, /obj/item/reagent_container/food/drinks/cans/waterbottle

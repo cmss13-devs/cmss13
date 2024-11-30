@@ -1330,6 +1330,15 @@
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/cable_coil(src)
 
+/obj/item/storage/pouch/tools/tactical/upp/dzho/fill_preset_inventory()
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/stack/cable_coil(src)
+
 /obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wirecutters(src)

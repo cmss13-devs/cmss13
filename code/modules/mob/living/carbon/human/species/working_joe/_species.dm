@@ -129,7 +129,7 @@
 /datum/joe_emote_panel/upp/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["theme"] = VENDOR_THEME_UPP
+	data["theme"] = "crtred"
 	data["categories"] = GLOB.wj_categories
 	data["emotes"] = list()
 

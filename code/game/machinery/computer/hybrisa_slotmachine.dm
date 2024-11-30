@@ -262,12 +262,12 @@
 		playsound(src, 'sound/machines/slotmachine/jackpot-slotmachine.ogg', 50)
 
 	else if(linelength == 5)
-		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand dollars!'")) // Will find better sounds at some point.
+		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win five hundred dollars!'")) // Will find better sounds at some point.
 		give_money(BIG_PRIZE)
 		playsound(src, 'sound/machines/slotmachine/bigwin-slotmachine.ogg', 50)
 
 	else if(linelength == 4)
-		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Winner! You win four hundred dollars!'"))
+		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Winner! You win one hundred dollars!'"))
 		give_money(SMALL_PRIZE)
 		playsound(src, 'sound/machines/slotmachine/smallwin-slotmachine.ogg', 50)
 

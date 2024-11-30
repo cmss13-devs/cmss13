@@ -4,10 +4,10 @@
 |   CM port by Cuberound    |
 \*******************************/
 
-#define SPIN_PRICE 5
-#define SMALL_PRIZE 400
-#define BIG_PRIZE 1000
-#define JACKPOT 10000
+#define SPIN_PRICE 10
+#define SMALL_PRIZE 100
+#define BIG_PRIZE 500
+#define JACKPOT 5000
 #define SPIN_TIME 65 //As always, deciseconds.
 #define REEL_DEACTIVATE_DELAY 7
 #define JACKPOT_SEVENS "space-shuttle"
@@ -259,6 +259,7 @@
 		jackpots += 1
 		give_money(prize)
 		money = 0
+		playsound(src, 'sound/machines/slotmachine/jackpot-slotmachine.ogg', 50)
 
 	else if(linelength == 5)
 		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand dollars!'")) // Will find better sounds at some point.

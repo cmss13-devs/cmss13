@@ -2448,6 +2448,8 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
+	total_positions = 1
+	spawn_positions = 1
 
 
 /datum/equipment_preset/upp/officer/podpolkovnik
@@ -4364,6 +4366,8 @@
 	title = JOB_UPP_COMMISSAR
 	selection_class = "job_cl"
 	gear_preset = /datum/equipment_preset/upp/commissar
+	total_positions = 1
+	spawn_positions = 1
 
 /datum/equipment_preset/upp/commissar
 	name = "UPP Political Commissar (Cryo)"

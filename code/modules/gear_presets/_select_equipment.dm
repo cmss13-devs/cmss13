@@ -923,7 +923,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(new_human), WEAR_WAIST)
 
-/datum/equipment_preset/proc/add_rebel_survivor_weapon(mob/living/carbon/human/new_human) // Randomizes the primary weapon a CLF survivor might have(Assumes you have an empty 3 slot webbing).
+/datum/equipment_preset/proc/add_survivor_weapon_rebel(mob/living/carbon/human/new_human) // Randomizes the primary weapon a CLF survivor might have(Assumes you have an empty 3 slot webbing).
 
 	var/random_weapon = rand(0, 5)
 	switch(random_weapon)

@@ -265,6 +265,7 @@
 	faction = FACTION_UPP
 	radio_freq = UPP_FREQ
 	roles_cap = list(
+		JOB_UPP = null,
 		JOB_UPP_ENGI = 3,
 		JOB_UPP_MEDIC = 4,
 		JOB_UPP_SPECIALIST = 1,

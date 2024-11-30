@@ -118,6 +118,11 @@
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+	)
 	icon_state = "scythe"
 	force = 13
 	throwforce = 5

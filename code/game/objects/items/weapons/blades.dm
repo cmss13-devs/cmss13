@@ -5,7 +5,8 @@
 	item_state = "machete"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
 	)
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT

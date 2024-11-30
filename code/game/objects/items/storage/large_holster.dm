@@ -15,6 +15,9 @@
 	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
 	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)

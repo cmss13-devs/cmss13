@@ -103,6 +103,9 @@
 		WEAR_J_STORE = "folding"
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+	)
 
 	var/list/stack_health = list()
 

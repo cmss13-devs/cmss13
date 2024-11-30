@@ -131,6 +131,7 @@
 	item_state = "fireaxe"
 	icon = 'icons/obj/items/weapons/melee/axes.dmi'
 	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee/weapons.dmi'
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
 	)
@@ -236,7 +237,8 @@
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -328,6 +330,11 @@
 	name = "\improper D2 Breaching Hammer"
 	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
 	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL

@@ -14,6 +14,14 @@
 /*
  * Wrench
  */
+
+
+/obj/item/tool
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
+
 /obj/item/tool/wrench
 	name = "wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
@@ -680,6 +688,9 @@ Welding backpack
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+	)
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess

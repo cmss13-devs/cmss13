@@ -12,12 +12,15 @@
 	item_state = null
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/hats/donator.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
+
+/obj/item/clothing/suit/storage/marine/light/fluff/Initialize(mapload)
+	. = ..()
+	item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
@@ -74,9 +77,12 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/suits/donator.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'  //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
+
+/obj/item/clothing/suit/storage/marine/fluff/Initialize(mapload)
+	. = ..()
+	item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'
 
 //LIGHT SUIT TEMPLATE (for armor/exosuit)  ONLY TAKE NAME, DESC, ICON_STATE, AND ITEM_STATE.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/suit/storage/marine/light/fluff
@@ -87,9 +93,12 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/suits/donator.dmi'
-	icon_override = 'icons/mob/humans/onmob/clothing/suits/donator.dmi' //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
+
+/obj/item/clothing/suit/storage/marine/light/fluff/Initialize(mapload)
+	. = ..()
+	item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
@@ -297,14 +306,29 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "rangerarmor"
 	item_state = "rangerarmor"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-	)
 	item_state_slots = list(
 		WEAR_L_HAND = "marine_armor",
 		WEAR_R_HAND = "marine_armor"
 	)
+
+/obj/item/clothing/head/helmet/marine/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
@@ -509,6 +533,29 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
+	item_state_slots = list(
+		WEAR_L_HAND = "marine_armor",
+		WEAR_R_HAND = "marine_armor"
+	)
+
+/obj/item/clothing/suit/storage/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
@@ -765,6 +812,29 @@
 	icon_state = "rangerhelmet"
 	item_state = "rangerhelmet"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
+
+/obj/item/clothing/head/helmet/marine/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/head/helmet/marine/fluff/officialjake
 	name = "Timothy's Beret"
@@ -995,6 +1065,29 @@
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
+
+/obj/item/clothing/head/helmet/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/head/helmet/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Helmet"

@@ -189,6 +189,7 @@
 	money += SPIN_PRICE
 	plays += 1
 	rolling = TRUE
+	playsound(src, 'sound/machines/slotmachine/rolling-slotmachine.ogg', 50)
 
 	toggle_reel_spin(1)
 	update_icon()
@@ -260,16 +261,19 @@
 		money = 0
 
 	else if(linelength == 5)
-		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand dollars!'"))
+		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand dollars!'")) // Will find better sounds at some point.
 		give_money(BIG_PRIZE)
+		playsound(src, 'sound/machines/slotmachine/bigwin-slotmachine.ogg', 50)
 
 	else if(linelength == 4)
 		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Winner! You win four hundred dollars!'"))
 		give_money(SMALL_PRIZE)
+		playsound(src, 'sound/machines/slotmachine/smallwin-slotmachine.ogg', 50)
 
 	else if(linelength == 3)
 		to_chat(user, SPAN_WARNING("You win three free games!"))
 		balance += SPIN_PRICE * 4
+		playsound(src, 'sound/machines/slotmachine/bonus-slotmachine.ogg', 50)
 
 	else
 		to_chat(user,SPAN_WARNING( "no luck!"))

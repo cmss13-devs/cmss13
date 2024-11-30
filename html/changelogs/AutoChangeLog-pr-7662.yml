@@ -1,5 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "You can use the camera with one hand. You still need to turn it on. It keeps broadcasting even if dropped, but loses range. Xeno can turn the camera off by slashing it."
-  - rscadd: "You can unanchor TV with a wrench"

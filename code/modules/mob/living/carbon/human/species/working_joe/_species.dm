@@ -106,6 +106,7 @@
 /datum/joe_emote_panel/hazard/ui_static_data(mob/user)
 	var/list/data = list()
 
+	data["theme"] = "crtyellow"
 	data["categories"] = GLOB.hj_categories
 	data["emotes"] = list()
 

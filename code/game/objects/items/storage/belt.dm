@@ -1199,6 +1199,8 @@
 					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "d_" + current_gun.base_gun_icon)
 				if("classic")
 					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
+				if("urban")
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color

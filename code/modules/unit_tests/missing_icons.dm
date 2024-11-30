@@ -128,7 +128,7 @@
 							if(ispath(path, /obj/item/weapon/gun))
 								guntypes -= typesof(path)
 						var/prefix = ""
-						if(belt_gun.gun_has_gamemode_skin & belt_gun.map_specific_decoration)
+						if(belt_gun.gun_has_gamemode_skin)
 							switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 								if("snow")
 									prefix = "s_"
@@ -141,7 +141,7 @@
 						for(var/obj/item/weapon/gun/guntype as anything in guntypes)
 							if(isnull(initial(guntype.icon_state)))
 								continue
-							check(obj_path, belt_gun.icon, prefix + initial(guntype.icon_state), guntype, "gun_underlay")
+							check(obj_path, 'icons/obj/items/clothing/belts/holstered_guns.dmi', prefix + initial(guntype.icon_state), guntype, "gun_underlay")
 					check(obj_path, belt.icon, "+[base_state]_half", "This icon_state is needed for fullness overlays", check_null=FALSE)
 					check(obj_path, belt.icon, "+[base_state]_full", "This icon_state is needed for fullness overlays", check_null=FALSE)
 		qdel(spawned)

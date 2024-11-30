@@ -158,7 +158,7 @@
 
 	var/display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = S.name
+		display_name = S.real_name
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -180,7 +180,7 @@
 	// Now handle admins
 	display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.name]/([S.key])"
+		display_name = "[S.real_name]/([S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))

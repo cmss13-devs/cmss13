@@ -128,7 +128,7 @@
 							if(ispath(path, /obj/item/weapon/gun))
 								guntypes -= typesof(path)
 						var/prefix = ""
-						if(belt_gun.gun_has_gamemode_skin)
+						if(belt_gun.gun_has_gamemode_skin & belt_gun.map_specific_decoration)
 							switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 								if("snow")
 									prefix = "s_"
@@ -136,6 +136,8 @@
 									prefix = "d_"
 								if("classic")
 									prefix = "c_"
+								if("urban")
+									prefix = "u_"
 						for(var/obj/item/weapon/gun/guntype as anything in guntypes)
 							if(isnull(initial(guntype.icon_state)))
 								continue

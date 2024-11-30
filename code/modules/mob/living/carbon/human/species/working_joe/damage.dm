@@ -100,8 +100,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/i_wish_you
 	key = "iwishyou"
 	sound = 'sound/voice/joe/i_wish_you.ogg'
+	haz_sound = 'sound/voice/joe/i_wish_you_haz.ogg'
 	say_message = "I wish you hadn't done that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/hush_now
 	key = "hushnow"

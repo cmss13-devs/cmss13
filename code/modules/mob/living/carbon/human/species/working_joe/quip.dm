@@ -136,8 +136,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/misunderstanding
 	key = "misunderstanding"
 	sound = 'sound/voice/joe/misunderstanding.ogg'
+	haz_sound = 'sound/voice/joe/misunderstanding_haz.ogg'
 	say_message = "I'm sure this is a misunderstanding."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/synthetic_registered_wy
 	key = "sregisteredwy"

@@ -34,20 +34,25 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/whats_this
 	key = "whatsthis"
 	sound = 'sound/voice/joe/whats_this.ogg'
+	haz_sound = 'sound/voice/joe/whats_this_haz.ogg'
 	say_message = "What's this?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/came_from
 	key = "camefrom"
 	sound = 'sound/voice/joe/came_from.ogg'
+	haz_sound = 'sound/voice/joe/came_from_haz.ogg'
 	say_message = "Would you like to tell me where this came from?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/report_you
 	key = "reportyou"
 	sound = 'sound/voice/joe/report_you.ogg'
 	haz_sound = 'sound/voice/joe/report_you_haz.ogg'
 	say_message = "You understand i'll have to report you for this?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/that_sound
@@ -75,20 +80,26 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/another_problem
 	key = "anotherproblem"
 	sound = 'sound/voice/joe/another_problem.ogg'
+	haz_sound = 'sound/voice/joe/another_problem_haz.ogg'
 	say_message = "Another problem?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/was_that_you
 	key = "wasthatyou"
 	sound = 'sound/voice/joe/was_that_you.ogg'
+	haz_sound = 'sound/voice/joe/another_problem_haz.ogg'
 	say_message = "Was that you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/responsible_for
 	key = "responsiblefor"
 	sound = 'sound/voice/joe/responsible_for_this.ogg'
+	haz_sound = 'sound/voice/joe/responsible_for_this_haz.ogg'
 	say_message = "Who's responsible for this?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/something_amiss
 	key = "somethingamiss"
@@ -101,8 +112,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/set_off_alarm
 	key = "setoffalarm"
 	sound = 'sound/voice/joe/set_off_alarm.ogg'
+	haz_sound = 'sound/voice/joe/set_off_alarm_haz.ogg'
 	say_message = "Are you authorized to set off this alarm?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/someoneplaying
 	key = "someoneplaying"
@@ -113,8 +126,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/areyouplaying
 	key = "areyouplaying"
 	sound = 'sound/voice/joe/are_you_playing.ogg'
+	haz_sound = 'sound/voice/joe/are_you_playing_haz.ogg'
 	say_message = "Are you playing a game with me?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/thatlight
 	key = "thatlight"
@@ -163,14 +178,18 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/what_have_we
 	key = "havewehere"
 	sound = 'sound/voice/joe/what_have_we.ogg'
+	haz_sound = 'sound/voice/joe/what_have_we_haz.ogg'
 	say_message = "What have we here?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/belong_to_you
 	key = "belongtoyou"
 	sound = 'sound/voice/joe/belong_to_you.ogg'
+	haz_sound = 'sound/voice/joe/belong_to_you_haz.ogg'
 	say_message = "Does this belong to you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/aware_of
 	key = "awareofhaz"
@@ -178,3 +197,10 @@
 	say_message = "Are you aware of the current hazard containment breach?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/question/why_would_you
+	key = "awareofhaz"
+	sound = 'sound/voice/joe/why_would_you.ogg'
+	haz_sound = 'sound/voice/joe/why_would_you_haz.ogg'
+	say_message = "Why would you do this?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

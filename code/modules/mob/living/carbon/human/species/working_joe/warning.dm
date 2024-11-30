@@ -36,8 +36,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hurt_yourself
 	key = "hurtyourself"
 	sound = 'sound/voice/joe/hurt_yourself.ogg'
+	haz_sound = 'sound/voice/joe/hurt_yourself_haz.ogg'
 	say_message = "You're going to hurt yourself."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/someone_hurt
 	key = "someonehurt"
@@ -98,8 +100,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/health_risks_inhaled
 	key = "healthriskssmoking"
 	sound = 'sound/voice/joe/health_risks_smoking.ogg'
+	haz_sound = 'sound/voice/joe/health_risks_smoking_haz.ogg'
 	say_message = "These items carry notable health risks when alight and inhaled."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dangerous_items
 	key = "dangerousitems"
@@ -158,8 +162,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/this_facility
 	key = "thisfacility"
 	sound = 'sound/voice/joe/this_facility.ogg'
+	haz_sound = 'sound/voice/joe/this_facility_haz.ogg'
 	say_message = "That isn't authorized in this facility."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/protocol_demand
 	key = "protocolsdemand"
@@ -178,20 +184,26 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/isnt_right
 	key = "isntright"
 	sound = 'sound/voice/joe/isnt_right.ogg'
+	haz_sound = 'sound/voice/joe/isnt_right_haz.ogg'
 	say_message = "This isn't right."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/i_dont_understand
 	key = "dontunderstand"
 	sound = 'sound/voice/joe/dont_understand.ogg'
+	haz_sound = 'sound/voice/joe/dont_understand_haz.ogg'
 	say_message = "I don't understand what you're doing."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/responsibility_for_that
 	key = "responsibilityforthat"
 	sound = 'sound/voice/joe/responsibility_for_that.ogg'
+	haz_sound = 'sound/voice/joe/responsibility_for_that_haz.ogg'
 	say_message = "You'll have to take responsibility for that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/politecomeback
 	key = "politecomeback"
@@ -202,8 +214,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/lighting_equipment
 	key = "lightingequipment"
 	sound = 'sound/voice/joe/use_of_lighting.ogg'
+	haz_sound = 'sound/voice/joe/use_of_lighting_haz.ogg'
 	say_message = "An unauthorised use of lighting equipment."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/very_dangerous
 	key = "verydangerous"
@@ -216,29 +230,39 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/patient_machine
 	key = "patientmachine"
 	sound = 'sound/voice/joe/patient_machine.ogg'
+	haz_sound = 'sound/voice/joe/patient_machine_haz.ogg'
 	say_message = "Whatever you are, and wherever you're hiding, I am a very patient machine."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/goose_chase
 	key = "goosechase"
 	sound = 'sound/voice/joe/goose_chase.ogg'
+	haz_sound = 'sound/voice/joe/goose_chase_haz.ogg'
 	say_message = "A wild goose chase. As suspected."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/for_me_not
 	key = "formenot"
 	sound = 'sound/voice/joe/thats_for_me.ogg'
+	haz_sound = 'sound/voice/joe/thats_for_me_haz.ogg'
 	say_message = "That's for me, not for you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/very_patient
 	key = "verypatient"
 	sound = 'sound/voice/joe/very_patient.ogg'
+	haz_sound = 'sound/voice/joe/very_patient_haz.ogg'
 	say_message = "I've been very patient with you so far."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/that_was_you
 	key = "thatwasyou"
 	sound = 'sound/voice/joe/that_was_you.ogg'
+	haz_sound = 'sound/voice/joe/that_was_you_haz.ogg'
 	say_message = "I know that was you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

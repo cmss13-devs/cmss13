@@ -70,8 +70,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/bottom_of_this
 	key = "bottomofthis"
 	sound = 'sound/voice/joe/bottom_of_this.ogg'
+	haz_sound = 'sound/voice/joe/bottom_of_this_haz.ogg'
 	say_message = "I'll get to the bottom of all this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/wont_do
 	key = "wontdo"
@@ -92,8 +94,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/my_schedule
 	key = "myschedule"
 	sound = 'sound/voice/joe/my_schedule.ogg'
+	haz_sound = 'sound/voice/joe/my_schedule_haz.ogg'
 	say_message = "This is impinging on my schedule."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/just_want_to_help
 	key = "wanttohelp"
@@ -110,17 +114,23 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/not_crawling
 	key = "notcrawling"
 	sound = 'sound/voice/joe/not_crawling.ogg'
+	haz_sound = 'sound/voice/joe/not_crawling_haz.ogg'
 	say_message = "I'm not crawling in there after you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/be_a_problem
 	key = "beaproblem"
 	sound = 'sound/voice/joe/be_a_problem.ogg'
+	haz_sound = 'sound/voice/joe/be_a_problem_haz.ogg'
 	say_message = "This is going to be a problem."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/search_routines
 	key = "searchroutines"
 	sound = 'sound/voice/joe/search_routines.ogg'
+	haz_sound = 'sound/voice/joe/search_routines_haz.ogg'
 	say_message = "Abandoning search routines.."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

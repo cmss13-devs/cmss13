@@ -40,8 +40,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/this_shouldnt_be_here
 	key = "thishouldbehere"
 	sound = 'sound/voice/joe/this_shouldnt_be_here.ogg'
+	haz_sound = 'sound/voice/joe/this_shouldnt_be_here_haz.ogg'
 	say_message = "This shouldn't be here."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/interloper
 	key = "interloper"

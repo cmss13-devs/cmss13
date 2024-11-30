@@ -100,6 +100,8 @@
 
 
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/attackby(obj/item/inserted, mob/user)
+	if((stat & NOPOWER) || (stat & BROKEN))
+		return
 	if(istype(inserted, /obj/item/coin))
 		var/obj/item/coin/inserted_coin = inserted
 		if(!user.drop_inv_item_on_ground(inserted_coin))

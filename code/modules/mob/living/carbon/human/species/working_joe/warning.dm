@@ -42,8 +42,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/someone_hurt
 	key = "someonehurt"
 	sound = 'sound/voice/joe/someone_hurt.ogg'
+	haz_sound = 'sound/voice/joe/someone_hurt_haz.ogg'
 	say_message = "Someone might get hurt."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	key = "safetybreach"

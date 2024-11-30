@@ -68,8 +68,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/gone_inconsiderate
 	key = "gone"
 	sound = 'sound/voice/joe/how_inconsiderate.ogg'
+	haz_sound = 'sound/voice/joe/how_inconsiderate_haz.ogg'
 	say_message = "Gone. How inconsiderate."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/facility_clear
 	key = "facilityclear"

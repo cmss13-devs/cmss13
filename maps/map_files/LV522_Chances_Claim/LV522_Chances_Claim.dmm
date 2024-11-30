@@ -183,10 +183,60 @@
 	icon_state = "15"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"aaG" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/indoors/b_block/bridge)
+"aaH" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9;
+	layer = 2.9
+	},
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	layer = 3
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/indoors/b_block/bridge)
 "aaI" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/admin)
+"aaJ" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	layer = 3
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/kitchen)
+"aaK" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	dir = 9
+	},
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	layer = 3
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/kitchen)
+"aaL" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/organic/grass,
+/area/lv522/indoors/a_block/garden)
+"aaM" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/grass,
+/area/lv522/indoors/a_block/garden)
+"aaN" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/grass,
+/area/lv522/indoors/a_block/garden)
 "aaX" = (
 /obj/item/reagent_container/spray/cleaner/drone{
 	pixel_x = -3;
@@ -3213,11 +3263,6 @@
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
-"bWd" = (
-/obj/structure/flora/jungle/planttop1,
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/floor/grass,
-/area/lv522/indoors/a_block/garden)
 "bWm" = (
 /obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/dirt,
@@ -22794,10 +22839,6 @@
 /obj/structure/bed/chair,
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
-"mtI" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/floor/grass,
-/area/lv522/indoors/a_block/garden)
 "mtM" = (
 /obj/structure/transmitter/colony_net{
 	dir = 4;
@@ -23515,15 +23556,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
-"mNR" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
-	layer = 3
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/kitchen)
 "mNU" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/gm/river,
@@ -29309,13 +29341,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/east_central_street)
-"pQQ" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/indoors/b_block/bridge)
 "pRf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38945,17 +38970,6 @@
 /obj/structure/curtain/medical,
 /turf/open/floor/strata/white_cyan3/east,
 /area/lv522/indoors/a_block/medical/glass)
-"uvT" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9;
-	layer = 2.9
-	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
-	layer = 3
-	},
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/indoors/b_block/bridge)
 "uwb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -43715,20 +43729,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
-"wIE" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/organic/grass,
-/area/lv522/indoors/a_block/garden)
-"wIL" = (
-/obj/structure/prop/ice_colony/dense/planter_box{
-	dir = 9
-	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
-	layer = 3
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/kitchen)
 "wJb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -64418,7 +64418,7 @@ aZZ
 dbQ
 lxL
 xMa
-wIL
+aaJ
 lVp
 lWh
 hLm
@@ -64619,7 +64619,7 @@ mbF
 jft
 xbj
 sjy
-mNR
+aaK
 jvq
 oLd
 wob
@@ -67154,7 +67154,7 @@ yhR
 tOo
 wIr
 wIr
-uvT
+aaH
 auL
 oqp
 qzQ
@@ -68396,7 +68396,7 @@ oLa
 oLa
 fTP
 aPu
-pQQ
+aaG
 wIr
 wIr
 xAR
@@ -70591,7 +70591,7 @@ qUY
 iGX
 aff
 jZc
-wIE
+aaL
 ulZ
 uNB
 pTl
@@ -70792,7 +70792,7 @@ pTl
 uNB
 ulZ
 ulZ
-wIE
+aaL
 icC
 mxg
 ehJ
@@ -70997,12 +70997,12 @@ djM
 xUQ
 uNB
 ulZ
-wIE
+aaL
 eKm
 wzQ
 neQ
 pWB
-wIE
+aaL
 bWA
 ulZ
 uNB
@@ -72851,12 +72851,12 @@ djM
 pTl
 uNB
 fkj
-mtI
+aaM
 mHU
 qUY
 iGX
 aff
-bWd
+aaN
 jHi
 fkj
 uNB
@@ -73269,7 +73269,7 @@ wzQ
 neQ
 pWB
 fkj
-mtI
+aaM
 fkj
 uNB
 pTl

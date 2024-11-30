@@ -4,9 +4,58 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "aab" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "brflowers_1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"aac" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt2,
+/area/kutjevo/exterior/complex_border/med_park)
+"aad" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"aae" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "fullgrass_3"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"aaf" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"aag" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "sparsegrass_3"
+	},
+/turf/open/gm/dirtgrassborder2,
+/area/kutjevo/exterior/complex_border/med_park)
+"aah" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
+"aai" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "brflowers_3"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"aaj" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
+	icon_state = "lavendergrass_1"
+	},
+/mob/living/simple_animal/cat/Runtime{
+	name = "Garry"
+	},
+/turf/open/gm/dirtgrassborder2/west,
+/area/kutjevo/exterior/complex_border/med_park)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -98,12 +147,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
-"ahz" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "brflowers_1"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/kutjevo/exterior/complex_border/med_park)
 "ahD" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1612,12 +1655,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
-"crT" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "fullgrass_1"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/kutjevo/exterior/complex_border/med_park)
 "csx" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 8
@@ -2029,15 +2066,6 @@
 "cWV" = (
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_dunes)
-"cXA" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "lavendergrass_1"
-	},
-/mob/living/simple_animal/cat/Runtime{
-	name = "Garry"
-	},
-/turf/open/gm/dirtgrassborder2/west,
-/area/kutjevo/exterior/complex_border/med_park)
 "cXL" = (
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany/east_tech)
@@ -3919,12 +3947,6 @@
 /obj/item/stack/sheet/wood,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
-"fRP" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "brflowers_3"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/kutjevo/exterior/complex_border/med_park)
 "fSk" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/desert/desert_shore/shore_edge1/north,
@@ -12621,12 +12643,6 @@
 /obj/effect/sentry_landmark/lz_1/bottom_left,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
-"tye" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "sparsegrass_2"
-	},
-/turf/open/gm/dirt2,
-/area/kutjevo/exterior/complex_border/med_park)
 "tyq" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer2,
@@ -13107,10 +13123,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/med)
-"ujo" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass/grass1/weedable,
-/area/kutjevo/exterior/complex_border/med_park)
 "ujT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
@@ -13205,12 +13217,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
-"uri" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "fullgrass_3"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/kutjevo/exterior/complex_border/med_park)
 "urv" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -13412,12 +13418,6 @@
 /obj/item/weapon/gun/smg/nailgun,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east_tech)
-"uIQ" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
-	icon_state = "sparsegrass_3"
-	},
-/turf/open/gm/dirtgrassborder2,
-/area/kutjevo/exterior/complex_border/med_park)
 "uJV" = (
 /obj/structure/surface/rack,
 /obj/item/book/manual/orbital_cannon_manual,
@@ -21042,7 +21042,7 @@ lKk
 lKk
 lKk
 lKk
-aab
+aah
 lKk
 lKk
 lKk
@@ -32067,7 +32067,7 @@ mxB
 wYp
 quy
 tUm
-ujo
+aaf
 pYf
 pYf
 xCc
@@ -32231,12 +32231,12 @@ dxF
 mxB
 mxB
 gZq
-crT
+aad
 quy
 tUm
 epG
-uri
-ahz
+aae
+aab
 onP
 oww
 nty
@@ -32570,7 +32570,7 @@ the
 vxV
 cEq
 cEq
-tye
+aac
 aVv
 oww
 lLS
@@ -32731,7 +32731,7 @@ dxF
 dxF
 mxB
 mxB
-cXA
+aaj
 fQg
 vnM
 swe
@@ -32899,11 +32899,11 @@ dxF
 mxB
 mxB
 bGV
-fRP
+aai
 diV
 tUm
 baC
-ujo
+aaf
 pYf
 jUP
 hqN
@@ -33067,11 +33067,11 @@ mxB
 mxB
 mxB
 wYp
-uIQ
+aag
 rnA
 wYp
 epG
-crT
+aad
 jUP
 kvt
 rlB

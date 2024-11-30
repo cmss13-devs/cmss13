@@ -143,9 +143,43 @@
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1,
+/area/almayer/medical/upper_medical)
+"aaw" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/upper/fore_hallway)
+"aax" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/open/gm/grass/grass1,
+/area/almayer/medical/upper_medical)
+"aay" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
+"aaz" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
+"aaA" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
+"aaB" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -1210,10 +1244,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
-"ahN" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/floor/grass,
-/area/almayer/living/starboard_garden)
 "ahR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -1598,13 +1628,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/starboard_garden)
-"alg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/almayer/living/starboard_garden)
 "alh" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/plating_catwalk,
@@ -1843,10 +1866,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
-"anp" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass/grass1,
-/area/almayer/medical/upper_medical)
 "anq" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -5284,10 +5303,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"aIx" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/floor/grass,
-/area/almayer/living/starboard_garden)
 "aIy" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/east,
@@ -8805,14 +8820,6 @@
 "bju" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
-"bjv" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -52398,13 +52405,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
-"rGc" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/turf/open/gm/grass/grass1,
-/area/almayer/medical/upper_medical)
 "rGj" = (
 /turf/open/floor/almayer/red,
 /area/almayer/squads/alpha)
@@ -95172,7 +95172,7 @@ pcs
 fCW
 fCW
 tTZ
-bjv
+aaw
 tTZ
 dNj
 dNj
@@ -96999,7 +96999,7 @@ ajl
 ajl
 ajl
 mrL
-rGc
+aax
 yjb
 ajl
 sqf
@@ -97814,7 +97814,7 @@ xgP
 axm
 wJo
 uol
-anp
+aav
 ajl
 nzv
 fQu
@@ -99610,10 +99610,10 @@ aaa
 aaa
 acv
 aiH
-alg
+aaB
 bBC
 bBC
-aIx
+aaz
 aIB
 aiH
 aet
@@ -99814,7 +99814,7 @@ aaa
 acf
 aet
 avx
-ahN
+aaA
 uli
 uli
 uli
@@ -100220,7 +100220,7 @@ aaa
 acv
 aez
 uli
-aIx
+aaz
 uli
 uli
 mov
@@ -100828,7 +100828,7 @@ aaa
 aaa
 acf
 aet
-aIx
+aaz
 ipK
 ceC
 eRR
@@ -102047,7 +102047,7 @@ aaa
 acf
 aet
 avx
-ahN
+aaA
 aIB
 aKg
 uli
@@ -119938,7 +119938,7 @@ eky
 aDQ
 pyy
 eky
-aav
+aay
 eky
 dLc
 aDQ

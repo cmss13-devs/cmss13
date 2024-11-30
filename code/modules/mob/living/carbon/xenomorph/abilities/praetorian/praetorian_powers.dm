@@ -862,6 +862,9 @@
 	if (!action_cooldown_check())
 		return
 
+	if (!valkyrie.check_state())
+		return
+
 	if (target_carbon.stat == DEAD)
 		to_chat(valkyrie, SPAN_XENODANGER("[target_carbon] is dead, why would we want to touch it?"))
 		return

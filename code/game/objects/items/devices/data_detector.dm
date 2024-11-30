@@ -35,42 +35,48 @@
 		return
 
 	var/detected_sound = FALSE
-	for(var/obj/object in orange(detector_range, loc))
-		if(detect_object(object))
-			show_blip(loc, object)
-			detected_sound = TRUE
-			continue
+	for(var/turf/scanned_turf in orange(detector_range, loc))
+		for(var/atom/scanned_atom in scanned_turf.contents)
+			if(istype(scanned_atom, /obj))
+				var/obj/object = scanned_atom
+				if(detect_object(object))
+					show_blip(loc, object)
+					detected_sound = TRUE
+					break
 
-		if(length(object.contents))
-			for(var/obj/nested_object in object.contents_recursive())
-				if(!detect_object(nested_object))
-					continue
+				if(length(object.contents))
+					var/detected_nested_object = FALSE
+					for(var/obj/nested_object as anything in object.contents_recursive())
+						if(!detect_object(nested_object))
+							continue
 
-				show_blip(loc, object)
-				detected_sound = TRUE
-				break
+						show_blip(loc, object)
+						detected_sound = TRUE
+						detected_nested_object = TRUE
+						break
 
-	for(var/mob/creature as anything in GLOB.dead_mob_list)
-		if(!creature)
-			continue
+					if(detected_nested_object)
+						break
 
-		if(loc.z != creature.z)
-			continue
+			else if(istype(scanned_atom, /mob))
+				if(isxeno(scanned_atom) || isyautja(scanned_atom))
+					show_blip(loc, scanned_atom)
+					detected_sound = TRUE
+					break
 
-		if(get_dist(loc, creature) > detector_range)
-			continue
+				else if(ishuman(scanned_atom))
+					var/detected_nested_mob_object = FALSE
+					for(var/obj/nested_mob_object as anything in scanned_atom.contents_recursive())
+						if(!detect_object(nested_mob_object))
+							continue
 
-		if(isxeno(creature) || isyautja(creature))
-			show_blip(loc, creature)
-			detected_sound = TRUE
-		else if(ishuman(creature))
-			for(var/obj/nested_mob_object in creature.contents_recursive())
-				if(!detect_object(nested_mob_object))
-					continue
+						show_blip(loc, scanned_atom)
+						detected_sound = TRUE
+						detected_nested_mob_object = TRUE
+						break
 
-				show_blip(loc, creature)
-				detected_sound = TRUE
-				break
+					if(detected_nested_mob_object)
+						break
 
 	if(detected_sound)
 		playsound(loc, 'sound/items/tick.ogg', 60, 0, 7, 2)

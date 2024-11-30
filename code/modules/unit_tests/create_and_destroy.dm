@@ -3,37 +3,42 @@
 	//You absolutely must run last
 	priority = TEST_CREATE_AND_DESTROY
 
-GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
-/datum/unit_test/create_and_destroy/Run()
-	//We'll spawn everything here
-	var/turf/spawn_at = run_loc_floor_bottom_left
-	var/list/ignore = list(
+GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
+/proc/generate_ignore_paths()
+	. = list(
 		//Never meant to be created, errors out the ass for mobcode reasons
 		/mob/living/carbon,
 		/obj/effect/node,
 		/obj/item/seeds/cutting,
 		//lighting singleton
 		/mob/dview,
-		// These use walkaway() after initialization, which causes false positives
+		// These use walk_away() after initialization, which causes false positives
 		/obj/item/explosive/grenade/flashbang/cluster/segment,
 		/obj/item/explosive/grenade/flashbang/cluster_piece,
+		/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+		/obj/effect/landmark/lizard_spawn,
 		/obj/effect/fake_attacker,
 		/atom/movable/lighting_mask, //leave it alone
 		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
 		/obj/merge_conflict_marker,
 	)
 	//This turf existing is an error in and of itself
-	ignore += typesof(/turf/baseturf_skipover)
-	ignore += typesof(/turf/baseturf_bottom)
+	. += typesof(/turf/baseturf_skipover)
+	. += typesof(/turf/baseturf_bottom)
 	//Our system doesn't support it without warning spam from unregister calls on things that never registered
-	ignore += typesof(/obj/docking_port)
-	ignore += typesof(/obj/item/storage/internal)
+	. += typesof(/obj/docking_port)
+	. += typesof(/obj/item/storage/internal)
 	// fuck interiors
-	ignore += typesof(/obj/vehicle)
-	ignore += typesof(/obj/effect/vehicle_spawner)
+	. += typesof(/obj/vehicle)
+	. += typesof(/obj/effect/vehicle_spawner)
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
-	ignore += subtypesof(/atom/movable/screen/escape_menu)
-	ignore += typesof(/obj/effect/timed_event)
+	. += subtypesof(/atom/movable/screen/escape_menu)
+	. += typesof(/obj/effect/timed_event)
+
+GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
+/datum/unit_test/create_and_destroy/Run()
+	//We'll spawn everything here
+	var/turf/spawn_at = run_loc_floor_bottom_left
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type
@@ -41,7 +46,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	var/original_baseturf_count = length(original_baseturfs)
 
 	GLOB.running_create_and_destroy = TRUE
-	for(var/type_path in typesof(/atom/movable, /turf) - ignore) //No areas please
+	for(var/type_path in typesof(/atom/movable, /turf) - GLOB.create_and_destroy_ignore_paths) //No areas please
 		if(ispath(type_path, /turf))
 			spawn_at.ChangeTurf(type_path)
 			//We change it back to prevent baseturfs stacking and hitting the limit

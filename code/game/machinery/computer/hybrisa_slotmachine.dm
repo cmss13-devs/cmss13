@@ -252,10 +252,6 @@
 		jackpots += 1
 		give_money(prize)
 		money = 0
-		for(var/i in 1 to 5)
-			cointype = pick(subtypesof(/obj/item/coin))
-			var/obj/item/coin/payout_coin = new cointype(loc)
-			sleep(REEL_DEACTIVATE_DELAY)
 
 	else if(linelength == 5)
 		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand dollars!'"))
@@ -272,7 +268,6 @@
 	else
 		to_chat(user,SPAN_WARNING( "no luck!"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50)
-		did_player_win = FALSE
 
 
 /// Checks for a jackpot (5 matching icons in the middle row) with the given icon name

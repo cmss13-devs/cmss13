@@ -1006,6 +1006,7 @@
 
 /obj/item/clothing/under/rank/synthetic/upp_joe
 	name = "android suit"
+	desc = "Uniform designed for UPP security synthetics."
 	icon_state = "upp_joe"
 	worn_state = "upp_joe"
 	flags_item = NO_CRYO_STORE

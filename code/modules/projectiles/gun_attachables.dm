@@ -30,7 +30,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/pixel_shift_x = 16 //Determines the amount of pixels to move the icon state for the overlay.
 	var/pixel_shift_y = 16 //Uses the bottom left corner of the item.
 
-	flags_atom =  FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 100)
 	w_class = SIZE_SMALL
 	force = 1
@@ -897,15 +897,19 @@ Defined in conflicts.dm of the #defines folder.
 	detaching_gun.attachable_offset["under_y"] = 16
 
 /obj/item/attachable/magnetic_harness/lever_sling/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"
@@ -1273,17 +1277,22 @@ Defined in conflicts.dm of the #defines folder.
 	return ..()
 
 /obj/item/attachable/vulture_scope/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/vulture_scope/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -1836,17 +1845,22 @@ Defined in conflicts.dm of the #defines folder.
 	// Doesn't give any stat additions due to the gun already having really good ones, and this is unremovable from the gun itself
 
 /obj/item/attachable/stock/vulture/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
@@ -2159,15 +2173,19 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
 /obj/item/attachable/stock/xm51/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"
@@ -2275,15 +2293,19 @@ Defined in conflicts.dm of the #defines folder.
 	select_gamemode_skin(type)
 
 /obj/item/attachable/m4ra_barrel/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/m4ra_barrel_custom
 	name = "custom M4RA barrel"
@@ -2301,15 +2323,19 @@ Defined in conflicts.dm of the #defines folder.
 	select_gamemode_skin(type)
 
 /obj/item/attachable/m4ra_barrel_custom/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/upp_rpg_breech
 	name = "HJRA-12 Breech"
@@ -3588,23 +3614,30 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "bipod_m60"
 	attach_icon = "vulture_bipod"
 	heavy_bipod = TRUE
+	// Disable gamemode skin for item state, but we explicitly force attach_icon gamemode skins
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 
 /obj/item/attachable/bipod/vulture/Initialize(mapload, ...)
 	. = ..()
 	select_gamemode_skin(type)
 
 /obj/item/attachable/bipod/vulture/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
+	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("snow")
 			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
 		if("desert")
 			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
+	return .
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

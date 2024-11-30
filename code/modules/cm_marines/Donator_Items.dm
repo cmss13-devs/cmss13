@@ -127,6 +127,23 @@
 	item_state = null
 //END FEET TEMPLATE
 
+//UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
+/obj/item/clothing/under/marine/fluff
+	name = "ITEM NAME"
+	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	icon_state = null
+	item_state = null
+	worn_state = null
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
+	)
+
+//END UNIFORM TEMPLATE
+
 /obj/item/storage/backpack/marine/fluff
 	icon_state = null
 	xeno_types = null
@@ -1086,24 +1103,7 @@
 	icon_state = "killaninja12_u"
 	item_state = "killaninja12_u"
 
-
 // UNIFORM/JUMPSUIT COSMETICS  ////////////////////////////////////////////////
-
-//UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
-/obj/item/clothing/under/marine/fluff
-	name = "ITEM NAME"
-	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
-	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
-	icon_state = null
-	item_state = null
-	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
-	)
-
-//END UNIFORM TEMPLATE
 
 /obj/item/clothing/under/marine/fluff/tristan //CKEY=tristan63
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."

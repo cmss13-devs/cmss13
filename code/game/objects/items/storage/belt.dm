@@ -1113,16 +1113,10 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
 	)
-
-/obj/item/storage/belt/gun/Initialize()
-	. = ..()
-	if(!(flags_atom & NO_GAMEMODE_SKIN))
-		select_gamemode_skin(type)
 
 /obj/item/storage/belt/gun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()

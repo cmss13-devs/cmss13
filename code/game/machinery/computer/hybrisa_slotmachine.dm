@@ -45,11 +45,11 @@
 	/// Icons that can be displayed by the slot machine.
 	var/static/list/icons = list(
 		FA_ICON_LEMON = list("value" = 2, "colour" = "yellow"),
-		FA_ICON_STAR = list("value" = 2, "colour" = "yellow"),
-		FA_ICON_BOMB = list("value" = 2, "colour" = "red"),
-		FA_ICON_BIOHAZARD = list("value" = 2, "colour" = "green"),
+		FA_ICON_STAR = list("value" = 2, "colour" = "dark_yellow"),
+		FA_ICON_BOMB = list("value" = 2, "colour" = "black"),
+		FA_ICON_BIOHAZARD = list("value" = 2, "colour" = "dark_green"),
 		FA_ICON_APPLE_WHOLE = list("value" = 2, "colour" = "red"),
-		FA_ICON_7 = list("value" = 1, "colour" = "yellow"),
+		FA_ICON_7 = list("value" = 1, "colour" = "orange"),
 		FA_ICON_DOLLAR_SIGN = list("value" = 2, "colour" = "green"),
 	)
 
@@ -105,6 +105,14 @@
 		to_chat(user,SPAN_WARNING("coin insterted"))
 		balance += inserted_coin.black_market_value
 		qdel(inserted_coin)
+
+	if(istype(inserted, /obj/item/spacecash))
+		var/obj/item/spacecash/inserted_cash = inserted
+		if(!user.drop_inv_item_on_ground(inserted_cash))
+			return
+		to_chat(user,SPAN_WARNING("cash insterted"))
+		balance += inserted_cash.worth
+		qdel(inserted_cash)
 	else
 		return ..()
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/attack_hand(mob/living/user)
@@ -243,6 +251,7 @@
 		var/prize = money + JACKPOT
 		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'JACKPOT! You win [prize] credits!'"))
 		jackpots += 1
+		give_money(prize)
 		money = 0
 		for(var/i in 1 to 5)
 			cointype = pick(subtypesof(/obj/item/coin))
@@ -260,7 +269,6 @@
 	else if(linelength == 3)
 		to_chat(user, SPAN_WARNING("You win three free games!"))
 		balance += SPIN_PRICE * 4
-		money = max(money - SPIN_PRICE * 4, money)
 
 	else
 		to_chat(user,SPAN_WARNING( "no luck!"))
@@ -303,24 +311,23 @@
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/give_payout(amount)
 	var/mob/living/target = locate() in range(2, src)
 
-	amount = dispense(amount, cointype, target, 1)
+	amount = dispense(amount, cointype, target)
 
 	return amount
 
 /// Dispense the given amount. If machine is set to use coins, will use the specified coin type.
 /// If throwit and target are set, will launch the payment at the target
-/obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/dispense(amount = 0, cointype = /obj/item/coin/silver, throwit = FALSE, mob/living/target)
-	var/value = coinvalues["[cointype]"]
-	if(value <= 0)
-		CRASH("Coin value of zero, refusing to payout in dispenser")
-	while(amount >= value)
-		var/obj/item/coin/thrown_coin = new cointype(loc) //DOUBLE THE PAIN
-		amount -= value
+/obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/dispense(amount = 0, cointype = /obj/item/coin/silver, mob/living/target)
+	while(amount > 0)
+		var/obj/item/spacecash/bundle/bundle = new (target.loc)
+		bundle.worth = min(amount, rand(10,100))
+		bundle.update_icon()
+		if(target)
+			target.put_in_hands(bundle)
+		amount -= bundle.worth
 	return amount
 
 #undef BIG_PRIZE
-#undef COIN
-#undef HOLOCHIP
 #undef JACKPOT
 #undef REEL_DEACTIVATE_DELAY
 #undef JACKPOT_SEVENS

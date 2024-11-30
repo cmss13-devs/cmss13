@@ -2355,6 +2355,12 @@ RUCM REMOVE END*/
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
 				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
+//RUCM START
+	else if(href_list["denyserverreboot"])
+		REDIS_PUBLISH("byond.round", "state" = "stop_auto_stop")
+		to_chat(world, SPAN_CENTERBOLD("Shutdown canceled."))
+//RUCM END
+
 	return
 
 /datum/admins/proc/accept_ert(mob/approver, mob/ref_person)

@@ -73,7 +73,7 @@
 		return
 
 	SSticker.delay_start = input["delay"]
-	message_admins("[SPAN_NOTICE("[input["source"]] ([input["addr"]]) [SSticker.delay_start ? "delayed the round start" : "has made the round start normally"].")]")
+	message_admins(SPAN_NOTICE("[input["source"]] ([input["addr"]]) [SSticker.delay_start ? "delayed the round start" : "has made the round start normally"]."))
 	to_chat(world, SPAN_CENTERBOLD("The game start has been [SSticker.delay_start ? "delayed" : "continued"]."))
 	if(SSticker.delay_start)
 		statuscode = 200
@@ -81,3 +81,15 @@
 	else
 		statuscode = 200
 		response = "Delay removed."
+
+/datum/world_topic/shutdown_warning
+	key = "lowpop_shutdown_warning"
+
+/datum/world_topic/shutdown_warning/Run(list/input)
+	. = ..()
+
+	message_admins(SPAN_NOTICE("[input["source"]] ([input["addr"]]), WARNING, you have aprox 30 SECONDS, server will be turned offline automaticly, because lowpop detected (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];denyserverreboot'>DENY</a>)"))
+	to_chat(world, SPAN_CENTERBOLD("Server will be turned offline in 30 SECONDS, because lowpop detected. Only admins can deny this action in this time frame."))
+
+	statuscode = 200
+	response = "Request Sended"

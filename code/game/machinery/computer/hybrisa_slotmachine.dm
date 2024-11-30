@@ -96,7 +96,10 @@
 		if(stat & NOPOWER)
 			icon_state = "slotmachine_off"
 		else
-			icon_state = "slotsmachine"
+			if(rolling)
+				icon_state = "slotmachine_old"
+			else
+				icon_state = "slotmachine"
 
 
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/attackby(obj/item/inserted, mob/user)

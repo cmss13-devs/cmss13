@@ -803,11 +803,11 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun(new_human), WEAR_IN_BACK)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_R_HAND) //doesn't fit in backpack
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_IN_BACK)
 		if(5)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human.back), WEAR_R_HAND) //can't put in bag if not a medic
 
 // Random Survivor Weapon Spawners
 /datum/equipment_preset/proc/add_survivor_weapon_pistol(mob/living/carbon/human/new_human) // Pistols a survivor might come across in a colony. They may have gotten it from a code red gun cabinet or simply have one becuase of hostile natives.
@@ -923,7 +923,40 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(new_human), WEAR_WAIST)
 
+/datum/equipment_preset/proc/add_rebel_survivor_weapon(mob/living/carbon/human/new_human) // Randomizes the primary weapon a CLF survivor might have(Assumes you have an empty 3 slot webbing).
 
+	var/random_weapon = rand(0, 5)
+	switch(random_weapon)
+		if(0)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40(new_human), WEAR_IN_ACCESSORY)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_ACCESSORY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_ACCESSORY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(new_human), WEAR_IN_ACCESSORY)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mac15(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mac15(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mac15(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mac15(new_human), WEAR_IN_ACCESSORY)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp27(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp27(new_human), WEAR_IN_ACCESSORY)
 
 /////////////// Antag Vendor Equipment ///////////////
 /datum/equipment_preset/proc/get_antag_clothing_equipment()

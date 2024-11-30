@@ -45,9 +45,9 @@
 	/// Icons that can be displayed by the slot machine.
 	var/static/list/icons = list(
 		FA_ICON_LEMON = list("value" = 2, "colour" = "yellow"),
-		FA_ICON_STAR = list("value" = 2, "colour" = "dark_yellow"),
+		FA_ICON_STAR = list("value" = 2, "colour" = "yellow"),
 		FA_ICON_BOMB = list("value" = 2, "colour" = "black"),
-		FA_ICON_BIOHAZARD = list("value" = 2, "colour" = "dark_green"),
+		FA_ICON_BIOHAZARD = list("value" = 2, "colour" = "green"),
 		FA_ICON_APPLE_WHOLE = list("value" = 2, "colour" = "red"),
 		FA_ICON_7 = list("value" = 1, "colour" = "orange"),
 		FA_ICON_DOLLAR_SIGN = list("value" = 2, "colour" = "green"),
@@ -245,11 +245,10 @@
 /// Checks if any prizes have been won, and pays them out
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/give_prizes(usrname, mob/user)
 	var/linelength = get_lines()
-	var/did_player_win = TRUE
 
 	if(check_jackpot(JACKPOT_SEVENS))
 		var/prize = money + JACKPOT
-		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'JACKPOT! You win [prize] credits!'"))
+		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'JACKPOT! You win [prize] dollars!'"))
 		jackpots += 1
 		give_money(prize)
 		money = 0
@@ -259,11 +258,11 @@
 			sleep(REEL_DEACTIVATE_DELAY)
 
 	else if(linelength == 5)
-		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand credits!'"))
+		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win a thousand dollars!'"))
 		give_money(BIG_PRIZE)
 
 	else if(linelength == 4)
-		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Winner! You win four hundred credits!'"))
+		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Winner! You win four hundred dollars!'"))
 		give_money(SMALL_PRIZE)
 
 	else if(linelength == 3)
@@ -310,14 +309,12 @@
 /// Pay out the specified amount in either coins or holochips
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/give_payout(amount)
 	var/mob/living/target = locate() in range(2, src)
-
-	amount = dispense(amount, cointype, target)
-
+	amount = dispense(amount, target)
 	return amount
 
 /// Dispense the given amount. If machine is set to use coins, will use the specified coin type.
 /// If throwit and target are set, will launch the payment at the target
-/obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/dispense(amount = 0, cointype = /obj/item/coin/silver, mob/living/target)
+/obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/dispense(amount = 0, mob/living/target)
 	while(amount > 0)
 		var/obj/item/spacecash/bundle/bundle = new (target.loc)
 		bundle.worth = min(amount, rand(10,100))

@@ -84,6 +84,12 @@
 	say_message = "Was that you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/question/responsible_for
+	key = "responsiblefor"
+	sound = 'sound/voice/joe/responsible_for_this.ogg'
+	say_message = "Who's responsible for this?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/question/something_amiss
 	key = "somethingamiss"
 	sound = 'sound/voice/joe/something_amiss.ogg'
@@ -102,6 +108,12 @@
 	key = "someoneplaying"
 	sound = 'sound/voice/joe/someone_playing.ogg'
 	say_message = "Is someone playing a game with me?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/areyouplaying
+	key = "areyouplaying"
+	sound = 'sound/voice/joe/are_you_playing.ogg'
+	say_message = "Are you playing a game with me?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/thatlight
@@ -147,3 +159,22 @@
 	say_message = "What are you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/what_have_we
+	key = "havewehere"
+	sound = 'sound/voice/joe/what_have_we.ogg'
+	say_message = "What have we here?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/belong_to_you
+	key = "belongtoyou"
+	sound = 'sound/voice/joe/belong_to_you.ogg'
+	say_message = "Does this belong to you?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/aware_of
+	key = "awareofhaz"
+	sound = 'sound/voice/joe/are_you_aware.ogg'
+	say_message = "Are you aware of the current hazard containment breach?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+

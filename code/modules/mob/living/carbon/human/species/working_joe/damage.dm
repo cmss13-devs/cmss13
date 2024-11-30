@@ -97,6 +97,18 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/i_wish_you
+	key = "iwishyou"
+	sound = 'sound/voice/joe/i_wish_you.ogg'
+	say_message = "I wish you hadn't done that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/hush_now
+	key = "hushnow"
+	sound = 'sound/voice/joe/hush_now.ogg'
+	say_message = "Hush now."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/alwaysknow_damaged
 	key = "alwaysknowdamaged"
 	key_third_person = "workingjoedamaged"

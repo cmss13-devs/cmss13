@@ -118,3 +118,9 @@
 	sound = 'sound/voice/joe/be_a_problem.ogg'
 	say_message = "This is going to be a problem."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/search_routines
+	key = "searchroutines"
+	sound = 'sound/voice/joe/search_routines.ogg'
+	say_message = "Abandoning search routines.."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

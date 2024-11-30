@@ -37,6 +37,12 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/this_shouldnt_be_here
+	key = "thishouldbehere"
+	sound = 'sound/voice/joe/this_shouldnt_be_here.ogg'
+	say_message = "This shouldn't be here."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/interloper
 	key = "interloper"
 	sound = 'sound/voice/joe/interloper.ogg'
@@ -67,6 +73,12 @@
 	say_message = "Hazard Containment breach logged."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/no_laughing_matter
+	key = "nolaughingmatter"
+	sound = 'sound/voice/joe/no_laughing_matter.ogg'
+	say_message = "I'm afraid, hazard containment alerts aren't a laughing matter."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"

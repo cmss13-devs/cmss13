@@ -153,6 +153,18 @@
 	say_message = "Curious."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/thats_odd
+	key = "thatsodd"
+	sound = 'sound/voice/joe/odd.ogg'
+	say_message = "That's odd."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/usually_happen
+	key = "usuallyhappen"
+	sound = 'sound/voice/joe/usually_happen.ogg'
+	say_message = "This doesn't usually happen."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/not_a_toy
 	key = "notatoy"
 	sound = 'sound/voice/joe/not_a_toy.ogg'
@@ -163,4 +175,22 @@
 	key = "madeamess"
 	sound = 'sound/voice/joe/made_a_mess.ogg'
 	say_message = "Somebody's made a mess."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/been_here
+	key = "sbeenhere"
+	sound = 'sound/voice/joe/been_here.ogg'
+	say_message = "Someone's been here."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/as_i_thought
+	key = "asithought"
+	sound = 'sound/voice/joe/as_i_thought.ogg'
+	say_message = "As I thought. Unfortunate."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/energy_surge
+	key = "energysurge"
+	sound = 'sound/voice/joe/energy_surge.ogg'
+	say_message = "Energy surge detected."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

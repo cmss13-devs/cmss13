@@ -156,7 +156,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/this_facility
 	key = "thisfacility"
 	sound = 'sound/voice/joe/this_facility.ogg'
-	say_message = "This isn't authorized in this facility."
+	say_message = "That isn't authorized in this facility."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/protocol_demand
@@ -215,4 +215,28 @@
 	key = "patientmachine"
 	sound = 'sound/voice/joe/patient_machine.ogg'
 	say_message = "Whatever you are, and wherever you're hiding, I am a very patient machine."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/goose_chase
+	key = "goosechase"
+	sound = 'sound/voice/joe/goose_chase.ogg'
+	say_message = "A wild goose chase. As suspected."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/for_me_not
+	key = "formenot"
+	sound = 'sound/voice/joe/thats_for_me.ogg'
+	say_message = "That's for me, not for you."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/very_patient
+	key = "verypatient"
+	sound = 'sound/voice/joe/very_patient.ogg'
+	say_message = "I've been very patient with you so far."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_was_you
+	key = "thatwasyou"
+	sound = 'sound/voice/joe/that_was_you.ogg'
+	say_message = "I know that was you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

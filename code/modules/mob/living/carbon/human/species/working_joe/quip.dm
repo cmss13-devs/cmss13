@@ -138,3 +138,39 @@
 	sound = 'sound/voice/joe/misunderstanding.ogg'
 	say_message = "I'm sure this is a misunderstanding."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/synthetic_registered_wy
+	key = "sregisteredwy"
+	sound = 'sound/voice/joe/synth_registered_wy.ogg'
+	say_message = "Weyland Yutani Synthetic Registered."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/synthetic_registered
+	key = "sregistered"
+	sound = 'sound/voice/joe/synth_registered.ogg'
+	say_message = "Synthetic Registered."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/level_omega
+	key = "levelomega"
+	sound = 'sound/voice/joe/level_omega.ogg'
+	say_message = "Biocontainment hazard level Omega."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/level_omega_permissions
+	key = "levelomegaper"
+	sound = 'sound/voice/joe/level_omega_permissions.ogg'
+	say_message = "Biohazard containment level Omega, all permisisons rescinded."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_access
+	key = "seegsonaccess"
+	sound = 'sound/voice/joe/seegson_access.ogg'
+	say_message = "Log and store recording, Seegson access only."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/registration
+	key = "registration"
+	sound = 'sound/voice/joe/registration.ogg'
+	say_message = "Your registration is almost complete."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

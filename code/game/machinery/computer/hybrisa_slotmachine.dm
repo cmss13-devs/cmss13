@@ -264,7 +264,7 @@
 	else if(linelength == 5)
 		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win five hundred dollars!'")) // Will find better sounds at some point.
 		give_money(BIG_PRIZE)
-		playsound(src, 'sound/machines/slotmachine/bigwin-slotmachine.ogg', 50)
+		playsound(src, 'sound/machines/slotmachine/bigwin-slotmachine.ogg', 45)
 
 	else if(linelength == 4)
 		to_chat(user,SPAN_WARNING("<b>[src]</b> says, 'Winner! You win one hundred dollars!'"))
@@ -278,7 +278,7 @@
 
 	else
 		to_chat(user,SPAN_WARNING( "no luck!"))
-		playsound(src, 'sound/machines/buzz-sigh.ogg', 50)
+		playsound(src, 'sound/machines/slotmachine/lose-slotmachine.ogg', 50)
 
 
 /// Checks for a jackpot (5 matching icons in the middle row) with the given icon name

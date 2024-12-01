@@ -154,7 +154,7 @@
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You need a synthetic reset key for reboot!"))
 		return
 	if(!ready)
-		balloon_alert(user, "Take out the [fluff_tool].")
+		balloon_alert(user, "take out the [fluff_tool].")
 		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
 		return
 	if(dcell.charge < charge_cost)
@@ -344,7 +344,7 @@
 		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
 		return FALSE
 	if(!ready)
-		balloon_alert(user, "Activate it first.")
+		balloon_alert(user, "activate it first.")
 		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
 		return FALSE
 	if(dcell.charge < charge_cost)

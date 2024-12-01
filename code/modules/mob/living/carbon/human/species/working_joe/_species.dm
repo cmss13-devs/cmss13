@@ -18,19 +18,19 @@
 	name_plural = "Hazard Joes"
 	emote_panel_type = /datum/joe_emote_panel/hazard
 
+/datum/species/synthetic/colonial/working_joe/hazard/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	if(!gibbed) //A gibbed Joe won't have a death rattle
+		playsound(dying_joe.loc, "hj_death", 25, FALSE)
+	return ..()
+
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
 
 // Special death noise for Working Joe
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
-	var/sound_to_play
 	if(!gibbed) //A gibbed Joe won't have a death rattle
-		if(src.name == SYNTH_WORKING_JOE)
-			sound_to_play = "wj_death"
-		if(src.name == SYNTH_HAZARD_JOE)
-			sound_to_play = "hj_death"
-		playsound(dying_joe.loc, sound_to_play, 25, FALSE)
+		playsound(dying_joe.loc, "wj_death", 25, FALSE)
 	return ..()
 
 /// Open the WJ's emote panel, which allows them to use voicelines

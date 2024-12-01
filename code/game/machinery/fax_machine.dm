@@ -569,7 +569,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 				P.overlays += stampoverlay
 
 				if(target.notification_id != null)
-					ai_silent_announcement("COMMUNICATIONS REPORT: [target.department] now receiving fax via the [network].", ":[target.notification_id]")
+					ai_silent_announcement("COMMUNICATIONS REPORT: [target.department] now receiving fax via the [network].", "[target.notification_id]")
 
 				playsound(target.loc, "sound/items/polaroid1.ogg", 15, 1)
 		qdel(faxcontents)
@@ -586,7 +586,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/corporate/liaison
 	department = "W-Y Liaison"
-	notification_id = "y"
+	notification_id = ":y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = DEPARTMENT_WY
@@ -601,7 +601,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/uscm/command
 	department = "CIC"
-	notification_id = "v"
+	notification_id = ":v"
 
 /obj/structure/machinery/faxmachine/uscm/command/capt
 	department = "Commanding Officer"
@@ -616,7 +616,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	name = "\improper USCM Provost Fax Machine"
 	department = "Brig"
 	target_department = DEPARTMENT_PROVOST
-	notification_id = "p"
+	notification_id = ":p"
 
 /obj/structure/machinery/faxmachine/uscm/brig/chief
 	department = "Chief MP"

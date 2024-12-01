@@ -93,7 +93,7 @@
 	key = "healthrisks"
 	sound = 'sound/voice/joe/health_risks.ogg'
 	haz_sound = 'sound/voice/joe/health_risks_haz.ogg'
-	say_message = "These items carry notable health risks."
+	say_message = "These items carry notable health risks."  //REPLACE
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 

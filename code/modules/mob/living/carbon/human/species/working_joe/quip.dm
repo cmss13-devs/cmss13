@@ -92,8 +92,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/hmmmm
 	key = "hmmmmm"
 	sound = 'sound/voice/joe/hmmm.ogg'
-	say_message = "Hmmm..."
+	haz_sound = 'sound/voice/joe/hmmm_haz.ogg'
+	say_message = "Hm..."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/no_no
 	key = "nono"

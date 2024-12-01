@@ -133,6 +133,7 @@
 					affected_mob.apply_effect(2, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
+					affected_mob.emote("scream")
 		if(4)
 			if(prob(2))
 				affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
@@ -140,7 +141,7 @@
 				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
 				if(prob(50))
-					affected_mob.emote("scream")
+					affected_mob.emote("burstscream")
 			if(prob(6))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
@@ -307,8 +308,6 @@
 	if(loc != victim)
 		victim.chestburst = 0
 		return
-	if(ishuman(victim) || isyautja(victim))
-		victim.emote("burstscream")
 	sleep(25) //Sound delay
 	victim.update_burst()
 	sleep(10) //Sprite delay

@@ -77,6 +77,9 @@
 		to_chat(user, SPAN_WARNING("Why would you do this?"))///no leaving for preds
 		return
 
+	if(user.action_busy)
+		return
+
 	var/choice = tgui_alert(escaped, "Are you sure you want to traverse the fog and escape the preserve.", "[src]", list("No", "Yes"), 15 SECONDS)
 	if(!choice)
 		return
@@ -92,27 +95,34 @@
 		return
 
 	announce_dchat("[escaped.real_name] has escaped from the hunting grounds!")
+	playsound(escaped, 'sound/misc/fog_escape.ogg')
 	qdel(escaped)
 
-/obj/structure/blocker/preserve_edge/attack_alien(user) ///for if somehow xenos get into the escape
-	attack_hand(user)
+/obj/structure/blocker/preserve_edge/attack_alien(user) ///for if somehow xenos get into the escape area
+	. = ..()
 
-	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve.", "[src]", list("No", "Yes"), 15 SECONDS)
+	var/mob/living/carbon/xenomorph/escapee = user
+
+	var/choice = tgui_alert(escapee, "Are you sure you want to traverse the fog and escape the preserve.", "[src]", list("No", "Yes"), 15 SECONDS)
 	if(!choice)
+		return
+
+	if(escapee.action_busy)
 		return
 
 	if(choice == "No")
 		return
 
 	if(choice == "Yes")
-		to_chat(user, SPAN_DANGER("You begin to make your escape!"))
+		to_chat(escapee, SPAN_DANGER("You begin to make your escape!"))
 
-	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_NOTICE("You Loose your way and come back."))
+	if(!do_after(escapee, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(escapee, SPAN_NOTICE("You Loose your way and come back."))
 		return
 
-	announce_dchat("[user] has escaped from the hunting grounds!")
-	qdel(user)
+	announce_dchat("[escapee.real_name] has escaped from the hunting grounds!")
+	playsound(escapee, 'sound/misc/fog_escape.ogg')
+	qdel(escapee)
 	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/blocker/forcefield

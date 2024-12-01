@@ -484,6 +484,10 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
 	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 	///List of where they can choose to go to
 	var/static/list/potential_hunting_grounds = list()
 	///If one has already been spawned, dont let more be spawned
@@ -536,6 +540,10 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
 	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 	///List of what ERTs can be called
 	var/static/list/potential_prey = list()
 	var/obj/structure/machinery/hunting_ground_selection/hunt
@@ -580,10 +588,14 @@
 
 /obj/structure/machinery/hunt_ground_escape
 	name = "preserve shutter console"
-	desc = "A console for opening a shutter."
+	desc = "A console for opening a shutter to another part of the reserve."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "terminal"
+	icon_state = "terminal" ///place holder
 	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 	var/escaped = FALSE
 
 /obj/structure/machinery/hunt_ground_escape/attack_hand(mob/user)
@@ -601,6 +613,7 @@
 			to_chat(user, SPAN_WARNING("The shutter is already open."))
 			return
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
+		message_all_yautja("[user.real_name] has opened the preserve shutter.")
 		escaped = TRUE
 
 	if(choice == "Close")
@@ -619,6 +632,9 @@
 
 	if(mask.loc != user)
 		to_chat(user, SPAN_WARNING("You cannot scan [mask] without holding it."))
+		return
+
+	if(user.action_busy)
 		return
 
 	to_chat(user, SPAN_DANGER("You hold the [mask] up to the console and it begins to scan..."))

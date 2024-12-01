@@ -940,7 +940,7 @@
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 		return
 	if(istype(grounds, /area/yautja_grounds))///Hunted need mask to escape
-		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate your self destruction in order preserve the game preserve."))
+		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate your self destruction in order to protect the hunting preserve."))
 		return
 
 
@@ -1008,7 +1008,7 @@
 			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 			return
 		if(istype(grounds, /area/yautja_grounds))///Hunted need mask to escape
-			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate your self destruction in order preserve the game preserve."))
+			to_chat(boomer, SPAN_WARNING("The bracer will not allow you to activate the self destruction sequence in order to protect the hunting preserve."))
 			return
 		if(exploding)
 			return

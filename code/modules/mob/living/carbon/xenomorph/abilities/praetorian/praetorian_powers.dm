@@ -901,6 +901,8 @@
 		if (!valkyrie.Adjacent(target_carbon))
 			to_chat(valkyrie, SPAN_XENOWARNING("We must be adjacent to our target!")) // check if youre actually next to them
 			return
+		if (valkyrie.can_not_harm(target_carbon))
+			return
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
 		ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
 		valkyrie.anchored = TRUE

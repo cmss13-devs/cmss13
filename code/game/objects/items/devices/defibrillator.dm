@@ -32,12 +32,15 @@
 	/// If the defib can be used by anyone.
 	var/noskill = FALSE
 
+	/// If defib should produce visual sparks on revive.
 	var/should_spark = TRUE
 
+	/// Used for different descriptions and other fluff text.
 	var/fluff_tool = "paddles"
 	var/fluff_target_part = "chest"
 	var/fluff_revive_message = "Defibrillation successful"
 
+	/// Sound sets for different defibs.
 	var/sound_charge = 'sound/items/defib_charge.ogg'
 	var/sound_failed = 'sound/items/defib_failed.ogg'
 	var/sound_success = 'sound/items/defib_success.ogg'

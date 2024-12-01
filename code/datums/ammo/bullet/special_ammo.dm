@@ -21,13 +21,13 @@
 	icon_state = "redbullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
-	effective_range_max = 5
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "\improper AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
@@ -39,7 +39,7 @@
 	icon_state = "bullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	effective_range_max = 5
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun tracer bullet"
@@ -58,7 +58,7 @@
 	icon_state = "redbullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
-	effective_range_max = 5
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	name = "irradiated AP smartgun tracer bullet"
@@ -67,7 +67,7 @@
 
 	accurate_range = 22
 	accuracy = HIT_ACCURACY_TIER_3
-	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
@@ -77,7 +77,7 @@
 	icon_state = "bullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	effective_range_max = 5
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun tracer bullet"
@@ -96,7 +96,7 @@
 	icon_state = "redbullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
-	effective_range_max = 5
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -107,7 +107,7 @@
 	icon_state = "bullet_ap_iff"
 
 	// Same as /datum/ammo/bullet/smartgun/armor_piercing
-	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
@@ -120,7 +120,7 @@
 
 	// Same as /datum/ammo/bullet/smartgun/armor_piercing/alt
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	effective_range_max = 5
+	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"

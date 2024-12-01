@@ -9,39 +9,37 @@
 	icon_state = "bullet_iff"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
 	penetration = 0
-	effective_range_max = 5
+	effective_range_max = 1
 
 /datum/ammo/bullet/smartgun/alt
 	name = "smartgun bullet"
 	icon_state = "redbullet"
-	flags_ammo_behavior = AMMO_BALLISTIC
-	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	damage = 34
-	effective_range_max = 7
+
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/armor_piercing
-	name = "AP smartgun tracer bullet"
+	name = "\improper AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_8
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
-	effective_range_max = 5
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/armor_piercing/alt
-	name = "AP smartgun bullet"
+	name = "\improper AP smartgun bullet"
 	icon_state = "bullet"
+
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	damage = 23
-	effective_range_max = 7
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun tracer bullet"
@@ -51,16 +49,16 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 	accurate_range = 32
 	accuracy = HIT_ACCURACY_TIER_3
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	damage = 40
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/alt
 	name = "irradiated smartgun bullet"
 	icon_state = "redbullet"
-	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	effective_range_max = 7
-	damage = 44
+
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	name = "irradiated AP smartgun tracer bullet"
@@ -69,6 +67,7 @@
 
 	accurate_range = 22
 	accuracy = HIT_ACCURACY_TIER_3
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
@@ -76,13 +75,14 @@
 /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
 	name = "irradiated AP smartgun bullet"
 	icon_state = "bullet"
-	damage = 33
+
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	effective_range_max = 7
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun tracer bullet"
 	icon_state = "bullet_iff"
+
 	damage = 30
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 15
@@ -94,9 +94,9 @@
 /datum/ammo/bullet/smartgun/holo_target/alt
 	name = "holo-targeting smartgun bullet"
 	icon_state = "redbullet"
-	damage = 34
-	effective_range_max = 7
-	damage_falloff = DAMAGE_FALLOFF_TIER_7
+
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -106,6 +106,8 @@
 	name = "holo-targeting AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
 
+	// Same as /datum/ammo/bullet/smartgun/armor_piercing
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
@@ -115,9 +117,10 @@
 /datum/ammo/bullet/smartgun/holo_target/ap/alt
 	name = "holo-targeting AP smartgun bullet"
 	icon_state = "bullet"
-	damage = 23
-	effective_range_max = 7
+
+	// Same as /datum/ammo/bullet/smartgun/armor_piercing/alt
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	effective_range_max = 5
 
 /datum/ammo/bullet/smartgun/m56_fpw
 	name = "\improper M56 FPW bullet"

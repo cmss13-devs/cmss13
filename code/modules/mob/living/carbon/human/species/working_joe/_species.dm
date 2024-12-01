@@ -21,7 +21,7 @@
 /datum/species/synthetic/colonial/working_joe/hazard/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	if(!gibbed) //A gibbed Joe won't have a death rattle
 		return
-	playsound(dying_joe.loc, "hj_death", 25, FALSE)
+	playsound(get_turf(dying_joe), "hj_death", 25, FALSE)
 
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
@@ -31,7 +31,7 @@
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	if(!gibbed) //A gibbed Joe won't have a death rattle
 		return
-	playsound(dying_joe.loc, "wj_death", 25, FALSE)
+	playsound(get_turf(dying_joe), "wj_death", 25, FALSE)
 
 /// Open the WJ's emote panel, which allows them to use voicelines
 /datum/species/synthetic/colonial/working_joe/open_emote_panel()

@@ -642,56 +642,79 @@
 
 	for(var/i = 1 to afterimage_count)
 		var/turf/current_position = get_turf(dodge_user.loc)
-		if (current_position && current_position != last_position) // Only create if moved
+		if(current_position && current_position != last_position) // Only create if moved
 			create_afterimage(dodge_user)
 			last_position = current_position // Update last position
 		sleep(2 DECISECONDS) // Delay between checks and afterimages
 
 /proc/create_afterimage(mob/living/carbon/xenomorph/dodge_user)
-	if (!dodge_user || !dodge_user.loc)
-		return
+    if(!dodge_user || !dodge_user.loc)
+        return
 
-	var/turf/location = get_turf(dodge_user.loc)
-	if (!location)
-		return
+    var/turf/location = get_turf(dodge_user.loc)
+    if(!location)
+        return
 
-	// Create the afterimage overlay
-	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(location)
-	afterimage.icon = dodge_user.icon // Use the mob's current icon
-	afterimage.icon_state = dodge_user.icon_state // Use the mob's current state
-	afterimage.color = dodge_user.color // Match the mob's color
-	afterimage.layer = dodge_user.layer - 1 // Ensure it appears behind the mob
-	afterimage.pixel_x = dodge_user.pixel_x // Align with the mob
-	afterimage.pixel_y = dodge_user.pixel_y
-	afterimage.dir = dodge_user.dir // Match the mob's direction
-	afterimage.alpha = 0 // Start fully transparent
+    // Generate random offsets for dynamic movement
+    var/random_offset_x = rand(-4, 4)
+    var/random_offset_y = rand(-4, 4)
 
-	spawn(1 DECISECONDS) // Slight delay to ensure it appears after the mob moves
-		// Fade-in logic
-		var/fade_in_steps = 1 // Faster fade-in (fewer steps)
-		var/fade_in_delay = 1 DECISECONDS // Delay between steps (in deciseconds)
-		var/start_alpha = 100
-		var/end_alpha = 200
+    // Apply random offset to the Xeno's position (no directional offset for Xeno)
+    dodge_user.pixel_x += random_offset_x
+    dodge_user.pixel_y += random_offset_y
 
-		for (var/i = 0 to fade_in_steps)
-			afterimage.alpha = round(start_alpha + ((end_alpha - start_alpha) * (i / fade_in_steps))) // Gradually increase alpha
-			sleep(fade_in_delay)
+    // Create the afterimage overlay
+    var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(location)
+    afterimage.icon = dodge_user.icon
+    afterimage.icon_state = dodge_user.icon_state
+    afterimage.color = dodge_user.color
+    afterimage.layer = dodge_user.layer  // Ensure it appears behind the mob
 
-		// Fade-out logic
-		var/fade_out_steps = 5 // Number of steps for fade-out
-		var/fade_out_delay = 1 DECISECONDS// Delay between steps (in deciseconds)
+    // Apply the 16-pixel directional offset to the afterimage, ensuring it's behind the Xeno
+    var/directional_offset_x = 0
+    var/directional_offset_y = 0
 
-		for (var/i = 0 to fade_out_steps)
-			afterimage.alpha = round(end_alpha * (1 - (i / fade_out_steps))) // Gradually decrease alpha
-			sleep(fade_out_delay)
+    switch(dodge_user.dir)
+        if(NORTH)
+            directional_offset_y = -16
+        if(SOUTH)
+            directional_offset_y = 16
+        if(EAST)
+            directional_offset_x = -16
+        if(WEST)
+            directional_offset_x = 16
 
-		// Delete the afterimage after fading out
-		if (afterimage)
-			qdel(afterimage)
+    // Apply random offset to afterimage, but keep directional offset for the afterimage's position
+    afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
+    afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
+    afterimage.dir = dodge_user.dir  // Keep the original direction of the Xeno
+    afterimage.alpha = 200  // Start fully visible
+
+    // Prevent interactions with the afterimage
+    afterimage.mouse_opacity = 0  // Make the afterimage non-interactive
+
+    spawn(2)  // Slight delay to ensure it appears after the mob moves
+        var/fade_out_steps = 6  // Number of steps for fade-out
+        var/fade_out_delay = 1  // Delay between steps (in deciseconds)
+        var/start_alpha = 200
+
+        for(var/i = 0 to fade_out_steps)
+            afterimage.alpha = round(start_alpha * (1 - (i / fade_out_steps)))  // Gradually decrease alpha
+            sleep(fade_out_delay)
+
+        // Delete the afterimage after fading out
+        if(afterimage)
+            qdel(afterimage)
+
+    // Delay before resetting the Xeno's position back to normal
+    spawn(2 DECISECONDS)  // Add a delay of 2 deciseconds before resetting Xeno position
+        // Reset the Xeno's position back to normal after applying the random offset
+        dodge_user.pixel_x -= random_offset_x
+        dodge_user.pixel_y -= random_offset_y
 
 /obj/effect/overlay/afterimage
-	icon = 'icons/mob/xenos/praetorian.dmi' // Icon for the Praetorian
-	layer = MOB_LAYER - 1 // Ensure it appears below the mob
+    icon = 'icons/mob/xenos/praetorian.dmi'  // Icon for the Praetorian
+    layer = ABOVE_MOB_LAYER  // Ensure it appears behind the mob
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner

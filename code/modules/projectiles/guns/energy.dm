@@ -40,7 +40,7 @@
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()
 
-	icon_state = "[base_gun_icon]"
+	icon_state = base_gun_icon
 
 	if(!cell)
 		return

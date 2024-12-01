@@ -656,7 +656,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
 
-	if(mapload && department in HIGHCOM_DEPARTMENTS)
+	if(mapload && (department in HIGHCOM_DEPARTMENTS))
 		for(var/datum/fax/fax as anything in GLOB.fax_contents)
 			if(fax.department != department)
 				continue

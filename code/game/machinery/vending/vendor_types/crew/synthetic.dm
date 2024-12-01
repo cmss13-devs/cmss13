@@ -90,6 +90,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("EXPERIMENTAL TOOL TOKEN (TAKE ALL)", 0, null, null, null),
 		list("Experimental Tool Vendor Token", 0, /obj/item/coin/marine/synth, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
+		list("Weyland-Yutani Reset key (TAKE ALL)", 0, null, null, null),
+		list("Synthetic Reset Key", 0, /obj/item/device/defibrillator/synthetic, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+
 		list("RADIO (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/synth, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
@@ -410,7 +413,6 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("Maintenance Jack", 15, /obj/item/maintenance_jack, null, VENDOR_ITEM_REGULAR),
 	list("Portable Dialysis Machine", 15, /obj/item/tool/portadialysis, null, VENDOR_ITEM_REGULAR),
 	list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
-	list("Synthetic Reset Key", 15, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 ))
 
 //------------EXPERIMENTAL TOOL KITS---------------

@@ -198,7 +198,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/why_would_you
-	key = "awareofhaz"
+	key = "whywouldyou"
 	sound = 'sound/voice/joe/why_would_you.ogg'
 	haz_sound = 'sound/voice/joe/why_would_you_haz.ogg'
 	say_message = "Why would you do this?"

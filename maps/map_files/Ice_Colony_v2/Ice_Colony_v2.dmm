@@ -341,6 +341,16 @@
 "abz" = (
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/shuttle/elevator4/ground)
+"abA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/library)
+"abB" = (
+/turf/closed/wall,
+/area/ice_colony/exterior/surface/container_yard)
 "abC" = (
 /turf/open/floor/plating/icefloor/warnplate/northeast,
 /area/shuttle/elevator4/ground)
@@ -422,6 +432,18 @@
 "abU" = (
 /turf/open/floor/plating/icefloor,
 /area/shuttle/elevator4/ground)
+"abV" = (
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/exterior/surface/container_yard)
+"abW" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/exterior/surface/container_yard)
 "abX" = (
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/shuttle/elevator4/ground)
@@ -37742,8 +37764,8 @@ bik
 biz
 biS
 bjn
-aHR
 bjn
+aHR
 bjl
 bjl
 bjm
@@ -52977,9 +52999,9 @@ bgH
 bkI
 bkX
 bkZ
-bkX
+bkZ
 blZ
-bkX
+bkZ
 bkZ
 aGG
 bkZ
@@ -53260,7 +53282,7 @@ bkI
 bkZ
 bkZ
 bkZ
-blZ
+abA
 bkZ
 bkZ
 bkZ
@@ -62799,7 +62821,7 @@ aVV
 aWD
 aXe
 aXJ
-aVW
+aVV
 aVV
 aWC
 aWF
@@ -63926,9 +63948,9 @@ aVw
 aVV
 aWG
 aXc
-aVW
-aVW
 aVV
+aVV
+abW
 aVV
 aVV
 aXc
@@ -64208,8 +64230,8 @@ aVw
 aVV
 aVV
 aXd
-aVW
-aVW
+aVV
+aVV
 aVV
 aVV
 aVV
@@ -64774,9 +64796,9 @@ aVV
 aVV
 aVV
 aVV
-aYx
 aVV
-aVW
+aVV
+abB
 aVV
 aWC
 aZy
@@ -65056,9 +65078,9 @@ aVV
 aVV
 aVV
 aVV
-aYx
 aVV
 aVV
+abV
 aVV
 aWD
 aZy
@@ -65338,7 +65360,7 @@ aWH
 aXh
 aXK
 aVV
-aYx
+aVV
 aVV
 aVV
 aVV

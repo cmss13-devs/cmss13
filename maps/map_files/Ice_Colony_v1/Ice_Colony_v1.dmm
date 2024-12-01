@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/excavation/storage)
+"aab" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/dark2,
+/area/ice_colony/surface/garage/two)
 "aai" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
@@ -3038,11 +3046,11 @@
 /turf/open/floor/corsat/marked,
 /area/ice_colony/surface/dorms)
 "fAu" = (
-/obj/effect/landmark/static_comms/net_one,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast/apc_support)
 "fAv" = (
@@ -8737,10 +8745,6 @@
 /obj/item/tool/pickaxe/gold,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
-"pOH" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/ice,
-/area/ice_colony/exterior/surface/valley/northeast/apc_support)
 "pPw" = (
 /obj/structure/surface/rack,
 /obj/item/tool/hatchet,
@@ -12342,10 +12346,6 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/darkyellowcorners2/north,
 /area/ice_colony/surface/research/tech_storage)
-"vXJ" = (
-/obj/effect/landmark/static_comms/net_two,
-/turf/open/auto_turf/snow/layer3,
-/area/ice_colony/exterior/surface/valley/southeast/apc_support)
 "vXX" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/open/floor/darkpurplecorners2/east,
@@ -34503,7 +34503,7 @@ mbV
 cGm
 cGm
 cGm
-cGm
+aaa
 oyb
 ydX
 oIt
@@ -34875,7 +34875,7 @@ kHr
 kHr
 uoF
 kHr
-kHr
+aab
 uoF
 kHr
 kHr
@@ -34973,7 +34973,7 @@ dit
 rmT
 qjg
 cGm
-aPj
+cGm
 aPj
 qUi
 qUi
@@ -58982,7 +58982,7 @@ xNW
 bdM
 nOZ
 xbm
-vXJ
+vCv
 llr
 llr
 qUi
@@ -59213,7 +59213,7 @@ qUi
 qUi
 mPI
 bdM
-pOH
+bdM
 bdM
 bdM
 nOZ
@@ -59449,7 +59449,7 @@ qUi
 mPI
 mPI
 bdM
-bdM
+wOm
 bdM
 pWN
 nOZ
@@ -59685,7 +59685,7 @@ qUi
 mPI
 mPI
 bdM
-wOm
+bdM
 bdM
 bdM
 nOZ

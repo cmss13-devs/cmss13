@@ -156,7 +156,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	doc_datum_type = /datum/prefab_document/provost/highcom/standard
 
 /obj/item/paper/prefab/provost/arrest_warrant
-	document_title = "UAM211 - Arrest Warrant"
+	document_title = "PR211 - Arrest Warrant"
 	doc_datum_type = /datum/prefab_document/provost/highcom/arrest_warrant
 
 /obj/item/paper/prefab/provost/custody_transfer

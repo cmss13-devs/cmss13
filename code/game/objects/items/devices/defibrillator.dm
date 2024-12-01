@@ -147,7 +147,11 @@
 	if(!ishuman(H) || isyautja(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the [fluff_tool]!"))
 		return
+	if(issynth(H))
+		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You need a synthetic reset key for reboot!"))
+		return
 	if(!ready)
+		balloon_alert(user, "Take out the [fluff_tool].")
 		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
 		return
 	if(dcell.charge < charge_cost)
@@ -165,7 +169,7 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
-	if((!H.check_tod() && !issynth(H))) //synthetic species have no expiration date
+	if(!H.check_tod())
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
 		return
 
@@ -337,6 +341,7 @@
 		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
 		return FALSE
 	if(!ready)
+		balloon_alert(user, "Activate it first.")
 		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
 		return FALSE
 	if(dcell.charge < charge_cost)

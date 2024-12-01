@@ -7,7 +7,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
 	for(var/turf/turf_tile in locs)
 		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			if(vehicle_tile) return 0
+			if(vehicle_tile)
+				return FALSE
 
 	return ..()
 
@@ -272,7 +273,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced=FALSE)
 	if(is_reserved_level(z) && !forced)
 		return // in orbit
-	..()
+	return ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)

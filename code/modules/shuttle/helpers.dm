@@ -120,16 +120,12 @@
 				CRASH("Unknown door command [action]")
 
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	var/list/door_turfs = list(get_turf(air))
-	if(istype(air, /obj/structure/machinery/door/airlock/multi_tile))
-		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
-		door_turfs = multi_door.locate_filler_turfs()
-	for(var/turf/door_turf in door_turfs)
-		bump_at_turf(door_turf)
+	for(var/turf/door_turf in air.locs)
+		bump_at_turf(door_turf, air)
 
 	lockdown_door(air)
 
-/datum/door_controller/single/proc/bump_at_turf(turf/door_turf)
+/datum/door_controller/single/proc/bump_at_turf(turf/door_turf, obj/structure/machinery/door/door)
 	for(var/mob/living/blocking_mob in door_turf)
 		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
 		blocking_mob.KnockDown(4)
@@ -137,27 +133,38 @@
 			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
 				blocking_mob.forceMove(target_turf)
 				break
+	for(var/obj/blocking_obj in door_turf)
+		if(blocking_obj == door)
+			continue
+		for(var/turf/target_turf in orange(1, door_turf)) // Forcemove to a non shuttle turf
+			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
+				blocking_obj.forceMove(target_turf)
+				break
 
 /datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/target)
 	if(istype(target, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/air = target
-		air.safe = 0
-		air.operating = 0
+		var/old_safe = air.safe
+		air.safe = FALSE
 		air.unlock(TRUE)
 		air.close(TRUE)
 		air.lock(TRUE)
-		air.safe = 1
+		air.safe = old_safe
+		return
+
 	if(istype(target, /obj/structure/machinery/door/poddoor))
 		target.close()
 
 /datum/door_controller/proc/force_lock_open_door(obj/structure/machinery/door/target)
 	if(istype(target, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/air = target
-		air.safe = 0
+		var/old_safe = air.safe
+		air.safe = FALSE
 		air.unlock(TRUE)
 		air.open(TRUE)
 		air.lock(TRUE)
-		air.safe = 1
+		air.safe = old_safe
+		return
 
 	if(istype(target, /obj/structure/machinery/door/poddoor))
 		target.open()

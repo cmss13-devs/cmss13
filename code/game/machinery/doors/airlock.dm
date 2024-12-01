@@ -44,7 +44,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/assembly_type = /obj/structure/airlock_assembly
 	var/mineral = null
 	var/justzap = 0
+	/// Whether to delay closing when a mob is present
 	var/safe = 1
+	/// Whether a safe close is queued
+	var/pending_safe_close = FALSE
 	normalspeed = 1
 	var/obj/item/circuitboard/airlock/electronics = null
 	var/hasShocked = 0 //Prevents multiple shocks from happening
@@ -88,7 +91,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				spawn (openspeed)
 					justzap = 0
 				return
-		else if(user.hallucination > 50 && prob(10) && operating == 0)
+		else if(user.hallucination > 50 && prob(10) && !operating)
 			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 			user.halloss += 10
 			user.apply_effect(10, STUN)
@@ -689,7 +692,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				if(operating == -1)
 					airlock_electronics.fried = TRUE
 					airlock_electronics.update_icon()
-					operating = 0
+					operating = DOOR_OPERATING_IDLE
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
@@ -723,12 +726,22 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return ..()
 
 
-/obj/structure/machinery/door/airlock/open(forced=0)
-	if( operating || welded || locked || !loc)
+/obj/structure/machinery/door/airlock/open(forced = FALSE)
+	if(operating && !forced)
 		return FALSE
+	if(welded)
+		return FALSE
+	if(locked)
+		return FALSE
+	if(!density)
+		return TRUE
+	if(!loc)
+		return FALSE
+
 	if(!forced)
-		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR) )
+		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
 			return FALSE
+
 	use_power(360) //360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
@@ -736,37 +749,54 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		playsound(loc, 'sound/machines/airlock.ogg', 25, 0)
 	if(closeOther != null && istype(closeOther, /obj/structure/machinery/door/airlock/) && !closeOther.density)
 		closeOther.close()
-	return ..(forced)
+
+	. = ..()
+
+	if(!forced)
+		send_status()
+	return .
 
 /obj/structure/machinery/door/airlock/close(forced = FALSE)
-	if(operating || welded || locked || !loc)
-		return
+	if(operating && !forced)
+		return FALSE
+	if(welded)
+		return FALSE
+	if(locked)
+		return FALSE
+	if(pending_safe_close && !forced)
+		return FALSE
+	if(!loc)
+		return FALSE
+
 	if(!forced)
-		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS) )
-			return
+		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
+			return FALSE
+
 	if(safe)
 		for(var/turf/turf in locs)
 			if(locate(/mob/living) in turf)
 			// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
-				spawn (60 + openspeed)
-					close()
-				return
+				pending_safe_close = TRUE
+				spawn(60 + openspeed)
+					pending_safe_close = FALSE
+					close(forced)
+				return FALSE
 
 	for(var/turf/turf in locs)
-		for(var/mob/living/M in turf)
-			if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+		for(var/mob/living/crushed in turf)
+			if(HAS_TRAIT(crushed, TRAIT_SUPER_STRONG))
+				crushed.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.set_effect(5, STUN)
-				M.set_effect(5, WEAKEN)
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					if(H.pain.feels_pain)
-						M.emote("pain")
+				crushed.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
+				crushed.set_effect(5, STUN)
+				crushed.set_effect(5, WEAKEN)
+				if(ishuman(crushed))
+					var/mob/living/carbon/human/crushed_human = crushed
+					if(crushed_human.pain.feels_pain)
+						crushed.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
-				location.add_mob_blood(M)
+				location.add_mob_blood(crushed)
 
 	break_resin_objects()
 
@@ -779,28 +809,38 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)//Smashin windows
-	..()
-	return
+
+	. = ..()
+
+	if(!forced)
+		send_status()
+	return .
 
 /obj/structure/machinery/door/airlock/proc/lock(forced = FALSE)
-	if((operating && !forced) || locked)
-		return
+	if(operating && !forced)
+		return FALSE
+	if(locked)
+		return FALSE
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = TRUE
-	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
+	visible_message(SPAN_NOTICE("[src] airlock emits a loud thunk, then a click."))
 	update_icon()
+	return TRUE
 
-/obj/structure/machinery/door/airlock/proc/unlock(forced=0)
-	if(operating || !locked) return
+/obj/structure/machinery/door/airlock/proc/unlock(forced = FALSE)
+	if(operating && !forced)
+		return FALSE
+	if(!locked)
+		return FALSE
 
-	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
+	if(forced || arePowerSystemsOn()) //only can raise bolts if power's on
 		locked = FALSE
-
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
-		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))
+		visible_message(SPAN_NOTICE("[src] airlock emits a click, then hums slightly."))
 		update_icon()
 		return TRUE
+
 	return FALSE
 
 /obj/structure/machinery/door/airlock/Initialize()

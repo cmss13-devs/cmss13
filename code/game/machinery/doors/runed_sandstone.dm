@@ -90,22 +90,33 @@
 
 
 /obj/structure/machinery/door/airlock/sandstone/runed/open(forced = TRUE)
-	if(operating || welded || locked || !loc || !density)
+	if(operating && !forced)
+		return FALSE
+	if(welded)
+		return FALSE
+	if(locked)
+		return FALSE
+	if(!density)
+		return TRUE
+	if(!loc)
 		return FALSE
 	if(!forced && !arePowerSystemsOn())
 		return FALSE
 
 	playsound(loc, 'sound/effects/runedsanddoor.ogg', 25, 0)
 	visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as hidden workings pull it open."))
-	operating = TRUE
+	operating = DOOR_OPERATING_OPENING
 	do_animate("opening")
 	icon_state = "door0"
 	set_opacity(0)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
-	return
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/finish_open()
+	if(operating != DOOR_OPERATING_OPENING)
+		return
+
 	layer = open_layer
 	density = FALSE
 	update_icon()
@@ -113,33 +124,48 @@
 	if(length(filler_turfs))
 		change_filler_opacity(opacity)
 
-	if(operating)
-		operating = FALSE
+	operating = DOOR_OPERATING_IDLE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/close(forced = TRUE)
-	if(operating || welded || locked || !loc || density)
-		return
+	if(operating && !forced)
+		return FALSE
+	if(welded)
+		return FALSE
+	if(locked)
+		return FALSE
+	if(density && !operating)
+		return TRUE
+	if(pending_safe_close && !forced)
+		return FALSE
+	if(!loc)
+		return FALSE
+
 	if(safe)
 		for(var/turf/turf in locs)
 			if(locate(/mob/living) in turf)
+				pending_safe_close = TRUE
 				spawn (60 + openspeed)
+					pending_safe_close = FALSE
 					close()
-				return
+				return FALSE
 	playsound(loc, 'sound/effects/runedsanddoor.ogg', 25, 0)
-	visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as hidden workings force it shut."))
+	visible_message(SPAN_NOTICE("[src] makes a loud grating sound as hidden workings force it shut."))
 
-	operating = TRUE
+	operating = DOOR_OPERATING_CLOSING
 	density = TRUE
 	set_opacity(1)
 	layer = closed_layer
 	do_animate("closing")
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
-	return
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/finish_close()
+	if(operating != DOOR_OPERATING_CLOSING)
+		return
+
 	update_icon()
-	operating = FALSE
+	operating = DOOR_OPERATING_IDLE
 
 	for(var/turf/turf in locs)
 		for(var/mob/living/M in turf)

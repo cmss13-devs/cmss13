@@ -20,44 +20,46 @@
 	if(!C.pry_capable)
 		return
 	if(density && (stat & NOPOWER) && !operating && !unacidable)
-		operating = 1
+		operating = DOOR_OPERATING_OPENING
 		spawn(-1)
 			flick("[base_icon_state]c0", src)
 			icon_state = "[base_icon_state]0"
 			sleep(15)
 			density = FALSE
 			set_opacity(0)
-			operating = 0
+			operating = DOOR_OPERATING_IDLE
 			return
 	return
 
 /obj/structure/machinery/door/poddoor/shutters/open()
 	if(operating) //doors can still open when emag-disabled
-		return
+		return FALSE
 
-	operating = TRUE
+	operating = DOOR_OPERATING_OPENING
 	flick("[base_icon_state]c0", src)
 	icon_state = "[base_icon_state]0"
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/finish_open()
+	if(operating != DOOR_OPERATING_OPENING)
+		return
+
 	density = FALSE
 	layer = open_layer
 	set_opacity(0)
 
-	if(operating) //emag again
-		operating = FALSE
+	operating = DOOR_OPERATING_IDLE
 	if(autoclose)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 150)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/structure/machinery/door/poddoor/shutters/close()
 	if(operating)
-		return
+		return FALSE
 
-	operating = TRUE
+	operating = DOOR_OPERATING_CLOSING
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
 	layer = closed_layer
@@ -66,11 +68,14 @@
 		set_opacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
-	return
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	return TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/finish_close()
-	operating = FALSE
+	if(operating != DOOR_OPERATING_CLOSING)
+		return
+
+	operating = DOOR_OPERATING_IDLE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'

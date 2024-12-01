@@ -38,13 +38,13 @@
 		return
 	if(density && (stat & NOPOWER) && !operating && !unacidable)
 		spawn(0)
-			operating = 1
+			operating = DOOR_OPERATING_OPENING
 			flick("[base_icon_state]c0", src)
 			icon_state = "[base_icon_state]0"
 			set_opacity(0)
 			sleep(15)
 			density = FALSE
-			operating = 0
+			operating = DOOR_OPERATING_IDLE
 
 /obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/xenomorph/X)
 	if((stat & NOPOWER) && density && !operating && !unacidable)
@@ -73,28 +73,27 @@
 
 /obj/structure/machinery/door/poddoor/open()
 	if(operating) //doors can still open when emag-disabled
-		return
-
+		return FALSE
 	if(!opacity)
 		return TRUE
 
-	operating = TRUE
+	operating = DOOR_OPERATING_OPENING
 
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 	flick("[base_icon_state]c0", src)
 	icon_state = "[base_icon_state]0"
 	set_opacity(0)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/close()
 	if(operating)
-		return
+		return FALSE
 	if(opacity == initial(opacity))
-		return
+		return TRUE
 
-	operating = TRUE
+	operating = DOOR_OPERATING_CLOSING
 	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 
 	layer = closed_layer
@@ -103,11 +102,14 @@
 	density = TRUE
 	set_opacity(initial(opacity))
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
-	return
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	return TRUE
 
 /obj/structure/machinery/door/poddoor/finish_close()
-	operating = FALSE
+	if(operating != DOOR_OPERATING_CLOSING)
+		return
+
+	operating = DOOR_OPERATING_IDLE
 
 /obj/structure/machinery/door/poddoor/filler_object
 	name = ""

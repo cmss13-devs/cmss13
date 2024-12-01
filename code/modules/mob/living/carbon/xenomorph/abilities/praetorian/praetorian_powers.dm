@@ -586,25 +586,29 @@
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/dodge_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(dodge_user) || !dodge_user.check_state())
+	if(!istype(dodge_user) || !dodge_user.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
-	if (!istype(behavior))
+	if(!istype(behavior))
 		return
 
+	// Activate dodge mechanics
 	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
+
+	// Create afterimages for visual effect
+	spawn create_afterimage_sequence(dodge_user, duration)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
@@ -614,20 +618,80 @@
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/dodge_remove = owner
 
-	if (!istype(dodge_remove))
+	if(!istype(dodge_remove))
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_remove.behavior_delegate
-	if (!istype(behavior))
+	if(!istype(behavior))
 		return
 
-	if (behavior.dodge_activated)
+	if(behavior.dodge_activated)
 		behavior.dodge_activated = FALSE
 		button.icon_state = "template"
 		dodge_remove.speed_modifier += speed_buff_amount
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
 		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
+
+/datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration)
+	if(!dodge_user || !dodge_user.loc)
+		return
+
+	var/afterimage_count = duration / 2 // Adjust for frequency of afterimages
+	var/turf/last_position = get_turf(dodge_user.loc) // Track the last position
+
+	for(var/i = 1 to afterimage_count)
+		var/turf/current_position = get_turf(dodge_user.loc)
+		if (current_position && current_position != last_position) // Only create if moved
+			create_afterimage(dodge_user)
+			last_position = current_position // Update last position
+		sleep(2 DECISECONDS) // Delay between checks and afterimages
+
+/proc/create_afterimage(mob/living/carbon/xenomorph/dodge_user)
+    if (!dodge_user || !dodge_user.loc)
+        return
+
+    var/turf/location = get_turf(dodge_user.loc)
+    if (!location)
+        return
+
+    // Create the afterimage overlay
+    var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(location)
+    afterimage.icon = dodge_user.icon // Use the mob's current icon
+    afterimage.icon_state = dodge_user.icon_state // Use the mob's current state
+    afterimage.color = dodge_user.color // Match the mob's color
+    afterimage.layer = dodge_user.layer - 1 // Ensure it appears behind the mob
+    afterimage.pixel_x = dodge_user.pixel_x // Align with the mob
+    afterimage.pixel_y = dodge_user.pixel_y
+    afterimage.dir = dodge_user.dir // Match the mob's direction
+    afterimage.alpha = 0 // Start fully transparent
+
+    spawn(1 DECISECONDS) // Slight delay to ensure it appears after the mob moves
+        // Fade-in logic
+        var/fade_in_steps = 1 // Faster fade-in (fewer steps)
+        var/fade_in_delay = 1 DECISECONDS // Delay between steps (in deciseconds)
+        var/start_alpha = 100
+        var/end_alpha = 200
+
+        for (var/i = 0 to fade_in_steps)
+            afterimage.alpha = round(start_alpha + ((end_alpha - start_alpha) * (i / fade_in_steps))) // Gradually increase alpha
+            sleep(fade_in_delay)
+
+        // Fade-out logic
+        var/fade_out_steps = 5 // Number of steps for fade-out
+        var/fade_out_delay = 1 DECISECONDS// Delay between steps (in deciseconds)
+
+        for (var/i = 0 to fade_out_steps)
+            afterimage.alpha = round(end_alpha * (1 - (i / fade_out_steps))) // Gradually decrease alpha
+            sleep(fade_out_delay)
+
+        // Delete the afterimage after fading out
+        if (afterimage)
+            qdel(afterimage)
+
+/obj/effect/overlay/afterimage
+    icon = 'icons/mob/xenos/praetorian.dmi' // Icon for the Praetorian
+    layer = MOB_LAYER - 1 // Ensure it appears below the mob
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner

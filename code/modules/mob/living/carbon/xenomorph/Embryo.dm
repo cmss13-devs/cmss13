@@ -308,7 +308,6 @@
 	if(loc != victim)
 		victim.chestburst = 0
 		return
-	sleep(25) //Sound delay
 	victim.update_burst()
 	sleep(10) //Sprite delay
 	if(!victim || !victim.loc)

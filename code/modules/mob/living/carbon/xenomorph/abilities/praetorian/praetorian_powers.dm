@@ -648,50 +648,50 @@
 		sleep(2 DECISECONDS) // Delay between checks and afterimages
 
 /proc/create_afterimage(mob/living/carbon/xenomorph/dodge_user)
-    if (!dodge_user || !dodge_user.loc)
-        return
+	if (!dodge_user || !dodge_user.loc)
+		return
 
-    var/turf/location = get_turf(dodge_user.loc)
-    if (!location)
-        return
+	var/turf/location = get_turf(dodge_user.loc)
+	if (!location)
+		return
 
-    // Create the afterimage overlay
-    var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(location)
-    afterimage.icon = dodge_user.icon // Use the mob's current icon
-    afterimage.icon_state = dodge_user.icon_state // Use the mob's current state
-    afterimage.color = dodge_user.color // Match the mob's color
-    afterimage.layer = dodge_user.layer - 1 // Ensure it appears behind the mob
-    afterimage.pixel_x = dodge_user.pixel_x // Align with the mob
-    afterimage.pixel_y = dodge_user.pixel_y
-    afterimage.dir = dodge_user.dir // Match the mob's direction
-    afterimage.alpha = 0 // Start fully transparent
+	// Create the afterimage overlay
+	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(location)
+	afterimage.icon = dodge_user.icon // Use the mob's current icon
+	afterimage.icon_state = dodge_user.icon_state // Use the mob's current state
+	afterimage.color = dodge_user.color // Match the mob's color
+	afterimage.layer = dodge_user.layer - 1 // Ensure it appears behind the mob
+	afterimage.pixel_x = dodge_user.pixel_x // Align with the mob
+	afterimage.pixel_y = dodge_user.pixel_y
+	afterimage.dir = dodge_user.dir // Match the mob's direction
+	afterimage.alpha = 0 // Start fully transparent
 
-    spawn(1 DECISECONDS) // Slight delay to ensure it appears after the mob moves
-        // Fade-in logic
-        var/fade_in_steps = 1 // Faster fade-in (fewer steps)
-        var/fade_in_delay = 1 DECISECONDS // Delay between steps (in deciseconds)
-        var/start_alpha = 100
-        var/end_alpha = 200
+	spawn(1 DECISECONDS) // Slight delay to ensure it appears after the mob moves
+		// Fade-in logic
+		var/fade_in_steps = 1 // Faster fade-in (fewer steps)
+		var/fade_in_delay = 1 DECISECONDS // Delay between steps (in deciseconds)
+		var/start_alpha = 100
+		var/end_alpha = 200
 
-        for (var/i = 0 to fade_in_steps)
-            afterimage.alpha = round(start_alpha + ((end_alpha - start_alpha) * (i / fade_in_steps))) // Gradually increase alpha
-            sleep(fade_in_delay)
+		for (var/i = 0 to fade_in_steps)
+			afterimage.alpha = round(start_alpha + ((end_alpha - start_alpha) * (i / fade_in_steps))) // Gradually increase alpha
+			sleep(fade_in_delay)
 
-        // Fade-out logic
-        var/fade_out_steps = 5 // Number of steps for fade-out
-        var/fade_out_delay = 1 DECISECONDS// Delay between steps (in deciseconds)
+		// Fade-out logic
+		var/fade_out_steps = 5 // Number of steps for fade-out
+		var/fade_out_delay = 1 DECISECONDS// Delay between steps (in deciseconds)
 
-        for (var/i = 0 to fade_out_steps)
-            afterimage.alpha = round(end_alpha * (1 - (i / fade_out_steps))) // Gradually decrease alpha
-            sleep(fade_out_delay)
+		for (var/i = 0 to fade_out_steps)
+			afterimage.alpha = round(end_alpha * (1 - (i / fade_out_steps))) // Gradually decrease alpha
+			sleep(fade_out_delay)
 
-        // Delete the afterimage after fading out
-        if (afterimage)
-            qdel(afterimage)
+		// Delete the afterimage after fading out
+		if (afterimage)
+			qdel(afterimage)
 
 /obj/effect/overlay/afterimage
-    icon = 'icons/mob/xenos/praetorian.dmi' // Icon for the Praetorian
-    layer = MOB_LAYER - 1 // Ensure it appears below the mob
+	icon = 'icons/mob/xenos/praetorian.dmi' // Icon for the Praetorian
+	layer = MOB_LAYER - 1 // Ensure it appears below the mob
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner

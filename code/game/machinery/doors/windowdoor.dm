@@ -60,7 +60,7 @@
 		close()
 	return
 
-/obj/structure/machinery/door/window/open()
+/obj/structure/machinery/door/window/open(forced = FALSE)
 	if(operating) //doors can still open when emag-disabled
 		return FALSE
 
@@ -69,7 +69,7 @@
 	playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	icon_state = text("[]open", base_state)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/window/finish_open()
@@ -79,7 +79,7 @@
 	density = FALSE
 	operating = DOOR_OPERATING_IDLE
 
-/obj/structure/machinery/door/window/close()
+/obj/structure/machinery/door/window/close(forced = FALSE)
 	if(operating)
 		return FALSE
 
@@ -89,7 +89,7 @@
 	icon_state = base_state
 	density = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/window/finish_close()

@@ -71,7 +71,7 @@
 /obj/structure/machinery/door/poddoor/try_to_activate_door(mob/user)
 	return
 
-/obj/structure/machinery/door/poddoor/open()
+/obj/structure/machinery/door/poddoor/open(forced = FALSE)
 	if(operating) //doors can still open when emag-disabled
 		return FALSE
 	if(!opacity)
@@ -84,10 +84,10 @@
 	icon_state = "[base_icon_state]0"
 	set_opacity(0)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
-/obj/structure/machinery/door/poddoor/close()
+/obj/structure/machinery/door/poddoor/close(forced = FALSE)
 	if(operating)
 		return FALSE
 	if(opacity == initial(opacity))
@@ -102,7 +102,7 @@
 	density = TRUE
 	set_opacity(initial(opacity))
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/finish_close()

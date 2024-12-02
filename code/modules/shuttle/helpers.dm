@@ -119,13 +119,14 @@
 			else
 				CRASH("Unknown door command [action]")
 
-/datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	for(var/turf/door_turf in air.locs)
-		bump_at_turf(door_turf, air)
+/datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/door)
+	for(var/turf/door_turf in door.locs)
+		bump_at_turf(door_turf, door)
 
-	lockdown_door(air)
+	lockdown_door(door)
 
 /datum/door_controller/single/proc/bump_at_turf(turf/door_turf, obj/structure/machinery/door/door)
+	// Push mobs
 	for(var/mob/living/blocking_mob in door_turf)
 		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
 		blocking_mob.KnockDown(4)
@@ -133,13 +134,45 @@
 			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
 				blocking_mob.forceMove(target_turf)
 				break
+
+	// Push objects
 	for(var/obj/blocking_obj in door_turf)
 		if(blocking_obj == door)
 			continue
-		for(var/turf/target_turf in orange(1, door_turf)) // Forcemove to a non shuttle turf
-			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-				blocking_obj.forceMove(target_turf)
+		if(istype(door, /obj/structure/machinery/door/airlock))
+			if(blocking_obj.type in door:resin_smushables) // Done this way because of https://www.byond.com/forum/post/2954294
+				continue // Will get crushed instead
+
+		// Find somewhere valid to push towards (non-shuttle turf)
+		var/turf/target_turf
+		for(var/turf/current_turf in orange(1, door_turf))
+			if(!istype(current_turf, /turf/open/shuttle) && !istype(current_turf, /turf/closed/shuttle))
+				target_turf = current_turf
 				break
+
+		// Vehicles need a much more specific location to push to
+		if(istype(blocking_obj, /obj/vehicle/multitile))
+			var/obj/vehicle/multitile/vehicle = blocking_obj
+			var/list/vehicle_dimensions = vehicle.get_dimensions()
+			var/height = vehicle_dimensions["height"]
+			var/width = vehicle_dimensions["width"]
+			if(vehicle.dir & EAST|WEST)
+				height = vehicle_dimensions["width"]
+				width = vehicle_dimensions["height"]
+			var/dir_to_push = get_dir(blocking_obj.loc, target_turf)
+			switch(dir_to_push)
+				// half width/height because the vehicle loc is centered
+				if(NORTH, NORTHEAST, NORTHWEST)
+					target_turf = locate(vehicle.x, door.y + ceil(height*0.5), vehicle.z)
+				if(SOUTH, SOUTHEAST, SOUTHWEST)
+					target_turf = locate(vehicle.x, door.y - ceil(height*0.5), vehicle.z)
+				if(EAST)
+					target_turf = locate(door.x + ceil(width*0.5), vehicle.y, vehicle.z)
+				else
+					target_turf = locate(door.x - ceil(width*0.5), vehicle.y, vehicle.z)
+
+		// Now actually push it
+		blocking_obj.forceMove(target_turf)
 
 /datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/target)
 	if(istype(target, /obj/structure/machinery/door/airlock))

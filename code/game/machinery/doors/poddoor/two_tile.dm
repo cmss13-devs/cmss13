@@ -21,14 +21,14 @@
 	QDEL_NULL(f2)
 	return ..()
 
-/obj/structure/machinery/door/poddoor/two_tile/open()
+/obj/structure/machinery/door/poddoor/two_tile/open(forced = FALSE)
 	if(operating) //doors can still open when emag-disabled
 		return FALSE
 
 	operating = DOOR_OPERATING_OPENING
 	start_opening()
 
-	addtimer(CALLBACK(src, PROC_REF(open_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(open_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_opening()
@@ -50,19 +50,19 @@
 
 	operating = DOOR_OPERATING_IDLE
 	if(autoclose)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
 	f3.density = FALSE
 	f4.density = FALSE
 	..()
 
-/obj/structure/machinery/door/poddoor/two_tile/close()
+/obj/structure/machinery/door/poddoor/two_tile/close(forced = FALSE)
 	if(operating)
 		return FALSE
 
 	start_closing()
-	addtimer(CALLBACK(src, PROC_REF(close_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(close_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_closing()

@@ -46,7 +46,7 @@
 	icon_state = "railing0"
 	layer = open_layer
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1.2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1.2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/railing/finish_open()
@@ -56,7 +56,7 @@
 	density = FALSE
 	operating = DOOR_OPERATING_IDLE
 
-/obj/structure/machinery/door/poddoor/railing/close()
+/obj/structure/machinery/door/poddoor/railing/close(forced = FALSE)
 	if(operating)
 		return FALSE
 
@@ -66,7 +66,7 @@
 	flick("railingc1", src)
 	icon_state = "railing1"
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), 1.2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), 1.2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/finish_close()

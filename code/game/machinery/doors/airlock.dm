@@ -45,9 +45,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/mineral = null
 	var/justzap = 0
 	/// Whether to delay closing when a mob is present
-	var/safe = 1
-	/// Whether a safe close is queued
-	var/pending_safe_close = FALSE
+	var/safe = TRUE
 	normalspeed = 1
 	var/obj/item/circuitboard/airlock/electronics = null
 	var/hasShocked = 0 //Prevents multiple shocks from happening
@@ -65,7 +63,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/announce_hacked = TRUE
 
 	//Resin constructions that will be SMUSHED by closing doors
-	var/static/list/resin_door_shmushereds = list(
+	var/static/list/resin_smushables = list(
 		/obj/effect/resin_construct/door,
 		/obj/structure/mineral_door/resin,
 		/obj/structure/bed/nest,
@@ -725,7 +723,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return ..()
 
-
+/// Tries to open the door. If forced, operating checks and operable checks are skipped (so you need to prevent spamming yourself)
 /obj/structure/machinery/door/airlock/open(forced = FALSE)
 	if(operating && !forced)
 		return FALSE
@@ -756,14 +754,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		send_status()
 	return .
 
+/// Tries to close the door. If forced, operating checks and operable checks are skipped (so you need to prevent spamming yourself)
 /obj/structure/machinery/door/airlock/close(forced = FALSE)
 	if(operating && !forced)
 		return FALSE
 	if(welded)
 		return FALSE
 	if(locked)
-		return FALSE
-	if(pending_safe_close && !forced)
 		return FALSE
 	if(!loc)
 		return FALSE
@@ -775,11 +772,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(safe)
 		for(var/turf/turf in locs)
 			if(locate(/mob/living) in turf)
-			// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
-				pending_safe_close = TRUE
-				spawn(60 + openspeed)
-					pending_safe_close = FALSE
-					close(forced)
+				// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
+				addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 				return FALSE
 
 	for(var/turf/turf in locs)
@@ -880,10 +874,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	for(var/turf/i in things_to_shmush)
 		things_to_shmush |= i.contents
 	for(var/x in things_to_shmush)
-		for(var/i in resin_door_shmushereds)
-			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
+		for(var/i in resin_smushables)
+			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_smushables so it works
 				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("The [src.name] closes on [x], shmushing it!"))
+				visible_message(SPAN_WARNING("The [src.name] closes on [x], smushing it!"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x
 					resin_wall_to_destroy.dismantle_wall()

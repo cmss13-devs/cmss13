@@ -242,7 +242,7 @@
 			close()
 	return
 
-/obj/structure/machinery/door/firedoor/close()
+/obj/structure/machinery/door/firedoor/close(forced = FALSE)
 	latetoggle()
 	return ..()
 

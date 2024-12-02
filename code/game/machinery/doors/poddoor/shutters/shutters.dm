@@ -31,7 +31,7 @@
 			return
 	return
 
-/obj/structure/machinery/door/poddoor/shutters/open()
+/obj/structure/machinery/door/poddoor/shutters/open(forced = FALSE)
 	if(operating) //doors can still open when emag-disabled
 		return FALSE
 
@@ -40,12 +40,14 @@
 	icon_state = "[base_icon_state]0"
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/finish_open()
 	if(operating != DOOR_OPERATING_OPENING)
 		return
+	if(QDELETED(src))
+		return // Specifically checked because of the possiible addtimer
 
 	density = FALSE
 	layer = open_layer
@@ -53,9 +55,9 @@
 
 	operating = DOOR_OPERATING_IDLE
 	if(autoclose)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/obj/structure/machinery/door/poddoor/shutters/close()
+/obj/structure/machinery/door/poddoor/shutters/close(forced = FALSE)
 	if(operating)
 		return FALSE
 
@@ -68,7 +70,7 @@
 		set_opacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/finish_close()

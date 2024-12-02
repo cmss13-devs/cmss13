@@ -224,12 +224,14 @@
 	set_opacity(FALSE)
 	if(length(filler_turfs))
 		change_filler_opacity(opacity)
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/proc/finish_open()
 	if(operating != DOOR_OPERATING_OPENING)
 		return
+	if(QDELETED(src))
+		return // Specifically checked because of the possiible addtimer
 
 	layer = open_layer
 	density = FALSE
@@ -237,7 +239,7 @@
 
 	operating = DOOR_OPERATING_IDLE
 	if(autoclose)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), normalspeed ? 150 + openspeed : 5, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), normalspeed ? 15 SECONDS + openspeed : 5 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/machinery/door/proc/close(forced = FALSE)
 	if(density && !operating)
@@ -251,7 +253,7 @@
 	density = TRUE
 	layer = closed_layer
 	do_animate("closing")
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/proc/finish_close()

@@ -1,0 +1,8 @@
+2024-12-02:
+  Blundir:
+  - rscadd: different joe types have different death sounds
+  - bugfix: hazman joe having emote panel ui with incorrect ui theme
+  - bugfix: hazman joe having voice lines too loud
+  - soundadd: added 201 new lines total for hazmat and normal joes combined
+  realforest2001:
+  - rscadd: Added CO to MP timelocks, and ASO to command timelocks.

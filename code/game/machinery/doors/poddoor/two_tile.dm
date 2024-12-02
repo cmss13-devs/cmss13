@@ -22,11 +22,11 @@
 	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/open(forced = FALSE)
-	if(operating) //doors can still open when emag-disabled
-		return FALSE
-
 	if(!density)
 		return
+
+	if(operating) //doors can still open when emag-disabled
+		return FALSE
 
 	operating = DOOR_OPERATING_OPENING
 	start_opening()
@@ -62,11 +62,11 @@
 
 
 /obj/structure/machinery/door/poddoor/two_tile/close(forced = FALSE)
-	if(operating)
-		return FALSE
-
 	if(density)
 		return
+
+	if(operating)
+		return FALSE
 
 	start_closing()
 	addtimer(CALLBACK(src, PROC_REF(close_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)

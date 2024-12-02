@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix squad overlay sometimes not getting removed when helmet exceeded its helmet garb overlay slots"
+  - rscdel: "Remove some effectively dead code attempting to add hugger damage to helmets"

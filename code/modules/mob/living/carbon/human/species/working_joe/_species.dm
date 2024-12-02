@@ -31,7 +31,7 @@
 /datum/species/synthetic/colonial/working_joe/upp/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	if(!gibbed) //A gibbed Joe won't have a death rattle
 		return
-	playsound(get_turf(dying_joe), "uppj_death", 25, FALSE)
+	playsound(get_turf(dying_joe), "upp_wj_death", 25, FALSE)
 
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()

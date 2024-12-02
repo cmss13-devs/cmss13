@@ -265,6 +265,7 @@
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
 	var/covered = TRUE
+	var/covered_icon_state = "catwalk"
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 	. = ..()
@@ -275,7 +276,7 @@
 /turf/open/floor/plating/plating_catwalk/update_icon()
 	. = ..()
 	if(covered)
-		overlays += image(icon, src, "catwalk", CATWALK_LAYER)
+		overlays += image(icon, src, covered_icon_state, CATWALK_LAYER)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
@@ -322,19 +323,13 @@
 /turf/open/floor/plating/plating_catwalk/aicore
 	icon = 'icons/turf/floors/aicore.dmi'
 	icon_state = "ai_plating_catwalk"
-
-/turf/open/floor/plating/plating_catwalk/aicore/update_icon()
-	. = ..()
-	if(covered)
-		overlays += image(icon, src, "ai_catwalk", CATWALK_LAYER)
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
+	covered_icon_state = "ai_catwalk"
 
 /turf/open/floor/plating/plating_catwalk/aicore/white
 	icon_state = "w_ai_plating_catwalk"
-
-/turf/open/floor/plating/plating_catwalk/aicore/white/update_icon()
-	. = ..()
-	if(covered)
-		overlays += image(icon, src, "w_ai_catwalk", CATWALK_LAYER)
+	covered_icon_state = "w_ai_catwalk"
 
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"
@@ -350,7 +345,8 @@
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
@@ -2137,11 +2133,14 @@
 
 /turf/open/floor/interior
 	icon = 'icons/turf/floors/interior.dmi'
+	icon_state = null
 
 /turf/open/floor/interior/wood
 	name = "wooden floor"
 	icon_state = "oldwood1"
 	tile_type = /obj/item/stack/tile/wood
+	breakable_tile = FALSE // wood-broken icon_state does not exist in this icon
+	burnable_tile = FALSE // wood-broken icon_state does not exist in this icon
 
 /turf/open/floor/interior/wood/is_wood_floor()
 	return TRUE
@@ -3530,7 +3529,7 @@
 	icon_state = "blueyellowfull"
 
 /turf/open/floor/cafeteria
-	icon_state = "cafeteria"
+	icon_state = "cafeteriaold"
 
 /turf/open/floor/cmo
 	icon_state = "cmo"

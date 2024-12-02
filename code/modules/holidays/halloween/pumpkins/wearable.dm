@@ -59,7 +59,7 @@
 	else
 		return ..()
 
-/obj/item/clothing/head/pumpkin/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/head/pumpkin/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/pumpkin = ..()
 	if(carved_icon && slot == WEAR_HEAD)
 		var/image/overlay = overlay_image(icon, "[prefix]pumpkin_[carved_icon]")

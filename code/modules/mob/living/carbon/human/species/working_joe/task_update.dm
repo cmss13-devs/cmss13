@@ -20,17 +20,18 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/follow_me
 	key = "followme"
 	sound = 'sound/voice/joe/follow_me.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/proydemte.ogg'
 	say_message = "Follow me."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/follow_me_please
 	key = "followmeplease"
 	sound = 'sound/voice/joe/follow_me_please.ogg'
 	haz_sound = 'sound/voice/joe/follow_me_please_haz.ogg'
-	upp_joe_sound = 'sound/voice/joe/upp_joe/proydemte.ogg'
 	say_message = "Follow me please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/come_with_me
 	key = "comewithme"

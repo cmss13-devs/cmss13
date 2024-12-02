@@ -211,3 +211,10 @@
 	sound = 'sound/voice/joe/registration.ogg'
 	say_message = "Your registration is almost complete."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/security_means
+	key = "securitymeans"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/joinus.ogg'
+	say_message = "At the present moment, we have to strengthen security measures."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

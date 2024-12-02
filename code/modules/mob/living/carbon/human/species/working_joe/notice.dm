@@ -21,9 +21,10 @@
 	key = "careful"
 	sound = 'sound/voice/joe/be_careful_with_that.ogg'
 	haz_sound = 'sound/voice/joe/be_careful_with_that_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ostorozhnee.ogg'
 	say_message = "Be careful with that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/firearm
 	key = "firearm"
@@ -50,9 +51,10 @@
 	key = "permitforthat"
 	sound = 'sound/voice/joe/permit_for_that.ogg'
 	haz_sound = 'sound/voice/joe/permit_for_that_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nadeusuvasestrazre.ogg'
 	say_message = "I assume you have a permit for that weapon."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/invest_disturbance
 	key = "investigatedisturbance"
@@ -118,17 +120,19 @@
 	key = "safetylog"
 	sound = 'sound/voice/joe/safety_log.ogg'
 	haz_sound = 'sound/voice/joe/safety_log_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zurnal.ogg'
 	say_message = "Safety log updated."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/strange
 	key = "strange"
 	sound = 'sound/voice/joe/strange.ogg'
 	haz_sound = 'sound/voice/joe/strange_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/stranno.ogg'
 	say_message = "Strange."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/report_this
 	key = "reportthis"
@@ -155,8 +159,9 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/potential_hazard
 	key = "potentialhazard"
 	sound = 'sound/voice/joe/potential_hazard.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ugroza.ogg'
 	say_message = "A potential hazard."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/saw_that
 	key = "sawthat"
@@ -168,9 +173,10 @@
 	key = "cleanup"
 	sound = 'sound/voice/joe/clean_up.ogg'
 	haz_sound = 'sound/voice/joe/clean_up_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/uborka.ogg'
 	say_message = "Clean up required."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/curious
 	key = "curious"

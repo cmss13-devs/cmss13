@@ -236,3 +236,10 @@
 	say_message = "Why would you do this?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/why_did_you
+	key = "whydidyou"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zachem.ogg'
+	say_message = "Why did you do this?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

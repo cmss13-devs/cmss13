@@ -73,13 +73,21 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach_upp
+	key = "safetybreachupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/vinarushaete.ogg'
+	say_message = "You are violating multiple rules at the same time."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety
 	key = "safety"
 	sound = 'sound/voice/joe/safety.ogg'
 	haz_sound = 'sound/voice/joe/safety_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/yavamobyasnyu.ogg'
 	say_message = "You and I are going to have a talk about safety."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_tolerated
 	key = "nottolerated"

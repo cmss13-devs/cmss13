@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "USCM notice sent when intel points for non-xeno non-yautja corpses are maxed out"

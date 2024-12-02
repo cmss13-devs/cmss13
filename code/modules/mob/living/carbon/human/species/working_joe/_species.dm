@@ -2,7 +2,7 @@
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
 	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
-	uses_skin_color = FALSE
+	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE, TRAIT_IRON_TEETH)
 
@@ -18,10 +18,20 @@
 	name_plural = "Hazard Joes"
 	emote_panel_type = /datum/joe_emote_panel/hazard
 
+/datum/species/synthetic/colonial/working_joe/hazard/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	if(!gibbed) //A gibbed Joe won't have a death rattle
+		return
+	playsound(get_turf(dying_joe), "hj_death", 25, FALSE)
+
 /datum/species/synthetic/colonial/working_joe/upp
 	name = SYNTH_UPP_JOE
 	name_plural = "Dzho Automaton"
 	emote_panel_type = /datum/joe_emote_panel/upp
+
+/datum/species/synthetic/colonial/working_joe/upp/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	if(!gibbed) //A gibbed Joe won't have a death rattle
+		return
+	playsound(get_turf(dying_joe), "uppj_death", 25, FALSE)
 
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
@@ -31,14 +41,8 @@
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	var/sound_to_play
 	if(!gibbed) //A gibbed Joe won't have a death rattle
-		if(src.name == SYNTH_WORKING_JOE)
-			sound_to_play = "wj_death"
-		if(src.name == SYNTH_UPP_JOE)
-			sound_to_play = "upp_wj_death"
-		else
-			sound_to_play = "wj_death"
-		playsound(dying_joe.loc, sound_to_play, 25, FALSE)
-	return ..()
+		return
+	playsound(get_turf(dying_joe), "wj_death", 25, FALSE)
 
 /// Open the WJ's emote panel, which allows them to use voicelines
 /datum/species/synthetic/colonial/working_joe/open_emote_panel()
@@ -113,6 +117,7 @@
 /datum/joe_emote_panel/hazard/ui_static_data(mob/user)
 	var/list/data = list()
 
+	data["theme"] = "crtyellow"
 	data["categories"] = GLOB.hj_categories
 	data["emotes"] = list()
 

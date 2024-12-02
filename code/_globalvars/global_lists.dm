@@ -610,8 +610,8 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 		if(!(initial(emote.joe_flag) & UPP_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
 			continue
 
-		if(!(initial(emote.category) in GLOB.hj_categories))
-			GLOB.hj_categories += initial(emote.category)
+		if(!(initial(emote.category) in GLOB.uppj_categories))
+			GLOB.uppj_categories += initial(emote.category)
 
 		emotes_to_add += emote
 	return emotes_to_add

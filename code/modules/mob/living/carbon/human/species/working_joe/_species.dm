@@ -135,7 +135,7 @@
 	var/list/data = list()
 
 	data["theme"] = "crtred"
-	data["categories"] = GLOB.wj_categories
+	data["categories"] = GLOB.uppj_categories
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.uppj_emotes)

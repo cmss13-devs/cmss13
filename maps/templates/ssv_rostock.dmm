@@ -8737,7 +8737,7 @@
 "gNT" = (
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Polkovnik","UPP Support Synthetic","UPP Political Commissar")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -12394,7 +12394,7 @@
 	},
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Polkovnik","UPP Support Synthetic","UPP Political Commissar")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -13506,11 +13506,11 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/hangar/repairbay)
 "kdz" = (
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments{
 	pixel_y = 31;
 	density = 0
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "kdQ" = (
@@ -19251,7 +19251,7 @@
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
 "oMZ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo,
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_uniform,
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "oNk" = (
@@ -24271,7 +24271,6 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/upp_uniform,
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "sIC" = (
@@ -25625,7 +25624,7 @@
 	},
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Polkovnik","UPP Support Synthetic","UPP Political Commissar")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)

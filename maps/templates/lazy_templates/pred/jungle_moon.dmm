@@ -12,7 +12,7 @@
 /area/yautja_grounds/south)
 "ac" = (
 /obj/structure/machinery/hunt_ground_escape,
-/turf/closed/wall/rock/brown,
+/turf/closed/wall/strata_ice/jungle,
 /area/yautja_grounds/jungle/north)
 "ad" = (
 /obj/structure/blocker/preserve_edge,
@@ -22,10 +22,35 @@
 /obj/structure/blocker/preserve_edge,
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
+"af" = (
+/obj/structure/blocker/preserve_edge,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass/grass1,
+/area/yautja_grounds/jungle/north)
+"ag" = (
+/obj/structure/blocker/preserve_edge,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass/grass2,
+/area/yautja_grounds/jungle/north)
 "ah" = (
 /obj/item/stool,
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple)
+"ai" = (
+/obj/structure/blocker/preserve_edge,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass/grass2,
+/area/yautja_grounds/jungle/north)
 "ak" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
@@ -9531,11 +9556,11 @@ oh
 oh
 oh
 oh
-oh
-oh
-oh
-oh
-oh
+PT
+PT
+PT
+PT
+PT
 PT
 md
 ih
@@ -9630,10 +9655,10 @@ oh
 oh
 oh
 oh
-oh
-ad
-md
-ih
+PT
+af
+ae
+bo
 aa
 us
 md
@@ -9729,9 +9754,9 @@ oh
 oh
 oh
 oh
-oh
-ae
-ih
+PT
+ag
+ad
 md
 aa
 us
@@ -9828,9 +9853,9 @@ oh
 oh
 oh
 oh
-oh
-ae
-ih
+PT
+ai
+ad
 ih
 aa
 uJ
@@ -9927,9 +9952,9 @@ oh
 oh
 oh
 oh
-oh
-ad
-md
+PT
+af
+ae
 md
 aa
 ih
@@ -10026,10 +10051,10 @@ oh
 oh
 oh
 oh
-oh
-oh
-oh
-oh
+PT
+PT
+PT
+PT
 ac
 ih
 ih

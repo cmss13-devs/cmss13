@@ -9287,7 +9287,7 @@
 	},
 /obj/effect/decal/remains/xeno,
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/west_tcomms_road)
 "aXJ" = (
 /obj/structure/foamed_metal{

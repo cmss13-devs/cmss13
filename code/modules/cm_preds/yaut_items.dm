@@ -1149,6 +1149,9 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return ..()
 
+	if(user.action_busy)
+		return
+
 	if(!istype(potential_limb, /obj/item/clothing/accessory/limb/skeleton))
 		return ..()
 

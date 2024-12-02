@@ -2884,10 +2884,10 @@
 
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP General Polkovnik (Cryo)"
-=======
+
 /datum/equipment_preset/upp/officer/flag/ley_gen/dressed
 	name = "UPP General Polkovnik"
->>>>>>> master
+
 	assignment = JOB_UPP_LT_GENERAL
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."

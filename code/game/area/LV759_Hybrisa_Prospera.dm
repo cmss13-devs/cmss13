@@ -1170,7 +1170,7 @@
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex"
 	icon_state = "wylab"
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
-	ceiling = CEILING_METAL
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	unoviable_timer = FALSE
 
 /area/lv759/indoors/wy_research_complex/medical_annex

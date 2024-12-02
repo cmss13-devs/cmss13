@@ -42,11 +42,129 @@ var turfcontents = [];
 var turfname = "";
 var imageRetryDelay = 500;
 var imageRetryLimit = 50;
+var topButtons = document.getElementById("top-buttons");
 var menu = document.getElementById("menu");
+var endMenu = document.getElementById("end-menu")
 var under_menu = document.getElementById("under_menu");
 var statcontentdiv = document.getElementById("statcontent");
 var storedimages = [];
 var split_admin_tabs = false;
+
+const bigButtons = [
+	{
+		name: "Changelog",
+		command: "Changelog"
+	},
+	{
+		name: "Rules",
+		command: "rules"
+	},
+	{
+		name: "Wiki",
+		command: "wiki"
+	},
+	{
+		name: "Forum",
+		command: "forum"
+	},
+	{
+		name: "Submit Bug",
+		command: "submit-bug",
+		class: "bug-button"
+	},
+	{
+		name: "Discord",
+		command: "discord",
+		class: "discord-button"
+	}
+]
+
+const clientButtons = {
+	"File": [
+		{name: "Take Screenshot	(F2)", command: ".screenshot auto"},
+		{name: "Save Screenshot As (Shift+F2)", command: ".screenshot"},
+		{divider: true},
+		{name: "Reconnect", command: ".reconnect"},
+		{name: "Options & Messages", command: ".options"},
+		{name: "Quit", command: ".quit"},
+	],
+	"Icons": [
+		{
+			name: "Stretch to fit",
+			command: ".winset \"mapwindow.map.icon-size=0\"",
+			active: "icon-size",
+			value: "0"
+		},
+		{
+			name: "256x256 (4x)",
+			command: ".winset \"mapwindow.map.icon-size=256\"",
+			active: "icon-size",
+			value: "256"
+		},
+		{
+			name: "128x128 (3x)",
+			command: ".winset \"mapwindow.map.icon-size=128\"",
+			active: "icon-size",
+			value: "128"
+		},
+		{
+			name: "96x96 (2.5x)",
+			command: ".winset \"mapwindow.map.icon-size=96\"",
+			active: "icon-size",
+			value: "96"
+		},
+		{
+			name: "64x64 (2x)",
+			command: ".winset \"mapwindow.map.icon-size=64\"",
+			active: "icon-size",
+			value: "64"
+		},
+		{
+			name: "32x32",
+			command: ".winset \"mapwindow.map.icon-size=32\"",
+			active: "icon-size",
+			value: "32"
+		},
+		{ divider: true },
+		{
+			name: "Text Mode",
+			command: ".winset \"mapwindow.map.text-mode=false?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\"",
+			active: "text-mode",
+			toggle: true
+		}
+	],
+	"Rendering": [
+		{
+			name: "Nearest Neighbour",
+			command: ".winset \"mapwindow.map.zoom-mode=distort\"",
+			active: "zoom-mode",
+			value: "distort"
+		},
+		{
+			name: "Point Sampling",
+			command: ".winset \"mapwindow.map.zoom-mode=normal\"",
+			active: "zoom-mode",
+			value: "normal"
+		},
+		{
+			name: "Bilinear",
+			command: ".winset \"mapwindow.map.zoom-mode=blur\"",
+			active: "zoom-mode",
+			value: "blur"
+		},
+	],
+	"Help": [
+		{name: "Admin Help", command: "adminhelp"},
+	],
+	"Volume": [
+		{name: "Effects", command: "Adjust-Volume-SFX"},
+		{name: "Ambience", command: "Adjust-Volume-Ambience"},
+		{name: "Admin Music", command: "Adjust-Volume-Admin-Music"}
+	],
+	"Statbrowser": [
+		{name: "Change Fontsize", function: openOptionsMenu}
+	]
+}
 
 // Any BYOND commands that could result in the client's focus changing go through this
 // to ensure that when we relinquish our focus, we don't do it after the result of
@@ -55,7 +173,7 @@ function run_after_focus(callback) {
 	setTimeout(callback, 0);
 }
 
-function createStatusTab(name) {
+function createStatusTab(name, end) {
 	if (name.indexOf(".") != -1) {
 		var splitName = name.split(".");
 		if (split_admin_tabs && splitName[0] === "Admin") name = splitName[1];
@@ -91,8 +209,13 @@ function createStatusTab(name) {
 			B.style.order = name.charCodeAt(0);
 	}
 
+	if (end) {
+		endMenu.appendChild(B)
+	} else {
+		menu.appendChild(B);
+	}
+
 	//END ORDERING
-	menu.appendChild(B);
 	SendTabToByond(name);
 	under_menu.style.height = menu.clientHeight + "px";
 }
@@ -127,11 +250,11 @@ window.onresize = function () {
 	under_menu.style.height = menu.clientHeight + "px";
 };
 
-function addPermanentTab(name) {
+function addPermanentTab(name, end) {
 	if (!permanent_tabs.includes(name)) {
 		permanent_tabs.push(name);
 	}
-	createStatusTab(name);
+	createStatusTab(name, end);
 }
 
 function removePermanentTab(name) {
@@ -282,9 +405,8 @@ function tab_change(tab, force) {
 		draw_sdql2();
 	} else if (tab == turfname) {
 		draw_listedturf();
-	} else if (tab == "Panel Options") {
-		openOptionsMenu();
-		tab_change(oldTab);
+	} else if (tab == "Options") {
+		drawClientOptions();
 	} else {
 		statcontentdiv.textContext = "Loading...";
 	}
@@ -396,6 +518,7 @@ function draw_status() {
 		} else {
 			var div = document.createElement("div");
 			div.textContent = status_tab_parts[i];
+			div.className = "status-info";
 			document.getElementById("statcontent").appendChild(div);
 		}
 	}
@@ -541,6 +664,70 @@ function remove_mc() {
 	removePermanentTab("MC");
 	if (current_tab == "MC") {
 		tab_change("Status");
+	}
+}
+
+function drawClientOptions() {
+	statcontentdiv.textContent = "";
+
+	const stat = document.getElementById("statcontent");
+
+	for(let key in clientButtons) {
+		const title = document.createElement("h3");
+		title.textContent = key
+
+		stat.appendChild(title)
+
+		for(let index in clientButtons[key]) {
+			const button = clientButtons[key][index];
+
+			if (button.divider) {
+				const breakElement = document.createElement("br");
+				stat.appendChild(breakElement);
+				stat.appendChild(breakElement);
+
+				continue
+			}
+
+			if (!button.name) continue;
+
+			const buttonElement = document.createElement("div");
+			buttonElement.className = "button";
+			buttonElement.textContent = button.name;
+
+			if (button.active && (button.value || button.toggle)) {
+				if(button.toggle) {
+					localStorage.getItem(button.active) == "true"
+						? buttonElement.textContent = "✔️ " + button.name
+						: null;
+				} else {
+					localStorage.getItem(button.active) == button.value
+					? buttonElement.textContent = "✔️ " + button.name
+					: null;
+				}
+			}
+
+			buttonElement.onclick = function () {
+				button.function
+					? button.function()
+					: Byond.command(button.command);
+
+				if(button.toggle) {
+					localStorage.setItem(
+						button.active,
+						localStorage.getItem(button.active) == "true"
+							? "false"
+							: "true"
+					)
+				} else if (button.value) {
+					localStorage.setItem(button.active, button.value);
+				}
+				drawClientOptions();
+			};
+
+			stat.appendChild(buttonElement)
+		}
+
 	}
 }
 
@@ -851,6 +1038,28 @@ if (!current_tab) {
 	tab_change("Status");
 }
 
+for(var key in bigButtons) {
+	const button = bigButtons[key];
+
+	if(!button.name) continue;
+
+	const buttonElement = document.createElement("div");
+	buttonElement.className = "button top-button";
+	if(button.class) {
+		buttonElement.className = buttonElement.className + " " + button.class;
+	}
+	buttonElement.textContent = button.name;
+	buttonElement.onclick = function() {
+		Byond.command(button.command)
+	};
+
+	topButtons.appendChild(buttonElement);
+}
+
+statcontentdiv.onmouseenter = function () {
+	statcontentdiv.focus();
+}
+
 window.onload = function () {
 	Byond.sendMessage("Update-Verbs");
 };
@@ -1060,7 +1269,7 @@ Byond.subscribeTo("remove_mc", remove_mc);
 Byond.subscribeTo("add_verb_list", add_verb_list);
 
 function createOptionsButton() {
-	addPermanentTab("Panel Options");
+	addPermanentTab("Options", true);
 }
 
 function openOptionsMenu() {

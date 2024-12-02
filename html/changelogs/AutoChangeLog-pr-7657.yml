@@ -1,0 +1,4 @@
+author: "BOBAMA"
+delete-after: True
+changes:
+  - bugfix: "missing paygrades, remove CL tracker on hvh headsets, pmcs on longer get all marine announcements by default"

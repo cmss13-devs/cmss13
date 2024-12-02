@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "LZ smoke is now disabled by default on distress signal"
-  - admin: "Added game mode toggle to toggle LZ smoke during the first 3 minutes of the round (otherwise is locked in)"

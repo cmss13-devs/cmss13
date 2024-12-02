@@ -1,5 +1,0 @@
-author: "Steelpoint, Zenith"
-delete-after: True
-changes:
-  - mapadd: "Two UPP dropships have been added for event use, the Morana and the Devana."
-  - maptweak: "Fixes a issue preventing the Saipan, a USCM dropship, from being spawned by admins for events."

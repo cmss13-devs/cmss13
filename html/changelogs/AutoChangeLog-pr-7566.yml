@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Added some more sanity code to ensure time of death is recorded for larva queue"

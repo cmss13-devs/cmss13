@@ -10,7 +10,6 @@
 /area/shuttle/drop1
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
@@ -26,6 +25,7 @@
 	icon_state = "shuttlered"
 	base_muffle = MUFFLE_HIGH
 	base_lighting_alpha = 255
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop1/LV624
 	name = "\improper Dropship Alamo"
@@ -69,7 +69,6 @@
 /area/shuttle/drop2
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
@@ -80,6 +79,7 @@
 	icon_state = "shuttle"
 	base_muffle = MUFFLE_HIGH
 	base_lighting_alpha = 255
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/LV624
 	name = "\improper Dropship Normandy"
@@ -123,7 +123,6 @@
 /area/shuttle/drop3
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL
@@ -177,7 +176,6 @@
 
 /area/shuttle/drop_upp
 	soundscape_interval = 30 //seconds
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
 	ceiling = CEILING_REINFORCED_METAL

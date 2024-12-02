@@ -8,15 +8,26 @@
 /// The amount of characters needed before this increase takes into effect
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
-/// Creates text that will float from the atom upwards to the viewer.
-/atom/proc/balloon_alert(mob/viewer, text, text_color)
+var/list/last_balloon_alert = list()
+
+/proc/can_display_balloon_alert(atom/source, delay)
+	var/last_time = last_balloon_alert[source]
+	if (last_time && (world.time - last_time < delay))
+		return FALSE
+	return TRUE
+
+/atom/proc/balloon_alert(mob/viewer, text, text_color, delay = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	if (delay > 0 && !can_display_balloon_alert(src, delay))
+		return
+
+	last_balloon_alert[src] = world.time
 	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text, text_color)
 
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
-/atom/proc/balloon_alert_to_viewers(message, self_message, max_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, text_color)
+/atom/proc/balloon_alert_to_viewers(message, self_message, max_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, text_color, delay = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/list/hearers = get_mobs_in_view(max_distance, src)
@@ -25,8 +36,7 @@
 	for(var/mob/hearer in hearers)
 		if(is_blind(hearer))
 			continue
-
-		balloon_alert(hearer, (hearer == src && self_message) || message, text_color)
+		balloon_alert(hearer, (hearer == src && self_message) || message, text_color, delay)
 
 // Do not use.
 // MeasureText blocks. I have no idea for how long.

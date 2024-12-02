@@ -14,7 +14,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 	minimap_icon = "surv"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_background = "background_civillian"
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
@@ -37,6 +37,7 @@
 		/obj/item/clothing/under/colonist/workwear/khaki,
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
+		/obj/item/clothing/under/colonist/workwear/blue,
 	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -55,6 +56,10 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
 	)
 	dress_extra = list(
 		/obj/item/clothing/accessory/black,
@@ -105,7 +110,6 @@
 	var/obj/item/clothing/under/uniform = new_human.w_uniform
 	if(istype(uniform))
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
-		uniform.sensor_faction = FACTION_COLONIST
 	return ..()
 
 /*
@@ -132,6 +136,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -160,6 +165,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -257,6 +263,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	assignment = "CMB Deputy"
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
+	minimap_icon = "deputy"
+	minimap_background = "background_cmb"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB DEP"
@@ -324,6 +332,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -367,8 +376,31 @@ Everything bellow is a parent used as a base for one or multiple maps.
 		ACCESS_WY_EXEC,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-
 	survivor_variant = CORPORATE_SURVIVOR
+	minimap_icon = "cl"
+	minimap_background = "background_civillian"
+
+/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+	if(paygrades.len == 1)
+		return paygrades[1]
+	var/playtime
+	if(!mob_client)
+		playtime = JOB_PLAYTIME_TIER_1
+	else
+		playtime = get_job_playtime(mob_client, JOB_CORPORATE_LIAISON)
+		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
+			playtime = JOB_PLAYTIME_TIER_1
+	var/final_paygrade
+	for(var/current_paygrade as anything in paygrades)
+		var/required_time = paygrades[current_paygrade]
+		if(required_time - playtime > 0)
+			break
+		final_paygrade = current_paygrade
+	if(!final_paygrade)
+		. = "???"
+		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
+
+	return final_paygrade
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/field(new_human), WEAR_BODY)
@@ -440,6 +472,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
+	minimap_icon = "obs"
+	minimap_background = "background_cmb"
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -466,6 +500,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
+	minimap_icon = "icc"
+	minimap_background = "background_cmb"
 
 	survivor_variant = CORPORATE_SURVIVOR
 

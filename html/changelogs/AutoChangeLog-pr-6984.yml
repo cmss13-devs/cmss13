@@ -1,5 +1,0 @@
-author: "dongwaiver"
-delete-after: True
-changes:
-  - imageadd: "new m44 revolver sprites"
-  - imagedel: "old m44 revolver sprites"

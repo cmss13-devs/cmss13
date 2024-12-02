@@ -131,6 +131,7 @@
 	name = "Demolitionist Set"
 	role_name = "Demo"
 	skill_to_give = SKILL_SPEC_ROCKET
+	trait_to_give = "demo"
 	kit_typepath = /obj/item/storage/box/spec/demolitionist
 
 /datum/specialist_set/sadar/redeem_set(mob/living/redeemer, kit)
@@ -146,6 +147,7 @@
 	name = "Scout Set"
 	role_name = "Scout"
 	skill_to_give = SKILL_SPEC_SCOUT
+	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
 
 /datum/specialist_set/scout/redeem_set(mob/living/redeemer, kit)
@@ -161,6 +163,7 @@
 	name = "Sniper Set"
 	role_name = "Sniper"
 	skill_to_give = SKILL_SPEC_SNIPER
+	trait_to_give = "sniper"
 	kit_typepath = /obj/item/storage/box/spec/sniper
 	incompatible_sets = list(
 		/datum/specialist_set/anti_mat_sniper,
@@ -170,6 +173,7 @@
 	name = "Anti-Materiel Sniper Set"
 	role_name = "Heavy Sniper"
 	skill_to_give = SKILL_SPEC_SNIPER
+	trait_to_give = "antimat_sniper"
 	kit_typepath = /obj/item/storage/box/spec/sniper/anti_materiel
 	incompatible_sets = list(
 		/datum/specialist_set/sniper,
@@ -179,10 +183,12 @@
 	name = "Heavy Grenadier Set"
 	role_name = "Grenadier"
 	skill_to_give = SKILL_SPEC_GRENADIER
+	trait_to_give = "grenadier"
 	kit_typepath = /obj/item/storage/box/spec/heavy_grenadier
 
 /datum/specialist_set/pyro
 	name = "Pyro Set"
 	role_name = "Pyro"
 	skill_to_give = SKILL_SPEC_PYRO
+	trait_to_give = "pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro

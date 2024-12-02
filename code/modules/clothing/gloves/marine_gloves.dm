@@ -25,9 +25,9 @@
 	/// The dmi where the grayscale squad overlays are contained
 	var/squad_overlay_icon = 'icons/mob/humans/onmob/hands_garb.dmi'
 
-/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot)
+/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot, default_bodytype = "Default")
 	var/image/ret = ..()
-	if(!adopts_squad_color || !(current_human.assigned_squad && current_human.assigned_squad.equipment_color))
+	if(!adopts_squad_color || !(current_human?.assigned_squad?.equipment_color))
 		return ret
 	var/image/glove_overlay = image(squad_overlay_icon, icon_state = "std-gloves")
 	glove_overlay.alpha = current_human.assigned_squad.armor_alpha
@@ -41,6 +41,12 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 	siemens_coefficient = 0
+
+/obj/item/clothing/gloves/marine/insulated/black
+	name = "marine insulated black gloves"
+	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for properly-equipped Marines."
+	icon_state = "black"
+	item_state = "black"
 
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"
@@ -210,7 +216,7 @@
 	name = "\improper L6 pattern combat gloves"
 	desc = "Standard issue tactical gloves used by the royal marines."
 	icon_state = "rmc_gloves"
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/gloves/marine/veteran/cbrn
 	name = "\improper M3 MOPP gloves"

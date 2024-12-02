@@ -243,8 +243,6 @@
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
 
@@ -309,19 +307,17 @@
 	if(loc != victim)
 		victim.chestburst = 0
 		return
+	if(ishuman(victim) || isyautja(victim))
+		victim.emote("burstscream")
+	sleep(25) //Sound delay
 	victim.update_burst()
-	sleep(6) //Sprite delay
+	sleep(10) //Sprite delay
 	if(!victim || !victim.loc)
 		return
 	if(loc != victim)
-		victim.chestburst = 0 //if a doc removes the larva during the sleep(6), we must remove the 'bursting' overlay on the human
+		victim.chestburst = 0 //if a doc removes the larva during the sleep(10), we must remove the 'bursting' overlay on the human
 		victim.update_burst()
 		return
-
-	if(isyautja(victim))
-		victim.emote("roar")
-	else
-		victim.emote("scream")
 
 	var/burstcount = 0
 
@@ -341,7 +337,7 @@
 		if(burstcount)
 			step(larva_embryo, pick(GLOB.cardinals))
 
-		if(GLOB.round_statistics)
+		if(GLOB.round_statistics && (ishuman(victim)) && (SSticker.current_state == GAME_STATE_PLAYING) && (ROUND_TIME > 1 MINUTES))
 			GLOB.round_statistics.total_larva_burst++
 		GLOB.larva_burst_by_hive[hive] = (GLOB.larva_burst_by_hive[hive] || 0) + 1
 		burstcount++

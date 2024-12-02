@@ -10,7 +10,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	hackable = FALSE
 
 	chem_refill = list(
@@ -27,7 +27,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
@@ -90,7 +90,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
@@ -109,7 +109,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
@@ -182,7 +182,7 @@
 		list("M20 Claymore Anti-Personnel Mine", 0, /obj/item/explosive/mine, VENDOR_ITEM_REGULAR),
 		list("M40 HEDP Grenade", 0, /obj/item/explosive/grenade/high_explosive, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Grenade", 0, /obj/item/explosive/grenade/incendiary, VENDOR_ITEM_REGULAR),
-		list("M40 HPDP White Phosphorus Smoke Grenade", 0, /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
+		list("M40 CCDP Chemical Compound Smoke Grenade", 0, /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", floor(scale * 1), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Grenade", 0, /obj/item/explosive/grenade/high_explosive/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Incendiary Airburst Grenade", 0, /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
@@ -374,7 +374,7 @@
 	desc = "An automated restockable storage vendor for use in organizing FOB supplies."
 	req_access = list(ACCESS_MARINE_CARGO)
 	density = TRUE
-	indestructible = TRUE // Deleted with the tent instead
+	explo_proof = TRUE // Deleted with the tent instead
 	needs_power = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent/Initialize()

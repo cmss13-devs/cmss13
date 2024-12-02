@@ -2,7 +2,7 @@
 //******************************************Spec Kits****************************************************************/
 
 /obj/item/storage/box/spec
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	var/kit_overlay = null
 	w_class = SIZE_HUGE
@@ -178,7 +178,7 @@
 /obj/item/spec_kit
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
 
@@ -274,7 +274,7 @@
 //******************************************PFC Kits****************************************************************/
 
 /obj/item/storage/box/kit
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pro_case_mini"//to-do redo these sprites, they're out of date by current standards
 	w_class = SIZE_HUGE
 	storage_slots = 12
@@ -288,14 +288,14 @@
 /obj/item/storage/box/kit/Initialize()
 	. = ..()
 	if(pro_case_overlay)
-		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
+		overlays += image('icons/obj/items/storage/kits.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
 	if(!length(contents))
 		qdel(src)
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"
-	pro_case_overlay = "mou53"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/mou53_sapper/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/double/mou53(src)
@@ -323,7 +323,7 @@
 
 /obj/item/storage/box/kit/machinegunner
 	name = "\improper M2C Heavy Gunner Kit"
-	pro_case_overlay = "hmg"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/machinegunner/fill_preset_inventory()
 	new /obj/item/storage/box/m56d/m2c(src)
@@ -337,7 +337,7 @@
 /obj/item/storage/box/kit/defensegunner
 	name = "\improper M56D Defense Gunner Kit"
 	icon_state = "pro_case_large"
-	pro_case_overlay = "m56d"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/defensegunner/fill_preset_inventory()
 	new /obj/item/storage/box/m56d_hmg(src)
@@ -454,7 +454,7 @@
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
-	pro_case_overlay = "intel"
+	pro_case_overlay = "jtac"
 
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
@@ -465,7 +465,7 @@
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
-	pro_case_overlay = "grenadier"
+	pro_case_overlay = "engi"
 
 /obj/item/storage/box/kit/mini_grenadier/fill_preset_inventory()
 	new /obj/item/storage/belt/grenade/full(src)
@@ -506,7 +506,7 @@
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"
-	pro_case_overlay = "smart"
+	pro_case_overlay = "crayon"
 
 /obj/item/storage/box/kit/exp_trooper/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/smart(src)
@@ -521,7 +521,7 @@
 
 /obj/item/storage/box/kit/honorguard
 	name = "\improper Honor Guard Kit"
-	pro_case_overlay = "honor_guard"
+	pro_case_overlay = "shield"
 
 /obj/item/storage/box/kit/honorguard/fill_preset_inventory()
 	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
@@ -544,6 +544,34 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/k9_handler/mp
+	name = "\improper Police K9 handler Kit"
+	desc = "Contains the equipment needed for a Police K9 Handler to perform their duties."
+	pro_case_overlay = "k9_handler"
+
+/obj/item/storage/box/kit/k9_handler/mp/fill_preset_inventory()
+	new /obj/item/device/k9_scanner(src)
+	new /obj/item/storage/firstaid/synth(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
+	new /obj/item/device/binoculars(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+	new /obj/item/storage/box/evidence(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+
+/obj/item/storage/box/kit/k9_handler/corpsman
+	name = "\improper Medical K9 handler Kit"
+	desc = "Contains the equipment needed for a Medical K9 Handler to perform their duties."
+	pro_case_overlay = "k9_handler"
+
+/obj/item/storage/box/kit/k9_handler/corpsman/fill_preset_inventory()
+	new /obj/item/device/k9_scanner(src)
+	new /obj/item/storage/firstaid/synth(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
+	new /obj/item/device/binoculars(src)
+	new /obj/item/pamphlet/skill/k9_handler(src)
+	new /obj/item/storage/pouch/autoinjector/full(src)
 
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"

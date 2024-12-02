@@ -42,6 +42,23 @@
 
 	CEI.handle_event_info_update(faction)
 
+/client/proc/get_whitelisted_clients()
+	set name = "Find Whitelisted Players"
+	set category = "Admin.Events"
+	if(!admin_holder)
+		return
+
+	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
+
+	var/list/ckeys = list()
+	for(var/client/test_client in GLOB.clients)
+		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
+			ckeys += test_client.ckey
+	if(!length(ckeys))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		return
+	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
+
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
 		return
@@ -559,7 +576,7 @@
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
 			if(alert("Do you want PMCs (not Death Squad) to see this announcement?",,"Yes","No") == "Yes")
-				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
+				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, TRUE)
 			else
 				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
 	else
@@ -718,7 +735,7 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_SPAWN))
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	remote_control = !remote_control

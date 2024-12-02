@@ -4,9 +4,9 @@
 	name = "\improper miscellaneous equipment box"
 	desc = "A box for miscellaneous equipment."
 	icon_state = "supply_crate"
-	overlay_ammo_type = "blank"
-	overlay_gun_type = "blank"
-	overlay_content = "blank"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_blank"
+	overlay_content = "_blank"
 	can_explode = FALSE
 	limit_per_tile = 4
 
@@ -162,6 +162,19 @@
 
 /obj/item/ammo_box/magazine/misc/flashlight/empty
 	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/flashlight/combat
+	name = "\improper box of combat flashlights"
+	desc = "A box of flashlights to brighten your day!"
+	magazine_type = /obj/item/device/flashlight/combat
+	num_of_magazines = 8
+	icon_state = "flashlightbox_combat"
+	icon_state_deployed = "flashlightbox_combat_deployed"
+	overlay_content = "_flashlight"
+
+/obj/item/ammo_box/magazine/misc/flashlight/combat/empty
+	empty = TRUE
+
 
 //------------------------Battery Box--------------------------
 

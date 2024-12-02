@@ -156,7 +156,7 @@
 	return TRUE
 
 /obj/structure/flag/plantable/attackby(obj/item/weapon, mob/living/user)
-	if(!indestructible)
+	if(!explo_proof)
 		visible_message(SPAN_DANGER("[src] has been hit by [user] with [weapon]!"), null, 5, CHAT_TYPE_MELEE_HIT)
 		user.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
@@ -174,7 +174,7 @@
 	throwforce = 5
 	hitsound = "swing_hit"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'

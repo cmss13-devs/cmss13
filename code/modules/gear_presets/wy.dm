@@ -10,6 +10,9 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
+	minimap_icon = "cl"
+	minimap_background = "background_civillian"
+
 	dress_under = list(
 		/obj/item/clothing/under/liaison_suit/black,
 		/obj/item/clothing/under/liaison_suit/blue,
@@ -29,6 +32,7 @@
 		/obj/item/clothing/under/colonist/workwear/khaki,
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
+		/obj/item/clothing/under/colonist/workwear/blue,
 	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -47,6 +51,10 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
+		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
 	)
 	dress_extra = list(
 		/obj/item/clothing/accessory/black,

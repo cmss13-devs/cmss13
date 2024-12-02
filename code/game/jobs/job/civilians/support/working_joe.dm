@@ -69,8 +69,8 @@
 
 /datum/job/antag/upp/dzho_automaton
 	title = JOB_UPP_JOE
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3 //Number is actually based on information from Colonial Marines_Operations Manual, 1IVAN/3 starts to lag if it is connected to more than 3.
+	spawn_positions = 3
 	allow_additional = TRUE
 	scaled = FALSE
 	supervisors = "1VAN/3 and UPP command staff"

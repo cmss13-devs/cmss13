@@ -48,6 +48,13 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/unpleasant
+	key = "unpleasant"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nepriyatno.ogg'
+	say_message = "Unpleasant."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/dont_recommend
 	key = "dontrecommend"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_recomenduyu.ogg'

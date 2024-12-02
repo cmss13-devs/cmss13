@@ -2192,8 +2192,23 @@
 	)
 
 //*****************************************************************************************************/
+/datum/job/antag/upp/officer/co_whitelist
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER
+	title = JOB_UPP_CO_OFFICER
+	gear_preset = /datum/equipment_preset/upp/officer/major/co
+
+/datum/job/antag/upp/officer/co_whitelist/New()
+	. = ..()
+	gear_preset_whitelist = list(
+		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/upp/officer/major/co,
+		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/upp/officer/flag/podpolkovnik/co,
+		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/upp/officer/flag/polkovnik/co
+	)
+
 /datum/job/antag/upp/officer/major
-	flags_whitelist =  WHITELIST_COMMANDER
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER
 	title = JOB_UPP_MAY_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/major
 
@@ -2205,6 +2220,11 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
+
+/datum/equipment_preset/upp/officer/major/co
+	name = "UPP Mayjor (CO)(Cryo)"
+	assignment = JOB_UPP_CO_OFFICER
+	rank = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/major/dressed
 	name = "UPP Major"
@@ -2371,12 +2391,13 @@
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/podpolkovnik
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
-	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
+	gear_preset = /datum/equipment_preset/upp/officer/flag/podpolkovnik
 
 
-/datum/equipment_preset/upp/officer/podpolkovnik
+/datum/equipment_preset/upp/officer/flag/podpolkovnik
 	name = "UPP Podpolkovnik (Cryo)"
 	assignment = JOB_UPP_LTKOL_OFFICER
 	rank = JOB_UPP_LTKOL_OFFICER
@@ -2385,194 +2406,30 @@
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/podpolkovnik/dressed
-	name = "UPP Leytenant Kolonel"
-	access = ACCESS_LIST_UPP_ALL
+/datum/equipment_preset/upp/officer/flag/podpolkovnik/co
+	name = "UPP Podpolkovnik (CO)(Cryo)"
+	assignment = JOB_UPP_CO_OFFICER
+	rank = JOB_UPP_CO_OFFICER
 
-/datum/equipment_preset/upp/officer/podpolkovnik/dressed/load_gear(mob/living/carbon/human/new_human)
-	//back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/megaphone, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet/upp, WEAR_IN_BACK)
-	//face
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
-	//head
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked, WEAR_HEAD)
-	//uniform
-	var/obj/item/clothing/under/marine/veteran/UPP/officer/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
-
-	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer/leader, WEAR_J_STORE)
-	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73/leader, WEAR_WAIST)
-	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	//pockets
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
-
-/datum/equipment_preset/upp/officer/podpolkovnik/get_antag_clothing_equipment()
-	return list(
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Apparel", 0, list(/obj/item/clothing/under/marine/veteran/UPP/officer, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran, /obj/item/device/radio/headset/distress/UPP/command), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
-
-		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Peaked Cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
-		list("Ushanka", 0, /obj/item/clothing/head/uppcap/ushanka, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("UL4 senior officer jacket", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("UL6 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/support, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-
-		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("Type 74 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/type47/t73/leader, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-
-		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("Auto-Injector Pouch", 0, /obj/item/storage/pouch/autoinjector, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Bayonet Sheath", 0, /obj/item/storage/pouch/bayonet/upp, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Explosive Pouch", 0, /obj/item/storage/pouch/explosive, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-		list("ATTACHMENT (CHOOSE 1)", 0, null, null, null),
-		list("Angled Grip", 0, /obj/item/attachable/angledgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", 0, /obj/item/attachable/extended_barrel, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-
-		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-
-		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	)
-
-/datum/equipment_preset/upp/officer/podpolkovnik/get_antag_gear_equipment()
-	return list(
-		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
-		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-
-		list("ENGINEERING SUPPLIES", 0, null, null, null),
-		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
-		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
-		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
-		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
-
-		list("MEDICAL SUPPLIES", 0, null, null, null),
-		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
-		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
-
-		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
-
-		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
-		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
-
-		list("ATTACHMENTS", 0, null, null, null),
-		list("Angled Grip", 10, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", 10, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 10, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 10, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 10, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 10, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 10, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
-
-		list("EXPLOSIVES", 0, null, null, null),
-		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
-		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
-		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
-
-		list("UTILITIES", 0, null, null, null),
-		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
-		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
-		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Zip cuffs", 1, /obj/item/storage/box/zipcuffs, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 8, /obj/item/device/motiondetector/hacked, null, VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
-
-		list("BINOCULARS", 0, null, null, null),
-		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
-		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
-	)
+/datum/equipment_preset/upp/officer/flag/dressed/podpolkovnik
+	name = "UPP Podpolkovnik"
+	assignment = JOB_UPP_LTKOL_OFFICER
+	rank = JOB_UPP_LTKOL_OFFICER
+	role_comm_title = "Lt. Kol."
+	minimap_icon = "upp_co"
+	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
+  access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
-/datum/job/antag/upp/officer/kolonel
-	flags_whitelist = WHITELIST_COMMANDER_COLONEL
-	title = JOB_UPP_KOL_OFFICER
-	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
-
-/datum/equipment_preset/upp/officer/polkovnik
-	name = "UPP General Mayjor (Cryo)"
-	assignment = JOB_UPP_BRIG_GENERAL
-	rank = JOB_UPP_BRIG_GENERAL
-	role_comm_title = "Kol."
+/datum/equipment_preset/upp/officer/flag
+	name = "UPP Flag Officer Base"
 	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
+/datum/equipment_preset/upp/officer/flag/dressed
+	name = "UPP Flag Officer Base (Dressed)"
 
-/datum/equipment_preset/upp/officer/polkovnik/dressed
-	name = "UPP Kolonel"
-	access = ACCESS_LIST_UPP_ALL
-
-/datum/equipment_preset/upp/officer/polkovnik/dressed/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/officer/flag/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
@@ -2614,7 +2471,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
-/datum/equipment_preset/upp/officer/polkovnik/get_antag_clothing_equipment()
+/datum/equipment_preset/upp/officer/flag/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -2664,7 +2521,7 @@
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/upp/officer/polkovnik/get_antag_gear_equipment()
+/datum/equipment_preset/upp/officer/flag/get_antag_gear_equipment()
 	return list(
 		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
@@ -2728,530 +2585,110 @@
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 	)
 
+
+/datum/job/antag/upp/officer/kolonel
+	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_whitelist = WHITELIST_COMMANDER_COLONEL|WHITELIST_COMMANDER_LEADER
+	title = JOB_UPP_KOL_OFFICER
+	gear_preset = /datum/equipment_preset/upp/officer/flag/podpolkovnik
+
+
+/datum/equipment_preset/upp/officer/flag/polkovnik
+	name = "UPP Polkovnik (Cryo)"
+	assignment = JOB_UPP_KOL_OFFICER
+	rank = JOB_UPP_KOL_OFFICER
+	role_comm_title = "Kol."
+	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/upp/officer/flag/polkovnik/co
+	name = "UPP Polkovnik (CO)(Cryo)"
+	assignment = JOB_UPP_CO_OFFICER
+	rank = JOB_UPP_CO_OFFICER
+
+/datum/equipment_preset/upp/officer/flag/dressed/polkovnik
+	name = "UPP Polkovnik"
+	assignment = JOB_UPP_KOL_OFFICER
+	rank = JOB_UPP_KOL_OFFICER
+	role_comm_title = "Kol."
+	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 //*****************************************************************************************************/
 
 //===================//
 //  Flag Officers  //
 //===============//
-/datum/equipment_preset/upp/officer/may_gen
+/datum/equipment_preset/upp/officer/flag/brig_gen
+	name = "UPP General Mayjor (Cryo)"
+	assignment = JOB_UPP_BRIG_GENERAL
+	rank = JOB_UPP_BRIG_GENERAL
+	role_comm_title = "May. Gen."
+	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/upp/officer/flag/dressed/brig_gen
+	name = "UPP General Mayjor"
+	assignment = JOB_UPP_BRIG_GENERAL
+	rank = JOB_UPP_BRIG_GENERAL
+	role_comm_title = "May. Gen."
+	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/upp/officer/flag/may_gen
 	name = "UPP General Leytenant (Cryo)"
 	assignment = JOB_UPP_MAY_GENERAL
 	rank = JOB_UPP_MAY_GENERAL
-	role_comm_title = "May. Gen."
+	role_comm_title = "Ley. Gen."
 	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/may_gen/dressed
-	name = "UPP Mayjor General"
-	access = ACCESS_LIST_UPP_ALL
-
-/datum/equipment_preset/upp/officer/may_gen/dressed/load_gear(mob/living/carbon/human/new_human)
-	//back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/megaphone, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet/upp, WEAR_IN_BACK)
-	//face
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
-	//head
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked, WEAR_HEAD)
-	//uniform
-	var/obj/item/clothing/under/marine/veteran/UPP/officer/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
-
-	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer/leader, WEAR_J_STORE)
-	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73/leader, WEAR_WAIST)
-	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	//pockets
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
-
-/datum/equipment_preset/upp/officer/may_gen/get_antag_clothing_equipment()
-	return list(
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/officer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
-
-		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-
-		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Peaked Cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
-		list("Ushanka", 0, /obj/item/clothing/head/uppcap/ushanka, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("UL4 senior officer jacket", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("UL6 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/support, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-
-		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("Type 74 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/type47/t73/leader, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-
-		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("Auto-Injector Pouch", 0, /obj/item/storage/pouch/autoinjector, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Bayonet Sheath", 0, /obj/item/storage/pouch/bayonet/upp, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Explosive Pouch", 0, /obj/item/storage/pouch/explosive, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-
-		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	)
-
-/datum/equipment_preset/upp/officer/may_gen/get_antag_gear_equipment()
-	return list(
-		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
-		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-
-		list("ENGINEERING SUPPLIES", 0, null, null, null),
-		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
-		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
-		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
-		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
-
-		list("MEDICAL SUPPLIES", 0, null, null, null),
-		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
-		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
-
-		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
-
-		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
-		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
-
-		list("ATTACHMENTS", 0, null, null, null),
-		list("Angled Grip", 10, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", 10, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 10, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 10, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 10, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 10, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 10, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
-
-		list("EXPLOSIVES", 0, null, null, null),
-		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
-		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
-		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
-
-		list("UTILITIES", 0, null, null, null),
-		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
-		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
-		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 8, /obj/item/device/motiondetector/hacked, null, VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
-
-		list("BINOCULARS", 0, null, null, null),
-		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
-		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
-	)
+/datum/equipment_preset/upp/officer/flag/may_gen/dressed
+	name = "UPP General Leytenant"
+	assignment = JOB_UPP_MAY_GENERAL
+	rank = JOB_UPP_MAY_GENERAL
+	role_comm_title = "Ley. Gen."
+	minimap_icon = "upp_co"
+	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
+  access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
 	title = JOB_UPP_LT_GENERAL
-	gear_preset = /datum/equipment_preset/upp/officer/ley_gen
+	gear_preset = /datum/equipment_preset/upp/officer/flag/ley_gen
 
 	flags_whitelist =  WHITELIST_COMMANDER
 
-/datum/equipment_preset/upp/officer/ley_gen
+/datum/equipment_preset/upp/officer/flag/ley_gen
 	name = "UPP General Polkovnik (Cryo)"
 	assignment = JOB_UPP_LT_GENERAL
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/ley_gen/dressed
-	name = "UPP Leytenant General"
-	access = ACCESS_LIST_UPP_ALL
-
-/datum/equipment_preset/upp/officer/ley_gen/dressed/load_gear(mob/living/carbon/human/new_human)
-	//back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/megaphone, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet/upp, WEAR_IN_BACK)
-	//face
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
-	//head
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked, WEAR_HEAD)
-	//uniform
-	var/obj/item/clothing/under/marine/veteran/UPP/officer/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
-
-	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer/leader, WEAR_J_STORE)
-	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73/leader, WEAR_WAIST)
-	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	//pockets
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
-
-/datum/equipment_preset/upp/officer/ley_gen/get_antag_clothing_equipment()
-	return list(
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/officer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
-
-		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Peaked Cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
-		list("Ushanka", 0, /obj/item/clothing/head/uppcap/ushanka, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("UL4 senior officer jacket", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("UL6 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/support, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-
-		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("Type 74 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/type47/t73/leader, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-
-		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("Auto-Injector Pouch", 0, /obj/item/storage/pouch/autoinjector, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Bayonet Sheath", 0, /obj/item/storage/pouch/bayonet/upp, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Explosive Pouch", 0, /obj/item/storage/pouch/explosive, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-
-		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	)
-
-/datum/equipment_preset/upp/officer/ley_gen/get_antag_gear_equipment()
-	return list(
-		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
-		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-
-		list("ENGINEERING SUPPLIES", 0, null, null, null),
-		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
-		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
-		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
-		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
-
-		list("MEDICAL SUPPLIES", 0, null, null, null),
-		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
-		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
-
-		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
-
-		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
-		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
-
-		list("ATTACHMENTS", 0, null, null, null),
-		list("Angled Grip", 10, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", 10, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 10, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 10, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 10, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 10, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 10, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
-
-		list("EXPLOSIVES", 0, null, null, null),
-		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
-		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
-		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
-
-		list("UTILITIES", 0, null, null, null),
-		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
-		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
-		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 8, /obj/item/device/motiondetector/hacked, null, VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
-
-		list("BINOCULARS", 0, null, null, null),
-		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
-		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
-	)
+/datum/equipment_preset/upp/officer/flag/ley_gen/dressed
+	name = "UPP General Polkovnik"
+	assignment = JOB_UPP_LT_GENERAL
+	rank = JOB_UPP_LT_GENERAL
+	role_comm_title = "Lt. Gen."
+	minimap_icon = "upp_co"
+  access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
 	title = JOB_UPP_GENERAL
-	gear_preset = /datum/equipment_preset/upp/officer/gen
+	gear_preset = /datum/equipment_preset/upp/officer/flag/gen
 
-/datum/equipment_preset/upp/officer/gen
+/datum/equipment_preset/upp/officer/flag/gen
 	name = "UPP General Armii (Cryo)"
 	assignment = JOB_UPP_GENERAL
 	rank = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-
-/datum/equipment_preset/upp/officer/gen/dressed
-	name = "UPP Army General"
-	access = ACCESS_LIST_UPP_ALL
-
-/datum/equipment_preset/upp/officer/gen/dressed/load_gear(mob/living/carbon/human/new_human)
-	//back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/megaphone, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/cotablet/upp, WEAR_IN_BACK)
-	//face
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command, WEAR_L_EAR)
-	//head
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked, WEAR_HEAD)
-	//uniform
-	var/obj/item/clothing/under/marine/veteran/UPP/officer/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
-	for(var/i in 1 to W.hold.storage_slots)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
-
-	//jacket
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer/leader, WEAR_J_STORE)
-	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73/leader, WEAR_WAIST)
-	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	//pockets
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
-
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
-
-/datum/equipment_preset/upp/officer/gen/get_antag_clothing_equipment()
-	return list(
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Boots", 0, /obj/item/clothing/shoes/marine/upp/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/officer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
-		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
-
-		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Peaked Cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
-		list("Ushanka", 0, /obj/item/clothing/head/uppcap/ushanka, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
-		list("ARMOR (CHOOSE 1)", 0, null, null, null),
-		list("UL4 senior officer jacket", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("UL6 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/support, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-
-		list("BELT (CHOOSE 1)", 0, null, null, null),
-		list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("Type 74 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/type47/t73/leader, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-
-		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("Auto-Injector Pouch", 0, /obj/item/storage/pouch/autoinjector, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Bayonet Sheath", 0, /obj/item/storage/pouch/bayonet/upp, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Explosive Pouch", 0, /obj/item/storage/pouch/explosive, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
-		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-
-		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	)
-
-/datum/equipment_preset/upp/officer/gen/get_antag_gear_equipment()
-	return list(
-		list("SQUAD LEADER SET (MANDATORY)", 0, null, null, null),
-		list("Essential SL Set", 0, /obj/effect/essentials_set/leader/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-
-		list("ENGINEERING SUPPLIES", 0, null, null, null),
-		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
-		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
-		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
-		list("Tools Pouch (Full)", 5, /obj/item/storage/pouch/tools/full, null, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
-
-		list("MEDICAL SUPPLIES", 0, null, null, null),
-		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),
-		list("Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_REGULAR),
-		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
-
-		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
-
-		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
-		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
-
-		list("ATTACHMENTS", 0, null, null, null),
-		list("Angled Grip", 10, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", 10, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 10, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 10, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 10, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 10, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 10, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
-
-		list("EXPLOSIVES", 0, null, null, null),
-		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-		list("Breaching Charge", 10, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_REGULAR),
-		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 6 Shrapnel Grenade", 15, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),
-		list("Type 8 WP Grenade", 20, /obj/item/explosive/grenade/phosphorus/upp, null, VENDOR_ITEM_REGULAR),
-
-		list("UTILITIES", 0, null, null, null),
-		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
-		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
-		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
-		list("Motion Detector", 8, /obj/item/device/motiondetector/hacked, null, VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
-
-		list("BINOCULARS", 0, null, null, null),
-		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
-		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
-	)
+  access = ACCESS_LIST_UPP_ALL
+ 
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/sapper/survivor

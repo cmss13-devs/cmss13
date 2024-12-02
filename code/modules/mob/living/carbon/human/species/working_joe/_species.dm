@@ -39,7 +39,6 @@
 
 // Special death noise for Working Joe
 /datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
-	var/sound_to_play
 	if(!gibbed) //A gibbed Joe won't have a death rattle
 		return
 	playsound(get_turf(dying_joe), "wj_death", 25, FALSE)

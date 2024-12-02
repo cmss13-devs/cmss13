@@ -8338,7 +8338,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/upp{
-	job_list = list("UPP Polkovnik");
+	job_list = list("UPP Komandir");
 	name = "UPP CO"
 	},
 /turf/open/floor/carpet,
@@ -8922,6 +8922,7 @@
 	pixel_x = -1;
 	pixel_y = 4
 	},
+/obj/item/device/broadcasting,
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
 "gTk" = (
@@ -30775,7 +30776,6 @@
 /obj/item/device/whistle,
 /obj/item/clothing/suit/storage/webbing,
 /obj/item/storage/backpack/lightpack,
-/obj/item/device/camera/broadcasting,
 /obj/item/clothing/suit/storage/snow_suit/soviet,
 /obj/item/clothing/suit/gimmick/jason,
 /turf/open/floor/wood,

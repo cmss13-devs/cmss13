@@ -10,6 +10,7 @@
 	throwforce = 5
 	w_class = SIZE_MEDIUM
 
+	///If target's chest is blocked
 	var/blocked_by_suit = TRUE
 	/// Min damage defib deals to victims' heart
 	var/min_heart_damage_dealt = 3
@@ -94,8 +95,9 @@
 	var/currentuses = 0
 	maxuses = floor(dcell.maxcharge / charge_cost)
 	currentuses = floor(dcell.charge / charge_cost)
-	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
+	if(maxuses != 1)
+		. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
@@ -317,6 +319,8 @@
 	item_state = "defib"
 	w_class = SIZE_SMALL
 	charge_cost = 1000
+	force = 0
+	throwforce = 0
 	skill_to_check_alt = SKILL_ENGINEER
 	skill_level_alt = SKILL_ENGINEER_ENGI
 	blocked_by_suit = FALSE

@@ -320,11 +320,18 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					))
 			if(human_target_mob.stat == DEAD)
 				if((human_target_mob.health + 20) > HEALTH_THRESHOLD_DEAD)
-					advice += list(list(
-						"advice" = "Apply shock via defibrillator!",
-						"icon" = "bolt",
-						"color" = "yellow"
-						))
+					if(issynth(human_target_mob))
+						advice += list(list(
+							"advice" = "Reboot the synthetic with a reset key!",
+							"icon" = "robot",
+							"color" = "green"
+							))
+					else
+						advice += list(list(
+							"advice" = "Apply shock via defibrillator!",
+							"icon" = "bolt",
+							"color" = "yellow"
+							))
 				else
 					if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30)
 						advice += list(list(

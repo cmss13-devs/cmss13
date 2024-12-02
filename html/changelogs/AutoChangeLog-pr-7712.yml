@@ -1,0 +1,9 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Dropship airlocks that force close now also throw objects (and vehicles) out of their way"
+  - rscadd: "Airlocks can crush more xeno structures if they somehow got placed there"
+  - bugfix: "Fix doors sometimes ignoring force call (namely dropship airlocks)"
+  - bugfix: "Fix doors not checking their turfs correctly (for example it wouldn't throw mobs in its own turf)"
+  - refactor: "Refactor some door code"
+  - bugfix: "Fix vehicles in airlocks not being handled correctly (never autoclosing again)"

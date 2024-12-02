@@ -190,6 +190,7 @@
 #define MUTINEER (1<<4)  // Part of the Mutiny Gang
 #define GIVING (1<<5) // Is currently trying to give an item to someone
 #define NOBIOSCAN (1<<6)
+#define INSURGENT (1<<7)
 
 //=================================================
 

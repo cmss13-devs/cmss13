@@ -28,6 +28,36 @@
 	for(var/type in abilities)
 		give_action(new_human, type)
 
+/datum/equipment_preset/other/insurgent
+	name = "insurgent"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/other/insurgent/load_status(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.mob_flags |= INSURGENT
+	new_human.hud_set_squad()
+
+	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a CLF Insurgent!"))
+	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a insurgent.<hr>"))
+
+/datum/equipment_preset/other/insurgent/leader
+	name = "Cell Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/other/insurgent/leader/load_status(mob/living/carbon/human/new_human)
+	new_human.mob_flags |= INSURGENT
+	new_human.hud_set_squad()
+
+	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a insurgent Leader!"))
+	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a insurgent.<hr>"))
+	for(var/datum/action/human_action/activable/insurgent/insurgent in new_human.actions)
+		insurgent.remove_from(new_human)
+
+	var/list/abilities = subtypesof(/datum/action/human_action/activable/insurgent)
+	for(var/type in abilities)
+		give_action(new_human, type)
+
+
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
 

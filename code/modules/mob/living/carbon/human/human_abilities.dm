@@ -601,6 +601,38 @@ CULT
 	remove_from(H)
 
 
+/datum/action/human_action/activable/insurgent
+	name = "insurgent abilities"
+
+/datum/action/human_action/activable/insurgent/insurgent_convert
+	name = "Convert"
+	action_icon_state = "mutineer_convert" //need someone to sprite icon
+
+
+/datum/action/human_action/activable/insurgent/insurgent_convert/use_ability(mob/mob)
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/human = owner
+	var/mob/living/carbon/human/chosen = mob
+
+	if(!istype(chosen))
+		return
+
+	to_chat(human, SPAN_NOTICE("insurgent join request sent to [chosen]!"))
+
+	if(tgui_alert(chosen, "Do you want to be a insurgent?", "Become insurgent", list("Yes", "No")) != "Yes")
+		return
+	var/datum/equipment_preset/other/insurgent/loudout = new()
+	loudout.load_status(chosen)
+	to_chat(chosen, SPAN_WARNING("You are now an insurgent. Follow the orders of your cell Leader."))
+
+	message_admins("[key_name_admin(chosen)] has been converted into a insurgent by [key_name_admin(human)].")
+
+
+
+
+
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button
 	name = "Cancel View"
 	action_icon_state = "cancel_view"

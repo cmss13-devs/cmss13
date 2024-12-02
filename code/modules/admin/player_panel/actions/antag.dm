@@ -19,6 +19,26 @@
 	var/title = params["leader"]? "mutineer leader" : "mutineer"
 	message_admins("[key_name_admin(user)] has made [key_name_admin(H)] into a [title].")
 
+// INSURGENT
+/datum/player_action/make_insurgent
+	action_tag = "make_insurgent"
+	name = "Make Insurgent"
+
+/datum/player_action/make_insurgent/act(client/user, mob/target, list/params)
+	if(!ishuman(target))
+		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human"))
+		return
+
+	var/mob/living/carbon/human/human = target
+	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/insurgent]
+	if(params["leader"])
+		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/insurgent/leader]
+
+	preset.load_status(human)
+	var/title = params["leader"]? "insurgent leader" : "insurgent"
+	message_admins("[key_name_admin(user)] has made [key_name_admin(human)] into a [title].")
+
+
 // XENO
 /datum/player_action/change_hivenumber
 	action_tag = "xeno_change_hivenumber"

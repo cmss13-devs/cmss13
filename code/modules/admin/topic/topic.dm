@@ -858,6 +858,27 @@
 
 		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
 
+	else if(href_list["makeinsurgent"])
+		if(!check_rights(R_DEBUG|R_SPAWN))
+			return
+
+		var/mob/living/carbon/human/human = locate(href_list["makeinsurgent"])
+		if(!istype(human))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(human.faction != FACTION_SURVIVOR)
+			to_chat(usr, "This player's faction must equal '[FACTION_SURVIVOR]' to make them a insurgent.")
+			return
+
+		var/datum/equipment_preset/other/insurgent/leader/leader_preset = new()
+		leader_preset.load_status(human)
+
+		message_admins("[key_name_admin(usr)] has made [key_name_admin(human)] into a insurgent leader.")
+
+
+
+
 	else if(href_list["makecultist"] || href_list["makecultistleader"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
 			return

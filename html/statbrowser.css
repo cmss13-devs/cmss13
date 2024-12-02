@@ -93,6 +93,11 @@ img {
 	background-color: #7289da;
 }
 
+.changelog.unread {
+	text-decoration: underline;
+	font-weight: bolder;
+}
+
 .button:hover {
 	background-color: #ececec;
 }

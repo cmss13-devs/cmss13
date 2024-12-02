@@ -417,7 +417,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
 	update_fullscreen()
 

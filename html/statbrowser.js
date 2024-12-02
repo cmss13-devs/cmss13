@@ -53,7 +53,8 @@ var split_admin_tabs = false;
 const bigButtons = [
 	{
 		name: "Changelog",
-		command: "Changelog"
+		command: "Changelog",
+		class: "changelog"
 	},
 	{
 		name: "Rules",
@@ -1267,6 +1268,14 @@ Byond.subscribeTo("remove_sdql2", remove_sdql2);
 Byond.subscribeTo("remove_mc", remove_mc);
 
 Byond.subscribeTo("add_verb_list", add_verb_list);
+
+Byond.subscribeTo("changelog_read", function(read) {
+	const changelogButton = document.getElementsByClassName("changelog")[0];
+	if(read)
+		changelogButton.classList.remove("unread")
+	else
+		changelogButton.classList.add("unread")
+})
 
 function createOptionsButton() {
 	addPermanentTab("Options", true);

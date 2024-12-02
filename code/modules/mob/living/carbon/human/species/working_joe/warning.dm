@@ -181,7 +181,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/report_you_where
 	key = "reportyouupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/mne.ogg'
-	say_message = "I'll have you to report you where necessary."
+	say_message = "I'll have to report you where necessary."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 

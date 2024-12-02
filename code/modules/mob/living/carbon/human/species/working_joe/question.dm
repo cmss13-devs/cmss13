@@ -53,13 +53,6 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/question/what_are_you_doing_here
-	key = "whatdoinghere"
-	upp_joe_sound = 'sound/voice/joe/upp_joe/chtovizdesdelaete.ogg'
-	say_message = "What are you doing here?"
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = UPP_JOE_EMOTE
-
 /datum/emote/living/carbon/human/synthetic/working_joe/question/who_did_this_upp
 	key = "whodidshitupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ktoetosdelal.ogg'
@@ -67,12 +60,6 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
-/datum/emote/living/carbon/human/synthetic/working_joe/question/where_are_you_going_upp
-	key = "goingupp"
-	upp_joe_sound = 'sound/voice/joe/upp_joe/kudasobralis.ogg'
-	say_message = "Where are you going?"
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = UPP_JOE_EMOTE
 /datum/emote/living/carbon/human/synthetic/working_joe/question/whats_this
 	key = "whatsthis"
 	sound = 'sound/voice/joe/whats_this.ogg'
@@ -107,9 +94,10 @@
 	key = "doinghere"
 	sound = 'sound/voice/joe/doing_here.ogg'
 	haz_sound = 'sound/voice/joe/doing_here_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/chtovizdesdelaete.ogg'
 	say_message = "What are you doing here?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/going_on
 	key = "goingon"
@@ -192,9 +180,10 @@
 	key = "areyougoing"
 	sound = 'sound/voice/joe/where_are_you_going.ogg'
 	haz_sound = 'sound/voice/joe/where_are_you_going_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/kudasobralis.ogg'
 	say_message = "Where are you going?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/cant_see_you
 	key = "cantseeyou"

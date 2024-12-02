@@ -1023,6 +1023,7 @@
 #include "code\game\machinery\vending\vendor_types\crew\synthetic.dm"
 #include "code\game\machinery\vending\vendor_types\crew\vehicle_crew.dm"
 #include "code\game\machinery\vending\vendor_types\prep_upp\requisitions_upp.dm"
+#include "code\game\machinery\vending\vendor_types\prep_upp\squad_prep_upp.dm"
 #include "code\game\machinery\vending\vendor_types\prep_upp\uniform_upp.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_engineer.dm"
 #include "code\game\machinery\vending\vendor_types\squad_prep\squad_leader.dm"

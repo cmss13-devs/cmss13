@@ -1009,6 +1009,7 @@
 
 /obj/item/device/radio/headset/distress/pmc/cct/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/engi)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/pmc/medic
 	name = "PMC-MED headset"
@@ -1017,6 +1018,7 @@
 
 /obj/item/device/radio/headset/distress/pmc/medic/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/medic)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/pmc/command
 	name = "PMC-CMD headset"
@@ -1025,6 +1027,7 @@
 
 /obj/item/device/radio/headset/distress/pmc/command/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/pmc/command/director
 	name = "WY director headset"
@@ -1035,6 +1038,7 @@
 /obj/item/device/radio/headset/distress/pmc/command/director/hvh
 	maximum_keys = 3
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/commando)
+	misc_tracking = FALSE
 
 
 

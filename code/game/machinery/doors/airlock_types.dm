@@ -900,10 +900,10 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return
 
-/obj/structure/machinery/door/airlock/dropship_hatch/unlock()
-	if(is_reserved_level(z)) // in flight
-		return
-	..()
+/obj/structure/machinery/door/airlock/dropship_hatch/unlock(forced = FALSE)
+	if(is_reserved_level(z) && !forced) // in flight
+		return FALSE
+	return ..()
 
 /obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
 

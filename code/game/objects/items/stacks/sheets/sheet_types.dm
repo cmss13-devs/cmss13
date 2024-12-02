@@ -360,6 +360,12 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		null, \
 		new/datum/stack_recipe("empty magazine box (S&W .38)", /obj/item/ammo_box/magazine/snw/empty), \
 		null, \
+		new/datum/stack_recipe("empty Type 23 shotgun shell box (8g Beanbag)", /obj/item/ammo_box/magazine/shotgun/upp/beanbag/empty), \
+		new/datum/stack_recipe("empty Type 23 shotgun shell box (8g Buckshot)", /obj/item/ammo_box/magazine/shotgun/upp/buckshot/empty), \
+		new/datum/stack_recipe("empty Type 23 shotgun shell box (8g Flechette)", /obj/item/ammo_box/magazine/shotgun/upp/flechette/empty), \
+		new/datum/stack_recipe("empty Type 23 shotgun shell box (8g Incendiary)", /obj/item/ammo_box/magazine/shotgun/upp/incendiary/empty), \
+		new/datum/stack_recipe("empty Type 23 shotgun shell box (8g Slugs)", /obj/item/ammo_box/magazine/shotgun/upp/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (NSG 23)", /obj/item/ammo_box/magazine/nsg23/empty), \
 		new/datum/stack_recipe("empty magazine box (NSG 23 AP)", /obj/item/ammo_box/magazine/nsg23/ap/empty), \
 		new/datum/stack_recipe("empty magazine box (NSG 23 EX)", /obj/item/ammo_box/magazine/nsg23/ex/empty), \

@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "type 23 shotgun shell boxes and crafting of them"
+  - rscadd: "type 23 shotgun rounds to black market"

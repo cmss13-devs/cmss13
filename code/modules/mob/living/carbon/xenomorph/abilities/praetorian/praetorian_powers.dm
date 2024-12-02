@@ -694,7 +694,7 @@
 	afterimage.mouse_opacity = 0  // Make the afterimage non-interactive
 
 	spawn(2 DECISECONDS) // Slight delay to ensure it appears after the mob moves
-		var/fade_out_steps = 6  // Number of steps for fade-out
+		var/fade_out_steps = 4.5  // Number of steps for fade-out
 		var/fade_out_delay = 1 DECISECONDS // Delay between steps (in deciseconds)
 		var/start_alpha = 200
 

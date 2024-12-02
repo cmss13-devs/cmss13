@@ -153,11 +153,13 @@
 	for(var/obj/blocking_obj in door_turf)
 		if(blocking_obj == door)
 			continue
+		if(istype(blocking_obj, /obj/effect/alien/weeds))
+			continue // No need to push
+
+		// Skip anything that'd just get crushed instead
 		if(istype(door, /obj/structure/machinery/door/airlock))
-			if(blocking_obj.type in door:resin_smushables) // Done this way because of https://www.byond.com/forum/post/2954294
-				continue // Will get crushed instead
-			if(istype(blocking_obj, /obj/effect/alien/weeds))
-				continue // No need to push
+			if(is_type_in_list(blocking_obj, door:resin_smushables)) // Done with : because of https://www.byond.com/forum/post/2954294
+				continue
 
 		// Vehicles need a much more specific location to push to
 		if(istype(blocking_obj, /obj/vehicle/multitile))

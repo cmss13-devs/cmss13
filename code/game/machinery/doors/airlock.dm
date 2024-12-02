@@ -78,6 +78,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		/obj/effect/alien/resin/fruit,
 		/obj/effect/alien/resin/special,
 		/obj/effect/alien/resin/construction,
+		/obj/item/reagent_container/food/snacks/resin_fruit,
 	)
 
 /obj/structure/machinery/door/airlock/Destroy()

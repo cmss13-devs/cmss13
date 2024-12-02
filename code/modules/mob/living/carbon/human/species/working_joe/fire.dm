@@ -20,9 +20,10 @@
 	key = "fire"
 	sound = 'sound/voice/joe/fire.ogg'
 	haz_sound = 'sound/voice/joe/fire_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/tolko_zveri.ogg'
 	say_message = "Only wild animals fear fire."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/fire/unprotected_flames
 	key = "unprotectedflames"

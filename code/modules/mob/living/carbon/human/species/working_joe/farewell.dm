@@ -11,6 +11,7 @@
 	key = "gladweresolved"
 	sound = 'sound/voice/joe/glad_we_resolved.ogg'
 	haz_sound = 'sound/voice/joe/glad_we_resolved_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/radchtomiuladili.ogg'
 	say_message = "I'm glad we resolved this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
@@ -42,11 +43,20 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done_upp
+	key = "dayneverdone_upp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/polno_raboti.ogg'
+	say_message = "Androids have tons of work to do."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/returning_to_tasks
 	key = "returningtotasks"
 	sound = 'sound/voice/joe/returning_to_tasks.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zadacham.ogg'
 	say_message = "Returning to assigned tasks."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/back_to_work
 	key = "backtowork"
@@ -91,9 +101,10 @@
 	key = "gone"
 	sound = 'sound/voice/joe/how_inconsiderate.ogg'
 	haz_sound = 'sound/voice/joe/how_inconsiderate_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nikogo.ogg'
 	say_message = "Gone. How inconsiderate."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/facility_clear
 	key = "facilityclear"
@@ -114,8 +125,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/only_wanted
 	key = "onlywantedto"
 	sound = 'sound/voice/joe/only_wanted_to_help.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/hotel_pomoch.ogg'
 	say_message = "I only wanted to help."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/core_duties
 	key = "coreduties"
@@ -136,11 +149,15 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/time_waste
 	key = "timewasted"
 	sound = 'sound/voice/joe/time_wasted.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zrya_potratil.ogg'
 	say_message = "Hmmm...Time wasted yet again."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/where_was_i
 	key = "wherewasi"
 	sound = 'sound/voice/joe/where_was_i.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/na_chem_ya.ogg'
 	say_message = "Now, where was I?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE

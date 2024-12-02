@@ -88,6 +88,7 @@
 	key = "comeoutvent"
 	sound = 'sound/voice/joe/come_out_vent.ogg'
 	haz_sound = 'sound/voice/joe/come_out_vent_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ventilyacii.ogg'
 	say_message = "Come out of the vent system, please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE

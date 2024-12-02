@@ -59,8 +59,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/existing_tasks
 	key = "existingtasks"
 	sound = 'sound/voice/joe/existing_tasks.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zadachi.ogg'
 	say_message = "Existing tasks have a higher priority."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/ticket_remove
 	key = "ticketremoved"
@@ -69,6 +71,13 @@
 	say_message = "Service support ticket removed from queue."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/ticket_remove_upp
+	key = "ticketremovedupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zapros.ogg'
+	say_message = "Request removed from queue."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/bottom_of_this
 	key = "bottomofthis"
@@ -82,9 +91,10 @@
 	key = "wontdo"
 	sound = 'sound/voice/joe/wont_do.ogg'
 	haz_sound = 'sound/voice/joe/wont_do_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/tak_nelza.ogg'
 	say_message = "No, no. This won't do."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/keep_calm
 	key = "keepcalm"
@@ -118,9 +128,10 @@
 	key = "notcrawling"
 	sound = 'sound/voice/joe/not_crawling.ogg'
 	haz_sound = 'sound/voice/joe/not_crawling_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_polezu.ogg'
 	say_message = "I'm not crawling in there after you."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/be_a_problem
 	key = "beaproblem"
@@ -137,3 +148,10 @@
 	say_message = "Abandoning search routines.."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/search_routines_upp
+	key = "searchroutinesupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/poiski.ogg'
+	say_message = "Abandoning search.."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

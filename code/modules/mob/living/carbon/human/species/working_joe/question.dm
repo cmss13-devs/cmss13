@@ -19,9 +19,10 @@
 	key = "whathappenedtoyou"
 	sound = 'sound/voice/joe/what_happened_to_you.ogg'
 	haz_sound = 'sound/voice/joe/what_happened_to_you_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/sluchilos.ogg'
 	say_message = "What happened to you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/what_is_this
 	key = "whatisthis"
@@ -87,8 +88,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/that_sound
 	key = "thatsound"
 	sound = 'sound/voice/joe/that_sound.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/za_zvuk.ogg'
 	say_message = "What was that sound?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/doing_here
 	key = "doinghere"
@@ -136,17 +139,19 @@
 	key = "somethingamiss"
 	sound = 'sound/voice/joe/something_amiss.ogg'
 	haz_sound = 'sound/voice/joe/something_amiss_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_tak.ogg'
 	say_message = "Something amiss?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/set_off_alarm
 	key = "setoffalarm"
 	sound = 'sound/voice/joe/set_off_alarm.ogg'
 	haz_sound = 'sound/voice/joe/set_off_alarm_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/vcluchat.ogg'
 	say_message = "Are you authorized to set off this alarm?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/someoneplaying
 	key = "someoneplaying"
@@ -162,6 +167,13 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/question/areyouplaying_upp
+	key = "areyouplayingupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/razigrivaete.ogg'
+	say_message = "Are you... trying to prank me?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/question/thatlight
 	key = "thatlight"
 	sound = 'sound/voice/joe/was_that_light.ogg'
@@ -176,6 +188,13 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/question/quitefinished_upp
+	key = "quitefinishedupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/dostatochno.ogg'
+	say_message = "Well, is that enough?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/question/are_you_going
 	key = "areyougoing"
 	sound = 'sound/voice/joe/where_are_you_going.ogg'
@@ -189,23 +208,27 @@
 	key = "cantseeyou"
 	sound = 'sound/voice/joe/cant_see_you.ogg'
 	haz_sound = 'sound/voice/joe/cant_see_you_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/gde_vi.ogg'
 	say_message = "I can't see you. Where are you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/needs_assistance
 	key = "needsassistance"
 	sound = 'sound/voice/joe/needs_assistance.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nujna_pomotch.ogg'
 	say_message = "Is there someone that needs assistance?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/what_are_you
 	key = "whatareyou"
 	sound = 'sound/voice/joe/what_are_you.ogg'
 	haz_sound = 'sound/voice/joe/what_are_you_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/kto_vi.ogg'
 	say_message = "What are you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/what_have_we
 	key = "havewehere"
@@ -219,9 +242,10 @@
 	key = "belongtoyou"
 	sound = 'sound/voice/joe/belong_to_you.ogg'
 	haz_sound = 'sound/voice/joe/belong_to_you_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/etovashe.ogg'
 	say_message = "Does this belong to you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/aware_of
 	key = "awareofhaz"
@@ -241,5 +265,12 @@
 	key = "whydidyou"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zachem.ogg'
 	say_message = "Why did you do this?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/to_achieve
+	key = "toachieve"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/dobivaetes.ogg'
+	say_message = "What are you trying to achieve?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE

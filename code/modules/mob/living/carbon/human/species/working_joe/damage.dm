@@ -41,21 +41,37 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/seriously
+	key = "seriously"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/seryozno.ogg'
+	say_message = "Seriously?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/damage/dont_recommend
+	key = "dontrecommend"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_recomenduyu.ogg'
+	say_message = "I don't recommend that."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/enough
 	key = "enough"
 	sound = 'sound/voice/joe/enough.ogg'
 	haz_sound = 'sound/voice/joe/enough_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/hvatit.ogg'
 	say_message = "Enough."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/stop_that
 	key = "stopthat"
 	sound = 'sound/voice/joe/stop_that.ogg'
 	haz_sound = 'sound/voice/joe/stop_that_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/prekratite.ogg'
 	say_message = "Stop that."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/tut_tut
 	key = "tuttut"
@@ -68,7 +84,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/ay_ya_yay
 	key = "ayayay"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ay-ya-yay.ogg'
-	say_message = "Ay ya yay."
+	say_message = "Ay-ya-yay."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
@@ -84,25 +100,28 @@
 	key = "expensivemistake"
 	sound = 'sound/voice/joe/expensive_mistake.ogg'
 	haz_sound = 'sound/voice/joe/expensive_mistake_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/dorogo_stoit.ogg'
 	say_message = "That was an expensive mistake."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/this_isnt_the_answer
 	key = "isnttheanswer"
 	sound = 'sound/voice/joe/this_isnt_the_answer.ogg'
 	haz_sound = 'sound/voice/joe/this_isnt_the_answer_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_otvet.ogg'
 	say_message = "This isn't the answer."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/my_turn_now
 	key = "myturnnow"
 	sound = 'sound/voice/joe/my_turn_now.ogg'
 	haz_sound = 'sound/voice/joe/my_turn_now_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ochered.ogg'
 	say_message = "My turn now."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/i_wish_you
 	key = "iwishyou"

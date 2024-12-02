@@ -38,8 +38,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/investigate_weapon
 	key = "weapon"
 	sound = 'sound/voice/joe/investigate_weapon.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/nado_viesnit.ogg'
 	say_message = "A weapon. I better investigate."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/firearm_concerning
 	key = "firearmconcerning"
@@ -70,6 +72,13 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/unexplained_disturbance_upp
+	key = "disturbanceupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/prichina.ogg'
+	say_message = "The most unpleasant, not knowing what the reason is."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/species
 	key = "species"
 	sound = 'sound/voice/joe/species.ogg'
@@ -89,9 +98,10 @@
 	key = "beyondrepair"
 	sound = 'sound/voice/joe/beyond_repair.ogg'
 	haz_sound = 'sound/voice/joe/beyond_repair_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/remontu.ogg'
 	say_message = "Hmm, far beyond repair."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/apollo_behalf
 	key = "apollobehalf"
@@ -112,9 +122,10 @@
 	key = "combustonitsown"
 	sound = 'sound/voice/joe/combust.ogg'
 	haz_sound = 'sound/voice/joe/combust_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/zagorelos.ogg'
 	say_message = "I'll assume that didn't combust all on its own."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/safety_log
 	key = "safetylog"
@@ -161,7 +172,8 @@
 	sound = 'sound/voice/joe/potential_hazard.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ugroza.ogg'
 	say_message = "A potential hazard."
-	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE|UPP_JOE_EMOTE
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/saw_that
 	key = "sawthat"
@@ -182,9 +194,10 @@
 	key = "curious"
 	sound = 'sound/voice/joe/curious.ogg'
 	haz_sound = 'sound/voice/joe/curious_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/lybopitno.ogg'
 	say_message = "Curious."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/thats_odd
 	key = "thatsodd"
@@ -198,17 +211,19 @@
 	key = "usuallyhappen"
 	sound = 'sound/voice/joe/usually_happen.ogg'
 	haz_sound = 'sound/voice/joe/usually_happen_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_bivaet.ogg'
 	say_message = "This doesn't usually happen."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/not_a_toy
 	key = "notatoy"
 	sound = 'sound/voice/joe/not_a_toy.ogg'
 	haz_sound = 'sound/voice/joe/not_a_toy_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_igrushka.ogg'
 	say_message = "That's not a toy."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/made_a_mess
 	key = "madeamess"
@@ -222,22 +237,25 @@
 	key = "sbeenhere"
 	sound = 'sound/voice/joe/been_here.ogg'
 	haz_sound = 'sound/voice/joe/been_here_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/kto_to_byl.ogg'
 	say_message = "Someone's been here."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/as_i_thought
 	key = "asithought"
 	sound = 'sound/voice/joe/as_i_thought.ogg'
 	haz_sound = 'sound/voice/joe/as_i_thought_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/dosadno.ogg'
 	say_message = "As I thought. Unfortunate."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/energy_surge
 	key = "energysurge"
 	sound = 'sound/voice/joe/energy_surge.ogg'
 	haz_sound = 'sound/voice/joe/energy_surge_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/skachok.ogg'
 	say_message = "Energy surge detected."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE

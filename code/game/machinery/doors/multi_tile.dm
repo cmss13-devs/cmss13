@@ -4,10 +4,12 @@
 	damage_cap = 650 // Bigger = more endurable
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
-/obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
+/obj/structure/machinery/door/airlock/multi_tile/close(forced = FALSE) //Nasty as hell O(n^2) code but unfortunately necessary
 	for(var/turf/turf_tile in locs)
 		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			if(vehicle_tile) return 0
+			if(vehicle_tile)
+				addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+				return FALSE
 
 	return ..()
 
@@ -269,10 +271,10 @@
 		return
 	..()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced=FALSE)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced = FALSE)
 	if(is_reserved_level(z) && !forced)
 		return // in orbit
-	..()
+	return ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)
@@ -387,7 +389,7 @@
 	open(TRUE)
 	lock(TRUE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close()
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close(forced = FALSE)
 	. = ..()
 	for(var/turf/self_turf as anything in locs)
 		var/turf/projected = get_ranged_target_turf(self_turf, throw_dir, 1)

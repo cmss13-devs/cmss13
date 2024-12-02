@@ -654,7 +654,7 @@
 
 				user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
 				SPAN_DANGER("You force [resin_door] open with [src]."))
-				resin_door.Open()
+				resin_door.open()
 				return
 
 	else if(istype(attacked_obj, /turf/open/floor))

@@ -8,11 +8,12 @@
 /// The amount of characters needed before this increase takes into effect
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
-var/list/last_balloon_alert = list()
+// Define the last alert times as an atom-level variable
+/atom/var/last_balloon_alert_time = 0 // i dont think its good idea... but checks are killing me...
 
 /proc/can_display_balloon_alert(atom/source, delay)
-	var/last_time = last_balloon_alert[source]
-	if (last_time && (world.time - last_time < delay))
+	// Check if enough time has passed since the last alert
+	if (source.last_balloon_alert_time && (world.time - source.last_balloon_alert_time < delay))
 		return FALSE
 	return TRUE
 
@@ -22,7 +23,7 @@ var/list/last_balloon_alert = list()
 	if (delay > 0 && !can_display_balloon_alert(src, delay))
 		return
 
-	last_balloon_alert[src] = world.time
+	src.last_balloon_alert_time = world.time
 	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text, text_color)
 
 /// Create balloon alerts (text that floats up) to everything within range.

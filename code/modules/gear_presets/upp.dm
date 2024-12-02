@@ -2884,6 +2884,10 @@
 
 /datum/equipment_preset/upp/officer/ley_gen
 	name = "UPP General Polkovnik (Cryo)"
+=======
+/datum/equipment_preset/upp/officer/flag/ley_gen/dressed
+	name = "UPP General Polkovnik"
+>>>>>>> master
 	assignment = JOB_UPP_LT_GENERAL
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
@@ -3053,19 +3057,24 @@
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
 	title = JOB_UPP_GENERAL
-	gear_preset = /datum/equipment_preset/upp/officer/gen
+	gear_preset = /datum/equipment_preset/upp/officer/flag/gen
 
-/datum/equipment_preset/upp/officer/gen
+/datum/equipment_preset/upp/officer/flag/gen
 	name = "UPP General Armii (Cryo)"
 	assignment = JOB_UPP_GENERAL
 	rank = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	minimap_icon = "upp_co"
-	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
-/datum/equipment_preset/upp/officer/gen/dressed
-	name = "UPP Army General"
+/datum/equipment_preset/upp/officer/flag/gen/dressed
+	name = "UPP General Armii"
+	assignment = JOB_UPP_GENERAL
+	rank = JOB_UPP_GENERAL
+	role_comm_title = "Gen."
+	minimap_icon = "upp_co"
+	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/gen/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back

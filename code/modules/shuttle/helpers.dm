@@ -126,14 +126,28 @@
 	lockdown_door(door)
 
 /datum/door_controller/single/proc/bump_at_turf(turf/door_turf, obj/structure/machinery/door/door)
+	// Find somewhere valid to push towards (non-shuttle turf)
+	var/turf/target_turf
+	for(var/turf/current_turf in orange(1, door_turf))
+		if(istype(current_turf, /turf/open/shuttle))
+			continue
+		if(istype(current_turf, /turf/closed/shuttle))
+			continue
+		if(islist(current_turf.baseturfs))
+			if(ispath(current_turf.baseturfs[length(current_turf.baseturfs)], /turf/open/shuttle))
+				continue
+			if(ispath(current_turf.baseturfs[length(current_turf.baseturfs)], /turf/closed/shuttle))
+				continue
+		if(locate(/obj/structure/shuttle) in current_turf)
+			continue
+		target_turf = current_turf
+		break
+
 	// Push mobs
 	for(var/mob/living/blocking_mob in door_turf)
 		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
 		blocking_mob.KnockDown(4)
-		for(var/turf/target_turf in orange(1, door_turf)) // Forcemove to a non shuttle turf
-			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-				blocking_mob.forceMove(target_turf)
-				break
+		blocking_mob.forceMove(target_turf)
 
 	// Push objects
 	for(var/obj/blocking_obj in door_turf)
@@ -142,13 +156,8 @@
 		if(istype(door, /obj/structure/machinery/door/airlock))
 			if(blocking_obj.type in door:resin_smushables) // Done this way because of https://www.byond.com/forum/post/2954294
 				continue // Will get crushed instead
-
-		// Find somewhere valid to push towards (non-shuttle turf)
-		var/turf/target_turf
-		for(var/turf/current_turf in orange(1, door_turf))
-			if(!istype(current_turf, /turf/open/shuttle) && !istype(current_turf, /turf/closed/shuttle))
-				target_turf = current_turf
-				break
+			if(istype(blocking_obj, /obj/effect/alien/weeds))
+				continue // No need to push
 
 		// Vehicles need a much more specific location to push to
 		if(istype(blocking_obj, /obj/vehicle/multitile))

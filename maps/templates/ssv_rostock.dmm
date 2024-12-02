@@ -487,26 +487,9 @@
 /obj/item/weapon/gun/shotgun/type23,
 /obj/item/weapon/gun/shotgun/type23,
 /obj/item/weapon/gun/shotgun/type23,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot,
+/obj/item/ammo_box/magazine/shotgun/upp,
+/obj/item/ammo_box/magazine/shotgun/upp/flechette,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/security/headquarters_armory)
 "ati" = (
@@ -8996,13 +8979,8 @@
 /area/rostock/railgun)
 "gXr" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/storage/pouch/shotgun/heavyslug,
-/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot,
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "gXD" = (
@@ -20201,16 +20179,8 @@
 /area/rostock/lower_deck/ammunition_storage)
 "pwc" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/storage/pouch/shotgun/heavybuck,
-/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
+/obj/item/ammo_box/magazine/shotgun/upp,
+/obj/item/ammo_box/magazine/shotgun/upp,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "pxe" = (
@@ -20620,16 +20590,8 @@
 /area/rostock/railgun/starboard)
 "pLQ" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/storage/pouch/shotgun/heavyflechette,
-/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
+/obj/item/ammo_box/magazine/shotgun/upp/flechette,
+/obj/item/ammo_box/magazine/shotgun/upp/flechette,
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/req)
 "pMz" = (
@@ -26310,30 +26272,14 @@
 	req_one_access = list(233, 240);
 	name = "riot control cabinet"
 	},
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 /obj/item/weapon/gun/shotgun/type23/riot_control,
 /obj/item/weapon/gun/shotgun/type23/riot_control,
 /obj/item/weapon/gun/shotgun/type23/riot_control,
 /obj/item/weapon/gun/shotgun/type23/riot_control,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
-/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag,
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag,
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag,
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/security/headquarters_armory)
 "unb" = (
@@ -28727,11 +28673,11 @@
 /area/rostock/security/headquarters_armory)
 "vZg" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/backpack/lightpack/five_slot,
-/obj/item/storage/backpack/lightpack/five_slot,
-/obj/item/storage/backpack/lightpack/five_slot,
-/obj/item/storage/backpack/lightpack/five_slot,
-/obj/item/storage/backpack/lightpack/five_slot,
+/obj/item/stack/sheet/cardboard/full_stack,
+/obj/item/stack/sheet/cardboard/full_stack,
+/obj/item/stack/sheet/cardboard/full_stack,
+/obj/item/stack/sheet/cardboard/full_stack,
+/obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "vZv" = (

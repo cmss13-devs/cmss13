@@ -135,8 +135,9 @@
 	var/plant_time = 35
 	if(isdrone(user))
 		plant_time = 25
-	if(iscarrier(user))
+	else if(iscarrier(user))
 		plant_time = 10
+
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))

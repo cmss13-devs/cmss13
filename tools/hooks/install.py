@@ -39,6 +39,7 @@ def _find_stuff(target=None):
 
 def uninstall(target=None, keep=()):
     repo, hooks_dir = _find_stuff(target)
+    tools_hooks = os.path.split(__file__)[0]
 
     # Remove hooks
     for fname in glob.glob(os.path.join(hooks_dir, '*')):
@@ -48,12 +49,19 @@ def uninstall(target=None, keep=()):
             os.unlink(fname)
 
     # Remove merge driver configuration
-    for entry in repo.config:
-        match = re.match(r'^merge\.([^.]+)\.driver$', entry.name)
-        if match and f"{match.group(1)}.merge" not in keep:
-            print('Removing merge driver:', match.group(1))
-            del repo.config[entry.name]
-
+    for full_path in glob.glob(os.path.join(tools_hooks, '*.merge')):
+        # Merge drivers are documented here: https://git-scm.com/docs/gitattributes
+        _, fname = os.path.split(full_path)
+        name, _ = os.path.splitext(fname)
+        driver_name = f"merge.{name}.driver"
+        if fname in keep:
+            continue
+        try:
+            repo.config.delete_multivar(driver_name, r".*")
+            print('Removed merge driver:', name)
+        except:
+            print(f'No {name} merge driver to remove.')
+            pass
 
 def install(target=None):
     repo, hooks_dir = _find_stuff(target)
@@ -73,6 +81,7 @@ def install(target=None):
         # Merge drivers are documented here: https://git-scm.com/docs/gitattributes
         _, fname = os.path.split(full_path)
         name, _ = os.path.splitext(fname)
+        driver_name = f"merge.{name}.driver"
         print('Installing merge driver:', name)
         keep.add(fname)
         # %P: "real" path of the file, should not usually be read or modified
@@ -81,7 +90,11 @@ def install(target=None):
         # %B: other branches' version
         # %L: conflict marker size
         relative_path = shlex.quote(os.path.relpath(full_path, repo.workdir).replace('\\', '/'))
-        repo.config[f"merge.{name}.driver"] = f'{relative_path} %P %O %A %B %L'
+        try:
+            repo.config.delete_multivar(driver_name, r".*")
+        except:
+            pass
+        repo.config[driver_name] = f'{relative_path} %P %O %A %B %L'
 
     uninstall(target, keep=keep)
 

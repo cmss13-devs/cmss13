@@ -15,7 +15,7 @@
 
 	caste_desc = "A weak ranged combat alien."
 	evolves_to = list(XENO_CASTE_SPITTER)
-	deevolves_to = list("Larva")
+	deevolves_to = list(XENO_CASTE_LARVA)
 	acid_level = 1
 
 	tackle_min = 4
@@ -68,7 +68,7 @@
 	// State
 	var/next_slash_buffed = FALSE
 
-#define NEURO_TOUCH_DELAY 4 SECONDS
+#define NEURO_TOUCH_DELAY 3 SECONDS
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!next_slash_buffed)
@@ -112,6 +112,6 @@
 		return INTENT_HARM
 
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.KnockDown(2)
-	human_target.Stun(2)
+	human_target.KnockDown(2.5)
+	human_target.Stun(2.5)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

@@ -1362,7 +1362,7 @@
 
 						// Stamps
 						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-						stampoverlay.icon_state = "paper_stamp-uscm"
+						stampoverlay.icon_state = "paper_stamp-rd"
 						if(!P.stamped)
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp

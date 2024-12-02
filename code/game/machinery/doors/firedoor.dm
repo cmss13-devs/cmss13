@@ -232,6 +232,7 @@
 /obj/structure/machinery/door/firedoor/proc/latetoggle()
 	if(operating || !nextstate)
 		return
+
 	switch(nextstate)
 		if(OPEN)
 			nextstate = null
@@ -241,14 +242,14 @@
 			close()
 	return
 
-/obj/structure/machinery/door/firedoor/close()
+/obj/structure/machinery/door/firedoor/close(forced = FALSE)
 	latetoggle()
 	return ..()
 
 /obj/structure/machinery/door/firedoor/open(forced = FALSE)
 	if(!forced)
 		if(inoperable())
-			return //needs power to open unless it was forced
+			return FALSE //needs power to open unless it was forced
 		else
 			use_power(360)
 	latetoggle()

@@ -305,6 +305,9 @@
 	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
 	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE

@@ -239,6 +239,10 @@ bullets/shells. ~N
 	desc = "A handful of rounds to reload on the go."
 	icon = 'icons/obj/items/weapons/guns/handful.dmi'
 	icon_state = "bullet_1"
+	item_state_slots = list(WEAR_AS_GARB = "bullet")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+		)
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 	w_class = SIZE_SMALL

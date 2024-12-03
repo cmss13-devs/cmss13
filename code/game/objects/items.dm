@@ -170,9 +170,6 @@
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
 
-	/// PLACEHOLDER
-	var/list/garb_icon
-
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 

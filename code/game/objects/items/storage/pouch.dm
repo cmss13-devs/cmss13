@@ -1416,11 +1416,15 @@
 	name = "cassette pouch"
 	desc = "A finely crafted pouch, made specifically to keep cassettes safe during wartime."
 	icon_state = "cassette_pouch_closed"
-	var/base_icon_state = "cassette_pouch"
+	item_state_slots = list(WEAR_AS_GARB = "cassette_pouch")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 	w_class = SIZE_SMALL
 	flags_obj = OBJ_IS_HELMET_GARB
 	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
+	var/base_icon_state = "cassette_pouch"
 
 /obj/item/storage/pouch/cassette/update_icon()
 	underlays.Cut()

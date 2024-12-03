@@ -5,6 +5,10 @@
 	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
 	item_state = "empty"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_injector")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+		)
 	flags_atom = FPRINT
 	matter = list("plastic" = 300)
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD

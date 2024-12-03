@@ -26,6 +26,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/candle.dmi'
 	icon_state = "candle1"
 	item_state = "candle1"
+	item_state_slots = list(WEAR_AS_GARB = "candle")
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
 	w_class = SIZE_TINY
 	flags_obj = OBJ_IS_HELMET_GARB
 
@@ -459,11 +465,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "cigar_on"
 	icon_off = "cigar_off"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
+	item_state = "cigar_off"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_cig")
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+	)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
-	item_state = "cigar_off"
 	smoketime = 50 MINUTES
 	chem_volume = 20
 	black_market_value = 15
@@ -654,10 +665,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "An electronic cigarette by The American Tobacco Company, who also made Lucky Strikes."
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 	)
 	icon_state = "cigoff"
 	item_state = "cigoff"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_cig")
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_EAR|SLOT_FACE
 	var/icon_on = "cigon"
@@ -697,6 +710,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/smoking/lighters.dmi'
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+	)
 	light_color = LIGHT_COLOR_LAVA
 	var/icon_on = "lighter_g_on"
 	var/icon_off = "lighter_g"
@@ -715,6 +733,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "zippo"
 	icon_on = "zippoon"
 	icon_off = "zippo"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_lighter_zippo")
 	var/engraved = FALSE
 
 /obj/item/tool/lighter/zippo/attackby(obj/item/W as obj, mob/user as mob)
@@ -776,6 +795,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_on = "lighter_[clr]_on"
 		icon_off = "lighter_[clr]"
 		icon_state = icon_off
+		LAZYSET(item_state_slots, WEAR_AS_GARB, "helmet_lighter_[clr]")
 
 /obj/item/tool/lighter/attack_self(mob/living/user)
 	if(user.r_hand == src || user.l_hand == src)

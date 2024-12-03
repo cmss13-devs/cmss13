@@ -92,6 +92,11 @@
 	name = "scalpel"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 	flags_atom = FPRINT|CONDUCT
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE

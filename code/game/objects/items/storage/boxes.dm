@@ -488,6 +488,10 @@
 	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_state = "matchbox"
 	item_state = "zippo"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_matches")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+		)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB

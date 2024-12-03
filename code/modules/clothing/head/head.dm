@@ -1,4 +1,5 @@
-#define HAT_GARB_RELAY_ICON_STATE "icon_state"
+#define NO_GARB_OVERRIDE null
+
 /obj/item/clothing/head
 	name = "head"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
@@ -7,6 +8,12 @@
 	w_class = SIZE_SMALL
 	blood_overlay_type = "helmet"
 	var/anti_hug = 0
+	/// List of images for overlays recreated every update_icon()
+	var/list/helmet_overlays
+
+/obj/item/clothing/head/Destroy()
+	helmet_overlays = null
+	return ..()
 
 /obj/item/clothing/head/update_clothing_icon()
 	if (ismob(src.loc))
@@ -201,9 +208,9 @@
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	item_icons = list(
 		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
+	item_state_slots = list(WEAR_AS_GARB = "headbandgreen")
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
@@ -228,15 +235,22 @@
 
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
+	item_state_slots = list(WEAR_AS_GARB = "headbandred")
 
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
+	item_state_slots = list(WEAR_AS_GARB = "headbandtan")
 
 /obj/item/clothing/head/headband/brown
 	icon_state = "headbandbrown"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_HEAD = "headbandtan",
+		WEAR_AS_GARB = "helmet_headbandbrown",
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
@@ -244,7 +258,12 @@
 	icon_state = "headbandgray"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_HEAD = "headband",
+		WEAR_AS_GARB = "helmet_headbandgray",
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
@@ -253,8 +272,10 @@
 	icon_state = "rebelband"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
+	item_state_slots = list(WEAR_AS_GARB = "headbandred")
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/squad
@@ -262,8 +283,10 @@
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	icon_state = null
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
+	item_state_slots = null
 
 	var/static/list/valid_icon_states
 	flags_atom = NO_GAMEMODE_SKIN
@@ -323,7 +346,8 @@
 	icon_state = "headset"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
 
 /obj/item/clothing/head/cmcap
@@ -336,7 +360,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
-	var/helmet_overlays[]
 	var/flipped_cap = FALSE
 	var/list/flipping_message = list(
 		"flipped" = "You spin the hat backwards! You look like a tool.",
@@ -345,40 +368,41 @@
 	var/base_cap_icon
 	var/flags_marine_hat = HAT_GARB_OVERLAY|HAT_CAN_FLIP
 	var/obj/item/storage/internal/headgear/pockets
-	var/list/allowed_hat_items = list(
-						/obj/item/storage/fancy/cigarettes/emeraldgreen = "hat_cig_cig",
-						/obj/item/storage/fancy/cigarettes/kpack = "hat_cig_kpack",
-						/obj/item/storage/fancy/cigarettes/lucky_strikes = "hat_cig_ls",
-						/obj/item/storage/fancy/cigarettes/wypacket = "hat_cig_wypack",
-						/obj/item/storage/fancy/cigarettes/lady_finger = "hat_cig_lf",
-						/obj/item/storage/fancy/cigarettes/blackpack = "hat_cig_blackpack",
-						/obj/item/storage/fancy/cigarettes/arcturian_ace = "hat_cig_aapack",
-						/obj/item/tool/pen = "hat_pen_black",
-						/obj/item/tool/pen/blue = "hat_pen_blue",
-						/obj/item/tool/pen/red = "hat_pen_red",
+	/// List of allowed garbs and override icon_states unique to this hat
+	var/static/list/allowed_hat_items = list(
+						/obj/item/storage/fancy/cigarettes/emeraldgreen = NO_GARB_OVERRIDE,
+						/obj/item/storage/fancy/cigarettes/kpack = NO_GARB_OVERRIDE,
+						/obj/item/storage/fancy/cigarettes/lucky_strikes = NO_GARB_OVERRIDE,
+						/obj/item/storage/fancy/cigarettes/wypacket = NO_GARB_OVERRIDE,
+						/obj/item/storage/fancy/cigarettes/lady_finger = NO_GARB_OVERRIDE,
+						/obj/item/storage/fancy/cigarettes/blackpack = NO_GARB_OVERRIDE,
+						/obj/item/storage/fancy/cigarettes/arcturian_ace = NO_GARB_OVERRIDE,
+						/obj/item/tool/pen = NO_GARB_OVERRIDE,
+						/obj/item/tool/pen/blue = NO_GARB_OVERRIDE,
+						/obj/item/tool/pen/red = NO_GARB_OVERRIDE,
 						/obj/item/clothing/glasses/welding = "welding-c",
-						/obj/item/clothing/glasses/mgoggles = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/prescription = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/black = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/black/prescription = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/orange = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/orange/prescription = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/v2 = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/glasses/mgoggles/v2/prescription = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/clothing/head/headband = "hat_headbandgreen",
-						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
-						/obj/item/clothing/head/headband/red = "hat_headbandred",
-						/obj/item/clothing/head/headband/brown = "hat_headbandbrown",
-						/obj/item/clothing/head/headband/gray = "hat_headbandgray",
-						/obj/item/clothing/head/headband/squad = HAT_GARB_RELAY_ICON_STATE,
-						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
-						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
-						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
-						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow",
-						/obj/item/tool/pen/fountain = "fountainpen",
+						/obj/item/clothing/glasses/mgoggles = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/prescription = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/black = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/black/prescription = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/orange = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/orange/prescription = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/v2 = NO_GARB_OVERRIDE,
+						/obj/item/clothing/glasses/mgoggles/v2/prescription = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/helmet_nvg = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = NO_GARB_OVERRIDE,
+						/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,
+						/obj/item/clothing/head/headband/tan = NO_GARB_OVERRIDE,
+						/obj/item/clothing/head/headband/red = NO_GARB_OVERRIDE,
+						/obj/item/clothing/head/headband/brown = NO_GARB_OVERRIDE,
+						/obj/item/clothing/head/headband/gray = NO_GARB_OVERRIDE,
+						/obj/item/clothing/head/headband/squad = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
+						/obj/item/prop/helmetgarb/lucky_feather/yellow = NO_GARB_OVERRIDE,
+						/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
 						)
 	var/storage_slots = 1
 	var/storage_slots_reserved_for_garb = 1
@@ -390,7 +414,8 @@
 	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type)
 	base_cap_icon = icon_state
-	helmet_overlays = list("item") //To make things simple.
+
+	helmet_overlays = list() //To make things simple.
 
 	pockets = new(src)
 	pockets.storage_slots = storage_slots + storage_slots_reserved_for_garb
@@ -441,25 +466,19 @@
 	update_icon()
 
 /obj/item/clothing/head/cmcap/update_icon()
-	if(ismob(loc))
-		var/mob/M = loc
-		M.update_inv_head()
-
-/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
-	var/image/return_image = ..()
-	if(slot != WEAR_HEAD)
-		return return_image
-
-	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
+	helmet_overlays = list() // Rebuild our list every time
+	if(length(pockets?.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 		for(var/obj/item/garb_object in pockets.contents)
 			if(garb_object.type in allowed_hat_items)
-				var/garb_state = allowed_hat_items[garb_object.type]
-				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
-					garb_state = "hat_[garb_object.icon_state]"
-				var/image/garb_image = overlay_image(garb_object.garb_icon, "[garb_state]", color, RESET_COLOR)
-				return_image.overlays += garb_image
+				var/image/new_overlay = garb_object.get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+				var/override_state = allowed_hat_items[garb_object.type]
+				if(override_state != NO_GARB_OVERRIDE)
+					new_overlay.icon_state = override_state
+				helmet_overlays += new_overlay
 
-	return return_image
+	if(ismob(loc))
+		var/mob/moob = loc
+		moob.update_inv_head()
 
 /obj/item/clothing/head/cmcap/has_garb_overlay()
 	return flags_marine_hat & HAT_GARB_OVERLAY
@@ -997,7 +1016,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 
-#undef HAT_GARB_RELAY_ICON_STATE
+#undef NO_GARB_OVERRIDE
 
 //==========================//DRESS BLUES\\===============================\\
 //=======================================================================\\

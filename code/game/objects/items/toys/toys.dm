@@ -125,6 +125,9 @@
 	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonred"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/crayons.dmi',
+		)
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "colored")
 	black_market_value = 5

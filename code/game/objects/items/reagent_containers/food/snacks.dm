@@ -9,6 +9,11 @@
 	desc = "yummy"
 	icon = 'icons/obj/items/food/junkfood.dmi'
 	icon_state = null
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/food.dmi',
+	)
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
@@ -734,7 +739,7 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sausage
-	name = "Sausage"
+	name = "sausage"
 	desc = "A piece of mixed, long meat."
 	icon_state = "sausage"
 	icon = 'icons/obj/items/food/meat.dmi'
@@ -746,10 +751,11 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/donkpocket
-	name = "Donk-pocket"
+	name = "\improper Donk-pocket"
 	desc = "The food of choice for the seasoned traitor."
-	icon_state = "donkpocket"
 	icon = 'icons/obj/items/food/bakery.dmi'
+	icon_state = "donkpocket"
+	item_state_slots = list(WEAR_AS_GARB = "donkpocket")
 	filling_color = "#DEDEAB"
 	var/warm = 0
 
@@ -780,7 +786,7 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/ghostburger
-	name = "Ghost Burger"
+	name = "ghost burger"
 	desc = "Spooky! It doesn't look very filling."
 	icon_state = "ghostburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
@@ -2804,8 +2810,9 @@
 /obj/item/reagent_container/food/snacks/meatpizzaslice
 	name = "Meatpizza slice"
 	desc = "A slice of a meaty pizza."
-	icon_state = "meatpizzaslice"
 	icon = 'icons/obj/items/food/pizza.dmi'
+	icon_state = "meatpizzaslice"
+	item_state_slots = list(WEAR_AS_GARB = "pizza")
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -2823,8 +2830,9 @@
 /obj/item/reagent_container/food/snacks/mushroompizzaslice
 	name = "Mushroompizza slice"
 	desc = "Maybe it is the last slice of pizza in your life."
-	icon_state = "mushroompizzaslice"
 	icon = 'icons/obj/items/food/pizza.dmi'
+	icon_state = "mushroompizzaslice"
+	item_state_slots = list(WEAR_AS_GARB = "pizza")
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -2844,8 +2852,9 @@
 /obj/item/reagent_container/food/snacks/vegetablepizzaslice
 	name = "Vegetable pizza slice"
 	desc = "A slice of the most green pizza of all pizzas not containing green ingredients "
-	icon_state = "vegetablepizzaslice"
 	icon = 'icons/obj/items/food/pizza.dmi'
+	icon_state = "vegetablepizzaslice"
+	item_state_slots = list(WEAR_AS_GARB = "pizza")
 	filling_color = "#BAA14C"
 	bitesize = 2
 
@@ -3350,6 +3359,7 @@
 	name = "MEAT Bar"
 	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce. The M is printed on the side, so it just reads EAT. Guess that's where the slogan comes from."
 	icon_state = "eat_bar"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_snack_eat")
 	bitesize = 2
 	w_class = SIZE_TINY
 	trash = /obj/item/trash/eat
@@ -3406,9 +3416,10 @@
 
 //CM SNACKS
 /obj/item/reagent_container/food/snacks/wrapped/booniebars
-	name = "Boonie Bars"
+	name = "\improper Boonie Bars"
 	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
 	icon_state = "boonie"
+	item_state_slots = list(WEAR_AS_GARB = "boonie-bars")
 	wrapper = /obj/item/trash/boonie
 
 /obj/item/reagent_container/food/snacks/wrapped/booniebars/Initialize()
@@ -3417,9 +3428,10 @@
 	reagents.add_reagent("coco", 4)
 
 /obj/item/reagent_container/food/snacks/wrapped/chunk
-	name = "CHUNK box"
+	name = "\improper CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
+	item_state_slots = list(WEAR_AS_GARB = "chunkbox")
 	hitsound = "swing_hit"
 	force = 15
 	throwforce = 10
@@ -3453,6 +3465,7 @@
 	name = "Barcardine Bars"
 	desc = "A bar of chocolate, it smells like the medical bay. <i>\"Chocolate always helps the pain go away.\"</i>"
 	icon_state = "barcardine"
+	item_state_slots = list(WEAR_AS_GARB = "barcardine-bars")
 	wrapper = /obj/item/trash/barcardine
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine/Initialize()

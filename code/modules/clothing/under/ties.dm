@@ -415,7 +415,10 @@
 	icon = 'icons/obj/items/clothing/accessory/patches.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi',
+	)
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
 	)
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 	flags_obj = OBJ_IS_HELMET_GARB
@@ -424,6 +427,7 @@
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+	item_state_slots = list(WEAR_AS_GARB = "falconspatch")
 	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/devils

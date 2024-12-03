@@ -90,7 +90,7 @@
 					continue
 				defined_slots |= slot
 			for(var/slot in defined_slots)
-				var/image/result = item.get_mob_overlay(slot = slot, default_bodytype = "Human")
+				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="Human")
 				// States specified in item_state_slots and item_icons (warning only currently)
 				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
 			for(var/slot in additional_slots_to_test)
@@ -100,9 +100,14 @@
 					continue
 				if(slot in ignored_slots)
 					continue
-				var/image/result = item.get_mob_overlay(slot = slot, default_bodytype = "Human")
+				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="Human")
 				// States specified in additional_slots_to_test not already tested above (warning only currently)
 				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
+
+			// Explicitly test anything that is garb
+			if(item.type in GLOB.allowed_helmet_items)
+				var/image/result = item.get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [WEAR_AS_GARB]", variable_name="mob_state", check_null=FALSE)
 
 			// Attachable specific checks:
 			if(ispath(obj_path, /obj/item/attachable))

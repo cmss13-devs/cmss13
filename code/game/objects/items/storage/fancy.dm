@@ -123,6 +123,9 @@
 	icon_state = "cigpacket"
 	name = "cigarette packet"
 	desc = "A packet of cigarettes with a built-in lighter compartment."
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+		)
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
@@ -136,7 +139,7 @@
 		/obj/item/tool/lighter,
 	)
 	icon_type = "cigarette"
-	var/default_cig_type=/obj/item/clothing/mask/cigarette
+	var/default_cig_type = /obj/item/clothing/mask/cigarette
 
 /obj/item/storage/fancy/cigarettes/fill_preset_inventory()
 	flags_atom |= NOREACT
@@ -171,6 +174,7 @@
 	desc = "They remind you of a gross, tar-filled version of Ireland...so regular Ireland."
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_cig")
 
 /obj/item/storage/fancy/cigarettes/wypacket
 	name = "\improper Weyland-Yutani Gold packet"
@@ -178,6 +182,7 @@
 	icon_state = "wypacket"
 	icon = 'icons/obj/items/smoking/packets/wy_gold.dmi'
 	item_state = "wypacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_wypack")
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes
 	name = "\improper Lucky Strikes Packet"
@@ -185,6 +190,7 @@
 	icon_state = "lspacket"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike.dmi'
 	item_state = "lspacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_ls")
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/blackpack
@@ -193,6 +199,7 @@
 	icon_state = "blackpacket"
 	icon = 'icons/obj/items/smoking/packets/executive_select.dmi'
 	item_state = "blackpacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_blackpack")
 	default_cig_type = /obj/item/clothing/mask/cigarette/bcigarette
 
 /obj/item/storage/fancy/cigarettes/kpack
@@ -201,6 +208,7 @@
 	icon_state = "kpacket"
 	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
 	item_state = "kpacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_kpack")
 
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
@@ -208,6 +216,7 @@
 	icon_state = "aapacket"
 	icon = 'icons/obj/items/smoking/packets/arcturian_ace.dmi'
 	item_state = "aapacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_aapack")
 
 /obj/item/storage/fancy/cigarettes/lady_finger
 	name = "\improper Lady Fingers packet"
@@ -215,6 +224,7 @@
 	icon_state = "lfpacket"
 	icon = 'icons/obj/items/smoking/packets/lady_fingers.dmi'
 	item_state = "lfpacket"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_lf")
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
@@ -223,6 +233,7 @@
 	icon_state = "ls4packet"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
 	item_state = "lspacket"
+	item_state_slots = list(WEAR_AS_GARB = "hat_cig_ls_mre")
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 	storage_slots = 4
 
@@ -336,9 +347,13 @@
 	icon_state = "mpacket"
 	item_state = "zippo"
 	icon = 'icons/obj/items/smoking/matches.dmi'
+	icon_type = "match"
+	item_state_slots = list(WEAR_AS_GARB = "helmet_matches_mre")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+		)
 	storage_slots = 6
 	can_hold = list()
-	icon_type = "match"
 	default_cigar_type = /obj/item/tool/match/paper
 	w_class = SIZE_TINY
 	var/light_chance = 70 //how likely you are to light the match on the book

@@ -2,6 +2,9 @@
 	name = "medical pack"
 	singular_name = "medical pack"
 	icon = 'icons/obj/items/medical_stacks.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+		)
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL
@@ -56,7 +59,7 @@
 	singular_name = "medical gauze"
 	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
 	icon_state = "brutepack"
-
+	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
 	stack_id = "bruise pack"
 
 /obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -104,8 +107,8 @@
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
+	item_state_slots = list(WEAR_AS_GARB = "ointment")
 	heal_burn = 5
-
 	stack_id = "ointment"
 
 /obj/item/stack/medical/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)

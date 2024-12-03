@@ -5,6 +5,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
 	)
 	w_class = SIZE_SMALL
 	var/vision_flags = 0
@@ -188,6 +189,7 @@
 	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
+	item_state_slots = list(WEAR_AS_GARB = "eyepatch")
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
@@ -214,6 +216,7 @@
 	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses."
 	icon_state = "mBCG"
 	item_state = "mBCG"
+	item_state_slots = list(WEAR_AS_GARB = "persc-glasses")
 	prescription = TRUE
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
@@ -254,6 +257,7 @@
 	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses. These ones actually have a proper prescribed lens."
 	icon_state = "mBCG"
 	item_state = "mBCG"
+	item_state_slots = list(WEAR_AS_GARB = "persc-glasses")
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
@@ -543,6 +547,12 @@
 	icon_state = "welding-g"
 	item_state = "welding-g"
 	deactive_state = "welding-gup"
+	item_state_slots = list(WEAR_AS_GARB = "welding-h")
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
+	)
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEYES
@@ -618,6 +628,7 @@
 	name = "sunglasses"
 	icon_state = "sun"
 	item_state = "sunglasses"
+	item_state_slots = list(WEAR_AS_GARB = "sunglasses")
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
@@ -643,6 +654,7 @@
 	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from atomic flash, solar radiation, and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
 	icon_state = "bigsunglasses"
 	item_state = "sunglasses"
+	item_state_slots = list(WEAR_AS_GARB = "bigsunglasses")
 	eye_protection = EYE_PROTECTION_FLASH
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
@@ -653,6 +665,7 @@
 	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."
 	icon_state = "aviator"
 	item_state = "sunglasses"
+	item_state_slots = list(WEAR_AS_GARB = "aviator")
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
@@ -660,6 +673,7 @@
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud"
+	item_state_slots = list(WEAR_AS_GARB = "sechud")
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	flags_obj = OBJ_IS_HELMET_GARB

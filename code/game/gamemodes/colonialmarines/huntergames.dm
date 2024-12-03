@@ -100,6 +100,8 @@
 	var/contestants[]
 	var/supply_votes[]
 
+	var/winner_info = null
+
 	var/ticks_passed = 0
 	var/drops_disabled = 0
 
@@ -364,7 +366,12 @@
 
 	last_tally = C
 	if(last_tally == 1 || ismob(last_tally))
-		finished = 1
+		for(var/mob/living/carbon/human/potential_winner in GLOB.alive_mob_list)
+			var/area/winner_area = get_area(potential_winner.loc)
+			if(istype(potential_winner) && potential_winner.stat == 0 && !isyautja(potential_winner) && !QDELETED(potential_winner) && !istype(winner_area,/area/centcom) && !istype(winner_area, /area/tdome))
+				winner_info = "[potential_winner.real_name] ([potential_winner.key])"
+				break
+		finished = winner_info ? 1 : 3
 	else if (last_tally < 1)
 		finished = 2
 	else
@@ -375,7 +382,7 @@
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		if(istype(H) && H.stat == 0 && !istype(get_area(H.loc),/area/centcom) && !istype(get_area(H.loc),/area/tdome))
-			if(H.species != "Yautja") // Preds don't count in round end.
+			if(!isyautja(H)) // Preds don't count in round end.
 				human_count += 1 //Add them to the amount of people who're alive.
 
 	return human_count
@@ -393,41 +400,40 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+/datum/game_mode/huntergames/announce_ending()
+	log_game("Round end result: [round_finished]")
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
+
+	switch(round_finished)
+		if(1)
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("We have a winner! >> [winner_info] << defeated all enemies!\nWell done, your tale of survival will live on in legend!"))
+
+		if(2)
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("NOBODY WON!?\n'Somehow you stupid humans managed to even fuck up killing yourselves. Well done.'"))
+
+		if(3)
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("NOBODY WON!\nThere was a winner, but they died before they could receive the prize!! Bummer."))
+
 /datum/game_mode/huntergames/declare_completion()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
-	var/mob/living/carbon/winner = null
+	var/musical_track
+	var/end_icon = "draw"
+	switch(round_finished)
+		if(MODE_OUTPOST_X_MAJOR)
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+		if(MODE_OUTPOST_M_MAJOR)
+			musical_track = 'sound/misc/sadtrombone.ogg'
+		else
+			musical_track = 'sound/misc/sadtrombone.ogg'
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
 
-	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
-		if(istype(Q) && Q.stat == 0 && !isyautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
-			winner = Q
-			break
+	. = ..()
 
-	if(finished == 1 && !QDELETED(winner) && istype(winner))
-		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.key]) << defeated all enemies!</B></FONT>"))
-		to_world("<FONT size = 3><B>Well done, your tale of survival will live on in legend!</B></FONT>")
+	calculate_end_statistics()
+	show_end_statistics(end_icon)
 
-	else if(finished == 2)
-		to_world(SPAN_DANGER("<FONT size = 4><B>NOBODY WON!?</B></FONT>"))
-		to_world("<FONT size = 3><B>'Somehow you stupid humans managed to even fuck up killing yourselves. Well done.'</B></FONT>")
-		world << 'sound/misc/sadtrombone.ogg'
-	else
-		to_world(SPAN_DANGER("<FONT size = 4><B>NOBODY WON!</B></FONT>"))
-		to_world("<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>")
-		world << 'sound/misc/sadtrombone.ogg'
-
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = count_humans()
-
-		GLOB.round_statistics.log_round_statistics()
-
-
-	return 1
-
-/datum/game_mode/proc/auto_declare_completion_huntergames()
-	return
+	declare_fun_facts()
 
 /datum/game_mode/huntergames/proc/place_drop(turf/T, OT = "crap", in_crate)
 	if(!istype(T))

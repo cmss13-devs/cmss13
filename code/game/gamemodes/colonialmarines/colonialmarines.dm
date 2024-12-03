@@ -541,19 +541,12 @@
 		else
 			round_finished = MODE_INFESTATION_M_MINOR
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
-/datum/game_mode/colonialmarines/check_finished()
-	if(round_finished) return 1
-
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 #define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
 /datum/game_mode/colonialmarines/declare_completion()
-	announce_ending()
 	var/musical_track
 	var/end_icon = "draw"
 	switch(round_finished)
@@ -599,20 +592,15 @@
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
-			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+			end_icon = "draw"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.round_result = round_finished
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
-		GLOB.round_statistics.log_round_statistics()
+	. = ..()
 
 	calculate_end_statistics()
 	show_end_statistics(end_icon)
@@ -626,8 +614,6 @@
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
-
-	return 1
 
 // for the toolbox
 /datum/game_mode/colonialmarines/end_round_message()

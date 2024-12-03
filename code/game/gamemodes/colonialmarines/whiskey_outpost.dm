@@ -43,7 +43,6 @@
 	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
-	var/finished = 0
 	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
 	var/spawn_next_wave = 12 MINUTES //Spawn first batch at ~12 minutes
@@ -51,8 +50,6 @@
 	var/xeno_wave = 1 //Which wave is it
 
 	var/wave_ticks_passed = 0 //Timer for xeno waves
-
-	var/list/players = list()
 
 	var/list/turf/xeno_spawns = list()
 	var/list/turf/supply_spawns = list()
@@ -65,10 +62,6 @@
 
 	var/next_supply = 1 MINUTES //At which wave does the next supply drop come?
 
-	var/ticks_passed = 0
-	var/lobby_time = 0 //Lobby time does not count for marine 1h win condition
-
-	var/map_locale = 0 // 0 is Jungle Whiskey Outpost, 1 is Big Red Whiskey Outpost, 2 is Ice Colony Whiskey Outpost, 3 is space
 	var/spawn_next_wo_wave = FALSE
 
 	var/list/whiskey_outpost_waves = list()
@@ -114,7 +107,6 @@
 	set waitfor = 0
 	update_controllers()
 	initialize_post_marine_gear_list()
-	lobby_time = world.time
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
@@ -127,9 +119,7 @@
 	world << sound('sound/effects/siren.ogg')
 
 	sleep(10)
-	switch(map_locale) //Switching it up.
-		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+	marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
@@ -162,7 +152,6 @@
 /datum/game_mode/whiskey_outpost/process(delta_time)
 	. = ..()
 	checkwin_counter++
-	ticks_passed++
 	wave_ticks_passed++
 
 	if(wave_ticks_passed >= (spawn_next_wave/(delta_time SECONDS)))
@@ -182,7 +171,7 @@
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
 		if(xeno_wave == WO_MAX_WAVE && last_wave_time == 0)
 			last_wave_time = world.time
-		if(!finished && GLOB.round_should_check_for_win && last_wave_time != 0)
+		if(!round_finished && GLOB.round_should_check_for_win && last_wave_time != 0)
 			check_win()
 		checkwin_counter = 0
 	return 0
@@ -209,11 +198,10 @@
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
 	var/C = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
-
-	if(C[1] == 0)
-		finished = 1 //Alien win
+	if(!C[1])
+		round_finished = MODE_OUTPOST_X_MAJOR //Alien win
 	else if(world.time > last_wave_time + 15 MINUTES) // Around 1:12 hh:mm
-		finished = 2 //Marine win
+		round_finished = MODE_OUTPOST_M_MAJOR //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
 	for(var/i in GLOB.RoleAuthority.roles_by_name)
@@ -227,7 +215,6 @@
 	to_world("<B>New players may no longer join the game.</B>")
 	message_admins("Wave one has begun. Disabled new player game joining.")
 	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
-	world.update_status()
 
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
@@ -245,71 +232,56 @@
 		return maxovertime
 	return randomtime
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
-/datum/game_mode/whiskey_outpost/check_finished()
-	if(finished != 0)
-		return 1
-
-	return 0
-
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+/datum/game_mode/whiskey_outpost/announce_ending()
+	log_game("Round end result: [round_finished]")
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
+
+	switch(round_finished)
+		if(MODE_OUTPOST_X_MAJOR)
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!\nIt will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer.\nThe xenomorph hive on LV-624 remains unthreatened until then..."))
+
+		if(MODE_OUTPOST_M_MAJOR)
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624.\nEventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come.\nThe USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186"))
+
+		else
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("The story ending this way."))
+
 /datum/game_mode/whiskey_outpost/declare_completion()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
-	if(finished == 1)
-		log_game("Round end result - xenos won")
-		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
-		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
-		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
-		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
-		world << sound('sound/misc/Game_Over_Man.ogg')
-		if(GLOB.round_statistics)
-			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
-			if(GLOB.round_statistics.current_map)
+	var/musical_track
+	var/end_icon = "draw"
+	switch(round_finished)
+		if(MODE_OUTPOST_X_MAJOR)
+			musical_track = 'sound/misc/Game_Over_Man.ogg'
+			end_icon = "xeno_major"
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
-
-	else if(finished == 2)
-		log_game("Round end result - marines won")
-		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
-		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
-		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
-		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
-		world << sound('sound/misc/hell_march.ogg')
-		if(GLOB.round_statistics)
-			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
-			if(GLOB.round_statistics.current_map)
+		if(MODE_OUTPOST_M_MAJOR)
+			musical_track = 'sound/misc/hell_march.ogg'
+			end_icon = "marine_major"
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
 				GLOB.round_statistics.current_map.total_marine_majors++
+		else
+			musical_track = 'sound/misc/sadtrombone.ogg'
+			end_icon = "draw"
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_draws++
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
 
-	else
-		log_game("Round end result - no winners")
-		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
-		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
-		world << 'sound/misc/sadtrombone.ogg'
-		if(GLOB.round_statistics)
-			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
-
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-
-		GLOB.round_statistics.log_round_statistics()
-
-		round_finished = 1
+	. = ..()
 
 	calculate_end_statistics()
+	show_end_statistics(end_icon)
 
-
-	return 1
-
-/datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
-	return
+	declare_completion_announce_fallen_soldiers()
+	declare_completion_announce_medal_awards()
+	declare_fun_facts()
 
 /datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)

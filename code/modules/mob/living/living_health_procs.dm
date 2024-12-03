@@ -476,6 +476,20 @@
 		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 		client.soundOutput.apply_status()
 
+/mob/living/proc/grant_spawn_protection(duration)
+	status_flags |= RECENTSPAWN|GODMODE
+	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(handle_fire_protection))
+	addtimer(CALLBACK(src, PROC_REF(end_spawn_protection)), duration)
+
+/mob/living/proc/end_spawn_protection()
+	status_flags &= ~(RECENTSPAWN|GODMODE)
+	UnregisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/mob/living/proc/handle_fire_protection(mob/living/living, datum/reagent/chem)
+	SIGNAL_HANDLER
+	if(status_flags & RECENTSPAWN|GODMODE)
+		return COMPONENT_NO_IGNITE
+
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)
 	apply_damage(-brute, BRUTE)

@@ -421,6 +421,23 @@
 
 	return overlay_img
 
+/// Generates an image overlay based on the provided override_icon_state
+/// (handles prefixing for PREFIX_HAT_GARB_OVERRIDE and PREFIX_HELMET_GARB_OVERRIDE)
+/obj/item/proc/get_garb_overlay(override_icon_state)
+	var/image/overlay_img = get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+
+	switch(override_icon_state)
+		if(NO_GARB_OVERRIDE)
+			// No modifications
+		if(PREFIX_HAT_GARB_OVERRIDE)
+			overlay_img.icon_state = "hat_[overlay_img.icon_state]"
+		if(PREFIX_HELMET_GARB_OVERRIDE)
+			overlay_img.icon_state = "helmet_[overlay_img.icon_state]"
+		else
+			overlay_img.icon_state = override_icon_state
+
+	return overlay_img
+
 /obj/item/proc/use_spritesheet(bodytype, slot, icon_state)
 	if(!LAZYISIN(sprite_sheets, bodytype))
 		return FALSE

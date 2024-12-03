@@ -249,6 +249,11 @@
 #define SLOT_BLOCK_SUIT_STORE (1<<16)
 //=================================================
 
+//garb overrides
+#define NO_GARB_OVERRIDE null
+#define PREFIX_HAT_GARB_OVERRIDE "%PREFIX_HAT_GARB_OVERRIDE%"
+#define PREFIX_HELMET_GARB_OVERRIDE "%PREFIX_HELMET_GARB_OVERRIDE%"
+
 //slots
 //Text strings so that the slots can be associated when doing inventory lists.
 #define WEAR_ID "id"

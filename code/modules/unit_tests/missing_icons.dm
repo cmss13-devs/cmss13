@@ -79,8 +79,11 @@
 
 			// Explicitly test anything that is garb as an error
 			if(item.type in GLOB.allowed_helmet_items)
-				var/image/result = item.get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
-				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [WEAR_AS_GARB]", variable_name="mob_state", check_null=FALSE)
+				var/image/result = item.get_garb_overlay(GLOB.allowed_helmet_items[item.type])
+				check(obj_path, result.icon, result.icon_state, "This icon_state is needed as a helmet garb", variable_name="mob_state", check_null=FALSE)
+			if(item.type in GLOB.allowed_hat_items)
+				var/image/result = item.get_garb_overlay(GLOB.allowed_hat_items[item.type])
+				check(obj_path, result.icon, result.icon_state, "This icon_state is needed as a hat garb", variable_name="mob_state", check_null=FALSE)
 
 			// Can ignore a slot in the item as null e.g. item_state_slots = list(WEAR_R_HAND = null, WEAR_L_HAND = null)
 			var/list/ignored_slots = list()

@@ -107,7 +107,7 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 
-			if(M != cause_data.resolve_mob())
+			if(M != cause_data?.resolve_mob())
 				M.ExtinguishMob()
 
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
@@ -150,7 +150,7 @@
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
-	if(AM == cause_data.resolve_mob())
+	if(AM == cause_data?.resolve_mob())
 		return
 
 	if(isliving(AM))
@@ -302,7 +302,7 @@
 	/// Factor of duration between acid progression
 	var/acid_delay = 1
 	/// How much fuel the acid drains from the flare every acid tick
-	var/flare_damage = 500
+	var/flare_damage = 600
 	var/barricade_damage = 40
 	var/in_weather = FALSE
 
@@ -311,7 +311,7 @@
 	name = "weak acid"
 	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
-	flare_damage = 150
+	flare_damage = 180
 	icon_state = "acid_weak"
 
 //Superacid
@@ -319,7 +319,7 @@
 	name = "strong acid"
 	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
-	flare_damage = 1875
+	flare_damage = 2250
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)

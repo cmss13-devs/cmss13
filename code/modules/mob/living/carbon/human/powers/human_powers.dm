@@ -349,7 +349,7 @@
 
 	speciesk9.radar.tgui_interact(src)
 
-/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision(mob/user)
+/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision()
 	set category = "Synthetic"
 	set name = "Binocular Vision"
 	set desc = "Activates the K9's keen sense of sight."
@@ -359,7 +359,7 @@
 
 	if(!is_zoomed)
 		enable_zoom()
-		user.visible_message(SPAN_NOTICE("[user] starts looking off into the distance."), \
+		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."), \
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		return
 

@@ -6,26 +6,32 @@
 //RMC Emlisted
 /datum/paygrade/twe/e1
 	paygrade = PAY_SHORT_RMC1
-	name = "Heitai-Marine"
-	prefix = "Hti-Mne."
+	name = "Marine"
+	prefix = "Marine."
 
 /datum/paygrade/twe/e2
 	paygrade = PAY_SHORT_RMC2
-	name = "Santo-Lance Corporal"
-	prefix = "St-LCpl."
+	name = "Lance Corporal"
+	prefix = "LCpl."
 	pay_multiplier = 2.1
 
 /datum/paygrade/twe/e3
 	paygrade = PAY_SHORT_RMC3
-	name = "Nito-Corporal"
-	prefix = "Nt-Cpl."
+	name = "Corporal"
+	prefix = "Cpl."
 	pay_multiplier = 2.2
 
 /datum/paygrade/twe/e4
 	paygrade = PAY_SHORT_RMC4
-	name = "Itto-Sergeant"
+	name = "Sergeant"
 	prefix = "Sgt."
 	pay_multiplier = 2.3
+
+/datum/paygrade/twe/e5
+	paygrade = PAY_SHORT_RMC4
+	name = "Colour Sergeant"
+	prefix = "Sgt."
+	pay_multiplier = 2.7
 
 //TWE Warrent Officer
 /datum/paygrade/twe/wo1

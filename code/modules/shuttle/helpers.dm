@@ -167,12 +167,12 @@
 			var/list/vehicle_dimensions = vehicle.get_dimensions()
 			var/height = vehicle_dimensions["height"]
 			var/width = vehicle_dimensions["width"]
-			if(vehicle.dir & EAST|WEST)
+			if(vehicle.dir & (EAST|WEST))
 				height = vehicle_dimensions["width"]
 				width = vehicle_dimensions["height"]
 			var/dir_to_push = get_dir(door_turf, target_turf)
 			// half width/height because the vehicle loc is centered
-			if(door.dir & EAST|WEST)
+			if(door.dir & (EAST|WEST))
 				switch(dir_to_push)
 					if(NORTH, NORTHEAST, NORTHWEST)
 						target_turf = locate(vehicle.x, door.y + ceil(height*0.5), vehicle.z)

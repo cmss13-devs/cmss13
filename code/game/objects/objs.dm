@@ -428,7 +428,7 @@
 
 	switch(override_icon_state)
 		if(NO_GARB_OVERRIDE)
-			// No modifications
+			return overlay_img // No modifications to make
 		if(PREFIX_HAT_GARB_OVERRIDE)
 			overlay_img.icon_state = "hat_[overlay_img.icon_state]"
 		if(PREFIX_HELMET_GARB_OVERRIDE)

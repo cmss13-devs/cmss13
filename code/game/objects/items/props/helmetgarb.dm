@@ -603,7 +603,7 @@
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
-	item_state_slots = list(WEAR_AS_GARB = "paper")
+	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
 	///The human who spawns with the photo
 	var/datum/weakref/owner
 	///The belonging human name

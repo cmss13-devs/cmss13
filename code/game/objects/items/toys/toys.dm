@@ -16,6 +16,10 @@
 
 /obj/item/toy
 	icon = 'icons/obj/items/toy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/toys_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/toys_righthand.dmi'
+	)
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
@@ -408,7 +412,6 @@
 /obj/item/toy/bikehorn/rubberducky
 	name = "rubber ducky"
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
-	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "rubberducky"
 	item_state = "rubberducky"
 
@@ -505,13 +508,14 @@
 	name = "Farwa plush"
 	desc = "A Farwa plush doll. It's soft and comforting!"
 	icon_state = "farwa"
+	item_state = "farwaplush"
 	black_market_value = 25
 
 /obj/item/toy/plush/barricade
 	name = "plushie barricade"
 	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
 	icon_state = "barricade"
-	item_state = "cade_plush"
+	item_state = "plushie_cade"
 
 /obj/item/toy/plush/shark //A few more generic plushies to increase the size of the plushie loot pool
 	name = "shark plush"

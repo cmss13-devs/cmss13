@@ -10,7 +10,7 @@
 	/// States to not search for matches in other files (too common)
 	var/list/states_to_ignore = list("", "blank", "door_closed", "door_open", "door_opening")
 	/// Additional item slots to test (in addition to defined item_state_slots and item_icons lists).
-	/// Use this to specify when all of a slot should have sprites if applicable.
+	/// Use this to specify when all of a slot should have sprites if applicable. Only creates warnings.
 	var/list/additional_slots_to_test = list()
 	//var/list/additional_slots_to_test = list(WEAR_L_HAND, WEAR_R_HAND, WEAR_FACE, WEAR_BACK, WEAR_JACKET, WEAR_HANDS, WEAR_FEET, WEAR_WAIST, WEAR_EYES, WEAR_HEAD, WEAR_L_EAR, WEAR_R_EAR, WEAR_BODY, WEAR_ID, WEAR_L_STORE, WEAR_R_STORE)
 
@@ -76,19 +76,26 @@
 		// Item specific checks:
 		if(ispath(obj_path, /obj/item))
 			var/obj/item/item = spawned
-			// Can explicitly ignore a slot in the item as null e.g. item_state_slots = list(WEAR_R_HAND = null, WEAR_L_HAND = null)
+
+			// Explicitly test anything that is garb as an error
+			if(item.type in GLOB.allowed_helmet_items)
+				var/image/result = item.get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [WEAR_AS_GARB]", variable_name="mob_state", check_null=FALSE)
+
+			// Can ignore a slot in the item as null e.g. item_state_slots = list(WEAR_R_HAND = null, WEAR_L_HAND = null)
 			var/list/ignored_slots = list()
 			var/list/defined_slots = list()
 			for(var/slot in item.item_state_slots)
 				if(isnull(item.item_state_slots[slot]))
-					ignored_slots += slot
+					ignored_slots |= slot
 					continue
-				defined_slots += slot
+				defined_slots |= slot
 			for(var/slot in item.item_icons)
 				if(isnull(item.item_icons[slot]))
 					ignored_slots |= slot
 					continue
 				defined_slots |= slot
+			defined_slots -= WEAR_AS_GARB // Already checked
 			for(var/slot in defined_slots)
 				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="Human")
 				// States specified in item_state_slots and item_icons (warning only currently)
@@ -103,11 +110,6 @@
 				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="Human")
 				// States specified in additional_slots_to_test not already tested above (warning only currently)
 				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
-
-			// Explicitly test anything that is garb
-			if(item.type in GLOB.allowed_helmet_items)
-				var/image/result = item.get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
-				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [WEAR_AS_GARB]", variable_name="mob_state", check_null=FALSE)
 
 			// Attachable specific checks:
 			if(ispath(obj_path, /obj/item/attachable))
@@ -211,7 +213,8 @@
 	if(icon_exists(icon, icon_state))
 		return
 
-	bad_list[icon] += list(icon_state)
+	if(!warning_only)
+		bad_list[icon] += list(icon_state)
 
 	var/match_message
 	if(!(icon_state in states_to_ignore) && (icon_state in possible_icon_states))

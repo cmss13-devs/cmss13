@@ -487,7 +487,7 @@
 
 /mob/living/proc/handle_fire_protection(mob/living/living, datum/reagent/chem)
 	SIGNAL_HANDLER
-	if(status_flags & RECENTSPAWN|GODMODE)
+	if(status_flags & (RECENTSPAWN|GODMODE))
 		return COMPONENT_NO_IGNITE
 
 // heal ONE limb, organ gets randomly selected from damaged ones.

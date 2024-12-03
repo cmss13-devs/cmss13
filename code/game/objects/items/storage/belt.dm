@@ -287,6 +287,7 @@
 		/obj/item/device/defibrillator/compact,
 		/obj/item/device/reagent_scanner,
 		/obj/item/device/analyzer/plant_analyzer,
+		/obj/item/toy/plush/shark,
 	)
 	flags_atom = FPRINT // has gamemode skin
 

@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	content_type = /obj/item/explosive/grenade/high_explosive
 
 /obj/item/storage/box/packet/high_explosive/upp
-	name = "\improper HEDP grenade packet"
+	name = "\improper Type 6 grenade packet"
 	desc = "It contains three type 6 fragmentation grenades."
 	icon_state = "hefa_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/upp

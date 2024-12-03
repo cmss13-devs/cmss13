@@ -2418,7 +2418,7 @@
 	role_comm_title = "Lt. Kol."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
-  access = ACCESS_LIST_UPP_ALL
+	access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/officer/flag
@@ -2648,7 +2648,7 @@
 	role_comm_title = "Ley. Gen."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
-  access = ACCESS_LIST_UPP_ALL
+	access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/ley_gen
@@ -2672,7 +2672,7 @@
 	rank = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	minimap_icon = "upp_co"
-  access = ACCESS_LIST_UPP_ALL
+	access = ACCESS_LIST_UPP_ALL
 
 //*****************************************************************************************************/
 /datum/job/antag/upp/officer/gen
@@ -2687,8 +2687,8 @@
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
-  access = ACCESS_LIST_UPP_ALL
- 
+	access = ACCESS_LIST_UPP_ALL
+
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/sapper/survivor

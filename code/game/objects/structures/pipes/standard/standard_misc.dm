@@ -110,6 +110,7 @@
 /obj/structure/pipes/standard/cap/hidden/supply/no_boom
 	name = "reinforced supply pipe endcap"
 	explodey = FALSE
+	color = PIPE_COLOR_PURPLE
 
 
 /obj/structure/pipes/standard/tank

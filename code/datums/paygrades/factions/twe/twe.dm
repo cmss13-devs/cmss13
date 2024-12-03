@@ -30,7 +30,7 @@
 /datum/paygrade/twe/e5
 	paygrade = PAY_SHORT_RMC4
 	name = "Colour Sergeant"
-	prefix = "Sgt."
+	prefix = "CSgt."
 	pay_multiplier = 2.7
 
 //TWE Warrent Officer

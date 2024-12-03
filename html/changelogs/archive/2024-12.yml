@@ -6,3 +6,40 @@
   - soundadd: added 201 new lines total for hazmat and normal joes combined
   realforest2001:
   - rscadd: Added CO to MP timelocks, and ASO to command timelocks.
+2024-12-03:
+  BOBAMA:
+  - bugfix: missing paygrades, remove CL tracker on hvh headsets, pmcs on longer get
+      all marine announcements by default
+  Blundir:
+  - rscadd: type 23 shotgun shell boxes and crafting of them
+  - rscadd: type 23 shotgun rounds to black market
+  CapCamIII:
+  - balance: The ME3 welding tool can now be used for most tasks now.
+  Drathek:
+  - bugfix: Fix squad overlay sometimes not getting removed when helmet exceeded its
+      helmet garb overlay slots
+  - rscdel: Remove some effectively dead code attempting to add hugger damage to helmets
+  - rscadd: Dropship airlocks that force close now also throw objects (and vehicles)
+      out of their way
+  - rscadd: Airlocks can crush more xeno structures if they somehow got placed there
+  - bugfix: Fix doors sometimes ignoring force call (namely dropship airlocks)
+  - bugfix: Fix doors not checking their turfs correctly (for example it wouldn't
+      throw mobs in its own turf)
+  - refactor: Refactor some door code
+  - bugfix: Fix vehicles in airlocks not being handled correctly (never autoclosing
+      again)
+  - bugfix: Fix runtime edgecase when ghostizing something that has no player_details
+      somehow
+  Steelpoint:
+  - rscadd: Members of UPP squads will now appear in their own unique sub-menu for
+      observers.
+  - rscadd: UPP squad icons are properly colour-coded in the observer menu.
+  blackdragonTOW:
+  - bugfix: Fixed Synth K9 Bino vision targeting
+  realforest2001:
+  - bugfix: Fixes UPP CO whitelist not working.
+  - code_imp: Tidies up some back-end code.
+  zzzmike:
+  - qol: USCM notice sent when intel points for non-xeno non-yautja corpses are maxed
+      out
+  - qol: hijack wording more clear for newbies

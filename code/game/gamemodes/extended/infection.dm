@@ -2,7 +2,7 @@
 /datum/game_mode/infection
 	name = "Infection"
 	config_tag = "Infection"
-	required_players = 0 //otherwise... no zambies
+	population_min = 0 //otherwise... no zambies
 	latejoin_larva_drop = 0
 	flags_round_type = MODE_INFECTION //Apparently without this, the game mode checker ignores this as a potential legit game mode.
 	votable = FALSE // infection borked

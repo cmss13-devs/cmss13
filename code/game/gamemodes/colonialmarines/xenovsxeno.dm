@@ -3,7 +3,7 @@
 /datum/game_mode/xenovs
 	name = GAMEMODE_HIVE_WARS
 	config_tag = GAMEMODE_HIVE_WARS
-	required_players = 4 //Need at least 4 players
+	population_min = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
 	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE|MODE_NO_SHIP_MAP

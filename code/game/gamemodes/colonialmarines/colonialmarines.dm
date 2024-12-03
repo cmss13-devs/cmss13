@@ -5,7 +5,7 @@
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
 	config_tag = "Distress Signal"
-	required_players = 1 //Need at least one player, but really we need 2.
+	population_min = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
 	corpses_to_spawn = 0

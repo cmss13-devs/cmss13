@@ -88,7 +88,7 @@
 /datum/game_mode/huntergames
 	name = "Hunter Games"
 	config_tag = "Hunter Games"
-	required_players = 1
+	population_min = 1
 	flags_round_type = MODE_NO_LATEJOIN
 	latejoin_larva_drop = 0 //You never know
 

@@ -1,7 +1,7 @@
 /datum/game_mode/extended
 	name = "Extended"
 	config_tag = "Extended"
-	required_players = 0
+	population_min = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
 	var/research_allocation_interval = 10 MINUTES

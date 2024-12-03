@@ -21,7 +21,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/vote_cycle = null
 	var/probability = 0
 	var/list/datum/mind/modePlayer = new
-	var/required_players = 0
+	var/population_min = null
+	var/population_max = null
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
 	var/ert_disabled = 0
 	var/force_end_at = 0
@@ -64,7 +65,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		if(players >= required_players_secret)
 			return TRUE
 	else
-		if(players >= required_players)
+		if(players >= population_min)
 			return TRUE
 	return FALSE
 

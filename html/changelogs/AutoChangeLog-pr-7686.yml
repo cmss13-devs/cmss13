@@ -1,4 +1,0 @@
-author: "irakligabunia"
-delete-after: True
-changes:
-  - rscdel: "Removes access to pred for legacy WL holders"

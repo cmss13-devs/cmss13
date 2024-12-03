@@ -175,6 +175,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_8g, list(
 	/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
 	))
 

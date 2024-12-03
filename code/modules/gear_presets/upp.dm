@@ -2468,7 +2468,7 @@
 	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
-	gear_preset = /datum/equipment_preset/upp/officer/podpolkovnik
+	gear_preset = /datum/equipment_preset/upp/officer/flag/podpolkovnik
 	total_positions = 1
 	spawn_positions = 1
 

@@ -7,6 +7,7 @@
 	tutorial_id = "xeno_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s12x12
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
+	required_tutorial = "ss13_intents_1"
 
 // START OF SCRITPING
 

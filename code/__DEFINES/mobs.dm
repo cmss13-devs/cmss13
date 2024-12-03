@@ -218,6 +218,7 @@
 #define SPECIAL_BONEBREAK (1<<13) //species do not get their bonebreak chance modified by endurance
 #define NO_SHRAPNEL (1<<14)
 #define HAS_HARDCRIT (1<<15)
+#define NO_OVERLAYS (1<<16) // Stop OnMob overlays from appearing on sprite
 
 //=================================================
 
@@ -346,6 +347,7 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define SPECIES_HUMAN "Human"
 #define SPECIES_YAUTJA "Yautja"
 #define SPECIES_SYNTHETIC "Synthetic"
+#define SPECIES_SYNTHETIC_K9 "Synthetic K9"
 #define SPECIES_MONKEY "Monkey"
 #define SPECIES_ZOMBIE "Zombie"
 
@@ -384,3 +386,12 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
+
+/// Sleeps for X and will perform return if A is qdeleted or a dead mob.
+#define SLEEP_CHECK_DEATH(X, A) \
+	sleep(X); \
+	if(QDELETED(A)) return; \
+	if(ismob(A)) { \
+		var/mob/sleep_check_death_mob = A; \
+		if(sleep_check_death_mob.stat == DEAD) return; \
+	}

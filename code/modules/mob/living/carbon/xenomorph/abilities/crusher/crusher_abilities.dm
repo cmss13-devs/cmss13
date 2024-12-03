@@ -1,7 +1,7 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge
 	name = "Charge"
 	action_icon_state = "ready_charge"
-	ability_name = "charge"
+	action_text = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -35,7 +35,6 @@
 /datum/action/xeno_action/onclick/crusher_stomp
 	name = "Stomp"
 	action_icon_state = "stomp"
-	ability_name = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -63,7 +62,6 @@
 /datum/action/xeno_action/onclick/crusher_shield
 	name = "Defensive Shield"
 	action_icon_state = "empower"
-	ability_name = "defensive shield"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -74,7 +72,6 @@
 /datum/action/xeno_action/activable/fling/charger
 	name = "Headbutt"
 	action_icon_state = "ram"
-	ability_name = "Headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -253,7 +250,6 @@
 
 /datum/action/xeno_action/activable/tumble
 	name = "Tumble"
-	ability_name = "tumble"
 	action_icon_state = "tumble"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_tumble
 	action_type = XENO_ACTION_CLICK

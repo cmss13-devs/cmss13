@@ -4,10 +4,12 @@
 	damage_cap = 650 // Bigger = more endurable
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
-/obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
+/obj/structure/machinery/door/airlock/multi_tile/close(forced = FALSE) //Nasty as hell O(n^2) code but unfortunately necessary
 	for(var/turf/turf_tile in locs)
 		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			if(vehicle_tile) return 0
+			if(vehicle_tile)
+				addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+				return FALSE
 
 	return ..()
 
@@ -115,16 +117,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/secure2_glass/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
-
-/obj/structure/machinery/door/airlock/multi_tile/shuttle
-	name = "Shuttle Podlock"
-	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
-	icon_state = "pdoor1"
-	opacity = TRUE
-	openspeed = 12
-	req_access = null
-	not_weldable = 1
-
 
 // ALMAYER
 
@@ -279,10 +271,10 @@
 		return
 	..()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced=FALSE)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced = FALSE)
 	if(is_reserved_level(z) && !forced)
 		return // in orbit
-	..()
+	return ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)
@@ -333,6 +325,14 @@
 	name = "\improper Saipan cargo door"
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp
+	name = "\improper Morana cargo door"
+	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp2
+	name = "\improper Devana cargo door"
+	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
 	width = 2
 
@@ -347,6 +347,14 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3
 	name = "\improper Saipan crew hatch"
 	icon = 'icons/obj/structures/doors/dropship3_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp
+	name = "\improper Morana crew hatch"
+	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp2
+	name = "\improper Devana crew hatch"
+	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
 	name = "bulkhead blast door"
@@ -381,7 +389,7 @@
 	open(TRUE)
 	lock(TRUE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close()
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close(forced = FALSE)
 	. = ..()
 	for(var/turf/self_turf as anything in locs)
 		var/turf/projected = get_ranged_target_turf(self_turf, throw_dir, 1)

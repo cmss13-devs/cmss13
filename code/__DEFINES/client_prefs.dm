@@ -1,10 +1,21 @@
 #define BE_ALIEN_AFTER_DEATH (1<<0)
 #define BE_AGENT (1<<1)
 
+/// Determines how abilities are activated, whether they're activated via middle click, shift click or right click.
+#define XENO_ABILITY_CLICK_MIDDLE 1
+#define XENO_ABILITY_CLICK_SHIFT 2
+#define XENO_ABILITY_CLICK_RIGHT 3
+
+/// Update this to whatever the largest value of the XENO_ABILITY_CLICK_* defines is.
+#define XENO_ABILITY_CLICK_MAX 3
+
 //toggle_prefs bits from /datum/preferences
 #define TOGGLE_IGNORE_SELF (1<<0) // Determines whether you will not hurt yourself when clicking yourself
 #define TOGGLE_HELP_INTENT_SAFETY (1<<1) // Determines whether help intent will be completely harmless
-#define TOGGLE_MIDDLE_MOUSE_CLICK (1<<2) // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
+// Deprecated. Can't remove this or bitshift values down because it would fuck up the savefiles
+// Feel free to replace this whatever you want, if you can find a useful toggle for it. Alternatively, don't because savefiles using flags
+// Is a complete and utter mistake.
+#define TOGGLE_FREE_PLACE_YOUR_OWN_TOGGLE_HERE (1<<2)
 #define TOGGLE_DIRECTIONAL_ATTACK (1<<3) // This toggles whether attacks for xeno use directional attacks
 #define TOGGLE_AUTO_EJECT_MAGAZINE_OFF (1<<4) // This toggles whether guns with auto ejectors will not auto eject their magazines
 												   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
@@ -25,6 +36,7 @@
 #define TOGGLE_LATE_JOIN_CURRENT_SLOT (1<<17) //Whether joining during the round ignores assigned character slot for the job and uses currently selected slot.
 #define TOGGLE_ABILITY_DEACTIVATION_OFF (1<<18) // This toggles whether selecting the same ability again can toggle it off
 #define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)/// limit how often the ammo is displayed when using semi-automatic fire
+#define TOGGLE_AUTO_SHOVE_OFF (1<<20) /// Toggles between automatically shoving xenomorphs in the way as Queen.
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0

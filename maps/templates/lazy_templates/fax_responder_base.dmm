@@ -1,0 +1,2751 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"am" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
+	phone_id = "UPP Communications Officer";
+	phone_color = "green"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"fr" = (
+/obj/structure/machinery/cryopod/no_store,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"gu" = (
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"id" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = -12;
+	faction = "UPP";
+	name = "UPP monitoring computer"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = 8;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"jh" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/adminlevel/ert_station/fax_response_station)
+"jV" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
+	phone_id = "TWE Communications Officer";
+	phone_color = "yellow"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"kT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 8;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ny" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/cmb{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"nB" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -24
+	},
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ov" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/uscm/command/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"oA" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/twe/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"pu" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 24;
+	id = "Faxes"
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"pH" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
+	dir = 1;
+	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	unacidable = 1;
+	use_power = 0;
+	needs_power = 0;
+	id = "Faxes"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"qw" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/press/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"rS" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
+	phone_id = "Free Press Relay"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"rV" = (
+/obj/effect/landmark/late_join/responder/uscm/provost,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"sx" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = -6
+	},
+/obj/item/folder/white,
+/obj/item/folder/white{
+	pixel_x = 6
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"sZ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 8;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"tq" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "USCM-HC Communications Officer";
+	phone_color = "blue"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"tM" = (
+/obj/effect/landmark/late_join/responder/clf,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"uX" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/clf/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"vc" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"wv" = (
+/obj/effect/landmark/late_join/responder/cmb,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"wx" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = -12;
+	faction = "Colonial Marshal";
+	name = "CMB monitoring computer"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = 8;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"wz" = (
+/turf/closed/wall/r_wall/bunker{
+	hull = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"xb" = (
+/obj/effect/landmark/late_join/responder/wey_yu,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"xc" = (
+/turf/closed/wall/r_wall/chigusa{
+	hull = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"xX" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/adminlevel/ert_station/fax_response_station)
+"yv" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = -12;
+	faction = "TWE";
+	name = "TWE monitoring computer"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = 8;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Ba" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = 9
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Bp" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp"
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Bz" = (
+/obj/effect/landmark/late_join/responder/press,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"BC" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/adminlevel/ert_station/fax_response_station)
+"Du" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	name = "USCM monitoring computer"
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Dy" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/adminlevel/ert_station/fax_response_station)
+"Ei" = (
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/fax_response_station)
+"EI" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = 9
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"EK" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = -12;
+	faction = "Wey-Yu";
+	name = "WY monitoring computer"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = 8;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"FB" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
+	phone_id = "WY Communications Executive"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"FD" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/corporate/highcom{
+	pixel_y = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	faction = "PMC";
+	name = "PMC monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"IO" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 16;
+	pixel_y = 16;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("WY","Containment Hidden","Colony");
+	pixel_x = 16;
+	name = "WY Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment");
+	pixel_x = 16;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -16;
+	colony_camera_mapload = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Ml" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/adminlevel/ert_station/fax_response_station)
+"Nb" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Colonial Marshal","Fax Responders");
+	phone_id = "CMB Deputy Operations Officer";
+	phone_color = "green"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"NP" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "Provost Communications Officer";
+	phone_color = "red"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"OA" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Pn" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Rh" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = -12;
+	faction = "CLF";
+	name = "CLF monitoring computer"
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	pixel_x = 8;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ST" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"UB" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/uscm/brig/provost{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"VV" = (
+/obj/effect/landmark/late_join/responder/upp,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Wp" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/upp/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"XW" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 24;
+	name = "USCM monitoring computer"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"XZ" = (
+/obj/effect/landmark/late_join/responder/twe,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Yv" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/red{
+	pixel_x = 6
+	},
+/obj/item/folder/black{
+	pixel_x = 12
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
+	phone_id = "CLF Information Correspondant";
+	phone_color = "orange"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Yy" = (
+/turf/open/space/basic,
+/area/space)
+"YO" = (
+/obj/effect/landmark/late_join/responder/uscm,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"YR" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	density = 0
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+
+(1,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(2,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(3,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(4,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(5,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(6,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(7,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Ei
+YR
+OA
+rV
+fr
+Ei
+nB
+OA
+YO
+fr
+Ei
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(8,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+Ei
+EI
+gu
+gu
+gu
+Pn
+EI
+gu
+gu
+gu
+Ei
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(9,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+vc
+pH
+gu
+gu
+gu
+gu
+Pn
+gu
+gu
+gu
+gu
+pH
+vc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(10,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+vc
+Ei
+UB
+ST
+gu
+NP
+Pn
+ov
+ST
+gu
+tq
+Ei
+vc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(11,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+vc
+Ei
+Du
+sZ
+Bp
+sx
+Ei
+Du
+sZ
+Bp
+sx
+Ei
+vc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(12,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+vc
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+vc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(13,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(14,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+vc
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(15,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+BC
+BC
+BC
+BC
+BC
+vc
+wz
+wz
+wz
+wz
+wz
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(16,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+YR
+OA
+xb
+fr
+BC
+vc
+wz
+YR
+OA
+VV
+fr
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(17,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+EI
+gu
+gu
+gu
+BC
+vc
+wz
+Ba
+gu
+gu
+gu
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(18,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+gu
+gu
+gu
+gu
+pH
+vc
+pH
+gu
+gu
+gu
+gu
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(19,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+FD
+ST
+gu
+FB
+BC
+vc
+wz
+Wp
+ST
+gu
+am
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(20,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+EK
+IO
+Bp
+sx
+BC
+vc
+wz
+id
+kT
+Bp
+sx
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(21,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+BC
+BC
+BC
+BC
+BC
+BC
+vc
+wz
+wz
+wz
+wz
+wz
+wz
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(22,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+pu
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(23,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+vc
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(24,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+jh
+jh
+jh
+jh
+jh
+vc
+xc
+xc
+xc
+xc
+xc
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(25,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+YR
+OA
+tM
+fr
+jh
+vc
+xc
+YR
+OA
+XZ
+fr
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(26,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+Ba
+gu
+gu
+gu
+jh
+vc
+xc
+Ba
+gu
+gu
+gu
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(27,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+gu
+gu
+gu
+gu
+pH
+vc
+pH
+gu
+gu
+gu
+gu
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(28,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+uX
+ST
+gu
+Yv
+jh
+vc
+xc
+oA
+ST
+gu
+jV
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(29,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+Rh
+kT
+Bp
+sx
+jh
+vc
+xc
+yv
+kT
+Bp
+sx
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(30,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+jh
+jh
+jh
+jh
+jh
+jh
+vc
+xc
+xc
+xc
+xc
+xc
+xc
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(31,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+vc
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(32,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+pu
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(33,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
+vc
+Ml
+Ml
+Ml
+Ml
+Ml
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(34,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+nB
+OA
+wv
+fr
+Dy
+vc
+Ml
+YR
+OA
+Bz
+fr
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(35,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+EI
+gu
+gu
+gu
+Dy
+vc
+Ml
+Ba
+gu
+gu
+gu
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(36,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+gu
+gu
+gu
+gu
+pH
+vc
+pH
+gu
+gu
+gu
+gu
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(37,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+ny
+ST
+gu
+Nb
+Dy
+vc
+Ml
+qw
+ST
+gu
+rS
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(38,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+wx
+kT
+Bp
+sx
+Dy
+vc
+Ml
+XW
+kT
+Bp
+sx
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(39,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
+vc
+Ml
+Ml
+Ml
+Ml
+Ml
+Ml
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(40,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+xX
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(41,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(42,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(43,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(44,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(45,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}

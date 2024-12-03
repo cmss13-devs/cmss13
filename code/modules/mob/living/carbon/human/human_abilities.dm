@@ -606,7 +606,7 @@ CULT
 
 /datum/action/human_action/activable/insurgent/insurgent_convert
 	name = "Convert"
-	action_icon_state = "mutineer_convert" //need someone to sprite icon
+	action_icon_state = "mutineer_convert"
 
 
 /datum/action/human_action/activable/insurgent/insurgent_convert/use_ability(mob/mob)

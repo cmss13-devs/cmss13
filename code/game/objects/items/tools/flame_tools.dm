@@ -466,7 +466,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "cigar_off"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
 	item_state = "cigar_off"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_cig")
+	item_state_slots = list(WEAR_AS_GARB = "cigar")
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
@@ -670,7 +670,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	)
 	icon_state = "cigoff"
 	item_state = "cigoff"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_cig_cig")
+	item_state_slots = list(WEAR_AS_GARB = "cigar")
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_EAR|SLOT_FACE
 	var/icon_on = "cigon"
@@ -733,7 +733,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "zippo"
 	icon_on = "zippoon"
 	icon_off = "zippo"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_lighter_zippo")
+	item_state_slots = list(WEAR_AS_GARB = "lighter_zippo")
 	var/engraved = FALSE
 
 /obj/item/tool/lighter/zippo/attackby(obj/item/W as obj, mob/user as mob)
@@ -795,7 +795,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_on = "lighter_[clr]_on"
 		icon_off = "lighter_[clr]"
 		icon_state = icon_off
-		LAZYSET(item_state_slots, WEAR_AS_GARB, "helmet_lighter_[clr]")
+		LAZYSET(item_state_slots, WEAR_AS_GARB, "lighter_[clr]")
 
 /obj/item/tool/lighter/attack_self(mob/living/user)
 	if(user.r_hand == src || user.l_hand == src)

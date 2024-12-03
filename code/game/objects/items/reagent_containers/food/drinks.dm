@@ -302,7 +302,7 @@
 	name = "metal flask"
 	desc = "A metal flask with a decent liquid capacity."
 	icon_state = "flask"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_flask")
+	item_state_slots = list(WEAR_AS_GARB = "flask")
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 		)

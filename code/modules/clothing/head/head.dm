@@ -348,28 +348,29 @@
 	)
 
 GLOBAL_LIST_INIT(allowed_hat_items, list(
-	/obj/item/storage/fancy/cigarettes/emeraldgreen = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/kpack = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/lucky_strikes = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/wypacket = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/lady_finger = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/blackpack = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/arcturian_ace = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen/blue = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen/red = NO_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/emeraldgreen = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/kpack = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/lucky_strikes = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/wypacket = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/lady_finger = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/blackpack = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/arcturian_ace = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/tool/pen = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/tool/pen/blue = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/tool/pen/red = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = "welding-c",
-	/obj/item/clothing/glasses/mgoggles = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/black = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/black/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/orange = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/orange/prescription = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/prescription = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/black = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/black/prescription = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/orange = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/orange/prescription = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/v2 = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/v2/prescription = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/helmet_nvg = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/tan = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/red = PREFIX_HAT_GARB_OVERRIDE, // _hat
@@ -380,7 +381,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
 ))
 
 /obj/item/clothing/head/cmcap

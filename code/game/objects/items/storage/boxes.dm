@@ -488,7 +488,7 @@
 	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_state = "matchbox"
 	item_state = "zippo"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_matches")
+	item_state_slots = list(WEAR_AS_GARB = "matches")
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 		)

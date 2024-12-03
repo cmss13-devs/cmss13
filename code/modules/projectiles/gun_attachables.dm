@@ -669,6 +669,9 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "flashlight"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
 	attach_icon = "flashlight_a"
 	light_mod = 5
 	slot = "rail"

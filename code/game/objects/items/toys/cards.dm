@@ -20,7 +20,7 @@
 	desc = "A simple deck of playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_card_deck")
+	item_state_slots = list(WEAR_AS_GARB = "card_deck")
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi',
 		)
@@ -54,7 +54,7 @@
 	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_card_uno")
+	item_state_slots = list(WEAR_AS_GARB = "card_uno")
 	max_cards = 108
 	flags_obj = OBJ_IS_HELMET_GARB
 
@@ -273,7 +273,7 @@
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
 	item_icons = list(WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi')
-	item_state_slots = list(WEAR_AS_GARB = "helmet_card_card")
+	item_state_slots = list(WEAR_AS_GARB = "card_card")
 	w_class = SIZE_TINY
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 

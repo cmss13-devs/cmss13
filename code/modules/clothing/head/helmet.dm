@@ -145,14 +145,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/tool/lighter/random = NO_GARB_OVERRIDE,
 	/obj/item/tool/lighter/zippo = NO_GARB_OVERRIDE,
 	/obj/item/storage/box/matches = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/emeraldgreen = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/kpack = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/lucky_strikes = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/wypacket = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/lady_finger = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/blackpack = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/arcturian_ace = NO_GARB_OVERRIDE,
-	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = NO_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/emeraldgreen = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/kpack = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/lucky_strikes = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/wypacket = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/lady_finger = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/blackpack = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/arcturian_ace = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/storage/fancy/cigarettes/lucky_strikes_4 = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/storage/fancy/cigar/matchbook = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/cigarette/cigar = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/electronic_cigarette = NO_GARB_OVERRIDE,
@@ -182,14 +182,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/reagent_container/food/snacks/wrapped/barcardine = NO_GARB_OVERRIDE,
 
 	// EYEWEAR
-	/obj/item/clothing/glasses/mgoggles = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/glasses/mgoggles/v2 = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/v2/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/black = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/black/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/orange = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/orange/prescription = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/glasses/mgoggles/black = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/glasses/mgoggles/black/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/glasses/mgoggles/orange = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/glasses/mgoggles/orange/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/glasses/sunglasses = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/sunglasses/prescription = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/sunglasses/aviator = NO_GARB_OVERRIDE,
@@ -230,9 +230,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/trimmed_wire = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/helmet_nvg = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/prop/helmetgarb/helmet_gasmask = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/flair_initech = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/flair_io = NO_GARB_OVERRIDE,
@@ -245,9 +245,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/bug_spray = NO_GARB_OVERRIDE,
 
 	// MISC
-	/obj/item/tool/pen = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen/blue = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen/red = NO_GARB_OVERRIDE,
+	/obj/item/tool/pen = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/tool/pen/blue = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/tool/pen/red = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,

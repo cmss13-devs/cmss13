@@ -5,7 +5,7 @@
 	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
 	item_state = "empty"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_injector")
+	item_state_slots = list(WEAR_AS_GARB = "injector")
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
 		)

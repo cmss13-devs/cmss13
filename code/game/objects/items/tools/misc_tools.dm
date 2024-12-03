@@ -157,7 +157,7 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_pen_black")
+	item_state_slots = list(WEAR_AS_GARB = "pen_black")
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
@@ -256,7 +256,7 @@
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	item_state_slots = list(WEAR_AS_GARB = "helmet_pen_blue")
+	item_state_slots = list(WEAR_AS_GARB = "pen_blue")
 	pen_color = "blue"
 
 /obj/item/tool/pen/blue/clicky
@@ -266,7 +266,7 @@
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	item_state_slots = list(WEAR_AS_GARB = "helmet_pen_red")
+	item_state_slots = list(WEAR_AS_GARB = "pen_red")
 	pen_color = "red"
 
 /obj/item/tool/pen/red/clicky
@@ -293,6 +293,7 @@
 	name = "fountain pen"
 	icon_state = "fountain_pen"
 	item_state = "fountain_pen"
+	item_state_slots = list(WEAR_AS_GARB = "fountain_pen")
 	matter = list("metal" = 20, "gold" = 10)
 	var/static/list/color_list = list("red", "blue", "green", "yellow", "purple", "pink", "brown", "black", "orange") // Can add more colors as required
 	var/current_color_index = 1

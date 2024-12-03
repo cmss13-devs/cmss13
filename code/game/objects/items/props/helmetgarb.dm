@@ -1,7 +1,7 @@
 // Holds props for helmet garb
 
 /obj/item/prop/helmetgarb
-	icon = 'icons/obj/items/helmet_garb.dmi'
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
 	icon_state = null
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
@@ -58,7 +58,8 @@
 	icon_state = "cartridge"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
-		)
+	)
+	item_state_slots = list(WEAR_AS_GARB = "bullet")
 
 /obj/item/prop/helmetgarb/prescription_bottle
 	name = "prescription medication"
@@ -66,7 +67,7 @@
 	icon_state = "prescription_bottle"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/raincover
 	name = "raincover"
@@ -74,7 +75,7 @@
 	icon_state = "raincover"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"
@@ -85,7 +86,7 @@
 	name = "rosary"
 	desc = "Jesus Saves Lives!"
 	icon_state = "rosary"
-	item_state_slots = list(WEAR_AS_GARB = "helmet_rosary")
+	item_state_slots = list(WEAR_AS_GARB = "rosary")
 
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
@@ -122,8 +123,8 @@
 	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work"
 	icon_state = "nvg"
 	item_icons = list(
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
-		)
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
+	)
 	gender = PLURAL
 	garbage = FALSE
 	w_class = SIZE_MEDIUM
@@ -501,7 +502,7 @@
 	icon_state = "flair_initech"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/flair_io
 	name = "\improper Io flair"
@@ -509,7 +510,7 @@
 	icon_state = "flair_io"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/flair_peace
 	name = "\improper Peace flair"
@@ -517,7 +518,7 @@
 	icon_state = "flair_peace_smiley"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/flair_uscm
 	name = "\improper USCM flair"
@@ -525,7 +526,7 @@
 	icon_state = "flair_uscm"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/spacejam_tickets
 	name = "\improper Tickets to Space Jam"
@@ -535,18 +536,18 @@
 /obj/item/prop/helmetgarb/riot_shield
 	name = "\improper RC6 riot shield"
 	desc = "The complimentary, but sold separate face shield associated with the RC6 riot helmet."
-	icon_state = "helmet_riot_shield"
+	icon_state = "riot_shield"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/helmet_gasmask
 	name = "\improper M5 integrated gasmask"
 	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
-	icon_state = "helmet_gasmask"
+	icon_state = "gasmask"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/helmet_internal_inventory)
 	..()
@@ -583,7 +584,7 @@
 	icon_state = "bullet_pipe"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
-		)
+	)
 
 /obj/item/prop/helmetgarb/chaplain_patch
 	name = "\improper USCM chaplain helmet patch"
@@ -599,7 +600,10 @@
 	desc = ""
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "photo_item"
-	item_state_slots = list(WEAR_AS_GARB = "family_photo")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "paper")
 	///The human who spawns with the photo
 	var/datum/weakref/owner
 	///The belonging human name
@@ -658,7 +662,10 @@
 	name = "compass"
 	desc = "It always faces north. Are you sure it is not broken?"
 	icon = 'icons/obj/items/tools.dmi'
-	icon_state = "compass"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
 	w_class = SIZE_SMALL
 
 /obj/item/prop/helmetgarb/compass/get_examine_text(mob/user)
@@ -672,6 +679,9 @@
 	name = "insect repellent"
 	desc = "A store-brand insect repellent, to keep any variety of pest or mosquito away from you."
 	icon = 'icons/obj/items/spray.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
 	icon_state = "pestspray"
-	item_state_slots = list(WEAR_AS_GARB = "bug_spray")
+	item_state_slots = list(WEAR_AS_GARB = "canteen") //PLACEHOLDER
 	w_class = SIZE_SMALL

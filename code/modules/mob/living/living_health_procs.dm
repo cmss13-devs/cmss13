@@ -35,8 +35,6 @@
 	return fireloss
 
 /mob/living/proc/adjustFireLoss(amount)
-	if(amount > 0 && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && stat == DEAD) //if they take positive damage (not healing) we prevent it
-		return
 	if(status_flags & GODMODE) return 0 //godmode
 	fireloss = min(max(fireloss + amount, 0),(maxHealth*2))
 

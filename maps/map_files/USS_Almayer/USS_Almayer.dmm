@@ -9046,10 +9046,7 @@
 "blw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the requisitions department. Be sure to make an extra-convincing argument before you ask for a crate of lunge mines.;
-	gender = "female"
-	},
+/obj/structure/machinery/faxmachine/uscm,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -20630,10 +20627,7 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
 	},
-/obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the requisitions department. Be sure to make an extra-convincing argument before you ask for a crate of lunge mines.;
-	gender = "female"
-	},
+/obj/structure/machinery/faxmachine/uscm,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "eAI" = (
@@ -48916,10 +48910,7 @@
 /area/almayer/shipboard/panic)
 "qmP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the requisitions department. Be sure to make an extra-convincing argument before you ask for a crate of lunge mines.;
-	gender = "female"
-	},
+/obj/structure/machinery/faxmachine/uscm,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "qmR" = (

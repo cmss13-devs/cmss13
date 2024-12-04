@@ -545,7 +545,7 @@
 		to_world(SPAN_DEBUG("([L]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
 		#endif
 
-		if(hit_chance > hit_roll)
+		if(hit_chance > hit_roll && !(L.status_flags & RECENTSPAWN))
 			#if DEBUG_HIT_CHANCE
 			to_world(SPAN_DEBUG("([L]) Hit."))
 			#endif

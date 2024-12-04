@@ -1346,6 +1346,17 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/prep)
+"aZI" = (
+/obj/effect/landmark/late_join/upp{
+	name = "UPP late working joe join";
+	job_list = list("Dzho Automaton")
+	},
+/obj/effect/landmark/start/upp{
+	job_list = list("Dzho Automaton");
+	name = "UPP Working Joe"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/rostock/airoom)
 "aZY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8321,8 +8332,8 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/upp{
-	job_list = list("UPP Komandir");
-	name = "UPP CO"
+	job_list = list("Dzho Automaton");
+	name = "UPP Working Joe"
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/co)
@@ -49183,7 +49194,7 @@ ofW
 ofW
 vTq
 nbf
-mja
+aZI
 gRw
 sFn
 mxm

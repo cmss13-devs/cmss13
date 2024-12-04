@@ -37,7 +37,7 @@
 	for(var/mob/hearer in hearers)
 		if(is_blind(hearer))
 			continue
-		balloon_alert(hearer, (hearer == src && self_message) || message, text_color, delay)
+		balloon_alert(hearer, (hearer == src && self_message) || message, text_color)
 
 // Do not use.
 // MeasureText blocks. I have no idea for how long.

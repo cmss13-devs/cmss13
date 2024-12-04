@@ -295,6 +295,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/containers)
+"adr" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -502,6 +506,10 @@
 "aiQ" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/outdoors/colony_streets/central_streets)
+"aji" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/cargo_intake)
 "ajs" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -1261,6 +1269,11 @@
 	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/oob)
+"aMD" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/east_reactor/south)
 "aMI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed{
@@ -1770,6 +1783,11 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor)
+"bca" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
 "bce" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
@@ -1943,6 +1961,10 @@
 	},
 /turf/open/floor/corsat/brown/east,
 /area/lv522/atmos/east_reactor/west)
+"bgA" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "bgJ" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "Sec-Kitchen-Lockdown";
@@ -3333,6 +3355,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/brown/north,
 /area/lv522/atmos/north_command_centre)
+"bZf" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "bZK" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
@@ -4125,6 +4151,10 @@
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"czz" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "czC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/light{
@@ -5087,6 +5117,10 @@
 /obj/structure/machinery/autolathe,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"cXD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/east_reactor/south)
 "cXF" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -6068,6 +6102,10 @@
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
+"dtM" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/cargo_intake)
 "dtR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/alien/hugger,
@@ -6792,6 +6830,11 @@
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
+"dNb" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "dNd" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/squares,
@@ -7096,6 +7139,13 @@
 /obj/item/tool/pickaxe,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/south_east_street)
+"dVE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "dVM" = (
 /obj/structure/curtain/red,
 /turf/open/floor/prison,
@@ -7849,6 +7899,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "eoA" = (
@@ -8242,6 +8293,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/cargo_intake)
 "eAg" = (
@@ -8415,6 +8467,10 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/corsat/brown,
 /area/lv522/atmos/cargo_intake)
+"eGA" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "eGL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -8470,12 +8526,9 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "eHX" = (
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
-/obj/item/clothing/suit/storage/marine/medium/rto,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/brown/east,
 /area/lv522/atmos/east_reactor/south)
 "eIk" = (
@@ -8624,6 +8677,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/clothing/suit/storage/marine/medium/rto,
 /turf/open/floor/corsat/brown/east,
 /area/lv522/atmos/east_reactor/south)
 "eMz" = (
@@ -8736,10 +8790,16 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"ePz" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "ePK" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/cargo_intake)
 "eQf" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/brown/southwest,
 /area/lv522/atmos/cargo_intake)
 "eQu" = (
@@ -8828,6 +8888,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/cargo)
+"eTD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/browncorner/west,
+/area/lv522/atmos/east_reactor/south)
 "eTZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/brown,
@@ -8910,6 +8974,7 @@
 /area/lv522/atmos/east_reactor/south)
 "eVW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/browncorner,
 /area/lv522/atmos/east_reactor/south)
 "eWn" = (
@@ -9176,6 +9241,11 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"feG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/west,
+/area/lv522/atmos/cargo_intake)
 "ffb" = (
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/bridge)
@@ -9604,6 +9674,10 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/reactor_garage)
+"fsG" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/west,
+/area/lv522/atmos/east_reactor/south)
 "fsQ" = (
 /obj/structure/prop/vehicles/crawler{
 	layer = 2.9
@@ -9789,6 +9863,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
 "fxH" = (
@@ -9831,6 +9906,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/hallway)
+"fyG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/west,
+/area/lv522/atmos/cargo_intake)
 "fzf" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
@@ -10143,6 +10223,13 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel/far)
+"fJA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "fKt" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -10380,7 +10467,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "fRd" = (
-/obj/item/clothing/suit/storage/marine/medium/smooth,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "fRe" = (
@@ -11651,6 +11738,10 @@
 	},
 /turf/open/floor/prison/blue/northeast,
 /area/lv522/indoors/a_block/hallway)
+"gAW" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/east_reactor/south)
 "gBe" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/dirt,
@@ -12982,6 +13073,7 @@
 /area/lv522/atmos/reactor_garage)
 "hlh" = (
 /obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/brown,
 /area/lv522/atmos/east_reactor/south)
 "hll" = (
@@ -13516,6 +13608,10 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
+"hCK" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/northwest,
+/area/lv522/atmos/cargo_intake)
 "hCU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/brown,
@@ -13526,6 +13622,7 @@
 /area/lv522/indoors/lone_buildings/chunk)
 "hDa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/brown,
 /area/lv522/atmos/east_reactor/south)
 "hDe" = (
@@ -13753,8 +13850,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "hKI" = (
-/obj/item/storage/backpack/marine/satchel/scout_cloak,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "hKJ" = (
@@ -14023,6 +14120,13 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
+"hQH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "hQU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
@@ -14071,6 +14175,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "hSs" = (
@@ -14320,6 +14425,7 @@
 /area/lv522/indoors/b_block/hydro)
 "hZZ" = (
 /obj/structure/machinery/conveyor,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/brown/southwest,
 /area/lv522/atmos/cargo_intake)
 "iad" = (
@@ -14559,6 +14665,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
 "ihI" = (
@@ -15191,6 +15298,10 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
+"izd" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "izj" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -15508,6 +15619,10 @@
 	},
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
+"iJd" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/east_reactor/south)
 "iJu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -16633,6 +16748,11 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_street)
+"jnN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "joe" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/dirt,
@@ -17272,6 +17392,11 @@
 /obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
+"jDt" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "jDA" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -18012,6 +18137,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"jXH" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/brown/southwest,
 /area/lv522/atmos/east_reactor/south)
 "jXQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18879,6 +19008,13 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
+"krk" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "krm" = (
 /obj/structure/surface/table/almayer{
 	flipped = 1
@@ -18895,6 +19031,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/atmos/reactor_garage)
+"krF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "krH" = (
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -18991,6 +19131,10 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/dorms)
+"ktC" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "kua" = (
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/closet/crate,
@@ -19244,6 +19388,10 @@
 "kAG" = (
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
+"kBf" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/cargo_intake)
 "kBj" = (
 /obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/prison,
@@ -19346,6 +19494,10 @@
 /obj/structure/cargo_container/ferret/left,
 /turf/open/asphalt/cement/cement2,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"kCK" = (
+/obj/item/clothing/suit/storage/marine/M3S,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "kCN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
@@ -19362,6 +19514,10 @@
 /obj/structure/platform/metal/almayer/north,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_2)
+"kDd" = (
+/obj/item/clothing/suit/storage/marine/medium/smooth,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "kDH" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison/darkpurplefull2,
@@ -19664,6 +19820,10 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/corsat/marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"kKz" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/east_reactor/south)
 "kKD" = (
 /obj/structure/closet/crate/trashcart,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -20027,6 +20187,13 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/north_command_centre)
+"kUA" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "kUH" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison/darkredfull2,
@@ -20202,6 +20369,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
+"kZl" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
 "kZs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -20709,6 +20880,13 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
+"lof" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "lot" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20800,6 +20978,10 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"lrp" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/cargo_intake)
 "lrr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20813,6 +20995,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/security)
+"lrC" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/east_reactor/south)
 "lrJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -21219,6 +21405,11 @@
 	},
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"lDp" = (
+/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "lDC" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -22681,6 +22872,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "mqA" = (
@@ -22858,6 +23050,10 @@
 /obj/effect/spider/spiderling/nogrow,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/hallway)
+"muR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/southwest,
+/area/lv522/atmos/east_reactor/south)
 "muV" = (
 /turf/open/floor/prison/blue,
 /area/lv522/indoors/a_block/admin)
@@ -24319,6 +24515,11 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
+"ngB" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/cargo_intake)
 "ngL" = (
 /obj/structure/cargo_container/horizontal/blue/bottom{
 	pixel_x = 6
@@ -24910,6 +25111,10 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
+"nvi" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/east_reactor/south)
 "nvt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/used_flare,
@@ -25099,6 +25304,11 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
+"nBB" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/storage/backpack/marine/satchel/scout_cloak,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "nBP" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
@@ -25138,6 +25348,11 @@
 /obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
+"nDh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "nDl" = (
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
@@ -25455,6 +25670,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/east_reactor/south)
 "nMz" = (
@@ -26055,6 +26271,7 @@
 	phone_id = "Reactor Entrance Office";
 	pixel_x = -16
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "oaq" = (
@@ -27280,6 +27497,13 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
+"oIQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "oJj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
@@ -28074,6 +28298,11 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
+"pfr" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/cargo_intake)
 "pfv" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate{
@@ -30612,6 +30841,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
+"qyy" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
 "qyI" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/decal/cleanable/dirt,
@@ -31132,6 +31365,13 @@
 	},
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"qKb" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "qKk" = (
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
@@ -33403,6 +33643,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
+"rJM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
 "rKg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/colony/game,
@@ -34301,6 +34545,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness/glass)
+"shV" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "shZ" = (
 /obj/structure/machinery/colony_floodlight{
 	layer = 4.3
@@ -34712,6 +34961,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_2)
+"ssc" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "sse" = (
 /obj/structure/prop/server_equipment/yutani_server{
 	density = 0;
@@ -34824,6 +35077,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/wood_broken,
 /area/lv522/indoors/b_block/bar)
+"suX" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
 "svf" = (
 /obj/structure/window_frame/strata,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -37221,6 +37478,11 @@
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
+"tFJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "tGb" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -37973,6 +38235,11 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
+"tXz" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "tXG" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -38873,6 +39140,10 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
+"utF" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "uue" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/disposal,
@@ -38977,6 +39248,11 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/central_streets)
+"uwd" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/cargo_intake)
 "uwe" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
@@ -40133,6 +40409,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
+"uYo" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
 "uYq" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating/platebot,
@@ -40373,6 +40656,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/lv522/indoors/c_block/casino)
+"veU" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "vfb" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/machinery/light{
@@ -40907,6 +41195,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
+"vrl" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
 "vsd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/sliceable/plaincake{
@@ -41037,6 +41329,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"vvg" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/east_reactor/south)
 "vvi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -41929,6 +42225,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/north_street)
+"vPC" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/southwest,
+/area/lv522/atmos/east_reactor/south)
 "vPO" = (
 /obj/structure/prop/invuln/ice_prefab{
 	dir = 8;
@@ -42011,6 +42311,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/c_block/mining)
+"vSI" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/browncorner/west,
+/area/lv522/atmos/cargo_intake)
 "vSM" = (
 /obj/structure/tunnel,
 /turf/open/auto_turf/shale/layer1,
@@ -42193,6 +42497,13 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
+"vWn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "vWv" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
@@ -42856,6 +43167,10 @@
 /obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
+"wmx" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "wmI" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -43595,6 +43910,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
+"wGA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
 "wGE" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -43729,6 +44049,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen)
+"wIX" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
 "wJb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -44085,6 +44409,11 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/south_east_street)
+"wVR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "wWe" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -45105,6 +45434,10 @@
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
+"xyB" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/east_reactor/south)
 "xyC" = (
 /obj/structure/machinery/landinglight/ds2/delaythree,
 /obj/effect/decal/cleanable/dirt,
@@ -45935,6 +46268,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
+"xSy" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/cargo_intake)
 "xSA" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -46110,6 +46447,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness)
+"xWJ" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "xWL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -46276,7 +46617,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "yaH" = (
-/obj/item/clothing/suit/storage/marine/M3S,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "yba" = (
@@ -46306,6 +46647,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/garage)
+"ybU" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
 "yca" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -51991,8 +52336,8 @@ saC
 xXV
 xXV
 xXV
-xXV
-xXV
+rJM
+rJM
 saC
 saC
 saC
@@ -52197,7 +52542,7 @@ xXV
 xXV
 xXV
 xXV
-xXV
+wIX
 xXV
 xXV
 xXV
@@ -52403,9 +52748,9 @@ xXV
 xXV
 xXV
 xXV
+wIX
 xXV
-xXV
-xXV
+ybU
 xXV
 saC
 saC
@@ -52607,12 +52952,12 @@ xXV
 xXV
 xXV
 xXV
+ybU
+xXV
+wIX
 xXV
 xXV
-xXV
-xXV
-xXV
-xXV
+ybU
 xXV
 saC
 saC
@@ -52815,7 +53160,7 @@ xXV
 xXV
 xXV
 xXV
-xXV
+wIX
 xXV
 xXV
 xXV
@@ -53229,9 +53574,9 @@ saC
 saC
 saC
 saC
-xXV
-xXV
-xXV
+wIX
+wIX
+wIX
 saC
 saC
 tiQ
@@ -53641,7 +53986,7 @@ saC
 saC
 tiQ
 saC
-xXV
+ybU
 xXV
 xXV
 saC
@@ -54053,10 +54398,10 @@ saC
 tiQ
 tiQ
 tiQ
-xXV
-xXV
-xXV
-xXV
+wIX
+wIX
+wIX
+rJM
 tiQ
 tiQ
 vtc
@@ -54467,7 +54812,7 @@ dwG
 jsQ
 doF
 pwA
-xXV
+ybU
 xXV
 saC
 tiQ
@@ -55495,7 +55840,7 @@ dJt
 doF
 dJN
 yaw
-yaw
+ktC
 hoN
 epb
 iPb
@@ -55908,7 +56253,7 @@ hfS
 yaw
 yaw
 saC
-oXk
+kBf
 ihy
 tiQ
 tiQ
@@ -56531,7 +56876,7 @@ yaw
 ezU
 wAB
 eQf
-geP
+xSy
 fol
 auG
 gat
@@ -56737,7 +57082,7 @@ dXX
 ezW
 lEZ
 eTZ
-wTV
+uwd
 foO
 fFS
 gdJ
@@ -56934,7 +57279,7 @@ vZP
 gFp
 uFT
 dYK
-yaw
+ktC
 yaw
 dXX
 saC
@@ -56943,7 +57288,7 @@ dXX
 xED
 yaw
 oXk
-geP
+xSy
 fol
 auG
 gat
@@ -57143,13 +57488,13 @@ dYK
 yaw
 yaw
 yaw
-dXX
+nDh
 dXX
 yaw
 eAg
-sGF
+vrl
 epb
-geP
+xSy
 fol
 auG
 gbQ
@@ -57349,7 +57694,7 @@ abV
 yaw
 yaw
 yaw
-yaw
+izd
 hoN
 dAG
 jmW
@@ -57553,9 +57898,9 @@ dxJ
 dDS
 dKM
 dOw
+ktC
 yaw
-yaw
-yaw
+izd
 oXk
 iEq
 eAz
@@ -57761,8 +58106,8 @@ dKO
 dOw
 yaw
 yaw
-yaw
-oXk
+adr
+kBf
 ihy
 tiQ
 tiQ
@@ -58381,7 +58726,7 @@ dUj
 eam
 egK
 eof
-oXk
+aji
 oeX
 wBR
 tiQ
@@ -58787,7 +59132,7 @@ lqd
 sbm
 vZP
 xkB
-uFT
+dtM
 yaw
 saC
 saC
@@ -59404,14 +59749,14 @@ dah
 dmG
 sbm
 vZP
-xkB
-uFT
-xED
+uYo
+lrp
+qKb
 saC
 saC
 saC
-yaw
-eoZ
+izd
+pfr
 ihy
 tiQ
 tiQ
@@ -59821,7 +60166,7 @@ uFT
 dPq
 yaw
 saC
-yaw
+adr
 yaw
 tTl
 ezp
@@ -60020,18 +60365,18 @@ oeX
 wBR
 wBR
 wBR
+suX
 wBR
-wBR
-heB
+hCK
 qYM
 xED
 yaw
-yaw
 ehO
-yaw
+izd
+ktC
 yaw
 eEx
-iTX
+wGA
 tiQ
 iAv
 fpH
@@ -60226,14 +60571,14 @@ rKz
 wAB
 wAB
 dng
-dqr
+fyG
 dqr
 dGV
 lEZ
 dQg
 lEZ
 lEZ
-lEZ
+veU
 jdv
 epI
 eFP
@@ -60430,16 +60775,16 @@ hAD
 lEZ
 fNk
 daq
-daq
+ngB
 dnB
-yaw
+izd
 yaw
 yaw
 yaw
 dQm
 yaw
 yaw
-yaw
+izd
 yaw
 dXX
 saC
@@ -60638,14 +60983,14 @@ lbt
 sGF
 sGF
 sGF
-sGF
+kZl
 dAG
 vxD
 yaw
 xED
+ktC
 yaw
-yaw
-yaw
+lDp
 dXX
 saC
 saC
@@ -60851,7 +61196,7 @@ dMb
 xED
 yaw
 yaw
-yaw
+adr
 saC
 saC
 saC
@@ -61259,9 +61604,9 @@ lqd
 vZP
 vZP
 saC
-uFT
-xED
-yaw
+lrp
+qKb
+izd
 saC
 saC
 saC
@@ -62084,7 +62429,7 @@ sbm
 vZP
 dHc
 uFT
-xED
+dVE
 yaw
 yaw
 eil
@@ -62498,7 +62843,7 @@ wBR
 uFT
 xED
 dUE
-yaw
+ktC
 eDt
 dXX
 saC
@@ -62907,7 +63252,7 @@ sgq
 vZP
 iLn
 uFT
-yaw
+ktC
 xED
 xXV
 xXV
@@ -63734,7 +64079,7 @@ uFT
 dNn
 dRn
 xUq
-yaw
+ktC
 yaw
 saC
 epS
@@ -63942,7 +64287,7 @@ dRy
 yaw
 yaw
 yaw
-yaw
+adr
 qRw
 eGL
 eKj
@@ -64148,11 +64493,11 @@ dSt
 lEZ
 lEZ
 lEZ
-lEZ
+veU
 lEZ
 lEZ
 eLK
-dqr
+feG
 eZY
 fuQ
 fOM
@@ -64351,10 +64696,10 @@ saC
 saC
 saC
 yaw
-yaw
+ktC
 eDt
 ejN
-yaw
+izd
 yaw
 yaw
 yaw
@@ -64560,16 +64905,16 @@ saC
 yaw
 yaw
 yaw
+izd
 yaw
 yaw
 yaw
-yaw
-yaw
-yaw
-yaw
-xED
-eDt
-tTl
+adr
+adr
+izd
+qKb
+jnN
+vSI
 saC
 saC
 wUp
@@ -64766,12 +65111,12 @@ saC
 saC
 yaw
 yaw
+izd
 yaw
 yaw
 yaw
-yaw
-yaw
-yaw
+adr
+adr
 yaw
 xED
 yaw
@@ -64972,15 +65317,15 @@ saC
 saC
 saC
 saC
-sGF
+qyy
 vxD
-ejN
+shV
 yaw
 yaw
-yaw
+izd
 yaw
 xED
-yaw
+ktC
 yaw
 oXk
 saC
@@ -65183,7 +65528,7 @@ jBY
 sGF
 sGF
 hSQ
-hSQ
+bca
 sGF
 lbt
 sGF
@@ -65597,10 +65942,10 @@ xZE
 saC
 saC
 saC
-jDN
-qjG
-qjG
-qjG
+krk
+yaH
+yaH
+bZf
 wGq
 oUq
 tnN
@@ -66000,7 +66345,7 @@ xsE
 oiW
 dSW
 nGU
-xLi
+vPC
 yaC
 yaC
 sGv
@@ -66210,13 +66555,13 @@ edk
 rCz
 eov
 ucY
-rCz
+kKz
 yaC
 xZE
 saC
 mkh
 jDN
-qjG
+iGl
 qjG
 qjG
 mkh
@@ -66404,7 +66749,7 @@ yaj
 vDw
 xsE
 oiW
-yld
+xyB
 yaC
 men
 afL
@@ -66831,7 +67176,7 @@ saC
 saC
 wwG
 eVg
-qjG
+bZf
 qjG
 jDN
 qjG
@@ -67037,9 +67382,9 @@ oiW
 oiW
 oDU
 xLi
+yaH
 qjG
-qjG
-jDN
+vWn
 qjG
 wGq
 saC
@@ -67240,10 +67585,10 @@ oiW
 oiW
 oiW
 oiW
-oiW
+xWJ
 oiW
 nGU
-qjG
+yaH
 qjG
 jDN
 qjG
@@ -67434,7 +67779,7 @@ yaj
 cRN
 cVc
 vpq
-vpq
+wVR
 vpq
 vpq
 vpq
@@ -67444,12 +67789,12 @@ oiW
 nmt
 vpq
 vpq
-vpq
+wVR
 acn
 vpq
 vpq
 eVi
-lbo
+ePz
 lbo
 hrH
 qjG
@@ -67645,7 +67990,7 @@ oiW
 oiW
 oiW
 oiW
-oiW
+xWJ
 oiW
 oiW
 oiW
@@ -67655,7 +68000,7 @@ nNf
 oiW
 oiW
 oiW
-oiW
+bgA
 qjG
 qjG
 saC
@@ -67858,7 +68203,7 @@ oiW
 oiW
 oiW
 nNf
-oiW
+xWJ
 oiW
 oiW
 saC
@@ -68675,7 +69020,7 @@ saC
 saC
 oiW
 oiW
-oiW
+xWJ
 oiW
 oiW
 saC
@@ -68683,7 +69028,7 @@ oWS
 oiW
 nNf
 oiW
-oiW
+bgA
 oWS
 saC
 fwj
@@ -68691,7 +69036,7 @@ fwo
 yaC
 qjG
 qjG
-yaC
+eGA
 qjG
 qjG
 hQU
@@ -68886,18 +69231,18 @@ oiW
 oiW
 oiW
 oiW
-oiW
+xWJ
 nmt
 vpq
 vpq
 vpq
 hvh
 uok
-yaC
+wmx
 yaC
 yaj
 sGv
-yaC
+eGA
 yaC
 yaj
 hRj
@@ -69103,7 +69448,7 @@ yaC
 qjG
 qjG
 yaC
-qjG
+bZf
 yaC
 qjG
 qjG
@@ -69300,8 +69645,8 @@ oiW
 oiW
 oiW
 oiW
-oiW
-oiW
+bgA
+bgA
 oiW
 faZ
 yaC
@@ -69309,8 +69654,8 @@ yaC
 rGD
 yaC
 yaC
-qjG
-yaC
+bZf
+fRd
 yaC
 qjG
 idH
@@ -69506,8 +69851,8 @@ oiW
 oiW
 oiW
 oiW
-oiW
-oiW
+bgA
+bgA
 oiW
 faZ
 yaC
@@ -69516,7 +69861,7 @@ qjG
 xSE
 woU
 oDU
-xLi
+jXH
 yaC
 qjG
 qjG
@@ -69711,7 +70056,7 @@ saC
 saC
 oiW
 dmE
-oiW
+xWJ
 oiW
 oiW
 eVW
@@ -69720,7 +70065,7 @@ yaC
 ubJ
 yaC
 yaC
-xsE
+vvg
 oiW
 hlh
 yaC
@@ -69928,7 +70273,7 @@ yaC
 woU
 gIH
 oiW
-nGU
+eTD
 xLi
 yaC
 rGD
@@ -70134,14 +70479,14 @@ xSE
 xsE
 oiW
 oiW
-iQb
+tXz
 hCU
 yaC
 qjG
 qjG
 hQU
 xsE
-nNf
+jJa
 kaQ
 sfc
 xZE
@@ -70335,12 +70680,12 @@ oiW
 yld
 vDw
 rGD
-yaC
-yaC
-xsE
-oiW
-oiW
-oiW
+fRd
+eGA
+gAW
+krF
+bgA
+bgA
 yld
 yaC
 yaC
@@ -70537,19 +70882,19 @@ saC
 saC
 saC
 eHS
-qjG
-yld
-vDw
+yaH
+cXD
+oIQ
 fxq
-yaC
+fRd
 woU
 gIH
 oiW
-oiW
-oiW
-nGU
-xLi
-yaC
+bgA
+bgA
+eTD
+muR
+fRd
 iMC
 yaC
 jCb
@@ -70744,10 +71089,10 @@ saC
 saC
 saC
 yje
-yld
+xyB
 vDw
 yaj
-yaC
+eGA
 xsE
 oiW
 oiW
@@ -70755,7 +71100,7 @@ oiW
 oiW
 fwj
 fwo
-yaC
+fRd
 rGD
 jln
 jCc
@@ -70948,20 +71293,20 @@ saC
 saC
 saC
 qjG
-qjG
+yaH
 oiW
 yld
 vDw
 qsW
-yaC
+eGA
 gfL
 iQb
 oiW
 oiW
 oiW
-yld
+xyB
 qpd
-idX
+dNb
 iOi
 jnp
 jCq
@@ -71153,15 +71498,15 @@ dXd
 saC
 qjG
 qjG
-oiW
-oiW
+xWJ
+krF
 oiW
 aLf
 kbb
-yaj
+kCK
 yaH
 qjG
-oiW
+xWJ
 oiW
 oiW
 oiW
@@ -71364,9 +71709,9 @@ eHX
 eMl
 eRg
 wRf
-uhx
+nBB
 hKI
-lbo
+hKI
 gIZ
 oiW
 oiW
@@ -71562,7 +71907,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-yaC
+wmx
 rCz
 kss
 eqU
@@ -71572,7 +71917,7 @@ rMD
 yaC
 saC
 saC
-qjG
+bZf
 jDN
 oiW
 gUm
@@ -71779,11 +72124,11 @@ saC
 saC
 saC
 cZH
-jDN
-qjG
-oiW
-oiW
-yld
+lof
+yaH
+krF
+krF
+lrC
 hSi
 xZE
 xZE
@@ -71974,8 +72319,8 @@ eKK
 hef
 tiQ
 tiQ
-iFk
-rCz
+kUA
+nvi
 eow
 saC
 saC
@@ -71984,13 +72329,13 @@ saC
 saC
 saC
 saC
-qpd
+fJA
 mqx
 vpq
 gZJ
 vpq
 hDa
-hSO
+hQH
 xZE
 xZE
 xZE
@@ -72387,7 +72732,7 @@ tlv
 dTv
 uGj
 yaj
-yaj
+utF
 ekK
 saC
 saC
@@ -72400,7 +72745,7 @@ vDw
 xsE
 oiW
 oiW
-oiW
+xWJ
 yld
 yaC
 xZE
@@ -72603,7 +72948,7 @@ saC
 saC
 saC
 hfE
-xsE
+vvg
 oiW
 oiW
 oiW
@@ -73012,12 +73357,12 @@ saC
 saC
 saC
 qjG
-qjG
+kDd
 fRd
-vDw
-gfL
-gUm
-oiW
+oIQ
+aMD
+jDt
+xWJ
 yld
 saC
 saC
@@ -73214,10 +73559,10 @@ yaC
 rCz
 kss
 xSE
-yaj
+ssc
 yaj
 yaC
-yaC
+wmx
 yaC
 yaC
 lwr
@@ -73417,10 +73762,10 @@ saC
 tiQ
 qqN
 woU
-oDU
+fsG
 vAX
 kJc
-uhx
+tFJ
 uhx
 kJc
 gNN
@@ -73626,14 +73971,14 @@ xsE
 oiW
 yld
 yaC
-yaj
+czz
 yaj
 yaC
 fcV
 oiW
 oiW
 oiW
-oiW
+xWJ
 oiW
 oiW
 saC
@@ -73837,11 +74182,11 @@ xZE
 iFk
 gOo
 oiW
-oiW
-oiW
-oiW
-oiW
-oiW
+bgA
+bgA
+krF
+krF
+bgA
 xZE
 xZE
 xZE
@@ -74040,11 +74385,11 @@ saC
 saC
 xZE
 xZE
-yaC
-xsE
-oiW
-oiW
-oiW
+fRd
+gAW
+krF
+bgA
+bgA
 oiW
 oiW
 dmE
@@ -74248,11 +74593,11 @@ xZE
 xZE
 saC
 pEv
+iJd
 pco
 pco
 pco
-pco
-pco
+iJd
 pco
 xZE
 cpy
@@ -74445,7 +74790,7 @@ qjG
 qjG
 qjG
 qjG
-qjG
+iGl
 saC
 saC
 saC
@@ -74456,7 +74801,7 @@ yaC
 yaC
 yaC
 yaC
-yaC
+wmx
 yaC
 hTI
 yaC
@@ -74853,7 +75198,7 @@ saC
 qjG
 qjG
 qjG
-qjG
+iGl
 qjG
 qjG
 saC

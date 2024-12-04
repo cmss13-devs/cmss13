@@ -22,8 +22,6 @@
 	var/list/damagedata = list("damage" = damage)
 	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
 	damage = damagedata["damage"]
-	if(damage > 0 && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && stat == DEAD) //if they take positive damage (not healing) we prevent it
-		return
 
 	switch(damagetype)
 		if(BRUTE)

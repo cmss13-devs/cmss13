@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - qol: "The king now also has the ability to disable or enable automatic shoving of things in its way"

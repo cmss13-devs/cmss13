@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Chestbursters now have spawn protections for 1s (godmode, evasion, and ignores fire)"

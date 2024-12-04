@@ -226,6 +226,36 @@
 	icon_state = "torn_scarf_black"
 	item_state = "torn_scarf_black"
 
+/obj/item/clothing/mask/smock
+	name = "tactical smock"
+	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."
+	icon_state = "smock"
+	item_state = "smock"
+	w_class = SIZE_SMALL
+	flags_inventory = ALLOWCPR
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+
+/obj/item/clothing/mask/smock/classic
+	icon_state = "c_smock"
+	item_state = "c_smock"
+
+/obj/item/clothing/mask/smock/snow
+	icon_state = "s_smock"
+	item_state = "s_smock"
+
+/obj/item/clothing/mask/smock/desert
+	icon_state = "d_smock"
+	item_state = "d_smock"
+
+/obj/item/clothing/mask/smock/urban
+	icon_state = "u_smock"
+	item_state = "u_smock"
+
+/obj/item/clothing/mask/smock/black
+	icon_state = "b_smock"
+	item_state = "b_smock"
+
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"
 	desc = "A close-fitting mask that can be connected to an air supply."

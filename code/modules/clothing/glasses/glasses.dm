@@ -188,6 +188,26 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
+/obj/item/clothing/glasses/eyepatch/left
+	icon_state = "eyepatch_left"
+	item_state = "eyepatch_left"
+
+/obj/item/clothing/glasses/eyepatch/white
+	icon_state = "eyepatch_white"
+	item_state = "eyepatch_white"
+
+/obj/item/clothing/glasses/eyepatch/white/left
+	icon_state = "eyepatch_white_left"
+	item_state = "eyepatch_white_left"
+
+/obj/item/clothing/glasses/eyepatch/green
+	icon_state = "eyepatch_green"
+	item_state = "eyepatch_green"
+
+/obj/item/clothing/glasses/eyepatch/green/left
+	icon_state = "eyepatch_green_left"
+	item_state = "eyepatch_green_left"
+
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	gender = NEUTER
@@ -468,6 +488,111 @@
 	inactive_icon_state = "mgoggles2"
 	prescription = TRUE
 
+/obj/item/clothing/glasses/mgoggles/red
+	name = "red marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has scarlet colored day lenses."
+	icon_state = "mgogglesred"
+	active_icon_state = "mgogglesred_down"
+	inactive_icon_state = "mgogglesred"
+
+/obj/item/clothing/glasses/mgoggles/red/prescription
+	name = "prescription red marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has scarlet colored day lenses."
+	icon_state = "mgogglesred"
+	active_icon_state = "mgogglesred_down"
+	inactive_icon_state = "mgogglesred"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/blue
+	name = "blue marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has blue colored day lenses."
+	icon_state = "mgogglesblue"
+	active_icon_state = "mgogglesblue_down"
+	inactive_icon_state = "mgogglesblue"
+
+/obj/item/clothing/glasses/mgoggles/blue/prescription
+	name = "prescription blue marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has blue colored day lenses."
+	icon_state = "mgogglesblue"
+	active_icon_state = "mgogglesblue_down"
+	inactive_icon_state = "mgogglesblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/purple
+	name = "purple marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has purple colored day lenses."
+	icon_state = "mgogglespurple"
+	active_icon_state = "mgogglespurple_down"
+	inactive_icon_state = "mgogglespurple"
+
+/obj/item/clothing/glasses/mgoggles/purple/prescription
+	name = "prescription purple marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has purple colored day lenses."
+	icon_state = "mgogglespurple"
+	active_icon_state = "mgogglespurple_down"
+	inactive_icon_state = "mgogglespurple"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/yellow
+	name = "yellow marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has yellow colored day lenses."
+	icon_state = "mgogglesyellow"
+	active_icon_state = "mgogglesyellow_down"
+	inactive_icon_state = "mgogglesyellow"
+
+/obj/item/clothing/glasses/mgoggles/yellow/prescription
+	name = "prescription yellow marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has yellow colored day lenses."
+	icon_state = "mgogglesyellow"
+	active_icon_state = "mgogglesyellow_down"
+	inactive_icon_state = "mgogglesyellow"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2/blue
+	name = "M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "m2gogglesblue"
+	active_icon_state = "m2gogglesblue_down"
+	inactive_icon_state = "m2gogglesblue"
+
+/obj/item/clothing/glasses/mgoggles/v2/blue/prescription
+	name = "prescription M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "m2gogglesblue"
+	active_icon_state = "m2gogglesblue_down"
+	inactive_icon_state = "m2gogglesblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_blue
+	name = "M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedblue"
+	active_icon_state = "polarizedblue_down"
+	inactive_icon_state = "polarizedblue"
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription
+	name = "prescription M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedblue"
+	active_icon_state = "polarizedblue_down"
+	inactive_icon_state = "polarizedblue"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_orange
+	name = "M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedorange"
+	active_icon_state = "polarizedorange_down"
+	inactive_icon_state = "polarizedorange"
+
+/obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription
+	name = "prescription M1A1 marine polarized ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	icon_state = "polarizedorange"
+	active_icon_state = "polarizedorange_down"
+	inactive_icon_state = "polarizedorange"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()
 
@@ -607,6 +732,7 @@
 /obj/item/clothing/glasses/welding/superior/prescription
 	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
 	prescription = TRUE
+
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
@@ -643,6 +769,34 @@
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/glasses/sunglasses/big/fake
+	name = "\improper BiMax personal shades"
+	desc = "These are a bargain-bin pair of BiMex-style sunglasses—emphasis on the style. Marketed as 'BiMax,' with an 'A' to sidestep copyright, these knockoffs are popular with penny-pinching spacers and wannabe badasses. While the real deal boasts patented mirror refraction for atomic flash, solar radiation, and targeting laser protection, these cut-rate imitations barely keep UV rays at bay. As for that famous story of a laser pistol reflecting off the originals? Good luck finding anyone who believes these could pull it off. But hey, they’re cheap, and their 'Save the Budget and Look Cool Doing It' slogan really sells it."
+	icon_state = "bigsunglasses"
+	item_state = "bigsunglasses"
+	eye_protection = FALSE
+	clothing_traits = FALSE
+
+/obj/item/clothing/glasses/sunglasses/big/fake/red
+	icon_state = "bigsunglasses_red"
+	item_state = "bigsunglasses_red"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/orange
+	icon_state = "bigsunglasses_orange"
+	item_state = "bigsunglasses_orange"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/yellow
+	icon_state = "bigsunglasses_yellow"
+	item_state = "bigsunglasses_yellow"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/green
+	icon_state = "bigsunglasses_green"
+	item_state = "bigsunglasses_green"
+
+/obj/item/clothing/glasses/sunglasses/big/fake/blue
+	icon_state = "bigsunglasses_blue"
+	item_state = "bigsunglasses_blue"
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"

@@ -4,6 +4,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
 /obj/item/clothing/under/color/black

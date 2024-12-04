@@ -17,6 +17,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
 /obj/item/clothing/under/waiter
@@ -26,6 +28,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
 /obj/item/clothing/under/rank/centcom_officer

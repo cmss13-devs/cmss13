@@ -24,6 +24,8 @@
 	layer = UPPER_ITEM_LAYER
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
@@ -287,6 +289,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 	specialty = "engineer"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
@@ -302,6 +306,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 	item_state_slots = list(WEAR_BODY = "ot_jumpsuit")
 
@@ -693,6 +699,8 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
 //=========================//OWLF\\================================\\

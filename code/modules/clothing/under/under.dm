@@ -37,7 +37,9 @@
 	equip_sounds = list('sound/handling/clothing_on.ogg')
 	unequip_sounds = list('sound/handling/clothing_off.ogg')
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
 /obj/item/clothing/under/Initialize()

@@ -7,7 +7,7 @@
 /datum/paygrade/twe/e1
 	paygrade = PAY_SHORT_RMC1
 	name = "Marine"
-	prefix = "Marine."
+	prefix = "Mne."
 
 /datum/paygrade/twe/e2
 	paygrade = PAY_SHORT_RMC2

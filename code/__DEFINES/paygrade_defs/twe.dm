@@ -13,6 +13,9 @@
 /// RMC4, Itto-Sergeant
 #define PAY_SHORT_RMC4 "RMC4"
 
+/// RMC5, Colour-Sergeant
+#define PAY_SHORT_RMC5 "RMC5"
+
 /// RNOW, Warrant Officer
 #define PAY_SHORT_RNOW "RNOW"
 

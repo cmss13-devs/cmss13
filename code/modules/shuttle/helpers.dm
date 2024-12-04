@@ -167,7 +167,7 @@
 			var/list/vehicle_dimensions = vehicle.get_dimensions()
 			var/height = vehicle_dimensions["height"]
 			var/width = vehicle_dimensions["width"]
-			if(vehicle.dir & EAST|WEST)
+			if(vehicle.dir & (EAST|WEST))
 				height = vehicle_dimensions["width"]
 				width = vehicle_dimensions["height"]
 			var/dir_to_push = get_dir(blocking_obj.loc, target_turf)

@@ -348,7 +348,7 @@
 		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
 		return FALSE
 	if(!ready)
-		balloon_alert(user, "activate it first.")
+		balloon_alert(user, "activate it first!")
 		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
 		return FALSE
 	if(dcell.charge < charge_cost)

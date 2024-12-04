@@ -1,0 +1,8 @@
+[Palette]
+/obj/structure/sign/safety/galley
+/obj/effect/spawner/random/toolbox
+/obj/item/storage/firstaid/regular
+/obj/item/clipboard
+/obj/structure/machinery/faxmachine/uscm
+/obj/structure/machinery/faxmachine/uscm{desc="The beloved fax machine of the requisitions department, for all your equipment-requesting needs. Be sure to make an extra persuasive argument before you ask high command for a crate of lunge mines."; gender="female"}
+/obj/item/tool/pen

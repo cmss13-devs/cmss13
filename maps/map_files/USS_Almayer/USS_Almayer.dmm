@@ -9046,7 +9046,11 @@
 "blw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/faxmachine/uscm{
+	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	gender = "female";
+	department = "Requisitions"
+	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -20621,13 +20625,16 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "eAG" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular,
-/obj/item/clipboard,
 /obj/item/tool/pen{
 	pixel_y = -17
 	},
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
+	},
+/obj/structure/machinery/faxmachine/uscm{
+	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	gender = "female";
+	department = "Requisitions"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
@@ -48133,6 +48140,11 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/structure/machinery/faxmachine/uscm{
+	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	gender = "female";
+	department = "Requisitions"
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/req)
 "pXZ" = (
@@ -48911,7 +48923,11 @@
 /area/almayer/shipboard/panic)
 "qmP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/faxmachine/uscm{
+	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	gender = "female";
+	department = "Requisitions"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "qmR" = (

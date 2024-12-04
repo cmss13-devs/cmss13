@@ -776,12 +776,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		update_mouse_pointer(user, FALSE)
 		slowdown = initial(slowdown)
 
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
 /obj/item/weapon/gun/proc/update_mouse_pointer(mob/user, new_cursor)
 	if(!user.client?.prefs.custom_cursors)
 		return
 
 	user.client?.mouse_pointer_icon = new_cursor ? get_mouse_pointer() : initial(user.client?.mouse_pointer_icon)
 
+///Getter proc. Returns the weapon's crosshair icon.
 /obj/item/weapon/gun/proc/get_mouse_pointer()
 	return 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 

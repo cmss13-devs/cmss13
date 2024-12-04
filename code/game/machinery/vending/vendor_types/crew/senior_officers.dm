@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("KN5500/2 PDA", 0, /obj/item/device/working_joe_pda/uscm, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-		list("Tactical Compact Nailgun", 0, /obj/item/weapon/gun/smg/nailgun/compact/tactical, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
+		list("Tactical Compact Nailgun", 0, /obj/item/weapon/gun/smg/nailgun/compact/tactical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Engineer Uniform", 0, /obj/item/clothing/under/marine/officer/ce, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -171,6 +171,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Technician's Headset", 15, /obj/item/device/radio/headset/almayer/mt, null, VENDOR_ITEM_REGULAR),
+		list("Synthetic Reset Key", 15, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 
 	))
 
@@ -382,6 +383,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Flashlight", 1, /obj/item/device/flashlight, null, VENDOR_ITEM_REGULAR),
+		list("Synthetic Reset Key", 10, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/effect/essentials_set/xo/shotgunpreset

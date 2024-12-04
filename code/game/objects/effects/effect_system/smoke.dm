@@ -783,6 +783,22 @@
 
 // XENO SMOKES
 
+/obj/effect/particle_effect/smoke/king
+	opacity = FALSE
+	color = "#000000"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "sparks"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = BELOW_OBJ_LAYER
+	time_to_live = 5
+	spread_speed = 1
+	pixel_x = 0
+	pixel_y = 0
+
+/datum/effect_system/smoke_spread/king_doom
+	smoke_type = /obj/effect/particle_effect/smoke/king
+
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 

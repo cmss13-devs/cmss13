@@ -462,7 +462,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		apply_overlay(SUIT_STORE_LAYER)
 
 
-#define MAX_HEAD_GARB_ITEMS 5
+#define MAX_HEAD_GARB_ITEMS 6
 
 /mob/living/carbon/human/update_inv_head()
 	remove_overlay(HEAD_LAYER)

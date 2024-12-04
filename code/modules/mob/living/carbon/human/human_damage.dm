@@ -136,6 +136,8 @@
 
 
 /mob/living/carbon/human/proc/adjustFireLossByPart(amount, organ_name, obj/damage_source = null)
+	if(amount > 0 && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && stat == DEAD) //if they take positive damage (not healing) we prevent it
+		return
 	if(amount > 0)
 		var/burn_mod = get_burn_mod()
 		if(burn_mod)

@@ -2,9 +2,9 @@
 	{
 		"type": "map_insert",
 		"landmark": "clfship",
-		"chance": 0.2,
+		"chance": 1,
 		"path": "standalone/clfship.dmm",
-		"when": { "lvevent": "fallen_ship" }
+		"when": { "gamemode":"Faction Clash UPP CM" }
 	},
 	{
 		"type": "map_insert",

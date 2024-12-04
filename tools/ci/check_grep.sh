@@ -154,6 +154,13 @@ if grep -P '^/*var/' $code_files; then
 	st=1
 fi;
 
+part "ambiguous bitwise or"
+if grep -P '^(?:[^\/\n]|\/[^\/\n])*(&[ \t]*\w+[ \t]*\|[ \t]*\w+)' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Likely operator order mistake with bitwise OR. Use parentheses to specify intention.${NC}"
+	st=1
+fi;
+
 
 part "map json naming"
 if ls maps/*.json | grep -P "[A-Z]"; then

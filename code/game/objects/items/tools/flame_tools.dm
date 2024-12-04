@@ -183,7 +183,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigoff"
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 	)
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
@@ -711,8 +713,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 	)
 	light_color = LIGHT_COLOR_LAVA

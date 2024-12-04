@@ -661,6 +661,10 @@
 
 /obj/item/light_bulb
 	icon = 'icons/obj/items/lighting.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	force = 2
 	throwforce = 5
 	w_class = SIZE_SMALL

@@ -63,7 +63,7 @@
 	name = "marine medical combat gloves"
 	desc = "Standard issue marine sterile gloves, offers regular protection whilst offering the user a better grip when performing medical work."
 	icon_state = "latex"
-	item_state = "lgloves"
+	item_state = "latex"
 	adopts_squad_color = FALSE
 
 

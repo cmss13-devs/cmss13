@@ -7,6 +7,8 @@
 	var/additional_icon_location = null
 	/// A cache of known bads to skip calling icon_exists unnecessarily
 	var/list/bad_list = list()
+	/// A cache of known bads to skip calling icon_exists unnecessarily during warnings
+	var/list/bad_list_warnings = list()
 	/// States to not search for matches in other files (too common)
 	var/list/states_to_ignore = list("", "blank", "door_closed", "door_open", "door_opening")
 	/// Additional item slots to test (in addition to defined item_state_slots and item_icons lists).
@@ -125,35 +127,39 @@
 			// Belt specific checks:
 			else if(ispath(obj_path, /obj/item/storage/belt))
 				var/obj/item/storage/belt/belt = spawned
+				// Check _half and _full states if used
 				if(!belt.skip_fullness_overlays)
 					var/base_state = belt.icon_state
 					if(ispath(obj_path, /obj/item/storage/belt/gun))
 						var/obj/item/storage/belt/gun/belt_gun = spawned
 						base_state = belt_gun.base_icon
-						var/list/guntypes = list()
-						for(var/path in belt_gun.can_hold)
-							if(ispath(path, /obj/item/weapon/gun))
-								guntypes |= typesof(path)
-						for(var/path in belt_gun.cant_hold)
-							if(ispath(path, /obj/item/weapon/gun))
-								guntypes -= typesof(path)
-						var/prefix = ""
-						if(belt_gun.gun_has_gamemode_skin)
-							switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-								if("snow")
-									prefix = "s_"
-								if("desert")
-									prefix = "d_"
-								if("classic")
-									prefix = "c_"
-								if("urban")
-									prefix = "u_"
-						for(var/obj/item/weapon/gun/guntype as anything in guntypes)
-							if(isnull(initial(guntype.icon_state)))
-								continue
-							check(obj_path, 'icons/obj/items/clothing/belts/holstered_guns.dmi', prefix + initial(guntype.icon_state), guntype, "gun_underlay")
 					check(obj_path, belt.icon, "+[base_state]_half", "This icon_state is needed for fullness overlays", check_null=FALSE)
 					check(obj_path, belt.icon, "+[base_state]_full", "This icon_state is needed for fullness overlays", check_null=FALSE)
+				// Check holstered underlays for gun belts
+				if(ispath(obj_path, /obj/item/storage/belt/gun))
+					var/obj/item/storage/belt/gun/belt_gun = spawned
+					var/list/guntypes = list()
+					for(var/path in belt_gun.can_hold)
+						if(ispath(path, /obj/item/weapon/gun))
+							guntypes |= typesof(path)
+					for(var/path in belt_gun.cant_hold)
+						if(ispath(path, /obj/item/weapon/gun))
+							guntypes -= typesof(path)
+					var/prefix = ""
+					if(belt_gun.gun_has_gamemode_skin)
+						switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+							if("snow")
+								prefix = "s_"
+							if("desert")
+								prefix = "d_"
+							if("classic")
+								prefix = "c_"
+							if("urban")
+								prefix = "u_"
+					for(var/obj/item/weapon/gun/guntype as anything in guntypes)
+						if(isnull(initial(guntype.icon_state)))
+							continue
+						check(obj_path, 'icons/obj/items/clothing/belts/holstered_guns.dmi', prefix + initial(guntype.icon_state), guntype, "gun_underlay")
 		qdel(spawned)
 
 
@@ -211,13 +217,17 @@
 			return
 
 	if(icon_state in bad_list[icon])
-		return
+		return // Already errored, no need to repeat
+	if(warning_only && (icon_state in bad_list_warnings[icon]))
+		return // Already warned, no need to repeat
 
 	if(icon_exists(icon, icon_state))
-		return
+		return // Test passed
 
 	if(!warning_only)
 		bad_list[icon] += list(icon_state)
+	else
+		bad_list_warnings[icon] += list(icon_state)
 
 	var/match_message
 	if(!(icon_state in states_to_ignore) && (icon_state in possible_icon_states))

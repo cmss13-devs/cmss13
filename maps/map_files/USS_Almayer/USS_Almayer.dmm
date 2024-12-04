@@ -20621,14 +20621,13 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "eAG" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular,
-/obj/item/clipboard,
 /obj/item/tool/pen{
 	pixel_y = -17
 	},
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
 	},
+/obj/structure/machinery/faxmachine/uscm,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "eAI" = (

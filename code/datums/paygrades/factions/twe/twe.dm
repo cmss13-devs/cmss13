@@ -28,7 +28,7 @@
 	pay_multiplier = 2.3
 
 /datum/paygrade/twe/e5
-	paygrade = PAY_SHORT_RMC4
+	paygrade = PAY_SHORT_RMC5
 	name = "Colour Sergeant"
 	prefix = "CSgt."
 	pay_multiplier = 2.7

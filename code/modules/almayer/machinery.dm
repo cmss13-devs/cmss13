@@ -133,9 +133,8 @@
 /obj/structure/prop/almayer/minigun_crate
 	name = "30mm ammo crate"
 	desc = "A crate full of 30mm bullets used on one of the weapon pod types for the dropship. Moving this will require some sort of lifter."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship_ammo.dmi'
 	icon_state = "30mm_crate"
-
 
 /obj/structure/prop/almayer/computers
 	var/hacked = FALSE
@@ -187,47 +186,6 @@
 	bound_height = 96
 	unslashable = TRUE
 	unacidable = TRUE
-
-/obj/structure/prop/almayer/ship_memorial
-	name = "slab of victory"
-	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
-	icon_state = "ship_memorial"
-	bound_width = 64
-	bound_height = 32
-	unslashable = TRUE
-	unacidable = TRUE
-
-/obj/structure/prop/almayer/ship_memorial/centcomm
-	name = "slab of remembrance"
-	desc = "A memorial to all Maintainer Team members that have retired from working on CM. No mentor names are present."
-
-
-/obj/structure/prop/almayer/ship_memorial/centcomm/admin
-	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
-
-
-/obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/dogtag))
-		var/obj/item/dogtag/D = I
-		if(D.fallen_names)
-			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			GLOB.fallen_list += D.fallen_names
-			qdel(D)
-		return TRUE
-	else
-		. = ..()
-
-/obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
-	. = ..()
-	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
-		var/faltext = ""
-		for(var/i = 1 to length(GLOB.fallen_list))
-			if(i != length(GLOB.fallen_list))
-				faltext += "[GLOB.fallen_list[i]], "
-			else
-				faltext += GLOB.fallen_list[i]
-		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

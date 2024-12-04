@@ -12,16 +12,15 @@
 	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
-	/// If FALSE won't change icon_state to a camo marine bino.
-	var/uses_camo = TRUE
-
+	var/tile_offset = 11
+	var/viewsize = 12
+	var/hvh_tile_offset = 6 //same as miniscopes
+	var/hvh_zoom_viewsize = 7
 
 	//matter = list("metal" = 50,"glass" = 50)
 
 /obj/item/device/binoculars/Initialize()
 	. = ..()
-	if(!uses_camo)
-		return
 	select_gamemode_skin(type)
 
 /obj/item/device/binoculars/attack_self(mob/user)
@@ -29,8 +28,10 @@
 
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
-
-	zoom(user, 11, 12)
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
+	else
+		zoom(user, tile_offset, viewsize)
 
 /obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
 	. = ..()
@@ -50,7 +51,7 @@
 /obj/item/device/binoculars/civ
 	desc = "A pair of binoculars."
 	icon_state = "binoculars_civ"
-	uses_camo = FALSE
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 //RANGEFINDER with ability to acquire coordinates
 /obj/item/device/binoculars/range
@@ -355,7 +356,7 @@
 	name = "scout laser designator"
 	desc = "An improved laser designator, issued to USCM scouts, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
@@ -363,7 +364,7 @@
 	name = "spotter's laser designator"
 	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition. A targeting beam will connect the binoculars to the target, but it may inherit the user's cloak, if possible."
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/is_spotting = FALSE
 	var/spotting_time = 10 SECONDS
 	var/spotting_cooldown_delay = 5 SECONDS
@@ -511,7 +512,7 @@
 	icon_state = "designator_e"
 
 	//laser_con is to add you to the list of laser users.
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 	force = 5
 	w_class = SIZE_SMALL
 	throwforce = 5

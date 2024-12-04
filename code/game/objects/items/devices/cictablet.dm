@@ -6,7 +6,7 @@
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_access = list(ACCESS_MARINE_SENIOR)
 	var/on = TRUE // 0 for off
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE

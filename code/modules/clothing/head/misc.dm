@@ -19,7 +19,9 @@
 	item_state = "that"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
 	)
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
@@ -38,7 +40,9 @@
 	item_state = "syndicate"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
 	)
 	flags_inventory = COVEREYES|COVERMOUTH
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR

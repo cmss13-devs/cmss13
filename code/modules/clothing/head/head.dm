@@ -5,6 +5,10 @@
 	flags_equip_slot = SLOT_HEAD
 	w_class = SIZE_SMALL
 	blood_overlay_type = "helmet"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
+	)
 	var/anti_hug = 0
 	/// List of images for overlays recreated every update_icon()
 	var/list/helmet_overlays

@@ -5,7 +5,9 @@
 	item_state = "breath"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWINTERNALS
 	flags_armor_protection = 0
@@ -54,7 +56,9 @@
 	item_state = "rebreather"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	w_class = SIZE_SMALL
 	flags_armor_protection = 0

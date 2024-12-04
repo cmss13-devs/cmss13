@@ -129,6 +129,12 @@
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	icon = 'icons/obj/items/radio.dmi'
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
+	)
 	flags_equip_slot = SLOT_EAR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	black_market_value = 20
@@ -246,6 +252,10 @@
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
+	)
 	var/anti_hug = 0
 
 /obj/item/clothing/mask/update_clothing_icon()

@@ -694,7 +694,7 @@
 	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among military police, though other models exist."
 	icon_state = "securityhud"
 	item_state = "securityhud"
-	item_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/eyes.dmi')
+	item_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/clothing/eyes.dmi')
 	eye_protection = EYE_PROTECTION_FLASH
 
 

@@ -413,7 +413,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	var/icon/clothes_s = null
 	clothes_s = new /icon('icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi', "marine_underpants_s")
-	clothes_s.Blend(new /icon('icons/mob/humans/onmob/feet.dmi', "black"), ICON_UNDERLAY)
+	clothes_s.Blend(new /icon('icons/mob/humans/onmob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
 	preview_icon.Blend(eyes_s, ICON_OVERLAY)
 	if(clothes_s)
 		preview_icon.Blend(clothes_s, ICON_OVERLAY)

@@ -6,6 +6,8 @@
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
 	)
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEYES

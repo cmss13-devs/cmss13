@@ -23,7 +23,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/adopts_squad_color = TRUE
 	/// The dmi where the grayscale squad overlays are contained
-	var/squad_overlay_icon = 'icons/mob/humans/onmob/hands_garb.dmi'
+	var/squad_overlay_icon = 'icons/mob/humans/onmob/clothing/hands_garb.dmi'
 
 /obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot, default_bodytype = "Default")
 	var/image/ret = ..()

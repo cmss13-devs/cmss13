@@ -122,7 +122,9 @@
 	icon_state = "detective"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
 	)
 	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
 	armor_melee = CLOTHING_ARMOR_MEDIUM

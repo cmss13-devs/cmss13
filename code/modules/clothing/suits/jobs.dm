@@ -196,6 +196,8 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
 	)
 
 /obj/item/clothing/suit/storage/det_suit/black
@@ -260,6 +262,8 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
 	)
 
 /obj/item/clothing/suit/storage/forensics/red

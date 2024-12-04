@@ -6,10 +6,10 @@
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "walkman"
 	item_icons = list(
-		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/clothing/ears.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
 		)
 	w_class = SIZE_SMALL

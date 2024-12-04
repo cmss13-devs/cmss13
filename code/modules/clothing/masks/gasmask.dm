@@ -6,7 +6,9 @@
 	item_state = "gas_alt"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	flags_inventory = COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH | ALLOWCPR
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
@@ -94,7 +96,9 @@
 	item_state = "clown_hat"
 	icon = 'icons/obj/items/clothing/masks/masks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	vision_impair = VISION_IMPAIR_NONE
 	black_market_value = 25

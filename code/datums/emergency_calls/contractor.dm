@@ -115,9 +115,7 @@
 		check_objective_info()
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(GLOB.world_view_size)
+	M.transfer_to(H)
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H

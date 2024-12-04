@@ -43,3 +43,9 @@
   - qol: USCM notice sent when intel points for non-xeno non-yautja corpses are maxed
       out
   - qol: hijack wording more clear for newbies
+2024-12-04:
+  Steelpoint:
+  - bugfix: Fixed accidental loss of UPP Commanding Officer access to their personal
+      equipment vendors.
+  efzapa:
+  - spellcheck: Changed the old "Exec. Suvp." Paygrade Prefix to "Exec. Spvsr."

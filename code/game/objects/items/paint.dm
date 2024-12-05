@@ -6,6 +6,10 @@ GLOBAL_LIST_EMPTY(cached_icons)
 	desc = "It's a paint bucket."
 	name = "paint bucket"
 	icon = 'icons/obj/items/paint.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_righthand.dmi'
+	)
 	icon_state = "paint_neutral"
 	item_state = "paintcan"
 	matter = list("metal" = 200)

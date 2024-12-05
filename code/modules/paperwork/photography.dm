@@ -126,9 +126,10 @@
 	icon_state = "camera"
 	item_state = "camera"
 	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
-		)
+	)
 	flags_item = TWOHANDED
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
@@ -350,6 +351,10 @@
 	name = "Broadcasting Camera"
 	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below."
 	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "broadcastingcamera"
 	item_state = "broadcastingcamera"
 	unacidable = TRUE

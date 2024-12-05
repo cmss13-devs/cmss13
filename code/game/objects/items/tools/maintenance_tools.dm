@@ -509,6 +509,10 @@
 	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
 	icon_state = "maintenance_jack"
 	item_state = "maintenance_jack"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	hitsound = "swing_hit"
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG

@@ -4,6 +4,10 @@
 	icon_state = "megaphone"
 	item_state = "megaphone"
 	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 

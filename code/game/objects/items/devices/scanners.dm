@@ -72,6 +72,11 @@ K9 SCANNER
 	name = "\improper HF2 health analyzer"
 	icon_state = "health"
 	item_state = "analyzer"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
+	)
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

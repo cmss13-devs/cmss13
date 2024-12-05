@@ -1,5 +1,10 @@
 /obj/item/restraint
 	icon = 'icons/obj/items/security.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/security_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/security_righthand.dmi'
+	)
 	/// SLOT_HANDS or SLOT_LEGS, for handcuffs or legcuffs
 	var/target_zone = SLOT_HANDS
 	/// How long to break out

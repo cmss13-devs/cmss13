@@ -4,7 +4,9 @@
 	icon = 'icons/obj/items/medical_stacks.dmi'
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
-		)
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL

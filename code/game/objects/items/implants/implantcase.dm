@@ -4,6 +4,10 @@
 	name = "Glass Case"
 	desc = "A case containing an implant."
 	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "implantcase-0"
 	item_state = "implantcase"
 	throw_speed = SPEED_FAST

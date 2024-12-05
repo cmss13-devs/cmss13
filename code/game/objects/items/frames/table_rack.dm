@@ -10,6 +10,10 @@
 	desc = "A kit for a table, including a large, flat metal surface and four legs. Some assembly required."
 	gender = PLURAL
 	icon = 'icons/obj/items/table_parts.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 	icon_state = "tan_table_parts"
 	item_state = "tan_table_parts"
 	matter = list("metal" = 7500) //A table, takes two sheets to build
@@ -182,6 +186,10 @@
 	gender = PLURAL
 	desc = "A kit for a storage rack with multiple metal shelves. Relatively cheap, useful for mass storage. Some assembly required."
 	icon = 'icons/obj/items/table_parts.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 	icon_state = "rack_parts"
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3750) //A big storage shelf, takes five sheets to build

@@ -7,6 +7,10 @@
 	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi'
+	)
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
@@ -565,6 +569,10 @@
 	desc = "It's a bucket. Holds 120 units."
 	name = "bucket"
 	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "bucket"
 	item_state = "bucket"
 	matter = list("metal" = 2000)

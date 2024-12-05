@@ -8,6 +8,10 @@ LINEN BINS
 	name = "bedsheet"
 	desc = "A surprisingly soft linen bedsheet."
 	icon = 'icons/obj/items/bedsheets.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_righthand.dmi',
+	)
 	icon_state = "sheet"
 	item_state = "bedsheet"
 	layer = MOB_LAYER

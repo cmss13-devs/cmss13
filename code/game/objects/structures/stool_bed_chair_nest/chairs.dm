@@ -543,6 +543,10 @@
 	name = "metal folding chair"
 	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_righthand.dmi'
+	)
 	icon_state = "folding_chair"
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")

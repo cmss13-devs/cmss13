@@ -4,6 +4,10 @@
 	icon_state = "vulture_scope"
 	item_state = "electronic"
 	icon = 'icons/obj/items/binoculars.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	flags_atom = FPRINT|CONDUCT
 	unacidable = TRUE
 	explo_proof = TRUE

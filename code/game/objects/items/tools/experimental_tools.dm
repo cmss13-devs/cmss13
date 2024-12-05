@@ -194,6 +194,10 @@
 	name = "portable dialysis machine"
 	desc = "A man-portable dialysis machine, with a small internal battery that can be recharged. Filters out all foreign compounds from the bloodstream of whoever it's attached to, but also typically ends up removing some blood as well."
 	icon = 'icons/obj/items/medical_tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "portadialysis"
 	item_state = "syringe_0"
 	flags_equip_slot = SLOT_WAIST

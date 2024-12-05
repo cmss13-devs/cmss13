@@ -67,7 +67,6 @@
 	gender = PLURAL
 	desc = "A set of implantable lenses designed to augment your vision"
 	icon_state = "thermalimplants"
-	item_state = "syringe_kit"
 	toggleable = FALSE
 
 /obj/item/clothing/glasses/thermal/empproof

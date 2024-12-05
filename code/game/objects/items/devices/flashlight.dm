@@ -217,6 +217,7 @@
 					being.flash_eyes()
 					reaction = "don't really know what you are looking for, you don't know anything about medicine"
 			user.visible_message("[user] directs [src] to [being]'s eyes.", "You point [src] to [being.p_their()] eyes to begin analysing them further and... you [reaction].")
+	SEND_SIGNAL(user, COMSIG_LIVING_PENLIGHT_USED, being)
 	return ..()
 
 /obj/item/device/flashlight/drone

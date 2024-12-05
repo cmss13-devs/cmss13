@@ -13,6 +13,8 @@
 // 1.1 Internal Organ Damage (Chest)
 // 1.2 Heart Damage
 // 1.3 Lung Damage
+// 1.4 Internal Organ Damage (Head)
+// 1.5 Liver and Kidney Damage
 //
 
 /datum/tutorial/marine/hospital_corpsman_advanced/start_tutorial(mob/starting_mob)
@@ -71,7 +73,7 @@
 
 	message_to_player("Like the rest of the body, damage to <b>Internal Organs</b> can be classified in levels.")
 	message_to_player("As an internal organ sustains increasing amounts of damage, its condition will change from:")
-	message_to_player("Healthy -> Slighty Bruised -> Bruised -> Ruptured / Broken")
+	message_to_player("Healthy -> <font color='yellow'>Slighty Bruised</font> -> <font color='orange'>Bruised</font> -> <font color='red'>Ruptured / Broken</font>")
 	message_to_player("Each increase in organ damage severity will produce similarly life-threatening side effects on the body.")
 	message_to_player("A <b>Ruptured Internal Organ</b> has been damaged beyond the point of function, and will require immediate surgical intervention from a <u>trained Doctor</u>.")
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_chest)), 21 SECONDS)
@@ -583,41 +585,192 @@
 	message_to_player("However, one Peridaxon pill will be fully metabolized in just over <u>5 minutes</u>, at which point full symptoms will return.")
 	message_to_player("Once you have stabilized a patient with a ruptured organ, you <u>MUST</u> transport them to a <b>Trained Doctor for Surgery</b> as <u>SOON AS POSSIBLE</u>.")
 
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head)), 10 SECONDS)
 
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// SCRATCHPAD
-
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_33()
-
-	message_to_player("<b>Section 1.1: Brain and Eye Damage</b>.")
-	message_to_player("Brain and Eye damage are both the easiest to treat, and the easiest to incur on the field.")
+	message_to_player("<b>Section 1.4: Internal Organ Damage (Head)</b>.")
+	message_to_player("Inside the skulls of most Marines, a <b>Brain</b> and <b>Eyes</b> can typically be found.")
+	message_to_player("While the presence of the former is sometimes debated in particular Marines, a Hospital Corpsman remains responsible for the health of both.")
 	message_to_player("Both Brain and Eye damage are directly caused as a result of excessive <b>Brute Damage Injuries</b> to head.")
-	message_to_player("Brain Damage is also caused by <b>Tricordrazine overdose</b>, and <b>Brain Hemorrhaging</b> (to be covered further on)")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_2)), 17 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_2()
+
+	message_to_player("In addition to <b>Brute Damage</b>, Brain Damage is also caused by <b>Tricordrazine overdose</b>, and <b>Brain Hemorrhaging</b> (to be covered further on)")
 	message_to_player("Symptoms of a <b>Bruised Brain</b> can include randomly dropping held items, sudden unconsciousness, erratic movements, headaches, and impaired vision.")
 	message_to_player("As well as this, symptoms of a <b>Ruptured Brain</b> brain can <u>also include</u> sudden seizures, and paralysis.")
 
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_3)), 15 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_3()
+
+	message_to_player("<b>Brain</b> and <b>Eye</b> damage can be detected in a patient using a simple <b>Pen Light</b>!")
+	message_to_player("Pick up the <b>Pen Light</b>, then press <b>[retrieve_bind("activate_inhand")]</b> to switch its light on.")
+
+	var/obj/item/device/flashlight/pen/pen = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(pen)
+	add_highlight(pen, COLOR_GREEN)
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF, PROC_REF(organ_tutorial_head_4))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_4(datum/source, obj/item/used)
+	SIGNAL_HANDLER
+
+	if(!istype(used, /obj/item/device/flashlight/pen))
+		return
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF)
+
+	message_to_player("Well done!")
+	message_to_player("Now, use the <b>Zone Selection Element</b> on the bottom right of your HUD to target the <b>Eyes</b>, a smaller zone within the Head.")
+	message_to_player("Once this is done, make sure you are on the green <b>Help Intent</b>, then click on the Dummy with your <b>Pen Light</b> in hand to test for damage to the organs in their head.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.apply_internal_damage(35, "eyes")
+	human_dummy.apply_internal_damage(15, "brain")
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_PENLIGHT_USED, PROC_REF(organ_tutorial_head_5))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_5(datum/source, mob/living/carbon/human/being, mob/living/user)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	if(being != human_dummy)
+		return
+	else
+		if(tutorial_mob.zone_selected != "eyes")
+			message_to_player("Make sure to have the Dummys <b>Eyes</b> selected as your target. Use the <b>Zone Selection Element</b> on the bottom right of your hud to target the Dummys Eyes, and try again.")
+		else
+			UnregisterSignal(tutorial_mob, COMSIG_LIVING_PENLIGHT_USED)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/flashlight/pen, pen)
+			remove_highlight(pen)
+
+			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Pen Light</b> has reported that: notice that the Dummys eyes are <font color='red'>not reacting to the light</font>, and the pupils of both eyes are <font color='red'>not constricting with the light</font> shine at all, the Dummy is probably <font color='red'>blind</font>.")
+			message_to_player("We also see that: the Dummys pupils are <font color='orange'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='orange'>brain damage</font>.")
+			message_to_player("This tells you that Mr Dummy has <b>Broken Eyes</b> and a <b>Bruised Brain</b>.")
+
+			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_6)), 16 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_6()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/flashlight/pen, pen)
+	remove_from_tracking_atoms(pen)
+	qdel(pen)
+	message_to_player("The only way to treat Brain and Eye damage without surgical intervention, is through the use of <b>Non-Standard Chemical Medications</b>.")
+	message_to_player("<b>Non-Standard Chemical Medications</b> describes any medicine that must be specifically synthesised by a <u>trained Chemist</u> in the Almayer Medical Bay.")
+	message_to_player("Imidazoline-Alkysine <b>(IA)</b> is one such Non-Standard Medication that is used to heal <b>Brain and Eye Damage</b> on the field.")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_7)), 16 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_7(obj/item/storage/pill_bottle)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	var/obj/item/storage/pill_bottle/ia = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(ia)
+	medbelt.update_icon()
+
+	ia.name = "\improper IA pill bottle"
+	ia.icon_state = "pill_canister11"
+	ia.maptext_label = "IA"
+	ia.maptext = SPAN_LANGCHAT("IA")
+	ia.max_storage_space = 1
+	ia.overlays.Cut()
+	ia.bottle_lid = FALSE
+	ia.overlays += "pills_closed"
+
+	var/obj/item/reagent_container/pill/imialky/iapill = new(ia)
+
+	add_to_tracking_atoms(iapill)
+	add_to_tracking_atoms(ia)
+
+
+	message_to_player("An <b>IA Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>IA Pill Bottle</b> to draw a pill.")
+
+	add_highlight(medbelt, COLOR_GREEN)
+	add_highlight(ia, COLOR_GREEN)
+
+	RegisterSignal(iapill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(organ_tutorial_head_8))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_8()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, ia)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/imialky, iapill)
+
+	UnregisterSignal(iapill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+
+	message_to_player("Good. Now click on the Dummy while holding the <b>IA Pill</b> and standing next to them to medicate it.")
+	update_objective("Feed the Dummy the IA pill.")
+
+	add_highlight(iapill, COLOR_GREEN)
+	remove_highlight(medbelt)
+	remove_highlight(ia)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(ia_pill_fed_reject_2))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(ia_pill_fed_2))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/ia_pill_fed_reject_2()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, ia)
+	remove_highlight(ia)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_from_tracking_atoms(ia)
+	qdel(ia)
+	medbelt.update_icon()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_7)), 2 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/ia_pill_fed_2(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, ia)
+	remove_highlight(ia)
+	remove_from_tracking_atoms(ia)
+	qdel(ia)
+
+	message_to_player("Well done! The Dummys condition has been stabilized, and their Brain/Eye damage will rapidly heal.")
+
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox)), 5 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_tox()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+
+	message_to_player("<b>Section 1.5: Liver and Kidney Damage</b>.")
+
+	message_to_player("The Liver and Kidney, located in the Chest and Groin respectively, are the final two internal organs to be covered in this tutorial.")
+	message_to_player("Both organs can be damaged by moving with an <b>Unsplinted Bone Fracture</b> in their respective regions, as well as from extreme amounts of <b>Brute damage</b> to either area.")
+	message_to_player("Both the Liver and Kidney are <u>extremely vulnerable</u> to <b>Toxin Damage</b> in the body.")
+	message_to_player("This includes <b>Alcohol Poisoning</b> in the case of the Liver <u>specifically</u>.")
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox_2)), 16 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_tox_2()
+
+	message_to_player("When damaged, both the Liver and Kidney will create <b>Toxin Damage</b> in the body, corresponding to the amount of damage they have <u>already taken</u>.")
+	message_to_player("If not stabilized, this will create a feedback loop of endless <b>Toxin Damage</b>, eventually resulting in the complete <font color='failure'>blind</font> of both organs.")
+	message_to_player("Damage to the Liver and Kidney can only be treated via <u>surgical intervention</u>.")
+	message_to_player("Marines with high levels of <b>Toxin Damage</b> in their body without an obvious cause, are likely suffering from internal organ damage to their Liver or Kidney.")
+
+
+// SCRATCHPAD
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/oxy_tutorial()
 	//message_to_player("<b>Oxygen Damage</b> is the fourth, and final form of field damage that a Marine Hospital Corpsman is expected to be able to treat.")
@@ -643,13 +796,10 @@
 
 // TO DO LIST
 //
+// Oxygen Damage
+//
 // Section 1 - Stabilizing Types of Organ Damage
-// 1.1 Internal Organ Damage (Chest)
-// 1.2 Heart Damage
-// 1.3 Lung Damage
-// 1.4 Brain Damage
-// 1.5 Eye Damage (IA)
-// 1.6 Liver and Kidney Damage
+// 1.5 Liver and Kidney Damage
 //
 // Section 2 - Revivals
 // 2.1 Defib

@@ -11,7 +11,6 @@
 	idtype = /obj/item/card/id/lanyard
 
 	minimap_icon = "surv"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
@@ -25,7 +24,6 @@
 	var/obj/item/clothing/under/uniform = new_human.w_uniform
 	if(istype(uniform))
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
-		uniform.sensor_faction = FACTION_COLONIST
 	return ..()
 
 //*****************************************************************************************************/

@@ -46,10 +46,7 @@
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
 	can_hivemind_speak = FALSE
-	/// The lifetime hugs from this hugger
-	var/total_facehugs = 0
-	/// How many hugs the hugger needs to age
-	var/next_facehug_goal = FACEHUG_TIER_1
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -67,6 +64,13 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")
 	weed_food_states_flipped = list("Facehugger_1","Facehugger_2","Facehugger_3")
+
+	/// The lifetime hugs from this hugger
+	var/total_facehugs = 0
+	/// How many hugs the hugger needs to age
+	var/next_facehug_goal = FACEHUG_TIER_1
+	/// Whether a hug was performed successfully
+	var/hug_successful = FALSE
 
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey
@@ -124,7 +128,7 @@
 		if(morpher.linked_hive.hivenumber != hivenumber)
 			to_chat(src, SPAN_XENOWARNING("This isn't your hive's eggmorpher!"))
 			return
-		if(morpher.stored_huggers >= morpher.huggers_to_grow_max)
+		if(morpher.stored_huggers >= morpher.huggers_max_amount)
 			to_chat(src, SPAN_XENOWARNING("\The [morpher] is already full of children."))
 			return
 		visible_message(SPAN_WARNING("\The [src] climbs back into \the [morpher]."), SPAN_XENONOTICE("You climb into \the [morpher]."))
@@ -163,8 +167,15 @@
 		return
 	if(client)
 		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	hug_successful = TRUE
+	timeofdeath = world.time
 	qdel(src)
 	return did_hug
+
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+	var/mob/dead/observer/ghost = ..()
+	ghost?.bypass_time_of_death_checks_hugger = hug_successful
+	return ghost
 
 /mob/living/carbon/xenomorph/facehugger/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)

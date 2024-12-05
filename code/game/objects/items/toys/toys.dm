@@ -241,6 +241,7 @@
 /obj/item/toy/prize
 	icon_state = "ripleytoy"
 	var/cooldown = 0
+	w_class = SIZE_TINY
 
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user)
@@ -314,6 +315,7 @@
 	name = "toy phazon"
 	desc = "Mini-Mecha action figure! Collect them all! 11/11."
 	icon_state = "phazonprize"
+
 
 /obj/item/toy/inflatable_duck
 	name = "inflatable duck"

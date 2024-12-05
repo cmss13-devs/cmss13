@@ -9047,7 +9047,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
 /obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
 	gender = "female";
 	department = "Requisitions"
 	},
@@ -20632,7 +20632,7 @@
 	pixel_y = -16
 	},
 /obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
 	gender = "female";
 	department = "Requisitions"
 	},
@@ -48141,7 +48141,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
 	gender = "female";
 	department = "Requisitions"
 	},
@@ -48924,7 +48924,7 @@
 "qmP" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm{
-	desc = The beloved fax machine of the Requisitions department. Be sure to make a convincing argument when you ask high command for a crate of lunge mines.;
+	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
 	gender = "female";
 	department = "Requisitions"
 	},
@@ -63003,9 +63003,6 @@
 	},
 /obj/structure/sign/prop3{
 	pixel_x = -32
-	},
-/obj/structure/machinery/faxmachine/uscm{
-	department = "SEA"
 	},
 /turf/open/floor/strata/faux_metal,
 /area/almayer/shipboard/sea_office)

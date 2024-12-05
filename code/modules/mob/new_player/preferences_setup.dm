@@ -188,10 +188,10 @@
 	var/J = job_pref_to_gear_preset()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
-	
+
 	preview_dummy.blocks_emissive = FALSE
 	preview_dummy.update_emissive_block()
-	
+
 	clear_equipment()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)
@@ -277,6 +277,9 @@
 		if(JOB_SYNTH)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SYNTH]
 			return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(owner)]"]
+		if(JOB_SHIP_SYNTH)
+			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SHIP_SYNTH]
+			return J.gear_preset_whitelist["[JOB_SHIP_SYNTH][J.get_whitelist_status(owner)]"]
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
 		if(JOB_POLICE)

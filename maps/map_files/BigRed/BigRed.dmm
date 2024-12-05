@@ -20889,7 +20889,7 @@
 	desc = "A bewildering tangle of machinery and pipes.";
 	name = "\improper coolant feed"
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "fwV" = (
 /obj/structure/surface/table,
@@ -22351,7 +22351,7 @@
 /area/bigredv2/caves_lambda)
 "gXs" = (
 /obj/effect/spawner/random/toolbox,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "gYl" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -24828,7 +24828,7 @@
 /obj/structure/prop/almayer/cannon_cable_connector{
 	name = "\improper Cable connector"
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "jRi" = (
 /obj/item/ammo_magazine/smg/bizon{
@@ -27284,7 +27284,7 @@
 	name = "\improper Cable connector"
 	},
 /obj/structure/cable,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "msf" = (
 /turf/open/mars_cave/mars_cave_11,
@@ -30825,7 +30825,7 @@
 /area/bigredv2/caves_sw)
 "pYE" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "pYL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34173,7 +34173,7 @@
 /area/bigredv2/caves/mining)
 "tgF" = (
 /obj/effect/spawner/random/tool,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "tgL" = (
 /turf/open/mars_cave/mars_cave_6,
@@ -35295,7 +35295,7 @@
 	name = "handful of HE/FRAG shells (12g)";
 	pixel_y = 3
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "ukv" = (
 /turf/open/mars_cave/mars_cave_15,

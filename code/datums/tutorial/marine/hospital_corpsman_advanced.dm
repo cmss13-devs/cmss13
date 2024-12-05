@@ -80,7 +80,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest()
 
-	message_to_player("<b>1.1 Internal Organ Damage (Chest)</b>.")
+	message_to_player("<b>Section 1.1: Internal Organ Damage (Chest)</b>.")
 
 	message_to_player("Unlike the rest of the body, the condition of <b>Internal Organs</b> do not appear on a Health Analyzer scan.")
 	message_to_player("Instead, a more specialized tool is used. Say hello to the humble <b>Stethoscope</b>!")
@@ -107,7 +107,7 @@
 
 	message_to_player("Click on the Dummy with your <b>Stethoscope</b> in hand to test the health of their <b>Internal Organs</b>.")
 
-	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_lungs))
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_chest_3))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest_3(datum/source, mob/living/carbon/human/being, mob/living/user)
 
@@ -135,12 +135,12 @@
 	message_to_player("A damaged heart is the most common source of <b>Oxygen Damage</b> on the field, as even small amounts of <b>Heart Damage</b> proves capable of seriously impairing the human body.")
 	message_to_player("Heart damage can be caused as a result of moving with an <b>Unsplinted Chest Fracture, Extreme Brute Damage</b>, or being shot by an <b>Armor Piercing Bullet</b>.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_2)), 16 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_2)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_2()
 	message_to_player("Depending on the levels of damage to the heart, patients will experience escelating symptoms.")
 	message_to_player("<b>Heart - Slightly Bruised (Damage: 1-9) |</b> Slowly creates up to 21 points of <b>Oxygen Damage</b>.")
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_3)), 8 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_3)), 10 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_3()
 	message_to_player("<b>Heart - Bruised (Damage: 10-29) |</b> Rapidly creates 50 points of <b>Oxygen Damage</b>, and continues to create Oxygen damage at a slower pace indefinitely past this point.")
@@ -371,7 +371,7 @@
 	message_to_player("The Lungs, alongside other functions, allow Marines to breathe while carrying out their combat-related duties.")
 	message_to_player("Like Heart damage, <b>Lung Damage</b> can be caused by moving with an <b>Unsplinted Chest Fracture, Extreme Brute Damage</b>, or being shot by an <b>Armor Piercing Bullet</b>.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_2)), 16 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_2)), 20 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_2()
 
@@ -380,7 +380,7 @@
 	message_to_player("Once the Lungs have taken more than <b>30 Points of Internal Damage</b>, they will become <b>Ruptured</b>.")
 	message_to_player("<b>Ruptured Lungs</b> will create <b>Oxygen Damage</b> at a rapid pace, as well as causing afflicted patients to cough up blood.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_3)), 16 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_3)), 20 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_3()
 
@@ -413,7 +413,7 @@
 			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Stethoscope</b> has reported that: <font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, the Dummys lungs are <font color='red'>heavily failing</font>")
 			message_to_player("This tells you that Mr Dummys Lungs have <b>Ruptured</b>, and <u>need to be stabilized immediately</u>.")
 
-			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_5)), 14 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_5)), 11 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_5(datum/source, obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
@@ -581,9 +581,16 @@
 	remove_from_tracking_atoms(peri)
 	qdel(peri)
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
+	remove_highlight(steth)
+	remove_from_tracking_atoms(steth)
+	qdel(steth)
+
 	message_to_player("Well done! The Dummys condition has been stabilized.")
 	message_to_player("However, one Peridaxon pill will be fully metabolized in just over <u>5 minutes</u>, at which point full symptoms will return.")
 	message_to_player("Once you have stabilized a patient with a ruptured organ, you <u>MUST</u> transport them to a <b>Trained Doctor for Surgery</b> as <u>SOON AS POSSIBLE</u>.")
+
+	human_dummy.rejuvenate()
 
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head)), 10 SECONDS)
 
@@ -760,15 +767,16 @@
 	message_to_player("Both organs can be damaged by moving with an <b>Unsplinted Bone Fracture</b> in their respective regions, as well as from extreme amounts of <b>Brute damage</b> to either area.")
 	message_to_player("Both the Liver and Kidney are <u>extremely vulnerable</u> to <b>Toxin Damage</b> in the body.")
 	message_to_player("This includes <b>Alcohol Poisoning</b> in the case of the Liver <u>specifically</u>.")
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox_2)), 16 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox_2)), 19 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_tox_2()
 
 	message_to_player("When damaged, both the Liver and Kidney will create <b>Toxin Damage</b> in the body, corresponding to the amount of damage they have <u>already taken</u>.")
-	message_to_player("If not stabilized, this will create a feedback loop of endless <b>Toxin Damage</b>, eventually resulting in the complete <font color='failure'>blind</font> of both organs.")
+	message_to_player("If not stabilized, this will create a feedback loop of endless <b>Toxin Damage</b>, eventually resulting in the complete <font color='red'>failure</font> of both organs.")
 	message_to_player("Damage to the Liver and Kidney can only be treated via <u>surgical intervention</u>.")
 	message_to_player("Marines with high levels of <b>Toxin Damage</b> in their body without an obvious cause, are likely suffering from internal organ damage to their Liver or Kidney.")
 
+	addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 19 SECONDS)
 
 // SCRATCHPAD
 

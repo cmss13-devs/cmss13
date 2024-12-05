@@ -9,9 +9,7 @@
 	'sound/weapons/punch1.ogg', 'sound/weapons/punch2.ogg', 'sound/weapons/punch3.ogg', 'sound/weapons/punch4.ogg')
 
 /obj/structure/punching_bag/attack_hand(mob/user)
-	user.changeNext_move(CLICK_CD_MELEE)
-	. = ..()
-	if(.)
+	if(!ishuman(user))
 		return
 	flick("[icon_state]2", src)
 	playsound(loc, pick(hit_sounds), 25, TRUE, -1)
@@ -28,8 +26,7 @@
 	return
 
 /obj/structure/weightmachine/attack_hand(mob/living/user)
-	. = ..()
-	if(.)
+	if(!ishuman(user))
 		return
 	if(in_use)
 		to_chat(user, "It's already in use - wait a bit.")
@@ -75,7 +72,7 @@
 
 /obj/structure/weightmachine/weightlifter/AnimateMachine(mob/living/user)
 	var/mutable_appearance/swole_overlay = mutable_appearance(icon, "fitnessweight-w", WALL_OBJ_LAYER)
-	add_overlay(swole_overlay)
+	overlays += swole_overlay
 	var/reps = 0
 	user.pixel_y = 5
 	while(reps++ < 6)
@@ -88,4 +85,4 @@
 	sleep(3)
 	animate(user, pixel_y = 2, time = 3)
 	sleep(3)
-	cut_overlay(swole_overlay)
+	overlays -= swole_overlay

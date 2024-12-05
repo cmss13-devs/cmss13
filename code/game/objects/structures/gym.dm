@@ -12,7 +12,7 @@
 	if(!ishuman(user))
 		return
 	flick("[icon_state]2", src)
-	playsound(loc, pick(hit_sounds), 25, TRUE, -1)
+	playsound(loc, pick(hit_sounds), 25, TRUE, 3)
 
 
 /obj/structure/weightmachine
@@ -20,6 +20,7 @@
 	desc = "Just looking at this thing makes you feel tired."
 	density = TRUE
 	anchored = TRUE
+	var/inuse_stun_time = 7 SECONDS
 	var/icon_state_inuse
 
 /obj/structure/weightmachine/proc/AnimateMachine(mob/living/user)
@@ -35,13 +36,13 @@
 		in_use = TRUE
 		icon_state = icon_state_inuse
 		user.setDir(SOUTH)
-		user.Stun(8 SECONDS)
+		user.Stun(inuse_stun_time / GLOBAL_STATUS_MULTIPLIER)
 		user.forceMove(src.loc)
 		var/bragmessage = pick("pushing it to the limit","going into overdrive","burning with determination","rising up to the challenge", "getting strong now","getting ripped")
 		user.visible_message("<B>[user] is [bragmessage]!</B>")
 		AnimateMachine(user)
 
-		playsound(user, 'sound/machines/click.ogg', 60, 1)
+		playsound(user, 'sound/machines/click.ogg', 40, TRUE, 2)
 		in_use = FALSE
 		user.pixel_y = 0
 		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
@@ -52,6 +53,7 @@
 	icon = 'icons/obj/structures/fitness.dmi'
 	icon_state = "fitnesslifter"
 	icon_state_inuse = "fitnesslifter2"
+	inuse_stun_time = 5.5 SECONDS
 
 /obj/structure/weightmachine/stacklifter/AnimateMachine(mob/living/user)
 	var/lifts = 0
@@ -63,12 +65,13 @@
 		sleep(3)
 		animate(user, pixel_y = -4, time = 3)
 		sleep(3)
-		playsound(user, 'sound/effects/spring.ogg', 60, 1)
+		playsound(user, 'sound/effects/spring.ogg', 40, TRUE, 2)
 
 /obj/structure/weightmachine/weightlifter
 	icon = 'icons/obj/structures/fitness.dmi'
 	icon_state = "fitnessweight"
 	icon_state_inuse = "fitnessweight-c"
+	inuse_stun_time = 7 SECONDS
 
 /obj/structure/weightmachine/weightlifter/AnimateMachine(mob/living/user)
 	var/mutable_appearance/swole_overlay = mutable_appearance(icon, "fitnessweight-w", WALL_OBJ_LAYER)
@@ -81,7 +84,7 @@
 		for(var/innerReps = max(reps, 1), innerReps > 0, innerReps--)
 			sleep(3)
 			animate(user, pixel_y = (user.pixel_y == 3) ? 5 : 3, time = 3)
-		playsound(user, 'sound/effects/spring.ogg', 60, 1)
+		playsound(user, 'sound/effects/spring.ogg', 40, TRUE, 2)
 	sleep(3)
 	animate(user, pixel_y = 2, time = 3)
 	sleep(3)

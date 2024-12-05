@@ -1886,8 +1886,8 @@
 
 //NSG 23 ASSAULT RIFLE - RMC VARIANT
 
-/obj/item/weapon/gun/rifle/nsg23/l23	name = "\improper NSG 23 assault rifle"
-
+/obj/item/weapon/gun/rifle/nsg23/l23
+	name = "\improper NSG 23 assault rifle"
 	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs and Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "l23"

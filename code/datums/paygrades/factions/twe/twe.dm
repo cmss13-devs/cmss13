@@ -91,7 +91,7 @@
 	pay_multiplier = 9
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/twe/o6
+/datum/paygrade/twe/o7
 	paygrade = PAY_SHORT_RNO7
 	name = "Major General"
 	prefix = "Maj Gen."
@@ -212,7 +212,7 @@
 	prefix = "Bt-Sho."
 	pay_multiplier = 2.7
 
-/datum/paygrade/twe/o7
+/datum/paygrade/twe/o10
 	paygrade = PAY_SHORT_EMP
 	name = "Empress"
 	prefix = "HRM."

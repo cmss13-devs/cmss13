@@ -55,6 +55,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
+/datum/equipment_preset/synth/uscm/ship
+
+		assignment = JOB_SHIP_SYNTH
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/councillor
@@ -77,6 +81,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+
+/datum/equipment_preset/synth/uscm/councillor/ship
+
+		assignment = JOB_SHIP_SYNTH
 
 //*****************************************************************************************************/
 

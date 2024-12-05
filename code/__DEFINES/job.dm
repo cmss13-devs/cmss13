@@ -67,6 +67,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
 #define JOB_MESS_SERGEANT "Mess Technician"
 #define JOB_SYNTH "Synthetic"
+#define JOB_SHIP_SYNTH "Ship Operations Synthetic"
 #define JOB_WORKING_JOE "Working Joe"
 
 #define JOB_CO "Commanding Officer"

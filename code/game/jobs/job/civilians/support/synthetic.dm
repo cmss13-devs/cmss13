@@ -50,3 +50,42 @@
 	name = JOB_SYNTH
 	icon_state = "syn_spawn"
 	job = /datum/job/civilian/synthetic
+
+
+// ship synthetic
+
+/datum/job/civilian/synthetic/ship
+	title = JOB_SHIP_SYNTH
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the acting commanding officer"
+	selection_class = "job_ship_synth"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
+	flags_whitelist = WHITELIST_SYNTHETIC
+	gear_preset = /datum/equipment_preset/synth/uscm/ship
+	entry_message_body = "You are a <a href='"+WIKI_PLACEHOLDER+"'>Synthetic!</a> You may not deploy outside of specific circumstances. You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal. Your primary job is to support and assist all USCM Departments and Personnel on-board. In addition, being a Synthetic gives you knowledge in every field and specialization possible on-board the ship. As a Synthetic you answer to the acting commanding officer. Special circumstances may change this!"
+
+/datum/job/civilian/synthetic/ship/New()
+	. = ..()
+	gear_preset_whitelist = list(
+		"[JOB_SHIP_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/ship,
+		"[JOB_SHIP_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/councillor/ship,
+		"[JOB_SHIP_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor/ship
+	)
+
+/datum/job/civilian/synthetic/ship/get_whitelist_status(client/player)
+	. = ..()
+	if(!.)
+		return
+
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC_LEADER))
+		return get_desired_status(player.prefs.synth_status, WHITELIST_LEADER)
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))
+		return get_desired_status(player.prefs.synth_status, WHITELIST_COUNCIL)
+	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
+		return get_desired_status(player.prefs.synth_status, WHITELIST_NORMAL)
+
+/obj/effect/landmark/start/synthetic/ship
+	name = JOB_SHIP_SYNTH
+	icon_state = "syn_spawn"
+	job = /datum/job/civilian/synthetic/ship

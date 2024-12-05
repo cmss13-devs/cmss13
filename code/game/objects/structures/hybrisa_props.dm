@@ -2314,7 +2314,7 @@
 			var/turf/target_turf
 			target_turf = get_turf(explosive.loc)
 			var/datum/cause_data/temp_cause = create_cause_data(src, user)
-			explosive.handle_explosion(target_turf,temp_cause)
+			explosive.handle_explosion(target_turf, explosive.dir, temp_cause)
 
 /obj/structure/prop/hybrisa/misc/firehydrant
 	name = "fire hydrant"

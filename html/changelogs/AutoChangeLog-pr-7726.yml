@@ -1,0 +1,4 @@
+author: "neeshacark"
+delete-after: True
+changes:
+  - rscadd: "OT can now take the bad leg trait."

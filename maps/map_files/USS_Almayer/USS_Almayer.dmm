@@ -48140,11 +48140,6 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/faxmachine/uscm{
-	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
-	gender = "female";
-	department = "Requisitions"
-	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/req)
 "pXZ" = (

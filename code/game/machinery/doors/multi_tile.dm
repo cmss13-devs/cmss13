@@ -7,9 +7,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/close(forced = FALSE) //Nasty as hell O(n^2) code but unfortunately necessary
 	for(var/turf/turf_tile in locs)
 		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			if(vehicle_tile)
-				addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-				return FALSE
+			addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+			return FALSE
 
 	return ..()
 

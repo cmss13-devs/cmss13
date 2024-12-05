@@ -113,7 +113,7 @@
 #define CANROOT (1<<6)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
-//#define DISFIGURED (1<<14) //unused
+#define RECENTSPAWN (1<<14) // Temporarily invincible via GODMODE
 #define XENO_HOST (1<<15) //Tracks whether we're gonna be a baby alien's mummy.
 #define IMMOBILE_ACTION (1<<16) // If you are performing an action that prevents you from being pushed by your own people.
 #define PERMANENTLY_DEAD (1<<17)

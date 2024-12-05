@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix runtime edgecase when ghostizing something that has no player_details somehow"

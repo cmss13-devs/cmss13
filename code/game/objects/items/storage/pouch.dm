@@ -1263,6 +1263,7 @@
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
+		/obj/item/device/defibrillator/synthetic,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -1329,6 +1330,15 @@
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/stack/cable_coil(src)
+
+/obj/item/storage/pouch/tools/tactical/upp/resetkey/fill_preset_inventory()
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/device/defibrillator/synthetic(src)
 
 /obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
 	new /obj/item/tool/crowbar(src)

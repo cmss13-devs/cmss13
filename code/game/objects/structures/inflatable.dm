@@ -284,3 +284,6 @@
 	new /obj/item/inflatable(src)
 	new /obj/item/inflatable(src)
 	new /obj/item/inflatable(src)
+
+/obj/item/storage/briefcase/inflatable/small
+	w_class = SIZE_MEDIUM

@@ -97,6 +97,7 @@
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
+		/obj/item/device/defibrillator/synthetic,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,

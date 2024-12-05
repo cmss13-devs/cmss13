@@ -926,7 +926,7 @@
 /turf/open/hybrisa/dropship/dropshipfloorfull
 	icon_state = "dropshipfloorfull"
 
-/turf/open/hybrisa/dropship/non_weedable
+/turf/open/hybrisa/dropship/no_surgery_allowed
 	supports_surgery = FALSE
 
 /turf/open/hybrisa/dropship/non_weedable/dropship1

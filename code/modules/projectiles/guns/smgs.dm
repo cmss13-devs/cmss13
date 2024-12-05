@@ -510,6 +510,12 @@
 	name = "\improper UZI"
 	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smgs.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
+	)
 	icon_state = "uzi"
 	item_state = "uzi"
 	flags_equip_slot = SLOT_WAIST
@@ -675,6 +681,7 @@
 
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/misc_weapons.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
 	)

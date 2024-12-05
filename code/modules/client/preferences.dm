@@ -2276,7 +2276,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 #undef MENU_SPECIAL
 
 /datum/preferences/proc/generate_name(faction = FACTION_MARINE)
-	var/female = prob(40)
+	var/female = prob(50)
 	var/name = "John Doe"
 	if(female)
 		name = "Jane Doe"

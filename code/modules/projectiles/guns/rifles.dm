@@ -1887,7 +1887,8 @@
 //NSG 23 ASSAULT RIFLE - RMC VARIANT
 
 /obj/item/weapon/gun/rifle/nsg23/l23	name = "\improper NSG 23 assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs and Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage."
+
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs and Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -1934,14 +1935,14 @@
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
-/obj/item/weapon/gun/rifle/l23/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/rifle/nsg23/l23/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
 
-/obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/nsg23/l23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
 
-/obj/item/weapon/gun/rifle/l23/set_gun_config_values()
+/obj/item/weapon/gun/rifle/nsg23/l23/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_10)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
@@ -1956,7 +1957,7 @@
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/l23/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/nsg23/l23/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/stock/nsg23/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
@@ -1964,7 +1965,7 @@
 	update_attachable(S.slot)
 
 //has no scope or underbarrel
-/obj/item/weapon/gun/rifle/l23/stripped
+/obj/item/weapon/gun/rifle/nsg23/l23/stripped
 	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
 //-------------------------------------------------------
 //XM51, Breaching Scattergun

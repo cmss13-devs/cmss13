@@ -232,7 +232,7 @@
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with their [name]."),
 			SPAN_DANGER("You force [D] open with your [name]."))
-			D.Open()
+			D.open()
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo
 	name = "strange bottle"

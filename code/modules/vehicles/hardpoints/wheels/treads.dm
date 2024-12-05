@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/treads
 	name = "\improper Treads"
-	desc = "Integral to the movement of the vehicle."
+	desc = "Integral to the movement of the vehicle. Steel reinforced rubber tracks, they allow the tank to move faster but in turn need repairs more often."
 
 	icon_state = "treads"
 	disp_icon = "tank"
@@ -18,7 +18,7 @@
 
 /obj/item/hardpoint/locomotion/treads/robust
 	name = "\improper Reinforced Treads"
-	desc = "These treads are made of a tougher material and are more durable. However, the extra weight slows the tank down."
+	desc = "These treads are made of solid steel plates and are more durable. However, the extra weight slows the tank down."
 
 	health = 500
 	acid_resistant = TRUE

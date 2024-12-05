@@ -47,6 +47,8 @@
 
 	minimap_icon = "xenoqueen"
 
+	minimap_background = "xeno_ruler"
+
 	royal_caste = TRUE
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
@@ -445,7 +447,7 @@
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
 		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
 			continue
-		if(xeno.hivenumber == hivenumber)
+		if(xeno.hivenumber == hivenumber && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
@@ -577,6 +579,7 @@
 
 	. += "Pooled Larvae: [stored_larvae]"
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
+	. += "Royal Resin: [hive?.buff_points]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
 		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 

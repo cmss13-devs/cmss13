@@ -29,13 +29,6 @@
 	if(prescription)
 		AddElement(/datum/element/poor_eyesight_correction)
 
-/obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
-	var/item_state_slot_state = LAZYACCESS(item_state_slots, slot)
-	if(item_state_slot_state)
-		return item_state_slot_state
-	else
-		return icon_state
-
 /obj/item/clothing/glasses/update_clothing_icon()
 	if(ismob(src.loc))
 		var/mob/M = src.loc
@@ -551,8 +544,8 @@
 	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_WELDING
 	has_tint = TRUE
-	vision_impair = VISION_IMPAIR_MAX
-	var/vision_impair_on = VISION_IMPAIR_MAX
+	vision_impair = VISION_IMPAIR_ULTRA
+	var/vision_impair_on = VISION_IMPAIR_ULTRA
 	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
@@ -632,7 +625,7 @@
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
-	//vision_flags = DISABILITY_BLIND // This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
+	vision_impair = VISION_IMPAIR_MAX
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."
@@ -643,9 +636,10 @@
 
 /obj/item/clothing/glasses/sunglasses/big
 	name = "\improper BiMex personal shades"
-	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from solar radiation and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
+	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from atomic flash, solar radiation, and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
 	icon_state = "bigsunglasses"
-	item_state = "bigsunglasses"
+	item_state = "sunglasses"
+	eye_protection = EYE_PROTECTION_FLASH
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
@@ -654,7 +648,7 @@
 	name = "aviator shades"
 	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."
 	icon_state = "aviator"
-	item_state = "aviator"
+	item_state = "sunglasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
@@ -677,6 +671,7 @@
 	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among military police, though other models exist."
 	icon_state = "securityhud"
 	item_state = "securityhud"
+	item_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/eyes.dmi')
 	eye_protection = EYE_PROTECTION_FLASH
 
 

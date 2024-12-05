@@ -196,6 +196,8 @@
 			return
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
+		if(!lighting_holder.light)
+			lighting_holder.set_light_on(TRUE)
 
 		if(WT)
 			WT.remove_fuel(1, user)
@@ -295,7 +297,7 @@
 	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 		return
 
-	if(ammo_flags & AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE)
+	if(ammo_flags & (AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE))
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)

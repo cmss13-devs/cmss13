@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscadd: "flag for HvH to turn all internal bleeding into normal one"

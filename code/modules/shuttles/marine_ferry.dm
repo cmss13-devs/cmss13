@@ -58,7 +58,7 @@
 		for(var/obj/vehicle/multitile/M in D.loc)
 			if(M) return 0
 
-		for(var/turf/T in D.locate_filler_turfs())
+		for(var/turf/T in D.locs)
 			for(var/obj/vehicle/multitile/M in T)
 				if(M) return 0
 

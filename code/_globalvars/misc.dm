@@ -135,3 +135,6 @@ GLOBAL_VAR(xeno_queue_candidate_count)
 GLOBAL_VAR(obfs_x)
 /// A number between -500 and 500.
 GLOBAL_VAR(obfs_y)
+
+/// The current amount of giant lizards that are alive.
+GLOBAL_VAR_INIT(giant_lizards_alive, 0)

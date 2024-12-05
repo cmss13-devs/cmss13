@@ -159,6 +159,7 @@
  */
 /obj/item/tool/weldingtool
 	name = "blowtorch"
+	desc = "A blowtorch for welding and cutting metals."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
@@ -188,6 +189,8 @@
 	var/welding = 0
 	/// The max amount of fuel the welder can hold
 	var/max_fuel = 40
+	/// Adding this line of code to determine whether a welder should have fuel when created or not.
+	var/starting_fuel = TRUE
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
@@ -196,7 +199,9 @@
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
 	create_reagents(max_fuel)
-	reagents.add_reagent("fuel", max_fuel)
+	if (starting_fuel)
+		reagents.add_reagent("fuel", max_fuel)
+
 	base_icon_state = initial(icon_state)
 	return
 
@@ -417,6 +422,9 @@
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
 
+/obj/item/tool/weldingtool/empty
+	starting_fuel = FALSE
+
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
 	max_fuel = 60
@@ -447,10 +455,9 @@
 
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field."
 	max_fuel = 5
 	has_welding_screen = TRUE
-	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 	icon_state = "welder_b"
 
 /*
@@ -646,7 +653,7 @@
 
 				user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
 				SPAN_DANGER("You force [resin_door] open with [src]."))
-				resin_door.Open()
+				resin_door.open()
 				return
 
 	else if(istype(attacked_obj, /turf/open/floor))

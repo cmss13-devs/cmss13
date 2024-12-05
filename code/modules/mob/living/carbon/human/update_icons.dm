@@ -328,6 +328,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			client.add_to_screen(w_uniform)
 			w_uniform.screen_loc = hud_used.ui_datum.hud_slot_offset(w_uniform, hud_used.ui_datum.ui_iclothing)
 
+		if(species.flags & NO_OVERLAYS && !w_uniform.force_overlays_on)
+			return
+
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT))
 			var/image/I = w_uniform.get_mob_overlay(src, WEAR_BODY)
 			I.layer = -UNIFORM_LAYER
@@ -348,6 +351,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/obj/item/card/id/card = get_idcard()
 	if(!card)
 		return
+	if(species.flags & NO_OVERLAYS && !wear_id.force_overlays_on)
+		return
 	if(!card.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
 		var/image/id_overlay = card.get_mob_overlay(src, WEAR_ID)
 		id_overlay.layer = -ID_LAYER
@@ -361,6 +366,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
 			client.add_to_screen(gloves)
 			gloves.screen_loc = hud_used.ui_datum.hud_slot_offset(gloves, hud_used.ui_datum.ui_gloves)
+
+		if(species.flags & NO_OVERLAYS && !gloves.force_overlays_on)
+			return
 
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEGLOVES))
 			I = gloves.get_mob_overlay(src, WEAR_HANDS)
@@ -381,6 +389,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			client.add_to_screen(glasses)
 			glasses.screen_loc = hud_used.ui_datum.hud_slot_offset(glasses, hud_used.ui_datum.ui_glasses)
 
+		if(species.flags & NO_OVERLAYS && !glasses.force_overlays_on)
+			return
+
 		var/image/I = glasses.get_mob_overlay(src, WEAR_EYES)
 		I.layer = -GLASSES_LAYER
 		overlays_standing[GLASSES_LAYER] = I
@@ -399,6 +410,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			wear_l_ear?.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_l_ear, hud_used.ui_datum.ui_wear_l_ear)
 			wear_r_ear?.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_r_ear, hud_used.ui_datum.ui_wear_r_ear)
 
+		if(species.flags & NO_OVERLAYS)
+			return
+
 		var/image/standing_image = image('icons/mob/humans/onmob/med_human.dmi', icon_state = "blank", layer = -EARS_LAYER)
 
 		standing_image.overlays +=  wear_l_ear?.get_mob_overlay(src, WEAR_L_EAR)
@@ -416,6 +430,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
 			client.add_to_screen(shoes)
 			shoes.screen_loc = hud_used.ui_datum.hud_slot_offset(shoes, hud_used.ui_datum.ui_shoes)
+
+		if(species.flags & NO_OVERLAYS && !shoes.force_overlays_on)
+			return
 
 		if(!((wear_suit && wear_suit.flags_inv_hide & HIDESHOES) || (w_uniform && w_uniform.flags_inv_hide & HIDESHOES)))
 			I =  shoes.get_mob_overlay(src, WEAR_FEET)
@@ -436,13 +453,16 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			client.add_to_screen(s_store)
 			s_store.screen_loc = hud_used.ui_datum.hud_slot_offset(s_store, hud_used.ui_datum.ui_sstore1)
 
+		if(species.flags & NO_OVERLAYS && !s_store.force_overlays_on)
+			return
+
 		var/image/I = s_store.get_mob_overlay(src, WEAR_J_STORE)
 		I.layer = -SUIT_STORE_LAYER
 		overlays_standing[SUIT_STORE_LAYER] = I
 		apply_overlay(SUIT_STORE_LAYER)
 
 
-#define MAX_HEAD_GARB_ITEMS 5
+#define MAX_HEAD_GARB_ITEMS 6
 
 /mob/living/carbon/human/update_inv_head()
 	remove_overlay(HEAD_LAYER)
@@ -455,6 +475,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
 			client.add_to_screen(head)
 			head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
+
+		if(species.flags & NO_OVERLAYS && !head.force_overlays_on)
+			return
 
 		var/image/I = head.get_mob_overlay(src, WEAR_HEAD)
 		I.layer = -HEAD_LAYER
@@ -501,6 +524,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		client.add_to_screen(belt)
 		belt.screen_loc = hud_used.ui_datum.hud_slot_offset(belt, hud_used.ui_datum.ui_belt)
 
+	if(species.flags & NO_OVERLAYS && !belt.force_overlays_on)
+		return
+
 	var/image/I = belt.get_mob_overlay(src, WEAR_WAIST)
 	I.layer = -BELT_LAYER
 	overlays_standing[BELT_LAYER] = I
@@ -517,6 +543,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
 			client.add_to_screen(wear_suit)
 			wear_suit.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_suit, hud_used.ui_datum.ui_oclothing)
+
+		if(species.flags & NO_OVERLAYS && !wear_suit.force_overlays_on)
+			return
 
 		var/image/I = wear_suit.get_mob_overlay(src, WEAR_JACKET)
 		I.layer = -SUIT_LAYER
@@ -566,6 +595,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!(client && hud_used && hud_used.hud_shown && hud_used.ui_datum))
 		return
 
+	if(species.flags & NO_OVERLAYS)
+		return
+
 	if(l_store)
 		client.add_to_screen(l_store)
 		l_store.screen_loc = hud_used.ui_datum.hud_slot_offset(l_store, hud_used.ui_datum.ui_storage1)
@@ -582,6 +614,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		client.add_to_screen(wear_mask)
 		wear_mask.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_mask, hud_used.ui_datum.ui_mask)
 
+	if(species.flags & NO_OVERLAYS && !wear_mask.force_overlays_on)
+		return
+
 	if(!(head && head.flags_inv_hide & HIDEMASK))
 		var/image/I = wear_mask.get_mob_overlay(src, WEAR_FACE)
 		I.layer = -FACEMASK_LAYER
@@ -595,6 +630,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
 		client.add_to_screen(back)
 		back.screen_loc = hud_used.ui_datum.hud_slot_offset(back, hud_used.ui_datum.ui_back)
+
+	if(species.flags & NO_OVERLAYS && !back.force_overlays_on)
+		return
 
 	var/image/I = back.get_mob_overlay(src, WEAR_BACK)
 	I.layer = -BACK_LAYER
@@ -694,11 +732,14 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 /mob/living/carbon/human/update_burst()
 	remove_overlay(BURST_LAYER)
 	var/image/standing
+	var/bursting_icon = "stand"
+	if(isyautja(src))
+		bursting_icon = "yautja_stand"
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_[bursting_icon]", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_[bursting_icon]", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing
@@ -710,13 +751,17 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!on_fire)
 		set_light_on(FALSE)
 		return
+
+	var/fire_sprite_sheet = species.fire_sprite_sheet
+	var/fire_sprite_prefix = species.fire_sprite_prefix
+
 	var/image/I
 	switch(fire_stacks)
 		if(1 to 14)
-			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_weak", "layer"= -FIRE_LAYER)
+			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_weak", layer = -FIRE_LAYER)
 			set_light_range(2)
 		if(15 to INFINITY)
-			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"= -FIRE_LAYER)
+			I = image(icon = fire_sprite_sheet, icon_state = "[fire_sprite_prefix]_medium",  layer = -FIRE_LAYER)
 			set_light_range(3)
 		else
 			return

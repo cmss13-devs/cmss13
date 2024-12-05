@@ -75,7 +75,7 @@
 	throw_range = 5
 	matter = list("metal" = 500)
 
-/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot)
+/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	var/image/handcuffs = overlay_image('icons/mob/mob.dmi', "handcuff1", color, RESET_COLOR)

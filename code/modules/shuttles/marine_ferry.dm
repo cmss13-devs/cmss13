@@ -58,7 +58,7 @@
 		for(var/obj/vehicle/multitile/M in D.loc)
 			if(M) return 0
 
-		for(var/turf/T in D.locate_filler_turfs())
+		for(var/turf/T in D.locs)
 			for(var/obj/vehicle/multitile/M in T)
 				if(M) return 0
 
@@ -219,7 +219,7 @@
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
 			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
-			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno?.iff_tag.faction_groups))
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)

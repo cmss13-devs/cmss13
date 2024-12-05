@@ -622,6 +622,12 @@
 /obj/item/device/radio/headset/almayer/marine
 	initial_keys = list(/obj/item/device/encryptionkey/public)
 
+/obj/item/device/radio/headset/almayer/cia
+	name = "radio headset"
+	desc = "A radio headset."
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/mcom/cl)
+
+
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha
 	name = "marine alpha radio headset"

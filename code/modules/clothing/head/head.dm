@@ -496,11 +496,6 @@
 	name = "\improper USCM provost command beret"
 	icon_state = "pvciberet"
 
-/obj/item/clothing/head/beret/marine/mp/tis
-	name = "\improper UAAC-TIS Special Agent Beret"
-	icon_state = "berettis"
-	desc = "A beret with the UAAC-TIS insignia emblazoned on it. A mark of a TIS Special Agent, these berets are one of the only pieces of equipment that the TIS actually manufactures for itself and earning one is one of the rare signs of achievement the Three Eyes allows."
-
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine commanding officer beret"
 	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."

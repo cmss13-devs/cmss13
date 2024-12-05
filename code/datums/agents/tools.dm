@@ -136,3 +136,45 @@
 
 /obj/item/stack/points/p20
 	amount = 20
+
+/obj/item/device/portable_vendor/antag/cia
+	name = "analyst briefcase"
+	desc = "A 2170-edition travel suitcase from the brand Cromwell-Irwin Ateliers. An eagle is stamped on the right side."
+	icon_state = "briefcase"
+	points = 200
+	max_points = 300
+	req_role = JOB_CIA
+	force = MELEE_FORCE_STRONG
+
+	listed_products = list(
+		list("WEAPONS", 0, null, null, null),
+		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge."),
+		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
+		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
+		list("Sedative Pen", 15, /obj/item/tool/pen/sleepypen, "white", "A sedative syringe disguised as a pen. Can be used to stealthily knock out targets."),
+		list("Handcuffs", 2, /obj/item/restraint/handcuffs, "white", "A set of handcuffs."),
+
+		list("AMMUNITION", 0, null, null, null),
+		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "white", "A magazine for an M1911 pistol."),
+
+		list("UTILITY", 0, null, null, null),
+		list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool"),
+		list("Listening Device", 20, /obj/item/device/tracker, "white", "A listening device. Can be disguised as anything by right-clicking on it."),
+		list("OoI Tracker", 20, /obj/item/device/tracker, "white", "A tracker that tracks different objects of interest in a nearby range."),
+		list("USCM Codebook", 20, /obj/item/book/codebook, "white", "A copy of a USCM codebook used to verify credentials with the commanding officer."),
+		list("Tools Kit", 15, /obj/item/storage/toolbox/mechanical, "white", "A toolbox containing general tools."),
+
+		list("ARMOR", 0, null, null, null),
+		list("M3-VL Ballistics Vest", 20, /obj/item/clothing/suit/storage/marine/light/vest, "white", "A toolbox containing general tools."),
+
+		list("RADIO KEYS", 0, null, null, null),
+		list("Radio Key: W-Y PMC", 20, /obj/item/device/encryptionkey/pmc, "white", "Radio Key for Weyland-Yutani PMC Combat Comms."),
+		list("Radio Key: Colonial Marshals", 20, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),
+		list("Radio Key: Colonial Liberation Front", 20, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),
+		list("Radio Key: Union of Progressive Peoples", 20, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
+
+		list("TRANSFER POINTS", 0, null, null, null),
+		list("1 point", 1, /obj/item/stack/points/p1, "white", "A method of transferring points between agents."),
+		list("5 points", 5, /obj/item/stack/points/p5, "white", "A method of transferring points between agents."),
+		list("20 points", 20, /obj/item/stack/points/p20, "white", "A method of transferring points between agents."),
+	)

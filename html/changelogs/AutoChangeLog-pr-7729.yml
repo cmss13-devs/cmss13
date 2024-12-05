@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix code mistakes involving bitwise OR"
-  - balance: "Sentry flamer ammo now actually applies its initial damage (~30) to non-immune xenos"
-  - balance: "AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE are now actually required for a vehicle damage multiplier"
-  - code_imp: "Bitwise OR mistakes like this are now linted against"

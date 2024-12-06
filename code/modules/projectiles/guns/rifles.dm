@@ -1886,7 +1886,7 @@
 
 //NSG 23 ASSAULT RIFLE - RMC VARIANT
 
-/obj/item/weapon/gun/rifle/l23
+/obj/item/weapon/gun/rifle/nsg23/l23
 	name = "\improper NSG 23 assault rifle"
 	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs and Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
@@ -1902,7 +1902,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/rmc
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1913,7 +1913,8 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
-		/obj/item/attachable/verticalgrip
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
 	)
 
@@ -1937,14 +1938,14 @@
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
-/obj/item/weapon/gun/rifle/l23/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/rifle/nsg23/l23/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
 
-/obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/nsg23/l23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 12, "rail_y" = 20, "under_x" = 22, "under_y" = 11, "stock_x" = 5, "stock_y" = 17)
 
-/obj/item/weapon/gun/rifle/l23/set_gun_config_values()
+/obj/item/weapon/gun/rifle/nsg23/l23/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_10)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
@@ -1959,16 +1960,12 @@
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/l23/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/nsg23/l23/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/stock/l23/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
-
-//has no scope or underbarrel
-/obj/item/weapon/gun/rifle/l23/stripped
-	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
 //-------------------------------------------------------
 //XM51, Breaching Scattergun
 

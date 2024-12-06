@@ -29175,10 +29175,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/p_bow)
-"ihg" = (
-/obj/structure/weightmachine/stacklifter,
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
 "iho" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -31154,14 +31150,6 @@
 /area/almayer/engineering/lower/engine_core)
 "iYx" = (
 /obj/structure/closet/boxinggloves,
-/obj/item/clothing/gloves/boxing,
-/obj/item/clothing/gloves/boxing,
-/obj/item/clothing/gloves/boxing/blue,
-/obj/item/clothing/gloves/boxing/blue,
-/obj/item/clothing/gloves/boxing/green,
-/obj/item/clothing/gloves/boxing/green,
-/obj/item/clothing/gloves/boxing/yellow,
-/obj/item/clothing/gloves/boxing/yellow,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "iZd" = (
@@ -32158,11 +32146,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"jqr" = (
-/obj/structure/pipes/vents/scrubber,
-/obj/structure/weightmachine/stacklifter,
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
 "jqP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
@@ -45060,6 +45043,7 @@
 	pixel_y = 31;
 	pixel_x = -14
 	},
+/obj/structure/weightmachine/stacklifter,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "oEf" = (
@@ -45278,6 +45262,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/weightmachine/stacklifter,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "oHf" = (
@@ -46690,10 +46675,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/item/stool{
-	pixel_y = 16;
-	pixel_x = -4
-	},
+/obj/structure/weightmachine/stacklifter,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "pkz" = (
@@ -58364,6 +58346,10 @@
 "tXL" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
+	},
+/obj/item/stool{
+	pixel_y = 16;
+	pixel_x = -4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
@@ -93352,7 +93338,7 @@ dvD
 oes
 eWs
 pkb
-jqr
+rkz
 qyR
 tJc
 rkz
@@ -93758,7 +93744,7 @@ xzB
 oes
 eWs
 oEd
-ihg
+wFR
 wfE
 otD
 soA
@@ -94164,7 +94150,7 @@ xzB
 rsP
 eWs
 oHd
-ihg
+wFR
 wfE
 caF
 soA

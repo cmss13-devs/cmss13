@@ -177,6 +177,10 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+				if(CEILING_IS_PROTECTED(A.ceiling, CEILING_GLASS))
+					to_chat(user, SPAN_WARNING("Watchtowers can only be built in the open."))
+					return
+					
 				var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2)
 				var/list/obj/structure/girder/girders = list()
 

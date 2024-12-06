@@ -111,6 +111,10 @@
 	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
 
+/datum/ammo/bullet/shotgun/flechette/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
+
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
 	icon_state = "flechette"
@@ -123,6 +127,10 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
+
+/datum/ammo/bullet/shotgun/flechette_spread/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
 
 /datum/ammo/bullet/shotgun/buckshot
 	name = "buckshot shell"
@@ -321,10 +329,10 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_4
 
-
 /datum/ammo/bullet/shotgun/heavy/flechette_spread/setup_faction_clash_values()
 	. = ..()
 	damage *= 0.7
+
 /*
 					16 GAUGE SHOTGUN AMMO
 */

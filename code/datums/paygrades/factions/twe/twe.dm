@@ -207,7 +207,7 @@
 
 
 /datum/paygrade/twe/iasf/o9
-	paygrade = PAY_SHORT_IASFO8
+	paygrade = PAY_SHORT_IASFO9
 	name = "Bakuryōchō-taru-shō"
 	prefix = "Bt-Sho."
 	pay_multiplier = 2.7

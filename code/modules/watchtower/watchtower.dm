@@ -26,6 +26,8 @@
 
 	update_icon()
 
+	return ..()
+
 /obj/structure/watchtower/Destroy()
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
 	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3) + CORNER_OUTLINE(get_turf(src), 2, 3)

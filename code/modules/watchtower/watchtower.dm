@@ -44,9 +44,8 @@
 				falling_mob.client.change_view(falling_mob.client.view - 2)
 			var/atom/movable/screen/plane_master/roof/roof_plane = falling_mob.hud_used.plane_masters["[ROOF_PLANE]"]
 			roof_plane?.invisibility = 0
-			for(var/obj/item/weapon/gun/gun in falling_mob)
-				gun.remove_bullet_traits(list("watchtower_arc"))
 			falling_mob.ex_act(100, 0)
+			UnregisterSignal(falling_mob, COMSIG_ITEM_PICKUP)
 
 	new /obj/structure/girder(get_turf(src))
 	new /obj/structure/girder/broken(locate(x+1, y, z))
@@ -219,8 +218,8 @@
 		user.client.change_view(user.client.view + 2)
 		var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
 		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
-		for(var/obj/item/weapon/gun/gun in user)
-			gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only)))
+		add_trait_to_all_guns(user)
+		RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
 	else if(get_turf(user) == locate(x, y+1, z))
 		if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
@@ -231,9 +230,23 @@
 		user.client.change_view(user.client.view - 2)
 		var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
 		roof_plane?.invisibility = 0
-		for(var/obj/item/weapon/gun/gun in user)
-			gun.remove_bullet_traits(list("watchtower_arc"))
+		UnregisterSignal(user, COMSIG_ITEM_PICKUP)
 
+/obj/structure/watchtower/proc/add_trait_to_all_guns(mob/user)
+	for(var/obj/item/weapon/gun/gun in user)
+		gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
+
+	for(var/obj/item/storage/storage in user)
+		for(var/obj/item/weapon/gun/gun in storage.contents)
+			gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
+
+/obj/structure/watchtower/proc/item_picked_up(obj/item/picked_up_item, mob/living/carbon/human/user)
+	if(!istype(picked_up_item, /obj/item/weapon/gun))
+		return
+	
+	var/obj/item/weapon/gun/gun = picked_up_item
+	gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
+	
 /obj/structure/watchtower/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if (xeno.mob_size < MOB_SIZE_BIG)
 		return

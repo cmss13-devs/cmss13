@@ -22,3 +22,21 @@
 
 	if(P.original != projectile_target)
 		return COMPONENT_SKIP_MOB
+
+/datum/element/bullet_trait_direct_only/watchtower
+
+/datum/element/bullet_trait_direct_only/watchtower/check_distance(obj/projectile/P, mob/living/carbon/human/projectile_target)
+	if(!HAS_TRAIT(P.firer, TRAIT_ON_WATCHTOWER))
+		if(!istype(P.firer, /mob))
+			return
+		var/mob/firer = P.firer
+		var/obj/item/weapon/gun/gun = firer.get_inactive_hand()
+		if(istype(gun))
+			gun.remove_bullet_traits(list("watchtower_arc"))
+
+		gun = firer.get_active_hand()
+		if(istype(gun))
+			gun.remove_bullet_traits(list("watchtower_arc"))
+		return
+
+	return ..()

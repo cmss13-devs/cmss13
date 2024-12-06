@@ -2693,7 +2693,7 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 2
 
 /obj/item/attachable/stock/l23
-	name = "NSG 23 stock"
+	name = "L23 stock"
 	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
 	icon_state = "l23_stock"
 	slot = "stock"

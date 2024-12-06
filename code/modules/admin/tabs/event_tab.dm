@@ -47,7 +47,7 @@
 	set category = "Admin.Events"
 	if(!admin_holder)
 		return
-	
+
 	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
 
 	var/list/ckeys = list()
@@ -307,6 +307,26 @@
 	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+
+/datum/admins/proc/add_upp_req_points()
+	set name = "Add UPP Requisitions Points"
+	set desc = "Add points to the UPP ship requisitions department."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
+	if(!points_to_add)
+		return
+	else if((GLOB.supply_controller.points + points_to_add) < 0)
+		GLOB.supply_controller.points = 0
+	else if((GLOB.supply_controller.points + points_to_add) > 99999)
+		GLOB.supply_controller.points = 99999
+	else
+		GLOB.supply_controller.points += points_to_add
+
+
+	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
 
 /datum/admins/proc/check_req_heat()
 	set name = "Check Requisitions Heat"

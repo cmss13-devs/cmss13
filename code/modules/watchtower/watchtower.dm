@@ -11,8 +11,8 @@
     var/image/roof_image
 
 /obj/structure/watchtower/Initialize()
-    var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 2, 0, 1)
-    var/list/turf/blocked_turfs = CORNER_BLOCK(get_turf(src), 2, 1)
+    var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1)
+    var/list/turf/blocked_turfs = CORNER_BLOCK(get_turf(src), 2, 1) + CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 2)
     var/list/turf/bottom_turfs = CORNER_OUTLINE(get_turf(src), 2, 3)
 
     for(var/turf/current_turf in top_turfs)
@@ -23,6 +23,8 @@
 
     for(var/turf/current_turf in blocked_turfs)
         new /obj/structure/blocked_turfs/invisible_wall/throw_pass(current_turf)
+
+    update_icon()
 
 /obj/structure/watchtower/Destroy()
     var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2) + CORNER_OUTLINE(get_turf(src), 2, 3)
@@ -202,14 +204,6 @@
         var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
         roof_plane?.invisibility = 0
 
-/obj/structure/watchtower/complete
-    stage = 7
-    icon_state = "stage7"
-
-/obj/structure/watchtower/complete/Initialize()
-    . = ..()
-    update_icon()
-
 /obj/structure/blocked_turfs/invisible_wall/throw_pass
 
 /obj/structure/blocked_turfs/invisible_wall/throw_pass/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -234,3 +228,26 @@
 /obj/structure/blocker/invisible_wall/watchtower/inverse/Collided(atom/movable/AM)
     if(!HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
         AM.forceMove(get_turf(src))
+
+// For Mappers
+/obj/structure/watchtower/stage1
+    stage = 1
+    icon_state = "stage1"
+/obj/structure/watchtower/stage2
+    stage = 2
+    icon_state = "stage2"
+/obj/structure/watchtower/stage3
+    stage = 3
+    icon_state = "stage3"
+/obj/structure/watchtower/stage4
+    stage = 4
+    icon_state = "stage4"
+/obj/structure/watchtower/stage5
+    stage = 5
+    icon_state = "stage5"
+/obj/structure/watchtower/stage6
+    stage = 6
+    icon_state = "stage6"
+/obj/structure/watchtower/complete
+    stage = 7
+    icon_state = "stage7"

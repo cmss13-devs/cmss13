@@ -1,6 +1,6 @@
 /datum/job/civilian/synthetic
 	title = JOB_SYNTH
-	total_positions = 1
+	total_positions = 2
 	spawn_positions = 1
 	allow_additional = 1
 	scaled = 1

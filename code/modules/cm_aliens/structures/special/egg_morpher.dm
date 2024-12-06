@@ -223,11 +223,11 @@
 
 		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
 		stored_huggers = max(0, stored_huggers - 1)
+		if(stored_huggers == 0)
+			hide_egg_triggers()
 		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)
 		SEND_SIGNAL(M, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, hugger)
 		return XENO_NONCOMBAT_ACTION
-		if(stored_huggers == 0)
-			hide_egg_triggers()
 	..()
 
 /obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)

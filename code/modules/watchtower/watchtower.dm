@@ -280,4 +280,4 @@
 	icon_state = "stage6"
 /obj/structure/watchtower/complete
 	stage = 7
-	icon_state = "stage7
+	icon_state = "stage7"

@@ -1902,6 +1902,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/rmc
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1912,6 +1913,7 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/verticalgrip
 		/obj/item/attachable/scope/mini/nsg23,
 	)
 
@@ -1940,7 +1942,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 12, "rail_y" = 20, "under_x" = 22, "under_y" = 11, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/l23/set_gun_config_values()
 	..()

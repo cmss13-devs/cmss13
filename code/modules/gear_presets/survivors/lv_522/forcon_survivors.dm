@@ -292,6 +292,7 @@
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(preset_human), WEAR_BACK)
+	preset_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red/knife(preset_human), WEAR_FEET)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(preset_human), WEAR_L_HAND)

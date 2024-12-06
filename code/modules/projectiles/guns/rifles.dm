@@ -1913,27 +1913,28 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/shotgun/af13,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/mini,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
+	random_spawn_chance = 33
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/extended_barrel,
 	)
 	random_spawn_under = list(
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer/advanced,
-		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/shotgun/af13,
 	)
 	random_spawn_rail = list(
-		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/mini,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE

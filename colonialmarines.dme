@@ -503,6 +503,7 @@
 #include "code\datums\elements\suturing.dm"
 #include "code\datums\elements\yautja_tracked_item.dm"
 #include "code\datums\elements\bullet_trait\damage_boost.dm"
+#include "code\datums\elements\bullet_trait\direct_only.dm"
 #include "code\datums\elements\bullet_trait\iff.dm"
 #include "code\datums\elements\bullet_trait\ignored_range.dm"
 #include "code\datums\elements\bullet_trait\incendiary.dm"

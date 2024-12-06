@@ -22,16 +22,37 @@
         new /obj/structure/blocker/invisible_wall/watchtower/inverse(current_turf)
 
     for(var/turf/current_turf in blocked_turfs)
-        new /obj/structure/blocked_turfs/invisible_wall/throw_pass(current_turf)
+        new /obj/structure/blocker/invisible_wall/throwpass(current_turf)
 
     update_icon()
 
 /obj/structure/watchtower/Destroy()
-    var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2) + CORNER_OUTLINE(get_turf(src), 2, 3)
+    playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
+    var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3) + CORNER_OUTLINE(get_turf(src), 2, 3)
 
-    for(var/turf/current_turf in turfs)
+    for(var/turf/current_turf in all_turfs)
         for(var/obj/structure/blocker/invisible_wall in current_turf.contents)
             qdel(invisible_wall)
+
+    var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1)
+
+    for(var/turf/current_turf in top_turfs)
+        for(var/mob/falling_mob in current_turf.contents)
+            if(falling_mob.client)
+                falling_mob.client.change_view(falling_mob.client.view - 2)
+            var/atom/movable/screen/plane_master/roof/roof_plane = falling_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+            roof_plane?.invisibility = 0
+            for(var/obj/item/weapon/gun/gun in falling_mob)
+                gun.remove_bullet_traits(list("watchtower_arc"))
+            falling_mob.ex_act(100, 0)
+
+    new /obj/structure/girder(get_turf(src))
+    new /obj/structure/girder/broken(locate(x+1, y, z))
+    new /obj/structure/girder/broken(locate(x, y+1, z))
+    new /obj/item/stack/sheet/metal(locate(x+1, y+1, z), 10)
+    new /obj/item/stack/rods(locate(x+1, y+1, z), 20)
+
+    return ..()
 
 /obj/structure/watchtower/update_icon()
     . = ..()
@@ -49,6 +70,10 @@
         overlays += roof_image
 
 /obj/structure/watchtower/attackby(obj/item/W, mob/user)
+    if(istool(W) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
+        to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
+        return TRUE
+
     switch(stage)
         if(1)
             if(!istype(W, /obj/item/stack/rods))
@@ -59,7 +84,7 @@
             if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
                 return
 
-            if(rods.use(10))
+            if(rods.use(60))
                 to_chat(user, SPAN_NOTICE("You add connection rods to the watchtower."))
                 stage = 2
                 update_icon()
@@ -89,7 +114,7 @@
             if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
                 return
 
-            to_chat(user, SPAN_NOTICE("You summon a black hole and somehow produce more matter to elevate the frame."))
+            to_chat(user, SPAN_NOTICE("You elevate the the frame and screw it up top."))
             stage = 3
             update_icon()
 
@@ -106,7 +131,7 @@
             if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
                 return
 
-            if(metal.use(10))
+            if(metal.use(50))
                 to_chat(user, SPAN_NOTICE("You construct the watchtower platform."))
                 stage = 4
                 update_icon()
@@ -126,7 +151,7 @@
             if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
                 return
 
-            if(plasteel.use(10))
+            if(plasteel.use(25))
                 to_chat(user, SPAN_NOTICE("You construct the watchtower railing."))
                 stage = 5
                 update_icon()
@@ -146,7 +171,7 @@
             if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
                 return
 
-            if(rods.use(10))
+            if(rods.use(60))
                 to_chat(user, SPAN_NOTICE("You construct the watchtower support rods."))
                 stage = 6
                 update_icon()
@@ -170,7 +195,7 @@
             if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
                 return
 
-            if(plasteel.use(10))
+            if(plasteel.use(25))
                 to_chat(user, SPAN_NOTICE("You complete the watchtower."))
                 stage = 7
                 update_icon()
@@ -179,8 +204,7 @@
             else
                 to_chat(user, SPAN_NOTICE("You failed to complete the watchtower, you need more plasteel sheets in your offhand."))
 
-            return
-
+            return	
 
 /obj/structure/watchtower/attack_hand(mob/user)
     if(get_turf(user) == locate(x, y-1, z))
@@ -193,6 +217,8 @@
         user.client.change_view(user.client.view + 2)
         var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
         roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+        for(var/obj/item/weapon/gun/gun in user)
+            gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only)))
     else if(get_turf(user) == locate(x, y+1, z))
         if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
             return
@@ -203,21 +229,23 @@
         user.client.change_view(user.client.view - 2)
         var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
         roof_plane?.invisibility = 0
+        for(var/obj/item/weapon/gun/gun in user)
+            gun.remove_bullet_traits(list("watchtower_arc"))
 
-/obj/structure/blocked_turfs/invisible_wall/throw_pass
+/obj/structure/watchtower/attack_alien(mob/living/carbon/xenomorph/xeno)
+    if (xeno.mob_size < MOB_SIZE_BIG)
+        return
 
-/obj/structure/blocked_turfs/invisible_wall/throw_pass/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
+    if(!do_after(xeno, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+        return
+
+    qdel(src)
+
+/obj/structure/blocker/invisible_wall/throwpass
+    throwpass = TRUE
 
 /obj/structure/blocker/invisible_wall/watchtower
     throwpass = TRUE
-
-/obj/structure/blocker/invisible_wall/watchtower/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
 /obj/structure/blocker/invisible_wall/watchtower/Collided(atom/movable/AM)
     if(HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))

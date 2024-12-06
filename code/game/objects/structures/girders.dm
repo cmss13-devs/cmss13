@@ -175,7 +175,29 @@
 			return do_wall(W, user)
 		if(STATE_REINFORCED_WALL)
 			return do_reinforced_wall(W, user)
-		if(STATE_DISPLACED)			
+		if(STATE_DISPLACED)
+			if(HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+				var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2)
+				var/list/obj/structure/girder/girders = list()
+
+				for(var/turf/current_turf in turfs)
+					var/found_girder = FALSE
+					for(var/obj/structure/girder/girder in current_turf)
+						if(girder.state == STATE_DISPLACED)
+							found_girder = TRUE
+							girders += girder
+					if(!found_girder)
+						return
+
+
+				if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+
+				new /obj/structure/watchtower(loc)
+				
+				for(var/list/obj/structure/girder as anything in girders)
+					qdel(girder)
+			
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				var/turf/open/floor = loc
 				if(!floor.allow_construction)
@@ -392,6 +414,13 @@
 	icon_state = "displaced"
 	anchored = FALSE
 	state = STATE_DISPLACED
+
+/obj/structure/girder/broken
+	health = 0
+	icon_state = "girder_damaged"
+	anchored = FALSE
+	density = FALSE
+	state = STATE_STANDARD
 
 /obj/structure/girder/reinforced
 	icon_state = "reinforced"

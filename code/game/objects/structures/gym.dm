@@ -74,7 +74,7 @@
 	inuse_stun_time = 7 SECONDS
 
 /obj/structure/weightmachine/weightlifter/AnimateMachine(mob/living/user)
-	var/mutable_appearance/swole_overlay = mutable_appearance(icon, "fitnessweight-w", WALL_OBJ_LAYER)
+	var/mutable_appearance/swole_overlay = mutable_appearance(icon, "fitnessweight-w", ABOVE_MOB_LAYER)
 	overlays += swole_overlay
 	var/reps = 0
 	user.pixel_y = 5

@@ -127,6 +127,9 @@
 
 	HasProximity(target)
 
+/obj/effect/alien/resin/special/eggmorph/Crossed(atom/movable/AM)
+	HasProximity(AM)
+
 /obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM as mob|obj)
 	if(!stored_huggers || issynth(AM))
 		return

@@ -3,35 +3,48 @@
     icon = 'icons/obj/structures/watchtower.dmi'
     icon_state = "stage1"
 
-    density = TRUE
+    density = FALSE
     bound_width = 64
     bound_height = 96
 
     var/stage = 1
+    var/image/roof_image
 
 /obj/structure/watchtower/Initialize()
-    var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2)
+    var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 2, 0, 1)
+    var/list/turf/blocked_turfs = CORNER_BLOCK(get_turf(src), 2, 1)
+    var/list/turf/bottom_turfs = CORNER_OUTLINE(get_turf(src), 2, 3)
 
-    for(var/turf/current_turf in turfs)
-        new /obj/structure/blocker/invisible_wall(current_turf)
+    for(var/turf/current_turf in top_turfs)
+        new /obj/structure/blocker/invisible_wall/watchtower(current_turf)
+
+    for(var/turf/current_turf in bottom_turfs)
+        new /obj/structure/blocker/invisible_wall/watchtower/inverse(current_turf)
+
+    for(var/turf/current_turf in blocked_turfs)
+        new /obj/structure/blocked_turfs/invisible_wall/throw_pass(current_turf)
 
 /obj/structure/watchtower/Destroy()
-    var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2)
+    var/list/turf/turfs = CORNER_BLOCK(get_turf(src), 2, 2) + CORNER_OUTLINE(get_turf(src), 2, 3)
 
     for(var/turf/current_turf in turfs)
         for(var/obj/structure/blocker/invisible_wall in current_turf.contents)
             qdel(invisible_wall)
-            new /obj/structure/girder(current_turf)
 
-/obj/structure/watchtower/update_icon(roof=TRUE)
+/obj/structure/watchtower/update_icon()
     . = ..()
     icon_state = "stage[stage]"
+
+    overlays.Cut()
 
     if(stage >= 5)
         overlays += image(icon=icon, icon_state="railings", layer=ABOVE_MOB_LAYER, pixel_y=25)
 
-    if (stage == 7 && roof)
-        overlays += image(icon=icon, icon_state="roof", layer=ABOVE_MOB_LAYER, pixel_y=51)
+    if (stage == 7)
+        roof_image = image(icon=icon, icon_state="roof", layer=ABOVE_MOB_LAYER, pixel_y=51)
+        roof_image.plane = ROOF_PLANE
+        roof_image.appearance_flags = KEEP_APART
+        overlays += roof_image
 
 /obj/structure/watchtower/attackby(obj/item/W, mob/user)
     switch(stage)
@@ -166,16 +179,6 @@
 
             return
 
-/obj/structure/watchtower/proc/complete()
-    var/turf/above = (get_turf(src)).above()
-    var/list/turf/turfs = CORNER_BLOCK(above, 2, 3)
-
-    for(var/turf/current_turf in turfs)
-        var/turf/below = current_turf.below()
-        new below.type(current_turf)
-
-    new /obj/structure/watchtower/fake(above)
-
 
 /obj/structure/watchtower/attack_hand(mob/user)
     if(get_turf(user) == locate(x, y-1, z))
@@ -183,23 +186,21 @@
             return
 
         var/turf/actual_turf = locate(x, y+1, z)
-        user.forceMove(actual_turf.above())
-        user.client.view += 5
+        ADD_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
+        user.forceMove(actual_turf)
+        user.client.change_view(user.client.view + 2)
+        var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
+        roof_plane?.invisibility = INVISIBILITY_MAXIMUM
     else if(get_turf(user) == locate(x, y+1, z))
         if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
             return
 
+        REMOVE_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
         var/turf/actual_turf = locate(x, y-1, z)
-        user.forceMove(actual_turf.below())
-        user.client.view -= 5
-
-/obj/structure/watchtower/fake
-    stage = 7
-    icon_state = "stage7"
-
-/obj/structure/watchtower/fake/Initialize()
-    update_icon(roof=FALSE)
-    return
+        user.forceMove(actual_turf)
+        user.client.change_view(user.client.view - 2)
+        var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
+        roof_plane?.invisibility = 0
 
 /obj/structure/watchtower/complete
     stage = 7
@@ -207,5 +208,29 @@
 
 /obj/structure/watchtower/complete/Initialize()
     . = ..()
-    update_icon(roof=TRUE)
-    complete()
+    update_icon()
+
+/obj/structure/blocked_turfs/invisible_wall/throw_pass
+
+/obj/structure/blocked_turfs/invisible_wall/throw_pass/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
+
+/obj/structure/blocker/invisible_wall/watchtower
+    throwpass = TRUE
+
+/obj/structure/blocker/invisible_wall/watchtower/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
+
+/obj/structure/blocker/invisible_wall/watchtower/Collided(atom/movable/AM)
+    if(HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
+        AM.forceMove(get_turf(src))
+
+/obj/structure/blocker/invisible_wall/watchtower/inverse
+
+/obj/structure/blocker/invisible_wall/watchtower/inverse/Collided(atom/movable/AM)
+    if(!HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
+        AM.forceMove(get_turf(src))

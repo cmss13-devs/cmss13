@@ -1468,6 +1468,8 @@
 	set_fire_delay(FIRE_DELAY_TIER_11)//same fire rate as m41
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_4//same damage as m41 reg bullets probably
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		scatter = SCATTER_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/rifle/type71/carbine/dual

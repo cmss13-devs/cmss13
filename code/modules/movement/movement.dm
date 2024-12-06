@@ -56,18 +56,19 @@
 	return NO_BLOCKED_MOVEMENT
 
 /atom/movable/Move(NewLoc, direct)
-	// If Move is not valid, exit
-	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
-		return FALSE
-
 	var/atom/oldloc = loc
 	var/old_dir = dir
 
-	. = ..()
 	if (flags_atom & DIRLOCK)
 		setDir(old_dir)
 	else if(old_dir != direct)
 		setDir(direct)
+
+	// If Move is not valid, exit
+	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
+		return FALSE
+
+	. = ..()
 	l_move_time = world.time
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)

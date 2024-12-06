@@ -15,13 +15,9 @@
 /obj/structure/watchtower/Initialize()
 	var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1)
 	var/list/turf/blocked_turfs = CORNER_BLOCK(get_turf(src), 2, 1) + CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 2)
-	var/list/turf/bottom_turfs = CORNER_OUTLINE(get_turf(src), 2, 3)
 
 	for(var/turf/current_turf in top_turfs)
 		new /obj/structure/blocker/invisible_wall/watchtower(current_turf)
-
-	for(var/turf/current_turf in bottom_turfs)
-		new /obj/structure/blocker/invisible_wall/watchtower/inverse(current_turf)
 
 	for(var/turf/current_turf in blocked_turfs)
 		new /obj/structure/blocker/invisible_wall/throwpass(current_turf)
@@ -32,7 +28,7 @@
 
 /obj/structure/watchtower/Destroy()
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
-	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3) + CORNER_OUTLINE(get_turf(src), 2, 3)
+	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3)
 
 	for(var/turf/current_turf in all_turfs)
 		for(var/obj/structure/blocker/invisible_wall in current_turf.contents)
@@ -48,6 +44,7 @@
 			roof_plane?.invisibility = 0
 			falling_mob.ex_act(100, 0)
 			UnregisterSignal(falling_mob, COMSIG_ITEM_PICKUP)
+			UnregisterSignal(falling_mob, COMSIG_MOVABLE_PRE_MOVE)
 
 	new /obj/structure/girder(get_turf(src))
 	new /obj/structure/girder/broken(locate(x+1, y, z))
@@ -222,6 +219,7 @@
 		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 		add_trait_to_all_guns(user)
 		RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
+		RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_can_move))
 	else if(get_turf(user) == locate(x, y+1, z))
 		if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
@@ -233,6 +231,7 @@
 		var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
 		roof_plane?.invisibility = 0
 		UnregisterSignal(user, COMSIG_ITEM_PICKUP)
+		UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
 
 /obj/structure/watchtower/proc/add_trait_to_all_guns(mob/user)
 	for(var/obj/item/weapon/gun/gun in user)
@@ -243,12 +242,26 @@
 			gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
 
 /obj/structure/watchtower/proc/item_picked_up(obj/item/picked_up_item, mob/living/carbon/human/user)
+	SIGNAL_HANDLER
 	if(!istype(picked_up_item, /obj/item/weapon/gun))
 		return
 	
 	var/obj/item/weapon/gun/gun = picked_up_item
 	gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
-	
+
+/obj/structure/watchtower/proc/check_can_move(mob/mover, turf/new_loc)
+	SIGNAL_HANDLER
+	var/found = FALSE
+	for(var/turf/current_turf in CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1))
+		if (current_turf.x == new_loc.x && current_turf.y == new_loc.y && current_turf.z == new_loc.z)
+			found = TRUE
+			break
+
+	if(!found)	
+		return COMPONENT_CANCEL_MOVE
+
+	return	
+
 /obj/structure/watchtower/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if (xeno.mob_size < MOB_SIZE_BIG)
 		return
@@ -269,17 +282,6 @@
 /obj/structure/blocker/invisible_wall/watchtower/Collided(atom/movable/AM)
 	if(HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
 		AM.forceMove(get_turf(src))
-
-/obj/structure/blocker/invisible_wall/watchtower/inverse
-
-/obj/structure/blocker/invisible_wall/watchtower/inverse/Collided(atom/movable/AM)
-	if(!HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
-		AM.forceMove(get_turf(src))
-
-/obj/structure/blocker/invisible_wall/watchtower/inverse/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_can_pass_all = PASS_OVER
 
 // For Mappers
 /obj/structure/watchtower/stage1

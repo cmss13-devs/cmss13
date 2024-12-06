@@ -103,13 +103,13 @@
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
-				door.Open()
+				door.open()
 		else
 			user.visible_message(SPAN_DANGER("[user] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
-				door.Close()
+				door.close()
 
 /obj/item/weapon/bracer_attachment/attack_self(mob/living/carbon/human/user)
 	..()
@@ -266,6 +266,12 @@
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
+
+/obj/item/weapon/yautja/sword/staff
+	name = "cruel staff"
+	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	icon_state = "staff"
+	item_state = "staff"
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
@@ -877,6 +883,11 @@
 	item_state = "glaive_alt"
 	flags_item = NOSHIELD|TWOHANDED
 
+/obj/item/weapon/twohanded/yautja/glaive/longaxe
+	name = "longaxe"
+	desc = "A frighteningly big axe. The blade edge is chipped and gnarled from thousands of bone-crushing blows."
+	icon_state = "longaxe"
+	item_state = "longaxe"
 
 /*#########################################
 ############## Ranged Weapons #############

@@ -8,7 +8,7 @@
 	health = 300
 	appearance_flags = KEEP_TOGETHER
 	layer = FACEHUGGER_LAYER
-
+	var/list/egg_triggers = list()
 	///How many huggers are stored in the egg morpher currently.
 	var/stored_huggers = 0
 	///Max amount of huggers that can be stored in the egg morpoher.
@@ -28,6 +28,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
+	create_egg_triggers()
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
@@ -44,6 +45,13 @@
 
 	range_bounds = null
 	. = ..()
+	for(var/obj/effect/egg_trigger/trigger as anything in egg_triggers)
+		trigger.linked_egg = null
+		trigger.linked_eggmorph = null
+		qdel(trigger)
+	if(egg_triggers)
+		egg_triggers.Cut()
+	egg_triggers = null
 
 /obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
 	. = ..()
@@ -76,6 +84,8 @@
 			else
 				visible_message(SPAN_XENOWARNING("[hugger] crawls back into \the [src]!"))
 			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
+			if(stored_huggers == 1)
+				deploy_egg_triggers()
 			qdel(hugger)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
@@ -91,6 +101,8 @@
 				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
 			user.temp_drop_inv_item(egg)
 		stored_huggers = min(huggers_max_amount, stored_huggers + 1)
+		if(stored_huggers == 1)
+			deploy_egg_triggers()
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		qdel(egg)
 		return
@@ -112,6 +124,29 @@
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	if(stored_huggers < huggers_to_grow_max)
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+		if(stored_huggers == 1)
+			deploy_egg_triggers()
+
+/obj/effect/alien/resin/special/eggmorph/proc/create_egg_triggers()
+	for(var/item in 1 to 8)
+		egg_triggers += new /obj/effect/egg_trigger(src, src)
+
+/obj/effect/alien/resin/special/eggmorph/proc/deploy_egg_triggers()
+	var/item = 1
+	var/x_coords = list(-1,-1,-1,0,0,1,1,1)
+	var/y_coords = list(1,0,-1,1,-1,1,0,-1)
+	var/turf/target_turf
+	for(var/trigger in egg_triggers)
+		var/obj/effect/egg_trigger/ET = trigger
+		target_turf = locate(x+x_coords[item],y+y_coords[item], z)
+		if(target_turf)
+			ET.forceMove(target_turf)
+			item++
+
+/obj/effect/alien/resin/special/eggmorph/proc/hide_egg_triggers()
+	for(var/trigger in egg_triggers)
+		var/obj/effect/egg_trigger/ET = trigger
+		ET.moveToNullspace()
 
 /obj/effect/alien/resin/special/eggmorph/proc/check_facehugger_target()
 	if(!range_bounds)
@@ -130,20 +165,51 @@
 /obj/effect/alien/resin/special/eggmorph/Crossed(atom/movable/AM)
 	HasProximity(AM)
 
-/obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM as mob|obj)
+//The invisible traps around the morpher to tell it there's a mob right next to it.
+/obj/effect/egg_trigger
+	name = "egg trigger"
+	icon = 'icons/effects/effects.dmi'
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_MAXIMUM
+
+/obj/effect/egg_trigger/New(loc, obj/effect/alien/egg/source_egg, obj/effect/alien/resin/special/eggmorph/source_eggmorph)
+	..()
+	linked_egg = source_egg
+	linked_eggmorph = source_eggmorph
+
+
+/obj/effect/egg_trigger/Crossed(atom/movable/AM)
+	if(!linked_egg && !linked_eggmorph) //something went very wrong.
+		qdel(src)
+	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
+		forceMove(linked_egg)
+	else if(linked_eggmorph && (get_dist(src, linked_eggmorph) != 1 || !isturf(linked_eggmorph.loc))) //something went wrong
+		forceMove(linked_eggmorph)
+	else if(iscarbon(AM))
+		var/mob/living/carbon/Carbon = AM
+		if(linked_egg && can_hug(AM))
+			linked_egg.HasProximity(Carbon)
+		if(linked_eggmorph && can_hug(AM))
+			linked_eggmorph.HasProximity(Carbon)
+
+/obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM)
 	if(!stored_huggers || issynth(AM))
 		return
 
-	if (!linked_hive)
+	if(!linked_hive)
 		return
 
 	if(!can_hug(AM, linked_hive.hivenumber))
 		return
-
+	if(!loc)
+		return
 	stored_huggers = max(0, stored_huggers - 1)
 
 	var/obj/item/clothing/mask/facehugger/child = new(loc, linked_hive.hivenumber)
 	child.leap_at_nearest_target()
+	if(stored_huggers == 0)
+		hide_egg_triggers()
 
 /obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M))
@@ -160,6 +226,8 @@
 		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)
 		SEND_SIGNAL(M, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, hugger)
 		return XENO_NONCOMBAT_ACTION
+		if(stored_huggers == 0)
+			hide_egg_triggers()
 	..()
 
 /obj/effect/alien/resin/special/eggmorph/attack_ghost(mob/dead/observer/user)

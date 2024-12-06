@@ -93,6 +93,7 @@
 	. = ..()
 	worn_state = icon_state
 	LAZYSET(item_state_slots, WEAR_BODY, worn_state)
+	return .
 
 /obj/item/clothing/under/update_clothing_icon()
 	if(ismob(loc))

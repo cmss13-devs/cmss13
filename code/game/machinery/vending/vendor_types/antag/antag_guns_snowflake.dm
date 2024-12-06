@@ -36,14 +36,6 @@
 
 //--------------ESSENTIALS------------------------
 
-/obj/effect/essentials_set/medic/upp
-	spawned_gear_list = list(
-		/obj/item/bodybag/cryobag,
-		/obj/item/device/defibrillator,
-		/obj/item/storage/firstaid/adv,
-		/obj/item/device/healthanalyzer,
-		/obj/item/roller,
-	)
 
 /obj/effect/essentials_set/upp_heavy
 	spawned_gear_list = list(

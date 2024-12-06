@@ -739,6 +739,24 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/ammo/uppshot
+	name = "shotgun shell box crate (Type 23, x100 8g slug shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/buck
+	name = "shotgun shell box crate (Type 23, x100 8g buckshot shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/buckshot)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/flech
+	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/ammo/m16
 	name = "Magazine box (M16, 12x regular mags)"
 	dollar_cost = 100

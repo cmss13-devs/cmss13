@@ -48,25 +48,6 @@
 	containername = "Type 23 slug ammo crate"
 	group = "UPP Ammo"
 
-/datum/supply_packs/ammo_8g_dragon_breath
-	name = "Magazine box (Type 23, 10x dragon's breath)"
-	contains = list(
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-		/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "Type 23 dragon's breath ammo crate"
-	group = "UPP Ammo"
-
 /datum/supply_packs/ammo_8g_flechette
 	name = "Magazine box (Type 23, 10x flechette)"
 	contains = list(
@@ -129,15 +110,8 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_pkp_mags
-	name = "Magazines (QYJ-72, 10x mags)"
+	name = "Magazines (QYJ-72, 4x mags)"
 	contains = list(
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
 		/obj/item/ammo_magazine/pkp,
 		/obj/item/ammo_magazine/pkp,
 		/obj/item/ammo_magazine/pkp,
@@ -149,10 +123,8 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_minigun_mags
-	name = "Magazines (GSh-7.62, 6x mags)"
+	name = "Magazines (GSh-7.62, 4x mags)"
 	contains = list(
-		/obj/item/ammo_magazine/minigun,
-		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
@@ -161,26 +133,6 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "GSh-7.62 magazines crate"
-	group = "UPP Special Ammo"
-
-/datum/supply_packs/upp/ammo_Type88_x10
-	name = "Magazines (Type 88, 10x regular mags)"
-	contains = list(
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "Type 88 magazines crate"
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_he

@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/explosives_smoke_upp
-	name = "Smoke grenades crate (x6)"
+	name = "Smoke grenades crate (x10)"
 	contains = list(
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/explosive/grenade/smokebomb,
@@ -7,8 +7,12 @@
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/explosive/grenade/smokebomb,
 	)
-	cost = 30
+	cost = 10
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper smoke grenades crate (WARNING)"
 	group = "UPP Explosives"

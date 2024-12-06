@@ -7,6 +7,8 @@
 	bound_width = 64
 	bound_height = 96
 
+	gas_pass = TRUE
+
 	var/stage = 1
 	var/image/roof_image
 
@@ -258,9 +260,11 @@
 
 /obj/structure/blocker/invisible_wall/throwpass
 	throwpass = TRUE
+	gas_pass = TRUE
 
 /obj/structure/blocker/invisible_wall/watchtower
 	throwpass = TRUE
+	gas_pass = TRUE
 
 /obj/structure/blocker/invisible_wall/watchtower/Collided(atom/movable/AM)
 	if(HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
@@ -271,6 +275,11 @@
 /obj/structure/blocker/invisible_wall/watchtower/inverse/Collided(atom/movable/AM)
 	if(!HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
 		AM.forceMove(get_turf(src))
+
+/obj/structure/blocker/invisible_wall/watchtower/inverse/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_OVER
 
 // For Mappers
 /obj/structure/watchtower/stage1

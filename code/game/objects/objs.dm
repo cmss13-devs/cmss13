@@ -8,6 +8,8 @@
 	/// universal "unacidabliness" var, here so you can use it in any obj.
 	unacidable = FALSE
 	animate_movement = 2
+	// Allows gasses to pass (despite being dense for example)
+	var/gas_pass = FALSE
 	var/throwforce = 1
 	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/in_use = FALSE

@@ -1578,6 +1578,8 @@
 	set_fire_delay(FIRE_DELAY_TIER_9)
 	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
@@ -1590,9 +1592,6 @@
 	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
 	integrated.Attach(src)
 	update_attachable(integrated.slot)
-
-/obj/item/weapon/gun/rifle/m4ra/training
-	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
 
 /obj/item/weapon/gun/rifle/m4ra/tactical
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/ext

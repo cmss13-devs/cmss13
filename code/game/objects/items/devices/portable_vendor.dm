@@ -22,6 +22,7 @@
 	var/fabricating = FALSE
 	var/broken = FALSE
 	var/contraband = FALSE
+	var/has_light = TRUE
 
 	var/list/purchase_log = list()
 
@@ -199,6 +200,8 @@
 	update_overlays()
 
 /obj/item/device/portable_vendor/proc/update_overlays()
+	if(!has_light) return
+
 	if(overlays) overlays.Cut()
 	if (broken)
 		overlays += image(icon, "securespark")

@@ -3,9 +3,21 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimum_age = 25
 	assignment = JOB_CIA
-	skills = /datum/skills/CMP
+	skills = /datum/skills/CIA
 	languages = ALL_HUMAN_LANGUAGES
 	faction = FACTION_MARINE
+
+/datum/equipment_preset/cia/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
+
+//Gives undercover spies necessary CIA equipment for spycraft.
+/datum/equipment_preset/proc/give_cia_equipment(atom/M)
+	var/atom/spawnloc = M
+	if(ishuman(spawnloc))
+		var/mob/living/carbon/human/new_human = spawnloc
+		new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
+		new_human.equip_to_slot_or_del(new /obj/item/device/encryptionkey/cia, WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/analyst
 	name = "CIA Agent (Civilian Clothing)"
@@ -15,10 +27,6 @@
 	minimap_background = "background_civillian"
 	minimap_icon = "io"
 	idtype = /obj/item/card/id/adaptive
-
-/datum/equipment_preset/cia/analyst/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/cia/analyst/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
@@ -41,14 +49,13 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
-
-
 	)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new random_outfit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new random_suit(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
@@ -57,10 +64,105 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911/socom/equipped, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia(new_human), WEAR_R_HAND)
-
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/listening_bug(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/paralysis(new_human), WEAR_IN_BACK)
+
+/datum/equipment_preset/cia/officer
+	name = "CIA Agent (USCM Officer)"
+	rank = "Intelligence Liaison Officer"
+	assignment = JOB_CIA_LIAISON
+	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "ILO"
+	minimum_age = 30
+	minimap_icon = "aso"
+	idtype = /obj/item/card/id/adaptive
+
+/datum/equipment_preset/cia/officer/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia(new_human), WEAR_IN_BACK)
+
+/datum/equipment_preset/uscm/marsoc/low_threat/cia
+	name = "CIA Agent (Marine Raider)"
+	minimum_age = 30
+	skills = /datum/skills/CIA
+
+/datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
+
+/datum/equipment_preset/uscm/marsoc/low_threat/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_cia_equipment(new_human)
+
+/datum/equipment_preset/clf/engineer/cia
+	name = "CIA Agent (CLF Engineer Disguise)"
+	skills = /datum/skills/CIA
+
+/datum/equipment_preset/clf/engineer/cia/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+
+/datum/equipment_preset/clf/engineer/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	var/obj/item/clothing/under/colonist/clf/M = new()
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	M.attach_accessory(new_human, W)
+	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+
+	spawn_rebel_suit(new_human)
+	spawn_rebel_shoes(new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_R_STORE)
+
+	spawn_rebel_weapon(new_human)
+	spawn_rebel_weapon(new_human,1)
+	give_cia_equipment(new_human)
+
+
+/datum/equipment_preset/upp/soldier/dressed/cia
+	name = "CIA Agent (UPP Soldier Disguise)"
+	skills = /datum/skills/CIA
+
+/datum/equipment_preset/upp/soldier/dressed/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+
+/datum/equipment_preset/upp/soldier/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_cia_equipment(new_human)
+
+
+/datum/equipment_preset/upp/officer/senior/dressed/cia
+	name = "CIA Agent (UPP Senior Officer Disguise)"
+	skills = /datum/skills/CIA
+
+/datum/equipment_preset/upp/officer/senior/dressed/cia/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+
+/datum/equipment_preset/upp/officer/senior/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_cia_equipment(new_human)
 
 

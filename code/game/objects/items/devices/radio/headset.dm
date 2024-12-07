@@ -625,7 +625,8 @@
 /obj/item/device/radio/headset/almayer/cia
 	name = "radio headset"
 	desc = "A radio headset."
-	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/mcom/cl)
+	frequency = CIA_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/listening_bug/freq_a)
 
 
 //############################## ALPHA ###############################

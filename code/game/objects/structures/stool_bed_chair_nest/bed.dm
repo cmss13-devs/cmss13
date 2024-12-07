@@ -148,7 +148,6 @@
 			var/mob/living/carbon/human/H = over_object
 			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
 				if(foldabletype == /obj/item/roller)
-					. = ..()
 					return
 				var/obj/item/I = new foldabletype(get_turf(src))
 				H.put_in_hands(I)
@@ -206,13 +205,13 @@
 		var/mob/living/carbon/human/H = over_object
 		if(src.contents.len == 0)
 			new foldabletype(src)
-		var/obj/item/roller/RH = locate(foldabletype) in src.contents
+		var/obj/item/roller/rollerholder = locate(foldabletype) in src.contents
 		if (istype(over_object, /mob/living/carbon/human))
 			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
-				H.put_in_hands(RH)
+				H.put_in_hands(rollerholder)
 				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
 				SPAN_WARNING("You grab [src] from the floor!!"))
-				forceMove(RH)
+				forceMove(rollerholder)
 
 /obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
 	if(iscarbon(M))
@@ -253,12 +252,12 @@
 /obj/item/roller/proc/deploy_roller(mob/user, atom/location)
 	if(src.contents.len == 0)
 		new rollertype(src)
-	var/obj/structure/bed/roller/R = locate(rollertype) in src.contents
-	R.forceMove(user.loc)
-	to_chat(user, SPAN_NOTICE("You deploy [R]."))
-	R.add_fingerprint(user)
+	var/obj/structure/bed/roller/roller = locate(rollertype) in src.contents
+	roller.forceMove(user.loc)
+	to_chat(user, SPAN_NOTICE("You deploy [roller]."))
+	roller.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
-	forceMove(R)
+	forceMove(roller)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)

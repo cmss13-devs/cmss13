@@ -7,20 +7,19 @@
 	bound_width = 64
 	bound_height = 96
 
-	gas_pass = TRUE
-
 	var/stage = 1
 	var/image/roof_image
 
 /obj/structure/watchtower/Initialize()
-	var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1)
 	var/list/turf/blocked_turfs = CORNER_BLOCK(get_turf(src), 2, 1) + CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 2)
 
-	for(var/turf/current_turf in top_turfs)
-		new /obj/structure/blocker/invisible_wall/watchtower(current_turf)
+	var/atom/west_blocker = new /obj/structure/blocker/watchtower(locate(x, y+1, z))
+	var/atom/east_blocker = new /obj/structure/blocker/watchtower(locate(x+1, y+1, z))
+	west_blocker.dir = WEST
+	east_blocker.dir = EAST
 
 	for(var/turf/current_turf in blocked_turfs)
-		new /obj/structure/blocker/invisible_wall/throwpass(current_turf)
+		new /obj/structure/blocker/watchtower/full_tile(current_turf)
 
 	update_icon()
 
@@ -270,18 +269,6 @@
 		return
 
 	qdel(src)
-
-/obj/structure/blocker/invisible_wall/throwpass
-	throwpass = TRUE
-	gas_pass = TRUE
-
-/obj/structure/blocker/invisible_wall/watchtower
-	throwpass = TRUE
-	gas_pass = TRUE
-
-/obj/structure/blocker/invisible_wall/watchtower/Collided(atom/movable/AM)
-	if(HAS_TRAIT(AM, TRAIT_ON_WATCHTOWER))
-		AM.forceMove(get_turf(src))
 
 // For Mappers
 /obj/structure/watchtower/stage1

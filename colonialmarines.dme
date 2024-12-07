@@ -2524,6 +2524,7 @@
 #include "code\modules\vox\vox_tgui.dm"
 #include "code\modules\vox\vox_sounds\vox.dm"
 #include "code\modules\vox\vox_sounds\vox_military.dm"
+#include "code\modules\watchtower\blockers.dm"
 #include "code\modules\watchtower\watchtower.dm"
 #include "interface\fonts.dm"
 #include "interface\interface.dm"

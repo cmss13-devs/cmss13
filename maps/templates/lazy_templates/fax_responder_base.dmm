@@ -431,8 +431,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "USCM-HC Communications Officer";
-	phone_color = "blue";
+	phone_id = "Provost Communications Officer";
+	phone_color = "red";
 	pixel_x = 9
 	},
 /obj/item/paper_bin/uscm{
@@ -4681,8 +4681,8 @@
 	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
-	phone_id = "TWE Communications Officer";
-	phone_color = "yellow";
+	phone_id = "CMB Communications Officer";
+	phone_color = "orange";
 	pixel_x = -8
 	},
 /obj/item/ashtray/plastic{

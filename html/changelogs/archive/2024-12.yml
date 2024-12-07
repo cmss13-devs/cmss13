@@ -6,3 +6,84 @@
   - soundadd: added 201 new lines total for hazmat and normal joes combined
   realforest2001:
   - rscadd: Added CO to MP timelocks, and ASO to command timelocks.
+2024-12-03:
+  BOBAMA:
+  - bugfix: missing paygrades, remove CL tracker on hvh headsets, pmcs on longer get
+      all marine announcements by default
+  Blundir:
+  - rscadd: type 23 shotgun shell boxes and crafting of them
+  - rscadd: type 23 shotgun rounds to black market
+  CapCamIII:
+  - balance: The ME3 welding tool can now be used for most tasks now.
+  Drathek:
+  - bugfix: Fix squad overlay sometimes not getting removed when helmet exceeded its
+      helmet garb overlay slots
+  - rscdel: Remove some effectively dead code attempting to add hugger damage to helmets
+  - rscadd: Dropship airlocks that force close now also throw objects (and vehicles)
+      out of their way
+  - rscadd: Airlocks can crush more xeno structures if they somehow got placed there
+  - bugfix: Fix doors sometimes ignoring force call (namely dropship airlocks)
+  - bugfix: Fix doors not checking their turfs correctly (for example it wouldn't
+      throw mobs in its own turf)
+  - refactor: Refactor some door code
+  - bugfix: Fix vehicles in airlocks not being handled correctly (never autoclosing
+      again)
+  - bugfix: Fix runtime edgecase when ghostizing something that has no player_details
+      somehow
+  Steelpoint:
+  - rscadd: Members of UPP squads will now appear in their own unique sub-menu for
+      observers.
+  - rscadd: UPP squad icons are properly colour-coded in the observer menu.
+  blackdragonTOW:
+  - bugfix: Fixed Synth K9 Bino vision targeting
+  realforest2001:
+  - bugfix: Fixes UPP CO whitelist not working.
+  - code_imp: Tidies up some back-end code.
+  zzzmike:
+  - qol: USCM notice sent when intel points for non-xeno non-yautja corpses are maxed
+      out
+  - qol: hijack wording more clear for newbies
+2024-12-04:
+  Steelpoint:
+  - bugfix: Fixed accidental loss of UPP Commanding Officer access to their personal
+      equipment vendors.
+  efzapa:
+  - spellcheck: Changed the old "Exec. Suvp." Paygrade Prefix to "Exec. Spvsr."
+2024-12-05:
+  Drathek:
+  - rscadd: Chestbursters now have spawn protections for 1s (godmode, evasion, and
+      ignores fire)
+  - rscadd: Dense structures (and coffins) now prevent machinery doors from closing.
+  - bugfix: Fixed an edgecase with pushing vehicles by dropship launch would incorrectly
+      push west if it was only 1 tile in.
+  - bugfix: Fix code mistakes involving bitwise OR
+  - balance: Sentry flamer ammo now actually applies its initial damage (~30) to non-immune
+      xenos
+  - balance: AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE are now actually required for a vehicle
+      damage multiplier
+  - code_imp: Bitwise OR mistakes like this are now linted against
+  Red-byte3D:
+  - qol: The king now also has the ability to disable or enable automatic shoving
+      of things in its way
+  neeshacark:
+  - rscadd: OT can now take the bad leg trait.
+  realforest2001, Blundir:
+  - rscadd: Added the Synthetic Reset Key an engineering skill defib that only works
+      on Synthetics. The reset key fits into engi kits, tool pouch/belt.
+  - rscadd: added the reset key to all upp/clf/pmc/contractor/forecon loadouts, to
+      synth/comtech/CE/MT/XO vendors.
+  - balance: Synthetics are no longer revivable via defib, now you need the reset
+      key for that specifically.
+  - imageadd: Sprites by Blundir.
+  - balance: Hazmat joes now spawn with a box of inflatable walls, instead of having
+      backpack filled with them.
+  - code_imp: Changed how defibs handle who can use them, adding variables for skill
+      checks.
+  thevandie:
+  - rscadd: ties to the Research Consultant and both Lawyers.
+2024-12-06:
+  zzzmike:
+  - rscdel: Replaced outdated tip with new one
+2024-12-07:
+  Drathek:
+  - bugfix: Fix airlock door spam allowing doors to remain open again

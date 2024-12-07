@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/fax_response_station)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -3077,12 +3082,13 @@
 /area/adminlevel/ert_station/fax_response_station)
 "GC" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	icon_state = "almayer_pdoor";
+	icon_state = "w_aidoor1";
 	id = "Faxes_WY";
 	name = "\improper Hangar Access";
 	dir = 4;
 	explo_proof = 1;
-	emp_proof = 1
+	emp_proof = 1;
+	base_icon_state = "w_aidoor"
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4267,7 +4273,8 @@
 "TI" = (
 /mob/living/simple_animal/hostile/carp{
 	destroy_surroundings = 0;
-	faction = "Fax Responder"
+	faction = "Fax Responder";
+	name = "Gary"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -5432,11 +5439,11 @@ gX
 gX
 gX
 ls
-ls
+gv
 gv
 Qg
+aa
 gv
-ls
 ls
 gX
 wl

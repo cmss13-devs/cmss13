@@ -112,7 +112,6 @@
 /obj/effect/particle_effect/smoke/proc/check_airblock(turf/start_turf, turf/cur_turf)
 	if(!cur_turf)
 		return FALSE
-
 	if(cur_turf.density)
 		return TRUE
 	if(prob(BOILER_GAS_CADE_BLOCK_CHANCE))

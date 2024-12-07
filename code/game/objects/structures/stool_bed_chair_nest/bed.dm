@@ -246,9 +246,6 @@
 	matter = list("plastic" = 5000)
 	var/rollertype = /obj/structure/bed/roller
 
-/obj/item/roller/Initialize()
-	. = ..()
-
 /obj/item/roller/attack_self(mob/user)
 	..()
 	deploy_roller(user, user.loc)

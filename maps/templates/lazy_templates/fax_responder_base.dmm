@@ -2306,10 +2306,7 @@
 	name = "\improper Bathroom";
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/southeast{
-	allow_construction = 0;
-	dir = 4
-	},
+/turf/open/floor/shiva/multi_tiles/east,
 /area/adminlevel/ert_station/fax_response_station)
 "zg" = (
 /obj/structure/blocker/invisible_wall,
@@ -3103,10 +3100,7 @@
 	name = "\improper Base Entrance";
 	req_access = null
 	},
-/turf/open/floor/shiva/multi_tiles/southeast{
-	allow_construction = 0;
-	dir = 4
-	},
+/turf/open/floor/shiva/multi_tiles/east,
 /area/adminlevel/ert_station/fax_response_station)
 "GL" = (
 /obj/structure/bedsheetbin{

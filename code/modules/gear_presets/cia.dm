@@ -60,7 +60,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/officer
-	name = "CIA Agent (USCM Officer)"
+	name = "CIA Agent (USCM Liaison - 1st Lieutenant)"
 	rank = "Intelligence Liaison Officer"
 	assignment = JOB_CIA_LIAISON
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
@@ -84,8 +84,12 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia(new_human), WEAR_IN_BACK)
 
+/datum/equipment_preset/cia/officer/o3
+	name = "CIA Agent (USCM Liaison - Captain)"
+	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
+
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "CIA Agent (Marine Raider)"
+	name = "CIA Agent (Marine Raider Plant)"
 	minimum_age = 30
 	skills = /datum/skills/CIA
 

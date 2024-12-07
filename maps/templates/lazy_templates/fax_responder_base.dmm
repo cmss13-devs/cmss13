@@ -1961,16 +1961,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
-"sU" = (
-/obj/structure/window/framed/colony,
-/obj/item/spacecash/c10{
-	pixel_x = -5;
-	pixel_y = -3;
-	name = "10 pound note";
-	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
-	},
-/turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/fax_response_station)
 "sV" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew/alt{
@@ -3227,12 +3217,13 @@
 /area/adminlevel/ert_station/fax_response_station)
 "GC" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	icon_state = "almayer_pdoor";
+	icon_state = "w_almayer_pdoor1";
 	id = "Faxes_WY";
 	name = "\improper Hangar Access";
 	dir = 4;
 	explo_proof = 1;
-	emp_proof = 1
+	emp_proof = 1;
+	base_icon_state = "w_almayer_pdoor"
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3850,8 +3841,8 @@
 /obj/item/spacecash/c10{
 	pixel_x = -5;
 	pixel_y = -3;
-	name = "10 pound note";
-	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
+	name = "10 yen note";
+	desc = "A single TWE Government minted ten-yen note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
 	},
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4391,7 +4382,8 @@
 "TI" = (
 /mob/living/simple_animal/hostile/carp{
 	destroy_surroundings = 0;
-	faction = "Fax Responder"
+	faction = "Fax Responder";
+	name = "Gary"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -5502,11 +5494,11 @@ gX
 gX
 gX
 ls
-ls
+gv
 gv
 Qg
 gv
-ls
+gv
 ls
 gX
 wl
@@ -5959,7 +5951,7 @@ Yb
 va
 uK
 ae
-sU
+qS
 eV
 CZ
 am

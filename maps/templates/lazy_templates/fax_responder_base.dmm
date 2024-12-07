@@ -1753,9 +1753,7 @@
 	name = "rat"
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "sU" = (
 /obj/structure/window/framed/colony,
@@ -1855,10 +1853,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "tO" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/bluecorners{
-	dir = 4;
-	allow_construction = 0
-	},
+/turf/open/floor/shiva/bluecorners/east,
 /area/adminlevel/ert_station/fax_response_station)
 "tR" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -3101,9 +3096,7 @@
 	id = "Faxes_TWE"
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "GF" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -3792,9 +3785,7 @@
 	height = 1
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "NT" = (
 /obj/structure/machinery/light,
@@ -4496,9 +4487,7 @@
 	name = "rat"
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "WF" = (
 /obj/structure/barricade/handrail/kutjevo{

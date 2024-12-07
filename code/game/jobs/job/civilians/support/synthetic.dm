@@ -89,3 +89,11 @@
 	name = JOB_SHIP_SYNTH
 	icon_state = "syn_spawn"
 	job = /datum/job/civilian/synthetic/ship
+
+/datum/job/civilian/synthetic/ship/get_total_positions(latejoin = FALSE)
+	var/positions = ..()
+	var/survivor_synth = GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/survivor/synth]
+	if(survivor_synth)
+		var/datum/job/civilian/survivor/synth/survivor = survivor_synth
+		positions -= survivor.current_positions
+	return positions

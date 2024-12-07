@@ -2061,6 +2061,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\abilities\facehugger\facehugger_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\facehugger\facehugger_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\hivelord\hivelord_abilities.dm"
+#include "code\modules\mob\living\carbon\xenomorph\abilities\hivelord\hivelord_macros.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\hivelord\hivelord_powers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\king\king_abilities.dm"
 #include "code\modules\mob\living\carbon\xenomorph\abilities\king\king_macros.dm"

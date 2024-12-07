@@ -35,3 +35,56 @@
 			if(choose_resin_ability)
 				choose_resin_ability.update_button_icon(hivelord.selected_resin)
 				break // Don't need to keep looking
+
+/datum/action/xeno_action/onclick/crystallized_plasma
+	name = "Crystallized Plasma"
+	action_icon_state = "crystal_plasma"
+	macro_path = /datum/action/xeno_action/verb/crystal_plasma
+	ability_primacy = XENO_PRIMARY_ACTION_5
+	action_type = XENO_ACTION_ACTIVATE
+	plasma_cost = 100
+	xeno_cooldown = 30 SECONDS
+
+	// Config
+	var/duration = 10 SECONDS
+	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
+	var/armor_buff_amount = 5 // hopefully-minor buff so they can close the distance
+
+/datum/action/xeno_action/onclick/crystallized_plasma/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/zenomorf = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!istype(zenomorf) || !zenomorf.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
+	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
+	zenomorf.create_custom_empower(icolor = "#b31ceb", ialpha = 200, small_xeno = TRUE)
+	zenomorf.balloon_alert(zenomorf, "our next spit will be stronger", text_color = "#93ec78")
+	zenomorf.speed_modifier -= speed_buff_amount
+	zenomorf.armor_modifier += armor_buff_amount
+	zenomorf.recalculate_speed()
+	zenomorf.recalculate_armor()
+
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+
+	apply_cooldown()
+	return ..()
+
+
+/datum/action/xeno_action/onclick/crystallized_plasma/proc/remove_effects()
+	var/mob/living/carbon/xenomorph/zenomorf = owner
+
+	if (!istype(zenomorf))
+		return
+
+	zenomorf.speed_modifier += speed_buff_amount
+	zenomorf.armor_modifier -= armor_buff_amount
+	zenomorf.recalculate_speed()
+	zenomorf.recalculate_armor()
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))

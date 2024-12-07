@@ -151,13 +151,6 @@
 	var/action_name = "Toggle Charging"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_resin_walker()
-	set category = "Alien"
-	set name = "Resin Walker"
-	set hidden = TRUE
-	var/action_name = "Resin Walker (50)"
-	handle_xeno_macro(src, action_name)
-
 /datum/action/xeno_action/verb/verb_dig_tunnel()
 	set category = "Alien"
 	set name = "Dig Tunnel"

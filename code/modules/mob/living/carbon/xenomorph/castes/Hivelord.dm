@@ -90,6 +90,42 @@
 	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")
 	weed_food_states_flipped = list("Hivelord_1","Hivelord_2","Hivelord_3")
 
+	var/mutable_appearance/plasma_overlays_icon
+
+/mob/living/carbon/xenomorph/hivelord/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
+	. = ..()
+	plasma_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
+
+/mob/living/carbon/xenomorph/hivelord/proc/update_eggsac_overlays()
+	if(!plasma_overlays_icon)
+		return
+
+	overlays -= plasma_overlays_icon
+	plasma_overlays_icon.overlays.Cut()
+
+	if(!eggs_cur)
+		return
+
+	///Simplified image index change.
+	var/i = 0
+	if(eggs_cur > 8)
+		i = 3
+	else if (eggs_cur > 4)
+		i = 2
+	else if (eggs_cur > 0)
+		i = 1
+
+	if(stat != DEAD)
+		if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+				plasma_overlays_icon.overlays += icon(icon, "eggsac_[i] Sleeping")
+			else
+				plasma_overlays_icon.overlays +=icon(icon, "eggsac_[i] Knocked Down")
+		else
+			plasma_overlays_icon.overlays +=icon(icon, "eggsac_[i]")
+
+	overlays += plasma_overlays_icon
+
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"
 

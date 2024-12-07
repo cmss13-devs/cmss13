@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "UPP Requisition Vendors may now vend UPP shotgun ammo boxes."

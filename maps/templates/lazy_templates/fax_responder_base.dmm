@@ -23,53 +23,6 @@
 /turf/open/floor/darkgreen2,
 /area/adminlevel/ert_station/fax_response_station)
 "ab" = (
-/obj/structure/ladder{
-	id = "Faxes_TWE_Ladder";
-	height = 1
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay/sewage,
-/area/adminlevel/ert_station/fax_response_station)
-"ac" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/east{
-	dir = 8
-	},
-/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
-	pixel_y = -4;
-	pixel_x = 17
-	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay/sewage,
-/area/adminlevel/ert_station/fax_response_station)
-"ad" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay/sewage,
-/area/adminlevel/ert_station/fax_response_station)
-"ae" = (
-/obj/structure/machinery/door_control/brbutton{
-	pixel_y = 19;
-	name = "Door Controls";
-	id = "Faxes_TWE"
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay/sewage,
-/area/adminlevel/ert_station/fax_response_station)
-"af" = (
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/almayer/red,
-/area/adminlevel/ert_station/fax_response_station)
-"ag" = (
-/obj/item/tool/warning_cone,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/adminlevel/ert_station/fax_response_station/exterior)
-"ah" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/multicolor/fountain{
 	pixel_x = -14;
@@ -77,14 +30,7 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/fax_response_station)
-"ai" = (
-/obj/item/device/flashlight/lamp/tripod/grey{
-	anchored = 1;
-	pixel_y = 19
-	},
-/turf/open/asphalt/cement,
-/area/adminlevel/ert_station/fax_response_station/exterior)
-"aj" = (
+"ac" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 20;
@@ -98,7 +44,7 @@
 	},
 /turf/open/floor/darkgreen2/north,
 /area/adminlevel/ert_station/fax_response_station)
-"ak" = (
+"ad" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 24;
@@ -111,7 +57,7 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"al" = (
+"ae" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = 5;
@@ -134,13 +80,15 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
-"am" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+"af" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"ag" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/adminlevel/ert_station/fax_response_station/exterior)
-"an" = (
-/turf/open/auto_turf/snow/layer1,
-/area/adminlevel/ert_station/fax_response_station/exterior)
-"ao" = (
+"ah" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = 5;
@@ -162,7 +110,14 @@
 	},
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
-"ap" = (
+"ai" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	anchored = 1;
+	pixel_y = 19
+	},
+/turf/open/asphalt/cement,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"aj" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 20;
@@ -176,7 +131,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
-"aq" = (
+"ak" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 20;
@@ -189,7 +144,7 @@
 	},
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
-"ar" = (
+"al" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Fax Responders");
@@ -211,7 +166,13 @@
 	},
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
-"as" = (
+"am" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"an" = (
+/turf/open/auto_turf/snow/layer1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ao" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Fax Responders");
@@ -233,7 +194,7 @@
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
-"at" = (
+"ap" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 24;
@@ -249,7 +210,21 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
-"au" = (
+"aq" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/east,
+/area/adminlevel/ert_station/fax_response_station)
+"ar" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Base Entrance";
+	req_access = null
+	},
+/turf/open/floor/shiva/multi_tiles/east,
+/area/adminlevel/ert_station/fax_response_station)
+"as" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 24;
@@ -262,7 +237,7 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
-"av" = (
+"at" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 24;
@@ -275,7 +250,7 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
-"aw" = (
+"au" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = 2;
@@ -298,7 +273,7 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
-"ax" = (
+"av" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = 5;
@@ -321,17 +296,7 @@
 	},
 /turf/open/floor/shiva/blue/southwest,
 /area/adminlevel/ert_station/fax_response_station)
-"ay" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/bluecorners/east,
-/area/adminlevel/ert_station/fax_response_station)
-"az" = (
-/obj/structure/machinery/cryopod/no_store{
-	pixel_y = 13
-	},
-/turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
-"aA" = (
+"aw" = (
 /obj/structure/filingcabinet/documentation/highcom/cmb{
 	pixel_x = 8;
 	pixel_y = 24;
@@ -343,6 +308,12 @@
 	pixel_x = -8
 	},
 /turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"az" = (
+/obj/structure/machinery/cryopod/no_store{
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "aF" = (
 /obj/structure/machinery/vending/walkman{
@@ -1976,6 +1947,20 @@
 "sP" = (
 /turf/open/floor/corsat/white/west,
 /area/adminlevel/ert_station/fax_response_station)
+"sR" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = -4;
+	pixel_x = 17
+	},
+/mob/living/simple_animal/mouse/brown{
+	name = "rat"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
 "sU" = (
 /obj/structure/window/framed/colony,
 /obj/item/spacecash/c10{
@@ -2060,6 +2045,10 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"tO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/bluecorners/east,
 /area/adminlevel/ert_station/fax_response_station)
 "tR" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -2506,16 +2495,6 @@
 	wires = 12
 	},
 /turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
-"yW" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Bathroom";
-	dir = 4
-	},
-/turf/open/floor/shiva/multi_tiles/southeast{
-	allow_construction = 0;
-	dir = 4
-	},
 /area/adminlevel/ert_station/fax_response_station)
 "zg" = (
 /obj/structure/blocker/invisible_wall,
@@ -3257,15 +3236,14 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/fax_response_station)
-"GF" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
-	name = "\improper Base Entrance";
-	req_access = null
+"GD" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 19;
+	name = "Door Controls";
+	id = "Faxes_TWE"
 	},
-/turf/open/floor/shiva/multi_tiles/southeast{
-	allow_construction = 0;
-	dir = 4
-	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "GL" = (
 /obj/structure/bedsheetbin{
@@ -3918,6 +3896,14 @@
 /area/adminlevel/ert_station/fax_response_station)
 "NA" = (
 /turf/open/floor/almayer/uscm/directional,
+/area/adminlevel/ert_station/fax_response_station)
+"NK" = (
+/obj/structure/ladder{
+	id = "Faxes_TWE_Ladder";
+	height = 1
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "NT" = (
 /obj/structure/machinery/light,
@@ -4593,6 +4579,14 @@
 	explo_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"Wt" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/mob/living/simple_animal/mouse/brown{
+	name = "rat"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "WF" = (
 /obj/structure/barricade/handrail/kutjevo{
@@ -5348,11 +5342,11 @@ ls
 ls
 Wm
 ls
-au
+as
 wZ
 AK
 wZ
-ar
+al
 ls
 gX
 wl
@@ -5408,7 +5402,7 @@ fO
 mw
 Rv
 Cc
-aj
+ac
 Fr
 AF
 iL
@@ -5610,8 +5604,8 @@ ag
 Iq
 WG
 OA
-ae
-ab
+GD
+NK
 OA
 gX
 pV
@@ -5651,7 +5645,7 @@ CZ
 tu
 OA
 BF
-ac
+sR
 OA
 gX
 pV
@@ -5668,11 +5662,11 @@ ls
 ls
 ji
 ls
-av
+at
 wZ
 Di
 wZ
-as
+ao
 ls
 gX
 wl
@@ -5691,7 +5685,7 @@ CZ
 am
 bT
 Kx
-ad
+Wt
 OA
 gX
 pV
@@ -5921,7 +5915,7 @@ Ry
 wl
 gX
 OA
-ap
+aj
 va
 pZ
 LO
@@ -5964,7 +5958,7 @@ OA
 Yb
 va
 uK
-al
+ae
 sU
 eV
 CZ
@@ -6147,7 +6141,7 @@ Pw
 nl
 qY
 so
-ax
+av
 mi
 XN
 CP
@@ -6201,7 +6195,7 @@ Ry
 wl
 gX
 IG
-aq
+ak
 wZ
 Rk
 wZ
@@ -6305,7 +6299,7 @@ mi
 JY
 hs
 wy
-ay
+tO
 ba
 cc
 Es
@@ -6324,7 +6318,7 @@ IG
 sV
 mq
 SS
-ao
+ah
 hC
 QD
 FB
@@ -6345,7 +6339,7 @@ mi
 mi
 mi
 mi
-aA
+aw
 ba
 cc
 go
@@ -6748,7 +6742,7 @@ sf
 xu
 Yn
 Xb
-aw
+au
 iC
 va
 va
@@ -6869,9 +6863,9 @@ Yn
 wu
 Rp
 Xb
-GF
+ar
 Rp
-at
+ap
 Fr
 nd
 gX
@@ -6930,7 +6924,7 @@ AQ
 Nx
 AQ
 RK
-ah
+ab
 zy
 xK
 gX
@@ -6968,7 +6962,7 @@ TW
 fo
 pl
 xK
-ak
+ad
 va
 AC
 wZ
@@ -7071,7 +7065,7 @@ Rp
 Rp
 Rp
 Rp
-yW
+aq
 Rp
 Rp
 gX

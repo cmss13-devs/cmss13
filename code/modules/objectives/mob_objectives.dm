@@ -118,7 +118,11 @@
 				if(isqueen(X)) //Queen is Tier 0 for some reason...
 					value = OBJECTIVE_ABSOLUTE_VALUE
 
-	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) <= 49) // Limit human corpse recovery to 5 total points (.1 each)
+	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) <= 48) // Limit human corpse recovery to 5 total points (.1 each)
+		return OBJECTIVE_LOW_VALUE
+
+	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) == 49)
+		marine_announcement("Maximum intel points for non-xenomorph corpses has been achieved.", "Intel Announcement", 'sound/misc/notice2.ogg')
 		return OBJECTIVE_LOW_VALUE
 
 	return value

@@ -1,9 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/fax_response_station)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -5442,7 +5437,7 @@ ls
 gv
 gv
 Qg
-aa
+gv
 gv
 ls
 gX

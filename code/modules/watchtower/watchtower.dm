@@ -27,12 +27,6 @@
 
 /obj/structure/watchtower/Destroy()
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
-	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3)
-
-	for(var/turf/current_turf in all_turfs)
-		for(var/obj/structure/blocker/invisible_wall in current_turf.contents)
-			qdel(invisible_wall)
-
 	var/list/turf/top_turfs = CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1)
 
 	for(var/turf/current_turf in top_turfs)

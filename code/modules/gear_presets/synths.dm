@@ -108,7 +108,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 
-/datum/equipment_preset/synth/uscm/councillor/
+/datum/equipment_preset/synth/uscm/councillor/ship
 	name = "USCM Synthetic Councillor - Ship Operations"
 	assignment = JOB_SHIP_SYNTH
 

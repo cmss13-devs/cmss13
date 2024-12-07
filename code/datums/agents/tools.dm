@@ -142,12 +142,13 @@
 	desc = "A briefcase able to dispense items at the user's discretion. This one appears to be tightly locked, and impenetrable."
 	points = 200
 	max_points = 300
+	delay = 0.5
 	force = MELEE_FORCE_STRONG
 	req_access = list()
 
 	listed_products = list(
 		list("STATIONERY", 0, null, null, null),
-		list("pen", 1, /obj/item/tool/pen, "white", "A pen, for writing on the go."),
+		list("pen", 1, /obj/item/tool/pen/clicky, "white", "A pen, for writing on the go."),
 		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
@@ -192,4 +193,4 @@
 	name = "briefcase"
 	icon_state = "briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
-	has_light = FALSE
+	covert = TRUE

@@ -11,14 +11,6 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
 
-//Gives undercover spies necessary CIA equipment for spycraft.
-/datum/equipment_preset/proc/give_cia_equipment(atom/M)
-	var/atom/spawnloc = M
-	if(ishuman(spawnloc))
-		var/mob/living/carbon/human/new_human = spawnloc
-		new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
-		new_human.equip_to_slot_or_del(new /obj/item/device/encryptionkey/cia, WEAR_IN_BACK)
-
 /datum/equipment_preset/cia/analyst
 	name = "CIA Agent (Civilian Clothing)"
 	rank = "Intelligence Analyst"
@@ -102,8 +94,41 @@
 	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	. = ..()
-	give_cia_equipment(new_human)
+	//Custom reduced loadout versus normal MARSOC
+	//back
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK) //CIA equipment
+	//face
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
+	//head
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/marsoc, WEAR_IN_HELMET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_HELMET)
+	//uniform
+	var/obj/item/clothing/under/marine/veteran/marsoc/uniform = new()
+	var/obj/item/clothing/accessory/storage/black_vest/accessory = new()
+	uniform.attach_accessory(new_human, accessory)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	for(var/i in 1 to accessory.hold.storage_slots)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+	//jacket
+	var/obj/item/clothing/suit/storage/marine/sof/armor = new()
+	new_human.equip_to_slot_or_del(armor, WEAR_JACKET)
+	for(var/i in 1 to armor.storage_slots)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/xm40, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/xm40/ap, WEAR_J_STORE)
+	//waist
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
+	//limbs
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
 
 /datum/equipment_preset/clf/engineer/cia
 	name = "CIA Agent (CLF Engineer Disguise)"
@@ -132,12 +157,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_R_STORE)
 
 	spawn_rebel_weapon(new_human)
 	spawn_rebel_weapon(new_human,1)
-	give_cia_equipment(new_human)
+
 
 
 /datum/equipment_preset/upp/soldier/dressed/cia
@@ -150,7 +176,7 @@
 
 /datum/equipment_preset/upp/soldier/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
-	give_cia_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert, WEAR_IN_BACK)
 
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia
@@ -163,6 +189,6 @@
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
-	give_cia_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
 
 

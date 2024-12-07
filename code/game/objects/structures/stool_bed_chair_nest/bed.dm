@@ -147,6 +147,9 @@
 		if (istype(over_object, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = over_object
 			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
+				if(foldabletype == /obj/item/roller)
+					. = ..()
+					return
 				var/obj/item/I = new foldabletype(get_turf(src))
 				H.put_in_hands(I)
 				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
@@ -197,16 +200,19 @@
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
 
-/obj/structure/bed/roller/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
-		if(buckled_mob || buckled_bodybag)
-			manual_unbuckle()
-		else
-			visible_message(SPAN_NOTICE("[user] collapses [name]."))
-			new/obj/item/roller(get_turf(src))
-			qdel(src)
-		return
+/obj/structure/bed/roller/MouseDrop(atom/over_object)
 	. = ..()
+	if(foldabletype && !buckled_mob && !buckled_bodybag)
+		var/mob/living/carbon/human/H = over_object
+		if(src.contents.len == 0)
+			new foldabletype(src)
+		var/obj/item/roller/RH = locate(foldabletype) in src.contents
+		if (istype(over_object, /mob/living/carbon/human))
+			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
+				H.put_in_hands(RH)
+				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
+				SPAN_WARNING("You grab [src] from the floor!!"))
+				forceMove(RH)
 
 /obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
 	if(iscarbon(M))
@@ -240,9 +246,22 @@
 	matter = list("plastic" = 5000)
 	var/rollertype = /obj/structure/bed/roller
 
+/obj/item/roller/Initialize()
+	. = ..()
+
 /obj/item/roller/attack_self(mob/user)
 	..()
 	deploy_roller(user, user.loc)
+
+/obj/item/roller/proc/deploy_roller(mob/user, atom/location)
+	if(src.contents.len == 0)
+		new rollertype(src)
+	var/obj/structure/bed/roller/R = locate(rollertype) in src.contents
+	R.forceMove(user.loc)
+	to_chat(user, SPAN_NOTICE("You deploy [R]."))
+	R.add_fingerprint(user)
+	user.temp_drop_inv_item(src)
+	forceMove(R)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
@@ -251,45 +270,6 @@
 		var/turf/T = target
 		if(!T.density)
 			deploy_roller(user, target)
-
-/obj/item/roller/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/roller_holder) && rollertype == /obj/structure/bed/roller)
-		var/obj/item/roller_holder/RH = W
-		if(!RH.held)
-			to_chat(user, SPAN_NOTICE("You pick up [src]."))
-			forceMove(RH)
-			RH.held = src
-			return
-	. = ..()
-
-/obj/item/roller/proc/deploy_roller(mob/user, atom/location)
-	var/obj/structure/bed/roller/R = new rollertype(location)
-	R.add_fingerprint(user)
-	user.temp_drop_inv_item(src)
-	qdel(src)
-
-/obj/item/roller_holder
-	name = "roller bed rack"
-	desc = "A rack for carrying a collapsed roller bed."
-	icon = 'icons/obj/structures/rollerbed.dmi'
-	icon_state = "folded"
-	var/obj/item/roller/held
-
-/obj/item/roller_holder/Initialize()
-	. = ..()
-	held = new /obj/item/roller(src)
-
-/obj/item/roller_holder/attack_self(mob/user)
-	..()
-
-	if(!held)
-		to_chat(user, SPAN_WARNING("The rack is empty."))
-		return
-
-	var/obj/structure/bed/roller/R = new(user.loc)
-	to_chat(user, SPAN_NOTICE("You deploy [R]."))
-	R.add_fingerprint(user)
-	QDEL_NULL(held)
 
 //////////////////////////////////////////////
 // PORTABLE SURGICAL BED //

@@ -176,7 +176,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "USCM-HC Communications Officer";
+	phone_id = "Provost Communications Officer";
 	phone_color = "blue";
 	pixel_x = 9
 	},
@@ -282,7 +282,7 @@
 	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
-	phone_id = "TWE Communications Officer";
+	phone_id = "CMB Communications Officer";
 	phone_color = "yellow";
 	pixel_x = -8
 	},
@@ -2707,6 +2707,9 @@
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 14
 	},
+/obj/item/device/radio/intercom/fax/wy{
+	pixel_y = 24
+	},
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
 "AV" = (
@@ -3768,6 +3771,9 @@
 "Mx" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails,
+/obj/item/device/radio/intercom/fax/uscm_pvst{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
 "MA" = (
@@ -4189,6 +4195,9 @@
 "RJ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails,
+/obj/item/device/radio/intercom/fax/uscm_hc{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "RK" = (

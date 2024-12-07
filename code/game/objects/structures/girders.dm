@@ -177,7 +177,8 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-				if(CEILING_IS_PROTECTED((get_area(src)).ceiling, CEILING_GLASS))
+				var/area/area = get_area(src)
+				if(CEILING_IS_PROTECTED(area.ceiling, CEILING_GLASS))
 					to_chat(user, SPAN_WARNING("Watchtowers can only be built in the open."))
 					return
 					

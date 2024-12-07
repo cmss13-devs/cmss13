@@ -9046,11 +9046,7 @@
 "blw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm{
-	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
-	gender = "female";
-	department = "Requisitions"
-	},
+/obj/structure/machinery/faxmachine/uscm,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -20632,9 +20628,9 @@
 	pixel_y = -16
 	},
 /obj/structure/machinery/faxmachine/uscm{
-	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
-	gender = "female";
-	department = "Requisitions"
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	department = "Requisitions";
+	gender = "female"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
@@ -48918,11 +48914,7 @@
 /area/almayer/shipboard/panic)
 "qmP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm{
-	desc = "The beloved fax machine of the requisitions department, for all your equipment-requesting needs";
-	gender = "female";
-	department = "Requisitions"
-	},
+/obj/structure/machinery/faxmachine/uscm,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "qmR" = (
@@ -62998,6 +62990,9 @@
 	},
 /obj/structure/sign/prop3{
 	pixel_x = -32
+	},
+/obj/structure/machinery/faxmachine/uscm{
+	department = "SEA"
 	},
 /turf/open/floor/strata/faux_metal,
 /area/almayer/shipboard/sea_office)

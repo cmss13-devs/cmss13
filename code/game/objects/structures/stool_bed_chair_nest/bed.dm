@@ -258,6 +258,7 @@
 	roller.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
 	forceMove(roller)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)

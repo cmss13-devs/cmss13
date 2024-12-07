@@ -862,7 +862,8 @@
 	no_overlay = TRUE
 	supports_surgery = FALSE
 
-
+/turf/open/gm/river/no_overlay/sewage
+	name = "sewage"
 
 
 //ELEVATOR SHAFT-----------------------------------//

@@ -1,4 +1,66 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
+	phone_id = "UPP Communications Officer";
+	phone_color = "green";
+	pixel_x = -8
+	},
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/darkgreen2,
+/area/adminlevel/ert_station/fax_response_station)
+"ab" = (
+/obj/structure/ladder{
+	id = "Faxes_TWE_Ladder";
+	height = 1
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = -4;
+	pixel_x = 17
+	},
+/mob/living/simple_animal/mouse/brown{
+	name = "rat"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"ad" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/mob/living/simple_animal/mouse/brown{
+	name = "rat"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"ae" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 19;
+	name = "Door Controls";
+	id = "Faxes_TWE"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -7,6 +69,14 @@
 /obj/item/tool/warning_cone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ah" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = -14;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
 "ai" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
 	anchored = 1;
@@ -14,17 +84,265 @@
 	},
 /turf/open/asphalt/cement,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"aj" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/documentation/highcom/upp{
+	pixel_x = 8;
+	pixel_y = 20;
+	density = 0
+	},
+/turf/open/floor/darkgreen2/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ak" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/press{
+	pixel_x = 9;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"al" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
+	phone_id = "TWE Communications Officer";
+	phone_color = "yellow";
+	pixel_x = -8
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
 "am" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "an" = (
 /turf/open/auto_turf/snow/layer1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ao" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
+	phone_id = "WY Communications Executive";
+	pixel_y = 9
+	},
+/obj/structure/sign/poster/art{
+	pixel_y = -10;
+	pixel_x = 24
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"ap" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/twe{
+	pixel_x = 7;
+	pixel_y = 20;
+	density = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"aq" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/wy{
+	pixel_x = 8;
+	pixel_y = 20;
+	density = 0
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ar" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "USCM-HC Communications Officer";
+	phone_color = "blue";
+	pixel_x = -8
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"as" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "USCM-HC Communications Officer";
+	phone_color = "blue";
+	pixel_x = 9
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = -5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = 6
+	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_x = -5
+	},
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"at" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/obj/structure/filingcabinet/documentation/highcom/clf{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = 9
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"au" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -9
+	},
+/obj/structure/filingcabinet/documentation/highcom/uscm{
+	pixel_y = 24;
+	pixel_x = 7;
+	density = 0
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"av" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -9
+	},
+/obj/structure/filingcabinet/documentation/highcom/provost{
+	density = 0;
+	pixel_x = 7;
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"aw" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
+	phone_id = "CLF Information Correspondant";
+	phone_color = "orange";
+	pixel_x = -11
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -11
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ax" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
+	phone_id = "TWE Communications Officer";
+	phone_color = "yellow";
+	pixel_x = -8
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/blue/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"ay" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/bluecorners/east,
+/area/adminlevel/ert_station/fax_response_station)
 "az" = (
 /obj/structure/machinery/cryopod/no_store{
 	pixel_y = 13
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"aA" = (
+/obj/structure/filingcabinet/documentation/highcom/cmb{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -8
+	},
+/turf/open/floor/shiva/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "aF" = (
 /obj/structure/machinery/vending/walkman{
@@ -301,20 +619,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/adminlevel/ert_station/fax_response_station)
-"cT" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 20;
-	pixel_x = -8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/filingcabinet/documentation/highcom/upp{
-	pixel_x = 8;
-	pixel_y = 20;
-	density = 0
-	},
-/turf/open/floor/darkgreen2/north,
-/area/adminlevel/ert_station/fax_response_station)
 "cV" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
@@ -427,28 +731,6 @@
 	},
 /turf/open/floor/darkgreen2,
 /area/adminlevel/ert_station/fax_response_station)
-"ej" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "USCM-HC Communications Officer";
-	phone_color = "blue";
-	pixel_x = 9
-	},
-/obj/item/paper_bin/uscm{
-	pixel_x = -5;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -6;
-	pixel_x = 6
-	},
-/obj/item/tool/pen/multicolor/provost{
-	pixel_x = -5
-	},
-/turf/open/floor/almayer/red,
-/area/adminlevel/ert_station/fax_response_station)
 "eo" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = -5;
@@ -549,19 +831,6 @@
 	},
 /turf/open/floor/darkgreen2/northwest,
 /area/adminlevel/ert_station/fax_response_station)
-"fF" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 24;
-	pixel_x = -7
-	},
-/obj/structure/filingcabinet/documentation/highcom/press{
-	pixel_x = 9;
-	pixel_y = 24;
-	density = 0
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "fJ" = (
 /obj/structure/window/reinforced/toughened{
 	dir = 4
@@ -597,19 +866,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/fax_response_station)
-"gm" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 20;
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet/documentation/highcom/wy{
-	pixel_x = 8;
-	pixel_y = 20;
-	density = 0
-	},
-/turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
 "go" = (
 /turf/open/floor/shiva/floor3,
@@ -655,20 +911,6 @@
 	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/fax_response_station)
-"gS" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 20;
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet/documentation/highcom/twe{
-	pixel_x = 7;
-	pixel_y = 20;
-	density = 0
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "gX" = (
 /turf/closed/shuttle{
@@ -898,28 +1140,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"jr" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
-	phone_id = "WY Communications Executive";
-	pixel_y = 9
-	},
-/obj/structure/sign/poster/art{
-	pixel_y = -10;
-	pixel_x = 24
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/turf/open/floor/corsat/white/east,
-/area/adminlevel/ert_station/fax_response_station)
 "jB" = (
 /obj/structure/coatrack{
 	pixel_y = 22;
@@ -1006,14 +1226,6 @@
 "kw" = (
 /turf/open/auto_turf/snow/layer3,
 /area/adminlevel/ert_station/fax_response_station/exterior)
-"ky" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_x = -14;
-	pixel_y = 4
-	},
-/turf/open/floor/carpet,
-/area/adminlevel/ert_station/fax_response_station)
 "kC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -1310,19 +1522,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/asphalt,
 /area/adminlevel/ert_station/fax_response_station/exterior)
-"nL" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 24;
-	pixel_x = -9
-	},
-/obj/structure/filingcabinet/documentation/highcom/uscm{
-	pixel_y = 24;
-	pixel_x = 7;
-	density = 0
-	},
-/turf/open/floor/almayer/blue/north,
-/area/adminlevel/ert_station/fax_response_station)
 "nP" = (
 /turf/open/asphalt/cement,
 /area/adminlevel/ert_station/fax_response_station/exterior)
@@ -1777,22 +1976,6 @@
 "sP" = (
 /turf/open/floor/corsat/white/west,
 /area/adminlevel/ert_station/fax_response_station)
-"sR" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/east{
-	dir = 8
-	},
-/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
-	pixel_y = -4;
-	pixel_x = 17
-	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
-/area/adminlevel/ert_station/fax_response_station)
 "sU" = (
 /obj/structure/window/framed/colony,
 /obj/item/spacecash/c10{
@@ -1857,22 +2040,6 @@
 /obj/item/trash/crushed_cup,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/adminlevel/ert_station/fax_response_station/exterior)
-"ty" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 24;
-	pixel_x = -7
-	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 4
-	},
-/obj/structure/filingcabinet/documentation/highcom/clf{
-	density = 0;
-	pixel_y = 24;
-	pixel_x = 9
-	},
-/turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
 "tJ" = (
 /obj/structure/window/reinforced/toughened{
 	dir = 4
@@ -1893,13 +2060,6 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
-"tO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/bluecorners{
-	dir = 4;
-	allow_construction = 0
-	},
 /area/adminlevel/ert_station/fax_response_station)
 "tR" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -2420,29 +2580,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"zF" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
-	phone_id = "UPP Communications Officer";
-	phone_color = "green";
-	pixel_x = -8
-	},
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -6;
-	pixel_x = -9
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/turf/open/floor/darkgreen2,
-/area/adminlevel/ert_station/fax_response_station)
 "zJ" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = -5;
@@ -2810,28 +2947,6 @@
 "CZ" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
 /area/adminlevel/ert_station/fax_response_station/exterior)
-"Dg" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","Fax Responders");
-	phone_id = "USCM-HC Communications Officer";
-	phone_color = "blue";
-	pixel_x = -8
-	},
-/obj/item/paper_bin/uscm{
-	pixel_x = 5;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -6;
-	pixel_x = -9
-	},
-/obj/item/tool/pen/multicolor/provost{
-	pixel_x = 5
-	},
-/turf/open/floor/almayer/blue,
-/area/adminlevel/ert_station/fax_response_station)
 "Di" = (
 /obj/structure/pipes/vents/pump/no_boom{
 	dir = 4
@@ -3142,17 +3257,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/fax_response_station)
-"GD" = (
-/obj/structure/machinery/door_control/brbutton{
-	pixel_y = 19;
-	name = "Door Controls";
-	id = "Faxes_TWE"
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
-/area/adminlevel/ert_station/fax_response_station)
 "GF" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "\improper Base Entrance";
@@ -3288,29 +3392,6 @@
 	pixel_x = 3
 	},
 /turf/open/floor/darkgreen2/east,
-/area/adminlevel/ert_station/fax_response_station)
-"HD" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin{
-	pixel_x = 2;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
-	phone_id = "CLF Information Correspondant";
-	phone_color = "orange";
-	pixel_x = -11
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -6;
-	pixel_x = -11
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "HE" = (
 /turf/open/floor/corsat/white/northwest,
@@ -3838,16 +3919,6 @@
 "NA" = (
 /turf/open/floor/almayer/uscm/directional,
 /area/adminlevel/ert_station/fax_response_station)
-"NK" = (
-/obj/structure/ladder{
-	id = "Faxes_TWE_Ladder";
-	height = 1
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
-/area/adminlevel/ert_station/fax_response_station)
 "NT" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
@@ -4348,29 +4419,6 @@
 /obj/structure/pipes/vents/pump/no_boom,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
-"TT" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
-	phone_id = "TWE Communications Officer";
-	phone_color = "yellow";
-	pixel_x = -8
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -6;
-	pixel_x = -9
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
 "TW" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/ship,
@@ -4546,16 +4594,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/fax_response_station)
-"Wt" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/gm/river/no_overlay{
-	name = "sewage"
-	},
-/area/adminlevel/ert_station/fax_response_station)
 "WF" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 1;
@@ -4572,32 +4610,6 @@
 /obj/item/tool/warning_cone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/adminlevel/ert_station/fax_response_station/exterior)
-"WO" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 24;
-	pixel_x = -9
-	},
-/obj/structure/filingcabinet/documentation/highcom/provost{
-	density = 0;
-	pixel_x = 7;
-	pixel_y = 24
-	},
-/turf/open/floor/almayer/red/north,
-/area/adminlevel/ert_station/fax_response_station)
-"WP" = (
-/obj/structure/filingcabinet/documentation/highcom/cmb{
-	pixel_x = 8;
-	pixel_y = 24;
-	density = 0
-	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_y = 24;
-	pixel_x = -8
-	},
-/turf/open/floor/shiva/blue/north,
-/area/adminlevel/ert_station/fax_response_station)
 "WT" = (
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4747,29 +4759,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
-"Yl" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 3;
-	anchored = 1
-	},
-/obj/structure/transmitter/rotary/fax_responder{
-	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
-	phone_id = "TWE Communications Officer";
-	phone_color = "yellow";
-	pixel_x = -8
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_x = 4;
-	pixel_y = 1
-	},
-/turf/open/floor/shiva/blue/southwest,
 /area/adminlevel/ert_station/fax_response_station)
 "Yn" = (
 /turf/open/gm/grass/gbcorner/south_east,
@@ -5359,11 +5348,11 @@ ls
 ls
 Wm
 ls
-nL
+au
 wZ
 AK
 wZ
-Dg
+ar
 ls
 gX
 wl
@@ -5382,7 +5371,7 @@ uI
 jB
 Fr
 ve
-zF
+aa
 Cc
 gX
 pV
@@ -5419,7 +5408,7 @@ fO
 mw
 Rv
 Cc
-cT
+aj
 Fr
 AF
 iL
@@ -5621,8 +5610,8 @@ ag
 Iq
 WG
 OA
-GD
-NK
+ae
+ab
 OA
 gX
 pV
@@ -5662,7 +5651,7 @@ CZ
 tu
 OA
 BF
-sR
+ac
 OA
 gX
 pV
@@ -5679,11 +5668,11 @@ ls
 ls
 ji
 ls
-WO
+av
 wZ
 Di
 wZ
-ej
+as
 ls
 gX
 wl
@@ -5702,7 +5691,7 @@ CZ
 am
 bT
 Kx
-Wt
+ad
 OA
 gX
 pV
@@ -5932,7 +5921,7 @@ Ry
 wl
 gX
 OA
-gS
+ap
 va
 pZ
 LO
@@ -5975,7 +5964,7 @@ OA
 Yb
 va
 uK
-TT
+al
 sU
 eV
 CZ
@@ -6158,7 +6147,7 @@ Pw
 nl
 qY
 so
-Yl
+ax
 mi
 XN
 CP
@@ -6212,7 +6201,7 @@ Ry
 wl
 gX
 IG
-gm
+aq
 wZ
 Rk
 wZ
@@ -6316,7 +6305,7 @@ mi
 JY
 hs
 wy
-tO
+ay
 ba
 cc
 Es
@@ -6335,7 +6324,7 @@ IG
 sV
 mq
 SS
-jr
+ao
 hC
 QD
 FB
@@ -6356,7 +6345,7 @@ mi
 mi
 mi
 mi
-WP
+aA
 ba
 cc
 go
@@ -6759,7 +6748,7 @@ sf
 xu
 Yn
 Xb
-HD
+aw
 iC
 va
 va
@@ -6882,7 +6871,7 @@ Rp
 Xb
 GF
 Rp
-ty
+at
 Fr
 nd
 gX
@@ -6941,7 +6930,7 @@ AQ
 Nx
 AQ
 RK
-ky
+ah
 zy
 xK
 gX
@@ -6979,7 +6968,7 @@ TW
 fo
 pl
 xK
-fF
+ak
 va
 AC
 wZ

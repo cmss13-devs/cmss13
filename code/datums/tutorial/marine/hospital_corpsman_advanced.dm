@@ -824,7 +824,7 @@
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF, PROC_REF(field_surgery_5))
 
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_5(datum/source, obj/item/used, obj/item/roller, obj/structure/bed/roller/roller)
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_5(datum/source, obj/item/used, obj/item/roller, obj/structure/bed/roller/rollerdeployed)
 	SIGNAL_HANDLER
 
 	if(!istype(used, /obj/item/roller))
@@ -836,8 +836,8 @@
 	remove_highlight(foldedroller)
 	remove_from_tracking_atoms(foldedroller)
 
-	add_to_tracking_atoms(roller)
-	add_highlight(roller, COLOR_GREEN)
+	add_to_tracking_atoms(rollerdeployed)
+	add_highlight(rollerdeployed, COLOR_GREEN)
 
 
 // SCRATCHPAD

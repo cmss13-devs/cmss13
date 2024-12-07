@@ -91,7 +91,7 @@
 
 /obj/item/large_shrapnel/at_rocket_dud
 	name = "unexploded anti-tank rocket"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "custom_rocket_no_fuel"
 	desc = "An undetonated anti-tank rocket that probably hit something soft. You really shouldn't drop this..."
 	/// same as custom warhead

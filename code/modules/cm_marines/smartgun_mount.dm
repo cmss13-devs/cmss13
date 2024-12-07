@@ -5,6 +5,7 @@
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
 	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand

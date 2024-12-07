@@ -16,7 +16,7 @@
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
 	caliber = "10x28mm"
 	w_class = SIZE_LARGE
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	icon_state = "m2c"
 	item_state = "m2c"
 	max_rounds = 125

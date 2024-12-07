@@ -429,7 +429,7 @@
 	if (!istype(FP))
 		return
 
-	var/icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	var/icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/flamers.dmi'
 	var/icon_state
 	if(istype(FP.active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X))
 		icon_state = "flametank_large_blue"

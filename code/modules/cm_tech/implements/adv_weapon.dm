@@ -156,6 +156,7 @@
 	desc = "A magazine ammo for the poggers Railgun."
 	caliber = "14mm"
 	icon_state = "m42c" //PLACEHOLDER
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	w_class = SIZE_MEDIUM
 	max_rounds = 5
 	default_ammo = /datum/ammo/bullet/sniper/railgun

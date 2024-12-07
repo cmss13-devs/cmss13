@@ -665,9 +665,9 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/flashlight/pen, pen)
 	remove_from_tracking_atoms(pen)
 	qdel(pen)
-	message_to_player("The only way to treat Brain and Eye damage without surgical intervention, is through the use of <b>Non-Standard Chemical Medications</b>.")
-	message_to_player("<b>Non-Standard Chemical Medications</b> describes any medicine that must be specifically synthesised by a <u>trained Chemist</u> in the Almayer Medical Bay.")
-	message_to_player("Imidazoline-Alkysine <b>(IA)</b> is one such Non-Standard Medication that is used to heal <b>Brain and Eye Damage</b> on the field.")
+	message_to_player("The only way to treat Brain and Eye damage without surgical intervention, is through the use of <b>Custom Chemical Medications</b>.")
+	message_to_player("<b>Custom Chemical Medications</b> describes any medicine that must be specifically synthesised by a <u>trained Chemist</u> in the Almayer Medical Bay.")
+	message_to_player("Imidazoline-Alkysine <b>(IA)</b> is one such custom medication that is used to heal <b>Brain and Eye Damage</b> on the field.")
 
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_7)), 16 SECONDS)
 
@@ -777,6 +777,68 @@
 	message_to_player("Marines with high levels of <b>Toxin Damage</b> in their body without an obvious cause, are likely suffering from internal organ damage to their Liver or Kidney.")
 
 	addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 19 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery()
+
+	message_to_player("<b>Section 3: Field Surgery</b>.")
+	message_to_player("In this section of the tutorial, we will cover a more hands-on method of medical treatment on the field.")
+	message_to_player("All Marine Hospital Corpsmen have been trained in basic surgery procedures.")
+	message_to_player("This allows you to carry out simple, but highly effective procedures to heal injured Marines far closer to the frontlines than any Doctor could.")
+
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_2)), 8 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_2()
+
+	message_to_player("While not as extensively fitted as a proper surgical kit, Combat Medics recieve <b>Basic Surgical Case</b> for field use.")
+
+	var/obj/item/storage/surgical_case/regular/surgical_case = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(surgical_case)
+	add_highlight(surgical_case, COLOR_GREEN)
+
+	message_to_player("Pickup your <b>Basic Surgical Case</b>, highlighted in green!")
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(field_surgery_3))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_3()
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
+
+	message_to_player("Excellent! Your <b>Basic Surgical Case</b> comes pre-fitted with three tools; a <b>Scalpel, Hemostat, and Retractor</b>.")
+	message_to_player("These can be used to create <b>Incisions</b> on the body, which are the first step to most surgeries.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/surgical_case/regular, surgical_case)
+	remove_highlight(surgical_case)
+
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_4)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_4()
+
+	var/obj/item/roller/foldedroller = new(loc_from_corner(1, 4))
+	add_to_tracking_atoms(foldedroller)
+	add_highlight(foldedroller, COLOR_GREEN)
+
+	message_to_player("Some surgeries require the patient to be laying down on a secure surface, such as an Operating Table.")
+	message_to_player("However, for the purposes of field surgery, we will have to make do with a <b>Roller Bed</b>.")
+	message_to_player("<b>Roller Beds</b> serve a dual function, being able to quickly transport patients, as well as acting as a <b>Secure Surface</b> to carry out surgeries.")
+	message_to_player("Pickup the <b>Folded Roller Bed</b>, walk to the middle of the room, then press the <b>[retrieve_bind("activate_inhand")]</b> key while holding it in hand to unfold it.")
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_ATTACK_SELF, PROC_REF(field_surgery_5))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_5(datum/source, obj/item/used, obj/item/roller, obj/structure/bed/roller/roller)
+	SIGNAL_HANDLER
+
+	if(!istype(used, /obj/item/roller))
+		return
+
+	message_to_player("Signal check cleared!")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/roller, foldedroller)
+	remove_highlight(foldedroller)
+	remove_from_tracking_atoms(foldedroller)
+
+	add_to_tracking_atoms(roller)
+	add_highlight(roller, COLOR_GREEN)
+
 
 // SCRATCHPAD
 

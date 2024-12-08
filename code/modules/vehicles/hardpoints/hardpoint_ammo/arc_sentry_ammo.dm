@@ -2,6 +2,7 @@
 	name = "\improper RE700 Rotary Cannon Magazine"
 	desc = "A magazine for RE700 Rotary Cannon filled with 20mm rounds. Supports IFF."
 	caliber = "20mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "ace_autocannon"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/re700

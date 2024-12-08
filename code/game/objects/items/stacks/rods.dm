@@ -3,6 +3,11 @@
 	desc = "Some rods. Can be used for building, or something."
 	singular_name = "metal rod"
 	icon_state = "rods"
+	icon = 'icons/obj/items/stacks.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_righthand.dmi',
+	)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 	force = 9

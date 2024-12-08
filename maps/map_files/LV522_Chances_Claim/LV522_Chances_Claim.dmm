@@ -2301,7 +2301,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
 	icon_state = "poster17";
 	name = "\improper torn magazine page";
 	pixel_x = -2;
@@ -8540,7 +8540,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
 	icon_state = "poster17";
 	name = "\improper torn magazine page";
 	pixel_x = -5;
@@ -8548,7 +8548,7 @@
 	},
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
 	icon_state = "poster3";
 	name = "\improper torn magazine page";
 	pixel_x = 5;

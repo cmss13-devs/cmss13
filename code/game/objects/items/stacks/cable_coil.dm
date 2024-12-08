@@ -5,6 +5,10 @@
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/structures/machinery/power.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL

@@ -67,12 +67,6 @@
 	oretag = "platinum"
 	black_market_value = 30
 
-/obj/item/ore/hydrogen
-	name = "raw hydrogen"
-	icon_state = "Phazon"
-	oretag = "hydrogen"
-	black_market_value = 20
-
 /obj/item/ore/slag
 	name = "Slag"
 	desc = "Completely useless"

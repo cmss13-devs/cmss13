@@ -49,7 +49,7 @@
 /obj/item/device/implanter
 	name = "implanter"
 	desc = "An injector that drives an implant into your body. The injection stings quite badly."
-	icon = 'icons/obj/items/devices.dmi'
+	icon = 'icons/obj/items/syringe.dmi'
 	icon_state = "implanter"
 
 	w_class = SIZE_SMALL

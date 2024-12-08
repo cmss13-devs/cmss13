@@ -100,6 +100,7 @@
 /obj/item/weapon/twohanded/offhand
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
 
@@ -128,6 +129,12 @@
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	icon_state = "fireaxe"
 	item_state = "fireaxe"
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_LARGE
@@ -157,6 +164,7 @@
 	desc = "a large block of metal on the end of a pole. Smashing!"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
+	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE
@@ -180,6 +188,11 @@
 	desc = "Handle with care."
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+	)
 	force = 3
 	throwforce = 5
 	throw_speed = SPEED_FAST
@@ -221,6 +234,12 @@
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	icon_state = "spearglass"
 	item_state = "spearglass"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	throwforce = 35
@@ -235,6 +254,11 @@
 	name = "lunge mine"
 	icon_state = "lungemine"
 	item_state = "lungemine"
+	icon = 'icons/obj/items/weapons/melee/spears.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+	)
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
 	force = MELEE_FORCE_WEAK
 	force_wielded = 1
@@ -305,7 +329,12 @@
 /obj/item/weapon/twohanded/breacher
 	name = "\improper D2 Breaching Hammer"
 	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL

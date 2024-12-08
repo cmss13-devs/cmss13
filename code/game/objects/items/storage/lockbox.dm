@@ -4,8 +4,12 @@
 	name = "lockbox"
 	desc = "A locked box."
 	icon = 'icons/obj/items/storage/briefcases.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
 	icon_state = "lockbox+l"
-	item_state = "syringe_kit"
+	item_state = "box"
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.

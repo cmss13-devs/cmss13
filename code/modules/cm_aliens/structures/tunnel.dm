@@ -274,7 +274,7 @@
 /obj/structure/tunnel/maint_tunnel
 	name = "\improper Maintenance Hatch"
 	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "hatchclosed"
 
 /obj/structure/tunnel/maint_tunnel/no_xeno_desc

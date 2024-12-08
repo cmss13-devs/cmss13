@@ -1,5 +1,10 @@
 /obj/item/stack/sheet
 	name = "sheet"
+	icon = 'icons/obj/items/stacks.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_righthand.dmi',
+	)
 	layer = UPPER_ITEM_LAYER
 	w_class = SIZE_MEDIUM
 	force = 0

@@ -1,7 +1,7 @@
 /obj/structure/ladder
 	name = "ladder"
 	desc = "A sturdy metal ladder."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder11"
 	var/id = null
 	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
@@ -269,7 +269,7 @@
 /obj/structure/prop/broken_ladder
 	name = "rickety ladder"
 	desc = "Well, it was only a matter of time."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder00"
 	anchored = TRUE
 	unslashable = TRUE

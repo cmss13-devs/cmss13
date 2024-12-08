@@ -2,7 +2,11 @@
 	var/canopened = FALSE
 	var/crushed = FALSE
 	gulp_size = 10
-	icon = 'icons/obj/items/drinkcans.dmi'
+	icon = 'icons/obj/items/food/drinkcans.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()

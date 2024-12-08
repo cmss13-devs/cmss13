@@ -2,6 +2,7 @@
 	name = "meat"
 	desc = "A slab of meat"
 	icon_state = "meat"
+	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180
 	filling_color = "#FF1C1C"
 	bitesize = 3

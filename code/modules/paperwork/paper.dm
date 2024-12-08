@@ -11,6 +11,11 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
@@ -924,7 +929,7 @@
 	name = "Liaison Colony Briefing"
 	desc = "A brief from the Company about the colony the ship is responding to."
 	icon_state = "paper_wy_words"
-	
+
 	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
 
 /obj/item/paper/liaison_brief/Initialize(mapload, ...)
@@ -933,6 +938,6 @@
 		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
 	else
 		info = file2text(placeholder)
-		
+
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

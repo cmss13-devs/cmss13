@@ -55,8 +55,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/sentinel.dmi'
-	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_1/sentinel.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/sentinel.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

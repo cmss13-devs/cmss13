@@ -673,6 +673,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
 		return
 
+	if(mob_flags & INSURGENT)
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudCLF")
+		return
+
 	hud_set_new_player()
 	F.modify_hud_holder(holder, src)
 

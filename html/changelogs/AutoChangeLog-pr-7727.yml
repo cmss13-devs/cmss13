@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Dense structures (and coffins) now prevent machinery doors from closing."
-  - bugfix: "Fixed an edgecase with pushing vehicles by dropship launch would incorrectly push west if it was only 1 tile in."

@@ -853,6 +853,9 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 
+/obj/item/weapon/gun/rifle/mar40/lmg/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 /obj/item/weapon/gun/rifle/mar40/lmg/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 16, "rail_y" = 20, "under_x" = 26, "under_y" = 16, "stock_x" = 24, "stock_y" = 13)
 
@@ -1250,6 +1253,8 @@
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
 
+/obj/item/weapon/gun/rifle/lmg/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()
@@ -1572,6 +1577,9 @@
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
+
+/obj/item/weapon/gun/rifle/m4ra/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/sniper_mouse.dmi'
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
@@ -1921,6 +1929,9 @@
 	var/burst_count = 0 //To detect when the burst fire is near its end.
 	COOLDOWN_DECLARE(allow_message)
 	COOLDOWN_DECLARE(allow_pump)
+
+/obj/item/weapon/gun/rifle/xm51/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/shotgun_mouse.dmi'
 
 /obj/item/weapon/gun/rifle/xm51/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 20, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)

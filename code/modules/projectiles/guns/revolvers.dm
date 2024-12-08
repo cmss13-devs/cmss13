@@ -31,6 +31,9 @@
 	if(current_mag)
 		replace_cylinder(current_mag.current_rounds)
 
+/obj/item/weapon/gun/revolver/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+
 /obj/item/weapon/gun/revolver/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_5)

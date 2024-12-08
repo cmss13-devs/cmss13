@@ -41,6 +41,9 @@
 	/// If this gun should change icon states when the bolt is open
 	var/has_openbolt_icon = TRUE
 
+/obj/item/weapon/gun/boltaction/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 20, "stock_y" = 9)
 

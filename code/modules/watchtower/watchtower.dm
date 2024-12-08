@@ -224,6 +224,7 @@
 	. = ..()
 
 	var/dam = health / max_health
+	
 	if(dam <= 0.3)
 		. += SPAN_WARNING("It looks slightly damaged.")
 	else if(dam <= 0.6)

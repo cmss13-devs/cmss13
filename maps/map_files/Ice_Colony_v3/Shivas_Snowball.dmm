@@ -5477,6 +5477,8 @@
 /obj/item/clothing/glasses/sunglasses{
 	desc = "Polarized bioneural eyewear, designed to augment your vision.";
 	icon_state = "jensenshades";
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi';
+	icon_override = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi';
 	name = "augmented shades"
 	},
 /obj/effect/landmark/objective_landmark/medium,

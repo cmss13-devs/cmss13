@@ -319,7 +319,7 @@ GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
 		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
 		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
-		WEAR_EYES = 'icons/mob/humans/onmob/clothing/eyes.dmi',
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
 		WEAR_ID = 'icons/mob/humans/onmob/ids.dmi',
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',

@@ -170,7 +170,7 @@
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
-	icon_state = "white"
+	icon_state = "marine_white"
 	item_state = "marine_white"
 	adopts_squad_color = FALSE
 

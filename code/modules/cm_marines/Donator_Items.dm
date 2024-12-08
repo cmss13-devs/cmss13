@@ -228,6 +228,10 @@
 /obj/item/clothing/glasses/fluff/eyepatch //GENERIC DONOR
 	name = "An Eyepatch"
 	desc = "Badass +10.  Donor Item"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 
@@ -1558,18 +1562,30 @@
 /obj/item/clothing/glasses/fluff/wright //CKEY=wrightthewrong
 	name = "eyepatch"
 	desc = "Yarr, this be a Donor Item, YARR!"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 
 /obj/item/clothing/glasses/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Optics"
 	desc = "Custom Optics, owned by Tanya Edenia"
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+	)
 	icon_state = "thermal"
 	item_state = "glasses"
 
 /obj/item/clothing/glasses/fluff/haveatya //CKEY=haveatya
 	name = "Special Nightvision Goggles"
 	desc = "Disclaimer:  May not provide Night Vision.  DONOR ITEM"
+	icon = 'icons/obj/items/clothing/glasses/night_vision.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
+	)
 	icon_state = "night"
 	item_state = "glasses"
 

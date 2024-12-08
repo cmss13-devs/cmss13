@@ -192,7 +192,7 @@ export const backendMiddleware = (store) => {
         fancyState = fancy;
         Byond.winset(Byond.windowId, {
           titlebar: !fancy,
-          //          'can-resize': !fancy,
+          'can-resize': !fancy,
         });
       }
     }

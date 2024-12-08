@@ -52,7 +52,11 @@
 	. += get_asset_datum(/datum/asset/simple/icon_states/lobby_art)
 
 /mob/new_player/Logout()
-	winset(GLOB.directory[persistent_ckey], "lobby_browser", "is-disabled=true;is-visible=false")
+	QDEL_NULL(lobby_window)
+
+	var/exiting_client = GLOB.directory[persistent_ckey]
+	if(exiting_client)
+		winset(exiting_client, "lobby_browser", "is-disabled=true;is-visible=false")
 
 	. = ..()
 

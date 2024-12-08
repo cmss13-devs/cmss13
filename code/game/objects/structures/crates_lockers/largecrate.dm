@@ -8,6 +8,9 @@
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 
+/obj/structure/largecrate/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /obj/structure/largecrate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -241,6 +244,9 @@
 	parts_type = /obj/item/stack/sheet/metal
 	unpacking_sound = 'sound/effects/metalhit.ogg'
 	var/straps = FALSE
+
+/obj/structure/largecrate/random/barrel/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
 
 /obj/structure/largecrate/random/barrel/true_random
 	name = "barrel"

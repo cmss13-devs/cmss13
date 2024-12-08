@@ -487,6 +487,9 @@
 			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
 				to_chat(user, SPAN_WARNING("Target is obscured."))
 				return FALSE
+			if (!aa_protection_check(location, user))
+				return FALSE
+
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
 				var/mount_point = equipment.ship_base.attach_id
@@ -716,6 +719,9 @@
 		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 			return FALSE
+
+		if (!aa_protection_check(TU, weapon_operator))
+			return FALSE
 		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
 			return FALSE
 
@@ -818,6 +824,25 @@
 	update_location(weapons_operator, cas_sig)
 	return TRUE
 
+/obj/structure/machinery/computer/dropship_weapons/proc/aa_protection_check(turf/target, mob/weapon_operator)
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+	var/obj/structure/machinery/defenses/planetary_anti_air/highest_aa = target.get_aa_with_highest_protection_level(faction)
+	if (!highest_aa)
+		return
+
+	switch(highest_aa.get_protection_level(target))
+		if(TURF_AA_PROTECTION_CAS_COVERED)
+			to_chat(weapon_operator, SPAN_WARNING("WARNING: AA protection persist in area."))
+			highest_aa.fire()
+			dropship.on_planetary_aa_interception()
+			return TRUE
+		if(TURF_AA_PROTECTION_CAS_RESTRICTED)
+			to_chat(weapon_operator, SPAN_WARNING("WARNING: strong AA protection persist in area. Perfoming an evasive maneuver"))
+			highest_aa.fire()
+			dropship.on_planetary_aa_interception_heavy()
+			return FALSE
+	return TRUE
+
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user, fmId, dir, offset_x, offset_y)
 	set waitfor = 0
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
@@ -836,6 +861,8 @@
 		source.y + offset_y,
 		source.z
 	)
+	if (!aa_protection_check(target, user))
+		return FALSE
 	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId)
 	if(result != FIRE_MISSION_ALL_GOOD)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))

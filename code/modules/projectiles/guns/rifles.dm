@@ -671,6 +671,17 @@
 /obj/item/weapon/gun/rifle/m46c/stripped
 	random_spawn_chance = 0//no extra attachies on spawn, still gets its stock though.
 
+/obj/item/weapon/gun/rifle/m46c/upp
+	name = "\improper WIP UPP pulse rifle"
+	desc = "An experimental rifle platform built to replace the Type 71 pulse rifle. Presently utilized by select members of the UPPAC's Naval Infantry."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon_state = "m46c"
+	item_state = "m46c"
+	fire_sound = "gun_pulse"
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/incendiary
+
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
 

@@ -1,16 +1,19 @@
 /datum/faction/upp
 	name = "Union of Progressive Peoples"
 	faction_tag = FACTION_UPP
+	hud_icon_prefix = "upp_"
 
-/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/hud_icon_state
+	var/used_icon_file = hud_icon_file
+	var/used_icon_prefix = hud_icon_prefix
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
 	var/datum/squad/squad = H.assigned_squad
 
 	var/_role
-	if(H.mind)
-		_role = H.job
+	if(current_human.mind)
+		_role = current_human.job
 	else if(ID)
 		_role = ID.rank
 	switch(_role)
@@ -54,6 +57,13 @@
 			hud_icon_state = "log"
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
+
+	if(current_human.rank_icon_file_override)
+		used_icon_file = current_human.rank_icon_file_override
+	if(current_human.rank_icon_state_override)
+		hud_icon_state = current_human.rank_icon_state_override
+	if(current_human.rank_icon_prefix_override)
+		used_icon_prefix = current_human.rank_icon_prefix_override
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "upp_background")
 		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', H, "upp_[hud_icon_state]")

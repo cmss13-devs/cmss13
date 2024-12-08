@@ -1,5 +1,0 @@
-author: "HeresKozmos"
-delete-after: True
-changes:
-  - mapadd: "Added naturally spawning resin walls, doors and sparse sticky resin for aesthetic purposes."
-  - maptweak: "Slightly moved some map items around a short distance (about 1-2 tiles or so*)."

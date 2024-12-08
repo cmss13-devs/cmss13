@@ -6,6 +6,8 @@
 	density = FALSE
 	bound_width = 64
 	bound_height = 96
+	health = 1000
+	var/max_health = 1000
 
 	var/stage = 1
 	var/image/roof_image
@@ -192,12 +194,43 @@
 				to_chat(user, SPAN_NOTICE("You complete the watchtower."))
 				stage = 7
 				update_icon()
-
-
 			else
 				to_chat(user, SPAN_NOTICE("You failed to complete the watchtower, you need more plasteel sheets in your offhand."))
 
 			return
+		if(7)
+			if (!iswelder(W))
+				return
+
+			if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+				return
+
+			var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
+			if(!istype(metal))
+				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to patch the watchtower."))
+				return FALSE
+			
+			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+
+			if(metal.use(5))
+				to_chat(user, SPAN_NOTICE("You patch the watchtower with the metal sheets."))
+				update_health(-50)
+			else
+				to_chat(user, SPAN_NOTICE("You failed to patch the watchtower, you need more metal sheets in your offhand."))
+
+/obj/structure/watchtower/get_examine_text(mob/user)
+	. = ..()
+
+	var/dam = health / max_health
+	if(dam <= 0.3)
+		. += SPAN_WARNING("It looks slightly damaged.")
+	else if(dam <= 0.6)
+		. += SPAN_WARNING("It looks moderately damaged.")
+	else
+		. += SPAN_DANGER("It looks heavily damaged.")
+			
 
 /obj/structure/watchtower/attack_hand(mob/user)
 	if(get_turf(user) == locate(x, y-1, z))
@@ -256,13 +289,29 @@
 	return	
 
 /obj/structure/watchtower/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if (xeno.mob_size < MOB_SIZE_BIG)
-		return
+	if(get_turf(xeno) == locate(x, y-1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG)
+		if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			return
+		
+		var/turf/actual_turf = locate(x, y+1, z)
+		xeno.forceMove(actual_turf)
+		xeno.client.change_view(xeno.client.view + 2)
+		var/atom/movable/screen/plane_master/roof/roof_plane = xeno.hud_used.plane_masters["[ROOF_PLANE]"]
+		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+	else if(get_turf(xeno) == locate(x, y+1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG)
+		if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			return
 
-	if(!do_after(xeno, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		return
-
-	qdel(src)
+		var/turf/actual_turf = locate(x, y-1, z)
+		xeno.forceMove(actual_turf)
+		xeno.client.change_view(xeno.client.view - 2)
+		var/atom/movable/screen/plane_master/roof/roof_plane = xeno.hud_used.plane_masters["[ROOF_PLANE]"]
+		roof_plane?.invisibility = 0
+	else
+		xeno.animation_attack_on(src)
+		playsound(src, "alien_claw_metal", 25, TRUE)
+		update_health(rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+		return XENO_ATTACK_ACTION
 
 // For Mappers
 /obj/structure/watchtower/stage1

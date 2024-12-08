@@ -10,7 +10,7 @@
 	supervisors = "ARES and APOLLO"
 	selection_class = "job_working_joe"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
-	flags_whitelist = WHITELIST_JOE
+	flags_whitelist = WHITELIST_JOE|WHITELIST_COMMANDER|WHITELIST_PREDATOR
 	gear_preset = /datum/equipment_preset/synth/working_joe
 	gets_emergency_kit = FALSE
 
@@ -18,7 +18,7 @@
 	var/standard = TRUE
 
 /datum/job/civilian/working_joe/check_whitelist_status(mob/user)
-	if(user.client.check_whitelist_status(WHITELIST_SYNTHETIC))
+	if(user.client.check_whitelist_status(WHITELIST_SYNTHETIC, WHITELIST_PREDATOR, WHITELIST_COMMANDER))
 		return TRUE
 
 	return ..()

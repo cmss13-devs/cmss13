@@ -3,8 +3,8 @@
     overflow: hidden;
     white-space: nowrap;
     width: 0;
-    animation: typing 2s steps(20, end) forwards;
-    animation-delay: 2.2s;
+    animation: typing 1s steps(20, end) forwards;
+    animation-delay: 1.3s;
   }
 
   .buttonEffect {
@@ -17,11 +17,11 @@
   .loadEffect {
     height: 0;
     animation: loading 1s steps(20, end) forwards;
-    animation-delay: 2.2s;
+    animation-delay: 1.3s;
   }
 
   .sectionLoad {
-    animation: section-loading 2s forwards;
+    animation: section-loading 1s forwards;
   }
 
   .dividerEffect {
@@ -32,7 +32,7 @@
   .bgLoad {
     opacity: 0;
     animation: bg-load 10s forwards;
-    animation-delay: 7s;
+    animation-delay: 5s;
   }
 
   box-shadow: 0 0 15px;

@@ -43,6 +43,9 @@
 	var/icons = get_asset_datum(/datum/asset/simple/icon_states/lobby_art).get_url_mappings()
 	.["lobby_icon"] = icons[icons[1]]
 
+	.["sound"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["load"]
+	.["sound_interact"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["interact"]
+
 /mob/new_player/ui_data(mob/user)
 	. = ..()
 
@@ -67,6 +70,7 @@
 
 	. += get_asset_datum(/datum/asset/simple/icon_states/lobby)
 	. += get_asset_datum(/datum/asset/simple/icon_states/lobby_art)
+	. += get_asset_datum(/datum/asset/simple/lobby_sound)
 
 /mob/new_player/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

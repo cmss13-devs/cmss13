@@ -10,6 +10,9 @@ type LobbyData = {
   icon: string;
   lobby_icon: string;
 
+  sound: string;
+  sound_interact: string;
+
   character_name: string;
   display_number: string;
 
@@ -25,8 +28,17 @@ type LobbyData = {
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
+  const ref = useRef<HTMLAudioElement>(null);
+  const quiet = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    quiet.current!.volume = 0.4;
+  });
+
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
+      <audio autoPlay src={data.sound} ref={quiet} />
+      <audio src={data.sound_interact} ref={ref} />
       <Window.Content
         className="LobbyScreen"
         style={{
@@ -34,6 +46,9 @@ export const LobbyMenu = () => {
           backgroundSize: 'cover',
         }}
         fitted
+        onClick={() => {
+          ref.current!.play();
+        }}
       >
         <Box
           height="100%"
@@ -108,7 +123,7 @@ const LobbyButtons = () => {
                       <Box
                         className="typeEffect"
                         style={{
-                          animationDelay: '2.8s',
+                          animationDelay: '1.4s',
                         }}
                       >
                         {character_name}
@@ -122,7 +137,7 @@ const LobbyButtons = () => {
                       <Box
                         className="typeEffect hiveEffect"
                         style={{
-                          animationDelay: '2.8s',
+                          animationDelay: '1.4s',
                         }}
                       >
                         {display_number}
@@ -246,7 +261,7 @@ const TimedDivider = () => {
   useEffect(() => {
     setTimeout(() => {
       ref.current!.style.display = 'block';
-    }, 2000);
+    }, 1500);
   });
 
   return (
@@ -278,7 +293,7 @@ const LobbyButton = (props: LobbyButtonProps) => {
   return (
     <Stack.Item
       className="buttonEffect"
-      style={{ animationDelay: `${2.5 + index * 0.2}s` }}
+      style={{ animationDelay: `${1.5 + index * 0.2}s` }}
     >
       <Button fluid className={'distinctButton ' + className} {...rest}>
         {children}

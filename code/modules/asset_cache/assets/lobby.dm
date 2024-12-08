@@ -19,3 +19,9 @@
 
 	SSassets.transport.register_asset(asset_name, asset)
 	assets[asset_name] = asset
+
+/datum/asset/simple/lobby_sound
+	assets = list(
+		"load" = file('sound/lobby/lobby_load.mp3'),
+		"interact" = file('sound/lobby/lobby_interact.mp3')
+	)

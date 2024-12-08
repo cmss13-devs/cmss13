@@ -176,7 +176,7 @@
 	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
 
-	var/click_miss_cooldown = 15
+	var/click_miss_cooldown = 10
 
 /datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
@@ -200,7 +200,7 @@
 	xeno_cooldown = 13 SECONDS
 	plasma_cost = 30
 
-	var/click_miss_cooldown = 15
+	var/click_miss_cooldown = 10
 
 	// Config
 	var/range = 2

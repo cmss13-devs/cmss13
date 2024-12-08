@@ -2976,7 +2976,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/grenade/u1rmc
 	name = "\improper H34 underslung grenade launcher"
 	desc = "A W-Y take on an underslung grenade launcher system, made for the NSG23 line of weapons. Can store up to five grenades and fires them about as far as your U1 UGL for M41A Mk2."
-	icon_state = "u1rmc_a"
+	icon_state = "u1rmc"
 	attach_icon = "u1rmc_a"
 	current_rounds = 0
 	max_rounds = 5

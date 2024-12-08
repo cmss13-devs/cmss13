@@ -174,6 +174,8 @@
 
 /// From /mob/proc/a_intent_change() : (new_intent)
 #define COMSIG_MOB_INTENT_CHANGE "mob_intent_change"
+// From /mob/proc/select_body_zone()
+#define COMSIG_MOB_ZONE_SEL_CHANGE "mob_zone_sel_change"
 
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
 #define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
@@ -185,3 +187,6 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
+#define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"

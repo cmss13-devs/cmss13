@@ -65,8 +65,18 @@
 
 /// from /datum/surgery_step/proc/attempt_step()
 #define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
+
+/// From /datum/surgery_step/proc/success() : (mob/user, datum/surgery/surgery)
+#define COMSIG_HUMAN_SURGERY_STEP_SUCCESS "human_surgery_step_success"
+
 /// From /mob/living/carbon/human/proc/get_flags_cold_protection()
 #define COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS "human_cold_protection_apply_modifiers"
 
 /// From /obj/item/proc/dig_out_shrapnel() : ()
 #define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"
+
+// From /obj/limb/proc/apply_splints() : (obj/item/stack/medical/splint/splint, mob/living/user, mob/living/carbon/human/target)
+#define COMSIG_HUMAN_SPLINT_APPLIED "human_splint_applied"
+
+/// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)
+#define COMSIG_HUMAN_PILL_FED "human_pill_fed"

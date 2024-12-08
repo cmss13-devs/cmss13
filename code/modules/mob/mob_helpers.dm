@@ -393,6 +393,9 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	// Update the mob's selected zone.
 	zone_selected = target_zone
+
+	SEND_SIGNAL(src, COMSIG_MOB_ZONE_SEL_CHANGE, zone_selected)
+
 	// Update the HUD's selected zone.
 	hud_used.zone_sel.selecting = target_zone
 	hud_used.zone_sel.update_icon()

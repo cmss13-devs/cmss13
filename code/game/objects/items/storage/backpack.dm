@@ -1092,6 +1092,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_fuel = 180
 
+/obj/item/storage/backpack/marine/engineerpack/ert/five_slot
+	max_storage_space = 12
+	max_fuel = 100
+
 /obj/item/storage/backpack/commando
 	name = "commando bag"
 	desc = "A heavy-duty bag carried by Weyland-Yutani commandos."

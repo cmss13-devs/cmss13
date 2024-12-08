@@ -1922,6 +1922,7 @@
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/shotgun/af13,
+		/obj/item/attachable/attached_gun/shotgun/af13b,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
@@ -1930,6 +1931,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
+	random_spawn_chance = 100 //L23 always spawns with attachments
 	random_spawn_under = list(
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer/advanced,
@@ -1939,7 +1941,6 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
-	random_spawn_chance = 33
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 	)
@@ -1968,7 +1969,7 @@
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/rifle/l23/handle_starting_attachment()
+/obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23's unremovable stock
 	..()
 	var/obj/item/attachable/stock/l23/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE

@@ -215,11 +215,11 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
-/obj/item/clothing/glasses/regular/hipster
+/obj/item/clothing/glasses/regular/prescription
 	name = "Prescription Glasses"
-	desc = "Boring glasses, makes you look smart and potentially reputable."
-	icon_state = "hipster_glasses"
-	item_state = "hipster_glasses"
+	desc = "Boring glasses with prescription lenses, makes you look smart and potentially reputable."
+	icon_state = "rxglasses"
+	item_state = "rxglasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses

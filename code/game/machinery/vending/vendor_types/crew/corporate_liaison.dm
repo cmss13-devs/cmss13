@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 	list("Sunglasses", 0, /obj/item/clothing/glasses/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 	list("Prescription Sunglasses", 0, /obj/item/clothing/glasses/sunglasses/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-	list("Prescription Glasses", 0, /obj/item/clothing/glasses/regular/hipster, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+	list("Prescription Glasses", 0, /obj/item/clothing/glasses/regular/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 	list("GLOVES", 0, null, null, null),
 	list("Black Gloves", 0, /obj/item/clothing/gloves/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),

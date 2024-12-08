@@ -31,6 +31,17 @@
 	containername = "\improper explosive mine boxes crate (WARNING)"
 	group = "Explosives"
 
+/datum/supply_packs/explosives_satchel_charges
+	name = "M17 satchel charges crate (x3)"
+	contains = list(
+		/obj/item/storage/box/explosive_mines/satchel_charges,
+		/obj/item/storage/box/explosive_mines/satchel_charges,
+		/obj/item/storage/box/explosive_mines/satchel_charges,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive M17 charges crate (WARNING)"
+	group = "Explosives"
 /datum/supply_packs/explosives_m15
 	name = "M15 fragmentation grenades crate (x6)"
 	contains = list(

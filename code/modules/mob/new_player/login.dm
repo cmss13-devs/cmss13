@@ -1,3 +1,5 @@
+/mob/new_player/var/datum/tgui_window/lobby_window
+
 /mob/new_player/Login()
 	if(!mind)
 		mind = new /datum/mind(key, ckey)
@@ -11,12 +13,48 @@
 		forceMove(locate(1,1,1))
 	lastarea = get_area(src.loc)
 
-	sight |= SEE_TURFS
+	winset(src, "lobby_browser", "is-disabled=false;is-visible=true")
+	lobby_window = new(client, "lobby_browser")
+	lobby_window.initialize()
+
+	tgui_interact(src)
 
 	. = ..()
 
 	new_player_panel()
 	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
+
+/mob/new_player/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "LobbyMenu", window = lobby_window)
+		ui.handle_geometry = FALSE
+		ui.open()
+
+/mob/new_player/ui_state(mob/user)
+	return GLOB.always_state
+
+/mob/new_player/ui_static_data(mob/user)
+	. = ..()
+
+	.["icon"] = get_asset_datum(/datum/asset/simple/icon_states/lobby).get_url_mappings()["uscm.png"]
+
+	var/lobby_art = get_asset_datum(/datum/asset/simple/icon_states/lobby_art).get_url_mappings()
+
+	.["lobby_icon"] = lobby_art[pick(lobby_art)]
+
+/mob/new_player/ui_assets(mob/user)
+	. = ..()
+
+	. += get_asset_datum(/datum/asset/simple/icon_states/lobby)
+	. += get_asset_datum(/datum/asset/simple/icon_states/lobby_art)
+
+/mob/new_player/Logout()
+	winset(GLOB.directory[persistent_ckey], "lobby_browser", "is-disabled=true;is-visible=false")
+
+	. = ..()
 
 /mob/new_player/proc/lobby()
 	if(!client)

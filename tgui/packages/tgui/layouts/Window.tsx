@@ -72,7 +72,10 @@ export const Window = (props: Props) => {
       'can-close': Boolean(canClose),
     });
     logger.log('mounting');
-    updateGeometry();
+
+    if (config.window.handle_geometry) {
+      updateGeometry();
+    }
 
     return () => {
       logger.log('unmounting');
@@ -91,21 +94,29 @@ export const Window = (props: Props) => {
 
   return suspended ? null : (
     <Layout className="Window" theme={theme}>
-      <TitleBar
-        className="Window__titleBar"
-        title={title || decodeHtmlEntities(config.title)}
-        status={config.status}
-        fancy={fancy}
-        onDragStart={dragStartHandler}
-        onClose={() => {
-          logger.log('pressed close');
-          dispatch(backendSuspendStart());
-        }}
-        canClose={canClose}
+      {!!config.window.handle_geometry && (
+        <TitleBar
+          className="Window__titleBar"
+          title={title || decodeHtmlEntities(config.title)}
+          status={config.status}
+          fancy={fancy}
+          onDragStart={dragStartHandler}
+          onClose={() => {
+            logger.log('pressed close');
+            dispatch(backendSuspendStart());
+          }}
+          canClose={canClose}
+        >
+          {buttons}
+        </TitleBar>
+      )}
+      <div
+        className={classes([
+          'Window__rest',
+          config.window.handle_geometry && 'Window__restwithTitlebar',
+          debugLayout && 'debug-layout',
+        ])}
       >
-        {buttons}
-      </TitleBar>
-      <div className={classes(['Window__rest', debugLayout && 'debug-layout'])}>
         {!suspended && children}
         {showDimmer && <div className="Window__dimmer" />}
       </div>

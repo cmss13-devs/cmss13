@@ -192,7 +192,7 @@ export const backendMiddleware = (store) => {
         fancyState = fancy;
         Byond.winset(Byond.windowId, {
           titlebar: !fancy,
-          'can-resize': !fancy,
+          //          'can-resize': !fancy,
         });
       }
     }
@@ -259,6 +259,7 @@ type BackendState<TData> = {
       size: [number, number];
       fancy: boolean;
       locked: boolean;
+      handle_geometry: boolean;
     };
     client: {
       ckey: string;

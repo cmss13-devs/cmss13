@@ -176,8 +176,8 @@ $scrollbar-color-multiplier: 0.5 !default;
     &:focus,
     &:visited,
     &:target {
-      background-color: base.$color-fg;
-      color: base.$color-bg;
+      background-color: transparent;
+      color: base.$color-fg;
     }
   }
 

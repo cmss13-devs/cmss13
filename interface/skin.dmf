@@ -223,6 +223,15 @@ window "mapwindow"
 		font-size = 7
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode"
+	elem "lobby_browser"
+		type = BROWSER
+		pos = 0,0
+		size = 640,480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		is-disabled = true
+		can-resize = false
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464

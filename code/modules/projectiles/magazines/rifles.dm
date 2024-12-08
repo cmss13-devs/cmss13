@@ -421,7 +421,7 @@
 	ammo_band_icon_empty = "+nsg23_band_e"
 
 /obj/item/ammo_magazine/rifle/nsg23/extended
-	name = "\improper NSG 23 extended magazine (10x24mm)"
+	name = "\improper NSG 23 high-capacity drum magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine. This one contains 45 bullets."
 	icon_state = "nsg23_ext"
 	item_state = "nsg23_ext"

@@ -406,7 +406,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/paperwork/pen_fountain
 	display_name = "Pen, fountain"
-	path = /obj/item/tool/pen/fountain
+	path = /obj/item/tool/pen/multicolor/fountain
 	cost = 3
 
 /datum/gear/paperwork/paper

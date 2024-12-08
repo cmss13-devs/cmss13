@@ -137,7 +137,7 @@
 	if (!istype(armor))
 		return FALSE
 
-	return !armor.can_activate
+	return armor.can_activate
 
 /datum/action/item_action/specialist/fire_shield/can_use_action()
 	var/mob/living/carbon/human/H = owner

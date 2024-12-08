@@ -908,6 +908,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/scope
@@ -2185,6 +2188,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/stock/mod88
@@ -2305,6 +2311,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/m4ra_barrel_custom
@@ -2334,6 +2343,9 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
 	return .
 

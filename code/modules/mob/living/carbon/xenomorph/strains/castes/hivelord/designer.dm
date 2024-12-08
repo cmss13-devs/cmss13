@@ -15,7 +15,7 @@
 		/datum/action/xeno_action/activable/speed_node_place, // macro 2, macro 1 is for planting
 		/datum/action/xeno_action/activable/cost_node_place, // macro 3
 		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 4
-		/datum/action/xeno_action/onclick/greather_resin_surge, // macro 5
+		/datum/action/xeno_action/activable/greater_resin_surge, // macro 5
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
@@ -25,7 +25,7 @@
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
 	hivelord.plasmapool_modifier = 0.5 // -50% plasma pool
-	hivelord.tacklestrength_max = 6 // increase +1sec of max tackle time
+	hivelord.tacklestrength_max = 6 // increase by +1
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
 	hivelord.recalculate_health()
 	hivelord.recalculate_plasma()
@@ -60,7 +60,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
 
-
 // Speed Node
 
 /datum/action/xeno_action/verb/verb_speed_node()
@@ -74,7 +73,7 @@
 	name = "Place Optimized Node (100)"
 	action_icon_state = "place_queen_beacon"
 	plasma_cost = 100
-	xeno_cooldown = 0.5 SECONDS
+	xeno_cooldown = 1 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_speed_node
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -104,14 +103,20 @@
 			to_chat(xeno, SPAN_WARNING("That's too far away!"))
 			return
 
-	if (!check_and_use_plasma_owner())
-		return
-
-	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+
+	if(target_turf)
+		target_turf.overlays += /obj/effect/warning/alien/weak // Example overlay icon
+		spawn(1 SECONDS) // Automatically remove the overlay after 1 second
+		if(target_turf)
+			target_turf.overlays -= /obj/effect/warning/alien/weak
+
+	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
 
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
@@ -159,7 +164,7 @@
 	name = "Place Flexible Node (125)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 125
-	xeno_cooldown = 0.5 SECONDS
+	xeno_cooldown = 1 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_cost_node
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -189,14 +194,20 @@
 			to_chat(xeno, SPAN_WARNING("That's too far away!"))
 			return
 
-	if (!check_and_use_plasma_owner())
-		return
+	var/turf/target_turf = get_turf(target_atom)
+	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+
+	if(target_turf)
+		target_turf.overlays += /obj/effect/warning/alien/weak // Example overlay icon
+		spawn(1 SECONDS) // Automatically remove the overlay after 1 second
+		if(target_turf)
+			target_turf.overlays -= /obj/effect/warning/alien/weak
 
 	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
-	var/turf/target_turf = get_turf(target_atom)
-	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+	if (!check_and_use_plasma_owner())
+		return
 
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
@@ -231,57 +242,87 @@
 
 // Greather Resin Surge.
 
-/datum/action/xeno_action/verb/verb_greather_surge()
+/datum/action/xeno_action/verb/verb_greater_surge()
 	set category = "Alien"
 	set name = "Greather Resin Surge"
 	set hidden = TRUE
 	var/action_name = "Greather Resin Surge"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/onclick/greather_resin_surge
-	name = "Greather Resin Surge (200)"
+/datum/action/xeno_action/activable/greater_resin_surge
+	name = "Greather Resin Surge (250)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 250
 	xeno_cooldown = 30 SECONDS
-	macro_path = /datum/action/xeno_action/verb/verb_greather_surge
+	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
-/datum/action/xeno_action/onclick/greather_resin_surge/use_ability(atom/target_atom)
+/datum/action/xeno_action/activable/greater_resin_surge/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!xeno.check_state(TRUE))
-		return
-
-	if (!check_and_use_plasma_owner())
+	if(!xeno.check_state(TRUE))
 		return
 
 	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
+	// Create overlays for speed nodes and schedule their replacement
 	for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
 		if(node)
 			var/turf/node_loc = get_turf(node.loc)
 			if(node_loc)
-				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
-			qdel(node) // Delete the node
-	xeno.speed_node_list.Cut() // Clear the speed node list
+				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
-	// Iterate through the cost node list
+	// Create overlays for cost nodes and schedule their replacement
 	for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
 		if(node)
 			var/turf/node_loc = get_turf(node.loc)
 			if(node_loc)
-				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
-			qdel(node) // Delete the node
-	xeno.cost_node_list.Cut() // Clear the cost node list
+				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
+
+	// Wait 1 second, then replace the nodes
+	spawn(1 SECONDS)
+		for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
+			if(node)
+				var/turf/node_loc = get_turf(node.loc)
+				if(node_loc)
+					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
+				qdel(node) // Delete the node
+		xeno.speed_node_list.Cut() // Clear the speed node list
+
+		for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
+			if(node)
+				var/turf/node_loc = get_turf(node.loc)
+				if(node_loc)
+					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
+				qdel(node) // Delete the node
+		xeno.cost_node_list.Cut() // Clear the cost node list
 
 	apply_cooldown()
-
 	xeno_cooldown = initial(xeno_cooldown)
 	return ..()
+
+/proc/create_animation_overlay(turf/target_turf, animation_type)
+	if(!istype(target_turf, /turf)) // Ensure the target is a valid turf
+		return
+
+	if(!ispath(animation_type, /obj/effect/resin_construct/fastweak)) // Ensure a valid path
+		return
+
+	// Spawn an animation effect
+	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
+	animation.loc = target_turf
+
+	// Automatically delete the animation after 1 second
+	spawn(1 SECONDS)
+		if(animation)
+			qdel(animation)

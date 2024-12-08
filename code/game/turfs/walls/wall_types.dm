@@ -1310,6 +1310,12 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
+/turf/closed/wall/resin/weak/greater
+	name = "greater weak resin wall"
+	desc = "Weird slime solidified into a wall. It already looks on the verge of collapsing..."
+	damage_cap = HEALTH_WALL_XENO_WEAK
+	duration = 10 SECONDS
+
 
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()

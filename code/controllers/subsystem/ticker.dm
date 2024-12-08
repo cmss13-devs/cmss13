@@ -261,7 +261,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
-		INVOKE_ASYNC(np, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc), TRUE)
+		np.tgui_interact(np)
 
 	setup_economy()
 

@@ -32,10 +32,13 @@
   .bgLoad {
     opacity: 0;
     animation: bg-load 10s forwards;
-    animation-delay: 5s;
+    animation-delay: 7s;
   }
 
   box-shadow: 0 0 15px;
+  font-size: large;
+  font-family: monospace;
+  font-weight: 700;
 }
 
 @keyframes bg-load {

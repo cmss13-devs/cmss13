@@ -173,7 +173,6 @@ $scrollbar-color-multiplier: 0.5 !default;
 
   .Button:not(.Button--selected) {
     &:hover,
-    &:focus,
     &:visited,
     &:target {
       background-color: transparent;

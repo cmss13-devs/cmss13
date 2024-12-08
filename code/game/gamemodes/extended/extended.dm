@@ -17,7 +17,7 @@
 /datum/game_mode/extended/post_setup()
 	initialize_post_marine_gear_list()
 	for(var/mob/new_player/np in GLOB.new_player_list)
-		np.new_player_panel_proc()
+		np.tgui_interact(np)
 	round_time_lobby = world.time
 	return ..()
 

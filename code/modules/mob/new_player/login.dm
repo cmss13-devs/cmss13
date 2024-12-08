@@ -147,21 +147,20 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(tgui_alert(src, "Are you sure you want to attempt joining as a xenomorph?", "Confirmation", list("Yes", "No")) == "Yes")
-				if(!client)
-					return TRUE
-				if(SSticker.mode.check_xeno_late_join(src))
-					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
-					if(!new_xeno)
-						if(tgui_alert(src, "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
-							if(!client)
-								return TRUE
-							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
-								client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
-								to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
-							attempt_observe()
-					else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
-						SSticker.mode.transfer_xeno(src, new_xeno)
+			if(!client)
+				return TRUE
+			if(SSticker.mode.check_xeno_late_join(src))
+				var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
+				if(!new_xeno)
+					if(tgui_alert(src, "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
+						if(!client)
+							return TRUE
+						if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+							client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
+							to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
+						attempt_observe()
+				else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
+					SSticker.mode.transfer_xeno(src, new_xeno)
 
 				return TRUE
 
@@ -170,32 +169,30 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(tgui_alert(src, "Are you sure you want to attempt joining as a predator?", "Confirmation", list("Yes", "No")) == "Yes")
-				if(SSticker.mode.check_predator_late_join(src, FALSE))
-					SSticker.mode.attempt_to_join_as_predator(src)
-					return TRUE
-				else
-					to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
+			if(SSticker.mode.check_predator_late_join(src, FALSE))
+				SSticker.mode.attempt_to_join_as_predator(src)
+				return TRUE
+			else
+				to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
 
 		if("late_join_faxes")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(alert(src,"Are you sure you want to attempt joining as a Fax Responder?","Confirmation","Yes","No") == "Yes" )
-				if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
-					SSticker.mode.attempt_to_join_as_fax_responder(src, TRUE)
-					return TRUE
-				else
-					to_chat(src, SPAN_WARNING("You are no longer able to join as a Fax Responder."))
+			if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
+				SSticker.mode.attempt_to_join_as_fax_responder(src, TRUE)
+				return TRUE
+			else
+				to_chat(src, SPAN_WARNING("You are no longer able to join as a Fax Responder."))
 
 		if("observe")
 			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
 				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
 				return
-			if(tgui_alert(src, "Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
-				attempt_observe()
-				return TRUE
+
+			attempt_observe()
+			return TRUE
 
 		if("ready")
 			if( (SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started

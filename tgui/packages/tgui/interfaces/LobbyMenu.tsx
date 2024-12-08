@@ -1,8 +1,8 @@
 import { BooleanLike } from 'common/react';
-import { useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Section, Stack } from '../components';
+import { Box, Button, Modal, Section, Stack } from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
 
@@ -31,6 +31,8 @@ export const LobbyMenu = () => {
   const ref = useRef<HTMLAudioElement>(null);
   const quiet = useRef<HTMLAudioElement>(null);
 
+  const [modal, setModal] = useState<ReactNode | false>(false);
+
   useEffect(() => {
     quiet.current!.volume = 0.4;
   });
@@ -50,6 +52,19 @@ export const LobbyMenu = () => {
           ref.current!.play();
         }}
       >
+        {!!modal && (
+          <Modal>
+            <Section
+              buttons={
+                <Button mb={5} onClick={() => setModal(false)} icon={'x'} />
+              }
+              p={3}
+              title={'Confirm'}
+            >
+              {modal}
+            </Section>
+          </Modal>
+        )}
         <Box
           height="100%"
           width="100%"
@@ -71,7 +86,7 @@ export const LobbyMenu = () => {
         />
         <Stack vertical height="100%" justify="space-around" align="center">
           <Stack.Item>
-            <LobbyButtons />
+            <LobbyButtons setModal={setModal} />
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -79,8 +94,10 @@ export const LobbyMenu = () => {
   );
 };
 
-const LobbyButtons = () => {
+const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
   const { act, data } = useBackend<LobbyData>();
+
+  const { setModal } = props;
 
   const {
     character_name,
@@ -164,7 +181,29 @@ const LobbyButtons = () => {
 
         <TimedDivider />
 
-        <LobbyButton index={4} onClick={() => act('observe')}>
+        <LobbyButton
+          index={4}
+          onClick={() => {
+            setModal(
+              <Box>
+                <Stack vertical>
+                  <Stack.Item>Are you sure you wish to observe?</Stack.Item>
+                  <Stack.Item>
+                    When you observe, you will not be able to join as marine.
+                  </Stack.Item>
+                  <Stack.Item>
+                    It might also take some time to become a xeno or responder!
+                  </Stack.Item>
+                </Stack>
+                <Stack justify="center">
+                  <Stack.Item>
+                    <Button onClick={() => act('observe')}>Confirm</Button>
+                  </Stack.Item>
+                </Stack>
+              </Box>,
+            );
+          }}
+        >
           Observe
         </LobbyButton>
 
@@ -213,7 +252,28 @@ const LobbyButtons = () => {
             <Stack.Item>
               <Stack>
                 <Stack.Item grow>
-                  <LobbyButton index={6} onClick={() => act('late_join_xeno')}>
+                  <LobbyButton
+                    index={6}
+                    onClick={() => {
+                      setModal(
+                        <Box>
+                          <Stack vertical>
+                            <Stack.Item>
+                              Are you sure want to attempt joining as a
+                              Xenomorph?
+                            </Stack.Item>
+                          </Stack>
+                          <Stack justify="center">
+                            <Stack.Item>
+                              <Button onClick={() => act('late_join_xeno')}>
+                                Confirm
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Box>,
+                      );
+                    }}
+                  >
                     Join the Hive
                   </LobbyButton>
                 </Stack.Item>
@@ -236,14 +296,55 @@ const LobbyButtons = () => {
             )}
             {!!predator_enabled && (
               <Stack.Item>
-                <LobbyButton index={8} onClick={() => act('late_join_pred')}>
+                <LobbyButton
+                  index={7 + (upp_enabled ? 1 : 0)}
+                  onClick={() => {
+                    setModal(
+                      <Box>
+                        <Stack vertical>
+                          <Stack.Item>
+                            Are you sure want to attempt joining as a Predator?
+                          </Stack.Item>
+                        </Stack>
+                        <Stack justify="center">
+                          <Stack.Item>
+                            <Button onClick={() => act('late_join_pred')}>
+                              Confirm
+                            </Button>
+                          </Stack.Item>
+                        </Stack>
+                      </Box>,
+                    );
+                  }}
+                >
                   Join the Hunt
                 </LobbyButton>
               </Stack.Item>
             )}
             {!!fax_responder_enabled && (
               <Stack.Item>
-                <LobbyButton index={9} onClick={() => act('late_join_faxes')}>
+                <LobbyButton
+                  index={7 + (upp_enabled ? 1 : 0) + (predator_enabled ? 1 : 0)}
+                  onClick={() => {
+                    setModal(
+                      <Box>
+                        <Stack vertical>
+                          <Stack.Item>
+                            Are you sure want to attempt joining as a Fax
+                            Responder?
+                          </Stack.Item>
+                        </Stack>
+                        <Stack justify="center">
+                          <Stack.Item>
+                            <Button onClick={() => act('late_join_faxes')}>
+                              Confirm
+                            </Button>
+                          </Stack.Item>
+                        </Stack>
+                      </Box>,
+                    );
+                  }}
+                >
                   Respond to Faxes
                 </LobbyButton>
               </Stack.Item>

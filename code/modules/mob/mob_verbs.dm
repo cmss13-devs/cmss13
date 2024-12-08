@@ -31,14 +31,14 @@
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
 
-/mob/verb/view_stats()
+/mob/verb/view_playtimes()
 	set category = "OOC.Records"
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 	if(!SSentity_manager.ready)
 		to_chat(src, "DB is still starting up, please wait")
 		return
-	if(client && client.player_entity)
+	if(client?.player_data)
 		client.player_data.tgui_interact(src)
 
 /mob/verb/toggle_high_toss()

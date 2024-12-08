@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			transfer_fingerprints_to(F)
 			src.add_fingerprint(user)
 			F.add_fingerprint(user)
-			user.count_niche_stat(STATISTICS_NICHE_FULTON)
+			user.count_statistic_stat(STATISTICS_FULTON)
 			use(1)
 			F.faction = user.faction
 			F.deploy_fulton()

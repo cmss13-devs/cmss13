@@ -30,7 +30,6 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "LobbyMenu", window = lobby_window)
-		ui.handle_geometry = FALSE
 		ui.open()
 
 /mob/new_player/ui_state(mob/user)

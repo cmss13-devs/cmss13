@@ -35,6 +35,8 @@ type Props = Partial<{
   theme: string;
   title: string;
   width: number;
+  fitted: boolean;
+  scrollbars: boolean;
 }> &
   PropsWithChildren;
 
@@ -47,6 +49,8 @@ export const Window = (props: Props) => {
     buttons,
     width,
     height,
+    fitted,
+    scrollbars = true,
   } = props;
 
   const { config, suspended } = useBackend();
@@ -73,7 +77,7 @@ export const Window = (props: Props) => {
     });
     logger.log('mounting');
 
-    if (config.window.handle_geometry) {
+    if (!fitted) {
       updateGeometry();
     }
 
@@ -94,7 +98,7 @@ export const Window = (props: Props) => {
 
   return suspended ? null : (
     <Layout className="Window" theme={theme}>
-      {!!config.window.handle_geometry && (
+      {!fitted && (
         <TitleBar
           className="Window__titleBar"
           title={title || decodeHtmlEntities(config.title)}
@@ -113,14 +117,14 @@ export const Window = (props: Props) => {
       <div
         className={classes([
           'Window__rest',
-          config.window.handle_geometry && 'Window__restwithTitlebar',
+          !fitted && 'Window__restwithTitlebar',
           debugLayout && 'debug-layout',
         ])}
       >
         {!suspended && children}
         {showDimmer && <div className="Window__dimmer" />}
       </div>
-      {fancy && (
+      {fancy && scrollbars && (
         <>
           <div
             className="Window__resizeHandle__e"

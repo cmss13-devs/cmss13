@@ -13,7 +13,7 @@ export const LobbyMenu = () => {
   const { data } = useBackend<LobbyData>();
 
   return (
-    <Window theme="crtgreen">
+    <Window theme="crtgreen" fitted scrollbars={false}>
       <Window.Content
         className="LobbyScreen"
         style={{

@@ -259,7 +259,6 @@ type BackendState<TData> = {
       size: [number, number];
       fancy: boolean;
       locked: boolean;
-      handle_geometry: boolean;
     };
     client: {
       ckey: string;

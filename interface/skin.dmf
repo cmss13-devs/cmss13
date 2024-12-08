@@ -231,7 +231,7 @@ window "mapwindow"
 		anchor2 = 100,100
 		is-visible = false
 		is-disabled = true
-		can-resize = false
+		background-color = #222222
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464

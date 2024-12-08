@@ -40,9 +40,6 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 
-	/// Can this TGUI manipulate its own geometry?
-	var/handle_geometry = TRUE
-
 /**
  * public
  *
@@ -261,7 +258,6 @@
 			"size" = window_size,
 			"fancy" = user.client?.prefs.tgui_fancy,
 			"locked" = user.client?.prefs.tgui_lock,
-			"handle_geometry" = handle_geometry,
 		),
 		"client" = list(
 			"ckey" = user.client.ckey,

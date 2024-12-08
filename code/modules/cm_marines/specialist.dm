@@ -74,6 +74,12 @@
 /datum/specialist_set/New()
 	. = ..()
 	incompatible_sets += type
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(post_round_start))
+
+
+/datum/specialist_set/proc/post_round_start()
+	if(SSticker && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
+		available_vendor_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -150,6 +156,8 @@
 	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
 
+
+
 /datum/specialist_set/scout/redeem_set(mob/living/redeemer, kit)
 	. = ..()
 	if(!.)
@@ -192,3 +200,17 @@
 	skill_to_give = SKILL_SPEC_PYRO
 	trait_to_give = "pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro
+
+/datum/specialist_set/heavy
+	name = "Heavy Armor Set (HvH Only)"
+	role_name = "Heavy"
+	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
+	trait_to_give = "heavy"
+	kit_typepath = /obj/item/storage/box/spec/B18
+
+
+/datum/specialist_set/heavy/post_round_start()
+	if(SSticker && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
+		available_vendor_num = 4
+	else
+		available_vendor_num = 0

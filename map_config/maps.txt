@@ -37,10 +37,14 @@ map desert_dam
 	minplayers 130
 endmap
 
+map ice_colony_v1
+	minplayers 130
+	voteweight 0.25
+endmap
+
 map ice_colony_v2
 	minplayers 130
-	voteweight 0
-	disabled
+	voteweight 0.5
 endmap
 
 map shivas_snowball

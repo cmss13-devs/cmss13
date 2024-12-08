@@ -21,14 +21,16 @@
 	QDEL_NULL(f2)
 	return ..()
 
-/obj/structure/machinery/door/poddoor/two_tile/open(forced = FALSE)
+/obj/structure/machinery/door/poddoor/two_tile/open()
+	if(!density)
+		return
 	if(operating) //doors can still open when emag-disabled
-		return FALSE
+		return
 
-	operating = DOOR_OPERATING_OPENING
+	operating = TRUE
 	start_opening()
 
-	addtimer(CALLBACK(src, PROC_REF(open_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(open_fully)), openspeed)
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_opening()
@@ -48,25 +50,27 @@
 	f1.density = FALSE
 	f2.density = FALSE
 
-	operating = DOOR_OPERATING_IDLE
+	if(operating == 1) //emag again
+		operating = 0
 	if(autoclose)
-		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
 	f3.density = FALSE
 	f4.density = FALSE
 	..()
 
-/obj/structure/machinery/door/poddoor/two_tile/close(forced = FALSE)
+/obj/structure/machinery/door/poddoor/two_tile/close()
+	if(density)
+		return
 	if(operating)
-		return FALSE
-
+		return
 	start_closing()
-	addtimer(CALLBACK(src, PROC_REF(close_fully)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-	return TRUE
+	addtimer(CALLBACK(src, PROC_REF(close_fully)), openspeed)
+	return
 
 /obj/structure/machinery/door/poddoor/two_tile/proc/start_closing()
-	operating = DOOR_OPERATING_CLOSING
+	operating = 1
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
 
@@ -83,7 +87,7 @@
 	set_opacity(initial(opacity))
 	f1.set_opacity(initial(opacity))
 	f2.set_opacity(initial(opacity))
-	operating = DOOR_OPERATING_IDLE
+	operating = 0
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/close_fully()
 	f3.set_opacity(initial(opacity))
@@ -142,6 +146,18 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open
+	density = FALSE
+
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch
+	name = "elevator hatch"
+	base_icon_state = "hatch"
+	icon_state = "hatch1"
+	openspeed = 22
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/elevator_hatch/opened
+	icon_state = "hatch0"
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/two_tile/secure

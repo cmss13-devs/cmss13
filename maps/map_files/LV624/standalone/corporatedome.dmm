@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_tech,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -464,6 +468,7 @@
 /area/lv624/lazarus/corporate_dome)
 "zx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
@@ -935,7 +940,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ZT" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 
@@ -1058,7 +1063,7 @@ Bh
 mw
 Bh
 Bh
-Bh
+aa
 Bh
 Bh
 qH

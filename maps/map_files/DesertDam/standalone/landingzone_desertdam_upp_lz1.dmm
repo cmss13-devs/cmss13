@@ -1879,9 +1879,6 @@
 "Et" = (
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_civilian)
-"EG" = (
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/valley/valley_civilian)
 "EP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin{
@@ -1892,7 +1889,6 @@
 	pixel_x = 9;
 	pixel_y = -2
 	},
-/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue3/north,
 /area/event/metal/dynamic/lit)
 "ET" = (
@@ -2076,7 +2072,6 @@
 	department = "FOB Fax";
 	network = "UPP Encrypted Network"
 	},
-/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue3/north,
 /area/event/metal/dynamic/lit)
 "Ig" = (
@@ -3054,10 +3049,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"YZ" = (
-/obj/structure/window/framed/hangar/reinforced,
-/turf/closed/wall/rock/orange,
-/area/desert_dam/building/mining/workshop)
 "Zb" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -4564,7 +4555,7 @@ Zi
 bH
 tn
 Pi
-EG
+BW
 BW
 BW
 BW
@@ -4618,7 +4609,7 @@ Kc
 YP
 BI
 Zi
-YZ
+BW
 BW
 BW
 BW

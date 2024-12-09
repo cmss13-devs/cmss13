@@ -309,6 +309,20 @@
 	},
 /turf/open/floor/shiva/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
+"ax" = (
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 17;
+	name = "USCM monitoring computer";
+	pixel_x = 9
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 17;
+	faction = "Wey-Yu";
+	name = "WY monitoring computer";
+	pixel_x = -7
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "az" = (
 /obj/structure/machinery/cryopod/no_store{
 	pixel_y = 13
@@ -797,8 +811,10 @@
 /area/adminlevel/ert_station/fax_response_station)
 "fv" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails{
-	dir = 4
+/obj/structure/machinery/computer/spy_camera/upp{
+	dir = 4;
+	pixel_y = 2;
+	pixel_x = 2
 	},
 /turf/open/floor/darkgreen2/northwest,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3252,6 +3268,12 @@
 	pixel_y = 10;
 	pixel_x = -24
 	},
+/obj/structure/machinery/computer/spy_camera/clf{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = -10;
+	layer = 2.97
+	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "GQ" = (
@@ -3421,12 +3443,6 @@
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Ir" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/crew/alt{
-	pixel_y = -1;
-	name = "USCM monitoring computer";
-	dir = 8;
-	pixel_x = 3
-	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
 	phone_id = "Free Press Relay";
@@ -3435,6 +3451,10 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/machinery/computer/spy_camera/uscm{
+	pixel_x = 3;
+	dir = 8
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3629,7 +3649,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JY" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/cmb,
 /turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
 "Kc" = (
@@ -3710,8 +3730,8 @@
 /area/adminlevel/ert_station/fax_response_station)
 "KR" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/wy,
 /turf/open/floor/corsat/white/northwest,
 /area/adminlevel/ert_station/fax_response_station)
 "KT" = (
@@ -3770,10 +3790,10 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Mx" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
 /obj/item/device/radio/intercom/fax/uscm_pvst{
 	pixel_y = 24
 	},
+/obj/structure/machinery/computer/spy_camera/uscm,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
 "MA" = (
@@ -3905,10 +3925,10 @@
 "NT" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/twe{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "NU" = (
@@ -4194,10 +4214,10 @@
 /area/adminlevel/ert_station/fax_response_station)
 "RJ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
 /obj/item/device/radio/intercom/fax/uscm_hc{
 	pixel_y = 24
 	},
+/obj/structure/machinery/computer/spy_camera/uscm,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "RK" = (
@@ -7003,7 +7023,7 @@ wZ
 cX
 bX
 xK
-wZ
+ax
 TW
 aK
 Ir

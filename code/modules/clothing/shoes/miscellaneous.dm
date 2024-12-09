@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	item_state = "brown"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 	var/list/clothing_choices = list()
@@ -52,7 +52,7 @@
 	name = "ninja shoes"
 	desc = "A pair of running shoes. Excellent for running and even better for smashing skulls."
 	icon_state = "s-ninja"
-	permeability_coefficient = 0.01
+
 	flags_inventory = NOSLIPPING
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -85,7 +85,7 @@
 	desc = "Rubber boots"
 	name = "galoshes"
 	icon_state = "galoshes"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 /obj/item/clothing/shoes/clown_shoes

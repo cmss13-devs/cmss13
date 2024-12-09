@@ -6,7 +6,7 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	item_state = "space"
-	permeability_coefficient = 0.01
+
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -30,7 +30,6 @@
 	item_state = "s_suit"
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.02
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	allowed = list(/obj/item/device/flashlight,/obj/item/tank/emergency_oxygen)
 	slowdown = 3

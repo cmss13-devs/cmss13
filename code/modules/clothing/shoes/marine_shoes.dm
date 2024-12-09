@@ -144,7 +144,7 @@
 /obj/item/clothing/shoes/veteran/pmc/commando
 	name = "\improper PMC commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."
-	permeability_coefficient = 0.01
+
 	armor_bio = CLOTHING_ARMOR_HIGH
 	siemens_coefficient = 0.2
 	unacidable = TRUE

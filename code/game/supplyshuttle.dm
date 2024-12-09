@@ -109,6 +109,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/last_viewed_group = "categories"
 	var/first_time = TRUE
 
+	var/current_order = list()
+
 /obj/structure/machinery/computer/supplycomp/Initialize()
 	. = ..()
 	LAZYADD(GLOB.supply_controller.bound_supply_computer_list, src)
@@ -368,6 +370,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/datum/supply_packs/object = null
 	var/orderedby = null
 	var/approvedby = null
+
+/datum/supply_order/proc/get_list_representation()
+	return list(
+		"order_num" = ordernum,
+		"item" = object::name,
+		"ordered_by" = orderedby,
+		"approved_by" = approvedby,
+	)
 
 /datum/controller/supply
 	var/processing = 1
@@ -870,6 +880,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	if(..())
 		return
+
+	tgui_interact(user)
+
 	user.set_interaction(src)
 	post_signal("supply")
 	var/dat
@@ -919,6 +932,195 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 	return
+
+/obj/structure/machinery/computer/supplycomp/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SupplyComputer")
+		ui.open()
+
+/obj/structure/machinery/computer/supplycomp/ui_data(mob/user)
+	. = ..()
+
+	.["points"] = GLOB.supply_controller.points
+	.["dollars"] = GLOB.supply_controller.black_market_points
+
+	var/used_points = 0
+	var/used_dollars = 0
+	for(var/pack_type in current_order)
+		var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
+		used_points += (iter_pack.cost * current_order[pack_type])
+		used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
+
+	.["used_points"] = used_points
+	.["used_dollars"] = used_dollars
+
+	.["current_order"] = list()
+	for(var/pack_type in current_order)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		var/list_pack = pack.get_list_representation()
+		list_pack["quantity"] = current_order[pack_type]
+
+		.["current_order"] += list(list_pack)
+
+	.["requests"] = list()
+	for(var/datum/supply_order/order as anything in GLOB.supply_controller.requestlist)
+		.["requests"] += list(
+			order.get_list_representation()
+		)
+
+	.["pending"] = list()
+	for(var/datum/supply_order/order as anything in GLOB.supply_controller.shoppinglist)
+		.["pending"] += list(
+			order.get_list_representation()
+		)
+
+	.["black_market"] = can_order_contraband
+
+/obj/structure/machinery/computer/supplycomp/ui_static_data(mob/user)
+	. = ..()
+
+	.["categories"] = GLOB.supply_controller.all_supply_groups
+	.["contraband_categories"] = GLOB.supply_controller.contraband_supply_groups
+
+	.["all_items"] = list()
+	for(var/pack_type in GLOB.supply_packs_datums)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		if(!pack.buyable)
+			continue
+
+		if(isnull(pack.contains) && isnull(pack.containertype))
+			continue
+
+		.["all_items"] += list(
+			pack.get_list_representation()
+		)
+
+/obj/structure/machinery/computer/supplycomp/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+
+	if(!ishuman(ui.user))
+		return
+	var/mob/living/carbon/human/human_user = ui.user
+
+	switch(action)
+		if("adjust_cart")
+			var/picked_pack = text2path(params["pack"])
+			var/datum/supply_packs/pack = GLOB.supply_packs_datums[picked_pack]
+			if(!pack || !is_buyable(pack))
+				return
+
+			var/adjust_to = params["to"]
+
+			var/used_points = 0
+			var/used_dollars = 0
+			for(var/pack_type in current_order)
+				var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
+				used_points += (iter_pack.cost * current_order[pack_type])
+				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
+
+			switch(adjust_to)
+				if("max")
+					var/number_to_hold
+					if(pack.dollar_cost)
+						number_to_hold = floor((GLOB.supply_controller.black_market_points - used_dollars) / pack.dollar_cost)
+					else
+						number_to_hold = floor((GLOB.supply_controller.points - used_points) / pack.cost)
+
+					if(number_to_hold && (number_to_hold <= 0 || (current_order[picked_pack] && number_to_hold < current_order[picked_pack])))
+						return
+
+					current_order[picked_pack] = number_to_hold
+					return TRUE
+
+				if("min")
+					current_order -= picked_pack
+					return TRUE
+
+				if("increment")
+					if(!pack.dollar_cost && used_points + pack.cost > GLOB.supply_controller.points)
+						return
+
+					if(pack.dollar_cost && used_dollars + pack.dollar_cost > GLOB.supply_controller.black_market_points)
+						return
+
+					if(!current_order[picked_pack])
+						current_order[picked_pack] = 1
+						return TRUE
+
+					current_order[picked_pack]++
+					return TRUE
+
+				if("decrement")
+					var/current_quantity = current_order[picked_pack]
+					if(current_quantity == 1)
+						current_order -= picked_pack
+						return TRUE
+
+					current_order[picked_pack]--
+					return TRUE
+
+		if("discard_cart")
+			current_order = list()
+
+			return TRUE
+
+		if("place_order")
+
+			var/id_name = human_user.get_authentification_name()
+			var/id_rank = human_user.get_assignment()
+
+			for(var/item in current_order)
+				var/datum/supply_packs/pack = GLOB.supply_packs_datums[item]
+
+				if(!pack || !is_buyable(pack))
+					continue
+
+				var/number_ordered = 0
+				for(var/iterator in 1 to current_order[item])
+					if(GLOB.supply_controller.points - pack.cost < 0)
+						continue
+
+					if(GLOB.supply_controller.black_market_points - pack.dollar_cost < 0)
+						continue
+
+					var/datum/supply_order/supply_order = new
+					supply_order.ordernum = ++GLOB.supply_controller.ordernum
+					supply_order.object = pack
+					supply_order.orderedby = id_name
+					supply_order.approvedby = id_name
+
+					GLOB.supply_controller.points -= pack.cost
+					GLOB.supply_controller.black_market_points -= pack.dollar_cost
+
+					if(GLOB.supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
+
+						// black market heat added is crate heat +- up to 25% of crate heat
+						GLOB.supply_controller.black_market_heat = clamp(GLOB.supply_controller.black_market_heat + pack.crate_heat + (pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100)
+
+					var/pack_source = "Cargo Hold"
+					var/pack_name = pack.name
+					if(pack.dollar_cost)
+						pack_source = "Unknown"
+						if(prob(90))
+							pack_name = "Unknown"
+
+					msg_admin_niche("[key_name(human_user)] confirmed supply order of [pack.name].")
+					log_ares_requisition(pack_source, pack_name, human_user.name)
+
+					GLOB.supply_controller.shoppinglist += supply_order
+					number_ordered++
+
+				if(number_ordered)
+					pack.cost = pack.cost * SUPPLY_COST_MULTIPLIER
+
+			if(GLOB.supply_controller.black_market_heat == 100)
+				GLOB.supply_controller.black_market_investigation()
 
 /obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
 	if(!is_mainship_level(z)) return
@@ -1063,23 +1265,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					GLOB.supply_controller.requestlist.Cut(i,i+1)
 					GLOB.supply_controller.points -= floor(supply_pack.cost)
 					GLOB.supply_controller.black_market_points -= floor(supply_pack.dollar_cost)
-					if(GLOB.supply_controller.black_market_heat != -1) //-1 Heat means heat is disabled
-						GLOB.supply_controller.black_market_heat = clamp(GLOB.supply_controller.black_market_heat + supply_pack.crate_heat + (supply_pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100) // black market heat added is crate heat +- up to 25% of crate heat
+
 					GLOB.supply_controller.shoppinglist += supply_order
 					supply_pack.cost = supply_pack.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 					supply_order.approvedby = usr.name
-					msg_admin_niche("[key_name(usr)] confirmed supply order of [supply_pack.name].")
-					if(GLOB.supply_controller.black_market_heat == 100)
-						GLOB.supply_controller.black_market_investigation()
-					var/pack_source = "Cargo Hold"
-					var/pack_name = supply_pack.name
-					if(supply_pack.dollar_cost)
-						pack_source = "Unknown"
-						if(prob(90))
-							pack_name = "Unknown"
-					log_ares_requisition(pack_source, pack_name, usr.name)
 				else
 					temp = "Not enough money left.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
@@ -1183,6 +1374,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		temp += SPAN_WARNING("I'll repeat, just to clear it up since you chucklefucks can't do anything right. <b>Insert cash, buy my scanner, get valuables, bring them down the lift, gain dollars, buy contraband.</b><BR>")
 		temp += SPAN_WARNING("See you..<BR>")
 		return
+
 
 	var/rng = rand(1, 100) // Will only sometimes give messages
 	switch(rng)
@@ -1289,10 +1481,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	log_game("Black Market Inspection auto-triggered.")
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
-
-	if(supply_pack.group != last_viewed_group)
-		return
-
 	if(!supply_pack.buyable)
 		return
 

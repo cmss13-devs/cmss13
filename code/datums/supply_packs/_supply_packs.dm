@@ -33,3 +33,40 @@
 		if(!path) continue
 		manifest += "<li>[initial(path.name)]</li>"
 	manifest += "</ul>"
+
+/datum/supply_packs/proc/get_list_representation()
+	var/types_in_contents = list()
+	for(var/contents_type in contains)
+		if(!types_in_contents[contents_type])
+			types_in_contents[contents_type] = 1
+			continue
+
+		types_in_contents[contents_type]++
+
+	var/pack_contents = list()
+	for(var/atom/deduped_type as anything in types_in_contents)
+		pack_contents += list(
+			list(
+				"name" = deduped_type::name,
+				"quantity" = types_in_contents[deduped_type],
+				"icon" = list(
+					"icon" = deduped_type::icon,
+					"icon_state" = deduped_type::icon_state
+				)
+			)
+		)
+
+	var/atom/container = containertype
+
+	return list(
+		"name" = name,
+		"cost" = cost,
+		"dollar_cost" = dollar_cost,
+		"contains" = pack_contents,
+		"category" = group,
+		"type" = type,
+		"icon" = container ? list(
+			"icon" = container::icon,
+			"icon_state" = container::icon_state
+			) : null
+	)

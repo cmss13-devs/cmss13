@@ -90,16 +90,6 @@
 	containername = "\improper M4RA magazines crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_dmr_mag_box_ap
-	name = "Magazine box (M4RA, 16x AP mags)"
-	contains = list(
-		/obj/item/ammo_box/magazine/m4ra/ap,
-	)
-	cost = 40
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper M4RA AP magazines crate"
-	group = "Ammo"
-
 //------------------------For M39----------------
 
 /datum/supply_packs/ammo_smg_mag_box

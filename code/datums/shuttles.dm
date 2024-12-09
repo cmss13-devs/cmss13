@@ -98,8 +98,38 @@
 /datum/map_template/shuttle/trijent_elevator/B
 	elevator_network = "B"
 
+/datum/map_template/shuttle/trijent_elevator/ice_elevator
+	name = "Classic Ice Elevator"
+	shuttle_id = "ice_classic_shuttle"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
+	elevator_network = "lab"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/dorm
+	elevator_network = "dorm"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/arrivals
+	elevator_network = "Arrivals"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/omicorn
+	elevator_network = "Omicorn"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/requisitions
+	elevator_network = "Requisitions"
+
 /datum/map_template/shuttle/trijent_elevator/post_load(obj/docking_port/mobile/M)
 	. = ..()
 	var/obj/docking_port/mobile/trijent_elevator/elev = M
 	elev.elevator_network = elevator_network
 	log_debug("Adding network [elevator_network] to [M.id]")
+
+//ice classic elevators
+/datum/map_template/shuttle/trijent_elevator/ice_elevator
+	name = "Ice Classic Elevator (Dorm)"
+	shuttle_id = "ice_classic_shuttle"
+	elevator_network = "dorm"
+
+/datum/map_template/shuttle/trijent_elevator/ice_elevator/lab
+	name = "Ice Classic Elevator (Lab)"
+	shuttle_id = "ice_classic_shuttle_north"
+	elevator_network = "lab"

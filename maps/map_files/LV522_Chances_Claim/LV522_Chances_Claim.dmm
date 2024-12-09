@@ -14598,6 +14598,9 @@
 /area/lv522/atmos/east_reactor/south)
 "hXW" = (
 /obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/hallway)
 "hYf" = (
@@ -17371,6 +17374,12 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/kitchen)
+"jxX" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "jyf" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement,
@@ -79879,7 +79888,7 @@ aIp
 aIp
 aIp
 aIp
-aIp
+jxX
 aIp
 aIp
 aIp

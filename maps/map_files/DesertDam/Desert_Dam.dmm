@@ -41858,6 +41858,12 @@
 	acided_hole_dir = 4
 	},
 /area/desert_dam/interior/dam_interior/garage)
+"fPk" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "fPp" = (
 /obj/structure/surface/rack,
 /turf/open/floor/prison/darkyellow2/north,
@@ -94540,7 +94546,7 @@ dBr
 dBr
 dBr
 dBr
-dBr
+fPk
 eaQ
 dZn
 dHE

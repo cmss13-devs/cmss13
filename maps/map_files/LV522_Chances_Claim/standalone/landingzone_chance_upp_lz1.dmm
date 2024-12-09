@@ -15,9 +15,7 @@
 "aw" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/blue_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "aE" = (
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
@@ -27,17 +25,13 @@
 "bd" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "bq" = (
 /obj/item/stack/tile/wood{
 	layer = 2.5
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "bu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin{
@@ -49,9 +43,7 @@
 	pixel_y = -2
 	},
 /turf/open/floor/prison/blue/north,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "bz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -62,9 +54,7 @@
 	},
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/strata/floor3,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "bC" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/prison,
@@ -89,14 +79,10 @@
 	pixel_y = 6
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "bZ" = (
 /turf/open/floor/prison/floor_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "cb" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0"
@@ -112,9 +98,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "cF" = (
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -144,9 +128,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "da" = (
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -173,9 +155,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "er" = (
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "eQ" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/sand_white/layer0,
@@ -185,9 +165,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "fb" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/asphalt/cement/cement4,
@@ -198,9 +176,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "ft" = (
 /obj/structure/largecrate/random/barrel,
 /turf/open/auto_turf/shale/layer1,
@@ -213,33 +189,25 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/prison/blue,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "fZ" = (
 /obj/structure/stairs/perspective{
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "ga" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "gu" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor/plating,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "gD" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -250,9 +218,7 @@
 "gI" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/prison/blue_plate/north,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "gV" = (
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -260,9 +226,7 @@
 	pixel_x = 16
 	},
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "hg" = (
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Remote dropship navigation computer";
@@ -271,20 +235,14 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/blue/west,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "hp" = (
 /turf/closed/wall/solaris/reinforced/hull/lv522,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "hI" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/floor_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "ir" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison,
@@ -292,9 +250,7 @@
 "iH" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "iJ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/beer_pack{
@@ -309,9 +265,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "jp" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
@@ -319,9 +273,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "jr" = (
 /turf/open/floor/corsat/marked,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "jt" = (
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -330,9 +282,7 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "jI" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand_white/layer0,
@@ -345,9 +295,7 @@
 	req_access = null
 	},
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "ki" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -360,9 +308,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kn" = (
 /turf/open/floor/prison/blue,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "kv" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /obj/effect/decal/warning_stripes{
@@ -376,9 +322,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kx" = (
 /turf/closed/wall/solaris/reinforced,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "kz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/shale/layer2,
@@ -388,9 +332,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "kC" = (
 /obj/structure/cargo_container/wy/mid,
 /turf/open/floor/prison/floor_marked,
@@ -419,9 +361,7 @@
 	layer = 3
 	},
 /turf/open/floor/prison,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "lx" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement/cement1,
@@ -431,36 +371,26 @@
 	dir = 8
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "lB" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform_decoration/metal/almayer/southeast,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "lF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "lO" = (
 /obj/structure/machinery/telecomms/broadcaster,
 /turf/open/floor/almayer/tcomms,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "lT" = (
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "mf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -472,27 +402,19 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "mo" = (
 /turf/closed/wall/strata_ice/dirty,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "mQ" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "mU" = (
 /obj/item/stack/sheet/metal,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "nd" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "ni" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -506,18 +428,14 @@
 	icon_state = "S"
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "np" = (
 /turf/open/asphalt/cement/cement15,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "nt" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "nB" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/shale/layer2,
@@ -525,9 +443,7 @@
 "nJ" = (
 /obj/structure/machinery/telecomms/server,
 /turf/open/floor/almayer/tcomms,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "nU" = (
 /obj/item/stack/sheet/metal,
 /turf/open/asphalt/cement/cement4,
@@ -540,9 +456,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "pd" = (
 /turf/open/asphalt/cement/cement2,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -557,9 +471,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "pm" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/prison,
@@ -592,9 +504,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "qg" = (
 /obj/structure/cargo_container/ferret/right,
 /turf/open/auto_turf/sand_white/layer0,
@@ -602,15 +512,11 @@
 "qr" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "qK" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "re" = (
 /obj/structure/fence{
 	layer = 2.9
@@ -636,15 +542,11 @@
 	dir = 8
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "se" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/prison/blue_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "sg" = (
 /obj/item/stack/rods,
 /obj/structure/platform/metal/almayer,
@@ -673,20 +575,14 @@
 	layer = 2.7
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "sK" = (
 /obj/structure/cargo_container/kelland/right,
 /turf/open/floor/prison/blue_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "td" = (
 /turf/closed/wall/solaris/reinforced/hull,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "tn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 1
@@ -710,14 +606,10 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "tt" = (
 /turf/closed/wall/solaris/reinforced,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "tE" = (
 /turf/closed/wall/solaris/reinforced/hull/lv522,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "tN" = (
 /turf/template_noop,
 /area/template_noop)
@@ -733,15 +625,11 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "ug" = (
 /turf/open/floor/prison/blue_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "uj" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "ul" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/auto_turf/sand_white/layer0,
@@ -753,9 +641,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "uC" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison,
@@ -765,9 +651,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "uH" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/stairs/perspective{
@@ -775,15 +659,11 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "uJ" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "uU" = (
 /obj/structure/cargo_container/lockmart/mid,
 /turf/open/floor/prison/floor_marked,
@@ -804,9 +684,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "wj" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/asphalt/cement/cement1,
@@ -814,36 +692,26 @@
 "wq" = (
 /obj/item/stack/rods,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "wD" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/tcomms,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "wE" = (
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "xl" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "xt" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "xB" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/sand_white/layer0,
@@ -864,15 +732,11 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "yB" = (
 /obj/structure/machinery/telecomms/bus,
 /turf/open/floor/almayer/tcomms,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "yD" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced/prison,
@@ -883,23 +747,17 @@
 	network = "UPP Encrypted Network"
 	},
 /turf/open/floor/prison/blue/north,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "yE" = (
 /turf/open/floor/prison,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "yF" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
 	name = "North-East Processor Landing Zone";
 	faction = "UPP"
 	},
 /turf/open/floor/plating,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "yH" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0"
@@ -916,9 +774,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "yR" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -931,9 +787,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "zM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -942,24 +796,18 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "zN" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "zT" = (
 /obj/structure/largecrate,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Ao" = (
 /obj/structure/ore_box,
 /turf/open/floor/prison,
@@ -988,9 +836,7 @@
 	layer = 4.13
 	},
 /turf/open/floor/prison/blue_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "AR" = (
 /obj/structure/platform_decoration/metal/almayer,
 /obj/structure/stairs/perspective{
@@ -998,14 +844,10 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "AS" = (
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "AZ" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/warning_stripes{
@@ -1016,17 +858,13 @@
 "Bb" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Bf" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Bh" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
@@ -1040,9 +878,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "BM" = (
 /turf/open/floor/prison/blue_plate/north,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "BS" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -1056,9 +892,7 @@
 "Cw" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "CA" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -1073,9 +907,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "CB" = (
 /obj/structure/platform_decoration/metal/almayer,
 /obj/effect/decal/warning_stripes{
@@ -1097,20 +929,14 @@
 	},
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/strata/floor3,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Da" = (
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Dh" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Dv" = (
 /obj/structure/prop/vehicles/crawler{
 	icon_state = "crawler_crate_alt"
@@ -1123,9 +949,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "DZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/sand_white/layer0,
@@ -1143,9 +967,7 @@
 	layer = 3
 	},
 /turf/open/floor/prison,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Es" = (
 /obj/item/storage/belt/medical/lifesaver,
 /turf/open/floor/prison,
@@ -1153,9 +975,7 @@
 "Ex" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "EK" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/prop/invuln/lattice_prop{
@@ -1168,9 +988,7 @@
 "EU" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Fa" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/lv522/outdoors/colony_streets/north_east_street)
@@ -1199,9 +1017,7 @@
 	icon_state = "white"
 	},
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "GC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -1229,20 +1045,14 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_box/magazine/misc/flashlight,
 /turf/open/floor/prison/blue,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "HI" = (
 /turf/open/floor/prison/blue/north,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "HM" = (
 /obj/effect/alien/resin/sticky,
 /turf/closed/wall/solaris/reinforced,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "HW" = (
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/hallway)
@@ -1251,9 +1061,7 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Id" = (
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -1271,9 +1079,7 @@
 	dir = 8
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "IZ" = (
 /obj/item/stack/tile/plasteel{
 	name = "ceiling tile";
@@ -1293,9 +1099,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "JY" = (
 /obj/structure/fence{
 	layer = 2.9
@@ -1308,9 +1112,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/strata/floor3,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Ka" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -1319,18 +1121,14 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "KR" = (
 /turf/open/floor/prison/blue/east,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "Lc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "Lp" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
@@ -1338,23 +1136,17 @@
 "Lw" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Ly" = (
 /turf/open/auto_turf/shale/layer2,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "LB" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /obj/structure/barricade/metal/wired,
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "LY" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/auto_turf/sand_white/layer0,
@@ -1371,9 +1163,7 @@
 	},
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Nx" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /obj/structure/stairs/perspective{
@@ -1381,9 +1171,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "NR" = (
 /obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/floor/prison,
@@ -1426,15 +1214,11 @@
 "Pg" = (
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Ph" = (
 /obj/structure/platform/metal/almayer/east,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Pn" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/hallway)
@@ -1445,9 +1229,7 @@
 	pixel_y = 1
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Pt" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway)
@@ -1490,9 +1272,7 @@
 	pixel_y = 1
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "PU" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -1505,9 +1285,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "PZ" = (
 /turf/open/floor/prison/floor_marked/southwest,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Qr" = (
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -1529,9 +1307,7 @@
 "QM" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison/blue_plate,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "QS" = (
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/prison,
@@ -1546,9 +1322,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "RI" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/floor/prison,
@@ -1573,22 +1347,16 @@
 "Sl" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Sv" = (
 /obj/structure/largecrate/random,
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "SL" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "To" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/metal/wired,
@@ -1602,9 +1370,7 @@
 	req_access = null
 	},
 /turf/open/floor/corsat/marked,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "TX" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -1629,9 +1395,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "Ut" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris/reinforced/hull/lv522,
@@ -1653,9 +1417,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "UY" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -1667,35 +1429,25 @@
 "Vl" = (
 /obj/structure/surface/rack,
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Vy" = (
 /turf/open/floor/plating,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "VA" = (
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/hallway)
 "VG" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
-/area/event/metal/dynamic/lit{
-	name = "South East Landing Zone Structure"
-	})
+/area/event/metal/dynamic/lit)
 "VK" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Wa" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Wq" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
@@ -1703,18 +1455,14 @@
 "WD" = (
 /obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/prison/floor_marked,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "WG" = (
 /obj/structure/barricade/metal/wired,
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "WN" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/shale/layer1,
@@ -1761,9 +1509,7 @@
 "XD" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/shale/layer1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Ye" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -1772,15 +1518,11 @@
 	dir = 1
 	},
 /turf/open/asphalt/cement/cement1,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Yf" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Yr" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/corsat/marked,
@@ -1801,9 +1543,7 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/event/dynamic/lit{
-	name = "Colony Streets - UPP Landing Zone"
-	})
+/area/event/dynamic/lit)
 "Zv" = (
 /obj/structure/cargo_container/horizontal/blue/top,
 /turf/open/floor/prison/floor_marked,

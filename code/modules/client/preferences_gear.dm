@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/eyewear/prescription_glasses
 	display_name = "Prescription Glasses"
-	path = /obj/item/clothing/glasses/regular/hipster
+	path = /obj/item/clothing/glasses/regular/prescription
 
 /datum/gear/eyewear/goggles
 	display_name = "Ballistic goggles"

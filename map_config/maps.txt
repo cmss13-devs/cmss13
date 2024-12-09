@@ -40,6 +40,7 @@ endmap
 map ice_colony_v1
 	minplayers 130
 	voteweight 0.25
+	disabled
 endmap
 
 map ice_colony_v2

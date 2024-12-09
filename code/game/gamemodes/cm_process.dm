@@ -16,6 +16,9 @@
 #define MODE_BATTLEFIELD_DRAW_STALEMATE "DRAW: Stalemate"
 #define MODE_BATTLEFIELD_DRAW_DEATH "DRAW: My Friends Are Dead"
 
+#define MODE_FACTION_CLASH_UPP_MAJOR "UPP Major Victory"
+#define MODE_FACTION_CLASH_UPP_MINOR "UPP Minor Victory"
+
 #define MODE_GENERIC_DRAW_NUKE "DRAW: Nuclear Explosion"
 
 /*

@@ -231,11 +231,3 @@
 	icon_state = "psych"
 	item_state = "w_suit"
 	flags_jumpsuit = FALSE
-
-
-/obj/item/clothing/under/rank/psych/turtleneck
-	desc = "A turquoise turtleneck and a pair of dark blue slacks, belonging to a psychologist."
-	name = "psychologist's turtleneck"
-	icon_state = "psychturtle"
-	item_state = "b_suit"
-	flags_jumpsuit = FALSE

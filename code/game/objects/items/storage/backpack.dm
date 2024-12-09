@@ -679,6 +679,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	xeno_types = null
 
+/obj/item/storage/backpack/marine/smock/select_gamemode_skin()
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			name = "\improper M60 Sniper Cloak"
+			desc = "A specially-designed cloak with thermal dampering waterproof coating, designed for urban environments. Doesn't have the optical camouflage electronics that more advanced M68 cloak has."
+
 /obj/item/storage/backpack/marine/marsoc
 	name = "\improper USCM SOF IMP tactical rucksack"
 	icon_state = "tacrucksack"
@@ -762,6 +769,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/cloak_cooldown
 
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			icon_state = "u_scout_cloak"
+		else
+			icon_state = "scout_cloak"
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))

@@ -16,7 +16,7 @@
 
 // Spec verb macros
 /mob/living/carbon/human/verb/spec_activation_one()
-	set category = "Specialist"
+	set category = null
 	set name = "Specialist Activation One"
 	set hidden = TRUE
 
@@ -28,7 +28,7 @@
 			SA.handle_spec_macro()
 
 /mob/living/carbon/human/verb/spec_activation_two()
-	set category = "Specialist"
+	set category = null
 	set name = "Specialist Activation Two"
 	set hidden = TRUE
 

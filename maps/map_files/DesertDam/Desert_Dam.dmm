@@ -10,6 +10,12 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -190,6 +196,12 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -225,6 +237,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
+"aaZ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -41858,12 +41876,6 @@
 	acided_hole_dir = 4
 	},
 /area/desert_dam/interior/dam_interior/garage)
-"fPk" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/closed/wall,
-/area/desert_dam/building/dorms/hallway_westwing)
 "fPp" = (
 /obj/structure/surface/rack,
 /turf/open/floor/prison/darkyellow2/north,
@@ -46218,12 +46230,6 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_medical)
-"phw" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_two)
 "phA" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/blocker/toxic_water/Group_2,
@@ -50720,12 +50726,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/desert_dam/building/mining/workshop)
-"ydD" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
 "ydM" = (
 /obj/structure/platform/metal/almayer,
 /obj/effect/blocker/toxic_water/Group_1,
@@ -55101,7 +55101,7 @@ bht
 bht
 bht
 bht
-ydD
+aaZ
 afc
 dTs
 dTs
@@ -55708,7 +55708,7 @@ cDY
 cDY
 cDY
 cDY
-phw
+aaR
 cDY
 cDY
 cDY
@@ -94558,7 +94558,7 @@ dBr
 dBr
 dBr
 dBr
-fPk
+aac
 eaQ
 dZn
 dHE

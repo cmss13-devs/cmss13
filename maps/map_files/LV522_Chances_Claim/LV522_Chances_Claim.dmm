@@ -593,6 +593,12 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
+"acm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
 "acn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -17374,12 +17380,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/kitchen)
-"jxX" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop2/lv522)
 "jyf" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement,
@@ -79888,7 +79888,7 @@ aIp
 aIp
 aIp
 aIp
-jxX
+acm
 aIp
 aIp
 aIp

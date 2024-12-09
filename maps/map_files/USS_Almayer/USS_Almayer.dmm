@@ -131,9 +131,46 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
+"aas" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
+"aat" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/lower/workshop)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
+"aav" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaw" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aax" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
+"aay" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -6271,7 +6308,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/aft_hallway)
 "aPD" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/machinery/photocopier{
+	pixel_y = 12
+	},
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 8;
+	icon_state = "chestdrawer"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aPE" = (
@@ -8798,6 +8841,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
@@ -21570,15 +21614,15 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = 8;
-	pixel_y = 18
-	},
 /obj/structure/machinery/power/apc/almayer/west,
 /obj/structure/sign/safety/rewire{
 	pixel_x = -17;
 	pixel_y = 17
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
@@ -23577,8 +23621,11 @@
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "fOz" = (
-/obj/structure/target{
-	name = "punching bag"
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/sea_office)
@@ -35831,7 +35878,7 @@
 /obj/structure/filingcabinet/security{
 	pixel_x = -8
 	},
-/obj/structure/filingcabinet/medical{
+/obj/structure/filingcabinet/documentation/uscm_mp{
 	pixel_x = 8
 	},
 /turf/open/floor/wood/ship,
@@ -43942,21 +43989,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
 "olM" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
@@ -56176,6 +56211,12 @@
 /obj/structure/machinery/keycard_auth{
 	pixel_y = 25
 	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	pixel_x = 8;
+	icon_state = "chestdrawer";
+	density = 0
+	},
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/shipboard/brig/chief_mp_office)
 "tiI" = (
@@ -64652,7 +64693,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
 "wvo" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet/documentation/liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "wvu" = (
@@ -80547,7 +80588,7 @@ cmM
 tzd
 tzd
 sgi
-bju
+aax
 wSm
 kAL
 xkd
@@ -85219,7 +85260,7 @@ gwR
 sTm
 tdT
 qyo
-tsy
+aav
 qwp
 ora
 laO
@@ -85519,7 +85560,7 @@ xyw
 xyw
 xyw
 xyw
-xyw
+aas
 xyw
 xyw
 xyw
@@ -85625,7 +85666,7 @@ wjq
 wjq
 rHc
 qyo
-tsy
+aaw
 qwp
 vGA
 uwN
@@ -118811,7 +118852,7 @@ uZF
 xoj
 xoj
 osI
-qXk
+aat
 fie
 pUj
 xoj
@@ -119928,7 +119969,7 @@ eky
 aDQ
 pyy
 eky
-eky
+aay
 eky
 dLc
 aDQ

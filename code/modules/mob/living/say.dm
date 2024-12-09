@@ -138,21 +138,26 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					var/mob/M = I
 					listening += M
 					hearturfs += M.locs[1]
-					for(var/obj/O in M.contents)
-						var/obj/item/clothing/worn_item = O
-						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
-							listening_obj |= O
+					for(var/obj/hearing_obj in M.contents)
+						var/obj/item/clothing/worn_item = hearing_obj
+						if((hearing_obj.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
+							listening_obj |= hearing_obj
+							for(var/obj/item/device/radio/listening_bug/bug in hearing_obj.contents)
+								listening_obj |= bug
 				else if(istype(I, /obj/structure/surface))
 					var/obj/structure/surface/table = I
 					hearturfs += table.locs[1]
-					for(var/obj/O in table.contents)
-						if(O.flags_atom & USES_HEARING)
-							listening_obj |= O
+					for(var/obj/hearing_obj in table.contents)
+						if(hearing_obj.flags_atom & USES_HEARING)
+							listening_obj |= hearing_obj
 				else if(istype(I, /obj/))
-					var/obj/O = I
-					hearturfs += O.locs[1]
-					if(O.flags_atom & USES_HEARING)
-						listening_obj |= O
+					var/obj/hearing_obj = I
+					hearturfs += hearing_obj.locs[1]
+					if(hearing_obj.flags_atom & USES_HEARING)
+						listening_obj |= hearing_obj
+						for(var/obj/item/device/radio/listening_bug/bug in hearing_obj.contents)
+							listening_obj |= bug
+
 
 			for(var/mob/M as anything in GLOB.player_list)
 				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
@@ -173,9 +178,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-		for(var/obj/O as anything in listening_obj)
-			if(O) //It's possible that it could be deleted in the meantime.
-				O.hear_talk(src, message, verb, speaking, italics)
+		for(var/obj/hearing_obj as anything in listening_obj)
+			if(hearing_obj) //It's possible that it could be deleted in the meantime.
+				hearing_obj.hear_talk(src, message, verb, speaking, italics)
 
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

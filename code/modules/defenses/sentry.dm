@@ -275,9 +275,15 @@
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		sleep(3)
 
+
 	if(ammo && ammo.current_rounds <= 0)
 		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
 		return
+
+	if(map_icon_passive)
+		SSminimaps.remove_marker(src)
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, iconstate = "sentry_firing")
+		map_icon_passive = FALSE
 
 	last_fired = world.time
 
@@ -463,6 +469,10 @@
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing
+		if(!map_icon_passive)
+			SSminimaps.remove_marker(src)
+			SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, iconstate = "sentry_passive")
+			map_icon_passive = TRUE
 		return
 
 	fire(target)

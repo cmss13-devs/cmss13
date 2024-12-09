@@ -123,6 +123,11 @@
 			set_security_level(SEC_LEVEL_RED)
 			return
 
+/obj/docking_port/mobile/marine_dropship/Destroy(force)
+	. = ..()
+	if(!QDELETED(door_control))
+		QDEL_NULL(door_control)
+
 /obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	for(var/place in shuttle_areas)

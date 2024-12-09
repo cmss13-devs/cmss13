@@ -141,6 +141,8 @@
 /// Pulls mob's area's sound_environment and applies if necessary and not overridden.
 /datum/soundOutput/proc/update_area_environment()
 	var/area/owner_area = get_area(owner.mob)
+	if(!owner_area)
+		return
 	var/new_environment = owner_area.sound_environment
 
 	if(owner.mob.sound_environment_override != SOUND_ENVIRONMENT_NONE) //override in effect, can't apply

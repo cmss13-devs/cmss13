@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes UPP CO whitelist not working."
-  - code_imp: "Tidies up some back-end code."

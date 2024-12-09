@@ -2269,7 +2269,6 @@
 "aiR" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/card,
-/obj/structure/machinery/computer/guestpass,
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/gamma/hangar/security)
 "aiS" = (
@@ -6108,7 +6107,6 @@
 /area/corsat/sigma/hangar/id)
 "ayr" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -6840,7 +6838,6 @@
 /area/corsat/sigma/airlock/south)
 "aAS" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/security)
 "aAT" = (
@@ -14652,9 +14649,6 @@
 /area/corsat/sigma/hangar/security)
 "bcw" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	dir = 1
-	},
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/redcorner,
 /area/corsat/sigma/hangar/checkpoint)
@@ -22197,7 +22191,6 @@
 /area/corsat/gamma/engineering)
 "bJx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
 /turf/open/floor/corsat/red/north,
 /area/corsat/gamma/hangar/cargo)
 "bJA" = (
@@ -24329,7 +24322,6 @@
 /area/corsat/sigma/hangar/checkpoint)
 "bSK" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
 /turf/open/floor/corsat/redcorner,
 /area/corsat/sigma/hangar/checkpoint)
 "bSM" = (
@@ -25801,9 +25793,6 @@
 "bZz" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	dir = 1
-	},
 /turf/open/floor/corsat/red,
 /area/corsat/gamma/hangar/cargo)
 "bZD" = (
@@ -36155,9 +36144,6 @@
 /area/corsat/sigma/biodome)
 "mJm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	reason = "Visitor"
-	},
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/theta/biodome/complex)
 "mJq" = (

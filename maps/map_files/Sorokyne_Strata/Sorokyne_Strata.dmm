@@ -2015,11 +2015,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
-"aii" = (
-/obj/structure/machinery/computer/guestpass,
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
 "aij" = (
 /obj/item/device/flashlight/lamp,
 /obj/structure/surface/table/reinforced/prison,
@@ -13105,10 +13100,6 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
-	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outside/administration)
@@ -19405,7 +19396,6 @@
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "eNz" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/guestpass,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
@@ -71063,7 +71053,7 @@ bon
 bon
 bon
 adz
-aii
+aeB
 aiV
 ajC
 aiV

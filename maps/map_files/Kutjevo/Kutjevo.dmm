@@ -12827,9 +12827,6 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "tMH" = (
-/obj/structure/machinery/computer/guestpass{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med)
@@ -14861,10 +14858,6 @@
 "wXV" = (
 /obj/structure/window/reinforced{
 	dir = 8
-	},
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	pixel_y = 7
 	},
 /obj/structure/machinery/computer/cameras{
 	dir = 4;

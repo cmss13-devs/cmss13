@@ -18657,7 +18657,6 @@
 /area/fiorina/tumor/ice_lab)
 "omb" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/guestpass,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
@@ -26753,14 +26752,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
-"uEh" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "uEj" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/prison,
@@ -66468,7 +66459,7 @@ oMW
 goG
 dYq
 chg
-uEh
+chg
 gZx
 goG
 fAf

@@ -2,20 +2,15 @@
 	icon = 'icons/lobby/icon.dmi'
 	prefix = FALSE
 
-/datum/asset/simple/icon_states/lobby_art
-	icon = 'icons/lobby/title.dmi'
-	prefix = FALSE
+/datum/asset/simple/lobby_art/register()
+	var/icon = SSlobby_art.selected_file_name
 
-/datum/asset/simple/icon_states/lobby_art/register()
-	var/picked_icon_state = pick(icon_states(icon))
-
-	var/asset = icon(icon, picked_icon_state)
+	var/asset = icon("config/lobby_art/[icon].png")
 	if (!asset)
 		return
+
 	asset = fcopy_rsc(asset) //dedupe
-	var/asset_name = sanitize_filename("[prefix ? "[prefix]." : ""][picked_icon_state].png")
-	if (generic_icon_names)
-		asset_name = "[generate_asset_name(asset)].png"
+	var/asset_name = sanitize_filename("[icon].png")
 
 	SSassets.transport.register_asset(asset_name, asset)
 	assets[asset_name] = asset

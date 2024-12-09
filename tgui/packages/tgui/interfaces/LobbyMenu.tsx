@@ -1,5 +1,12 @@
 import { BooleanLike } from 'common/react';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Modal, Section, Stack } from '../components';
@@ -16,6 +23,7 @@ type LobbyData = {
   character_name: string;
   display_number: string;
 
+  tutorials_ready: BooleanLike;
   round_start: BooleanLike;
   readied: BooleanLike;
 
@@ -25,79 +33,109 @@ type LobbyData = {
   fax_responder_enabled: BooleanLike;
 };
 
+type LobbyContextType = {
+  animationsDisable: boolean;
+};
+
+const LobbyContext = createContext({ animationsDisable: false });
+
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const ref = useRef<HTMLAudioElement>(null);
-  const quiet = useRef<HTMLAudioElement>(null);
+  const { lobby_icon } = data;
+
+  const interactionPlayer = useRef<HTMLAudioElement>(null);
+  const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
   const [modal, setModal] = useState<ReactNode | false>(false);
 
+  const [disableAnimations, setDisableAnimations] = useState(false);
+
   useEffect(() => {
-    quiet.current!.volume = 0.4;
+    onLoadPlayer.current!.volume = 0.4;
+
+    setTimeout(() => {
+      setDisableAnimations(true);
+    }, 10000);
   });
+
+  const playInterfactionSfx = () => {
+    interactionPlayer.current!.play();
+  };
 
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
-      <audio autoPlay src={data.sound} ref={quiet} />
-      <audio src={data.sound_interact} ref={ref} />
+      <audio autoPlay src={data.sound} ref={onLoadPlayer} />
+      <audio src={data.sound_interact} ref={interactionPlayer} />
       <Window.Content
-        className="LobbyScreen"
+        className={`LobbyScreen ${disableAnimations}`}
         style={{
           backgroundPosition: 'center',
           backgroundSize: 'cover',
         }}
         fitted
-        onClick={() => {
-          ref.current!.play();
-        }}
       >
-        {!!modal && (
-          <Modal>
-            <Section
-              buttons={
-                <Button mb={5} onClick={() => setModal(false)} icon={'x'} />
-              }
-              p={3}
-              title={'Confirm'}
-            >
-              {modal}
-            </Section>
-          </Modal>
-        )}
-        <Box
-          height="100%"
-          width="100%"
-          style={{
-            backgroundImage: `url(${data.lobby_icon})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            position: 'absolute',
-          }}
-          className="bgLoad"
-        />
-        <Box
-          height="100%"
-          width="100%"
-          style={{
-            position: 'absolute',
-          }}
-          className="crt"
-        />
-        <Stack vertical height="100%" justify="space-around" align="center">
-          <Stack.Item>
-            <LobbyButtons setModal={setModal} />
-          </Stack.Item>
-        </Stack>
+        <LobbyContext.Provider value={{ animationsDisable: disableAnimations }}>
+          {!!modal && (
+            <Modal>
+              <Section
+                buttons={
+                  <Button mb={5} onClick={() => setModal(false)} icon={'x'} />
+                }
+                p={3}
+                title={'Confirm'}
+              >
+                {modal}
+              </Section>
+            </Modal>
+          )}
+          <Box
+            height="100%"
+            width="100%"
+            style={{
+              backgroundImage: `url(${lobby_icon})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              position: 'absolute',
+            }}
+            className="bgLoad"
+          />
+          <Box
+            height="100%"
+            width="100%"
+            style={{
+              position: 'absolute',
+            }}
+            className="crt"
+          />
+          <Stack vertical height="100%" justify="space-around" align="center">
+            <Stack.Item>
+              <LobbyButtons
+                setModal={setModal}
+                playInteractionSfx={playInterfactionSfx}
+                disableAnimations={disableAnimations}
+              />
+            </Stack.Item>
+          </Stack>
+        </LobbyContext.Provider>
       </Window.Content>
     </Window>
   );
 };
 
-const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
-  const { act, data } = useBackend<LobbyData>();
+const LobbyButtons = (props: {
+  readonly setModal: (_) => void;
+  readonly playInteractionSfx: () => void;
+  readonly disableAnimations: boolean;
+}) => {
+  const { act: original, data } = useBackend<LobbyData>();
 
-  const { setModal } = props;
+  const { setModal, playInteractionSfx, disableAnimations } = props;
+
+  const act = (arg: string) => {
+    original(arg);
+    playInteractionSfx();
+  };
 
   const {
     character_name,
@@ -107,6 +145,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
     predator_enabled,
     fax_responder_enabled,
     upp_enabled,
+    tutorials_ready,
   } = data;
 
   return (
@@ -169,7 +208,11 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
 
         <TimedDivider />
 
-        <LobbyButton index={1} onClick={() => act('tutorial')}>
+        <LobbyButton
+          index={1}
+          onClick={() => act('tutorial')}
+          disabled={!tutorials_ready}
+        >
           Tutorial
         </LobbyButton>
         <LobbyButton index={2} onClick={() => act('preferences')}>
@@ -391,10 +434,16 @@ type LobbyButtonProps = BoxProps & {
 const LobbyButton = (props: LobbyButtonProps) => {
   const { children, index, className, ...rest } = props;
 
+  const context = useContext<LobbyContextType>(LobbyContext);
+
   return (
     <Stack.Item
       className="buttonEffect"
-      style={{ animationDelay: `${1.5 + index * 0.2}s` }}
+      style={{
+        animationDelay: context.animationsDisable
+          ? '0s'
+          : `${1.5 + index * 0.2}s`,
+      }}
     >
       <Button fluid className={'distinctButton ' + className} {...rest}>
         {children}

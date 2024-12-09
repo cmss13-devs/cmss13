@@ -41,6 +41,10 @@
   font-weight: 700;
 }
 
+.noAnimation {
+  animation-delay: 0s !important;
+}
+
 @keyframes bg-load {
   from {
     opacity: 0;

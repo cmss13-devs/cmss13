@@ -40,11 +40,15 @@
 
 	.["icon"] = get_asset_datum(/datum/asset/simple/icon_states/lobby).get_url_mappings()["uscm.png"]
 
-	var/icons = get_asset_datum(/datum/asset/simple/icon_states/lobby_art).get_url_mappings()
-	.["lobby_icon"] = icons[icons[1]]
-
 	.["sound"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["load"]
 	.["sound_interact"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["interact"]
+
+	.["lobby_icon"] = ""
+	.["lobby_author"] = ""
+	if(SSlobby_art.initialized)
+		var/icons = get_asset_datum(/datum/asset/simple/lobby_art).get_url_mappings()
+		.["lobby_icon"] = icons[icons[1]]
+		.["lobby_author"] = SSlobby_art.author
 
 /mob/new_player/ui_data(mob/user)
 	. = ..()
@@ -57,20 +61,23 @@
 	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
 	.["display_number"] = xeno_text
 
+	.["tutorials_ready"] = SSticker?.current_state == GAME_STATE_PLAYING
 	.["round_start"] = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
 	.["readied"] = ready
 
 	.["upp_enabled"] = GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name
 	.["xenomorph_enabled"] = client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH))
-	.["predator_enabled"] = SSticker.mode.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
-	.["fax_responder_enabled"] = SSticker.mode.check_fax_responder_late_join(src, FALSE)
+	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
+	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
 
 /mob/new_player/ui_assets(mob/user)
 	. = ..()
 
 	. += get_asset_datum(/datum/asset/simple/icon_states/lobby)
-	. += get_asset_datum(/datum/asset/simple/icon_states/lobby_art)
 	. += get_asset_datum(/datum/asset/simple/lobby_sound)
+
+	if(SSlobby_art.initialized)
+		. += get_asset_datum(/datum/asset/simple/lobby_art)
 
 /mob/new_player/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -223,14 +230,6 @@
 
 	client.playtitlemusic()
 
-	// To show them the full lobby art. This fixes itself on a mind transfer so no worries there.
-	client.change_view(GLOB.lobby_view_size)
-	// Credit the lobby art author
-	if(GLOB.displayed_lobby_art != -1)
-		var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-		var/author = lobby_authors[GLOB.displayed_lobby_art]
-		if(author != "Unknown")
-			to_chat(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 	if(GLOB.current_tms)
 		to_chat(src, SPAN_BOLDANNOUNCE(GLOB.current_tms))
 	if(GLOB.join_motd)

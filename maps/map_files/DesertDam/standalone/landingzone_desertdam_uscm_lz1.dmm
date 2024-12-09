@@ -2970,9 +2970,8 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Yg" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_one)
+/turf/template_noop,
+/area/template_noop)
 "Yh" = (
 /obj/structure/machinery/light{
 	dir = 8

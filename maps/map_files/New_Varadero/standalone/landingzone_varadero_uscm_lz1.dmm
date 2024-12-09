@@ -3524,11 +3524,8 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "Co" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Pontoon Dock"
-	},
-/turf/open/floor/plating/icefloor,
-/area/varadero/exterior/lz1_near)
+/turf/template_noop,
+/area/template_noop)
 "Cp" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1

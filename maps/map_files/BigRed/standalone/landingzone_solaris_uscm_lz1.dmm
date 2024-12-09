@@ -416,11 +416,8 @@
 /turf/open/mars/mars_dirt_5,
 /area/bigredv2/outside/nw)
 "jH" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Communications Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
+/turf/template_noop,
+/area/template_noop)
 "jJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached,

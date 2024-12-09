@@ -2,6 +2,12 @@
 "a" = (
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
+"b" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	faction = "Yautja"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 
 (1,1,1) = {"
 a
@@ -10,7 +16,7 @@ a
 "}
 (2,1,1) = {"
 a
-a
+b
 a
 "}
 (3,1,1) = {"

@@ -2,6 +2,13 @@
 "a" = (
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"b" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: Palm Airfield";
+	faction = "Yautja"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 
 (1,1,1) = {"
 a
@@ -10,7 +17,7 @@ a
 "}
 (2,1,1) = {"
 a
-a
+b
 a
 "}
 (3,1,1) = {"

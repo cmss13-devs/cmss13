@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aab" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
@@ -41698,7 +41706,7 @@ wMw
 wMw
 wMw
 wMw
-wMw
+aaa
 xcE
 wMw
 wMw
@@ -55149,7 +55157,7 @@ lTg
 wlB
 wlB
 wlB
-wlB
+aab
 wlB
 lTg
 wlB

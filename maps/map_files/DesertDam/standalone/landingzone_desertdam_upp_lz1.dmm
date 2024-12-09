@@ -1449,10 +1449,7 @@
 /area/desert_dam/building/mining/workshop_foyer)
 "wZ" = (
 /obj/structure/machinery/floodlight/landing/floor,
-/turf/open/floor/almayer{
-	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
-	},
+/turf/open/floor/almayer/test_floor5,
 /area/event/dynamic/lit)
 "xc" = (
 /obj/structure/fence,

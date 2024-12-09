@@ -4,6 +4,24 @@
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
 	toggleable_flags = MODE_NO_SNIPER_SENTRY|MODE_NO_ATTACK_DEAD|MODE_NO_STRIPDRAG_ENEMY|MODE_STRONG_DEFIBS|MODE_BLOOD_OPTIMIZATION|MODE_NO_COMBAT_CAS|MODE_INDESTRUCTIBLE_SPLINTS|MODE_NO_INTERNAL_BLEEDING|MODE_MORTAR_LASER_WARNING
 	taskbar_icon = 'icons/taskbar/gml_hvh.png'
+	var/upp_ship = "ssv_rostock.dmm"
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/pre_setup()
+	. = ..()
+	var/datum/map_template/template = SSmapping.map_templates[upp_ship]
+	if(!template)
+		return
+
+	log_debug("Attempting load of template [template.name] as new event Z-Level as requested by [name]")
+	var/datum/space_level/loaded = template.load_new_z()
+	if(!loaded?.z_value)
+		log_debug("Failed to load the template to a Z-Level!")
+
+	var/center_x = floor(loaded.bounds[MAP_MAXX] / 2) // Technically off by 0.5 due to above +1. Whatever
+	var/center_y = floor(loaded.bounds[MAP_MAXY] / 2)
+
+	// Now notify the staff of the load - this goes in addition to the generic template load game log
+	message_admins("Successfully loaded template as new Z-Level, template name: [template.name]", center_x, center_y, loaded.z_value)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/get_roles_list()
 	return GLOB.ROLES_CM_VS_UPP

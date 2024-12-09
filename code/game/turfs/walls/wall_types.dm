@@ -272,7 +272,42 @@
 	walltype = WALL_SULACO
 
 
+//UPP walls.
 
+/turf/closed/wall/almayer/upp
+	walltype = WALL_UPP_BASE
+	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
+	icon_state = "uppwall"
+
+/turf/closed/wall/almayer/upp/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/upp/reinforced/outer
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
+
+/turf/closed/wall/strata_outpost
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/strata_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/strata_outpost/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
 /turf/closed/wall/indestructible
 	name = "wall"
@@ -280,8 +315,6 @@
 	icon_state = "riveted"
 	opacity = TRUE
 	hull = 1
-
-
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"

@@ -5,7 +5,7 @@
 #define LEAP_HEIGHT 210 //how high up leaps go, in pixels
 
 /obj/effect/king_leap
-	icon = 'icons/mob/xenos/king.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	icon_state = "Normal King Charging"
 	layer = 4.7
 	plane = -4

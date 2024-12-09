@@ -155,7 +155,7 @@
 
 /obj/item/storage/secure/safe
 	name = "secure safe"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/safes.dmi'
 	icon_state = "wallsafe"
 	icon_opened = "safe0"
 	icon_locking = "safeb"

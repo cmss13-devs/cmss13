@@ -362,7 +362,7 @@
 
 /datum/behavior_delegate/drone_gardener/on_update_icons()
 	if(!fruit_sac_overlay_icon)
-		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi', "Gardener Drone Walking")
+		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi', "Gardener Drone Walking")
 
 	bound_xeno.overlays -= fruit_sac_overlay_icon
 	fruit_sac_overlay_icon.overlays.Cut()

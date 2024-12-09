@@ -1,7 +1,7 @@
 /obj/item/poster
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	icon_state = "rolled_poster"
 	force = 0
 	w_class = SIZE_SMALL
@@ -21,7 +21,7 @@
 /obj/structure/sign/poster
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	anchored = TRUE
 	var/serial_number //determines the design of the poster
 	var/ruined = 0

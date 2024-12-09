@@ -806,7 +806,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	closer = new
 	closer.master = src
 
-	select_gamemode_skin(type)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type)
 	post_skin_selection()
 	fill_preset_inventory()
 	update_icon()

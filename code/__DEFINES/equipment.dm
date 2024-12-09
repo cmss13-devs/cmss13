@@ -48,6 +48,8 @@
 #define USES_SEEING (1<<19)
 // Can be quick drawn
 #define QUICK_DRAWABLE (1<<20)
+// If object should utilize icon state indexes for map colors (s_ d_ etc) in select_gamemode_skin
+#define MAP_COLOR_INDEX (1<<21)
 
 //==========================================================================================
 
@@ -247,6 +249,11 @@
 #define SLOT_BLOCK_SUIT_STORE (1<<16)
 //=================================================
 
+//garb overrides
+#define NO_GARB_OVERRIDE null
+#define PREFIX_HAT_GARB_OVERRIDE "%PREFIX_HAT_GARB_OVERRIDE%"
+#define PREFIX_HELMET_GARB_OVERRIDE "%PREFIX_HELMET_GARB_OVERRIDE%"
+
 //slots
 //Text strings so that the slots can be associated when doing inventory lists.
 #define WEAR_ID "id"
@@ -279,6 +286,7 @@
 #define WEAR_IN_L_STORE  "in_l_store"
 #define WEAR_IN_R_STORE  "in_r_store"
 #define WEAR_IN_SHOES "in_shoes"
+#define WEAR_AS_GARB "as_garb"
 
 // Contained Sprites
 #define WORN_LHAND "_lh"

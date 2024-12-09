@@ -6,9 +6,12 @@
 	name = "\improper power cell"
 	desc = "A rechargeable electrochemical power cell."
 	icon = 'icons/obj/structures/machinery/power.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	icon_state = "cell"
 	item_state = "cell"
-
 	force = 5
 	throwforce = 5
 	throw_speed = SPEED_VERY_FAST

@@ -1461,7 +1461,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "OG" = (
-/obj/item/storage/belt/shotgun/full/quackers,
+/obj/item/toy/inflatable_duck,
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
 "OK" = (

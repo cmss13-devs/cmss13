@@ -280,6 +280,10 @@
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
 	gender = PLURAL
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL

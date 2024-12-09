@@ -1,7 +1,7 @@
 /obj/item/tool/crew_monitor
 	name = "crew monitor"
 	desc = "A tool used to get coordinates to deployed personnel. It was invented after it was found out 3/4 command officers couldn't read numbers."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
@@ -27,7 +27,7 @@
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor" //autocompressor
 	desc = "A device that gives regular compression to the victim's ribcage, used in case of urgent heart issues.\nClick a person with it to place it on them."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "autocomp"
 	item_state = "autocomp"
 	item_state_slots = list(WEAR_JACKET = "autocomp")
@@ -42,6 +42,9 @@
 	var/pump_cost = 20
 	var/obj/item/cell/pdcell = null
 	movement_compensation = 0
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/objects.dmi',
+	)
 
 /obj/item/clothing/suit/auto_cpr/Initialize(mapload, ...)
 	. = ..()
@@ -190,7 +193,11 @@
 /obj/item/tool/portadialysis
 	name = "portable dialysis machine"
 	desc = "A man-portable dialysis machine, with a small internal battery that can be recharged. Filters out all foreign compounds from the bloodstream of whoever it's attached to, but also typically ends up removing some blood as well."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "portadialysis"
 	item_state = "syringe_0"
 	flags_equip_slot = SLOT_WAIST

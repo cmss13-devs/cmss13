@@ -1,6 +1,6 @@
 /obj/structure/lamarr
 	name = "Lab Cage"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/furniture/display_case.dmi'
 	icon_state = "labcage1"
 	desc = "A glass lab container for storing interesting creatures."
 	density = TRUE
@@ -80,7 +80,12 @@
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
 	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
-	sterile = 1
+	item_state_slots = list(WEAR_AS_GARB = "lamarr")
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	sterile = TRUE
 	gender = FEMALE
 	black_market_value = 50
 

@@ -2,6 +2,10 @@
 	name = "organ"
 	desc = "It looks like it probably just plopped out."
 	icon = 'icons/obj/items/organs.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/organs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/organs_righthand.dmi',
+	)
 	icon_state = "appendix"
 
 	/// Process() ticks before death.

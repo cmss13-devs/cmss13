@@ -263,7 +263,7 @@ Each var depends on others
 
 /obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	desc = "Activates the filtration mechanism."
 	var/id = null

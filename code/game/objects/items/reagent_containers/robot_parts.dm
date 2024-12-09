@@ -1,6 +1,10 @@
 /obj/item/robot_parts
 	name = "robot parts"
 	icon = 'icons/obj/items/robot_parts.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 	item_state = "buildpipe"
 	icon_state = "blank"
 	flags_atom = FPRINT|CONDUCT

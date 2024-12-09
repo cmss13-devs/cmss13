@@ -3,7 +3,7 @@
 /obj/item/handheld_distress_beacon
 	name = "\improper PMC handheld distress beacon"
 	desc = "A standard handheld distress beacon. Generally used by teams who may be out of regular communications range but must signal for assistance. This one is branded with a Weyland Yutani symbol and sold en masse to colonies across the Neroid Sector."
-	icon = 'icons/obj/items/handheld_distress_beacon.dmi'
+	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "beacon_inactive"
 	w_class = SIZE_SMALL
 

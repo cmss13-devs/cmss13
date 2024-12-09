@@ -11,7 +11,7 @@
  */
 
 /obj/item/storage/donut_box
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	name = "\improper Yum! donuts"
 	desc = "A box of mouth-watering \"<i>Yum!</i>\" brand donuts."
@@ -43,7 +43,7 @@
 	var/i = 0
 	for(var/obj/item/reagent_container/food/snacks/donut/D in contents)
 		i++
-		var/image/img = image('icons/obj/items/food.dmi', "[D.overlay_state]-[i]")
+		var/image/img = image('icons/obj/items/food/donuts.dmi', "[D.overlay_state]-[i]")
 		overlays += img
 
 /obj/item/storage/donut_box/empty
@@ -89,7 +89,7 @@
 /obj/item/storage/beer_pack
 	name = "beer pack"
 	desc = "A pack of Aspen beer cans."
-	icon = 'icons/obj/items/drinkcans.dmi'
+	icon = 'icons/obj/items/food/drinkcans.dmi'
 	icon_state = "6_pack_6"
 	item_state = "souto_classic"
 	storage_slots = 6

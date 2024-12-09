@@ -1,5 +1,10 @@
 /obj/item/weapon/energy
 	var/active = 0
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+	)
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
 
 /obj/item/weapon/energy/axe

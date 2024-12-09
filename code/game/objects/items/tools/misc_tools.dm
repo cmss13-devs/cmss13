@@ -58,10 +58,10 @@
 	if(isturf(A))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
-	if(istype(A, /obj/item/storage/pill_bottle))		
+	if(istype(A, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/target_pill_bottle = A
 		target_pill_bottle.choose_color(user)
-	
+
 	if(!label || !length(label))
 		remove_label(A, user)
 		return
@@ -452,3 +452,14 @@
 	icon_state = "carpenters_hammer" //yay, it now has a sprite.
 	item_state = "carpenters_hammer"
 	desc = "Can be used to thwack nails into wooden objects to repair them."
+
+/obj/item/tool/dumbbell
+	name = "dumbbell"
+	desc = "Lift it for strength, or drop it on your toe for instant enlightenment, either way this dumbbell delivers results."
+	icon_state = "dumbbell"
+	item_state = "dumbbell"
+	icon = 'icons/obj/items/items.dmi'
+
+/obj/item/tool/dumbbell/alt
+	icon_state = "dumbbell_2"
+	item_state = "dumbbell"

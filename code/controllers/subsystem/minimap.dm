@@ -371,12 +371,12 @@ SUBSYSTEM_DEF(minimaps)
 /proc/get_tacmap_data_png(faction)
 	var/list/map_list
 
+	if(faction == XENO_HIVE_NORMAL)
+		map_list = GLOB.xeno_flat_tacmap_data
 	if(faction == FACTION_MARINE)
 		map_list = GLOB.uscm_flat_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_flat_tacmap_data
-	else
-		return null
+	if(faction == FACTION_UPP)
+		map_list = GLOB.upp_flat_tacmap_data
 
 	var/map_length = length(map_list)
 
@@ -394,7 +394,9 @@ SUBSYSTEM_DEF(minimaps)
 /proc/get_unannounced_tacmap_data_png(faction)
 	if(faction == FACTION_MARINE)
 		return GLOB.uscm_unannounced_map
-	else if(faction == XENO_HIVE_NORMAL)
+	if(faction == FACTION_UPP)
+		return GLOB.upp_unannounced_map
+	if(faction == XENO_HIVE_NORMAL)
 		return GLOB.xeno_unannounced_map
 
 	return null
@@ -412,6 +414,8 @@ SUBSYSTEM_DEF(minimaps)
 		map_list = GLOB.uscm_svg_tacmap_data
 	else if(faction == XENO_HIVE_NORMAL)
 		map_list = GLOB.xeno_svg_tacmap_data
+	else if(faction == FACTION_UPP)
+		map_list = GLOB.upp_svg_tacmap_data
 	else
 		return null
 
@@ -469,6 +473,10 @@ SUBSYSTEM_DEF(minimaps)
 		if(!COOLDOWN_FINISHED(GLOB, xeno_flatten_map_icon_cooldown))
 			return FALSE
 		COOLDOWN_START(GLOB, xeno_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
+	else if(faction == FACTION_UPP)
+		if(!COOLDOWN_FINISHED(GLOB, upp_flatten_map_icon_cooldown))
+			return FALSE
+		COOLDOWN_START(GLOB, upp_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
 	else
 		return FALSE
 
@@ -500,10 +508,12 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 
+	if(faction == XENO_HIVE_NORMAL)
+		GLOB.xeno_unannounced_map = new_flat
 	if(faction == FACTION_MARINE)
 		GLOB.uscm_unannounced_map = new_flat
-	else //if(faction == XENO_HIVE_NORMAL)
-		GLOB.xeno_unannounced_map = new_flat
+	if(faction == FACTION_UPP)
+		GLOB.upp_unannounced_map = new_flat
 
 	return TRUE
 
@@ -522,11 +532,13 @@ SUBSYSTEM_DEF(minimaps)
 		GLOB.uscm_svg_tacmap_data += svg_store_overlay
 	else if(faction == XENO_HIVE_NORMAL)
 		GLOB.xeno_svg_tacmap_data += svg_store_overlay
+	else if(faction == FACTION_UPP)
+		GLOB.upp_svg_tacmap_data += svg_store_overlay
 	else
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
+#define can_draw(faction, user) (( skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -735,6 +747,11 @@ SUBSYSTEM_DEF(minimaps)
 	allowed_flags = MINIMAP_FLAG_XENO
 	owner = xeno_tacmap
 
+/datum/tacmap/drawing/status_tab_view/upp/New()
+	var/datum/tacmap/drawing/status_tab_view/upp/upp_tacmap
+	allowed_flags = MINIMAP_FLAG_UPP
+	owner = upp_tacmap
+
 /datum/tacmap/Destroy()
 	map_holder = null
 	owner = null
@@ -776,7 +793,7 @@ SUBSYSTEM_DEF(minimaps)
 	old_map = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
+	var/use_live_map = skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
 
 	if(use_live_map && !map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
@@ -821,8 +838,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(isxeno(user))
 		data["canvasCooldown"] = max(GLOB.xeno_canvas_cooldown - world.time, 0)
-	else
+	if(allowed_flags == MINIMAP_FLAG_USCM)
 		data["canvasCooldown"] = max(GLOB.uscm_canvas_cooldown - world.time, 0)
+	if(allowed_flags == MINIMAP_FLAG_UPP)
+		data["canvasCooldown"] = max(GLOB.upp_canvas_cooldown - world.time, 0)
 
 	data["updatedCanvas"] = updated_canvas
 
@@ -958,34 +977,41 @@ SUBSYSTEM_DEF(minimaps)
 			if(!drawing_allowed)
 				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
 				return FALSE
-
 			if(!istype(params["image"], /list)) // potentially very serious?
 				return FALSE
 
-			var/cooldown_satisfied = FALSE
+			var/cooldown_satisfied = TRUE
 			if(faction == FACTION_MARINE)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
 			else if(faction == XENO_HIVE_NORMAL)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, xeno_canvas_cooldown)
+			else if (faction == FACTION_UPP)
+				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, upp_canvas_cooldown)
+
 			if(!cooldown_satisfied)
 				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
 				return FALSE
-
-			if(faction == FACTION_MARINE)
-				GLOB.uscm_flat_tacmap_data += new_current_map
-				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
-				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
-				var/mob/living/carbon/human/human_leader = user
-				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
-				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
-				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
-			else if(faction == XENO_HIVE_NORMAL)
+			if(faction == XENO_HIVE_NORMAL)
 				GLOB.xeno_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
 				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
 				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
+			else
+				if(faction == FACTION_MARINE)
+					GLOB.uscm_flat_tacmap_data += new_current_map
+					COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				if(faction == FACTION_UPP)
+					GLOB.upp_flat_tacmap_data += new_current_map
+					COOLDOWN_START(GLOB, upp_canvas_cooldown, CANVAS_COOLDOWN_TIME)
+				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+					if(faction == current_squad.faction)
+						current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
+				var/mob/living/carbon/human/human_leader = user
+				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
+				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
+				notify_ghosts(header = "Tactical Map", message = "The [faction] tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
+
 
 			store_current_svg_coords(faction, params["image"], user)
 			current_svg = get_tacmap_data_svg(faction)

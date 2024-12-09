@@ -16,6 +16,7 @@ import { Window } from '../layouts';
 type LobbyData = {
   icon: string;
   lobby_icon: string;
+  lobby_author: string;
 
   sound: string;
   sound_interact: string;
@@ -42,7 +43,7 @@ const LobbyContext = createContext({ animationsDisable: false });
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { lobby_icon } = data;
+  const { lobby_icon, lobby_author } = data;
 
   const interactionPlayer = useRef<HTMLAudioElement>(null);
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
@@ -117,6 +118,9 @@ export const LobbyMenu = () => {
               />
             </Stack.Item>
           </Stack>
+          <Box className="bgLoad authorAttrib">
+            {lobby_author ? `Art by ${lobby_author}` : ''}
+          </Box>
         </LobbyContext.Provider>
       </Window.Content>
     </Window>

@@ -15,12 +15,15 @@ SUBSYSTEM_DEF(lobby_art)
 	selected_file_name = lobby_arts[index]
 
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	if(length(lobby_authors) && index >= length(lobby_authors))
+	if(length(lobby_authors) && length(lobby_authors) > index)
 		author = lobby_authors[index]
 
 	for(var/client/client as anything in GLOB.clients)
 		var/mob/new_player/player = client.mob // if something is no longer a new player this early, i'm happy with a runtime
-		player.update_static_data(player)
+
+		var/datum/tgui/ui = SStgui.get_open_ui(player, player)
+		ui.send_full_update(force = TRUE)
+
 		player.lobby_window.send_asset(get_asset_datum(/datum/asset/simple/lobby_art))
 
 	return SS_INIT_SUCCESS

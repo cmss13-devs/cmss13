@@ -131,9 +131,34 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
+"aas" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aat" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
+"aav" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -21570,15 +21595,15 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = 8;
-	pixel_y = 18
-	},
 /obj/structure/machinery/power/apc/almayer/west,
 /obj/structure/sign/safety/rewire{
 	pixel_x = -17;
 	pixel_y = 17
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
@@ -43942,21 +43967,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
 "olM" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
@@ -64652,7 +64665,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
 "wvo" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet/documentation/liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "wvu" = (
@@ -80547,7 +80560,7 @@ cmM
 tzd
 tzd
 sgi
-bju
+aav
 wSm
 kAL
 xkd
@@ -85219,7 +85232,7 @@ gwR
 sTm
 tdT
 qyo
-tsy
+aas
 qwp
 ora
 laO
@@ -85625,7 +85638,7 @@ wjq
 wjq
 rHc
 qyo
-tsy
+aat
 qwp
 vGA
 uwN

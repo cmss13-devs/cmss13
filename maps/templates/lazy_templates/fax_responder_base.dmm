@@ -1,4 +1,43 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/uscm{
+	pixel_x = 9;
+	density = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ab" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/provost{
+	density = 0;
+	pixel_x = 9;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/wy{
+	pixel_x = 9;
+	density = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "am" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
@@ -977,12 +1016,12 @@ Yy
 xX
 xX
 Ei
-EI
+ab
 gu
 gu
 gu
 Pn
-EI
+aa
 gu
 gu
 gu
@@ -1399,7 +1438,7 @@ Yy
 Yy
 xX
 BC
-EI
+ac
 gu
 gu
 gu

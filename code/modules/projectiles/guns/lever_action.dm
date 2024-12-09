@@ -406,26 +406,11 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()
 	if(.)
-		RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
-		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
-
-/obj/item/weapon/gun/lever_action/xm88/proc/scope_on(atom/source, mob/current_user)
-	SIGNAL_HANDLER
-
-	RegisterSignal(current_user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
-	update_mouse_pointer(current_user)
-
-/obj/item/weapon/gun/lever_action/xm88/proc/scope_off(atom/source, mob/current_user)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(current_user, COMSIG_MOB_FIRED_GUN)
-	current_user.client?.mouse_pointer_icon = null
+		RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
 
 /obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
 	. = ..()
-
-	user.client?.mouse_pointer_icon = null
-	UnregisterSignal(src, list(COMSIG_ITEM_ZOOM, COMSIG_ITEM_UNZOOM))
+	UnregisterSignal(user, COMSIG_MOB_FIRED_GUN)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_fired_mouse_pointer(mob/user)
 	SIGNAL_HANDLER
@@ -434,13 +419,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return
 
 	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
-	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user, TRUE), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
-/obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
+/obj/item/weapon/gun/lever_action/xm88/update_mouse_pointer(mob/user, new_cursor)
 	if(user.client?.prefs.custom_cursors)
-		user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+		user.client?.mouse_pointer_icon = new_cursor ? get_scaling_mouse_pointer(floating_penetration) : initial(user.client?.mouse_pointer_icon)
 
-/obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
+/obj/item/weapon/gun/lever_action/xm88/proc/get_scaling_mouse_pointer(level)
 	switch(level)
 		if(FLOATING_PENETRATION_TIER_0)
 			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
@@ -454,7 +439,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 			return 'icons/effects/mouse_pointer/xm88/xm88-4.dmi'
 		else
 			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
-
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_fired_mouse_pointer(level)
 	switch(level)

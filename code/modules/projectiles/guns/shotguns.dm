@@ -45,6 +45,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/shotgun/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/shotgun_mouse.dmi'
+
 /obj/item/weapon/gun/shotgun/proc/replace_tube(number_to_replace)
 	if(!current_mag)
 		return

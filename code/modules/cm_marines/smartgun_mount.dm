@@ -518,6 +518,17 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
 
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
+/obj/structure/machinery/m56d_hmg/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client?.mouse_pointer_icon = new_cursor ? get_mouse_pointer() : initial(user.client?.mouse_pointer_icon)
+
+///Getter proc. Returns the weapon's crosshair icon.
+/obj/structure/machinery/m56d_hmg/proc/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -676,6 +687,7 @@
 /obj/structure/machinery/m56d_hmg/proc/exit_interaction()
 	SIGNAL_HANDLER
 
+	update_mouse_pointer(operator, FALSE)
 	operator.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
@@ -917,6 +929,7 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 
 	operator = user
+	update_mouse_pointer(operator, TRUE)
 	flags_atom |= RELAY_CLICK
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)

@@ -38,6 +38,8 @@
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
 		cock(user)
 
+/obj/item/weapon/gun/pistol/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/pistol_mouse.dmi'
 
 /obj/item/weapon/gun/pistol/set_gun_config_values()
 	..()

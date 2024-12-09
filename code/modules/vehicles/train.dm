@@ -27,6 +27,11 @@
 	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
 
+/obj/vehicle/train/Destroy(force)
+	. = ..()
+	lead = null
+	tow = null
+
 /obj/vehicle/train/Move()
 	var/old_loc = get_turf(src)
 	. = ..()

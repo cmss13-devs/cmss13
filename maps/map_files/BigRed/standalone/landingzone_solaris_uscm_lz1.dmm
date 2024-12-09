@@ -1,10 +1,38 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/stack/rods{
+	pixel_y = 11;
+	pixel_x = -11
+	},
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/space_port)
+"ab" = (
+/obj/item/stack/rods{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/telecomm)
+"ac" = (
+/obj/item/stack/sheet/metal{
+	pixel_y = 9;
+	pixel_x = 9
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/telecomm)
 "ad" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"ae" = (
+/obj/item/stack/rods{
+	pixel_y = 11;
+	pixel_x = -11
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/telecomm)
 "af" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4
@@ -26,10 +54,6 @@
 "aK" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/outside/lz1_north_cas)
-"aW" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
-/area/bigredv2/outside/space_port)
 "bc" = (
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/space_port)
@@ -809,13 +833,6 @@
 "sb" = (
 /turf/open/floor/asteroidwarning/north,
 /area/bigred/ground/garage_workshop)
-"sc" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/obj/structure/window_frame/solaris,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "sg" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/lz1_north_cas)
@@ -882,10 +899,6 @@
 "tI" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigred/ground/garage_workshop)
-"tJ" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "tX" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -1068,11 +1081,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
-"xF" = (
-/obj/item/shard,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkgreen2,
-/area/bigredv2/outside/space_port)
 "xL" = (
 /obj/item/folder/yellow,
 /turf/open/floor/dark,
@@ -1175,12 +1183,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
-"AZ" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "Bb" = (
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/floor/plating,
@@ -1526,11 +1528,6 @@
 "Hr" = (
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/lz1_north_cas)
-"Hu" = (
-/obj/structure/bed/chair/office/dark,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/dark,
-/area/bigredv2/outside/space_port)
 "Hv" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
@@ -1655,10 +1652,6 @@
 "JW" = (
 /turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
-"JX" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor/dark,
-/area/bigredv2/outside/space_port)
 "Kb" = (
 /obj/structure/surface/table,
 /obj/item/device/radio/headset,
@@ -1669,7 +1662,11 @@
 /area/bigredv2/outside/nw)
 "Ko" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/window_frame/solaris,
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Spaceport";
+	name = "\improper Spaceport Shutters"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "Kr" = (
@@ -2179,10 +2176,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_telecomm_cas)
-"Uv" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "Uz" = (
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/floor/plating,
@@ -2212,10 +2205,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/darkgreen2/east,
-/area/bigredv2/outside/space_port)
-"Vp" = (
-/obj/item/shard,
-/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "Vv" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
@@ -2360,10 +2349,6 @@
 	dir = 4
 	},
 /turf/open/asphalt/cement/cement1/north,
-/area/bigredv2/outside/space_port)
-"XI" = (
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "XZ" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
@@ -3289,9 +3274,9 @@ Lm
 Lm
 Lm
 Lm
-Az
-Az
-Az
+ae
+ac
+ab
 Lm
 Nb
 vQ
@@ -4458,8 +4443,8 @@ kp
 VT
 nl
 ZZ
-XI
-Uv
+nl
+nl
 nl
 nl
 nl
@@ -4517,7 +4502,7 @@ nl
 nl
 nl
 ZZ
-AZ
+nl
 nl
 nl
 uT
@@ -4786,7 +4771,7 @@ OE
 OE
 OE
 OE
-Hu
+QO
 hs
 Gn
 nl
@@ -4891,7 +4876,7 @@ VT
 cB
 pZ
 pZ
-JX
+OE
 pZ
 pZ
 OE
@@ -4899,7 +4884,7 @@ Nw
 Xj
 nl
 uT
-tJ
+nl
 lT
 YP
 HF
@@ -4946,14 +4931,14 @@ qr
 OE
 OE
 OE
-aW
 OE
 OE
-xF
-sc
+OE
+kW
+Gn
 nl
 uT
-Vp
+nl
 Wc
 HI
 HF
@@ -4966,7 +4951,7 @@ Cq
 OE
 pZ
 pZ
-WF
+aa
 Kv
 WE
 Xm

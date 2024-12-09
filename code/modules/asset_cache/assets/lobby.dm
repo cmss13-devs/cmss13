@@ -5,6 +5,9 @@
 /datum/asset/simple/lobby_art/register()
 	var/icon = SSlobby_art.selected_file_name
 
+	if(!icon)
+		return
+
 	var/asset = icon("config/lobby_art/[icon].png")
 	if (!asset)
 		return

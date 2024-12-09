@@ -211,6 +211,9 @@
 	. = attack_alien(M)
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
+	if(SEND_SIGNAL(M, COMSIG_XENO_ENTER_TUNNEL) & COMPONENT_CANCEL_TUNNEL)
+		return XENO_NO_DELAY_ACTION
+
 	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 

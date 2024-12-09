@@ -509,3 +509,6 @@ GLOBAL_LIST(trait_name_map)
 #define HACKED_TRAIT "hacked"
 /// traits from chloroform usage
 #define CHLOROFORM_TRAIT "chloroform"
+
+// from watchtower.dm
+#define TRAIT_ON_WATCHTOWER "on_watchtower"

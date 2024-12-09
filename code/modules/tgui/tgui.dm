@@ -51,16 +51,16 @@
  * optional title string The title of the UI.
  * optional ui_x int Deprecated: Window width.
  * optional ui_y int Deprecated: Window height.
+ * optional window datum/tgui_window: The window to display this TGUI within
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y, datum/tgui_window/window)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
 	src.user = user
 	src.src_object = src_object
-	src.window_key = "[REF(src_object)]-main"
 	src.interface = interface
 	if(title)
 		src.title = title
@@ -68,6 +68,13 @@
 	// Deprecated
 	if(ui_x && ui_y)
 		src.window_size = list(ui_x, ui_y)
+
+	if(window)
+		src.window = window
+		src.window_key = window.id
+	else
+		src.window_key = "[REF(src_object)]-main"
+
 
 /datum/tgui/Destroy()
 	user = null
@@ -84,12 +91,13 @@
 /datum/tgui/proc/open()
 	if(!user.client)
 		return FALSE
-	if(window)
-		return FALSE
+//	if(window)
+//		return FALSE
 	process_status()
 	if(status < UI_UPDATE)
 		return FALSE
-	window = SStgui.request_pooled_window(user)
+	if(!window)
+		window = SStgui.request_pooled_window(user)
 	if(!window)
 		return FALSE
 	opened_at = world.time

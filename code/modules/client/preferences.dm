@@ -1864,7 +1864,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					save_cooldown = world.time + 50
 					var/mob/new_player/np = user
 					if(istype(np))
-						np.new_player_panel_proc()
+						np.tgui_interact(np)
 
 				if("reload")
 					if(reload_cooldown > world.time)
@@ -1890,7 +1890,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					close_load_dialog(user)
 					var/mob/new_player/np = user
 					if(istype(np))
-						np.new_player_panel_proc()
+						np.tgui_interact(np)
 
 					update_all_pickers(user)
 

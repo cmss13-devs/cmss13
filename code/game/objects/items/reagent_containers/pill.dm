@@ -108,7 +108,7 @@
 			SPAN_HELPFUL("You <b>fed</b> [M] a pill."),
 			SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
 			SPAN_NOTICE("[user] fed [M] a pill."))
-		user.count_niche_stat(STATISTICS_NICHE_PILLS)
+		user.count_statistic_stat(STATISTICS_PILLS)
 
 		var/rgt_list_text = get_reagent_list_text()
 

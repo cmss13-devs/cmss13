@@ -165,10 +165,11 @@
 	if(!did_hug)
 		qdel(hugger)
 		return
-	if(client)
-		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+
+	track_ability_usage(STATISTICS_FACEHUGGE, caste_type, 1)
 	hug_successful = TRUE
 	timeofdeath = world.time
+
 	qdel(src)
 	return did_hug
 
@@ -183,7 +184,9 @@
 
 	age = XENO_NORMAL
 
-	total_facehugs = get_client_stat(client, PLAYER_STAT_FACEHUGS)
+	var/datum/entity/statistic/statistic = client?.player_data?.player_entity?.get_statistic(faction, STATISTIC_TYPE_CASTE_ABILITIES, caste_type, STATISTICS_FACEHUGGE)
+	if(statistic)
+		total_facehugs = statistic.value
 	switch(total_facehugs)
 		if(FACEHUG_TIER_1 to FACEHUG_TIER_2)
 			age = XENO_MATURE

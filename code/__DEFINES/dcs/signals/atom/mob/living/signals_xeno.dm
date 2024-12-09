@@ -95,3 +95,7 @@
 
 /// From /mob/living/carbon/xenomorph/proc/do_evolve()
 #define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"
+
+/// From /obj/structure/tunnel/attack_alien() : (mob/living/carbon/xenomorph/xeno)
+#define COMSIG_XENO_ENTER_TUNNEL "xeno_enter_tunnel"
+	#define COMPONENT_CANCEL_TUNNEL (1<<0)

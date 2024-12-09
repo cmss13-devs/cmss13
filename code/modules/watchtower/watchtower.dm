@@ -33,13 +33,8 @@
 
 	for(var/turf/current_turf in top_turfs)
 		for(var/mob/falling_mob in current_turf.contents)
-			if(falling_mob.client)
-				falling_mob.client.change_view(falling_mob.client.view - 2)
-			var/atom/movable/screen/plane_master/roof/roof_plane = falling_mob.hud_used.plane_masters["[ROOF_PLANE]"]
-			roof_plane?.invisibility = 0
 			falling_mob.ex_act(100, 0)
-			UnregisterSignal(falling_mob, COMSIG_ITEM_PICKUP)
-			UnregisterSignal(falling_mob, COMSIG_MOVABLE_PRE_MOVE)
+			on_leave(falling_mob)
 
 	new /obj/structure/girder(get_turf(src))
 	new /obj/structure/girder/broken(locate(x+1, y, z))
@@ -238,27 +233,46 @@
 		if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
+		on_enter(user)
 		var/turf/actual_turf = locate(x, y+1, z)
-		ADD_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
 		user.forceMove(actual_turf)
-		user.client.change_view(user.client.view + 2)
-		var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
-		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
-		add_trait_to_all_guns(user)
-		RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
-		RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_can_move))
+		
 	else if(get_turf(user) == locate(x, y+1, z))
 		if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
-		REMOVE_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
 		var/turf/actual_turf = locate(x, y-1, z)
 		user.forceMove(actual_turf)
-		user.client.change_view(user.client.view - 2)
-		var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
-		roof_plane?.invisibility = 0
-		UnregisterSignal(user, COMSIG_ITEM_PICKUP)
-		UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
+		on_leave(user)
+
+/obj/structure/watchtower/proc/on_enter(mob/user)
+	ADD_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
+	if(user.client)
+		user.client.change_view(user.client.view + 2)
+	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
+	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+	add_trait_to_all_guns(user)
+	RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
+	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_can_move))
+	
+	if(isxeno(user))
+		RegisterSignal(user, COMSIG_XENO_ENTER_TUNNEL, PROC_REF(on_tunnel))
+
+/obj/structure/watchtower/proc/on_tunnel()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_TUNNEL
+
+/obj/structure/watchtower/proc/on_leave(mob/user)
+	REMOVE_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
+	if(user.client)
+		user.client.change_view(max(user.client.view - 2, 7))
+	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
+	roof_plane?.invisibility = 0
+	UnregisterSignal(user, COMSIG_ITEM_PICKUP)
+	UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
+
+	if(isxeno(user))
+		UnregisterSignal(COMSIG_XENO_ENTER_TUNNEL)
 
 /obj/structure/watchtower/proc/add_trait_to_all_guns(mob/user)
 	for(var/obj/item/weapon/gun/gun in user)
@@ -296,18 +310,14 @@
 		
 		var/turf/actual_turf = locate(x, y+1, z)
 		xeno.forceMove(actual_turf)
-		xeno.client.change_view(xeno.client.view + 2)
-		var/atom/movable/screen/plane_master/roof/roof_plane = xeno.hud_used.plane_masters["[ROOF_PLANE]"]
-		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+		on_enter(xeno)
 	else if(get_turf(xeno) == locate(x, y+1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG)
 		if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return
 
 		var/turf/actual_turf = locate(x, y-1, z)
 		xeno.forceMove(actual_turf)
-		xeno.client.change_view(xeno.client.view - 2)
-		var/atom/movable/screen/plane_master/roof/roof_plane = xeno.hud_used.plane_masters["[ROOF_PLANE]"]
-		roof_plane?.invisibility = 0
+		on_leave(xeno)
 	else
 		xeno.animation_attack_on(src)
 		playsound(src, "alien_claw_metal", 25, TRUE)

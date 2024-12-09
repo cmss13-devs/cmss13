@@ -12,8 +12,8 @@
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/speed_node_place, // macro 2, macro 1 is for planting
-		/datum/action/xeno_action/activable/cost_node_place, // macro 3
+		/datum/action/xeno_action/activable/design_speed_node, // macro 2, macro 1 is for planting
+		/datum/action/xeno_action/activable/design_cost_node, // macro 3
 		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 4
 		/datum/action/xeno_action/activable/greater_resin_surge, // macro 5
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
@@ -24,13 +24,12 @@
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
+	hivelord.plasma_gain = XENO_PLASMA_GAIN_TIER_8
+	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
 	hivelord.plasmapool_modifier = 0.5 // -50% plasma pool
 	hivelord.tacklestrength_max = 6 // increase by +1
-	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
-	hivelord.recalculate_health()
-	hivelord.recalculate_plasma()
-	hivelord.recalculate_pheromones()
-	hivelord.recalculate_tackle()
+
+	hivelord.recalculate_everything()
 	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
 
 /datum/action/xeno_action/verb/verb_design_resin()
@@ -47,11 +46,11 @@
 
 /obj/effect/alien/weeds/node/designer/speed
 	name = "Optimized Design Node"
-	icon_state = "weednode"
+	icon_state = "speednode"
 
 /obj/effect/alien/weeds/node/designer/cost
 	name = "Flexible Design Node"
-	icon_state = "weednode"
+	icon_state = "costnode"
 
 // farsight
 /datum/action/xeno_action/onclick/toggle_long_range/designer
@@ -64,23 +63,23 @@
 
 /datum/action/xeno_action/verb/verb_speed_node()
 	set category = "Alien"
-	set name = "Place Optimized Node"
+	set name = "Design Optimized Node"
 	set hidden = TRUE
-	var/action_name = "Place Optimized Node"
+	var/action_name = "Design Optimized Node"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/activable/speed_node_place
-	name = "Place Optimized Node (100)"
+/datum/action/xeno_action/activable/design_speed_node
+	name = "Design Optimized Node (100)"
 	action_icon_state = "place_queen_beacon"
 	plasma_cost = 100
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_speed_node
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/max_speed_reach = 10
 	var/max_speed_nodes = 6
 
-/datum/action/xeno_action/activable/speed_node_place/use_ability(atom/target_atom, mods)
+/datum/action/xeno_action/activable/design_speed_node/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -110,8 +109,8 @@
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 
 	if(target_turf)
-		target_turf.overlays += /obj/effect/warning/alien/weak // Example overlay icon
-		spawn(1 SECONDS) // Automatically remove the overlay after 1 second
+		target_turf.overlays += /obj/effect/warning/alien/weak
+		spawn(1 SECONDS)
 		if(target_turf)
 			target_turf.overlays -= /obj/effect/warning/alien/weak
 
@@ -128,14 +127,13 @@
 		playsound(target_turf, "alien_resin_build", 25)
 
 		if(xeno.speed_node_list.len > max_speed_nodes)
-			// Delete the oldest node (the first one in the list)
 			var/obj/effect/alien/weeds/node/designer/speed/oldest_speed_node = xeno.speed_node_list[1]
 			if(oldest_speed_node)
-				var/turf/old_speed_loc = get_turf(oldest_speed_node.loc) // Get the turf of the oldest node
-				if(old_speed_loc) // Ensure the turf exists
-					new /obj/effect/alien/weeds(old_speed_loc) // Replace with a new /obj/effect/alien/weeds
-				qdel(oldest_speed_node) // Safely delete the old node
-			xeno.speed_node_list.Cut(1, 2) // Remove the first element from the list
+				var/turf/old_speed_loc = get_turf(oldest_speed_node.loc)
+				if(old_speed_loc)
+					new /obj/effect/alien/weeds(old_speed_loc)
+				qdel(oldest_speed_node)
+			xeno.speed_node_list.Cut(1, 2)
 
 	else if(target_turf)
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
@@ -155,23 +153,23 @@
 
 /datum/action/xeno_action/verb/verb_cost_node()
 	set category = "Alien"
-	set name = "Place Flexible Node"
+	set name = "Design Flexible Node"
 	set hidden = TRUE
-	var/action_name = "Place Flexible Node"
+	var/action_name = "Design Flexible Node"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/activable/cost_node_place
-	name = "Place Flexible Node (125)"
+/datum/action/xeno_action/activable/design_cost_node
+	name = "Design Flexible Node (125)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 125
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_cost_node
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/max_cost_reach = 10
 	var/max_cost_nodes = 6
 
-/datum/action/xeno_action/activable/cost_node_place/use_ability(atom/target_atom, mods)
+/datum/action/xeno_action/activable/design_cost_node/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -198,8 +196,8 @@
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 
 	if(target_turf)
-		target_turf.overlays += /obj/effect/warning/alien/weak // Example overlay icon
-		spawn(1 SECONDS) // Automatically remove the overlay after 1 second
+		target_turf.overlays += /obj/effect/warning/alien/weak
+		spawn(1 SECONDS)
 		if(target_turf)
 			target_turf.overlays -= /obj/effect/warning/alien/weak
 
@@ -218,8 +216,7 @@
 		xeno.cost_node_list += cost_nodes
 		playsound(target_turf, "alien_resin_build", 25)
 
-		if(xeno.cost_node_list.len > max_cost_nodes)
-			// Delete the oldest node (the first one in the list)
+		if(xeno.cost_node_list.len > max_cost_nodes) // Delete the oldest node (the first one in the list)
 			var/obj/effect/alien/weeds/node/designer/cost/oldest_cost_node = xeno.cost_node_list[1]
 			if(oldest_cost_node)
 				var/turf/old_cost_loc = get_turf(oldest_cost_node.loc) // Get the turf of the oldest node
@@ -282,7 +279,6 @@
 			if(node_loc)
 				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
-	// Create overlays for cost nodes and schedule their replacement
 	for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
 		if(node)
 			var/turf/node_loc = get_turf(node.loc)
@@ -303,9 +299,9 @@
 			if(node)
 				var/turf/node_loc = get_turf(node.loc)
 				if(node_loc)
-					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
-				qdel(node) // Delete the node
-		xeno.cost_node_list.Cut() // Clear the cost node list
+					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak)
+				qdel(node)
+		xeno.cost_node_list.Cut()
 
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)

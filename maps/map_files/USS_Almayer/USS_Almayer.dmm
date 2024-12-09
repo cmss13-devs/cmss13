@@ -132,77 +132,33 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
 "aas" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/pen{
-	pixel_y = -17
+/obj/structure/filingcabinet{
+	pixel_x = 8
 	},
-/obj/item/paper_bin/uscm{
-	pixel_y = -16
-	},
-/obj/structure/machinery/faxmachine/uscm{
-	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
-	department = "Requisitions";
-	gender = "female"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/req)
-"aat" = (
 /obj/structure/filingcabinet/documentation/uscm{
-	pixel_y = 16;
-	density = 0
+	pixel_x = -8
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aat" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
-/obj/structure/filingcabinet/documentation/liaison,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
-"aaw" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = -8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aax" = (
-/obj/structure/filingcabinet{
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aay" = (
 /obj/structure/filingcabinet/documentation/military_police{
 	pixel_y = 24;
 	density = 0
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
-"aaz" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 18
-	},
-/obj/structure/machinery/power/apc/almayer/west,
-/obj/structure/sign/safety/rewire{
-	pixel_x = -17;
-	pixel_y = 17
-	},
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 18;
-	density = 0;
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/shipboard/brig/evidence_storage)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -20688,6 +20644,21 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/cic_hallway)
+"eAG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/pen{
+	pixel_y = -17
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
+/obj/structure/machinery/faxmachine/uscm{
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	department = "Requisitions";
+	gender = "female"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/req)
 "eAI" = (
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/engineering/lower/engine_core)
@@ -21618,6 +21589,24 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"eVR" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/machinery/power/apc/almayer/west,
+/obj/structure/sign/safety/rewire{
+	pixel_x = -17;
+	pixel_y = 17
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/shipboard/brig/evidence_storage)
 "eVT" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -43977,6 +43966,13 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
+"olM" = (
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "olN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
@@ -64668,6 +64664,10 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
+"wvo" = (
+/obj/structure/filingcabinet/documentation/liaison,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "wvu" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/target{
@@ -79335,7 +79335,7 @@ lrq
 vjB
 gIz
 tpn
-aaz
+eVR
 cak
 vrM
 tpn
@@ -80560,7 +80560,7 @@ cmM
 tzd
 tzd
 sgi
-aay
+aav
 wSm
 kAL
 xkd
@@ -85232,7 +85232,7 @@ gwR
 sTm
 tdT
 qyo
-aaw
+aas
 qwp
 ora
 laO
@@ -85638,7 +85638,7 @@ wjq
 wjq
 rHc
 qyo
-aax
+aat
 qwp
 vGA
 uwN
@@ -101549,7 +101549,7 @@ sPc
 xIQ
 sab
 pQc
-aat
+olM
 aRy
 aRy
 eXr
@@ -103309,7 +103309,7 @@ xIj
 xIj
 bBH
 fKh
-aav
+wvo
 nQA
 nQA
 vEG
@@ -109483,7 +109483,7 @@ bEs
 bIs
 bdm
 rbY
-aas
+eAG
 bOK
 bPD
 bYa

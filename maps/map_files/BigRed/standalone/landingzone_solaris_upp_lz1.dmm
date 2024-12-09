@@ -244,11 +244,6 @@
 	},
 /turf/open/floor/plating,
 /area/event/metal/dynamic/lit)
-"iv" = (
-/turf/closed/wall/solaris/reinforced,
-/area/event/dynamic/lit{
-	name = "ETA Landing Zone"
-	})
 "iA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning,
@@ -475,11 +470,6 @@
 	},
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/filtration_cave_cas)
-"ne" = (
-/turf/open/floor/asteroidfloor/north,
-/area/event/dynamic/lit{
-	name = "ETA Landing Zone"
-	})
 "nn" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/caves_research)
@@ -1743,18 +1733,18 @@
 aN
 gt
 NW
-iv
-iv
-iv
-iv
-iv
-iv
-iv
-iv
-iv
-iv
-iv
-iv
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+ic
 Az
 Az
 Az
@@ -1817,7 +1807,7 @@ go
 qS
 NW
 XW
-iv
+ic
 Az
 Az
 Az
@@ -1880,7 +1870,7 @@ go
 Ur
 NW
 uQ
-iv
+ic
 Az
 Az
 Az
@@ -3967,8 +3957,8 @@ Az
 Az
 Az
 Az
-iv
-ne
+ic
+oh
 ic
 ic
 ic
@@ -4030,7 +4020,7 @@ Az
 Az
 Az
 Az
-iv
+ic
 ic
 ic
 cL
@@ -4093,7 +4083,7 @@ Az
 Az
 Az
 Az
-iv
+ic
 ic
 ZP
 Ni
@@ -4156,7 +4146,7 @@ Az
 Az
 Az
 Az
-iv
+ic
 ic
 ic
 Tj
@@ -4219,8 +4209,8 @@ Az
 Az
 Az
 Az
-iv
-ne
+ic
+oh
 ic
 ic
 ic

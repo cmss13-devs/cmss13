@@ -16,9 +16,9 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
 "aae" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ag/exterior/jungle/carplake_center)
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -91,10 +91,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"aau" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/outpost/platform)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -111,10 +107,6 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aay" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/ug/interior/outpost/platform)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -155,12 +147,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
-"aaE" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/structure/platform_decoration/metal/strata/north,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/auto_turf/strata_grass/layer0,
-/area/strata/ug/interior/jungle/platform/east)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -172,10 +158,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aaH" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/platform/east)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -199,10 +181,6 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"aaN" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/strata,
-/area/strata/ag/interior/landing_zones/near_lz1)
 "aaO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
@@ -13008,6 +12986,10 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/platform)
+"btK" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ug/interior/outpost/platform)
 "btL" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
@@ -13020,6 +13002,10 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/interior/outpost/platform)
+"btO" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/jungle/platform/east)
 "btT" = (
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3,
@@ -14866,6 +14852,10 @@
 "bLw" = (
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/canteen)
+"bLz" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
 "bLB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
@@ -16499,6 +16489,10 @@
 /obj/item/stack/cable_coil/blue,
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/engi/drome)
+"chz" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ag/exterior/jungle/carplake_center)
 "chB" = (
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
@@ -33882,6 +33876,12 @@
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ug/interior/jungle/tearlake)
+"yjl" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/jungle/platform/east)
 "yju" = (
 /obj/structure/platform/stone/strata,
 /obj/structure/platform/stone/strata/west,
@@ -37497,7 +37497,7 @@ cqE
 cqE
 cqE
 cqE
-aaN
+aae
 cqE
 cqE
 cqE
@@ -62893,7 +62893,7 @@ wZZ
 wZZ
 wZZ
 bqf
-aau
+bLz
 wZZ
 wZZ
 wZZ
@@ -63943,7 +63943,7 @@ brs
 bqf
 bqf
 wZZ
-aay
+btK
 wZZ
 wZZ
 rpX
@@ -64643,7 +64643,7 @@ aad
 wKl
 sEs
 lmv
-aaE
+yjl
 wKl
 aad
 srk
@@ -64815,7 +64815,7 @@ bgV
 aXp
 aXp
 xkj
-aaH
+btO
 xkj
 xkj
 xkj
@@ -64991,7 +64991,7 @@ bgV
 aXp
 cwq
 xkj
-aaH
+btO
 cwq
 xkj
 xkj
@@ -67098,7 +67098,7 @@ bDH
 jRc
 cuM
 cuM
-aae
+chz
 cuM
 cuM
 jRc
@@ -68672,7 +68672,7 @@ jRc
 jRc
 cuM
 cuM
-aae
+chz
 piY
 piY
 jRc

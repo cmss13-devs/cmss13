@@ -143,29 +143,6 @@
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/pen{
-	pixel_y = -17
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = -16
-	},
-/obj/structure/machinery/faxmachine/uscm{
-	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
-	department = "Requisitions";
-	gender = "female"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/req)
-"aaw" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/upper/fore_hallway)
-"aax" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
@@ -8828,6 +8805,14 @@
 "bju" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"bjv" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -20647,6 +20632,21 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/cic_hallway)
+"eAG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/pen{
+	pixel_y = -17
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
+/obj/structure/machinery/faxmachine/uscm{
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	department = "Requisitions";
+	gender = "female"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/req)
 "eAI" = (
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/engineering/lower/engine_core)
@@ -95175,7 +95175,7 @@ pcs
 fCW
 fCW
 tTZ
-aaw
+bjv
 tTZ
 dNj
 dNj
@@ -109483,7 +109483,7 @@ bEs
 bIs
 bdm
 rbY
-aav
+eAG
 bOK
 bPD
 bYa
@@ -119941,7 +119941,7 @@ eky
 aDQ
 pyy
 eky
-aax
+aav
 eky
 dLc
 aDQ

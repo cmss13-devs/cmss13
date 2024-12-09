@@ -237,7 +237,7 @@
 	. = ..()
 	link_landing_lights()
 
-/obj/docking_port/stationary/marine_dropship/Destroy()
+/obj/docking_port/stationary/marine_dropship/Destroy(force)
 	. = ..()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
 		light.linked_port = null

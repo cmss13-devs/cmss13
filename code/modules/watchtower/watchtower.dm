@@ -1,3 +1,12 @@
+#define WATCHTOWER_STAGE_WELDED 1
+#define WATCHTOWER_STAGE_COLUMNS 2
+#define WATCHTOWER_STAGE_HEIGHTNED_WELDER 2.5
+#define WATCHTOWER_STAGE_HEIGHTNED_WRENCH 3
+#define WATCHTOWER_STAGE_FLOOR 4
+#define WATCHTOWER_STAGE_BARRICADED 5
+#define WATCHTOWER_STAGE_ROOF_SUPPORT 6
+#define WATCHTOWER_STAGE_COMPLETE 7
+
 /obj/structure/watchtower
 	name = "watchtower"
 	icon = 'icons/obj/structures/watchtower.dmi'
@@ -50,67 +59,67 @@
 
 	overlays.Cut()
 
-	if(stage >= 5)
+	if(stage >= WATCHTOWER_STAGE_BARRICADED)
 		overlays += image(icon=icon, icon_state="railings", layer=ABOVE_MOB_LAYER, pixel_y=25)
 
-	if (stage == 7)
+	if (stage == WATCHTOWER_STAGE_COMPLETE)
 		roof_image = image(icon=icon, icon_state="roof", layer=ABOVE_MOB_LAYER, pixel_y=51)
 		roof_image.plane = ROOF_PLANE
 		roof_image.appearance_flags = KEEP_APART
 		overlays += roof_image
 
-/obj/structure/watchtower/attackby(obj/item/W, mob/user)
-	if(istool(W) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
+/obj/structure/watchtower/attackby(obj/item/item, mob/user)
+	if(istool(item) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
 		return TRUE
 
 	switch(stage)
-		if(1)
-			if(!istype(W, /obj/item/stack/rods))
+		if(WATCHTOWER_STAGE_WELDED)
+			if(!istype(item, /obj/item/stack/rods))
 				return
 
-			var/obj/item/stack/rods/rods = W
+			var/obj/item/stack/rods/rods = item
 
-			if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				return
 
 			if(rods.use(60))
 				to_chat(user, SPAN_NOTICE("You add connection rods to the watchtower."))
-				stage = 2
+				stage = WATCHTOWER_STAGE_COLUMNS
 				update_icon()
 			else
 				to_chat(user, SPAN_NOTICE("You failed to construct the connection rods. You need more rods."))
 
 			return
-		if(2)
-			if(!iswelder(W))
+		if(WATCHTOWER_STAGE_COLUMNS)
+			if(!iswelder(item))
 				return
 
-			if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
 
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			to_chat(user, SPAN_NOTICE("You weld the connection rods to the frame."))
-			stage = 2.5
+			stage = WATCHTOWER_STAGE_HEIGHTNED_WELDER
 
 			return
-		if(2.5)
-			if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(WATCHTOWER_STAGE_HEIGHTNED_WELDER)
+			if(!HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				return
 
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			to_chat(user, SPAN_NOTICE("You elevate the the frame and screw it up top."))
-			stage = 3
+			stage = WATCHTOWER_STAGE_HEIGHTNED_WRENCH
 			update_icon()
 
 			return
-		if(3)
-			if(!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		if(WATCHTOWER_STAGE_HEIGHTNED_WRENCH)
+			if(!HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 				return
 
 			var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
@@ -118,19 +127,19 @@
 				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to continue construction of the watchtower."))
 				return FALSE
 
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(metal.use(50))
 				to_chat(user, SPAN_NOTICE("You construct the watchtower platform."))
-				stage = 4
+				stage = WATCHTOWER_STAGE_FLOOR
 				update_icon()
 			else
 				to_chat(user, SPAN_NOTICE("You failed to construct the watchtower platform, you need more metal sheets in your offhand."))
 
 			return
-		if(4)
-			if(!HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		if(WATCHTOWER_STAGE_FLOOR)
+			if(!HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 				return
 
 			var/obj/item/stack/sheet/plasteel/plasteel = user.get_inactive_hand()
@@ -138,19 +147,19 @@
 				to_chat(user, SPAN_BOLDWARNING("You need plasteel sheets in your offhand to continue construction of the watchtower."))
 				return FALSE
 
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(plasteel.use(25))
 				to_chat(user, SPAN_NOTICE("You construct the watchtower railing."))
-				stage = 5
+				stage = WATCHTOWER_STAGE_BARRICADED
 				update_icon()
 			else
 				to_chat(user, SPAN_NOTICE("You failed to construct the watchtower railing, you need more plasteel sheets in your offhand."))
 
 			return
-		if(5)
-			if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(WATCHTOWER_STAGE_BARRICADED)
+			if (!HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				return
 
 			var/obj/item/stack/rods/rods = user.get_inactive_hand()
@@ -158,22 +167,22 @@
 				to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to continue construction of the watchtower."))
 				return FALSE
 
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(rods.use(60))
 				to_chat(user, SPAN_NOTICE("You construct the watchtower support rods."))
-				stage = 6
+				stage = WATCHTOWER_STAGE_ROOF_SUPPORT
 				update_icon()
 			else
 				to_chat(user, SPAN_NOTICE("You failed to construct the watchtower support rods, you need more metal rods in your offhand."))
 
 			return
-		if(6)
-			if (!iswelder(W))
+		if(WATCHTOWER_STAGE_ROOF_SUPPORT)
+			if (!iswelder(item))
 				return
 
-			if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
 
@@ -182,22 +191,22 @@
 				to_chat(user, SPAN_BOLDWARNING("You need plasteel sheets in your offhand to continue construction of the watchtower."))
 				return FALSE
 
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(plasteel.use(25))
 				to_chat(user, SPAN_NOTICE("You complete the watchtower."))
-				stage = 7
+				stage = WATCHTOWER_STAGE_COMPLETE
 				update_icon()
 			else
 				to_chat(user, SPAN_NOTICE("You failed to complete the watchtower, you need more plasteel sheets in your offhand."))
 
 			return
-		if(7)
-			if (!iswelder(W))
+		if(WATCHTOWER_STAGE_COMPLETE)
+			if (!iswelder(item))
 				return
 
-			if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
 
@@ -206,7 +215,7 @@
 				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to patch the watchtower."))
 				return FALSE
 			
-			if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(metal.use(5))
@@ -230,7 +239,7 @@
 
 /obj/structure/watchtower/attack_hand(mob/user)
 	if(get_turf(user) == locate(x, y-1, z))
-		if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
 		on_enter(user)
@@ -238,7 +247,7 @@
 		user.forceMove(actual_turf)
 		
 	else if(get_turf(user) == locate(x, y+1, z))
-		if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
 		var/turf/actual_turf = locate(x, y-1, z)
@@ -326,23 +335,23 @@
 
 // For Mappers
 /obj/structure/watchtower/stage1
-	stage = 1
+	stage = WATCHTOWER_STAGE_WELDED
 	icon_state = "stage1"
 /obj/structure/watchtower/stage2
-	stage = 2
+	stage = WATCHTOWER_STAGE_COLUMNS
 	icon_state = "stage2"
 /obj/structure/watchtower/stage3
-	stage = 3
+	stage = WATCHTOWER_STAGE_HEIGHTNED_WRENCH
 	icon_state = "stage3"
 /obj/structure/watchtower/stage4
-	stage = 4
+	stage = WATCHTOWER_STAGE_FLOOR
 	icon_state = "stage4"
 /obj/structure/watchtower/stage5
-	stage = 5
+	stage = WATCHTOWER_STAGE_BARRICADED
 	icon_state = "stage5"
 /obj/structure/watchtower/stage6
-	stage = 6
+	stage = WATCHTOWER_STAGE_ROOF_SUPPORT
 	icon_state = "stage6"
 /obj/structure/watchtower/complete
-	stage = 7
+	stage = WATCHTOWER_STAGE_COMPLETE
 	icon_state = "stage7"

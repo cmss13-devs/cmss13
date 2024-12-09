@@ -132,41 +132,52 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
 "aas" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/pen{
+	pixel_y = -17
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
+/obj/structure/machinery/faxmachine/uscm{
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	department = "Requisitions";
+	gender = "female"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/req)
+"aat" = (
 /obj/structure/filingcabinet/documentation/uscm{
 	pixel_y = 16;
 	density = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
-"aat" = (
-/obj/structure/filingcabinet/documentation/liaison,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = -8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
+/obj/structure/filingcabinet/documentation/liaison,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "aaw" = (
 /obj/structure/filingcabinet{
-	pixel_x = -8
+	pixel_x = 8
 	},
 /obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = 8
+	pixel_x = -8
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "aax" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/grass/grass1,
-/area/almayer/medical/upper_medical)
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "aay" = (
 /obj/structure/filingcabinet/documentation/military_police{
 	pixel_y = 24;
@@ -175,13 +186,6 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "aaz" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/turf/open/gm/grass/grass1,
-/area/almayer/medical/upper_medical)
-"aaA" = (
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_x = -8;
@@ -199,18 +203,10 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
-"aaB" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/floor/grass,
-/area/almayer/living/starboard_garden)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
-"aaD" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/floor/grass,
-/area/almayer/living/starboard_garden)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -230,13 +226,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
-"aaG" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/almayer/living/starboard_garden)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -1278,6 +1267,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
+"ahN" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
 "ahR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -1662,6 +1655,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/starboard_garden)
+"alg" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
 "alh" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/plating_catwalk,
@@ -1900,6 +1900,10 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"anp" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1,
+/area/almayer/medical/upper_medical)
 "anq" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -5337,6 +5341,10 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
+"aIx" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
 "aIy" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/east,
@@ -20680,18 +20688,6 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/cic_hallway)
-"eAG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular,
-/obj/item/clipboard,
-/obj/item/tool/pen{
-	pixel_y = -17
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = -16
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/req)
 "eAI" = (
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/engineering/lower/engine_core)
@@ -52409,6 +52405,13 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
+"rGc" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/turf/open/gm/grass/grass1,
+/area/almayer/medical/upper_medical)
 "rGj" = (
 /turf/open/floor/almayer/red,
 /area/almayer/squads/alpha)
@@ -79332,7 +79335,7 @@ lrq
 vjB
 gIz
 tpn
-aaA
+aaz
 cak
 vrM
 tpn
@@ -85229,7 +85232,7 @@ gwR
 sTm
 tdT
 qyo
-aav
+aaw
 qwp
 ora
 laO
@@ -85635,7 +85638,7 @@ wjq
 wjq
 rHc
 qyo
-aaw
+aax
 qwp
 vGA
 uwN
@@ -96999,7 +97002,7 @@ ajl
 ajl
 ajl
 mrL
-aaz
+rGc
 yjb
 ajl
 sqf
@@ -97814,7 +97817,7 @@ xgP
 axm
 wJo
 uol
-aax
+anp
 ajl
 nzv
 fQu
@@ -99610,10 +99613,10 @@ aaa
 aaa
 acv
 aiH
-aaG
+alg
 bBC
 bBC
-aaB
+aIx
 aIB
 aiH
 aet
@@ -99814,7 +99817,7 @@ aaa
 acf
 aet
 avx
-aaD
+ahN
 uli
 uli
 uli
@@ -100220,7 +100223,7 @@ aaa
 acv
 aez
 uli
-aaB
+aIx
 uli
 uli
 mov
@@ -100828,7 +100831,7 @@ aaa
 aaa
 acf
 aet
-aaB
+aIx
 ipK
 ceC
 eRR
@@ -101546,7 +101549,7 @@ sPc
 xIQ
 sab
 pQc
-aas
+aat
 aRy
 aRy
 eXr
@@ -102047,7 +102050,7 @@ aaa
 acf
 aet
 avx
-aaD
+ahN
 aIB
 aKg
 uli
@@ -103306,7 +103309,7 @@ xIj
 xIj
 bBH
 fKh
-aat
+aav
 nQA
 nQA
 vEG
@@ -109480,7 +109483,7 @@ bEs
 bIs
 bdm
 rbY
-eAG
+aas
 bOK
 bPD
 bYa

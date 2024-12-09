@@ -21005,6 +21005,12 @@
 "fCb" = (
 /turf/open/floor,
 /area/bigredv2/outside/filtration_cave_cas)
+"fCM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "fCQ" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/whitegreenfull,
@@ -27951,6 +27957,12 @@
 "mZC" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_virology)
+"mZP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "mZY" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
@@ -35100,6 +35112,12 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/mars,
 /area/bigredv2/outside/s)
+"tYp" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "tZd" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -39713,7 +39731,7 @@ aao
 aao
 aao
 aao
-aao
+mZP
 aao
 aao
 aao
@@ -46286,7 +46304,7 @@ bie
 bie
 bie
 bmM
-bie
+fCM
 bie
 bie
 bie
@@ -58301,7 +58319,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+tYp
 jrD
 jrD
 jrD

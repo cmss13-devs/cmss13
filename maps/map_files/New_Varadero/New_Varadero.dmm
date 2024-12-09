@@ -1098,6 +1098,13 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/security)
+"aQF" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
 "aQG" = (
 /turf/open/floor/shiva/red/northwest,
 /area/varadero/interior/morgue)
@@ -16438,6 +16445,12 @@
 "nrd" = (
 /turf/open/floor/white,
 /area/varadero/interior/security)
+"nrj" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "nrm" = (
 /obj/effect/sentry_landmark/lz_1/top_right,
 /turf/open/floor/asteroidfloor/north,
@@ -25675,6 +25688,12 @@
 "uFq" = (
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/monsoon)
+"uFw" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
 "uFE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -35360,7 +35379,7 @@ qul
 qul
 qul
 qHc
-mJe
+aQF
 xCn
 xCn
 oPQ
@@ -54211,7 +54230,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+uFw
 wUU
 "}
 (132,1,1) = {"
@@ -56431,7 +56450,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+nrj
 wlB
 wlB
 wlB

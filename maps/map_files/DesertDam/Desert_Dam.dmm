@@ -46218,6 +46218,12 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_medical)
+"phw" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "phA" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/blocker/toxic_water/Group_2,
@@ -50714,6 +50720,12 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
 /area/desert_dam/building/mining/workshop)
+"ydD" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "ydM" = (
 /obj/structure/platform/metal/almayer,
 /obj/effect/blocker/toxic_water/Group_1,
@@ -55089,7 +55101,7 @@ bht
 bht
 bht
 bht
-afc
+ydD
 afc
 dTs
 dTs
@@ -55696,7 +55708,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+phw
 cDY
 cDY
 cDY

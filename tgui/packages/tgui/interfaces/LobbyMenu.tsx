@@ -1,4 +1,5 @@
 import { BooleanLike } from 'common/react';
+import { storage } from 'common/storage';
 import {
   createContext,
   ReactNode,
@@ -54,10 +55,15 @@ export const LobbyMenu = () => {
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
   const [modal, setModal] = useState<ReactNode | false>(false);
-
   const [disableAnimations, setDisableAnimations] = useState(false);
 
+  const [filterDisabled, setFilterDisabled] = useState(false);
+
   useEffect(() => {
+    storage
+      .get('lobby-filter-disabled')
+      .then((val) => setFilterDisabled(!!val));
+
     onLoadPlayer.current!.volume = 0.2;
 
     setTimeout(() => {
@@ -73,7 +79,7 @@ export const LobbyMenu = () => {
     <Window theme="crtgreen" fitted scrollbars={false}>
       <audio src={sound} ref={onLoadPlayer} />
       <Window.Content
-        className={`LobbyScreen ${disableAnimations}`}
+        className={`LobbyScreen ${filterDisabled ? '' : 'filterEnabled'} ${disableAnimations}`}
         style={{
           backgroundPosition: 'center',
           backgroundSize: 'cover',
@@ -103,6 +109,16 @@ export const LobbyMenu = () => {
             className="bgLoad bgBackground"
           />
           <Box height="100%" width="100%" position="absolute" className="crt" />
+          <Box position="absolute" top="10px" right="10px">
+            <Button
+              icon="cog"
+              tooltip={`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
+              onClick={() => {
+                storage.set('lobby-filter-disabled', !filterDisabled);
+                setFilterDisabled(!filterDisabled);
+              }}
+            />
+          </Box>
           <Stack vertical height="100%" justify="space-around" align="center">
             <Stack.Item>
               <LobbyButtons setModal={setModal} />

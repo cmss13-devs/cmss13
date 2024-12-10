@@ -1,5 +1,8 @@
 .LobbyScreen {
-  box-shadow: 0 0 15px;
+  &.filterEnabled {
+    box-shadow: 0 0 15px;
+  }
+
   font-size: large;
   font-family: monospace;
   font-weight: 700;
@@ -89,47 +92,57 @@
     }
   }
 
-  .crt {
-    &::before {
-      content: ' ';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: linear-gradient(
-          rgba(18, 16, 16, 0) 50%,
-          rgba(0, 0, 0, 0.25) 50%
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 0, 0, 0.06),
-          rgba(0, 255, 0, 0.02),
-          rgba(0, 0, 255, 0.06)
-        );
-      z-index: 2;
-      background-size:
-        100% 8px,
-        6px 100%;
-      pointer-events: none;
+  @supports (-webkit-hyphens: none) or (-moz-appearance: none) {
+    .Button:hover {
+      background-color: #00e94e;
     }
+  }
 
-    &::after {
-      content: ' ';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: rgba(18, 16, 16, 0.1);
-      opacity: 0;
-      z-index: 2;
-      pointer-events: none;
+  &.filterEnabled {
+    .crt {
+      &::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.06),
+            rgba(0, 255, 0, 0.02),
+            rgba(0, 0, 255, 0.06)
+          );
+        z-index: 2;
+        background-size:
+          100% 8px,
+          6px 100%;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(18, 16, 16, 0.1);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      @supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
+        box-shadow: 0 0 500px 25px rgba(0, 0, 0, 0.9) inset;
+      }
     }
-
-    box-shadow: 0 0 500px 25px rgba(0, 0, 0, 0.9) inset;
   }
 }
 

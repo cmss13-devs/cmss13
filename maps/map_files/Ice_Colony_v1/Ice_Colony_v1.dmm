@@ -5904,11 +5904,6 @@
 /obj/structure/closet/crate/secure,
 /turf/open/floor/engine,
 /area/ice_colony/underground/research/storage/ice_v1)
-"kPE" = (
-/obj/structure/surface/rack,
-/obj/item/device/flash/old,
-/turf/open/floor/darkbrown2/north,
-/area/ice_colony/surface/excavation)
 "kQd" = (
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
@@ -5957,11 +5952,6 @@
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/dark,
 /area/ice_colony/surface/requesitions)
-"kVV" = (
-/obj/structure/surface/table,
-/obj/item/device/flash/old,
-/turf/open/floor/darkyellow2/north,
-/area/ice_colony/surface/research/field_gear)
 "kWi" = (
 /obj/structure/machinery/door_control{
 	id = "Classic_05";
@@ -24789,7 +24779,7 @@ ema
 wNn
 deu
 rsv
-kVV
+xhF
 mzd
 mzd
 mzd
@@ -39926,7 +39916,7 @@ tmN
 fZs
 oZr
 nwL
-kPE
+wbZ
 cUk
 oop
 xxR

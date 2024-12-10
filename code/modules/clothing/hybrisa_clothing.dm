@@ -31,7 +31,6 @@
 	)
 	icon_state = "police_uniform"
 	worn_state = "police_uniform"
-	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -635,7 +634,6 @@
 	)
 	icon_state = "sci_expedition_synth"
 	item_state = "sci_expedition_synth"
-	contained_sprite = TRUE
 	uniform_restricted = null
 
 /////////////////////// Oversuits ///////////////////////
@@ -865,7 +863,7 @@
 	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
@@ -897,7 +895,7 @@
 	desc = "A luxurious fur-lined, antique-styled trench coat that exudes classic noir elegance. This exquisite garment is far beyond the average person's budget, accessible only to high-level executives and elite military personnel."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	icon_state = "wy_expensive_fur_trenchcoat"
 	item_state = "wy_expensive_fur_trenchcoat"
@@ -917,11 +915,10 @@
 	desc = "A black polyester jacket with a Marshal's badge pinned to it. Representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
 	)
 	icon_state = "police_jacket"
 	item_state = "police_jacket"
-	contained_sprite = TRUE
 	uniform_restricted = null
 
 // CMB Vest
@@ -931,7 +928,7 @@
 	desc = "An CMB armored vest that protects against some damage."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
 	)
 	icon_state = "police_ballistic_armor"
 	item_state = "police_ballistic_armor"
@@ -1009,7 +1006,7 @@
 	desc = "A blue 'Weymart' employee vest, with name tag and all."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	icon_state = "weymart_vest"
 	item_state = "weymart_vest"
@@ -1177,7 +1174,7 @@
 	desc = "An NSPA armored vest that protects against some damage."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
 	)
 	icon_state = "nspa_police_ballistic_armor"
 	item_state = "nspa_police_ballistic_armor"
@@ -1197,7 +1194,7 @@
 	desc = "A black polyester jacket with a silver Sakura emblem of the NSPA pinned to it. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
 	)
 	icon_state = "nspa_police_jacket"
 	item_state = "nspa_police_jacket"
@@ -1208,7 +1205,7 @@
 	desc = "A heavy woolen formal coat commonly used by NSPA Constables. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
 	)
 	icon_state = "nspa_police_formal_jacket"
 	item_state = "nspa_police_formal_jacket"
@@ -1219,7 +1216,7 @@
 	desc = "A green and white striped (high-visibility) polyester jacket commonly used by NSPA personnel."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
 	)
 	icon_state = "nspa_hazard_jacket"
 	item_state = "nspa_hazard_jacket"
@@ -1230,7 +1227,7 @@
 	desc = "A green and white high-visibility vest commonly used by NSPA personnel."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
 	)
 	icon_state = "nspa_hazard_vest"
 	item_state = "nspa_hazard_vest"

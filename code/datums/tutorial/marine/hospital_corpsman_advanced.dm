@@ -57,8 +57,7 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		message_to_player("Great. Now pick up your trusty <b>Health Analyzer</b>, and let's get started with the tutorial!")
 		update_objective("")
-		addtimer(CALLBACK(src, PROC_REF(field_surgery_ib)), 2 SECONDS)
-		//RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
+		RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial()
 	SIGNAL_HANDLER

@@ -808,8 +808,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
 			<HR>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
 		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
-		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
-		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
 		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
 	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
@@ -899,24 +897,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
-/*
-	else if (href_list["vieworders"])
-		temp = "Current approved orders: <BR><BR>"
-		for(var/S in GLOB.supply_controller.shoppinglist)
-			var/datum/supply_order/SO = S
-			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-*/
-
-/*
-	else if (href_list["viewrequests"])
-		temp = "Current requests: <BR><BR>"
-		for(var/S in GLOB.supply_controller.requestlist)
-			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-*/
 
 	else if (href_list["mainmenu"])
 		temp = null

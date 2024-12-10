@@ -102,6 +102,9 @@
 /// From /obj/item/grab/attack_self(mob/user)
 #define COMSIG_MOB_GRAB_UPGRADE "grab_upgrade"
 
+/// From /mob/living/proc/do_pull(): (mob/target)
+#define COMSIG_MOB_GRAB_PASSIVE "mob_grab_passive"
+
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
 

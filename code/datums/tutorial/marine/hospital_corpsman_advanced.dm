@@ -54,7 +54,8 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		message_to_player("Great. Now pick up your trusty <b>Health Analyzer</b>, and let's get started with the tutorial!")
 		update_objective("")
-		RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
+		addtimer(CALLBACK(src, PROC_REF(field_surgery)), 2 SECONDS)
+		//RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial()
 	SIGNAL_HANDLER
@@ -785,7 +786,7 @@
 	message_to_player("All Marine Hospital Corpsmen have been trained in basic surgery procedures.")
 	message_to_player("This allows you to carry out simple, but highly effective procedures to heal injured Marines far closer to the frontlines than any Doctor could.")
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_brute()
 
@@ -794,7 +795,7 @@
 	message_to_player("This is where <b>Surgical Damage Treatment</b> comes into play!")
 	message_to_player("Using tools like the <b>Surgical Line</b> (Brute) and <b>Synth-Graft</b> (Burn), a trained Hospital Corpsman can surgically treat damage for specific parts of the body")
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute_2)), 12 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute_2)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_brute_2()
 
@@ -802,7 +803,7 @@
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.rejuvenate()
-	human_dummy.apply_damage(70, BRUTE, "chest")
+	human_dummy.apply_damage(35, BRUTE, "chest")
 	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_brute_3))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_brute_3(datum/source, mob/living/carbon/human/attacked_mob)
@@ -814,9 +815,10 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
-	message_to_player("As you can see, the Dummy has <b>75 Brute Damage</b> on their chest.")
+	message_to_player("As you can see, the Dummy has <b>35 Brute Damage</b> on their chest.")
 	message_to_player("To treat this, we are going to surgically <b>Suture</b> their wounds with a <b>Surgical Line</b>.")
 	message_to_player("But first, we must apply a painkiller to the Dummy, to avoid complications during surgery.")
+	message_to_player("For surgeries that <u>dont</u> require an incision, Tramadol will act as a sufficient painkiller.")
 
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute_4)), 12 SECONDS)
 
@@ -894,9 +896,12 @@
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+	human_dummy.pain.feels_pain = FALSE //failsafe
 
 	message_to_player("Now that Mr Dummy has been medicated with a painkiller, we can begin surgery on their chest.")
 	message_to_player("Pick up the <b>Surgical Line</b> on the desk, and click on Mr Dummy with it while <u>targeting his chest</u> to begin the surgery")
+	message_to_player("Your <b>Surgical Line</b> will heal small portions of damage in repeating intervals until up to <u>half</u> of the regions overall damage.")
+	message_to_player("Stand next to the Dummy and dont move until the surgery has been fully completed")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, tram)
 	remove_highlight(tram)
@@ -925,9 +930,10 @@
 	remove_highlight(mob_chest)
 	remove_highlight(surgical_line)
 
-	message_to_player("Well done! Suturing wounds can only heal up to <u>half</u> of the regions overall damage, and should be used alongside other methods of treatment.")
+	message_to_player("Well done! As said earlier, suturing wounds can only heal up to <u>half</u> of the regions overall damage, and should be used alongside other methods of treatment.")
+	message_to_player("Surgical damage treatment is useful as it can be carried out indefinitely, albeit slowly on the field.")
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_burn)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_burn)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_burn()
 
@@ -938,8 +944,6 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.rejuvenate()
 	human_dummy.apply_damage(70, BURN, "chest")
-	human_dummy.pain.feels_pain = FALSE //so that we dont need to reapply tramadol
-
 	message_to_player("Like Brute damage treatment, <b>Burn Damage</b> can also be surgically treated using a <b>Synth-Graft</b>.")
 	message_to_player("Mr Dummy has taken additional <b>Burn Damage</b> to his chest!")
 	message_to_player("Pick up your <b>Synth-Graft</b>, and apply it to the Dummys <b>Chest</b>.")
@@ -982,9 +986,15 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib()
 
 	message_to_player("<b>Section 3.2: Internal Bleeding</b>.")
+	message_to_player("As mentioned across both this, and the basic Hospital Corpsman tutorial, <b>Internal Bleeding</b> can appear as a dangerous side-effect of a wide range of injuries.")
+	message_to_player("<b>Internal Bleeding</b> can be caused by extreme Brute damage, Armor Piercing attacks, or moving with an <b>Unsplinted Bone Fracture</b>.")
+	message_to_player("If left untreated, Internal Bleeding will quickly lead to extreme <b>Blood Loss</b>.")
+
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_2)), 16 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_2()
 
+	message_to_player("<b>Internal Bleeding</b> requires invasive surgical treatment. Including a <b>Surgical Incision</b>.")
 	message_to_player("While not as extensively fitted as a proper surgical kit, Combat Medics recieve <b>Basic Surgical Case</b> for field use.")
 
 	var/obj/item/storage/surgical_case/regular/surgical_case = new(loc_from_corner(0, 4))
@@ -1005,7 +1015,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/surgical_case/regular, surgical_case)
 	remove_highlight(surgical_case)
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_4)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_4)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_4()
 
@@ -1036,24 +1046,76 @@
 	message_to_player("Excellent! Now, to prepare Mr Dummy for surgery, we need to buckle him to the Roller Bed.")
 	message_to_player("Set your intent to the yellow <b>Grab Intent</b>, and click on Mr Dummy to grab them.")
 
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_6()
+	RegisterSignal(tutorial_mob, COMSIG_MOB_GRAB_PASSIVE, PROC_REF(field_surgery_ib_6))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_6(datum/source, mob/target)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+
+	if(target != human_dummy)
+		return
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_GRAB_PASSIVE)
 
 	message_to_player("Then, drag them next to the <b>Roller Bed</b>, and click and drag your mouse from Mr Dummy, to the Roller bed to buckle them into it.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	RegisterSignal(human_dummy, COMSIG_LIVING_SET_BUCKLED, PROC_REF(field_surgery_ib_7))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_7()
 
-	//TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	//if(human_dummy.buckled)
-	//	UnregisterSignal(human_dummy, COMSIG_LIVING_SET_BUCKLED)
-	//	message_to_player("Well done! It is important that you keep the Dummy secured to the roller bed for the rest of the surgery tutorial.")
-	//	message_to_player("")
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_SET_BUCKLED)
 
+	message_to_player("Now, for the final step before Mr Dummy is ready for Surgery, we must inject him with a powerful painkiller.")
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/roller, rollerdeployed)
+	remove_highlight(rollerdeployed)
 
+	message_to_player("Since Internal Bleeding surgery requires an <b>Incision</b>, we must use a painkiller as strong as, or stronger than, <b>Oxycodone</b>.")
 
+	message_to_player("An <b>Oxycodone Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Use the Autoinjector on Mr Dummy by clicking on them, to administer the <b>Oxycodone</b>")
+
+	var/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use/oxy = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(oxy)
+	add_highlight(oxy, COLOR_GREEN)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	medbelt.handle_item_insertion(oxy)
+	medbelt.update_icon()
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject_self))
+	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/oxy_inject_self()
+	SIGNAL_HANDLER
+
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	living_mob.reagents.clear_reagents()
+	message_to_player("Dont use the injector on yourself, try again.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
+	remove_highlight(oxy)
+	remove_from_tracking_atoms(oxy)
+	qdel(oxy)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_7)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/oxy_inject()
+	//adds a slight grace period, so humans are not rejuved before oxy is registered in their system
+
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_8)), 2 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_8()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
+	remove_highlight(oxy)
+	remove_from_tracking_atoms(oxy)
+	qdel(oxy)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 
 
 

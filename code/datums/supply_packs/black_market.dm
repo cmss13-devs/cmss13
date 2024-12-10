@@ -605,8 +605,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible,
-		/obj/item/storage/belt/marine/quackers,
-		/obj/item/storage/belt/shotgun/full/quackers,
+		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,
@@ -737,6 +736,24 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "45-70 bullet box crate (x300 training rounds)"
 	dollar_cost = 35
 	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot
+	name = "shotgun shell box crate (Type 23, x100 8g slug shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/buck
+	name = "shotgun shell box crate (Type 23, x100 8g buckshot shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/buckshot)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/uppshot/flech
+	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
+	dollar_cost = 115
+	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m16

@@ -1922,7 +1922,7 @@
 /obj/item/weapon/gun/rifle/l23
 	name = "\improper L23 assault rifle"
 	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
 	fire_sound = "gun_nsg23"
@@ -2016,7 +2016,7 @@
 /obj/item/weapon/gun/rifle/l23/breacher
 	name = "\improper L23-B assault rifle"
 	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
 	fire_sound = "gun_nsg23"

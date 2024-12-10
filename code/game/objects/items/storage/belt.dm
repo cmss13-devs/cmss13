@@ -2293,7 +2293,8 @@
 		WEAR_R_HAND = "upp_belt"
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
-		storage_slots = 21
+
+	storage_slots = 21
 
 /obj/item/storage/belt/medical/rmc/full/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/bicaridine(src)

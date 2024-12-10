@@ -345,11 +345,11 @@
 	id = UPP_DROPSHIP_LZ2
 	faction = "UPP"
 	auto_open = TRUE
-	//roundstart_template = /datum/map_template/shuttle/devana
+	roundstart_template = /datum/map_template/shuttle/devana
 
 /obj/docking_port/stationary/marine_dropship/upp_hangar_2/Initialize(mapload)
 	. = ..()
-	//load_roundstart()
+	load_roundstart()
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

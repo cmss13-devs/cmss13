@@ -9429,7 +9429,7 @@
 "hks" = (
 /obj/structure/ladder{
 	height = 2;
-	id = "med1"
+	id = "uppmed1"
 	},
 /obj/structure/sign/safety/ladder{
 	pixel_x = 39;
@@ -21388,7 +21388,7 @@
 "qpJ" = (
 /obj/structure/ladder{
 	height = 1;
-	id = "med1"
+	id = "uppmed1"
 	},
 /obj/structure/sign/safety/ladder{
 	pixel_x = 39

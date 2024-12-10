@@ -51,6 +51,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911/socom/equipped, WEAR_IN_ACCESSORY)
@@ -65,7 +66,7 @@
 	assignment = JOB_CIA_LIAISON
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ILO"
-	minimum_age = 30
+	minimum_age = 25
 	minimap_icon = "aso"
 	idtype = /obj/item/card/id/adaptive
 
@@ -80,17 +81,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/bridge(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/m1911(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/officer/o3
 	name = "CIA Agent (USCM Liaison - Captain)"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
+	minimum_age = 30
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "CIA Agent (Marine Raider Plant)"
-	minimum_age = 30
+	name = "CIA Agent (Marine Raider Embed)"
+	minimum_age = 25
 	skills = /datum/skills/CIA
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
@@ -101,9 +104,6 @@
 	//Custom reduced loadout versus normal MARSOC
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK) //CIA equipment
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof, WEAR_L_EAR)
@@ -134,8 +134,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
 
+/// Spies ///
+
 /datum/equipment_preset/clf/engineer/cia
-	name = "CIA Agent (CLF Engineer Disguise)"
+	name = "CIA Spy (CLF Engineer)"
 	skills = /datum/skills/CIA
 
 /datum/equipment_preset/clf/engineer/cia/New()
@@ -161,7 +163,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK)
+
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_R_STORE)
 
@@ -171,7 +175,7 @@
 
 
 /datum/equipment_preset/upp/soldier/dressed/cia
-	name = "CIA Agent (UPP Soldier Disguise)"
+	name = "CIA Spy (UPP Soldier)"
 	skills = /datum/skills/CIA
 
 /datum/equipment_preset/upp/soldier/dressed/New()
@@ -184,7 +188,7 @@
 
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia
-	name = "CIA Agent (UPP Senior Officer Disguise)"
+	name = "CIA Spy (UPP Senior Officer)"
 	skills = /datum/skills/CIA
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()

@@ -212,7 +212,7 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_roundstart_miasma))
 		return
 
 	log_game("Distress Signal LZ hazards active!")
@@ -419,8 +419,8 @@
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		if(next_stat_check <= world.time)
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))

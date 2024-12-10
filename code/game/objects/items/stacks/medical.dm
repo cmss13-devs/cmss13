@@ -273,7 +273,7 @@
 
 /obj/item/stack/medical/splint/Initialize(mapload, amount)
 	. = ..()
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_INDESTRUCTIBLE_SPLINTS))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/indestructible_splints))
 		icon_state = "nanosplint"
 		indestructible_splints = TRUE
 		update_icon()

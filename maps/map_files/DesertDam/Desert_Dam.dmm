@@ -10927,7 +10927,7 @@
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/hallway)
 "aXP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/hallway)
 "aXQ" = (
@@ -11607,7 +11607,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "baM" = (
@@ -12286,7 +12286,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "bed" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/white,
 /area/desert_dam/building/administration/meetingrooom)
 "bee" = (
@@ -21800,7 +21800,7 @@
 /turf/open/floor/whiteyellow/north,
 /area/desert_dam/interior/dam_interior/break_room)
 "bZm" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteyellow/north,
 /area/desert_dam/interior/dam_interior/break_room)
 "bZn" = (
@@ -22078,7 +22078,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "caw" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/warehouse/breakroom)
 "cax" = (
@@ -22901,7 +22901,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "ceH" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "ceI" = (
@@ -31464,7 +31464,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTo" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTp" = (
@@ -33393,7 +33393,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "deF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "deG" = (
@@ -34386,7 +34386,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "dlF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/loading)
 "dlJ" = (
@@ -35839,7 +35839,7 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dBt" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/greenfull/northwest,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dBu" = (

@@ -7723,7 +7723,7 @@
 /turf/open/floor/darkblue2/north,
 /area/ice_colony/surface/command/checkpoint)
 "aBF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkblue2/northeast,
 /area/ice_colony/surface/command/checkpoint)
 "aBG" = (
@@ -9122,7 +9122,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control)
 "aGu" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkblue2/southeast,
 /area/ice_colony/surface/command/control)
 "aGC" = (
@@ -9638,7 +9638,7 @@
 /turf/open/floor/darkgreencorners2/north,
 /area/ice_colony/surface/hydroponics/lobby)
 "aIx" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIy" = (
@@ -10133,7 +10133,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southwest)
 "aKU" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -10663,7 +10663,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMX" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMY" = (
@@ -11774,7 +11774,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aRx" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -16862,7 +16862,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/north_west)
 "boo" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/north_west)
 "bop" = (
@@ -20786,7 +20786,7 @@
 /turf/open/floor/darkred2/north,
 /area/ice_colony/underground/security/hallway)
 "bDw" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkred2/northeast,
 /area/ice_colony/underground/security/hallway)
 "bDx" = (
@@ -22514,7 +22514,7 @@
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/command/checkpoint)
 "bKi" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkblue2/southeast,
 /area/ice_colony/underground/command/checkpoint)
 "bKj" = (
@@ -25040,7 +25040,7 @@
 /turf/open/floor/darkgreen2/northwest,
 /area/ice_colony/underground/hallway/south_east)
 "bTn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/south_east)
 "bTo" = (
@@ -25418,7 +25418,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/south_east)
 "bUP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkgreen2/east,
 /area/ice_colony/underground/hallway/south_east)
 "bUQ" = (

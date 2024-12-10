@@ -58760,7 +58760,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_y = 16
 	},
 /turf/open/floor/almayer,

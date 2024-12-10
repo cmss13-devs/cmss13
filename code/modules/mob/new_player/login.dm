@@ -1,5 +1,10 @@
 /mob/new_player/var/datum/tgui_window/lobby_window
 
+/mob/new_player/verb/debug_lobby_menu()
+	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
+
+	to_chat(src, SPAN_NOTICE("Your lobby window variables are: lobby_window.status: [lobby_window.status], [ui ? "ui" : "no ui"], ui?.initialized: [ui?.initialized]"))
+
 /mob/new_player/Login()
 	if(!mind)
 		mind = new /datum/mind(key, ckey)
@@ -13,15 +18,22 @@
 		forceMove(locate(1,1,1))
 	lastarea = get_area(src.loc)
 
+	initialize_lobby_screen()
+
+	. = ..()
+
+	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
+
+/mob/new_player/proc/initialize_lobby_screen()
+	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
+	if(ui)
+		ui.close()
+
 	winset(src, "lobby_browser", "is-disabled=false;is-visible=true")
 	lobby_window = new(client, "lobby_browser")
 	lobby_window.initialize()
 
 	tgui_interact(src)
-
-	. = ..()
-
-	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
 
 /mob/new_player/tgui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -231,6 +243,10 @@
 		return
 
 	client.playtitlemusic()
+
+	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
+	if(!ui)
+		initialize_lobby_screen()
 
 	if(GLOB.current_tms)
 		to_chat(src, SPAN_BOLDANNOUNCE(GLOB.current_tms))

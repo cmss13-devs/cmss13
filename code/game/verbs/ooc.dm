@@ -192,6 +192,10 @@
 	if(!mob)
 		return
 
+	if(istype(mob, /mob/new_player))
+		var/mob/new_player/new_player = mob
+		new_player.initialize_lobby_screen()
+
 	for(var/I in mob.open_uis)
 		var/datum/nanoui/ui = I
 		if(!QDELETED(ui))

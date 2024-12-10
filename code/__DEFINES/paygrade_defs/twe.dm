@@ -19,6 +19,9 @@
 /// RNOW, Warrant Officer
 #define PAY_SHORT_RNOW "RNOW"
 
+/// RNOW2, Warrant Officer 2
+#define PAY_SHORT_RNOW2 "RNOW2"
+
 /// RNO1, Second Lieutenant
 #define PAY_SHORT_RNO1 "RNO1"
 

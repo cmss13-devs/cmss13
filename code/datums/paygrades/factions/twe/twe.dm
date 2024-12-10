@@ -36,8 +36,15 @@
 //TWE Warrent Officer
 /datum/paygrade/twe/wo1
 	paygrade = PAY_SHORT_RNOW
-	name = "Warrant Officer"
-	prefix = "WO."
+	name = "Warrant Officer Class 1"
+	prefix = "WO 1."
+	pay_multiplier = 3.5
+	officer_grade = GRADE_OFFICER
+
+/datum/paygrade/twe/wo1
+	paygrade = PAY_SHORT_RNOW
+	name = "Warrant Officer Class 2"
+	prefix = "WO 2."
 	pay_multiplier = 3.5
 	officer_grade = GRADE_OFFICER
 

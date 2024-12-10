@@ -268,7 +268,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
               <Stack>
                 <Stack.Item grow>
                   <LobbyButton index={5} onClick={() => act('late_join')}>
-                    Join the USCM!
+                    Join the USCM
                   </LobbyButton>
                 </Stack.Item>
                 <Stack.Item>

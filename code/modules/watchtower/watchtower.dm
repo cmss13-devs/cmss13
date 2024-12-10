@@ -233,7 +233,7 @@
 		. += SPAN_WARNING("It looks heavily damaged.")
 	else if(dam <= 0.6)
 		. += SPAN_WARNING("It looks moderately damaged.")
-	else if (damage < 1)
+	else if (dam < 1)
 		. += SPAN_DANGER("It looks slightly damaged.")
 			
 
@@ -266,9 +266,15 @@
 	add_trait_to_all_guns(user)
 	RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
 	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_can_move))
+	RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(on_unzoom))
 	
 	if(isxeno(user))
 		RegisterSignal(user, COMSIG_XENO_ENTER_TUNNEL, PROC_REF(on_tunnel))
+
+/obj/structure/watchtower/proc/on_unzoom(mob/user)
+	SIGNAL_HANDLER
+	if(user.client)
+		user.client.change_view(user.client.view + 2)
 
 /obj/structure/watchtower/proc/on_tunnel()
 	SIGNAL_HANDLER

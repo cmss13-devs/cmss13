@@ -1,7 +1,6 @@
 //items designed as weapon
 /obj/item/weapon
 	name = "weapon"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
 	hitsound = "swing_hit"
 	flags_atom = FPRINT|QUICK_DRAWABLE
 

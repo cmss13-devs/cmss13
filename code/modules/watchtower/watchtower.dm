@@ -230,14 +230,17 @@
 	var/dam = health / max_health
 	
 	if(dam <= 0.3)
-		. += SPAN_WARNING("It looks slightly damaged.")
+		. += SPAN_WARNING("It looks heavily damaged.")
 	else if(dam <= 0.6)
 		. += SPAN_WARNING("It looks moderately damaged.")
-	else
-		. += SPAN_DANGER("It looks heavily damaged.")
+	else if (damage < 1)
+		. += SPAN_DANGER("It looks slightly damaged.")
 			
 
 /obj/structure/watchtower/attack_hand(mob/user)
+	if (stage < WATCHTOWER_STAGE_COMPLETE)
+		return
+
 	if(get_turf(user) == locate(x, y-1, z))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
@@ -313,14 +316,14 @@
 	return	
 
 /obj/structure/watchtower/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(get_turf(xeno) == locate(x, y-1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG)
+	if(get_turf(xeno) == locate(x, y-1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG && stage >= WATCHTOWER_STAGE_COMPLETE)
 		if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return
 		
 		var/turf/actual_turf = locate(x, y+1, z)
 		xeno.forceMove(actual_turf)
 		on_enter(xeno)
-	else if(get_turf(xeno) == locate(x, y+1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG)
+	else if(get_turf(xeno) == locate(x, y+1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG && stage >= WATCHTOWER_STAGE_COMPLETE)
 		if(!do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return
 

@@ -214,7 +214,11 @@
 			var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
 			if(!istype(metal))
 				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to patch the watchtower."))
-				return FALSE
+				return 
+
+			if(health >= max_health)
+				to_chat(user, SPAN_NOTICE("The watchtower is in good condition."))
+				return
 			
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
@@ -243,18 +247,39 @@
 		return
 
 	if(get_turf(user) == locate(x, y-1, z))
+		var/people_on_watchtower = 0
+		
+		for(var/turf/current_turf in CORNER_BLOCK_OFFSET(src, 2, 1, 0, 1))
+			for(var/mob/mob in current_turf.contents)
+				if(mob.stat != DEAD)
+					people_on_watchtower++
+		
+		if(people_on_watchtower >= 2)
+			to_chat(user, SPAN_NOTICE("The watchtower is too crowded!"))
+			return
+
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
-		on_enter(user)
+
 		var/turf/actual_turf = locate(x, y+1, z)
+		if(people_on_watchtower < 1 && user.pulling)
+			user.pulling.forceMove(actual_turf)
+			on_enter(user.pulling)
+
 		user.forceMove(actual_turf)
+		on_enter(user)
+
 		
 	else if(get_turf(user) == locate(x, y+1, z))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
 		var/turf/actual_turf = locate(x, y-1, z)
+		if(user.pulling)
+			user.pulling.forceMove(actual_turf)
+			on_leave(user.pulling)
+			
 		user.forceMove(actual_turf)
 		on_leave(user)
 
@@ -266,7 +291,6 @@
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	add_trait_to_all_guns(user)
 	RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
-	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_can_move))
 	RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(on_unzoom))
 	
 	if(isxeno(user))
@@ -288,7 +312,6 @@
 	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 	UnregisterSignal(user, COMSIG_ITEM_PICKUP)
-	UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 
 	if(isxeno(user))
@@ -309,19 +332,6 @@
 	
 	var/obj/item/weapon/gun/gun = picked_up_item
 	gun.add_bullet_traits(list(BULLET_TRAIT_ENTRY_ID("watchtower_arc", /datum/element/bullet_trait_direct_only/watchtower)))
-
-/obj/structure/watchtower/proc/check_can_move(mob/mover, turf/new_loc)
-	SIGNAL_HANDLER
-	var/found = FALSE
-	for(var/turf/current_turf in CORNER_BLOCK_OFFSET(get_turf(src), 2, 1, 0, 1))
-		if (current_turf.x == new_loc.x && current_turf.y == new_loc.y && current_turf.z == new_loc.z)
-			found = TRUE
-			break
-
-	if(!found)	
-		return COMPONENT_CANCEL_MOVE
-
-	return	
 
 /obj/structure/watchtower/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(get_turf(xeno) == locate(x, y-1, z) && xeno.a_intent != INTENT_HARM && xeno.mob_size < MOB_SIZE_BIG && stage >= WATCHTOWER_STAGE_COMPLETE)

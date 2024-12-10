@@ -328,12 +328,16 @@
 	id = UPP_DROPSHIP_LZ1
 	faction = "UPP"
 	auto_open = TRUE
-  //roundstart_template = /datum/map_template/shuttle/morana
-  
+	roundstart_template = /datum/map_template/shuttle/morana
+
 /obj/docking_port/stationary/marine_dropship/upp_hangar_1/Initialize(mapload)
 	. = ..()
-	//load_roundstart()
-  
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1/LateInitialize()
+	. = ..()
+	load_roundstart()
+
 
 
 /obj/docking_port/stationary/marine_dropship/upp_hangar_2

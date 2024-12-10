@@ -298,6 +298,13 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+/obj/item/storage/syringe_case/rmc
+
+/obj/item/storage/syringe_case/rmc/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+
 //---------SURGICAL CASE---------
 
 

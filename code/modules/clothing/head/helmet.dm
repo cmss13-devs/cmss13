@@ -1493,6 +1493,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical
+
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "\improper L5A3 ballistic helmet"
@@ -1507,3 +1510,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 #undef HELMET_GARB_RELAY_ICON_STATE
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/medic
+	name = "\improper L5A2 ballistic helmet"
+	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
+	icon_state = "rmc_helm1"
+	item_state = "rmc_helm1"
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced

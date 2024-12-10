@@ -1888,7 +1888,7 @@
 
 /obj/item/weapon/gun/rifle/l23
 	name = "\improper L23 assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -1982,7 +1982,7 @@
 
 /obj/item/weapon/gun/rifle/l23/breacher
 	name = "\improper L23-B assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -2028,7 +2028,7 @@
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_SG
+	burst_delay = FIRE_DELAY_TIER_SMG
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8

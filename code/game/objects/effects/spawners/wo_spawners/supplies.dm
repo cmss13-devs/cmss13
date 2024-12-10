@@ -63,7 +63,6 @@
 
 
 /obj/effect/landmark/wo_supplies/guns
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 
 /obj/effect/landmark/wo_supplies/guns/common
@@ -71,22 +70,27 @@
 
 /obj/effect/landmark/wo_supplies/guns/common/m41a
 	icon_state = "m41a"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	stuff = list(/obj/item/weapon/gun/rifle/m41a)
 
 /obj/effect/landmark/wo_supplies/guns/common/shotgun
 	icon_state = "m37"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	stuff = list(/obj/item/weapon/gun/shotgun/pump)
 
 /obj/effect/landmark/wo_supplies/guns/common/m39
 	icon_state = "m39"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/smgs.dmi'
 	stuff = list(/obj/item/weapon/gun/smg/m39)
 
 /obj/effect/landmark/wo_supplies/guns/common/m44
 	icon_state = "m44r"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
 	stuff = list(/obj/item/weapon/gun/revolver/m44)
 
 /obj/effect/landmark/wo_supplies/guns/common/m4a3
 	icon_state = "m4a3"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	stuff = list(/obj/item/weapon/gun/pistol/m4a3)
 
 /obj/effect/landmark/wo_supplies/guns/rare
@@ -94,23 +98,26 @@
 
 /obj/effect/landmark/wo_supplies/guns/rare/flamer
 	icon_state = "m240"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	stuff = list(/obj/item/weapon/gun/flamer)
 
 /obj/effect/landmark/wo_supplies/guns/rare/hpr
 	icon_state = "m41ae2"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	stuff = list(/obj/item/weapon/gun/rifle/lmg)
 
 /obj/effect/landmark/wo_supplies/guns/rare/m41aMK1
 	icon_state = "m41amk1"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	stuff = list(/obj/item/weapon/gun/rifle/m41aMK1)
 
 
 /obj/effect/landmark/wo_supplies/storage
 	icon_state = null
+	icon = 'icons/obj/items/clothing/accessory/webbings.dmi'
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/storage/webbing
-	icon = 'icons/obj/items/clothing/ties.dmi'
 	icon_state = "webbing"
 	stuff = list(/obj/item/clothing/accessory/storage/webbing)
 
@@ -120,7 +127,7 @@
 	stuff = list(/obj/item/storage/large_holster/machete/full)
 
 /obj/effect/landmark/wo_supplies/storage/m56d
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "M56D_case"
 	stuff = list(/obj/item/storage/box/m56d_hmg)
 
@@ -137,11 +144,11 @@
 
 /obj/effect/landmark/wo_supplies/storage/m37holster
 	icon_state = "m37_holster"
-	icon = 'icons/obj/items/storage/holsters.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/large_holster/m37)
 
 /obj/effect/landmark/wo_supplies/storage/belts
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	amount = list(1,3)
 
 /obj/effect/landmark/wo_supplies/storage/belts/grenade
@@ -157,22 +164,27 @@
 
 /obj/effect/landmark/wo_supplies/storage/belts/m41abelt
 	icon_state = "marinebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/marine)
 
 /obj/effect/landmark/wo_supplies/storage/belts/knifebelt
 	icon_state = "knifebelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/knifepouch)
 
 /obj/effect/landmark/wo_supplies/storage/belts/shotgunbelt
 	icon_state = "shotgunbelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/shotgun)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m44belt
 	icon_state = "m44r_holster"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/gun/m44)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m4a3belt
 	icon_state = "m4a3_holster"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/gun/m4a3)
 
 /obj/effect/landmark/wo_supplies/storage/belts/m39holster
@@ -184,18 +196,18 @@
 
 /obj/effect/landmark/wo_supplies/storage/belts/lifesaver
 	icon_state = "medicbag"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	stuff = list(/obj/item/storage/belt/medical/lifesaver/full)
 
 
 
 
 /obj/effect/landmark/wo_supplies/ammo
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = ""
 	amount = list(1,5)
 
 /obj/effect/landmark/wo_supplies/ammo/powerpack
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "powerpack"
 	stuff = list(/obj/item/smartgun_battery)
 

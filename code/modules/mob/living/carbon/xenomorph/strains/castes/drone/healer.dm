@@ -151,7 +151,7 @@
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)
-		salve_applied_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi',"Healer Drone Walking")
+		salve_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi',"Healer Drone Walking")
 
 	bound_xeno.overlays -= salve_applied_icon
 	salve_applied_icon.overlays.Cut()

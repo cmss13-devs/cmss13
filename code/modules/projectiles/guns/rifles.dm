@@ -1977,6 +1977,73 @@
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
+
+
+
+/obj/item/weapon/gun/rifle/l23/breacher
+	name = "\improper L23-B assault rifle"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one is painted in RMC's purple-blue camouflage"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon_state = "l23"
+	item_state = "l23"
+	fire_sound = "gun_nsg23"
+	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
+	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
+	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_VERY_FAST
+	current_mag = /obj/item/ammo_magazine/rifle/nsg23
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/stock/l23,
+		/obj/item/attachable/attached_gun/shotgun/af13b,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/mini,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
+	random_spawn_chance = 100 //L23 always spawns with attachments (for proper NSG underrail offsets it's X=23 Y=13)
+
+	random_spawn_rail = list(
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/l23/breacher/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_11
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_11
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_OFF
+
+/obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23-B's breaching shotgun
+	..()
+	var/obj/item/attachable/attached_gun/shotgun/af13b/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
 //-------------------------------------------------------
 //XM51, Breaching Scattergun
 

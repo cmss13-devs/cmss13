@@ -351,11 +351,11 @@
 	var/cannot_slash = FALSE
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+
 	//putting the organ in for research
 	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
@@ -364,17 +364,17 @@
 		organ.caste_origin = caste_type
 		organ.icon_state = get_organ_icon()
 
-	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
+	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 	if(hive)
 		hive.add_xeno(src)
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
-	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
-
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
+	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
 	if(old_xeno)
 		src.nicknumber = old_xeno.nicknumber
 		src.life_kills_total = old_xeno.life_kills_total

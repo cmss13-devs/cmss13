@@ -8332,8 +8332,8 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/upp{
-	job_list = list("Dzho Automaton");
-	name = "UPP Working Joe"
+	job_list = list("UPP Komandir");
+	name = "UPP CO"
 	},
 /turf/open/floor/carpet,
 /area/rostock/command/co)
@@ -24024,6 +24024,7 @@
 	pixel_x = 32;
 	pixel_y = -6
 	},
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/engineering_lower_access)
 "swd" = (

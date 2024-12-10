@@ -328,14 +328,22 @@
 	id = UPP_DROPSHIP_LZ1
 	faction = "UPP"
 	auto_open = TRUE
-//	roundstart_template = /datum/map_template/shuttle/morana
+	//roundstart_template = /datum/map_template/shuttle/morana
+
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1/Initialize(mapload)
+	. = ..()
+	//load_roundstart()
 
 /obj/docking_port/stationary/marine_dropship/upp_hangar_2
 	name = "Rostock Hangar bay 2"
 	id = UPP_DROPSHIP_LZ2
 	faction = "UPP"
 	auto_open = TRUE
-//	roundstart_template = /datum/map_template/shuttle/devana
+	//roundstart_template = /datum/map_template/shuttle/devana
+
+/obj/docking_port/stationary/marine_dropship/upp_hangar_2/Initialize(mapload)
+	. = ..()
+	//load_roundstart()
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

@@ -288,6 +288,7 @@
 	roof_plane?.invisibility = 0
 	UnregisterSignal(user, COMSIG_ITEM_PICKUP)
 	UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
+	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 
 	if(isxeno(user))
 		UnregisterSignal(COMSIG_XENO_ENTER_TUNNEL)

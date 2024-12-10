@@ -13,7 +13,7 @@
 		return
 
 	log_debug("Attempting load of template [template.name] as new event Z-Level as requested by [name]")
-	var/datum/space_level/loaded = template.load_new_z()
+	var/datum/space_level/loaded = template.load_new_z(traits = ZTRAITS_GROUND)
 	if(!loaded?.z_value)
 		log_debug("Failed to load the template to a Z-Level!")
 

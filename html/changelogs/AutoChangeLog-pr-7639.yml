@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "Members of UPP squads will now appear in their own unique sub-menu for observers."
-  - rscadd: "UPP squad icons are properly colour-coded in the observer menu."

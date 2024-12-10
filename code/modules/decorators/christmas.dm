@@ -47,8 +47,8 @@
 		return
 	helmet.name = "\improper USCM [helmet.specialty] santa hat"
 	helmet.desc = "Ho ho ho, Merry Christmas!"
-	helmet.icon = 'icons/obj/items/clothing/hats.dmi'
-	helmet.icon_override = 'icons/mob/humans/onmob/head_0.dmi'
+	helmet.icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	helmet.icon_override = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
 	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	helmet.flags_marine_helmet = NO_FLAGS
 	helmet.flags_atom |= NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE

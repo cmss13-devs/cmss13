@@ -3,6 +3,10 @@
 	desc = "Used to put holes in specific areas without too much extra hole."
 	gender = PLURAL
 	icon = 'icons/obj/items/assemblies.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
 	flags_item = NOBLUDGEON

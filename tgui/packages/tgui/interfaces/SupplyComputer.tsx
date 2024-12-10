@@ -1,8 +1,9 @@
+import { randomPick, randomProb } from 'common/random';
 import { BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { useBackend } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
@@ -30,6 +31,11 @@ type SupplyComputerData = {
   can_launch: BooleanLike;
   can_force: BooleanLike;
   can_cancel: BooleanLike;
+
+  mendoza_status: BooleanLike;
+  locked_out: BooleanLike;
+
+  logo: string;
 };
 
 type Pack = {
@@ -216,8 +222,8 @@ const SideButtons = (props: {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section scrollable height="505px">
-          <Stack vertical height="480px">
+        <Section scrollable height="490px">
+          <Stack vertical height="470px">
             {allCategories.sort().map((category) => (
               <Stack.Item key={category}>
                 <Button
@@ -345,7 +351,7 @@ const Requests = () => {
   const { requests } = data;
 
   return (
-    <Section title="Pending Orders" scrollable height="650px">
+    <Section title="Requests" scrollable height="650px">
       <Stack vertical height="610px">
         {requests.map((order) => (
           <RenderOrder order={order} key={order.order_num} request />
@@ -440,11 +446,37 @@ const RenderOrder = (props: {
 const BlackMarketMenu = () => {
   const { data } = useBackend<SupplyComputerData>();
 
-  const { contraband_categories, dollars } = data;
+  const { contraband_categories, dollars, mendoza_status, locked_out, logo } =
+    data;
 
   const [blackmarketCategory, setBlackMarketCategory] = useState<
     string | false
   >(false);
+
+  if (locked_out) {
+    return (
+      <Section title="Seizure Notice">
+        <Stack vertical>
+          <Stack.Item>
+            <Stack justify="center">
+              <img src={logo} />
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack justify="center">Unauthorized Access Removed.</Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack justify="center">
+              This console is currently under CMB investigation.
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack justify="center">Thank you for your cooperation.</Stack>
+          </Stack.Item>
+        </Stack>
+      </Section>
+    );
+  }
 
   return (
     <>
@@ -465,31 +497,70 @@ const BlackMarketMenu = () => {
             </Box>
           </Section>
         ) : (
-          <RenderFirstTimeBlackMarket />
+          <MendozaDialogue />
         )}
       </Stack.Item>
-      <Stack.Item>
-        <Stack>
-          {contraband_categories.map((category) => (
-            <Stack.Item key={category}>
-              <Button
-                onClick={() => {
-                  setBlackMarketCategory(category);
-                }}
-                selected={category === blackmarketCategory}
-              >
-                {category}
-              </Button>
-            </Stack.Item>
-          ))}
-        </Stack>
-      </Stack.Item>
+      {mendoza_status && (
+        <Stack.Item>
+          <Stack>
+            {contraband_categories.map((category) => (
+              <Stack.Item key={category}>
+                <Button
+                  onClick={() => {
+                    setBlackMarketCategory(category);
+                  }}
+                  selected={category === blackmarketCategory}
+                >
+                  {category}
+                </Button>
+              </Stack.Item>
+            ))}
+          </Stack>
+        </Stack.Item>
+      )}
     </>
   );
 };
 
-const RenderFirstTimeBlackMarket = () => {
-  return (
+const MendozaDialogue = () => {
+  const [firstTime, setSeen] = useSharedState('mendoza', true);
+  const [stateFirst] = useState(firstTime);
+
+  const { data } = useBackend<SupplyComputerData>();
+
+  const { mendoza_status } = data;
+
+  useEffect(() => {
+    setSeen(false);
+  });
+
+  const mendozaDialogues = [
+    "Sometimes I... hear things down 'ere. Crates bein' opened, shufflin', sometimes.. even breathing and chewin'. Even when the ASRS is on maintenance mode. Last month I swear I glimped some shirtless madman runnin' by at the edge of my screen. This place is haunted.",
+    "You know how I said there was a full aisle of autodoc crates? I just found another! This one has body scanners, sleepers, WeyMeds.. why the fuck aren't these on the supply list? Why are they here to begin with?",
+    "You know, this place is a real fuckin' massive safety hazard. Nobody does maintenance on this part of the ship. Ever since that colony operation in Schomberg cost us half the damn cargo hold, nothin' here quite works properly. Mechanical arms dropping crates in random places, from way too high up, knockin' shelves over.. it's fuckin' embarrassin'! I pity the damn' scrappers that'll be trying to salvage something from this junkyard of a ship once it's scuttled.",
+    "I still can't believe the whole ship's fucking supply of HEAP blew up. Some fuckin' moron decided our EXPLOSIVE AMMUNITION should be stored right next to the ship's hull. Even with the explosion concerns aside that's our main damn type of ammunition! What the hell are marines usin' this operation? Softpoint? Jesus. I do see a few scattered HEAP magazines every so often, but I know better than to throw them on the lift. Chances are some wet-behind-the-ears greenhorn is goin' to nab it and blow his fellow marines to shreds.",
+    "Wanna know a secret? I'm the one pushin' all those crates with crap on the ASRS lift. Not because I know you guys need surplus SMG ammunition or whatever. The fuckin' crates are taking up way too much space here. Why do we have HUNDREDS of mortar shells? By god, it's almost like a WW2 historical reenactment in here!",
+    "You know... don't tell anyone, but I actually really like blue-flavored Souto for some reason. Not the diet version, that cyan junk's as nasty as any other flavor, but... there's just somethin' about that blue-y goodness. If you see any, I wouldn't mind havin' them thrown down the elevator.",
+    "If you see any, er.. 'elite' equipment, be sure to throw it down here. I know a few people that'd offer quite the amount of money for a USCM commander's gun, or pet. Even the armor is worth a fortune. Don't kill yourself doin' it, though. Hell, any kind of wildlife too, actually! Anythin' that isn't a replicant animal is worth a truly ridiculous sum back on Terra, I'll give ya quite the amount of points for 'em. As long as it isn't plannin' on killing me.",
+  ];
+
+  const [pickedDialogue, setPicked] = useState('');
+
+  useEffect(() => {
+    if (randomProb(30)) {
+      setPicked(randomPick(mendozaDialogues));
+    }
+  }, []);
+
+  if (!mendoza_status) {
+    return (
+      <Stack vertical justify="center" width="400px">
+        <Stack.Item>.......</Stack.Item>
+      </Stack>
+    );
+  }
+
+  return stateFirst ? (
     <Stack vertical justify="center" width="400px">
       <Stack.Item>
         {
@@ -521,6 +592,10 @@ const RenderFirstTimeBlackMarket = () => {
           }
         </b>
       </Stack.Item>
+    </Stack>
+  ) : (
+    <Stack vertical justify="center" width="400px">
+      <Stack.Item>{pickedDialogue}</Stack.Item>
     </Stack>
   );
 };

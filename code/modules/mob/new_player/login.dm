@@ -39,10 +39,7 @@
 	. = ..()
 
 	.["icon"] = get_asset_datum(/datum/asset/simple/icon_states/lobby).get_url_mappings()["uscm.png"]
-
-	var/lobby_assets = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()
-	.["sound"] = lobby_assets["load"]
-	.["sound_interact"] = list(lobby_assets["interact1"], lobby_assets["interact2"], lobby_assets["interact3"])
+	.["sound"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["load"]
 
 	.["lobby_icon"] = ""
 	.["lobby_author"] = ""

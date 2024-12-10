@@ -1,7 +1,7 @@
 /obj/item/notepad
 	name = "notepad"
 	gender = PLURAL
-	icon = 'icons/obj/items/notepads.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "notebook"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',

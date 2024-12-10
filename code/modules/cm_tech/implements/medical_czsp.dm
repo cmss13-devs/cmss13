@@ -137,7 +137,11 @@
 /obj/item/weapon/gun/pill
 	name = "pill gun"
 	desc = "A spring-loaded rifle designed to fit pills, designed to inject patients from a distance."
-	icon = 'icons/obj/items/weapons/guns/legacy/old_cmguns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = SIZE_MEDIUM

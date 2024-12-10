@@ -52,11 +52,14 @@
 /// UO6, Kolonel/Polkovnik
 #define PAY_SHORT_UO6 "UO6"
 
-/// UO7, Mayjor General/General Leytenant
+/// UO7, Brigadier General/General Mayjor
 #define PAY_SHORT_UO7 "UO7"
 
-/// UO8, Leytenant General/General Polkovnik
+/// UO8, Major General/General Leytenant
 #define PAY_SHORT_UO8 "UO8"
 
-/// UO9, Army General/General Armii
+/// UO9, Lieutenant General/General Polkovnik
 #define PAY_SHORT_UO9 "UO9"
+
+/// UO10, Army General/General Armii
+#define PAY_SHORT_UO10 "UO10"

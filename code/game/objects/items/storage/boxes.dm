@@ -28,7 +28,11 @@
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 	icon = 'icons/obj/items/storage/boxes.dmi'
-	item_state = "syringe_kit"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
+	item_state = "box"
 	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
@@ -256,7 +260,7 @@
 	name = "Death Alarm Kit"
 	desc = "Box of stuff used to implant death alarms."
 	icon_state = "implant"
-	item_state = "syringe_kit"
+	item_state = "box"
 
 /obj/item/storage/box/cdeathalarm_kit/fill_preset_inventory()
 	new /obj/item/implanter(src)
@@ -313,7 +317,7 @@
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "monkeycubebox"
 
 /obj/item/storage/box/monkeycubes/fill_preset_inventory()
@@ -485,12 +489,19 @@
 /obj/item/storage/box/matches
 	name = "matchbox"
 	desc = "A small box of 'Space-Proof' premium matches."
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_state = "matchbox"
+<<<<<<< HEAD
 	item_state = "matchbox"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+=======
+	item_state = "zippo"
+	item_state_slots = list(WEAR_AS_GARB = "matches")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+>>>>>>> master
 		)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
@@ -510,7 +521,7 @@
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
-	item_state = "syringe_kit"
+	item_state = "box"
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
 		/obj/item/light_bulb/tube,
@@ -655,10 +666,16 @@
 	var/model_icon = "model_m40"
 	var/type_icon = "hedp"
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin()
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
 
 /obj/item/storage/box/nade_box/proc/try_forced_folding(datum/source, mob/user)
@@ -740,7 +757,7 @@
 	type_icon = null
 	grenade_type = /obj/item/explosive/grenade/high_explosive/training
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
@@ -750,7 +767,7 @@
 	type_icon = null
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas/fill_preset_inventory()
 	..()

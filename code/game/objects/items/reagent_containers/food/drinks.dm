@@ -4,7 +4,7 @@
 /obj/item/reagent_container/food/drinks
 	name = "drink"
 	desc = "yummy"
-	icon = 'icons/obj/items/drinks.dmi'
+	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = null
 	flags_atom = FPRINT|OPENCONTAINER
 	var/gulp_size = 5 //This is now officially broken ... need to think of a nice way to fix it.
@@ -146,7 +146,15 @@
 	name = "Space Milk"
 	desc = "It's milk. White and nutritious goodness!"
 	icon_state = "milk"
+<<<<<<< HEAD
 	item_state = "milk"
+=======
+	item_state = "carton"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
+>>>>>>> master
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/milk/Initialize()
@@ -172,7 +180,15 @@
 	name = "soy milk"
 	desc = "It's soy milk. White and nutritious goodness!"
 	icon_state = "soymilk"
+<<<<<<< HEAD
 	item_state = "soymilk"
+=======
+	item_state = "carton"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
+>>>>>>> master
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/soymilk/Initialize()
@@ -258,7 +274,7 @@
 /obj/item/reagent_container/food/drinks/cup
 	name = "plastic cup"
 	desc = "A generic red cup. Beer pong, anyone?"
-	icon = 'icons/obj/items/cup.dmi'
+	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "solocup"
 	throwforce = 0
 	w_class = SIZE_TINY
@@ -280,7 +296,7 @@
 /obj/item/trash/crushed_cup
 	name = "crushed cup"
 	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
-	icon = 'icons/obj/items/cup.dmi'
+	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "crushed_solocup"
 	throwforce = 0
 	w_class = SIZE_TINY
@@ -304,7 +320,14 @@
 	name = "metal flask"
 	desc = "A metal flask with a decent liquid capacity."
 	icon_state = "flask"
+<<<<<<< HEAD
 	item_state = "flask"
+=======
+	item_state_slots = list(WEAR_AS_GARB = "flask")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		)
+>>>>>>> master
 	volume = 60
 	center_of_mass = "x=17;y=8"
 

@@ -4,7 +4,6 @@
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 	item_state = "gun"
 	pickup_sound = "gunequip"
@@ -20,8 +19,9 @@
 	force = 5
 	attack_verb = null
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_righthand.dmi',
 		)
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
@@ -546,11 +546,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/new_icon_state = base_gun_icon
 
-	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
-		new_icon_state += "_e"
+	if(!isnull(base_gun_icon))
+		if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+			new_icon_state += "_e"
 
-	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
-		new_icon_state += "_o"
+		if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
+			new_icon_state += "_o"
 
 	icon_state = new_icon_state
 	update_mag_overlay()

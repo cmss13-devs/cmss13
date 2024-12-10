@@ -41,7 +41,7 @@
 	caste_type = XENO_CASTE_LESSER_DRONE
 	name = XENO_CASTE_LESSER_DRONE
 	desc = "An alien drone. Looks... smaller."
-	icon = 'icons/mob/xenos/drone.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Lesser Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
@@ -75,8 +75,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
-	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/lesser_drone.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/lesser_drone.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")

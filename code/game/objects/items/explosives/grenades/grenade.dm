@@ -6,9 +6,15 @@
 	icon_state = "grenade"
 	item_state = "grenade"
 	item_icons = list(
+<<<<<<< HEAD
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
 		)
+=======
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi',
+	)
+>>>>>>> master
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	flags_atom = FPRINT|CONDUCT

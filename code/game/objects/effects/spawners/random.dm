@@ -277,7 +277,7 @@
 				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\
 				prob(4);/obj/item/clothing/glasses/hud/sensor,\
-				prob(4);/obj/item/clothing/glasses/sunglasses/sechud/eyepiece)
+				prob(4);/obj/item/clothing/glasses/hud/security)
 
 /obj/effect/spawner/random/goggles/lowchance
 	spawn_nothing_percentage = 80

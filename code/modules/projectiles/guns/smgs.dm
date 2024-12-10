@@ -749,7 +749,7 @@
 /obj/item/weapon/gun/smg/p90
 	name = "\improper FN P90 submachinegun"
 	desc = "The FN P90 submachine gun. An archaic design, but still widely used by corporate and mercenary groups, sometimes seen in the hands of civilian populations. This weapon only accepts 5.7×28mm rounds."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "p90"
 	item_state = "p90"
 
@@ -792,7 +792,7 @@
 /obj/item/weapon/gun/smg/p90/twe
 	name = "\improper FN-TWE P90 submachinegun"
 	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"
 

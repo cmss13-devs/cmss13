@@ -55,13 +55,6 @@
 			return TRUE
 	return FALSE
 
-//Checks for specific paths in a list
-/proc/is_path_in_list(atom/A, list/L)
-	for(var/path in L)
-		if(ispath(A, path))
-			return 1
-	return 0
-
 //Removes any null entries from the list
 /proc/listclearnulls(list/list)
 	if(istype(list))

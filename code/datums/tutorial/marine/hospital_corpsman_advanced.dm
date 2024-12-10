@@ -16,6 +16,9 @@
 // 1.4 Internal Organ Damage (Head)
 // 1.5 Liver and Kidney Damage
 //
+// Section 3 - Field Surgery
+// 3.1 Surgical Damage Treatment
+// 3.2 Internal Bleeding
 
 /datum/tutorial/marine/hospital_corpsman_advanced/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -54,7 +57,7 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		message_to_player("Great. Now pick up your trusty <b>Health Analyzer</b>, and let's get started with the tutorial!")
 		update_objective("")
-		addtimer(CALLBACK(src, PROC_REF(field_surgery)), 2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(field_surgery_ib)), 2 SECONDS)
 		//RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(organ_tutorial))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial()
@@ -995,7 +998,7 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_2()
 
 	message_to_player("<b>Internal Bleeding</b> requires invasive surgical treatment. Including a <b>Surgical Incision</b>.")
-	message_to_player("While not as extensively fitted as a proper surgical kit, Combat Medics recieve <b>Basic Surgical Case</b> for field use.")
+	message_to_player("While not as extensively fitted as a proper surgical kit, Combat Medics recieve a <b>Basic Surgical Case</b> for field use.")
 
 	var/obj/item/storage/surgical_case/regular/surgical_case = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(surgical_case)
@@ -1116,6 +1119,121 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	human_dummy.pain.feels_pain = FALSE //surgery failsafe
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+	var/datum/wound/internal_bleeding/IB = new (0)
+	mob_chest.add_bleeding(IB, TRUE)
+	mob_chest.wounds += IB
+
+	message_to_player("Now, we will initiate an <b>Internal Bleeding</b> surgery on Mr Dummy.")
+	message_to_player("First, draw your <b>Health Analyzer</b>, and scan Mr Dummy to locate the source of his Internal Bleeding.")
+
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_ib_9))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_9(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	if(attacked_mob == tutorial_mob)
+		return
+
+	UnregisterSignal(attacked_mob, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	message_to_player("By looking at your <b>Health Analyzer</b> scan, we can see that Mr Dummy has <b>Internal Bleeding</b> in his <b>Chest</b>.")
+	message_to_player("This must be treated urgently. We will begin the <b>Internal Bleeding Repair</b> surgery by making an <b>Incision</b> on Mr Dummys <b>Chest</b>.")
+	message_to_player("Open your <b>Field Surgery Pouch</b> and draw the <b>Scalpel</b> from within.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/surgical_case/regular, surgical_case)
+	add_highlight(surgical_case, COLOR_GREEN)
+
+	var/obj/item/tool/surgery/scalpel/scalpel = locate(/obj/item/tool/surgery/scalpel) in surgical_case.contents
+	add_to_tracking_atoms(scalpel)
+	add_highlight(scalpel, COLOR_GREEN)
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(field_surgery_ib_10))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_10(datum/source, obj/item/picked_up)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/scalpel, scalpel)
+
+	if(picked_up != scalpel)
+		return
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
+
+	message_to_player("Now, make sure you are on the <b>Help Intent</b> with <b>Surgery Mode Enabled</b>, then click on Mr Dummy while holding your Scalpel to create an incision.")
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(field_surgery_ib_11))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_11(datum/source, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
+	SIGNAL_HANDLER
+
+	var/ontime
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+
+	if(target != human_dummy)
+		message_to_player("Operate on the Dummy, not yourself! Try again.")
+		var/mob/living/living_mob = tutorial_mob
+		living_mob.rejuvenate()
+		return
+
+	if(surgery.location != "chest")
+		message_to_player("Operate on the Dummys chest! Try again.")
+		return
+
+	if(tool.name == "Hemostat")
+		return
+
+	if(surgery.name == "Open Incision")
+		if(surgery.status == 1)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/scalpel, scalpel)
+			remove_highlight(scalpel)
+			remove_from_tracking_atoms(scalpel)
+			message_to_player("Well done! Next, we will retract the skin around the incision with a <b>Retractor</b>.")
+			message_to_player("Draw the <b>Retractor</b> from your <b>Field Surgery Kit</b> and use it on Mr Dummy.")
+
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/surgical_case/regular, surgical_case)
+			var/obj/item/tool/surgery/retractor/retractor = locate(/obj/item/tool/surgery/retractor) in surgical_case.contents
+			add_to_tracking_atoms(retractor)
+			add_highlight(retractor, COLOR_GREEN)
+			return
+
+		if(surgery.status > 1)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/retractor, retractor)
+			remove_highlight(retractor)
+			remove_from_tracking_atoms(retractor)
+			message_to_player("Mission complete! You have successfully created an incision of Mr Dummys chest.")
+			message_to_player("We are now able to access and repair the source of <b>Internal Bleeding</b> in the Dummys chest.")
+			message_to_player("To do this, we are going to once again use a <b>Surgical Line</b>.")
+			message_to_player("Pickup the <b>Surgical Line</b> from the bench, and use it on Mr Dummy.")
+			message_to_player("If you have done this step correctly, an options box will appear that allows you to either <b>Fix Mr Dummys Internal Bleeding</b>, or <b>Cauterize</b> your incision. Click the first option!")
+
+			var/obj/item/tool/surgery/surgical_line/surgical_line = new(loc_from_corner(1,4))
+			add_to_tracking_atoms(surgical_line)
+			add_highlight(surgical_line, COLOR_GREEN)
+			return
+
+	if(surgery.name == "Internal Bleeding Repair")
+		if(surgery.status == 1)
+			message_to_player("Amazing work! Mr Dummy's condition has been stabilized!")
+			message_to_player("Now, all that's left to do is to <b>Cauterize the Incision</b>. Use your <b>Surgical Line</b> on Mr Dummys chest one more time!")
+			ontime = TRUE
+			return
+
+	if(surgery.name == "Close Incision")
+		if(ontime != TRUE)
+			message_to_player("You have closed your incision before treating Mr Dummys internal bleeding. You will have to restart the procedure.")
+			return
+		else
+			message_to_player("Congratulations, you are now fully qualified to repair internal bleeding on the field!")
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/surgical_line, surgical_line)
+			remove_from_tracking_atoms(surgical_line)
+			remove_highlight(surgical_line)
+			qdel(surgical_line)
+			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
+			human_dummy.rejuvenate()
+
+
 
 
 
@@ -1164,8 +1282,6 @@
 // 2.5 Lost Causes
 //
 // Section 3 - Field Surgery
-// 3.1 Surgical Damage Treatment
-// 3.2 Internal Bleeding
 // 3.3 Synthetic Limb Repair
 //
 // Section 4 - Specialized Treatments

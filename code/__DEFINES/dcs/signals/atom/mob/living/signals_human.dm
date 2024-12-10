@@ -66,7 +66,7 @@
 /// from /datum/surgery_step/proc/attempt_step()
 #define COMSIG_HUMAN_SURGERY_APPLY_MODIFIERS "human_surgery_apply_modifiers"
 
-/// From /datum/surgery_step/proc/success() : (mob/user, datum/surgery/surgery)
+/// From /datum/surgery_step/proc/success() : (mob/user, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
 #define COMSIG_HUMAN_SURGERY_STEP_SUCCESS "human_surgery_step_success"
 
 /// From /mob/living/carbon/human/proc/get_flags_cold_protection()

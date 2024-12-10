@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react';
 import { useBackend, useSharedState } from '../backend';
 import {
   Box,
-  Button,
+  Button as NativeButton,
   Collapsible,
   Divider,
   DmIcon,
+  Flex,
+  Input,
   Section,
   Stack,
 } from '../components';
@@ -224,6 +226,19 @@ const SideButtons = (props: {
       <Stack.Item>
         <Section scrollable height="490px">
           <Stack vertical height="470px">
+            <Input
+              placeholder="Search..."
+              fluid
+              expensive
+              onInput={(_, val) => {
+                if (val.length > 0) {
+                  setCategory(val);
+                  setMenu(MenuOptions.Categories);
+                } else {
+                  setCategory(allCategories[0]);
+                }
+              }}
+            />
             {allCategories.sort().map((category) => (
               <Stack.Item key={category}>
                 <Button
@@ -265,12 +280,18 @@ const Options = (props: {
 }) => {
   const { menu, category } = props;
 
+  const { categories } = useBackend<SupplyComputerData>().data;
+
   switch (menu) {
     case MenuOptions.Categories:
       return (
-        <Section title={category} scrollable height="650px">
+        <Section
+          title={categories.includes(category!) ? category : 'Search'}
+          scrollable
+          height="650px"
+        >
           <Box height="610px">
-            <RenderCategory category={category!} />
+            <RenderCategory category={category!} categories={categories} />
           </Box>
         </Section>
       );
@@ -302,7 +323,7 @@ const CurrentOrder = () => {
       scrollable
       height="650px"
       buttons={
-        <>
+        <Stack>
           <Button
             icon="money-bill-1"
             onClick={() => {
@@ -319,7 +340,7 @@ const CurrentOrder = () => {
           >
             Discard Order
           </Button>
-        </>
+        </Stack>
       }
     >
       <Box height="610px">
@@ -493,7 +514,10 @@ const BlackMarketMenu = () => {
         {blackmarketCategory ? (
           <Section fitted height="330px" scrollable>
             <Box height="310px">
-              <RenderCategory category={blackmarketCategory} />
+              <RenderCategory
+                category={blackmarketCategory}
+                categories={contraband_categories}
+              />
             </Box>
           </Section>
         ) : (
@@ -616,13 +640,23 @@ const RenderCart = () => {
   );
 };
 
-const RenderCategory = (props: { readonly category: string }) => {
-  const { category } = props;
+const RenderCategory = (props: {
+  readonly category: string;
+  readonly categories: string[];
+}) => {
+  const { category, categories } = props;
 
   const { data } = useBackend<SupplyComputerData>();
   const { all_items } = data;
 
-  const relevant_items = all_items.filter((pack) => pack.category === category);
+  const validCategory = categories.includes(category);
+  const relevant_items = validCategory
+    ? all_items.filter((pack) => pack.category === category)
+    : all_items.filter(
+        (pack) =>
+          !pack.dollar_cost &&
+          pack.name.toLowerCase().includes(category.toLowerCase()),
+      );
 
   return (
     <Stack vertical>
@@ -665,41 +699,57 @@ const RenderPack = (props: {
           </Stack.Item>
         ) : (
           <Stack.Item p={1} verticalAlign="top">
-            <Button
-              icon={'backward-fast'}
-              onClick={() => act('adjust_cart', { pack: item.type, to: 'min' })}
-              disabled={!quantity}
-            />
-            <Button
-              icon={'backward'}
-              onClick={() =>
-                act('adjust_cart', { pack: item.type, to: 'decrement' })
-              }
-              disabled={!quantity}
-            />
-            <Box p={1} inline>
-              {quantity}
-            </Box>
-            <Button
-              icon={'forward'}
-              onClick={() =>
-                act('adjust_cart', { pack: item.type, to: 'increment' })
-              }
-              disabled={
-                item.dollar_cost
-                  ? used_dollars + item.dollar_cost > dollars
-                  : used_points + item.cost > points
-              }
-            />
-            <Button
-              icon={'forward-fast'}
-              onClick={() => act('adjust_cart', { pack: item.type, to: 'max' })}
-              disabled={
-                item.dollar_cost
-                  ? used_dollars + item.dollar_cost > dollars
-                  : used_points + item.cost > points
-              }
-            />
+            <Flex>
+              <Flex.Item>
+                <Button
+                  icon={'backward-fast'}
+                  onClick={() =>
+                    act('adjust_cart', { pack: item.type, to: 'min' })
+                  }
+                  disabled={!quantity}
+                />
+              </Flex.Item>
+              <Flex.Item>
+                <Button
+                  icon={'backward'}
+                  onClick={() =>
+                    act('adjust_cart', { pack: item.type, to: 'decrement' })
+                  }
+                  disabled={!quantity}
+                />
+              </Flex.Item>
+              <Flex.Item>
+                <Box p={1} inline>
+                  {quantity}
+                </Box>
+              </Flex.Item>
+              <Flex.Item>
+                <Button
+                  icon={'forward'}
+                  onClick={() =>
+                    act('adjust_cart', { pack: item.type, to: 'increment' })
+                  }
+                  disabled={
+                    item.dollar_cost
+                      ? used_dollars + item.dollar_cost > dollars
+                      : used_points + item.cost > points
+                  }
+                />
+              </Flex.Item>
+              <Flex.Item>
+                <Button
+                  icon={'forward-fast'}
+                  onClick={() =>
+                    act('adjust_cart', { pack: item.type, to: 'max' })
+                  }
+                  disabled={
+                    item.dollar_cost
+                      ? used_dollars + item.dollar_cost > dollars
+                      : used_points + item.cost > points
+                  }
+                />
+              </Flex.Item>
+            </Flex>
           </Stack.Item>
         )}
         <Stack.Item p={1} width={3} align="right" verticalAlign="middle">
@@ -765,5 +815,15 @@ const RenderPack = (props: {
         </Stack.Item>
       </Stack>
     </Stack.Item>
+  );
+};
+
+const Button = (props) => {
+  const { act } = useBackend();
+
+  return (
+    <Box onClick={() => act('keyboard')}>
+      <NativeButton {...props} />
+    </Box>
   );
 };

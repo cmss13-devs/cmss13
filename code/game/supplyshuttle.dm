@@ -1036,7 +1036,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /obj/structure/machinery/computer/supplycomp/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-
 	if(!ishuman(ui.user))
 		return
 	var/mob/living/carbon/human/human_user = ui.user
@@ -1169,6 +1168,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			shuttle.launch(src)
 			return TRUE
+
+		if("keyboard")
+			playsound(src, "keyboard", 15, 1)
 
 /obj/structure/machinery/computer/supplycomp/ui_assets(mob/user)
 	. = ..()

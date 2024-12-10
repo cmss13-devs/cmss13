@@ -172,7 +172,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                 />
               </Box>
             </Stack.Item>
-            <Stack.Item width="200px">
+            <Stack.Item minWidth="200px">
               <Stack vertical>
                 <Stack.Item>
                   <Stack justify="center">

@@ -2037,7 +2037,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 	recoil_unwielded = RECOIL_OFF
 
-/obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23-B's breaching shotgun
+/obj/item/weapon/gun/rifle/l23/breacher/handle_starting_attachment() //Adds L23-B's breaching shotgun
 	..()
 	var/obj/item/attachable/attached_gun/shotgun/af13b/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE

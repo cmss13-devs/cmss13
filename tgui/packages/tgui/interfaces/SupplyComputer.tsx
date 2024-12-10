@@ -1,31 +1,36 @@
 import { BooleanLike } from 'common/react';
+import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, DmIcon, Section, Stack } from '../components';
+import {
+  Box,
+  Button,
+  Collapsible,
+  Divider,
+  DmIcon,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
-type Order = {
-  order_num: string;
-  item: string;
-  ordered_by: string;
-  approved_by: string;
+type SupplyComputerData = {
+  categories: string[];
+  contraband_categories: string[];
+  all_items: Pack[];
+  current_order: OrderPack[];
+  used_points: number;
+  points: number;
+  used_dollars: number;
+  dollars: number;
+  requests: Order[];
+  pending: Order[];
+  black_market: BooleanLike;
+  shuttle_status: string;
+  can_launch: BooleanLike;
+  can_force: BooleanLike;
+  can_cancel: BooleanLike;
 };
-
-type Icon = {
-  icon: string;
-  icon_state: string;
-};
-
-type Item = {
-  name: string;
-  quantity: number;
-  icon: Icon;
-};
-
-type CurrentOrderPack = {
-  quantity: number;
-} & Pack;
 
 type Pack = {
   name: string;
@@ -37,18 +42,27 @@ type Pack = {
   type: string;
 };
 
-type SupplyComputerData = {
-  categories: string[];
-  contraband_categories: string[];
-  all_items: Pack[];
-  current_order: CurrentOrderPack[];
-  used_points: number;
-  points: number;
-  used_dollars: number;
-  dollars: number;
-  requests: Order[];
-  pending: Order[];
-  black_market: BooleanLike;
+type OrderPack = {
+  quantity: number;
+} & Pack;
+
+type Order = {
+  order_num: string;
+  contents: OrderPack[];
+  ordered_by: string;
+  approved_by: string;
+  reason?: string;
+};
+
+type Item = {
+  name: string;
+  quantity: number;
+  icon: Icon;
+};
+
+type Icon = {
+  icon: string;
+  icon_state: string;
 };
 
 enum MenuOptions {
@@ -62,14 +76,7 @@ enum MenuOptions {
 export const SupplyComputer = () => {
   const { data } = useBackend<SupplyComputerData>();
 
-  const {
-    categories,
-    points,
-    used_points,
-    black_market,
-    used_dollars,
-    all_items,
-  } = data;
+  const { all_items } = data;
 
   const [menu, setMenu] = useState(MenuOptions.Categories);
 
@@ -92,78 +99,13 @@ export const SupplyComputer = () => {
       <Window.Content>
         <Stack>
           <Stack.Item>
-            <Stack vertical>
-              <Stack.Item>
-                <Section>
-                  <Stack vertical>
-                    <Stack.Item>Supply Budget: ${points * 100}</Stack.Item>
-                    <Stack.Item>
-                      <Button
-                        fluid
-                        onClick={() => setMenu(MenuOptions.CurrentOrder)}
-                        selected={menu === MenuOptions.CurrentOrder}
-                      >
-                        Current Order: ${used_points * 100}
-                        {used_dollars > 0 ? ` (WY$${used_dollars})` : ''}
-                      </Button>
-                      <hr />
-                    </Stack.Item>
-                    <Stack.Item>
-                      <Button
-                        fluid
-                        onClick={() => setMenu(MenuOptions.Requests)}
-                        selected={menu === MenuOptions.Requests}
-                      >
-                        Requests
-                      </Button>
-                    </Stack.Item>
-                    <Stack.Item>
-                      <Button
-                        fluid
-                        onClick={() => setMenu(MenuOptions.Pending)}
-                        selected={menu === MenuOptions.Pending}
-                      >
-                        Pending Orders
-                      </Button>
-                    </Stack.Item>
-                  </Stack>
-                </Section>
-              </Stack.Item>
-              <Stack.Item>
-                <Section scrollable height="505px">
-                  <Stack vertical height="480px">
-                    {validCategories.sort().map((category) => (
-                      <Stack.Item key={category}>
-                        <Button
-                          fluid
-                          onClick={() => {
-                            setMenu(MenuOptions.Categories);
-                            setCategory(category);
-                          }}
-                          selected={
-                            menu === MenuOptions.Categories &&
-                            category === selectedCategory
-                          }
-                        >
-                          {category}
-                        </Button>
-                      </Stack.Item>
-                    ))}
-                    {!!black_market && (
-                      <Stack.Item>
-                        <Button
-                          fluid
-                          onClick={() => setMenu(MenuOptions.BlackMarket)}
-                          color="red"
-                        >
-                          {'$E4RR301¿'}
-                        </Button>
-                      </Stack.Item>
-                    )}
-                  </Stack>
-                </Section>
-              </Stack.Item>
-            </Stack>
+            <SideButtons
+              menu={menu}
+              allCategories={validCategories}
+              selectedCategory={selectedCategory}
+              setMenu={setMenu}
+              setCategory={setCategory}
+            />
           </Stack.Item>
           <Stack.Item grow>
             <Options menu={menu} category={selectedCategory} />
@@ -174,15 +116,148 @@ export const SupplyComputer = () => {
   );
 };
 
+const SideButtons = (props: {
+  readonly menu: MenuOptions;
+  readonly allCategories: string[];
+  readonly selectedCategory: string;
+  readonly setMenu: (_) => void;
+  readonly setCategory: (_) => void;
+}) => {
+  const { menu, allCategories, selectedCategory, setMenu, setCategory } = props;
+
+  const { data, act } = useBackend<SupplyComputerData>();
+
+  const {
+    pending,
+    requests,
+    points,
+    used_points,
+    black_market,
+    used_dollars,
+    shuttle_status,
+    can_launch,
+    can_cancel,
+    can_force,
+  } = data;
+
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <Section>
+          <Stack vertical>
+            <Stack.Item>Supply Budget: ${points * 100}</Stack.Item>
+            <Stack.Item>
+              <Stack>
+                <Stack.Item grow>
+                  <Button
+                    fluid
+                    icon="dolly"
+                    disabled={!can_launch}
+                    onClick={() => act('send')}
+                  >
+                    {capitalizeFirst(shuttle_status)}
+                  </Button>
+                </Stack.Item>
+                {!!(can_cancel || can_force) && (
+                  <Stack.Item>
+                    {!!can_force && (
+                      <Button
+                        icon="gauge-high"
+                        tooltip="Force"
+                        onClick={() => act('force_launch')}
+                      />
+                    )}
+                    {!!can_cancel && (
+                      <Button
+                        icon="ban"
+                        tooltip="Cancel"
+                        onClick={() => act('cancel_launch')}
+                      />
+                    )}
+                  </Stack.Item>
+                )}
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                fluid
+                onClick={() => setMenu(MenuOptions.CurrentOrder)}
+                selected={menu === MenuOptions.CurrentOrder}
+                icon="basket-shopping"
+              >
+                Current Order: ${used_points * 100}
+                {used_dollars > 0 ? ` (WY$${used_dollars})` : ''}
+              </Button>
+              <Divider />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                fluid
+                onClick={() => setMenu(MenuOptions.Requests)}
+                selected={menu === MenuOptions.Requests}
+                icon="hand-holding-dollar"
+              >
+                Requests
+                {requests.length > 0 ? ` (${requests.length})` : ''}
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                fluid
+                onClick={() => setMenu(MenuOptions.Pending)}
+                selected={menu === MenuOptions.Pending}
+                icon="clipboard-list"
+              >
+                Pending Orders
+                {pending.length > 0 ? ` (${pending.length})` : ''}
+              </Button>
+            </Stack.Item>
+          </Stack>
+        </Section>
+      </Stack.Item>
+      <Stack.Item>
+        <Section scrollable height="505px">
+          <Stack vertical height="480px">
+            {allCategories.sort().map((category) => (
+              <Stack.Item key={category}>
+                <Button
+                  fluid
+                  onClick={() => {
+                    setMenu(MenuOptions.Categories);
+                    setCategory(category);
+                  }}
+                  selected={
+                    menu === MenuOptions.Categories &&
+                    category === selectedCategory
+                  }
+                >
+                  {category}
+                </Button>
+              </Stack.Item>
+            ))}
+            {!!black_market && (
+              <Stack.Item>
+                <Button
+                  fluid
+                  onClick={() => setMenu(MenuOptions.BlackMarket)}
+                  color="red"
+                >
+                  {'$E4RR301¿'}
+                </Button>
+              </Stack.Item>
+            )}
+          </Stack>
+        </Section>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
 const Options = (props: {
   readonly menu: MenuOptions;
   readonly category?: string;
 }) => {
   const { menu, category } = props;
-
-  const { data } = useBackend<SupplyComputerData>();
-
-  const { pending } = data;
 
   switch (menu) {
     case MenuOptions.Categories:
@@ -195,23 +270,7 @@ const Options = (props: {
       );
 
     case MenuOptions.CurrentOrder:
-      return (
-        <Section
-          title="Current Order"
-          scrollable
-          height="650px"
-          buttons={
-            <>
-              <Button>Place Order</Button>
-              <Button>Discard Order</Button>
-            </>
-          }
-        >
-          <Box height="610px">
-            <RenderCart />
-          </Box>
-        </Section>
-      );
+      return <CurrentOrder />;
 
     case MenuOptions.BlackMarket:
       return (
@@ -221,23 +280,161 @@ const Options = (props: {
       );
 
     case MenuOptions.Pending:
-      return (
-        <Section title="Pending Orders" scrollable height="650px">
-          <Stack vertical>
-            {pending.map((order) => (
-              <Stack.Item key={order.order_num}>
+      return <PendingOrder />;
+
+    case MenuOptions.Requests:
+      return <Requests />;
+  }
+};
+
+const CurrentOrder = () => {
+  const { act } = useBackend();
+
+  return (
+    <Section
+      title="Current Order"
+      scrollable
+      height="650px"
+      buttons={
+        <>
+          <Button
+            icon="money-bill-1"
+            onClick={() => {
+              act('place_order');
+            }}
+          >
+            Place Order
+          </Button>
+          <Button
+            icon="trash"
+            onClick={() => {
+              act('discard_cart');
+            }}
+          >
+            Discard Order
+          </Button>
+        </>
+      }
+    >
+      <Box height="610px">
+        <RenderCart />
+      </Box>
+    </Section>
+  );
+};
+
+const PendingOrder = () => {
+  const { data } = useBackend<SupplyComputerData>();
+
+  const { pending } = data;
+
+  return (
+    <Section title="Pending Orders" scrollable height="650px">
+      <Stack vertical height="610px">
+        {pending.map((order) => (
+          <RenderOrder order={order} key={order.order_num} />
+        ))}
+      </Stack>
+    </Section>
+  );
+};
+
+const Requests = () => {
+  const { data } = useBackend<SupplyComputerData>();
+
+  const { requests } = data;
+
+  return (
+    <Section title="Pending Orders" scrollable height="650px">
+      <Stack vertical height="610px">
+        {requests.map((order) => (
+          <RenderOrder order={order} key={order.order_num} request />
+        ))}
+      </Stack>
+    </Section>
+  );
+};
+
+const RenderOrder = (props: {
+  readonly order: Order;
+  readonly request?: boolean;
+}) => {
+  const { order, request } = props;
+
+  const { act } = useBackend();
+
+  return (
+    <Stack.Item>
+      <Collapsible title={`Order #${order.order_num}`} open={request}>
+        <Stack vertical>
+          <Stack justify="space-between">
+            <Stack.Item>
+              <Stack.Item>
                 <Stack>
-                  <Stack.Item>#{order.order_num}</Stack.Item>
-                  <Stack.Item>{order.item}</Stack.Item>
+                  <Stack.Item bold>Ordered By:</Stack.Item>
                   <Stack.Item>{order.ordered_by}</Stack.Item>
                 </Stack>
-                <hr />
               </Stack.Item>
-            ))}
+              {order.approved_by && order.ordered_by !== order.approved_by && (
+                <Stack.Item pt={1}>
+                  <Stack>
+                    <Stack.Item>Approved By</Stack.Item>
+                    <Stack.Item>{order.approved_by}</Stack.Item>
+                  </Stack>
+                </Stack.Item>
+              )}
+              <Stack.Item pt={1}>
+                <Stack>
+                  <Stack.Item bold>Total Cost:</Stack.Item>
+                  <Stack.Item>
+                    $
+                    {order.contents.reduce(
+                      (curr, next) => curr + next.cost * next.quantity,
+                      0,
+                    ) * 100}
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </Stack.Item>
+            {request && (
+              <Stack.Item>
+                <Button
+                  icon="check"
+                  onClick={() =>
+                    act('change_order', {
+                      ordernum: order.order_num,
+                      order_status: 'approve',
+                    })
+                  }
+                >
+                  Approve
+                </Button>
+                <Button
+                  icon="xmark"
+                  onClick={() =>
+                    act('change_order', {
+                      ordernum: order.order_num,
+                      order_status: 'deny',
+                    })
+                  }
+                >
+                  Deny
+                </Button>
+              </Stack.Item>
+            )}
           </Stack>
-        </Section>
-      );
-  }
+          <Stack.Divider />
+          {order.contents.map((ordered) => (
+            <RenderPack
+              pack={ordered}
+              orderedQuantity={ordered.quantity}
+              key={ordered.name}
+            />
+          ))}
+        </Stack>
+      </Collapsible>
+    </Stack.Item>
+  );
 };
 
 const BlackMarketMenu = () => {
@@ -364,8 +561,11 @@ const RenderCategory = (props: { readonly category: string }) => {
   );
 };
 
-const RenderPack = (props: { readonly pack: Pack }) => {
-  const { pack: item } = props;
+const RenderPack = (props: {
+  readonly pack: Pack;
+  readonly orderedQuantity?: number;
+}) => {
+  const { pack: item, orderedQuantity } = props;
 
   const { act, data } = useBackend<SupplyComputerData>();
 
@@ -382,45 +582,53 @@ const RenderPack = (props: { readonly pack: Pack }) => {
   return (
     <Stack.Item key={item.name}>
       <Stack>
-        <Stack.Item p={1} verticalAlign="top">
-          <Button
-            icon={'backward-fast'}
-            onClick={() => act('adjust_cart', { pack: item.type, to: 'min' })}
-            disabled={!quantity}
-          />
-          <Button
-            icon={'backward'}
-            onClick={() =>
-              act('adjust_cart', { pack: item.type, to: 'decrement' })
-            }
-            disabled={!quantity}
-          />
-          <Box p={1} inline>
-            {quantity}
-          </Box>
-          <Button
-            icon={'forward'}
-            onClick={() =>
-              act('adjust_cart', { pack: item.type, to: 'increment' })
-            }
-            disabled={
-              item.dollar_cost
-                ? used_dollars + item.dollar_cost > dollars
-                : used_points + item.cost > points
-            }
-          />
-          <Button
-            icon={'forward-fast'}
-            onClick={() => act('adjust_cart', { pack: item.type, to: 'max' })}
-            disabled={
-              item.dollar_cost
-                ? used_dollars + item.dollar_cost > dollars
-                : used_points + item.cost > points
-            }
-          />
-        </Stack.Item>
+        {orderedQuantity ? (
+          <Stack.Item>
+            <Box p={1} inline>
+              {orderedQuantity}x
+            </Box>
+          </Stack.Item>
+        ) : (
+          <Stack.Item p={1} verticalAlign="top">
+            <Button
+              icon={'backward-fast'}
+              onClick={() => act('adjust_cart', { pack: item.type, to: 'min' })}
+              disabled={!quantity}
+            />
+            <Button
+              icon={'backward'}
+              onClick={() =>
+                act('adjust_cart', { pack: item.type, to: 'decrement' })
+              }
+              disabled={!quantity}
+            />
+            <Box p={1} inline>
+              {quantity}
+            </Box>
+            <Button
+              icon={'forward'}
+              onClick={() =>
+                act('adjust_cart', { pack: item.type, to: 'increment' })
+              }
+              disabled={
+                item.dollar_cost
+                  ? used_dollars + item.dollar_cost > dollars
+                  : used_points + item.cost > points
+              }
+            />
+            <Button
+              icon={'forward-fast'}
+              onClick={() => act('adjust_cart', { pack: item.type, to: 'max' })}
+              disabled={
+                item.dollar_cost
+                  ? used_dollars + item.dollar_cost > dollars
+                  : used_points + item.cost > points
+              }
+            />
+          </Stack.Item>
+        )}
         <Stack.Item p={1} width={3} align="right" verticalAlign="middle">
-          {item.dollar_cost ? `WY$${item.dollar_cost}` : `$${item.cost}00`}
+          {item.dollar_cost ? `WY$${item.dollar_cost}` : `$${item.cost * 100}`}
         </Stack.Item>
 
         <Stack.Item p={1}>
@@ -438,7 +646,9 @@ const RenderPack = (props: { readonly pack: Pack }) => {
                         />
                       )}
                     </Stack.Item>
-                    <Stack.Item width="500px">{item.name}</Stack.Item>
+                    <Stack.Item width={orderedQuantity ? '600px' : '500px'}>
+                      {item.name}
+                    </Stack.Item>
                   </Stack>
                 </Stack.Item>
                 {item.contains.length > 0 && (

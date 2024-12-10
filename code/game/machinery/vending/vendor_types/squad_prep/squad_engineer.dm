@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("High-Capacity Power Cell", 3, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Riot Charge", 5, /obj/item/explosive/plastic/breaching_charge/rubber null, VENDOR_ITEM_RECOMMENDED),
+		list("Riot Charge", 5, /obj/item/explosive/plastic/breaching_charge/rubber, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 		list("Super-Capacity Power Cell", 10, /obj/item/cell/super, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 4, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("Intel Radio Encryption Key", 3, /obj/item/device/encryptionkey/intel, null, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 3, /obj/item/device/encryptionkey/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 3, /obj/item/device/encryptionkey/req, null, VENDOR_ITEM_REGULAR),
-	))
+))
 
 /obj/structure/machinery/cm_vending/gear/engi
 	name = "\improper ColMarTech Squad ComTech Gear Rack"

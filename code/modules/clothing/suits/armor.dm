@@ -101,7 +101,7 @@
 	. = ..()
 	select_gamemode_skin(/obj/item/clothing/suit/armor/vest/pilot)
 
-/obj/item/clothing/suit/armor/vest/pilot/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/clothing/suit/armor/vest/pilot/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")

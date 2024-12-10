@@ -1,7 +1,8 @@
 import { randomPick, randomProb } from 'common/random';
 import { BooleanLike } from 'common/react';
+import { storage } from 'common/storage';
 import { capitalizeFirst } from 'common/string';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { useBackend, useSharedState } from '../backend';
 import {
@@ -12,15 +13,20 @@ import {
   DmIcon,
   Flex,
   Input,
+  Modal,
   Section,
   Stack,
 } from '../components';
+import { ButtonCheckbox } from '../components/Button';
 import { Window } from '../layouts';
+import { LoadingScreen } from './common/LoadingToolbox';
 
 type SupplyComputerData = {
   categories: string[];
   contraband_categories: string[];
   all_items: Pack[];
+  valid_categories: string[];
+  temp: string;
   current_order: OrderPack[];
   used_points: number;
   points: number;
@@ -82,37 +88,72 @@ enum MenuOptions {
 }
 
 export const SupplyComputer = () => {
-  const { data } = useBackend<SupplyComputerData>();
-
-  const { all_items } = data;
-
   const [menu, setMenu] = useState(MenuOptions.Categories);
 
-  const validCategories: string[] = [];
+  const [selectedCategory, setCategory] = useState('Ammo');
+  const [modal, setDisplayModal] = useState<ReactNode | false>(false);
 
-  all_items.forEach((pack) => {
-    if (
-      !validCategories.includes(pack.category) &&
-      !pack.dollar_cost &&
-      pack.category?.length > 0
-    ) {
-      validCategories.push(pack.category);
+  const [theme, setTheme] = useState<string | false>();
+
+  const { data } = useBackend<SupplyComputerData>();
+
+  const [acknowledgedTemp, setAcknowledgeTemp] = useSharedState('temp', '');
+
+  const { temp } = data;
+
+  useEffect(() => {
+    storage
+      .get('supply-comp-theme')
+      .then((theme) => setTheme(theme ?? 'crtbrown'));
+  }, []);
+
+  useEffect(() => {
+    if (temp?.length > 0 && temp !== acknowledgedTemp) {
+      setDisplayModal(
+        <Section title="System Message">
+          <Stack vertical p={3}>
+            <Stack.Item>{temp}</Stack.Item>
+            <Stack.Item pt={2}>
+              <Button
+                fluid
+                onClick={() => {
+                  setAcknowledgeTemp(temp);
+                  setDisplayModal(false);
+                }}
+              >
+                Acknowledge
+              </Button>
+            </Stack.Item>
+          </Stack>
+        </Section>,
+      );
     }
-  });
+  }, [temp]);
 
-  const [selectedCategory, setCategory] = useState(validCategories[0]);
+  if (!theme) {
+    return (
+      <Window>
+        <Window.Content>
+          <LoadingScreen />
+        </Window.Content>
+      </Window>
+    );
+  }
 
   return (
-    <Window width={1050} height={700} theme="crtbrown">
+    <Window width={1050} height={700} theme={theme}>
       <Window.Content>
+        {!!modal && <Modal>{modal}</Modal>}
         <Stack>
           <Stack.Item>
             <SideButtons
               menu={menu}
-              allCategories={validCategories}
               selectedCategory={selectedCategory}
               setMenu={setMenu}
               setCategory={setCategory}
+              setModal={setDisplayModal}
+              theme={theme}
+              setTheme={setTheme}
             />
           </Stack.Item>
           <Stack.Item grow>
@@ -126,12 +167,22 @@ export const SupplyComputer = () => {
 
 const SideButtons = (props: {
   readonly menu: MenuOptions;
-  readonly allCategories: string[];
   readonly selectedCategory: string;
+  readonly theme: string;
   readonly setMenu: (_) => void;
   readonly setCategory: (_) => void;
+  readonly setModal: (_) => void;
+  readonly setTheme: (_) => void;
 }) => {
-  const { menu, allCategories, selectedCategory, setMenu, setCategory } = props;
+  const {
+    menu,
+    selectedCategory,
+    setMenu,
+    setCategory,
+    setModal,
+    theme,
+    setTheme,
+  } = props;
 
   const { data, act } = useBackend<SupplyComputerData>();
 
@@ -146,14 +197,56 @@ const SideButtons = (props: {
     can_launch,
     can_cancel,
     can_force,
+    valid_categories,
   } = data;
+
+  const chooseTheme = (theme: string) => {
+    setTheme(theme);
+    storage.set('supply-comp-theme', theme);
+    setModal(false);
+  };
 
   return (
     <Stack vertical>
       <Stack.Item>
         <Section>
           <Stack vertical>
-            <Stack.Item>Supply Budget: ${points * 100}</Stack.Item>
+            <Stack.Item>
+              <Stack justify="space-between">
+                <Stack.Item>Supply Budget: ${points * 100}</Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon="gear"
+                    onClick={() =>
+                      setModal(
+                        <Section title="Settings">
+                          <Stack p={2}>
+                            <ButtonCheckbox
+                              checked={theme === 'crtbrown'}
+                              onClick={() => chooseTheme('crtbrown')}
+                            >
+                              CRT: Brown
+                            </ButtonCheckbox>
+                            <ButtonCheckbox
+                              checked={theme === 'crtgreen'}
+                              onClick={() => chooseTheme('crtgreen')}
+                            >
+                              CRT: Green
+                            </ButtonCheckbox>
+                            <ButtonCheckbox
+                              checked={theme === 'weyland_yutani'}
+                              onClick={() => chooseTheme('weyland_yutani')}
+                            >
+                              wyOS
+                            </ButtonCheckbox>
+                          </Stack>
+                        </Section>,
+                      )
+                    }
+                  />
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
             <Stack.Item>
               <Stack>
                 <Stack.Item grow>
@@ -168,20 +261,22 @@ const SideButtons = (props: {
                 </Stack.Item>
                 {!!(can_cancel || can_force) && (
                   <Stack.Item>
-                    {!!can_force && (
-                      <Button
-                        icon="gauge-high"
-                        tooltip="Force"
-                        onClick={() => act('force_launch')}
-                      />
-                    )}
-                    {!!can_cancel && (
-                      <Button
-                        icon="ban"
-                        tooltip="Cancel"
-                        onClick={() => act('cancel_launch')}
-                      />
-                    )}
+                    <Stack>
+                      {!!can_force && (
+                        <Button
+                          icon="gauge-high"
+                          tooltip="Force"
+                          onClick={() => act('force_launch')}
+                        />
+                      )}
+                      {!!can_cancel && (
+                        <Button
+                          icon="ban"
+                          tooltip="Cancel"
+                          onClick={() => act('cancel_launch')}
+                        />
+                      )}
+                    </Stack>
                   </Stack.Item>
                 )}
               </Stack>
@@ -224,8 +319,8 @@ const SideButtons = (props: {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section scrollable height="490px">
-          <Stack vertical height="470px">
+        <Section scrollable height="470px">
+          <Stack vertical height="450px">
             <Input
               placeholder="Search..."
               fluid
@@ -235,11 +330,11 @@ const SideButtons = (props: {
                   setCategory(val);
                   setMenu(MenuOptions.Categories);
                 } else {
-                  setCategory(allCategories[0]);
+                  setCategory(valid_categories[0]);
                 }
               }}
             />
-            {allCategories.sort().map((category) => (
+            {valid_categories.sort().map((category) => (
               <Stack.Item key={category}>
                 <Button
                   fluid
@@ -425,28 +520,30 @@ const RenderOrder = (props: {
             </Stack.Item>
             {request && (
               <Stack.Item>
-                <Button
-                  icon="check"
-                  onClick={() =>
-                    act('change_order', {
-                      ordernum: order.order_num,
-                      order_status: 'approve',
-                    })
-                  }
-                >
-                  Approve
-                </Button>
-                <Button
-                  icon="xmark"
-                  onClick={() =>
-                    act('change_order', {
-                      ordernum: order.order_num,
-                      order_status: 'deny',
-                    })
-                  }
-                >
-                  Deny
-                </Button>
+                <Stack>
+                  <Button
+                    icon="check"
+                    onClick={() =>
+                      act('change_order', {
+                        ordernum: order.order_num,
+                        order_status: 'approve',
+                      })
+                    }
+                  >
+                    Approve
+                  </Button>
+                  <Button
+                    icon="xmark"
+                    onClick={() =>
+                      act('change_order', {
+                        ordernum: order.order_num,
+                        order_status: 'deny',
+                      })
+                    }
+                  >
+                    Deny
+                  </Button>
+                </Stack>
               </Stack.Item>
             )}
           </Stack>

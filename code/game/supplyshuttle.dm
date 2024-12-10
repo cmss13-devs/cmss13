@@ -422,6 +422,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		GLOB.supply_controller.black_market_investigation()
 
 	if(length(ordered))
+		objects = ordered
 		GLOB.supply_controller.requestlist -= src
 		GLOB.supply_controller.shoppinglist += src
 		return TRUE
@@ -922,6 +923,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "SupplyComputer")
+		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /obj/structure/machinery/computer/supplycomp/ui_data(mob/user)
@@ -930,26 +932,24 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	.["points"] = GLOB.supply_controller.points
 	.["dollars"] = GLOB.supply_controller.black_market_points
 
-	var/used_points = 0
-	var/used_dollars = 0
-	for(var/pack_type in current_order)
-		var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
-		used_points += (iter_pack.cost * current_order[pack_type])
-		used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
-
 	.["temp"] = temp
 
-	.["used_points"] = used_points
-	.["used_dollars"] = used_dollars
-
+	var/used_points = 0
+	var/used_dollars = 0
 	.["current_order"] = list()
 	for(var/pack_type in current_order)
 		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		used_points += (pack.cost * current_order[pack_type])
+		used_dollars += (pack.dollar_cost * current_order[pack_type])
 
 		var/list_pack = pack.get_list_representation()
 		list_pack["quantity"] = current_order[pack_type]
 
 		.["current_order"] += list(list_pack)
+
+	.["used_points"] = used_points
+	.["used_dollars"] = used_dollars
 
 	.["requests"] = list()
 	for(var/datum/supply_order/order as anything in GLOB.supply_controller.requestlist)
@@ -998,6 +998,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	.["contraband_categories"] = GLOB.supply_controller.contraband_supply_groups
 
 	.["all_items"] = list()
+	.["valid_categories"] = list()
 	for(var/pack_type in GLOB.supply_packs_datums)
 		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
 
@@ -1006,6 +1007,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(isnull(pack.contains) && isnull(pack.containertype))
 			continue
+
+		if(!pack.contraband && length(pack.group))
+			.["valid_categories"] |= pack.group
 
 		.["all_items"] += list(
 			pack.get_list_representation()
@@ -1071,7 +1075,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 				if("decrement")
 					var/current_quantity = current_order[picked_pack]
-					if(current_quantity == 1)
+					if(current_quantity <= 1)
 						current_order -= picked_pack
 						return TRUE
 
@@ -1104,7 +1108,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(supply_order.buy(src))
 				return TRUE
 
+			GLOB.supply_controller.requestlist += supply_order
 			temp = "Unable to purchase order, order has been placed in Requests."
+			return TRUE
 
 		if("change_order")
 			var/datum/supply_order/order
@@ -1130,6 +1136,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 						return TRUE
 
 					temp = "Unable to approve order, order remains in Requests."
+					return TRUE
 				if("deny")
 					GLOB.supply_controller.requestlist -= order
 					qdel(order)
@@ -1147,6 +1154,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				return TRUE
 
 			shuttle.launch(src)
+			return TRUE
+
+		if("force_launch")
+			GLOB.supply_controller.shuttle.force_launch()
+			return TRUE
+
+		if("cancel_launch")
+			GLOB.supply_controller.shuttle.cancel_launch()
 			return TRUE
 
 		if("keyboard")

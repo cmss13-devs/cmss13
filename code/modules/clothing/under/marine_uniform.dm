@@ -57,6 +57,9 @@
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
 			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi'
 			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
+		if("urban")
+			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi'
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))

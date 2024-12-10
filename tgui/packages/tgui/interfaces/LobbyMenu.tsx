@@ -51,7 +51,6 @@ export const LobbyMenu = () => {
 
   const { lobby_icon, lobby_author, sound } = data;
 
-  const interactionPlayer = useRef<HTMLAudioElement>(null);
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
   const [modal, setModal] = useState<ReactNode | false>(false);
@@ -59,16 +58,20 @@ export const LobbyMenu = () => {
   const [disableAnimations, setDisableAnimations] = useState(false);
 
   useEffect(() => {
-    onLoadPlayer.current!.volume = 0.4;
+    onLoadPlayer.current!.volume = 0.2;
+
+    setTimeout(() => {
+      onLoadPlayer.current!.play();
+    }, 250);
 
     setTimeout(() => {
       setDisableAnimations(true);
     }, 10000);
-  });
+  }, []);
 
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
-      <audio autoPlay src={sound} ref={onLoadPlayer} />
+      <audio src={sound} ref={onLoadPlayer} />
       <Window.Content
         className={`LobbyScreen ${disableAnimations}`}
         style={{

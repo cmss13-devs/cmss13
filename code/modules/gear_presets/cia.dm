@@ -92,7 +92,7 @@
 	minimum_age = 30
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "CIA Agent (Marine Raider Plant)"
+	name = "CIA Agent (Marine Raider Advisor)"
 	minimum_age = 30
 	skills = /datum/skills/cia
 
@@ -137,7 +137,7 @@
 /// Spies ///
 
 /datum/equipment_preset/clf/engineer/cia
-	name = "CIA Agent (CLF Engineer Disguise)"
+	name = "CIA Spy (CLF Engineer)"
 	skills = /datum/skills/cia
 
 /datum/equipment_preset/clf/engineer/cia/New()
@@ -175,7 +175,7 @@
 
 
 /datum/equipment_preset/upp/soldier/dressed/cia
-	name = "CIA Agent (UPP Soldier Disguise)"
+	name = "CIA Spy (UPP Soldier)"
 	skills = /datum/skills/cia
 
 /datum/equipment_preset/upp/soldier/dressed/New()
@@ -188,7 +188,7 @@
 
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia
-	name = "CIA Agent (UPP Senior Officer Disguise)"
+	name = "CIA Spy (UPP Senior Officer)"
 	skills = /datum/skills/cia
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()

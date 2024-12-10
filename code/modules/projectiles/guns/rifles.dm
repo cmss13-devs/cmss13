@@ -2026,15 +2026,15 @@
 
 /obj/item/weapon/gun/rifle/l23/breacher/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_11
+	fire_delay = FIRE_DELAY_TIER_10
 	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_11
+	burst_delay = FIRE_DELAY_TIER_SG
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 	recoil_unwielded = RECOIL_OFF
 
 /obj/item/weapon/gun/rifle/l23/handle_starting_attachment() //Adds L23-B's breaching shotgun

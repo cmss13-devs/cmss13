@@ -31898,11 +31898,6 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cvY" = (
-/obj/structure/machinery/power/generator{
-	anchored = 1;
-	dir = 4;
-	icon_state = "teg-broken"
-	},
 /obj/effect/decal/warning_stripes,
 /obj/structure/lattice,
 /turf/open/floor/plating,

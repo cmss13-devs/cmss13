@@ -1,7 +1,7 @@
 /obj/structure/bed/sofa
 	name = "Sofa"
 	desc = "Just like Space Ikea would have wanted"
-	icon = 'icons/obj/structures/props/sofas.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "sofa" //use child icons
 	anchored = TRUE //can't rotate sofas
 	can_buckle = FALSE //Icons aren't setup for this to look right, so just disable it for now. Maybe when we fix the icons y'know?

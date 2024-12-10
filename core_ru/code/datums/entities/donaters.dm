@@ -174,7 +174,7 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		decorating.update_icon()
 
 	else if(istype(decoratable, /obj/item/clothing/suit/storage/marine))
-		if(decoratable.flags_atom & NO_SNOW_TYPE)
+		if(decoratable.flags_atom & NO_GAMEMODE_SKIN)
 			return
 
 		var/selected = tgui_input_list(user, "Select skin for your armor", "Skin Selector", selectable_types)
@@ -185,7 +185,7 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		decoratable.item_state = selectable_types[selected] + initial(decoratable.item_state)
 
 	else if(istype(decoratable, /obj/item/clothing/head/helmet/marine))
-		if(decoratable.flags_atom & NO_SNOW_TYPE)
+		if(decoratable.flags_atom & NO_GAMEMODE_SKIN)
 			return
 
 		var/selected = tgui_input_list(user, "Select skin for your helmet", "Skin Selector", selectable_types)

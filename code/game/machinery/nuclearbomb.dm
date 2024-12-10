@@ -607,7 +607,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				hive = GLOB.hive_datum[hivenumber]
 				if(!length(hive.totalXenos))
 					return
-				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated. Our only chance now is to disable the device itself."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 			return
 
 		announcement_helper("DECRYPTION IN [floor(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
@@ -640,7 +640,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			hive = GLOB.hive_datum[hivenumber]
 			if(!length(hive.totalXenos))
 				continue
-			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! Destroy their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! You have about [time_left] to destroy at least one of their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
 	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')

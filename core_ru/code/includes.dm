@@ -42,7 +42,6 @@
 #include "game\gamemodes\colonialmarines\crash.dm"
 #include "game\gamemodes\colonialmarines\crash\equipping.dm"
 #include "game\gamemodes\colonialmarines\crash\gear.dm"
-#include "game\jobs\role_authority.dm"
 #include "game\jobs\job\job.dm"
 #include "game\jobs\job\antag\xeno\xenomorph.dm"
 #include "game\jobs\job\civilians\civilian.dm"

@@ -1,5 +1,5 @@
 GLOBAL_LIST_EMPTY(gear_datums_by_category)
-GLOBAL_LIST_EMPTY(gear_datums_by_name)
+GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /proc/populate_gear_list()
 	var/datum/gear/G
@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear
 	var/display_name  // Name/index.
 	var/category //Used for sorting in the loadout selection.
-	var/path  // Path to item.
+	var/obj/item/path  // Path to item.
 	var/cost = 2 // Number of points used.
 	var/slot // Slot to equip to, if any.
 	var/list/allowed_roles   // Roles that can spawn with this item.
@@ -81,6 +81,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
+	cost = 5
 
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"

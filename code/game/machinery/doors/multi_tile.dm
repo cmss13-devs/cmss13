@@ -116,16 +116,6 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
-/obj/structure/machinery/door/airlock/multi_tile/shuttle
-	name = "Shuttle Podlock"
-	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
-	icon_state = "pdoor1"
-	opacity = TRUE
-	openspeed = 12
-	req_access = null
-	not_weldable = 1
-
-
 // ALMAYER
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer
@@ -333,6 +323,14 @@
 	name = "\improper Saipan cargo door"
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp
+	name = "\improper Morana cargo door"
+	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp2
+	name = "\improper Devana cargo door"
+	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
 	width = 2
 
@@ -347,6 +345,14 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds3
 	name = "\improper Saipan crew hatch"
 	icon = 'icons/obj/structures/doors/dropship3_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp
+	name = "\improper Morana crew hatch"
+	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/upp2
+	name = "\improper Devana crew hatch"
+	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
 	name = "bulkhead blast door"

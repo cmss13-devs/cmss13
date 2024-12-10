@@ -349,11 +349,11 @@
 	var/cannot_slash = FALSE
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+
 	//putting the organ in for research
 	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
@@ -362,8 +362,9 @@
 		organ.caste_origin = caste_type
 		organ.icon_state = get_organ_icon()
 
-	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
+	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 	if(hive)
 		hive.add_xeno(src)
 
@@ -376,9 +377,8 @@
 	vis_contents += skin_icon_holder
 	//RUCM END
 
-	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
-
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
+	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
 	if(old_xeno)
 		//RUCM SART
 		tts_voice = old_xeno.tts_voice
@@ -887,7 +887,7 @@
 	tacklestrength_max = caste.tacklestrength_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
-/*
+/* RUCM CHANGE
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
 */
 //RUCM START
@@ -1012,7 +1012,7 @@
 
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
-/*
+/* RUCM CHANGE
 	apply_effect(4, WEAKEN)
 */
 //RUCM START

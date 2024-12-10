@@ -5,7 +5,6 @@
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
-	icon_state = ""
 	item_state = "gun"
 	pickup_sound = "gunequip"
 	drop_sound = "gunrustle"
@@ -546,11 +545,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/new_icon_state = base_gun_icon
 
-	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
-		new_icon_state += "_e"
+	if(!isnull(base_gun_icon))
+		if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+			new_icon_state += "_e"
 
-	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
-		new_icon_state += "_o"
+		if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
+			new_icon_state += "_o"
 
 	icon_state = new_icon_state
 	update_mag_overlay()
@@ -893,17 +893,22 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		return
 	var/found_handful
+	var/ammo_type = get_ammo_type_chambered(user)
 	for(var/obj/item/ammo_magazine/handful/H in user.loc)
-		if(H.default_ammo == in_chamber.ammo.type && H.caliber == caliber && H.current_rounds < H.max_rounds)
+		if(H.default_ammo == ammo_type && H.caliber == caliber && H.current_rounds < H.max_rounds)
 			found_handful = TRUE
 			H.current_rounds++
 			H.update_icon()
 			break
 	if(!found_handful)
 		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
-		new_handful.generate_handful(in_chamber.ammo.type, caliber, 8, 1, type)
+		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
+
+//Funny fix for smatrgun
+/obj/item/weapon/gun/proc/get_ammo_type_chambered(mob/user)
+	return in_chamber.ammo.type
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG

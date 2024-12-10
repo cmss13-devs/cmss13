@@ -15,7 +15,7 @@
 	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
@@ -67,7 +67,7 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
@@ -80,7 +80,7 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
@@ -956,7 +956,7 @@
 /obj/item/clothing/under/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
-	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	icon_state = null
 	item_state = null
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -1323,19 +1323,21 @@
 	desc = "A large backpack, used by Tanya Edenia. DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
 	name = "tactical radiopack"
 	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
 	icon_state = "skinnerpack"
 	item_state = "securitypack"
-	has_gamemode_skin = FALSE //same sprite for all gamemodes.
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"
@@ -1361,6 +1363,8 @@
 	desc = "Belt worn by the dreaded Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "swordbelt_u"
 	item_state = "swordbelt_u"
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	skip_fullness_overlays = TRUE
 
 //CUSTOM ITEMS - NO TEMPLATES - ALL UNIQUE ////////////////////////
 /obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex

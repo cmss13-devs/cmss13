@@ -103,7 +103,7 @@ export const SupplyComputer = () => {
   const [selectedCategory, setCategory] = useState(validCategories[0]);
 
   return (
-    <Window width={1050} height={700} theme="crtgreen">
+    <Window width={1050} height={700} theme="crtbrown">
       <Window.Content>
         <Stack>
           <Stack.Item>

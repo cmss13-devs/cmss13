@@ -1,7 +1,8 @@
 /obj/structure/vulture_spotter_tripod
 	name = "\improper M707 spotting tripod"
 	desc = "A tripod for an M707 anti-materiel rifle's spotting scope."
-	icon_state = "vulture_tripod"
+	icon_state = "vulture_tripod_deployed"
+	icon = 'icons/obj/items/binoculars.dmi'
 	density = TRUE
 	anchored = TRUE
 	unacidable = TRUE
@@ -166,7 +167,7 @@
 		skillless = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
-	icon_state = "vulture_scope"
+	icon_state = "vulture_tripod_deployed"
 	setDir(user.dir)
 	bound_rifle = scope.bound_rifle
 	scope_attached = TRUE

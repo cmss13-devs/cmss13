@@ -10,6 +10,7 @@
 	name = "sandwich"
 	desc = "The best thing since sliced bread."
 	icon_state = "breadslice"
+	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
 	bitesize = 2
 

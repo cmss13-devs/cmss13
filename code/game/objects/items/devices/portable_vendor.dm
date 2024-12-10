@@ -202,7 +202,8 @@
 	update_overlays()
 
 /obj/item/device/portable_vendor/proc/update_overlays()
-	if(covert) return
+	if(covert)
+		return
 
 	if(overlays) overlays.Cut()
 	if (broken)

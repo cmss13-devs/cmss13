@@ -510,7 +510,7 @@ CIA
 ---------------------
 */
 
-/datum/skills/CIA
+/datum/skills/cia
 	name = "CIA Agent"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,

@@ -3,7 +3,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimum_age = 25
 	assignment = JOB_CIA
-	skills = /datum/skills/CIA
+	skills = /datum/skills/cia
 	languages = ALL_HUMAN_LANGUAGES
 	faction = FACTION_MARINE
 
@@ -92,9 +92,9 @@
 	minimum_age = 30
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "CIA Agent (Marine Raider Embed)"
-	minimum_age = 25
-	skills = /datum/skills/CIA
+	name = "CIA Agent (Marine Raider Plant)"
+	minimum_age = 30
+	skills = /datum/skills/cia
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
 	. = ..()
@@ -137,18 +137,18 @@
 /// Spies ///
 
 /datum/equipment_preset/clf/engineer/cia
-	name = "CIA Spy (CLF Engineer)"
-	skills = /datum/skills/CIA
+	name = "CIA Agent (CLF Engineer Disguise)"
+	skills = /datum/skills/cia
 
 /datum/equipment_preset/clf/engineer/cia/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
 
 /datum/equipment_preset/clf/engineer/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	var/obj/item/clothing/under/colonist/clf/M = new()
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	M.attach_accessory(new_human, W)
-	new_human.equip_to_slot_or_del(M, WEAR_BODY)
+	var/obj/item/clothing/under/colonist/clf/uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/webbing = new()
+	uniform.attach_accessory(new_human, webbing)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
 	spawn_rebel_suit(new_human)
 	spawn_rebel_shoes(new_human)
@@ -175,8 +175,8 @@
 
 
 /datum/equipment_preset/upp/soldier/dressed/cia
-	name = "CIA Spy (UPP Soldier)"
-	skills = /datum/skills/CIA
+	name = "CIA Agent (UPP Soldier Disguise)"
+	skills = /datum/skills/cia
 
 /datum/equipment_preset/upp/soldier/dressed/New()
 	. = ..()
@@ -188,8 +188,8 @@
 
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia
-	name = "CIA Spy (UPP Senior Officer)"
-	skills = /datum/skills/CIA
+	name = "CIA Agent (UPP Senior Officer Disguise)"
+	skills = /datum/skills/cia
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()
 	. = ..()

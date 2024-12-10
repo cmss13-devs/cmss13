@@ -131,7 +131,14 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
   } = data;
 
   return (
-    <Section p={3} className="sectionLoad" style={{ boxShadow: '0 0 15px' }}>
+    <Section
+      p={3}
+      className="sectionLoad"
+      style={{
+        boxShadow: '0 0 15px',
+        backgroundColor: 'rgba(0, 17, 0, 0.8)',
+      }}
+    >
       <Stack vertical>
         <Stack.Item>
           <Stack>

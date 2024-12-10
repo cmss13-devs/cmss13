@@ -13,6 +13,18 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aad" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"aae" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "aag" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
@@ -26392,7 +26404,7 @@ aPf
 aKf
 aKf
 aVK
-aKb
+aae
 aKb
 hUs
 hUs
@@ -50570,7 +50582,7 @@ wpw
 wpw
 wpw
 lBw
-wpw
+aad
 wpw
 ajY
 ifF

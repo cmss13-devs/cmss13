@@ -5,6 +5,27 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/kitchen)
+"aab" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/floor/strata/floor3/east,
+/area/rostock/req)
+"aac" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/floor/corsat/plate,
+/area/rostock/lower_deck/ammunition_storage)
+"aad" = (
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/turf/open/floor/almayer/tcomms,
+/area/rostock/engineering/reactor)
 "aaf" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/effect/decal/cleanable/dirt,
@@ -220,17 +241,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/hallway)
-"aiW" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/obj/structure/window/framed/upp/hull,
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/power/terminal{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/rostock/engineering/reactor)
 "ajg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -4407,13 +4417,13 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/briefing)
 "dxz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/prison/floor_plate,
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/turf/open/floor/almayer/tcomms,
 /area/rostock/engineering/reactor)
 "dxR" = (
 /obj/effect/decal/warning_stripes{
@@ -8081,9 +8091,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/rostock/lifeboat)
-"gkZ" = (
-/turf/open/floor/prison/floor_plate,
-/area/rostock/engineering/reactor)
 "glc" = (
 /turf/open/floor/strata/orange_icorner/east,
 /area/rostock/lifeboat)
@@ -14444,12 +14451,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
 /area/rostock/engineering/reactor)
-"kLB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/engineering/reactor)
 "kLR" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -15058,6 +15059,8 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/corsat/red,
 /area/rostock/railgun/starboard)
 "lmj" = (
@@ -17538,9 +17541,6 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "nuo" = (
-/obj/structure/machinery/recharge_station{
-	layer = 2.9
-	},
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/repairbay)
@@ -21195,6 +21195,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "qji" = (
@@ -24268,6 +24269,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
 	},
+/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "sJc" = (
@@ -26589,6 +26591,9 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/metal/strata/east,
+/obj/structure/platform_decoration/metal/strata/west{
+	pixel_x = -5
+	},
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/ammunition_storage)
 "uzR" = (
@@ -27939,6 +27944,8 @@
 /area/rostock/lifeboat)
 "vzT" = (
 /obj/structure/stairs/perspective,
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/corsat/red,
 /area/rostock/railgun)
 "vAs" = (
@@ -29711,11 +29718,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/medical/morgue)
 "wMt" = (
-/obj/structure/machinery/part_fabricator/dropship{
-	layer = 3.1;
-	req_access = null
-	},
 /obj/structure/platform/metal/strata/north,
+/obj/structure/machinery/part_fabricator/dropship/upp,
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/repairbay)
 "wNm" = (
@@ -39469,10 +39473,10 @@ aPH
 aPH
 aPH
 qui
-gkZ
+oAm
 lYw
 myK
-gkZ
+oAm
 nku
 aPH
 aPH
@@ -39652,9 +39656,9 @@ dEG
 aPH
 aPH
 dxz
-kLB
-kLB
-oAm
+aad
+aad
+aad
 aPH
 aPH
 joH
@@ -40015,10 +40019,10 @@ eFT
 dEG
 vXU
 aPH
-aiW
-aiW
-aiW
-aiW
+nPV
+nPV
+nPV
+nPV
 aPH
 dsj
 joH
@@ -43013,7 +43017,7 @@ mED
 ion
 kQf
 xlF
-eMx
+aac
 mFt
 cxX
 cxX
@@ -47778,7 +47782,7 @@ xxe
 puB
 dKo
 dKo
-jpL
+aab
 nnl
 oID
 qyA

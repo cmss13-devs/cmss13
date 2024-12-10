@@ -24,6 +24,8 @@
 		return COMPONENT_SKIP_MOB
 
 /datum/element/bullet_trait_direct_only/watchtower/check_distance(obj/projectile/projectile, mob/living/carbon/human/projectile_target)
+	SIGNAL_HANDLER
+	
 	if(!HAS_TRAIT(projectile.firer, TRAIT_ON_WATCHTOWER))
 		if(!istype(projectile.firer, /mob))
 			return
@@ -35,6 +37,9 @@
 		gun = firer.get_active_hand()
 		if(istype(gun))
 			gun.remove_bullet_traits(list("watchtower_arc"))
+		return
+
+	if(HAS_TRAIT(projectile_target, TRAIT_ON_WATCHTOWER))
 		return
 
 	return ..()

@@ -11,18 +11,14 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_goons.dmi'
 	icon_state = "hybrisa_uniform"
 	worn_state = "hybrisa_uniform"
-	contained_sprite = TRUE
-	item_state_slots = null
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
 	icon_state = "lead_hybrisa_uniform"
 	worn_state = "lead_hybrisa_uniform"
-	contained_sprite = TRUE
 
 // CMB Police Officer
 
@@ -238,8 +234,8 @@
 // Science
 
 /obj/item/clothing/under/rank/scientist/hybrisa
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
 	name = "scientist's utility jumpsuit"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
 	icon_state = "science_outfit"
 	worn_state = "science_outfit"
@@ -262,10 +258,8 @@
 /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform
 	name = "\improper expensive suit"
 	desc = "A luxurious designer suit, beyond the reach of the average person. It's an exclusive choice for high-level executives and the affluent elite."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "wy_exec_suit_uniform"
-	worn_state = "wy_exec_suit_uniform"
-	contained_sprite = TRUE
+	icon_state = "wy_exec_suit"
+	worn_state = "wy_exec_suit"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -275,22 +269,22 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket
-	icon_state = "wy_exec_suit_3_uniform"
-	worn_state = "wy_exec_suit_3_uniform"
-
 /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/brown
 
-	icon_state = "wy_exec_suit_2_uniform"
-	worn_state = "wy_exec_suit_2_uniform"
+	icon_state = "wy_exec_suit_2"
+	worn_state = "wy_exec_suit_2"
+
+/obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket
+	icon_state = "wy_exec_suit_3"
+	worn_state = "wy_exec_suit_3"
 
 /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/brown/jacket
-	icon_state = "wy_exec_suit_4_uniform"
-	worn_state = "wy_exec_suit_4_uniform"
+	icon_state = "wy_exec_suit_4"
+	worn_state = "wy_exec_suit_4"
 
 /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket_only
-	icon_state = "wy_exec_suit_5_uniform"
-	worn_state = "wy_exec_suit_5_uniform"
+	icon_state = "wy_exec_suit_5"
+	worn_state = "wy_exec_suit_5"
 
 
 /////////////////////// Hats & Helmets ///////////////////////
@@ -301,10 +295,8 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
 	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
-	icon = 'icons/mob/humans/onmob/contained/hybrisa_goons.dmi'
 	icon_state = "helmet_black"
 	item_state = "helmet_black"
-	contained_sprite = TRUE
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
 	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
@@ -316,7 +308,6 @@
 	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon_state = "helmet_brown"
 	item_state = "helmet_brown"
-	contained_sprite = TRUE
 
 /obj/item/clothing/head/hybrisa/wy_cap
 	name = "\improper Weyland-Yutani cap"
@@ -1072,8 +1063,8 @@
 	name = "\improper NSPA - police uniform"
 	desc = "A pair of black slacks and a white button-down shirt with a black tie; a standard uniform for the NSPA forces, specific to more urbanized colonies, resembling a uniform worn by more traditional policing forces on Earth."
 	icon = 'icons/mob/humans/onmob/contained/hybrisa_survivors.dmi'
-	icon_state = "nspa_police_uniform"
-	worn_state = "nspa_police_uniform"
+	icon_state = "nspa_police"
+	worn_state = "nspa_police"
 	contained_sprite = TRUE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW

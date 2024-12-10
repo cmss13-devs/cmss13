@@ -220,13 +220,18 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
           index={1}
           onClick={() => act('tutorial')}
           disabled={!tutorials_ready}
+          icon="book-open"
         >
           Tutorial
         </LobbyButton>
-        <LobbyButton index={2} onClick={() => act('preferences')}>
+        <LobbyButton
+          index={2}
+          onClick={() => act('preferences')}
+          icon="file-lines"
+        >
           Setup Character
         </LobbyButton>
-        <LobbyButton index={3} onClick={() => act('playtimes')}>
+        <LobbyButton index={3} onClick={() => act('playtimes')} icon="list-ul">
           View Playtimes
         </LobbyButton>
 
@@ -234,6 +239,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
 
         <LobbyButton
           index={4}
+          icon="eye"
           onClick={() => {
             setModal(
               <Box>
@@ -266,6 +272,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                   index={5}
                   disabled={!!readied}
                   onClick={() => act('ready')}
+                  icon="check"
                 >
                   Ready
                 </LobbyButton>
@@ -275,6 +282,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                   index={5}
                   disabled={!readied}
                   onClick={() => act('unready')}
+                  icon="xmark"
                 >
                   Not Ready
                 </LobbyButton>
@@ -286,7 +294,11 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
             <Stack.Item>
               <Stack>
                 <Stack.Item grow>
-                  <LobbyButton index={5} onClick={() => act('late_join')}>
+                  <LobbyButton
+                    index={5}
+                    onClick={() => act('late_join')}
+                    icon="users"
+                  >
                     Join the USCM
                   </LobbyButton>
                 </Stack.Item>
@@ -305,6 +317,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                 <Stack.Item grow>
                   <LobbyButton
                     index={6}
+                    icon="viruses"
                     onClick={() => {
                       setModal(
                         <Box>
@@ -340,7 +353,11 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
             </Stack.Item>
             {!!upp_enabled && (
               <Stack.Item>
-                <LobbyButton index={7} onClick={() => act('late_join_upp')}>
+                <LobbyButton
+                  index={7}
+                  onClick={() => act('late_join_upp')}
+                  icon="users-between-lines"
+                >
                   Join the UPP
                 </LobbyButton>
               </Stack.Item>
@@ -349,6 +366,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
               <Stack.Item>
                 <LobbyButton
                   index={7 + (upp_enabled ? 1 : 0)}
+                  icon="skull-crossbones"
                   onClick={() => {
                     setModal(
                       <Box>
@@ -376,6 +394,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
               <Stack.Item>
                 <LobbyButton
                   index={7 + (upp_enabled ? 1 : 0) + (predator_enabled ? 1 : 0)}
+                  icon="fax"
                   onClick={() => {
                     setModal(
                       <Box>

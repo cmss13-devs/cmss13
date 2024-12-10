@@ -92,12 +92,6 @@
     }
   }
 
-  @supports (-webkit-hyphens: none) or (-moz-appearance: none) {
-    .Button:hover {
-      background-color: #00e94e;
-    }
-  }
-
   &.filterEnabled {
     .crt {
       &::before {

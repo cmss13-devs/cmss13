@@ -510,10 +510,10 @@
 	if(SEND_SIGNAL(AM, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
 		return
 
-	var/mob/M
+	var/mob/target
 	if(ismob(AM))
-		M = AM
-		if(!M.can_be_pulled_by(src))
+		target = AM
+		if(!target.can_be_pulled_by(src))
 			return
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
@@ -530,24 +530,26 @@
 	if(client)
 		client.recalculate_move_delay()
 
-	if(!QDELETED(M))
+	if(!QDELETED(target))
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-		flick_attack_overlay(M, "grab")
+		flick_attack_overlay(target, "grab")
 
-		attack_log += "\[[time_stamp()]\]<font color='green'> Grabbed [key_name(M)]</font>"
-		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Grabbed by [key_name(src)]</font>"
-		msg_admin_attack("[key_name(src)] grabbed [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		attack_log += "\[[time_stamp()]\]<font color='green'> Grabbed [key_name(target)]</font>"
+		target.attack_log += "\[[time_stamp()]\]<font color='orange'> Grabbed by [key_name(src)]</font>"
+		msg_admin_attack("[key_name(src)] grabbed [key_name(target)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 		if(!no_msg)
-			animation_attack_on(M)
-			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
+			animation_attack_on(target)
+			visible_message(SPAN_WARNING("[src] has grabbed [target] passively!"), null, null, 5)
 
-		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
+		if(target.mob_size > MOB_SIZE_HUMAN || !(target.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
 
 		//Attempted fix for people flying away through space when cuffed and dragged.
-		M.inertia_dir = 0
+		target.inertia_dir = 0
+
+		SEND_SIGNAL(src, COMSIG_MOB_GRAB_PASSIVE, target)
 
 	if(hud_used && hud_used.pull_icon)
 		hud_used.pull_icon.icon_state = "pull1"

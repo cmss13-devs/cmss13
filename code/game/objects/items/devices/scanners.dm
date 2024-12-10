@@ -103,6 +103,7 @@ K9 SCANNER
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
 	to_chat(user, SPAN_NOTICE("[user] has analyzed [M]'s vitals."))
+	SEND_SIGNAL(M, COMSIG_LIVING_HEALTH_ANALYZED, src)
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
 	return

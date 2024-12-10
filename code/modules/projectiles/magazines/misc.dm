@@ -22,7 +22,7 @@
 	name = "M60 ammo box (7.62x51mm)"
 	desc = "A blast from the past chambered in 7.62X51mm NATO."
 	caliber = "7.62x51mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/machineguns.dmi'
 	icon_state = "m60" //PLACEHOLDER
 
 	matter = list("metal" = 10000)
@@ -35,7 +35,7 @@
 	name = "QYJ-72 ammo box (7.62x54mmR)"
 	desc = "A 250 round box for the UPP's standard GPMG, the QYJ-72. Chambered in 7.62x54mmR."
 	caliber = "7.62x54mmR"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
 
 	matter = list("metal" = 10000)

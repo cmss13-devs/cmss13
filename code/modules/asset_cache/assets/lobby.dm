@@ -21,5 +21,7 @@
 /datum/asset/simple/lobby_sound
 	assets = list(
 		"load" = file('sound/lobby/lobby_load.mp3'),
-		"interact" = file('sound/lobby/lobby_interact.mp3')
+		"interact1" = file('sound/machines/keyboard1.ogg'),
+		"interact2" = file('sound/machines/keyboard2.ogg'),
+		"interact3" = file('sound/machines/keyboard3.ogg'),
 	)

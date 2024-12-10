@@ -40,12 +40,13 @@
 
 	.["icon"] = get_asset_datum(/datum/asset/simple/icon_states/lobby).get_url_mappings()["uscm.png"]
 
-	.["sound"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["load"]
-	.["sound_interact"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["interact"]
+	var/lobby_assets = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()
+	.["sound"] = lobby_assets["load"]
+	.["sound_interact"] = list(lobby_assets["interact1"], lobby_assets["interact2"], lobby_assets["interact3"])
 
 	.["lobby_icon"] = ""
 	.["lobby_author"] = ""
-	if(SSlobby_art.initialized)
+	if(SSlobby_art.selected_file_name)
 		var/icons = get_asset_datum(/datum/asset/simple/lobby_art).get_url_mappings()
 		.["lobby_icon"] = icons[icons[1]]
 		.["lobby_author"] = SSlobby_art.author
@@ -214,6 +215,9 @@
 				GLOB.readied_players--
 
 			return TRUE
+
+		if("keyboard")
+			playsound_client(client, get_sfx("keyboard"), vol = 20)
 
 /mob/new_player/Logout()
 	QDEL_NULL(lobby_window)

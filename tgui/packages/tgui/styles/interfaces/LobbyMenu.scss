@@ -35,6 +35,12 @@
     animation-delay: 5s;
   }
 
+  .bgBackground {
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+  }
+
   .authorAttrib {
     position: absolute;
     bottom: 0px;

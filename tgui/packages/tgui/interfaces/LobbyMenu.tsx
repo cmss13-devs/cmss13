@@ -9,7 +9,13 @@ import {
 } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Modal, Section, Stack } from '../components';
+import {
+  Box,
+  Button as NativeButton,
+  Modal,
+  Section,
+  Stack,
+} from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
 
@@ -19,7 +25,7 @@ type LobbyData = {
   lobby_author: string;
 
   sound: string;
-  sound_interact: string;
+  sound_interact: string[];
 
   character_name: string;
   display_number: string;
@@ -43,7 +49,7 @@ const LobbyContext = createContext({ animationsDisable: false });
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { lobby_icon, lobby_author } = data;
+  const { lobby_icon, lobby_author, sound } = data;
 
   const interactionPlayer = useRef<HTMLAudioElement>(null);
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
@@ -60,14 +66,9 @@ export const LobbyMenu = () => {
     }, 10000);
   });
 
-  const playInterfactionSfx = () => {
-    interactionPlayer.current!.play();
-  };
-
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
-      <audio autoPlay src={data.sound} ref={onLoadPlayer} />
-      <audio src={data.sound_interact} ref={interactionPlayer} />
+      <audio autoPlay src={sound} ref={onLoadPlayer} />
       <Window.Content
         className={`LobbyScreen ${disableAnimations}`}
         style={{
@@ -95,27 +96,13 @@ export const LobbyMenu = () => {
             width="100%"
             style={{
               backgroundImage: `url(${lobby_icon})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              position: 'absolute',
             }}
-            className="bgLoad"
+            className="bgLoad bgBackground"
           />
-          <Box
-            height="100%"
-            width="100%"
-            style={{
-              position: 'absolute',
-            }}
-            className="crt"
-          />
+          <Box height="100%" width="100%" position="absolute" className="crt" />
           <Stack vertical height="100%" justify="space-around" align="center">
             <Stack.Item>
-              <LobbyButtons
-                setModal={setModal}
-                playInteractionSfx={playInterfactionSfx}
-                disableAnimations={disableAnimations}
-              />
+              <LobbyButtons setModal={setModal} />
             </Stack.Item>
           </Stack>
           <Box className="bgLoad authorAttrib">
@@ -127,19 +114,10 @@ export const LobbyMenu = () => {
   );
 };
 
-const LobbyButtons = (props: {
-  readonly setModal: (_) => void;
-  readonly playInteractionSfx: () => void;
-  readonly disableAnimations: boolean;
-}) => {
-  const { act: original, data } = useBackend<LobbyData>();
+const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
+  const { act, data } = useBackend<LobbyData>();
 
-  const { setModal, playInteractionSfx, disableAnimations } = props;
-
-  const act = (arg: string) => {
-    original(arg);
-    playInteractionSfx();
-  };
+  const { setModal } = props;
 
   const {
     character_name,
@@ -453,5 +431,15 @@ const LobbyButton = (props: LobbyButtonProps) => {
         {children}
       </Button>
     </Stack.Item>
+  );
+};
+
+const Button = (props) => {
+  const { act } = useBackend();
+
+  return (
+    <Box onClick={() => act('keyboard')}>
+      <NativeButton {...props} />
+    </Box>
   );
 };

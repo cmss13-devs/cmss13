@@ -16,6 +16,7 @@
 	bound_width = 64
 	bound_height = 96
 	health = 1000
+	layer = ABOVE_TURF_LAYER
 	var/max_health = 1000
 
 	var/stage = 1

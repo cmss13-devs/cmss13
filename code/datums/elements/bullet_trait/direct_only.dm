@@ -23,9 +23,7 @@
 	if(projectile.original != projectile_target)
 		return COMPONENT_SKIP_MOB
 
-/datum/element/bullet_trait_direct_only/watchtower/check_distance(obj/projectile/projectile, mob/living/carbon/human/projectile_target)
-	SIGNAL_HANDLER
-	
+/datum/element/bullet_trait_direct_only/watchtower/check_distance(obj/projectile/projectile, mob/living/carbon/human/projectile_target)	
 	if(!HAS_TRAIT(projectile.firer, TRAIT_ON_WATCHTOWER))
 		if(!istype(projectile.firer, /mob))
 			return

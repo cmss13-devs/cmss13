@@ -7,7 +7,10 @@
 	var/upp_ship = "ssv_rostock.dmm"
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/pre_setup()
-	. = ..()
+	var/datum/powernet/PN = new() // we create our own powernet, with tetris and vodka
+	PN.powernet_name = "rostock"
+	GLOB.powernets += PN
+	GLOB.powernets_by_name["rostock"] = PN
 	var/datum/map_template/template = SSmapping.map_templates[upp_ship]
 	if(!template)
 		return
@@ -22,6 +25,7 @@
 
 	// Now notify the staff of the load - this goes in addition to the generic template load game log
 	message_admins("Successfully loaded template as new Z-Level, template name: [template.name]", center_x, center_y, loaded.z_value)
+	. = ..()
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/get_roles_list()
 	return GLOB.ROLES_CM_VS_UPP

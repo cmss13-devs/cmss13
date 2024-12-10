@@ -47,10 +47,12 @@
 /obj/effect/alien/weeds/node/designer/speed
 	name = "Optimized Design Node"
 	icon_state = "speednode"
+	designspeed = TRUE
 
 /obj/effect/alien/weeds/node/designer/cost
 	name = "Flexible Design Node"
 	icon_state = "costnode"
+	designcost = TRUE
 
 // farsight
 /datum/action/xeno_action/onclick/toggle_long_range/designer

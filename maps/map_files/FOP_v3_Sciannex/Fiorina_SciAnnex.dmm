@@ -7,12 +7,12 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"aab" = (
+"aac" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
+	insert_tag = "rocinante"
 	},
-/turf/open/floor/prison,
-/area/fiorina/station/lowsec/showers_laundry)
+/turf/open/space,
+/area/fiorina/oob)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -46168,7 +46168,7 @@ wbI
 itN
 baC
 baC
-bQM
+aac
 bQM
 bQM
 bQM
@@ -60099,7 +60099,7 @@ cME
 eLu
 rjw
 btJ
-aab
+oLE
 skj
 rjw
 ceC

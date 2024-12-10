@@ -196,6 +196,12 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -78100,7 +78106,7 @@ clE
 dTs
 dTs
 dTs
-dTs
+aaR
 dTs
 dTs
 dTs

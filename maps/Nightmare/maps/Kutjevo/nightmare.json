@@ -5,9 +5,9 @@
     },
     {
 		"type": "map_insert",
-		"landmark": "clfship",
+		"landmark": "clfsmugglers",
 		"chance": 1.0,
-		"path": "standalone/clfship.dmm",
-		"when": { "lvevent": "clfship" }
+		"path": "standalone/clfsmugglers.dmm",
+		"when": { "lvevent": "clfsmugglers" }
 	}
 ]

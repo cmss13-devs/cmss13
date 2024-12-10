@@ -4,7 +4,7 @@
         "choices": [
             { "weight": 6, "type": "def", "values": { "riot_in_progress": "none" } },
             { "weight": 3, "type": "def", "values": { "riot_in_progress": "riot" } },
-            { "weight": 1, "type": "def", "values": { "riot_in_progress": "clfship" } }
+            { "weight": 19999999, "type": "def", "values": { "riot_in_progress": "rocinante" } }
         ]
     }
 ]

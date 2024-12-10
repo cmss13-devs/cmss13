@@ -22,9 +22,9 @@
 	},
     {
 		"type": "map_insert",
-		"landmark": "clfship",
+		"landmark": "clfpods",
 		"chance": 1.0,
-		"path": "standalone/clfship.dmm",
-		"when": { "lvevent": "clfship" }
+		"path": "standalone/clfpods.dmm",
+		"when": { "lvevent": "clfpods" }
 	}
 ]

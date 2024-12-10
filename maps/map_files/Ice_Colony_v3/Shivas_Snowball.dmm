@@ -17,12 +17,6 @@
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
-"aaf" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_colony_grounds)
 "aag" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -46852,7 +46846,7 @@ eOM
 sYu
 sYu
 sYu
-aaf
+sYu
 sYu
 lwo
 lwo

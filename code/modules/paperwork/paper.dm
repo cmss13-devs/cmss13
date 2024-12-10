@@ -607,6 +607,14 @@
 /obj/item/paper/bigred/upp
 	name = "UPP Orders"
 
+/obj/item/paper/bigred/clf
+	name = "Log Entry"
+	info = "The agitation went as planned and the miners went on strike. It turned violent but we held back the jackbooted scum well enough. The problem is we've stopped receiving outside communication from the rest of the colony, and people have been going missing. I'm ordering everyone to hunker down until we can figure out what's going on."
+
+/obj/item/paper/trijent/clf
+	name = "Log Entry"
+	info = "Our ship is lost. Our pods have crashed on a company-occupied planet. It appears the colony is overrun with hostile creatures, and many of the men are already dead. Our fight for freedom cannot end like this! We will live on, for the liberation!"
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 
@@ -924,7 +932,7 @@
 	name = "Liaison Colony Briefing"
 	desc = "A brief from the Company about the colony the ship is responding to."
 	icon_state = "paper_wy_words"
-	
+
 	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
 
 /obj/item/paper/liaison_brief/Initialize(mapload, ...)
@@ -933,6 +941,6 @@
 		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
 	else
 		info = file2text(placeholder)
-		
+
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

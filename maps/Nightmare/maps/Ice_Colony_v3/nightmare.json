@@ -106,9 +106,9 @@
 	},
 	{
 		"type": "map_insert",
-		"landmark": "clfship",
+		"landmark": "panic_room",
 		"chance": 1.0,
-		"path": "standalone/clfship.dmm",
-        "when": { "panic_room": "clfship" }
+		"path": "standalone/clfraid.dmm",
+        "when": { "panic_room": "clfraid" }
 	}
 ]

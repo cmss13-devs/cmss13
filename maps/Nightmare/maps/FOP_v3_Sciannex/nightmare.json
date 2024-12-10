@@ -9,9 +9,9 @@
 },
 {
     "type": "map_insert",
-    "landmark": "clfship",
+    "landmark": "rocinante",
     "chance": 1.0,
-    "path": "standalone/clfship.dmm",
-    "when": { "riot_in_progress": "clfship" }
+    "path": "standalone/rocinante.dmm",
+    "when": { "riot_in_progress": "rocinante" }
 }
 ]

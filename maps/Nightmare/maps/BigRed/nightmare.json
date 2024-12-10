@@ -25,9 +25,9 @@
 	]},
     {
 		"type": "map_insert",
-		"landmark": "clfship",
+		"landmark": "clfmining",
 		"chance": 1.0,
-		"path": "standalone/clfship.dmm",
-		"when": { "lvevent": "fallen_ship" }
+		"path": "standalone/clfmining.dmm",
+		"when": { "lvevent": "clf" }
 	}
 ]

@@ -40,6 +40,9 @@
 	/// Are byond mouse events beyond the window passed in to the ui
 	var/mouse_hooked = FALSE
 
+	/// If the window should be closed with other windows when requested
+	var/closeable = TRUE
+
 /**
  * public
  *
@@ -91,8 +94,8 @@
 /datum/tgui/proc/open()
 	if(!user.client)
 		return FALSE
-//	if(window)
-//		return FALSE
+	if(window && window.status > TGUI_WINDOW_LOADING)
+		return FALSE
 	process_status()
 	if(status < UI_UPDATE)
 		return FALSE

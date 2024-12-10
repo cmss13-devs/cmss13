@@ -30,6 +30,7 @@
 	if (!ui)
 		ui = new(user, src, "LobbyMenu", window = lobby_window)
 		ui.set_autoupdate(FALSE)
+		ui.closeable = FALSE
 		ui.open()
 
 /mob/new_player/ui_state(mob/user)

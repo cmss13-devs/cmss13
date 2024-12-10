@@ -22,6 +22,9 @@ SUBSYSTEM_DEF(lobby_art)
 		var/mob/new_player/player = client.mob // if something is no longer a new player this early, i'm happy with a runtime
 
 		var/datum/tgui/ui = SStgui.get_open_ui(player, player)
+		if(!ui)
+			continue
+
 		ui.refresh_cooldown = FALSE
 		ui.send_full_update(force = TRUE)
 

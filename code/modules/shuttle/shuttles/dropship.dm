@@ -349,6 +349,10 @@
 
 /obj/docking_port/stationary/marine_dropship/upp_hangar_2/Initialize(mapload)
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/docking_port/stationary/marine_dropship/upp_hangar_2/LateInitialize(mapload)
+	. = ..()
 	load_roundstart()
 
 /obj/docking_port/stationary/marine_dropship/crash_site

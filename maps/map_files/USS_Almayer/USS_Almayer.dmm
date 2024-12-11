@@ -132,127 +132,37 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
 "aas" = (
-/obj/item/prop{
-	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
-	icon_state = "M56D_gun_e";
-	layer = 3.1;
-	name = "\improper M38D heavy machine gun 'Bess'";
-	pixel_x = -3;
-	pixel_y = 10
+/obj/structure/filingcabinet{
+	pixel_x = 8
 	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "aat" = (
-/obj/item/prop/almayer/box,
-/obj/item/prop{
-	desc = "This M57 smartgun was utilized in field testing by the greatest smartgunner the USS Almayer ever had, Larry A.W Lewis, until he was fatally and tragically decapitated from a single clean shot to the head by a CLF sniper. As he didn't wear a helmet, it took weeks to find the body.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
-	icon_state = "m56c";
-	item_state = "m56c";
-	name = "broken M57 'Larry's Will' smartgun";
-	pixel_x = -7;
-	pixel_y = 3
+/obj/structure/filingcabinet{
+	pixel_x = -8
 	},
-/obj/item/frame/light_fixture/small{
-	pixel_y = 17
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
 	},
-/obj/structure/machinery/door_control{
-	id = "crate_room4";
-	name = "storage shutters";
-	pixel_y = 26
-	},
-/obj/effect/decal/cleanable/cobweb2/dynamic,
-/obj/item/packageWrap,
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/squads/req)
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp{
-	layer = 3.3;
-	pixel_x = 15
-	},
-/obj/item/tool/screwdriver,
-/obj/item/bananapeel{
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle. This one appears to be covered in gun oil";
-	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi';
-	icon_state = "iffbarrel";
-	name = "Broken B8 Smart-Scope";
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/turf/open/floor/almayer/orangefull,
-/area/almayer/living/briefing)
-"aaw" = (
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_y = 16;
-	density = 0
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
-"aax" = (
-/obj/structure/machinery/prop{
-	desc = "It's a server box...";
-	icon_state = "comm_server";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "server box"
-	},
-/turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/command/airoom)
-"aay" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/effect/spawner/random/toolbox,
-/obj/item/stack/sheet/metal{
-	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
-	icon = 'icons/obj/structures/props/wall_decorations/semiotic_standard.dmi';
-	icon_state = "coffee";
-	name = "coffee semiotic";
-	pixel_x = 20;
-	pixel_y = 12;
-	singular_name = "coffee semiotic"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/upper/u_a_p)
-"aaz" = (
-/obj/structure/filingcabinet/documentation/liaison,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
-"aaA" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = -8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aaB" = (
-/obj/structure/filingcabinet{
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aaC" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
-"aaD" = (
 /obj/structure/filingcabinet/documentation/military_police{
 	pixel_y = 24;
 	density = 0
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaC" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -272,24 +182,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
-"aaG" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 18
-	},
-/obj/structure/machinery/power/apc/almayer/west,
-/obj/structure/sign/safety/rewire{
-	pixel_x = -17;
-	pixel_y = 17
-	},
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 18;
-	density = 0;
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/shipboard/brig/evidence_storage)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -21703,6 +21595,24 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"eVR" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/machinery/power/apc/almayer/west,
+/obj/structure/sign/safety/rewire{
+	pixel_x = -17;
+	pixel_y = 17
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/shipboard/brig/evidence_storage)
 "eVT" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -25240,6 +25150,15 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
+"gyN" = (
+/obj/structure/machinery/prop{
+	desc = "It's a server box...";
+	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "server box"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/command/airoom)
 "gyO" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -34663,6 +34582,23 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/starboard)
+"krU" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	layer = 3.3;
+	pixel_x = 15
+	},
+/obj/item/tool/screwdriver,
+/obj/item/bananapeel{
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle. This one appears to be covered in gun oil";
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi';
+	icon_state = "iffbarrel";
+	name = "Broken B8 Smart-Scope";
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/orangefull,
+/area/almayer/living/briefing)
 "krZ" = (
 /obj/structure/closet/secure_closet/cargotech,
 /obj/item/clothing/accessory/storage/webbing,
@@ -42169,6 +42105,20 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/lower/workshop)
+"nxe" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/spawner/random/toolbox,
+/obj/item/stack/sheet/metal{
+	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
+	icon = 'icons/obj/structures/props/wall_decorations/semiotic_standard.dmi';
+	icon_state = "coffee";
+	name = "coffee semiotic";
+	pixel_x = 20;
+	pixel_y = 12;
+	singular_name = "coffee semiotic"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/upper/u_a_p)
 "nxx" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/orange,
@@ -44021,6 +43971,13 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
+"olM" = (
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "olN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
@@ -45751,6 +45708,33 @@
 "oSM" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
+"oTe" = (
+/obj/item/prop/almayer/box,
+/obj/item/prop{
+	desc = "This M57 smartgun was utilized in field testing by the greatest smartgunner the USS Almayer ever had, Larry A.W Lewis, until he was fatally and tragically decapitated from a single clean shot to the head by a CLF sniper. As he didn't wear a helmet, it took weeks to find the body.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon_state = "m56c";
+	item_state = "m56c";
+	name = "broken M57 'Larry's Will' smartgun";
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/frame/light_fixture/small{
+	pixel_y = 17
+	},
+/obj/structure/machinery/door_control{
+	id = "crate_room4";
+	name = "storage shutters";
+	pixel_y = 26
+	},
+/obj/effect/decal/cleanable/cobweb2/dynamic,
+/obj/item/packageWrap,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/almayer/squads/req)
 "oTA" = (
 /obj/structure/machinery/cryopod,
 /obj/structure/machinery/light{
@@ -64691,6 +64675,10 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
+"wvo" = (
+/obj/structure/filingcabinet/documentation/liaison,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "wvu" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/target{
@@ -65145,6 +65133,18 @@
 "wFs" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/starboard_hallway)
+"wFz" = (
+/obj/item/prop{
+	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon_state = "M56D_gun_e";
+	layer = 3.1;
+	name = "\improper M38D heavy machine gun 'Bess'";
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "wFB" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/warning_stripes{
@@ -79346,7 +79346,7 @@ lrq
 vjB
 gIz
 tpn
-aaG
+eVR
 cak
 vrM
 tpn
@@ -80571,7 +80571,7 @@ cmM
 tzd
 tzd
 sgi
-aaD
+aav
 wSm
 kAL
 xkd
@@ -85243,7 +85243,7 @@ gwR
 sTm
 tdT
 qyo
-aaA
+aas
 qwp
 ora
 laO
@@ -85649,7 +85649,7 @@ wjq
 wjq
 rHc
 qyo
-aaB
+aat
 qwp
 vGA
 uwN
@@ -90018,7 +90018,7 @@ hYG
 hYG
 aYt
 aYt
-aas
+wFz
 bAi
 xyw
 bnH
@@ -101560,7 +101560,7 @@ sPc
 xIQ
 sab
 pQc
-aaw
+olM
 aRy
 aRy
 eXr
@@ -103320,7 +103320,7 @@ xIj
 xIj
 bBH
 fKh
-aaz
+wvo
 nQA
 nQA
 vEG
@@ -105216,7 +105216,7 @@ bdd
 xXW
 gVu
 ydO
-aav
+krU
 wmz
 vbI
 rec
@@ -113075,7 +113075,7 @@ aPO
 sty
 dJe
 unQ
-aay
+nxe
 tjH
 fGn
 oUx
@@ -113358,7 +113358,7 @@ xnI
 ayj
 dWg
 bdl
-aat
+oTe
 ixN
 jaR
 mJa
@@ -128133,7 +128133,7 @@ cxc
 kBy
 kBy
 dzt
-aax
+gyN
 daz
 lmz
 lmz

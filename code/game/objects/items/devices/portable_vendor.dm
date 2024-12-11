@@ -22,6 +22,8 @@
 	var/fabricating = FALSE
 	var/broken = FALSE
 	var/contraband = FALSE
+	var/covert = FALSE //covert = no light, no sound
+	var/delay = 3 //fabricating time, in seconds
 
 	var/list/purchase_log = list()
 
@@ -186,11 +188,12 @@
 
 	purchase_log += "[key_name(usr)] bought [product[1]]."
 
-	playsound(src, "sound/machines/fax.ogg", 5)
+	if(!covert)
+		playsound(src, "sound/machines/fax.ogg", 5)
 	fabricating = TRUE
 	update_overlays()
 
-	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay SECONDS)
 
 /obj/item/device/portable_vendor/proc/spawn_product(typepath, mob/user)
 	var/obj/new_item = new typepath(get_turf(src))
@@ -199,6 +202,9 @@
 	update_overlays()
 
 /obj/item/device/portable_vendor/proc/update_overlays()
+	if(covert)
+		return
+
 	if(overlays) overlays.Cut()
 	if (broken)
 		overlays += image(icon, "securespark")

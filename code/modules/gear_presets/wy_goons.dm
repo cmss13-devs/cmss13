@@ -131,6 +131,7 @@
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "SL"
 	skills = /datum/skills/wy_goon_lead
 	minimap_icon = "goon_leader"
 

@@ -114,7 +114,13 @@
 	var/shield_slowdown = 0 // Slowdown from readying shields
 
 	var/datum/equipment_preset/assigned_equipment_preset
-	var/rank_fallback
+
+	/// Variable used to override the icon file the job HUD is drawn from.
+	var/rank_icon_file_override
+	/// Variable used to override the first part of the icon state for job HUD.
+	var/rank_icon_prefix_override
+	/// Variable used to override the second part of the icon state for job HUD.
+	var/rank_icon_state_override
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
 	var/assigned_fireteam = 0 //the fireteam this human is assigned to

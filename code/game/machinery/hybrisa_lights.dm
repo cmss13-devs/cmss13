@@ -1,8 +1,7 @@
 // Hybrisa Electrical Stuff
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch
 	name = "colony electrified fence switch"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
-	icon_state = "panelnopower"
+	icon_state = "panelbnopower"
 	desc = "This switch controls the electrified fences. It only functions when there is power."
 	machinery_type_whitelist = null
 	/// The power each fence takes up per process
@@ -27,11 +26,11 @@
 
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/update_icon()
 	if(!ispowered)
-		icon_state = "panelnopower"
+		icon_state = "panelbnopower"
 	else if(is_on)
-		icon_state = "panelon"
+		icon_state = "panelbon"
 	else
-		icon_state = "paneloff"
+		icon_state = "panelboff"
 
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/proc/toggle_fences()
 	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)

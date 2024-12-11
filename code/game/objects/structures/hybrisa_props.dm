@@ -2626,14 +2626,13 @@
 /obj/structure/prop/hybrisa/signs/high_voltage
 	name = "warning sign"
 	desc = null
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
 	icon_state = "shockyBig"
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/prop/hybrisa/signs/high_voltage/small
 	name = "warning sign"
 	desc = null
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
 	icon_state = "shockyTiny"
 	layer = WALL_OBJ_LAYER
 

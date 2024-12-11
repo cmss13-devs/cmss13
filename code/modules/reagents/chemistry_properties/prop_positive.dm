@@ -74,7 +74,7 @@
 	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/repairing/process(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))
@@ -514,7 +514,7 @@
 	code = "OGS"
 	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
 	rarity = PROPERTY_DISABLED
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/organstabilize/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -550,7 +550,7 @@
 	description = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 3
+	value = 2
 	cost_penalty = FALSE
 	COOLDOWN_DECLARE(ghost_notif)
 
@@ -640,7 +640,7 @@
 	description = "Protects the brain from neurological damage caused by toxins."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
-	value = 3
+	value = 2
 	max_level = 1
 
 /datum/chem_property/positive/neuroshielding/process(mob/living/M, potency = 1, delta_time)
@@ -739,12 +739,12 @@
 	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also slightly lowers heat intensity."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = -2
-	duration_per_level = 6
+	intensity_per_level = -3
+	duration_per_level = 8
 
 	intensitymod_per_level = -0.1
-	durationmod_per_level = 0.2
-	radiusmod_per_level = 0.01
+	durationmod_per_level = 0.3
+	radiusmod_per_level = 0.02
 
 /datum/chem_property/positive/fire/fueling/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
@@ -766,12 +766,12 @@
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = 6
-	duration_per_level = -2
+	intensity_per_level = 8
+	duration_per_level = -3
 
-	intensitymod_per_level = 0.2
-	durationmod_per_level = -0.1
-	radiusmod_per_level = -0.01
+	intensitymod_per_level = 0.3
+	durationmod_per_level = -0.15
+	radiusmod_per_level = -0.02
 
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
@@ -786,11 +786,11 @@
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
 	value = 1
-	range_per_level = 1
+	range_per_level = 2
 
-	intensitymod_per_level = -0.05
-	radiusmod_per_level = 0.05
-	durationmod_per_level = -0.05
+	intensitymod_per_level = -0.08
+	radiusmod_per_level = 0.1
+	durationmod_per_level = -0.08
 
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
@@ -858,7 +858,7 @@
 	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/xeno = M
-	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency * 1.2, 90)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -884,7 +884,7 @@
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/xeno = M
-		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_VHIGH * volume * potency, 0)
 		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
@@ -935,7 +935,7 @@
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
-		X.gain_health(min(potency * volume * 0.5, -X.health + 1))
+		X.gain_health(min(potency * volume * 0.8, -X.health + 1))
 
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
@@ -1000,22 +1000,7 @@
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
 
-/datum/chem_property/positive/regulating
-	name = PROPERTY_REGULATING
-	code = "REG"
-	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
-	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
-	value = 1
 
-/datum/chem_property/positive/regulating/reset_reagent()
-	holder.flags = initial(holder.flags)
-	..()
-
-/datum/chem_property/positive/regulating/update_reagent()
-	holder.flags |= REAGENT_CANNOT_OVERDOSE
-	..()
 
 /datum/chem_property/positive/firepenetrating
 	name = PROPERTY_FIRE_PENETRATING
@@ -1023,7 +1008,7 @@
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 8
+	value = 5
 	max_level = 1
 
 /datum/chem_property/positive/firepenetrating/reset_reagent()

@@ -16,7 +16,7 @@
 	)
 
 	var/has_aimed_shot = TRUE
-	var/aiming_time = 1.25 SECONDS
+	var/aiming_time = 1.5 SECONDS
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
 
@@ -117,27 +117,23 @@
 	var/aiming_buffs
 
 	if(sniper_rifle.enable_aimed_shot_laser)
-		aim_multiplier = 0.6
+		aim_multiplier = 0.7
 		aiming_buffs++
 
 	if(HAS_TRAIT(target, TRAIT_SPOTTER_LAZED))
-		aim_multiplier = 0.5
+		aim_multiplier = 0.7
 		aiming_buffs++
 
 	if(aiming_buffs > 1)
-		aim_multiplier = 0.35
+		aim_multiplier = 0.5
 
 	f_aiming_time *= aim_multiplier
 
 	var/beam
 	var/lockon
 
-	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
-		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
-		if((amr.focused_fire_counter >= 1 && amr.focused_fire_counter < 3) && (target == amr.focused_fire_target?.resolve()))
-			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
-		else
-			sniper_rifle.enable_aimed_shot_icon_alt = FALSE
+	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1) || istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/M42A))
+		sniper_rifle.enable_aimed_shot_icon_alt = TRUE
 
 	if(sniper_rifle.enable_aimed_shot_icon_alt)
 		beam = sniper_rifle.sniper_beam_icon_max
@@ -377,8 +373,6 @@
 	explo_proof = TRUE
 	aiming_time = 2 SECONDS
 	aimed_shot_cooldown_delay = 4.5 SECONDS
-	var/focused_fire_counter = 0
-	var/datum/weakref/focused_fire_target = null
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga

@@ -169,9 +169,6 @@
 	/// static associated list of limb key -> image to avoid unnecessary overlay generation
 	var/static/list/icon_render_image_cache = list()
 
-	/// Stored image references associated with focus-fire.
-	var/image/focused_fire_marker
-
 	// Are we currently using inherent zoom vision?
 	var/is_zoomed = FALSE
 

@@ -28,7 +28,7 @@
 	name = "T37 Ammunition Box (7.62x54mmR rounds)"
 	desc = "A box of 125, 7.62x54mmR rounds for the UPP T37 Medium Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the T37."
 	caliber = "7.62x54mmR"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/machineguns.dmi'
 	icon_state = "t37"
 	item_state = "t37"
 	max_rounds = 150
@@ -609,6 +609,7 @@
 /obj/structure/machinery/m56d_hmg/auto/t37
 	name = "\improper T37 Medium Machinegun"
 	desc = "A deployable, medium machine gun. The T37 is a UPP machinegun that fires 7.62x64mmR rounds. Unlike the USCM M2C counterpart, it has a much slower firerate in favor of sustained fire. Due to the quality of the design, it has a tendency to explode if it sustains too much damage. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "t37"
 	icon_full = "t37"
 	icon_empty = "t37_e"

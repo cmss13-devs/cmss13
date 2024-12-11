@@ -35,6 +35,12 @@
 /// From /mob/living/carbon/human/attack_hand() : (mob/living/carbon/human/attacked_mob)
 #define COMSIG_LIVING_ATTACKHAND_HUMAN "living_attackhand_human"
 
+/// From /obj/item/device/healthanalyzer/attack()
+#define COMSIG_LIVING_HEALTH_ANALYZED "living_health_analyzed"
+
+//From /datum/action/surgery_toggle/action_activate(): (mob/owner)
+#define COMSIG_LIVING_SURGERY_MODE_TOGGLED "living_surgery_mode_toggled"
+
 /// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)
 #define COMSIG_LIVING_HYPOSPRAY_INJECTED "living_hypospray_injected"
 
@@ -45,3 +51,9 @@
 
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+
+/// From /obj/item/clothing/accessory/stethoscope/attack(): (mob/living/user, mob/living/carbon/human/being, body_part)
+#define COMSIG_LIVING_STETHOSCOPE_USED "living_stethoscope_used"
+
+/// From /obj/item/device/flashlight/pen/attack(): (mob/living/user, mob/living/carbon/human/being)
+#define COMSIG_LIVING_PENLIGHT_USED "living_penlight_used"

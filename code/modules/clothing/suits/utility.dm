@@ -61,7 +61,7 @@
 
 /obj/item/clothing/suit/fire/firefighter
 	icon_state = "firesuit"
-	item_state = "firefighter"
+	item_state = "fire_suit"
 
 /*
  * Bomb protection

@@ -344,7 +344,7 @@
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
 	icon = 'icons/obj/items/chemistry.dmi'
-	item_state = "contsolid"
+	item_state = "pill_canister"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 500)
 	can_hold = list(
@@ -569,6 +569,7 @@
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
 	icon_state = "pill_canister2"
+	item_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 	maptext_label = "Kl"
 
@@ -578,6 +579,7 @@
 /obj/item/storage/pill_bottle/antitox
 	name = "\improper Dylovene pill bottle"
 	icon_state = "pill_canister6"
+	item_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
 	maptext_label = "Dy"
 
@@ -588,6 +590,7 @@
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "\improper Inaprovaline pill bottle"
 	icon_state = "pill_canister3"
+	item_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
 	maptext_label = "In"
 
@@ -597,6 +600,7 @@
 /obj/item/storage/pill_bottle/tramadol
 	name = "\improper Tramadol pill bottle"
 	icon_state = "pill_canister5"
+	item_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 	maptext_label = "Tr"
 
@@ -606,6 +610,7 @@
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
 	icon_state = "pill_canister4"
+	item_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
 	maptext_label = "Sp"
 
@@ -615,6 +620,7 @@
 /obj/item/storage/pill_bottle/bicaridine
 	name = "\improper Bicaridine pill bottle"
 	icon_state = "pill_canister11"
+	item_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 	maptext_label = "Bi"
 
@@ -624,6 +630,7 @@
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
 	icon_state = "pill_canister1"
+	item_state = "píll_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
 	maptext_label = "Dx"
 
@@ -634,6 +641,7 @@
 /obj/item/storage/pill_bottle/alkysine
 	name = "\improper Alkysine pill bottle"
 	icon_state = "pill_canister7"
+	item_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
 	maptext_label = "Al"
 
@@ -644,6 +652,7 @@
 /obj/item/storage/pill_bottle/imidazoline
 	name = "\improper Imidazoline pill bottle"
 	icon_state = "pill_canister9"
+	item_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
 	maptext_label = "Im"
 
@@ -654,6 +663,7 @@
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
 	icon_state = "pill_canister10"
+	item_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
 	maptext_label = "Pr"
 
@@ -664,6 +674,7 @@
 /obj/item/storage/pill_bottle/russianRed
 	name = "\improper Russian red pill bottle"
 	icon_state = "pill_canister"
+	item_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
 	maptext_label = "Rr"
 
@@ -674,6 +685,7 @@
 /obj/item/storage/pill_bottle/ultrazine
 	name = "pill bottle"
 	icon_state = "pill_canister11"
+	item_state = "pill_canister11"
 	max_storage_space = 5
 	skilllock = SKILL_MEDICAL_DEFAULT //CL can open it
 	var/idlock = TRUE
@@ -744,6 +756,7 @@
 /obj/item/storage/pill_bottle/stimulant
 	name = "\improper Stimulant pill bottle"
 	icon_state = "pill_canister12"
+	item_state = "píll_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
 	maptext_label = "ST"
 

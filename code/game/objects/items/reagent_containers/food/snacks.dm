@@ -364,7 +364,11 @@
 	name = "cookie"
 	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
+<<<<<<< HEAD
+	item_state = "COOKIE!!!"
+=======
 	icon = 'icons/obj/items/food/bakery.dmi'
+>>>>>>> master
 	filling_color = "#DBC94F"
 
 /obj/item/reagent_container/food/snacks/cookie/Initialize()
@@ -3260,6 +3264,7 @@
 	name = "Packaged Burrito"
 	desc = "A hard microwavable burrito. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "packaged-burrito"
+	item_state = "pburrito"
 	bitesize = 2
 	package = 1
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
@@ -3277,12 +3282,17 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		package = 0
 		icon_state = "open-burrito"
+		item_state = "burrito"
 
 /obj/item/reagent_container/food/snacks/packaged_burger
 	name = "Packaged Cheeseburger"
 	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "burger"
+<<<<<<< HEAD
+	item_state = "pburger"
+=======
 	icon = 'icons/obj/items/food/burgers.dmi'
+>>>>>>> master
 	bitesize = 3
 	package = 1
 
@@ -3307,6 +3317,7 @@
 	name = "Packaged Hotdog"
 	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "packaged-hotdog"
+	item_state = "photdog"
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	bitesize = 2
 	package = 1
@@ -3325,6 +3336,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 		package = 0
 		icon_state = "open-hotdog"
+		item_state = "hotdog"
 
 /obj/item/reagent_container/food/snacks/upp
 	name = "\improper UPP ration"
@@ -3374,6 +3386,7 @@
 	name = "Kepler Crisps"
 	desc = "'They're disturbingly good!' Now with 0% trans fat and added genuine sea salts."
 	icon_state = "kepler"
+	item_state = "kepler"
 	bitesize = 2
 	trash = /obj/item/trash/kepler
 
@@ -3386,6 +3399,7 @@
 	name = "Kepler Flamehot"
 	desc = "'They're disturbingly good!' Due to an exceptionally well-timed ad campaign with the release of Kepler Flamehot in 2165, the Kepler brand was able to overtake other confectionary Weyland products by quarter three of that year. Contains 0% trans fat."
 	icon_state = "flamehotkepler"
+	item_state = "flamehotkepler"
 	bitesize = 2
 	trash = /obj/item/trash/kepler/flamehot
 
@@ -3412,6 +3426,7 @@
 
 		new wrapper (user.loc)
 		icon_state = "[initial(icon_state)]-o"
+		item_state = "[initial(item_state)]-o"
 		package = 0
 
 //CM SNACKS
@@ -3419,7 +3434,11 @@
 	name = "\improper Boonie Bars"
 	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
 	icon_state = "boonie"
+<<<<<<< HEAD
+	item_state = "boonie"
+=======
 	item_state_slots = list(WEAR_AS_GARB = "boonie-bars")
+>>>>>>> master
 	wrapper = /obj/item/trash/boonie
 
 /obj/item/reagent_container/food/snacks/wrapped/booniebars/Initialize()
@@ -3431,7 +3450,11 @@
 	name = "\improper CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
+<<<<<<< HEAD
+	item_state = "chunk"
+=======
 	item_state_slots = list(WEAR_AS_GARB = "chunkbox")
+>>>>>>> master
 	hitsound = "swing_hit"
 	force = 15
 	throwforce = 10
@@ -3449,6 +3472,7 @@
 	name = "HUNK crate"
 	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
 	icon_state = "hunk"
+	item_state = "hunk"
 	w_class = SIZE_MEDIUM
 	force = 35
 	throwforce = 50
@@ -3465,7 +3489,11 @@
 	name = "Barcardine Bars"
 	desc = "A bar of chocolate, it smells like the medical bay. <i>\"Chocolate always helps the pain go away.\"</i>"
 	icon_state = "barcardine"
+<<<<<<< HEAD
+	item_state = "barcardine"
+=======
 	item_state_slots = list(WEAR_AS_GARB = "barcardine-bars")
+>>>>>>> master
 	wrapper = /obj/item/trash/barcardine
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine/Initialize()

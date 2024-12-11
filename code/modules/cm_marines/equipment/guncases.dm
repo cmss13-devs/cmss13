@@ -439,3 +439,33 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
+
+// -------- UPP Gun Kits --------
+
+/obj/item/storage/box/guncase/type19
+	name = "\improper Type-19 submachinegun case"
+	desc = "A gun case containing the Type-19 submachine gun, an outdated firearm of the UPP, but still found in limited service with more outlying union forces."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/smg/pps43, /obj/item/ammo_magazine/smg/pps43, /obj/item/ammo_magazine/smg/pps43/extended)
+
+/obj/item/storage/box/guncase/type19/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+
+/obj/item/storage/box/guncase/ppsh
+	name = "\improper PPSh-17b submachinegun case"
+	desc = "A gun case containing the PPSh-17b submachine gun, copy of an ancient firearm, woefully inadequate for modern warfare, but highly sought after by collectors."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/smg/ppsh, /obj/item/ammo_magazine/smg/ppsh, /obj/item/ammo_magazine/smg/ppsh/extended)
+
+/obj/item/storage/box/guncase/ppsh/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/ppsh(src)
+	new /obj/item/ammo_magazine/smg/ppsh/extended(src)
+	new /obj/item/ammo_magazine/smg/ppsh/extended(src)
+	new /obj/item/ammo_magazine/smg/ppsh(src)
+	new /obj/item/ammo_magazine/smg/ppsh(src)
+	new /obj/item/ammo_magazine/smg/ppsh(src)

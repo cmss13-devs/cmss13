@@ -2022,7 +2022,7 @@
 	density = 0;
 	desc = "Made in Little Japan.";
 	health = 300;
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/stacks.dmi';
 	icon_state = "sheet-lizard";
 	name = "exotic bedsheet";
 	pixel_x = -1
@@ -9426,7 +9426,7 @@
 	density = 0;
 	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
 	health = 300;
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/stacks.dmi';
 	icon_state = "sheet-mythril";
 	name = "funky wall bacon"
 	},
@@ -12200,7 +12200,7 @@
 /obj/item/weapon/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/toy.dmi';
 	icon_state = "game_kit";
 	name = "Thick Art LTD Gamepad"
 	},
@@ -14772,7 +14772,7 @@
 /area/varadero/interior/technical_storage)
 "lXv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/holostool,
+/obj/item/stool,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "lYi" = (
@@ -25795,10 +25795,6 @@
 /area/varadero/exterior/lz1_near)
 "uLP" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/head/caphat{
-	pixel_x = 2;
-	pixel_y = 9
-	},
 /obj/item/clothing/head/cmcap,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
@@ -28247,7 +28243,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "wyE" = (
-/obj/item/storage/belt/marine/quackers,
+/obj/item/toy/inflatable_duck,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
 "wzb" = (

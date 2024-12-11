@@ -1,8 +1,12 @@
 //Biosuit complete with shoes (in the item sprite)
 /obj/item/clothing/head/bio_hood
 	name = "bio hood"
-	icon_state = "bio"
 	desc = "A hood that protects the head and face from biological contaminants."
+	icon_state = "bio"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+	)
 	permeability_coefficient = 0.2
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -28,6 +32,7 @@
 	desc = "A suit that protects against biological contamination."
 	icon_state = "bio"
 	item_state = "bio_suit"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.2
@@ -43,12 +48,16 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	siemens_coefficient = 0.9
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 
 /obj/item/clothing/suit/storage/synthbio
 	name = "bio suit"
 	desc = "Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon_state = "bio"
 	item_state = "bio_suit"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	allowed = list(
 		/obj/item/weapon/baton,
 		/obj/item/restraint/handcuffs,
@@ -63,6 +72,11 @@
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/device/motiondetector,
+	)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
 	)
 
 //Standard biosuit, orange stripe
@@ -112,20 +126,3 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 
-//CMO's biosuit, blue stripe
-/obj/item/clothing/suit/bio_suit/cmo
-	icon_state = "bio_cmo"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
-
-/obj/item/clothing/head/bio_hood/cmo
-	icon_state = "bio_cmo"
-
-
-//Plague Dr mask can be found in clothing/masks/gasmask.dm
-/obj/item/clothing/suit/bio_suit/plaguedoctorsuit
-	name = "Plague doctor suit"
-	desc = "It protected doctors from the Black Death, back then. You bet your arse it's gonna help you against viruses."
-	icon_state = "plaguedoctor"
-	item_state = "bio_suit"
-	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL

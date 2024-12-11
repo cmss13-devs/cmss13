@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 /obj/item/ammo_magazine/shotgun
 	name = "box of shotgun slugs"
 	desc = "A box filled with heavy shotgun shells. A timeless classic. 12 Gauge."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/shotguns.dmi'
 	icon_state = "slugs"
 	item_state = "slugs"
 	default_ammo = /datum/ammo/bullet/shotgun/slug

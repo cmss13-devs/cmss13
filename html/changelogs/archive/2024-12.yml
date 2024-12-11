@@ -43,3 +43,82 @@
   - qol: USCM notice sent when intel points for non-xeno non-yautja corpses are maxed
       out
   - qol: hijack wording more clear for newbies
+2024-12-04:
+  Steelpoint:
+  - bugfix: Fixed accidental loss of UPP Commanding Officer access to their personal
+      equipment vendors.
+  efzapa:
+  - spellcheck: Changed the old "Exec. Suvp." Paygrade Prefix to "Exec. Spvsr."
+2024-12-05:
+  Drathek:
+  - rscadd: Chestbursters now have spawn protections for 1s (godmode, evasion, and
+      ignores fire)
+  - rscadd: Dense structures (and coffins) now prevent machinery doors from closing.
+  - bugfix: Fixed an edgecase with pushing vehicles by dropship launch would incorrectly
+      push west if it was only 1 tile in.
+  - bugfix: Fix code mistakes involving bitwise OR
+  - balance: Sentry flamer ammo now actually applies its initial damage (~30) to non-immune
+      xenos
+  - balance: AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE are now actually required for a vehicle
+      damage multiplier
+  - code_imp: Bitwise OR mistakes like this are now linted against
+  Red-byte3D:
+  - qol: The king now also has the ability to disable or enable automatic shoving
+      of things in its way
+  neeshacark:
+  - rscadd: OT can now take the bad leg trait.
+  realforest2001, Blundir:
+  - rscadd: Added the Synthetic Reset Key an engineering skill defib that only works
+      on Synthetics. The reset key fits into engi kits, tool pouch/belt.
+  - rscadd: added the reset key to all upp/clf/pmc/contractor/forecon loadouts, to
+      synth/comtech/CE/MT/XO vendors.
+  - balance: Synthetics are no longer revivable via defib, now you need the reset
+      key for that specifically.
+  - imageadd: Sprites by Blundir.
+  - balance: Hazmat joes now spawn with a box of inflatable walls, instead of having
+      backpack filled with them.
+  - code_imp: Changed how defibs handle who can use them, adding variables for skill
+      checks.
+  thevandie:
+  - rscadd: ties to the Research Consultant and both Lawyers.
+2024-12-06:
+  zzzmike:
+  - rscdel: Replaced outdated tip with new one
+2024-12-07:
+  Drathek:
+  - bugfix: Fix airlock door spam allowing doors to remain open again
+2024-12-08:
+  HeresKozmos:
+  - mapadd: Added naturally spawning resin walls, doors and sparse sticky resin for
+      aesthetic purposes.
+  - maptweak: Slightly moved some map items around a short distance (about 1-2 tiles
+      or so*).
+  Steelpoint:
+  - rscadd: UPP Requisition Vendors may now vend UPP shotgun ammo boxes.
+2024-12-09:
+  L0pz:
+  - rscadd: Added a fax machine to requisitions. It's a girl, by the way.
+2024-12-11:
+  Blundir, Drathek, ItsVyzo, CzHa, forest2001:
+  - refactor: reorganized and cleaned many dmis in icons folder
+  - rscdel: inflatable duck can no longer have ammo
+  - rscdel: removed a huge dozen of extremely outdated legacy bay items
+  - imagedel: removed majority of left unused, duplicate and legacy sprites from the
+      codebase
+  - imageadd: es7 in belt holstered sprite
+  - imageadd: m39 pmc in belt holstered sprite
+  - imageadd: warden's uniform now has camo variants
+  - imageadd: dcc's jacket now has camo variants
+  - imageadd: type 71, type 71-F and type 71 commando suit storage icons by CzHa (discord
+      tag .cpol)
+  - bugfix: mp uniforms not having working onmob camo sprites
+  - bugfix: mob looking handcuffed while just holding cuffs in hand
+  - bugfix: rank pins/boards and other accessories not being visible on object sprite
+  - bugfix: pdt bracelet looking like a blue tie on the uniform
+  - bugfix: officer uniform not having working camo sprites
+  - bugfix: m39 not having custom sprites on belt for camo variants
+  - bugfix: taser having positions in hands wrong
+  - bugfix: inhands for shotgun shells not working
+  - bugfix: emp grenades now use correct (non legacy) icon
+  Drathek:
+  - bugfix: Fixed doors considering shutters as blocking

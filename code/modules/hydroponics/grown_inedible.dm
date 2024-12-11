@@ -4,7 +4,7 @@
 
 /obj/item/grown // Grown things that are not edible
 	name = "grown_weapon"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	var/plantname
 	var/potency = 1
 
@@ -75,7 +75,6 @@
 /obj/item/grown/sunflower/attack(mob/M as mob, mob/user as mob)
 	to_chat(M, "<font color='green'><b> [user] smacks you with a sunflower!</font><font color='yellow'><b>FLOWER POWER<b></font>")
 	to_chat(user, "<font color='green'> Your sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>")
-
 
 /obj/item/corncob
 	name = "corn cob"

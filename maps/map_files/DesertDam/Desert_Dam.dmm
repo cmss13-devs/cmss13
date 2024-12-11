@@ -5420,7 +5420,8 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayd" = (
 /obj/structure/showcase{
-	icon_state = "mechfab1"
+	icon = 'icons/obj/structures/machinery/research.dmi';
+	icon_state = "d_analyzer_la"
 	},
 /turf/open/floor/wood,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -23907,7 +23908,8 @@
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "cku" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/desert_dam/building/substation/west)
@@ -47008,6 +47010,7 @@
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
 	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
 /turf/open/floor/corsat/squareswood/north,

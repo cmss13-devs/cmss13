@@ -4586,7 +4586,8 @@
 /area/bigredv2/caves/lambda/breakroom)
 "auv" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -10515,7 +10516,8 @@
 /area/bigredv2/outside/telecomm/n_cave)
 "aWz" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -17176,13 +17178,15 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bEl" = (
 /obj/structure/showcase{
-	icon_state = "mechfab1"
+	icon = 'icons/obj/structures/machinery/research.dmi';
+	icon_state = "d_analyzer_la"
 	},
 /turf/open/floor/carpet5_1/west,
 /area/bigredv2/caves/eta/living)
 "bEm" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/carpet9_4/west,
 /area/bigredv2/caves/eta/living)
@@ -19360,7 +19364,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
 "dOl" = (
-/obj/item/prop/colony/folded_bedroll{
+/obj/item/roller/bedroll{
 	pixel_x = -5;
 	pixel_y = -4
 	},
@@ -20256,7 +20260,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "eJI" = (
 /obj/item/prop{
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "m41ae2";
 	name = "M41AE2 Heavy Pulse Rifle";
 	desc = "A large claw mark across this weapon indicates it is inoperable.";
@@ -21384,7 +21388,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
 "fWb" = (
-/obj/item/clothing/under/darkred{
+/obj/item/clothing/under/color/darkred{
 	pixel_y = 7;
 	pixel_x = 10
 	},
@@ -26038,7 +26042,7 @@
 /area/bigredv2/caves/mining)
 "kWh" = (
 /obj/structure/surface/table,
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_y = 7;
 	pixel_x = 12
 	},
@@ -29193,7 +29197,7 @@
 /area/bigredv2/outside/n)
 "opn" = (
 /obj/structure/machinery/washing_machine,
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_y = 11;
 	pixel_x = 7
 	},
@@ -29498,7 +29502,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "oEz" = (
-/obj/item/clothing/under/lightbrown{
+/obj/item/clothing/under/color/lightbrown{
 	pixel_x = -7;
 	pixel_y = -4
 	},
@@ -29569,7 +29573,7 @@
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "oHW" = (
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "oIb" = (
@@ -31677,7 +31681,7 @@
 /area/bigredv2/outside/nw)
 "qOK" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/under/lightbrown{
+/obj/item/clothing/under/color/lightbrown{
 	pixel_x = 10;
 	pixel_y = -5
 	},
@@ -32762,7 +32766,7 @@
 "rQs" = (
 /obj/structure/bed/sofa/south{
 	desc = "An old rusty ladder";
-	icon = 'icons/obj/structures/structures.dmi';
+	icon = 'icons/obj/structures/ladders.dmi';
 	icon_state = "ladder11";
 	name = "Old Ladder"
 	},
@@ -34024,7 +34028,7 @@
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "taD" = (
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_x = 4;
 	pixel_y = -5
 	},

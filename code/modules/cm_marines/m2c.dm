@@ -32,7 +32,7 @@
 	icon_state = "t37"
 	item_state = "t37"
 	max_rounds = 150
-	default_ammo = /datum/ammo/bullet/machinegun/auto/medium
+	default_ammo = /datum/ammo/bullet/machinegun/medium
 
 //STORAGE BOX FOR THE MACHINEGUN
 /obj/item/storage/box/m56d/m2c
@@ -158,14 +158,14 @@
 	if(HMG.rounds > 0)
 		HMG.try_mount_gun(user)
 
-/obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
+/obj/item/device/m2c_gun/attackby(obj/item/object as obj, mob/user as mob)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
-	if(!iswelder(O) || user.action_busy)
+	if(!iswelder(object) || user.action_busy)
 		return
 
-	if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+	if(!HAS_TRAIT(object, TRAIT_TOOL_BLOWTORCH))
 		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 		return
 
@@ -173,9 +173,9 @@
 		to_chat(user, SPAN_WARNING("[src] isn't critically broken, no need for field recovery operations."))
 		return
 
-	var/obj/item/tool/weldingtool/WT = O
+	var/obj/item/tool/weldingtool/weldingtool = object
 
-	if(WT.remove_fuel(2, user))
+	if(weldingtool.remove_fuel(2, user))
 		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."), \
 			SPAN_NOTICE("You begin repairing the severe damages on \the [src] in an effort to restore its functions."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -188,7 +188,7 @@
 		update_icon()
 		return
 	else
-		to_chat(user, SPAN_WARNING("You need more fuel in \the [WT] to start field recovery on [src]."))
+		to_chat(user, SPAN_WARNING("You need more fuel in \the [weldingtool] to start field recovery on [src]."))
 
 // MACHINEGUN, AUTOMATIC
 /obj/structure/machinery/m56d_hmg/auto
@@ -287,14 +287,14 @@
 
 	alpha = 0
 
-/obj/structure/blocker/anti_cade/BlockedPassDirs(atom/movable/AM, target_dir)
-	if(istype(AM, /obj/structure/barricade))
+/obj/structure/blocker/anti_cade/BlockedPassDirs(atom/movable/ammo_magazine, target_dir)
+	if(istype(ammo_magazine, /obj/structure/barricade))
 		return BLOCKED_MOVEMENT
-	else if(istype(AM, /obj/structure/window))
+	else if(istype(ammo_magazine, /obj/structure/window))
 		return BLOCKED_MOVEMENT
-	else if(istype(AM, /obj/structure/windoor_assembly))
+	else if(istype(ammo_magazine, /obj/structure/windoor_assembly))
 		return BLOCKED_MOVEMENT
-	else if(istype(AM, /obj/structure/machinery/door))
+	else if(istype(ammo_magazine, /obj/structure/machinery/door))
 		return BLOCKED_MOVEMENT
 	return ..()
 
@@ -342,13 +342,13 @@
 	update_damage_state()
 	update_icon()
 
-/obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/object as obj, mob/user as mob)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	// RELOADING
-	if(istype(O, /obj/item/ammo_magazine/m2c))
-		var/obj/item/ammo_magazine/m2c/M = O
-		if(M.default_ammo != ammo.type)
+	if(istype(object, /obj/item/ammo_magazine/m2c))
+		var/obj/item/ammo_magazine/m2c/magazine = object
+		if(!ispath(magazine.default_ammo, ammo))
 			to_chat(user, SPAN_WARNING("This ammo does not match the caliber!"))
 			return
 		if(rounds)
@@ -357,27 +357,27 @@
 		if(user.action_busy) return
 		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
 		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
-		rounds = min(rounds + M.current_rounds, rounds_max)
+		rounds = min(rounds + magazine.current_rounds, rounds_max)
 		update_icon()
-		user.temp_drop_inv_item(O)
-		qdel(O)
+		user.temp_drop_inv_item(object)
+		qdel(object)
 		return
 
 	// WELDER REPAIR
-	if(iswelder(O))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+	if(iswelder(object))
+		if(!HAS_TRAIT(object, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(user.action_busy)
 			return
 
-		var/obj/item/tool/weldingtool/WT = O
+		var/obj/item/tool/weldingtool/weldingtool = object
 
 		if(health == health_max)
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs, it's well-maintained."))
 			return
 
-		if(WT.remove_fuel(2, user))
+		if(weldingtool.remove_fuel(2, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
 				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -388,7 +388,7 @@
 			update_health(-floor(health_max*0.2))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
+			to_chat(user, SPAN_WARNING("You need more fuel in [weldingtool] to repair damage to [src]."))
 		return
 	return
 
@@ -426,9 +426,9 @@
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
 	playsound(loc, empty_alarm, 70, 1)
 	update_icon() //final safeguard.
-	var/obj/item/ammo_magazine/m2c/AM = new /obj/item/ammo_magazine/m2c(src.loc)
-	AM.current_rounds = 0
-	AM.update_icon()
+	var/obj/item/ammo_magazine/m2c/ammo_magazine = new /obj/item/ammo_magazine/m2c(src.loc)
+	ammo_magazine.current_rounds = 0
+	ammo_magazine.update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/get_scatter()
 	return 0
@@ -617,7 +617,7 @@
 	icon_full = "t37"
 	icon_empty = "t37_e"
 	rounds_max = 150
-	ammo = /datum/ammo/bullet/machinegun/auto/medium
+	ammo = /datum/ammo/bullet/machinegun/medium
 	fire_delay = 0.35 SECONDS
 	grip_dir = null
 	stationary = TRUE
@@ -647,9 +647,9 @@
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
 	playsound(loc, empty_alarm, 70, 1)
 	update_icon() //final safeguard.
-	var/obj/item/ammo_magazine/m2c/t37/AM = new(loc)
-	AM.current_rounds = 0
-	AM.update_icon()
+	var/obj/item/ammo_magazine/m2c/t37/ammo_magazine = new(loc)
+	ammo_magazine.current_rounds = 0
+	ammo_magazine.update_icon()
 
 #undef M2C_OVERHEAT_CRITICAL
 #undef M2C_OVERHEAT_BAD

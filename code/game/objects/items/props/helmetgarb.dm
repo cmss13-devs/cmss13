@@ -662,6 +662,7 @@
 	name = "compass"
 	desc = "It always faces north. Are you sure it is not broken?"
 	icon = 'icons/obj/items/tools.dmi'
+	icon_state = "compass"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)

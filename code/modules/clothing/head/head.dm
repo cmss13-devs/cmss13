@@ -44,7 +44,7 @@
 	icon_state = "band2"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
 	flags_atom = null
 
@@ -123,7 +123,7 @@
 	icon_state = "berettan"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
 
 /obj/item/clothing/head/beret/cm/tan/Initialize(mapload, ...)
@@ -210,7 +210,7 @@
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = list(WEAR_AS_GARB = "headbandgreen")
@@ -394,7 +394,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "cap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "coberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
 	black_market_value = 30
 
@@ -976,7 +976,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_inv_hide = HIDETOPHAIR
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)

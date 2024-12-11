@@ -22,3 +22,8 @@
 	assets = list(
 		"load" = file('sound/lobby/lobby_load.mp3'),
 	)
+
+/datum/asset/simple/restart_animation
+	assets = list(
+		"loading" = file('html/lobby/loading.gif')
+	)

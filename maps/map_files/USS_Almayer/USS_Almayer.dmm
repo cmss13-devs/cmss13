@@ -6404,7 +6404,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/aft_hallway)
 "aPD" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/machinery/photocopier{
+	pixel_y = 12
+	},
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 8;
+	icon_state = "chestdrawer"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aPE" = (
@@ -23692,9 +23698,7 @@
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "fOz" = (
-/obj/structure/target{
-	name = "punching bag"
-	},
+/obj/structure/filingcabinet/documentation/uscm_mp,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/sea_office)
 "fOK" = (
@@ -35921,7 +35925,7 @@
 /obj/structure/filingcabinet/security{
 	pixel_x = -8
 	},
-/obj/structure/filingcabinet/medical{
+/obj/structure/filingcabinet/documentation/uscm_mp{
 	pixel_x = 8
 	},
 /turf/open/floor/wood/ship,
@@ -56205,6 +56209,12 @@
 "tiF" = (
 /obj/structure/machinery/keycard_auth{
 	pixel_y = 25
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	density = 0;
+	pixel_x = 8;
+	icon_state = "chestdrawer"
 	},
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/shipboard/brig/chief_mp_office)

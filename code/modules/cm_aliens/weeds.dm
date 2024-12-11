@@ -664,9 +664,6 @@
 /obj/effect/resin_construct/weak
 	icon_state = "WeakConstruct"
 
-/obj/effect/resin_construct/fastweak
-	icon_state = "WeakConstructFast"
-
 /obj/effect/resin_construct/transparent/thick
 	icon_state = "ThickTransparentConstruct"
 

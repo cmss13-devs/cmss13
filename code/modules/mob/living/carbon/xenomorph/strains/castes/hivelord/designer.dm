@@ -1,7 +1,7 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
-	description = "Test"
-	flavor_description = "what"
+	description = "You lose your ability to build, sacrifice half of your plasma pool, have slower plasma regeneration and slightly less health in exchange for stronger phermones, ability to create Design Nodes that benefit other builders. Now you can design nodes that increase building speed or decrease cost. You gain ability to call Greater Resin Surge on your Design Nodes location."
+	flavor_description = "You understand weeds, you control them, they tremble in your presence."
 	icon_state_prefix = "Designer"
 
 	actions_to_remove = list(
@@ -54,6 +54,18 @@
 	icon_state = "costnode"
 	designcost = TRUE
 
+
+// ""animations""" (effects)
+
+/obj/effect/resin_construct/fastweak
+	icon_state = "WeakConstructFast"
+
+/obj/effect/resin_construct/speed_node
+	icon_state = "speednode"
+
+/obj/effect/resin_construct/cost_node
+	icon_state = "costnode"
+
 // farsight
 /datum/action/xeno_action/onclick/toggle_long_range/designer
 	handles_movement = FALSE
@@ -72,7 +84,7 @@
 
 /datum/action/xeno_action/activable/design_speed_node
 	name = "Design Optimized Node (100)"
-	action_icon_state = "place_queen_beacon"
+	action_icon_state = "design_speed"
 	plasma_cost = 100
 	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_speed_node
@@ -83,13 +95,13 @@
 
 /datum/action/xeno_action/activable/design_speed_node/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!xeno.check_state(TRUE))
+	if(!xeno.check_state(TRUE))
 		return
 
 	if(mods["click_catcher"])
@@ -107,17 +119,20 @@
 	if(!check_and_use_plasma_owner())
 		return
 
+	// Apply the immobilized trait to the xeno
+	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
+
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+	var/obj/speed_warn
 
 	if(target_turf)
-		target_turf.overlays += /obj/effect/warning/alien/weak
-		spawn(1 SECONDS)
-		if(target_turf)
-			target_turf.overlays -= /obj/effect/warning/alien/weak
+		speed_warn = new /obj/effect/resin_construct/cost_node(target_turf)
 
 	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
+
+	qdel(speed_warn)
 
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
@@ -139,14 +154,20 @@
 
 	else if(target_turf)
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return FALSE
 
 	else
 		xeno_cooldown = xeno_cooldown * 0.5
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 
 	apply_cooldown()
 
 	xeno_cooldown = initial(xeno_cooldown)
+
+	// Remove the immobilized trait after the ability has been cast
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
+
 	return ..()
 
 
@@ -162,7 +183,7 @@
 
 /datum/action/xeno_action/activable/design_cost_node
 	name = "Design Flexible Node (125)"
-	action_icon_state = "gardener_resin_surge"
+	action_icon_state = "design_cost"
 	plasma_cost = 125
 	xeno_cooldown = 0.5 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_cost_node
@@ -173,13 +194,13 @@
 
 /datum/action/xeno_action/activable/design_cost_node/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!xeno.check_state(TRUE))
+	if(!xeno.check_state(TRUE))
 		return
 
 	if(mods["click_catcher"])
@@ -194,20 +215,22 @@
 			to_chat(xeno, SPAN_WARNING("That's too far away!"))
 			return
 
+	if (!check_and_use_plasma_owner())
+		return
+
+	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
+
 	var/turf/target_turf = get_turf(target_atom)
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
+	var/obj/cost_warn
 
 	if(target_turf)
-		target_turf.overlays += /obj/effect/warning/alien/weak
-		spawn(1 SECONDS)
-		if(target_turf)
-			target_turf.overlays -= /obj/effect/warning/alien/weak
+		cost_warn = new /obj/effect/resin_construct/cost_node(target_turf)
 
 	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	qdel(cost_warn)
 
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
@@ -229,14 +252,19 @@
 
 	else if(target_turf)
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return FALSE
 
 	else
 		xeno_cooldown = xeno_cooldown * 0.5
+		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 
 	apply_cooldown()
 
 	xeno_cooldown = initial(xeno_cooldown)
+
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
+
 	return ..()
 
 // Greather Resin Surge.
@@ -250,7 +278,7 @@
 
 /datum/action/xeno_action/activable/greater_resin_surge
 	name = "Greather Resin Surge (250)"
-	action_icon_state = "gardener_resin_surge"
+	action_icon_state = "greater_resin_surge"
 	plasma_cost = 250
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
@@ -287,13 +315,13 @@
 			if(node_loc)
 				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
-	// Wait 1 second, then replace the nodes
+	//Wait 1 second, then replace the nodes
 	spawn(1 SECONDS)
 		for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
 			if(node)
 				var/turf/node_loc = get_turf(node.loc)
 				if(node_loc)
-					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak) // Replace with weeds
+					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater) // Replace with weeds
 				qdel(node) // Delete the node
 		xeno.speed_node_list.Cut() // Clear the speed node list
 
@@ -301,7 +329,7 @@
 			if(node)
 				var/turf/node_loc = get_turf(node.loc)
 				if(node_loc)
-					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak)
+					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater)
 				qdel(node)
 		xeno.cost_node_list.Cut()
 
@@ -316,11 +344,11 @@
 	if(!ispath(animation_type, /obj/effect/resin_construct/fastweak)) // Ensure a valid path
 		return
 
-	// Spawn an animation effect
+	//Spawn an animation effect
 	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
 	animation.loc = target_turf
 
-	// Automatically delete the animation after 1 second
+	//Automatically delete the animation after 1 second
 	spawn(1 SECONDS)
 		if(animation)
 			qdel(animation)

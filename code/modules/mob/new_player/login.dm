@@ -24,7 +24,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
 
-/mob/new_player/proc/initialize_lobby_screen()
+/mob/new_player/proc/initialize_lobby_screen(reviver = FALSE)
 	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
 	if(ui)
 		ui.close()
@@ -35,7 +35,8 @@
 
 	tgui_interact(src)
 
-	revive_lobby_screen()
+	if(!reviver)
+		revive_lobby_screen()
 
 /mob/new_player/proc/revive_lobby_screen()
 	set waitfor = FALSE
@@ -49,7 +50,7 @@
 	while(!ui || !lobby_window || lobby_window.status != TGUI_WINDOW_READY)
 		log_tgui(src, "Reinitialized [client.ckey]'s lobby window: [ui ? "ui" : "no ui"], status: [lobby_window?.status].", "revive_lobby_screen")
 
-		initialize_lobby_screen()
+		initialize_lobby_screen(TRUE)
 
 		sleep(1 SECONDS)
 		if(!client)

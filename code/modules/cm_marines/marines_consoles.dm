@@ -1119,6 +1119,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_UPP_KPT_OFFICER = 11,
 				JOB_UPP_SRLT_OFFICER = 13,
 				JOB_UPP_LT_OFFICER = 14,
+				JOB_UPP_PILOT = 15,
 				// 20-29: Commandos
 				JOB_UPP_COMMANDO_LEADER = 20,
 				JOB_UPP_COMMANDO_MEDIC = 21,

@@ -15160,7 +15160,7 @@
 /obj/structure/prop/structure_lattice{
 	density = 0;
 	desc = "This jukebox only takes quarters and you seem to be out of them at the moment.";
-	icon = 'icons/obj/structures/props/misc.dmi';
+	icon = 'icons/obj/structures/props/furniture/misc.dmi';
 	icon_state = "jukebox";
 	name = "Rockin Robin 2300 Jukebox";
 	pixel_x = -5;
@@ -18434,7 +18434,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/security)
 "dyZ" = (
-/obj/structure/holostool,
+/obj/item/stool,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "dzo" = (

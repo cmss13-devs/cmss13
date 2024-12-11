@@ -35,7 +35,7 @@
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy alien with an armored carapace."
-	icon = 'icons/mob/xenos/warrior.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -57,8 +57,8 @@
 
 	claw_type = CLAW_TYPE_SHARP
 
-	icon_xeno = 'icons/mob/xenos/warrior.dmi'
-	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/warrior.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")

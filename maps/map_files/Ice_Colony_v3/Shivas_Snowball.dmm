@@ -474,7 +474,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/xenos/queen.dmi';
+	icon = 'icons/mob/xenos/castes/tier_4/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -4780,7 +4780,7 @@
 /obj/structure/prop/invuln{
 	desc = "Let's take the caveman back to the malt shop.";
 	dir = 4;
-	icon = 'icons/mob/humans/onmob/head_0.dmi';
+	icon = 'icons/mob/humans/onmob/clothing/head/hats.dmi';
 	icon_state = "hopcap";
 	layer = 2.5;
 	name = "frozen hat";
@@ -5477,6 +5477,8 @@
 /obj/item/clothing/glasses/sunglasses{
 	desc = "Polarized bioneural eyewear, designed to augment your vision.";
 	icon_state = "jensenshades";
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi';
+	icon_override = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi';
 	name = "augmented shades"
 	},
 /obj/effect/landmark/objective_landmark/medium,
@@ -9926,7 +9928,7 @@
 /area/shiva/interior/aerodrome)
 "gQL" = (
 /obj/structure/closet/cabinet,
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "gQR" = (

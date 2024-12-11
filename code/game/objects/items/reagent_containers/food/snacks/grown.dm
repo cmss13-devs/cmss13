@@ -78,7 +78,6 @@
 /obj/item/reagent_container/food/snacks/grown/nettle
 	plantname = "nettle"
 	desc = "It's probably wise to <B>not touch it with your bare hands...</B>"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
 	name = "nettle"
 	icon_state = "nettle"
 	damtype = "fire"

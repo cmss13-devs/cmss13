@@ -41,12 +41,18 @@
 	set waitfor = FALSE
 
 	sleep(10)
+	if(!client)
+		return
+
 	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
 
 	while(!ui)
 		initialize_lobby_screen()
 
 		sleep(10)
+		if(!client)
+			return
+
 		ui = SStgui.get_open_ui(src, src)
 
 /mob/new_player/tgui_interact(mob/user, datum/tgui/ui)

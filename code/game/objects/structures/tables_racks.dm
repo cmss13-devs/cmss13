@@ -504,6 +504,9 @@
 	table_prefix = "wood"
 	health = 50
 
+/obj/structure/surface/table/woodentable/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /obj/structure/surface/table/woodentable/poor
 	name = "poor wooden table"
 	desc = "A semi-poorly constructed wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."

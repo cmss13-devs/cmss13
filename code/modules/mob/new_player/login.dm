@@ -46,7 +46,9 @@
 
 	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
 
-	while(!ui)
+	while(!ui && !lobby_window?.status == TGUI_WINDOW_READY)
+		log_tgui(src, "Reinitialized [client.ckey]'s lobby window: [ui ? "ui" : "no ui"], status: [lobby_window?.status].", "revive_lobby_screen")
+
 		initialize_lobby_screen()
 
 		sleep(1 SECONDS)

@@ -655,7 +655,6 @@
 		add_firemode(GUN_FIREMODE_BURSTFIRE)
 		add_firemode(GUN_FIREMODE_AUTOMATIC)
 
-
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))

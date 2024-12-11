@@ -35,6 +35,20 @@
 
 	tgui_interact(src)
 
+	revive_lobby_screen()
+
+/mob/new_player/proc/revive_lobby_screen()
+	set waitfor = FALSE
+
+	sleep(10)
+	var/datum/tgui/ui = SStgui.get_open_ui(src, src)
+
+	while(!ui)
+		initialize_lobby_screen()
+
+		sleep(10)
+		ui = SStgui.get_open_ui(src, src)
+
 /mob/new_player/tgui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 

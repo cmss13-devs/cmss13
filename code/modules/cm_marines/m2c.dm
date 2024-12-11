@@ -348,7 +348,7 @@
 	// RELOADING
 	if(istype(O, /obj/item/ammo_magazine/m2c))
 		var/obj/item/ammo_magazine/m2c/M = O
-		if(M.default_ammo != ammo)
+		if(M.default_ammo != ammo.type)
 			to_chat(user, SPAN_WARNING("This ammo does not match the caliber!"))
 			return
 		if(rounds)

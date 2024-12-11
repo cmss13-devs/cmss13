@@ -45,7 +45,7 @@
 // Hybrisa Streetlights
 /obj/structure/machinery/colony_floodlight/street
 	name = "colony streetlight"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "street_off"
 	layer = BILLBOARD_LAYER
 
@@ -66,7 +66,7 @@
 	lum_value = 0
 	name = "traffic light"
 	desc = "A traffic light"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "trafficlight"
 	bound_width = 32
 	bound_height = 32
@@ -100,7 +100,7 @@
 // Engineer Floor lights
 /obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch
 	name = "giant alien console"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/engineers/consoles.dmi'
 	icon_state = "engineerconsole"
 	desc = "A giant alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
 	use_power = USE_POWER_NONE

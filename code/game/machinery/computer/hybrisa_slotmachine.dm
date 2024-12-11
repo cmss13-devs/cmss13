@@ -22,7 +22,7 @@
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine
 	name = "slot machine"
 	desc = "A slot machine."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/furniture/slot_machines.dmi'
 	icon_state = "slotmachine"
 	bound_width = 32
 	bound_height = 32

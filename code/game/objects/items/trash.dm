@@ -209,21 +209,22 @@
 
 // Hybrisa
 /obj/item/trash/hybrisa
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = ""
 
 // Cuppa Joe's Trash
+/obj/item/trash/hybrisa/cuppa_joes
+	icon = 'icons/obj/items/food/drinks.dmi'
+
 /obj/item/trash/hybrisa/cuppa_joes/lid
 	name = "Cuppa Joe's coffee cup lid"
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee."
-	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "coffeecuppajoelid"
 	w_class = SIZE_TINY
 	throwforce = 1
 /obj/item/trash/hybrisa/cuppa_joes/empty_cup
 	name = "Empty Cuppa Joe's coffee cup"
 	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee."
-	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "coffeecuppajoenolid"
 	w_class = SIZE_TINY
 	throwforce = 1

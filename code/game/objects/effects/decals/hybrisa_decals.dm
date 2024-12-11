@@ -200,14 +200,14 @@
 /obj/effect/hybrisa/decal/egg_base
 	name = "strange goop"
 	desc = null
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "egg_base"
 
 // Colorable Rug
 
 /obj/effect/hybrisa/decal/colorable_rug
 	name = "rug"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	desc = null
 	icon_state = "colorable_rug"
 	layer = TURF_LAYER

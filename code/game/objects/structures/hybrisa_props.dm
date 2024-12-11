@@ -625,21 +625,21 @@
 
 /obj/structure/prop/hybrisa/supermart/souto_man_prop
 	name = "Souto Man mannequin"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'
 	desc = "A mannequin of the famous 'Souto-Man', Party like it's 1999!"
 	icon_state = "souto_man_prop"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/supermart/souto_rack
 	name = "Souto cans rack"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'
 	desc = "A rack filled with Souto cans of various flavors."
 	icon_state = "souto_rack"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/supermart/souto_can_stack
 	name = "stacked souto cans"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'
 	desc = "A large stack of 'Souto-Classic' cans."
 	icon_state = "souto_can_stack"
 	density = TRUE
@@ -882,7 +882,7 @@
 	layer = ABOVE_XENO_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/misc
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	name = "strange egg"
 	desc = "A strange ancient looking egg, it seems to be inert."
 	icon_state = "inertegg"
@@ -965,7 +965,7 @@
 /obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "colossal alien console"
 	desc = "Before you looms a towering alien console, its design defying all familiarity and logic. It's a marvel of unknown technology, adorned with intricate patterns and pulsating lights that dance with otherworldly energy. What purpose does this enigmatic device serve? The answer eludes you..."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/engineers/consoles.dmi'
 	icon_state = "engineerconsole"
 	bound_height = 32
 	bound_width = 32
@@ -1172,7 +1172,7 @@
 /obj/structure/prop/hybrisa/airport/deadpilot1
 	name = "decapitated Weyland-Yutani Pilot"
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
-	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "pilotbody_decap1"
 	bound_height = 64
 	bound_width = 96
@@ -1182,7 +1182,7 @@
 /obj/structure/prop/hybrisa/airport/deadpilot2
 	name = "decapitated Weyland-Yutani Pilot"
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
-	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "pilotbody_decap2"
 	bound_height = 64
 	bound_width = 96
@@ -1192,8 +1192,8 @@
 // Misc
 
 /obj/structure/prop/hybrisa/misc
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
-	icon_state = "roadbarrier"
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
+	icon_state = ""
 
 // Floor props
 
@@ -1246,7 +1246,7 @@
 
 /obj/structure/prop/hybrisa/misc/graffiti
 	name = "graffiti"
-	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "zgraffiti4"
 	bound_height = 64
 	bound_width = 96
@@ -1280,7 +1280,7 @@
 
 /obj/structure/prop/hybrisa/misc/blood
 	name = "blood"
-	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "wallblood_floorblood"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1315,7 +1315,7 @@
 
 /obj/structure/prop/hybrisa/misc/fire/firebarrel
 	name = "barrel"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "zbarrelfireon"
 	bound_height = 32
 	bound_width = 32
@@ -1323,7 +1323,7 @@
 
 /obj/structure/prop/hybrisa/misc/firebarreloff
 	name = "barrel"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "zfirebarreloff"
 	bound_height = 32
 	bound_width = 32
@@ -1353,7 +1353,7 @@
 /obj/structure/prop/hybrisa/misc/elevator_door
 	name = "broken elevator door"
 	desc = "completely broken, the elevator is not going to work."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "elevator_left"
 	opacity = FALSE
 	unslashable = TRUE
@@ -1420,7 +1420,7 @@
 /obj/item/hybrisa/misc/trash_bag_full_prop
 	name = "full trash bag"
 	desc = "It's the heavy-duty black polymer kind. It's full of old trash, you don't want to touch it."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "ztrashbag"
 	force = 15
 	throwforce = 3
@@ -1429,7 +1429,7 @@
 /obj/structure/prop/hybrisa/misc/slotmachine
 	name = "slot machine"
 	desc = "A slot machine."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/furniture/slot_machines.dmi'
 	icon_state = "slotmachine"
 	bound_width = 32
 	bound_height = 32
@@ -1441,7 +1441,6 @@
 /obj/structure/prop/hybrisa/misc/slotmachine/broken
 	name = "slot machine"
 	desc = "A broken slot machine."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
 	icon_state = "slotmachine_broken"
 	bound_width = 32
 	bound_height = 32
@@ -1825,12 +1824,12 @@
 	icon_state = "telescreenbspark"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock
-	icon = 'icons/obj/structures/props/wall_decorations/clocks.dmi'
+	icon = 'icons/obj/structures/props/furniture/clock.dmi'
 	name = "clock"
 	icon_state = "wood_clock"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/gold_clock
-	icon = 'icons/obj/structures/props/wall_decorations/clocks.dmi'
+	icon = 'icons/obj/structures/props/furniture/clock.dmi'
 	name = "clock"
 	icon_state = "gold_clock"
 
@@ -1899,7 +1898,9 @@
 // Fake Pipes
 /obj/structure/prop/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = TURF_LAYER
+
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
 	icon_state = "pipe-s"
 
@@ -1918,7 +1919,9 @@
 
 /obj/structure/prop/hybrisa/misc/fake/wire
 	name = "power cable"
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = TURF_LAYER
+
 /obj/structure/prop/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"
 
@@ -1930,7 +1933,9 @@
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
 	name = "heavy duty wire"
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = TURF_LAYER
+
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy1
 	icon_state = "0-1"
 
@@ -1950,6 +1955,7 @@
 
 /obj/structure/prop/hybrisa/misc/fake/lattice
 	name = "structural lattice"
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = TURF_LAYER
 
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
@@ -1957,7 +1963,7 @@
 
 /obj/effect/hybrisa/decal/hybrisa/lattice
 	name = "structural lattice"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
 	layer = TURF_LAYER
 
@@ -2102,7 +2108,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms
 	name = "platform"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "platform"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -2138,7 +2144,7 @@
 // Greeblies
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
 	name = "\improper machinery"
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "buildingventbig1"
 	bound_width = 64
 	bound_height = 32
@@ -2222,7 +2228,7 @@
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
 	name = "wall vent"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
 	health = 250
@@ -2281,7 +2287,7 @@
 
 /obj/structure/prop/hybrisa/misc/elevator_button
 	name = "broken elevator button"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "broken_elevator_button"
 
 // MISC
@@ -2289,7 +2295,7 @@
 /obj/structure/prop/hybrisa/misc/stoneplanterseats
 	name = "concrete seated planter"
 	desc = "A decorative concrete planter with seating attached, the seats are fitted with synthetic leather, they've faded in time.."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "planterseats"
 	bound_width = 32
 	bound_height = 64
@@ -2308,7 +2314,7 @@
 /obj/structure/prop/hybrisa/misc/concretestatue
 	name = "concrete statue"
 	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it, A corporate brutalist piece of art."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "concretesculpture"
 	bound_width = 64
 	bound_height = 64
@@ -2344,7 +2350,7 @@
 /obj/structure/prop/hybrisa/misc/firehydrant
 	name = "fire hydrant"
 	desc = "A fire hydrant public water outlet, designed for quick access to water."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "firehydrant"
 	density = TRUE
 	anchored = TRUE
@@ -2410,7 +2416,7 @@
 /obj/structure/prop/hybrisa/misc/pole
 	name = "pole"
 	desc = "For all of your 'pole' related activities."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "pole"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -2428,7 +2434,7 @@
 /obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"
 	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "seatedbench"
 	bound_width = 32
 	bound_height = 64
@@ -2501,14 +2507,14 @@
 /obj/effect/hybrisa/decal/hybrisa/deco_edging
 	name = "decorative concrete edging"
 	desc = "Decorative edging for bordering stuff, very fancy."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "stone_edging"
 	density = FALSE
 	anchored = TRUE
 	layer = TURF_LAYER
 
 /obj/effect/hybrisa/decal/hybrisa/deco_edging/corner
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "stone_edging_deco"
 	density = FALSE
 	anchored = TRUE
@@ -2739,7 +2745,7 @@
 /obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns
 	name = "road sign"
 	desc = "A road sign."
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "roadsign_1"
 	bound_width = 64
 	bound_height = 32
@@ -2756,7 +2762,7 @@
 // Car Factory
 
 /obj/structure/prop/hybrisa/Factory
-	icon = 'icons/obj/structures/props/64x64_hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/industrial/factory.dmi'
 	icon_state = "factory_roboticarm"
 
 /obj/structure/prop/hybrisa/Factory/Robotic_arm

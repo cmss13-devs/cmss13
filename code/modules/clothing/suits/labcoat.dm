@@ -304,7 +304,7 @@
 		/obj/item/device/walkman,
 	)
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
 	)
 
 
@@ -314,7 +314,7 @@
 	icon_state = "snowsuit_liaison"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 
 /obj/item/clothing/suit/storage/snow_suit/liaison/modified

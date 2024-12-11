@@ -51,6 +51,8 @@
 	old_x = -16
 	claw_type = CLAW_TYPE_VERY_SHARP
 	organ_value = 3000
+	organ_chem_value = 7
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

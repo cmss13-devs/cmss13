@@ -4,7 +4,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = 1
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "sentry_system_installed"
 	active_power_usage = 5000
 	idle_power_usage = 1000

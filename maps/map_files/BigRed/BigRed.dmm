@@ -33426,7 +33426,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	desc = "A big air filter.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
 	icon_state = "fuel_enhancer";
 	layer = 5;
 	name = "Air filter";
@@ -33435,7 +33435,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
 	icon_state = "cooling_system";
 	layer = 4;
 	name = "\improper Air Condenser";

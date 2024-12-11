@@ -583,7 +583,7 @@ GLOBAL_VAR_INIT(spawn_ob, TRUE)
 	name = "random orbital warhead"
 	desc = "This is a random orbital warhead."
 	icon = 'icons/obj/items/new_assemblies.dmi'
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "ob_warhead_1"
 	spawn_on_roundstart = TRUE
 

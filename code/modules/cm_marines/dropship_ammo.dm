@@ -3,7 +3,7 @@
 
 /// Dropship weaponry ammunition
 /obj/structure/ship_ammo
-	icon = 'icons/obj/structures/props/dropship_ammo.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
 	density = TRUE
 	anchored = TRUE
 	throwpass = TRUE
@@ -42,7 +42,7 @@
 
 /obj/structure/ship_ammo/update_icon()
 	. = ..()
-	
+
 	var/ammo_stage = ammo_count / ammo_used_per_firing
 	icon_state = "[initial(icon_state)]_[ammo_stage]"
 
@@ -266,7 +266,7 @@
 /obj/structure/ship_ammo/rocket
 	name = "abstract rocket"
 	icon_state = "single"
-	icon = 'icons/obj/structures/props/dropship_ammo64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/rocket_pod
 	ammo_count = 1
 	max_ammo_count = 1

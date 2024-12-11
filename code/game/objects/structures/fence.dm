@@ -1,7 +1,7 @@
 /obj/structure/fence
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
-	icon = 'icons/obj/structures/props/fence.dmi'
+	icon = 'icons/obj/structures/props/fences/fence.dmi'
 	icon_state = "fence0"
 	throwpass = TRUE
 	density = TRUE
@@ -318,9 +318,9 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 /obj/structure/fence/dark
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
-	icon = 'icons/obj/structures/props/dark_fence.dmi'
+	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
 
 /obj/structure/fence/dark/warning
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
-	icon = 'icons/obj/structures/props/electric_fence.dmi'
+	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'

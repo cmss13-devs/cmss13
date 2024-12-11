@@ -3,13 +3,13 @@
 
 
 /obj/structure/prop/hybrisa
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_red.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_red.dmi'
 	icon_state = "pimp"
 
 // Vehicles
 
 /obj/structure/prop/hybrisa/vehicles
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_red.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
 	health = 3000
 	var/damage_state = 0
@@ -93,7 +93,7 @@
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck
 	name = "heavy-loader truck"
 	desc = "It's locked and seems to be broken down, forget driving this."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/armored_truck_wy_black.dmi'
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_black.dmi'
 	icon_state = "armored_truck_wy_black"
 	bound_height = 64
 	bound_width = 96
@@ -101,32 +101,32 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/armored_truck_blue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_blue.dmi'
 	icon_state = "armored_truck_blue"
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/Teal
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/armored_truck_teal.dmi'
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_teal.dmi'
 	icon_state = "armored_truck_teal"
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/White
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/armored_truck_white.dmi'
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_white.dmi'
 	icon_state = "armored_truck_white"
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_Black
 	name = "Weyland-Yutani security truck"
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/armored_truck_wy_black.dmi'
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_black.dmi'
 	icon_state = "armored_truck_wy_black"
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White
 	name = "Weyland-Yutani security truck"
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/armored_truck_wy_white.dmi'
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_white.dmi'
 	icon_state = "armored_truck_wy_white"
 
 // Ambulance - Damage States
 /obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
 	desc = "It's locked and seems to be broken down, forget driving this."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/ambulance.dmi'
+	icon = 'icons/obj/structures/props/vehicles/ambulance.dmi'
 	icon_state = "ambulance"
 	bound_height = 64
 	bound_width = 96
@@ -137,45 +137,45 @@
 /obj/structure/prop/hybrisa/vehicles/Long_Truck
 	name = "long-hauler truck"
 	desc = "It's locked and seems to be broken down, forget driving this."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_wy_blue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_wy_blue.dmi'
 	icon_state = "longtruck_wy_blue"
 	bound_height = 64
 	bound_width = 128
 	density = TRUE
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_blue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_blue.dmi'
 	icon_state = "longtruck_blue"
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/Red
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_red.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_red.dmi'
 	icon_state = "longtruck_red"
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/Brown
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_brown.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_brown.dmi'
 	icon_state = "longtruck_brown"
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/Kelland_Mining
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_kelland.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_kelland.dmi'
 	icon_state = "longtruck_kelland"
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/Donk
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_donk.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_donk.dmi'
 	icon_state = "longtruck_donk"
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_wy_blue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_wy_blue.dmi'
 	icon_state = "longtruck_wy_blue"
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Black
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/long_truck_wy_black.dmi'
+	icon = 'icons/obj/structures/props/vehicles/long_truck_wy_black.dmi'
 	icon_state = "longtruck_wy_black"
 
 // Small Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Small_Truck
 	name = "small truck"
 	desc = "It's locked and seems to be broken down, forget driving this."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_turquoise_cargo.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_turquoise_cargo.dmi'
 	icon_state = "small_truck_turquoise_cargo"
 	bound_height = 32
 	bound_width = 64
@@ -183,62 +183,62 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Turquoise_Cargo
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_turquoise_cargo.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_turquoise_cargo.dmi'
 	icon_state = "small_truck_turquoise_cargo"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/White
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_white.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_white.dmi'
 	icon_state = "small_truck_white"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/White_Cargo
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_white_cargo.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_white_cargo.dmi'
 	icon_state = "small_truck_white_cargo"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Mining
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_mining.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_mining.dmi'
 	icon_state = "small_truck_mining"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_blue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_blue.dmi'
 	icon_state = "small_truck_blue"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Red
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_red.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_red.dmi'
 	icon_state = "small_truck_red"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_brown.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_brown.dmi'
 	icon_state = "small_truck_brown"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Green
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_green.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_green.dmi'
 	icon_state = "small_truck_green"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_garbage.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_garbage.dmi'
 	icon_state = "small_truck_garbage"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown_Cargo
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_brown_cargo.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_brown_cargo.dmi'
 	icon_state = "small_truck_brown_cargo"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Blue_Cargo
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_blue_cargo.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_blue_cargo.dmi'
 	icon_state = "small_truck_blue_cargo"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Medical_Cargo
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_medical.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_medical.dmi'
 	icon_state = "small_truck_medical"
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown_Cargo_Barrels
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/small_truck_brown_cargobarrels.dmi'
+	icon = 'icons/obj/structures/props/vehicles/small_truck_brown_cargobarrels.dmi'
 	icon_state = "small_truck_brown_cargobarrels"
 
 // Box Vans - Damage States
 /obj/structure/prop/hybrisa/vehicles/Box_Vans
 	name = "box van"
 	desc = "It's locked and seems to be broken down, forget driving this."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_hyperdyne.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_hyperdyne.dmi'
 	icon_state = "box_van_hyperdyne"
 	bound_height = 32
 	bound_width = 64
@@ -246,34 +246,34 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Hyperdyne
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_hyperdyne.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_hyperdyne.dmi'
 	icon_state = "box_van_hyperdyne"
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/White
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_white.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_white.dmi'
 	icon_state = "box_van_white"
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Blue_Grey
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_bluegrey.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_bluegrey.dmi'
 	icon_state = "box_van_bluegrey"
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Kelland_Mining
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_kellandmining.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_kellandmining.dmi'
 	icon_state = "box_van_kellandmining"
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Maintenance_Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_maintenanceblue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_maintenanceblue.dmi'
 	icon_state = "box_van_maintenanceblue"
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Pizza
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/box_van_pizza.dmi'
+	icon = 'icons/obj/structures/props/vehicles/box_van_pizza.dmi'
 	icon_state = "box_van_pizza"
 
 // Meridian Cars - Damage States
 /obj/structure/prop/hybrisa/vehicles/Meridian
 	name = "Mono-Spectra"
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_red.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
 	bound_height = 32
 	bound_width = 64
@@ -283,71 +283,71 @@
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Red
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_red.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Black
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_black.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_black.dmi'
 	icon_state = "meridian_black"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_blue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_blue.dmi'
 	icon_state = "meridian_blue"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Brown
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_brown.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_brown.dmi'
 	icon_state = "meridian_brown"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_cop.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_cop.dmi'
 	icon_state = "meridian_cop"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_desatblue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_desatblue.dmi'
 	icon_state = "meridian_desatblue"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Green
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_green.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_green.dmi'
 	icon_state = "meridian_green"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_lightblue.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_lightblue.dmi'
 	icon_state = "meridian_lightblue"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Pink
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_pink.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_pink.dmi'
 	icon_state = "meridian_pink"
 
-/obj/structure/prop/hybrisa/vehicles/Meridian/Purple
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_purple.dmi'
+/obj/structure/prop/vehicles/Meridian/Purple
+	icon = 'icons/obj/structures/props/vehicles/meridian_purple.dmi'
 	icon_state = "meridian_purple"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_turquoise.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_turquoise.dmi'
 	icon_state = "meridian_turquoise"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_orange.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_orange.dmi'
 	icon_state = "meridian_orange"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_wy.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_wy.dmi'
 	icon_state = "meridian_wy"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Taxi
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_taxi.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_taxi.dmi'
 	icon_state = "meridian_taxi"
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Shell
 	desc = "A Mono-Spectra chassis in the early stages of assembly."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/meridian_shell.dmi'
+	icon = 'icons/obj/structures/props/vehicles/meridian_shell.dmi'
 	icon_state = "meridian_shell"
 
 // Colony Crawlers - Damage States
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers
 	name = "colony crawler"
 	desc = "It's locked and seems to be broken down, forget driving this."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/crawler_wy_1.dmi'
+	icon = 'icons/obj/structures/props/vehicles/crawler_wy_1.dmi'
 	icon_state = "crawler_wy_1"
 	bound_height = 32
 	bound_width = 64
@@ -356,16 +356,16 @@
 
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_1
 	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/crawler_wy_1.dmi'
+	icon = 'icons/obj/structures/props/vehicles/crawler_wy_1.dmi'
 	icon_state = "crawler_wy_1"
 
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_2
 	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/crawler_wy_2.dmi'
+	icon = 'icons/obj/structures/props/vehicles/crawler_wy_2.dmi'
 	icon_state = "crawler_wy_2"
 
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Crawler_Cargo
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/crawler_bed.dmi'
+	icon = 'icons/obj/structures/props/vehicles/crawler_bed.dmi'
 	icon_state = "crawler_bed"
 
 // Mining Crawlers
@@ -373,7 +373,7 @@
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers
 	name = "mining crawler"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/mining_crawler.dmi'
+	icon = 'icons/obj/structures/props/vehicles/mining_crawler.dmi'
 	icon_state = "mining_crawler_1"
 	bound_height = 32
 	bound_width = 64
@@ -381,7 +381,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers/Fuel
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/mining_crawler_fuel.dmi'
+	icon = 'icons/obj/structures/props/vehicles/mining_crawler_fuel.dmi'
 	icon_state = "mining_crawler_fuel"
 
 // Car Pileup
@@ -389,7 +389,7 @@
 /obj/structure/prop/hybrisa/vehicles/car_pileup
 	name = "burned out vehicle pileup"
 	desc = "Burned-out vehicles block your path, their charred frames and shattered glass hinting at recent chaos. The acrid smell of smoke lingers."
-	icon = 'icons/obj/structures/props/hybrisa/vehicles/car_pileup.dmi'
+	icon = 'icons/obj/structures/props/vehicles/car_pileup.dmi'
 	icon_state = "car_pileup"
 	bound_height = 96
 	bound_width = 128
@@ -401,13 +401,13 @@
 // Cave props
 
 /obj/structure/prop/hybrisa/boulders
-	icon = 'icons/obj/structures/props/boulder_largedark.dmi'
+	icon = 'icons/obj/structures/props/natural/boulder_largedark.dmi'
 	icon_state = "boulder_largedark1"
 
 /obj/structure/prop/hybrisa/boulders/large_boulderdark
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/props/boulder_largedark.dmi'
+	icon = 'icons/obj/structures/props/natural/boulder_largedark.dmi'
 	icon_state = "boulder_largedark1"
 	density = TRUE
 	bound_height = 64
@@ -425,7 +425,7 @@
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/props/boulder_widedark.dmi'
+	icon = 'icons/obj/structures/props/natural/boulder_widedark.dmi'
 	icon_state = "boulderwidedark"
 	density = TRUE
 	bound_height = 32
@@ -441,7 +441,7 @@
 	name = "boulder"
 	icon_state = "bouldersmalldark1"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/props/boulder_small.dmi'
+	icon = 'icons/obj/structures/props/natural/boulder_small.dmi'
 	density = TRUE
 
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1
@@ -816,7 +816,7 @@
 // Xenobiology
 
 /obj/structure/prop/hybrisa/xenobiology
-	icon = 'icons/obj/structures/props/hybrisaxenocryogenics.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/hybrisaxenocryogenics.dmi'
 	icon_state = "xenocellemptyon"
 	layer = ABOVE_MOB_LAYER
 
@@ -1012,7 +1012,7 @@
 	name = "strange container"
 	icon_state = "blackgoocontainer1"
 	desc = "A strange alien container. It exudes an aura of otherworldly mystery, its sleek surface bearing no hint of its previous contents. It appears to be completely empty."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	density = TRUE
 	anchored = TRUE
 	unslashable = FALSE
@@ -1126,7 +1126,7 @@
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage
 	name = "dropship damage"
 	desc = "the engine appears to have severe damage."
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage"
 	bound_height = 64
 	bound_width = 96
@@ -1138,7 +1138,7 @@
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
 	name = "dropship damage"
 	desc = "the engine appears to have severe damage."
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage_nofire"
 	bound_height = 64
 	bound_width = 96
@@ -1150,7 +1150,7 @@
 /obj/structure/prop/hybrisa/airport/refuelinghose
 	name = "refueling hose"
 	desc = "A long refueling hose that connects to various types of dropships."
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "fuelline1"
 	bound_height = 64
 	bound_width = 96
@@ -1160,7 +1160,7 @@
 /obj/structure/prop/hybrisa/airport/refuelinghose2
 	name = "refueling hose"
 	desc = "A long refueling hose that connects to various types of dropships."
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "fuelline2"
 	bound_height = 64
 	bound_width = 96
@@ -1172,7 +1172,7 @@
 /obj/structure/prop/hybrisa/airport/deadpilot1
 	name = "decapitated Weyland-Yutani Pilot"
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
 	icon_state = "pilotbody_decap1"
 	bound_height = 64
 	bound_width = 96
@@ -1182,7 +1182,7 @@
 /obj/structure/prop/hybrisa/airport/deadpilot2
 	name = "decapitated Weyland-Yutani Pilot"
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
 	icon_state = "pilotbody_decap2"
 	bound_height = 64
 	bound_width = 96
@@ -1245,7 +1245,7 @@
 
 /obj/structure/prop/hybrisa/misc/graffiti
 	name = "graffiti"
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
 	icon_state = "zgraffiti4"
 	bound_height = 64
 	bound_width = 96
@@ -1279,7 +1279,7 @@
 
 /obj/structure/prop/hybrisa/misc/blood
 	name = "blood"
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/64x96-hybrisarandomprops.dmi'
 	icon_state = "wallblood_floorblood"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1299,7 +1299,7 @@
 
 /obj/structure/prop/hybrisa/misc/fire
 	name = "fire"
-	icon = 'icons/obj/structures/props/64x96-hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "zfire_smoke"
 	layer = ABOVE_MOB_LAYER
 	light_on = TRUE
@@ -1601,7 +1601,7 @@
 // Big Computer Units 32x32
 
 /obj/structure/machinery/big_computers
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	name = "computer"
 	icon_state = "mapping_comp"
 	bound_width = 32
@@ -1651,7 +1651,7 @@
 	name = "computer"
 
 /obj/structure/machinery/big_computers/computerbrown
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	name = "computer"
 
 /obj/structure/machinery/big_computers/computerbrown/computer1
@@ -1700,11 +1700,15 @@
 
 /obj/structure/machinery/big_computers/messaging_server
 	name = "messaging server"
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "messageserver_black"
+
 /obj/structure/machinery/big_computers/messaging_server/black
 	icon_state = "messageserver_black"
+
 /obj/structure/machinery/big_computers/messaging_server/white
 	icon_state = "messageserver_white"
+
 /obj/structure/machinery/big_computers/messaging_server/brown
 	icon_state = "messageserver_brown"
 
@@ -1938,7 +1942,7 @@
 /obj/structure/cargo_container/hybrisa/containersextended
 	name = "cargo container"
 	desc = "a cargo container."
-	icon = 'icons/obj/structures/props/containersextended.dmi'
+	icon = 'icons/obj/structures/props/containers/containersextended.dmi'
 	icon_state = "blackwyleft"
 	bound_height = 32
 	bound_width = 32

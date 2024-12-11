@@ -276,7 +276,7 @@
 							no_limb_loss, damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
-	if((brute > 0 || burn > 0) && owner && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && owner.stat == DEAD) //if they take positive damage (not healing) we prevent it
+	if((brute > 0 || burn > 0) && owner && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && owner.stat == DEAD) //if they take positive damage (not healing) we prevent it
 		return 0
 	if((brute <= 0) && (burn <= 0))
 		return 0

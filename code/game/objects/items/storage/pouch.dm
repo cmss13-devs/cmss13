@@ -874,6 +874,15 @@
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/splint(src)
 
+/obj/item/storage/pouch/medkit/full_rmc/fill_preset_inventory()
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+
 /obj/item/storage/pouch/medkit/full/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
@@ -1305,6 +1314,12 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/tool/shovel/etool(src)
+
+/obj/item/storage/pouch/tools/rmc/fill_preset_inventory()
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/wirecutters/tactical(src)
+	new /obj/item/tool/screwdriver/tactical(src)
+	new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/pouch/tools/tactical/full/fill_preset_inventory()
 	new /obj/item/tool/screwdriver/tactical(src)

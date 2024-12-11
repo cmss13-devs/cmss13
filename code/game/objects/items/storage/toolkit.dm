@@ -55,3 +55,14 @@
 
 /obj/item/storage/toolkit/empty/fill_preset_inventory()
 	return
+
+/obj/item/storage/toolkit/rmc
+
+/obj/item/storage/toolkit/rmc/fill_preset_inventory()
+	new /obj/item/stack/cable_coil/random(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/cell/high(src)

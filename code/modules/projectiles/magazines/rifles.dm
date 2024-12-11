@@ -425,7 +425,7 @@
 	ammo_band_icon_empty = "+nsg23_band_e"
 
 /obj/item/ammo_magazine/rifle/nsg23/extended
-	name = "\improper NSG 23 extended magazine (10x24mm)"
+	name = "\improper NSG 23 high-capacity drum magazine (10x24mm)" //renamed in preparation for new sprite
 	desc = "An NSG 23 assault rifle magazine. This one contains 45 bullets."
 	icon_state = "nsg23_ext"
 	item_state = "nsg23_ext"
@@ -443,6 +443,12 @@
 	desc = "An NSG 23 assault rifle magazine. This one is loaded with armor-piercing explosive tipped rounds."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/nsg23/rubber
+	name = "\improper NSG 23 training magazine (10x24mm)"
+	desc = "An NSG 23 assault rifle magazine. This one is loaded with rubber bullets."
+	default_ammo = /datum/ammo/bullet/rifle/rubber
+	ammo_band_color = AMMO_BAND_COLOR_TRAINING
 
 //--------------------------------------------------------
 //Bolt action rifle ammo

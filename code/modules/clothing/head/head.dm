@@ -152,6 +152,7 @@
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/white/civilian
 	name = "White Beret"
@@ -284,7 +285,7 @@
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	icon_state = null
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = null

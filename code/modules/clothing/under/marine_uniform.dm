@@ -21,6 +21,7 @@
 	siemens_coefficient = 0.9
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"
+	var/snow_name = " snow uniform"
 	layer = UPPER_ITEM_LAYER
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
@@ -34,7 +35,7 @@
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-			name += " snow uniform"
+			name += snow_name
 		else
 			name += " uniform"
 	if(!(flags_atom & NO_GAMEMODE_SKIN))
@@ -190,7 +191,10 @@
 	worn_state = "pilot_flightsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+	specialty = "pilot officer"
+	snow_name = " snow bodysuit"
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
+	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"

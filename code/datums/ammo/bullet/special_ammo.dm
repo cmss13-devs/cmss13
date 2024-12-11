@@ -141,6 +141,11 @@
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
+/datum/ammo/bullet/machinegun/auto/setup_faction_clash_values()
+	accuracy = 0
+	scatter = 40
+	.=..()
+
 /datum/ammo/bullet/machinegun/auto/set_bullet_traits()
 	return
 

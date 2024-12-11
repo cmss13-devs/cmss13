@@ -40,7 +40,7 @@
 /mob/new_player/proc/revive_lobby_screen()
 	set waitfor = FALSE
 
-	sleep(10)
+	sleep(1 SECONDS)
 	if(!client)
 		return
 
@@ -49,7 +49,7 @@
 	while(!ui)
 		initialize_lobby_screen()
 
-		sleep(10)
+		sleep(1 SECONDS)
 		if(!client)
 			return
 

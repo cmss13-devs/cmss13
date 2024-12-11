@@ -1,5 +1,9 @@
 /obj/item/clothing/glasses/hud
 	name = "HUD"
+	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
+	)
 	gender = NEUTER
 	desc = "A heads-up display that provides important info in (almost) real time."
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
@@ -139,6 +143,10 @@
 	name = "augmented shades"
 	gender = PLURAL
 	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	vision_flags = SEE_MOBS

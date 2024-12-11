@@ -1,16 +1,76 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
+/obj/structure/surface/rack,
+/obj/item/clothing/head/cmcap,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/bunks)
 "aab" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
+/obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/pole{
+	anchored = 1;
+	desc = "It only plays auto chess. Gross.";
+	icon = 'icons/obj/items/toy.dmi';
+	icon_state = "game_kit";
+	name = "Thick Art LTD Gamepad"
+	},
+/obj/item/prop/helmetgarb/raincover{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
+"aac" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "Made in Little Japan.";
+	health = 300;
+	icon = 'icons/obj/items/stacks.dmi';
+	icon_state = "sheet-lizard";
+	name = "exotic bedsheet";
+	pixel_x = -1
+	},
+/obj/item/ammo_magazine/rifle/m4ra,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
+"aad" = (
+/obj/item/toy/inflatable_duck,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pool)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/varadero/interior/disposals)
+"aaf" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
+	health = 300;
+	icon = 'icons/obj/items/stacks.dmi';
+	icon_state = "sheet-mythril";
+	name = "funky wall bacon"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/security)
 "aag" = (
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
@@ -22,6 +82,19 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"aah" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool,
+/turf/open/floor/wood,
+/area/varadero/interior/beach_bar)
+"aaj" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -2007,37 +2080,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
-"bAE" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "Made in Little Japan.";
-	health = 300;
-	icon = 'icons/obj/items/items.dmi';
-	icon_state = "sheet-lizard";
-	name = "exotic bedsheet";
-	pixel_x = -1
-	},
-/obj/item/ammo_magazine/rifle/m4ra,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "bBo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -9429,17 +9471,6 @@
 /obj/structure/machinery/bot/mulebot,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"hHR" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
-	health = 300;
-	icon = 'icons/obj/items/items.dmi';
-	icon_state = "sheet-mythril";
-	name = "funky wall bacon"
-	},
-/turf/closed/wall/r_wall,
-/area/varadero/interior/security)
 "hIo" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -12202,23 +12233,6 @@
 /obj/structure/bed/chair/wheelchair,
 /turf/open/floor/shiva/wred/northeast,
 /area/varadero/interior/medical)
-"jNT" = (
-/obj/structure/pipes/vents/pump,
-/obj/structure/surface/table/woodentable,
-/obj/item/weapon/pole{
-	anchored = 1;
-	desc = "It only plays auto chess. Gross.";
-	icon = 'icons/obj/items/items.dmi';
-	icon_state = "game_kit";
-	name = "Thick Art LTD Gamepad"
-	},
-/obj/item/prop/helmetgarb/raincover{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "jNW" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -14778,11 +14792,6 @@
 	},
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/technical_storage)
-"lXv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/holostool,
-/turf/open/floor/wood,
-/area/varadero/interior/beach_bar)
 "lYi" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cup{
@@ -25801,15 +25810,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"uLP" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/caphat{
-	pixel_x = 2;
-	pixel_y = 9
-	},
-/obj/item/clothing/head/cmcap,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/bunks)
 "uLY" = (
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
@@ -28254,10 +28254,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
-"wyE" = (
-/obj/item/storage/belt/marine/quackers,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pool)
 "wzb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -41706,7 +41702,7 @@ wMw
 wMw
 wMw
 wMw
-aaa
+aah
 xcE
 wMw
 wMw
@@ -45584,7 +45580,7 @@ qio
 qio
 qfL
 wSL
-wyE
+aad
 uXu
 hLY
 boV
@@ -46867,7 +46863,7 @@ ydx
 mSc
 wpX
 qQt
-jNT
+aab
 qeu
 thY
 mPI
@@ -47235,7 +47231,7 @@ iwo
 tMY
 jTY
 xxo
-uLP
+aaa
 xNR
 nIF
 qeh
@@ -47592,7 +47588,7 @@ kZn
 qvQ
 bLy
 ydx
-bAE
+aac
 kIg
 nmC
 ben
@@ -48791,7 +48787,7 @@ aeJ
 gYh
 dlh
 ncn
-lXv
+aai
 sFc
 xlC
 faT
@@ -50859,7 +50855,7 @@ gWu
 gWu
 htt
 hPj
-hHR
+aaf
 idw
 vco
 pja
@@ -55157,7 +55153,7 @@ lTg
 wlB
 wlB
 wlB
-aab
+aaj
 wlB
 lTg
 wlB

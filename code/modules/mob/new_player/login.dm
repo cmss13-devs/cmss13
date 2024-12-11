@@ -41,7 +41,7 @@
 /mob/new_player/proc/revive_lobby_screen()
 	set waitfor = FALSE
 
-	sleep(1 SECONDS)
+	sleep(2 SECONDS)
 	if(!client)
 		return
 

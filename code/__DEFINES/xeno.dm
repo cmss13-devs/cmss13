@@ -66,10 +66,6 @@
 #define SINGLETARGETGUT 0
 #define AOETARGETGUT 1
 
-#define WARDEN_HEAL_SHIELD 0
-#define WARDEN_HEAL_HP 1
-#define WARDEN_HEAL_DEBUFFS 2
-
 #define HUD_PAIN_STATES_XENO   4
 #define HUD_HEALTH_STATES_XENO 16
 #define HUD_PLASMA_STATES_XENO 16
@@ -404,7 +400,7 @@
 // Praetorian strain flags
 #define PRAETORIAN_VANGUARD "Vanguard"
 #define PRAETORIAN_DANCER "Dancer"
-#define PRAETORIAN_WARDEN "Warden"
+#define PRAETORIAN_VALKYRIE "Valkyrie"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
 /////////////////////////////////////////////////////////////////////////////////////

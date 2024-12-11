@@ -147,6 +147,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
     fax_responder_enabled,
     upp_enabled,
     tutorials_ready,
+    xenomorph_enabled,
   } = data;
 
   return (
@@ -272,7 +273,9 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                   index={5}
                   disabled={!!readied}
                   onClick={() => act('ready')}
-                  icon="check"
+                  icon={xenomorph_enabled ? 'virus' : 'check'}
+                  color={xenomorph_enabled ? 'purple' : undefined}
+                  tooltip={xenomorph_enabled ? 'Ready as Xenomorph' : undefined}
                 >
                   Ready
                 </LobbyButton>

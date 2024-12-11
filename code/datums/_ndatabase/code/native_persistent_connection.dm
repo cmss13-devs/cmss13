@@ -32,17 +32,17 @@
 	if(!db)
 		status = DB_CONNECTION_BROKEN
 		return FALSE
-	
+
 	status = DB_CONNECTION_READY
 	error_msg = null
-	
+
 	return TRUE
 
 /datum/db/connection/native/setup(_filename)
 	filename = _filename
 	if(!filename)
 		filename = "local.db"
-	
+
 	db = new(filename)
 
 	return TRUE
@@ -60,8 +60,8 @@
 		query_number++
 		return pq
 	return null
-	
+
 /datum/db/connection/native/get_adapter()
-	var/datum/db/adapter/native_adapter/adapter = new()
+	var/datum/db/adapter/sql/native/adapter = new()
 	adapter.connection = src
 	return adapter

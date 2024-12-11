@@ -1,0 +1,5 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - rscadd: "Adds CIA agents to the game. These are disguised as either civilians, liaisons, or people in other factions and have a plethora of tools to achieve any objectives they might be assigned to."
+  - rscdel: "Deletes the UAAC-TIS from the game."

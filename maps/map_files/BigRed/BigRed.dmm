@@ -8,14 +8,6 @@
 	icon_state = "pwall"
 	},
 /area/space)
-"aac" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
-/obj/effect/landmark/nightmare{
-	insert_tag = clfmining
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -175,17 +167,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
-"aaM" = (
-/obj/structure/prop/almayer/cannon_cables{
-	name = "\improper Cables"
-	},
-/obj/structure/cryofeed/right{
-	color = "silver";
-	desc = "A bewildering tangle of machinery and pipes.";
-	name = "\improper coolant feed"
-	},
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -261,32 +242,10 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"abb" = (
-/obj/structure/prop/almayer/cannon_cable_connector{
-	name = "\improper Cable connector"
-	},
-/obj/structure/cable,
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"abd" = (
-/obj/structure/prop/almayer/cannon_cable_connector{
-	name = "\improper Cable connector"
-	},
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
-"abe" = (
-/obj/item/ammo_magazine/handful/shotgun/custom_color{
-	color = "#6666ff";
-	desc = "A handful of ulta rare 12 gauge HE/FRAG ammunition to seriously fuck shit up with.  Too bad its behind this indestructable window.....";
-	name = "handful of HE/FRAG shells (12g)";
-	pixel_y = 3
-	},
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -393,10 +352,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/landing/console)
-"abz" = (
-/obj/effect/spawner/random/toolbox,
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
 "abA" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -456,10 +411,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/darkgreen2/southeast,
 /area/bigredv2/outside/space_port)
-"abL" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
 "abM" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_north)
@@ -508,10 +459,6 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"abU" = (
-/obj/effect/spawner/random/tool,
-/turf/open/shuttle/escapepod/floor1/north,
-/area/bigredv2/oob)
 "abV" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_north)
@@ -20937,6 +20884,17 @@
 	},
 /turf/open/floor/loadingarea/west,
 /area/bigredv2/outside/cargo)
+"fwO" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Cables"
+	},
+/obj/structure/cryofeed/right{
+	color = "silver";
+	desc = "A bewildering tangle of machinery and pipes.";
+	name = "\improper coolant feed"
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "fwV" = (
 /obj/structure/surface/table,
 /turf/open/floor,
@@ -22395,6 +22353,10 @@
 "gXp" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_lambda)
+"gXs" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "gYl" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_18,
@@ -24866,6 +24828,12 @@
 /obj/item/storage/firstaid/fire,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"jQS" = (
+/obj/structure/prop/almayer/cannon_cable_connector{
+	name = "\improper Cable connector"
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "jRi" = (
 /obj/item/ammo_magazine/smg/bizon{
 	pixel_x = 5;
@@ -27315,6 +27283,13 @@
 /obj/structure/machinery/computer3/server,
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
+"mrS" = (
+/obj/structure/prop/almayer/cannon_cable_connector{
+	name = "\improper Cable connector"
+	},
+/obj/structure/cable,
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "msf" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -27726,6 +27701,14 @@
 "mOW" = (
 /obj/structure/pipes/standard/tank/oxygen,
 /turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"mOZ" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = clfmining
+	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "mPm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -30847,6 +30830,10 @@
 "pYt" = (
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves_sw)
+"pYE" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "pYL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
@@ -34191,6 +34178,10 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"tgF" = (
+/obj/effect/spawner/random/tool,
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "tgL" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_se)
@@ -35304,6 +35295,15 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_cave_cas)
+"ujU" = (
+/obj/item/ammo_magazine/handful/shotgun/custom_color{
+	color = "#6666ff";
+	desc = "A handful of ulta rare 12 gauge HE/FRAG ammunition to seriously fuck shit up with.  Too bad its behind this indestructable window.....";
+	name = "handful of HE/FRAG shells (12g)";
+	pixel_y = 3
+	},
+/turf/open/shuttle/escapepod/floor1/north,
+/area/bigredv2/oob)
 "ukv" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_lambda)
@@ -42900,7 +42900,7 @@ wVQ
 rxh
 rxh
 rxh
-aac
+mOZ
 rxh
 rxh
 rxh
@@ -50902,11 +50902,11 @@ aao
 aao
 aao
 rIl
-abL
-abe
-abb
-aaM
-aaM
+pYE
+ujU
+mrS
+fwO
+fwO
 rIl
 aao
 rxh
@@ -51336,11 +51336,11 @@ aao
 aao
 aao
 hHb
-abU
-abz
-abd
-aaM
-aaM
+tgF
+gXs
+jQS
+fwO
+fwO
 rIl
 aao
 aao

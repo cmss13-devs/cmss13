@@ -1,34 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	icon_state = "ywflowers_4"
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfship"
 	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
-"aab" = (
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	icon_state = "ywflowers_2"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
-"aac" = (
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	icon_state = "ywflowers_3"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
-"aad" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/monsoon)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/varadero/interior/disposals)
-"aaf" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior/caves/north_research)
 "aag" = (
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
@@ -40,50 +20,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"aah" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/open/gm/dirt/desert1,
-/area/varadero/exterior/monsoon)
-"aai" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
-"aaj" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
-"aak" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
-"aal" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
-"aam" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt/desert0,
-/area/varadero/exterior/pontoon_beach)
-"aan" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
-"aao" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt/desert0,
-/area/varadero/exterior/lz1_near)
-"aap" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -605,6 +541,10 @@
 /obj/structure/closet/crate,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
+"awr" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt/desert0,
 /area/varadero/exterior/lz1_near)
 "awu" = (
 /obj/structure/surface/rack,
@@ -3720,6 +3660,12 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
+"cSa" = (
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	icon_state = "ywflowers_3"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "cSc" = (
 /obj/structure/prop/invuln/overhead_pipe,
 /turf/closed/wall/rock/brown,
@@ -7307,6 +7253,12 @@
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/administration)
+"fPp" = (
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	icon_state = "ywflowers_2"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "fPq" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -8286,6 +8238,13 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
+"gCQ" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "gDr" = (
 /obj/item/tool/warning_cone,
 /turf/open/gm/dirt,
@@ -9302,6 +9261,12 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
+"hyT" = (
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	icon_state = "ywflowers_4"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "hza" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -11436,6 +11401,10 @@
 	},
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
+"jgV" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
 "jgY" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/records)
@@ -12217,6 +12186,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purple/northwest,
 /area/varadero/interior/research)
+"jNn" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/eastbeach)
 "jNE" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -15714,6 +15687,10 @@
 "mIL" = (
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
+"mJe" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
 "mJh" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/multi_tiles/north,
@@ -17958,6 +17935,13 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
+"oDB" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/eastbeach)
 "oDN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/yellow,
@@ -21916,6 +21900,10 @@
 /obj/structure/filingcabinet/security,
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/hall_SE)
+"rBq" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "rBJ" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -22472,6 +22460,10 @@
 /obj/item/stool,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
+"rWN" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "rXf" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/shiva/redcorners,
@@ -25330,6 +25322,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
+"upH" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
 "upL" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -29366,6 +29362,10 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/research,
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
+"xzc" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/pontoon_beach)
 "xzd" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/white,
@@ -35192,7 +35192,7 @@ qHc
 xCn
 qHc
 xCn
-aai
+jgV
 xCn
 qul
 qul
@@ -35362,7 +35362,7 @@ qul
 qul
 qul
 qHc
-aaf
+mJe
 xCn
 xCn
 oPQ
@@ -35924,7 +35924,7 @@ xCn
 xCn
 xCn
 xCn
-aaf
+mJe
 xCn
 xCn
 xCn
@@ -36828,7 +36828,7 @@ xCn
 qHc
 xCn
 xCn
-aaf
+mJe
 xCn
 xCn
 xCn
@@ -45155,7 +45155,7 @@ asx
 gxa
 rIG
 lYr
-aao
+awr
 lYr
 aHu
 gga
@@ -45824,7 +45824,7 @@ cto
 xxk
 xxk
 xEG
-aac
+cSa
 mSa
 mCF
 mCF
@@ -47722,7 +47722,7 @@ lTR
 lTR
 gVO
 lzD
-aak
+upH
 cwE
 bgE
 fuh
@@ -48194,7 +48194,7 @@ mCF
 mCF
 mCF
 aOg
-aab
+fPp
 aOg
 aOg
 mCF
@@ -48805,7 +48805,7 @@ lTR
 lTR
 scL
 oGv
-aam
+xzc
 oGv
 lnO
 daS
@@ -49646,7 +49646,7 @@ cto
 xxk
 mCF
 aOg
-aad
+rWN
 mCF
 hoC
 cty
@@ -51179,7 +51179,7 @@ rKM
 oGv
 hXR
 ihY
-aal
+oDB
 cFw
 dwN
 jks
@@ -51295,7 +51295,7 @@ mCF
 mCF
 jdm
 mCF
-aaa
+hyT
 aOg
 mCF
 mCF
@@ -51523,7 +51523,7 @@ pFZ
 sLr
 siC
 oGv
-aak
+upH
 oGv
 oGv
 lnO
@@ -51533,7 +51533,7 @@ lTR
 lTR
 lTR
 scL
-aak
+upH
 oGv
 hXR
 vss
@@ -54240,7 +54240,7 @@ oZJ
 xNA
 kgp
 kgp
-aap
+gCQ
 wlB
 bYO
 lTg
@@ -54458,7 +54458,7 @@ cFw
 cFw
 cFw
 pll
-aaj
+jNn
 eNA
 jks
 cFw
@@ -55174,7 +55174,7 @@ wlB
 ghW
 wlB
 wlB
-aan
+rBq
 wlB
 xmL
 deE
@@ -56600,7 +56600,7 @@ iWj
 wlB
 wlB
 wlB
-aan
+rBq
 wlB
 lTg
 lTg
@@ -57397,7 +57397,7 @@ bGU
 bGU
 bGU
 rvD
-aah
+aaa
 bGU
 bGU
 bGU

@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/strata/ag/exterior/landing_zones/lz2)
 "aab" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -11,6 +17,12 @@
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
+"aae" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -83,6 +95,13 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -34186,7 +34205,7 @@ alz
 alz
 alz
 aac
-aac
+aae
 aac
 aac
 aac
@@ -41950,7 +41969,7 @@ jWs
 jWs
 jWs
 jWs
-jWs
+aaa
 jWs
 jWs
 jWs
@@ -70569,7 +70588,7 @@ jUA
 jUA
 jUA
 cei
-chj
+aau
 cei
 jUA
 jUA

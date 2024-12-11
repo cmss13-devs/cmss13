@@ -10,6 +10,12 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -190,6 +196,12 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -225,6 +237,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
+"aaZ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -55086,7 +55104,7 @@ bht
 bht
 bht
 bht
-afc
+aaZ
 afc
 dTs
 dTs
@@ -55693,7 +55711,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+aaR
 cDY
 cDY
 cDY
@@ -94543,7 +94561,7 @@ dBr
 dBr
 dBr
 dBr
-dBr
+aac
 eaQ
 dZn
 dHE

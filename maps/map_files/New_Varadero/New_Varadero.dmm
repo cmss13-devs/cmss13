@@ -1,4 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"aab" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
@@ -35356,7 +35375,7 @@ qul
 qul
 qul
 qHc
-mJe
+aab
 xCn
 xCn
 oPQ
@@ -54207,7 +54226,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+aaa
 wUU
 "}
 (132,1,1) = {"
@@ -56427,7 +56446,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aac
 wlB
 wlB
 wlB

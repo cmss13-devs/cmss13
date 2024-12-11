@@ -318,7 +318,7 @@
 	icon = 'icons/obj/structures/props/vehicles/meridian_pink.dmi'
 	icon_state = "meridian_pink"
 
-/obj/structure/prop/vehicles/Meridian/Purple
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple
 	icon = 'icons/obj/structures/props/vehicles/meridian_purple.dmi'
 	icon_state = "meridian_purple"
 
@@ -1073,7 +1073,7 @@
 
 /obj/structure/prop/hybrisa/airport
 	name = "nose cone"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_parts.dmi'
 	icon_state = "dropshipfrontwhite1"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1198,6 +1198,7 @@
 // Floor props
 
 /obj/structure/prop/hybrisa/misc/floorprops
+	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
 	icon_state = "solidgrate1"
 	layer = HATCH_LAYER
 
@@ -1344,6 +1345,7 @@
 /obj/structure/prop/hybrisa/misc/cabinet
 	name = "cabinet"
 	desc = "a small cabinet with drawers."
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "sidecabinet"
 	projectile_coverage = 20
 	throwpass = TRUE
@@ -1364,7 +1366,7 @@
 /obj/structure/prop/hybrisa/misc/trash
 	name = "trash bin"
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/trash_bins.dmi'
 	icon_state = "trashblue"
 	health = 150
 	density = TRUE
@@ -1411,6 +1413,7 @@
 	icon_state = "trashblue"
 
 /obj/structure/prop/hybrisa/misc/redmeter
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	name = "meter"
 	icon_state = "redmeter"
 
@@ -1790,34 +1793,44 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/security
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "security"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "redalert_framed"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "redalertblank"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/entertainment
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "entertainment_framed"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreen
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "telescreen"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbroke
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "telescreenb"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbrokespark
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "telescreenbspark"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock
+	icon = 'icons/obj/structures/props/wall_decorations/clocks.dmi'
 	name = "clock"
 	icon_state = "wood_clock"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/gold_clock
+	icon = 'icons/obj/structures/props/wall_decorations/clocks.dmi'
 	name = "clock"
 	icon_state = "gold_clock"
 
@@ -1825,48 +1838,62 @@
 
 //Green
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "multimonitorsmall_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "multimonitorsmall_on"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "multimonitormedium_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_on
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "multimonitormedium_on"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_off
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "multimonitorbig_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "multimonitorbig_on"
 
 // Blue
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "bluemultimonitorsmall_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "bluemultimonitorsmall_on"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_off
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "bluemultimonitormedium_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "bluemultimonitormedium_on"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorbig_off
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "bluemultimonitorbig_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorbig_on
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "bluemultimonitorbig_on"
 
 // Egg
 /obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_off
+	icon = 'icons/obj/structures/props/hybrisa/wall_egg.dmi'
 	icon_state = "wallegg_off"
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_on
+	icon = 'icons/obj/structures/props/hybrisa/wall_egg.dmi'
 	icon_state = "wallegg_on"
 
 // Fake Pipes
@@ -2243,13 +2270,13 @@
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
 	name = "computer"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "zcomputermachine"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/misc/metergreen
 	name = "meter"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	icon_state = "biggreenmeter1"
 
 /obj/structure/prop/hybrisa/misc/elevator_button
@@ -2463,6 +2490,7 @@
 /obj/structure/prop/hybrisa/misc/urinal
 	name = "urinal"
 	desc = "A urinal."
+	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "small_urinal"
 	density = FALSE
 	anchored = TRUE

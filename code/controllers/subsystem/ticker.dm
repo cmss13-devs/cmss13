@@ -144,10 +144,6 @@ SUBSYSTEM_DEF(ticker)
 
 	REDIS_PUBLISH("byond.round", "type" = "round-start")
 
-	for(var/client/C in GLOB.admins)
-		remove_verb(C, GLOB.roundstart_mod_verbs)
-	GLOB.admin_verbs_minor_event -= GLOB.roundstart_mod_verbs
-
 	return TRUE
 
 /// Try to effectively setup gamemode and start now

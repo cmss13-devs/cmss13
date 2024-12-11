@@ -539,7 +539,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(internal && !can_bleed_internally)
 		internal = FALSE
-	if(internal && SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_INTERNAL_BLEEDING))
+	if(internal && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ib))
 		internal = FALSE
 
 

@@ -31,7 +31,7 @@
 		basecolor = b_color
 	update_icon()
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		amount = 0
 		return
 
@@ -49,7 +49,7 @@
 	if(!amount || !ishuman(AM))
 		return
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
 
 	var/mob/living/carbon/human/H = AM

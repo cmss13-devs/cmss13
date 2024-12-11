@@ -769,7 +769,7 @@
 	icon_state = "bed_dingy"
 
 /obj/structure/bed/hybrisa
-	icon_state = "hybrisa"
+	icon_state = ""
 	buckling_y = 8
 
 /obj/structure/bed/hybrisa/prisonbed
@@ -2118,6 +2118,7 @@
 	icon_state = "engineer_platform"
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform2
+	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "engineer_platform_platformcorners"
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform3

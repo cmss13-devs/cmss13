@@ -164,13 +164,13 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		switch(contract_chemical.gen_tier) // pick a reagent hint.
 			if(1)
 				contract_chemical.credit_reward = 3
-				if(roll<=60)
+				if(roll <= 60)
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
 				else
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 			if(2)
 				contract_chemical.credit_reward = 5
-				if(roll<=40)
+				if(roll <= 40)
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
 				else
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])

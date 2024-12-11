@@ -33,7 +33,7 @@
 }
 
 // Everything after the title bar
-.Window__rest {
+.Window__rest.Window__restwithTitlebar {
   position: fixed;
   top: 32px;
   top: base.rem(32px);

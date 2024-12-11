@@ -236,6 +236,7 @@
 /obj/structure/largecrate/random/barrel
 	name = "blue barrel"
 	desc = "A blue storage barrel."
+	icon = 'icons/obj/structures/barrels.dmi'
 	icon_state = "barrel_blue"
 	var/strap_overlay = "+straps"
 	parts_type = /obj/item/stack/sheet/metal
@@ -273,7 +274,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 /proc/generate_barrel_states()
 	var/list/rbarrel_center_states = list()
-	var/icon/icon = new('icons/obj/structures/crates.dmi')
+	var/icon/icon = new('icons/obj/structures/barrels.dmi')
 	var/list/icon_list = icon_states(icon)
 	for(var/state in icon_list)
 		if(findtext(state,"+cap"))

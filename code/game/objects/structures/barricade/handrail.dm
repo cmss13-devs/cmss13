@@ -290,9 +290,11 @@
 	name = "wood road barrier"
 	icon_state = "roadbarrierwood"
 	barricade_hitsound = 'sound/effects/woodhit.ogg'
+
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange
 	name = "wood road barrier"
 	icon_state = "roadbarrierwood"
+
 /obj/structure/barricade/handrail/hybrisa/road/wood/blue
 	name = "wood road barrier"
 	icon_state = "roadbarrierpolice"

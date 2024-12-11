@@ -45,6 +45,10 @@
 /obj/item/clothing/under/hybrisa/wy_pilot
 	name = "\improper Weyland-Yutani Pilot uniform"
 	desc = "A pair of grey slacks and a white button-down shirt with a dark-grey tie and golden epaulettes signifying rank; a standard uniform for a commercial grade Weyland-Yutani affiliated Pilot."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
 	icon_state = "civilian_pilot_uniform"
 	worn_state = "civilian_pilot_uniform"
 	armor_melee = CLOTHING_ARMOR_LOW

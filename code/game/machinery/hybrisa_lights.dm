@@ -123,7 +123,7 @@
 	name = "circular light"
 	icon_state = "engineerlight_off"
 	desc = "A huge circular light"
-	icon = 'icons/obj/structures/props/hybrisarandomprops.dmi'
+	icon = 'icons/obj/structures/props/engineers/light.dmi'
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE

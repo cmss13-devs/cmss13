@@ -20,6 +20,19 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/micro_laser = 1,
 	)
 
+/obj/item/circuitboard/machine/recharge_station
+
+	name = "Circuit board (Synthetic maintenance station)"
+	build_path = /obj/structure/machinery/recharge_station
+
+	frame_desc = "Requires 1 Micro Manipulator, 1 Micro-Laser, 1 Scanning Module, and 2 Capacitors."
+	req_components = list(
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/capacitor = 2,
+	)
+
 /obj/item/circuitboard/machine/autolathe
 	name = "Circuit board (Autolathe)"
 	build_path = /obj/structure/machinery/autolathe

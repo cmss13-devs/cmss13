@@ -1,18 +1,17 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 /mob/new_player
+	invisibility = 101
+	density = FALSE
+	anchored = TRUE
+	sight = BLIND
+	universal_speak = TRUE
+	stat = DEAD
+
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
 	///The last message for this player with their larva queue information
 	var/larva_queue_cached_message
 	///The time when the larva_queue_cached_message should be considered stale
 	var/larva_queue_message_stale_time
-
-	invisibility = 101
-
-	density = FALSE
-	anchored = TRUE
-	universal_speak = TRUE
-	stat = DEAD
 
 /mob/new_player/Initialize()
 	. = ..()

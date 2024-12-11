@@ -845,6 +845,8 @@ Additional game mode variables.
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
 
+	original.sight = BLIND
+
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 	if(hive.living_xeno_queen)
 		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))

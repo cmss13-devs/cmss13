@@ -73,6 +73,10 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
+	/client/proc/toggle_admin_afk_safety,
+	/client/proc/add_known_alt,
+	/client/proc/remove_known_alt,
+	/client/proc/toogle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -142,7 +146,9 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,
-	/datum/admins/proc/open_shuttlepanel
+	/client/proc/toggle_lz_hazards,
+	/datum/admins/proc/open_shuttlepanel,
+	/client/proc/get_whitelisted_clients,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -154,7 +160,6 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
-	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
@@ -316,6 +321,13 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	/client/proc/toggle_ob_spawn
 ))
 
+GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/cmd_mentor_say,
+	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_newplayer_ghost_hud,
+	/client/proc/toggle_newplayer_ic_hud
+))
+
 /client/proc/add_admin_verbs()
 	if(!admin_holder)
 		return
@@ -330,8 +342,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_admin)
 		add_verb(src, GLOB.admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
-		add_verb(src, /client/proc/cmd_mentor_say)
-		add_verb(src, /datum/admins/proc/imaginary_friend)
+		add_verb(src, GLOB.mentor_verbs)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
@@ -603,12 +614,21 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 
 /client/proc/toggle_admin_stealth()
 	set name = "Toggle Admin Stealth"
-	set category = "Preferences"
+	set category = "Preferences.Admin"
 	prefs.toggles_admin ^= ADMIN_STEALTHMODE
 	if(prefs.toggles_admin & ADMIN_STEALTHMODE)
 		to_chat(usr, SPAN_BOLDNOTICE("You enabled admin stealth mode."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
+
+/client/proc/toggle_admin_afk_safety()
+	set name = "Toggle AFK Safety"
+	set category = "Preferences.Admin"
+	prefs.toggles_admin ^= ADMIN_AFK_SAFE
+	if(prefs.toggles_admin & ADMIN_AFK_SAFE)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled afk safety. You will no longer be kicked by afk timer."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled afk safety. You will now be auto kicked by the afk timer."))
 
 #undef MAX_WARNS
 #undef AUTOBANTIME

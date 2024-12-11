@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/structure/transmitter
 	name = "telephone receiver"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/phone.dmi'
 	icon_state = "wall_phone"
 	desc = "It is a wall mounted telephone. The fine text reads: To log your details with the mainframe please insert your keycard into the slot below. Unfortunately the slot is jammed. You can still use the phone, however."
 
@@ -52,12 +52,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	RegisterSignal(attached_to, COMSIG_PARENT_PREQDELETED, PROC_REF(override_delete))
 	update_icon()
 
-	if(!get_turf(src))
-		return
-
 	outring_loop = new(attached_to)
 	busy_loop = new(attached_to)
 	hangup_loop = new(attached_to)
+
+	if(!get_turf(src))
+		return
 
 	GLOB.transmitters += src
 
@@ -392,7 +392,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/item/phone
 	name = "telephone"
-	icon = 'icons/obj/items/misc.dmi'
+	icon = 'icons/obj/structures/phone.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
 	icon_state = "rpb_phone"
 
 	w_class = SIZE_LARGE
@@ -604,6 +608,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/structure/transmitter/rotary/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
+
+/obj/structure/transmitter/rotary/fax_responder
+	phone_category = "Comms Relay"
+	networks_receive = list("Fax Responders")
+	pixel_x = -6
+	pixel_y = 6
 
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"

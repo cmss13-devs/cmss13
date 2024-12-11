@@ -220,11 +220,15 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))
 
+GLOBAL_VAR_INIT(king_acquisition_time, 1 HOURS + 30 MINUTES + rand(0, 25) MINUTES)
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
 
 /proc/setup_xeno_evolve_times()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
-		LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
+		if(initial(caste.caste_type) == XENO_CASTE_KING)
+			LAZYADDASSOCLIST(., num2text(GLOB.king_acquisition_time), caste)
+		else
+			LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 
@@ -505,8 +509,7 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		HUD_ORANGE = new /datum/custom_hud/orange(),
 		HUD_RED = new /datum/custom_hud/red(),
 		HUD_WHITE = new /datum/custom_hud/white(),
-		HUD_ALIEN = new /datum/custom_hud/alien(),
-		HUD_ROBOT = new /datum/custom_hud/robot()
+		HUD_ALIEN = new /datum/custom_hud/alien()
 	)
 
 /proc/setup_human_huds()

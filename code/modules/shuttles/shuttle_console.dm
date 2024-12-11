@@ -357,7 +357,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_DROPSHIP
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
@@ -381,7 +381,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_DROPSHIP
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
@@ -405,7 +405,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_DROPSHIP
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship3/Initialize()
@@ -420,6 +420,54 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	onboard = 1
 	density = TRUE
 
+/obj/structure/machinery/computer/shuttle_control/dropship_upp
+	name = "\improper 'Morana' dropship console"
+	desc = "The remote controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_MORANA
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/onboard
+	name = "\improper 'Morana' flight controls"
+	desc = "The flight controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2
+	name = "\improper 'Devana' dropship console"
+	desc = "The remote controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_DEVANA
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/onboard
+	name = "\improper 'Devana' flight controls"
+	desc = "The flight controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
 //Elevator control console
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony
@@ -430,7 +478,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_ELEVATOR
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = FALSE
 	req_access = null
 
@@ -464,7 +512,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_ELEVATOR
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = FALSE
 	req_access = null
 

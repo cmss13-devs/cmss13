@@ -18,8 +18,13 @@
 	GLOB.marine_leaders -= JOB_XO
 
 AddTimelock(/datum/job/command/executive, list(
-	JOB_COMMAND_ROLES = 5 HOURS,
+	JOB_COMMAND_ROLES = 20 HOURS,
+	JOB_SQUAD_LEADER = 10 HOURS,
 ))
+
+/datum/job/command/executive/announce_entry_message(mob/living/carbon/human/H)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
+	return ..()
 
 /obj/effect/landmark/start/executive
 	name = JOB_XO

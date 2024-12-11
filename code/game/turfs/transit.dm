@@ -199,7 +199,7 @@
 
 /obj/handle_airdrop(turf/target, dropship_name)
 	..()
-	if(!indestructible && prob(30)) // throwing objects from the air is not always a good idea
+	if(!explo_proof && prob(30)) // throwing objects from the air is not always a good idea
 		deconstruct(FALSE)
 
 /obj/structure/closet/handle_airdrop(turf/target, dropship_name) // good idea but no
@@ -213,7 +213,7 @@
 	..()
 	if(QDELETED(src))
 		return
-	if(!indestructible && w_class < SIZE_MEDIUM) //tiny and small items will be lost, good riddance
+	if(!explo_proof && w_class < SIZE_MEDIUM) //tiny and small items will be lost, good riddance
 		deconstruct(FALSE)
 		return
 	explosion_throw(200) // give it a bit of a kick
@@ -266,6 +266,14 @@
 
 /turf/open/space/transit/dropship/saipan
 	shuttle_tag = DROPSHIP_SAIPAN
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/morana
+	shuttle_tag = DROPSHIP_MORANA
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/devana
+	shuttle_tag = DROPSHIP_DEVANA
 	dir = SOUTH
 
 /turf/open/space/transit/south

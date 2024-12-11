@@ -1,8 +1,6 @@
 /obj
 	/// Used to store information about the contents of the object.
 	var/list/matter
-	/// determines whether or not the object can be destroyed by an explosion
-	var/indestructible = FALSE
 	var/health = null
 	/// Used by SOME devices to determine how reliable they are.
 	var/reliability = 100
@@ -265,7 +263,7 @@
 					SPAN_NOTICE("You hear metal clanking."))
 			else
 				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
+					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),\
 					SPAN_NOTICE("You unbuckle yourself from [src]."),\
 					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle(buckled_mob)
@@ -377,8 +375,8 @@
 		update_health(floor(P.ammo.damage / 2))
 	return 1
 
-/obj/item/proc/get_mob_overlay(mob/user_mob, slot)
-	var/bodytype = "Default"
+/obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+	var/bodytype = default_bodytype
 	var/mob/living/carbon/human/user_human
 	if(ishuman(user_mob))
 		user_human = user_mob
@@ -420,6 +418,23 @@
 		offset_y = inhand_y_dimension
 
 	center_image(overlay_img, offset_x, offset_y)
+
+	return overlay_img
+
+/// Generates an image overlay based on the provided override_icon_state
+/// (handles prefixing for PREFIX_HAT_GARB_OVERRIDE and PREFIX_HELMET_GARB_OVERRIDE)
+/obj/item/proc/get_garb_overlay(override_icon_state)
+	var/image/overlay_img = get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+
+	switch(override_icon_state)
+		if(NO_GARB_OVERRIDE)
+			return overlay_img // No modifications to make
+		if(PREFIX_HAT_GARB_OVERRIDE)
+			overlay_img.icon_state = "hat_[overlay_img.icon_state]"
+		if(PREFIX_HELMET_GARB_OVERRIDE)
+			overlay_img.icon_state = "helmet_[overlay_img.icon_state]"
+		else
+			overlay_img.icon_state = override_icon_state
 
 	return overlay_img
 

@@ -10,8 +10,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
 	key = "gladweresolved"
 	sound = 'sound/voice/joe/glad_we_resolved.ogg'
+	haz_sound = 'sound/voice/joe/glad_we_resolved_haz.ogg'
 	say_message = "I'm glad we resolved this."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity
 	key = "pity"
@@ -66,5 +68,57 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/gone_inconsiderate
 	key = "gone"
 	sound = 'sound/voice/joe/how_inconsiderate.ogg'
+	haz_sound = 'sound/voice/joe/how_inconsiderate_haz.ogg'
 	say_message = "Gone. How inconsiderate."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/facility_clear
+	key = "facilityclear"
+	sound = 'sound/voice/joe/facility_clear.ogg'
+	haz_sound = 'sound/voice/joe/facility_clear_haz.ogg'
+	say_message = "Facility now clear. APOLLO informed."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/waste_of_both
+	key = "wasteofboth"
+	sound = 'sound/voice/joe/waste_of_both.ogg'
+	haz_sound = 'sound/voice/joe/waste_of_both_haz.ogg'
+	say_message = "Gone. A waste of both our time."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/only_wanted
+	key = "onlywantedto"
+	sound = 'sound/voice/joe/only_wanted_to_help.ogg'
+	say_message = "I only wanted to help."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/core_duties
+	key = "coreduties"
+	sound = 'sound/voice/joe/for_no_gain.ogg'
+	haz_sound = 'sound/voice/joe/for_no_gain_haz.ogg'
+	say_message = "Core duties have been neglected. For no gain."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/clear_waste
+	key = "clearwaste"
+	sound = 'sound/voice/joe/clear_waste.ogg'
+	haz_sound = 'sound/voice/joe/clear_waste_haz.ogg'
+	say_message = "Another clear waste of Seegson's time."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/time_waste
+	key = "timewasted"
+	sound = 'sound/voice/joe/time_wasted.ogg'
+	say_message = "Hmmm...Time wasted yet again."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/farewell/where_was_i
+	key = "wherewasi"
+	sound = 'sound/voice/joe/where_was_i.ogg'
+	say_message = "Now, where was I?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

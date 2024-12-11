@@ -38,7 +38,7 @@
 //-------------------------STRUCTURES------------------------
 
 /obj/structure/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(!indestructible && !unacidable && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
+	if(!explo_proof && !unacidable && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
 		playsound(V, 'sound/effects/metal_crash.ogg', 20)
 		qdel(src)
@@ -299,7 +299,8 @@
 	// Driver needs access
 		var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 		if(!requiresID() || (driver && allowed(driver)))
-			open(TRUE)
+			if(operating != DOOR_OPERATING_OPENING)
+				open(TRUE)
 			return FALSE
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))

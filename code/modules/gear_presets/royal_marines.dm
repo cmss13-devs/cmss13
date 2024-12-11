@@ -266,7 +266,7 @@
 	paygrades = list(PAY_SHORT_RMC3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC MED"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Royal Marines Corpsman-Surgeon"
+	assignment = "Royal Marines Corpsman"
 	rank = JOB_TWE_RMC_MEDIC
 
 	minimap_icon = "rmc_rifleman"

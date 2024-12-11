@@ -263,8 +263,8 @@
 
 /datum/equipment_preset/twe/royal_marine/medic
 	name = "TWE Royal Marine Commando (Corpsman)"
-	paygrades = list(PAY_SHORT_RMC4 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "RMC CM"
+	paygrades = list(PAY_SHORT_RMC3 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "RMC MED"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Corpsman-Surgeon"
 	rank = JOB_TWE_RMC_MEDIC
@@ -364,7 +364,7 @@
 
 /datum/equipment_preset/twe/royal_marine/lieuteant //they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
 	name = "TWE Royal Marine Commando (Officer)"
-	paygrades = list(PAY_SHORT_RNO1 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_RNO1A = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC LT"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Team Commander"
@@ -415,7 +415,7 @@
 
 /datum/equipment_preset/twe/royal_marine/captain //RMC Captain. Exists purely for admin spawns (you never know when you need a high ranking RMC Officer, eh?)
 	name = "TWE Royal Marine Commando (Captain)"
-	paygrades = list(PAY_SHORT_RNO4 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_RNO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC CPT"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Captain"

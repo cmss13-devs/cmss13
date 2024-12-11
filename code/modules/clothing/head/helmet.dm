@@ -261,6 +261,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/sunglasses/sechud = "sechud",
 	/obj/item/clothing/glasses/eyepatch = "eyepatch",
 	/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
+	/obj/item/clothing/glasses/regular = "persc-glasses",
+	/obj/item/clothing/glasses/mbcg = "persc-glasses",
 
 	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = HELMET_GARB_RELAY_ICON_STATE,
@@ -420,8 +422,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		else
 			name += " helmet"
 
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type, null, new_protection)
+	select_gamemode_skin(type, null, new_protection)
 
 	helmet_overlays = list() //To make things simple.
 
@@ -466,6 +467,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
 			active_visor = null
 			toggle_visor(potential_user, temp_visor_holder, TRUE)
+	QDEL_NULL_LIST(built_in_visors)
 	return ..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
@@ -632,11 +634,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(active_visor)
 		. += active_visor.get_helmet_examine_text()
 
-/obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the overlay and set the var.
+/obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the desc and set the var.
 	if(flags_marine_helmet & HELMET_DAMAGE_OVERLAY && !(flags_marine_helmet & HELMET_IS_DAMAGED))
-		helmet_overlays["damage"] = image('icons/obj/items/clothing/cm_hats.dmi',icon_state = "hugger_damage")
 		flags_marine_helmet |= HELMET_IS_DAMAGED
-		update_icon()
 		desc += "\n<b>This helmet seems to be scratched up and damaged, particularly around the face area...</b>"
 
 /obj/item/clothing/head/helmet/marine/get_pockets()
@@ -771,22 +771,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A standard M10 Pattern Helmet. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
 	icon_state = "c_helmet"
 	item_state = "c_helmet"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/jungle
 	icon_state = "helmet"
 	item_state = "helmet"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/snow
 	icon_state = "s_helmet"
 	item_state = "s_helmet"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/desert
 	icon_state = "d_helmet"
 	item_state = "d_helmet"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
@@ -814,7 +814,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted on its front."
 	icon_state = "med_helmet_white"
 	specialty = "M10 pattern medic white"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/covert
@@ -829,7 +829,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	specialty = "M10 pattern covert"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern helmet"
@@ -931,7 +931,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
 	icon_state = "helmetp_tex"
 	item_state = "helmetp_tex"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
@@ -956,7 +956,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern captain"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP
@@ -988,7 +988,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep its valuable contents safe."
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_inventory = BLOCKSHARPOBJ|FULL_DECAP_PROTECTION
 
 /obj/item/clothing/head/helmet/marine/sof
@@ -1000,7 +1000,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M10 pattern SOF"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider, new /obj/item/device/helmet_visor/security)
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
@@ -1008,7 +1008,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 //=======================================================================\\
 
 /obj/item/clothing/head/helmet/marine/veteran
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 	built_in_visors = list()
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc
@@ -1093,7 +1093,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "ua_riot"
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "RC6"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 // KUTJEVO HELMET
 
@@ -1311,7 +1311,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
 	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
-	select_gamemode_skin(type,, new_protection)
+	select_gamemode_skin(type, override_protection = new_protection)
 	..()
 	switch(icon_state)
 		if("s_skullcapm")
@@ -1385,7 +1385,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_HARDCORE // the hefa knight stands
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR|HIDEEYES
 	flags_marine_helmet = NO_FLAGS
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
@@ -1442,7 +1442,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
 	icon_state = "cc_helmet"
 	item_state = "cc_helmet"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
 	built_in_visors = list()
 
@@ -1458,13 +1458,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	force = 0 //"The M3 MOPP mask would be a normal weapon if you were to hit someone with it."
 	throwforce = 0
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_helmet = NO_FLAGS
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	built_in_visors = list()
 
@@ -1472,7 +1472,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
-	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 
 //=ROYAL MARINES=\\
@@ -1492,7 +1492,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "\improper L5A3 ballistic helmet"

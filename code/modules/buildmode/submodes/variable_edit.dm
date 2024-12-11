@@ -27,7 +27,7 @@
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
 	selected_key = input(usr,"Enter variable name:" ,"Name", "name")
-	if(selected_key in locked && !check_rights(R_DEBUG,0))
+	if((selected_key in locked) && !check_rights(R_DEBUG, FALSE))
 		return TRUE
 	var/type = tgui_input_list(usr,"Select variable type:", "Type", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
 

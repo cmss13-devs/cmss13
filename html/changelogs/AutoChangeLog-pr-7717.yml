@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "Fixed accidental loss of UPP Commanding Officer access to their personal equipment vendors."

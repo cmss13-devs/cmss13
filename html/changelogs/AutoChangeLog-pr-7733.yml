@@ -1,0 +1,5 @@
+author: "IroquoisLou"
+delete-after: True
+changes:
+  - rscadd: "Added the rank of colour sergeant to the RMC, to give the RMC, a Staff Sergeant equivalent"
+  - rscdel: "Removed the japanese title's from the RMC ranks"

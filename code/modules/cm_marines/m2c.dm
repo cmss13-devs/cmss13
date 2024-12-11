@@ -343,25 +343,25 @@
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
-    if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-        return
-    // RELOADING
-    if(istype(O, /obj/item/ammo_magazine/m2c))
-        var/obj/item/ammo_magazine/m2c/M = O
-        if(M.default_ammo != ammo)
-            to_chat(user, SPAN_WARNING("This ammo does not match the caliber!"))
-            return
-        if(rounds)
-            to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
-            return
-        if(user.action_busy) return
-        user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
-        playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
-        rounds = min(rounds + M.current_rounds, rounds_max)
-        update_icon()
-        user.temp_drop_inv_item(O)
-        qdel(O)
-        return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
+	// RELOADING
+	if(istype(O, /obj/item/ammo_magazine/m2c))
+		var/obj/item/ammo_magazine/m2c/M = O
+		if(M.default_ammo != ammo)
+			to_chat(user, SPAN_WARNING("This ammo does not match the caliber!"))
+			return
+		if(rounds)
+			to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
+			return
+		if(user.action_busy) return
+		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
+		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
+		rounds = min(rounds + M.current_rounds, rounds_max)
+		update_icon()
+		user.temp_drop_inv_item(O)
+		qdel(O)
+		return
 
 	// WELDER REPAIR
 	if(iswelder(O))

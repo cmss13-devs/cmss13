@@ -1,0 +1,5 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - code_imp: "Changed gamemode flags to datums"
+  - admin: "Changed gamemode flags from many buttons to one UI"

@@ -1945,6 +1945,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1957,7 +1958,6 @@
 		/obj/item/attachable/attached_gun/grenade/u1rmc,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/shotgun/af13,
-		/obj/item/attachable/attached_gun/shotgun/af13b,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
@@ -2011,9 +2011,8 @@
 	S.Attach(src)
 	update_attachable(S.slot)
 
-
-
-/obj/item/weapon/gun/rifle/l23/breacher
+//***************************************************************//
+/obj/item/weapon/gun/rifle/l23/breacher // One-handed UBS rifle
 	name = "\improper L23-B assault rifle"
 	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
@@ -2034,7 +2033,6 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/stock/l23,
 		/obj/item/attachable/attached_gun/shotgun/af13b,
@@ -2077,6 +2075,12 @@
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/l23/leader
+	starting_attachment_types = list(
+		/obj/item/attachable/attached_gun/flamer/advanced,
+	)
+
 
 //-------------------------------------------------------
 //XM51, Breaching Scattergun

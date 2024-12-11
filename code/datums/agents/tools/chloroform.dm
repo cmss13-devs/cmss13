@@ -1,7 +1,7 @@
 /obj/item/weapon/chloroform
 	name = "cloth"
 	desc = "A piece of cloth. It smells funny"
-
+	icon = 'icons/obj/janitor.dmi'
 	icon_state = "rag"
 
 	var/uses = 8

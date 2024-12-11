@@ -1,6 +1,8 @@
 /obj/item/clothing/under/shorts
 	name = "athletic shorts"
 	desc = "95% Polyester, 5% Spandex!"
+	icon = 'icons/obj/items/clothing/uniforms/underwear_uniforms.dmi'
+	icon_override = 'icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi'
 	gender = PLURAL
 	flags_armor_protection = BODY_FLAG_GROIN
 

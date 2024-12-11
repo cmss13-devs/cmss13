@@ -343,22 +343,25 @@
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		return
-	// RELOADING
-	if(istype(O, /obj/item/ammo_magazine/m2c))
-		var/obj/item/ammo_magazine/m2c/M = O
-		if(rounds)
-			to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
-			return
-		if(user.action_busy) return
-		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
-		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
-		rounds = min(rounds + M.current_rounds, rounds_max)
-		update_icon()
-		user.temp_drop_inv_item(O)
-		qdel(O)
-		return
+    if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+        return
+    // RELOADING
+    var/obj/item/ammo_magazine/m2c/M = O
+
+    if(default_ammo != M.default_ammo)
+        to_chat(user, SPAN_WARNING("This ammo does not match the caliber!"))
+        return
+    if(rounds)
+        to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
+        return
+    if(user.action_busy) return
+        user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
+        playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
+        rounds = min(rounds + M.current_rounds, rounds_max)
+        update_icon()
+        user.temp_drop_inv_item(O)
+        qdel(O)
+    return
 
 	// WELDER REPAIR
 	if(iswelder(O))
@@ -647,53 +650,6 @@
 	var/obj/item/ammo_magazine/m2c/t37/AM = new(loc)
 	AM.current_rounds = 0
 	AM.update_icon()
-
-/obj/structure/machinery/m56d_hmg/auto/t37/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
-		return
-	// RELOADING
-	if(istype(O, /obj/item/ammo_magazine/m2c/t37))
-		var/obj/item/ammo_magazine/m2c/t37/M = O
-		if(rounds)
-			to_chat(user, SPAN_WARNING("There's already an ammo box inside of [src], remove it first!"))
-			return
-		if(user.action_busy) return
-		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
-		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
-		rounds = min(rounds + M.current_rounds, rounds_max)
-		update_icon()
-		user.temp_drop_inv_item(O)
-		qdel(O)
-		return
-
-	// WELDER REPAIR
-	if(iswelder(O))
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(user.action_busy)
-			return
-
-		var/obj/item/tool/weldingtool/WT = O
-
-		if(health == health_max)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs, it's well-maintained."))
-			return
-
-		if(WT.remove_fuel(2, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
-				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				return
-			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
-					SPAN_NOTICE("You repair [src]."))
-			update_health(-round(health_max*0.2))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-		else
-			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
-		return
-	return
 
 #undef M2C_OVERHEAT_CRITICAL
 #undef M2C_OVERHEAT_BAD

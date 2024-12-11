@@ -521,25 +521,50 @@
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
-	set waitfor = 0
-	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths++
-	var/num_last_deaths = xeno_queen_deaths
-	sleep(QUEEN_DEATH_COUNTDOWN)
-	//We want to make sure that another queen didn't die in the interim.
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+	. = ..()
+	if(.[2] != 0) // index 2 = num_xenos
+		return .
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished)
-		var/datum/hive_status/HS
-		for(var/HN in GLOB.hive_datum)
-			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
-				//Some Queen is alive, we shouldn't end the game yet
-				return
-		if(length(HS.totalXenos) <= 3)
-			round_finished = MODE_INFESTATION_M_MAJOR
-		else
-			round_finished = MODE_INFESTATION_M_MINOR
+	// Ensure there is no queen
+	var/datum/hive_status/hive
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			.[2]++
+	return .
+
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
+	if(!(flags_round_type & MODE_INFESTATION))
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive.need_round_end_check && !hive.can_delay_round_end())
+		return
+
+	if(!immediately)
+		//We want to make sure that another queen didn't die in the interim.
+		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+		return
+
+	if(round_finished)
+		return
+
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			return
+
+	if(length(hive.totalXenos) <= 3)
+		round_finished = MODE_INFESTATION_M_MAJOR
+	else
+		round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//

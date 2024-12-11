@@ -44,7 +44,7 @@
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 	/// inflicts this many holo stacks per bullet hit
-	var/holo_stacks = 10
+	var/holo_stacks = 20
 	/// modifies the default cap limit of 100 by this amount
 	var/bonus_damage_cap_increase = 0
 	/// multiplies the default drain of 5 holo stacks per second by this amount
@@ -69,6 +69,19 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
+
+/datum/ammo/bullet/shrapnel/neuro
+	name = "neurotoxin coated shrapnel"
+	icon_state = "neurotoxin"
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+
+	shell_speed = AMMO_SPEED_TIER_1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/mob, obj/projectile/projectile)
+	if(mob.slowed < 6)
+		mob.adjust_effect(0.8, SLOW)
 
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"

@@ -1939,6 +1939,7 @@
 		/obj/item/ammo_magazine/rifle/nsg23/ap,
 		/obj/item/ammo_magazine/rifle/nsg23/heap,
 		/obj/item/ammo_magazine/rifle/nsg23/rubber,
+		/obj/item/ammo_magazine/rifle/nsg23/incendiary,
 	)
 
 	attachable_allowed = list(

@@ -444,11 +444,17 @@
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
+/obj/item/ammo_magazine/rifle/nsg23/incendiary
+	name = "\improper NSG 23 incindiary magazine (10x24mm)"
+	desc = "An NSG 23 assault rifle magazine. This one is loaded with incendiary white phosphorus tipped rounds."
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
 /obj/item/ammo_magazine/rifle/nsg23/rubber
 	name = "\improper NSG 23 training magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine. This one is loaded with rubber bullets."
 	default_ammo = /datum/ammo/bullet/rifle/rubber
-	ammo_band_color = AMMO_BAND_COLOR_TRAINING
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 //--------------------------------------------------------
 //Bolt action rifle ammo

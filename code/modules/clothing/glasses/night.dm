@@ -82,8 +82,8 @@
 	name = "\improper Royal Marine Commando marksmans goggles"
 	gender = PLURAL
 	desc = "A headset and night vision goggles system used by RMC marksmen. Allows highlighted imaging of surroundings. Click it to toggle."
-	icon_state = "m42_goggles"
-	deactive_state = "m42_goggles_0"
+	icon_state = "m4ra_goggles"
+	deactive_state = "m4ra_goggles_0"
 	req_skill = null
 	req_skill_level = null
 

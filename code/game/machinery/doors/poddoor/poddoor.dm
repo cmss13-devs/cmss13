@@ -117,3 +117,4 @@
 	icon_state = ""
 	unslashable = TRUE
 	unacidable = TRUE
+	abstract_door = TRUE

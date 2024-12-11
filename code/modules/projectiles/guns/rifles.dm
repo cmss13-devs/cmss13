@@ -1963,6 +1963,7 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/variable_zoom/twe,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -2081,6 +2082,132 @@
 	starting_attachment_types = list(
 		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
+
+//L42A3 Battle Rifle
+
+/obj/item/weapon/gun/rifle/l42a3
+	name = "\improper L42A3 battle rifle"
+	desc = "The L42A3 Battle Rifle, found commonly in Three World Empire's armories. Used by RMC and IASF alike, valued for its reliability."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
+	icon_state = "l42a3"
+	item_state = "l42a3"
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/l42a
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/stock/carbine/l42a3,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/scope/variable_zoom/twe,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+)
+
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle/l42a,
+		/obj/item/ammo_magazine/rifle/l42a/ap,
+		/obj/item/ammo_magazine/rifle/l42a/le,
+		/obj/item/ammo_magazine/rifle/l42a/rubber,
+		/obj/item/ammo_magazine/rifle/l42a/heap,
+		/obj/item/ammo_magazine/rifle/l42a/penetrating,
+		/obj/item/ammo_magazine/rifle/l42a/toxin,
+		/obj/item/ammo_magazine/rifle/l42a/extended,
+		/obj/item/ammo_magazine/rifle/l42a/incendiary,
+)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+
+/obj/item/weapon/gun/rifle/l42a3/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 13, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 22, "stock_y" = 9)
+
+/obj/item/weapon/gun/rifle/l42a3/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(0)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_9
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/l42a3/training
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
+
+/obj/item/weapon/gun/rifle/l42a3/marksman
+	name = "\improper L42A3 battle rifle"
+	desc = "The L42A3 Battle Rifle, modification sold to TWE. This particular version of the weapon has been given a custom stock and variable zoom scope. Reliable and deadly."
+
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
+
+	random_spawn_chance = 100 //L42A3 always spawns with attachments
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+
+	random_spawn_under = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/bipod,
+	)
+
+/obj/item/weapon/gun/rifle/l42a3/marksman/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_9 - FIRE_DELAY_TIER_12)
+
+/obj/item/weapon/gun/rifle/l42a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
+	..()
+	var/obj/item/attachable/scope/variable_zoom/twe/SC = new(src)
+	SC.flags_attach_features &= ~ATTACH_REMOVABLE
+	SC.Attach(src)
+	update_attachable(SC.slot)
+	var/obj/item/attachable/stock/carbine/l42a3/marksman/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/rifle/l42a3/fal // THE RIGHT ARM OF FREEDOM, MOTHERFU-
+	name = "\improper L42A3-F battle rifle"
+	desc = "The L42A3 Battle Rifle with a heavily modified firing mechanism, giving it a burst-fire option. Extremely deadly."
+
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/incendiary
+
+/obj/item/weapon/gun/rifle/l42a3/fal/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_8)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	damage_falloff_mult = 0
+	scatter = SCATTER_AMOUNT_TIER_8
+
+//-------------------------------------------------------
 
 
 //-------------------------------------------------------

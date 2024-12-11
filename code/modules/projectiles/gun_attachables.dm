@@ -1091,6 +1091,12 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A civilian-grade scope that can be switched between short and long range magnification, intended for use in extraterrestrial scouting. Looks ridiculous on a pistol."
 	aim_speed_mod = 0
 
+/obj/item/attachable/scope/variable_zoom/twe
+	name = "S10 variable zoom telescopic scope"
+	icon_state = "3we_scope"
+	attach_icon = "3we_scope_a"
+	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+
 #undef ZOOM_LEVEL_2X
 #undef ZOOM_LEVEL_4X
 
@@ -2267,6 +2273,18 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "An ABR-40 stock with a sleek paintjob. Wait, did you just take the stock out of a weapon with no grip...? Great job, genius."
 	icon_state = "abr40stock_tac"
 	attach_icon = "abr40stock_tac_a"
+
+/obj/item/attachable/stock/carbine/l42a3
+	name = "\improper L42A3 synthetic stock"
+	desc = "A standard issue stock made of sturdy, yet lightweight materials. Attaches to the L42A3 Battle Rifle. Not effective as a blunt force weapon."
+	icon_state = "l42a3stock"
+	attach_icon = "l42a3stock_a"
+
+/obj/item/attachable/stock/carbine/l42a3/marksman
+	name = "\improper L42A3 marksman stock"
+	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A3 Battle Rifle. Not effective as a blunt force weapon."
+
+	wield_delay_mod = WIELD_DELAY_FAST
 
 /obj/item/attachable/stock/rifle/marksman
 	name = "\improper M41A marksman stock"

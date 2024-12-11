@@ -785,8 +785,8 @@
 			message = "We have wrested away remote control of the metal crawler! Rejoice!"
 		else
 			message = "We have wrested away remote control of the metal bird! Rejoice!"
-			if(!GLOB.resin_lz_allowed)
-				set_lz_resin_allowed(TRUE)
+			if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+				MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		to_chat(M, SPAN_XENONOTICE("We interact with the machine and disable remote control."))
 		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)

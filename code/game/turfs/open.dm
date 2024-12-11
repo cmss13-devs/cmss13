@@ -1241,6 +1241,9 @@
 /turf/open/shuttle/dropship/light_grey_middle
 	icon_state = "rasputin13"
 
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right
+	icon_state = "rasputin14"
+
 /turf/open/shuttle/dropship/can_surgery
 	icon_state = "rasputin1"
 	allow_construction = TRUE
@@ -1403,6 +1406,12 @@
 	name = "floor"
 	icon_state = "dark_sterile"
 	supports_surgery = TRUE
+
+/turf/open/shuttle/vehicle/med/slate
+	color = "#495462"
+
+/turf/open/shuttle/vehicle/med/gray
+	color = "#9c9a97"
 
 /turf/open/shuttle/vehicle/dark_sterile
 	icon_state = "dark_sterile"

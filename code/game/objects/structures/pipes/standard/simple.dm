@@ -121,6 +121,8 @@
 /obj/structure/pipes/standard/simple/hidden/purple
 	color = PIPE_COLOR_PURPLE
 
+/obj/structure/pipes/standard/simple/hidden/dark
+	color = PIPE_COLOR_DARKGREY
 
 /obj/structure/pipes/standard/simple/insulated
 	icon = 'icons/obj/pipes/red_pipe.dmi'

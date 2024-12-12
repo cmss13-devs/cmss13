@@ -5,7 +5,7 @@
 /datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, new_spread_amt, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return
@@ -18,18 +18,31 @@
 	if(!should_call)
 		to_call = null
 
-	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure, F2.fire_variant)
+	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, 0, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure, F2.fire_variant)
 	return TRUE
+
+/datum/flameshape/proc/generate_fire_list(list/turf/turfs, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+	for(var/turf/T in turfs)
+		generate_fire(T, F2, fs, should_call, skip_flame, fuel_pressure)
 
 /datum/flameshape/default
 	name = "Default"
 	id = FLAMESHAPE_DEFAULT
 
 /datum/flameshape/default/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
-	var/turf/T
-	var/turf/source_turf = get_turf(F.loc)
+	var/list/tiles_to_spread = list(get_turf(F.loc))
+	var/list/tiles_to_set_aflame = list()
+	var/obj/flamer_fire/temp = new()
+
+	for(var/spread_amount = 1 to fire_spread_amount)
+		var/list/next_tiles_to_spread = list()
+
+		if(tiles_to_spread.len == 0)
+			break
+
+		for(var/turf/source_turf in tiles_to_spread)
 	for(var/dirn in GLOB.cardinals)
-		T = get_step(source_turf, dirn)
+				var/turf/T = get_step(source_turf, dirn)
 		if(istype(T, /turf/open/space))
 			continue
 
@@ -37,22 +50,23 @@
 		if(foundflame && foundflame.tied_reagent == F.tied_reagent)
 			continue
 
-		var/new_spread_amt = fire_spread_amount - 1
 		if(T.density)
 			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
-			new_spread_amt = 0
-
 		else
-			var/obj/flamer_fire/temp = new()
 			var/atom/A = LinkBlocked(temp, source_turf, T)
 
 			if(A)
 				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (A.flags_atom & ON_BORDER)
-					break
-				new_spread_amt = 0
+							continue
+					else
+						next_tiles_to_spread.Add(T)
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
+				tiles_to_set_aflame.Add(T)
+
+		tiles_to_spread = next_tiles_to_spread
+
+	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, F.flameshape, null, FALSE, fuel_pressure), 0)
 
 
 /datum/flameshape/default/irregular
@@ -71,6 +85,8 @@
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/list/dirs = dirs_to_use()
+	var/list/tiles_to_set_aflame = list()
+	var/obj/flamer_fire/temp = new()
 
 	for(var/dirn in dirs)
 		var/endturf = get_ranged_target_turf(F, dirn, fire_spread_amount)
@@ -87,15 +103,16 @@
 			if(T.density && !T.throwpass) // unpassable turfs stop the spread
 				T.flamer_fire_act(burn_dam, F.weapon_cause_data)
 
-			var/obj/flamer_fire/temp = new()
 			var/atom/A = LinkBlocked(temp, prev_T, T)
 			if(A)
 				A.flamer_fire_act(burn_dam, , F.weapon_cause_data)
 				if (A.flags_atom & ON_BORDER)
 					break
 
-			addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_MINORSTAR, null, FALSE, fuel_pressure), 0)
+			tiles_to_set_aflame.Add(T)
 			prev_T = T
+
+	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, null, FALSE, fuel_pressure), 0)
 
 /datum/flameshape/star/minor
 	name = "Minor Star"
@@ -146,7 +163,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), distance)
 		if(stop_at_turf)
 			break
 
@@ -193,7 +210,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
 		prev_T = T
 		sleep(1)
 
@@ -224,7 +241,7 @@
 					hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
-			generate_fire(R, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
+			generate_fire(R, F, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
 			if (!hit_dense_atom_mid && hit_dense_atom_side)
 				break
 			prev_R = R
@@ -243,7 +260,7 @@
 					hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
-			generate_fire(L, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
+			generate_fire(L, F, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
 			if (!hit_dense_atom_mid && hit_dense_atom_side)
 				break
 			prev_L = L

@@ -1015,8 +1015,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			pack.get_list_representation()
 		)
 
-	.["logo"] = get_asset_datum(/datum/asset/simple/paper).get_url_mappings()["cmblogo.png"]
-
 /obj/structure/machinery/computer/supplycomp/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 

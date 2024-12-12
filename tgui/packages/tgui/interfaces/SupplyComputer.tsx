@@ -4,6 +4,7 @@ import { storage } from 'common/storage';
 import { capitalizeFirst } from 'common/string';
 import { ReactNode, useEffect, useState } from 'react';
 
+import { resolveAsset } from '../assets';
 import { useBackend, useSharedState } from '../backend';
 import {
   Box,
@@ -12,6 +13,7 @@ import {
   Divider,
   DmIcon,
   Flex,
+  Image,
   Input,
   Modal,
   Section,
@@ -577,7 +579,7 @@ const BlackMarketMenu = () => {
         <Stack vertical>
           <Stack.Item>
             <Stack justify="center">
-              <img src={logo} />
+              <Image src={resolveAsset('cmblogo.png')} />
             </Stack>
           </Stack.Item>
           <Stack.Item>

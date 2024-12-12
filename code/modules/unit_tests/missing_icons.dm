@@ -160,7 +160,7 @@
 						if(isnull(initial(guntype.icon_state)))
 							continue
 						if(!guntype.map_specific_decoration)
-							+prefix = ""
+							prefix = ""
 						check(obj_path, 'icons/obj/items/clothing/belts/holstered_guns.dmi', prefix + initial(guntype.icon_state), guntype, "gun_underlay")
 		qdel(spawned)
 

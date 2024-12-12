@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react';
 
+import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import {
   Box,
@@ -21,12 +22,7 @@ import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
 
 type LobbyData = {
-  icon: string;
-  lobby_icon: string;
   lobby_author: string;
-
-  sound: string;
-  sound_interact: string[];
 
   character_name: string;
   display_number: string;
@@ -50,7 +46,7 @@ const LobbyContext = createContext({ animationsDisable: false });
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { lobby_icon, lobby_author, sound } = data;
+  const { lobby_author } = data;
 
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
@@ -77,7 +73,7 @@ export const LobbyMenu = () => {
 
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
-      <audio src={sound} ref={onLoadPlayer} />
+      <audio src={resolveAsset('load')} ref={onLoadPlayer} />
       <Window.Content
         className={`LobbyScreen ${filterDisabled ? '' : 'filterEnabled'} ${disableAnimations}`}
         style={{
@@ -104,7 +100,7 @@ export const LobbyMenu = () => {
             height="100%"
             width="100%"
             style={{
-              backgroundImage: `url(${lobby_icon})`,
+              backgroundImage: `url(${resolveAsset('lobby_art.png')})`,
             }}
             className="bgLoad bgBackground"
           />
@@ -166,7 +162,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
               <Box height="68px">
                 <Box
                   style={{
-                    backgroundImage: `url("${data.icon}")`,
+                    backgroundImage: `url("${resolveAsset('uscm.png')}")`,
                   }}
                   width="67px"
                   className="loadEffect"

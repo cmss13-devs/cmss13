@@ -13,7 +13,7 @@
 		return
 
 	asset = fcopy_rsc(asset) //dedupe
-	var/asset_name = sanitize_filename("[icon].png")
+	var/asset_name = "lobby_art.png"
 
 	SSassets.transport.register_asset(asset_name, asset)
 	assets[asset_name] = asset

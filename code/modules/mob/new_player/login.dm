@@ -51,19 +51,6 @@
 /mob/new_player/ui_state(mob/user)
 	return GLOB.always_state
 
-/mob/new_player/ui_static_data(mob/user)
-	. = ..()
-
-	.["icon"] = get_asset_datum(/datum/asset/simple/icon_states/lobby).get_url_mappings()["uscm.png"]
-	.["sound"] = get_asset_datum(/datum/asset/simple/lobby_sound).get_url_mappings()["load"]
-
-	.["lobby_icon"] = ""
-	.["lobby_author"] = ""
-	if(SSlobby_art.selected_file_name)
-		var/icons = get_asset_datum(/datum/asset/simple/lobby_art).get_url_mappings()
-		.["lobby_icon"] = icons[icons[1]]
-		.["lobby_author"] = SSlobby_art.author
-
 /mob/new_player/ui_data(mob/user)
 	. = ..()
 
@@ -83,6 +70,8 @@
 	.["xenomorph_enabled"] = client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH))
 	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
+
+	.["lobby_author"] = SSlobby_art.author
 
 /mob/new_player/ui_assets(mob/user)
 	. = ..()

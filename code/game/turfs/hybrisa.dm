@@ -929,21 +929,21 @@
 /turf/open/hybrisa/dropship/no_surgery_allowed
 	supports_surgery = FALSE
 
-/turf/open/hybrisa/dropship/non_weedable/dropship1
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropship1
 	icon_state = "dropshipfloor1"
-/turf/open/hybrisa/dropship/non_weedable/dropship2
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropship2
 	icon_state = "dropshipfloor2"
-/turf/open/hybrisa/dropship/non_weedable/dropship3
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropship3
 	icon_state = "dropshipfloor2"
-/turf/open/hybrisa/dropship/non_weedable/dropship3
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropship3
 	icon_state = "dropshipfloor3"
-/turf/open/hybrisa/dropship/non_weedable/dropship4
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropship4
 	icon_state = "dropshipfloor4"
-/turf/open/hybrisa/dropship/non_weedable/dropshipfloorcorner1
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropshipfloorcorner1
 	icon_state = "dropshipfloorcorner1"
-/turf/open/hybrisa/dropship/non_weedable/dropshipfloorcorner2
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropshipfloorcorner2
 	icon_state = "dropshipfloorcorner2"
-/turf/open/hybrisa/dropship/non_weedable/dropshipfloorfull
+/turf/open/hybrisa/dropship/no_surgery_allowed/dropshipfloorfull
 	icon_state = "dropshipfloorfull"
 
 // Engineer tiles

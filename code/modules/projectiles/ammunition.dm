@@ -39,6 +39,8 @@ They're all essentially identical when it comes to getting the job done.
 	var/ammo_band_icon
 	/// Is the greyscale icon used for the ammo band when it's empty of bullets.
 	var/ammo_band_icon_empty
+	/// For backpack fead guns
+	var/obj/item/weapon/gun/linked_gun
 
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
@@ -129,7 +131,7 @@ They're all essentially identical when it comes to getting the job done.
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
-	if(istype(I,/obj/item/weapon/gun) && flags_magazine & MAGAZINE_WORN)
+	if(istype(I,/obj/item/weapon/gun) && (flags_magazine & MAGAZINE_WORN) && user.back == I)
 		var/obj/item/weapon/gun/gun = I
 		gun.reload(user,src)
 

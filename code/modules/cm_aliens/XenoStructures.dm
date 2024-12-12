@@ -404,6 +404,7 @@
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
 

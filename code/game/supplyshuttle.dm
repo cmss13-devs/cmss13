@@ -209,20 +209,29 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				used_points += (iter_pack.cost * current_order[pack_type])
 				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
 
-			switch(adjust_to)
-				if("max")
-					var/number_to_hold
-					if(pack.dollar_cost)
-						number_to_hold = floor((GLOB.supply_controller.black_market_points - used_dollars) / pack.dollar_cost)
-					else
-						number_to_hold = floor((GLOB.supply_controller.points - used_points) / pack.cost)
+			if(isnum(adjust_to))
+				var/number_to_get = floor(adjust_to)
 
-					if(number_to_hold && (number_to_hold <= 0 || (current_order[picked_pack] && number_to_hold < current_order[picked_pack])))
-						return
+				var/cost_to_use = pack.dollar_cost ? pack.dollar_cost : pack.cost
+				var/points_to_use = pack.dollar_cost ? GLOB.supply_controller.black_market_points : GLOB.supply_controller.points
+				var/used_to_use = pack.dollar_cost ? used_dollars : used_points
 
-					current_order[picked_pack] = number_to_hold
+				var/available_points = points_to_use - used_to_use
+
+				var/number_to_hold
+				if(cost_to_use * number_to_get > available_points)
+					number_to_hold = floor(available_points / cost_to_use)
+				else
+					number_to_hold = number_to_get
+
+				if(number_to_hold <= 0)
+					current_order -= picked_pack
 					return TRUE
 
+				current_order[picked_pack] = number_to_hold
+				return TRUE
+
+			switch(adjust_to)
 				if("min")
 					current_order -= picked_pack
 					return TRUE

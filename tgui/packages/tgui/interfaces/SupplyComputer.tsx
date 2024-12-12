@@ -16,6 +16,7 @@ import {
   Image,
   Input,
   Modal,
+  NumberInput,
   Section,
   Stack,
 } from '../components';
@@ -835,9 +836,9 @@ const RenderPack = (props: {
         ) : (
           <Stack.Item p={1} verticalAlign="top">
             <Flex>
-              <Flex.Item>
+              <Flex.Item pr={1}>
                 <Button
-                  icon={'backward-fast'}
+                  icon={'xmark'}
                   onClick={() =>
                     act('adjust_cart', { pack: item.type, to: 'min' })
                   }
@@ -846,7 +847,7 @@ const RenderPack = (props: {
               </Flex.Item>
               <Flex.Item>
                 <Button
-                  icon={'backward'}
+                  icon={'minus'}
                   onClick={() =>
                     act('adjust_cart', { pack: item.type, to: 'decrement' })
                   }
@@ -854,32 +855,21 @@ const RenderPack = (props: {
                 />
               </Flex.Item>
               <Flex.Item>
-                <Box p={1} width="30px" textAlign="right" inline>
-                  {quantity}
-                </Box>
-              </Flex.Item>
-              <Flex.Item>
-                <Button
-                  icon={'forward'}
-                  onClick={() =>
-                    act('adjust_cart', { pack: item.type, to: 'increment' })
-                  }
-                  disabled={
-                    item.dollar_cost
-                      ? used_dollars
-                        ? used_dollars + item.dollar_cost > dollars!
-                        : false
-                      : used_points
-                        ? used_points + item.cost > points
-                        : false
-                  }
+                <NumberInput
+                  value={quantity}
+                  minValue={0}
+                  maxValue={99}
+                  step={1}
+                  onChange={(val) => {
+                    act('adjust_cart', { pack: item.type, to: val });
+                  }}
                 />
               </Flex.Item>
               <Flex.Item>
                 <Button
-                  icon={'forward-fast'}
+                  icon={'plus'}
                   onClick={() =>
-                    act('adjust_cart', { pack: item.type, to: 'max' })
+                    act('adjust_cart', { pack: item.type, to: 'increment' })
                   }
                   disabled={
                     item.dollar_cost

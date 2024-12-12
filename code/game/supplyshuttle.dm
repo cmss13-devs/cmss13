@@ -206,11 +206,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			for(var/pack_type in current_order)
 				var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
+				if(isnum(adjust_to) && pack_type == picked_pack)
+					continue // if manually specifying number, we calculate later how many it can be set to
+
 				used_points += (iter_pack.cost * current_order[pack_type])
 				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
 
 			if(isnum(adjust_to))
 				var/number_to_get = floor(adjust_to)
+				if(!calculate_max_order)
+					current_order[picked_pack] = number_to_get
+
+					if(number_to_get <= 0)
+						current_order -= picked_pack
+
+					return TRUE
 
 				var/cost_to_use = pack.dollar_cost ? pack.dollar_cost : pack.cost
 				var/points_to_use = pack.dollar_cost ? GLOB.supply_controller.black_market_points : GLOB.supply_controller.points

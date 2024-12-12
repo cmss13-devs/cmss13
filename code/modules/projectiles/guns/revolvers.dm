@@ -209,11 +209,11 @@
 	src = active_firearm
 
 	if(active_firearm.can_perform_trick == TRUE)
-		to_chat(usr, SPAN_NOTICE("\the [src] will now perform tricks with Unique Action!"))
+		to_chat(usr, SPAN_NOTICE("[src] will now perform tricks with Unique Action!"))
 		active_firearm.can_perform_trick = FALSE
 		return
 	else
-		to_chat(usr, SPAN_NOTICE("\the [src] will now spin the cylinder with Unique Action!"))
+		to_chat(usr, SPAN_NOTICE("[src] will now spin the cylinder with Unique Action!"))
 		active_firearm.can_perform_trick = TRUE
 
 /obj/item/weapon/gun/revolver/unique_action(mob/user)

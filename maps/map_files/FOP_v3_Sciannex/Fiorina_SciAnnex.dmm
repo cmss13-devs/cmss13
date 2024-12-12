@@ -578,17 +578,14 @@
 /area/fiorina/station/botany)
 "acd" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	req_access = null;
-	name = "CMB riot locker"
+	req_access = null
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/mask/gas/swat,
-/obj/item/clothing/head/helmet/marine/veteran/cmb,
-/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "ace" = (
@@ -651,13 +648,12 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/under/marine/ua_riot,
 /obj/item/storage/pill_bottle/alkysine,
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "aco" = (
@@ -6076,12 +6072,6 @@
 /turf/open/floor/prison/whitepurple/southeast,
 /area/fiorina/station/research_cells/west)
 "auZ" = (
-/obj/effect/landmark/corpsespawner/security/marshal/riot,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells/west)
@@ -7735,10 +7725,6 @@
 "aAl" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/tumor/ice_lab)
-"aAm" = (
-/obj/effect/landmark/corpsespawner/security/marshal/riot,
-/turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "aAn" = (
 /obj/structure/stairs/perspective{
@@ -58094,7 +58080,7 @@ sWb
 mvp
 mvp
 cer
-aAm
+kpq
 mvp
 ddL
 aAc

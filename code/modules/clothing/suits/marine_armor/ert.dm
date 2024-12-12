@@ -600,7 +600,7 @@
 	)
 	icon_state = "cmb_heavy_armor"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_HIGH
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH

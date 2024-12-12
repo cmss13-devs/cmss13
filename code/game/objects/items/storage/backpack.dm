@@ -1212,9 +1212,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 15
 
-/obj/item/storage/backpack/molle/big
-	max_storage_space = 21
-
 /obj/item/storage/backpack/molle/backpack
 	name = "\improper T16 MOLLE Backpack"
 	desc = "Tactical backpack manufactured by one of the Alphatech subsidiaries. Very lightweight backpack that utilizes UA standard MOLLE fastening systems, which allows easy access and optimal weight distribution. Can be often found in hands of colonial security and various private military groups."

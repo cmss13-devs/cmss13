@@ -129,6 +129,11 @@ They're all essentially identical when it comes to getting the job done.
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
+	if(istype(I,/obj/item/weapon/gun) && flags_magazine & MAGAZINE_WORN)
+		var/obj/item/weapon/gun/gun = I
+		gun.reload(user,src)
+
+
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
 	if(current_rounds == max_rounds) //Does the mag actually need reloading?

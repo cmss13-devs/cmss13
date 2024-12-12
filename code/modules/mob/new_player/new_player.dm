@@ -15,7 +15,6 @@
 
 /mob/new_player/Initialize()
 	. = ..()
-	GLOB.new_player_list += src
 	GLOB.dead_mob_list -= src
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 

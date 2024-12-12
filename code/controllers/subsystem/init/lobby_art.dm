@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(lobby_art)
 	init_order = SS_INIT_LOBBYART
 	init_stage = INITSTAGE_EARLY
 	wait = 1 SECONDS
+	runlevels = ALL
 
 	/// The clients who we've waited a [wait] duration to start working. If they haven't, we reboot them
 	var/to_reinitialize = list()

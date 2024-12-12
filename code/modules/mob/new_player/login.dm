@@ -20,6 +20,8 @@
 
 	initialize_lobby_screen()
 
+	GLOB.new_player_list += src
+
 	. = ..()
 
 	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
@@ -220,15 +222,6 @@
 
 		if("keyboard")
 			playsound_client(client, get_sfx("keyboard"), vol = 20)
-
-/mob/new_player/Logout()
-	QDEL_NULL(lobby_window)
-
-	var/exiting_client = GLOB.directory[persistent_ckey]
-	if(exiting_client)
-		winset(exiting_client, "lobby_browser", "is-disabled=true;is-visible=false")
-
-	. = ..()
 
 /mob/new_player/proc/lobby()
 	if(!client)

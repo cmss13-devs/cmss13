@@ -46,6 +46,7 @@
 			var/mob/living/pmob = user.pulling
 			if(istype(pmob))
 				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, move_dir, move_dir)
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 
 /obj/item/grab/attack_self(mob/user)

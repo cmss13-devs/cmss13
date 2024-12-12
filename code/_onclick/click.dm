@@ -149,17 +149,18 @@
 
 /mob/proc/click_adjacent(atom/A, obj/item/W, mods)
 	if(W)
-		var/result = A.attackby(W, src, mods)
-		if(W.attack_speed && !src.contains(A) && (result & ATTACKBY_HINT_UPDATE_NEXT_MOVE)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
-			next_move += W.attack_speed
-
-		if(!(result & ATTACKBY_HINT_NO_AFTERATTACK) && A && !QDELETED(A))
+		var/attackby_result = A.attackby(W, src, mods)
+		var/afterattack_result
+		if(!(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
 				UnarmedAttack(A, 1, mods)
 				return
 
-			W.afterattack(A, src, 1, mods)
+			afterattack_result = W.afterattack(A, src, 1, mods)
+
+		if(W.attack_speed && !src.contains(A) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE))
+			next_move += W.attack_speed
 	else
 		if(!isitem(A) && !issurface(A))
 			next_move += 4

@@ -151,6 +151,8 @@
 		if(!(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
+				if(!isitem(A) && !issurface(A))
+					next_move += 4
 				UnarmedAttack(A, 1, mods)
 				return
 

@@ -628,11 +628,14 @@
 /obj/item/clothing/under/marine/veteran/cmb
 	name = "\improper CMB Riot Control uniform"
 	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, designed to be used by units of riot supression on the distant worlds, under colonial jurisdiction."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
 	icon_state = "cmb_swat_uniform"
 	worn_state = "cmb_swat_uniform"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_HAS_SENSORS
-	sensor_faction = FACTION_MARSHAL
 	suit_restricted = list(
 		/obj/item/clothing/suit/storage/marine/veteran/cmb,
 		/obj/item/clothing/suit/storage/marine/MP,

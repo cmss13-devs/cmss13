@@ -1044,6 +1044,7 @@
 #include "code\game\objects\effects\acid_hole.dm"
 #include "code\game\objects\effects\afterimage.dm"
 #include "code\game\objects\effects\aliens.dm"
+#include "code\game\objects\effects\block.dm"
 #include "code\game\objects\effects\bloodsplatter.dm"
 #include "code\game\objects\effects\client_image_holder.dm"
 #include "code\game\objects\effects\effect.dm"

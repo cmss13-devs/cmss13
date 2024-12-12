@@ -594,6 +594,10 @@
 /obj/item/clothing/suit/storage/marine/veteran/cmb
 	name = "\improper M4R pattern CMB armor"
 	desc = "A dark set of armor, which is a modification of the security variant of Armat Systems M3 armor. Designed for riot control and protest suppression in mind. The side of it has a metallic insignia with 'CMB RIOT CONTROL' on it. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+	)
 	icon_state = "cmb_heavy_armor"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -606,7 +610,7 @@
 
 
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/storage/fancy/cigarettes,

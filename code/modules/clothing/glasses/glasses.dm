@@ -601,7 +601,10 @@
 	name = "\improper TC2 CMB riot shield"
 	desc = "Yellowish protective glass piece, can be lifted up when needed, makes you see everything in yellow."
 	icon_state = "swat_shield"
-	icon = 'icons/obj/items/helmet_garb.dmi'
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
 	active_icon_state = "swat_shield_up"
 	inactive_icon_state = "swat_shield"
 	message_up = "You lift the visor up."

@@ -6,9 +6,11 @@
 	name = "blocking glow"
 	icon_state = "block"
 	color = COLOR_YELLOW
-	duration = 6.7
+	layer = ABOVE_MOB_LAYER
+	var/duration = 6.7
 
-/obj/effect/temp_visual/block/Initialize(mapload)
+/obj/effect/block/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-12, 12)
 	pixel_y = rand(-9, 0)
+	animate(src, pixel_x = pixel_x, pixel_y = pixel_y, alpha = 0, time = duration)

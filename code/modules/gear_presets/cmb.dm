@@ -257,6 +257,8 @@
 	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "mp"
+
 	assignment = "CMB Riot Control Officer"
 	rank = JOB_CMB_RIOT
 
@@ -625,6 +627,8 @@
 /datum/equipment_preset/cmb/synth/riot
 	name = "CMB - Colonial Marshal Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
+
+	minimap_icon = "pmc_syn"
 
 	assignment = "CMB Riot Control Synthetic"
 	rank = JOB_CMB_RSYN

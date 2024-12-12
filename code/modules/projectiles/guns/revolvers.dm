@@ -762,7 +762,6 @@
 /obj/item/weapon/gun/revolver/cmb/custom
 	name = "\improper Spearhead custom autorevolver"
 	desc = "An automatic revolver chambered in .357, custom made of darker metal and with a wooden handle, clearly made for a person with taste in mind."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "black_spearhead"
 	item_state = "black_spearhead"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb

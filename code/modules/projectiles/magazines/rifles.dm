@@ -544,6 +544,7 @@
 
 /obj/item/ammo_magazine/rifle/xm51/cmb
 	name = "\improper Model 1771 magazine (16g breaching)"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/shotguns.dmi'
 	icon_state = "m51b"
 
 /obj/item/ammo_magazine/rifle/xm51/cmb/rubber

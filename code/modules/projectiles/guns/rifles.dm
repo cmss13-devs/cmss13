@@ -2053,7 +2053,7 @@
 		/obj/item/attachable/reflex,
 	)
 	random_spawn_muzzle = list(
-		/obj/item/attachable/baoynet/rmc,
+		/obj/item/attachable/bayonet/rmc,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE

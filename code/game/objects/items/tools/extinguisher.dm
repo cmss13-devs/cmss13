@@ -77,7 +77,7 @@
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
-		return FALSE
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return ..()
 

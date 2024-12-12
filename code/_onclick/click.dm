@@ -144,12 +144,16 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
+#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0)
+#define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1)
+
 /mob/proc/click_adjacent(atom/A, obj/item/W, mods)
 	if(W)
-		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
+		var/result = A.attackby(W, src, mods)
+		if(W.attack_speed && !src.contains(A) && (result & ATTACKBY_HINT_UPDATE_NEXT_MOVE)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
 			next_move += W.attack_speed
 
-		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
+		if(!(result & ATTACKBY_HINT_NO_AFTERATTACK) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
 				UnarmedAttack(A, 1, mods)

@@ -121,5 +121,5 @@
 		var/hit = H.attacked_by(src, user)
 		if (hit && hitsound)
 			playsound(loc, hitsound, 25, 1)
-		return hit
-	return TRUE
+		return (hit|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)

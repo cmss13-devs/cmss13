@@ -887,6 +887,13 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	update_icon()
 
+/obj/item/weapon/gun/proc/disconect_belt()
+	playsound(src, unload_sound, 25, 1, 5)
+	current_mag.update_icon()
+	current_mag = null
+	update_icon()
+
+
 ///Unload a chambered round, if one exists, and empty the chamber.
 /obj/item/weapon/gun/proc/unload_chamber(mob/user)
 	if(!in_chamber)

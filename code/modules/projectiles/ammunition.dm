@@ -139,10 +139,10 @@ They're all essentially identical when it comes to getting the job done.
 		RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(disconect_weapon))
 
 /obj/item/ammo_magazine/proc/disconect_weapon()
-	linked_gun.unload()
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_gun, COMSIG_ITEM_DROPPED)
+	linked_gun.disconect_belt()
 	linked_gun = null
-	UnRegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disconect_weapon))
-	UnRegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(disconect_weapon))
 
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.

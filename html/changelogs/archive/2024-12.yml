@@ -122,3 +122,22 @@
   - bugfix: emp grenades now use correct (non legacy) icon
   Drathek:
   - bugfix: Fixed doors considering shutters as blocking
+2024-12-12:
+  BeagleGaming1:
+  - code_imp: Changed gamemode flags to datums
+  - admin: Changed gamemode flags from many buttons to one UI
+  IroquoisLou:
+  - rscadd: Added the rank of colour sergeant to the RMC, to give the RMC, a Staff
+      Sergeant equivalent
+  - rscdel: Removed the japanese title's from the RMC ranks
+  Steelpoint:
+  - rscadd: The character setup page will now display your character wearing the correct
+      uniform for the UPP job you have selected as your job preference. This should
+      only occur during the faction clash game mode.
+  harryob:
+  - bugfix: leveled riflemen slots are no longer used up by dummies
+  nauticall:
+  - rscadd: Adds CIA agents to the game. These are disguised as either civilians,
+      liaisons, or people in other factions and have a plethora of tools to achieve
+      any objectives they might be assigned to.
+  - rscdel: Deletes the UAAC-TIS from the game.

@@ -36,6 +36,9 @@
 //Pixel coordinates in screen_loc format ("[tile_x]:[pixel_x],[tile_y]:[pixel_y]")
 #define SCREEN_LOC "screen-loc"
 
-//Attackby hints
-#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0) // Makes it not call afterattack
-#define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1) // Applies click delay
+/** From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods)
+  * ATTACKBY_HINT_NO_AFTERATTACK makes it so the affterattack proc isn't called
+  * ATTACKBY_HINT_UPDATE_NEXT_MOVE applies the click delay to next_move
+  */
+#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0) 
+#define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1)

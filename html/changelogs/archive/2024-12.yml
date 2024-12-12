@@ -98,3 +98,46 @@
 2024-12-09:
   L0pz:
   - rscadd: Added a fax machine to requisitions. It's a girl, by the way.
+2024-12-11:
+  Blundir, Drathek, ItsVyzo, CzHa, forest2001:
+  - refactor: reorganized and cleaned many dmis in icons folder
+  - rscdel: inflatable duck can no longer have ammo
+  - rscdel: removed a huge dozen of extremely outdated legacy bay items
+  - imagedel: removed majority of left unused, duplicate and legacy sprites from the
+      codebase
+  - imageadd: es7 in belt holstered sprite
+  - imageadd: m39 pmc in belt holstered sprite
+  - imageadd: warden's uniform now has camo variants
+  - imageadd: dcc's jacket now has camo variants
+  - imageadd: type 71, type 71-F and type 71 commando suit storage icons by CzHa (discord
+      tag .cpol)
+  - bugfix: mp uniforms not having working onmob camo sprites
+  - bugfix: mob looking handcuffed while just holding cuffs in hand
+  - bugfix: rank pins/boards and other accessories not being visible on object sprite
+  - bugfix: pdt bracelet looking like a blue tie on the uniform
+  - bugfix: officer uniform not having working camo sprites
+  - bugfix: m39 not having custom sprites on belt for camo variants
+  - bugfix: taser having positions in hands wrong
+  - bugfix: inhands for shotgun shells not working
+  - bugfix: emp grenades now use correct (non legacy) icon
+  Drathek:
+  - bugfix: Fixed doors considering shutters as blocking
+2024-12-12:
+  BeagleGaming1:
+  - code_imp: Changed gamemode flags to datums
+  - admin: Changed gamemode flags from many buttons to one UI
+  IroquoisLou:
+  - rscadd: Added the rank of colour sergeant to the RMC, to give the RMC, a Staff
+      Sergeant equivalent
+  - rscdel: Removed the japanese title's from the RMC ranks
+  Steelpoint:
+  - rscadd: The character setup page will now display your character wearing the correct
+      uniform for the UPP job you have selected as your job preference. This should
+      only occur during the faction clash game mode.
+  harryob:
+  - bugfix: leveled riflemen slots are no longer used up by dummies
+  nauticall:
+  - rscadd: Adds CIA agents to the game. These are disguised as either civilians,
+      liaisons, or people in other factions and have a plethora of tools to achieve
+      any objectives they might be assigned to.
+  - rscdel: Deletes the UAAC-TIS from the game.

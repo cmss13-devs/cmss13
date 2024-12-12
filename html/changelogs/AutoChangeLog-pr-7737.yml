@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "leveled riflemen slots are no longer used up by dummies"

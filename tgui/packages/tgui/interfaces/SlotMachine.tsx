@@ -9,16 +9,14 @@ type IconInfo = {
 };
 
 type BackendData = {
-  icons: IconInfo[];
   state: any[];
   balance: number;
   rolling: boolean;
-  money: number;
+  prize_money: number;
   cost: number;
   plays: number;
   jackpots: number;
   jackpot: number;
-  paymode: number;
 };
 
 type SlotsTileProps = {
@@ -68,20 +66,17 @@ const SlotsTile = (props: SlotsTileProps) => {
   );
 };
 
-export const SlotMachine = (props) => {
+export const SlotMachine = () => {
   const { act, data } = useBackend<BackendData>();
-  // icons: The list of possible icons, including colour and name
-  // backendState: the current state of the slots according to the backend
   const {
     plays,
     jackpots,
-    money,
+    prize_money,
     cost,
     state,
     balance,
     jackpot,
     rolling,
-    paymode,
   } = data;
 
   return (
@@ -97,17 +92,15 @@ export const SlotMachine = (props) => {
           <p>
             Available prize money:{' '}
             <b>
-              {money} credit{pluralS(money)}
+              {prize_money} credit{pluralS(prize_money)}
             </b>{' '}
           </p>
-          {paymode === 1 && (
-            <p>
-              Current jackpot:{' '}
-              <b>
-                {money + jackpot} credit{pluralS(money + jackpot)}!
-              </b>
-            </p>
-          )}
+          <p>
+            Current jackpot:{' '}
+            <b>
+              {prize_money + jackpot} credit{pluralS(prize_money + jackpot)}!
+            </b>
+          </p>
           <p>
             So far people have spun{' '}
             <b>

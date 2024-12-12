@@ -372,6 +372,8 @@
 	role_comm_title = "CMB MDT"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "medic"
+
 	assignment = "CMB Medical Technician"
 	rank = JOB_CMB_MED
 	skills = /datum/skills/cmb/medic
@@ -420,6 +422,8 @@
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB BT"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	minimap_icon = "engi"
 
 	assignment = "CMB Breaching Technician"
 	rank = JOB_CMB_ENG
@@ -472,6 +476,8 @@
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB Spec"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	minimap_icon = "cmb_spc"
 
 	assignment = "CMB SWAT Specialist"
 	rank = JOB_CMB_SWAT

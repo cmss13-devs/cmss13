@@ -2072,6 +2072,13 @@
 /obj/item/weapon/gun/rifle/xm51/cmb
 	name = "\improper Model 1771 Cobra Max Tactical"
 	desc = "Designed on the M51 platform by Armat Battlefield Systems for the Office of the Colonial Marshals as a breaching and crowd control weapon, the Model 1771 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds which are effective at breaching walls and doors, additionally designed to shoot rubber buckshot."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/shotguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_rifles_righthand.dmi'
+	)
 	icon_state = "m51b"
 	item_state = "m51b"
 	current_mag = /obj/item/ammo_magazine/rifle/xm51/cmb

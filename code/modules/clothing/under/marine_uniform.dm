@@ -279,6 +279,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	item_state_slots = list(WEAR_BODY = "EC_jumpsuit")

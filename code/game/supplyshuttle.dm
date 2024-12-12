@@ -93,8 +93,242 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	name = "\improper Airtight plastic flaps"
 	desc = "Heavy-duty, airtight, plastic flaps."
 
+/obj/structure/machinery/computer/supply
+	name = "Supply ordering console"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "request"
+	density = TRUE
+	circuit = /obj/item/circuitboard/computer/ordercomp
 
-/obj/structure/machinery/computer/supplycomp
+	/// What message should be displayed to the user when the UI is accessed
+	var/system_message = null
+
+	/// If we should prevent the current_order() contents going over the number of points
+	var/calculate_max_order = FALSE
+
+	/// What the user currently has in their cart
+	var/current_order = list()
+
+/obj/structure/machinery/computer/supply/attack_hand(mob/user)
+	if(..())
+		return
+
+	tgui_interact(user)
+
+/obj/structure/machinery/computer/supply/attack_remote(mob/user)
+	return attack_hand(user)
+
+/obj/structure/machinery/computer/supply/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SupplyComputer")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/obj/structure/machinery/computer/supply/ui_data(mob/user)
+	. = ..()
+
+	.["system_message"] = system_message
+
+	.["points"] = GLOB.supply_controller.points
+
+	.["current_order"] = list()
+	for(var/pack_type in current_order)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		var/list_pack = pack.get_list_representation()
+		list_pack["quantity"] = current_order[pack_type]
+
+		.["current_order"] += list(list_pack)
+
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
+	.["shuttle_status"] = "lowered"
+	if (shuttle.has_arrive_time())
+		.["shuttle_status"] = "moving"
+		return
+
+	if (shuttle.at_station() )
+		.["shuttle_status"] = "raised"
+
+		switch(shuttle.docking_controller?.get_docking_status())
+			if ("docked")
+				.["shuttle_status"] = "raised"
+			if ("undocked")
+				.["shuttle_status"] = "lowered"
+			if ("docking")
+				.["shuttle_status"] = "raising"
+			if ("undocking")
+				.["shuttle_status"] = "lowering"
+
+/obj/structure/machinery/computer/supply/ui_static_data(mob/user)
+	. = ..()
+
+	.["categories"] = GLOB.supply_controller.all_supply_groups
+
+	.["all_items"] = list()
+	.["valid_categories"] = list()
+	for(var/pack_type in GLOB.supply_packs_datums)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		if(!pack.buyable)
+			continue
+
+		if(isnull(pack.contains) && isnull(pack.containertype))
+			continue
+
+		if(!pack.contraband && length(pack.group))
+			.["valid_categories"] |= pack.group
+
+		.["all_items"] += list(
+			pack.get_list_representation()
+		)
+
+/obj/structure/machinery/computer/supply/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(!ishuman(ui.user))
+		return
+	var/mob/living/carbon/human/human_user = ui.user
+
+	switch(action)
+		if("adjust_cart")
+			var/picked_pack = text2path(params["pack"])
+			var/datum/supply_packs/pack = GLOB.supply_packs_datums[picked_pack]
+			if(!pack || !is_buyable(pack))
+				return
+
+			var/adjust_to = params["to"]
+
+			var/used_points = 0
+			var/used_dollars = 0
+
+			for(var/pack_type in current_order)
+				var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
+				used_points += (iter_pack.cost * current_order[pack_type])
+				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
+
+			switch(adjust_to)
+				if("max")
+					var/number_to_hold
+					if(pack.dollar_cost)
+						number_to_hold = floor((GLOB.supply_controller.black_market_points - used_dollars) / pack.dollar_cost)
+					else
+						number_to_hold = floor((GLOB.supply_controller.points - used_points) / pack.cost)
+
+					if(number_to_hold && (number_to_hold <= 0 || (current_order[picked_pack] && number_to_hold < current_order[picked_pack])))
+						return
+
+					current_order[picked_pack] = number_to_hold
+					return TRUE
+
+				if("min")
+					current_order -= picked_pack
+					return TRUE
+
+				if("increment")
+					if(calculate_max_order && !pack.dollar_cost && used_points + pack.cost > GLOB.supply_controller.points)
+						return
+
+					if(calculate_max_order && pack.dollar_cost && used_dollars + pack.dollar_cost > GLOB.supply_controller.black_market_points)
+						return
+
+					if(!current_order[picked_pack])
+						current_order[picked_pack] = 1
+						return TRUE
+
+					current_order[picked_pack]++
+					return TRUE
+
+				if("decrement")
+					var/current_quantity = current_order[picked_pack]
+					if(current_quantity <= 1)
+						current_order -= picked_pack
+						return TRUE
+
+					current_order[picked_pack]--
+					return TRUE
+
+		if("discard_cart")
+			current_order = list()
+
+			return TRUE
+
+		if("request_cart")
+			var/reason = params["reason"]
+			if(!length(reason))
+				return
+
+			var/to_order = list()
+			for(var/item in current_order)
+				var/datum/supply_packs/pack = GLOB.supply_packs_datums[item]
+
+				if(!pack || !is_buyable(pack))
+					continue
+
+				for(var/iterator in 1 to current_order[item])
+					to_order += pack
+
+			var/id_name = human_user.get_authentification_name()
+			var/assignment = human_user.get_assignment()
+
+			var/datum/supply_order/supply_order = new
+			supply_order.ordernum = GLOB.supply_controller.ordernum++
+			supply_order.objects = to_order
+			supply_order.reason = reason
+			supply_order.orderedby = id_name
+			supply_order.orderedby_rank = assignment
+			current_order = list()
+
+			print_form(supply_order)
+
+			GLOB.supply_controller.requestlist += supply_order
+			system_message = "Thanks for your request. The cargo team will process it as soon as possible."
+			return TRUE
+
+		if("keyboard")
+			playsound(src, "keyboard", 15, 1)
+
+/obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
+	var/list/accesses = list()
+
+	for(var/datum/supply_packs/pack as anything in order.objects)
+		var/access = get_access_desc(pack.access)
+		if(length(access))
+			accesses += access
+
+	var/obj/item/paper/reqform = new(loc)
+	reqform.name = "Requisition Form - #[order.ordernum]"
+
+	reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
+	reqform.info += "INDEX: #[order.ordernum]<br>"
+	reqform.info += "REQUESTED BY: [order.orderedby]<br>"
+	reqform.info += "RANK: [order.orderedby_rank]<br>"
+	reqform.info += "REASON: [order.reason]<br>"
+	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "None")]<br>"
+	reqform.info += "CONTENTS:<br>"
+	for(var/datum/supply_packs/supply_pack as anything in order.objects)
+		reqform.info += supply_pack.manifest
+	reqform.info += "<hr>"
+	reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
+
+/obj/structure/machinery/computer/supply/proc/is_buyable(datum/supply_packs/supply_pack)
+	if(!supply_pack.buyable)
+		return FALSE
+
+	if(supply_pack.contraband && !contraband_buyable())
+		return FALSE
+
+	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))
+		return FALSE
+
+	return TRUE
+
+/obj/structure/machinery/computer/supply/proc/contraband_buyable()
+	return FALSE
+
+/obj/structure/machinery/computer/supply/asrs
 	name = "ASRS console"
 	desc = "A console for the Automated Storage Retrieval System"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -102,22 +336,20 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	density = TRUE
 	req_access = list(ACCESS_MARINE_CARGO)
 	circuit = /obj/item/circuitboard/computer/supplycomp
-	var/temp = null
-	var/reqtime = 0 //Cooldown for requisitions - Quarxink
+	calculate_max_order = TRUE
+
 	var/can_order_contraband = FALSE
 	var/black_market_lockout = FALSE
 
-	var/current_order = list()
-
-/obj/structure/machinery/computer/supplycomp/Initialize()
+/obj/structure/machinery/computer/supply/asrs/Initialize()
 	. = ..()
 	LAZYADD(GLOB.supply_controller.bound_supply_computer_list, src)
 
-/obj/structure/machinery/computer/supplycomp/Destroy()
+/obj/structure/machinery/computer/supply/asrs/Destroy()
 	. = ..()
 	LAZYREMOVE(GLOB.supply_controller.bound_supply_computer_list, src)
 
-/obj/structure/machinery/computer/supplycomp/attackby(obj/item/hit_item, mob/user)
+/obj/structure/machinery/computer/supply/asrs/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/spacecash))
 		if(can_order_contraband)
 			var/obj/item/spacecash/slotted_cash = hit_item
@@ -132,9 +364,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			return
 	..()
 
-/obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(contraband_enabled = FALSE)
+/obj/structure/machinery/computer/supply/asrs/contraband_buyable()
+	return can_order_contraband && !black_market_lockout
+
+/obj/structure/machinery/computer/supply/asrs/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
 		if(computer.can_order_contraband)
 			GLOB.supply_controller.black_market_enabled = TRUE
 			return
@@ -143,20 +378,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	//If any computers are able to order contraband, it's enabled. Otherwise, it's disabled!
 
 /// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
-/obj/structure/machinery/computer/supplycomp/proc/lock_black_market(market_locked = FALSE)
-	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
+/obj/structure/machinery/computer/supply/asrs/proc/lock_black_market(market_locked = FALSE)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer as anything in GLOB.supply_controller.bound_supply_computer_list)
 		if(market_locked)
 			computer.black_market_lockout = TRUE
-
-/obj/structure/machinery/computer/ordercomp
-	name = "Supply ordering console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "request"
-	density = TRUE
-	circuit = /obj/item/circuitboard/computer/ordercomp
-	var/temp = null
-	var/reqtime = 0 //Cooldown for requisitions - Quarxink
-	var/last_viewed_group = "categories"
 
 /obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
@@ -368,7 +593,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/list/datum/supply_packs/objects
 
 	var/orderedby = null
+
+	/// The assignment of the user submitting the request
+	var/orderedby_rank
+
 	var/approvedby = null
+
+	/// The user submitted reason as to why they want this order
+	var/reason
 
 /datum/supply_order/proc/get_list_representation()
 	var/type_to_quantity = list()
@@ -391,9 +623,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"contents" = order_contents,
 		"ordered_by" = orderedby,
 		"approved_by" = approvedby,
+		"reason" = reason,
 	)
 
-/datum/supply_order/proc/buy(obj/structure/machinery/computer/supplycomp/buyer)
+/datum/supply_order/proc/buy(obj/structure/machinery/computer/supply/asrs/buyer)
 	var/ordered = list()
 
 	for(var/datum/supply_packs/pack as anything in objects)
@@ -415,6 +648,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		ordered += pack
 
+	if(ordered != objects)
+		return FALSE
+
 	for(var/datum/supply_packs/pack as anything in ordered)
 		pack.cost = floor(pack.cost * SUPPLY_COST_MULTIPLIER)
 
@@ -422,6 +658,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		GLOB.supply_controller.black_market_investigation()
 
 	if(length(ordered))
+		if(objects ~! ordered)
+			buyer.system_message = "Could not purchase all items. Available items have been purchased."
+
 		objects = ordered
 		GLOB.supply_controller.requestlist -= src
 		GLOB.supply_controller.shoppinglist += src
@@ -468,7 +707,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
-	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer_list
+	var/obj/structure/machinery/computer/supply/asrs/bound_supply_computer_list
 
 	var/list/all_supply_groups = list(
 		"Operations",
@@ -790,123 +1029,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	name = "[name] - [ordername]"
 
-/obj/structure/machinery/computer/ordercomp/attack_remote(mob/user as mob)
+/obj/structure/machinery/computer/supply/asrs/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/supplycomp/attack_remote(mob/user as mob)
-	return attack_hand(user)
-
-/obj/structure/machinery/computer/ordercomp/attack_hand(mob/user as mob)
-	if(..())
-		return
-	user.set_interaction(src)
-	var/dat
-	if(temp)
-		dat = temp
-	else
-		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
-		if (shuttle)
-			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
-			<HR>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
-		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
-		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
-
-	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
-	return
-
-/obj/structure/machinery/computer/ordercomp/Topic(href, href_list)
-	if(..())
-		return
-
-	if( isturf(loc) && (in_range(src, usr) || isSilicon(usr)) )
-		usr.set_interaction(src)
-
-	if(href_list["order"])
-		if(href_list["order"] == "categories")
-			//all_supply_groups
-			//Request what?
-			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
-			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in GLOB.supply_controller.all_supply_groups)
-				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
-		else
-			last_viewed_group = href_list["order"]
-			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
-			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
-			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-			for(var/supply_type in GLOB.supply_packs_datums)
-				var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_type]
-				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
-					continue //Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_pack.name]'>[supply_pack.name]</A> Cost: $[floor(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
-
-	else if (href_list["doorder"])
-		if(world.time < reqtime)
-			for(var/mob/V in hearers(src))
-				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"", SHOW_MESSAGE_VISIBLE)
-			return
-
-		//Find the correct supply_pack datum
-		var/supply_pack_type = GLOB.supply_packs_types[href_list["doorder"]]
-		if(!supply_pack_type)
-			return
-		var/datum/supply_packs/supply_pack = GLOB.supply_packs_datums[supply_pack_type]
-
-		if(supply_pack.contraband || !supply_pack.buyable)
-			return
-
-		var/timeout = world.time + 600
-		var/reason = strip_html(input(usr,"Reason:","Why do you require this item?","") as null|text)
-		if(world.time > timeout) return
-		if(!reason) return
-
-		var/idname = "*None Provided*"
-		var/idrank = "*None Provided*"
-		if(ishuman(usr))
-			var/mob/living/carbon/human/H = usr
-			idname = H.get_authentification_name()
-			idrank = H.get_assignment()
-		else if(isSilicon(usr))
-			idname = usr.real_name
-
-		GLOB.supply_controller.ordernum++
-		var/obj/item/paper/reqform = new /obj/item/paper(loc)
-		reqform.name = "Requisition Form - [supply_pack.name]"
-		reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
-		reqform.info += "REQUESTED BY: [idname]<br>"
-		reqform.info += "RANK: [idrank]<br>"
-		reqform.info += "REASON: [reason]<br>"
-		reqform.info += "SUPPLY CRATE TYPE: [supply_pack.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [get_access_desc(supply_pack.access)]<br>"
-		reqform.info += "CONTENTS:<br>"
-		reqform.info += supply_pack.manifest
-		reqform.info += "<hr>"
-		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
-
-		reqform.update_icon() //Fix for appearing blank when printed.
-		reqtime = (world.time + 5) % 1e5
-
-		//make our supply_order datum
-		var/datum/supply_order/supply_order = new /datum/supply_order()
-		supply_order.ordernum = GLOB.supply_controller.ordernum
-		supply_order.objects = list(supply_pack)
-		supply_order.orderedby = idname
-		GLOB.supply_controller.requestlist += supply_order
-
-		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
-		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
-
-	else if (href_list["mainmenu"])
-		temp = null
-
-	add_fingerprint(usr)
-	updateUsrDialog()
-	return
-
-/obj/structure/machinery/computer/supplycomp/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
 	if(!is_mainship_level(z)) return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
@@ -917,39 +1043,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	tgui_interact(user)
 
-/obj/structure/machinery/computer/supplycomp/tgui_interact(mob/user, datum/tgui/ui)
+/obj/structure/machinery/computer/supply/asrs/ui_data(mob/user)
 	. = ..()
 
-	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
-		ui = new(user, src, "SupplyComputer")
-		ui.set_autoupdate(FALSE)
-		ui.open()
-
-/obj/structure/machinery/computer/supplycomp/ui_data(mob/user)
-	. = ..()
-
-	.["points"] = GLOB.supply_controller.points
 	.["dollars"] = GLOB.supply_controller.black_market_points
-
-	.["temp"] = temp
-
-	var/used_points = 0
-	var/used_dollars = 0
-	.["current_order"] = list()
-	for(var/pack_type in current_order)
-		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
-
-		used_points += (pack.cost * current_order[pack_type])
-		used_dollars += (pack.dollar_cost * current_order[pack_type])
-
-		var/list_pack = pack.get_list_representation()
-		list_pack["quantity"] = current_order[pack_type]
-
-		.["current_order"] += list(list_pack)
-
-	.["used_points"] = used_points
-	.["used_dollars"] = used_dollars
 
 	.["requests"] = list()
 	for(var/datum/supply_order/order as anything in GLOB.supply_controller.requestlist)
@@ -963,128 +1060,41 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			order.get_list_representation()
 		)
 
-	.["black_market"] = can_order_contraband
-	.["mendoza_status"] = GLOB.supply_controller.mendoza_status
-	.["locked_out"] = black_market_lockout
+	var/used_points = 0
+	var/used_dollars = 0
+	for(var/pack_type in current_order)
+		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
+
+		used_points += (pack.cost * current_order[pack_type])
+		used_dollars += (pack.dollar_cost * current_order[pack_type])
+
+	.["used_points"] = used_points
+	.["used_dollars"] = used_dollars
 
 	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	.["can_launch"] = shuttle.can_launch()
 	.["can_force"] = shuttle.can_force()
 	.["can_cancel"] = shuttle.can_cancel()
 
-	.["shuttle_status"] = "lowered"
-	if (shuttle.has_arrive_time())
-		.["shuttle_status"] = "moving"
-		return
+	.["black_market"] = can_order_contraband
+	.["mendoza_status"] = GLOB.supply_controller.mendoza_status
+	.["locked_out"] = black_market_lockout
 
-	if (shuttle.at_station() )
-		.["shuttle_status"] = "raised"
-
-		switch(shuttle.docking_controller?.get_docking_status())
-			if ("docked")
-				.["shuttle_status"] = "raised"
-			if ("undocked")
-				.["shuttle_status"] = "lowered"
-			if ("docking")
-				.["shuttle_status"] = "raising"
-			if ("undocking")
-				.["shuttle_status"] = "lowering"
-
-
-/obj/structure/machinery/computer/supplycomp/ui_static_data(mob/user)
+/obj/structure/machinery/computer/supply/asrs/ui_static_data(mob/user)
 	. = ..()
 
-	.["categories"] = GLOB.supply_controller.all_supply_groups
 	.["contraband_categories"] = GLOB.supply_controller.contraband_supply_groups
 
-	.["all_items"] = list()
-	.["valid_categories"] = list()
-	for(var/pack_type in GLOB.supply_packs_datums)
-		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
-
-		if(!pack.buyable)
-			continue
-
-		if(isnull(pack.contains) && isnull(pack.containertype))
-			continue
-
-		if(!pack.contraband && length(pack.group))
-			.["valid_categories"] |= pack.group
-
-		.["all_items"] += list(
-			pack.get_list_representation()
-		)
-
-/obj/structure/machinery/computer/supplycomp/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/structure/machinery/computer/supply/asrs/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
 	if(!ishuman(ui.user))
 		return
 	var/mob/living/carbon/human/human_user = ui.user
 	var/id_name = human_user.get_authentification_name()
+	var/assignment = human_user.get_assignment()
 
 	switch(action)
-		if("adjust_cart")
-			var/picked_pack = text2path(params["pack"])
-			var/datum/supply_packs/pack = GLOB.supply_packs_datums[picked_pack]
-			if(!pack || !is_buyable(pack))
-				return
-
-			var/adjust_to = params["to"]
-
-			var/used_points = 0
-			var/used_dollars = 0
-			for(var/pack_type in current_order)
-				var/datum/supply_packs/iter_pack = GLOB.supply_packs_datums[pack_type]
-				used_points += (iter_pack.cost * current_order[pack_type])
-				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
-
-			switch(adjust_to)
-				if("max")
-					var/number_to_hold
-					if(pack.dollar_cost)
-						number_to_hold = floor((GLOB.supply_controller.black_market_points - used_dollars) / pack.dollar_cost)
-					else
-						number_to_hold = floor((GLOB.supply_controller.points - used_points) / pack.cost)
-
-					if(number_to_hold && (number_to_hold <= 0 || (current_order[picked_pack] && number_to_hold < current_order[picked_pack])))
-						return
-
-					current_order[picked_pack] = number_to_hold
-					return TRUE
-
-				if("min")
-					current_order -= picked_pack
-					return TRUE
-
-				if("increment")
-					if(!pack.dollar_cost && used_points + pack.cost > GLOB.supply_controller.points)
-						return
-
-					if(pack.dollar_cost && used_dollars + pack.dollar_cost > GLOB.supply_controller.black_market_points)
-						return
-
-					if(!current_order[picked_pack])
-						current_order[picked_pack] = 1
-						return TRUE
-
-					current_order[picked_pack]++
-					return TRUE
-
-				if("decrement")
-					var/current_quantity = current_order[picked_pack]
-					if(current_quantity <= 1)
-						current_order -= picked_pack
-						return TRUE
-
-					current_order[picked_pack]--
-					return TRUE
-
-		if("discard_cart")
-			current_order = list()
-
-			return TRUE
-
 		if("place_order")
 			var/to_order = list()
 			for(var/item in current_order)
@@ -1100,14 +1110,18 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			supply_order.ordernum = GLOB.supply_controller.ordernum++
 			supply_order.objects = to_order
 			supply_order.orderedby = id_name
+			supply_order.orderedby_rank = assignment
 			supply_order.approvedby = id_name
+
+			print_form(supply_order)
+
 			current_order = list()
 
 			if(supply_order.buy(src))
 				return TRUE
 
 			GLOB.supply_controller.requestlist += supply_order
-			temp = "Unable to purchase order, order has been placed in Requests."
+			system_message = "Unable to purchase order, order has been placed in Requests."
 			return TRUE
 
 		if("change_order")
@@ -1133,7 +1147,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					if(order.buy(src))
 						return TRUE
 
-					temp = "Unable to approve order, order remains in Requests."
+					system_message = "Unable to approve order, order remains in Requests."
 					return TRUE
 				if("deny")
 					GLOB.supply_controller.requestlist -= order
@@ -1146,7 +1160,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			if(shuttle.at_station())
 				if (shuttle.forbidden_atoms_check())
-					temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons."
+					system_message = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons."
 					return TRUE
 				shuttle.launch(src)
 				return TRUE
@@ -1162,10 +1176,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			GLOB.supply_controller.shuttle.cancel_launch()
 			return TRUE
 
-		if("keyboard")
-			playsound(src, "keyboard", 15, 1)
-
-/obj/structure/machinery/computer/supplycomp/ui_assets(mob/user)
+/obj/structure/machinery/computer/supply/asrs/ui_assets(mob/user)
 	. = ..()
 
 	. += get_asset_datum(/datum/asset/simple/paper)
@@ -1248,19 +1259,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	SSticker.mode.get_specific_call(/datum/emergency_call/inspection_cmb/black_market, TRUE, TRUE) // "Inspection - Colonial Marshals Ledger Investigation Team"
 	log_game("Black Market Inspection auto-triggered.")
 
-/obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
-	if(!supply_pack.buyable)
-		return
-
-	if(supply_pack.contraband && !can_order_contraband || supply_pack.contraband && black_market_lockout)
-		return
-
-	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))
-		return
-
-	return TRUE
-
-/obj/structure/machinery/computer/supplycomp/proc/post_signal(command)
+/obj/structure/machinery/computer/supply/asrs/proc/post_signal(command)
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
@@ -1273,7 +1272,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	frequency.post_signal(src, status_signal)
 
-/obj/structure/machinery/computer/supplycomp/vehicle
+/obj/structure/machinery/computer/supply/asrs/vehicle
 	name = "vehicle ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
 	req_access = list(ACCESS_MARINE_CREWMAN)
@@ -1336,7 +1335,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/vehicle_order/arc/has_vehicle_lock()
 	return
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
+/obj/structure/machinery/computer/supply/asrs/vehicle/Initialize()
 	. = ..()
 
 	vehicles = list(
@@ -1346,11 +1345,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!GLOB.VehicleElevatorConsole)
 		GLOB.VehicleElevatorConsole = src
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Destroy()
+/obj/structure/machinery/computer/supply/asrs/vehicle/Destroy()
 	GLOB.VehicleElevatorConsole = null
 	return ..()
 
-/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(mob/living/carbon/human/H as mob)
+/obj/structure/machinery/computer/supply/asrs/vehicle/attack_hand(mob/living/carbon/human/H as mob)
 	if(inoperable())
 		return
 
@@ -1397,7 +1396,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
+/obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return

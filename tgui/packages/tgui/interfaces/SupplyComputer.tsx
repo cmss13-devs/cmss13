@@ -24,28 +24,31 @@ import { Window } from '../layouts';
 import { LoadingScreen } from './common/LoadingToolbox';
 
 type SupplyComputerData = {
-  categories: string[];
-  contraband_categories: string[];
   all_items: Pack[];
+
+  categories: string[];
   valid_categories: string[];
-  temp: string;
-  current_order: OrderPack[];
-  used_points: number;
-  points: number;
-  used_dollars: number;
-  dollars: number;
-  requests: Order[];
-  pending: Order[];
-  black_market: BooleanLike;
+  contraband_categories: string[];
+
+  system_message: string;
   shuttle_status: string;
-  can_launch: BooleanLike;
-  can_force: BooleanLike;
-  can_cancel: BooleanLike;
+  can_launch?: BooleanLike;
+  can_force?: BooleanLike;
+  can_cancel?: BooleanLike;
 
-  mendoza_status: BooleanLike;
-  locked_out: BooleanLike;
+  current_order: OrderPack[];
+  requests?: Order[];
+  pending?: Order[];
 
-  logo: string;
+  points: number;
+  used_points?: number;
+
+  dollars?: number;
+  used_dollars?: number;
+
+  black_market?: BooleanLike;
+  mendoza_status?: BooleanLike;
+  locked_out?: BooleanLike;
 };
 
 type Pack = {
@@ -99,9 +102,12 @@ export const SupplyComputer = () => {
 
   const { data } = useBackend<SupplyComputerData>();
 
-  const [acknowledgedTemp, setAcknowledgeTemp] = useSharedState('temp', '');
+  const [acknowledgedSystemMessage, setAcknowledged] = useSharedState(
+    'system-message',
+    '',
+  );
 
-  const { temp } = data;
+  const { system_message } = data;
 
   useEffect(() => {
     storage
@@ -110,16 +116,19 @@ export const SupplyComputer = () => {
   }, []);
 
   useEffect(() => {
-    if (temp?.length > 0 && temp !== acknowledgedTemp) {
+    if (
+      system_message?.length > 0 &&
+      system_message !== acknowledgedSystemMessage
+    ) {
       setDisplayModal(
         <Section title="System Message">
           <Stack vertical p={3}>
-            <Stack.Item>{temp}</Stack.Item>
+            <Stack.Item>{system_message}</Stack.Item>
             <Stack.Item pt={2}>
               <Button
                 fluid
                 onClick={() => {
-                  setAcknowledgeTemp(temp);
+                  setAcknowledged(system_message);
                   setDisplayModal(false);
                 }}
               >
@@ -130,7 +139,7 @@ export const SupplyComputer = () => {
         </Section>,
       );
     }
-  }, [temp]);
+  }, [system_message]);
 
   if (!theme) {
     return (
@@ -290,33 +299,39 @@ const SideButtons = (props: {
                 selected={menu === MenuOptions.CurrentOrder}
                 icon="basket-shopping"
               >
-                Current Order: ${used_points * 100}
-                {used_dollars > 0 ? ` (WY$${used_dollars})` : ''}
+                Current Order{used_points ? `: $${used_points * 100}` : ''}
+                {used_dollars && used_dollars > 0
+                  ? ` (WY$${used_dollars})`
+                  : ''}
               </Button>
               <Divider />
             </Stack.Item>
-            <Stack.Item>
-              <Button
-                fluid
-                onClick={() => setMenu(MenuOptions.Requests)}
-                selected={menu === MenuOptions.Requests}
-                icon="hand-holding-dollar"
-              >
-                Requests
-                {requests.length > 0 ? ` (${requests.length})` : ''}
-              </Button>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                fluid
-                onClick={() => setMenu(MenuOptions.Pending)}
-                selected={menu === MenuOptions.Pending}
-                icon="clipboard-list"
-              >
-                Pending Orders
-                {pending.length > 0 ? ` (${pending.length})` : ''}
-              </Button>
-            </Stack.Item>
+            {!!requests && (
+              <Stack.Item>
+                <Button
+                  fluid
+                  onClick={() => setMenu(MenuOptions.Requests)}
+                  selected={menu === MenuOptions.Requests}
+                  icon="hand-holding-dollar"
+                >
+                  Requests
+                  {requests.length > 0 ? ` (${requests.length})` : ''}
+                </Button>
+              </Stack.Item>
+            )}
+            {!!pending && (
+              <Stack.Item>
+                <Button
+                  fluid
+                  onClick={() => setMenu(MenuOptions.Pending)}
+                  selected={menu === MenuOptions.Pending}
+                  icon="clipboard-list"
+                >
+                  Pending Orders
+                  {pending.length > 0 ? ` (${pending.length})` : ''}
+                </Button>
+              </Stack.Item>
+            )}
           </Stack>
         </Section>
       </Stack.Item>
@@ -412,7 +427,13 @@ const Options = (props: {
 };
 
 const CurrentOrder = () => {
-  const { act } = useBackend();
+  const { act, data } = useBackend<SupplyComputerData>();
+
+  const { used_points } = data;
+
+  const [reason, setReason] = useState('');
+
+  const requester = used_points === undefined;
 
   return (
     <Section
@@ -421,10 +442,18 @@ const CurrentOrder = () => {
       height="650px"
       buttons={
         <Stack>
+          {requester && (
+            <Input
+              placeholder="Reason..."
+              onChange={(_, val) => setReason(val)}
+            />
+          )}
           <Button
             icon="money-bill-1"
             onClick={() => {
-              act('place_order');
+              requester
+                ? act('request_cart', { reason: reason })
+                : act('place_order');
             }}
           >
             Place Order
@@ -455,7 +484,7 @@ const PendingOrder = () => {
   return (
     <Section title="Pending Orders" scrollable height="650px">
       <Stack vertical height="610px">
-        {pending.map((order) => (
+        {pending!.map((order) => (
           <RenderOrder order={order} key={order.order_num} />
         ))}
       </Stack>
@@ -471,7 +500,7 @@ const Requests = () => {
   return (
     <Section title="Requests" scrollable height="650px">
       <Stack vertical height="610px">
-        {requests.map((order) => (
+        {requests!.map((order) => (
           <RenderOrder order={order} key={order.order_num} request />
         ))}
       </Stack>
@@ -499,10 +528,18 @@ const RenderOrder = (props: {
                   <Stack.Item>{order.ordered_by}</Stack.Item>
                 </Stack>
               </Stack.Item>
+              {!!order.reason && (
+                <Stack.Item pt={1}>
+                  <Stack>
+                    <Stack.Item bold>Reason:</Stack.Item>
+                    <Stack.Item>{order.reason}</Stack.Item>
+                  </Stack>
+                </Stack.Item>
+              )}
               {order.approved_by && order.ordered_by !== order.approved_by && (
                 <Stack.Item pt={1}>
                   <Stack>
-                    <Stack.Item>Approved By</Stack.Item>
+                    <Stack.Item bold>Approved By:</Stack.Item>
                     <Stack.Item>{order.approved_by}</Stack.Item>
                   </Stack>
                 </Stack.Item>
@@ -566,8 +603,7 @@ const RenderOrder = (props: {
 const BlackMarketMenu = () => {
   const { data } = useBackend<SupplyComputerData>();
 
-  const { contraband_categories, dollars, mendoza_status, locked_out, logo } =
-    data;
+  const { contraband_categories, dollars, mendoza_status, locked_out } = data;
 
   const [blackmarketCategory, setBlackMarketCategory] = useState<
     string | false
@@ -792,7 +828,7 @@ const RenderPack = (props: {
       <Stack>
         {orderedQuantity ? (
           <Stack.Item>
-            <Box p={1} inline>
+            <Box p={1} width="30px" textAlign="right" inline>
               {orderedQuantity}x
             </Box>
           </Stack.Item>
@@ -818,7 +854,7 @@ const RenderPack = (props: {
                 />
               </Flex.Item>
               <Flex.Item>
-                <Box p={1} inline>
+                <Box p={1} width="30px" textAlign="right" inline>
                   {quantity}
                 </Box>
               </Flex.Item>
@@ -830,8 +866,12 @@ const RenderPack = (props: {
                   }
                   disabled={
                     item.dollar_cost
-                      ? used_dollars + item.dollar_cost > dollars
-                      : used_points + item.cost > points
+                      ? used_dollars
+                        ? used_dollars + item.dollar_cost > dollars!
+                        : false
+                      : used_points
+                        ? used_points + item.cost > points
+                        : false
                   }
                 />
               </Flex.Item>
@@ -843,8 +883,12 @@ const RenderPack = (props: {
                   }
                   disabled={
                     item.dollar_cost
-                      ? used_dollars + item.dollar_cost > dollars
-                      : used_points + item.cost > points
+                      ? used_dollars
+                        ? used_dollars + item.dollar_cost > dollars!
+                        : false
+                      : used_points
+                        ? used_points + item.cost > points
+                        : false
                   }
                 />
               </Flex.Item>

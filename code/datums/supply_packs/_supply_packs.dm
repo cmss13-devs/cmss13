@@ -4,7 +4,7 @@
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
-// The lists of supply groups and contraband groups have been moved to /obj/structure/machinery/computer/supplycomp definition as static variables.
+// The lists of supply groups and contraband groups have been moved to /obj/structure/machinery/computer/supply/asrs definition as static variables.
 
 /datum/supply_packs
 	var/name = "Basic supply pack."
@@ -29,8 +29,7 @@
 	if(randomised_num_contained)
 		manifest += "Contains any [randomised_num_contained] of:"
 	manifest += "<ul>"
-	for(var/atom/movable/path in contains)
-		if(!path) continue
+	for(var/atom/movable/path as anything in contains)
 		manifest += "<li>[initial(path.name)]</li>"
 	manifest += "</ul>"
 

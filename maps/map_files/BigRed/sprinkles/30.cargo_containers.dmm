@@ -531,7 +531,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cj" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ck" = (

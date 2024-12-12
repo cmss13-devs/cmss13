@@ -27460,11 +27460,11 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bUL" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 7;
-	pixel_x = 7
-	},
 /obj/structure/barricade/deployable,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bUM" = (
@@ -27521,9 +27521,9 @@
 /turf/open/mars/mars_dirt_14,
 /area/bigredv2/outside/nw)
 "bUW" = (
-/obj/item/clothing/mask/gas{
-	pixel_x = 10;
-	pixel_y = -12
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 11;
+	pixel_y = -8
 	},
 /obj/structure/barricade/deployable{
 	dir = 8
@@ -27536,17 +27536,9 @@
 /area/bigredv2/outside/marshal_office)
 "bUY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"bUZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 5;
-	pixel_x = 7
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = -9;
+	pixel_y = -4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -27618,14 +27610,17 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bVi" = (
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bVj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -8;
-	pixel_y = -5
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = 10;
+	pixel_y = -4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -27676,6 +27671,9 @@
 /area/bigredv2/outside/nw)
 "bVr" = (
 /obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bVs" = (
@@ -27696,16 +27694,14 @@
 /area/bigredv2/outside/marshal_office)
 "bVu" = (
 /obj/structure/surface/table,
-/obj/item/clothing/head/beret/sec/warden{
-	pixel_y = 5
-	},
+/obj/item/clothing/head/CMB/beret,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bVv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -9;
-	pixel_x = -12
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light{
+	pixel_x = -7;
+	pixel_y = -7
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -57927,7 +57923,7 @@ ahp
 acp
 bVu
 bVj
-bUZ
+afT
 bUH
 aer
 bUf

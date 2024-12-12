@@ -313,6 +313,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	reqform.info += "<hr>"
 	reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 
+	reqform.update_icon()
+
 /obj/structure/machinery/computer/supply/proc/is_buyable(datum/supply_packs/supply_pack)
 	if(!supply_pack.buyable)
 		return FALSE

@@ -30,6 +30,7 @@ type SupplyComputerData = {
 
   categories: string[];
   valid_categories: string[];
+  categories_to_objects: { [category: string]: Pack[] };
   contraband_categories: string[];
 
   system_message: string;
@@ -784,11 +785,11 @@ const RenderCategory = (props: {
   const { category, categories } = props;
 
   const { data } = useBackend<SupplyComputerData>();
-  const { all_items } = data;
+  const { all_items, categories_to_objects } = data;
 
   const validCategory = categories.includes(category);
   const relevant_items = validCategory
-    ? all_items.filter((pack) => pack.category === category)
+    ? categories_to_objects[category]
     : all_items.filter(
         (pack) =>
           !pack.dollar_cost &&
@@ -823,11 +824,7 @@ const RenderPack = (props: {
 
   useEffect(() => {
     const options = current_order.filter((pack) => pack.type === item.type);
-    if (options[0]) {
-      setSavedQuantity(options[0].quantity);
-    } else {
-      setSavedQuantity(0);
-    }
+    setSavedQuantity(options[0]?.quantity ?? 0);
   }, [current_order]);
 
   const incrementDebounce = debounce(() => {

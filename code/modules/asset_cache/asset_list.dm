@@ -7,8 +7,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 //get an assetdatum or make a new one
 /proc/get_asset_datum(type)
-	RETURN_TYPE(/datum/asset)
-
 	return GLOB.asset_datums[type] || new type()
 
 /datum/asset

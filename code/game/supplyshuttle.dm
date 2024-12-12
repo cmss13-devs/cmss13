@@ -169,6 +169,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	.["all_items"] = list()
 	.["valid_categories"] = list()
+
+	.["categories_to_objects"] = list()
 	for(var/pack_type in GLOB.supply_packs_datums)
 		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
 
@@ -181,8 +183,18 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(!pack.contraband && length(pack.group))
 			.["valid_categories"] |= pack.group
 
+		var/list_pack = pack.get_list_representation()
+
+		if(!pack.contraband && length(pack.group))
+			if(!.["categories_to_objects"][pack.group])
+				.["categories_to_objects"][pack.group] = list()
+
+			.["categories_to_objects"][pack.group] += list(
+				list_pack
+			)
+
 		.["all_items"] += list(
-			pack.get_list_representation()
+			list_pack
 		)
 
 /obj/structure/machinery/computer/supply/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

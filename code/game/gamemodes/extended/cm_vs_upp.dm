@@ -4,6 +4,23 @@
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
 	toggleable_flags = MODE_NO_SNIPER_SENTRY|MODE_NO_ATTACK_DEAD|MODE_NO_STRIPDRAG_ENEMY|MODE_STRONG_DEFIBS|MODE_BLOOD_OPTIMIZATION|MODE_NO_COMBAT_CAS|MODE_INDESTRUCTIBLE_SPLINTS|MODE_NO_INTERNAL_BLEEDING|MODE_MORTAR_LASER_WARNING
 	taskbar_icon = 'icons/taskbar/gml_hvh.png'
+	var/upp_ship = "ssv_rostock.dmm"
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/pre_setup()
+	. = ..()
+	var/datum/map_template/template = SSmapping.map_templates[upp_ship]
+	if(!template)
+		return
+
+	log_debug("Attempting load of template [template.name] as new event Z-Level as requested by [name]")
+	var/datum/space_level/loaded = template.load_new_z(traits = ZTRAITS_GROUND)
+	if(!loaded?.z_value)
+		log_debug("Failed to load the template to a Z-Level!")
+
+	var/center_x = floor(loaded.bounds[MAP_MAXX] / 2) // Technically off by 0.5 due to above +1. Whatever
+	var/center_y = floor(loaded.bounds[MAP_MAXY] / 2)
+	// Now notify the staff of the load - this goes in addition to the generic template load game log
+	message_admins("Successfully loaded template as new Z-Level, template name: [template.name]", center_x, center_y, loaded.z_value)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/get_roles_list()
 	return GLOB.ROLES_CM_VS_UPP
@@ -15,42 +32,8 @@
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
 
-/datum/game_mode/extended/faction_clash/cm_vs_upp/declare_completion()
-	announce_ending()
-	var/musical_track
-	var/end_icon = "draw"
-	switch(round_finished)
-		if(MODE_FACTION_CLASH_UPP_MAJOR)
-			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
-			end_icon = "upp_major"
-		if(MODE_FACTION_CLASH_UPP_MINOR)
-			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
-			end_icon = "upp_minor"
-		if(MODE_INFESTATION_M_MAJOR)
-			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
-			end_icon = "marine_major"
-		if(MODE_INFESTATION_M_MINOR)
-			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
-			end_icon = "marine_minor"
-		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
-			end_icon = "draw"
-			musical_track = 'sound/theme/neutral_hopeful2.ogg'
-		else
-			end_icon = "draw"
-			musical_track = 'sound/theme/neutral_hopeful2.ogg'
-	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	theme.status = SOUND_STREAM
-	sound_to(world, theme)
-
-	calculate_end_statistics()
-	show_end_statistics(end_icon)
-
-	declare_completion_announce_fallen_soldiers()
-	declare_completion_announce_predators()
-	declare_completion_announce_medal_awards()
-	declare_fun_facts()
-
-	return TRUE
+/datum/game_mode/extended/faction_clash/cm_vs_upp/ds_first_landed(obj/docking_port/stationary/marine_dropship)
+	. = ..()
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/announce()
 	. = ..()

@@ -103,12 +103,7 @@ export const SupplyComputer = () => {
 
   const [theme, setTheme] = useState<string | false>();
 
-  const { data } = useBackend<SupplyComputerData>();
-
-  const [acknowledgedSystemMessage, setAcknowledged] = useSharedState(
-    'system-message',
-    '',
-  );
+  const { data, act } = useBackend<SupplyComputerData>();
 
   const { system_message } = data;
 
@@ -119,10 +114,7 @@ export const SupplyComputer = () => {
   }, []);
 
   useEffect(() => {
-    if (
-      system_message?.length > 0 &&
-      system_message !== acknowledgedSystemMessage
-    ) {
+    if (system_message?.length) {
       setDisplayModal(
         <Section title="System Message">
           <Stack vertical p={3}>
@@ -131,8 +123,8 @@ export const SupplyComputer = () => {
               <Button
                 fluid
                 onClick={() => {
-                  setAcknowledged(system_message);
-                  setDisplayModal(false);
+                  act('acknowledged');
+                  setDisplayModal(null);
                 }}
               >
                 Acknowledge
@@ -820,7 +812,7 @@ const RenderPack = (props: {
 
   const { act, data } = useBackend<SupplyComputerData>();
 
-  const { current_order, points, dollars, used_dollars } = data;
+  const { current_order, points, dollars, used_dollars, used_points } = data;
 
   const [viewContents, setViewContents] = useState(false);
 
@@ -849,6 +841,31 @@ const RenderPack = (props: {
       return newValue;
     });
   };
+
+  let orderMore = true;
+  if (item.dollar_cost) {
+    if (used_dollars !== undefined) {
+      orderMore =
+        current_order.reduce(
+          (prev, curr) => prev + curr.dollar_cost * curr.quantity,
+          0,
+        ) +
+          item.dollar_cost <=
+        dollars!;
+    }
+  }
+
+  if (item.cost) {
+    if (used_points !== undefined) {
+      orderMore =
+        current_order.reduce(
+          (prev, curr) => prev + curr.cost * curr.quantity,
+          0,
+        ) +
+          item.cost <=
+        points;
+    }
+  }
 
   return (
     <Stack.Item key={item.name}>
@@ -899,18 +916,7 @@ const RenderPack = (props: {
                   onClick={() => {
                     changeQuantity(true);
                   }}
-                  disabled={
-                    item.dollar_cost
-                      ? used_dollars
-                        ? used_dollars + item.dollar_cost > dollars!
-                        : false
-                      : current_order.reduce(
-                          (prev, curr) => prev + curr.cost * curr.quantity,
-                          0,
-                        ) +
-                          item.cost >
-                        points
-                  }
+                  disabled={!orderMore}
                 />
               </Flex.Item>
             </Flex>

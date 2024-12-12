@@ -185,7 +185,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		var/list_pack = pack.get_list_representation()
 
-		if(!pack.contraband && length(pack.group))
+		if(length(pack.group))
 			if(!.["categories_to_objects"][pack.group])
 				.["categories_to_objects"][pack.group] = list()
 
@@ -212,6 +212,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				return
 
 			var/adjust_to = params["to"]
+			if(adjust_to == "min")
+				current_order -= picked_pack
+				return TRUE
 
 			var/used_points = 0
 			var/used_dollars = 0
@@ -224,62 +227,36 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				used_points += (iter_pack.cost * current_order[pack_type])
 				used_dollars += (iter_pack.dollar_cost * current_order[pack_type])
 
-			if(isnum(adjust_to))
-				var/number_to_get = floor(adjust_to)
-				if(!calculate_max_order)
-					current_order[picked_pack] = number_to_get
+			if(!isnum(adjust_to))
+				return
 
-					if(number_to_get <= 0)
-						current_order -= picked_pack
+			var/number_to_get = floor(adjust_to)
+			if(!calculate_max_order)
+				current_order[picked_pack] = number_to_get
 
-					return TRUE
-
-				var/cost_to_use = pack.dollar_cost ? pack.dollar_cost : pack.cost
-				var/points_to_use = pack.dollar_cost ? GLOB.supply_controller.black_market_points : GLOB.supply_controller.points
-				var/used_to_use = pack.dollar_cost ? used_dollars : used_points
-
-				var/available_points = points_to_use - used_to_use
-
-				var/number_to_hold
-				if(cost_to_use * number_to_get > available_points)
-					number_to_hold = floor(available_points / cost_to_use)
-				else
-					number_to_hold = number_to_get
-
-				if(number_to_hold <= 0)
+				if(number_to_get <= 0)
 					current_order -= picked_pack
-					return TRUE
 
-				current_order[picked_pack] = number_to_hold
 				return TRUE
 
-			switch(adjust_to)
-				if("min")
-					current_order -= picked_pack
-					return TRUE
+			var/cost_to_use = pack.dollar_cost ? pack.dollar_cost : pack.cost
+			var/points_to_use = pack.dollar_cost ? GLOB.supply_controller.black_market_points : GLOB.supply_controller.points
+			var/used_to_use = pack.dollar_cost ? used_dollars : used_points
 
-				if("increment")
-					if(calculate_max_order && !pack.dollar_cost && used_points + pack.cost > GLOB.supply_controller.points)
-						return
+			var/available_points = points_to_use - used_to_use
 
-					if(calculate_max_order && pack.dollar_cost && used_dollars + pack.dollar_cost > GLOB.supply_controller.black_market_points)
-						return
+			var/number_to_hold
+			if(cost_to_use * number_to_get > available_points)
+				number_to_hold = floor(available_points / cost_to_use)
+			else
+				number_to_hold = number_to_get
 
-					if(!current_order[picked_pack])
-						current_order[picked_pack] = 1
-						return TRUE
+			if(number_to_hold <= 0)
+				current_order -= picked_pack
+				return TRUE
 
-					current_order[picked_pack]++
-					return TRUE
-
-				if("decrement")
-					var/current_quantity = current_order[picked_pack]
-					if(current_quantity <= 1)
-						current_order -= picked_pack
-						return TRUE
-
-					current_order[picked_pack]--
-					return TRUE
+			current_order[picked_pack] = number_to_hold
+			return TRUE
 
 		if("discard_cart")
 			current_order = list()
@@ -316,6 +293,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			GLOB.supply_controller.requestlist += supply_order
 			system_message = "Thanks for your request. The cargo team will process it as soon as possible."
+			return TRUE
+
+		if("acknowledged")
+			system_message = null
 			return TRUE
 
 		if("keyboard")

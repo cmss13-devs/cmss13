@@ -27459,29 +27459,6 @@
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"bUJ" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/barricade/deployable,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
-"bUK" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/barricade/deployable,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "bUL" = (
 /obj/item/clothing/mask/gas{
 	pixel_y = 7;
@@ -27699,9 +27676,6 @@
 /area/bigredv2/outside/nw)
 "bVr" = (
 /obj/structure/closet/secure_closet/marshal,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bVs" = (
@@ -27721,14 +27695,6 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bVu" = (
-/obj/structure/surface/table,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/head/CMB/beret,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/surface/table,
 /obj/item/clothing/head/beret/sec/warden{
 	pixel_y = 5
@@ -57745,7 +57711,7 @@ acp
 bVt
 afT
 ajG
-bUJ
+bUH
 aer
 agB
 bTO
@@ -57962,7 +57928,7 @@ acp
 bVu
 bVj
 bUZ
-bUK
+bUH
 aer
 bUf
 ajL

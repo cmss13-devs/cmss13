@@ -167,15 +167,16 @@
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_10 + FIRE_DELAY_TIER_12/4)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_SG)
+	set_burst_delay(FIRE_DELAY_TIER_10 + FIRE_DELAY_TIER_12/4)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
@@ -1993,15 +1994,16 @@
 
 /obj/item/weapon/gun/rifle/l23/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_fire_delay(FIRE_DELAY_TIER_11 + FIRE_DELAY_TIER_12/4)
 	set_burst_amount(BURST_AMOUNT_TIER_3)
-	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SG + FIRE_DELAY_TIER_12/4)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
@@ -2016,7 +2018,7 @@
 //***************************************************************//
 /obj/item/weapon/gun/rifle/l23/breacher // One-handed UBS rifle
 	name = "\improper L23-B assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. This however crippled its stopping power due to a shorter barrel needed to make it compact. Burst fire still kicks like a mule. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -2029,13 +2031,11 @@
 	current_mag = /obj/item/ammo_magazine/rifle/nsg23
 
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/stock/l23,
 		/obj/item/attachable/attached_gun/shotgun/af13b,
 		/obj/item/attachable/verticalgrip,
@@ -2053,23 +2053,24 @@
 		/obj/item/attachable/reflex,
 	)
 	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/baoynet/rmc,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/l23/breacher/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	fire_delay = FIRE_DELAY_TIER_11 + FIRE_DELAY_TIER_12/4
 	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SG + FIRE_DELAY_TIER_12/4
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
-	recoil_unwielded = RECOIL_OFF
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/rifle/l23/breacher/handle_starting_attachment() //Adds L23-B's breaching shotgun
 	..()
@@ -2150,8 +2151,9 @@
 	set_burst_amount(0)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_9
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10 + BULLET_DAMAGE_MULT_TIER_4
+	recoil = RECOIL_AMOUNT_TIER_3 + RECOIL_AMOUNT_TIER_5/2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
@@ -2170,7 +2172,6 @@
 	)
 
 	random_spawn_under = list(
-		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,
 	)
 
@@ -2193,19 +2194,19 @@
 	name = "\improper L42A3-F battle rifle"
 	desc = "The L42A3 Battle Rifle with a heavily modified firing mechanism, giving it a burst-fire option. Extremely deadly."
 
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/incendiary
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/extended
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/l42a3/fal/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
-	set_burst_amount(BURST_AMOUNT_TIER_2)
-	set_burst_delay(FIRE_DELAY_TIER_8)
+	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_burst_amount(0)
+	set_burst_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
-	scatter = SCATTER_AMOUNT_TIER_8
+	scatter = SCATTER_AMOUNT_TIER_9
 
 //-------------------------------------------------------
 

@@ -323,7 +323,7 @@
 	//clicking the table
 	if(flipped)
 		return
-	..()
+	. = ..()
 
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
@@ -578,7 +578,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && status == RTABLE_NORMAL)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
@@ -674,7 +674,7 @@
 		return
 	if(W.flags_item & ITEM_ABSTRACT)
 		return
-	..()
+	. = ..()
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()

@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
 					show_browser(O, info, itemname, itemname)
 	else
-		..()
+		. = ..()
 	return
 
 /obj/structure/machinery/camera/proc/toggle_cam_status(mob/user, silent)

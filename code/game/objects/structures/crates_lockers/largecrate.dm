@@ -74,7 +74,7 @@
 /obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/cow
 	name = "cow crate"
@@ -83,7 +83,7 @@
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/cow(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/goat
 	name = "goat crate"
@@ -92,7 +92,7 @@
 /obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/chick
 	name = "chicken crate"
@@ -103,7 +103,7 @@
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
 			new /mob/living/simple_animal/chick(loc)
-	..()
+	. = ..()
 
 
 // CM largecrates
@@ -346,7 +346,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 /obj/structure/largecrate/random/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if (!strapped)
-		..()
+		. = ..()
 		return
 
 	if (!W.sharp)

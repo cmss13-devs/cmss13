@@ -56,7 +56,7 @@
 				health -= W.force * W.demolition_mod * 0.5
 		if (health <= 0)
 			explode()
-		..()
+		. = ..()
 
 /obj/structure/machinery/deployable/barrier/ex_act(severity)
 	src.health -= severity/2

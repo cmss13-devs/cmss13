@@ -92,7 +92,7 @@
 	if(istype(I, /obj/item/tank))
 		return
 
-	..()
+	. = ..()
 
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary
@@ -103,4 +103,4 @@
 		to_chat(user, SPAN_NOTICE(" The bolts are too tight for you to unscrew!"))
 		return
 
-	..()
+	. = ..()

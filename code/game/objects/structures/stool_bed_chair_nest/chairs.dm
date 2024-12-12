@@ -515,7 +515,7 @@
 				chair_state = DROPSHIP_CHAIR_FOLDED
 				return
 	else
-		..()
+		. = ..()
 
 
 

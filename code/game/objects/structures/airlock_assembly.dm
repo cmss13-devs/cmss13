@@ -239,7 +239,7 @@
 				electronics.forceMove(door)
 				qdel(src)
 				return
-	..()
+	. = ..()
 
 /obj/structure/airlock_assembly/update_icon()
 	icon_state = "door_as_[state]"

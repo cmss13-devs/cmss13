@@ -32,7 +32,7 @@
 			return
 	var/turf/T = get_turf(src)
 	T.attackby(W, user)
-	..()
+	. = ..()
 
 /obj/structure/catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'

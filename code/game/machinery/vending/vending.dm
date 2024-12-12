@@ -333,7 +333,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		tgui_interact(user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/vending/proc/scan_card(obj/item/card/card)
 	if(!currently_vending) return

@@ -242,4 +242,4 @@
 					incident.criminal_gid = add_zero(num2hex(id.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [id.registered_name] verified.\"")
 
-	..()
+	. = ..()

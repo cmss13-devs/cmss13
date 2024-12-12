@@ -211,7 +211,7 @@
 		return
 
 	else
-		..()
+		. = ..()
 		if (health < maxhealth && !HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && W.force)
 			step_to(src, (get_step_away(src,user)))
 

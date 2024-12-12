@@ -681,9 +681,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		ordered += pack
 
-	if(ordered != objects)
-		return FALSE
-
 	for(var/datum/supply_packs/pack as anything in ordered)
 		pack.cost = floor(pack.cost * SUPPLY_COST_MULTIPLIER)
 

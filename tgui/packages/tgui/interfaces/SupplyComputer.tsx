@@ -808,6 +808,10 @@ const RenderCategory = (props: {
   );
 };
 
+const changeAmount = debounce((type, quantity) => {
+  useBackend().act('adjust_cart', { pack: type, to: quantity });
+}, 250);
+
 const RenderPack = (props: {
   readonly pack: Pack;
   readonly orderedQuantity?: number;
@@ -816,24 +820,35 @@ const RenderPack = (props: {
 
   const { act, data } = useBackend<SupplyComputerData>();
 
-  const { current_order, points, used_points, dollars, used_dollars } = data;
+  const { current_order, points, dollars, used_dollars } = data;
 
   const [viewContents, setViewContents] = useState(false);
 
   const [savedQuantity, setSavedQuantity] = useState(0);
 
   useEffect(() => {
-    const options = current_order.filter((pack) => pack.type === item.type);
-    setSavedQuantity(options[0]?.quantity ?? 0);
+    const options = current_order.find((pack) => pack.type === item.type);
+    setSavedQuantity(options?.quantity ?? 0);
   }, [current_order]);
 
-  const incrementDebounce = debounce(() => {
-    act('adjust_cart', { pack: item.type, to: 'increment' });
-  }, 500);
-
-  const decrementDebounce = debounce(() => {
-    act('adjust_cart', { pack: item.type, to: 'decrement' });
-  }, 500);
+  const changeQuantity = (increment: boolean) => {
+    setSavedQuantity((saved) => {
+      const newValue = saved + (increment ? 1 : -1);
+      const existing = data.current_order.find(
+        (thing) => item.type === thing.type,
+      );
+      if (existing) {
+        existing.quantity = newValue;
+      } else {
+        data.current_order.push({
+          ...item,
+          quantity: newValue,
+        });
+      }
+      changeAmount(item.type, newValue);
+      return newValue;
+    });
+  };
 
   return (
     <Stack.Item key={item.name}>
@@ -861,8 +876,7 @@ const RenderPack = (props: {
                 <Button
                   icon={'minus'}
                   onClick={() => {
-                    decrementDebounce();
-                    setSavedQuantity(savedQuantity - 1);
+                    changeQuantity(false);
                   }}
                   disabled={!savedQuantity}
                 />
@@ -883,17 +897,19 @@ const RenderPack = (props: {
                 <Button
                   icon={'plus'}
                   onClick={() => {
-                    incrementDebounce();
-                    setSavedQuantity(savedQuantity + 1);
+                    changeQuantity(true);
                   }}
                   disabled={
                     item.dollar_cost
                       ? used_dollars
                         ? used_dollars + item.dollar_cost > dollars!
                         : false
-                      : used_points
-                        ? used_points + item.cost > points
-                        : false
+                      : current_order.reduce(
+                          (prev, curr) => prev + curr.cost * curr.quantity,
+                          0,
+                        ) +
+                          item.cost >
+                        points
                   }
                 />
               </Flex.Item>

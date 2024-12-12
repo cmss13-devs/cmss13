@@ -571,26 +571,29 @@
 				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					end_icon = "wy_major"
 					log_game("3rd party victory: Weyland-Yutani")
 					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Union of Progressive Peoples")
 					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Colonial Liberation Front")
 					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
-			end_icon = "xeno_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
@@ -603,9 +606,12 @@
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	sound_to(world, theme)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

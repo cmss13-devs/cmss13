@@ -141,18 +141,29 @@
 	if(!check_rights(R_SERVER) || !SSticker.mode)
 		return
 
-	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
-		return
 	// trying to end the round before it even starts. bruh
 	if(!SSticker.mode)
 		return
 
-	SSticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
-	message_admins("[key_name(usr)] has made the round end early.")
+	if(tgui_alert(usr, "Are you sure you want to end the round?", "End Round", list("Yes", "No"), 0) != "Yes")
+		return
+
+	var/winstate = tgui_input_list(usr, "What do you want the round end state to be?", "End Round", list("Custom", "Admin Intervention", MODE_INFESTATION_X_MAJOR, MODE_INFESTATION_X_MINOR, MODE_INFESTATION_M_MAJOR, MODE_INFESTATION_M_MINOR, MODE_INFESTATION_DRAW_DEATH, MODE_FACTION_CLASH_UPP_MAJOR, MODE_FACTION_CLASH_UPP_MINOR, MODE_INFECTION_ZOMBIE_WIN, MODE_GENERIC_DRAW_NUKE, MODE_BATTLEFIELD_W_MAJOR, MODE_BATTLEFIELD_W_MINOR, MODE_BATTLEFIELD_DRAW_STALEMATE, MODE_BATTLEFIELD_DRAW_DEATH))
+
+	if(winstate == "Custom")
+		winstate = tgui_input_text(usr, "Please enter a custom round end state.", "End Round", timeout = 0)
+	if(!winstate)
+		return
+
+	SSticker.force_ending = TRUE
+	SSticker.mode.round_finished = winstate
+
+	log_admin("[key_name(usr)] has made the round end early - [winstate].")
+	message_admins("[key_name(usr)] has made the round end early - [winstate].")
 	for(var/client/C in GLOB.admins)
 		to_chat(C, {"
 		<hr>
-		[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")]
+		[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early - [winstate]")]
 		<hr>
 		"})
 	return

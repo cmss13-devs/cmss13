@@ -7,6 +7,8 @@
 	var/upp_ship = "ssv_rostock.dmm"
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/pre_setup()
+	. = ..()
+	GLOB.round_should_check_for_win = FALSE
 	var/datum/powernet/PN = new() // we create our own powernet, with tetris and vodka
 	PN.powernet_name = "rostock"
 	GLOB.powernets += PN
@@ -22,11 +24,12 @@
 
 	var/center_x = floor(loaded.bounds[MAP_MAXX] / 2) // Technically off by 0.5 due to above +1. Whatever
 	var/center_y = floor(loaded.bounds[MAP_MAXY] / 2)
-
+  
 	// Now notify the staff of the load - this goes in addition to the generic template load game log
 	message_admins("Successfully loaded template as new Z-Level, template name: [template.name]", center_x, center_y, loaded.z_value)
 	makepowernets()
 	. = ..()
+
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/get_roles_list()
 	return GLOB.ROLES_CM_VS_UPP
@@ -37,6 +40,90 @@
 	for(var/area/area in GLOB.all_areas)
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/process()
+	if(--round_started > 0)
+		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
+	. = ..()
+	if(!round_finished)
+		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
+			if(GLOB.round_should_check_for_win)
+				check_win()
+			round_checkwin = 0
+
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/check_win()
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		return
+
+	var/no_upp_left = TRUE
+	var/no_uscm_left = TRUE
+	var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))
+	for(var/mob/M in GLOB.player_list)
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
+			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
+				var/mob/living/carbon/human/H = M
+				if(!H.handcuffed)
+					if(H.faction == FACTION_UPP)
+						no_upp_left = FALSE
+					if(H.faction == FACTION_MARINE)
+						no_uscm_left = FALSE
+					if(!no_upp_left && !no_uscm_left)
+						return
+
+	if(no_upp_left)
+		round_finished = MODE_INFESTATION_M_MAJOR
+
+	if(no_uscm_left)
+		round_finished = MODE_FACTION_CLASH_UPP_MAJOR
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/check_finished()
+	if(round_finished)
+		return TRUE
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/declare_completion()
+	announce_ending()
+	var/musical_track
+	var/end_icon = "draw"
+	switch(round_finished)
+		if(MODE_FACTION_CLASH_UPP_MAJOR)
+			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+			end_icon = "upp_major"
+		if(MODE_FACTION_CLASH_UPP_MINOR)
+			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+			end_icon = "upp_minor"
+		if(MODE_INFESTATION_M_MAJOR)
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			end_icon = "marine_major"
+		if(MODE_INFESTATION_M_MINOR)
+			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
+			end_icon = "marine_minor"
+		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	sound_to(world, theme)
+
+	calculate_end_statistics()
+	show_end_statistics(end_icon)
+
+	declare_completion_announce_fallen_soldiers()
+	declare_completion_announce_predators()
+	declare_completion_announce_medal_awards()
+	declare_fun_facts()
+
+	return TRUE
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/ds_first_landed(obj/docking_port/stationary/marine_dropship)
+	.=..()
+	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	addtimer(VARSET_CALLBACK(GLOB, round_should_check_for_win, TRUE), 15 MINUTES)
+
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/announce()
 	. = ..()

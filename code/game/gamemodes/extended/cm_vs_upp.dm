@@ -8,6 +8,7 @@
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/pre_setup()
 	. = ..()
+	GLOB.round_should_check_for_win = FALSE
 	var/datum/map_template/template = SSmapping.map_templates[upp_ship]
 	if(!template)
 		return
@@ -31,6 +32,46 @@
 	for(var/area/area in GLOB.all_areas)
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/process()
+	if(--round_started > 0)
+		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
+	. = ..()
+	if(!round_finished)
+		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
+			if(GLOB.round_should_check_for_win)
+				check_win()
+			round_checkwin = 0
+
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/check_win()
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		return
+
+	var/no_upp_left = TRUE
+	var/no_uscm_left = TRUE
+	var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))
+	for(var/mob/M in GLOB.player_list)
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
+			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
+				var/mob/living/carbon/human/H = M
+				if(!H.handcuffed)
+					if(H.faction == FACTION_UPP)
+						no_upp_left = FALSE
+					if(H.faction == FACTION_MARINE)
+						no_uscm_left = FALSE
+					if(!no_upp_left && !no_uscm_left)
+						return
+
+	if(no_upp_left)
+		round_finished = MODE_INFESTATION_M_MAJOR
+
+	if(no_uscm_left)
+		round_finished = MODE_FACTION_CLASH_UPP_MAJOR
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/check_finished()
+	if(round_finished)
+		return TRUE
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/declare_completion()
 	announce_ending()
@@ -70,6 +111,11 @@
 	return TRUE
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/ds_first_landed(obj/docking_port/stationary/marine_dropship)
+	.=..()
+	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	addtimer(VARSET_CALLBACK(GLOB, round_should_check_for_win, TRUE), 15 MINUTES)
+
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/announce()
 	. = ..()

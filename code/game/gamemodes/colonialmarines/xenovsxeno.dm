@@ -259,9 +259,9 @@
 	var/musical_track
 	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
-	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	theme.status = SOUND_STREAM
-	sound_to(world, theme)
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

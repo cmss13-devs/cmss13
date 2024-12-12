@@ -77,7 +77,7 @@
 			continue
 		unlit.static_lighting_build_overlay()
 
-/datum/map_template/proc/load_new_z(secret = FALSE, traits = list() )
+/datum/map_template/proc/load_new_z(secret = FALSE, traits = list())
 	var/x = floor((world.maxx - width) * 0.5) + 1
 	var/y = floor((world.maxy - height) * 0.5) + 1
 

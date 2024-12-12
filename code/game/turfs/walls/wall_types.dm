@@ -114,9 +114,10 @@
 /turf/closed/wall/almayer/research/containment/wall
 	name = "cell wall"
 	icon = 'icons/turf/almayer.dmi'
+	icon_state = null
 	tiles_with = null
 	walltype = null
-	special_icon = 1
+	special_icon = TRUE
 
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
@@ -271,7 +272,42 @@
 	walltype = WALL_SULACO
 
 
+//UPP walls.
 
+/turf/closed/wall/almayer/upp
+	walltype = WALL_UPP_BASE
+	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
+	icon_state = "uppwall"
+
+/turf/closed/wall/almayer/upp/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/upp/reinforced/outer
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
+
+/turf/closed/wall/strata_outpost
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/strata_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/strata_outpost/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
 /turf/closed/wall/indestructible
 	name = "wall"
@@ -279,8 +315,6 @@
 	icon_state = "riveted"
 	opacity = TRUE
 	hull = 1
-
-
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"
@@ -474,10 +508,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 /turf/closed/wall/vault
 	icon_state = "rockvault"
-
-/turf/closed/wall/vault/Initialize()
-	. = ..()
-	icon_state = "[type]vault"
 
 
 //Hangar walls
@@ -689,13 +719,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
 /turf/closed/wall/shiva
 	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
+	walltype = WALL_SHIVA_ICE
 
 /turf/closed/wall/shiva/ice
 	name = "black ice slabs"
 	icon_state = "shiva_ice"
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
-	hull = 1 //Can't break this ice.
+	hull = TRUE //Can't break this ice.
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"

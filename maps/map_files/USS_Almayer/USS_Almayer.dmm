@@ -1199,7 +1199,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
 "ahN" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ahR" = (
@@ -1587,7 +1587,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/starboard_garden)
 "alg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -1832,7 +1832,7 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
 "anp" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/almayer/medical/upper_medical)
 "anq" = (
@@ -5273,7 +5273,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "aIx" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aIy" = (
@@ -20621,13 +20621,16 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "eAG" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular,
-/obj/item/clipboard,
 /obj/item/tool/pen{
 	pixel_y = -17
 	},
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
+	},
+/obj/structure/machinery/faxmachine/uscm{
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	department = "Requisitions";
+	gender = "female"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
@@ -25122,6 +25125,7 @@
 /obj/structure/machinery/prop{
 	desc = "It's a server box...";
 	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "server box"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -34558,7 +34562,7 @@
 /obj/item/tool/screwdriver,
 /obj/item/bananapeel{
 	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle. This one appears to be covered in gun oil";
-	icon = 'icons/obj/items/weapons/guns/attachments.dmi';
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi';
 	icon_state = "iffbarrel";
 	name = "Broken B8 Smart-Scope";
 	pixel_x = -3;
@@ -42077,7 +42081,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/sheet/metal{
 	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
-	icon = 'icons/obj/structures/props/semiotic_standard.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/semiotic_standard.dmi';
 	icon_state = "coffee";
 	name = "coffee semiotic";
 	pixel_x = 20;
@@ -45691,7 +45695,7 @@
 /obj/item/prop/almayer/box,
 /obj/item/prop{
 	desc = "This M57 smartgun was utilized in field testing by the greatest smartgunner the USS Almayer ever had, Larry A.W Lewis, until he was fatally and tragically decapitated from a single clean shot to the head by a CLF sniper. As he didn't wear a helmet, it took weeks to find the body.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "m56c";
 	item_state = "m56c";
 	name = "broken M57 'Larry's Will' smartgun";
@@ -52386,7 +52390,7 @@
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
 "rGc" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
@@ -65109,7 +65113,7 @@
 "wFz" = (
 /obj/item/prop{
 	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
-	icon = 'icons/turf/whiskeyoutpost.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "M56D_gun_e";
 	layer = 3.1;
 	name = "\improper M38D heavy machine gun 'Bess'";

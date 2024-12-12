@@ -120,7 +120,8 @@
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
 
-#define UPP_DROPSHIP_LZ2 "upp-hangar-lz1"
+#define UPP_DROPSHIP_LZ1 "upp-hangar-lz1"
+#define UPP_DROPSHIP_LZ2 "upp-hangar-lz2"
 
 #define DROPSHIP_FLYBY_ID "special_flight"
 #define DROPSHIP_LZ1 "dropship-lz1"

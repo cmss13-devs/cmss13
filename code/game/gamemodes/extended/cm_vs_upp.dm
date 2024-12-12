@@ -32,8 +32,44 @@
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
 
+/datum/game_mode/extended/faction_clash/cm_vs_upp/declare_completion()
+	announce_ending()
+	var/musical_track
+	var/end_icon = "draw"
+	switch(round_finished)
+		if(MODE_FACTION_CLASH_UPP_MAJOR)
+			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+			end_icon = "upp_major"
+		if(MODE_FACTION_CLASH_UPP_MINOR)
+			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+			end_icon = "upp_minor"
+		if(MODE_INFESTATION_M_MAJOR)
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			end_icon = "marine_major"
+		if(MODE_INFESTATION_M_MINOR)
+			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
+			end_icon = "marine_minor"
+		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	sound_to(world, theme)
+
+	calculate_end_statistics()
+	show_end_statistics(end_icon)
+
+	declare_completion_announce_fallen_soldiers()
+	declare_completion_announce_predators()
+	declare_completion_announce_medal_awards()
+	declare_fun_facts()
+
+	return TRUE
+
 /datum/game_mode/extended/faction_clash/cm_vs_upp/ds_first_landed(obj/docking_port/stationary/marine_dropship)
-	. = ..()
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/announce()
 	. = ..()

@@ -50,7 +50,8 @@ SUBSYSTEM_DEF(lobby_art)
 		if(ui && player.lobby_window && player.lobby_window.status == TGUI_WINDOW_READY)
 			continue
 
-		INVOKE_ASYNC(player, TYPE_PROC_REF(/mob/new_player, initialize_lobby_screen), TRUE)
+		log_tgui(player, "Reinitialized [player.client.ckey]'s lobby window: [ui ? "ui" : "no ui"], status: [player.lobby_window?.status].", "lobby_art/Fire")
+		INVOKE_ASYNC(player, TYPE_PROC_REF(/mob/new_player, initialize_lobby_screen))
 
 	var/initialize_queue = list()
 	for(var/mob/new_player/player as anything in new_players)

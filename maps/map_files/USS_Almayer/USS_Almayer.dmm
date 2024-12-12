@@ -32056,6 +32056,7 @@
 	pixel_x = -6;
 	pixel_y = 10
 	},
+/obj/structure/machinery/door/window/eastleft,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "jpW" = (
@@ -56518,8 +56519,7 @@
 "toS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access_txt = "8"
+	dir = 8
 	},
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
@@ -59643,9 +59643,7 @@
 	dir = 8;
 	req_access_txt = "8"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lockerroom)
@@ -64046,9 +64044,7 @@
 	dir = 8;
 	req_access_txt = "8"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lockerroom)

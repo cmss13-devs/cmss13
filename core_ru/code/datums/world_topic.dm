@@ -26,6 +26,8 @@
 
 	data["round_duration"] = ROUND_TIME
 
+	data["delay"] = SSticker.delay_start
+
 	statuscode = 200
 	response = "Status retrieved"
 

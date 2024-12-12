@@ -10024,7 +10024,7 @@
 /area/lv624/lazarus/fitness)
 "buv" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = crash_specialenviromentaddons
+	insert_tag = "crash_specialenviromentaddons"
 	},
 /turf/open/space,
 /area/space)

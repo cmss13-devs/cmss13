@@ -38241,7 +38241,7 @@
 /area/bigredv2/outside/eta)
 "xnE" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = crash_specialenviromentaddons
+	insert_tag = "crash_specialenviromentaddons"
 	},
 /turf/open/space,
 /area/space)

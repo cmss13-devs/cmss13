@@ -1,6 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "In observance of the merger of the PvP and PvE servers of CM-SS13. The 'Solar Devils', the USCM battalion that appear in the PvE server, have been added as an admin only Emergency Response Team."
-  - rscadd: "The Solar Devils are highly trained and well equipped by Marine standards, they will also spawn as part of their own squad."
-  - imageadd: "A 'Solar Devils' uniform patch accessory has been added."

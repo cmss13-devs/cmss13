@@ -188,6 +188,10 @@
 	var/J = job_pref_to_gear_preset()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
+
+	preview_dummy.blocks_emissive = FALSE
+	preview_dummy.update_emissive_block()
+
 	clear_equipment()
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)
@@ -196,7 +200,8 @@
 	copy_appearance_to(preview_dummy)
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
-
+	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
+		character_trait.unapply_trait(preview_dummy)
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
 	// If the dummy was equipped with marine armor.
@@ -233,6 +238,7 @@
 			high_priority = job
 
 	switch(high_priority)
+		// USCM JOBS
 		if(JOB_SQUAD_MARINE)
 			return /datum/equipment_preset/uscm/private_equipped
 		if(JOB_SQUAD_ENGI)
@@ -303,6 +309,36 @@
 			return /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 		if(JOB_MESS_SERGEANT)
 			return /datum/equipment_preset/uscm_ship/chef
+		// UPP JOBS
+		if(JOB_UPP)
+			return /datum/equipment_preset/upp/soldier/dressed
+		if(JOB_UPP_ENGI)
+			return /datum/equipment_preset/upp/sapper/dressed
+		if(JOB_UPP_MEDIC)
+			return /datum/equipment_preset/upp/medic/dressed
+		if(JOB_UPP_SPECIALIST)
+			return /datum/equipment_preset/upp/specialist/dressed
+		if(JOB_UPP_LEADER)
+			return /datum/equipment_preset/upp/leader/dressed
+		if(JOB_UPP_POLICE)
+			return /datum/equipment_preset/upp/military_police/dressed
+		if(JOB_UPP_LT_OFFICER)
+			return /datum/equipment_preset/upp/officer/dressed
+		if(JOB_UPP_SUPPLY)
+			return /datum/equipment_preset/upp/supply/dressed
+		if(JOB_UPP_LT_DOKTOR)
+			return /datum/equipment_preset/upp/doctor/dressed
+		if(JOB_UPP_SRLT_OFFICER)
+			return /datum/equipment_preset/upp/officer/senior/dressed
+		if(JOB_UPP_KPT_OFFICER)
+			return /datum/equipment_preset/upp/officer/kapitan/dressed
+		if(JOB_UPP_CO_OFFICER)
+			return /datum/equipment_preset/upp/officer/major/dressed
+		if(JOB_UPP_COMMISSAR)
+			return /datum/equipment_preset/upp/commissar/dressed
+		if(JOB_UPP_SUPPORT_SYNTH)
+			return /datum/equipment_preset/upp/synth/dressed
+		// MISC-JOBS
 		if(JOB_SURVIVOR)
 			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].survivor_types
 			if(length(survivor_types))

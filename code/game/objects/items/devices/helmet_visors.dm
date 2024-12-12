@@ -7,17 +7,15 @@
 
 	///The type of HUD our visor shows
 	var/hud_type = MOB_HUD_FACTION_MARINE
-
 	///The sound when toggling on the visor
 	var/toggle_on_sound = 'sound/handling/hud_on.ogg'
-
 	///The sound when toggling off the visor
 	var/toggle_off_sound = 'sound/handling/hud_off.ogg'
-
-	///The icon name for our helmet's action, in 'icons/obj/items/clothing/helmet_visors.dmi'
+	///The icon name for our helmet's action
 	var/action_icon_string = "hud_sight_down"
-
-	///The overlay name for when our visor is active, in 'icons/mob/humans/onmob/helmet_garb.dmi'
+	///The icon for the helmet_overlay
+	var/helmet_overlay_icon = 'icons/mob/humans/onmob/clothing/helmet_garb/huds.dmi'
+	///The overlay name for when our visor is active
 	var/helmet_overlay = "hud_sight_right"
 
 /obj/item/device/helmet_visor/Destroy(force)
@@ -169,7 +167,7 @@
 	helmet_overlay = "weld_visor"
 
 /obj/item/device/helmet_visor/welding_visor/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
-	attached_helmet.vision_impair = VISION_IMPAIR_MAX
+	attached_helmet.vision_impair = VISION_IMPAIR_ULTRA
 	attached_helmet.flags_inventory |= COVEREYES|COVERMOUTH
 	attached_helmet.flags_inv_hide |= HIDEEYES|HIDEFACE
 	attached_helmet.eye_protection = EYE_PROTECTION_WELDING
@@ -201,9 +199,9 @@
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
 
 	/// The internal battery for the visor
-	var/obj/item/cell/high/power_cell
+	var/obj/item/cell/super/power_cell
 
-	/// About 5 minutes active use charge (hypothetically)
+	/// About 10 minutes active use charge (hypothetically)
 	var/power_use = 33
 
 	/// The alpha of darkness we set to for the mob while the visor is on, not completely fullbright but see-able

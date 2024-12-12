@@ -960,6 +960,9 @@ em {
 .pvstradio {
   color: #9b0612;
 }
+.ciaradio {
+  color: #e6754c;
+}
 .cryoradio {
   color: #ad6d48;
 }
@@ -1391,6 +1394,10 @@ em {
   font-family: 'Times New Roman', Times, serif;
 }
 
+.scandinavian {
+  color: #1e8f8c;
+}
+
 .spanish {
   color: #cf982b;
 }
@@ -1449,6 +1456,14 @@ em {
   animation: glitch 0.5s infinite;
 }
 
+.psy_talk {
+  color: #c400aa;
+  font-weight: bold;
+
+  /*Animation*/
+  animation: psy_glitch 0.5s infinite;
+}
+
 /*Keyframes*/
 
 @keyframes glitch {
@@ -1469,6 +1484,28 @@ em {
 
   100% {
     color: #830000;
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes psy_glitch {
+  25% {
+    color: #c400aa;
+    transform: translate(-2px, -1px);
+  }
+
+  50% {
+    color: #91007d;
+    transform: translate(1px, -2px);
+  }
+
+  75% {
+    color: #750066;
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    color: #7c016c;
     transform: translate(1px, 1px);
   }
 }

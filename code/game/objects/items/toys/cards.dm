@@ -20,7 +20,12 @@
 	desc = "A simple deck of playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
+	item_state_slots = list(WEAR_AS_GARB = "card_deck")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi',
+		)
 	w_class = SIZE_TINY
+	flags_obj = OBJ_IS_HELMET_GARB
 
 	var/base_icon = "deck"
 	var/max_cards = 52
@@ -49,7 +54,9 @@
 	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
+	item_state_slots = list(WEAR_AS_GARB = "card_uno")
 	max_cards = 108
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/toy/deck/uno/populate_deck()
 	var/card_id = 1
@@ -265,6 +272,8 @@
 	desc = "Some playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
+	item_icons = list(WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi')
+	item_state_slots = list(WEAR_AS_GARB = "card_card")
 	w_class = SIZE_TINY
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 
@@ -284,22 +293,27 @@
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
+	item_state_slots = list(WEAR_AS_GARB = "ace_of_spades")
 
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "red_reverse")
 
 /obj/item/toy/handcard/uno_reverse_blue
 	icon_state = "blue_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "blue_reverse")
 
 /obj/item/toy/handcard/uno_reverse_yellow
 	icon_state = "yellow_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "yellow_reverse")
 
 /obj/item/toy/handcard/uno_reverse_purple
 	icon_state = "purple_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "purple_reverse")
 
 /obj/item/toy/handcard/verb/toggle_discard_state()
 	set name = "Toggle Pile State"

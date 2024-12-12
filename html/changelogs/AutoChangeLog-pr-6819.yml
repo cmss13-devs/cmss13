@@ -1,7 +1,0 @@
-author: "CapCamIII"
-delete-after: True
-changes:
-  - rscadd: "Adds a tactical HPR to VAISO and VAIPO machinegunners"
-  - rscadd: "Adds an HPR AP mag available to the above"
-  - balance: "MAR50 has normal LMG level firerate now"
-  - spellcheck: "HPR HEAP mag now has correct name formatting"

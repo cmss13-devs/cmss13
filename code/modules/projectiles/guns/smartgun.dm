@@ -5,9 +5,15 @@
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
 	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56"
 	item_state = "m56"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 	fire_sound = "gun_smartgun"
 	fire_rattle = "gun_smartgun_rattle"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
@@ -52,7 +58,7 @@
 	var/cover_open = FALSE
 
 	unacidable = 1
-	indestructible = 1
+	explo_proof = TRUE
 
 	attachable_allowed = list(
 		/obj/item/attachable/smartbarrel,
@@ -167,6 +173,9 @@
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it)"))
 		return
 	. = ..()
+
+/obj/item/weapon/gun/smartgun/get_ammo_type_chambered(mob/user)
+	return ammo_primary
 
 /obj/item/weapon/gun/smartgun/update_icon()
 	. = ..()
@@ -736,6 +745,10 @@
 
 	power_cell = new(src)
 
+/obj/item/smartgun_battery/Destroy()
+	QDEL_NULL(power_cell)
+	return ..()
+
 /obj/item/smartgun_battery/get_examine_text(mob/user)
 	. = ..()
 
@@ -749,7 +762,7 @@
 	ammo_primary = /datum/ammo/bullet/smartgun/holo_target //Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/holo_target/ap ///Toggled ammo type
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
 	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)

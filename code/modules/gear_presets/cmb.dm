@@ -5,6 +5,7 @@
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	minimap_background = "background_cmb"
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
@@ -51,7 +52,6 @@
 		var/obj/item/clothing/under/uniform = new_human.w_uniform
 		if(istype(uniform))
 			uniform.has_sensor = UNIFORM_HAS_SENSORS
-			uniform.sensor_faction = FACTION_MARINE
 	return ..()
 
 //*****************************************************************************************************/
@@ -63,6 +63,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
+
+	minimap_icon = "deputy"
+
 	skills = /datum/skills/cmb
 
 /datum/equipment_preset/cmb/standard/load_gear(mob/living/carbon/human/new_human)
@@ -145,6 +148,8 @@
 	idtype = /obj/item/card/id/marshal
 	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	minimap_icon = "xo"
 
 	assignment = "CMB Marshal"
 	rank = JOB_CMB_TL
@@ -517,6 +522,8 @@
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "cmb_syn"
+
 	assignment = "CMB Investigative Synthetic"
 	rank = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
@@ -673,6 +680,8 @@
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "icc"
+
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	rank = JOB_CMB_ICC
 	skills = /datum/skills/civilian/survivor
@@ -732,6 +741,8 @@
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	minimap_icon = "obs"
+
 	assignment = "Interstellar Human Rights Observer"
 	rank = JOB_CMB_OBS
 	skills = /datum/skills/civilian/survivor/doctor
@@ -780,10 +791,6 @@
 	name = "USCM Anchorpoint Station Squad Marine"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/uscm/cmb/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_UA)
-
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
@@ -791,6 +798,12 @@
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	minimap_icon = "private"
+	minimap_background = "background_cmb"
+
+/datum/equipment_preset/uscm/cmb/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_UA)
 
 /datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/new_human)
 	. = ..()
@@ -837,6 +850,7 @@
 	role_comm_title = "A-TL"
 	minimum_age = 25
 	skills = /datum/skills/SL
+	minimap_icon = "leader"
 
 /datum/equipment_preset/uscm/cmb/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
@@ -878,6 +892,7 @@
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-TS"
 	skills = /datum/skills/tl
+	minimap_icon = "tl"
 
 /datum/equipment_preset/uscm/cmb/rto/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/rto, WEAR_BODY)
@@ -920,6 +935,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-HM"
 	skills = /datum/skills/combat_medic
+	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
@@ -978,6 +994,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/uscm/cmb/smartgunner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)

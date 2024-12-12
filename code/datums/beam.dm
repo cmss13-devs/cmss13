@@ -187,7 +187,7 @@
 
 /obj/effect/overlay/beam //Not actually a projectile, just an effect.
 	name="beam"
-	icon='icons/effects/beam.dmi'
+	icon = 'icons/effects/beam.dmi'
 	icon_state="b_beam"
 	mouse_opacity = FALSE
 
@@ -209,7 +209,7 @@
  * maxdistance: how far the beam will go before stopping itself. Used mainly for two things: preventing lag if the beam may go in that direction and setting a range to abilities that use beams.
  * beam_type: The type of your custom beam. This is for adding other wacky stuff for your beam only. Most likely, you won't (and shouldn't) change it.
  */
-/atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
+/atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon = 'icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam

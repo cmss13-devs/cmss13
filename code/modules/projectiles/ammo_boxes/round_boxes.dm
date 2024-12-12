@@ -104,7 +104,7 @@
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_reg"
 	caliber = "5.45x39mm"
-	default_ammo = /datum/ammo/bullet/rifle
+	default_ammo = /datum/ammo/bullet/rifle/type71
 
 /obj/item/ammo_box/rounds/type71/empty
 	empty = TRUE
@@ -115,7 +115,7 @@
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_ap"
-	default_ammo = /datum/ammo/bullet/rifle/ap
+	default_ammo = /datum/ammo/bullet/rifle/type71/ap
 
 /obj/item/ammo_box/rounds/type71/ap/empty
 	empty = TRUE

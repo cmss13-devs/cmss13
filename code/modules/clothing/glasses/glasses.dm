@@ -1,7 +1,12 @@
 /obj/item/clothing/glasses
 	name = "glasses"
 	gender = PLURAL
-	icon = 'icons/obj/items/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses/glasses.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
+	)
 	w_class = SIZE_SMALL
 	var/vision_flags = 0
 	var/darkness_view = 0 //Base human is 2
@@ -28,13 +33,6 @@
 	. = ..()
 	if(prescription)
 		AddElement(/datum/element/poor_eyesight_correction)
-
-/obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
-	var/item_state_slot_state = LAZYACCESS(item_state_slots, slot)
-	if(item_state_slot_state)
-		return item_state_slot_state
-	else
-		return icon_state
 
 /obj/item/clothing/glasses/update_clothing_icon()
 	if(ismob(src.loc))
@@ -160,6 +158,12 @@
 /obj/item/clothing/glasses/science
 	name = "reagent scanner HUD goggles" //science goggles
 	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy."
+	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+	)
 	icon_state = "purple"
 	item_state = "glasses"
 	deactive_state = "purple_off"
@@ -182,6 +186,10 @@
 /obj/item/clothing/glasses/kutjevo
 	name = "kutjevo goggles"
 	desc = "Goggles used to shield the eyes of workers on Kutjevo. N95Z Rated Goggles."
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+	)
 	icon_state = "kutjevo_goggles"
 	item_state = "kutjevo_goggles"
 
@@ -189,24 +197,42 @@
 	name = "eyepatch"
 	gender = NEUTER
 	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
+	)
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
+	item_state_slots = list(WEAR_AS_GARB = "eyepatch")
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	gender = NEUTER
 	desc = "Such a dapper eyepiece!"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	icon_state = "monocle"
 	item_state = "headset" // lol
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/material
 	name = "Optical Material Scanners"
 	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
-	icon_state = "material"
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+	)
 	item_state = "glasses"
 	actions_types = list(/datum/action/item_action/toggle)
 	toggleable = TRUE
@@ -214,11 +240,19 @@
 /obj/item/clothing/glasses/regular
 	name = "Marine RPG glasses"
 	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses."
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+	)
 	icon_state = "mBCG"
 	item_state = "mBCG"
+	item_state_slots = list(WEAR_AS_GARB = "persc-glasses")
 	prescription = TRUE
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "Prescription Glasses"
@@ -246,6 +280,10 @@
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
 	desc = "Augmented sunglasses with the HUD removed"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
@@ -253,17 +291,26 @@
 /obj/item/clothing/glasses/mbcg
 	name = "Prescription Marine RPG glasses"
 	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses. These ones actually have a proper prescribed lens."
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
+	)
 	icon_state = "mBCG"
 	item_state = "mBCG"
+	item_state_slots = list(WEAR_AS_GARB = "persc-glasses")
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
-	gender = NEUTER
 	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
-	icon = 'icons/obj/items/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses/night_vision.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
+	)
 	icon_state = "m56_goggles"
+	gender = NEUTER
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = 1
@@ -271,10 +318,15 @@
 
 /obj/item/clothing/glasses/disco_fever
 	name = "malfunctioning AR visor"
-	gender = NEUTER
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
 	icon_state = "discovision"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	gender = NEUTER
 	black_market_value = 25
 
 	//These three vars are so that the flashing of the obj and onmob match what the wearer is seeing. They're actually vis_contents rather than overlays,
@@ -293,9 +345,9 @@
 	vis_contents += obj_glass_overlay
 
 	mob_glass_overlay = new()
-	mob_glass_overlay.icon = icon
+	mob_glass_overlay.icon = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi'
 	mob_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
-	mob_glass_overlay.icon_state = "discovision_glass_onmob"
+	mob_glass_overlay.icon_state = "discovision_glass"
 	mob_glass_overlay.layer = FLOAT_LAYER
 
 	//The overlays are painted in shades of pure red. These matrices convert them to various shades of the new color.
@@ -409,7 +461,15 @@
 /obj/item/clothing/glasses/mgoggles
 	name = "marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "mgoggles"
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
+	)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	eye_protection = EYE_PROTECTION_FLAVOR
@@ -553,16 +613,24 @@
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
 	desc = "Protects the eyes from welders, approved by the mad scientist association."
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "welding-g"
 	item_state = "welding-g"
 	deactive_state = "welding-gup"
+	item_state_slots = list(WEAR_AS_GARB = "welding-h")
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
+	)
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_WELDING
 	has_tint = TRUE
-	vision_impair = VISION_IMPAIR_MAX
-	var/vision_impair_on = VISION_IMPAIR_MAX
+	vision_impair = VISION_IMPAIR_ULTRA
+	var/vision_impair_on = VISION_IMPAIR_ULTRA
 	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
@@ -618,77 +686,92 @@
 	vision_impair_on = VISION_IMPAIR_WEAK
 	vision_impair_off = VISION_IMPAIR_NONE
 
-/obj/item/clothing/glasses/welding/superior/alt
-	desc = "Welding goggles made from more expensive materials."
-
 /obj/item/clothing/glasses/welding/superior/prescription
 	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
 	prescription = TRUE
+
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
 	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
 	name = "sunglasses"
 	icon_state = "sun"
-	item_state = "sunglasses"
+	item_state = "sun"
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "sunglasses")
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 	eye_protection = EYE_PROTECTION_FLAVOR
 
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
 	gender = NEUTER
 	desc = "Covers the eyes, preventing sight."
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/glasses_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
+	)
 	icon_state = "blindfold"
 	item_state = "blindfold"
-	//vision_flags = DISABILITY_BLIND // This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
+	vision_impair = VISION_IMPAIR_MAX
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."
 	name = "prescription sunglasses"
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/big
 	name = "\improper BiMex personal shades"
 	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from atomic flash, solar radiation, and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
 	icon_state = "bigsunglasses"
-	item_state = "bigsunglasses"
+	item_state = "sunglasses"
+	item_state_slots = list(WEAR_AS_GARB = "bigsunglasses")
 	eye_protection = EYE_PROTECTION_FLASH
 	clothing_traits = list(TRAIT_BIMEX)
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
-
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
 	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."
 	icon_state = "aviator"
-	item_state = "aviator"
+	item_state = "sunglasses"
+	item_state_slots = list(WEAR_AS_GARB = "aviator")
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud"
+	item_state_slots = list(WEAR_AS_GARB = "sechud")
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
 	name = "Prescription Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
 	prescription = TRUE
 
-/obj/item/clothing/glasses/sunglasses/sechud/eyepiece
-	name = "Security HUD Sight"
-	gender = NEUTER
-	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among military police, though other models exist."
-	icon_state = "securityhud"
-	item_state = "securityhud"
-	eye_protection = EYE_PROTECTION_FLASH
-
-
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical SWAT HUD"
-	gender = NEUTER
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "swatgoggles"
+	gender = NEUTER
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+	)

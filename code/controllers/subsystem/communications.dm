@@ -76,6 +76,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
 #define CMB_FREQ 1220
+#define CIA_FREQ 1225
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
@@ -93,6 +94,8 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define UPP_MED_FREQ 1254
 #define UPP_CCT_FREQ 1255
 #define UPP_KDO_FREQ 1259
+#define UPP_DS1_FREQ 1260
+#define UPP_DS2_FREQ 1261
 
 //CLF Channels (1270-1289)
 #define CLF_FREQ 1271
@@ -152,6 +155,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
 	RADIO_CHANNEL_ROYAL_MARINE = RMC_FREQ,
+	RADIO_CHANNEL_CIA = CIA_FREQ,
 
 	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
 	RADIO_CHANNEL_PROVOST = PVST_FREQ,
@@ -197,6 +201,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_UPP_MED = UPP_MED_FREQ,
 	RADIO_CHANNEL_UPP_CCT = UPP_CCT_FREQ,
 	RADIO_CHANNEL_UPP_KDO = UPP_KDO_FREQ,
+	RADIO_CHANNEL_UPP_MORANA = UPP_DS1_FREQ,
+	RADIO_CHANNEL_UPP_KOROLOV = UPP_DS2_FREQ,
 
 	RADIO_CHANNEL_CLF_GEN = CLF_FREQ,
 	RADIO_CHANNEL_CLF_CMD = CLF_CMD_FREQ,
@@ -274,6 +280,7 @@ SUBSYSTEM_DEF(radio)
 		"[WY_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
+		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",
 		"[BRAVO_FREQ]" = "bravoradio",

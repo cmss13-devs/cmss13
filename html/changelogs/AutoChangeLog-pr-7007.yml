@@ -1,5 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - qol: "IOs now late join into their officer bunks instead of the general wakeup area"
-  - qol: "Late joiners will no longer wake up in thin air in the main cryo area."

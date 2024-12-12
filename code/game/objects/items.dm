@@ -170,6 +170,9 @@
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
 
+	/// Prevents the item from being put in storage, supposed to be for temporary reasons
+	var/no_store = FALSE
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 

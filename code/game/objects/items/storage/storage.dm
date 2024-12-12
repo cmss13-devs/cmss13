@@ -438,6 +438,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 /obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if(!istype(W) || (W.flags_item & NODROP)) return //Not an item
 
+	if(W.no_store == TRUE)
+		return 0 // The item cannot be stored due to variable
+
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
 

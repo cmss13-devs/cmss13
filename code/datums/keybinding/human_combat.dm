@@ -207,3 +207,20 @@
 	if(istype(held_item))
 		held_item.toggle_tube()
 		return TRUE
+
+/datum/keybinding/human/combat/toggle_revolver_unique_action
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_revolver_unique_action"
+	full_name = "Toggle Revolver Unique Action"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_REVOLVER_UNIQUE_ACTION
+
+/datum/keybinding/human/combat/toggle_revolver_unique_action/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/revolver/held_item = human.get_held_item()
+	if(istype(held_item))
+		held_item.toggle_revolver_unique_action()
+		return TRUE

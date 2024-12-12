@@ -19,6 +19,9 @@
 	var/hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	var/spin_sound = 'sound/effects/spin.ogg'
 	var/thud_sound = 'sound/effects/thud.ogg'
+	var/can_perform_trick = FALSE // Determines if the unique action should be pulling off fancy tricks or spinning the cylinder
+	var/buffs_on_trick = FALSE
+	var/trick_buff_message = ""
 	var/trick_delay = 4 SECONDS
 	var/list/cylinder_click = list('sound/weapons/gun_empty.ogg')
 	var/recent_trick //So they're not spamming tricks.
@@ -194,8 +197,33 @@
 	return TRUE
 
 // FLUFF
+/obj/item/weapon/gun/revolver/verb/toggle_revolver_unique_action()
+	set category = "Weapons"
+	set name = "Toggle Revolver Unique Action"
+	set desc = "Toggle between spinning the cylinder and performing gun tricks when performing Unique Action."
+	set src in usr.contents
+
+	var/obj/item/weapon/gun/revolver/active_firearm = get_active_firearm(usr)
+	if(!active_firearm)
+		return
+	src = active_firearm
+
+	if(active_firearm.can_perform_trick == TRUE)
+		to_chat(usr, SPAN_NOTICE("\the [src] will now perform tricks with Unique Action!"))
+		active_firearm.can_perform_trick = FALSE
+		return
+	else
+		to_chat(usr, SPAN_NOTICE("\the [src] will now spin the cylinder with Unique Action!"))
+		active_firearm.can_perform_trick = TRUE
+
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
-	spin_cylinder(user)
+	if(can_perform_trick == TRUE)
+		var/fancy_trick = revolver_trick(user)
+		if(fancy_trick && buffs_on_trick)
+			to_chat(user, SPAN_NOTICE(trick_buff_message))
+			trick_buff()
+	else
+		spin_cylinder(user)
 
 /obj/item/weapon/gun/revolver/proc/revolver_basic_spin(mob/living/carbon/human/user, direction = 1, obj/item/weapon/gun/revolver/double)
 	set waitfor = 0
@@ -212,6 +240,7 @@
 
 /obj/item/weapon/gun/revolver/proc/revolver_throw_catch(mob/living/carbon/human/user)
 	set waitfor = 0
+	no_store = TRUE
 	user.visible_message("[user] deftly flicks [src] and tosses it into the air!", SPAN_NOTICE("You flick and toss [src] into the air!"), null, 3)
 	var/img_layer = MOB_LAYER+0.1
 	var/image/trick = image(icon,user,icon_state,img_layer)
@@ -245,6 +274,7 @@
 			user.swap_hand()
 			user.update_inv_l_hand(0)
 			user.update_inv_r_hand()
+	no_store = FALSE
 
 /obj/item/weapon/gun/revolver/proc/revolver_trick(mob/living/carbon/human/user)
 	if(world.time < (recent_trick + trick_delay) ) return //Don't spam it.
@@ -288,6 +318,9 @@
 		to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
 		return FALSE
 
+/obj/item/weapon/gun/revolver/proc/trick_buff(mob/living/user)
+	addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 3 SECONDS)
+	return
 
 //-------------------------------------------------------
 //M44 Revolver
@@ -508,6 +541,9 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6
 	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK
+	can_perform_trick = TRUE
+	buffs_on_trick = TRUE
+	trick_buff_message = "Your badass trick inspires you. Your next few shots will be focused!"
 
 /obj/item/weapon/gun/revolver/small/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
@@ -522,13 +558,10 @@
 	recoil = 0
 	recoil_unwielded = 0
 
-/obj/item/weapon/gun/revolver/small/unique_action(mob/user)
-	var/result = revolver_trick(user)
-	if(result)
-		to_chat(user, SPAN_NOTICE("Your badass trick inspires you. Your next few shots will be focused!"))
-		accuracy_mult = BASE_ACCURACY_MULT * 2
-		accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
-		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 3 SECONDS)
+/obj/item/weapon/gun/revolver/small/trick_buff()
+	. = ..()
+	accuracy_mult = BASE_ACCURACY_MULT * 2
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
 
 
 //-------------------------------------------------------

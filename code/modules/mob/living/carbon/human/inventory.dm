@@ -9,7 +9,8 @@
 			to_chat(H, SPAN_NOTICE("You are not holding anything to equip."))
 			return
 		if(!H.equip_to_appropriate_slot(I, 0))
-			to_chat(H, SPAN_DANGER("You are unable to equip that."))
+			if(!I.no_store == TRUE) // no_store is meant to be used in situations where the player doesn't need notification, for example they're doing a trick with a revolver and said trick is a catching trick
+				to_chat(H, SPAN_DANGER("You are unable to equip that."))
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)

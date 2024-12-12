@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(lobby_art)
 			continue
 
 		var/datum/tgui/ui = SStgui.get_open_ui(player, player)
-		if(ui && player.lobby_window && player.lobby_window.status == TGUI_WINDOW_READY)
+		if(ui && player.lobby_window && player.lobby_window.status > TGUI_WINDOW_CLOSED)
 			continue
 
 		log_tgui(player, "Reinitialized [player.client.ckey]'s lobby window: [ui ? "ui" : "no ui"], status: [player.lobby_window?.status].", "lobby_art/Fire")
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(lobby_art)
 			continue
 
 		var/datum/tgui/ui = SStgui.get_open_ui(player, player)
-		if(ui && player.lobby_window && player.lobby_window.status == TGUI_WINDOW_READY)
+		if(ui && player.lobby_window && player.lobby_window.status > TGUI_WINDOW_CLOSED)
 			continue
 
 		initialize_queue += player

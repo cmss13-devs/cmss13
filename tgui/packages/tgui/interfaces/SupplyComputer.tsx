@@ -941,7 +941,7 @@ const RenderPack = (props: {
                         />
                       )}
                     </Stack.Item>
-                    <Stack.Item width={orderedQuantity ? '625px' : '525px'}>
+                    <Stack.Item width={orderedQuantity ? '575px' : '500px'}>
                       {item.name}
                     </Stack.Item>
                   </Stack>

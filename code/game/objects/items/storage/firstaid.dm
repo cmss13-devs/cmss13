@@ -345,7 +345,7 @@
 	new /obj/item/tool/surgery/retractor(src)
 
 
-/obj/item/storage/rmc_surgical_case
+/obj/item/storage/surgical_case/rmc_surgical_case
 	name = "RMC surgical case"
 	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds. This one was made specifically for Royal Marine Commandos, allowing them to suture their wounds during prolonged operations.\
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
@@ -369,7 +369,7 @@
 		/obj/item/tool/surgery/FixOVein,
 	)
 
-/obj/item/storage/rmc_surgical_case/full/fill_preset_inventory()
+/obj/item/storage/surgical_case/rmc_surgical_case/full/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)

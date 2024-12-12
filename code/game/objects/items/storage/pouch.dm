@@ -888,7 +888,7 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/medkit/full_rmc_aid/fill_preset_inventory()
-	new /obj/item/storage/rmc_surgical_case/full(src)
+	new /obj/item/storage/surgical_case/rmc_surgical_case/full(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)

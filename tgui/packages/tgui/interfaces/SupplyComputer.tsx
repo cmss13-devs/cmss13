@@ -2,6 +2,7 @@ import { randomPick, randomProb } from 'common/random';
 import { BooleanLike } from 'common/react';
 import { storage } from 'common/storage';
 import { capitalizeFirst } from 'common/string';
+import { debounce } from 'common/timer';
 import { ReactNode, useEffect, useState } from 'react';
 
 import { resolveAsset } from '../assets';
@@ -818,11 +819,24 @@ const RenderPack = (props: {
 
   const [viewContents, setViewContents] = useState(false);
 
-  const options = current_order.filter((pack) => pack.type === item.type);
-  let quantity = 0;
-  if (options[0]) {
-    quantity = options[0].quantity;
-  }
+  const [savedQuantity, setSavedQuantity] = useState(0);
+
+  useEffect(() => {
+    const options = current_order.filter((pack) => pack.type === item.type);
+    if (options[0]) {
+      setSavedQuantity(options[0].quantity);
+    } else {
+      setSavedQuantity(0);
+    }
+  }, [current_order]);
+
+  const incrementDebounce = debounce(() => {
+    act('adjust_cart', { pack: item.type, to: 'increment' });
+  }, 500);
+
+  const decrementDebounce = debounce(() => {
+    act('adjust_cart', { pack: item.type, to: 'decrement' });
+  }, 500);
 
   return (
     <Stack.Item key={item.name}>
@@ -839,38 +853,42 @@ const RenderPack = (props: {
               <Flex.Item pr={1}>
                 <Button
                   icon={'xmark'}
-                  onClick={() =>
-                    act('adjust_cart', { pack: item.type, to: 'min' })
-                  }
-                  disabled={!quantity}
+                  onClick={() => {
+                    act('adjust_cart', { pack: item.type, to: 'min' });
+                    setSavedQuantity(0);
+                  }}
+                  disabled={!savedQuantity}
                 />
               </Flex.Item>
               <Flex.Item>
                 <Button
                   icon={'minus'}
-                  onClick={() =>
-                    act('adjust_cart', { pack: item.type, to: 'decrement' })
-                  }
-                  disabled={!quantity}
+                  onClick={() => {
+                    decrementDebounce();
+                    setSavedQuantity(savedQuantity - 1);
+                  }}
+                  disabled={!savedQuantity}
                 />
               </Flex.Item>
               <Flex.Item>
                 <NumberInput
-                  value={quantity}
+                  value={savedQuantity}
                   minValue={0}
                   maxValue={99}
                   step={1}
                   onChange={(val) => {
                     act('adjust_cart', { pack: item.type, to: val });
+                    setSavedQuantity(val);
                   }}
                 />
               </Flex.Item>
               <Flex.Item>
                 <Button
                   icon={'plus'}
-                  onClick={() =>
-                    act('adjust_cart', { pack: item.type, to: 'increment' })
-                  }
+                  onClick={() => {
+                    incrementDebounce();
+                    setSavedQuantity(savedQuantity + 1);
+                  }}
                   disabled={
                     item.dollar_cost
                       ? used_dollars
@@ -904,7 +922,7 @@ const RenderPack = (props: {
                         />
                       )}
                     </Stack.Item>
-                    <Stack.Item width={orderedQuantity ? '600px' : '500px'}>
+                    <Stack.Item width={orderedQuantity ? '625px' : '525px'}>
                       {item.name}
                     </Stack.Item>
                   </Stack>

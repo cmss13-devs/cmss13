@@ -4496,8 +4496,8 @@
 "czO" = (
 /obj/item/pamphlet/skill/powerloader{
 	layer = 2.9;
-	pixel_y = -8;
-	pixel_x = 9
+	pixel_x = 9;
+	pixel_y = -8
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating,
@@ -9776,6 +9776,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv522/atmos/cargo_intake)
+"fmF" = (
+/turf/closed/wall/solaris/reinforced,
+/area/lv522/oob)
 "fmH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -17694,7 +17697,7 @@
 "jFy" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/almayer/computers/sensor_computer2{
-	layer = 2.0
+	layer = 2
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
@@ -19757,9 +19760,9 @@
 /obj/structure/machinery{
 	density = 1;
 	dir = 4;
+	explo_proof = 1;
 	icon = 'icons/obj/vehicles/apc.dmi';
 	icon_state = "apc_base_com";
-	explo_proof = 1;
 	name = "\improper M577 armored personnel carrier";
 	pixel_y = -21;
 	unacidable = 1;
@@ -25424,8 +25427,8 @@
 	pixel_y = 4
 	},
 /obj/item/defenses/handheld/sentry/mini{
-	pixel_y = -4;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = -4
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -32098,8 +32101,8 @@
 	pixel_y = -15
 	},
 /obj/item/storage/box/guncase/m41a{
-	pixel_y = 5;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 5
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
@@ -35451,13 +35454,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
-"sCD" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "mining_shutter_1";
-	dir = 4
-	},
-/turf/open/floor/corsat/marked,
-/area/lv522/indoors/c_block/mining)
 "sCP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -39684,36 +39680,36 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "uGj" = (
 /obj/structure/machinery/door/poddoor/almayer{
+	explo_proof = 1;
 	id = "Marked_1";
-	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
+	explo_proof = 1;
 	id = "Marked_2";
-	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
+	explo_proof = 1;
 	id = "Marked_3";
-	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
+	explo_proof = 1;
 	id = "Marked_6";
-	explo_proof = 1;
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer{
-	id = "Marked_7";
 	explo_proof = 1;
+	id = "Marked_7";
 	layer = 3.3;
 	name = "\improper Secure Blast Door";
 	unacidable = 1
@@ -45964,16 +45960,16 @@
 "xLr" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
-	id = "map_corpo";
 	explo_proof = 1;
+	id = "map_corpo";
 	name = "Emergency Blast Door";
 	unacidable = 1;
 	use_power = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
-	id = "map_corpo2";
 	explo_proof = 1;
+	id = "map_corpo2";
 	name = "Emergency Blast Door";
 	unacidable = 1;
 	use_power = 0
@@ -46251,8 +46247,8 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = "UD6 East";
-	explo_proof = 1
+	explo_proof = 1;
+	id = "UD6 East"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
@@ -52825,7 +52821,7 @@ clY
 clY
 clY
 clY
-ien
+fmF
 umf
 vXc
 vXc
@@ -53031,7 +53027,7 @@ clY
 clY
 clY
 clY
-ien
+fmF
 umf
 vXc
 vXc
@@ -53236,9 +53232,9 @@ hJZ
 hJZ
 clY
 clY
-ien
-ien
-ien
+fmF
+fmF
+fmF
 umf
 vXc
 yiM
@@ -53443,7 +53439,7 @@ hJZ
 hJZ
 hJZ
 hJZ
-ien
+fmF
 vXc
 vXc
 vXc
@@ -53649,7 +53645,7 @@ hJZ
 hJZ
 hJZ
 hJZ
-ien
+fmF
 umf
 vXc
 vXc
@@ -53854,9 +53850,9 @@ hJZ
 hJZ
 hJZ
 hJZ
-ien
-ien
-ien
+fmF
+fmF
+fmF
 umf
 vXc
 vXc
@@ -54061,7 +54057,7 @@ hJZ
 hJZ
 hJZ
 nLF
-ien
+fmF
 iPR
 iPR
 iPR
@@ -73278,9 +73274,9 @@ xzK
 xzK
 jas
 jas
-sCD
-sCD
-sCD
+gSn
+gSn
+gSn
 jas
 jas
 jas

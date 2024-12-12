@@ -131,9 +131,18 @@ They're all essentially identical when it comes to getting the job done.
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
 
-	if(istype(I,/obj/item/weapon/gun) && (flags_magazine & MAGAZINE_WORN) && user.back == I)
+	if(istype(I, /obj/item/weapon/gun) && (flags_magazine & MAGAZINE_WORN) && user.back == src && !linked_gun)
 		var/obj/item/weapon/gun/gun = I
 		gun.reload(user,src)
+		linked_gun = gun
+		RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disconect_weapon))
+		RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(disconect_weapon))
+
+/obj/item/ammo_magazine/proc/disconect_weapon()
+	linked_gun.unload()
+	linked_gun = null
+	UnRegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disconect_weapon))
+	UnRegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(disconect_weapon))
 
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.

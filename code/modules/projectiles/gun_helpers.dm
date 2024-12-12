@@ -274,6 +274,7 @@ DEFINES in setup.dm, referenced here.
 		if(check_inactive_hand(user))
 			if(istype(attack_item,/obj/item/ammo_magazine))
 				var/obj/item/ammo_magazine/attachment_magazine = attack_item
+
 				if(istype(src, attachment_magazine.gun_type))
 					to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 					playsound(user, active_attachable.activation_sound, 15, 1)
@@ -283,7 +284,11 @@ DEFINES in setup.dm, referenced here.
 			active_attachable.reload_attachment(attack_item, user)
 
 	else if(istype(attack_item,/obj/item/ammo_magazine))
-		if(check_inactive_hand(user)) reload(user,attack_item)
+		var/obj/item/ammo_magazine/magazine = attack_item
+		if(magazine.flags_magazine & MAGAZINE_WORN)
+			return
+		if(check_inactive_hand(user))
+			reload(user,attack_item)
 
 
 //tactical reloads
@@ -307,6 +312,8 @@ DEFINES in setup.dm, referenced here.
 		if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
 			if(current_mag)
 				unload(user, FALSE, TRUE)
+			if(magazine.flags_magazine & MAGAZINE_WORN)
+				return
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
 			var/old_mag_loc = magazine.loc
 			var/tac_reload_time = 15
@@ -543,7 +550,7 @@ DEFINES in setup.dm, referenced here.
 					items_in_slot = get_item_by_slot(active_hand.preferred_storage[storage])
 				else
 					items_in_slot = list(get_item_by_slot(active_hand.preferred_storage[storage]))
-				
+
 				for(var/item_in_slot in items_in_slot)
 					if(istype(item_in_slot, storage))
 						var/slot = active_hand.preferred_storage[storage]
@@ -560,7 +567,7 @@ DEFINES in setup.dm, referenced here.
 								slot = WEAR_IN_HELMET
 							if(WEAR_FEET)
 								slot = WEAR_IN_SHOES
-						
+
 						if(equip_to_slot_if_possible(active_hand, slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
 							return TRUE
 		if(w_uniform)

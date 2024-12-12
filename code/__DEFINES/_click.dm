@@ -1,4 +1,4 @@
-//Defines file for byond click related parameters
+//Defines file for click related parameters
 //this is mostly for ease of use and for finding all the things that use say RIGHT_CLICK rather then just searching "right"
 
 //Mouse buttons held
@@ -35,3 +35,7 @@
 
 //Pixel coordinates in screen_loc format ("[tile_x]:[pixel_x],[tile_y]:[pixel_y]")
 #define SCREEN_LOC "screen-loc"
+
+//Attackby hints
+#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0) // Makes it not call afterattack
+#define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1) // Applies click delay

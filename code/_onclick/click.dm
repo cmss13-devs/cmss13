@@ -144,9 +144,6 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0)
-#define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1)
-
 /mob/proc/click_adjacent(atom/A, obj/item/W, mods)
 	if(W)
 		var/attackby_result = A.attackby(W, src, mods)

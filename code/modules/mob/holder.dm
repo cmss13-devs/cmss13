@@ -4,6 +4,7 @@
 	desc = "You shouldn't ever see this."
 	icon = 'icons/obj/objects.dmi'
 	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/critters.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/critters_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/critters_righthand.dmi'
 	)

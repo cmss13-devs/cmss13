@@ -141,3 +141,14 @@
       liaisons, or people in other factions and have a plethora of tools to achieve
       any objectives they might be assigned to.
   - rscdel: Deletes the UAAC-TIS from the game.
+2024-12-13:
+  cuberound:
+  - bugfix: MODE_NO_ATTACK_DEAD now prevents harm from explosions and flames correctly
+  joookschad:
+  - rscdel: Removed IO squad vendor access. They can still use standard vendors for
+      cosmetics and uniforms.
+  lanse12:
+  - spellcheck: fixed a 1 letter typo in king ability
+  zzzmike:
+  - rscdel: Xeno tackle messaging no longer cares if the target is horizontal or not
+      (because being horizontal has no bearing on tackles)

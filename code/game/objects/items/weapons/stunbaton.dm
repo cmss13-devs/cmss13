@@ -174,7 +174,7 @@
 
 	deductcharge(hitcost)
 
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/weapon/baton/emp_act(severity)
 	. = ..()

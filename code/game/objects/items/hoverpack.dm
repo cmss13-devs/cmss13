@@ -12,6 +12,9 @@
 	name = "experimental hoverpack"
 	desc = "This prototype hoverpack allows marines to quickly jump over to strategic locations on the battlefield, at the cost of their backpack. You think you could change the settings with a screwdriver."
 	icon = 'icons/obj/items/devices.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	icon_state = "hoverpack"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK

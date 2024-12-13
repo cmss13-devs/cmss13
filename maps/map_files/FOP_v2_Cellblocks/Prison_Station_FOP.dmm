@@ -1343,7 +1343,7 @@
 /turf/open/floor/plating,
 /area/prison/security/monitoring/maxsec/panopticon)
 "ael" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
 "aem" = (
@@ -8327,7 +8327,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/research)
 "aEv" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "aEw" = (
@@ -10972,7 +10972,7 @@
 /obj/effect/decal/siding/wood_siding{
 	icon_state = "wood_siding5"
 	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "aPa" = (
@@ -16703,7 +16703,7 @@
 /area/prison/yard)
 "blp" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
 "blq" = (
@@ -19595,7 +19595,7 @@
 /turf/open/floor/prison/green,
 /area/prison/cellblock/lowsec/se)
 "bxO" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bxP" = (
@@ -31898,11 +31898,6 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cvY" = (
-/obj/structure/machinery/power/generator{
-	anchored = 1;
-	dir = 4;
-	icon_state = "teg-broken"
-	},
 /obj/effect/decal/warning_stripes,
 /obj/structure/lattice,
 /turf/open/floor/plating,
@@ -32899,7 +32894,7 @@
 /turf/open/floor/carpet,
 /area/prison/residential/north)
 "djE" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/south)
@@ -33727,7 +33722,7 @@
 /obj/effect/decal/siding/wood_siding{
 	icon_state = "wood_siding6"
 	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "gKA" = (
@@ -33739,7 +33734,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "gML" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "gNI" = (
@@ -34288,7 +34283,7 @@
 /turf/open/floor/prison/cell_stripe,
 /area/prison/telecomms)
 "iGo" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/north)
@@ -35001,7 +34996,7 @@
 /turf/open/floor/prison/blue/northeast,
 /area/prison/cellblock/protective)
 "lCQ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/north)
@@ -35488,7 +35483,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/highsec/south/north)
 "nGR" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/south)
@@ -35595,7 +35590,7 @@
 /turf/open/floor/prison,
 /area/prison/cellblock/mediumsec/south)
 "nXE" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "nXF" = (
@@ -37560,7 +37555,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
 "wUz" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "wUP" = (

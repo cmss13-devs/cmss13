@@ -39,7 +39,7 @@
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an raspy guttural roar!"))
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a raspy guttural roar!"))
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new()

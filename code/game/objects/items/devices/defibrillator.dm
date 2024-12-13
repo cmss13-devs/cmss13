@@ -3,6 +3,7 @@
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
 	icon_state = "defib"
 	item_state = "defib"
+	icon = 'icons/obj/items/medical_tools.dmi'
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON
 	flags_equip_slot = SLOT_WAIST
@@ -24,6 +25,7 @@
 	var/datum/effect_system/spark_spread/sparks = new
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
 	var/shock_cooldown = 0 //cooldown for shocking someone - separate to toggling
+	var/base_icon_state = "defib" //used for overlays of charge
 
 	/// Skill requirements.
 	var/skill_to_check = SKILL_MEDICAL
@@ -79,15 +81,15 @@
 	if(dcell && dcell.charge)
 		switch(floor(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
-				overlays += "+full"
+				overlays += "+[base_icon_state]full"
 			if(34 to 66)
-				overlays += "+half"
+				overlays += "+[base_icon_state]half"
 			if(3 to 33)
-				overlays += "+low"
+				overlays += "+[base_icon_state]low"
 			if(0 to 3)
-				overlays += "+empty"
+				overlays += "+[base_icon_state]empty"
 	else
-		overlays += "+empty"
+		overlays += "+[base_icon_state]empty"
 
 /obj/item/device/defibrillator/get_examine_text(mob/user)
 	. = ..()
@@ -97,7 +99,7 @@
 	currentuses = floor(dcell.charge / charge_cost)
 	if(maxuses != 1)
 		. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
@@ -170,7 +172,7 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
 		return
 
-	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
+	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
@@ -291,9 +293,10 @@
 /obj/item/device/defibrillator/compact_adv
 	name = "advanced compact defibrillator"
 	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge. It does not damage the heart."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
+	base_icon_state = "compact_defib"
 	w_class = SIZE_MEDIUM
 	blocked_by_suit = FALSE
 	min_heart_damage_dealt = 0
@@ -304,9 +307,10 @@
 /obj/item/device/defibrillator/compact
 	name = "compact defibrillator"
 	desc ="This particular defibrillator has halved charge capacity compared to the standard emergency defibrillator, but can fit in your pocket."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
+	base_icon_state = "compact_defib"
 	w_class = SIZE_SMALL
 	charge_cost = 99
 

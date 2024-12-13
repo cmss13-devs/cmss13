@@ -212,7 +212,7 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_roundstart_miasma))
 		return
 
 	log_game("Distress Signal LZ hazards active!")
@@ -419,8 +419,8 @@
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		if(next_stat_check <= world.time)
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
@@ -521,25 +521,50 @@
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
-	set waitfor = 0
-	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths++
-	var/num_last_deaths = xeno_queen_deaths
-	sleep(QUEEN_DEATH_COUNTDOWN)
-	//We want to make sure that another queen didn't die in the interim.
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+	. = ..()
+	if(.[2] != 0) // index 2 = num_xenos
+		return .
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished)
-		var/datum/hive_status/HS
-		for(var/HN in GLOB.hive_datum)
-			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
-				//Some Queen is alive, we shouldn't end the game yet
-				return
-		if(length(HS.totalXenos) <= 3)
-			round_finished = MODE_INFESTATION_M_MAJOR
-		else
-			round_finished = MODE_INFESTATION_M_MINOR
+	// Ensure there is no queen
+	var/datum/hive_status/hive
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			.[2]++
+	return .
+
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
+	if(!(flags_round_type & MODE_INFESTATION))
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive.need_round_end_check && !hive.can_delay_round_end())
+		return
+
+	if(!immediately)
+		//We want to make sure that another queen didn't die in the interim.
+		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+		return
+
+	if(round_finished)
+		return
+
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			return
+
+	if(length(hive.totalXenos) <= 3)
+		round_finished = MODE_INFESTATION_M_MAJOR
+	else
+		round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//

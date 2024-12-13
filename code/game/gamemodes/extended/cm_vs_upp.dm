@@ -24,7 +24,7 @@
 
 	var/center_x = floor(loaded.bounds[MAP_MAXX] / 2) // Technically off by 0.5 due to above +1. Whatever
 	var/center_y = floor(loaded.bounds[MAP_MAXY] / 2)
-  
+
 	// Now notify the staff of the load - this goes in addition to the generic template load game log
 	message_admins("Successfully loaded template as new Z-Level, template name: [template.name]", center_x, center_y, loaded.z_value)
 	makepowernets()

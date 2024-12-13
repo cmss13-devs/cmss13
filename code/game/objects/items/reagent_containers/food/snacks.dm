@@ -364,11 +364,8 @@
 	name = "cookie"
 	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
-<<<<<<< HEAD
 	item_state = "COOKIE!!!"
-=======
 	icon = 'icons/obj/items/food/bakery.dmi'
->>>>>>> master
 	filling_color = "#DBC94F"
 
 /obj/item/reagent_container/food/snacks/cookie/Initialize()
@@ -3288,11 +3285,8 @@
 	name = "Packaged Cheeseburger"
 	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "burger"
-<<<<<<< HEAD
 	item_state = "pburger"
-=======
 	icon = 'icons/obj/items/food/burgers.dmi'
->>>>>>> master
 	bitesize = 3
 	package = 1
 
@@ -3434,11 +3428,8 @@
 	name = "\improper Boonie Bars"
 	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
 	icon_state = "boonie"
-<<<<<<< HEAD
 	item_state = "boonie"
-=======
 	item_state_slots = list(WEAR_AS_GARB = "boonie-bars")
->>>>>>> master
 	wrapper = /obj/item/trash/boonie
 
 /obj/item/reagent_container/food/snacks/wrapped/booniebars/Initialize()
@@ -3450,11 +3441,8 @@
 	name = "\improper CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
-<<<<<<< HEAD
 	item_state = "chunk"
-=======
 	item_state_slots = list(WEAR_AS_GARB = "chunkbox")
->>>>>>> master
 	hitsound = "swing_hit"
 	force = 15
 	throwforce = 10
@@ -3489,11 +3477,8 @@
 	name = "Barcardine Bars"
 	desc = "A bar of chocolate, it smells like the medical bay. <i>\"Chocolate always helps the pain go away.\"</i>"
 	icon_state = "barcardine"
-<<<<<<< HEAD
 	item_state = "barcardine"
-=======
 	item_state_slots = list(WEAR_AS_GARB = "barcardine-bars")
->>>>>>> master
 	wrapper = /obj/item/trash/barcardine
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine/Initialize()

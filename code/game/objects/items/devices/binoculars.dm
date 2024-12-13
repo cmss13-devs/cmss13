@@ -13,16 +13,13 @@
 	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
-<<<<<<< HEAD
 	/// If FALSE won't change icon_state to a camo marine bino.
 	var/uses_camo = TRUE
 	var/raised = FALSE
-=======
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
 	)
->>>>>>> master
 	var/tile_offset = 11
 	var/viewsize = 12
 	var/hvh_tile_offset = 6 //same as miniscopes

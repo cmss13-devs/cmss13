@@ -4,15 +4,9 @@
 	icon_state = "clipboard"
 	item_state = "clipboard"
 	item_icons = list(
-<<<<<<< HEAD
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
-		)
-=======
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
 	)
->>>>>>> master
 	throwforce = 0
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST

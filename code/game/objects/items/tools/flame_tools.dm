@@ -100,15 +100,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/match
 	name = "match"
 	desc = "A simple match stick, used for lighting fine smokables."
-<<<<<<< HEAD
-	icon = 'icons/obj/items/cigarettes.dmi'
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
-		)
-=======
 	icon = 'icons/obj/items/smoking/matches.dmi'
->>>>>>> master
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/smoking_righthand.dmi'
+		)
 	icon_state = "match"
 	item_state = "match"
 	var/burnt = 0
@@ -192,20 +188,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A roll of tobacco and fillers, wrapped in paper with a filter at the end. Apparently, inhaling the smoke makes you feel happier."
 	icon_state = "cigoff"
 	item_state = "cigoff"
-<<<<<<< HEAD
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
-		)
-	throw_speed = SPEED_AVERAGE
-=======
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 	)
->>>>>>> master
+	throw_speed = SPEED_AVERAGE
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EAR | SLOT_FACE
@@ -732,16 +721,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "lighter_g"
 	item_state = "lighter_g"
 	item_icons = list(
-<<<<<<< HEAD
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
-		)
-=======
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 	)
->>>>>>> master
 	light_color = LIGHT_COLOR_LAVA
 	var/icon_on = "lighter_g_on"
 	var/icon_off = "lighter_g"

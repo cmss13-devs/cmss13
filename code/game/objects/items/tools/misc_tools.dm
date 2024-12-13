@@ -157,19 +157,12 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-<<<<<<< HEAD
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
-		)
-=======
 	item_state_slots = list(WEAR_AS_GARB = "pen_black")
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
->>>>>>> master
 	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	throwforce = 0
 	w_class = SIZE_TINY

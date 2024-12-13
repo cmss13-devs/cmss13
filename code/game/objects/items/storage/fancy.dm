@@ -348,16 +348,12 @@
 	name = "\improper Lucky Strikes matchbook"
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
 	icon_state = "mpacket"
-<<<<<<< HEAD
-=======
-	item_state = "zippo"
 	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_type = "match"
 	item_state_slots = list(WEAR_AS_GARB = "matches_mre")
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 		)
->>>>>>> master
 	storage_slots = 6
 	can_hold = list()
 	default_cigar_type = /obj/item/tool/match/paper
@@ -463,11 +459,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
 	)
 	icon_state = "vialbox0"
-<<<<<<< HEAD
 	item_state = "vialbox0"
-=======
-	item_state = "box"
->>>>>>> master
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.

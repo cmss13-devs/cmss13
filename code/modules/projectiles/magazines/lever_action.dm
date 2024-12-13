@@ -6,7 +6,7 @@ Similar to shotguns.dm but not exactly.
 /obj/item/ammo_magazine/lever_action
 	name = "box of 45-70 rounds"
 	desc = "A box filled with handfuls of 45-70 Govt. rounds, for the old-timed."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "45-70-box"
 	item_state = "45-70-box"
 	default_ammo = /datum/ammo/bullet/lever_action
@@ -48,7 +48,7 @@ Similar to shotguns.dm but not exactly.
 /obj/item/ammo_magazine/lever_action/xm88
 	name = "box of .458 SOCOM rounds"
 	desc = "A box filled with handfuls of .458 SOCOM rounds, designed for use with the XM88 heavy rifle."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "458-box"
 	item_state = "458-box"
 	default_ammo = /datum/ammo/bullet/lever_action/xm88

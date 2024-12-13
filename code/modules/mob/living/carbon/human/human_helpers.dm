@@ -10,7 +10,7 @@
 	return g
 
 /proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color)
-	if(S.uses_skin_color)
+	if(S.flags & HAS_SKIN_COLOR)
 		if(S.special_body_types)
 			switch(limb_name)
 				if("torso")
@@ -419,8 +419,8 @@
 	if(ishuman(mob))
 		var/mob/living/carbon/human/H = mob
 		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(mob.faction_group)&& !(mob.status_flags & PERMANENTLY_DEAD))
-		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE
 

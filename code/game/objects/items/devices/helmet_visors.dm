@@ -7,17 +7,15 @@
 
 	///The type of HUD our visor shows
 	var/hud_type = MOB_HUD_FACTION_MARINE
-
 	///The sound when toggling on the visor
 	var/toggle_on_sound = 'sound/handling/hud_on.ogg'
-
 	///The sound when toggling off the visor
 	var/toggle_off_sound = 'sound/handling/hud_off.ogg'
-
-	///The icon name for our helmet's action, in 'icons/obj/items/clothing/helmet_visors.dmi'
+	///The icon name for our helmet's action
 	var/action_icon_string = "hud_sight_down"
-
-	///The overlay name for when our visor is active, in 'icons/mob/humans/onmob/helmet_garb.dmi'
+	///The icon for the helmet_overlay
+	var/helmet_overlay_icon = 'icons/mob/humans/onmob/clothing/helmet_garb/huds.dmi'
+	///The overlay name for when our visor is active
 	var/helmet_overlay = "hud_sight_right"
 
 /obj/item/device/helmet_visor/Destroy(force)

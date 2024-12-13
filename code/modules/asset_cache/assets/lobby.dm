@@ -18,12 +18,13 @@
 	SSassets.transport.register_asset(asset_name, asset)
 	assets[asset_name] = asset
 
-/datum/asset/simple/lobby_sound
+/datum/asset/simple/lobby_files
+	keep_local_name = TRUE
 	assets = list(
-		"load" = file('sound/lobby/lobby_load.mp3'),
+		"load.mp3" = 'sound/lobby/lobby_load.mp3',
 	)
 
 /datum/asset/simple/restart_animation
 	assets = list(
-		"loading" = file('html/lobby/loading.gif')
+		"loading" = 'html/lobby/loading.gif'
 	)

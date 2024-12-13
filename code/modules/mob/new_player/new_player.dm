@@ -21,7 +21,6 @@
 /mob/new_player/Destroy()
 	if(ready)
 		GLOB.readied_players--
-	GLOB.new_player_list -= src
 	return ..()
 
 /mob/new_player/Topic(href, href_list[])

@@ -138,6 +138,19 @@
       }
     }
   }
+
+  .gnarp {
+    background-image: url('../assets/gnarp.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+    margin-left: -0.25em;
+    margin-top: 0.25em;
+    margin-right: 0.25em;
+    margin-bottom: -0.25em;
+  }
 }
 
 .noAnimation {

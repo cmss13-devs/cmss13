@@ -79,7 +79,7 @@
 	. = ..()
 
 	. += get_asset_datum(/datum/asset/simple/icon_states/lobby)
-	. += get_asset_datum(/datum/asset/simple/lobby_sound)
+	. += get_asset_datum(/datum/asset/simple/lobby_files)
 
 	if(SSlobby_art.initialized)
 		. += get_asset_datum(/datum/asset/simple/lobby_art)

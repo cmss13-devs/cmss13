@@ -17,6 +17,7 @@ import {
   Modal,
   Section,
   Stack,
+  Flex,
 } from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
@@ -73,7 +74,7 @@ export const LobbyMenu = () => {
 
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
-      <audio src={resolveAsset('load')} ref={onLoadPlayer} />
+      <audio src={resolveAsset('load.mp3')} ref={onLoadPlayer} />
       <Window.Content
         className={`LobbyScreen ${filterDisabled ? '' : 'filterEnabled'} ${disableAnimations}`}
         style={{
@@ -365,7 +366,6 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
               <Stack.Item>
                 <LobbyButton
                   index={7 + (upp_enabled ? 1 : 0)}
-                  icon="skull-crossbones"
                   onClick={() => {
                     setModal(
                       <Box>
@@ -385,7 +385,12 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                     );
                   }}
                 >
-                  Join the Hunt
+                  <Flex>
+                    <Flex.Item>
+                      <Box className="gnarp" inline />
+                    </Flex.Item>
+                    <Flex.Item>Join the Hunt</Flex.Item>
+                  </Flex>
                 </LobbyButton>
               </Stack.Item>
             )}

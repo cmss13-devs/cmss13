@@ -14,10 +14,10 @@ import { useBackend } from '../backend';
 import {
   Box,
   Button as NativeButton,
+  Flex,
   Modal,
   Section,
   Stack,
-  Flex,
 } from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';

@@ -230,6 +230,7 @@
 	name = "Optical Material Scanners"
 	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
+	icon_state = "material"
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
 	)

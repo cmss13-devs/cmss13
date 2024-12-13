@@ -21,8 +21,8 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	icon_state = "slugs"
 	item_state = "slugs"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/ammo_righthand.dmi'
 		)
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"

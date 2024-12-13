@@ -11,8 +11,8 @@
 	icon_state = "m44"
 	item_state = "generic_speedloader"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/ammo_righthand.dmi'
 		)
 	w_class = SIZE_SMALL
 	max_rounds = 7

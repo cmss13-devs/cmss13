@@ -40,8 +40,6 @@
 	else
 		set_raised(TRUE, user)
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
 	else

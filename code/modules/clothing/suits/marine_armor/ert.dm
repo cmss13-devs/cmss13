@@ -735,48 +735,6 @@
 	item_state_slots = list(WEAR_JACKET = "pvlight_2")
 	storage_slots = 2
 
-//================//UNITED AMERICAS ALLIED COMMAND\\=====================\\
-//=======================================================================\\
-
-/obj/item/clothing/suit/storage/marine/uaac/tis/sa
-	name = "\improper M3 pattern UAAC-TIS Special Agent Armor"
-	desc = "A modified luxury armor, originally meant for a USCM Provost Marshall, modified to use the colors and insignia of the TIS. The Three Eyes is technically able to requisition any equipment or personnel to fulfill its mission and often uses this privilege to outfit their agents with high-quality gear from other UA military forces."
-	icon_state = "tis"
-	item_state_slots = list(WEAR_JACKET = "tis")
-	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
-	)
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	storage_slots = 2
-	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	allowed = list(
-		/obj/item/weapon/gun,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/device/flashlight,
-		/obj/item/ammo_magazine/,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/explosive/grenade,
-		/obj/item/device/binoculars,
-		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
-		/obj/item/device/hailer,
-		/obj/item/storage/belt/gun,
-		/obj/item/weapon/sword/ceremonial,
-		/obj/item/device/motiondetector,
-		/obj/item/device/walkman,
-	)
-	uniform_restricted = list(/obj/item/clothing/under/uaac/tis)
-
 //================//UNITED AMERICAS RIOT CONTROL\\=====================\\
 //=======================================================================\\
 

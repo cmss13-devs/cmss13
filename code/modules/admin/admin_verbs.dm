@@ -48,7 +48,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/hide_admin_verbs,
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
-	/client/proc/toggle_lz_resin,
 	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
@@ -57,7 +56,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/wakeall,
-	/client/proc/toggle_lz_protection,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
@@ -124,31 +122,17 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/toggle_ob_spawn,
-	/client/proc/toggle_sniper_upgrade,
-	/client/proc/toggle_attack_dead,
-	/client/proc/toggle_strip_drag,
-	/client/proc/toggle_disposal_mobs,
-	/client/proc/toggle_uniform_strip,
-	/client/proc/toggle_strong_defibs,
-	/client/proc/toggle_blood_optimization,
-	/client/proc/toggle_combat_cas,
-	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
 	/client/proc/admin_aicore_alert,
-	/client/proc/toggle_hardcore_perma,
-	/client/proc/toggle_bypass_joe_restriction,
-	/client/proc/toggle_joe_respawns,
-	/client/proc/toggle_lz_hazards,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/get_whitelisted_clients,
+	/client/proc/modifiers_panel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -315,10 +299,6 @@ GLOBAL_LIST_INIT(admin_verbs_teleport, list(
 	/client/proc/Getmob,
 	/client/proc/Getkey,
 	/client/proc/toggle_noclip
-))
-
-GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
-	/client/proc/toggle_ob_spawn
 ))
 
 GLOBAL_LIST_INIT(mentor_verbs, list(

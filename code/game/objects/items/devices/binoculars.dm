@@ -34,7 +34,6 @@
 
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
-<<<<<<< HEAD
 
 	if(raised)
 		set_raised(FALSE, user)
@@ -42,9 +41,8 @@
 		set_raised(TRUE, user)
 
 	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-=======
+
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
->>>>>>> master
 		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
 	else
 		zoom(user, tile_offset, viewsize)

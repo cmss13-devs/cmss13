@@ -1,0 +1,5 @@
+author: "Drulikar"
+delete-after: True
+changes:
+  - balance: "Queen prevents round end even when in a tunnel"
+  - bugfix: "Fixed check_queen_status checking any queen not just queens that matter to round end"

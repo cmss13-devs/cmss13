@@ -213,7 +213,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
-	item_state_slots = list(WEAR_AS_GARB = "headbandgreen")
+	item_state_slots = list(WEAR_AS_GARB = "headband")
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()

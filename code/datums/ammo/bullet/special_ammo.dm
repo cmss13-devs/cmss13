@@ -143,8 +143,8 @@
 	scatter = 0
 
 /datum/ammo/bullet/machinegun/auto/setup_faction_clash_values()
-	accuracy = 0
-	scatter = HIT_ACCURACY_TIER_4
+	accuracy = HIT_ACCURACY_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_5
 	penetration = ARMOR_PENETRATION_TIER_2
 	.=..()
 

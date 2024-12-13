@@ -375,4 +375,4 @@
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return
-	..()
+	. = ..()

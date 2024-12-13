@@ -140,10 +140,12 @@
 	max_range = 15
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
+	scatter = 0
 
 /datum/ammo/bullet/machinegun/auto/setup_faction_clash_values()
 	accuracy = 0
-	scatter = 40
+	scatter = HIT_ACCURACY_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_2
 	.=..()
 
 /datum/ammo/bullet/machinegun/auto/set_bullet_traits()

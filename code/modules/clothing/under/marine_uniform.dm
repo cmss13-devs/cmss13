@@ -446,36 +446,6 @@
 	icon_state = "provost_marshal"
 	worn_state = "provost_marshal"
 
-//==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
-//=======================================================================\\
-
-/obj/item/clothing/under/uaac/tis
-	name = "\improper UAAC-TIS Special Agent Uniform"
-	desc = "A modified USCM Provost uniform, with its original insignia replaced by those of the UAAC-TIS Intelligence Service. TIS Special Agents are often recruited from the upper echelons of law enforcement agencies in various UA armed forces. These recruits often take all their gear, uniform included with them and later modify them to include TIS and UAAC insignia."
-	flags_jumpsuit = FALSE
-	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	siemens_coefficient = 0.9
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
-	)
-	icon_state = "tis"
-	worn_state = "tis"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-
-/obj/item/clothing/under/uaac/tis/io
-	name = "\improper UAAC-TIS Intelligence Officer uniform"
-	desc = "Originally a USCM officer uniform, all insignia have been carefully removed and replaced by a simple TIS pin worn over the right breast. Like their Special Agent counterparts, TIS Intel Officers are typically transplants from UA aligned armed forces, often initially recruited on a temporary basis then transferred permanently. As such, officers are often forced to adapt their original uniforms."
-	icon_state = "BO_jumpsuit"
-	worn_state = "BO_jumpsuit"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 //=========================//USCM Survivors\\================================\\
 //=======================================================================\\
 

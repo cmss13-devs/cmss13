@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "pmc goon squads and vaiso squads can now correctly use their shuttles to return home"

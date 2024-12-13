@@ -198,7 +198,7 @@
 /obj/item/toy/sword
 	name = "toy sword"
 	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
 	icon_state = "sword0"
 	item_state = "sword0"
 	var/active = 0
@@ -233,7 +233,7 @@
 /obj/item/toy/katana
 	name = "replica katana"
 	desc = "Woefully underpowered in D20."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOSHIELD

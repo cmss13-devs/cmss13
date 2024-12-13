@@ -305,8 +305,8 @@
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-		if(!GLOB.resin_lz_allowed)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 		stop_playing_launch_announcement_alarm()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))

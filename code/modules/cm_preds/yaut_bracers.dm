@@ -875,7 +875,7 @@
 
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
+	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
@@ -889,7 +889,7 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self-destruct", victim)
-		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
+		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)

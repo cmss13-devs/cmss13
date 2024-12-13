@@ -74,6 +74,7 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
+	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath)
 
 	votable = TRUE
 	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
@@ -91,7 +92,6 @@
 	return 1
 
 /datum/game_mode/whiskey_outpost/pre_setup()
-	SSticker.mode.toggleable_flags ^= MODE_HARDCORE_PERMA
 	for(var/obj/effect/landmark/whiskey_outpost/xenospawn/X)
 		xeno_spawns += X.loc
 	for(var/obj/effect/landmark/whiskey_outpost/supplydrops/S)
@@ -591,7 +591,7 @@
 /obj/item/device/whiskey_supply_beacon //Whiskey Outpost Supply beacon. Might as well reuse the IR target beacon (Time to spook the fucking shit out of people.)
 	name = "ASB beacon"
 	desc = "Ammo Supply Beacon, it has 5 different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "ir_beacon"
 	w_class = SIZE_SMALL
 	var/activated = 0

@@ -337,9 +337,9 @@
 
 /obj/structure/prop/invuln/dense/excavator/Initialize()
 	. = ..()
-	if(dir == SOUTH || NORTH)
+	if(dir & (SOUTH|NORTH))
 		bound_height = 192
 		bound_width = 96
-	if(dir == WEST || EAST)
+	else
 		bound_height = 96
 		bound_width = 192

@@ -170,7 +170,7 @@
 	var/obj/item/item2 = get_inactive_hand()
 	var/knockdown_value = severity * 0.1
 	var/knockout_value = damage * 0.1
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_WEAKER_EXPLOSIONS)) //explosions slow down but way less stun
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions)) //explosions slow down but way less stun
 		var/knockdown_minus_armor = min(max(knockdown_value * bomb_armor_mult - 0.5 SECONDS, 0), 0.5 SECONDS) //only explosions with more then 20 severity stun
 		apply_effect(floor(knockdown_minus_armor), WEAKEN)
 		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.

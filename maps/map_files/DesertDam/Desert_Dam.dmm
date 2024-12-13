@@ -195,12 +195,12 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "aaR" = (
-/obj/structure/showcase{
-	icon_state = "bus";
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
 	},
-/turf/open/floor/greengrid,
-/area/desert_dam/building/substation/west)
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -236,15 +236,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
-"aaZ" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -277,13 +268,6 @@
 /obj/item/trash/cigbutt/bcigbutt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
-"abg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -329,13 +313,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
-"abq" = (
-/obj/structure/showcase{
-	icon = 'icons/obj/structures/machinery/research.dmi';
-	icon_state = "d_analyzer_la"
-	},
-/turf/open/floor/wood,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -5438,6 +5415,13 @@
 "ayb" = (
 /obj/structure/closet/secure_closet/scientist,
 /obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/wood,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayd" = (
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/research.dmi';
+	icon_state = "d_analyzer_la"
+	},
 /turf/open/floor/wood,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aye" = (
@@ -23921,6 +23905,13 @@
 	},
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
+"cku" = (
+/obj/structure/showcase{
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	},
+/turf/open/floor/greengrid,
+/area/desert_dam/building/substation/west)
 "ckv" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/substation/west)
@@ -47014,6 +47005,15 @@
 "qLE" = (
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_one)
+"qLT" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
 "qMT" = (
 /obj/structure/stairs{
 	dir = 1
@@ -52857,7 +52857,7 @@ cgm
 cgm
 cgm
 cgm
-aaR
+cku
 cml
 cpm
 cml
@@ -53091,7 +53091,7 @@ cgJ
 chN
 ciH
 cgm
-aaR
+cku
 cml
 cml
 crj
@@ -53325,7 +53325,7 @@ cic
 cic
 ciI
 cgm
-aaR
+cku
 cml
 cml
 cml
@@ -56931,7 +56931,7 @@ aQW
 aQW
 aQW
 aQW
-abg
+aaR
 aQW
 aQW
 aQW
@@ -88283,7 +88283,7 @@ aCr
 aqC
 aqC
 avG
-abq
+ayd
 ayj
 ayj
 ayj
@@ -107520,7 +107520,7 @@ dTs
 dTs
 dTs
 gGC
-aaZ
+qLT
 dTs
 aBL
 aBL

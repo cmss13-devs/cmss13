@@ -1097,12 +1097,7 @@
 		/obj/item/ammo_magazine/pistol,
 	)
 	cant_hold = list(
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1314,12 +1309,7 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1880,12 +1870,7 @@
 	var/list/bad_guns = list(
 		/obj/item/weapon/gun/pistol/m4a3/training,
 		/obj/item/weapon/gun/pistol/mod88/training,
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently

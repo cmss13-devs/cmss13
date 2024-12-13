@@ -2,6 +2,10 @@
 	name = "flashlight"
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/items/lighting.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	icon_state = "flashlight"
 	item_state = "flashlight"
 	w_class = SIZE_SMALL
@@ -153,6 +157,10 @@
 	desc = "A pen-sized light, used by medical staff to check the condition of eyes, brain, and the overall awareness of patients."
 	icon_state = "penlight"
 	item_state = ""
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	flags_atom = FPRINT|CONDUCT
 	light_range = 2
@@ -305,6 +313,11 @@
 	light_range = 7
 	icon_state = "flare"
 	item_state = "flare"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE
@@ -524,11 +537,17 @@
 
 /obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
-	light_range = floor(amount * 0.04)
-	if(!light_range)
+	if(amount < 1)
 		return INITIALIZE_HINT_QDEL
-	set_light(light_range)
-	fuel = amount * 5 SECONDS
+	var/square_amount = sqrt(amount)
+	// Fuel quickly ramps up to about 15.5 mins then tapers off the more volume there is (6s min)
+	fuel = max(((-150 / square_amount) - 2 * sqrt(amount + 2000) + 120), 0.1) MINUTES
+	// Range gradually ramps up from 1 to 15
+	light_range = max(min(square_amount - 3, 15), MINIMUM_USEFUL_LIGHT_RANGE)
+	// Power slowly ramps up from 1 to 5
+	light_power = min(0.1 * square_amount + 1, 5)
+	set_light(light_range, light_power)
+
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL

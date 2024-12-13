@@ -80,7 +80,7 @@
 	if(istype(target_atom, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/resin_door = target_atom
 		resin_door.TryToSwitchState(owner)
-		if(resin_door.state)
+		if(resin_door.open)
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
 		else
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))

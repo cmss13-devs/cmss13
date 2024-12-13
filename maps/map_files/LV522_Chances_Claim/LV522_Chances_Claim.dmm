@@ -183,10 +183,79 @@
 	icon_state = "15"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"aaG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"aaH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
 "aaI" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/admin)
+"aaJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/southwest,
+/area/lv522/atmos/east_reactor/south)
+"aaK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"aaL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/browncorner/west,
+/area/lv522/atmos/east_reactor/south)
+"aaM" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/east_reactor/south)
+"aaN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/east_reactor/south)
+"aaO" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/brown/southwest,
+/area/lv522/atmos/east_reactor/south)
+"aaP" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
+"aaQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
+"aaR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
+"aaS" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
+"aaT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"aaU" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
+"aaV" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/east_reactor/south)
+"aaW" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "aaX" = (
 /obj/item/reagent_container/spray/cleaner/drone{
 	pixel_x = -3;
@@ -194,6 +263,35 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"aaY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
+"aaZ" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/east_reactor/south)
+"aba" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/browncorner/west,
+/area/lv522/atmos/cargo_intake)
+"abb" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/east_reactor/south)
+"abc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
+"abd" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/east_reactor/south)
 "abe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -208,21 +306,203 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/engineering)
+"abf" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abg" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abh" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
+"abi" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"abj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"abk" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"abl" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abm" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
+"abn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "abo" = (
 /turf/closed/wall/strata_outpost,
 /area/lv522/oob)
+"abp" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abq" = (
+/obj/item/clothing/suit/storage/marine/M3S,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
+"abr" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/storage/backpack/marine/satchel/scout_cloak,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
+"abs" = (
+/obj/item/clothing/suit/storage/marine/medium/smooth,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "abt" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/nw_rockies)
+"abu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/cargo_intake)
+"abv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/cargo_intake)
+"abw" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
+"aby" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
+"abz" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/west,
+/area/lv522/atmos/cargo_intake)
+"abA" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/east_reactor/south)
+"abB" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
+"abC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
+"abD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"abE" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abF" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/east_reactor/south)
+"abG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
+"abH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
+"abI" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
 "abJ" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/strata_outpost,
 /area/lv522/landing_zone_1/tunnel/far)
+"abK" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"abL" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"abM" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/cargo_intake)
+"abN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/cargo_intake)
+"abO" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown,
+/area/lv522/atmos/cargo_intake)
+"abP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
+"abR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/east_reactor/south)
 "abS" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"abT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"abU" = (
+/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
 "abV" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -233,11 +513,73 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/cargo_intake)
+"abW" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/east_reactor/south)
 "abX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"abY" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/marked,
+/area/lv522/atmos/east_reactor/south)
+"abZ" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/west,
+/area/lv522/atmos/east_reactor/south)
+"aca" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/southwest,
+/area/lv522/atmos/east_reactor/south)
+"acb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/east_reactor/south)
+"acc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/squares,
+/area/lv522/atmos/cargo_intake)
+"acd" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/cargo_intake)
+"ace" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/north,
+/area/lv522/atmos/cargo_intake)
+"acf" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
+"acg" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/corsat/brown/northwest,
+/area/lv522/atmos/cargo_intake)
+"ach" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
+"aci" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/west,
+/area/lv522/atmos/cargo_intake)
+"acj" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/brown/east,
+/area/lv522/atmos/cargo_intake)
 "ack" = (
 /obj/structure/sink{
 	dir = 8;
@@ -246,6 +588,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan2,
 /area/lv522/indoors/a_block/executive)
+"acl" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/atmos/cargo_intake)
 "acn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -1954,7 +2301,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
 	icon_state = "poster17";
 	name = "\improper torn magazine page";
 	pixel_x = -2;
@@ -3215,7 +3562,7 @@
 /area/lv522/atmos/east_reactor)
 "bWd" = (
 /obj/structure/flora/jungle/planttop1,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/floor/grass,
 /area/lv522/indoors/a_block/garden)
 "bWm" = (
@@ -7849,6 +8196,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "eoA" = (
@@ -8192,7 +8540,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
 	icon_state = "poster17";
 	name = "\improper torn magazine page";
 	pixel_x = -5;
@@ -8200,7 +8548,7 @@
 	},
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
 	icon_state = "poster3";
 	name = "\improper torn magazine page";
 	pixel_x = 5;
@@ -8242,6 +8590,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/cargo_intake)
 "eAg" = (
@@ -8470,12 +8819,9 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "eHX" = (
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
-/obj/item/clothing/suit/storage/marine/medium/rto,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/brown/east,
 /area/lv522/atmos/east_reactor/south)
 "eIk" = (
@@ -8624,6 +8970,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/clothing/suit/storage/marine/medium/rto,
 /turf/open/floor/corsat/brown/east,
 /area/lv522/atmos/east_reactor/south)
 "eMz" = (
@@ -8740,6 +9087,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/cargo_intake)
 "eQf" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/brown/southwest,
 /area/lv522/atmos/cargo_intake)
 "eQu" = (
@@ -8910,6 +9258,7 @@
 /area/lv522/atmos/east_reactor/south)
 "eVW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/browncorner,
 /area/lv522/atmos/east_reactor/south)
 "eWn" = (
@@ -9789,6 +10138,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
 "fxH" = (
@@ -10379,10 +10729,6 @@
 /obj/structure/machinery/mill,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
-"fRd" = (
-/obj/item/clothing/suit/storage/marine/medium/smooth,
-/turf/open/floor/corsat/plate,
-/area/lv522/atmos/east_reactor/south)
 "fRe" = (
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison/floor_marked,
@@ -12982,6 +13328,7 @@
 /area/lv522/atmos/reactor_garage)
 "hlh" = (
 /obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/brown,
 /area/lv522/atmos/east_reactor/south)
 "hll" = (
@@ -13526,6 +13873,7 @@
 /area/lv522/indoors/lone_buildings/chunk)
 "hDa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/brown,
 /area/lv522/atmos/east_reactor/south)
 "hDe" = (
@@ -13752,11 +14100,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
-"hKI" = (
-/obj/item/storage/backpack/marine/satchel/scout_cloak,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor/south)
 "hKJ" = (
 /turf/open/floor/prison/blue/northeast,
 /area/lv522/indoors/a_block/admin)
@@ -14071,6 +14414,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "hSs" = (
@@ -14320,6 +14664,7 @@
 /area/lv522/indoors/b_block/hydro)
 "hZZ" = (
 /obj/structure/machinery/conveyor,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/brown/southwest,
 /area/lv522/atmos/cargo_intake)
 "iad" = (
@@ -14559,6 +14904,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
 "ihI" = (
@@ -22681,6 +23027,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "mqA" = (
@@ -22795,7 +23142,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
 "mtI" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/floor/grass,
 /area/lv522/indoors/a_block/garden)
 "mtM" = (
@@ -23519,7 +23866,7 @@
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 9
 	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+/obj/structure/flora/bush/ausbushes/ywflowers{
 	layer = 3
 	},
 /turf/open/floor/prison/darkredfull2,
@@ -25455,6 +25802,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/east_reactor/south)
 "nMz" = (
@@ -26055,6 +26403,7 @@
 	phone_id = "Reactor Entrance Office";
 	pixel_x = -16
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "oaq" = (
@@ -29313,7 +29662,7 @@
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 9
 	},
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
 "pRf" = (
@@ -38951,7 +39300,7 @@
 	dir = 9;
 	layer = 2.9
 	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+/obj/structure/flora/bush/ausbushes/ywflowers{
 	layer = 3
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -43716,14 +44065,14 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "wIE" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/organic/grass,
 /area/lv522/indoors/a_block/garden)
 "wIL" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 9
 	},
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+/obj/structure/flora/bush/ausbushes/ywflowers{
 	layer = 3
 	},
 /obj/structure/machinery/light,
@@ -46275,10 +46624,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"yaH" = (
-/obj/item/clothing/suit/storage/marine/M3S,
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor/south)
 "yba" = (
 /obj/structure/largecrate/random{
 	layer = 2.9
@@ -51991,8 +52336,8 @@ saC
 xXV
 xXV
 xXV
-xXV
-xXV
+abD
+abD
 saC
 saC
 saC
@@ -52197,7 +52542,7 @@ xXV
 xXV
 xXV
 xXV
-xXV
+abK
 xXV
 xXV
 xXV
@@ -52403,9 +52748,9 @@ xXV
 xXV
 xXV
 xXV
+abK
 xXV
-xXV
-xXV
+abL
 xXV
 saC
 saC
@@ -52607,12 +52952,12 @@ xXV
 xXV
 xXV
 xXV
+abL
+xXV
+abK
 xXV
 xXV
-xXV
-xXV
-xXV
-xXV
+abL
 xXV
 saC
 saC
@@ -52815,7 +53160,7 @@ xXV
 xXV
 xXV
 xXV
-xXV
+abK
 xXV
 xXV
 xXV
@@ -53229,9 +53574,9 @@ saC
 saC
 saC
 saC
-xXV
-xXV
-xXV
+abK
+abK
+abK
 saC
 saC
 tiQ
@@ -53641,7 +53986,7 @@ saC
 saC
 tiQ
 saC
-xXV
+abL
 xXV
 xXV
 saC
@@ -54053,10 +54398,10 @@ saC
 tiQ
 tiQ
 tiQ
-xXV
-xXV
-xXV
-xXV
+abK
+abK
+abK
+abD
 tiQ
 tiQ
 vtc
@@ -54467,7 +54812,7 @@ dwG
 jsQ
 doF
 pwA
-xXV
+abL
 xXV
 saC
 tiQ
@@ -55495,7 +55840,7 @@ dJt
 doF
 dJN
 yaw
-yaw
+abg
 hoN
 epb
 iPb
@@ -55908,7 +56253,7 @@ hfS
 yaw
 yaw
 saC
-oXk
+abO
 ihy
 tiQ
 tiQ
@@ -56531,7 +56876,7 @@ yaw
 ezU
 wAB
 eQf
-geP
+abu
 fol
 auG
 gat
@@ -56737,7 +57082,7 @@ dXX
 ezW
 lEZ
 eTZ
-wTV
+abv
 foO
 fFS
 gdJ
@@ -56934,7 +57279,7 @@ vZP
 gFp
 uFT
 dYK
-yaw
+abg
 yaw
 dXX
 saC
@@ -56943,7 +57288,7 @@ dXX
 xED
 yaw
 oXk
-geP
+abu
 fol
 auG
 gat
@@ -57143,13 +57488,13 @@ dYK
 yaw
 yaw
 yaw
-dXX
+abT
 dXX
 yaw
 eAg
-sGF
+abB
 epb
-geP
+abu
 fol
 auG
 gbQ
@@ -57349,7 +57694,7 @@ abV
 yaw
 yaw
 yaw
-yaw
+abp
 hoN
 dAG
 jmW
@@ -57553,9 +57898,9 @@ dxJ
 dDS
 dKM
 dOw
+abg
 yaw
-yaw
-yaw
+abp
 oXk
 iEq
 eAz
@@ -57761,8 +58106,8 @@ dKO
 dOw
 yaw
 yaw
-yaw
-oXk
+abw
+abO
 ihy
 tiQ
 tiQ
@@ -58381,7 +58726,7 @@ dUj
 eam
 egK
 eof
-oXk
+abM
 oeX
 wBR
 tiQ
@@ -58787,7 +59132,7 @@ lqd
 sbm
 vZP
 xkB
-uFT
+acd
 yaw
 saC
 saC
@@ -59404,14 +59749,14 @@ dah
 dmG
 sbm
 vZP
-xkB
-uFT
-xED
+acf
+ace
+abl
 saC
 saC
 saC
-yaw
-eoZ
+abp
+abN
 ihy
 tiQ
 tiQ
@@ -59821,7 +60166,7 @@ uFT
 dPq
 yaw
 saC
-yaw
+abw
 yaw
 tTl
 ezp
@@ -60020,18 +60365,18 @@ oeX
 wBR
 wBR
 wBR
+ach
 wBR
-wBR
-heB
+acg
 qYM
 xED
 yaw
-yaw
 ehO
-yaw
+abp
+abg
 yaw
 eEx
-iTX
+abC
 tiQ
 iAv
 fpH
@@ -60226,14 +60571,14 @@ rKz
 wAB
 wAB
 dng
-dqr
+aci
 dqr
 dGV
 lEZ
 dQg
 lEZ
 lEZ
-lEZ
+abP
 jdv
 epI
 eFP
@@ -60430,16 +60775,16 @@ hAD
 lEZ
 fNk
 daq
-daq
+acl
 dnB
-yaw
+abp
 yaw
 yaw
 yaw
 dQm
 yaw
 yaw
-yaw
+abp
 yaw
 dXX
 saC
@@ -60638,14 +60983,14 @@ lbt
 sGF
 sGF
 sGF
-sGF
+acj
 dAG
 vxD
 yaw
 xED
+abg
 yaw
-yaw
-yaw
+abU
 dXX
 saC
 saC
@@ -60851,7 +61196,7 @@ dMb
 xED
 yaw
 yaw
-yaw
+abw
 saC
 saC
 saC
@@ -61259,9 +61604,9 @@ lqd
 vZP
 vZP
 saC
-uFT
-xED
-yaw
+ace
+abl
+abp
 saC
 saC
 saC
@@ -62084,7 +62429,7 @@ sbm
 vZP
 dHc
 uFT
-xED
+acc
 yaw
 yaw
 eil
@@ -62498,7 +62843,7 @@ wBR
 uFT
 xED
 dUE
-yaw
+abg
 eDt
 dXX
 saC
@@ -62907,7 +63252,7 @@ sgq
 vZP
 iLn
 uFT
-yaw
+abg
 xED
 xXV
 xXV
@@ -63734,7 +64079,7 @@ uFT
 dNn
 dRn
 xUq
-yaw
+abg
 yaw
 saC
 epS
@@ -63942,7 +64287,7 @@ dRy
 yaw
 yaw
 yaw
-yaw
+abw
 qRw
 eGL
 eKj
@@ -64148,11 +64493,11 @@ dSt
 lEZ
 lEZ
 lEZ
-lEZ
+abP
 lEZ
 lEZ
 eLK
-dqr
+abz
 eZY
 fuQ
 fOM
@@ -64351,10 +64696,10 @@ saC
 saC
 saC
 yaw
-yaw
+abg
 eDt
 ejN
-yaw
+abp
 yaw
 yaw
 yaw
@@ -64560,16 +64905,16 @@ saC
 yaw
 yaw
 yaw
+abp
 yaw
 yaw
 yaw
-yaw
-yaw
-yaw
-yaw
-xED
-eDt
-tTl
+abw
+abw
+abp
+abl
+abf
+aba
 saC
 saC
 wUp
@@ -64766,12 +65111,12 @@ saC
 saC
 yaw
 yaw
+abp
 yaw
 yaw
 yaw
-yaw
-yaw
-yaw
+abw
+abw
 yaw
 xED
 yaw
@@ -64972,15 +65317,15 @@ saC
 saC
 saC
 saC
-sGF
+abQ
 vxD
-ejN
+abE
 yaw
 yaw
-yaw
+abp
 yaw
 xED
-yaw
+abg
 yaw
 oXk
 saC
@@ -65183,7 +65528,7 @@ jBY
 sGF
 sGF
 hSQ
-hSQ
+abx
 sGF
 lbt
 sGF
@@ -65597,10 +65942,10 @@ xZE
 saC
 saC
 saC
-jDN
-qjG
-qjG
-qjG
+abm
+aaW
+aaW
+aaU
 wGq
 oUq
 tnN
@@ -66000,7 +66345,7 @@ xsE
 oiW
 dSW
 nGU
-xLi
+aca
 yaC
 yaC
 sGv
@@ -66210,13 +66555,13 @@ edk
 rCz
 eov
 ucY
-rCz
+abF
 yaC
 xZE
 saC
 mkh
 jDN
-qjG
+iGl
 qjG
 qjG
 mkh
@@ -66404,7 +66749,7 @@ yaj
 vDw
 xsE
 oiW
-yld
+aaM
 yaC
 men
 afL
@@ -66831,7 +67176,7 @@ saC
 saC
 wwG
 eVg
-qjG
+aaU
 qjG
 jDN
 qjG
@@ -67037,9 +67382,9 @@ oiW
 oiW
 oDU
 xLi
+aaW
 qjG
-qjG
-jDN
+abn
 qjG
 wGq
 saC
@@ -67240,10 +67585,10 @@ oiW
 oiW
 oiW
 oiW
-oiW
+aaS
 oiW
 nGU
-qjG
+aaW
 qjG
 jDN
 qjG
@@ -67434,7 +67779,7 @@ yaj
 cRN
 cVc
 vpq
-vpq
+abR
 vpq
 vpq
 vpq
@@ -67444,12 +67789,12 @@ oiW
 nmt
 vpq
 vpq
-vpq
+abR
 acn
 vpq
 vpq
 eVi
-lbo
+aby
 lbo
 hrH
 qjG
@@ -67645,7 +67990,7 @@ oiW
 oiW
 oiW
 oiW
-oiW
+aaS
 oiW
 oiW
 oiW
@@ -67655,7 +68000,7 @@ nNf
 oiW
 oiW
 oiW
-oiW
+aaQ
 qjG
 qjG
 saC
@@ -67858,7 +68203,7 @@ oiW
 oiW
 oiW
 nNf
-oiW
+aaS
 oiW
 oiW
 saC
@@ -68675,7 +69020,7 @@ saC
 saC
 oiW
 oiW
-oiW
+aaS
 oiW
 oiW
 saC
@@ -68683,7 +69028,7 @@ oWS
 oiW
 nNf
 oiW
-oiW
+aaQ
 oWS
 saC
 fwj
@@ -68691,7 +69036,7 @@ fwo
 yaC
 qjG
 qjG
-yaC
+aaT
 qjG
 qjG
 hQU
@@ -68886,18 +69231,18 @@ oiW
 oiW
 oiW
 oiW
-oiW
+aaS
 nmt
 vpq
 vpq
 vpq
 hvh
 uok
-yaC
+abk
 yaC
 yaj
 sGv
-yaC
+aaT
 yaC
 yaj
 hRj
@@ -69103,7 +69448,7 @@ yaC
 qjG
 qjG
 yaC
-qjG
+aaU
 yaC
 qjG
 qjG
@@ -69300,8 +69645,8 @@ oiW
 oiW
 oiW
 oiW
-oiW
-oiW
+aaQ
+aaQ
 oiW
 faZ
 yaC
@@ -69309,8 +69654,8 @@ yaC
 rGD
 yaC
 yaC
-qjG
-yaC
+aaU
+aaG
 yaC
 qjG
 idH
@@ -69506,8 +69851,8 @@ oiW
 oiW
 oiW
 oiW
-oiW
-oiW
+aaQ
+aaQ
 oiW
 faZ
 yaC
@@ -69516,7 +69861,7 @@ qjG
 xSE
 woU
 oDU
-xLi
+aaO
 yaC
 qjG
 qjG
@@ -69711,7 +70056,7 @@ saC
 saC
 oiW
 dmE
-oiW
+aaS
 oiW
 oiW
 eVW
@@ -69720,7 +70065,7 @@ yaC
 ubJ
 yaC
 yaC
-xsE
+aaV
 oiW
 hlh
 yaC
@@ -69928,7 +70273,7 @@ yaC
 woU
 gIH
 oiW
-nGU
+aaL
 xLi
 yaC
 rGD
@@ -70134,14 +70479,14 @@ xSE
 xsE
 oiW
 oiW
-iQb
+aaP
 hCU
 yaC
 qjG
 qjG
 hQU
 xsE
-nNf
+jJa
 kaQ
 sfc
 xZE
@@ -70335,12 +70680,12 @@ oiW
 yld
 vDw
 rGD
-yaC
-yaC
-xsE
-oiW
-oiW
-oiW
+aaG
+aaT
+abb
+aaR
+aaQ
+aaQ
 yld
 yaC
 yaC
@@ -70537,19 +70882,19 @@ saC
 saC
 saC
 eHS
-qjG
-yld
-vDw
+aaW
+abA
+abj
 fxq
-yaC
+aaG
 woU
 gIH
 oiW
-oiW
-oiW
-nGU
-xLi
-yaC
+aaQ
+aaQ
+aaL
+aaJ
+aaG
 iMC
 yaC
 jCb
@@ -70744,10 +71089,10 @@ saC
 saC
 saC
 yje
-yld
+aaM
 vDw
 yaj
-yaC
+aaT
 xsE
 oiW
 oiW
@@ -70755,7 +71100,7 @@ oiW
 oiW
 fwj
 fwo
-yaC
+aaG
 rGD
 jln
 jCc
@@ -70948,20 +71293,20 @@ saC
 saC
 saC
 qjG
-qjG
+aaW
 oiW
 yld
 vDw
 qsW
-yaC
+aaT
 gfL
 iQb
 oiW
 oiW
 oiW
-yld
+aaM
 qpd
-idX
+aaH
 iOi
 jnp
 jCq
@@ -71153,15 +71498,15 @@ dXd
 saC
 qjG
 qjG
-oiW
-oiW
+aaS
+aaR
 oiW
 aLf
 kbb
-yaj
-yaH
+abq
+aaW
 qjG
-oiW
+aaS
 oiW
 oiW
 oiW
@@ -71364,9 +71709,9 @@ eHX
 eMl
 eRg
 wRf
-uhx
-hKI
-lbo
+abr
+abh
+abh
 gIZ
 oiW
 oiW
@@ -71562,7 +71907,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-yaC
+abk
 rCz
 kss
 eqU
@@ -71572,7 +71917,7 @@ rMD
 yaC
 saC
 saC
-qjG
+aaU
 jDN
 oiW
 gUm
@@ -71779,11 +72124,11 @@ saC
 saC
 saC
 cZH
-jDN
-qjG
-oiW
-oiW
-yld
+abc
+aaW
+aaR
+aaR
+aaN
 hSi
 xZE
 xZE
@@ -71974,8 +72319,8 @@ eKK
 hef
 tiQ
 tiQ
-iFk
-rCz
+acb
+abW
 eow
 saC
 saC
@@ -71984,13 +72329,13 @@ saC
 saC
 saC
 saC
-qpd
+abi
 mqx
 vpq
 gZJ
 vpq
 hDa
-hSO
+aaK
 xZE
 xZE
 xZE
@@ -72387,7 +72732,7 @@ tlv
 dTv
 uGj
 yaj
-yaj
+abY
 ekK
 saC
 saC
@@ -72400,7 +72745,7 @@ vDw
 xsE
 oiW
 oiW
-oiW
+aaS
 yld
 yaC
 xZE
@@ -72603,7 +72948,7 @@ saC
 saC
 saC
 hfE
-xsE
+aaV
 oiW
 oiW
 oiW
@@ -73012,12 +73357,12 @@ saC
 saC
 saC
 qjG
-qjG
-fRd
-vDw
-gfL
-gUm
-oiW
+abs
+aaG
+abj
+abd
+aaY
+aaS
 yld
 saC
 saC
@@ -73214,10 +73559,10 @@ yaC
 rCz
 kss
 xSE
-yaj
+abG
 yaj
 yaC
-yaC
+abk
 yaC
 yaC
 lwr
@@ -73417,10 +73762,10 @@ saC
 tiQ
 qqN
 woU
-oDU
+abZ
 vAX
 kJc
-uhx
+abH
 uhx
 kJc
 gNN
@@ -73626,14 +73971,14 @@ xsE
 oiW
 yld
 yaC
-yaj
+abI
 yaj
 yaC
 fcV
 oiW
 oiW
 oiW
-oiW
+aaS
 oiW
 oiW
 saC
@@ -73837,11 +74182,11 @@ xZE
 iFk
 gOo
 oiW
-oiW
-oiW
-oiW
-oiW
-oiW
+aaQ
+aaQ
+aaR
+aaR
+aaQ
 xZE
 xZE
 xZE
@@ -74040,11 +74385,11 @@ saC
 saC
 xZE
 xZE
-yaC
-xsE
-oiW
-oiW
-oiW
+aaG
+abb
+aaR
+aaQ
+aaQ
 oiW
 oiW
 dmE
@@ -74248,11 +74593,11 @@ xZE
 xZE
 saC
 pEv
+aaZ
 pco
 pco
 pco
-pco
-pco
+aaZ
 pco
 xZE
 cpy
@@ -74445,7 +74790,7 @@ qjG
 qjG
 qjG
 qjG
-qjG
+iGl
 saC
 saC
 saC
@@ -74456,7 +74801,7 @@ yaC
 yaC
 yaC
 yaC
-yaC
+abk
 yaC
 hTI
 yaC
@@ -74853,7 +75198,7 @@ saC
 qjG
 qjG
 qjG
-qjG
+iGl
 qjG
 qjG
 saC

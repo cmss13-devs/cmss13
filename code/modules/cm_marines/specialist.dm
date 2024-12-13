@@ -78,7 +78,7 @@
 
 
 /datum/specialist_set/proc/post_round_start()
-	if(SSticker && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
+	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
 		available_vendor_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
@@ -210,7 +210,7 @@
 
 
 /datum/specialist_set/heavy/post_round_start()
-	if(SSticker && MODE_HAS_TOGGLEABLE_FLAG(MODE_HEAVY_SPECIALISTS))
+	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
 		available_vendor_num = 4
 	else
 		available_vendor_num = 0

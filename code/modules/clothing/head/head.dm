@@ -248,11 +248,10 @@
 	icon_state = "headbandbrown"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = list(
-		WEAR_HEAD = "headbandtan",
 		WEAR_AS_GARB = "headbandbrown", // will be prefixed with either hat_ or helmet_
 	)
 	flags_atom = NO_GAMEMODE_SKIN
@@ -261,11 +260,10 @@
 	icon_state = "headbandgray"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = list(
-		WEAR_HEAD = "headband",
 		WEAR_AS_GARB = "headbandgray", // will be prefixed with either hat_ or helmet_
 	)
 	flags_atom = NO_GAMEMODE_SKIN

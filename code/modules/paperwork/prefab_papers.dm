@@ -23,12 +23,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 		var/obj/item/paper/prefab/document = GLOB.prefab_papers[docname]
 		if(!istype(document))
 			continue
-		log_debug("DOCUMENT: Checking [document]")
 		if(!document.is_prefab || !document.doc_datum_type || (document.name == "paper"))
-			log_debug("DOCUMENT: Prefab, Name or Ref fail.")
 			continue
 		if(!document.document_category || !(document.document_category in available_categories))
-			log_debug("DOCUMENT: Category fail.")
 			continue
 		available_documents += docname
 	return

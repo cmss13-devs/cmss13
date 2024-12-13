@@ -363,7 +363,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/tool/pen/blue = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/red = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/multicolor/fountain = NO_GARB_OVERRIDE,
-	/obj/item/tool/pen/multicolor/provost = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = "welding-c",
 	/obj/item/clothing/glasses/mgoggles = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/prescription = PREFIX_HAT_GARB_OVERRIDE,

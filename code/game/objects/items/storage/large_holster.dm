@@ -153,6 +153,10 @@
 	name = "\improper katana scabbard"
 	desc = "A large, vibrantly colored katana scabbard used to carry a Japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
 	icon_state = "katana_holster"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
+	)
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
@@ -164,7 +168,10 @@
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
 	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
-	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
+	icon_state = "ceremonial_sword_holster"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
+	)
 	force = 12
 	flags_equip_slot = SLOT_WAIST
 	can_hold = list(/obj/item/weapon/sword/ceremonial)

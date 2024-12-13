@@ -1193,7 +1193,7 @@
 		*/
 		playsound(src, drawSound, 7, TRUE)
 		var/image/gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
-		if(gun_has_gamemode_skin & current_gun.map_specific_decoration)
+		if(gun_has_gamemode_skin && current_gun.map_specific_decoration)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
 					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "s_" + current_gun.base_gun_icon)
@@ -1320,7 +1320,6 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1887,7 +1886,6 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
 		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently

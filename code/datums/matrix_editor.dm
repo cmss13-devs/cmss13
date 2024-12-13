@@ -7,7 +7,7 @@
 	set name = "Matrix Editor"
 	set category = "Debug"
 
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG|R_ADMIN))
+	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))
 		to_chat(usr, SPAN_DANGER("develop man only >:("))
 		return
 
@@ -49,7 +49,7 @@
 	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", "size=600x450")
 
 /client/proc/matrix_editor_Topic(href, href_list)
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG|R_ADMIN))
+	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))
 		to_chat(usr, SPAN_DANGER("develop man only >:("))
 		return
 

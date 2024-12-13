@@ -417,10 +417,10 @@
 /mob/living/carbon/human/can_be_pulled_by(mob/mob)
 	var/ignores_stripdrag_flag = FALSE
 	if(ishuman(mob))
-		var/mob/living/carbon/human/H = mob
-		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
-		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
+		var/mob/living/carbon/human/human = mob
+		ignores_stripdrag_flag = human.species.ignores_stripdrag_flag
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE
 

@@ -69,7 +69,7 @@
 			return FALSE
 	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
 		return FALSE
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy))
 		for(var/mob/living/carbon/human/closed_mob in get_turf(src))
 			if((closed_mob.stat == DEAD || closed_mob.health < HEALTH_THRESHOLD_CRIT) && !closed_mob.get_target_lock(user.faction_group) && !(closed_mob.status_flags & PERMANENTLY_DEAD)&& !(closed_mob.status_flags & PERMANENTLY_DEAD))
 				return FALSE

@@ -76,6 +76,7 @@
 			return
 
 	client?.nuke_chat()
+	broken = REPAIRING
 
 /**
  * private

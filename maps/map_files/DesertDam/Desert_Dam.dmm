@@ -10,12 +10,6 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
-"aac" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfship"
-	},
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -86072,7 +86066,7 @@ dTs
 dTs
 dTs
 dTs
-aac
+dTs
 dTs
 dTs
 dTs

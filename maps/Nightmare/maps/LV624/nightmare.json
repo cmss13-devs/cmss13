@@ -2,7 +2,7 @@
 	{
 		"type": "map_insert",
 		"landmark": "clfship",
-		"chance": 0.25,
+		"chance": 0.3,
 		"path": "standalone/clfship.dmm",
 		"when": { "lvevent": "fallen_ship" }
 	},

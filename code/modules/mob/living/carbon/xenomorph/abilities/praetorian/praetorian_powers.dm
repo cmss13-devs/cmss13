@@ -903,13 +903,14 @@
 		target_turfs += next_turf
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
-	if(!length(target_turfs))
-		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))
-		return
 
 		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
 			telegraph_atom_list -= XT
 			qdel(XT)
+		return
+		
+	if(!length(target_turfs))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))
 		return
 
 	if(!action_cooldown_check() || !check_and_use_plasma_owner())
@@ -935,7 +936,7 @@
 
 			human.apply_effect(get_xeno_stun_duration(human, 0.5), WEAKEN)
 			new /datum/effects/xeno_slow(human, valkyrie, ttl = get_xeno_stun_duration(human, 25))
-		
+
 		for (var/obj/item/explosive/grenade/grenades in turfs)
 			var/direction = get_dir(valkyrie, grenades)
 			var/turf/target_destination = get_ranged_target_turf(grenades, direction, 3)

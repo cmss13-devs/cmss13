@@ -861,10 +861,10 @@
 // Built for HM tutorials, not for practical use
 
 /datum/equipment_preset/other/realistic_dummy
-	name = "DUMMY"
+	name = "MARINE DUMMY"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "DUMMY"
-	rank = "DUMMY"
+	assignment = "MARINE DUMMY"
+	rank = "MARINE DUMMY"
 	paygrades = list(PAY_SHORT_ME1)
 	idtype = /obj/item/card/id/dogtag
 	uses_special_name = TRUE

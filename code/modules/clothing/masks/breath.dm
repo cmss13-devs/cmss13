@@ -285,7 +285,7 @@
 	item_state = "keffiyeh_black"
 	original_state = "keffiyeh_black"
 
-/obj/item/clothing/mask/smock
+/obj/item/clothing/mask/tornscarf/smock
 	name = "tactical smock"
 	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."
 	icon_state = "smock_jungle"
@@ -295,23 +295,23 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/mask/smock/classic
+/obj/item/clothing/mask/tornscarf/smock/classic
 	icon_state = "smock_classic"
 	item_state = "smock_classic"
 
-/obj/item/clothing/mask/smock/snow
+/obj/item/clothing/mask/tornscarf/smock/snow
 	icon_state = "smock_snow"
 	item_state = "smock_snow"
 
-/obj/item/clothing/mask/smock/desert
+/obj/item/clothing/mask/tornscarf/smock/desert
 	icon_state = "smock_desert"
 	item_state = "smock_desert"
 
-/obj/item/clothing/mask/smock/urban
+/obj/item/clothing/mask/tornscarf/smock/urban
 	icon_state = "smock_urban"
 	item_state = "smock_urban"
 
-/obj/item/clothing/mask/smock/black
+/obj/item/clothing/mask/tornscarf/smock/black
 	icon_state = "smock_black"
 	item_state = "smock_black"
 

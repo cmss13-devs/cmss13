@@ -159,7 +159,7 @@
 /obj/item/weapon/swiss_army_knife
 	name = "Colonial Companion Mk. II"
 	desc = "Your reliable partner in every adventure. This versatile multi-tool seamlessly folds and switches between seven essential modes, each crafted for a specific purpose. Whether you need a razor-sharp blade, a precise screwdriver, or even a handy spoon, it's always ready—just a flick of the wrist away, ready to tackle whatever challenge lies ahead."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "swiss_stock"  // Default state when all tools are folded
 	force = 0
 	throwforce = 0
@@ -407,7 +407,7 @@
 		..()
 
 /obj/item/weapon/swiss_army_knife/can_opener
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "swiss_opener"
 	desc = "A simple can opener, can be used as a knife, although weaker."
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -421,7 +421,7 @@
 	flags_item = CAN_DIG_SHRAPNEL
 
 /obj/item/weapon/swiss_army_knife/corkscrew
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "swiss_corkscrew"
 	desc = "A simple corkscrew."
 	attack_verb = list("turn", "screw", "poke", "twist")

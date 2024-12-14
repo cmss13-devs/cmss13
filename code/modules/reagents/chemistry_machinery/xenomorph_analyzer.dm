@@ -13,7 +13,10 @@
 	var/list/technology_purchased = list()
 	var/biomass_points = 0 //most important thing in this
 	var/obj/item/organ/xeno/organ = null
+	///normal list of typepaths containing a printing queue.
+	var/list/print_queue = list()
 	var/busy = FALSE
+	var/queue_proccessing = FALSE
 	var/caste_of_organ = null
 
 /obj/structure/machinery/xenoanalyzer/Initialize(mapload, ...)
@@ -76,7 +79,7 @@
 	data["points"] = biomass_points
 	data["current_clearance"] = GLOB.chemical_data.clearance_level
 	data["is_x_level"] = GLOB.chemical_data.reached_x_access // why just why
-
+	data["is_processing"] = queue_proccessing
 	if(organ)
 		data["organ"] = TRUE
 		data["caste"] = caste_of_organ
@@ -85,6 +88,7 @@
 		data["organ"] = FALSE
 	data["upgrades"] = list()
 	data["categories"] = list()
+	data["print_queue"] = list()
 	for(var/upgrade_type in subtypesof(/datum/research_upgrades))// moved this here since prices are dynamic now
 		var/datum/research_upgrades/upgrade = upgrade_type
 		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY)
@@ -102,6 +106,17 @@
 			"clearance" = upgrade.clearance_req,
 			"price_change" = upgrade.change_purchase,
 		))
+	for(var/upgrade_path in print_queue)
+		var/datum/research_upgrades/upgrade = upgrade_path
+		data["print_queue"] += list(list(
+			"name" = capitalize_first_letters(upgrade.name),
+			"id" = upgrade_path,
+		))
+	if(!length(data["print_queue"]))
+		data["print_queue"] = null
+
+
+
 	return data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -111,7 +126,7 @@
 
 	switch(action)
 		if("eject_organ")
-			eject_biomass(usr)
+			eject_biomass(ui.user)
 			. = TRUE
 
 		if("process_organ")
@@ -124,7 +139,16 @@
 				. = TRUE
 		if("produce")
 			if(!busy)
-				start_print_upgrade(text2path(params["ref"]), usr)
+				for(var/i in 1 to text2num(params["amount"]))
+					if(!add_to_queue_upgrade(text2path(params["ref"]), ui.user))
+						return
+		if("toggle_processing")
+			if(queue_proccessing)
+				queue_proccessing = FALSE
+			else
+				attempt_process_queue()
+		if("remove_from_queue")
+			LAZYREMOVE(print_queue, params["upgrade_id"])
 	playsound(src, 'sound/machines/keyboard2.ogg', 25, TRUE)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass(mob/user)
@@ -142,14 +166,37 @@
 	icon_state = "xeno_analyzer"
 	busy = FALSE
 
-
-/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user)
+/obj/structure/machinery/xenoanalyzer/proc/attempt_process_queue(mob/user)
 	if(stat & NOPOWER)
 		icon_state = "xeno_analyzer_off"
 		return
+	if(!length(print_queue))
+		return
+	queue_proccessing = TRUE
+	var/datum/research_upgrades/upgrade = print_queue[length(print_queue)]
+	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
+		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
+		queue_proccessing = FALSE
+		return
+	flick("xeno_analyzer_printing", src)
+	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price)
+	technology_purchased[upgrade] += 1
+	playsound(loc, 'sound/machines/print.ogg', 25)
+	if(length(print_queue) >= 1)
+		addtimer(CALLBACK(src, PROC_REF(print_upgrade), upgrade, user), 2.5 SECONDS)
+	else
+		queue_proccessing = FALSE
+
+
+
+/obj/structure/machinery/xenoanalyzer/proc/add_to_queue_upgrade(produce_path, mob/user)
+	if(stat & NOPOWER)
+		icon_state = "xeno_analyzer_off"
+		return FALSE
 	if(busy)//double check for me here
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - its currently busy!"))
-		return
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
+		return FALSE
 	var/path_exists = FALSE
 	var/datum/research_upgrades/upgrade
 	var/datum_upgrades
@@ -162,21 +209,32 @@
 			break
 	if(!path_exists)
 		to_chat(user, SPAN_WARNING("[src] makes a suspicious wail before powering down."))
-		return
-	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
-		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
-		return
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
+		return FALSE
 	if((upgrade.clearance_req > GLOB.chemical_data.clearance_level && upgrade.clearance_req != 6) || (upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access))
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - you don't have access to this upgrade!"))
-		return
-	flick("xeno_analyzer_printing", src)
-	busy = TRUE
-	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price)
-	technology_purchased[datum_upgrades] += 1
-	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path), 3 SECONDS)
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
+		return FALSE
+	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
+		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
+		return FALSE
+	if(length(print_queue) == 10)
+		to_chat(user, SPAN_WARNING("[src] internal memory buffer is full!"))
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
+		return FALSE
+	LAZYADD(print_queue, upgrade)
+	if(!queue_proccessing)
+		attempt_process_queue(user)
+	return TRUE
 
-/obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path)
+/obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, mob/user)
 	busy = FALSE
 	var/datum/research_upgrades/item = new produce_path()
 	item.on_purchase(get_turf(src))
+	LAZYREMOVE(print_queue, produce_path)
+	if(!isnull(print_queue) && queue_proccessing)
+		attempt_process_queue(user)
+	else
+		queue_proccessing = FALSE
 

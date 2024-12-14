@@ -1,6 +1,6 @@
 /datum/xeno_strain/valkyrie
 	name = PRAETORIAN_VALKYRIE
-	description = "You trade your ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor, as well as a dash that lets you dash to enemies to slice and root them. Targeting an ally causes you to dash towards them and knockdown the enemies around them. You get an ability that rejuvenates everyone in a certain rage depending on your rage. You also trade your tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extuingish people on fire to help capture them."
+	description = "You trade your ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor. An ability that knocksdown people in a 2 by 3 infront of you while also throwing back grenades. You get an ability that rejuvenates everyone in a certain rage depending on your rage. You also trade your tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extuingish people on fire to help capture them."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
 

@@ -277,8 +277,8 @@
 
 		var/turf/actual_turf = locate(x, y-1, z)
 		if(user.pulling)
-			user.pulling.forceMove(actual_turf)
 			on_leave(user.pulling)
+			user.pulling.forceMove(actual_turf)
 			
 		user.forceMove(actual_turf)
 		on_leave(user)

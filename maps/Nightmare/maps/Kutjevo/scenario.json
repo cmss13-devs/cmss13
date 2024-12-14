@@ -3,7 +3,7 @@
         "type": "pick", "name": "event",
         "choices": [
             { "weight": 9, "type": "def", "values": { "lvevent": "none" } },
-            { "weight": 19999999, "type": "def", "values": { "lvevent": "clfsmugglers" } }
+            { "weight": 1, "type": "def", "values": { "lvevent": "clfsmugglers" } }
         ]
     }
 ]

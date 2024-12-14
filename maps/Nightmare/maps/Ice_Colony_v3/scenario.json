@@ -14,7 +14,7 @@
     "choices": [
         { "weight": 6, "type": "def", "values": { "panic_room": "none"} },
         { "weight": 3, "type": "def", "values": { "panic_room": "full"} },
-        { "weight": 199999, "type": "def", "values": { "panic_room": "clfraid"} }
+        { "weight": 1, "type": "def", "values": { "panic_room": "clfraid"} }
     ]
 }
 

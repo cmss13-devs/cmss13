@@ -7,6 +7,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"ab" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
 "ac" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -24,6 +28,15 @@
 /obj/item/shard,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
+"ae" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
 "ag" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -9;
@@ -31,10 +44,35 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
+"ah" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"ai" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"aj" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"ak" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
 "am" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"an" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/caves/mining)
 "ao" = (
 /obj/effect/landmark/corpsespawner/colonist/burst,
@@ -1071,7 +1109,6 @@
 /area/bigredv2/caves/mining)
 "qQ" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/shuttle/escapepod/floor5,
 /area/bigredv2/oob)
 "qR" = (
 /obj/structure/surface/rack,
@@ -1186,6 +1223,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "se" = (
@@ -1281,7 +1319,6 @@
 	desc = "A bewildering tangle of machinery and pipes.";
 	name = "\improper coolant feed"
 	},
-/turf/open/shuttle/escapepod/floor5,
 /area/bigredv2/oob)
 "tJ" = (
 /obj/structure/disposalpipe/junction,
@@ -1432,6 +1469,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "wk" = (
@@ -1490,6 +1528,7 @@
 /area/bigredv2/caves/mining)
 "xa" = (
 /obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
 "xk" = (
@@ -1772,6 +1811,7 @@
 /obj/effect/decal/hefa_cult_decals/d32,
 /obj/effect/landmark/corpsespawner/clf,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Bw" = (
@@ -2280,7 +2320,6 @@
 	name = "\improper Cable connector"
 	},
 /obj/structure/cable,
-/turf/open/shuttle/escapepod/floor5,
 /area/bigredv2/oob)
 "Hx" = (
 /obj/structure/disposalpipe/segment,
@@ -2430,7 +2469,6 @@
 	name = "handful of HE/FRAG shells (12g)";
 	pixel_y = 3
 	},
-/turf/open/shuttle/escapepod/floor5,
 /area/bigredv2/oob)
 "Kd" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -3574,7 +3612,7 @@ Lw
 Dy
 Dy
 Dy
-Dy
+aj
 Dy
 yY
 AR
@@ -3614,11 +3652,11 @@ bG
 VN
 iA
 WV
+ak
 Dy
 Dy
 Dy
-Dy
-Dy
+aj
 kl
 RP
 FO
@@ -3653,7 +3691,7 @@ Qy
 Yx
 ML
 Zw
-VR
+an
 Lw
 Ve
 Gf
@@ -3782,7 +3820,7 @@ JU
 JU
 pU
 Fp
-ZM
+al
 ln
 ZM
 Wt
@@ -4059,7 +4097,7 @@ fh
 Ps
 Mf
 Lw
-Lw
+ab
 Lw
 Lw
 Lw
@@ -4100,7 +4138,7 @@ bc
 hL
 mn
 ad
-Lw
+ae
 Lw
 vy
 XO
@@ -4141,7 +4179,7 @@ bc
 dw
 fh
 rD
-Bq
+af
 UB
 Lw
 Dy
@@ -4184,8 +4222,8 @@ nk
 fh
 Ps
 HL
-Lw
-Lw
+ae
+ab
 Km
 AV
 AV
@@ -4225,7 +4263,7 @@ bc
 bc
 yt
 mn
-Bq
+af
 QT
 Lw
 Lw
@@ -4967,7 +5005,7 @@ Ho
 Rg
 Lw
 bG
-Lw
+ai
 bG
 Lw
 rB
@@ -5136,10 +5174,10 @@ HC
 JU
 Lw
 eV
-FO
+ah
 FO
 VR
-Lw
+ab
 Fg
 Lw
 JU

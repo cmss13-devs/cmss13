@@ -7,7 +7,7 @@
 /// Ship Map Context: Performs actions relevant to the ship map
 #define NIGHTMARE_CTX_SHIP "ship"
 /// Hostile Survivor Scenarios
-#define NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR list("lvevent" = list("fallen_ship", "clfship"), "riot_in_progress" = list("clfship"), "panic_room" = list("clfship"))
+#define NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR list("lvevent" = list("fallen_ship", "clfpods", "clfraid", "clfcrash", "clfsmugglers", "clf", "clfship"), "riot_in_progress" = list("rocinante"), "panic_room" = list("clfraid"))
 
 // File names for use in context configs
 #define NIGHTMARE_FILE_SCENARIO "scenario.json"

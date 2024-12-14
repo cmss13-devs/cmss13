@@ -1,9 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/clf_ship)
+"ab" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/platingdmg3,
+/area/fiorina/station/clf_ship)
+"ac" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/damaged3/west,
+/area/fiorina/station/clf_ship)
+"ad" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/panelscorched,
+/area/fiorina/station/park)
+"ae" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/park)
 "ai" = (
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
 "am" = (
 /obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/platingdmg3,
 /area/fiorina/station/clf_ship)
 "au" = (
@@ -32,10 +53,6 @@
 "aT" = (
 /turf/open/floor/almayer/green/west,
 /area/fiorina/station/clf_ship)
-"aY" = (
-/obj/effect/spawner/random/gun/smg/midchance,
-/turf/open/floor/prison/darkbrown2/north,
-/area/fiorina/station/park)
 "bn" = (
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
@@ -161,11 +178,6 @@
 "eQ" = (
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
-"eU" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/gun/pistol/lowchance,
-/turf/open/floor/wood,
-/area/fiorina/station/park)
 "fe" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -214,9 +226,6 @@
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer/emerald,
 /area/fiorina/station/clf_ship)
-"gd" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/park)
 "gn" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -308,14 +317,6 @@
 "im" = (
 /obj/item/reagent_container/food/snacks/meat,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station/park)
-"iv" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/stock_parts/matter_bin/adv{
-	pixel_x = -7;
-	pixel_y = 3
-	},
-/turf/open/floor/wood,
 /area/fiorina/station/park)
 "iH" = (
 /obj/effect/decal/warning_stripes{
@@ -456,9 +457,7 @@
 /turf/open/floor/almayer/green/east,
 /area/fiorina/station/clf_ship)
 "mG" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "casing_2_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
 "mM" = (
@@ -523,9 +522,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "nC" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "shell_3_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/warnplate{
 	dir = 1
 	},
@@ -596,10 +593,6 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
-"pT" = (
-/obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/gm/river/darkred_pool,
-/area/fiorina/station/park)
 "pU" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/wood,
@@ -649,6 +642,8 @@
 /area/fiorina/station/clf_ship)
 "ry" = (
 /obj/effect/landmark/corpsespawner/clf,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "rE" = (
@@ -738,6 +733,7 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "vm" = (
@@ -871,26 +867,13 @@
 /area/fiorina/station/clf_ship)
 "zy" = (
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating,
-/area/fiorina/station/clf_ship)
-"zI" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "shell_3_1"
-	},
-/turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
 "zM" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
-"zR" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/gm/river/pool,
-/area/fiorina/station/park)
-"zW" = (
-/obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/gm/river/red_pool,
-/area/fiorina/station/park)
 "zY" = (
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/botany)
@@ -933,7 +916,8 @@
 /area/fiorina/station/park)
 "Bk" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "\improper Rocinante Bridge"
+	name = "\improper Rocinante Bridge";
+	req_one_access = null
 	},
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
@@ -942,10 +926,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
-"Bv" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/prison/darkbrown2,
-/area/fiorina/station/park)
 "Bw" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer/orange/southwest,
@@ -1018,14 +998,6 @@
 /obj/item/device/radio,
 /turf/open/floor/almayer/orange/west,
 /area/fiorina/station/clf_ship)
-"Dg" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/wood,
-/area/fiorina/station/park)
 "Dm" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1035,6 +1007,7 @@
 /area/fiorina/station/clf_ship)
 "Dn" = (
 /obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
 /area/fiorina/station/clf_ship)
 "Dx" = (
@@ -1055,6 +1028,7 @@
 "Ec" = (
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "Ee" = (
@@ -1175,9 +1149,7 @@
 /turf/open/floor/plating,
 /area/fiorina/station/park)
 "HF" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "shell_3_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/transit_hub)
 "HZ" = (
@@ -1185,9 +1157,6 @@
 	icon_state = "stan8"
 	},
 /area/fiorina/station/clf_ship)
-"Ig" = (
-/turf/open/gm/river/red_pool,
-/area/fiorina/station/park)
 "Il" = (
 /obj/structure/monorail{
 	name = "launch track"
@@ -1216,11 +1185,6 @@
 "IY" = (
 /turf/open/floor/prison,
 /area/fiorina/station/park)
-"Jb" = (
-/obj/item/storage/belt/shotgun/full/quackers,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/gm/river/darkred_pool,
-/area/fiorina/station/park)
 "Jn" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/greenblue/southwest,
@@ -1246,10 +1210,6 @@
 /obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
-"Jz" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/platingdmg3,
-/area/fiorina/station/park)
 "JH" = (
 /obj/structure/closet/crate/miningcar{
 	name = "\improper materials storage bin"
@@ -1288,12 +1248,6 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/fiorina/station/clf_ship)
-"Kg" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "casing_2_1"
-	},
-/turf/open/floor/plating/panelscorched,
-/area/fiorina/station/park)
 "Ki" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1";
@@ -1362,19 +1316,13 @@
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
-"LK" = (
-/obj/structure/machinery/computer/emails{
-	pixel_y = 6
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/park)
 "LZ" = (
 /obj/item/weapon/gun/rifle/m16,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "Md" = (
 /obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/damaged3/west,
 /area/fiorina/station/clf_ship)
 "Ml" = (
@@ -1409,9 +1357,8 @@
 /area/fiorina/station/clf_ship)
 "MF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell{
-	icon_state = "casing_2_1"
-	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "Nv" = (
@@ -1432,10 +1379,6 @@
 /obj/item/attachable/extended_barrel,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
-"NO" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/gm/river/red_pool,
-/area/fiorina/station/park)
 "NS" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/park)
@@ -1467,11 +1410,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer/orange/east,
 /area/fiorina/station/clf_ship)
-"Pp" = (
-/obj/structure/machinery/light/double/blue,
-/obj/item/stack/sheet/metal,
-/turf/open/floor/wood,
-/area/fiorina/station/park)
 "Pr" = (
 /obj/item/weapon/gun/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
@@ -1591,10 +1529,6 @@
 	},
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
-"Ry" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/prison/darkbrown2,
-/area/fiorina/station/park)
 "RC" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/shotgun/incendiary{
@@ -1615,11 +1549,6 @@
 "RN" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_s_w"
-	},
-/area/fiorina/station/clf_ship)
-"RQ" = (
-/turf/open/floor/plating/warnplate{
-	dir = 1
 	},
 /area/fiorina/station/clf_ship)
 "RR" = (
@@ -1723,9 +1652,7 @@
 /turf/open/floor/almayer/blue/southeast,
 /area/fiorina/station/clf_ship)
 "UM" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "casing_2_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "UN" = (
@@ -1841,6 +1768,7 @@
 "Xf" = (
 /obj/item/weapon/gun/rifle/sniper/svd,
 /obj/item/ammo_magazine/sniper/svd,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "XB" = (
@@ -1880,10 +1808,6 @@
 /obj/item/trash/crushed_cup,
 /turf/open/floor/almayer/green/west,
 /area/fiorina/station/clf_ship)
-"Yi" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/plating/platingdmg3,
-/area/fiorina/station/park)
 "YA" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -1905,89 +1829,89 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
 "ZI" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station)
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
-OH
-gd
-NS
-gd
-gd
-gd
-NS
-NS
-IY
-jz
-Ry
-Jz
-dW
-Hr
-ai
-Hr
-ai
-Bv
-zR
-zW
-Jb
-NO
-aY
-HD
-Hr
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
 zk
-AZ
-Pp
-IH
-Dg
-HD
-Hr
-HD
-ai
-Hr
-Hr
-NS
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
 ZI
 ZI
 ei
 "}
 (2,1,1) = {"
-OH
-gd
-gd
-gd
-gd
-NS
-NS
-LK
-jz
-AX
-Yi
-ai
-ai
-jz
-Ra
-au
-ai
-HD
-zR
-Ig
-pT
-NO
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
 vF
 yv
 Ki
 Tg
 Rk
-Hr
-NS
-HD
-ai
-au
-HD
-au
-ai
-iv
-du
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
 ei
 ei
 ei
@@ -2026,10 +1950,10 @@ Lh
 eO
 Lh
 ww
-HD
-HD
-eU
-du
+ZI
+ZI
+ZI
+ZI
 ei
 ei
 ei
@@ -2122,7 +2046,7 @@ ei
 pM
 XI
 jz
-ai
+ad
 fg
 xu
 XB
@@ -2206,12 +2130,12 @@ ei
 zm
 ai
 lF
-Kg
+ad
 xx
 Av
 tx
 Md
-hp
+ab
 xH
 BS
 am
@@ -2251,11 +2175,11 @@ HD
 OQ
 iH
 oi
-RQ
+nC
 zM
 WG
 Qg
-eQ
+mG
 xp
 yf
 xn
@@ -2288,9 +2212,9 @@ ei
 "}
 (10,1,1) = {"
 zm
+ae
 jz
-jz
-ai
+ad
 Wr
 IR
 nD
@@ -2336,10 +2260,10 @@ tW
 Rk
 iJ
 Ml
-aO
+ac
 Nv
 xH
-zI
+mG
 Nv
 AQ
 Gv
@@ -2466,7 +2390,7 @@ ry
 tM
 Dn
 vs
-It
+aa
 Nv
 Nv
 ra

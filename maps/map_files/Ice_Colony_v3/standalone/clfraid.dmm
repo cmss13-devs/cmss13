@@ -1,4 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"ab" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"ac" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/junkyard/cp_bar)
+"ad" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"ae" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
 "aj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	dir = 1;
@@ -339,9 +359,7 @@
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "kN" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_2_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "kP" = (
@@ -396,9 +414,7 @@
 	},
 /area/shiva/interior/colony/clf_shuttle)
 "nc" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "shell_2_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ne" = (
@@ -474,9 +490,7 @@
 	icon_state = "gib6"
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_2_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "pt" = (
@@ -879,6 +893,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Ag" = (
@@ -1438,9 +1453,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "Mf" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_2_1"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "Ml" = (
@@ -1475,12 +1488,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/green,
 /area/shiva/interior/colony/botany)
-"Ne" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_2_1"
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/s_admin)
 "Ns" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Administration"
@@ -1548,16 +1555,11 @@
 "Qb" = (
 /obj/structure/machinery/light/double,
 /obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Qe" = (
 /turf/open/floor/plating/platingdmg3,
-/area/shiva/interior/colony/s_admin)
-"Qx" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_2_1"
-	},
-/turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "Qz" = (
 /obj/structure/bed/chair{
@@ -1714,6 +1716,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "UW" = (
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "Vc" = (
@@ -2195,7 +2198,7 @@ Lr
 AK
 Qa
 qZ
-Eg
+ab
 UW
 AK
 yb
@@ -2207,7 +2210,7 @@ CI
 GW
 Rv
 Yn
-EM
+aa
 Gz
 PA
 hq
@@ -2223,7 +2226,7 @@ DW
 pM
 Co
 Kf
-Qx
+ae
 Kf
 Kf
 Co
@@ -2256,7 +2259,7 @@ AT
 pM
 pM
 nc
-DH
+ad
 rb
 JM
 dL
@@ -2285,7 +2288,7 @@ pM
 pM
 pM
 ne
-Eg
+ab
 JE
 Kf
 DH
@@ -2312,7 +2315,7 @@ DH
 aW
 GG
 pM
-DH
+ad
 uA
 uP
 FN
@@ -2423,7 +2426,7 @@ Af
 iG
 ne
 DH
-DH
+ad
 Ke
 Gz
 EM
@@ -2569,7 +2572,7 @@ Eg
 JM
 EM
 EM
-EM
+aa
 DU
 AQ
 aC
@@ -2644,11 +2647,11 @@ Rz
 ub
 Rz
 Sx
-Ne
+nc
 Rz
 tf
 SY
-Kf
+ae
 DU
 yK
 HO
@@ -2732,7 +2735,7 @@ DU
 DU
 DU
 DU
-Qe
+Mf
 JU
 Kf
 Gz
@@ -2761,7 +2764,7 @@ Wf
 Wf
 aC
 aC
-aC
+ac
 BZ
 BZ
 aC

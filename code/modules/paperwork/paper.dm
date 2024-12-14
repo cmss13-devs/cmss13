@@ -620,6 +620,10 @@
 	name = "Log Entry"
 	info = "Our ship is lost. Our pods have crashed on a company-occupied planet. It appears the colony is overrun with hostile creatures, and many of the men are already dead. Our fight for freedom cannot end like this! We will live on, for the liberation!"
 
+/obj/item/paper/varadero/clf
+	name = "SOS!"
+	info = "Mayday! Mayday! To all nearby CLF frequencies, we are under attack! Unknown creatures have overrun New Varadero outpost and our shuttle is damaged beyond repair! We ne-"
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 

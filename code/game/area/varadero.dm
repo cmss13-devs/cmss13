@@ -346,3 +346,7 @@
 	icon_state = "predship"
 	minimap_color = MINIMAP_AREA_SHIP
 	unoviable_timer = FALSE
+
+/area/varadero/interior/research/clfship
+	name = "New Varadero - Unregistered Shuttle"
+	icon_state = "offices0"

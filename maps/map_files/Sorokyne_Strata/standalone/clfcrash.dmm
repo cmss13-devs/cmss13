@@ -1,0 +1,4615 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ad" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"ag" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"aj" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"ak" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"as" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/item/clothing/gloves/latex,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"av" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2;
+	name = "\improper Airlock"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/canteen/bar)
+"aB" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/admin)
+"aD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"aG" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"aM" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"aN" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/strata,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"aP" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"aT" = (
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 1e+006;
+	dir = 1
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"aU" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"aW" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"aX" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"ba" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"bm" = (
+/obj/item/stack/snow,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/strata/ag/interior/outpost/engi/drome)
+"bw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"bC" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"bD" = (
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"bH" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"cg" = (
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"ci" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"cj" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"cp" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"ct" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"cu" = (
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"cA" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement/cement12,
+/area/strata/ug/interior/outpost/platform)
+"cC" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"cG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"cH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"cI" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"cJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"cW" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"cY" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"di" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"dn" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"dp" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/ug/interior)
+"du" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"dz" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"dA" = (
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"dJ" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/strata,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"dL" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"dM" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/admin)
+"dW" = (
+/obj/item/weapon/gun/rifle/sniper/svd,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/interior/outpost/engi/drome)
+"eg" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"eu" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement3,
+/area/strata/ug/interior/outpost/platform)
+"ev" = (
+/obj/structure/bed/bedroll,
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"eA" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"eE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"eG" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/interior/outpost/engi/drome)
+"eH" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/canteen/bar)
+"eK" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"eS" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"eT" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"fb" = (
+/obj/effect/landmark/survivor_spawner/clf_lead/soro,
+/turf/open/floor/plating/kutjevo/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"fe" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "upp25";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"fs" = (
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/obj/item/attachable/extended_barrel,
+/obj/item/attachable/extended_barrel,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/attached_gun/flamer,
+/obj/structure/surface/rack,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"fy" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_magazine/sniper/svd,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"fz" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"fB" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"fJ" = (
+/obj/item/stack/rods,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"fP" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"fQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/canteen)
+"fR" = (
+/obj/effect/landmark/survivor_spawner/clf_engi/soro,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"fT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2;
+	name = "\improper Airlock"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/admin)
+"ga" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"gc" = (
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"gd" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"gg" = (
+/obj/structure/bed/chair/office/light,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"gj" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"gC" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"gD" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"gF" = (
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"gJ" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/item/stack/medical/bruise_pack,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"gR" = (
+/obj/structure/closet/crate/construction,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/plasteel/medium_stack,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"hb" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/med)
+"hd" = (
+/turf/open/asphalt/cement/cement12,
+/area/strata/ug/interior/outpost/platform)
+"hg" = (
+/obj/item/storage/surgical_tray,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/bodybags{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"hh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle/ert{
+	icon_state = "T11";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"hq" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T8";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"hy" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ug/interior/outpost/platform)
+"hB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"hM" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/outpost/platform)
+"hP" = (
+/obj/structure/sink{
+	pixel_y = 16
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/admin)
+"hQ" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"hW" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"id" = (
+/obj/item/ammo_magazine/sniper/svd,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"ie" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/strata/ag/interior/outpost/engi/drome)
+"ih" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"in" = (
+/obj/structure/curtain/shower,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"iK" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"iN" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/greengrid,
+/area/strata/ag/interior/outpost/engi/drome)
+"iO" = (
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"iP" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"iQ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"iV" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"iW" = (
+/obj/structure/surface/rack,
+/obj/item/book/manual/ripley_build_and_repair,
+/obj/item/book/manual/surgery,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/maint)
+"jb" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"jc" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"jq" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 1;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"jr" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"jD" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"jF" = (
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"jL" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"jM" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"jN" = (
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/med)
+"kh" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
+/area/strata/ag/interior/outpost/engi/drome)
+"km" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/strata/cyan3/west,
+/area/strata/ag/interior/outpost/med)
+"ks" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/maint)
+"ku" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"kB" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/radio,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"kJ" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"kP" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"kT" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/strata/ag/interior/outpost/engi/drome)
+"kV" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"kX" = (
+/turf/open/asphalt/cement,
+/area/strata/ag/interior/outpost/admin)
+"ld" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"ln" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"lo" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"ly" = (
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"lC" = (
+/obj/structure/cargo_container/horizontal/blue/middle,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"lH" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp3";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"lL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "T10";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"lV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"lX" = (
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"mh" = (
+/obj/structure/machinery/computer/crew,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"mm" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"mo" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"mp" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"mq" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "T2";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"mA" = (
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
+/obj/structure/surface/rack,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"mF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp20";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"mH" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"mN" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/canteen)
+"mO" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ug/interior/outpost/platform)
+"mU" = (
+/obj/item/stack/catwalk,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"mV" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T20";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"ne" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"ng" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"nk" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"nl" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"nm" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"np" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"nr" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T12";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"nH" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/panelscorched,
+/area/strata/ag/interior/outpost/engi/drome)
+"nQ" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"nT" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"oe" = (
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/strata/ag/interior/outpost/engi/drome)
+"ok" = (
+/obj/structure/closet/bombcloset,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"oq" = (
+/turf/open/floor/plating/burnt_platingdmg3/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"ox" = (
+/turf/open/floor/strata/white_cyan3/east,
+/area/strata/ag/interior/outpost/med)
+"oN" = (
+/obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"oP" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/obj/structure/mirror{
+	pixel_x = -29
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"oY" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"oZ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp25";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"pc" = (
+/obj/structure/closet/coffin,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"pd" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/admin)
+"pf" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/strata/ag/interior/outpost/engi/drome)
+"pl" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"pp" = (
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"pr" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"px" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"py" = (
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"pA" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/admin)
+"pB" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"pC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"pF" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"pO" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T3";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"pR" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"pZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"qa" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"qe" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"qh" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	faction_group = list("CLF")
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"qi" = (
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"qm" = (
+/obj/structure/largecrate/supply/supplies/mre{
+	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
+	name = "\improper CLF Supply MRE crate (x50)"
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"qn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"qo" = (
+/obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"qt" = (
+/obj/structure/pipes/vents/pump/on,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"qy" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"qz" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"qA" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"qB" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"qE" = (
+/obj/structure/cargo_container/horizontal/blue/bottom,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"qG" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"qO" = (
+/obj/structure/cargo_container/arious/rightmid,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"qT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/med)
+"qV" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"qW" = (
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/outpost/platform)
+"qZ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"rb" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"rm" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/plating/panelscorched,
+/area/strata/ag/interior/outpost/engi/drome)
+"ro" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"rp" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"rr" = (
+/obj/item/stack/sheet/metal,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"rx" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/condiment/enzyme,
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"ry" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"rC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"rH" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"rI" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"rK" = (
+/obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"rL" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"rN" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"rS" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/admin)
+"rY" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10"
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"sd" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/canteen)
+"si" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp2";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"su" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"sy" = (
+/obj/item/storage/pill_bottle/bicaridine,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"sB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "T16";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"sC" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"sH" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"sL" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"sQ" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/weapon/gun/rifle/type71/carbine,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"sS" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"tA" = (
+/obj/item/clipboard,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"tG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/admin)
+"tI" = (
+/obj/structure/surface/rack,
+/obj/item/paper_bin,
+/obj/item/stack/sheet/glass,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"tT" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"tV" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/structure/machinery/door/window/eastright{
+	dir = 8
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"tX" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/bottle/sake,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"ud" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"ug" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "upp27";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"um" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"up" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"uz" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "T1";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"uA" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"uC" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"uM" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/engi/drome)
+"uR" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"uT" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"vf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/med)
+"vh" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ag/interior/outpost/med)
+"vp" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/obj/structure/window/reinforced/tinted,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"vq" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"vw" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
+/area/strata/ag/interior/outpost/engi/drome)
+"vx" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"vz" = (
+/obj/item/stack/snow,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"vD" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/knifepouch,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"vG" = (
+/obj/structure/prop/ice_colony/tiger_rug{
+	layer = 2.1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"vH" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"vP" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"vR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "T20";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"vX" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/med)
+"wi" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/radio,
+/obj/item/tool/pen/blue,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"wn" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"ws" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/large_holster/machete/full,
+/obj/item/storage/large_holster/machete/full,
+/obj/item/storage/large_holster/machete/full,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"wG" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"wP" = (
+/obj/structure/sign/safety/fire_haz,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/admin)
+"wR" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/strata/white_cyan3/east,
+/area/strata/ag/interior/outpost/med)
+"wW" = (
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
+	dir = 2;
+	name = "Medical Airlock"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/med)
+"xa" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"xs" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"xt" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"xx" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"xB" = (
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"xE" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"xG" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"xN" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"xP" = (
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/outpost/platform)
+"xQ" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"xT" = (
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"xX" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"xY" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"ya" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"yc" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/light/small,
+/turf/open/asphalt/cement,
+/area/strata/ag/interior/outpost/admin)
+"yh" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/strata/ug/interior/outpost/platform)
+"yi" = (
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"yk" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"ym" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"yA" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"yC" = (
+/obj/structure/sign/safety/maint,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi/drome)
+"yE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/asphalt/cement/cement12,
+/area/strata/ug/interior/outpost/platform)
+"yG" = (
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"yJ" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"yM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"yT" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/admin)
+"yY" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/head/hardhat/white,
+/obj/item/clothing/head/hardhat/white,
+/obj/item/clothing/head/hardhat/white,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"za" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"zd" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"zg" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"zi" = (
+/obj/structure/surface/rack,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/item/storage/belt/utility/full,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"zj" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"zk" = (
+/obj/structure/machinery/gibber,
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"zp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"zv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/medical/colony,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/med)
+"zy" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"zz" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/large_holster/machete/full,
+/obj/item/storage/large_holster/machete/full,
+/obj/item/storage/large_holster/machete/full,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/obj/item/stack/sheet/metal/medium_stack,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/platform)
+"zD" = (
+/turf/open/floor/plating/panelscorched,
+/area/strata/ag/interior/outpost/admin)
+"zI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"zR" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Ac" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	name = "\improper Airlock"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"Aq" = (
+/obj/structure/morgue,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"Aw" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ay" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"AC" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/admin)
+"AF" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"AH" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T5";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"AM" = (
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"AN" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"AZ" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/syndicate,
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ba" = (
+/obj/item/stack/medical/splint,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/med)
+"Bd" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"Bm" = (
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Bw" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"By" = (
+/obj/item/storage/box/ids,
+/obj/structure/surface/rack,
+/obj/item/device/radio,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"BH" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Cb" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp5";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Cf" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"Cq" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T16";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Cu" = (
+/obj/item/storage/belt/knifepouch,
+/obj/structure/surface/rack,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"CO" = (
+/obj/item/storage/secure/briefcase,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"CR" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/toy/deck,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"CT" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/interior/outpost/engi/drome)
+"CU" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 1;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"CW" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"CZ" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/closed/shuttle/ert{
+	icon_state = "T19";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Di" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Dk" = (
+/obj/structure/sign/safety/fridge,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/canteen/bar)
+"Dn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "T9";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Do" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Dq" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Dr" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"DI" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"DJ" = (
+/obj/structure/surface/rack,
+/obj/item/device/flashlight,
+/obj/item/device/flashlight,
+/obj/item/device/flashlight,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"DL" = (
+/turf/open/floor/strata/cyan3/west,
+/area/strata/ag/interior/outpost/med)
+"DO" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/white_cyan3/east,
+/area/strata/ag/interior/outpost/med)
+"DT" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/strata/floor2,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Ej" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ek" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"El" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"Eq" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Er" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ev" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib6"
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/structure/barricade/metal/wired{
+	icon_state = "metal_1"
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ex" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"Ey" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "upp1";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"EA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"EL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"EM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"EO" = (
+/obj/effect/decal/cleanable/ash,
+/turf/closed/shuttle/ert{
+	icon_state = "T16";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"EV" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"EW" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi/drome)
+"Fm" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Fo" = (
+/obj/structure/morgue{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"Fr" = (
+/obj/item/stack/rods,
+/turf/open/asphalt/cement/cement12,
+/area/strata/ug/interior/outpost/platform)
+"Fx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Fy" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/admin)
+"FH" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/cyan3/west,
+/area/strata/ag/interior/outpost/med)
+"FO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	dir = 1;
+	name = "\improper Airlock"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"FT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"FV" = (
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"FY" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"Gt" = (
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/maint)
+"Gu" = (
+/obj/structure/surface/rack,
+/obj/item/storage/surgical_tray{
+	pixel_y = 8
+	},
+/obj/item/roller/surgical{
+	pixel_y = -4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"Gy" = (
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
+"GA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"GH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"GK" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"Hf" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Hg" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/closed/shuttle/ert{
+	icon_state = "T17";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Hl" = (
+/obj/item/storage/toolbox/electrical,
+/obj/structure/surface/rack,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ht" = (
+/turf/open/floor/plating/panelscorched,
+/area/strata/ag/interior/outpost/engi/drome)
+"Hz" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/closed/shuttle/ert{
+	icon_state = "T15";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"HA" = (
+/obj/structure/filingcabinet,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"HM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/engi/drome)
+"HR" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"HS" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/strata/cyan3/west,
+/area/strata/ag/interior/outpost/med)
+"Ic" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ii" = (
+/turf/open/asphalt/cement,
+/area/strata/ug/interior/outpost/platform)
+"Ij" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"Io" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/canteen)
+"Is" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ix" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/stack/sheet/wood,
+/obj/item/stack/sandbags,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/canteen/bar)
+"IA" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -1
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"IN" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"IQ" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"IU" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"IW" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"IY" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T7";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Ja" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Jb" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/greengrid,
+/area/strata/ag/interior/outpost/engi/drome)
+"Jg" = (
+/obj/item/stack/rods,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Jl" = (
+/obj/item/attachable/heavy_barrel,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/attached_gun/flamer,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/structure/surface/rack,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"Jo" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"JD" = (
+/obj/item/ammo_magazine/sniper/svd,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"JE" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/admin)
+"JN" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"JX" = (
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/med)
+"Kb" = (
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"Kh" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"Km" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"KK" = (
+/obj/structure/bed{
+	icon_state = "abed"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"KP" = (
+/obj/item/stack/rods,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"KW" = (
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"KY" = (
+/obj/structure/machinery/processor,
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"La" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T4";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Lc" = (
+/obj/structure/machinery/door_control{
+	id = "or01";
+	name = "Surgery Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = 23
+	},
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"Lh" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Li" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Lk" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Ls" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/closed/shuttle/ert{
+	icon_state = "upp5";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Lx" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ly" = (
+/obj/structure/closet/coffin,
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"LC" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T14";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"LD" = (
+/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/asphalt/cement/cement12,
+/area/strata/ug/interior/outpost/platform)
+"LN" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"LO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"LT" = (
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/outpost/admin)
+"LV" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Ma" = (
+/obj/structure/mirror,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/admin)
+"Mi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ml" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/admin)
+"Mv" = (
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"Mw" = (
+/obj/structure/closet/coffin,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"Mz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"MI" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"MJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"ML" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
+/area/strata/ag/interior/outpost/engi/drome)
+"MP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp21";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Nf" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Nj" = (
+/obj/structure/largecrate/random,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"Nk" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"Np" = (
+/obj/item/ammo_magazine/shotgun/incendiary{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"Nx" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/canteen/bar)
+"NE" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/canteen/bar)
+"NF" = (
+/obj/effect/landmark/survivor_spawner/clf_medic/soro,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"NM" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"NO" = (
+/obj/structure/kitchenspike,
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"NR" = (
+/obj/structure/largecrate/random,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement4,
+/area/strata/ug/interior/outpost/platform)
+"NX" = (
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"Oa" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Oh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp1";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Oj" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Oo" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"Op" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Oq" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ow" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"OA" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/outpost/platform)
+"OG" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"ON" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"OP" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"OS" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/med)
+"Pb" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"Pd" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement2,
+/area/strata/ug/interior/outpost/platform)
+"Pg" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"Ph" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"Pk" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/strata/white_cyan3/east,
+/area/strata/ag/interior/outpost/med)
+"Po" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Pr" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/ug/interior/outpost/platform)
+"Px" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Pz" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"PW" = (
+/obj/effect/spawner/random/toolbox,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/structure/closet/crate/secure/ammo,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"QE" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"QF" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"QI" = (
+/obj/structure/sign/nosmoking_2,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/admin)
+"QL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"QW" = (
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Rc" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/engi/drome)
+"Rd" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Rf" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/canteen)
+"Rj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"Rt" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"RF" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"RG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/white_cyan4/north,
+/area/strata/ag/interior/outpost/med)
+"RW" = (
+/obj/structure/morgue{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"Sb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/admin)
+"Sj" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Sk" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/med)
+"SB" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/utility/full,
+/obj/item/tank/anesthetic,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"SP" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"SY" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/ag/interior/outpost/med)
+"Ta" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Tt" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/med)
+"Tx" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"TB" = (
+/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"TC" = (
+/obj/structure/closet/firecloset/full,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"TI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"TO" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"TU" = (
+/turf/open/floor/strata,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"TV" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/canteen)
+"TW" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/device/flashlight,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ue" = (
+/obj/item/stack/rods,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Uf" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Un" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0;
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"Uy" = (
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/structure/surface/rack,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"UA" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 9
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -3
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"UH" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/suit/storage/hazardvest,
+/obj/item/clothing/head/hardhat/white,
+/obj/item/clothing/head/hardhat/white,
+/obj/item/clothing/head/hardhat/white,
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"UP" = (
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"UR" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"UZ" = (
+/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"Vb" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"Vc" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
+/area/strata/ag/interior/outpost/engi/drome)
+"Vd" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"Vg" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"Vk" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ug/interior/outpost/underground_dorms/med1)
+"Vp" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/outpost/platform)
+"Vu" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Vw" = (
+/obj/structure/machinery/reagentgrinder,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
+"Vz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"VA" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"VE" = (
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ag/interior/outpost/med)
+"VH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/ag/interior/outpost/med)
+"VK" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/outpost/platform)
+"VN" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"VU" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"VV" = (
+/obj/structure/surface/rack,
+/obj/item/book/manual/engineering_guide,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/maint)
+"VY" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/canteen/bar)
+"Wb" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/med)
+"Wd" = (
+/obj/structure/morgue,
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
+"Wi" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"Ws" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"Wy" = (
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"WG" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp27";
+	name = "crashed shuttle"
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"WL" = (
+/obj/structure/bed/stool,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"WO" = (
+/turf/open/asphalt/cement/cement4,
+/area/strata/ug/interior/outpost/platform)
+"WP" = (
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/strata/ag/interior/outpost/engi/drome)
+"WV" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	dir = 1;
+	name = "\improper Airlock"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"Xp" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/admin)
+"Xu" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"Xv" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/plating/platingdmg3,
+/area/strata/ag/interior/outpost/engi/drome)
+"XA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"XD" = (
+/obj/structure/sign/safety/medical,
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/engi/drome)
+"XI" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"XJ" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"XP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T11";
+	name = "crashed shuttle";
+	opacity = 0
+	},
+/area/strata/ag/interior/outpost/engi/drome)
+"XQ" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/platebot,
+/area/strata/ag/interior/outpost/engi/drome)
+"XY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"Yo" = (
+/obj/item/stack/rods,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ug/interior/outpost/platform)
+"Yz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"YD" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/engi/drome)
+"YR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"YS" = (
+/obj/item/stack/rods,
+/obj/item/ammo_magazine/sniper/svd,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/engi/drome)
+"YT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/engi/drome)
+"YW" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Zc" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/engi/drome)
+"Zh" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"Zo" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata,
+/area/strata/ag/interior/outpost/engi/drome)
+"Zp" = (
+/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/engi/drome)
+"Zq" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/ag/interior/outpost/engi/drome)
+"Zr" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/med)
+"Zu" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outpost/admin)
+"ZG" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
+"ZI" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/computer/cameras{
+	desc = "The flight controls for a Mi-220 Attack Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
+	name = "flight controls";
+	network = null;
+	pixel_y = 21
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/strata/ag/interior/outpost/engi/drome)
+"ZQ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/outpost/engi/drome)
+"ZS" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/platingdmg1,
+/area/strata/ag/interior/outpost/engi/drome)
+"ZY" = (
+/turf/open/floor/plating,
+/area/strata/ag/interior/outpost/admin)
+
+(1,1,1) = {"
+sH
+ry
+fT
+Ex
+ry
+tX
+rN
+FV
+VA
+SY
+IU
+nQ
+Lc
+as
+OS
+RG
+wR
+Pk
+Pk
+DO
+ox
+ox
+DO
+HR
+JX
+Zr
+JX
+Tt
+Wb
+FH
+HS
+DL
+DL
+km
+DL
+"}
+(2,1,1) = {"
+Sb
+Zu
+aB
+FV
+LT
+LT
+tG
+EL
+pd
+Wb
+SY
+SY
+SY
+SY
+Wb
+EW
+EW
+ZQ
+XD
+EW
+uA
+WV
+Wb
+Wb
+SY
+SY
+SY
+zv
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+Wb
+"}
+(3,1,1) = {"
+Sb
+gC
+aB
+rY
+LT
+LT
+tG
+cI
+Ma
+hP
+AC
+in
+Rc
+Hf
+Zq
+tI
+SB
+Bm
+EW
+fB
+cp
+cp
+Wb
+vf
+Wd
+Wd
+Aq
+qT
+Wb
+ZG
+HA
+UR
+Wb
+eK
+pc
+"}
+(4,1,1) = {"
+WL
+mh
+yT
+UZ
+LT
+LT
+tG
+Pg
+pd
+rS
+rS
+in
+Rc
+Hf
+Bm
+Bm
+Bm
+Bm
+EW
+QE
+za
+uA
+Wb
+Ba
+VE
+VE
+vh
+Sk
+HR
+jM
+JX
+Oo
+Wb
+jM
+Mw
+"}
+(5,1,1) = {"
+WL
+mh
+Gy
+pF
+zd
+LT
+tG
+FV
+Ml
+rS
+rS
+FV
+Ht
+yG
+Bm
+Bm
+zi
+zi
+Gy
+IW
+TB
+Op
+Wb
+jN
+Fo
+Fo
+Fo
+jN
+HR
+jM
+JX
+hQ
+Wb
+jM
+Ly
+"}
+(6,1,1) = {"
+aD
+Gy
+Gy
+yT
+uR
+LT
+tG
+rY
+pd
+Fy
+rS
+zD
+yG
+Ht
+yG
+XP
+EW
+Gy
+Gy
+GH
+Po
+Po
+Wb
+jN
+Wd
+Wd
+Wd
+jN
+HR
+hg
+JX
+jM
+HR
+jM
+pc
+"}
+(7,1,1) = {"
+aD
+Xp
+wP
+yT
+cI
+mo
+Vd
+uC
+pd
+ln
+SP
+ZY
+yG
+pZ
+XP
+hq
+IY
+Dn
+eS
+Un
+cp
+cp
+wW
+jN
+VE
+VE
+VH
+jN
+Wb
+XY
+nl
+aG
+Wb
+eK
+pc
+"}
+(8,1,1) = {"
+aD
+aB
+RF
+yT
+yT
+yT
+Ic
+yC
+pd
+pd
+pd
+pd
+Rc
+hh
+hq
+IY
+IY
+lL
+qV
+Lk
+uA
+uA
+Gy
+hb
+Fo
+RW
+Fo
+jN
+SY
+SY
+SY
+SY
+SY
+SY
+SY
+"}
+(9,1,1) = {"
+aD
+aB
+Kb
+kX
+kX
+yT
+YW
+yM
+EW
+Vg
+gg
+MJ
+EW
+EA
+Bd
+EA
+EA
+EA
+EA
+Bd
+iK
+dn
+Gy
+Gy
+SY
+vX
+SY
+Wb
+SY
+oP
+Ja
+fz
+vp
+vp
+KK
+"}
+(10,1,1) = {"
+ga
+yT
+Kb
+cu
+yc
+yT
+Bm
+FT
+yC
+Vg
+QW
+nk
+EW
+dA
+Xu
+Xu
+ML
+sC
+sC
+bD
+nm
+uA
+kB
+QF
+wn
+Ek
+Wy
+Wy
+Rc
+OP
+Vk
+DT
+TU
+TU
+TU
+"}
+(11,1,1) = {"
+Kb
+QI
+di
+aT
+kX
+yT
+Ht
+yG
+EW
+Np
+Ht
+xt
+pf
+UA
+IA
+yA
+kT
+Xu
+rr
+yG
+sL
+eT
+Lh
+Wy
+Wy
+Wy
+Wy
+Nj
+Rc
+tV
+fz
+LV
+aN
+zR
+Rd
+"}
+(12,1,1) = {"
+dJ
+yT
+yT
+yT
+pA
+yT
+mF
+EA
+cJ
+py
+Sj
+uA
+Jg
+Rj
+py
+Ht
+yG
+py
+yG
+Ht
+ZS
+Uf
+cg
+eA
+uA
+uA
+Uy
+CW
+Rc
+fz
+fz
+IQ
+kJ
+Px
+fz
+"}
+(13,1,1) = {"
+Kb
+CR
+np
+YT
+Is
+bw
+WG
+ZI
+gc
+yG
+oq
+gc
+QW
+Li
+dL
+gc
+py
+yG
+ym
+py
+yG
+Cf
+yG
+yG
+Nf
+Oq
+EW
+EW
+Rc
+Gy
+fz
+xQ
+pB
+mm
+fz
+"}
+(14,1,1) = {"
+Kb
+kV
+np
+lV
+QW
+yG
+aX
+yG
+yG
+ym
+gc
+ly
+lC
+qE
+qa
+yG
+uA
+ya
+yG
+gc
+uz
+pO
+pO
+Oh
+py
+uA
+uA
+hW
+Rc
+Gy
+fz
+fz
+fz
+fz
+fz
+"}
+(15,1,1) = {"
+zI
+Mz
+Fm
+Oa
+yG
+Ht
+aX
+CU
+yG
+yG
+fJ
+gc
+Kh
+cp
+iN
+ct
+Kh
+yG
+yG
+EA
+EA
+Ey
+Km
+LC
+yG
+Wy
+Wy
+mA
+Rc
+Gy
+Gy
+dp
+dp
+dp
+ro
+"}
+(16,1,1) = {"
+KW
+JE
+iO
+lV
+Ht
+ug
+Xu
+zp
+yG
+fb
+py
+gc
+cH
+uA
+uA
+yG
+tA
+yG
+py
+yG
+PW
+yG
+yG
+yG
+yJ
+cW
+Wy
+Hl
+Gy
+Gy
+lo
+Vp
+gj
+Vp
+Vp
+"}
+(17,1,1) = {"
+KW
+dM
+OG
+lV
+yG
+fe
+Cb
+Cb
+yG
+cH
+yG
+yG
+NF
+Ow
+si
+fJ
+cp
+Ue
+gc
+cH
+yG
+Ht
+WP
+bm
+oe
+gc
+Bm
+XI
+hy
+hd
+Vp
+Vp
+Vp
+Vp
+Vp
+"}
+(18,1,1) = {"
+KW
+EV
+np
+EM
+EW
+EW
+Bd
+dz
+UP
+cC
+UP
+XJ
+xT
+Gu
+si
+Bw
+XQ
+lX
+rK
+lX
+lX
+Ht
+yG
+py
+vz
+rm
+gc
+bC
+Yo
+cA
+Vp
+gF
+gF
+gF
+gF
+"}
+(19,1,1) = {"
+Gy
+Gy
+Ws
+EM
+Ij
+TI
+MP
+aM
+fR
+yG
+cH
+yG
+kh
+ev
+si
+qo
+lX
+yG
+rH
+yG
+yG
+lX
+lX
+yG
+id
+YS
+qh
+pp
+xP
+yE
+gF
+Ph
+Ph
+rp
+gF
+"}
+(20,1,1) = {"
+zk
+Gy
+iO
+EM
+uT
+aP
+MP
+Zh
+gR
+XJ
+yG
+Lx
+Cb
+Cb
+lH
+Ht
+py
+yG
+qO
+fJ
+oN
+yG
+XQ
+lX
+dW
+Ay
+mU
+Mi
+qW
+Fr
+hB
+gF
+gF
+gF
+gF
+"}
+(21,1,1) = {"
+NO
+Gy
+iO
+EM
+uT
+uT
+oZ
+Nk
+qm
+py
+fJ
+gc
+yG
+um
+Ht
+Ht
+yG
+lX
+Jo
+py
+lX
+lX
+yG
+JD
+fy
+yG
+qe
+pp
+OA
+LD
+ak
+gF
+gF
+gF
+gF
+"}
+(22,1,1) = {"
+zj
+VY
+iO
+EM
+Ij
+ok
+EW
+ne
+eg
+yG
+Mv
+gc
+yG
+yG
+lX
+lX
+lX
+lX
+yG
+XJ
+ZS
+Cf
+sL
+lX
+WP
+eT
+VU
+Ev
+hM
+cA
+Pr
+xB
+Vp
+Vp
+Vp
+"}
+(23,1,1) = {"
+Dk
+VY
+mp
+EM
+EW
+EW
+EW
+EW
+cW
+Ht
+vH
+Xv
+ym
+yG
+Ej
+yG
+gc
+lX
+lX
+FY
+FY
+NX
+El
+Aw
+yG
+XJ
+ld
+KP
+mO
+hd
+Vp
+Vp
+rb
+Vp
+lo
+"}
+(24,1,1) = {"
+rx
+VY
+iO
+EM
+vq
+pC
+jb
+EW
+DI
+yG
+XJ
+yG
+Ht
+Ht
+yG
+dL
+py
+Cb
+lH
+pO
+La
+CT
+eG
+ag
+oe
+uA
+Bm
+XI
+hy
+mO
+Vp
+Vp
+Vp
+Vp
+Vp
+"}
+(25,1,1) = {"
+AM
+VY
+iO
+EM
+EW
+jb
+LN
+EW
+ie
+JN
+Jl
+fs
+kT
+cW
+yG
+ag
+py
+nr
+Bd
+mq
+LC
+sS
+sS
+vx
+vx
+vx
+Wy
+uA
+Gy
+mO
+lo
+Vp
+Pd
+eu
+eu
+"}
+(26,1,1) = {"
+Ix
+av
+xE
+Di
+EW
+sy
+gJ
+EW
+Vc
+AF
+Xu
+Xu
+vw
+nT
+nT
+sS
+Jb
+oq
+oq
+yG
+py
+py
+cp
+Wy
+Wy
+Wy
+su
+uA
+Gy
+mO
+Vp
+Vp
+NR
+Ii
+Ii
+"}
+(27,1,1) = {"
+Vw
+NE
+Oj
+Di
+EW
+EW
+EW
+EW
+Cb
+Cb
+Cb
+Bd
+Ls
+Cb
+Cb
+uA
+uA
+yG
+uA
+yG
+uA
+cW
+Ht
+uA
+uA
+uA
+xX
+uA
+hy
+mO
+dp
+Vp
+NR
+Ii
+Ii
+"}
+(28,1,1) = {"
+KY
+NE
+iO
+EM
+QW
+jq
+QW
+ng
+Cq
+vR
+IY
+IY
+CZ
+eS
+iV
+xa
+yG
+QW
+QW
+QW
+gc
+Zp
+QW
+QW
+QW
+qB
+EW
+EW
+hy
+dp
+dp
+dp
+mO
+Ii
+yh
+"}
+(29,1,1) = {"
+Nx
+eH
+iO
+TO
+Is
+wG
+Is
+xN
+nH
+sB
+mV
+IY
+Hg
+qV
+IN
+Ht
+gc
+cW
+yG
+QW
+uA
+cj
+ON
+uA
+uA
+uA
+Cu
+vD
+Rc
+EW
+EW
+EW
+EW
+ZQ
+dp
+"}
+(30,1,1) = {"
+Io
+TV
+iO
+lV
+QW
+iP
+XA
+uM
+zy
+pR
+Cq
+mV
+IY
+AH
+Ht
+yG
+py
+gc
+yG
+Wy
+cY
+jc
+sQ
+aj
+aj
+Wy
+Wy
+Wy
+Wi
+Bm
+Bm
+Bm
+Bm
+Bm
+dp
+"}
+(31,1,1) = {"
+mN
+Rf
+Wy
+Yz
+QW
+Rc
+zg
+zg
+LO
+Rc
+Rc
+EO
+Hz
+LC
+Ht
+yG
+qi
+yG
+uT
+QW
+Wy
+cY
+TW
+gd
+AZ
+Pz
+Wy
+Wy
+EW
+yk
+TC
+BH
+Hf
+pl
+dp
+"}
+(32,1,1) = {"
+mN
+Rf
+Wy
+Yz
+QW
+Rc
+xt
+fP
+HM
+ih
+Rc
+px
+px
+px
+EW
+EW
+EW
+MI
+EW
+EW
+Wy
+Wy
+Rc
+Rc
+Rc
+Rc
+NM
+NM
+Rc
+EW
+EW
+EW
+EW
+EW
+dp
+"}
+(33,1,1) = {"
+fQ
+sd
+Zo
+Dr
+QW
+Rc
+yi
+vG
+tT
+jF
+Rc
+ku
+jb
+jb
+vq
+gD
+Wy
+ad
+qn
+Zc
+QW
+Wy
+Rc
+dp
+dp
+dp
+qG
+qG
+dp
+dp
+dp
+dp
+dp
+dp
+dp
+"}
+(34,1,1) = {"
+ks
+ks
+cp
+Vz
+QW
+Rc
+CO
+wi
+HM
+qy
+Rc
+mH
+Fx
+Tx
+EW
+Wy
+QW
+QW
+cG
+Zc
+QW
+Wy
+Rc
+dp
+dp
+Rt
+Pb
+Rt
+Rt
+dp
+dp
+dp
+dp
+dp
+dp
+"}
+(35,1,1) = {"
+VV
+ks
+Wy
+Yz
+QW
+Rc
+GK
+MJ
+HM
+VN
+Rc
+jb
+rC
+jb
+EW
+Wy
+QW
+px
+px
+Rc
+Dq
+Wy
+Rc
+dp
+Vp
+qZ
+rI
+rI
+Rt
+bH
+Vp
+dp
+dp
+dp
+dp
+"}
+(36,1,1) = {"
+Gt
+ks
+Wy
+Yz
+QW
+Rc
+kP
+xs
+HM
+By
+Rc
+vP
+rC
+jb
+EW
+rL
+QW
+Vg
+qz
+QW
+QW
+Wy
+Rc
+aW
+Vp
+gF
+xY
+oY
+ci
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+"}
+(37,1,1) = {"
+iW
+ks
+Wy
+Yz
+QW
+Rc
+Rc
+Rc
+LO
+Rc
+Rc
+jb
+rC
+jb
+EW
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Rc
+Vp
+gF
+gF
+gF
+rp
+gF
+Vp
+Vp
+lo
+Vp
+gF
+gF
+"}
+(38,1,1) = {"
+ks
+ks
+uA
+QL
+uA
+xG
+pr
+ba
+QL
+uA
+EW
+jb
+rC
+jb
+EW
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Wy
+Ac
+gF
+gF
+gF
+gF
+gF
+Vp
+eE
+Vp
+Vp
+Vp
+Vp
+Vp
+"}
+(39,1,1) = {"
+du
+qA
+uA
+Ta
+jr
+Er
+jr
+jr
+AN
+jD
+EW
+qt
+Eq
+Vu
+EW
+YD
+DJ
+UH
+ws
+up
+Wy
+Wy
+uT
+gF
+rp
+gF
+gF
+gF
+Vp
+Vp
+Vp
+lo
+Vp
+Vp
+Vp
+"}
+(40,1,1) = {"
+jL
+qA
+uA
+uA
+Vb
+Do
+uA
+uA
+Ta
+jr
+ud
+GA
+YR
+jb
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+cp
+WV
+Rc
+gF
+gF
+gF
+Vp
+Vp
+Vp
+Vp
+aU
+dp
+dp
+Vp
+Vp
+"}
+(41,1,1) = {"
+Rc
+Rc
+uA
+FO
+Rc
+Rc
+Rc
+uA
+FO
+Rc
+Rc
+px
+px
+px
+Rc
+gj
+Vp
+Vp
+Vp
+iQ
+gF
+gF
+gF
+gF
+gF
+Vp
+Vp
+gj
+Vp
+Vp
+dp
+dp
+dp
+dp
+Vp
+"}
+(42,1,1) = {"
+xP
+VK
+WO
+hd
+gF
+yY
+zz
+xx
+Vp
+ro
+yY
+yY
+lo
+Vp
+ro
+Vp
+Vp
+Vp
+gj
+gF
+gF
+gF
+gF
+gF
+Vp
+Vp
+Vp
+Vp
+Vp
+dp
+dp
+dp
+dp
+dp
+dp
+"}

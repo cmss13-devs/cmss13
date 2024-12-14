@@ -1,5 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aab" = (
+"aaa" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "clfraid"
 	},
@@ -31944,7 +31944,7 @@ srg
 srg
 xCn
 fzc
-aab
+aaa
 hdh
 jQa
 jQa

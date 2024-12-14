@@ -92,12 +92,12 @@
 	if (amount > 0)
 		if (base_fury >= fury_max)
 			return
-		to_chat(bound_xeno, SPAN_XENODANGER("We feel ourselves get angrier."))
+		to_chat(bound_xeno, SPAN_XENODANGER("We are overcome with rage."))
 	base_fury = clamp(base_fury + amount, 0, fury_max)
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/use_internal_fury_ability(cost)
 	if (cost > base_fury)
-		to_chat(bound_xeno, SPAN_XENODANGER("We dont have enough rage! We need to be angrier."))
+		to_chat(bound_xeno, SPAN_XENODANGER("We dont feel angry enough to do this!"))
 		return FALSE
 
 	add_base_fury(-cost)

@@ -290,16 +290,15 @@
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"
-	action_icon_state = "prae_dash"
+	action_icon_state = "prae_tail_trip"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	macro_path = /datum/action/xeno_action/verb/verb_prae_high_gallop
 	xeno_cooldown = 12 SECONDS
 
-	// jump range and such
-	var/gallop_jumprange = 5
-	var/gallop_actv_delay = 1 SECONDS
-	var/gallop_damage = 30
+	//knockdown range
+	var/gallop_range = 3
+
 
 /datum/action/xeno_action/onclick/fight_or_flight
 	name = "Fight or Flight"

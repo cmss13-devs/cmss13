@@ -780,6 +780,9 @@
 	if (!check_and_use_plasma_owner())
 		return
 
+	if (!isxeno(target))
+		return
+
 	if (!isxeno_human(target))
 		return
 
@@ -855,9 +858,8 @@
 
 
 
-/datum/action/xeno_action/activable/high_gallop/use_ability(atom/affected_atom)
+/datum/action/xeno_action/activable/high_gallop/use_ability(atom/a)
 	var/mob/living/carbon/xenomorph/valkyrie = owner
-	var/mob/living/carbon/target_carbon = affected_atom //for marine
 
 	if (!action_cooldown_check())
 		return
@@ -865,72 +867,83 @@
 	if (!valkyrie.check_state())
 		return
 
-	if (target_carbon.stat == DEAD)
-		to_chat(valkyrie, SPAN_XENODANGER("[target_carbon] is dead, why would we want to touch it?"))
+	// Transient turf list
+	var/list/target_turfs = list()
+	var/list/temp_turfs = list()
+	var/list/telegraph_atom_list = list()
+
+	// Code to get a 2x3 area of turfs
+	var/turf/root = get_turf(valkyrie)
+	var/facing = Get_Compass_Dir(valkyrie, a)
+	var/turf/infront = get_step(root, facing)
+	var/turf/left = get_step(root, turn(facing, 90))
+	var/turf/right = get_step(root, turn(facing, -90))
+	var/turf/infront_left = get_step(root, turn(facing, 45))
+	var/turf/infront_right = get_step(root, turn(facing, -45))
+	temp_turfs += infront
+	if(!(!infront || infront.density) && !(!left || left.density))
+		temp_turfs += infront_left
+	if(!(!infront || infront.density) && !(!right || right.density))
+		temp_turfs += infront_right
+
+	for(var/turf/ground in temp_turfs)
+		if (!istype(ground))
+			continue
+
+		if (ground.density)
+			continue
+
+		target_turfs += ground
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(ground, 0.25 SECONDS)
+
+		var/turf/next_turf = get_step(ground, facing)
+		if (!istype(next_turf) || next_turf.density)
+			continue
+
+		target_turfs += next_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
+
+	if(!length(target_turfs))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))
 		return
 
-	if (!isliving(target_carbon))
+		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+			telegraph_atom_list -= XT
+			qdel(XT)
 		return
 
-	if (affected_atom == valkyrie)
-		to_chat(valkyrie, SPAN_XENOWARNING("We must target an ally or a hostile."))
+	if(!action_cooldown_check() || !check_and_use_plasma_owner())
 		return
 
-	var/mob/living/carbon/xenomorph/target_ally = affected_atom
+	apply_cooldown()
 
-	if (isxeno(target_ally))
-		valkyrie.throw_atom(get_step_towards(affected_atom, valkyrie), gallop_jumprange, SPEED_FAST, valkyrie)
-		apply_cooldown()
-		to_chat(valkyrie, SPAN_WARNING("We dash to the aid of an ally."))
-		for(var/mob/living/carbon/human in orange(3, valkyrie))
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] stomps its feet furiously, breaking the ground underneath!"), SPAN_XENODANGER("We send a shockwave through the ground, breaking the balance of anyone infront of us!"))
+	valkyrie.emote("roar")
+	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
+
+
+	for (var/turf/turfs in target_turfs)
+		for (var/mob/living/carbon/human in turfs)
+			if (human.stat == DEAD)
+				continue
 
 			if(!isxeno_human(human) || valkyrie.can_not_harm(human))
 				continue
 
-			if (human.stat == DEAD)
+			if(human.mob_size >= MOB_SIZE_BIG)
 				continue
 
-			if(!check_clear_path_to_target(valkyrie, human))
-				continue
-			shake_camera(human, 2, 3)
-			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
-		playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	else
-		valkyrie.throw_atom(get_step_towards(affected_atom, valkyrie), gallop_jumprange, SPEED_FAST, valkyrie)
-		apply_cooldown()
-		if (!valkyrie.Adjacent(target_carbon))
-			to_chat(valkyrie, SPAN_XENOWARNING("We must be adjacent to our target!")) // check if youre actually next to them
-			return
-		if (valkyrie.can_not_harm(target_carbon))
-			return
-		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
-		ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
-		valkyrie.anchored = TRUE
-		if(do_after(valkyrie, gallop_actv_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			if (!valkyrie.Adjacent(target_carbon))
-				to_chat(valkyrie, SPAN_XENOWARNING("We must be adjacent to our target!")) // check one more time to see if they are flinged away or something
-				REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
-				valkyrie.anchored = FALSE
-				unroot_human(target_carbon, TRAIT_SOURCE_ABILITY("High Gallop"))
-				return
-			valkyrie.visible_message(SPAN_XENOHIGHDANGER("[valkyrie] rips open the guts of [target_carbon]!"), SPAN_XENOHIGHDANGER("We rapidly slice into [target_carbon]!"))
-			target_carbon.spawn_gibs()
-			playsound(get_turf(target_carbon), 'sound/effects/gibbed.ogg', 50, 1)
-			playsound(get_turf(valkyrie), "alien_roar", 40)
-			target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, 0.5), WEAKEN)
-			target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, gallop_damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			human.apply_effect(get_xeno_stun_duration(human, 0.5), WEAKEN)
+			new /datum/effects/xeno_slow(human, valkyrie, ttl = get_xeno_stun_duration(human, 25))
+		
+		for (var/obj/item/explosive/grenade/grenades in turfs)
+			var/direction = get_dir(valkyrie, grenades)
+			var/turf/target_destination = get_ranged_target_turf(grenades, direction, 3)
 
-			valkyrie.animation_attack_on(target_carbon)
-			valkyrie.flick_attack_overlay(target_carbon, "tail")
-
-		REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("High Gallop"))
-		valkyrie.anchored = FALSE
-		unroot_human(target_carbon, TRAIT_SOURCE_ABILITY("High Gallop"))
-		valkyrie.face_atom(target_carbon)
-		valkyrie.animation_attack_on(target_carbon, 10) // i wish we had a way of making multiple slashes appear on the same person.
-
+			grenades.throw_atom(get_step_towards(target_destination, grenades), 3, SPEED_FAST, grenades)
 
 	return ..()
+
 
 /datum/action/xeno_action/onclick/fight_or_flight/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/valkyrie_flight = owner

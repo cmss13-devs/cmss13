@@ -137,7 +137,7 @@
 	item_state = "balaclava_tan"
 	original_state = "balaclava_tan"
 
-/obj/item/clothing/mask/rebreather/scarf/gray
+/obj/item/clothing/mask/tornscarf/gray
 	name = "Gray Balaclava"
 	icon_state = "balaclava_gray"
 	item_state = "balacvlava_gray"
@@ -285,7 +285,7 @@
 	item_state = "keffiyeh_black"
 	original_state = "keffiyeh_black"
 
-/obj/item/clothing/mask/smock
+/obj/item/clothing/mask/rebreather/scarf/smock
 	name = "tactical smock"
 	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."
 	icon_state = "smock"
@@ -295,23 +295,23 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/mask/smock/classic
+/obj/item/clothing/mask/rebreather/scarf/smock/classic
 	icon_state = "c_smock"
 	item_state = "c_smock"
 
-/obj/item/clothing/mask/smock/snow
+/obj/item/clothing/mask/rebreather/scarf/smock/snow
 	icon_state = "s_smock"
 	item_state = "s_smock"
 
-/obj/item/clothing/mask/smock/desert
+/obj/item/clothing/mask/rebreather/scarf/smock/desert
 	icon_state = "d_smock"
 	item_state = "d_smock"
 
-/obj/item/clothing/mask/smock/urban
+/obj/item/clothing/mask/rebreather/scarf/smock/urban
 	icon_state = "u_smock"
 	item_state = "u_smock"
 
-/obj/item/clothing/mask/smock/black
+/obj/item/clothing/mask/rebreather/scarf/smock/black
 	icon_state = "b_smock"
 	item_state = "b_smock"
 

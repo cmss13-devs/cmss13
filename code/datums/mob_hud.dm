@@ -449,17 +449,18 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
 				if(!client)
-					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
-					if(!G)
-						holder.icon_state = "huddeaddnr"
-						if(!holder2_set)
-							holder2.icon_state = "huddeaddnr"
-							holder3.icon_state = "huddead"
-							holder2_set = 1
-						return
-					else if(!G.client)
-						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
-						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
+					if(!(status_flags & FAKESOUL))
+						var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
+						if(!G)
+							holder.icon_state = "huddeaddnr"
+							if(!holder2_set)
+								holder2.icon_state = "huddeaddnr"
+								holder3.icon_state = "huddead"
+								holder2_set = 1
+							return
+						else if(!G.client)
+							holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
+							holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
 					holder.icon_state = "huddeadalmost"
 					if(!holder2_set)

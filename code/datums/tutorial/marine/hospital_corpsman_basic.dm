@@ -21,7 +21,8 @@
 // Section 2 - Intermediate Damage Treatment
 // 2.1 Pain Levels
 // 2.2 Toxin Damage
-// 2.3 Overdoses
+// 2.3 Oxygen Damage
+// 2.4 Overdoses
 //
 
 /datum/tutorial/marine/hospital_corpsman_basic/start_tutorial(mob/starting_mob)
@@ -1026,23 +1027,202 @@
 	qdel(dylo)
 
 	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
-	message_to_player("Unfortunately, unlike Brute and Burn damage, Toxin damage has no treatment kits, making it extremely difficult to treat in large amounts.")
 
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_3)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_3()
 	//adds a slight grace period, so humans are not rejuved before dylo is registered in their system
 
-	message_to_player("<b>Section 2.3: Overdoses</b>")
+	message_to_player("<b>Section 2.3: Oxygen Damage</b>")
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial()
-	SIGNAL_HANDLER
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	human_dummy.rejuvenate()
 	human_dummy.reagents.clear_reagents()
 
+	message_to_player("<b>Oxygen Damage</b> is the fourth, and final form of field damage that a Marine Hospital Corpsman is expected to be able to treat.")
+	message_to_player("The mechanics of Oxygen damage are heavily linked to <b>Internal Organ Damage</b>, something that will be covered in detail in the advanced version of this tutorial.")
+
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_1)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_1()
+
+	message_to_player("Oxygen Damage represents a lack of blood-flow to the Brain, and the bodys shutdown because of it.")
+	message_to_player("Oxygen Damage can be caused as a result of <b>Blood Loss, Internal Organ Damage</b>, and <b>Dying</b>.")
+	message_to_player("Symptoms of Oxygen Damage include <b>Gasping</b> and/or <b>Coughing up Blood</b>, as well as <b>Unconsciousness</b> beyond 50 points of damage.")
+	message_to_player("Like Toxin damage, <b>Oxygen Damage</b> is spread across the body, and not focused on one specific limb or region.")
+
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_2)), 15 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_2()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+	human_dummy.adjustOxyLoss(40)
+
+	message_to_player("Mr Dummy is suffering from <b>Oxygen Damage</b>!")
+	message_to_player("Oxygen damage is treated by the chemical <b>Dexalin</b>, color-coded blue.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	var/obj/item/storage/pill_bottle/dex = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(dex)
+	medbelt.update_icon()
+
+	dex.name = "\improper Dexalin pill bottle"
+	dex.icon_state = "pill_canister1"
+	dex.maptext_label = "Dx"
+	dex.maptext = SPAN_LANGCHAT("Dx")
+	dex.max_storage_space = 1
+	dex.overlays.Cut()
+	dex.bottle_lid = FALSE
+	dex.overlays += "pills_closed"
+
+	var/obj/item/reagent_container/pill/dexalin/pill = new(dex)
+
+	add_to_tracking_atoms(pill)
+	add_to_tracking_atoms(dex)
+
+	message_to_player("A <b>Dexalin Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Dexalin Pill Bottle</b> to draw a pill.")
+
+	add_highlight(medbelt, COLOR_GREEN)
+	add_highlight(dex, COLOR_GREEN)
+
+	RegisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(oxy_tutorial_3))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_3()
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/dexalin, pill)
+
+	UnregisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+
+	message_to_player("Good. Now click on the Dummy while holding the <b>Dexalin Pill</b> and standing next to them to medicate it.")
+	update_objective("Feed the Dummy the Dexalin pill.")
+
+	add_highlight(pill, COLOR_GREEN)
+	remove_highlight(medbelt)
+	remove_highlight(dex)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_reject))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dex_pill_fed_reject()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
+	remove_highlight(dex)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_from_tracking_atoms(dex)
+	qdel(dex)
+	medbelt.update_icon()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_2)), 2 SECONDS)
+
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dex_pill_fed()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
+	remove_highlight(dex)
+	remove_from_tracking_atoms(dex)
+	qdel(dex)
+
+	message_to_player("Excellent work!")
+
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_4)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_4()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+	human_dummy.adjustOxyLoss(100)
+
+	message_to_player("Oh no! It appears that, despite our prior treatment, Mr Dummy is still suffering from <b>Extreme Oxygen Damage</b>!")
+	message_to_player("Scan him with your <b>Health Analyzer</b> to determine his exact damage amount.")
+
+	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(oxy_tutorial_5))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_5(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	if(attacked_mob == tutorial_mob)
+		return
+
+	UnregisterSignal(attacked_mob, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	message_to_player("As we can see based on our <b>Health Analyzer</b> scan, Mr Dummy has around <b>100</b> points of <b>Oxygen Damage</b>!")
+	message_to_player("In extreme cases, when Oxygen damage levels are especially high, we can use a chemical called <b>Dexalin+</b> to heal <u>all Oxygen damage instantly</u>.")
+
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_6)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_6()
+
+	message_to_player("A <b>Dexalin+ Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Use the Autoinjector on Mr Dummy by clicking on them, to administer the <b>Dexalin+</b>")
+
+	var/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use/dexp = new(loc_from_corner(0, 4))
+	add_to_tracking_atoms(dexp)
+	add_highlight(dexp, COLOR_GREEN)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	medbelt.handle_item_insertion(dexp)
+	medbelt.update_icon()
+
+	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(dexp_inject_self))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(dexp_inject))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dexp_inject_self()
+	SIGNAL_HANDLER
+
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	living_mob.reagents.clear_reagents()
+	message_to_player("Dont use the injector on yourself, try again.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use, dexp)
+	remove_highlight(dexp)
+	remove_from_tracking_atoms(dexp)
+	qdel(dexp)
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_5)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dexp_inject()
+	//adds a slight grace period, so humans are not rejuved before dexp is registered in their system
+
+	message_to_player("Well done!")
+	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_7)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_7()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use, dexp)
+	remove_highlight(dexp)
+	remove_from_tracking_atoms(dexp)
+	qdel(dexp)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	human_dummy.rejuvenate()
+
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 1 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial()
+	SIGNAL_HANDLER
+
+	message_to_player("<b>Section 2.4: Overdose Treatment</b>")
 	message_to_player("Every chemical available to a Marine Hospital Corpsman will have a known <b>Overdose Amount</b>.")
 	message_to_player("If a person is has more than the <b>Overdose Amount</b> of any chemical in their body, the chemical will begin damaging the body to varying levels of severity")
 	message_to_player("Generally, the more powerful a chemical is at healing the body, the more destructive it will become if <b>Overdosed</b>.")

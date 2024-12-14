@@ -108,6 +108,12 @@
 	display_maptext = TRUE
 	maptext_label = "D+"
 
+/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use
+	desc = "A single use autoinjector loaded with 1 unit of Dexalin+, designed to immediately oxygenate the entire body."
+	volume = 1
+	amount_per_transfer_from_this = 1
+	uses_left = 1
+
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
 	chemname = "anesthetic"

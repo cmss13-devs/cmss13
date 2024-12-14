@@ -6,6 +6,7 @@
 	//required_tutorial = "marine_hm_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 6
+	var/ontime
 
 // ------------ CONTENTS ------------ //
 //
@@ -781,6 +782,237 @@
 
 	addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 19 SECONDS)
 
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/section_2()
+
+	message_to_player("<b>Section 2: Revivals</b>.")
+	message_to_player("Try as we might to prevent it, death is an inevitability within the Marine Corps.")
+	message_to_player("However, to a trained Marine <b>Hospital Corpsman</b>, death is not the end!")
+	message_to_player("In this section of the tutorial, we will go over various methods of awakening the dead, from a purely medical standpoint.")
+
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_pre)), 17 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_pre()
+
+	message_to_player("Once the heart stops beating and bloodflow is cut from the brain, the Human body enters a state known as <b>Clinical Death</b>.")
+	message_to_player("Once the body experiences <b>Clinical Death</b>, the lack of oxygen supplied to the brain will quickly cause it to deteriorate.")
+	message_to_player("If left untreated, a <b>Clinically Dead</b> Marine has exactly <b>5 Minutes</b> before their brain has deteriorated beyond the point of <b>Biological Death</b>.")
+	message_to_player("Biological Death, also known as <b>Perma-Death</b>, represents the threshold in which someone's condition has surpassed our abilities of care. Nothing more can be done for them.")
+
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial)), 20 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial()
+
+	message_to_player("<b>Section 2.1: Defibrillations</b>.")
+	message_to_player("In that 5 minute window between clinical and biological death, it is possible to perform a <b>Defibrillation</b>, and restart the heart!")
+	message_to_player("While not at all similar to the <i>actual</i> process of revival, the vital functions of a body in <u>reasonable condition</u> can be fully restored through the use of a <b>Defibrillator</b>!")
+
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_2)), 13 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_2()
+
+	message_to_player("In short, <b>Defibrillators</b> work by administering a small <b>Electric Shock</b> to the Heart of a dead Marine, causing to briefly sieze up, before resuming a regular heartbeat.")
+	message_to_player("Each <b>Defibrillator</b> comes with an inbuilt <b>Power-Cell</b> for storing charge and two <b>Contact Paddles</b> transferring said charge.")
+	message_to_player("The easiest way to learn how to use a <b>Defibrillator</b> properly can be found through a hands-on approach!")
+	message_to_player("Let's set the scene, shall we?")
+
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_3)), 15 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_3()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(5, 1, human_dummy.loc)
+	sparks.start()
+	remove_from_tracking_atoms(human_dummy)
+	var/mob/living/carbon/human/realistic_dummy/marine_dummy = new(human_dummy.loc)
+	add_to_tracking_atoms(marine_dummy)
+	qdel(human_dummy)
+	var/obj/item/clothing/suit/storage/marine/medium/armor = marine_dummy.get_item_by_slot(WEAR_JACKET)
+	add_to_tracking_atoms(armor)
+
+	message_to_player("This is <b>Private Stanley</b>! He will be our new test-subject for the remainder of the tutorial.")
+
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_4)), 3 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_4()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	marine_dummy.revive_grace_period = INFINITY // surely nothing can go wrong
+	marine_dummy.adjustBruteLoss(100)
+	marine_dummy.death()
+	marine_dummy.updatehealth()
+	add_highlight(marine_dummy, COLOR_RED)
+
+	message_to_player("Oh no! It appears Pvt Stanley has dropped dead!!")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
+
+	message_to_player("This is indicated by two things: the Healthbar above Stanleys head is now <b>Empty</b>, and a <b>Heart-Rate Icon</b> is visible to the top-left of his body.")
+	message_to_player("The first step to any revival, is always a <b>Health Scan</b>! Draw your <b>Health Analyzer</b> and scan Private Stanleys condition.")
+
+	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(defib_tutorial_5))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_5(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	if(attacked_mob == tutorial_mob)
+		return
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	remove_highlight(marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+
+	var/obj/item/device/defibrillator/defib = new(loc_from_corner(0,4))
+	add_to_tracking_atoms(defib)
+	add_highlight(defib, COLOR_GREEN)
+
+	message_to_player("As you can see listed on your <b>Health Analyzer</b> scan, Private Stanleys status is listed as: <u>Cardiac arrest, defibrillation possible</u>.")
+	message_to_player("Secondly, by looking at the damage amounts on Stanleys body, we see that he has sustained <u>less than 200 damage</u> overall.")
+	message_to_player("This is extremely important, as defibrillation is only possible when a patients <u>overall damage is less than 200</u>, for all types of damage <u>besides Oxygen</u>.")
+	message_to_player("This means that we are able to restart Stanleys heart using a <b>Defibrillator</b>! Pick up your brand new Defibrillator from the desk!")
+
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(defib_tutorial_6))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_6(datum/source, obj/item/picked_up)
+
+	if(!(istype(picked_up, /obj/item/device/defibrillator)))
+		return
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
+
+	message_to_player("Before we can use the <b>Defibrillator</b> on Private Stanley, we must remove his <b>Bodyarmor</b>!")
+	message_to_player("Click and drag your mouse from Private Stanleys body to yours, then when his inventory appears on your screen, click on his <b>Chestplate</b> to remove it!")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	add_highlight(marine_dummy, COLOR_GREEN)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
+
+	RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(defib_tutorial_7))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_7()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
+	UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
+	message_to_player("As the final step before reviving Private Stanley, we must first detach the <b>Defibrillators Contact Paddles</b>.")
+	message_to_player("Hold your <b>Defibrillator</b> in hand, and press the <b>[retrieve_bind("activate_inhand")]</b> key to take out the <b>Contact Paddles</b>!")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
+
+	RegisterSignal(defib, COMSIG_ITEM_ATTACK_SELF, PROC_REF(defib_tutorial_8))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_8()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
+	UnregisterSignal(defib, COMSIG_ITEM_ATTACK_SELF)
+
+	message_to_player("Clear!! Time to get to <b>Defibrillating</b> Private Stanley! Click on his body with your Defib, and hold still while it delivers its charge!")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED, PROC_REF(defib_tutorial_9))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_9()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED)
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
+	remove_highlight(defib)
+	remove_from_tracking_atoms(defib)
+	QDEL_IN(defib, 2 SECONDS)
+
+	message_to_player("Well done! Private Stanley lives again!")
+	message_to_player("However, Private Stanley still has a large amount of <b>Brute Damage</b> across his body")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	var/obj/item/storage/pill_bottle/bica = new /obj/item/storage/pill_bottle
+	medbelt.handle_item_insertion(bica)
+	medbelt.update_icon()
+
+	bica.name = "\improper Bicaridine pill bottle"
+	bica.icon_state = "pill_canister11"
+	bica.maptext_label = "Bi"
+	bica.maptext = SPAN_LANGCHAT("Bi")
+	bica.max_storage_space = 1
+	bica.overlays.Cut()
+	bica.bottle_lid = FALSE
+	bica.overlays += "pills_closed"
+
+	var/obj/item/reagent_container/pill/bicaridine/pill = new(bica)
+
+	add_to_tracking_atoms(pill)
+	add_to_tracking_atoms(bica)
+
+
+	message_to_player("A <b>Bicaridine Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
+	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Bicaridine Pill Bottle</b> to draw a pill.")
+
+	add_highlight(medbelt, COLOR_GREEN)
+	add_highlight(bica, COLOR_GREEN)
+
+	RegisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(defib_tutorial_10))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_10()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/bicaridine, pill)
+
+	UnregisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+	message_to_player("Good. Now click on Private Stanley while holding the <b>Bicaridine Pill</b> and standing next to them to medicate it.")
+	message_to_player("Feeding someone a pill takes concentration, and comes with a slight delay. Neither of you should move while the blue circle is over your head, or the process will be disrupted, and you will have to try again.")
+	update_objective("Feed Private Stanley the Bicaridine pill.")
+
+	add_highlight(pill, COLOR_GREEN)
+	remove_highlight(medbelt)
+	remove_highlight(bica)
+
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed_reject))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/brute_pill_fed_reject()
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+	var/mob/living/living_mob = tutorial_mob
+	living_mob.rejuvenate()
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
+	remove_highlight(bica)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+	remove_from_tracking_atoms(bica)
+	qdel(bica)
+	medbelt.update_icon()
+	message_to_player("Dont feed yourself the pill, try again.")
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_9)), 2 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/brute_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+	remove_highlight(marine_dummy)
+	marine_dummy.rejuvenate()
+
+	message_to_player("Well done! Private Stanley will now fully recover from his injuries, and be allowed back on the front lines of battle!")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
+	remove_from_tracking_atoms(bica)
+	qdel(bica)
+
+	update_objective("")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
+	marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
+
+	addtimer(CALLBACK(src, PROC_REF(field_surgery)), 4 SECONDS)
+
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery()
 
 	message_to_player("<b>Section 3: Field Surgery</b>.")
@@ -803,10 +1035,10 @@
 
 	message_to_player("Oh no! Mr Dummy has taken a large amount of <b>Brute Damage</b>! Scan him with your <b>Health Analyzer</b> for more details.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.rejuvenate()
-	human_dummy.apply_damage(35, BRUTE, "chest")
-	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_brute_3))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	marine_dummy.rejuvenate()
+	marine_dummy.apply_damage(35, BRUTE, "chest")
+	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_brute_3))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_brute_3(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
@@ -814,8 +1046,8 @@
 	if(attacked_mob == tutorial_mob)
 		return
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
 	message_to_player("As you can see, the Dummy has <b>35 Brute Damage</b> on their chest.")
 	message_to_player("To treat this, we are going to surgically <b>Suture</b> their wounds with a <b>Surgical Line</b>.")
@@ -871,16 +1103,16 @@
 	remove_highlight(medbelt)
 	remove_highlight(tram)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed))
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed))
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed_reject))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/tram_pill_fed_reject()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, tram)
@@ -896,9 +1128,9 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
-	human_dummy.pain.feels_pain = FALSE //failsafe
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+	marine_dummy.pain.feels_pain = FALSE //failsafe
 
 	message_to_player("Now that Mr Dummy has been medicated with a painkiller, we can begin surgery on their chest.")
 	message_to_player("Pick up the <b>Surgical Line</b> on the desk, and click on Mr Dummy with it while <u>targeting his chest</u> to begin the surgery")
@@ -916,7 +1148,7 @@
 	add_to_tracking_atoms(surgical_line)
 	add_highlight(surgical_line, COLOR_GREEN)
 
-	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in human_dummy.limbs
+	var/obj/limb/chest/mob_chest = locate(/obj/limb/chest) in marine_dummy.limbs
 	add_to_tracking_atoms(mob_chest)
 	add_highlight(mob_chest, COLOR_GREEN)
 
@@ -943,9 +1175,9 @@
 	remove_from_tracking_atoms(surgical_line)
 	qdel(surgical_line)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.rejuvenate()
-	human_dummy.apply_damage(70, BURN, "chest")
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	marine_dummy.rejuvenate()
+	marine_dummy.apply_damage(70, BURN, "chest")
 	message_to_player("Like Brute damage treatment, <b>Burn Damage</b> can also be surgically treated using a <b>Synth-Graft</b>.")
 	message_to_player("Mr Dummy has taken additional <b>Burn Damage</b> to his chest!")
 	message_to_player("Pick up your <b>Synth-Graft</b>, and apply it to the Dummys <b>Chest</b>.")
@@ -976,9 +1208,9 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_burn_3()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.rejuvenate()
-	human_dummy.pain.feels_pain = TRUE
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	marine_dummy.rejuvenate()
+	marine_dummy.pain.feels_pain = TRUE
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/synthgraft, graft)
 	remove_from_tracking_atoms(graft)
 	qdel(graft)
@@ -1052,21 +1284,21 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_6(datum/source, mob/target)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
 
-	if(target != human_dummy)
+	if(target != marine_dummy)
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_GRAB_PASSIVE)
 
 	message_to_player("Then, drag them next to the <b>Roller Bed</b>, and click and drag your mouse from Mr Dummy, to the Roller bed to buckle them into it.")
 
-	RegisterSignal(human_dummy, COMSIG_LIVING_SET_BUCKLED, PROC_REF(field_surgery_ib_7))
+	RegisterSignal(marine_dummy, COMSIG_LIVING_SET_BUCKLED, PROC_REF(field_surgery_ib_7))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_7()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_LIVING_SET_BUCKLED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_SET_BUCKLED)
 
 	message_to_player("Now, for the final step before Mr Dummy is ready for Surgery, we must inject him with a powerful painkiller.")
 
@@ -1087,7 +1319,7 @@
 	medbelt.update_icon()
 
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject_self))
-	RegisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject))
+	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/oxy_inject_self()
 	SIGNAL_HANDLER
@@ -1115,10 +1347,10 @@
 	remove_from_tracking_atoms(oxy)
 	qdel(oxy)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	UnregisterSignal(human_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	human_dummy.pain.feels_pain = FALSE //surgery failsafe
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	marine_dummy.pain.feels_pain = FALSE //surgery failsafe
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	var/datum/wound/internal_bleeding/IB = new (0)
@@ -1128,7 +1360,7 @@
 	message_to_player("Now, we will initiate an <b>Internal Bleeding</b> surgery on Mr Dummy.")
 	message_to_player("First, draw your <b>Health Analyzer</b>, and scan Mr Dummy to locate the source of his Internal Bleeding.")
 
-	RegisterSignal(human_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_ib_9))
+	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_ib_9))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_9(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
@@ -1162,15 +1394,15 @@
 
 	message_to_player("Now, make sure you are on the <b>Help Intent</b> with <b>Surgery Mode Enabled</b>, then click on Mr Dummy while holding your Scalpel to create an incision.")
 
+
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(field_surgery_ib_11))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_11(datum/source, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
 	SIGNAL_HANDLER
 
-	var/ontime
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
 
-	if(target != human_dummy)
+	if(target != marine_dummy)
 		message_to_player("Operate on the Dummy, not yourself! Try again.")
 		var/mob/living/living_mob = tutorial_mob
 		living_mob.rejuvenate()
@@ -1219,9 +1451,16 @@
 			ontime = TRUE
 			return
 
-	if(surgery.name == "Close Incision")
+	if(surgery.name == "Suture Incision")
 		if(ontime != TRUE)
 			message_to_player("You have closed your incision before treating Mr Dummys internal bleeding. You will have to restart the procedure.")
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/surgical_line, surgical_line)
+			remove_from_tracking_atoms(surgical_line)
+			remove_highlight(surgical_line)
+			qdel(surgical_line)
+			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
+			marine_dummy.rejuvenate()
+			addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_8)), 4 SECONDS)
 			return
 		else
 			message_to_player("Congratulations, you are now fully qualified to repair internal bleeding on the field!")
@@ -1230,32 +1469,13 @@
 			remove_highlight(surgical_line)
 			qdel(surgical_line)
 			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
-			human_dummy.rejuvenate()
-
-
-
-
-
-
-
-
-
-
-
-// SCRATCHPAD
-
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/oxy_tutorial()
-	//message_to_player("<b>Oxygen Damage</b> is the fourth, and final form of field damage that a Marine Hospital Corpsman is expected to be able to treat.")
-	//message_to_player("The mechanics of Oxygen damage are heavily linked to
-
-
-//
+			marine_dummy.rejuvenate()
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/tutorial_close()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
 	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
 	message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
@@ -1268,8 +1488,6 @@
 
 // TO DO LIST
 //
-// Oxygen Damage
-//
 // Section 1 - Stabilizing Types of Organ Damage
 // 1.5 Liver and Kidney Damage
 //
@@ -1280,13 +1498,11 @@
 // 2.4 Emergency Revivals
 // 2.5 Lost Causes
 //
-// Section 3 - Field Surgery
-// 3.3 Synthetic Limb Repair
-//
 // Section 4 - Specialized Treatments
 // 4.1 Medical Evacuations, Stasis
 // 4.2 Genetic Damage
 // 4.3 Extreme Overdoses
+// 4.4 Synthetic Limb Repair
 //
 
 

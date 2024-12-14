@@ -502,7 +502,52 @@
 	desc = "A fire-resistant shoulder patch. Was worn by workers and then later prisoners on the Fiorina 'Fury' 161 facility, a rare relic, after the facility went dark in 2179."
 	icon_state = "fury161patch"
 
-//misc
+/obj/item/clothing/accessory/patch/upp/alt
+	name = "UPP patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
+	icon_state = "upppatch_alt"
+
+/obj/item/clothing/accessory/patch/falcon/squad/alpha
+	name = "USCM Falling Falcons patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Alpha Squad's bold red"
+	icon_state = "fallingfalcons_alpha"
+
+/obj/item/clothing/accessory/patch/falcon/squad/bravo
+	name = "USCM Falling Falcons patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
+	icon_state = "fallingfalcons_bravo"
+
+/obj/item/clothing/accessory/patch/falcon/squad/charlie
+	name = "USCM Falling Falcons patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
+	icon_state = "fallingfalcons_charlie"
+
+/obj/item/clothing/accessory/patch/falcon/squad/delta
+	name = "USCM Falling Falcons patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
+	icon_state = "fallingfalcons_delta"
+
+/obj/item/clothing/accessory/patch/falcon/squad/echo
+	name = "USCM Falling Falcons patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
+	icon_state = "fallingfalcons_echo"
+
+/obj/item/clothing/accessory/patch/sons_of_mars
+	name = "Sons of Mars patch"
+	desc = "A fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Sons of Mars, a resistance group that fought against corporate control on Mars. Though not forgotten, the patch serves as a reminder of a time when Martian rebels stood defiant, a symbol of rebellion largely overlooked in today's era."
+	icon_state = "sompatch"
+
+/obj/item/clothing/accessory/patch/freelancer_patch
+	name = "Freelancer's Guild patch"
+	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and blue background with a white border. Worn by a skilled mercenary of the Freelancers, a well-equipped group for hire across the outer colonies, known for their professionalism and neutrality. This patch is a personal memento from the wearer’s time with the group, representing a life spent navigating the dangerous world of mercenary contracts."
+	icon_state = "mercpatch"
+
+/obj/item/clothing/accessory/patch/merc_patch
+	name = "Old Freelancer's Guild patch"
+	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and red background with a white border. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
+	icon_state = "mercpatch_red"
+
+// Misc
 
 /obj/item/clothing/accessory/dogtags
 	name = "Attachable Dogtags"

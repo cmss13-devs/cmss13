@@ -254,6 +254,37 @@
 	icon_state = "torn_scarf_black"
 	item_state = "torn_scarf_black"
 
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh
+    name = "Keffiyeh"
+    desc = "A traditional headscarf worn for protection from the elements and to conceal the face. Typically made of cotton, it can provide shade from the sun, guard against dust, and serve as camouflage in arid environments. Often worn by soldiers and civilians alike in desert and hostile regions, the keffiyeh has become a symbol of cultural identity and resilience."
+    icon_state = "keffiyeh"
+    item_state = "keffiyeh"
+    original_state = "keffiyeh"
+    flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
+    flags_inv_hide = HIDEFACE|HIDELOWHAIR
+    flags_cold_protection = BODY_FLAG_HEAD
+    min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/white
+	icon_state = "keffiyeh_white"
+	item_state = "keffiyeh_white"
+	original_state = "keffiyeh_white"
+
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/red
+	icon_state = "keffiyeh_red"
+	item_state = "keffiyeh_red"
+	original_state = "keffiyeh_red"
+
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/green
+	icon_state = "keffiyeh_green"
+	item_state = "keffiyeh_green"
+	original_state = "keffiyeh_green"
+
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/black
+	icon_state = "keffiyeh_black"
+	item_state = "keffiyeh_black"
+	original_state = "keffiyeh_black"
+
 /obj/item/clothing/mask/smock
 	name = "tactical smock"
 	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."

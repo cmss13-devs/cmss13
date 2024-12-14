@@ -289,6 +289,26 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/mask/smock/black
 	cost = 4
 
+/datum/gear/mask/keffiyeh
+	display_name = "Keffiyeh"
+	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh
+
+/datum/gear/mask/keffiyeh_white
+	display_name = "Keffiyeh, white"
+	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/white
+
+/datum/gear/mask/keffiyeh_red
+	display_name = "Keffiyeh, red"
+	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/red
+
+/datum/gear/mask/keffiyeh_green
+	display_name = "Keffiyeh, green"
+	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/green
+
+/datum/gear/mask/keffiyeh_black
+	display_name = "Keffiyeh, black"
+	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black
+
 /datum/gear/mask/uscm
 	allowed_origins = USCM_ORIGINS
 
@@ -1248,6 +1268,26 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Falling Falcons large chest patch"
 	path = /obj/item/clothing/accessory/patch/falconlarge
 
+/datum/gear/misc/patch_uscm/falcon_squad_alpha
+	display_name = "Falling Falcons shoulder patch, Alpha"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/alpha
+
+/datum/gear/misc/patch_uscm/falcon_squad_bravo
+	display_name = "Falling Falcons shoulder patch, Bravo"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/bravo
+
+/datum/gear/misc/patch_uscm/falcon_squad_charlie
+	display_name = "Falling Falcons shoulder patch, Charlie"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/charlie
+
+/datum/gear/misc/patch_uscm/falcon_squad_delta
+	display_name = "Falling Falcons shoulder patch, Delta"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/delta
+
+/datum/gear/misc/patch_uscm/falcon_squad_echo
+	display_name = "Falling Falcons shoulder patch, Echo"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/echo
+
 /datum/gear/misc/patch_uscm/uapatch
 	display_name = "United Americas shoulder patch"
 	path = /obj/item/clothing/accessory/patch/ua
@@ -1294,3 +1334,19 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/civilian/patch/twepatch
 	display_name = "Three World Empire shoulder patch"
 	path = /obj/item/clothing/accessory/patch/twe
+
+/datum/gear/civilian/patch/upp
+	display_name = "Union of Progressive Peoples shoulder patch"
+	path = /obj/item/clothing/accessory/patch/upp
+
+/datum/gear/civilian/patch/upp/alt
+	display_name = "Union of Progressive Peoples shoulder patch, gold"
+	path = /obj/item/clothing/accessory/patch/upp/alt
+
+/datum/gear/civilian/patch/som
+	display_name = "Sons of Mars shoulder patch"
+	path = /obj/item/clothing/accessory/patch/sons_of_mars
+
+/datum/gear/civilian/patch/merc_patch
+	display_name = "Old Freelancer shoulder patch"
+	path = /obj/item/clothing/accessory/patch/merc_patch

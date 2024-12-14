@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Eggs that are in a linked lz area can now get weed killed by the initial dropship"

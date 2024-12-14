@@ -137,7 +137,7 @@
 	item_state = "balaclava_tan"
 	original_state = "balaclava_tan"
 
-/obj/item/clothing/mask/tornscarf/gray
+/obj/item/clothing/mask/rebreather/scarf/gray
 	name = "Gray Balaclava"
 	icon_state = "balaclava_gray"
 	item_state = "balacvlava_gray"

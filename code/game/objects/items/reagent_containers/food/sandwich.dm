@@ -30,6 +30,9 @@
 	if(length(src.contents) > sandwich_limit)
 		to_chat(user, SPAN_DANGER("If you put anything else on \the [src] it's going to collapse."))
 		return
+	if(length(src.contents) >= 15)
+		to_chat(user, SPAN_DANGER("\the [src] is already massive! You can't add more without ruining it."))
+		return
 	else if(istype(W,/obj/item/shard))
 		to_chat(user, SPAN_NOTICE(" You hide [W] in \the [src]."))
 		user.drop_inv_item_to_loc(W, src)

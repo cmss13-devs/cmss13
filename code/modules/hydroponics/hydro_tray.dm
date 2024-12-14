@@ -47,6 +47,8 @@
 
 	// Reagent information for process(), consider moving this to a controller along
 	// with cycle information under 'mechanical concerns' at some point.
+
+	// remove me
 	var/global/list/toxic_reagents = list(
 		"anti_toxin" =  -2,
 		"arithrazine" = -1.5,
@@ -63,7 +65,7 @@
 		"pacid" =    3,
 		"plantbgone" =   3,
 		"chlorine trifluoride" = 8
-		)
+		)// remove me
 	var/global/list/nutrient_reagents = list(
 		"milk" = 0.1,
 		"phosphorus" =   0.1,
@@ -77,7 +79,7 @@
 		"left4zed" = 1,
 		"ammonia" =  2,
 		"diethylamine" = 3
-		)
+		)// remove me
 	var/global/list/weedkiller_reagents = list(
 		"plantbgone" =  -8,
 		"dinitroaniline" = -6,
@@ -88,13 +90,13 @@
 		"sulphuric acid" =   -2,
 		"phosphorus" =  -2,
 		"sugar" =    2
-		)
+		)// remove me
 	var/global/list/pestkiller_reagents = list(
 		"adminordrazine" = -5,
 		"dinitroaniline" = -3,
 		"diethylamine" =   -2,
 		"sugar" =    2
-		)
+		)// remove me
 	var/global/list/water_reagents = list(
 		"water" =    1,
 		"adminordrazine" =  1,
@@ -107,7 +109,7 @@
 		"sodawater" =    1,
 		)
 
-	// Beneficial reagents also have values for modifying yield_mod and mut_mod (in that order).
+	// remove me
 	var/global/list/beneficial_reagents = list(
 		"beer" =    list( -0.05, 0,   0   ),
 		"fluorine" =    list( -2, 0,   0   ),
@@ -126,7 +128,7 @@
 		"robustharvest" =  list(  0, 0.2, 0   ),
 		"left4zed" =    list(  0, 0,   0.2 )
 		)
-
+	// remove me
 	// Mutagen list specifies minimum value for the mutation to take place, rather
 	// than a bound as the lists above specify.
 	var/global/list/mutagenic_reagents = list(

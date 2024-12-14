@@ -413,7 +413,7 @@
 
 	..()
 
-/mob/living/launch_towards(datum/launch_metadata/LM)
+/mob/living/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 	if(!istype(LM) || !LM.target || !src)

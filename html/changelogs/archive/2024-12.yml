@@ -152,3 +152,14 @@
   zzzmike:
   - rscdel: Xeno tackle messaging no longer cares if the target is horizontal or not
       (because being horizontal has no bearing on tackles)
+2024-12-14:
+  Drulikar:
+  - balance: Queen prevents round end even when in a tunnel
+  - bugfix: Fixed check_queen_status checking any queen not just queens that matter
+      to round end
+  harryob:
+  - bugfix: some random preference verbs weren't saving the preference
+  - bugfix: pmc goon squads and vaiso squads can now correctly use their shuttles
+      to return home
+  realforest2001:
+  - rscadd: Fax Responder platform now includes faxes sent before it loaded.

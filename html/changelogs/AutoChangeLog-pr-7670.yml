@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Fax Responder platform now includes faxes sent before it loaded."

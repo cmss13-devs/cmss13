@@ -214,10 +214,9 @@
 				if(A == LM.target)
 					hit_atom = A
 					break
-			if(!hit_atom && tracking) //if we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
-				if(get_dist(src, LM.target) <= 1)
-					if(get_dist(start_turf, LM.target) <= 1)
-						hit_atom = LM.target
+			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
+				hit_atom = LM.target
+				break
 		launch_impact(hit_atom)
 	if (loc)
 		throwing = FALSE

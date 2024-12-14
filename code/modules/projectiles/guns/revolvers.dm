@@ -218,7 +218,7 @@
 
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
 	if(can_perform_trick == TRUE)
-		var/fancy_trick = revolver_trick(user)
+		var/fancy_trick = revolver_trick(user, buffs_on_trick)
 		if(fancy_trick && buffs_on_trick)
 			to_chat(user, SPAN_NOTICE(trick_buff_message))
 			trick_buff()
@@ -276,11 +276,17 @@
 			user.update_inv_r_hand()
 	no_store = FALSE
 
-/obj/item/weapon/gun/revolver/proc/revolver_trick(mob/living/carbon/human/user)
-	if(world.time < (recent_trick + trick_delay) ) return //Don't spam it.
-	if(!istype(user)) return //Not human.
+/obj/item/weapon/gun/revolver/proc/revolver_trick(mob/living/carbon/human/user, ignore_skill = FALSE)
+	if(world.time < (recent_trick + trick_delay))
+		return //Don't spam it.
+	if(!istype(user))
+		return //Not human.
 	var/chance = -5
-	chance = user.health < 6 ? 0 : user.health - 5
+	if(!HAS_TRAIT(user, TRAIT_REVOLVER_TRICKS) && !ignore_skill)
+		chance = user.health / 10
+	else
+		chance = user.health < 6 ? 0 : user.health - 5
+
 
 	//Pain is largely ignored, since it deals its own effects on the mob. We're just concerned with health.
 	//And this proc will only deal with humans for now.

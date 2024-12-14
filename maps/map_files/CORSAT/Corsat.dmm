@@ -4288,6 +4288,7 @@
 "ard" = (
 /obj/structure/showcase{
 	icon_state = "broadcast receiver";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Subspace Receiver"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -4295,6 +4296,7 @@
 "are" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -4324,6 +4326,7 @@
 "ark" = (
 /obj/structure/showcase{
 	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Communications Server"
 	},
 /obj/structure/machinery/light,
@@ -7197,6 +7200,7 @@
 "aCq" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/plate,
@@ -10560,6 +10564,7 @@
 "aOS" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /obj/structure/platform_decoration/metal/almayer/east{
@@ -12964,6 +12969,7 @@
 "aXq" = (
 /obj/structure/showcase{
 	icon_state = "relay";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Telecommunication Relay"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -14800,11 +14806,11 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/corsat/theta/biodome)
 "bcU" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "bcV" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
 "bcW" = (
@@ -15031,7 +15037,7 @@
 /turf/open/mars_cave/mars_cave_4,
 /area/corsat/sigma/biodome/gunrange)
 "beg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "beh" = (
@@ -15071,7 +15077,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/corsat/theta/biodome)
 "beo" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bep" = (
@@ -15159,7 +15165,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "beJ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
@@ -16244,6 +16250,7 @@
 "bjb" = (
 /obj/structure/showcase{
 	icon_state = "hub";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Telecommunication Hub"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -22072,7 +22079,8 @@
 /area/corsat/omega/maint)
 "bHz" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/almayer/tcomms,
 /area/corsat/sigma/southeast/telecomm)
@@ -26623,7 +26631,7 @@
 /turf/open/floor/corsat/whitetan,
 /area/corsat/gamma/residential/west)
 "cMa" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
@@ -26994,7 +27002,7 @@
 /turf/open/mars_cave/mars_cave_9,
 /area/corsat/sigma/biodome)
 "diD" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -27285,7 +27293,7 @@
 	desc = "A bewildering tangle of machinery and pipes.";
 	name = "\improper coolant feed"
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/corsat/theta/biodome/complex)
 "dwS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -28054,7 +28062,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/biodome)
 "elR" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -28157,7 +28165,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/checkpoint)
 "eql" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
@@ -28371,7 +28379,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/maint)
 "ezR" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "eAD" = (
@@ -28535,6 +28543,7 @@
 "eMI" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat,
@@ -29545,7 +29554,7 @@
 /turf/open/floor/corsat/blue/east,
 /area/corsat/gamma/hallwaysouth)
 "fSA" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/corsat/theta/biodome)
 "fSB" = (
@@ -30009,7 +30018,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/south/engineering)
 "gpP" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "gqd" = (
@@ -30617,7 +30626,7 @@
 /obj/structure/prop/almayer/cannon_cable_connector{
 	name = "\improper Cable connector"
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/corsat/theta/biodome/complex)
 "gTe" = (
 /obj/structure/bed/chair{
@@ -31528,7 +31537,7 @@
 /turf/open/floor/corsat/bluegreycorner/north,
 /area/corsat/gamma/hangar/flightcontrol)
 "hJw" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
 "hJG" = (
@@ -32357,7 +32366,7 @@
 /turf/open/floor/corsat/purplewhite/southeast,
 /area/corsat/gamma/biodome/toxins)
 "iBg" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -33659,7 +33668,7 @@
 /turf/open/floor/corsat/lightplate,
 /area/corsat/theta/biodome/hydroeast)
 "keE" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
 "kfc" = (
@@ -34328,7 +34337,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/corsat/theta/biodome/complex)
 "kRa" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
@@ -35801,7 +35810,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "mrb" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
@@ -36481,7 +36490,7 @@
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "nck" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -36609,7 +36618,7 @@
 /turf/open/floor/corsat/tan/north,
 /area/corsat/gamma/residential/west)
 "nlm" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
@@ -36801,7 +36810,7 @@
 /turf/open/floor/carpet13_5/west,
 /area/corsat/omega/offices)
 "ntg" = (
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/corsat/theta/biodome/complex)
 "ntn" = (
 /turf/closed/shuttle/ert{
@@ -37610,6 +37619,7 @@
 "olB" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/lightplate,
@@ -37676,7 +37686,7 @@
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
 	},
-/turf/open/shuttle/escapepod/floor12,
+/turf/open/shuttle/escapepod/floor2/east,
 /area/corsat/theta/biodome/complex)
 "opi" = (
 /obj/effect/landmark/hunter_primary,
@@ -38239,7 +38249,7 @@
 /turf/open/floor/corsat/purplewhite/north,
 /area/corsat/gamma/sigmaremote)
 "oVF" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -38868,6 +38878,7 @@
 "pJP" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /obj/structure/machinery/light{
@@ -40091,7 +40102,7 @@
 /area/corsat/gamma/engineering/atmos)
 "qVd" = (
 /obj/structure/platform/metal/almayer/north,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/corsat/theta/biodome/complex)
 "qVe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -41725,7 +41736,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
 "sGQ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "sGV" = (
@@ -42691,7 +42702,7 @@
 /turf/open/floor/corsat/whitetan/west,
 /area/corsat/gamma/residential/west)
 "tJf" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
 "tJs" = (
@@ -43926,7 +43937,7 @@
 /turf/open/floor/corsat/red,
 /area/corsat/theta/airlock/control)
 "uXk" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
@@ -44008,7 +44019,7 @@
 /turf/open/floor/corsat/purple/west,
 /area/corsat/omega/complex)
 "var" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "vaw" = (
@@ -44149,6 +44160,7 @@
 "vic" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/lightplate,
@@ -44393,7 +44405,7 @@
 /obj/structure/pipes/standard/cap/hidden{
 	dir = 1
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/corsat/theta/biodome/complex)
 "vyk" = (
 /turf/open/floor/corsat/greenwhitecorner/north,
@@ -44750,7 +44762,7 @@
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/sigma/hangar)
 "vQg" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
@@ -45011,7 +45023,7 @@
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "wiJ" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "wiQ" = (
@@ -45142,6 +45154,7 @@
 "wnB" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/plate,
@@ -45315,7 +45328,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/south/robotics)
 "wvK" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
@@ -46602,7 +46615,7 @@
 /turf/open/floor/corsat/white/southeast,
 /area/corsat/gamma/hallwaysouth)
 "xRq" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/corsat/theta/biodome)
 "xRM" = (
@@ -46929,7 +46942,7 @@
 /turf/open/floor/corsat/yellowcorner/north,
 /area/corsat/omega/control)
 "yle" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "ylo" = (

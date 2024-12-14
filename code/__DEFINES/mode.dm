@@ -40,7 +40,8 @@
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
 #define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
-#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode.toggleable_flags & flag)
+#define MODE_HAS_MODIFIER(modifier_type) (SSticker.mode?.get_gamemode_modifier(modifier_type))
+#define MODE_SET_MODIFIER(modifier_type, enabled) (SSticker.mode?.set_gamemode_modifier(modifier_type, enabled))
 
 // Gamemode Flags
 #define MODE_INFESTATION (1<<0)
@@ -58,26 +59,6 @@
 #define MODE_RANDOM_HIVE (1<<12)// Makes Join-as-Xeno choose a hive to join as burrowed larva at random rather than at user's input..
 #define MODE_THUNDERSTORM (1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
 #define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses, increase armor bullet/bomb/internal damage protection
-
-// Gamemode Toggleable Flags
-#define MODE_NO_SNIPER_SENTRY (1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
-#define MODE_NO_ATTACK_DEAD (1<<1) /// People will not be able to shoot at corpses
-#define MODE_NO_STRIPDRAG_ENEMY (1<<2) /// Can't strip or drag dead enemies
-#define MODE_STRIP_NONUNIFORM_ENEMY (1<<3) /// Can strip enemy, but not their boots, uniform, armor, helmet, or ID
-#define MODE_STRONG_DEFIBS (1<<4) /// Defibs Ignore Armor
-#define MODE_BLOOD_OPTIMIZATION (1<<5) /// Blood spawns without a dry timer, and do not cause footprints
-#define MODE_NO_COMBAT_CAS (1<<6) /// Prevents POs and DCCs from creating combat CAS equipment
-#define MODE_LZ_PROTECTION (1<<7) /// Prevents the LZ from being mortared
-#define MODE_SHIPSIDE_SD (1<<8) /// Toggles whether Predators can big SD when not on the groundmap
-#define MODE_HARDCORE_PERMA (1<<9) /// Toggles Hardcore for all marines, meaning they instantly perma upon death
-#define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
-#define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
-#define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
-#define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
-#define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
-#define MODE_LZ_HAZARD_ACTIVATED (1<<15) // Distress Signal: Spawns miasma 3 minutes after round start
-#define MODE_MORTAR_LASER_WARNING (1<<16) // Blinking laser before mortar impact
-
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
@@ -131,7 +112,7 @@ GLOBAL_LIST_INIT(ROLES_COMMAND, list(JOB_CO, JOB_XO, JOB_SO, JOB_AUXILIARY_OFFIC
 //Marine roles
 #define ROLES_OFFICERS list(JOB_CO, JOB_XO, JOB_SO, JOB_AUXILIARY_OFFICER, JOB_INTEL, JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_TANK_CREW, JOB_DROPSHIP_CREW_CHIEF, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE)
 GLOBAL_LIST_INIT(ROLES_CIC, list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO))
-GLOBAL_LIST_INIT(ROLES_CIC_ANTAG, list(JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMMISSAR))
+GLOBAL_LIST_INIT(ROLES_CIC_ANTAG, list(JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_CO_OFFICER, JOB_UPP_COMMISSAR))
 GLOBAL_LIST_INIT(ROLES_AUXIL_SUPPORT, list(JOB_AUXILIARY_OFFICER, JOB_INTEL, JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_TANK_CREW, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT))
 GLOBAL_LIST_INIT(ROLES_AUXIL_SUPPORT_ANTAG, list(JOB_UPP_CREWMAN))
 GLOBAL_LIST_INIT(ROLES_MISC, list(JOB_SYNTH, JOB_WORKING_JOE, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_COMBAT_REPORTER, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH))
@@ -193,7 +174,7 @@ GLOBAL_LIST_INIT(whitelist_hierarchy, list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 ///Old holders of YAUTJA_COUNCIL for 3 months
 #define WHITELIST_YAUTJA_COUNCIL_LEGACY (1<<3)
 #define WHITELIST_YAUTJA_LEADER (1<<4)
-#define WHITELIST_PREDATOR (WHITELIST_YAUTJA|WHITELIST_YAUTJA_LEGACY|WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY|WHITELIST_YAUTJA_LEADER)
+#define WHITELIST_PREDATOR (WHITELIST_YAUTJA|WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_LEADER)
 
 #define WHITELIST_COMMANDER (1<<5)
 #define WHITELIST_COMMANDER_COUNCIL (1<<6)

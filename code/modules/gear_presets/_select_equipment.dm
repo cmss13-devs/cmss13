@@ -99,7 +99,7 @@
 	if(paygrades.len == 1)
 		return paygrades[1]
 	var/playtime
-	if(!mob_client)
+	if(!mob_client || new_human.client != mob_client)
 		playtime = JOB_PLAYTIME_TIER_1
 	else
 		playtime = get_job_playtime(mob_client, rank)

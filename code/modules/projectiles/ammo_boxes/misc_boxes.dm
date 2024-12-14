@@ -4,9 +4,9 @@
 	name = "\improper miscellaneous equipment box"
 	desc = "A box for miscellaneous equipment."
 	icon_state = "supply_crate"
-	overlay_ammo_type = "blank"
-	overlay_gun_type = "blank"
-	overlay_content = "blank"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_blank"
+	overlay_content = "_blank"
 	can_explode = FALSE
 	limit_per_tile = 4
 

@@ -17,6 +17,10 @@
 	proximity = new(src)
 	update_icon()
 
+/obj/item/clothing/suit/storage/marine/medium/rto/intel/Destroy()
+	QDEL_NULL(proximity)
+	return ..()
+
 /datum/action/item_action/intel/action_activate()
 	. = ..()
 	if(!ishuman(owner))

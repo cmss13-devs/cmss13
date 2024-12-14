@@ -31,7 +31,7 @@
 	caste_type = XENO_CASTE_KING
 	name = XENO_CASTE_KING
 	desc = "A massive alien covered in spines and armoured plates."
-	icon = 'icons/mob/xenos/king.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	icon_size = 64
 	icon_state = "King Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -59,7 +59,7 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 
-	icon_xeno = 'icons/mob/xenos/king.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	weed_food_states = list()
 	weed_food_states_flipped = list()
 
@@ -83,17 +83,17 @@
 	for(var/mob/living/carbon/carbon in new_loc.contents)
 		if(isxeno(carbon))
 			var/mob/living/carbon/xenomorph/xeno = carbon
-			if(xeno.hivenumber == src.hivenumber)
+			if(xeno.hivenumber == src.hivenumber && !(king.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 				xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
-			else
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+			else if(xeno.hivenumber != src.hivenumber)
 				xeno.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		else
 			if(carbon.stat != DEAD)
 				carbon.apply_armoured_damage(20)
 				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
-
-		playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-
+				playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 /mob/living/carbon/xenomorph/king/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 
@@ -101,11 +101,11 @@
 	name = "Base King Behavior Delegate"
 
 /mob/living/carbon/xenomorph/king/rogue
-	icon_xeno = 'icons/mob/xenos/rogueking.dmi'
-	icon = 'icons/mob/xenos/rogueking.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 
 /atom/movable/vis_obj/xeno_wounds/rogue
-	icon = 'icons/mob/xenos/roguedamage.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/roguedamage.dmi'
 
 /mob/living/carbon/xenomorph/king/rogue/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()

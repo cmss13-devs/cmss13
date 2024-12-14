@@ -2,7 +2,7 @@
 	gender = PLURAL
 	name = "facepaint"
 	desc = "Paint, for your face. Wipe it off your face with some paper if you need to. This one is a deep, forest green."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "camo"
 	var/paint_type = "green"
 	w_class = SIZE_TINY
@@ -124,6 +124,10 @@
 	paint_type = "red_lipstick"
 	icon_state = "lipstick"
 	item_state = "lipstick"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_righthand.dmi'
+	)
 	var/icon_state_open = "lipstick_red"
 	var/icon_state_closed = "lipstick"
 	open = FALSE
@@ -170,7 +174,7 @@
 /obj/item/k9_name_changer
 	name = "K9 name implanter"
 	desc = "Syncs the implanted W-Y Serial Chip to the unit's preferred name."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/economy.dmi'
 	icon_state = "efundcard"
 	w_class = SIZE_TINY
 

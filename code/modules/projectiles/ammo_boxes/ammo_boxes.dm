@@ -87,6 +87,9 @@
 	limit_per_tile = 2
 	ground_offset_x = 5
 	ground_offset_y = 5
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/ammo_boxes.dmi'
+	)
 
 /obj/item/ammo_box/magazine/empty
 	empty = TRUE
@@ -164,6 +167,13 @@
 			return
 		box_on_tile++
 		if(box_on_tile >= limit_per_tile)
+			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
+			return
+
+	// Make sure a platform wouldn't block it
+	if(box_on_tile * 2 >= limit_per_tile) // Allow 2 if limit is 4
+		var/obj/structure/platform/platform = locate() in T
+		if(platform?.dir == NORTH)
 			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
 			return
 

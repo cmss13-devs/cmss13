@@ -3,7 +3,7 @@
 /obj/structure/noticeboard
 	name = "notice board"
 	desc = "A board for pinning important notices upon."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/furniture/noticeboard.dmi'
 	icon_state = "noticeboard"
 	density = FALSE
 	anchored = TRUE

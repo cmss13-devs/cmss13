@@ -15,7 +15,7 @@
 
 	caste_desc = "A weak ranged combat alien."
 	evolves_to = list(XENO_CASTE_SPITTER)
-	deevolves_to = list("Larva")
+	deevolves_to = list(XENO_CASTE_LARVA)
 	acid_level = 1
 
 	tackle_min = 4
@@ -55,8 +55,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/sentinel.dmi'
-	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_1/sentinel.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/sentinel.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

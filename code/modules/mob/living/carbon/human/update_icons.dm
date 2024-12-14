@@ -461,60 +461,61 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		overlays_standing[SUIT_STORE_LAYER] = I
 		apply_overlay(SUIT_STORE_LAYER)
 
-
-#define MAX_HEAD_GARB_ITEMS 5
-
 /mob/living/carbon/human/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 	remove_overlay(HEAD_SQUAD_LAYER)
-	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
+	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_LAYERS - 1))
 		remove_overlay(i)
 
-	if(head)
+	if(!head)
+		return
 
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			client.add_to_screen(head)
-			head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
+	if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+		client.add_to_screen(head)
+		head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
 
-		if(species.flags & NO_OVERLAYS && !head.force_overlays_on)
-			return
+	if(species.flags & NO_OVERLAYS && !head.force_overlays_on)
+		return
 
-		var/image/I = head.get_mob_overlay(src, WEAR_HEAD)
-		I.layer = -HEAD_LAYER
-		overlays_standing[HEAD_LAYER] = I
-		apply_overlay(HEAD_LAYER)
+	var/image/head_overlay = head.get_mob_overlay(src, WEAR_HEAD)
+	head_overlay.layer = -HEAD_LAYER
+	overlays_standing[HEAD_LAYER] = head_overlay
+	apply_overlay(HEAD_LAYER)
 
-		if(istype(head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/marine_helmet = head
-			if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
-				if(assigned_squad && assigned_squad.equipment_color && assigned_squad.use_stripe_overlay)
-					var/leader = assigned_squad.squad_leader
-					var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "std-helmet")
-					if(leader == src)
-						helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state = "sql-helmet")
-					helmet_overlay.layer = -HEAD_SQUAD_LAYER
-					helmet_overlay.alpha = assigned_squad.armor_alpha
-					helmet_overlay.color = assigned_squad.equipment_color
-					overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
-					apply_overlay(HEAD_SQUAD_LAYER)
+	if(istype(head, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/marine_helmet = head
+		if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
+			if(assigned_squad && assigned_squad.equipment_color && assigned_squad.use_stripe_overlay)
+				var/leader = assigned_squad.squad_leader
+				var/image/helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state="std-helmet")
+				if(leader == src)
+					helmet_overlay = image(marine_helmet.helmet_overlay_icon, icon_state="sql-helmet")
+				helmet_overlay.layer = -HEAD_SQUAD_LAYER
+				helmet_overlay.alpha = assigned_squad.armor_alpha
+				helmet_overlay.color = assigned_squad.equipment_color
+				overlays_standing[HEAD_SQUAD_LAYER] = helmet_overlay
+				apply_overlay(HEAD_SQUAD_LAYER)
 
-			var/num_helmet_overlays = 0
-			for(var/i in 1 to length(marine_helmet.helmet_overlays))
-				// Add small numbers to the head garb layer so we don't have a layer conflict
-				// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
-				overlays_standing[HEAD_GARB_LAYER + (i-1)] = image('icons/mob/humans/onmob/helmet_garb.dmi', src, marine_helmet.helmet_overlays[i])
-				num_helmet_overlays++
+		handle_helmet_overlays(marine_helmet)
 
-			// null out the rest of the space allocated for helmet overlays
-			// God I hate 1-based indexing
-			for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_ITEMS)
-				overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
+	else if(istype(head, /obj/item/clothing/head/cmcap))
+		handle_helmet_overlays(head)
 
-			for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
-				apply_overlay(i)
+/mob/living/carbon/human/proc/handle_helmet_overlays(obj/item/clothing/head/hat)
+	var/num_helmet_overlays = 0
+	for(var/i in 1 to length(hat.helmet_overlays))
+		// Add small numbers to the head garb layer so we don't have a layer conflict
+		// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
+		overlays_standing[HEAD_GARB_LAYER + (i-1)] = hat.helmet_overlays[i]
+		num_helmet_overlays++
 
-#undef MAX_HEAD_GARB_ITEMS
+	// null out the rest of the space allocated for helmet overlays
+	// God I hate 1-based indexing
+	for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_LAYERS)
+		overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
 
+	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_LAYERS - 1))
+		apply_overlay(i)
 
 /mob/living/carbon/human/update_inv_belt()
 	remove_overlay(BELT_LAYER)
@@ -586,8 +587,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		update_inv_w_uniform()
 		update_inv_shoes()
 		update_inv_gloves()
-
-	update_collar()
 
 
 
@@ -714,20 +713,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
-
-
-//Adds a collar overlay above the helmet layer if the suit has one
-// Suit needs an identically named sprite in icons/mob/collar.dmi
-/mob/living/carbon/human/proc/update_collar()
-	remove_overlay(COLLAR_LAYER)
-	if(!istype(wear_suit,/obj/item/clothing/suit))
-		return
-	var/obj/item/clothing/suit/S = wear_suit
-	var/image/I = S.get_collar()
-	if(I)
-		I.layer = -COLLAR_LAYER
-		overlays_standing[COLLAR_LAYER] = I
-		apply_overlay(COLLAR_LAYER)
 
 /mob/living/carbon/human/update_burst()
 	remove_overlay(BURST_LAYER)

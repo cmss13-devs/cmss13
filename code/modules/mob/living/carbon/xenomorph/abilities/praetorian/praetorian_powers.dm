@@ -638,6 +638,8 @@
 	if (!istype(dancer_user) || !dancer_user.check_state())
 		return
 
+	if (!ismob(target_atom))
+
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
 		return

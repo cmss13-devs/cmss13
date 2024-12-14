@@ -255,15 +255,15 @@
 	item_state = "torn_scarf_black"
 
 /obj/item/clothing/mask/rebreather/scarf/keffiyeh
-    name = "Keffiyeh"
-    desc = "A traditional headscarf worn for protection from the elements and to conceal the face. Typically made of cotton, it can provide shade from the sun, guard against dust, and serve as camouflage in arid environments. Often worn by soldiers and civilians alike in desert and hostile regions, the keffiyeh has become a symbol of cultural identity and resilience."
-    icon_state = "keffiyeh"
-    item_state = "keffiyeh"
-    original_state = "keffiyeh"
-    flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-    flags_inv_hide = HIDEFACE|HIDELOWHAIR
-    flags_cold_protection = BODY_FLAG_HEAD
-    min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	name = "Keffiyeh"
+	desc = "A traditional headscarf worn for protection from the elements and to conceal the face. Typically made of cotton, it can provide shade from the sun, guard against dust, and serve as camouflage in arid environments. Often worn by soldiers and civilians alike in desert and hostile regions, the keffiyeh has become a symbol of cultural identity and resilience."
+	icon_state = "keffiyeh"
+	item_state = "keffiyeh"
+	original_state = "keffiyeh"
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/scarf/keffiyeh/white
 	icon_state = "keffiyeh_white"

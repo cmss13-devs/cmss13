@@ -245,9 +245,7 @@
 /turf/open/floor/plating/platingdmg2,
 /area/desert_dam/building/medical/lobby)
 "dh" = (
-/turf/open/floor/plating/warnplate{
-	dir = 1
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_medical)
 "di" = (
 /obj/structure/surface/table/reinforced,

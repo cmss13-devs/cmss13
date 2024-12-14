@@ -523,9 +523,7 @@
 /area/fiorina/station/clf_ship)
 "nC" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/plating/warnplate{
-	dir = 1
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "nD" = (
 /obj/item/stack/sheet/metal{
@@ -760,12 +758,6 @@
 	},
 /turf/open/floor/plating,
 /area/fiorina/station/park)
-"vD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
-/turf/open/floor/plating,
-/area/fiorina/station/clf_ship)
 "vF" = (
 /obj/structure/shuttle/engine/heater,
 /turf/closed/wall/almayer,
@@ -837,9 +829,7 @@
 /area/fiorina/station/clf_ship)
 "yw" = (
 /obj/item/stack/rods,
-/turf/open/floor/plating/warnplate{
-	dir = 1
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "yx" = (
 /obj/structure/machinery/light,
@@ -947,13 +937,6 @@
 "BS" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platebot,
-/area/fiorina/station/clf_ship)
-"BW" = (
-/obj/effect/decal/warning_stripes,
-/turf/closed/shuttle/ert{
-	icon_state = "stan9"
-	},
-/turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "BZ" = (
 /obj/item/ammo_magazine/sniper/svd,
@@ -1106,13 +1089,6 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/emerald/southeast,
 /area/fiorina/station/clf_ship)
-"GQ" = (
-/obj/effect/decal/warning_stripes,
-/turf/closed/shuttle/ert{
-	icon_state = "stan8"
-	},
-/turf/open/floor/plating,
-/area/fiorina/station/clf_ship)
 "GV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
@@ -1248,13 +1224,6 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/fiorina/station/clf_ship)
-"Ki" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
-/turf/open/floor/plating,
-/area/fiorina/station/clf_ship)
 "Ko" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/rifle/m16/ap,
@@ -1327,9 +1296,7 @@
 /area/fiorina/station/clf_ship)
 "Ml" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/floor/plating/warnplate{
-	dir = 1
-	},
+/turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "Mu" = (
 /obj/structure/surface/rack,
@@ -1899,7 +1866,7 @@ ZI
 ZI
 vF
 yv
-Ki
+RR
 Tg
 Rk
 ZI
@@ -2078,7 +2045,7 @@ Cf
 GV
 DF
 pI
-GQ
+HZ
 hr
 Hn
 si
@@ -2372,7 +2339,7 @@ tX
 DF
 GV
 Wg
-BW
+lv
 dy
 GW
 Da
@@ -2529,7 +2496,7 @@ Dx
 vZ
 pg
 yv
-vD
+yJ
 HD
 bn
 HD

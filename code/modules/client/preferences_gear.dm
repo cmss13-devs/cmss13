@@ -261,32 +261,32 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/mask/smock_classic
 	display_name = "Smock, classic" // much like the scarves, but larger - different design.
-	path = /obj/item/clothing/mask/rebreather/scarf/smock/classic
+	path = /obj/item/clothing/mask/smock/classic
 	cost = 4
 
 /datum/gear/mask/smock_jungle
 	display_name = "Smock, jungle"
-	path = /obj/item/clothing/mask/rebreather/scarf/smock
+	path = /obj/item/clothing/mask/smock
 	cost = 4
 
 /datum/gear/mask/smock_snow
 	display_name = "Smock, snow"
-	path = /obj/item/clothing/mask/rebreather/scarf/smock/snow
+	path = /obj/item/clothing/mask/smock/snow
 	cost = 4
 
 /datum/gear/mask/smock_desert
 	display_name = "Smock, desert"
-	path = /obj/item/clothing/mask/rebreather/scarf/smock/desert
+	path = /obj/item/clothing/mask/smock/desert
 	cost = 4
 
 /datum/gear/mask/smock_urban
 	display_name = "Smock, urban"
-	path = /obj/item/clothing/mask/rebreather/scarf/smock/urban
+	path = /obj/item/clothing/mask/smock/urban
 	cost = 4
 
 /datum/gear/mask/smock_black
 	display_name = "Smock, black"
-	path = /obj/item/clothing/mask/rebreather/scarf/smock/black
+	path = /obj/item/clothing/mask/smock/black
 	cost = 4
 
 /datum/gear/mask/keffiyeh

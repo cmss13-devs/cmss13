@@ -285,35 +285,35 @@
 	item_state = "keffiyeh_black"
 	original_state = "keffiyeh_black"
 
-/obj/item/clothing/mask/rebreather/scarf/smock
+/obj/item/clothing/mask/smock
 	name = "tactical smock"
 	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."
-	icon_state = "smock"
-	item_state = "smock"
+	icon_state = "smock_jungle"
+	item_state = "smock_jungle"
 	w_class = SIZE_SMALL
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/mask/rebreather/scarf/smock/classic
-	icon_state = "c_smock"
-	item_state = "c_smock"
+/obj/item/clothing/mask/smock/classic
+	icon_state = "smock_classic"
+	item_state = "smock_classic"
 
-/obj/item/clothing/mask/rebreather/scarf/smock/snow
-	icon_state = "s_smock"
-	item_state = "s_smock"
+/obj/item/clothing/mask/smock/snow
+	icon_state = "smock_snow"
+	item_state = "smock_snow"
 
-/obj/item/clothing/mask/rebreather/scarf/smock/desert
-	icon_state = "d_smock"
-	item_state = "d_smock"
+/obj/item/clothing/mask/smock/desert
+	icon_state = "smock_desert"
+	item_state = "smock_desert"
 
-/obj/item/clothing/mask/rebreather/scarf/smock/urban
-	icon_state = "u_smock"
-	item_state = "u_smock"
+/obj/item/clothing/mask/smock/urban
+	icon_state = "smock_urban"
+	item_state = "smock_urban"
 
-/obj/item/clothing/mask/rebreather/scarf/smock/black
-	icon_state = "b_smock"
-	item_state = "b_smock"
+/obj/item/clothing/mask/smock/black
+	icon_state = "smock_black"
+	item_state = "smock_black"
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"

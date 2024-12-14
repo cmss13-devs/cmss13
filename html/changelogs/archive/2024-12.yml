@@ -122,3 +122,44 @@
   - bugfix: emp grenades now use correct (non legacy) icon
   Drathek:
   - bugfix: Fixed doors considering shutters as blocking
+2024-12-12:
+  BeagleGaming1:
+  - code_imp: Changed gamemode flags to datums
+  - admin: Changed gamemode flags from many buttons to one UI
+  IroquoisLou:
+  - rscadd: Added the rank of colour sergeant to the RMC, to give the RMC, a Staff
+      Sergeant equivalent
+  - rscdel: Removed the japanese title's from the RMC ranks
+  Steelpoint:
+  - rscadd: The character setup page will now display your character wearing the correct
+      uniform for the UPP job you have selected as your job preference. This should
+      only occur during the faction clash game mode.
+  harryob:
+  - bugfix: leveled riflemen slots are no longer used up by dummies
+  nauticall:
+  - rscadd: Adds CIA agents to the game. These are disguised as either civilians,
+      liaisons, or people in other factions and have a plethora of tools to achieve
+      any objectives they might be assigned to.
+  - rscdel: Deletes the UAAC-TIS from the game.
+2024-12-13:
+  cuberound:
+  - bugfix: MODE_NO_ATTACK_DEAD now prevents harm from explosions and flames correctly
+  joookschad:
+  - rscdel: Removed IO squad vendor access. They can still use standard vendors for
+      cosmetics and uniforms.
+  lanse12:
+  - spellcheck: fixed a 1 letter typo in king ability
+  zzzmike:
+  - rscdel: Xeno tackle messaging no longer cares if the target is horizontal or not
+      (because being horizontal has no bearing on tackles)
+2024-12-14:
+  Drulikar:
+  - balance: Queen prevents round end even when in a tunnel
+  - bugfix: Fixed check_queen_status checking any queen not just queens that matter
+      to round end
+  harryob:
+  - bugfix: some random preference verbs weren't saving the preference
+  - bugfix: pmc goon squads and vaiso squads can now correctly use their shuttles
+      to return home
+  realforest2001:
+  - rscadd: Fax Responder platform now includes faxes sent before it loaded.

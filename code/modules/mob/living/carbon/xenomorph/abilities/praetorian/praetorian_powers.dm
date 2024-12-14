@@ -908,9 +908,9 @@
 			telegraph_atom_list -= XT
 			qdel(XT)
 		return
-		
+
 	if(!length(target_turfs))
-		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("There's not enough room!"))
 		return
 
 	if(!action_cooldown_check() || !check_and_use_plasma_owner())

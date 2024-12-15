@@ -36,6 +36,7 @@
 	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
 	var/command_channel_key = ":v"
 
+	var/freq = CRYO_FREQ
 
 	///List of saved coordinates, format of ["x", "y", "comment"]
 	var/list/saved_coordinates = list()
@@ -560,6 +561,9 @@
 	SIGNAL_HANDLER
 	if(inoperable())
 		return
+	var/target_zs = SSradio.get_available_tcomm_zs(freq)
+	if(!(is_ground_level(z) && (is_ground_level(sourcemob.z))) && !((z in target_zs) && (sourcemob.z in target_zs)))
+		return
 	if(show_message_above_tv)
 		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
 	for(var/datum/weakref/user_ref in concurrent_users)
@@ -570,6 +574,9 @@
 /obj/structure/machinery/computer/overwatch/proc/transfer_emote(obj/item/camera, mob/living/sourcemob, emote, audible = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER
 	if(inoperable())
+		return
+	var/target_zs = SSradio.get_available_tcomm_zs(freq)
+	if(!(is_ground_level(z) && (is_ground_level(sourcemob.z))) && !((z in target_zs) && (sourcemob.z in target_zs)))
 		return
 	if(show_message_above_tv)
 		langchat_speech(emote, get_mobs_in_view(7, src), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))
@@ -947,8 +954,10 @@
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
+	freq = CLF_FREQ
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
+	freq = UPP_FREQ
 	minimap_type = MINIMAP_FLAG_UPP
 	command_channel_key = "#v"
 	ui_theme = "crtupp"
@@ -957,10 +966,13 @@
 
 /obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC
+	freq = PMC_FREQ
 /obj/structure/machinery/computer/overwatch/twe
 	faction = FACTION_TWE
+	freq = RMC_FREQ
 /obj/structure/machinery/computer/overwatch/freelance
 	faction = FACTION_FREELANCER
+	freq = DUT_FREQ
 
 /obj/structure/supply_drop
 	name = "Supply Drop Pad"

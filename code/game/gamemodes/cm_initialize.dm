@@ -53,7 +53,6 @@ Additional game mode variables.
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
 	var/xeno_bypass_timer = 0 //Bypass the five minute timer before respawning.
-	var/xeno_queen_deaths = 0 //How many times the alien queen died.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
@@ -330,9 +329,8 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_fax_responder")
 		return FALSE
 	if(!loaded_fax_base)
-		loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+		load_fax_base()
 		if(!loaded_fax_base)
-			log_debug("Error loading fax response base!")
 			return FALSE
 
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
@@ -356,6 +354,13 @@ Additional game mode variables.
 	message_admins(FONT_SIZE_XL(SPAN_RED("([new_responder.key]) joined as a [sub_job], [new_responder.real_name].")))
 	new_responder.add_fax_responder()
 
+	return TRUE
+
+/datum/game_mode/proc/load_fax_base()
+	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+	if(!loaded_fax_base)
+		log_debug("Error loading fax response base!")
+		return FALSE
 	return TRUE
 
 

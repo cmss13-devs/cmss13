@@ -296,7 +296,7 @@
 	max_medics = 1
 	probability = 0
 
-/datum/emergency_call/cmb/riot_control/New()
+/datum/emergency_call/cmb/riot_control/alt/New()
 	..()
 	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
 	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."

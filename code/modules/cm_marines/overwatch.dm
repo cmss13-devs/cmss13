@@ -562,7 +562,7 @@
 	if(inoperable())
 		return
 	var/target_zs = SSradio.get_available_tcomm_zs(freq)
-	if(!(is_ground_level(z) && (is_ground_level(sourcemob.z))) && !((z in target_zs) && (sourcemob.z in target_zs)))
+	if(!(z == sourcemob.z) && !((z in target_zs) && (sourcemob.z in target_zs)))
 		return
 	if(show_message_above_tv)
 		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
@@ -576,7 +576,7 @@
 	if(inoperable())
 		return
 	var/target_zs = SSradio.get_available_tcomm_zs(freq)
-	if(!(is_ground_level(z) && (is_ground_level(sourcemob.z))) && !((z in target_zs) && (sourcemob.z in target_zs)))
+	if(audible && !(z == sourcemob.z) && !((z in target_zs) && (sourcemob.z in target_zs)))
 		return
 	if(show_message_above_tv)
 		langchat_speech(emote, get_mobs_in_view(7, src), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))

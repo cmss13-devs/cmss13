@@ -129,7 +129,7 @@
 	name = "Activate Fire Shield"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/items/clothing/cm_suits.dmi', button, "pyro_armor")
+	var/image/IMG = image('icons/obj/items/clothing/suits/suits_by_map/jungle.dmi', button, "pyro_armor")
 	button.overlays += IMG
 
 /datum/action/item_action/specialist/fire_shield/action_cooldown_check()

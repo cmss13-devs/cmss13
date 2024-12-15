@@ -513,8 +513,7 @@ GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
 		HUD_ORANGE = new /datum/custom_hud/orange(),
 		HUD_RED = new /datum/custom_hud/red(),
 		HUD_WHITE = new /datum/custom_hud/white(),
-		HUD_ALIEN = new /datum/custom_hud/alien(),
-		HUD_ROBOT = new /datum/custom_hud/robot()
+		HUD_ALIEN = new /datum/custom_hud/alien()
 	)
 
 /proc/setup_human_huds()

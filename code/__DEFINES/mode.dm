@@ -1,5 +1,8 @@
 //=================================================
-//Self-destruct, nuke, and evacuation.
+//Self-destruct, nuke, evacuation, and round start miasma.
+
+/// At what time does miasma start if /datum/gamemode_modifier/lz_roundstart_miasma is enabled?
+#define DISTRESS_LZ_HAZARD_START (1 MINUTES)
 #define EVACUATION_TIME_LOCK 1 HOURS
 #define DISTRESS_TIME_LOCK 6 MINUTES
 #define SHUTTLE_TIME_LOCK 15 MINUTES
@@ -28,9 +31,9 @@
 #define LIFEBOAT_INACTIVE 0
 #define LIFEBOAT_ACTIVE 1
 
-#define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
-#define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 			15 MINUTES
+#define XENO_ROUNDSTART_PROGRESS_AMOUNT 2
+#define XENO_ROUNDSTART_PROGRESS_TIME_1 0
+#define XENO_ROUNDSTART_PROGRESS_TIME_2 15 MINUTES
 
 #define ROUND_TIME (world.time - SSticker.round_start_time)
 
@@ -40,7 +43,8 @@
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
 #define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
-#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode.toggleable_flags & flag)
+#define MODE_HAS_MODIFIER(modifier_type) (SSticker.mode?.get_gamemode_modifier(modifier_type))
+#define MODE_SET_MODIFIER(modifier_type, enabled) (SSticker.mode?.set_gamemode_modifier(modifier_type, enabled))
 
 // Gamemode Flags
 #define MODE_INFESTATION (1<<0)
@@ -58,26 +62,6 @@
 #define MODE_RANDOM_HIVE (1<<12)// Makes Join-as-Xeno choose a hive to join as burrowed larva at random rather than at user's input..
 #define MODE_THUNDERSTORM (1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
 #define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses, increase armor bullet/bomb/internal damage protection
-
-// Gamemode Toggleable Flags
-#define MODE_NO_SNIPER_SENTRY (1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
-#define MODE_NO_ATTACK_DEAD (1<<1) /// People will not be able to shoot at corpses
-#define MODE_NO_STRIPDRAG_ENEMY (1<<2) /// Can't strip or drag dead enemies
-#define MODE_STRIP_NONUNIFORM_ENEMY (1<<3) /// Can strip enemy, but not their boots, uniform, armor, helmet, or ID
-#define MODE_STRONG_DEFIBS (1<<4) /// Defibs Ignore Armor
-#define MODE_BLOOD_OPTIMIZATION (1<<5) /// Blood spawns without a dry timer, and do not cause footprints
-#define MODE_NO_COMBAT_CAS (1<<6) /// Prevents POs and DCCs from creating combat CAS equipment
-#define MODE_LZ_PROTECTION (1<<7) /// Prevents the LZ from being mortared
-#define MODE_SHIPSIDE_SD (1<<8) /// Toggles whether Predators can big SD when not on the groundmap
-#define MODE_HARDCORE_PERMA (1<<9) /// Toggles Hardcore for all marines, meaning they instantly perma upon death
-#define MODE_DISPOSABLE_MOBS (1<<10) // Toggles if mobs fit in disposals or not. Off by default.
-#define MODE_BYPASS_JOE (1<<11) // Toggles if ghosts can bypass Working Joe spawn limitations, does NOT bypass WL requirement. Off by default.
-#define MODE_DISABLE_JOE_RESPAWN (1<<12) // Toggles if ghosts can respawn as Working Joes after dying as one when 15 minutes have passed. Off by default
-#define MODE_INDESTRUCTIBLE_SPLINTS (1<<13) //Toggle is splints are to become nanosplints
-#define MODE_NO_INTERNAL_BLEEDING (1<<14) // Toggles all internal bleeding behavior to cause normal bleeding instead
-#define MODE_LZ_HAZARD_ACTIVATED (1<<15) // Distress Signal: Spawns miasma 3 minutes after round start
-#define MODE_MORTAR_LASER_WARNING (1<<16) // Blinking laser before mortar impact
-
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2

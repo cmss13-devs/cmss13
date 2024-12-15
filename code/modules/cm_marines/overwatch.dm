@@ -683,11 +683,13 @@
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
-/obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/H)
-	if(current_squad)
-		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/helm = H.head
-			return helm
+/obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/target)
+	if(!current_squad)
+		return
+
+	if(istype(target) && istype(target.head, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helm = target.head
+		return helm
 
 // Alerts all groundside marines about the incoming OB
 /obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)

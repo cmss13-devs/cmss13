@@ -68,7 +68,7 @@
 			to_chat(user, SPAN_WARNING("You were interupted!"))
 			return
 		to_chat(user, SPAN_NOTICE("You dissolve [attacked_item]"))
-		biomass_points += (food.potency / 3)
+		biomass_points += (food.potency)
 		qdel(attacked_item)
 		playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 //RUCM END

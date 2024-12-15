@@ -63,8 +63,6 @@ export const LobbyMenu = () => {
       .get('lobby-filter-disabled')
       .then((val) => setFilterDisabled(!!val));
 
-    onLoadPlayer.current!.volume = 0.2;
-
     setTimeout(() => {
       onLoadPlayer.current!.play();
     }, 250);

@@ -163,6 +163,7 @@
 	skills = /datum/skills/tank_crew
 
 	minimap_icon = "vc"
+	minimap_background = "background_intel"
 
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -210,12 +211,8 @@
 	access = list(
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_ALPHA,
-		ACCESS_MARINE_BRAVO,
-		ACCESS_MARINE_CHARLIE,
-		ACCESS_MARINE_DELTA,
 		ACCESS_MARINE_ENGPREP,
+		ACCESS_MARINE_PREP,
 		ACCESS_CIVILIAN_ENGINEERING,
 	)
 	assignment = JOB_INTEL
@@ -223,6 +220,8 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "IO"
 	skills = /datum/skills/intel
+	minimap_icon = "io"
+	minimap_background = "background_intel"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 
@@ -805,13 +804,13 @@
 	assignment = "Marine Raider"
 	rank = JOB_MARINE_RAIDER
 	role_comm_title = "Op."
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
+	languages = list(LANGUAGE_TSL, LANGUAGE_ENGLISH)
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_SOF
 	ert_squad = TRUE
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 
-	minimap_icon = "private"
+	minimap_icon = "sof_sg"
 
 /datum/equipment_preset/uscm/marsoc/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -863,6 +862,7 @@
 /datum/equipment_preset/uscm/marsoc/covert
 	name = "Marine Raider (!DEATHSQUAD! Covert)"
 	uses_special_name = TRUE
+
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
@@ -880,7 +880,7 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/commando/deathsquad/leader
 
-	minimap_icon = "leader"
+	minimap_icon = "sof_sl"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
@@ -890,6 +890,7 @@
 /datum/equipment_preset/uscm/marsoc/sl/covert
 	name = "Marine Raider Team Leader (!DEATHSQUAD! Covert)"
 	uses_special_name = TRUE
+
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
@@ -904,6 +905,7 @@
 	assignment = JOB_MARINE_RAIDER_CMD
 	rank = JOB_MARINE_RAIDER_CMD
 	role_comm_title = "CMD."
+	minimap_icon = "sof_officer"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/commando/deathsquad/officer
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)

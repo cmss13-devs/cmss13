@@ -29,6 +29,15 @@
 	var/linked_lz
 
 	var/can_change_shuttle = FALSE
+	var/faction = FACTION_MARINE
+
+	/// If this computer should respect the faction variable of destination LZ
+	var/use_factions = TRUE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/upp
+	icon_state = "console_upp"
+	req_one_access = list(ACCESS_UPP_FLIGHT)
+	faction = FACTION_UPP
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
@@ -41,6 +50,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/marine_dropship/dock in SSshuttle.stationary)
+		if(use_factions && dock.faction != faction)
+			continue
 		if(istype(dock, /obj/docking_port/stationary/marine_dropship/crash_site))
 			continue
 		. += list(dock)
@@ -294,8 +305,8 @@
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-		if(!GLOB.resin_lz_allowed)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 		stop_playing_launch_announcement_alarm()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))

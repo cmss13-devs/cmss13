@@ -10,7 +10,7 @@
 	return g
 
 /proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color)
-	if(S.uses_skin_color)
+	if(S.flags & HAS_SKIN_COLOR)
 		if(S.special_body_types)
 			switch(limb_name)
 				if("torso")
@@ -323,13 +323,13 @@
 				g_eyes = 255
 				b_eyes = 0
 			if(INTENT_DISARM) //Blue
-				r_eyes = 0
-				g_eyes = 0
-				b_eyes = 255
+				r_eyes = 90
+				g_eyes = 90
+				b_eyes = 253
 			if(INTENT_GRAB) //Orange, since yellow doesn't show at all!
-				r_eyes = 248
-				g_eyes = 243
-				b_eyes = 43
+				r_eyes = 239
+				g_eyes = 167
+				b_eyes = 0
 			if(INTENT_HARM) //RED!
 				r_eyes = 255
 				g_eyes = 0
@@ -419,7 +419,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		ignores_stripdrag_flag = H.species.ignores_stripdrag_flag
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(M.faction_group))
 		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE

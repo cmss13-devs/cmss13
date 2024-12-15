@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list(), "Responders" = list()))
 
 //Main cryopod console.
 
@@ -229,8 +229,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		switch(H.job)
+		var/mob/living/carbon/human/cryo_human = occupant
+		switch(cryo_human.job)
 			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
 			if(JOB_NURSE, JOB_DOCTOR, JOB_RESEARCHER, JOB_CMO)
@@ -240,7 +240,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			if(JOB_PREDATOR)
 				dept_console = GLOB.frozen_items["Yautja"]
 
-		H.species.handle_cryo(H)
+		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
+			cryo_human.despawn_fax_responder()
+
+		cryo_human.species.handle_cryo(cryo_human)
 
 	var/list/deleteempty = list(/obj/item/storage/backpack/marine/satchel)
 
@@ -262,7 +265,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	item_loop:
 		for(var/obj/item/W in items)
-			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE)) && !gearless_role(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
+			if((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE) || gearless_role(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
 				if(istype(W, /obj/item/clothing/suit/storage))
 					var/obj/item/clothing/suit/storage/SS = W
 					for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
@@ -321,6 +324,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	stripped_items:
 		for(var/obj/item/A in strippeditems)
+			if(gearless_role(occupant))
+				qdel(A)
+				continue stripped_items
 			for(var/DAA in deleteall)
 				if(istype(A, DAA))
 					qdel(A)

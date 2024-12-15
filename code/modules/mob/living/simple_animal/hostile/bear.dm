@@ -46,7 +46,7 @@
 	response_harm   = "pokes"
 
 /mob/living/simple_animal/hostile/bear/Life(delta_time)
-	. =..()
+	. = ..()
 	if(!.)
 		return
 
@@ -54,6 +54,8 @@
 		icon_state = "bear"
 	else
 		icon_state = "bearfloor"
+
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 
 	switch(stance)
 
@@ -102,15 +104,15 @@
 	if(stance != HOSTILE_STANCE_ATTACK && stance != HOSTILE_STANCE_ATTACKING)
 		stance = HOSTILE_STANCE_ALERT
 		stance_step = 6
-		target_mob = user
-	..()
+		target_mob_ref = WEAKREF(user)
+	return ..()
 
-/mob/living/simple_animal/hostile/bear/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_animal/hostile/bear/attack_hand(mob/living/carbon/human/attacking_mob)
 	if(stance != HOSTILE_STANCE_ATTACK && stance != HOSTILE_STANCE_ATTACKING)
 		stance = HOSTILE_STANCE_ALERT
 		stance_step = 6
-		target_mob = M
-	..()
+		target_mob_ref = WEAKREF(attacking_mob)
+	return ..()
 
 /mob/living/simple_animal/hostile/bear/Process_Spacemove(check_drift = 0)
 	return //No drifting in space for space bears!
@@ -125,6 +127,7 @@
 	..(5)
 
 /mob/living/simple_animal/hostile/bear/AttackingTarget()
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!Adjacent(target_mob))
 		return
 	manual_emote(pick(list("slashes at [target_mob]", "bites [target_mob]")))
@@ -132,15 +135,14 @@
 	var/damage = rand(20,30)
 
 	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
+		var/mob/living/carbon/human/hooman = target_mob
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
-		var/obj/limb/affecting = H.get_limb(rand_zone(dam_zone))
-		H.apply_damage(damage, BRUTE, affecting, sharp=1, edge=1)
-		return H
+		var/obj/limb/affecting = hooman.get_limb(rand_zone(dam_zone))
+		hooman.apply_damage(damage, BRUTE, affecting, sharp=1, edge=1)
+		return hooman
 	else if(isliving(target_mob))
-		var/mob/living/L = target_mob
-		L.apply_damage(damage, BRUTE)
-		return L
+		target_mob.apply_damage(damage, BRUTE)
+		return target_mob
 
 
 

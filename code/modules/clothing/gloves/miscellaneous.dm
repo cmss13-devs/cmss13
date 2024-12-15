@@ -19,7 +19,7 @@
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
 	name = "\improper SWAT Gloves"
 	icon_state = "black"
-	item_state = "swat_gl"
+	item_state = "black"
 	siemens_coefficient = 0.6
 
 
@@ -32,7 +32,7 @@
 	desc = "These tactical gloves are somewhat fire and impact resistant."
 	name = "combat gloves"
 	icon_state = "black"
-	item_state = "swat_gl"
+	item_state = "black"
 	siemens_coefficient = 0
 
 	flags_cold_protection = BODY_FLAG_HANDS
@@ -44,7 +44,7 @@
 	name = "latex gloves"
 	desc = "Sterile latex gloves."
 	icon_state = "latex"
-	item_state = "lgloves"
+	item_state = "latex"
 	siemens_coefficient = 0.30
 	armor_bio = CLOTHING_ARMOR_LOW
 

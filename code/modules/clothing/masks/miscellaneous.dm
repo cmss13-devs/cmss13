@@ -37,25 +37,22 @@
 	name = "Snorkel"
 	desc = "For the Swimming Savant."
 	icon_state = "snorkel"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inv_hide = HIDEFACE
 	flags_armor_protection = 0
-
-/obj/item/clothing/mask/pig
-	name = "pig mask"
-	desc = "A rubber pig mask."
-	icon_state = "pig"
-	item_state = "pig"
-	flags_inventory = COVERMOUTH|COVEREYES
-	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEYES|HIDEEARS
-	w_class = SIZE_SMALL
-	siemens_coefficient = 0.9
-	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/mask/balaclava
 	name = "balaclava"
 	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existence, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
 	icon_state = "balaclava"
 	item_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD

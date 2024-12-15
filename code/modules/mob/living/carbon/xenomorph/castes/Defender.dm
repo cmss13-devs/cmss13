@@ -15,7 +15,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	evolves_to = list(XENO_CASTE_WARRIOR)
-	deevolves_to = list("Larva")
+	deevolves_to = list(XENO_CASTE_LARVA)
 	can_vent_crawl = 0
 
 	available_strains = list(/datum/xeno_strain/steel_crest)
@@ -32,7 +32,7 @@
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
 	desc = "A alien with an armored crest."
-	icon = 'icons/mob/xenos/defender.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -53,8 +53,8 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	icon_xeno = 'icons/mob/xenos/defender.dmi'
-	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_1/defender.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/defender.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Defender_1","Defender_2","Defender_3")

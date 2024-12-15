@@ -333,3 +333,70 @@
 		inherent_huds_toggled[chosen_HUD] = TRUE
 		the_hud.add_hud_to(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))
+
+/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_scent_tracking()
+	set category = "Synthetic"
+	set name = "Track Scent"
+	set desc = "Activates the K9's keen sense of smell."
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(!isk9synth(usr))
+		return
+
+	var/datum/species/synthetic/synth_k9/speciesk9 = species
+
+	speciesk9.radar.tgui_interact(src)
+
+/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision()
+	set category = "Synthetic"
+	set name = "Binocular Vision"
+	set desc = "Activates the K9's keen sense of sight."
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(!is_zoomed)
+		enable_zoom()
+		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."), \
+			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
+		return
+
+	if(is_zoomed)
+		disable_zoom()
+		return
+
+/mob/living/carbon/human/proc/enable_zoom()
+	var/viewsize = 12
+	var/tileoffset = 11
+
+	if(is_zoomed || !client)
+		return
+	is_zoomed = TRUE
+	RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(disable_zoom))
+	client.change_view(viewsize)
+	var/viewoffset = 32 * tileoffset
+	switch(dir)
+		if(NORTH)
+			client.pixel_x = 0
+			client.pixel_y = viewoffset
+		if(SOUTH)
+			client.pixel_x = 0
+			client.pixel_y = -viewoffset
+		if(EAST)
+			client.pixel_x = viewoffset
+			client.pixel_y = 0
+		if(WEST)
+			client.pixel_x = -viewoffset
+			client.pixel_y = 0
+
+/mob/living/carbon/human/proc/disable_zoom()
+	SIGNAL_HANDLER
+	if(!client)
+		return
+	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
+	client.change_view(GLOB.world_view_size)
+	client.pixel_x = 0
+	client.pixel_y = 0
+	is_zoomed = FALSE

@@ -12,37 +12,38 @@
 
 /datum/paygrade/upp/ue1
 	paygrade = PAY_SHORT_UE1
-	name = "Private"
-	prefix = "PVT."
+	name = "Ryadovoy"
+	prefix = "Rya."
+	pay_multiplier = 0.1
 
 /datum/paygrade/upp/ue2
 	paygrade = PAY_SHORT_UE2
-	name = "Private First Class"
-	prefix = "PFC."
-	pay_multiplier = 0.2
+	name = "Efreitor"
+	prefix = "Efr."
+	pay_multiplier = 0.15
 
 /datum/paygrade/upp/ue3
 	paygrade = PAY_SHORT_UE3
-	name = "Korporal"
-	prefix = "Kpl."
+	name = "Mladshiy Serzhant"
+	prefix = "MSzht."
 	pay_multiplier = 0.3
 
 /datum/paygrade/upp/ue4
 	paygrade = PAY_SHORT_UE4
-	name = "Junior Serzhant"
-	prefix = "JrSzh."
+	name = "Serzhant"
+	prefix = "Sgt."
 	pay_multiplier = 0.5
 
 /datum/paygrade/upp/ue5
 	paygrade = PAY_SHORT_UE5
-	name = "Serzhant"
-	prefix = "Szh."
+	name = "Starshiy Serzhant"
+	prefix = "SSgt."
 	pay_multiplier = 0.7
 
 /datum/paygrade/upp/ue6
 	paygrade = PAY_SHORT_UE6
-	name = "Master Serzhant"
-	prefix = "MSzh."
+	name = "Starshyna"
+	prefix = "StS"
 	pay_multiplier = 0.9
 
 //UPP Commandos
@@ -69,15 +70,15 @@
 //UPP Officers
 /datum/paygrade/upp/uo1
 	paygrade = PAY_SHORT_UO1
-	name = "Leytenant"
-	prefix = "Lt."
+	name = "Mladshiy Leytenant"
+	prefix = "MsLt."
 	pay_multiplier = 1.25
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo2
 	paygrade = PAY_SHORT_UO2
-	name = "Senior Leytenant"
-	prefix = "Sr. LT."
+	name = "Starshiy Leytenant"
+	prefix = "SrLt."
 	pay_multiplier = 1.5
 	officer_grade = GRADE_OFFICER
 
@@ -104,35 +105,42 @@
 
 /datum/paygrade/upp/uo5
 	paygrade = PAY_SHORT_UO5
-	name = "Leytenant Kolonel"
-	prefix = "Lt. Kol."
+	name = "Podpolkovnik"
+	prefix = "Pdk."
 	pay_multiplier = 3
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo6
 	paygrade = PAY_SHORT_UO6
-	name = "Kolonel"
-	prefix = "Kol."
+	name = "Polkovnik"
+	prefix = "Plk."
 	pay_multiplier = 4
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/upp/uo7
 	paygrade = PAY_SHORT_UO7
-	name = "Mayjor General"
-	prefix = "May. Gen."
+	name = "General Mayjor"
+	prefix = "GenMay."
 	pay_multiplier = 5
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/upp/uo8
 	paygrade = PAY_SHORT_UO8
-	name = "Leytenant General"
-	prefix = "Lt. Gen."
-	pay_multiplier = 6
+	name = "General Leytenant"
+	prefix = "GenLt."
+	pay_multiplier = 5
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/upp/uo9
 	paygrade = PAY_SHORT_UO9
-	name = "Army General"
-	prefix = "Gen."
+	name = "General Polkovnik"
+	prefix = "GenPlk"
+	pay_multiplier = 6
+	officer_grade = GRADE_FLAG
+
+/datum/paygrade/upp/uo10
+	paygrade = PAY_SHORT_UO10
+	name = "General Armii"
+	prefix = "GenArm."
 	pay_multiplier = 7
 	officer_grade = GRADE_FLAG

@@ -111,9 +111,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/rmc/frame, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_box/magazine/nsg23, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_box/magazine/misc/flares, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_box/magazine/misc/mre, WEAR_IN_BACK)
 	..()
 
-/datum/equipment_preset/twe/royal_marine/standard/rubberman // only in use for wargames event. Really. Don't use it. Guy gets 3 boxes of rubber bullets. Useless.
+/datum/equipment_preset/twe/royal_marine/standard/rubberman // only in use for wargames event. Really. Don't use it. Guy gets 3 boxes of rubber bullets.
 	name = "TWE Royal Marine Commando (Training Ammo Carrier)"
 
 /datum/equipment_preset/twe/royal_marine/standard/rubberman/load_gear(mob/living/carbon/human/new_human)

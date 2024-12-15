@@ -605,8 +605,8 @@
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
 	)
-	active_icon_state = "swat_shield_up"
-	inactive_icon_state = "swat_shield"
+	active_icon_state = "swat_shield"
+	inactive_icon_state = "swat_shield_up"
 	message_up = "You lift the visor up."
 	message_down = "You lower the visor down."
 	flags_equip_slot = null

@@ -618,8 +618,6 @@
 
 /obj/item/ammo_box/magazine/nsg23/training // this will be removed later
 	name = "magazine box (NSG 23 Training x 12)"
-	overlay_ammo_type = "_rubber"
-	overlay_content = "_reg"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/rubber
 
 /obj/item/ammo_box/magazine/nsg23/training/empty

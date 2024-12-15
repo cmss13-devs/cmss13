@@ -370,13 +370,7 @@ SUBSYSTEM_DEF(minimaps)
  */
 /proc/get_tacmap_data_png(faction)
 	var/list/map_list
-
-	if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_flat_tacmap_data
-	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_flat_tacmap_data
-	if(faction == FACTION_UPP)
-		map_list = GLOB.upp_flat_tacmap_data
+	map_list = GLOB.faction_flat_tacmap_data[faction]
 
 	var/map_length = length(map_list)
 
@@ -409,15 +403,7 @@ SUBSYSTEM_DEF(minimaps)
  */
 /proc/get_tacmap_data_svg(faction)
 	var/list/map_list
-
-	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_svg_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_svg_tacmap_data
-	else if(faction == FACTION_UPP)
-		map_list = GLOB.upp_svg_tacmap_data
-	else
-		return null
+	map_list = GLOB.faction_tacmap_data[faction]
 
 	var/map_length = length(map_list)
 
@@ -527,16 +513,11 @@ SUBSYSTEM_DEF(minimaps)
  */
 /datum/tacmap/drawing/proc/store_current_svg_coords(faction, svg_coords, ckey)
 	var/datum/svg_overlay/svg_store_overlay = new(svg_coords, ckey)
-
-	if(faction == FACTION_MARINE)
-		GLOB.uscm_svg_tacmap_data += svg_store_overlay
-	else if(faction == XENO_HIVE_NORMAL)
-		GLOB.xeno_svg_tacmap_data += svg_store_overlay
-	else if(faction == FACTION_UPP)
-		GLOB.upp_svg_tacmap_data += svg_store_overlay
+	if(GLOB.faction_svg_tacmap_data[faction])
+		GLOB.faction_svg_tacmap_data[faction] += svg_store_overlay
 	else
 		qdel(svg_store_overlay)
-		debug_log("SVG coordinates for [faction] are not implemented!")
+		debug_log("SVG coordinates for [faction] are not implemented! add them to faction_svg_tacmap_data (also what are you doing? souto killteam?)")
 
 #define can_draw(faction, user) (( skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
@@ -980,6 +961,11 @@ SUBSYSTEM_DEF(minimaps)
 			if(!istype(params["image"], /list)) // potentially very serious?
 				return FALSE
 
+			if(!GLOB.faction_flat_tacmap_data[faction])
+				return
+
+			cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown[faction])
+
 			var/cooldown_satisfied = TRUE
 			if(faction == FACTION_MARINE)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
@@ -991,6 +977,7 @@ SUBSYSTEM_DEF(minimaps)
 			if(!cooldown_satisfied)
 				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
 				return FALSE
+
 			if(faction == XENO_HIVE_NORMAL)
 				GLOB.xeno_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)

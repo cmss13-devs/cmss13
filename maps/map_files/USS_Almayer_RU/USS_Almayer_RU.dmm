@@ -37571,7 +37571,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -28
 	},
-/obj/structure/machinery/cm_vending/clothing/staff_officer_armory,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -45202,7 +45201,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26
 	},
-/obj/structure/machinery/cm_vending/clothing/staff_officer_armory,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -53462,7 +53460,7 @@
 /area/almayer/shipboard/brig/cic_hallway)
 "mSz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/crew/alt,
+/obj/structure/machinery/reagent_analyzer/skilless,
 /turf/open/floor/almayer{
 	icon_state = "silverfull"
 	},

@@ -149,6 +149,7 @@
 #include "modules\projectiles\guns\rifles.dm"
 #include "modules\projectiles\magazines\rifles.dm"
 #include "modules\projectiles\magazines\shotguns.dm"
+#include "modules\reagents\chemistry_machinery\reagent_analyzer.dm"
 #include "modules\shuttle\gamemodes\crash.dm"
 #include "modules\vehicles\hardpoints_walker.dm"
 #include "modules\vehicles\walker.dm"

@@ -9,7 +9,7 @@
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
 // Define the last alert times as an atom-level variable
-/atom/var/last_balloon_alert_time = 0 // i dont think its good idea... but checks are killing me...
+/atom/var/last_balloon_alert_time = 0
 
 /proc/can_display_balloon_alert(atom/source, delay)
 	// Check if enough time has passed since the last alert

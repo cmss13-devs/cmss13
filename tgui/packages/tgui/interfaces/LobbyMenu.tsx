@@ -1,3 +1,4 @@
+import { randomInteger } from 'common/random';
 import { BooleanLike } from 'common/react';
 import { storage } from 'common/storage';
 import {
@@ -21,7 +22,6 @@ import {
 } from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
-import { randomInteger } from 'common/random';
 
 type LobbyData = {
   lobby_author: string;
@@ -74,6 +74,8 @@ export const LobbyMenu = () => {
     }, 10000);
   }, []);
 
+  const [hidden, setHidden] = useState<boolean>(false);
+
   return (
     <Window theme="crtgreen" fitted scrollbars={false}>
       <audio src={resolveAsset('load.mp3')} ref={onLoadPlayer} />
@@ -120,9 +122,18 @@ export const LobbyMenu = () => {
               }}
             />
           </Box>
+          {hidden && (
+            <Box position="absolute" top="10px" left="10px">
+              <Button icon={'check'} onClick={() => setHidden(false)} />
+            </Box>
+          )}
           <Stack vertical height="100%" justify="space-around" align="center">
             <Stack.Item>
-              <LobbyButtons setModal={setModal} />
+              <LobbyButtons
+                setModal={setModal}
+                hidden={hidden}
+                setHidden={setHidden}
+              />
             </Stack.Item>
           </Stack>
           <Box className="bgLoad authorAttrib">
@@ -134,10 +145,14 @@ export const LobbyMenu = () => {
   );
 };
 
-const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
+const LobbyButtons = (props: {
+  readonly setModal: (_) => void;
+  readonly hidden: boolean;
+  readonly setHidden: (_: boolean) => void;
+}) => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { setModal } = props;
+  const { setModal, hidden, setHidden } = props;
 
   const {
     character_name,
@@ -162,7 +177,8 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
       className="sectionLoad"
       style={{
         boxShadow: '0 0 15px',
-        backgroundColor: 'rgba(0, 17, 0, 0.8)',
+        backgroundColor: 'rgba(0, 17, 0, 0.7)',
+        opacity: hidden ? '0' : '1',
       }}
     >
       <Stack vertical>
@@ -176,6 +192,9 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                   }}
                   width="67px"
                   className="loadEffect"
+                  onClick={() => {
+                    setHidden(true);
+                  }}
                 />
               </Box>
             </Stack.Item>

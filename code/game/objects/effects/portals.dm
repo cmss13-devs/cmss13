@@ -1,7 +1,7 @@
 /obj/effect/portal
 	name = "portal"
 	desc = "Looks unstable. Best to test it with the clown."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/effects/portals.dmi'
 	icon_state = "portal"
 	density = TRUE
 	unacidable = TRUE//Can't destroy energy portals.

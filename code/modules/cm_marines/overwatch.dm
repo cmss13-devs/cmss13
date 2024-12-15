@@ -683,7 +683,7 @@
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
-/obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/H)
+/obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/target)
 	if(!current_squad)
 		return
 

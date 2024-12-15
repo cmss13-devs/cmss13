@@ -551,4 +551,5 @@
 	name = "\improper Model 1771 magazine (16g rubber buckshot)"
 	desc = "A 16 gauge pump-action rubber shotgun magazine."
 	icon_state = "m51b_rubber"
+	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber

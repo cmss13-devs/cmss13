@@ -14,6 +14,7 @@
 	var/datum/squad/current_squad = null
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
+	var/obj/item/clothing/head/helmet/marine/helm = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
 	var/x_supply = 0
 	var/y_supply = 0
@@ -40,6 +41,7 @@
 	var/list/saved_coordinates = list()
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
+	var/list/concurrent_users = list()
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -52,6 +54,7 @@
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
 	current_orbital_cannon = null
+	concurrent_users = null
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
@@ -113,6 +116,8 @@
 		user.client.register_map_obj(tacmap.map_holder.map)
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
+		if(isliving(user))
+			concurrent_users += WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/proc/count_marines(list/data)
 	var/leader_count = 0
@@ -507,22 +512,34 @@
 				return
 			if(current_squad)
 				var/mob/cam_target = locate(params["target_ref"])
-				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
+				var/obj/item/clothing/head/helmet/marine/new_helm = get_helm_from_target(cam_target)
+				var/obj/structure/machinery/camera/new_cam = new_helm?.camera
 				if(!new_cam || !new_cam.can_use())
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
 					user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+					UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+					helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 					cam = null
+					helm = null
 					user.reset_view(null)
 				else if(user.client.view != GLOB.world_view_size)
 					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)
 						user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+						helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 					cam = new_cam
+					helm = new_helm
+					helm.flags_atom |= (USES_HEARING|USES_SEEING)
 					user.reset_view(cam)
 					user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
+					RegisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
+					RegisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
 		if("change_operator")
 			if(operator != user)
 				if(operator && isSilicon(operator))
@@ -539,6 +556,27 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
 
+/obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(inoperable())
+		return
+	if(show_message_above_tv)
+		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+			sourcemob.langchat_display_image(user)
+
+/obj/structure/machinery/computer/overwatch/proc/transfer_emote(obj/item/camera, mob/living/sourcemob, emote, audible = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(inoperable())
+		return
+	if(show_message_above_tv)
+		langchat_speech(emote, get_mobs_in_view(7, src), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
+			sourcemob.langchat_display_image(user)
 
 /obj/structure/machinery/computer/overwatch/proc/change_lead(mob/user, sl_ref)
 	if(!user)
@@ -636,6 +674,7 @@
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
+	concurrent_users -= WEAKREF(user)
 
 //returns the helmet camera the human is wearing
 /obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
@@ -644,6 +683,11 @@
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
+/obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/H)
+	if(current_squad)
+		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
+			var/obj/item/clothing/head/helmet/marine/helm = H.head
+			return helm
 
 // Alerts all groundside marines about the incoming OB
 /obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)

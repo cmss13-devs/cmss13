@@ -78,7 +78,9 @@ export const LobbyMenu = () => {
     <Window theme="crtgreen" fitted scrollbars={false}>
       <audio src={resolveAsset('load.mp3')} ref={onLoadPlayer} />
       <Window.Content
-        className={`LobbyScreen ${filterDisabled ? '' : 'filterEnabled'} ${disableAnimations}`}
+        className={`LobbyScreen ${
+          filterDisabled ? '' : 'filterEnabled'
+        } ${disableAnimations}`}
         style={{
           backgroundPosition: 'center',
           backgroundSize: 'cover',

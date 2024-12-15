@@ -163,3 +163,15 @@
       to return home
   realforest2001:
   - rscadd: Fax Responder platform now includes faxes sent before it loaded.
+2024-12-15:
+  Blundir:
+  - rscdel: limits colossal sandwich to 15 layers
+  Drathek:
+  - balance: Eggs that are in a linked lz area can now get weed killed by the initial
+      dropship
+  - bugfix: Fixed the lz_weeding flag not doing anything
+  - refactor: Refactored and documented defines for the distress signal game mode
+  - bugfix: Internal organs now delete properly
+  - bugfix: An observer waypoint is ensured when a z-level is destroyed (such as for
+      Hivewars)
+  - bugfix: Fixed various runtimes when a z-level is destroyed

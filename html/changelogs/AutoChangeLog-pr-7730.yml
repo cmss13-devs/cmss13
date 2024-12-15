@@ -1,0 +1,12 @@
+author: "KaiserBlackwood"
+delete-after: True
+changes:
+  - rscadd: "Added a standard choice of pouches"
+  - rscadd: "Added more point-buy equipment to the UPP vendor"
+  - rscadd: "Added UPP grenade packets"
+  - rscadd: "Added UPP grenade belts"
+  - rscadd: "Added UPP SL Weapon Kit"
+  - rscdel: "Removed attachments from UPP Gear Vendors (Frontline Roles)"
+  - bugfix: "Fixed prices in UPP vendors"
+  - qol: "Streamlined gear/uniform vendors for UPP"
+  - spellcheck: "renamed \"Motion Detector\" to \"UPP Motion Detector\" in UPP Frontline Roles Vendors"

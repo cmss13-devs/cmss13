@@ -1,4 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_TWE_Road";
+	name = "\improper Road Blockade";
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/item/spacecash/c10{
+	pixel_x = -5;
+	pixel_y = -3;
+	name = "1000 yen note";
+	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station/exterior)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -439,6 +455,9 @@
 	pixel_y = -6;
 	pixel_x = 6
 	},
+/obj/item/tool/pen/fountain{
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "eo" = (
@@ -791,7 +810,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "hW" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
-	name = "\improper TWE Office Entrance";
+	name = "\improper Office Entrance";
 	req_access = null;
 	dir = 1
 	},
@@ -877,11 +896,6 @@
 /area/adminlevel/ert_station/fax_response_station)
 "jr" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 3;
-	anchored = 1
-	},
 /obj/structure/transmitter/rotary/fax_responder{
 	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
 	phone_id = "WY Communications Executive";
@@ -890,6 +904,13 @@
 /obj/structure/sign/poster/art{
 	pixel_y = -10;
 	pixel_x = 24
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 3;
+	pixel_x = 5
+	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 4
 	},
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
@@ -981,6 +1002,14 @@
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "ky" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/fountain{
+	pixel_x = -13;
+	pixel_y = 2
+	},
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -12
+	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/fax_response_station)
 "kC" = (
@@ -1416,10 +1445,6 @@
 /area/adminlevel/ert_station/fax_response_station)
 "pk" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin/wy{
-	pixel_y = 6;
-	pixel_x = 19
-	},
 /obj/structure/machinery/faxmachine/press/highcom{
 	pixel_y = 6
 	},
@@ -1754,16 +1779,6 @@
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
-/area/adminlevel/ert_station/fax_response_station)
-"sU" = (
-/obj/structure/window/framed/colony,
-/obj/item/spacecash/c10{
-	pixel_x = -5;
-	pixel_y = -3;
-	name = "10 pound note";
-	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
-	},
-/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station)
 "sV" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -2388,6 +2403,9 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 4
+	},
 /turf/open/floor/darkgreen2,
 /area/adminlevel/ert_station/fax_response_station)
 "zJ" = (
@@ -2773,6 +2791,9 @@
 /obj/item/ashtray/plastic{
 	pixel_y = -6;
 	pixel_x = -9
+	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 4
 	},
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3195,7 +3216,7 @@
 /obj/structure/machinery/power/apc/almayer/hardened/north{
 	needs_power = 0
 	},
-/turf/open/floor/almayer/orange/northwest,
+/turf/open/floor/almayer/orangefull,
 /area/adminlevel/ert_station/fax_response_station)
 "HA" = (
 /obj/structure/machinery/vending/coffee{
@@ -3246,6 +3267,7 @@
 	pixel_y = -6;
 	pixel_x = -11
 	},
+/obj/item/tool/pen/fountain,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "HE" = (
@@ -3391,7 +3413,7 @@
 /obj/structure/machinery/power/apc/almayer/hardened/south{
 	needs_power = 0
 	},
-/turf/open/floor/almayer/orange/southwest,
+/turf/open/floor/almayer/orangefull,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Jm" = (
 /turf/open/floor/darkgreen2/east,
@@ -3727,7 +3749,7 @@
 /obj/item/spacecash/c10{
 	pixel_x = -5;
 	pixel_y = -3;
-	name = "10 pound note";
+	name = "1000 yen note";
 	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
 	},
 /turf/open/floor/prison/kitchen,
@@ -3838,7 +3860,7 @@
 "Of" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	dir = 1;
-	name = "\improper Office"
+	name = "\improper Office Entrance"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -4300,6 +4322,9 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 4
+	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "TW" = (
@@ -4683,6 +4708,9 @@
 /obj/item/ashtray/plastic{
 	pixel_y = -6;
 	pixel_x = -8
+	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 4
 	},
 /turf/open/floor/shiva/blue/southwest,
 /area/adminlevel/ert_station/fax_response_station)
@@ -5891,7 +5919,7 @@ Yb
 va
 uK
 TT
-sU
+qS
 eV
 CZ
 am
@@ -5972,7 +6000,7 @@ OA
 OA
 OA
 OA
-ZD
+aa
 ZD
 ZD
 OA

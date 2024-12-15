@@ -87,51 +87,45 @@
 	break_tile()
 
 /turf/open/floor/proc/break_tile()
-	if(!breakable_tile || hull_floor) return
-	if(broken) return
+	if(!breakable_tile || hull_floor)
+		return
+	if(broken)
+		return
+
 	broken = TRUE
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
-		broken = 1
 	else if(is_light_floor())
 		icon_state = "light_broken"
-		broken = 1
 		set_light(0)
 	else if(is_plating())
 		icon_state = "platingdmg[pick(1, 2, 3)]"
-		broken = 1
 	else if(is_wood_floor())
 		icon_state = "wood-broken"
-		broken = 1
 	else if(is_carpet_floor())
 		icon_state = "carpet-broken"
-		broken = 1
 	else if(is_grass_floor())
 		icon_state = "grass[pick("1", "2", "3")]"
-		broken = 1
 
 /turf/open/floor/proc/burn_tile()
-	if(!burnable_tile|| hull_floor) return
-	if(broken || burnt) return
+	if(!burnable_tile || hull_floor)
+		return
+	if(broken || burnt)
+		return
+
 	burnt = TRUE
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
-		burnt = 1
 	else if(is_plasteel_floor())
 		icon_state = "floorscorched[pick(1, 2)]"
-		burnt = 1
 	else if(is_plating())
 		icon_state = "panelscorched"
-		burnt = 1
 	else if(is_wood_floor())
 		icon_state = "wood-broken"
-		burnt = 1
 	else if(is_carpet_floor())
 		icon_state = "carpet-broken"
-		burnt = 1
 	else if(is_grass_floor())
 		icon_state = "grass[pick("1", "2", "3")]"
-		burnt = 1
 
 //This proc auto corrects the grass tiles' siding.
 /turf/open/floor/proc/make_plating()

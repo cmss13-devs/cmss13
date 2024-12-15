@@ -155,8 +155,8 @@
 	if(!.)
 		return .
 
-	if(!skillcheck(redeemer, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		redeemer.skills?.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+	if(!skillcheck(redeemer, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
+		redeemer.skills?.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)
 	return TRUE
 
 /datum/specialist_set/sniper

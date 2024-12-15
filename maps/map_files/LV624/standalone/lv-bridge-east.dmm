@@ -253,7 +253,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "Ir" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "Jl" = (

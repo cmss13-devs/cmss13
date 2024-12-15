@@ -2,7 +2,6 @@
 	group = SPECIES_SYNTHETIC
 	name = SYNTH_GEN_THREE
 	name_plural = "synthetics"
-	uses_skin_color = TRUE //Uses skin color presets
 	special_body_types = TRUE
 
 	unarmed_type = /datum/unarmed_attack/punch/synthetic
@@ -12,7 +11,7 @@
 	rarity_value = 2
 	insulated = TRUE
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
+	bloodsplatter_type = /obj/effect/bloodsplatter/synthsplatter
 
 	total_health = 150 //more health than regular humans
 
@@ -30,7 +29,7 @@
 	body_temperature = 350
 
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR
+	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR|HAS_SKIN_COLOR
 
 	blood_color = BLOOD_COLOR_SYNTHETIC
 
@@ -62,7 +61,7 @@
 
 /datum/species/synthetic/gen_one
 	name = SYNTH_GEN_ONE
-	uses_skin_color = FALSE
+	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
 
@@ -72,13 +71,12 @@
 
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
-	uses_skin_color = FALSE //2nd gen uses generic human look
-	special_body_types = FALSE
+	special_body_types = TRUE
+
 
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
-	uses_skin_color = TRUE
 	special_body_types = TRUE
 	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_IRON_TEETH)
@@ -96,12 +94,11 @@
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO
-	uses_skin_color = FALSE //2nd gen uses generic human look
-	special_body_types = FALSE
+	special_body_types = TRUE
 
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE
-	uses_skin_color = FALSE
+	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
 	//sets colonial_gen_one synth's hair to black
@@ -114,7 +111,7 @@
 /datum/species/synthetic/colonial/combat
 	name = SYNTH_COMBAT
 	name_plural = "Combat Synthetics"
-	uses_skin_color = FALSE
+	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH)
 
@@ -136,9 +133,8 @@
 /datum/species/synthetic/infiltrator
 	name = SYNTH_INFILTRATOR
 	name_plural = "Infiltrator Synthetics"
-	uses_skin_color = TRUE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH, TRAIT_IRON_TEETH)
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
+	bloodsplatter_type = /obj/effect/bloodsplatter/human
 
 	blood_color = BLOOD_COLOR_HUMAN

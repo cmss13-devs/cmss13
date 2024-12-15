@@ -30,7 +30,7 @@
 	var/automated_delay
 	var/automated_timer
 	var/datum/cas_signal/paradrop_signal
-
+	var/faction = FACTION_MARINE
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -115,7 +115,7 @@
 
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
-			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno?.iff_tag.faction_groups))
+			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
 				continue
 			var/name = "Unidentified Lifesigns"
 			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
@@ -153,6 +153,25 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/morana
+	name = "Morana"
+	id = DROPSHIP_MORANA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	faction = FACTION_UPP
+
+/obj/docking_port/mobile/marine_dropship/morana/get_transit_path_type()
+	return /turf/open/space/transit/dropship/morana
+
+/obj/docking_port/mobile/marine_dropship/devana
+	name = "Devana"
+	id = DROPSHIP_DEVANA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	faction = FACTION_UPP
+
+/obj/docking_port/mobile/marine_dropship/devana/get_transit_path_type()
+	return /turf/open/space/transit/dropship/devana
+
+
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
 
@@ -172,14 +191,16 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(root_console.dropship_control_lost)
+	if(!root_console || root_console.dropship_control_lost)
 		automated_hangar_id = null
 		automated_lz_id = null
 		automated_delay = null
 		return
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
-		ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+		if(faction == FACTION_MARINE)
+			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_fly()
@@ -196,7 +217,8 @@
 		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
 	else
 		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
-	ai_silent_announcement("Dropship '[name]' departing.")
+	if(faction == FACTION_MARINE)
+		ai_silent_announcement("Dropship '[name]' departing.")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH
@@ -209,6 +231,7 @@
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
 	var/xeno_announce = FALSE
+	var/faction = FACTION_MARINE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -254,8 +277,9 @@
 /obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
 	turn_off_landing_lights()
+	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
+
 	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
-		var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 		dropship.in_flyby = FALSE
 		dropship.control_doors("unlock", "all", force=FALSE)
 		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
@@ -267,6 +291,9 @@
 	if(xeno_announce)
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
+
+	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
+		eq.on_arrival()
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
@@ -301,6 +328,12 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1
+	name = "UPP Hangar bay 1"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/morana
+
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
 
@@ -327,6 +360,9 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_LANDED)
 
+/obj/docking_port/stationary/marine_dropship/upp
+	faction = FACTION_UPP
+
 /datum/map_template/shuttle/alamo
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO
@@ -338,3 +374,13 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+/datum/map_template/shuttle/morana
+	name = "Morana"
+	shuttle_id = DROPSHIP_MORANA
+
+/datum/map_template/shuttle/devana
+	name = "Devana"
+	shuttle_id = DROPSHIP_DEVANA
+
+

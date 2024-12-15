@@ -10,7 +10,7 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
 	var/deployment_time = 3 SECONDS
 
@@ -110,7 +110,7 @@
 
 /obj/item/defenses/handheld/sentry/get_upgrade_list()
 	. = list()
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		. += list("DMR Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "DMR uac_sentry_handheld"))
 	. += list(
 		"Shotgun Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/sentry.dmi', icon_state = "Shotgun uac_sentry_handheld"),
@@ -198,7 +198,7 @@
 
 /obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
 	. = list()
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		. += list("Long-Range Plasma Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Plasma uac_flamer_handheld"))
 	. += list(
 		"Mini-Flamer Upgrade" = image(icon = 'icons/obj/structures/machinery/defenses/flamer.dmi', icon_state = "Mini uac_flamer_handheld")

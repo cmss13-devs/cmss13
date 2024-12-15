@@ -10,6 +10,10 @@
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
 	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -321,6 +325,9 @@
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/tool/surgery/hemostat,
 		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/FixOVein,
 	)
 
 /obj/item/storage/surgical_case/regular
@@ -345,7 +352,7 @@
 		/obj/item/toy/dice,
 		/obj/item/paper,
 	)
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER|STORAGE_DISABLE_USE_EMPTY
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
@@ -358,6 +365,23 @@
 	maptext_width = 16
 	maptext_x = 18
 	maptext_y = 3
+
+	var/base_icon = "pill_canister"
+	var/static/list/possible_colors = list(
+		"Orange" = "",
+		"Blue" = "1",
+		"Yellow" = "2",
+		"Light Purple" = "3",
+		"Light Grey" = "4",
+		"White" = "5",
+		"Light Green" = "6",
+		"Cyan" = "7",
+		"Bordeaux" = "8",
+		"Aquamarine" = "9",
+		"Grey" = "10",
+		"Red" = "11",
+		"Black" = "12",
+	)
 
 /obj/item/storage/pill_bottle/Initialize()
 	. = ..()
@@ -515,28 +539,14 @@
 /obj/item/storage/pill_bottle/proc/choose_color(mob/user)
 	if(!user)
 		user = usr
-	var/static/list/possible_colors = list(
-		"Orange" = "",
-		"Blue" = "1",
-		"Yellow" = "2",
-		"Light Purple" = "3",
-		"Light Grey" = "4",
-		"White" = "5",
-		"Light Green" = "6",
-		"Cyan" = "7",
-		"Bordeaux" = "8",
-		"Aquamarine" = "9",
-		"Grey" = "10",
-		"Red" = "11",
-		"Black" = "12",
-	)
+
 	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
 	if(!selected_color)
 		return
 
 	selected_color = possible_colors[selected_color]
 
-	icon_state = "pill_canister" + selected_color
+	icon_state = base_icon + selected_color
 	to_chat(user, SPAN_NOTICE("You color [src]."))
 	update_icon()
 
@@ -754,12 +764,16 @@
 	name = "\improper pill packet"
 	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"
+	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 	bottle_lid = FALSE
 	storage_slots = 4
 	max_w_class = 0
 	max_storage_space = 4
 	skilllock = SKILL_MEDICAL_DEFAULT
-	storage_flags = STORAGE_FLAGS_BOX
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_DISABLE_USE_EMPTY
 	display_maptext = FALSE
 
 /obj/item/storage/pill_bottle/packet/Initialize()

@@ -12,6 +12,8 @@
 	black_market_value = 35
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
+	///The objects in this list will be skipped when checking for obstrucing objects.
+	var/static/list/object_whitelist = list(/obj/structure/machinery/light, /obj/structure/machinery/light_construct)
 
 /obj/item/xeno_egg/Initialize(mapload, hive)
 	pixel_x = rand(-3,3)
@@ -90,7 +92,7 @@
 	if(!user.hive)
 		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
 	if(!user.check_plasma(30))
 		return
@@ -121,6 +123,8 @@
 		return
 
 	for(var/obj/object in T.contents)
+		if(is_type_in_list(object, object_whitelist))
+			continue
 		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
 		if(object.layer > initial(xeno_egg.layer))
 			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
@@ -131,11 +135,12 @@
 	var/plant_time = 35
 	if(isdrone(user))
 		plant_time = 25
-	if(iscarrier(user))
+	else if(iscarrier(user))
 		plant_time = 10
+
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
 	if(!user.check_plasma(30))
 		return

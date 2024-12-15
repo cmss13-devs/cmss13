@@ -20,6 +20,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Khaki Workwear", 0, /obj/item/clothing/under/colonist/workwear/khaki, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Pink Workwear", 0, /obj/item/clothing/under/colonist/workwear/pink, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Green Workwear", 0, /obj/item/clothing/under/colonist/workwear/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Blue Workwear", 0, /obj/item/clothing/under/colonist/workwear/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 	list("SUIT", 0, null, null, null),
 	list("Black Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
@@ -32,6 +33,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Khaki Bomber Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/bomber, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Brown Bomber Jacket", 0, /obj/item/clothing/suit/storage/bomber, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Black Bomber Jacket", 0, /obj/item/clothing/suit/storage/bomber/alt, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Brown Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Grey Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_gray, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Green Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_green, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Expedition Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Liaison's Winter Coat", 0, /obj/item/clothing/suit/storage/snow_suit/liaison, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Grey Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),

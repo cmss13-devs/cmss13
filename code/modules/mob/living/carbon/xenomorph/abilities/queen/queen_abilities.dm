@@ -20,7 +20,6 @@
 /datum/action/xeno_action/activable/queen_heal
 	name = "Heal Xenomorph (600)"
 	action_icon_state = "heal_xeno"
-	ability_name = "xenomorph heal"
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_heal_xeno
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -30,7 +29,6 @@
 /datum/action/xeno_action/activable/expand_weeds
 	name = "Expand Weeds (50)"
 	action_icon_state = "plant_weeds"
-	ability_name = "weed expansion"
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
@@ -48,15 +46,26 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen
 	name = "Projected Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "projected resin"
 	plasma_cost = 100
-	xeno_cooldown = 2 SECONDS
+	xeno_cooldown = 4 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
-	build_speed_mod = 1
+	build_speed_mod = 1.5
 
 	var/boosted = FALSE
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/target_atom, mods)
+	if(boosted)
+		var/area/target_area = get_area(target_atom)
+		if(!target_area)
+			return
+
+		if(target_area.linked_lz && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			to_chat(owner, SPAN_XENONOTICE("It's too early to spread the hive this far."))
+			return
+
+	return ..()
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
@@ -75,11 +84,12 @@
 		boosted = TRUE
 		xeno_cooldown = 0
 		plasma_cost = 0
+		build_speed_mod = 1
 		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, PROC_REF(override_secrete_thick_resin))
 		addtimer(CALLBACK(src, PROC_REF(disable_boost)), boost_duration)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
-	xeno_cooldown = 2 SECONDS
+	xeno_cooldown = 4 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
@@ -128,7 +138,6 @@
 /datum/action/xeno_action/activable/place_queen_beacon
 	name = "Place Queen Beacon"
 	action_icon_state = "place_queen_beacon"
-	ability_name = "place queen beacon"
 	plasma_cost = 0
 	action_type = XENO_ACTION_CLICK
 
@@ -165,7 +174,6 @@
 /datum/action/xeno_action/activable/blockade
 	name = "Place Blockade"
 	action_icon_state = "place_blockade"
-	ability_name = "place blockade"
 	plasma_cost = 300
 	action_type = XENO_ACTION_CLICK
 

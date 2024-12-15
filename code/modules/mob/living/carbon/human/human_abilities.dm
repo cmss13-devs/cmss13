@@ -129,30 +129,55 @@
 
 
 /datum/action/human_action/psychic_whisper
-	name = "Psychic Whipser"
+	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"
 
 /datum/action/human_action/psychic_whisper/action_activate()
 	. = ..()
 	if(!ishuman(owner))
-		return
+		return FALSE
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
 		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
-		return
+		return FALSE
+
+	if(human_owner.stat == DEAD)
+		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
 
 	var/list/target_list = list()
 	for(var/mob/living/carbon/possible_target in view(7, human_owner))
-		if(possible_target == human_owner || !possible_target.client) 
+		if(possible_target == human_owner || !possible_target.client)
 			continue
 		target_list += possible_target
 
-	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "hive_status")
-	if(!target_mob) 
-		return
+	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "wizard")
+	if(!target_mob)
+		return FALSE
 
 	human_owner.psychic_whisper(target_mob)
+
+
+/datum/action/human_action/psychic_radiance
+	name = "Psychic Radiance"
+	action_icon_state = "cultist_channel_hivemind"
+
+/datum/action/xeno_action/onclick/psychic_radiance/use_ability(atom/A)
+	. = ..()
+	if(!ishuman(owner))
+		return FALSE
+	var/mob/living/carbon/human/human_owner = owner
+
+	if(human_owner.client.prefs.muted & MUTE_IC)
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		return FALSE
+
+	if(human_owner.stat == DEAD)
+		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
+
+	human_owner.psychic_radiance()
 
 /*
 CULT

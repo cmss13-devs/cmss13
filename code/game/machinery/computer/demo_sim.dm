@@ -2,7 +2,7 @@
 	name = "demolitions simulator"
 	desc = "A powerful simulator that can simulate explosions. Its processors need a cooldown of approximately 1 minute after each simulation."
 	icon_state = "demo_sim"
-	exproof = TRUE
+	explo_proof = TRUE
 	unacidable = TRUE
 	var/datum/simulator/simulation
 	var/turf/sim_location

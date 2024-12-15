@@ -359,7 +359,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/black, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/custom, WEAR_IN_BELT)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/tactical, WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/hp, WEAR_IN_BELT)

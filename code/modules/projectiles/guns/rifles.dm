@@ -977,6 +977,31 @@
 	desc_lore = "The M16A5, introduced in 2016 has become something of a timeless classic in UA territory. The design rights for the gun and its many related platforms came into Armat ownership after their acquisition of Colt, and it's remained a surprisingly lucrative patent since then. While dated, the weapon's ease of use and more conventional rounds have made it popular among minimally-trained colonists and isolated units alike, being much easier to self-produce replacement parts and ammunition for than more advanced alternatives like pulse rifles and caseless ammunition. Subsequently, it remains a common sight on many colonies, and even in the reserve armories of some USCMC vessels like the Sulaco, partly from tradition and partly because of the sheer surplus supply of rifles that's lasted nearly two centuries."
 	icon_state = "m16a5"
 	item_state = "m16a5"
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/m16,
+		/obj/item/attachable/stock/m16/m16a5,
+	)
 	starting_attachment_types = list(/obj/item/attachable/stock/m16/m16a5)
 
 /obj/item/weapon/gun/rifle/m16/m16a5/tactical
@@ -1106,6 +1131,17 @@
 	desc_lore = null
 	icon_state = "car15a3"
 	item_state = "car15a3"
+
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/m16/xm177,
+		/obj/item/attachable/stock/m16/xm177/car15a3,
+	)
 
 	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177/car15a3)
 

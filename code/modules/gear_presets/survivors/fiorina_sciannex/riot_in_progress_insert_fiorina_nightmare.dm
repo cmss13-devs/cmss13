@@ -19,7 +19,7 @@
 	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = "CMB Riot Control Officer"
 	idtype = /obj/item/card/id/deputy/riot
 	rank = JOB_CMB_RIOT
@@ -92,7 +92,7 @@
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB Syn"
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Riot Control Synthetic"
 	rank = JOB_CMB_RSYN

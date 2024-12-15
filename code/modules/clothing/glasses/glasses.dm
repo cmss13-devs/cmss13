@@ -607,6 +607,7 @@
 	)
 	active_icon_state = "swat_shield"
 	inactive_icon_state = "swat_shield_up"
+	activated = TRUE
 	message_up = "You lift the visor up."
 	message_down = "You lower the visor down."
 	flags_equip_slot = null

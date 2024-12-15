@@ -463,7 +463,7 @@
 	rank = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,

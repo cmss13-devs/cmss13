@@ -210,12 +210,8 @@
 				knocked_down = TRUE
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				if (body_position == LYING_DOWN)
-					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src], but they are already down!"), \
-					SPAN_DANGER("We try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				else
-					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src]"), \
-					SPAN_DANGER("We try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src]!"), \
+				SPAN_DANGER("We try to tackle [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				knocked_down = FALSE
 
 			attacking_xeno.attack_log += "\[[time_stamp()]\] <font color='red'>[knocked_down ? "S" : "Uns"]uccessfully tackled [key_name(src)]</font>"
@@ -779,8 +775,8 @@
 			message = "We have wrested away remote control of the metal crawler! Rejoice!"
 		else
 			message = "We have wrested away remote control of the metal bird! Rejoice!"
-			if(!GLOB.resin_lz_allowed)
-				set_lz_resin_allowed(TRUE)
+			if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+				MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		to_chat(M, SPAN_XENONOTICE("We interact with the machine and disable remote control."))
 		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)

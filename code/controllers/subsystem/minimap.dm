@@ -540,6 +540,7 @@ SUBSYSTEM_DEF(minimaps)
 
 #define can_draw(faction, user) (( skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
+
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
 	if(hashed_tacmaps[hash])
@@ -792,6 +793,7 @@ SUBSYSTEM_DEF(minimaps)
 	new_current_map = get_unannounced_tacmap_data_png(faction)
 	old_map = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
+
 
 	var/use_live_map = skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
 

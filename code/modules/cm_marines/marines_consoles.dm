@@ -1106,8 +1106,15 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
 				// 00-09: High Command
+				JOB_UPP_GENERAL = 00,
+				JOB_UPP_LT_GENERAL = 00,
+				JOB_UPP_MAY_GENERAL = 00,
+				JOB_UPP_BRIG_GENERAL = 00,
 				JOB_UPP_KOL_OFFICER = 00,
 				// 10-19: Command Team
+				JOB_UPP_KOL_OFFICER = 10,
+				JOB_UPP_LTKOL_OFFICER = 10,
+				JOB_UPP_CO_OFFICER = 10, //The actual CO role.
 				JOB_UPP_MAY_OFFICER = 10,
 				JOB_UPP_KPT_OFFICER = 11,
 				JOB_UPP_SRLT_OFFICER = 13,

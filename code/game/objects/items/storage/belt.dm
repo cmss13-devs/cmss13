@@ -1016,9 +1016,9 @@
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 
-/obj/item/storage/belt/grenade/upp/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
-		dump_into(W,user)
+/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
+	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/backpack/marine/grenadepack))
+		dump_into(attacked_item, user)
 	else
 		return ..()
 

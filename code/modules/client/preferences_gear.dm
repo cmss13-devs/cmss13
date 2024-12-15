@@ -159,29 +159,15 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/sunglasses/big
 	cost = 4
 
-/datum/gear/eyewear/bimax_shades
-	display_name = "BiMax personal shades"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake
+/datum/gear/eyewear/new_bimex/black
+	display_name = "BiMex tactical shades, black"
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/black
+	cost = 4
 
-/datum/gear/eyewear/bimax_shades/red
-	display_name = "BiMax personal shades, red"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/red
-
-/datum/gear/eyewear/bimax_shades/orange
-	display_name = "BiMax personal shades, orange"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/orange
-
-/datum/gear/eyewear/bimax_shades/yellow
-	display_name = "BiMax personal shades, yellow"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/yellow
-
-/datum/gear/eyewear/bimax_shades/green
-	display_name = "BiMax personal shades, green"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/green
-
-/datum/gear/eyewear/bimax_shades/blue
-	display_name = "BiMax personal shades, blue"
-	path = /obj/item/clothing/glasses/sunglasses/big/fake/blue
+/datum/gear/eyewear/new_bimex
+	display_name = "BiMex tactical shades, yellow"
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex
+	cost = 4
 
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
@@ -290,7 +276,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	cost = 4
 
 /datum/gear/mask/keffiyeh
-	display_name = "Keffiyeh"
+	display_name = "Keffiyeh" // Traditional middle-eastern headdress, works like a balaclava/scarf.
 	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh
 
 /datum/gear/mask/keffiyeh_white
@@ -830,10 +816,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "M8 Cartridge Bayonet"
 	path = /obj/item/storage/box/co2_knife
 
-/datum/gear/weapon/swiss_army_knife
-	display_name = "Colonial Companion Mk. II"
-	path = /obj/item/weapon/swiss_army_knife
-
 /datum/gear/weapon/clfpistol
 	display_name = "D18 Holdout Pistol"
 	path = /obj/item/storage/box/clf
@@ -853,6 +835,12 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "M44 Custom Revolver"
 	path = /obj/item/weapon/gun/revolver/m44/custom
 	allowed_origins = USCM_ORIGINS
+
+/datum/gear/weapon/model_37_revolver_black
+	display_name = "S&W .38 model 37 Custom revolver"
+	path = /obj/item/weapon/gun/revolver/small/black
+	allowed_origins = USCM_ORIGINS
+	cost = 4
 
 /datum/gear/drink
 	category = "Canned drinks"
@@ -978,7 +966,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/snack_sweet/fortune_cookie
 	display_name = "Fortune cookie"
 	path = /obj/item/reagent_container/food/snacks/fortunecookie/prefilled
-	cost = 3
 
 /datum/gear/snack_sweet/donut_normal
 	display_name = "Donut"
@@ -1292,6 +1279,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "United Americas shoulder patch"
 	path = /obj/item/clothing/accessory/patch/ua
 
+/datum/gear/misc/patch_uscm/medic_patch
+	display_name = "Field Medic shoulder patch"
+	path = /obj/item/clothing/accessory/patch/medic_patch
+	allowed_origins = list(ORIGIN_CIVILIAN, USCM_ORIGINS, ORIGIN_UPP)
+
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
 	path = /obj/item/prop/helmetgarb/family_photo
@@ -1312,7 +1304,13 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/weapon/straight_razor
 	cost = 2
 
+/datum/gear/misc/swiss_army_knife
+	display_name = "Colonial Companion Mk. II"
+	path = /obj/item/weapon/swiss_army_knife
+	cost = 7 // Expensive because it's literally a multi-tool, wirecutters, screwdriver, knife.
+
 // Civilian only
+
 /datum/gear/civilian
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
@@ -1350,3 +1348,64 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/civilian/patch/merc_patch
 	display_name = "Old Freelancer shoulder patch"
 	path = /obj/item/clothing/accessory/patch/merc_patch
+
+// Cheap Civilian shades - colorful!
+
+/datum/gear/civilian/eyewear/bimax_shades
+	display_name = "BiMax personal shades"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake
+
+/datum/gear/civilian/eyewear/bimax_shades/red
+	display_name = "BiMax personal shades, red"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/red
+
+/datum/gear/civilian/eyewear/bimax_shades/orange
+	display_name = "BiMax personal shades, orange"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/orange
+
+/datum/gear/civilian/eyewear/bimax_shades/yellow
+	display_name = "BiMax personal shades, yellow"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/yellow
+
+/datum/gear/civilian/eyewear/bimax_shades/green
+	display_name = "BiMax personal shades, green"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/green
+
+/datum/gear/civilian/eyewear/bimax_shades/blue
+	display_name = "BiMax personal shades, blue"
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/blue
+
+// Civilian shoes
+
+/datum/gear/civilian/shoes
+	display_name = "black shoes"
+	path = /obj/item/clothing/shoes/black
+	cost = 1
+
+/datum/gear/civilian/shoes/brown
+	display_name = "brown shoes"
+	path = /obj/item/clothing/shoes/brown
+
+/datum/gear/civilian/shoes/blue
+	display_name = "blue shoes"
+	path = /obj/item/clothing/shoes/blue
+
+/datum/gear/civilian/shoes/green
+	display_name = "green shoes"
+	path = /obj/item/clothing/shoes/green
+
+/datum/gear/civilian/shoes/yellow
+	display_name = "yellow shoes"
+	path = /obj/item/clothing/shoes/yellow
+
+/datum/gear/civilian/shoes/purple
+	display_name = "purple shoes"
+	path = /obj/item/clothing/shoes/purple
+
+/datum/gear/civilian/shoes/red
+	display_name = "red shoes"
+	path = /obj/item/clothing/shoes/red
+
+/datum/gear/civilian/shoes/rainbow
+	display_name = "rainbow shoes"
+	path = /obj/item/clothing/shoes/rainbow

@@ -883,6 +883,20 @@
 	icon_state = "bigsunglasses_blue"
 	item_state = "bigsunglasses_blue"
 
+/obj/item/clothing/glasses/sunglasses/big/new_bimex
+	name = "\improper BiMex Tactical Shades"
+	desc = "Sleek, angular shades designed for the modern operator. BiMex's latest 'TactOptix' line comes with advanced polarization and lightweight ballistic lenses capable of shrugging off small shrapnel impacts. A favorite among frontline operators and deep-space scouts, these shades are marketed as 'combat-tested and action-approved.' Rumors abound of lucky users surviving close-range laser shots thanks to the multi-reflective lens coating, though BiMex's official stance is to 'Stop standing in front of lasers.'"
+	icon_state = "bimex_polarized_yellow"
+	item_state = "bimex_polarized_yellow"
+	eye_protection = EYE_PROTECTION_FLASH
+	clothing_traits = list(TRAIT_BIMEX)
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/glasses/sunglasses/big/new_bimex/black
+	icon_state = "bimex_black"
+	item_state = "bimex_black"
+
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
 	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."

@@ -534,18 +534,23 @@
 
 /obj/item/clothing/accessory/patch/sons_of_mars
 	name = "Sons of Mars patch"
-	desc = "A fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Sons of Mars, a resistance group that fought against corporate control on Mars. Though not forgotten, the patch serves as a reminder of a time when Martian rebels stood defiant, a symbol of rebellion largely overlooked in today's era."
+	desc = "An old, worn fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Sons of Mars, a resistance group that fought against corporate control on Mars. Though not forgotten, the patch serves as a reminder of a time when Martian rebels stood defiant, a symbol of rebellion largely overlooked in today's era."
 	icon_state = "sompatch"
 
 /obj/item/clothing/accessory/patch/freelancer_patch
 	name = "Freelancer's Guild patch"
-	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and blue background with a white border. Worn by a skilled mercenary of the Freelancers, a well-equipped group for hire across the outer colonies, known for their professionalism and neutrality. This patch is a personal memento from the wearer’s time with the group, representing a life spent navigating the dangerous world of mercenary contracts."
+	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and blue background. Worn by a skilled mercenary of the Freelancers, a well-equipped group for hire across the outer colonies, known for their professionalism and neutrality. This patch is a personal memento from the wearer’s time with the group, representing a life spent navigating the dangerous world of mercenary contracts."
 	icon_state = "mercpatch"
 
 /obj/item/clothing/accessory/patch/merc_patch
 	name = "Old Freelancer's Guild patch"
-	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and red background with a white border. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
+	desc = "An old, worn fire-resistant circular patch featuring a white skull on a vertically split black and red background. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
 	icon_state = "mercpatch_red"
+
+/obj/item/clothing/accessory/patch/medic_patch
+	name = "Field Medic patch"
+	desc = "A circular patch featuring a red cross on a white background with a bold red outline. Universally recognized as a symbol of aid and neutrality, it is worn by medics across the colonies. Whether a sign of true medical expertise, a keepsake, or merely a decoration, its presence offers a glimmer of hope in dire times."
+	icon_state = "medicpatch"
 
 // Misc
 

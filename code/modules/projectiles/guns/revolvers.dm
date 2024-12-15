@@ -539,6 +539,11 @@
 		accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
 		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 3 SECONDS)
 
+/obj/item/weapon/gun/revolver/small/black
+	name = "\improper S&W .38 model 37 Custom revolver"
+	desc = "A Custom, lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model, with its sleek black body and custom ivory grips, is known to be wildly inaccurate, yet extremely lethal."
+	icon_state = "black_sw357"
+	item_state = "black_sw357"
 
 //-------------------------------------------------------
 //BURST REVOLVER //Mateba is pretty well known. The cylinder folds up instead of to the side.

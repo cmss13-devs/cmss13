@@ -1,0 +1,6 @@
+author: "TheManWithNoHands"
+delete-after: True
+changes:
+  - balance: "rebalanced highdamagenapalm for the tank flamer to change its projectile speed from 1 to 1.5"
+  - balance: "gives the M56 Cupola autofire instead of burst, lowering its fire delay to 0.3"
+  - balance: "gives the M92T grenade launcher PASS_HIGH_OVER and PASS_MOB_THRU bullet properties"

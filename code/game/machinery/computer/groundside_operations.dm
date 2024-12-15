@@ -17,7 +17,7 @@
 	var/is_announcement_active = TRUE
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
-	var/add_pmcs = TRUE
+	var/add_pmcs = FALSE
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
 	var/faction = FACTION_MARINE
@@ -385,6 +385,7 @@
 /obj/structure/machinery/computer/groundside_operations/pmc
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
+	add_pmcs = TRUE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC

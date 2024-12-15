@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - rscdel: "Xeno tackle messaging no longer cares if the target is horizontal or not (because being horizontal has no bearing on tackles)"

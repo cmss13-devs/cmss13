@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "MODE_NO_ATTACK_DEAD now prevents harm from explosions and flames correctly"

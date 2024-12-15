@@ -141,3 +141,37 @@
       liaisons, or people in other factions and have a plethora of tools to achieve
       any objectives they might be assigned to.
   - rscdel: Deletes the UAAC-TIS from the game.
+2024-12-13:
+  cuberound:
+  - bugfix: MODE_NO_ATTACK_DEAD now prevents harm from explosions and flames correctly
+  joookschad:
+  - rscdel: Removed IO squad vendor access. They can still use standard vendors for
+      cosmetics and uniforms.
+  lanse12:
+  - spellcheck: fixed a 1 letter typo in king ability
+  zzzmike:
+  - rscdel: Xeno tackle messaging no longer cares if the target is horizontal or not
+      (because being horizontal has no bearing on tackles)
+2024-12-14:
+  Drulikar:
+  - balance: Queen prevents round end even when in a tunnel
+  - bugfix: Fixed check_queen_status checking any queen not just queens that matter
+      to round end
+  harryob:
+  - bugfix: some random preference verbs weren't saving the preference
+  - bugfix: pmc goon squads and vaiso squads can now correctly use their shuttles
+      to return home
+  realforest2001:
+  - rscadd: Fax Responder platform now includes faxes sent before it loaded.
+2024-12-15:
+  Blundir:
+  - rscdel: limits colossal sandwich to 15 layers
+  Drathek:
+  - balance: Eggs that are in a linked lz area can now get weed killed by the initial
+      dropship
+  - bugfix: Fixed the lz_weeding flag not doing anything
+  - refactor: Refactored and documented defines for the distress signal game mode
+  - bugfix: Internal organs now delete properly
+  - bugfix: An observer waypoint is ensured when a z-level is destroyed (such as for
+      Hivewars)
+  - bugfix: Fixed various runtimes when a z-level is destroyed

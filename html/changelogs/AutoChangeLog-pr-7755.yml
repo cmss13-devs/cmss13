@@ -1,4 +1,0 @@
-author: "joookschad"
-delete-after: True
-changes:
-  - rscdel: "Removed IO squad vendor access. They can still use standard vendors for cosmetics and uniforms."

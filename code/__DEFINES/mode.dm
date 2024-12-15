@@ -1,5 +1,8 @@
 //=================================================
-//Self-destruct, nuke, and evacuation.
+//Self-destruct, nuke, evacuation, and round start miasma.
+
+/// At what time does miasma start if /datum/gamemode_modifier/lz_roundstart_miasma is enabled?
+#define DISTRESS_LZ_HAZARD_START (1 MINUTES)
 #define EVACUATION_TIME_LOCK 1 HOURS
 #define DISTRESS_TIME_LOCK 6 MINUTES
 #define SHUTTLE_TIME_LOCK 15 MINUTES
@@ -28,9 +31,9 @@
 #define LIFEBOAT_INACTIVE 0
 #define LIFEBOAT_ACTIVE 1
 
-#define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
-#define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 			15 MINUTES
+#define XENO_ROUNDSTART_PROGRESS_AMOUNT 2
+#define XENO_ROUNDSTART_PROGRESS_TIME_1 0
+#define XENO_ROUNDSTART_PROGRESS_TIME_2 15 MINUTES
 
 #define ROUND_TIME (world.time - SSticker.round_start_time)
 

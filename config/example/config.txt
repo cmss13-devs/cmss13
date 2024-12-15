@@ -227,6 +227,8 @@ AUTOOOCMUTE
 # Art given by Sennen/Rasta
 #LOBBY_ART_IMAGES lobbyart14
 #LOBBY_ART_AUTHORS Sennen
+#LOBBY_ART_IMAGES lobbyart15
+#LOBBY_ART_AUTHORS Substance20
 
 ## System command that invokes youtube-dl, used by Play Internet Sound.
 ## You can install youtube-dl with

@@ -112,7 +112,10 @@
 	return FALSE
 
 /obj/structure/blocker/forcefield/multitile_vehicles
+//RUCM REMOVAL
+/*
 	types = list(/obj/vehicle/multitile/)
+*/
 
 
 /obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)

@@ -11,6 +11,7 @@
 #include "controllers\subsystem\techtree.dm"
 #include "controllers\subsystem\tts.dm"
 #include "datums\shuttles.dm"
+#include "datums\vehicles.dm"
 #include "datums\skills.dm"
 #include "datums\world_topic.dm"
 #include "datums\ammo\tank.dm"

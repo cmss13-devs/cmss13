@@ -578,12 +578,12 @@
 //-----------------------NSG 23 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/nsg23
-	name = "magazine box (NSG 23 x 16)"
+	name = "magazine box (NSG 23 x 12)"
 	icon_state = "base_nsg23"
 	overlay_gun_type = "_nsg23"
 	overlay_content = "_reg"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23
-	num_of_magazines = 16
+	num_of_magazines = 12
 
 /obj/item/ammo_box/magazine/nsg23/empty
 	empty = TRUE
@@ -608,12 +608,21 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/nsg23/heap
-	name = "magazine box (NSG 23 HEAP x 16)"
+	name = "magazine box (NSG 23 HEAP x 12)"
 	overlay_ammo_type = "_heap"
 	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/heap
 
 /obj/item/ammo_box/magazine/nsg23/heap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/nsg23/training // this will be removed later
+	name = "magazine box (NSG 23 Training x 12)"
+	overlay_ammo_type = "_rubber"
+	overlay_content = "_reg"
+	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/rubber
+
+/obj/item/ammo_box/magazine/nsg23/training/empty
 	empty = TRUE
 
 //-----------------------Spearhead Autorevolver Speed Loaders Box-----------------------

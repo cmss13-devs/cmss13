@@ -557,6 +557,8 @@
 		prefs.custom_cursors = FALSE
 		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
 
+	prefs.save_preferences()
+
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"
 	set category = "Preferences.UI"

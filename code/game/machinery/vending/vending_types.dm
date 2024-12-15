@@ -546,3 +546,20 @@
 		/obj/item/storage/box/whitebeet = 2,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
+
+/obj/structure/machinery/vending/upp_co
+	name = "\improper UnionAraratCorp Automated Commander Uniform Closet"
+	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
+	icon_state = "dress"
+	icon_deny = "dress"
+	wrenchable = FALSE
+	req_access = list(ACCESS_UPP_LEADERSHIP)
+	products = list(
+		/obj/item/clothing/under/marine/veteran/UPP/officer = 1,
+		/obj/item/clothing/under/marine/veteran/UPP = 1,
+		/obj/item/clothing/suit/storage/marine/faction/UPP/kapitan = 1,
+		/obj/item/clothing/head/uppcap/beret = 1,
+		/obj/item/clothing/head/uppcap/peaked = 1,
+		/obj/item/clothing/head/uppcap/ushanka = 1,
+		/obj/item/storage/large_holster/ceremonial_sword/full = 1,
+	)

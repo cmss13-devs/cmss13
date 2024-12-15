@@ -6,6 +6,10 @@
 	desc = "An updated, modular intercom that fits over the head. Takes encryption keys."
 	icon_state = "generic_headset"
 	item_state = "headset"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	matter = list("metal" = 75)
 	subspace_transmission = 1
 	canhear_range = 0 // can't hear headsets from very far away
@@ -391,6 +395,10 @@
 	icon = 'icons/obj/items/robot_component.dmi'
 	icon_state = "radio"
 	item_state = "headset"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
 	var/myAi = null // Atlantis: Reference back to the AI which has this radio.
 	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
@@ -621,6 +629,13 @@
 
 /obj/item/device/radio/headset/almayer/marine
 	initial_keys = list(/obj/item/device/encryptionkey/public)
+
+/obj/item/device/radio/headset/almayer/cia
+	name = "radio headset"
+	desc = "A radio headset."
+	frequency = CIA_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/listening_bug/freq_a)
+
 
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha
@@ -1009,6 +1024,7 @@
 
 /obj/item/device/radio/headset/distress/pmc/cct/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/engi)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/pmc/medic
 	name = "PMC-MED headset"
@@ -1017,6 +1033,7 @@
 
 /obj/item/device/radio/headset/distress/pmc/medic/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/medic)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/pmc/command
 	name = "PMC-CMD headset"
@@ -1025,6 +1042,7 @@
 
 /obj/item/device/radio/headset/distress/pmc/command/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command)
+	misc_tracking = FALSE
 
 /obj/item/device/radio/headset/distress/pmc/command/director
 	name = "WY director headset"
@@ -1035,6 +1053,7 @@
 /obj/item/device/radio/headset/distress/pmc/command/director/hvh
 	maximum_keys = 3
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/commando)
+	misc_tracking = FALSE
 
 
 

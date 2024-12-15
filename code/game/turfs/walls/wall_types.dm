@@ -114,9 +114,10 @@
 /turf/closed/wall/almayer/research/containment/wall
 	name = "cell wall"
 	icon = 'icons/turf/almayer.dmi'
+	icon_state = null
 	tiles_with = null
 	walltype = null
-	special_icon = 1
+	special_icon = TRUE
 
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
@@ -475,10 +476,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/vault
 	icon_state = "rockvault"
 
-/turf/closed/wall/vault/Initialize()
-	. = ..()
-	icon_state = "[type]vault"
-
 
 //Hangar walls
 /turf/closed/wall/hangar
@@ -689,13 +686,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
 /turf/closed/wall/shiva
 	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
+	walltype = WALL_SHIVA_ICE
 
 /turf/closed/wall/shiva/ice
 	name = "black ice slabs"
 	icon_state = "shiva_ice"
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
-	hull = 1 //Can't break this ice.
+	hull = TRUE //Can't break this ice.
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
@@ -765,6 +763,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+	if(!hull)
+		var/area/area = get_area(src)
+		if(area && area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER

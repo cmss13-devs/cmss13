@@ -2,7 +2,7 @@
 /obj/item/clothing/accessory/health
 	name = "armor plate"
 	desc = "A metal trauma plate, able to absorb some blows."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/ceramic_plates.dmi'
 	icon_state = "regular2_100"
 	var/base_icon_state = "regular2"
 
@@ -205,6 +205,7 @@
 	desc = "Attachment to the uniform which gives X (this shouldn't be in your handdssss)"
 	is_armor = FALSE
 	icon_state = "plate_research"
+	icon = 'icons/obj/items/devices.dmi'
 	var/obj/item/clothing/attached_uni
 	///can the plate be recycled after X condition? 0 means it cannot be recycled, otherwise put in the biomass points to refund.
 	var/recyclable_value = 0
@@ -371,7 +372,7 @@
 	action_icon_state = "plate_research"
 	button.name = name
 	button.overlays.Cut()
-	button.overlays += image('icons/obj/items/items.dmi', button, action_icon_state)
+	button.overlays += image('icons/obj/items/devices.dmi', button, action_icon_state)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/ui_action_click(mob/owner, obj/item/holder)
 	if(used)

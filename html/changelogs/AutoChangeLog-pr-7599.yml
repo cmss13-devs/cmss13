@@ -1,4 +1,0 @@
-author: "SASoperative"
-delete-after: True
-changes:
-  - rscadd: "Personal Gear Vendor allows retrieval of additional kits for multi-kit donators"

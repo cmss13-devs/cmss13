@@ -63,7 +63,8 @@
 			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_upp'>Join the UPP!</A></p>"
 		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
 		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
-			if(SSticker.mode.check_predator_late_join(src,0)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
+			if(SSticker.mode.check_predator_late_join(src, FALSE)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
+		if(SSticker.mode.check_fax_responder_late_join(src, FALSE)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_faxes'>Respond to Faxes</A></p>"
 
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=observe'>Observe</A></p>"
 
@@ -186,12 +187,26 @@
 				return
 
 			if(tgui_alert(src, "Are you sure you want to attempt joining as a predator?", "Confirmation", list("Yes", "No")) == "Yes")
-				if(SSticker.mode.check_predator_late_join(src,0))
+				if(SSticker.mode.check_predator_late_join(src, FALSE))
 					close_spawn_windows()
 					SSticker.mode.attempt_to_join_as_predator(src)
 				else
 					to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
 					new_player_panel()
+
+		if("late_join_faxes")
+			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
+				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
+				return
+
+			if(alert(src,"Are you sure you want to attempt joining as a Fax Responder?","Confirmation","Yes","No") == "Yes" )
+				if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
+					close_spawn_windows()
+					SSticker.mode.attempt_to_join_as_fax_responder(src, TRUE)
+				else
+					to_chat(src, SPAN_WARNING("You are no longer able to join as a Fax Responder."))
+					new_player_panel()
+
 
 		if("manifest")
 			ViewManifest()
@@ -240,7 +255,7 @@
 
 	if(!client.prefs?.preview_dummy)
 		client.prefs.update_preview_icon()
-	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
+	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.observer_starts + GLOB.latejoin)), client.prefs.preview_dummy)
 	observer.set_lighting_alpha_from_pref(client)
 	spawning = TRUE
 	observer.started_as_observer = TRUE
@@ -252,7 +267,7 @@
 		to_chat(src, SPAN_NOTICE("Now teleporting."))
 		observer.forceMove(spawn_point.loc)
 	else
-		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
+		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verbs to jump if needed."))
 	observer.icon = 'icons/mob/humans/species/r_human.dmi'
 	observer.icon_state = "anglo_example"
 	observer.alpha = 127

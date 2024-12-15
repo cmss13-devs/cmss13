@@ -122,7 +122,9 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 	. = ..()
 
 	if(type == abstract_type)
+		#if !defined(UNIT_TESTS)
 		log_mapping("A [type] was created that should not have been! Use a subtype instead.")
+		#endif
 		return INITIALIZE_HINT_QDEL
 
 	LAZYADDASSOCLIST(GLOB.sentry_spawns[landing_zone], position, get_turf(src))

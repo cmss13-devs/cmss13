@@ -24,7 +24,7 @@
 /obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
 	create_egg_triggers()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	if(hivenumber == XENO_HIVE_NORMAL)
@@ -37,6 +37,10 @@
 	var/turf/my_turf = get_turf(src)
 	if(my_turf?.weeds && !isnull(weed_strength_required))
 		RegisterSignal(my_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
+
+	var/area/area = get_area(src)
+	if(area && area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
 
 /obj/effect/alien/egg/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -444,6 +448,8 @@ SPECIAL EGG USED BY EGG CARRIER
 SPECIAL EGG USED WHEN WEEDS LOST
 */
 
+#define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES // Should be longer than HIVECORE_COOLDOWN
+
 /obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, hivenumber, weed_strength_required)
 	src.weed_strength_required = weed_strength_required
 
@@ -453,7 +459,7 @@ SPECIAL EGG USED WHEN WEEDS LOST
 		return .
 
 	if(hivenumber != XENO_HIVE_FORSAKEN)
-		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), ORPHAN_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 
 	var/my_turf = get_turf(src)
 	if(my_turf)

@@ -189,7 +189,7 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(root_console.dropship_control_lost)
+	if(!root_console || root_console.dropship_control_lost)
 		automated_hangar_id = null
 		automated_lz_id = null
 		automated_delay = null

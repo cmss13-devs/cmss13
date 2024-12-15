@@ -91,7 +91,7 @@
  *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
-/datum/tgui/proc/open()
+/datum/tgui/proc/open(preinitialized = FALSE)
 	if(!user.client)
 		return FALSE
 	if(window && window.status > TGUI_WINDOW_LOADING)
@@ -105,7 +105,7 @@
 		return FALSE
 	opened_at = world.time
 	window.acquire_lock(src)
-	if(!window.is_ready())
+	if(!window.is_ready() && !preinitialized)
 		window.initialize(
 			strict_mode = TRUE,
 			fancy = user.client?.prefs.tgui_fancy,

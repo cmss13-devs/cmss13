@@ -36,7 +36,11 @@
 
 	winset(src, "lobby_browser", "is-disabled=false;is-visible=true")
 	lobby_window = new(client, "lobby_browser")
-	lobby_window.initialize()
+	lobby_window.initialize(
+		assets = list(
+				get_asset_datum(/datum/asset/simple/tgui),
+			)
+	)
 
 	tgui_interact(src)
 
@@ -46,9 +50,8 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "LobbyMenu", window = lobby_window)
-		ui.set_autoupdate(FALSE)
 		ui.closeable = FALSE
-		ui.open()
+		ui.open(preinitialized = TRUE)
 
 /mob/new_player/ui_state(mob/user)
 	return GLOB.always_state
@@ -58,11 +61,10 @@
 
 	.["character_name"] = client.prefs ? client.prefs.real_name : client.key
 
-	var/tempnumber = rand(1, 999)
 	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""
 	var/prefix_text = (client.xeno_prefix) ? client.xeno_prefix : "XX"
-	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
-	.["display_number"] = xeno_text
+	.["xeno_prefix"] = prefix_text
+	.["xeno_postfix"] = postfix_text
 
 	.["tutorials_ready"] = SSticker?.current_state == GAME_STATE_PLAYING
 	.["round_start"] = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME

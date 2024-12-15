@@ -21,12 +21,14 @@ import {
 } from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
+import { randomInteger } from 'common/random';
 
 type LobbyData = {
   lobby_author: string;
 
   character_name: string;
-  display_number: string;
+  xeno_prefix: string;
+  xeno_postfix: string;
 
   tutorials_ready: BooleanLike;
   round_start: BooleanLike;
@@ -137,7 +139,8 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
 
   const {
     character_name,
-    display_number,
+    xeno_postfix,
+    xeno_prefix,
     round_start,
     readied,
     predator_enabled,
@@ -146,6 +149,10 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
     tutorials_ready,
     xenomorph_enabled,
   } = data;
+
+  const [xenoName] = useState(
+    `${xeno_prefix}-${randomInteger(0, 999)}${xeno_postfix}`,
+  );
 
   return (
     <Section
@@ -202,7 +209,7 @@ const LobbyButtons = (props: { readonly setModal: (_) => void }) => {
                           animationDelay: '1.4s',
                         }}
                       >
-                        {display_number}
+                        {xenoName}
                       </Box>
                     </Stack.Item>
                   </Stack>

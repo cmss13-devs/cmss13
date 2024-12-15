@@ -1862,9 +1862,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					save_preferences()
 					save_character()
 					save_cooldown = world.time + 50
-					var/mob/new_player/np = user
-					if(istype(np))
-						np.tgui_interact(np)
 
 				if("reload")
 					if(reload_cooldown > world.time)
@@ -1888,9 +1885,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("changeslot")
 					load_character(text2num(href_list["num"]))
 					close_load_dialog(user)
-					var/mob/new_player/np = user
-					if(istype(np))
-						np.tgui_interact(np)
 
 					update_all_pickers(user)
 

@@ -155,12 +155,12 @@
 
 /obj/item/storage/secure/safe
 	name = "secure safe"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/safes.dmi'
 	icon_state = "wallsafe"
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 	force = 8
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_LARGE

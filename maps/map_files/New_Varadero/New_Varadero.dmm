@@ -537,7 +537,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "awr" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/lz1_near)
 "awu" = (
@@ -2022,7 +2022,7 @@
 	density = 0;
 	desc = "Made in Little Japan.";
 	health = 300;
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/stacks.dmi';
 	icon_state = "sheet-lizard";
 	name = "exotic bedsheet";
 	pixel_x = -1
@@ -3655,7 +3655,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "cSa" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+/obj/structure/flora/bush/ausbushes/ywflowers{
 	icon_state = "ywflowers_3"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -7248,7 +7248,7 @@
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/administration)
 "fPp" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+/obj/structure/flora/bush/ausbushes/ywflowers{
 	icon_state = "ywflowers_2"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -8233,7 +8233,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "gCQ" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
 	},
@@ -9256,7 +9256,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "hyT" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers{
+/obj/structure/flora/bush/ausbushes/ywflowers{
 	icon_state = "ywflowers_4"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -9426,7 +9426,7 @@
 	density = 0;
 	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
 	health = 300;
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/stacks.dmi';
 	icon_state = "sheet-mythril";
 	name = "funky wall bacon"
 	},
@@ -11396,7 +11396,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
 "jgV" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "jgY" = (
@@ -12181,7 +12181,7 @@
 /turf/open/floor/shiva/purple/northwest,
 /area/varadero/interior/research)
 "jNn" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "jNE" = (
@@ -12200,7 +12200,7 @@
 /obj/item/weapon/pole{
 	anchored = 1;
 	desc = "It only plays auto chess. Gross.";
-	icon = 'icons/obj/items/items.dmi';
+	icon = 'icons/obj/items/toy.dmi';
 	icon_state = "game_kit";
 	name = "Thick Art LTD Gamepad"
 	},
@@ -14772,7 +14772,7 @@
 /area/varadero/interior/technical_storage)
 "lXv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/holostool,
+/obj/item/stool,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "lYi" = (
@@ -15682,7 +15682,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
 "mJe" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
 "mJh" = (
@@ -17930,7 +17930,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
 "oDB" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
 	},
@@ -21895,7 +21895,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/hall_SE)
 "rBq" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "rBJ" = (
@@ -22455,7 +22455,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "rWN" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "rXf" = (
@@ -25317,7 +25317,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "upH" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "upL" = (
@@ -25795,10 +25795,6 @@
 /area/varadero/exterior/lz1_near)
 "uLP" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/head/caphat{
-	pixel_x = 2;
-	pixel_y = 9
-	},
 /obj/item/clothing/head/cmcap,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
@@ -28247,7 +28243,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "wyE" = (
-/obj/item/storage/belt/marine/quackers,
+/obj/item/toy/inflatable_duck,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
 "wzb" = (
@@ -29361,7 +29357,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "xzc" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/pontoon_beach)
 "xzd" = (

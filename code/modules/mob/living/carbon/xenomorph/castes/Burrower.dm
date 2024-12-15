@@ -41,7 +41,7 @@
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
 	desc = "A beefy alien with sharp claws."
-	icon = 'icons/mob/xenos/burrower.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
@@ -76,8 +76,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xeno = 'icons/mob/xenos/burrower.dmi'
-	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/burrower.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")

@@ -455,7 +455,7 @@
 	job = JOB_WORKING_JOE
 
 /obj/effect/landmark/late_join/dzho_automaton
-	name = "dzho_automaton late join"
+	name = "dzho automaton late join"
 	job = JOB_UPP_JOE
 
 /obj/effect/landmark/late_join/cmo

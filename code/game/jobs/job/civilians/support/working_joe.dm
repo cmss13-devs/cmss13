@@ -77,7 +77,7 @@
 	gear_preset = /datum/equipment_preset/synth/working_joe/upp
 	flags_startup_parameters = ROLE_WHITELISTED
 
-	flags_whitelist =  WHITELIST_SYNTHETIC
+	flags_whitelist =  WHITELIST_JOE
 
 /datum/job/antag/upp/dzho_automaton/check_whitelist_status(mob/user)
 	if(user.client.check_whitelist_status(WHITELIST_SYNTHETIC))

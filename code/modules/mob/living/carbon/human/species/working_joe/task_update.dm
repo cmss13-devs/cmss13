@@ -145,13 +145,13 @@
 	key = "searchroutines"
 	sound = 'sound/voice/joe/search_routines.ogg'
 	haz_sound = 'sound/voice/joe/search_routines_haz.ogg'
-	say_message = "Abandoning search routines.."
+	say_message = "Abandoning search routines."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/search_routines_upp
 	key = "searchroutinesupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/poiski.ogg'
-	say_message = "Abandoning search.."
+	say_message = "Abandoning search."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE

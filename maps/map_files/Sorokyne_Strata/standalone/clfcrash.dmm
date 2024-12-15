@@ -64,13 +64,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ag/interior/outpost/engi/drome)
-"aT" = (
-/obj/structure/machinery/power/smes/buildable{
-	capacity = 1e+006;
-	dir = 1
-	},
-/turf/open/floor/strata/floor3,
-/area/strata/ag/interior/outpost/admin)
 "aU" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -147,11 +140,8 @@
 /turf/open/floor/plating,
 /area/strata/ag/interior/outpost/engi/drome)
 "cu" = (
-/obj/structure/machinery/power/terminal{
-	dir = 4
-	},
-/turf/open/floor/strata/floor3,
-/area/strata/ag/interior/outpost/admin)
+/turf/template_noop,
+/area/template_noop)
 "cA" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement/cement12,
@@ -3433,7 +3423,7 @@ TU
 Kb
 QI
 di
-aT
+cu
 kX
 yT
 Ht

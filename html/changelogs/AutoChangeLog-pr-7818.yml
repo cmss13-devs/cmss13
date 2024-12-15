@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscdel: "limits colossal sandwich to 15 layers"

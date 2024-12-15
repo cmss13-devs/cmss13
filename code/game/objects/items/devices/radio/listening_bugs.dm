@@ -32,6 +32,7 @@
 	var/prevent_snooping = FALSE
 	/// The ID tag of the device, for identification.
 	var/nametag = "Device"
+	inherent_traits = list(TRAIT_HEARS_FROM_CONTENTS)
 
 /obj/item/device/radio/listening_bug/ui_data(mob/user)
 	var/list/data = list()

@@ -144,8 +144,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 						var/obj/item/clothing/worn_item = hearing_obj
 						if((hearing_obj.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
 							listening_obj |= hearing_obj
-							for(var/obj/item/device/radio/listening_bug/bug in hearing_obj.contents)
-								listening_obj |= bug
+							for(var/obj/item/interior_object in hearing_obj.contents)
+								if(HAS_TRAIT(interior_object, TRAIT_HEARS_FROM_CONTENTS))
+									listening_obj |= interior_object
 				else if(istype(I, /obj/structure/surface))
 					var/obj/structure/surface/table = I
 					hearturfs += table.locs[1]
@@ -157,8 +158,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					hearturfs += hearing_obj.locs[1]
 					if(hearing_obj.flags_atom & USES_HEARING)
 						listening_obj |= hearing_obj
-						for(var/obj/item/device/radio/listening_bug/bug in hearing_obj.contents)
-							listening_obj |= bug
+						for(var/obj/item/interior_object in hearing_obj.contents)
+							if(HAS_TRAIT(interior_object, TRAIT_HEARS_FROM_CONTENTS))
+								listening_obj |= interior_object
 
 
 			for(var/mob/M as anything in GLOB.player_list)

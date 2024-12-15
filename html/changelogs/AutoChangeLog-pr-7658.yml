@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added Fax Responder name preferences in Special Roles section of character preferences."
+  - rscadd: "Added the correct factions to Fax Responder faction_groups, so they get correct announcements."
+  - rscadd: "Added health huds to Fax Responders."

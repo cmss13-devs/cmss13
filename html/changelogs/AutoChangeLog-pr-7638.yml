@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added listening devices relaying information from key areas to the Fax Responders."

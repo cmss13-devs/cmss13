@@ -616,7 +616,7 @@
 /datum/equipment_preset/corpse/upp
 	name = "Corpse - Union of Progressive Peoples Soldier"
 	assignment = JOB_UPP
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_0)
 	rank = JOB_UPP
 	faction = FACTION_UPP

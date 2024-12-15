@@ -24,7 +24,7 @@
 	name = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 	minimap_background = "background_upp"
 	origin_override = ORIGIN_UPP
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
@@ -82,7 +82,7 @@
 	new_human.r_eyes = colors[eye_color][1]
 	new_human.g_eyes = colors[eye_color][2]
 	new_human.b_eyes = colors[eye_color][3]
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 
 //*****************************************************************************************************/
 //=====================//
@@ -2673,7 +2673,7 @@
 	rank = JOB_UPP_SUPPORT_SYNTH
 	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 
 
 /datum/equipment_preset/upp/synth/dressed
@@ -2722,7 +2722,7 @@
 	new_human.r_eyes = colors[eye_color][1]
 	new_human.g_eyes = colors[eye_color][2]
 	new_human.b_eyes = colors[eye_color][3]
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 
 /datum/equipment_preset/upp/synth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)

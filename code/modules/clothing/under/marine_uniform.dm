@@ -1136,6 +1136,10 @@
 	desc = "Uniform designed for UPP security synthetics."
 	icon_state = "upp_joe"
 	worn_state = "upp_joe"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi',
+	)
 	flags_item = NO_CRYO_STORE
 
 /obj/item/clothing/under/rank/synthetic/joe

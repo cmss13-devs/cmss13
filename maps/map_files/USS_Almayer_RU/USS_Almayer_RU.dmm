@@ -1947,7 +1947,7 @@
 	},
 /area/almayer/living/officer_study)
 "agP" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "agQ" = (
@@ -2063,7 +2063,7 @@
 	},
 /area/almayer/powered)
 "ahl" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ahn" = (
@@ -11377,7 +11377,7 @@
 	},
 /area/almayer/command/corporateliaison)
 "aRE" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/structure/machinery/computer/crew{
@@ -25997,7 +25997,7 @@
 	},
 /area/almayer/command/lifeboat)
 "cYK" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/structure/surface/rack{
@@ -26418,7 +26418,7 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "deD" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/structure/machinery/computer/card{
@@ -41310,7 +41310,7 @@
 	},
 /area/almayer/command/airoom)
 "itZ" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/structure/machinery/computer/working_joe{
@@ -57507,7 +57507,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "osz" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/structure/machinery/light{
@@ -63606,7 +63606,7 @@
 	},
 /area/almayer/living/tankerbunks)
 "qDN" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/structure/machinery/light{
@@ -78462,7 +78462,7 @@
 	},
 /area/almayer/maint/upper/u_a_p)
 "vSl" = (
-/obj/structure/platform/shiva{
+/obj/structure/platform/metal/almayer{
 	dir = 1
 	},
 /obj/item/clothing/glasses/hud/health{

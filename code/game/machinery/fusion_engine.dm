@@ -356,8 +356,8 @@
 			return
 
 		set_overloading(!overloaded)
-		to_chat(user, SPAN_WARNING("You finish [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
-		log_game("[key_name(user)] has [overloaded ? "overloaded" : "restored the safeties of"] a generator.")
+		to_chat(user, SPAN_WARNING("You finish [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
+		log_game("[key_name(user)] has [overloaded ? "restored the safeties of" : "overloaded"] a generator.")
 		return
 
 	. = ..()

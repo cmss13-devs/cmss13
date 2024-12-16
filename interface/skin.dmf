@@ -1,4 +1,12 @@
 macro "default"
+	elem ".winset :map.right-click=false"
+		name = "SHIFT+Shift"
+	elem "Shift"
+		name = "SHIFT"
+		command = ".winset :map.right-click=false"
+	elem "ShiftUp"
+		name = "SHIFT+UP"
+		command = ".winset :map.right-click=true"
 
 menu "menu"
 	elem
@@ -215,7 +223,6 @@ window "mapwindow"
 		font-size = 7
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		style = ".maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464

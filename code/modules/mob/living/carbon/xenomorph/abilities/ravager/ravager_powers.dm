@@ -171,6 +171,11 @@
 				var/obj/structure/window/framed/framed_window = structure_blocker
 				if(!framed_window.unslashable)
 					framed_window.deconstruct(disassembled = FALSE)
+			if(istype(structure_blocker, /obj/structure/fence))
+				var/obj/structure/fence/fence = structure_blocker
+				if(!fence.unslashable)
+					fence.health -= 50
+					fence.healthcheck()
 
 			if(structure_blocker.opacity)
 				blocked = TRUE
@@ -443,7 +448,7 @@
 		shield.shrapnel_amount = shield_shrapnel_amount
 		xeno.overlay_shields()
 
-	xeno.create_shield(shield_duration)
+	xeno.create_shield(shield_duration, "shield2")
 	shield_active = TRUE
 	button.icon_state = "template_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)

@@ -319,7 +319,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/webhook = CONFIG_GET(string/urgent_adminhelp_webhook_url)
 	if(!urgent)
 		webhook = CONFIG_GET(string/regular_adminhelp_webhook_url)
+	send2webhook(message_or_embed, webhook)
 
+/proc/send2webhook(message_or_embed, webhook)
 	if(!webhook)
 		return
 	var/list/webhook_info = list()

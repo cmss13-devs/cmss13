@@ -6,6 +6,7 @@
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
+	minimap_background = "background_clf"
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()
@@ -53,6 +54,8 @@
 	assignment = JOB_CLF
 	rank = JOB_CLF
 	role_comm_title = "GRL"
+
+	minimap_icon = "clf_mil"
 
 	skills = /datum/skills/clf
 
@@ -158,6 +161,8 @@
 	assignment = JOB_CLF_ENGI
 	rank = JOB_CLF_ENGI
 	role_comm_title = "TECH"
+
+	minimap_icon = "clf_engi"
 
 	skills = /datum/skills/clf/combat_engineer
 
@@ -283,6 +288,7 @@
 	assignment = JOB_CLF_MEDIC
 	rank = JOB_CLF_MEDIC
 	role_comm_title = "MED"
+	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/clf/combat_medic
 
@@ -441,6 +447,9 @@
 	assignment = JOB_CLF_SPECIALIST
 	rank = JOB_CLF_SPECIALIST
 	role_comm_title = "SPC"
+
+	minimap_icon = "clf_spec"
+
 	skills = /datum/skills/clf/specialist
 
 /datum/equipment_preset/clf/specialist/New()
@@ -565,6 +574,9 @@
 	assignment = JOB_CLF_LEADER
 	rank = JOB_CLF_LEADER
 	role_comm_title = "LDR"
+
+	minimap_icon = "clf_sl"
+
 	skills = /datum/skills/clf/leader
 
 /datum/equipment_preset/clf/leader/New()
@@ -718,6 +730,8 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
+	minimap_icon = "clf_synth"
+
 /datum/equipment_preset/clf/synth/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_CLF_ALL)
@@ -762,6 +776,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
@@ -921,6 +936,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
@@ -961,6 +977,9 @@
 	rank = JOB_CLF_COMMANDER
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
+
+	minimap_icon = "deputy"
+
 	skills = /datum/skills/clf/commander
 
 /datum/equipment_preset/clf/commander/New()

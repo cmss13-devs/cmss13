@@ -47,6 +47,8 @@
 
 	minimap_icon = "xenoqueen"
 
+	minimap_background = "xeno_ruler"
+
 	royal_caste = TRUE
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
@@ -274,8 +276,8 @@
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 	organ_value = 8000 // queen is expensive
 
-	icon_xeno = 'icons/mob/xenos/queen.dmi'
-	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
@@ -413,6 +415,7 @@
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
+	AUTOWIKI_SKIP(FALSE)
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/Initialize()
@@ -442,7 +445,9 @@
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
-		if(xeno.hivenumber == hivenumber)
+		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
+			continue
+		if(xeno.hivenumber == hivenumber && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
@@ -477,6 +482,10 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+		if(client?.prefs?.show_queen_name)
+			name += " (" + replacetext((name_client_prefix + name_client_postfix), "-","") + ")"
+
+
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = hive.color
 
@@ -570,6 +579,7 @@
 
 	. += "Pooled Larvae: [stored_larvae]"
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
+	. += "Royal Resin: [hive?.buff_points]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
 		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
@@ -811,6 +821,7 @@
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
 	if(src == hive?.living_xeno_queen)
+		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 
 		// Reset the banished ckey list

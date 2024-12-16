@@ -8,6 +8,13 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
 
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
+
 	var/has_aimed_shot = TRUE
 	var/aiming_time = 1.25 SECONDS
 	var/aimed_shot_cooldown
@@ -67,18 +74,16 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+			H.set_selected_ability(null)
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		H.set_selected_ability(src)
 
 /datum/action/item_action/specialist/aimed_shot/can_use_action()
 	var/mob/living/carbon/human/H = owner
@@ -311,11 +316,11 @@
 /obj/item/weapon/gun/rifle/sniper/M42A
 	name = "\improper M42A scoped rifle"
 	desc = "A heavy sniper rifle manufactured by Armat Systems. It has a scope system and fires armor penetrating rounds out of a 15-round magazine.\n'Peace Through Superior Firepower'"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m42a"
 	item_state = "m42a"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
@@ -365,11 +370,11 @@
 /obj/item/weapon/gun/rifle/sniper/XM43E1
 	name = "\improper XM43E1 experimental anti-materiel rifle"
 	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless.\n\nThis weapon can punch through thin metal plating and walls, though it'll lose most of its lethality in the process. It can even work for demolitions, with experienced users known to disassemble segments of solid, reinforced walls in the field with just a single standard magazine of 10x99mm. In lieu of explosives or an engineer, they instead use each of the 8 shots to break down vital structural supports, taking the wall apart in the process."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	aiming_time = 2 SECONDS
 	aimed_shot_cooldown_delay = 4.5 SECONDS
 	var/focused_fire_counter = 0
@@ -437,7 +442,7 @@
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
 	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest ammo available, 10x99mm Caseless. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/wy.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/marksman_rifles.dmi'
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
 
@@ -492,7 +497,7 @@
 /obj/item/weapon/gun/rifle/sniper/svd
 	name = "\improper Type 88 designated marksman rifle"
 	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88"
 	item_state = "type88"
 

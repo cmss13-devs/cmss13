@@ -34,6 +34,7 @@
 #define CLIENT_IS_STAFF(cli) (cli?.admin_holder?.rights & (R_MOD|R_ADMIN))
 #define CLIENT_IS_MENTOR(cli) CLIENT_HAS_RIGHTS(cli, R_MENTOR)
 #define CLIENT_IS_STEALTHED(cli) (CLIENT_HAS_RIGHTS(cli, R_STEALTH) && cli.prefs?.toggles_admin & ADMIN_STEALTHMODE)
+#define CLIENT_IS_AFK_SAFE(cli) (CLIENT_IS_STAFF(cli) && cli.prefs?.toggles_admin & ADMIN_AFK_SAFE)
 
 #define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
 #define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))

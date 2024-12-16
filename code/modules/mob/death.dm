@@ -49,7 +49,7 @@
 		return 0
 
 	if(!gibbed)
-		visible_message("<b>\The [src.name]</b> [deathmessage]")
+		visible_message("<b>[src.name]</b> [deathmessage]")
 
 	if(cause_data && !istype(cause_data))
 		stack_trace("death called with string cause ([cause_data]) instead of datum")
@@ -83,9 +83,19 @@
 
 	timeofdeath = world.time
 	life_time_total = world.time - life_time_start
-	if(mind) mind.store_memory("Time of death: [worldtime2text()]", 0)
+	if(mind)
+		mind.store_memory("Time of death: [worldtime2text()]", 0)
 	GLOB.alive_mob_list -= src
 	GLOB.dead_mob_list += src
+
+	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+	var/new_tod = (should_block_game_interaction(src) || isfacehugger(src) || islesserdrone(src)) ? 1 : timeofdeath
+	if(client)
+		client.player_details.larva_queue_time = max(client.player_details.larva_queue_time, new_tod)
+	else if(persistent_ckey)
+		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+		if(details)
+			details.larva_queue_time = max(details.larva_queue_time, new_tod)
 
 	if(client && client.player_data)
 		record_playtime(client.player_data, job, type)

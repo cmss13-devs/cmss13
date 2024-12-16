@@ -8,6 +8,7 @@
 /obj/item/storage
 	name = "storage"
 	w_class = SIZE_MEDIUM
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit
@@ -28,7 +29,6 @@
 	var/opened = FALSE //Has it been opened before?
 	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
-	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
 
 	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
 	var/list/can_hold_skill = list()
@@ -806,13 +806,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	closer = new
 	closer.master = src
 
-	if(has_gamemode_skin)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type)
-
 	post_skin_selection()
-
 	fill_preset_inventory()
-
 	update_icon()
 
 /*
@@ -857,7 +854,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
 	if(length(contents))
-		empty(user)
+		if (!(storage_flags & STORAGE_DISABLE_USE_EMPTY))
+			empty(user)
 		return
 
 	//Otherwise we'll try to fold it.

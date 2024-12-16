@@ -80,17 +80,16 @@
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
-		list("Stethoscope", 2, /obj/item/clothing/accessory/stethoscope, null, VENDOR_ITEM_REGULAR)
-
+		list("Stethoscope", 2, /obj/item/clothing/accessory/stethoscope, null, VENDOR_ITEM_REGULAR),
+		list("Penlight", 2, /obj/item/device/flashlight/pen, null, VENDOR_ITEM_REGULAR)
 	)
 
 //------------CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
-		list("EXPERIMENTAL TOOL TOKEN (TAKE ALL)", 0, null, null, null),
+		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Experimental Tool Vendor Token", 0, /obj/item/coin/marine/synth, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-
-		list("RADIO (TAKE ALL)", 0, null, null, null),
+		list("Synthetic Reset Key", 0, /obj/item/device/defibrillator/synthetic, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/synth, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
@@ -356,9 +355,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Gold Tie", 6, /obj/item/clothing/accessory/gold, null, VENDOR_ITEM_REGULAR),
 	list("Red Tie", 6, /obj/item/clothing/accessory/red, null, VENDOR_ITEM_REGULAR),
 	list("Purple Tie", 6, /obj/item/clothing/accessory/purple, null, VENDOR_ITEM_REGULAR),
-	list("Stethoscope", 6, /obj/item/clothing/accessory/stethoscope, null, VENDOR_ITEM_REGULAR),
 	list("Dress Gloves", 6, /obj/item/clothing/gloves/marine/dress, null, VENDOR_ITEM_REGULAR),
-
 ))
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake

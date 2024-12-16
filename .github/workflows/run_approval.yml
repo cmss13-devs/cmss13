@@ -7,9 +7,16 @@ jobs:
     name: Automatic Approve Workflows
     runs-on: ubuntu-latest
     steps:
+      - name: Generate App Token
+        id: app-token-generation
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Automatic Approve
         uses: mheap/automatic-approve-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token-generation.outputs.token }}
           workflows: "ci_suite.yml"
           dangerous_files: "build.bat"

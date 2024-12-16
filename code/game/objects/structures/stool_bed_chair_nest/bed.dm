@@ -11,7 +11,7 @@
 	name = "bed"
 	desc = "A mattress seated on a rectangular metallic frame. This is used to support a lying person in a comfortable manner, notably for regular sleep. Ancient technology, but still useful."
 	icon_state = "bed"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	can_buckle = TRUE
 	buckle_lying = 90
 	throwpass = TRUE
@@ -333,6 +333,11 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	var/view_range = 5
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
+	var/faction = FACTION_MARINE
+
+/obj/structure/bed/medevac_stretcher/upp
+	name = "UPP medevac stretcher"
+	faction = FACTION_UPP
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)
@@ -423,7 +428,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/bedroll
 	name = "unfolded bedroll"
 	desc = "Perfect for those long missions, when there's nowhere else to sleep, you remembered to bring at least one thing of comfort."
-	icon = 'icons/monkey_icos.dmi'
+	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "bedroll_o"
 	buckling_y = 0
 	foldabletype = /obj/item/roller/bedroll
@@ -434,6 +439,5 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/item/roller/bedroll
 	name = "folded bedroll"
 	desc = "A standard issue USCMC bedroll, They've been in service for as long as you can remember. The tag on it states to unfold it before rest, but who needs rules anyway, right?"
-	icon = 'icons/monkey_icos.dmi'
 	icon_state = "bedroll"
 	rollertype = /obj/structure/bed/bedroll

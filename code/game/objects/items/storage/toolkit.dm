@@ -21,6 +21,7 @@
 		/obj/item/device/assembly,
 		/obj/item/stock_parts,
 		/obj/item/explosive/plastic,
+		/obj/item/device/defibrillator/synthetic,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_ENGINEER

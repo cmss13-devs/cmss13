@@ -5,6 +5,7 @@
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
 	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
@@ -19,7 +20,7 @@
 /obj/item/storage/box/m56d_hmg
 	name = "\improper M56D crate"
 	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "M56D_case" // I guess a placeholder? Not actually going to show up ingame for now.
 	w_class = SIZE_HUGE
 	storage_slots = 6
@@ -40,7 +41,7 @@
 	unacidable = TRUE
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D_gun_e"
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
@@ -158,7 +159,7 @@
 	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "folded_mount_frame"
 
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
@@ -181,7 +182,7 @@
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "folded_mount"
 
 /// Causes the tripod to unfold
@@ -233,7 +234,7 @@
 /obj/structure/machinery/m56d_post
 	name = "\improper M56D mount"
 	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D_mount"
 	anchored = FALSE
 	density = TRUE
@@ -439,7 +440,7 @@
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "M56D"
 	anchored = TRUE
 	unslashable = TRUE
@@ -464,7 +465,7 @@
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
 	var/damage_state = M56D_DMG_NONE
 
-	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M56DE, the auto one, uses a different set of sounds. emergency_cooling
+	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M2C, the auto one, uses a different set of sounds. emergency_cooling
 	var/empty_alarm = 'sound/weapons/smg_empty_alarm.ogg'
 
 	// Muzzle Flash Offsets
@@ -1154,7 +1155,7 @@
 	rounds_max = 1500
 	locked = 1
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	zoom = 1
 	ammo = /datum/ammo/bullet/machinegun/doorgun
 

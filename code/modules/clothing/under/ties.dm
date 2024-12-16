@@ -504,7 +504,7 @@
 
 /obj/item/clothing/accessory/patch/upp/alt
 	name = "UPP patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
+	desc = "An old fire-resistant shoulder patch, worn by the men and women of the Union of Progressive Peoples Armed Collective."
 	icon_state = "upppatch_alt"
 
 /obj/item/clothing/accessory/patch/falcon/squad/alpha

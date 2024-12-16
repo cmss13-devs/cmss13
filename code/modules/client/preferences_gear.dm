@@ -1338,11 +1338,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Three World Empire shoulder patch"
 	path = /obj/item/clothing/accessory/patch/twe
 
-/datum/gear/civilian/patch/upp
-	display_name = "Union of Progressive Peoples shoulder patch"
-	path = /obj/item/clothing/accessory/patch/upp
-
-/datum/gear/civilian/patch/upp/alt
+/datum/gear/civilian/patch/upp_alt
 	display_name = "Union of Progressive Peoples shoulder patch, gold"
 	path = /obj/item/clothing/accessory/patch/upp/alt
 

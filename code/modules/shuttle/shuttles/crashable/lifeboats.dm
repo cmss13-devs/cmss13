@@ -40,6 +40,12 @@
 	preferred_direction = EAST
 	port_direction = EAST
 
+/obj/docking_port/mobile/crashable/lifeboat/rostock
+	name = "rostock lifeboat"
+	id = MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK
+	preferred_direction = EAST
+	port_direction = EAST
+
 /obj/docking_port/mobile/crashable/lifeboat/evac_launch()
 	if (status == LIFEBOAT_LOCKED)
 		return
@@ -135,7 +141,15 @@
 	name = "Rostock Lifeboat Docking Port"
 	dir = NORTH
 	id = "rostock-lifeboat1"
-//	roundstart_template = /datum/map_template/shuttle/lifeboat_upp
+	roundstart_template = /datum/map_template/shuttle/lifeboat_rostock
+
+/obj/docking_port/stationary/lifeboat_dock/upp/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/docking_port/stationary/lifeboat_dock/upp/LateInitialize()
+	. = ..()
+	load_roundstart()
 
 /obj/docking_port/stationary/lifeboat_dock/Initialize(mapload)
 	. = ..()
@@ -157,3 +171,7 @@
 /datum/map_template/shuttle/lifeboat_starboard
 	name = "Starboard door lifeboat"
 	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
+
+/datum/map_template/shuttle/lifeboat_rostock
+	name = "Starboard door lifeboat"
+	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK

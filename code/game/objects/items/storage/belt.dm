@@ -331,6 +331,15 @@
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
 
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/medical/lifesaver/full/forecon/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
@@ -817,6 +826,15 @@
 		dump_ammo_to(M, user, M.transfer_handful_amount)
 	else
 		return ..()
+
+/obj/item/storage/belt/shotgun/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/shotgun/upp
 	name = "\improper Type 42 pattern shotgun shell loading rig"
@@ -1402,6 +1420,15 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
+/obj/item/storage/belt/gun/m4a3/m1911/socom/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
 	new /obj/item/ammo_magazine/pistol/heavy(src)
@@ -1443,6 +1470,15 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+/obj/item/storage/belt/gun/m4a3/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/gun/m4a3/nailgun
 	name = "customized nailgun holster"
@@ -1558,6 +1594,21 @@
 /obj/item/storage/belt/gun/xm51/on_stored_atom_del(atom/movable/item)
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
 		magazines--
+
+/obj/item/storage/belt/gun/xm51/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/xm51/black/cmb
+	name = "\improper M276 pattern Model 1771 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the Office of the Colonial Marshals. It consists of a modular belt with various clips. This version is for the Model 1771 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
+	gun_has_gamemode_skin = FALSE
+
 
 #undef MAXIMUM_MAGAZINE_COUNT
 

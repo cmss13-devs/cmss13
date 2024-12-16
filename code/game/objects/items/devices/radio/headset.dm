@@ -1169,7 +1169,7 @@
 	icon_state = "cmb_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_MARINE
+	hud_type = MOB_HUD_FACTION_CMB
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"

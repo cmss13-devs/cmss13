@@ -1,5 +1,0 @@
-author: "Venuska1117"
-delete-after: True
-changes:
-  - code_imp: "Add \"Delay\" option for balloon alerts to prevent notification spam."
-  - qol: "Added Balloon Alerts to notify player that crest is lowered when trying to use Tail Swing or Fortify."

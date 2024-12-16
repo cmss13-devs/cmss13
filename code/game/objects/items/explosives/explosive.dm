@@ -30,8 +30,8 @@
 	var/angle = 360
 	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/grenades_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/grenades_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'
 		)
 
 /obj/item/explosive/Initialize()

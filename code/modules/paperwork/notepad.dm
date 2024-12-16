@@ -4,8 +4,8 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "notebook"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/paperwork_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/paperwork_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
 		)
 	throwforce = 0
 	w_class = SIZE_TINY

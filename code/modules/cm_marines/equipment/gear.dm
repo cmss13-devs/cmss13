@@ -149,6 +149,7 @@
 		return FALSE
 	. = ..()
 	handle_cloaking()
+
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."
@@ -191,6 +192,7 @@
 	name = "stale USCM protein bar"
 	desc = "The most fake-looking protein bar you have ever laid eyes on, covered in a substitution chocolate. The powder used to make these is a substitute of a substitute of whey substitute."
 	icon_state = "yummers"
+	icon = 'icons/obj/items/food/mre_food.dmi'
 	filling_color = "#ED1169"
 	w_class = SIZE_TINY
 
@@ -203,6 +205,7 @@
 /obj/item/reagent_container/food/snacks/mre_pack
 	name = "\improper generic MRE pack"
 	//trash = /obj/item/trash/USCMtray
+	icon = 'icons/obj/items/food/trays.dmi'
 	trash = null
 	w_class = SIZE_SMALL
 

@@ -605,6 +605,20 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Hubba hubba.";
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
+	icon_state = "poster17";
+	name = "\improper torn magazine page";
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/newspaper,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/indoors/c_block/garage)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -613,6 +627,33 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
+"acr" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv522/indoors/a_block/hallway)
+"acs" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Hubba hubba.";
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
+	icon_state = "poster17";
+	name = "\improper torn magazine page";
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/prop/helmetgarb/spacejam_tickets{
+	desc = "Hubba hubba.";
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi';
+	icon_state = "poster3";
+	name = "\improper torn magazine page";
+	pixel_x = 5;
+	pixel_y = 14
+	},
+/turf/open/floor/prison,
+/area/lv522/outdoors/colony_streets/windbreaker/observation)
 "acv" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
@@ -2303,20 +2344,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/kitchen)
-"bgN" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/newspaper,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/c_block/garage)
 "bha" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat,
@@ -8542,26 +8569,6 @@
 "ezj" = (
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"ezo" = (
-/obj/structure/surface/table/almayer,
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster17";
-	name = "\improper torn magazine page";
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/prop/helmetgarb/spacejam_tickets{
-	desc = "Hubba hubba.";
-	icon = 'icons/obj/structures/props/posters.dmi';
-	icon_state = "poster3";
-	name = "\improper torn magazine page";
-	pixel_x = 5;
-	pixel_y = 14
-	},
-/turf/open/floor/prison,
-/area/lv522/outdoors/colony_streets/windbreaker/observation)
 "ezp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14602,13 +14609,6 @@
 /obj/structure/closet/radiation,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
-"hXW" = (
-/obj/item/storage/firstaid/adv/empty,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/floor/prison/blue/north,
-/area/lv522/indoors/a_block/hallway)
 "hYf" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks)
@@ -72763,7 +72763,7 @@ xZE
 xZE
 wDj
 aJS
-ezo
+acs
 eJR
 iDH
 eJR
@@ -76304,7 +76304,7 @@ uAv
 tDS
 gdO
 swY
-hXW
+acr
 uuH
 pej
 pqU
@@ -79643,7 +79643,7 @@ xCY
 hUq
 vVp
 xRw
-bgN
+aco
 fMS
 cUG
 hMz

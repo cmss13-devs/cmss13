@@ -7,6 +7,13 @@
 	throw_range = 10
 	force = 5
 
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/grenade_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/grenade_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_righthand.dmi'
+	)
+
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	reload_sound = 'sound/weapons/gun_shotgun_open2.ogg' //Played when inserting nade.
@@ -259,7 +266,7 @@
 /obj/item/weapon/gun/launcher/grenade/m92
 	name = "\improper M92 grenade launcher"
 	desc = "A heavy, 6-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "m92"
 	item_state = "m92"
 	unacidable = TRUE
@@ -296,7 +303,7 @@
 /obj/item/weapon/gun/launcher/grenade/m81
 	name = "\improper M81 grenade launcher"
 	desc = "A lightweight, single-shot low-angle grenade launcher used by the Colonial Marines for area denial and big explosions."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/grenade_launchers.dmi'
 	icon_state = "m81"
 	item_state = "m81" //needs a wield sprite.
 
@@ -323,9 +330,17 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/riot
 	name = "\improper M81 riot grenade launcher"
-	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
-	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas, /obj/item/explosive/grenade/slug/baton)
-	preload = /obj/item/explosive/grenade/custom/teargas
+	desc = "A lightweight, single-shot low-angle grenade launcher designed to launch non-lethal or concussive ammunition. Used by the Colonial Marines Military Police during riots."
+	valid_munitions = list(
+		/obj/item/explosive/grenade/custom/teargas,
+		/obj/item/explosive/grenade/slug/baton,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/flashbang,
+	)
+	preload = /obj/item/explosive/grenade/slug/baton
+	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov)
 
 //-------------------------------------------------------
 //M79 Grenade Launcher subtype of the M81
@@ -333,7 +348,7 @@
 /obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
 	name = "\improper M79 grenade launcher"
 	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "m79"
 	item_state = "m79"
 	flags_equip_slot = SLOT_BACK

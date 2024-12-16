@@ -1016,7 +1016,6 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/marshal_office)
 "DR" = (

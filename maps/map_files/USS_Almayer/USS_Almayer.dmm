@@ -4972,7 +4972,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
 /area/almayer/command/airoom)
@@ -20368,7 +20368,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -24079,7 +24079,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -25125,6 +25125,7 @@
 /obj/structure/machinery/prop{
 	desc = "It's a server box...";
 	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "server box"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -29934,9 +29935,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"iBn" = (
-/turf/closed/wall/almayer/aicore/white/hull,
-/area/space)
 "iBu" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
@@ -32055,6 +32053,7 @@
 	pixel_x = -6;
 	pixel_y = 10
 	},
+/obj/structure/machinery/door/window/eastleft,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "jpW" = (
@@ -34561,7 +34560,7 @@
 /obj/item/tool/screwdriver,
 /obj/item/bananapeel{
 	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle. This one appears to be covered in gun oil";
-	icon = 'icons/obj/items/weapons/guns/attachments.dmi';
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi';
 	icon_state = "iffbarrel";
 	name = "Broken B8 Smart-Scope";
 	pixel_x = -3;
@@ -35806,7 +35805,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = -24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -36822,7 +36821,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -37605,7 +37604,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -42080,7 +42079,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/sheet/metal{
 	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew.";
-	icon = 'icons/obj/structures/props/semiotic_standard.dmi';
+	icon = 'icons/obj/structures/props/wall_decorations/semiotic_standard.dmi';
 	icon_state = "coffee";
 	name = "coffee semiotic";
 	pixel_x = 20;
@@ -45694,7 +45693,7 @@
 /obj/item/prop/almayer/box,
 /obj/item/prop{
 	desc = "This M57 smartgun was utilized in field testing by the greatest smartgunner the USS Almayer ever had, Larry A.W Lewis, until he was fatally and tragically decapitated from a single clean shot to the head by a CLF sniper. As he didn't wear a helmet, it took weeks to find the body.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "m56c";
 	item_state = "m56c";
 	name = "broken M57 'Larry's Will' smartgun";
@@ -50891,7 +50890,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -56517,8 +56516,7 @@
 "toS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access_txt = "8"
+	dir = 8
 	},
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
@@ -59642,9 +59640,7 @@
 	dir = 8;
 	req_access_txt = "8"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lockerroom)
@@ -62654,7 +62650,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = -24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -64045,9 +64041,7 @@
 	dir = 8;
 	req_access_txt = "8"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lockerroom)
@@ -65112,7 +65106,7 @@
 "wFz" = (
 /obj/item/prop{
 	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
-	icon = 'icons/turf/whiskeyoutpost.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "M56D_gun_e";
 	layer = 3.1;
 	name = "\improper M38D heavy machine gun 'Bess'";
@@ -124853,19 +124847,19 @@ lmz
 lmz
 lmz
 lmz
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
 bdH
 bdH
 bdH

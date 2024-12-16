@@ -151,6 +151,8 @@
 
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
+				else if(human.job in FAX_RESPONDER_JOB_LIST)
+					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
@@ -183,8 +185,6 @@
 					marines += list(serialized)
 				else if(issurvivorjob(human.job))
 					survivors += list(serialized)
-				else if(human.job in FAX_RESPONDER_JOB_LIST)
-					responders += list(serialized)
 				else
 					humans += list(serialized)
 				continue

@@ -1,4 +1,52 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/caves/sand_temple)
+"ab" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
+"ac" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ad" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
+"ae" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/caves/sand_temple)
+"af" = (
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
+"ag" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
+"ah" = (
+/obj/structure/flora/jungle/alienplant1{
+	layer = 4.13;
+	pixel_y = 18
+	},
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
 "ai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
@@ -63,10 +111,6 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"aO" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/caves/sand_temple)
 "aT" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -235,10 +279,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"eY" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
 "fd" = (
 /obj/item/weapon/twohanded/yautja/spear,
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
@@ -286,9 +326,6 @@
 /obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"gw" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
 /turf/open/shuttle/red,
@@ -329,13 +366,6 @@
 "hD" = (
 /turf/open/gm/dirtgrassborder/desert2,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"hO" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8
-	},
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
 "hX" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -652,15 +682,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/sand_temple)
-"ue" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "un" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -796,14 +817,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
-"wS" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "wU" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
@@ -859,10 +872,6 @@
 	},
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"za" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "zu" = (
 /obj/structure/showcase{
@@ -980,13 +989,6 @@
 "Dj" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"Ds" = (
-/obj/structure/flora/jungle/alienplant1{
-	layer = 4.13;
-	pixel_y = 18
-	},
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -1977,13 +1979,13 @@ GT
 GT
 GT
 xO
-ue
+ad
 ow
 Jc
 Jc
 Jc
 gL
-wS
+ac
 if
 HL
 Ai
@@ -2061,13 +2063,13 @@ GT
 GT
 GT
 Jm
-ue
+ad
 gL
 Jc
 Jc
 Jc
 EL
-wS
+ac
 if
 HL
 Ai
@@ -2145,13 +2147,13 @@ GT
 GT
 GT
 xO
-wS
+ac
 gL
 Jc
 Jc
 Jc
 gL
-ue
+ad
 Jm
 HL
 ax
@@ -2354,7 +2356,7 @@ ZX
 ai
 dA
 dA
-za
+af
 zu
 gK
 mv
@@ -2405,7 +2407,7 @@ wU
 hu
 ci
 vY
-eY
+ab
 Ai
 Ai
 mv
@@ -2705,7 +2707,7 @@ Ai
 Ai
 Ai
 Ai
-gw
+aa
 Vu
 GT
 GT
@@ -2942,7 +2944,7 @@ GT
 GT
 OC
 dA
-hO
+ag
 Hc
 mv
 rd
@@ -2984,7 +2986,7 @@ GT
 GT
 xO
 dA
-Ds
+ah
 Ai
 mv
 mv
@@ -3156,7 +3158,7 @@ mv
 vC
 dQ
 dA
-eY
+ab
 ax
 sN
 EJ
@@ -3195,10 +3197,10 @@ Wz
 Ai
 Ai
 Ai
-aO
+ae
 dA
 dA
-eY
+ab
 rd
 wP
 sN

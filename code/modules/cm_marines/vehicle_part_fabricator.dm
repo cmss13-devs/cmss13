@@ -149,7 +149,7 @@
 						continue
 				produce_list += produce
 			var/obj/structure/dropship_equipment/produce = produce_list[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
@@ -166,7 +166,7 @@
 						continue
 				produce_list += produce
 			var/obj/structure/dropship_equipment/produce = produce_list[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
@@ -251,7 +251,7 @@
 			if(faction != dropship_equipment_data.faction_exclusive)
 				continue
 
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && dropship_equipment_data.combat_equipment)
 			index +=  1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
@@ -275,7 +275,7 @@
 		if(ship_ammo_data.faction_exclusive)
 			if(faction != ship_ammo_data.faction_exclusive)
 				continue
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue
 		var/build_name = initial(ship_ammo_data.name)

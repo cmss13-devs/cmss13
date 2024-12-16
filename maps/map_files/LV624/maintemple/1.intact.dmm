@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/caves/sand_temple)
+"ab" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "ah" = (
 /obj/structure/showcase{
 	color = "#95948B";
@@ -360,9 +372,6 @@
 	pixel_x = -4
 	},
 /turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
-"gw" = (
-/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -841,14 +850,6 @@
 	},
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"wS" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "wZ" = (
 /obj/effect/decal/cleanable/blood{
@@ -1995,13 +1996,13 @@ GT
 GT
 GT
 OC
-wS
+ab
 gL
 Jc
 Jc
 Jc
 gL
-wS
+ab
 oi
 TO
 Ai
@@ -2079,13 +2080,13 @@ GT
 GT
 GT
 oi
-wS
+ab
 gL
 Jc
 Jc
 Jc
 gL
-wS
+ab
 oi
 TO
 dK
@@ -2163,13 +2164,13 @@ GT
 GT
 GT
 OC
-wS
+ab
 gL
 Jc
 Jc
 Jc
 fQ
-wS
+ab
 oi
 TO
 Ai
@@ -2723,7 +2724,7 @@ Ai
 Ai
 Ai
 Ai
-gw
+aa
 Vu
 GT
 GT

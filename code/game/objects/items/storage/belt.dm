@@ -1515,9 +1515,6 @@
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/ammo_magazine/smg,
 	)
-	cant_hold = list (
-		/obj/item/weapon/gun/smg/m39/elite, // HONKed currently
-	)
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -11,

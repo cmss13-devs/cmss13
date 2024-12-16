@@ -34,7 +34,6 @@
 /obj/item/device/paddles/Destroy()
 	remove_attached()
 
-	QDEL_NULL(dcell)
 	QDEL_NULL(sparks)
 
 	. = ..()

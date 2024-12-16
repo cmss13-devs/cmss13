@@ -94,6 +94,8 @@ Contains most of the procs that are called when a mob is attacked by something
 	return FALSE
 
 /mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
+	var/block_effect = /obj/effect/block
+	var/owner_turf = get_turf(src)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
 		if(combistick && istype(l_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
 			var/obj/item/weapon/yautja/chained/combistick/C = l_hand
@@ -110,12 +112,16 @@ Contains most of the procs that are called when a mob is attacked by something
 				shield_blocked_l = TRUE
 
 			if(shield_blocked_l)
+				new block_effect(owner_turf)
+				playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
 				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 				return TRUE
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
 		var/obj/item/weapon/I = l_hand
 		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
+			new block_effect(owner_turf)
+			playsound(src, 'sound/items/parry.ogg', 70, vary = TRUE)
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 			return TRUE
 
@@ -135,11 +141,15 @@ Contains most of the procs that are called when a mob is attacked by something
 				shield_blocked_r = TRUE
 
 			if(shield_blocked_r)
+				new block_effect(owner_turf)
+				playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
 				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 				return TRUE
 
 		var/obj/item/weapon/I = r_hand
 		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // other shields. Don't doublecheck activable here.
+			new block_effect(owner_turf)
+			playsound(src, 'sound/items/parry.ogg', 70, vary = TRUE)
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
 

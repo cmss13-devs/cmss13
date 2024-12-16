@@ -41,6 +41,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/New()
 	..()
+	initialize_gamemode_modifiers()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
 
@@ -74,9 +75,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		spawn_static_comms()
 	if(corpses_to_spawn)
 		generate_corpses()
-	initialize_gamemode_modifiers()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
-	return 1
+	return TRUE
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
 /datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)

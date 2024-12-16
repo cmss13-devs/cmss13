@@ -173,7 +173,7 @@
 		var/mob/living/carbon/human/altered_human = user
 		var/obj/item/card/id/ID = altered_human.get_idcard()
 		if(ID)
-			ID.name = "[altered_human.real_name]'s ID Card"
+			ID.name = "[altered_human.real_name]'s [ID.id_type]"
 			ID.registered_name = "[altered_human.real_name]"
 			if(ID.assignment)
 				ID.name += " ([ID.assignment])"

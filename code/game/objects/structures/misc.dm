@@ -123,7 +123,6 @@
 	var/obj/occupant
 	///What this tank is replaced by when broken
 	var/obj/structure/broken_state = /obj/structure/xenoautopsy/tank/broken
-	var/damage = 0
 
 /obj/structure/xenoautopsy/tank/deconstruct(disassembled = TRUE)
 	if(!broken_state)
@@ -141,15 +140,14 @@
 /obj/structure/xenoautopsy/tank/attackby(obj/item/W, mob/user)
 	. = ..()
 	playsound(user.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-	take_damage(W.demolition_mod)
+	take_damage(W.demolition_mod*W.force)
 
-/obj/structure/xenoautopsy/tank/proc/take_damage(dam, mob/M)
-	if(!dam)
+/obj/structure/xenoautopsy/tank/proc/take_damage(damage, mob/M)
+	if(!damage)
 		return FALSE
+	health = max(0, health - damage)
 
-	damage = max(0, damage + dam)
-
-	if(damage >= health)
+	if(health == 0)
 		to_chat(loc, SPAN_DANGER("[src] shatters!"))
 		deconstruct(FALSE)
 		playsound(src, "shatter", 25, 1)
@@ -163,14 +161,15 @@
 		take_damage(floor(Proj.ammo.damage / 2))
 		if(Proj.ammo.damage_type == BRUTE)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-	return 1
+	return TRUE
 
 /obj/structure/xenoautopsy/tank/attack_alien(mob/living/carbon/xenomorph/user)
+	. = ..()
 	user.animation_attack_on(src)
 	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
 	take_damage(25)
 	return XENO_ATTACK_ACTION
-	. = ..()
+
 
 /obj/structure/xenoautopsy/tank/ex_act(severity)
 	switch(severity)

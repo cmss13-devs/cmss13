@@ -7,7 +7,7 @@ reading = False
 
 FORBID_INCLUDE = [
     # Included by _idefinse_includes.dm
-    r'code/__DEFINES/core_defines_ru/**/*.dm',
+    r'code/__DEFINES/core_defines_ru/*.dm',
 
     # Included by _unit_test.dm
     r'code/modules/unit_tests/[!_]*.dm',

@@ -25,6 +25,8 @@
 	. = ..()
 	if(istype(loc, /obj/item/device/defibrillator))
 		attach_to(loc)
+	else
+		return INITIALIZE_HINT_QDEL
 
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
@@ -44,11 +46,12 @@
 	remove_attached()
 
 	attached_to = to_attach
+	attached_to.paddles_type = src
 	icon_state = "[icon_state]_[attached_to.icon_state_for_paddles]"
 
 /obj/item/device/paddles/proc/remove_attached()
 	if(attached_to)
-		attached_to.remove_attached()
+		attached_to.paddles_type = null
 		attached_to = null
 	reset_tether()
 

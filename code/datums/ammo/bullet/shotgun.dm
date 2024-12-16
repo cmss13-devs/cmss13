@@ -11,10 +11,11 @@
 	name = "shotgun slug"
 	handful_state = "slug_shell"
 
-	accurate_range = 6
+	accurate_range = 8
 	max_range = 8
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_4
+	accuracy = HIT_ACCURACY_TIER_3
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
@@ -65,7 +66,7 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	accuracy = -HIT_ACCURACY_TIER_2
+	accuracy = HIT_ACCURACY_TIER_2
 	max_range = 12
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
@@ -336,6 +337,30 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_3
 	damage = 10
+
+/datum/ammo/bullet/shotgun/light/rubber
+	name = "rubber buckshot shell"
+	icon_state = "buckshot"
+	handful_state = "rubbershot_shell"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/light/rubber/spread
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
+	headshot_state = HEADSHOT_OVERLAY_LIGHT  //It's not meant to kill people... but if you put it in your mouth, it will.
+	accuracy = HIT_ACCURACY_TIER_3
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 5
+	shrapnel_chance = 0
+	damage = 0
+	stamina_damage = 35
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	penetration = ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/shotgun/light/rubber/spread
+	name = "additional rubber buckshot"
+	bonus_projectiles_amount = 0
+	scatter = SCATTER_AMOUNT_TIER_3
+	stamina_damage = 10
+
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
 /datum/ammo/bullet/shotgun/twobore

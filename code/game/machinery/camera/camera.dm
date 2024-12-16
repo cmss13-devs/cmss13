@@ -34,9 +34,6 @@
 
 	var/colony_camera_mapload = TRUE
 
-	/// If this camera should have innate EMP-proofing
-	var/emp_proof = FALSE
-
 	///Autonaming
 	var/autoname = FALSE
 	var/autonumber = 0 //camera number in area
@@ -308,9 +305,9 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	unslashable = TRUE
 	unacidable = TRUE
 	colony_camera_mapload = FALSE
-	var/obj/item/device/camera/broadcasting/linked_broadcasting
+	var/obj/item/device/broadcasting/linked_broadcasting
 
-/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/camera/broadcasting/camera_item)
+/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/broadcasting/camera_item)
 	. = ..()
 	if(!camera_item)
 		return INITIALIZE_HINT_QDEL

@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "toggleble flag to prevent c4s on human for gamemodes"
+  - bugfix: "anti stripmode flag prevents buckling to roller beds and closing into bags to move dead or crit bodies of enemy faction"

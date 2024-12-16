@@ -527,7 +527,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		start_pulling(pullify)
 
 /mob/proc/handle_blood_splatter(splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+	new /obj/effect/bloodsplatter/human(loc, splatter_dir)
 
 /proc/get_mobs_in_z_level_range(turf/starting_turf, range)
 	var/list/mobs_in_range = list()
@@ -615,3 +615,24 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	sync_lighting_plane_alpha()
+
+/mob/proc/get_ability_mouse_key()
+	if(!client)
+		return XENO_ABILITY_CLICK_MIDDLE
+
+	return client.prefs.xeno_ability_click_mode
+
+/proc/xeno_ability_mouse_pref_to_string(preference_value)
+	switch(preference_value)
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			return "middle click"
+		if(XENO_ABILITY_CLICK_RIGHT)
+			return "right click"
+		if(XENO_ABILITY_CLICK_SHIFT)
+			return "shift click"
+	return "middle click"
+
+/mob/proc/get_ability_mouse_name()
+	var/ability = get_ability_mouse_key()
+
+	return xeno_ability_mouse_pref_to_string(ability)

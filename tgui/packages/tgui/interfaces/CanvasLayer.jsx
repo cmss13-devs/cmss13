@@ -274,14 +274,16 @@ export class CanvasLayer extends Component {
               size={2}
               position="absolute"
               mx="50%"
-              mt="25px"
+              mt="140px"
+              color="red"
+              style={{ zIndex: '1' }}
             />
           </Tooltip>
         )}
         <canvas
           ref={this.canvasRef}
-          width={650}
-          height={600}
+          width={684}
+          height={684}
           onMouseDown={(e) => this.handleMouseDown(e)}
           onMouseUp={(e) => this.handleMouseUp(e)}
           onMouseMove={(e) => this.handleMouseMove(e)}

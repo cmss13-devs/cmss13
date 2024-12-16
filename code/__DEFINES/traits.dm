@@ -251,6 +251,8 @@
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
 /// Used for burrowed mobs, prevent's SG/sentrys/claymores from autofiring
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
+/// Xenos with this trait can toggle long sight while resting.
+#define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
 
 //-- item traits --
 // TOOL TRAITS
@@ -283,6 +285,9 @@
 
 /// If this ID belongs to an ERT member
 #define TRAIT_ERT_ID "ert_id"
+
+/// If this item can hear things from inside one level of contents.
+#define TRAIT_HEARS_FROM_CONTENTS "t_hears_from_contents"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
@@ -388,6 +393,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
 		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
 		"TRAIT_ITEM_RENAME_SPECIAL" = TRAIT_ITEM_RENAME_SPECIAL,
+		"TRAIT_HEARS_FROM_CONTENTS" = TRAIT_HEARS_FROM_CONTENTS,
 	),
 	/obj/item/clothing = list(
 		"TRAIT_CLOTHING_HOOD" = TRAIT_CLOTHING_HOOD
@@ -426,6 +432,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_SPECIES "t_s_species"
 ///Status trait coming from the hive.
 #define TRAIT_SOURCE_HIVE "t_s_hive"
+///Status trait coming from xeno strains.
+#define TRAIT_SOURCE_STRAIN "t_s_strain"
 ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
 ///Status trait coming from being assigned as [acting] squad leader.

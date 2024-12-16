@@ -41,7 +41,7 @@
 /datum/paygrade/wy_ranks/wyc6
 	paygrade = PAY_SHORT_WYC6
 	name = "Executive Supervisor"
-	prefix = "Exec. Suvp."
+	prefix = "Exec. Spvsr."
 	ranking = 5
 	pay_multiplier = 6
 	officer_grade = GRADE_OFFICER

@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "The UPP Pilot has been added as a job-role for the Faction Clash gamemode."

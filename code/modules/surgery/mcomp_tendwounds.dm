@@ -166,7 +166,7 @@
 			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(65,65) //makes sure that all damage is healed
+	target.heal_overall_damage(125,125) //makes sure that all damage is healed
 
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),

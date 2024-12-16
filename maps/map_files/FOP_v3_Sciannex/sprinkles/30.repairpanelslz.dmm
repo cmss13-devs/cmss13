@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/item/stack/sheet/metal,
 /turf/open/space,
 /area/template_noop)
@@ -33,9 +31,7 @@
 /turf/open/floor/prison,
 /area/template_noop)
 "g" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -44,14 +40,12 @@
 /turf/open/space,
 /area/template_noop)
 "h" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/item/stack/sheet/metal,
 /turf/open/space,
 /area/template_noop)
 "i" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space,
 /area/template_noop)
 "j" = (
@@ -63,9 +57,7 @@
 	pixel_x = -9;
 	icon_state = "scandinavian_head_m"
 	},
-/obj/structure/platform_decoration/kutjevo{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/space/basic,
 /area/template_noop)
 "m" = (
@@ -84,23 +76,19 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "s" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/template_noop)
 "t" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space,
 /area/template_noop)
 "u" = (
 /turf/open/space,
 /area/template_noop)
 "v" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /obj/item/book/manual/engineering_construction,
 /turf/open/space/basic,
 /area/template_noop)
@@ -120,20 +108,16 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/template_noop)
 "z" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/item/clothing/head/cardborg,
 /turf/open/space,
 /area/template_noop)
 "A" = (
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/space/basic,
 /area/template_noop)
 "B" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/space,
 /area/template_noop)
 "D" = (
@@ -162,9 +146,7 @@
 /turf/open/space,
 /area/template_noop)
 "I" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/effect/spawner/random/tool{
 	pixel_x = -8;
 	pixel_y = 7
@@ -175,12 +157,8 @@
 /turf/open/space,
 /area/template_noop)
 "J" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/item/stack/sheet/metal,
 /turf/open/space,
 /area/template_noop)
@@ -188,30 +166,26 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/template_noop)
 "M" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
 /area/template_noop)
 "N" = (
 /turf/open/floor/solarpanel,
 /area/template_noop)
 "O" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/template_noop)
 "P" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/template_noop)
 "Q" = (
 /turf/open/auto_turf/sand/layer1,
 /area/template_noop)
 "R" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space/basic,
 /area/template_noop)
 "S" = (
@@ -226,34 +200,24 @@
 /turf/open/space,
 /area/template_noop)
 "V" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/item/circuitboard/solar_tracker,
 /turf/open/space,
 /area/template_noop)
 "W" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/almayer_hull,
 /area/template_noop)
 "X" = (
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/template_noop)
 "Y" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space,
 /area/template_noop)
 "Z" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space,
 /area/template_noop)
 

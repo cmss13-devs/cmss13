@@ -12,7 +12,6 @@
 	var/circuit = null //The path to the circuit board type. If circuit==null, the computer can't be disassembled.
 	var/processing = FALSE //Set to true if computer needs to do /process()
 	var/deconstructible = TRUE
-	var/exproof = 0
 
 /obj/structure/machinery/computer/Initialize()
 	. = ..()
@@ -37,7 +36,7 @@
 
 
 /obj/structure/machinery/computer/ex_act(severity)
-	if(exproof)
+	if(explo_proof)
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -56,7 +55,7 @@
 			return
 
 /obj/structure/machinery/computer/bullet_act(obj/projectile/Proj)
-	if(exproof)
+	if(explo_proof)
 		visible_message("[Proj] ricochets off [src]!")
 		return 0
 	else

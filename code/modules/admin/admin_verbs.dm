@@ -48,7 +48,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/hide_admin_verbs,
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
-	/client/proc/toggle_lz_resin,
 	/client/proc/strip_all_in_view,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
@@ -57,7 +56,6 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/wakeall,
-	/client/proc/toggle_lz_protection,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
@@ -73,6 +71,10 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
 	/client/proc/other_records,
+	/client/proc/toggle_admin_afk_safety,
+	/client/proc/add_known_alt,
+	/client/proc/remove_known_alt,
+	/client/proc/toogle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -120,30 +122,17 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/toggle_ob_spawn,
-	/client/proc/toggle_sniper_upgrade,
-	/client/proc/toggle_attack_dead,
-	/client/proc/toggle_strip_drag,
-	/client/proc/toggle_disposal_mobs,
-	/client/proc/toggle_uniform_strip,
-	/client/proc/toggle_strong_defibs,
-	/client/proc/toggle_blood_optimization,
-	/client/proc/toggle_combat_cas,
-	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
 	/client/proc/admin_aicore_alert,
-	/client/proc/toggle_hardcore_perma,
-	/client/proc/toggle_bypass_joe_restriction,
-	/client/proc/toggle_joe_respawns,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/get_whitelisted_clients,
+	/client/proc/modifiers_panel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
@@ -155,7 +144,6 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
-	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
@@ -313,8 +301,11 @@ GLOBAL_LIST_INIT(admin_verbs_teleport, list(
 	/client/proc/toggle_noclip
 ))
 
-GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
-	/client/proc/toggle_ob_spawn
+GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/cmd_mentor_say,
+	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_newplayer_ghost_hud,
+	/client/proc/toggle_newplayer_ic_hud
 ))
 
 /client/proc/add_admin_verbs()
@@ -331,8 +322,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_admin)
 		add_verb(src, GLOB.admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
-		add_verb(src, /client/proc/cmd_mentor_say)
-		add_verb(src, /datum/admins/proc/imaginary_friend)
+		add_verb(src, GLOB.mentor_verbs)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
@@ -537,6 +527,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get attack log messages."))
 
+	prefs.save_preferences()
+
 
 /client/proc/toggleffattacklogs()
 	set name = "Toggle FF Attack Log Messages"
@@ -548,6 +540,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get friendly fire attack log messages."))
 
+	prefs.save_preferences()
 
 /client/proc/toggledebuglogs()
 	set name = "Toggle Debug Log Messages"
@@ -559,6 +552,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
 
+	prefs.save_preferences()
+
 // TODO Port this to Statpanel Options Window probably
 /client/proc/togglestatpanelsplit()
 	set name = "Toggle Split Tabs"
@@ -568,6 +563,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		to_chat(usr, SPAN_BOLDNOTICE("You enabled split admin tabs in Statpanel."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled split admin tabs in Statpanel."))
+
+	prefs.save_preferences()
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"
@@ -579,6 +576,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get niche log messages."))
 
+	prefs.save_preferences()
 
 /client/proc/announce_random_fact()
 	set name = "Announce Random Fact"
@@ -602,14 +600,29 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear an audio cue for ARES and Prayer messages."))
 
+	prefs.save_preferences()
+
 /client/proc/toggle_admin_stealth()
 	set name = "Toggle Admin Stealth"
-	set category = "Preferences"
+	set category = "Preferences.Admin"
 	prefs.toggles_admin ^= ADMIN_STEALTHMODE
 	if(prefs.toggles_admin & ADMIN_STEALTHMODE)
 		to_chat(usr, SPAN_BOLDNOTICE("You enabled admin stealth mode."))
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
+
+	prefs.save_preferences()
+
+/client/proc/toggle_admin_afk_safety()
+	set name = "Toggle AFK Safety"
+	set category = "Preferences.Admin"
+	prefs.toggles_admin ^= ADMIN_AFK_SAFE
+	if(prefs.toggles_admin & ADMIN_AFK_SAFE)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled afk safety. You will no longer be kicked by afk timer."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled afk safety. You will now be auto kicked by the afk timer."))
+
+	prefs.save_preferences()
 
 #undef MAX_WARNS
 #undef AUTOBANTIME

@@ -55,3 +55,15 @@
 
 /obj/item/storage/toolkit/empty/fill_preset_inventory()
 	return
+
+/obj/item/storage/toolkit/tactical
+	name = "breaching engineer kit"
+
+/obj/item/storage/toolkit/tactical/fill_preset_inventory()
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)

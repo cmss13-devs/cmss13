@@ -90,7 +90,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/species_upp
 	key = "speciesupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/neizvestnoesuchestvo.ogg'
-	say_message = "Uknown creature."
+	say_message = "Unknown creature."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 

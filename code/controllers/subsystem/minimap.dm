@@ -521,7 +521,6 @@ SUBSYSTEM_DEF(minimaps)
 
 #define can_draw(faction, user) (( skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
-
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
 	if(hashed_tacmaps[hash])
@@ -775,7 +774,6 @@ SUBSYSTEM_DEF(minimaps)
 	old_map = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
-
 	var/use_live_map = skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
 
 	if(use_live_map && !map_holder)
@@ -966,9 +964,11 @@ SUBSYSTEM_DEF(minimaps)
 			if(!GLOB.faction_flat_tacmap_data[faction])
 				return
 
-			cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown[faction])
-
 			var/cooldown_satisfied = TRUE
+
+			cooldown_satisfied = COOLDOWN_FINISHED(GLOB, faction_canvas_cooldown[faction])
+
+
 			if(faction == FACTION_MARINE)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
 			else if(faction == XENO_HIVE_NORMAL)
@@ -980,18 +980,17 @@ SUBSYSTEM_DEF(minimaps)
 				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
 				return FALSE
 
+
+			GLOB.faction_flat_tacmap_data[faction]
 			if(faction == XENO_HIVE_NORMAL)
-				GLOB.xeno_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
 				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
 				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 			else
 				if(faction == FACTION_MARINE)
-					GLOB.uscm_flat_tacmap_data += new_current_map
 					COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				if(faction == FACTION_UPP)
-					GLOB.upp_flat_tacmap_data += new_current_map
 					COOLDOWN_START(GLOB, upp_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 					if(faction == current_squad.faction)

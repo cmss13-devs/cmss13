@@ -30,7 +30,7 @@
 	var/automated_delay
 	var/automated_timer
 	var/datum/cas_signal/paradrop_signal
-
+	var/faction = FACTION_MARINE
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -157,6 +157,7 @@
 	name = "Morana"
 	id = DROPSHIP_MORANA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	faction = FACTION_UPP
 
 /obj/docking_port/mobile/marine_dropship/morana/get_transit_path_type()
 	return /turf/open/space/transit/dropship/morana
@@ -165,6 +166,7 @@
 	name = "Devana"
 	id = DROPSHIP_DEVANA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	faction = FACTION_UPP
 
 /obj/docking_port/mobile/marine_dropship/devana/get_transit_path_type()
 	return /turf/open/space/transit/dropship/devana
@@ -189,14 +191,16 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(root_console.dropship_control_lost)
+	if(!root_console || root_console.dropship_control_lost)
 		automated_hangar_id = null
 		automated_lz_id = null
 		automated_delay = null
 		return
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
-		ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+		if(faction == FACTION_MARINE)
+			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_fly()
@@ -213,7 +217,8 @@
 		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
 	else
 		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
-	ai_silent_announcement("Dropship '[name]' departing.")
+	if(faction == FACTION_MARINE)
+		ai_silent_announcement("Dropship '[name]' departing.")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH

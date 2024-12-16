@@ -318,6 +318,10 @@
 	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio."
 	icon_state = "communicator"
 	item_state = "headset"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	frequency = YAUT_FREQ
 	unacidable = TRUE
 	ignore_z = TRUE
@@ -994,6 +998,7 @@
 	name = "How did you get this?"
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
 	slot = ACCESSORY_SLOT_TROPHY

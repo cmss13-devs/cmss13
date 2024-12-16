@@ -140,6 +140,7 @@
 #define WEED_LEVEL_WEAK 0
 #define WEED_LEVEL_STANDARD  1.5
 #define WEED_LEVEL_HARDY 1.6
+#define WEED_LEVEL_CONSTRUCT 1.7
 #define WEED_LEVEL_HIVE   4
 
 #define WEED_RANGE_STANDARD  3
@@ -378,6 +379,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+#define HIVELORD_DESIGNER "Designer"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"

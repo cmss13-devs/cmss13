@@ -481,8 +481,11 @@
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
 	plane = FLOOR_PLANE
-	var/static/staticnode
+	var/staticnode
 	var/overlay_node = TRUE
+
+	var/designspeed = FALSE
+	var/designcost = FALSE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -533,8 +536,16 @@
 
 	. = ..(mapload, src)
 
+	// Determine the appropriate icon_state based on conditions
+	var/icon_state_to_use = "weednode" // Default icon_state
+	if(designspeed)
+		icon_state_to_use = "speednode"
+	else if(designcost)
+		icon_state_to_use = "costnode"
+
+	// Create the overlay with the determined icon_state
 	if(!staticnode)
-		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+		staticnode = image('icons/mob/xenos/weeds.dmi', icon_state_to_use, ABOVE_OBJ_LAYER) //believe me i tryied to change it, but this sh*t breaks if you don't tell icon_state name, someone smarter should fix this.
 
 	var/obj/effect/alien/resin/trap/trap = locate() in loc
 	if(trap)

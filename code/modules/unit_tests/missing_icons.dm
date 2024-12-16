@@ -28,7 +28,7 @@
 //RUCM START - https://cdn.discordapp.com/attachments/1235823951083737098/1283904773145231422/GIF-240913_003855.gif?ex=67609dff&is=675f4c7f&hm=10bba3cd3c9a516580a787f29983f1a8c117345b73a721cea279f79376b61f89&
 	if(run_check || !run_check)
 		return
-//RUCM END - https://cdn.discordapp.com/attachments/1235823951083737098/1283904773145231422/GIF-240913_003855.gif?ex=67609dff&is=675f4c7f&hm=10bba3cd3c9a516580a787f29983f1a8c117345b73a721cea279f79376b61f89&
+//RUCM END
 
 	generate_possible_icon_states_list()
 	generate_possible_icon_states_list("icons/effects/")

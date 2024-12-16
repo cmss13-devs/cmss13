@@ -34,24 +34,7 @@
 /turf/closed/wall/cult,
 /area/yautja)
 "ag" = (
-/obj/structure/machinery/hunting_ground_selection,
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
-"ah" = (
 /obj/structure/machinery/hunt_ground_spawner,
-/turf/open/floor/corsat/squareswood/north,
-/area/yautja)
-"ai" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	pixel_y = 20
-	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "an" = (
@@ -2594,6 +2577,19 @@
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
+"Kx" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	anchored = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
 "KD" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2639,6 +2635,10 @@
 /area/yautja)
 "Lo" = (
 /obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"LX" = (
+/obj/structure/machinery/hunting_ground_selection,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Mb" = (
@@ -5572,7 +5572,7 @@ ct
 cP
 bL
 hI
-ag
+LX
 bL
 bL
 cP
@@ -5716,7 +5716,7 @@ ct
 cP
 bL
 hI
-ah
+ag
 bL
 bL
 cP
@@ -7052,11 +7052,11 @@ bj
 cP
 cP
 bj
-ai
+Kx
 bj
-ai
+Kx
 bj
-ai
+Kx
 bj
 bj
 bj

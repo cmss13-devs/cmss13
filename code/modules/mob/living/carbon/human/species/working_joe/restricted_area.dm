@@ -37,11 +37,21 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/this_shouldnt_be_here
+	key = "thishouldbehere"
+	sound = 'sound/voice/joe/this_shouldnt_be_here.ogg'
+	haz_sound = 'sound/voice/joe/this_shouldnt_be_here_haz.ogg'
+	say_message = "This shouldn't be here."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/interloper
 	key = "interloper"
 	sound = 'sound/voice/joe/interloper.ogg'
+	haz_sound = 'sound/voice/joe/interloper_haz.ogg'
 	say_message = "On top of innumerable duties, now I have a interloper."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/area_restricted
 	key = "arearestrict"
@@ -53,8 +63,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/protected_area_compromised
 	key = "areacompromised"
 	sound = 'sound/voice/joe/protected_area_compromised.ogg'
+	haz_sound = 'sound/voice/joe/protected_area_compromised_haz.ogg'
 	say_message = "Protected area compromised."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/breach
 	key = "breach"
@@ -63,6 +75,12 @@
 	say_message = "Hazard Containment breach logged."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/no_laughing_matter
+	key = "nolaughingmatter"
+	sound = 'sound/voice/joe/no_laughing_matter.ogg'
+	say_message = "I'm afraid, hazard containment alerts aren't a laughing matter."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"

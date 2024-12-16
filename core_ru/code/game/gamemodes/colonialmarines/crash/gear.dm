@@ -1,4 +1,6 @@
 /datum/equipment_preset/crash
+	name = "Special Ship Crew"
+
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -167,8 +169,8 @@
 
 //*****************************************************************************************************//
 
-/datum/equipment_preset/crash/marine/pfc
-	name = "USCM Squad Rifleman (PFC)"
+/datum/equipment_preset/crash/marine
+	name = "USCMCS Squad Rifleman"
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
@@ -177,7 +179,7 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
-/datum/equipment_preset/crash/marine/pfc/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/crash/marine/load_gear(mob/living/carbon/human/new_human)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine
@@ -194,7 +196,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/spec
-	name = "USCM Squad Squad Weapons Specialist"
+	name = "USCMCS Squad Squad Weapons Specialist"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
@@ -228,7 +230,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/sg
-	name = "USCM Squad Smartgunner"
+	name = "USCMCS Squad Smartgunner"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
@@ -257,7 +259,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/medic
-	name = "USCM Squad Hospital Corpsman"
+	name = "USCMCS Squad Hospital Corpsman"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
@@ -290,7 +292,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/sl
-	name = "USCM Squad Squad Leader"
+	name = "USCMCS Squad Squad Leader"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
@@ -324,7 +326,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/engineer
-	name = "USCM Squad Combat Technician"
+	name = "USCMCS Squad Combat Technician"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI

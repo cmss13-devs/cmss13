@@ -300,6 +300,12 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	caliber = "16g"
 	gun_type = /obj/item/weapon/gun/rifle/xm51
 
+/obj/item/ammo_magazine/handful/shotgun/light/breaching/rubber
+	name = "handful of rubber buckshot shells (16g)"
+	icon_state = "rubbershot_shell_6"
+	handful_state = "rubbershot_shell"
+	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
+
 /obj/item/ammo_magazine/handful/shotgun/twobore
 	name = "handful of shotgun slugs (2 bore)"
 	icon_state = "twobore_3"

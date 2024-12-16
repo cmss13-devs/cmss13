@@ -31,7 +31,7 @@
 	var/datum/gamemode_modifier/modifier = round_modifiers[modifier_typepath]
 	if(!modifier)
 		CRASH("Invalid gamemode modifier, [modifier_typepath], was attempted to be set.")
-	modifier.active = enabled
+	modifier.set_active(enabled)
 	return TRUE
 
 /datum/gamemode_modifier
@@ -39,6 +39,10 @@
 	var/modifier_name
 	var/modifier_desc
 	var/datum/gamemode_modifier/abstract_type = /datum/gamemode_modifier
+
+/datum/gamemode_modifier/proc/set_active(enabled = FALSE)
+	SHOULD_CALL_PARENT(TRUE)
+	active = enabled
 
 /datum/gamemode_modifier/blood_optimization
 	modifier_name = "Blood Optimizations"
@@ -100,9 +104,21 @@
 	modifier_name = "Roundstart Landing Zone Miasma"
 	modifier_desc = "Miasma is applied to both landing zones roundstart. Does nothing if activated after miasma trigger 3 minutes into round."
 
+/datum/gamemode_modifier/lz_roundstart_miasma/set_active(enabled)
+	. = ..()
+	if(ROUND_TIME > DISTRESS_LZ_HAZARD_START)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+
 /datum/gamemode_modifier/lz_weeding
 	modifier_name = "Landing Zone Weeding"
 	modifier_desc = "Allows xenomorphs to weed all landing zones."
+
+/datum/gamemode_modifier/lz_weeding/set_active(enabled)
+	. = ..()
+	for(var/area/cur_area as anything in GLOB.all_areas)
+		if(cur_area.flags_area & AREA_UNWEEDABLE)
+			continue
+		cur_area.is_resin_allowed = enabled ? TRUE : initial(cur_area.is_resin_allowed)
 
 /datum/gamemode_modifier/mortar_laser_warning
 	modifier_name = "Mortar Telegraphing"

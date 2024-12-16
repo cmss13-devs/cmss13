@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "UPP unique dogtags sprite"
+  - rscadd: "ID card now mentions what it is (dogtags, card or badge) instead of calling everything \"ID card\""

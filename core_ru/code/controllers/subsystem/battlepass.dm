@@ -34,3 +34,7 @@ SUBSYSTEM_DEF(battlepass)
 	if(xeno_points)
 		for(var/datum/entity/battlepass_player/battlepass in xeno_battlepass_earners)
 			battlepass.add_xp(xeno_points)
+
+/datum/controller/subsystem/battlepass/Shutdown()
+	for(var/datum/entity/battlepass_player/battlepass in marine_battlepass_earners + xeno_battlepass_earners)
+		battlepass.save()

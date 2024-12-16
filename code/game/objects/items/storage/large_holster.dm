@@ -66,7 +66,7 @@
 		/obj/item/weapon/gun/shotgun/combat,
 		/obj/item/weapon/gun/shotgun/double/mou53,
 	)
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/large_holster/m37/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
@@ -215,7 +215,6 @@
 	var/image/flamer_overlay
 	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
-	has_gamemode_skin = TRUE
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
@@ -255,7 +254,7 @@
 	..()
 
 // Get the right onmob icon when we have flamer holstered.
-/obj/item/storage/large_holster/fuelpack/get_mob_overlay(mob/user_mob, slot)
+/obj/item/storage/large_holster/fuelpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 	if(slot == WEAR_BACK)
 		if(length(contents))

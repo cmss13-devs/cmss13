@@ -19,6 +19,11 @@
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
 
+	/**
+	 * How long, after first drop, should the resin protection in proximity to the selected LZ last
+	 */
+	var/near_lz_protection_delay = 8 MINUTES
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -140,27 +145,41 @@
 	var/right = marine_dropship.x + marine_dropship.dwidth + 2
 	var/z = marine_dropship.z
 
+	var/dropship_type = marine_dropship.type
+
 	// Bottom left
-	options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_LEFT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_LEFT]
+	else
+		options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Bottom right
 	options.Cut()
-	options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_RIGHT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_RIGHT]
+	else
+		options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Top left
 	options.Cut()
-	options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_LEFT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_LEFT]
+	else
+		options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Top right
 	options.Cut()
-	options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_RIGHT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_RIGHT]
+	else
+		options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 ///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
@@ -193,6 +212,10 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED))
+		return
+
+	log_game("Distress Signal LZ hazards active!")
 	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
 	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 	addtimer(CALLBACK(src, PROC_REF(spawn_lz_hazards)), OB_TRAVEL_TIMING + 1 SECONDS)
@@ -237,6 +260,69 @@
 	for(var/obj/effect/particle_effect/smoke/miasma/smoke as anything in lz_smoke)
 		smoke.time_to_live = rand(1, 5)
 	lz_smoke.Cut()
+
+/// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
+/datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
+	clear_proximity_resin()
+
+	var/list/announcement_mobs = list()
+	for(var/area/area in marine_dropship.shuttle_areas)
+		for(var/mob/mob in area)
+			shake_camera(mob, steps = 3, strength = 1)
+			announcement_mobs += mob
+
+	announcement_helper("Dropship [marine_dropship.name] dispersing [/obj/effect/particle_effect/smoke/weedkiller::name] due to potential biological infestation.", MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
+
+/**
+ * Clears any built resin in the areas around the landing zone,
+ * when the dropship first deploys.
+ */
+/datum/game_mode/colonialmarines/proc/clear_proximity_resin()
+	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
+
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(islist(area_lz))
+			if(!(active_lz.linked_lz in area_lz))
+				continue
+
+		else if(area_lz != active_lz.linked_lz)
+			continue
+
+		for(var/turf/turf in near_area)
+			if(turf.density)
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.hull)
+					continue
+			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
+
+		near_area.purge_weeds()
+
+	addtimer(CALLBACK(src, PROC_REF(allow_proximity_resin)), near_lz_protection_delay)
+
+/**
+ * If the area was previously weedable, and this was disabled by the
+ * LZ proximity, re-enable the weedability
+ */
+/datum/game_mode/colonialmarines/proc/allow_proximity_resin()
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(area_lz != active_lz.linked_lz)
+			continue
+
+		if(initial(near_area.is_resin_allowed) == FALSE)
+			continue
+
+		near_area.is_resin_allowed = TRUE
+
 
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 
@@ -403,6 +489,8 @@
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
+	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
+
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
 

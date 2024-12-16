@@ -196,6 +196,8 @@
 			return
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
+		if(!lighting_holder.light)
+			lighting_holder.set_light_on(TRUE)
 
 		if(WT)
 			WT.remove_fuel(1, user)

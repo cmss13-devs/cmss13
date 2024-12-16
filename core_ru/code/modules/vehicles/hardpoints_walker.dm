@@ -36,11 +36,12 @@
 
 	var/autofire_slow_mult = 1
 
-/obj/item/walker_gun/Initialize(reference)
+/obj/item/walker_gun/Initialize(mapload, ...)
 	. = ..()
 
-	if(istype(reference, /obj/vehicle/walker))
-		owner = reference
+	if(istype(loc, /obj/vehicle/walker))
+		owner = loc
+
 	ammo = new magazine_type
 
 	if(automatic)

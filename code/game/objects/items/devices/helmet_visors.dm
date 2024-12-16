@@ -169,7 +169,7 @@
 	helmet_overlay = "weld_visor"
 
 /obj/item/device/helmet_visor/welding_visor/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
-	attached_helmet.vision_impair = VISION_IMPAIR_MAX
+	attached_helmet.vision_impair = VISION_IMPAIR_ULTRA
 	attached_helmet.flags_inventory |= COVEREYES|COVERMOUTH
 	attached_helmet.flags_inv_hide |= HIDEEYES|HIDEFACE
 	attached_helmet.eye_protection = EYE_PROTECTION_WELDING
@@ -201,9 +201,9 @@
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
 
 	/// The internal battery for the visor
-	var/obj/item/cell/high/power_cell
+	var/obj/item/cell/super/power_cell
 
-	/// About 5 minutes active use charge (hypothetically)
+	/// About 10 minutes active use charge (hypothetically)
 	var/power_use = 33
 
 	/// The alpha of darkness we set to for the mob while the visor is on, not completely fullbright but see-able

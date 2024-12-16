@@ -167,6 +167,13 @@
 			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
 			return
 
+	// Make sure a platform wouldn't block it
+	if(box_on_tile * 2 >= limit_per_tile) // Allow 2 if limit is 4
+		var/obj/structure/platform/platform = locate() in T
+		if(platform?.dir == NORTH)
+			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
+			return
+
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
 	M.icon_state = icon_state_deployed ? icon_state_deployed : icon_state
 	M.name = name

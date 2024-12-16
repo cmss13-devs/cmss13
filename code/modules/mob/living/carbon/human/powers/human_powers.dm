@@ -141,7 +141,7 @@
 			M.gib(create_cause_data("gutting", usr))
 
 /mob/living/carbon/human/proc/commune()
-	set category = "Abilities"
+	set category = "Abilities.Psychic"
 	set name = "Commune with creature"
 	set desc = "Send a telepathic message to an unlucky recipient."
 
@@ -181,15 +181,22 @@
 /mob/living/carbon/human/proc/psychic_whisper(mob/target_mob as mob in oview())
 	set name = "Psychic Whisper"
 	set desc = "Whisper silently to someone over a distance."
-	set category = "Abilities"
+	set category = "Abilities.Psychic"
 
-	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
+	if(stat == DEAD)
+		to_chat(src, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
+
+	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Whisper")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
-		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[SPAN_PSYTALK(whisper)]</i>"))
-		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
-		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-			if(!ghost.client || isnewplayer(ghost))
+		if(!istype(target_mob, /mob/living/carbon/xenomorph))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
+		else
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
+		to_chat(src, SPAN_XENOWARNING("You said: \"[whisper]\" to [target_mob]"))
+		FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
+			if(!isobserver(ghost) || !ghost.client)
 				continue
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 				var/rendered_message
@@ -197,7 +204,45 @@
 				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
 				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
 				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
-	return
+	return FALSE
+
+/mob/living/carbon/human/proc/psychic_radiance()
+	set name = "Psychic Radiance"
+	set desc = "Whisper silently to multiple people over a distance."
+	set category = "Abilities.Psychic"
+
+	if(stat == DEAD)
+		to_chat(src, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
+
+	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Radiance")
+	var/list/target_list = list()
+	if(!whisper)
+		return FALSE
+	FOR_DVIEW(var/mob/living/possible_target, 12, src, HIDE_INVISIBLE_OBSERVER)
+		if(possible_target == src || !possible_target.client)
+			continue
+		target_list += possible_target
+		if(!istype(possible_target, /mob/living/carbon/xenomorph))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
+		else
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
+	FOR_DVIEW_END
+	if(!length(target_list))
+		to_chat(src, SPAN_XENOWARNING("There is no one around to hear you..."))
+		return FALSE
+	var/targetstring = english_list(target_list)
+	to_chat(src, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	log_say("PsychicRadiance: [key_name(src)]->[targetstring] : [whisper] (AREA: [get_area_name(src)])")
+	FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
+		if(!isobserver(ghost) || !ghost.client)
+			continue
+		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+			var/rendered_message
+			var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [real_name][human_track] to [targetstring], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
+			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+	return TRUE
 
 /mob/living/verb/lay_down()
 	set name = "Rest"
@@ -269,22 +314,89 @@
 	if(usr.is_mob_incapacitated())
 		return
 
-	var/datum/mob_hud/H
-	var/chosen_HUD = 1
+	var/datum/mob_hud/the_hud
+	var/chosen_HUD = INHERENT_HUD_MEDICAL
 	switch(hud_choice)
 		if("Medical HUD")
-			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
+			the_hud = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-			chosen_HUD = 2
+			the_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+			chosen_HUD = INHERENT_HUD_SECURITY
 		else
 			return
 
-	if(synthetic_HUD_toggled[chosen_HUD])
-		synthetic_HUD_toggled[chosen_HUD] = FALSE
-		H.remove_hud_from(src, src)
+	if(inherent_huds_toggled[chosen_HUD])
+		inherent_huds_toggled[chosen_HUD] = FALSE
+		the_hud.remove_hud_from(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
 	else
-		synthetic_HUD_toggled[chosen_HUD] = TRUE
-		H.add_hud_to(src, src)
+		inherent_huds_toggled[chosen_HUD] = TRUE
+		the_hud.add_hud_to(src, src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))
+
+/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_scent_tracking()
+	set category = "Synthetic"
+	set name = "Track Scent"
+	set desc = "Activates the K9's keen sense of smell."
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(!isk9synth(usr))
+		return
+
+	var/datum/species/synthetic/synth_k9/speciesk9 = species
+
+	speciesk9.radar.tgui_interact(src)
+
+/mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision(mob/user)
+	set category = "Synthetic"
+	set name = "Binocular Vision"
+	set desc = "Activates the K9's keen sense of sight."
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(!is_zoomed)
+		enable_zoom()
+		user.visible_message(SPAN_NOTICE("[user] starts looking off into the distance."), \
+			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
+		return
+
+	if(is_zoomed)
+		disable_zoom()
+		return
+
+/mob/living/carbon/human/proc/enable_zoom()
+	var/viewsize = 12
+	var/tileoffset = 11
+
+	if(is_zoomed || !client)
+		return
+	is_zoomed = TRUE
+	RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(disable_zoom))
+	client.change_view(viewsize)
+	var/viewoffset = 32 * tileoffset
+	switch(dir)
+		if(NORTH)
+			client.pixel_x = 0
+			client.pixel_y = viewoffset
+		if(SOUTH)
+			client.pixel_x = 0
+			client.pixel_y = -viewoffset
+		if(EAST)
+			client.pixel_x = viewoffset
+			client.pixel_y = 0
+		if(WEST)
+			client.pixel_x = -viewoffset
+			client.pixel_y = 0
+
+/mob/living/carbon/human/proc/disable_zoom()
+	SIGNAL_HANDLER
+	if(!client)
+		return
+	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
+	client.change_view(GLOB.world_view_size)
+	client.pixel_x = 0
+	client.pixel_y = 0
+	is_zoomed = FALSE

@@ -1,3 +1,7 @@
+
+GLOBAL_LIST_INIT_TYPED(admin_ranks_by_id, /datum/view_record/admin_rank, list())
+GLOBAL_PROTECT(admin_ranks_by_id)
+
 GLOBAL_LIST_INIT_TYPED(admin_ranks, /datum/view_record/admin_rank, load_ranks())
 GLOBAL_PROTECT(admin_ranks)
 
@@ -10,6 +14,7 @@ GLOBAL_PROTECT(db_admin_datums)
 	var/list/datum/view_record/admin_rank/ranks = DB_VIEW(/datum/view_record/admin_rank)
 	for(var/datum/view_record/admin_rank/rank as anything in ranks)
 		named_ranks[rank.rank_name] = rank
+		GLOB.admin_ranks_by_id["[rank.id]"] = rank
 	return named_ranks
 
 /proc/load_admins()
@@ -64,6 +69,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 		.["text_rights"] = flags2rights(rank.rights)
 
 /datum/view_record/admin_rank
+	var/id
 	var/rank_name
 	var/text_rights
 	var/rights = NO_FLAGS
@@ -74,6 +80,7 @@ BSQL_PROTECT_DATUM(/datum/view_record/admin_rank)
 	root_record_type = /datum/entity/admin_rank
 	destination_entity = /datum/view_record/admin_rank
 	fields = list(
+		"id",
 		"rank_name",
 		"text_rights",
 	)
@@ -259,7 +266,30 @@ BSQL_PROTECT_DATUM(/datum/view_record/admin_holder)
 		text_rights += "everything|"
 	return text_rights
 
-/proc/localhost_rank_check(client/admin_client, list/datum/entity/admin_rank/ranks)
+/client/proc/check_localhost_admin_datum()
+	set waitfor = FALSE
+	UNTIL(player_data)
+	if(admin_holder)
+		return
+
+	var/list/return_value = list()
+	DB_FILTER(/datum/entity/admin_rank, DB_COMP("rank_name", DB_EQUALS, "!localhost!"), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_rank_check), return_value))
+	UNTIL(length(return_value))
+	var/datum/entity/admin_rank/rank = return_value[1]
+	if(!rank.id)
+		return
+
+	return_value.Cut()
+	DB_FILTER(/datum/entity/admin_holder, DB_COMP("player_id", DB_EQUALS, player_data.id), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), player_data.id, rank.id, return_value))
+	UNTIL(length(return_value))
+	if(admin_holder)
+		return
+
+	sleep(5 SECONDS)// If you do it too fast, you will fuck yourself, or gain aorta rupture
+	GLOB.admin_ranks = load_ranks()
+	GLOB.db_admin_datums = load_admins()
+
+/proc/localhost_rank_check(list/return_value, list/datum/entity/admin_rank/ranks)
 	var/datum/entity/admin_rank/rank
 	if(!length(ranks))
 		rank = DB_ENTITY(/datum/entity/admin_rank)
@@ -267,27 +297,23 @@ BSQL_PROTECT_DATUM(/datum/view_record/admin_holder)
 		rank.rights = RL_HOST
 		rank.text_rights = "host"
 		rank.save()
+		rank.sync()
 	else
 		rank = ranks[length(ranks)]
 
-	UNTIL(admin_client.player_data)
+	return_value += rank
 
-	DB_FILTER(/datum/entity/admin_holder, DB_COMP("player_id", DB_EQUALS, admin_client.player_data.id), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_entity_check), admin_client, rank))
-
-/proc/localhost_entity_check(client/admin_client, datum/entity/admin_rank/rank, list/datum/entity/admin_holder/admins)
+/proc/localhost_entity_check(localhost_id, rank_id, list/return_value, list/datum/entity/admin_holder/admins)
 	var/datum/entity/admin_holder/admin
 	if(!length(admins))
 		admin = DB_ENTITY(/datum/entity/admin_holder)
-		admin.player_id = admin_client.player_data.id
-		admin.rank_id = rank.id
+		admin.player_id = localhost_id
+		admin.rank_id = rank_id
 		admin.save()
 	else
 		admin = admins[length(admins)]
 
-	if(!admin_client.admin_holder)
-		sleep(5 SECONDS)// If you do it too fast, you will fuck yourself, or gain aorta rupture
-		GLOB.admin_ranks = load_ranks()
-		GLOB.db_admin_datums = load_admins()
+	return_value += admin
 
 /datum/admins/New(ckey)
 	if(!ckey)

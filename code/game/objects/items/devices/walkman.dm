@@ -7,6 +7,7 @@
 	icon_state = "walkman"
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
+	flags_obj = OBJ_IS_HELMET_GARB
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)
 	var/obj/item/device/cassette_tape/tape
 	var/paused = TRUE
@@ -175,7 +176,7 @@
 		var/mob/living/carbon/human/H = loc
 		H.regenerate_icons()
 
-/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot)
+/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 	if((slot == WEAR_L_EAR || slot == WEAR_R_EAR) && !paused)
 		var/image/I = overlay_image(ret.icon, "+music", color, RESET_COLOR)
@@ -311,6 +312,7 @@
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
 	w_class = SIZE_SMALL
+	flags_obj = OBJ_IS_HELMET_GARB
 	black_market_value = 15
 	var/side1_icon = "cassette"
 	var/flipped = FALSE //Tape side

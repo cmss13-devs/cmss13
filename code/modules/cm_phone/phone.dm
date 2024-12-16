@@ -609,6 +609,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 /obj/structure/transmitter/rotary/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
 
+/obj/structure/transmitter/rotary/fax_responder
+	phone_category = "Comms Relay"
+	networks_receive = list("Fax Responders")
+	pixel_x = -6
+	pixel_y = 6
+
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder

@@ -9,7 +9,7 @@
 	icon_state = "m5"
 	item_state = "m5"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/rocket
@@ -40,7 +40,7 @@
 
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
@@ -236,7 +236,7 @@
 	icon_state = "m83a2"
 	item_state = "m83a2"
 	unacidable = FALSE
-	indestructible = FALSE
+	explo_proof = FALSE
 	skill_locked = FALSE
 
 	current_mag = /obj/item/ammo_magazine/rocket/anti_tank

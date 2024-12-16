@@ -107,6 +107,9 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
+	if(!filter_message(src, message))
+		return
+
 	log_hivemind("[key_name(src)] : [message]")
 
 	var/track = ""

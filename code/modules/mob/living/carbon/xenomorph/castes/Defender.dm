@@ -15,7 +15,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	evolves_to = list(XENO_CASTE_WARRIOR)
-	deevolves_to = list("Larva")
+	deevolves_to = list(XENO_CASTE_LARVA)
 	can_vent_crawl = 0
 
 	available_strains = list(/datum/xeno_strain/steel_crest)

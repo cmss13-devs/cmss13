@@ -37,7 +37,7 @@
 
 /atom/movable/screen/close
 	name = "close"
-	icon_state = "x"
+	icon_state = "close"
 
 
 /atom/movable/screen/close/clicked(mob/user)

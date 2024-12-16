@@ -11,10 +11,11 @@
 	name = "shotgun slug"
 	handful_state = "slug_shell"
 
-	accurate_range = 6
+	accurate_range = 8
 	max_range = 8
 	damage = 70
 	penetration = ARMOR_PENETRATION_TIER_4
+	accuracy = HIT_ACCURACY_TIER_3
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
@@ -65,7 +66,7 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	accuracy = -HIT_ACCURACY_TIER_2
+	accuracy = HIT_ACCURACY_TIER_2
 	max_range = 12
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1

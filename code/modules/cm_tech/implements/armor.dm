@@ -271,26 +271,25 @@
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
-	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		return
-	user.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+	RegisterSignal(user, COMSIG_BLEEDING_PROCESS, PROC_REF(cancel_bleeding))
 	to_chat(user, SPAN_NOTICE("You feel tickling as you activate [src]."))
+
+/obj/item/clothing/accessory/health/research_plate/coagulator/proc/cancel_bleeding()
+	SIGNAL_HANDLER
+	return COMPONENT_BLEEDING_CANCEL
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed(mob/living/carbon/human/user, obj/item/clothing/C)
 	. = ..()
-	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
-		to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
-		attached_uni = null
+	to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
+	UnregisterSignal(user, COMSIG_BLEEDING_PROCESS)
+	attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed_sig(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(. == FALSE)
 		return
-	if(user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
-		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
-		attached_uni = null
+	UnregisterSignal(user, COMSIG_BLEEDING_PROCESS)
+	attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
 	name = "emergency chemical plate"
@@ -350,7 +349,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
-	activation = new /datum/action/item_action/emergency_plate/inject_chemicals(src, attached_uni)
+	activation = new /datum/action/item_action/toggle/emergency_plate/inject_chemicals(src, attached_uni)
 	activation.give_to(wearer)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed(mob/living/user, obj/item/clothing/C)
@@ -366,7 +365,7 @@
 	attached_uni = null
 
 //Action buttons
-/datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
+/datum/action/item_action/toggle/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
 	. = ..()
 	name = "Inject Emergency Plate"
 	action_icon_state = "plate_research"

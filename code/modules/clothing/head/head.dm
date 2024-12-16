@@ -290,8 +290,7 @@
 
 /obj/item/clothing/head/cmcap/Initialize(mapload, ...)
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
-		select_gamemode_skin(type)
+	select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
 
@@ -301,6 +300,10 @@
 	pockets.max_w_class = storage_max_w_class
 	pockets.bypass_w_limit = allowed_hat_items
 	pockets.max_storage_space = storage_max_storage_space
+
+/obj/item/clothing/head/cmcap/Destroy()
+	QDEL_NULL(pockets)
+	return ..()
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
@@ -328,7 +331,7 @@
 		var/mob/M = loc
 		M.update_inv_head()
 
-/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/return_image = ..()
 	if(slot != WEAR_HEAD)
 		return return_image
@@ -381,7 +384,7 @@
 
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
@@ -393,7 +396,7 @@
 	icon_state = "co_formalhat_white"
 	desc = "A formal cover worn by senior officers of the USCM."
 	flags_marine_hat = HAT_GARB_OVERLAY
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/co/formal/black
 	name = "\improper USCM formal Commanding Officer's black cap"
@@ -403,13 +406,13 @@
 	name = "\improper USCM quartermaster cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "rocap"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
-	flags_atom = FPRINT|NO_SNOW_TYPE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/cmcap/bridge
 	name = "\improper USCM officer cap"
@@ -428,7 +431,7 @@
 	desc = "A faithful cap for any terrain war correspondents may find themselves in."
 	icon_state = "cc_flagcap"
 	item_state = "cc_flagcap"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmo
@@ -775,7 +778,7 @@
 	icon_state = "duragblack"
 	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/durag/Initialize(mapload, ...)
 	. = ..()
@@ -844,7 +847,7 @@
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

@@ -20,7 +20,7 @@
 	sharp = IS_SHARP_ITEM_BIG
 	flags_equip_slot = SLOT_SUIT_STORE|SLOT_WAIST
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	throw_range = 3
 	attack_speed = 12
@@ -103,7 +103,7 @@
 	throwforce = MELEE_FORCE_TIER_1
 	w_class = SIZE_LARGE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/blocks_on_back = TRUE
 	var/retrieval_slot = WEAR_BACK
 	var/cooldown = 0	//shield bash cooldown. based on world.time

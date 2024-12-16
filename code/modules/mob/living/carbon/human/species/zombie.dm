@@ -127,7 +127,7 @@
 /datum/species/zombie/proc/handle_alert_ghost(mob/living/carbon/human/zombie)
 	var/mob/dead/observer/ghost = zombie.get_ghost()
 	if(ghost?.client)
-		playsound_client(ghost.client, 'sound/effects/revive_notify.ogg')
+		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Your body has risen! (Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
 
 /datum/species/zombie/proc/remove_from_revive(mob/living/carbon/human/zombie)

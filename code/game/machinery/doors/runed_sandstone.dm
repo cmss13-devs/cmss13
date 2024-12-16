@@ -24,10 +24,10 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
 // ..()
 	user.set_interaction(src)
-	if (!istype(W, /obj/item/weapon/wristblades || !isyautja(user)))
+	if (!istype(W, /obj/item/weapon/bracer_attachment || !isyautja(user)))
 		return
 
-	if(istype(W, /obj/item/weapon/wristblades))
+	if(istype(W, /obj/item/weapon/bracer_attachment))
 		playsound(user.loc, 'sound/effects/bladeinsert.ogg', 25, 0)
 
 		var/list/options = list()

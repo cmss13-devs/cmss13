@@ -1,6 +1,13 @@
 GLOBAL_LIST_EMPTY(discord_ranks)
 GLOBAL_LIST_EMPTY_TYPED(donators_info, /datum/donator_info)
 
+GLOBAL_LIST_INIT_TYPED(all_gun_decorators, /datum/decorator/weapon_map_decorator, create_decorators())
+
+/proc/create_decorators()
+	. = list()
+	for(var/decorator_type in subtypesof(/datum/decorator/weapon_map_decorator))
+		. += new decorator_type
+
 /datum/entity/player
 	var/datum/donator_info/donator_info
 
@@ -121,26 +128,98 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 	bound_height = 32
 
 /obj/structure/painting_table/attackby(obj/item/item as obj, mob/user as mob)
-	if(user?.client?.player_data?.donator_info)
-		if(user.client.player_data.donator_info.skins["[item.type]"] && !user.client.player_data.donator_info.skins_used["[item.type]"])
-			handle_skinning_item(item, user)
+	if(user?.client?.player_data?.donator_info && user.client.player_data.donator_info.skins["[item.type]"] && !user.client.player_data.donator_info.skins_used["[item.type]"])
+		if(handle_skinning_item(item, user))
 			return
+
+	if(handle_decorator_override(item, user))
+		return
+
 	. = ..()
+
+/obj/structure/painting_table/proc/handle_decorator_override(obj/item/decoratable, mob/user, selectable_types = list("snow" = "s_", "desert" = "d_", "classic" = "c_", "normal" = ""))
+	if(isgun(decoratable))
+		var/obj/item/weapon/gun/decorating = decoratable
+		if(!decorating.map_specific_decoration || !SSdecorator.decoratable || !SSdecorator.registered_decorators[decorating.type])
+			return
+
+		var/list/active_decorators = list()
+		for(var/datum/decorator/weapon_map_decorator/map_decorator in GLOB.all_gun_decorators)
+			if(map_decorator.camouflage_type == "urban")
+				continue
+			active_decorators[map_decorator.camouflage_type] = map_decorator
+
+		if(!length(active_decorators))
+			return
+
+		var/selected = tgui_input_list(user, "Select skin for your gun, don't select anything to set normal", "Skin Selector", active_decorators)
+		if(!selected)
+			decorating.icon = initial(decorating.icon)
+			decorating.icon_state = initial(decorating.icon_state)
+			decorating.item_state = initial(decorating.item_state)
+			decorating.item_icons = initial(decorating.item_icons)
+			for(var/slot in decorating.attachments)
+				var/obj/item/attachable/attachment = decorating.attachments[slot]
+				attachment.attach_icon = initial(attachment.attach_icon)
+			decorating.update_icon()
+			return
+
+		var/datum/decorator/weapon_map_decorator/selected_map_decorator = active_decorators[selected]
+		selected_map_decorator.decorate(decorating)
+		for(var/slot in decorating.attachments)
+			var/obj/item/attachable/attachment = decorating.attachments[slot]
+			if(!attachment.select_gamemode_skin(attachment.type))
+				continue
+			attachment.attach_icon = selectable_types[selected] + initial(attachment.attach_icon)
+		decorating.update_icon()
+
+	else if(istype(decoratable, /obj/item/clothing/suit/storage/marine))
+		if(decoratable.flags_atom & NO_GAMEMODE_SKIN)
+			return
+
+		var/selected = tgui_input_list(user, "Select skin for your armor", "Skin Selector", selectable_types)
+		if(!selected)
+			return
+
+		decoratable.icon_state = selectable_types[selected] + initial(decoratable.icon_state)
+		decoratable.item_state = selectable_types[selected] + initial(decoratable.item_state)
+
+	else if(istype(decoratable, /obj/item/clothing/head/helmet/marine))
+		if(decoratable.flags_atom & NO_GAMEMODE_SKIN)
+			return
+
+		var/selected = tgui_input_list(user, "Select skin for your helmet", "Skin Selector", selectable_types)
+		if(!selected)
+			return
+
+		decoratable.icon_state = selectable_types[selected] + initial(decoratable.icon_state)
+		decoratable.item_state = selectable_types[selected] + initial(decoratable.item_state)
+
+	return TRUE
 
 /proc/handle_skinning_item(obj/item, mob/user)
 	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[item.type]"]
 	if(!skin_selection)
 		return
+
 	var/skin = tgui_input_list(user, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skin_selection.mapped_skins)
 	if(!skin)
 		to_chat(user, SPAN_WARNING("Vending base skin."))
 		return
+
 	user.client.player_data.donator_info.skins_used["[item.type]"] = skin_selection
+	item.flags_atom |= ATOM_DECORATED
 	item.skin(skin)
+	return TRUE
 
 //COMPACT VERSION << ALL IN ONE >>
 /obj/proc/skin(skin)
 	return
+
+/obj/CanProcCall(procname)
+	if(procname == "skin")
+		return FALSE
+	. = ..()
 
 //HELMET
 /obj/item/clothing/head/helmet/skin(skin)
@@ -151,12 +230,24 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 		WEAR_HEAD = 'core_ru/icons/custom/items/clothing_on_mob.dmi'
 	)
 
+/obj/item/clothing/head/helmet/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, icon_state), NAMEOF_STATIC(src, item_state))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
 //STORAGE
 /obj/item/clothing/suit/storage/marine/skin(skin)
 	icon = 'core_ru/icons/custom/items/clothings.dmi'
 	icon_state = "[icon_state]_[skin]"
 	item_state = "[item_state]_[skin]"
 	item_state_slots[WEAR_BODY] = icon_state
+
+/obj/item/clothing/suit/storage/marine/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, icon_state), NAMEOF_STATIC(src, item_state))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
 
 //UNDER
 /obj/item/clothing/under/skin(skin)
@@ -170,6 +261,12 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 
 	item_state_slots[WEAR_BODY] = worn_state
 	update_rollsuit_status()
+
+/obj/item/clothing/under/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, icon_state))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
 
 //GUNS
 /obj/item/weapon/gun/skin(skin)
@@ -193,33 +290,42 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 //	attachment_recoloring.blend_mode = BLEND_ADD|BLEND_INSET_OVERLAY|BLEND_SUBTRACT
 	update_icon()
 
+/obj/item/weapon/gun/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, item_icons))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
 /mob/living/carbon/xenomorph
 	var/selected_skin
 	var/icon_skin
 	var/atom/movable/vis_obj/xeno_skin/skin_icon_holder
 
-/proc/handle_skinning_xeno(mob/living/carbon/xenomorph/xeno, mob/user)
+/mob/living/carbon/xenomorph/proc/handle_skinning_xeno(mob/user)
 	if(user?.client?.player_data?.donator_info)
-		if(user.client.player_data.donator_info.skins["[xeno.type]"] && !user.client.player_data.donator_info.skins_used["[xeno.type]"])
-			if(xeno.selected_skin)
+		if(user.client.player_data.donator_info.skins["[type]"] && !user.client.player_data.donator_info.skins_used["[type]"])
+			if(selected_skin)
 				return
 		else
-			xeno.selected_skin = null
+			selected_skin = null
 			return
 	else
-		xeno.selected_skin = null
+		selected_skin = null
 		return
 
-	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[xeno.type]"]
+	var/datum/entity/skin/skin_selection = user.client.player_data.donator_info.skins["[type]"]
 	if(!skin_selection)
 		return
 	var/skin = tgui_input_list(user, "Select skin, you can only one time use it for round (cancel for selecting normal one)", "Skin Selector", skin_selection.mapped_skins)
 	if(!skin)
 		return
-//	user.client.player_data.donator_info.skins_used["[xeno.type]"] = skin_selection // xeno skins for now reusable
-	xeno.skin(skin)
+//	user.client.player_data.donator_info.skins_used["[type]"] = skin_selection // xeno skins for now reusable
+	skin(skin)
 
 /atom/movable/vis_obj/xeno_skin
+
+/atom/movable/vis_obj/xeno_skin/can_vv_modify()
+	return FALSE
 
 /mob/living/carbon/xenomorph/proc/handle_special_skin_states()
 	return FALSE
@@ -257,6 +363,17 @@ BSQL_PROTECT_DATUM(/datum/entity/skin)
 	selected_skin = skin
 	update_skin()
 	return
+
+/mob/living/carbon/xenomorph/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, selected_skin), NAMEOF_STATIC(src, icon_skin), NAMEOF_STATIC(src, skin_icon_holder))
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
+/mob/living/carbon/xenomorph/CanProcCall(procname)
+	if(procname == "skin")
+		return FALSE
+	. = ..()
 
 /mob/living/carbon/xenomorph/queen
 	icon_skin = 'core_ru/icons/custom/mob/xenos/queen.dmi'

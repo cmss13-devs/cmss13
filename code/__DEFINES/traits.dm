@@ -251,6 +251,8 @@
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
 /// Used for burrowed mobs, prevent's SG/sentrys/claymores from autofiring
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
+/// Xenos with this trait can toggle long sight while resting.
+#define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
 
 //-- item traits --
 // TOOL TRAITS
@@ -426,6 +428,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_SPECIES "t_s_species"
 ///Status trait coming from the hive.
 #define TRAIT_SOURCE_HIVE "t_s_hive"
+///Status trait coming from xeno strains.
+#define TRAIT_SOURCE_STRAIN "t_s_strain"
 ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
 ///Status trait coming from being assigned as [acting] squad leader.

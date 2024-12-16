@@ -51,6 +51,7 @@
 			malfunction()
 			return
 
+/* RUCM CHANGE
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
@@ -60,6 +61,21 @@
 	if(selected_vehicle == "TANK")
 		available_categories &= ~(VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
 		marine_announcement("A tank is being sent up to reinforce this operation.")
+*/
+//RUCM START
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, datum/vehicle_order/tank/plain/VO)
+
+	SIGNAL_HANDLER
+	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
+
+	if(istype(VO, /obj/effect/vehicle_spawner/tank))
+		selected_vehicle = "TANK"
+		marine_announcement("Tank is being sent up to reinforce this operation. Good luck")
+	else
+		selected_vehicle = "APC"
+		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE)
+		marine_announcement("APC is being sent up to reinforce this operation. Good luck")
+//RUCM END
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -76,7 +92,12 @@
 	else if(selected_vehicle == "ARC")
 		display_list = GLOB.cm_vending_vehicle_crew_arc
 
+/*
 	else if(selected_vehicle == "TANK")
+*/
+//RUCM START
+	else if(selected_vehicle == "APC")
+//RUCM END
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_apc
 		else //APC stuff costs more to prevent 4000 points spent on shitton of ammunition
@@ -128,8 +149,10 @@
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
 
+/*RUCM REMOVAL
 	list("INTEGRAL PARTS", 0, null, null, null),
 	list("M34A2-A Multipurpose Turret", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
+*/
 
 	list("PRIMARY WEAPON", 0, null, null, null),
 	list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
@@ -147,7 +170,13 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("ARMOR", 0, null, null, null),
-	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+//RUCM CHANGE
+	list("External snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Ballistic external armor", 0, /obj/item/hardpoint/armor/ballistic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Caustic external armor", 0, /obj/item/hardpoint/armor/caustic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Concussive external armor", 0, /obj/item/hardpoint/armor/concussive, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Paladin external armor", 0, /obj/item/hardpoint/armor/paladin, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+//RUCM END
 
 	list("TREADS", 0, null, null, null),
 	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR),
@@ -353,6 +382,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/tank/ltb
+	desc = "A giant cannon firing explosive 86mm shells. You'd be lucky if this even leaves the dust of whatever you hit with it."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
@@ -363,6 +393,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/gatling
+	desc = "A primary LTAA Minigun utilizing AP ammo for tanks. The barrel spins up as it is fired, improving its fire rate and accuracy dramatically. Capable of shredding apart even the thickest walls in seconds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
@@ -370,6 +401,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/dragonflamer
+	desc = "A heavy flamer that spews out high-combustion napalm in a wide radius. The fuel burns intensely and quickly, which allows for it to be used offensively by armoured vehicles."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
@@ -377,6 +409,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/autocannon
+	desc = "An automatic cannon for tanks, capable of firing precisely even at long ranges. Loads 20mm explosive shells."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
@@ -386,12 +419,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/tankflamer
+	desc = "A small LZR-N Flamer Unit - a modified version of your bog standard flamer."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 	)
 
 /obj/effect/essentials_set/tank/tow
+	desc = "A quint rocket launcher capable of firing four rockets in quick succession."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
@@ -399,12 +434,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/m56cupola
+	desc = "A permanently fixed M56D, firing standard issue 10x28mm rounds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 	)
 
 /obj/effect/essentials_set/tank/tankgl
+	desc = "A magazine feed grenade launcher capable of holding 10 grenades. This model loads M40 grenades."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,

@@ -313,7 +313,7 @@
 	new_projectile.damage *= damage_mult
 	new_projectile.accuracy *= accuracy_mult
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
-	new_projectile.fire_at(target, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
+	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), target))
 	ammo.current_rounds--
 	track_shot()

@@ -46,13 +46,7 @@
 		/obj/item/roller,
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
-	)
-
-/obj/effect/essentials_set/upp_heavy
-	spawned_gear_list = list(
-		/obj/item/weapon/gun/pkp,
-		/obj/item/ammo_magazine/pkp,
-		/obj/item/ammo_magazine/pkp,
+		/obj/structure/bed/medevac_stretcher/upp,
 	)
 
 /obj/effect/essentials_set/leader/upp

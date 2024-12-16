@@ -160,7 +160,7 @@
 				secondsElectrified = 0
 
 /obj/structure/machinery/door/ex_act(severity)
-	if(unacidable)
+	if(explo_proof)
 		return
 
 	if(density)
@@ -219,7 +219,6 @@
 
 	operating = TRUE
 	do_animate("opening")
-	icon_state = "door0"
 	set_opacity(FALSE)
 	if(length(filler_turfs))
 		change_filler_opacity(opacity)

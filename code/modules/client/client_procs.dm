@@ -43,8 +43,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_auto_shove,
 	/client/proc/toggle_ammo_display_type,
-	/client/proc/toggle_middle_mouse_click,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		admin_holder.associate(src)
 */
 //RUCM START
-		DB_FILTER(/datum/entity/admin_rank, DB_COMP("rank_name", DB_EQUALS, "!localhost!"), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(localhost_rank_check), src))
+		check_localhost_admin_datum()
 //RUCM END
 
 	add_pref_verbs()
@@ -415,6 +415,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
 
@@ -896,6 +897,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
 		return TRUE
 
+	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_STAFF(src))
+		return TRUE
+
 	if(!player_data)
 		load_player_data()
 	if(!player_data)
@@ -922,3 +926,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 
 	return FALSE
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")

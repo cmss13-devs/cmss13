@@ -8,6 +8,7 @@ PLANT ANALYZER
 MASS SPECTROMETER
 REAGENT SCANNER
 FORENSIC SCANNER
+K9 SCANNER
 */
 /obj/item/device/t_scanner
 	name = "\improper T-ray scanner"
@@ -438,7 +439,7 @@ FORENSIC SCANNER
 /obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
 	. = ..()
 	overlays.Cut()
-	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
+	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_flash")
 	if(scanning)
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
 		switch(scan_value)
@@ -491,3 +492,59 @@ FORENSIC SCANNER
 	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST
 	inherent_traits = list(TRAIT_TOOL_TRADEBAND)
+
+/obj/item/device/k9_scanner
+	name = "\improper K9 tracking device"
+	desc = "A small handheld tool used to track Synthetic K9 helpers, they tend to run off to strange places at inopportune times..."
+	icon_state = "tracking0"
+	item_state = "tracking1"
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/multitool_drop.ogg'
+	flags_atom = FPRINT
+	force = 5
+	w_class = SIZE_TINY
+	throwforce = 5
+	throw_range = 15
+	throw_speed = SPEED_VERY_FAST
+
+	matter = list("metal" = 50,"glass" = 20)
+
+	var/mob/living/carbon/human/tracked_k9
+
+/obj/item/device/k9_scanner/Destroy()
+	. = ..()
+	tracked_k9 = null
+
+/obj/item/device/k9_scanner/attack(mob/attacked_mob as mob, mob/user as mob)
+	if(!isk9synth(attacked_mob))
+		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
+		return
+	//we now know the attacked mob is a k9
+	tracked_k9 = attacked_mob
+	icon_state = "tracking1"
+	to_chat(user, SPAN_WARNING("[src] is now synced to: [attacked_mob]."))
+
+/obj/item/device/k9_scanner/attack_self(mob/user)
+	. = ..()
+	if (!tracked_k9)
+		to_chat(user, SPAN_WARNING("ERROR: No K9 unit currently tracked. Use scanner on K9 unit to track them."))
+		return
+
+	var/turf/self_turf = get_turf(src)
+	var/turf/scanner_turf = get_turf(tracked_k9)
+	var/area/self_area = get_area(self_turf)
+	var/area/scanner_area = get_area(scanner_turf)
+
+	if(self_turf.z != scanner_turf.z || self_area.fake_zlevel != scanner_area.fake_zlevel)
+		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+		return
+
+	var/dist = get_dist(self_turf, scanner_turf)
+	var/direction = dir2text(Get_Compass_Dir(self_turf, scanner_turf))
+	if(dist > 1)
+		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: [tracked_k9] is <b>'[dist] meters to the [direction]</b>'"))
+	else
+		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: <b>--><--</b>"))
+	playsound(src, 'sound/machines/ping.ogg', 15, TRUE)
+

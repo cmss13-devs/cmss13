@@ -260,15 +260,10 @@
 
 /obj/item/device/defibrillator/Destroy()
 	if(paddles_type)
-		if(paddles_type.loc == src)
-			UnregisterSignal(paddles_type, COMSIG_PARENT_PREQDELETED)
-		else
-			paddles_type.attached_to = null
-			paddles_type = null
+		paddles_type.remove_attached()
 
 	QDEL_NULL(dcell)
 	QDEL_NULL(sparks)
-	QDEL_NULL(paddles_type)
 
 	. = ..()
 

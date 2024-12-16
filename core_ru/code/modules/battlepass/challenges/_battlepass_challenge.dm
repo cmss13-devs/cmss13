@@ -62,6 +62,12 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 		completed = check_challenge_completed()
 		regenerate_desc()
 
+/datum/battlepass_challenge/Destroy()
+	QDEL_LIST(modules)
+	client_reference = null
+
+	. = ..()
+
 /datum/battlepass_challenge/proc/generate_challenge(list/available_modules)
 	var/challenge_type_flag = pick(BATTLEPASS_HUMAN_CHALLENGE, BATTLEPASS_XENO_CHALLENGE)
 
@@ -69,17 +75,18 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 	var/total_main_modules = rand(1, 3)
 	var/list/currentrun_available = available_modules.Copy()
 	var/list/modules_removal_pending = list()
-	for(var/i = 1, i <= total_main_modules, i++)
+	for(var/generated = 1, generated <= total_main_modules, generated++)
 		if(!length(currentrun_available))
 			break
 
 		var/datum/battlepass_challenge_module/main_requirement/new_module
 		while(!new_module && length(currentrun_available))
 			var/datum/battlepass_challenge_module/selected_type = pick_weight(currentrun_available)
+			currentrun_available -= selected_type
 			if(!(initial(selected_type.mob_challenge_flags) & challenge_type_flag))
-				currentrun_available -= selected_type
-				modules_removal_pending += selected_type
 				continue
+
+			modules_removal_pending += selected_type
 			new_module = new selected_type()
 
 		new_module.challenge_ref = src
@@ -93,7 +100,7 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 		xp_completion += rand(new_module.module_exp[1], new_module.module_exp[2])
 		total_xp_modificator *= new_module.module_exp_modificator
 
-		if(i < total_main_modules)
+		if(length(modules) < total_main_modules)
 			var/datum/battlepass_challenge_module/condition/and/and_condition = new
 			new_module.challenge_ref = src
 			if(!new_module.generate_module())
@@ -102,7 +109,8 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 
 	xp_completion *= total_xp_modificator
 	regenerate_desc()
-	available_modules -= modules_removal_pending
+	for(var/type in modules_removal_pending)
+		available_modules -= type
 	return TRUE
 
 /datum/battlepass_challenge/proc/regenerate_desc()
@@ -230,6 +238,11 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 	if(opt)
 		for(var/param in opt)
 			vars[param] = opt[param]
+
+/datum/battlepass_challenge_module/Destroy()
+	challenge_ref = null
+
+	. = ..()
 
 /datum/battlepass_challenge_module/proc/generate_module()
 	return TRUE

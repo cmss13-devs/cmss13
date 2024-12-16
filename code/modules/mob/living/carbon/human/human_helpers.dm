@@ -10,7 +10,7 @@
 	return g
 
 /proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color)
-	if(S.uses_skin_color)
+	if(S.flags & HAS_SKIN_COLOR)
 		if(S.special_body_types)
 			switch(limb_name)
 				if("torso")
@@ -323,13 +323,13 @@
 				g_eyes = 255
 				b_eyes = 0
 			if(INTENT_DISARM) //Blue
-				r_eyes = 0
-				g_eyes = 0
-				b_eyes = 255
+				r_eyes = 90
+				g_eyes = 90
+				b_eyes = 253
 			if(INTENT_GRAB) //Orange, since yellow doesn't show at all!
-				r_eyes = 248
-				g_eyes = 243
-				b_eyes = 43
+				r_eyes = 239
+				g_eyes = 167
+				b_eyes = 0
 			if(INTENT_HARM) //RED!
 				r_eyes = 255
 				g_eyes = 0

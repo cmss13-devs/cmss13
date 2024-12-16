@@ -34,6 +34,7 @@
 /turf/open/floor/coagulation
 	name = "coagulation"
 	icon = 'icons/turf/floors/coagulation.dmi'
+	icon_state = null
 
 /turf/open/floor/coagulation/icon0_0
 	icon_state = "0,0"

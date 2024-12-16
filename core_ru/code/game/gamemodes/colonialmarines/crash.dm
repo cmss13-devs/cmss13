@@ -33,8 +33,6 @@
 	var/shuttle_id = DROPSHIP_CRASH
 	var/obj/docking_port/mobile/crashmode/shuttle
 
-	var/bioscan_interval = INFINITY
-
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,7 +91,10 @@
 /datum/game_mode/crash/pre_setup()
 	if(GLOB.RoleAuthority)
 		for(var/datum/squad/squad as anything in GLOB.RoleAuthority.squads)
-			if(squad.faction == FACTION_MARINE && squad.name != "Root" && squad.name != "Alpha")
+			if(squad.faction != FACTION_MARINE)
+				continue
+
+			if(squad.name != "Root" && squad.name != SQUAD_MARINE_1)
 				squad.roundstart = FALSE
 				squad.usable = FALSE
 
@@ -247,8 +248,6 @@
 
 	shuttle_landed = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
-	// We delay this a little because the shuttle takes some time to land, and we want to the xenos to know the position of the marines.
-	bioscan_interval = world.time + 30 SECONDS
 
 ///////////////////////////
 //Checks to see who won///

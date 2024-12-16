@@ -34,6 +34,6 @@
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"
 	id = "synaptizine"
-	result = "hyperzine"
+	result = "synaptizine"
 	required_reagents = list("alkysine" = 1, "phoron" = 1)
 	result_amount = 2

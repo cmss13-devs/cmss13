@@ -1350,7 +1350,7 @@ RUCM REMOVE END*/
 
 						// Stamps
 						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-						stampoverlay.icon_state = "paper_stamp-uscm"
+						stampoverlay.icon_state = "paper_stamp-rd"
 						if(!P.stamped)
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
@@ -2354,6 +2354,12 @@ RUCM REMOVE END*/
 		for(var/client/staff in GLOB.admins)
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
 				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
+
+//RUCM START
+	else if(href_list["denyserverreboot"])
+		REDIS_PUBLISH("byond.round", "state" = "stop_auto_stop")
+		to_chat(world, SPAN_CENTERBOLD("Shutdown canceled."))
+//RUCM END
 
 	return
 

@@ -43,6 +43,7 @@ interface BattlepassData {
   rewards: BattlepassReward[];
   premium_rewards: BattlepassReward[];
   daily_challenges: BattlepassChallenge[];
+  roundly_challenges: BattlepassChallenge[];
 }
 
 export const Battlepass = (props) => {
@@ -191,6 +192,13 @@ const BattlepassInfoContainer = (props) => {
           <Box style={{ height: '10px' }} />
           XP: {data.xp} / {data.xp_tierup}
         </Box>
+        <Box style={{ height: '10px' }} />
+        <Box style={{ fontWeight: 'bold', fontSize: '16px' }}>Roundly:</Box>
+        {data.roundly_challenges.map((challenge, index) => (
+          <BattlepassChallengeUI challenge={challenge} key={index} />
+        ))}
+        <Box style={{ height: '10px' }} />
+        <Box style={{ fontWeight: 'bold', fontSize: '16px' }}>Daily:</Box>
         {data.daily_challenges.map((challenge, index) => (
           <BattlepassChallengeUI challenge={challenge} key={index} />
         ))}

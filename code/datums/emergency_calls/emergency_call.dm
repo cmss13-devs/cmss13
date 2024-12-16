@@ -135,6 +135,9 @@
 	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
 	random_call.activate()
+//RUCM START
+	REDIS_PUBLISH("byond.round", "type" = "round", "state" = "distress")
+//RUCM END
 	return
 
 /datum/emergency_call/proc/check_timelock(client/C, list/roles, hours)
@@ -272,7 +275,7 @@
 	if(announce_incoming)
 		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
+	message_admins("Distress beacon: [src.name] finalized, setting up candidates. [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"].")
 
 	//Let the deadchat know what's up since they are usually curious
 	for(var/mob/dead/observer/M in GLOB.observer_list)
@@ -324,7 +327,7 @@
 
 
 	if(spawn_max_amount && i < mob_max)
-		for(var/c in i to mob_max)
+		for(var/c in i to mob_max - 1)
 			create_member(null, override_spawn_loc)
 
 	candidates = list()

@@ -26,6 +26,10 @@
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
 
+/obj/structure/machinery/sensortower/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "sensor_tower")
+
 
 /obj/structure/machinery/sensortower/update_icon()
 	..()

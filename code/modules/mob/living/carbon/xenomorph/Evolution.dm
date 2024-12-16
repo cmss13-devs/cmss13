@@ -38,6 +38,9 @@
 	if(!castepick) //Changed my mind
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
+		return // Message will be handled by component
+
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
@@ -201,6 +204,8 @@
 		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
 
+	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
+
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
 		return FALSE
@@ -253,7 +258,7 @@
 
 	return TRUE
 
-// The queen de-evo, but on yourself. Only usable once
+// The queen de-evo, but on yourself.
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
@@ -261,23 +266,18 @@
 
 	if(!check_state())
 		return
-
 	if(is_ventcrawling)
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
 		return
-
 	if(!isturf(loc))
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
 		return
-
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
 		return
-
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return
-
 	if(lock_evolve)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
@@ -287,7 +287,6 @@
 
 
 	var/newcaste
-
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)
@@ -296,55 +295,33 @@
 	if(!newcaste)
 		return
 
-	var/confirm = tgui_alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]?", "Deevolution", list("Yes", "No"))
+	var/confirm = tgui_alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]? You won't be able to return to it for a time.", "Deevolution", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
 	if(!check_state())
 		return
-
 	if(is_ventcrawling)
 		return
-
 	if(!isturf(loc))
 		return
-
 	if(health <= 0)
 		return
-
 	if(lock_evolve)
 		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
-		return FALSE
+		return
 
-	var/xeno_type
-	var/level_to_switch_to = get_vision_level()
-	switch(newcaste)
-		if("Larva")
-			xeno_type = /mob/living/carbon/xenomorph/larva
-		if(XENO_CASTE_RUNNER)
-			xeno_type = /mob/living/carbon/xenomorph/runner
-		if(XENO_CASTE_DRONE)
-			xeno_type = /mob/living/carbon/xenomorph/drone
-		if(XENO_CASTE_SENTINEL)
-			xeno_type = /mob/living/carbon/xenomorph/sentinel
-		if(XENO_CASTE_SPITTER)
-			xeno_type = /mob/living/carbon/xenomorph/spitter
-		if(XENO_CASTE_LURKER)
-			xeno_type = /mob/living/carbon/xenomorph/lurker
-		if(XENO_CASTE_WARRIOR)
-			xeno_type = /mob/living/carbon/xenomorph/warrior
-		if(XENO_CASTE_DEFENDER)
-			xeno_type = /mob/living/carbon/xenomorph/defender
-		if(XENO_CASTE_BURROWER)
-			xeno_type = /mob/living/carbon/xenomorph/burrower
+
+	SEND_SIGNAL(src, COMSIG_XENO_DEEVOLVE)
+
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
+
+	var/level_to_switch_to = get_vision_level()
+	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
+
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
-
-	new_xeno.built_structures = built_structures.Copy()
-
-	built_structures = null
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
@@ -353,7 +330,11 @@
 			qdel(new_xeno)
 		return
 
+	new_xeno.built_structures = built_structures.Copy()
+	built_structures = null
+
 	log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
+
 	if(mind)
 		mind.transfer_to(new_xeno)
 	else
@@ -364,19 +345,30 @@
 			new_xeno.client.pixel_y = 0
 
 	//Regenerate the new mob's name now that our player is inside
+	if(newcaste == XENO_CASTE_LARVA)
+		var/mob/living/carbon/xenomorph/larva/new_larva = new_xeno
+		new_larva.larva_state = LARVA_STATE_NORMAL
+		new_larva.update_icons()
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
+
+	// If the player has lost the Deevolve verb before, don't allow them to do it again
+	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))
+		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
+
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("We regress into our previous form."))
 
+	transfer_observers_to(new_xeno)
+
 	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
 		GLOB.round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
+	SSround_recording.recorder.stop_tracking(src)
 	SSround_recording.recorder.track_player(new_xeno)
 
-	src.transfer_observers_to(new_xeno)
-
 	qdel(src)
+	return
 
 /mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
 	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type

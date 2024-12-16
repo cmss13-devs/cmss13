@@ -163,6 +163,8 @@
 	var/ground_offset_x = 0
 	/// How much to offset the item randomly either way alongside Y visually
 	var/ground_offset_y = 0
+	/// bypass any species specific OnMob overlay blockers
+	var/force_overlays_on = FALSE
 
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
@@ -211,15 +213,15 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				if(!indestructible)
+				if(!explo_proof)
 					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				if(!indestructible)
+				if(!explo_proof)
 					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			if(!indestructible)
+			if(!explo_proof)
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 				deconstruct(FALSE)
 
@@ -237,13 +239,20 @@
 /obj/item/proc/suicide_act(mob/user)
 	return
 
-/*Global item proc for all of your unique item skin needs. Works with any
-item, and will change the skin to whatever you specify here. You can also
-manually override the icon with a unique skin if wanted, for the outlier
-cases. Override_icon_state should be a list.*/
+/**
+ * Global item proc for all of your unique item skin needs. Works with any
+ * item, and will change the skin to whatever you specify here. You can also
+ * manually override the icon with a unique skin if wanted, for the outlier
+ * cases. Override_icon_state should be a list. Generally requires NO_GAMEMODE_SKIN
+ * to not be set for changes to be applied.
+ *
+ * Returns whether changes were applied.
+ */
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(type != expected_type)
-		return
+		return FALSE
+	if(flags_atom & NO_GAMEMODE_SKIN)
+		return FALSE
 
 	var/new_icon_state
 	var/new_protection
@@ -252,18 +261,21 @@ cases. Override_icon_state should be a list.*/
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-			item_state = new_item_state ? new_item_state : "s_" + item_state
-		if("desert")
-			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-			item_state = new_item_state ? new_item_state : "d_" + item_state
-		if("classic")
-			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-			item_state = new_item_state ? new_item_state : "c_" + item_state
+	if(!isnull(icon_state) || new_icon_state || new_item_state)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("snow")
+				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+				item_state = new_item_state ? new_item_state : "s_" + item_state
+			if("desert")
+				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+				item_state = new_item_state ? new_item_state : "d_" + item_state
+			if("classic")
+				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+				item_state = new_item_state ? new_item_state : "c_" + item_state
 	if(new_protection)
 		min_cold_protection_temperature = new_protection
+
+	return TRUE
 
 /obj/item/get_examine_text(mob/user)
 	. = list()

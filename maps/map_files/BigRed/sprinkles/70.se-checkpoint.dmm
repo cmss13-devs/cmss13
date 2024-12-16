@@ -1,8 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ax" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor,
-/area/bigred/ground/security)
+"aH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/bigredv2/outside/filtration_cave_cas)
+"aM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement2,
+/area/bigredv2/outside/filtration_cave_cas)
 "aN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
@@ -22,15 +26,6 @@
 /obj/item/device/motiondetector,
 /turf/open/floor,
 /area/bigred/ground/security)
-"cO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/filtration_cave_cas)
-"dz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/asteroidwarning/southeast,
-/area/bigredv2/outside/filtration_cave_cas)
 "el" = (
 /obj/structure/surface/table/almayer,
 /obj/item/restraint/handcuffs,
@@ -40,6 +35,10 @@
 /obj/structure/closet/secure_closet/marshal,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
+"gr" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/asphalt/cement/cement3,
+/area/bigredv2/outside/filtration_cave_cas)
 "hz" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -61,49 +60,34 @@
 	},
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"kG" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/southeast,
-/area/bigredv2/outside/filtration_cave_cas)
-"kL" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/northwest,
-/area/bigredv2/outside/filtration_cave_cas)
 "kX" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
-"mp" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/northwest,
+"nY" = (
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "oT" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_cave_cas)
-"pb" = (
-/obj/item/tool/warning_cone,
-/turf/open/floor/asteroidwarning/north,
+"pI" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
-"pJ" = (
-/obj/item/tool/warning_cone,
-/turf/open/floor/asteroidwarning/northeast,
-/area/bigredv2/outside/se)
 "pV" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigred/ground/security)
-"qg" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/outside/filtration_cave_cas)
 "qy" = (
 /obj/item/device/radio,
 /obj/structure/surface/table/almayer,
 /turf/open/floor,
 /area/bigred/ground/security)
+"qS" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/bigredv2/outside/se)
 "rD" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -113,6 +97,10 @@
 "rF" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"sd" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor,
 /area/bigred/ground/security)
 "tV" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -147,10 +135,6 @@
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor,
 /area/bigred/ground/security)
-"wi" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/filtration_cave_cas)
 "xa" = (
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
@@ -169,54 +153,54 @@
 	},
 /turf/open/floor,
 /area/bigred/ground/security)
-"zE" = (
+"xw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/west,
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
-"Aq" = (
+"An" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/filtration_cave_cas)
 "AY" = (
 /turf/open/floor,
 /area/bigred/ground/security)
-"AZ" = (
-/turf/open/floor/asteroidwarning/north,
+"DT" = (
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
-"EV" = (
+"Es" = (
+/turf/open/asphalt/cement/cement14,
+/area/bigredv2/outside/filtration_cave_cas)
+"Fv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/east,
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
+"Gi" = (
+/turf/open/asphalt/cement/cement9,
+/area/bigredv2/outside/filtration_cave_cas)
+"HM" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/se)
-"Ge" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/asteroidwarning/northeast,
-/area/bigredv2/outside/filtration_cave_cas)
-"Gm" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/filtration_cave_cas)
-"GJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/filtration_cave_cas)
-"HH" = (
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/outside/filtration_cave_cas)
-"Ih" = (
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/filtration_cave_cas)
 "IS" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
+"KD" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement1/north,
+/area/bigredv2/outside/filtration_cave_cas)
 "KO" = (
 /obj/item/trash/sosjerky,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigred/ground/security)
+"Lw" = (
+/obj/effect/landmark/hunter_primary,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement/cement9,
+/area/bigredv2/outside/filtration_cave_cas)
 "LX" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -224,10 +208,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigred/ground/security)
+"Mo" = (
+/turf/open/asphalt/cement/cement12,
+/area/bigredv2/outside/filtration_cave_cas)
 "Mq" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
+"Nv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement/cement15,
+/area/bigredv2/outside/filtration_cave_cas)
 "NQ" = (
 /obj/structure/largecrate,
 /turf/open/floor/greengrid,
@@ -239,18 +231,20 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor,
 /area/bigred/ground/security)
-"OD" = (
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/se)
-"OM" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/southwest,
+"On" = (
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/filtration_cave_cas)
+"Ot" = (
+/turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/filtration_cave_cas)
 "Pf" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor,
 /area/bigred/ground/security)
+"Pg" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/bigredv2/outside/se)
 "PS" = (
 /turf/open/mars,
 /area/bigredv2/outside/se)
@@ -267,6 +261,16 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
+"Rv" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
+"RA" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement4,
+/area/bigredv2/outside/filtration_cave_cas)
 "Sr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -279,12 +283,11 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigred/ground/security)
-"Ue" = (
-/obj/structure/machinery/camera/autoname,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/filtration_cave_cas)
-"Vg" = (
-/turf/open/floor/asteroidwarning/west,
+"Tw" = (
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "Vn" = (
 /obj/structure/surface/table/almayer,
@@ -296,11 +299,17 @@
 /obj/structure/largecrate,
 /turf/open/floor,
 /area/bigred/ground/security)
-"Wa" = (
-/turf/open/floor/asteroidwarning/southeast,
-/area/bigredv2/outside/se)
-"XU" = (
-/turf/open/floor/asteroidwarning/southwest,
+"XS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/filtration_cave_cas)
+"XX" = (
+/obj/effect/landmark/crap_item,
+/turf/open/asphalt/cement/cement1/north,
+/area/bigredv2/outside/filtration_cave_cas)
+"Ya" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "Yo" = (
 /obj/structure/surface/rack,
@@ -314,10 +323,10 @@
 	},
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"Zu" = (
-/obj/effect/landmark/hunter_primary,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/asteroidwarning/northeast,
+"Zn" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "ZK" = (
 /obj/effect/landmark/crap_item,
@@ -329,10 +338,10 @@
 
 (1,1,1) = {"
 PS
-pJ
-EV
-OD
-Wa
+HM
+qS
+qS
+Pg
 kX
 kX
 kX
@@ -361,10 +370,10 @@ Qo
 "}
 (3,1,1) = {"
 oT
-kL
-Vg
-zE
-OM
+pI
+xw
+nY
+Es
 SF
 kd
 AY
@@ -377,10 +386,10 @@ Qo
 "}
 (4,1,1) = {"
 oT
-Ge
-wi
-wi
-kG
+Gi
+KD
+XX
+Ot
 SF
 Vn
 xj
@@ -409,10 +418,10 @@ Qo
 "}
 (6,1,1) = {"
 oT
-mp
-Vg
-Vg
-XU
+aM
+Tw
+gr
+Es
 kX
 kX
 kX
@@ -425,10 +434,10 @@ Qo
 "}
 (7,1,1) = {"
 oT
-Ue
-Ih
-Aq
-qg
+Ya
+On
+On
+Mo
 kX
 VI
 VI
@@ -441,12 +450,12 @@ Qo
 "}
 (8,1,1) = {"
 oT
-AZ
-Ih
-Aq
-qg
+DT
+XS
+On
+Mo
 kX
-ax
+sd
 AY
 uk
 uk
@@ -457,10 +466,10 @@ Qo
 "}
 (9,1,1) = {"
 oT
-cO
-Aq
-Ih
-HH
+Fv
+XS
+XS
+Mo
 ve
 uk
 uk
@@ -473,10 +482,10 @@ Qo
 "}
 (10,1,1) = {"
 oT
-Gm
-Ih
-Ih
-HH
+RA
+On
+Zn
+Mo
 kX
 AY
 Pf
@@ -489,10 +498,10 @@ Qo
 "}
 (11,1,1) = {"
 oT
-pb
-Ih
-Aq
-qg
+Rv
+On
+XS
+aH
 kX
 vH
 ZK
@@ -505,10 +514,10 @@ Qo
 "}
 (12,1,1) = {"
 ie
-Zu
-GJ
-GJ
-dz
+Lw
+An
+An
+Nv
 Qo
 Qo
 Qo

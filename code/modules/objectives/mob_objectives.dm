@@ -8,7 +8,8 @@
 	controller = TREE_MARINE
 	/// List of list of active corpses per tech-faction ownership
 	var/list/corpses = list()
-	var/list/scored_corpses = list()
+	var/list/scored_other_corpses = list()
+	var/list/scored_humansynth_corpses = list()
 
 /datum/cm_objective/recover_corpses/New()
 	. = ..()
@@ -54,7 +55,7 @@
 		return
 
 	// This mob has already been scored before
-	if(LAZYISIN(scored_corpses, dead_mob))
+	if(LAZYISIN(scored_other_corpses, dead_mob) || LAZYISIN(scored_humansynth_corpses, dead_mob))
 		return
 
 	LAZYDISTINCTADD(corpses, dead_mob)
@@ -117,7 +118,7 @@
 				if(isqueen(X)) //Queen is Tier 0 for some reason...
 					value = OBJECTIVE_ABSOLUTE_VALUE
 
-	else if(ishumansynth_strict(target))
+	else if(ishumansynth_strict(target) && length(scored_humansynth_corpses) <= 49) // Limit human corpse recovery to 5 total points (.1 each)
 		return OBJECTIVE_LOW_VALUE
 
 	return value
@@ -141,7 +142,10 @@
 			award_points(corpse_val)
 
 			corpses -= target
-			scored_corpses += target
+			if(ishumansynth_strict(target))
+				scored_humansynth_corpses += target
+			else
+				scored_other_corpses += target
 
 			if (isxeno(target))
 				UnregisterSignal(target, COMSIG_XENO_REVIVED)

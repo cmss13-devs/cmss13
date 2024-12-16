@@ -251,7 +251,7 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      {access_level >= 5 && (
+      {access_level >= 4 && (
         <Section>
           <h1 align="center">Core Security Protocols</h1>
           <Stack>

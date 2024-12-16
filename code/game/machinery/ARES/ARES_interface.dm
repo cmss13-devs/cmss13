@@ -4,7 +4,7 @@
 	desc = "A console built to interface with ARES, allowing for 1:1 communication."
 	icon = 'icons/obj/structures/machinery/ares.dmi'
 	icon_state = "console"
-	exproof = TRUE
+	explo_proof = TRUE
 
 	var/current_menu = "login"
 	var/last_menu = ""

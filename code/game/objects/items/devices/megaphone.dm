@@ -51,6 +51,6 @@
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 			langchat_long_listeners += listener
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
-		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language(), tts_heard_list = tts_heard_list)
+		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language(), tts_heard_list)
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

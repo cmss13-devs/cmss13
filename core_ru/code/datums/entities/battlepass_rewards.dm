@@ -17,6 +17,7 @@ GLOBAL_LIST_INIT_TYPED(battlepass_rewards, /datum/view_record/battlepass_reward,
 	var/reward_type
 	var/reward_data
 
+	// untracked data
 	var/list/mapped_reward_data
 
 BSQL_PROTECT_DATUM(/datum/entity/battlepass_reward)

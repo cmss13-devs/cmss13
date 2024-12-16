@@ -31,7 +31,7 @@
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70
-	tremor_cooldown = 450
+
 
 	minimum_evolve_time = 7 MINUTES
 

@@ -1,12 +1,12 @@
 /datum/equipment_preset/crash
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 //*****************************************************************************************************//
 
 /datum/equipment_preset/synth/uscm/crash
 	name = "Special Ship Support Synthetic"
-	flags = NO_FLAGS
 
 /datum/equipment_preset/synth/uscm/crash/load_gear(mob/living/carbon/human/new_human)
 
@@ -26,7 +26,6 @@
 
 /datum/equipment_preset/crash/commander
 	name = "Special Ship Commander"
-	flags = NO_FLAGS
 
 	assignment = JOB_CRASH_CO
 	rank = JOB_CRASH_CO
@@ -104,7 +103,6 @@
 
 /datum/equipment_preset/crash/head_surgeron
 	name = "Special Ship Head Surgeon" //CMO
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_CRASH_CMO
@@ -140,7 +138,6 @@
 
 /datum/equipment_preset/crash/bcm
 	name = "Special Ship Crew Master" //CE
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_CRASH_CHIEF_ENGINEER
@@ -172,7 +169,6 @@
 
 /datum/equipment_preset/crash/marine/pfc
 	name = "USCM Squad Rifleman (PFC)"
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
@@ -199,7 +195,6 @@
 
 /datum/equipment_preset/crash/marine/spec
 	name = "USCM Squad Squad Weapons Specialist"
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
@@ -234,7 +229,6 @@
 
 /datum/equipment_preset/crash/marine/sg
 	name = "USCM Squad Smartgunner"
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
@@ -264,7 +258,6 @@
 
 /datum/equipment_preset/crash/marine/medic
 	name = "USCM Squad Hospital Corpsman"
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
@@ -298,7 +291,6 @@
 
 /datum/equipment_preset/crash/marine/sl
 	name = "USCM Squad Squad Leader"
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
@@ -333,7 +325,6 @@
 
 /datum/equipment_preset/crash/marine/engineer
 	name = "USCM Squad Combat Technician"
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI

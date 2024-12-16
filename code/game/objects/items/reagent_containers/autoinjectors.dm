@@ -243,6 +243,13 @@
 	display_maptext = TRUE
 	maptext_label = "UZ"
 
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
+	icon_state = uses_left ? "stimpack" : "stimpack0"
+	if((isstorage(loc) || ismob(loc)) && display_maptext)
+		maptext = SPAN_LANGCHAT("[maptext_label]")
+	else
+		maptext = ""
+
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "white autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
@@ -264,6 +271,13 @@
 		..()
 	else
 		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
+
+	if(uses_left == 0)
+		addtimer(CALLBACK(src, PROC_REF(remove_crystal)), 120 SECONDS)
+
+/obj/item/reagent_container/hypospray/autoinjector/yautja/proc/remove_crystal()
+	visible_message(SPAN_DANGER("[src] collapses into nothing."))
+	qdel(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"

@@ -267,7 +267,7 @@
 	anchored = TRUE
 	density = FALSE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	invisibility = 101 // no looking at it with alt click
 
 	var/obj/structure/machinery/m56d_hmg/auto/hmg

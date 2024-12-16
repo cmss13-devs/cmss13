@@ -916,7 +916,7 @@
 	name = "Colonial Space Grunts"
 	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
 
-/obj/item/paper/colonial_grunts/Initialize(mapload, ...)
+/obj/item/paper/colonial_grunts/LateInitialize()
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
 	update_icon()

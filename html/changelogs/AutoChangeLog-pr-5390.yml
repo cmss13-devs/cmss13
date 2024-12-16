@@ -1,0 +1,4 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - rscadd: "new dummy tablet sprite"

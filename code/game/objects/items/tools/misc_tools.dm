@@ -471,7 +471,11 @@
 	desc = "Lift it for strength, or drop it on your toe for instant enlightenment, either way this dumbbell delivers results."
 	icon_state = "dumbbell"
 	item_state = "dumbbell"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+	)
 
 /obj/item/tool/dumbbell/alt
 	icon_state = "dumbbell_2"

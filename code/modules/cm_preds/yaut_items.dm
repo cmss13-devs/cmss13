@@ -531,8 +531,8 @@
 		to_chat(user, SPAN_WARNING("A hunting ground has already been chosen."))
 		return
 
-	to_chat(user, SPAN_NOTICE("you choose [choice] as the hunting ground."))
-	message_all_yautja("[user.real_name] Has chosen [choice] as the new hunting ground")
+	to_chat(user, SPAN_NOTICE("You choose [choice] as the hunting ground."))
+	message_all_yautja("[user.real_name] has chosen [choice] as the new hunting ground.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) spawned [choice] (hunting grounds)"))
 	if(SSmapping.lazy_load_template(potential_hunting_grounds[choice]))
 		hunting_ground_activated = TRUE

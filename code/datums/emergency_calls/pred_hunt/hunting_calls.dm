@@ -10,7 +10,7 @@
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
 
 /datum/emergency_call/pred/mixed
-	name = "Hunting Grounds multi Faction Small"
+	name = "Hunting Grounds - Multi Faction - Small"
 	hunt_name = "Multi Faction (small)"
 	mob_max = 4
 	mob_min = 1
@@ -61,7 +61,7 @@
 	show_blurb(hunted, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
 
 /datum/emergency_call/pred/mixed/medium
-	name = "Hunting Grounds multi Faction Medium"
+	name = "Hunting Grounds - Multi Faction - Medium"
 	hunt_name = "Multi Faction (group)"
 	mob_max = 6
 	mob_min = 4
@@ -72,7 +72,7 @@
 
 
 /datum/emergency_call/pred/mixed/hard
-	name = "Hunting Grounds multi Faction Large"
+	name = "Hunting Grounds - Multi Faction - Large"
 	hunt_name = "Multi Faction (large)"
 	mob_max = 8
 	mob_min = 6
@@ -82,7 +82,7 @@
 	max_mercs = 1
 
 /datum/emergency_call/pred/mixed/harder
-	name = "Hunting Grounds multi Faction Larger"
+	name = "Hunting Grounds - Multi Faction - Larger"
 	hunt_name = "Multi Faction (larger)"
 	mob_max = 12
 	mob_min = 6
@@ -92,8 +92,8 @@
 	max_mercs = 2
 
 /datum/emergency_call/pred/xeno
-	name = "Hunting Grounds Xenos Small"
-	hunt_name = "serpents (small)"
+	name = "Hunting Grounds - Xenos - Small"
+	hunt_name = "Serpents (small)"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
 	mob_max = 4
 	mob_min = 1
@@ -136,8 +136,8 @@
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
 
 /datum/emergency_call/pred/xeno/med
-	name = "Hunting Grounds Xenos Medium"
-	hunt_name = "serpents (group)"
+	name = "Hunting Grounds - Xenos - Medium"
+	hunt_name = "Serpents (group)"
 	mob_max = 6
 	mob_min = 3
 	hostility = TRUE
@@ -145,8 +145,8 @@
 	max_xeno_t2 = 1
 
 /datum/emergency_call/pred/xeno/hard
-	name = "Hunting Grounds Xenos Large"
-	hunt_name = "serpents (large)"
+	name = "Hunting Grounds - Xenos - Large"
+	hunt_name = "Serpents (large)"
 	mob_max = 8
 	mob_min = 4
 	hostility = TRUE

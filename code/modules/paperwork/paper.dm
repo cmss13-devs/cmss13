@@ -11,6 +11,11 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
@@ -56,22 +61,28 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
+	switch(icon_state)
+		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+			return
+
+	if(!info)
+		icon_state = "paper"
 		return
-	if(info)
-		if(icon_state == "paper_wy")
+
+	switch(icon_state)
+		if("paper_wy")
 			icon_state = "paper_wy_words"
 			return
-		if(icon_state == "paper_uscm")
+		if("paper_uscm")
 			icon_state = "paper_uscm_words"
 			return
-		if(icon_state == "paper_flag")
+		if("paper_flag")
 			icon_state = "paper_flag_words"
 			item_state = "paper_flag"
 			return
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		else
+			icon_state = "paper_words"
+	return
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
@@ -492,10 +503,6 @@
 /obj/item/paper/djstation
 	name = "DJ Listening Outpost"
 	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.7 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Mining Channel</li><li>134.7 - Cargo Channel</li>"
-
-/obj/item/paper/warhead_recycle
-	name = "USCM Recycling Efforts"
-	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
 
 /obj/item/paper/flag
 	name = "paper flag"
@@ -918,7 +925,7 @@
 	name = "Liaison Colony Briefing"
 	desc = "A brief from the Company about the colony the ship is responding to."
 	icon_state = "paper_wy_words"
-	
+
 	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
 
 /obj/item/paper/liaison_brief/Initialize(mapload, ...)
@@ -927,6 +934,6 @@
 		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
 	else
 		info = file2text(placeholder)
-		
+
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])

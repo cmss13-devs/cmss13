@@ -1,0 +1,10 @@
+author: "Joe Lampost, Beaglegaming, harryob, Thwomper, Nanu308"
+delete-after: True
+changes:
+  - rscadd: "Added Different equipment pre-sets only for use inside a hunting ground map as part of ERTs"
+  - rscadd: "Adds a hunts master console that can spawn ERTs every 20 minutes"
+  - rscadd: "Adds another console for predators to use to spawn hunting ground lazy templates"
+  - bugfix: "Fixed the lighting on lazy templates (thanks harry)"
+  - soundadd: "added a sound for spawing in as an ERT member on the hunting grounds"
+  - mapadd: "added a new type of lazy_template for hunting grounds"
+  - bugfix: "dirtgrassborder now has the correct north and south"

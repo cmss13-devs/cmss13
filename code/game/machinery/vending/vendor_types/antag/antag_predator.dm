@@ -135,16 +135,16 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 
 	if(mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
-			if("dragon")
+			if("Dragon")
 				icon_state = "halfarmor_elder_tr"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
-			if("swamp")
+			if("Swamp")
 				icon_state = "halfarmor_elder_joshuu"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
-			if("enforcer")
+			if("Enforcer")
 				icon_state = "halfarmor_elder_feweh"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
-			if("collector")
+			if("Collector")
 				icon_state = "halfarmor_elder_n"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 		user.update_inv_wear_suit()

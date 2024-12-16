@@ -48,12 +48,10 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
 /area/shiva/interior/oob/dev_room
 	name = "Shiva's Snowball - Secret Room"
-	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
 	icon_state = "shiva"
 
 //telecomms areas - exterior

@@ -124,7 +124,7 @@
 	if(target_is_healer)
 		damage_taken_mod = 1
 
-	for(var/datum/action/xeno_action/activable/apply_salve/source_action in usr.actions)
+	for(var/datum/action/xeno_action/activable/apply_salve/source_action in actions)
 		source_action.apply_cooldown()
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)

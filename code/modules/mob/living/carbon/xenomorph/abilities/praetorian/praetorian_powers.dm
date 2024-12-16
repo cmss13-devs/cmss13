@@ -762,6 +762,9 @@
 	if (!raging_valkyrie.check_state() || raging_valkyrie.action_busy)
 		return
 
+	if (!isxeno(target))
+		return
+
 	if (buffing_target.is_dead())
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
 		return
@@ -778,12 +781,6 @@
 		return
 
 	if (!check_and_use_plasma_owner())
-		return
-
-	if (!isxeno(target))
-		return
-
-	if (!isxeno_human(target))
 		return
 
 	if (!behavior.use_internal_fury_ability(rage_cost))
@@ -858,13 +855,16 @@
 
 
 
-/datum/action/xeno_action/activable/high_gallop/use_ability(atom/a)
+/datum/action/xeno_action/activable/high_gallop/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/valkyrie = owner
 
-	if (!action_cooldown_check())
+	if (!istype(valkyrie) || !valkyrie.check_state() || !action_cooldown_check())
 		return
 
-	if (!valkyrie.check_state())
+	if(!A || A.layer >= FLY_LAYER || !isturf(valkyrie.loc))
+		return
+
+	if (!check_plasma_owner())
 		return
 
 	// Transient turf list
@@ -874,7 +874,7 @@
 
 	// Code to get a 2x3 area of turfs
 	var/turf/root = get_turf(valkyrie)
-	var/facing = Get_Compass_Dir(valkyrie, a)
+	var/facing = Get_Compass_Dir(valkyrie, A)
 	var/turf/infront = get_step(root, facing)
 	var/turf/left = get_step(root, turn(facing, 90))
 	var/turf/right = get_step(root, turn(facing, -90))
@@ -886,31 +886,25 @@
 	if(!(!infront || infront.density) && !(!right || right.density))
 		temp_turfs += infront_right
 
-	for(var/turf/ground in temp_turfs)
-		if (!istype(ground))
+	for(var/turf/range_turf in temp_turfs)
+		if (!istype(range_turf))
 			continue
 
-		if (ground.density)
+		if (range_turf.density)
 			continue
 
-		target_turfs += ground
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(ground, 0.25 SECONDS)
+		target_turfs += range_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(range_turf, 0.25 SECONDS)
 
-		var/turf/next_turf = get_step(ground, facing)
+		var/turf/next_turf = get_step(range_turf, facing)
 		if (!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
-
-		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
-			telegraph_atom_list -= XT
-			qdel(XT)
-		return
-
 	if(!length(target_turfs))
-		to_chat(valkyrie, SPAN_XENOWARNING("There's not enough room!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have enough room!"))
 		return
 
 	if(!action_cooldown_check() || !check_and_use_plasma_owner())
@@ -922,22 +916,21 @@
 	valkyrie.emote("roar")
 	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
-
-	for (var/turf/turfs in target_turfs)
-		for (var/mob/living/carbon/human in turfs)
-			if (human.stat == DEAD)
+	for (var/turf/range in target_turfs)
+		for (var/mob/living/carbon/target in range)
+			if (target.stat == DEAD)
 				continue
 
-			if(!isxeno_human(human) || valkyrie.can_not_harm(human))
+			if(!isxeno_human(target) || valkyrie.can_not_harm(target))
 				continue
 
-			if(human.mob_size >= MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				continue
 
-			human.apply_effect(get_xeno_stun_duration(human, 0.5), WEAKEN)
-			new /datum/effects/xeno_slow(human, valkyrie, ttl = get_xeno_stun_duration(human, 25))
+			target.apply_effect(get_xeno_stun_duration(target, 0.5), WEAKEN)
+			new /datum/effects/xeno_slow(target, valkyrie, ttl = get_xeno_stun_duration(target, 25))
 
-		for (var/obj/item/explosive/grenade/grenades in turfs)
+		for (var/obj/item/explosive/grenade/grenades in range) // sends back grenades
 			var/direction = get_dir(valkyrie, grenades)
 			var/turf/target_destination = get_ranged_target_turf(grenades, direction, 3)
 

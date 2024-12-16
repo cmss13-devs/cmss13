@@ -11,11 +11,15 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "aac" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfpods"
+/obj/structure/surface/rack,
+/obj/item/clothing/head/helmet/marine/veteran/cmb{
+	pixel_y = 12;
+	pixel_x = -6
 	},
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -196,6 +200,12 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -231,6 +241,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
+"aaZ" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/head/CMB/beret,
+/turf/open/floor/prison/darkred2,
+/area/desert_dam/building/security/warden)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -263,6 +279,12 @@
 /obj/item/trash/cigbutt/bcigbutt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"abg" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -308,12 +330,26 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
+"abq" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/building/security/armory)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
 "abs" = (
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
+"abt" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
+/turf/open/floor/prison/darkred2/northwest,
+/area/desert_dam/building/security/armory)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -19418,11 +19454,6 @@
 "bNQ" = (
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/warden)
-"bNS" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
-/turf/open/floor/prison/darkred2/northwest,
-/area/desert_dam/building/security/armory)
 "bNT" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -20175,11 +20206,6 @@
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/darkyellow2/north,
 /area/desert_dam/building/security/prison)
-"bRE" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
-/turf/open/floor/prison/darkred2/west,
-/area/desert_dam/building/security/armory)
 "bRF" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
@@ -25065,12 +25091,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_cargo)
-"cqm" = (
-/obj/structure/surface/table,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/head/beret/sec/warden,
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/warden)
 "cqn" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -29267,12 +29287,6 @@
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
-"cJr" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot,
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/armory)
 "cJs" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/flashbangs{
@@ -61725,7 +61739,7 @@ bNi
 bQH
 bTw
 bWB
-cqm
+aaZ
 bJU
 bBO
 bYs
@@ -62657,12 +62671,12 @@ bHu
 bvD
 bKR
 bNw
-bNS
-bRE
+abt
+abq
 bVJ
 bRF
 cyH
-cJr
+aac
 bNw
 bZJ
 bZJ
@@ -62896,7 +62910,7 @@ bRF
 bRF
 bRF
 cyH
-cJr
+aaR
 bNw
 bZL
 bZJ
@@ -78103,7 +78117,7 @@ clE
 dTs
 dTs
 dTs
-aac
+abg
 dTs
 dTs
 dTs

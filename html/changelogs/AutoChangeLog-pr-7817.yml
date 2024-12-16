@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "new xeno gib animations and gib remains for almost all castes"
+  - bugfix: "xeno gib animations looping weirdly"

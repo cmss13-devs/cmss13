@@ -11,13 +11,14 @@ SUBSYSTEM_DEF(yautja_panel)
 
 	/// The global data.
 	var/list/global_data
-	/// Whether an early update of the global data is queued.
-	var/early_queued = FALSE
+
 	/// Whether global data is reloading or not.
 	var/reloading_data = FALSE
 
 /datum/controller/subsystem/yautja_panel/fire(resumed)
+	reloading_data = TRUE
 	global_data = populate_clan_data()
+	reloading_data = FALSE
 
 /client/verb/yautja_panel()
 	set name = "Yautja Clan Panel"

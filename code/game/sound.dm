@@ -115,7 +115,7 @@
 	source = new_source
 
 	if(!source)
-		error("Set sound template source to an invalid value. Old: [old_souce] New: [new_source] File: [file]") //debug
+		error("Set sound template source to an invalid value. Old: [old_source] New: [new_source] File: [file]") //debug
 		return
 	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_source_qdel))
 

@@ -616,13 +616,6 @@
 /obj/item/ammo_box/magazine/nsg23/heap/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/nsg23/training // this will be removed later
-	name = "magazine box (NSG 23 Training x 12)"
-	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/rubber
-
-/obj/item/ammo_box/magazine/nsg23/training/empty
-	empty = TRUE
-
 //-----------------------Spearhead Autorevolver Speed Loaders Box-----------------------
 
 /obj/item/ammo_box/magazine/spearhead

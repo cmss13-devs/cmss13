@@ -111,9 +111,11 @@
 	if(source)
 		UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 
+	var/atom/old_source = source //debug
 	source = new_source
 
 	if(!source)
+		error("Set sound template source to an invalid value. Old: [old_souce] New: [new_source] File: [file]") //debug
 		return
 	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_source_qdel))
 

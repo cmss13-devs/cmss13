@@ -172,6 +172,9 @@
 /// From /datum/tutorial/proc/update_objective() : (new_objective)
 #define COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE "mob_tutorial_update_objective"
 
+/// From /datum/tutorial/marine/hospital_corpsman_advanced/proc/handle_pill_bottle()
+#define COMSIG_MOB_TUTORIAL_HELPER_RETURN "mob_tutorial_helper_return"
+
 /// From /mob/proc/swap_hand() : ()
 #define COMSIG_MOB_SWAPPED_HAND "mob_swapped_hand"
 

@@ -7,6 +7,9 @@
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 6
 	var/ontime
+	var/stage = 0
+	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
+	var/handle_pill_bottle_status = 0
 
 // ------------ CONTENTS ------------ //
 //
@@ -16,6 +19,10 @@
 // 1.3 Lung Damage
 // 1.4 Internal Organ Damage (Head)
 // 1.5 Liver and Kidney Damage
+//
+// Section 2 - Revivals
+// 2.1 Defib
+// 2.2 Revival Conditions
 //
 // Section 3 - Field Surgery
 // 3.1 Surgical Damage Treatment
@@ -144,12 +151,12 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_2()
 	message_to_player("Depending on the levels of damage to the heart, patients will experience escelating symptoms.")
 	message_to_player("<b>Heart - Slightly Bruised (Damage: 1-9) |</b> Slowly creates up to 21 points of <b>Oxygen Damage</b>.")
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_3)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_3)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_3()
 	message_to_player("<b>Heart - Bruised (Damage: 10-29) |</b> Rapidly creates 50 points of <b>Oxygen Damage</b>, and continues to create Oxygen damage at a slower pace indefinitely past this point.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_4)), 8 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_4)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_4()
 	message_to_player("<b>Heart - Broken (Damage: 30+) |</b> The Heart has been damaged so severely, that it can no longer function. A broken Heart will rapidly and indefinitely create <b>Oxygen and Toxin Damage</b>, with no damage limit.")
@@ -375,7 +382,7 @@
 	message_to_player("The Lungs, alongside other functions, allow Marines to breathe while carrying out their combat-related duties.")
 	message_to_player("Like Heart damage, <b>Lung Damage</b> can be caused by moving with an <b>Unsplinted Chest Fracture, Extreme Brute Damage</b>, or being shot by an <b>Armor Piercing Bullet</b>.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_2)), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_2)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_2()
 
@@ -384,7 +391,7 @@
 	message_to_player("Once the Lungs have taken more than <b>30 Points of Internal Damage</b>, they will become <b>Ruptured</b>.")
 	message_to_player("<b>Ruptured Lungs</b> will create <b>Oxygen Damage</b> at a rapid pace, as well as causing afflicted patients to cough up blood.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_3)), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_3)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_3()
 
@@ -502,7 +509,7 @@
 
 	message_to_player("Well done. Next, we need to stabilize Mr Dummys <b>Ruptured Lungs</b> with <b>Peridaxon</b>.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_7)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_7)), 5 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_7(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
@@ -605,7 +612,7 @@
 	message_to_player("While the presence of the former is sometimes debated in particular Marines, a Hospital Corpsman remains responsible for the health of both.")
 	message_to_player("Both Brain and Eye damage are directly caused as a result of excessive <b>Brute Damage Injuries</b> to head.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_2)), 17 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_2)), 19 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_2()
 
@@ -659,7 +666,7 @@
 			remove_highlight(pen)
 
 			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Pen Light</b> has reported that: notice that the Dummys eyes are not reacting to the light, and the pupils of both eyes are not constricting with the light shine at all, the Dummy is probably [SPAN_RED("blind")].")
-			message_to_player("We also see that: the Dummys pupils are >not consensually constricting when light is separately applied to each eye, meaning possible [SPAN_ORANGE("brain damage")].")
+			message_to_player("We also see that: the Dummys pupils are not consensually constricting when light is separately applied to each eye, meaning possible [SPAN_ORANGE("brain damage")].")
 			message_to_player("This tells you that Mr Dummy has <b>Broken Eyes</b> and a <b>Bruised Brain</b>.")
 
 			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_6)), 16 SECONDS)
@@ -780,7 +787,7 @@
 	message_to_player("Damage to the Liver and Kidney can only be treated via <u>surgical intervention</u>.")
 	message_to_player("Marines with high levels of <b>Toxin Damage</b> in their body without an obvious cause, are likely suffering from internal organ damage to their Liver or Kidney.")
 
-	addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 19 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(section_2)), 19 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/section_2()
 
@@ -928,90 +935,124 @@
 	message_to_player("Well done! Private Stanley lives again!")
 	message_to_player("However, Private Stanley still has a large amount of <b>Brute Damage</b> across his body")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	var/obj/item/storage/pill_bottle/bica = new /obj/item/storage/pill_bottle
-	medbelt.handle_item_insertion(bica)
-	medbelt.update_icon()
-
-	bica.name = "\improper Bicaridine pill bottle"
-	bica.icon_state = "pill_canister11"
-	bica.maptext_label = "Bi"
-	bica.maptext = SPAN_LANGCHAT("Bi")
-	bica.max_storage_space = 1
-	bica.overlays.Cut()
-	bica.bottle_lid = FALSE
-	bica.overlays += "pills_closed"
-
-	var/obj/item/reagent_container/pill/bicaridine/pill = new(bica)
-
-	add_to_tracking_atoms(pill)
-	add_to_tracking_atoms(bica)
-
-
-	message_to_player("A <b>Bicaridine Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Bicaridine Pill Bottle</b> to draw a pill.")
-
-	add_highlight(medbelt, COLOR_GREEN)
-	add_highlight(bica, COLOR_GREEN)
-
-	RegisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(defib_tutorial_10))
+	handle_pill_bottle(marine_dummy, "Bicaridine", "Bi", "11", /obj/item/reagent_container/pill/bicaridine)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(defib_tutorial_10))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_10()
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/bicaridine, pill)
-
-	UnregisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
-
-	message_to_player("Good. Now click on Private Stanley while holding the <b>Bicaridine Pill</b> and standing next to them to medicate it.")
-	message_to_player("Feeding someone a pill takes concentration, and comes with a slight delay. Neither of you should move while the blue circle is over your head, or the process will be disrupted, and you will have to try again.")
-	update_objective("Feed Private Stanley the Bicaridine pill.")
-
-	add_highlight(pill, COLOR_GREEN)
-	remove_highlight(medbelt)
-	remove_highlight(bica)
-
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed_reject))
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(brute_pill_fed))
-
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/brute_pill_fed_reject()
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.rejuvenate()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
-	remove_highlight(bica)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	remove_from_tracking_atoms(bica)
-	qdel(bica)
-	medbelt.update_icon()
-	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_9)), 2 SECONDS)
-
-/datum/tutorial/marine/hospital_corpsman_advanced/proc/brute_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-	remove_highlight(marine_dummy)
 	marine_dummy.rejuvenate()
 
 	message_to_player("Well done! Private Stanley will now fully recover from his injuries, and be allowed back on the front lines of battle!")
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
-	remove_from_tracking_atoms(bica)
-	qdel(bica)
-
-	update_objective("")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
 	marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
 
 	addtimer(CALLBACK(src, PROC_REF(field_surgery)), 4 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial()
+
+	message_to_player("<b>Section 2.2: Revival Conditions</b>")
+	slower_message_to_player("As stated earlier in section 1.1, there exists only a limited window of time in which revivals are possible for a deceased patient.")
+	slower_message_to_player("Barring extremely rare exceptions, the human brain can only last <b>5 minutes</b> without a steady supply of oxygen before experiencing <u>irreversible deterioration</u>.")
+	slower_message_to_player("As a patient progresses through this 5 minute window, their deteriorating state will be indicated by the <b>Revival Icon</b> to the top-left of their body.")
+
+	addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 26 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial_1()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(5, 1, marine_dummy.loc)
+	sparks.start()
+
+	if(!(stage > 0))
+		slower_message_to_player("Oh goodness! It appears Private Stanley has once again dropped dead! Note that his invisible <b>5 Minute Perma-Death Timer</b> has now started.")
+		slower_message_to_player("As you can see, just like the section prior, Private Stanleys <b>Revival Icon</b> is <b>Green</b>, meaning he has <u>more than half his revival timer left</u> (more than 2.5 minutes)")
+
+		marine_dummy.revive_grace_period = INFINITY // surely nothing can go wrong... right?... guys??
+		marine_dummy.death()
+		marine_dummy.updatehealth()
+		add_highlight(marine_dummy, COLOR_GREEN)
+		stage++
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 15 SECONDS)
+		return
+	if(stage == 1)
+		marine_dummy.revive_grace_period = 2.4 MINUTES // yellow yellow!
+		marine_dummy.updatehealth()
+
+		slower_message_to_player("However, lets fast-forward a bit..")
+		slower_message_to_player("After 2 and a half minutes, Private Stanley's <b>Revival Icon</b> has changed to <b>Yellow/Organge Flashes</b>.")
+		slower_message_to_player("This indicates that he has <u>less than half his revival timer left</u>!")
+
+		add_highlight(marine_dummy, LIGHT_COLOR_ORANGE)
+
+		stage++
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 16 SECONDS)
+		return
+	if(stage == 2)
+		marine_dummy.revive_grace_period = 1.15 MINUTES // red red!!!
+		marine_dummy.updatehealth()
+
+		slower_message_to_player("Jumping forwards once again, Private Stanley's <b>Revival Icon</b> is now <b>Flashing Red</b>!")
+		slower_message_to_player("This means that Stanley has <u>less than 60 seconds to be revived</u> before he expires <b>for good</b>, known as <b>Perma-Death/Biological Death</b>.")
+		slower_message_to_player("This state is known in slang terms as 'going red', 'redlining' or 'flatlining'.")
+		slower_message_to_player("Unless you are operating on a patient who is also flatlining, you MUST drop whatever you are doing to assist REGARDLESS of if another Medic is already treating them.")
+		slower_message_to_player("If a Medic is already treating the patient, approach and ask 'How can I help?'.")
+		slower_message_to_player("Flatlining patients will always be your <u>#1 PRIORITY</u> of care on the field.")
+
+		add_highlight(marine_dummy, COLOR_DARK_RED)
+
+		stage++
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 38 SECONDS)
+		return
+	if(stage == 3)
+		marine_dummy.revive_grace_period = 0 // BREATHE DAMN IT! BREATHE!!
+		marine_dummy.updatehealth() // I'm... sorry, Doc...
+
+		slower_message_to_player("It seems that, despite everything, Private Stanley has slipped through our fingers.")
+		slower_message_to_player("After their full <b>Revival Timer</b> has elapsed, a patient will enter <b>Biological/Perma-Death</b>, and their <b>Revival Icon</b> will be replaced with a <b>Skull</b>.")
+		slower_message_to_player("Barring <b>EXTREMELY</b> rare circumstances, this is the end of the line for any patient. You should pick up your tools, and move on.")
+
+		add_highlight(marine_dummy, COLOR_BLACK)
+		marine_dummy.status_flags &= ~FAKESOUL // I know... what kind of man you are
+
+		stage++
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 18 SECONDS)
+		return
+	if(stage > 3)
+		marine_dummy.revive_grace_period = INFINITY
+		marine_dummy.rejuvenate() // DNR doesnt play nice
+		marine_dummy.death()
+		marine_dummy.updatehealth()
+
+		slower_message_to_player("The final common type of revival status you will come across, is <b>DNR</b>, or <b>Do Not Resuscitate</b>.")
+		slower_message_to_player("Indicated by a flat red line, the <b>DNR</b> icon indicates that a patient has either <b>Opted-Out</b> of being revived, or has <b>disconnected from the game</b>.")
+		slower_message_to_player("For the purposes of treatment, a <b>DNR</b> patiend should be viewed as if they were <b>Perma-Dead</b>.")
+
+		stage = 0
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_2)), 16 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial_2()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(5, 1, marine_dummy.loc)
+	sparks.start()
+
+	marine_dummy.revive_grace_period = 5 MINUTES // back to normal, phew..
+	marine_dummy.status_flags |= FAKESOUL
+	marine_dummy.rejuvenate()
+	marine_dummy.updatehealth()
+	remove_highlight(marine_dummy)
+
+	slower_message_to_player("Luckily for Private Stanley, he still has the favor of the gods, and will live again!")
+
+
+
+
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery()
 
@@ -1486,15 +1527,118 @@
 
 
 
+// Helpers
+
+/**
+* Handles the creation and describes the use of pill bottles and pills in HM tutorials
+*
+* NOT FOR USE OUTSIDE OF TUTORIAL SYSTEM
+*
+* Currently limited to /mob/living/carbon/human/realistic_dummy
+*
+* Will break if used more than once per proc, see add_to_tracking_atoms() limitations
+*
+* Arguments:
+* * target Set to realistic_dummy of choosing
+* * name Uppercased name of the selected chemical, in string form
+* * maptext Sets the maptext_label variable for the created pill bottle, also a string
+* * iconnumber Sets the icon for the created pill bottle, input a number string ONLY (IE: "1")
+* * pill Typepath of the pill to place into the pill bottle
+*/
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/handle_pill_bottle(target, name, maptext, iconnumber, pill)
+	SIGNAL_HANDLER
+
+	if(handle_pill_bottle_status == 0)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+		var/obj/item/storage/pill_bottle/bottle = new /obj/item/storage/pill_bottle
+		medbelt.handle_item_insertion(bottle)
+		medbelt.update_icon()
+
+		bottle.name = "\improper [name] pill bottle"
+		bottle.icon_state = "pill_canister[iconnumber]"
+		bottle.maptext_label = "[maptext]"
+		bottle.maptext = SPAN_LANGCHAT("[maptext]")
+		bottle.max_storage_space = 1
+		bottle.overlays.Cut()
+		bottle.bottle_lid = FALSE
+		bottle.overlays += "pills_closed"
+
+		var/obj/item/reagent_container/pill/tpill = new pill(bottle) // tpill = tracking pill
+		add_to_tracking_atoms(bottle)
+
+
+		message_to_player("A <b>[name] Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
+		message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>[name] Pill Bottle</b> to draw a pill.")
+
+		add_highlight(medbelt, COLOR_GREEN)
+		add_highlight(bottle, COLOR_GREEN)
+
+		handle_pill_bottle_status++
+		RegisterSignal(tpill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(handle_pill_bottle))
+		return
+
+	if(handle_pill_bottle_status == 1)
+		message_to_player("Good. Now click on the Dummy while holding the pill and standing next to them to medicate it.")
+
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
+		TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
+		UnregisterSignal(target, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+
+		add_highlight(target, COLOR_GREEN)
+		remove_highlight(medbelt)
+		remove_highlight(bottle)
+
+		handle_pill_bottle_status++
+		RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(handle_pill_bottle))
+		RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(handle_pill_bottle))
+
+		return
+
+	if(handle_pill_bottle_status == 2)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
+		TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+		if(target == tutorial_mob)
+			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+			UnregisterSignal(target, COMSIG_HUMAN_PILL_FED)
+			var/mob/living/living_mob = tutorial_mob
+			living_mob.rejuvenate()
+			remove_highlight(bottle)
+			qdel(bottle)
+			medbelt.update_icon()
+			message_to_player("Dont feed yourself the pill, try again.")
+			handle_pill_bottle_status = 0
+			addtimer(CALLBACK(src, PROC_REF(handle_pill_bottle)), 2 SECONDS)
+			return
+
+		else if(target == marine_dummy)
+			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
+			UnregisterSignal(target, COMSIG_HUMAN_PILL_FED)
+
+			remove_highlight(bottle)
+			QDEL_IN(bottle, 1 SECONDS)
+			handle_pill_bottle_status = 0
+			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+
+// Helpers End
+
+
 // TO DO LIST
+//
+// apply slower messages
+//
+// fix helpers
+//
+// apply marine_dummy instead of human_dummy
 //
 // Section 1 - Stabilizing Types of Organ Damage
 // 1.5 Liver and Kidney Damage
 //
 // Section 2 - Revivals
-// 2.1 Defib
-// 2.2 Revival Mix and Epi
-// 2.3 CPR
+// 2.2 CPR
+// 2.3 Revival Mix and Epi
 // 2.4 Emergency Revivals
 // 2.5 Lost Causes
 //

@@ -1,4 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "The character setup page will now display your character wearing the correct uniform for the UPP job you have selected as your job preference. This should only occur during the faction clash game mode."

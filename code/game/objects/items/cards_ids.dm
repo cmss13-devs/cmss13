@@ -247,13 +247,20 @@
 	name = "\improper CMB marshal gold badge"
 	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbmar"
+	item_state = "cmbmar"
 	paygrade = PAY_SHORT_CMBM
 
 /obj/item/card/id/deputy
 	name = "\improper CMB deputy silver badge"
 	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbdep"
+	item_state = "cmbdep"
 	paygrade = PAY_SHORT_CMBD
+
+/obj/item/card/id/deputy/riot
+	name = "\improper CMB riot officer silver badge"
+	desc = "The silver badge which represents that the wearer is a CMB Riot Control Officer. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
+	paygrade = PAY_SHORT_CMBR
 
 /obj/item/card/id/nspa_silver
 	name = "\improper NSPA silver badge"

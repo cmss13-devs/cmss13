@@ -624,6 +624,36 @@
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
 
+//=========================//CMB\\================================\\
+
+
+/obj/item/clothing/under/marine/veteran/cmb
+	name = "\improper CMB Riot Control uniform"
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, designed to be used by units of riot supression on the distant worlds, under colonial jurisdiction."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
+	icon_state = "cmb_swat_uniform"
+	worn_state = "cmb_swat_uniform"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/marine/veteran/cmb,
+		/obj/item/clothing/suit/storage/marine/MP,
+		/obj/item/clothing/suit/storage/CMB,
+		/obj/item/clothing/suit/armor/riot/marine,
+		/obj/item/clothing/suit/armor/vest/security,
+		/obj/item/clothing/suit/storage/hazardvest,
+	)
+
+/obj/item/clothing/under/marine/veteran/cmb/marshal
+	name = "\improper CMB Riot Control Marshal uniform"
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, the gold insignia on this one suggests it being used by a commanding personnel during riot control."
+	icon_state = "cmb_swatleader_uniform"
+	worn_state = "cmb_swatleader_uniform"
+
+
 //=========================//Freelancer\\================================\\
 
 /obj/item/clothing/under/marine/veteran/freelancer

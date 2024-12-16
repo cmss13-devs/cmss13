@@ -367,7 +367,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	desc = "A compact 40-round high-velocity magazine, designed for rapid reloads and reliable performance in close-quarters combat."
 	default_ammo = /datum/ammo/bullet/smg/m39
 	caliber = "10x20mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m10"
 	bonus_overlay = "m10_overlay"
 	max_rounds = 40
@@ -378,7 +378,6 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	desc = "A 78-round high-velocity magazine, offering additional firepower for sustained engagements without significantly increasing reload time."
 	default_ammo = /datum/ammo/bullet/smg/m39
 	caliber = "10x20mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m10_ext"
 	bonus_overlay = "m10_ex_overlay"
 	max_rounds = 78
@@ -389,7 +388,6 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	desc = "High-capacity 92-round drum magazine designed for prolonged firefights, delivering maximum ammunition capacity at the cost of a longer reload."
 	default_ammo = /datum/ammo/bullet/smg/m39
 	caliber = "10x20mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
 	icon_state = "m10_drum"
 	bonus_overlay = "m10_drum_overlay"
 	max_rounds = 92

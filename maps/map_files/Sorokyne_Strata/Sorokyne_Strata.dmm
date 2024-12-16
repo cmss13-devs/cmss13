@@ -1,4 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outpost/med)
 "aab" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -11,6 +20,15 @@
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
+"aae" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -83,6 +101,12 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ug/interior/jungle/structures/research)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -99,6 +123,12 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aay" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -10473,6 +10503,9 @@
 /area/strata/ag/interior/outside/administration)
 "beT" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outside/administration)
 "beU" = (
@@ -12952,6 +12985,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/outpost/platform)
 "btG" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
+	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/engi/drome)
 "btH" = (
@@ -17207,6 +17243,9 @@
 "cpY" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 31
 	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -37999,7 +38038,7 @@ aoj
 cnv
 cru
 azx
-dCq
+aay
 ard
 arV
 dCq
@@ -55905,7 +55944,7 @@ aBp
 kRY
 gfC
 vlm
-rUn
+aaa
 nEU
 xmR
 vlm
@@ -56380,7 +56419,7 @@ atJ
 ddK
 bWM
 ijo
-ceI
+aae
 gAm
 gAm
 gAm
@@ -73176,7 +73215,7 @@ bAr
 bAr
 aqU
 uux
-abX
+aau
 aeC
 avj
 aww

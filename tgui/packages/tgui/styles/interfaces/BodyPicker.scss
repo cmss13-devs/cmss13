@@ -1,0 +1,19 @@
+.theme-crtblue {
+  .BodyPicker {
+    .Stack--horizontal > .colorPickerContainer:first-of-type {
+      margin-left: 6px;
+    }
+
+    .typePicker {
+      border: 1px dotted #8ac8ff;
+    }
+
+    .typePicker.active {
+      border: 1px solid #8ac8ff;
+    }
+
+    .colorPicker.active {
+      outline: solid 2px #8ac8ff;
+    }
+  }
+}

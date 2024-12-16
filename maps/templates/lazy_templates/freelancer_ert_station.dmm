@@ -8,7 +8,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station)
 "aj" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/machinery/cryopod/no_store,
 /obj/structure/sign/safety/cryo{
 	pixel_x = 36
 	},

@@ -25,7 +25,9 @@
 	minimum_evolve_time = 0
 
 /mob/living/carbon/xenomorph/larva
-	name = XENO_CASTE_LARVA
+	AUTOWIKI_SKIP(TRUE)
+
+	name = "Bloody Larva"
 	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
@@ -50,15 +52,20 @@
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
-	var/is_bloody = TRUE //We're still "bloody"
+	/// Whether we're bloody, normal, or mature
+	var/larva_state = LARVA_STATE_BLOODY
 
-	icon_xeno = 'icons/mob/xenos/larva.dmi'
-	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
 
 /mob/living/carbon/xenomorph/larva/Life()
-	if(is_bloody && (evolution_stored >= evolution_threshold / 2)) //We're no longer bloody so update our name...
+	// Check if no longer bloody or mature
+	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
+		larva_state = LARVA_STATE_NORMAL
 		generate_name()
-		is_bloody = FALSE
+	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
+		larva_state = LARVA_STATE_MATURE
+		generate_name()
 	return ..()
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
@@ -68,25 +75,39 @@
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/larva/corrupted
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CORRUPTED
 
 /mob/living/carbon/xenomorph/larva/alpha
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/xenomorph/larva/bravo
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/larva/charlie
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/larva/delta
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/xenomorph/larva/mutated
+	AUTOWIKI_SKIP(TRUE)
+
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/larva/predalien
-	icon_xeno = 'icons/mob/xenos/predalien_larva.dmi'
+	AUTOWIKI_SKIP(TRUE)
+
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.
@@ -110,7 +131,7 @@
 /mob/living/carbon/xenomorph/larva/update_icons()
 	var/state = "" //Icon convention, two different sprite sets
 
-	if(evolution_stored < evolution_threshold / 2) //We're still bloody
+	if(larva_state == LARVA_STATE_BLOODY)
 		state = "Bloody "
 
 	if(stat == DEAD)
@@ -197,9 +218,9 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 		name_prefix = hive.prefix
 		color = hive.color
 
-	if(evolution_stored >= evolution_threshold)
+	if(larva_state == LARVA_STATE_MATURE)
 		progress = "Mature "
-	else if(evolution_stored < evolution_threshold / 2) //We're still bloody
+	else if(larva_state == LARVA_STATE_BLOODY)
 		progress = "Bloody "
 
 	name = "[name_prefix][progress]Larva ([nicknumber])"

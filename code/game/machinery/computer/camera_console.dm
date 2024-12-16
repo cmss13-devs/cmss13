@@ -208,8 +208,9 @@
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = list(CAMERA_NET_CORRESPONDENT)
 	stay_connected = TRUE
+	wrenchable = TRUE
 	circuit = /obj/item/circuitboard/computer/cameras/tv
-	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
+	var/obj/item/device/broadcasting/broadcastingcamera = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null
@@ -243,12 +244,44 @@
 	if(!current)
 		clear_camera()
 
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/inoperable(additional_flags = 0)
+	return ..(MAINT|additional_flags)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/attackby(obj/item/wrench, mob/user)
+	if(HAS_TRAIT(wrench, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return TRUE
+		toggle_anchored(wrench, user)
+		return TRUE
+	..()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/toggle_anchored(obj/item/wrench, mob/user)
+	. = ..()
+	if(!.)
+		return
+	if(!anchored)
+		stat |= MAINT
+		clear_camera()
+		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
+	else
+		stat &= ~MAINT
+	update_icon()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/update_icon()
+	. = ..()
+	if(stat & BROKEN)
+		return
+	if(stat & MAINT)
+		icon_state = initial(icon_state)
+		icon_state += "0"
+
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
 	SIGNAL_HANDLER
 	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING, COMSIG_COMPONENT_ADDED, COMSIG_BROADCAST_HEAR_TALK, COMSIG_BROADCAST_SEE_EMOTE))
 	broadcastingcamera = null
 
-/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/broadcasting/broadcastingcamera)
 	SIGNAL_HANDLER
 	if(current.c_tag == broadcastingcamera.get_broadcast_name())
 		current = broadcastingcamera.linked_cam
@@ -366,7 +399,7 @@
 	active_power_usage = 0
 	needs_power = FALSE
 	network = list(CAMERA_NET_MORTAR)
-	exproof = TRUE
+	explo_proof = TRUE
 	colony_camera_mapload = FALSE
 
 /obj/structure/machinery/computer/cameras/mortar/set_broken()
@@ -381,7 +414,7 @@
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 
 
 /obj/structure/machinery/computer/cameras/dropship/one
@@ -391,5 +424,9 @@
 /obj/structure/machinery/computer/cameras/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/three
+	name = "\improper 'Saipan' camera controls"
+	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
 #undef DEFAULT_MAP_SIZE

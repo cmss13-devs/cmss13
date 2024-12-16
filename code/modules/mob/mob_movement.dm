@@ -148,6 +148,10 @@
 		return
 	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
 		return
+	if(living_mob.body_position == LYING_DOWN && isxeno(mob.pulledby))
+		next_movement = world.time + 20 //Good Idea
+		to_chat(src, SPAN_NOTICE("You cannot crawl while a xeno is grabbing you."))
+		return
 
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)

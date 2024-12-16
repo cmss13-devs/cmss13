@@ -12,6 +12,20 @@
 	var/generate_points = TRUE
 	var/omnisentry_price_scale = 100
 	var/omnisentry_price = 300
+	var/faction = FACTION_MARINE
+	var/list/datum/build_queue_entry/build_queue = list()
+
+/datum/build_queue_entry
+	var/item
+	var/cost
+
+/datum/build_queue_entry/New(item, cost)
+	src.item = item
+	src.cost = cost
+
+/obj/structure/machinery/part_fabricator/get_examine_text(mob/user)
+	. = ..()
+	to_chat(user, build_queue ? "It has [length(build_queue)] items in the queue" : "the build queue is empty")
 
 /obj/structure/machinery/part_fabricator/New()
 	..()
@@ -27,9 +41,22 @@
 	return
 
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
+	var/index = 1
+	var/list/build_queue_formatted = list()
+	for(var/datum/build_queue_entry/entry in build_queue)
+		var/obj/structure/build_item = entry.item
+		build_queue_formatted += list(list(
+			"name" = build_item.name,
+			"cost" = entry.cost,
+			"index" = index
+		))
+
+		index += 1
+
 	return list(
 		"points" = get_point_store(),
-		"omnisentrygun_price" = omnisentry_price
+		"omnisentrygun_price" = omnisentry_price,
+		"BuildQueue" = build_queue_formatted
 	)
 
 /obj/structure/machinery/part_fabricator/power_change()
@@ -40,46 +67,69 @@
 /obj/structure/machinery/part_fabricator/process()
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
-	if(stat & NOPOWER)
-		icon_state = "drone_fab_nopower"
-		return
-	if(busy)
-		icon_state = "drone_fab_active"
-		return
-	else
-		icon_state = "drone_fab_idle"
+
 	if(generate_points)
 		add_to_point_store()
 
+	process_build_queue()
+
+	update_icon()
+
+/obj/structure/machinery/part_fabricator/proc/process_build_queue()
+	if(stat & NOPOWER)
+		return
+
+	if(busy)
+		return
+
+	if(length(build_queue))
+		busy = TRUE
+		var/datum/build_queue_entry/entry = build_queue[1]
+
+		var/is_omnisentry = ispath(entry.item, /obj/structure/ship_ammo/sentry)
+
+		if((is_omnisentry && get_point_store() < omnisentry_price) || get_point_store() < entry.cost)
+			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
+				balloon_alert_to_viewers("out of points - printing paused!")
+				visible_message(SPAN_WARNING("[src] flashes a warning light."))
+				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
+			busy = FALSE
+			return
+
+		if(is_omnisentry)
+			spend_point_store(omnisentry_price)
+			omnisentry_price += omnisentry_price_scale
+		else
+			spend_point_store(entry.cost)
+
+		visible_message(SPAN_NOTICE("[src] starts printing something."))
+		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 3 SECONDS)
+
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
-	set waitfor = 0
-	if(stat & NOPOWER) return
-	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
+	set waitfor = FALSE
+	if(stat & NOPOWER)
+		return
+
+	if(ispath(part_type, /obj/structure/ship_ammo/sentry))
 		cost = omnisentry_price
+
 	if(get_point_store() < cost)
 		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
 		return
-	visible_message(SPAN_NOTICE("[src] starts printing something."))
-	spend_point_store(cost)
-	if(ispath(part_type,/obj/structure/ship_ammo/sentry))
-		omnisentry_price += omnisentry_price_scale
-	icon_state = "drone_fab_active"
-	busy = TRUE
-	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
 
-/obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
+	build_queue += new /datum/build_queue_entry(part_type, cost)
+
+/obj/structure/machinery/part_fabricator/proc/produce_part(datum/build_queue_entry/entry)
+	build_queue.Remove(entry)
+
 	busy = FALSE
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	new part_type(get_step(src, SOUTHEAST))
+	new entry.item(get_step(src, SOUTHEAST))
 	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
-		return
-
-	if(busy)
-		to_chat(usr, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
 		return
 
 	var/mob/user = ui.user
@@ -90,22 +140,54 @@
 		var/index = params["index"]
 
 		if(is_ammo == 0)
-			var/obj/structure/dropship_equipment/produce = (typesof(/obj/structure/dropship_equipment))[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/dropship_equipment)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
 
 		else
-			var/obj/structure/ship_ammo/produce = (typesof(/obj/structure/ship_ammo))[index]
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && produce.combat_equipment)
+			var/produce_list = list()
+			var/possible_produce = typesof(/obj/structure/ship_ammo)
+			for(var/p_produce in possible_produce)
+				var/obj/structure/dropship_equipment/produce = p_produce
+				if(produce.faction_exclusive)
+					if(produce.faction_exclusive != faction)
+						continue
+				produce_list += produce
+			var/obj/structure/dropship_equipment/produce = produce_list[index]
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && produce.combat_equipment)
 				log_admin("Bad topic: [user] may be trying to HREF exploit [src] to bypass no combat cas")
 				return
 			cost = initial(produce.point_cost)
 			build_part(produce, cost, user)
-			return
+			return TRUE
+
+	if(action == "cancel")
+		var/index = params["index"]
+
+		if(length(build_queue))
+			if(index == null || index > length(build_queue))
+				return
+
+			if(busy && index == 1)
+				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
+				return
+
+			var/datum/build_queue_entry/entry = build_queue[index]
+
+			build_queue.Remove(entry)
+			return TRUE
 
 	else
 		log_admin("Bad topic: [user] may be trying to HREF exploit [src]")
@@ -123,6 +205,17 @@
 		ui = new(user, src, "PartFabricator", "Part Fabricator")
 		ui.open()
 
+/obj/structure/machinery/part_fabricator/update_icon()
+	. = ..()
+	if(stat & NOPOWER)
+		icon_state = "drone_fab_nopower"
+		return
+	if(busy)
+		icon_state = "drone_fab_active"
+		return
+
+	icon_state = "drone_fab_idle"
+
 /obj/structure/machinery/part_fabricator/dropship
 	name = "dropship part fabricator"
 	desc = "A large automated 3D printer for producing dropship parts. You can recycle parts or ammo in it, and get 80% of your points back, by clicking it while holding them in a powerloader claw."
@@ -130,6 +223,12 @@
 
 	unslashable = TRUE
 	unacidable = TRUE
+	faction = FACTION_MARINE
+
+/obj/structure/machinery/part_fabricator/dropship/upp
+	name = "UPP dropship part fabricator"
+	faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_FLIGHT)
 
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
@@ -148,7 +247,11 @@
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
+		if(dropship_equipment_data.faction_exclusive)
+			if(faction != dropship_equipment_data.faction_exclusive)
+				continue
+
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && dropship_equipment_data.combat_equipment)
 			index +=  1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
@@ -169,7 +272,10 @@
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
+		if(ship_ammo_data.faction_exclusive)
+			if(faction != ship_ammo_data.faction_exclusive)
+				continue
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue
 		var/build_name = initial(ship_ammo_data.name)
@@ -223,7 +329,7 @@
 	var/thing_to_recycle = powerloader_clamp_used.loaded
 	to_chat(user, SPAN_WARNING("You start recycling \the [powerloader_clamp_used.loaded]!"))
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	if(!user || !do_after(user, (7 SECONDS) * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, powerloader_clamp_used.loaded, INTERRUPT_ALL))
+	if(!user || !do_after(user, (3 SECONDS) * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, powerloader_clamp_used.loaded, INTERRUPT_ALL))
 		to_chat(user, SPAN_NOTICE("You stop recycling \the [thing_to_recycle]."))
 		return
 	if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))
@@ -249,7 +355,7 @@
 	generate_points = FALSE
 
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
 	return GLOB.supply_controller.tank_points

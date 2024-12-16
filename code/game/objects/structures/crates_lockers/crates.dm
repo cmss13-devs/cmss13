@@ -15,10 +15,17 @@
 	/// Types this crate can be made into
 	var/list/crate_customizing_types = list(
 		"Plain" = /obj/structure/closet/crate,
+		"Plain (Green)" = /obj/structure/closet/crate/green,
 		"Weapons" = /obj/structure/closet/crate/weapon,
 		"Supply" = /obj/structure/closet/crate/supply,
 		"Ammo" = /obj/structure/closet/crate/ammo,
+		"Ammo (Black)" = /obj/structure/closet/crate/ammo/alt,
+		"Ammo (Flame)" = /obj/structure/closet/crate/ammo/alt/flame,
 		"Construction" = /obj/structure/closet/crate/construction,
+		"Science" = /obj/structure/closet/crate/science,
+		"Hydroponics" = /obj/structure/closet/crate/hydroponics,
+		"Medical" = /obj/structure/closet/crate/medical,
+		"Internals" = /obj/structure/closet/crate/internals,
 		"Explosives" = /obj/structure/closet/crate/explosives,
 		"Alpha" = /obj/structure/closet/crate/alpha,
 		"Bravo" = /obj/structure/closet/crate/bravo,
@@ -287,15 +294,6 @@
 	. = ..()
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/storage/box/donkpockets(src)
-
-/* CM doesn't use this.
-/obj/structure/closet/crate/bin
-	desc = "A large bin."
-	name = "Large bin"
-	icon_state = "largebin"
-	icon_opened = "largebinopen"
-	icon_closed = "largebin"
-*/
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"

@@ -290,6 +290,7 @@
 	force_level_absorption = 20
 	stack_type = /obj/item/stack/sheet/plasteel
 	debris = list(/obj/item/stack/sheet/plasteel)
+	stack_amount = 6
 	destroyed_stack_amount = 3
 	barricade_type = "new_plasteel"
 	repair_materials = list("plasteel" = 0.45)

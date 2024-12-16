@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(decorator)
 	var/list/datum/weakref/currentrun = list()
 
 /datum/controller/subsystem/decorator/Initialize()
-	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual)
+	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual) - typesof(/datum/decorator/gamemode)
 	for(var/decor_type in all_decors)
 		var/datum/decorator/decor = new decor_type()
 		if(!decor.is_active_decor())
@@ -42,6 +42,8 @@ SUBSYSTEM_DEF(decorator)
 			if(!registered_decorators[app_type])
 				registered_decorators[app_type] = list()
 			registered_decorators[app_type] += decor
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_mode_specific))
 
 	for(var/i in registered_decorators)
 		registered_decorators[i] = sortDecorators(registered_decorators[i])
@@ -70,6 +72,24 @@ SUBSYSTEM_DEF(decorator)
 		if(A) A.Decorate(deferable = FALSE)
 		if(MC_TICK_CHECK)
 			return
+
+/datum/controller/subsystem/decorator/proc/handle_mode_specific()
+	SIGNAL_HANDLER
+
+	for(var/decorator_type in typesof(/datum/decorator/gamemode))
+		var/datum/decorator/gamemode/gamemode_decorator = new decorator_type()
+
+		if(!istype(SSticker.mode, gamemode_decorator.gamemode))
+			continue
+
+		var/applicable_types = gamemode_decorator.get_decor_types()
+		if(!length(applicable_types))
+			continue
+
+		active_decorators |= gamemode_decorator
+
+		for(var/applicable_type in applicable_types)
+			LAZYADD(registered_decorators[applicable_type], gamemode_decorator)
 
 /datum/controller/subsystem/decorator/proc/add_decorator(decor_type, ...)
 	var/list/arguments = list()

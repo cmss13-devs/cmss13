@@ -145,6 +145,12 @@
 /obj/item/clothing/accessory/pdt_bracelet
 	name = "\improper PDT bracelet"
 	desc = "A personal data transmitter bracelet, also known as a PDT, is a form of personal locator typically surgically implanted into the body of extrasolar colonists, among others. Its purpose is to allow rapid location of the associated personnel anywhere within a certain radius of the receiving equipment, sometimes up to 30km distance. This bracelet forms part of the PDT/L variant, which is a wearable version of the PDT technology. Both it and the linked locator tube share a serial number for ease of detection in case of mixup."
+	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
+	icon_state = ""
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi'
+	)
 	var/dummy_icon_state = "pdt_watch"
 	var/copied_serial_number = null
 
@@ -161,6 +167,7 @@
 	name = "\improper Boots! PDT/L Battle Buddy kit"
 	desc = "Contains a PDT/L set, consisting of the PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
 	desc_lore = "This kit was distributed in the 200th (Season 4) Issue of the Boots! magazine, 'Privates die without their battlebuddy!', to drive up sales. Many have noted the poor battery life of these units, leading many to speculate that these were faulty units that were repackaged and shipped off to various USCM-adjacent mil-surplus good stores. The Department of the Navy Observation in Photographs (DNOP) has not released a statement regarding these theories."
+	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pdt_box"
 	can_hold = list(/obj/item/device/pdt_locator_tube, /obj/item/clothing/accessory/pdt_bracelet)
 	foldable = /obj/item/stack/sheet/cardboard

@@ -43,6 +43,17 @@
 	targ_y = deobfuscate_y(0)
 	internal_camera = new(loc)
 
+	var/new_icon_state
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("classic")
+			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+		if("desert")
+			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+		if("snow")
+			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+		if("urban")
+			icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+
 /obj/structure/mortar/Destroy()
 	QDEL_NULL(internal_camera)
 	return ..()
@@ -232,7 +243,7 @@
 			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
 				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && target_area.is_landing_zone)
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
 				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
 				return
 
@@ -354,6 +365,8 @@
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/mortar_laser_warning))
+		new /obj/effect/overlay/temp/blinking_laser(target)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)
 	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
@@ -399,6 +412,15 @@
 	icon_state = "mortar_m402_carry"
 	unacidable = TRUE
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/mortar_kit/Initialize(...)
+	. = ..()
+	select_gamemode_skin(type)
 
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)

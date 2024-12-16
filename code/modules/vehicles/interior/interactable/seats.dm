@@ -4,7 +4,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	can_rotate = FALSE
 
 	//you want these chairs to not be easily obscured by objects
@@ -431,7 +431,7 @@
 //MISC
 
 /obj/structure/bed/chair/vehicle/ex_act(severity)
-	if(broken || indestructible)
+	if(broken || explo_proof)
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)

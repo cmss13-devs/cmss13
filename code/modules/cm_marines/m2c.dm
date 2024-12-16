@@ -16,9 +16,9 @@
 	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
 	caliber = "10x28mm"
 	w_class = SIZE_LARGE
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
-	icon_state = "m56de"
-	item_state = "m56de"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
+	icon_state = "m2c"
+	item_state = "m2c"
 	max_rounds = 125
 	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
@@ -27,7 +27,7 @@
 /obj/item/storage/box/m56d/m2c
 	name = "\improper M2C Assembly-Supply Crate"
 	desc = "A large case labelled 'M2C, 10x28mm caliber heavy machinegun', seems to be fairly heavy to hold. contains a deadly M2C Heavy Machinegun System and its ammunition."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "M56D_case"
 	w_class = SIZE_HUGE
 	storage_slots = 5
@@ -46,9 +46,9 @@
 	desc = "The disassembled M2C HMG, with its telescopic tripods folded up and unable to fire."
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/turf/whiskeyoutpost.dmi'
-	icon_state = "M56DE_gun_mount"
-	item_state = "M56DE_gun_mount"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	icon_state = "M2C_gun_mount"
+	item_state = "M2C_gun_mount"
 	var/rounds = 0
 	var/overheat_value = 0
 	var/anti_cadehugger_range = 1
@@ -183,10 +183,10 @@
 /obj/structure/machinery/m56d_hmg/auto
 	name = "\improper M2C Heavy Machinegun"
 	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB reconfigured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoilless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
-	icon_state = "M56DE"
-	icon_full = "M56DE"
-	icon_empty = "M56DE_e"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	icon_state = "M2C"
+	icon_full = "M2C"
+	icon_empty = "M2C_e"
 	rounds_max = 125
 	ammo = /datum/ammo/bullet/machinegun/auto
 	fire_delay = 0.1 SECONDS
@@ -236,7 +236,7 @@
 		cadeblockers.Add(CB)
 
 	if(!barrel_overheat_image)
-		barrel_overheat_image = image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
+		barrel_overheat_image = image('icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi', "+M2C_overheat")
 
 /obj/structure/machinery/m56d_hmg/auto/Destroy()
 	QDEL_NULL_LIST(cadeblockers)
@@ -267,7 +267,7 @@
 	anchored = TRUE
 	density = FALSE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	invisibility = 101 // no looking at it with alt click
 
 	var/obj/structure/machinery/m56d_hmg/auto/hmg

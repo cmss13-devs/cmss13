@@ -27,6 +27,8 @@
 /datum/squad
 	/// Name of the squad
 	var/name
+	/// Equivalent name so that lobby prefered squad gets used for other factions
+	var/equivalent_name
 	/// Squads ID that is set on New()
 	var/tracking_id = null //Used for the tracking subsystem
 	/// Maximum number allowed in a squad. Defaults to infinite
@@ -271,23 +273,31 @@
 
 /datum/squad/upp/one
 	name = SQUAD_UPP_1
+	equivalent_name = SQUAD_MARINE_1
 	equipment_color = "#e61919"
 	chat_color = "#e67d7d"
+	background_icon = "background_upp_alpha"
 
-/datum/squad/upp/twp
+/datum/squad/upp/two
 	name = SQUAD_UPP_2
+	equivalent_name = SQUAD_MARINE_2
 	equipment_color = "#ffc32d"
 	chat_color = "#ffe650"
+	background_icon = "background_upp_bravo"
 
 /datum/squad/upp/three
 	name = SQUAD_UPP_3
+	equivalent_name = SQUAD_MARINE_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
+	background_icon = "background_upp_charlie"
 
 /datum/squad/upp/four
 	name = SQUAD_UPP_4
+	equivalent_name = SQUAD_MARINE_4
 	equipment_color = "#4148c8"
 	chat_color = "#828cff"
+	background_icon = "background_upp_delta"
 
 /datum/squad/upp/kdo
 	name = SQUAD_UPP_5
@@ -594,7 +604,7 @@
 
 	if(paygrade)
 		id_card.paygrade = paygrade
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(target_mob.wear_l_ear, target_mob.wear_r_ear)
 	if(headset && radio_freq)
@@ -615,7 +625,7 @@
 
 	id_card.access -= src.access
 	id_card.assignment = target_mob.job
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	forget_marine_in_squad(target_mob)
 

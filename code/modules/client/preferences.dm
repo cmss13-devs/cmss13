@@ -32,6 +32,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/static/datum/hair_picker/hair_picker = new
 	var/static/datum/body_picker/body_picker = new
+	var/static/datum/traits_picker/traits_picker = new
+	var/static/datum/loadout_picker/loadout_picker = new
 
 	//doohickeys for savefiles
 	var/path
@@ -66,6 +68,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
+	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
@@ -121,6 +124,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/yautja_status = WHITELIST_NORMAL
 	var/commander_status = WHITELIST_NORMAL
 	var/synth_status = WHITELIST_NORMAL
+
+	// Fax Responder Names
+	var/fax_name_uscm
+	var/fax_name_pvst
+	var/fax_name_wy
+	var/fax_name_upp
+	var/fax_name_twe
+	var/fax_name_cmb
+	var/fax_name_press
+	var/fax_name_clf
 
 	//character preferences
 	var/real_name //our character's name
@@ -351,7 +364,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Body Muscularity:</b> [body_type]<br>"
 			dat += "<b>Edit Body:</b> <a href='?_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
 
-			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
+			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits'><b>Character Traits</b></a>"
 			dat += "<br>"
 
 			dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
@@ -396,7 +409,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Preferred Armor:</b> <a href ='?_src_=prefs;preference=prefarmor;task=input'><b>[preferred_armor]</b></a><br>"
 
 			dat += "<b>Show Job Gear:</b> <a href ='?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
-			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br>"
+			dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br><br>"
 
 			dat += "<b>Custom Loadout:</b> "
 			var/total_cost = 0
@@ -410,16 +423,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
 					if(G)
 						total_cost += G.cost
-						dat += "[gear[i]] ([G.cost] points) <a href='byond://?src=\ref[user];preference=loadout;task=remove;gear=[i]'><b>Remove</b></a><br>"
+						dat += "[gear[i]] ([G.cost] points)<br>"
 
 				dat += "<b>Used:</b> [total_cost] points"
 			else
 				dat += "None"
 
-			if(total_cost < MAX_GEAR_COST)
-				dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'><b>Add</b></a>"
-				if(LAZYLEN(gear))
-					dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'><b>Clear</b></a>"
+			dat += "<br><a href='byond://?src=\ref[user];preference=loadout'><b>Open Loadout</b></a>"
 
 			dat += "</div>"
 
@@ -656,6 +666,27 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Hunting Ground ERT Settings:</u></b></h2>"
+			dat += "<b>Spawn as Mercenary:</b> <a href='?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_MERC]'><b>[toggles_ert_pred & PLAY_MERC ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Royal Marine:</b> <a href='?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_TWE]'><b>[toggles_ert_pred & PLAY_TWE ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as UPP:</b> <a href='?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_UPP]'><b>[toggles_ert_pred & PLAY_UPP ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as CLF:</b> <a href='?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_CLF]'><b>[toggles_ert_pred & PLAY_CLF ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Xeno T2:</b> <a href='?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T2]'><b>[toggles_ert_pred & PLAY_XENO_T2 ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Xeno T3:</b> <a href='?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T3]'><b>[toggles_ert_pred & PLAY_XENO_T3 ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
+			dat += "</body>"
+			if(owner.check_whitelist_status(WHITELIST_FAX_RESPONDER))
+				dat += "<div id='column3'>"
+				dat += "<h2><b><u>Fax Responder Names:</u></b></h2>"
+				dat += "<b>USCM High Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=uscm'><b>[fax_name_uscm]</b></a><br>"
+				dat += "<b>USCM Provost:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=pvst'><b>[fax_name_pvst]</b></a><br>"
+				dat += "<b>Weyland-Yutani:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=wy'><b>[fax_name_wy]</b></a><br>"
+				dat += "<b>UPP Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=upp'><b>[fax_name_upp]</b></a><br>"
+				dat += "<b>TWE Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=twe'><b>[fax_name_twe]</b></a><br>"
+				dat += "<b>Colonial Marshal Bureau:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
+				dat += "<b>Free Press:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
+				dat += "<b>CLF Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
 
 	dat += "</div></body>"
 
@@ -694,6 +725,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
+			continue
+		if(job.flags_startup_parameters & ROLE_HIDDEN)
 			continue
 		index++
 		if((index >= limit) || (job.title in splitJobs))
@@ -1033,39 +1066,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					set_job_slots(user)
 			return TRUE
 		if("loadout")
-			switch(href_list["task"])
-				if("input")
-					var/gear_category = tgui_input_list(user, "Select gear category: ", "Gear to add", GLOB.gear_datums_by_category)
-					if(!gear_category)
-						return
-					var/choice = tgui_input_list(user, "Select gear to add: ", gear_category, GLOB.gear_datums_by_category[gear_category])
-					if(!choice)
-						return
-
-					var/total_cost = 0
-					var/datum/gear/G
-					if(isnull(gear) || !islist(gear))
-						gear = list()
-					if(length(gear))
-						for(var/gear_name in gear)
-							G = GLOB.gear_datums_by_name[gear_name]
-							total_cost += G?.cost
-
-					G = GLOB.gear_datums_by_category[gear_category][choice]
-					total_cost += G.cost
-					if(total_cost <= MAX_GEAR_COST)
-						gear += G.display_name
-						to_chat(user, SPAN_NOTICE("Added \the '[G.display_name]' for [G.cost] points ([MAX_GEAR_COST - total_cost] points remaining)."))
-					else
-						to_chat(user, SPAN_WARNING("Adding \the '[choice]' will exceed the maximum loadout cost of [MAX_GEAR_COST] points."))
-
-				if("remove")
-					var/i_remove = text2num(href_list["gear"])
-					if(i_remove < 1 || i_remove > length(gear)) return
-					gear.Cut(i_remove, i_remove + 1)
-
-				if("clear")
-					gear.Cut()
+			loadout_picker.tgui_interact(user)
+			return
 
 		if("flavor_text")
 			switch(href_list["task"])
@@ -1136,42 +1138,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				winset(user, null, "input.focus=false")
 
 		if("traits")
-			switch(href_list["task"])
-				if("open")
-					open_character_traits(user)
-					return TRUE
-				if("change_slot")
-					var/trait_group = text2path(href_list["trait_group"])
-					if(!GLOB.character_trait_groups[trait_group])
-						trait_group = null
-					open_character_traits(user, trait_group)
-					return TRUE
-				if("give_trait")
-					var/trait_group = text2path(href_list["trait_group"])
-					if(!GLOB.character_trait_groups[trait_group])
-						trait_group = null
-					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
-					character_trait?.try_give_trait(src)
-					open_character_traits(user, trait_group)
-					if(character_trait.refresh_choices)
-						ShowChoices(user)
-					if(character_trait.refresh_mannequin)
-						update_preview_icon()
-					return TRUE
-				if("remove_trait")
-					var/trait_group = text2path(href_list["trait_group"])
-					if(!GLOB.character_trait_groups[trait_group])
-						trait_group = null
-					var/trait = text2path(href_list["trait"])
-					var/datum/character_trait/character_trait = GLOB.character_traits[trait]
-					character_trait?.try_remove_trait(src)
-					open_character_traits(user, trait_group)
-					if(character_trait.refresh_choices)
-						ShowChoices(user)
-					if(character_trait.refresh_mannequin)
-						update_preview_icon()
-					return TRUE
+			traits_picker.tgui_interact(user)
+			return
 
 		if("toggle_job_gear")
 			show_job_gear = !show_job_gear
@@ -1429,6 +1397,33 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 
 					synth_status = options[new_synth_status]
+
+				if("fax_name")
+					var/faction = href_list["fax_faction"]
+					var/raw_name = tgui_input_text(user, "Choose your Fax Responder's name:", "Responder Name")
+					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
+						var/new_name = reject_bad_name(raw_name)
+						if(!new_name)
+							to_chat(user, SPAN_RED("Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
+							return
+
+						switch(faction)
+							if("uscm")
+								fax_name_uscm = new_name
+							if("pvst")
+								fax_name_pvst = new_name
+							if("wy")
+								fax_name_wy = new_name
+							if("upp")
+								fax_name_upp = new_name
+							if("twe")
+								fax_name_twe = new_name
+							if("cmb")
+								fax_name_cmb = new_name
+							if("press")
+								fax_name_press = new_name
+							if("clf")
+								fax_name_clf = new_name
 
 				if("xeno_prefix")
 					if(xeno_name_ban)
@@ -1853,6 +1848,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/flag = text2num(href_list["flag"])
 					toggles_ert ^= flag
 
+				if("toggles_ert_pred")
+					var/flag = text2num(href_list["flag"])
+					toggles_ert_pred ^= flag
+
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
 					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
@@ -1938,13 +1937,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					load_character()
 					reload_cooldown = world.time + 50
 
-					// Refresh pickers
-					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
-					if(picker_ui)
-						picker_ui.send_update()
-					picker_ui = SStgui.get_open_ui(user, body_picker)
-					if(picker_ui)
-						picker_ui.send_update()
+					update_all_pickers(user)
 
 				if("open_load_dialog")
 					if(!IsGuestKey(user.key))
@@ -1962,13 +1955,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					if(istype(np))
 						np.new_player_panel_proc()
 
-					// Refresh pickers
-					var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
-					if(picker_ui)
-						picker_ui.send_update()
-					picker_ui = SStgui.get_open_ui(user, body_picker)
-					if(picker_ui)
-						picker_ui.send_update()
+					update_all_pickers(user)
 
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
@@ -2263,52 +2250,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	alert("The key sequence is [key_buf].")
 	return key_buf
 
-/datum/preferences/proc/open_character_traits(mob/user, character_trait_group)
-	if(!read_traits)
-		read_traits = TRUE
-		for(var/trait in traits)
-			var/datum/character_trait/character_trait = GLOB.character_traits[trait]
-			trait_points -= character_trait.cost
-	var/dat = "<body onselectstart='return false;'>"
-	dat += "<center>"
-	var/datum/character_trait_group/current_trait_group
-	var/i = 1
-	for(var/trait_group in GLOB.character_trait_groups)
-		var/datum/character_trait_group/CTG = GLOB.character_trait_groups[trait_group]
-		if(!CTG.group_visible)
-			continue
-		var/button_class = ""
-		if(!character_trait_group && i == 1 || character_trait_group == trait_group)
-			button_class = "class='linkOn'"
-			current_trait_group = CTG
-		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=traits;task=change_slot;trait_group=[trait_group]' [button_class]>"
-		dat += CTG.trait_group_name
-		dat += "</a>"
-		i++
-	dat += "</center>"
-	dat += "<table>"
-	for(var/trait in current_trait_group.traits)
-		var/datum/character_trait/character_trait = trait
-		if(!character_trait.applyable)
-			continue
-		var/has_trait = (character_trait.type in traits)
-		var/task = has_trait ? "remove_trait" : "give_trait"
-		var/button_class = has_trait ? "class='linkOn'" : ""
-		dat += "<tr><td width='40%'>"
-		if(has_trait || character_trait.can_give_trait(src))
-			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[character_trait.type];trait_group=[current_trait_group.type]' [button_class]>"
-			dat += "[character_trait.trait_name]"
-			dat += "</a>"
-		else
-			dat += "<i>[character_trait.trait_name]</i>"
-		var/cost_text = character_trait.cost ? " ([character_trait.cost] points)" : ""
-		dat += "</td><td>[character_trait.trait_desc][cost_text]</td></tr>"
-		dat += ""
-	dat += "</table>"
-	dat += "</body>"
-	show_browser(user, dat, "Character Traits", "character_traits")
-	update_preview_icon(TRUE)
-
 /// Converts a client's list of completed tutorials into a string for saving
 /datum/preferences/proc/tutorial_list_to_savestring()
 	if(!length(completed_tutorials))
@@ -2325,6 +2266,20 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	completed_tutorials = splittext(savestring, ";")
 	return completed_tutorials
 
+/// Refreshes all open TGUI interfaces inside the character prefs menu
+/datum/preferences/proc/update_all_pickers(mob/user)
+	var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+	picker_ui?.send_update()
+
+	picker_ui = SStgui.get_open_ui(user, body_picker)
+	picker_ui?.send_update()
+
+	picker_ui = SStgui.get_open_ui(user, loadout_picker)
+	picker_ui?.send_update()
+
+	picker_ui = SStgui.get_open_ui(user, traits_picker)
+	picker_ui?.send_update()
+
 #undef MENU_MARINE
 #undef MENU_XENOMORPH
 #undef MENU_CO
@@ -2333,3 +2288,37 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL
+
+/datum/preferences/proc/generate_name(faction = FACTION_MARINE)
+	var/female = prob(50)
+	var/name = "John Doe"
+	if(female)
+		name = "Jane Doe"
+
+	switch(faction)
+		if(FACTION_MARINE)
+			if(female)
+				name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+			else
+				name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
+		if(FACTION_WY, FACTION_TWE)
+			if(female)
+				name = "[pick(GLOB.first_names_female_pmc)] [pick(GLOB.last_names_pmc)]"
+			else
+				name = "[pick(GLOB.first_names_male_pmc)] [pick(GLOB.last_names_pmc)]"
+		if(FACTION_COLONIST, FACTION_MARSHAL)
+			if(female)
+				name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+			else
+				name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(FACTION_UPP)
+			if(female)
+				name = "[pick(GLOB.first_names_female_upp)] [pick(GLOB.last_names_upp)]"
+			else
+				name = "[pick(GLOB.first_names_male_upp)] [pick(GLOB.last_names_upp)]"
+		if(FACTION_CLF)
+			if(female)
+				name = "[pick(GLOB.first_names_female_clf)] [pick(GLOB.last_names_clf)]"
+			else
+				name = "[pick(GLOB.first_names_male_clf)] [pick(GLOB.last_names_clf)]"
+	return name

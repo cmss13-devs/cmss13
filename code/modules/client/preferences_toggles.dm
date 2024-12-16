@@ -361,9 +361,9 @@
 /client/proc/toggle_auto_shove()
 	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
 	if (prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
-		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen."))
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen or King."))
 	else
-		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen."))
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen or King."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
@@ -556,6 +556,8 @@
 	else
 		prefs.custom_cursors = FALSE
 		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+
+	prefs.save_preferences()
 
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"

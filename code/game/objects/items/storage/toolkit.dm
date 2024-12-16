@@ -21,6 +21,7 @@
 		/obj/item/device/assembly,
 		/obj/item/stock_parts,
 		/obj/item/explosive/plastic,
+		/obj/item/device/defibrillator/synthetic,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_ENGINEER
@@ -54,3 +55,15 @@
 
 /obj/item/storage/toolkit/empty/fill_preset_inventory()
 	return
+
+/obj/item/storage/toolkit/tactical
+	name = "breaching engineer kit"
+
+/obj/item/storage/toolkit/tactical/fill_preset_inventory()
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic/breaching_charge/rubber(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)

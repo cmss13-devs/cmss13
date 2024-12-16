@@ -16,7 +16,7 @@
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
 /area/fiorina/maintenance
 	name = "Fiorina - Maintenance"
@@ -72,17 +72,14 @@
 	name = "Fiorina - LZ"
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
-	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"
 	linked_lz = DROPSHIP_LZ1
-	is_resin_allowed = null
 
 /area/fiorina/lz/near_lzII
 	name = "Fiorina - LZ2 Prison Port"
 	linked_lz = DROPSHIP_LZ2
-	is_resin_allowed = null
 
 /area/fiorina/lz/console_I
 	name = "Fiorina - LZ1 Control Console"
@@ -120,7 +117,6 @@
 
 /area/fiorina/station/lowsec/east
 	name = "Fiorina - Low Security Eastside"
-	linked_lz = DROPSHIP_LZ1
 
 /area/fiorina/station/power_ring
 	name = "Fiorina - Engineering Ring"
@@ -226,9 +222,12 @@
 
 /area/fiorina/station/telecomm/lz2_engineering
 	name = "Fiorina - Engineering Secondary Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/fiorina/station/telecomm/lz2_north
 	name = "Fiorina - LZ2 North Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 /area/fiorina/station/telecomm/lz2_maint
 	name = "Fiorina - Backup Communications Relay"
+	linked_lz = DROPSHIP_LZ2

@@ -384,7 +384,7 @@
 			else
 				gib()
 			return
-	..()
+	return ..()
 
 
 /mob/living/simple_animal/movement_delay()

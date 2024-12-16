@@ -286,6 +286,9 @@
 /// If this ID belongs to an ERT member
 #define TRAIT_ERT_ID "ert_id"
 
+/// If this item can hear things from inside one level of contents.
+#define TRAIT_HEARS_FROM_CONTENTS "t_hears_from_contents"
+
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
 
@@ -390,6 +393,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
 		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
 		"TRAIT_ITEM_RENAME_SPECIAL" = TRAIT_ITEM_RENAME_SPECIAL,
+		"TRAIT_HEARS_FROM_CONTENTS" = TRAIT_HEARS_FROM_CONTENTS,
 	),
 	/obj/item/clothing = list(
 		"TRAIT_CLOTHING_HOOD" = TRAIT_CLOTHING_HOOD

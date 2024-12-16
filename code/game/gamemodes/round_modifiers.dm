@@ -131,3 +131,7 @@
 /datum/gamemode_modifier/yautja_shipside_large_sd
 	modifier_name = "Yautja Shipside Large SD"
 	modifier_desc = "Allows Yautja to large self destruct on the mainship z-level."
+
+/datum/gamemode_modifier/no_body_c4
+	modifier_name = "No body c4"
+	modifier_desc = "Prevents c4 explosives from being planted on dead body."

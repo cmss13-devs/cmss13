@@ -113,6 +113,14 @@
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
 
+///hunting grounds
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner
+	name = "hunt spawner"
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	name = "hunt spawner xeno"
+
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
 	. = ..()
 	GLOB.monkey_spawns += src

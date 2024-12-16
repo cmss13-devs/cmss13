@@ -482,7 +482,7 @@
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_under = list(
@@ -717,7 +717,7 @@
 	random_spawn_chance = 38
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
 	)
@@ -800,7 +800,7 @@
 	random_spawn_chance = 35
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/magnetic_harness,
 	)
@@ -903,6 +903,8 @@
 	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 
+	starting_attachment_types = list(/obj/item/attachable/stock/m16)
+
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -931,7 +933,7 @@
 	random_spawn_chance = 42
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_under = list(
@@ -953,14 +955,6 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-/obj/item/weapon/gun/rifle/m16/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m16/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
 /obj/item/weapon/gun/rifle/m16/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 9, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 
@@ -976,6 +970,54 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/rifle/m16/m16a5
+	name = "\improper M16A5 rifle"
+	desc = "Modernized version of M16 platform rifle, probably originated from bottomless stockpiles of UA, when they switched to a newer designs. It is chambered in 5.56x45mm."
+	desc_lore = "The M16A5, introduced in 2016 has become something of a timeless classic in UA territory. The design rights for the gun and its many related platforms came into Armat ownership after their acquisition of Colt, and it's remained a surprisingly lucrative patent since then. While dated, the weapon's ease of use and more conventional rounds have made it popular among minimally-trained colonists and isolated units alike, being much easier to self-produce replacement parts and ammunition for than more advanced alternatives like pulse rifles and caseless ammunition. Subsequently, it remains a common sight on many colonies, and even in the reserve armories of some USCMC vessels like the Sulaco, partly from tradition and partly because of the sheer surplus supply of rifles that's lasted nearly two centuries."
+	icon_state = "m16a5"
+	item_state = "m16a5"
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/m16,
+		/obj/item/attachable/stock/m16/m16a5,
+	)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16/m16a5)
+
+/obj/item/weapon/gun/rifle/m16/m16a5/tactical
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
 
 /obj/item/weapon/gun/rifle/m16/grenadier
 	name = "\improper M16 grenadier rifle"
@@ -1002,7 +1044,7 @@
 	random_spawn_chance = 42
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_muzzle = list(
@@ -1041,6 +1083,7 @@
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/m16,
 		/obj/item/ammo_magazine/rifle/m16/ap,
+		/obj/item/ammo_magazine/rifle/m16/ext,
 	)
 
 	attachable_allowed = list(
@@ -1056,7 +1099,7 @@
 	random_spawn_chance = 75
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 	)
 	random_spawn_under = list(
@@ -1064,16 +1107,10 @@
 		/obj/item/attachable/lasersight,
 	)
 
+	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177)
+
 /obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 20, "under_x" = 19, "under_y" = 13, "stock_x" = 15, "stock_y" = 14)
-
-/obj/item/weapon/gun/rifle/xm177/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m16/xm177/integrated = new(src)
-	integrated.hidden = FALSE
-	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	integrated.Attach(src)
-	update_attachable(integrated.slot)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
@@ -1087,6 +1124,36 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/rifle/xm177/car15a3
+	name = "\improper CAR-15A3 carbine"
+	desc = "Modernized version of the XM177, developed for limited use by special forces and Office of the Colonial Marshals. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc_lore = null
+	icon_state = "car15a3"
+	item_state = "car15a3"
+
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/m16/xm177,
+		/obj/item/attachable/stock/m16/xm177/car15a3,
+	)
+
+	starting_attachment_types = list(/obj/item/attachable/stock/m16/xm177/car15a3)
+
+/obj/item/weapon/gun/rifle/xm177/car15a3/tactical
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/lasersight,
+	)
+
 
 //-------------------------------------------------------
 //AR10 rifle
@@ -1124,7 +1191,7 @@
 	random_spawn_chance = 10
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_under = list(
@@ -1173,11 +1240,11 @@
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
 	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	starting_attachment_types = list(/obj/item/attachable/bayonet)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16, /obj/item/attachable/bayonet)
 
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex/,
+		/obj/item/attachable/reflex,
 	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
@@ -1201,7 +1268,7 @@
 	name = "\improper Dutch's Grenadier M16A1"
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
+	starting_attachment_types = list(/obj/item/attachable/stock/m16, /obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch/set_gun_config_values()
 	..()
@@ -2037,8 +2104,19 @@
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
 
-/obj/item/weapon/gun/rifle/xm51/cock_gun(mob/user)
-	return
+/obj/item/weapon/gun/rifle/xm51/cmb
+	name = "\improper Model 1771 Cobra Max Tactical"
+	desc = "Designed on the M51 platform by Armat Battlefield Systems for the Office of the Colonial Marshals as a breaching and crowd control weapon, the Model 1771 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds which are effective at breaching walls and doors, additionally designed to shoot rubber buckshot."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/shotguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
+	)
+	icon_state = "m51b"
+	item_state = "m51b"
+	current_mag = /obj/item/ammo_magazine/rifle/xm51/cmb
+	map_specific_decoration = FALSE
+	starting_attachment_types = list(/obj/item/attachable/flashlight/grip, /obj/item/attachable/reflex)
 
-/obj/item/weapon/gun/rifle/xm51/cock(mob/user) //Stops the "You cock the gun." message where nothing happens.
-	return

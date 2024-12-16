@@ -513,7 +513,7 @@ const RenderOrder = (props: {
 
   return (
     <Stack.Item>
-      <Collapsible title={`Order #${order.order_num}`} open={request}>
+      <Collapsible title={`Order #${order.order_num}`} open>
         <Stack vertical>
           <Stack justify="space-between">
             <Stack.Item>

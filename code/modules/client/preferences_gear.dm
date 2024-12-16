@@ -169,6 +169,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex
 	cost = 4
 
+/datum/gear/eyewear/new_bimex/bronze
+	display_name = "BiMex tactical shades, bronze"
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
+	cost = 4
+
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses

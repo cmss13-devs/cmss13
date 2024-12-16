@@ -897,6 +897,10 @@
 	icon_state = "bimex_black"
 	item_state = "bimex_black"
 
+/obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
+	icon_state = "bimex_polarized_bronze"
+	item_state = "bimex_polarized_bronze"
+
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
 	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."

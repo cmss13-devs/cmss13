@@ -53,8 +53,10 @@
 
 	var/turf/owner_turf = get_turf(owner.mob)
 	var/turf/source_turf = get_turf(template.source)
+	if(!owner_turf || !source_turf) //deleted or in nullspace, can't spatialize
+		return
 	//soundsys only traverses one "step", so will never send from one interior to another
-	if(owner_turf.z == source_turf.z) //both in exterior, or both in same interior
+	else if(owner_turf.z == source_turf.z) //both in exterior, or both in same interior
 		sound.x = source_turf.x - owner_turf.x
 		sound.z = source_turf.y - owner_turf.y
 	else if(SSinterior.in_interior(owner_turf)) //source in exterior, owner in interior

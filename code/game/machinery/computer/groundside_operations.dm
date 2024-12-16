@@ -330,11 +330,13 @@
 				else
 					if(cam)
 						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					if(helm)
 						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
 						helm.overwatch_consoles -= WEAKREF(src)
 						if(length(helm.overwatch_consoles) == 0)
 							helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+
 					cam = new_cam
 					helm = new_helm
 					helm.flags_atom |= (USES_HEARING|USES_SEEING)

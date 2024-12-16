@@ -545,6 +545,7 @@
 				else
 					if(cam)
 						user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					if(helm)
 						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
 						helm.overwatch_consoles -= WEAKREF(src)

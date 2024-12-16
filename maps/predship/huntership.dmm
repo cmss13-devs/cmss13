@@ -33,6 +33,10 @@
 "af" = (
 /turf/closed/wall/cult,
 /area/yautja)
+"ag" = (
+/obj/structure/machinery/hunt_ground_spawner,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja)
 "an" = (
 /obj/structure/machinery/medical_pod/autodoc{
 	dir = 4
@@ -2577,6 +2581,7 @@
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
 	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
 /obj/item/clothing/mask/gas/yautja/hunter{
@@ -2633,7 +2638,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "LX" = (
-/obj/structure/prop/pred_flight,
+/obj/structure/machinery/hunting_ground_selection,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Mb" = (
@@ -5550,11 +5555,11 @@ bL
 bL
 rH
 ha
-RS
+dw
 ZI
 Ok
 Br
-dw
+RS
 ha
 Ip
 bL
@@ -5622,11 +5627,11 @@ cK
 cP
 rH
 fS
-RS
+dw
 Ok
 GM
 Ok
-dw
+RS
 fS
 Ip
 cP
@@ -5694,11 +5699,11 @@ bL
 bL
 rH
 hJ
-RS
+dw
 lw
 Ok
 nd
-dw
+RS
 hJ
 Ip
 bL
@@ -5711,7 +5716,7 @@ ct
 cP
 bL
 hI
-LX
+ag
 bL
 bL
 cP

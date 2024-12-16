@@ -14,7 +14,11 @@
 	desc = "A joint project between the USCM and Wey-Yu. It is said to be top-class engineering and state of the art technology. Given to USCM deployed synthetic units and the intended usage involve assisting in battlefield support. Can be recharged by grabbing onto an APC and completing the circuit with one's fingers (procedure not advised for non-synthetic personnel). WARNING - User is advised to take precautions."
 	item_state = "smartpack"
 	icon_state = "smartpack"
-	has_gamemode_skin = FALSE
+	icon = 'icons/obj/items/clothing/backpack/smartpack.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 14
 	worn_accessible = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
@@ -109,14 +113,14 @@
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/backpack/marine/smartpack/get_mob_overlay(mob/user_mob, slot)
+/obj/item/storage/backpack/marine/smartpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	var/light = "+lamp_on"
 	if(!light_on)
 		light = "+lamp_off"
 
-	var/image/lamp = overlay_image('icons/mob/humans/onmob/back.dmi', light, color, RESET_COLOR)
+	var/image/lamp = overlay_image('icons/mob/humans/onmob/clothing/back/smartpack.dmi', light, color, RESET_COLOR)
 	ret.overlays += lamp
 
 	return ret

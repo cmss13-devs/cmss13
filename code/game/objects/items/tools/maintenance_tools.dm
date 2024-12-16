@@ -14,10 +14,18 @@
 /*
  * Wrench
  */
+
+
+/obj/item/tool
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
+
 /obj/item/tool/wrench
 	name = "wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 	pickup_sound = 'sound/handling/wrench_pickup.ogg'
 	drop_sound = 'sound/handling/wrench_drop.ogg'
@@ -38,7 +46,7 @@
 /obj/item/tool/screwdriver
 	name = "screwdriver"
 	desc = "You can be totally screwy with this."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "screwdriver"
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
@@ -119,7 +127,7 @@
 	name = "wirecutters"
 	gender = PLURAL
 	desc = "This cuts wires."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
@@ -160,7 +168,7 @@
 /obj/item/tool/weldingtool
 	name = "blowtorch"
 	desc = "A blowtorch for welding and cutting metals."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
@@ -455,10 +463,9 @@
 
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field."
 	max_fuel = 5
 	has_welding_screen = TRUE
-	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 	icon_state = "welder_b"
 
 /*
@@ -468,7 +475,7 @@
 /obj/item/tool/crowbar
 	name = "crowbar"
 	desc = "Used to remove floors and to pry open doors."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "crowbar"
 	pickup_sound = 'sound/handling/crowbar_pickup.ogg'
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
@@ -486,7 +493,7 @@
 	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "red_crowbar"
 	item_state = "red_crowbar"
 
@@ -502,6 +509,10 @@
 	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
 	icon_state = "maintenance_jack"
 	item_state = "maintenance_jack"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	hitsound = "swing_hit"
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
@@ -654,7 +665,7 @@
 
 				user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
 				SPAN_DANGER("You force [resin_door] open with [src]."))
-				resin_door.Open()
+				resin_door.open()
 				return
 
 	else if(istype(attacked_obj, /turf/open/floor))
@@ -679,7 +690,10 @@ Welding backpack
 	name = "Welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+	)
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess

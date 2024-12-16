@@ -1,1 +1,10 @@
-[]
+[
+    {
+    "type": "pick", "name": "pmccrash",
+    "choices": [
+        { "weight": 10, "type": "def", "values": { "lvevent": "none" } },
+        { "weight": 4, "type": "def", "values": { "lvevent": "pmccrash" } }
+    ]
+    }
+]
+

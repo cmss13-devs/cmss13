@@ -3,6 +3,10 @@
 	desc = "Used to put holes in specific areas without too much extra hole."
 	gender = PLURAL
 	icon = 'icons/obj/items/assemblies.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
 	flags_item = NOBLUDGEON
@@ -208,6 +212,9 @@
 			return FALSE
 
 	if(ishuman(target))
+		if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/no_body_c4))
+			to_chat(user, SPAN_WARNING("This feels wrong, you do not want to do it."))
+			return FALSE
 		var/mob/living/carbon/human/H = target
 		if(user.faction == H.faction)
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))

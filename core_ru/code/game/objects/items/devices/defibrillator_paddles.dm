@@ -34,6 +34,9 @@
 /obj/item/device/paddles/Destroy()
 	remove_attached()
 
+	QDEL_NULL(dcell)
+	QDEL_NULL(sparks)
+
 	. = ..()
 
 /obj/item/device/paddles/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)

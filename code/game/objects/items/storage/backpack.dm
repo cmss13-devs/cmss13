@@ -1204,6 +1204,24 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_fuel = 180
 
+/obj/item/storage/backpack/molle
+	name = "\improper T13 MOLLE Satchel"
+	desc = "Tactical satchel manufactured by one of the Alphatech subsidiaries. Very lightweight beltbag variant that utilizes UA standard MOLLE fastening systems. Can be often found in hands of colonial security and various private military groups."
+	icon_state = "MOLLEbeltbag"
+	item_state = "MOLLEbeltbag"
+	worn_accessible = TRUE
+	max_storage_space = 15
+
+/obj/item/storage/backpack/molle/backpack
+	name = "\improper T16 MOLLE Backpack"
+	desc = "Tactical backpack manufactured by one of the Alphatech subsidiaries. Very lightweight backpack that utilizes UA standard MOLLE fastening systems, which allows easy access and optimal weight distribution. Can be often found in hands of colonial security and various private military groups."
+	icon_state = "MOLLEbackpack"
+	item_state = "MOLLEbackpack"
+	max_storage_space = 21
+
+/obj/item/storage/backpack/molle/backpack/surv
+	worn_accessible = FALSE
+
 /obj/item/storage/backpack/commando
 	name = "commando bag"
 	desc = "A heavy-duty bag carried by Weyland-Yutani commandos."

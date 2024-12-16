@@ -1,0 +1,5 @@
+author: "Tyranicranger4"
+delete-after: True
+changes:
+  - qol: "Makes Resin Salve only go on CD after successful activations, not attempted ones"
+  - qol: "Removes the chat notification for Resin Salve going off CD (it's a 0.5 second CD)"

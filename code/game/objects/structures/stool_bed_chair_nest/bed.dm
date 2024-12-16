@@ -107,11 +107,15 @@
 		. = ..()
 
 //Trying to buckle a mob
-/obj/structure/bed/buckle_mob(mob/M, mob/user)
+/obj/structure/bed/buckle_mob(mob/living/carbon/human/mob, mob/user)
 	if(buckled_bodybag)
 		return
+	if(ishuman(mob))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < HEALTH_THRESHOLD_CRIT) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+			to_chat(user, SPAN_WARNING("You can't buckle a crit or dead member of another faction! ."))
+			return FALSE
 	..()
-	if(M.loc == src.loc && buckling_sound && M.buckled)
+	if(mob.loc == src.loc && buckling_sound && mob.buckled)
 		playsound(src, buckling_sound, 20)
 
 /obj/structure/bed/Move(NewLoc, direct)

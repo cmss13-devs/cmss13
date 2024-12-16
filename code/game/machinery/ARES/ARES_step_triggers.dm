@@ -190,7 +190,7 @@
 		return "ALERT: [human_passer.name] left the AI Chamber with a temporary access ticket. Removing access."
 
 	if(idcard)
-		return "ALERT: ID Card assigned to [idcard.registered_name] left the AI Chamber with a temporary access ticket. Removing access."
+		return "ALERT: [idcard.id_type] assigned to [idcard.registered_name] left the AI Chamber with a temporary access ticket. Removing access."
 
 	log_debug("ARES ERROR 337: Passer: '[passer]', ID: '[idcard]', F Status: '[failure]'")
 	return "Warning: Error 337 - Access Control Anomaly."

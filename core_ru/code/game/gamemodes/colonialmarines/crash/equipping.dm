@@ -70,7 +70,7 @@ Ensure power is up, and the ship is well defended. You share your ship crew."}
 	total_positions = 16
 	spawn_positions = 16
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/crash/marine/pfc
+	gear_preset = /datum/equipment_preset/crash/marine
 
 /datum/job/marine/specialist/crash
 	title = JOB_CRASH_SQUAD_SPECIALIST

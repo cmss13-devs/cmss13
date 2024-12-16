@@ -56,6 +56,11 @@
 	QDEL_NULL(tacmap)
 	current_orbital_cannon = null
 	concurrent_users = null
+	if(!helm)
+		return ..()
+	helm.overwatch_consoles -= WEAKREF(src)
+	if(length(helm.overwatch_consoles) == 0)
+		helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
@@ -389,6 +394,13 @@
 				user.reset_view(null)
 				user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
+			if(helm)
+				UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+				UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+				helm.overwatch_consoles -= WEAKREF(src)
+				if(length(helm.overwatch_consoles) == 0)
+					helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+			helm = null
 			ui.close()
 			return TRUE
 
@@ -522,7 +534,9 @@
 					user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 					UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
-					helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+					helm.overwatch_consoles -= WEAKREF(src)
+					if(length(helm.overwatch_consoles) == 0)
+						helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 					cam = null
 					helm = null
 					user.reset_view(null)
@@ -533,9 +547,13 @@
 						user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
-						helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+						helm.overwatch_consoles -= WEAKREF(src)
+						if(length(helm.overwatch_consoles) == 0)
+							helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+
 					cam = new_cam
 					helm = new_helm
+					helm.overwatch_consoles += WEAKREF(src)
 					helm.flags_atom |= (USES_HEARING|USES_SEEING)
 					user.reset_view(cam)
 					user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
@@ -673,6 +691,7 @@
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
+	concurrent_users -= WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	..()

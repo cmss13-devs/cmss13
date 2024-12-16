@@ -345,6 +345,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/obj/item/device/helmet_visor/active_visor = null
 	///Designates a visor type that should start down when initialized
 	var/start_down_visor_type
+	///Refs of observing consoles
+	var/list/overwatch_consoles = list()
 
 /obj/item/clothing/head/helmet/marine/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)

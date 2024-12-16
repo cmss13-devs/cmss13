@@ -361,10 +361,10 @@
 	job = /datum/job/logistics/engineering/whiskey
 
 /obj/effect/landmark/start/whiskey/maint
-	job = /datum/job/logistics/tech/maint/whiskey
+	job = /datum/job/logistics/maint/whiskey
 
 /obj/effect/landmark/start/whiskey/tech
-	job = /datum/job/logistics/tech //Need to create a WO variant in the future
+	job = /datum/job/logistics/otech //Need to create a WO variant in the future
 
 //****************************************** MILITARY POLICE- HONOR-GUARD ************************************************/
 /obj/effect/landmark/start/whiskey/warrant
@@ -512,6 +512,39 @@
 	else
 		GLOB.latejoin -= src
 	return ..()
+
+
+/obj/effect/landmark/late_join/responder/uscm
+	name = "USCM HC Fax Responder late join"
+	job = JOB_FAX_RESPONDER_USCM_HC
+
+/obj/effect/landmark/late_join/responder/uscm/provost
+	name = "USCM Provost Fax Responder late join"
+	job = JOB_FAX_RESPONDER_USCM_PVST
+
+/obj/effect/landmark/late_join/responder/wey_yu
+	name = "W-Y Fax Responder late join"
+	job = JOB_FAX_RESPONDER_WY
+
+/obj/effect/landmark/late_join/responder/upp
+	name = "UPP Fax Responder late join"
+	job = JOB_FAX_RESPONDER_UPP
+
+/obj/effect/landmark/late_join/responder/twe
+	name = "TWE Fax Responder late join"
+	job = JOB_FAX_RESPONDER_TWE
+
+/obj/effect/landmark/late_join/responder/clf
+	name = "CLF Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CLF
+
+/obj/effect/landmark/late_join/responder/cmb
+	name = "CMB Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CMB
+
+/obj/effect/landmark/late_join/responder/press
+	name = "Press Fax Responder late join"
+	job = JOB_FAX_RESPONDER_PRESS
 
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms

@@ -26,7 +26,7 @@
 		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
 		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
 		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/maint/whiskey = JOB_MAINT_TECH,
 		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
 		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
 		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
@@ -591,7 +591,7 @@
 /obj/item/device/whiskey_supply_beacon //Whiskey Outpost Supply beacon. Might as well reuse the IR target beacon (Time to spook the fucking shit out of people.)
 	name = "ASB beacon"
 	desc = "Ammo Supply Beacon, it has 5 different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
-	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "ir_beacon"
 	w_class = SIZE_SMALL
 	var/activated = 0

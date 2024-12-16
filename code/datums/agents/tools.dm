@@ -102,8 +102,9 @@
 /obj/item/stack/points
 	name = "credits"
 	singular_name = "credit"
-	gender = PLURAL
 	icon_state = "point"
+	icon = 'icons/obj/items/economy.dmi'
+	gender = PLURAL
 
 	stack_id = "antag points"
 

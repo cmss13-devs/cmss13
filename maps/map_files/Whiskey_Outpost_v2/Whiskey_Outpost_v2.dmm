@@ -4394,6 +4394,9 @@
 /area/whiskey_outpost/outside/south)
 "tj" = (
 /obj/structure/machinery/light/small,
+/obj/structure/machinery/personal_gear_vendor{
+	pixel_x = 6
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost)
 "tk" = (

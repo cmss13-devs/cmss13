@@ -97,7 +97,7 @@
 		if(last_living_human && shipside_humans_count <= 1 && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
 			GLOB.last_qm_callout = world.time
 			// Tell the xenos where the human is.
-			xeno_announcement("I sense the last tallhost hiding in [get_area(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+			xeno_announcement("I sense the last tallhost hiding in [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			// Tell the human he is the last guy.
 			if(last_living_human.client)
 				to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))

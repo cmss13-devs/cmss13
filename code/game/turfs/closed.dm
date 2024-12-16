@@ -19,7 +19,7 @@
 /turf/closed/cordon
 	name = "world border"
 	icon = 'icons/turf/shuttle.dmi'
-	icon_state = "pclosed"
+	icon_state = "pwall"
 	layer = ABOVE_TURF_LAYER
 	baseturfs = /turf/closed/cordon
 
@@ -126,7 +126,7 @@
 	icon_state = "Corner"
 
 /turf/closed/ice/secret/junction
-	icon_state = "T-Junction"
+	icon_state = "T_Junction"
 
 /turf/closed/ice/secret/intersection
 	icon_state = "Intersection"
@@ -175,7 +175,7 @@
 	icon_state = "Corner"
 
 /turf/closed/ice/thin/secret/junction
-	icon_state = "T-Junction"
+	icon_state = "T_Junction"
 
 /turf/closed/ice/thin/secret/intersection
 	icon_state = "Intersection"

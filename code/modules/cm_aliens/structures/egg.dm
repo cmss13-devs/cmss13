@@ -444,6 +444,8 @@ SPECIAL EGG USED BY EGG CARRIER
 SPECIAL EGG USED WHEN WEEDS LOST
 */
 
+#define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES // Should be longer than HIVECORE_COOLDOWN
+
 /obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, hivenumber, weed_strength_required)
 	src.weed_strength_required = weed_strength_required
 
@@ -453,7 +455,7 @@ SPECIAL EGG USED WHEN WEEDS LOST
 		return .
 
 	if(hivenumber != XENO_HIVE_FORSAKEN)
-		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), CARRIER_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
+		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), ORPHAN_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 
 	var/my_turf = get_turf(src)
 	if(my_turf)

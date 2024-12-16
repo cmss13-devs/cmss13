@@ -1,21 +1,13 @@
-/datum/yautja_panel
-	var/client/linked_client
-	var/current_clan_index = 0
+SUBSYSTEM_DEF(yautja_panel)
+	name = "Yautja Panel"
+	wait = 30 MINUTES
+	flags = SS_NO_INIT
+	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
 	/// A list of all clan names, in the order they were populated.
 	var/list/clan_name_to_index = list()
 	/// A list of clan IDs, tied to the order the clan was populated.
 	var/list/clan_index_to_id = list()
-
-	/// The permissions of the panel user.
-	var/user_rights = 0
-	/// The ID of the user's clan.
-	var/user_clan_id
-	/// The rank held within the user's clan.
-	var/user_clan_rank
-
-	/// The currently selected clan's OD
-	var/current_clan_id
 
 	/// The global data.
 	var/list/global_data
@@ -24,20 +16,8 @@
 	/// Whether global data is reloading or not.
 	var/reloading_data = FALSE
 
-GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE))
-
-/datum/yautja_panel/New(client/origin_client, init_global = FALSE)
-	. = ..()
-	if(origin_client)
-		linked_client = origin_client
-		user_rights = linked_client.clan_info.permissions
-		user_clan_id = linked_client.clan_info.clan_id
-		user_clan_rank = linked_client.clan_info.clan_rank
-	if(init_global)
-		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE), 30 SECONDS)
-
-/client
-	var/datum/yautja_panel/yautja_panel
+/datum/controller/subsystem/yautja_panel/fire(resumed)
+	global_data = populate_clan_data()
 
 /client/verb/yautja_panel()
 	set name = "Yautja Clan Panel"
@@ -46,65 +26,60 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	if(!check_whitelist_status(WHITELIST_PREDATOR))
 		return FALSE
 
-	if(!GLOB.yautja_clan_data.global_data)
+	if(!SSyautja_panel.global_data)
 		to_chat(usr, SPAN_WARNING("Clan Data has not populated yet, please wait for up to 30 seconds."))
 		return FALSE
-	if(GLOB.yautja_clan_data.reloading_data)
+
+	if(SSyautja_panel.reloading_data)
 		to_chat(usr, SPAN_WARNING("Clan Data is currently reloading, please wait for up to 30 seconds."))
 		return FALSE
 
-	if(yautja_panel)
-		qdel(yautja_panel)
-	yautja_panel = new(src)
-	yautja_panel.tgui_interact(mob)
+	SSyautja_panel.tgui_interact(mob)
 
-/datum/yautja_panel/tgui_interact(mob/user, datum/tgui/ui)
+/datum/controller/subsystem/yautja_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "YautjaClans", "Yautja Clan Panel")
 		ui.open()
 
-/datum/yautja_panel/ui_state(mob/user)
+/datum/controller/subsystem/yautja_panel/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/yautja_panel/ui_close(mob/user)
-	. = ..()
-	if(user?.client.yautja_panel)
-		qdel(user.client.yautja_panel)
-
-/datum/yautja_panel/vv_edit_var(var_name, var_value)
+/datum/controller/subsystem/yautja_panel/vv_edit_var(var_name, var_value)
 	return FALSE
 
-/datum/yautja_panel/ui_data(mob/user)
-	var/list/data = GLOB.yautja_clan_data.global_data
+/datum/controller/subsystem/yautja_panel/ui_data(mob/user)
+	var/list/data = global_data
 
-	data["current_clan_index"] = current_clan_index
-	data["user_is_clan_leader"] = verify_clan_leader(current_clan_id)
-	data["user_is_clan_elder"] = verify_clan_elder(current_clan_id)
+	data["user_clan_rank"] = user.client.clan_info.clan_rank
+	data["user_clan_id"] = user.client.clan_info.clan_id
 
-	data["user_is_council"] = verify_council()
-	data["user_is_superadmin"] = verify_superadmin()
+	data["user_is_council"] = verify_council(user)
+	data["user_is_superadmin"] = verify_superadmin(user)
 
 	return data
 
-/datum/yautja_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/controller/subsystem/yautja_panel/ui_static_data(mob/user)
+	. = ..()
+
+	.["clan_elder_rank"] = GLOB.clan_ranks_ordered[CLAN_RANK_ELDER]
+	.["clan_leader_rank"] = GLOB.clan_ranks_ordered[CLAN_RANK_LEADER]
+
+/datum/controller/subsystem/yautja_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 	var/mob/user = ui.user
-	if(!GLOB.yautja_clan_data.global_data || GLOB.yautja_clan_data.reloading_data)
+	var/client/linked_client = user.client
+	if(!global_data || reloading_data)
 		ui.close()
 		to_chat(user, SPAN_WARNING("Clan Data is missing or being reloaded, please re-open the UI later."))
 		return
 	var/data_reloader = TRUE
 
-	if(action == "change_clan_list")
-		var/selected_clan = params["selected_clan"]
-		current_clan_index = GLOB.yautja_clan_data.clan_name_to_index[selected_clan]
-		current_clan_id = index_to_id(current_clan_index)
-		return TRUE
+	var/current_clan_id = params["target_clan"]
 
-	if(!verify_clan_elder(current_clan_id))
+	if(!verify_clan_elder(user, current_clan_id))
 		to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 		return FALSE
 
@@ -127,8 +102,8 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			return FALSE
 
 
-	if(params["target_clan"])
-		target_clan = GET_CLAN(params["target_clan"])
+	if(current_clan_id)
+		target_clan = GET_CLAN(current_clan_id)
 		target_clan.sync()
 
 		// ------------- CLAN ELDER+ ONLY ACTION ------------- \\
@@ -335,7 +310,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 
-			var/new_clan = tgui_input_list(user, "Choose the clan to put them in", "Change player's clan", GLOB.yautja_clan_data.clan_name_to_index)
+			var/new_clan = tgui_input_list(user, "Choose the clan to put them in", "Change player's clan", clan_name_to_index)
 			if(!new_clan)
 				return FALSE
 
@@ -370,7 +345,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
 
 	if(data_reloader)
-		GLOB.yautja_clan_data.queue_early_repopulate()
+		fire()
 	else
 		to_chat(user, SPAN_WARNING("The UI data will not be reloaded for this change, updates happen automatically every 30 minutes."))
 
@@ -383,71 +358,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 
 	return TRUE
 
-/datum/yautja_panel/proc/early_conclude_data_act(datum/entity/clan/target_clan, datum/entity/clan_player/target_yautja)
-	GLOB.yautja_clan_data.queue_early_repopulate()
-	if(target_clan)
-		target_clan.save()
-		target_clan.sync()
-	if(target_yautja)
-		target_yautja.save()
-		target_yautja.sync()
-
-/datum/yautja_panel/proc/get_clan_id(clan_name)
-	var/index_holder = GLOB.yautja_clan_data.clan_name_to_index[clan_name]
-	return index_to_id(index_holder)
-
-/datum/yautja_panel/proc/index_to_id(clan_index)
-	var/index_holder = "[clan_index]"
-	return GLOB.yautja_clan_data.clan_index_to_id[index_holder]
-
-/datum/yautja_panel/proc/verify_clan_leader(clan_id)
-	if(user_rights & CLAN_PERMISSION_ADMIN_ANCIENT)
-		return TRUE
-	if((user_rights & CLAN_PERMISSION_USER_MODIFY) && (user_clan_id == clan_id))
-		return TRUE
-	return FALSE
-
-/datum/yautja_panel/proc/verify_clan_elder(clan_id)
-	if(verify_clan_leader(clan_id))
-		return TRUE
-	if(user_clan_rank >= CLAN_RANK_ELDER_INT)
-		return TRUE
-	return FALSE
-
-/datum/yautja_panel/proc/verify_council()
-	if(user_rights & CLAN_PERMISSION_ADMIN_ANCIENT)
-		return TRUE
-	return FALSE
-
-/datum/yautja_panel/proc/verify_superadmin()
-	if(user_rights & CLAN_PERMISSION_ADMIN_MANAGER)
-		return TRUE
-	return FALSE
-
-/datum/yautja_panel/proc/queue_early_repopulate()
-	if(early_queued)
-		return FALSE
-
-	early_queued = TRUE
-	addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), FALSE, "early"), 5 MINUTES)
-	message_admins("Yautja Clans: Global Data will early repopulate in 5 minutes.")
-	return TRUE
-
-/datum/yautja_panel/proc/populate_global_clan_data(start_timer = FALSE, type = "override")
-	if(type == "early")
-		early_queued = FALSE
-
-	reloading_data = TRUE
-	message_admins("Yautja Clans: Populating Global Data.")
-	global_data = populate_clan_data()
-	message_admins("Yautja Clans: Global Data has been populated.")
-	reloading_data = FALSE
-	if(start_timer)
-		addtimer(CALLBACK(src, PROC_REF(populate_global_clan_data), TRUE, "regular"), 30 MINUTES)
-		message_admins("Yautja Clans: Clan Global Data will repopulate in 30 minutes.")
-	return "Populated"
-
-/datum/yautja_panel/proc/populate_clan_data()
+/datum/controller/subsystem/yautja_panel/proc/populate_clan_data()
 	clan_name_to_index = list(CLAN_NAME_CLANLESS = 1)
 	clan_index_to_id = list("1" = null)
 	var/list/clan_names = list(CLAN_NAME_CLANLESS)
@@ -468,7 +379,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 	data["clan_names"] = clan_names
 	return data
 
-/datum/yautja_panel/proc/populate_clan(clan_name, clan_to_format)
+/datum/controller/subsystem/yautja_panel/proc/populate_clan(clan_name, clan_to_format)
 	var/list/data = list()
 
 	var/datum/entity/clan/formatting_clan
@@ -498,6 +409,7 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		if(player.check_whitelist_status(WHITELIST_PREDATOR))
 			yautja["active_whitelist"] = TRUE
 		else
+			yautja["active_whitelist"] = FALSE
 			yautja["player_label"] = "[CP.ckey] (DEWHITELISTED)"
 
 		if(player.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
@@ -519,3 +431,53 @@ GLOBAL_DATUM_INIT(yautja_clan_data, /datum/yautja_panel, new(init_global = TRUE)
 		data["clan_id"] = clan_to_format
 
 	return data
+
+/datum/controller/subsystem/yautja_panel/proc/early_conclude_data_act(datum/entity/clan/target_clan, datum/entity/clan_player/target_yautja)
+	fire()
+
+	if(target_clan)
+		target_clan.save()
+		target_clan.sync()
+
+	if(target_yautja)
+		target_yautja.save()
+		target_yautja.sync()
+
+/datum/controller/subsystem/yautja_panel/proc/get_clan_id(clan_name)
+	var/index_holder = clan_name_to_index[clan_name]
+	return index_to_id(index_holder)
+
+/datum/controller/subsystem/yautja_panel/proc/index_to_id(clan_index)
+	var/index_holder = "[clan_index]"
+	return clan_index_to_id[index_holder]
+
+/datum/controller/subsystem/yautja_panel/proc/verify_clan_leader(mob/user, clan_id)
+	var/user_rights = user.client.clan_info.permissions
+
+	if(user_rights & CLAN_PERMISSION_ADMIN_ANCIENT)
+		return TRUE
+	if((user_rights & CLAN_PERMISSION_USER_MODIFY) && (user.client.clan_info.clan_id == clan_id))
+		return TRUE
+	return FALSE
+
+/datum/controller/subsystem/yautja_panel/proc/verify_clan_elder(mob/user, clan_id)
+	if(verify_clan_leader(user, clan_id))
+		return TRUE
+	if(user.client.clan_info.clan_rank >= CLAN_RANK_ELDER_INT)
+		return TRUE
+	return FALSE
+
+/datum/controller/subsystem/yautja_panel/proc/verify_council(mob/user)
+	var/user_rights = user.client.clan_info.permissions
+
+	if(user_rights & CLAN_PERMISSION_ADMIN_ANCIENT)
+		return TRUE
+	return FALSE
+
+/datum/controller/subsystem/yautja_panel/proc/verify_superadmin(mob/user)
+	var/user_rights = user.client.clan_info.permissions
+
+	if(user_rights & CLAN_PERMISSION_ADMIN_MANAGER)
+		return TRUE
+	return FALSE
+

@@ -1,8 +1,45 @@
+import { BooleanLike } from 'common/react';
+import { useState } from 'react';
+
 import { useBackend } from '../backend';
 import { Box, Button, Dropdown, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
-export const YautjaClans = (props) => {
+type YautjaData = {
+  user_clan_rank: number;
+  user_clan_id: number;
+
+  user_is_council: BooleanLike;
+  user_is_superadmin: BooleanLike;
+
+  clans: Clan[];
+  clan_names: string[];
+
+  clan_leader_rank: number;
+  clan_elder_rank: number;
+};
+
+type Clan = {
+  label: string;
+  desc: string;
+  color: string;
+  members: Yautja[];
+  clan_id?: number;
+};
+
+type Yautja = {
+  ckey: string;
+  player_label: string;
+  name: string;
+  player_id: number;
+  rank: string;
+  ancillary: string;
+  clan_id: number;
+  active_whitelist: BooleanLike;
+  is_legacy: BooleanLike;
+};
+
+export const YautjaClans = () => {
   return (
     <Window theme="ntos_spooky" width={780} height={725}>
       <Window.Content scrollable>
@@ -12,47 +49,41 @@ export const YautjaClans = (props) => {
   );
 };
 
-const ViewClans = (props) => {
-  const { data, act } = useBackend();
-  const {
-    clans,
-    clan_names,
-    current_clan_index,
-    user_is_clan_leader,
-    user_is_clan_elder,
-    user_is_council,
-    user_is_superadmin,
-  } = data;
+const ViewClans = () => {
+  const { data, act } = useBackend<YautjaData>();
+  const { clans, clan_names, user_is_council, user_is_superadmin } = data;
+
+  const [currentClan, setCurrentClan] = useState(clans[0]);
 
   return (
     <Section>
       <Dropdown
         width="100%"
         menuWidth="200px"
-        selected={clans[current_clan_index].label}
+        selected={currentClan.label}
         options={clan_names}
         onSelected={(value) =>
-          act('change_clan_list', { selected_clan: value })
+          setCurrentClan(clans[clan_names.findIndex((val) => value === val)])
         }
       />
 
-      <Section color={clans[current_clan_index].color}>
-        <h1>{clans[current_clan_index].label}</h1>
+      <Section color={currentClan.color}>
+        <h1>{currentClan.label}</h1>
         <Box mb=".75rem" italic>
-          {clans[current_clan_index].desc}
+          {currentClan.desc}
         </Box>
-        {clans[current_clan_index].clan_id && (
+        {currentClan.clan_id && (
           <>
             <Button.Confirm
               bold
               mt="1rem"
               width="23vw"
               disabled={
-                !user_is_clan_leader || !clans[current_clan_index].clan_id
+                !isClanLeader(currentClan.clan_id) || !currentClan.clan_id
               }
               onClick={() =>
                 act('clan_name', {
-                  target_clan: clans[current_clan_index].clan_id,
+                  target_clan: currentClan.clan_id,
                 })
               }
             >
@@ -63,11 +94,11 @@ const ViewClans = (props) => {
               mt="1rem"
               width="23vw"
               disabled={
-                !user_is_clan_leader || !clans[current_clan_index].clan_id
+                !isClanLeader(currentClan.clan_id) || !currentClan.clan_id
               }
               onClick={() =>
                 act('clan_desc', {
-                  target_clan: clans[current_clan_index].clan_id,
+                  target_clan: currentClan.clan_id,
                 })
               }
             >
@@ -78,11 +109,11 @@ const ViewClans = (props) => {
               mt="1rem"
               width="23vw"
               disabled={
-                !user_is_clan_leader || !clans[current_clan_index].clan_id
+                !isClanLeader(currentClan.clan_id) || !currentClan.clan_id
               }
               onClick={() =>
                 act('clan_color', {
-                  target_clan: clans[current_clan_index].clan_id,
+                  target_clan: currentClan.clan_id,
                 })
               }
             >
@@ -93,12 +124,10 @@ const ViewClans = (props) => {
                 bold
                 mt="1rem"
                 width="23vw"
-                disabled={
-                  !user_is_superadmin || !clans[current_clan_index].clan_id
-                }
+                disabled={!user_is_superadmin || !currentClan.clan_id}
                 onClick={() =>
                   act('delete_clan', {
-                    target_clan: clans[current_clan_index].clan_id,
+                    target_clan: currentClan.clan_id,
                   })
                 }
               >
@@ -108,7 +137,7 @@ const ViewClans = (props) => {
           </>
         )}
       </Section>
-      {clans[current_clan_index].members.map((yautja, i) => (
+      {currentClan.members.map((yautja, i) => (
         <Section
           key={i}
           title={yautja.player_label}
@@ -125,7 +154,7 @@ const ViewClans = (props) => {
             bold
             mt="1rem"
             width="23vw"
-            disabled={!user_is_clan_elder}
+            disabled={!isClanElder(currentClan.clan_id)}
             onClick={() =>
               act('assign_ancillary', { target_player: yautja.player_id })
             }
@@ -136,7 +165,7 @@ const ViewClans = (props) => {
             bold
             mt="1rem"
             width="23vw"
-            disabled={!user_is_clan_leader}
+            disabled={!isClanLeader(currentClan.clan_id)}
             onClick={() =>
               act('change_rank', { target_player: yautja.player_id })
             }
@@ -149,7 +178,7 @@ const ViewClans = (props) => {
                 bold
                 mt="1rem"
                 width="23vw"
-                disabled={!user_is_clan_leader}
+                disabled={!isClanLeader(currentClan.clan_id)}
                 onClick={() =>
                   act('kick_from_clan', { target_player: yautja.player_id })
                 }
@@ -160,7 +189,7 @@ const ViewClans = (props) => {
                 bold
                 mt="1rem"
                 width="23vw"
-                disabled={!user_is_clan_leader}
+                disabled={!isClanLeader(currentClan.clan_id)}
                 onClick={() =>
                   act('banish_from_clan', { target_player: yautja.player_id })
                 }
@@ -199,4 +228,36 @@ const ViewClans = (props) => {
       ))}
     </Section>
   );
+};
+
+const isClanElder = (clan?: number) => {
+  const { data } = useBackend<YautjaData>();
+
+  const { user_clan_id, user_clan_rank, clan_elder_rank } = data;
+
+  if (user_clan_id !== clan) {
+    return false;
+  }
+
+  if (user_clan_rank < clan_elder_rank) {
+    return false;
+  }
+
+  return true;
+};
+
+const isClanLeader = (clan?: number) => {
+  const { data } = useBackend<YautjaData>();
+
+  const { user_clan_id, user_clan_rank, clan_leader_rank } = data;
+
+  if (user_clan_id !== clan) {
+    return false;
+  }
+
+  if (user_clan_rank < clan_leader_rank) {
+    return false;
+  }
+
+  return true;
 };

@@ -3,6 +3,10 @@
 /obj/item/shard
 	name = "glass shard"
 	icon = 'icons/obj/items/shards.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = ""
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
@@ -87,7 +91,7 @@
 
 /obj/item/large_shrapnel/at_rocket_dud
 	name = "unexploded anti-tank rocket"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "custom_rocket_no_fuel"
 	desc = "An undetonated anti-tank rocket that probably hit something soft. You really shouldn't drop this..."
 	/// same as custom warhead

@@ -371,10 +371,6 @@
 	health = 80
 	},
 /obj/structure/window/reinforced,
-/obj/item/clothing/mask/gas/voice/space_ninja{
-	desc = "A close-fitting mask that appears to only cover half of the face. One can only wonder who would make such a thing.";
-	name = "strange half-mask"
-	},
 /turf/open/floor/holofloor/cult/south,
 /area/yautja)
 "bP" = (

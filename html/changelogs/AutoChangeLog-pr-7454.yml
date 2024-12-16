@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - bugfix: "Fix of multitile setDir caused by another source rather than try_rotate..."

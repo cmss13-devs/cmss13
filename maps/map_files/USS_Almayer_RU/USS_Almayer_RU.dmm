@@ -5812,7 +5812,6 @@
 /area/almayer/command/airoom)
 "aug" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -6486,7 +6485,6 @@
 	pixel_x = 6
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -6502,7 +6500,6 @@
 /area/almayer/command/airoom)
 "avM" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -25296,7 +25293,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
@@ -39443,7 +39439,6 @@
 /area/almayer/hallways/lower/vehiclehangar)
 "hKg" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -53304,7 +53299,6 @@
 /area/almayer/engineering/port_atmos)
 "mQJ" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -58028,7 +58022,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
@@ -59863,7 +59856,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
@@ -59871,7 +59863,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
-	indestructible = 1;
 	name = "ARES Chamber Railings";
 	needs_power = 0;
 	pixel_x = 24;
@@ -66208,7 +66199,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
@@ -66954,7 +66944,6 @@
 "rKn" = (
 /obj/structure/machinery/door_control{
 	id = "agentshuttle";
-	indestructible = 1;
 	name = "Shutters";
 	pixel_y = 25;
 	req_one_access_txt = "201";
@@ -67106,7 +67095,6 @@
 "rNW" = (
 /obj/structure/machinery/door_control{
 	id = "Secretroom";
-	indestructible = 1;
 	layer = 2.5;
 	name = "Shutters";
 	use_power = 0
@@ -77182,7 +77170,6 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "vwg" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
 	},

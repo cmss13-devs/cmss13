@@ -69,12 +69,11 @@
 /obj/item/device/defibrillator/Initialize(mapload, ...)
 	. = ..()
 
-	paddles_type = new paddles(src)
+	new paddles(src)
 
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
 	dcell = new/obj/item/cell(src)
-	RegisterSignal(paddles_type, COMSIG_PARENT_PREQDELETED, PROC_REF(override_delete))
 	update_icon()
 
 /obj/item/device/defibrillator/update_icon()
@@ -223,12 +222,11 @@
 	else
 		set_tether_holder(loc)
 
-/obj/item/device/defibrillator/proc/override_delete()
-	SIGNAL_HANDLER
-	recall_paddles()
-	return COMPONENT_ABORT_QDEL
-
 /obj/item/device/defibrillator/proc/recall_paddles()
+	if(!paddles_type)
+		paddles_type = new paddles(src)
+		return
+
 	if(ismob(paddles_type.loc))
 		var/mob/M = paddles_type.loc
 		paddles_type.unwield(M)
@@ -244,32 +242,25 @@
 
 /obj/item/device/defibrillator/pickup(obj/item/storage/storage)
 	. = ..()
-	if(!paddles_type)
+	if(paddles_type?.loc == src)
 		return
 
-	if(paddles_type.loc == loc)
-		return
-
-	if(get_dist(paddles_type, src) > range)
-		recall_paddles()
+	recall_paddles()
 
 /obj/item/device/defibrillator/on_enter_storage(obj/item/storage/storage)
 	. = ..()
-	if(paddles_type.loc != src)
-		recall_paddles()
+	if(paddles_type?.loc == src)
+		return
+
+	recall_paddles()
 
 /obj/item/device/defibrillator/Destroy()
-	if(paddles_type)
-		paddles_type.remove_attached()
+	QDEL_NULL(paddles_type)
 
 	QDEL_NULL(dcell)
 	QDEL_NULL(sparks)
 
 	. = ..()
-
-/obj/item/device/defibrillator/proc/remove_attached()
-	UnregisterSignal(paddles_type, COMSIG_PARENT_PREQDELETED)
-	paddles_type = null
 
 /mob/living/carbon/human/proc/get_ghost(check_client = TRUE, check_can_reenter = TRUE)
 	if(client)

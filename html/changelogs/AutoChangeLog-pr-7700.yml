@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "Upp Dzho Automaton/Fighting Joe and his uniform"
+  - bugfix: "fixed working joe not having eye intent set by default"

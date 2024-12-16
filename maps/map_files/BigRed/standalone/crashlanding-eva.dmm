@@ -642,7 +642,7 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "fY" = (
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "ge" = (
@@ -868,12 +868,12 @@
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/hydroponics)
 "xt" = (
-/obj/item/clothing/under/darkred{
+/obj/item/clothing/under/color/darkred{
 	pixel_y = 7;
 	pixel_x = 10
 	},
 /obj/structure/surface/rack,
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "xU" = (
@@ -994,7 +994,7 @@
 /area/bigredv2/outside/general_offices)
 "GM" = (
 /obj/structure/surface/table,
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_y = 7;
 	pixel_x = 12
 	},
@@ -1136,7 +1136,7 @@
 /area/bigredv2/outside/general_offices)
 "RI" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/under/lightbrown{
+/obj/item/clothing/under/color/lightbrown{
 	pixel_x = 10;
 	pixel_y = -5
 	},

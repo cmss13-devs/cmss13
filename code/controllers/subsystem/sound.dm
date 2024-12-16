@@ -46,6 +46,7 @@ SUBSYSTEM_DEF(sound)
 
 	var/list/updated_clients = list()
 
+	list_clear_nulls(hearer_updates)
 	for(var/client/client as anything in hearer_updates)
 		client.soundOutput.update_tracked_channels()
 		updated_clients += client
@@ -54,6 +55,7 @@ SUBSYSTEM_DEF(sound)
 			return
 
 	for(var/datum/sound_template/template as anything in source_updates)
+		list_clear_nulls(template.hearers)
 		for(var/client/client as anything in (template.hearers - updated_clients))
 			client.soundOutput.process_template(template, update = TRUE)
 		source_updates -= template

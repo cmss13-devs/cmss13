@@ -278,6 +278,57 @@ const GroupedObservable = (props: {
   );
 };
 
+const uppSplitter = (members: Array<Observable>) => {
+  const akulaSquad: Array<Observable> = [];
+  const bizonSquad: Array<Observable> = [];
+  const chaykaSquad: Array<Observable> = [];
+  const delfinSquad: Array<Observable> = [];
+  const UPPKdoSquad: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('Akula')) {
+      akulaSquad.push(x);
+    } else if (x.job?.includes('Bizon')) {
+      bizonSquad.push(x);
+    } else if (x.job?.includes('Chayka')) {
+      chaykaSquad.push(x);
+    } else if (x.job?.includes('Delfin')) {
+      delfinSquad.push(x);
+    } else if (x.job?.includes('UPPKdo')) {
+      UPPKdoSquad.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const squads = [
+    buildSquadObservable('Akula', 'red', akulaSquad),
+    buildSquadObservable('Bizon', 'yellow', bizonSquad),
+    buildSquadObservable('Chayka', 'purple', chaykaSquad),
+    buildSquadObservable('Delfin', 'blue', delfinSquad),
+    buildSquadObservable('UPPKdo', 'red', UPPKdoSquad),
+    buildSquadObservable('Other', 'grey', other),
+  ];
+  return squads;
+};
+
+const upprankList = [
+  'UPP Ryadovoy',
+  'UPP MSzht Engineer',
+  'UPP MSzht Medic',
+  'UPP Serzhant',
+  'UPP Starshiy Serzhant',
+];
+const uppSort = (a: Observable, b: Observable) => {
+  const a_index = upprankList.findIndex((str) => a.job?.includes(str)) ?? 0;
+  const b_index = upprankList.findIndex((str) => b.job?.includes(str)) ?? 0;
+  if (a_index === b_index) {
+    return a.full_name.localeCompare(b.full_name);
+  }
+  return a_index > b_index ? -1 : 1;
+};
+
 /**
  * The primary content display for points of interest.
  * Renders a scrollable section replete with subsections for each
@@ -340,10 +391,12 @@ const ObservableContent = () => {
         section={synthetics}
         title="Synthetics"
       />
-      <ObservableSection
+      <GroupedObservable
         color="green"
         section={upp}
         title="Union of Progressive Peoples"
+        splitter={uppSplitter}
+        sorter={uppSort}
       />
       <ObservableSection
         color="teal"

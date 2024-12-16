@@ -1,0 +1,5 @@
+author: "Drdodo"
+delete-after: True
+changes:
+  - rscadd: "Added custom HealthMate HUDs to CMO vendor which combine HealthMate and Reagent scanner HUDs that requires research skill to use"
+  - qol: "Removed the old reagent scanner and healthmate HUDs from the CMO vendor"

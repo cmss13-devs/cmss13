@@ -15,6 +15,10 @@
 	name = "card"
 	desc = "Does card things."
 	icon = 'icons/obj/items/card.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/ids_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/ids_righthand.dmi',
+	)
 	w_class = SIZE_TINY
 	var/associated_account_number = 0
 

@@ -757,6 +757,10 @@
 	if(!user)
 		return
 
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
+		return
+
 	if(busy)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return

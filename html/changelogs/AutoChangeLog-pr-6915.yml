@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Adds the T37 Medium Machine Gun to the UPP's arsenal. The T37 is an alternative variant of the M2C HMG, it is a stationary emplacement (that can not be redeployed) that has a slower rate of fire compared to the M2C, but it can fire for a far longer period of time before overheating. This is a purely defensive weapon, and it must be pre-placed on a map by a mapper."

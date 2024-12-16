@@ -5,6 +5,10 @@
 	name = "drink"
 	desc = "yummy"
 	icon = 'icons/obj/items/food/drinks.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	icon_state = null
 	flags_atom = FPRINT|OPENCONTAINER
 	var/gulp_size = 5 //This is now officially broken ... need to think of a nice way to fix it.
@@ -147,10 +151,6 @@
 	desc = "It's milk. White and nutritious goodness!"
 	icon_state = "milk"
 	item_state = "milk"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
-	)
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/milk/Initialize()
@@ -177,10 +177,6 @@
 	desc = "It's soy milk. White and nutritious goodness!"
 	icon_state = "soymilk"
 	item_state = "soymilk"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
-	)
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/soymilk/Initialize()

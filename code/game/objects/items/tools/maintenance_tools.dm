@@ -66,28 +66,26 @@
 
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
-	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
-		if ("red")
-			icon_state = "screwdriver2"
-			item_state = "screwdriver"
+	switch(pick("red","blue","green","yellow","orange","black"))
 		if ("blue")
 			icon_state = "screwdriver"
-			item_state = "screwdriver_blue"
-		if ("purple")
-			icon_state = "screwdriver3"
-			item_state = "screwdriver_purple"
-		if ("brown")
-			icon_state = "screwdriver4"
-			item_state = "screwdriver_brown"
+			item_state = "screwdriver"
+		if ("red")
+			icon_state = "screwdriver2"
+			item_state = "screwdriver2"
 		if ("green")
-			icon_state = "screwdriver5"
-			item_state = "screwdriver_green"
-		if ("cyan")
-			icon_state = "screwdriver6"
-			item_state = "screwdriver_cyan"
+			icon_state = "screwdriver3"
+			item_state = "screwdriver3"
 		if ("yellow")
-			icon_state = "screwdriver7"
-			item_state = "screwdriver_yellow"
+			icon_state = "screwdriver4"
+			item_state = "screwdriver4"
+		if ("orange")
+			icon_state = "screwdriver5"
+			item_state = "screwdriver5"
+		if ("black")
+			icon_state = "tac_screwdriver"
+			item_state = "tac_screwdriver"
+
 
 	if (prob(75))
 		src.pixel_y = rand(0, 16)

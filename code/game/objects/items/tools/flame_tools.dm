@@ -193,6 +193,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi'
 	)
 	throw_speed = SPEED_AVERAGE
 	w_class = SIZE_TINY
@@ -477,10 +478,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/smoking/cigars.dmi'
 	item_state = "cigar_off"
 	item_state_slots = list(WEAR_AS_GARB = "cigar")
-	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
-	)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
@@ -676,6 +673,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 	)
 	icon_state = "cigoff"

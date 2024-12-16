@@ -376,10 +376,10 @@
 	desc = "A marine dog tags."
 	icon_state = "dogtag"
 	item_state = "dogtag"
-	var/tags_taken_icon = "dogtag_taken"
-	var/infotag_type = /obj/item/dogtag
 	id_type = "Dogtags"
 	pinned_on_uniform = FALSE
+	var/tags_taken_icon = "dogtag_taken"
+	var/infotag_type = /obj/item/dogtag
 	var/dogtag_taken = FALSE
 
 

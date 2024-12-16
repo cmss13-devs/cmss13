@@ -1556,7 +1556,6 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
 	)
-	has_gamemode_skin = FALSE
 	gun_has_gamemode_skin = TRUE
 	storage_slots = 9
 	max_w_class = 5

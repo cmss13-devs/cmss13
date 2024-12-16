@@ -1,6 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - rscadd: "A Type-19 submachinegun gun case has been added to the UPP requisitions vendor as a restricted weapon item, which can be issued to UPP soldiers as requested."
-  - rscadd: "Addition of Type-19 magazines, extended magazines and ammo boxes to UPP requisiton vendors."
-  - rscadd: "A PPSh-17b submachinegun gun case has been added to the game. Intended to be spawned as a rare weapon, owing to its (in-universe) collectors and old firearm enthusiasts value."

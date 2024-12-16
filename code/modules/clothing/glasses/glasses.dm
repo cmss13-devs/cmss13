@@ -499,6 +499,8 @@
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
+	var/message_up = "You push the goggles up."
+	var/message_down = "You pull the goggles down."
 	garbage = FALSE
 
 /obj/item/clothing/glasses/mgoggles/prescription
@@ -708,17 +710,32 @@
 
 	activated = !activated
 	if(activated)
-		to_chat(user, SPAN_NOTICE("You pull the goggles down."))
+		to_chat(user, SPAN_NOTICE(message_down))
 		icon_state = active_icon_state
 		if(prescription == TRUE && user.head == attached_item)
 			ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 	else
-		to_chat(user, SPAN_NOTICE("You push the goggles up."))
+		to_chat(user, SPAN_NOTICE(message_up))
 		icon_state = inactive_icon_state
 		if(prescription == TRUE)
 			REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 
 	attached_item.update_icon()
+
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield
+	name = "\improper TC2 CMB riot shield"
+	desc = "Yellowish protective glass piece, can be lifted up when needed, makes you see everything in yellow."
+	icon_state = "swat_shield"
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
+	active_icon_state = "swat_shield"
+	inactive_icon_state = "swat_shield_up"
+	activated = TRUE
+	message_up = "You lift the visor up."
+	message_down = "You lower the visor down."
+	flags_equip_slot = null
 
 //welding goggles
 

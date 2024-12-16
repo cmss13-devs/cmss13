@@ -1,6 +1,6 @@
 /* HUD DATUMS */
 
-//GLOBAL HUD LIST
+//GLOBAL HUD LIST: This must be indexed in order (or the defines stringified so its an asslist)
 GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_SECURITY_BASIC = new /datum/mob_hud/security/basic(),
 	MOB_HUD_SECURITY_ADVANCED = new /datum/mob_hud/security/advanced(),

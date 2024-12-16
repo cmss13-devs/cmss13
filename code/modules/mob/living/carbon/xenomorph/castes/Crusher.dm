@@ -65,8 +65,8 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 
-	icon_xeno = 'icons/mob/xenos/crusher.dmi'
-	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/crusher.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/crusher.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")

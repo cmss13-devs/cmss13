@@ -1,4 +1,41 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/event/deep_underground/dynamic)
+"ab" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/south{
+	pixel_x = 7;
+	pixel_y = 26
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_central)
 "al" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
@@ -15,7 +52,6 @@
 "aL" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/event/deep_underground/dynamic)
@@ -37,13 +73,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
 /area/event/deep_underground/dynamic)
-"br" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	dir = 1;
-	welded = 1
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_N_East)
 "bx" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/colony_South/power2)
@@ -359,7 +388,6 @@
 "ly" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/colors/orange,
 /area/event/deep_underground/dynamic)
@@ -639,7 +667,6 @@
 "vb" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/colors/orange,
 /area/event/deep_underground/dynamic)
@@ -825,9 +852,10 @@
 /area/kutjevo/interior/colony_central)
 "Do" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras{
-	dir = 8;
-	network = null
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
 	},
 /turf/open/floor/kutjevo/tan/grey_inner_edge/north,
 /area/event/deep_underground/dynamic)
@@ -3115,7 +3143,7 @@ uP
 qY
 qY
 Gv
-JJ
+ab
 JJ
 JJ
 JJ
@@ -4890,7 +4918,7 @@ qY
 qY
 qY
 qY
-gY
+aa
 ZT
 ZT
 ZT
@@ -5246,8 +5274,8 @@ ar
 ar
 Lq
 YN
-eP
-eP
+XT
+XT
 eP
 eP
 nX
@@ -5326,7 +5354,7 @@ RR
 tM
 gY
 gY
-eP
+XT
 eP
 eP
 eP
@@ -5345,7 +5373,7 @@ Kz
 JN
 JN
 JN
-br
+JN
 JN
 zv
 Hk
@@ -6148,8 +6176,8 @@ eP
 eP
 eP
 eP
-gY
-gY
+aa
+aa
 HO
 HK
 HK
@@ -6229,7 +6257,7 @@ eP
 eP
 eP
 eP
-gY
+aa
 Rw
 rA
 Vh
@@ -6309,11 +6337,11 @@ eP
 eP
 eP
 eP
-gY
-gY
-gY
-gY
-gY
+aa
+aa
+aa
+aa
+aa
 KD
 VG
 gY
@@ -6393,7 +6421,7 @@ eP
 eP
 eP
 eP
-gY
+aa
 RY
 vA
 gY
@@ -6473,10 +6501,10 @@ eP
 eP
 eP
 eP
-gY
-gY
+aa
+aa
 eL
-gY
+aa
 eP
 eP
 lL
@@ -6554,9 +6582,9 @@ eP
 eP
 eP
 eP
-gY
-gY
-gY
+aa
+aa
+aa
 eP
 eP
 WJ

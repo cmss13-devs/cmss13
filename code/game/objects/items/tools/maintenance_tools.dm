@@ -164,8 +164,6 @@
 	else
 		..()
 
-/obj/item/tool/wirecutters
-
 /*
  * Blowtorch
  */

@@ -118,7 +118,7 @@
 	return TRUE
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/ds_first_landed(obj/docking_port/stationary/marine_dropship)
-	if(round_started > 0)
+	if(round_started > 0) //we enter here on shipspawn but do not want this
 		return
 	.=..()
 	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)

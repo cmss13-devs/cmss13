@@ -690,7 +690,7 @@
 
 /obj/structure/sign/calendar/upp
 	icon_state = "calendar_upp"
-	desc = "Classic office decoration and a place to stare at maniacally, has a UPP logo on it, also all text is in Russian."
+	desc = "Classic office decoration with a spot to stare at maniacally. Features a UPP logo, written in Russian."
 	calendar_faction = FACTION_UPP
 
 /obj/structure/sign/calendar/wy

@@ -292,6 +292,8 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 	switch(action)
 		if("toggle_priority")
+			if(!can_send_priority)
+				return
 			is_priority_fax = !is_priority_fax
 			to_chat(user, SPAN_NOTICE("Priority Alert is now [is_priority_fax ? "Enabled" : "Disabled"]."))
 			. = TRUE

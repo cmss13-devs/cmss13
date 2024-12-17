@@ -17,6 +17,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
 	)
+	item_state_slots = list(WEAR_HEAD = "paper")
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0

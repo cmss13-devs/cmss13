@@ -1,7 +1,7 @@
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/liquid_tanks.dmi'
 	icon_state = "watertank"
 	density = TRUE
 	anchored = FALSE
@@ -159,42 +159,36 @@
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
 	desc = "A water tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
 	desc = "An ammonia tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
 	desc = "A sulfuric acid tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "sacidtank"
 	chemical = "sulphuric acid"
 
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"
 	desc = "A polytrinic acid tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "pacidtank"
 	chemical = "pacid"
 
 /obj/structure/reagent_dispensers/ethanoltank
 	name = "ethanol tank"
 	desc = "An ethanol tank."
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "ethanoltank"
 	chemical = "ethanol"
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fuel tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	chemical = "fuel"
@@ -234,14 +228,6 @@
 		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
 		return
 
-	/*if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
-			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
-		modded = modded ? 0 : 1
-		if (modded)
-			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. [ADMIN_JMP(loc)]")
-			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
-			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
 
 		if(rig)
@@ -412,7 +398,6 @@
 /obj/structure/reagent_dispensers/fueltank/oxygentank
 	name = "oxygentank"
 	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "oxygentank"
 	chemical = "oxygen"
 
@@ -451,7 +436,7 @@
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"
 	desc = "Refill pepper spray canisters."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
 	drag_delay = 3
@@ -480,7 +465,7 @@
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "A beer keg"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/kegs.dmi'
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
@@ -495,7 +480,7 @@
 /obj/structure/reagent_dispensers/virusfood
 	name = "virus food dispenser"
 	desc = "A dispenser of virus food."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = TRUE

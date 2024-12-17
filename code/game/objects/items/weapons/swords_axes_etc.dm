@@ -19,9 +19,14 @@
 /obj/item/weapon/classic_baton
 	name = "police baton"
 	desc = "A wooden truncheon for beating criminal scum."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_NORMAL
 
@@ -38,7 +43,7 @@
 /obj/item/weapon/telebaton
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded. It will knock down humans when not on harm intent."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	icon_state = "telebaton_0"
 	item_state = "telebaton_0"
 	flags_equip_slot = SLOT_WAIST

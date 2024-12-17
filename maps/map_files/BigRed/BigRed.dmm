@@ -1949,6 +1949,8 @@
 /area/bigredv2/outside/marshal_office)
 "aiE" = (
 /obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiJ" = (
@@ -4533,7 +4535,8 @@
 /area/bigredv2/caves/lambda/breakroom)
 "auv" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -10462,7 +10465,8 @@
 /area/bigredv2/outside/telecomm/n_cave)
 "aWz" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -17123,13 +17127,15 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bEl" = (
 /obj/structure/showcase{
-	icon_state = "mechfab1"
+	icon = 'icons/obj/structures/machinery/research.dmi';
+	icon_state = "d_analyzer_la"
 	},
 /turf/open/floor/carpet5_1/west,
 /area/bigredv2/caves/eta/living)
 "bEm" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/carpet9_4/west,
 /area/bigredv2/caves/eta/living)
@@ -19307,7 +19313,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/library)
 "dOl" = (
-/obj/item/prop/colony/folded_bedroll{
+/obj/item/roller/bedroll{
 	pixel_x = -5;
 	pixel_y = -4
 	},
@@ -20203,7 +20209,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "eJI" = (
 /obj/item/prop{
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
 	icon_state = "m41ae2";
 	name = "M41AE2 Heavy Pulse Rifle";
 	desc = "A large claw mark across this weapon indicates it is inoperable.";
@@ -20889,7 +20895,7 @@
 	desc = "A bewildering tangle of machinery and pipes.";
 	name = "\improper coolant feed"
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "fwV" = (
 /obj/structure/surface/table,
@@ -21342,7 +21348,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
 "fWb" = (
-/obj/item/clothing/under/darkred{
+/obj/item/clothing/under/color/darkred{
 	pixel_y = 7;
 	pixel_x = 10
 	},
@@ -22351,7 +22357,7 @@
 /area/bigredv2/caves_lambda)
 "gXs" = (
 /obj/effect/spawner/random/toolbox,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "gYl" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -24828,7 +24834,7 @@
 /obj/structure/prop/almayer/cannon_cable_connector{
 	name = "\improper Cable connector"
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "jRi" = (
 /obj/item/ammo_magazine/smg/bizon{
@@ -25431,9 +25437,9 @@
 /area/bigredv2/outside/engineering)
 "knL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -6;
-	pixel_x = -8
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = -9;
+	pixel_y = -4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -26006,7 +26012,7 @@
 /area/bigredv2/caves/mining)
 "kWh" = (
 /obj/structure/surface/table,
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_y = 7;
 	pixel_x = 12
 	},
@@ -27284,7 +27290,7 @@
 	name = "\improper Cable connector"
 	},
 /obj/structure/cable,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "msf" = (
 /turf/open/mars_cave/mars_cave_11,
@@ -29173,7 +29179,7 @@
 /area/bigredv2/outside/n)
 "opn" = (
 /obj/structure/machinery/washing_machine,
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_y = 11;
 	pixel_x = 7
 	},
@@ -29478,7 +29484,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "oEz" = (
-/obj/item/clothing/under/lightbrown{
+/obj/item/clothing/under/color/lightbrown{
 	pixel_x = -7;
 	pixel_y = -4
 	},
@@ -29549,7 +29555,7 @@
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
 "oHW" = (
-/obj/item/clothing/under/darkred,
+/obj/item/clothing/under/color/darkred,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "oIb" = (
@@ -30825,7 +30831,7 @@
 /area/bigredv2/caves_sw)
 "pYE" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "pYL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -31661,7 +31667,7 @@
 /area/bigredv2/outside/nw)
 "qOK" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/under/lightbrown{
+/obj/item/clothing/under/color/lightbrown{
 	pixel_x = 10;
 	pixel_y = -5
 	},
@@ -31772,14 +31778,6 @@
 /obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"qTw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 5;
-	pixel_x = 7
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "qTC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -32476,11 +32474,11 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/filtration_plant)
 "rEe" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 7;
-	pixel_x = 7
-	},
 /obj/structure/barricade/deployable,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "rGz" = (
@@ -32746,7 +32744,7 @@
 "rQs" = (
 /obj/structure/bed/sofa/south{
 	desc = "An old rusty ladder";
-	icon = 'icons/obj/structures/structures.dmi';
+	icon = 'icons/obj/structures/ladders.dmi';
 	icon_state = "ladder11";
 	name = "Old Ladder"
 	},
@@ -34008,7 +34006,7 @@
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "taD" = (
-/obj/item/clothing/under/brown{
+/obj/item/clothing/under/color/brown{
 	pixel_x = 4;
 	pixel_y = -5
 	},
@@ -34173,7 +34171,7 @@
 /area/bigredv2/caves/mining)
 "tgF" = (
 /obj/effect/spawner/random/tool,
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "tgL" = (
 /turf/open/mars_cave/mars_cave_6,
@@ -34688,9 +34686,7 @@
 /area/bigredv2/outside/marshal_office)
 "tFL" = (
 /obj/structure/surface/table,
-/obj/item/clothing/head/beret/sec/warden{
-	pixel_y = 5
-	},
+/obj/item/clothing/head/CMB/beret,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "tFO" = (
@@ -34895,7 +34891,10 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "tOg" = (
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "tOh" = (
@@ -35295,7 +35294,7 @@
 	name = "handful of HE/FRAG shells (12g)";
 	pixel_y = 3
 	},
-/turf/open/shuttle/escapepod/floor5,
+/turf/open/shuttle/escapepod/floor1/north,
 /area/bigredv2/oob)
 "ukv" = (
 /turf/open/mars_cave/mars_cave_15,
@@ -36258,9 +36257,9 @@
 /area/bigredv2/outside/marshal_office)
 "vmt" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -9;
-	pixel_x = -12
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light{
+	pixel_x = -7;
+	pixel_y = -7
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -37159,9 +37158,9 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "wfS" = (
-/obj/item/clothing/mask/gas{
-	pixel_x = 10;
-	pixel_y = -12
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 11;
+	pixel_y = -8
 	},
 /obj/structure/barricade/deployable{
 	dir = 8
@@ -37844,9 +37843,9 @@
 /area/bigredv2/outside/admin_building)
 "wRo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -8;
-	pixel_y = -5
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = 10;
+	pixel_y = -4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -57923,7 +57922,7 @@ ahp
 acp
 tFL
 wRo
-qTw
+afT
 gHC
 aer
 dHs

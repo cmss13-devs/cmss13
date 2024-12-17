@@ -1,6 +1,5 @@
 /obj/structure/pipes/standard/manifold
 	icon = 'icons/obj/pipes/manifold.dmi'
-	icon_state = ""
 	name = "pipe manifold"
 	desc = "A manifold composed of regular pipes"
 	dir = SOUTH

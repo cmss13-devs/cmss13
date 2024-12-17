@@ -151,7 +151,7 @@
 
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "flag_backpack"
 	max_storage_space = 10
 	worn_accessible = TRUE

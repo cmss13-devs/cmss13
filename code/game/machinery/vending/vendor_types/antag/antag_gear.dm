@@ -47,6 +47,11 @@
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 		/obj/structure/bed/medevac_stretcher/upp,
+		/obj/item/storage/surgical_case/regular,
+		/obj/item/reagent_container/blood/OMinus,
+		/obj/item/reagent_container/blood/OMinus,
+		/obj/item/device/flashlight/pen,
+		/obj/item/clothing/accessory/stethoscope,
 	)
 
 /obj/effect/essentials_set/leader/upp

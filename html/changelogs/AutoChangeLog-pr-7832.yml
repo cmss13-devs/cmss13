@@ -1,0 +1,4 @@
+author: "Tsurupeta"
+delete-after: True
+changes:
+  - rscadd: "Added saving of the preferences for ambience/lobby music/game volume."

@@ -19,8 +19,13 @@
 /turf/open/floor/plating,
 /area/fiorina/oob)
 "av" = (
-/obj/effect/landmark/xeno_spawn,
-/turf/open/floor/plating/prison,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/mineral/plastic,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "ax" = (
 /obj/structure/stairs/perspective,
@@ -59,18 +64,17 @@
 /turf/open/space,
 /area/fiorina/oob)
 "aR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "T9";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
 "aV" = (
-/turf/open/shuttle/dropship/can_surgery,
-/area/fiorina/oob)
+/obj/item/ammo_casing{
+	icon_state = "casing_8"
+	},
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/event/metal/dynamic)
 "aY" = (
 /turf/open/floor/prison/darkpurple2/east,
 /area/event/metal/dynamic)
@@ -83,9 +87,17 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "bA" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
 "bF" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -95,14 +107,9 @@
 /turf/open/space,
 /area/fiorina/oob)
 "bU" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "bW" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/lattice,
@@ -144,13 +151,13 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "cX" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/closed/shuttle/ert{
-	icon_state = "T15";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/reagent_dispensers/watertank,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/fiorina/tumor/servers)
 "dc" = (
 /obj/item/shard{
 	icon_state = "medium"
@@ -165,12 +172,9 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "dH" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/structure/xenoautopsy/tank,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
 "dO" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/cable/heavyduty{
@@ -179,20 +183,12 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "dR" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0;
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkpurple2/east,
+/area/fiorina/tumor/servers)
 "ed" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T4";
-	name = "Fulcrum";
-	opacity = 0
-	},
+/obj/item/clothing/head/helmet/space/uscm,
+/turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "eG" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
@@ -200,8 +196,17 @@
 /turf/open/space,
 /area/fiorina/oob)
 "eN" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/obj/structure/prop/dam/crane{
+	bound_height = 32;
+	climbable = 1;
+	pixel_y = -23
+	},
+/obj/structure/xenoautopsy/tank/larva{
+	pixel_y = -1;
+	layer = 3.1
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "eX" = (
 /obj/structure/surface/rack,
 /turf/open/floor/prison/darkpurplefull2,
@@ -251,11 +256,11 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "gG" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
+/obj/structure/xenoautopsy/tank/broken,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
-/area/fiorina/tumor/servers)
+/area/event/metal/dynamic)
 "gH" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/space/basic,
@@ -281,12 +286,12 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "hj" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T4";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurple2/northeast,
+/area/event/metal/dynamic)
 "hz" = (
 /obj/item/tool/screwdriver,
 /turf/open/floor/prison/darkpurplefull2,
@@ -304,32 +309,27 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "hY" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T14";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/fiorina/tumor/servers)
 "ik" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T3";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "il" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
 "iu" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp21";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/structure/closet/crate/internals,
+/obj/item/tool/crew_monitor,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "iw" = (
-/obj/effect/landmark/queen_spawn,
-/turf/open/floor/plating/prison,
-/area/fiorina/tumor/servers)
+/obj/item/ammo_casing{
+	icon_state = "casing_6_1"
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
 "iz" = (
 /turf/open/floor/prison/floor_plate,
 /area/event/metal/dynamic)
@@ -345,20 +345,22 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/fiorina/tumor/servers)
 "jo" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T11";
-	name = "Fulcrum";
-	opacity = 0
+/obj/item/ammo_casing{
+	dir = 6;
+	icon_state = "casing_10_1"
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "jt" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "jy" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
-/area/fiorina/oob)
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
 "jM" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/space,
@@ -371,9 +373,13 @@
 /turf/open/floor/prison/darkpurplefull2/northwest,
 /area/event/metal/dynamic)
 "kn" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp,
-/turf/open/floor/plating/prison,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
+	},
+/turf/open/floor/prison,
 /area/event/metal/dynamic)
 "kZ" = (
 /obj/structure/machinery/light/double/blue{
@@ -402,23 +408,20 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/event/metal/dynamic)
 "mt" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit/upp{
-	req_access = null;
-	req_one_access = list(235, 240)
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
 	},
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurple2,
+/area/fiorina/tumor/servers)
 "mw" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "mD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T2";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "nc" = (
 /turf/open/floor/prison/darkpurple2/west,
 /area/event/metal/dynamic)
@@ -496,11 +499,12 @@
 /turf/open/floor/plating/prison,
 /area/event/metal/dynamic)
 "pg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
 "pj" = (
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/event/metal/dynamic)
@@ -534,39 +538,37 @@
 /turf/open/auto_turf/sand/layer1,
 /area/event/metal/dynamic)
 "qg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T11";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
 "qs" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp4";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/structure/xenoautopsy/tank/larva,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
 "qx" = (
 /obj/structure/platform/metal/kutjevo/east,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "qO" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "T19";
-	opacity = 0;
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
 "rn" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0;
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
 "rt" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/lattice,
@@ -577,11 +579,11 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "sq" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp3";
-	name = "Fulcrum"
+/obj/structure/barricade/metal/wired{
+	dir = 4
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "sr" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/structure/barricade/handrail/type_b{
@@ -596,26 +598,25 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/servers)
 "tt" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T6";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "tY" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "up" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20";
-	name = "Fulcrum"
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
 	},
-/area/fiorina/oob)
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
 "uG" = (
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
@@ -628,14 +629,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
-"vB" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
 "vS" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	explo_proof = 1;
@@ -669,19 +662,15 @@
 /turf/open/floor/plating/prison,
 /area/event/metal/dynamic)
 "wZ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T16";
-	name = "Fulcrum";
-	opacity = 0
+/obj/item/ammo_casing{
+	icon_state = "casing_8"
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
 "xf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S-corner"
-	},
-/obj/structure/machinery/door/poddoor/almayer/closed,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "xo" = (
 /turf/open/floor/prison/darkpurple2/east,
 /area/fiorina/tumor/servers)
@@ -721,13 +710,14 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "yG" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T2";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/xenoautopsy/tank/hugger,
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
 "yJ" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
@@ -771,15 +761,9 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "zU" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/lz_sign/prison_sign,
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
 "zY" = (
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/fiorina/tumor/servers)
@@ -812,12 +796,11 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "BM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T8";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/barricade/metal/wired{
+	dir = 4
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
 "BR" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -827,12 +810,9 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "Ch" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T5";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "Cs" = (
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/fiorina/tumor/servers)
@@ -875,12 +855,11 @@
 /turf/open/space,
 /area/fiorina/oob)
 "Dv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0;
-	name = "Fulcrum"
+/obj/structure/barricade/metal/wired{
+	dir = 4
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
 "DU" = (
 /obj/item/stack/rods,
 /turf/open/space/basic,
@@ -917,15 +896,12 @@
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/event/metal/dynamic)
 "EV" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "T17";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "Fb" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
@@ -979,10 +955,9 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "Gz" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/high_explosive/frag,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/tumor/servers)
+/obj/item/tool/crowbar,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "GJ" = (
 /turf/open/floor/prison/darkpurple2/west,
 /area/fiorina/tumor/servers)
@@ -1014,8 +989,8 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "HQ" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/prison/darkpurple2/southeast,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "Ig" = (
 /obj/structure/machinery/computer3/server/rack,
@@ -1051,22 +1026,16 @@
 /turf/open/floor/prison/darkpurple2,
 /area/fiorina/tumor/servers)
 "IW" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T20";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "IX" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic)
 "IY" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/obj/structure/xenoautopsy/tank/alien,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
 "Jl" = (
 /obj/structure/disposalpipe/segment{
 	color = "#c4c4c4";
@@ -1079,11 +1048,8 @@
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
 "JR" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
 "Ka" = (
 /obj/structure/platform/metal/kutjevo/west,
 /turf/open/floor/almayer_hull,
@@ -1099,20 +1065,21 @@
 /turf/open/space,
 /area/fiorina/oob)
 "Kt" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T8";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp{
+	name = "Remote dropship navigation computer"
 	},
-/area/fiorina/oob)
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
 "Kv" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor/plating/prison,
 /area/event/metal/dynamic)
 "Li" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
-/area/fiorina/oob)
+/obj/structure/powerloader_wreckage,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
 "Lo" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkpurplefull2,
@@ -1140,27 +1107,23 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "LQ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp16";
-	name = "Fulcrum"
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -3
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "LR" = (
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "Mc" = (
-/obj/structure/bed/chair/dropship/pilot{
-	dir = 1
+/obj/item/prop/almayer/comp_closed{
+	pixel_x = -1
 	},
-/obj/structure/machinery/computer/cameras{
-	desc = "The flight controls for a Mi-220 Attack Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
-	name = "\improper 'Fulcrum' flight controls";
-	network = null;
-	pixel_y = 21
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "Mi" = (
 /obj/structure/monorail{
 	name = "launch track"
@@ -1225,19 +1188,15 @@
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
 "Nk" = (
-/obj/effect/attach_point/crew_weapon/dropship_upp,
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
-/area/fiorina/oob)
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/fiorina/tumor/servers)
 "NJ" = (
 /turf/open/floor/prison/darkpurple2,
 /area/event/metal/dynamic)
 "NN" = (
-/obj/effect/landmark{
-	icon_state = "hive_spawn";
-	name = "xeno_hive_spawn"
-	},
-/obj/effect/landmark/ert_spawns/groundside_xeno,
-/turf/open/floor/plating/prison,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "NU" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/east,
@@ -1253,12 +1212,13 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "Pm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0;
-	name = "Fulcrum"
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "PN" = (
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
@@ -1288,32 +1248,27 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "Rk" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp25";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
 "Rm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
 "Ry" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T1";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "RO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp27";
-	name = "Fulcrum";
-	opacity = 0
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
 	},
-/area/fiorina/oob)
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
 "Sh" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -1328,21 +1283,20 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "SK" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "SQ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T12";
-	name = "Fulcrum";
-	opacity = 0
+/obj/item/tool/warning_cone{
+	pixel_x = -9
 	},
-/area/fiorina/oob)
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "SX" = (
 /turf/open/floor/prison/platingdmg1,
 /area/fiorina/oob)
@@ -1360,9 +1314,11 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "Tv" = (
-/obj/effect/attach_point/crew_weapon/dropship_upp,
-/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
-/area/fiorina/oob)
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 32
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "TG" = (
 /obj/structure/disposalpipe/segment{
 	color = "#c4c4c4";
@@ -1407,25 +1363,9 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "UK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	layer = 3
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp1";
-	name = "Fulcrum"
-	},
-/area/fiorina/oob)
-"UT" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/shuttle/ert{
-	icon_state = "T10";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "UW" = (
 /turf/open/floor/prison/darkpurple2/north,
 /area/fiorina/tumor/servers)
@@ -1441,17 +1381,17 @@
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/event/metal/dynamic)
 "VE" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
-/area/fiorina/oob)
+/obj/structure/xenoautopsy/tank/hugger,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
 "WD" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/plating/prison,
-/area/fiorina/tumor/servers)
+/obj/structure/largecrate/supply/explosives/mortar_flare,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "WH" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "WI" = (
 /obj/structure/machinery/computer3/server/rack,
@@ -1474,18 +1414,21 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "XA" = (
-/obj/effect/attach_point/crew_weapon/dropship_upp,
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
-/area/fiorina/oob)
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "XD" = (
-/obj/effect/attach_point/crew_weapon/dropship_upp,
-/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
-/area/fiorina/oob)
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
 "XG" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 1
 	},
-/turf/open/floor/prison/darkpurplefull2,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "Ys" = (
 /turf/open/floor/plating/prison,
@@ -1495,16 +1438,18 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "YK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S-corner"
+/obj/item/tool/warning_cone{
+	pixel_x = -8
 	},
-/obj/structure/machinery/door/poddoor/almayer/closed,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/fiorina/oob)
+/turf/open/floor/prison/darkpurple2/southwest,
+/area/event/metal/dynamic)
 "YL" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/tumor/servers)
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
 "YR" = (
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/prison/floor_plate,
@@ -1515,13 +1460,9 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "Zk" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "T16";
-	name = "Fulcrum";
-	opacity = 0
-	},
-/area/fiorina/oob)
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
 "ZC" = (
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/fiorina/tumor/servers)
@@ -1547,8 +1488,6 @@
 /area/fiorina/tumor/servers)
 
 (1,1,1) = {"
-xY
-xY
 pl
 pl
 pl
@@ -1570,990 +1509,38 @@ pl
 pl
 pl
 pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
 xY
 xY
 xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
 aK
 aK
 il
-xY
+aK
+aK
+aK
+aK
+aK
 "}
 (2,1,1) = {"
-xY
-xY
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-il
-aK
-"}
-(3,1,1) = {"
-xY
-xY
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-aK
-il
-aK
-"}
-(4,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-qg
-tt
-ed
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-il
-aK
-"}
-(5,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-qg
-Kt
-zU
-Ch
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-il
-aK
-aK
-aK
-xY
-xY
-aK
-aK
-aK
-aK
-aK
-"}
-(6,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-qg
-BM
-Rm
-aR
-dR
-rn
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-aK
-il
-aK
-aK
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-"}
-(7,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-jo
-BM
-Rm
-Rm
-UT
-Pm
-Dv
-pl
-Ry
-ik
-ik
-hj
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-aK
-il
-aK
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-"}
-(8,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-up
-qs
-qs
-qs
-qs
-qs
-qs
-qs
-qs
-qs
-UK
-yG
-hY
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-aK
-il
-aK
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-"}
-(9,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-up
-qs
-LQ
-qs
-iu
-XA
-eN
-eN
-eN
-Tv
-IY
-IY
-IY
-VE
-YK
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-aK
-il
-aK
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-"}
-(10,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-RO
-Mc
-iu
-Mc
-iu
-jy
-bA
-bA
-bA
-jy
-eN
-eN
-eN
-aV
-xf
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-xY
-xY
-xY
-xY
-aK
-aK
-pl
-pl
-"}
-(11,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-RO
-eN
-eN
-eN
-mt
-jy
-bA
-bA
-bA
-jy
-eN
-eN
-eN
-aV
-xf
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-xY
-aK
-aK
-aK
-aK
-pl
-pl
-"}
-(12,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-Rk
-pg
-pg
-pg
-iu
-Nk
-eN
-eN
-eN
-XD
-JR
-JR
-JR
-Li
-YK
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-pl
-pl
-"}
-(13,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-Rk
-pg
-pg
-pg
-SK
-dH
-bU
-pg
-pg
-pg
-sq
-ik
-hj
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-il
-il
-aK
-xY
-xY
-pl
-pl
-"}
-(14,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-Zk
-IW
-vB
-vB
-qO
-dR
-rn
-pl
-SQ
-mD
-mD
-hY
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-xY
-xY
-pl
-il
-"}
-(15,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-Zk
-IW
-vB
-EV
-Pm
-Dv
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-xY
-xY
-pl
-aK
-"}
-(16,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-wZ
-IW
-zU
-Ch
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-aK
-aK
-aK
-aK
-aK
-"}
-(17,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-wZ
-cX
-hY
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-il
-aK
-aK
-aK
-aK
-aK
-"}
-(18,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-il
-il
-il
-il
-il
-aK
-"}
-(19,1,1) = {"
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-pl
-xY
-xY
-xY
-xY
-xY
-xY
-aK
-aK
-il
-aK
-aK
-aK
-aK
-aK
-"}
-(20,1,1) = {"
 pl
 pl
 pl
@@ -2606,7 +1593,7 @@ uG
 aK
 aK
 "}
-(21,1,1) = {"
+(3,1,1) = {"
 pl
 pl
 pl
@@ -2659,7 +1646,7 @@ HD
 Cs
 GJ
 "}
-(22,1,1) = {"
+(4,1,1) = {"
 pl
 pl
 pl
@@ -2712,7 +1699,7 @@ cI
 UW
 WI
 "}
-(23,1,1) = {"
+(5,1,1) = {"
 pl
 pl
 pl
@@ -2765,7 +1752,7 @@ HD
 ZC
 xo
 "}
-(24,1,1) = {"
+(6,1,1) = {"
 pl
 pl
 pl
@@ -2818,7 +1805,7 @@ uG
 uG
 uG
 "}
-(25,1,1) = {"
+(7,1,1) = {"
 pl
 pl
 pl
@@ -2871,7 +1858,7 @@ uG
 Cs
 GJ
 "}
-(26,1,1) = {"
+(8,1,1) = {"
 pl
 pl
 xY
@@ -2895,17 +1882,17 @@ ar
 Oo
 Vg
 Gt
+EV
+qs
+Ng
+IY
+Ng
+yG
+Ng
+UK
 Ng
 Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
+tt
 pR
 pm
 fX
@@ -2924,7 +1911,7 @@ eX
 UW
 WI
 "}
-(27,1,1) = {"
+(9,1,1) = {"
 pl
 pl
 xY
@@ -2933,33 +1920,33 @@ pl
 Gt
 Gt
 Ng
-Ng
+tt
 IX
 Ng
 Ng
 IX
-IX
+up
 Ng
 Ng
 Ng
 IX
-IX
+up
 Ng
 Ng
 Ng
 IX
 Ng
+IY
 Ng
+VE
 Ng
+qs
 Ng
-Ng
-Ng
-Ng
-Fl
+aV
 nc
 nc
-pj
-Ng
+YK
+jo
 Cz
 fX
 ww
@@ -2977,13 +1964,14 @@ uG
 ZC
 xo
 "}
-(28,1,1) = {"
+(10,1,1) = {"
 pl
 pl
 xY
 xY
 Gt
 Gt
+YL
 Ng
 Ng
 Ng
@@ -2992,8 +1980,7 @@ Ng
 Ng
 Ng
 Ng
-Ng
-Ng
+pR
 Ng
 Ng
 Ng
@@ -3009,12 +1996,12 @@ Ng
 Ng
 Ng
 He
-Ng
-iz
+gG
+Li
 NJ
 Ng
 IX
-Bb
+Cz
 Cz
 pT
 il
@@ -3030,7 +2017,7 @@ Lo
 uG
 hz
 "}
-(29,1,1) = {"
+(11,1,1) = {"
 pl
 pl
 pl
@@ -3063,12 +2050,12 @@ nc
 nc
 nc
 pj
-iz
-NJ
+Zk
+wZ
+XA
+UK
 Ng
-Ng
-Ng
-Ng
+SQ
 aN
 aj
 aK
@@ -3083,7 +2070,7 @@ uG
 Cs
 GJ
 "}
-(30,1,1) = {"
+(12,1,1) = {"
 pl
 pl
 pl
@@ -3115,7 +2102,7 @@ kc
 kc
 kc
 kc
-NJ
+iw
 aY
 Vs
 Ng
@@ -3136,7 +2123,7 @@ uG
 UW
 WI
 "}
-(31,1,1) = {"
+(13,1,1) = {"
 pl
 pl
 pl
@@ -3189,7 +2176,7 @@ uG
 ZC
 xo
 "}
-(32,1,1) = {"
+(14,1,1) = {"
 TV
 Mi
 Mi
@@ -3222,7 +2209,7 @@ Bb
 Bb
 kc
 NJ
-Ng
+Ch
 IX
 Ng
 IX
@@ -3242,7 +2229,7 @@ uG
 uG
 uG
 "}
-(33,1,1) = {"
+(15,1,1) = {"
 QM
 pl
 pl
@@ -3275,13 +2262,13 @@ Bb
 Bb
 kc
 NJ
-Ng
+Ch
 IX
 Ng
 IX
 Ng
 Ng
-Ng
+ik
 il
 il
 aj
@@ -3293,9 +2280,9 @@ il
 PN
 PN
 PN
-YL
+PN
 "}
-(34,1,1) = {"
+(16,1,1) = {"
 cy
 xY
 pl
@@ -3328,7 +2315,7 @@ Bb
 Bb
 kc
 NJ
-Ng
+Ch
 Ng
 Ng
 Ng
@@ -3343,12 +2330,12 @@ nC
 di
 oi
 di
+RO
+XD
 su
-PN
 su
-av
 "}
-(35,1,1) = {"
+(17,1,1) = {"
 cy
 xY
 xY
@@ -3386,22 +2373,22 @@ nc
 nc
 nc
 gc
-uG
+Rm
 fW
 fW
 fW
 fW
 fW
-fW
+WH
 uG
 TG
 uG
 su
+Rk
 su
 su
-WD
 "}
-(36,1,1) = {"
+(18,1,1) = {"
 cy
 xY
 xY
@@ -3439,22 +2426,22 @@ Ng
 Ng
 Ng
 zH
-uG
+Rm
 fW
 fW
 fW
 fW
 fW
-fW
+WH
 uG
 Xn
 uG
 su
 su
-iw
+su
 su
 "}
-(37,1,1) = {"
+(19,1,1) = {"
 cy
 xY
 xY
@@ -3492,22 +2479,22 @@ aY
 aY
 aY
 mb
-uG
+Rm
 fW
 fW
 fW
 fW
 fW
-fW
+WH
 uG
 LJ
 uG
 su
 su
-NN
+su
 su
 "}
-(38,1,1) = {"
+(20,1,1) = {"
 cy
 xY
 xY
@@ -3540,12 +2527,12 @@ Bb
 Bb
 kc
 NJ
+Ch
 Ng
-Ng
-Ng
+pR
 Ng
 zH
-Cs
+Nk
 Hu
 fW
 fW
@@ -3558,9 +2545,9 @@ di
 PN
 PN
 su
-WD
+su
 "}
-(39,1,1) = {"
+(21,1,1) = {"
 cy
 xY
 xY
@@ -3593,13 +2580,13 @@ Bb
 Bb
 kc
 NJ
-Ng
+Ch
 IX
 Ng
 IX
 Fb
 tc
-HQ
+cX
 uG
 uG
 di
@@ -3611,9 +2598,9 @@ di
 su
 su
 su
-av
+su
 "}
-(40,1,1) = {"
+(22,1,1) = {"
 Nb
 CA
 CA
@@ -3623,7 +2610,7 @@ vS
 gI
 He
 kc
-kn
+Kt
 Bb
 Bb
 Bb
@@ -3646,11 +2633,11 @@ Bb
 Bb
 kc
 NJ
-Ng
+Ch
 IX
 Ng
 IX
-Ng
+ik
 tc
 bZ
 fa
@@ -3664,9 +2651,9 @@ ZH
 di
 di
 di
-WD
+su
 "}
-(41,1,1) = {"
+(23,1,1) = {"
 xY
 xY
 xY
@@ -3712,14 +2699,14 @@ di
 di
 di
 di
-ZP
+av
 ZP
 bq
 di
 uG
 fW
 "}
-(42,1,1) = {"
+(24,1,1) = {"
 xY
 xY
 xY
@@ -3755,12 +2742,12 @@ NJ
 nc
 pj
 Ng
-Ng
+Ch
 gD
 ZG
 xv
 fW
-fW
+WH
 uG
 fW
 fW
@@ -3768,11 +2755,11 @@ fW
 uG
 ka
 fW
-fW
+NN
 uG
 fW
 "}
-(43,1,1) = {"
+(25,1,1) = {"
 xY
 xY
 xY
@@ -3805,15 +2792,15 @@ aY
 aY
 aY
 Vs
-iz
+zU
 NJ
 Ng
-Ng
+Ch
 gD
 Kc
 fW
 fW
-fW
+NN
 uG
 fW
 fW
@@ -3825,32 +2812,32 @@ fW
 uG
 GJ
 "}
-(44,1,1) = {"
+(26,1,1) = {"
 xY
 xY
 xY
 xY
 Gt
 Gt
+YL
+Ng
+Ng
+Ng
+pR
 Ng
 Ng
 Ng
 Ng
 Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
+sq
+sq
+sq
 He
 Ng
 NJ
-Ng
-Ng
-Ng
+sq
+sq
+sq
 Ng
 Ng
 Ng
@@ -3861,12 +2848,12 @@ iz
 iz
 NJ
 Ng
-Ng
+Ch
 gD
 Bq
 fW
 fW
-fW
+NN
 uG
 fW
 fW
@@ -3878,7 +2865,7 @@ fW
 uG
 fW
 "}
-(45,1,1) = {"
+(27,1,1) = {"
 xY
 xY
 xY
@@ -3908,30 +2895,30 @@ Ng
 IX
 IX
 Ng
-Ng
+pR
 EP
 aY
 aY
 Vs
 Ng
-Ng
+Ch
 gD
 ZG
 fW
 fW
-fW
+WH
 uG
 fW
 fW
 fW
 uG
+Dv
 fW
-fW
-fW
+NN
 uG
 xo
 "}
-(46,1,1) = {"
+(28,1,1) = {"
 xY
 xY
 xY
@@ -3940,13 +2927,13 @@ pl
 pl
 Gt
 Gt
+LQ
 Ng
 Ng
 Ng
 Ng
 Ng
-Ng
-Ng
+Pm
 Ng
 Ng
 Ng
@@ -3960,14 +2947,14 @@ Ng
 Ng
 Ng
 Ng
+bU
 Ng
 Ng
 Ng
 Ng
 Ng
 Ng
-Ng
-Ng
+xf
 tc
 tc
 Sh
@@ -3978,13 +2965,13 @@ di
 di
 di
 il
-Sh
+bA
 zI
 xP
 di
 GJ
 "}
-(47,1,1) = {"
+(29,1,1) = {"
 xY
 xY
 xY
@@ -4001,8 +2988,8 @@ Gt
 Gt
 Gt
 Gt
-Ng
-Ng
+Mc
+pR
 Ng
 He
 Ng
@@ -4010,22 +2997,22 @@ NJ
 Ng
 Ng
 Ng
+dH
+Gz
+JR
 Ng
-Ng
-Ng
-Ng
-Ng
+JR
 Ng
 IX
 IX
 Ng
 Ng
-Ng
+WD
 tc
 tc
-Tg
-fW
-Hg
+pg
+Dv
+mt
 di
 xU
 xU
@@ -4037,7 +3024,7 @@ Hg
 cH
 fW
 "}
-(48,1,1) = {"
+(30,1,1) = {"
 xY
 xY
 xY
@@ -4063,23 +3050,23 @@ NJ
 Ng
 Ng
 Ng
+JR
 Ng
+JR
 Ng
-Ng
-Ng
-Ng
+dH
 Ng
 IX
 IX
-Ng
-Ng
+Ry
+iu
 tc
 tc
-PN
+qg
 uG
 fW
 IJ
-Mn
+XD
 PN
 mw
 PN
@@ -4090,7 +3077,7 @@ IJ
 cH
 xo
 "}
-(49,1,1) = {"
+(31,1,1) = {"
 xY
 xY
 xY
@@ -4109,7 +3096,7 @@ pl
 pl
 Gt
 Gt
-Ng
+Tv
 Fl
 nc
 pj
@@ -4117,14 +3104,14 @@ Ng
 IX
 Ng
 Ng
+Pm
+sq
+sq
+sq
 Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
-Ng
+IW
+SK
+mD
 tc
 tc
 tc
@@ -4132,7 +3119,7 @@ PN
 uG
 su
 uG
-Mn
+PN
 Lt
 PN
 uG
@@ -4143,7 +3130,7 @@ uG
 cH
 cH
 "}
-(50,1,1) = {"
+(32,1,1) = {"
 xY
 pl
 pl
@@ -4162,7 +3149,7 @@ pl
 pl
 pl
 Gt
-Ng
+YL
 He
 kc
 NJ
@@ -4196,7 +3183,7 @@ GJ
 GJ
 EH
 "}
-(51,1,1) = {"
+(33,1,1) = {"
 xY
 pl
 pl
@@ -4221,7 +3208,7 @@ aY
 Vs
 Ng
 Ng
-Ng
+bU
 tc
 PN
 Ux
@@ -4230,7 +3217,7 @@ PN
 PN
 su
 su
-su
+Rk
 yP
 fW
 fW
@@ -4249,7 +3236,7 @@ PN
 PN
 PN
 "}
-(52,1,1) = {"
+(34,1,1) = {"
 xY
 pl
 pl
@@ -4272,26 +3259,26 @@ Ng
 He
 Ng
 NJ
-Ng
-Ng
+bU
+eN
 Ng
 tc
-PN
+qg
 Lu
 Ub
 Em
 Em
 Em
 Em
-Em
-WH
-gG
 XG
+yP
+fW
+BM
 xo
 xo
 xo
 xo
-xo
+dR
 uG
 fW
 uG
@@ -4302,7 +3289,7 @@ xo
 xo
 uG
 "}
-(53,1,1) = {"
+(35,1,1) = {"
 xY
 xY
 xY
@@ -4318,15 +3305,15 @@ pl
 pl
 pl
 jM
-fB
+ed
 fB
 Gt
-Ng
+kn
 He
 Ng
 NJ
 Ng
-Ng
+Pm
 Ng
 tc
 PN
@@ -4355,7 +3342,7 @@ xU
 il
 iT
 "}
-(54,1,1) = {"
+(36,1,1) = {"
 xY
 xY
 xY
@@ -4408,7 +3395,7 @@ Hu
 am
 UW
 "}
-(55,1,1) = {"
+(37,1,1) = {"
 xY
 xY
 pl
@@ -4431,10 +3418,10 @@ Ng
 He
 Ng
 ay
-Tk
+hY
 su
 Tk
-su
+rn
 Tk
 Lu
 FR
@@ -4461,7 +3448,7 @@ IJ
 uG
 UW
 "}
-(56,1,1) = {"
+(38,1,1) = {"
 xY
 xY
 xY
@@ -4484,10 +3471,10 @@ Ng
 He
 Ng
 ay
-Tk
+HQ
 PN
 PN
-PN
+XD
 PN
 su
 FR
@@ -4514,7 +3501,7 @@ zY
 am
 UW
 "}
-(57,1,1) = {"
+(39,1,1) = {"
 xY
 xY
 pl
@@ -4534,13 +3521,13 @@ fB
 fN
 Gt
 Gt
-EP
+hj
 aY
 Fj
-Tk
+hY
 su
 Tk
-su
+rn
 Tk
 su
 FR
@@ -4567,7 +3554,7 @@ LR
 il
 iT
 "}
-(58,1,1) = {"
+(40,1,1) = {"
 xY
 xY
 xY
@@ -4620,7 +3607,7 @@ Hu
 am
 UW
 "}
-(59,1,1) = {"
+(41,1,1) = {"
 xY
 pl
 xY
@@ -4647,7 +3634,7 @@ aK
 aK
 aK
 di
-Gz
+qO
 PN
 FR
 su
@@ -4673,7 +3660,7 @@ IJ
 hQ
 UW
 "}
-(60,1,1) = {"
+(42,1,1) = {"
 xY
 xY
 xY
@@ -4726,7 +3713,7 @@ zY
 am
 UW
 "}
-(61,1,1) = {"
+(43,1,1) = {"
 xY
 xY
 xY
@@ -4779,7 +3766,7 @@ oz
 il
 CE
 "}
-(62,1,1) = {"
+(44,1,1) = {"
 xY
 xY
 xY
@@ -4806,12 +3793,12 @@ aK
 aK
 aK
 di
-su
-su
+jy
+jy
 vr
 su
-PN
-su
+aR
+jy
 di
 di
 sr
@@ -4832,7 +3819,7 @@ GJ
 GJ
 uG
 "}
-(63,1,1) = {"
+(45,1,1) = {"
 xY
 xY
 xY
@@ -4885,7 +3872,7 @@ PN
 PN
 fW
 "}
-(64,1,1) = {"
+(46,1,1) = {"
 xY
 xY
 xY

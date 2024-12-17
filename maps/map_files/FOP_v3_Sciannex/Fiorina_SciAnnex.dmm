@@ -11,6 +11,12 @@
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/servers)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -39025,7 +39031,7 @@ agi
 agi
 agi
 agi
-agi
+aac
 agi
 agi
 agi

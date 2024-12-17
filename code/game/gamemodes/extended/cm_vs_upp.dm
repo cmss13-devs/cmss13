@@ -28,7 +28,6 @@
 	// Now notify the staff of the load - this goes in addition to the generic template load game log
 	message_admins("Successfully loaded template as new Z-Level, template name: [template.name]", center_x, center_y, loaded.z_value)
 	makepowernets()
-	. = ..()
 
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/get_roles_list()
@@ -119,6 +118,8 @@
 	return TRUE
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/ds_first_landed(obj/docking_port/stationary/marine_dropship)
+	if(round_started > 0)
+		return
 	.=..()
 	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
 	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)

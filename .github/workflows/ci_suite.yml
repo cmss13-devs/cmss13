@@ -39,6 +39,7 @@ jobs:
             ${{ runner.os }}-
       - name: Install Tools
         run: |
+          apt-get install libgit2-dev libjpeg-dev -y
           pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker

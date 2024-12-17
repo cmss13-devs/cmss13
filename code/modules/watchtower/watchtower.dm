@@ -287,7 +287,7 @@
 	ADD_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
 	if(user.client)
 		user.client.change_view(user.client.view + 2)
-	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	add_trait_to_all_guns(user)
 	RegisterSignal(user, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
@@ -309,13 +309,13 @@
 	REMOVE_TRAIT(user, TRAIT_ON_WATCHTOWER, "watchtower")
 	if(user.client)
 		user.client.change_view(max(user.client.view - 2, 7))
-	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = user.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 	UnregisterSignal(user, COMSIG_ITEM_PICKUP)
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 
 	if(isxeno(user))
-		UnregisterSignal(COMSIG_XENO_ENTER_TUNNEL)
+		UnregisterSignal(user, COMSIG_XENO_ENTER_TUNNEL)
 
 /obj/structure/watchtower/proc/add_trait_to_all_guns(mob/user)
 	for(var/obj/item/weapon/gun/gun in user)

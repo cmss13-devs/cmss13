@@ -63,8 +63,10 @@
 	var/datum/action/minimap/observer/minimap
 	///The last message for this player with their larva queue information
 	var/larva_queue_cached_message
-	///Used to bypass time of death checks such as when being selected for larva.
+	///Used to bypass time of death checks such as when being selected for larva
 	var/bypass_time_of_death_checks = FALSE
+	///Used to bypass time of death checks for a successful hug
+	var/bypass_time_of_death_checks_hugger = FALSE
 
 	alpha = 127
 
@@ -497,8 +499,8 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
+	if(ghost.client?.player_details)
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
-
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)

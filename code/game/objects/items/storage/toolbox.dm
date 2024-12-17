@@ -2,11 +2,15 @@
 	name = "toolbox"
 	desc = "Danger. Very robust."
 	icon = 'icons/obj/items/storage/toolbox.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/toolboxes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/toolboxes_righthand.dmi',
+	)
 	icon_state = "red"
 	item_state = "toolbox_red"
 	pickup_sound = 'sound/handling/toolbox_pickup.ogg'
 	drop_sound = 'sound/handling/toolbox_drop.ogg'
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 	force = 5
 	throwforce = 10
 	throw_speed = SPEED_FAST

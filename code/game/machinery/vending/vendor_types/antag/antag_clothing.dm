@@ -250,8 +250,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("Grey Vest", 12, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, null, VENDOR_ITEM_REGULAR),
 
 	list("BACKPACK", 0, null, null, null),
-	list("Combat Pack", 12, /obj/item/storage/backpack/lightpack/upp, VENDOR_ITEM_REGULAR),
-	list("UPP Sapper Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack/upp, VENDOR_ITEM_REGULAR),
+	list("Combat Pack", 12, /obj/item/storage/backpack/lightpack/upp, null, VENDOR_ITEM_REGULAR),
+	list("UPP Sapper Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack/upp, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Leather", 12, /obj/item/storage/backpack/satchel, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Medical", 12, /obj/item/storage/backpack/satchel/med, null, VENDOR_ITEM_REGULAR),
 

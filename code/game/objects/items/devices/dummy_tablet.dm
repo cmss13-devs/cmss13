@@ -3,8 +3,9 @@
 	name = "\improper Professor DUMMY tablet"
 	desc = "A Professor DUMMY Control Tablet."
 	suffix = "\[3\]"
-	icon_state = "Cotablet"
-	item_state = "Cotablet"
+	icon_state = "dummytablet"
+	item_state = "dummytablet"
+	item_icons = list(WEAR_R_HAND = null, WEAR_L_HAND = null) // No mob state currently
 
 	var/mob/living/carbon/human/linked_dummy
 	///Should the dummy be destroyed on hijack?

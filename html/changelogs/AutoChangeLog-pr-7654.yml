@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "emp_pulse, flash_powder, and foam reactions are no longer possible in mobs"
-  - balance: "flash_powder has been reworked to attach to its holder (so it can be destroyed), and values retuned/capped."
-  - refactor: "Refactored the metabolize proc for chemistry reactors (removed required_other and changed required_container to use a path check instead)"

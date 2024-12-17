@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 /obj/item/ammo_magazine/shotgun
 	name = "box of shotgun slugs"
 	desc = "A box filled with heavy shotgun shells. A timeless classic. 12 Gauge."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/shotguns.dmi'
 	icon_state = "slugs"
 	item_state = "slugs"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
@@ -175,6 +175,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_8g, list(
 	/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
 	))
 
@@ -298,6 +299,12 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/light/breaching
 	caliber = "16g"
 	gun_type = /obj/item/weapon/gun/rifle/xm51
+
+/obj/item/ammo_magazine/handful/shotgun/light/breaching/rubber
+	name = "handful of rubber buckshot shells (16g)"
+	icon_state = "rubbershot_shell_6"
+	handful_state = "rubbershot_shell"
+	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
 
 /obj/item/ammo_magazine/handful/shotgun/twobore
 	name = "handful of shotgun slugs (2 bore)"

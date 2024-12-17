@@ -76,7 +76,7 @@
 
 /datum/game_mode/whiskey_outpost/New()
 	. = ..()
-	population_min = CONFIG_GET(number/whiskey_required_players)// I dont think we need do this way and it work, because we take initial values in never version, I will wait until maintainer told me what to do with that
+	population_min = CONFIG_GET(number/whiskey_required_players)// I dont think we need do this way and it work, because we take initial values in newer version, I will wait until maintainer told me what to do with that
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return GLOB.ROLES_WO

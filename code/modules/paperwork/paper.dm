@@ -983,4 +983,4 @@
 		info = file2text(placeholder)
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])
+	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])

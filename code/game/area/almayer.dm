@@ -628,6 +628,11 @@
 	icon_state = "livingspace"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/living/iobunks
+	name = "\improper Intelligence Officer Bunks"
+	icon_state = "livingspace"
+	fake_zlevel = 1
+
 /area/almayer/living/commandbunks
 	name = "\improper Commanding Officer's Bunk"
 	icon_state = "livingspace"

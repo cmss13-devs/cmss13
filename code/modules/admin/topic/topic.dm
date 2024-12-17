@@ -2166,25 +2166,25 @@
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_USCM_HC].</i>"
 		if(FACTION_CLF)
 			GLOB.CLFFaxes.Add(reply_log)
-			faction_ghost_header = "<b><font color='#1F66A0'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> "
+			faction_ghost_header = "<b><font color='#426480'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> "
 			faction_prefix = "Colonial Liberation Front"
 			fax_stamp_icon = "paper_stamp-clf"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_CLF_HC].</i>"
 		if(FACTION_UPP)
 			GLOB.UPPFaxes.Add(reply_log)
-			faction_ghost_header = "<b><font color='#1F66A0'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> "
+			faction_ghost_header = "<b><font color='#0c5020'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> "
 			faction_prefix = "Union of Progressive Peoples"
 			fax_stamp_icon = "paper_stamp-upp"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_UPP_HC].</i>"
 		if(FACTION_TWE)
 			GLOB.TWEFaxes.Add(reply_log)
-			faction_ghost_header = "<b><font color='#1F66A0'>THREE WORLD EMPIRE FAX REPLY: </font></b> "
+			faction_ghost_header = "<b><font color='#2994eb'>THREE WORLD EMPIRE FAX REPLY: </font></b> "
 			faction_prefix = "Three World Empire"
 			fax_stamp_icon = "paper_stamp-twe"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_TWE_HC].</i>"
 		if(FACTION_WY)
 			GLOB.WYFaxes.Add(reply_log)
-			faction_ghost_header = "<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> "
+			faction_ghost_header = "<b><font color='#8babc5'>WEYLAND-YUTANI FAX REPLY: </font></b> "
 			faction_prefix = "Weyland-Yutani"
 			fax_stamp_icon = "paper_stamp-weyyu"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_WY_HC].</i>"
@@ -2234,4 +2234,4 @@
 			to_chat(src.owner, "Message reply to transmitted successfully.")
 			message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(target_human)]"), 1)
 			return
-	to_chat(src.owner, "/red Unable to locate fax!")
+	to_chat(src.owner, SPAN_RED("Unable to locate fax!"))

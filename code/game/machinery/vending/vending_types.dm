@@ -206,11 +206,9 @@
 		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 		/obj/item/storage/fancy/cigarettes/blackpack = 10,
 		/obj/item/storage/fancy/cigar/tarbacks = 5,
-
 		/obj/item/storage/box/matches = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo = 5,
-
 	)
 
 	prices = list(
@@ -227,7 +225,6 @@
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
-
 	)
 
 /obj/structure/machinery/vending/security

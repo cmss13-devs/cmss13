@@ -198,8 +198,8 @@
 	products = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 20,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
-		/obj/item/storage/fancy/cigarettes/spirit = 15
-		/obj/item/storage/fancy/cigarettes/spirit/yellow = 15
+		/obj/item/storage/fancy/cigarettes/spirit = 15,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 15,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
 		/obj/item/storage/fancy/cigarettes/wypacket = 15,
 		/obj/item/storage/fancy/cigarettes/trading_card = 15,
@@ -214,8 +214,8 @@
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
-		/obj/item/storage/fancy/cigarettes/spirit = 50
-		/obj/item/storage/fancy/cigarettes/spirit/yellow = 50
+		/obj/item/storage/fancy/cigarettes/spirit = 50,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 50,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
 		/obj/item/storage/fancy/cigarettes/wypacket = 30,
 		/obj/item/storage/fancy/cigarettes/trading_card = 35,

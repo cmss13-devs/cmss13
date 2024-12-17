@@ -114,7 +114,7 @@
 			if(object.density)
 				to_chat(user, SPAN_WARNING("[object] is blocking you from welding [src] together!"))
 				return
-		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
@@ -195,7 +195,7 @@
 						return
 
 
-				if(!do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 
 				new /obj/structure/watchtower(loc)

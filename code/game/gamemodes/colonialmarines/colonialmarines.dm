@@ -1,6 +1,15 @@
+/// How many smallhosts to preassigned players to spawn?
+#define MONKEYS_TO_TOTAL_RATIO 1/32
+/// When to start opening the podlocks identified as "map_lockdown" (takes 30s)
+#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
+/// How many pipes explode at a time during hijack?
 #define HIJACK_EXPLOSION_COUNT 5
+/// What percent do we consider a 'majority?' to win
+#define MAJORITY 0.5
+/// How long to delay the round completion (command is immediately notified)
 #define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
-#define LZ_HAZARD_START (3 MINUTES)
+/// The ratio of forsaken to groundside humans before calling more forsaken xenos
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -18,6 +27,11 @@
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
+
+	/**
+	 * How long, after first drop, should the resin protection in proximity to the selected LZ last
+	 */
+	var/near_lz_protection_delay = 8 MINUTES
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -122,7 +136,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 
 	return ..()
 
@@ -140,27 +154,41 @@
 	var/right = marine_dropship.x + marine_dropship.dwidth + 2
 	var/z = marine_dropship.z
 
+	var/dropship_type = marine_dropship.type
+
 	// Bottom left
-	options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_LEFT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_LEFT]
+	else
+		options += get_valid_sentry_turfs(left, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(left, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Bottom right
 	options.Cut()
-	options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_BOTTOM_RIGHT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_BOTTOM_RIGHT]
+	else
+		options += get_valid_sentry_turfs(right-4, bottom, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(right-1, bottom + 2, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Top left
 	options.Cut()
-	options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_LEFT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_LEFT]
+	else
+		options += get_valid_sentry_turfs(left, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(left, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 	// Top right
 	options.Cut()
-	options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
-	options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
+	if(GLOB.sentry_spawns[dropship_type]?[SENTRY_TOP_RIGHT])
+		options += GLOB.sentry_spawns[dropship_type][SENTRY_TOP_RIGHT]
+	else
+		options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
+		options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
 
 ///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
@@ -193,6 +221,10 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_roundstart_miasma))
+		return
+
+	log_game("Distress Signal LZ hazards active!")
 	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
 	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 	addtimer(CALLBACK(src, PROC_REF(spawn_lz_hazards)), OB_TRAVEL_TIMING + 1 SECONDS)
@@ -238,7 +270,71 @@
 		smoke.time_to_live = rand(1, 5)
 	lz_smoke.Cut()
 
-#define MONKEYS_TO_TOTAL_RATIO 1/32
+/// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
+/datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		msg_admin_niche("Skipped weed killer event due to lz_weeding modifier already getting set")
+		return
+
+	clear_proximity_resin()
+
+	var/list/announcement_mobs = list()
+	for(var/area/area in marine_dropship.shuttle_areas)
+		for(var/mob/mob in area)
+			shake_camera(mob, steps = 3, strength = 1)
+			announcement_mobs += mob
+
+	announcement_helper("Dropship [marine_dropship.name] dispersing [/obj/effect/particle_effect/smoke/weedkiller::name] due to potential biological infestation.", MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
+
+/**
+ * Clears any built resin in the areas around the landing zone,
+ * when the dropship first deploys.
+ */
+/datum/game_mode/colonialmarines/proc/clear_proximity_resin()
+	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
+
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(islist(area_lz))
+			if(!(active_lz.linked_lz in area_lz))
+				continue
+
+		else if(area_lz != active_lz.linked_lz)
+			continue
+
+		for(var/turf/turf in near_area)
+			if(turf.density)
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.hull)
+					continue
+			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
+
+		near_area.purge_weeds()
+
+	addtimer(CALLBACK(src, PROC_REF(allow_proximity_resin)), near_lz_protection_delay)
+
+/**
+ * If the area was previously weedable, and this was disabled by the
+ * LZ proximity, re-enable the weedability
+ */
+/datum/game_mode/colonialmarines/proc/allow_proximity_resin()
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(area_lz != active_lz.linked_lz)
+			continue
+
+		if(initial(near_area.is_resin_allowed) == FALSE)
+			continue
+
+		near_area.is_resin_allowed = TRUE
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)
@@ -268,8 +364,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-
-#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -333,8 +427,8 @@
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		if(next_stat_check <= world.time)
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
@@ -356,8 +450,6 @@
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
-
-#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 ///Checks for humans groundside after hijack, spawns forsaken if requirements met
 /datum/game_mode/colonialmarines/proc/check_ground_humans()
@@ -384,8 +476,6 @@
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
-#undef GROUNDSIDE_XENO_MULTIPLIER
-
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -397,12 +487,12 @@
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
 
-#undef PODLOCKS_OPEN_WAIT
-
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
+	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
+
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
 
@@ -433,25 +523,50 @@
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(hivenumber)
-	set waitfor = 0
-	if(!(flags_round_type & MODE_INFESTATION)) return
-	xeno_queen_deaths++
-	var/num_last_deaths = xeno_queen_deaths
-	sleep(QUEEN_DEATH_COUNTDOWN)
-	//We want to make sure that another queen didn't die in the interim.
+/datum/game_mode/colonialmarines/count_humans_and_xenos(list/z_levels)
+	. = ..()
+	if(.[2] != 0) // index 2 = num_xenos
+		return .
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished)
-		var/datum/hive_status/HS
-		for(var/HN in GLOB.hive_datum)
-			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
-				//Some Queen is alive, we shouldn't end the game yet
-				return
-		if(length(HS.totalXenos) <= 3)
-			round_finished = MODE_INFESTATION_M_MAJOR
-		else
-			round_finished = MODE_INFESTATION_M_MINOR
+	// Ensure there is no queen
+	var/datum/hive_status/hive
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			.[2]++
+	return .
+
+/datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
+	if(!(flags_round_type & MODE_INFESTATION))
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	if(hive.need_round_end_check && !hive.can_delay_round_end())
+		return
+
+	if(!immediately)
+		//We want to make sure that another queen didn't die in the interim.
+		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+		return
+
+	if(round_finished)
+		return
+
+	for(var/cur_number in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+			//Some Queen is alive, we shouldn't end the game yet
+			return
+
+	if(length(hive.totalXenos) <= 3)
+		round_finished = MODE_INFESTATION_M_MAJOR
+	else
+		round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//
@@ -462,7 +577,6 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-#define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
@@ -708,6 +822,9 @@
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
 
+#undef MONKEYS_TO_TOTAL_RATIO
+#undef PODLOCKS_OPEN_WAIT
 #undef HIJACK_EXPLOSION_COUNT
-#undef MARINE_MAJOR_ROUND_END_DELAY
 #undef MAJORITY
+#undef MARINE_MAJOR_ROUND_END_DELAY
+#undef GROUNDSIDE_XENO_MULTIPLIER

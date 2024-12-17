@@ -18,7 +18,6 @@
 
 /datum/action/xeno_action/onclick/plant_weeds
 	name = "Plant Weeds (75)"
-	ability_name = "Plant Weeds"
 	action_icon_state = "plant_weeds"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
@@ -84,7 +83,6 @@
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
 	action_icon_state = "secrete_resin"
-	ability_name = "secrete resin"
 	var/thick = FALSE
 	var/make_message = TRUE
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
@@ -117,7 +115,6 @@
 /datum/action/xeno_action/activable/info_marker
 	name = "Mark Resin"
 	action_icon_state = "mark"
-	ability_name = "mark resin"
 	macro_path = /datum/action/xeno_action/verb/verb_mark_resin
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
@@ -138,7 +135,6 @@
 /datum/action/xeno_action/activable/corrosive_acid
 	name = "Corrosive Acid (100)"
 	action_icon_state = "corrosive_acid"
-	ability_name = "corrosive acid"
 	var/acid_plasma_cost = 100
 	var/level = 2 //level of the acid strength
 	var/acid_type = /obj/effect/xenomorph/acid
@@ -194,7 +190,7 @@
 /datum/action/xeno_action/activable/pounce
 	name = "Pounce"
 	action_icon_state = "pounce"
-	ability_name = "pounce"
+	var/action_text = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 40
@@ -305,7 +301,7 @@
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!xeno.check_state())
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_SIGHT_IGNORE_REST) && !xeno.check_state())
 		return
 
 	if(xeno.observed_xeno)
@@ -357,7 +353,7 @@
 /datum/action/xeno_action/activable/spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
-	ability_name = "spray acid"
+	var/action_text = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
 
@@ -378,7 +374,6 @@
 /datum/action/xeno_action/activable/transfer_plasma
 	name = "Transfer Plasma"
 	action_icon_state = "transfer_plasma"
-	ability_name = "transfer plasma"
 	var/plasma_transfer_amount = 50
 	var/transfer_delay = 20
 	var/max_range = 2
@@ -433,7 +428,6 @@
 /datum/action/xeno_action/activable/place_construction
 	name = "Order Construction (400)"
 	action_icon_state = "morph_resin"
-	ability_name = "order construction"
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -444,7 +438,6 @@
 /datum/action/xeno_action/activable/xeno_spit
 	name = "Xeno Spit"
 	action_icon_state = "xeno_spit"
-	ability_name = "xeno spit"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -461,7 +454,6 @@
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"
-	ability_name = "bombard"
 	action_icon_state = "bombard"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
@@ -479,11 +471,11 @@
 /datum/action/xeno_action/activable/tail_stab
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
-	ability_name = "tail stab"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 
@@ -509,7 +501,6 @@
 /datum/action/xeno_action/onclick/tacmap
 	name = "View Tactical Map"
 	action_icon_state = "toggle_queen_zoom"
-	ability_name = "view tacmap"
 
 	var/mob/living/carbon/xenomorph/queen/tracked_queen
 	var/hivenumber

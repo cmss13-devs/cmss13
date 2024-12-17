@@ -11,7 +11,11 @@
 /obj/item/stool
 	name = "stool"
 	desc = "Uh-hoh, the bar is heating up."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_righthand.dmi'
+	)
 	icon_state = "stool"
 	force = 15
 	throwforce = 12

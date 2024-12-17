@@ -13,17 +13,18 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
+		/datum/action/xeno_action/onclick/toggle_long_range/whisperer, //fourth macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
 	)
 
 /datum/xeno_strain/resin_whisperer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
 	hivelord.recalculate_plasma()
-
-	hivelord.client?.change_view(10, src)
+	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
 
 	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_whisperer)
 	for(var/datum/action/xeno_action/action in hivelord.actions)
@@ -42,14 +43,13 @@
 /datum/action/xeno_action/activable/secrete_resin/remote
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "coerce resin"
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
 	make_message = FALSE
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2 // the actual building part takes twice as long
+	build_speed_mod = 2.5 // the actual building part takes twice as long
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -80,7 +80,7 @@
 	if(istype(target_atom, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/resin_door = target_atom
 		resin_door.TryToSwitchState(owner)
-		if(resin_door.state)
+		if(resin_door.open)
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
 		else
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
@@ -90,8 +90,10 @@
 	if(care_about_adjacency)
 		if(owner.Adjacent(target_turf))
 			build_speed_mod = 1
+			xeno_cooldown = 1 SECONDS
 		else
 			build_speed_mod = initial(build_speed_mod)
+			xeno_cooldown = initial(xeno_cooldown)
 
 	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())
@@ -118,3 +120,10 @@
 	set hidden = TRUE
 	var/action_name = "Coerce Resin (150)"
 	handle_xeno_macro(src, action_name)
+
+// farsight
+/datum/action/xeno_action/onclick/toggle_long_range/whisperer
+	handles_movement = FALSE
+	should_delay = FALSE
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	delay = 0

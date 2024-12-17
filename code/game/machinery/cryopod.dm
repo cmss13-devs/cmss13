@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list(), "Responders" = list()))
 
 //Main cryopod console.
 
@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/computer/cryopodcontrol
-	exproof = TRUE
+	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/cryotype = "REQ"
@@ -175,8 +175,15 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/time_entered = 0 //Used to keep track of the safe period.
 	var/silent_exit = FALSE
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
+	var/no_store_pod = FALSE
 
 /obj/structure/machinery/cryopod/right
+	dir = WEST
+
+/obj/structure/machinery/cryopod/no_store
+	no_store_pod = TRUE
+
+/obj/structure/machinery/cryopod/no_store/right
 	dir = WEST
 
 /obj/structure/machinery/cryopod/Initialize()
@@ -222,17 +229,21 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		switch(H.job)
+		var/mob/living/carbon/human/cryo_human = occupant
+		switch(cryo_human.job)
 			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
-			if("Nurse", "Doctor","Researcher","Chief Medical Officer")
+			if(JOB_NURSE, JOB_DOCTOR, JOB_RESEARCHER, JOB_CMO)
 				dept_console = GLOB.frozen_items["Med"]
-			if("Maintenance Technician", "Ordnance Technician","Chief Engineer")
+			if(JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 				dept_console = GLOB.frozen_items["Eng"]
-			if("Predator")
+			if(JOB_PREDATOR)
 				dept_console = GLOB.frozen_items["Yautja"]
-		H.species.handle_cryo(H)
+
+		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
+			cryo_human.despawn_fax_responder()
+
+		cryo_human.species.handle_cryo(cryo_human)
 
 	var/list/deleteempty = list(/obj/item/storage/backpack/marine/satchel)
 
@@ -254,7 +265,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	item_loop:
 		for(var/obj/item/W in items)
-			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE)) && !isyautja(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
+			if((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE) || gearless_role(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
 				if(istype(W, /obj/item/clothing/suit/storage))
 					var/obj/item/clothing/suit/storage/SS = W
 					for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
@@ -313,6 +324,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	stripped_items:
 		for(var/obj/item/A in strippeditems)
+			if(gearless_role(occupant))
+				qdel(A)
+				continue stripped_items
 			for(var/DAA in deleteall)
 				if(istype(A, DAA))
 					qdel(A)
@@ -359,7 +373,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	//Make an announcement and log the person entering storage.
 	GLOB.frozen_crew += "[occupant.real_name] ([occupant.job])"
 
-	if(!isyautja(occupant))
+	if(!gearless_role(occupant))
 		ai_silent_announcement("[occupant.real_name], [occupant.job], has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
@@ -538,6 +552,13 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 
 	move_inside(target)
+
+/obj/structure/machinery/cryopod/proc/gearless_role(mob/occupant)
+	if(isyautja(occupant))
+		return TRUE
+	if(no_store_pod)
+		return TRUE
+	return FALSE
 
 
 /obj/structure/machinery/cryopod/tutorial

@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/m56cupola
 	name = "\improper M56 Cupola"
-	desc = "A secondary weapon for tanks that shoots bullets"
+	desc = "A secondary weapon for tanks. It's a M56D that was adjusted to be permanently fixed to its mount. You swear you can still see some weld tacks."
 
 	icon_state = "m56_cupola"
 	disp_icon = "tank"
@@ -21,10 +21,8 @@
 	)
 
 	scatter = 3
-	gun_firemode = GUN_FIREMODE_BURSTFIRE
+	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
-		GUN_FIREMODE_BURSTFIRE,
+		GUN_FIREMODE_AUTOMATIC,
 	)
-	burst_amount = 3
-	burst_delay = 0.3 SECONDS
-	extra_delay = 0.6 SECONDS
+	fire_delay = 0.3 SECONDS

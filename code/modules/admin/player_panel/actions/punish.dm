@@ -269,7 +269,7 @@
 		var/mob/living/carbon/human/target_human = target_mob
 		var/obj/item/card/id/card = target_human.get_idcard()
 		if(card?.registered_ref == WEAKREF(target_human))
-			card.name = "[target_human.real_name]'s ID Card"
+			card.name = "[target_human.real_name]'s [card.id_type]"
 			card.registered_name = "[target_human.real_name]"
 			if(card.assignment)
 				card.name += " ([card.assignment])"

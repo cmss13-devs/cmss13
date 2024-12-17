@@ -25,7 +25,7 @@
 		for(var/obj/structure/machinery/door/airlock/evacuation/air in place)
 			door_handler.doors += list(air)
 			air.breakable = FALSE
-			air.indestructible = TRUE
+			air.explo_proof = TRUE
 			air.unacidable = TRUE
 			air.linked_shuttle = src
 
@@ -49,7 +49,7 @@
 			cryotube.dock_state = STATE_READY
 	for(var/obj/structure/machinery/door/air in door_handler.doors)
 		air.breakable = TRUE
-		air.indestructible = FALSE
+		air.explo_proof = FALSE
 		air.unslashable = FALSE
 		air.unacidable = FALSE
 
@@ -99,7 +99,7 @@
 				if(acid.acid_t == air)
 					qdel(acid)
 			air.breakable = FALSE
-			air.indestructible = TRUE
+			air.explo_proof = TRUE
 			air.unacidable = TRUE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/crash_check()

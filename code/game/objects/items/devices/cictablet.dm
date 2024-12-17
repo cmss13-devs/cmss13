@@ -6,7 +6,7 @@
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_access = list(ACCESS_MARINE_SENIOR)
 	var/on = TRUE // 0 for off
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
@@ -15,7 +15,7 @@
 
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
-	var/add_pmcs = TRUE
+	var/add_pmcs = FALSE
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
@@ -175,7 +175,7 @@
 
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
-
+	add_pmcs = TRUE
 	minimap_type = MINIMAP_FLAG_PMC
 
 /obj/item/device/cotablet/upp

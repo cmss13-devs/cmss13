@@ -154,7 +154,7 @@
 	return ..()
 
 /obj/item/hardpoint/ex_act(severity)
-	if(owner || indestructible)
+	if(owner || explo_proof)
 		return
 
 	take_damage(severity / 2)

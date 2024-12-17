@@ -446,36 +446,6 @@
 	icon_state = "provost_marshal"
 	worn_state = "provost_marshal"
 
-//==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
-//=======================================================================\\
-
-/obj/item/clothing/under/uaac/tis
-	name = "\improper UAAC-TIS Special Agent Uniform"
-	desc = "A modified USCM Provost uniform, with its original insignia replaced by those of the UAAC-TIS Intelligence Service. TIS Special Agents are often recruited from the upper echelons of law enforcement agencies in various UA armed forces. These recruits often take all their gear, uniform included with them and later modify them to include TIS and UAAC insignia."
-	flags_jumpsuit = FALSE
-	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	siemens_coefficient = 0.9
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
-	)
-	icon_state = "tis"
-	worn_state = "tis"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-
-/obj/item/clothing/under/uaac/tis/io
-	name = "\improper UAAC-TIS Intelligence Officer uniform"
-	desc = "Originally a USCM officer uniform, all insignia have been carefully removed and replaced by a simple TIS pin worn over the right breast. Like their Special Agent counterparts, TIS Intel Officers are typically transplants from UA aligned armed forces, often initially recruited on a temporary basis then transferred permanently. As such, officers are often forced to adapt their original uniforms."
-	icon_state = "BO_jumpsuit"
-	worn_state = "BO_jumpsuit"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 //=========================//USCM Survivors\\================================\\
 //=======================================================================\\
 
@@ -651,6 +621,36 @@
 	desc = "A set of Civilian-style Brown vest and orange pants. The material is surprisingly decent, something not often worn by the civilians of the UPP for two reasons: They typically can't afford such clothing, and if they can, it paints a target on their back."
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
+
+//=========================//CMB\\================================\\
+
+
+/obj/item/clothing/under/marine/veteran/cmb
+	name = "\improper CMB Riot Control uniform"
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, designed to be used by units of riot supression on the distant worlds, under colonial jurisdiction."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
+	icon_state = "cmb_swat_uniform"
+	worn_state = "cmb_swat_uniform"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/marine/veteran/cmb,
+		/obj/item/clothing/suit/storage/marine/MP,
+		/obj/item/clothing/suit/storage/CMB,
+		/obj/item/clothing/suit/armor/riot/marine,
+		/obj/item/clothing/suit/armor/vest/security,
+		/obj/item/clothing/suit/storage/hazardvest,
+	)
+
+/obj/item/clothing/under/marine/veteran/cmb/marshal
+	name = "\improper CMB Riot Control Marshal uniform"
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, the gold insignia on this one suggests it being used by a commanding personnel during riot control."
+	icon_state = "cmb_swatleader_uniform"
+	worn_state = "cmb_swatleader_uniform"
+
 
 //=========================//Freelancer\\================================\\
 
@@ -1160,6 +1160,17 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
 	)
+
+/obj/item/clothing/under/rank/synthetic/upp_joe
+	name = "android suit"
+	desc = "Uniform designed for UPP security synthetics."
+	icon_state = "upp_joe"
+	worn_state = "upp_joe"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi',
+	)
+	flags_item = NO_CRYO_STORE
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"

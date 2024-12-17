@@ -1349,7 +1349,7 @@ and you're good to go.
 	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()
 
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && attacked_mob.stat == DEAD) // don't shoot dead people
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && attacked_mob.stat == DEAD) // don't shoot dead people
 		return afterattack(attacked_mob, user, TRUE)
 
 	user.next_move = world.time //No click delay on PBs.

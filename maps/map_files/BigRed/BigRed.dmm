@@ -172,9 +172,13 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaM" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port)
+/obj/structure/barricade/deployable,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -250,10 +254,35 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"abb" = (
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 11;
+	pixel_y = -8
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
+"abe" = (
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -360,6 +389,14 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/landing/console)
+"abz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abA" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -419,6 +456,12 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/darkgreen2/southeast,
 /area/bigredv2/outside/space_port)
+"abL" = (
+/obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abM" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_north)
@@ -467,6 +510,11 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abU" = (
+/obj/structure/surface/table,
+/obj/item/clothing/head/CMB/beret,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abV" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_north)
@@ -477,6 +525,14 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/e)
+"abX" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light{
+	pixel_x = -7;
+	pixel_y = -7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abY" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -505,6 +561,10 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
+"acc" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -1954,10 +2014,6 @@
 "aiD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"aiE" = (
-/obj/structure/closet/secure_closet/marshal,
-/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiJ" = (
 /obj/structure/machinery/light{
@@ -25441,14 +25497,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/outside/engineering)
-"knL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "knN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -31784,14 +31832,6 @@
 /obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"qTw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 5;
-	pixel_x = 7
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "qTC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -32487,14 +32527,6 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/filtration_plant)
-"rEe" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 7;
-	pixel_x = 7
-	},
-/obj/structure/barricade/deployable,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "rGz" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
@@ -34698,13 +34730,6 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
-"tFL" = (
-/obj/structure/surface/table,
-/obj/item/clothing/head/beret/sec/warden{
-	pixel_y = 5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "tFO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -34906,10 +34931,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
-"tOg" = (
-/obj/item/clothing/mask/gas,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "tOh" = (
 /obj/structure/surface/table,
 /obj/item/device/megaphone,
@@ -36268,14 +36289,6 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
-"vmt" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -9;
-	pixel_x = -12
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "vmE" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -37170,16 +37183,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"wfS" = (
-/obj/item/clothing/mask/gas{
-	pixel_x = 10;
-	pixel_y = -12
-	},
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "whb" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -37854,14 +37857,6 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
-"wRo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -8;
-	pixel_y = -5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "wRD" = (
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/platform_decoration/metal/almayer/north,
@@ -44690,7 +44685,7 @@ aah
 aah
 aah
 aek
-aaM
+acc
 aaf
 aaf
 acJ
@@ -57065,9 +57060,9 @@ nMG
 nMG
 nMG
 acp
-aiE
+abL
 kcR
-wfS
+abb
 dfA
 aer
 agB
@@ -57500,8 +57495,8 @@ agD
 mXm
 acp
 pTl
-tOg
-knL
+abe
+abd
 tEG
 akQ
 jNf
@@ -57933,9 +57928,9 @@ oRa
 vlu
 ahp
 acp
-tFL
-wRo
-qTw
+abU
+abz
+afT
 gHC
 aer
 dHs
@@ -58153,7 +58148,7 @@ acp
 aiJ
 afT
 ikq
-rEe
+aaM
 aer
 vDJ
 gvs
@@ -58367,7 +58362,7 @@ rXJ
 agH
 uZJ
 aih
-vmt
+abX
 ahr
 lYc
 akm

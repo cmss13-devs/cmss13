@@ -387,6 +387,8 @@
 /mob/proc/check_improved_pointing()
 	if(HAS_TRAIT(src, TRAIT_LEADERSHIP))
 		return TRUE
+	if(skillcheck(src, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED))
+		return TRUE
 
 /mob/proc/update_flavor_text()
 	set src in usr

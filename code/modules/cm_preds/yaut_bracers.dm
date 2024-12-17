@@ -875,7 +875,7 @@
 
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
+	if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
@@ -889,7 +889,7 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self-destruct", victim)
-		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
+		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/yautja_shipside_large_sd)))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -924,22 +924,27 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/human/M = caller
+	var/mob/living/carbon/human/boomer = caller
+	var/area/grounds = get_area(boomer)
 
-	if(HAS_TRAIT(M, TRAIT_CLOAKED))
-		to_chat(M, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
+	if(HAS_TRAIT(boomer, TRAIT_CLOAKED))
+		to_chat(boomer, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
-	if(M.stat == DEAD)
-		to_chat(M, SPAN_WARNING("Little too late for that now!"))
+	if(boomer.stat == DEAD)
+		to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(M.health < HEALTH_THRESHOLD_CRIT)
-		to_chat(M, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
+	if(boomer.health < HEALTH_THRESHOLD_CRIT)
+		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
-	if(M.stat)
-		to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
+	if(boomer.stat)
+		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+		return
+	if(istype(grounds, /area/yautja_grounds)) //Hunted need mask to escape
+		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 		return
 
-	var/obj/item/grab/G = M.get_active_hand()
+
+	var/obj/item/grab/G = boomer.get_active_hand()
 	if(istype(G))
 		var/mob/living/carbon/human/victim = G.grabbed_thing
 		if(victim.stat == DEAD)
@@ -949,71 +954,74 @@
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
 				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
-					if(M.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
-						var/area/A = get_area(M)
-						var/turf/T = get_turf(M)
+					if(boomer.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
+						var/area/A = get_area(boomer)
+						var/turf/T = get_turf(boomer)
 						if(A)
-							message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] [ADMIN_JMP(T)]</font>"))
-							log_attack("[key_name(M)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
+							message_admins(FONT_SIZE_HUGE("ALERT: [boomer] ([boomer.key]) triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name] [ADMIN_JMP(T)]</font>"))
+							log_attack("[key_name(boomer)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
 							bracer.explode(victim)
-						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
-						message_all_yautja("[M.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")
+						boomer.visible_message(SPAN_WARNING("[boomer] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
+						message_all_yautja("[boomer.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")
 			else
-				to_chat(M, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+				to_chat(boomer, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
 			return
 
-	if(M.gloves != src && !forced)
+	if(boomer.gloves != src && !forced)
 		return
 
 	if(exploding)
 		if(forced || alert("Are you sure you want to stop the countdown?","Bracers", "Yes", "No") == "Yes")
-			if(M.gloves != src)
+			if(boomer.gloves != src)
 				return
-			if(M.stat == DEAD)
-				to_chat(M, SPAN_WARNING("Little too late for that now!"))
+			if(boomer.stat == DEAD)
+				to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 				return
-			if(M.stat)
-				to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
+			if(boomer.stat)
+				to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 				return
 			exploding = FALSE
-			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
-			message_all_yautja("[M.real_name] has cancelled their bracer's self-destruction sequence.")
-			message_admins("[key_name(M)] has deactivated their Self-Destruct.")
+			to_chat(boomer, SPAN_NOTICE("Your bracers stop beeping."))
+			message_all_yautja("[boomer.real_name] has cancelled their bracer's self-destruction sequence.")
+			message_admins("[key_name(boomer)] has deactivated their Self-Destruct.")
 
 			var/datum/action/predator_action/bracer/self_destruct/sd_action
-			for(sd_action as anything in M.actions)
+			for(sd_action as anything in boomer.actions)
 				if(istypestrict(sd_action, /datum/action/predator_action/bracer/self_destruct))
 					sd_action.update_button_icon(exploding)
 					break
 
 		return
 
-	if(istype(M.wear_mask,/obj/item/clothing/mask/facehugger) || (M.status_flags & XENO_HOST))
-		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
+	if(istype(boomer.wear_mask,/obj/item/clothing/mask/facehugger) || (boomer.status_flags & XENO_HOST))
+		to_chat(boomer, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
 
 	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
-		if(M.gloves != src)
+		if(boomer.gloves != src)
 			return
-		if(M.stat == DEAD)
-			to_chat(M, SPAN_WARNING("Little too late for that now!"))
+		if(boomer.stat == DEAD)
+			to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 			return
-		if(M.stat)
-			to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
+		if(boomer.stat)
+			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+			return
+		if(istype(grounds, /area/yautja_grounds)) // Hunted need mask to escape
+			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 			return
 		if(exploding)
 			return
-		to_chat(M, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
-		var/area/A = get_area(M)
-		var/turf/T = get_turf(M)
-		message_admins(FONT_SIZE_HUGE("ALERT: [M] ([M.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
-		log_attack("[key_name(M)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
-		message_all_yautja("[M.real_name] has triggered their bracer's self-destruction sequence.")
-		explode(M)
+		to_chat(boomer, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
+		var/area/A = get_area(boomer)
+		var/turf/T = get_turf(boomer)
+		message_admins(FONT_SIZE_HUGE("ALERT: [boomer] ([boomer.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
+		log_attack("[key_name(boomer)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
+		message_all_yautja("[boomer.real_name] has triggered their bracer's self-destruction sequence.")
+		explode(boomer)
 
 		var/datum/action/predator_action/bracer/self_destruct/sd_action
-		for(sd_action as anything in M.actions)
+		for(sd_action as anything in boomer.actions)
 			if(istypestrict(sd_action, /datum/action/predator_action/bracer/self_destruct))
 				sd_action.update_button_icon(exploding)
 				break

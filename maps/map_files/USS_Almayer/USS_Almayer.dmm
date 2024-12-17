@@ -132,24 +132,123 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
 "aas" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8;
+	req_access_txt = "8"
+	},
+/obj/structure/machinery/door/window/eastleft,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/sterile_green,
+/area/almayer/medical/lockerroom)
 "aat" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer/plate,
-/area/almayer/engineering/lower/workshop)
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	access_modified = 1;
+	dir = 8;
+	req_access_txt = "8"
+	},
+/obj/structure/machinery/door/window/eastleft,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/sterile_green,
+/area/almayer/medical/lockerroom)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
+/obj/structure/machinery/door/window/eastleft{
+	req_one_access_txt = "2;21"
+	},
+/obj/structure/machinery/door/window/westright,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "ROlobby2";
+	name = "\improper RO Line 2"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/surface/table/reinforced/almayer_blend,
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/structure/machinery/door/window/eastleft,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/req)
+"aaw" = (
 /obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer,
-/area/almayer/command/lifeboat)
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
+"aax" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8
+	},
+/obj/structure/machinery/door/window/eastleft{
+	req_access_txt = "8"
+	},
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/sterile_green,
+/area/almayer/medical/lower_medical_medbay)
+"aay" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/lower/workshop)
+"aaz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Mainframe Left";
+	name = "ARES Mainframe Lockdown";
+	pixel_x = 24;
+	pixel_y = 24;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
+/area/almayer/command/airoom)
+"aaA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Mainframe Right";
+	name = "ARES Mainframe Lockdown";
+	pixel_x = -24;
+	pixel_y = 24;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
+/area/almayer/command/airoom)
+"aaB" = (
+/obj/structure/machinery/door_control{
+	id = "ARES Mainframe Left";
+	name = "ARES Mainframe Lockdown";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/machinery/door_control{
+	id = "ARES Mainframe Right";
+	name = "ARES Mainframe Lockdown";
+	pixel_x = -24;
+	pixel_y = -24;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -169,6 +268,30 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/obj/structure/sign/safety/rewire{
+	pixel_y = 38
+	},
+/obj/structure/sign/safety/fibre_optics{
+	pixel_x = 14;
+	pixel_y = 38
+	},
+/obj/structure/sign/safety/laser{
+	pixel_y = 24
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 14;
+	pixel_y = 24
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Operations Left";
+	name = "ARES Operations Shutter";
+	pixel_x = 24;
+	pixel_y = -8;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
+/area/almayer/command/airoom)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -177,6 +300,62 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/machinery/door_control{
+	id = "ARES Operations Left";
+	name = "ARES Operations Shutter";
+	pixel_x = -24;
+	pixel_y = -8;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/no_build/ai_silver/west,
+/area/almayer/command/airoom)
+"aaJ" = (
+/obj/structure/machinery/door_control{
+	id = "ARES Operations Right";
+	name = "ARES Operations Shutter";
+	pixel_x = 24;
+	pixel_y = -8;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/no_build/ai_silver/east,
+/area/almayer/command/airoom)
+"aaK" = (
+/obj/structure/sign/safety/terminal{
+	pixel_x = 14;
+	pixel_y = 24
+	},
+/obj/structure/sign/safety/laser{
+	pixel_y = 24
+	},
+/obj/structure/sign/safety/fibre_optics{
+	pixel_x = 14;
+	pixel_y = 38
+	},
+/obj/structure/sign/safety/rewire{
+	pixel_y = 38
+	},
+/obj/structure/machinery/door_control{
+	id = "ARES Operations Right";
+	name = "ARES Operations Shutter";
+	pixel_x = -24;
+	pixel_y = -8;
+	req_one_access_txt = "91;92"
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
+/area/almayer/command/airoom)
+"aaL" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/upper/fore_hallway)
+"aaM" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -4978,16 +5157,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cichallway)
-"aGk" = (
-/obj/structure/machinery/door_control{
-	id = "ARES Operations Left";
-	name = "ARES Operations Shutter";
-	pixel_x = -24;
-	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
-	},
-/turf/open/floor/almayer/aicore/no_build/ai_silver/west,
-/area/almayer/command/airoom)
 "aGm" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plate,
@@ -8805,14 +8974,6 @@
 "bju" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
-"bjv" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -20372,19 +20533,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
-"euN" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Mainframe Left";
-	name = "ARES Mainframe Lockdown";
-	pixel_x = 24;
-	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
-/area/almayer/command/airoom)
 "euV" = (
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
@@ -24071,30 +24219,6 @@
 	pixel_y = -8
 	},
 /turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
-"gbg" = (
-/obj/structure/sign/safety/terminal{
-	pixel_x = 14;
-	pixel_y = 24
-	},
-/obj/structure/sign/safety/laser{
-	pixel_y = 24
-	},
-/obj/structure/sign/safety/fibre_optics{
-	pixel_x = 14;
-	pixel_y = 38
-	},
-/obj/structure/sign/safety/rewire{
-	pixel_y = 38
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Operations Right";
-	name = "ARES Operations Shutter";
-	pixel_x = -24;
-	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "gbm" = (
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
@@ -29948,9 +30072,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"iBn" = (
-/turf/closed/wall/almayer/aicore/white/hull,
-/area/space)
 "iBu" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
@@ -32052,25 +32173,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
-"jpD" = (
-/obj/structure/machinery/door/window/eastleft{
-	req_one_access_txt = "2;21"
-	},
-/obj/structure/machinery/door/window/westright,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "ROlobby2";
-	name = "\improper RO Line 2"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/surface/table/reinforced/almayer_blend,
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/squads/req)
 "jpW" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -35811,19 +35913,6 @@
 /obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/hallways/hangar)
-"kSy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Mainframe Right";
-	name = "ARES Mainframe Lockdown";
-	pixel_x = -24;
-	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
-/area/almayer/command/airoom)
 "kSA" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -36816,30 +36905,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/prison/kitchen,
 /area/almayer/engineering/upper_engineering)
-"lnS" = (
-/obj/structure/sign/safety/rewire{
-	pixel_y = 38
-	},
-/obj/structure/sign/safety/fibre_optics{
-	pixel_x = 14;
-	pixel_y = 38
-	},
-/obj/structure/sign/safety/laser{
-	pixel_y = 24
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 14;
-	pixel_y = 24
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Operations Left";
-	name = "ARES Operations Shutter";
-	pixel_x = 24;
-	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
-/area/almayer/command/airoom)
 "lok" = (
 /obj/structure/machinery/cm_vending/clothing/marine/charlie{
 	density = 0;
@@ -37613,16 +37678,6 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/almayer/living/port_emb)
-"lFj" = (
-/obj/structure/machinery/door_control{
-	id = "ARES Operations Right";
-	name = "ARES Operations Shutter";
-	pixel_x = 24;
-	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
-	},
-/turf/open/floor/almayer/aicore/no_build/ai_silver/east,
-/area/almayer/command/airoom)
 "lFn" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/almayer/plate,
@@ -50899,16 +50954,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_f_s)
-"rby" = (
-/obj/structure/machinery/door_control{
-	id = "ARES Mainframe Left";
-	name = "ARES Mainframe Lockdown";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "rbB" = (
 /turf/open/floor/almayer/silvercorner,
 /area/almayer/command/computerlab)
@@ -56528,23 +56573,6 @@
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_fore_hallway)
-"toS" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access_txt = "8"
-	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer/sterile_green,
-/area/almayer/medical/lower_medical_medbay)
 "tpa" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/window/reinforced{
@@ -59650,18 +59678,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower)
-"uFo" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access_txt = "8"
-	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer/sterile_green,
-/area/almayer/medical/lockerroom)
 "uFp" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/almayer/plate,
@@ -62662,16 +62678,6 @@
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/hallways/lower/repair_bay)
-"vLz" = (
-/obj/structure/machinery/door_control{
-	id = "ARES Mainframe Right";
-	name = "ARES Mainframe Lockdown";
-	pixel_x = -24;
-	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "vLA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -64052,19 +64058,6 @@
 	},
 /turf/open/floor/almayer/emeraldfull,
 /area/almayer/living/briefing)
-"wkc" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door/window/eastright{
-	access_modified = 1;
-	dir = 8;
-	req_access_txt = "8"
-	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer/sterile_green,
-/area/almayer/medical/lockerroom)
 "wks" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -85533,7 +85526,7 @@ xyw
 xyw
 xyw
 xyw
-aas
+aaw
 xyw
 xyw
 xyw
@@ -95176,7 +95169,7 @@ pcs
 fCW
 fCW
 tTZ
-bjv
+aaL
 tTZ
 dNj
 dNj
@@ -95283,9 +95276,9 @@ qjN
 hpN
 gfW
 omo
-wkc
+aat
 gfW
-uFo
+aas
 omo
 gfW
 eWx
@@ -96292,7 +96285,7 @@ mKw
 rcx
 kan
 ojZ
-toS
+aax
 ojZ
 kan
 leY
@@ -109285,7 +109278,7 @@ bGo
 bGo
 qjY
 pCr
-jpD
+aav
 cpK
 cpK
 bdl
@@ -118825,7 +118818,7 @@ uZF
 xoj
 xoj
 osI
-aat
+aay
 fie
 pUj
 xoj
@@ -119942,7 +119935,7 @@ eky
 aDQ
 pyy
 eky
-aav
+aaM
 eky
 dLc
 aDQ
@@ -124867,19 +124860,19 @@ lmz
 lmz
 lmz
 lmz
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
 bdH
 bdH
 bdH
@@ -126087,9 +126080,9 @@ pmV
 eGr
 xDC
 dIn
-rby
+aaB
 bIp
-euN
+aaz
 ujn
 sEK
 etM
@@ -126288,7 +126281,7 @@ kfU
 daz
 ebN
 ebN
-lnS
+aaG
 uVv
 flf
 ebN
@@ -126694,7 +126687,7 @@ mRn
 dJO
 vMt
 dkz
-aGk
+aaI
 ktQ
 teZ
 wkM
@@ -127100,7 +127093,7 @@ fMt
 mEs
 gbm
 oBD
-lFj
+aaJ
 vyE
 mTr
 wkM
@@ -127506,7 +127499,7 @@ sTV
 daz
 ebN
 ebN
-gbg
+aaK
 uVv
 xwU
 ebN
@@ -127711,9 +127704,9 @@ hTl
 jrH
 xDC
 yaQ
-vLz
+aaD
 mFN
-kSy
+aaA
 bFg
 dDp
 nYg

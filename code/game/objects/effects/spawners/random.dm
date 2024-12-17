@@ -576,9 +576,6 @@
 // OB spawners
 */
 
-
-GLOBAL_VAR_INIT(spawn_ob, TRUE)
-
 /obj/effect/spawner/random/warhead
 	name = "random orbital warhead"
 	desc = "This is a random orbital warhead."
@@ -588,9 +585,6 @@ GLOBAL_VAR_INIT(spawn_ob, TRUE)
 	spawn_on_roundstart = TRUE
 
 /obj/effect/spawner/random/warhead/item_to_spawn()
-	if(!GLOB.spawn_ob)
-		return /obj/item/paper/warhead_recycle
-
 	var/list/spawnables = list(
 		/obj/structure/ob_ammo/warhead/explosive,
 		/obj/structure/ob_ammo/warhead/incendiary,

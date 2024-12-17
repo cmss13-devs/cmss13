@@ -134,6 +134,21 @@
 /datum/ammo/bullet/machinegun/auto/set_bullet_traits()
 	return
 
+/datum/ammo/bullet/machinegun/medium // for T37, UPP MMG
+	name = "medium machinegun bullet"
+
+	accurate_range = 10
+	damage =  50
+	penetration = ARMOR_PENETRATION_TIER_6
+	accuracy = -HIT_ACCURACY_TIER_2 // 75 accuracy
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 15
+	effective_range_max = 7
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
+
+/datum/ammo/bullet/machinegun/medium/set_bullet_traits()
+	return
+
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM

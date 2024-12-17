@@ -9,98 +9,99 @@
 	set name = "Change Active Hardpoint"
 	set category = "Vehicle"
 
-	var/mob/M = usr
-	if(!M || !istype(M))
+	var/mob/user = usr
+	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = M.interactee
-	if(!V || !istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat = V.get_mob_seat(M)
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
-	var/list/usable_hps = V.get_activatable_hardpoints(seat)
+	var/list/usable_hps = user_vehicle.get_activatable_hardpoints(seat)
 	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
+		to_chat(user, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
 		return
 
-	var/obj/item/hardpoint/HP = tgui_input_list(usr, "Select a hardpoint.", "Switch Hardpoint", usable_hps)
-	if(!HP)
+	var/obj/item/hardpoint/hardpoint = tgui_input_list(usr, "Select a hardpoint.", "Switch Hardpoint", usable_hps)
+	if(!hardpoint)
 		return
 
-	var/obj/item/hardpoint/old_HP = V.active_hp[seat]
-	if(old_HP)
-		SEND_SIGNAL(old_HP, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
+	var/obj/item/hardpoint/old_hp = user_vehicle.active_hp[seat]
+	if(old_hp)
+		SEND_SIGNAL(old_hp, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
 
-	V.active_hp[seat] = HP
-	var/msg = "You select \the [HP]."
-	if(HP.ammo)
-		msg += " Ammo: <b>[SPAN_HELPFUL(HP.ammo.current_rounds)]/[SPAN_HELPFUL(HP.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(HP.backup_clips))]/[SPAN_HELPFUL(HP.max_clips)]</b>"
-	to_chat(M, SPAN_WARNING(msg))
+	user_vehicle.active_hp[seat] = hardpoint
+	var/msg = "You select \the [hardpoint]."
+	if(hardpoint.ammo)
+		msg += " Ammo: <b>[SPAN_HELPFUL(hardpoint.ammo.current_rounds)]/[SPAN_HELPFUL(hardpoint.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(hardpoint.backup_clips))]/[SPAN_HELPFUL(hardpoint.max_clips)]</b>"
+	to_chat(user, SPAN_WARNING(msg))
 
 //cycles through hardpoints in a activatable hardpoints list without asking anything
 /obj/vehicle/multitile/proc/cycle_hardpoint()
 	set name = "Cycle Active Hardpoint"
 	set category = "Vehicle"
 
-	var/mob/M = usr
-	if(!M || !istype(M))
+	var/mob/user = usr
+	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = M.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat = V.get_mob_seat(M)
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
-	var/list/usable_hps = V.get_activatable_hardpoints(seat)
+	var/list/usable_hps = user_vehicle.get_activatable_hardpoints(seat)
 	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
+		to_chat(user, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
 		return
-	var/new_hp = usable_hps.Find(V.active_hp[seat])
+	var/new_hp = usable_hps.Find(user_vehicle.active_hp[seat])
 	if(!new_hp)
 		new_hp = 0
 
 	new_hp = (new_hp % length(usable_hps)) + 1
-	var/obj/item/hardpoint/HP = usable_hps[new_hp]
-	if(!HP)
+	var/obj/item/hardpoint/current_hp = usable_hps[new_hp]
+	if(!current_hp)
 		return
 
-	var/obj/item/hardpoint/old_HP = V.active_hp[seat]
-	if(old_HP)
-		SEND_SIGNAL(old_HP, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
+	var/obj/item/hardpoint/old_hp = user_vehicle.active_hp[seat]
+	if(old_hp)
+		SEND_SIGNAL(old_hp, COMSIG_GUN_INTERRUPT_FIRE) //stop fire when switching away from HP
 
-	V.active_hp[seat] = HP
-	var/msg = "You select \the [HP]."
-	if(HP.ammo)
-		msg += " Ammo: <b>[SPAN_HELPFUL(HP.ammo.current_rounds)]/[SPAN_HELPFUL(HP.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(HP.backup_clips))]/[SPAN_HELPFUL(HP.max_clips)]</b>"
-	to_chat(M, SPAN_WARNING(msg))
+	user_vehicle.active_hp[seat] = current_hp
+	var/msg = "You select \the [current_hp]."
+	if(current_hp.ammo)
+		msg += " Ammo: <b>[SPAN_HELPFUL(current_hp.ammo.current_rounds)]/[SPAN_HELPFUL(current_hp.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(current_hp.backup_clips))]/[SPAN_HELPFUL(current_hp.max_clips)]</b>"
+	to_chat(user, SPAN_WARNING(msg))
 
 // Used to lock/unlock the vehicle doors to anyone without proper access
 /obj/vehicle/multitile/proc/toggle_door_lock()
 	set name = "Toggle Door Locks"
 	set category = "Vehicle"
 
-	var/mob/M = usr
-	if(!M || !istype(M))
+	var/mob/user = usr
+	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = M.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat = V.get_mob_seat(M)
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
+
 	if(seat != VEHICLE_DRIVER)
 		return
 
-	V.door_locked = !V.door_locked
-	to_chat(M, SPAN_NOTICE("You [V.door_locked ? "lock" : "unlock"] the vehicle doors."))
+	user_vehicle.door_locked = !user_vehicle.door_locked
+	to_chat(user, SPAN_NOTICE("You [user_vehicle.door_locked ? "lock" : "unlock"] the vehicle doors."))
 
 //switches between SHIFT + Click and Middle Mouse Button Click to fire not selected currently weapon
 /obj/vehicle/multitile/proc/toggle_shift_click()
@@ -108,17 +109,21 @@
 	set desc = "Toggles between using Middle Mouse Button click and Shift + Click to fire not currently selected weapon if possible."
 	set category = "Vehicle"
 
-	var/obj/vehicle/multitile/V = usr.interactee
-	if(!istype(V))
+	var/mob/user = usr
+	if(!istype(user))
 		return
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == usr)
-			seat = vehicle_seat
-			break
+
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
+		return
+
+	var/seat = user_vehicle.get_mob_seat(user)
+	if(!seat)
+		return
+
 	if(seat == VEHICLE_GUNNER)
-		V.vehicle_flags ^= VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER
-		to_chat(usr, SPAN_NOTICE("You will fire not selected weapon with [(V.vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER) ? "Shift + Click" : "Middle Mouse Button click"] now, if possible."))
+		user_vehicle.vehicle_flags ^= VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER
+		to_chat(usr, SPAN_NOTICE("You will fire not selected weapon with [(user_vehicle.vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER) ? "Shift + Click" : "Middle Mouse Button click"] now, if possible."))
 	return
 
 //opens vehicle status window with HP and ammo of hardpoints
@@ -131,19 +136,15 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = user.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
-	V.tgui_interact(user)
+	user_vehicle.tgui_interact(user)
 
 // BEGIN TGUI \\
 
@@ -201,6 +202,64 @@
 
 // END TGUI \\
 
+//Megaphone gaming
+/obj/vehicle/multitile/proc/use_megaphone()
+	set name = "Use Megaphone"
+	set desc = "Let's you shout a message to peoples around the vehicle."
+	set category = "Vehicle"
+
+	var/mob/living/user = usr
+	if(!istype(user) || !user.client)
+		return
+
+	if(user.client.prefs?.muted & MUTE_IC)
+		to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
+		return
+	if(user.silent || user.is_mob_incapacitated())
+		return
+
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
+		return
+
+	var/seat = user_vehicle.get_mob_seat(user)
+	if(!seat)
+		return
+
+	if(world.time < user_vehicle.next_shout)
+		to_chat(user, SPAN_WARNING("You need to wait [(user_vehicle.next_shout - world.time) / 10] seconds."))
+		return
+
+	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE, timeout = 30 SECONDS)
+	if(!message || !user.client)
+		return
+
+	if(user.client.prefs?.muted & MUTE_IC)
+		to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
+		return
+	if(user.silent || user.is_mob_incapacitated())
+		return
+
+	if(user_vehicle.seats[seat] != user)
+		to_chat(user, SPAN_WARNING("You need to be buckled to vehicle seat to do this."))
+		return
+
+	var/mob/living/carbon/human/shouting = user
+	var/list/new_message = shouting.handle_speech_problems(message)
+	message = new_message[1]
+	message = capitalize(message)
+	log_admin("[key_name(user)] used a vehicle megaphone to say: >[message]<")
+
+	user_vehicle.next_shout = world.time + 10 SECONDS
+	var/list/mob/langchat_long_listeners = list()
+	for(var/mob/listener in get_mobs_in_view(9, user_vehicle))
+		if(!ishumansynth_strict(listener) && !isobserver(listener))
+			listener.show_message("[user_vehicle] broadcasts something, but you can't understand it.")
+			continue
+		listener.show_message("<B>[user_vehicle]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+		langchat_long_listeners += listener
+	user_vehicle.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())
+
 //opens vehicle controls guide, that contains description of all verbs and shortcuts in it
 /obj/vehicle/multitile/proc/open_controls_guide()
 	set name = "Vehicle Controls Guide"
@@ -211,15 +270,11 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = user.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
@@ -245,21 +300,23 @@
 	set desc = "Toggles Turret Gyrostabilizer allowing it independent movement regardless of hull direction."
 	set category = "Vehicle"
 
-	var/mob/M = usr
-	if(!M || !istype(M))
+	var/mob/user = usr
+	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = M.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/obj/item/hardpoint/holder/tank_turret/T = null
-	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
-		T = TT
-		break
-	if(!T)
+	var/seat = user_vehicle.get_mob_seat(user)
+	if(!seat)
 		return
-	T.toggle_gyro(usr)
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in user_vehicle.hardpoints
+	if(!turret)
+		return
+
+	turret.toggle_gyro(usr)
 
 //single use verb that allows VCs to add a nickname in "" at the end of their vehicle name
 /obj/vehicle/multitile/proc/name_vehicle()
@@ -271,47 +328,44 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = user.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
-	if(V.nickname)
-		to_chat(user, SPAN_WARNING("Vehicle already has a \"[V.nickname]\" nickname."))
+	if(user_vehicle.nickname)
+		to_chat(user, SPAN_WARNING("Vehicle already has a \"[user_vehicle.nickname]\" nickname."))
 		return
 
 	var/new_nickname = stripped_input(user, "Enter a unique IC name or a callsign to add to your vehicle's name. [MAX_NAME_LEN] characters maximum. \n\nIMPORTANT! This is an IC nickname/callsign for your vehicle and you will be punished for putting in meme names.\nSINGLE USE ONLY.", "Name your vehicle", null, MAX_NAME_LEN)
 	if(!new_nickname)
 		return
+
 	if(length(new_nickname) > MAX_NAME_LEN)
-		alert(user, "Name [new_nickname] is over [MAX_NAME_LEN] characters limit. Try again.", "Naming vehicle failed", "Ok")
-		return
-	if(alert(user, "Vehicle's name will be [V.name + "\"[new_nickname]\""]. Confirm?", "Confirmation?", "Yes", "No") != "Yes")
+		tgui_alert(user, "Name [new_nickname] is over [MAX_NAME_LEN] characters limit. Try again.", "Naming vehicle failed?", list("Ok"), 30 SECONDS)
 		return
 
-	//post-checks
-	if(V.seats[seat] != user) //check that we are still in seat
+	if(tgui_alert(user, "Vehicle's name will be [user_vehicle.name + "\"[new_nickname]\""]. Confirm?", "Confirmation?", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return
+
+	if(user_vehicle.seats[seat] != user) //check that we are still in seat
 		to_chat(user, SPAN_WARNING("You need to be buckled to vehicle seat to do this."))
 		return
 
-	if(V.nickname) //check again if second VC was faster.
+	if(user_vehicle.nickname) //check again if second VC was faster.
 		to_chat(user, SPAN_WARNING("The other crewman beat you to it!"))
 		return
 
-	V.nickname = new_nickname
-	V.name = initial(V.name) + " \"[V.nickname]\""
-	to_chat(user, SPAN_NOTICE("You've added \"[V.nickname]\" nickname to your vehicle."))
+	user_vehicle.nickname = new_nickname
+	user_vehicle.name = initial(user_vehicle.name) + " \"[user_vehicle.nickname]\""
+	to_chat(user, SPAN_NOTICE("You've added \"[user_vehicle.nickname]\" nickname to your vehicle."))
 
-	message_admins(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
+	message_admins(WRAP_STAFF_LOG(user, "added \"[user_vehicle.nickname]\" nickname to their [initial(user_vehicle.name)]. ([user_vehicle.x],[user_vehicle.y],[user_vehicle.z])"), user_vehicle.x, user_vehicle.y, user_vehicle.z)
 
-	V.initialize_cameras(TRUE)
+	user_vehicle.initialize_cameras(TRUE)
 
 //Activates vehicle horn. Yes, it is annoying.
 /obj/vehicle/multitile/proc/activate_horn()
@@ -323,25 +377,21 @@
 	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = user.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
-	if(world.time < V.next_honk)
-		to_chat(user, SPAN_WARNING("You need to wait [(V.next_honk - world.time) / 10] seconds."))
+	if(world.time < user_vehicle.next_honk)
+		to_chat(user, SPAN_WARNING("You need to wait [(user_vehicle.next_honk - world.time) / 10] seconds."))
 		return
 
-	V.next_honk = world.time + 10 SECONDS
+	user_vehicle.next_honk = world.time + 10 SECONDS
 	to_chat(user, SPAN_NOTICE("You activate vehicle's horn."))
-	V.perform_honk()
+	user_vehicle.perform_honk()
 
 /obj/vehicle/multitile/proc/perform_honk()
 	if(honk_sound)
@@ -355,29 +405,26 @@
 	set category = "Vehicle"
 
 	var/mob/user = usr
-	if(!user || !istype(user))
+	if(!istype(user))
 		return
 
-	var/obj/vehicle/multitile/V = user.interactee
-	if(!istype(V))
+	var/obj/vehicle/multitile/user_vehicle = user.interactee
+	if(!istype(user_vehicle))
 		return
 
-	var/seat
-	for(var/vehicle_seat in V.seats)
-		if(V.seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
-
+	var/seat = user_vehicle.get_mob_seat(user)
 	if(!seat)
 		return
 
-	if(V.health < initial(V.health) * 0.5)
-		to_chat(user, SPAN_WARNING("\The [V]'s hull is too damaged to operate!"))
+	if(user_vehicle.health < initial(user_vehicle.health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [user_vehicle]'s hull is too damaged to operate!"))
+		return
 
-	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in V.hardpoints)
-		if(FPW.allowed_seat == seat)
-			if(alert(user, "Initiate M56 FPW reload process? It will take [FPW.reload_time / 10] seconds.", "Initiate reload", "Yes", "No") == "Yes")
-				FPW.start_auto_reload(user)
-			return
+	for(var/obj/item/hardpoint/special/firing_port_weapon/fpw in user_vehicle.hardpoints)
+		if(fpw.allowed_seat != seat)
+			continue
+		if(tgui_alert(user, "Initiate M56 FPW reload process? It will take [fpw.reload_time / 10] seconds.", "Initiate reload?", list("Yes", "No"), 10 SECONDS) == "Yes")
+			fpw.start_auto_reload(user)
+		return
 
 	to_chat(user, SPAN_WARNING("Warning. No FPW for [seat] found, tell a dev!"))

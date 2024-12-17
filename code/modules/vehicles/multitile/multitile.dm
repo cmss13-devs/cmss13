@@ -90,6 +90,8 @@
 	var/interior_map = null
 	var/datum/interior/interior = null
 
+	//spam preventing
+	var/next_shout = 0
 	//common passenger slots
 	var/passengers_slots = 2
 	//xenos passenger slots

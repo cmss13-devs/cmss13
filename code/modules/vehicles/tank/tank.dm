@@ -73,6 +73,7 @@
 		VEHICLE_DRIVER = list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/use_megaphone,
 		),
 		VEHICLE_GUNNER = list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,

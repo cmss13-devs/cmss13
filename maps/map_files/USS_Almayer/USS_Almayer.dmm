@@ -32053,7 +32053,6 @@
 	pixel_x = -6;
 	pixel_y = 10
 	},
-/obj/structure/machinery/door/window/eastleft,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "jpW" = (

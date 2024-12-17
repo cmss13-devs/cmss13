@@ -18,14 +18,14 @@
     "type": "map_insert",
     "landmark": "hvhuscmlz1",
     "chance": 1.0,
-    "path": "standalone/landingzone_solaris_uscm_lz1.dmm",
+    "path": "standalone/landingzone_fop_uscm_lz1.dmm",
     "when": { "$gamemode": "Faction Clash UPP CM" }
 },
 {
     "type": "map_insert",
     "landmark": "hvhuscmlz2",
     "chance": 1.0,
-    "path": "standalone/landingzone_solaris_uscm_lz2.dmm",
+    "path": "standalone/landingzone_fop_uscm_lz2.dmm",
     "when": { "$gamemode": "Faction Clash UPP CM" }
 }
 ]

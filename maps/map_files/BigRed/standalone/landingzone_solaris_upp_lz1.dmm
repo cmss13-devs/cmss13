@@ -169,6 +169,7 @@
 /area/bigredv2/caves_research)
 "fH" = (
 /obj/effect/decal/strata_decals/grime/grime4,
+/obj/structure/bed/bedroll,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/event/metal/dynamic/lit)
 "fS" = (
@@ -1329,10 +1330,6 @@
 "MH" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves_research)
-"MJ" = (
-/obj/item/prop/colony/folded_bedroll,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/s)
 "MK" = (
 /obj/item/trash/sosjerky{
 	pixel_x = -12;
@@ -3191,7 +3188,7 @@ fS
 PB
 HJ
 NW
-MJ
+NW
 bX
 eK
 Oj

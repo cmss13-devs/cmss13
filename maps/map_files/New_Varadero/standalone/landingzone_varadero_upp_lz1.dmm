@@ -386,10 +386,6 @@
 /obj/item/tool/warning_cone,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"gu" = (
-/obj/item/prop/colony/folded_bedroll,
-/turf/open/auto_turf/sand_white/layer1,
-/area/event/dynamic/lit)
 "gC" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -5354,7 +5350,7 @@ yW
 lR
 gD
 yW
-yW
+dT
 yW
 yW
 VX
@@ -5467,7 +5463,7 @@ yW
 yW
 yW
 yW
-gu
+yW
 yW
 yW
 VX

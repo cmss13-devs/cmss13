@@ -690,9 +690,13 @@
 	if(user.is_mob_incapacitated(TRUE) || get_dist(user, src) > 1 || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
-		user.reset_view(null)
-		if(cam)
-			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+		for(var/datum/weakref/user_ref in concurrent_users)
+			var/mob/concurrent = user_ref.resolve()
+			if(!concurrent)
+				continue
+			if(cam)
+				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+			concurrent.reset_view(null)
 		if(helm)
 			UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 			UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)

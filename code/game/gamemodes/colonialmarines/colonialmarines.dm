@@ -1,6 +1,15 @@
+/// How many smallhosts to preassigned players to spawn?
+#define MONKEYS_TO_TOTAL_RATIO 1/32
+/// When to start opening the podlocks identified as "map_lockdown" (takes 30s)
+#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
+/// How many pipes explode at a time during hijack?
 #define HIJACK_EXPLOSION_COUNT 5
+/// What percent do we consider a 'majority?' to win
+#define MAJORITY 0.5
+/// How long to delay the round completion (command is immediately notified)
 #define MARINE_MAJOR_ROUND_END_DELAY (3 MINUTES)
-#define LZ_HAZARD_START (3 MINUTES)
+/// The ratio of forsaken to groundside humans before calling more forsaken xenos
+#define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"
@@ -127,7 +136,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 
 	return ..()
 
@@ -263,6 +272,10 @@
 
 /// Called during the dropship flight, clears resin and indicates to those in flight that resin near the LZ has been cleared.
 /datum/game_mode/colonialmarines/proc/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		msg_admin_niche("Skipped weed killer event due to lz_weeding modifier already getting set")
+		return
+
 	clear_proximity_resin()
 
 	var/list/announcement_mobs = list()
@@ -323,9 +336,6 @@
 
 		near_area.is_resin_allowed = TRUE
 
-
-#define MONKEYS_TO_TOTAL_RATIO 1/32
-
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)
 		return
@@ -354,8 +364,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-
-#define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -443,8 +451,6 @@
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
 
-#define GROUNDSIDE_XENO_MULTIPLIER 1.0
-
 ///Checks for humans groundside after hijack, spawns forsaken if requirements met
 /datum/game_mode/colonialmarines/proc/check_ground_humans()
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_GROUND_CHECK))
@@ -470,8 +476,6 @@
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
-#undef GROUNDSIDE_XENO_MULTIPLIER
-
 /**
  * Makes the mainship shake, along with playing a klaxon sound effect.
  */
@@ -482,8 +486,6 @@
 		shake_camera(current_mob, 3, 1)
 
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/double_klaxon.ogg', volume = 10)
-
-#undef PODLOCKS_OPEN_WAIT
 
 // Resource Towers
 
@@ -575,7 +577,6 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-#define MAJORITY 0.5 // What percent do we consider a 'majority?'
 
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
@@ -821,6 +822,9 @@
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
 
+#undef MONKEYS_TO_TOTAL_RATIO
+#undef PODLOCKS_OPEN_WAIT
 #undef HIJACK_EXPLOSION_COUNT
-#undef MARINE_MAJOR_ROUND_END_DELAY
 #undef MAJORITY
+#undef MARINE_MAJOR_ROUND_END_DELAY
+#undef GROUNDSIDE_XENO_MULTIPLIER

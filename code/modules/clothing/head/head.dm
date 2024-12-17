@@ -881,6 +881,15 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 
+/obj/item/clothing/head/CMB/beret
+	name = "\improper CMB Riot Control Unit beret"
+	desc = "A dark beret with a badge that has a word 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon_state = "cmb_beret"
+
+/obj/item/clothing/head/CMB/beret/marshal
+	name = "\improper CMB Riot Control Unit Marshal beret"
+	icon_state = "cmb_sheriff_beret"
+
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
 	desc = "A sturdy freelancer's cap. More protective than it seems."

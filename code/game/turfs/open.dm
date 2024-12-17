@@ -449,6 +449,18 @@
 	baseturfs = /turf/open/gm/dirt
 	minimap_color = MINIMAP_DIRT
 
+/turf/open/gm/dirt/beach
+	icon_state = "beach"
+
+/turf/open/gm/dirt/beach/northeast
+	dir = NORTHEAST
+
+/turf/open/gm/dirt/beach/southeast
+	dir = SOUTHEAST
+
+/turf/open/gm/dirt/beach/northwest
+	dir = NORTHWEST
+
 /turf/open/gm/dirt/Initialize(mapload, ...)
 	. = ..()
 	if(rand(0,15) == 0)
@@ -536,9 +548,10 @@
 	scorchable = "grass1"
 
 /turf/open/gm/dirtgrassborder/north
+	dir = NORTH
 
 /turf/open/gm/dirtgrassborder/south
-	dir = 1
+	dir = SOUTH
 
 /turf/open/gm/dirtgrassborder/west
 	dir = 4
@@ -832,6 +845,9 @@
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
+
+/turf/open/gm/coast/beachcorner2/east
+	dir = EAST
 
 /turf/open/gm/coast/beachcorner2/north_west
 

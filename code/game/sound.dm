@@ -1,24 +1,180 @@
 /sound
-	echo = SOUND_ECHO_REVERB_OFF //disable enviroment reverb by default, soundOutput re-enables for positional sounds
+	echo = SOUND_ECHO_REVERB_OFF //disable environment reverb by default, soundOutput re-enables for spatial sounds
 
-/datum/sound_template //Basically a sound datum, but only serves as a way to carry info to soundOutput
-	var/file //The sound itself
-	var/file_muffled // Muffled variant for those that are deaf
-	var/wait = 0
+/// Similar to a sound datum, carries info to the sound subsysem and soundOutput.
+/datum/sound_template
+	//copied sound datum vars; environment, pan, params, priority deliberately omitted
+	/// This is the file that will be played when the sound is sent to a player.
+	var/file
+	/// Set to 1 to repeat the sound indefinitely once it begins playing, 2 to repeat it forwards and backwards.
 	var/repeat = 0
+	/// Set to TRUE to wait for other sounds in this channel to finish before playing this one.
+	var/wait = FALSE
+	/// For sound effects, set to 1 through 1024 to choose a specific sound channel. For values of 0 or less, any available channel will be chosen.
 	var/channel = 0
+	/// Set to a percentage from 0 to 100 of the sound's full volume.
 	var/volume = 100
-	var/status = 0 //Sound status flags
-	var/frequency = 1
+	/// Any value from -100 to 100 will play this sound at a multiple of its normal frequency. A value of 0 or 1 will play the sound at its normal frequency.
+	var/frequency = 0
+	/// Can be used to set a starting time, in seconds, for a sound.
+	var/offset
+	/// Can be used to shift the pitch of a sound up or down. This works similarly to frequency except that it doesn't impact playback speed.
+	var/pitch = 0
+	/// Alter the way the sound is heard by affecting several different on/off values which combine as bit flags: SOUND_MUTE, SOUND_PAUSED, SOUND_STREAM, SOUND_UPDATE
+	var/status = NONE
+	/// For non-spatial sounds, apparent audio left/right position.
+	var/x = 0
+	/// For non-spatial sounds, apparent audio down/up position.
+	var/y = 0
+	/// For non-spatial sounds, apparent audio back/front position.
+	var/z = 0
+	/// Within the falloff distance a sound stays at a constant volume. Outside of this distance it attenuates at a rate determined by the falloff. Higher values fade more slowly.
 	var/falloff = 1
+	/// If set to an 18-element list, this value customizes reverbration settings for this sound only. A null or non-numeric value for any setting will select its default.
+	var/list/echo = SOUND_ECHO_REVERB_OFF
+
+	//custom vars
+	/// Origin atom for the sound. Used for sound position.
+	var/atom/source
+	/// The category of this sound for client volume purposes: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes), and VOLUME_ADM (Admin sounds and some other stuff).
 	var/volume_cat = VOLUME_SFX
+	/// For spatial sounds, maximum range the sound is played. Defaults to volume * 0.25.
 	var/range = 0
-	var/list/echo = new /list(18)
-	var/x //Map coordinates, not sound coordinates
-	var/y
-	var/z
-	var/y_s_offset // Vertical sound offset
-	var/x_s_offset // Horizontal sound offset
+	/// Additional control flags for use by SSsound and soundOutput.
+	var/sound_flags = NONE
+	/// List of all hearers of this template, for use by SSsound.
+	var/list/hearers
+	/// Indicates that deletion timer and movement signal are set up. Set TRUE when sound has been sent to all hearers.
+	var/playing = FALSE
+
+/datum/sound_template/New(soundin)
+	if(istype(soundin, /datum/sound_template))
+		var/datum/sound_template/source_template = soundin
+		src.file = source_template.file
+		src.repeat = source_template.repeat
+		src.wait = source_template.wait
+		src.channel = source_template.channel
+		src.volume = source_template.volume
+		src.frequency = source_template.frequency
+		src.offset = source_template.offset
+		src.pitch = source_template.pitch
+		src.status = source_template.status
+		src.x = source_template.x
+		src.y = source_template.y
+		src.z = source_template.z
+		src.falloff = source_template.falloff
+		src.echo = source_template.echo.Copy()
+
+		set_source(source_template.source)
+		src.volume_cat = source_template.volume_cat
+		src.range = source_template.range
+		src.sound_flags = source_template.sound_flags
+		src.hearers = source_template.hearers.Copy()
+	else if(istype(soundin, /sound))
+		var/sound/source_sound = soundin
+		src.file = source_sound.file
+		src.repeat = source_sound.repeat
+		src.wait = source_sound.wait
+		src.channel = source_sound.channel
+		src.volume = source_sound.volume
+		src.frequency = source_sound.frequency
+		src.offset = source_sound.offset
+		src.pitch = source_sound.pitch
+		src.status = source_sound.status
+		src.x = source_sound.x
+		src.y = source_sound.y
+		src.z = source_sound.z
+		src.falloff = source_sound.falloff
+		if(islist(source_sound.echo))
+			var/list/source_sound_echo = source_sound.echo
+			src.echo = source_sound_echo.Copy()
+		else
+			src.echo = source_sound.echo
+	else
+		src.file = get_sfx(soundin)
+
+	return ..()
+
+/datum/sound_template/Destroy()
+	source = null
+
+	SSsound.channel_templates -= "[channel]"
+	SSsound.source_updates -= src
+
+	for(var/client/client in hearers)
+		client.soundOutput.channel_templates -= "[channel]"
+	hearers = null
+
+	return ..()
+
+/datum/sound_template/proc/set_source(atom/new_source)
+	if(source)
+		UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
+
+	var/atom/old_source = source //debug
+	source = new_source
+
+	if(!source)
+		error("Set sound template source to an invalid value. Old: [old_source] New: [new_source] File: [file]") //debug
+		return
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_source_qdel))
+
+/datum/sound_template/proc/on_playing()
+	if(playing)
+		return
+	playing = TRUE
+
+	QDEL_IN_CLIENT_TIME(src, GLOB.sound_lengths["[file]"] SECONDS)
+
+	if(!((sound_flags & SOUND_TEMPLATE_SPATIAL) && (sound_flags & SOUND_TEMPLATE_TRACKED)))
+		return
+	if(!ismovable(source))
+		return
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, PROC_REF(on_source_moved))
+
+/datum/sound_template/proc/on_source_qdel(/* datum/source, forced */)
+	SIGNAL_HANDLER //COMSIG_PARENT_QDELETING
+	set_source(get_turf(src.source))
+
+/datum/sound_template/proc/on_source_moved(/* datum/source, atom/oldloc, direction, Forced */)
+	SIGNAL_HANDLER //COMSIG_MOVABLE_MOVED
+	SSsound.source_updates |= src
+
+/**
+ * Creates a sound datum based on the template.
+ *
+ * Arguments:
+ * * update - if truthy the sound datum only has values that will cause no change to the sound, and can be modified from there
+ *
+ * Returns a sound datum
+ */
+/datum/sound_template/proc/get_sound(update)
+	var/sound/sound = sound(/*repeat = src.repeat,*/ /*wait = src.wait,*/ channel = src.channel, volume = src.volume)
+	//sound.pan = src.pan
+	//sound.params = src.pan
+	//sound.priority = src.priority
+	sound.status = src.status
+	sound.x = src.x
+	sound.y = src.y
+	sound.z = src.z
+	sound.falloff = src.falloff
+	//repeat, wait, pan, params, priority commented out as currently unused
+
+	if(update)
+		sound.status |= SOUND_UPDATE
+		sound.echo = null
+	else //only needed when not updating as their default values indicate no change
+		sound.file = src.file
+		sound.frequency = src.frequency
+		sound.offset = src.offset
+		sound.pitch = src.pitch
+		//sound.environment = src.environment
+		if(sound_flags & SOUND_TEMPLATE_ENVIRONMENTAL)
+			sound.echo[ECHO_ROOM] = 0
+			sound.echo[ECHO_ROOMHF] = 0
+	//environment commented out as currently nonexistent on templates
+
+	return sound
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1
@@ -26,138 +182,109 @@
 	if(cur_chan > FREE_CHAN_END)
 		cur_chan = 1
 
-//Proc used to play a sound effect. Avoid using this proc for non-IC sounds, as there are others
-//source: self-explanatory.
-//soundin: the .ogg to use.
-//vol: the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech.
-//freq: the frequency of the sound. Setting it to 1 will assign it a random frequency
-//sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
-//vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
-//channel: use this only when you want to force the sound to play on a specific channel
-//status: the regular 4 sound flags
-//falloff: max range till sound volume starts dropping as distance increases
-
-/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset)
+/**
+ * Play a spatialized sound effect to everyone within hearing distance.
+ *
+ * Arguments:
+ * * source - origin atom for the sound
+ * * soundin - sound datum ( `sound()` ), sound file ('mysound.ogg'), or string to get a SFX ("male_warcry")
+ * * vol - the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech.
+ * * vary - the frequency of the sound. Setting it to TRUE will assign it a random frequency
+ * * sound_range - maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
+ * * vol_cat - the category of this sound for client volume purposes: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes), VOLUME_ADM (Admin sounds)
+ * * channel - force the sound to play on a specific channel, otherwise one is selected automatically
+ * * status - combined bit flags: SOUND_MUTE, SOUND_PAUSED, SOUND_STREAM, SOUND_UPDATE
+ * * falloff - range when apparent sound volume starts dropping
+ *
+ * Returns selected channel on success, FALSE on failure
+ */
+/proc/playsound(atom/source, sound/soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel, status, falloff = 1, list/echo)
+	if(!get_turf(source))
+		error("[source] has no turf and is trying to play a spatial sound: [soundin]")
+		return FALSE
 	if(isarea(source))
-		error("[source] is an area and is trying to make the sound: [soundin]")
+		error("[source] is an area and is trying to play a spatial sound: [soundin]")
 		return FALSE
 
-	var/datum/sound_template/template = new()
-	if(istype(soundin))
-		template.file = soundin.file
-		template.wait = soundin.wait
-		template.repeat = soundin.repeat
-	else
-		template.file = get_sfx(soundin)
-	template.channel = channel ? channel : get_free_channel()
+	var/datum/sound_template/template = new(soundin)
+	if(!isfile(template.file))
+		error("[source] is trying to play a spatial sound but provided no sound: [soundin]")
+		return FALSE
+
+	template.channel = channel || get_free_channel()
+	template.volume = vol
+	if(vary > 1)
+		template.frequency = vary
+	else if(vary)
+		template.frequency = GET_RANDOM_FREQ // Same frequency for everybody
 	template.status = status
 	template.falloff = falloff
-	template.volume = vol
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(!isnum(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
+
+	template.set_source(source)
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
-	template.x_s_offset = x_s_offset
-	if(vary != FALSE)
-		if(vary > 1)
-			template.frequency = vary
-		else
-			template.frequency = GET_RANDOM_FREQ // Same frequency for everybody
+	template.range = sound_range || vol * 0.25
+	if(GLOB.spatial_sound_tracking && GLOB.sound_lengths["[template.file]"] SECONDS >= GLOB.spatial_sound_tracking_min_length) //debug
+		template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED //TODO: limit to sounds that need it
 
-	if(!sound_range)
-		sound_range = floor(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
-	template.range = sound_range
-
-	var/turf/turf_source = get_turf(source)
-	if(!turf_source || !turf_source.z)
-		return FALSE
-	template.x = turf_source.x
-	template.y = turf_source.y
-	template.z = turf_source.z
-
-	if(!SSinterior)
-		SSsound.queue(template)
-		return template.channel
-
-	var/list/datum/interior/extra_interiors = list()
-	// If we're in an interior, range the chunk, then adjust to do so from outside instead
-	if(SSinterior.in_interior(turf_source))
-		var/datum/interior/vehicle_interior = SSinterior.get_interior_by_coords(turf_source.x, turf_source.y, turf_source.z)
-		if(vehicle_interior?.ready)
-			extra_interiors |= vehicle_interior
-			if(vehicle_interior.exterior)
-				var/turf/new_turf_source = get_turf(vehicle_interior.exterior)
-				template.x = new_turf_source.x
-				template.y = new_turf_source.y
-				template.z = new_turf_source.z
-			else sound_range = 0
-	// Range for 'nearby interiors' aswell
-	for(var/datum/interior/vehicle_interior in SSinterior.interiors)
-		if(vehicle_interior?.ready && vehicle_interior.exterior?.z == turf_source.z && get_dist(vehicle_interior.exterior, turf_source) <= sound_range)
-			extra_interiors |= vehicle_interior
-
-	SSsound.queue(template, null, extra_interiors)
+	SSsound.queue(template)
 	return template.channel
 
-
-
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
-	if(!istype(client) || !client.soundOutput)
+/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel, status, list/echo)
+	if(!istype(client))
+		error("[client] is not a client and is trying to play a client sound: [soundin]")
 		return FALSE
 
-	var/datum/sound_template/template = new()
-	if(origin)
-		var/turf/T = get_turf(origin)
-		if(T)
-			template.x = T.x
-			template.y = T.y
-			template.z = T.z
-	if(istype(soundin))
-		template.file = soundin.file
-		template.wait = soundin.wait
-		template.repeat = soundin.repeat
-	else
-		template.file = get_sfx(soundin)
+	var/datum/sound_template/template = new(soundin)
 
+	template.channel = channel || get_free_channel()
+	template.volume = vol
 	if(random_freq)
 		template.frequency = GET_RANDOM_FREQ
-	template.volume = vol
-	template.volume_cat = vol_cat
-	template.channel = channel
 	template.status = status
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
-	template.x_s_offset = x_s_offset
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(!isnum(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
+
+	template.volume_cat = vol_cat
+
 	SSsound.queue(template, list(client))
+	return template.channel
 
 /// Plays sound to all mobs that are map-level contents of an area
-/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
-	if(!isarea(A))
+/proc/playsound_area(area/area, sound/soundin, vol = 100, channel, vol_cat = VOLUME_SFX, status, list/echo)
+	if(!isarea(area))
+		error("[area] is not an area and is trying to play an area sound: [soundin]")
 		return FALSE
 
-	var/datum/sound_template/template = new()
-	template.file = soundin
+	var/datum/sound_template/template = new(soundin)
+
+	template.channel = channel || get_free_channel()
 	template.volume = vol
-	template.channel = channel
 	template.status = status
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(!isnum(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
+
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
 
 	var/list/hearers = list()
-	for(var/mob/living/M in A.contents)
-		if(!M || !M.client || !M.client.soundOutput)
+	for(var/mob/living/hearer in area.contents)
+		if(!hearer.client)
 			continue
-		hearers += M.client
+		hearers += hearer.client
+
 	SSsound.queue(template, hearers)
+	return template.channel
 
 /client/proc/playtitlemusic()
 	if(!SSticker?.login_music)
@@ -166,24 +293,30 @@
 		playsound_client(src, SSticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
 
-/// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
-	var/datum/sound_template/template = new()
-	template.file = soundin
-	template.volume = volume
+/// Play sound for all on-map clients on a list of z-levels. Good for ambient sounds.
+/proc/playsound_z(list/z_values, sound/soundin, volume = 100, vol_cat = VOLUME_SFX, list/echo)
+	var/datum/sound_template/template = new(soundin)
+
 	template.channel = SOUND_CHANNEL_Z
+	template.volume = volume
+	if(islist(echo))
+		for(var/pos in 1 to length(echo))
+			if(!isnum(echo[pos]))
+				continue
+			template.echo[pos] = echo[pos]
+
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
-	template.x_s_offset = x_s_offset
+
 	var/list/hearers = list()
-	for(var/mob/M in GLOB.player_list)
-		if((M.z in z) && M.client.soundOutput)
-			hearers += M.client
+	for(var/client/hearer as anything in GLOB.clients)
+		//var/turf/hearer_turf = get_turf(hearer.mob)
+		//if(!(hearer_turf.z in z_values))
+		if(!((get_turf(hearer.mob)).z in z_values))
+			continue
+		hearers += hearer
+
 	SSsound.queue(template, hearers)
+	return template.channel
 
 // The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
 /proc/get_sfx(sound)
@@ -426,30 +559,68 @@
 	return sound
 
 /client/proc/generate_sound_queues()
-	set name = "Queue sounds"
-	set desc = "stress test this bich"
-	set category = "Debug"
+	set category = "Debug.Sound"
+	set name = "Queue Sounds"
+	set desc = "generate many warcries for stress testing"
 
-	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
-	var/range = tgui_input_number(usr, "Range")
-	var/x = tgui_input_number(usr, "Center X")
-	var/y = tgui_input_number(usr, "Center Y")
-	var/z = tgui_input_number(usr, "Z level")
-	var/datum/sound_template/template
-	for(var/i = 1, i <= ammount, i++)
-		template = new
-		template.file = get_sfx("male_warcry") // warcry has variable length, lots of variations
+	var/amount = tgui_input_number(src, "How many sounds to queue?", default = 1, max_value = 2000, min_value = 1)
+	if(!amount)
+		return
+	var/range = tgui_input_number(src, "Range", default = 1, min_value = 0)
+	if(isnull(range))
+		return
+	var/x = tgui_input_number(src, "Center X", default = 1, max_value = world.maxx, min_value = 1)
+	if(!x)
+		return
+	var/y = tgui_input_number(src, "Center Y", default = 1, max_value = world.maxy, min_value = 1)
+	if(!y)
+		return
+	var/z = tgui_input_number(src, "Z level", default = 1, max_value = world.maxz, min_value = 1)
+	if(!z)
+		return
+
+	var/turf/source_turf = locate(x, y, z)
+
+	for(var/i in 1 to amount)
+		var/datum/sound_template/template = new("male_warcry") // warcry has variable length, lots of variations
 		template.channel = get_free_channel() // i'm convinced this is bad, but it's here to mirror playsound() behaviour
+		template.set_source(source_turf)
 		template.range = range
-		template.x = x
-		template.y = y
-		template.z = z
+		template.sound_flags |= SOUND_TEMPLATE_SPATIAL|SOUND_TEMPLATE_ENVIRONMENTAL|SOUND_TEMPLATE_CAN_DEAFEN|SOUND_TEMPLATE_TRACKED
 		SSsound.queue(template)
 
 /client/proc/sound_debug_query()
+	set category = "Debug.Sound"
 	set name = "Dump Playing Client Sounds"
 	set desc = "dumps info about locally, playing sounds"
-	set category = "Debug"
 
-	for(var/sound/soundin in SoundQuery())
-		UNLINT(to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")) // unlint until spacemandmm suite-1.7
+	for(var/sound/playing_sound in SoundQuery())
+		to_chat(src, "channel#[playing_sound.channel]: [playing_sound.status] - [playing_sound.file] - len=[playing_sound.len], wait=[playing_sound.wait], offset=[playing_sound.offset], repeat=[playing_sound.repeat]")
+
+GLOBAL_VAR_INIT(spatial_sound_tracking, TRUE)
+/client/proc/toggle_spatial_sound_tracking()
+	set category = "Debug.Sound"
+	set name = "Toggle Spatial Sound Tracking"
+	set desc = "globally stop new sounds from being tracked"
+
+	if(!check_rights(R_DEBUG|R_ADMIN))
+		return
+
+	GLOB.spatial_sound_tracking = !GLOB.spatial_sound_tracking
+	message_admins("[src] has globally [GLOB.spatial_sound_tracking ? "enabled" : "disabled"] spatial sound tracking. New sounds [GLOB.spatial_sound_tracking ? "can now" : "will no longer"] be tracked.")
+
+GLOBAL_VAR_INIT(spatial_sound_tracking_min_length, 0 SECONDS) //in deciseconds
+/client/proc/set_spatial_sound_tracking_min_length()
+	set category = "Debug.Sound"
+	set name = "Set Min Tracking Limit"
+	set desc = "limit tracked sounds to longer ones"
+
+	if(!check_rights(R_DEBUG|R_ADMIN))
+		return
+
+	var/min_length = tgui_input_number(src, "Shortest sound to track in seconds:", "Seconds", default = GLOB.spatial_sound_tracking_min_length, max_value = 10, min_value = 0, integer_only = FALSE)
+	if(isnull(min_length))
+		return
+
+	GLOB.spatial_sound_tracking_min_length = min_length SECONDS
+	message_admins("[src] has set the spatial sound tracking minimum length to [GLOB.spatial_sound_tracking_min_length * 0.1] seconds.")

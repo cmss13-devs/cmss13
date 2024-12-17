@@ -233,6 +233,7 @@
 	name = "\improper Turquoise American Spirit Packet"
 	desc = "A pack of turquoise American Spirit cigarettes."
 	icon_state = "naspacket"
+	icon = 'icons/obj/items/smoking/packets/spirits_cyan.dmi'
 	item_state = "naspacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette
 
@@ -240,6 +241,7 @@
 	name = "\improper Yellow American Spirit Packet"
 	desc = "A pack of yellow American Spirit cigarettes."
 	icon_state = "y_naspacket"
+	icon = 'icons/obj/items/smoking/packets/spirits_yellow.dmi'
 	item_state = "y_naspacket"
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4

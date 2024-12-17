@@ -30,7 +30,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
 	)
-	icon_state = "trashbag0"
+	icon_state = "trashbag"
 
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
@@ -48,17 +48,17 @@
 		sum_storage_cost += item.get_storage_cost()
 
 	if(!sum_storage_cost)
-		icon_state = "trashbag0"
-		item_state = "trashbag0"
+		icon_state = "trashbag_empty"
+		item_state = "trashbag_empty"
 	else if(sum_storage_cost < floor(max_storage_space * 0.35))
-		icon_state = "trashbag1"
-		item_state = "trashbag1"
+		icon_state = "trashbag_small"
+		item_state = "trashbag_small"
 	else if(sum_storage_cost < floor(max_storage_space * 0.7))
-		icon_state = "trashbag2"
-		item_state = "trashbag2"
+		icon_state = "trashbag_mid"
+		item_state = "trashbag_mid"
 	else
-		icon_state = "trashbag3"
-		item_state = "trashbag3"
+		icon_state = "trashbag_full"
+		item_state = "trashbag_full"
 
 
 // -----------------------------

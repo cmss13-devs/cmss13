@@ -243,6 +243,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
 	icon_state = "folded"
+	item_state = "rbed"
 	w_class = SIZE_SMALL //Fits in a backpack
 	drag_delay = 1 //Pulling something on wheels is easy
 	matter = list("plastic" = 5000)
@@ -422,6 +423,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	name = "medevac stretcher"
 	desc = "A collapsed medevac stretcher that can be carried around."
 	icon_state = "stretcher_folded"
+	item_state = "mvbed"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
 

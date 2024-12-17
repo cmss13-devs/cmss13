@@ -2865,6 +2865,10 @@
 	name = "pizza box"
 	desc = "A box suited for pizzas."
 	icon = 'icons/obj/items/food/pizza.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	icon_state = "pizzabox1"
 
 	var/open = 0 // Is the box open?

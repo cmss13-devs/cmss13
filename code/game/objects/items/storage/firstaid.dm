@@ -89,6 +89,7 @@
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
+	item_state = "firstaid"
 	desc = "It's an emergency medical kit containing basic medication and equipment. No training required to use. With medical training you can fit this in a backpack."
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
@@ -354,7 +355,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi'
 	)
 	item_state = "pill_canister"
 	w_class = SIZE_SMALL

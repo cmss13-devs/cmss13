@@ -82,7 +82,8 @@
 	if(!isSilicon(usr) && !skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
-
+	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
+		user.set_interaction(src)
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/overwatch/get_examine_text(mob/user)
@@ -122,8 +123,7 @@
 		user.client.register_map_obj(tacmap.map_holder.map)
 		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
-		if(isliving(user))
-			concurrent_users += WEAKREF(user)
+
 
 /obj/structure/machinery/computer/overwatch/proc/count_marines(list/data)
 	var/leader_count = 0
@@ -354,10 +354,6 @@
 		return
 
 	var/mob/user = usr
-
-	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
-		user.set_interaction(src)
-
 	switch(action)
 		if("pick_squad")
 			if(current_squad)
@@ -390,9 +386,13 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
 			current_squad = null
-			if(cam && !isSilicon(user))
-				user.reset_view(null)
-				user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+			if(cam)
+				for(var/datum/weakref/user_ref in concurrent_users)
+					var/mob/concurrent = user_ref.resolve()
+					if(!concurrent)
+						continue
+					concurrent.reset_view(null)
+					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 			cam = null
 			if(helm)
 				UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
@@ -531,7 +531,12 @@
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
-					user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					for(var/datum/weakref/user_ref in concurrent_users)
+						var/mob/concurrent = user_ref.resolve()
+						if(!concurrent)
+							continue
+						concurrent.reset_view(null)
+						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 					UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
 					helm.overwatch_consoles -= WEAKREF(src)
@@ -539,25 +544,27 @@
 						helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 					cam = null
 					helm = null
-					user.reset_view(null)
 				else if(user.client.view != GLOB.world_view_size)
 					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
-					if(cam)
-						user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					for(var/datum/weakref/user_ref in concurrent_users)
+						var/mob/concurrent = user_ref.resolve()
+						if(!concurrent)
+							continue
+						if(cam)
+							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+						concurrent.reset_view(new_cam)
+						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 					if(helm)
 						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
 						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
 						helm.overwatch_consoles -= WEAKREF(src)
 						if(length(helm.overwatch_consoles) == 0)
 							helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
-
 					cam = new_cam
 					helm = new_helm
 					helm.overwatch_consoles += WEAKREF(src)
 					helm.flags_atom |= (USES_HEARING|USES_SEEING)
-					user.reset_view(cam)
-					user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 					RegisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
 					RegisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
 		if("change_operator")
@@ -683,33 +690,43 @@
 	if(user.is_mob_incapacitated(TRUE) || get_dist(user, src) > 1 || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
-		user.unset_interaction()
+		user.reset_view(null)
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+		if(helm)
+			UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+			UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+			helm.overwatch_consoles -= WEAKREF(src)
+			if(length(helm.overwatch_consoles) == 0)
+				helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+		cam = null
+		helm = null
+
+/obj/structure/machinery/computer/overwatch/on_set_interaction(mob/user)
+	..()
+	if(!isRemoteControlling(user))
+		concurrent_users += WEAKREF(user)
+		if(cam)
+			user.reset_view(cam)
+			user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isRemoteControlling(user))
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		cam = null
 		user.reset_view(null)
-	concurrent_users -= WEAKREF(user)
+		concurrent_users -= WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	..()
 	if(!isRemoteControlling(user))
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		cam = null
 		user.reset_view(null)
-	concurrent_users -= WEAKREF(user)
+		concurrent_users -= WEAKREF(user)
 
-//returns the helmet camera the human is wearing
-/obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if(current_squad)
-		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/helm = H.head
-			return helm.camera
-
+//returns the helmet the human is wearing
 /obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/target)
 	if(!current_squad)
 		return

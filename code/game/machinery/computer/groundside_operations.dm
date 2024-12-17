@@ -425,13 +425,7 @@
 		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
 			sourcemob.langchat_display_image(user)
 
-//returns the helmet camera the human is wearing
-/obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if(current_squad || show_command_squad)
-		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/helm = H.head
-			return helm.camera
-
+//returns the helmet the human is wearing
 /obj/structure/machinery/computer/groundside_operations/proc/get_helm_from_target(mob/living/carbon/human/target)
 	if(!current_squad && !show_command_squad)
 		return

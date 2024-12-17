@@ -282,11 +282,16 @@
 
 
 
-///An automatically active bug used to listen to things by a Fax Responder.
+///An automatically active bug used to listen to things by a Fax Responder. Mapping side, not intended for spawning in manually.
 /obj/item/device/radio/listening_bug/radio_linked/fax
 	name = "Comms Relay Device"
 	subspace_switchable = FALSE
 	broadcasting = TRUE
+	alpha = 0
+	mouse_opacity = FALSE
+	anchored = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
 
 /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 	frequency = FAX_WY_FREQ

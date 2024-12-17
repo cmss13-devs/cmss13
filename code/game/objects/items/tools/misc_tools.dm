@@ -192,14 +192,14 @@
 	if(on)
 		overlays += "+[pen_color]_tip"
 
-/obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)
-	if(!ismob(M))
+/obj/item/tool/pen/attack(mob/living/target, mob/living/user)
+	if(!ismob(target))
 		return
-	to_chat(user, SPAN_WARNING("You stab [M] with the pen."))
-	M.last_damage_data = create_cause_data(initial(name), user)
-	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been stabbed with [name] by [key_name(user)]</font>")
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to stab [key_name(M)]</font>")
-	msg_admin_attack("[key_name(user)] Used the [name] to stab [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	to_chat(user, SPAN_WARNING("You stab [target] with the pen."))
+	target.last_damage_data = create_cause_data(initial(name), user)
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been stabbed with [name] by [key_name(user)]</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to stab [key_name(target)]</font>")
+	msg_admin_attack("[key_name(user)] Used the [name] to stab [key_name(target)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 	return
 
 /obj/item/tool/pen/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -309,15 +309,15 @@
 	var/current_colour_index = 1
 
 /obj/item/tool/pen/multicolor/attack_self(mob/living/carbon/human/user)
-	if(on)
-		current_colour_index = (current_colour_index % length(colour_list)) + 1
-		pen_color = colour_list[current_colour_index]
-		balloon_alert(user,"you twist the pen and change the ink color to [pen_color].")
-		if(clicky)
-			playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
-		update_pen_state()
-	else
-		..()
+	if(!on)
+		return ..()
+
+	current_colour_index = (current_colour_index % length(colour_list)) + 1
+	pen_color = colour_list[current_colour_index]
+	balloon_alert(user,"you twist the pen and change the ink color to [pen_color].")
+	if(clicky)
+		playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
+	update_pen_state()
 
 /obj/item/tool/pen/multicolor/fountain
 	desc = "A lavish testament to the ingenuity of ARMAT's craftsmanship, this fountain pen is a paragon of design and functionality. Detailed with golden accents and intricate mechanics, the pen allows for a swift change between a myriad of ink colors with a simple twist. A product of precision engineering, each mechanism inside the pen is designed to provide a seamless, effortless transition from one color to the next, creating an instrument of luxurious versatility."

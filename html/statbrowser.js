@@ -50,7 +50,14 @@ var statcontentdiv = document.getElementById("statcontent");
 var storedimages = [];
 var split_admin_tabs = false;
 
-const bigButtons = [
+let toLookUp = [
+	"icon-size",
+	"text-mode",
+	"zoom-mode"
+]
+var lookedUpProperties = {}
+
+let bigButtons = [
 	{
 		name: "Changelog",
 		command: "Changelog",
@@ -80,7 +87,7 @@ const bigButtons = [
 	}
 ]
 
-const clientButtons = {
+let clientButtons = {
 	"File": [
 		{name: "Take Screenshot	(F2)", command: ".screenshot auto"},
 		{name: "Save Screenshot As (Shift+F2)", command: ".screenshot"},
@@ -671,19 +678,19 @@ function remove_mc() {
 function drawClientOptions() {
 	statcontentdiv.textContent = "";
 
-	const stat = document.getElementById("statcontent");
+	let stat = document.getElementById("statcontent");
 
 	for(let key in clientButtons) {
-		const title = document.createElement("h3");
+		let title = document.createElement("h3");
 		title.textContent = key
 
 		stat.appendChild(title)
 
 		for(let index in clientButtons[key]) {
-			const button = clientButtons[key][index];
+			let button = clientButtons[key][index];
 
 			if (button.divider) {
-				const breakElement = document.createElement("br");
+				let breakElement = document.createElement("br");
 				stat.appendChild(breakElement);
 				stat.appendChild(breakElement);
 
@@ -692,17 +699,17 @@ function drawClientOptions() {
 
 			if (!button.name) continue;
 
-			const buttonElement = document.createElement("div");
+			let buttonElement = document.createElement("div");
 			buttonElement.className = "button";
 			buttonElement.textContent = button.name;
 
 			if (button.active && (button.value || button.toggle)) {
 				if(button.toggle) {
-					localStorage.getItem(button.active) == "true"
+					lookedUpProperties[button.active] == true
 						? buttonElement.textContent = "✔️ " + button.name
 						: null;
 				} else {
-					localStorage.getItem(button.active) == button.value
+					lookedUpProperties[button.active] == button.value
 					? buttonElement.textContent = "✔️ " + button.name
 					: null;
 				}
@@ -714,14 +721,9 @@ function drawClientOptions() {
 					: Byond.command(button.command);
 
 				if(button.toggle) {
-					localStorage.setItem(
-						button.active,
-						localStorage.getItem(button.active) == "true"
-							? "false"
-							: "true"
-					)
+					lookedUpProperties[button.active] = !lookedUpProperties[button.active]
 				} else if (button.value) {
-					localStorage.setItem(button.active, button.value);
+					lookedUpProperties[button.active] =  button.value;
 				}
 				drawClientOptions();
 			};
@@ -1040,11 +1042,11 @@ if (!current_tab) {
 }
 
 for(var key in bigButtons) {
-	const button = bigButtons[key];
+	let button = bigButtons[key];
 
 	if(!button.name) continue;
 
-	const buttonElement = document.createElement("div");
+	let buttonElement = document.createElement("div");
 	buttonElement.className = "button top-button";
 	if(button.class) {
 		buttonElement.className = buttonElement.className + " " + button.class;
@@ -1055,6 +1057,16 @@ for(var key in bigButtons) {
 	};
 
 	topButtons.appendChild(buttonElement);
+}
+
+for(let lookup in toLookUp) {
+	location.href = "byond://winget?callback=handleWinget&id=mapwindow.map&property=" + toLookUp[lookup];
+}
+
+function handleWinget(properties) {
+	for(let property in properties) {
+		lookedUpProperties[property] = properties[property];
+	}
 }
 
 statcontentdiv.onmouseenter = function () {
@@ -1270,7 +1282,7 @@ Byond.subscribeTo("remove_mc", remove_mc);
 Byond.subscribeTo("add_verb_list", add_verb_list);
 
 Byond.subscribeTo("changelog_read", function(read) {
-	const changelogButton = document.getElementsByClassName("changelog")[0];
+	let changelogButton = document.getElementsByClassName("changelog")[0];
 	if(read)
 		changelogButton.classList.remove("unread")
 	else

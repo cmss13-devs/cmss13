@@ -16,6 +16,9 @@
 	huggy.viewsize = 10
 	huggy.layer = initial(huggy.layer)
 
+/datum/xeno_strain/watcher/remove_strain(mob/living/carbon/xenomorph/facehugger/huggy)
+	huggy.viewsize = initial(huggy.viewsize)
+
 // This has no special effects, it's just here to skip `/datum/behavior_delegate/facehugger_base/on_life()`.
 /datum/behavior_delegate/facehugger_watcher
 	name = "Watcher Facehugger Behavior Delegate"

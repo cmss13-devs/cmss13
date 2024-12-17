@@ -23,6 +23,13 @@
 
 	runner.recalculate_everything()
 
+/datum/xeno_strain/acider/remove_strain(mob/living/carbon/xenomorph/runner/runner)
+	runner.speed_modifier = initial(runner.speed_modifier)
+	runner.armor_modifier = initial(runner.armor_modifier)
+	runner.health_modifier = initial(runner.health_modifier)
+
+	runner.recalculate_everything()
+
 /datum/behavior_delegate/runner_acider
 	var/acid_amount = 0
 

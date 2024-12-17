@@ -41,6 +41,16 @@
 	crusher.phero_modifier = -crusher.caste.aura_strength
 	crusher.recalculate_everything()
 
+/datum/xeno_strain/charger/remove_strain(mob/living/carbon/xenomorph/crusher/crusher)
+	crusher.small_explosives_stun = initial(crusher.small_explosives_stun)
+	crusher.health_modifier = initial(crusher.health_modifier)
+	crusher.speed_modifier = initial(crusher.speed_modifier)
+	crusher.armor_modifier = initial(crusher.armor_modifier)
+	crusher.damage_modifier = initial(crusher.damage_modifier)
+	crusher.ignore_aura = initial(crusher.ignore_aura) // no funny crushers going 7 morbillion kilometers per second
+	crusher.phero_modifier = initial(crusher.phero_modifier)
+	crusher.recalculate_everything()
+
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"
 
@@ -50,6 +60,9 @@
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
+
+/datum/behavior_delegate/crusher_charger/remove_from_xeno()
+	UnregisterSignal(bound_xeno, list(COMSIG_MOB_SET_FACE_DIR, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
 
 /datum/behavior_delegate/crusher_charger/proc/cancel_dir_lock()
 	SIGNAL_HANDLER

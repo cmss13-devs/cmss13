@@ -20,3 +20,9 @@
 	if(defender.fortify)
 		defender.ability_speed_modifier += 2.5
 	defender.recalculate_stats()
+
+/datum/xeno_strain/steel_crest/remove_strain(mob/living/carbon/xenomorph/defender/defender)
+	defender.damage_modifier = initial(defender.damage_modifier)
+	if(defender.fortify)
+		defender.ability_speed_modifier = initial(defender.ability_speed_modifier)
+	defender.recalculate_stats()

@@ -37,6 +37,17 @@
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 			break // Don't need to keep looking
 
+/datum/xeno_strain/gardener/remove_strain(mob/living/carbon/xenomorph/drone/drone)
+	drone.available_fruits = initial(drone.available_fruits)
+	drone.selected_fruit = initial(drone.selected_fruit)
+	drone.max_placeable = initial(drone.max_placeable)
+	drone.regeneration_multiplier = initial(drone.regeneration_multiplier)
+
+	for(var/datum/action/xeno_action/action in drone.actions)
+		if(istype(action, /datum/action/xeno_action/activable/place_construction))
+			action.ability_primacy = initial(action.ability_primacy)
+			break // Don't need to keep looking
+
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
 	action_icon_state = "gardener_plant"

@@ -32,6 +32,18 @@
 	carrier.egg_planting_range = 2
 	carrier.update_eggsac_overlays()
 
+/datum/xeno_strain/eggsac/remove_strain(mob/living/carbon/xenomorph/carrier/carrier)
+	carrier.plasma_types = initial(carrier.plasma_types)
+	carrier.phero_modifier = initial(carrier.phero_modifier) // praetorian level pheremones
+	carrier.recalculate_plasma()
+	carrier.recalculate_pheromones()
+
+	carrier.huggers_max = initial(carrier.huggers_max)
+	carrier.update_hugger_overlays()
+	carrier.eggs_max = initial(carrier.eggs_max)
+	carrier.egg_planting_range = initial(carrier.egg_planting_range)
+	carrier.update_eggsac_overlays()
+
 #define EGGSAC_OFF_WEED_EGGCAP 4
 #define EGGSAC_EGG_SUSTAIN_DISTANCE 14
 

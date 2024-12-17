@@ -53,11 +53,43 @@
 	return TRUE
 
 /**
+ * Resets the xenomorph's strain back to default
+ */
+/datum/xeno_strain/proc/_remove_from_xeno(mob/living/carbon/xenomorph/xeno)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	xeno.strain = null
+
+	// Update the xeno's actions.
+	for(var/action_path in actions_to_remove)
+		give_action(xeno, action_path)
+	for(var/action_path in actions_to_add)
+		remove_action(xeno, action_path)
+
+	xeno.behavior_delegate.remove_from_xeno()
+
+	remove_strain(xeno)
+
+	xeno.update_icons()
+	xeno.hive.hive_ui.update_xeno_info()
+
+	return TRUE
+
+/**
  * Adds any special modifiers/changes from this strain to `xeno`.
  *
  * Called when the strain is first added to the player.
  */
 /datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
+	// Override with custom behaviour.
+	return
+
+/**
+ * Removes any special modifiers/changes from this strain to `xeno`.
+ *
+ * Called when the strain is reset.
+ */
+/datum/xeno_strain/proc/remove_strain(mob/living/carbon/xenomorph/xeno)
 	// Override with custom behaviour.
 	return
 
@@ -99,13 +131,43 @@
 		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")
 
+/mob/living/carbon/xenomorph/verb/reset_strain()
+	set name = "Reset Strain"
+	set desc = "Reset your strain"
+	set category = "Alien"
+
+	// Firstly, make sure the xeno is actually able to take a strain.
+	if(!can_take_strain(reset=TRUE))
+		return
+
+	if(world.time < next_strain_reset)
+		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
+		return
+	
+	// Show the user the strain's description, and double check that they want it.
+	if(alert(usr, "Are you sure?", "Reset Strain", "Yes", "No") != "Yes")
+		return
+	// One more time after they confirm.
+	if(!can_take_strain(reset=TRUE))
+		return
+
+	if(strain._remove_from_xeno(src))
+		xeno_jitter(1.5 SECONDS)
+		// If it applied successfully, add it to the logs.
+		log_strain("[name] reset their strain.")
+		next_strain_reset = world.time + 40 MINUTES
+
 /// Is this xeno currently able to take a strain?
-/mob/living/carbon/xenomorph/proc/can_take_strain()
+/mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)
 	if(!length(caste.available_strains) || !check_state(TRUE))
 		return FALSE
 
-	if(strain)
+	if(strain && !reset)
 		to_chat(src, SPAN_WARNING("We have already chosen a strain."))
+		return FALSE
+
+	if(!strain && reset)
+		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
 		return FALSE
 
 	if(is_ventcrawling)

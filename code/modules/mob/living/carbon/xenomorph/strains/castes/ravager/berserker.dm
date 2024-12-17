@@ -26,6 +26,15 @@
 
 	ravager.recalculate_everything()
 
+/datum/xeno_strain/berserker/remove_strain(mob/living/carbon/xenomorph/ravager/ravager)
+	ravager.plasma_max = initial(ravager.plasma_max)
+	ravager.health_modifier = initial(ravager.health_modifier)
+	ravager.armor_modifier = initial(ravager.armor_modifier)
+	ravager.speed_modifier = initial(ravager.speed_modifier)
+	ravager.received_phero_caps["frenzy"] = initial(ravager.received_phero_caps)["frenzy"]
+
+	ravager.recalculate_everything()
+
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker
 	name = "Berserker Ravager Behavior Delegate"

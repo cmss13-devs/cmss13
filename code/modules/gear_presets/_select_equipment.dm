@@ -138,7 +138,7 @@
 	if(!mob_client)
 		mob_client = new_human.client
 	var/obj/item/card/id/ID = new idtype()
-	ID.name = "[new_human.real_name]'s ID Card"
+	ID.name = "[new_human.real_name]'s [ID.id_type]"
 	if(assignment)
 		ID.name += " ([assignment])"
 	ID.access = access.Copy(1, 0)

@@ -235,6 +235,7 @@
 	icon_state = "naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_cyan.dmi'
 	item_state = "naspacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_spirit")
 	default_cig_type = /obj/item/clothing/mask/cigarette
 
 /obj/item/storage/fancy/cigarettes/spirit/yellow
@@ -243,6 +244,7 @@
 	icon_state = "y_naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_yellow.dmi'
 	item_state = "y_naspacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_spirityellow")
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
 	name = "\improper Lucky Strikes Mini Packet"

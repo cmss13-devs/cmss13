@@ -399,6 +399,13 @@
 				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 			if("plush")
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
+			// working joe
+			if("wj_death")
+				sound = pick('sound/voice/joe/death_normal.ogg', 'sound/voice/joe/death_silence.ogg',10;'sound/voice/joe/death_tomorrow.ogg',5;'sound/voice/joe/death_dream.ogg')
+			if("hj_death")
+				sound = pick('sound/voice/joe/death_hj_normal.ogg', 'sound/voice/joe/death_hj_silence.ogg',10;'sound/voice/joe/death_hj_tomorrow.ogg')
+			if("upp_wj_death")
+				sound = pick('sound/voice/joe/upp_joe/smert1.ogg', 'sound/voice/joe/upp_joe/smert2.ogg', 'sound/voice/joe/upp_joe/smert3.ogg', 'sound/voice/joe/upp_joe/smert4.ogg', 'sound/voice/joe/upp_joe/smert5.ogg')
 			//misc mobs
 			if("cat_meow")
 				sound = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')

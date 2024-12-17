@@ -387,6 +387,8 @@
 /mob/proc/check_improved_pointing()
 	if(HAS_TRAIT(src, TRAIT_LEADERSHIP))
 		return TRUE
+	if(skillcheck(src, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED))
+		return TRUE
 
 /mob/proc/update_flavor_text()
 	set src in usr
@@ -905,7 +907,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			conga_line += S.buckled
 	while(!end_of_conga)
 		var/atom/movable/A = S.pulling
-		if(A in conga_line || A.anchored) //No loops, nor moving anchored things.
+		if((A in conga_line) || A.anchored) //No loops, nor moving anchored things.
 			end_of_conga = TRUE
 			break
 		conga_line += A

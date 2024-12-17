@@ -91,15 +91,6 @@
 	icon_state = "woodtable"
 	table_prefix = "wood"
 
-/obj/structure/holostool
-	name = "stool"
-	desc = "Apply butt."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "stool"
-	anchored = TRUE
-	flags_atom = FPRINT
-
-
 /obj/item/clothing/gloves/boxing/hologlove
 	name = "boxing gloves"
 	desc = "Because you really needed another excuse to punch your crewmates."
@@ -133,7 +124,7 @@
 /obj/structure/holohoop
 	name = "basketball hoop"
 	desc = "Boom, Shakalaka!"
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "hoop"
 	anchored = TRUE
 	density = TRUE

@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 28
+#define SAVEFILE_VERSION_MAX 29
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -180,6 +180,18 @@
 			completed_tutorials += "marine_req_1"
 		S["completed_tutorials"] << tutorial_list_to_savestring()
 
+	if(savefile_version < 29)
+		var/hair_style = ""
+		S["hair_style_name"] >> hair_style
+
+		switch(hair_style)
+			if("Shoulder-length Hair Alt")
+				hair_style = "Long Fringe"
+			if("Long Hair Alt")
+				hair_style = "Longer Fringe"
+
+		S["hair_style_name"] << hair_style
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -266,6 +278,7 @@
 	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_mask_type"] >> predator_mask_type
+	S["pred_accessory_type"] >> predator_accessory_type
 	S["pred_armor_type"] >> predator_armor_type
 	S["pred_boot_type"] >> predator_boot_type
 	S["pred_mask_mat"] >> predator_mask_material
@@ -282,6 +295,15 @@
 	S["co_affiliation"] >> affiliation
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
+
+	S["fax_name_uscm"] >> fax_name_uscm
+	S["fax_name_pvst"] >> fax_name_pvst
+	S["fax_name_wy"] >> fax_name_wy
+	S["fax_name_upp"] >> fax_name_upp
+	S["fax_name_twe"] >> fax_name_twe
+	S["fax_name_cmb"] >> fax_name_cmb
+	S["fax_name_press"] >> fax_name_press
+	S["fax_name_clf"] >> fax_name_clf
 
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
@@ -351,6 +373,7 @@
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
+	predator_accessory_type = sanitize_integer(predator_accessory_type,0,1, initial(predator_accessory_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type = sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
@@ -366,6 +389,16 @@
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
+
+	fax_name_uscm = fax_name_uscm ? sanitize_text(fax_name_uscm, initial(fax_name_uscm)) : generate_name(FACTION_MARINE)
+	fax_name_pvst = fax_name_pvst ? sanitize_text(fax_name_pvst, initial(fax_name_pvst)) : generate_name(FACTION_MARINE)
+	fax_name_wy = fax_name_wy ? sanitize_text(fax_name_wy, initial(fax_name_wy)) : generate_name(FACTION_WY)
+	fax_name_upp = fax_name_upp ? sanitize_text(fax_name_upp, initial(fax_name_upp)) : generate_name(FACTION_UPP)
+	fax_name_twe = fax_name_twe ? sanitize_text(fax_name_twe, initial(fax_name_twe)) : generate_name(FACTION_TWE)
+	fax_name_cmb = fax_name_cmb ? sanitize_text(fax_name_cmb, initial(fax_name_cmb)) : generate_name(FACTION_MARSHAL)
+	fax_name_press = fax_name_press ? sanitize_text(fax_name_press, initial(fax_name_press)) : generate_name(FACTION_COLONIST)
+	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
+
 	key_bindings = sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
@@ -466,6 +499,7 @@
 	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_mask_type"] << predator_mask_type
+	S["pred_accessory_type"] << predator_accessory_type
 	S["pred_armor_type"] << predator_armor_type
 	S["pred_boot_type"] << predator_boot_type
 	S["pred_mask_mat"] << predator_mask_material
@@ -482,6 +516,15 @@
 	S["co_affiliation"] << affiliation
 	S["yautja_status"] << yautja_status
 	S["synth_status"] << synth_status
+
+	S["fax_name_uscm"] << fax_name_uscm
+	S["fax_name_pvst"] << fax_name_pvst
+	S["fax_name_wy"] << fax_name_wy
+	S["fax_name_upp"] << fax_name_upp
+	S["fax_name_twe"] << fax_name_twe
+	S["fax_name_cmb"] << fax_name_cmb
+	S["fax_name_press"] << fax_name_press
+	S["fax_name_clf"] << fax_name_clf
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors
@@ -645,7 +688,7 @@
 	if(!organ_data)
 		organ_data = list()
 
-	gear = sanitize_list(gear)
+	gear = sanitize_gear(gear, owner)
 
 	traits = sanitize_list(traits)
 	read_traits = FALSE

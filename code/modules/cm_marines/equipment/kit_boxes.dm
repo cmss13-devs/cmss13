@@ -295,7 +295,7 @@
 		qdel(src)
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"
-	pro_case_overlay = "mou53"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/mou53_sapper/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/double/mou53(src)
@@ -323,7 +323,7 @@
 
 /obj/item/storage/box/kit/machinegunner
 	name = "\improper M2C Heavy Gunner Kit"
-	pro_case_overlay = "hmg"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/machinegunner/fill_preset_inventory()
 	new /obj/item/storage/box/m56d/m2c(src)
@@ -337,7 +337,7 @@
 /obj/item/storage/box/kit/defensegunner
 	name = "\improper M56D Defense Gunner Kit"
 	icon_state = "pro_case_large"
-	pro_case_overlay = "m56d"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/defensegunner/fill_preset_inventory()
 	new /obj/item/storage/box/m56d_hmg(src)
@@ -454,7 +454,7 @@
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
-	pro_case_overlay = "intel"
+	pro_case_overlay = "jtac"
 
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
@@ -465,7 +465,7 @@
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
-	pro_case_overlay = "grenadier"
+	pro_case_overlay = "engi"
 
 /obj/item/storage/box/kit/mini_grenadier/fill_preset_inventory()
 	new /obj/item/storage/belt/grenade/full(src)
@@ -506,7 +506,7 @@
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"
-	pro_case_overlay = "smart"
+	pro_case_overlay = "crayon"
 
 /obj/item/storage/box/kit/exp_trooper/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/smart(src)
@@ -521,7 +521,7 @@
 
 /obj/item/storage/box/kit/honorguard
 	name = "\improper Honor Guard Kit"
-	pro_case_overlay = "honor_guard"
+	pro_case_overlay = "shield"
 
 /obj/item/storage/box/kit/honorguard/fill_preset_inventory()
 	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
@@ -580,3 +580,16 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+
+/obj/item/storage/box/kit/UPP_leader_AR
+	name = "\improper Type 71-F Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/UPP_leader_AR/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/type71/flamer(src)
+	new /obj/item/attachable/reflex(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)

@@ -111,20 +111,20 @@
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
-	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
 	story_text = "You are a PMC from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
 	equipment = /datum/equipment_preset/survivor/pmc/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
-	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
 	story_text = "You are a PMC medic from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
@@ -137,8 +137,21 @@
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
-	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
 	story_text = "You are a PMC engineer from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
+	equipment = /datum/equipment_preset/survivor/pmc/pmc_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"You are NOT aware of the xenomorph threat.",\
+	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
+	story_text = "You are a PMC team leader from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -150,7 +163,7 @@
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
-	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
 	story_text = "You are an Assistant Manager from Weyland-Yutani. You were being escorted onboard a PMC ship to Solaris Ridge. On the way, the ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, the pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your PMC escorts lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You must get up and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
@@ -201,12 +214,12 @@
 //CMB Survivors//
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_cmb
-	equipment = /datum/equipment_preset/survivor/cmb/standard
-	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/synth
-	intro_text = list("<h2>You are a CMB Deputy!</h2>",\
+	equipment = /datum/equipment_preset/survivor/cmb/riot
+	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/riotsynth
+	intro_text = list("<h2>You are a CMB Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")
-	story_text = "You are a Deputy of the Office of the Colonial Marshals. Your dispatcher received a distress signal from the infamous Fiorina Maximum Penitentiary. You figured it was just another typical case of the prison dealing with a riot their understaffed security force couldn't handle, with more and more of its personnel getting dispatched elsewhere in the galaxy. This wasn't the first time OCM officers were called in to assist, but unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
+	story_text = "You are a part of Riot Control Unit of the Office of the Colonial Marshals. Your dispatcher received a distress signal from the infamous Fiorina Maximum Penitentiary. You figured it was just another typical case of the prison dealing with a riot their understaffed security force couldn't handle, with more and more of its personnel getting dispatched elsewhere in the galaxy. This wasn't the first time OCM officers were called in to assist, but unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
@@ -216,7 +229,7 @@
 	intro_text = list("<h2>You are a United Americas Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")
-	story_text = "You are a United Americas Riot Control Officer. Your dispatcher received a request from the local OCM Outpost, requesting some men to intervene assist a Deputy with handling a riot at Fiorina. The prison was an understaffed mess so you weren't too surprised they had sent out a distress signal, calling you in to do their jobs yet again. Unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
+	story_text = "You are a United Americas Riot Control Officer. Your dispatcher received a request from the local OCM Outpost, requesting some men to intervene assist a OCM Officer with handling a riot at Fiorina. The prison was an understaffed mess so you weren't too surprised they had sent out a distress signal, calling you in to do their jobs yet again. Unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 

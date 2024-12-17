@@ -43,7 +43,6 @@
 /datum/action/xeno_action/activable/secrete_resin/remote
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "coerce resin"
 	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
 	make_message = FALSE
@@ -81,7 +80,7 @@
 	if(istype(target_atom, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/resin_door = target_atom
 		resin_door.TryToSwitchState(owner)
-		if(resin_door.state)
+		if(resin_door.open)
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
 		else
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))

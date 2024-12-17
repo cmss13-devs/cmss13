@@ -45,14 +45,6 @@
 "an" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/space_port)
-"ao" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -32;
-	start_charge = 0
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/space_port)
 "ap" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -245,10 +237,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"bh" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "bi" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
@@ -271,6 +259,151 @@
 /area/bigredv2/outside/space_port)
 "bn" = (
 /obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"bs" = (
+/obj/structure/cargo_container/grant/right,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"ch" = (
+/obj/structure/cargo_container/arious/rightmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"dg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"fU" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"ii" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"kN" = (
+/obj/structure/cargo_container/grant/left,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"lo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"mx" = (
+/obj/structure/cargo_container/watatsumi/leftmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"oV" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"tf" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"tu" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"xP" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"yf" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"yg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"yZ" = (
+/obj/structure/cargo_container/watatsumi/leftmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"Aw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"DA" = (
+/obj/structure/cargo_container/arious/right,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"In" = (
+/obj/structure/cargo_container/arious/leftmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"KQ" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"NH" = (
+/obj/structure/cargo_container/grant/rightmid,
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/outside/space_port)
+"OZ" = (
+/obj/effect/landmark/hunter_primary,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"QA" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"Ta" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"Ww" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-in"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N-corner"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 
@@ -304,13 +437,13 @@ ac
 ac
 aV
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+ii
+lo
+fU
+fU
+ii
+lo
+QA
 "}
 (3,1,1) = {"
 ac
@@ -323,12 +456,12 @@ ac
 ac
 aV
 ac
-ac
-ac
-ac
-ac
-ac
-aA
+tu
+Ta
+fU
+fU
+yg
+mx
 ac
 "}
 (4,1,1) = {"
@@ -342,12 +475,12 @@ ac
 ac
 aV
 ac
-ac
-ac
-ac
-ac
-ac
-aB
+Aw
+dg
+fU
+fU
+Aw
+KQ
 bl
 "}
 (5,1,1) = {"
@@ -363,8 +496,8 @@ aW
 ac
 ac
 ac
-ac
-ac
+fU
+fU
 ac
 aC
 bm
@@ -380,12 +513,12 @@ ac
 ac
 aX
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+ii
+lo
+fU
+fU
+ii
+lo
 bn
 "}
 (7,1,1) = {"
@@ -399,12 +532,12 @@ ac
 ac
 aY
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+yg
+xP
+fU
+fU
+yg
+Ta
 ac
 "}
 (8,1,1) = {"
@@ -418,12 +551,12 @@ ac
 ac
 aV
 ac
-ac
-ac
-ac
-bi
-ac
-ac
+Aw
+dg
+fU
+kN
+Aw
+dg
 ac
 "}
 (9,1,1) = {"
@@ -439,8 +572,8 @@ aV
 ac
 bg
 ac
-ac
-bj
+fU
+NH
 ac
 ac
 ac
@@ -456,17 +589,17 @@ an
 ac
 aV
 ac
-ac
-ac
-ac
-bk
-ac
-ac
+ii
+lo
+fU
+bs
+ii
+lo
 ac
 "}
 (11,1,1) = {"
 ai
-ao
+oV
 at
 ay
 aD
@@ -475,12 +608,12 @@ an
 aT
 aV
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+yg
+Ta
+fU
+fU
+yg
+Ta
 ac
 "}
 (12,1,1) = {"
@@ -494,12 +627,12 @@ aP
 ac
 aV
 ac
-ac
-bh
-ac
-ac
-ac
-ac
+Aw
+OZ
+fU
+fU
+Aw
+tf
 ac
 "}
 (13,1,1) = {"
@@ -515,8 +648,8 @@ aV
 ac
 ac
 ac
-ac
-ac
+fU
+fU
 ac
 ac
 bi
@@ -532,12 +665,12 @@ an
 ac
 aV
 bd
-ac
-ac
-ac
-ac
-ac
-bl
+ii
+lo
+fU
+fU
+Ww
+In
 bj
 "}
 (15,1,1) = {"
@@ -551,12 +684,12 @@ aQ
 ac
 aV
 be
-aA
-ac
-ac
-ac
-ac
-bm
+yZ
+Ta
+fU
+fU
+yg
+ch
 bk
 "}
 (16,1,1) = {"
@@ -570,12 +703,12 @@ aR
 ac
 aV
 ac
-aB
-ac
-ac
-ac
-ac
-bn
+yf
+dg
+fU
+fU
+Aw
+DA
 ac
 "}
 (17,1,1) = {"
@@ -591,8 +724,8 @@ aV
 ac
 aC
 ac
-ac
-ac
+fU
+fU
 ac
 ac
 ac

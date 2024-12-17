@@ -646,9 +646,7 @@
 /turf/open/floor/whiteyellow/northwest,
 /area/lv624/lazarus/corporate_dome)
 "HK" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/north,
 /obj/effect/spawner/random/powercell,
 /obj/item/tool/crowbar/red{
 	pixel_x = 8;

@@ -30,10 +30,12 @@
 	minimap_icon = "hellhound"
 
 /mob/living/carbon/xenomorph/hellhound
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
 	desc = "A disgusting beast from hell, it has four menacing spikes growing from its head."
-	icon = 'icons/mob/xenos/hellhound.dmi'
+	icon = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_state = "Hellhound Walking"
 	icon_size = 32
 	layer = MOB_LAYER
@@ -65,8 +67,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
-	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'
+	icon_xeno = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
+	icon_xenonid = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Hellhound_1","Hellhound_2","Hellhound_3")
@@ -128,7 +130,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, splatter_dir)
+	new /obj/effect/bloodsplatter/hellhound(loc, splatter_dir)
 
 /datum/behavior_delegate/hellhound_base
 	name = "Base Hellhound Behavior Delegate"

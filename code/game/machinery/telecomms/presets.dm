@@ -122,7 +122,7 @@
 			return
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = I
@@ -160,7 +160,7 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/faction
 	name = "UPP telecommunications relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away. This one is intercepting and rebroadcasting UPP frequencies."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "relay"
 	id = "UPP Relay"
 	hide = TRUE
@@ -604,7 +604,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/allinone
 	name = "Telecommunications Mainframe"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommunications processing."
 	density = TRUE

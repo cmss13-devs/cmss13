@@ -27,7 +27,6 @@
 
 	var/unique = TRUE
 
-	var/has_gravity = 1
 // var/list/lights // list of all lights on this area
 	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
@@ -83,6 +82,13 @@
 	/// Doesn't need to be set for areas/Z levels that are marked as admin-only
 	var/block_game_interaction = FALSE
 
+	/// Which, if any, LZ this area belongs to. If an area belongs to an LZ, if that LZ is designated as the primary
+	/// LZ, all weeds will be destroyed and further weed placement disabled
+	var/linked_lz = FALSE
+
+	/// How long this area should be un-oviable
+	var/unoviable_timer = 25 MINUTES
+
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -105,6 +111,13 @@
 		GLOB.ship_areas += src
 
 	update_base_lighting()
+
+	if(unoviable_timer)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_ovi_timer)))
+
+	if((flags_area & AREA_UNWEEDABLE) && is_resin_allowed)
+		is_resin_allowed = FALSE
+		log_mapping("[src] has AREA_UNWEEDABLE flag but has is_resin_allowed as true! Forcing is_resin_allowed false...")
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
@@ -381,42 +394,6 @@
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
-/area/proc/gravitychange(gravitystate = 0, area/A)
-
-	A.has_gravity = gravitystate
-
-	if(gravitystate)
-		for(var/mob/living/carbon/human/M in A)
-			thunk(M)
-		for(var/mob/M1 in A)
-			M1.make_floating(0)
-	else
-		for(var/mob/M in A)
-			if(M.Check_Dense_Object() && istype(src,/mob/living/carbon/human/))
-				var/mob/living/carbon/human/H = src
-				if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING))  //magboots + dense_object = no floaty effect
-					H.make_floating(0)
-				else
-					H.make_floating(1)
-			else
-				M.make_floating(1)
-
-/area/proc/thunk(M)
-	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.
-		return
-
-	if(istype(M,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
-		var/mob/living/carbon/human/H = M
-		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
-			return
-		H.adjust_effect(5, STUN)
-		H.adjust_effect(5, WEAKEN)
-
-	to_chat(M, "Gravity!")
-
-
-
-
 //atmos related procs
 
 /area/return_air()
@@ -455,3 +432,14 @@
 		areas_in_z["[z]"] = list()
 	areas_in_z["[z]"] += src
 
+/**
+ * Purges existing weeds, and prevents future weeds from being placed.
+ */
+/area/proc/purge_weeds()
+	SEND_SIGNAL(src, COMSIG_AREA_RESIN_DISALLOWED)
+
+	is_resin_allowed = FALSE
+
+/// From roundstart, sets a timer to make an area oviable.
+/area/proc/handle_ovi_timer()
+	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)

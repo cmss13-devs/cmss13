@@ -205,7 +205,7 @@
 /datum/equipment_preset/corpse/security/cmb
 	name = "Corpse - Colonial Marshal Deputy"
 	rank = JOB_CMB
-	paygrade = PAY_SHORT_CMBD
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
 	xenovictim = TRUE
 	access = list(
@@ -233,6 +233,36 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	. = ..()
 
+/datum/equipment_preset/corpse/security/cmb/riot
+	name = "Corpse - CMB Riot Control Officer"
+	rank = JOB_CMB_RIOT
+	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/deputy/riot
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+
+/datum/equipment_preset/corpse/security/cmb/riot/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/cmb(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/CMB/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/cmb(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/cmb_riot_shield, WEAR_IN_HELMET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/tactical(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/cmb(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	. = ..()
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/liaison
@@ -240,7 +270,7 @@
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
 	faction_group = FACTION_LIST_WY
-	paygrade = PAY_SHORT_WYC3
+	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	xenovictim = TRUE
 	access = list(
@@ -316,7 +346,7 @@
 	assignment = "Colonial Division Manager"
 	rank = JOB_DIVISION_MANAGER
 	faction_group = FACTION_LIST_WY
-	paygrade = PAY_SHORT_WYC8
+	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -352,7 +382,7 @@
 	assignment = "Colonial Administrator"
 	rank = JOB_DIRECTOR
 	faction_group = FACTION_LIST_WY
-	paygrade = PAY_SHORT_WYC10
+	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -536,7 +566,7 @@
 	name = "Corpse - Corporate Supervisor"
 	assignment = "Colony Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = PAY_SHORT_WYC6
+	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
@@ -602,7 +632,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	add_random_survivor_equipment(new_human)
-	add_pmc_survivor_weapon(new_human)
+	add_survivor_weapon_security(new_human)
 	add_survivor_weapon_pistol(new_human)
 
 /datum/equipment_preset/corpse/clf/burst
@@ -616,8 +646,8 @@
 /datum/equipment_preset/corpse/upp
 	name = "Corpse - Union of Progressive Peoples Soldier"
 	assignment = JOB_UPP
-	idtype = /obj/item/card/id/dogtag
-	paygrade = PAY_SHORT_UE2
+	idtype = /obj/item/card/id/dogtag/upp
+	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_0)
 	rank = JOB_UPP
 	faction = FACTION_UPP
 
@@ -654,7 +684,7 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC_STANDARD
-	paygrade = PAY_SHORT_PMC_OP
+	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -698,7 +728,7 @@
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = PAY_SHORT_CPO
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -706,7 +736,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
@@ -723,7 +753,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = PAY_SHORT_CSPO
+	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -731,7 +761,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
@@ -749,7 +779,7 @@
 
 /datum/equipment_preset/corpse/freelancer
 	name = "Corpse - Freelancer"
-	paygrade = PAY_SHORT_FL_S
+	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
 	rank = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
 	faction = FACTION_FREELANCER
@@ -965,7 +995,7 @@
 	name = "Corpse - USCM Reconnaissance Spotter"
 	assignment = "Reconnaissance Spotter"
 	xenovictim = FALSE
-	paygrade = PAY_SHORT_ME5
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)

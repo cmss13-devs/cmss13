@@ -20,8 +20,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "af" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
+/obj/structure/machinery/power/apc/power/north{
 	name = "Fitness APC"
 	},
 /turf/open/floor,
@@ -137,10 +136,6 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/dorms)
-"aD" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aE" = (
@@ -384,7 +379,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "iE" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor,
@@ -447,7 +441,7 @@ ad
 ad
 ad
 ad
-aD
+ad
 ad
 bf
 "}
@@ -545,7 +539,7 @@ aq
 ad
 an
 az
-aD
+ad
 aT
 aK
 bn

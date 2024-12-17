@@ -180,7 +180,7 @@
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
 		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
 				return
 			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))

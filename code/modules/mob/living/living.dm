@@ -388,20 +388,23 @@
 			if(loc && !loc.Adjacent(L.loc))
 				now_pushing = FALSE
 				return
-			var/oldloc = loc
-			var/oldLloc = L.loc
 
-			L.add_temp_pass_flags(PASS_MOB_THRU)
-			add_temp_pass_flags(PASS_MOB_THRU)
+			if(!(L.pass_flags.flags_pass & PASS_MOB_THRU)) //if they already pass through mob thi stuff is unnecessary
 
-			L.Move(oldloc)
-			Move(oldLloc)
+				var/oldloc = loc
+				var/oldLloc = L.loc
 
-			remove_temp_pass_flags(PASS_MOB_THRU)
-			L.remove_temp_pass_flags(PASS_MOB_THRU)
+				L.add_temp_pass_flags(PASS_MOB_THRU)
+				add_temp_pass_flags(PASS_MOB_THRU)
 
-			now_pushing = FALSE
-			return
+				L.Move(oldloc)
+				Move(oldLloc)
+
+				remove_temp_pass_flags(PASS_MOB_THRU)
+				L.remove_temp_pass_flags(PASS_MOB_THRU)
+
+				now_pushing = FALSE
+				return
 
 	now_pushing = FALSE
 
@@ -632,6 +635,7 @@
 		return
 	. = body_position
 	body_position = new_value
+	body_position_changed = world.time
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
 		on_lying_down()

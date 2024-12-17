@@ -171,7 +171,7 @@ Class Procs:
 
 	. += "It does not appear to be working."
 	var/msg = get_repair_move_text(FALSE)
-	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		. += SPAN_WARNING("[msg]")
 
 /obj/structure/machinery/emp_act(severity)
@@ -182,6 +182,9 @@ Class Procs:
 
 
 /obj/structure/machinery/ex_act(severity)
+	if(explo_proof)
+		return
+
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -332,6 +335,7 @@ Class Procs:
 	name = "\improper Mill"
 	desc = "It is a machine that grinds produce."
 	icon_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
 	anchored = TRUE
 
@@ -339,6 +343,7 @@ Class Procs:
 	name = "\improper Fermenter"
 	desc = "It is a machine that ferments produce into alcoholic drinks."
 	icon_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
 	anchored = TRUE
 
@@ -346,6 +351,7 @@ Class Procs:
 	name = "\improper Still"
 	desc = "It is a machine that produces hard liquor from alcoholic drinks."
 	icon_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
 	anchored = TRUE
 
@@ -353,6 +359,7 @@ Class Procs:
 	name = "\improper Squeezer"
 	desc = "It is a machine that squeezes extracts from produce."
 	icon_state = "autolathe"
+	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
 	anchored = TRUE
 
@@ -363,13 +370,13 @@ Class Procs:
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
 	health = null
-	indestructible = TRUE
+	explo_proof = TRUE
 	density = TRUE
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	wrenchable = FALSE
-	
+
 /obj/structure/machinery/fuelpump/ex_act(severity)
 	return
 

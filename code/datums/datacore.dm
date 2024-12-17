@@ -6,6 +6,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/security[] = list()
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/locked[] = list()
+	var/leveled_riflemen = 0
+	var/leveled_riflemen_max = 7
 
 /datum/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
 	var/list/cic = GLOB.ROLES_CIC.Copy()
@@ -261,7 +263,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"
 	record_general.fields["m_stat"] = "Stable"
-	record_general.fields["sex"] = target.gender
+	record_general.fields["sex"] = capitalize(target.gender)
 	record_general.fields["species"] = target.get_species()
 	record_general.fields["origin"] = target.origin
 	record_general.fields["faction"] = target.personal_faction
@@ -410,8 +412,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null
-	clothes_s = new /icon('icons/mob/humans/onmob/uniform_0.dmi', "marine_underpants_s")
-	clothes_s.Blend(new /icon('icons/mob/humans/onmob/feet.dmi', "black"), ICON_UNDERLAY)
+	clothes_s = new /icon('icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi', "marine_underpants_s")
+	clothes_s.Blend(new /icon('icons/mob/humans/onmob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
 	preview_icon.Blend(eyes_s, ICON_OVERLAY)
 	if(clothes_s)
 		preview_icon.Blend(clothes_s, ICON_OVERLAY)

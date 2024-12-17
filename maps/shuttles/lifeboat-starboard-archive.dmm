@@ -414,7 +414,7 @@
 	},
 /area/shuttle/lifeboat)
 "VZ" = (
-/turf/open/shuttle/escapepod/floor8,
+/turf/open/shuttle/escapepod/floor1/east,
 /area/shuttle/lifeboat)
 "Xj" = (
 /turf/closed/shuttle/lifeboat{

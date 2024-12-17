@@ -384,10 +384,11 @@
 		toggle_cameras_status()
 		handle_all_modules_broken()
 
-	if(lighting_holder)
-		if (health)
-			lighting_holder.set_light_on(TRUE)
-		else
+
+	if(health <= 0 && lighting_holder.light_range)
+		lighting_holder.set_light_on(FALSE)
+	else
+		if(!lighting_holder.light)
 			lighting_holder.set_light_on(TRUE)
 	update_icon()
 

@@ -35,7 +35,7 @@
 
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = FALSE
 	req_access = null
 	needs_power = TRUE

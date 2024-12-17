@@ -5,6 +5,7 @@
 	tutorial_id = "xeno_abom_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/predalien/tutorial
+	required_tutorial = "xeno_basic_1"
 	/// How many marines in the kill_marines stage have been killed
 	var/ending_marines_killed = 0
 

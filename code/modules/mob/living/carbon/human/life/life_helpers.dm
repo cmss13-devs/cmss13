@@ -6,25 +6,6 @@
  * Mostly for procs that are not called in the direct Life() loop, except for exact functionality matches (handle_breath, breathe, get_breath_from_internal for example)
  */
 
-//Calculate how vulnerable the human is to under- and overpressure.
-//Returns 0 (equals 0 %) if sealed in an undamaged suit, 1 if unprotected (equals 100%).
-//Suitdamage can modifiy this in 10% steps.
-/mob/living/carbon/human/proc/get_pressure_weakness()
-
-	var/pressure_adjustment_coefficient = 1 // Assume no protection at first.
-
-	if(wear_suit && (wear_suit.flags_inventory & NOPRESSUREDMAGE) && head && (head.flags_inventory & NOPRESSUREDMAGE)) //Complete set of pressure-proof suit worn, assume fully sealed.
-		pressure_adjustment_coefficient = 0
-
-		//Handles breaches in your space suit. 10 suit damage equals a 100% loss of pressure protection.
-		if(istype(wear_suit, /obj/item/clothing/suit/space))
-			var/obj/item/clothing/suit/space/S = wear_suit
-			if(S.can_breach && S.damage)
-				pressure_adjustment_coefficient += S.damage * 0.1
-
-	pressure_adjustment_coefficient = min(1, max(pressure_adjustment_coefficient, 0)) //So it isn't less than 0 or larger than 1.
-	return pressure_adjustment_coefficient
-
 /mob/living/carbon/human/proc/stabilize_body_temperature()
 
 

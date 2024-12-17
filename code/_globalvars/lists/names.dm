@@ -37,3 +37,6 @@ GLOBAL_LIST_INIT(first_names_female_dutch, list("Chelsea", "Mira", "Jessica", "C
 GLOBAL_LIST_INIT(monkey_names, list("Abu", "Aldo", "Bear", "Bingo", "Clyde", "Crystal", "Gordo", "George", "Koko", "Marcel", "Nim", "Rafiki", "Spike", "Banana", "Boots", "Bubbles", "Smiley", "Winston"))
 
 GLOBAL_LIST_INIT(weapon_surnames, list("Adze", "Axe", "Bagh Nakha", "Bo", "Bola", "Bow", "Bowman", "Cannon", "Carbine", "Cestus", "Club", "Culverin", "Dagger", "Dao", "Derringer", "Dha", "Dussack", "Emeici", "Falchion", "Fan", "Flyssa", "Gauntlet", "Hammer", "Halberd", "Harquebus", "Hatchet", "Hwando", "Katar", "Kampilan", "Knuckles", "Lance", "Lancer", "Larim", "Maduvu", "Mace", "Maru", "Mauser", "Messer", "Mine", "Mubucae", "Nyepel", "Onager", "Pata", "Pike", "Ram", "Saber", "Seax", "Shamsir", "Sickle", "Sling", "Spear", "Spears", "Staff", "Sword", "Tekko"))
+
+GLOBAL_LIST_INIT(pred_names, list("Nu'koir", "Za-ai'stba", "Au'stbep", "Gihn'thill", "Au'stbep", "Tud'tab", "Gehtu-a", "U-dan'dchu", "Bua'dtu", "A'ytein", "Yu-thwuahtou", "Yon'ta", "Pan'teiat", "Ban'ti", "Ve'thiad", "Ga-aiteith", "A'kah", "Dachande"))
+GLOBAL_LIST_INIT(pred_last_names, list("Tha'jo", "Ba'ytui", "Thwa'dtei", "Vah'ka"))

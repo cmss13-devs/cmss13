@@ -118,12 +118,12 @@
 	if(istype(H.gloves, /obj/item/clothing/gloves/yautja/hunter))
 		return TRUE
 
-/datum/keybinding/yautja/bracer_hunter/wristblades
+/datum/keybinding/yautja/bracer_hunter/bracer_attachments
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "wristblades"
-	full_name = "Toggle wristblades"
-	keybind_signal = COMSIG_KB_YAUTJA_WRISTBLADES
+	name = "Bracer Attachments"
+	full_name = "Use Bracer Attachments"
+	keybind_signal = COMSIG_KB_YAUTJA_BRACER_ATTACHMENT
 
 /datum/keybinding/yautja/bracer_hunter/track_gear
 	hotkey_keys = list("Unbound")
@@ -277,7 +277,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "bracername"
-	full_name = "Toggle bracer name"
+	full_name = "Toggle Bracer Name"
 	keybind_signal = COMSIG_KB_YAUTJA_BRACERNAME
 
 /datum/keybinding/yautja/bracer_hunter/bracername/down(client/user)
@@ -411,7 +411,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/human = user.mob
-	var/obj/item/weapon/yautja/combistick/held_item = human.get_held_item()
+	var/obj/item/weapon/yautja/chained/combistick/held_item = human.get_held_item()
 	if(istype(held_item))
 		held_item.fold_combistick()
 	return TRUE

@@ -1,6 +1,7 @@
 /mob/living/carbon/human
 	light_system = MOVABLE_LIGHT
 	rotate_on_lying = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -137,7 +138,7 @@
 	var/last_chew = 0
 
 	//taken from human.dm
-	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD)
+	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD, NEW_PLAYER_HUD)
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
@@ -147,7 +148,7 @@
 	/// A list of all the shrapnel currently embedded in the human
 	var/list/atom/movable/embedded_items = list()
 
-	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
+	var/list/inherent_huds_toggled = list(INHERENT_HUD_MEDICAL = FALSE, INHERENT_HUD_SECURITY = FALSE, INHERENT_HUD_NEW_PLAYER = FALSE)
 
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
@@ -170,6 +171,9 @@
 
 	/// Stored image references associated with focus-fire.
 	var/image/focused_fire_marker
+
+	// Are we currently using inherent zoom vision?
+	var/is_zoomed = FALSE
 
 /client/var/cached_human_playtime
 

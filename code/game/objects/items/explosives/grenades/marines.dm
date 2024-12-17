@@ -97,6 +97,8 @@
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 /obj/item/explosive/grenade/high_explosive/frag/toy
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "toy HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. Wait, the labeling on the side indicates this is a toy, what the hell?"
 	explosion_power = 0
@@ -180,10 +182,10 @@
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
 	item_state = "grenade_hornet_active"
-	shrapnel_count = 5
+	shrapnel_count = 15
 	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 	direct_hit_shrapnel = 5
-	dispersion_angle = 15//tight cone
+	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
 	name = "\improper M74 AGM-S Star Shell"
@@ -419,9 +421,9 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
-	name = "\improper M40 HPDP grenade"
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
-	icon_state = "grenade_phos"
+	name = "\improper M40 CCDP grenade"
+	desc = "The M40 CCDP is a small, but powerful chemical compound grenade, similar in effect to WPDP. Word on the block says that the CCDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	icon_state = "grenade_chem"
 	det_time = 20
 	item_state = "grenade_phos"
 	underslug_launchable = TRUE
@@ -435,7 +437,9 @@
 	return ..()
 
 /obj/item/explosive/grenade/phosphorus/weak
-	desc = "The M40 HPDP is a small, but powerful phosphorus grenade. Word on the block says that the HPDP doesn't actually release White Phosphorus, but some other chemical developed in W-Y labs."
+	name = "\improper M40 WPDP grenade"
+	icon_state = "grenade_phos"
+	desc = "The M40 WPDP is a small, but powerful phosphorus grenade. It is set to detonate in 2 seconds."
 
 /obj/item/explosive/grenade/phosphorus/Initialize()
 	. = ..()
@@ -481,9 +485,9 @@
 	/// Factor to mutiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 20
 	/// Post falloff calc damage is divided by this to get xeno slowdown
-	var/xeno_slowdown_numerator = 12
+	var/xeno_slowdown_numerator = 11
 	/// Post falloff calc damage is multipled by this to get human stamina damage
-	var/human_stam_dam_factor = 0.9
+	var/human_stam_dam_factor = 0.5
 
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
@@ -609,14 +613,14 @@
 			mob.apply_damage(damage_applied, BURN)
 			if((mob_dist < (range-3))) // 2 tiles around small superslow
 				mob.Superslow(2)
-			mob.Slow(damage_applied/11)
+			mob.Slow(damage_applied/xeno_slowdown_numerator)
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
 			mob.eye_blurry = damage_applied/4
 			mob.Daze(1)
 		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
-			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/40
+			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/100
 			mob.eye_blurry = damage_applied/8
 
 		else
@@ -865,6 +869,8 @@
 	return
 
 /obj/item/explosive/grenade/high_explosive/holy_hand_grenade
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Holy Hand Grenade of Antioch"
 	desc = "And Saint Attila raised the hand grenade up on high, saying, \"O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.\" And the LORD did grin and the people did feast upon the lambs and sloths and carp and anchovies... And the LORD spake, saying, \"First shalt thou take out the Holy Pin, then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.\""
 	icon_state = "grenade_antioch"

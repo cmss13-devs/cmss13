@@ -126,12 +126,20 @@
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 
+	if (user.is_mob_incapacitated())
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return FALSE
+
+	if (HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		return FALSE
+
 	if ((item.flags_inventory & CANTSTRIP) || ((item.flags_item & NODROP) && !(item.flags_item & FORCEDROP_CONDITIONAL)) || (item.flags_item & ITEM_ABSTRACT))
 		return FALSE
 
 	if (ishuman(source))
 		var/mob/living/carbon/human/sourcehuman = source
-		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
 			to_chat(user, SPAN_WARNING("You can't strip items of a crit or dead member of another faction!"))
 			return FALSE
 

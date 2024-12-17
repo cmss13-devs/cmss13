@@ -49,6 +49,21 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
+	///xeno roles
+	var/xeno_t3 = 0
+	var/xeno_t2 = 0
+	var/max_xeno_t3 = 1
+	var/max_xeno_t2 = 1
+	///Hunting Grounds
+	var/mercs = 0
+	var/royal_marines= 0
+	var/upp = 0
+	var/clf = 0
+	var/max_mercs = 1
+	var/max_royal_marines= 1
+	var/max_upp = 1
+	var/max_clf = 1
+
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = TRUE
 	var/spawn_max_amount = FALSE
@@ -224,11 +239,15 @@
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
+/datum/emergency_call/proc/remove_nonqualifiers(list/datum/mind/candidates_list)
+	return candidates_list //everyone gets selected on 99% of distress beacons.
+
 /datum/emergency_call/proc/spawn_candidates(quiet_launch = FALSE, announce_incoming = TRUE, override_spawn_loc)
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
 	SEND_SIGNAL(src, COMSIG_ERT_SETUP)
+	candidates = remove_nonqualifiers(candidates)
 
 	if(length(candidates) < mob_min && !spawn_max_amount)
 		message_admins("Aborting distress beacon, not enough candidates: found [length(candidates)].")
@@ -268,7 +287,7 @@
 	if(announce_incoming)
 		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-	message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
+	message_admins("Distress beacon: [src.name] finalized, setting up candidates. [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"].")
 
 	//Let the deadchat know what's up since they are usually curious
 	for(var/mob/dead/observer/M in GLOB.observer_list)
@@ -320,7 +339,7 @@
 
 
 	if(spawn_max_amount && i < mob_max)
-		for(var/c in i to mob_max)
+		for(var/c in i to mob_max - 1)
 			create_member(null, override_spawn_loc)
 
 	candidates = list()

@@ -6,5 +6,5 @@ SUBSYSTEM_DEF(lobby_art)
 /datum/controller/subsystem/lobby_art/Initialize()
 	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
 	if(length(lobby_arts))
-		force_lobby_art(rand(1,length(lobby_arts)))
+		force_lobby_art(rand(1, length(lobby_arts)))
 	return SS_INIT_SUCCESS

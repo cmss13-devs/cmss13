@@ -14,7 +14,6 @@
 	var/icobase_source // if we want to use sourcing system
 	var/deform_source
 	var/eyes = "eyes_s"   // Icon for eyes.
-	var/uses_skin_color = FALSE  //Set to TRUE to load proper skin_colors and what have you
 	var/special_body_types = FALSE
 
 	var/primitive   // Lesser form, if any (ie. monkey for humans)
@@ -41,7 +40,7 @@
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
 	var/remains_type = /obj/effect/decal/remains/xeno
-	var/bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
+	var/bloodsplatter_type = /obj/effect/bloodsplatter/human
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 
@@ -118,6 +117,12 @@
 	var/ignores_stripdrag_flag = FALSE
 
 	var/has_species_tab_items = FALSE
+
+	///Species specific emote sound lists
+	var/list/burstscreams = list()
+
+	var/fire_sprite_prefix = "Standing"
+	var/fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
 /datum/species/New()
 	if(unarmed_type)
@@ -483,7 +488,7 @@
 		if(D)
 			color_override = D.color
 
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir, 5, color_override)
+	var/obj/effect/bloodsplatter/bloodsplatter = new bloodsplatter_type(human.loc, splatter_dir, 5, color_override)
 	return bloodsplatter
 
 /datum/species/proc/get_status_tab_items()

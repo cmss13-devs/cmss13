@@ -203,7 +203,7 @@
 		if(F.id == id)
 			targets += F
 	if(has_wall_divider)
-		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in orange(src, 8))
+		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in ORANGE_TURFS(8, src))
 			targets += W
 
 /obj/structure/machinery/door_display/research_cell/Destroy()
@@ -321,7 +321,8 @@
 		if(!D.density)
 			continue
 		D.unlock(force)
-		D.open(force)
+		if(D.operating != DOOR_OPERATING_OPENING)
+			D.open(force)
 		open = TRUE
 
 	return TRUE

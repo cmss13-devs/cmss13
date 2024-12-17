@@ -310,7 +310,7 @@
 				return
 
 
-	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("We [pounceAction.ability_name] onto [M]!"), null, 5)
+	visible_message(SPAN_DANGER("[src] [pounceAction.action_text] onto [M]!"), SPAN_XENODANGER("We [pounceAction.action_text] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
 		M.KnockDown(pounceAction.knockdown_duration)
@@ -408,7 +408,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
-/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
+/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -447,6 +447,8 @@
 				if(P.chair_state != DROPSHIP_CHAIR_BROKEN)
 					has_obstacle = TRUE
 					break
+			else if(istype(O, /obj/structure/bed/nest) && ignore_nest)
+				continue
 			else
 				has_obstacle = TRUE
 				break
@@ -614,8 +616,10 @@
 			return "Moderate"
 		if(3 to 3.9)
 			return "Strong"
-		if(4 to INFINITY)
+		if(4 to 4.9)
 			return "Very Strong"
+		if(4.9 to INFINITY)
+			return "Overwhelming"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)

@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
 
 	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
-	#ifndef UNIT_TESTS
+	#if !defined(UNIT_TESTS) && !defined(AUTOWIKI)
 	world.log = file("[GLOB.log_directory]/dd.log")
 	#endif
 	backfill_runtime_log()

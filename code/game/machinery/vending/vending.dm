@@ -207,7 +207,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
 			return TRUE
-		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		else if(stat & BROKEN)
@@ -234,7 +234,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		else if(stat == WORKING && panel_open)
@@ -254,7 +254,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(istype(item, /obj/item/stack/cable_coil))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		var/obj/item/stack/cable_coil/CC = item
@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(item, /obj/item/stack/sheet/metal))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		var/obj/item/stack/sheet/metal/M = item

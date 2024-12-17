@@ -57,10 +57,11 @@
 	targetTurfs = new()
 
 	//build affected area list
-	for(var/turf/T in view(range, location))
+	FOR_DVIEW(var/turf/T, range, location, HIDE_INVISIBLE_OBSERVER)
 		//cull turfs to circle
 		if(cheap_pythag(T.x - location.x, T.y - location.y) <= range)
 			targetTurfs += T
+	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
 	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))

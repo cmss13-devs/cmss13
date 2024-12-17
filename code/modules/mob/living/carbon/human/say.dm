@@ -71,6 +71,9 @@
 
 	message = trim(strip_html(message))
 
+	if(!filter_message(src, message))
+		return
+
 	if(stat == DEAD)
 		return say_dead(message)
 
@@ -87,6 +90,10 @@
 		to_chat(src, SPAN_WARNING(fail_message))
 		return
 	message = parsed["message"]
+
+	if(!filter_message(src, message))
+		return
+
 	var/datum/language/speaking = parsed["language"]
 	if(!speaking)
 		speaking = get_default_language()
@@ -112,6 +119,9 @@
 	if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 		return
 
+	if (istype(wear_mask, /obj/item/clothing/mask/facehugger))
+		return
+
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
@@ -134,9 +144,10 @@
 				return
 			if(RADIO_CHANNEL_INTERCOM)
 				message_mode = null
-				for(var/obj/item/device/radio/intercom/I in view(1))
+				FOR_DVIEW(var/obj/item/device/radio/intercom/I, 1, src, HIDE_INVISIBLE_OBSERVER)
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
+				FOR_DVIEW_END
 			else
 				if(message_mode != MESSAGE_MODE_LOCAL)
 					var/earpiece = get_type_in_ears(/obj/item/device/radio)

@@ -111,6 +111,11 @@
 		qdel(src)
 		return
 
+	for(var/obj/object in loc)
+		if(object.density && object != src)
+			to_chat(user, SPAN_WARNING("[object] is blocking you from interacting with [src]!"))
+			return
+
 	switch(state)
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))

@@ -147,6 +147,7 @@
 	name = "Sector Comms Relay"
 	icon_state = "green"
 	unlimited_power = TRUE
+	flags_area = AREA_AVOID_BIOSCAN
 
 /area/adminlevel/ert_station/fax_response_station/exterior
 	name = "Sector Comms Relay"

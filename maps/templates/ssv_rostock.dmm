@@ -95,134 +95,17 @@
 	},
 /turf/open/floor/strata/red1,
 /area/rostock/lower_deck/prep)
-"aan" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 4
+"aaQ" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/sign/safety/bridge{
+	pixel_y = -32
 	},
-/turf/open/floor/strata/green3/east,
-/area/space)
-"aao" = (
-/turf/closed/wall/almayer/upp,
-/area/space)
-"aap" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
+/obj/structure/sign/safety/escapepod{
+	pixel_y = -32;
+	pixel_x = 14
 	},
-/turf/open/floor/strata/green4/north,
-/area/space)
-"aaq" = (
-/turf/open/floor/strata/red1,
-/area/space)
-"aar" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/upp_squad,
-/turf/open/floor/strata/floor3,
-/area/space)
-"aas" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad,
-/turf/open/floor/strata/floor3,
-/area/space)
-"aat" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_squad,
-/turf/open/floor/strata/floor3,
-/area/space)
-"aau" = (
-/obj/structure/window/framed/upp,
-/turf/open/floor/plating,
-/area/space)
-"aav" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep,
-/turf/open/space/basic,
-/area/space)
-"aaw" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata/green3/east,
-/area/space)
-"aax" = (
-/turf/open/floor/strata/red4/east,
-/area/space)
-"aay" = (
-/turf/open/floor/strata/red3,
-/area/space)
-"aaz" = (
-/turf/open/floor/strata/red4/west,
-/area/space)
-"aaA" = (
-/turf/open/floor/strata/red3/west,
-/area/space)
-"aaB" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/plating,
-/area/space)
-"aaC" = (
-/turf/open/floor/strata/red3/east,
-/area/space)
-"aaD" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep,
-/turf/open/floor/strata/floor3,
-/area/space)
-"aaE" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/space/basic,
-/area/space)
-"aaF" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_squad,
-/turf/open/space/basic,
-/area/space)
-"aaG" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad,
-/turf/open/space/basic,
-/area/space)
-"aaH" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/upp_squad,
-/turf/open/space/basic,
-/area/space)
-"aaI" = (
-/turf/open/floor/strata/red4,
-/area/space)
-"aaJ" = (
-/turf/open/floor/strata/red3/north,
-/area/space)
-"aaK" = (
-/turf/open/floor/strata/red4/north,
-/area/space)
-"aaL" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/poster/clf{
-	pixel_x = 31
-	},
-/turf/open/floor/strata/red1,
-/area/space)
-"aaM" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/upp_squad,
-/turf/open/floor/strata/red3/north,
-/area/space)
-"aaN" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad,
-/turf/open/floor/strata/red4/north,
-/area/space)
-"aaO" = (
-/obj/structure/sign/flag/upp{
-	pixel_y = 28;
-	pixel_x = -17
-	},
-/turf/open/space/basic,
-/area/space)
-"aaP" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 36
-	},
-/turf/open/floor/strata/green4/west,
-/area/space)
+/turf/open/floor/strata/floor3/east,
+/area/rostock/lower_deck/m_hallway)
 "aaT" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
@@ -4293,6 +4176,10 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/strata/north,
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Pilot");
+	name = "UPP Pilot"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/pilotbunk)
 "dmR" = (
@@ -7751,6 +7638,10 @@
 /area/rostock/hangar/hangarbay)
 "fLZ" = (
 /obj/structure/platform/metal/strata/north,
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Pilot");
+	name = "UPP Pilot"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/pilotbunk)
 "fMy" = (
@@ -8932,7 +8823,7 @@
 "gNT" = (
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar, UPP Pilot")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -12577,7 +12468,7 @@
 	},
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar, UPP Pilot")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -20862,6 +20753,10 @@
 /area/rostock/upper_deck/hallway)
 "pOn" = (
 /obj/structure/platform/metal/strata,
+/obj/effect/landmark/start/upp{
+	job_list = list("UPP Pilot");
+	name = "UPP Pilot"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/pilotbunk)
 "pOB" = (
@@ -23519,6 +23414,10 @@
 "rXb" = (
 /obj/structure/machinery/light,
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/sign/safety/east{
+	pixel_y = -32;
+	pixel_x = 14
+	},
 /turf/open/floor/strata/cyan4/north,
 /area/rostock/lower_deck/m_hallway)
 "rXx" = (
@@ -24068,7 +23967,13 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/stairs{
 	pixel_x = 15;
-	pixel_y = -32
+	pixel_y = -38
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_y = -38
+	},
+/obj/structure/sign/safety/south{
+	pixel_y = -24
 	},
 /turf/open/floor/strata/cyan4,
 /area/rostock/lower_deck/m_hallway)
@@ -25739,7 +25644,7 @@
 	},
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar, UPP Pilot")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -39634,7 +39539,7 @@ ofW
 ofW
 ofW
 ofW
-aav
+ofW
 ofW
 ofW
 ofW
@@ -39814,7 +39719,7 @@ dKd
 ofW
 ofW
 ofW
-aaF
+ofW
 ofW
 ofW
 ofW
@@ -39994,9 +39899,9 @@ ofW
 ofW
 dKd
 ofW
-aaO
 ofW
-aaG
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -40178,7 +40083,7 @@ dKd
 ofW
 ofW
 ofW
-aaH
+ofW
 ofW
 ofW
 ofW
@@ -40358,13 +40263,13 @@ ofW
 ofW
 dKd
 ofW
-aaP
-aaw
-aaw
-aaw
-aaw
-aap
-aan
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -40540,13 +40445,13 @@ ofW
 ofW
 dKd
 ofW
-aao
-aaq
-aaI
-aaA
-aax
-aaq
-aao
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -40722,13 +40627,13 @@ ofW
 ofW
 dKd
 ofW
-aao
-aaM
-aaJ
-aaB
-aay
-aar
-aao
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -40904,13 +40809,13 @@ ofW
 ofW
 dKd
 ofW
-aao
-aaN
-aaK
-aaC
-aaz
-aas
-aao
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -41086,13 +40991,13 @@ ofW
 ofW
 dKd
 ofW
-aao
-aat
-aaL
-aaD
-aaq
-aat
-aao
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -41268,13 +41173,13 @@ ofW
 ofW
 dKd
 ofW
-aao
-aao
-aao
-aao
-aau
-aau
-aao
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -41635,7 +41540,7 @@ ofW
 ofW
 ofW
 ofW
-aaE
+ofW
 ofW
 ofW
 ofW
@@ -42953,7 +42858,7 @@ tqO
 sDg
 rAJ
 ruO
-ruO
+aaQ
 rkR
 rkR
 jzI

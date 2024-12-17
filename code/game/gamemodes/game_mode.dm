@@ -33,8 +33,6 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
-	var/datum/entity/statistic/round/round_stats = null
-
 	var/list/roles_to_roll
 
 	var/corpses_to_spawn = 0

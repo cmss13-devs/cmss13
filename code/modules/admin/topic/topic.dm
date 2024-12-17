@@ -767,6 +767,7 @@
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [GLOB.master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
+		SSticker.load_mode()
 
 	else if(href_list["monkeyone"])
 		if(!check_rights(R_SPAWN)) return

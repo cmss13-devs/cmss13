@@ -80,8 +80,8 @@
 		"total_slashes" = DB_FIELDTYPE_INT
 	)
 
-/datum/game_mode/proc/setup_round_stats()
-	if(!round_stats)
+/datum/controller/subsystem/ticker/proc/setup_round_stats()
+	if(!GLOB.round_statistics)
 		var/datum/entity/mc_round/mc_round = SSentity_manager.select(/datum/entity/mc_round)
 		var/operation_name
 		operation_name = "[pick(GLOB.operation_titles)]"
@@ -89,16 +89,11 @@
 		operation_name += "-[pick(GLOB.operation_postfixes)]"
 
 		// Round stats
-		round_stats = DB_ENTITY(/datum/entity/statistic/round)
-		round_stats.round_name = operation_name
-		round_stats.round_id = mc_round.id
-		round_stats.map_name = SSmapping.configs[GROUND_MAP].map_name
-		round_stats.game_mode = name
-		round_stats.real_time_start = world.realtime
-		round_stats.save()
-
-		// Setup the global reference
-		GLOB.round_statistics = round_stats
+		GLOB.round_statistics = DB_ENTITY(/datum/entity/statistic/round)
+		GLOB.round_statistics.round_name = operation_name
+		GLOB.round_statistics.round_id = mc_round.id
+		GLOB.round_statistics.map_name = SSmapping.configs[GROUND_MAP].map_name
+		GLOB.round_statistics.game_mode = mode.name
 
 		// Map stats
 		var/datum/entity/statistic/map/new_map = DB_EKEY(/datum/entity/statistic/map, SSmapping.configs[GROUND_MAP].map_name)
@@ -106,7 +101,11 @@
 		new_map.save()
 
 		// Connect map to round
-		round_stats.current_map = new_map
+		GLOB.round_statistics.current_map = new_map
+		GLOB.round_statistics.save()
+	else
+		GLOB.round_statistics.game_mode = mode.name
+		GLOB.round_statistics.save()
 
 /datum/entity/statistic/round/proc/setup_job_stats(job, noteworthy = TRUE)
 	if(!job)

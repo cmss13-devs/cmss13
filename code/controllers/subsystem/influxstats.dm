@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(influxstats)
 		SSinfluxdriver.enqueue_stats("burst_larva", list("hive" = hive.reporting_id), list("count" = burst_larvas))
 
 /datum/controller/subsystem/influxstats/proc/run_round_statistics()
-	var/datum/entity/statistic/round/stats = SSticker?.mode?.round_stats
+	var/datum/entity/statistic/round/stats = GLOB.round_statistics
 	if(!stats)
 		return // Sadge
 

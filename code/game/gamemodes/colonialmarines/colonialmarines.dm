@@ -709,7 +709,7 @@
 
 	var/datum/discord_embed/embed = new()
 	embed.title = "[SSperf_logging.round?.id]"
-	embed.description = "[round_stats.round_name]\n[round_stats.map_name]\n[end_round_message()]"
+	embed.description = "[GLOB.round_statistics.round_name]\n[GLOB.round_statistics.map_name]\n[end_round_message()]"
 
 	var/list/webhook_info = list()
 	webhook_info["embeds"] = list(embed.convert_to_list())

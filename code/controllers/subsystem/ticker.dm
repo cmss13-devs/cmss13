@@ -230,6 +230,9 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 	CHECK_TICK
 
+	GLOB.round_statistics.real_time_start = world.realtime
+	GLOB.round_statistics.save()
+
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))
 		var/roles_to_roll = null
@@ -359,8 +362,9 @@ SUBSYSTEM_DEF(ticker)
 	else
 		GLOB.master_mode = "Extended"
 
+	QDEL_NULL(mode)
 	mode = config.pick_mode(GLOB.master_mode)
-	mode.setup_round_stats()
+	setup_round_stats()
 
 	log_game("Saved mode is '[GLOB.master_mode]'")
 

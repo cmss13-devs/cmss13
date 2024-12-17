@@ -76,9 +76,6 @@
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
-//		spawn(0)//Don't load it, so we don't have to delete it, SIMPLY!
-//			//Deleting Almayer, for performance!
-//			SSitem_cleanup.delete_almayer()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

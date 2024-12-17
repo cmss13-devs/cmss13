@@ -8823,7 +8823,7 @@
 "gNT" = (
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar, UPP Pilot")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar", "UPP Pilot")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -12468,7 +12468,7 @@
 	},
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar, UPP Pilot")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar", "UPP Pilot")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
@@ -25644,7 +25644,7 @@
 	},
 /obj/effect/landmark/late_join/upp{
 	name = "UPP late support join";
-	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar, UPP Pilot")
+	job_list = list("UPP Politsiya","UPP Mladshiy Leytenant","UPP Leytenant Doktor","UPP Logistics Technician","UPP Starshiy Leytenant","UPP Kapitan","UPP Komandir","UPP Support Synthetic","UPP Political Commissar", "UPP Pilot")
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)

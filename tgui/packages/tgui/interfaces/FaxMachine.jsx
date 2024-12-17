@@ -93,8 +93,6 @@ const FaxSelect = (props) => {
     worldtime,
     nextfaxtime,
     faxcooldown,
-    can_send_priority,
-    is_priority_fax,
   } = data;
 
   const timeLeft = nextfaxtime - worldtime;
@@ -145,18 +143,6 @@ const FaxSelect = (props) => {
             </Button>
           )}
         </Stack.Item>
-        {!!can_send_priority && (
-          <Stack.Item>
-            <Button
-              icon={is_priority_fax ? 'bell' : 'bell-slash'}
-              fluid
-              onClick={() => act('toggle_priority')}
-              color={is_priority_fax ? 'green' : 'red'}
-              disabled={!paper || !can_send_priority}
-              tooltip="Toggle priority alert."
-            />
-          </Stack.Item>
-        )}
       </Stack>
     </Section>
   );

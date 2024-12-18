@@ -726,7 +726,7 @@
 
 /obj/effect/overlay/afterimage
 	name = "Dancer Afterimage"
-	icon = 'icons/mob/xenos/praetorian.dmi'
+	icon = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
 	layer = MOB_LAYER
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)

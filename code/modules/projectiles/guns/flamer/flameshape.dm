@@ -1,3 +1,27 @@
+#define FIRE_CANPASS_SPREAD 1
+#define FIRE_CANPASS_SET_AFLAME 2
+#define FIRE_CANPASS_STOP_BORDER 3
+#define FIRE_CANPASS_STOP 4
+
+
+/proc/_fire_spread_check(obj/flamer_fire/F, obj/flamer_fire/mover, turf/T, turf/prev_T, burn_dam)
+	if(istype(T, /turf/open/space))
+		return FIRE_CANPASS_STOP
+
+	if(T.density)
+		T.flamer_fire_act(burn_dam, F.weapon_cause_data)
+		return FIRE_CANPASS_SET_AFLAME
+		
+	var/atom/A = LinkBlocked(mover, prev_T, T)
+
+	if(A)
+		A.flamer_fire_act(burn_dam, F.weapon_cause_data)
+		if (A.flags_atom & ON_BORDER)
+			return FIRE_CANPASS_STOP_BORDER
+		return FIRE_CANPASS_SET_AFLAME
+
+	return FIRE_CANPASS_SPREAD
+
 /datum/flameshape
 	var/name = ""
 	var/id = FLAMESHAPE_NONE
@@ -40,32 +64,24 @@
 		if(tiles_to_spread.len == 0)
 			break
 
-		for(var/turf/source_turf in tiles_to_spread)
-	for(var/dirn in GLOB.cardinals)
-				var/turf/T = get_step(source_turf, dirn)
-		if(istype(T, /turf/open/space))
-			continue
+		for(var/turf/prev_T in tiles_to_spread)
+			for(var/dirn in GLOB.cardinals)
+				var/turf/T = get_step(prev_T, dirn)
 
-		var/obj/flamer_fire/foundflame = locate() in T
-		if(foundflame && foundflame.tied_reagent == F.tied_reagent)
-			continue
+				var/obj/flamer_fire/foundflame = locate() in T
+				if(foundflame && foundflame.tied_reagent == F.tied_reagent)
+					continue
 
-		if(T.density)
-			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
-		else
-			var/atom/A = LinkBlocked(temp, source_turf, T)
-
-			if(A)
-				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
-				if (A.flags_atom & ON_BORDER)
-							continue
-					else
+				var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+				switch(result)
+					if(FIRE_CANPASS_SPREAD)
 						next_tiles_to_spread.Add(T)
-
-				tiles_to_set_aflame.Add(T)
+						tiles_to_set_aflame.Add(T)
+					if(FIRE_CANPASS_SET_AFLAME)
+						tiles_to_set_aflame.Add(T)
 
 		tiles_to_spread = next_tiles_to_spread
-
+		
 	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, F.flameshape, null, FALSE, fuel_pressure), 0)
 
 
@@ -90,24 +106,13 @@
 
 	for(var/dirn in dirs)
 		var/endturf = get_ranged_target_turf(F, dirn, fire_spread_amount)
-		var/list/turfs = get_line(source_turf, endturf)
+		var/list/turfs = get_line(source_turf, endturf, FALSE)
 
 		var/turf/prev_T = source_turf
 		for(var/turf/T in turfs)
-			if(istype(T,/turf/open/space))
-				continue
-			if(T == F.loc)
-				prev_T = T
-				continue
-
-			if(T.density && !T.throwpass) // unpassable turfs stop the spread
-				T.flamer_fire_act(burn_dam, F.weapon_cause_data)
-
-			var/atom/A = LinkBlocked(temp, prev_T, T)
-			if(A)
-				A.flamer_fire_act(burn_dam, , F.weapon_cause_data)
-				if (A.flags_atom & ON_BORDER)
-					break
+			var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+			if(result == FIRE_CANPASS_STOP)
+				break
 
 			tiles_to_set_aflame.Add(T)
 			prev_T = T
@@ -131,47 +136,31 @@
 /datum/flameshape/line/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	var/turf/source_turf = get_turf(F.loc)
 
-	var/turf/prev_T
+	var/turf/prev_T = source_turf
+	var/obj/flamer_fire/temp = new()
+	var/list/tiles_to_set_aflame = list()
+	var/list/turfs = get_line(source_turf, F.target_clicked, FALSE)
 
-	var/distance = 1
-	var/stop_at_turf = FALSE
+	if(fire_spread_amount > turfs.len)
+		fire_spread_amount = turfs.len
 
-	var/list/turfs = get_line(source_turf, F.target_clicked)
-	for(var/turf/T in turfs)
-		if(istype(T, /turf/open/space))
-			break
-
-		if(distance > (fire_spread_amount - 1))
-			break
-
-		if(T.density)
-			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
-			stop_at_turf = TRUE
-		else if(prev_T)
-			var/obj/flamer_fire/temp = new()
-			var/atom/A = LinkBlocked(temp, prev_T, T)
-
-			if(A)
-				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
-				if (A.flags_atom & ON_BORDER)
-					break
-				stop_at_turf = TRUE
-
-		if(T == F.loc)
-			if(stop_at_turf)
+	for(var/distance in 1 to fire_spread_amount)
+		var/turf/T = turfs[distance]
+		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+		switch(result)
+			if(FIRE_CANPASS_SPREAD)
+				tiles_to_set_aflame.Add(T)
+			if(FIRE_CANPASS_SET_AFLAME)
+				tiles_to_set_aflame.Add(T)
 				break
-			prev_T = T
-			continue
+			if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
+				break
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), distance)
-		if(stop_at_turf)
-			break
-
-		distance++
 		prev_T = T
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), distance)
 
 	if(F.to_call)
-		addtimer(F.to_call, distance + 1)
+		addtimer(F.to_call, fire_spread_amount)
 
 /datum/flameshape/triangle
 	name = "Triangle"
@@ -180,96 +169,53 @@
 /datum/flameshape/triangle/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	set waitfor = 0
 
+	var/obj/flamer_fire/temp = new()
 	var/unleash_dir = get_cardinal_dir(F, F.target_clicked)
-	var/list/turf/turfs = get_line(F, F.target_clicked)
+	var/list/turf/turfs = get_line(F, F.target_clicked, FALSE)
 	var/distance = 1
 	var/hit_dense_atom_mid = FALSE
-	var/turf/prev_T
+	var/turf/prev_T = get_turf(F.loc)
 
-	for(var/turf/T in turfs)
-		if(distance > fire_spread_amount)
-			break
+	if(fire_spread_amount > turfs.len)
+		fire_spread_amount = turfs.len
 
-		if(T.density)
-			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
-			hit_dense_atom_mid = TRUE
-		else if(prev_T)
-			var/atom/movable/temp = new/obj/flamer_fire()
-			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
-			qdel(temp)
-			if(AM)
-				AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
-				if (AM.flags_atom & ON_BORDER)
-					break
-				hit_dense_atom_mid = TRUE
+	for(var/distance in 1 to fire_spread_amount)
+		var/turf/T = turfs[distance]
+		var/list/tiles_to_set_aflame = list()
 
-		if(T == F.loc)
-			if (hit_dense_atom_mid)
+		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+		switch(result)
+			if(FIRE_CANPASS_SPREAD)
+				tiles_to_set_aflame.Add(T)
+			if(FIRE_CANPASS_SET_AFLAME)
+				tiles_to_set_aflame.Add(T)
+			if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 				break
 
-			prev_T = T
-			continue
-
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
 		prev_T = T
-		sleep(1)
 
-		var/list/turf/right = list()
-		var/list/turf/left = list()
-		var/turf/right_turf = T
-		var/turf/left_turf = T
-		var/right_dir = turn(unleash_dir, 90)
-		var/left_dir = turn(unleash_dir, -90)
-		for (var/i = 0, i < 1, i++)
-			right_turf = get_step(right_turf, right_dir)
-			right += right_turf
-			left_turf = get_step(left_turf, left_dir)
-			left += left_turf
+		for(var/side_turn in list(90, -90))
+			var/turf/side_prev_T = T
+			var/side_dir = turn(unleash_dir, side_turn)
 
-		var/hit_dense_atom_side = FALSE
-
-		var/turf/prev_R = T
-		for (var/turf/R in right)
-			if(prev_R)
-				var/atom/movable/temp = new/obj/flamer_fire()
-				var/atom/movable/AM = LinkBlocked(temp, prev_R, R)
-				qdel(temp)
-				if(AM)
-					AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
-					if (AM.flags_atom & ON_BORDER)
+			for(var/i in 1 to 1)
+				var/side_T = get_step(side_prev_T, side_dir)
+				var/side_result = _fire_spread_check(F, temp, side_prev_T, side_T, burn_dam)
+				switch(side_result)
+					if(FIRE_CANPASS_SPREAD)
+						tiles_to_set_aflame.Add(side_T)
+					if(FIRE_CANPASS_SET_AFLAME)
+						tiles_to_set_aflame.Add(side_T)
 						break
-					hit_dense_atom_side = TRUE
-				else if (hit_dense_atom_mid)
-					break
-			generate_fire(R, F, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
-			if (!hit_dense_atom_mid && hit_dense_atom_side)
-				break
-			prev_R = R
-			sleep(1)
-
-		var/turf/prev_L = T
-		for (var/turf/L in left)
-			if(prev_L)
-				var/atom/movable/temp = new/obj/flamer_fire()
-				var/atom/movable/AM = LinkBlocked(temp, prev_L, L)
-				qdel(temp)
-				if(AM)
-					AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
-					if (AM.flags_atom & ON_BORDER)
+					if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 						break
-					hit_dense_atom_side = TRUE
-				else if (hit_dense_atom_mid)
-					break
-			generate_fire(L, F, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
-			if (!hit_dense_atom_mid && hit_dense_atom_side)
-				break
-			prev_L = L
-			sleep(1)
 
-		if (hit_dense_atom_mid)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, null, FALSE, fuel_pressure), 0)
+
+		if(result == FIRE_CANPASS_SET_AFLAME)
 			break
 
-		distance++
+		sleep(3) // 1 from step forward, 1 for each step in each side
 
 	if(F.to_call)
 		F.to_call.Invoke()
@@ -283,3 +229,9 @@ GLOBAL_LIST_INIT(flameshapes, list(
 	FLAMESHAPE_TRIANGLE = new /datum/flameshape/triangle(),
 	FLAMESHAPE_LINE = new /datum/flameshape/line(),
 ))
+
+
+#undef FIRE_CANPASS_SPREAD
+#undef FIRE_CANPASS_SET_AFLAME
+#undef FIRE_CANPASS_STOP_BORDER
+#undef FIRE_CANPASS_STOP

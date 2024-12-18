@@ -25951,7 +25951,7 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
 	},
-/obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/structure/machinery/faxmachine/corporate/liaison/almayer,
 /obj/item/paper/liaison_brief{
 	pixel_y = 8;
 	pixel_x = -4

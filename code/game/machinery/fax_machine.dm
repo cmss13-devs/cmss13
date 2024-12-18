@@ -1,7 +1,6 @@
 /datum/fax_network
 	var/list/all_departments = list()
 	var/list/all_faxcodes = list()
-	var/list/all_machines = list()
 
 GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
@@ -85,7 +84,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	GLOB.fax_network.all_machines += src
 	generate_id_tag()
 	update_departments()
 	if(!(identity_name in GLOB.fax_network.all_departments[department]))
@@ -138,11 +136,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	identity_name = sub_name ? "[sub_name], [machine_id_tag]" : machine_id_tag
 	if(machine_id_tag == network)
 		return TRUE
-	GLOB.fax_network.all_faxcodes += id_tag_final
+	GLOB.fax_network.all_faxcodes[id_tag_final] = src
 	return TRUE
 
 /obj/structure/machinery/faxmachine/Destroy()
-	GLOB.fax_network.all_machines -= src
 	GLOB.fax_network.all_faxcodes -= machine_id_tag
 	. = ..()
 
@@ -222,9 +219,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/proc/update_departments()
 	if(!(FAX_DEPARTMENT_SPECIFIC_CODE in GLOB.fax_network.all_departments))
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_SPECIFIC_CODE] = list()
-	if(!("[department]" in GLOB.fax_network.all_departments)) //Initialize departments. This will work with multiple fax machines.
-		GLOB.fax_network.all_departments[department] = list()
-		GLOB.fax_network.all_departments[department][identity_name] = src
 	if(!(FAX_DEPARTMENT_WY in GLOB.fax_network.all_departments))
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_WY] = list()
 	if(!(FAX_DEPARTMENT_HC in GLOB.fax_network.all_departments))
@@ -241,6 +235,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_UPP] = list()
 	if(!(FAX_DEPARTMENT_CLF in GLOB.fax_network.all_departments))
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_CLF] = list()
+	if(!("[department]" in GLOB.fax_network.all_departments)) //Initialize departments. This will work with multiple fax machines.
+		GLOB.fax_network.all_departments[department] = list()
+		GLOB.fax_network.all_departments[department][identity_name] = src
 
 // TGUI SHIT \\
 
@@ -279,15 +276,17 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	data["target_department"] = target_department
 	data["target_machine"] = target_machine
+	data["sending_to_specific"] = FALSE
 	if(target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
-		data["target_department"] = target_machine_id
+		data["target_department"] = "Specific ID - [target_machine_id]"
+		data["sending_to_specific"] = TRUE
 
 	if(target_department in FAX_HIGHCOM_DEPARTMENTS)
 		data["highcom_dept"] = TRUE
 	else
 		data["highcom_dept"] = FALSE
 
-	data["awake_responder"] = is_FAX_DEPARTMENT_responder_awake(target_department)
+	data["awake_responder"] = is_department_responder_awake(target_department)
 
 	data["worldtime"] = world.time
 	data["nextfaxtime"] = send_cooldown
@@ -330,9 +329,15 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
 				return
 
-			if(single_sending && (target_machine == "Undefined"))
+			if(single_sending && (target_machine == "Undefined") && !(target_department == FAX_DEPARTMENT_SPECIFIC_CODE))
 				to_chat(user, SPAN_WARNING("No target machine selected!"))
 				return
+
+			if(single_sending)
+				var/the_target_machine = GLOB.fax_network.all_departments[target_department][target_machine]
+				if(the_target_machine == src)
+					to_chat(user, SPAN_WARNING("You cannot send a fax to your own machine!"))
+					return
 
 			if(istype(original_fax, /obj/item/paper_bundle))
 				var/obj/item/paper_bundle/bundle = original_fax
@@ -411,6 +416,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			if(target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
 				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code", GLOB.fax_network.all_faxcodes)
 				if(!new_target_machine_id)
+					target_department = last_target_department
+				else if(new_target_machine_id == machine_id_tag)
+					to_chat(user, SPAN_WARNING("You cannot send a fax to your own machine!"))
 					target_department = last_target_department
 				else
 					target_machine_id = new_target_machine_id
@@ -563,16 +571,20 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents, sending_priority)
 	var/list/receiving_machines = list()
-	if(!single_sending || target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
-		for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.fax_network.all_machines)
-			if(target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
-				if(pos_target != src && pos_target.machine_id_tag == target_machine_id)
-					receiving_machines += pos_target
-			else
-				if(pos_target != src && pos_target.department == target_department)
-					receiving_machines += pos_target
+	if(target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
+		var/the_target_machine = GLOB.fax_network.all_faxcodes[target_machine_id]
+		if(the_target_machine == src)
+			return
+		receiving_machines += the_target_machine
+	else if(!single_sending || (target_department in FAX_HIGHCOM_DEPARTMENTS))
+		for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.fax_network.all_departments[target_department])
+			if(pos_target != src && pos_target.machine_id_tag == target_machine_id)
+				receiving_machines += pos_target
 	else
-		receiving_machines += GLOB.fax_network.all_departments[target_department][target_machine]
+		var/the_target_machine = GLOB.fax_network.all_departments[target_department][target_machine]
+		if(the_target_machine == src)
+			return
+		receiving_machines += the_target_machine
 
 	for(var/obj/structure/machinery/faxmachine/target in receiving_machines)
 		if(!faxcontents)
@@ -647,6 +659,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/corporate/liaison
 	department = "W-Y Liaison"
+
+/obj/structure/machinery/faxmachine/corporate/liaison/almayer
+	department = "USS Almayer"
+	sub_name = "W-Y Liaison"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = FAX_DEPARTMENT_WY
@@ -765,7 +781,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	if(portable_id_tag)
 		machine_id_tag = portable_id_tag
 		fixed_id_tag = TRUE
-		GLOB.fax_network.all_faxcodes += machine_id_tag
+		GLOB.fax_network.all_faxcodes[machine_id_tag] = src
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack
@@ -862,7 +878,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	src.fax_id_tag = fax_id_tag
 
 
-/obj/structure/machinery/faxmachine/proc/is_FAX_DEPARTMENT_responder_awake(target_department)
+/obj/structure/machinery/faxmachine/proc/is_department_responder_awake(target_department)
 	if(!(target_department in FAX_HIGHCOM_DEPARTMENTS))
 		return FALSE
 	var/target_job = JOB_FAX_RESPONDER

@@ -95,6 +95,7 @@ const FaxSelect = (props) => {
     is_single_sending,
     target_machine,
     highcom_dept,
+    sending_to_specific,
   } = data;
 
   return (
@@ -125,7 +126,7 @@ const FaxSelect = (props) => {
               !paper ||
               !!highcom_dept ||
               !authenticated ||
-              target_department === 'Specific Machine Code'
+              !!sending_to_specific
             }
             tooltip="Toggle sending to a specific machine in the department."
           />
@@ -137,9 +138,7 @@ const FaxSelect = (props) => {
           <Button
             icon="list"
             disabled={
-              !authenticated ||
-              !is_single_sending ||
-              target_department === 'Specific Machine Code'
+              !authenticated || !is_single_sending || !!sending_to_specific
             }
             onClick={() => act('select_machine')}
             width="220px"
@@ -152,9 +151,7 @@ const FaxSelect = (props) => {
             icon="fax"
             fluid
             disabled={
-              !authenticated ||
-              !is_single_sending ||
-              target_department === 'Specific Machine Code'
+              !authenticated || !is_single_sending || !!sending_to_specific
             }
           >
             {'Currently sending to : ' + target_machine + '.'}

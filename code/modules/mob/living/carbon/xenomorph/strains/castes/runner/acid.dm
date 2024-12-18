@@ -61,7 +61,7 @@
 
 /datum/behavior_delegate/runner_acider/append_to_stat() //The uniqe status pannel info for Acid Runner is handelt here.
 	. = list()
-	. += "Acid: [acid_amount]"
+	. += "Acid: [acid_amount]/[max_acid]"
 	. += "Acid generation cap: [acid_gen_cap]"
 	if(caboom_trigger)
 		. += "FOR THE HIVE!: in [caboom_left] seconds"

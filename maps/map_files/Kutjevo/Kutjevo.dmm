@@ -4793,9 +4793,7 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles"
-	},
+/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -11530,8 +11528,7 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles";
+/obj/item/clothing/glasses/thermal/syndi/kutjevo{
 	pixel_y = -2
 	},
 /turf/open/floor/kutjevo/multi_tiles/east,

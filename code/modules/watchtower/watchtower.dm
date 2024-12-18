@@ -70,6 +70,9 @@
 		overlays += roof_image
 
 /obj/structure/watchtower/attackby(obj/item/item, mob/user)
+	if(user.action_busy)
+		return
+	
 	if(istool(item) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
 		return TRUE

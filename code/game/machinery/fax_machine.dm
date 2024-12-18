@@ -307,6 +307,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	if(.)
 		return
 
+	var/mob/user = ui.user
 	switch(action)
 		if("toggle_priority")
 			if(!can_send_priority)

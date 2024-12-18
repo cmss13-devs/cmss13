@@ -3,6 +3,7 @@ import { BooleanLike } from 'common/react';
 import { storage } from 'common/storage';
 import {
   createContext,
+  PropsWithChildren,
   ReactNode,
   useContext,
   useEffect,
@@ -22,6 +23,7 @@ import {
 } from '../components';
 import { BoxProps } from '../components/Box';
 import { Window } from '../layouts';
+import { LoadingScreen } from './common/LoadingToolbox';
 
 type LobbyData = {
   lobby_author: string;
@@ -42,9 +44,14 @@ type LobbyData = {
 
 type LobbyContextType = {
   animationsDisable: boolean;
+  themeDisable: boolean;
+  setModal?: (_: ReactNode | false) => void;
 };
 
-const LobbyContext = createContext({ animationsDisable: false });
+const LobbyContext = createContext<LobbyContextType>({
+  animationsDisable: false,
+  themeDisable: false,
+});
 
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
@@ -54,14 +61,17 @@ export const LobbyMenu = () => {
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
   const [modal, setModal] = useState<ReactNode | false>(false);
-  const [disableAnimations, setDisableAnimations] = useState(false);
 
+  const [disableAnimations, setDisableAnimations] = useState(false);
   const [filterDisabled, setFilterDisabled] = useState(false);
+  const [themeDisabled, setThemeDisabled] = useState<boolean | undefined>();
 
   useEffect(() => {
     storage
       .get('lobby-filter-disabled')
       .then((val) => setFilterDisabled(!!val));
+
+    storage.get('lobby-theme-disabled').then((val) => setThemeDisabled(!!val));
 
     setTimeout(() => {
       onLoadPlayer.current!.play();
@@ -74,8 +84,22 @@ export const LobbyMenu = () => {
 
   const [hidden, setHidden] = useState<boolean>(false);
 
+  if (themeDisabled === undefined) {
+    return (
+      <Window fitted scrollbars={false}>
+        <Window.Content>
+          <LoadingScreen />
+        </Window.Content>
+      </Window>
+    );
+  }
+
   return (
-    <Window theme="crtgreen" fitted scrollbars={false}>
+    <Window
+      theme={themeDisabled ? 'weyland_yutani' : 'crtgreen'}
+      fitted
+      scrollbars={false}
+    >
       <audio src={resolveAsset('load.mp3')} ref={onLoadPlayer} />
       <Window.Content
         className={`LobbyScreen ${
@@ -87,20 +111,14 @@ export const LobbyMenu = () => {
         }}
         fitted
       >
-        <LobbyContext.Provider value={{ animationsDisable: disableAnimations }}>
-          {!!modal && (
-            <Modal>
-              <Section
-                buttons={
-                  <Button mb={5} onClick={() => setModal(false)} icon={'x'} />
-                }
-                p={3}
-                title={'Confirm'}
-              >
-                {modal}
-              </Section>
-            </Modal>
-          )}
+        <LobbyContext.Provider
+          value={{
+            animationsDisable: disableAnimations,
+            themeDisable: themeDisabled,
+            setModal: setModal,
+          }}
+        >
+          {!!modal && <Modal>{modal}</Modal>}
           <Box
             height="100%"
             width="100%"
@@ -113,10 +131,48 @@ export const LobbyMenu = () => {
           <Box position="absolute" top="10px" right="10px">
             <Button
               icon="cog"
-              tooltip={`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
               onClick={() => {
-                storage.set('lobby-filter-disabled', !filterDisabled);
-                setFilterDisabled(!filterDisabled);
+                setModal(
+                  <Section
+                    p={5}
+                    title="Lobby Settings"
+                    buttons={
+                      <Button icon="xmark" onClick={() => setModal(false)} />
+                    }
+                  >
+                    <Stack>
+                      <Stack.Item>
+                        <Button
+                          icon="tv"
+                          onClick={() => {
+                            storage.set(
+                              'lobby-filter-disabled',
+                              !filterDisabled,
+                            );
+                            setFilterDisabled(!filterDisabled);
+                            setModal(false);
+                          }}
+                          tooltip="Removes the CRT filter background"
+                        >
+                          {`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
+                        </Button>
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button
+                          icon="bolt"
+                          onClick={() => {
+                            storage.set('lobby-theme-disabled', !themeDisabled);
+                            setThemeDisabled(!themeDisabled);
+                            setModal(false);
+                          }}
+                          tooltip="Totally removes the CRT theme, including the filter"
+                        >
+                          {`${themeDisabled ? 'Enable' : 'Disable'} CRT Theme`}
+                        </Button>
+                      </Stack.Item>
+                    </Stack>
+                  </Section>,
+                );
               }}
             />
           </Box>
@@ -140,6 +196,24 @@ export const LobbyMenu = () => {
         </LobbyContext.Provider>
       </Window.Content>
     </Window>
+  );
+};
+
+const ModalConfirm = (props: PropsWithChildren) => {
+  const { children } = props;
+
+  const context = useContext(LobbyContext);
+
+  const { setModal } = context;
+
+  return (
+    <Section
+      buttons={<Button mb={5} onClick={() => setModal!(false)} icon={'x'} />}
+      p={3}
+      title={'Confirm'}
+    >
+      {children}
+    </Section>
   );
 };
 
@@ -174,8 +248,6 @@ const LobbyButtons = (props: {
       p={3}
       className="sectionLoad"
       style={{
-        boxShadow: '0 0 15px',
-        backgroundColor: 'rgba(0, 17, 0, 0.7)',
         opacity: hidden ? '0' : '1',
       }}
     >
@@ -266,22 +338,25 @@ const LobbyButtons = (props: {
           icon="eye"
           onClick={() => {
             setModal(
-              <Box>
-                <Stack vertical>
-                  <Stack.Item>Are you sure you wish to observe?</Stack.Item>
-                  <Stack.Item>
-                    When you observe, you will not be able to join as marine.
-                  </Stack.Item>
-                  <Stack.Item>
-                    It might also take some time to become a xeno or responder!
-                  </Stack.Item>
-                </Stack>
-                <Stack justify="center">
-                  <Stack.Item>
-                    <Button onClick={() => act('observe')}>Confirm</Button>
-                  </Stack.Item>
-                </Stack>
-              </Box>,
+              <ModalConfirm>
+                <Box>
+                  <Stack vertical>
+                    <Stack.Item>Are you sure you wish to observe?</Stack.Item>
+                    <Stack.Item>
+                      When you observe, you will not be able to join as marine.
+                    </Stack.Item>
+                    <Stack.Item>
+                      It might also take some time to become a xeno or
+                      responder!
+                    </Stack.Item>
+                  </Stack>
+                  <Stack justify="center">
+                    <Stack.Item>
+                      <Button onClick={() => act('observe')}>Confirm</Button>
+                    </Stack.Item>
+                  </Stack>
+                </Box>
+              </ModalConfirm>,
             );
           }}
         >
@@ -346,21 +421,23 @@ const LobbyButtons = (props: {
                     icon="viruses"
                     onClick={() => {
                       setModal(
-                        <Box>
-                          <Stack vertical>
-                            <Stack.Item>
-                              Are you sure want to attempt joining as a
-                              Xenomorph?
-                            </Stack.Item>
-                          </Stack>
-                          <Stack justify="center">
-                            <Stack.Item>
-                              <Button onClick={() => act('late_join_xeno')}>
-                                Confirm
-                              </Button>
-                            </Stack.Item>
-                          </Stack>
-                        </Box>,
+                        <ModalConfirm>
+                          <Box>
+                            <Stack vertical>
+                              <Stack.Item>
+                                Are you sure want to attempt joining as a
+                                Xenomorph?
+                              </Stack.Item>
+                            </Stack>
+                            <Stack justify="center">
+                              <Stack.Item>
+                                <Button onClick={() => act('late_join_xeno')}>
+                                  Confirm
+                                </Button>
+                              </Stack.Item>
+                            </Stack>
+                          </Box>
+                        </ModalConfirm>,
                       );
                     }}
                   >
@@ -394,20 +471,23 @@ const LobbyButtons = (props: {
                   index={7 + (upp_enabled ? 1 : 0)}
                   onClick={() => {
                     setModal(
-                      <Box>
-                        <Stack vertical>
-                          <Stack.Item>
-                            Are you sure want to attempt joining as a Predator?
-                          </Stack.Item>
-                        </Stack>
-                        <Stack justify="center">
-                          <Stack.Item>
-                            <Button onClick={() => act('late_join_pred')}>
-                              Confirm
-                            </Button>
-                          </Stack.Item>
-                        </Stack>
-                      </Box>,
+                      <ModalConfirm>
+                        <Box>
+                          <Stack vertical>
+                            <Stack.Item>
+                              Are you sure want to attempt joining as a
+                              Predator?
+                            </Stack.Item>
+                          </Stack>
+                          <Stack justify="center">
+                            <Stack.Item>
+                              <Button onClick={() => act('late_join_pred')}>
+                                Confirm
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Box>
+                      </ModalConfirm>,
                     );
                   }}
                 >
@@ -427,21 +507,23 @@ const LobbyButtons = (props: {
                   icon="fax"
                   onClick={() => {
                     setModal(
-                      <Box>
-                        <Stack vertical>
-                          <Stack.Item>
-                            Are you sure want to attempt joining as a Fax
-                            Responder?
-                          </Stack.Item>
-                        </Stack>
-                        <Stack justify="center">
-                          <Stack.Item>
-                            <Button onClick={() => act('late_join_faxes')}>
-                              Confirm
-                            </Button>
-                          </Stack.Item>
-                        </Stack>
-                      </Box>,
+                      <ModalConfirm>
+                        <Box>
+                          <Stack vertical>
+                            <Stack.Item>
+                              Are you sure want to attempt joining as a Fax
+                              Responder?
+                            </Stack.Item>
+                          </Stack>
+                          <Stack justify="center">
+                            <Stack.Item>
+                              <Button onClick={() => act('late_join_faxes')}>
+                                Confirm
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Box>
+                      </ModalConfirm>,
                     );
                   }}
                 >
@@ -459,10 +541,16 @@ const LobbyButtons = (props: {
 const TimedDivider = () => {
   const ref = useRef<HTMLDivElement>(null);
 
+  const context = useContext(LobbyContext);
+
+  const { themeDisable } = context;
+
   useEffect(() => {
-    setTimeout(() => {
-      ref.current!.style.display = 'block';
-    }, 1500);
+    if (!themeDisable) {
+      setTimeout(() => {
+        ref.current!.style.display = 'block';
+      }, 1500);
+    }
   });
 
   return (
@@ -471,7 +559,7 @@ const TimedDivider = () => {
         style={{
           borderStyle: 'solid',
           borderWidth: '1px',
-          display: 'none',
+          display: themeDisable ? 'block' : 'none',
         }}
         className="dividerEffect"
         ref={ref}

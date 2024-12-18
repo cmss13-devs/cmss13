@@ -92,18 +92,28 @@
 	var/end_icon = "draw"
 	switch(round_finished)
 		if(MODE_FACTION_CLASH_UPP_MAJOR)
+			marine_announcement("ALERT: All ground forces killed in action or non-responsive. Landing zone overrun. Impossible to sustain combat operations.\n\nMission Abort Authorized! Commencing automatic vessel deorbit procedure from operations zone.\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Enemy landing zone status. Under Union Military Control. Enemy ground forces. Deceased and/or in Union Military custody.\n\nMission Accomplished! Dispatching subspace signal to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
 			end_icon = "upp_major"
 		if(MODE_FACTION_CLASH_UPP_MINOR)
+			marine_announcement("ALERT: All ground forces killed in action or non-responsive. Landing zone overrun. Impossible to sustain combat operations.\n\nMission Abort Authorized! Commencing automatic vessel deorbit procedure from operations zone.\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Enemy landing zone status. Under Union Military Control. Enemy ground forces. Deceased and/or in Union Military custody.\n\nMission Accomplished! Dispatching subspace signal to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
 			end_icon = "upp_minor"
 		if(MODE_INFESTATION_M_MAJOR)
+			marine_announcement("ALERT: Opposing Force landing zone under USCM force control. Orbital scans concludes all opposing force combat personnel are combat inoperative.\n\nMission Accomplished!\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Union landing zone compromised. Union ground forces are non-responsive. Further combat operations impossible.\n\nMission Abort Authorized\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
 		if(MODE_INFESTATION_M_MINOR)
+			marine_announcement("ALERT: Opposing Force landing zone under USCM force control. Orbital scans concludes all opposing force combat personnel are combat inoperative.\n\nMission Accomplished!\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Union landing zone compromised. Union ground forces are non-responsive. Further combat operations impossible.\n\nMission Abort Authorized\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
 		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
+			marine_announcement("ALERT: Inconclusive combat outcome. Unable to assess tactical or strategic situation.\n\nDispatching automated request to High Command for further directives.\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Battle situation has developed not necessarily to the Unions advantage\n\nDispatching request for new directives to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 		else

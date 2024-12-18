@@ -57,9 +57,11 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/machine_id_tag
 	/// Whether or not the ID tag can be changed by proc.
 	var/fixed_id_tag = FALSE
-	/// The identifying name of the machine within the department.
+	/// The identifying name of the machine within the department, listed when being sent something.
 	var/identity_name
 
+	/// The radio prefix used for radio alerts, if there is one.
+	var/radio_alert_tag = null
 
 	/// Target department
 	var/target_department = FAX_DEPARTMENT_WY
@@ -577,26 +579,28 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		receiving_machines += the_target_machine
 	else if(!single_sending || (target_department in FAX_HIGHCOM_DEPARTMENTS))
-		for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.fax_network.all_departments[target_department])
-			if(pos_target != src && pos_target.machine_id_tag == target_machine_id)
-				receiving_machines += pos_target
+		for(var/pos_target in GLOB.fax_network.all_departments[target_department])
+			var/obj/structure/machinery/faxmachine/receiver = GLOB.fax_network.all_departments[target_department][pos_target]
+			if(receiver != src)
+				receiving_machines += receiver
 	else
 		var/the_target_machine = GLOB.fax_network.all_departments[target_department][target_machine]
 		if(the_target_machine == src)
 			return
 		receiving_machines += the_target_machine
 
-	for(var/obj/structure/machinery/faxmachine/target in receiving_machines)
+	var/sent_radio_alert = FALSE
+	for(var/obj/structure/machinery/faxmachine/receiver in receiving_machines)
 		if(!faxcontents)
 			return
-		if(!(target.inoperable()))
+		if(!(receiver.inoperable()))
 
-			flick("[initial(icon_state)]receive", target)
+			flick("[initial(icon_state)]receive", receiver)
 
-			playsound(target.loc, "sound/machines/fax.ogg", 15)
+			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
 			spawn(30)
-				var/obj/item/paper/P = new(target.loc,faxcontents.photo_list)
+				var/obj/item/paper/P = new(receiver.loc,faxcontents.photo_list)
 				if(!faxcontents.paper_name)
 					P.name = "faxed message"
 				else
@@ -642,9 +646,12 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 					P.stamps += "<HR><i>This paper has been sent by [machine_id_tag].</i>"
 				P.overlays += stampoverlay
 				if(sending_priority)
-					playsound(target.loc, "sound/machines/twobeep.ogg", 45)
-					target.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, target), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
-					target.visible_message("[SPAN_BOLD(target)] beeps with a priority message.")
+					playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
+					receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+					receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
+					if((receiver.radio_alert_tag != null) && !sent_radio_alert)
+						ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
+						sent_radio_alert = TRUE
 		qdel(faxcontents)
 
 /obj/structure/machinery/faxmachine/cmb
@@ -663,6 +670,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/corporate/liaison/almayer
 	department = "USS Almayer"
 	sub_name = "W-Y Liaison"
+	radio_alert_tag = ":Y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = FAX_DEPARTMENT_WY
@@ -681,6 +689,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/uscm/almayer/ai_core
 	department = "USS Almayer AI Core"
+	radio_alert_tag = ":+"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/command
 	department = "USS Almayer Command"
@@ -699,6 +708,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	name = "\improper USCM Provost Fax Machine"
 	department = "USS Almayer Brig"
 	target_department = FAX_DEPARTMENT_PROVOST
+	radio_alert_tag = ":P"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig/chief
 	sub_name = "Chief MP"

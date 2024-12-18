@@ -2230,6 +2230,8 @@
 					playsound(target_fax.loc, "sound/machines/twobeep.ogg", 45)
 					target_fax.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, target_fax), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 					target_fax.visible_message("[SPAN_BOLD(target_fax)] beeps with a priority message.")
+					if(target_fax.radio_alert_tag != null)
+						ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [target_fax.machine_id_tag], [target_fax.sub_name ? "[target_fax.sub_name]" : ""], now receiving priority fax.", "[target_fax.radio_alert_tag]")
 
 			to_chat(src.owner, "Message reply to transmitted successfully.")
 			message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(target_human)]"), 1)

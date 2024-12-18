@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "The UPP Pilot and Dzho Automaton roles will properly appear on your character setup screen if you select those roles."

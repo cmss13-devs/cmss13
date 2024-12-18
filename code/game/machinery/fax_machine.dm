@@ -1,6 +1,9 @@
-GLOBAL_LIST_INIT_TYPED(all_faxmachines, /obj/structure/machinery/faxmachine, list())
-GLOBAL_LIST_EMPTY(all_fax_departments)
-GLOBAL_LIST_EMPTY(all_faxcodes)
+/datum/fax_network
+	var/list/all_fax_departments = list()
+	var/list/all_faxcodes = list()
+	var/list/all_faxmachines = list()
+
+GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 #define DEPARTMENT_WY "Weyland-Yutani"
 #define DEPARTMENT_HC "USCM High Command"
@@ -10,7 +13,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 #define DEPARTMENT_TWE "Three World Empire"
 #define DEPARTMENT_UPP "Union of Progress Peoples"
 #define DEPARTMENT_CLF "Colonial Liberation Front"
-#define DEPARTMENT_TARGET "Specific Machine Code"//Used to send to a single specific machine.
+#define DEPARTMENT_SPECIFIC_CODE "Specific Machine Code"//Used to send to a single specific machine.
 #define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS, DEPARTMENT_TWE, DEPARTMENT_UPP, DEPARTMENT_CLF)
 
 #define FAX_NET_USCM "USCM Encrypted Network"
@@ -75,15 +78,17 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
-	GLOB.all_faxmachines += src
+	GLOB.fax_network.all_faxmachines += src
 	update_departments()
+	if(!(src in GLOB.fax_network.all_fax_departments[department]))
+		GLOB.fax_network.all_fax_departments[department] += src
 	generate_id_tag()
 
 /obj/structure/machinery/faxmachine/proc/generate_id_tag(force = FALSE)
 	if(fixed_id_tag && !force)
 		return FALSE
 	if(machine_id_tag)
-		GLOB.all_faxcodes -= machine_id_tag
+		GLOB.fax_network.all_faxcodes -= machine_id_tag
 
 	var/id_tag_prefix
 	var/id_tag_suffix = "[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
@@ -118,19 +123,19 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 	if(!id_tag_final)
 		id_tag_final = "[id_tag_prefix]-[id_tag_suffix]"
-	if(id_tag_final in GLOB.all_faxcodes)
+	if(id_tag_final in GLOB.fax_network.all_faxcodes)
 		generate_id_tag()
 		return FALSE
 
 	machine_id_tag = id_tag_final
 	if(machine_id_tag == network)
 		return TRUE
-	GLOB.all_faxcodes += id_tag_final
+	GLOB.fax_network.all_faxcodes += id_tag_final
 	return TRUE
 
 /obj/structure/machinery/faxmachine/Destroy()
-	GLOB.all_faxmachines -= src
-	GLOB.all_faxcodes -= machine_id_tag
+	GLOB.fax_network.all_faxmachines -= src
+	GLOB.fax_network.all_faxcodes -= machine_id_tag
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -207,26 +212,26 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	return
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
-	if(!(DEPARTMENT_TARGET in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_TARGET
-	if( !("[department]" in GLOB.all_fax_departments) ) //Initialize departments. This will work with multiple fax machines.
-		GLOB.all_fax_departments += department
-	if(!(DEPARTMENT_WY in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_PROVOST
-	if(!(DEPARTMENT_CMB in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_CMB
-	if(!(DEPARTMENT_PRESS in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_PRESS
-	if(!(DEPARTMENT_TWE in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_TWE
-	if(!(DEPARTMENT_UPP in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_UPP
-	if(!(DEPARTMENT_CLF in GLOB.all_fax_departments))
-		GLOB.all_fax_departments += DEPARTMENT_CLF
+	if(!(DEPARTMENT_SPECIFIC_CODE in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_SPECIFIC_CODE] = list()
+	if( !("[department]" in GLOB.fax_network.all_fax_departments) ) //Initialize departments. This will work with multiple fax machines.
+		GLOB.fax_network.all_fax_departments[department] = list(src)
+	if(!(DEPARTMENT_WY in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_WY] = list()
+	if(!(DEPARTMENT_HC in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_HC] = list()
+	if(!(DEPARTMENT_PROVOST in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_PROVOST] = list()
+	if(!(DEPARTMENT_CMB in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_CMB] = list()
+	if(!(DEPARTMENT_PRESS in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_PRESS] = list()
+	if(!(DEPARTMENT_TWE in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_TWE] = list()
+	if(!(DEPARTMENT_UPP in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_UPP] = list()
+	if(!(DEPARTMENT_CLF in GLOB.fax_network.all_fax_departments))
+		GLOB.fax_network.all_fax_departments[DEPARTMENT_CLF] = list()
 
 // TGUI SHIT \\
 
@@ -264,7 +269,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	data["authenticated"] = authenticated
 
 	data["target_department"] = target_department
-	if(target_department == DEPARTMENT_TARGET)
+	if(target_department == DEPARTMENT_SPECIFIC_CODE)
 		data["target_department"] = target_machine_id
 
 	if(target_department in HIGHCOM_DEPARTMENTS)
@@ -370,11 +375,11 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 		if("select")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(user, "Which department?", "Choose a department", GLOB.all_fax_departments)
+			target_department = tgui_input_list(user, "Which department?", "Choose a department", GLOB.fax_network.all_fax_departments)
 			if(!target_department)
 				target_department = last_target_department
-			if(target_department == DEPARTMENT_TARGET)
-				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code", GLOB.all_faxcodes)
+			if(target_department == DEPARTMENT_SPECIFIC_CODE)
+				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code", GLOB.fax_network.all_faxcodes)
 				if(!new_target_machine_id)
 					target_department = last_target_department
 				else
@@ -449,7 +454,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	var/the_target_department = target_department
 	if(department in HIGHCOM_DEPARTMENTS)
 		scan_department = department
-	else if(target_department == DEPARTMENT_TARGET)
+	else if(target_department == DEPARTMENT_SPECIFIC_CODE)
 		the_target_department = "Fax Machine [target_machine_id]"
 
 	var/msg_admin = SPAN_STAFF_IC("<b><font color='#006100'>[the_target_department]: </font>[key_name(user, 1)] ")
@@ -519,8 +524,8 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents, sending_priority)
 	var/list/target_machines = list()
-	for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.all_faxmachines)
-		if(target_department == DEPARTMENT_TARGET)
+	for(var/obj/structure/machinery/faxmachine/pos_target in GLOB.fax_network.all_faxmachines)
+		if(target_department == DEPARTMENT_SPECIFIC_CODE)
 			if(pos_target != src && pos_target.machine_id_tag == target_machine_id)
 				target_machines += pos_target
 		else
@@ -711,7 +716,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	if(portable_id_tag)
 		machine_id_tag = portable_id_tag
 		fixed_id_tag = TRUE
-		GLOB.all_faxcodes += machine_id_tag
+		GLOB.fax_network.all_faxcodes += machine_id_tag
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack

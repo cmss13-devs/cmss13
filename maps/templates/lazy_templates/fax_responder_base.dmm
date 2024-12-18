@@ -111,7 +111,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "ov" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
+/obj/structure/machinery/faxmachine/uscm/highcom{
 	pixel_y = 8
 	},
 /turf/open/floor/wood/ship,
@@ -558,7 +558,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "UB" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/brig/provost{
+/obj/structure/machinery/faxmachine/uscm/provost{
 	pixel_y = 8
 	},
 /turf/open/floor/wood/ship,

@@ -1299,7 +1299,10 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper)
 "aiQ" = (
-/obj/structure/machinery/faxmachine,
+/obj/structure/machinery/faxmachine{
+	sub_name = "Combat Correspondent";
+	department = "USS Almayer"
+	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer/plate,
@@ -3326,7 +3329,9 @@
 /area/almayer/command/cic)
 "awH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "CIC"
+	},
 /obj/item/device/megaphone,
 /obj/structure/machinery/computer/cameras/almayer_brig{
 	desc = "Used to access the various cameras in the security brig.";
@@ -9046,7 +9051,9 @@
 "blw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Conference Room"
+	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -20947,7 +20954,9 @@
 /area/almayer/squads/req)
 "eHx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "Conference Room"
+	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "eHy" = (
@@ -47998,7 +48007,9 @@
 /area/almayer/living/briefing)
 "pUD" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Processing"
+	},
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -48913,7 +48924,9 @@
 /area/almayer/shipboard/panic)
 "qmP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Intel Office"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "qmR" = (
@@ -54324,7 +54337,9 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "stO" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Permanent Confinement"
+	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"

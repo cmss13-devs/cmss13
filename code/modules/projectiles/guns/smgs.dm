@@ -21,6 +21,12 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
 	start_automatic = TRUE
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/smgs.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smgs.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
+	)
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -41,7 +47,7 @@
 /obj/item/weapon/gun/smg/m39
 	name = "\improper M39 submachinegun"
 	desc = "The Armat Battlefield Systems M-39 submachinegun. Occasionally carried by light-infantry, scouts, engineers and medics. A lightweight, lower caliber alternative to the various Pulse weapons used the USCM. Fires 10x20mm rounds out of 48 round magazines."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/smgs.dmi'
 	icon_state = "m39"
 	item_state = "m39"
 	flags_equip_slot = SLOT_BACK
@@ -101,6 +107,7 @@
 	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. Given only to elite units."
 	icon_state = "m39b2"
 	item_state = "m39b2"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/smgs.dmi'
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	map_specific_decoration = FALSE
@@ -163,7 +170,7 @@
 /obj/item/weapon/gun/smg/mp5
 	name = "\improper MP5 submachinegun"
 	desc = "A German design, this was one of the most widely used submachine guns in the world. It's still possible to find this firearm in the hands of collectors or gun fanatics."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mp5"
 	item_state = "mp5"
 
@@ -191,6 +198,10 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
+	random_spawn_chance = 10
+	random_spawn_under = list(
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
 
 
 /obj/item/weapon/gun/smg/mp5/set_gun_attachment_offsets()
@@ -210,12 +221,63 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/smg/mp5/Initialize(mapload, spawn_empty)
-	. = ..()
-	if(prob(10))
-		var/obj/item/attachable/attached_gun/grenade/m203/UGL = new(src)
-		UGL.Attach(src)
-		update_attachable(UGL.slot)
+/obj/item/weapon/gun/smg/mp5/mp5a5
+	name = "\improper MP5A5 submachinegun"
+	desc = "A German design, this was one of the most widely used submachine guns in the world. Modernized design for limited use by colonial security and Office of the Colonial Marshals."
+	icon_state = "mp5_alt"
+	item_state = "mp5_alt"
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade/m203,
+		/obj/item/attachable/stock/smg/collapsible/mp5a5,
+		)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/smg/collapsible/mp5a5/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	S.apply_on_weapon(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 19, "under_x" = 19, "under_y" = 13, "stock_x" = 39, "stock_y" = 11)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/tactical
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
+
+	random_spawn_chance = 100
+	random_spawn_under = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
@@ -223,7 +285,7 @@
 /obj/item/weapon/gun/smg/mp27
 	name = "\improper MP27 submachinegun"
 	desc = "An archaic design going back almost a century, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms. An extremely ergonomic and lightweight design allows easy mass production and surpisingly good handling, but the cheap materials used hurt the weapon's scatter noticeably."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mp7"
 	item_state = "mp7"
 	fire_sound = 'sound/weapons/smg_light.ogg'
@@ -275,7 +337,7 @@
 /obj/item/weapon/gun/smg/ppsh
 	name = "\improper PPSh-17b submachinegun"
 	desc = "An unauthorized copy of a replica of a prototype submachinegun developed in a third world shit hole somewhere."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "ppsh17b"
 	item_state = "ppsh17b"
 
@@ -371,7 +433,7 @@
 /obj/item/weapon/gun/smg/pps43
 	name = "\improper Type-19 Submachinegun" //placeholder
 	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still in limited service in the UPP but is most often used by paramilitary groups or corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu"
 	item_state = "insasu"
 
@@ -415,7 +477,7 @@
 	name = "\improper Type 64 Submachinegun"
 	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a faux-wood grip, denoting it as civilian use or as an export model."
 	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "type64"
 	item_state = "type64"
 
@@ -454,7 +516,7 @@
 /obj/item/weapon/gun/smg/mac15
 	name = "\improper MAC-15 submachinegun"
 	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age." //Includes proprietary 'full-auto' mode, banned in several Geneva Suggestions rim-wide.
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mac15"
 	item_state = "mac15"
 
@@ -502,7 +564,13 @@
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"
 	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smgs.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
+	)
 	icon_state = "uzi"
 	item_state = "uzi"
 	flags_equip_slot = SLOT_WAIST
@@ -584,7 +652,7 @@
 /obj/item/weapon/gun/smg/fp9000
 	name = "\improper FN FP9000 Submachinegun"
 	desc = "An old design, but one that's stood the test of time. A leaked and unencrypted 3D-printing pattern alongside an extremely robust and reasonably cheap to manufacture frame have ensured this weapon be a mainstay of rim colonies and private security firms for over a century."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "fp9000"
 	item_state = "fp9000"
 
@@ -636,6 +704,7 @@
 /obj/item/weapon/gun/smg/fp9000/pmc
 	name = "\improper FN FP9000/2 Submachinegun"
 	desc = "Despite the rather ancient design, the FN FP9K sees frequent use in PMC teams due to its extreme reliability and versatility, allowing it to excel in any situation, especially due to the fact that they use the patented, official version of the gun, which has received several upgrades and tuning to its design over time."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/smgs.dmi'
 	icon_state = "fp9000_pmc"
 	item_state = "fp9000_pmc"
 	random_spawn_chance = 100
@@ -660,10 +729,17 @@
 /obj/item/weapon/gun/smg/nailgun
 	name = "nailgun"
 	desc = "A carpentry tool, used to drive nails into tough surfaces. Of course, if there isn't anything there, that's just a very sharp nail launching at high velocity..."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/nailguns.dmi'
 	icon_state = "nailgun"
 	item_state = "nailgun"
 	current_mag = /obj/item/ammo_magazine/smg/nailgun
+
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/misc_weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
+	)
 
 	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/smg_unload.ogg'

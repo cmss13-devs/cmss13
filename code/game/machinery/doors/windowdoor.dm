@@ -60,39 +60,43 @@
 		close()
 	return
 
-/obj/structure/machinery/door/window/open()
+/obj/structure/machinery/door/window/open(forced = FALSE)
 	if(operating) //doors can still open when emag-disabled
 		return FALSE
 
-	operating = TRUE
+	operating = DOOR_OPERATING_OPENING
 	flick(text("[]opening", base_state), src)
 	playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	icon_state = text("[]open", base_state)
 
-	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed)
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/window/finish_open()
+	if(operating != DOOR_OPERATING_OPENING)
+		return
+
 	density = FALSE
+	operating = DOOR_OPERATING_IDLE
 
-	if(operating) //emag again
-		operating = FALSE
-
-/obj/structure/machinery/door/window/close()
-	if (operating)
+/obj/structure/machinery/door/window/close(forced = FALSE)
+	if(operating)
 		return FALSE
 
-	operating = TRUE
+	operating = DOOR_OPERATING_CLOSING
 	flick(text("[]closing", src.base_state), src)
 	playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	icon_state = base_state
 	density = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
 /obj/structure/machinery/door/window/finish_close()
-	operating = FALSE
+	if(operating != DOOR_OPERATING_CLOSING)
+		return
+
+	operating = DOOR_OPERATING_IDLE
 
 /obj/structure/machinery/door/window/proc/take_damage(damage)
 	src.health = max(0, src.health - damage)
@@ -117,7 +121,7 @@
 		if(operating == -1)
 			ae.fried = TRUE
 			ae.update_icon()
-			operating = 0
+			operating = DOOR_OPERATING_IDLE
 		src.density = FALSE
 		qdel(src)
 		return
@@ -162,11 +166,11 @@
 /obj/structure/machinery/door/window/attackby(obj/item/I, mob/user)
 
 	//If it's in the process of opening/closing, ignore the click
-	if (src.operating == 1)
+	if (operating)
 		return
 
 	//If it's emagged, crowbar can pry electronics out.
-	if (src.operating == -1 && HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
+	if (operating == -1 && HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
@@ -201,7 +205,7 @@
 			ae.fried = TRUE
 			ae.update_icon()
 
-			operating = 0
+			operating = DOOR_OPERATING_IDLE
 			qdel(src)
 			return
 

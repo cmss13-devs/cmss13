@@ -52,6 +52,10 @@ Buildable meters
 	var/connect_types[] = list(1) //1=regular, 2=supply, 3=scrubber
 	force = 7
 	icon = 'icons/obj/pipes/pipe_item.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 	icon_state = "simple"
 	item_state = "buildpipe"
 	flags_atom = FPRINT|CONDUCT

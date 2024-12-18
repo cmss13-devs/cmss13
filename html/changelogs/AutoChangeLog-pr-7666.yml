@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added CO to MP timelocks, and ASO to command timelocks."

@@ -499,8 +499,8 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
+	if(ghost.client?.player_details)
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
-
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)

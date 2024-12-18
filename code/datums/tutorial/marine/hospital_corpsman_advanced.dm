@@ -8,6 +8,7 @@
 	var/clothing_items_to_vend = 6
 	var/ontime
 	var/stage = 0
+	var/cpr_count = 0
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
 	var/handle_pill_bottle_status = 0
 
@@ -21,8 +22,10 @@
 // 1.5 Liver and Kidney Damage
 //
 // Section 2 - Revivals
-// 2.1 Defib
+// 2.1 Defibrillations
 // 2.2 Revival Conditions
+// 2.3 Delivering CPR
+// 2.4 Assisted Revivals
 //
 // Section 3 - Field Surgery
 // 3.1 Surgical Damage Treatment
@@ -1048,11 +1051,230 @@
 	marine_dummy.updatehealth()
 	remove_highlight(marine_dummy)
 
-	slower_message_to_player("Luckily for Private Stanley, he still has the favor of the gods, and will live again!")
+	message_to_player("Luckily for Private Stanley, he still has the favor of the gods, and will live again!")
+	addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 3 SECONDS)
 
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/cpr_tutorial()
 
+	if(stage == 0)
+		message_to_player("<b>Section 2.3: Delivering CPR</b>.")
+		slower_message_to_player("Knowing how and when to perform CPR on a patient, can easily become the difference between life or death in a combat environment.")
+		slower_message_to_player("CPR works by manually operating the lungs of a critically wounded patient, and allowing oxygen back into their bloodstream, and supplied to <b>Brain</b>.")
+		slower_message_to_player("Performing CPR on a patient will both <u>reduce their Oxygen damage</u> levels, as well as slowing or preventing the rate at which they accumulate more Oxygen damage.")
 
+		stage++
+		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 23 SECONDS)
+		return
+	if(stage == 1)
+		slower_message_to_player("Most importantly, CPR can also be used on dead (but still revivable) Marines to <b>Extend their Revival Timer</b>!")
+		slower_message_to_player("Like CPR in the real world, it must be done with timing in mind.")
+		slower_message_to_player("One round of CPR takes <u>4 seconds to complete</u>, and adds <u>7 seconds to a patients Revival Timer</u> if successful.")
+		slower_message_to_player("You <u>MUST</u> wait at least <u>3 SECONDS</u> between rounds of CPR, otherwise you will fail the procedure.")
 
+		stage++
+		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 24 SECONDS)
+		return
+	if(stage == 2)
+		TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+		var/datum/effect_system/spark_spread/sparks = new
+		sparks.set_up(5, 1, marine_dummy.loc)
+		sparks.start()
+
+		marine_dummy.revive_grace_period = 5 MINUTES
+		marine_dummy.death()
+		marine_dummy.updatehealth()
+		add_highlight(marine_dummy, COLOR_GREEN)
+
+		slower_message_to_player("Private Stanley has once again dropped dead! We are going to practice <b>CPR</b> to <b>Extend his Revival Timer</b>")
+		slower_message_to_player("To perform <b>CPR</b>, make sure you are on the green <b>Help Intent</b> and <u>neither of you are wearing face coverings</u>.")
+		slower_message_to_player("Then, click on Private Stanley with an empty hand, and hold still while <b>CPR</b> is performed!")
+
+		RegisterSignal(tutorial_mob, COMSIG_HUMAN_CPR_PERFORMED, PROC_REF(cpr_tutorial_1))
+		stage = 0
+		return
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/cpr_tutorial_1(datum/source, successful)
+	SIGNAL_HANDLER
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	if(successful != TRUE)
+		message_to_player("Bad luck! You made a mistake in the rhythm, and failed a round of CPR. You'll have to try again from the start.")
+		message_to_player("Remember to count in your head: <u>4 seconds to perform, 3 seconds between</u>. Give it another go!")
+		cpr_count = 0
+		return
+	if(successful == TRUE)
+		if(cpr_count == 0)
+			message_to_player("Well done! To get you into the rhythm of CPR, we are going to perform <b>CPR</b> 4 times in a row on Private Stanley!")
+			cpr_count++
+			return
+		if((cpr_count > 0) && (cpr_count != 4))
+			message_to_player("One down! <b>[4 - cpr_count]</b> to go!!")
+			cpr_count++
+			return
+		if(cpr_count > 3)
+			message_to_player("4 in a row! Thats some serious skill you have!")
+			cpr_count = 0
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_CPR_PERFORMED)
+	slower_message_to_player("Even if you aren't playing as a Hospital Corpsman, performing CPR on critically injured Marines can still make you a lifesaver!")
+	remove_highlight(marine_dummy)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery)), 5 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_mix_tutorial()
+	SIGNAL_HANDLER
+
+	if(stage == 0)
+		message_to_player("<b>Section 2.4: Assisted Revivals</b>.")
+		slower_message_to_player("As you know, to successfully revive a non-breathing patient using a <b>Defibrillator</b>, their overall damage must be <u>below 200</u> (NOT including Oxygen damage).")
+		slower_message_to_player("However, when using a <b>Defibrillator</b>, you are provided some leeway on the amount of overall damage.")
+		slower_message_to_player("When you use a <b>Defibrillator</b> on a patient, regardless of revival outcome, it will heal <u>12 damage</u> of each <u>DIFFERENT DAMAGE TYPE</u> (not including Oxygen).")
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 25 SECONDS)
+		stage++
+		return
+	if(stage == 1)
+		slower_message_to_player("Be warned, despite the large healing potential of the <b>Defibrillator</b>, repeated usage will apply large amounts of <b>Heart Damage</b> to the patient, requiring surgical intervention.")
+		slower_message_to_player("If the overall damage levels of a patient (not including Oxygen damage) are below 200 <u>AFTER</u> the <b>Defibrillator</b> has applied its 12 points of healing, the revival will be <b>Successful</b>!")
+
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 17 SECONDS)
+		stage++
+		return
+	if(stage == 2)
+		slower_message_to_player("As well as a <b>Defibrillators Healing Factor</b> of 12 damage, a chemical called <b>Epinephrine</b> (aka. Adrenaline) can be used to apply an additional 20 Points of Healing per defibrillation, per damage type!")
+
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 7 SECONDS)
+		stage++
+		return
+	if(stage == 3)
+		slower_message_to_player("<b>Epinephrine</b> has an <b>Overdose of 10.5 units</b>, and <u>MUST BE INJECTED</u> into the body to work.")
+		slower_message_to_player("This means that, with <b>Epinephrine</b> in a patients system, one defibrillation can heal: <b>32 Brute, 32 Burn, and 32 Toxin</b> damage in a single use!")
+		stage = 0
+	addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial_1)), 15 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_mix_tutorial_1()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
+	if(stage == 0)
+		var/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/revivalmix = new(loc_from_corner(1,4))
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/revivalpen = locate(/obj/item/reagent_container/hypospray/autoinjector/empty/medic) in revivalmix.contents
+		add_to_tracking_atoms(revivalmix)
+		add_to_tracking_atoms(revivalpen)
+		add_highlight(revivalmix, COLOR_GREEN)
+
+		slower_message_to_player("<b>Epinephrine</b> is primarily found in a <b>Pressurized Reagent Canister</b>, in the form of a chemical cocktail called <b>Revival Mix</b>.")
+		slower_message_to_player("A new <b>Pressurized Reagent Canister</b> has appeared on your desk! Pick it up and equip it to a <b>Pouch Slot</b> by pressing <b>[retrieve_bind("quick_equip")]</b>.")
+
+		RegisterSignal(revivalmix, COMSIG_ITEM_EQUIPPED, PROC_REF(revival_mix_tutorial_1))
+		stage++
+		return
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, revivalmix)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/empty/medic, revivalpen)
+
+	if(stage == 1)
+		UnregisterSignal(revivalmix, COMSIG_ITEM_EQUIPPED)
+		slower_message_to_player("Inside every <b>Pressurized Reagent Canister</b>, an <b>Autoinjector</b> comes pre-loaded, set to deliver <b>15 Chemical Units</b> of the canisters contents per injection.")
+		slower_message_to_player("Since we have been supplied with the <b>Tricordrazine</b> variant of <b>Revival Mix</b>, your <b>Pressurized Reagent Canisters Autoinjector</b> will deliver <u>5u of Tricordrazine, Inaprovaline, and Epinephrine per injection</u>.")
+
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial_1)), 15 SECONDS)
+		stage++
+		return
+	if(stage == 2)
+		UnregisterSignal(revivalpen, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+		add_highlight(revivalpen, COLOR_GREEN)
+		message_to_player("We will now run through the use case for <b>Revival Mix and Epinephrine</b> on the field.")
+
+		var/datum/effect_system/spark_spread/sparks = new
+		sparks.set_up(5, 1, marine_dummy.loc)
+		sparks.start()
+
+		marine_dummy.adjustBruteLoss(120)
+		marine_dummy.adjustFireLoss(120)
+		marine_dummy.revive_grace_period = INFINITY
+		marine_dummy.death()
+		marine_dummy.updatehealth()
+		add_highlight(marine_dummy, COLOR_GREEN)
+
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+		add_highlight(healthanalyzer, COLOR_GREEN)
+		remove_highlight(revivalmix)
+
+		slower_message_to_player("Private Stanley is dead yet again. Before attempting a revival, you will first scan his condition with a <b>Health Analyzer</b>.")
+
+		RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(revival_mix_tutorial_2))
+		stage = 0
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_mix_tutorial_2(datum/source, mob/living/carbon/human/attacked_mob)
+	SIGNAL_HANDLER
+
+	if(attacked_mob == tutorial_mob)
+		return
+
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	remove_highlight(marine_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
+
+	slower_message_to_player("As you can see on your <b>Health Analyzer Interface</b>, Private Stanley has <b>120 Brute Damage</b> and <b>120 Burn Damage</b>, adding up to <b>240 Damage in Total</b>.")
+	slower_message_to_player("Using a regular Defibrillator, only 12 Brute and Burn damage would be healed, leaving Private Stanley above the 200 overall damage mark, causing the revival attempt to <b>Fail</b>.")
+	slower_message_to_player("Instead, we are going to inject Stanley with <b>Revival Mix</b>, allowing us to heal an <u>additional</u> 20 Brute and Burn damage when defibrillating, allowing a <b>Successful Revival</b>!")
+	message_to_player("Click on your <b>Pressurized Reagent Canister</b> with an empty hand to draw its stored <b>Autoinjector</b>.")
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, revivalmix)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/empty/medic, revivalpen)
+	add_highlight(revivalmix, COLOR_GREEN)
+	RegisterSignal(revivalpen, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(revival_mix_tutorial_3))
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_mix_tutorial_3()
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, revivalmix)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/empty/medic, revivalpen)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
+	if(stage == 0)
+		UnregisterSignal(revivalpen, COMSIG_ITEM_DRAWN_FROM_STORAGE)
+		remove_highlight(revivalmix)
+		add_highlight(revivalpen, COLOR_GREEN)
+		add_highlight(marine_dummy, COLOR_GREEN)
+		message_to_player("Good, now click on Private Stanley with your Autoinjector in hand to inject him with a shot of <b>Revival Mix</b>.")
+		RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(revival_mix_tutorial_3))
+		stage++
+		return
+	if(stage == 1)
+		UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+		remove_highlight(revivalpen)
+
+		slower_message_to_player("Excellent. Place your <b>Revival Mix Autoinjector</b> back in its Reagent Canister to store and refill it after use.")
+		slower_message_to_player("Private Stanley is now ready for <b>Defibrillation</b>.")
+		slower_message_to_player("Remove his <b>Armor</b>, pick up the <b>Defibrillator</b> from the desk, detach its contact paddles, and use it to <b>Revive Private Stanley</b>!")
+
+		var/obj/item/device/defibrillator/defib = new(loc_from_corner(0,4))
+		add_to_tracking_atoms(defib)
+		add_highlight(defib, COLOR_GREEN)
+
+		RegisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED, PROC_REF(revival_mix_tutorial_3))
+		stage++
+		return
+	if(stage == 2)
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
+		UnregisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED)
+		remove_highlight(marine_dummy)
+		remove_highlight(defib)
+		remove_from_tracking_atoms(defib)
+		remove_from_tracking_atoms(revivalpen)
+		remove_from_tracking_atoms(revivalmix)
+		var/cleanup = list(defib, revivalpen, revivalmix)
+		QDEL_LIST_IN(cleanup, 2 SECONDS)
+
+		marine_dummy.rejuvenate()
+		marine_dummy.revive_grace_period = 5 MINUTES
+		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
+		marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
+		stage = 0
+
+	slower_message_to_player("Great work! As you can see, with the help of <b>Epinephrine</b> and <b>Revival Mix</b>, Private Stanley was able to be revived!")
+	slower_message_to_player("Note that, with each attempted <b>Defibrillation</b> successful or not, 1u of <b>Epinephrine</b> will be consumed in the patients body.")
+
+	addtimer(CALLBACK(src, PROC_REF(field_surgery)), 7 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery()
 
@@ -1636,17 +1858,12 @@
 // Section 1 - Stabilizing Types of Organ Damage
 // 1.5 Liver and Kidney Damage
 //
-// Section 2 - Revivals
-// 2.2 CPR
-// 2.3 Revival Mix and Epi
-// 2.4 Emergency Revivals
-// 2.5 Lost Causes
-//
 // Section 4 - Specialized Treatments
 // 4.1 Medical Evacuations, Stasis
 // 4.2 Genetic Damage
 // 4.3 Extreme Overdoses
 // 4.4 Synthetic Limb Repair
+// 4.5 Blood Transfusions
 //
 
 

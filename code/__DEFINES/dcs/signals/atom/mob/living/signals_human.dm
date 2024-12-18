@@ -80,3 +80,7 @@
 
 /// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)
 #define COMSIG_HUMAN_PILL_FED "human_pill_fed"
+
+/// From /mob/living/carbon/human/attack_hand() : (successful)
+// Sends to attacking mob, successful TRUE or FALSE
+#define COMSIG_HUMAN_CPR_PERFORMED "human_cpr_performed"

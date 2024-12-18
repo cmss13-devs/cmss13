@@ -143,6 +143,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/Destroy()
 	GLOB.fax_network.all_faxcodes -= machine_id_tag
+	GLOB.fax_network.all_departments[department] -= identity_name
 	. = ..()
 
 /obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)

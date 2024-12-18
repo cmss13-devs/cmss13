@@ -820,7 +820,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_2()
 
-	message_to_player("In short, <b>Defibrillators</b> work by administering a small <b>Electric Shock</b> to the Heart of a dead Marine, causing to briefly sieze up, before resuming a regular heartbeat.")
+	message_to_player("In short, <b>Defibrillators</b> work by administering a small <b>Electric Shock</b> to the Heart of a dead Marine, causing it to briefly sieze up, before resuming a regular heartbeat.")
 	message_to_player("Each <b>Defibrillator</b> comes with an inbuilt <b>Power-Cell</b> for storing charge and two <b>Contact Paddles</b> transferring said charge.")
 	message_to_player("The easiest way to learn how to use a <b>Defibrillator</b> properly can be found through a hands-on approach!")
 	message_to_player("Let's set the scene, shall we?")
@@ -842,7 +842,7 @@
 
 	message_to_player("This is <b>Private Stanley</b>! He will be our new test-subject for the remainder of the tutorial.")
 
-	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_4)), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_4()
 
@@ -953,7 +953,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
 	marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial()
 

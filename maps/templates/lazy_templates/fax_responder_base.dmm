@@ -16,9 +16,6 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 4
-	},
 /turf/open/floor/darkgreen2,
 /area/adminlevel/ert_station/fax_response_station)
 "ab" = (
@@ -44,10 +41,6 @@
 /area/adminlevel/ert_station/fax_response_station)
 "ad" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/pen/fountain{
-	pixel_x = -13;
-	pixel_y = 2
-	},
 /obj/item/paper_bin{
 	pixel_y = 7;
 	pixel_x = -12
@@ -72,6 +65,7 @@
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/multicolor/provost,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "ag" = (
@@ -111,9 +105,6 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 4
-	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "ak" = (
@@ -130,9 +121,6 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 3;
 	pixel_x = 5
-	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 4
 	},
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
@@ -185,9 +173,6 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 4
-	},
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "ar" = (
@@ -206,9 +191,6 @@
 /obj/item/ashtray/plastic{
 	pixel_y = -6;
 	pixel_x = 6
-	},
-/obj/item/tool/pen/fountain{
-	pixel_x = -5
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
@@ -229,7 +211,6 @@
 	pixel_y = -6;
 	pixel_x = -11
 	},
-/obj/item/tool/pen/fountain,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "at" = (
@@ -248,9 +229,6 @@
 /obj/item/ashtray/plastic{
 	pixel_y = -6;
 	pixel_x = -8
-	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 4
 	},
 /turf/open/floor/shiva/blue/southwest,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1532,6 +1510,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "ow" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/multicolor/provost,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "oO" = (
@@ -2311,11 +2290,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/highcom,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "xn" = (
@@ -3593,11 +3570,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JX" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/brig/provost{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/provost,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "JY" = (
@@ -4250,6 +4225,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "SS" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/multicolor/provost,
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
 "ST" = (

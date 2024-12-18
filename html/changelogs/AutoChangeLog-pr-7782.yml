@@ -1,0 +1,8 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "blade runner revolvers and holdout pistol now have unique sprite in belt and fit gun belts"
+  - rscadd: "officer (SO) helmet now has sprite matching the armor on different maps"
+  - bugfix: "broken icons"
+  - bugfix: "es4 now fits gun belts"
+  - bugfix: "wrapped burrito/hotdog/burger having no trash wrapper"

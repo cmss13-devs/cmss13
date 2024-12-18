@@ -281,6 +281,9 @@
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
+	if(burn > 0 && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire))
+		burn /= 5 //we halve burn damage on HvH
+
 	if(status & LIMB_DESTROYED)
 		return 0
 

@@ -136,9 +136,9 @@
 	modifier_name = "Heavy uscm specialists"
 	modifier_desc = "Replaces all specialist kits with b18 armor kit."
 
-/datum/gamemode_modifier/weaker_explosions
+/datum/gamemode_modifier/weaker_explosions_fire
 	modifier_name = "Weaker explosions"
-	modifier_desc = "Reduces damage and stun from explosions."
+	modifier_desc = "Reduces damage from flames and explosion and stun from explosions to humans."
 
 /datum/gamemode_modifier/no_body_c4
 	modifier_name = "No body c4"

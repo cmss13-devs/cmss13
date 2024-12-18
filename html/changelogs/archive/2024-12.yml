@@ -320,3 +320,6 @@
   - rscadd: toggleble flag to prevent c4s on human for gamemodes
   - bugfix: anti stripmode flag prevents buckling to roller beds and closing into
       bags to move dead or crit bodies of enemy faction
+2024-12-18:
+  Tsurupeta:
+  - rscadd: Added saving of the preferences for ambience/lobby music/game volume.

@@ -2632,11 +2632,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/highcom,
 /turf/open/floor/almayer/blue{
 	allow_construction = 0
 	},
@@ -4231,11 +4229,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JX" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/brig/provost{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/provost,
 /turf/open/floor/almayer/red{
 	allow_construction = 0
 	},

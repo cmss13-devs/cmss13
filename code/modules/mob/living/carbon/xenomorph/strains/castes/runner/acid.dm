@@ -35,6 +35,7 @@
 	var/acid_slash_regen_lying = 8
 	var/acid_slash_regen_standing = 14
 	var/acid_passive_regen = 1
+	var/acid_gen_cap = 400
 
 	var/melt_acid_cost = 100
 
@@ -47,6 +48,10 @@
 	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid
 
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)
+	if(acid_amount >= acid_gen_cap)
+		acid_passive_regen = 0
+	else
+		acid_passive_regen = 1
 	acid_amount += amount
 	if(acid_amount > max_acid)
 		acid_amount = max_acid

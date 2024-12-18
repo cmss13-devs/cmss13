@@ -306,7 +306,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	. = ..()
 	if(.)
 		return
-	var/mob/user = ui.user
 
 	switch(action)
 		if("toggle_priority")
@@ -329,7 +328,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 		if("send")
 			if(!original_fax)
-				to_chat(user, SPAN_NOTICE("No paper loaded."))
+				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
 				return
 
 			if(single_sending && (target_machine == "Undefined") && !(target_department == FAX_DEPARTMENT_SPECIFIC_CODE))
@@ -345,28 +344,27 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			if(istype(original_fax, /obj/item/paper_bundle))
 				var/obj/item/paper_bundle/bundle = original_fax
 				if(bundle.amount > 5)
-					to_chat(user, SPAN_NOTICE("\The [src] is jammed!"))
+					to_chat(ui.user, SPAN_NOTICE("\The [src] is jammed!"))
 					return
 
 			copy_fax_paper()
 
-			outgoing_fax_message(user, is_priority_fax)
-			is_priority_fax = FALSE
+			outgoing_fax_message(ui.user)
 
 			COOLDOWN_START(src, send_cooldown, fax_cooldown)
-			to_chat(user, "Message transmitted successfully.")
+			to_chat(ui.user, "Message transmitted successfully.")
 			. = TRUE
 
 		if("ejectpaper")
 			if(!original_fax)
-				to_chat(user, SPAN_NOTICE("No paper loaded."))
-			if(!ishuman(user))
-				to_chat(user, SPAN_NOTICE("You can't do that."))
+				to_chat(ui.user, SPAN_NOTICE("No paper loaded."))
+			if(!ishuman(ui.user))
+				to_chat(ui.user, SPAN_NOTICE("You can't do that."))
 				return
 
-			original_fax.forceMove(user.loc)
-			user.put_in_hands(original_fax)
-			to_chat(user, SPAN_NOTICE("You take the [original_fax.name] out of [src]."))
+			original_fax.forceMove(ui.user.loc)
+			ui.user.put_in_hands(original_fax)
+			to_chat(ui.user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
 			original_fax = null
 			fax_paper_copy = null
 			photo_list = null
@@ -374,31 +372,31 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 		if("insertpaper")
 			var/jammed = FALSE
-			var/obj/item/I = user.get_active_hand()
+			var/obj/item/I = ui.user.get_active_hand()
 			if(istype(I, /obj/item/paper_bundle))
 				var/obj/item/paper_bundle/bundle = I
 				if(bundle.amount > 5)
 					jammed = TRUE
 				// Repeating code? This is not ideal. Why not put this functionality inside of a proc?
 			if(istype(I, /obj/item/paper) || istype(I, /obj/item/paper_bundle) || istype(I, /obj/item/photo))
-				user.drop_inv_item_to_loc(I, src)
+				ui.user.drop_inv_item_to_loc(I, src)
 				original_fax = I
 				if(!jammed)
-					to_chat(user, SPAN_NOTICE("You put the [original_fax.name] into [src]."))
+					to_chat(ui.user, SPAN_NOTICE("You put \the [original_fax.name] into \the [src]."))
 				else
-					to_chat(user, SPAN_NOTICE("[src] jammed! It can only accept up to five papers at once."))
+					to_chat(ui.user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
 				flick("[initial(icon_state)]send", src)
 			. = TRUE
 
 		if("ejectid")
-			if(!scan || !ishuman(user))
-				to_chat(user, SPAN_WARNING("You can't do that."))
+			if(!scan || !ishuman(ui.user))
+				to_chat(ui.user, SPAN_WARNING("You can't do that."))
 				return
-			to_chat(user, SPAN_NOTICE("You take [scan] out of [src]."))
-			scan.forceMove(user.loc)
-			if(!user.get_active_hand())
-				user.put_in_hands(scan)
+			to_chat(ui.user, SPAN_NOTICE("You take \the [scan] out of \the [src]."))
+			scan.forceMove(ui.user.loc)
+			if(!ui.user.get_active_hand())
+				ui.user.put_in_hands(scan)
 				scan = null
 			else
 				scan.forceMove(src.loc)
@@ -447,7 +445,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			authenticated = FALSE
 			. = TRUE
 
-	add_fingerprint(user)
+	add_fingerprint(ui.user)
 
 /obj/structure/machinery/faxmachine/vv_get_dropdown()
 	. = ..()
@@ -494,7 +492,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
 			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='192'/>"
 
-/obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user, sending_priority)
+/obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user)
 
 	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name, target_department, machine_id_tag)
 
@@ -544,7 +542,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[the_target_department]: </font></b>")
 	msg_ghost += "Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
-	send_fax(faxcontents, sending_priority)
+	send_fax(faxcontents)
 
 	announce_fax(msg_admin, msg_ghost)
 
@@ -677,7 +675,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_WY
 	target_department = "W-Y Liaison"
 	network = FAX_NET_WY_HC
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm
 	name = "\improper USCM Military Fax Machine"
@@ -703,7 +700,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_HC
 	target_department = "USS Almayer Command"
 	network = FAX_NET_USCM_HC
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig
 	name = "\improper USCM Provost Fax Machine"
@@ -719,7 +715,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_PROVOST
 	target_department = "USS Almayer Brig"
 	network = FAX_NET_USCM_HC
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/upp
 	name = "\improper UPP Military Fax Machine"
@@ -731,7 +726,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_UPP
 	network = FAX_NET_UPP_HC
 	target_department = "UPP Local Operations"
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/clf
 	name = "\improper Hacked General Purpose Fax Machine"
@@ -743,7 +737,6 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_CLF
 	network = FAX_NET_CLF_HC
 	target_department = "CLF Local Operations"
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/twe
 	name = "\improper TWE Military Fax Machine"
@@ -755,13 +748,11 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_TWE
 	network = FAX_NET_TWE_HC
 	target_department = "TWE Local Operations"
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/press/highcom
 	department = FAX_DEPARTMENT_PRESS
 	network = FAX_NET_PRESS_HC
 	target_department = "General Public"
-	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()

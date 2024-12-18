@@ -1,4 +1,57 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/uscm{
+	pixel_x = 9;
+	density = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ab" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/uscm/highcom{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/provost{
+	density = 0;
+	pixel_x = 9;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ad" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/uscm/provost{
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ae" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/wy{
+	pixel_x = 9;
+	density = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "am" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/red{
@@ -106,13 +159,6 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food{
 	pixel_y = 16;
 	density = 0
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
-"ov" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/highcom{
-	pixel_y = 8
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -556,13 +602,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
-"UB" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/provost{
-	pixel_y = 8
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "VV" = (
 /obj/effect/landmark/late_join/responder/upp,
 /turf/open/floor/wood/ship,
@@ -977,12 +1016,12 @@ Yy
 xX
 xX
 Ei
-EI
+ac
 gu
 gu
 gu
 Pn
-EI
+aa
 gu
 gu
 gu
@@ -1071,12 +1110,12 @@ Yy
 xX
 vc
 Ei
-UB
+ad
 ST
 gu
 NP
 Pn
-ov
+ab
 ST
 gu
 tq
@@ -1399,7 +1438,7 @@ Yy
 Yy
 xX
 BC
-EI
+ae
 gu
 gu
 gu

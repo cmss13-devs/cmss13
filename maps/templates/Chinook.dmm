@@ -1,4 +1,39 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/sign/prop2{
+	pixel_y = 30
+	},
+/obj/structure/machinery/faxmachine/uscm/highcom{
+	name = "Chinook Fax Machine";
+	department = "Chinook 91 GSO Station";
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/chinook/offices)
+"ab" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 8;
+	pixel_x = 12
+	},
+/obj/item/prop/tableflag/uscm{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/prop/tableflag/uscm2{
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/offices)
 "ac" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
@@ -22,6 +57,14 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
+"ae" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin/uscm,
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/adminlevel/chinook/offices)
 "af" = (
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/space)
@@ -35,12 +78,61 @@
 "ai" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/space)
+"aj" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin/uscm{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/adminlevel/chinook/offices)
+"ak" = (
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/paper_bin/uscm,
+/obj/structure/sign/prop1{
+	pixel_x = -32;
+	pixel_y = 2
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/offices)
 "al" = (
 /turf/open/floor/almayer_hull,
 /area/space)
 "am" = (
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
+"an" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 5;
+	pixel_x = -8
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/offices)
 "ao" = (
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook)
@@ -72,6 +164,22 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
+"as" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin/uscm{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/turf/open/floor/wood,
+/area/adminlevel/chinook/offices)
 "au" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
@@ -378,22 +486,6 @@
 /obj/item/prop/tableflag{
 	pixel_x = -9;
 	pixel_y = -2
-	},
-/turf/open/floor/wood,
-/area/adminlevel/chinook/offices)
-"bm" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/paper_bin/uscm{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/tool/pen/fountain{
-	pixel_y = 4;
-	pixel_x = -8
-	},
-/obj/item/device/flashlight/lamp{
-	pixel_y = 8;
-	pixel_x = 6
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
@@ -1522,14 +1614,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
-"fC" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen/fountain{
-	pixel_y = -3
-	},
-/turf/open/floor/wood,
-/area/adminlevel/chinook/offices)
 "fE" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1578,22 +1662,6 @@
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/sec)
-"fO" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/paper_bin/uscm{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/device/flashlight/lamp{
-	pixel_y = 8;
-	pixel_x = 6
-	},
-/obj/item/tool/pen/fountain{
-	pixel_x = -8;
-	pixel_y = 5
-	},
-/turf/open/floor/wood,
-/area/adminlevel/chinook/offices)
 "fQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -3437,18 +3505,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
-"nF" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/sign/prop2{
-	pixel_y = 30
-	},
-/obj/structure/machinery/faxmachine/uscm/highcom{
-	name = "Chinook Fax Machine";
-	department = "Chinook 91 GSO Station";
-	pixel_y = 5
-	},
-/turf/open/floor/almayer/plate,
-/area/adminlevel/chinook/offices)
 "nG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
@@ -10142,23 +10198,6 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
-"Qs" = (
-/obj/item/tool/pen/fountain{
-	pixel_x = 3;
-	pixel_y = -1
-	},
-/obj/item/paper_bin/uscm,
-/obj/structure/sign/prop1{
-	pixel_x = -32;
-	pixel_y = 2
-	},
-/obj/structure/surface/table/reinforced/black,
-/obj/item/tool/pen/fountain{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/offices)
 "Qt" = (
 /obj/structure/sign/prop1{
 	pixel_y = 32
@@ -10197,29 +10236,6 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/chinook/event)
-"QB" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 8;
-	pixel_x = 12
-	},
-/obj/item/prop/tableflag/uscm{
-	pixel_x = -7;
-	pixel_y = 1
-	},
-/obj/item/prop/tableflag/uscm2{
-	pixel_y = 1;
-	pixel_x = 1
-	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 10;
-	pixel_y = 6
-	},
-/turf/open/floor/carpet,
-/area/adminlevel/chinook/offices)
 "QD" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/uscm{
@@ -12259,22 +12275,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/medical)
-"Zd" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/device/flashlight/lamp{
-	pixel_y = 5;
-	pixel_x = -8
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 8;
-	pixel_x = 5
-	},
-/obj/item/tool/pen/fountain{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/turf/open/floor/carpet,
-/area/adminlevel/chinook/offices)
 "Zf" = (
 /obj/structure/sign/poster{
 	pixel_y = -32
@@ -16723,7 +16723,7 @@ ap
 aD
 ba
 bH
-Qs
+ak
 cr
 db
 dy
@@ -17750,7 +17750,7 @@ Xx
 jF
 fz
 fK
-QB
+ab
 DE
 uq
 eo
@@ -18510,7 +18510,7 @@ eB
 Zi
 Sj
 jF
-fC
+ae
 fK
 NW
 DE
@@ -18626,7 +18626,7 @@ Zu
 al
 al
 Yc
-bm
+as
 CC
 Kx
 DE
@@ -19156,7 +19156,7 @@ eB
 Xx
 on
 YC
-nF
+aa
 uq
 qj
 qp
@@ -19399,7 +19399,7 @@ sr
 Zi
 Xx
 jF
-fO
+aj
 CC
 Kx
 DE
@@ -19517,7 +19517,7 @@ al
 Yc
 ZF
 qj
-Zd
+an
 DE
 uq
 uq

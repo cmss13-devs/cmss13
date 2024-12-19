@@ -109,8 +109,8 @@
 	role_comm_title = "Fld Doc"
 	skills = /datum/skills/doctor
 
-	minimap_icon = list("doctor")
-	minimap_background = "background_medical_wo"
+	minimap_icon = "field_doctor"
+	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel

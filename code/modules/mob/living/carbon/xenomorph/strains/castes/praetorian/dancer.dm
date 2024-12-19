@@ -27,6 +27,14 @@
 
 	prae.recalculate_everything()
 
+/datum/xeno_strain/dancer/remove_strain(mob/living/carbon/xenomorph/praetorian/prae)
+	prae.armor_modifier = initial(prae.armor_modifier)
+	prae.speed_modifier = initial(prae.speed_modifier)
+	prae.plasma_types = initial(prae.plasma_types)
+	prae.claw_type = initial(prae.claw_type)
+
+	prae.recalculate_everything()
+
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 

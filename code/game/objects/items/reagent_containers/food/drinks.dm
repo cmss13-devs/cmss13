@@ -312,7 +312,9 @@
 	item_state_slots = list(WEAR_AS_GARB = "flask")
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
-		)
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	volume = 60
 	center_of_mass = "x=17;y=8"
 

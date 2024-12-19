@@ -817,6 +817,10 @@
 	icon_state = "mealpack"
 	item_state = "mealpack"
 	icon = 'icons/obj/items/storage/mre.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 7

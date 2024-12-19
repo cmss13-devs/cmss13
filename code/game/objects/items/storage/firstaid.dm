@@ -643,7 +643,7 @@
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
 	icon_state = "pill_canister1"
-	item_state = "píll_canister1"
+	item_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
 	maptext_label = "Dx"
 
@@ -769,7 +769,7 @@
 /obj/item/storage/pill_bottle/stimulant
 	name = "\improper Stimulant pill bottle"
 	icon_state = "pill_canister12"
-	item_state = "píll_canister12"
+	item_state = "pill_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
 	maptext_label = "ST"
 

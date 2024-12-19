@@ -102,6 +102,10 @@
 	name = "knife"
 	desc = "Can cut through any food."
 	icon_state = "knife"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
 	force = 10
 	throwforce = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -116,6 +120,11 @@
 	name = "plastic knife"
 	desc = "The bluntest of blades."
 	icon_state = "pknife"
+	item_state = "knife"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
 	force = 10
 	throwforce = 10
 

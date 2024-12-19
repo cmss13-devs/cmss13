@@ -246,7 +246,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-		)
+	)
 
 /obj/item/weapon/straight_razor
 	name = "straight razor"

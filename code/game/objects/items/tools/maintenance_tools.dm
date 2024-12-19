@@ -153,6 +153,7 @@
 	name = "tactical wirecutters"
 	desc = "This heavy-duty pair seems more fit for cutting barbed wire, but it'll work splendidly on electrical wires."
 	icon_state = "tac_cutters"
+	item_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))

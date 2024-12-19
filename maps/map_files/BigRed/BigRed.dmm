@@ -14786,7 +14786,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = 13
@@ -19533,7 +19533,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -6;
 	pixel_y = 6;
@@ -20322,7 +20322,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 7;
 	pixel_y = -6
@@ -21413,7 +21413,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 5;
 	layer = 3.01;
@@ -21751,7 +21751,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 2;
 	pixel_y = -4
@@ -23240,7 +23240,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 10;
 	pixel_y = 6
@@ -23513,7 +23513,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 9;
 	layer = 3.01;
@@ -25360,7 +25360,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -6;
 	pixel_y = 12
@@ -25368,7 +25368,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 7;
 	pixel_y = 3;
@@ -27812,7 +27812,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -6;
 	pixel_y = -4
@@ -28165,7 +28165,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -8;
 	pixel_y = -4
@@ -28655,7 +28655,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -2;
 	pixel_y = -4
@@ -28803,7 +28803,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 7;
 	pixel_y = -6
@@ -31731,7 +31731,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -11;
 	pixel_y = -4;
@@ -31740,7 +31740,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 7;
 	pixel_y = 16;
@@ -32324,7 +32324,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 7;
 	pixel_y = 3;
@@ -33068,7 +33068,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 2;
 	pixel_y = 1
@@ -33477,7 +33477,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -6;
 	pixel_y = -4;
@@ -36005,7 +36005,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -6;
 	pixel_y = 3
@@ -36017,7 +36017,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 10;
 	pixel_y = 6
@@ -36371,7 +36371,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -6;
 	pixel_y = -4;
@@ -36380,7 +36380,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 8;
 	layer = 3.01;
@@ -38642,7 +38642,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -3;
 	pixel_y = 2

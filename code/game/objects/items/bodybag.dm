@@ -4,6 +4,10 @@
 	name = "body bag"
 	desc = "A folded bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/bodybag.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "bodybag_folded"
 	item_state = "bodybag"
 	w_class = SIZE_SMALL

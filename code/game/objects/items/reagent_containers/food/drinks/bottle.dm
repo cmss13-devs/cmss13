@@ -453,6 +453,7 @@
 	name = "Orange Juice"
 	desc = "Full of vitamins and deliciousness!"
 	icon_state = "orangejuice"
+	item_state = "orangejuice"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
@@ -476,6 +477,7 @@
 	name = "Milk Cream"
 	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
 	icon_state = "cream"
+	item_state = "cream"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
@@ -491,6 +493,7 @@
 	name = "Tomato Juice"
 	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
 	icon_state = "tomatojuice"
+	item_state = "tomatojuice"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
@@ -506,6 +509,7 @@
 	name = "Lime Juice"
 	desc = "Sweet-sour goodness."
 	icon_state = "limejuice"
+	item_state = "limejuice"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',

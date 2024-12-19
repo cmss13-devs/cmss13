@@ -178,10 +178,8 @@
 /obj/item/frame/table/almayer
 	name = "gray table parts"
 	icon_state = "table_parts"
-	item_state = "tableparts"
+	item_state = "table_parts"
 	table_type = /obj/structure/surface/table/almayer
-
-
 
 /*
  * Rack Parts

@@ -3282,7 +3282,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "aoA" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aoB" = (
@@ -4101,7 +4101,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "asm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asn" = (
@@ -5563,7 +5563,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayF" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayG" = (
@@ -35047,7 +35047,7 @@
 /turf/open/floor/carpet15_15/west,
 /area/desert_dam/building/administration/office)
 "duo" = (
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet11_12/west,
 /area/desert_dam/building/administration/office)
@@ -35130,7 +35130,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "duV" = (
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /obj/structure/machinery/light{
 	dir = 1
 	},

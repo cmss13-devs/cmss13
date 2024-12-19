@@ -1,6 +1,6 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
-	description = "At the cost of a little bit of your speed, a little bit of damage and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
+	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time up to a certain ammount. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
 	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
 
@@ -21,6 +21,7 @@
 	runner.armor_modifier += XENO_ARMOR_MOD_MED
 	runner.health_modifier += XENO_HEALTH_MOD_ACIDER
 	runner.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	runner.burn_damage_modifier += XENO_DAMAGE_MOD_VERY_VERY_SMALL
 
 	runner.recalculate_everything()
 
@@ -33,8 +34,8 @@
 
 	var/max_acid = 1000
 	var/caboom_timer = 20
-	var/acid_slash_regen_lying = 8
-	var/acid_slash_regen_standing = 14
+	var/acid_slash_regen_lying = 10
+	var/acid_slash_regen_standing = 16
 	var/acid_passive_regen = 1
 	var/acid_gen_cap = 400 //Ammount of acid from wich passive acid generation stops
 

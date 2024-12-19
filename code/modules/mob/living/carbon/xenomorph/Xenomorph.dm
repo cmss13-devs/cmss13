@@ -89,8 +89,6 @@
 	melee_damage_upper = 10
 	var/melee_vehicle_damage = 10
 	var/claw_type = CLAW_TYPE_NORMAL
-	var/burn_damage_lower = 0
-	var/burn_damage_upper = 0
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -206,6 +204,7 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
+	var/burn_damage_modifier = 0
 
 	var/list/modifier_sources
 
@@ -912,6 +911,12 @@
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
 		melee_vehicle_damage += caste.melee_vehicle_damage
+
+	burn_damage_lower = burn_damage_modifier
+	burn_damage_upper = burn_damage_modifier
+	if(caste)
+		burn_damage_lower += caste.burn_damage_lower
+		burn_damage_upper += caste.burn_damage_upper
 
 /mob/living/carbon/xenomorph/proc/recalculate_evasion()
 	if(caste)

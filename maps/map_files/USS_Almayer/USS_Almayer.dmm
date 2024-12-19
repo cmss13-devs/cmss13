@@ -19866,6 +19866,12 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/operating_room_one)
+"elI" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/start/field_doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "elR" = (
 /turf/closed/wall/almayer/research/containment/wall/corner{
 	dir = 1
@@ -99700,7 +99706,7 @@ bwG
 rUq
 rUq
 sab
-sab
+elI
 izk
 pQc
 cWr

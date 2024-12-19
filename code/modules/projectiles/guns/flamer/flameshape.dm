@@ -62,7 +62,7 @@
 	var/list/checked_tiles = list()
 	var/obj/flamer_fire/temp = new()
 
-	for(var/spread_amount = 1 to fire_spread_amount)
+	for(var/spread_amount in 1 to fire_spread_amount)
 		var/list/next_tiles_to_spread = list()
 
 		if(tiles_to_spread.len == 0)

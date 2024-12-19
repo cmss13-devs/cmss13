@@ -11,6 +11,24 @@
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/servers)
+"aad" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/floor/carpet,
+/area/fiorina/station/security/wardens)
+"aae" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -39025,7 +39043,7 @@ agi
 agi
 agi
 agi
-agi
+aac
 agi
 agi
 agi
@@ -61217,7 +61235,7 @@ ipa
 rJO
 rJO
 ipa
-rJO
+aad
 rJO
 iqB
 rJO
@@ -81258,7 +81276,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+aae
 xeO
 xeO
 xeO

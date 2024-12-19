@@ -13,6 +13,27 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aad" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
+"aae" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"aaf" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "aag" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
@@ -26,6 +47,16 @@
 "aaj" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/caves/north_central_caves)
+"aak" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
@@ -14342,15 +14373,6 @@
 /obj/structure/machinery/sensortower,
 /turf/open/floor/bot/north,
 /area/lv624/ground/caves/north_central_caves)
-"kbr" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "kcP" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/closed/wall/rock/brown,
@@ -19658,16 +19680,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
-"uDd" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "uDs" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -26394,7 +26406,7 @@ aPf
 aKf
 aKf
 aVK
-aKb
+aae
 aKb
 hUs
 hUs
@@ -50572,7 +50584,7 @@ wpw
 wpw
 wpw
 lBw
-wpw
+aad
 wpw
 ajY
 ifF
@@ -52052,7 +52064,7 @@ ahv
 ahv
 ahv
 aeg
-uDd
+aak
 iSa
 mhZ
 mhZ
@@ -52508,13 +52520,13 @@ ahv
 ahv
 ahv
 slW
-uDd
+aak
 pEV
 mhZ
 mhZ
 mhZ
 dID
-kbr
+aaf
 jFc
 poE
 agX
@@ -52964,13 +52976,13 @@ ahv
 ahv
 ahv
 aeg
-kbr
+aaf
 pEV
 mhZ
 mhZ
 mhZ
 pEV
-uDd
+aak
 slW
 poE
 fPi

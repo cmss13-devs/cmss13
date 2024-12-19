@@ -166,18 +166,28 @@
 
 	if(severity >= 30)
 		flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
-
-	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
-	var/knockdown_value = severity * 0.1
-	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
 	var/obj/item/item1 = get_active_hand()
 	var/obj/item/item2 = get_inactive_hand()
-	apply_effect(floor(knockdown_minus_armor), WEAKEN)
-	apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+	var/knockdown_value = severity * 0.1
 	var/knockout_value = damage * 0.1
-	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
-	apply_effect(floor(knockout_minus_armor), PARALYZE)
-	apply_effect(floor(knockout_minus_armor) * 2, DAZE)
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire)) //explosions slow down but way less stun
+		var/knockdown_minus_armor = min(max(knockdown_value * bomb_armor_mult - 0.5 SECONDS, 0), 0.5 SECONDS) //only explosions with more then 20 severity stun
+		apply_effect(floor(knockdown_minus_armor), WEAKEN)
+		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+		var/slowdown_minus_armor =min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS)
+		apply_effect(floor(slowdown_minus_armor), SUPERSLOW)
+		apply_effect(floor(slowdown_minus_armor) * 2, SLOW)
+		damage *= 0.5 //we reduce after checking eye flash and stun and slow
+		severity *= 0.5
+	else
+		// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+		var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
+		apply_effect(floor(knockdown_minus_armor), WEAKEN)
+		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+
+		var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+		apply_effect(floor(knockout_minus_armor), PARALYZE)
+		apply_effect(floor(knockout_minus_armor) * 2, DAZE)
 	explosion_throw(severity, direction)
 
 	if(item1 && isturf(item1.loc))

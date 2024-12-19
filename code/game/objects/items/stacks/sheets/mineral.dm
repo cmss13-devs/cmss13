@@ -103,7 +103,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	icon_state = "sheet-sandstone"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-
+	amount_sprites = TRUE
 	sheettype = "sandstone"
 	stack_id = "sandstone"
 
@@ -119,6 +119,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
+	amount_sprites = FALSE
 	black_market_value = 15
 
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack
@@ -191,7 +192,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
 	matter = list("plastic" = 2000)
-
+	amount_sprites = TRUE
 	perunit = 2000
 	stack_id = "plastic"
 	black_market_value = 0

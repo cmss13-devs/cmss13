@@ -13364,11 +13364,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
 "bVe" = (
-/obj/structure/closet/l3closet/general,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
 	},
+/obj/structure/closet/l3closet/scientist,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "bVn" = (
@@ -36756,7 +36756,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_s)
 "lmw" = (
-/obj/structure/closet/l3closet/general,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -36764,6 +36763,7 @@
 	dir = 4;
 	health = 80
 	},
+/obj/structure/closet/l3closet/scientist,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "lmz" = (
@@ -42355,7 +42355,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_umbilical)
 "nDo" = (
-/obj/structure/closet/l3closet/general,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -42364,6 +42363,7 @@
 	dir = 4;
 	health = 80
 	},
+/obj/structure/closet/l3closet/scientist,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "nDy" = (

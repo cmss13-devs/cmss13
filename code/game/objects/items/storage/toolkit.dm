@@ -7,7 +7,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
 	)
 	icon_state = "toolkit"
-	item_state = "fulton"
+	item_state = "toolkit"
 	throw_speed = SPEED_FAST
 	throw_range = 8
 	use_sound = "toolbox"

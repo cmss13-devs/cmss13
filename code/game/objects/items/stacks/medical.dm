@@ -154,6 +154,7 @@
 	singular_name = "trauma kit"
 	desc = "A trauma kit for severe injuries."
 	icon_state = "traumakit"
+	item_state = "brutekit"
 	heal_brute = 12
 
 	stack_id = "advanced bruise pack"
@@ -221,6 +222,7 @@
 	singular_name = "burn kit"
 	desc = "A treatment kit for severe burns."
 	icon_state = "burnkit"
+	item_state = "burnkit"
 	heal_burn = 12
 
 	stack_id = "burn kit"
@@ -270,6 +272,7 @@
 	singular_name = "medical splint"
 	desc = "A collection of different splints and securing gauze. What, did you think we only broke legs out here?"
 	icon_state = "splint"
+	item_state = "splint"
 	amount = 5
 	max_amount = 5
 	stack_id = "splint"

@@ -13,6 +13,7 @@
 	name = "\improper HealthMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
+	item_state = "healthhud"
 	deactive_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE

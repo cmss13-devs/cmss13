@@ -301,6 +301,10 @@
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
 	center_of_mass = "x=15;y=8"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
@@ -537,6 +541,7 @@
 	name = "\improper Weyland-Yutani Aspen Beer"
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
+	item_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()

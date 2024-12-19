@@ -410,13 +410,14 @@
 	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first"
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402_carry"
-	unacidable = TRUE
-	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
-	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	item_state = "mortar_m402_carry"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
+	unacidable = TRUE
+	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 
 /obj/item/mortar_kit/Initialize(...)
 	. = ..()

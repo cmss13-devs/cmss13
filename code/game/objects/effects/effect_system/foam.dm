@@ -207,7 +207,7 @@
 			take_damage(I.force * I.sharp * FOAMED_METAL_ITEM_MELEE) //human advantage, sharper items do more damage
 		else
 			take_damage(I.force * FOAMED_METAL_ITEM_MELEE) //blunt items can damage it still
-		return TRUE
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	return FALSE
 

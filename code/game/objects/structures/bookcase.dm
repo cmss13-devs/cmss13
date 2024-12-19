@@ -51,7 +51,7 @@
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
 	else
-		..()
+		. = ..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
 	if(length(contents))

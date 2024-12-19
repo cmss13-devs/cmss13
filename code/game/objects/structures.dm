@@ -43,7 +43,7 @@
 			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
-	..()
+	. = ..()
 
 /obj/structure/ex_act(severity, direction)
 	if(explo_proof)

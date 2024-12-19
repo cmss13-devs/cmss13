@@ -185,7 +185,7 @@
 			if("brute")
 				health -= W.force * W.demolition_mod * 0.1
 		healthcheck(1, 1, user, W)
-		..()
+		. = ..()
 
 /obj/structure/fence/deconstruct(disassembled = TRUE)
 	if(disassembled)

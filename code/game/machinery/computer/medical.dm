@@ -44,7 +44,7 @@
 			last_user_name = scan.registered_name
 			last_user_rank = scan.rank
 			to_chat(user, "You insert [O].")
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/med_data/attack_remote(user as mob)
 	return src.attack_hand(user)

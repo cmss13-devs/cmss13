@@ -123,7 +123,7 @@ FIRE ALARM
 					qdel(src)
 		return
 
-	..()
+	. = ..()
 	return
 
 /obj/structure/machinery/firealarm/power_change()

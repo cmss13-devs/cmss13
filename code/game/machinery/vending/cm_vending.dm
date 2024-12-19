@@ -772,7 +772,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		. = redeem_token(W, user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products

@@ -22,14 +22,7 @@
 
 	return FIRE_CANPASS_SPREAD
 
-/datum/flameshape
-	var/name = ""
-	var/id = FLAMESHAPE_NONE
-
-/datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
-	return
-
-/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+/proc/_generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return
@@ -45,9 +38,19 @@
 	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, 0, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure, F2.fire_variant)
 	return TRUE
 
+/datum/flameshape
+	var/name = ""
+	var/id = FLAMESHAPE_NONE
+
+/datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
+	return
+
+/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+	return _generate_fire(T, F2, fs, should_call, skip_flame, fuel_pressure)
+
 /datum/flameshape/proc/generate_fire_list(list/turf/turfs, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
 	for(var/turf/T in turfs)
-		generate_fire(T, F2, fs, should_call, skip_flame, fuel_pressure)
+		_generate_fire(T, F2, fs, should_call, skip_flame, fuel_pressure)
 
 /datum/flameshape/default
 	name = "Default"

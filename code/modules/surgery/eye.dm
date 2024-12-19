@@ -167,7 +167,7 @@
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND
 	surgery.target_eyes.heal_damage(surgery.target_eyes.damage)
-	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
+	user.count_statistic_stat(STATISTICS_SURGERY_EYE)
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/cauterize/eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)

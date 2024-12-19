@@ -56,6 +56,8 @@ GLOBAL_LIST_EMPTY(cached_maps)
 	GLOB.minimap_icons = base64_icons
 
 
+GLOBAL_DATUM(round_statistics, /datum/entity/statistic_round)
+GLOBAL_LIST_EMPTY_TYPED(player_entities, /datum/player_entity)
 
 // Xeno stuff //
 // Resin constructions parameters

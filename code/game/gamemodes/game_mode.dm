@@ -21,7 +21,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/vote_cycle = null
 	var/probability = 0
 	var/list/datum/mind/modePlayer = new
-	var/required_players = 0
+	var/population_min = null
+	var/population_max = null
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
 	var/ert_disabled = 0
 	var/force_end_at = 0
@@ -31,8 +32,6 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/taskbar_icon = 'icons/taskbar/gml_distress.png'
 	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
-
-	var/datum/entity/statistic/round/round_stats = null
 
 	var/list/roles_to_roll
 
@@ -45,6 +44,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/New()
 	..()
+	initialize_gamemode_modifiers()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
 
@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		if(players >= required_players_secret)
 			return TRUE
 	else
-		if(players >= required_players)
+		if(players >= population_min)
 			return TRUE
 	return FALSE
 
@@ -78,9 +78,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		spawn_static_comms()
 	if(corpses_to_spawn)
 		generate_corpses()
-	initialize_gamemode_modifiers()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
-	return 1
+	return TRUE
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
 /datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
@@ -128,21 +127,28 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 
 /datum/game_mode/proc/check_finished() //to be called by ticker
-	return
+	if(round_finished) return TRUE
 
 /datum/game_mode/proc/cleanup() //This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
 
 /datum/game_mode/proc/announce_ending()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 /datum/game_mode/proc/declare_completion()
+	announce_ending()
+
 	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.round_result = round_finished
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+
+		GLOB.round_statistics.log_round_statistics()
 		GLOB.round_statistics.track_round_end()
+
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
@@ -168,9 +174,6 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		log_game("Round end - humans: [surviving_humans]")
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
-
-
-	return 0
 
 /datum/game_mode/proc/calculate_end_statistics()
 	for(var/i in GLOB.alive_mob_list)

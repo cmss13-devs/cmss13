@@ -53,6 +53,9 @@ SUBSYSTEM_DEF(ticker)
 	var/tutorial_disabled = FALSE
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
+	if(!SSmapping.configs)
+		SSmapping.HACK_LoadMapConfig()
+
 	load_mode()
 
 	var/all_music = CONFIG_GET(keyed_list/lobby_music)
@@ -104,7 +107,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_PLAYING)
 			mode.process(wait * 0.1)
 
-			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
+			if(!roundend_check_paused && mode.check_finished() || force_ending)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
@@ -172,8 +175,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, SPAN_BOLDNOTICE("Enjoy the game!"))
 	var/init_start = world.timeofday
-	//Create and announce mode
-	mode = config.pick_mode(GLOB.master_mode)
 
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
@@ -198,13 +199,11 @@ SUBSYSTEM_DEF(ticker)
 				handle_map_reboot()
 		else
 			to_chat(world, "Attempting again...")
-		QDEL_NULL(mode)
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
-		QDEL_NULL(mode)
 		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
@@ -231,8 +230,8 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 	CHECK_TICK
 
-	// We need stats to track roundstart role distribution.
-	mode.setup_round_stats()
+	GLOB.round_statistics.real_time_start = world.realtime
+	GLOB.round_statistics.save()
 
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))
@@ -355,13 +354,19 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/load_mode()
-	var/mode = trim(file2text("data/mode.txt"))
-	if(mode)
-		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode ? SSmapping.configs[GROUND_MAP].force_mode : mode
+	var/cfg_mode = trim(file2text("data/mode.txt"))
+	if(SSmapping?.configs?[GROUND_MAP].force_mode)
+		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode
+	else if(cfg_mode)
+		GLOB.master_mode = cfg_mode
 	else
 		GLOB.master_mode = "Extended"
-	log_game("Saved mode is '[GLOB.master_mode]'")
 
+	QDEL_NULL(mode)
+	mode = config.pick_mode(GLOB.master_mode)
+	setup_round_stats()
+
+	log_game("Saved mode is '[GLOB.master_mode]'")
 
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)
 	fdel("data/mode.txt")

@@ -89,7 +89,8 @@
 	GLOB.dead_mob_list += src
 
 	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
-	var/new_tod = (should_block_game_interaction(src) || isfacehugger(src) || islesserdrone(src)) ? 1 : timeofdeath
+	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
+	var/new_tod = exempt_tod ? 1 : timeofdeath
 	if(client)
 		client.player_details.larva_queue_time = max(client.player_details.larva_queue_time, new_tod)
 	else if(persistent_ckey)

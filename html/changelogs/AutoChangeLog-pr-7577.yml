@@ -1,5 +1,0 @@
-author: "Cuberound Blundir"
-delete-after: True
-changes:
-  - balance: "PKP gets build in bipod"
-  - imageadd: "PKP bipod"

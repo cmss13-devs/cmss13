@@ -1349,6 +1349,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 24
 
+/obj/item/storage/backpack/rmc/medium/medic
+	name = "standard RMC backpack"
+	desc = "A TWE military standard-carry RMC combat pack MK3 with a green cross denoting that it's a medic's backpack." //Surely CLF won't shoot the doc, right?
+	icon_state = "backpack_medium_medic"
+	item_state = "backpack_medium_medic"
+
 /obj/item/storage/backpack/rmc/light
 	name = "lightweight RMC backpack"
 	desc = "A TWE military light-carry RMC combat pack MK3."

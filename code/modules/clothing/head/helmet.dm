@@ -1656,9 +1656,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/medic
-	name = "\improper L5A2 ballistic helmet"
-	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
-	icon_state = "rmc_helm1"
-	item_state = "rmc_helm1"
+	name = "\improper L5A2 ballistic medic helmet"
+	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system. This one comes with an advanced medical HUD and a dark-green patch on the back, denoting that the wearer is a corpsman."
+	icon_state = "rmc_helm_medic"
+	item_state = "rmc_helm_medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced

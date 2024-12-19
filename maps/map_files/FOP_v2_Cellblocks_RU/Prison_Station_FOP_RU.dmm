@@ -19479,6 +19479,11 @@
 /area/prison/canteen)
 "bar" = (
 /obj/structure/surface/table,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "civilian block lockdown";
+	name = "Civilian Block Lockdown";
+	pixel_y = 3
+	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
 	},
@@ -21182,7 +21187,7 @@
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "civilian block lockdown";
-	name = "remote door-control";
+	name = "Civilian Block Lockdown";
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -54625,6 +54630,11 @@
 /obj/item/device/flashlight/lamp,
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/crap_item,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "civilian block lockdown";
+	name = "Civilian Block Lockdown";
+	pixel_y = 3
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"
@@ -57413,7 +57423,7 @@
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "civilian block lockdown";
-	name = "remote door-control";
+	name = "Civilian Block Lockdown";
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -59768,6 +59778,11 @@
 /obj/item/device/flashlight/lamp,
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/crap_item,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "civilian block lockdown";
+	name = "Civilian Block Lockdown";
+	pixel_y = 3
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2"

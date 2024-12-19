@@ -91,7 +91,7 @@
 /obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshal ert - ok sure :)
 	name = "\improper Spearhead speed loader (.357)"
 	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshals on colonies with wildlife, or weakly-hulled space stations."
-	default_ammo = /datum/ammo/bullet/revolver/small
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
 	icon_state = "cmb"
 
 /**
@@ -206,7 +206,7 @@
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/ammo_magazine/internal/revolver/cmb
-	default_ammo = /datum/ammo/bullet/revolver/small
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
 	caliber = ".357"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 

@@ -131,6 +131,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
+"aas" = (
+/obj/structure/machinery/keycard_auth,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 17
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cic)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
@@ -4972,7 +4981,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
 /area/almayer/command/airoom)
@@ -10207,6 +10216,10 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = 9
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bvX" = (
@@ -12860,6 +12873,9 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
+/obj/item/clock{
+	pixel_y = 16
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bQZ" = (
@@ -20368,7 +20384,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -24079,7 +24095,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -29935,9 +29951,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"iBn" = (
-/turf/closed/wall/almayer/aicore/white/hull,
-/area/space)
 "iBu" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = -17
@@ -34355,7 +34368,7 @@
 	},
 /obj/item/spacecash/c500{
 	pixel_x = -10;
-	pixel_y = 8
+	pixel_y = 7
 	},
 /obj/item/paper_bin/wy{
 	pixel_x = 17;
@@ -35620,7 +35633,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
 "kOJ" = (
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -35807,7 +35820,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = -24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -36823,7 +36836,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -37606,7 +37619,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -50892,7 +50905,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -52580,7 +52593,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_a_p)
 "rJh" = (
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -52588,7 +52601,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -54260,7 +54273,7 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "ssk" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -54268,7 +54281,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -55458,6 +55471,10 @@
 /area/almayer/shipboard/brig/cells)
 "sUE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clock{
+	pixel_y = 8;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "sUO" = (
@@ -56518,8 +56535,7 @@
 "toS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access_txt = "8"
+	dir = 8
 	},
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
@@ -59643,9 +59659,7 @@
 	dir = 8;
 	req_access_txt = "8"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lockerroom)
@@ -62655,7 +62669,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = -24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -64046,9 +64060,7 @@
 	dir = 8;
 	req_access_txt = "8"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
+/obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lockerroom)
@@ -90087,7 +90099,7 @@ ajm
 wVW
 arP
 alX
-azZ
+aas
 aAF
 azZ
 aIf
@@ -124854,19 +124866,19 @@ lmz
 lmz
 lmz
 lmz
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
-iBn
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
+lmz
 bdH
 bdH
 bdH

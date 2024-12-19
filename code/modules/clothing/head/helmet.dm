@@ -190,6 +190,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/mgoggles/black/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/glasses/mgoggles/orange = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/glasses/mgoggles/orange/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/glasses/mgoggles/cmb_riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/sunglasses = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/sunglasses/prescription = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/sunglasses/aviator = NO_GARB_OVERRIDE,
@@ -985,8 +986,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
-	icon_state = "helmet"
-	item_state = "helmet"
+	icon_state = "officer"
+	item_state = "officer"
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 	specialty = "M10 pattern officer"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
@@ -1143,6 +1148,40 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi',
 	)
+
+//=============================//CMB\\==================================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/helmet/marine/veteran/cmb
+	name = "M11R pattern CMB Riot helmet"
+	desc = "A CMB variant of the standard M10 pattern. The front plate is reinforced. This one is a lot more tight fitting, also protects from flashbangs."
+	icon_state = "cmb_helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
+	)
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	built_in_visors = list(new /obj/item/device/helmet_visor/security)
+
+/obj/item/clothing/head/helmet/marine/veteran/cmb/engi
+	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/welding_visor)
+
+/obj/item/clothing/head/helmet/marine/veteran/cmb/spec
+	name = "M11R-S pattern CMB SWAT helmet"
+	icon_state = "cmb_elite_helmet"
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/night_vision)
+
 
 //==========================//DISTRESS\\=================================\\
 //=======================================================================\\
@@ -1344,9 +1383,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 
-/obj/item/clothing/head/helmet/specrag/New()
+/obj/item/clothing/head/helmet/specrag/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/clothing/head/helmet/skullcap
 	name = "skullcap"
@@ -1368,11 +1407,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
 
-/obj/item/clothing/head/helmet/skullcap/New()
+/obj/item/clothing/head/helmet/skullcap/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
-/obj/item/clothing/head/helmet/specrag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/clothing/head/helmet/skullcap/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")

@@ -407,7 +407,7 @@
 						if(stat == DEAD)
 							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
 							DT.dogtag_taken = TRUE
-							DT.icon_state = "dogtag_taken"
+							DT.icon_state = DT.tags_taken_icon
 							var/obj/item/dogtag/D = new(loc)
 							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
@@ -1050,7 +1050,7 @@
 	set name = "View Crew Manifest"
 	set category = "IC"
 
-	if(faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
 	var/dat = GLOB.data_core.get_manifest()

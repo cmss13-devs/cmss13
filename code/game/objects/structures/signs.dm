@@ -664,3 +664,7 @@
 	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."
 	icon = 'icons/obj/structures/props/furniture/catclock.dmi'
 	icon_state = "cat_clock_motion"
+
+/obj/structure/sign/catclock/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The [src] reads: [worldtime2text()]")

@@ -44,6 +44,11 @@
 /datum/equipment_preset/survivor/colonial_marshal/fiorina
 	name = "Survivor - United Americas Riot Officer"
 	assignment = "United Americas Riot Officer"
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/silver
+	rank = JOB_SURVIVOR
+	role_comm_title = "UA RO"
+	faction = FACTION_SURVIVOR
 	minimap_icon = "mp"
 	minimap_background = "background_ua"
 

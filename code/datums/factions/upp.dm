@@ -50,6 +50,8 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_LT_DOKTOR)
 			hud_icon_state = "doc"
+		if(JOB_UPP_PILOT)
+			hud_icon_state = "vc"
 		if(JOB_UPP_SUPPLY)
 			hud_icon_state = "log"
 		if(JOB_UPP_COMMISSAR)

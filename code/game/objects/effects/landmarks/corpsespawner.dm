@@ -50,6 +50,10 @@
 	name = "Colonial Marshal Deputy"
 	equip_path = /datum/equipment_preset/corpse/security/cmb
 
+/obj/effect/landmark/corpsespawner/security/marshal/riot
+	name = "CMB Riot Control Officer"
+	equip_path = /datum/equipment_preset/corpse/security/cmb/riot
+
 /obj/effect/landmark/corpsespawner/security/liaison
 	name = "Corporate Liaison"
 	equip_path = /datum/equipment_preset/corpse/liaison

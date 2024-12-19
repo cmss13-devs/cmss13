@@ -282,6 +282,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "bayonet"
 	item_state = "combat_knife"
 	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
@@ -2082,12 +2083,16 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/m16/New()//no stats, its cosmetic
 	..()
 
+/obj/item/attachable/stock/m16/m16a5
+	name = "\improper M16A5 bump stock"
+	icon_state = "m16a5_stock"
+	attach_icon = "m16a5_stock"
+
 /obj/item/attachable/stock/m16/xm177
 	name = "\improper collapsible M16 stock"
 	desc = "Very illegal in the state of California."
 	icon_state = "m16_folding"
 	attach_icon = "m16_folding"
-	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
@@ -2095,6 +2100,7 @@ Defined in conflicts.dm of the #defines folder.
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
+	var/base_icon = "m16_folding"
 
 /obj/item/attachable/stock/m16/xm177/Initialize()
 	.=..()
@@ -2115,8 +2121,8 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_mod = -SCATTER_AMOUNT_TIER_9
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
-		icon_state = "m16_folding"
-		attach_icon = "m16_folding_on"
+		icon_state = base_icon
+		attach_icon = "[base_icon]_on"
 		wield_delay_mod = WIELD_DELAY_VERY_FAST
 
 	else
@@ -2129,12 +2135,18 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 3
-		icon_state = "m16_folding"
-		attach_icon = "m16_folding"
+		icon_state = base_icon
+		attach_icon = base_icon
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
+
+/obj/item/attachable/stock/m16/xm177/car15a3
+	name = "\improper collapsible CAR-15A3 stock"
+	icon_state = "car_folding"
+	attach_icon = "car_folding"
+	base_icon = "car_folding"
 
 /obj/item/attachable/stock/ar10
 	name = "\improper AR10 wooden stock"
@@ -2487,6 +2499,7 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	hud_offset_mod = 5
 	collapsible = TRUE
+	var/base_icon = "smgstockc"
 
 
 /obj/item/attachable/stock/smg/collapsible/New()
@@ -2519,8 +2532,8 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 		hud_offset_mod = 5
-		icon_state = "smgstockc"
-		attach_icon = "smgstockc_a"
+		icon_state = base_icon
+		attach_icon = "[base_icon]_a"
 
 	else
 		accuracy_mod = 0
@@ -2534,17 +2547,26 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_unwielded_mod = 0
 		recoil_unwielded_mod = 0
 		hud_offset_mod = 3
-		icon_state = "smgstockcc"
-		attach_icon = "smgstockcc_a"
+		icon_state = "[base_icon]c"
+		attach_icon = "[base_icon]c_a"
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
+
+/obj/item/attachable/stock/smg/collapsible/mp5a5
+	name = "MP5A5 folding stock"
+	icon_state = "mp5_stockc"
+	base_icon = "mp5_stockc"
+	attach_icon = "mp5_stockc_a"
+	flags_attach_features = ATTACH_ACTIVATION
+	stock_activated = FALSE
 
 /obj/item/attachable/stock/smg/collapsible/brace
 	name = "\improper submachinegun arm brace"
 	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of burst amount. Wielding the weapon with this stock attached confers a major inaccuracy and recoil debuff."
 	size_mod = 1
 	icon_state = "smg_brace"
+	base_icon = "smg_brace"
 	attach_icon = "smg_brace_a"
 	pixel_shift_x = 43
 	pixel_shift_y = 11
@@ -3618,6 +3640,12 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "bipod_m60_a"
 
 	flags_attach_features = ATTACH_ACTIVATION
+
+/obj/item/attachable/bipod/pkp
+	name = "pkp bipod"
+	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing."
+	icon_state = "qjy72_bipod"
+	attach_icon = "qjy72_bipod"
 
 /obj/item/attachable/bipod/vulture
 	name = "heavy bipod"

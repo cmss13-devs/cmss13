@@ -78,6 +78,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/m10,
 		/obj/item/storage/belt/gun/xm51,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)

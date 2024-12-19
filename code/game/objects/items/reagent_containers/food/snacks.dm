@@ -3282,6 +3282,7 @@
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		package = 0
+		new /obj/item/trash/buritto (user.loc)
 		icon_state = "open-burrito"
 		item_state = "burrito"
 
@@ -3308,6 +3309,7 @@
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
 		package = 0
+		new /obj/item/trash/burger (user.loc)
 		icon_state = "hburger"
 		item_state = "burger"
 
@@ -3333,6 +3335,7 @@
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 		package = 0
+		new /obj/item/trash/hotdog (user.loc)
 		icon_state = "open-hotdog"
 		item_state = "hotdog"
 

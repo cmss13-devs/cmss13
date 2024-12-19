@@ -362,6 +362,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/storage/fancy/cigarettes/lady_finger = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/storage/fancy/cigarettes/blackpack = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/storage/fancy/cigarettes/arcturian_ace = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/spirit = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/spirit/yellow = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/blue = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/red = PREFIX_HAT_GARB_OVERRIDE,

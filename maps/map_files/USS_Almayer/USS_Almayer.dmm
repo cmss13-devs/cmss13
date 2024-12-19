@@ -131,6 +131,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
+"aas" = (
+/obj/structure/machinery/keycard_auth,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 17
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cic)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
@@ -10207,6 +10216,10 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = 9
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bvX" = (
@@ -12860,6 +12873,9 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
+/obj/item/clock{
+	pixel_y = 16
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bQZ" = (
@@ -34352,7 +34368,7 @@
 	},
 /obj/item/spacecash/c500{
 	pixel_x = -10;
-	pixel_y = 8
+	pixel_y = 7
 	},
 /obj/item/paper_bin/wy{
 	pixel_x = 17;
@@ -35617,7 +35633,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
 "kOJ" = (
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -52577,7 +52593,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_a_p)
 "rJh" = (
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -52585,7 +52601,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -54257,7 +54273,7 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "ssk" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -54265,7 +54281,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/storage/backpack/marine/satchel{
+/obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
 	icon_state = "trashbag3";
@@ -55455,6 +55471,10 @@
 /area/almayer/shipboard/brig/cells)
 "sUE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clock{
+	pixel_y = 8;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "sUO" = (
@@ -90079,7 +90099,7 @@ ajm
 wVW
 arP
 alX
-azZ
+aas
 aAF
 azZ
 aIf

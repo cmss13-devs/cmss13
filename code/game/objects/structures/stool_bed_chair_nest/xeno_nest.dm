@@ -287,7 +287,7 @@
 
 	if(!istype(buckled_human) || !istype(G) || !istype(M) || buckled_human.undefibbable || buckled_human.mind || M.original != buckled_human || buckled_human.chestburst)
 		return // Zealous checking as most is handled by ghost code
-	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))
+	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here</a>!)")))
 	sound_to(G, 'sound/effects/attackblob.ogg')
 	if(buckled_human.client?.prefs.toggles_flashing & FLASH_UNNEST)
 		window_flash(buckled_human.client)

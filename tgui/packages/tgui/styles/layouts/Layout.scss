@@ -5,8 +5,24 @@
 
 @use 'sass:color';
 @use '../base.scss';
+@use '../functions.scss' as *;
 
 $scrollbar-color-multiplier: 1 !default;
+$luminance: luminance(base.$color-bg);
+$scrollbar-base: color.scale(
+  base.$color-bg,
+  $lightness: -25% * $scrollbar-color-multiplier
+);
+$scrollbar-face: color.scale(
+  base.$color-bg,
+  $lightness: if($luminance > 0.05, 30%, 10%) * $scrollbar-color-multiplier
+);
+
+// Fancy scrollbar
+html,
+body {
+  scrollbar-color: $scrollbar-face $scrollbar-base;
+}
 
 .Layout,
 .Layout * {

@@ -5,7 +5,7 @@
 	},
 /area/prison/hallway/central/west)
 "am" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/small/blue{
 	dir = 8
 	},
 /turf/open/floor/prison{

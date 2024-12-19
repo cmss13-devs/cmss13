@@ -85,7 +85,8 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	name = "Civilian Residences Emergency Access";
-	explo_proof = 1
+	explo_proof = 1;
+	id = "civilian block lockdown"
 	},
 /turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
@@ -94,7 +95,8 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	name = "Civilian Residences Emergency Access";
-	explo_proof = 1
+	explo_proof = 1;
+	id = "civilian block lockdown"
 	},
 /turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
@@ -148,9 +150,8 @@
 	icon_state = "casing_1"
 	},
 /obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = -1
+	dir = 1;
+	pixel_y = 21
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -415,7 +416,8 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	name = "Civilian Residences Emergency Access";
-	explo_proof = 1
+	explo_proof = 1;
+	id = "civilian block lockdown"
 	},
 /turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
@@ -447,7 +449,8 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	name = "Civilian Residences Emergency Access";
-	explo_proof = 1
+	explo_proof = 1;
+	id = "civilian block lockdown"
 	},
 /turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)

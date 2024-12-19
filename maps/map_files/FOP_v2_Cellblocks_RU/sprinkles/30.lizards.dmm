@@ -35,7 +35,7 @@
 /turf/open/gm/grass/grass2,
 /area/prison/research/secret/testing)
 "w" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/small/blue{
 	dir = 1
 	},
 /turf/open/gm/grass/grass2,

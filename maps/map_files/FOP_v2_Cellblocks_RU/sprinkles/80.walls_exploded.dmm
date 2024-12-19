@@ -52,7 +52,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "o" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/small/blue{
 	dir = 8
 	},
 /turf/open/floor/plating/prison,

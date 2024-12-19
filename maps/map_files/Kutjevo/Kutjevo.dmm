@@ -2877,6 +2877,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
+	},
 /turf/open/floor/kutjevo/colors/purple/inner_corner,
 /area/kutjevo/interior/construction)
 "eiG" = (
@@ -4706,6 +4709,9 @@
 /obj/item/paper_bin{
 	pixel_x = 4;
 	pixel_y = 8
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
 	},
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)

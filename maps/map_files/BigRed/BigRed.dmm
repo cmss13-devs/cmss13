@@ -8,6 +8,15 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aac" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/storage)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -167,6 +176,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"aaM" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/office_complex)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -242,10 +260,23 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"abb" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
+	},
+/turf/open/floor/carpet,
+/area/bigredv2/outside/admin_building)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abd" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28;
+	pixel_x = 9
+	},
+/turf/open/floor/carpet,
+/area/bigredv2/caves/lambda/breakroom)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -525,6 +556,10 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 30;
+	pixel_x = -4
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
@@ -2069,6 +2104,9 @@
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "ajp" = (
@@ -10352,6 +10390,9 @@
 	dir = 8
 	},
 /obj/structure/surface/table,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/darkblue2/northeast,
 /area/bigredv2/outside/admin_building)
 "aVY" = (
@@ -16012,6 +16053,9 @@
 "bzG" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/caves/eta/research)
 "bzH" = (
@@ -20666,6 +20710,9 @@
 "fhy" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
 	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
@@ -56456,7 +56503,7 @@ aXg
 aOM
 aUb
 aof
-aZC
+abb
 aZU
 aZC
 aZU
@@ -61306,7 +61353,7 @@ aBy
 bzp
 bzA
 aBE
-byM
+aac
 ycP
 rTq
 aBE
@@ -66450,7 +66497,7 @@ aZF
 beL
 bfo
 iuU
-bgh
+aaM
 bgu
 bgh
 bgf
@@ -77897,7 +77944,7 @@ anS
 viJ
 adZ
 adZ
-auY
+abd
 asr
 aqc
 amX

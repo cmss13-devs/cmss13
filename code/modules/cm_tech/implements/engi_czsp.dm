@@ -52,4 +52,5 @@
 		D.forceMove(H.loc)
 
 	H.drop_held_item(src)
+	user.count_statistic_stat(STATISTICS_UPGRADE_TURRETS)
 	qdel(src)

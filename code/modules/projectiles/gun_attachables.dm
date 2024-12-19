@@ -343,9 +343,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bayonet/rmc
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
-	icon_state = "twe_bayonet" // PLACEHOLDER PLEASE REPLACE
+	icon_state = "upp_bayonet" // PLACEHOLDER PLEASE REPLACE
 	item_state = "combat_knife"
-	attach_icon = "twe_bayonet_a" // PLACEHOLDER PLEASE REPLACE
+	attach_icon = "upp_bayonet_a" // PLACEHOLDER PLEASE REPLACE
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
@@ -361,9 +361,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bayonet/rmc_replica
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
-	icon_state = "twe_bayonet"
+	icon_state = "upp_bayonet" // PLACEHOLDER PLEASE REPLACE
 	item_state = "combat_knife"
-	attach_icon = "twe_bayonet_a"
+	attach_icon = "upp_bayonet_a" // PLACEHOLDER PLEASE REPLACE
 
 /obj/item/attachable/bayonet/custom
 	name = "\improper M5 'Raven's Claw' tactical bayonet"

@@ -570,5 +570,6 @@
 /area/corsat/inaccessible
 	name = "\improper Unknown Location"
 	icon_state = "corsat_hull"
+	requires_power = FALSE
 	ceiling = CEILING_REINFORCED_METAL
 	flags_area = AREA_NOTUNNEL

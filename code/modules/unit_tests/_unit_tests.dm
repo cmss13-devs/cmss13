@@ -78,6 +78,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // Unit tests
+#include "areas_unpowered.dm"
 #include "autowiki.dm"
 #include "check_runtimes.dm"
 #include "create_and_destroy.dm"

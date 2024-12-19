@@ -364,6 +364,48 @@
 /turf/open/floor/almayer/blue/southwest
 	dir = SOUTHWEST
 
+/turf/open/floor/almayer/black
+	icon_state = "black"
+
+/turf/open/floor/almayer/black/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/black/north
+	dir = NORTH
+
+/turf/open/floor/almayer/black/east
+	dir = EAST
+
+/turf/open/floor/almayer/black/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/black/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/black/west
+	dir = WEST
+
+/turf/open/floor/almayer/blackcorner
+	icon_state = "blackcorner"
+
+/turf/open/floor/almayer/blackcorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/blackcorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/blackcorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/blackfull
+	icon_state = "blackfull"
+
+/turf/open/floor/almayer/blackfull/west
+	dir = WEST
+
+/turf/open/floor/almayer/black/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/almayer/cargo
 	icon_state = "cargo"
 
@@ -982,6 +1024,9 @@
 /turf/open/floor/almayer/research/containment/corner_var2
 	icon_state = "containment_corner_variant_2"
 
+/turf/open/floor/almayer/research/containment/corner_var1/north
+	dir = NORTH
+
 /turf/open/floor/almayer/research/containment/corner_var1/east
 	dir = EAST
 
@@ -1003,7 +1048,8 @@
 /turf/open/floor/almayer/research/containment/floor2/west
 	dir = WEST
 
-
+/turf/open/floor/almayer/fake_outerhull
+	icon_state = "outerhull"
 
 
 //Outerhull
@@ -1426,6 +1472,9 @@
 
 /turf/open/floor/prison/darkbrown3/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkbrown3/southeast
+	dir = SOUTHEAST
 
 /turf/open/floor/prison/darkbrowncorners2
 	icon_state = "darkbrowncorners2"
@@ -1958,6 +2007,9 @@
 /turf/open/floor/prison/darkbrown3/northwest
 	dir = NORTHWEST
 
+/turf/open/floor/prison/darkbrown3/northeast
+	dir = NORTHEAST
+
 /turf/open/floor/prison/darkpurple2/northwest
 	dir = NORTHWEST
 
@@ -2077,6 +2129,15 @@
 
 /turf/open/floor/prison/whitepurplefull
 	icon_state = "whitepurplefull"
+
+/turf/open/floor/prison/ramptop
+	icon_state = "ramptop"
+
+/turf/open/floor/prison/ramptop/north
+	dir = NORTH
+
+/turf/open/floor/prison/ramptop/east
+	dir = EAST
 
 // Mechbay
 /turf/open/floor/mech_bay_recharge_floor
@@ -2686,6 +2747,19 @@
 /turf/open/floor/corsat/yellowcorner/east
 	dir = EAST
 
+/turf/open/floor/corsat/box
+	icon_state = "box"
+
+/turf/open/floor/corsat/officetiles
+	icon_state = "officetiles"
+
+/turf/open/floor/corsat/spiralblueoffice
+	icon_state = "spiralblueoffice"
+	light_color = "#0090ff"
+	light_on = 1
+	light_power = 2
+	light_range = 4
+
 /turf/open/floor/grey_dark2
 	color = "#525151"
 	icon_state = "dark2"
@@ -3258,6 +3332,66 @@
 
 /turf/open/floor/carpet9_4/west
 	dir = WEST
+
+/turf/open/floor/carpetside
+	icon_state = "carpetside"
+
+/turf/open/floor/carpetside/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/carpetside/north
+	dir = NORTH
+
+/turf/open/floor/carpetside/east
+	dir = EAST
+
+/turf/open/floor/carpetside/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/carpetside/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/carpetside/west
+	dir = WEST
+
+/turf/open/floor/carpetside/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/bcarpet01
+	icon_state = "bcarpet01"
+
+/turf/open/floor/bcarpet01/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet02
+	icon_state = "bcarpet02"
+
+/turf/open/floor/bcarpet02/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet03
+	icon_state = "bcarpet03"
+
+/turf/open/floor/bcarpet03/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet07
+	icon_state = "bcarpet07"
+
+/turf/open/floor/bcarpet07/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet08
+	icon_state = "bcarpet08"
+
+/turf/open/floor/bcarpet08/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet09
+	icon_state = "bcarpet09"
+
+/turf/open/floor/bcarpet09/southeast
+	dir = SOUTHEAST
 
 /turf/open/floor/chapel/west
 	dir = WEST

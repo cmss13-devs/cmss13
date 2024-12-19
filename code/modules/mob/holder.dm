@@ -131,3 +131,38 @@
 /obj/item/holder/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+
+// Rat
+
+/obj/item/holder/rat
+	name = "rat"
+	desc = "It's a big rat."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "rat_white"
+	w_class = SIZE_TINY
+	flags_equip_slot = null
+
+/obj/item/holder/rat/white
+	icon_state = "rat_white"
+
+/obj/item/holder/rat/gray
+	icon_state = "rat_gray"
+
+/obj/item/holder/rat/brown
+	icon_state = "rat_brown"
+
+/obj/item/holder/rat/black
+	icon_state = "rat_black"
+
+
+/obj/item/holder/rat/white/Milky
+	name = "Milky"
+	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
+
+/obj/item/holder/rat/brown/Old_Timmy
+	name = "Old Timmy"
+	desc = "An ancient looking rat from the old days of the colony."
+
+/obj/item/holder/rat/black/Korey
+	name = "Korey"
+	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."

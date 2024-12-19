@@ -256,6 +256,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/seized/p90
+	name = "FN P90 submachinegun crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/seized/mp27
 	name = "MP-27 submachinegun crate (x5 magazines included)"
 	contains = list(
@@ -801,6 +814,12 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "Magazines box (FN FP9000, 10x mags)"
 	dollar_cost = 35
 	contains = list(/obj/item/ammo_box/magazine/fp9000)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/p90
+	name = "Magazines box (FN P90, 10x mags)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/p90)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/mp27

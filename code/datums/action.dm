@@ -8,6 +8,8 @@
 	var/atom/movable/screen/action_button/button = null
 	var/mob/owner
 	var/cooldown = 0 // By default an action has no cooldown
+	/// The time when this ability can be used again
+	var/ability_used_time = 0
 	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
 	var/action_flags = 0 // Check out __game.dm for flags
 	/// Whether the action is hidden from its owner
@@ -40,10 +42,16 @@
 	return ..()
 
 /datum/action/proc/update_button_icon()
-	return
+	if(!action_cooldown_check())
+		button.color = rgb(120,120,120,200)
+	else
+		button.color = rgb(255,255,255,255)
 
 /datum/action/proc/action_activate()
 	SHOULD_CALL_PARENT(TRUE)
+
+	if(cooldown)
+		enter_cooldown()
 
 	SEND_SIGNAL(src, COMSIG_ACTION_ACTIVATED)
 
@@ -56,9 +64,21 @@
 /datum/action/proc/can_use_action()
 	if(hidden)
 		return FALSE
+	if(!owner)
+		return FALSE
 
-	if(owner)
-		return TRUE
+	return action_cooldown_check()
+
+/// Returns TRUE if cooldown is over
+/datum/action/proc/action_cooldown_check()
+	return ability_used_time <= world.time
+
+/datum/action/proc/enter_cooldown(amount = cooldown)
+	ability_used_time = world.time + amount
+
+	update_button_icon()
+
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), amount)
 
 /datum/action/proc/set_name(new_name)
 	name = new_name
@@ -118,6 +138,8 @@
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ACTION_REMOVED, L)
+	if(listen_signal)
+		UnregisterSignal(L, listen_signal)
 	L.handle_remove_action(src)
 	owner = null
 

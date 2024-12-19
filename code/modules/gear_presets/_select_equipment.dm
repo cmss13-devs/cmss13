@@ -206,10 +206,10 @@
 		if(current_gear)
 			if(current_gear.allowed_roles && !(assignment in current_gear.allowed_roles))
 				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Role"))
-				return
+				continue
 			if(current_gear.allowed_origins && !(new_human.origin in current_gear.allowed_origins))
 				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Origin"))
-				return
+				continue
 			if(!(current_gear.slot && new_human.equip_to_slot_or_del(new current_gear.path, current_gear.slot)))
 				var/obj/equipping_gear = new current_gear.path
 				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)

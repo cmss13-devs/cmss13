@@ -237,7 +237,7 @@
 
 
 /mob/living/carbon/human/attack_animal(mob/living/M as mob)
-	if(M.melee_damage_upper += burn_damage_upper == 0)
+	if(M.melee_damage_upper == 0)
 		M.emote("[M.friendly] [src]")
 	else
 		if(M.attack_sound)
@@ -248,10 +248,9 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		var/burn_damage = rand(M.burn_damage_lower, M.burn_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 		var/obj/limb/affecting = get_limb(rand_zone(dam_zone))
-		apply_damage(damage, BRUTE, affecting += burn_damage, BURN)
+		apply_damage(damage, BRUTE, affecting)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.

@@ -10,8 +10,6 @@
 	///allows fine tuning melee damage to vehicles per caste.
 	var/melee_vehicle_damage = 10
 	var/evasion = XENO_EVASION_NONE
-	var/burn_damage_lower = 0
-	var/burn_damage_upper = 0
 
 	var/speed = XENO_SPEED_TIER_10
 

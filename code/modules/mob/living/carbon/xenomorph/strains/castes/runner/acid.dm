@@ -20,8 +20,6 @@
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	runner.armor_modifier += XENO_ARMOR_MOD_MED
 	runner.health_modifier += XENO_HEALTH_MOD_ACIDER
-	runner.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	runner.burn_damage_modifier += XENO_DAMAGE_MOD_VERY_VERY_SMALL
 
 	runner.recalculate_everything()
 

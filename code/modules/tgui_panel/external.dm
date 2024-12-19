@@ -19,9 +19,7 @@
 	// Failed to fix
 	action = alert(src, "Did that work?", "", "Yes", "No, switch to old ui")
 	if (action == "No, switch to old ui")
-		winset(src, "output", "on-show=&is-disabled=0&is-visible=1")
-		winset(src, "browseroutput", "is-disabled=1;is-visible=0")
-		log_tgui(src, "Failed to fix.", context = "verb/fix_tgui_panel")
+		use_old_chat()
 
 /client/proc/nuke_chat()
 	// Catch all solution (kick the whole thing in the pants)
@@ -35,6 +33,11 @@
 	// Force show the panel to see if there are any errors
 	winset(src, "output", "is-disabled=1&is-visible=0")
 	winset(src, "browseroutput", "is-disabled=0;is-visible=1")
+
+/client/proc/use_old_chat()
+	winset(src, "output", "on-show=&is-disabled=0&is-visible=1")
+	winset(src, "browseroutput", "is-disabled=1;is-visible=0")
+	log_tgui(src, "Failed to fix.", context = "verb/fix_tgui_panel")
 
 /client/verb/refresh_tgui()
 	set name = "Refresh TGUI"

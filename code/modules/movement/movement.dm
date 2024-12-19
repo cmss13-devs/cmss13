@@ -68,6 +68,7 @@
 		setDir(old_dir)
 	else if(old_dir != direct)
 		setDir(direct)
+
 	l_move_time = world.time
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)

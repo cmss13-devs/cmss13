@@ -12829,7 +12829,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "tMH" = (
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -14864,7 +14864,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 4;
 	pixel_y = 7
 	},

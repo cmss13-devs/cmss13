@@ -289,3 +289,18 @@
 	w_class = SIZE_MASSIVE
 	flags_equip_slot = SLOT_BACK
 	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
+
+/obj/item/clock
+	name = "digital clock"
+	desc = "A battery powered clock, able to keep time within about 5 seconds... it was never that accurate."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "digital_clock"
+	force = 3
+	throwforce = 2
+	throw_speed = 1
+	throw_range = 4
+	w_class = SIZE_SMALL
+
+/obj/item/clock/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The [src] reads: [GLOB.current_date_string] - [worldtime2text()]")

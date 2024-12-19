@@ -48,6 +48,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "terminal"
 	z_restricted = FALSE
 
 /obj/structure/machinery/computer/cryopod/attack_remote()

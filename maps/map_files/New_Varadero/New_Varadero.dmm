@@ -185,6 +185,12 @@
 "ahg" = (
 /turf/closed/wall,
 /area/varadero/interior/dock_control)
+"aht" = (
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_y = 24
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "ahD" = (
 /obj/item/shard{
 	icon_state = "medium"
@@ -208,6 +214,13 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
+"aiW" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/eastbeach)
 "ajm" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -536,10 +549,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"awr" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt/desert0,
-/area/varadero/exterior/lz1_near)
 "awu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -735,6 +744,10 @@
 	},
 /turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
+"aDi" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aDu" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/floor3,
@@ -1610,6 +1623,11 @@
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/wood,
 /area/varadero/interior/chapel)
+"bir" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/curtain/red,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "biz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -1901,6 +1919,17 @@
 /obj/structure/machinery/light,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
+"buO" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
+	health = 300;
+	icon = 'icons/obj/items/stacks.dmi';
+	icon_state = "sheet-mythril";
+	name = "funky wall bacon"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/security)
 "bvE" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -1963,11 +1992,6 @@
 	},
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/security)
-"byw" = (
-/obj/structure/surface/table,
-/obj/item/folder/black,
-/turf/open/floor/interior/plastic,
-/area/varadero/interior_protected/caves/digsite)
 "byC" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -1999,37 +2023,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
-"bAE" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "Made in Little Japan.";
-	health = 300;
-	icon = 'icons/obj/items/stacks.dmi';
-	icon_state = "sheet-lizard";
-	name = "exotic bedsheet";
-	pixel_x = -1
-	},
-/obj/item/ammo_magazine/rifle/m4ra,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "bBo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -3300,10 +3293,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastocean)
-"cFu" = (
-/obj/structure/xenoautopsy/tank/larva,
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "cFv" = (
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/metal/kutjevo_smooth/east{
@@ -3573,12 +3562,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
-"cNJ" = (
-/obj/structure/closet,
-/obj/item/device/flashlight/lantern,
-/obj/item/map/current_map,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "cNK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -3654,12 +3637,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
-"cSa" = (
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	icon_state = "ywflowers_3"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
 "cSc" = (
 /obj/structure/prop/invuln/overhead_pipe,
 /turf/closed/wall/rock/brown,
@@ -4374,6 +4351,41 @@
 "dvT" = (
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/eastbeach)
+"dwJ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "Made in Little Japan.";
+	health = 300;
+	icon = 'icons/obj/items/stacks.dmi';
+	icon_state = "sheet-lizard";
+	name = "exotic bedsheet";
+	pixel_x = -1
+	},
+/obj/item/ammo_magazine/rifle/m4ra,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
+"dwM" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "dwN" = (
 /obj/item/tool/wet_sign,
 /obj/item/tool/mop,
@@ -4587,6 +4599,10 @@
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/hall_N)
+"dKi" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "dKy" = (
 /obj/structure/closet/crate/freezer/cooler/oj,
 /obj/item/reagent_container/food/drinks/cans/beer,
@@ -5080,6 +5096,13 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"efY" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "egb" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -5152,6 +5175,11 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"ehL" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "ehY" = (
 /obj/item/clothing/under/shorts/red{
 	pixel_y = 9;
@@ -5506,10 +5534,6 @@
 "eyt" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/caves/east)
-"eyL" = (
-/obj/structure/surface/table,
-/turf/open/floor/interior/plastic,
-/area/varadero/interior_protected/caves/digsite)
 "ezb" = (
 /obj/structure/surface/rack,
 /obj/item/frame/table,
@@ -5701,6 +5725,20 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
+"eGg" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -17
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "eGq" = (
 /obj/item/reagent_container/food/snacks/eat_bar,
 /obj/item/reagent_container/food/snacks/eat_bar{
@@ -5803,6 +5841,10 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
+"eLl" = (
+/obj/structure/bed/chair/comfy/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "eLE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westleft,
@@ -6812,21 +6854,6 @@
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
-"fxR" = (
-/obj/item/moneybag{
-	anchored = 1;
-	desc = "A console designed by the Hunters to assist in flight pathing and navigation.";
-	dir = 8;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "overwatch";
-	name = "Hunter Flight Console";
-	pixel_x = -17
-	},
-/obj/structure/bed/chair/hunter{
-	dir = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "fxX" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -7085,6 +7112,27 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
+"fHw" = (
+/obj/structure/bed/alien/yautja{
+	can_buckle = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/bed/alien/yautja{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "fHx" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -7124,23 +7172,6 @@
 /obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
-"fJI" = (
-/obj/item/clothing/gloves/yautja{
-	anchored = 1;
-	can_block_movement = 1;
-	charge = 1;
-	charge_max = 1;
-	color = "#a8a7a5";
-	density = 1;
-	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
-	name = "Self Destruct System";
-	pixel_y = 24
-	},
-/obj/structure/bed/chair/hunter{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "fJR" = (
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
@@ -7214,6 +7245,14 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/hall_SE)
+"fNm" = (
+/obj/structure/surface/table,
+/obj/item/tool/wirecutters/yautja,
+/obj/item/tool/screwdriver/yautja{
+	pixel_y = 15
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/digsite)
 "fND" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -7247,12 +7286,6 @@
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/administration)
-"fPp" = (
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	icon_state = "ywflowers_2"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
 "fPq" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -8232,13 +8265,6 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
-"gCQ" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "gDr" = (
 /obj/item/tool/warning_cone,
 /turf/open/gm/dirt,
@@ -8506,19 +8532,6 @@
 /obj/item/grown/log,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"gRN" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/bedsheet{
-	anchored = 1;
-	desc = "A console used by the Hunters for navigation purposes.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "security_cam";
-	name = "Hunter Nav Console"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "gRS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -8621,6 +8634,13 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
+"gXg" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/machinery/storm_siren{
+	pixel_y = 5
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "gXh" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -9255,12 +9275,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
-"hyT" = (
-/obj/structure/flora/bush/ausbushes/ywflowers{
-	icon_state = "ywflowers_4"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
 "hza" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -9347,6 +9361,21 @@
 /obj/structure/closet/l3closet/scientist,
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
+"hFq" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -17;
+	density = 0
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "hFA" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9421,17 +9450,6 @@
 /obj/structure/machinery/bot/mulebot,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"hHR" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
-	health = 300;
-	icon = 'icons/obj/items/stacks.dmi';
-	icon_state = "sheet-mythril";
-	name = "funky wall bacon"
-	},
-/turf/closed/wall/r_wall,
-/area/varadero/interior/security)
 "hIo" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -9969,6 +9987,10 @@
 	},
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_NW)
+"idd" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
 "idh" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -10267,10 +10289,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
-"iqU" = (
-/obj/structure/xenoautopsy/tank/larva,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "iqW" = (
 /obj/structure/surface/rack,
 /obj/item/paper{
@@ -11183,6 +11201,10 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
+"iXU" = (
+/obj/item/tool/wrench/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "iXX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -11340,25 +11362,6 @@
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
-"jeT" = (
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/caves/digsite)
 "jfn" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -11395,10 +11398,6 @@
 	},
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
-"jgV" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
 "jgY" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/records)
@@ -12126,6 +12125,10 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
+"jKe" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
 "jKr" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer1,
@@ -12161,6 +12164,10 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/toilets)
+"jLc" = (
+/obj/structure/machinery/gibber/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "jLk" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
@@ -12184,10 +12191,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/purple/northwest,
 /area/varadero/interior/research)
-"jNn" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
 "jNE" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -12198,23 +12201,6 @@
 /obj/structure/bed/chair/wheelchair,
 /turf/open/floor/shiva/wred/northeast,
 /area/varadero/interior/medical)
-"jNT" = (
-/obj/structure/pipes/vents/pump,
-/obj/structure/surface/table/woodentable,
-/obj/item/weapon/pole{
-	anchored = 1;
-	desc = "It only plays auto chess. Gross.";
-	icon = 'icons/obj/items/toy.dmi';
-	icon_state = "game_kit";
-	name = "Thick Art LTD Gamepad"
-	},
-/obj/item/prop/helmetgarb/raincover{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
 "jNW" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -12842,10 +12828,6 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/east)
-"kqQ" = (
-/obj/structure/xenoautopsy/tank/broken,
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "krl" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/red,
@@ -12949,6 +12931,12 @@
 /area/varadero/interior/hall_NW)
 "kxe" = (
 /turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/interior_protected/caves/central)
+"kxi" = (
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	icon_state = "ywflowers_2"
+	},
+/turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "kxU" = (
 /obj/structure/bed/chair{
@@ -13444,6 +13432,10 @@
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"kQN" = (
+/obj/structure/pipes/unary/freezer/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "kRp" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/item/device/flashlight/lamp/tripod,
@@ -13531,6 +13523,15 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
+"kVW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = 7
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "kWj" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/carpet,
@@ -13538,6 +13539,12 @@
 "kWB" = (
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/records)
+"kWO" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 1
+	},
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "kWR" = (
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/interior/maintenance/north)
@@ -13845,6 +13852,11 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
+"lkb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool,
+/turf/open/floor/wood,
+/area/varadero/interior/beach_bar)
 "lkz" = (
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
@@ -14429,6 +14441,10 @@
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
+"lIX" = (
+/obj/item/toy/inflatable_duck,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pool)
 "lJo" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -14774,11 +14790,6 @@
 	},
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/technical_storage)
-"lXv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stool,
-/turf/open/floor/wood,
-/area/varadero/interior/beach_bar)
 "lYi" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cup{
@@ -15018,6 +15029,10 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
+"mhv" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/pontoon_beach)
 "mio" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -15461,6 +15476,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
+"mxU" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	name = "human monitoring computer";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "myj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -15685,10 +15712,6 @@
 "mIL" = (
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
-"mJe" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior/caves/north_research)
 "mJh" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/multi_tiles/north,
@@ -15856,13 +15879,6 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/varadero/interior/library)
-"mRs" = (
-/obj/structure/window/framed/colony/reinforced{
-	color = "#aba9a9"
-	},
-/obj/structure/curtain/red,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "mRL" = (
 /obj/item/paper/crumpled/bloody,
 /turf/open/floor/shiva/north,
@@ -15981,6 +15997,10 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior_protected/maintenance/south)
+"mWx" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/lz1_near)
 "mXi" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/shuttle/elevator,
@@ -16076,6 +16096,15 @@
 	},
 /turf/open/gm/dirt/desert1,
 /area/varadero/exterior/eastbeach)
+"naq" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/cmcap,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/bunks)
+"naU" = (
+/obj/structure/showcase/yautja/alt,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/caves/digsite)
 "nbA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/floor3,
@@ -16143,6 +16172,10 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/maintenance)
+"nec" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "nee" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -16709,6 +16742,12 @@
 	},
 /turf/open/floor/shiva/multi_tiles/north,
 /area/varadero/interior/comms3)
+"nGJ" = (
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	icon_state = "ywflowers_3"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "nHA" = (
 /turf/open/floor/shiva/red,
 /area/varadero/interior/security)
@@ -17933,13 +17972,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
-"oDB" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/eastbeach)
 "oDN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/yellow,
@@ -18068,6 +18100,10 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
+"oKj" = (
+/obj/structure/prop/pred_flight,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "oKo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18383,11 +18419,6 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
-"oXC" = (
-/obj/structure/surface/table,
-/obj/structure/prop/server_equipment/laptop/on,
-/turf/open/floor/interior/plastic,
-/area/varadero/interior_protected/caves/digsite)
 "oXE" = (
 /obj/structure/surface/table,
 /obj/structure/prop/invuln/lattice_prop{
@@ -18798,6 +18829,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/eastbeach)
+"pmY" = (
+/obj/item/tool/crowbar/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "pnn" = (
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/shiva/multi_tiles,
@@ -19023,15 +19058,6 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
-"pwc" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/drinks/bottle/orangejuice{
-	pixel_y = 6
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "pxa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/largecrate/random/mini/ammo{
@@ -19826,6 +19852,10 @@
 "qaE" = (
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
+"qaP" = (
+/obj/item/device/multitool/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "qaX" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/effect/decal/cleanable/dirt,
@@ -20350,39 +20380,12 @@
 "qwQ" = (
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
-"qwU" = (
-/obj/structure/xenoautopsy/tank/hugger,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "qxa" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/electrical)
-"qxb" = (
-/obj/structure/bed/alien{
-	can_buckle = 0;
-	color = "#aba9a9"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/bed/alien{
-	buckling_y = 13;
-	color = "#aba9a9";
-	layer = 3.5;
-	pixel_y = 13
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "qxt" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_2";
@@ -20669,6 +20672,10 @@
 "qFZ" = (
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
+"qGf" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "qGE" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/yellow/west,
@@ -21194,6 +21201,13 @@
 "rbU" = (
 /turf/open/floor/wood,
 /area/varadero/interior/research)
+"rcb" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = -2
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/digsite)
 "rco" = (
 /obj/structure/inflatable/door,
 /turf/open/shuttle/red,
@@ -21249,11 +21263,6 @@
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
-"reA" = (
-/obj/structure/xenoautopsy/tank/broken,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "reG" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 10
@@ -21502,10 +21511,6 @@
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/security)
-"rmS" = (
-/obj/structure/xenoautopsy/tank/alien,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "rmV" = (
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/wood,
@@ -21902,10 +21907,6 @@
 /obj/structure/filingcabinet/security,
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/hall_SE)
-"rBq" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "rBJ" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -22258,6 +22259,23 @@
 "rQY" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/administration)
+"rRb" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/pole{
+	anchored = 1;
+	desc = "It only plays auto chess. Gross.";
+	icon = 'icons/obj/items/toy.dmi';
+	icon_state = "game_kit";
+	name = "Thick Art LTD Gamepad"
+	},
+/obj/item/prop/helmetgarb/raincover{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "rRm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22462,10 +22480,6 @@
 /obj/item/stool,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"rWN" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
 "rXf" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/shiva/redcorners,
@@ -22755,6 +22769,10 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
+"sgM" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "shb" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/medical)
@@ -23626,6 +23644,12 @@
 "sNy" = (
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/comms4)
+"sNH" = (
+/obj/structure/closet/yautja,
+/obj/item/device/flashlight/lantern,
+/obj/item/map/current_map,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "sNT" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -23953,29 +23977,6 @@
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
-"tfC" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/caves/digsite)
 "tgk" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -25324,10 +25325,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
-"upH" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "upL" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -25747,6 +25744,19 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
+"uIo" = (
+/obj/structure/bed/chair/hunter{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Self Destruct System";
+	pixel_y = 25
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
 "uIH" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25801,11 +25811,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"uLP" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/cmcap,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/bunks)
 "uLY" = (
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
@@ -26574,6 +26579,10 @@
 /obj/item/storage/beer_pack,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"voq" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/eastbeach)
 "voJ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -26769,6 +26778,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/redcorners/east,
 /area/varadero/interior/security)
+"vwy" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
 "vwT" = (
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
@@ -27223,10 +27236,6 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
-"vNT" = (
-/obj/structure/xenoautopsy/tank,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "vNY" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -27234,10 +27243,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
-"vOa" = (
-/obj/structure/machinery/computer/crew,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "vOo" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
@@ -27930,6 +27935,10 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
+"wmY" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "wno" = (
 /turf/open/floor/shiva/green/north,
 /area/varadero/interior/mess)
@@ -28250,10 +28259,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
-"wyE" = (
-/obj/item/toy/inflatable_duck,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pool)
 "wzb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -28475,6 +28480,10 @@
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
+"wJG" = (
+/obj/item/tool/weldingtool/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "wKi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28841,6 +28850,13 @@
 "xcf" = (
 /turf/closed/wall/r_wall/elevator,
 /area/varadero/interior/records)
+"xcm" = (
+/obj/structure/surface/table,
+/obj/structure/prop/server_equipment/laptop/on{
+	pixel_y = -2
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/digsite)
 "xcz" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -28987,12 +29003,6 @@
 /obj/item/storage/belt/utility,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"xka" = (
-/obj/structure/window/framed/colony/reinforced{
-	color = "#aba9a9"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "xkb" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/fancy/vials/random{
@@ -29029,6 +29039,10 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/medical)
+"xkv" = (
+/obj/structure/reagent_dispensers/fueltank/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "xlb" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -29367,10 +29381,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/research,
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
-"xzc" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt/desert0,
-/area/varadero/exterior/pontoon_beach)
 "xzd" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/white,
@@ -29762,6 +29772,12 @@
 /obj/item/tool/wrench,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
+"xOV" = (
+/obj/structure/flora/bush/ausbushes/ywflowers{
+	icon_state = "ywflowers_4"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
 "xPj" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -35197,7 +35213,7 @@ qHc
 xCn
 qHc
 xCn
-jgV
+idd
 xCn
 qul
 qul
@@ -35367,7 +35383,7 @@ qul
 qul
 qul
 qHc
-mJe
+jKe
 xCn
 xCn
 oPQ
@@ -35929,7 +35945,7 @@ xCn
 xCn
 xCn
 xCn
-mJe
+jKe
 xCn
 xCn
 xCn
@@ -36833,7 +36849,7 @@ xCn
 qHc
 xCn
 xCn
-mJe
+jKe
 xCn
 xCn
 xCn
@@ -45160,7 +45176,7 @@ asx
 gxa
 rIG
 lYr
-awr
+mWx
 lYr
 aHu
 gga
@@ -45583,7 +45599,7 @@ qio
 qio
 qfL
 wSL
-wyE
+lIX
 uXu
 hLY
 boV
@@ -45829,7 +45845,7 @@ cto
 xxk
 xxk
 xEG
-cSa
+nGJ
 mSa
 mCF
 mCF
@@ -46866,7 +46882,7 @@ ydx
 mSc
 wpX
 qQt
-jNT
+rRb
 qeu
 thY
 mPI
@@ -47234,7 +47250,7 @@ iwo
 tMY
 jTY
 xxo
-uLP
+naq
 xNR
 nIF
 qeh
@@ -47591,7 +47607,7 @@ kZn
 qvQ
 bLy
 ydx
-bAE
+dwJ
 kIg
 nmC
 ben
@@ -47727,7 +47743,7 @@ lTR
 lTR
 gVO
 lzD
-upH
+vwy
 cwE
 bgE
 fuh
@@ -48199,7 +48215,7 @@ mCF
 mCF
 mCF
 aOg
-fPp
+kxi
 aOg
 aOg
 mCF
@@ -48790,7 +48806,7 @@ aeJ
 gYh
 dlh
 ncn
-lXv
+lkb
 sFc
 xlC
 faT
@@ -48810,7 +48826,7 @@ lTR
 lTR
 scL
 oGv
-xzc
+mhv
 oGv
 lnO
 daS
@@ -49651,7 +49667,7 @@ cto
 xxk
 mCF
 aOg
-rWN
+qGf
 mCF
 hoC
 cty
@@ -50858,7 +50874,7 @@ gWu
 gWu
 htt
 hPj
-hHR
+buO
 idw
 vco
 pja
@@ -51184,7 +51200,7 @@ rKM
 oGv
 hXR
 ihY
-oDB
+aiW
 cFw
 dwN
 jks
@@ -51300,7 +51316,7 @@ mCF
 mCF
 jdm
 mCF
-hyT
+xOV
 aOg
 mCF
 mCF
@@ -51528,7 +51544,7 @@ pFZ
 sLr
 siC
 oGv
-upH
+vwy
 oGv
 oGv
 lnO
@@ -51538,7 +51554,7 @@ lTR
 lTR
 lTR
 scL
-upH
+vwy
 oGv
 hXR
 vss
@@ -54245,7 +54261,7 @@ oZJ
 xNA
 kgp
 kgp
-gCQ
+gXg
 wlB
 bYO
 lTg
@@ -54463,7 +54479,7 @@ cFw
 cFw
 cFw
 pll
-jNn
+voq
 eNA
 jks
 cFw
@@ -55179,7 +55195,7 @@ wlB
 ghW
 wlB
 wlB
-rBq
+aDi
 wlB
 xmL
 deE
@@ -56605,7 +56621,7 @@ iWj
 wlB
 wlB
 wlB
-rBq
+aDi
 wlB
 lTg
 lTg
@@ -59289,12 +59305,12 @@ pDX
 bsf
 avD
 avD
-uvd
+kQN
 lFT
 avD
-kjI
+wJG
 snS
-snS
+iXU
 kjI
 avD
 qcC
@@ -59481,7 +59497,7 @@ kjI
 aCl
 nzb
 uvd
-uvd
+xkv
 avD
 bsf
 bsf
@@ -59656,14 +59672,14 @@ pBf
 fFK
 bye
 avD
-fJI
+uIo
 kjI
 kjI
 vnb
 avD
 gBM
 uvd
-uvd
+sgM
 avD
 bsf
 bsf
@@ -60016,18 +60032,18 @@ bsf
 bsf
 bsf
 avD
-qxb
+fHw
 aEg
 snS
-qxb
+fHw
 brT
 nEE
 kjI
 brT
-qxb
+fHw
 aEg
 snS
-qxb
+fHw
 avD
 bsf
 bsf
@@ -60380,18 +60396,18 @@ uvd
 avD
 bsf
 avD
-qxb
+fHw
 snS
 pcH
-qxb
+fHw
 brT
 kjI
 kjI
 brT
-qxb
+fHw
 snS
 snS
-qxb
+fHw
 avD
 bsf
 gFH
@@ -60562,7 +60578,7 @@ uvd
 aEQ
 avD
 avD
-brT
+avD
 brT
 brT
 brT
@@ -60742,20 +60758,20 @@ mol
 mol
 fof
 avD
-vNT
-vNT
-xka
-vNT
-vNT
-brT
+dwM
+dwM
+dKi
+dwM
+dwM
+avD
 snS
 kjI
 kjI
 snS
 brT
-rmS
-rmS
-xka
+dwM
+dwM
+dKi
 fbW
 rnj
 oJX
@@ -60926,7 +60942,7 @@ uvd
 brT
 kjI
 snS
-xka
+dKi
 snS
 kjI
 rco
@@ -60937,7 +60953,7 @@ qpD
 lvS
 kjI
 snS
-xka
+dKi
 nFy
 ojF
 brT
@@ -61108,18 +61124,18 @@ uvd
 brT
 bPx
 snS
-xka
+dKi
 snS
 cRn
-brT
+avD
 czG
 izi
 izi
 snS
-brT
+avD
 kjI
 snS
-xka
+dKi
 ndp
 kjI
 brT
@@ -61290,18 +61306,18 @@ uvd
 brT
 kjI
 snS
-xka
+dKi
 snS
 kjI
-mRs
+bir
 snS
 kjI
 kjI
 snS
-mRs
+bir
 kjI
 snS
-xka
+dKi
 eBS
 kjI
 brT
@@ -61475,12 +61491,12 @@ kjI
 rco
 kjI
 gms
-mRs
+bir
 snS
 kjI
 kjI
 snS
-mRs
+bir
 gms
 kjI
 lvS
@@ -61654,18 +61670,18 @@ uvd
 brT
 kjI
 snS
-xka
+dKi
 snS
 snS
-mRs
+bir
 snS
 kjI
 kjI
 snS
-mRs
+bir
 snS
 snS
-xka
+dKi
 dBA
 kjI
 brT
@@ -61835,20 +61851,20 @@ uvd
 uvd
 brT
 cRn
-vNT
-brT
+dwM
+avD
 snS
-snS
-brT
+jLc
+avD
 snS
 ujg
 kjI
 snS
-brT
+avD
 snS
 snS
-brT
-qwU
+avD
+dwM
 kjI
 brT
 uvd
@@ -62017,20 +62033,20 @@ uvd
 uvd
 brT
 kjI
-vNT
-brT
-reA
-brT
-brT
+dwM
+avD
+ehL
+avD
+avD
 snS
 kjI
 kjI
 snS
 brT
 brT
-rmS
+dwM
 brT
-qwU
+dwM
 nnk
 brT
 uvd
@@ -62199,11 +62215,11 @@ uvd
 uvd
 brT
 kjI
-vNT
-brT
-brT
-brT
-oKy
+dwM
+avD
+avD
+avD
+kVW
 snS
 kjI
 kjI
@@ -62212,7 +62228,7 @@ oKy
 brT
 brT
 brT
-iqU
+dwM
 kjI
 brT
 uvd
@@ -62380,22 +62396,22 @@ uvd
 uvd
 uvd
 brT
-kqQ
+wmY
 avD
 brT
-cNJ
-cNJ
+sNH
+sNH
 snS
 czG
 kjI
 kjI
 snS
 snS
-cNJ
-cNJ
+sNH
+sNH
 brT
 avD
-cFu
+nec
 brT
 uvd
 uvd
@@ -63477,12 +63493,12 @@ bsf
 kjI
 bPF
 kjI
-jUY
-pwc
+eLl
+efY
 kjI
 kjI
 oKy
-asf
+kWO
 ahD
 idn
 avD
@@ -63658,13 +63674,13 @@ bsf
 bsf
 avD
 jQG
-kjI
-jUY
+pmY
+eLl
 oKy
 kjI
 kjI
 pfL
-asf
+kWO
 aIm
 cwp
 avD
@@ -63841,12 +63857,12 @@ mMz
 kjI
 ydZ
 kjI
-jUY
+eLl
 rAf
 kjI
 kjI
 oKy
-asf
+kWO
 qLH
 jYs
 kjI
@@ -64023,12 +64039,12 @@ bsf
 qEn
 iSC
 kjI
-jUY
+eLl
 oKy
 kjI
 kjI
 pfL
-asf
+kWO
 vmY
 mke
 kjI
@@ -64747,7 +64763,7 @@ iwV
 uvd
 ulv
 bsf
-jeT
+naU
 lbX
 izi
 rco
@@ -64760,7 +64776,7 @@ izi
 qAd
 izi
 xuX
-tfC
+naU
 bsf
 brT
 uvd
@@ -65295,12 +65311,12 @@ brT
 bsf
 bsf
 avD
-vOa
+aht
 kjI
 kjI
 kjI
-snS
-snS
+oKj
+oKj
 kjI
 kjI
 kjI
@@ -66025,7 +66041,7 @@ bsf
 nEY
 avD
 cdc
-kjI
+qaP
 qEn
 avD
 avD
@@ -66209,8 +66225,8 @@ iyk
 kZl
 eiK
 hoU
-fxR
-fxR
+hFq
+eGg
 kjI
 kjI
 fcF
@@ -66563,8 +66579,8 @@ hre
 hre
 gRU
 qCT
-byw
-oXC
+rcb
+xcm
 sxR
 qCT
 gRU
@@ -66936,7 +66952,7 @@ bsf
 bBt
 bsf
 avD
-gRN
+mxU
 crq
 uli
 kEK
@@ -67474,7 +67490,7 @@ bsf
 bsf
 qCT
 gMp
-eyL
+fNm
 jWA
 qCT
 bsf

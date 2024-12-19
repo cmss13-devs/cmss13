@@ -833,6 +833,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 				.["theme"] = VENDOR_THEME_UPP
 			if(FACTION_CLF)
 				.["theme"] = VENDOR_THEME_CLF
+			if(FACTION_YAUTJA)
+				.["theme"] = VENDOR_THEME_YAUTJA
 	.["show_points"] = show_points | use_snowflake_points
 
 /obj/structure/machinery/cm_vending/ui_assets(mob/user)

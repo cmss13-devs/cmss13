@@ -79,6 +79,12 @@
 		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
 
+			if(istype(T, /turf/closed/wall))
+				var/turf/closed/wall/neighbour_wall = T
+
+				neighbour_wall.update_connections()
+				neighbour_wall.update_icon()
+
 			//nearby glowshrooms updated
 			for(var/obj/effect/glowshroom/shroom in T)
 				if(!shroom.floor) //shrooms drop to the floor

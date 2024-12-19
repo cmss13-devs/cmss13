@@ -1344,7 +1344,7 @@
 
 						// Stamps
 						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-						stampoverlay.icon_state = "paper_stamp-uscm"
+						stampoverlay.icon_state = "paper_stamp-rd"
 						if(!P.stamped)
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
@@ -1839,7 +1839,7 @@
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
 						P.overlays += stampoverlay
-						P.stamps += "<HR><i>This paper has been stamped by The Office of Colonial Marshals.</i>"
+						P.stamps += "<HR><i>This paper has been stamped by The Office of the Colonial Marshals.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
 				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)

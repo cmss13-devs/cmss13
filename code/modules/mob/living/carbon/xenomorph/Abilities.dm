@@ -55,7 +55,7 @@
 	var/area/AR = get_area(T)
 
 	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -105,7 +105,6 @@
 /datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"
 	action_icon_state = "screech"
-	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
@@ -168,7 +167,6 @@
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
 	action_icon_state = "gut"
-	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 MINUTES
@@ -282,7 +280,6 @@
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"
-	ability_name = "give plasma"
 	plasma_cost = 400
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
 	action_type = XENO_ACTION_CLICK

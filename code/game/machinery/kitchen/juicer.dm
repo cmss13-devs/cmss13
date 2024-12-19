@@ -29,6 +29,10 @@
 	. = ..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 
+/obj/structure/machinery/juicer/Destroy()
+	QDEL_NULL(beaker)
+	return ..()
+
 /obj/structure/machinery/juicer/update_icon()
 	icon_state = "juicer"+num2text(!QDELETED(beaker))
 	return

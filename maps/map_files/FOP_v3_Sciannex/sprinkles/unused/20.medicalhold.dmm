@@ -38,9 +38,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "bN" = (
@@ -161,9 +159,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "nR" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/largecrate/random/barrel,
 /turf/open/floor/prison/whitegreen/north,
@@ -332,9 +328,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "ES" = (
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
 	},
@@ -363,12 +357,8 @@
 /area/template_noop)
 "GI" = (
 /obj/structure/stairs/perspective,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
 /obj/structure/inflatable/door,
 /turf/open/floor/plating/prison,
 /area/template_noop)
@@ -382,9 +372,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
 "Hq" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
 	},
@@ -402,39 +390,29 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/template_noop)
 "IK" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2.8
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/largecrate/random/barrel{
 	pixel_x = -8;
-	layer = 2.9
+	layer = 3.1
 	},
 /obj/structure/largecrate/random/barrel{
 	pixel_x = 13;
-	layer = 2.9
+	layer = 3.1
 	},
 /obj/structure/largecrate/random/barrel{
 	pixel_x = 3;
-	layer = 2.9;
-	pixel_y = -8
+	pixel_y = -8;
+	layer = 3.1
 	},
 /turf/open/floor/prison/whitegreen/north,
 /area/template_noop)
 "JJ" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 4;
-	layer = 2.8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/whitegreen/north,
 /area/template_noop)
 "JL" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+/obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/inflatable,
 /turf/open/floor/prison/whitegreen,
 /area/template_noop)
@@ -552,9 +530,7 @@
 /obj/structure/machinery/shower{
 	pixel_y = 13
 	},
-/obj/structure/platform{
-	dir = 8
-	},
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
 "RG" = (
@@ -562,9 +538,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "Sz" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/metal/almayer/north,
 /obj/structure/largecrate/random/barrel,
 /obj/structure/largecrate/random/barrel{
 	pixel_x = 16;
@@ -581,9 +555,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "TF" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+/obj/structure/platform_decoration/metal/almayer/east,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft"
 	},
@@ -615,9 +587,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/template_noop)
 "WP" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},

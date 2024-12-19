@@ -321,7 +321,8 @@
 		if(!D.density)
 			continue
 		D.unlock(force)
-		D.open(force)
+		if(D.operating != DOOR_OPERATING_OPENING)
+			D.open(force)
 		open = TRUE
 
 	return TRUE

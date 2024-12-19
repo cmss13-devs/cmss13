@@ -112,7 +112,7 @@ Please wait until completion...</TT><BR>
 					build_cost = 75000
 
 			var/building = build_type
-			if (building in subtypesof(/obj/item/robot_parts) + /obj/item/fake_robot_head)
+			if (building in (subtypesof(/obj/item/robot_parts) + /obj/item/fake_robot_head))
 				if (src.metal_amount >= build_cost)
 					src.operating = 1
 					src.update_use_power(USE_POWER_ACTIVE)

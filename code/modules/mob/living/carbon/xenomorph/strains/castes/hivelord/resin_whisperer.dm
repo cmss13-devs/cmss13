@@ -43,14 +43,13 @@
 /datum/action/xeno_action/activable/secrete_resin/remote
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "coerce resin"
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
 	make_message = FALSE
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2 // the actual building part takes twice as long
+	build_speed_mod = 2.5 // the actual building part takes twice as long
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -81,7 +80,7 @@
 	if(istype(target_atom, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/resin_door = target_atom
 		resin_door.TryToSwitchState(owner)
-		if(resin_door.state)
+		if(resin_door.open)
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
 		else
 			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
@@ -91,8 +90,10 @@
 	if(care_about_adjacency)
 		if(owner.Adjacent(target_turf))
 			build_speed_mod = 1
+			xeno_cooldown = 1 SECONDS
 		else
 			build_speed_mod = initial(build_speed_mod)
+			xeno_cooldown = initial(xeno_cooldown)
 
 	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())

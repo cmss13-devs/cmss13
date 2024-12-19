@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "limbs are now only be delimb-able if they were fractured BEFORE the hit"

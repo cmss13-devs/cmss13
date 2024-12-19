@@ -1,7 +1,7 @@
 /obj/item/notepad
 	name = "notepad"
 	gender = PLURAL
-	icon = 'icons/obj/items/notepads.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "notebook"
 	item_state = "paper"
 	throwforce = 0

@@ -1,4 +1,0 @@
-author: "Ansekishoku"
-delete-after: True
-changes:
-  - bugfix: "Buckshot additional projectiles no more miss the target when they get stunned by the main projectile."

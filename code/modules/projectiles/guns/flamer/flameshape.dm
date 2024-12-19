@@ -56,6 +56,7 @@
 /datum/flameshape/default/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	var/list/tiles_to_spread = list(get_turf(F.loc))
 	var/list/tiles_to_set_aflame = list()
+	var/list/checked_tiles = list()
 	var/obj/flamer_fire/temp = new()
 
 	for(var/spread_amount = 1 to fire_spread_amount)
@@ -68,8 +69,12 @@
 			for(var/dirn in GLOB.cardinals)
 				var/turf/T = get_step(prev_T, dirn)
 
+				if(checked_tiles[T])
+					continue
+
 				var/obj/flamer_fire/foundflame = locate() in T
 				if(foundflame && foundflame.tied_reagent == F.tied_reagent)
+					checked_tiles[T] = TRUE
 					continue
 
 				var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
@@ -77,8 +82,12 @@
 					if(FIRE_CANPASS_SPREAD)
 						next_tiles_to_spread.Add(T)
 						tiles_to_set_aflame.Add(T)
+						checked_tiles[T] = TRUE
 					if(FIRE_CANPASS_SET_AFLAME)
 						tiles_to_set_aflame.Add(T)
+						checked_tiles[T] = TRUE
+					if(FIRE_CANPASS_STOP)
+						checked_tiles[T] = TRUE
 
 		tiles_to_spread = next_tiles_to_spread
 		

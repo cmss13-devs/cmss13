@@ -121,3 +121,20 @@
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME * 2, 1)
 			return FALSE
+
+//ice classic
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/dorm/upper
+	shuttleId = "ice_classic_shuttle"
+	dockId = "ice_dorm_upper"
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/dorm/lower
+	shuttleId = "ice_classic_shuttle"
+	dockId = "ice_dorm_lower"
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/lab/upper
+	shuttleId = "ice_classic_shuttle_north"
+	dockId = "ice_lab_upper"
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/ice_classic/lab/lower
+	shuttleId = "ice_classic_shuttle_north"
+	dockId = "ice_lab_lower"

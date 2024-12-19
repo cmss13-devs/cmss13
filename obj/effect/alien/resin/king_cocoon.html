@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;effect&#x2F;alien&#x2F;resin&#x2F;king_cocoon - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/effect/alien/resin/king_cocoon.html#var">Var Details</a> - <a href="obj/effect/alien/resin/king_cocoon.html#proc">Proc Details</a></header>
+<main>
+<h1>alien cocoon <aside>/<a href="obj.html">obj</a>/<a href="obj/effect/alien/resin/king_cocoon.html">effect/alien/resin/king_cocoon</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L864">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 864"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#var/chosen_candidate">chosen_candidate</a></th><td>The mob picked as a candidate to be the King</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#var/hatched">hatched</a></th><td>Whether the cocoon has hatched</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#var/hive_number">hive_number</a></th><td>The hive associated with this cocoon</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#var/rolling_candidates">rolling_candidates</a></th><td>Is currently rolling candidates</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#var/timer">timer</a></th><td>Current running timer</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#var/votes">votes</a></th><td>Voting for King</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/animate_hatch_king">animate_hatch_king</a></th><td>Causes the cocoon to change visually for hatching and initiates the next timer.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/announce_halfway">announce_halfway</a></th><td>Causes the halfway announcements and initiates the next timer.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/cast_vote">cast_vote</a></th><td>Tallies up votes by asking the passed candidate who they wish to vote for King.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/check_pylons">check_pylons</a></th><td>Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/hatch_king">hatch_king</a></th><td>Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/is_candidate_valid">is_candidate_valid</a></th><td>Returns TRUE is the candidate passed is valid: Returns TRUE is the candidate passed is valid: Has client, not facehugger, not lesser drone, not banished, and conditionally on playtime.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/remove_ob_protection">remove_ob_protection</a></th><td>The final step in the cocoon sequence: Resets pylon protection levels</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/roll_candidates">roll_candidates</a></th><td>Finalizes the vote for King opting to use a series of fallbacks in case a candidate declines.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/start_growing">start_growing</a></th><td>Causes the cocoon to change visually for growing and initiates the next timer.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/start_hatching">start_hatching</a></th><td>Starts the hatching in one minute, otherwise immediately if expedited</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/start_vote">start_vote</a></th><td>Initiates a vote that will end in 20 seconds to vote for the King. Hatching will then begin in 1 minute unless expedited.</td></tr>
+            <tr><th><a href="obj/effect/alien/resin/king_cocoon.html#proc/try_roll_candidate">try_roll_candidate</a></th><td>Returns TRUE if a valid candidate accepts a TGUI alert asking them to be King.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/chosen_candidate"><aside class="declaration">var </aside>chosen_candidate
+            <aside>&ndash; /<a href="client.html">client</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L876">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 876"/></a></h3>
+        <p>The mob picked as a candidate to be the King</p><h3 id="var/hatched"><aside class="declaration">var </aside>hatched
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L880">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 880"/></a></h3>
+        <p>Whether the cocoon has hatched</p><h3 id="var/hive_number"><aside class="declaration">var </aside>hive_number
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L878">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 878"/></a></h3>
+        <p>The hive associated with this cocoon</p><h3 id="var/rolling_candidates"><aside class="declaration">var </aside>rolling_candidates
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L884">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 884"/></a></h3>
+        <p>Is currently rolling candidates</p><h3 id="var/timer"><aside class="declaration">var </aside>timer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L882">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 882"/></a></h3>
+        <p>Current running timer</p><h3 id="var/votes"><aside class="declaration">var </aside>votes
+            <aside>&ndash; /list/mob/living/carbon/xenomorph</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L886">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 886"/></a></h3>
+        <p>Voting for King</p><h2 id="proc">Proc Details</h2><h3 id="proc/animate_hatch_king"><aside class="declaration">proc </aside>animate_hatch_king<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1166">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1166"/></a></aside>
+        </h3>
+        <p>Causes the cocoon to change visually for hatching and initiates the next timer.</p><h3 id="proc/announce_halfway"><aside class="declaration">proc </aside>announce_halfway<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L977">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 977"/></a></aside>
+        </h3>
+        <p>Causes the halfway announcements and initiates the next timer.</p><h3 id="proc/cast_vote"><aside class="declaration">proc </aside>cast_vote<aside>(/<a href="mob.html">mob</a>/candidate, /list/mob/living/carbon/xenomorph/voting_candidates) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1040">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1040"/></a></aside>
+        </h3>
+        <p>Tallies up votes by asking the passed candidate who they wish to vote for King.</p>
+<p>Arguments:</p>
+<ul>
+<li>candidate: The mob that was want to ask</li>
+<li>voting_candidates: A list of xenomorph mobs that are candidates</li>
+</ul><h3 id="proc/check_pylons"><aside class="declaration">proc </aside>check_pylons<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L942">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 942"/></a></aside>
+        </h3>
+        <p>Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).</p><h3 id="proc/hatch_king"><aside class="declaration">proc </aside>hatch_king<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1182">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1182"/></a></aside>
+        </h3>
+        <p>Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.</p><h3 id="proc/is_candidate_valid"><aside class="declaration">proc </aside>is_candidate_valid<aside>(/<a href="datum.html">datum</a>/<a href="datum/hive_status.html">hive_status</a>/hive, /<a href="mob.html">mob</a>/candidate, playtime_restricted, skip_playtime) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1002">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1002"/></a></aside>
+        </h3>
+        <p>Returns TRUE is the candidate passed is valid: Returns TRUE is the candidate passed is valid: Has client, not facehugger, not lesser drone, not banished, and conditionally on playtime.</p>
+<p>Arguments:</p>
+<ul>
+<li>hive: The hive_status to check banished ckeys against</li>
+<li>candidate: The mob that we want to check</li>
+<li>playtime_restricted: Determines whether being below KING_PLAYTIME_HOURS makes the candidate invalid</li>
+<li>skip_playtime: Determines whether being above KING_PLAYTIME_HOURS makes the candidate invalid (does nothing unless playtime_restricted is FALSE)</li>
+</ul><h3 id="proc/remove_ob_protection"><aside class="declaration">proc </aside>remove_ob_protection<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1205">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1205"/></a></aside>
+        </h3>
+        <p>The final step in the cocoon sequence: Resets pylon protection levels</p><h3 id="proc/roll_candidates"><aside class="declaration">proc </aside>roll_candidates<aside>(/list/mob/living/carbon/xenomorph/voting_candidates, expedite) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1079">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1079"/></a></aside>
+        </h3>
+        <p>Finalizes the vote for King opting to use a series of fallbacks in case a candidate declines.</p>
+<p>First is a vote where the first and or second top picked is asked.
+Then all other living xenos meeting the playtime requirement are asked.
+Then all xeno observer candidates meeting the playtime requirement are asked.
+Then all other living xenos not meeting the playtime requirement are asked.
+Then all other xeno observer candidates not meeting the playtime requirement are asked.
+Then finally if after all that, the search is given up and will ultimately result in a freed King mob.</p>
+<p>Arguments:</p>
+<ul>
+<li>voting_candidates: A list of xenomorphs that are valid candidates to vote on.</li>
+<li>expedite: Whether hatching should begin in a minute or immediately after a candidate is found.</li>
+</ul><h3 id="proc/start_growing"><aside class="declaration">proc </aside>start_growing<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L972">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 972"/></a></aside>
+        </h3>
+        <p>Causes the cocoon to change visually for growing and initiates the next timer.</p><h3 id="proc/start_hatching"><aside class="declaration">proc </aside>start_hatching<aside>(expedite) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1147">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1147"/></a></aside>
+        </h3>
+        <p>Starts the hatching in one minute, otherwise immediately if expedited</p><h3 id="proc/start_vote"><aside class="declaration">proc </aside>start_vote<aside>(expedite) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1049">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1049"/></a></aside>
+        </h3>
+        <p>Initiates a vote that will end in 20 seconds to vote for the King. Hatching will then begin in 1 minute unless expedited.</p><h3 id="proc/try_roll_candidate"><aside class="declaration">proc </aside>try_roll_candidate<aside>(/<a href="datum.html">datum</a>/<a href="datum/hive_status.html">hive_status</a>/hive, /<a href="mob.html">mob</a>/candidate, playtime_restricted) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e28be4f482ff60e7f674c526e2ff7586af61a93e/code/modules/cm_aliens/XenoStructures.dm#L1025">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;cm_aliens&#x2F;XenoStructures.dm 1025"/></a></aside>
+        </h3>
+        <p>Returns TRUE if a valid candidate accepts a TGUI alert asking them to be King.</p>
+<p>Arguments:</p>
+<ul>
+<li>hive: The hive_status to check banished ckeys against</li>
+<li>candidate: The mob that we want to ask</li>
+<li>playtime_restricted: Determines whether being below KING_PLAYTIME_HOURS makes the candidate invalid (otherwise above)</li>
+</ul></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/e28be4f482ff60e7f674c526e2ff7586af61a93e">e28be4f</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

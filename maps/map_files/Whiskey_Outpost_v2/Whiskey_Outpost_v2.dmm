@@ -9187,10 +9187,6 @@
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
-"RU" = (
-/obj/structure/machinery/cm_vending/clothing/medic,
-/turf/open/floor/asteroidfloor/north,
-/area)
 "RV" = (
 /obj/item/storage/box/m94,
 /turf/open/shuttle/dropship/light_grey_left_to_right,
@@ -20553,7 +20549,7 @@ JT
 CC
 qz
 CE
-RU
+CE
 kA
 lB
 lO

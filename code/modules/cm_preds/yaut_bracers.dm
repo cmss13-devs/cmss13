@@ -302,7 +302,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()
-	charge = max(charge - (severity * 500), 0)
+	charge = max(charge - (1000/severity), 0) //someone made weaker emp have higer severity so we divide
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)

@@ -30,11 +30,12 @@
 
 	var/can_change_shuttle = FALSE
 	var/faction = FACTION_MARINE
-	
+
 	/// If this computer should respect the faction variable of destination LZ
 	var/use_factions = TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/upp
+	icon_state = "console_upp"
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP
 

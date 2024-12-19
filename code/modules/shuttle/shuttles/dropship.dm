@@ -153,6 +153,23 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/morana
+	name = "Morana"
+	id = DROPSHIP_MORANA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/morana/get_transit_path_type()
+	return /turf/open/space/transit/dropship/morana
+
+/obj/docking_port/mobile/marine_dropship/devana
+	name = "Devana"
+	id = DROPSHIP_DEVANA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/devana/get_transit_path_type()
+	return /turf/open/space/transit/dropship/devana
+
+
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
 
@@ -306,6 +323,12 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/upp_hangar_1
+	name = "UPP Hangar bay 1"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/morana
+
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
 
@@ -346,5 +369,13 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+/datum/map_template/shuttle/morana
+	name = "Morana"
+	shuttle_id = DROPSHIP_MORANA
+
+/datum/map_template/shuttle/devana
+	name = "Devana"
+	shuttle_id = DROPSHIP_DEVANA
 
 

@@ -212,6 +212,10 @@
 /datum/game_mode/colonialmarines/proc/start_lz_hazards()
 	if(SSobjectives.first_drop_complete)
 		return // Just for sanity
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_HAZARD_ACTIVATED))
+		return
+
+	log_game("Distress Signal LZ hazards active!")
 	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
 	INVOKE_ASYNC(src, PROC_REF(warn_lz_hazard), locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 	addtimer(CALLBACK(src, PROC_REF(spawn_lz_hazards)), OB_TRAVEL_TIMING + 1 SECONDS)

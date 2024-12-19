@@ -190,7 +190,7 @@
 
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"
-	desc = "It contains, by default, autoinjectors. But it may also hold ointments, bandages, and pill packets."
+	desc = "A small pouch that can hold basic medical equipment, such as autoinjectors and bandages."
 	icon_state = "firstaid"
 	storage_slots = 4
 	can_hold = list(
@@ -202,7 +202,7 @@
 	)
 
 /obj/item/storage/pouch/firstaid/full
-	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
+	desc = "Contains a variety of autoinjectors for quickly treating injuries."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
@@ -210,11 +210,17 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
+/obj/item/storage/pouch/firstaid/full/alternate
+	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
+
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
+
+/obj/item/storage/pouch/firstaid/full/pills
+	desc = "Contains a variety of pill packets for treating many injuries."
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)

@@ -554,7 +554,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
 			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
-			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			if(ghost.client)
+				ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			else if(persistent_ckey)
+				var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+				if(details)
+					details.larva_queue_time = max(details.larva_queue_time, new_tod)
+
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 			nest.ghost_of_buckled_mob = ghost
@@ -1133,6 +1139,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_responder()
+	set category = "Ghost.Join"
+	set name = "Join as a Fax Responder"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_fax_responder_late_join(src))
+		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"

@@ -16027,7 +16027,7 @@
 /turf/open/floor/darkblue2/northeast,
 /area/bigredv2/caves/eta/research)
 "bzJ" = (
-/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
 /obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/caves/eta/research)

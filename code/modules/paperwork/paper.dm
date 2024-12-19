@@ -56,22 +56,28 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune" || icon_state == "paper_flag")
+	switch(icon_state)
+		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+			return
+
+	if(!info)
+		icon_state = "paper"
 		return
-	if(info)
-		if(icon_state == "paper_wy")
+
+	switch(icon_state)
+		if("paper_wy")
 			icon_state = "paper_wy_words"
 			return
-		if(icon_state == "paper_uscm")
+		if("paper_uscm")
 			icon_state = "paper_uscm_words"
 			return
-		if(icon_state == "paper_flag")
+		if("paper_flag")
 			icon_state = "paper_flag_words"
 			item_state = "paper_flag"
 			return
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		else
+			icon_state = "paper_words"
+	return
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()

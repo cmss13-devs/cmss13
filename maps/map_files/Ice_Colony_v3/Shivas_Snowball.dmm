@@ -13865,7 +13865,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "lro" = (
-/obj/structure/machinery/power/apc/no_power/west{
+/obj/structure/machinery/power/apc/no_power/east{
 	name = "telecomms relay power controller"
 	},
 /turf/open/floor/shiva/floor3,

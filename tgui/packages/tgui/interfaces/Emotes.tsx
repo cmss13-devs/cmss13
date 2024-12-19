@@ -1,8 +1,16 @@
+import { BooleanLike } from 'common/react';
 import { useState } from 'react';
 
-import { BooleanLike } from '../../common/react';
 import { useBackend } from '../backend';
-import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  Input,
+  Section,
+  Stack,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 
 type Emote = {
@@ -16,15 +24,22 @@ type BackendContext = {
   categories: string[];
   emotes: Emote[];
   on_cooldown: BooleanLike;
+  theme: string;
 };
 
-const EmoteTab = (props) => {
+const EmoteTab = () => {
   const { data, act } = useBackend<BackendContext>();
   const { categories, emotes, on_cooldown } = data;
-  const [categoryIndex, setCategoryIndex] = useState('Farewell');
+  const [categoryIndex, setCategoryIndex] = useState(categories[0]);
+
+  const [search, setSearch] = useState('');
+
   const mapped_emote = emotes.filter(
-    (emote) => emote && emote.category === categoryIndex,
+    (emote) =>
+      (emote && !search && emote.category === categoryIndex) ||
+      (search && emote.text.toLowerCase().includes(search.toLowerCase())),
   );
+
   return (
     <Stack fill vertical>
       <Stack.Item>
@@ -35,11 +50,21 @@ const EmoteTab = (props) => {
           }}
         >
           <Tabs>
+            <Input
+              placeholder="Search..."
+              onInput={(_, val) => setSearch(val)}
+              onEnter={() => {
+                mapped_emote[0]
+                  ? act('emote', { emotePath: mapped_emote[0].path })
+                  : null;
+              }}
+            />
             {categories.map((item, key) => (
               <Tabs.Tab
                 key={item}
-                selected={item === categoryIndex}
+                selected={!search && item === categoryIndex}
                 onClick={() => {
+                  setSearch('');
                   setCategoryIndex(item);
                 }}
               >
@@ -73,8 +98,8 @@ const EmoteTab = (props) => {
                   </Stack.Item>
                   <Stack.Item mt={-0.5}>
                     <Button
-                      disabled={on_cooldown}
                       tooltip={item.id}
+                      disabled={on_cooldown}
                       onClick={() =>
                         act('emote', {
                           emotePath: item.path,
@@ -95,13 +120,12 @@ const EmoteTab = (props) => {
   );
 };
 
-export const JoeEmotes = (props) => {
+export const Emotes = () => {
   return (
     <Window
-      width={750}
+      width={810}
       height={600}
-      theme="crtblue"
-      title="Working Joe Voice Synthesizer"
+      theme={useBackend<BackendContext>().data.theme}
     >
       <Window.Content>
         <EmoteTab />

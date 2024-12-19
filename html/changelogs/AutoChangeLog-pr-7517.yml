@@ -1,5 +1,0 @@
-author: "Sunless2"
-delete-after: True
-changes:
-  - rscadd: "Added the ability for bayonets to cut down fences"
-  - balance: "It now takes twice the amount of throws to bring down a fence"

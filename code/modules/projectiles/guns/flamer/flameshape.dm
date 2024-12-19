@@ -134,11 +134,12 @@
 	id = FLAMESHAPE_LINE
 
 /datum/flameshape/line/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
+	set waitfor = 0
+
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/turf/prev_T = source_turf
 	var/obj/flamer_fire/temp = new()
-	var/list/tiles_to_set_aflame = list()
 	var/list/turfs = get_line(source_turf, F.target_clicked, FALSE)
 
 	if(fire_spread_amount > turfs.len)
@@ -149,15 +150,15 @@
 		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
 		switch(result)
 			if(FIRE_CANPASS_SPREAD)
-				tiles_to_set_aflame.Add(T)
+				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), 1)
 			if(FIRE_CANPASS_SET_AFLAME)
-				tiles_to_set_aflame.Add(T)
+				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), 1)
 				break
 			if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 				break
 
 		prev_T = T
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), distance)
+		sleep(1) // sleep to properly check next tile spread
 
 	if(F.to_call)
 		addtimer(F.to_call, fire_spread_amount)

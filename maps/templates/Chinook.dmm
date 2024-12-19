@@ -387,7 +387,7 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = 4;
 	pixel_x = -8
 	},
@@ -1525,7 +1525,7 @@
 "fC" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = -3
 	},
 /turf/open/floor/wood,
@@ -1588,7 +1588,7 @@
 	pixel_y = 8;
 	pixel_x = 6
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = -8;
 	pixel_y = 5
 	},
@@ -10143,7 +10143,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "Qs" = (
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 3;
 	pixel_y = -1
 	},
@@ -10153,7 +10153,7 @@
 	pixel_y = 2
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -10214,7 +10214,7 @@
 	pixel_y = 1;
 	pixel_x = 1
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 10;
 	pixel_y = 6
 	},
@@ -12269,7 +12269,7 @@
 	pixel_y = 8;
 	pixel_x = 5
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 5;
 	pixel_y = 6
 	},

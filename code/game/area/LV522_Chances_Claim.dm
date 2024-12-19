@@ -24,6 +24,7 @@
 /area/lv522/oob
 	name = "LV522 - Out Of Bounds"
 	icon_state = "unknown"
+	requires_power = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE

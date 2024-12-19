@@ -33,6 +33,8 @@
 	/// Resistance to masterkey
 	var/masterkey_resist = FALSE
 	var/masterkey_mod = 0.1
+	/// If it is something shouldnt be treated like a normal door
+	var/abstract_door = FALSE
 
 /obj/structure/machinery/door/Initialize(mapload, ...)
 	. = ..()

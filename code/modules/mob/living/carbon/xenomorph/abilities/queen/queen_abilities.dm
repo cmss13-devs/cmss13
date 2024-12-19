@@ -85,6 +85,7 @@
 		xeno_cooldown = 0
 		plasma_cost = 0
 		build_speed_mod = 1
+		thick = TRUE // Allow queen to remotely thicken structures.
 		RegisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS, PROC_REF(override_secrete_thick_resin))
 		addtimer(CALLBACK(src, PROC_REF(disable_boost)), boost_duration)
 
@@ -92,6 +93,7 @@
 	xeno_cooldown = 4 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
+	thick = FALSE
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)

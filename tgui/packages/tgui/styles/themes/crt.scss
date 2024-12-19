@@ -171,6 +171,10 @@ $scrollbar-color-multiplier: 0.5 !default;
     border: 1px solid base.$color-fg;
   }
 
+  .NumberInput {
+    min-height: 23px;
+  }
+
   .Button:not(.Button--selected) {
     &:hover,
     &:focus,

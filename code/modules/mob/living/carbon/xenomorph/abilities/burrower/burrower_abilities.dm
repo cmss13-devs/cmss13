@@ -32,6 +32,8 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.tremor()
 	return ..()
+	xeno_cooldown = 45 SECONDS
+	plasma_cost = 100
 
 // Resin Shark Abilities
 

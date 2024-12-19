@@ -91,9 +91,13 @@
 	job = /datum/job/civilian/synthetic/ship
 
 /datum/job/civilian/synthetic/ship/get_total_positions(latejoin = FALSE)
-	var/positions = ..()
+	// No scaling
+	var/positions = latejoin ? total_positions : spawn_positions
+	total_positions_so_far = positions
+
+	// Survivor synth eats up this slot
 	var/survivor_synth = GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/survivor/synth]
 	if(survivor_synth)
 		var/datum/job/civilian/survivor/synth/survivor = survivor_synth
 		positions -= survivor.current_positions
-	return positions
+	return max(positions, 0)

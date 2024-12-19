@@ -38,6 +38,9 @@
 			new preload(cylinder)
 		update_icon()
 
+/obj/item/weapon/gun/launcher/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/explosive_mouse.dmi'
+
 /obj/item/weapon/gun/launcher/Destroy(force)
 	QDEL_NULL(cylinder)
 	return ..()

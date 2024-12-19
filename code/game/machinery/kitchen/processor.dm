@@ -149,3 +149,7 @@
 		src.processing = 0
 	src.visible_message(SPAN_NOTICE("\the [src] finished processing."), \
 		"You hear the food processor stopping/")
+
+/obj/structure/machinery/processor/yautja
+	name = "food grinder"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

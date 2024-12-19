@@ -254,4 +254,5 @@
 	operating = FALSE
 	update_icon()
 
-
+/obj/structure/machinery/gibber/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

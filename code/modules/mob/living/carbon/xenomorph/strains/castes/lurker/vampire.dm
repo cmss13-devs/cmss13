@@ -30,3 +30,17 @@
 	lurker.execute_hud = TRUE
 
 	lurker.recalculate_everything()
+
+/datum/xeno_strain/vampire/remove_strain(mob/living/carbon/xenomorph/lurker/lurker)
+	lurker.plasmapool_modifier = initial(lurker.plasmapool_modifier)
+	lurker.health_modifier = initial(lurker.health_modifier)
+	lurker.speed_modifier = initial(lurker.speed_modifier)
+	lurker.armor_modifier = initial(lurker.armor_modifier)
+	lurker.damage_modifier = initial(lurker.damage_modifier)
+	lurker.attack_speed_modifier = initial(lurker.attack_speed_modifier)
+
+	var/datum/mob_hud/execute_hud = GLOB.huds[MOB_HUD_EXECUTE]
+	execute_hud.remove_hud_from(lurker, lurker)
+	lurker.execute_hud = initial(lurker.execute_hud)
+
+	lurker.recalculate_everything()

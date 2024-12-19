@@ -208,6 +208,7 @@
 	var/armor_integrity_modifier = 0
 
 	var/list/modifier_sources
+	var/next_strain_reset
 
 	//////////////////////////////////////////////////////////////////
 	//

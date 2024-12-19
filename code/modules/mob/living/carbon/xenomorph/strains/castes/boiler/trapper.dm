@@ -35,6 +35,22 @@
 	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
 	boiler.recalculate_everything()
 
+/datum/xeno_strain/trapper/remove_strain(mob/living/carbon/xenomorph/boiler)
+	if(!istype(boiler))
+		return FALSE
+
+	if(boiler.is_zoomed)
+		boiler.zoom_out()
+
+	boiler.tileoffset = initial(boiler.tileoffset)
+	boiler.viewsize = initial(boiler.viewsize)
+	boiler.plasma_types = initial(boiler.plasma_types)
+	boiler.armor_modifier = initial(boiler.armor_modifier)
+	boiler.health_modifier = initial(boiler.health_modifier)
+
+	boiler.speed_modifier = initial(boiler.speed_modifier)
+	boiler.recalculate_everything()
+
 /datum/behavior_delegate/boiler_trapper
 	name = "Boiler Trapper Behavior Delegate"
 

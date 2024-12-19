@@ -32,6 +32,16 @@
 
 	prae.recalculate_everything()
 
+/datum/xeno_strain/oppressor/remove_strain(mob/living/carbon/xenomorph/praetorian/prae)
+	prae.damage_modifier = initial(prae.damage_modifier)
+	prae.explosivearmor_modifier = initial(prae.explosivearmor_modifier)
+	prae.small_explosives_stun = initial(prae.small_explosives_stun)
+	prae.speed_modifier = initial(prae.speed_modifier)
+	prae.plasma_types = initial(prae.plasma_types)
+	prae.claw_type = initial(prae.claw_type)
+
+	prae.recalculate_everything()
+
 /datum/behavior_delegate/oppressor_praetorian
 	name = "Oppressor Praetorian Behavior Delegate"
 	var/tearing_damage = 15

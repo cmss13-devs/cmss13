@@ -11,6 +11,14 @@
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
+"aad" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -67141,7 +67149,7 @@ fAf
 nZB
 nZB
 nZB
-fAf
+aac
 nZB
 nZB
 nZB
@@ -83178,7 +83186,7 @@ nGZ
 nGZ
 qaL
 fDJ
-fDJ
+aad
 uYi
 cUd
 cUd

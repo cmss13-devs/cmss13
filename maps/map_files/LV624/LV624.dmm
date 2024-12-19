@@ -13,6 +13,14 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aad" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"aae" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "aag" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
@@ -31393,7 +31401,7 @@ aDv
 aDv
 aDv
 aDv
-aDv
+aae
 aDv
 aDv
 aOB
@@ -54427,7 +54435,7 @@ aGz
 aHM
 aGz
 eaJ
-aGz
+aad
 aHM
 aMq
 eaJ

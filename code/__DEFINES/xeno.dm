@@ -418,6 +418,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 // Damage - this is applied as a flat nerf/buff to the xeno's average damage
+#define XENO_DAMAGE_MOD_VERY_VERY_SMALL 2.5
 #define XENO_DAMAGE_MOD_VERY_SMALL  5
 #define XENO_DAMAGE_MOD_SMALL   10
 #define XENO_DAMAGE_MOD_MED 15

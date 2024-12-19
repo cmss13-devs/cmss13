@@ -41,6 +41,8 @@
 	// Putting these here for attack_animal().
 	var/melee_damage_lower = 0
 	var/melee_damage_upper = 0
+	var/burn_damage_lower = 0
+	var/burn_damage_upper = 0
 	var/attacktext = "attacks"
 	var/attack_sound = null
 	/// Custom sound if the mob gets slashed by a xenomorph

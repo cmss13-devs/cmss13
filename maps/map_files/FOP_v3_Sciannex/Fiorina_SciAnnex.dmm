@@ -11,6 +11,12 @@
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -46165,7 +46171,7 @@ wbI
 itN
 baC
 baC
-bQM
+aac
 bQM
 bQM
 bQM

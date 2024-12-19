@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfcrash"
+	},
+/turf/open/floor/strata/cyan3/west,
+/area/strata/ag/interior/outpost/med)
 "aab" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -55560,7 +55566,7 @@ dSQ
 lZO
 lZO
 xAf
-lZO
+aaa
 lZO
 dSQ
 gjC

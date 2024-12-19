@@ -5,9 +5,9 @@
     },
     {
 		"type": "map_insert",
-		"landmark": "clfsmugglers",
+		"landmark": "clfraid",
 		"chance": 1.0,
-		"path": "standalone/clfsmugglers.dmm",
-		"when": { "lvevent": "clfsmugglers" }
+		"path": "standalone/clfraid.dmm",
+		"when": { "lvevent": "clfraid" }
 	}
 ]

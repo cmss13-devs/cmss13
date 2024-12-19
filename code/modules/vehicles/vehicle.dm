@@ -38,6 +38,11 @@
 // Standard procs
 //-------------------------------------------
 
+/obj/vehicle/Destroy(force)
+	. = ..()
+	if(!QDELETED(cell))
+		QDEL_NULL(cell)
+
 /obj/vehicle/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

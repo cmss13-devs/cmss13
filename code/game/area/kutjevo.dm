@@ -316,3 +316,19 @@
 	icon_state = "colony_caves_3"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	unoviable_timer = FALSE
+
+//CLF insert areas
+/area/kutjevo/interior/colony/landing_zone_checkpoint
+	name = "Kutjevo - Landing Zone Checkpoint"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	icon_state = "colony_int"
+
+/area/kutjevo/interior/colony/clf_shuttle
+	name = "Kutjevo - Unregistered Freighter"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	icon_state = "colony_int"
+
+/area/kutjevo/exterior/clf_lz
+	name = "Kutjevo - Tertiary Landing Zone"
+	ceiling = CEILING_NONE
+	icon_state = "ext"

@@ -20,7 +20,7 @@
 		coil.turf_place(T, user)
 		return
 	else
-		..()
+		. = ..()
 	return
 
 // the power cable object

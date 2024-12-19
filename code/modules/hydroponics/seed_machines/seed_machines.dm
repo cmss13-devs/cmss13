@@ -90,4 +90,4 @@
 			to_chat(user, SPAN_NOTICE("You load \the [W] into [src]."))
 
 		return
-	..()
+	. = ..()

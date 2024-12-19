@@ -101,7 +101,7 @@ update_flag
 		visible_message(SPAN_DANGER("[user] hits [src] with [W]!"))
 		update_health(W.force)
 		src.add_fingerprint(user)
-	..()
+	. = ..()
 
 	SSnano.nanomanager.update_uis(src) // Update all NanoUIs attached to src
 

@@ -87,7 +87,7 @@ log transactions
 			src.attack_hand(user)
 			qdel(I)
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/atm/proc/drop_money(turf)
 		playsound(turf, "sound/machines/ping.ogg", 15)

@@ -118,7 +118,7 @@
 			src.transfer_fingerprints_to(newlight)
 			qdel(src)
 			return
-	..()
+	. = ..()
 
 /obj/structure/machinery/light_construct/small
 	name = "small light fixture frame"

@@ -118,5 +118,5 @@
 
 /obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
 	icon_state = "puddle-splash"
-	..()
+	. = ..()
 	icon_state = "puddle"

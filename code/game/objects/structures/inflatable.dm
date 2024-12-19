@@ -91,7 +91,7 @@
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
-		..()
+		. = ..()
 	return
 
 /obj/structure/inflatable/proc/hit(damage, sound_effect = 1)

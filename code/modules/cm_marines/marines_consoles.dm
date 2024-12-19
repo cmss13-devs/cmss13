@@ -443,7 +443,7 @@
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -666,7 +666,7 @@
 				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
-		..()
+		. = ..()
 
 
 /obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)

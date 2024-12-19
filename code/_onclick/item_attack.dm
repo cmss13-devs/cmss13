@@ -22,6 +22,7 @@
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /mob/living/attackby(obj/item/I, mob/user)
 	/* Commented surgery code, proof of concept. Would need to tweak human attackby to prevent duplication; mob/living don't have separate limb objects.
@@ -121,5 +122,5 @@
 		var/hit = H.attacked_by(src, user)
 		if (hit && hitsound)
 			playsound(loc, hitsound, 25, 1)
-		return hit
-	return TRUE
+		return (hit|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)

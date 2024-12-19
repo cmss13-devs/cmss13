@@ -252,5 +252,5 @@
 		update_icon()
 
 	else
-		..()
+		. = ..()
 	return

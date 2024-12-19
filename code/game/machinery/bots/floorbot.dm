@@ -95,7 +95,7 @@
 				to_chat(user, SPAN_WARNING("Access denied."))
 		src.updateUsrDialog()
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/bot/floorbot/Topic(href, href_list)
 	if(..())

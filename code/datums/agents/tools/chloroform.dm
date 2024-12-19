@@ -45,6 +45,8 @@
 
 	uses--
 
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 /obj/item/weapon/chloroform/proc/grab_stun(mob/living/M, mob/living/user)
 	M.anchored = TRUE
 	ADD_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)

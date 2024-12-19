@@ -120,6 +120,12 @@
 	name = "\improper South Western Valleys"
 	icon_state = "valley_south_west"
 
+/area/ice_colony/exterior/surface/valley/northeast/apc_support
+	always_unpowered = FALSE
+
+/area/ice_colony/exterior/surface/valley/southeast/apc_support
+	always_unpowered = FALSE
+
 //
 // Clearing
 // The Colony Center, so to speak
@@ -417,6 +423,7 @@
 /area/ice_colony/surface/requesitions
 	name = "\improper Surface Requesition Warehouse"
 	icon_state = "quartstorage"
+	unoviable_timer = FALSE
 
 /*
  * Surface - Research
@@ -481,6 +488,7 @@
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE // all underground areas can be ovi'd
 
 /*
  * Underground - Crew Areas
@@ -685,6 +693,7 @@
 /area/ice_colony/underground/requesition
 	name = "\improper Underground Requesitions"
 	icon_state = "quart"
+	is_resin_allowed = FALSE
 
 /area/ice_colony/underground/requesition/lobby
 	name = "\improper Underground Requesitions Lobby"
@@ -764,6 +773,8 @@
 	name = "\improper Underground Hangar"
 	icon_state = "hangar"
 	ceiling = CEILING_NONE
+	is_resin_allowed = FALSE
+	unoviable_timer = TRUE
 
 /*
  * Underground - Storage
@@ -781,57 +792,165 @@
 /area/shuttle/elevator1/ground
 	name = "\improper Elevator I"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator1/underground
 	name = "\improper Elevator I"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator1/transit
 	name = "\improper Elevator I"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator2/ground
 	name = "\improper Elevator II"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator2/underground
 	name = "\improper Elevator II"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator2/transit
 	name = "\improper Elevator II"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator3/ground
 	name = "\improper Elevator III"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator3/underground
 	name = "\improper Elevator III"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator3/transit
 	name = "\improper Elevator III"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator4/ground
 	name = "\improper Elevator IV"
 	icon_state = "shuttlered"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator4/underground
 	name = "\improper Elevator IV"
 	icon_state = "shuttle"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/shuttle/elevator4/transit
 	name = "\improper Elevator IV"
 	icon_state = "shuttle2"
+	requires_power = TRUE
+	unlimited_power = FALSE
 
 /area/ice_colony/landing/console
 	name = "\improper LZ1 'Lazarus'"
 	icon_state = "tcomsatcham"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/ice_colony/landing/console2
 	name = "\improper LZ2 'Underground'"
 	icon_state = "tcomsatcham"
-	requires_power = 0
+	requires_power = FALSE
+
+//ice classic
+//making it so the whole underground area doesnt have the unoviable timer
+
+/area/ice_colony/underground/research/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/research/work/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/research/sample/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/research/storage/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/hallway/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/hallway/north_west/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/hallway/south_east/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/research/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/north/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/south/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/maintenance/east/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/engineering/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/engineering/locker/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/engineering/substation/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/canteen/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/library/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/lavatory/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/dorm_r/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/crew/disposals/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/security/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/security/armory/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/security/brig/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/storage/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/command/center/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/medical/lobby/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/underground/reception/ice_v1
+	unoviable_timer = FALSE
+
+/area/ice_colony/surface/bar/bar/ice_v1
+	unoviable_timer = FALSE

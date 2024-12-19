@@ -462,9 +462,9 @@
 /obj/item/clothing/suit/storage/manager
 	name = "manager's jacket"
 	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."
-	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	item_state = "manager_suit"
 	icon_state = "manager_suit"
@@ -495,9 +495,9 @@
 /obj/item/clothing/suit/storage/director
 	name = "director's jacket"
 	desc = "A jacket that belongs to someone very important. It is made of insulating material and offers minor protection from all forms of damage."
-	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 	item_state = "director_suit"
 	icon_state = "director_suit"

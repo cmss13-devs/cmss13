@@ -279,3 +279,22 @@
 
 /obj/structure/tunnel/maint_tunnel/no_xeno_desc
 	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."
+
+// Hybrisa tunnels
+/obj/structure/tunnel/maint_tunnel/hybrisa
+	name = "\improper Maintenance Hatch"
+	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/ladders.dmi'
+	icon_state = "maintenancehatch_alt"
+
+/obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc
+	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."
+
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate
+	name = "\improper Sewer Manhole"
+	desc = "An entrance to a sewage maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/ladders.dmi'
+	icon_state = "wymanhole"
+
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc
+	desc = "An entrance to a sewage maintenance tunnel. Pieces of debris keep you from getting a closer look."

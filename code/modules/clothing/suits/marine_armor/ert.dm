@@ -89,11 +89,13 @@
 	flags_armor_protection = BODY_FLAG_CHEST
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
+	item_state_slots = list(WEAR_JACKET = "armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
 	icon_state = "lead_armor"
 	item_state = "lead_armor"
+	item_state_slots = list(WEAR_JACKET = "lead_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/leader
 	name = "\improper M4 pattern PMC leader armor"

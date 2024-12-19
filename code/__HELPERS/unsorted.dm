@@ -1694,12 +1694,15 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
-/proc/should_block_game_interaction(atom/target)
+/proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
 	if(is_admin_level(target.z))
 		return TRUE
 
 	var/area/target_area = get_area(target)
 	if(target_area?.block_game_interaction)
+		return TRUE
+
+	if(include_hunting_grounds && target_area?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS)
 		return TRUE
 
 	return FALSE

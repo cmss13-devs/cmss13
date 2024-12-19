@@ -480,7 +480,8 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
-	var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
+	var/new_tod = exempt_tod ? 1 : ghost.timeofdeath
 
 	// if they died as facehugger or lesser drone, bypass typical TOD checks
 	ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
@@ -547,7 +548,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		log_game("[key_name_admin(client)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		SEND_SIGNAL(src, COMSIG_LIVING_GHOSTED, ghost)
-		if(ghost && !should_block_game_interaction(src))
+		if(ghost && !should_block_game_interaction(src, include_hunting_grounds=TRUE))
 			ghost.timeofdeath = world.time
 
 			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone

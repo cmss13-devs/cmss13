@@ -1,0 +1,7 @@
+author: "BOBAMA"
+delete-after: True
+changes:
+  - balance: "Recruiter, Engineer, and CLF survivors now have ammo for their weapons."
+  - balance: "Engineer survivors sometimes do not get tool belts."
+  - bugfix: "Survivors should now more consistently spawn with ALL of their intended gear."
+  - bugfix: "CLF and Goon survivors should no longer spawn with duplicate gear."

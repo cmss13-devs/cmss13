@@ -15,6 +15,12 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_DEPARTMENT_SPECIFIC_CODE "Specific Machine Code"//Used to send to a single specific machine.
 #define FAX_HIGHCOM_DEPARTMENTS list(FAX_DEPARTMENT_WY, FAX_DEPARTMENT_HC, FAX_DEPARTMENT_CMB, FAX_DEPARTMENT_PROVOST, FAX_DEPARTMENT_PRESS, FAX_DEPARTMENT_TWE, FAX_DEPARTMENT_UPP, FAX_DEPARTMENT_CLF)
 
+#define FAX_DEPARTMENT_ALMAYER "USS Almayer"
+#define FAX_DEPARTMENT_ALMAYER_COMMAND "USS Almayer Command"
+#define FAX_DEPARTMENT_ALMAYER_BRIG "USS Almayer Brig"
+#define FAX_DEPARTMENT_ALMAYER_AICORE "USS Almayer AI Core"
+#define FAX_DEPARTMENT_GENERAL_PUBLIC "General Public"
+
 #define FAX_NET_USCM "USCM Encrypted Network"
 #define FAX_NET_USCM_HC "USCM High Command Quantum Relay"
 #define FAX_NET_WY "Weyland-Yutani Secure Network"
@@ -50,7 +56,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/obj/item/paper/fax_paper_copy
 
 	/// Our department
-	var/department = "General Public"
+	var/department = FAX_DEPARTMENT_GENERAL_PUBLIC
 	/// The name of the machine within the department, if it has one.
 	var/sub_name
 	/// Unique identifier for the fax machine.
@@ -669,13 +675,13 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = "W-Y Liaison"
 
 /obj/structure/machinery/faxmachine/corporate/liaison/almayer
-	department = "USS Almayer"
+	department = FAX_DEPARTMENT_ALMAYER
 	sub_name = "W-Y Liaison"
 	radio_alert_tag = ":Y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = FAX_DEPARTMENT_WY
-	target_department = "W-Y Liaison"
+	target_department = FAX_DEPARTMENT_ALMAYER
 	network = FAX_NET_WY_HC
 	can_send_priority = TRUE
 
@@ -686,14 +692,14 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	target_department = FAX_DEPARTMENT_HC
 
 /obj/structure/machinery/faxmachine/uscm/almayer
-	department = "USS Almayer"
+	department = FAX_DEPARTMENT_ALMAYER
 
 /obj/structure/machinery/faxmachine/uscm/almayer/ai_core
-	department = "USS Almayer AI Core"
+	department = FAX_DEPARTMENT_ALMAYER_AICORE
 	radio_alert_tag = ":+"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/command
-	department = "USS Almayer Command"
+	department = FAX_DEPARTMENT_ALMAYER_COMMAND
 
 /obj/structure/machinery/faxmachine/uscm/almayer/command/capt
 	sub_name = "Commanding Officer"
@@ -701,13 +707,13 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/uscm/highcom
 	department = FAX_DEPARTMENT_HC
-	target_department = "USS Almayer Command"
+	target_department = FAX_DEPARTMENT_ALMAYER_COMMAND
 	network = FAX_NET_USCM_HC
 	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig
 	name = "\improper USCM Provost Fax Machine"
-	department = "USS Almayer Brig"
+	department = FAX_DEPARTMENT_ALMAYER_BRIG
 	target_department = FAX_DEPARTMENT_PROVOST
 	radio_alert_tag = ":P"
 
@@ -717,7 +723,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/uscm/provost
 	name = "\improper USCM Provost Fax Machine"
 	department = FAX_DEPARTMENT_PROVOST
-	target_department = "USS Almayer Brig"
+	target_department = FAX_DEPARTMENT_ALMAYER_BRIG
 	network = FAX_NET_USCM_HC
 	can_send_priority = TRUE
 
@@ -760,7 +766,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/press/highcom
 	department = FAX_DEPARTMENT_PRESS
 	network = FAX_NET_PRESS_HC
-	target_department = "General Public"
+	target_department = FAX_DEPARTMENT_GENERAL_PUBLIC
 	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)

@@ -1,0 +1,6 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "digital table clock that shows time and date"
+  - rscadd: "cat clock now shows time"
+  - mapadd: "added digital clock to majority of mpas"

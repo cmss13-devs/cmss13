@@ -132,38 +132,97 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
 "aas" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+/obj/structure/surface/rack,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
 	},
-/turf/open/floor/plating,
-/area/almayer/living/gym)
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_m_p)
 "aat" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
 	},
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
-/turf/open/floor/plating,
-/area/almayer/living/gym)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_m_p)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
+/obj/structure/machinery/door/window/eastleft{
+	req_one_access_txt = "2;21"
+	},
+/obj/structure/machinery/door/window/westright,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "ROlobby2";
+	name = "\improper RO Line 2"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/surface/table/reinforced/almayer_blend,
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/req)
+"aaw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm,
+/obj/item/tool/pen,
+/obj/item/clock{
+	pixel_y = 16
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/shipboard/sea_office)
+"aax" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/turf/open/floor/plating,
+/area/almayer/living/gym)
+"aay" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/turf/open/floor/plating,
+/area/almayer/living/gym)
+"aaz" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/living/gym)
-"aaw" = (
+"aaA" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
@@ -172,47 +231,28 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/gym)
-"aax" = (
-/obj/structure/surface/rack,
-/obj/item/tool/dumbbell{
-	pixel_y = -8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"aay" = (
-/obj/item/stool,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"aaz" = (
-/obj/structure/weightmachine/weightlifter,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"aaA" = (
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "aaB" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = 11;
-	pixel_y = 7
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
-/obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = -10;
-	pixel_y = 4
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/living/gym)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
 "aaD" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	layer = 1.9
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -10;
+	pixel_y = 4
 	},
-/turf/open/floor/plating,
+/obj/item/reagent_container/food/snacks/protein_pack,
+/turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "aaE" = (
 /obj/structure/sign/safety/storage{
@@ -234,11 +274,9 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
 "aaG" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/surface/rack,
+/obj/item/tool/dumbbell{
+	pixel_y = -8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
@@ -251,45 +289,50 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
 "aaI" = (
+/obj/item/stool,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aaJ" = (
+/obj/structure/weightmachine/weightlifter,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aaK" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aaL" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 11;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -10;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aaM" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	layer = 1.9
+	},
+/turf/open/floor/plating,
+/area/almayer/living/gym)
+"aaN" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aaO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/gym)
-"aaJ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
-"aaK" = (
-/obj/structure/weightmachine/stacklifter,
-/obj/structure/sign/poster/propaganda{
-	pixel_y = 31
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"aaL" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = -10;
-	pixel_y = 14
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/gym)
-"aaM" = (
-/obj/structure/weightmachine/stacklifter,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"aaN" = (
-/obj/item/tool/dumbbell/alt{
-	pixel_y = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/gym)
-"aaO" = (
-/obj/structure/weightmachine/stacklifter,
-/obj/structure/sign/poster/hunk{
-	pixel_y = 31
-	},
-/turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
@@ -307,64 +350,71 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
 "aaQ" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "aaR" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
-/obj/item/stool{
-	pixel_y = 12;
-	pixel_x = -4
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Gym"
 	},
-/turf/open/floor/almayer/plate,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	layer = 1.9
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/living/gym)
 "aaS" = (
-/obj/structure/weightmachine/weightlifter,
+/obj/structure/machinery/conveyor_switch{
+	id = "gym_2";
+	name = "treadmill switch"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "aaT" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/protein_pack,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "aaU" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
+/obj/structure/weightmachine/stacklifter,
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 31
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "aaV" = (
-/obj/structure/surface/rack,
-/obj/item/tool/dumbbell{
-	pixel_y = -8
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -10;
+	pixel_y = 14
 	},
-/obj/item/tool/dumbbell/alt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/gym)
+"aaW" = (
+/obj/structure/weightmachine/stacklifter,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aaX" = (
 /obj/item/tool/dumbbell/alt{
 	pixel_y = 8
 	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"aaW" = (
-/obj/item/stool,
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
-"aaX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/gym)
 "aaY" = (
 /obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "aaZ" = (
-/obj/structure/surface/rack,
-/obj/item/tool/dumbbell{
-	pixel_y = 8
-	},
-/obj/item/tool/dumbbell,
-/obj/item/tool/dumbbell{
-	pixel_y = -8
+/obj/structure/weightmachine/stacklifter,
+/obj/structure/sign/poster/hunk{
+	pixel_y = 31
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
@@ -377,58 +427,41 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "abb" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/obj/structure/weightmachine/stacklifter,
-/turf/open/floor/almayer/plate,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
 /area/almayer/living/gym)
 "abc" = (
-/obj/item/tool/dumbbell,
-/obj/structure/sign/poster/pinup{
-	pixel_y = 34;
-	pixel_x = -8
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/obj/structure/sign/poster/hunk{
-	pixel_y = 31
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "abd" = (
-/obj/structure/mirror{
-	pixel_y = 31
-	},
-/obj/structure/mirror{
-	pixel_y = 31;
-	pixel_x = 14
-	},
-/obj/structure/mirror{
-	pixel_y = 31;
-	pixel_x = -14
-	},
-/obj/structure/weightmachine/stacklifter,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"abe" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /obj/item/stool{
-	pixel_y = 16;
+	pixel_y = 12;
 	pixel_x = -4
 	},
 /turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abe" = (
+/obj/structure/weightmachine/weightlifter,
+/turf/open/floor/almayer,
 /area/almayer/living/gym)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "abg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/weightmachine/stacklifter,
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "abh" = (
@@ -447,6 +480,132 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "abl" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/closed/wall/almayer,
+/area/almayer/living/gym)
+"abm" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/almayer/living/gym)
+"abn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/maint/hull/upper/u_f_p)
+"abo" = (
+/obj/structure/surface/rack,
+/obj/item/tool/dumbbell{
+	pixel_y = -8
+	},
+/obj/item/tool/dumbbell/alt,
+/obj/item/tool/dumbbell/alt{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abp" = (
+/obj/structure/punching_bag,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abq" = (
+/obj/item/stool,
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
+"abr" = (
+/obj/structure/machinery/conveyor{
+	dir = 8;
+	id = "gym_1";
+	name = "treadmill"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abs" = (
+/turf/closed/wall/almayer/outer,
+/area/almayer/lifeboat_pumps/north1)
+"abt" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abu" = (
+/obj/structure/surface/rack,
+/obj/item/tool/dumbbell{
+	pixel_y = 8
+	},
+/obj/item/tool/dumbbell,
+/obj/item/tool/dumbbell{
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abv" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/structure/weightmachine/stacklifter,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abw" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/almayer/lifeboat_pumps/north1)
+"abx" = (
+/obj/item/tool/dumbbell,
+/obj/structure/sign/poster/pinup{
+	pixel_y = 34;
+	pixel_x = -8
+	},
+/obj/structure/sign/poster/hunk{
+	pixel_y = 31
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"aby" = (
+/obj/structure/mirror{
+	pixel_y = 31
+	},
+/obj/structure/mirror{
+	pixel_y = 31;
+	pixel_x = 14
+	},
+/obj/structure/mirror{
+	pixel_y = 31;
+	pixel_x = -14
+	},
+/obj/structure/weightmachine/stacklifter,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abz" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/obj/item/stool{
+	pixel_y = 16;
+	pixel_x = -4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abA" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/weightmachine/stacklifter,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abB" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/north1)
+"abC" = (
 /obj/structure/machinery/vending/cola{
 	density = 0;
 	pixel_y = 16;
@@ -459,7 +618,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
-"abm" = (
+"abD" = (
 /obj/structure/machinery/vending/snack{
 	density = 0;
 	pixel_y = 16;
@@ -467,84 +626,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
-"abn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/maint/hull/upper/u_f_p)
-"abo" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/sign/poster/propaganda{
-	pixel_y = 31
-	},
-/obj/item/reagent_container/food/drinks/cans/space_mountain_wind{
-	pixel_y = 10;
-	pixel_x = 8
-	},
-/obj/item/clothing/accessory/dogtags,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
-"abp" = (
-/obj/structure/surface/rack,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/tool/dumbbell,
-/obj/item/tool/dumbbell/alt{
-	pixel_y = -8
-	},
-/obj/item/tool/dumbbell/alt{
-	pixel_y = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
-"abq" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_x = -30
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
-"abr" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/gym)
-"abs" = (
-/turf/closed/wall/almayer/outer,
-/area/almayer/lifeboat_pumps/north1)
-"abt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/living/gym)
-"abu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/living/gym)
-"abw" = (
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/almayer/lifeboat_pumps/north1)
-"abB" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north1)
 "abE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
@@ -570,6 +651,30 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
+"abI" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 31
+	},
+/obj/item/reagent_container/food/drinks/cans/space_mountain_wind{
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/obj/item/clothing/accessory/dogtags,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"abJ" = (
+/obj/structure/surface/rack,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/tool/dumbbell,
+/obj/item/tool/dumbbell/alt{
+	pixel_y = -8
+	},
+/obj/item/tool/dumbbell/alt{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
 "abK" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -580,6 +685,64 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
+"abL" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
+"abM" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_f_s)
+"abN" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_f_s)
+"abO" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
+"abP" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
+"abQ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/punching_bag,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
 "abR" = (
 /obj/item/tank/phoron,
 /turf/open/floor/almayer/redfull,
@@ -597,6 +760,70 @@
 /obj/structure/bed/chair/ob_chair,
 /turf/open/floor/almayer/tcomms,
 /area/almayer/shipboard/weapon_room)
+"abV" = (
+/obj/effect/landmark/yautja_teleport,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/pipes/vents/scrubber{
+	dir = 1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/living/gym)
+"abW" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/gym)
+"abX" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 32;
+	name = "showers semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of showers."
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/gym)
+"abY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/tool/soap,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/living/gym)
+"abZ" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/maint/hull/lower/l_f_s)
+"aca" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/gym)
+"acb" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	id = "Alpha_2";
+	name = "\improper Showers"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	layer = 1.9
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/living/gym)
 "acc" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	access_modified = 1;
@@ -615,9 +842,44 @@
 	},
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/lower/workshop/hangar)
+"ace" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/living/gym)
 "acf" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/living/starboard_garden)
+"acg" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = -17
+	},
+/obj/structure/machinery/vending/snack{
+	density = 0;
+	pixel_y = 16;
+	pixel_x = -5
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_y = 16;
+	pixel_x = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"ach" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/chair{
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
 "aci" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -754,6 +1016,14 @@
 /obj/structure/machinery/light/built,
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
+"act" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/obj/structure/sign/poster/hunk{
+	pixel_y = 31
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
 "acu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -769,6 +1039,10 @@
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/living/starboard_garden)
+"acw" = (
+/obj/structure/closet/boxinggloves,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
 "acx" = (
 /turf/closed/wall/almayer,
 /area/almayer/lifeboat_pumps/north2)
@@ -787,6 +1061,89 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
+"acB" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/boxinggloves,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"acC" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/bed/chair{
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/gym)
+"acD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/living/gym)
+"acE" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/pipes/vents/pump,
+/obj/structure/window/reinforced,
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/living/gym)
+"acF" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/living/gym)
+"acG" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = 9
+	},
+/turf/open/floor/carpet,
+/area/almayer/command/corporateliaison)
+"acH" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/bronze{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/structure/machinery/door_control/cl/office/window{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/spacecash/c500{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = 17;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet,
+/area/almayer/command/corporateliaison)
 "acI" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -797,6 +1154,25 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
+"acJ" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag3";
+	name = "trash bag";
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/orange/southwest,
+/area/almayer/engineering/upper_engineering/port)
 "acK" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2
@@ -835,6 +1211,23 @@
 	},
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/shipboard/weapon_room)
+"acO" = (
+/obj/structure/machinery/keycard_auth,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 17
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cic)
+"acP" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clock{
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "acQ" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/aft_hallway)
@@ -2608,17 +3001,6 @@
 /obj/structure/bed,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/numbertwobunks)
-"aqn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
 "aqo" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -2909,14 +3291,6 @@
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
-"arT" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
 "arV" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
@@ -6857,15 +7231,6 @@
 "aRt" = (
 /turf/open/floor/almayer/emeraldcorner/west,
 /area/almayer/command/cic)
-"aRu" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = -10;
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/snacks/protein_pack,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "aRv" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -10509,18 +10874,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/general_equipment)
-"bvS" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/turf/open/floor/carpet,
-/area/almayer/command/corporateliaison)
 "bvX" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -13168,12 +13521,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
-"bQX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
-/turf/open/floor/wood/ship,
-/area/almayer/shipboard/sea_office)
 "bQZ" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/almayer,
@@ -15469,20 +15816,6 @@
 /obj/item/tool/hand_labeler,
 /turf/open/floor/almayer/blue/east,
 /area/almayer/squads/delta)
-"coo" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_f_s)
 "cop" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
@@ -17534,16 +17867,6 @@
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/computerlab)
-"dgl" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/bed/chair{
-	pixel_y = 12;
-	buckling_y = 12
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "dgx" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
@@ -20063,14 +20386,6 @@
 /obj/item/clothing/under/marine/dress,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/port_emb)
-"eiP" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/obj/structure/sign/poster/hunk{
-	pixel_y = 31
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "ejj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/wrench{
@@ -23964,18 +24279,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/almayer/medical/upper_medical)
-"fQy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/tool/soap,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/living/gym)
 "fQD" = (
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	autoname = 0;
@@ -25292,13 +25595,6 @@
 "gwo" = (
 /turf/open/floor/almayer/bluecorner/east,
 /area/almayer/living/basketball)
-"gww" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/boxinggloves,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "gwM" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/mirror{
@@ -28366,18 +28662,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
-"hKO" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/vents/pump,
-/obj/structure/window/reinforced,
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/living/gym)
 "hLr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -31388,10 +31672,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/engineering/lower/engine_core)
-"iYx" = (
-/obj/structure/closet/boxinggloves,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "iZd" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
@@ -32326,26 +32606,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
-"jpD" = (
-/obj/structure/machinery/door/window/eastleft{
-	req_one_access_txt = "2;21"
-	},
-/obj/structure/machinery/door/window/westright,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "ROlobby2";
-	name = "\improper RO Line 2"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/surface/table/reinforced/almayer_blend,
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/structure/machinery/door/window/eastleft,
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/squads/req)
 "jpW" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -34179,13 +34439,6 @@
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/hallways/upper/port)
-"kdo" = (
-/obj/structure/machinery/shower{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/gym)
 "kdv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -34589,10 +34842,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
-"kox" = (
-/obj/structure/punching_bag,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "koB" = (
 /obj/structure/sink{
 	dir = 8;
@@ -34627,30 +34876,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
-"kpf" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/ashtray/bronze{
-	pixel_x = 2;
-	pixel_y = 9
-	},
-/obj/structure/machinery/door_control/cl/office/window{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/structure/machinery/door_control/cl/office/door{
-	pixel_x = 6;
-	pixel_y = -3
-	},
-/obj/item/spacecash/c500{
-	pixel_x = -10;
-	pixel_y = 8
-	},
-/obj/item/paper_bin/wy{
-	pixel_x = 17;
-	pixel_y = 6
-	},
-/turf/open/floor/carpet,
-/area/almayer/command/corporateliaison)
 "kph" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
@@ -34773,18 +34998,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
-"kqK" = (
-/obj/structure/machinery/conveyor{
-	dir = 8;
-	id = "gym_1";
-	name = "treadmill"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "kqN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -35908,17 +36121,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
-"kOJ" = (
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_m_p)
 "kOR" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -36862,12 +37064,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
-"ljf" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "ljm" = (
 /obj/item/clothing/gloves/botanic_leather{
 	name = "leather gloves"
@@ -37085,16 +37281,6 @@
 "lnt" = (
 /turf/open/floor/almayer/silvercorner,
 /area/almayer/shipboard/brig/cic_hallway)
-"lnu" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "lnP" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/window/reinforced,
@@ -38759,14 +38945,6 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
-"maL" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/protein_pack,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "maO" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -38798,21 +38976,6 @@
 "mcp" = (
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/shipboard/brig/starboard_hallway)
-"mcL" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = -17
-	},
-/obj/structure/machinery/vending/snack{
-	density = 0;
-	pixel_y = 16;
-	pixel_x = -5
-	},
-/obj/structure/reagent_dispensers/water_cooler{
-	pixel_y = 16;
-	pixel_x = 13
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "mcW" = (
 /obj/structure/morgue,
 /obj/structure/machinery/light{
@@ -41248,16 +41411,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/medical_science)
-"naV" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/living/gym)
 "nbu" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -42466,17 +42619,6 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/engine_core)
-"nAm" = (
-/obj/effect/landmark/yautja_teleport,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/structure/pipes/vents/scrubber{
-	dir = 1
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/living/gym)
 "nAv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -45910,14 +46052,6 @@
 /obj/item/device/megaphone,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"oRO" = (
-/obj/structure/sign/safety/water{
-	pixel_x = 32;
-	name = "showers semiotic";
-	desc = "Semiotic Standard denoting the nearby presence of showers."
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
 "oRV" = (
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/warning_stripes{
@@ -47720,12 +47854,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/armory)
-"pIo" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/living/gym)
 "pIC" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -51364,13 +51492,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
-"ren" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/punching_bag,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "reu" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -52890,25 +53011,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_a_p)
-"rJh" = (
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = 5;
-	pixel_y = -2
-	},
-/turf/open/floor/almayer/orange/southwest,
-/area/almayer/engineering/upper_engineering/port)
 "rJj" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -53551,13 +53653,6 @@
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_p)
-"rXv" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/maint/hull/lower/l_f_s)
 "rXE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -53622,14 +53717,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower/workshop)
-"rYi" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/bed/chair{
-	pixel_y = 12;
-	buckling_y = 12
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/gym)
 "rYp" = (
 /obj/effect/landmark/start/marine/medic/delta,
 /obj/effect/landmark/late_join/delta,
@@ -54572,26 +54659,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/evidence_storage)
-"ssk" = (
-/obj/structure/surface/rack,
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/storage/backpack/marine/satchel{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_m_p)
 "ssU" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer/orange,
@@ -55228,18 +55295,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/lower/s_bow)
-"sGU" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Gym"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	layer = 1.9
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/living/gym)
 "sGZ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/silverfull,
@@ -55778,10 +55833,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
-"sUE" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
 "sUO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -58383,16 +58434,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
-"tXi" = (
-/obj/structure/machinery/conveyor_switch{
-	id = "gym_2";
-	name = "treadmill switch"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/living/gym)
 "tXj" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/storage/box/m94,
@@ -61345,19 +61386,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
-"viJ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	id = "Alpha_2";
-	name = "\improper Showers"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	layer = 1.9
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/living/gym)
 "viN" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/command/securestorage)
@@ -64781,15 +64809,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/stern)
-"wsz" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_f_s)
 "wsD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -85738,7 +85757,7 @@ xSz
 pEB
 jUY
 qwp
-sUE
+acP
 jmY
 iwW
 dCr
@@ -90410,7 +90429,7 @@ ajm
 wVW
 arP
 alX
-azZ
+acO
 aAF
 azZ
 aIf
@@ -93132,11 +93151,11 @@ xzB
 iOX
 smH
 xbk
-aaX
+abt
 xbk
 xbk
-aaG
-aRu
+aaN
+aaD
 wfE
 aXj
 bHB
@@ -93334,13 +93353,13 @@ sGw
 dvD
 oes
 eWs
-abb
+abv
 wFR
-aaT
-aaK
+abl
+aaU
 rkz
+aaG
 aax
-aas
 xyw
 bHB
 aZX
@@ -93537,13 +93556,13 @@ sGw
 dvD
 iQJ
 eWs
-abc
+abx
 opD
-aaU
-aaL
+abm
+aaV
+aaO
 aaI
-aay
-aas
+aax
 xyw
 bHB
 aZL
@@ -93740,12 +93759,12 @@ sGw
 xzB
 oes
 eWs
-abd
+aby
 wFR
 wfE
-aaM
+aaW
 soA
-aaz
+aaJ
 wfE
 hmy
 bHB
@@ -93943,12 +93962,12 @@ sGw
 fzx
 cEA
 eWs
-abe
+abz
 opD
-aaU
-aaN
-aaI
-aaA
+abm
+aaX
+aaO
+aaK
 wfE
 bGQ
 bHB
@@ -94146,12 +94165,12 @@ sGw
 xzB
 rsP
 eWs
-abg
+abA
 wFR
 wfE
-aaO
+aaZ
 soA
-aaz
+aaJ
 wfE
 bGR
 bHB
@@ -94349,13 +94368,13 @@ sGw
 dvD
 iOX
 eWs
-abl
+abC
 opD
 xbk
 opD
-aaI
+aaO
 xbk
-aat
+aay
 xyw
 bHB
 xyw
@@ -94550,15 +94569,15 @@ xzB
 xzB
 dvD
 dvD
-wsz
+abM
 eWs
-abm
+abD
 iRy
+abb
+abb
 aaQ
-aaQ
-aaJ
 xbk
-aas
+aax
 aYu
 wTg
 bGq
@@ -94753,14 +94772,14 @@ dvD
 sZc
 abj
 mUE
-coo
+abN
 eWs
+abI
+abu
 abo
-aaZ
-aaV
-lnu
+abc
 soA
-aaB
+aaL
 wfE
 aZZ
 aYC
@@ -94958,12 +94977,12 @@ kIl
 iPf
 hsK
 eWs
-aaD
-aaD
-aaD
+aaM
+aaM
+aaM
 wfE
-sGU
-aaD
+aaR
+aaM
 wfE
 yap
 bqg
@@ -95156,15 +95175,15 @@ dvD
 dvD
 eWs
 eWs
-rXv
+abZ
 eWs
 eWs
 eWs
 eWs
-kox
-kox
-kox
-aaR
+abp
+abp
+abp
+abd
 soA
 xbk
 wfE
@@ -95358,11 +95377,11 @@ sGw
 dvD
 dvD
 wfE
-mcL
+acg
 jOo
 wrC
 mHx
-abq
+abO
 pqX
 wFR
 wFR
@@ -95370,7 +95389,7 @@ wFR
 wFR
 soA
 xbk
-aav
+aaz
 cJK
 oGL
 hOu
@@ -95561,7 +95580,7 @@ sGw
 xiH
 xzB
 wfE
-dgl
+ach
 jOo
 xbk
 mub
@@ -95571,9 +95590,9 @@ xbk
 rkz
 esM
 esM
-aaJ
+aaQ
 xbk
-aav
+aaz
 gtD
 uRD
 wru
@@ -95771,12 +95790,12 @@ oDv
 wFR
 gxO
 vnD
-aaS
-aaW
-aaS
+abe
+abq
+abe
 soA
 xbk
-aaw
+aaA
 qPk
 uRD
 qPk
@@ -95967,7 +95986,7 @@ sGw
 eoE
 xzB
 wfE
-eiP
+act
 qOp
 rOJ
 vYm
@@ -95979,7 +95998,7 @@ qtv
 qtv
 xFZ
 btx
-naV
+aaB
 pij
 kJh
 qPk
@@ -96180,7 +96199,7 @@ vnD
 iRy
 esM
 esM
-aaJ
+aaQ
 xbk
 aWw
 qPk
@@ -96373,7 +96392,7 @@ sGw
 xzB
 dvD
 wfE
-iYx
+acw
 opD
 xbk
 msZ
@@ -96383,7 +96402,7 @@ xbk
 wFR
 ldt
 nEF
-tXi
+aaS
 pcE
 aWw
 qPk
@@ -96576,17 +96595,17 @@ sGw
 xzB
 dvD
 wfE
-gww
+acB
+aca
+abb
+abb
+abP
+abL
+abJ
+abb
 abr
-aaQ
-aaQ
-aqn
-arT
-abp
-aaQ
-kqK
-ljf
-maL
+abg
+aaT
 uKe
 wfE
 xos
@@ -96779,10 +96798,10 @@ sGw
 nkj
 dvD
 wfE
-rYi
-aaI
+acC
+aaO
 wFR
-kox
+abp
 wDr
 wDr
 wDr
@@ -96983,9 +97002,9 @@ xzB
 dvD
 wfE
 cVK
-aaI
-oRO
-ren
+aaO
+abX
+abQ
 wDr
 aeL
 aeL
@@ -97186,7 +97205,7 @@ xzB
 esm
 wfE
 wfE
-viJ
+acb
 wfE
 wfE
 wDr
@@ -97387,11 +97406,11 @@ aKR
 aKR
 dvD
 xzB
-pIo
-abu
-abt
-fQy
-nAm
+acF
+acD
+ace
+abY
+abV
 wDr
 aeL
 aeL
@@ -97591,10 +97610,10 @@ aLL
 vtJ
 stP
 wfE
-hKO
-kdo
-kdo
-kdo
+acE
+abW
+abW
+abW
 wDr
 aiR
 aiR
@@ -100782,7 +100801,7 @@ pBG
 gqQ
 cHG
 nQA
-bvS
+acG
 drP
 lKO
 pBG
@@ -100985,7 +101004,7 @@ qvL
 wmP
 wmP
 dRP
-kpf
+acH
 nQA
 eAN
 dbM
@@ -102518,7 +102537,7 @@ ljG
 tSp
 bJt
 xbg
-ssk
+aas
 lyW
 ajZ
 bdH
@@ -103125,7 +103144,7 @@ bDs
 gSk
 vSp
 lHG
-kOJ
+aat
 mgb
 mgb
 lyW
@@ -109595,7 +109614,7 @@ bGo
 bGo
 qjY
 pCr
-jpD
+aav
 cpK
 cpK
 bdl
@@ -114872,7 +114891,7 @@ rbF
 qlz
 xYf
 skn
-bQX
+aaw
 ijQ
 cLl
 qlz
@@ -115804,7 +115823,7 @@ xXa
 pZK
 cKL
 jbH
-rJh
+acJ
 jWh
 pld
 vhb

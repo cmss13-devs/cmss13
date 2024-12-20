@@ -196,6 +196,13 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
+"aaR" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -231,6 +238,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
+"aaZ" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clock,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/security/prison)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -263,6 +276,13 @@
 /obj/item/trash/cigbutt/bcigbutt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"abg" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/virology_wing)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -308,6 +328,13 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
+"abq" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 11
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/security/observation)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -56804,7 +56831,7 @@ bqn
 bom
 bsb
 aUS
-bml
+abq
 bml
 ifB
 bml
@@ -57288,7 +57315,7 @@ bNE
 bSn
 bTo
 bSz
-bYT
+aaZ
 bYT
 bTn
 bYl
@@ -91918,7 +91945,7 @@ cGB
 cHO
 cIO
 cJJ
-cJJ
+abg
 cLp
 cHN
 flq
@@ -92917,7 +92944,7 @@ dBr
 dZS
 dFf
 dFf
-eaz
+aaR
 eaz
 dBr
 dGC

@@ -267,6 +267,9 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	minimap_background = "background_cmb"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
+	rank = JOB_CMB
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -313,13 +316,15 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	add_survivor_weapon_civilian(new_human)
+
+	add_survivor_weapon_civilian(new_human) //40 percent chance to equip a weapon in hand with ammo in belt slot
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST) //Attempt to equip a toolbelt in belt slot. Will delete itself if the above proc equiped an ammo belt.
+
 	add_ice_colony_survivor_equipment(new_human)
 	..()
 
@@ -434,7 +439,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND) //will sometimes prevent add_random_survivor_equipment() from equiping first aid kit or fire axe.
 	add_survivor_weapon_civilian(new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	..()

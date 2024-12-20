@@ -388,7 +388,7 @@
 		var/mob/living/carbon/human/human = carbon
 		var/obj/item/card/id/card = human.get_idcard()
 		if(card)
-			card.name = "[human.real_name]'s ID Card"
+			card.name = "[human.real_name]'s [card.id_type]"
 			card.registered_name = "[human.real_name]"
 			if(card.assignment)
 				card.name += " ([card.assignment])"

@@ -29,9 +29,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/prison/visitation)
-"cr" = (
-/turf/open/floor/plating,
-/area/prison/visitation)
 "cu" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -188,7 +185,7 @@
 /obj/item/shard{
 	icon_state = "small"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/visitation)
 "mY" = (
 /obj/item/stack/sheet/metal{
@@ -356,7 +353,10 @@
 	name = "Visitation";
 	welded = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean"
+	},
 /area/prison/visitation)
 "zJ" = (
 /obj/structure/bed/chair{
@@ -372,7 +372,7 @@
 /area/prison/visitation)
 "BM" = (
 /obj/structure/window_frame/prison/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/visitation)
 "CA" = (
 /obj/item/stack/sheet/metal,
@@ -442,7 +442,7 @@
 /area/prison/visitation)
 "Mx" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/visitation)
 "MD" = (
 /obj/item/stack/cable_coil{
@@ -584,7 +584,7 @@ zJ
 AG
 "}
 (3,1,1) = {"
-we
+Mx
 YW
 XF
 XF
@@ -608,7 +608,7 @@ uY
 eF
 "}
 (5,1,1) = {"
-cr
+XF
 YW
 XF
 XF
@@ -620,7 +620,7 @@ HI
 XF
 "}
 (6,1,1) = {"
-we
+Mx
 YW
 wt
 fF

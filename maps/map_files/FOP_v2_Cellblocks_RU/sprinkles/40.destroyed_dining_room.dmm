@@ -107,7 +107,10 @@
 	dir = 2;
 	name = "Canteen Restrooms"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
 /area/prison/canteen)
 "bQ" = (
 /obj/effect/landmark/hunter_primary,
@@ -668,7 +671,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/kitchen)
 "qC" = (
 /obj/structure/machinery/light/double/blue,
@@ -1185,10 +1188,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
+/turf/open/floor/plating/prison,
 /area/prison/canteen)
 "CF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1215,10 +1215,7 @@
 /area/prison/canteen)
 "Da" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
+/turf/open/floor/plating/prison,
 /area/prison/canteen)
 "Ds" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1362,7 +1359,10 @@
 	name = "Visitation";
 	welded = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean"
+	},
 /area/prison/canteen)
 "GI" = (
 /obj/structure/machinery/disposal,
@@ -1560,7 +1560,7 @@
 /area/prison/canteen)
 "LN" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/kitchen)
 "LS" = (
 /obj/structure/bed/chair,
@@ -1834,9 +1834,6 @@
 	dir = 10;
 	icon_state = "bright_clean"
 	},
-/area/prison/canteen)
-"RB" = (
-/turf/open/floor/plating,
 /area/prison/canteen)
 "Sk" = (
 /obj/structure/machinery/power/apc{
@@ -2193,13 +2190,7 @@
 /area/prison/canteen)
 "ZT" = (
 /obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating,
-/area/prison/canteen)
-"ZW" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/canteen)
 
 (1,1,1) = {"
@@ -2732,7 +2723,7 @@ zc
 ni
 Rj
 wz
-RB
+zc
 "}
 (20,1,1) = {"
 jZ
@@ -2811,7 +2802,7 @@ WW
 mE
 BV
 BV
-ZW
+IC
 bN
 BV
 BV

@@ -326,7 +326,7 @@
 	pixel_x = -5;
 	pixel_y = -8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/checkpoint/highsec/n)
 "oB" = (
 /turf/open/floor/prison{
@@ -510,7 +510,7 @@
 /area/prison/security/checkpoint/highsec/n)
 "wF" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/checkpoint/highsec/n)
 "xg" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -685,7 +685,7 @@
 /area/prison/cellblock/highsec/north/south)
 "Iy" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/hallway/central/west)
 "Jh" = (
 /obj/structure/stairs/perspective{
@@ -821,7 +821,7 @@
 "Ps" = (
 /obj/structure/window_frame/prison/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/checkpoint/highsec/n)
 "Pz" = (
 /obj/effect/landmark/item_pool_spawner/prison_lock,
@@ -876,7 +876,7 @@
 	icon_state = "coil1";
 	name = "cable piece"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/checkpoint/highsec/n)
 "QQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -906,7 +906,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/power/port_gen/pacman/super,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/security/checkpoint/highsec/n)
 "Um" = (
 /obj/effect/landmark/objective_landmark/far,

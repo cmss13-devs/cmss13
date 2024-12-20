@@ -24,7 +24,7 @@
 	id = "biological_testing_2"
 	},
 /obj/structure/machinery/door/window/northright,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/testing)
 "o" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
@@ -57,7 +57,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "biological_testing_2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/testing)
 "I" = (
 /obj/effect/decal/warning_stripes{
@@ -67,7 +67,7 @@
 	id = "biological_testing_2"
 	},
 /obj/structure/machinery/door/window/northleft,
-/turf/open/floor/plating,
+/turf/open/floor/plating/prison,
 /area/prison/research/secret/testing)
 "N" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,

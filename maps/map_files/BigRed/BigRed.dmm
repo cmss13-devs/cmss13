@@ -8,14 +8,6 @@
 	icon_state = "pwall"
 	},
 /area/space)
-"aac" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/queen_spawn,
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfmining"
-	},
-/turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves/mining)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -175,17 +167,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
-"aaM" = (
-/obj/structure/surface/table,
-/obj/item/ashtray/bronze,
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/obj/item/clock{
-	pixel_y = 15
-	},
-/turf/open/floor/carpet15_15/west,
-/area/bigredv2/outside/admin_building)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -261,44 +242,10 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"abb" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/faxmachine{
-	density = 0;
-	req_one_access_txt = "200"
-	},
-/obj/item/clock{
-	pixel_y = 14;
-	pixel_x = 25
-	},
-/turf/open/floor/white,
-/area/bigredv2/outside/admin_building)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"abd" = (
-/obj/item/paper_bin,
-/obj/item/tool/pen,
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clock{
-	pixel_y = 16
-	},
-/turf/open/floor/wood,
-/area/bigredv2/caves/lambda/breakroom)
-"abe" = (
-/obj/structure/surface/table,
-/obj/item/trash/kepler{
-	pixel_y = 3
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/item/clock{
-	pixel_y = 18
-	},
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -7424,6 +7371,17 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/caves/lambda/virology)
+"aJb" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/bronze,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
+	},
+/turf/open/floor/carpet15_15/west,
+/area/bigredv2/outside/admin_building)
 "aJc" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -8475,6 +8433,18 @@
 "aNC" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table,
+/turf/open/floor/white,
+/area/bigredv2/outside/admin_building)
+"aND" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine{
+	density = 0;
+	req_one_access_txt = "200"
+	},
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 25
+	},
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNE" = (
@@ -26509,6 +26479,15 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/ne)
+"lAF" = (
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 16
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "lAN" = (
 /obj/structure/fence,
 /turf/open/asphalt/cement/cement12,
@@ -27734,6 +27713,14 @@
 "mOW" = (
 /obj/structure/pipes/standard/tank/oxygen,
 /turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"mOZ" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmining"
+	},
+/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "mPm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -29284,6 +29271,19 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
+"osi" = (
+/obj/structure/surface/table,
+/obj/item/trash/kepler{
+	pixel_y = 3
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/clock{
+	pixel_y = 18
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "osm" = (
 /obj/structure/barricade/deployable,
 /turf/open/floor/asteroidfloor/north,
@@ -42908,7 +42908,7 @@ wVQ
 rxh
 rxh
 rxh
-aac
+mOZ
 rxh
 rxh
 rxh
@@ -57326,7 +57326,7 @@ aHF
 aHF
 aHF
 apD
-abb
+aND
 aMf
 aMf
 aZS
@@ -58646,7 +58646,7 @@ aOM
 aZY
 aof
 bbm
-aaM
+aJb
 bcN
 aof
 wfk
@@ -61193,7 +61193,7 @@ aht
 adS
 aiO
 cgz
-abe
+osi
 akt
 acr
 adS
@@ -75316,7 +75316,7 @@ amk
 ajm
 sUQ
 avM
-abd
+lAF
 aka
 amk
 tQw

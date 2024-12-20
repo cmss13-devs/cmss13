@@ -329,11 +329,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
 "abq" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfpods"
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 11
 	},
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
+/turf/open/floor/dark,
+/area/desert_dam/building/security/observation)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -341,12 +342,11 @@
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "abt" = (
-/obj/structure/surface/table,
-/obj/item/clock{
-	pixel_y = 11
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
 	},
-/turf/open/floor/dark,
-/area/desert_dam/building/security/observation)
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -56837,7 +56837,7 @@ bqn
 bom
 bsb
 aUS
-abt
+abq
 bml
 ifB
 bml
@@ -78144,7 +78144,7 @@ clE
 dTs
 dTs
 dTs
-abq
+abt
 dTs
 dTs
 dTs

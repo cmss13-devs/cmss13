@@ -17,19 +17,6 @@
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
-"aae" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/fancy/cigar,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/clock{
-	pixel_x = -14;
-	pixel_y = 16
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outside/checkpoints/north)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -102,18 +89,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"aau" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin,
-/obj/item/tool/stamp,
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/obj/item/clock{
-	pixel_y = 15
-	},
-/turf/open/floor/strata/floor3,
-/area/strata/ag/interior/outpost/admin)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -130,17 +105,6 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aay" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/item/clock{
-	pixel_y = 15
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/mining_outpost/flight_control)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -2542,6 +2506,17 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
+"ako" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clock{
+	pixel_y = 15
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/mining_outpost/flight_control)
 "akp" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/landmark/objective_landmark/close,
@@ -7406,6 +7381,18 @@
 "aLU" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"aLW" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/stamp,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
@@ -19431,6 +19418,19 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/guestpass,
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outside/checkpoints/north)
+"eNF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_x = -14;
+	pixel_y = 16
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNL" = (
@@ -34508,7 +34508,7 @@ ftO
 vMr
 coO
 coO
-aay
+ako
 coS
 doZ
 cqE
@@ -42085,7 +42085,7 @@ cbu
 aac
 aac
 mvm
-aae
+eNF
 iry
 cow
 beZ
@@ -55182,7 +55182,7 @@ aUV
 cik
 aJm
 aKG
-aau
+aLW
 aNf
 aOo
 aPL

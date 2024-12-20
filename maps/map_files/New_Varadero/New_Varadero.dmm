@@ -5,41 +5,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
-"aab" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/evidencebag,
-/obj/effect/landmark/objective_landmark/far,
-/obj/item/clock{
-	pixel_y = 16
-	},
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/security)
-"aac" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/implanter{
-	pixel_x = 10
-	},
-/obj/item/ashtray/bronze{
-	icon_state = "ashtray_half_br"
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/obj/item/weapon/gun/lever_action/r4t,
-/obj/item/ammo_magazine/handful/lever_action,
-/obj/item/clock{
-	pixel_y = 17;
-	pixel_x = -2
-	},
-/turf/open/floor/carpet,
-/area/varadero/interior/research)
-"aad" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/clock{
-	pixel_y = 13;
-	pixel_x = -15
-	},
-/turf/open/floor/shiva/redfull,
-/area/varadero/interior/medical)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
@@ -11793,6 +11758,23 @@
 "juW" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms3)
+"jvc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/implanter{
+	pixel_x = 10
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_half_br"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/weapon/gun/lever_action/r4t,
+/obj/item/ammo_magazine/handful/lever_action,
+/obj/item/clock{
+	pixel_y = 17;
+	pixel_x = -2
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/research)
 "jvh" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/records)
@@ -18193,6 +18175,15 @@
 	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
+"oPr" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = -15
+	},
+/turf/open/floor/shiva/redfull,
+/area/varadero/interior/medical)
 "oPQ" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
@@ -28586,6 +28577,15 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"wOS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/evidencebag,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/clock{
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
 "wOU" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/auto_turf/sand_white/layer1,
@@ -33756,7 +33756,7 @@ cbv
 yks
 vNG
 rbU
-aac
+jvc
 nCV
 ovC
 fay
@@ -40661,7 +40661,7 @@ uUW
 maN
 wFX
 dLN
-aad
+oPr
 rLC
 aoo
 fyH
@@ -50693,7 +50693,7 @@ pJn
 krP
 qhZ
 gwG
-aab
+wOS
 wrv
 cNh
 eOu

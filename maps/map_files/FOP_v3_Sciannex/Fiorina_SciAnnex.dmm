@@ -12,24 +12,6 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "aac" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "rocinante"
-	},
-/turf/open/space,
-/area/fiorina/oob)
-"aad" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clock{
-	pixel_y = 9
-	},
-/turf/open/floor/wood,
-/area/fiorina/station/security/wardens)
-"aae" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clock,
-/turf/open/floor/prison/darkredfull2,
-/area/fiorina/station/research_cells/west)
-"aaf" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/clock{
@@ -37,6 +19,12 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
+"aad" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -8740,6 +8728,13 @@
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
+"gPs" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/security/wardens)
 "gPS" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
@@ -23882,6 +23877,11 @@
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
+"spR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clock,
+/turf/open/floor/prison/darkredfull2,
+/area/fiorina/station/research_cells/west)
 "sqx" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -46183,7 +46183,7 @@ wbI
 itN
 baC
 baC
-aac
+aad
 bQM
 bQM
 bQM
@@ -55990,7 +55990,7 @@ azZ
 xLi
 xLi
 oZf
-aaf
+aac
 knW
 fop
 xLi
@@ -60379,7 +60379,7 @@ uKX
 lkA
 dkn
 xQx
-aad
+gPs
 iMo
 rJO
 fYW
@@ -64275,7 +64275,7 @@ mvp
 mvp
 dOf
 lIG
-aae
+spR
 kzR
 qBI
 mvl

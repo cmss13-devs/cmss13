@@ -21,12 +21,13 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
+
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_valkyrie
 
 /datum/xeno_strain/valkyrie/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
-	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	prae.claw_type = CLAW_TYPE_VERY_SHARP
 	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_valkyrie

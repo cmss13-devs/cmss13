@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Actually fixed asset transport errors if the space grunts paper is mapped in."

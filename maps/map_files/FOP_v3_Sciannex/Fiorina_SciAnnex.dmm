@@ -11,6 +11,14 @@
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/clock{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -8716,6 +8724,9 @@
 /area/fiorina/station/power_ring)
 "gPs" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 9
+	},
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "gPS" = (
@@ -23862,6 +23873,7 @@
 /area/fiorina/station/disco)
 "spR" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/clock,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "sqx" = (
@@ -55972,7 +55984,7 @@ azZ
 xLi
 xLi
 oZf
-tYU
+aac
 knW
 fop
 xLi

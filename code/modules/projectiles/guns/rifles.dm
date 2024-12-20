@@ -2244,7 +2244,7 @@
 
 /obj/item/weapon/gun/rifle/l42a3/marksman/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9 - FIRE_DELAY_TIER_12)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 
 /obj/item/weapon/gun/rifle/l42a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
 	..()

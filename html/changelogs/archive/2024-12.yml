@@ -323,3 +323,34 @@
 2024-12-18:
   Tsurupeta:
   - rscadd: Added saving of the preferences for ambience/lobby music/game volume.
+2024-12-19:
+  BOBAMA:
+  - balance: Recruiter, Engineer, and CLF survivors now have ammo for their weapons.
+  - balance: Engineer survivors sometimes do not get tool belts.
+  - bugfix: Survivors should now more consistently spawn with ALL of their intended
+      gear.
+  - bugfix: CLF and Goon survivors should no longer spawn with duplicate gear.
+  Blundir:
+  - rscadd: blade runner revolvers and holdout pistol now have unique sprite in belt
+      and fit gun belts
+  - rscadd: officer (SO) helmet now has sprite matching the armor on different maps
+  - bugfix: broken icons
+  - bugfix: es4 now fits gun belts
+  - bugfix: wrapped burrito/hotdog/burger having no trash wrapper
+  Steelpoint:
+  - rscadd: The UPP Pilot and Dzho Automaton roles will properly appear on your character
+      setup screen if you select those roles.
+2024-12-20:
+  Blundir:
+  - rscadd: digital table clock that shows time and date
+  - rscadd: cat clock now shows time
+  - mapadd: added digital clock to majority of mpas
+  Detective-Google:
+  - bugfix: fixed duplicate windoors on the reqline
+  Drathek:
+  - bugfix: Actually fixed asset transport errors if the space grunts paper is mapped
+      in.
+  TheGamerdk:
+  - bugfix: Synths and people with robotics limbs can now get de-limbed.
+  ihatethisengine:
+  - rscadd: Overwatch can hear speech and see emotes.

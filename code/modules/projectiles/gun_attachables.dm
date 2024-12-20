@@ -3255,8 +3255,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/af13 //NSG underslung shottie
 	name = "\improper AF13 underbarrel shotgun"
-	icon_state = "masterkey"
-	attach_icon = "masterkey_a"
+	icon_state = "masterkey_af13"
+	attach_icon = "masterkey_af13_a"
 	desc = "A Weyland-Yutani AF13 underslung shotgun. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
 	max_rounds = 6
@@ -3302,8 +3302,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/af13b //NSG underslung shottie for Breacher gun
 	name = "\improper AF13-B underbarrel shotgun"
-	icon_state = "masterkey"
-	attach_icon = "masterkey_a"
+	icon_state = "masterkey_af13"
+	attach_icon = "masterkey_af13_a"
 	desc = "A Weyland-Yutani AF13-B underslung shotgun, heavily modified by RMC Armourers. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
 	max_rounds = 6

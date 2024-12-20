@@ -121,6 +121,9 @@
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
 	name = "hunt spawner xeno"
 
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
+	name = "bloding spawner"
+
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
 	. = ..()
 	GLOB.monkey_spawns += src

@@ -399,6 +399,10 @@
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
+	if(H.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
+		return
+
 	if(H.client && H.client.clan_info)
 		var/datum/entity/clan_player/clan_info = H.client.clan_info
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)

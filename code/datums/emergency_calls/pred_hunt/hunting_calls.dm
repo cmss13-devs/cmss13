@@ -109,6 +109,7 @@
 	if(!istype(spawn_loc))
 		return // Didn't find a usable spawn point.
 
+
 	if(xeno_t3 < max_xeno_t3 && HAS_FLAG(current_mob.client.prefs.toggles_ert_pred, PLAY_XENO_T3))
 		xeno_t3++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/ravager)
@@ -116,7 +117,7 @@
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
-		to_chat(new_xeno, SPAN_BOLD("You are a xeno"))
+		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strange planet."))
 	else if(xeno_t2 < max_xeno_t2 && HAS_FLAG(current_mob.client.prefs.toggles_ert_pred, PLAY_XENO_T2))
 		xeno_t2++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/warrior)
@@ -124,16 +125,17 @@
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
-		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strang "))
+		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strange planet."))
 	else
-		var/list/xeno_types = list(/mob/living/carbon/xenomorph/drone)
+		var/list/xeno_types = list(/mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
 		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
 		player.transfer_to(new_xeno, TRUE)
-		to_chat(new_xeno, SPAN_BOLD("You are a xeno"))
+		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strange planet."))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), new_xeno.client, 'sound/misc/hunt_begin.ogg'), 10 SECONDS)
 	show_blurb(new_xeno, 15, message, null, "center", "center", COLOR_RED, null, null, 1)
+	new /obj/effect/alien/weeds/node/feral(spawn_loc)
 
 /datum/emergency_call/pred/xeno/med
 	name = "Hunting Grounds - Xenos - Medium"
@@ -152,3 +154,53 @@
 	hostility = TRUE
 	max_xeno_t3 = 3
 	max_xeno_t2 = 3
+
+/datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
+	name = "Hunting Grounds - Blooding Party"
+	probability = 0
+	mob_max = 3
+	mob_min = 1
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
+	shuttle_id = ""
+	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
+
+/datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
+	. = ..()
+	message_all_yautja("Successfully Awoken [mob_max] youngbloods, of which [length(members)] are ready for the ritual.")
+
+/datum/emergency_call/young_bloods/create_member(datum/mind/player, turf/override_spawn_loc)
+	set waitfor = 0
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))  //Didn't find a useable spawn point.
+		return
+
+	var/mob/living/carbon/human/hunter = new(spawn_loc)
+
+	if(player)
+		player.transfer_to(hunter, TRUE)
+	else
+		hunter.create_hud()
+
+	if(player)
+		FOR_DVIEW(var/obj/structure/machinery/cryopod/pod, 7, hunter, HIDE_INVISIBLE_OBSERVER)
+			if(pod && !pod.occupant)
+				pod.go_in_cryopod(hunter, silent = TRUE)
+				break
+		FOR_DVIEW_END
+
+
+	if(!leader && HAS_FLAG(hunter.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
+		leader = hunter
+		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, FALSE)
+		to_chat(hunter, SPAN_ROLE_HEADER("You are the Youngblood Pack Leader, you are the dominant hunter within the youngblood hunting party!"))
+		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players and follow the honour code. IF you fail any of these you will be dispached via a kill switch all younbloods have within them. You may also face OOC repercussions. Good luck and have fun."))
+	else
+		(check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
+		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl, TRUE, FALSE)
+		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
+		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players and follow the honour code. IF you fail any of these you will be dispached via a kill switch all younbloods have within them. You may also face OOC repercussions. Good luck and have fun."))
+
+		sleep(30 SECONDS)
+		to_chat(hunter, SPAN_YAUTJABOLD("Objectives: [objectives]"))
+

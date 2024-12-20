@@ -851,6 +851,9 @@
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(caller, SPAN_WARNING("You can't hold that!"))
 			return
+		if(caller.faction == FACTION_YAUTJA_YOUNG)
+			to_chat(caller, SPAN_WARNING("You have not earned that right yet!"))
+			return
 		caller.put_in_active_hand(caster)
 		caster_deployed = TRUE
 		to_chat(caller, SPAN_NOTICE("You activate your plasma caster. It is in [caster.mode] mode."))
@@ -939,10 +942,12 @@
 	if(boomer.stat)
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 		return
-	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
+	if(istype(grounds, /area/yautja_grounds)) // Hunted need mask to escape
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 		return
-
+	if(caller.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(boomer, SPAN_WARNING("Your bracer denies your request.")) // No SDing for youngbloods
+		return
 
 	var/obj/item/grab/G = boomer.get_active_hand()
 	if(istype(G))
@@ -1027,6 +1032,50 @@
 				break
 
 	return TRUE
+
+/obj/item/clothing/gloves/yautja/hunter/verb/remote_kill()
+	set name = "Remotely Kill Youngblood"
+	set desc = "Remotley kill a youngblood for breaking the honour code."
+	set category = "Yautja.Misc"
+	set src in usr
+	. = remote_kill_internal(usr, FALSE)
+
+/obj/item/clothing/gloves/yautja/hunter/proc/remote_kill_internal(mob/living/carbon/human/caller, forced = FALSE)
+	if(!caller.loc || caller.is_mob_incapacitated() || !ishuman(caller))
+		return
+
+	if(caller.faction == FACTION_YAUTJA_YOUNG)
+		return
+
+	if(!HAS_TRAIT(caller, TRAIT_YAUTJA_TECH))
+		to_chat(caller, SPAN_WARNING("A large list appears but you cannot understand what it means."))
+		return
+
+	var/list/target_list = list()
+	if(!length(target_list))
+		to_chat(caller, SPAN_NOTICE("No youngbloods are currently alive."))
+		return
+
+	for(var/mob/living/carbon/human/target_youngbloods as anything in GLOB.yautja_mob_list)
+		if(target_youngbloods.faction == FACTION_YAUTJA_YOUNG && target_youngbloods.stat != DEAD)
+			target_list += target_youngbloods
+
+	var/choice = tgui_input_list(caller, "Choose a young hunter to terminate:", "Kill Youngblood", target_list)
+
+	if(!choice)
+		return
+
+	var/mob/living/target_youngblood = choice
+
+	var/reason = stripped_input(caller, "Provide a reason for terminating [target_youngblood].")
+	if(!reason)
+		to_chat(caller, SPAN_WARNING("You must provide a reason for terminating [target_youngblood]."))
+		return
+
+	var/turf/dead_youngblood
+	target_youngblood.death(create_cause_data("[target_youngblood.real_name] was terminated by [caller.real_name] for [reason]."))
+	message_all_yautja("[caller.real_name] has terminated [target_youngblood.real_name] for [reason].")
+	message_admins(src,"[caller.real_name] terminated [target_youngblood.real_name] for [reason] at [get_area(target_youngblood)] ([x],[y],[z]).[ADMIN_JMP(dead_youngblood)]")
 
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()

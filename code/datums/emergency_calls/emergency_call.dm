@@ -71,6 +71,7 @@
 	var/ert_message = "An emergency beacon has been activated"
 
 	var/time_required_for_job = 5 HOURS
+	var/time_required_for_youngblood = 40 HOURS
 
 	/// the shuttle being used by this distress call
 	var/obj/docking_port/mobile/emergency_response/shuttle

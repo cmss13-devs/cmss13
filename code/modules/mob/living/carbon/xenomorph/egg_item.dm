@@ -170,10 +170,13 @@
 	if(!isxeno(user))
 		return
 
-	var/mob/living/carbon/xenomorph/X = user
-	if(iscarrier(X))
-		var/mob/living/carbon/xenomorph/carrier/C = X
-		C.store_egg(src)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(iscarrier(xeno))
+		var/mob/living/carbon/xenomorph/carrier/carrier = xeno
+		carrier.store_egg(src)
+	else if(isreaper(xeno))
+		var/mob/living/carbon/xenomorph/reaper/reaper = xeno
+		reaper.store_egg(src)
 	else
 		var/turf/T = get_turf(user)
 		plant_egg(user, T)

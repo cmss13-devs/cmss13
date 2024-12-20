@@ -155,8 +155,12 @@
 	..()
 
 	if(iscarrier(user))
-		var/mob/living/carbon/xenomorph/carrier/C = user
-		C.store_hugger(src)
+		var/mob/living/carbon/xenomorph/carrier/carrier = user
+		carrier.store_hugger(src)
+
+	else if(isreaper(user))
+		var/mob/living/carbon/xenomorph/reaper/reaper = user
+		reaper.store_hugger(src)
 
 /obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
 	. = ..()

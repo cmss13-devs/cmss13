@@ -1,3 +1,10 @@
+/datum/action/xeno_action/verb/verb_retrieve_hugger_egg()
+	set category = "Alien"
+	set name = "Retrieve Facehugger/Egg"
+	set hidden = TRUE
+	var/action_name = "Retrieve Facehugger/Egg"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/verb/verb_haul_corpse()
 	set category = "Alien"
 	set name = "Haul Corpse"
@@ -12,11 +19,11 @@
 	var/action_name = "Flesh Harvest"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_reap()
+/datum/action/xeno_action/verb/verb_replenish()
 	set category = "Alien"
-	set name = "Reap"
+	set name = "Replenish"
 	set hidden = TRUE
-	var/action_name = "Reap"
+	var/action_name = "Replenish"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_mist()
@@ -24,4 +31,13 @@
 	set name = "Emit Mist"
 	set hidden = TRUE
 	var/action_name = "Emit Mist"
+	handle_xeno_macro(src, action_name)
+
+// Strain Macros
+
+/datum/action/xeno_action/verb/verb_reap()
+	set category = "Alien"
+	set name = "Reap"
+	set hidden = TRUE
+	var/action_name = "Reap"
 	handle_xeno_macro(src, action_name)

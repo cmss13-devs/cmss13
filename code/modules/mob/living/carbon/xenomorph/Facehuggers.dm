@@ -86,7 +86,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 
-	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL && stat != DEAD)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.

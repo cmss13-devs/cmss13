@@ -1,5 +1,0 @@
-author: "bobama"
-delete-after: True
-changes:
-  - balance: "solaris pmc insert is less common now"
-  - bugfix: "pmcs actually no longer get all marine announcements"

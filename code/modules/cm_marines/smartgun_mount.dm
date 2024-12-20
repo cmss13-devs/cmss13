@@ -42,6 +42,11 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 	icon_state = "M56D_gun_e"
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0

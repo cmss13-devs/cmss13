@@ -420,9 +420,6 @@
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()
-	if(stat == DEAD)
-		return
-
 	if(attached && !impregnated)
 		return
 
@@ -433,6 +430,9 @@
 	if(death_timer)
 		deltimer(death_timer)
 	death_timer = null
+
+	if(stat == DEAD)
+		return
 
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"

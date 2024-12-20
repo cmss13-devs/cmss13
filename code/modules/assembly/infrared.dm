@@ -200,6 +200,9 @@
 	return
 
 /obj/effect/beam/i_beam/Destroy()
+	if(master)
+		master = null
+	QDEL_NULL(next)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
@@ -258,12 +261,3 @@
 		return
 	spawn(0)
 		hit()
-		return
-	return
-
-/obj/effect/beam/i_beam/Destroy()
-	if(master)
-		master = null
-	QDEL_NULL(next)
-	. = ..()
-

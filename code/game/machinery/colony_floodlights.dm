@@ -55,10 +55,9 @@
 			toggle_lights()
 		ispowered = FALSE
 		turned_on = FALSE
-		update_icon()
 	else
 		ispowered = TRUE
-		update_icon()
+	update_icon()
 
 /obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
 	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)

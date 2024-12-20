@@ -1199,10 +1199,6 @@
 
 //Hitting an object. These are too numerous so they're staying in their files.
 //Why are there special cases listed here? Oh well, whatever. ~N
-/obj/bullet_act(obj/projectile/P)
-	bullet_ping(P)
-	return TRUE
-
 /obj/item/bullet_act(obj/projectile/P)
 	bullet_ping(P)
 	if(P.ammo.damage_type == BRUTE && !(P.ammo.flags_ammo_behavior & AMMO_XENO))

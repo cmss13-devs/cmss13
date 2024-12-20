@@ -919,13 +919,6 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
-/obj/structure/machinery/vending/power_change()
-	..()
-	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
-		return
-	update_icon()
-
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/structure/machinery/vending/proc/malfunction()
 	if(stat & BROKEN)

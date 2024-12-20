@@ -461,7 +461,7 @@
 /datum/equipment_preset/corpse/colonist
 	name = "Corpse - Colonist"
 
-/datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/colonist/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)

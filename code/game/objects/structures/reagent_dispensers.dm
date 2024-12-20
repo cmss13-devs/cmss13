@@ -80,18 +80,6 @@
 	healthcheck()
 	return TRUE
 
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/user)
-	if(unslashable)
-		return XENO_NO_DELAY_ACTION
-	user.animation_attack_on(src)
-	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	user.visible_message(SPAN_DANGER("[user] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	healthcheck()
-	return XENO_ATTACK_ACTION
-
-
 /obj/structure/reagent_dispensers/verb/set_transfer_direction() //set amount_per_transfer_from_this
 	set name = "Set transfer direction"
 	set category = "Object"

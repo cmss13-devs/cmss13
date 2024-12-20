@@ -418,7 +418,7 @@
 	desc = "A small box full of zip cuffs."
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/zipcuffs/fill_preset_inventory()
+/obj/item/storage/box/zipcuffs/small/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)

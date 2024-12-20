@@ -369,11 +369,11 @@
 /obj/bullet_act(obj/projectile/P)
 	//Tasers and the like should not damage objects.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
-		return 0
+		return FALSE
 	bullet_ping(P)
 	if(P.ammo.damage)
 		update_health(floor(P.ammo.damage / 2))
-	return 1
+	return TRUE
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/bodytype = default_bodytype

@@ -115,7 +115,7 @@
 	force = 10
 	throwforce = 10
 
-/obj/item/tool/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
+/obj/item/tool/kitchen/utensil/pknife/attack(target as mob, mob/living/user as mob)
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)

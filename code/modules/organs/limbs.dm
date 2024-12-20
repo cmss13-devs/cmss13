@@ -282,7 +282,7 @@
 		return 0
 
 	if(burn > 0 && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire))
-		burn /= 5 //we halve burn damage on HvH
+		burn /= 4 //reduce the flame dmg by 75% for HvH, it is still super strong
 
 	if(status & LIMB_DESTROYED)
 		return 0

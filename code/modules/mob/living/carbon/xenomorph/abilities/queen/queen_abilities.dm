@@ -51,7 +51,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
-	build_speed_mod = 1.5
+	build_speed_mod = 1.2
 
 	var/boosted = FALSE
 

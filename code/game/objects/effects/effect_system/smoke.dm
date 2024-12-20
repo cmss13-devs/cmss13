@@ -899,3 +899,6 @@
 		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+
+/datum/effect_system/smoke_spread/reaper_mist
+	smoke_type = /obj/effect/particle_effect/smoke/reaper_mist

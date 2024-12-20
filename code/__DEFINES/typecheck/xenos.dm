@@ -23,6 +23,7 @@
 #define isspitter(A) (istype(A, /mob/living/carbon/xenomorph/spitter))
 #define iswarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
 #define isburrower(A) (istype(A, /mob/living/carbon/xenomorph/burrower))
+#define isreaper(A) (istype(A, /mob/living/carbon/xenomorph/reaper))
 
 #define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isreaper(A) || isqueen(A))
 

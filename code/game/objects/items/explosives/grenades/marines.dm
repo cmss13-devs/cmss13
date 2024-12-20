@@ -521,6 +521,9 @@
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return
 
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))

@@ -78,6 +78,7 @@
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_FACTION_CLASH_UPP_MAJOR
+		set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
 		SSticker.roundend_check_paused = TRUE
 		addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), ROUND_END_DELAY)
 
@@ -139,7 +140,20 @@
 	.=..()
 	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
 	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
+	addtimer(CALLBACK(src,PROC_REF(ceasefire_warning)), 4 MINUTES)
+	addtimer(CALLBACK(src,PROC_REF(ceasefire_end)), 5 MINUTES)
 	addtimer(VARSET_CALLBACK(GLOB, round_should_check_for_win, TRUE), 15 MINUTES)
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/proc/ceasefire_warning()
+	marine_announcement("Ceasefire ends in one minute.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("Ceasefire ends in one minute.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/proc/ceasefire_end()
+	marine_announcement("Ceasefire is over.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("Ceasefire is over.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = FALSE)
+
 
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/announce()

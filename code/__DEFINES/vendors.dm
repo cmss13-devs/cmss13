@@ -19,7 +19,6 @@
 #define MARINE_CAN_BUY_COMBAT_ARMOR "combat_armor"
 #define MARINE_CAN_BUY_KIT "kit"
 #define MARINE_CAN_BUY_DRESS "dress"
-#define MARINE_CAN_BUY_NAILGUN "nail_gun"
 #define CIVILIAN_CAN_BUY_BACKPACK "civilian_backpack"
 #define CIVILIAN_CAN_BUY_UTILITY "civilian_utility"
 

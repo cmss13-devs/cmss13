@@ -314,6 +314,7 @@
 	required_reagents = list("potato" = 10)
 	required_catalysts = list("enzyme" = 5)
 	result_amount = 10
+
 /datum/chemical_reaction/sake
 	name = "Sake"
 	id = "sake"

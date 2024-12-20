@@ -89,6 +89,12 @@
 	description = "Cooked noodles."
 	flags = REAGENT_NO_GENERATION
 
+/datum/reagent/nutriment/dough/nuts
+	name = "Nuts"
+	id = "nuts"
+	description = "Some sort of grinded nut, smells like almonds."
+	flags = REAGENT_NO_GENERATION
+
 
 /datum/reagent/lipozine
 	name = "Lipozine" // The anti-nutriment.
@@ -121,6 +127,28 @@
 	color = "#731008" // rgb: 115, 16, 8
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
+
+/datum/reagent/vegemite
+	name = "Vegemite"
+	id = "vegemite"
+	description = "A thick yeast extract food spread, salty, slightly bitter, malty, and has an umami flavour similar to beef bouillon, with a hint of radiation."
+	reagent_state = LIQUID
+	nutriment_factor = 7 * REAGENTS_METABOLISM
+	color = "#312007" // rgb: 115, 16, 8
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 3)
+
+/datum/reagent/vegemite/reaction_mob(mob/target_mob)
+	if(target_mob.faction != FACTION_TWE)
+		to_chat(target_mob, (SPAN_ALERTWARNING("God... it's disgusting... eating that was not a good idea.")))
+
+/datum/reagent/vegemite/on_mob_life(mob/living/carbon/target_mob, potency = 1, delta_time)
+	. = ..()
+	if(!.) return
+	if(prob(4) && ishuman(target_mob) && target_mob.faction != FACTION_TWE)
+		var/mob/living/carbon/human/target_human = target_mob
+		target_mob.make_dizzy(10)
+		target_human.vomit()
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"

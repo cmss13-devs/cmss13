@@ -3326,6 +3326,7 @@
 		package = 0
 		icon_state = "open-hotdog"
 
+//STUPID
 /obj/item/reagent_container/food/snacks/upp
 	name = "\improper UPP ration"
 	desc = "A sealed, freeze-dried, compressed package containing a single item of food. Commonplace in the UPP military, especially those units stationed on far-flung colonies. This one is stamped for consumption by the UPP's 'Smoldering Sons' battalion and was packaged in 2179."
@@ -3473,55 +3474,3 @@
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
 	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
-//MREs
-
-/obj/item/reagent_container/food/snacks/packaged_meal
-	name = "\improper MRE component"
-	desc = "A package from a Meal Ready-to-Eat, property of the US Colonial Marines. Contains a part of a meal, prepared for field consumption."
-	icon_state = "entree"
-	icon = 'icons/obj/items/food/mre_food.dmi'
-	package = 1
-	bitesize = 5
-	var/flavor = "boneless pork ribs"//default value
-
-/obj/item/reagent_container/food/snacks/packaged_meal/Initialize(mapload, newflavor)
-	. = ..()
-	determinetype(newflavor)
-
-/obj/item/reagent_container/food/snacks/packaged_meal/attack_self(mob/user as mob)
-	if(package)
-		to_chat(user, SPAN_NOTICE("You pull open the package of the meal!"))
-		playsound(loc,"rip", 15, 1)
-
-		name = "\improper" + flavor
-		desc = "The contents of a USCM Standard issue MRE. This one is [flavor]."
-		icon_state = flavor
-		package = 0
-		return
-	..()
-/obj/item/reagent_container/food/snacks/packaged_meal/proc/determinetype(newflavor)
-	name = "\improper MRE component ([newflavor])"
-	flavor = newflavor
-
-	switch(newflavor)
-		if("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
-			icon_state = "entree"
-			desc = "An MRE entree component. Contains the main course for nutrients. This one is [flavor]."
-			reagents.add_reagent("nutriment", 14)
-			reagents.add_reagent("sodiumchloride", 6)
-		if("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
-			icon_state = "side"
-			desc = "An MRE side component. Contains a side, to be eaten alongside the main. This one is [flavor]."
-			reagents.add_reagent("nutriment", 6)
-			reagents.add_reagent("sodiumchloride", 2)
-		if("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
-			icon_state = "snack"
-			desc = "An MRE snack component. Contains a light snack in case you weren't feeling terribly hungry. This one is [flavor]."
-			reagents.add_reagent("nutriment", 4)
-			reagents.add_reagent("sodiumchloride", 2)
-		if("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
-			icon_state = "dessert"
-			desc = "An MRE side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious). This one is [flavor]."
-			reagents.add_reagent("nutriment", 2)
-			reagents.add_reagent("sugar", 2)
-			reagents.add_reagent("coco", 1)

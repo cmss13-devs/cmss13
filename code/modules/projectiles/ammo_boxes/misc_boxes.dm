@@ -65,6 +65,46 @@
 /obj/item/ammo_box/magazine/misc/mre/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/misc/mre/upp
+	name = "\improper box of military rations"
+	desc = "A box of rations. Tastes like homeland."
+	icon_state = "upp_food_crate"
+	// magazine_type = /obj/item/storage/box/MRE/UPP
+	overlay_content = "_upp_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/upp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/pmc
+	name = "\improper box of PMC CFR rations"
+	desc = "A box of expensive rations. You don't need a restraunt to eat nicely."
+	icon_state = "pmc_food_crate"
+	magazine_type = /obj/item/storage/box/MRE/PMC
+	overlay_content = "_colony_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/pmc/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/twe
+	name = "\improper box of TWE ORP rations"
+	desc = "A box of expensive rations. You don't need a restraunt to eat nicely."
+	icon_state = "twe_food_crate"
+	magazine_type = /obj/item/storage/box/MRE/TWE
+	overlay_content = "_twe_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/twe/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/emergency
+	name = "\improper box of emergency rations"
+	desc = "A box of expensive rations. You don't need a restraunt to eat nicely."
+	icon_state = "colony_food_crate"
+	// magazine_type = /obj/item/storage/box/MRE/emergency
+	overlay_content = "_colony_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/emergency/empty
+	empty = TRUE
+
 //------------------------M94 Marking Flare Packs Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/flares

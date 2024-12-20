@@ -315,6 +315,8 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty box of combat flashlights", /obj/item/ammo_box/magazine/misc/flashlight/combat/empty), \
 		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
 		null, \
+		new/datum/stack_recipe("empty box of UPP rations", /obj/item/ammo_box/magazine/misc/mre/upp/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (Desert Eagle)", /obj/item/ammo_box/magazine/deagle/empty), \
 		new/datum/stack_recipe("empty magazine box (Desert Eagle Heavy)", /obj/item/ammo_box/magazine/deagle/super/empty), \
 		new/datum/stack_recipe("empty magazine box (Desert Eagle High-Impact)", /obj/item/ammo_box/magazine/deagle/super/highimpact/empty), \

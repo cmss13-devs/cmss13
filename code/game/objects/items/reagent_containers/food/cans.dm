@@ -1,6 +1,13 @@
 /obj/item/reagent_container/food/drinks/cans
 	var/canopened = FALSE
 	var/crushed = FALSE
+	var/crushable = TRUE
+	var/open_sound = 'sound/effects/canopen.ogg'
+	var/open_message = "You open the drink with an audible pop!"
+	var/object_fluff = "drink"
+	var/food_interactable = FALSE
+	var/crushed_icon = null
+	var/has_open_icon = FALSE
 	gulp_size = 10
 	icon = 'icons/obj/items/food/drinkcans.dmi'
 	item_icons = list(
@@ -15,15 +22,18 @@
 		return
 
 	if (!canopened)
-		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
-		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
+		playsound(src.loc, open_sound, 15, 1)
+		to_chat(user, SPAN_NOTICE(open_message))
 		canopened = TRUE
+		if(has_open_icon)
+			icon_state += "_open"
+		update_icon()
 
 /obj/item/reagent_container/food/drinks/cans/attack_hand(mob/user)
 	if(crushed)
 		return ..()
 
-	if (canopened && !reagents.total_volume)
+	if (canopened && !reagents.total_volume && crushable)
 		if(user.a_intent == INTENT_HARM)
 			if(isturf(loc))
 				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
@@ -39,12 +49,12 @@
 		return
 
 	if(!canopened)
-		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 		return
 	var/datum/reagents/R = src.reagents
 
 	if(!R.total_volume || !R)
-		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head")
+		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head" && crushable)
 			crush_can(M)
 			return
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
@@ -60,7 +70,7 @@
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
 		if (!canopened)
-			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
 		user.affected_message(M,
@@ -94,20 +104,35 @@
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 		if (!canopened)
-			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
 		if (!canopened)
-			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
-		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
+		if(istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
 			if(!cantarget.canopened)
-				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
+				to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] you want to pour into!"))
 				return
+
+	else if(istype(target, /obj/item/reagent_container/food/snacks) && food_interactable)
+		if (!canopened)
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
+			return
+
+		if(!reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[src] is empty."))
+			return
+
+		if(target.reagents.total_volume >= target.reagents.maximum_volume)
+			to_chat(user, SPAN_DANGER("You can't add any more to [target]."))
+			return
+		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the contents to [target]."))
 
 	return ..()
 
@@ -143,7 +168,10 @@
 	crushed = TRUE
 	flags_atom &= ~OPENCONTAINER
 	desc += "\nIts been crushed! A badass must have been through here..."
-	icon_state = "[icon_state]_crushed"
+	if(!crushed_icon)
+		icon_state = "[icon_state]_crushed"
+	else
+		icon_state = crushed_icon
 	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
 	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
 
@@ -300,11 +328,41 @@
 	name = "\improper Weyland-Yutani Bottled Spring Water"
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
+	crushed_icon = "wy_water_crushed"
+	has_open_icon = TRUE
 	center_of_mass = "x=15;y=8"
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+
+/obj/item/reagent_container/food/drinks/cans/coconutmilk
+	name = "\improper Weyland-Yutani Bottled Coconut Milk"
+	desc = "Rich in vitamins and (artificial) flavor, quenches thirst in a few sips. Bottled by the Weyland-Yutani Corporation."
+	icon_state = "pmc_cocomilk"
+	crushed_icon = "pmc_cocomilk_crushed"
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
+
+/obj/item/reagent_container/food/drinks/cans/coconutmilk/Initialize()
+	. = ..()
+	reagents.add_reagent("coconutmilk", 30)
+
+/obj/item/reagent_container/food/drinks/cans/soylent
+	name = "\improper Weyland-Yutani Premium Choco Soylent"
+	desc = "Plastic bottle full of gooey goodness, choco flavor. One bottle has enough calories for a lunch - don't drink it all in one sitting, better not risk getting diarrhea."
+	desc_lore = "Initially designed in 2173 as meal replacement for high-intensity workers, MRD was recalled from the market multiple times due to reports of gastrointestinal illness, including nausea, vomiting, and diarrhea. Improved formula was created, but the brand name was already stained (quite literally), so now the drink remains as emergency food supply for internal Company use."
+	icon_state = "wy_soylent"
+	crushed_icon = "wy_soylent_crushed"
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
+	volume = 30
+
+/obj/item/reagent_container/food/drinks/cans/soylent/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 10)
+	reagents.add_reagent("soymilk", 10)
+	reagents.add_reagent("coco", 10)
 
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "\improper Weyland-Yutani Lite"

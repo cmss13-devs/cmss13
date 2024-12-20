@@ -186,6 +186,15 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 
+/obj/item/storage/fancy/cigarettes/wypacket_4
+	name = "\improper Weyland-Yutani Gold mini packet"
+	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
+	icon_state = "wy4packet"
+	icon = 'icons/obj/items/smoking/packets/wy_gold_mini.dmi'
+	item_state = "wy4packet"
+	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
+	storage_slots = 4
+
 /obj/item/storage/fancy/cigarettes/lucky_strikes
 	name = "\improper Lucky Strikes Packet"
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes...as the leading cause of marine lung cancer."
@@ -203,6 +212,16 @@
 	item_state = "blackpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_blackpack")
 	default_cig_type = /obj/item/clothing/mask/cigarette/bcigarette
+
+/obj/item/storage/fancy/cigarettes/blackpack_4
+	name = "\improper Executive Select mini packet"
+	desc = "Luxury right in your ration. You will have them just in time to use them while observing a nuclear blast and enjoying it."
+	icon_state = "black4packet"
+	icon = 'icons/obj/items/smoking/packets/executive_select_mini.dmi'
+	item_state = "black4packet"
+	item_state_slots = list(WEAR_AS_GARB = "cig_blackpack")
+	default_cig_type = /obj/item/clothing/mask/cigarette/bcigarette
+	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"

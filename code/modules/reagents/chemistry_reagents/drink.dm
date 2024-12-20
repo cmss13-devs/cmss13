@@ -176,6 +176,12 @@
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 
+/datum/reagent/drink/milk/coconut
+	name = "Coconut Milk"
+	id = "coconutmilk"
+	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
+	color = "#DFDFC7" // rgb: 223, 223, 199
+
 /datum/reagent/drink/milk/cream
 	name = "Cream"
 	id = "cream"

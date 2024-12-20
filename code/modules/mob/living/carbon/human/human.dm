@@ -196,9 +196,10 @@
 	//Focus half the blast on one organ
 	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
-	pain.apply_pain(b_loss * 0.5, BRUTE)
-	pain.apply_pain(f_loss * 0.5, BURN)
+	if(take_blast)
+		update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
+	pain?.apply_pain(b_loss * 0.5, BRUTE)
+	pain?.apply_pain(f_loss * 0.5, BURN)
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5

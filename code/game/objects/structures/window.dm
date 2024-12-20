@@ -179,7 +179,7 @@
 			anchored = FALSE
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
-	healthcheck(user = AM.launch_metadata.thrower)
+	healthcheck(user = AM.launch_metadata?.thrower)
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	if(user.a_intent == INTENT_HARM && ishuman(user))

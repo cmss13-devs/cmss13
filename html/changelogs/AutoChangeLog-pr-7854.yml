@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Suppressed a div by 0 error when autofit viewport tries to fit the window while minimized"

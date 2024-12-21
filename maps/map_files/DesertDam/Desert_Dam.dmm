@@ -236,12 +236,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "aaZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/surface/table/woodentable,
+/obj/item/clock{
+	pixel_y = 9
 	},
-/obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -274,6 +274,12 @@
 /obj/item/trash/cigbutt/bcigbutt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"abg" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clock,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/security/prison)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -319,12 +325,26 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
+"abq" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/virology_wing)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
 "abs" = (
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
+"abt" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 11
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/security/observation)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -359,6 +379,13 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/river/riverside_east)
+"abB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -56815,7 +56842,7 @@ bqn
 bom
 bsb
 aUS
-bml
+abt
 bml
 ifB
 bml
@@ -56945,7 +56972,7 @@ aQW
 aQW
 aQW
 aQW
-aaZ
+abB
 aQW
 aQW
 aQW
@@ -57299,7 +57326,7 @@ bNE
 bSn
 bTo
 bSz
-bYT
+abg
 bYT
 bTn
 bYl
@@ -91929,7 +91956,7 @@ cGB
 cHO
 cIO
 cJJ
-cJJ
+abq
 cLp
 cHN
 flq
@@ -92928,7 +92955,7 @@ dBr
 dZS
 dFf
 dFf
-eaz
+aaZ
 eaz
 dBr
 dGC

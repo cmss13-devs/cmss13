@@ -244,7 +244,7 @@
 	if (istype(I, /obj/item/card/id))
 		attack_hand(user)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)

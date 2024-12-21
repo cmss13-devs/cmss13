@@ -35,7 +35,7 @@
 			scanner = O
 			to_chat(user, "You insert [O].")
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
 	return attack_hand(user)

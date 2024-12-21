@@ -268,7 +268,7 @@
 		control.status = SHUTTLE_DOOR_UNLOCKED
 		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced = FALSE)
 	if(is_reserved_level(z) && !forced)

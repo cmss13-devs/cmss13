@@ -98,7 +98,7 @@
 
 
 /obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/W as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
-	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
+	. = ..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
 		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 			if (charge < (capacity / 100))

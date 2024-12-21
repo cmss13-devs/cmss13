@@ -95,7 +95,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			disable()
 			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/nuclearbomb/attack_hand(mob/user as mob)
 	if(user.is_mob_incapacitated() || get_dist(src, user) > 1 || isRemoteControlling(user))

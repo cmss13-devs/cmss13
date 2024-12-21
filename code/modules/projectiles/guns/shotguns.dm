@@ -962,7 +962,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		target_angle = get_dir(user, M)
 
 	var/prefire_rounds = current_mag.current_rounds //How many rounds do we have before we fire?
-	..()
+	. = ..()
 	if(current_mag.current_rounds == prefire_rounds) //We didn't fire a shot.
 		return
 	fired_shots++

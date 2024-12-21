@@ -279,6 +279,7 @@
 					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
 					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
+					return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 				else
 					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 					return
@@ -289,6 +290,7 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
 				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
+				return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
@@ -323,7 +325,7 @@
 	//clicking the table
 	if(flipped)
 		return
-	..()
+	. = ..()
 
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
@@ -578,7 +580,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && status == RTABLE_NORMAL)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
@@ -674,7 +676,7 @@
 		return
 	if(W.flags_item & ITEM_ABSTRACT)
 		return
-	..()
+	. = ..()
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()

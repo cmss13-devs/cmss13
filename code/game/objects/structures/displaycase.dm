@@ -59,7 +59,7 @@
 /obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
 	src.health -= W.force * W.demolition_mod
 	src.healthcheck()
-	..()
+	. = ..()
 	return
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)

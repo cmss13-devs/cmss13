@@ -96,7 +96,7 @@
 /mob/living/carbon/xenomorph/burrower/attackby()
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
-	..()
+	. = ..()
 
 /mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()

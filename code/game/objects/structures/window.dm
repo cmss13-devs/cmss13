@@ -296,7 +296,7 @@
 				update_nearby_icons()
 				step(src, get_dir(user, src))
 		healthcheck(1, 1, 1, user, W)
-		..()
+		. = ..()
 	return
 
 /obj/structure/window/proc/is_full_window()

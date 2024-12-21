@@ -120,6 +120,8 @@
 /obj/structure/pipes/standard/manifold/hidden/purple
 	color = PIPE_COLOR_PURPLE
 
+/obj/structure/pipes/standard/manifold/hidden/dark
+	color = PIPE_COLOR_DARKGREY
 
 /obj/structure/pipes/standard/manifold/fourway
 	icon = 'icons/obj/pipes/manifold.dmi'

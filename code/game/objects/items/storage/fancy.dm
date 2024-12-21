@@ -474,7 +474,7 @@
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0, mob/user)
+/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0, mob/living/carbon/human/user)
 	var/total_contents = length(src.contents) - itemremoved
 	src.icon_state = "vialbox[total_contents]"
 	src.item_state = "vialbox[total_contents]"

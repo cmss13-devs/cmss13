@@ -116,7 +116,7 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-	if(faction == FACTION_MARINE)
+	if(faction == FACTION_MARINE || faction == FACTION_UPP)
 		. += ""
 		. += "<a href='?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)

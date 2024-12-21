@@ -89,8 +89,8 @@
 	playsound(loc, 'sound/CPRbot/CPRbot_poweron.ogg', 25, 1)
 	src.botcard = new /obj/item/card/id(src)
 	if(!LAZYLEN(src.botcard_access))
-		var/datum/job/J = GLOB.RoleAuthority ? GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
-		botcard.access = J.get_access()
+		var/datum/job/Job = GLOB.RoleAuthority ? GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
+		botcard.access = Job.get_access()
 	else
 		src.botcard.access = src.botcard_access
 
@@ -114,7 +114,7 @@
 			follow_owner()
 
 /obj/structure/machinery/bot/cprbot/proc/follow_owner()
-	if (!owner || owner == null)
+	if (!owner || isnull(owner))
 		go_idle()
 		return
 
@@ -124,7 +124,7 @@
 		return
 
 	// If the bot has a path, proceed with walking along it
-	if (length(src.path))
+	if (length(path))
 		var/turf/next = path[1]
 		if (loc == next)
 			path -= next // Remove the turf from the path once reached
@@ -212,7 +212,7 @@
 			another_bot_patient = another_cpr_bot.human.resolve()
 
 		// sanity checks
-		if (another_bot_patient == null)
+		if (isnull(another_bot_patient))
 			continue
 
 		// Another CPR bot is targetting this patient, skip
@@ -239,11 +239,11 @@
 			go_idle()
 
 /obj/structure/machinery/bot/cprbot/proc/call_astar_pathfinding()
-	if (human == null)
+	if (isnull(human))
 		return FALSE
 
 	var/mob/living/carbon/human/patient = human.resolve()
-	if (patient == null)
+	if (isnull(patient))
 		return FALSE
 
 	var/turf/target_turf = get_turf(patient)
@@ -252,65 +252,58 @@
 		return
 
 	// Calculate the path using your A* function
-	path = AStar(src.loc, target_turf, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
+	path = AStar(loc, target_turf, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
 
 	if (!length(path))
 		return
 
 	// Delete the straight line sections since walk_to moves better without that.
 	var/list/path_new = list()
-	var/turf/last = path[path.len]
+	var/turf/last = path[length(path)]
 
 	if (!istype(last, /turf)) // Ensure last is a turf before accessing it
 		return
 
 	path_new.Add(path[1])
 
-	for (var/i = 2; i < path.len; i++) {
-		if (istype(path[i], /turf) && istype(path[i + 1], /turf)) {
+	for (var/i = 2; i < length(path); i++)
+		if (istype(path[i], /turf) && istype(path[i + 1], /turf))
 			var/turf/current_turf = path[i]
 			var/turf/next_turf = path[i + 1]
 
-			if ((next_turf.x == current_turf.x) || (next_turf.y == current_turf.y)) { // We have a straight line, scan for more to cut down
+			if ((next_turf.x == current_turf.x) || (next_turf.y == current_turf.y)) // We have a straight line, scan for more to cut down
 				path_new.Add(current_turf)
-				for (var/j = i + 1; j < path.len; j++) {
-					if (istype(path[j + 1], /turf)) {
+				for (var/j = i + 1; j < path.len; j++)
+					if (istype(path[j + 1], /turf))
 						var/turf/next_next_turf = path[j + 1]
 						var/turf/prev_turf = path[j - 1]
 
 						// This is a corner and the endpoint of our line
-						if ((next_next_turf.x != prev_turf.x) && (next_next_turf.y != prev_turf.y)) {
+						if ((next_next_turf.x != prev_turf.x) && (next_next_turf.y != prev_turf.y))
 							path_new.Add(path[j])
 							i = j + 1
 							break
-						}
-					}
 
-					if (j == path.len - 1) {
+
+
+					if (j == path.len - 1)
 						path = list()
 						path = path_new.Copy()
 						path.Add(last)
 						return
-					}
-				}
-			} else {
+
+
+			else
 				path_new.Add(current_turf)
-			}
-		}
-	}
 
 	path = list()
 	path = path_new.Copy()
 	path.Add(last)
 
-	if (!path || length(path) == 0) {
-		src.human = null
-		src.currently_healing = FALSE
+	if (!path || length(path) == 0)
+		human = null
+		currently_healing = FALSE
 		return
-	}
-
-	// Set the path
-	src.path = path
 
 	// Start moving
 	state = STATE_CPRBOT_MOVING
@@ -318,23 +311,23 @@
 	return
 
 /obj/structure/machinery/bot/cprbot/proc/can_still_see_patient()
-	if (human == null)
+	if (isnull(human))
 		return FALSE
 
 	var/mob/living/carbon/human/patient = human.resolve()
-	if (patient == null)
+	if (isnull(patient))
 		return FALSE
 
 	return patient in view(search_radius, src)
 
 /obj/structure/machinery/bot/cprbot/proc/patient_in_range(mob/living/carbon/human/patient = null)
-	if (human == null)
+	if (isnull(human))
 		return FALSE
 
-	if (patient == null)
+	if (isnull(patient))
 		patient = human.resolve()
 
-	if (patient == null)
+	if (isnull(patient))
 		return FALSE
 
 	return get_dist(src, patient) == 0
@@ -347,20 +340,19 @@
 		return
 
 	// It might not exist anymore or something
-	if (patient == null)
+	if (isnull(patient))
 		go_idle()
 		return
-
 	if (is_no_longer_valid(patient))
 		go_idle()
 		return
 
-	if (length(src.path))
+	if (length(path))
 		var/turf/next = path[1]
 		if(loc == next)
 			path -= next
 
-			if (length(src.path))
+			if (length(path))
 				walk_to(src, path[1], 0, move_to_delay)
 			else
 				walk_to(src, 0)
@@ -429,16 +421,16 @@
 	perform_cpr(target)
 
 /obj/structure/machinery/bot/cprbot/proc/self_destruct(mob/living/carbon/human/user = null)
-	var/obj/item/cprbot_item = new /obj/item/cprbot_item(src.loc)
+	var/obj/item/cprbot_item = new /obj/item/cprbot_item(loc)
 
 	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
 
 	if (user)
 		if (!user.put_in_active_hand(cprbot_item))
 			if (!user.put_in_inactive_hand(cprbot_item))
-				cprbot_item.forceMove(src.loc)
+				cprbot_item.forceMove(loc)
 	else
-		cprbot_item.forceMove(src.loc)
+		cprbot_item.forceMove(loc)
 
 	qdel(src)
 
@@ -467,11 +459,11 @@
 			icon_state = "cprbot_active"
 
 /obj/structure/machinery/bot/cprbot/explode()
-	src.on = FALSE
-	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+	on = FALSE
+	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
-
-	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
+	on = FALSE
+	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 
 	new /obj/item/cprbot_broken(Tsec)
 
@@ -492,18 +484,18 @@
 	START_PROCESSING(SSobj, src)
 	fast_processing = FALSE
 
-/obj/structure/machinery/bot/medbot/Collide(atom/A) //Leave no door unopened!
-	if ((istype(A, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
-		var/obj/structure/machinery/door/D = A
-		if (!istype(D, /obj/structure/machinery/door/firedoor) && D.check_access(src.botcard) && !istype(D,/obj/structure/machinery/door/poddoor))
-			D.open()
-			src.frustration = 0
-	else if ((istype(A, /mob/living/)) && (!src.anchored))
-		src.forceMove(A.loc)
-		src.frustration = 0
-	return
-
-#undef STATE_CPRBOT_IDLE
+/obj/structure/machinery/bot/medbot/Collide(atom/collided_atom) //Leave no door unopened!
+	if ((istype(collided_atom, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
+		var/obj/structure/machinery/door/collided_door = collided_atom
+		if (!istype(collided_door, /obj/structure/machinery/door/firedoor) && collided_door.check_access(src.botcard) && !istype(collided_door,/obj/structure/machinery/door/poddoor))
+			collided_door.open()
+			frustration = 0
+	else if ((istype(collided_atom, /mob/living/)) && (!src.anchored))
+		forceMove(collided_atom.loc)
+		frustration = 0
+	else if ((istype(collided_atom, /mob/living/)) && (!src.anchored))
+		forceMove(collided_atom.loc)
+		frustration = 0
 #undef STATE_CPRBOT_MOVING
 #undef STATE_CPRBOT_CPR
 #undef STATE_CPRBOT_FOLLOWING_OWNER

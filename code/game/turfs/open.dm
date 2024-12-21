@@ -791,7 +791,7 @@
 		if(!ismob(AM))
 			return
 		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
+		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
 		var/datum/launch_metadata/LM = new()
 		LM.target = target_turf
 		LM.range = get_dist(AM.loc, target_turf)

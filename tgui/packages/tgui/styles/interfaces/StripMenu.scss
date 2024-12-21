@@ -20,6 +20,7 @@ $background-color: rgba(0, 0, 0, 0.33) !default;
   height: 100%;
   width: 100%;
   -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: pixelated;
   vertical-align: middle;
 }
 

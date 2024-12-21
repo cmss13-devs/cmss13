@@ -34,22 +34,22 @@
 
 	switch(screen)
 		if(0)
-			dat += "<A href='?src=\ref[src];open_inbox=1'><font size=4>Inbox</font></A><HR>"
+			dat += "<A href='byond://?src=\ref[src];open_inbox=1'><font size=4>Inbox</font></A><HR>"
 		if(1)
-			dat += "<font size=4>Inbox</font> | <A href='?src=\ref[src];close_inbox=1'>Close</A><HR>"
+			dat += "<font size=4>Inbox</font> | <A href='byond://?src=\ref[src];close_inbox=1'>Close</A><HR>"
 			if(selected_mail)
 				var/datum/fluff_email/E = email_list[selected_mail]
 				dat += "<b>SUBJECT: [E.title]</b><HR>"
 				dat += "<b>FROM:</b> NAME EXPUNGED<BR>"
 				dat += "<b>TO:</b> NAME EXPUNGED<BR><BR>"
 				dat += "[E.entry_text]<HR>"
-				dat += "<A href='?src=\ref[src];back=1'>Back</A>"
+				dat += "<A href='byond://?src=\ref[src];back=1'>Back</A>"
 			else
 				var/i = 0
 				for(var/mail in email_list)
 					i++
 					var/datum/fluff_email/FE = mail
-					dat += "<A href='?src=\ref[src];selectmail=[i]'>[FE.title]</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];selectmail=[i]'>[FE.title]</A><BR>"
 
 	show_browser(user, dat, "Personal Computer", "email", "size=600x520")
 

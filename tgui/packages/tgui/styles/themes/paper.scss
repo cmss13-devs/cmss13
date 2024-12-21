@@ -102,6 +102,12 @@ $font-size: 24px;
     color: #fff;
     color: inherit;
 
+    &::placeholder {
+      font-style: italic;
+      color: #777;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
     &:-ms-input-placeholder {
       font-style: italic;
       color: #777;

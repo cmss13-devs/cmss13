@@ -27,7 +27,7 @@
 	var/dat
 	dat += "<B>Prisoner Implant Manager System</B><BR>"
 	if(screen == 0)
-		dat += "<HR><A href='?src=\ref[src];lock=1'>Unlock Console</A>"
+		dat += "<HR><A href='byond://?src=\ref[src];lock=1'>Unlock Console</A>"
 	else if(screen == 1)
 		dat += "<HR>Chemical Implants<BR>"
 		var/turf/Tr = null
@@ -37,9 +37,9 @@
 			if((Tr) && (Tr.z != src.z)) continue//Out of range
 			if(!C.implanted) continue
 			dat += "[C.imp_in.name]|Remaining Units: [C.reagents.total_volume]|Inject: "
-			dat += "<A href='?src=\ref[src];inject1=\ref[C]'>(<font color=red>(1)</font>)</A>"
-			dat += "<A href='?src=\ref[src];inject5=\ref[C]'>(<font color=red>(5)</font>)</A>"
-			dat += "<A href='?src=\ref[src];inject10=\ref[C]'>(<font color=red>(10)</font>)</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];inject1=\ref[C]'>(<font color=red>(1)</font>)</A>"
+			dat += "<A href='byond://?src=\ref[src];inject5=\ref[C]'>(<font color=red>(5)</font>)</A>"
+			dat += "<A href='byond://?src=\ref[src];inject10=\ref[C]'>(<font color=red>(10)</font>)</A><BR>"
 			dat += "********************************<BR>"
 		dat += "<HR>Tracking Implants<BR>"
 		for(var/i in GLOB.tracking_implant_list)
@@ -53,9 +53,9 @@
 				var/turf/mob_loc = get_turf(M)
 				loc_display = mob_loc.loc
 			dat += "ID: [T.id]|Location: [loc_display]<BR>"
-			dat += "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];warn=\ref[T]'>(<font color=red><i>Message Holder</i></font>)</A> |<BR>"
+			dat += "<A href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];warn=\ref[T]'>(<font color=red><i>Message Holder</i></font>)</A> |<BR>"
 			dat += "********************************<BR>"
-		dat += "<HR><A href='?src=\ref[src];lock=1'>Lock Console</A>"
+		dat += "<HR><A href='byond://?src=\ref[src];lock=1'>Lock Console</A>"
 
 	show_browser(user, dat, name, "computer")
 	onclose(user, "computer")

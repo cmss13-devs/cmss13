@@ -23,7 +23,7 @@
 				data += "\[[M.b] [M.e] 0\]<br>"
 				data += "\[[M.c] [M.f] 1\]"
 			else
-				data += "<a href='?_src_=matrices;select_matrix=[name]'>[name]</a>"
+				data += "<a href='byond://?_src_=matrices;select_matrix=[name]'>[name]</a>"
 			data += "<br>"
 	else
 		data += "<p>No matrices have been made!</p>"
@@ -31,19 +31,19 @@
 
 	data += {"
 		<h2>Matrix operations</h2>
-		<a href='?_src_=matrices;operation=add'>Add</a>
-		<a href='?_src_=matrices;operation=subtract'>Subtract</a>
-		<a href='?_src_=matrices;operation=multiply'>Multiply</a>
-		<a href='?_src_=matrices;operation=inverse'>Invert</a>
+		<a href='byond://?_src_=matrices;operation=add'>Add</a>
+		<a href='byond://?_src_=matrices;operation=subtract'>Subtract</a>
+		<a href='byond://?_src_=matrices;operation=multiply'>Multiply</a>
+		<a href='byond://?_src_=matrices;operation=inverse'>Invert</a>
 		<br><hr>
-		<a href='?_src_=matrices;operation=translate'>Translate</a>
-		<a href='?_src_=matrices;operation=scale'>Scale</a>
-		<a href='?_src_=matrices;operation=rotate'>Rotate</a>
+		<a href='byond://?_src_=matrices;operation=translate'>Translate</a>
+		<a href='byond://?_src_=matrices;operation=scale'>Scale</a>
+		<a href='byond://?_src_=matrices;operation=rotate'>Rotate</a>
 		<br><hr>
-		<a href='?_src_=matrices;operation=new'>New matrix</a>
-		<a href='?_src_=matrices;operation=copy'>Copy selected matrix</a>
-		<a href='?_src_=matrices;operation=chname'>Change matrix name</a>
-		<a href='?_src_=matrices;operation=delete'>Delete selected matrix</a>
+		<a href='byond://?_src_=matrices;operation=new'>New matrix</a>
+		<a href='byond://?_src_=matrices;operation=copy'>Copy selected matrix</a>
+		<a href='byond://?_src_=matrices;operation=chname'>Change matrix name</a>
+		<a href='byond://?_src_=matrices;operation=delete'>Delete selected matrix</a>
 	"}
 
 	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", "size=600x450")

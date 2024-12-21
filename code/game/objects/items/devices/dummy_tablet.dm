@@ -76,16 +76,16 @@
 	user.set_interaction(src)
 	var/dat = "<head><title>Professor DUMMY Control Tablet</title></head><body>"
 
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=brute_damage_limb'>Brute Damage (Limb)</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=brute_damage_organ'>Brute Damage (Organ)</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=burn_damage'>Burn Damage</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toxin'>Inject Toxins</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=bones'>Break Bones</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=blood_loss'>Blood Loss</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=bleeding'>Internal Bleeding</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=shrapnel'>Shrapnel</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=delimb'>Delimb</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=reset'>Reset</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=brute_damage_limb'>Brute Damage (Limb)</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=brute_damage_organ'>Brute Damage (Organ)</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=burn_damage'>Burn Damage</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=toxin'>Inject Toxins</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=bones'>Break Bones</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=blood_loss'>Blood Loss</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=bleeding'>Internal Bleeding</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=shrapnel'>Shrapnel</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=delimb'>Delimb</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=reset'>Reset</A> \]"
 	dat += "<BR><hr>"
 
 	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", window_options="size=400x500")

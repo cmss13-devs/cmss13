@@ -27,6 +27,16 @@
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
 		)
 
+/obj/item/prop/helmetgarb/netting/desert
+	name = "desert combat netting"
+	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
+	icon_state = "netting_desert"
+
+/obj/item/prop/helmetgarb/netting/jungle
+	name = "jungle combat netting"
+	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
+	icon_state = "netting_jungle"
+
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"
 	desc = "Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times."
@@ -76,6 +86,16 @@
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
 	)
+
+/obj/item/prop/helmetgarb/raincover/jungle
+	name = "jungle raincover"
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
+	icon_state = "raincover_jungle"
+
+/obj/item/prop/helmetgarb/raincover/urban
+	name = "urban raincover"
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
+	icon_state = "raincover_urban"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"

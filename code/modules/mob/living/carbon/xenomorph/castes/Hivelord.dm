@@ -99,7 +99,7 @@
 	. = ..()
 	plasma_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
-/mob/living/carbon/xenomorph/hivelord/proc/update_eggsac_overlays()
+/mob/living/carbon/xenomorph/hivelord/proc/update_plasma_overlays()
 	if(!plasma_overlays_icon)
 		return
 
@@ -112,11 +112,11 @@
 	if(stat != DEAD)
 		if(body_position == LYING_DOWN)
 			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-				plasma_overlays_icon.overlays += icon(icon, "armor Sleeping")
+				plasma_overlays_icon.overlays += icon(icon, "plasma Sleeping")
 			else
-				plasma_overlays_icon.overlays += icon(icon, "armor Knocked Down")
+				plasma_overlays_icon.overlays += icon(icon, "plasma Knocked Down")
 		else
-			plasma_overlays_icon.overlays += icon(icon, "armor")
+			plasma_overlays_icon.overlays += icon(icon, "plasma")
 
 	overlays += plasma_overlays_icon
 
@@ -156,3 +156,7 @@
 	toggle_resin_walker()
 	to_chat(bound_xeno, SPAN_WARNING("You feel dizzy as the world slows down."))
 	bound_xeno.recalculate_move_delay = TRUE
+
+/datum/behavior_delegate/hivelord_base/on_update_icons()
+	var/mob/living/carbon/xenomorph/hivelord/bound_hivelord = bound_xeno
+	bound_hivelord.update_plasma_overlays()

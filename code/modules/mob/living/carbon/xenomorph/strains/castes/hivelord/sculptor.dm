@@ -1,7 +1,7 @@
 /datum/xeno_strain/sculptor
 	name = HIVELORD_SCULPTOR
-	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, sacrifice your ability to plant weed nodes outside of weeds, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions including weed nodes up to a distance of twelve paces!"
-	flavor_description = "We let the resin guide us. It whispers, so listen closely."
+	description = "You loose weight, become more frail. Your resin and acid become less thick but you will be able to use plasma to create gelatin and use plasma to enhance your psysical capabilities."
+	flavor_description = "With the mastery of plasma, you will become the guardian of the hive."
 	icon_state_prefix = "Sculptor"
 
 	actions_to_remove = list(
@@ -42,16 +42,17 @@
 	macro_path = /datum/action/xeno_action/verb/crystal_plasma
 	ability_primacy = XENO_PRIMARY_ACTION_5
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = 100
+	plasma_cost = 300
 	xeno_cooldown = 30 SECONDS
 
 	// Config
 	var/duration = 10 SECONDS
-	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
-	var/armor_buff_amount = 5 // hopefully-minor buff so they can close the distance
+	var/armor_buff_amount = 30
+	var/explosive_armor_buff_amount = 50
+	var/attack_speed_buff_amount = 2
 
 /datum/action/xeno_action/onclick/crystallized_plasma/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/hivelord/zenomorf = owner
 
 	if (!action_cooldown_check())
 		return
@@ -62,13 +63,15 @@
 	if (!check_and_use_plasma_owner())
 		return
 
+	zenomorf.armor_active = TRUE
+	zenomorf.update_plasma_overlays()
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
 	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
 	zenomorf.create_custom_empower(icolor = "#b31ceb", ialpha = 200, small_xeno = TRUE)
-	zenomorf.balloon_alert(zenomorf, "our next spit will be stronger", text_color = "#93ec78")
-	zenomorf.speed_modifier -= speed_buff_amount
-	zenomorf.armor_modifier += armor_buff_amount
-	zenomorf.recalculate_speed()
+	zenomorf.balloon_alert(zenomorf, "secreting armor", text_color = "#d378ec")
+	zenomorf.attack_speed_modifier -= attack_speed_buff_amount
+	zenomorf.armor_deflection_buff += armor_buff_amount
+	zenomorf.armor_explosive_buff += explosive_armor_buff_amount
 	zenomorf.recalculate_armor()
 
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
@@ -78,13 +81,15 @@
 
 
 /datum/action/xeno_action/onclick/crystallized_plasma/proc/remove_effects()
-	var/mob/living/carbon/xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/hivelord/zenomorf = owner
 
 	if (!istype(zenomorf))
 		return
 
-	zenomorf.speed_modifier += speed_buff_amount
-	zenomorf.armor_modifier -= armor_buff_amount
-	zenomorf.recalculate_speed()
+	zenomorf.armor_active = FALSE
+	zenomorf.update_plasma_overlays()
+	zenomorf.attack_speed_modifier += attack_speed_buff_amount
+	zenomorf.armor_deflection_buff -= armor_buff_amount
+	zenomorf.armor_explosive_buff -= explosive_armor_buff_amount
 	zenomorf.recalculate_armor()
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We cannot sustain the plasma!"))

@@ -1172,6 +1172,7 @@
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	unoviable_timer = FALSE
+	ceiling_muffle = FALSE
 
 /area/lv759/indoors/wy_research_complex/medical_annex
 	name = "Weyland-Yutani - Advanced Bio-Genomic Research Complex - Medical Annex Building"

@@ -197,6 +197,18 @@
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "engPlatform_corners"
 
+/obj/effect/hybrisa/decal/hull_angled
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "hull_angled"
+
+/obj/effect/hybrisa/decal/hull_angled2
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "hull_angled2"
+
+/obj/effect/hybrisa/decal/plating_angled
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "plating_angled"
+
 /obj/effect/hybrisa/decal/egg_base
 	name = "strange goop"
 	desc = null

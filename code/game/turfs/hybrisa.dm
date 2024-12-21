@@ -997,8 +997,17 @@
 /turf/open/floor/hybrisa/engineership/engineer_floor13/southwest
 	dir = SOUTHWEST
 
+/turf/open/floor/hybrisa/engineership/engineer_floor13/north
+	dir = NORTH
+
 /turf/open/floor/hybrisa/engineership/engineer_floor13/east
 	dir = EAST
+
+/turf/open/floor/hybrisa/engineership/engineer_floor13/south
+	dir = SOUTH
+
+/turf/open/floor/hybrisa/engineership/engineer_floor13/west
+	dir = WEST
 
 /turf/open/floor/hybrisa/engineership/engineer_floor13/northeast
 	dir = NORTHEAST

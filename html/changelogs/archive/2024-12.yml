@@ -354,3 +354,12 @@
   - bugfix: Synths and people with robotics limbs can now get de-limbed.
   ihatethisengine:
   - rscadd: Overwatch can hear speech and see emotes.
+2024-12-21:
+  Drathek:
+  - bugfix: Suppressed a div by 0 error when autofit viewport tries to fit the window
+      while minimized
+  - balance: Hunting ground deaths no longer counts against larva queue
+  - bugfix: Fixed a runtime when generating SEA appearance for an imaginary friend
+  Venuska1117, Drathek:
+  - balance: Early game Queen Building Buff, now allows queen to upgrade structures
+      to "Thicker" version.

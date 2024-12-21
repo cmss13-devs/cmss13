@@ -197,11 +197,10 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "aaR" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/clock{
-	pixel_y = 9
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
 	},
-/turf/open/floor/wood,
+/turf/closed/wall,
 /area/desert_dam/building/dorms/hallway_westwing)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -239,11 +238,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "aaZ" = (
-/obj/structure/surface/table/reinforced,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clock,
-/turf/open/floor/vault2/northeast,
-/area/desert_dam/building/security/prison)
+/obj/structure/surface/table/woodentable,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -277,12 +277,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abg" = (
-/obj/structure/surface/table,
-/obj/item/clock{
-	pixel_y = 9
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
 	},
-/turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/virology_wing)
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -329,18 +328,24 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
 "abq" = (
-/obj/structure/surface/table,
-/obj/item/clock{
-	pixel_y = 11
-	},
-/turf/open/floor/dark,
-/area/desert_dam/building/security/observation)
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clock,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/security/prison)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
 "abs" = (
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
+"abt" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/virology_wing)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -375,6 +380,19 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/river/riverside_east)
+"abB" = (
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 11
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/security/observation)
+"abC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -55127,7 +55145,7 @@ bht
 bht
 bht
 bht
-afc
+abC
 afc
 dTs
 dTs
@@ -55734,7 +55752,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+abg
 cDY
 cDY
 cDY
@@ -56831,7 +56849,7 @@ bqn
 bom
 bsb
 aUS
-abq
+abB
 bml
 ifB
 bml
@@ -57315,7 +57333,7 @@ bNE
 bSn
 bTo
 bSz
-aaZ
+abq
 bYT
 bTn
 bYl
@@ -91945,7 +91963,7 @@ cGB
 cHO
 cIO
 cJJ
-abg
+abt
 cLp
 cHN
 flq
@@ -92944,7 +92962,7 @@ dBr
 dZS
 dFf
 dFf
-aaR
+aaZ
 eaz
 dBr
 dGC
@@ -94584,7 +94602,7 @@ dBr
 dBr
 dBr
 dBr
-dBr
+aaR
 eaQ
 dZn
 dHE

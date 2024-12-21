@@ -1,4 +1,56 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop1/kutjevo)
+"aab" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_South)
+"aac" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/clothing/glasses/thermal/syndi/kutjevo{
+	pixel_y = -2
+	},
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/colony_South/power2)
+"aad" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"aae" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clock,
+/turf/open/floor/kutjevo/tan/alt_inner_edge/north,
+/area/kutjevo/interior/complex/Northwest_Flight_Control)
+"aaf" = (
+/obj/structure/surface/table/reinforced/prison{
+	explo_proof = 1
+	},
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	explo_proof = 1;
+	pixel_y = 7
+	},
+/obj/item/clock{
+	pixel_x = -21;
+	pixel_y = 17
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/med/pano)
+"aag" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/obj/item/clothing/glasses/thermal/syndi/kutjevo,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/operating)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -4789,13 +4841,6 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
-"hnI" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 1000
-	},
-/obj/item/clothing/glasses/thermal/syndi/kutjevo,
-/turf/open/floor/kutjevo/colors/cyan,
-/area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
 /obj/item/ammo_magazine/rifle/mar40/extended,
 /turf/open/floor/kutjevo/colors/orange,
@@ -10340,11 +10385,6 @@
 /obj/structure/platform_decoration/stone/kutjevo,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
-"pLN" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clock,
-/turf/open/floor/kutjevo/tan/alt_inner_edge/north,
-/area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pLS" = (
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/colors/red,
@@ -11526,14 +11566,6 @@
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
-"rRC" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi/kutjevo{
-	pixel_y = -2
-	},
-/turf/open/floor/kutjevo/multi_tiles/east,
-/area/kutjevo/interior/colony_South/power2)
 "rSg" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/kutjevo/colors/green,
@@ -12122,20 +12154,6 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
-"sLG" = (
-/obj/structure/surface/table/reinforced/prison{
-	explo_proof = 1
-	},
-/obj/structure/machinery/computer/cameras/wooden_tv{
-	explo_proof = 1;
-	pixel_y = 7
-	},
-/obj/item/clock{
-	pixel_x = -21;
-	pixel_y = 17
-	},
-/turf/open/floor/kutjevo/colors/red,
-/area/kutjevo/interior/complex/med/pano)
 "sMg" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
@@ -16074,7 +16092,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+aad
 dxF
 dxF
 dxF
@@ -18459,7 +18477,7 @@ lAI
 lAI
 lAI
 lAI
-lAI
+aaa
 lAI
 lAI
 lAI
@@ -21888,7 +21906,7 @@ dmy
 jGF
 bEt
 hoK
-pLN
+aae
 fYE
 nZK
 jnr
@@ -31725,7 +31743,7 @@ dxF
 dxF
 mxB
 kkH
-hnI
+aag
 kls
 fSm
 uEk
@@ -31739,7 +31757,7 @@ acn
 pue
 hzq
 pSK
-sLG
+aaf
 sJj
 lcS
 pSK
@@ -39292,7 +39310,7 @@ rfE
 rdm
 rdm
 rsM
-rRC
+aac
 mLw
 mLw
 mLw
@@ -43495,7 +43513,7 @@ bpj
 bpj
 bpj
 bpj
-bpj
+aab
 bpj
 bpj
 bpj

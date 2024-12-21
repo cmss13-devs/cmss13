@@ -71,9 +71,9 @@
 	..()
 	if(stat & NOPOWER)
 		dump_everything()
-		isUV = 0
-	update_icon()
-
+		if(isUV)
+			isUV = FALSE
+			update_icon()
 
 /obj/structure/machinery/suit_storage_unit/ex_act(severity)
 	switch(severity)

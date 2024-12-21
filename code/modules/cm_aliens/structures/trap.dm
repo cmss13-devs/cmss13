@@ -32,14 +32,11 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-/obj/effect/alien/resin/trap/Initialize()
-	. = ..()
-
-	var/obj/effect/alien/weeds/node/WD = locate() in loc
-	if(WD)
-		WD.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
-		WD.overlay_node = FALSE
-		WD.overlays.Cut()
+	var/obj/effect/alien/weeds/node/weed = locate() in loc
+	if(weed)
+		weed.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
+		weed.overlay_node = FALSE
+		weed.overlays.Cut()
 
 /obj/effect/alien/resin/trap/get_examine_text(mob/user)
 	if(!isxeno(user))

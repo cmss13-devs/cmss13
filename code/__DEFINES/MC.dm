@@ -118,7 +118,7 @@
 	NEW_SS_GLOBAL(SS##X);\
 	PreInit();\
 }\
-/datum/controller/subsystem/processing/##X/fire() {..() /*just so it shows up on the profiler*/} \
+/datum/controller/subsystem/processing/##X/fire() {CAN_BE_REDEFINED(TRUE); ..() /*just so it shows up on the profiler*/} \
 /datum/controller/subsystem/processing/##X
 
 #define log_qdel(X) log_debug(X)

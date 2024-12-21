@@ -44,18 +44,21 @@
 					door_control.add_door(air, "port")
 				if("aft_door")
 					door_control.add_door(air, "aft")
+
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)
 	UnregisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT)
 	UnregisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
@@ -72,25 +75,6 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()
-
-/obj/docking_port/mobile/marine_dropship/Initialize(mapload)
-	. = ..()
-	door_control = new()
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
-			switch(air.id)
-				if("starboard_door")
-					door_control.add_door(air, "starboard")
-				if("port_door")
-					door_control.add_door(air, "port")
-				if("aft_door")
-					door_control.add_door(air, "aft")
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
-
-/obj/docking_port/mobile/marine_dropship/Destroy(force)
-	. = ..()
-	qdel(door_control)
-	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 /obj/docking_port/mobile/marine_dropship/proc/control_doors(action, direction, force, asynchronous = TRUE)
 	// its been locked down by the queen

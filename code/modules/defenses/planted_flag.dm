@@ -160,11 +160,10 @@
 	var/area_range = PLANTED_FLAG_RANGE-2
 	var/buff_intensity = PLANTED_FLAG_BUFF/2
 
-/obj/item/storage/backpack/equipped(mob/user, slot)
+/obj/item/storage/backpack/jima/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_BACK)
 		START_PROCESSING(SSobj, src)
-
 
 /obj/item/storage/backpack/jima/process()
 	if(!ismob(loc))

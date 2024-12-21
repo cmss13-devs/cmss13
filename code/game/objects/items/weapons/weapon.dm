@@ -4,7 +4,7 @@
 	hitsound = "swing_hit"
 	flags_atom = FPRINT|QUICK_DRAWABLE
 
-/obj/item/get_examine_text(mob/user)
+/obj/item/weapon/get_examine_text(mob/user)
 	. = ..()
 	var/strong_text = "a weak"
 	if(force >= MELEE_FORCE_TIER_1)

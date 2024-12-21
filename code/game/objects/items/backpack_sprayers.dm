@@ -81,8 +81,8 @@
 /obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
 	if(W == noz)
 		remove_noz()
-	else
-		. = ..()
+		return TRUE
+	return ..()
 
 /obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
@@ -107,13 +107,6 @@
 			usr.drop_inv_item_on_ground(src)
 			usr.put_in_l_hand(src)
 	add_fingerprint(usr)
-
-/obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
-	if(W == noz)
-		remove_noz()
-		return 1
-	else
-		return ..()
 
 /obj/item/reagent_container/glass/watertank/dropped(mob/user)
 	..()

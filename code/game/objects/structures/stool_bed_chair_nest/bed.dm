@@ -30,8 +30,7 @@
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/bed/update_icon()

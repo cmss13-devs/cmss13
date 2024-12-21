@@ -45,10 +45,6 @@
 	stat |= BROKEN
 	update_icon()
 
-/obj/structure/machinery/prop/almayer/computer/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/prop/almayer/computer/update_icon()
 	..()
 	icon_state = initial(icon_state)

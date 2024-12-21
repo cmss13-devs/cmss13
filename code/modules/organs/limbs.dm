@@ -105,16 +105,6 @@
 	if(owner)
 		forceMove(owner)
 
-
-
-/*
-/obj/limb/proc/get_icon(icon/race_icon, icon/deform_icon)
-	return icon('icons/mob/human.dmi',"blank")
-*/
-
-/obj/limb/process()
-		return 0
-
 /obj/limb/Destroy()
 	if(parent)
 		parent.children -= src
@@ -601,7 +591,6 @@ This function completely restores a damaged organ to perfect condition.
 	return FALSE
 
 /obj/limb/process()
-
 	// Process wounds, doing healing etc. Only do this every few ticks to save processing power
 	if(owner.life_tick % wound_update_accuracy == 0)
 		update_wounds()

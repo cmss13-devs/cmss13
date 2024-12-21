@@ -613,7 +613,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
 		ui.open()
 
-/obj/structure/machinery/computer/aa_console/ui_state(mob/user)
+/obj/structure/machinery/computer/orbital_cannon_console/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/computer/orbital_cannon_console/ui_status(mob/user, datum/ui_state/state)

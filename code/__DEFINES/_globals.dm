@@ -35,6 +35,7 @@
 #ifndef TESTING
 #define GLOBAL_PROTECT(X)\
 /datum/controller/global_vars/InitGlobal##X(){\
+	CAN_BE_REDEFINED(TRUE);\
 	..();\
 	gvars_datum_protected_varlist[#X] = TRUE;\
 }
@@ -44,6 +45,7 @@
 
 #define GLOBAL_SORTED(X)\
 /datum/controller/global_vars/InitGlobal##X(){\
+	CAN_BE_REDEFINED(TRUE);\
 	..();\
 	##X = sortAssoc(##X);\
 }

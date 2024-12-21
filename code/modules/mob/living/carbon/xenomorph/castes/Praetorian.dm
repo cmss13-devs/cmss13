@@ -65,6 +65,7 @@
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'

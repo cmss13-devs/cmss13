@@ -53,6 +53,7 @@
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
 		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

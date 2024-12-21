@@ -69,6 +69,7 @@
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/onclick/purchase_strain,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

@@ -498,6 +498,25 @@
 	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
 		return TRUE
 
+/datum/action/xeno_action/onclick/purchase_strain
+	name = "Purchase Strain"
+	action_icon_state = "xeno_strain"
+	action_type = XENO_ACTION_CLICK
+	listen_signal = COMSIG_KB_XENO_PURCHASE_STRAIN
+
+/datum/action/xeno_action/onclick/purchase_strain/action_activate()
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.purchase_strain()
+
+/datum/action/xeno_action/onclick/purchase_strain/can_use_action()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	// Perform check_state(TRUE) silently:
+	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.can_take_strain())
+		return TRUE
+
 /datum/action/xeno_action/onclick/tacmap
 	name = "View Tactical Map"
 	action_icon_state = "toggle_queen_zoom"

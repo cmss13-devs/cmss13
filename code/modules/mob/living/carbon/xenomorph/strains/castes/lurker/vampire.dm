@@ -9,6 +9,7 @@
 		/datum/action/xeno_action/onclick/lurker_assassinate,
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/pounce/rush,

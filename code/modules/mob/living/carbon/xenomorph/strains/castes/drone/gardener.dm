@@ -8,6 +8,7 @@
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/activable/transfer_plasma,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_weeds/gardener, // second macro

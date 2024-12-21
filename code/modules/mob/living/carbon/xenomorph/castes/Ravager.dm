@@ -60,6 +60,7 @@
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/scissor_cut,
 		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/ravager.dmi'

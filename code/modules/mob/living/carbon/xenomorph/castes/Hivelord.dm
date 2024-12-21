@@ -73,6 +73,7 @@
 		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/onclick/purchase_strain,
 		)
 
 	inherent_verbs = list(

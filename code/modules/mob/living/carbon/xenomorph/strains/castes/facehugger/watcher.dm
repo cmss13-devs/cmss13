@@ -5,6 +5,7 @@
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/xenohide,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/onclick/toggle_long_range/facehugger,

@@ -12,6 +12,7 @@
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/tail_stab/tail_seize,

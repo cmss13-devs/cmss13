@@ -10,6 +10,7 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro

@@ -9,6 +9,7 @@
 		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/onclick/acid_shroud,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/boiler_trap,

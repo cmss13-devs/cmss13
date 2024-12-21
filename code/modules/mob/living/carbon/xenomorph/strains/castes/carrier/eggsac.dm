@@ -9,6 +9,7 @@
 		/datum/action/xeno_action/onclick/place_trap,
 		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/active_toggle/generate_egg,

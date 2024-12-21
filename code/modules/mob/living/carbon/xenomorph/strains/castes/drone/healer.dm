@@ -10,6 +10,7 @@
 		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/place_construction, // so it doesn't use fifth macro
 		/datum/action/xeno_action/onclick/plant_weeds, // so it doesn't break order
+		/datum/action/xeno_action/onclick/purchase_strain,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_construction/not_primary, // so it doesn't use fifth macro

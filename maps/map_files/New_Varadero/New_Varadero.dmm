@@ -11763,6 +11763,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /obj/item/weapon/gun/lever_action/r4t,
 /obj/item/ammo_magazine/handful/lever_action,
+/obj/item/clock{
+	pixel_y = 17;
+	pixel_x = -2
+	},
 /turf/open/floor/carpet,
 /area/varadero/interior/research)
 "jvh" = (
@@ -18168,6 +18172,10 @@
 "oPr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = -15
+	},
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "oPQ" = (
@@ -28567,6 +28575,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/evidencebag,
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/clock{
+	pixel_y = 16
+	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
 "wOU" = (

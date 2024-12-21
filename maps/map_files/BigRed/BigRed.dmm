@@ -1949,6 +1949,8 @@
 /area/bigredv2/outside/marshal_office)
 "aiE" = (
 /obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiJ" = (
@@ -7375,6 +7377,9 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/item/clock{
+	pixel_y = 15
+	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "aJc" = (
@@ -8435,6 +8440,10 @@
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access_txt = "200"
+	},
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 25
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
@@ -25435,9 +25444,9 @@
 /area/bigredv2/outside/engineering)
 "knL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -6;
-	pixel_x = -8
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = -9;
+	pixel_y = -4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -26474,6 +26483,9 @@
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 16
+	},
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "lAN" = (
@@ -29264,6 +29276,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/clock{
+	pixel_y = 18
+	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "osm" = (
@@ -31776,14 +31791,6 @@
 /obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"qTw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 5;
-	pixel_x = 7
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "qTC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -32480,11 +32487,11 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/filtration_plant)
 "rEe" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 7;
-	pixel_x = 7
-	},
 /obj/structure/barricade/deployable,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "rGz" = (
@@ -34692,9 +34699,7 @@
 /area/bigredv2/outside/marshal_office)
 "tFL" = (
 /obj/structure/surface/table,
-/obj/item/clothing/head/beret/sec/warden{
-	pixel_y = 5
-	},
+/obj/item/clothing/head/CMB/beret,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "tFO" = (
@@ -34899,7 +34904,10 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "tOg" = (
-/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "tOh" = (
@@ -36262,9 +36270,9 @@
 /area/bigredv2/outside/marshal_office)
 "vmt" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -9;
-	pixel_x = -12
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light{
+	pixel_x = -7;
+	pixel_y = -7
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -37163,9 +37171,9 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "wfS" = (
-/obj/item/clothing/mask/gas{
-	pixel_x = 10;
-	pixel_y = -12
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 11;
+	pixel_y = -8
 	},
 /obj/structure/barricade/deployable{
 	dir = 8
@@ -37848,9 +37856,9 @@
 /area/bigredv2/outside/admin_building)
 "wRo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -8;
-	pixel_y = -5
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = 10;
+	pixel_y = -4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -57927,7 +57935,7 @@ ahp
 acp
 tFL
 wRo
-qTw
+afT
 gHC
 aer
 dHs

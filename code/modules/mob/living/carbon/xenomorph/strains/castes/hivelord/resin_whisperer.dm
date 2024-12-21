@@ -35,6 +35,23 @@
 				choose_resin_ability.update_button_icon(hivelord.selected_resin)
 				break // Don't need to keep looking
 
+/datum/xeno_strain/resin_whisperer/remove_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+	hivelord.viewsize = initial(hivelord.viewsize)
+	hivelord.plasmapool_modifier = initial(hivelord.plasmapool_modifier)
+	hivelord.extra_build_dist = initial(hivelord.extra_build_dist)
+	hivelord.can_stack_builds = initial(hivelord.can_stack_builds)
+	hivelord.recalculate_plasma()
+	REMOVE_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
+
+	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord)
+	for(var/datum/action/xeno_action/action in hivelord.actions)
+		// Also update the choose_resin icon since it resets
+		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
+			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
+			if(choose_resin_ability)
+				choose_resin_ability.update_button_icon(hivelord.selected_resin)
+				break // Don't need to keep looking
+
 /*
  * Coerce Resin ability
  */

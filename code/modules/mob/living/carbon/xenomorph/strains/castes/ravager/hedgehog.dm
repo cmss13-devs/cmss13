@@ -25,6 +25,14 @@
 
 	ravager.recalculate_everything()
 
+/datum/xeno_strain/hedgehog/remove_strain(mob/living/carbon/xenomorph/ravager/ravager)
+	ravager.plasma_max = initial(ravager.plasma_max)
+	ravager.small_explosives_stun = initial(ravager.small_explosives_stun)
+	ravager.explosivearmor_modifier = initial(ravager.explosivearmor_modifier)
+	ravager.damage_modifier = initial(ravager.damage_modifier)
+
+	ravager.recalculate_everything()
+
 /datum/behavior_delegate/ravager_hedgehog
 	name = "Hedgehog Ravager Behavior Delegate"
 

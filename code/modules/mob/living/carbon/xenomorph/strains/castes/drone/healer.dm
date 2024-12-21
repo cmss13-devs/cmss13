@@ -34,6 +34,18 @@
 
 	drone.recalculate_everything()
 
+/datum/xeno_strain/healer/remove_strain(mob/living/carbon/xenomorph/drone/drone)
+	drone.phero_modifier = initial(drone.phero_modifier)
+	drone.plasma_types = initial(drone.plasma_types)
+	drone.damage_modifier = initial(drone.damage_modifier)
+	drone.tackle_chance_modifier = initial(drone.tackle_chance_modifier)
+
+	drone.max_placeable = initial(drone.max_placeable)
+	drone.available_fruits = initial(drone.available_fruits)
+	drone.selected_fruit = initial(drone.selected_fruit)
+
+	drone.recalculate_everything()
+
 /*
 	Improved Plasma Transfer
 */

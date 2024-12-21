@@ -31,6 +31,12 @@
 
 	prae.recalculate_everything()
 
+/datum/xeno_strain/warden/remove_strain(mob/living/carbon/xenomorph/praetorian/prae)
+	prae.speed_modifier = initial(prae.speed_modifier)
+	prae.damage_modifier = initial(prae.damage_modifier)
+
+	prae.recalculate_everything()
+
 /datum/behavior_delegate/praetorian_warden
 	name = "Praetorian Warden Behavior Delegate"
 

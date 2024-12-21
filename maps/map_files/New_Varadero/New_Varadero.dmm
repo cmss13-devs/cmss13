@@ -6,66 +6,51 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
 "aab" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/cmcap,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/bunks)
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/evidencebag,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/clock{
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
 "aac" = (
-/obj/structure/pipes/vents/pump,
-/obj/structure/surface/table/woodentable,
-/obj/item/weapon/pole{
-	anchored = 1;
-	desc = "It only plays auto chess. Gross.";
-	icon = 'icons/obj/items/toy.dmi';
-	icon_state = "game_kit";
-	name = "Thick Art LTD Gamepad"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/implanter{
+	pixel_x = 10
 	},
-/obj/item/prop/helmetgarb/raincover{
-	pixel_x = -8;
-	pixel_y = 9
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_half_br"
 	},
-/obj/effect/decal/strata_decals/grime/grime4,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/weapon/gun/lever_action/r4t,
+/obj/item/ammo_magazine/handful/lever_action,
+/obj/item/clock{
+	pixel_y = 17;
+	pixel_x = -2
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/research)
 "aad" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = -15
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/bed{
-	can_buckle = 0
-	},
-/obj/structure/bed{
-	buckling_y = 13;
-	layer = 3.5;
-	pixel_y = 13
-	},
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "Made in Little Japan.";
-	health = 300;
-	icon = 'icons/obj/items/stacks.dmi';
-	icon_state = "sheet-lizard";
-	name = "exotic bedsheet";
-	pixel_x = -1
-	},
-/obj/item/ammo_magazine/rifle/m4ra,
-/turf/open/floor/wood,
-/area/varadero/interior/bunks)
+/turf/open/floor/shiva/redfull,
+/area/varadero/interior/medical)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/varadero/interior/disposals)
 "aaf" = (
-/obj/item/toy/inflatable_duck,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pool)
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
 "aag" = (
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
@@ -78,34 +63,11 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "aah" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
-	health = 300;
-	icon = 'icons/obj/items/stacks.dmi';
-	icon_state = "sheet-mythril";
-	name = "funky wall bacon"
-	},
-/turf/closed/wall/r_wall,
-/area/varadero/interior/security)
-"aai" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior/caves/north_research)
-"aaj" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
-"aak" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stool,
-/turf/open/floor/wood,
-/area/varadero/interior/beach_bar)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -2091,6 +2053,37 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"bAE" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "Made in Little Japan.";
+	health = 300;
+	icon = 'icons/obj/items/stacks.dmi';
+	icon_state = "sheet-lizard";
+	name = "exotic bedsheet";
+	pixel_x = -1
+	},
+/obj/item/ammo_magazine/rifle/m4ra,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "bBo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -9482,6 +9475,17 @@
 /obj/structure/machinery/bot/mulebot,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
+"hHR" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
+	health = 300;
+	icon = 'icons/obj/items/stacks.dmi';
+	icon_state = "sheet-mythril";
+	name = "funky wall bacon"
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/security)
 "hIo" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -11802,19 +11806,6 @@
 "juW" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms3)
-"jvc" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/implanter{
-	pixel_x = 10
-	},
-/obj/item/ashtray/bronze{
-	icon_state = "ashtray_half_br"
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/obj/item/weapon/gun/lever_action/r4t,
-/obj/item/ammo_magazine/handful/lever_action,
-/turf/open/floor/carpet,
-/area/varadero/interior/research)
 "jvh" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/records)
@@ -12244,6 +12235,23 @@
 /obj/structure/bed/chair/wheelchair,
 /turf/open/floor/shiva/wred/northeast,
 /area/varadero/interior/medical)
+"jNT" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/pole{
+	anchored = 1;
+	desc = "It only plays auto chess. Gross.";
+	icon = 'icons/obj/items/toy.dmi';
+	icon_state = "game_kit";
+	name = "Thick Art LTD Gamepad"
+	},
+/obj/item/prop/helmetgarb/raincover{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/wood,
+/area/varadero/interior/bunks)
 "jNW" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -14803,6 +14811,11 @@
 	},
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/technical_storage)
+"lXv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool,
+/turf/open/floor/wood,
+/area/varadero/interior/beach_bar)
 "lYi" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cup{
@@ -18193,11 +18206,6 @@
 	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
-"oPr" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/shiva/redfull,
-/area/varadero/interior/medical)
 "oPQ" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
@@ -25821,6 +25829,11 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
+"uLP" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/cmcap,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/bunks)
 "uLY" = (
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
@@ -28265,6 +28278,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
+"wyE" = (
+/obj/item/toy/inflatable_duck,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pool)
 "wzb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -28582,12 +28599,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
-"wOS" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/evidencebag,
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/security)
 "wOU" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/auto_turf/sand_white/layer1,
@@ -33758,7 +33769,7 @@ cbv
 yks
 vNG
 rbU
-jvc
+aac
 nCV
 ovC
 fay
@@ -35375,7 +35386,7 @@ qul
 qul
 qul
 qHc
-aai
+aaf
 xCn
 xCn
 oPQ
@@ -40663,7 +40674,7 @@ uUW
 maN
 wFX
 dLN
-oPr
+aad
 rLC
 aoo
 fyH
@@ -45591,7 +45602,7 @@ qio
 qio
 qfL
 wSL
-aaf
+wyE
 uXu
 hLY
 boV
@@ -46874,7 +46885,7 @@ ydx
 mSc
 wpX
 qQt
-aac
+jNT
 qeu
 thY
 mPI
@@ -47242,7 +47253,7 @@ iwo
 tMY
 jTY
 xxo
-aab
+uLP
 xNR
 nIF
 qeh
@@ -47599,7 +47610,7 @@ kZn
 qvQ
 bLy
 ydx
-aad
+bAE
 kIg
 nmC
 ben
@@ -48798,7 +48809,7 @@ aeJ
 gYh
 dlh
 ncn
-aak
+lXv
 sFc
 xlC
 faT
@@ -50695,7 +50706,7 @@ pJn
 krP
 qhZ
 gwG
-wOS
+aab
 wrv
 cNh
 eOu
@@ -50866,7 +50877,7 @@ gWu
 gWu
 htt
 hPj
-aah
+hHR
 idw
 vco
 pja
@@ -56446,7 +56457,7 @@ wlB
 wlB
 wlB
 wlB
-aaj
+aah
 wlB
 wlB
 wlB

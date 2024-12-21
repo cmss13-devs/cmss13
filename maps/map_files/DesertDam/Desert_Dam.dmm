@@ -11,11 +11,11 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "aac" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/closed/wall,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -198,10 +198,10 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "aaR" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
+	insert_tag = "hvhupplz1"
 	},
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_two)
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -238,12 +238,12 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "aaZ" = (
-/obj/structure/showcase{
-	icon_state = "bus";
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
+/obj/structure/surface/table/woodentable,
+/obj/item/clock{
+	pixel_y = 9
 	},
-/turf/open/floor/greengrid,
-/area/desert_dam/building/substation/west)
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -277,15 +277,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abg" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/helmet/marine/veteran/cmb{
-	pixel_y = 12;
-	pixel_x = -6
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
 	},
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/armory)
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "abh" = (
 /obj/item/trash/USCMtray,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -332,11 +328,11 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_labs)
 "abq" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/armory)
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clock,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/security/prison)
 "abr" = (
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -345,10 +341,11 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "abt" = (
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/head/CMB/beret,
-/turf/open/floor/prison/darkred2,
-/area/desert_dam/building/security/warden)
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/medical/virology_wing)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -384,19 +381,18 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "abB" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/turf/open/floor/prison/darkred2/west,
-/area/desert_dam/building/security/armory)
+/obj/structure/surface/table,
+/obj/item/clock{
+	pixel_y = 11
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/security/observation)
 "abC" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/mask/gas/swat,
-/obj/item/clothing/mask/gas/swat,
-/turf/open/floor/prison/darkred2/northwest,
-/area/desert_dam/building/security/armory)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -406,26 +402,11 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"abE" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
-"abG" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
@@ -462,13 +443,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"abP" = (
-/obj/structure/showcase{
-	icon = 'icons/obj/structures/machinery/research.dmi';
-	icon_state = "d_analyzer_la"
-	},
-/turf/open/floor/wood,
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "abQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -5481,6 +5455,13 @@
 "ayb" = (
 /obj/structure/closet/secure_closet/scientist,
 /obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/wood,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ayd" = (
+/obj/structure/showcase{
+	icon = 'icons/obj/structures/machinery/research.dmi';
+	icon_state = "d_analyzer_la"
+	},
 /turf/open/floor/wood,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aye" = (
@@ -19482,6 +19463,12 @@
 "bNQ" = (
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/warden)
+"bNS" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/mask/gas/swat,
+/turf/open/floor/prison/darkred2/northwest,
+/area/desert_dam/building/security/armory)
 "bNT" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -20234,6 +20221,14 @@
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/darkyellow2/north,
 /area/desert_dam/building/security/prison)
+"bRE" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/building/security/armory)
 "bRF" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
@@ -23954,6 +23949,13 @@
 	},
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
+"cku" = (
+/obj/structure/showcase{
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	},
+/turf/open/floor/greengrid,
+/area/desert_dam/building/substation/west)
 "ckv" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/substation/west)
@@ -25112,6 +25114,12 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_cargo)
+"cqm" = (
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/head/CMB/beret,
+/turf/open/floor/prison/darkred2,
+/area/desert_dam/building/security/warden)
 "cqn" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -29308,6 +29316,16 @@
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/telecomm/lz2_containers)
+"cJr" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/helmet/marine/veteran/cmb{
+	pixel_y = 12;
+	pixel_x = -6
+	},
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
 "cJs" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/flashbangs{
@@ -47035,6 +47053,15 @@
 "qLE" = (
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_one)
+"qLT" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
 "qMT" = (
 /obj/structure/stairs{
 	dir = 1
@@ -52878,7 +52905,7 @@ cgm
 cgm
 cgm
 cgm
-aaZ
+cku
 cml
 cpm
 cml
@@ -53112,7 +53139,7 @@ cgJ
 chN
 ciH
 cgm
-aaZ
+cku
 cml
 cml
 crj
@@ -53346,7 +53373,7 @@ cic
 cic
 ciI
 cgm
-aaZ
+cku
 cml
 cml
 cml
@@ -55118,7 +55145,7 @@ bht
 bht
 bht
 bht
-abG
+abC
 afc
 dTs
 dTs
@@ -55725,7 +55752,7 @@ cDY
 cDY
 cDY
 cDY
-aaR
+abg
 cDY
 cDY
 cDY
@@ -56822,7 +56849,7 @@ bqn
 bom
 bsb
 aUS
-bml
+abB
 bml
 ifB
 bml
@@ -57306,7 +57333,7 @@ bNE
 bSn
 bTo
 bSz
-bYT
+abq
 bYT
 bTn
 bYl
@@ -61751,7 +61778,7 @@ bNi
 bQH
 bTw
 bWB
-abt
+cqm
 bJU
 bBO
 bYs
@@ -62683,12 +62710,12 @@ bHu
 bvD
 bKR
 bNw
-abC
-abB
+bNS
+bRE
 bVJ
 bRF
 cyH
-abg
+cJr
 bNw
 bZJ
 bZJ
@@ -62922,7 +62949,7 @@ bRF
 bRF
 bRF
 cyH
-abq
+aac
 bNw
 bZL
 bZJ
@@ -88304,7 +88331,7 @@ aCr
 aqC
 aqC
 avG
-abP
+ayd
 ayj
 ayj
 ayj
@@ -91936,7 +91963,7 @@ cGB
 cHO
 cIO
 cJJ
-cJJ
+abt
 cLp
 cHN
 flq
@@ -92935,7 +92962,7 @@ dBr
 dZS
 dFf
 dFf
-eaz
+aaZ
 eaz
 dBr
 dGC
@@ -94575,7 +94602,7 @@ dBr
 dBr
 dBr
 dBr
-aac
+aaR
 eaQ
 dZn
 dHE
@@ -107541,7 +107568,7 @@ dTs
 dTs
 dTs
 gGC
-abE
+qLT
 dTs
 aBL
 aBL

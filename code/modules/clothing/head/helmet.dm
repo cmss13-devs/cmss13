@@ -346,6 +346,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/obj/item/device/helmet_visor/active_visor = null
 	///Designates a visor type that should start down when initialized
 	var/start_down_visor_type
+	///Refs of observing consoles
+	var/list/overwatch_consoles = list()
+
+/obj/item/clothing/head/helmet/marine/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
+
+/obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -986,8 +994,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
-	icon_state = "helmet"
-	item_state = "helmet"
+	icon_state = "officer"
+	item_state = "officer"
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 	specialty = "M10 pattern officer"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
@@ -1379,9 +1391,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 
 
-/obj/item/clothing/head/helmet/specrag/New()
+/obj/item/clothing/head/helmet/specrag/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/clothing/head/helmet/skullcap
 	name = "skullcap"
@@ -1403,11 +1415,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
 
-/obj/item/clothing/head/helmet/skullcap/New()
+/obj/item/clothing/head/helmet/skullcap/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
-/obj/item/clothing/head/helmet/specrag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/clothing/head/helmet/skullcap/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")

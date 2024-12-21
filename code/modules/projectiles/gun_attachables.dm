@@ -282,6 +282,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "bayonet"
 	item_state = "combat_knife"
 	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
@@ -3639,6 +3640,12 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "bipod_m60_a"
 
 	flags_attach_features = ATTACH_ACTIVATION
+
+/obj/item/attachable/bipod/pkp
+	name = "pkp bipod"
+	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing."
+	icon_state = "qjy72_bipod"
+	attach_icon = "qjy72_bipod"
 
 /obj/item/attachable/bipod/vulture
 	name = "heavy bipod"

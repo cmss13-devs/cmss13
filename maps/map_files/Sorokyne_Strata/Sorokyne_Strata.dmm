@@ -18,9 +18,18 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
 "aae" = (
-/obj/item/stool,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/interior/outside/engineering/parts_storage)
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_x = -14;
+	pixel_y = 16
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outside/checkpoints/north)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -163,17 +172,17 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
 "aaE" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "This jukebox only takes quarters and you seem to be out of them at the moment.";
-	icon = 'icons/obj/structures/props/furniture/misc.dmi';
-	icon_state = "jukebox";
-	name = "Rockin Robin 2300 Jukebox";
-	pixel_x = -5;
-	pixel_y = 16
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/stamp,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
 	},
-/turf/open/floor/strata/white_cyan1,
-/area/strata/ag/interior/mining_outpost/canteen)
+/obj/item/clock{
+	pixel_y = 15
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -185,6 +194,17 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aaH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clock{
+	pixel_y = 15
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/mining_outpost/flight_control)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -2535,14 +2555,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
-"ako" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/mining_outpost/flight_control)
 "akp" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/landmark/objective_landmark/close,
@@ -7406,15 +7418,6 @@
 /area/strata/ag/interior/outpost/admin)
 "aLU" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/strata/floor3,
-/area/strata/ag/interior/outpost/admin)
-"aLW" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin,
-/obj/item/tool/stamp,
-/obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /turf/open/floor/strata/floor3,
@@ -15191,6 +15194,18 @@
 	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
+"bQu" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "This jukebox only takes quarters and you seem to be out of them at the moment.";
+	icon = 'icons/obj/structures/props/furniture/misc.dmi';
+	icon_state = "jukebox";
+	name = "Rockin Robin 2300 Jukebox";
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/floor/strata/white_cyan1,
+/area/strata/ag/interior/mining_outpost/canteen)
 "bQv" = (
 /obj/item/stack/sandbags,
 /obj/structure/machinery/light{
@@ -18456,6 +18471,10 @@
 /obj/structure/barricade/deployable,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/security)
+"dyZ" = (
+/obj/item/stool,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/interior/outside/engineering/parts_storage)
 "dzo" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -19425,15 +19444,6 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/guestpass,
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outside/checkpoints/north)
-"eNF" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/fancy/cigar,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNL" = (
@@ -34511,7 +34521,7 @@ ftO
 vMr
 coO
 coO
-ako
+aaH
 coS
 doZ
 cqE
@@ -42088,7 +42098,7 @@ cbu
 aac
 aac
 mvm
-eNF
+aae
 iry
 cow
 beZ
@@ -42210,7 +42220,7 @@ ahy
 ahX
 bOs
 jOl
-aaE
+bQu
 bRY
 aky
 bRY
@@ -46852,7 +46862,7 @@ hYc
 hYc
 aac
 oeH
-aae
+dyZ
 odd
 tRC
 afv
@@ -55185,7 +55195,7 @@ aUV
 cik
 aJm
 aKG
-aLW
+aaE
 aNf
 aOo
 aPL

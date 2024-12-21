@@ -497,7 +497,7 @@
 	name = "\improper Vanilla Souto"
 	desc = "When most soft drinks say 'vanilla,' they really mean their classic flavor with a bit of vanilla added. NOT THE SOUTO CORPORATION, BABY! This bad boy is filled to the brim with 100% pure carbonated vanilla extract! It tastes terrible. Canned in Havana."
 	icon_state = "souto_vanilla"
-	item_state = "souto_canilla"
+	item_state = "souto_vanilla"
 
 /obj/item/reagent_container/food/drinks/cans/souto/vanilla/Initialize()
 	. = ..()

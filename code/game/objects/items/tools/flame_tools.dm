@@ -37,7 +37,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	var/wax = 800
 
-/obj/item/tool/candle/update_icon()
+/obj/item/tool/candle/update_icon(mob/user)
 	var/i
 	if(wax>150)
 		i = 1
@@ -46,6 +46,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else i = 3
 	icon_state = "candle[i][heat_source ? "_lit" : ""]"
 	item_state = "candle[i][heat_source ? "_lit" : ""]"
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 
 /obj/item/tool/candle/Destroy()
 	if(heat_source)
@@ -149,7 +151,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	set_light_on(toggle_on)
 
-/obj/item/tool/match/proc/light_match()
+/obj/item/tool/match/proc/light_match(mob/user)
 	if(heat_source || burnt)
 		return
 	heat_source = 1000
@@ -157,6 +159,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "burn"
 	icon_state = "[initial(icon_state)]_lit"
 	item_state = "[initial(item_state)]_lit"
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 	turn_light(toggle_on = TRUE)
 	START_PROCESSING(SSobj, src)
 	update_icon()
@@ -168,6 +172,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "[initial(item_state)]_burnt"
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 	turn_light(toggle_on = FALSE)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
@@ -804,6 +810,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_on = "lighter_[clr]_on"
 		icon_off = "lighter_[clr]"
 		icon_state = icon_off
+		item_state = icon_off
 		LAZYSET(item_state_slots, WEAR_AS_GARB, "lighter_[clr]")
 
 /obj/item/tool/lighter/attack_self(mob/living/user)

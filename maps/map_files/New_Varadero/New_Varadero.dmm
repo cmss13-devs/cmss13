@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
@@ -31949,7 +31955,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aaa
 hdh
 jQa
 jQa

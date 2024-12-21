@@ -18192,7 +18192,8 @@
 "rMR" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/green{
-	pixel_x = 3
+	pixel_x = 19;
+	pixel_y = 4
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
@@ -21283,6 +21284,10 @@
 "ybQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/pole/fancy_cane,
+/obj/item/clock{
+	pixel_x = -33;
+	pixel_y = 5
+	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ydp" = (

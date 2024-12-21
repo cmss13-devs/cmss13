@@ -10342,6 +10342,7 @@
 /area/kutjevo/interior/colony_central)
 "pLN" = (
 /obj/structure/surface/table/almayer,
+/obj/item/clock,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pLS" = (
@@ -12128,6 +12129,10 @@
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	explo_proof = 1;
 	pixel_y = 7
+	},
+/obj/item/clock{
+	pixel_x = -21;
+	pixel_y = 17
 	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med/pano)

@@ -2506,6 +2506,9 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
+/obj/item/clock{
+	pixel_y = 15
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/mining_outpost/flight_control)
 "akp" = (
@@ -7381,6 +7384,9 @@
 /obj/item/tool/stamp,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
@@ -19415,6 +19421,10 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_x = -14;
+	pixel_y = 16
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNL" = (

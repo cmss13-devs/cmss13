@@ -653,6 +653,10 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
+/obj/item/clock{
+	pixel_x = -15;
+	pixel_y = 13
+	},
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
 "cM" = (

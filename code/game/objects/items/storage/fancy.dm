@@ -474,12 +474,10 @@
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0, mob/living/carbon/human/user)
+/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
 	var/total_contents = length(src.contents) - itemremoved
 	src.icon_state = "vialbox[total_contents]"
 	src.item_state = "vialbox[total_contents]"
-	user.update_inv_l_hand()
-	user.update_inv_r_hand()
 	src.overlays.Cut()
 	if (!broken)
 		overlays += image(icon, src, "led[locked]")
@@ -492,6 +490,8 @@
 /obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	update_icon()
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 
 // Trading Card Pack
 

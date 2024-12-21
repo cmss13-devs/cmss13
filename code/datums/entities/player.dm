@@ -51,7 +51,7 @@
 	var/list/datum/entity/player_note/notes
 	var/list/datum/entity/player_job_ban/job_bans
 	var/list/datum/entity/player_time/playtimes
-	var/list/datum/entity/player_stat/stats
+	var/datum/player_entity/player_entity
 	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
 
@@ -408,7 +408,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/entity/player, migrate_jobbans))
 
 	DB_FILTER(/datum/entity/player_time, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_timestat)))
-	DB_FILTER(/datum/entity/player_stat, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_stats)))
 
 	if(!migrated_bans && !migrating_bans)
 		migrating_bans = TRUE
@@ -427,6 +426,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/whitelist in whitelists)
 			if(whitelist in GLOB.bitfields["whitelist_status"])
 				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
+
+	setup_statistics()
+
+/datum/entity/player/proc/setup_statistics()
+	if(!player_entity)
+		player_entity = setup_player_entity(ckey)
+		player_entity.player = src
+	player_entity.setup_entity()
 
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
@@ -453,11 +460,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
-
-/datum/entity/player/proc/on_read_stats(list/datum/entity/player_stat/_stat)
-	if(_stat)
-		for(var/datum/entity/player_stat/S as anything in _stat)
-			LAZYSET(stats, S.stat_id, S)
 
 /datum/entity/player/proc/load_byond_account_age()
 	var/list/http_request = world.Export("http://byond.com/members/[ckey]?format=text")
@@ -706,20 +708,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	jobbans_loaded = TRUE
 	migrated_jobbans = TRUE
 	save()
-
-/datum/entity/player/proc/adjust_stat(stat_id, stat_category, num, set_to_num = FALSE)
-	var/datum/entity/player_stat/stat = LAZYACCESS(stats, stat_id)
-	if(!stat)
-		stat = DB_ENTITY(/datum/entity/player_stat)
-		stat.player_id = id
-		stat.stat_id = stat_id
-		stat.stat_category = stat_category
-		LAZYSET(stats, stat_id, stat)
-	if(set_to_num)
-		stat.stat_number = num
-	else
-		stat.stat_number += num
-	stat.save()
 
 /datum/entity/player/proc/check_whitelist_status(flag_to_check)
 	if(whitelist_flags & flag_to_check)

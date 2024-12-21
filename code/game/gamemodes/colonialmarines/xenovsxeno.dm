@@ -3,10 +3,10 @@
 /datum/game_mode/xenovs
 	name = GAMEMODE_HIVE_WARS
 	config_tag = GAMEMODE_HIVE_WARS
-	required_players = 4 //Need at least 4 players
+	population_min = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
-	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
+	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE|MODE_NO_SHIP_MAP
 
 	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control, /obj/structure/machinery/defenses/sentry/premade)
 	var/list/hives = list()
@@ -76,9 +76,6 @@
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
-		spawn(0)
-			//Deleting Almayer, for performance!
-			SSitem_cleanup.delete_almayer()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -258,34 +255,25 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-/datum/game_mode/xenovs/declare_completion()
-	announce_ending()
-	var/musical_track
-	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
-
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-
-		GLOB.round_statistics.log_round_statistics()
-
-	declare_completion_announce_xenomorphs()
-	calculate_end_statistics()
-	declare_fun_facts()
-
-
-	return TRUE
-
 /datum/game_mode/xenovs/announce_ending()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
+
+/datum/game_mode/xenovs/declare_completion()
+	var/musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
+	var/end_icon = "draw"
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
+
+	. = ..()
+
+	calculate_end_statistics()
+	show_end_statistics(end_icon)
+
+	declare_completion_announce_xenomorphs()
+	declare_fun_facts()
 
 // for the toolbox
 /datum/game_mode/xenovs/end_round_message()

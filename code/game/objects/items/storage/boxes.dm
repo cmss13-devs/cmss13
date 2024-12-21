@@ -490,12 +490,14 @@
 	name = "matchbox"
 	desc = "A small box of 'Space-Proof' premium matches."
 	icon = 'icons/obj/items/smoking/matches.dmi'
-	icon_state = "matchbox"
-	item_state = "zippo"
-	item_state_slots = list(WEAR_AS_GARB = "matches")
 	item_icons = list(
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi'
 		)
+	icon_state = "matchbox"
+	item_state = "matchbox"
+	item_state_slots = list(WEAR_AS_GARB = "matches")
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
@@ -813,7 +815,12 @@
 	name = "\improper USCM MRE"
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon_state = "mealpack"
+	item_state = "mealpack"
 	icon = 'icons/obj/items/storage/mre.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 7

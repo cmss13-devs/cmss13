@@ -3,6 +3,7 @@
 	desc = "It has space for firearm(s). Sometimes magazines or other munitions as well."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "guncase"
+	item_state = "guncase"
 	w_class = SIZE_HUGE
 	max_w_class = SIZE_HUGE //shouldn't be a problem since we can only store the guns and ammo.
 	storage_slots = 1
@@ -313,6 +314,7 @@
 	name = "\improper M707 anti-materiel rifle case"
 	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
 	icon_state = "guncase_blue"
+	item_state = "guncase_blue"
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/boltaction/vulture,

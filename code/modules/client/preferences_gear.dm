@@ -300,6 +300,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Keffiyeh, black"
 	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black
 
+/datum/gear/mask/keffiyeh_black
+	display_name = "Keffiyeh, blue"
+	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/blue
+
 /datum/gear/mask/uscm
 	allowed_origins = USCM_ORIGINS
 

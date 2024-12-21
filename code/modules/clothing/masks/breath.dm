@@ -285,6 +285,11 @@
 	item_state = "keffiyeh_black"
 	original_state = "keffiyeh_black"
 
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/blue
+	icon_state = "keffiyeh_blue"
+	item_state = "keffiyeh_blue"
+	original_state = "keffiyeh_blue"
+
 /obj/item/clothing/mask/tornscarf/smock
 	name = "tactical smock"
 	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."

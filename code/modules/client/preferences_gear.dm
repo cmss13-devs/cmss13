@@ -300,7 +300,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Keffiyeh, black"
 	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black
 
-/datum/gear/mask/keffiyeh_black
+/datum/gear/mask/keffiyeh_blue
 	display_name = "Keffiyeh, blue"
 	path = /obj/item/clothing/mask/rebreather/scarf/keffiyeh/blue
 

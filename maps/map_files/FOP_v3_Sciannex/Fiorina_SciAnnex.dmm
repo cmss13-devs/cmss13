@@ -12,12 +12,13 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "aac" = (
-/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
 /obj/item/clock{
-	pixel_y = 9
+	pixel_y = 14
 	},
-/turf/open/floor/wood,
-/area/fiorina/station/security/wardens)
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/tumor/ice_lab)
 "aad" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison,
@@ -26,19 +27,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
-"aaf" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clock,
-/turf/open/floor/prison/darkredfull2,
-/area/fiorina/station/research_cells/west)
-"aag" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin,
-/obj/item/clock{
-	pixel_y = 14
-	},
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -8742,6 +8730,13 @@
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
+"gPs" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/security/wardens)
 "gPS" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
@@ -23884,6 +23879,11 @@
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
+"spR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clock,
+/turf/open/floor/prison/darkredfull2,
+/area/fiorina/station/research_cells/west)
 "sqx" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -55992,7 +55992,7 @@ azZ
 xLi
 xLi
 oZf
-aag
+aac
 knW
 fop
 xLi
@@ -60381,7 +60381,7 @@ uKX
 lkA
 dkn
 xQx
-aac
+gPs
 iMo
 rJO
 fYW
@@ -64277,7 +64277,7 @@ mvp
 mvp
 dOf
 lIG
-aaf
+spR
 kzR
 qBI
 mvl

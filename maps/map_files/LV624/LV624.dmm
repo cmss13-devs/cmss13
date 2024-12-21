@@ -14,26 +14,13 @@
 	},
 /area/space)
 "aad" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/device/flashlight/lamp/green{
-	pixel_x = 19;
-	pixel_y = 4
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"aae" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/weapon/pole/fancy_cane,
-/obj/item/clock{
-	pixel_x = -33;
-	pixel_y = 5
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"aaf" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
+"aae" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "aag" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
@@ -47,10 +34,6 @@
 "aaj" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/caves/north_central_caves)
-"aak" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
@@ -18214,6 +18197,14 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"rMR" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 19;
+	pixel_y = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "rNq" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -21298,6 +21289,15 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
+"ybQ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/weapon/pole/fancy_cane,
+/obj/item/clock{
+	pixel_x = -33;
+	pixel_y = 5
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "ydp" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
@@ -31406,7 +31406,7 @@ aDv
 aDv
 aDv
 aDv
-aak
+aae
 aDv
 aDv
 aOB
@@ -35972,7 +35972,7 @@ xgE
 oNJ
 cLD
 ocG
-aad
+rMR
 vIY
 qTu
 gnx
@@ -36200,7 +36200,7 @@ xgE
 xgE
 pRe
 cOz
-aae
+ybQ
 gnx
 bnz
 tWw
@@ -54440,7 +54440,7 @@ aGz
 aHM
 aGz
 eaJ
-aaf
+aad
 aHM
 aMq
 eaJ

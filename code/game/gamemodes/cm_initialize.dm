@@ -298,23 +298,14 @@ Additional game mode variables.
 	var/list/options = get_fax_responder_slots(responder_candidate)
 	if(!options || !options.len)
 		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
-		if(from_lobby)
-			var/mob/new_player/lobbied = responder_candidate
-			lobbied.new_player_panel()
 		return FALSE
 
 	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
 		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
-		if(from_lobby)
-			var/mob/new_player/lobbied = responder_candidate
-			lobbied.new_player_panel()
 		return FALSE
 
 	if(!transform_fax_responder(responder_candidate, choice))
-		if(from_lobby)
-			var/mob/new_player/lobbied = responder_candidate
-			lobbied.new_player_panel()
 		return FALSE
 
 	if(responder_candidate)
@@ -861,6 +852,8 @@ Additional game mode variables.
 		while(spawn_list_map[spawn_name])
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
+
+	original.sight = BLIND
 
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 	if(hive.living_xeno_queen)

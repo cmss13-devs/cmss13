@@ -40,7 +40,7 @@
 /// Creates a message packet for sending via output() specifically for opening tgsay using an embedded winget
 // This is {"type":"open","payload":{"channel":channel,"mapfocus":[[map.focus]]}}, but pre-encoded.
 #define TGUI_CREATE_OPEN_MESSAGE(channel) ( \
-	"%7b%22type%22%3a%22open%22%2c%22payload%22%3a%7B%22channel%22%3a%22[channel]%22%2c%22mapfocus%22%3a\[\[map.focus\]\]%7d%7d" \
+	"%7b%22type%22%3a%22open%22%2c%22payload%22%3a%7b%22channel%22%3a%22[channel]%22%2c%22mapfocus%22%3a\[\[map.focus\]\]%2c%22lobbyfocus%22%3a\[\[lobby_browser.focus\]\]%7d%7d" \
 )
 
 /*

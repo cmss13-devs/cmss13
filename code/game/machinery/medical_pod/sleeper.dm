@@ -423,4 +423,8 @@
 		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
 	return
 
+/obj/structure/machinery/sleep_console/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
+/obj/structure/machinery/medical_pod/sleeper/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

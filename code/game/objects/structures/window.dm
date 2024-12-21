@@ -673,6 +673,11 @@
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
 	opacity = TRUE
 
+/obj/structure/window/framed/colony/reinforced/yautja
+	name = "alien reinforced window"
+	icon_state = "pred_window0"
+	basestate = "pred_window"
+
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
@@ -684,6 +689,10 @@
 	health = 1000000 //Failsafe, shouldn't matter
 
 
+/obj/structure/window/framed/colony/reinforced/hull/yautja
+	name = "alien hull window"
+	icon_state = "pred_window0"
+	basestate = "pred_window"
 
 //Chigusa windows
 

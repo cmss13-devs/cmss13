@@ -485,15 +485,15 @@
 	fast_processing = FALSE
 
 /obj/structure/machinery/bot/medbot/Collide(atom/collided_atom) //Leave no door unopened!
-	if ((istype(collided_atom, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
+	if ((istype(collided_atom, /obj/structure/machinery/door)) && (!isnull(botcard)))
 		var/obj/structure/machinery/door/collided_door = collided_atom
-		if (!istype(collided_door, /obj/structure/machinery/door/firedoor) && collided_door.check_access(src.botcard) && !istype(collided_door,/obj/structure/machinery/door/poddoor))
+		if (!istype(collided_door, /obj/structure/machinery/door/firedoor) && collided_door.check_access(botcard) && !istype(collided_door,/obj/structure/machinery/door/poddoor))
 			collided_door.open()
 			frustration = 0
-	else if ((istype(collided_atom, /mob/living/)) && (!src.anchored))
+	else if ((istype(collided_atom, /mob/living/)) && (!anchored))
 		forceMove(collided_atom.loc)
 		frustration = 0
-	else if ((istype(collided_atom, /mob/living/)) && (!src.anchored))
+	else if ((istype(collided_atom, /mob/living/)) && (!anchored))
 		forceMove(collided_atom.loc)
 		frustration = 0
 #undef STATE_CPRBOT_MOVING

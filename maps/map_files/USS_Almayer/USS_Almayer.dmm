@@ -140,9 +140,21 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"aat" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
+"aav" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/lower/workshop)
+"aaw" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -8807,6 +8819,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
@@ -85532,7 +85545,7 @@ xyw
 xyw
 xyw
 xyw
-xyw
+aat
 xyw
 xyw
 xyw
@@ -118824,7 +118837,7 @@ uZF
 xoj
 xoj
 osI
-qXk
+aav
 fie
 pUj
 xoj
@@ -119941,7 +119954,7 @@ eky
 aDQ
 pyy
 eky
-eky
+aaw
 eky
 dLc
 aDQ

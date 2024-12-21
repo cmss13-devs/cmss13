@@ -142,9 +142,19 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	icon_state = "yellow"
 
+//Fax Responder areas
 /area/adminlevel/ert_station/fax_response_station
 	name = "Sector Comms Relay"
 	icon_state = "green"
+	unlimited_power = TRUE
+	flags_area = AREA_AVOID_BIOSCAN
+
+/area/adminlevel/ert_station/fax_response_station/exterior
+	name = "Sector Comms Relay"
+	icon_state = "red"
+	ambience_exterior = AMBIENCE_JUNGLE
+	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	base_lighting_alpha = 185
 
 //Simulation area
 /area/adminlevel/simulation

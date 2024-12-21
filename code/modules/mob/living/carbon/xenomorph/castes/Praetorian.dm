@@ -30,7 +30,7 @@
 		/datum/xeno_strain/dancer,
 		/datum/xeno_strain/oppressor,
 		/datum/xeno_strain/vanguard,
-		/datum/xeno_strain/warden,
+		/datum/xeno_strain/valkyrie,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 

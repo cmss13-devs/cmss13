@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Facehugger resin traps no longer refill themselves with dead huggers."

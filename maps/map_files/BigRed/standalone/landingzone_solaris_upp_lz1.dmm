@@ -879,9 +879,8 @@
 	dir = 4;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
 /turf/open/floor/darkish,
 /area/event/metal/dynamic/lit)
 "wA" = (
@@ -1464,9 +1463,8 @@
 	icon_state = "sandbag_0";
 	dir = 1
 	},
-/obj/structure/machinery/m56d_hmg/auto{
-	dir = 1;
-	name = "\improper T37 Medium Machinegun"
+/obj/structure/machinery/m56d_hmg/auto/t37{
+	dir = 1
 	},
 /turf/open/floor/darkish,
 /area/event/metal/dynamic/lit)
@@ -1748,14 +1746,14 @@ Az
 Az
 Az
 Az
-ZK
-ZK
-ZK
-ZK
-ZK
-ZK
-ZK
-rJ
+MH
+MH
+MH
+MH
+MH
+MH
+MH
+MH
 rJ
 Az
 Az

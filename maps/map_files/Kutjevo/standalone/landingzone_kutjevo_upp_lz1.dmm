@@ -172,21 +172,13 @@
 /area/event/deep_underground/dynamic)
 "fB" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
 /turf/open/floor/kutjevo/colors/orange/edge/west,
 /area/event/deep_underground/dynamic)
 "fQ" = (
@@ -289,15 +281,11 @@
 /area/event/deep_underground/dynamic)
 "iW" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
 /area/event/deep_underground/dynamic)
 "iZ" = (
@@ -907,22 +895,14 @@
 /area/kutjevo/interior/colony_central)
 "GD" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
-/obj/item/ammo_magazine/m2c{
-	name = "T37 MMG ammunition box (10x28mm tungsten rounds)"
-	},
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/event/deep_underground/dynamic)
 "Hh" = (
@@ -930,11 +910,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/event/deep_underground/dynamic)
 "Hk" = (
-/obj/structure/machinery/m56d_hmg/auto{
-	dir = 1;
-	name = "\improper T37 Medium Machinegun"
-	},
 /obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/obj/structure/machinery/m56d_hmg/auto/t37{
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe,
@@ -995,6 +974,7 @@
 /area/event/deep_underground/dynamic)
 "JF" = (
 /obj/structure/surface/rack,
+/obj/item/ammo_magazine/m2c/t37,
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
 /area/event/deep_underground/dynamic)
 "JI" = (
@@ -1242,11 +1222,10 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/event/deep_underground/dynamic)
 "Se" = (
-/obj/structure/machinery/m56d_hmg/auto{
-	dir = 8;
-	name = "\improper T37 Medium Machinegun"
-	},
 /obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/machinery/m56d_hmg/auto/t37{
 	dir = 8
 	},
 /turf/open/floor/prison/cell_stripe/east,
@@ -1450,7 +1429,6 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/obj/structure/machinery/m56d_post,
 /obj/item/stack/rods,
 /turf/open/floor/prison/cell_stripe/east,
 /area/event/deep_underground/dynamic)

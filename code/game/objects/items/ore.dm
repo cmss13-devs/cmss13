@@ -78,3 +78,12 @@
 	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
+
+/obj/item/ore/pearl
+	name = "pearl"
+	desc = "get fifty of em and have a necklace!"
+	icon = 'icons/obj/items/fishing_atoms.dmi'
+	icon_state = "pearl"
+	oretag = "pearl"
+	black_market_value = 60
+//adds the pearl as an ore for the fishing code, felt it was categorically acceptable

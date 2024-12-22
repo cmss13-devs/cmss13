@@ -50,6 +50,8 @@
 	if(buckled_mob == current_mob)
 		current_mob.pixel_y = buckling_y["[dir]"]
 		current_mob.pixel_x = buckling_x["[dir]"]
+		current_mob.old_y = buckling_y["[dir]"]
+		current_mob.old_x = buckling_x["[dir]"]
 		current_mob.dir = turn(dir, 180)
 		ADD_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 		pixel_y = buckling_y["[dir]"]

@@ -1,9 +1,3 @@
-/obj/item/cprbot_item
-	name = "Placeholder"
-
-/obj/item/cprbot_broken
-	name = "Placeholder"
-
 #define STATE_CPRBOT_IDLE "idle"
 #define STATE_CPRBOT_MOVING "moving"
 #define STATE_CPRBOT_CPR "cpr"
@@ -167,12 +161,14 @@
 
 	// Send a message based on the current state
 	if (currently_healing)
-		speak(motivational_message)
+		if (prob(50))
+			speak(motivational_message)
 	else
 		if (prob(50))
 			speak(pick(medical_facts))
 		else
 			speak(pick(idle_messages))
+
 
 	// Start the cooldown timer for the next message
 	COOLDOWN_START(src, message_cooldown, cooldown_time)
@@ -192,56 +188,54 @@
 	update_icon()
 
 /obj/structure/machinery/bot/cprbot/proc/valid_cpr_target(mob/living/carbon/human/patient)
-	return patient.stat == DEAD && patient.check_tod() && patient.is_revivable() && patient.get_target_lock(iff_signal)
+	// Check if the patient is a valid target for CPR
+	return patient.stat == DEAD && patient.check_tod() && patient.is_revivable() && patient.get_target_lock(iff_signal) && ishuman_strict(patient)
 
 /obj/structure/machinery/bot/cprbot/proc/find_and_move_to_patient()
 	var/list/potential_patients = list()
-	has_said_to_patient = list()
+
+	// Find all valid CPR targets within the bot's view range
 	for (var/mob/living/carbon/human/patient in view(search_radius, src))
 		if (valid_cpr_target(patient))
 			potential_patients += patient
 
-	for (var/obj/structure/machinery/bot/cprbot/another_cpr_bot in view(search_radius, src))
-		if (another_cpr_bot == src)
-			continue
+	// Remove patients already being targeted by other CPR bots
+	for (var/obj/structure/machinery/bot/cprbot/other_cpr_bot in view(search_radius, src))
+		if (other_cpr_bot == src)
+			continue // Skip self-check
 
-		var/mob/living/carbon/human/another_bot_patient
+		var/mob/living/carbon/human/other_bot_patient
 
-		// sanity checks
-		if (another_cpr_bot.human != null)
-			another_bot_patient = another_cpr_bot.human.resolve()
+		// Resolve the other bot's patient target (sanity checks included)
+		if (!isnull(other_cpr_bot.human))
+			other_bot_patient = other_cpr_bot.human.resolve()
 
-		// sanity checks
-		if (isnull(another_bot_patient))
-			continue
+		if (!isnull(other_bot_patient) && (other_bot_patient in potential_patients))
+			potential_patients.Remove(other_bot_patient) // Remove the patient targeted by another bot
 
-		// Another CPR bot is targetting this patient, skip
-		if (another_bot_patient in potential_patients)
-			potential_patients.Remove(another_bot_patient)
-
-	if (potential_patients.len)
+	// If potential patients are found, target the first one
+	if (length(potential_patients))
 		var/mob/living/carbon/human/patient = potential_patients[1]
 		human = WEAKREF(patient)
+
 		if (patient && !(patient in has_said_to_patient))
 			visible_message("[patient] is injured! I'm coming!")
 			has_said_to_patient += patient
 
 		move_to_target()
 	else
-		// If no patients are found, check if owner is nearby and follow them if idle
-		if (state == STATE_CPRBOT_IDLE && (owner && (owner in view(search_radius, src))))
+		// If no patients are found, follow the owner if idle
+		if (state == STATE_CPRBOT_IDLE && owner && (owner in view(search_radius, src)))
 			state = STATE_CPRBOT_FOLLOWING_OWNER
 			walk_to(src, owner, 0, movement_delay)
 		else if (state == STATE_CPRBOT_FOLLOWING_OWNER)
-			// Continue following the owner if no patient is in sight
+			// Continue following the owner
 			walk_to(src, owner, 0, movement_delay)
 		else
+			// Default to idle state
 			go_idle()
 
 /obj/structure/machinery/bot/cprbot/proc/call_astar_pathfinding()
-	if (isnull(human))
-		return FALSE
-
 	var/mob/living/carbon/human/patient = human.resolve()
 	if (isnull(patient))
 		return FALSE
@@ -333,7 +327,7 @@
 	return get_dist(src, patient) == 0
 
 /obj/structure/machinery/bot/cprbot/proc/move_to_target()
-	var/mob/living/carbon/human/patient = human ? human.resolve() : null
+	var/mob/living/carbon/human/patient = human?.resolve()
 	// If we cannot see them anymore then stop moving
 	if (!can_still_see_patient())
 		go_idle()
@@ -422,19 +416,18 @@
 
 /obj/structure/machinery/bot/cprbot/proc/self_destruct(mob/living/carbon/human/user = null)
 	var/obj/item/cprbot_item = new /obj/item/cprbot_item(loc)
-
+	qdel(src)
 	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
 
-	if (user)
-		if (!user.put_in_active_hand(cprbot_item))
-			if (!user.put_in_inactive_hand(cprbot_item))
-				cprbot_item.forceMove(loc)
-	else
+	if (!user)
+		cprbot_item.forceMove(loc)
+		return
+	if(user.put_in_active_hand(cprbot_item))
+		return
+	if(!user.put_in_inactive_hand(cprbot_item))
 		cprbot_item.forceMove(loc)
 
-	qdel(src)
-
-/obj/structure/machinery/bot/cprbot/attack_hand(mob/user as mob)
+/obj/structure/machinery/bot/cprbot/attack_hand(mob/user)
 	if (..())
 		return TRUE
 
@@ -462,7 +455,6 @@
 	on = FALSE
 	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
-	on = FALSE
 	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 
 	new /obj/item/cprbot_broken(Tsec)
@@ -484,18 +476,16 @@
 	START_PROCESSING(SSobj, src)
 	fast_processing = FALSE
 
-/obj/structure/machinery/bot/medbot/Collide(atom/collided_atom) //Leave no door unopened!
+/obj/structure/machinery/bot/cprbot/Collide(atom/collided_atom) //Leave no door unopened!
 	if ((istype(collided_atom, /obj/structure/machinery/door)) && (!isnull(botcard)))
 		var/obj/structure/machinery/door/collided_door = collided_atom
 		if (!istype(collided_door, /obj/structure/machinery/door/firedoor) && collided_door.check_access(botcard) && !istype(collided_door,/obj/structure/machinery/door/poddoor))
 			collided_door.open()
-			frustration = 0
 	else if ((istype(collided_atom, /mob/living/)) && (!anchored))
 		forceMove(collided_atom.loc)
-		frustration = 0
 	else if ((istype(collided_atom, /mob/living/)) && (!anchored))
 		forceMove(collided_atom.loc)
-		frustration = 0
+
 #undef STATE_CPRBOT_MOVING
 #undef STATE_CPRBOT_CPR
 #undef STATE_CPRBOT_FOLLOWING_OWNER

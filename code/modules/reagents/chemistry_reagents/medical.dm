@@ -180,7 +180,7 @@
 	)
 	flags = REAGENT_TYPE_MEDICAL
 
-/datum/reagent/medical/thwie/thwong //OP yautja thrall chem
+/datum/reagent/medical/thwei/thwong //OP yautja thrall chem
 	name = "Thwong"
 	id = "thwong"
 	color = "#c44541" // rgb: 200, 165, 220

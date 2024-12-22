@@ -62,14 +62,14 @@
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
-		var/obj/item/cprbot_item/new_cprbot_item = new /obj/item/cprbot_item(src.loc)
+		var/obj/item/cprbot_item/new_cprbot_item = new /obj/item/cprbot_item(loc)
 
 		if(user)
 			if(!user.put_in_active_hand(new_cprbot_item))
 				if(!user.put_in_inactive_hand(new_cprbot_item))
-					new_cprbot_item.forceMove(src.loc)
+					new_cprbot_item.forceMove(loc)
 		else
-			new_cprbot_item.forceMove(src.loc)
+			new_cprbot_item.forceMove(loc)
 
 /obj/item/cprbot_broken/attackby(obj/item/attacked_by, mob/living/user)
 	if(iswelder(attacked_by))
@@ -92,7 +92,7 @@
 			return
 
 		// Create the repaired item
-		var/obj/item/cprbot_item/repaired_cprbot_item = new /obj/item/cprbot_item(src.loc)
+		var/obj/item/cprbot_item/repaired_cprbot_item = new /obj/item/cprbot_item(loc)
 
 		// Check if the broken item is in the user's hand
 		var/hand_was_active = user.get_active_hand() == src

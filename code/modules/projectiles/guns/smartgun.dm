@@ -25,6 +25,8 @@
 	var/requires_battery = TRUE
 	/// Whether the smartgun requires a harness to use
 	var/requires_harness = TRUE
+	/// Whether the smartgun requires smartgun skills to use
+	var/requires_skill = TRUE
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
@@ -319,7 +321,7 @@
 		if(!ishuman(user))
 			return FALSE
 		var/mob/living/carbon/human/H = user
-		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+		if(requires_skill && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			balloon_alert(user, "insufficient skills")
 			return FALSE
 		if(requires_harness)
@@ -570,6 +572,17 @@
 		drain -= 15
 		if(!auto_fire)
 			STOP_PROCESSING(SSobj, src)
+
+// Synthetic Gadget, PFC smartgun
+/obj/item/weapon/gun/smartgun/pfc
+	name = "\improper skeletonized M56B smartgun"
+	requires_battery = FALSE
+	requires_harness = FALSE
+	requires_skill = FALSE
+
+/obj/item/weapon/gun/smartgun/pfc/Initialize(mapload, ...)
+	. = ..()
+	desc = initial(desc) + "\nThis stripped down version doesn't need a battery to function, making it usable without any former training, but at the cost of being unable to reload."
 
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co

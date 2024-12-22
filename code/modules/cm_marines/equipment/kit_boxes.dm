@@ -580,3 +580,11 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+/obj/item/storage/box/kit/pfc_smartgun
+	name = "\improper Easy-Use Skeletonized Smartgun Kit"
+	desc = "Contains the equipment needed to deploy a Skeletonized Smartgun onto the field. Hand this to a Rifleman."
+	icon_state = "pro_case_large"
+
+/obj/item/storage/box/kit/pfc_smartgun/fill_preset_inventory()
+	new /obj/item/weapon/gun/smartgun/pfc(src)

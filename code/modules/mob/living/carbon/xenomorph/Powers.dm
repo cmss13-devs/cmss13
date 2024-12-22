@@ -8,7 +8,7 @@
 
 	if(resin_construct.scaling_cost && use_plasma)
 		var/area/target_area = get_area(target)
-		if(target_area)
+		if(target_area && target_area.openable_turf_count)
 			var/density_ratio = target_area.current_resin_count / target_area.openable_turf_count
 			if(density_ratio > 0.3)
 				total_resin_cost = ceil(total_resin_cost * (density_ratio + 0.35) * 2)

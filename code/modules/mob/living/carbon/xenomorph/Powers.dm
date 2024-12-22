@@ -157,7 +157,7 @@
 
 	if(istype(new_resin, /turf/closed))
 		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
-			if(enclosed_human.stat == DEAD)
+			if(enclosed_human.stat == DEAD && enclosed_human.is_revivable(TRUE))
 				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] [ADMIN_JMP(new_resin)]")
 
 	return SECRETE_RESIN_SUCCESS

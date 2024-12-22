@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - code_imp: "Christmas Festivizer now only applies on Christmas Eve and Day."

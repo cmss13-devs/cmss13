@@ -112,6 +112,8 @@
 	if(fswitch)
 		fswitch.floodlist -= src
 		fswitch = null
+	for(var/obj/structure/machinery/colony_floodlight_switch/light_switch in GLOB.machines) //for good meshure, if someone added more switches for example
+		light_switch.floodlist -= src
 	. = ..()
 
 /obj/structure/machinery/colony_floodlight/update_icon()

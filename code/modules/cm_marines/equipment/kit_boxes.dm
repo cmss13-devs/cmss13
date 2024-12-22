@@ -29,8 +29,6 @@
 /obj/item/storage/box/spec/demolitionist/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
 	new /obj/item/clothing/head/helmet/marine/M3T(src)
-	new /obj/item/clothing/head/helmet/marine/M3T(src)
-	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/weapon/gun/launcher/rocket(src)
 	new /obj/item/ammo_magazine/rocket(src)
@@ -45,6 +43,34 @@
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/device/binoculars(src)
 
+	// loader
+	new /obj/item/storage/box/kit/loader(src)
+
+/obj/item/storage/box/kit/loader
+	name = "\improper Loader Kit"
+	pro_case_overlay = "loader"
+
+/obj/item/storage/box/kit/loader/fill_preset_inventory()
+	// wearables
+	new /obj/item/clothing/suit/storage/marine/M3T(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
+	new /obj/item/storage/backpack/marine/rocketpack(src)
+
+	// a little bit of extra ammo
+	new /obj/item/ammo_magazine/rocket(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/ammo_magazine/rocket/wp(src)
+
+	// equipment
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/device/binoculars(src)
+
+	// skills
+	new /obj/item/pamphlet/skill/loader(src)
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"

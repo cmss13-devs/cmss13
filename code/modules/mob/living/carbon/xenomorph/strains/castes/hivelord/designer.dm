@@ -119,7 +119,6 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	// Apply the immobilized trait to the xeno
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 
 	var/turf/target_turf = get_turf(target_atom)
@@ -127,7 +126,7 @@
 	var/obj/speed_warn
 
 	if(target_turf)
-		speed_warn = new /obj/effect/resin_construct/cost_node(target_turf)
+		speed_warn = new /obj/effect/resin_construct/speed_node(target_turf)
 
 	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
@@ -144,13 +143,7 @@
 		playsound(target_turf, "alien_resin_build", 25)
 
 		if(xeno.speed_node_list.len > max_speed_nodes)
-			var/obj/effect/alien/weeds/node/designer/speed/oldest_speed_node = xeno.speed_node_list[1]
-			if(oldest_speed_node)
-				var/turf/old_speed_loc = get_turf(oldest_speed_node.loc)
-				if(old_speed_loc)
-					new /obj/effect/alien/weeds(old_speed_loc)
-				qdel(oldest_speed_node)
-			xeno.speed_node_list.Cut(1, 2)
+			addtimer(CALLBACK(src, "remove_oldest_speed_node", xeno), 0)
 
 	else if(target_turf)
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
@@ -165,12 +158,19 @@
 
 	xeno_cooldown = initial(xeno_cooldown)
 
-	// Remove the immobilized trait after the ability has been cast
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 
 	return ..()
 
-
+/datum/action/xeno_action/activable/design_speed_node/proc/remove_oldest_speed_node(mob/living/carbon/xenomorph/xeno)
+	if(xeno.speed_node_list.len > 0)
+		var/obj/effect/alien/weeds/node/designer/speed/oldest_speed_node = xeno.speed_node_list[1]
+		if(oldest_speed_node)
+			var/turf/old_speed_loc = get_turf(oldest_speed_node.loc)
+			if(old_speed_loc)
+				new /obj/effect/alien/weeds(old_speed_loc)
+			qdel(oldest_speed_node)
+		xeno.speed_node_list.Cut(1, 2)
 
 // Cost Node
 
@@ -242,13 +242,7 @@
 		playsound(target_turf, "alien_resin_build", 25)
 
 		if(xeno.cost_node_list.len > max_cost_nodes) // Delete the oldest node (the first one in the list)
-			var/obj/effect/alien/weeds/node/designer/cost/oldest_cost_node = xeno.cost_node_list[1]
-			if(oldest_cost_node)
-				var/turf/old_cost_loc = get_turf(oldest_cost_node.loc) // Get the turf of the oldest node
-				if(old_cost_loc) // Ensure the turf exists
-					new /obj/effect/alien/weeds(old_cost_loc) // Replace with a new /obj/effect/alien/weeds
-				qdel(oldest_cost_node) // Safely delete the old node
-			xeno.cost_node_list.Cut(1, 2) // Remove the first element from the list
+			addtimer(CALLBACK(src, "remove_oldest_cost_node", xeno), 0)
 
 	else if(target_turf)
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
@@ -266,6 +260,16 @@
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 
 	return ..()
+
+/datum/action/xeno_action/activable/design_cost_node/proc/remove_oldest_cost_node(mob/living/carbon/xenomorph/xeno)
+	if(xeno.cost_node_list.len > 0)
+		var/obj/effect/alien/weeds/node/designer/cost/oldest_cost_node = xeno.cost_node_list[1]
+		if(oldest_cost_node)
+			var/turf/old_cost_loc = get_turf(oldest_cost_node.loc) // Get the turf of the oldest node
+			if(old_cost_loc) // Ensure the turf exists
+				new /obj/effect/alien/weeds(old_cost_loc) // Replace with a new /obj/effect/alien/weeds
+			qdel(oldest_cost_node) // Safely delete the old node
+		xeno.cost_node_list.Cut(1, 2) // Remove the first element from the list
 
 // Greather Resin Surge.
 
@@ -316,26 +320,34 @@
 				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
 	//Wait 1 second, then replace the nodes
-	spawn(1 SECONDS)
-		for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
-			if(node)
-				var/turf/node_loc = get_turf(node.loc)
-				if(node_loc)
-					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater) // Replace with weeds
-				qdel(node) // Delete the node
-		xeno.speed_node_list.Cut() // Clear the speed node list
-
-		for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
-			if(node)
-				var/turf/node_loc = get_turf(node.loc)
-				if(node_loc)
-					node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater)
-				qdel(node)
-		xeno.cost_node_list.Cut()
+	addtimer(CALLBACK(src, "replace_nodes"), 1 SECONDS)
 
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 	return ..()
+
+/datum/action/xeno_action/activable/greater_resin_surge/proc/replace_nodes()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	for(var/obj/effect/alien/weeds/node/designer/speed/node in xeno.speed_node_list)
+		if(node)
+			var/turf/node_loc = get_turf(node.loc)
+			if(node_loc)
+				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater) // Replace with weeds
+				playsound(node_loc, "alien_resin_build", 25) // Play sound for wall placement
+			qdel(node) // Delete the node
+	xeno.speed_node_list.Cut() // Clear the speed node list
+
+	for(var/obj/effect/alien/weeds/node/designer/cost/node in xeno.cost_node_list)
+		if(node)
+			var/turf/node_loc = get_turf(node.loc)
+			if(node_loc)
+				node_loc.PlaceOnTop(/turf/closed/wall/resin/weak/greater)
+				playsound(node_loc, "alien_resin_build", 25)
+			qdel(node)
+	xeno.cost_node_list.Cut()
 
 /proc/create_animation_overlay(turf/target_turf, animation_type)
 	if(!istype(target_turf, /turf)) // Ensure the target is a valid turf
@@ -348,7 +360,8 @@
 	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
 	animation.loc = target_turf
 
-	//Automatically delete the animation after 1 second
-	spawn(1 SECONDS)
-		if(animation)
-			qdel(animation)
+	//Use a soft sleep to delete the animation after 1 second
+	set waitfor = FALSE
+	sleep(1 SECONDS)
+	if(animation)
+		qdel(animation)

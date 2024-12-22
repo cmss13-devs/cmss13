@@ -176,8 +176,31 @@
 		PROPERTY_CURING = 4,
 		PROPERTY_OCULOPEUTIC = 2,
 		PROPERTY_NEUROPEUTIC = 2,
+
 	)
 	flags = REAGENT_TYPE_MEDICAL
+
+/datum/reagent/medical/thwie/thwong //OP yautja thrall chem
+	name = "Thwong"
+	id = "thwong"
+	color = "#c44541" // rgb: 200, 165, 220
+	properties = list(
+		PROPERTY_ANTITOXIC = 1,
+		PROPERTY_HEMOGENIC = 9,
+		PROPERTY_OXYGENATING = 6,
+		PROPERTY_ANTICARCINOGENIC = 6,
+		PROPERTY_BONEMENDING = 6,
+		PROPERTY_AIDING = 1,
+		PROPERTY_ANTIHALLUCINOGENIC = 2,
+		PROPERTY_FOCUSING = 6,
+		PROPERTY_CURING = 4,
+		PROPERTY_OCULOPEUTIC = 2,
+		PROPERTY_NEUROPEUTIC = 2,
+		PROPERTY_MUSCLESTIMULATING = 3,
+		PROPERTY_NERVESTIMULATING = 3,
+		PROPERTY_PAINKILLING = 7,
+		PROPERTY_ORGANSTABILIZE = 4,
+	)
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"

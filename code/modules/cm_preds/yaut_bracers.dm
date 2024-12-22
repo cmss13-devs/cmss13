@@ -222,12 +222,7 @@
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
 
-/obj/item/clothing/gloves/yautja/thrall
-	name = "thrall bracers"
-	desc = "A pair of strange alien bracers, adapted for human biology."
 
-	color = "#b85440"
-	minimap_icon = "thrall"
 
 
 /obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()

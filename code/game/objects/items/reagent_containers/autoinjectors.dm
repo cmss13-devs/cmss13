@@ -285,6 +285,23 @@
 	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
 
+/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
+	name = "strange crystal"
+	chemname = "thwong"
+	color = "#c44541"
+
+/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/attack(mob/M as mob, mob/user as mob)
+	var/mob/living/carbon/human/thrall = M
+	if(thrall.hunter_data.thralled)
+		..()
+	else
+		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
+	if(uses_left == 0)
+		addtimer(CALLBACK(src, PROC_REF(remove_crystal)), 120 SECONDS)
+
+/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/remove_crystal()
+	. = ..()
+
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"
 	chemname = "tricordrazine"

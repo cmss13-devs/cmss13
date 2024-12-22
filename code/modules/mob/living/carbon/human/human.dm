@@ -1174,7 +1174,10 @@
 
 /mob/living/carbon/human/proc/handle_weed_slowdown(mob/user, list/slowdata)
 	SIGNAL_HANDLER
-	slowdata["movement_slowdown"] *= species.weed_slowdown_mult
+	if(src.gloves != /obj/item/clothing/gloves/yautja/thrall)
+		slowdata["movement_slowdown"] *= species.weed_slowdown_mult
+	else
+		return
 
 /mob/living/carbon/human/print_flavor_text()
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)

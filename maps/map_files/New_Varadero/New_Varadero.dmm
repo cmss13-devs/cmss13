@@ -6,51 +6,22 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
 "aab" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/evidencebag,
-/obj/effect/landmark/objective_landmark/far,
-/obj/item/clock{
-	pixel_y = 16
-	},
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/security)
-"aac" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/implanter{
-	pixel_x = 10
-	},
-/obj/item/ashtray/bronze{
-	icon_state = "ashtray_half_br"
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/obj/item/weapon/gun/lever_action/r4t,
-/obj/item/ammo_magazine/handful/lever_action,
-/obj/item/clock{
-	pixel_y = 17;
-	pixel_x = -2
-	},
-/turf/open/floor/carpet,
-/area/varadero/interior/research)
-"aad" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/clock{
-	pixel_y = 13;
-	pixel_x = -15
-	},
-/turf/open/floor/shiva/redfull,
-/area/varadero/interior/medical)
-"aae" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/shiva,
-/area/varadero/interior/disposals)
-"aaf" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
+"aae" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva,
+/area/varadero/interior/disposals)
 "aag" = (
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
@@ -62,12 +33,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"aah" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -11806,6 +11771,23 @@
 "juW" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/comms3)
+"jvc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/implanter{
+	pixel_x = 10
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_half_br"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/weapon/gun/lever_action/r4t,
+/obj/item/ammo_magazine/handful/lever_action,
+/obj/item/clock{
+	pixel_y = 17;
+	pixel_x = -2
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/research)
 "jvh" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/records)
@@ -18206,6 +18188,15 @@
 	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
+"oPr" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_y = 13;
+	pixel_x = -15
+	},
+/turf/open/floor/shiva/redfull,
+/area/varadero/interior/medical)
 "oPQ" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
@@ -28599,6 +28590,15 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"wOS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/evidencebag,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/clock{
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
 "wOU" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/auto_turf/sand_white/layer1,
@@ -33769,7 +33769,7 @@ cbv
 yks
 vNG
 rbU
-aac
+jvc
 nCV
 ovC
 fay
@@ -35386,7 +35386,7 @@ qul
 qul
 qul
 qHc
-aaf
+aab
 xCn
 xCn
 oPQ
@@ -40674,7 +40674,7 @@ uUW
 maN
 wFX
 dLN
-aad
+oPr
 rLC
 aoo
 fyH
@@ -50706,7 +50706,7 @@ pJn
 krP
 qhZ
 gwG
-aab
+wOS
 wrv
 cNh
 eOu
@@ -56457,7 +56457,7 @@ wlB
 wlB
 wlB
 wlB
-aah
+aac
 wlB
 wlB
 wlB

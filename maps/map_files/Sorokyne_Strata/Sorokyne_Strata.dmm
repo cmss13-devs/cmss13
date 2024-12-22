@@ -18,18 +18,11 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
 "aae" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/fancy/cigar,
-/obj/structure/machinery/light/small{
-	dir = 1
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
 	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/clock{
-	pixel_x = -14;
-	pixel_y = 16
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outside/checkpoints/north)
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -103,11 +96,12 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "aau" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
+	insert_tag = "hvhupplz1"
 	},
-/turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/interior/mountain)
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -124,13 +118,6 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aay" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/carplake/north)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -171,18 +158,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
-"aaE" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin,
-/obj/item/tool/stamp,
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/obj/item/clock{
-	pixel_y = 15
-	},
-/turf/open/floor/strata/floor3,
-/area/strata/ag/interior/outpost/admin)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -194,17 +169,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aaH" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/item/clock{
-	pixel_y = 15
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/mining_outpost/flight_control)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -2555,6 +2519,17 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
+"ako" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clock{
+	pixel_y = 15
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/mining_outpost/flight_control)
 "akp" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/landmark/objective_landmark/close,
@@ -7419,6 +7394,18 @@
 "aLU" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/outpost/admin)
+"aLW" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/stamp,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
@@ -19444,6 +19431,19 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/guestpass,
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outside/checkpoints/north)
+"eNF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_x = -14;
+	pixel_y = 16
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNL" = (
@@ -34215,7 +34215,7 @@ alz
 alz
 alz
 aac
-aau
+aae
 aac
 aac
 aac
@@ -34521,7 +34521,7 @@ ftO
 vMr
 coO
 coO
-aaH
+ako
 coS
 doZ
 cqE
@@ -42098,7 +42098,7 @@ cbu
 aac
 aac
 mvm
-aae
+eNF
 iry
 cow
 beZ
@@ -55195,7 +55195,7 @@ aUV
 cik
 aJm
 aKG
-aaE
+aLW
 aNf
 aOo
 aPL
@@ -70598,7 +70598,7 @@ jUA
 jUA
 jUA
 cei
-aay
+aau
 cei
 jUA
 jUA

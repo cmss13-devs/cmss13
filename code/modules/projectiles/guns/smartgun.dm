@@ -122,7 +122,7 @@
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods["alt"] && !(flags_gun_features & GUN_INTERNAL_MAG))
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
@@ -159,13 +159,13 @@
 	return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
-	if(!cover_open)
+	if(!cover_open && !(flags_gun_features & GUN_INTERNAL_MAG))
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it)"))
 		return
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
-	if(!cover_open)
+	if(!cover_open && !(flags_gun_features & GUN_INTERNAL_MAG))
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it)"))
 		return
 	. = ..()
@@ -583,6 +583,7 @@
 /obj/item/weapon/gun/smartgun/pfc/Initialize(mapload, ...)
 	. = ..()
 	desc = initial(desc) + "\nThis stripped down version doesn't need a battery to function, making it usable without any former training, but at the cost of being unable to reload."
+	flags_gun_features |= GUN_INTERNAL_MAG // so they can't reload it
 
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co

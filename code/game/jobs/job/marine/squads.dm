@@ -604,7 +604,7 @@
 
 	if(paygrade)
 		id_card.paygrade = paygrade
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(target_mob.wear_l_ear, target_mob.wear_r_ear)
 	if(headset && radio_freq)
@@ -625,7 +625,7 @@
 
 	id_card.access -= src.access
 	id_card.assignment = target_mob.job
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	forget_marine_in_squad(target_mob)
 

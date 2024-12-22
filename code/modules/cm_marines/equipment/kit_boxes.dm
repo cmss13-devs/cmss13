@@ -581,6 +581,18 @@
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
 
+/obj/item/storage/box/kit/UPP_leader_AR
+	name = "\improper Type 71-F Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/UPP_leader_AR/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/type71/flamer(src)
+	new /obj/item/attachable/reflex(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+
 /obj/item/storage/box/kit/pfc_smartgun
 	name = "\improper Easy-Use Skeletonized Smartgun Kit"
 	desc = "Contains the equipment needed to deploy a Skeletonized Smartgun onto the field. Hand this to a Rifleman."

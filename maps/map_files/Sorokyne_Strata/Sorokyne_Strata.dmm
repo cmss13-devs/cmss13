@@ -2506,6 +2506,9 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
+/obj/item/clock{
+	pixel_y = 15
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/mining_outpost/flight_control)
 "akp" = (
@@ -7381,6 +7384,9 @@
 /obj/item/tool/stamp,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
@@ -15160,7 +15166,7 @@
 /obj/structure/prop/structure_lattice{
 	density = 0;
 	desc = "This jukebox only takes quarters and you seem to be out of them at the moment.";
-	icon = 'icons/obj/structures/props/misc.dmi';
+	icon = 'icons/obj/structures/props/furniture/misc.dmi';
 	icon_state = "jukebox";
 	name = "Rockin Robin 2300 Jukebox";
 	pixel_x = -5;
@@ -18434,7 +18440,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/security)
 "dyZ" = (
-/obj/structure/holostool,
+/obj/item/stool,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "dzo" = (
@@ -19415,6 +19421,10 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_x = -14;
+	pixel_y = 16
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNL" = (

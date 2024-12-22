@@ -1107,6 +1107,14 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/storage/fancy/cigarettes/wypacket
 	cost = 2
 
+/datum/gear/smoking/spirit
+	display_name = "Pack Of Turquoise American Spirit"
+	path = /obj/item/storage/fancy/cigarettes/spirit
+
+/datum/gear/smoking/yellow
+	display_name = "Pack Of Yellow American Spirit"
+	path = /obj/item/storage/fancy/cigarettes/spirit/yellow
+
 /datum/gear/smoking/kpack
 	display_name = "Pack Of Koorlander Gold"
 	path = /obj/item/storage/fancy/cigarettes/kpack

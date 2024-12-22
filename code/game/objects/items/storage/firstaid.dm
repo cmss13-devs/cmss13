@@ -10,6 +10,10 @@
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
 	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
@@ -348,7 +352,7 @@
 		/obj/item/toy/dice,
 		/obj/item/paper,
 	)
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER|STORAGE_DISABLE_USE_EMPTY
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
@@ -760,12 +764,16 @@
 	name = "\improper pill packet"
 	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"
+	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 	bottle_lid = FALSE
 	storage_slots = 4
 	max_w_class = 0
 	max_storage_space = 4
 	skilllock = SKILL_MEDICAL_DEFAULT
-	storage_flags = STORAGE_FLAGS_BOX
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_DISABLE_USE_EMPTY
 	display_maptext = FALSE
 
 /obj/item/storage/pill_bottle/packet/Initialize()

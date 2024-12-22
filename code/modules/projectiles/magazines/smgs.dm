@@ -12,7 +12,7 @@
 	name = "\improper M39 HV magazine (10x20mm)"
 	desc = "A 10x20mm caseless high-velocity submachinegun magazine. Powerful propellant allows the bullet increased velocity and minor penetration capabilities, noticeably improving its efficacy at medium ranges, although it still suffers significantly compared to a rifle bullet."
 	caliber = "10x20mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/smgs.dmi'
 	icon_state = "m39_HV"
 	max_rounds = 48
 	w_class = SIZE_MEDIUM
@@ -78,7 +78,7 @@
 	desc = "A 9mm magazine for the MP5."
 	default_ammo = /datum/ammo/bullet/smg
 	caliber = "9mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "mp5"
 	gun_type = /obj/item/weapon/gun/smg/mp5
 	max_rounds = 30 //Also comes in 10 and 40.
@@ -92,7 +92,7 @@
 	desc = "A 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy."
 	default_ammo = /datum/ammo/bullet/smg/mp27
 	caliber = "4.6x30mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "mp7_30"
 	gun_type = /obj/item/weapon/gun/smg/mp27
 	max_rounds = 30 //Also comes in 20 and 40.
@@ -123,7 +123,7 @@
 	name = "\improper PPSh-17b stick magazine (7.62x25mm)"
 	desc = "A stick magazine for the PPSh submachinegun. Less ammo than the iconic drum magazine, but the latter causes feeding and handling issues. Your call which one's better."
 	caliber = "7.62x25mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "ppsh17b_stick"
 	bonus_overlay = "ppsh17b_stick_overlay"
 	max_rounds = 35
@@ -157,7 +157,7 @@
 	name = "\improper Type-19 stick magazine (7.62x25mm)"
 	desc = "A stick magazine for the Type-19 submachinegun."
 	caliber = "7.62x25mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu_stickmag"
 	bonus_overlay = "insasu_stickmag_overlay"
 	max_rounds = 35
@@ -183,7 +183,7 @@
 	name = "\improper Type 64 Helical Magazine (7.62x19mm)"
 	desc = "A 64 round magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
 	caliber = "7.62x19mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "type64mag"
 	max_rounds = 64
 	gun_type = /obj/item/weapon/gun/smg/bizon
@@ -195,7 +195,7 @@
 	name = "\improper MAC-15 magazine (9mm)"
 	desc = "A magazine for the MAC-15."
 	caliber = "9mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "mac15"
 	max_rounds = 25 //Can also be 20, 25, 40, and 50.
 	gun_type = /obj/item/weapon/gun/smg/mac15
@@ -216,7 +216,7 @@
 	name = "\improper UZI magazine (9x21mm)"
 	desc = "A magazine for the UZI. Seems pretty small, huh? Anything larger caused feeding errors."
 	caliber = "9x12mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "uzi"
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/smg/uzi
@@ -241,7 +241,7 @@
 	desc = "A magazine for the FN FP9000 SMG."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = "5.7x28mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "fp9000"
 	w_class = SIZE_MEDIUM
 	max_rounds = 50
@@ -255,7 +255,7 @@
 	default_ammo = /datum/ammo/bullet/smg/nail
 	flags_magazine = NO_FLAGS // Let's not start messing with nails...
 	caliber = "7x45mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/nailguns.dmi'
 	icon_state = "nailgun"
 	w_class = SIZE_SMALL
 	max_rounds = 48

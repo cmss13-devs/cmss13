@@ -4,7 +4,7 @@
 /obj/structure/morgue
 	name = "morgue"
 	desc = "Used to keep bodies in until someone fetches them."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morgue1"
 	dir = EAST
 	density = TRUE
@@ -131,7 +131,7 @@
 /obj/structure/morgue_tray
 	name = "morgue tray"
 	desc = "Apply corpse before closing."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
 	density = TRUE

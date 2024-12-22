@@ -4793,9 +4793,7 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles"
-	},
+/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -10344,6 +10342,7 @@
 /area/kutjevo/interior/colony_central)
 "pLN" = (
 /obj/structure/surface/table/almayer,
+/obj/item/clock,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pLS" = (
@@ -11530,8 +11529,7 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles";
+/obj/item/clothing/glasses/thermal/syndi/kutjevo{
 	pixel_y = -2
 	},
 /turf/open/floor/kutjevo/multi_tiles/east,
@@ -12131,6 +12129,10 @@
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	explo_proof = 1;
 	pixel_y = 7
+	},
+/obj/item/clock{
+	pixel_x = -21;
+	pixel_y = 17
 	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med/pano)

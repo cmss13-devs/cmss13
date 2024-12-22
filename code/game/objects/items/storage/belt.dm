@@ -331,6 +331,15 @@
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
 
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/medical/lifesaver/full/forecon/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
@@ -818,6 +827,15 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/shotgun/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/shotgun/upp
 	name = "\improper Type 42 pattern shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells, primarily for the Type 23 shotgun."
@@ -935,6 +953,7 @@
 	w_class = SIZE_LARGE
 	storage_slots = 12
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	flags_atom = FPRINT // has gamemode skin
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
 	can_hold = list(
@@ -1056,6 +1075,35 @@
 		new /obj/item/explosive/grenade/high_explosive/impact(src)
 		new /obj/item/explosive/grenade/high_explosive/airburst/buckshot(src)
 
+/obj/item/storage/belt/grenade/upp
+	name="\improper Type 46 pattern Type 6/8 Grenade rig"
+	desc="The Type 46 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of Type 6 and 8 pattern grenades."
+	icon_state = "grenadebelt" // temp
+	item_state = "grenadebelt"
+	item_state_slots = list(
+		WEAR_L_HAND = "s_marinebelt",
+		WEAR_R_HAND = "s_marinebelt")
+	w_class = SIZE_LARGE
+	storage_slots = 12
+	max_w_class = SIZE_MEDIUM
+	max_storage_space = 24
+	can_hold = list(/obj/item/explosive/grenade)
+
+/obj/item/storage/belt/grenade/upp/full/fill_preset_inventory()
+	new /obj/item/explosive/grenade/phosphorus/upp(src)
+	new /obj/item/explosive/grenade/phosphorus/upp(src)
+	new /obj/item/explosive/grenade/phosphorus/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+	new /obj/item/explosive/grenade/high_explosive/upp(src)
+
+/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
+	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/backpack/marine/grenadepack))
+		dump_into(attacked_item, user)
+	else
+		return ..()
 
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
@@ -1096,12 +1144,7 @@
 		/obj/item/ammo_magazine/pistol,
 	)
 	cant_hold = list(
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1192,7 +1235,7 @@
 		*/
 		playsound(src, drawSound, 7, TRUE)
 		var/image/gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
-		if(gun_has_gamemode_skin & current_gun.map_specific_decoration)
+		if(gun_has_gamemode_skin && current_gun.map_specific_decoration)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
 					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "s_" + current_gun.base_gun_icon)
@@ -1313,13 +1356,7 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1373,6 +1410,15 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
+/obj/item/storage/belt/gun/m4a3/m1911/socom/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
 /obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
 	new /obj/item/ammo_magazine/pistol/heavy(src)
@@ -1414,6 +1460,15 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+/obj/item/storage/belt/gun/m4a3/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/belt/gun/m4a3/nailgun
 	name = "customized nailgun holster"
@@ -1459,9 +1514,6 @@
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/ammo_magazine/smg,
-	)
-	cant_hold = list (
-		/obj/item/weapon/gun/smg/m39/elite, // HONKed currently
 	)
 	holster_slots = list(
 		"1" = list(
@@ -1529,6 +1581,21 @@
 /obj/item/storage/belt/gun/xm51/on_stored_atom_del(atom/movable/item)
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
 		magazines--
+
+/obj/item/storage/belt/gun/xm51/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/xm51/black/cmb
+	name = "\improper M276 pattern Model 1771 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the Office of the Colonial Marshals. It consists of a modular belt with various clips. This version is for the Model 1771 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
+	gun_has_gamemode_skin = FALSE
+
 
 #undef MAXIMUM_MAGAZINE_COUNT
 
@@ -1880,13 +1947,7 @@
 	var/list/bad_guns = list(
 		/obj/item/weapon/gun/pistol/m4a3/training,
 		/obj/item/weapon/gun/pistol/mod88/training,
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently

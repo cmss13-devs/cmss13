@@ -44,7 +44,7 @@
 	icon_state = "band2"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
 	flags_atom = null
 
@@ -123,7 +123,7 @@
 	icon_state = "berettan"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
 
 /obj/item/clothing/head/beret/cm/tan/Initialize(mapload, ...)
@@ -152,6 +152,7 @@
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/white/civilian
 	name = "White Beret"
@@ -209,10 +210,10 @@
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
-	item_state_slots = list(WEAR_AS_GARB = "headbandgreen")
+	item_state_slots = list(WEAR_AS_GARB = "headband")
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
@@ -225,15 +226,19 @@
 		if("jungle")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+			item_icons[WEAR_AS_GARB] = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_garb_by_map/jungle.dmi'
 		if("classic")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
+			item_icons[WEAR_AS_GARB] = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_garb_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_AS_GARB] = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_garb_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+			item_icons[WEAR_AS_GARB] = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_garb_by_map/snow.dmi'
 
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
@@ -247,11 +252,10 @@
 	icon_state = "headbandbrown"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = list(
-		WEAR_HEAD = "headbandtan",
 		WEAR_AS_GARB = "headbandbrown", // will be prefixed with either hat_ or helmet_
 	)
 	flags_atom = NO_GAMEMODE_SKIN
@@ -260,11 +264,10 @@
 	icon_state = "headbandgray"
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = list(
-		WEAR_HEAD = "headband",
 		WEAR_AS_GARB = "headbandgray", // will be prefixed with either hat_ or helmet_
 	)
 	flags_atom = NO_GAMEMODE_SKIN
@@ -284,7 +287,7 @@
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
 	icon_state = null
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
 	)
 	item_state_slots = null
@@ -359,6 +362,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/storage/fancy/cigarettes/lady_finger = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/storage/fancy/cigarettes/blackpack = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/storage/fancy/cigarettes/arcturian_ace = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/spirit = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/storage/fancy/cigarettes/spirit/yellow = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/blue = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/red = PREFIX_HAT_GARB_OVERRIDE,
@@ -393,7 +398,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "cap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
@@ -664,7 +669,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "coberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
 	black_market_value = 30
 
@@ -975,7 +980,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_inv_hide = HIDETOPHAIR
 	item_icons = list(
-		WEAR_HEAD = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)

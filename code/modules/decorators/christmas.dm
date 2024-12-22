@@ -5,7 +5,7 @@
 
 // define when you wanna decorate
 /datum/decorator/christmas/is_active_decor()
-	return is_month(12) && is_day(25)
+	return is_month(12) && (is_day(24) || is_day(25))
 
 // define who is being decorated
 /datum/decorator/christmas/queen/get_decor_types()

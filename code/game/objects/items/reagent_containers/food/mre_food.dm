@@ -52,16 +52,16 @@
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	icon_state = "entree"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchicken,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/pizzasquare,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/chickentender,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/pepperonisquare,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/spaghettichunks,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/chiliconcarne,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/noodlesoup,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchickenbreast,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/feijoada,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchicken,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/pizzasquare,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/chickentender,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/pepperonisquare,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/spaghettichunks,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/chiliconcarne,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/noodlesoup,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchickenbreast,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/feijoada,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs
@@ -189,16 +189,16 @@
 	desc = "An MRE side component. Contains a side, to be eaten alongside the main."
 	icon_state = "side"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cornbread,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/kale,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/tortillas,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cinnamonappleslices,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/boiledrice,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cornbread,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/kale,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/tortillas,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cinnamonappleslices,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/boiledrice,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker
@@ -313,11 +313,11 @@
 	desc = "An MRE snack component. Contains a light snack in case you weren't feeling terribly hungry."
 	icon_state = "snack"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/biscuit,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/meatballs,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/pretzels,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/sushi,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/peanuts,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/biscuit,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/meatballs,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/pretzels,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/sushi,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/peanuts,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm_snack/biscuit
@@ -380,15 +380,15 @@
 	desc = "An MRE side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
 	icon_state = "snack"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/spicedapples,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/chocolatebrownie,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/sugarcookie,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/cocobar,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/flan,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/honeyflan,
-	/obj/item/reagent_container/food/snacks/cookie,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/lemonpie,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/limepie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/spicedapples,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/chocolatebrownie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/sugarcookie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/cocobar,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/flan,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/honeyflan,
+		/obj/item/reagent_container/food/snacks/cookie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/lemonpie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/limepie,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/spicedapples
@@ -515,10 +515,10 @@
 	icon = 'icons/obj/items/food/mre_food/pmc.dmi'
 	icon_state = "pmc_entree"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/wy_entree/bakedfish,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_entree/smokyribs,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_entree/ham,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_entree/beefstake,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/bakedfish,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/smokyribs,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/ham,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/beefstake,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_entree
@@ -577,11 +577,11 @@
 	desc = "An CFR side component. Contains a side, to be eaten alongside the main."
 	icon_state = "pmc_side"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
-	/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
 	)
 
 ///SNACK
@@ -591,10 +591,10 @@
 	desc = "An CFR side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
 	icon_state = "pmc_snack"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/eclair,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/strawberrycake,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/cherrypie,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/croissant,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/eclair,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/strawberrycake,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/cherrypie,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/croissant,
 	)
 
 ///DESSERT
@@ -604,11 +604,11 @@
 	desc = "An CFR side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
 	icon_state = "pmc_dessert"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/eclair,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/strawberrycake,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/cherrypie,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/croissant,
-	/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/whitecoco,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/eclair,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/strawberrycake,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/cherrypie,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/croissant,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/whitecoco,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_dessert
@@ -686,11 +686,11 @@
 	icon = 'icons/obj/items/food/mre_food/twe.dmi'
 	icon_state = "twe_entree"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/twe_entree/bacon,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_entree/tomatobeans,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnrice,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_entree/ricenoodles,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnchips,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_entree/bacon,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_entree/tomatobeans,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnrice,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_entree/ricenoodles,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnchips,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/twe_entree
@@ -763,10 +763,10 @@
 	desc = "An Operation Ration Pack side component. Contains a side, to be eaten alongside the main."
 	icon_state = "twe_side"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/twe_side/nutpatty,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_side/nigirisushi,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_side/nutpatty,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_side/tomatochips,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_side/nutpatty,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_side/nigirisushi,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_side/nutpatty,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_side/tomatochips,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/twe_side
@@ -815,8 +815,8 @@
 	desc = "An ORP snack component. Contains a light snack in case you weren't feeling terribly hungry."
 	icon_state = "twe_snack"
 	food_list = list(
-	/obj/item/reagent_container/food/snacks/mre_food/twe_snack/cheese,
-	/obj/item/reagent_container/food/snacks/mre_food/twe_snack/almond,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_snack/cheese,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_snack/almond,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/twe_snack

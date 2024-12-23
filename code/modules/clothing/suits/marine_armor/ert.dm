@@ -89,11 +89,13 @@
 	flags_armor_protection = BODY_FLAG_CHEST
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
+	item_state_slots = list(WEAR_JACKET = "armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
 	icon_state = "lead_armor"
 	item_state = "lead_armor"
+	item_state_slots = list(WEAR_JACKET = "lead_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/leader
 	name = "\improper M4 pattern PMC leader armor"
@@ -527,6 +529,9 @@
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This one has straps interweaved with the plates, that allow the user to fire a captured smartgun, if a bit uncomfortably."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
+//===========================//CMB\\================================\\
+//=====================================================================\\
+
 /obj/item/clothing/suit/storage/CMB
 	name = "\improper CMB Deputy jacket"
 	desc = "A thick and stylish black leather jacket with a Marshal's Deputy badge pinned to it. The back is enscribed with the powerful letters of 'DEPUTY' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
@@ -587,6 +592,81 @@
 	desc = "A thick and stylish black leather jacket with a Marshal's badge pinned to it. The back is enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket_marshal"
 	item_state = "CMB_jacket_marshal"
+
+/obj/item/clothing/suit/storage/marine/veteran/cmb
+	name = "\improper M4R pattern CMB armor"
+	desc = "A dark set of armor, which is a modification of the security variant of Armat Systems M3 armor. Designed for riot control and protest suppression in mind. The side of it has a metallic insignia with 'CMB RIOT CONTROL' on it. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+	)
+	icon_state = "cmb_heavy_armor"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 3
+
+
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
+		/obj/item/tool/pen,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+	)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb)
+	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light
+	name = "\improper M4R pattern CMB light armor"
+	icon_state = "cmb_light_armor"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	item_state_slots = list(WEAR_JACKET = "cmb_light_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/cmb/spec
+	name = "\improper M4R-S pattern CMB SWAT armor"
+	icon_state = "cmb_elite_armor"
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	item_state_slots = list(WEAR_JACKET = "cmb_elite_armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/cmb/leader
+	name = "\improper M4R pattern CMB Marshal armor"
+	icon_state = "cmb_sheriff_armor"
+	desc = "A custom fit variation of the CMB Riot armor, intended to be worn the Marshals themselves, has a golden lining with rank insignia. Has additional layer of lightweigh protective materials."
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+	item_state_slots = list(WEAR_JACKET = "cmb_sheriff_armor")
 
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\

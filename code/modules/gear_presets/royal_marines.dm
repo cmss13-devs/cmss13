@@ -418,7 +418,7 @@
 /datum/equipment_preset/twe/royal_marine/lieuteant/service
 	name = "TWE Royal Marine Commando (SO)"
 
-/datum/equipment_preset/twe/royal_marine/major/service/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/lieuteant/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/royal_marine, WEAR_BODY)
@@ -485,7 +485,7 @@
 /datum/equipment_preset/twe/royal_marine/captain/service
 	name = "TWE Royal Marine Commando (XO)"
 
-/datum/equipment_preset/twe/royal_marine/major/service/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/captain/service/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/royal_marine, WEAR_BODY)
@@ -510,7 +510,7 @@
 
 	minimap_icon = "rmc_major"
 
-	skills = /datum/skills/rmc/captain
+	skills = /datum/skills/rmc/major
 
 /datum/equipment_preset/twe/royal_marine/major/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)

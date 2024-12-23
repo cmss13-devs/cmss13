@@ -4,6 +4,10 @@
 /turf/open/floor/plating/platingdmg2,
 /area/lv624/lazarus/corporate_dome)
 "ab" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ac" = (
 /obj/structure/largecrate/random/case/small{
 	pixel_y = -3;
 	pixel_x = 1
@@ -14,7 +18,7 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
-"ac" = (
+"ad" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -25,25 +29,21 @@
 	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"ad" = (
+"ae" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"af" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"ag" = (
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = 7;
 	pixel_y = 3
 	},
 /turf/open/floor/whiteblue/east,
-/area/lv624/lazarus/corporate_dome)
-"ae" = (
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"af" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"ag" = (
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/corporate_dome)
 "ah" = (
 /obj/item/ammo_casing/cartridge,
@@ -1111,7 +1111,7 @@ wW
 qn
 OH
 Bh
-ab
+ac
 XG
 Yv
 Aj
@@ -1149,7 +1149,7 @@ YN
 XG
 ln
 GV
-ag
+af
 cn
 XG
 Rn
@@ -1171,16 +1171,16 @@ YN
 Lh
 hf
 ev
-ae
-ae
+ab
+ab
 Jq
 cA
 cA
-ae
-ae
+ab
+ab
 cA
 aQ
-ae
+ab
 Hn
 Ln
 aQ
@@ -1193,16 +1193,16 @@ YN
 mp
 sm
 RF
-ae
+ab
 KG
 cA
 cA
 cA
 Sb
-ae
+ab
 cA
 cA
-ae
+ab
 Sb
 AG
 cA
@@ -1214,9 +1214,9 @@ mK
 ah
 XG
 xk
-ad
+ag
 fH
-ac
+ad
 XG
 hc
 Dn
@@ -1265,7 +1265,7 @@ bm
 FZ
 gx
 cA
-ae
+ab
 cn
 XG
 Gi
@@ -1286,8 +1286,8 @@ Fl
 ZT
 ms
 IM
-ae
-ae
+ab
+ab
 cA
 qJ
 SV
@@ -1370,13 +1370,13 @@ Xt
 XG
 Hv
 GM
-af
+ae
 Df
 ha
 zz
 AT
 mg
-ae
+ab
 bA
 vW
 zs
@@ -1396,9 +1396,9 @@ zx
 Dp
 JL
 oq
-ae
-ae
-ae
+ab
+ab
+ab
 Ho
 FP
 sH
@@ -1415,7 +1415,7 @@ XG
 XG
 lG
 Pr
-ae
+ab
 ZO
 vf
 bE

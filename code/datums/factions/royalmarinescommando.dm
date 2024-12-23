@@ -27,6 +27,8 @@
 			hud_icon_state = "breacher"
 		if(JOB_TWE_RMC_CAPTAIN)
 			hud_icon_state = "commander"
+		if(JOB_TWE_RMC_MAJOR)
+			hud_icon_state = "major"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
 

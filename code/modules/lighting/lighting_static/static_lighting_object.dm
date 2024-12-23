@@ -36,6 +36,9 @@
 		affected_turf.static_lighting_object = null
 		affected_turf.luminosity = 1
 		affected_turf.underlays -= current_underlay
+		var/turf/above = locate(affected_turf.x, affected_turf.y, affected_turf.z + 1)
+		if(istype(above, /turf/open_space))
+			above.underlays.Cut()
 	affected_turf = null
 	return ..()
 
@@ -85,15 +88,28 @@
 	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
 		//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
 		affected_turf.underlays -= current_underlay
+		var/turf/above = locate(affected_turf.x, affected_turf.y, affected_turf.z + 1)
+		if(istype(above, /turf/open_space))
+			above.underlays.Cut()
 		current_underlay.icon_state = "transparent"
 		current_underlay.color = null
 		affected_turf.underlays += current_underlay
+		if(istype(above, /turf/open_space))
+			above.underlays += current_underlay
 	else if(!set_luminosity)
+		var/turf/above = locate(affected_turf.x, affected_turf.y, affected_turf.z + 1)
+		if(istype(above, /turf/open_space))
+			above.underlays.Cut()
 		affected_turf.underlays -= current_underlay
 		current_underlay.icon_state = "dark"
 		current_underlay.color = null
 		affected_turf.underlays += current_underlay
+		if(istype(above, /turf/open_space))
+			above.underlays += current_underlay
 	else
+		var/turf/above = locate(affected_turf.x, affected_turf.y, affected_turf.z + 1)
+		if(istype(above, /turf/open_space))
+			above.underlays.Cut()
 		affected_turf.underlays -= current_underlay
 		current_underlay.icon_state = null
 		current_underlay.color = list(
@@ -105,6 +121,8 @@
 		)
 
 		affected_turf.underlays += current_underlay
+		if(istype(above, /turf/open_space))
+			above.underlays += current_underlay
 
 	var/area/A = affected_turf.loc
 	//We are luminous

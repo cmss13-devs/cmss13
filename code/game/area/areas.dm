@@ -443,3 +443,6 @@
 /// From roundstart, sets a timer to make an area oviable.
 /area/proc/handle_ovi_timer()
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
+
+/area/sky
+	icon_state = "lv-626"

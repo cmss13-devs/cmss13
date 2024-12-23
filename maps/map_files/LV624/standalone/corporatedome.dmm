@@ -32,6 +32,23 @@
 	},
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
+"ae" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"af" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ag" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"ah" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -154,12 +171,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
-"fF" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "casing_9_1"
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
 "fH" = (
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
@@ -246,6 +257,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
 "kU" = (
@@ -293,6 +305,7 @@
 /area/lv624/lazarus/corporate_dome)
 "mg" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "mi" = (
@@ -310,6 +323,7 @@
 "mw" = (
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "mK" = (
@@ -551,12 +565,6 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
-"BZ" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_6_1"
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
 "Ct" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating/platingdmg1,
@@ -658,12 +666,6 @@
 /obj/structure/prop/server_equipment/yutani_server/broken,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
-"Go" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_10_1"
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
 "Gt" = (
 /obj/structure/machinery/light_construct/small{
 	dir = 8
@@ -739,9 +741,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
-"KC" = (
-/turf/open/floor/whiteyellowcorner/east,
-/area/lv624/lazarus/corporate_dome)
 "KG" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/white,
@@ -800,9 +799,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "Pr" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "casing_9_1"
-	},
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/whiteyellowcorner/east,
 /area/lv624/lazarus/corporate_dome)
 "Qi" = (
@@ -831,12 +828,6 @@
 	pixel_y = -2
 	},
 /turf/open/floor/whiteblue/northwest,
-/area/lv624/lazarus/corporate_dome)
-"RD" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "casing_1_1"
-	},
-/turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "RF" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -895,6 +886,7 @@
 /area/lv624/lazarus/corporate_dome)
 "Wx" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
 "Xc" = (
@@ -902,6 +894,7 @@
 	dir = 4;
 	health = 200
 	},
+/obj/item/ammo_casing/cartridge,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "Xf" = (
@@ -932,12 +925,6 @@
 "Xt" = (
 /turf/template_noop,
 /area/template_noop)
-"Xz" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_3_1"
-	},
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
 "XC" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -1162,7 +1149,7 @@ YN
 XG
 ln
 GV
-GV
+ag
 cn
 XG
 Rn
@@ -1184,16 +1171,16 @@ YN
 Lh
 hf
 ev
-cA
-cA
+ae
+ae
 Jq
 cA
 cA
-Go
-cA
+ae
+ae
 cA
 aQ
-cA
+ae
 Hn
 Ln
 aQ
@@ -1206,16 +1193,16 @@ YN
 mp
 sm
 RF
-fF
+ae
 KG
 cA
 cA
 cA
 Sb
+ae
 cA
 cA
-cA
-RD
+ae
 Sb
 AG
 cA
@@ -1224,7 +1211,7 @@ dI
 mK
 "}
 (12,1,1) = {"
-YN
+ah
 XG
 xk
 ad
@@ -1278,7 +1265,7 @@ bm
 FZ
 gx
 cA
-cA
+ae
 cn
 XG
 Gi
@@ -1299,8 +1286,8 @@ Fl
 ZT
 ms
 IM
-cA
-BZ
+ae
+ae
 cA
 qJ
 SV
@@ -1383,13 +1370,13 @@ Xt
 XG
 Hv
 GM
-bA
+af
 Df
 ha
 zz
 AT
 mg
-cA
+ae
 bA
 vW
 zs
@@ -1404,14 +1391,14 @@ Xt
 Xt
 XG
 zm
-KC
+Pr
 zx
 Dp
 JL
 oq
-cA
-Xz
-cA
+ae
+ae
+ae
 Ho
 FP
 sH
@@ -1428,7 +1415,7 @@ XG
 XG
 lG
 Pr
-cA
+ae
 ZO
 vf
 bE

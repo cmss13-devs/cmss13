@@ -368,3 +368,6 @@
   - rscadd: American Spirit cigarettes
   JackieEstegado:
   - bugfix: Facehugger resin traps no longer refill themselves with dead huggers.
+2024-12-23:
+  harryob:
+  - code_imp: Christmas Festivizer now only applies on Christmas Eve and Day.

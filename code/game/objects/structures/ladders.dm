@@ -275,3 +275,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+
+/obj/structure/ladder/multiz/up
+
+/obj/structure/ladder/multiz/down

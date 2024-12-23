@@ -205,6 +205,10 @@
 	density = FALSE
 	opacity = FALSE
 
+/obj/structure/stairs/multiz/up
+
+/obj/structure/stairs/multiz/down
+
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
 	icon_state = "np_stair"

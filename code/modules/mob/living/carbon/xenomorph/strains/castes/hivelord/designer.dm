@@ -360,8 +360,9 @@
 	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
 	animation.loc = target_turf
 
-	//Use a soft sleep to delete the animation after 1 second
-	set waitfor = FALSE
-	sleep(1 SECONDS)
-	if(animation)
-		qdel(animation)
+	// Schedule deletion of the animation after 1 second
+	addtimer(CALLBACK(animation, "delete_animation"), 1 SECONDS)
+
+/obj/effect/resin_construct/fastweak/proc/delete_animation()
+	if(src)
+		qdel(src)

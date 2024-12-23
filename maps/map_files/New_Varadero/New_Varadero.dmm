@@ -9719,11 +9719,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "hRs" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
+/obj/structure/prop/invuln/fusion_reactor{
+	name = "Plasma Reactor"
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)

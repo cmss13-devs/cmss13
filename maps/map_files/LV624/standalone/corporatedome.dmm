@@ -1,4 +1,37 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi,
+/turf/open/floor/plating/platingdmg2,
+/area/lv624/lazarus/corporate_dome)
+"ab" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_y = -3;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"ac" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"ad" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -229,6 +262,18 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = -4;
+	pixel_x = -9
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -1;
+	pixel_y = 7
+	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "lG" = (
@@ -420,6 +465,9 @@
 	pixel_x = -8;
 	pixel_y = 16
 	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6
+	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
@@ -464,6 +512,7 @@
 /area/lv624/lazarus/corporate_dome)
 "zx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
@@ -821,13 +870,6 @@
 /obj/item/frame/table/wood/fancy,
 /turf/open/floor/whiteyellow/northeast,
 /area/lv624/lazarus/corporate_dome)
-"TF" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/largecrate/supply/medicine,
-/turf/open/floor/whiteblue/southwest,
-/area/lv624/lazarus/corporate_dome)
 "Uo" = (
 /obj/item/shard,
 /turf/open/floor/plating/asteroidfloor/north,
@@ -935,7 +977,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "ZT" = (
-/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 
@@ -1063,7 +1105,7 @@ Bh
 Bh
 qH
 Uo
-yJ
+aa
 LZ
 mi
 Xt
@@ -1082,7 +1124,7 @@ wW
 qn
 OH
 Bh
-Bh
+ab
 XG
 Yv
 Aj
@@ -1121,7 +1163,7 @@ XG
 ln
 GV
 GV
-TF
+cn
 XG
 Rn
 Fl
@@ -1185,9 +1227,9 @@ mK
 YN
 XG
 xk
+ad
 fH
-fH
-UF
+ac
 XG
 hc
 Dn

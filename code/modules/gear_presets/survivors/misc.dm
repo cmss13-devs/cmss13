@@ -261,14 +261,14 @@ Everything below isn't used or out of place.
 
 // New Varadero CO Survivor.
 /datum/equipment_preset/survivor/new_varadero/commander
-	name = "Survivor - USASF Commander"
-	assignment = "USASF Commander"
+	name = "Survivor - LACN Commander"
+	assignment = "LACN Commander"
 	skills = /datum/skills/commander
-	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "xo"
 	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold
-	role_comm_title = "USASF CDR"
+	role_comm_title = "LACN CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

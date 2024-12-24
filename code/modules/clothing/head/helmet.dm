@@ -358,6 +358,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
+/obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
+	. = ..()
+	if(camera)
+		camera.status = TRUE
+
+/obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
+	. = ..()
+	if(camera)
+		camera.status = FALSE
+
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))

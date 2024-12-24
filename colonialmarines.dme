@@ -1115,7 +1115,6 @@
 #include "code\game\objects\items\contraband.dm"
 #include "code\game\objects\items\cosmetics.dm"
 #include "code\game\objects\items\cpr_dummy.dm"
-#include "code\game\objects\items\cprbot.dm"
 #include "code\game\objects\items\cprbot_item.dm"
 #include "code\game\objects\items\disks.dm"
 #include "code\game\objects\items\fulton.dm"

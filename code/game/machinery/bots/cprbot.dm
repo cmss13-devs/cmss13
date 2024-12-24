@@ -428,13 +428,12 @@
 		return TRUE
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		visible_message(SPAN_DANGER("<B>[user] fails to undeploy [src] </B>"))
+		to_chat(user, SPAN_WARNING("You have no idea how to undeploy [src]."))
 		return FALSE
 
 	SEND_SIGNAL(user, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
-	if (user != src)
-		visible_message(SPAN_DANGER("<B>[user] begins to undeploy [src]!</B>"))
+	to_chat(user, SPAN_WARNING("You undeploy [src]."))
 	self_destruct(user)
 	return TRUE
 

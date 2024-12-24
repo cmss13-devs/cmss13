@@ -305,9 +305,6 @@
 	return
 
 /obj/structure/machinery/bot/cprbot/proc/can_still_see_patient()
-	if (isnull(human))
-		return FALSE
-
 	var/mob/living/carbon/human/patient = human?.resolve()
 	if (isnull(patient))
 		return FALSE

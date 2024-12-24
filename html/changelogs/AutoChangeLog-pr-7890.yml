@@ -1,0 +1,4 @@
+author: "KaiserBlackwood"
+delete-after: True
+changes:
+  - bugfix: "puts correct path in wear_back function of shields."

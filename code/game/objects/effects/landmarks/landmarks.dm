@@ -281,7 +281,21 @@
 	GLOB.yautja_teleport_descs -= desc_index
 	return ..()
 
+/obj/effect/landmark/yautja_young_teleport
+	name = "yautja_teleport_youngblood"
+	var/desc_index
 
+/obj/effect/landmark/yautja_young_teleport/Initialize(mapload, ...)
+	. = ..()
+	var/turf/turf = get_turf(src)
+	desc_index = turf.loc.name + turf.loc_to_string()
+	GLOB.yautja_young_teleports += src
+	GLOB.yautja_young_descs[desc_index] = src
+
+/obj/effect/landmark/yautja_young_teleport/Destroy()
+	GLOB.yautja_young_teleports -= src
+	GLOB.yautja_teleport_descs -= desc_index
+	return ..()
 
 /obj/effect/landmark/start
 	name = "start"

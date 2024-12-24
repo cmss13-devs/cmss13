@@ -942,7 +942,7 @@
 	if(boomer.stat)
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 		return
-	if(istype(grounds, /area/yautja_grounds)) // Hunted need mask to escape
+	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 		return
 	if(caller.faction == FACTION_YAUTJA_YOUNG)
@@ -1052,13 +1052,13 @@
 		return
 
 	var/list/target_list = list()
-	if(!length(target_list))
-		to_chat(caller, SPAN_NOTICE("No youngbloods are currently alive."))
-		return
-
 	for(var/mob/living/carbon/human/target_youngbloods as anything in GLOB.yautja_mob_list)
 		if(target_youngbloods.faction == FACTION_YAUTJA_YOUNG && target_youngbloods.stat != DEAD)
 			target_list += target_youngbloods
+
+	if(!length(target_list))
+		to_chat(caller, SPAN_NOTICE("No youngbloods are currently alive."))
+		return
 
 	var/choice = tgui_input_list(caller, "Choose a young hunter to terminate:", "Kill Youngblood", target_list)
 
@@ -1067,15 +1067,16 @@
 
 	var/mob/living/target_youngblood = choice
 
-	var/reason = stripped_input(caller, "Provide a reason for terminating [target_youngblood].")
+	var/reason = tgui_input_text(caller, "Provide a reason for terminating [target_youngblood].")
 	if(!reason)
 		to_chat(caller, SPAN_WARNING("You must provide a reason for terminating [target_youngblood]."))
 		return
 
-	var/turf/dead_youngblood
+	var/area/location = get_area(target_youngblood)
+	var/turf/floor = get_turf(target_youngblood)
 	target_youngblood.death(create_cause_data("[target_youngblood.real_name] was terminated by [caller.real_name] for [reason]."))
-	message_all_yautja("[caller.real_name] has terminated [target_youngblood.real_name] for [reason].")
-	message_admins(src,"[caller.real_name] terminated [target_youngblood.real_name] for [reason] at [get_area(target_youngblood)] ([x],[y],[z]).[ADMIN_JMP(dead_youngblood)]")
+	message_all_yautja("[caller.real_name] has terminated [target_youngblood.real_name] for: '[reason]'.")
+	message_admins(FONT_SIZE_LARGE("ALERT: [caller.real_name] ([caller.key]) Terminated [target_youngblood.real_name] ([target_youngblood.key]) in [location.name] for: '[reason]' [ADMIN_JMP(floor)]</font>"))
 
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()

@@ -70,7 +70,7 @@
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_JUNGLE
 
-///TP Areas/Young blood pred areas
+///TP Areas/Young blood prep areas
 
 /area/yautja_grounds/prep_room
 	name = "\improper Jungle Moon Campsite"

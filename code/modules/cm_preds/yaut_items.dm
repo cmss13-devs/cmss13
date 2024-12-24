@@ -518,6 +518,10 @@
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
+	if(user.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
 	if(hunting_ground_activated)
 		to_chat(user, SPAN_WARNING("A hunting ground has already been chosen."))
 		return
@@ -571,6 +575,10 @@
 /obj/structure/machinery/hunt_ground_spawner/attack_hand(mob/living/user)
 	. = ..()
 	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(user.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 

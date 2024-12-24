@@ -194,6 +194,12 @@
 		to_chat(src, "That choice is no longer available!")
 		return
 
+	for(var/mob/dead/observer/user in beacons)
+		if(istype(beacons, /datum/emergency_call/young_bloods))
+			if((user.client.check_whitelist_status(src, WHITELIST_YAUTJA)) || jobban_isbanned(src, "Young Blood"))
+				to_chat(src, SPAN_DANGER("You are banned from this response team!"))
+				return
+
 	var/datum/emergency_call/distress = beacons[choice]
 
 	if(!istype(distress) || !distress.mob_max)

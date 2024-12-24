@@ -157,12 +157,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
 	return ..()
 
-/datum/equipment_preset/yautja/youngblood/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
-	name = "Yautja Young (none-WL)"
+	name = "Yautja Young (non-WL)"
 	minimap_icon = "predator_young"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -178,7 +174,7 @@
 	new_human.change_real_name(new_human, new_name)
 
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
-	name = "Yautja Youngblood pack leader (none-WL)"
+	name = "Yautja Youngblood pack leader (non-WL)"
 	minimap_icon = "predator_young"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -188,7 +184,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
 	return ..()
 
-/datum/equipment_preset/yautja/non_wl/pack_leader/load_name(mob/living/carbon/human/new_human, randomise)
+/datum/equipment_preset/yautja/non_wl_leader/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
 	var/new_name = "Pack Leader [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)

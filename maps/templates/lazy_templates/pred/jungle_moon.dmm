@@ -51,33 +51,10 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
-"aj" = (
-/obj/structure/prop/brazier/torch{
-	pixel_y = 13
-	},
-/turf/closed/wall/rock/brown,
-/area/yautja_grounds/jungle/west)
 "ak" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/south)
-"al" = (
-/obj/item/roller/bedroll,
-/obj/item/roller/bedroll,
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/item/roller/bedroll,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
 "am" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -93,85 +70,13 @@
 	},
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room)
-"an" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/obj/item/hunting_trap,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/young_blood_prep)
-"ao" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/item/stack/sheet/animalhide/xeno{
-	anchored = 1;
-	color = "green";
-	desc = "The skin of a nightmare long thought lost to time.";
-	name = "corroder hide"
-	},
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/young_blood_prep)
-"ap" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/item/stack/sheet/animalhide/xeno{
-	name = "Lurker Hide"
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
-"aq" = (
-/obj/structure/machinery/cryopod,
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
 "ar" = (
 /turf/open/gm/dirtgrassborder,
 /area/yautja_grounds/jungle/west)
-"as" = (
-/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
 "at" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
-"au" = (
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
-"av" = (
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/young_blood_prep)
-"aw" = (
-/obj/item/stool,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/young_blood_prep)
 "ax" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines{
@@ -179,54 +84,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
-"ay" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/kitchen/utensil/spoon{
-	desc = "It's a spoon. Covered in red slime and mold.";
-	pixel_x = -10;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/snacks/wishsoup,
-/obj/item/reagent_container/food/snacks/rawcutlet,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/young_blood_prep)
-"az" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	color = "#2e1e21"
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
-"aA" = (
-/obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
-/obj/structure/machinery/cryopod,
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
-"aB" = (
-/obj/structure/prop/brazier/frame/full/campfire,
-/turf/open/gm/dirt,
-/area/yautja_grounds/jungle/west)
-"aC" = (
-/obj/structure/prop/brazier/torch,
-/turf/closed/wall/rock/brown,
-/area/yautja_grounds/jungle/west)
-"aD" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood{
-	pixel_y = 3
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
 "aE" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_east)
-"aF" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/centre{
-	pixel_y = 3
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
 "aG" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -241,24 +102,10 @@
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_east)
-"aJ" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/left_centre{
-	pixel_y = 3
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
-"aK" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/right_centre{
-	pixel_y = 3
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
-"aL" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/right{
-	pixel_y = 3
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/young_blood_prep)
+"aM" = (
+/obj/effect/landmark/yautja_young_teleport,
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/prep_room)
 "aO" = (
 /turf/open/gm/coast/east,
 /area/yautja_grounds/south_west)
@@ -3825,11 +3672,11 @@ oV
 oV
 oV
 oV
-aq
-as
-aA
-as
-aq
+oV
+oV
+oV
+oV
+oV
 oV
 JK
 JK
@@ -3923,13 +3770,13 @@ oV
 oV
 oV
 oV
-aC
-as
-as
-as
-as
-as
-aj
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4020,15 +3867,15 @@ oV
 oV
 oV
 oV
-au
-aD
-au
-au
-av
-av
-av
-au
-al
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4119,15 +3966,15 @@ oV
 oV
 oV
 oV
-au
-aF
-au
-av
-aw
-aw
-aw
-av
-an
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4218,15 +4065,15 @@ oV
 oV
 oV
 oV
-au
-aJ
-au
-av
-ay
-ay
-ay
-av
-an
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4317,15 +4164,15 @@ oV
 oV
 oV
 oV
-au
-aK
-au
-av
-aw
-aw
-aw
-av
-ao
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4416,15 +4263,15 @@ oV
 oV
 oV
 oV
-au
-aL
-au
-au
-av
-av
-av
-au
-ap
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4517,13 +4364,13 @@ oV
 oV
 oV
 oV
-aC
-au
-au
-au
-au
-au
-aj
+oV
+oV
+oV
+oV
+oV
+oV
+oV
 JK
 JK
 JK
@@ -4619,8 +4466,8 @@ oV
 oV
 oV
 oV
-az
-az
+oV
+oV
 oV
 oV
 JK
@@ -4815,7 +4662,7 @@ oV
 oV
 vf
 ar
-aB
+XC
 XC
 XC
 XC
@@ -7181,7 +7028,7 @@ Ow
 Ow
 wi
 LW
-HJ
+aM
 Qi
 bl
 nu

@@ -12,7 +12,7 @@
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/remote/whisperer, //third macro
 		/datum/action/xeno_action/onclick/toggle_long_range/whisperer, //fourth macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
@@ -56,6 +56,10 @@
 
 	var/last_use = 0
 	var/care_about_adjacency = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/remote/whisperer
+	xeno_cooldown_interrupt_modifier = 0 // The whisperer already has cooldowns while placing walls and many restrictions on building. He doesn't need a restriction after she is interrupt.
+	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())

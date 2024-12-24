@@ -195,8 +195,7 @@
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, FALSE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are the Youngblood Pack Leader, you are the dominant hunter within the youngblood hunting party!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players and follow the honour code. IF you fail any of these you will be dispached via a kill switch all younbloods have within them. You may also face OOC repercussions. Good luck and have fun."))
-	else
-		(check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
+	else if(check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl, TRUE, FALSE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players and follow the honour code. IF you fail any of these you will be dispached via a kill switch all younbloods have within them. You may also face OOC repercussions. Good luck and have fun."))

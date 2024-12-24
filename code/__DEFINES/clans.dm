@@ -90,3 +90,5 @@
 		)
 
 #define CLAN_SHIP_PUBLIC -1
+
+#define ERT_JOB_YOUNGBLOOD "Young Blood"

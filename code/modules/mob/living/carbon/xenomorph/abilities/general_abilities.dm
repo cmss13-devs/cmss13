@@ -91,7 +91,7 @@
 
 	var/xeno_cooldown_interrupt_modifier = 2 // In addition to the cooldown on building, you also get an increased cooldown after canceling that building.
 	var/xeno_cooldown_fail = 1 // Something went wrong, for example, you can't build here
-	var/build_speed_mod = 1
+	var/build_speed_mod = 1 // Placement time increase modifier
 
 	plasma_cost = 1
 

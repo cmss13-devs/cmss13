@@ -1268,6 +1268,10 @@
 	icon_state = "rmc_uniform_service"
 	worn_state = "rmc_uniform_service"
 
+/obj/item/clothing/under/marine/officer/royal_marine/black
+	icon_state = "rmc_service"
+	worn_state = "rmc_service"
+
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"
 	desc = "M3 MOPP suits are specially designed and engineered to protect the wearer from unshielded exposure to any Chemical, Biological, Radiological, or Nuclear (CBRN) threats in the field. The suit has a recommended lifespan of twenty-four hours once contact with a toxic environment is made, but depending on the severity this can be shortened to eight hours or less."

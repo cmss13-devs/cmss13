@@ -6,7 +6,7 @@
 	w_class = SIZE_MEDIUM
 	var/deployment_path = /obj/structure/machinery/bot/cprbot
 
-/obj/item/cprbot_item/attack_self(mob/user as mob)
+/obj/item/cprbot_item/attack_self(mob/user)
 	if (..())
 		return TRUE
 

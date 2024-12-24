@@ -371,3 +371,9 @@
 2024-12-23:
   harryob:
   - code_imp: Christmas Festivizer now only applies on Christmas Eve and Day.
+2024-12-24:
+  KaiserBlackwood:
+  - bugfix: puts correct path in wear_back function of shields.
+  Stakeyng:
+  - rscadd: Synth reset key fits in construction belt, tool webbing, and engineer
+      kit pouch

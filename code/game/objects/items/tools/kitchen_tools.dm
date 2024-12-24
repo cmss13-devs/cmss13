@@ -8,6 +8,7 @@
  * Butcher's cleaver
  * Rolling Pins
  * Trays
+ * Can openers
  */
 
 /obj/item/tool/kitchen
@@ -281,3 +282,13 @@
 			cooldown = world.time
 	else
 		..()
+
+/*
+ * Can opener
+ */
+/obj/item/tool/kitchen/can_opener
+	name = "Can opener"
+	desc = "Can opener"
+	icon = 'icons/obj/items/kitchen_tools.dmi'
+	icon_state = "can_opener"
+	inherent_traits = list(TRAIT_TOOL_CAN_OPENER)

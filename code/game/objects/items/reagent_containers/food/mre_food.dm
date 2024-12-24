@@ -932,10 +932,10 @@
 
 /obj/item/reagent_container/food/drinks/cans/tube/update_icon()
 	overlays.Cut()
-	if(canopened && reagents.total_volume)
+	if(open && reagents.total_volume)
 		overlays += mutable_appearance(icon, flavor)
 
-	if(!canopened)
+	if(!open)
 		overlays += mutable_appearance(icon, "paste_cap")
 
 	var/percent = floor((reagents.total_volume / volume) * 100)

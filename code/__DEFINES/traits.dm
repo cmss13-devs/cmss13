@@ -261,6 +261,7 @@
 #define TRAIT_TOOL_WIRECUTTERS "t_tool_wirecutters"
 #define TRAIT_TOOL_WRENCH "t_tool_wrench"
 #define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
+#define TRAIT_TOOL_CAN_OPENER "t_tool_can_opener"
 
 #define TRAIT_TOOL_BLOWTORCH "t_tool_blowtorch"
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"

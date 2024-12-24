@@ -1,5 +1,6 @@
 /obj/item/reagent_container/food/drinks/cans
-	var/canopened = FALSE
+	var/open = FALSE
+	var/needs_can_opener = FALSE
 	var/crushed = FALSE
 	var/crushable = TRUE
 	var/open_sound = 'sound/effects/canopen.ogg'
@@ -15,16 +16,31 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
 	)
 
+/obj/item/reagent_container/food/drinks/cans/attackby(obj/item/I as obj, mob/user as mob)
+	if(open || !needs_can_opener || !HAS_TRAIT(I, TRAIT_TOOL_CAN_OPENER))
+		return
+
+	if(do_after(user,3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		playsound(src.loc, open_sound, 15, 1)
+		to_chat(user, SPAN_NOTICE(open_message))
+		open = TRUE
+		if(has_open_icon)
+			icon_state += "_open"
+		update_icon()
+
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
 
 	if(crushed)
 		return
 
-	if (!canopened)
+	if (!open)
+		if(needs_can_opener)
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] using can opener!"))
+			return
 		playsound(src.loc, open_sound, 15, 1)
 		to_chat(user, SPAN_NOTICE(open_message))
-		canopened = TRUE
+		open = TRUE
 		if(has_open_icon)
 			icon_state += "_open"
 		update_icon()
@@ -33,7 +49,7 @@
 	if(crushed)
 		return ..()
 
-	if (canopened && !reagents.total_volume && crushable)
+	if (open && !reagents.total_volume && crushable)
 		if(user.a_intent == INTENT_HARM)
 			if(isturf(loc))
 				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
@@ -48,7 +64,7 @@
 	if(crushed)
 		return
 
-	if(!canopened)
+	if(!open)
 		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 		return
 	var/datum/reagents/R = src.reagents
@@ -69,7 +85,7 @@
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
-		if (!canopened)
+		if (!open)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
@@ -103,24 +119,24 @@
 	if(crushed || !proximity) return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		if (!canopened)
+		if (!open)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-		if (!canopened)
+		if (!open)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
 		if(istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-			if(!cantarget.canopened)
+			if(!cantarget.open)
 				to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] you want to pour into!"))
 				return
 
 	else if(istype(target, /obj/item/reagent_container/food/snacks) && food_interactable)
-		if (!canopened)
+		if (!open)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 

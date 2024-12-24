@@ -479,7 +479,7 @@
 		forceMove(collided_atom.loc)
 	else if ((istype(collided_atom, /mob/living/)) && (!anchored))
 		forceMove(collided_atom.loc)
-
+#undef STATE_CPRBOT_IDLE
 #undef STATE_CPRBOT_MOVING
 #undef STATE_CPRBOT_CPR
 #undef STATE_CPRBOT_FOLLOWING_OWNER

@@ -149,13 +149,10 @@
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return FALSE
-
 	else
 		xeno_cooldown = xeno_cooldown * 0.5
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
-
 	apply_cooldown()
-
 	xeno_cooldown = initial(xeno_cooldown)
 
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
@@ -248,13 +245,10 @@
 		to_chat(xeno, SPAN_WARNING("You can only construct nodes on our weeds!"))
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return FALSE
-
 	else
 		xeno_cooldown = xeno_cooldown * 0.5
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
-
 	apply_cooldown()
-
 	xeno_cooldown = initial(xeno_cooldown)
 
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))

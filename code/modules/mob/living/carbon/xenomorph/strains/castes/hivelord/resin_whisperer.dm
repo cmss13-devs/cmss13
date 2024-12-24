@@ -59,7 +59,7 @@
 
 /datum/action/xeno_action/activable/secrete_resin/remote/whisperer
 	xeno_cooldown = 1.5 SECONDS // Slower than a drone, faster than a queen.
-	xeno_cooldown_interrupt_modifier = 0 // The whisperer already has cooldowns while placing walls and many restrictions on building. He doesn't need a restriction after she is interrupt.
+	xeno_cooldown_interrupt_modifier = 1 // Spam penalty like value of xeno_cooldown
 	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.
 	build_speed_mod = 1.5 // She builds the walls and then proceeds to the next ones as planned without any unnecessary waiting.
 

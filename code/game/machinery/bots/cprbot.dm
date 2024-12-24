@@ -412,9 +412,9 @@
 
 /obj/structure/machinery/bot/cprbot/proc/self_destruct(mob/living/carbon/human/user = null)
 	var/obj/item/cprbot_item = new /obj/item/cprbot_item(loc)
-	qdel(src)
-	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
 
+	playsound(loc, 'sound/CPRbot/CPRbot_poweroff.ogg', 25, 1)
+	qdel(src)
 	if (!user)
 		cprbot_item.forceMove(loc)
 		return

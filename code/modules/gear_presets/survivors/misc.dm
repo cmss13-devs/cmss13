@@ -264,7 +264,7 @@ Everything below isn't used or out of place.
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
-	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "xo"
 	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold

@@ -1269,8 +1269,8 @@
 	worn_state = "rmc_uniform_service"
 
 /obj/item/clothing/under/marine/officer/royal_marine/black
-	icon_state = "rmc_service"
-	worn_state = "rmc_service"
+	icon_state = "rmc_uniform_service_black"
+	worn_state = "rmc_uniform_service_black"
 
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"

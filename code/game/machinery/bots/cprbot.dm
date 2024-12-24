@@ -229,8 +229,7 @@
 			state = STATE_CPRBOT_FOLLOWING_OWNER
 			walk_to(src, owner, 0, movement_delay)
 		else if (state == STATE_CPRBOT_FOLLOWING_OWNER)
-			// Continue following the owner
-			walk_to(src, owner, 0, movement_delay)
+			return
 		else
 			// Default to idle state
 			go_idle()

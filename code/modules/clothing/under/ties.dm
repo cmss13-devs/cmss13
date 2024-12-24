@@ -685,6 +685,7 @@
 		/obj/item/tool/shovel/etool,
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
+		/obj/item/stack/rods,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small

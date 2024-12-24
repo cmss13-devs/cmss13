@@ -920,12 +920,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		clear_turfs += T
 
 	for(var/datum/supply_order/order in shoppinglist)
-		// No space! Forget buying, it's no use.
-		if(!length(clear_turfs))
-			shoppinglist.Cut()
-			return
-
 		for(var/datum/supply_packs/package as anything in order.objects)
+
+			// No space! Forget buying, it's no use.
+			if(!length(clear_turfs))
+				shoppinglist.Cut()
+				return
 
 			if(package.contraband == TRUE && prob(5))
 			// Mendoza loaded the wrong order in. What a dunce!

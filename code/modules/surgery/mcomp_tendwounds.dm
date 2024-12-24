@@ -61,8 +61,8 @@
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(40,40)
-	target.Slow(5 MINUTES)
-	target.Superslow(2.5 MINUTES)
+	target.Slow(300)
+	target.Superslow(150)
 
 	if(isspeciesyautja(target))
 		target.emote("click2")
@@ -117,8 +117,8 @@
 
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(65,65)
-	target.Slow(5 MINUTES)
-	target.Superslow(2.5 MINUTES)
+	target.Slow(300)
+	target.Superslow(150)
 
 	for(var/datum/internal_organ/organ in target.internal_organs) //Fixes all organs
 		organ.rejuvenate()

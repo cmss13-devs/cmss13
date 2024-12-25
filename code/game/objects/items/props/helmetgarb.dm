@@ -83,44 +83,6 @@
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
 	color = "yellow"
 
-/obj/item/prop/helmetgarb/lucky_feather/squadfeather
-	name = "\improper Yellow Lucky Feather"
-	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
-
-/obj/item/prop/helmetgarb/lucky_feather/squadfeather/equipped(mob/user, slot)
-	. = ..()
-	self_set()
-	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
-
-/obj/item/prop/helmetgarb/lucky_feather/squadfeather/dropped(mob/user)
-	. = ..()
-	UnregisterSignal(user, COMSIG_SET_SQUAD)
-
-/obj/item/prop/helmetgarb/lucky_feather/squadfeather/proc/self_set()
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		if(H.assigned_squad)
-			switch(H.assigned_squad.name)
-				if(SQUAD_MARINE_1)
-					name = "\improper Red Lucky Feather"
-					color = "red"
-					desc = "Often found atop heads, slightly less found on those still attached."
-				if(SQUAD_MARINE_2)
-					color = "yellow"
-					desc = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
-				if(SQUAD_MARINE_3)
-					name = "\improper Purple Lucky Feather"
-					color = "purple"
-					desc = "Still has some morning toast crumbs on it."
-				if(SQUAD_MARINE_4)
-					name = "\improper Blue Lucky Feather"
-					color = "blue"
-					desc = "Hard to consider protection, but these types of people don't seek protection."
-		else
-			icon_state = "lucky_feather"
-			desc = initial(desc)
-		H.update_inv_head()
-
 #define NVG_SHAPE_COSMETIC 1
 #define NVG_SHAPE_BROKEN 2
 #define NVG_SHAPE_PATCHED 3

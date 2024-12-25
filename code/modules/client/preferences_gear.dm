@@ -329,10 +329,6 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Lucky feather, blue"
 	path = /obj/item/prop/helmetgarb/lucky_feather/blue
 
-/datum/gear/helmet_garb/lucky_feather/squadfeather
-	display_name = "Lucky feather, squad specific"
-	path = /obj/item/prop/helmetgarb/lucky_feather/squadfeather
-
 /datum/gear/helmet_garb/broken_nvgs
 	display_name = "Night vision goggles, broken"
 	path = /obj/item/prop/helmetgarb/helmet_nvg/cosmetic

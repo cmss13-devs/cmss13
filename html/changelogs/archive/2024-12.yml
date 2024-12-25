@@ -363,3 +363,35 @@
   Venuska1117, Drathek:
   - balance: Early game Queen Building Buff, now allows queen to upgrade structures
       to "Thicker" version.
+2024-12-22:
+  AmoryBlaine, Crowford:
+  - rscadd: American Spirit cigarettes
+  JackieEstegado:
+  - bugfix: Facehugger resin traps no longer refill themselves with dead huggers.
+2024-12-23:
+  harryob:
+  - code_imp: Christmas Festivizer now only applies on Christmas Eve and Day.
+2024-12-24:
+  KaiserBlackwood:
+  - bugfix: puts correct path in wear_back function of shields.
+  Stakeyng:
+  - rscadd: Synth reset key fits in construction belt, tool webbing, and engineer
+      kit pouch
+2024-12-25:
+  Drathek:
+  - bugfix: Various decals are now properly anchored
+  - bugfix: Fixed xenos being able to interact with cards (at least without thumbs)
+  - bugfix: Fixed m56d being unable to be reloaded in gun form
+  - bugfix: Fixed xenos being able to mousedrop mob/items into closets/crates/lockers
+  - rscdel: Removed a to_chat for failing to toggle_open verb
+  - bugfix: Fixed pounce and grab methods to pull something anchored (e.g. ovi queen)
+  Nomoresolvalou, Thwomper:
+  - rscadd: Added staff and longaxe weapons to the elite yautja vendor.
+  - imageadd: Adds onmob sprites for the longaxe.
+  - spellcheck: Changes hunter staff description to be more in line with other weapons.
+  dadlips:
+  - maptweak: Replaced all guest pass terminals
+  realforest2001:
+  - bugfix: Yautja can now correctly un-mark dead people.
+  sg2002:
+  - bugfix: players with no squad preference get correctly put into random squads

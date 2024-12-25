@@ -156,6 +156,7 @@
 		/obj/item/defenses/handheld/sentry,
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
+		/obj/item/device/defibrillator/synthetic,
 	)
 
 	bypass_w_limit = list(

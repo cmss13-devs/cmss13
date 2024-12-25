@@ -352,7 +352,7 @@
 			return
 
 		if(inoperable())
-			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be overloaded."))
+			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be [overloaded ? "restored" : "overloaded"]."))
 			return
 
 		set_overloading(!overloaded)

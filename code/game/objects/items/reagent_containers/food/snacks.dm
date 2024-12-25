@@ -2726,7 +2726,7 @@
 	name = "Cracker"
 	desc = "It's a salted cracker."
 	icon_state = "cracker"
-	icon = 'icons/obj/items/food/mre_food.dmi'
+	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	filling_color = "#F5DEB8"
 
 /obj/item/reagent_container/food/snacks/cracker/Initialize()
@@ -3334,7 +3334,7 @@
 	name = "\improper UPP ration"
 	desc = "A sealed, freeze-dried, compressed package containing a single item of food. Commonplace in the UPP military, especially those units stationed on far-flung colonies. This one is stamped for consumption by the UPP's 'Smoldering Sons' battalion and was packaged in 2179."
 	icon_state = "upp_ration"
-	icon = 'icons/obj/items/food/mre_food.dmi'
+	icon = 'icons/obj/items/food/mre_food/upp.dmi'
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/upp/Initialize()

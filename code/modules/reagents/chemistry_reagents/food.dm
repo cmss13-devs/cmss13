@@ -89,7 +89,7 @@
 	description = "Cooked noodles."
 	flags = REAGENT_NO_GENERATION
 
-/datum/reagent/nutriment/dough/nuts
+/datum/reagent/nutriment/nuts
 	name = "Nuts"
 	id = "nuts"
 	description = "Some sort of grinded nut, smells like almonds."

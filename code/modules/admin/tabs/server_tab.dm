@@ -14,7 +14,7 @@
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		sleep(50)
-		world.Reboot()
+		world.Reboot(GLOB.href_token)
 
 /datum/admins/proc/togglejoin()
 	set name = "Toggle Joining Round"

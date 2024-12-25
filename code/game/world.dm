@@ -221,7 +221,15 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		response["data"] = command.data
 		return json_encode(response)
 
-/world/Reboot(reason)
+/world/Reboot(auth)
+	// Don't ask why we need that
+	if(auth != GLOB.href_token)
+		if(usr)
+			log_admin("[key_name(usr)] tried to reboot server without right to do it.")
+		else
+			log_admin("Unexpected reboot command passed to server.")
+		return
+
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)

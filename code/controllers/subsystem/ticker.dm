@@ -376,7 +376,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(graceful)
 		to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Shutting down...")]</h3>")
-		world.Reboot(FALSE)
+		world.Reboot(GLOB.href_token)
 		return
 
 	if(!delay)
@@ -399,7 +399,7 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Rebooting World. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
-	world.Reboot(TRUE)
+	world.Reboot(GLOB.href_token)
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	if(!GLOB.RoleAuthority)

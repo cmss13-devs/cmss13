@@ -347,7 +347,7 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			return
 
-		to_chat(user, SPAN_WARNING("You start [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		to_chat(user, SPAN_WARNING("You start [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
 

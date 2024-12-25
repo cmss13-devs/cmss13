@@ -45,8 +45,7 @@ GLOBAL_PROTECT(href_token)
 		owner.update_special_keybinds()
 		GLOB.admins |= C
 		if(owner.admin_holder.rights & R_PROFILER)
-			if(!world.GetConfig("admin", C.ckey))
-				world.SetConfig("APP/admin", C.ckey, "role=admin")
+			world.SetConfig("APP/admin", C.ckey, "role=admin")
 
 /datum/admins/proc/disassociate()
 	if(owner)

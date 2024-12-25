@@ -545,7 +545,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/datum/squad/squad in squads)
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
-	mixed_squads = shuffle(mixed_squads)
 
 	var/preferred_squad = human.client?.prefs?.preferred_squad
 	if(preferred_squad == "None")
@@ -561,12 +560,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.put_marine_in_squad(human))
 				return
 
-		if(!lowest)
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad
-
-		else if(slot_check)
-			if(squad.roles_in[slot_check] < lowest.roles_in[slot_check])
-				lowest = squad
 
 	if(!lowest || !lowest.put_marine_in_squad(human))
 		to_world("Warning! Bug in get_random_squad()!")

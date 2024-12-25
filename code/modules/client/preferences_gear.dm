@@ -600,10 +600,6 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Axolotl plush"
 	path = /obj/item/toy/plush/axolotl
 
-/datum/gear/plush/slugcat
-	display_name = "Slugcat plush"
-	path = /obj/item/toy/plush/slugcat
-
 /datum/gear/plush/fox
 	display_name = "Fox plush"
 	path = /obj/item/toy/plush/fox

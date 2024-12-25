@@ -587,7 +587,6 @@
 		/obj/item/toy/plush/moth,
 		/obj/item/toy/plush/rock,
 		/obj/item/toy/plush/axolotl,
-		/obj/item/toy/plush/slugcat,
 		/obj/item/toy/plush/fox,
 	)
 	///Therapy plushies left separately to not flood the entire list

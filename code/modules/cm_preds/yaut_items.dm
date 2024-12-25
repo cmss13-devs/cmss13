@@ -639,17 +639,19 @@
 	if(user.action_busy)
 		return
 
-	if(istype(attacking_item, /obj/item/clothing/mask/gas/yautja/hunter))
-		to_chat(user, SPAN_DANGER("You hold the [attacking_item] up to the console, and it begins to scan..."))
-		message_all_yautja("Prey is trying to escape the hunting grounds.")
+	if(!istype(attacking_item, /obj/item/clothing/mask/gas/yautja/hunter))
+		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
+		return
+	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
+	message_all_yautja("Prey is trying to escape the hunting grounds.")
 
-		if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))
-			return
+	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))
+		return
 
-		to_chat(user, SPAN_DANGER("The strange console's screen turns green, and the shutter opens. Make your escape!"))
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
-		escaped = TRUE
+	to_chat(user, SPAN_DANGER("The strange console's screen turns green and the shutter opens. Make your escape!"))
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
+	escaped = TRUE
 
 //=================//\\=================\\
 //======================================\\

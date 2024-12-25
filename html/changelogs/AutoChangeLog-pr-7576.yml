@@ -1,6 +1,0 @@
-author: "Nomoresolvalou, Thwomper"
-delete-after: True
-changes:
-  - rscadd: "Added staff and longaxe weapons to the elite yautja vendor."
-  - imageadd: "Adds onmob sprites for the longaxe."
-  - spellcheck: "Changes hunter staff description to be more in line with other weapons."

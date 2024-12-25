@@ -67,7 +67,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs
 	name = "boneless pork ribs"
 	icon_state = "boneless pork ribs"
-	desc = "You can't even taste processed meat taste under all those sprices!"
+	desc = "You can't even taste processed meat taste under all those spices!"
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs/Initialize()
 	. = ..()
@@ -952,7 +952,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/tube/vegemite
 	name = "ORP spread tube (vegemite)"
-	desc = "Contains a very salty food spread, good to combine with a sandwich, not everyone is fond of the taste and looks of it tho."
+	desc = "Contains a very salty food spread, good to combine with a sandwich, however, not everyone is fond of the taste and looks of it."
 
 /obj/item/reagent_container/food/drinks/cans/tube/vegemite/Initialize()
 	. = ..()

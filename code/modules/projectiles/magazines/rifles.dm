@@ -539,6 +539,58 @@
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
+/obj/item/ammo_magazine/rifle/l23
+	name = "\improper L23 magazine (8.88x51mm)"
+	desc = "An L23 assault rifle magazine."
+	caliber = "8.88x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/assault_rifles.dmi'
+	icon_state = "nsg23"
+	item_state = "nsg23"
+	bonus_overlay = "nsg23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
+	default_ammo = /datum/ammo/bullet/rifle/l23
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/l23
+	ammo_band_icon = "+nsg23_band"
+	ammo_band_icon_empty = "+nsg23_band_e"
+
+/obj/item/ammo_magazine/rifle/l23/extended
+	name = "\improper L23 high-capacity drum magazine (8.88x51mm)" //renamed in preparation for new sprite
+	desc = "An L23 assault rifle magazine. This one contains 45 bullets."
+	icon_state = "nsg23_ext"
+	item_state = "nsg23_ext"
+	bonus_overlay = "nsg23_ext_overlay"
+	max_rounds = 45
+
+/obj/item/ammo_magazine/rifle/l23/ap
+	name = "\improper L23 armor-piercing magazine (8.88x51mm)"
+	desc = "An L23 assault rifle magazine. This one is armor piercing."
+	default_ammo = /datum/ammo/bullet/rifle/l23/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/rifle/l23/heap
+	name = "\improper L23 HEAP magazine (8.88x51mm)"
+	desc = "An L23 assault rifle magazine. This one is loaded with armor-piercing explosive tipped rounds."
+	default_ammo = /datum/ammo/bullet/rifle/l23/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/l23/incendiary
+	name = "\improper L23 incindiary magazine (8.88x51mm)"
+	desc = "An L23 assault rifle magazine. This one is loaded with incendiary white phosphorus tipped rounds."
+	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
+/obj/item/ammo_magazine/rifle/l23/rubber
+	name = "\improper L23 practice magazine (8.88x51mm)"
+	desc = "An L23 assault rifle magazine. This one is loaded with rubber bullets."
+	default_ammo = /datum/ammo/bullet/rifle/l23/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
+/obj/item/ammo_magazine/rifle/l23/toxin
+	name = "\improper L23 toxin magazine (8.88x51mm)"
+	desc = "A 8.88mm toxin magazine."
+	default_ammo = /datum/ammo/bullet/rifle/l23/ap/toxin
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN
+
 //--------------------------------------------------------
 //XM51 BREACHING SHOTGUN
 

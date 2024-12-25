@@ -2342,7 +2342,7 @@
 
 /obj/item/storage/belt/marine/rmc/rmc_l23_ammo/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/nsg23(src)
+		new /obj/item/ammo_magazine/rifle/l23(src)
 
 /obj/item/storage/belt/medical/rmc
 	name = "\improper L75 pattern medical storage rig"

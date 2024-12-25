@@ -1999,16 +1999,7 @@
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
-	current_mag = /obj/item/ammo_magazine/rifle/nsg23
-
-	accepted_ammo = list(
-		/obj/item/ammo_magazine/rifle/nsg23,
-		/obj/item/ammo_magazine/rifle/nsg23/extended,
-		/obj/item/ammo_magazine/rifle/nsg23/ap,
-		/obj/item/ammo_magazine/rifle/nsg23/heap,
-		/obj/item/ammo_magazine/rifle/nsg23/rubber,
-		/obj/item/ammo_magazine/rifle/nsg23/incendiary,
-	)
+	current_mag = /obj/item/ammo_magazine/rifle/l23
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -2069,8 +2060,8 @@
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
-	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
@@ -2095,7 +2086,7 @@
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
-	current_mag = /obj/item/ammo_magazine/rifle/nsg23
+	current_mag = /obj/item/ammo_magazine/rifle/l23/extended
 
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
@@ -2135,7 +2126,7 @@
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 

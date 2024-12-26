@@ -22,7 +22,7 @@
 
 	return FIRE_CANPASS_SPREAD
 
-/proc/_generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+/proc/_generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call = FALSE, skip_flame = FALSE, fuel_pressure = 1)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return
@@ -45,10 +45,10 @@
 /datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, fs, should_call = FALSE, skip_flame = FALSE, fuel_pressure = 1)
 	return _generate_fire(T, F2, fs, should_call, skip_flame, fuel_pressure)
 
-/datum/flameshape/proc/generate_fire_list(list/turf/turfs, obj/flamer_fire/F2, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+/datum/flameshape/proc/generate_fire_list(list/turf/turfs, obj/flamer_fire/F2, fs, should_call = FALSE, skip_flame = FALSE, fuel_pressure = 1)
 	for(var/turf/T in turfs)
 		_generate_fire(T, F2, fs, should_call, skip_flame, fuel_pressure)
 
@@ -94,7 +94,7 @@
 
 		tiles_to_spread = next_tiles_to_spread
 		
-	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, F.flameshape, null, FALSE, fuel_pressure), 0)
+	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, FALSE, FALSE, fuel_pressure), 0)
 
 
 /datum/flameshape/default/irregular
@@ -129,7 +129,7 @@
 			tiles_to_set_aflame.Add(T)
 			prev_T = T
 
-	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, null, FALSE, fuel_pressure), 0)
+	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, FALSE, FALSE, fuel_pressure), 0)
 
 /datum/flameshape/star/minor
 	name = "Minor Star"
@@ -162,9 +162,9 @@
 		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
 		switch(result)
 			if(FIRE_CANPASS_SPREAD)
-				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), 1)
+				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, id, FALSE, TRUE, fuel_pressure), 1)
 			if(FIRE_CANPASS_SET_AFLAME)
-				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, F.flameshape, null, TRUE, fuel_pressure), 1)
+				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, id, FALSE, TRUE, fuel_pressure), 1)
 				break
 			if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 				break
@@ -223,7 +223,7 @@
 					if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 						break
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, null, FALSE, fuel_pressure), 0)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, id, FALSE, FALSE, fuel_pressure), 0)
 
 		if(result == FIRE_CANPASS_SET_AFLAME)
 			break

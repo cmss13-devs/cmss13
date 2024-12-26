@@ -13,8 +13,8 @@
 	pixel_x = 1
 	},
 /obj/structure/largecrate/random/mini/ammo{
-	pixel_y = 2;
-	pixel_x = 4
+	pixel_y = 12;
+	pixel_x = 6
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
@@ -29,15 +29,6 @@
 	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"ae" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/white,
-/area/lv624/lazarus/corporate_dome)
-"af" = (
-/obj/item/ammo_casing/cartridge,
-/turf/open/floor/whiteblue/west,
-/area/lv624/lazarus/corporate_dome)
 "ag" = (
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = 7;
@@ -49,6 +40,13 @@
 /obj/item/ammo_casing/cartridge,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
+"ai" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -275,16 +273,12 @@
 	dir = 8
 	},
 /obj/structure/largecrate/random/mini/med{
-	pixel_x = 7;
-	pixel_y = -4
+	pixel_x = 9;
+	pixel_y = 1
 	},
 /obj/structure/largecrate/random/mini/med{
 	pixel_y = -4;
 	pixel_x = -9
-	},
-/obj/structure/largecrate/random/mini/med{
-	pixel_x = -1;
-	pixel_y = 7
 	},
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
@@ -322,7 +316,6 @@
 /area/lv624/lazarus/corporate_dome)
 "mw" = (
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
-/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/cartridge,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
@@ -1148,8 +1141,8 @@ Xt
 YN
 XG
 ln
+ai
 GV
-af
 cn
 XG
 Rn
@@ -1171,13 +1164,13 @@ YN
 Lh
 hf
 ev
-ab
+cA
 ab
 Jq
 cA
 cA
 ab
-ab
+cA
 cA
 aQ
 ab
@@ -1202,7 +1195,7 @@ Sb
 ab
 cA
 cA
-ab
+cA
 Sb
 AG
 cA
@@ -1370,13 +1363,13 @@ Xt
 XG
 Hv
 GM
-ae
+bA
 Df
 ha
 zz
 AT
 mg
-ab
+cA
 bA
 vW
 zs
@@ -1396,9 +1389,9 @@ zx
 Dp
 JL
 oq
-ab
-ab
-ab
+cA
+cA
+cA
 Ho
 FP
 sH
@@ -1415,7 +1408,7 @@ XG
 XG
 lG
 Pr
-ab
+cA
 ZO
 vf
 bE

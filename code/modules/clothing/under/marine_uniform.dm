@@ -541,16 +541,16 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/medic
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a medical armband."
-	icon_state = "uniform_med"
-	item_state = "uniform_med"
-	worn_state = "uniform_med"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant functions more like medical scrubs, useful for when covered in blood."
+	icon_state = "med_uniform"
+	item_state = "med_uniform"
+	worn_state = "med_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/engineer
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has an engineering armband."
-	icon_state = "uniform_eng"
-	item_state = "uniform_eng"
-	worn_state = "uniform_eng"
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has additional clips and tool pockets for appropriately certified corporate personnel."
+	icon_state = "eng_uniform"
+	item_state = "eng_uniform"
+	worn_state = "eng_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."

@@ -176,19 +176,18 @@
 		overlays += "+[icon_state]_full"
 		overlays += "+[icon_state]_locked"
 		return
-	else if(is_id_lockable)
-		overlays += "+[icon_state]_unlocked"
 
 	var/sum_storage_cost = 0
 	for(var/obj/item/I in contents)
 		sum_storage_cost += I.get_storage_cost()
-	if(!sum_storage_cost)
-		return
+	if(sum_storage_cost)
+		if(sum_storage_cost <= max_storage_space * 0.5)
+			overlays += "+[icon_state]_half"
+		else
+			overlays += "+[icon_state]_full"
 
-	else if(sum_storage_cost <= max_storage_space * 0.5)
-		overlays += "+[icon_state]_half"
-	else
-		overlays += "+[icon_state]_full"
+	if(is_id_lockable) // assumption: !locking_id
+		overlays += "+[icon_state]_unlocked"
 
 /obj/item/storage/backpack/get_examine_text(mob/user)
 	. = ..()

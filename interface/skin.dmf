@@ -385,7 +385,7 @@ window "output_legacy"
 	elem "output_legacy"
 		type = MAIN
 		pos = 0,0
-		size = 640x480
+		size = 640x456
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		background-color = none
@@ -404,7 +404,7 @@ window "output_browser"
 	elem "output_browser"
 		type = MAIN
 		pos = 0,0
-		size = 640x480
+		size = 640x456
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		background-color = none

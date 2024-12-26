@@ -915,6 +915,7 @@
 	assignment = "MARINE DUMMY"
 	rank = "MARINE DUMMY"
 	idtype = /obj/item/card/id/dogtag
+	paygrades = list(PAY_SHORT_ME1)
 	uses_special_name = TRUE
 
 /datum/equipment_preset/other/realistic_dummy/load_name(mob/living/carbon/human/new_human, randomise)
@@ -929,10 +930,8 @@
 	new_human.huggable = FALSE
 	new_human.mob_flags |= EASY_SURGERY //Nurses can practise surgery on it.
 
-/datum/equipment_preset/other/realistic_dummy/soldier
-	paygrades = list(PAY_SHORT_ME1)
 
-/datum/equipment_preset/other/realistic_dummy/soldier/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/other/realistic_dummy/load_gear(mob/living/carbon/human/new_human)
 	// Marine gear, with weapons removed
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
@@ -943,11 +942,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
 
-/datum/equipment_preset/other/realistic_dummy/soldier/stanley
-	paygrades = list(PAY_SHORT_ME1)
-	idtype = /obj/item/card/id/dogtag
+/datum/equipment_preset/other/realistic_dummy/stanley
 
-/datum/equipment_preset/other/realistic_dummy/soldier/stanley/load_name(mob/living/carbon/human/new_human, randomise)
+/datum/equipment_preset/other/realistic_dummy/stanley/load_name(mob/living/carbon/human/new_human, randomise)
 	name = "STANLEY THE DUMMY"
 	new_human.gender = MALE
 	new_human.real_name = "Stanley the Marine Mannequin"

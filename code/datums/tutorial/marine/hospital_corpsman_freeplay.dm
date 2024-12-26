@@ -1,7 +1,7 @@
 /* Gameplay Phases */
 #define TUTORIAL_HM_PHASE_PREP 0		//! Prep time upon joining, time for players to gear up
 #define TUTORIAL_HM_PHASE_MAIN 1		//! Regular round, locks the prep room, spawns up to 5 patients with injuries of any severity
-#define TUTORUAL_HM_PHASE_RESUPPLY 2	//! Pauses gameplay, opens the prep room, and allows resupply time, happens at random
+#define TUTORIAL_HM_PHASE_RESUPPLY 2	//! Pauses gameplay, opens the prep room, and allows resupply time, happens at random
 #define TUTORIAL_HM_PHASE_NIGHTMARE 3	//! Simulates a Mass-Casualty event, 3-5 patients with severe damage levels
 
 /// How quickly HM tutorial freeplay difficulty increases over time (and how likely a Mass-Cas becomes)
@@ -26,7 +26,7 @@
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
 	// holder for the CMO NPC
-	var/mob/living/carbon/human/realistic_dummy/CMOnpc/CMOnpc
+	var/mob/living/carbon/human/CMOnpc
 
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_HM_PHASE_PREP
@@ -45,9 +45,9 @@
 
 	var/mob/living/carbon/human/active_agent
 
-	var/mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent
+	var/mob/living/carbon/human/realistic_dummy/booboo_agent
 
-	var/mob/living/carbon/human/leaving_agent
+	var/mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent
 
 	var/turf/agent_spawn_location
 
@@ -62,6 +62,8 @@
 	/// Difficulty factor per survival wave, increasing both the amount of agents and requested items
 	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_MINOR
 
+	var/boobootimer
+
 /datum/tutorial/marine/hospital_corpsman_freeplay/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
@@ -70,7 +72,7 @@
 	START_PROCESSING(SSfastobj, src)
 	init_mob()
 	init_npcs()
-	message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
+	slower_message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
 // plan
@@ -87,16 +89,21 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/uniform()
 	SIGNAL_HANDLER
 
-	message_to_player("Gear up in your prefered HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
+	slower_message_to_player("Gear up in your prefered HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/handle_round_progression()
 
 	var/difficultyupgradewarning = null
+
+	if(boobootimer)
+		deltimer(boobootimer)
+		boobootimer = null
+
 	switch(stage)
-		if(TUTORUAL_HM_PHASE_RESUPPLY)
+		if(TUTORIAL_HM_PHASE_RESUPPLY)
 			return // sometimes it double-calls handle_round_progression()
 		if(TUTORIAL_HM_PHASE_NIGHTMARE)
-			stage = TUTORUAL_HM_PHASE_RESUPPLY
+			stage = TUTORIAL_HM_PHASE_RESUPPLY
 			survival_wave++
 			survival_difficulty = pick(TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE)
 			min_survival_agents = 3
@@ -110,12 +117,12 @@
 			if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 				survival_difficulty = next_in_list(current_difficulty, difficulties)
 		playsound(tutorial_mob.loc, 'sound/effects/siren.ogg', 50)
-		message_to_player("Warning! Mass-Casualty event detected!")
+		slower_message_to_player("Warning! Mass-Casualty event detected!")
 	else if(rand() < TUTORIAL_HM_DIFFICULTY_INCREASE)
 		var/current_difficulty = survival_difficulty
 		if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 			survival_difficulty = next_in_list(current_difficulty, difficulties)
-			difficultyupgradewarning = " Difficulty has increased to level [survival_difficulty]!!"
+			difficultyupgradewarning = " Difficulty has increased, watch out!!"
 
 	CMOnpc.say("Now entering round [survival_wave]![difficultyupgradewarning]")
 
@@ -127,7 +134,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prepdoor)
 	var/turf/boundry = get_turf(loc_from_corner(4, 1))
 	if(tutorial_mob.x <= boundry.x)
-		message_to_player("Please exit the preperations room before progressing into the next round!")
+		slower_message_to_player("Please exit the preperations room before progressing into the next round!")
 		return
 	prepdoor.close(TRUE)
 	prepdoor.lock(TRUE)
@@ -142,10 +149,10 @@
 	prepdoor.open()
 	stage = TUTORIAL_HM_PHASE_MAIN // just in case it wasnt already
 
-	message_to_player("Phew! We have entered a resupply phase of the tutorial!")
-	message_to_player("Use this rare opportunity to refill, restock, and resupply yourself for future rounds.")
-	message_to_player("Remember, on the field, immediate resupply will not always be possible! You won't know for certain when your next chance will arrive, so stock up while you can!")
-	message_to_player("When you are ready, leave the supply room, then click the 'Ready Up' action on the top left of your screen to begin your next round.")
+	slower_message_to_player("Phew! We have entered a resupply phase of the tutorial!")
+	slower_message_to_player("Use this rare opportunity to refill, restock, and resupply yourself for future rounds.")
+	slower_message_to_player("Remember, on the field, immediate resupply will not always be possible! You won't know for certain when your next chance will arrive, so stock up while you can!")
+	slower_message_to_player("When you are ready, leave the supply room, then click the 'Ready Up' action on the top left of your screen to begin your next round.")
 
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
 
@@ -156,13 +163,17 @@
 
 	for(var/i in 3 to (round(rand(min_survival_agents, max_survival_agents))))
 		var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
-		arm_equipment(active_agent, /datum/equipment_preset/other/realistic_dummy/soldier)
+		arm_equipment(active_agent, /datum/equipment_preset/other/realistic_dummy)
 		var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
 		agents[active_agent] = dropoff_point
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
+		RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
 
 	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)
+
+	//if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))
+	//	boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(7,15)) SECONDS, TIMER_STOPPABLE)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/simulate_condition(mob/living/carbon/human/realistic_dummy/target)
 
@@ -195,6 +206,25 @@
 			active_agents |= target
 			move_active_agents()
 
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/handle_speech(mob/living/carbon/human/realistic_dummy/target)
+
+	var/list/helpme = list()
+
+	if(istype(target, /mob/living/carbon/human/realistic_dummy/dragging_agent))
+		target.emote("medic")
+		return
+	if(rand() <= 0.25)
+		target.emote("medic")
+		return
+	for(var/obj/limb/limb in target.limbs)
+		if(limb.status & LIMB_BROKEN)
+			var/targetlimb = capitalize(limb.display_name)
+			helpme |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
+
+	helpme |= list("Doc can I get some pills?", "Need a patch up please", "Im hurt Doc...", "Can I get some healthcare?", "Pill me real quick")
+
+	target.say("[pick(helpme)]")
+
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/move_dragging_agent()
 
 	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
@@ -222,9 +252,11 @@
 			target.Move(dropoff_point)
 			dragging_agent.stop_pulling()
 			make_dragging_agent_leave(dragging_agent)
+			handle_speech(dragging_agent)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_dragging_agent_leave(mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent)
 
+	dragging_agent.density = 0
 	dragging_agents -= dragging_agent
 	QDEL_IN(dragging_agent, 2.5 SECONDS)
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
@@ -234,7 +266,7 @@
 	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
 
 	listclearnulls(active_agents) // failsafe
-	for(var/mob/living/carbon/human/realistic_dummy/active_agent in active_agents)
+	for(var/mob/living/carbon/human/realistic_dummy/active_agent as anything in active_agents)
 		var/turf/dropoff_point = agents[active_agent]
 		if(locate(active_agent) in agent_spawn_location)
 			var/initial_step_direction = pick((agent_spawn_location.y) <= (dropoff_point.y) ? NORTH : SOUTH)
@@ -252,6 +284,7 @@
 				return
 			active_agent.Move(dropoff_point)
 			active_agents -= active_agent
+			handle_speech(active_agent)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent)
 
@@ -263,6 +296,36 @@
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 	if((length(agents)) == 0)
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
+
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/eval_booboo_agent()
+
+	var/mob/living/carbon/human/realistic_dummy/booboo_agent = new(agent_spawn_location)
+	arm_equipment(booboo_agent, /datum/equipment_preset/other/realistic_dummy)
+	var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
+	agents[booboo_agent] = dropoff_point
+	booboo_agent.a_intent = INTENT_DISARM
+
+	var/damageamountsplit = ((round(rand(1, 100))) / 100)
+	var/list/limbs = booboo_agent.limbs
+	var/amount_of_parts = round(rand(1, 6))
+
+	for(var/i in 1 to amount_of_parts)
+		var/obj/limb/selectedlimb = pick(limbs)
+		var/damageamount = (round(rand((40 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO), (50 * TUTORIAL_HM_INJURY_SEVERITY_BOOBOO))))
+		selectedlimb.take_damage(round((damageamount * damageamountsplit) / amount_of_parts), round((damageamount * (1 - damageamountsplit)) / amount_of_parts))
+		if((damageamount > 30) && (rand()) < (TUTORIAL_HM_INJURY_SEVERITY_BOOBOO / 10))
+			selectedlimb.fracture()
+
+	booboo_agent.updatehealth()
+	booboo_agent.UpdateDamageIcon()
+	RegisterSignal(booboo_agent, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
+	RegisterSignal(booboo_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
+
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/hint_requested(mob/living/target, mob/living/user)
+
+	if(target == user)
+		return
+
 
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/process(delta_time)
@@ -278,8 +341,8 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
-	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
-	message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
+	slower_message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
+	slower_message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
 	update_objective("Tutorial completed.")
 
 
@@ -288,8 +351,6 @@
 
 
 // Helpers
-
-
 
 // Helpers End
 
@@ -323,16 +384,14 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_npcs()
 
 	CMOnpc = new(loc_from_corner(7, 7))
-
-/mob/living/carbon/human/realistic_dummy/CMOnpc/Initialize()
-	. = ..()
-	create_hud()
-	arm_equipment(src, /datum/equipment_preset/uscm_ship/uscm_medical/cmo)
+	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo)
+	var/mob_name = "[random_name(CMOnpc.gender)]"
+	CMOnpc.change_real_name(CMOnpc, mob_name)
 
 /mob/living/carbon/human/realistic_dummy/dragging_agent/Initialize() // Now comes pre-fitted with Marine gear!! Tutorial realism increased by 400%!!!
 	. = ..()
 	create_hud()
-	arm_equipment(src, /datum/equipment_preset/other/realistic_dummy/soldier)
+	arm_equipment(src, /datum/equipment_preset/other/realistic_dummy)
 	a_intent = INTENT_DISARM
 
 /obj/structure/machinery/cm_vending/sorted/medical/tutorial
@@ -386,6 +445,10 @@
 		list("Pill Bottle (Tramadol)", 4, /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED PILL BOTTLES", -1, null, null),
+		list("Pill Bottle (MB)", 3, /obj/item/storage/pill_bottle/merabica, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (KD)", 3, /obj/item/storage/pill_bottle/keloderm, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (IA)", 3, /obj/item/storage/pill_bottle/imialk, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (NW)", 3, /obj/item/storage/pill_bottle/nitrogenwater, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Emergency Defibrillator", 3, /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
@@ -467,6 +530,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic_sandbox, list(
 /obj/structure/machinery/cm_vending/gear/medic/tutorial
 
 	req_access = null
+	vendor_role = null
 
 /obj/structure/machinery/cm_vending/gear/medic/tutorial/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_medic_sandbox
@@ -475,7 +539,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic_sandbox, list(
 
 GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine/medic, /obj/item/clothing/shoes/marine, /obj/item/clothing/gloves/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine/medic, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Combat Sterile Gloves", 0, /obj/item/clothing/gloves/marine/medical, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
@@ -534,6 +598,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 
 /obj/structure/machinery/cm_vending/clothing/medic/tutorial
 	req_access = null
+	vendor_role = null
 
 /obj/structure/machinery/cm_vending/clothing/medic/tutorial/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_medic_sandbox
@@ -555,3 +620,34 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 	var/datum/tutorial/marine/hospital_corpsman_freeplay/selected_tutorial = tutorial.resolve()
 
 	selected_tutorial.end_supply_phase()
+
+/obj/item/device/hintscanner
+	name = "\improper HF3 hint scanner"
+	icon_state = "hydro"
+	item_state = "analyzer"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
+	)
+	desc = "A hand-held body scanner able to provide guidance on how best to restore the vital signs of a subject. Able to broadcast health information directly between sister-devices."
+	flags_equip_slot = SLOT_WAIST
+	flags_item = NOBLUDGEON
+	throwforce = 3
+	w_class = SIZE_SMALL
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 10
+
+/obj/item/device/hintscanner/attack(mob/living/target, mob/living/user)
+
+	to_chat(user, SPAN_NOTICE("[user] has analyzed [target]'s vitals."))
+	SEND_SIGNAL(target, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, src)
+	playsound(src.loc, 'sound/machines/chime.ogg', 50)
+	return
+
+// TO DO LIST
+//
+// custom chems in vendors
+// random arrivals of patients
+// more vocalisations
+// the medhinter

@@ -57,3 +57,6 @@
 
 /// From /obj/item/device/flashlight/pen/attack(): (mob/living/user, mob/living/carbon/human/being)
 #define COMSIG_LIVING_PENLIGHT_USED "living_penlight_used"
+
+/// From /obj/item/device/hintscanner/attack(): (mob/living/target, mob/living/user)
+#define COMSIG_LIVING_TUTORIAL_HINT_REQUESTED "living_tutorial_hint_requested"

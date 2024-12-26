@@ -836,7 +836,7 @@
 	sparks.start()
 	remove_from_tracking_atoms(human_dummy)
 	var/mob/living/carbon/human/realistic_dummy/marine_dummy = new(human_dummy.loc)
-	arm_equipment(marine_dummy, /datum/equipment_preset/other/realistic_dummy/soldier)
+	arm_equipment(marine_dummy, /datum/equipment_preset/other/realistic_dummy)
 	add_to_tracking_atoms(marine_dummy)
 	qdel(human_dummy)
 	var/obj/item/clothing/suit/storage/marine/medium/armor = marine_dummy.get_item_by_slot(WEAR_JACKET)

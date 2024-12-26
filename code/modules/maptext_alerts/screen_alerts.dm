@@ -76,6 +76,10 @@
 	fade_out_delay = 4 SECONDS
 	fade_out_time = 0.5 SECONDS
 
+/atom/movable/screen/text/screen_text/command_order/tutorial/slower/scoreboard
+	style_open = "<span class='langchat' style=font-size:16pt;text-align:left valign='top'>"
+	screen_loc = "LEFT,TOP-5"
+
 /atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
 	if(!player)
 		qdel(src)

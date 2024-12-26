@@ -84,3 +84,5 @@
 /// From /mob/living/carbon/human/attack_hand() : (successful)
 // Sends to attacking mob, successful TRUE or FALSE
 #define COMSIG_HUMAN_CPR_PERFORMED "human_cpr_performed"
+
+#define COMSIG_HUMAN_TUTORIAL_HEALED "human_tutorial_healed"

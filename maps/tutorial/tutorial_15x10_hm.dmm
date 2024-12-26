@@ -1,0 +1,347 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/almayer/white/hull,
+/area/misc/tutorial)
+"b" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/sterile_green_side,
+/area/misc/tutorial)
+"c" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"d" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial/no_baselight)
+"e" = (
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/misc/tutorial)
+"g" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"j" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	lights = 0;
+	not_weldable = 1;
+	heavy = 1;
+	needs_power = 0;
+	use_power = 0;
+	breakable = 0;
+	unslashable = 1;
+	req_one_access = null
+	},
+/turf/closed/wall/almayer/white/hull,
+/area/misc/tutorial)
+"n" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	on = 1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial/no_baselight)
+"o" = (
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"p" = (
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/misc/tutorial)
+"q" = (
+/obj/structure/foamed_metal,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"s" = (
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/adv,
+/obj/item/device/healthanalyzer,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"t" = (
+/obj/structure/window/framed/almayer/white/hull,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"v" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial)
+"w" = (
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/misc/tutorial)
+"x" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/turf/open/floor/almayer/sterile_green_corner,
+/area/misc/tutorial)
+"z" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial)
+"E" = (
+/obj/structure/machinery/chem_dispenser/corpsman,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"F" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/misc/tutorial)
+"I" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial/no_baselight)
+"K" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+	dir = 2;
+	locked = 1;
+	no_panel = 1
+	},
+/turf/closed/wall/almayer/white/hull,
+/area/misc/tutorial)
+"O" = (
+/turf/closed/wall/almayer/white/hull,
+/area/misc/tutorial/no_baselight)
+"P" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	lights = 0;
+	not_weldable = 1;
+	heavy = 1;
+	needs_power = 0;
+	use_power = 0;
+	breakable = 0;
+	unslashable = 1;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial)
+"Q" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	on = 1;
+	needs_power = 0
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial/no_baselight)
+"R" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/misc/tutorial)
+"V" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/dark_sterile,
+/area/misc/tutorial/no_baselight)
+"X" = (
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial)
+"Y" = (
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/misc/tutorial)
+"Z" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer/sterile_green_side,
+/area/misc/tutorial)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+K
+a
+a
+"}
+(2,1,1) = {"
+a
+q
+q
+q
+a
+s
+z
+z
+c
+a
+"}
+(3,1,1) = {"
+a
+q
+q
+q
+a
+X
+z
+z
+o
+a
+"}
+(4,1,1) = {"
+a
+q
+q
+q
+a
+o
+z
+z
+g
+a
+"}
+(5,1,1) = {"
+a
+q
+q
+q
+a
+o
+z
+z
+E
+a
+"}
+(6,1,1) = {"
+a
+j
+a
+a
+a
+a
+z
+v
+a
+a
+"}
+(7,1,1) = {"
+a
+I
+I
+a
+p
+Y
+Y
+Y
+R
+a
+"}
+(8,1,1) = {"
+a
+Q
+V
+t
+w
+z
+o
+z
+Z
+a
+"}
+(9,1,1) = {"
+a
+d
+V
+t
+w
+o
+o
+o
+b
+a
+"}
+(10,1,1) = {"
+a
+Q
+n
+t
+w
+z
+o
+z
+Z
+a
+"}
+(11,1,1) = {"
+a
+I
+I
+a
+x
+e
+e
+e
+F
+a
+"}
+(12,1,1) = {"
+a
+j
+a
+a
+a
+P
+a
+P
+a
+a
+"}
+(13,1,1) = {"
+a
+q
+q
+q
+a
+I
+O
+I
+a
+a
+"}
+(14,1,1) = {"
+a
+q
+q
+q
+a
+I
+I
+I
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+O
+O
+O
+a
+a
+"}

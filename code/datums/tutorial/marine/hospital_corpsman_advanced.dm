@@ -1,5 +1,5 @@
 /datum/tutorial/marine/hospital_corpsman_advanced
-	name = "Marine - Hospital Corpsman (Advanced) - Under Construction"
+	name = "Marine - Hospital Corpsman (Advanced)"
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_2"
 	icon_state = "medic"
@@ -7,6 +7,7 @@
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 6
 	var/ontime
+	/// To be used to differentiate subsections in long-winded procs. SET TO 0 WHEN NOT IN USE! CLEAN UP AFTER YOURSELF!
 	var/stage = 0
 	var/cpr_count = 0
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
@@ -835,6 +836,7 @@
 	sparks.start()
 	remove_from_tracking_atoms(human_dummy)
 	var/mob/living/carbon/human/realistic_dummy/marine_dummy = new(human_dummy.loc)
+	arm_equipment(marine_dummy, /datum/equipment_preset/other/realistic_dummy/soldier)
 	add_to_tracking_atoms(marine_dummy)
 	qdel(human_dummy)
 	var/obj/item/clothing/suit/storage/marine/medium/armor = marine_dummy.get_item_by_slot(WEAR_JACKET)

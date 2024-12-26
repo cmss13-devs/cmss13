@@ -332,23 +332,22 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
 	)
 	flags_inventory = ALLOWREBREATH|ALLOWCPR
-	min_cold_protection_temperature = FALSE
-	var/pulled = FALSE
+	var/adjust = FALSE
 	var/original_state = "neckerchief"
 	actions_types = list(/datum/action/item_action/toggle)
 
 	/obj/item/clothing/mask/neckerchief/ui_action_click()
-		pull_down()
+		adjust()
 
-	/obj/item/clothing/mask/neckerchief/verb/pull_down()
+	/obj/item/clothing/mask/neckerchief/verb/adjust()
 		set name = "Adjust"
 		set category = "Object"
 		set src in usr
 		if(usr.stat == DEAD)
 			return
 
-		pulled = !pulled
-		if(pulled)
+		adjust = !adjust
+		if(adjust)
 			to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
 			icon_state += "_alt"
 		else

@@ -948,6 +948,7 @@
 	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/other/realistic_dummy/soldier/stanley/load_name(mob/living/carbon/human/new_human, randomise)
+	name = "STANLEY THE DUMMY"
 	new_human.gender = MALE
 	new_human.real_name = "Stanley the Marine Mannequin"
 	new_human.name = new_human.real_name

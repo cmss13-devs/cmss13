@@ -255,7 +255,7 @@
 	item_state = "torn_scarf_black"
 
 /obj/item/clothing/mask/rebreather/scarf/keffiyeh
-	name = "Keffiyeh"
+	name = "keffiyeh"
 	desc = "A traditional headscarf worn for protection from the elements and to conceal the face. Typically made of cotton, it can provide shade from the sun, guard against dust, and serve as camouflage in arid environments. Often worn by soldiers and civilians alike in desert and hostile regions, the keffiyeh has become a symbol of cultural identity and resilience."
 	icon_state = "keffiyeh"
 	item_state = "keffiyeh"
@@ -319,6 +319,88 @@
 /obj/item/clothing/mask/tornscarf/smock/black
 	icon_state = "smock_black"
 	item_state = "smock_black"
+
+// Neckerchief
+
+/obj/item/clothing/mask/neckerchief
+	name = "neckerchief"
+	desc = "A simple cloth worn around the neck, adjustable between a loose fit or a more tightly secured style."
+	icon_state = "neckerchief"
+	item_state = "neckerchief"
+	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
+	)
+	flags_inventory = ALLOWREBREATH|ALLOWCPR
+	min_cold_protection_temperature = FALSE
+	var/pulled = FALSE
+	var/original_state = "neckerchief"
+	actions_types = list(/datum/action/item_action/toggle)
+
+	/obj/item/clothing/mask/neckerchief/ui_action_click()
+		pull_down()
+
+	/obj/item/clothing/mask/neckerchief/verb/pull_down()
+		set name = "Adjust"
+		set category = "Object"
+		set src in usr
+		if(usr.stat == DEAD)
+			return
+
+		pulled = !pulled
+		if(pulled)
+			to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+			icon_state += "_alt"
+		else
+			to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+			icon_state = original_state
+
+		update_clothing_icon(src) // Update the on-mob icon.
+
+	/obj/item/clothing/mask/neckerchief/gray
+		icon_state = "neckerchief_gray"
+		item_state = "neckerchief_gray"
+		original_state = "neckerchief_gray"
+
+	/obj/item/clothing/mask/neckerchief/green
+		icon_state = "neckerchief_green"
+		item_state = "neckerchief_green"
+		original_state = "neckerchief_green"
+
+	/obj/item/clothing/mask/neckerchief/black
+		icon_state = "neckerchief_black"
+		item_state = "neckerchief_black"
+		original_state = "neckerchief_black"
+
+	/obj/item/clothing/mask/neckerchief/alpha
+		icon_state = "neckerchief_alpha"
+		item_state = "neckerchief_alpha"
+		original_state = "neckerchief_alpha"
+
+	/obj/item/clothing/mask/neckerchief/bravo
+		icon_state = "neckerchief_bravo"
+		item_state = "neckerchief_bravo"
+		original_state = "neckerchief_bravo"
+
+	/obj/item/clothing/mask/neckerchief/charlie
+		icon_state = "neckerchief_charlie"
+		item_state = "neckerchief_charlie"
+		original_state = "neckerchief_charlie"
+
+	/obj/item/clothing/mask/neckerchief/delta
+		icon_state = "neckerchief_delta"
+		item_state = "neckerchief_delta"
+		original_state = "neckerchief_delta"
+
+	/obj/item/clothing/mask/neckerchief/echo
+		icon_state = "neckerchief_echo"
+		item_state = "neckerchief_echo"
+		original_state = "neckerchief_echo"
+
+	/obj/item/clothing/mask/neckerchief/foxtrot
+		icon_state = "neckerchief_foxtrot"
+		item_state = "neckerchief_foxtrot"
+		original_state = "neckerchief_foxtrot"
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"

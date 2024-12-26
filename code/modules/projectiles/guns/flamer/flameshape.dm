@@ -146,13 +146,13 @@
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/turf/prev_T = source_turf
-	var/obj/flamer_fire/temp = new()
 	var/list/turfs = get_line(source_turf, F.target_clicked, FALSE)
 
 	if(fire_spread_amount > turfs.len)
 		fire_spread_amount = turfs.len
 
 	for(var/distance in 1 to fire_spread_amount)
+		var/obj/flamer_fire/temp = new()
 		var/turf/T = turfs[distance]
 		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
 		switch(result)
@@ -177,7 +177,6 @@
 /datum/flameshape/triangle/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	set waitfor = 0
 
-	var/obj/flamer_fire/temp = new()
 	var/unleash_dir = get_cardinal_dir(F, F.target_clicked)
 	var/list/turf/turfs = get_line(F, F.target_clicked, FALSE)
 	var/distance = 1
@@ -188,6 +187,7 @@
 		fire_spread_amount = turfs.len
 
 	for(var/distance in 1 to fire_spread_amount)
+		var/obj/flamer_fire/temp = new()
 		var/turf/T = turfs[distance]
 		var/list/tiles_to_set_aflame = list()
 

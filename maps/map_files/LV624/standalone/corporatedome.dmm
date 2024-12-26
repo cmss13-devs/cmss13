@@ -29,24 +29,24 @@
 	},
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
-"ag" = (
-/obj/structure/largecrate/random/mini/ammo{
-	pixel_x = 7;
-	pixel_y = 3
-	},
-/turf/open/floor/whiteblue/east,
-/area/lv624/lazarus/corporate_dome)
-"ah" = (
-/obj/item/ammo_casing/cartridge,
-/turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
-"ai" = (
+"ae" = (
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = -8;
 	pixel_y = 7
 	},
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/corporate_dome)
+"af" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"ag" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -1141,7 +1141,7 @@ Xt
 YN
 XG
 ln
-ai
+ae
 GV
 cn
 XG
@@ -1204,10 +1204,10 @@ dI
 mK
 "}
 (12,1,1) = {"
-ah
+ag
 XG
 xk
-ag
+af
 fH
 ad
 XG

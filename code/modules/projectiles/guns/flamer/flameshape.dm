@@ -88,7 +88,8 @@
 						checked_tiles[T] = TRUE
 
 		tiles_to_spread = next_tiles_to_spread
-		
+
+	qdel(temp)
 	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
 
 
@@ -124,6 +125,7 @@
 			tiles_to_set_aflame.Add(T)
 			prev_T = T
 
+	qdel(temp)
 	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
 
 /datum/flameshape/star/minor
@@ -165,6 +167,7 @@
 				break
 
 		prev_T = T
+		QDEL_NULL(temp)
 		sleep(1) // sleep to properly check next tile spread
 
 	if(F.to_call)
@@ -223,6 +226,7 @@
 		if(result == FIRE_CANPASS_SET_AFLAME)
 			break
 
+		QDEL_NULL(temp)
 		sleep(3) // 1 from step forward, 1 for each step in each side
 
 	if(F.to_call)

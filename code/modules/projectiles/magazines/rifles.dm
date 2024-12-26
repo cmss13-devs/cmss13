@@ -543,22 +543,22 @@
 	name = "\improper L23 magazine (8.88x51mm)"
 	desc = "An L23 assault rifle magazine."
 	caliber = "8.88x51mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/assault_rifles.dmi'
-	icon_state = "nsg23"
-	item_state = "nsg23"
-	bonus_overlay = "nsg23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
+	icon_state = "l23"
+	item_state = "l23"
+	bonus_overlay = "l23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
 	default_ammo = /datum/ammo/bullet/rifle/l23
 	max_rounds = 30
 	gun_type = /obj/item/weapon/gun/rifle/l23
-	ammo_band_icon = "+nsg23_band"
-	ammo_band_icon_empty = "+nsg23_band_e"
+	ammo_band_icon = "+l23_band"
+	ammo_band_icon_empty = "+l23_band_e"
 
 /obj/item/ammo_magazine/rifle/l23/extended
 	name = "\improper L23 high-capacity drum magazine (8.88x51mm)" //renamed in preparation for new sprite
 	desc = "An L23 assault rifle magazine. This one contains 45 bullets."
-	icon_state = "nsg23_ext"
-	item_state = "nsg23_ext"
-	bonus_overlay = "nsg23_ext_overlay"
+	icon_state = "l23_ext"
+	item_state = "l23_ext"
+	bonus_overlay = "l23_ext_overlay"
 	max_rounds = 45
 
 /obj/item/ammo_magazine/rifle/l23/ap

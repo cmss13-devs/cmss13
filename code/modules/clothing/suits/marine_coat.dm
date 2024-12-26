@@ -496,3 +496,14 @@
 	name = "\improper Royal Marine Commando senior officer's service jacket"
 	desc = "A service jacket worn by the senior officers of the RMC. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "rmc_service_black_co"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber/rmc
+	name = "commanding officer bomber jacket"
+	desc = "A bomber jacket worn by RMC officers. A classic, stylish choice for those in the higher ranks."
+	has_buttons = TRUE
+	icon_state = "rmc_bomber"
+	initial_icon_state = "rmc_bomber"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+	)

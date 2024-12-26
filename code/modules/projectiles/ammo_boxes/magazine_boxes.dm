@@ -593,7 +593,8 @@
 	name = "magazine box (NSG 23 x 12)"
 	icon_state = "base_nsg23"
 	overlay_gun_type = "_nsg23"
-	overlay_content = "_reg"
+	overlay_ammo_type = "_l23_reg"
+	overlay_content = "_l23_reg"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23
 	num_of_magazines = 12
 
@@ -602,8 +603,8 @@
 
 /obj/item/ammo_box/magazine/nsg23/ap
 	name = "magazine box (NSG 23 AP x 12)"
-	overlay_ammo_type = "_ap"
-	overlay_content = "_ap"
+	overlay_ammo_type = "_l23_ap"
+	overlay_content = "_l23_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/ap
 	num_of_magazines = 12
 
@@ -612,7 +613,7 @@
 
 /obj/item/ammo_box/magazine/nsg23/ex
 	name = "magazine box (NSG 23 Extended x 8)"
-	overlay_ammo_type = "_ext"
+	overlay_ammo_type = "_l23_ext"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/extended
 	num_of_magazines = 8
 
@@ -621,8 +622,8 @@
 
 /obj/item/ammo_box/magazine/nsg23/heap
 	name = "magazine box (NSG 23 HEAP x 12)"
-	overlay_ammo_type = "_heap"
-	overlay_content = "_heap"
+	overlay_ammo_type = "_l23_heap"
+	overlay_content = "_l23_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/heap
 
 /obj/item/ammo_box/magazine/nsg23/heap/empty

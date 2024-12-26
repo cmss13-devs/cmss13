@@ -255,44 +255,44 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/mask/tornscarf/snow
 
 /datum/gear/mask/neckerchief
-    display_name = "Neckerchief, tan"
-    path = /obj/item/clothing/mask/neckerchief
+	display_name = "Neckerchief, tan"
+	path = /obj/item/clothing/mask/neckerchief
 
 /datum/gear/mask/neckerchief/gray
-    display_name = "Neckerchief, gray"
-    path = /obj/item/clothing/mask/neckerchief/gray
+	display_name = "Neckerchief, gray"
+	path = /obj/item/clothing/mask/neckerchief/gray
 
 /datum/gear/mask/neckerchief/green
-    display_name = "Neckerchief, green"
-    path = /obj/item/clothing/mask/neckerchief/green
+	display_name = "Neckerchief, green"
+	path = /obj/item/clothing/mask/neckerchief/green
 
 /datum/gear/mask/neckerchief/black
-    display_name = "Neckerchief, black"
-    path = /obj/item/clothing/mask/neckerchief/black
+	display_name = "Neckerchief, black"
+	path = /obj/item/clothing/mask/neckerchief/black
 
 /datum/gear/mask/neckerchief/alpha
-    display_name = "Neckerchief, alpha"
-    path = /obj/item/clothing/mask/neckerchief/alpha
+	display_name = "Neckerchief, alpha"
+	path = /obj/item/clothing/mask/neckerchief/alpha
 
 /datum/gear/mask/neckerchief/bravo
-    display_name = "Neckerchief, bravo"
-    path = /obj/item/clothing/mask/neckerchief/bravo
+	display_name = "Neckerchief, bravo"
+	path = /obj/item/clothing/mask/neckerchief/bravo
 
 /datum/gear/mask/neckerchief/charlie
-    display_name = "Neckerchief, charlie"
-    path = /obj/item/clothing/mask/neckerchief/charlie
+	display_name = "Neckerchief, charlie"
+	path = /obj/item/clothing/mask/neckerchief/charlie
 
 /datum/gear/mask/neckerchief/delta
-    display_name = "Neckerchief, delta"
-    path = /obj/item/clothing/mask/neckerchief/delta
+	display_name = "Neckerchief, delta"
+	path = /obj/item/clothing/mask/neckerchief/delta
 
 /datum/gear/mask/neckerchief/echo
-    display_name = "Neckerchief, echo"
-    path = /obj/item/clothing/mask/neckerchief/echo
+	display_name = "Neckerchief, echo"
+	path = /obj/item/clothing/mask/neckerchief/echo
 
 /datum/gear/mask/neckerchief/foxtrot
-    display_name = "Neckerchief, foxtrot"
-    path = /obj/item/clothing/mask/neckerchief/foxtrot
+	display_name = "Neckerchief, foxtrot"
+	path = /obj/item/clothing/mask/neckerchief/foxtrot
 
 /datum/gear/mask/smock_classic
 	display_name = "Smock, classic" // much like the scarves, but larger - different design.

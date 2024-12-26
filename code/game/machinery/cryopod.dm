@@ -50,6 +50,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	cryotype = "Yautja"
 	z_restricted = FALSE
 
+/obj/structure/machinery/computer/cryopod/upp
+	cryotype = FACTION_UPP
+
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
 
@@ -239,6 +242,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				dept_console = GLOB.frozen_items["Eng"]
 			if(JOB_PREDATOR)
 				dept_console = GLOB.frozen_items["Yautja"]
+			if(UPP_JOB_LIST)
+				dept_console = GLOB.frozen_items[FACTION_UPP]
 
 		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
 			cryo_human.despawn_fax_responder()
@@ -557,6 +562,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(isyautja(occupant))
 		return TRUE
 	if(no_store_pod)
+		return TRUE
+	if(occupant.faction != FACTION_MARINE)
 		return TRUE
 	return FALSE
 

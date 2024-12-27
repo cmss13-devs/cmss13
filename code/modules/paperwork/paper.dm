@@ -919,13 +919,15 @@
 	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
 
 /obj/item/paper/colonial_grunts/Initialize(mapload, photo_list)
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
+	..()
+	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/item/paper/colonial_grunts/LateInitialize()
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
-	update_icon()
+
+/obj/item/paper/colonial_grunts/update_icon()
+	return // Keep original icon_state
 
 /obj/item/paper/liaison_brief
 	name = "Liaison Colony Briefing"

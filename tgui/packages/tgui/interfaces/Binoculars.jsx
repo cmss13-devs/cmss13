@@ -7,6 +7,7 @@ export const Binoculars = () => {
 
   const x_coord = data.xcoord;
   const y_coord = data.ycoord;
+  const z_coord = data.zcoord;
 
   return (
     <Window width={450} height={200}>
@@ -17,7 +18,7 @@ export const Binoculars = () => {
           fontSize="15px"
         >
           <Box fontSize="30px">
-            LONGITUDE : {x_coord}, LATITUDE : {y_coord}
+            LONGITUDE : {x_coord}, LATITUDE : {y_coord}, HEIGHT : {z_coord}
           </Box>
         </Section>
       </Window.Content>

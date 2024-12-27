@@ -650,6 +650,37 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	forceMove(tree.entrance)
 
+/mob/dead/observer/verb/teleport_z_up()
+	set category = "Ghost"
+	set name = "Move up"
+	set desc = "Move up a z level"
+
+	if(!istype(usr, /mob/dead/observer))
+		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
+		return
+
+	var/static/list/allowed_ztraits = list(ZTRAIT_GROUND)
+	// Only allow multiz travel in maps which might have more than one z level to prevent ghosts from going out of bounds
+	if(!((z+1) in SSmapping.levels_by_any_trait(allowed_ztraits)))
+		return
+
+	usr.forceMove(locate(x, y, z+1))
+
+/mob/dead/observer/verb/teleport_z_down()
+	set category = "Ghost"
+	set name = "Move down"
+	set desc = "Move down a z level"
+
+	if(!istype(usr, /mob/dead/observer))
+		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
+		return
+
+	var/static/list/allowed_ztraits = list(ZTRAIT_GROUND)
+	// Only allow multiz travel in maps which might have more than one z level to prevent ghosts from going out of bounds
+	if(!((z-1) in SSmapping.levels_by_any_trait(allowed_ztraits)))
+		return
+
+	usr.forceMove(locate(x, y, z-1))
 
 /mob/dead/observer/verb/dead_teleport_area()
 	set category = "Ghost"

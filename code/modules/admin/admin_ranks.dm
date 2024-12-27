@@ -66,6 +66,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 	//Clear profile access
 	for(var/admin in world.GetConfig("admin"))
+		debug_log("Clearing [admin] from APP/admin.")
 		world.SetConfig("APP/admin", admin, null)
 
 	load_admin_ranks()

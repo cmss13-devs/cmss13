@@ -226,8 +226,8 @@
 		"You just can't beat a Lucky Strike!",
 		"The preferred cigarette of Carlos Hathcock!",
 		"First again with tobacco-men!",
-		//"Real. Simple. Different. American Spirit.", //(for once I add American Spirit cigarettes when the sprite freeze ends)
-		//"Tobacco Ingredients: Tobacco & Water. American Spirit.",
+		"Real. Simple. Different. American Spirit.",
+		"Tobacco Ingredients: Tobacco & Water. American Spirit.",
 		"The Interstellar Commerce Commission would like to remind you that smoking kills.",
 		"The Food and Drug Administration would like to remind you that tobacco products cause cancer and increased fatigue.",
 	)
@@ -247,17 +247,19 @@
 		"You just can't beat a Lucky Strike!",
 		"The preferred cigarette of Carlos Hathcock!",
 		"First again with tobacco-men!",
-		//"Real. Simple. Different. American Spirit.",
-		//"Tobacco Ingredients: Tobacco & Water. American Spirit.",
+		"Real. Simple. Different. American Spirit.",
+		"Tobacco Ingredients: Tobacco & Water. American Spirit.",
 		"The Interstellar Commerce Commission would like to remind you that smoking kills.",
 		"The Food and Drug Administration would like to remind you that tobacco products cause cancer and increased fatigue.",
 	)
 
 	premium = list(/obj/item/storage/fancy/cigar/tarbacks = 5)
 	products = list(
-		/obj/item/storage/fancy/cigarettes/kpack = 20,
-		/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
-		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
+		/obj/item/storage/fancy/cigarettes/kpack = 15,
+		/obj/item/storage/fancy/cigarettes/lucky_strikes = 20,
+		/obj/item/storage/fancy/cigarettes/lady_finger = 10,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 10,
+		/obj/item/storage/fancy/cigarettes/spirit = 10,
 		/obj/item/storage/fancy/cigar/tarbacktube = 20,
 
 		/obj/item/storage/fancy/cigar/matchbook/koorlander = 10,
@@ -272,6 +274,8 @@
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
 		/obj/item/storage/fancy/cigarettes/lucky_strikes = 25,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 35,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 35,
+		/obj/item/storage/fancy/cigarettes/spirit = 30,
 		/obj/item/storage/fancy/cigar/tarbacktube = 35,
 		/obj/item/storage/fancy/cigar/tarbacks = 50,
 		/obj/item/storage/fancy/cigar/matchbook/koorlander = 5,

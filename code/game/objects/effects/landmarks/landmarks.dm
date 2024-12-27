@@ -294,7 +294,7 @@
 
 /obj/effect/landmark/yautja_young_teleport/Destroy()
 	GLOB.yautja_young_teleports -= src
-	GLOB.yautja_teleport_descs -= desc_index
+	GLOB.yautja_young_descs -= desc_index
 	return ..()
 
 /obj/effect/landmark/start

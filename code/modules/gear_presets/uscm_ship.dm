@@ -535,7 +535,7 @@
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
-	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general, /obj/item/clothing/suit/storage/jacket/marine/dress)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general)
 
 /datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(new_human), WEAR_HEAD)

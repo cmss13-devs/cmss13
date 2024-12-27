@@ -688,6 +688,21 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Colonial Marshal Bureau:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
 				dat += "<b>Free Press:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
 				dat += "<b>CLF Command:</b> <a href='?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
+				dat += "</div>"
+				dat += "</body>"
+			if(!owner.check_whitelist_status(WHITELIST_YAUTJA))
+				dat += "<h2><b><u>Youngblood Predator Preferences:</u></b></h2>"
+				dat += "<b>Yautja Gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'><b>[predator_gender == MALE ? "Male" : "Female"]</b></a><br>"
+				dat += "<b>Yautja Quill Style:</b> <a href='?_src_=prefs;preference=pred_hair;task=input'><b>[predator_h_style]</b></a><br>"
+				dat += "<b>Yautja Skin Color:</b> <a href='?_src_=prefs;preference=pred_skin;task=input'><b>[predator_skin_color]</b></a><br>"
+				dat += "<b>Mask Style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
+				dat += "<b>Armor Style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
+				dat += "<b>Greave Style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
+				dat += "<b>Mask Material:</b> <a href='?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
+				dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
+				dat += "<b>Greave Material:</b> <a href='?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
+				dat += "<b>Caster Material:</b> <a href='?_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
+				dat += "</div>"
 
 	dat += "</div></body>"
 

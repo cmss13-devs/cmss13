@@ -157,7 +157,7 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/get_listed_products(mob/user)
 	return GLOB.cm_vending_elder_yautja
 
-/obj/structure/machinery/cm_vending/clothing/young_blood
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood
 	name = "\improper Yautja Young Hunting Gear Rack"
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_left"
@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
-/obj/structure/machinery/cm_vending/clothing/young_blood/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(!allowed(user))
 		if(display)
 			to_chat(user, SPAN_WARNING("Access denied."))
@@ -180,19 +180,19 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 		return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/clothing/young_blood/left_centre
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/left_centre
 	icon_state = "pred_vendor_lcenter"
 
-/obj/structure/machinery/cm_vending/clothing/young_blood/centre
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/centre
 	icon_state = "pred_vendor_centre"
 
-/obj/structure/machinery/cm_vending/clothing/young_blood/right_centre
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right_centre
 	icon_state = "pred_vendor_rcentre"
 
-/obj/structure/machinery/cm_vending/clothing/young_blood/right
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right
 	icon_state = "pred_vendor_right"
 
-/obj/structure/machinery/cm_vending/clothing/young_blood/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/get_listed_products(mob/user)
 	return GLOB.cm_vending_young_yautja
 
 //Armour Prefs

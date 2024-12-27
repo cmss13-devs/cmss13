@@ -196,7 +196,7 @@
 
 	if(istype(beacons[choice], /datum/emergency_call/young_bloods))
 		if((client.check_whitelist_status(src, WHITELIST_YAUTJA)) || jobban_isbanned(src, ERT_JOB_YOUNGBLOOD))
-			to_chat(src, SPAN_DANGER("You are banned from this response team!"))
+			to_chat(src, SPAN_DANGER("You are not allowed to play this response team!"))
 			return
 
 	var/datum/emergency_call/distress = beacons[choice]

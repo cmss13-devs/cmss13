@@ -205,7 +205,7 @@
 
 	var/turf/destination
 	if(length(GLOB.yautja_teleports)) //We have some possible locations.
-		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
+		var/pick = tgui_input_list(traveler, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
 		destination = GLOB.yautja_teleport_descs[pick]
 	if(!destination || (traveler.loc != loc))
 		return
@@ -225,15 +225,23 @@
 		to_chat(young_hunter, SPAN_WARNING("You better not try to use this, you might lose half of your body in the process!"))
 		return
 
-	var/turf/destination
+	var/turf/place
 	if(length(GLOB.yautja_young_teleports))
-		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_young_descs)
-		destination = GLOB.yautja_young_descs[pick]
-	if(!destination || (young_hunter.loc != loc))
+		var/pick = tgui_input_list(young_hunter, "Where do you want to go today?", "Locations", GLOB.yautja_young_descs)
+		place = GLOB.yautja_young_descs[pick]
+	if(!place || (young_hunter.loc != loc))
 		return
-	teleport_x = destination.x
-	teleport_y = destination.y
-	teleport_z = destination.z
+
+	var/choice = tgui_alert(young_hunter, "Youngbloods are not able to return back to the ship until they complete their trial, choose wisely.", "Are you ready?", list("Deploy", "Stay"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "Stay")
+		return
+
+	teleport_x = place.x
+	teleport_y = place.y
+	teleport_z = place.z
 	..(young_hunter, 1)
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */

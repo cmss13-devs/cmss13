@@ -550,7 +550,7 @@
 	name = "huntsmasters console"
 	desc = "A console for creating hunts."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "overwatch"
+	icon_state = "overwatch" //place holder
 	density = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
@@ -663,6 +663,59 @@
 	to_chat(user, SPAN_DANGER("The strange console's screen turns green and the shutter opens. Make your escape!"))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_PRESERVE_OPENED)
 	escaped = TRUE
+
+/obj/structure/machinery/blooding_spawner // for spawning an ert containing non-whitelisted youngbloods.
+	name = "blooding console"
+	desc = "A console used by Yautja to awaken Youngbloods awaiting their Blooding Ritual."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "syndicomp" //place holder
+	density = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/static/list/un_blooded = list()
+	var/blooding_activated = FALSE
+
+/obj/structure/machinery/blooding_spawner/Initialize(mapload, ...)
+	. = ..()
+	if(!length(un_blooded))
+		generate_blooding_type()
+
+/obj/structure/machinery/blooding_spawner/proc/generate_blooding_type()
+	for(var/datum/emergency_call/young_bloods/blooding_type as anything in subtypesof(/datum/emergency_call/young_bloods))
+		if(!blooding_type::blooding_name)
+			continue
+		un_blooded[blooding_type::blooding_name] = blooding_type
+
+/obj/structure/machinery/blooding_spawner/attack_hand(mob/living/user)
+	. = ..()
+	if(!isyautja(user))
+		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
+		return
+
+	if(user.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(user, SPAN_WARNING("This is not for you."))
+		return
+
+	if(blooding_activated) //only one per round unless admins spawn more or var edit the console.
+		to_chat(user, SPAN_WARNING("A blooding ritual has already taken place. Maybe ask the AI for another."))
+		return
+
+	if(!length(un_blooded))
+		to_chat(user, SPAN_WARNING("There are no youngbloods available."))
+		return
+
+	var/choice = tgui_input_list(user, "Available youngblood groups to awaken.", "[src]", un_blooded) // maybe we can add varients of the ert sometime.
+	if(!choice)
+		to_chat(user, SPAN_WARNING("You choose not to awaken any youngbloods."))
+		return
+
+	to_chat(user, SPAN_NOTICE("You choose to awaken: [choice]."))
+	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
+	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
+	blooding_activated = TRUE
 
 //=================//\\=================\\
 //======================================\\

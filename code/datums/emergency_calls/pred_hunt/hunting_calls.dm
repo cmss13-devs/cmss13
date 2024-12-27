@@ -157,11 +157,18 @@
 
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
 	name = "Hunting Grounds - Blooding Party"
+	var/blooding_name = "Blooding Party (Three members)"
 	probability = 0
 	mob_max = 3
 	mob_min = 1
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
+
+/datum/emergency_call/young_bloods/hunting_party
+	name = "Hunting Grounds - Blooding Party"
+	blooding_name = "Blooding Party (Three members)"
+	mob_max = 3
+	mob_min = 1
 	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
 
 /datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
@@ -195,11 +202,11 @@
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, FALSE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are the Youngblood Pack Leader, you are the dominant hunter within the youngblood hunting party!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players and follow the honour code. IF you fail any of these you will be dispached via a kill switch all younbloods have within them. You may also face OOC repercussions. Good luck and have fun."))
-	else if(check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
+	else
+		(check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl, TRUE, FALSE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG ("You are expected to remain in character at all times, follow all commands given to you by whitelisted players and follow the honour code. IF you fail any of these you will be dispached via a kill switch all younbloods have within them. You may also face OOC repercussions. Good luck and have fun."))
 
 		sleep(30 SECONDS)
 		to_chat(hunter, SPAN_YAUTJABOLD("Objectives: [objectives]"))
-

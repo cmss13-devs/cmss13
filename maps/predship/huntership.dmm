@@ -37,11 +37,61 @@
 /obj/structure/machinery/hunt_ground_spawner,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
+"ah" = (
+/obj/structure/bed/bedroll,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/predship,
+/area/yautja/lower_deck)
+"ai" = (
+/obj/structure/machinery/door/airlock/yautja{
+	dir = 1;
+	name = "\improper Lower Deck"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "youngblood";
+	name = "\improper Lower Deck Shutters";
+	density = 1
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja/lower_deck)
+"aj" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/gm/dirtgrassborder/north,
+/area/yautja)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/almayer/west,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/yautja/lower_deck)
+"al" = (
+/turf/open/gm/dirtgrassborder/desert,
+/area/yautja)
+"am" = (
+/turf/open/gm/dirtgrassborder/desert2,
+/area/yautja)
 "an" = (
 /obj/structure/machinery/medical_pod/autodoc{
 	dir = 4
 	},
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"ao" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/yautja)
+"ap" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/gm/dirtgrassborder/west,
+/area/yautja)
+"aq" = (
+/turf/open/gm/dirtgrassborder/desert1,
+/area/yautja)
+"ar" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder/east,
 /area/yautja)
 "as" = (
 /obj/structure/pipes/standard/simple/hidden{
@@ -82,6 +132,15 @@
 /obj/structure/curtain/red,
 /turf/open/shuttle/predship,
 /area/yautja)
+"ax" = (
+/turf/open/gm/dirtgrassborder/desert0,
+/area/yautja)
+"ay" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/yautja)
 "az" = (
 /obj/structure/window/phoronreinforced{
 	dir = 10;
@@ -89,10 +148,16 @@
 	},
 /turf/open/floor/light,
 /area/yautja)
+"aA" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/yautja)
 "aB" = (
 /obj/structure/closet/crate/critter,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/grey_multi_tiles,
+/area/yautja)
+"aC" = (
+/turf/open/gm/dirtgrassborder/desert3,
 /area/yautja)
 "aD" = (
 /obj/structure/xenoautopsy/tank/hugger,
@@ -131,6 +196,9 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
+"aH" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/yautja)
 "aI" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1
@@ -142,6 +210,12 @@
 	icon_state = "phoronrwindow"
 	},
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"aJ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/yautja)
 "aK" = (
 /obj/structure/shuttle/engine/heater{
@@ -160,6 +234,9 @@
 	dir = 1
 	},
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"aM" = (
+/turf/open/gm/dirtgrassborder/south,
 /area/yautja)
 "aN" = (
 /obj/structure/machinery/computer/cryopod/yautja,
@@ -190,6 +267,9 @@
 /obj/item/tool/surgery/bonesetter/predatorbonesetter,
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
 /turf/open/floor/corsat/squareswood/north,
+/area/yautja)
+"aR" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/yautja)
 "aT" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -462,10 +542,10 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja)
 "bV" = (
-/turf/open/auto_turf/strata_grass,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/yautja)
 "bW" = (
 /obj/structure/barricade/handrail/strata,
@@ -495,7 +575,7 @@
 /turf/closed/wall/huntership,
 /area/yautja/lower_deck)
 "cc" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/centre,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/centre,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "cd" = (
@@ -543,7 +623,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "cm" = (
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirtgrassborder/desert_dug,
 /area/yautja)
 "cn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -644,7 +724,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja)
 "cx" = (
 /obj/structure/machinery/autodoc_console,
@@ -691,7 +771,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "cE" = (
-/obj/structure/machinery/prop/almayer/CICmap/yautja,
+/obj/structure/machinery/blooding_spawner,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "cF" = (
@@ -908,7 +988,8 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "thrall_cell_1";
-	name = "\improper Human Cell 1"
+	name = "\improper Human Cell 1";
+	density = 1
 	},
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
@@ -1072,7 +1153,7 @@
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "dw" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/right,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "dz" = (
@@ -1096,7 +1177,7 @@
 /turf/open/space/basic,
 /area/space)
 "dU" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/right_centre,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/right_centre,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "ed" = (
@@ -1105,7 +1186,7 @@
 	basecolor = "#20d450";
 	color = "#20d450"
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/north,
 /area/yautja)
 "ef" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1195,7 +1276,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/yautja)
 "fE" = (
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred,
@@ -1366,6 +1447,7 @@
 /obj/effect/decal/cleanable/cobweb{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja/lower_deck)
 "hr" = (
@@ -1438,7 +1520,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/door_control{
-	id = "youngblood";
+	id = "youngblood1";
 	pixel_y = 3;
 	name = "Lower Deck Shutters"
 	},
@@ -1481,6 +1563,7 @@
 /obj/effect/decal/cleanable/cobweb{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "iG" = (
@@ -1521,6 +1604,7 @@
 /area/yautja/lower_deck)
 "jq" = (
 /obj/structure/machinery/cryopod/no_store,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "jP" = (
@@ -2375,12 +2459,6 @@
 "zA" = (
 /turf/open/floor/dark2,
 /area/yautja)
-"zE" = (
-/obj/structure/machinery/power/apc/almayer/east{
-	pixel_y = 25
-	},
-/turf/open/shuttle/predship,
-/area/yautja/lower_deck)
 "zI" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/shuttle/predship,
@@ -2472,7 +2550,7 @@
 	basecolor = "#20d450";
 	color = "#20d450"
 	},
-/turf/open/auto_turf/strata_grass,
+/turf/open/gm/dirtgrassborder/desert,
 /area/yautja)
 "AA" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -2737,6 +2815,7 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "Fn" = (
@@ -2813,7 +2892,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Gr" = (
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/yautja)
 "GM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2855,13 +2934,6 @@
 	color = "#aba9a9"
 	},
 /turf/open/floor/corsat/squareswood/north,
-/area/yautja)
-"Hx" = (
-/obj/effect/decal/cleanable/blood{
-	basecolor = "#20d450";
-	color = "#20d450"
-	},
-/turf/open/auto_turf/strata_grass/layer1,
 /area/yautja)
 "HD" = (
 /obj/structure/surface/rack{
@@ -3146,7 +3218,7 @@
 	basecolor = "#20d450";
 	color = "#20d450"
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/south,
 /area/yautja)
 "KK" = (
 /obj/effect/decal/remains/human{
@@ -3498,9 +3570,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "RS" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood{
-	pixel_y = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "Sq" = (
@@ -3563,7 +3633,7 @@
 /area/yautja)
 "Up" = (
 /obj/structure/barricade/handrail/strata,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/yautja)
 "Ut" = (
 /obj/structure/surface/rack{
@@ -3646,8 +3716,9 @@
 	name = "\improper Lower Deck"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	id = "youngblood";
-	name = "\improper Lower Deck Shutters"
+	id = "youngblood1";
+	name = "\improper Lower Deck Shutters";
+	density = 1
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja/lower_deck)
@@ -3754,7 +3825,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "XC" = (
-/obj/structure/machinery/cm_vending/clothing/young_blood/left_centre,
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/left_centre,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja/lower_deck)
 "XK" = (
@@ -5332,10 +5403,10 @@ cP
 cP
 bL
 bH
-cw
-cw
-cw
-cw
+ay
+ap
+ap
+ap
 cw
 kR
 bL
@@ -5404,9 +5475,9 @@ LZ
 cP
 bW
 Gr
-cm
-Hx
-cm
+aA
+Aw
+ax
 Aw
 bV
 Up
@@ -5475,13 +5546,13 @@ bj
 jP
 cP
 bW
-Gr
+aM
+aC
+al
+al
+al
 cm
-Gr
-cm
-cm
-cm
-Up
+aj
 bL
 cP
 bj
@@ -5547,13 +5618,13 @@ bj
 Xp
 cP
 bW
-Gr
-cm
-bV
-cm
-cm
-bV
-Up
+aM
+al
+al
+al
+al
+al
+aj
 bL
 cP
 bj
@@ -5619,13 +5690,13 @@ Wg
 bL
 cP
 bW
-Gr
-cm
-cm
-bV
-bV
-cm
-Up
+aM
+al
+al
+aq
+al
+al
+aj
 bL
 cP
 bL
@@ -5691,12 +5762,12 @@ bj
 Ao
 bL
 bW
-Gr
-bV
-Hx
-Gr
-cm
-cm
+aM
+ax
+Aw
+al
+al
+am
 ed
 bL
 bL
@@ -5763,13 +5834,13 @@ Wg
 bL
 cP
 bW
-Gr
-bV
-bV
-cm
-cm
-cm
-Up
+aM
+al
+al
+al
+al
+al
+aj
 bL
 cP
 bL
@@ -5835,13 +5906,13 @@ bj
 Im
 cP
 bW
-Gr
-cm
-cm
-cm
-cm
-cm
-Up
+aM
+al
+al
+al
+aq
+al
+aj
 bL
 cP
 bj
@@ -5908,12 +5979,12 @@ fF
 cP
 bW
 KJ
-bV
-cm
-cm
-cm
-cm
-Up
+al
+al
+al
+al
+al
+aj
 bL
 cP
 bj
@@ -5979,12 +6050,12 @@ bj
 rY
 cP
 bW
-Gr
-cm
-cm
-cm
-KJ
-cm
+aR
+aH
+aq
+al
+Aw
+ao
 fq
 bL
 cP
@@ -6052,10 +6123,10 @@ cP
 cP
 bL
 ch
-bU
-bU
-bU
-bU
+aJ
+ar
+ar
+ar
 bU
 Ng
 bL
@@ -8298,8 +8369,8 @@ Ok
 zi
 qN
 NE
-NE
-yM
+dm
+UT
 yM
 yM
 cg
@@ -8361,7 +8432,7 @@ dI
 dI
 zi
 kf
-fS
+ak
 zi
 Nb
 NE
@@ -8442,7 +8513,7 @@ Ok
 zi
 Fl
 NE
-NE
+dm
 yM
 dm
 Zi
@@ -8723,7 +8794,7 @@ zi
 zi
 Xs
 rH
-NE
+dm
 yM
 nd
 Kt
@@ -9009,16 +9080,16 @@ dI
 dI
 zi
 dU
-fS
+lZ
 rH
 iP
 yM
 UT
 yM
 cf
-yM
+UT
 ha
-iP
+fS
 ce
 yM
 Fn
@@ -9090,10 +9161,10 @@ rT
 zi
 of
 yM
-iP
-NE
+fS
+dm
 yM
-NE
+dm
 UT
 yw
 zi
@@ -9161,12 +9232,12 @@ nd
 Kt
 zi
 Br
-yM
+UT
 iP
 iP
-yM
 iP
 iP
+lZ
 iP
 zi
 iP
@@ -9227,7 +9298,7 @@ zi
 zi
 zi
 Qg
-zE
+NE
 Xu
 zi
 zi
@@ -9316,7 +9387,7 @@ HS
 yM
 yM
 yM
-NE
+dm
 zi
 "}
 (77,1,1) = {"
@@ -9379,16 +9450,16 @@ zi
 gL
 yM
 iP
+fS
 iP
-yM
-iP
+fS
 iP
 iP
 zi
 iP
-iP
+fS
 yM
-iP
+fS
 zi
 "}
 (78,1,1) = {"
@@ -9444,8 +9515,8 @@ TI
 fS
 zi
 DX
-yM
-NE
+UT
+dm
 uE
 zi
 ji
@@ -9514,20 +9585,20 @@ dI
 zi
 Gh
 Vb
-We
+ai
 yM
-yM
-yM
-yM
-bP
 UT
+UT
+UT
+bP
+GM
 yM
-iP
+fS
 ce
 yM
 RC
 yM
-ce
+ah
 zi
 Ha
 ns

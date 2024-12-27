@@ -537,7 +537,7 @@
 
 	// Create the overlay with the determined icon_state
 	if(!change_node_overlay)
-		change_node_overlay = image('icons/mob/xenos/weeds.dmi', icon_state_weeds, ABOVE_OBJ_LAYER) //believe me i tryied to change it, but this sh*t breaks if you don't tell icon_state name, someone smarter should fix this.
+		change_node_overlay = image('icons/mob/xenos/weeds.dmi', icon_state_weeds, ABOVE_OBJ_LAYER)
 
 	var/obj/effect/alien/resin/trap/trap = locate() in loc
 	if(trap)

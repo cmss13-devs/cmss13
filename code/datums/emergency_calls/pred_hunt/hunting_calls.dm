@@ -156,11 +156,9 @@
 	max_xeno_t2 = 3
 
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
-	name = "Hunting Grounds - Blooding Party"
-	var/blooding_name = "Blooding Party (Three members)"
+	name = "Template"
+	var/blooding_name
 	probability = 0
-	mob_max = 3
-	mob_min = 1
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
 

@@ -100,7 +100,7 @@
 	{
 		"type": "map_insert",
 		"landmark": "panic_room",
-		"chance": 0.5,
+		"chance": 1,
 		"path": "standalone/panic_room_hold.dmm",
         "when": { "panic_room": "full" }
 	}

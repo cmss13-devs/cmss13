@@ -337,7 +337,7 @@
 
 	if(isstorage(loc))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, user.loc, user)
 
 	throwing = 0
 

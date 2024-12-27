@@ -60,7 +60,6 @@
 		icon_state = "trashbag_full"
 		item_state = "trashbag_full"
 
-
 // -----------------------------
 // Plastic Bag
 // -----------------------------

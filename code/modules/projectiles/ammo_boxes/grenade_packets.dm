@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	name = "\improper M74 AGM-H hornet shell packet"
 	desc = "It contains three M74 AGM-H Hornet shells. 40mm grenades that explode into a cluster of .22lr bullets at range, dealing massive damage to anything caught in the way."
 	icon_state = "hornet_packet"
-	item_state = "hornet_packet
+	item_state = "hornet_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell
 
 /obj/item/storage/box/packet/incendiary
@@ -182,5 +182,5 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	name = "\improper R2175/B HIDP grenade packet"
 	desc = "It contains three R2175/B HIDP grenades. Handle with care."
 	icon_state = "hidp_packet"
-	item_state = "hidp_packet
+	item_state = "hidp_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/rmc

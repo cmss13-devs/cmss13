@@ -319,6 +319,7 @@
 	name = "portable surgical bed"
 	desc = "A collapsed surgical bed that can be carried around."
 	icon_state = "surgical_folded"
+	item_state = "sbed"
 	rollertype = /obj/structure/bed/portable_surgery
 	matter = list("plastic" = 6000)
 

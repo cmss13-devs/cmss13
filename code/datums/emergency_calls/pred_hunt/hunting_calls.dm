@@ -109,7 +109,6 @@
 	if(!istype(spawn_loc))
 		return // Didn't find a usable spawn point.
 
-
 	if(xeno_t3 < max_xeno_t3 && HAS_FLAG(current_mob.client.prefs.toggles_ert_pred, PLAY_XENO_T3))
 		xeno_t3++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/ravager)

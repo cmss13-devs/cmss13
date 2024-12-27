@@ -1014,7 +1014,7 @@
 		if(boomer.stat)
 			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 			return
-		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
+		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
 			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 			return
 		if(exploding)

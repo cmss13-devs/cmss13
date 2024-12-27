@@ -395,3 +395,8 @@
   - bugfix: Yautja can now correctly un-mark dead people.
   sg2002:
   - bugfix: players with no squad preference get correctly put into random squads
+2024-12-27:
+  Drathek:
+  - bugfix: Fixed locking satchel unlocked overlay not appearing on top
+  ihatethisengine:
+  - bugfix: Fixed some issues with overwatch.

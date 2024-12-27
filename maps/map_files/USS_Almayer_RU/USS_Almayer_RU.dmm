@@ -8045,7 +8045,6 @@
 /area/almayer/hallways/upper/port)
 "aJf" = (
 /obj/structure/machinery/floodlight,
-/obj/structure/machinery/floodlight,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aJg" = (
@@ -10767,9 +10766,6 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcB" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -33521,16 +33517,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/mp_bunks)
-"iuy" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/almayer/living/briefing)
 "iuz" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/warhead,
@@ -41948,7 +41934,6 @@
 /area/almayer/medical/medical_science)
 "mnf" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -57627,7 +57612,6 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_lobby)
 "tml" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	req_one_access = null;
 	req_one_access_txt = "7;19";
@@ -58993,10 +58977,6 @@
 	req_one_access = null;
 	access_modified = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
@@ -69156,12 +69136,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
-"ycp" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/plating,
-/area/almayer/squads/req)
 "ycr" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data,
@@ -105071,7 +105045,7 @@ nsY
 nZa
 ajt
 nZa
-iuy
+bdg
 bqZ
 beH
 saZ
@@ -112990,11 +112964,11 @@ jwr
 xeh
 vOw
 bdl
-ycp
-ycp
+tiE
+tiE
 tPj
 mnf
-ycp
+tiE
 bdl
 bdl
 rtj

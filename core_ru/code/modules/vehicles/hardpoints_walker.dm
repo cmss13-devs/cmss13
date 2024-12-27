@@ -147,6 +147,13 @@
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
+/obj/item/walker_gun/proc/create_bullet(mob/user, location)
+	var/obj/projectile/P = new(location, create_cause_data(initial(name), user))
+	P.generate_bullet(new ammo.default_ammo)
+	for (var/trait in projectile_traits)
+		GIVE_BULLET_TRAIT(P, trait, FACTION_MARINE)
+	return P
+
 /obj/item/walker_gun/proc/active_effect(atom/target, mob/living/user)
 	if (!ammo)
 		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
@@ -188,10 +195,8 @@
 */
 	if(!owner.firing_arc(target))
 		return FALSE
-	var/obj/projectile/P = new
-	P.generate_bullet(new ammo.default_ammo)
-	for (var/trait in projectile_traits)
-		GIVE_BULLET_TRAIT(P, trait, FACTION_MARINE)
+	
+	var/obj/projectile/P = create_bullet(user)
 	playsound(get_turf(owner), pick(fire_sound), 60)
 	target = simulate_scatter(target, P)
 	P.fire_at(target, owner, src, P.ammo.max_range, P.ammo.shell_speed)

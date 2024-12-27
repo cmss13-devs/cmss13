@@ -4,7 +4,7 @@
 	skill_to_give = SKILL_SPEC_ST
 	kit_typepath = /obj/item/storage/box/spec/stormtrooper
 
-/datum/specialist_set/sadar/redeem_set(mob/living/redeemer, kit)
+/datum/specialist_set/stormtropper/redeem_set(mob/living/redeemer, kit)
 	. = ..()
 	if(!.)
 		return .

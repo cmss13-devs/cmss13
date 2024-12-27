@@ -195,6 +195,10 @@
 "aaS" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
+"aaT" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat/yellow/northeast,
+/area/corsat/sigma/south/robotics)
 "aaU" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
@@ -463,6 +467,11 @@
 "abV" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/gamma/hangar)
+"abW" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/corsat/purplewhite/west,
+/area/corsat/theta/biodome/complex)
 "abX" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
@@ -481,6 +490,14 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
+"acb" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat/red/northeast,
+/area/corsat/sigma/hangar/id)
 "acc" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood,
@@ -1061,6 +1078,14 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet6_2/west,
 /area/corsat/gamma/residential/lounge)
+"aeh" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/redcorner,
+/area/corsat/sigma/hangar/checkpoint)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -1069,6 +1094,11 @@
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"aej" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/corsat/redcorner,
+/area/corsat/sigma/hangar/checkpoint)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
@@ -1184,6 +1214,14 @@
 "aeJ" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
+"aeK" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/turf/open/floor/corsat/red,
+/area/corsat/gamma/hangar/cargo)
 "aeL" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
@@ -1347,6 +1385,11 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
+"afw" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/corsat/red/north,
+/area/corsat/gamma/hangar/cargo)
 "afx" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
@@ -1437,6 +1480,11 @@
 "afN" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/sigma/hangar)
+"afO" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/corsat/red/east,
+/area/corsat/gamma/hangar/security)
 "afP" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/sigma/hangar)
@@ -2266,12 +2314,6 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/omega/offices)
-"aiR" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/card,
-/obj/structure/machinery/computer/guestpass,
-/turf/open/floor/corsat/red/northeast,
-/area/corsat/gamma/hangar/security)
 "aiS" = (
 /turf/open/floor/carpet6_2/west,
 /area/corsat/gamma/administration)
@@ -2281,6 +2323,12 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
+"aiV" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/card,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/corsat/red/northeast,
+/area/corsat/gamma/hangar/security)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -6109,14 +6157,6 @@
 "ayq" = (
 /turf/open/floor/corsat/redcorner/east,
 /area/corsat/sigma/hangar/id)
-"ayr" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat/red/northeast,
-/area/corsat/sigma/hangar/id)
 "ays" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "Security Hub";
@@ -6841,11 +6881,6 @@
 /obj/structure/machinery/power/apc/upgraded/no_power/east,
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/sigma/airlock/south)
-"aAS" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
-/turf/open/floor/corsat/red/east,
-/area/corsat/gamma/hangar/security)
 "aAT" = (
 /turf/open/floor/corsat/officesquares,
 /area/corsat/sigma/airlock/south)
@@ -14656,14 +14691,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/hangar/security)
-"bcw" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	dir = 1
-	},
-/obj/structure/machinery/light,
-/turf/open/floor/corsat/redcorner,
-/area/corsat/sigma/hangar/checkpoint)
 "bcx" = (
 /obj/effect/decal/cleanable/cobweb{
 	dir = 1
@@ -19604,10 +19631,6 @@
 "bxJ" = (
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/south/robotics)
-"bxK" = (
-/obj/structure/surface/rack,
-/turf/open/floor/corsat/yellow/northeast,
-/area/corsat/sigma/south/robotics)
 "bxL" = (
 /obj/structure/surface/rack,
 /obj/item/device/lightreplacer,
@@ -22202,11 +22225,6 @@
 /obj/item/device/assembly/infra,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/gamma/engineering)
-"bJx" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
-/turf/open/floor/corsat/red/north,
-/area/corsat/gamma/hangar/cargo)
 "bJA" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
@@ -24334,11 +24352,6 @@
 	},
 /turf/open/floor/corsat/red/east,
 /area/corsat/sigma/hangar/checkpoint)
-"bSK" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
-/turf/open/floor/corsat/redcorner,
-/area/corsat/sigma/hangar/checkpoint)
 "bSM" = (
 /turf/open/floor/corsat/redcorner/west,
 /area/corsat/sigma/hangar/checkpoint)
@@ -25804,14 +25817,6 @@
 	network = list("gamma")
 	},
 /turf/open/floor/corsat/squares,
-/area/corsat/gamma/hangar/cargo)
-"bZz" = (
-/obj/structure/machinery/light,
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	dir = 1
-	},
-/turf/open/floor/corsat/red,
 /area/corsat/gamma/hangar/cargo)
 "bZD" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -36161,13 +36166,6 @@
 	},
 /turf/open/mars/mars_dirt_11,
 /area/corsat/sigma/biodome)
-"mJm" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	reason = "Visitor"
-	},
-/turf/open/floor/corsat/purplewhite/west,
-/area/corsat/theta/biodome/complex)
 "mJq" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -70011,16 +70009,16 @@ dtl
 dtl
 sFd
 abA
-aiR
+aiV
 agt
 avv
-aAS
+afO
 agt
 avv
-aAS
+afO
 agt
 avv
-aAS
+afO
 ajP
 abA
 bOX
@@ -75568,7 +75566,7 @@ rTj
 bdP
 aKt
 vQA
-mJm
+abW
 lIu
 mqL
 aKu
@@ -77139,11 +77137,11 @@ fmF
 adI
 blN
 adI
-bJx
+afw
 adU
 bZy
 adU
-bZz
+aeK
 agL
 ayC
 alj
@@ -93476,7 +93474,7 @@ eRX
 bwW
 ydU
 auJ
-bxK
+aaT
 evv
 uYe
 aMi
@@ -98763,7 +98761,7 @@ wJq
 bTj
 tXB
 bTj
-bcw
+aeh
 qSi
 rvC
 mUE
@@ -99004,7 +99002,7 @@ hqa
 avj
 vhS
 atX
-bSK
+aej
 qaG
 bSG
 qaG
@@ -102201,7 +102199,7 @@ aeR
 agj
 atP
 agj
-ayr
+acb
 aTr
 ayI
 agj

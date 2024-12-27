@@ -157,6 +157,7 @@
 	name = "black goo"
 	desc = "It's thick and gooey."
 	gender = PLURAL
+	anchored = TRUE
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blackgoo"
 

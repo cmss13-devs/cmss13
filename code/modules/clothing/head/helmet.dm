@@ -962,6 +962,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
 
+/obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			name = "\improper M10-LS pattern sniper helmet"
+			desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+
 /obj/item/clothing/head/helmet/marine/CO
 	name = "\improper M10 pattern commanding officer helmet"
 	desc = "A special M10 Pattern Helmet worn by Commanding Officers of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
@@ -1403,6 +1410,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 
 /obj/item/clothing/head/helmet/specrag/Initialize(mapload, ...)
@@ -1448,6 +1458,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 
 /obj/item/clothing/head/helmet/skullcap/jungle

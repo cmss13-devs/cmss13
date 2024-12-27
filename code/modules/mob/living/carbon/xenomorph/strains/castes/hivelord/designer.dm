@@ -1,3 +1,6 @@
+#define DO_AFTER_DELAY (1 SECONDS)
+#define COOLDOWN_MULTIPLIER (xeno_cooldown * 0.5)
+
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
 	description = "You lose your ability to build, sacrifice half of your plasma pool, have slower plasma regeneration and slightly less health in exchange for stronger phermones, ability to create Design Nodes that benefit other builders. Now you can design nodes that increase building speed or decrease cost. You gain ability to call Greater Resin Surge on your Design Nodes location."
@@ -21,6 +24,8 @@
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
+	behavior_delegate_type = /datum/behavior_delegate/hivelord_designer
+
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
@@ -31,6 +36,9 @@
 
 	hivelord.recalculate_everything()
 	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
+
+/datum/behavior_delegate/hivelord_designer
+	name = "Designer Hivelord Behavior Delegate"
 
 /datum/action/xeno_action/verb/verb_design_resin()
 	set category = "Alien"
@@ -46,14 +54,11 @@
 
 /obj/effect/alien/weeds/node/designer/speed
 	name = "Optimized Design Node"
-	icon_state = "speednode"
-	designspeed = TRUE
+	icon_state_weeds = "speednode"
 
 /obj/effect/alien/weeds/node/designer/cost
 	name = "Flexible Design Node"
-	icon_state = "costnode"
-	designcost = TRUE
-
+	icon_state_weeds = "costnode"
 
 // ""animations""" (effects)
 
@@ -128,7 +133,7 @@
 	if(target_turf)
 		speed_warn = new /obj/effect/resin_construct/speed_node(target_turf)
 
-	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
 	qdel(speed_warn)
@@ -136,13 +141,10 @@
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
 		SPAN_XENONOTICE("We surge sustinance, creating optimized node!"), null, 5)
-
 		var/speed_nodes = new /obj/effect/alien/weeds/node/designer/speed(target_turf)
-
 		xeno.speed_node_list += speed_nodes
 		playsound(target_turf, "alien_resin_build", 25)
-
-		if(xeno.speed_node_list.len > max_speed_nodes)
+		if(length(xeno.speed_node_list) > max_speed_nodes)
 			addtimer(CALLBACK(src, "remove_oldest_speed_node", xeno), 0)
 
 	else if(target_turf)
@@ -150,17 +152,16 @@
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 		return FALSE
 	else
-		xeno_cooldown = xeno_cooldown * 0.5
+		xeno_cooldown = COOLDOWN_MULTIPLIER
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_speed"))
-
 	return ..()
 
 /datum/action/xeno_action/activable/design_speed_node/proc/remove_oldest_speed_node(mob/living/carbon/xenomorph/xeno)
-	if(xeno.speed_node_list.len > 0)
+	if(length(xeno.speed_node_list) > 0)
 		var/obj/effect/alien/weeds/node/designer/speed/oldest_speed_node = xeno.speed_node_list[1]
 		if(oldest_speed_node)
 			var/turf/old_speed_loc = get_turf(oldest_speed_node.loc)
@@ -170,7 +171,6 @@
 		xeno.speed_node_list.Cut(1, 2)
 
 // Cost Node
-
 /datum/action/xeno_action/verb/verb_cost_node()
 	set category = "Alien"
 	set name = "Design Flexible Node"
@@ -224,7 +224,7 @@
 	if(target_turf)
 		cost_warn = new /obj/effect/resin_construct/cost_node(target_turf)
 
-	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
 	qdel(cost_warn)
@@ -232,13 +232,10 @@
 	if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating strange looking node!"), \
 		SPAN_XENONOTICE("We surge sustinance, creating flexible node!"), null, 5)
-
 		var/cost_nodes = new /obj/effect/alien/weeds/node/designer/cost(target_turf)
-
 		xeno.cost_node_list += cost_nodes
 		playsound(target_turf, "alien_resin_build", 25)
-
-		if(xeno.cost_node_list.len > max_cost_nodes) // Delete the oldest node (the first one in the list)
+		if(length(xeno.cost_node_list) > max_cost_nodes) // Delete the oldest node (the first one in the list)
 			addtimer(CALLBACK(src, "remove_oldest_cost_node", xeno), 0)
 
 	else if(target_turf)
@@ -246,13 +243,12 @@
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 		return FALSE
 	else
-		xeno_cooldown = xeno_cooldown * 0.5
+		xeno_cooldown = COOLDOWN_MULTIPLIER
 		REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("design_cost"))
-
 	return ..()
 
 /datum/action/xeno_action/activable/design_cost_node/proc/remove_oldest_cost_node(mob/living/carbon/xenomorph/xeno)
@@ -294,7 +290,7 @@
 	if(!xeno.check_state(TRUE))
 		return
 
-	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno, DO_AFTER_DELAY, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -314,8 +310,7 @@
 				create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
 	//Wait 1 second, then replace the nodes
-	addtimer(CALLBACK(src, "replace_nodes"), 1 SECONDS)
-
+	addtimer(CALLBACK(src, "replace_nodes"), DO_AFTER_DELAY)
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
 	return ..()
@@ -349,14 +344,16 @@
 
 	if(!ispath(animation_type, /obj/effect/resin_construct/fastweak)) // Ensure a valid path
 		return
-
 	//Spawn an animation effect
 	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
 	animation.loc = target_turf
 
 	// Schedule deletion of the animation after 1 second
-	addtimer(CALLBACK(animation, "delete_animation"), 1 SECONDS)
+	addtimer(CALLBACK(animation, "delete_animation"), DO_AFTER_DELAY)
 
 /obj/effect/resin_construct/fastweak/proc/delete_animation()
 	if(src)
 		qdel(src)
+
+#undef DO_AFTER_DELAY
+#undef COOLDOWN_MULTIPLIER

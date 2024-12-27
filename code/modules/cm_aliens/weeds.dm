@@ -7,6 +7,7 @@
 	desc = "Weird black weeds..."
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
+	var/icon_state_weeds //Change icon_state for weeds/node subtype.
 
 	gender = PLURAL
 	anchored = TRUE
@@ -476,16 +477,14 @@
 	name = "weed node"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
+	icon_state_weeds = "weednode"
 	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading
 	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
 	plane = FLOOR_PLANE
-	var/staticnode
+	var/change_node_overlay
 	var/overlay_node = TRUE
-
-	var/designspeed = FALSE
-	var/designcost = FALSE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -511,12 +510,12 @@
 /obj/effect/alien/weeds/node/update_icon()
 	..()
 	if(overlay_node)
-		overlays += staticnode
+		overlays += change_node_overlay
 
 /obj/effect/alien/weeds/node/proc/trap_destroyed()
 	SIGNAL_HANDLER
 	overlay_node = TRUE
-	overlays += staticnode
+	overlays += change_node_overlay
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
 	if (istype(hive))
@@ -536,22 +535,15 @@
 
 	. = ..(mapload, src)
 
-	// Determine the appropriate icon_state based on conditions
-	var/icon_state_to_use = "weednode" // Default icon_state
-	if(designspeed)
-		icon_state_to_use = "speednode"
-	else if(designcost)
-		icon_state_to_use = "costnode"
-
 	// Create the overlay with the determined icon_state
-	if(!staticnode)
-		staticnode = image('icons/mob/xenos/weeds.dmi', icon_state_to_use, ABOVE_OBJ_LAYER) //believe me i tryied to change it, but this sh*t breaks if you don't tell icon_state name, someone smarter should fix this.
+	if(!change_node_overlay)
+		change_node_overlay = image('icons/mob/xenos/weeds.dmi', icon_state_weeds, ABOVE_OBJ_LAYER) //believe me i tryied to change it, but this sh*t breaks if you don't tell icon_state name, someone smarter should fix this.
 
 	var/obj/effect/alien/resin/trap/trap = locate() in loc
 	if(trap)
 		RegisterSignal(trap, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
-		overlays -= staticnode
+		overlays -= change_node_overlay
 
 	if(xeno)
 		add_hiddenprint(xeno)

@@ -51,6 +51,10 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
+"aj" = (
+/obj/effect/landmark/yautja_young_teleport,
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/prep_room)
 "ak" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
@@ -102,10 +106,6 @@
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/north_east)
-"aM" = (
-/obj/effect/landmark/yautja_young_teleport,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
 "aO" = (
 /turf/open/gm/coast/east,
 /area/yautja_grounds/south_west)
@@ -7028,7 +7028,7 @@ Ow
 Ow
 wi
 LW
-aM
+aj
 Qi
 bl
 nu

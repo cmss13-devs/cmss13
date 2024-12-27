@@ -75,7 +75,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEALLHAIR|HIDEEARS
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 

@@ -88,6 +88,7 @@
 	gender = NEUTER
 	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
+	item_state = "rangefinder"
 	var/laser_cooldown = 0
 	var/cooldown_duration = 200 //20 seconds
 	var/obj/effect/overlay/temp/laser_coordinate/coord

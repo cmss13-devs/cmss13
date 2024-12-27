@@ -433,7 +433,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
 	icon_state = "vialbox0"
-	item_state = "vialbox0"
+	item_state = "vialbox"
 	icon_type = "vial"
 	name = "vial storage box"
 	desc = "A place to store your fragile vials when you are not using them."
@@ -484,7 +484,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
 	)
 	icon_state = "vialbox0"
-	item_state = "vialbox0"
+	item_state = "vialbox"
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.

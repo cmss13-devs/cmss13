@@ -205,6 +205,7 @@
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
+	item_state = "brute_herbs"
 	heal_brute = 15
 	stack_id = "mending herbs"
 	alien = TRUE
@@ -214,6 +215,7 @@
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "burn_herbs"
+	item_state = "burn_herbs"
 	heal_burn = 15
 	stack_id = "soothing herbs"
 	alien = TRUE

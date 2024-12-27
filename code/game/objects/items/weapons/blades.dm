@@ -126,7 +126,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
 	icon_state = "throwing_knife"
-	item_state = "combat_knife"
+	item_state = "throwing_knife"
 	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE

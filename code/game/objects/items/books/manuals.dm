@@ -402,6 +402,7 @@
 /obj/item/book/manual/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
+	item_state ="book_red"
 	author = "Weyland-Yutani"
 	title = "The Film Noir: Proper Procedures for Investigations"
 

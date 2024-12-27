@@ -324,7 +324,7 @@
 	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
 	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
 	icon_state = "reset_key"
-	item_state = null
+	item_state = "synth_reset_key"
 	w_class = SIZE_SMALL
 	charge_cost = 1000
 	force = 0

@@ -520,8 +520,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (storage_slots)
 		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
-	user.update_inv_l_hand()
-	user.update_inv_r_hand()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
 /obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, mob/user)
@@ -555,8 +556,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		W.maptext = ""
 	W.on_exit_storage(src)
 	update_icon()
-	user.update_inv_l_hand()
-	user.update_inv_r_hand()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 	W.mouse_opacity = initial(W.mouse_opacity)
 
 //This proc is called when you want to place an item into the storage item.

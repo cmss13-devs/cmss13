@@ -31,7 +31,7 @@ GLOBAL_PROTECT(href_token)
 	href_token = GenerateToken()
 	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
-	if(owner.admin_holder.rights & R_PROFILER)
+	if(rights & R_PROFILER)
 		world.SetConfig("APP/admin", C.ckey, "role=admin")
 
 // Letting admins edit their own permission giver is a poor idea

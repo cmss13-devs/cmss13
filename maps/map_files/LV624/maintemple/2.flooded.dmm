@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/bed/alien/yautja/leader,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "ai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/rock/brown,
@@ -63,6 +67,10 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"aO" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/caves/sand_temple)
 "aT" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -75,22 +83,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/caves/sand_temple)
-"bt" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/caves/sand_temple)
-"bu" = (
-/obj/effect/decal/remains/xeno{
-	pixel_x = 1;
-	pixel_y = -31
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/showcase/yautja{
-	dir = 4
-	},
-/obj/effect/spider/stickyweb,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "bP" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/sandstone/runed,
@@ -102,12 +94,34 @@
 "ci" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/caves/sand_temple)
+"cG" = (
+/obj/structure/showcase/yautja,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "de" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "dA" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/caves/sand_temple)
+"dB" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/item/skull/hunter{
+	pixel_y = 2;
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "dF" = (
 /turf/open/gm/dirtgrassborder/north,
@@ -144,13 +158,14 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"ej" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8
+"es" = (
+/obj/effect/decal/remains/xeno{
+	pixel_x = -1;
+	pixel_y = 31
 	},
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
+/obj/structure/showcase/yautja,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ev" = (
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -165,6 +180,10 @@
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"eY" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "fd" = (
 /obj/item/weapon/twohanded/yautja/spear,
@@ -183,9 +202,6 @@
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"fF" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/caves/sand_temple)
 "fG" = (
 /obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/coast/beachcorner/north_west,
@@ -216,6 +232,9 @@
 /obj/structure/platform/stone/runed_sandstone,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"gw" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
 /turf/open/shuttle/red,
@@ -252,6 +271,13 @@
 "hD" = (
 /turf/open/gm/dirtgrassborder/desert2,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"hO" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8
+	},
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
 "hX" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -279,6 +305,10 @@
 "iM" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/west,
+/area/lv624/ground/caves/sand_temple)
+"iN" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "iU" = (
 /obj/structure/stairs/perspective{
@@ -347,10 +377,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"lX" = (
-/obj/structure/showcase/yautja/alt,
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "mf" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "maintemple"
@@ -389,10 +415,12 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"ns" = (
-/obj/structure/bed/alien/yautja/leader,
+"mZ" = (
+/obj/structure/showcase/yautja{
+	dir = 8
+	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
+/area/lv624/ground/barrens/south_eastern_barrens)
 "nv" = (
 /obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
@@ -420,23 +448,23 @@
 	},
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
-"pT" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/caves/sand_temple)
 "qj" = (
 /obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"qR" = (
-/obj/structure/showcase/yautja{
-	dir = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles,
+"qz" = (
+/obj/structure/bed/alien/yautja,
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "rd" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/sand_temple)
+"rI" = (
+/obj/structure/showcase/yautja{
+	dir = 4
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "rL" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/corsat/squareswood/north,
@@ -446,11 +474,6 @@
 	pixel_x = 31
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"rY" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/showcase/yautja/alt,
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "sd" = (
 /obj/structure/stairs/perspective{
@@ -476,12 +499,6 @@
 "sN" = (
 /turf/open/gm/river,
 /area/lv624/ground/caves/sand_temple)
-"tl" = (
-/obj/structure/showcase/yautja{
-	dir = 8
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "tn" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -497,15 +514,19 @@
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"tV" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "uc" = (
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/lv624/ground/caves/sand_temple)
+"ue" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "un" = (
 /obj/structure/stairs/perspective{
@@ -529,14 +550,6 @@
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
-"vh" = (
-/obj/effect/decal/remains/xeno{
-	pixel_x = -1;
-	pixel_y = 31
-	},
-/obj/structure/showcase/yautja,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "vl" = (
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/sandstone/runed,
@@ -579,6 +592,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
+"wl" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/decal/remains/xeno{
+	pixel_x = 1;
+	pixel_y = 31
+	},
+/obj/structure/showcase/yautja,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "wt" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -600,6 +622,15 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/caves/sand_temple)
+"wS" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
+	name = "alien sarcophagus"
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "wU" = (
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/caves/sand_temple)
@@ -610,24 +641,6 @@
 "wZ" = (
 /turf/open/gm/dirtgrassborder/desert0,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"xj" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/item/skull/hunter{
-	pixel_y = 2;
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "xp" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -643,17 +656,9 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"xH" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/sand_temple)
 "xO" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
-"xY" = (
-/obj/structure/bed/alien/yautja,
-/turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "yf" = (
 /obj/effect/landmark/yautja_teleport,
@@ -682,11 +687,15 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"zs" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8
+"za" = (
+/obj/structure/platform/stone/runed_sandstone,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
+"zu" = (
+/obj/structure/showcase/yautja{
+	dir = 4
 	},
-/turf/open/floor/sandstone/runed,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "zA" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -697,12 +706,6 @@
 /area/lv624/ground/caves/sand_temple)
 "Ai" = (
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"Aj" = (
-/obj/structure/showcase/yautja{
-	dir = 4
-	},
-/turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Ak" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -722,14 +725,14 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Bd" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
+"Br" = (
+/obj/item/stack/sheet/metal{
+	amount = 3
 	},
-/turf/open/floor/corsat/squareswood/north,
+/obj/item/stack/sheet/metal{
+	amount = 3
+	},
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "BE" = (
 /obj/structure/stairs/perspective{
@@ -738,6 +741,12 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/stone/runed_sandstone/west,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/lv624/ground/caves/sand_temple)
+"BI" = (
+/obj/structure/showcase/yautja{
+	dir = 8
+	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Ce" = (
@@ -767,6 +776,13 @@
 "Dj" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"Ds" = (
+/obj/structure/flora/jungle/alienplant1{
+	layer = 4.13;
+	pixel_y = 18
+	},
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/ground/caves/sand_temple)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -815,10 +831,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
-"EH" = (
-/obj/structure/showcase/yautja,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "EJ" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/sand_temple)
@@ -830,9 +842,10 @@
 /obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
-"EU" = (
-/obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirtgrassborder/south,
+"Fx" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/platform_decoration/stone/runed_sandstone/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
 "FF" = (
 /obj/structure/prop/brazier/torch,
@@ -888,6 +901,24 @@
 	},
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
+"Hl" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/item/skull/warrior{
+	pixel_y = 3;
+	anchored = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "Hq" = (
 /obj/item/stool,
 /turf/open/gm/dirt,
@@ -939,18 +970,20 @@
 "Jc" = (
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
+"Je" = (
+/obj/effect/decal/remains/xeno{
+	pixel_x = -1;
+	pixel_y = -31
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/showcase/yautja{
+	dir = 8
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "Jm" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed/decor,
-/area/lv624/ground/caves/sand_temple)
-"Js" = (
-/obj/item/stack/sheet/metal{
-	amount = 3
-	},
-/obj/item/stack/sheet/metal{
-	amount = 3
-	},
-/turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Jz" = (
 /obj/structure/stairs/perspective{
@@ -961,16 +994,9 @@
 /obj/structure/platform/stone/runed_sandstone,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"Kf" = (
-/obj/effect/decal/remains/xeno{
-	pixel_x = -1;
-	pixel_y = -31
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/showcase/yautja{
-	dir = 8
-	},
-/turf/open/floor/sandstone/runed,
+"JN" = (
+/obj/structure/showcase/yautja/alt,
+/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "Ki" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -1016,6 +1042,11 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
+"Mn" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/showcase/yautja/alt,
+/turf/open/floor/corsat/squareswood/north,
+/area/lv624/ground/caves/sand_temple)
 "Mq" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/mineral/sandstone/runed,
@@ -1033,29 +1064,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"Nj" = (
-/obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/structure/platform_decoration/stone/runed_sandstone/east,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/lv624/ground/caves/sand_temple)
-"Nr" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/item/skull/warrior{
-	pixel_y = 3;
-	anchored = 1
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "Nt" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -1064,15 +1072,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
-"NR" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/effect/decal/remains/xeno{
-	pixel_x = 1;
-	pixel_y = 31
-	},
-/obj/structure/showcase/yautja,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "OA" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/west,
 /turf/open/gm/dirt,
@@ -1114,19 +1113,21 @@
 /obj/structure/platform/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"PO" = (
+/obj/effect/decal/remains/xeno{
+	pixel_x = 1;
+	pixel_y = -31
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/showcase/yautja{
+	dir = 4
+	},
+/obj/effect/spider/stickyweb,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "Qj" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/gm/river,
-/area/lv624/ground/caves/sand_temple)
-"Qq" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "QG" = (
 /obj/structure/barricade/handrail/strata{
@@ -1166,6 +1167,12 @@
 /obj/structure/platform/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"Rx" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "RV" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -1229,13 +1236,6 @@
 "TD" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/north,
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"TE" = (
-/obj/structure/flora/jungle/alienplant1{
-	layer = 4.13;
-	pixel_y = 18
-	},
-/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "TY" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -1350,12 +1350,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"YP" = (
-/obj/structure/showcase/yautja{
-	dir = 4
+"XV" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/area/lv624/ground/caves/sand_temple)
 "Zs" = (
 /obj/structure/prop/brazier,
 /turf/open/floor/sandstone/runed,
@@ -1680,13 +1680,13 @@ GT
 GT
 GT
 xO
-Qq
+ue
 ow
 Jc
 Jc
 Jc
 gL
-Bd
+wS
 if
 HL
 Ai
@@ -1722,13 +1722,13 @@ GT
 GT
 GT
 Jm
-rY
+Mn
 gL
 Jc
 Jc
 Jc
 gL
-lX
+JN
 OC
 HL
 Ai
@@ -1764,13 +1764,13 @@ GT
 GT
 GT
 Jm
-Qq
+ue
 gL
 Jc
 Jc
 Jc
 EL
-Bd
+wS
 if
 HL
 Ai
@@ -1806,13 +1806,13 @@ GT
 GT
 GT
 Jm
-rY
+Mn
 gL
 Jc
 Jc
 Jc
 gL
-lX
+JN
 xO
 HL
 wU
@@ -1848,13 +1848,13 @@ GT
 GT
 GT
 xO
-Bd
+wS
 gL
 Jc
 Jc
 Jc
 gL
-Qq
+ue
 Jm
 HL
 ax
@@ -1890,13 +1890,13 @@ GT
 GT
 GT
 OC
-lX
+JN
 gL
 Jc
 Jc
 Jc
 gL
-rY
+Mn
 xO
 fG
 po
@@ -2057,8 +2057,8 @@ ZX
 ai
 dA
 dA
-EU
-Aj
+za
+zu
 gK
 mv
 mv
@@ -2108,7 +2108,7 @@ wU
 po
 ci
 vY
-xH
+eY
 Ai
 Ai
 mv
@@ -2124,13 +2124,13 @@ xy
 xy
 xy
 gJ
-tl
+mZ
 fD
 DG
 DG
 DG
 aN
-tl
+mZ
 qj
 "}
 (19,1,1) = {"
@@ -2138,7 +2138,7 @@ ZX
 ZX
 ZX
 ZX
-bu
+PO
 OC
 mv
 Ai
@@ -2160,7 +2160,7 @@ MX
 MX
 mv
 ic
-NR
+wl
 uE
 mI
 uE
@@ -2222,7 +2222,7 @@ ZX
 ZX
 ZX
 ZX
-Kf
+Je
 OC
 Ai
 mv
@@ -2239,12 +2239,12 @@ mv
 mv
 Ai
 Ai
-bt
+iN
 jZ
 mv
 mv
 ic
-vh
+es
 uE
 uE
 uE
@@ -2292,13 +2292,13 @@ RV
 RV
 RV
 Jz
-YP
+rI
 Xg
 QG
 QG
 QG
 IZ
-YP
+rI
 qj
 "}
 (23,1,1) = {"
@@ -2310,13 +2310,13 @@ GT
 xO
 xO
 Ep
-qR
+BI
 HL
 Ai
 ax
 ci
 jq
-qR
+BI
 sH
 dA
 Uj
@@ -2359,7 +2359,7 @@ po
 MB
 yH
 ev
-Nj
+Fx
 dA
 HL
 Ai
@@ -2408,7 +2408,7 @@ Ai
 Ai
 Ai
 Ai
-fF
+gw
 Vu
 GT
 GT
@@ -2645,7 +2645,7 @@ GT
 GT
 OC
 dA
-ej
+hO
 Hc
 mv
 rd
@@ -2687,7 +2687,7 @@ GT
 GT
 xO
 dA
-TE
+Ds
 Ai
 mv
 mv
@@ -2773,7 +2773,7 @@ wk
 Ai
 UX
 Ai
-zs
+Rx
 Ai
 rd
 wP
@@ -2859,13 +2859,13 @@ mv
 vC
 dQ
 dA
-xH
+eY
 ax
 sN
 EJ
 hA
 mv
-xj
+dB
 if
 GT
 GT
@@ -2898,16 +2898,16 @@ Wz
 Ai
 Ai
 Ai
-pT
+aO
 dA
 dA
-xH
+eY
 rd
 wP
 sN
 MB
 mv
-Nr
+Hl
 if
 GT
 GT
@@ -3068,9 +3068,9 @@ mv
 mv
 tn
 OC
-xY
+qz
 mv
-xY
+qz
 xO
 rd
 wP
@@ -3106,13 +3106,13 @@ ZX
 GT
 OC
 as
-tV
+XV
 mv
 lt
 OC
-xY
+qz
 mv
-xY
+qz
 xO
 Ai
 rd
@@ -3149,12 +3149,12 @@ GT
 GT
 SW
 Ai
-Js
+Br
 XQ
 Mq
-ns
+aa
 mv
-ns
+aa
 xO
 UX
 MX
@@ -3190,7 +3190,7 @@ ZX
 GT
 GT
 GT
-EH
+cG
 Ai
 GT
 GT

@@ -258,6 +258,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/squad = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/candle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/facehugger = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/facehugger/lamarr = NO_GARB_OVERRIDE,
 	/obj/item/toy/crayon/red = NO_GARB_OVERRIDE,
 	/obj/item/toy/crayon/orange = NO_GARB_OVERRIDE,

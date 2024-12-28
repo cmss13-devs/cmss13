@@ -4,6 +4,7 @@
 	icon = 'icons/effects/warning_stripes.dmi'
 	layer = WEED_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 	var/initial_icon_state
 
 /obj/effect/decal/warning_stripes/Initialize(mapload, ...)
@@ -78,6 +79,7 @@
 /obj/effect/decal/sand_overlay
 	name = "sandy edge"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
 	layer = TURF_LAYER
@@ -94,6 +96,7 @@
 /obj/effect/decal/grass_overlay
 	name = "grass edge"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 	unacidable = TRUE
 	icon = 'icons/turf/floors/auto_strata_grass.dmi'
 	layer = TURF_LAYER
@@ -109,6 +112,7 @@
 	name = "siding"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "siding1"
+	anchored = TRUE
 
 /obj/effect/decal/siding/wood_siding
 	name = "wood siding"

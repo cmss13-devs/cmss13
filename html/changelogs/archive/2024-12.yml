@@ -354,3 +354,76 @@
   - bugfix: Synths and people with robotics limbs can now get de-limbed.
   ihatethisengine:
   - rscadd: Overwatch can hear speech and see emotes.
+2024-12-21:
+  Drathek:
+  - bugfix: Suppressed a div by 0 error when autofit viewport tries to fit the window
+      while minimized
+  - balance: Hunting ground deaths no longer counts against larva queue
+  - bugfix: Fixed a runtime when generating SEA appearance for an imaginary friend
+  Venuska1117, Drathek:
+  - balance: Early game Queen Building Buff, now allows queen to upgrade structures
+      to "Thicker" version.
+2024-12-22:
+  AmoryBlaine, Crowford:
+  - rscadd: American Spirit cigarettes
+  JackieEstegado:
+  - bugfix: Facehugger resin traps no longer refill themselves with dead huggers.
+2024-12-23:
+  harryob:
+  - code_imp: Christmas Festivizer now only applies on Christmas Eve and Day.
+2024-12-24:
+  KaiserBlackwood:
+  - bugfix: puts correct path in wear_back function of shields.
+  Stakeyng:
+  - rscadd: Synth reset key fits in construction belt, tool webbing, and engineer
+      kit pouch
+2024-12-25:
+  Drathek:
+  - bugfix: Various decals are now properly anchored
+  - bugfix: Fixed xenos being able to interact with cards (at least without thumbs)
+  - bugfix: Fixed m56d being unable to be reloaded in gun form
+  - bugfix: Fixed xenos being able to mousedrop mob/items into closets/crates/lockers
+  - rscdel: Removed a to_chat for failing to toggle_open verb
+  - bugfix: Fixed pounce and grab methods to pull something anchored (e.g. ovi queen)
+  Nomoresolvalou, Thwomper:
+  - rscadd: Added staff and longaxe weapons to the elite yautja vendor.
+  - imageadd: Adds onmob sprites for the longaxe.
+  - spellcheck: Changes hunter staff description to be more in line with other weapons.
+  dadlips:
+  - maptweak: Replaced all guest pass terminals
+  realforest2001:
+  - bugfix: Yautja can now correctly un-mark dead people.
+  sg2002:
+  - bugfix: players with no squad preference get correctly put into random squads
+2024-12-27:
+  Drathek:
+  - bugfix: Fixed locking satchel unlocked overlay not appearing on top
+  ihatethisengine:
+  - bugfix: Fixed some issues with overwatch.
+2024-12-28:
+  HIDgamer:
+  - rscadd: Added CPR Buddy 9000 to the experimental vendor.
+  VileBeggar:
+  - rscadd: Weapons now have custom crosshairs. They're optional and can be turned
+      off in the preferences menu.
+  Zenith, mikoka wei, Drathek, Nanu, Cuberound, Almings, Crowford, Blundir, dimdimich1996:
+  - rscadd: added a new map LV_759_Hybrisa_Prospera.
+  - rscadd: Many new varied survivor types unique to Hybrisa - with many new clothing
+      types & sprites mostly done by wei
+  - rscadd: Massive amount of new props with new sprites (some edits of current props,
+      credits to the original artists).
+  - rscadd: Unique "Derelict-Ship" or "Engineer" tile-set by "mikoka wei" (amazing
+      stuff).
+  - rscadd: Destructible vehicles.
+  - rscadd: Unique "Electric-Fence" system around the map with button to turn on/off.
+  - rscadd: New drivable "Box-Vans" with unique interior & sounds.
+  - rscadd: New gun - FN P90, with two versions, the regular colony version and a
+      TWE version, sprites originally from TGMC and edited by "Almings".
+  - rscadd: Massive amount of new sounds for atmosphere.
+  - rscadd: Two new weathers "Light & Very light" unique rain weather, and rain sounds.
+  - rscadd: '"Phoneboxes" you can hide inside, like a locker.'
+  - rscadd: Hospital roller beds, with unique variants that can drop a corpse (non-foldable).
+  - rscadd: New "Rat" simple-mob type with unique sprites.
+  - rscadd: Urban camo rework and fix, added all the missing sprites and proper functionality,
+      resprites all the urban armor and clothing
+  - bugfix: many guns having no mob suit storage sprite if there is no mag in a gun

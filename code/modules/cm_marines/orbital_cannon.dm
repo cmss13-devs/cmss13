@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/orbital_tray
 	name = "loading tray"
 	desc = "The orbital cannon's loading tray."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "cannon_tray"
 	density = TRUE
 	anchored = TRUE
@@ -353,7 +353,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	throwpass = TRUE
 	climbable = TRUE
 	unacidable = TRUE // issue: being used for defences, solution: abomb
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	var/is_solid_fuel = 0
 	var/source_mob
 

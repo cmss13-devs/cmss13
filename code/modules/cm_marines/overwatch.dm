@@ -777,7 +777,7 @@
 	var/y_coord = deobfuscate_y(y_bomb)
 	var/z_coord = deobfuscate_z(z_bomb)
 
-	if(!((z_coord) in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))))
+	if(!is_ground_level(z_coord))
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
@@ -849,7 +849,7 @@
 	var/y_coord = deobfuscate_y(y_supply)
 	var/z_coord = deobfuscate_z(z_supply)
 
-	if(!((z_coord) in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))))
+	if(!is_ground_level(z_coord))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 

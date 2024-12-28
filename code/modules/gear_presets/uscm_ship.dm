@@ -443,8 +443,8 @@
 
 
 	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
-	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
-	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
+	utility_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/mbcg)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
@@ -452,7 +452,7 @@
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer, /obj/item/clothing/suit/storage/jacket/marine/dress)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
@@ -524,6 +524,7 @@
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+		/obj/item/clothing/suit/storage/jacket/marine/dress,
 	)
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
@@ -652,7 +653,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/whistle(new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee, client/mob_client)
-	mob_client.toggle_newplayer_ic_hud(TRUE)
+	mob_client?.toggle_newplayer_ic_hud(TRUE)
 	if(rankee?.client?.prefs?.pref_special_job_options[rank])
 		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[rank])
 		return paygrade_choice

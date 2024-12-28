@@ -4,6 +4,10 @@
 /obj/item/clothing/glasses/meson
 	name = "optical meson scanner"
 	desc = "Used to shield the user's eyes from harmful electromagnetic emissions, also used as general safety goggles. Not adequate as welding protection."
+	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
+	)
 	icon_state = "meson"
 	item_state = "glasses"
 	deactive_state = "degoggles"

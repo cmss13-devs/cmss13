@@ -65,7 +65,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "aO" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "aT" = (
 /obj/structure/stairs/perspective{
@@ -237,7 +237,7 @@
 /area/lv624/ground/caves/sand_temple)
 "eY" = (
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "fd" = (
 /obj/item/weapon/twohanded/yautja/spear,
@@ -287,7 +287,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "gw" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
 /obj/structure/curtain/red,
@@ -334,7 +334,7 @@
 	dir = 8
 	},
 /obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "hX" = (
 /obj/structure/stairs/perspective{
@@ -365,7 +365,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/caves/sand_temple)
 "iN" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/caves/sand_temple)
 "iU" = (
@@ -656,6 +656,7 @@
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
 	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
 /obj/structure/flora/jungle/vines/heavy,
@@ -800,6 +801,7 @@
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
 	icon_state = "yaut";
+	icon = 'icons/obj/structures/morgue.dmi';
 	name = "alien sarcophagus"
 	},
 /turf/open/floor/corsat/squareswood/north,
@@ -862,7 +864,7 @@
 /area/lv624/ground/caves/sand_temple)
 "za" = (
 /obj/structure/platform/stone/runed_sandstone,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "zu" = (
 /obj/structure/showcase{
@@ -985,7 +987,7 @@
 	layer = 4.13;
 	pixel_y = 18
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "Dw" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -1047,7 +1049,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "Fx" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/caves/sand_temple)
@@ -2464,11 +2466,11 @@ uE
 uE
 IP
 Ws
-dF
+hi
 Cr
 UK
 hD
-hi
+dF
 OJ
 qj
 "}
@@ -2506,11 +2508,11 @@ uE
 uE
 uE
 dJ
-dF
+hi
 UK
 MK
 UK
-hi
+dF
 OP
 qj
 "}
@@ -2548,11 +2550,11 @@ uE
 uE
 OL
 iW
-dF
+hi
 ZG
 UK
 wZ
-hi
+dF
 Ix
 qj
 "}
@@ -3546,7 +3548,7 @@ GT
 GT
 UU
 Kk
-dF
+hi
 HN
 HN
 MD

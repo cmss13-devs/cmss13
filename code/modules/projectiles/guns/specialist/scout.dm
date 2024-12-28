@@ -3,9 +3,15 @@
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
 	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
 	unacidable = TRUE
 	explo_proof = TRUE
 	accepted_ammo = list(
@@ -59,6 +65,9 @@
 	integrated.Attach(src)
 	update_attachable(integrated.slot)
 
+
+/obj/item/weapon/gun/rifle/m4ra_custom/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/sniper_mouse.dmi'
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)

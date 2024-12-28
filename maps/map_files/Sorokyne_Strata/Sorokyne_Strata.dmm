@@ -2016,7 +2016,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
 "aii" = (
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
@@ -2505,6 +2505,9 @@
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 6;
 	pixel_y = -4
+	},
+/obj/item/clock{
+	pixel_y = 15
 	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/mining_outpost/flight_control)
@@ -7381,6 +7384,9 @@
 /obj/item/tool/stamp,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/admin)
@@ -12979,7 +12985,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/outpost/platform)
 "btK" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/ug/interior/outpost/platform)
 "btL" = (
@@ -12995,7 +13001,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/interior/outpost/platform)
 "btO" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/platform/east)
 "btT" = (
@@ -13105,9 +13111,8 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue1,
@@ -14845,7 +14850,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/canteen)
 "bLz" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/outpost/platform)
 "bLB" = (
@@ -15160,7 +15165,7 @@
 /obj/structure/prop/structure_lattice{
 	density = 0;
 	desc = "This jukebox only takes quarters and you seem to be out of them at the moment.";
-	icon = 'icons/obj/structures/props/misc.dmi';
+	icon = 'icons/obj/structures/props/furniture/misc.dmi';
 	icon_state = "jukebox";
 	name = "Rockin Robin 2300 Jukebox";
 	pixel_x = -5;
@@ -16482,7 +16487,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/engi/drome)
 "chz" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ag/exterior/jungle/carplake_center)
 "chB" = (
@@ -18434,7 +18439,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/security)
 "dyZ" = (
-/obj/structure/holostool,
+/obj/item/stool,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/interior/outside/engineering/parts_storage)
 "dzo" = (
@@ -19405,7 +19410,7 @@
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "eNz" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
@@ -19415,6 +19420,10 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clock{
+	pixel_x = -14;
+	pixel_y = 16
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNL" = (
@@ -33869,7 +33878,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/ug/interior/jungle/tearlake)
 "yjl" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/structure/platform_decoration/metal/strata/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer0,

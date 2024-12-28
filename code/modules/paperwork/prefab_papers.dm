@@ -56,8 +56,6 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	if(!remaining_documents)
 		to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
 		return FALSE
-	for(var/paper in available_documents)
-		log_debug("Document: [paper]")
 	var/chosen = tgui_input_list(usr, "What document do you need?", "Choose Document", available_documents)
 	var/selected = GLOB.prefab_papers[chosen].type
 	var/obj/item/paper/prefab/document = new selected

@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed xenos being able to interact with cards (at least without thumbs)"
-  - bugfix: "Fixed m56d being unable to be reloaded in gun form"
-  - bugfix: "Fixed xenos being able to mousedrop mob/items into closets/crates/lockers"
-  - rscdel: "Removed a to_chat for failing to toggle_open verb"

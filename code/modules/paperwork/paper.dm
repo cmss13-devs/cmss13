@@ -368,8 +368,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/confirm = alert(usr, "Are you sure you wish to seal this document?\n\nNote: This will prevent the edit of any fields on the paper,\nexcluding the end of the page.", "Confirm", "Yes", "No")
-	if(confirm != "Yes")
+	if(tgui_alert(usr, "Are you sure you wish to seal this document? Note: This will prevent the edit of any fields on the paper, excluding the end of the page.", "Confirm", list("Yes", "No"), 20 SECONDS) != "Yes")
 		return FALSE
 	info = replacetext(info, "<span class=\"paper_field\"></span>", "<br>")
 	calculate_fields()

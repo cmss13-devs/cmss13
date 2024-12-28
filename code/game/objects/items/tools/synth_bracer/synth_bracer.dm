@@ -36,7 +36,7 @@
 	var/bracer_charging = FALSE
 
 	var/list/ability_chips = list()
-	var/ability_chips_max = 2
+	var/ability_chips_max = 3
 
 	var/list/actions_list_inherent = list(
 		/datum/action/human_action/synth_bracer/crew_monitor,

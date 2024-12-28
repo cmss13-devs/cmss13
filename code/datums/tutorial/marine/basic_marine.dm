@@ -7,6 +7,7 @@
 	var/clothing_items_to_vend = 8
 	/// How many items need to be vended from the gun vendor to continue
 	var/gun_items_to_vend = 2
+	required_tutorial = "ss13_intents_1"
 
 // START OF SCRIPTING
 

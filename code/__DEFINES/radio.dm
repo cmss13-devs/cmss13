@@ -66,11 +66,17 @@
 #define RADIO_CHANNEL_BUG_A "Listening Device A"
 #define RADIO_CHANNEL_BUG_B "Listening Device B"
 
+//Fax Responder Bugs
+#define RADIO_CHANNEL_FAX_WY "WY Monitor"
+#define RADIO_CHANNEL_FAX_USCM_HC "USCM-HC Monitor"
+#define RADIO_CHANNEL_FAX_USCM_PVST "Provost Monitor"
+
 //1-Channel ERTs
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"
 #define RADIO_CHANNEL_CMB "CMB"
 #define RADIO_CHANNEL_ROYAL_MARINE "Royal Marine"
+#define RADIO_CHANNEL_CIA "CIA"
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
 

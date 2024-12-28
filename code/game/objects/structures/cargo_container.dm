@@ -1,13 +1,43 @@
 /obj/structure/cargo_container
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container.\nYou aren't supposed to see this."
-	icon = 'icons/obj/structures/props/contain.dmi'
+	icon = 'icons/obj/structures/props/containers/contain.dmi'
 	bound_width = 32
 	bound_height = 64
 	density = TRUE
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
+	///multiples any demage taken from bullets
+	var/bullet_damage_multiplier = 0.2
+	///multiples any demage taken from explosion
+	var/explosion_damage_multiplier = 2
+
+/obj/structure/cargo_container/bullet_act(obj/projectile/projectile)
+	. = ..()
+	update_health(projectile.damage * bullet_damage_multiplier)
+
+/obj/structure/cargo_container/attack_alien(mob/living/carbon/xenomorph/xenomorph)
+	. = ..()
+	var/damage = ((floor((xenomorph.melee_damage_lower + xenomorph.melee_damage_upper)/2)) )
+
+	//Frenzy bonus
+	if(xenomorph.frenzy_aura > 0)
+		damage += (xenomorph.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+
+	xenomorph.animation_attack_on(src)
+
+	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"), \
+	SPAN_DANGER("You slash [src]!"))
+
+	update_health(damage)
+
+	return XENO_ATTACK_ACTION
+
+/obj/structure/cargo_container/ex_act(severity, direction)
+	. = ..()
+	update_health(severity * explosion_damage_multiplier)
+
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
 	name = "Watatsumi Cargo Container"
@@ -192,7 +222,7 @@
 /obj/structure/cargo_container/horizontal
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container."
-	icon = 'icons/obj/structures/props/containHorizont.dmi'
+	icon = 'icons/obj/structures/props/containers/containHorizont.dmi'
 	bound_width = 64
 	bound_height = 32
 	density = TRUE

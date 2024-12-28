@@ -402,21 +402,11 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"abE" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/prison/blue/north,
-/area/desert_dam/interior/lab_northeast/east_lab_RND)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
-"abG" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/prison/darkred2/west,
-/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
@@ -453,11 +443,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"abP" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/prison/darkred2/north,
-/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "abQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -500,11 +485,6 @@
 /obj/structure/largecrate/random,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
-"abY" = (
-/obj/structure/machinery/computer/communications,
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/carpet11_12/west,
-/area/desert_dam/building/administration/office)
 "abZ" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -528,14 +508,6 @@
 	},
 /turf/closed/wall/indestructible/invisible,
 /area/desert_dam/exterior/river/riverside_east)
-"ace" = (
-/obj/structure/machinery/computer/communications,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/wood,
-/area/desert_dam/building/administration/office)
 "acf" = (
 /obj/structure/surface/table,
 /turf/open/floor/whitegreen/west,
@@ -3326,6 +3298,11 @@
 "aoz" = (
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"aoA" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/prison/darkred2/north,
+/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aoB" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/interior/dam_interior/west_tunnel)
@@ -4140,6 +4117,11 @@
 "asg" = (
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/desert_dam/interior/dam_interior/hanger)
+"asm" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asn" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -5595,6 +5577,11 @@
 "ayE" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/lab_northeast/east_lab_RND)
+"ayF" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayG" = (
@@ -35077,6 +35064,11 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet15_15/west,
 /area/desert_dam/building/administration/office)
+"duo" = (
+/obj/structure/machinery/computer/communications,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet11_12/west,
+/area/desert_dam/building/administration/office)
 "duq" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -35152,6 +35144,14 @@
 /area/desert_dam/interior/caves/temple)
 "duU" = (
 /obj/structure/machinery/computer/med_data/laptop,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/office)
+"duV" = (
+/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
@@ -65154,7 +65154,7 @@ dTs
 dTs
 dTs
 aVm
-abY
+duo
 aWt
 aWT
 dba
@@ -66558,7 +66558,7 @@ dTs
 dTs
 dTs
 aVm
-ace
+duV
 aWw
 aWq
 aWq
@@ -84358,7 +84358,7 @@ avG
 avG
 avG
 aCr
-abE
+ayF
 ayU
 aLH
 azo
@@ -98858,7 +98858,7 @@ apn
 aqQ
 ark
 aqk
-abG
+asm
 asH
 anQ
 auF
@@ -101188,7 +101188,7 @@ amz
 amz
 apj
 anQ
-abP
+aoA
 aoT
 aoT
 bIL
@@ -102129,11 +102129,11 @@ amz
 amz
 apj
 anP
-abP
+aoA
 aoS
 apI
 anP
-abP
+aoA
 aoS
 apI
 anP

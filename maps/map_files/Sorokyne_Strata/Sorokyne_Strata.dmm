@@ -18,10 +18,11 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
 "aae" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outside/checkpoints/north)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -95,11 +96,12 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "aau" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
+	insert_tag = "hvhupplz1"
 	},
-/turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/interior/mountain)
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -116,16 +118,6 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aay" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/structure/machinery/computer/communications{
-	dir = 4
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/strata/blue1,
-/area/strata/ag/interior/outside/administration)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -166,13 +158,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
-"aaE" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/carplake/north)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -184,11 +169,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aaH" = (
-/obj/structure/machinery/computer/communications,
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -2051,6 +2031,11 @@
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "aih" = (
 /obj/effect/landmark/crap_item,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/red1,
+/area/strata/ug/interior/jungle/structures/research)
+"aii" = (
+/obj/structure/machinery/computer/communications,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
@@ -13141,6 +13126,16 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
+"buy" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outside/administration)
 "buz" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -19432,6 +19427,11 @@
 /obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/landing_zones/near_lz2)
+"eNz" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
@@ -34214,7 +34214,7 @@ alz
 alz
 alz
 aac
-aau
+aae
 aac
 aac
 aac
@@ -41922,7 +41922,7 @@ cbi
 aac
 aac
 mvm
-aae
+eNz
 ioM
 cow
 beY
@@ -44186,7 +44186,7 @@ coB
 coB
 cfR
 cfR
-aay
+buy
 brt
 bAG
 bFB
@@ -70597,7 +70597,7 @@ jUA
 jUA
 jUA
 cei
-aaE
+aau
 cei
 jUA
 jUA
@@ -71091,7 +71091,7 @@ bon
 bon
 bon
 adz
-aaH
+aii
 aiV
 ajC
 aiV

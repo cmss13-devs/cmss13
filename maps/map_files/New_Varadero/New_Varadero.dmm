@@ -6,43 +6,22 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
 "aab" = (
-/obj/structure/prop/invuln/fusion_reactor{
-	name = "Plasma Reactor"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
-"aac" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
-"aad" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/communications{
-	dir = 1
+"aac" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
 	},
-/obj/item/card/id/silver/clearance_badge{
-	pixel_x = 14
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/maintenance/north)
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/varadero/interior/disposals)
-"aaf" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/communications{
-	dir = 1
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 17;
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/maintenance/north)
 "aag" = (
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
@@ -54,12 +33,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"aah" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -9745,6 +9718,12 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
+"hRs" = (
+/obj/structure/prop/invuln/fusion_reactor{
+	name = "Plasma Reactor"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "hRv" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/sand_white/layer1,
@@ -10664,6 +10643,17 @@
 	},
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz2_near)
+"iFm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 17;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
 "iFy" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/souto/grape{
@@ -27780,6 +27770,16 @@
 	},
 /turf/open/gm/coast/south,
 /area/varadero/exterior/farocean)
+"wfS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/obj/item/card/id/silver/clearance_badge{
+	pixel_x = 14
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
 "wfT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -35383,7 +35383,7 @@ qul
 qul
 qul
 qHc
-aac
+aab
 xCn
 xCn
 oPQ
@@ -44286,7 +44286,7 @@ teH
 oaO
 wns
 vru
-aad
+wfS
 kqA
 giN
 giN
@@ -44468,7 +44468,7 @@ kqA
 aSe
 rFv
 hQP
-aaf
+iFm
 kqA
 lGD
 giN
@@ -56454,7 +56454,7 @@ wlB
 wlB
 wlB
 wlB
-aah
+aac
 wlB
 wlB
 wlB
@@ -59126,10 +59126,10 @@ avD
 mqe
 mqe
 avD
-aab
+hRs
 cHV
 wsG
-aab
+hRs
 avD
 mqe
 mqe

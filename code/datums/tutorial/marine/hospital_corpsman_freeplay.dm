@@ -39,15 +39,15 @@
 	/// The agents are mapped to a list of item types requested.
 	var/list/mob/living/carbon/human/realistic_dummy/agents = list()
 
-	var/list/mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agents = list()
+	var/list/mob/living/carbon/human/dragging_agents = list()
 
 	var/list/mob/living/carbon/human/realistic_dummy/active_agents = list()
 
-	var/mob/living/carbon/human/active_agent
+	var/mob/living/carbon/human/realistic_dummy/active_agent
 
 	var/mob/living/carbon/human/realistic_dummy/booboo_agent
 
-	var/mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent
+	var/mob/living/carbon/human/dragging_agent
 
 	var/turf/agent_spawn_location
 
@@ -118,7 +118,7 @@
 				survival_difficulty = next_in_list(current_difficulty, difficulties)
 		playsound(tutorial_mob.loc, 'sound/effects/siren.ogg', 50)
 		slower_message_to_player("Warning! Mass-Casualty event detected!")
-	else if(rand() < TUTORIAL_HM_DIFFICULTY_INCREASE)
+	else if((rand() < TUTORIAL_HM_DIFFICULTY_INCREASE) && !(survival_wave <= 2)) // two round grace period
 		var/current_difficulty = survival_difficulty
 		if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 			survival_difficulty = next_in_list(current_difficulty, difficulties)
@@ -163,7 +163,7 @@
 
 	for(var/i in 3 to (round(rand(min_survival_agents, max_survival_agents))))
 		var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
-		arm_equipment(active_agent, /datum/equipment_preset/other/realistic_dummy)
+		arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 		var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
 		agents[active_agent] = dropoff_point
 		active_agent.a_intent = INTENT_DISARM
@@ -172,10 +172,10 @@
 
 	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)
 
-	//if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))
-	//	boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(7,15)) SECONDS, TIMER_STOPPABLE)
+	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))
+		boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/simulate_condition(mob/living/carbon/human/realistic_dummy/target)
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/simulate_condition(mob/living/carbon/human/target)
 
 	var/damageamountsplit = ((round(rand(1, 100))) / 100)
 	var/list/limbs = target.limbs
@@ -196,9 +196,10 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/eval_agent_status()
 
 	//for(var/i in 1 to length(agents))
-	for(var/mob/living/carbon/human/realistic_dummy/target in agents)
+	for(var/mob/living/carbon/human/target in agents)
 		if(target.stat > 0) // are they awake?
-			var/mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent = new(target.loc)
+			var/mob/living/carbon/human/dragging_agent = new(target.loc)
+			init_dragging_agent(dragging_agent)
 			dragging_agent.do_pull(target)
 			dragging_agents[dragging_agent] = target
 			move_dragging_agent()
@@ -206,11 +207,11 @@
 			active_agents |= target
 			move_active_agents()
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/handle_speech(mob/living/carbon/human/realistic_dummy/target)
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/handle_speech(mob/living/carbon/human/target)
 
 	var/list/helpme = list()
 
-	if(istype(target, /mob/living/carbon/human/realistic_dummy/dragging_agent))
+	if(target in dragging_agents)
 		target.emote("medic")
 		return
 	if(rand() <= 0.25)
@@ -218,7 +219,7 @@
 		return
 	for(var/obj/limb/limb in target.limbs)
 		if(limb.status & LIMB_BROKEN)
-			var/targetlimb = capitalize(limb.display_name)
+			var/targetlimb = limb.display_name
 			helpme |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
 
 	helpme |= list("Doc can I get some pills?", "Need a patch up please", "Im hurt Doc...", "Can I get some healthcare?", "Pill me real quick")
@@ -230,8 +231,8 @@
 	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
 
 	listclearnulls(dragging_agents)
-	for(var/mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent in dragging_agents)
-		var/mob/living/carbon/human/realistic_dummy/target = dragging_agents[dragging_agent]
+	for(var/mob/living/carbon/human/dragging_agent in dragging_agents)
+		var/mob/living/carbon/human/target = dragging_agents[dragging_agent]
 		var/turf/dropoff_point = agents[target]
 		if(locate(dragging_agent) in agent_spawn_location)
 			var/initial_step_direction = pick((agent_spawn_location.y) <= (dropoff_point.y) ? NORTH : SOUTH)
@@ -254,7 +255,7 @@
 			make_dragging_agent_leave(dragging_agent)
 			handle_speech(dragging_agent)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_dragging_agent_leave(mob/living/carbon/human/realistic_dummy/dragging_agent/dragging_agent)
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
 
 	dragging_agent.density = 0
 	dragging_agents -= dragging_agent
@@ -299,14 +300,14 @@
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/eval_booboo_agent()
 
-	var/mob/living/carbon/human/realistic_dummy/booboo_agent = new(agent_spawn_location)
-	arm_equipment(booboo_agent, /datum/equipment_preset/other/realistic_dummy)
+	var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
+	arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 	var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
-	agents[booboo_agent] = dropoff_point
-	booboo_agent.a_intent = INTENT_DISARM
+	agents[active_agent] = dropoff_point
+	active_agent.a_intent = INTENT_DISARM
 
 	var/damageamountsplit = ((round(rand(1, 100))) / 100)
-	var/list/limbs = booboo_agent.limbs
+	var/list/limbs = active_agent.limbs
 	var/amount_of_parts = round(rand(1, 6))
 
 	for(var/i in 1 to amount_of_parts)
@@ -316,10 +317,11 @@
 		if((damageamount > 30) && (rand()) < (TUTORIAL_HM_INJURY_SEVERITY_BOOBOO / 10))
 			selectedlimb.fracture()
 
-	booboo_agent.updatehealth()
-	booboo_agent.UpdateDamageIcon()
-	RegisterSignal(booboo_agent, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
-	RegisterSignal(booboo_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
+	active_agent.updatehealth()
+	active_agent.UpdateDamageIcon()
+	active_agents |= active_agent
+	RegisterSignal(active_agent, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
+	RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/hint_requested(mob/living/target, mob/living/user)
 
@@ -338,7 +340,7 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/tutorial_close()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine_dummy)
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
 	slower_message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
@@ -384,15 +386,12 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_npcs()
 
 	CMOnpc = new(loc_from_corner(7, 7))
+	arm_equipment(CMOnpc, /datum/equipment_preset/uscm/tutorial_rifleman) // for the name update
 	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo)
-	var/mob_name = "[random_name(CMOnpc.gender)]"
-	CMOnpc.change_real_name(CMOnpc, mob_name)
 
-/mob/living/carbon/human/realistic_dummy/dragging_agent/Initialize() // Now comes pre-fitted with Marine gear!! Tutorial realism increased by 400%!!!
-	. = ..()
-	create_hud()
-	arm_equipment(src, /datum/equipment_preset/other/realistic_dummy)
-	a_intent = INTENT_DISARM
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
+	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
+	dragging_agent.a_intent = INTENT_DISARM
 
 /obj/structure/machinery/cm_vending/sorted/medical/tutorial
 	name = "\improper Tutorial Wey-Med Plus"

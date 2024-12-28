@@ -1,9 +1,10 @@
 /datum/tutorial/marine/hospital_corpsman_basic
-	name = "Marine - Hospital Corpsman (Basic)"
+	name = "Marine - Hospital Corpsman (Basic) - Not Currently Playable"
 	desc = "Learn the basic skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_1"
 	icon_state = "medic"
 	//required_tutorial = "marine_basic_1"
+	required_tutorial = "debug"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 4
 

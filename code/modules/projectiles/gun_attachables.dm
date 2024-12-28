@@ -282,6 +282,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "bayonet"
 	item_state = "combat_knife"
 	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
@@ -918,6 +919,9 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
 	return .
 
@@ -2207,6 +2211,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/stock/mod88
@@ -2327,6 +2334,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/m4ra_barrel_custom
@@ -2356,6 +2366,9 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
 	return .
 

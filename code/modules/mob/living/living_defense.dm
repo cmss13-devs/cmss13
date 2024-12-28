@@ -84,7 +84,8 @@
 		last_damage_data = create_cause_data(last_damage_source, M)
 
 /mob/living/mob_launch_collision(mob/living/L)
-	L.Move(get_step_away(L, src))
+	if(!L.anchored)
+		L.Move(get_step_away(L, src))
 
 /mob/living/obj_launch_collision(obj/O)
 	var/datum/launch_metadata/LM = launch_metadata

@@ -156,6 +156,7 @@
 		/obj/item/defenses/handheld/sentry,
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
+		/obj/item/device/defibrillator/synthetic,
 	)
 
 	bypass_w_limit = list(
@@ -810,6 +811,9 @@
 		if("snow")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -953,6 +957,7 @@
 	w_class = SIZE_LARGE
 	storage_slots = 12
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	flags_atom = FPRINT // has gamemode skin
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
 	can_hold = list(
@@ -979,6 +984,9 @@
 		if("snow")
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
+			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1143,12 +1151,7 @@
 		/obj/item/ammo_magazine/pistol,
 	)
 	cant_hold = list(
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1239,7 +1242,7 @@
 		*/
 		playsound(src, drawSound, 7, TRUE)
 		var/image/gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
-		if(gun_has_gamemode_skin & current_gun.map_specific_decoration)
+		if(gun_has_gamemode_skin && current_gun.map_specific_decoration)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
 					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "s_" + current_gun.base_gun_icon)
@@ -1248,7 +1251,7 @@
 				if("classic")
 					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
 				if("urban")
-					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "u_" + current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
@@ -1360,13 +1363,7 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
@@ -1524,9 +1521,6 @@
 	can_hold = list(
 		/obj/item/weapon/gun/smg/m39,
 		/obj/item/ammo_magazine/smg,
-	)
-	cant_hold = list (
-		/obj/item/weapon/gun/smg/m39/elite, // HONKed currently
 	)
 	holster_slots = list(
 		"1" = list(
@@ -1960,13 +1954,7 @@
 	var/list/bad_guns = list(
 		/obj/item/weapon/gun/pistol/m4a3/training,
 		/obj/item/weapon/gun/pistol/mod88/training,
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049, // HONKed currently
-		/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series, // HONKed currently
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout, // HONKed currently
-		/obj/item/weapon/gun/pistol/holdout/flashlight, // HONKed currently
-		/obj/item/weapon/gun/pistol/es4, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently

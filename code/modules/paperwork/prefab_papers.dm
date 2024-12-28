@@ -34,8 +34,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	var/choice = tgui_alert(user, "Do you wish to open the cabinet, or retrieve a document template?", "Action", list("Open", "Document"), 20 SECONDS)
 	switch(choice)
 		if("Open")
-			if(contents.len <= 0)
-				to_chat(user, SPAN_NOTICE("\The [src] is empty."))
+			if(!length(contents))
+				to_chat(user, SPAN_NOTICE("[src] is empty."))
 				return
 
 			user.set_interaction(src)
@@ -46,14 +46,14 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 			show_browser(user, dat, name, "filingcabinet", "size=350x300")
 			return
 		if("Document")
-			if(!remaining_documents)
+			if(remaining_documents <= 0)
 				to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
 				return
 			give_document(user)
 			return
 
 /obj/structure/filingcabinet/documentation/proc/give_document(mob/user as mob)
-	if(!remaining_documents)
+	if(remaining_documents <= 0)
 		to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
 		return FALSE
 	var/chosen = tgui_input_list(usr, "What document do you need?", "Choose Document", available_documents)

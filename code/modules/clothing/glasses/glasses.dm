@@ -757,6 +757,11 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
+/obj/item/clothing/glasses/sunglasses/aviator/silver
+	name = "aviator shades"
+	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
+	icon_state = "aviator_silver"
+
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
@@ -765,6 +770,11 @@
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/glasses/sunglasses/sechud/blue
+	name = "Security HUD-Glasses"
+	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
+	icon_state = "sunhud_blue"
 
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
 	name = "Prescription Security HUD-Glasses"

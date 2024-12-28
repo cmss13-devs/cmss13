@@ -628,20 +628,21 @@
 		escaped = FALSE
 
 /obj/structure/machinery/hunt_ground_escape/attackby(obj/item/attacking_item, mob/user)
-	. = ..()
-	var/obj/item/clothing/mask/gas/yautja/hunter/mask = attacking_item
 	if(escaped)
 		to_chat(user, SPAN_NOTICE("The shutter is already open."))
 		return
 
-	if(mask.loc != user)
-		to_chat(user, SPAN_WARNING("You cannot scan [mask] without holding it."))
+	if(attacking_item.loc != user)
+		to_chat(user, SPAN_WARNING("You cannot scan [attacking_item] without holding it."))
 		return
 
 	if(user.action_busy)
 		return
 
-	to_chat(user, SPAN_DANGER("You hold the [mask] up to the console and it begins to scan..."))
+	if(!istype(attacking_item, /obj/item/clothing/mask/gas/yautja/hunter))
+		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
+		return
+	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
 	message_all_yautja("Prey is trying to escape the hunting grounds.")
 
 	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))

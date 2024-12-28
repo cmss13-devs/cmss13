@@ -20,10 +20,22 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
 "aad" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/carpet,
+/area/fiorina/station/security/wardens)
+"aae" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
-"aae" = (
+"aaf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aag" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
@@ -18673,11 +18685,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
-"omb" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/guestpass,
-/turf/open/floor/carpet,
-/area/fiorina/station/security/wardens)
 "omh" = (
 /obj/structure/cargo_container/grant/left{
 	desc = "A huge industrial shipping container. This one is in space."
@@ -26775,14 +26782,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
-"uEh" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "uEj" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/prison,
@@ -60815,7 +60814,7 @@ rJO
 ipa
 rJO
 anP
-omb
+aad
 rJO
 xoK
 vXT
@@ -66491,7 +66490,7 @@ oMW
 goG
 dYq
 chg
-uEh
+aaf
 gZx
 goG
 fAf
@@ -67161,7 +67160,7 @@ fAf
 nZB
 nZB
 nZB
-aad
+aae
 nZB
 nZB
 nZB
@@ -83198,7 +83197,7 @@ nGZ
 nGZ
 qaL
 fDJ
-aae
+aag
 uYi
 cUd
 cUd

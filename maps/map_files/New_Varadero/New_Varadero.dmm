@@ -8029,10 +8029,12 @@
 /turf/open/floor/shiva/blue/east,
 /area/varadero/interior/administration)
 "gsu" = (
-/obj/effect/decal/remains/xeno{
-	pixel_y = 25
-	},
 /obj/effect/landmark/xeno_spawn,
+/obj/item/skull/warrior{
+	pixel_y = 31;
+	pixel_x = 1;
+	anchored = 1
+	},
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)
 "gsw" = (
@@ -15436,8 +15438,10 @@
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "mvv" = (
-/obj/effect/decal/remains/xeno{
-	pixel_y = 25
+/obj/item/skull/warrior{
+	pixel_y = 31;
+	pixel_x = 1;
+	anchored = 1
 	},
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)
@@ -18683,8 +18687,8 @@
 /turf/open/floor/white,
 /area/varadero/interior/toilets)
 "pjm" = (
-/obj/effect/decal/remains/xeno{
-	pixel_y = -25
+/obj/item/skull/corroder{
+	pixel_y = -27
 	},
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)

@@ -293,6 +293,8 @@
 		return
 	if(O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1)
 		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 	if(!isturf(user.loc))
 		return
 	if(ismob(O))
@@ -353,8 +355,6 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		src.toggle(usr)
-	else
-		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()

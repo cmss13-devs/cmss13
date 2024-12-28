@@ -18,6 +18,10 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"aad" = (
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
@@ -59120,10 +59124,10 @@ avD
 mqe
 mqe
 avD
-uvd
+aad
 cHV
 wsG
-uvd
+aad
 avD
 mqe
 mqe

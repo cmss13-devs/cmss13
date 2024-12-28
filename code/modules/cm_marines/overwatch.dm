@@ -527,6 +527,10 @@
 				var/mob/cam_target = locate(params["target_ref"])
 				var/obj/item/clothing/head/helmet/marine/new_helm = get_helm_from_target(cam_target)
 				var/obj/structure/machinery/camera/new_cam = new_helm?.camera
+				if(user.interactee != src) //if we multitasking
+					user.set_interaction(src)
+					if(cam == new_cam) //if we switch to a console that is already watching this cam
+						return
 				if(!new_cam || !new_cam.can_use())
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
@@ -707,6 +711,8 @@
 		helm = null
 
 /obj/structure/machinery/computer/overwatch/on_set_interaction(mob/user)
+	if(user.interactee != src)
+		user.unset_interaction()
 	..()
 	if(!isRemoteControlling(user))
 		concurrent_users += WEAKREF(user)

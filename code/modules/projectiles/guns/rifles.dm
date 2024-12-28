@@ -2147,7 +2147,7 @@
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/xr
+	current_mag = /obj/item/ammo_magazine/rifle/xm51/avp
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,

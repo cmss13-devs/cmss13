@@ -557,8 +557,8 @@
 //OWLF Ammo
 
 /obj/item/ammo_magazine/rifle/xm51/avp
-	name = "\improper ZX-76 magazine (16g)"
-	desc = "A 16 gauge pump-action shotgun magazine."
+	name = "\improper ZX-76 magazine"
+	desc = "A 12 gauge pump-action shotgun magazine."
 	icon_state = "xm51"
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot

@@ -354,3 +354,14 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/pistol/skorpion
 	max_rounds = 20
+
+//--------------------------------------------------------
+//VP76 magazine
+
+/obj/item/ammo_magazine/pistol/vp76
+	name = "\improper VP76 Magazine"
+	default_ammo = /datum/ammo/bullet/pistol/powerful
+	caliber = "10mm"
+	icon_state = "vp78"
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/pistol/vp76

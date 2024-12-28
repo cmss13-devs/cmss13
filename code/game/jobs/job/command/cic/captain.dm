@@ -32,7 +32,7 @@
 		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(src, PROC_REF(do_announce_entry_message), H), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
 	return ..()
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)
@@ -43,16 +43,6 @@
 /datum/job/command/commander/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_CO
-
-/datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
-		all_hands_on_deck("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
-	//for(var/i in GLOB.co_secure_boxes)
-		//var/obj/structure/closet/secure_closet/securecom/S = i
-		//var/loc_to_spawn = S.opened ? get_turf(S) : S
-		//var/obj/item/weapon/gun/rifle/m46c/I = new(loc_to_spawn)
-		//new /obj/item/clothing/suit/storage/marine/MP/CO(loc_to_spawn)
-		//new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
-		//I.name_after_co(H, I)
 
 /obj/effect/landmark/start/captain
 	name = JOB_CO

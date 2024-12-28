@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/minigun
 	name = "\improper LTAA-AP Minigun"
-	desc = "A primary weapon for tanks that spews bullets"
+	desc = "A primary LTAA Minigun utelizing AP ammo for tanks. Its six barrels are heavy and take a bit to fully spin up."
 
 	icon_state = "ltaaap_minigun"
 	disp_icon = "tank"
@@ -26,7 +26,7 @@
 		"8" = list(-77, 0)
 	)
 
-	scatter = 18
+	scatter = 18 //base scatter, modified by stake_delay_mult
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,

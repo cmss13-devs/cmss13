@@ -133,15 +133,58 @@
 	name = "sample jar"
 	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jar_sample"
-	desc = "Used to store organic samples inside for preservation."
+	desc = "Used to store organic samples inside for preservation. You aren't sure what's inside."
+	var/list/overlay_options = list(
+		"sample_egg",
+		"sample_larva",
+		"sample_hugger",
+		"sample_runner_tail",
+		"sample_runner",
+		"sample_runner_head",
+		"sample_drone_tail",
+		"sample_drone",
+		"sample_drone_head",
+		"sample_sentinel_tail",
+		"sample_sentinel",
+		"sample_sentinel_head",
+	)
+
+/obj/item/alienjar/ovi
+	desc = "Used to store organic samples inside for preservation. Looks like maybe an egg?"
+	overlay_options = list(
+		"sample_egg",
+		"sample_larva",
+		"sample_hugger",
+	)
+
+/obj/item/alienjar/runner
+	desc = "Used to store organic samples inside for preservation. Looks like its part of a red one."
+	overlay_options = list(
+		"sample_runner_tail",
+		"sample_runner",
+		"sample_runner_head",
+	)
+
+/obj/item/alienjar/drone
+	desc = "Used to store organic samples inside for preservation. Looks like a common part."
+	overlay_options = list(
+		"sample_drone_tail",
+		"sample_drone",
+		"sample_drone_head",
+	)
+
+/obj/item/alienjar/sentinel
+	desc = "Used to store organic samples inside for preservation. Looks like its part of a red one."
+	overlay_options = list(
+		"sample_sentinel_tail",
+		"sample_sentinel",
+		"sample_sentinel_head",
+	)
 
 /obj/item/alienjar/Initialize(mapload, ...)
 	. = ..()
 
-	var/image/I
-	I = image('icons/obj/structures/props/alien_autopsy.dmi', "sample_[rand(0,11)]")
-	I.layer = src.layer - 0.1
-	overlays += I
+	underlays += image('icons/obj/structures/props/alien_autopsy.dmi', pick(overlay_options))
 	pixel_x += rand(-3,3)
 	pixel_y += rand(-3,3)
 

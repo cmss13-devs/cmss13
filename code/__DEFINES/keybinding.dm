@@ -49,15 +49,15 @@
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_MOVE "keybinding_human_issue_order_move"
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_HOLD "keybinding_human_issue_order_hold"
 #define COMSIG_KB_HUMAN_ISSUE_ORDER_FOCUS "keybinding_human_issue_order_focus"
-
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
-
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
-
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
-
 #define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
+#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_NORTH "keybinding_human_pixel_shift_grabbed_north"
+#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_SOUTH "keybinding_human_pixel_shift_grabbed_south"
+#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_EAST "keybinding_human_pixel_shift_grabbed_east"
+#define COMSIG_KB_HUMAN_PIXEL_SHIFT_GRABBED_WEST "keybinding_human_pixel_shift_grabbed_west"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
@@ -178,7 +178,7 @@
 // Yautja Bracer
 #define COMSIG_KB_YAUTJA_TOGGLE_NOTIFICATION_SOUND "keybinding_yautja_toggle_notification_sound"
 #define COMSIG_KB_YAUTJA_BRACER_MESSAGE "keybinding_yautja_bracer_message"
-#define COMSIG_KB_YAUTJA_WRISTBLADES "keybinding_yautja_wristblades"
+#define COMSIG_KB_YAUTJA_BRACER_ATTACHMENT "keybinding_yautja_bracer_attachement"
 #define COMSIG_KB_YAUTJA_TRACK_GEAR "keybinding_yautja_track_gear"
 #define COMSIG_KB_YAUTJA_CLOAKER "keybinding_yautja_cloaker"
 #define COMSIG_KB_YAUTJA_CASTER "keybinding_yautja_caster"

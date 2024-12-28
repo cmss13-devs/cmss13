@@ -1,0 +1,4 @@
+author: "Joe Lampost"
+delete-after: True
+changes:
+  - bugfix: "Fixes the escape from the hunting grounds"

@@ -6,6 +6,12 @@
 #define USE_POWER_IDLE 1
 #define USE_POWER_ACTIVE 2
 
+// door defines
+
+#define DOOR_OPERATING_IDLE 0
+#define DOOR_OPERATING_OPENING 1
+#define DOOR_OPERATING_CLOSING 2
+
 // used by the simulator to select mob type
 
 #define HUMAN_MODE "Unarmoured Humans"

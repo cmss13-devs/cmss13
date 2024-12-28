@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/grenade_launcher
 	name = "\improper M92T Grenade Launcher"
-	desc = "A secondary weapon for tanks that shoots grenades."
+	desc = "A magazine fed secondary grenade launcher for tanks that shoots M40 grenades."
 
 	icon_state = "glauncher"
 	disp_icon = "tank"
@@ -30,6 +30,10 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+
+/obj/item/attachable/attached_gun/grenade/Initialize()
+	. = ..()
+	grenade_pass_flags = PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 
 /obj/item/hardpoint/secondary/grenade_launcher/try_fire(atom/target, mob/living/user, params)
 	if(get_turf(target) in owner.locs)

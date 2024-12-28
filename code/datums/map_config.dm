@@ -32,6 +32,7 @@
 
 	var/announce_text = ""
 	var/infection_announce_text = ""
+	var/liaison_briefing = ""
 
 	var/squads_max_num = 4
 
@@ -346,6 +347,9 @@
 
 	if(json["infection_announce_text"])
 		infection_announce_text = json["infection_announce_text"]
+
+	if(json["liaison_briefing"])
+		liaison_briefing = json["liaison_briefing"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

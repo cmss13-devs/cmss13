@@ -8,6 +8,9 @@
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
 	icon = 'icons/mob/xenos/effects.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
+	)
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
@@ -16,6 +19,7 @@
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON
 	throw_range = 1
+	vision_impair = VISION_IMPAIR_MAX
 	layer = FACEHUGGER_LAYER
 	black_market_value = 20
 
@@ -42,7 +46,7 @@
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
@@ -82,7 +86,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 
-	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL && stat != DEAD)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
@@ -293,7 +297,7 @@
 	human.disable_lights()
 	human.disable_special_items()
 	if(ishuman_strict(human))
-		playsound(loc, human.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
+		playsound(loc, human.gender == "male" ? "male_hugged" : "female_hugged" , 25, 0)
 	else if(isyautja(human))
 		playsound(loc, 'sound/voice/pred_facehugged.ogg', 65, FALSE)
 	if(!sterile)
@@ -408,7 +412,7 @@
 			qdel(src)
 			return
 		var/obj/effect/alien/resin/special/eggmorph/M = locate() in loc
-		if(istype(M) && M.stored_huggers < M.huggers_to_grow_max)
+		if(istype(M) && M.stored_huggers < M.huggers_max_amount)
 			visible_message(SPAN_XENOWARNING("[src] crawls back into [M]!"))
 			M.stored_huggers++
 			qdel(src)
@@ -416,9 +420,6 @@
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()
-	if(stat == DEAD)
-		return
-
 	if(attached && !impregnated)
 		return
 
@@ -429,6 +430,9 @@
 	if(death_timer)
 		deltimer(death_timer)
 	death_timer = null
+
+	if(stat == DEAD)
+		return
 
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"

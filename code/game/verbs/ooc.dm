@@ -142,7 +142,7 @@
 
 	var/display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = S.name
+		display_name = S.real_name
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -164,7 +164,7 @@
 	// Now handle admins
 	display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.name]/([S.key])"
+		display_name = "[S.real_name]/([S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
@@ -232,7 +232,8 @@
 	if(split_width - desired_width < 240)
 		desired_width = split_width - 240
 
-	if (text2num(map_size[1]) == desired_width)
+	if (text2num(map_size[1]) == desired_width || split_width == 0)
+		// If split_width is 0, it likely means they are minimized and we don't know what the window size would be
 		// Nothing to do
 		return
 

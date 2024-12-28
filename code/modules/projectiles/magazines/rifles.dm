@@ -8,7 +8,7 @@
 	name = "\improper M41A magazine (10x24mm)"
 	desc = "A 10mm assault rifle magazine."
 	caliber = "10x24mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41a"
 	item_state = "generic_mag"
 	w_class = SIZE_MEDIUM
@@ -122,6 +122,7 @@
 /obj/item/ammo_magazine/rifle/m4ra
 	name = "\improper M4RA magazine (10x24mm)"
 	desc = "A magazine of standard 10x24mm rounds for use in the M4RA battle rifle."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 25
@@ -192,7 +193,7 @@
 	name = "\improper MAR magazine (7.62x39mm)"
 	desc = "A 7.62x39mm magazine for the MAR series of firearms."
 	caliber = "7.62x39mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
 	icon_state = "mar40"
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
@@ -210,6 +211,7 @@
 	name = "\improper MAR drum magazine (7.62x39mm)"
 	desc = "A 7.62x39mm drum magazine for the MAR-50 LMG."
 	caliber = "7.62x39mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/machineguns.dmi'
 	icon_state = "mar50"
 	max_rounds = 100
 	gun_type = /obj/item/weapon/gun/rifle/mar40/lmg
@@ -221,7 +223,7 @@
 	name = "\improper M16 magazine (5.56x45mm)"
 	desc = "A 5.56x45mm magazine for the M16 assault rifle."
 	caliber = "5.56x45mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
 	icon_state = "m16"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
@@ -240,6 +242,14 @@
 	w_class = SIZE_MEDIUM
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
+/obj/item/ammo_magazine/rifle/m16/ext
+	name = "\improper M16 extended magazine (5.56x45mm)"
+	desc = "An AP 5.56x45mm magazine for the M16 assault rifle. This one contains 30 bullets."
+	icon_state = "m16_ext"
+	item_state = "m16_ext"
+	bonus_overlay = "m16_ext_overlay"
+	max_rounds = 30
+
 //-------------------------------------------------------
 //AR10 RIFLE
 
@@ -247,7 +257,7 @@
 	name = "\improper AR10 magazine (7.62x51mm)"
 	desc = "A 7.62x51mm magazine for the AR10 assault rifle."
 	caliber = "7.62x51mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
 	icon_state = "ar10"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
@@ -260,6 +270,7 @@
 /obj/item/ammo_magazine/rifle/lmg
 	name = "\improper M41AE2 ammo box (10x24mm)"
 	desc = "A semi-rectangular box of rounds for the M41AE2 Heavy Pulse Rifle."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	icon_state = "m41ae2"
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
@@ -296,7 +307,7 @@
 	name = "\improper Type 71 magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	caliber = "5.45x39mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "type71"
 	ammo_band_icon = "+type71_band"
 	ammo_band_icon_empty = "+type71_band_e"
@@ -323,6 +334,7 @@
 	name = "\improper L42A magazine (10x24mm)"
 	desc = "A 10mm battle rifle magazine."
 	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "l42mk1"
 	bonus_overlay = "l42_mag_overlay"
 	default_ammo = /datum/ammo/bullet/rifle
@@ -390,7 +402,7 @@
 /obj/item/ammo_magazine/rifle/l42a/abr40
 	name = "\improper ABR-40 magazine (10x24mm)"
 	desc = "An ABR-40 magazine loaded with full metal jacket ammunition, for use at the firing range or while hunting. Theoretically cross-compatible with an L42A battle rifle."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "abr40"
 	bonus_overlay = "abr40_mag_overlay"
 	max_rounds = 12
@@ -411,7 +423,7 @@
 	name = "\improper NSG 23 magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine."
 	caliber = "10x24mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/wy.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/assault_rifles.dmi'
 	icon_state = "nsg23"
 	item_state = "nsg23"
 	bonus_overlay = "nsg23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
@@ -446,7 +458,7 @@
 	name = "\improper Basira-Armstrong magazine (6.5mm)"
 	desc = "A magazine for the Basira-Armstrong hunting rifle. Compliant with the 15-cartridge limit on civilian hunting rifles."
 	caliber = "6.5mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "hunting"
 	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10
@@ -457,7 +469,7 @@
 	name = "\improper M707 \"Vulture\" magazine (20x102mm)"
 	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized rounds."
 	caliber = "20x102mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "vulture"
 	handful_state = "vulture_bullet"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel/vulture
@@ -479,7 +491,7 @@
 	name = "\improper F903 magazine (10x24mm)"
 	desc = "A 10mm assault rifle magazine used by the royal marines."
 	caliber = "10x24mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/twe_ammo.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "aug"
 	item_state = "aug"
 	w_class = SIZE_MEDIUM
@@ -521,6 +533,7 @@
 /obj/item/ammo_magazine/rifle/xm51
 	name = "\improper XM51 magazine (16g)"
 	desc = "A 16 gauge pump-action shotgun magazine."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/shotguns.dmi'
 	icon_state = "xm51"
 	caliber = "16g"
 	w_class = SIZE_MEDIUM
@@ -528,3 +541,15 @@
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/rifle/xm51
 	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/rifle/xm51/cmb
+	name = "\improper Model 1771 magazine (16g breaching)"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/shotguns.dmi'
+	icon_state = "m51b"
+
+/obj/item/ammo_magazine/rifle/xm51/cmb/rubber
+	name = "\improper Model 1771 magazine (16g rubber buckshot)"
+	desc = "A 16 gauge pump-action rubber shotgun magazine."
+	icon_state = "m51b_rubber"
+	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
+	default_ammo = /datum/ammo/bullet/shotgun/light/rubber

@@ -174,6 +174,8 @@
 		PROPERTY_ANTIHALLUCINOGENIC = 2,
 		PROPERTY_FOCUSING = 6,
 		PROPERTY_CURING = 4,
+		PROPERTY_OCULOPEUTIC = 2,
+		PROPERTY_NEUROPEUTIC = 2,
 	)
 	flags = REAGENT_TYPE_MEDICAL
 
@@ -186,7 +188,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	overdose = 2
 	overdose_critical = 3
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
 	flags = REAGENT_TYPE_MEDICAL
 

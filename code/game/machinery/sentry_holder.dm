@@ -4,7 +4,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = 1
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "sentry_system_installed"
 	active_power_usage = 5000
 	idle_power_usage = 1000
@@ -117,9 +117,10 @@
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 
 /obj/structure/machinery/sentry_holder/wy
-	health = 200
+	health = 400
+	icon = 'icons/obj/structures/props/sentry_holder_wy.dmi'
 	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel"
-	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/wy
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 
 /obj/structure/machinery/sentry_holder/almayer
 	icon_state = "floor_sentry_installed"

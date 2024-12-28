@@ -198,22 +198,24 @@
 	products = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 20,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
+		/obj/item/storage/fancy/cigarettes/spirit = 15,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 15,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
 		/obj/item/storage/fancy/cigarettes/wypacket = 15,
 		/obj/item/storage/fancy/cigarettes/trading_card = 15,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 		/obj/item/storage/fancy/cigarettes/blackpack = 10,
 		/obj/item/storage/fancy/cigar/tarbacks = 5,
-
 		/obj/item/storage/box/matches = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo = 5,
-
 	)
 
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
+		/obj/item/storage/fancy/cigarettes/spirit = 50,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 50,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
 		/obj/item/storage/fancy/cigarettes/wypacket = 30,
 		/obj/item/storage/fancy/cigarettes/trading_card = 35,
@@ -223,7 +225,6 @@
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
-
 	)
 
 /obj/structure/machinery/vending/security
@@ -277,8 +278,8 @@
 	)
 
 /obj/structure/machinery/vending/sea
-	name = "\improper SeaTech"
-	desc = "An equipment vendor designed to save lives"
+	name = "\improper SEATech"
+	desc = "An equipment vendor designed to save lives."
 	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
 	icon_state = "sec"
 	icon_deny = "sec-deny"
@@ -546,3 +547,20 @@
 		/obj/item/storage/box/whitebeet = 2,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
+
+/obj/structure/machinery/vending/upp_co
+	name = "\improper UnionAraratCorp Automated Commander Uniform Closet"
+	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
+	icon_state = "dress"
+	icon_deny = "dress"
+	wrenchable = FALSE
+	req_access = list(ACCESS_UPP_LEADERSHIP)
+	products = list(
+		/obj/item/clothing/under/marine/veteran/UPP/officer = 1,
+		/obj/item/clothing/under/marine/veteran/UPP = 1,
+		/obj/item/clothing/suit/storage/marine/faction/UPP/kapitan = 1,
+		/obj/item/clothing/head/uppcap/beret = 1,
+		/obj/item/clothing/head/uppcap/peaked = 1,
+		/obj/item/clothing/head/uppcap/ushanka = 1,
+		/obj/item/storage/large_holster/ceremonial_sword/full = 1,
+	)

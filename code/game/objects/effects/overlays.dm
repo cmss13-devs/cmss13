@@ -87,21 +87,12 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/alpha
+/obj/effect/overlay/temp/point/big/squad
 	icon_state = "big_arrow_grey"
-	color = "#e61919"
 
-/obj/effect/overlay/temp/point/big/bravo
-	icon_state = "big_arrow_grey"
-	color = "#ffc32d"
-
-/obj/effect/overlay/temp/point/big/charlie
-	icon_state = "big_arrow_grey"
-	color = "#c864c8"
-
-/obj/effect/overlay/temp/point/big/delta
-	icon_state = "big_arrow_grey"
-	color = "#4148c8"
+/obj/effect/overlay/temp/point/big/squad/Initialize(mapload, mob/owner, atom/actual_pointed_atom, squad_color)
+	. = ..()
+	color = squad_color
 
 /obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"

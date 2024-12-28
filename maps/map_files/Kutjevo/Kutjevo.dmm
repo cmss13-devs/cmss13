@@ -17,6 +17,32 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
+"aad" = (
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/med)
+"aae" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/computer/communications{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = -7
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/med)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -12846,13 +12872,6 @@
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
-"tMH" = (
-/obj/structure/machinery/computer/guestpass{
-	dir = 4
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/kutjevo/colors/red,
-/area/kutjevo/interior/complex/med)
 "tMI" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -14878,25 +14897,6 @@
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/telecomm/lz2_north)
-"wXV" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	pixel_y = 7
-	},
-/obj/structure/machinery/computer/cameras{
-	dir = 4;
-	pixel_y = -7
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -7;
-	pixel_y = 8
-	},
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/complex/med)
 "wYf" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/barricade/handrail/kutjevo{
@@ -32604,7 +32604,7 @@ lCu
 oVX
 jzl
 jzl
-wXV
+aae
 lxB
 jzl
 oag
@@ -34618,7 +34618,7 @@ cey
 snr
 jzl
 nRk
-tMH
+aad
 hDu
 lcs
 nnf

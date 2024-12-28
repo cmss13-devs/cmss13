@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - rscadd: "Weapons now have custom crosshairs. They're optional and can be turned off in the preferences menu."

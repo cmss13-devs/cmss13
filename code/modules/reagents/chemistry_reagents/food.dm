@@ -138,7 +138,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NUTRITIOUS = 3)
 
-/datum/reagent/vegemite/reaction_mob(mob/target_mob)
+/datum/reagent/vegemite/reaction_mob(mob/target_mob, volume)
 	if(target_mob.faction != FACTION_TWE)
 		to_chat(target_mob, (SPAN_ALERTWARNING("God... it's disgusting... eating that was not a good idea.")))
 
@@ -240,6 +240,26 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
+/datum/reagent/coco_drink_hazelnut
+	name = "Chocolate Hazelnut Drink"
+	id = "coco_drink_hazelnut"
+	description = "Smooth and creamy chocolate drink, with a hint of hazelnut flavor."
+	reagent_state = LIQUID
+	nutriment_factor = 2 * REAGENTS_METABOLISM
+	color = "#865e2a" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+
+/datum/reagent/coco_drink
+	name = "Chocolate Drink"
+	id = "coco_drink"
+	description = "Smooth and creamy chocolate drink."
+	reagent_state = LIQUID
+	nutriment_factor = 2 * REAGENTS_METABOLISM
+	color = "#61450e" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+
 /datum/reagent/psilocybin
 	name = "Psilocybin"
 	id = "psilocybin"
@@ -334,4 +354,54 @@
 	description = "Honey is a natural sweet, viscous food substance composed of mainly fructose and glucose."
 	color = COLOR_YELLOW
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/electrolyte_grape_beverage
+	name = "Grape Beverage"
+	id = "dehydrated_grape_beverage"
+	description = "Powderized electrolyte beverage with a grape flavor, ready to be mixed with water."
+	reagent_state = SOLID
+	color = "#74206f" // rgb: 116, 32, 111
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/electrolyte_orange_beverage
+	name = "Orange Beverage"
+	id = "electrolyte_orange_beverage"
+	description = "Powderized electrolyte beverage with an orange flavor, ready to be mixed with water. Smells of, surprise surprise, oranges."
+	reagent_state = SOLID
+	color = "#FFA500" // rgb: 255, 165, 0
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/electrolyte_lemonlime_beverage
+	name = "Lemon-Lime Beverage"
+	id = "electrolyte_lemonlime_beverage"
+	description = "Powderized electrolyte beverage with a lemon-lime flavor, ready to be mixed with water. Smells of, surprise surprise, lemons and limes."
+	reagent_state = SOLID
+	color = "#35b435" // rgb: 53, 180, 53
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/hazelnut_beverage
+	name = "Chocolate Hazelnut Protein Beverage"
+	id = "hazelnut_beverage"
+	description = "Powderized chocolate and hazelnut protein drink beverage, ready to be mixed with water."
+	reagent_state = SOLID
+	color = "#ac4729" // rgb: 172, 71, 41
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/coco_beverage
+	name = "Chocolate Protein Beverage"
+	id = "chocolate_beverage"
+	description = "Powderized chocolate drink beverage, ready to be mixed with water."
+	reagent_state = SOLID
+	color = "#46271e" // rgb: 70, 39, 30
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION

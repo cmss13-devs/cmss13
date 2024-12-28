@@ -190,7 +190,6 @@
 	icon_state = "side"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
-		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
@@ -210,16 +209,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 6)
 	reagents.add_reagent("sodiumchloride", 2)
-
-/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread
-	name = "cheese spread"
-	icon_state = "cheese spread"
-	desc = "Really creamy, can be effectively combined with basically anything, or used as condiment."
-
-/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread/Initialize()
-	. = ..()
-	reagents.add_reagent("cheese", 6)
-	reagents.add_reagent("sodiumchloride", 1)
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes
 	name = "mashed potatoes"
@@ -486,33 +475,117 @@
 ///SPREAD
 
 /obj/item/reagent_container/food/drinks/cans/spread
-	name = "nutrient tube"
+	name = "spread packet (cheese)"
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
-	icon_state = "paste1"
-	desc = "Mystery cheese."
+	icon_state = "spread"
+	desc = "A creamy and cheesy spread, made out of a processed cheese, combines well with tortillas and other snacks."
 	open_sound = "rip"
-	open_message = "You pull open the package of the meal!"
-	volume = 5
-	has_open_icon = TRUE
+	open_message = "You pull open the package of the spread!"
+	volume = 6
+	var/flavor = "cheese spread"
 	food_interactable = TRUE
 	possible_transfer_amounts = list(1, 2, 3, 5)
 	crushable = FALSE
 	gulp_size = 5
 	object_fluff = "packet"
 
+/obj/item/reagent_container/food/drinks/cans/spread/update_icon()
+	overlays.Cut()
+	if(open)
+		icon_state = "spread_open"
+		if(reagents.total_volume)
+			overlays += mutable_appearance(icon, flavor)
 
+/obj/item/reagent_container/food/drinks/cans/spread/on_reagent_change()
+	. = ..()
+	update_icon()
+
+
+/obj/item/reagent_container/food/drinks/cans/spread/cheese/Initialize()
+	. = ..()
+	reagents.add_reagent("cheese", 4)
+	reagents.add_reagent("sodiumchloride", 2)
+
+/obj/item/reagent_container/food/drinks/cans/spread/jalapeno
+	name = "spread packet (jalapeno cheese)"
+	desc = "A creamy and cheesy spread, made out of a processed cheese, combines well with tortillas and other snacks, this one has a spicy jalapeno flavor."
+	flavor = "jalapeno cheese spread"
+
+/obj/item/reagent_container/food/drinks/cans/spread/jalapeno/Initialize()
+	. = ..()
+	reagents.add_reagent("cheese", 4)
+	reagents.add_reagent("capsaicin", 2)
+
+/obj/item/reagent_container/food/drinks/cans/spread/peanut_butter
+	name = "spread packet (peanut butter)"
+	desc = "A creamy and nutty spread, made out of a processed peanuts, combines well with tortillas and other snacks."
+	flavor = "peanut butter"
+
+/obj/item/reagent_container/food/drinks/cans/spread/peanut_butter/Initialize()
+	. = ..()
+	reagents.add_reagent("nuts", 4)
+	reagents.add_reagent("sodiumchloride", 2)
+
+///BEVERAGE DRINKS
+
+/obj/item/reagent_container/food/drinks/beverage_drink
+	name = "beverage packet"
+	desc = "A packet of a beverage, to be mixed with water, makes a ready-in-a-field drink."
+	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
+	icon_state = "beverage"
+	volume = 20
+
+/obj/item/reagent_container/food/drinks/beverage_drink/grape
+	name = "electrolyte beverage packet (grape)"
+	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a grape flavor."
+
+/obj/item/reagent_container/food/drinks/beverage_drink/grape/Initialize()
+	. = ..()
+	reagents.add_reagent("dehydrated_grape_beverage", 4)
+
+/obj/item/reagent_container/food/drinks/beverage_drink/orange
+	name = "electrolyte beverage packet (orange)"
+	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a citrusy orange flavor."
+
+/obj/item/reagent_container/food/drinks/beverage_drink/orange/Initialize()
+	. = ..()
+	reagents.add_reagent("dehydrated_orange_beverage", 4)
+
+/obj/item/reagent_container/food/drinks/beverage_drink/lemonlime
+	name = "electrolyte beverage packet (lemon-lime)"
+	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a citrusy lemon-lime flavor."
+
+/obj/item/reagent_container/food/drinks/beverage_drink/lemonlime/Initialize()
+	. = ..()
+	reagents.add_reagent("dehydrated_lemonlime_beverage", 4)
+
+/obj/item/reagent_container/food/drinks/beverage_drink/chocolate
+	name = "protein drink beverage packet (milk chocolate)"
+	desc = "A packet of a protein drink, to be mixed with water, makes a ready-in-a-field drink. Has a chocolate flavor."
+
+/obj/item/reagent_container/food/drinks/beverage_drink/chocolate/Initialize()
+	. = ..()
+	reagents.add_reagent("chocolate_beverage", 4)
+
+/obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut
+	name = "protein drink beverage packet (chocolate hazelnut)"
+	desc = "A packet of a protein drink, to be mixed with water, makes a ready-in-a-field drink. Has a chocolate hazelnut flavor."
+
+/obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut/Initialize()
+	. = ..()
+	reagents.add_reagent("hazelnut_beverage", 4)
 
 //WY
 
 /obj/item/mre_food_packet/wy
-	icon = 'icons/obj/items/food/mre_food/pmc.dmi'
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 
 ///ENTREE
 
 /obj/item/mre_food_packet/entree/wy
 	name = "\improper CFR main dish"
 	desc = "An CFR entree component. Contains a luxurious well prepared main course, preserved using high-tech methods."
-	icon = 'icons/obj/items/food/mre_food/pmc.dmi'
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 	icon_state = "pmc_entree"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/bakedfish,
@@ -522,7 +595,7 @@
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_entree
-	icon = 'icons/obj/items/food/mre_food/pmc.dmi'
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_entree/bakedfish
 	name = "baked salmon"
@@ -578,10 +651,10 @@
 	icon_state = "pmc_side"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
-		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cheesespread,
-		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/mashedpotatoes,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_side/nigirisushi,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_side/tomatochips,
 	)
 
 ///SNACK
@@ -591,10 +664,9 @@
 	desc = "An CFR side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
 	icon_state = "pmc_snack"
 	food_list = list(
-		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/eclair,
-		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/strawberrycake,
-		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/cherrypie,
-		/obj/item/reagent_container/food/snacks/mre_food/wy_dessert/croissant,
+		/obj/item/reagent_container/food/snacks/mre_food/twe_snack/almond,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/peanuts,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/pretzels,
 	)
 
 ///DESSERT
@@ -612,7 +684,7 @@
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_dessert
-	icon = 'icons/obj/items/food/mre_food/pmc.dmi'
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_dessert/eclair
 	name = "eclair"
@@ -672,6 +744,21 @@
 	reagents.add_reagent("nuts", 1)
 	reagents.add_reagent("coconutmilk", 2)
 	reagents.add_reagent("sugar", 2)
+
+//WY GENERAL RATION
+
+/obj/item/mre_food_packet/entree/wy_colonist
+	name = "\improper WY brand ration main dish"
+	desc = "Probably the most edible component of it, contains main nutrition contents."
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
+	icon_state = "wy_main"
+	food_list = list(
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchicken,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/chickentender,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/spaghettichunks,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchickenbreast,
+	)
 
 //TWE
 
@@ -977,3 +1064,72 @@
 	. = ..()
 	reagents.add_reagent("berryjuice", 15)
 	reagents.add_reagent("sugar", 5)
+
+///FACTION NEUTRAL RATION
+
+/obj/item/mre_food_packet/merc
+	icon = 'icons/obj/items/food/mre_food/merc.dmi'
+
+///ENTREE
+
+/obj/item/mre_food_packet/entree/merc
+	name = "\improper FSR main dish"
+	desc = "An FRS entree component. Contains the main course for nutrients."
+	icon = 'icons/obj/items/food/mre_food/merc.dmi'
+	icon_state = "entree"
+	food_list = list(
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/porkribs,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchicken,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/pizzasquare,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/chickentender,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/pepperonisquare,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/spaghettichunks,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchickenbreast,
+	)
+
+///SIDE
+
+/obj/item/mre_food_packet/merc/side
+	name = "\improper FSR side dish"
+	desc = "An FSR side component. Contains a side, to be eaten alongside the main."
+	icon_state = "side"
+	food_list = list(
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cracker,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/risotto,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/onigiri,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cornbread,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/tortillas,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_side/cinnamonappleslices,
+	)
+
+///SNACK
+
+/obj/item/mre_food_packet/merc/snack
+	name = "\improper FSR snack"
+	desc = "An FSR snack component. Contains a light snack in case you weren't feeling terribly hungry."
+	icon_state = "snack"
+	food_list = list(
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/biscuit,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/meatballs,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/pretzels,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/sushi,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_snack/peanuts,
+	)
+
+///DESSERT
+
+/obj/item/mre_food_packet/merc/dessert
+	name = "\improper FSR dessert"
+	desc = "An FSR side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
+	icon_state = "dessert"
+	food_list = list(
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/spicedapples,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/chocolatebrownie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/sugarcookie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/cocobar,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/flan,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/honeyflan,
+		/obj/item/reagent_container/food/snacks/cookie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/lemonpie,
+		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/limepie,
+	)

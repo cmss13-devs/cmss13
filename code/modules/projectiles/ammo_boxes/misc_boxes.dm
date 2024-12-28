@@ -66,7 +66,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/misc/mre/upp
-	name = "\improper box of military rations"
+	name = "\improper box of UPP military rations"
 	desc = "A box of rations. Tastes like homeland."
 	icon_state = "upp_food_crate"
 	// magazine_type = /obj/item/storage/box/MRE/UPP
@@ -83,6 +83,16 @@
 	overlay_content = "_colony_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/pmc/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/wy
+	name = "\improper box of WY brand rations"
+	desc = "A box of basic packed foods, comes with all sorts of WY branded snacks. Feeding Better Worlds."
+	icon_state = "wy_food_crate"
+	magazine_type = /obj/item/storage/box/MRE/WY
+	overlay_content = "_wy_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/wy/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/misc/mre/twe
@@ -103,6 +113,15 @@
 	overlay_content = "_colony_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/emergency/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/fsr
+	name = "\improper box of FSR rations"
+	desc = "A box of First Strike Rations. Nutritious, but not delicious, cigarettes not included."
+	icon_state = "merc_food_crate"
+	magazine_type = /obj/item/storage/box/MRE/FSR
+
+/obj/item/ammo_box/magazine/misc/mre/fsr/empty
 	empty = TRUE
 
 //------------------------M94 Marking Flare Packs Box--------------------------

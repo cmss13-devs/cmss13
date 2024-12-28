@@ -5,6 +5,7 @@
 	var/crushable = TRUE
 	var/open_sound = 'sound/effects/canopen.ogg'
 	var/open_message = "You open the drink with an audible pop!"
+	var/consume_sound = 'sound/items/drink.ogg'
 	var/object_fluff = "drink"
 	var/food_interactable = FALSE
 	var/crushed_icon = null
@@ -82,7 +83,7 @@
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
 
-		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		playsound(M.loc, consume_sound, 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
 		if (!open)
@@ -378,7 +379,7 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("soymilk", 10)
-	reagents.add_reagent("coco", 10)
+	reagents.add_reagent("coco_drink", 10)
 
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "\improper Weyland-Yutani Lite"

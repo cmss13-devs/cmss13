@@ -553,3 +553,29 @@
 	icon_state = "m51b_rubber"
 	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
+
+//OWLF Ammo
+
+/obj/item/ammo_magazine/rifle/xm51/avp
+	name = "\improper ZX-76 magazine (16g)"
+	desc = "A 16 gauge pump-action shotgun magazine."
+	icon_state = "xm51"
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	max_rounds = 8
+	gun_type = /obj/item/weapon/gun/rifle/xm51/avp
+	transfer_handful_amount = 6
+
+
+/obj/item/ammo_magazine/rifle/xr
+	name = "\improper M16 AP magazine (5.56x45mm)"
+	desc = "An AP 5.56x45mm magazine for the M16 assault rifle."
+	caliber = "10x24mm"
+	icon_state = "xm51"
+	icon_state = "m41a"
+	item_state = "generic_mag"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 60
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xr
+	w_class = SIZE_MEDIUM
+	ammo_band_color = AMMO_BAND_COLOR_AP

@@ -2135,12 +2135,19 @@
 /obj/item/weapon/gun/rifle/xm51/avp
 	name = "\improper ZX-76A Double Barrel Shotgun"
 	desc = "Manufactured by Weyland-Yutani, the ZX-76 was designed alongside the VP-78 for the Next Generation Combat Initiative, a program designed to modernize the USCM's armaments, while the VP-78 has already been adopted, albeit with a slow roll out, the ZX-76 is still undergoing field testing due to a number of issues, most of them relating to the gun's complex loading system and heavy weight, while still undergoing trial, OWLF took intrest in the ZX-76, having lacked a dedicated shotgun at the time, they acquired and modified some of them for their needs."
-	icon_state = "zx76a"
-	item_state = "zx76a"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/shotguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
+	)
+	icon_state = "zx76"
+	item_state = "zx76"
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/xm51/avp
+	current_mag = /obj/item/ammo_magazine/rifle/xr
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
@@ -2158,7 +2165,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
-	map_specific_decoration = TRUE
+	map_specific_decoration = FALSE
 
 	burst_delay = 0 //So doubleshotty can doubleshot
 	additional_fire_group_delay = 1.5 SECONDS
@@ -2184,6 +2191,7 @@
 	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. Given only to elite units."
 	icon_state = "xr81c"
 	item_state = "xr81c"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	current_mag = /obj/item/ammo_magazine/rifle/xr
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -2223,7 +2231,7 @@
 	..()
 	var/obj/item/attachable/attached_gun/grenade/integrated = new(src)
 	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
-	integrated.hidden = FALSE
+	integrated.hidden = TRUE
 	integrated.Attach(src)
 	update_attachable(integrated.slot)
 

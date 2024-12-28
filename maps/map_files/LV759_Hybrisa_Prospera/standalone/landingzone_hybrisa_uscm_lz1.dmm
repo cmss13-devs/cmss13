@@ -668,14 +668,6 @@
 /obj/structure/cargo_container/wy/mid,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
-"fE" = (
-/obj/structure/machinery/power/reactor/colony,
-/obj/structure/prop/hybrisa/signs/high_voltage/small{
-	pixel_x = -6;
-	pixel_y = 32
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "fF" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/lines4,
@@ -3363,14 +3355,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/processing)
-"Dp" = (
-/obj/structure/machinery/power/reactor/colony,
-/obj/structure/prop/hybrisa/signs/high_voltage/small{
-	pixel_y = 32;
-	pixel_x = 8
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "Dt" = (
 /obj/structure/fence/dark,
 /turf/open/floor/prison,
@@ -5114,12 +5098,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "RD" = (
-/obj/structure/machinery/power/reactor/colony,
-/obj/structure/barricade/handrail/strata{
-	layer = 3.1
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
+/turf/template_noop,
+/area/template_noop)
 "RE" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
@@ -7603,7 +7583,7 @@ li
 OY
 SP
 MF
-fE
+RD
 RD
 MB
 Lq
@@ -7719,7 +7699,7 @@ cx
 SP
 SP
 MF
-Dp
+RD
 RD
 MB
 DR

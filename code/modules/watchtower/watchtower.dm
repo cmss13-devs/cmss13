@@ -34,11 +34,6 @@
 	for(var/turf/current_turf in blocked_turfs)
 		new /obj/structure/blocker/watchtower/full_tile(current_turf)
 
-	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3)
-	
-	for(var/turf/current_turf in all_turfs)
-		current_turf.is_weedable = FALSE
-
 	update_icon()
 
 	return ..()
@@ -51,11 +46,6 @@
 		for(var/mob/falling_mob in current_turf.contents)
 			falling_mob.ex_act(100, 0)
 			on_leave(falling_mob)
-
-	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3)
-	
-	for(var/turf/current_turf in all_turfs)
-		current_turf.is_weedable = initial(current_turf.is_weedable)
 
 	new /obj/structure/girder(get_turf(src))
 	new /obj/structure/girder/broken(locate(x+1, y, z))
@@ -82,7 +72,7 @@
 
 /obj/structure/watchtower/get_examine_text(mob/user)
 	. = ..()
-	switch(state)
+	switch(stage)
 		if(WATCHTOWER_STAGE_WELDED)
 			. += SPAN_NOTICE("Add 60 metal [SPAN_HELPFUL("rods")] to construct the connection rods.")
 			return

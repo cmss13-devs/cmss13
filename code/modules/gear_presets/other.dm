@@ -907,52 +907,6 @@
 
 //*****************************************************************************************************/
 
-// Built for HM tutorials, not for practical use
-
-/datum/equipment_preset/other/realistic_dummy
-	name = "MARINE DUMMY"
-	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "MARINE DUMMY"
-	rank = "MARINE DUMMY"
-	idtype = /obj/item/card/id/dogtag
-	paygrades = list(PAY_SHORT_ME1)
-	uses_special_name = TRUE
-
-/datum/equipment_preset/other/realistic_dummy/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE, FEMALE)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
-	new_human.change_real_name(new_human, random_name)
-	var/datum/preferences/A = new
-	A.randomize_appearance(new_human)
-
-/datum/equipment_preset/other/realistic_dummy/load_race(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.huggable = FALSE
-	new_human.mob_flags |= EASY_SURGERY //Nurses can practise surgery on it.
-
-
-/datum/equipment_preset/other/realistic_dummy/load_gear(mob/living/carbon/human/new_human)
-	// Marine gear, with weapons removed
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
-
-/datum/equipment_preset/other/realistic_dummy/stanley
-
-/datum/equipment_preset/other/realistic_dummy/stanley/load_name(mob/living/carbon/human/new_human, randomise)
-	name = "STANLEY THE DUMMY"
-	new_human.gender = MALE
-	new_human.real_name = "Stanley the Marine Mannequin"
-	new_human.name = new_human.real_name
-	new_human.age = rand(1,5)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/other/tank
 	name = "Event Vehicle Crewman (CRMN)"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1048,7 +1002,6 @@
 	name = "Tutorial (Fed)"
 	underfed = FALSE
 
-
 /datum/equipment_preset/uscm/tutorial_rifleman
 	name = "Tutorial Rifleman"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1059,6 +1012,15 @@
 	skills = /datum/skills/pfc/crafty
 	minimap_icon = "private"
 
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/tutorial_rifleman/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "[random_name(new_human.gender)]"
+	new_human.change_real_name(new_human, mob_name)
+	var/datum/preferences/preferences = new
+	preferences.randomize_appearance(new_human)
+
 /datum/equipment_preset/uscm/tutorial_rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
@@ -1067,3 +1029,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
+/datum/equipment_preset/uscm/tutorial_rifleman/mrdummy
+	name = "Tutorial Rifleman (Dummy)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/tutorial_rifleman/mrdummy/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "Dummy"
+	new_human.change_real_name(new_human, mob_name)

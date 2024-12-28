@@ -1,5 +1,5 @@
 /datum/tutorial/marine/hospital_corpsman_advanced
-	name = "Marine - Hospital Corpsman (Advanced)"
+	name = "Marine - Hospital Corpsman (Advanced) - Not Currently Playable"
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_2"
 	icon_state = "medic"
@@ -12,6 +12,8 @@
 	var/cpr_count = 0
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
 	var/handle_pill_bottle_status = 0
+
+	var/mob/living/carbon/human/realistic_dummy/marine_dummy
 
 // ------------ CONTENTS ------------ //
 //
@@ -114,11 +116,12 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
 	message_to_player("When someone takes any amount of <b>Internal Organ Damage</b>, the <b>Stethoscope</b> can be used in exactly the same manner as a Health Analyzer to scan their condition.")
-	message_to_player("Oh, look's like our old friend <b>Mr Dummy</b> is back, and looking for a health checkup!")
+	message_to_player("Oh, look's like our old friend <b>Pvt Dummy</b> is back, and looking for a health checkup!")
 
-	var/mob/living/carbon/human/human_dummy = new(loc_from_corner(2,2))
-	add_to_tracking_atoms(human_dummy)
-	add_highlight(human_dummy, COLOR_GREEN)
+	marine_dummy = new(loc_from_corner(2,2))
+	arm_equipment(marine_dummy, /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy)
+	add_to_tracking_atoms(marine_dummy)
+	add_highlight(marine_dummy, COLOR_GREEN)
 
 	message_to_player("Click on the Dummy with your <b>Stethoscope</b> in hand to test the health of their <b>Internal Organs</b>.")
 
@@ -126,8 +129,8 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_chest_3(datum/source, mob/living/carbon/human/being, mob/living/user)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	if(being != human_dummy)
+
+	if(being != marine_dummy)
 		return
 	else
 		if(tutorial_mob.zone_selected != "chest")
@@ -135,7 +138,7 @@
 		else
 			message_to_player("Well done! If you check the <b>Chat-Box</b> on the right of your screen, you will now see the following message from your <b>Stethoscope</b>:")
 			message_to_player("You hear normal heart beating patterns, his heart is surely <u>Healthy</u>. You also hear normal respiration sounds aswell, that means his lungs are <u>Healthy</u>,")
-			message_to_player("This means that all internal organs in Mr Dummys chest are <b>Fully Healthy</b>!")
+			message_to_player("This means that all internal organs in Pvt Dummys chest are <b>Fully Healthy</b>!")
 
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
 			UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
@@ -153,7 +156,7 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_2)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_2()
-	message_to_player("Depending on the levels of damage to the heart, patients will experience escelating symptoms.")
+	message_to_player("Depending on the levels of damage to the heart, patients will experience escalating symptoms.")
 	message_to_player("<b>Heart - Slightly Bruised (Damage: 1-9) |</b> Slowly creates up to 21 points of <b>Oxygen Damage</b>.")
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_3)), 8 SECONDS)
 
@@ -169,10 +172,10 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_5()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.apply_internal_damage(12, "heart")
-	human_dummy.setOxyLoss(15)
-	message_to_player("Mr Dummy has taken some <b>Internal Organ Damage</b> in his <b>Chest</b>! Use your <b>Stethoscope</b> on his chest to determine his condition.")
+
+	marine_dummy.apply_internal_damage(12, "heart")
+	marine_dummy.setOxyLoss(15)
+	message_to_player("Pvt Dummy has taken some <b>Internal Organ Damage</b> in his <b>Chest</b>! Use your <b>Stethoscope</b> on his chest to determine his condition.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
 	add_highlight(steth, COLOR_GREEN)
@@ -182,8 +185,8 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_heart_6(datum/source, mob/living/carbon/human/being, mob/living/user)
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	if(being != human_dummy)
+
+	if(being != marine_dummy)
 		return
 	else
 		if(tutorial_mob.zone_selected != "chest")
@@ -194,7 +197,7 @@
 			remove_highlight(steth)
 
 			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Stethoscope</b> has reported that: you hear deviant heart beating patterns, result of <u>probable heart damage</u>.")
-			message_to_player("This tells you that Mr Dummy's Heart is <b>Bruised</b>, and will begin creating <b>Oxygen Damage</b> in his body.")
+			message_to_player("This tells you that Pvt Dummy's Heart is <b>Bruised</b>, and will begin creating <b>Oxygen Damage</b> in his body.")
 
 			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_7_pre)), 6 SECONDS)
 
@@ -248,15 +251,15 @@
 	remove_highlight(dex)
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_reject))
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed))
+
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/dex_pill_fed_reject()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
@@ -273,8 +276,8 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
 	remove_highlight(dex)
@@ -339,15 +342,15 @@
 	remove_highlight(peri)
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed_reject))
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed))
+
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/peri_pill_fed_reject()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
@@ -363,22 +366,22 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
 	remove_highlight(peri)
 	remove_from_tracking_atoms(peri)
 	qdel(peri)
 
-	message_to_player("Well done! The Dummys condition has been stabilized.. at least until the medication wears off.")
+	slower_message_to_player("Well done! The Dummys condition has been stabilized.. at least until the medication wears off.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.rejuvenate()
+
+	marine_dummy.rejuvenate()
 
 	message_to_player("<b>Section 1.3: Lung Damage</b>.")
 
@@ -399,11 +402,11 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_lungs_3()
 
-	message_to_player("Mr Dummys Lungs are looking rather squishy... Use your <b>Stethoscope</b> to test the condition of his <b>Lungs</b>.")
+	message_to_player("Pvt Dummys Lungs are looking rather squishy... Use your <b>Stethoscope</b> to test the condition of his <b>Lungs</b>.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.apply_internal_damage(35, "lungs")
-	human_dummy.setOxyLoss(15)
+
+	marine_dummy.apply_internal_damage(35, "lungs")
+	marine_dummy.setOxyLoss(15)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/accessory/stethoscope, steth)
 	add_highlight(steth, COLOR_GREEN)
 
@@ -414,8 +417,8 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	if(being != human_dummy)
+
+	if(being != marine_dummy)
 		return
 	else
 		if(tutorial_mob.zone_selected != "chest")
@@ -426,7 +429,7 @@
 			remove_highlight(steth)
 
 			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Stethoscope</b> has reported that: you [SPAN_RED("barely hear any respiration sounds")] and a lot of difficulty to breath, the Dummys lungs are [SPAN_RED("heavily failing")]")
-			message_to_player("This tells you that Mr Dummys Lungs have <b>Ruptured</b>, and <u>need to be stabilized immediately</u>.")
+			message_to_player("This tells you that Pvt Dummys Lungs have <b>Ruptured</b>, and <u>need to be stabilized immediately</u>.")
 
 			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_5)), 11 SECONDS)
 
@@ -479,15 +482,15 @@
 	remove_highlight(dex)
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_reject_2))
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_2))
+
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_2))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/dex_pill_fed_reject_2()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
@@ -503,15 +506,15 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
 	remove_highlight(dex)
 	remove_from_tracking_atoms(dex)
 	qdel(dex)
 
-	message_to_player("Well done. Next, we need to stabilize Mr Dummys <b>Ruptured Lungs</b> with <b>Peridaxon</b>.")
+	message_to_player("Well done. Next, we need to stabilize Pvt Dummys <b>Ruptured Lungs</b> with <b>Peridaxon</b>.")
 
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_7)), 5 SECONDS)
 
@@ -564,15 +567,15 @@
 	remove_highlight(peri)
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed_reject_2))
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed_2))
+
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(peri_pill_fed_2))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/peri_pill_fed_reject_2()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
@@ -588,8 +591,8 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, peri)
 	remove_highlight(peri)
@@ -605,7 +608,7 @@
 	message_to_player("However, one Peridaxon pill will be fully metabolized in just over <u>5 minutes</u>, at which point full symptoms will return.")
 	message_to_player("Once you have stabilized a patient with a ruptured organ, you <u>MUST</u> transport them to a <b>Trained Doctor for Surgery</b> as <u>SOON AS POSSIBLE</u>.")
 
-	human_dummy.rejuvenate()
+	marine_dummy.rejuvenate()
 
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head)), 10 SECONDS)
 
@@ -649,17 +652,17 @@
 	message_to_player("Now, use the <b>Zone Selection Element</b> on the bottom right of your HUD to target the <b>Eyes</b>, a smaller zone within the Head.")
 	message_to_player("Once this is done, make sure you are on the green <b>Help Intent</b>, then click on the Dummy with your <b>Pen Light</b> in hand to test for damage to the organs in their head.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.apply_internal_damage(35, "eyes")
-	human_dummy.apply_internal_damage(15, "brain")
+
+	marine_dummy.apply_internal_damage(35, "eyes")
+	marine_dummy.apply_internal_damage(15, "brain")
 
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_PENLIGHT_USED, PROC_REF(organ_tutorial_head_5))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_head_5(datum/source, mob/living/carbon/human/being, mob/living/user)
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	if(being != human_dummy)
+
+	if(being != marine_dummy)
 		return
 	else
 		if(tutorial_mob.zone_selected != "eyes")
@@ -671,7 +674,7 @@
 
 			message_to_player("Well done! If you check the <b>Chat-Box</b>, your <b>Pen Light</b> has reported that: notice that the Dummys eyes are not reacting to the light, and the pupils of both eyes are not constricting with the light shine at all, the Dummy is probably [SPAN_RED("blind")].")
 			message_to_player("We also see that: the Dummys pupils are not consensually constricting when light is separately applied to each eye, meaning possible [SPAN_ORANGE("brain damage")].")
-			message_to_player("This tells you that Mr Dummy has <b>Broken Eyes</b> and a <b>Bruised Brain</b>.")
+			message_to_player("This tells you that Pvt Dummy has <b>Broken Eyes</b> and a <b>Bruised Brain</b>.")
 
 			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_6)), 16 SECONDS)
 
@@ -735,15 +738,15 @@
 	remove_highlight(ia)
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(ia_pill_fed_reject_2))
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	RegisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(ia_pill_fed_2))
+
+	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(ia_pill_fed_2))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/ia_pill_fed_reject_2()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, ia)
@@ -759,8 +762,8 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	UnregisterSignal(human_dummy, COMSIG_HUMAN_PILL_FED)
+
+	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, ia)
 	remove_highlight(ia)
@@ -773,8 +776,8 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/organ_tutorial_tox()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	human_dummy.rejuvenate()
+
+	marine_dummy.rejuvenate()
 
 	message_to_player("<b>Section 1.5: Liver and Kidney Damage</b>.")
 
@@ -830,38 +833,31 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_3()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	var/datum/effect_system/spark_spread/sparks = new
-	sparks.set_up(5, 1, human_dummy.loc)
+	sparks.set_up(5, 1, marine_dummy.loc)
 	sparks.start()
-	remove_from_tracking_atoms(human_dummy)
-	var/mob/living/carbon/human/realistic_dummy/marine_dummy = new(human_dummy.loc)
-	arm_equipment(marine_dummy, /datum/equipment_preset/other/realistic_dummy)
-	add_to_tracking_atoms(marine_dummy)
-	qdel(human_dummy)
+
 	var/obj/item/clothing/suit/storage/marine/medium/armor = marine_dummy.get_item_by_slot(WEAR_JACKET)
 	add_to_tracking_atoms(armor)
-
-	message_to_player("This is <b>Private Stanley</b>! He will be our new test-subject for the remainder of the tutorial.")
 
 	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_4()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	marine_dummy.revive_grace_period = INFINITY // surely nothing can go wrong
 	marine_dummy.adjustBruteLoss(100)
 	marine_dummy.death()
 	marine_dummy.updatehealth()
 	add_highlight(marine_dummy, COLOR_RED)
 
-	message_to_player("Oh no! It appears Pvt Stanley has dropped dead!!")
+	message_to_player("Oh no! It appears Pvt Dummy has dropped dead!!")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	add_highlight(healthanalyzer, COLOR_GREEN)
 
-	message_to_player("This is indicated by two things: the Healthbar above Stanleys head is now <b>Empty</b>, and a <b>Heart-Rate Icon</b> is visible to the top-left of his body.")
-	message_to_player("The first step to any revival, is always a <b>Health Scan</b>! Draw your <b>Health Analyzer</b> and scan Private Stanleys condition.")
+	message_to_player("This is indicated by two things: the Healthbar above Pvt Dummys head is now <b>Empty</b>, and a <b>Heart-Rate Icon</b> is visible to the top-left of his body.")
+	message_to_player("The first step to any revival, is always a <b>Health Scan</b>! Draw your <b>Health Analyzer</b> and scan Pvt Dummys condition.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(defib_tutorial_5))
 
@@ -874,7 +870,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	remove_highlight(marine_dummy)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -882,10 +878,10 @@
 	add_to_tracking_atoms(defib)
 	add_highlight(defib, COLOR_GREEN)
 
-	message_to_player("As you can see listed on your <b>Health Analyzer</b> scan, Private Stanleys status is listed as: <u>Cardiac arrest, defibrillation possible</u>.")
-	message_to_player("Secondly, by looking at the damage amounts on Stanleys body, we see that he has sustained <u>less than 200 damage</u> overall.")
+	message_to_player("As you can see listed on your <b>Health Analyzer</b> scan, Pvt Dummys status is listed as: <u>Cardiac arrest, defibrillation possible</u>.")
+	message_to_player("Secondly, by looking at the damage amounts on Pvt Dummys body, we see that he has sustained <u>less than 200 damage</u> overall.")
 	message_to_player("This is extremely important, as defibrillation is only possible when a patients <u>overall damage is less than 200</u>, for all types of damage <u>besides Oxygen</u>.")
-	message_to_player("This means that we are able to restart Stanleys heart using a <b>Defibrillator</b>! Pick up your brand new Defibrillator from the desk!")
+	message_to_player("This means that we are able to restart Pvt Dummys heart using a <b>Defibrillator</b>! Pick up your brand new Defibrillator from the desk!")
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(defib_tutorial_6))
 
@@ -896,10 +892,10 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
-	message_to_player("Before we can use the <b>Defibrillator</b> on Private Stanley, we must remove his <b>Bodyarmor</b>!")
-	message_to_player("Click and drag your mouse from Private Stanleys body to yours, then when his inventory appears on your screen, click on his <b>Chestplate</b> to remove it!")
+	message_to_player("Before we can use the <b>Defibrillator</b> on Pvt Dummy, we must remove his <b>Bodyarmor</b>!")
+	message_to_player("Click and drag your mouse from Pvt Dummys body to yours, then when his inventory appears on your screen, click on his <b>Chestplate</b> to remove it!")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	add_highlight(marine_dummy, COLOR_GREEN)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
@@ -910,7 +906,7 @@
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
 	UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
-	message_to_player("As the final step before reviving Private Stanley, we must first detach the <b>Defibrillators Contact Paddles</b>.")
+	message_to_player("As the final step before reviving Pvt Dummy, we must first detach the <b>Defibrillators Contact Paddles</b>.")
 	message_to_player("Hold your <b>Defibrillator</b> in hand, and press the <b>[retrieve_bind("activate_inhand")]</b> key to take out the <b>Contact Paddles</b>!")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
@@ -922,14 +918,14 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
 	UnregisterSignal(defib, COMSIG_ITEM_ATTACK_SELF)
 
-	message_to_player("Clear!! Time to get to <b>Defibrillating</b> Private Stanley! Click on his body with your Defib, and hold still while it delivers its charge!")
+	message_to_player("Clear!! Time to get to <b>Defibrillating</b> Pvt Dummy! Click on his body with your Defib, and hold still while it delivers its charge!")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	RegisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED, PROC_REF(defib_tutorial_9))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_9()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/defibrillator, defib)
@@ -937,8 +933,8 @@
 	remove_from_tracking_atoms(defib)
 	QDEL_IN(defib, 2 SECONDS)
 
-	message_to_player("Well done! Private Stanley lives again!")
-	message_to_player("However, Private Stanley still has a large amount of <b>Brute Damage</b> across his body")
+	message_to_player("Well done! Pvt Dummy lives again!")
+	message_to_player("However, Pvt Dummy still has a large amount of <b>Brute Damage</b> across his body")
 
 	handle_pill_bottle(marine_dummy, "Bicaridine", "Bi", "11", /obj/item/reagent_container/pill/bicaridine)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(defib_tutorial_10))
@@ -947,15 +943,15 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	marine_dummy.rejuvenate()
 
-	message_to_player("Well done! Private Stanley will now fully recover from his injuries, and be allowed back on the front lines of battle!")
+	message_to_player("Well done! Pvt Dummy will now fully recover from his injuries, and be allowed back on the front lines of battle!")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
 	marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
 
-	addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial)), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial()
 
@@ -968,14 +964,14 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial_1()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, marine_dummy.loc)
 	sparks.start()
 
 	if(!(stage > 0))
-		slower_message_to_player("Oh goodness! It appears Private Stanley has once again dropped dead! Note that his invisible <b>5 Minute Perma-Death Timer</b> has now started.")
-		slower_message_to_player("As you can see, just like the section prior, Private Stanleys <b>Revival Icon</b> is <b>Green</b>, meaning he has <u>more than half his revival timer left</u> (more than 2.5 minutes)")
+		slower_message_to_player("Oh goodness! It appears Pvt Dummy has once again dropped dead! Note that his invisible <b>5 Minute Perma-Death Timer</b> has now started.")
+		slower_message_to_player("As you can see, just like the section prior, Pvt Dummys <b>Revival Icon</b> is <b>Green</b>, meaning he has <u>more than half his revival timer left</u> (more than 2.5 minutes)")
 
 		marine_dummy.revive_grace_period = INFINITY // surely nothing can go wrong... right?... guys??
 		marine_dummy.death()
@@ -989,7 +985,7 @@
 		marine_dummy.updatehealth()
 
 		slower_message_to_player("However, lets fast-forward a bit..")
-		slower_message_to_player("After 2 and a half minutes, Private Stanley's <b>Revival Icon</b> has changed to <b>Yellow/Organge Flashes</b>.")
+		slower_message_to_player("After 2 and a half minutes, Pvt Dummy's <b>Revival Icon</b> has changed to <b>Yellow/Organge Flashes</b>.")
 		slower_message_to_player("This indicates that he has <u>less than half his revival timer left</u>!")
 
 		add_highlight(marine_dummy, LIGHT_COLOR_ORANGE)
@@ -1001,8 +997,8 @@
 		marine_dummy.revive_grace_period = 1.15 MINUTES // red red!!!
 		marine_dummy.updatehealth()
 
-		slower_message_to_player("Jumping forwards once again, Private Stanley's <b>Revival Icon</b> is now <b>Flashing Red</b>!")
-		slower_message_to_player("This means that Stanley has <u>less than 60 seconds to be revived</u> before he expires <b>for good</b>, known as <b>Perma-Death/Biological Death</b>.")
+		slower_message_to_player("Jumping forwards once again, Pvt Dummy's <b>Revival Icon</b> is now <b>Flashing Red</b>!")
+		slower_message_to_player("This means that Pvt Dummy has <u>less than 60 seconds to be revived</u> before he expires <b>for good</b>, known as <b>Perma-Death/Biological Death</b>.")
 		slower_message_to_player("This state is known in slang terms as 'going red', 'redlining' or 'flatlining'.")
 		slower_message_to_player("Unless you are operating on a patient who is also flatlining, you MUST drop whatever you are doing to assist REGARDLESS of if another Medic is already treating them.")
 		slower_message_to_player("If a Medic is already treating the patient, approach and ask 'How can I help?'.")
@@ -1017,7 +1013,7 @@
 		marine_dummy.revive_grace_period = 0 // BREATHE DAMN IT! BREATHE!!
 		marine_dummy.updatehealth() // I'm... sorry, Doc...
 
-		slower_message_to_player("It seems that, despite everything, Private Stanley has slipped through our fingers.")
+		slower_message_to_player("It seems that, despite everything, Pvt Dummy has slipped through our fingers.")
 		slower_message_to_player("After their full <b>Revival Timer</b> has elapsed, a patient will enter <b>Biological/Perma-Death</b>, and their <b>Revival Icon</b> will be replaced with a <b>Skull</b>.")
 		slower_message_to_player("Barring <b>EXTREMELY</b> rare circumstances, this is the end of the line for any patient. You should pick up your tools, and move on.")
 
@@ -1042,7 +1038,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_condition_tutorial_2()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, marine_dummy.loc)
 	sparks.start()
@@ -1053,7 +1049,7 @@
 	marine_dummy.updatehealth()
 	remove_highlight(marine_dummy)
 
-	message_to_player("Luckily for Private Stanley, he still has the favor of the gods, and will live again!")
+	message_to_player("Luckily for Pvt Dummy, he still has the favor of the gods, and will live again!")
 	addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 3 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/cpr_tutorial()
@@ -1077,7 +1073,7 @@
 		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 24 SECONDS)
 		return
 	if(stage == 2)
-		TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 		var/datum/effect_system/spark_spread/sparks = new
 		sparks.set_up(5, 1, marine_dummy.loc)
 		sparks.start()
@@ -1087,9 +1083,9 @@
 		marine_dummy.updatehealth()
 		add_highlight(marine_dummy, COLOR_GREEN)
 
-		slower_message_to_player("Private Stanley has once again dropped dead! We are going to practice <b>CPR</b> to <b>Extend his Revival Timer</b>")
+		slower_message_to_player("Pvt Dummy has once again dropped dead! We are going to practice <b>CPR</b> to <b>Extend his Revival Timer</b>")
 		slower_message_to_player("To perform <b>CPR</b>, make sure you are on the green <b>Help Intent</b> and <u>neither of you are wearing face coverings</u>.")
-		slower_message_to_player("Then, click on Private Stanley with an empty hand, and hold still while <b>CPR</b> is performed!")
+		slower_message_to_player("Then, click on Pvt Dummy with an empty hand, and hold still while <b>CPR</b> is performed!")
 
 		RegisterSignal(tutorial_mob, COMSIG_HUMAN_CPR_PERFORMED, PROC_REF(cpr_tutorial_1))
 		stage = 0
@@ -1098,7 +1094,7 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/cpr_tutorial_1(datum/source, successful)
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	if(successful != TRUE)
 		message_to_player("Bad luck! You made a mistake in the rhythm, and failed a round of CPR. You'll have to try again from the start.")
 		message_to_player("Remember to count in your head: <u>4 seconds to perform, 3 seconds between</u>. Give it another go!")
@@ -1106,7 +1102,7 @@
 		return
 	if(successful == TRUE)
 		if(cpr_count == 0)
-			message_to_player("Well done! To get you into the rhythm of CPR, we are going to perform <b>CPR</b> 4 times in a row on Private Stanley!")
+			message_to_player("Well done! To get you into the rhythm of CPR, we are going to perform <b>CPR</b> 4 times in a row on Pvt Dummy!")
 			cpr_count++
 			return
 		if((cpr_count > 0) && (cpr_count != 4))
@@ -1153,7 +1149,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/revival_mix_tutorial_1()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 
 	if(stage == 0)
 		var/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/revivalmix = new(loc_from_corner(1,4))
@@ -1200,7 +1196,7 @@
 		add_highlight(healthanalyzer, COLOR_GREEN)
 		remove_highlight(revivalmix)
 
-		slower_message_to_player("Private Stanley is dead yet again. Before attempting a revival, you will first scan his condition with a <b>Health Analyzer</b>.")
+		slower_message_to_player("Pvt Dummy is dead yet again. Before attempting a revival, you will first scan his condition with a <b>Health Analyzer</b>.")
 
 		RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(revival_mix_tutorial_2))
 		stage = 0
@@ -1211,14 +1207,14 @@
 	if(attacked_mob == tutorial_mob)
 		return
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	remove_highlight(marine_dummy)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-	slower_message_to_player("As you can see on your <b>Health Analyzer Interface</b>, Private Stanley has <b>120 Brute Damage</b> and <b>120 Burn Damage</b>, adding up to <b>240 Damage in Total</b>.")
-	slower_message_to_player("Using a regular Defibrillator, only 12 Brute and Burn damage would be healed, leaving Private Stanley above the 200 overall damage mark, causing the revival attempt to <b>Fail</b>.")
-	slower_message_to_player("Instead, we are going to inject Stanley with <b>Revival Mix</b>, allowing us to heal an <u>additional</u> 20 Brute and Burn damage when defibrillating, allowing a <b>Successful Revival</b>!")
+	slower_message_to_player("As you can see on your <b>Health Analyzer Interface</b>, Pvt Dummy has <b>120 Brute Damage</b> and <b>120 Burn Damage</b>, adding up to <b>240 Damage in Total</b>.")
+	slower_message_to_player("Using a regular Defibrillator, only 12 Brute and Burn damage would be healed, leaving Pvt Dummy above the 200 overall damage mark, causing the revival attempt to <b>Fail</b>.")
+	slower_message_to_player("Instead, we are going to inject Pvt Dummy with <b>Revival Mix</b>, allowing us to heal an <u>additional</u> 20 Brute and Burn damage when defibrillating, allowing a <b>Successful Revival</b>!")
 	message_to_player("Click on your <b>Pressurized Reagent Canister</b> with an empty hand to draw its stored <b>Autoinjector</b>.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, revivalmix)
@@ -1230,14 +1226,14 @@
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, revivalmix)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/empty/medic, revivalpen)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 
 	if(stage == 0)
 		UnregisterSignal(revivalpen, COMSIG_ITEM_DRAWN_FROM_STORAGE)
 		remove_highlight(revivalmix)
 		add_highlight(revivalpen, COLOR_GREEN)
 		add_highlight(marine_dummy, COLOR_GREEN)
-		message_to_player("Good, now click on Private Stanley with your Autoinjector in hand to inject him with a shot of <b>Revival Mix</b>.")
+		message_to_player("Good, now click on Pvt Dummy with your Autoinjector in hand to inject him with a shot of <b>Revival Mix</b>.")
 		RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(revival_mix_tutorial_3))
 		stage++
 		return
@@ -1246,8 +1242,8 @@
 		remove_highlight(revivalpen)
 
 		slower_message_to_player("Excellent. Place your <b>Revival Mix Autoinjector</b> back in its Reagent Canister to store and refill it after use.")
-		slower_message_to_player("Private Stanley is now ready for <b>Defibrillation</b>.")
-		slower_message_to_player("Remove his <b>Armor</b>, pick up the <b>Defibrillator</b> from the desk, detach its contact paddles, and use it to <b>Revive Private Stanley</b>!")
+		slower_message_to_player("Pvt Dummy is now ready for <b>Defibrillation</b>.")
+		slower_message_to_player("Remove his <b>Armor</b>, pick up the <b>Defibrillator</b> from the desk, detach its contact paddles, and use it to <b>Revive Pvt Dummy</b>!")
 
 		var/obj/item/device/defibrillator/defib = new(loc_from_corner(0,4))
 		add_to_tracking_atoms(defib)
@@ -1273,7 +1269,7 @@
 		marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
 		stage = 0
 
-	slower_message_to_player("Great work! As you can see, with the help of <b>Epinephrine</b> and <b>Revival Mix</b>, Private Stanley was able to be revived!")
+	slower_message_to_player("Great work! As you can see, with the help of <b>Epinephrine</b> and <b>Revival Mix</b>, Pvt Dummy was able to be revived!")
 	slower_message_to_player("Note that, with each attempted <b>Defibrillation</b> successful or not, 1u of <b>Epinephrine</b> will be consumed in the patients body.")
 
 	addtimer(CALLBACK(src, PROC_REF(field_surgery)), 7 SECONDS)
@@ -1298,9 +1294,9 @@
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_brute_2()
 
-	message_to_player("Oh no! Mr Dummy has taken a large amount of <b>Brute Damage</b>! Scan him with your <b>Health Analyzer</b> for more details.")
+	message_to_player("Oh no! Pvt Dummy has taken a large amount of <b>Brute Damage</b>! Scan him with your <b>Health Analyzer</b> for more details.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	marine_dummy.rejuvenate()
 	marine_dummy.apply_damage(35, BRUTE, "chest")
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_brute_3))
@@ -1311,7 +1307,7 @@
 	if(attacked_mob == tutorial_mob)
 		return
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
 	message_to_player("As you can see, the Dummy has <b>35 Brute Damage</b> on their chest.")
@@ -1368,7 +1364,7 @@
 	remove_highlight(medbelt)
 	remove_highlight(tram)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed))
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed_reject))
 
@@ -1376,7 +1372,7 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
@@ -1393,12 +1389,12 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 	marine_dummy.pain.feels_pain = FALSE //failsafe
 
-	message_to_player("Now that Mr Dummy has been medicated with a painkiller, we can begin surgery on their chest.")
-	message_to_player("Pick up the <b>Surgical Line</b> on the desk, and click on Mr Dummy with it while <u>targeting his chest</u> to begin the surgery")
+	message_to_player("Now that Pvt Dummy has been medicated with a painkiller, we can begin surgery on their chest.")
+	message_to_player("Pick up the <b>Surgical Line</b> on the desk, and click on Pvt Dummy with it while <u>targeting his chest</u> to begin the surgery")
 	message_to_player("Your <b>Surgical Line</b> will heal small portions of damage in repeating intervals until up to <u>half</u> of the regions overall damage.")
 	message_to_player("Stand next to the Dummy and dont move until the surgery has been fully completed")
 
@@ -1440,11 +1436,11 @@
 	remove_from_tracking_atoms(surgical_line)
 	qdel(surgical_line)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	marine_dummy.rejuvenate()
 	marine_dummy.apply_damage(70, BURN, "chest")
 	message_to_player("Like Brute damage treatment, <b>Burn Damage</b> can also be surgically treated using a <b>Synth-Graft</b>.")
-	message_to_player("Mr Dummy has taken additional <b>Burn Damage</b> to his chest!")
+	message_to_player("Pvt Dummy has taken additional <b>Burn Damage</b> to his chest!")
 	message_to_player("Pick up your <b>Synth-Graft</b>, and apply it to the Dummys <b>Chest</b>.")
 
 	var/obj/item/tool/surgery/synthgraft/graft = new(loc_from_corner(1,4))
@@ -1467,13 +1463,13 @@
 	remove_from_tracking_atoms(mob_chest)
 	remove_highlight(graft)
 
-	message_to_player("Well done! Mr Dummy has been healed!")
+	message_to_player("Well done! Pvt Dummy has been healed!")
 
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_burn_3)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_burn_3()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	marine_dummy.rejuvenate()
 	marine_dummy.pain.feels_pain = TRUE
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/synthgraft, graft)
@@ -1542,30 +1538,30 @@
 	add_highlight(rollerdeployed, COLOR_GREEN)
 	rollerdeployed.anchored = TRUE
 
-	message_to_player("Excellent! Now, to prepare Mr Dummy for surgery, we need to buckle him to the Roller Bed.")
-	message_to_player("Set your intent to the yellow <b>Grab Intent</b>, and click on Mr Dummy to grab them.")
+	message_to_player("Excellent! Now, to prepare Pvt Dummy for surgery, we need to buckle him to the Roller Bed.")
+	message_to_player("Set your intent to the yellow <b>Grab Intent</b>, and click on Pvt Dummy to grab them.")
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_GRAB_PASSIVE, PROC_REF(field_surgery_ib_6))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_6(datum/source, mob/target)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 
 	if(target != marine_dummy)
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_GRAB_PASSIVE)
 
-	message_to_player("Then, drag them next to the <b>Roller Bed</b>, and click and drag your mouse from Mr Dummy, to the Roller bed to buckle them into it.")
+	message_to_player("Then, drag them next to the <b>Roller Bed</b>, and click and drag your mouse from Pvt Dummy, to the Roller bed to buckle them into it.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_SET_BUCKLED, PROC_REF(field_surgery_ib_7))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_7()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_SET_BUCKLED)
 
-	message_to_player("Now, for the final step before Mr Dummy is ready for Surgery, we must inject him with a powerful painkiller.")
+	message_to_player("Now, for the final step before Pvt Dummy is ready for Surgery, we must inject him with a powerful painkiller.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/roller, rollerdeployed)
 	remove_highlight(rollerdeployed)
@@ -1573,7 +1569,7 @@
 	message_to_player("Since Internal Bleeding surgery requires an <b>Incision</b>, we must use a painkiller as strong as, or stronger than, <b>Oxycodone</b>.")
 
 	message_to_player("An <b>Oxycodone Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Use the Autoinjector on Mr Dummy by clicking on them, to administer the <b>Oxycodone</b>")
+	message_to_player("Use the Autoinjector on Pvt Dummy by clicking on them, to administer the <b>Oxycodone</b>")
 
 	var/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use/oxy = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(oxy)
@@ -1612,7 +1608,7 @@
 	remove_from_tracking_atoms(oxy)
 	qdel(oxy)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	marine_dummy.pain.feels_pain = FALSE //surgery failsafe
@@ -1622,8 +1618,8 @@
 	mob_chest.add_bleeding(IB, TRUE)
 	mob_chest.wounds += IB
 
-	message_to_player("Now, we will initiate an <b>Internal Bleeding</b> surgery on Mr Dummy.")
-	message_to_player("First, draw your <b>Health Analyzer</b>, and scan Mr Dummy to locate the source of his Internal Bleeding.")
+	message_to_player("Now, we will initiate an <b>Internal Bleeding</b> surgery on Pvt Dummy.")
+	message_to_player("First, draw your <b>Health Analyzer</b>, and scan Pvt Dummy to locate the source of his Internal Bleeding.")
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_ib_9))
 
@@ -1635,8 +1631,8 @@
 
 	UnregisterSignal(attacked_mob, COMSIG_LIVING_HEALTH_ANALYZED)
 
-	message_to_player("By looking at your <b>Health Analyzer</b> scan, we can see that Mr Dummy has <b>Internal Bleeding</b> in his <b>Chest</b>.")
-	message_to_player("This must be treated urgently. We will begin the <b>Internal Bleeding Repair</b> surgery by making an <b>Incision</b> on Mr Dummys <b>Chest</b>.")
+	message_to_player("By looking at your <b>Health Analyzer</b> scan, we can see that Pvt Dummy has <b>Internal Bleeding</b> in his <b>Chest</b>.")
+	message_to_player("This must be treated urgently. We will begin the <b>Internal Bleeding Repair</b> surgery by making an <b>Incision</b> on Pvt Dummys <b>Chest</b>.")
 	message_to_player("Open your <b>Field Surgery Pouch</b> and draw the <b>Scalpel</b> from within.")
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/surgical_case/regular, surgical_case)
@@ -1657,7 +1653,7 @@
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
-	message_to_player("Now, make sure you are on the <b>Help Intent</b> with <b>Surgery Mode Enabled</b>, then click on Mr Dummy while holding your Scalpel to create an incision.")
+	message_to_player("Now, make sure you are on the <b>Help Intent</b> with <b>Surgery Mode Enabled</b>, then click on Pvt Dummy while holding your Scalpel to create an incision.")
 
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(field_surgery_ib_11))
@@ -1665,7 +1661,7 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/field_surgery_ib_11(datum/source, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 
 	if(target != marine_dummy)
 		message_to_player("Operate on the Dummy, not yourself! Try again.")
@@ -1686,7 +1682,7 @@
 			remove_highlight(scalpel)
 			remove_from_tracking_atoms(scalpel)
 			message_to_player("Well done! Next, we will retract the skin around the incision with a <b>Retractor</b>.")
-			message_to_player("Draw the <b>Retractor</b> from your <b>Field Surgery Kit</b> and use it on Mr Dummy.")
+			message_to_player("Draw the <b>Retractor</b> from your <b>Field Surgery Kit</b> and use it on Pvt Dummy.")
 
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/surgical_case/regular, surgical_case)
 			var/obj/item/tool/surgery/retractor/retractor = locate(/obj/item/tool/surgery/retractor) in surgical_case.contents
@@ -1698,11 +1694,11 @@
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/retractor, retractor)
 			remove_highlight(retractor)
 			remove_from_tracking_atoms(retractor)
-			message_to_player("Mission complete! You have successfully created an incision of Mr Dummys chest.")
+			message_to_player("Mission complete! You have successfully created an incision of Pvt Dummys chest.")
 			message_to_player("We are now able to access and repair the source of <b>Internal Bleeding</b> in the Dummys chest.")
 			message_to_player("To do this, we are going to once again use a <b>Surgical Line</b>.")
-			message_to_player("Pickup the <b>Surgical Line</b> from the bench, and use it on Mr Dummy.")
-			message_to_player("If you have done this step correctly, an options box will appear that allows you to either <b>Fix Mr Dummys Internal Bleeding</b>, or <b>Cauterize</b> your incision. Click the first option!")
+			message_to_player("Pickup the <b>Surgical Line</b> from the bench, and use it on Pvt Dummy.")
+			message_to_player("If you have done this step correctly, an options box will appear that allows you to either <b>Fix Pvt Dummys Internal Bleeding</b>, or <b>Cauterize</b> your incision. Click the first option!")
 
 			var/obj/item/tool/surgery/surgical_line/surgical_line = new(loc_from_corner(1,4))
 			add_to_tracking_atoms(surgical_line)
@@ -1711,14 +1707,14 @@
 
 	if(surgery.name == "Internal Bleeding Repair")
 		if(surgery.status == 1)
-			message_to_player("Amazing work! Mr Dummy's condition has been stabilized!")
-			message_to_player("Now, all that's left to do is to <b>Cauterize the Incision</b>. Use your <b>Surgical Line</b> on Mr Dummys chest one more time!")
+			message_to_player("Amazing work! Pvt Dummy's condition has been stabilized!")
+			message_to_player("Now, all that's left to do is to <b>Cauterize the Incision</b>. Use your <b>Surgical Line</b> on Pvt Dummys chest one more time!")
 			ontime = TRUE
 			return
 
 	if(surgery.name == "Suture Incision")
 		if(ontime != TRUE)
-			message_to_player("You have closed your incision before treating Mr Dummys internal bleeding. You will have to restart the procedure.")
+			message_to_player("You have closed your incision before treating Pvt Dummys internal bleeding. You will have to restart the procedure.")
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/surgical_line, surgical_line)
 			remove_from_tracking_atoms(surgical_line)
 			remove_highlight(surgical_line)
@@ -1739,7 +1735,7 @@
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/tutorial_close()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
 	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
@@ -1806,7 +1802,7 @@
 
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
-		TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 
 		UnregisterSignal(target, COMSIG_ITEM_DRAWN_FROM_STORAGE)
 
@@ -1823,7 +1819,7 @@
 	if(handle_pill_bottle_status == 2)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
-		TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human/realistic_dummy, marine_dummy)
+
 		if(target == tutorial_mob)
 			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
 			UnregisterSignal(target, COMSIG_HUMAN_PILL_FED)
@@ -1855,7 +1851,7 @@
 //
 // fix helpers
 //
-// apply marine_dummy instead of human_dummy
+// apply marine_dummy instead of marine_dummy
 //
 // Section 1 - Stabilizing Types of Organ Damage
 // 1.5 Liver and Kidney Damage

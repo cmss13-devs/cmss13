@@ -18667,7 +18667,7 @@
 /area/fiorina/tumor/ice_lab)
 "omb" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
@@ -26769,9 +26769,8 @@
 /area/fiorina/tumor/aux_engi)
 "uEh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed pounce and grab methods to pull something anchored (e.g. ovi queen)"

@@ -9,34 +9,9 @@
 	},
 /area/space)
 "aac" = (
-/obj/structure/prop/almayer/cannon_cables{
-	name = "\improper Cables"
-	},
-/obj/structure/cryofeed{
-	color = "silver";
-	desc = "A bewildering tangle of machinery and pipes.";
-	name = "coolant feed"
-	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "A big air filter.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
-	icon_state = "fuel_enhancer";
-	layer = 5;
-	name = "Air filter";
-	pixel_x = -3;
-	pixel_y = 1
-	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
-	icon_state = "cooling_system";
-	layer = 4;
-	name = "\improper Air Condenser";
-	pixel_x = -5;
-	pixel_y = 25
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/bigredv2/oob)
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port_lz2)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -199,7 +174,7 @@
 "aaM" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/space_port_lz2)
+/area/bigredv2/outside/space_port)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -274,10 +249,6 @@
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/space_port)
-"abb" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -33459,6 +33430,35 @@
 "sus" = (
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/caves_research)
+"suD" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Cables"
+	},
+/obj/structure/cryofeed{
+	color = "silver";
+	desc = "A bewildering tangle of machinery and pipes.";
+	name = "coolant feed"
+	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	desc = "A big air filter.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
+	icon_state = "fuel_enhancer";
+	layer = 5;
+	name = "Air filter";
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
+	icon_state = "cooling_system";
+	layer = 4;
+	name = "\improper Air Condenser";
+	pixel_x = -5;
+	pixel_y = 25
+	},
+/turf/open/shuttle/escapepod/floor1,
+/area/bigredv2/oob)
 "suL" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -44698,7 +44698,7 @@ aah
 aah
 aah
 aek
-abb
+aaM
 aaf
 aaf
 acJ
@@ -48050,7 +48050,7 @@ eWd
 eWd
 eWd
 eWd
-aaM
+aac
 eWd
 eWd
 eWd
@@ -51135,7 +51135,7 @@ rIl
 uSf
 ldh
 llS
-aac
+suD
 ijU
 rIl
 aao
@@ -51569,7 +51569,7 @@ rIl
 uSf
 olT
 llS
-aac
+suD
 ijU
 rIl
 aao

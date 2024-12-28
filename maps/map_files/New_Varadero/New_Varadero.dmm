@@ -1,30 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/communications{
-	dir = 1
-	},
-/obj/item/card/id/silver/clearance_badge{
-	pixel_x = 14
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/maintenance/north)
-"aab" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/communications{
-	dir = 1
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 17;
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/maintenance/north)
-"aac" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"aad" = (
+"aab" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -10656,6 +10635,17 @@
 	},
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz2_near)
+"iFm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 17;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
 "iFy" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/souto/grape{
@@ -27772,6 +27762,16 @@
 	},
 /turf/open/gm/coast/south,
 /area/varadero/exterior/farocean)
+"wfS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 1
+	},
+/obj/item/card/id/silver/clearance_badge{
+	pixel_x = 14
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/maintenance/north)
 "wfT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -41713,7 +41713,7 @@ wMw
 wMw
 wMw
 wMw
-aac
+aaa
 xcE
 wMw
 wMw
@@ -44278,7 +44278,7 @@ teH
 oaO
 wns
 vru
-aaa
+wfS
 kqA
 giN
 giN
@@ -44460,7 +44460,7 @@ kqA
 aSe
 rFv
 hQP
-aab
+iFm
 kqA
 lGD
 giN
@@ -55164,7 +55164,7 @@ lTg
 wlB
 wlB
 wlB
-aad
+aab
 wlB
 lTg
 wlB

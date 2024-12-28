@@ -87,6 +87,22 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
+/obj/effect/overlay/temp/point/big/alpha
+	icon_state = "big_arrow_grey"
+	color = "#e61919"
+
+/obj/effect/overlay/temp/point/big/bravo
+	icon_state = "big_arrow_grey"
+	color = "#ffc32d"
+
+/obj/effect/overlay/temp/point/big/charlie
+	icon_state = "big_arrow_grey"
+	color = "#c864c8"
+
+/obj/effect/overlay/temp/point/big/delta
+	icon_state = "big_arrow_grey"
+	color = "#4148c8"
+
 /obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
 	color = "#1c00f6"

@@ -374,12 +374,28 @@
 
 /mob/proc/point_to_atom(atom/A, turf/T)
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
-	if(check_improved_pointing())
-		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src, A)
-	else
+	var/mob/living/carbon/human/mob = src
+	var/datum/squad/squad = mob.assigned_squad
+
+	if(!check_improved_pointing())
 		recently_pointed_to = world.time + 50
 		new /obj/effect/overlay/temp/point(T, src, A)
+	else
+		recently_pointed_to = world.time + 10
+		if(isnull(squad))
+			new /obj/effect/overlay/temp/point/big(T, src, A)
+		else
+			switch(squad.name)
+				if(SQUAD_MARINE_1)
+					new /obj/effect/overlay/temp/point/big/alpha(T, src, A)
+				if(SQUAD_MARINE_2)
+					new /obj/effect/overlay/temp/point/big/bravo(T, src, A)
+				if(SQUAD_MARINE_3)
+					new /obj/effect/overlay/temp/point/big/charlie(T, src, A)
+				if(SQUAD_MARINE_4)
+					new /obj/effect/overlay/temp/point/big/delta(T, src, A)
+				else
+					new /obj/effect/overlay/temp/point/big(T, src, A)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 

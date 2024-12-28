@@ -234,7 +234,7 @@
 			return FALSE
 	if(!parent_turf?.weeds)
 		return FALSE
-	if(HAS_TRAIT(parent_human, TRAIT_ON_WATCHTOWER))
+	if(HAS_TRAIT(parent_mob, TRAIT_ON_WATCHTOWER))
 		return FALSE
 	if(SEND_SIGNAL(parent_mob, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
 		return FALSE

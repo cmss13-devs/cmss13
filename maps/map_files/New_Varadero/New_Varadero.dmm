@@ -9718,12 +9718,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
-"hRs" = (
-/obj/structure/prop/invuln/fusion_reactor{
-	name = "Plasma Reactor"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "hRv" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/sand_white/layer1,
@@ -59126,10 +59120,10 @@ avD
 mqe
 mqe
 avD
-hRs
+uvd
 cHV
 wsG
-hRs
+uvd
 avD
 mqe
 mqe

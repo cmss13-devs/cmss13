@@ -17,5 +17,5 @@ AddTimelock(/datum/job/civilian/field_doctor, list(
 
 /obj/effect/landmark/start/field_doctor
 	name = JOB_FIELD_DOCTOR
-	icon_state = "doc_spawn"
+	icon_state = "field_doc_spawn"
 	job = /datum/job/civilian/field_doctor

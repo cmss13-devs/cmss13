@@ -1,0 +1,7 @@
+author: "GoldenDarkness55"
+delete-after: True
+changes:
+  - rscadd: "Slowing neuro shrapnel effect to OT achieved by adding 30 neurotoxin plasma to the beaker with iron. 0.8s slow per shard hit up to 6s max"
+  - rscadd: "Hornet (holo) shrapnel effect to OT achieved by adding 10 sulfuric acid to the beaker with iron"
+  - balance: "Reduced the divide on incendiary OT shards from 4 to 2"
+  - balance: "Raised holo stacks per hornet shrapnel hit from 10 to 20."

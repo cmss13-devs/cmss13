@@ -62,7 +62,7 @@
 				. += SPAN_NOTICE("Plasteel attached. [SPAN_HELPFUL("Weld")] to finish.")
 			return
 		if(STATE_DISPLACED)
-			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it.")
+			. += SPAN_NOTICE("It looks dislodged. [SPAN_HELPFUL("Crowbar")] to secure it. Or [SPAN_HELPFUL("Weld")] with a 2x2 of dislodged girders to start constructing a watchtower.")
 
 /obj/structure/girder/update_icon()
 	. = ..()
@@ -194,9 +194,13 @@
 					if(!found_girder)
 						return
 
+				to_chat(user, SPAN_NOTICE("You start welding the displaced girders together."))
+				playsound(loc, 'sound/items/Welder.ogg', 25, 1)
 
 				if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
+
+				to_chat(user, SPAN_NOTICE("You weld the displaced girders together, creating a watchtower frame."))
 
 				new /obj/structure/watchtower(loc)
 				

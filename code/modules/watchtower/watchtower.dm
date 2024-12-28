@@ -9,6 +9,7 @@
 
 /obj/structure/watchtower
 	name = "watchtower"
+	desc = "A watchtower used to view the area around and protect it."
 	icon = 'icons/obj/structures/watchtower.dmi'
 	icon_state = "stage1"
 
@@ -33,6 +34,11 @@
 	for(var/turf/current_turf in blocked_turfs)
 		new /obj/structure/blocker/watchtower/full_tile(current_turf)
 
+	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3)
+	
+	for(var/turf/current_turf in all_turfs)
+		current_turf.is_weedable = FALSE
+
 	update_icon()
 
 	return ..()
@@ -45,6 +51,11 @@
 		for(var/mob/falling_mob in current_turf.contents)
 			falling_mob.ex_act(100, 0)
 			on_leave(falling_mob)
+
+	var/list/turf/all_turfs = CORNER_BLOCK(get_turf(src), 2, 3)
+	
+	for(var/turf/current_turf in all_turfs)
+		current_turf.is_weedable = initial(current_turf.is_weedable)
 
 	new /obj/structure/girder(get_turf(src))
 	new /obj/structure/girder/broken(locate(x+1, y, z))
@@ -69,6 +80,34 @@
 		roof_image.appearance_flags = KEEP_APART
 		overlays += roof_image
 
+/obj/structure/watchtower/get_examine_text(mob/user)
+	. = ..()
+	switch(state)
+		if(WATCHTOWER_STAGE_WELDED)
+			. += SPAN_NOTICE("Add 60 metal [SPAN_HELPFUL("rods")] to construct the connection rods.")
+			return
+		if(WATCHTOWER_STAGE_COLUMNS)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("welder")] to weld the connection rods to the frame.")
+			return
+		if(WATCHTOWER_STAGE_HEIGHTNED_WELDER)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("wrench")] to elevate the frame.")
+			return
+		if(WATCHTOWER_STAGE_HEIGHTNED_WRENCH)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("screwdriver")] and 50 [SPAN_HELPFUL("metal")] sheets to construct the platform.")
+			return
+		if(WATCHTOWER_STAGE_FLOOR)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("crowbar")] and 25 [SPAN_HELPFUL("plasteel")] sheets to construct [src] railings.")
+			return
+		if(WATCHTOWER_STAGE_BARRICADED)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("wrench")] and 60 metal [SPAN_HELPFUL("rods")] to construct [src] support rods.")
+			return
+		if(WATCHTOWER_STAGE_ROOF_SUPPORT)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and 25 [SPAN_HELPFUL("plasteel")] sheets to construct the roof.")
+			return
+		if(WATCHTOWER_STAGE_COMPLETE)
+			. += SPAN_NOTICE("Use a [SPAN_HELPFUL("blowtorch")] and [SPAN_HELPFUL("metal")] sheets to repair.")
+			return
+
 /obj/structure/watchtower/attackby(obj/item/item, mob/user)
 	if(user.action_busy)
 		return
@@ -84,11 +123,14 @@
 
 			var/obj/item/stack/rods/rods = item
 
+			to_chat(user, SPAN_NOTICE("You start adding connection rods to [src]."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				return
 
 			if(rods.use(60))
-				to_chat(user, SPAN_NOTICE("You add connection rods to the watchtower."))
+				to_chat(user, SPAN_NOTICE("You add connection rods to [src]."))
 				stage = WATCHTOWER_STAGE_COLUMNS
 				update_icon()
 			else
@@ -103,6 +145,9 @@
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
 
+			to_chat(user, SPAN_NOTICE("You start welding the connection rods to the frame."))
+			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
@@ -113,6 +158,9 @@
 		if(WATCHTOWER_STAGE_HEIGHTNED_WELDER)
 			if(!HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				return
+
+			to_chat(user, SPAN_NOTICE("You start elevating the frame and screwing it up top."))
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
@@ -128,18 +176,21 @@
 
 			var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
 			if(!istype(metal))
-				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to continue construction of the watchtower."))
+				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to continue construction of [src]."))
 				return FALSE
+
+			to_chat(user, SPAN_NOTICE("You start constructing [src] platform."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(metal.use(50))
-				to_chat(user, SPAN_NOTICE("You construct the watchtower platform."))
+				to_chat(user, SPAN_NOTICE("You construct [src] platform."))
 				stage = WATCHTOWER_STAGE_FLOOR
 				update_icon()
 			else
-				to_chat(user, SPAN_NOTICE("You failed to construct the watchtower platform, you need more metal sheets in your offhand."))
+				to_chat(user, SPAN_NOTICE("You failed to construct [src] platform, you need more metal sheets in your offhand."))
 
 			return
 		if(WATCHTOWER_STAGE_FLOOR)
@@ -148,18 +199,21 @@
 
 			var/obj/item/stack/sheet/plasteel/plasteel = user.get_inactive_hand()
 			if(!istype(plasteel))
-				to_chat(user, SPAN_BOLDWARNING("You need plasteel sheets in your offhand to continue construction of the watchtower."))
+				to_chat(user, SPAN_BOLDWARNING("You need plasteel sheets in your offhand to continue construction of [src]."))
 				return FALSE
+
+			to_chat(user, SPAN_NOTICE("You start constructing [src] railing."))
+			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(plasteel.use(25))
-				to_chat(user, SPAN_NOTICE("You construct the watchtower railing."))
+				to_chat(user, SPAN_NOTICE("You construct [src] railing."))
 				stage = WATCHTOWER_STAGE_BARRICADED
 				update_icon()
 			else
-				to_chat(user, SPAN_NOTICE("You failed to construct the watchtower railing, you need more plasteel sheets in your offhand."))
+				to_chat(user, SPAN_NOTICE("You failed to construct [src] railing, you need more plasteel sheets in your offhand."))
 
 			return
 		if(WATCHTOWER_STAGE_BARRICADED)
@@ -168,18 +222,21 @@
 
 			var/obj/item/stack/rods/rods = user.get_inactive_hand()
 			if(!istype(rods))
-				to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to continue construction of the watchtower."))
+				to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to continue construction of [src]."))
 				return FALSE
+
+			to_chat(user, SPAN_NOTICE("You start constructing [src] support rods."))
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(rods.use(60))
-				to_chat(user, SPAN_NOTICE("You construct the watchtower support rods."))
+				to_chat(user, SPAN_NOTICE("You construct [src] support rods."))
 				stage = WATCHTOWER_STAGE_ROOF_SUPPORT
 				update_icon()
 			else
-				to_chat(user, SPAN_NOTICE("You failed to construct the watchtower support rods, you need more metal rods in your offhand."))
+				to_chat(user, SPAN_NOTICE("You failed to construct [src] support rods, you need more metal rods in your offhand."))
 
 			return
 		if(WATCHTOWER_STAGE_ROOF_SUPPORT)
@@ -192,18 +249,21 @@
 
 			var/obj/item/stack/sheet/plasteel/plasteel = user.get_inactive_hand()
 			if(!istype(plasteel))
-				to_chat(user, SPAN_BOLDWARNING("You need plasteel sheets in your offhand to continue construction of the watchtower."))
+				to_chat(user, SPAN_BOLDWARNING("You need plasteel sheets in your offhand to continue construction of [src]."))
 				return FALSE
+
+			to_chat(user, SPAN_NOTICE("You start completing [src]."))
+			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
 
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(plasteel.use(25))
-				to_chat(user, SPAN_NOTICE("You complete the watchtower."))
+				to_chat(user, SPAN_NOTICE("You complete [src]."))
 				stage = WATCHTOWER_STAGE_COMPLETE
 				update_icon()
 			else
-				to_chat(user, SPAN_NOTICE("You failed to complete the watchtower, you need more plasteel sheets in your offhand."))
+				to_chat(user, SPAN_NOTICE("You failed to complete [src], you need more plasteel sheets in your offhand."))
 
 			return
 		if(WATCHTOWER_STAGE_COMPLETE)
@@ -216,21 +276,24 @@
 
 			var/obj/item/stack/sheet/metal/metal = user.get_inactive_hand()
 			if(!istype(metal))
-				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to patch the watchtower."))
+				to_chat(user, SPAN_BOLDWARNING("You need metal sheets in your offhand to patch [src]."))
 				return 
 
 			if(health >= max_health)
-				to_chat(user, SPAN_NOTICE("The watchtower is in good condition."))
+				to_chat(user, SPAN_NOTICE("[src] is in good condition."))
 				return
+
+			to_chat(user, SPAN_NOTICE("You start patching [src] with the metal sheets."))
+			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
 			
 			if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			if(metal.use(5))
-				to_chat(user, SPAN_NOTICE("You patch the watchtower with the metal sheets."))
+				to_chat(user, SPAN_NOTICE("You patch [src] with the metal sheets."))
 				update_health(-50)
 			else
-				to_chat(user, SPAN_NOTICE("You failed to patch the watchtower, you need more metal sheets in your offhand."))
+				to_chat(user, SPAN_NOTICE("You failed to patch [src], you need more metal sheets in your offhand."))
 
 /obj/structure/watchtower/get_examine_text(mob/user)
 	. = ..()
@@ -258,7 +321,7 @@
 					people_on_watchtower++
 		
 		if(people_on_watchtower >= 2)
-			to_chat(user, SPAN_NOTICE("The watchtower is too crowded!"))
+			to_chat(user, SPAN_NOTICE("[src] is too crowded!"))
 			return
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

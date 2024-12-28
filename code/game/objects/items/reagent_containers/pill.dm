@@ -185,11 +185,6 @@
 	pill_initial_reagents = list("kelotane" = 15)
 	pill_icon_class = "kelo"
 
-/obj/item/reagent_container/pill/keloderm
-	pill_desc = "A Kelotane-Dermaline pill. Used to rapidly treat burns."
-	pill_initial_reagents = list("kelotane" = 10, "dermaline" = 10)
-	pill_icon_class = "kelo"
-
 /obj/item/reagent_container/pill/oxycodone
 	pill_desc = "A Oxycodone pill. A powerful painkiller."
 	pill_initial_reagents = list("oxycodone" = 15)
@@ -266,11 +261,6 @@
 	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
 
-/obj/item/reagent_container/pill/merabica
-	pill_desc = "A Meralyne-Bicaridine pill. Rapidly heals brute damage."
-	pill_initial_reagents = list("bicaridine" = 10, "meralyne" = 10)
-	pill_icon_class = "bica"
-
 /obj/item/reagent_container/pill/ultrazine
 	pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."
 	pill_initial_reagents = list("ultrazine" = 5)
@@ -288,19 +278,7 @@
 	pill_initial_reagents = list("antag_stimulant" = 10)
 	pill_icon_class = "stim"
 
-/obj/item/reagent_container/pill/iron
-	pill_desc = "An iron pill. Used to regenerate blood."
-	pill_initial_reagents = list("iron" = 15)
-	pill_icon_class = "spac"
-
-/obj/item/reagent_container/pill/nitrogenwater
-	pill_desc = "A pill containing nitrogen and water. Used to treat Tramadol overdoses."
-	pill_initial_reagents = list("nitrogen" = 15, "water" = 15)
-	pill_icon_class = "spac"
-
 /obj/item/reagent_container/pill/imialky
-	pill_desc = "An Imidazoline-Alkysine pill. Heals eye and brain damage."
+	pill_desc = "An Imidazoline-Alkysine (2:1) pill. Heals brain and eye damage."
 	pill_initial_reagents = list("imidazoline" = 10, "alkysine" = 5)
-	pill_icon_class = "imi"
-
-/obj/item/reagent_container/pill/imialky
+	pill_icon_class = "alky"

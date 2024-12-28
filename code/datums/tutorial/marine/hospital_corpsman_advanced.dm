@@ -936,13 +936,19 @@
 	message_to_player("Well done! Pvt Dummy lives again!")
 	message_to_player("However, Pvt Dummy still has a large amount of <b>Brute Damage</b> across his body")
 
+	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_10_pre)), 6 SECONDS)
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_10_pre()
+
 	handle_pill_bottle(marine_dummy, "Bicaridine", "Bi", "11", /obj/item/reagent_container/pill/bicaridine)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(defib_tutorial_10_pre), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(defib_tutorial_10))
 
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/defib_tutorial_10()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
 	marine_dummy.rejuvenate()
 
@@ -1798,7 +1804,7 @@
 		return
 
 	if(handle_pill_bottle_status == 1)
-		message_to_player("Good. Now click on the Dummy while holding the pill and standing next to them to medicate it.")
+		message_to_player("Good. Now stand next to the Dummy, and click their body while holding the pill to feed it to them.")
 
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bottle)
@@ -1822,20 +1828,21 @@
 
 		if(target == tutorial_mob)
 			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-			UnregisterSignal(target, COMSIG_HUMAN_PILL_FED)
+			UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 			var/mob/living/living_mob = tutorial_mob
 			living_mob.rejuvenate()
 			remove_highlight(bottle)
-			qdel(bottle)
+			QDEL_IN(bottle, 1 SECONDS)
 			medbelt.update_icon()
 			message_to_player("Dont feed yourself the pill, try again.")
 			handle_pill_bottle_status = 0
-			addtimer(CALLBACK(src, PROC_REF(handle_pill_bottle)), 2 SECONDS)
+			UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 			return
 
 		else if(target == marine_dummy)
 			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-			UnregisterSignal(target, COMSIG_HUMAN_PILL_FED)
+			UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
 
 			remove_highlight(bottle)
 			QDEL_IN(bottle, 1 SECONDS)

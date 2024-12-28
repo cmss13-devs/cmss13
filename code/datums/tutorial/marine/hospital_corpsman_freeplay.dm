@@ -373,7 +373,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/init_map()
 
-	new /obj/structure/machinery/cm_vending/sorted/medical/tutorial(loc_from_corner(1, 0))
+	new /obj/structure/machinery/cm_vending/sorted/medical(loc_from_corner(1, 0))
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 3))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 3))
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
@@ -392,74 +392,6 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
 	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 	dragging_agent.a_intent = INTENT_DISARM
-
-/obj/structure/machinery/cm_vending/sorted/medical/tutorial
-	name = "\improper Tutorial Wey-Med Plus"
-	desc = "Medical pharmaceutical dispenser, featuring an expanded selection of Medicine. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-
-	unslashable = TRUE
-	wrenchable = FALSE
-	hackable = FALSE
-
-	req_access = null
-
-	allow_supply_link_restock = FALSE
-
-/obj/structure/machinery/cm_vending/sorted/medical/tutorial/populate_product_list()
-	listed_products = list(
-		list("FIELD SUPPLIES", -1, null, null),
-		list("Burn Kit", 10, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Trauma Kit", 10, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Ointment", 10, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
-		list("Roll of Gauze", 10, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Splints", 10, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
-
-		list("AUTOINJECTORS", -1, null, null),
-		list("Autoinjector (Bicaridine)", 5, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Dexalin+)", 5, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Epinephrine)", 5, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Inaprovaline)", 5, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Kelotane)", 5, /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Oxycodone)", 5, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tramadol)", 5, /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", 5, /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
-
-		list("LIQUID BOTTLES", -1, null, null),
-		list("Bottle (Bicaridine)", 3, /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dylovene)", 3, /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dexalin)", 3, /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
-		list("Bottle (Inaprovaline)", 3, /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Bottle (Kelotane)", 3, /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Bottle (Oxycodone)", 3, /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Bottle (Peridaxon)", 3, /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
-		list("Bottle (Tramadol)", 3, /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
-
-		list("PILL BOTTLES", -1, null, null),
-		list("Pill Bottle (Bicaridine)", 4, /obj/item/storage/pill_bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Dexalin)", 4, /obj/item/storage/pill_bottle/dexalin, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Dylovene)", 4, /obj/item/storage/pill_bottle/antitox, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Inaprovaline)", 4, /obj/item/storage/pill_bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Kelotane)", 4, /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Peridaxon)", 4, /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Tramadol)", 4, /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
-
-		list("RESTRICTED PILL BOTTLES", -1, null, null),
-		list("Pill Bottle (MB)", 3, /obj/item/storage/pill_bottle/merabica, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (KD)", 3, /obj/item/storage/pill_bottle/keloderm, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (IA)", 3, /obj/item/storage/pill_bottle/imialk, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (NW)", 3, /obj/item/storage/pill_bottle/nitrogenwater, VENDOR_ITEM_REGULAR),
-
-		list("MEDICAL UTILITIES", -1, null, null),
-		list("Emergency Defibrillator", 3, /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
-		list("Surgical Line", 2, /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),
-		list("Synth-Graft", 2, /obj/item/tool/surgery/synthgraft, VENDOR_ITEM_REGULAR),
-		list("Hypospray", 3, /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
-		list("Health Analyzer", 5, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
-		list("M276 Pattern Medical Storage Rig", 2, /obj/item/storage/belt/medical, VENDOR_ITEM_REGULAR),
-		list("Medical HUD Glasses", 3, /obj/item/clothing/glasses/hud/health, VENDOR_ITEM_REGULAR),
-		list("Stasis Bag", 3, /obj/item/bodybag/cryobag, VENDOR_ITEM_REGULAR),
-		list("Syringe", 7, /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
-	)
 
 //------------GEAR VENDOR---------------
 

@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "ab" = (
 /obj/structure/bed/stool,
 /obj/item/trash/cigbutt{
@@ -8,6 +12,9 @@
 /obj/item/card/id/visa,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"ac" = (
+/turf/open/space/basic,
+/area/space)
 "ah" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -31,19 +38,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/landing_zone_2)
-"ak" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 9;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "al" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
@@ -86,14 +80,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"aN" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/lv759/indoors/mining_outpost/processing)
 "aO" = (
 /obj/item/trash/cigbutt,
 /obj/effect/hybrisa/decal/dirt,
@@ -133,10 +119,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
-"bh" = (
-/obj/structure/machinery/mill,
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/indoors/mining_outpost/processing)
 "bt" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
@@ -231,17 +213,15 @@
 /turf/open/floor/corsat/marked,
 /area/lv759/outdoors/landing_zone_2)
 "cg" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "hybrisa_mining_lockdown1";
-	name = "Emergency Lockdown";
-	unacidable = 1;
-	needs_power = 0;
-	vehicle_resistant = 1
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv759/indoors/mining_outpost/vehicledeployment)
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/dirt,
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "cp" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -271,13 +251,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv759/outdoors/landing_zone_2)
-"cD" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 6
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/lv759/indoors/mining_outpost/processing)
 "cE" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 1
@@ -365,41 +338,10 @@
 /obj/effect/hybrisa/decal/road/road_stop,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"di" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	pixel_x = 7
-	},
-/obj/structure/pipes/standard/manifold/hidden/dark{
-	dir = 1
-	},
-/turf/open/floor/prison/floor_plate/southwest,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "dj" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"dk" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/barricade/handrail/wire{
-	layer = 3
-	},
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/powercell{
-	layer = 2.9
-	},
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "4-8";
-	layer = 5;
-	level = 2
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "dl" = (
 /obj/structure/sign/poster/corporate{
 	layer = 2.9;
@@ -428,16 +370,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"dz" = (
-/obj/structure/cable/white{
-	color = "#550d0d";
-	icon_state = "1-6";
-	layer = 5
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/manifold/hidden/dark,
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "dB" = (
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
@@ -555,12 +487,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
-"ex" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/indoors/electical_systems/substation2)
 "eE" = (
 /obj/item/trash/hybrisa/cuppa_joes/lid,
 /obj/structure/pipes/standard/manifold/hidden/dark{
@@ -646,15 +572,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"eT" = (
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/monorail,
-/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
-	dir = 8
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "fa" = (
 /obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -685,11 +602,6 @@
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_right,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
-"fV" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "ga" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -764,16 +676,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "gE" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "hybrisa_mining_lockdown1";
-	name = "Emergency Lockdown";
-	unacidable = 1;
-	needs_power = 0;
-	vehicle_resistant = 1
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv759/indoors/mining_outpost/vehicledeployment)
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "gH" = (
 /obj/structure/cargo_container/kelland/right,
 /turf/open/hybrisa/street/cement3,
@@ -807,15 +715,6 @@
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/south_east_street)
-"hc" = (
-/obj/structure/closet/secure_closet/hybrisa/miner,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/sign/poster/wylogo{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "hd" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -831,27 +730,6 @@
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/south_east_street)
-"he" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8;
-	layer = 2;
-	explo_proof = 0
-	},
-/obj/structure/closet/crate/miningcar/yellow{
-	layer = 3
-	},
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/plating/platingdmg3/west,
-/area/lv759/indoors/mining_outpost/processing)
-"hf" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/barricade/handrail/strata{
-	dir = 4;
-	layer = 4
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/indoors/electical_systems/substation2)
 "hi" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -975,19 +853,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"iq" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv759/indoors/electical_systems/substation2)
-"it" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	autoname = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/lv759/indoors/electical_systems/substation2)
 "iz" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -1003,24 +868,6 @@
 /obj/structure/cargo_container/hybrisa/containersextended/tanwywingsleft,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/outdoors/landing_zone_2)
-"iC" = (
-/obj/item/tool/wirecutters/tactical,
-/turf/open/floor/almayer/plating/northeast,
-/area/lv759/indoors/electical_systems/substation2)
-"iD" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/structure/prop/hybrisa/misc/metergreen{
-	pixel_y = 32
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/indoors/electical_systems/substation2)
 "iF" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -9;
@@ -1158,13 +1005,6 @@
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"jw" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/manifold/hidden/dark{
-	dir = 1
-	},
-/turf/open/floor/prison/floor_plate/southwest,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "jx" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1
@@ -1230,31 +1070,6 @@
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv759/outdoors/landing_zone_2)
-"kB" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
-	dir = 1
-	},
-/obj/structure/cable/white{
-	color = "#550d0d";
-	icon_state = "2-8";
-	layer = 5
-	},
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "6-8";
-	layer = 5;
-	level = 2
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 10
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 10
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "kE" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/cement3,
@@ -1271,11 +1086,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"kM" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/barricade/plasteel/wired,
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "kN" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
 	dir = 4;
@@ -1385,11 +1195,6 @@
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/landing_zone_2)
-"lU" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/hybrisa/metal/stripe_red/north,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "ma" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -1550,23 +1355,6 @@
 "nh" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
-"nm" = (
-/obj/structure/prop/almayer/cannon_cable_connector{
-	name = "\improper Cable connector"
-	},
-/obj/structure/prop/invuln/overhead/flammable_pipe/fly,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "nt" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
@@ -1576,16 +1364,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "nv" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "hybrisa_mining_lockdown1";
-	name = "Emergency Lockdown";
-	unacidable = 1;
-	needs_power = 0;
-	vehicle_resistant = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/dark,
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv759/indoors/mining_outpost/vehicledeployment)
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "nz" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid,
@@ -1640,16 +1421,6 @@
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
-"nR" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "An exchange valve";
-	dir = 8;
-	icon = 'icons/obj/pipes/filter.dmi';
-	icon_state = "map";
-	name = "Automated Valve"
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "nT" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /obj/structure/machinery/landinglight/ds2/spoke{
@@ -1684,14 +1455,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
-"om" = (
-/obj/structure/window/framed/hybrisa/colony/hull,
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/oob)
 "oo" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -20
@@ -1740,15 +1503,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"oK" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
-	light_color = "#00ff9f";
-	light_on = 1;
-	light_power = 2;
-	light_range = 3
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "oM" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/light,
@@ -1850,19 +1604,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
-"pR" = (
-/obj/structure/machinery/portable_atmospherics/powered/pump{
-	layer = 5
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 8;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "pS" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
@@ -1881,15 +1622,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
-"pU" = (
-/obj/structure/prop/invuln/minecart_tracks/bumper{
-	dir = 4;
-	explo_proof = 0
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/vents/pump_hybrisa,
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "pV" = (
 /obj/structure/cargo_container/kelland/right{
 	layer = 4
@@ -1902,19 +1634,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/landing_zone_2)
-"pY" = (
-/obj/structure/prop/almayer/missile_tube{
-	color = "grey";
-	desc = "An linear accelerator used in experimental genetic treatments. It hums ominously.";
-	icon_state = "missiletubesouth";
-	name = "\improper massive vent";
-	pixel_x = -15
-	},
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/monorail,
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "qb" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/tiretrack{
@@ -1955,16 +1674,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/landing_zone_2)
-"qD" = (
-/obj/structure/machinery/recharge_station,
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "4-8";
-	layer = 5;
-	level = 2
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "qH" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/lv759/oob)
@@ -2073,32 +1782,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/landing_zone_2)
-"rx" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/sign/safety/rad_haz{
-	desc = "Semiotic Standard denoting the nearby presence of a mining processing area.";
-	name = "mining processing semiotic";
-	pixel_x = -19
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/outdoors/mining_outpost/south_entrance)
-"rI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/prison/ramptop/north,
-/area/lv759/outdoors/mining_outpost/south_entrance)
-"rN" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 6;
-	layer = 2
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/ore_box,
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "rO" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -2258,25 +1941,6 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/mining_outpost/south_entrance)
-"tq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/prison/ramptop/north,
-/area/lv759/outdoors/mining_outpost/south_entrance)
-"tu" = (
-/obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/barricade/plasteel/wired,
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/outdoors/mining_outpost/south_entrance)
-"tA" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "tL" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -9;
@@ -2368,24 +2032,6 @@
 	},
 /turf/open/floor/prison/red/northeast,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
-"uc" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/obj/structure/barricade/handrail/strata{
-	dir = 4;
-	layer = 4
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
-	},
-/obj/structure/machinery/computer/card,
-/obj/structure/cable/white{
-	color = "#007740";
-	icon_state = "1-10";
-	layer = 5;
-	level = 2
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "ue" = (
 /obj/structure/largecrate/random/barrel{
 	desc = "A red storage barrel.";
@@ -2407,17 +2053,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"uh" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox{
-	pixel_y = 12
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/clothing/head/hardhat/red/kelland{
-	pixel_x = -4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "ui" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
@@ -2658,13 +2293,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/landing_zone_2)
-"wK" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/indoors/electical_systems/substation2)
 "wL" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -2681,23 +2309,10 @@
 	},
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/lv759/outdoors/landing_zone_2)
-"xo" = (
-/obj/structure/machinery/power/terminal,
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "xt" = (
 /obj/item/attachable/bayonet,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"xx" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = -17
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/lv759/indoors/mining_outpost/processing)
 "xF" = (
 /obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /obj/item/trash/hybrisa/cuppa_joes/lid,
@@ -2715,20 +2330,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"xV" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/obj/item/clothing/head/hardhat/dblue{
-	pixel_x = -7;
-	pixel_y = 10
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 34
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "yd" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = 8;
@@ -2799,9 +2400,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/landing_zone_2)
-"yB" = (
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv759/indoors/electical_systems/substation2)
 "yD" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
@@ -2827,12 +2425,6 @@
 	},
 /turf/open/floor/prison/red,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
-"yY" = (
-/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
-/obj/structure/monorail,
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "yZ" = (
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
@@ -3034,52 +2626,16 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
-"AI" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/indoors/electical_systems/substation2)
 "AJ" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/lv759/outdoors/landing_zone_2)
-"AM" = (
-/obj/structure/surface/rack,
-/obj/item/device/flashlight/lantern{
-	pixel_x = -6
-	},
-/obj/item/device/flashlight/lantern,
-/obj/item/device/flashlight/lantern{
-	pixel_x = -6
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "AT" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"Ba" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 6;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/obj/structure/cable/white{
-	color = "#550d0d";
-	icon_state = "1-9";
-	layer = 5
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 10
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "Bc" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = 8;
@@ -3113,30 +2669,6 @@
 "Bl" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
-"BB" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
-"BD" = (
-/obj/structure/dropship_equipment/fuel/fuel_enhancer{
-	explo_proof = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "BE" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
@@ -3162,33 +2694,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
-"BT" = (
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow{
-	dir = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
-"BX" = (
-/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
-	dir = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "BZ" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -3208,39 +2713,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
-"Cc" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/barricade/handrail/wire{
-	layer = 3
-	},
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox{
-	layer = 2.9
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "4-8";
-	layer = 5;
-	level = 2
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 4
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 4;
-	pixel_x = -14
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "Cm" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
@@ -3342,19 +2814,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
-"Do" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "4-8";
-	layer = 5;
-	level = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "Dt" = (
 /obj/structure/fence/dark,
 /turf/open/floor/prison,
@@ -3391,20 +2850,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/landing_zone_2)
-"DN" = (
-/obj/structure/surface/table,
-/obj/item/storage/bag/ore,
-/obj/item/storage/bag/ore,
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
-"DR" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8;
-	layer = 3.25
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/lv759/indoors/electical_systems/substation2)
 "DZ" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
@@ -3468,14 +2913,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"El" = (
-/obj/structure/sign/safety/opens_up,
-/turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/mining_outpost/vehicledeployment)
-"Er" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/hybrisa/metal/stripe_red/north,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "Ey" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/road/lines3,
@@ -3636,17 +3073,6 @@
 /obj/effect/sentry_landmark/lz_2/bottom_right,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/landing_zone_2)
-"Gq" = (
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	pixel_x = 7
-	},
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/indoors/mining_outpost/processing)
 "Gu" = (
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 32
@@ -3656,36 +3082,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
-"Gv" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 5
-	},
-/obj/structure/cable/white{
-	color = "#550d0d";
-	icon_state = "1-8";
-	layer = 5
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 5
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
-"Gy" = (
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 10
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/lv759/indoors/electical_systems/substation2)
 "GE" = (
 /obj/item/stool,
 /obj/structure/prop/hybrisa/misc/fake/wire/blue{
@@ -3795,13 +3191,6 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/landing_zone_2)
-"Hr" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/lv759/indoors/mining_outpost/processing)
 "Ht" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/largecrate/random/barrel/red{
@@ -3893,9 +3282,6 @@
 	},
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/lv759/outdoors/landing_zone_2)
-"Ib" = (
-/turf/open/floor/almayer/plating/northeast,
-/area/lv759/indoors/electical_systems/substation2)
 "Ie" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -3915,11 +3301,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"Il" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "Iq" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/machinery/landinglight/ds1/delaytwo,
@@ -3959,17 +3340,6 @@
 	},
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
-"IF" = (
-/obj/structure/closet/secure_closet/hybrisa/miner,
-/obj/item/explosive/plastic{
-	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
-	name = "Mining explosives"
-	},
-/obj/structure/sign/poster/kellandmining{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "IH" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
@@ -4041,19 +3411,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"Jw" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8;
-	layer = 2;
-	explo_proof = 0
-	},
-/obj/structure/closet/crate/miningcar/yellow{
-	layer = 3
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/tool/shovel,
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "JD" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
@@ -4230,17 +3587,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/landing_zone_2)
-"Li" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/indoors/electical_systems/substation2)
 "Lo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -4264,9 +3610,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"Lq" = (
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "Ls" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/powercell{
@@ -4420,23 +3763,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/corsat/marked,
 /area/lv759/outdoors/landing_zone_2)
-"MB" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
-"MD" = (
-/obj/effect/hybrisa/decal/WY/WY1,
-/obj/effect/decal/cleanable/dirt{
-	layer = 4;
-	plane = -6
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/floor_plate/southwest,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "MF" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/electical_systems/substation2)
@@ -4455,29 +3781,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
-"MP" = (
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/ramptop/east,
-/area/lv759/outdoors/mining_outpost/south_entrance)
-"MS" = (
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
-	layer = 4
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 8;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "MT" = (
 /obj/effect/hybrisa/decal/road/road_stop{
 	icon_state = "stop_decal4"
@@ -4508,11 +3811,6 @@
 /obj/effect/hybrisa/decal/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"MX" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "MY" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4
@@ -4532,11 +3830,6 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
-"Nb" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/ore_box,
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/indoors/mining_outpost/processing)
 "Ne" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/effect/decal/warning_stripes{
@@ -4575,24 +3868,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/ramptop/east,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
-"Nr" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	pixel_x = -9;
-	pixel_y = -6
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = 1;
-	pixel_y = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/obj/structure/barricade/plasteel/wired{
-	dir = 8
-	},
-/turf/open/floor/prison/ramptop/east,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "Ns" = (
 /obj/structure/cable/white{
 	color = "#550d0d";
@@ -4626,60 +3901,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv759/outdoors/landing_zone_2)
-"NN" = (
-/obj/item/stool{
-	pixel_x = 3;
-	pixel_y = 12
-	},
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "1-8";
-	layer = 5;
-	level = 2
-	},
-/obj/structure/cable/white{
-	color = "#007740";
-	icon_state = "5-6";
-	layer = 5;
-	level = 2
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
-"NQ" = (
-/obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/barricade/handrail/wire{
-	layer = 3
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 1;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/obj/structure/cable/white{
-	color = "#550d0d";
-	icon_state = "4-9";
-	layer = 5
-	},
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "4-8";
-	layer = 5;
-	level = 2
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 5
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "NT" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
@@ -4925,13 +4146,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"PA" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/manifold/hidden/dark{
-	dir = 1
-	},
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/indoors/mining_outpost/processing)
 "PB" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/lines2,
@@ -4998,11 +4212,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "Ql" = (
-/obj/structure/sign/safety/bulkhead_door{
-	pixel_x = -17
-	},
-/turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/electical_systems/substation2)
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "Qn" = (
 /obj/effect/hybrisa/decal/road/roadmiddle{
 	dir = 1;
@@ -5010,19 +4223,11 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"Qs" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
-	name = "\improper Airlock"
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/lv759/indoors/mining_outpost/processing)
 "Qt" = (
-/turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/mining_outpost/vehicledeployment)
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
 "QL" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/hybrisa/street/cement3,
@@ -5097,9 +4302,6 @@
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"RD" = (
-/turf/template_noop,
-/area/template_noop)
 "RE" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1
@@ -5115,31 +4317,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/landing_zone_2)
-"RO" = (
-/obj/structure/machinery/door_control/brbutton/alt{
-	pixel_y = -20;
-	id = "hybrisa_mining_lockdown1";
-	name = "lockdown button";
-	explo_proof = 1
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = -17
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/outdoors/mining_outpost/south_entrance)
-"RQ" = (
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
-	layer = 4
-	},
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 9;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "Se" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -5151,10 +4328,6 @@
 "Sf" = (
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_east_street)
-"Sg" = (
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/indoors/mining_outpost/processing)
 "Sn" = (
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/landing_zone_2)
@@ -5175,13 +4348,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
-"SH" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/floor_plate/southwest,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "SI" = (
 /obj/structure/largecrate/random/barrel{
 	layer = 5.1;
@@ -5234,14 +4400,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/landing_zone_2)
-"SY" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "Ta" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -5302,15 +4460,6 @@
 "Tn" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
-"To" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/bed/stool{
-	buckling_y = 14;
-	layer = 4;
-	pixel_y = 22
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "Tr" = (
 /obj/item/fuel_cell,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -5388,9 +4537,6 @@
 	},
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/lv759/outdoors/landing_zone_2)
-"Ug" = (
-/turf/open/floor/hybrisa/metal/stripe_red/north,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "Uh" = (
 /turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/outdoors/landing_zone_2)
@@ -5412,14 +4558,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"Uo" = (
-/obj/structure/sign/safety/rewire{
-	desc = "Semiotic Standard denoting the nearby presence of a power substation.";
-	name = "power substation semiotic";
-	pixel_x = 34
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/outdoors/mining_outpost/south_entrance)
 "Uq" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4
@@ -5449,21 +4587,6 @@
 	},
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/lv759/outdoors/landing_zone_2)
-"UI" = (
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/lv759/indoors/mining_outpost/processing)
-"UP" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 8;
-	layer = 2;
-	explo_proof = 0
-	},
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/plating/platingdmg3/west,
-/area/lv759/indoors/mining_outpost/processing)
 "UQ" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -5498,12 +4621,6 @@
 /obj/structure/machinery/fuelcell_recycler,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
-"Vb" = (
-/obj/structure/stairs{
-	color = "#b7b8b2"
-	},
-/turf/open/floor/corsat,
-/area/lv759/indoors/electical_systems/substation2)
 "Vc" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/dirt,
@@ -5524,14 +4641,6 @@
 /obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"Vl" = (
-/obj/structure/closet/secure_closet/hybrisa/miner,
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/sign/poster/kellandmining{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/processing)
 "Vq" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
@@ -5555,28 +4664,6 @@
 	},
 /turf/open/floor/prison/red/northwest,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
-"Vv" = (
-/obj/structure/bed/stool,
-/obj/structure/prop/invuln/overhead_pipe{
-	color = "#a6aeab";
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
-"VD" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/trash/cigbutt{
-	pixel_x = 7
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 9
-	},
-/turf/open/floor/prison/cell_stripe,
-/area/lv759/indoors/mining_outpost/processing)
 "VG" = (
 /obj/item/paper/crumpled/bloody{
 	pixel_x = -9;
@@ -5585,30 +4672,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"VK" = (
-/obj/structure/prop/almayer/missile_tube{
-	color = "grey";
-	desc = "An linear accelerator used in experimental genetic treatments. It hums ominously.";
-	icon_state = "missiletubesouth";
-	name = "\improper massive vent";
-	pixel_x = -15
-	},
-/obj/structure/dropship_equipment/fuel/fuel_enhancer{
-	explo_proof = 1
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow,
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/lv759/oob)
 "VL" = (
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
@@ -5913,13 +4976,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
-"Za" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer/plating/northeast,
-/area/lv759/indoors/electical_systems/substation2)
 "Zd" = (
 /obj/item/trash/cigbutt{
 	pixel_y = 8
@@ -5955,19 +5011,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv759/outdoors/landing_zone_2)
-"ZF" = (
-/obj/structure/cable/white{
-	color = "#9f8700";
-	icon_state = "4-9";
-	layer = 5;
-	level = 2
-	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "ZG" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/cementflat,
@@ -5983,19 +5026,6 @@
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Kelland_Mining,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"ZN" = (
-/obj/item/trash/cigbutt{
-	pixel_x = 7
-	},
-/obj/structure/pipes/standard/simple/hidden/dark{
-	dir = 4
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/lv759/indoors/mining_outpost/processing)
-"ZO" = (
-/obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/plating/platingdmg3/west,
-/area/lv759/indoors/mining_outpost/processing)
 "ZS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
@@ -6023,6 +5053,10 @@
 /area/lv759/outdoors/landing_zone_2)
 
 (1,1,1) = {"
+ac
+ac
+ac
+ac
 gm
 gm
 bO
@@ -6075,12 +5109,12 @@ dj
 qw
 qw
 GZ
-BB
-qD
-TI
-SP
 "}
 (2,1,1) = {"
+ac
+ac
+ac
+ac
 gm
 Vq
 FU
@@ -6133,12 +5167,12 @@ YZ
 nz
 qw
 cY
-SY
-TC
-TI
-TI
 "}
 (3,1,1) = {"
+ac
+ac
+ac
+ac
 Fg
 eI
 Jq
@@ -6191,12 +5225,12 @@ tY
 Td
 qw
 Sv
-Vv
-Cc
-MS
-TI
 "}
 (4,1,1) = {"
+ac
+ac
+ac
+ac
 Fg
 Yh
 bN
@@ -6249,12 +5283,12 @@ VG
 Mc
 jx
 Ns
-dz
-dk
-pR
-TI
 "}
 (5,1,1) = {"
+ac
+ac
+ac
+ac
 Fg
 tZ
 GR
@@ -6307,12 +5341,12 @@ ws
 Ls
 qw
 qP
-Ba
-NQ
-RQ
-TI
 "}
 (6,1,1) = {"
+ac
+ac
+ac
+ac
 gm
 gm
 cT
@@ -6365,12 +5399,12 @@ bc
 mX
 qw
 YC
-nR
-kB
-Gv
-TI
 "}
 (7,1,1) = {"
+ac
+ac
+ac
+ac
 Bl
 gm
 Jl
@@ -6423,12 +5457,12 @@ Xw
 qw
 qw
 zB
-ak
-To
-ZF
-TI
 "}
 (8,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 Bl
 iX
@@ -6481,12 +5515,12 @@ qw
 qw
 qw
 Pu
-Pu
-Pu
-Do
-TI
 "}
 (9,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -6539,12 +5573,12 @@ SP
 SP
 SP
 Pu
-uh
-xx
-PA
-pU
 "}
 (10,1,1) = {"
+ac
+ac
+ac
+ac
 Bl
 pt
 iX
@@ -6597,12 +5631,12 @@ cx
 SP
 SP
 Pu
-IF
-cD
-VD
-UP
 "}
 (11,1,1) = {"
+ac
+ac
+ac
+ac
 Bl
 rp
 jn
@@ -6655,12 +5689,12 @@ li
 SP
 SP
 Pu
-hc
-ZN
-Gq
-Jw
 "}
 (12,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -6713,12 +5747,12 @@ li
 PC
 SP
 Pu
-Vl
-Hr
-Sg
-he
 "}
 (13,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -6771,12 +5805,12 @@ cx
 IL
 gr
 yl
-DN
-UI
-Sg
-rN
 "}
 (14,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -6829,12 +5863,12 @@ cx
 OY
 al
 yl
-AM
-Hr
-Nb
-ZO
 "}
 (15,1,1) = {"
+ac
+ac
+ac
+ac
 le
 Yk
 jn
@@ -6887,12 +5921,12 @@ cx
 PC
 Rg
 Pu
-Pu
-aN
-bh
-Pu
 "}
 (16,1,1) = {"
+ac
+ac
+ac
+ac
 Xs
 Xs
 ev
@@ -6944,13 +5978,13 @@ WL
 li
 OY
 to
-MX
-Pu
-Qs
-Pu
 Qt
 "}
 (17,1,1) = {"
+ac
+ac
+ac
+ac
 Xs
 Xs
 CM
@@ -7002,13 +6036,13 @@ WL
 Df
 zz
 ZS
-Il
-rx
-Nr
-RO
-Qt
+aa
 "}
 (18,1,1) = {"
+ac
+ac
+ac
+ac
 Xs
 Xs
 TH
@@ -7060,13 +6094,13 @@ Uh
 Ox
 Ox
 Ox
-Ox
-Er
-di
-tu
 nv
 "}
 (19,1,1) = {"
+ac
+ac
+ac
+ac
 pT
 Yk
 jn
@@ -7118,13 +6152,13 @@ EC
 iT
 iT
 tQ
-tq
-lU
-MD
-kM
 cg
 "}
 (20,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -7176,13 +6210,13 @@ Uh
 WH
 WH
 WH
-rI
-lU
-SH
-kM
 gE
 "}
 (21,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -7234,13 +6268,13 @@ EC
 wo
 wo
 wo
-wo
-Ug
-jw
-tu
 nv
 "}
 (22,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -7292,13 +6326,13 @@ WL
 Yn
 IH
 IH
-tA
-xV
-MP
-Uo
-El
+aa
 "}
 (23,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 rp
 jn
@@ -7350,13 +6384,13 @@ WL
 cx
 IL
 eN
-fV
-MF
-it
-MF
 Ql
 "}
 (24,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -7409,12 +6443,12 @@ cx
 OY
 kk
 MF
-MF
-Gy
-Za
-MF
 "}
 (25,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 uE
 iX
@@ -7467,12 +6501,12 @@ li
 IL
 al
 Zm
-oK
-NN
-Ib
-xo
 "}
 (26,1,1) = {"
+ac
+ac
+ac
+ac
 ah
 Bl
 iX
@@ -7525,12 +6559,12 @@ li
 OY
 gr
 Zm
-uc
-hf
-AI
-xo
 "}
 (27,1,1) = {"
+ac
+ac
+ac
+ac
 Bl
 mJ
 JT
@@ -7583,12 +6617,12 @@ li
 OY
 SP
 MF
-RD
-RD
-MB
-Lq
 "}
 (28,1,1) = {"
+ac
+ac
+ac
+ac
 FZ
 mJ
 ao
@@ -7641,12 +6675,12 @@ li
 SP
 SP
 MF
-iq
-yB
-Vb
-iC
 "}
 (29,1,1) = {"
+ac
+ac
+ac
+ac
 mJ
 Ae
 uu
@@ -7699,12 +6733,12 @@ cx
 SP
 SP
 MF
-RD
-RD
-MB
-DR
 "}
 (30,1,1) = {"
+ac
+ac
+ac
+ac
 KX
 Yt
 sN
@@ -7757,12 +6791,12 @@ SP
 SP
 SP
 MF
-iD
-Li
-wK
-ex
 "}
 (31,1,1) = {"
+ac
+ac
+ac
+ac
 Gj
 mK
 MZ
@@ -7815,12 +6849,12 @@ TI
 TI
 TI
 TI
-om
-om
-om
-om
 "}
 (32,1,1) = {"
+ac
+ac
+ac
+ac
 eg
 GE
 Mk
@@ -7873,12 +6907,12 @@ TI
 qH
 TI
 Qb
-nm
-BT
-BT
-nm
 "}
 (33,1,1) = {"
+ac
+ac
+ac
+ac
 bu
 zU
 bf
@@ -7931,12 +6965,12 @@ qH
 qH
 TI
 Ez
-eT
-yY
-pY
-eT
 "}
 (34,1,1) = {"
+ac
+ac
+ac
+ac
 Mq
 mJ
 mJ
@@ -7989,8 +7023,4 @@ qH
 qH
 TI
 hC
-BX
-BD
-VK
-BX
 "}

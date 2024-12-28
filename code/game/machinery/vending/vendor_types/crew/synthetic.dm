@@ -392,7 +392,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 /obj/structure/machinery/cm_vending/own_points/experimental_tools/redeem_token(obj/item/coin/marine/token, mob/user)
 	if(token.token_type == VEND_TOKEN_SYNTH)
 		if(user.drop_inv_item_to_loc(token, src))
-			available_points = 30
+			available_points = 50
 			available_points_to_display = available_points
 			to_chat(user, SPAN_NOTICE("You insert \the [token] into \the [src]."))
 			return TRUE
@@ -403,26 +403,27 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 
 GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("PK-130", 0, null, null, null),
-	list("PK-130 Repair Mode", 7, /obj/item/device/simi_chip/repair, null, VENDOR_ITEM_RECOMMENDED),
-	list("PK-130 Protection Mode", 7, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
-	list("PK-130 Anchor Mode", 4, /obj/item/device/simi_chip/anchor, null, VENDOR_ITEM_REGULAR),
-	list("PK-130 Motion Detector", 4, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Repair Mode", 12, /obj/item/device/simi_chip/repair, null, VENDOR_ITEM_RECOMMENDED),
+	list("PK-130 Protection Mode", 12, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Anchor Mode", 6, /obj/item/device/simi_chip/anchor, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Motion Detector", 6, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Tactical Map", 6, /obj/item/device/simi_chip/tactical_map, null, VENDOR_ITEM_REGULAR),
 
 	list("UTILITY & SELF DEFENSE TOOLS", 0, null, null, null),
-	list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
-	list("Experimental Meson Goggles", 15, /obj/item/clothing/glasses/night/experimental_mesons, null, VENDOR_ITEM_REGULAR),
-	list("Backpack Firefighting Watertank", 15, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
+	list("Telescopic Baton", 25, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),
+	list("Experimental Meson Goggles", 25, /obj/item/clothing/glasses/night/experimental_mesons, null, VENDOR_ITEM_REGULAR),
+	list("Backpack Firefighting Watertank", 25, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
 
 	list("MEDICAL TOOLS", 0, null, null, null),
-	list("Autocompressor", 15, /obj/item/clothing/suit/auto_cpr, null, VENDOR_ITEM_REGULAR),
-	list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
-	list("Portable Dialysis Machine", 15, /obj/item/tool/portadialysis, null, VENDOR_ITEM_REGULAR),
-	list("Crew Monitor", 15, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
+	list("Autocompressor", 25, /obj/item/clothing/suit/auto_cpr, null, VENDOR_ITEM_REGULAR),
+	list("Compact Defibrillator", 25, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
+	list("Portable Dialysis Machine", 25, /obj/item/tool/portadialysis, null, VENDOR_ITEM_REGULAR),
+	list("Crew Monitor", 10, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
 
 	list("CONSTRUCTION TOOLS", 0, null, null, null),
-	list("Breaching Hammer", 15, /obj/item/weapon/twohanded/breacher/synth, null, VENDOR_ITEM_REGULAR),
-	list("Compact Nailgun kit", 15, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),
-	list("Maintenance Jack", 15, /obj/item/maintenance_jack, null, VENDOR_ITEM_REGULAR),
+	list("Breaching Hammer", 25, /obj/item/weapon/twohanded/breacher/synth, null, VENDOR_ITEM_REGULAR),
+	list("Compact Nailgun kit", 25, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),
+	list("Maintenance Jack", 25, /obj/item/maintenance_jack, null, VENDOR_ITEM_REGULAR),
 ))
 
 //------------EXPERIMENTAL TOOL KITS---------------

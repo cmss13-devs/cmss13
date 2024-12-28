@@ -31,4 +31,8 @@
 /obj/item/device/simi_chip/motion_detector
 	name = "PK-130 SIMI programmable circuit (Motion Detector)"
 	chip_action = /datum/action/human_action/synth_bracer/motion_detector
-	desc = "A programmable computer circuit used within the PK-130 SINI wrist-mounted computer to add or unlock various functions. This one activates a motion detector capability, at a running cost of power."
+	desc = "A programmable computer circuit used within the PK-130 SIMI wrist-mounted computer to add or unlock various functions. This one activates a motion detector capability, at a running cost of power."
+
+/obj/item/device/simi_chip/tactical_map
+	name = "PK-130 SIMI programmable circuit (Tactical Map)"
+	chip_action = /datum/action/human_action/synth_bracer/tactical_map

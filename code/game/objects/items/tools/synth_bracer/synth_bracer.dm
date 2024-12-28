@@ -41,7 +41,6 @@
 	var/list/actions_list_inherent = list(
 		/datum/action/human_action/synth_bracer/crew_monitor,
 		/datum/action/human_action/synth_bracer/deploy_binoculars,
-		/datum/action/human_action/synth_bracer/tactical_map,
 	)
 	var/list/actions_list_added = list()
 

@@ -53,29 +53,6 @@
 	return TRUE
 
 /**
- * Resets the xenomorph's strain back to default
- */
-/datum/xeno_strain/proc/_remove_from_xeno(mob/living/carbon/xenomorph/xeno)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-	xeno.strain = null
-
-	// Update the xeno's actions.
-	for(var/action_path in actions_to_remove)
-		give_action(xeno, action_path)
-	for(var/action_path in actions_to_add)
-		remove_action(xeno, action_path)
-
-	xeno.behavior_delegate.remove_from_xeno()
-
-	remove_strain(xeno)
-
-	xeno.update_icons()
-	xeno.hive.hive_ui.update_xeno_info()
-
-	return TRUE
-
-/**
  * Adds any special modifiers/changes from this strain to `xeno`.
  *
  * Called when the strain is first added to the player.
@@ -83,16 +60,6 @@
 /datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
 	// Override with custom behaviour.
 	return
-
-/**
- * Removes any special modifiers/changes from this strain to `xeno`.
- *
- * Called when the strain is reset.
- */
-/datum/xeno_strain/proc/remove_strain(mob/living/carbon/xenomorph/xeno)
-	// Override with custom behaviour.
-	return
-
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
@@ -151,11 +118,12 @@
 	if(!can_take_strain(reset=TRUE))
 		return
 
-	if(strain._remove_from_xeno(src))
-		xeno_jitter(1.5 SECONDS)
+	var/mob/living/carbon/xenomorph/new_xeno = transmute(caste_type)
+	if(new_xeno)
+		new_xeno.xeno_jitter(1.5 SECONDS)
 		// If it applied successfully, add it to the logs.
-		log_strain("[name] reset their strain.")
-		next_strain_reset = world.time + 40 MINUTES
+		log_strain("[new_xeno.name] reset their strain.")
+		new_xeno.next_strain_reset = world.time + 40 MINUTES
 
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)

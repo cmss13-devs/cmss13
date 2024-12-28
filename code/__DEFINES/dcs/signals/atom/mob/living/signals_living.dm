@@ -52,6 +52,7 @@
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
 
+
 /// From /obj/item/clothing/accessory/stethoscope/attack(): (mob/living/user, mob/living/carbon/human/being, body_part)
 #define COMSIG_LIVING_STETHOSCOPE_USED "living_stethoscope_used"
 
@@ -60,3 +61,9 @@
 
 /// From /obj/item/device/hintscanner/attack(): (mob/living/target, mob/living/user)
 #define COMSIG_LIVING_TUTORIAL_HINT_REQUESTED "living_tutorial_hint_requested"
+
+/// from /datum/component/shimmy_around/proc/on_mob_move to determine if layer should be reset
+#define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
+	/// Sent when a shimmy component is currently overriding the layer
+	#define COMSIG_LIVING_SHIMMY_LAYER_CANCEL (1<<0)
+

@@ -370,7 +370,7 @@
 
 	if(tgui_alert(usr, "Are you sure you wish to seal this document? Note: This will prevent the edit of any fields on the paper, excluding the end of the page.", "Confirm", list("Yes", "No"), 20 SECONDS) != "Yes")
 		return FALSE
-	info = replacetext(info, "<span class=\"paper_field\"></span>", "<br>")
+	info = replacetext(info, "<span class=\"paper_field\">", "<span class=\"sealed_paper_field\">")
 	calculate_fields()
 	updateinfolinks()
 	return TRUE

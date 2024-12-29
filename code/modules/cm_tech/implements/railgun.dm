@@ -186,7 +186,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	UnregisterSignal(operator, list(
 		COMSIG_PARENT_QDELETING,
-		COMSIG_MOVABLE_PRE_MOVE,
+		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOB_POST_CLICK
 	))
 	operator.update_sight()

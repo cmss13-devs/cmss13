@@ -12,9 +12,6 @@
 /obj/item/card/id/visa,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
-"ac" = (
-/turf/open/space/basic,
-/area/space)
 "ah" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -5053,10 +5050,6 @@
 /area/lv759/outdoors/landing_zone_2)
 
 (1,1,1) = {"
-ac
-ac
-ac
-ac
 gm
 gm
 bO
@@ -5111,10 +5104,6 @@ qw
 GZ
 "}
 (2,1,1) = {"
-ac
-ac
-ac
-ac
 gm
 Vq
 FU
@@ -5169,10 +5158,6 @@ qw
 cY
 "}
 (3,1,1) = {"
-ac
-ac
-ac
-ac
 Fg
 eI
 Jq
@@ -5227,10 +5212,6 @@ qw
 Sv
 "}
 (4,1,1) = {"
-ac
-ac
-ac
-ac
 Fg
 Yh
 bN
@@ -5285,10 +5266,6 @@ jx
 Ns
 "}
 (5,1,1) = {"
-ac
-ac
-ac
-ac
 Fg
 tZ
 GR
@@ -5343,10 +5320,6 @@ qw
 qP
 "}
 (6,1,1) = {"
-ac
-ac
-ac
-ac
 gm
 gm
 cT
@@ -5401,10 +5374,6 @@ qw
 YC
 "}
 (7,1,1) = {"
-ac
-ac
-ac
-ac
 Bl
 gm
 Jl
@@ -5459,10 +5428,6 @@ qw
 zB
 "}
 (8,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 Bl
 iX
@@ -5517,10 +5482,6 @@ qw
 Pu
 "}
 (9,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -5575,10 +5536,6 @@ SP
 Pu
 "}
 (10,1,1) = {"
-ac
-ac
-ac
-ac
 Bl
 pt
 iX
@@ -5633,10 +5590,6 @@ SP
 Pu
 "}
 (11,1,1) = {"
-ac
-ac
-ac
-ac
 Bl
 rp
 jn
@@ -5691,10 +5644,6 @@ SP
 Pu
 "}
 (12,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -5749,10 +5698,6 @@ SP
 Pu
 "}
 (13,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -5807,10 +5752,6 @@ gr
 yl
 "}
 (14,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -5865,10 +5806,6 @@ al
 yl
 "}
 (15,1,1) = {"
-ac
-ac
-ac
-ac
 le
 Yk
 jn
@@ -5923,10 +5860,6 @@ Rg
 Pu
 "}
 (16,1,1) = {"
-ac
-ac
-ac
-ac
 Xs
 Xs
 ev
@@ -5981,10 +5914,6 @@ to
 Qt
 "}
 (17,1,1) = {"
-ac
-ac
-ac
-ac
 Xs
 Xs
 CM
@@ -6039,10 +5968,6 @@ ZS
 aa
 "}
 (18,1,1) = {"
-ac
-ac
-ac
-ac
 Xs
 Xs
 TH
@@ -6097,10 +6022,6 @@ Ox
 nv
 "}
 (19,1,1) = {"
-ac
-ac
-ac
-ac
 pT
 Yk
 jn
@@ -6155,10 +6076,6 @@ tQ
 cg
 "}
 (20,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -6213,10 +6130,6 @@ WH
 gE
 "}
 (21,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -6271,10 +6184,6 @@ wo
 nv
 "}
 (22,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -6329,10 +6238,6 @@ IH
 aa
 "}
 (23,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 rp
 jn
@@ -6387,10 +6292,6 @@ eN
 Ql
 "}
 (24,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -6445,10 +6346,6 @@ kk
 MF
 "}
 (25,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 uE
 iX
@@ -6503,10 +6400,6 @@ al
 Zm
 "}
 (26,1,1) = {"
-ac
-ac
-ac
-ac
 ah
 Bl
 iX
@@ -6561,10 +6454,6 @@ gr
 Zm
 "}
 (27,1,1) = {"
-ac
-ac
-ac
-ac
 Bl
 mJ
 JT
@@ -6619,10 +6508,6 @@ SP
 MF
 "}
 (28,1,1) = {"
-ac
-ac
-ac
-ac
 FZ
 mJ
 ao
@@ -6677,10 +6562,6 @@ SP
 MF
 "}
 (29,1,1) = {"
-ac
-ac
-ac
-ac
 mJ
 Ae
 uu
@@ -6735,10 +6616,6 @@ SP
 MF
 "}
 (30,1,1) = {"
-ac
-ac
-ac
-ac
 KX
 Yt
 sN
@@ -6793,10 +6670,6 @@ SP
 MF
 "}
 (31,1,1) = {"
-ac
-ac
-ac
-ac
 Gj
 mK
 MZ
@@ -6851,10 +6724,6 @@ TI
 TI
 "}
 (32,1,1) = {"
-ac
-ac
-ac
-ac
 eg
 GE
 Mk
@@ -6909,10 +6778,6 @@ TI
 Qb
 "}
 (33,1,1) = {"
-ac
-ac
-ac
-ac
 bu
 zU
 bf
@@ -6967,10 +6832,6 @@ TI
 Ez
 "}
 (34,1,1) = {"
-ac
-ac
-ac
-ac
 Mq
 mJ
 mJ

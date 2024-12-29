@@ -31469,7 +31469,7 @@
 	pixel_y = -2;
 	pixel_x = -8
 	},
-/obj/item/reagent_container/food/snacks/packaged_meal{
+/obj/item/mre_food_packet/entree/wy_colonist{
 	pixel_x = 8;
 	pixel_y = 9
 	},
@@ -35464,13 +35464,10 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "uut" = (
-/obj/item/storage/box/MRE{
-	pixel_x = -1;
-	pixel_y = -6
-	},
-/obj/item/storage/box/MRE{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/MRE/WY,
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 7;
+	pixel_y = 8
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)

@@ -105,7 +105,7 @@
 /obj/item/trash/uscm_mre
 	name = "\improper crumbled USCM MRE"
 	desc = "It has done its part for the USCM. Have you?"
-	icon = 'icons/obj/items/trash.dmi'
+	icon = 'icons/obj/items/storage/mre.dmi'
 	icon_state = "mealpackempty"
 
 /obj/item/trash/waffles

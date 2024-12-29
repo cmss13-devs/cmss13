@@ -245,7 +245,7 @@
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				continue
-			to_chat(src, SPAN_WARNING("There's something solid there to stop us from emerging."))
+			to_chat(src, SPAN_WARNING("There's something solid there, stopping us from emerging."))
 			return
 
 	if(!T || T.density)

@@ -7377,6 +7377,9 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/item/clock{
+	pixel_y = 15
+	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "aJc" = (
@@ -8437,6 +8440,10 @@
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access_txt = "200"
+	},
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 25
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
@@ -26476,6 +26483,9 @@
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 16
+	},
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "lAN" = (
@@ -29265,6 +29275,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/item/clock{
+	pixel_y = 18
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -33420,7 +33433,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	desc = "A big air filter.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
 	icon_state = "fuel_enhancer";
 	layer = 5;
 	name = "Air filter";
@@ -33429,7 +33442,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
 	icon_state = "cooling_system";
 	layer = 4;
 	name = "\improper Air Condenser";

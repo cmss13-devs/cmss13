@@ -48,14 +48,18 @@
 	helmet.name = "\improper USCM [helmet.specialty] santa hat"
 	helmet.desc = "Ho ho ho, Merry Christmas!"
 	helmet.icon = 'icons/obj/items/clothing/hats/hats.dmi'
-	helmet.icon_override = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
-	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	helmet.item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	helmet.item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi'
+	helmet.item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi'
+	helmet.flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	helmet.flags_marine_helmet = NO_FLAGS
 	helmet.flags_atom |= NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	if(prob(50))
 		helmet.icon_state = "santa_hat_red"
+		helmet.item_state = "santa_hat_red"
 	else
 		helmet.icon_state = "santa_hat_green"
+		helmet.item_state = "santa_hat_green"
 	helmet.update_icon()
 
 // barricade definition. Also only a single definition

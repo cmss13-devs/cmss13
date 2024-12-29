@@ -1845,12 +1845,6 @@
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"ti" = (
-/obj/structure/shuttle/window{
-	color = "#6b675e"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/yautja)
 "tn" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -5437,7 +5431,7 @@ cP
 cP
 cP
 cP
-ti
+sx
 ap
 am
 bL
@@ -5581,7 +5575,7 @@ Fh
 NS
 Fh
 cP
-ti
+sx
 bL
 bL
 bL
@@ -5725,7 +5719,7 @@ cP
 cP
 cP
 cP
-ti
+sx
 ap
 am
 bL

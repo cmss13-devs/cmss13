@@ -1,5 +1,5 @@
 /datum/tutorial/marine/hospital_corpsman_basic
-	name = "Marine - Hospital Corpsman (Basic) - Not Currently Playable"
+	name = "Marine - Hospital Corpsman (Basic)"
 	desc = "Learn the basic skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_1"
 	icon_state = "medic"
@@ -848,7 +848,7 @@
 	if(attacked_mob == tutorial_mob)
 		return
 
-	UnregisterSignal(attacked_mob, COMSIG_LIVING_HEALTH_ANALYZED)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
 	message_to_player("As we can see based on our <b>Health Analyzer</b> scan, Pvt Dummy has around <b>100</b> points of <b>Oxygen Damage</b>!")
 	message_to_player("In extreme cases, when Oxygen damage levels are especially high, we can use a chemical called <b>Dexalin+</b> to heal <u>all Oxygen damage instantly</u>.")
@@ -951,7 +951,7 @@
 	message_to_player("On the field, an overdose can not be treated by a Hospital Corpsman using standard equipment. Instead, you will have to wait for the body to <b>metabolize</b> the chemical over time, until it is below its overdose amount.")
 	message_to_player("A small overdose, while annoying, will very rarely prove lethal in the body.")
 
-	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 13 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 16 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_4()
 	SIGNAL_HANDLER
@@ -962,28 +962,19 @@
 	message_to_player("Kelotane, which is used to primarily treat <b>Burn</b> damage, can also be used to counteract the effects of this overdose.")
 	message_to_player("We will follow the Health Analyzers recommendations on the bottom of the interface, and feed the Dummy a <b>Kelotane Pill</b>.")
 
-	var/obj/item/reagent_container/pill/kelotane/kelo = new(loc_from_corner(0, 4))
-	add_to_tracking_atoms(kelo)
-	add_highlight(kelo, COLOR_GREEN)
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(kelo_pill_fed_reject))
+	addtimer(CALLBACK(src, PROC_REF(od_tutorial_5)), 20 SECONDS)
 
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(kelo_pill_fed))
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_5()
+	handle_pill_bottle(marine_dummy, "Kelotane", "Kl", "2", /obj/item/reagent_container/pill/kelotane)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/kelo_pill_fed_reject()
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(od_tutorial_5), TRUE)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(od_tutorial_6))
+
+/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_6()
 	SIGNAL_HANDLER
 
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.rejuvenate()
-	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 2 SECONDS)
-
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/kelo_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
 	message_to_player("Well done, the Dummy's condition is now stable, and their overdose will disappear over time.")
 

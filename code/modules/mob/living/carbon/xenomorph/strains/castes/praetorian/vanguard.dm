@@ -92,6 +92,8 @@
 	if (istype(caction))
 		caction.buffed = TRUE
 
+
+// ABILITY CODE
 /datum/action/xeno_action/activable/pierce/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/pierce_user = owner
 	if (!action_cooldown_check())
@@ -224,7 +226,7 @@
 
 
 		dash_user.flick_attack_overlay(targets, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(targets, damage), ARMOR_MELEE, BRUTE)
+		targets.apply_armoured_damage(get_xeno_damage_slash(targets, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(targets), "alien_claw_flesh", 30, 1)
 
 	if (length(target_mobs) >= shield_regen_threshold)

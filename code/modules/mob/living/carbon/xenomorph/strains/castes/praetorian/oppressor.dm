@@ -46,6 +46,8 @@
 		target_carbon.visible_message(SPAN_DANGER("[bound_xeno] tears into [target_carbon]!"))
 		playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
 
+// ABILITY CODE
+
 /datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
@@ -305,17 +307,17 @@
 	if(!(!infront || infront.density) && !(!right || right.density))
 		temp_turfs += infront_right
 
-	for(var/turf/T in temp_turfs)
-		if (!istype(T))
+	for(var/turf/turfs in temp_turfs)
+		if (!istype(turfs))
 			continue
 
-		if (T.density)
+		if (turfs.density)
 			continue
 
-		target_turfs += T
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(T, windup)
+		target_turfs += turfs
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(turfs, windup)
 
-		var/turf/next_turf = get_step(T, facing)
+		var/turf/next_turf = get_step(turfs, facing)
 		if (!istype(next_turf) || next_turf.density)
 			continue
 
@@ -343,20 +345,20 @@
 	lash_user.spin_circle()
 	lash_user.emote("tail")
 
-	for (var/turf/T in target_turfs)
-		for (var/mob/living/carbon/H in T)
-			if (H.stat == DEAD)
+	for (var/turf/targetted_turfs in target_turfs)
+		for (var/mob/living/carbon/pulled_target in targetted_turfs)
+			if (pulled_target.stat == DEAD)
 				continue
 
-			if(!isxeno_human(H) || lash_user.can_not_harm(H))
+			if(!isxeno_human(pulled_target) || lash_user.can_not_harm(pulled_target))
 				continue
 
-			if(H.mob_size >= MOB_SIZE_BIG)
+			if(pulled_target.mob_size >= MOB_SIZE_BIG)
 				continue
 
-			lash_user.throw_carbon(H, facing, fling_dist)
+			lash_user.throw_carbon(pulled_target, facing, fling_dist)
 
-			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
-			new /datum/effects/xeno_slow(H, lash_user, ttl = get_xeno_stun_duration(H, 25))
+			pulled_target.apply_effect(get_xeno_stun_duration(pulled_target, 0.5), WEAKEN)
+			new /datum/effects/xeno_slow(pulled_target, lash_user, ttl = get_xeno_stun_duration(H, 25))
 
 	return ..()

@@ -1287,7 +1287,7 @@
 /// TOOLS
 
 /obj/item/tool/crowbar/yautja
-	name = "yautja crowbar"
+	name = "\improper yautja crowbar"
 	desc = "Used to remove floors and to pry open doors, made of an unusual alloy."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bar"
@@ -1298,7 +1298,7 @@
 	)
 
 /obj/item/tool/wrench/yautja
-	name = "alien wrench"
+	name = "\improper alien wrench"
 	desc = "A wrench with many common uses. Made of some bizarre alien bones."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrench"
@@ -1309,7 +1309,7 @@
 	)
 
 /obj/item/tool/wirecutters/yautja
-	name = "alien wirecutters"
+	name = "\improper alien wirecutters"
 	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wirescutter"
@@ -1320,7 +1320,7 @@
 	)
 
 /obj/item/tool/screwdriver/yautja
-	name = "alien screwdriver"
+	name = "\improper alien screwdriver"
 	desc = "Some hightech screwing abilities."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "screwdriver"
@@ -1333,7 +1333,7 @@
 	random_color = FALSE
 
 /obj/item/device/multitool/yautja
-	name = "alien multitool"
+	name = "\improper alien multitool"
 	desc = "Top notch alien tech for B&E through hacking."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "multitool"
@@ -1344,7 +1344,7 @@
 	)
 
 /obj/item/tool/weldingtool/yautja
-	name = "alien chem welding tool"
+	name = "\improper alien chem welding tool"
 	desc = "A complex chemical welding device, keep away from youngblood."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "welder"

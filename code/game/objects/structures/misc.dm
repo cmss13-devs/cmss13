@@ -137,18 +137,18 @@
 
 	return ..()
 
-/obj/structure/xenoautopsy/tank/attackby(obj/item/W, mob/user)
+/obj/structure/xenoautopsy/tank/attackby(obj/item/attacking_item, mob/user)
 	. = ..()
 	playsound(user.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-	take_damage(W.demolition_mod*W.force)
+	take_damage(attacking_item.demolition_mod*attacking_item.force)
 
-/obj/structure/xenoautopsy/tank/proc/take_damage(damage, mob/M)
+/obj/structure/xenoautopsy/tank/proc/take_damage(damage)
 	if(!damage)
 		return FALSE
 	health = max(0, health - damage)
 
 	if(health == 0)
-		to_chat(loc, SPAN_DANGER("[src] shatters!"))
+		visible_message(loc, SPAN_DANGER("[src] shatters!"))
 		deconstruct(FALSE)
 		playsound(src, "shatter", 25, 1)
 		return TRUE

@@ -117,6 +117,8 @@
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))
 
 
+// ABILITY CODE
+
 /datum/action/xeno_action/activable/slowing_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/slowspit_user = owner
 	if(!slowspit_user.check_state())
@@ -167,7 +169,7 @@
 		return
 
 	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"), \
-	SPAN_XENOWARNING("You spit at [target]!") )
+	SPAN_XENOWARNING("We spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
 

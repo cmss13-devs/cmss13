@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Weapons now display their map camo in vendors"

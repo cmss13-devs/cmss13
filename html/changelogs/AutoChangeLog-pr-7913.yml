@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed santa hat missing inhands"
-  - bugfix: "santa hat hiding all hair instead of just top hair"

@@ -48,6 +48,13 @@
 
 /obj/item/storage/box/kit/loader
 	name = "\improper Loader Kit"
+	desc = "A large kit containing all the supplies needed to turn a Private into the loading assistant for a Demolitions Specialist.\
+	\nA little infographic series shows how reloading should be done:\
+	\nStep One: Grab the Rocket\
+	\nStep Two: Position yourself behind the Specialist\
+	\nStep Three: Ensure the Specialist is wielding their Launcher\
+	\nStep Four: Load the Rocket into the Launcher\
+	\nStep Five: Stand clear of the back-blast"
 	pro_case_overlay = "loader"
 
 /obj/item/storage/box/kit/loader/fill_preset_inventory()

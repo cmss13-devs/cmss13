@@ -359,6 +359,6 @@
 			lash_user.throw_carbon(pulled_target, facing, fling_dist)
 
 			pulled_target.apply_effect(get_xeno_stun_duration(pulled_target, 0.5), WEAKEN)
-			new /datum/effects/xeno_slow(pulled_target, lash_user, ttl = get_xeno_stun_duration(H, 25))
+			new /datum/effects/xeno_slow(pulled_target, lash_user, ttl = get_xeno_stun_duration(pulled_target, 25))
 
 	return ..()

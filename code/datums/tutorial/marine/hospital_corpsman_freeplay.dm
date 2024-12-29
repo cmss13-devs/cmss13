@@ -43,6 +43,8 @@
 
 	var/list/mob/living/carbon/human/realistic_dummy/active_agents = list()
 
+	var/list/obj/item/clothing/suit/storage/marine/medium/cleanup = list() // keeps track of inventory that needs to be removed
+
 	var/mob/living/carbon/human/realistic_dummy/active_agent
 
 	var/mob/living/carbon/human/realistic_dummy/booboo_agent
@@ -169,6 +171,8 @@
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
 		RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
+		var/obj/item/clothing/suit/storage/marine/medium/armor = active_agent.get_item_by_slot(WEAR_JACKET)
+		RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 
 	addtimer(CALLBACK(src, PROC_REF(eval_agent_status)), 3 SECONDS)
 
@@ -252,8 +256,8 @@
 			dragging_agent.mob_flags |= IMMOBILE_ACTION
 			target.Move(dropoff_point)
 			dragging_agent.stop_pulling()
-			make_dragging_agent_leave(dragging_agent)
 			handle_speech(dragging_agent)
+			make_dragging_agent_leave(dragging_agent)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
 
@@ -295,6 +299,8 @@
 	agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
+	for(var/obj/item/clothing/suit/storage/marine/medium/armor in cleanup)
+		item_cleanup(armor)
 	if((length(agents)) == 0)
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 
@@ -337,6 +343,16 @@
 	if((length(active_agents)) > 0)
 		move_active_agents()
 
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
+
+	if(!(armor in cleanup))
+		cleanup |= armor // marks item for removal once the dummy is ready
+		UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
+		return
+	else
+		cleanup -= armor
+		QDEL_IN(armor, 1 SECONDS)
+
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/tutorial_close()
 	SIGNAL_HANDLER
 
@@ -369,11 +385,11 @@
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 	tutorial_mob.set_skills(/datum/skills/combat_medic)
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
+	tutorial_mob.job = JOB_SQUAD_MEDIC
 
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/init_map()
 
-	new /obj/structure/machinery/cm_vending/sorted/medical(loc_from_corner(1, 0))
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 3))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 3))
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
@@ -386,7 +402,6 @@
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_npcs()
 
 	CMOnpc = new(loc_from_corner(7, 7))
-	arm_equipment(CMOnpc, /datum/equipment_preset/uscm/tutorial_rifleman) // for the name update
 	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
@@ -461,7 +476,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic_sandbox, list(
 /obj/structure/machinery/cm_vending/gear/medic/tutorial
 
 	req_access = null
-	vendor_role = null
 
 /obj/structure/machinery/cm_vending/gear/medic/tutorial/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_medic_sandbox
@@ -529,7 +543,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 
 /obj/structure/machinery/cm_vending/clothing/medic/tutorial
 	req_access = null
-	vendor_role = null
 
 /obj/structure/machinery/cm_vending/clothing/medic/tutorial/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_medic_sandbox

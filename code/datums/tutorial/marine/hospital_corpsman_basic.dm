@@ -328,88 +328,27 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
+	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_2_return)), 1 SECONDS)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-
-	var/obj/item/storage/pill_bottle/kelo = new /obj/item/storage/pill_bottle
-	medbelt.handle_item_insertion(kelo)
-
-	medbelt.update_icon()
-
-	kelo.name = "\improper Kelotane pill bottle"
-	kelo.icon_state = "pill_canister2"
-	kelo.maptext_label = "Kl"
-	kelo.maptext = SPAN_LANGCHAT("Kl")
-	kelo.max_storage_space = 1
-	kelo.overlays.Cut()
-	kelo.bottle_lid = FALSE
-	kelo.overlays += "pills_closed"
-	var/obj/item/reagent_container/pill/kelotane/kelopill = new(kelo)
-
-	add_to_tracking_atoms(kelopill)
-	add_to_tracking_atoms(kelo)
-
-	add_highlight(medbelt, COLOR_GREEN)
-	add_highlight(kelo, COLOR_GREEN)
+/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_return()
+	SIGNAL_HANDLER
 
 	message_to_player("Unlike brute damage, <b>burn</b> damage is very rarely concentrated on one part of the body, more commonly spread across multiple limbs.")
 	message_to_player("Because of this, medication is the most effective treatment for burn wounds, as they heal the whole body at once.")
-	message_to_player("<b>Kelotane</b> is used to fix burn over time. A <b>Kelotane Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Kelotane Pill Bottle</b> to draw a pill.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time.")
 
-	RegisterSignal(kelopill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(burn_tutorial_2))
+	handle_pill_bottle(marine_dummy, "Kelotane", "Kl", "2", /obj/item/reagent_container/pill/kelotane)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2()
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, bica)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/kelotane, kelopill)
-
-	UnregisterSignal(kelopill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
-
-
-	message_to_player("Good. Now click on the Dummy while holding the <b>Kelotane Pill</b> and standing next to them to medicate it.")
-	update_objective("Feed the Dummy the Kelotane pill.")
-
-	add_highlight(kelopill, COLOR_GREEN)
-	remove_highlight(medbelt)
-	remove_highlight(bica)
-
-
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(burn_tutorial_3))
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(burn_pill_fed_reject))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_pill_fed_reject()
-	SIGNAL_HANDLER
-
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.rejuvenate()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, kelo)
-	remove_highlight(kelo)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	remove_from_tracking_atoms(kelo)
-	qdel(kelo)
-	medbelt.update_icon()
-	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_2_pre)), 2 SECONDS)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(burn_tutorial_2_return), TRUE)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(burn_tutorial_3))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_3()
 	SIGNAL_HANDLER
 
-
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, kelo)
-	remove_highlight(kelo)
-	remove_from_tracking_atoms(kelo)
-	qdel(kelo)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
 	message_to_player("Well done!")
 	message_to_player("While rare, when a large amount of <b>Burn</b> damage is concentrated on a single part of the body, we can apply an <b>Advanced Burn Kit</b> to quickly heal a portion of damage.")
@@ -747,77 +686,16 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3_pre()
 	SIGNAL_HANDLER
 
-	message_to_player("A <b>Tramadol Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Tramadol Pill Bottle</b> to draw a pill.")
+	handle_pill_bottle(marine_dummy, "Tramadol", "Tr", "5", /obj/item/reagent_container/pill/tramadol)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-
-	var/obj/item/storage/pill_bottle/tram = new /obj/item/storage/pill_bottle
-	medbelt.handle_item_insertion(tram)
-
-	medbelt.update_icon()
-
-	tram.name = "\improper Tramadol pill bottle"
-	tram.icon_state = "pill_canister5"
-	tram.maptext_label = "Tr"
-	tram.maptext = SPAN_LANGCHAT("Tr")
-	tram.max_storage_space = 1
-	tram.overlays.Cut()
-	tram.bottle_lid = FALSE
-	tram.overlays += "pills_closed"
-	var/obj/item/reagent_container/pill/tramadol/trampill = new(tram)
-
-	add_to_tracking_atoms(trampill)
-	add_to_tracking_atoms(tram)
-
-	add_highlight(medbelt, COLOR_GREEN)
-	add_highlight(tram, COLOR_GREEN)
-
-	RegisterSignal(trampill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(pain_tutorial_3))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3()
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, tram)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/tramadol, trampill)
-
-	UnregisterSignal(trampill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
-
-
-	message_to_player("Good. Now click on the Dummy while holding the <b>Tramadol Pill</b> and standing next to them to medicate it.")
-	update_objective("Feed the Dummy the Tramadol pill.")
-
-	add_highlight(trampill, COLOR_GREEN)
-	remove_highlight(medbelt)
-	remove_highlight(tram)
-
-
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed))
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(tram_pill_fed_reject))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed_reject()
-	SIGNAL_HANDLER
-
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.rejuvenate()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, tram)
-	remove_highlight(tram)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	remove_from_tracking_atoms(tram)
-	qdel(tram)
-	medbelt.update_icon()
-	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3_pre)), 2 SECONDS)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(pain_tutorial_3_pre), TRUE)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(tram_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed(/obj/item/reagent_container/hypospray/autoinjector/oxycodone)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
 	message_to_player("Well done! But it looks like the Dummy is still in extreme pain.")
 	message_to_player("Like pain levels, each type of painkiller has a varying degree of potency. While effective as a general painkiller, Tramadol is not powerful enough to fully supress extreme levels of pain.")
@@ -874,99 +752,31 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(tox_tutorial_2_pre))
 
-
-
-
-
-
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
 	remove_highlight(healthanalyzer)
 
-
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
+	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_2_return)), 1 SECONDS)
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	var/obj/item/storage/pill_bottle/dylo = new /obj/item/storage/pill_bottle
-	medbelt.handle_item_insertion(dylo)
-	medbelt.update_icon()
-
-	dylo.name = "\improper Dylovene pill bottle"
-	dylo.icon_state = "pill_canister6"
-	dylo.maptext_label = "Dy"
-	dylo.maptext = SPAN_LANGCHAT("Dy")
-	dylo.max_storage_space = 1
-	dylo.overlays.Cut()
-	dylo.bottle_lid = FALSE
-	dylo.overlays += "pills_closed"
-
-	var/obj/item/reagent_container/pill/antitox/dylopill = new(dylo)
-
-	add_to_tracking_atoms(dylopill)
-	add_to_tracking_atoms(dylo)
-
-	add_highlight(medbelt, COLOR_GREEN)
-	add_highlight(dylo, COLOR_GREEN)
+/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_return()
 
 	message_to_player("As you can see, the Dummy has sustained minor <b>Toxin Damage</b>. Like burn damage, toxin damage is almost always spread across the body.")
 	message_to_player("The chemical <b>Dylovene</b> is used to treat Toxin Damage.")
-	message_to_player("A <b>Dylovene Pill Bottle</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Dylovene Pill Bottle</b> to draw a pill.")
 
-	RegisterSignal(dylopill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(tox_tutorial_2))
+	handle_pill_bottle(marine_dummy, "Dylovene", "Dy", "7", /obj/item/reagent_container/pill/antitox)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2()
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(tox_tutorial_2_return), TRUE)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(dylo_pill_fed))
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dylo)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/antitox, dylopill)
-
-
-	UnregisterSignal(dylopill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
-
-
-	message_to_player("Good. Now click on the Dummy while holding the <b>Dylovene Pill</b> and standing next to them to medicate it.")
-	update_objective("Feed the Dummy the Dylovene pill.")
-
-	add_highlight(marine_dummy, COLOR_GREEN)
-	add_highlight(dylopill, COLOR_GREEN)
-	remove_highlight(medbelt)
-	remove_highlight(dylo)
-
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dylo_pill_fed))
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dylo_pill_fed_reject))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed_reject()
+/datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed()
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.rejuvenate()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dylo)
-	remove_highlight(dylo)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	remove_from_tracking_atoms(dylo)
-	qdel(dylo)
-	medbelt.update_icon()
-	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_2_pre)), 2 SECONDS)
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed(datum/source, mob/living/carbon/human/attacked_mob)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dylo)
-	remove_highlight(dylo)
-	remove_from_tracking_atoms(dylo)
-	qdel(dylo)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
 	message_to_player("Well done, the Dummy's Toxin Damage levels will decrease over time")
 
@@ -1007,90 +817,22 @@
 	message_to_player("Pvt Dummy is suffering from <b>Oxygen Damage</b>!")
 	message_to_player("Oxygen damage is treated by the chemical <b>Dexalin</b>, color-coded blue.")
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	var/obj/item/storage/pill_bottle/dex = new /obj/item/storage/pill_bottle
-	medbelt.handle_item_insertion(dex)
-	medbelt.update_icon()
+	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/reagent_container/pill/dexalin)
 
-	dex.name = "\improper Dexalin pill bottle"
-	dex.icon_state = "pill_canister1"
-	dex.maptext_label = "Dx"
-	dex.maptext = SPAN_LANGCHAT("Dx")
-	dex.max_storage_space = 1
-	dex.overlays.Cut()
-	dex.bottle_lid = FALSE
-	dex.overlays += "pills_closed"
-
-	var/obj/item/reagent_container/pill/dexalin/pill = new(dex)
-
-	add_to_tracking_atoms(pill)
-	add_to_tracking_atoms(dex)
-
-	message_to_player("A <b>Dexalin Pill Bottle</b> has been placed in your <b>M276 Lifesaver Bag</b>.")
-	message_to_player("Click on the <b>M276 Lifesaver Bag</b> with an empty hand to open it, then click on the <b>Dexalin Pill Bottle</b> to draw a pill.")
-
-	add_highlight(medbelt, COLOR_GREEN)
-	add_highlight(dex, COLOR_GREEN)
-
-	RegisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(oxy_tutorial_3))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_3()
-	SIGNAL_HANDLER
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/pill/dexalin, pill)
-
-	UnregisterSignal(pill, COMSIG_ITEM_DRAWN_FROM_STORAGE)
-
-
-	message_to_player("Good. Now click on the Dummy while holding the <b>Dexalin Pill</b> and standing next to them to medicate it.")
-	update_objective("Feed the Dummy the Dexalin pill.")
-
-	add_highlight(pill, COLOR_GREEN)
-	remove_highlight(medbelt)
-	remove_highlight(dex)
-
-	RegisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed_reject))
-
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED, PROC_REF(dex_pill_fed))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dex_pill_fed_reject()
-	SIGNAL_HANDLER
-
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-	var/mob/living/living_mob = tutorial_mob
-	living_mob.rejuvenate()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
-	remove_highlight(dex)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
-	remove_from_tracking_atoms(dex)
-	qdel(dex)
-	medbelt.update_icon()
-	message_to_player("Dont feed yourself the pill, try again.")
-	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_2)), 2 SECONDS)
-
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(oxy_tutorial_2), TRUE)
+	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(dex_pill_fed))
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/dex_pill_fed()
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_PILL_FED)
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_PILL_FED)
-
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pill_bottle, dex)
-	remove_highlight(dex)
-	remove_from_tracking_atoms(dex)
-	qdel(dex)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
 
 	message_to_player("Excellent work!")
 
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_4()
-
 
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(100)

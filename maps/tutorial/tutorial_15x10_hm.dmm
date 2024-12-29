@@ -26,7 +26,10 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/misc/tutorial/no_baselight)
 "g" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted{
+	req_access = null;
+	req_one_access = null
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/misc/tutorial/no_baselight)
 "j" = (
@@ -133,6 +136,13 @@
 /obj/item/bedsheet/medical,
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/misc/tutorial/no_baselight)
+"H" = (
+/obj/structure/machinery/cm_vending/sorted/medical/bolted{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial/no_baselight)
 "I" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/misc/tutorial/no_baselight)
@@ -227,7 +237,7 @@ O
 X
 I
 I
-o
+H
 O
 "}
 (4,1,1) = {"

@@ -244,6 +244,8 @@
 
 	return TRUE
 
+// ABILITY CODE
+
 
 /datum/action/xeno_action/activable/lunge/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/lunge_user = owner

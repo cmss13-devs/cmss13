@@ -767,12 +767,26 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
 
+	update_mouse_pointer(user, TRUE)
+
 	return 1
 
 /obj/item/weapon/gun/unwield(mob/user)
 	. = ..()
 	if(.)
+		update_mouse_pointer(user, FALSE)
 		slowdown = initial(slowdown)
+
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
+/obj/item/weapon/gun/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client?.mouse_pointer_icon = new_cursor ? get_mouse_pointer() : initial(user.client?.mouse_pointer_icon)
+
+///Getter proc. Returns the weapon's crosshair icon.
+/obj/item/weapon/gun/proc/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 
 //----------------------------------------------------------
 			// \\
@@ -1349,7 +1363,7 @@ and you're good to go.
 	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()
 
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && attacked_mob.stat == DEAD) // don't shoot dead people
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && attacked_mob.stat == DEAD) // don't shoot dead people
 		return afterattack(attacked_mob, user, TRUE)
 
 	user.next_move = world.time //No click delay on PBs.

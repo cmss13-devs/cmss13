@@ -36,6 +36,9 @@
 /obj/item/weapon/gun/smg/unique_action(mob/user)
 	cock(user)
 
+/obj/item/weapon/gun/smg/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
 	movement_onehanded_acc_penalty_mult = 4
@@ -132,7 +135,6 @@
 	)
 
 
-
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_SMG)
@@ -198,6 +200,10 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
+	random_spawn_chance = 10
+	random_spawn_under = list(
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
 
 
 /obj/item/weapon/gun/smg/mp5/set_gun_attachment_offsets()
@@ -217,12 +223,63 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/smg/mp5/Initialize(mapload, spawn_empty)
-	. = ..()
-	if(prob(10))
-		var/obj/item/attachable/attached_gun/grenade/m203/UGL = new(src)
-		UGL.Attach(src)
-		update_attachable(UGL.slot)
+/obj/item/weapon/gun/smg/mp5/mp5a5
+	name = "\improper MP5A5 submachinegun"
+	desc = "A German design, this was one of the most widely used submachine guns in the world. Modernized design for limited use by colonial security and Office of the Colonial Marshals."
+	icon_state = "mp5_alt"
+	item_state = "mp5_alt"
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/grenade/m203,
+		/obj/item/attachable/stock/smg/collapsible/mp5a5,
+		)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/smg/collapsible/mp5a5/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	S.apply_on_weapon(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 19, "under_x" = 19, "under_y" = 13, "stock_x" = 39, "stock_y" = 11)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/tactical
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
+
+	random_spawn_chance = 100
+	random_spawn_under = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/grenade/m203,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.
@@ -742,3 +799,89 @@
 	item_state = "tnailgun"
 	w_class = SIZE_SMALL
 	material_per_repair = 2
+
+//-------------------------------------------------------
+
+//P90, a classic SMG.
+
+/obj/item/weapon/gun/smg/p90
+	name = "\improper FN P90 submachinegun"
+	desc = "The FN P90 submachine gun. An archaic design, but still widely used by corporate and mercenary groups, sometimes seen in the hands of civilian populations. This weapon only accepts 5.7×28mm rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
+	icon_state = "p90"
+	item_state = "p90"
+
+	fire_sound = 'sound/weapons/p90.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/p90
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+
+/obj/item/weapon/gun/smg/p90/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 24, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
+
+/obj/item/weapon/gun/smg/p90/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_12
+	burst_delay = FIRE_DELAY_TIER_12
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
+
+//-------------------------------------------------------
+
+//P90, a classic SMG (TWE version).
+
+/obj/item/weapon/gun/smg/p90/twe
+	name = "\improper FN-TWE P90 submachinegun"
+	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
+	icon_state = "p90_twe"
+	item_state = "p90_twe"
+
+	fire_sound = 'sound/weapons/p90.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/p90/twe
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+
+/obj/item/weapon/gun/smg/p90/twe/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 24, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
+
+/obj/item/weapon/gun/smg/p90/twe/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_12
+	burst_delay = FIRE_DELAY_TIER_12
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5

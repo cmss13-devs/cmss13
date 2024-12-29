@@ -45,6 +45,9 @@
 	///The type of minimap this headset is added to
 	var/minimap_type = MINIMAP_FLAG_USCM
 
+	var/obj/item/device/radio/listening_bug/spy_bug
+	var/spy_bug_type
+
 	var/mob/living/carbon/human/wearer
 
 /obj/item/device/radio/headset/Initialize()
@@ -67,8 +70,15 @@
 			if(GLOB.radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
 
+	if(spy_bug_type)
+		spy_bug = new spy_bug_type
+		spy_bug.forceMove(src)
+
 /obj/item/device/radio/headset/Destroy()
 	wearer = null
+	if(spy_bug)
+		qdel(spy_bug)
+		spy_bug = null
 	QDEL_NULL_LIST(keys)
 	return ..()
 
@@ -569,6 +579,12 @@
 	maximum_keys = 5
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
 
+	spy_bug_type = /obj/item/device/radio/listening_bug/radio_linked/fax/wy
+
+/obj/item/device/radio/headset/almayer/mcl/Initialize()
+	. = ..()
+	spy_bug.nametag = "CL Radio"
+
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
 	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
@@ -629,6 +645,13 @@
 
 /obj/item/device/radio/headset/almayer/marine
 	initial_keys = list(/obj/item/device/encryptionkey/public)
+
+/obj/item/device/radio/headset/almayer/cia
+	name = "radio headset"
+	desc = "A radio headset."
+	frequency = CIA_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/listening_bug/freq_a)
+
 
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha
@@ -1146,7 +1169,7 @@
 	icon_state = "cmb_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_MARINE
+	hud_type = MOB_HUD_FACTION_CMB
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1158,6 +1181,16 @@
 	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :o - Colony, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
+
+/obj/item/device/radio/headset/distress/NSPA
+	name = "NSPA Headset"
+	desc = "NSPA headset."
+	frequency = RMC_FREQ
+	icon_state = "vai_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_NSPA
+	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"

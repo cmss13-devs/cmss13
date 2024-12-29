@@ -304,7 +304,6 @@
 	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
-	item_state_slots = list(WEAR_JACKET = "mp_armor")
 	black_market_value = 20
 
 /obj/item/clothing/suit/storage/marine/MP/warden
@@ -313,7 +312,6 @@
 	icon_state = "warden"
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M3 pattern warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	name = "\improper M3 pattern chief MP armor"
@@ -321,7 +319,6 @@
 	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 	black_market_value = 30
 
 /obj/item/clothing/suit/storage/marine/MP/general
@@ -371,6 +368,11 @@
 	item_state_slots = list(WEAR_JACKET = "co_officer")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 	black_market_value = 35
+
+/obj/item/clothing/suit/storage/marine/MP/CO/no_pauldrons
+	icon_state = "co_light_officer"
+	item_state = "co_light_officer"
+	item_state_slots = list(WEAR_JACKET = "co_light_officer")
 
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket

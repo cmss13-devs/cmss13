@@ -243,7 +243,7 @@
 			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
 				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && target_area.is_landing_zone)
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
 				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
 				return
 
@@ -365,7 +365,7 @@
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_MORTAR_LASER_WARNING))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/mortar_laser_warning))
 		new /obj/effect/overlay/temp/blinking_laser(target)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)

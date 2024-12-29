@@ -16,6 +16,7 @@
 #define iscolonysynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial))
 #define isworkingjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/working_joe))
 #define ishazardjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/working_joe/hazard))
+#define isuppjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/working_joe/upp))
 #define isinfiltratorsynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/infiltrator))
 #define isk9synth(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/synth_k9))
 

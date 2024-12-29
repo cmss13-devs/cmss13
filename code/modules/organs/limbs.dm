@@ -276,6 +276,8 @@
 							no_limb_loss, damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
+	if((brute > 0 || burn > 0) && owner && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && owner.stat == DEAD) //if they take positive damage (not healing) we prevent it
+		return 0
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -378,7 +380,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && previous_bonebreak) //delimbable only if broken before this hit
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (previous_bonebreak || (status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))) //delimbable only if broken before this hit or we're a robot limb (synths do not fracture)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -539,7 +541,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(internal && !can_bleed_internally)
 		internal = FALSE
-	if(internal && SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_INTERNAL_BLEEDING))
+	if(internal && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ib))
 		internal = FALSE
 
 

@@ -99,7 +99,7 @@
 	currentuses = floor(dcell.charge / charge_cost)
 	if(maxuses != 1)
 		. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
@@ -172,7 +172,7 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
 		return
 
-	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
+	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 

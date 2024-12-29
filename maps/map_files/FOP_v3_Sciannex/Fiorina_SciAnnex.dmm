@@ -8,87 +8,10 @@
 /turf/open/space,
 /area/fiorina/oob)
 "aab" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/carpet,
-/area/fiorina/station/security/wardens)
-"aac" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clock{
-	pixel_y = 9
-	},
-/turf/open/floor/wood,
-/area/fiorina/station/security/wardens)
-"aad" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null;
-	name = "CMB riot locker"
-	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/clothing/mask/gas/swat,
-/obj/item/clothing/head/helmet/marine/veteran/cmb,
-/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
-/obj/item/clothing/suit/storage/marine/veteran/cmb,
-/obj/item/clothing/under/marine/veteran/cmb,
-/turf/open/floor/prison/redfull,
-/area/fiorina/station/security)
-"aae" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
-	},
-/obj/item/clothing/under/marine/ua_riot,
-/obj/item/storage/pill_bottle/alkysine,
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/turf/open/floor/prison/redfull,
-/area/fiorina/station/security)
-"aaf" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/communications{
-	dir = 4
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
-"aag" = (
-/obj/structure/closet/l3closet,
-/turf/open/floor/prison,
-/area/fiorina/tumor/aux_engi)
-"aah" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit,
-/obj/item/clothing/head/bio_hood,
-/turf/open/floor/wood,
-/area/fiorina/station/civres_blue)
-"aai" = (
-/obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/disco)
-"aaj" = (
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
-/turf/open/floor/prison/whitepurple/north,
-/area/fiorina/station/research_cells/west)
-"aak" = (
-/obj/effect/decal/hefa_cult_decals/d32{
-	icon_state = "4"
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/tumor/servers)
-"aal" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clock,
-/turf/open/floor/prison/darkredfull2,
-/area/fiorina/station/research_cells/west)
-"aam" = (
+/turf/open/floor/prison/whitegreen,
+/area/fiorina/tumor/ice_lab)
+"aac" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/clock{
@@ -96,10 +19,12 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
-"aan" = (
-/obj/effect/landmark/corpsespawner/security/marshal/riot,
-/turf/open/floor/prison/whitegreen,
-/area/fiorina/tumor/ice_lab)
+"aak" = (
+/obj/effect/decal/hefa_cult_decals/d32{
+	icon_state = "4"
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/organic/grass/astroturf,
@@ -8797,6 +8722,13 @@
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/prison/kitchen,
 /area/fiorina/station/power_ring)
+"gPs" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/security/wardens)
 "gPS" = (
 /obj/item/stack/rods,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
@@ -10670,6 +10602,13 @@
 	},
 /turf/open/floor/prison/greenblue/east,
 /area/fiorina/station/botany)
+"igQ" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/rank/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
+/turf/open/floor/wood,
+/area/fiorina/station/civres_blue)
 "igV" = (
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison/floor_plate,
@@ -11774,6 +11713,10 @@
 	},
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
+"iXV" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/prison,
+/area/fiorina/tumor/aux_engi)
 "iYa" = (
 /turf/open/floor/prison/bluecorner/west,
 /area/fiorina/station/chapel)
@@ -18722,6 +18665,11 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
+"omb" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/carpet,
+/area/fiorina/station/security/wardens)
 "omh" = (
 /obj/structure/cargo_container/grant/left{
 	desc = "A huge industrial shipping container. This one is in space."
@@ -21885,6 +21833,21 @@
 "qJr" = (
 /turf/open/floor/prison,
 /area/fiorina/tumor/fiberbush)
+"qJv" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	name = "CMB riot locker"
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
 "qJK" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer/plate,
@@ -23908,6 +23871,11 @@
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
+"spR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clock,
+/turf/open/floor/prison/darkredfull2,
+/area/fiorina/station/research_cells/west)
 "sqx" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -24563,6 +24531,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
+"sQr" = (
+/obj/structure/janitorialcart,
+/obj/item/clothing/head/bio_hood{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
 "sQv" = (
 /obj/structure/platform/metal/almayer,
 /obj/item/clothing/gloves/botanic_leather,
@@ -26791,6 +26767,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
+"uEh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
 "uEj" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/prison,
@@ -26854,6 +26837,10 @@
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/disco)
+"uFW" = (
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
+/turf/open/floor/prison/whitepurple/north,
+/area/fiorina/station/research_cells/west)
 "uGu" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "3"
@@ -27582,6 +27569,19 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer_hull,
 /area/fiorina/station/medbay)
+"vgL" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/clothing/under/marine/ua_riot,
+/obj/item/storage/pill_bottle/alkysine,
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
 "vhd" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/surface/table/reinforced/prison,
@@ -43371,7 +43371,7 @@ svP
 nMm
 hvL
 svP
-aag
+iXV
 jlk
 jlk
 kXs
@@ -46726,7 +46726,7 @@ mDz
 toE
 mDz
 toE
-aah
+igQ
 dFH
 xJw
 bQM
@@ -55983,7 +55983,7 @@ azZ
 xLi
 xLi
 oZf
-aam
+aac
 knW
 fop
 xLi
@@ -58099,7 +58099,7 @@ sWb
 mvp
 mvp
 cer
-aan
+aab
 mvp
 ddL
 dMT
@@ -60372,7 +60372,7 @@ uKX
 lkA
 dkn
 xQx
-aac
+gPs
 iMo
 rJO
 fYW
@@ -60763,7 +60763,7 @@ gag
 hVG
 oZi
 bcq
-aae
+vgL
 dHb
 ezO
 xpx
@@ -60806,7 +60806,7 @@ rJO
 ipa
 rJO
 anP
-aab
+omb
 rJO
 xoK
 vXT
@@ -61612,7 +61612,7 @@ wQg
 qet
 mKp
 ceC
-aad
+qJv
 bqF
 tNF
 ceC
@@ -64268,7 +64268,7 @@ mvp
 mvp
 dOf
 lIG
-aal
+spR
 kzR
 qBI
 mvl
@@ -66482,7 +66482,7 @@ oMW
 goG
 dYq
 chg
-aaf
+uEh
 gZx
 goG
 fAf
@@ -67889,7 +67889,7 @@ cKa
 oMw
 yhJ
 cKa
-aaj
+uFW
 mgz
 rLG
 cKa
@@ -68134,7 +68134,7 @@ qBe
 qBe
 sWw
 qBe
-aai
+sQr
 qBe
 qBe
 qBe

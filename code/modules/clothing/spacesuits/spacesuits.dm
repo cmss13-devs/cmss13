@@ -10,13 +10,12 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
-	permeability_coefficient = 0.01
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|BLOCKSHARPOBJ

@@ -1,4 +1,0 @@
-author: "Lukas-Seltz"
-delete-after: True
-changes:
-  - bugfix: "Fixed the CE vendor to be able to vend out what you should be able to."

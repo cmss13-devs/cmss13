@@ -39,6 +39,12 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
+"ah" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4
+	},
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/temple)
 "ai" = (
 /obj/structure/blocker/preserve_edge,
 /obj/structure/flora/jungle/vines/heavy,
@@ -49,7 +55,7 @@
 /area/yautja_grounds/jungle/north)
 "aj" = (
 /obj/structure/bed/chair/comfy/yautja{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room)
@@ -62,7 +68,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
+/area/yautja_grounds/temple)
 "am" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -79,81 +85,16 @@
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/prep_room)
 "an" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/weldingtool/yautja,
+/obj/effect/landmark/yautja_young_teleport,
 /turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
-"ao" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/item/storage/box/monkeycubes/yautja{
-	pixel_y = 10;
-	pixel_x = -5
-	},
-/obj/item/storage/box/monkeycubes/yautja{
-	pixel_y = 10;
-	pixel_x = 8
-	},
-/obj/item/storage/box/monkeycubes/yautja{
-	pixel_y = -1;
-	pixel_x = -5
-	},
-/obj/item/storage/box/monkeycubes/yautja{
-	pixel_y = -1;
-	pixel_x = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/prep_room)
-"ap" = (
-/obj/structure/bed/alien/yautja,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
-"aq" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/skull/warrior{
-	pixel_y = 35
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/prep_room)
 "ar" = (
 /turf/open/gm/dirtgrassborder,
 /area/yautja_grounds/jungle/west)
-"as" = (
-/obj/effect/landmark/yautja_young_teleport,
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/prep_room)
 "at" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/north)
-"au" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 4
-	},
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/temple)
-"av" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 8
-	},
-/turf/open/floor/engine/cult,
-/area/yautja_grounds/temple)
-"aw" = (
-/obj/structure/showcase/yautja/alt{
-	dir = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/temple)
 "ax" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines{
@@ -161,10 +102,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle)
-"ay" = (
-/obj/structure/showcase/yautja,
-/turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/yautja_grounds/temple)
 "aE" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1,
@@ -1106,6 +1043,13 @@
 "qn" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/yautja_grounds/south_west)
+"qo" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/weldingtool/yautja,
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/prep_room)
 "qp" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /obj/structure/flora/jungle/vines/heavy,
@@ -1303,6 +1247,10 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/yautja_grounds/jungle/east)
+"tO" = (
+/obj/structure/bed/alien/yautja,
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/prep_room)
 "tY" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -1810,6 +1758,16 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/yautja_grounds/jungle/east)
+"BX" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/skull/warrior{
+	pixel_y = 35
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/yautja_grounds/prep_room)
 "Cf" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2704,6 +2662,12 @@
 "Rs" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/yautja_grounds/jungle/west)
+"Rx" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4
+	},
+/turf/open/floor/engine/cult,
+/area/yautja_grounds/prep_room)
 "RA" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -2942,6 +2906,32 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/yautja_grounds/south)
+"Vy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/item/storage/box/monkeycubes/yautja{
+	pixel_y = 10;
+	pixel_x = -5
+	},
+/obj/item/storage/box/monkeycubes/yautja{
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/obj/item/storage/box/monkeycubes/yautja{
+	pixel_y = -1;
+	pixel_x = -5
+	},
+/obj/item/storage/box/monkeycubes/yautja{
+	pixel_y = -1;
+	pixel_x = 8
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/yautja_grounds/prep_room)
 "Vz" = (
 /obj/structure/flora/jungle/vines/heavy{
 	pixel_y = 26
@@ -3082,9 +3072,19 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/yautja_grounds/jungle/west)
+"Xw" = (
+/obj/structure/showcase/yautja/alt{
+	dir = 8
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/yautja_grounds/temple)
 "Xx" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/yautja_grounds/jungle)
+"Xy" = (
+/obj/structure/showcase/yautja,
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/yautja_grounds/temple)
 "XA" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/north,
@@ -3696,10 +3696,10 @@ Kn
 zn
 gN
 gN
-au
-au
-au
-au
+ah
+ah
+ah
+ah
 gN
 gN
 zn
@@ -3993,10 +3993,10 @@ Kn
 zn
 gN
 gN
-av
-av
-av
-av
+al
+al
+al
+al
 gN
 gN
 zn
@@ -4467,7 +4467,7 @@ Kn
 Kn
 Kn
 zn
-ay
+Xy
 cG
 LL
 Ni
@@ -4665,7 +4665,7 @@ Kn
 Kn
 Kn
 zn
-ay
+Xy
 cG
 GK
 ge
@@ -5061,7 +5061,7 @@ Kn
 Kn
 Kn
 zn
-ay
+Xy
 cG
 GK
 ge
@@ -5259,7 +5259,7 @@ Kn
 Kn
 Kn
 zn
-ay
+Xy
 cG
 lR
 nO
@@ -6399,7 +6399,7 @@ rR
 RA
 HJ
 HJ
-an
+qo
 HJ
 HJ
 LW
@@ -6495,7 +6495,7 @@ Ow
 Ow
 Th
 rR
-ao
+Vy
 HJ
 qh
 AN
@@ -6691,7 +6691,7 @@ Ow
 Ow
 rR
 rR
-aq
+BX
 LW
 CN
 rR
@@ -6865,7 +6865,7 @@ zn
 zn
 pR
 gh
-aw
+Xw
 iJ
 gh
 pR
@@ -6889,9 +6889,9 @@ Ow
 rR
 LW
 HJ
-ap
-ap
-ap
+tO
+tO
+tO
 HJ
 cZ
 rR
@@ -6987,7 +6987,7 @@ Ow
 Ow
 wi
 LW
-as
+an
 Qi
 bl
 nu
@@ -7087,9 +7087,9 @@ By
 rR
 LW
 HJ
-ap
-ap
-ap
+tO
+tO
+tO
 HJ
 fk
 rR
@@ -7200,9 +7200,9 @@ mq
 rR
 LW
 HJ
-aj
-aj
-aj
+Rx
+Rx
+Rx
 HJ
 LW
 rR
@@ -7398,9 +7398,9 @@ ez
 rR
 LW
 HJ
-al
-al
-al
+aj
+aj
+aj
 HJ
 LW
 rR

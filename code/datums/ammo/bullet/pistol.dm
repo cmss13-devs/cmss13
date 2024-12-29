@@ -266,7 +266,7 @@
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-// Used by VP76 (IRO)
+// Used by VP76 (OWLF)
 /datum/ammo/bullet/pistol/powerful
 	name = "powerful pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY

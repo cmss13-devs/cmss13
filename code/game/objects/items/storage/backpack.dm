@@ -1401,3 +1401,15 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 15
+
+/obj/item/storage/backpack/general_belt/owlf
+	name = "\improper OWLF general utility belt"
+	desc = "A small, lightweight pouch that can be clipped onto armor to provide additional storage."
+	icon_state = "owlf"
+	item_state = "owlf"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/OWLF.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	max_storage_space = 15

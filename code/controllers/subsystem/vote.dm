@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(vote)
 				active_admins = TRUE
 				break
 		if(!active_admins)
-			world.Reboot("Restart vote successful.")
+			world.Reboot()
 		else
 			to_chat(world, "<span style='boltnotice'>Notice:Restart vote will not restart the server automatically because there are active admins on.</span>")
 			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")

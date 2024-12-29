@@ -1274,6 +1274,11 @@
 		fax.update_departments()
 
 	else if(href_list["PressFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["PressFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
@@ -1357,6 +1362,11 @@
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["USCMFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
@@ -1440,6 +1450,11 @@
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["WYFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["WYFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
@@ -1522,6 +1537,11 @@
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["TWEFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["TWEFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
@@ -1603,6 +1623,11 @@
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["UPPFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["UPPFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
@@ -1684,6 +1709,11 @@
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["CLFFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["CLFFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
@@ -1765,6 +1795,11 @@
 		to_chat(src.owner, "/red Unable to locate fax!")
 
 	else if(href_list["CMBFaxReply"])
+		var/mob/user = usr
+		if(!user.client || !CLIENT_IS_STAFF(user.client))
+			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			return FALSE
+
 		var/mob/living/carbon/human/H = locate(href_list["CMBFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 

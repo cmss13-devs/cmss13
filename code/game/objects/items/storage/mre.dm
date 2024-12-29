@@ -184,7 +184,6 @@
 	icon_state = "twe_mealpack"
 	icon_closed = "twe_mealpack"
 	icon_opened = "twe_mealpackopened"
-	should_have_spread = FALSE
 	should_have_beverage = FALSE
 	should_have_utencil = FALSE
 	entree = /obj/item/mre_food_packet/entree/twe
@@ -199,7 +198,7 @@
 	new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
 
 /obj/item/storage/box/MRE/TWE/choose_spread()
-	var/spread_type = rand(1,3)
+	var/spread_type = rand(1, 3)
 	switch(spread_type)
 		if(1)
 			new /obj/item/reagent_container/food/drinks/cans/tube/strawberry(src)

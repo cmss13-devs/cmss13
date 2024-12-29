@@ -8,6 +8,35 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aac" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Cables"
+	},
+/obj/structure/cryofeed{
+	color = "silver";
+	desc = "A bewildering tangle of machinery and pipes.";
+	name = "coolant feed"
+	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	desc = "A big air filter.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
+	icon_state = "fuel_enhancer";
+	layer = 5;
+	name = "Air filter";
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
+	icon_state = "cooling_system";
+	layer = 4;
+	name = "\improper Air Condenser";
+	pixel_x = -5;
+	pixel_y = 25
+	},
+/turf/open/shuttle/escapepod/floor1,
+/area/bigredv2/oob)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -167,6 +196,17 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"aaM" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/bronze,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/item/clock{
+	pixel_y = 15
+	},
+/turf/open/floor/carpet15_15/west,
+/area/bigredv2/outside/admin_building)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -242,10 +282,35 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"abb" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/white,
+/area/bigredv2/outside/virology)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abd" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine{
+	density = 0;
+	req_one_access_txt = "200"
+	},
+/obj/item/clock{
+	pixel_y = 14;
+	pixel_x = 25
+	},
+/turf/open/floor/white,
+/area/bigredv2/outside/admin_building)
+"abe" = (
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 16
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -352,6 +417,14 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/landing/console)
+"abz" = (
+/obj/structure/barricade/deployable,
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abA" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -411,6 +484,16 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/darkgreen2/southeast,
 /area/bigredv2/outside/space_port)
+"abL" = (
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 11;
+	pixel_y = -8
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abM" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_north)
@@ -459,6 +542,14 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"abU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "abV" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_north)
@@ -469,6 +560,19 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/e)
+"abX" = (
+/obj/structure/surface/table,
+/obj/item/trash/kepler{
+	pixel_y = 3
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/clock{
+	pixel_y = 18
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "abY" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -497,6 +601,13 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
+"acc" = (
+/obj/item/clothing/mask/gas/swat{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -516,12 +627,26 @@
 "ach" = (
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"aci" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/storage/marine/veteran/cmb{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "acj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"ack" = (
+/obj/structure/closet/secure_closet/marshal,
+/obj/item/clothing/under/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -561,6 +686,11 @@
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"act" = (
+/obj/structure/surface/table,
+/obj/item/clothing/head/CMB/beret,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -580,6 +710,14 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"acy" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light{
+	pixel_x = -7;
+	pixel_y = -7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "acz" = (
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
@@ -1946,10 +2084,6 @@
 "aiD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"aiE" = (
-/obj/structure/closet/secure_closet/marshal,
-/turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aiJ" = (
 /obj/structure/machinery/light{
@@ -7369,14 +7503,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/caves/lambda/virology)
-"aJb" = (
-/obj/structure/surface/table,
-/obj/item/ashtray/bronze,
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/carpet15_15/west,
-/area/bigredv2/outside/admin_building)
 "aJc" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -8301,10 +8427,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
-"aNa" = (
-/obj/structure/closet/l3closet,
-/turf/open/floor/white,
-/area/bigredv2/outside/virology)
 "aNb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -8428,14 +8550,6 @@
 "aNC" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/surface/table,
-/turf/open/floor/white,
-/area/bigredv2/outside/admin_building)
-"aND" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/faxmachine{
-	density = 0;
-	req_one_access_txt = "200"
-	},
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aNE" = (
@@ -25433,14 +25547,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/outside/engineering)
-"knL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "knN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26470,12 +26576,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/ne)
-"lAF" = (
-/obj/item/paper_bin,
-/obj/item/tool/pen,
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/wood,
-/area/bigredv2/caves/lambda/breakroom)
 "lAN" = (
 /obj/structure/fence,
 /turf/open/asphalt/cement/cement12,
@@ -29256,16 +29356,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
-"osi" = (
-/obj/structure/surface/table,
-/obj/item/trash/kepler{
-	pixel_y = 3
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/marshal_office)
 "osm" = (
 /obj/structure/barricade/deployable,
 /turf/open/floor/asteroidfloor/north,
@@ -31776,14 +31866,6 @@
 /obj/structure/cargo_container/hd/mid/alt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"qTw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 5;
-	pixel_x = 7
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "qTC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -32479,14 +32561,6 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/filtration_plant)
-"rEe" = (
-/obj/item/clothing/mask/gas{
-	pixel_y = 7;
-	pixel_x = 7
-	},
-/obj/structure/barricade/deployable,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "rGz" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
@@ -33415,35 +33489,6 @@
 "sus" = (
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/caves_research)
-"suD" = (
-/obj/structure/prop/almayer/cannon_cables{
-	name = "\improper Cables"
-	},
-/obj/structure/cryofeed{
-	color = "silver";
-	desc = "A bewildering tangle of machinery and pipes.";
-	name = "coolant feed"
-	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "A big air filter.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
-	icon_state = "fuel_enhancer";
-	layer = 5;
-	name = "Air filter";
-	pixel_x = -3;
-	pixel_y = 1
-	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
-	icon_state = "cooling_system";
-	layer = 4;
-	name = "\improper Air Condenser";
-	pixel_x = -5;
-	pixel_y = 25
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/bigredv2/oob)
 "suL" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -34690,13 +34735,6 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
-"tFL" = (
-/obj/structure/surface/table,
-/obj/item/clothing/head/beret/sec/warden{
-	pixel_y = 5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "tFO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -34898,10 +34936,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
-"tOg" = (
-/obj/item/clothing/mask/gas,
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "tOh" = (
 /obj/structure/surface/table,
 /obj/item/device/megaphone,
@@ -36260,14 +36294,6 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
-"vmt" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = -9;
-	pixel_x = -12
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "vmE" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -37162,16 +37188,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"wfS" = (
-/obj/item/clothing/mask/gas{
-	pixel_x = 10;
-	pixel_y = -12
-	},
-/obj/structure/barricade/deployable{
-	dir = 8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "whb" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -37846,14 +37862,6 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
-"wRo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -8;
-	pixel_y = -5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/marshal_office)
 "wRD" = (
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/platform_decoration/metal/almayer/north,
@@ -43427,7 +43435,7 @@ aFw
 aFt
 fxa
 aoD
-aNa
+abb
 aNc
 aoD
 aQz
@@ -51119,7 +51127,7 @@ rIl
 uSf
 ldh
 llS
-suD
+aac
 ijU
 rIl
 aao
@@ -51553,7 +51561,7 @@ rIl
 uSf
 olT
 llS
-suD
+aac
 ijU
 rIl
 aao
@@ -57057,9 +57065,9 @@ nMG
 nMG
 nMG
 acp
-aiE
+ack
 kcR
-wfS
+abL
 dfA
 aer
 agB
@@ -57315,7 +57323,7 @@ aHF
 aHF
 aHF
 apD
-aND
+abd
 aMf
 aMf
 aZS
@@ -57492,8 +57500,8 @@ agD
 mXm
 acp
 pTl
-tOg
-knL
+acc
+abU
 tEG
 akQ
 jNf
@@ -57925,9 +57933,9 @@ oRa
 vlu
 ahp
 acp
-tFL
-wRo
-qTw
+act
+aci
+afT
 gHC
 aer
 dHs
@@ -58145,7 +58153,7 @@ acp
 aiJ
 afT
 ikq
-rEe
+abz
 aer
 vDJ
 gvs
@@ -58359,7 +58367,7 @@ rXJ
 agH
 uZJ
 aih
-vmt
+acy
 ahr
 lYc
 akm
@@ -58635,7 +58643,7 @@ aOM
 aZY
 aof
 bbm
-aJb
+aaM
 bcN
 aof
 wfk
@@ -61182,7 +61190,7 @@ aht
 adS
 aiO
 cgz
-osi
+abX
 akt
 acr
 adS
@@ -75305,7 +75313,7 @@ amk
 ajm
 sUQ
 avM
-lAF
+abe
 aka
 amk
 tQw

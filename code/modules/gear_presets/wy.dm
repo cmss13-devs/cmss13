@@ -46,6 +46,8 @@
 		/obj/item/clothing/suit/storage/bomber,
 		/obj/item/clothing/suit/storage/bomber/alt,
 		/obj/item/clothing/suit/storage/snow_suit/liaison,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt,
 		/obj/item/clothing/suit/storage/labcoat,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
@@ -84,6 +86,8 @@
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/head/beret/cm/black/civilian,
 		/obj/item/clothing/head/beret/cm/white/civilian,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat/alt,
 	)
 
 /datum/equipment_preset/wy/New()

@@ -618,17 +618,25 @@
 		return
 
 	if(my_atom) //It exists outside of null space.
-		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
-			if(R.id == "iron")
-				shards += floor(R.volume)
-			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
+		for(var/datum/reagent/reagent in reagent_list) // if you want to do extra stuff when other chems are present, do it here
+			if(reagent.id == "iron")
+				shards += floor(reagent.volume)
+			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
+			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/neuro
 
 		// some upper limits
 		if(shards > max_ex_shards)
 			shards = max_ex_shards
 		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
 			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / HORNET_SHARDS_MAX_REDUCTION
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / NEURO_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
 		if(ex_falloff < EXPLOSION_MIN_FALLOFF)

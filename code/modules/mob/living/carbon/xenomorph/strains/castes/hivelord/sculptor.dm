@@ -1,6 +1,6 @@
 /datum/xeno_strain/sculptor
 	name = HIVELORD_SCULPTOR
-	description = "You loose weight, become more frail. Your resin and acid become less thick but you will be able to use plasma to create gelatin and use plasma to enhance your psysical capabilities."
+	description = "You loose weight, become more frail. Your resin will become less thick, your acid glands morph into plasma glands, and you will be able to use plasma to create gelatin and use plasma to enhance your psysical capabilities."
 	flavor_description = "With the mastery of plasma, you will become the guardian of the hive."
 	icon_state_prefix = "Sculptor"
 
@@ -13,8 +13,8 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/sculptor, //third macro
-		/datum/action/xeno_action/activable/corrosive_acid/weak, // readding it so it gets at the end of the ability list
-		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/onclick/crystallized_plasma, //fourth macro
+		/datum/action/xeno_action/activable/spray_acid/sculptor, //fifth macro
 		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision, // readding it so it gets at the end of the ability list
 	)
@@ -37,16 +37,16 @@
 				break // Don't need to keep looking
 
 /datum/action/xeno_action/onclick/crystallized_plasma
-	name = "Crystallized Plasma"
+	name = "Crystallized Plasma (400)"
 	action_icon_state = "crystal_plasma"
 	macro_path = /datum/action/xeno_action/verb/crystal_plasma
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = 300
+	plasma_cost = 400
 	xeno_cooldown = 30 SECONDS
 
 	// Config
-	var/duration = 10 SECONDS
+	var/duration = 15 SECONDS
 	var/armor_buff_amount = 30
 	var/explosive_armor_buff_amount = 50
 	var/attack_speed_buff_amount = 2
@@ -65,10 +65,8 @@
 
 	zenomorf.armor_active = TRUE
 	zenomorf.update_plasma_overlays()
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
-	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
-	zenomorf.create_custom_empower(icolor = "#b31ceb", ialpha = 200, small_xeno = TRUE)
-	zenomorf.balloon_alert(zenomorf, "secreting armor", text_color = "#d378ec")
+	to_chat(zenomorf, SPAN_XENOWARNING("We attack slightly faster and are more armored for a small amount of time."))
+	zenomorf.balloon_alert(zenomorf, "secreting plasma", text_color = "#d378ec")
 	zenomorf.attack_speed_modifier -= attack_speed_buff_amount
 	zenomorf.armor_deflection_buff += armor_buff_amount
 	zenomorf.armor_explosive_buff += explosive_armor_buff_amount
@@ -93,3 +91,20 @@
 	zenomorf.armor_explosive_buff -= explosive_armor_buff_amount
 	zenomorf.recalculate_armor()
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We cannot sustain the plasma!"))
+
+// Acid pilar replacement
+/datum/action/xeno_action/activable/spray_acid/sculptor
+	name = "Spray Plasma (160)"
+	action_icon_state = "spray_plasma"
+	action_text = "spray plasma"
+	macro_path = /datum/action/xeno_action/verb/verb_spray_plasma
+	ability_primacy = XENO_PRIMARY_ACTION_5
+	action_type = XENO_ACTION_CLICK
+
+	plasma_cost = 160
+	xeno_cooldown = 3 SECONDS
+
+	spray_type = ACID_SPRAY_LINE
+	spray_distance = 6
+	spray_effect_type = /obj/effect/xenomorph/spray/plasma
+	activation_delay = FALSE

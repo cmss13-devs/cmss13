@@ -224,12 +224,13 @@
 	turf = loc
 	for(var/i in 0 to range - 1)
 		var/turf/next_turf = get_step(turf, facing)
-		var/atom/movable/temp = new/obj/effect/xenomorph/spray()
+		var/obj/effect/xenomorph/spray/temp = new/obj/effect/xenomorph/spray()
 		var/atom/movable/AM = LinkBlocked(temp, turf, next_turf)
-		qdel(temp)
 		if(AM)
-			AM.acid_spray_act(src)
+			if(temp.get_acidity())
+				AM.acid_spray_act(src)
 			return
+		qdel(temp)
 		turf = next_turf
 		var/obj/effect/xenomorph/spray/S = new spray_type(turf, create_cause_data(initial( caste_type), src), hivenumber)
 		do_acid_spray_cone_normal(turf, i, facing, S, spray_type)
@@ -297,12 +298,13 @@
 			break
 		if(distance > distance_max)
 			break
-		var/atom/movable/temp = new spray_path()
+		var/obj/effect/xenomorph/spray/temp = new spray_path()
 		var/atom/movable/blocker = LinkBlocked(temp, prev_turf, turf)
-		qdel(temp)
 		if(blocker)
-			blocker.acid_spray_act(src)
+			if(temp.get_acidity())
+				blocker.acid_spray_act(src)
 			break
+		qdel(temp)
 
 		prev_turf = turf
 		new spray_path(turf, create_cause_data(initial(caste_type), src), hivenumber)

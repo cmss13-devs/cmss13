@@ -102,7 +102,6 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord_sculptor, list(
 	/datum/resin_construction/resin_turf/membrane,
 	/datum/resin_construction/resin_obj/door,
 	/datum/resin_construction/resin_turf/gelatin,
-	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/resin_spike

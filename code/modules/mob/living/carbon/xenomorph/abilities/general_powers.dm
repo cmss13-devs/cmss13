@@ -471,9 +471,9 @@
 	if (!action_cooldown_check())
 		return
 
-	apply_cooldown()
 
 	if(!check_and_use_plasma_owner())
+		apply_cooldown_override(10)
 		return
 
 	playsound(get_turf(X), 'sound/effects/refill.ogg', 25, 1)

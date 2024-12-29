@@ -1230,7 +1230,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /turf/closed/wall/resin/membrane/gelatin
 	name = "resin gelatin"
 	desc = "Weird thick slime just translucent enough to let light pass through."
-	damage_cap = HEALTH_WALL_XENO_GELATINE
+	damage_cap = HEALTH_WALL_XENO_GELATIN
 	icon_state = "gelatin"
 	walltype = WALL_GELATIN
 	var/slow_amt = 1.2

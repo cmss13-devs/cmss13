@@ -54,6 +54,7 @@
 	var/fire_level_to_extinguish = 13
 
 	var/time_to_live = 10
+	var/destroy_cades = TRUE
 
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
@@ -91,7 +92,7 @@
 						qdel(atm)
 			continue
 
-		if (istype(atm, /obj/structure/barricade))
+		if (istype(atm, /obj/structure/barricade) && destroy_cades)
 			var/obj/structure/barricade/B = atm
 			B.acid_spray_act()
 			continue
@@ -115,6 +116,7 @@
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
+					friendly_spray(C)
 					continue
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
@@ -148,6 +150,9 @@
 	STOP_PROCESSING(SSobj, src)
 	qdel(src)
 
+/obj/effect/xenomorph/spray/proc/get_acidity()
+	return destroy_cades
+
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
 	if(AM == cause_data?.resolve_mob())
@@ -156,12 +161,15 @@
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))
-			living_mob.ExtinguishMob()
+			friendly_spray(living_mob)
 		else
 			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
 		V.handle_acidic_environment(src)
+
+/obj/effect/xenomorph/spray/proc/friendly_spray(mob/living/carbon/living_carbon)
+	living_carbon.ExtinguishMob()
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
@@ -250,6 +258,40 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
+/obj/effect/xenomorph/spray/plasma
+	name = "plasma splatter"
+	desc = "It burns! No wait, it doesn't?"
+	icon_state = "acid2-plasma"
+
+	stun_duration = 0
+	damage_amount = 0
+	fire_level_to_extinguish = 15
+	time_to_live = 2 SECONDS
+	destroy_cades = FALSE
+
+	var/slow_duration = 2 // Is 2 seconds for some reason.
+	var/plasma_amount = 100
+
+/obj/effect/xenomorph/spray/plasma/friendly_spray(mob/living/carbon/carbone)
+	if(isxeno(carbone))
+		var/mob/living/carbon/xenomorph/zenomorf = carbone
+		zenomorf.gain_plasma(plasma_amount)
+		zenomorf.xeno_jitter(1 SECONDS)
+		to_chat(zenomorf, SPAN_XENOWARNING("We have adsorbed [plasma_amount] plasma."))
+		playsound(zenomorf, "alien_drool", 25)
+	return ..()
+
+/obj/effect/xenomorph/spray/plasma/apply_spray(mob/living/carbon/carbone)
+	if(carbone)
+		to_chat(carbone, SPAN_DANGER("Your feet stick to the ground! Argh!"))
+		carbone.apply_effect(slow_duration, SUPERSLOW)
+		if(ishuman(carbone))
+			var/mob/living/carbon/human/hoomen = carbone
+			hoomen.emote("pain")
+
+		else if (isxeno(carbone))
+			var/mob/living/carbon/xenomorph/zenomorf = carbone
+			zenomorf.emote("hiss")
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"

@@ -541,7 +541,7 @@
 /obj/structure/machinery/hunt_ground_spawner
 	name = "huntsmasters console"
 	desc = "A console for creating hunts."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 	breakable = FALSE

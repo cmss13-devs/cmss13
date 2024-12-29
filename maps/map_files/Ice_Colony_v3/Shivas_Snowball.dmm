@@ -17,6 +17,18 @@
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
+"aaf" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aag" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -51,6 +63,18 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
+"aam" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aan" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -72,10 +96,42 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aap" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
+"aaq" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aar" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
+"aas" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/item/storage/firstaid/fire,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aat" = (
 /obj/item/tool/shovel/snow{
 	pixel_y = 8
@@ -91,6 +147,21 @@
 "aav" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/telecomm/lz1_north)
+"aaw" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
+"aax" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/WY,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/n_admin)
 "aay" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/ice/layer0,
@@ -5037,15 +5108,6 @@
 "aVx" = (
 /turf/closed/shuttle/ert,
 /area/shiva/interior/aerodrome)
-"aVB" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "aVF" = (
 /obj/structure/surface/table,
 /obj/item/tool/crowbar/red,
@@ -6257,18 +6319,6 @@
 /obj/item/storage/pill_bottle/dexalin/skillless,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
-"bYO" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "bYS" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/red,
@@ -6288,18 +6338,6 @@
 "caS" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
-"cbk" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "cbt" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -8709,16 +8747,6 @@
 /obj/item/storage/toolbox/electrical,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
-"fof" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/item/storage/firstaid/fire,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "fpp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/ice/layer0,
@@ -9223,19 +9251,6 @@
 	pixel_y = 7
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/aerodrome)
-"fXp" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "fXr" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -22128,11 +22143,6 @@
 /obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
-"vsi" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/MRE/WY,
-/turf/open/floor/shiva/bluefull,
-/area/shiva/interior/colony/n_admin)
 "vtf" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
@@ -23563,16 +23573,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
-"xyY" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/item/storage/firstaid/adv,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "xzo" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -31185,7 +31185,7 @@ oYH
 pvv
 pvv
 aUw
-aVB
+aaq
 aWQ
 aVN
 aVN
@@ -31353,7 +31353,7 @@ rNx
 bbg
 rNx
 aWS
-bYO
+aaf
 aWQ
 dbH
 fhv
@@ -31677,7 +31677,7 @@ rPa
 baY
 rPa
 aWS
-cbk
+aam
 aWU
 deV
 eVG
@@ -31833,7 +31833,7 @@ oYH
 pvv
 fhv
 aUA
-aVB
+aaq
 aWU
 aVx
 aVx
@@ -34911,7 +34911,7 @@ gxK
 pvv
 pvv
 aUw
-fof
+aas
 aWQ
 aVN
 aVN
@@ -35079,7 +35079,7 @@ rNx
 bbg
 rNx
 aWS
-bYO
+aaf
 aWQ
 dbH
 wvx
@@ -35403,7 +35403,7 @@ rPa
 baY
 rPa
 aWS
-fXp
+aap
 aWU
 deV
 uyI
@@ -35559,7 +35559,7 @@ fRg
 pvv
 pvv
 aUw
-xyY
+aaw
 aWU
 aVx
 aVx
@@ -40833,7 +40833,7 @@ axz
 hLf
 hLf
 hLf
-vsi
+aax
 djJ
 gQx
 hLf

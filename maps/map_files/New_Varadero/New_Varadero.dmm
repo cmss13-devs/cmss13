@@ -1,8 +1,28 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aab" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aac" = (
+/obj/structure/showcase/yautja/alt,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/caves/digsite)
+"aad" = (
+/obj/structure/reagent_dispensers/fueltank/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "aae" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/varadero/interior/disposals)
+"aaf" = (
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "aag" = (
 /obj/effect/overlay/palmtree_r{
 	icon_state = "palm2";
@@ -14,17 +34,237 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
+"aah" = (
+/obj/structure/bed/alien/yautja{
+	can_buckle = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/bed/alien/yautja{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aai" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aaj" = (
+/obj/structure/closet/yautja,
+/obj/item/device/flashlight/lantern,
+/obj/item/map/current_map,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aak" = (
+/obj/item/skull/corroder{
+	pixel_y = -27
+	},
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aal" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/curtain/red,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aam" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 1
+	},
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aan" = (
+/obj/item/tool/wrench/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aao" = (
+/obj/structure/prop/pred_flight,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aap" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -17
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aaq" = (
+/obj/structure/bed/chair/hunter{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -17;
+	density = 0
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aar" = (
+/obj/item/tool/weldingtool/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aas" = (
+/obj/structure/bed/chair/hunter{
+	dir = 1
+	},
+/obj/structure/showcase{
+	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Self Destruct System";
+	pixel_y = 25
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aat" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aau" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	name = "human monitoring computer";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aav" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = 7
+	},
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aaw" = (
+/obj/structure/bed/chair/comfy/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aax" = (
+/obj/item/device/multitool/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aay" = (
+/obj/structure/machinery/gibber/yautja,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aaz" = (
+/obj/item/skull/warrior{
+	pixel_y = 31;
+	pixel_x = 1;
+	anchored = 1
+	},
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
+"aaB" = (
+/obj/item/tool/crowbar/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aaC" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/item/skull/warrior{
+	pixel_y = 31;
+	pixel_x = 1;
+	anchored = 1
+	},
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aaD" = (
+/obj/structure/pipes/unary/freezer/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aaE" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/corsat/squareswood/north,
+/area/varadero/interior_protected/vessel)
+"aaF" = (
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_y = 24
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
+"aaH" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/shuttle/red,
+/area/varadero/interior_protected/vessel)
+"aaI" = (
+/obj/structure/surface/table,
+/obj/structure/prop/server_equipment/laptop/on{
+	pixel_y = -2
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/digsite)
+"aaJ" = (
+/obj/structure/surface/table,
+/obj/item/tool/wirecutters/yautja,
+/obj/item/tool/screwdriver/yautja{
+	pixel_y = 15
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/digsite)
+"aaK" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = -2
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/digsite)
+"aaL" = (
+/obj/structure/surface/table,
+/obj/item/prop/helmetgarb/flair_uscm,
+/obj/item/storage/box/MRE{
+	pixel_x = -4;
+	pixel_y = 13
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/laundry)
+"aaM" = (
+/obj/structure/closet/crate/supply,
+/obj/item/storage/box/MRE/WY,
+/obj/item/storage/beer_pack,
+/obj/item/spacecash,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1963,11 +2203,6 @@
 	},
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/security)
-"byw" = (
-/obj/structure/surface/table,
-/obj/item/folder/black,
-/turf/open/floor/interior/plastic,
-/area/varadero/interior_protected/caves/digsite)
 "byC" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -3300,10 +3535,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastocean)
-"cFu" = (
-/obj/structure/xenoautopsy/tank/larva,
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "cFv" = (
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/metal/kutjevo_smooth/east{
@@ -3573,12 +3804,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
-"cNJ" = (
-/obj/structure/closet,
-/obj/item/device/flashlight/lantern,
-/obj/item/map/current_map,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "cNK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -5506,10 +5731,6 @@
 "eyt" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/caves/east)
-"eyL" = (
-/obj/structure/surface/table,
-/turf/open/floor/interior/plastic,
-/area/varadero/interior_protected/caves/digsite)
 "ezb" = (
 /obj/structure/surface/rack,
 /obj/item/frame/table,
@@ -6812,21 +7033,6 @@
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
-"fxR" = (
-/obj/item/moneybag{
-	anchored = 1;
-	desc = "A console designed by the Hunters to assist in flight pathing and navigation.";
-	dir = 8;
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "overwatch";
-	name = "Hunter Flight Console";
-	pixel_x = -17
-	},
-/obj/structure/bed/chair/hunter{
-	dir = 8
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "fxX" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -7124,23 +7330,6 @@
 /obj/item/weapon/gun/rifle/m41a,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
-"fJI" = (
-/obj/item/clothing/gloves/yautja{
-	anchored = 1;
-	can_block_movement = 1;
-	charge = 1;
-	charge_max = 1;
-	color = "#a8a7a5";
-	density = 1;
-	desc = "The ship's on-board self destruct system, let's hope you never have to use it.";
-	name = "Self Destruct System";
-	pixel_y = 24
-	},
-/obj/structure/bed/chair/hunter{
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "fJR" = (
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
@@ -7957,13 +8146,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/shiva/blue/east,
 /area/varadero/interior/administration)
-"gsu" = (
-/obj/effect/decal/remains/xeno{
-	pixel_y = 25
-	},
-/obj/effect/landmark/xeno_spawn,
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "gsw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -8506,19 +8688,6 @@
 /obj/item/grown/log,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"gRN" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/bedsheet{
-	anchored = 1;
-	desc = "A console used by the Hunters for navigation purposes.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
-	icon_state = "security_cam";
-	name = "Hunter Nav Console"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "gRS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -10267,10 +10436,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
-"iqU" = (
-/obj/structure/xenoautopsy/tank/larva,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "iqW" = (
 /obj/structure/surface/rack,
 /obj/item/paper{
@@ -11340,25 +11505,6 @@
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/varadero/interior/cargo)
-"jeT" = (
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	dir = 1;
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/caves/digsite)
 "jfn" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -12842,10 +12988,6 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/east)
-"kqQ" = (
-/obj/structure/xenoautopsy/tank/broken,
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "krl" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/red,
@@ -15392,12 +15534,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
-"mvv" = (
-/obj/effect/decal/remains/xeno{
-	pixel_y = 25
-	},
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "mvI" = (
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
@@ -15856,13 +15992,6 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/varadero/interior/library)
-"mRs" = (
-/obj/structure/window/framed/colony/reinforced{
-	color = "#aba9a9"
-	},
-/obj/structure/curtain/red,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "mRL" = (
 /obj/item/paper/crumpled/bloody,
 /turf/open/floor/shiva/north,
@@ -18383,11 +18512,6 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
-"oXC" = (
-/obj/structure/surface/table,
-/obj/structure/prop/server_equipment/laptop/on,
-/turf/open/floor/interior/plastic,
-/area/varadero/interior_protected/caves/digsite)
 "oXE" = (
 /obj/structure/surface/table,
 /obj/structure/prop/invuln/lattice_prop{
@@ -18643,12 +18767,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/white,
 /area/varadero/interior/toilets)
-"pjm" = (
-/obj/effect/decal/remains/xeno{
-	pixel_y = -25
-	},
-/turf/open/shuttle/red,
-/area/varadero/interior_protected/vessel)
 "pjn" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -19023,15 +19141,6 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
-"pwc" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/reagent_container/food/drinks/bottle/orangejuice{
-	pixel_y = 6
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "pxa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/largecrate/random/mini/ammo{
@@ -19506,15 +19615,6 @@
 /obj/item/tool/wirecutters/clippers,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
-"pPf" = (
-/obj/structure/surface/table,
-/obj/item/prop/helmetgarb/flair_uscm,
-/obj/item/storage/box/MRE{
-	pixel_x = -4;
-	pixel_y = 13
-	},
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/laundry)
 "pPl" = (
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidwarning,
@@ -20350,39 +20450,12 @@
 "qwQ" = (
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
-"qwU" = (
-/obj/structure/xenoautopsy/tank/hugger,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "qxa" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/electrical)
-"qxb" = (
-/obj/structure/bed/alien{
-	can_buckle = 0;
-	color = "#aba9a9"
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 3.3;
-	pixel_y = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/structure/bed/alien{
-	buckling_y = 13;
-	color = "#aba9a9";
-	layer = 3.5;
-	pixel_y = 13
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "qxt" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_2";
@@ -21249,11 +21322,6 @@
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
-"reA" = (
-/obj/structure/xenoautopsy/tank/broken,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "reG" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 10
@@ -21502,10 +21570,6 @@
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/security)
-"rmS" = (
-/obj/structure/xenoautopsy/tank/alien,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "rmV" = (
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/wood,
@@ -23535,13 +23599,6 @@
 /obj/structure/machinery/autolathe,
 /turf/open/floor/shiva/purple/west,
 /area/varadero/interior/research)
-"sKz" = (
-/obj/structure/closet/crate/supply,
-/obj/item/storage/box/MRE/WY,
-/obj/item/storage/beer_pack,
-/obj/item/spacecash,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "sKC" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -23953,29 +24010,6 @@
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
-"tfC" = (
-/obj/structure/showcase{
-	color = "#95948B";
-	desc = "A grey statue dawned in ancient armor, it stares into your soul.";
-	icon = 'icons/mob/humans/species/r_synthetic.dmi';
-	icon_state = "Synthetic_Template";
-	name = "Eternal guardian"
-	},
-/obj/item/clothing/suit/armor/yautja_flavor{
-	anchored = 1
-	},
-/obj/item/weapon/harpoon/yautja{
-	anchored = 1;
-	name = "Alien Harpoon";
-	pixel_x = 6
-	},
-/obj/item/clothing/mask/yautja_flavor{
-	anchored = 1;
-	unacidable = 0;
-	pixel_y = 10
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/caves/digsite)
 "tgk" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -27223,10 +27257,6 @@
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
-"vNT" = (
-/obj/structure/xenoautopsy/tank,
-/turf/open/floor/corsat/squareswood/north,
-/area/varadero/interior_protected/vessel)
 "vNY" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -27234,10 +27264,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
-"vOa" = (
-/obj/structure/machinery/computer/crew,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "vOo" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
@@ -28987,12 +29013,6 @@
 /obj/item/storage/belt/utility,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"xka" = (
-/obj/structure/window/framed/colony/reinforced{
-	color = "#aba9a9"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "xkb" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/fancy/vials/random{
@@ -42878,7 +42898,7 @@ nfv
 nfv
 aFh
 uNq
-pPf
+aaL
 sBX
 etv
 cto
@@ -54433,7 +54453,7 @@ wlB
 jwX
 aQN
 aQN
-sKz
+aaM
 wlB
 tez
 tmZ
@@ -59289,12 +59309,12 @@ pDX
 bsf
 avD
 avD
-uvd
+aaD
 lFT
 avD
-kjI
+aar
 snS
-snS
+aan
 kjI
 avD
 qcC
@@ -59481,7 +59501,7 @@ kjI
 aCl
 nzb
 uvd
-uvd
+aad
 avD
 bsf
 bsf
@@ -59656,14 +59676,14 @@ pBf
 fFK
 bye
 avD
-fJI
+aas
 kjI
 kjI
 vnb
 avD
 gBM
 uvd
-uvd
+aaf
 avD
 bsf
 bsf
@@ -60016,18 +60036,18 @@ bsf
 bsf
 bsf
 avD
-qxb
+aah
 aEg
 snS
-qxb
+aah
 brT
 nEE
 kjI
 brT
-qxb
+aah
 aEg
 snS
-qxb
+aah
 avD
 bsf
 bsf
@@ -60380,18 +60400,18 @@ uvd
 avD
 bsf
 avD
-qxb
+aah
 snS
 pcH
-qxb
+aah
 brT
 kjI
 kjI
 brT
-qxb
+aah
 snS
 snS
-qxb
+aah
 avD
 bsf
 gFH
@@ -60562,7 +60582,7 @@ uvd
 aEQ
 avD
 avD
-brT
+avD
 brT
 brT
 brT
@@ -60742,20 +60762,20 @@ mol
 mol
 fof
 avD
-vNT
-vNT
-xka
-vNT
-vNT
-brT
+aab
+aab
+aai
+aab
+aab
+avD
 snS
 kjI
 kjI
 snS
 brT
-rmS
-rmS
-xka
+aab
+aab
+aai
 fbW
 rnj
 oJX
@@ -60926,7 +60946,7 @@ uvd
 brT
 kjI
 snS
-xka
+aai
 snS
 kjI
 rco
@@ -60937,7 +60957,7 @@ qpD
 lvS
 kjI
 snS
-xka
+aai
 nFy
 ojF
 brT
@@ -61108,18 +61128,18 @@ uvd
 brT
 bPx
 snS
-xka
+aai
 snS
 cRn
-brT
+avD
 czG
 izi
 izi
 snS
-brT
+avD
 kjI
 snS
-xka
+aai
 ndp
 kjI
 brT
@@ -61290,18 +61310,18 @@ uvd
 brT
 kjI
 snS
-xka
+aai
 snS
 kjI
-mRs
+aal
 snS
 kjI
 kjI
 snS
-mRs
+aal
 kjI
 snS
-xka
+aai
 eBS
 kjI
 brT
@@ -61475,12 +61495,12 @@ kjI
 rco
 kjI
 gms
-mRs
+aal
 snS
 kjI
 kjI
 snS
-mRs
+aal
 gms
 kjI
 lvS
@@ -61654,18 +61674,18 @@ uvd
 brT
 kjI
 snS
-xka
+aai
 snS
 snS
-mRs
+aal
 snS
 kjI
 kjI
 snS
-mRs
+aal
 snS
 snS
-xka
+aai
 dBA
 kjI
 brT
@@ -61835,20 +61855,20 @@ uvd
 uvd
 brT
 cRn
-vNT
-brT
+aab
+avD
 snS
-snS
-brT
+aay
+avD
 snS
 ujg
 kjI
 snS
-brT
+avD
 snS
 snS
-brT
-qwU
+avD
+aab
 kjI
 brT
 uvd
@@ -62017,20 +62037,20 @@ uvd
 uvd
 brT
 kjI
-vNT
-brT
-reA
-brT
-brT
+aab
+avD
+aaE
+avD
+avD
 snS
 kjI
 kjI
 snS
 brT
 brT
-rmS
+aab
 brT
-qwU
+aab
 nnk
 brT
 uvd
@@ -62199,11 +62219,11 @@ uvd
 uvd
 brT
 kjI
-vNT
-brT
-brT
-brT
-oKy
+aab
+avD
+avD
+avD
+aav
 snS
 kjI
 kjI
@@ -62212,7 +62232,7 @@ oKy
 brT
 brT
 brT
-iqU
+aab
 kjI
 brT
 uvd
@@ -62380,22 +62400,22 @@ uvd
 uvd
 uvd
 brT
-kqQ
+aaH
 avD
 brT
-cNJ
-cNJ
+aaj
+aaj
 snS
 czG
 kjI
 kjI
 snS
 snS
-cNJ
-cNJ
+aaj
+aaj
 brT
 avD
-cFu
+aaa
 brT
 uvd
 uvd
@@ -63294,14 +63314,14 @@ avD
 avD
 avD
 brT
-mvv
+aaz
 snS
 snS
 kjI
 kjI
 snS
 czG
-pjm
+aak
 brT
 avD
 avD
@@ -63477,12 +63497,12 @@ bsf
 kjI
 bPF
 kjI
-jUY
-pwc
+aaw
+aat
 kjI
 kjI
 oKy
-asf
+aam
 ahD
 idn
 avD
@@ -63658,13 +63678,13 @@ bsf
 bsf
 avD
 jQG
-kjI
-jUY
+aaB
+aaw
 oKy
 kjI
 kjI
 pfL
-asf
+aam
 aIm
 cwp
 avD
@@ -63841,12 +63861,12 @@ mMz
 kjI
 ydZ
 kjI
-jUY
+aaw
 rAf
 kjI
 kjI
 oKy
-asf
+aam
 qLH
 jYs
 kjI
@@ -64023,12 +64043,12 @@ bsf
 qEn
 iSC
 kjI
-jUY
+aaw
 oKy
 kjI
 kjI
 pfL
-asf
+aam
 vmY
 mke
 kjI
@@ -64204,14 +64224,14 @@ kTu
 bsf
 avD
 brT
-gsu
+aaC
 snS
 snS
 izi
 izi
 snS
 snS
-pjm
+aak
 brT
 kjI
 mMz
@@ -64747,7 +64767,7 @@ iwV
 uvd
 ulv
 bsf
-jeT
+aac
 lbX
 izi
 rco
@@ -64760,7 +64780,7 @@ izi
 qAd
 izi
 xuX
-tfC
+aac
 bsf
 brT
 uvd
@@ -65295,12 +65315,12 @@ brT
 bsf
 bsf
 avD
-vOa
+aaF
 kjI
 kjI
 kjI
-snS
-snS
+aao
+aao
 kjI
 kjI
 kjI
@@ -66025,7 +66045,7 @@ bsf
 nEY
 avD
 cdc
-kjI
+aax
 qEn
 avD
 avD
@@ -66209,8 +66229,8 @@ iyk
 kZl
 eiK
 hoU
-fxR
-fxR
+aaq
+aap
 kjI
 kjI
 fcF
@@ -66563,8 +66583,8 @@ hre
 hre
 gRU
 qCT
-byw
-oXC
+aaK
+aaI
 sxR
 qCT
 gRU
@@ -66936,7 +66956,7 @@ bsf
 bBt
 bsf
 avD
-gRN
+aau
 crq
 uli
 kEK
@@ -67474,7 +67494,7 @@ bsf
 bsf
 qCT
 gMp
-eyL
+aaJ
 jWA
 qCT
 bsf

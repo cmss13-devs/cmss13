@@ -338,6 +338,10 @@
 			return /datum/equipment_preset/upp/commissar/dressed
 		if(JOB_UPP_SUPPORT_SYNTH)
 			return /datum/equipment_preset/upp/synth/dressed
+		if(JOB_UPP_JOE)
+			return /datum/equipment_preset/synth/working_joe/upp
+		if(JOB_UPP_PILOT)
+			return /datum/equipment_preset/upp/pilot
 		// MISC-JOBS
 		if(JOB_SURVIVOR)
 			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].survivor_types

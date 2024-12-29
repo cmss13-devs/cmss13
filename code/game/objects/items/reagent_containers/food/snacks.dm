@@ -3055,6 +3055,45 @@
 		boxes += extra
 	update_icon()
 
+// Pizza Galaxy Pizza
+
+/obj/item/pizzabox/pizza_galaxy
+	icon = 'icons/obj/items/pizza_galaxy_pizza.dmi'
+
+/obj/item/pizzabox/pizza_galaxy/margherita/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita(src)
+	boxtag = "Margherita Deluxe"
+
+/obj/item/pizzabox/pizza_galaxy/vegetable/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza(src)
+	boxtag = "Gourmet Vegatable"
+
+/obj/item/pizzabox/pizza_galaxy/mushroom/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza(src)
+	boxtag = "Mushroom Special"
+
+/obj/item/pizzabox/pizza_galaxy/meat/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza(src)
+	boxtag = "Meatlover's Supreme"
+
+/// Mystery Pizza, made with random ingredients!
+/obj/item/pizzabox/pizza_galaxy/mystery/Initialize(mapload, ...)
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery(src)
+	boxtag = "Mystery Pizza"
+
+// Pre-stacked boxes for reqs
+/obj/item/pizzabox/pizza_galaxy/mystery/stack/Initialize(mapload, ...)
+	. = ..()
+	for(var/i in 1 to 2)
+		var/obj/item/pizzabox/pizza_galaxy/mystery/extra = new(src)
+		boxes += extra
+	update_icon()
+
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////
@@ -3276,6 +3315,7 @@
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		package = 0
+		new /obj/item/trash/buritto (user.loc)
 		icon_state = "open-burrito"
 
 /obj/item/reagent_container/food/snacks/packaged_burger
@@ -3300,6 +3340,7 @@
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
 		package = 0
+		new /obj/item/trash/burger (user.loc)
 		icon_state = "hburger"
 		item_state = "burger"
 
@@ -3324,6 +3365,7 @@
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 		package = 0
+		new /obj/item/trash/hotdog (user.loc)
 		icon_state = "open-hotdog"
 
 /obj/item/reagent_container/food/snacks/upp

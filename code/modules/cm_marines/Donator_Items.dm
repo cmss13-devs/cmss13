@@ -12,6 +12,9 @@
 	item_state = null
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/hats/donator.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
@@ -319,7 +322,7 @@
 		WEAR_R_HAND = "marine_armor"
 	)
 
-/obj/item/clothing/head/helmet/marine/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")

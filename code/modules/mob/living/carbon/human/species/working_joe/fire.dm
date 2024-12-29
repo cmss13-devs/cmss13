@@ -11,17 +11,19 @@
 	key = "temperatures"
 	sound = 'sound/voice/joe/temperatures.ogg'
 	haz_sound = 'sound/voice/joe/temperatures_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/temp.ogg'
 	say_message = "I am built to withstand temperatures of up to 1210 degrees."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/fire/fire
 	key = "fire"
 	sound = 'sound/voice/joe/fire.ogg'
 	haz_sound = 'sound/voice/joe/fire_haz.ogg'
+	upp_joe_sound = 'sound/voice/joe/upp_joe/tolko_zveri.ogg'
 	say_message = "Only wild animals fear fire."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/fire/unprotected_flames
 	key = "unprotectedflames"
@@ -30,3 +32,10 @@
 	say_message = "Unprotected flames are extremely dangerous and entirely unadvisable."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/fire/fire_on_station
+	key = "unprotectedflamesupp"
+	upp_joe_sound = 'sound/voice/joe/upp_joe/otkritogog.ogg'
+	say_message = "Usage of unprotected flames on station isn't allowed."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = UPP_JOE_EMOTE

@@ -375,7 +375,7 @@
 /mob/proc/point_to_atom(atom/A, turf/T)
 	var/mob/living/carbon/human/mob = src
 	var/datum/squad/squad = null
-	if(istype(mob, /mob/living/carbon/human))
+	if(ishuman(mob))
 		squad = mob.assigned_squad
 	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
 		recently_pointed_to = world.time + 50

@@ -605,8 +605,8 @@
 /obj/structure/machinery/hunt_ground_escape
 	name = "preserve shutter console"
 	desc = "A console for opening a shutter to another part of the reserve."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "terminal" ///place holder
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "crew"
 	density = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
@@ -668,8 +668,8 @@
 /obj/structure/machinery/blooding_spawner // for spawning an ert containing non-whitelisted youngbloods.
 	name = "blooding console"
 	desc = "A console used by Yautja to awaken Youngbloods awaiting their Blooding Ritual."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "syndicomp" //place holder
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "cameras"
 	density = TRUE
 	breakable = FALSE
 	explo_proof = TRUE

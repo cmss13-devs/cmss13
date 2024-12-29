@@ -80,4 +80,4 @@
 /area/yautja_grounds/young_blood_prep
 	name = "\improper Jungle Moon Young Blood Prep Area"
 	icon_state = "red"
-	ambience_exterior = AMBIENCE_CAVE
+	ambience_exterior = AMBIENCE_JUNGLE

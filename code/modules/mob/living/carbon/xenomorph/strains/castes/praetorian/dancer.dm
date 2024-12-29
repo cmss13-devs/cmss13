@@ -123,6 +123,8 @@
 	playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 	return ..()
 
+// ABILITY CODE
+
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/dodge_user = owner
 

@@ -111,7 +111,7 @@
 	if(connected_nodes)
 		for(var/obj/effect/roof_node/roof_node in connected_nodes)
 			qdel(roof_node)
-	if(connected_nodes)
+	if(connected_roof)
 		for(var/obj/structure/roof/roof in connected_roof)
 			qdel(roof)
 	return ..()

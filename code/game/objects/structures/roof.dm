@@ -108,13 +108,13 @@
 	var/location
 
 /datum/roof_master_node/Destroy(force, ...)
-    if(connected_nodes)
-        for(var/obj/effect/roof_node/roof_node in connected_nodes)
-            qdel(roof_node)
-    if(connected_roof)
-        for(var/obj/structure/roof/roof in connected_roof)
-            qdel(roof)
-    return ..()
+	if(connected_nodes)
+		for(var/obj/effect/roof_node/roof_node in connected_nodes)
+			qdel(roof_node)
+	if(connected_roof)
+		for(var/obj/structure/roof/roof in connected_roof)
+			qdel(roof)
+	return ..()
 
 /datum/roof_master_node/proc/add_under_roof(mob/living/living) //mob crossed connected node
 	if(living in mobs_under)

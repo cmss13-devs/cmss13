@@ -195,6 +195,10 @@
 "aaS" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
+"aaT" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/corsat/yellow,
+/area/corsat/omega/control)
 "aaU" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
@@ -463,6 +467,10 @@
 "abV" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/gamma/hangar)
+"abW" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat/yellow/northeast,
+/area/corsat/sigma/south/robotics)
 "abX" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
@@ -481,6 +489,10 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/gamma/hangar)
+"acb" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/corsat/yellow/northeast,
+/area/corsat/omega/maint)
 "acc" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood,
@@ -1061,6 +1073,11 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/carpet6_2/west,
 /area/corsat/gamma/residential/lounge)
+"aeh" = (
+/obj/structure/closet/l3closet,
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/plate,
+/area/corsat/gamma/biodome/virology)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -1069,6 +1086,10 @@
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"aej" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/corsat/plate,
+/area/corsat/gamma/biodome/virology)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
@@ -19604,10 +19625,6 @@
 "bxJ" = (
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/south/robotics)
-"bxK" = (
-/obj/structure/surface/rack,
-/turf/open/floor/corsat/yellow/northeast,
-/area/corsat/sigma/south/robotics)
 "bxL" = (
 /obj/structure/surface/rack,
 /obj/item/device/lightreplacer,
@@ -22741,10 +22758,6 @@
 /obj/item/tool/mop,
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/maint)
-"bLD" = (
-/obj/structure/closet/l3closet/janitor,
-/turf/open/floor/corsat/yellow/northeast,
-/area/corsat/omega/maint)
 "bLE" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/corsat/yellow/north,
@@ -25657,10 +25670,6 @@
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
-"bYU" = (
-/obj/structure/closet/l3closet/general,
-/turf/open/floor/corsat/yellow,
-/area/corsat/omega/control)
 "bYW" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/station_alert{
@@ -28592,10 +28601,6 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
-"ePL" = (
-/obj/structure/closet/l3closet/general,
-/turf/open/floor/corsat/plate,
-/area/corsat/gamma/biodome/virology)
 "eQR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -41716,11 +41721,6 @@
 /obj/structure/flora/pottedplant,
 /turf/open/floor/corsat/bluegrey/southeast,
 /area/corsat/gamma/hangar/flightcontrol)
-"sFD" = (
-/obj/structure/closet/l3closet/general,
-/obj/structure/machinery/light,
-/turf/open/floor/corsat/plate,
-/area/corsat/gamma/biodome/virology)
 "sFF" = (
 /obj/effect/landmark/queen_spawn,
 /turf/open/ice,
@@ -52689,7 +52689,7 @@ gfC
 aHD
 aIs
 ssh
-sFD
+aeh
 aUH
 beO
 bgg
@@ -52934,7 +52934,7 @@ dVN
 aIm
 cGb
 aRW
-ePL
+aej
 aUH
 beO
 bgc
@@ -56736,7 +56736,7 @@ bZm
 aLh
 ajp
 lLc
-bYU
+aaT
 aLh
 sWP
 sWP
@@ -63319,7 +63319,7 @@ azf
 agQ
 qKN
 kyQ
-bLD
+acb
 bQR
 bLL
 aoY
@@ -93474,7 +93474,7 @@ eRX
 bwW
 ydU
 auJ
-bxK
+abW
 evv
 uYe
 aMi

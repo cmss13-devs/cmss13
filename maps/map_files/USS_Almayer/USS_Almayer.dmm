@@ -140,9 +140,90 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"aat" = (
+/obj/structure/surface/rack,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_m_p)
 "aau" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
+"aav" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_m_p)
+"aaw" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/orange/southwest,
+/area/almayer/engineering/upper_engineering/port)
+"aax" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/medical_science)
+"aay" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/medical_science)
+"aaz" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/medical_science)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -13363,14 +13444,6 @@
 "bVd" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
-"bVe" = (
-/obj/structure/closet/l3closet/general,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
 "bVn" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -35632,17 +35705,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
-"kOJ" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_m_p)
 "kOR" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -36755,17 +36817,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_s)
-"lmw" = (
-/obj/structure/closet/l3closet/general,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
 "lmz" = (
 /turf/closed/wall/almayer/aicore/hull,
 /area/space)
@@ -42354,18 +42405,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_umbilical)
-"nDo" = (
-/obj/structure/closet/l3closet/general,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
 "nDy" = (
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
@@ -52592,25 +52631,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_a_p)
-"rJh" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 5;
-	pixel_y = -2
-	},
-/turf/open/floor/almayer/orange/southwest,
-/area/almayer/engineering/upper_engineering/port)
 "rJj" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -54271,26 +54291,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/evidence_storage)
-"ssk" = (
-/obj/structure/surface/rack,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_m_p)
 "ssU" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer/orange,
@@ -101470,7 +101470,7 @@ jFf
 vkp
 jrM
 mWs
-lmw
+aax
 vOy
 dyb
 tsM
@@ -101673,7 +101673,7 @@ vqZ
 vkp
 rDr
 usy
-nDo
+aay
 vOy
 glB
 vkp
@@ -101876,7 +101876,7 @@ foP
 sZy
 vEr
 irU
-bVe
+aaz
 vOy
 ggl
 jjS
@@ -102207,7 +102207,7 @@ ljG
 tSp
 bJt
 xbg
-ssk
+aat
 lyW
 ajZ
 bdH
@@ -102814,7 +102814,7 @@ bDs
 gSk
 vSp
 lHG
-kOJ
+aav
 mgb
 mgb
 lyW
@@ -115493,7 +115493,7 @@ xXa
 pZK
 cKL
 jbH
-rJh
+aaw
 jWh
 pld
 vhb

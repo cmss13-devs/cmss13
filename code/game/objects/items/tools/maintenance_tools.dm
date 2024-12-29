@@ -67,11 +67,15 @@
 	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
 	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
+	/// If the item should be assigned a random color
+	var/random_color = TRUE
 
 
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
-	switch(pick("red","blue","green","yellow","orange","black"))
+	if(!random_color)
+		return
+	switch(pick("blue","red","green","yellow","orange","black"))
 		if ("blue")
 			icon_state = "screwdriver"
 			item_state = "screwdriver"
@@ -92,8 +96,6 @@
 			item_state = "tac_screwdriver"
 
 
-	if (prob(75))
-		src.pixel_y = rand(0, 16)
 	return
 
 

@@ -17,11 +17,6 @@
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
-"aae" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/communications,
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outside/checkpoints/north)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -94,16 +89,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"aau" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/structure/machinery/computer/communications{
-	dir = 4
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/strata/blue1,
-/area/strata/ag/interior/outside/administration)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -120,11 +105,6 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
-"aay" = (
-/obj/structure/machinery/computer/communications,
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -2038,6 +2018,11 @@
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "aih" = (
 /obj/effect/landmark/crap_item,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/red1,
+/area/strata/ug/interior/jungle/structures/research)
+"aii" = (
+/obj/structure/machinery/computer/communications,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
@@ -13128,6 +13113,16 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
+"buy" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/blue1,
+/area/strata/ag/interior/outside/administration)
 "buz" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -19419,6 +19414,11 @@
 /obj/structure/platform/stone/strata,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/landing_zones/near_lz2)
+"eNz" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
@@ -41909,7 +41909,7 @@ cbi
 aac
 aac
 mvm
-aae
+eNz
 ioM
 cow
 beY
@@ -44173,7 +44173,7 @@ coB
 coB
 cfR
 cfR
-aau
+buy
 brt
 bAG
 bFB
@@ -71078,7 +71078,7 @@ bon
 bon
 bon
 adz
-aay
+aii
 aiV
 ajC
 aiV

@@ -661,4 +661,10 @@
 	chemclass = CHEM_CLASS_RARE
 	adj_temp = 5
 
-
+/datum/reagent/drink/bugjuice
+	name = "Bug Juice"
+	id = "bugjuice"
+	description = "Soda drink made from all kinds of insects, very nutritious."
+	nutriment_factor = 2 * FOOD_METABOLISM
+	color = "#2ca314" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_SPECIAL

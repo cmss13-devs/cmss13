@@ -362,7 +362,7 @@
 	description = "Powderized electrolyte beverage with a grape flavor, ready to be mixed with water."
 	reagent_state = SOLID
 	color = "#74206f" // rgb: 116, 32, 111
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION
 
@@ -372,7 +372,7 @@
 	description = "Powderized electrolyte beverage with an orange flavor, ready to be mixed with water. Smells of, surprise surprise, oranges."
 	reagent_state = SOLID
 	color = "#FFA500" // rgb: 255, 165, 0
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION
 
@@ -382,7 +382,7 @@
 	description = "Powderized electrolyte beverage with a lemon-lime flavor, ready to be mixed with water. Smells of, surprise surprise, lemons and limes."
 	reagent_state = SOLID
 	color = "#35b435" // rgb: 53, 180, 53
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION
 
@@ -392,7 +392,7 @@
 	description = "Powderized chocolate and hazelnut protein drink beverage, ready to be mixed with water."
 	reagent_state = SOLID
 	color = "#ac4729" // rgb: 172, 71, 41
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION
 
@@ -402,6 +402,6 @@
 	description = "Powderized chocolate drink beverage, ready to be mixed with water."
 	reagent_state = SOLID
 	color = "#46271e" // rgb: 70, 39, 30
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION

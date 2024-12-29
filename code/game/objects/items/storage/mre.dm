@@ -242,6 +242,9 @@
 	should_have_cookie = FALSE
 	should_have_utencil = FALSE
 
+/obj/item/storage/box/MRE/WY/choose_drink()
+	new /obj/item/reagent_container/food/drinks/cans/bugjuice(src)
+
 /obj/item/storage/box/MRE/WY/pickflavor()
 	side = pick(/obj/item/reagent_container/food/snacks/packaged_burger, /obj/item/reagent_container/food/snacks/packaged_burrito)
 	dessert = pick(

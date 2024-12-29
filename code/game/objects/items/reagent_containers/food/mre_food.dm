@@ -549,7 +549,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink/orange/Initialize()
 	. = ..()
-	reagents.add_reagent("dehydrated_orange_beverage", 4)
+	reagents.add_reagent("electrolyte_orange_beverage", 4)
 
 /obj/item/reagent_container/food/drinks/beverage_drink/lemonlime
 	name = "electrolyte beverage packet (lemon-lime)"
@@ -557,7 +557,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink/lemonlime/Initialize()
 	. = ..()
-	reagents.add_reagent("dehydrated_lemonlime_beverage", 4)
+	reagents.add_reagent("electrolyte_lemonlime_beverage", 4)
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate
 	name = "protein drink beverage packet (milk chocolate)"

@@ -381,6 +381,20 @@
 	reagents.add_reagent("soymilk", 10)
 	reagents.add_reagent("coco_drink", 10)
 
+/obj/item/reagent_container/food/drinks/cans/bugjuice
+	name = "\improper Weyland-Yutani Bug Juice Protein Drink"
+	desc = "W-Y brand plastic bottle full of toxic looking green goo, tastes like kiwi, but you are more than sure that there is none of them there."
+	desc_lore = "'Bug Juice' Protein Drink, more commonly labeled Bug Juice, was an inexpensive and calorific beverage made with farmed and processed insects such as cockroaches, mealworms, and beetles. Offered by a variety of manufacturers, Bug Juice was packaged in cartons, and was widely consumed on the Frontier. It was classified as both a drink and a foodstuff, and was a source of protein and water."
+	icon_state = "wy_bug_juice"
+	crushed_icon = "wy_bug_juice_crushed"
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
+	volume = 30
+
+/obj/item/reagent_container/food/drinks/cans/bugjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("bugjuice", 30)
+
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "\improper Weyland-Yutani Lite"
 	desc = "Beer. You've dialed in your target. Time to fire for effect."

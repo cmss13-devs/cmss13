@@ -224,7 +224,7 @@
 	icon_state = "latex"
 	item_state = "latex"
 	adopts_squad_color = FALSE
-	permeability_coefficient = 0.01
+	armor_bio = CLOTHING_ARMOR_MEIDUM
 
 /obj/item/clothing/gloves/marine/veteran/cbrn
 	name = "\improper M3 MOPP gloves"

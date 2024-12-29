@@ -224,7 +224,12 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /mob/hologram/railgun
 	name = "Camera"
 	density = FALSE
-	mouse_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
+
+/mob/hologram/railgun/handle_view(mob/M, atom/target)
+	. = ..()
+
+	if(M.client?.prefs?.custom_cursors)
+		M.client.mouse_pointer_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 /mob/hologram/railgun/Initialize(mapload, mob/M)
 	. = ..()

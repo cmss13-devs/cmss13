@@ -24,7 +24,8 @@ def _self_test():
 
     # Read the HEAD and ancestor commits
     # Assumption: origin on the runner is what we'd normally call upstream
-    ancestor = repo.merge_base(repo.head.target, repo.revparse_single("refs/remotes/origin/master").id)
+    # Assumption: head is a merge commit
+    ancestor = repo.merge_base(repo.revparse_single("HEAD^2").id, repo.revparse_single("refs/remotes/origin/master").id)
     ancestor_commit = None
     if not ancestor:
         print("Unable to determine merge base!")

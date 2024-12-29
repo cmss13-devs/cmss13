@@ -108,34 +108,34 @@
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/xenomorph/spit_shift = owner
+	if(!spit_shift.check_state())
 		return
-	for(var/i in 1 to length(X.caste.spit_types))
-		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
-			if(i == length(X.caste.spit_types))
-				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
+	for(var/i in 1 to length(spit_shift.caste.spit_types))
+		if(spit_shift.ammo == GLOB.ammo_list[spit_shift.caste.spit_types[i]])
+			if(i == length(spit_shift.caste.spit_types))
+				spit_shift.ammo = GLOB.ammo_list[spit_shift.caste.spit_types[1]]
 			else
-				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
+				spit_shift.ammo = GLOB.ammo_list[spit_shift.caste.spit_types[i+1]]
 			break
-	to_chat(X, SPAN_NOTICE("We will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
+	to_chat(spit_shift, SPAN_NOTICE("We will now spit [spit_shift.ammo.name] ([spit_shift.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[spit_shift.ammo.icon_state]")
 	return ..()
 
 /datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/xenomorph/regurigating_xeno = owner
+	if(!regurigating_xeno.check_state())
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_WARNING("We cannot regurgitate here."))
+	if(!isturf(regurigating_xeno.loc))
+		to_chat(regurigating_xeno, SPAN_WARNING("We cannot regurgitate here."))
 		return
 
-	if(length(X.stomach_contents))
-		for(var/mob/living/M in X.stomach_contents)
+	if(length(regurigating_xeno.stomach_contents))
+		for(var/mob/living/carbon in regurigating_xeno.stomach_contents)
 			// Also has good reason to be a proc on all Xenos
-			X.regurgitate(M, TRUE)
+			regurigating_xeno.regurgitate(carbon, TRUE)
 
 	return ..()
 
@@ -232,13 +232,13 @@
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	if(!..())
 		return FALSE
-	var/mob/living/carbon/xenomorph/X = owner
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
-	if(A.z != X.z)
+	var/mob/living/carbon/xenomorph/builder = owner
+	if(isstorage(A.loc) || builder.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(A.z != builder.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
-	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
+	switch(builder.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
 				apply_cooldown_override(xeno_cooldown * 3)
@@ -261,48 +261,48 @@
 	if(!action_cooldown_check())
 		return
 
-	var/mob/living/carbon/xenomorph/X = owner
-	if(!X.check_state(TRUE))
+	var/mob/living/carbon/xenomorph/mark_owner = owner
+	if(!mark_owner.check_state(TRUE))
 		return FALSE
 
 	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
-		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
+		to_chat(mark_owner, SPAN_XENOWARNING("We can't place resin markers on living things!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
+	if(isstorage(A.loc) || mark_owner.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
 
-	if(target_turf.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
+	if(target_turf.z != mark_owner.z)
+		to_chat(mark_owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
+	if(!mark_owner.hive.living_xeno_queen || mark_owner.hive.living_xeno_queen.z != mark_owner.z)
+		to_chat(mark_owner, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
 		return
 
 	var/tally = 0
 
-	for(var/obj/effect/alien/resin/marker/MRK in X.hive.resin_marks)
-		if(MRK.createdby == X.nicknumber)
+	for(var/obj/effect/alien/resin/marker/MRK in mark_owner.hive.resin_marks)
+		if(MRK.createdby == mark_owner.nicknumber)
 			tally++
 	if(tally >= max_markers)
-		to_chat(X, SPAN_XENOWARNING("We have reached the maximum number of resin marks."))
+		to_chat(mark_owner, SPAN_XENOWARNING("We have reached the maximum number of resin marks."))
 		var/list/promptlist = list("Yes", "No")
 		var/obj/effect/alien/resin/marker/Goober = null
 		var/promptuser = null
-		for(var/i=1, i<=length(X.hive.resin_marks))
-			Goober = X.hive.resin_marks[i]
-			if(Goober.createdby == X.nicknumber)
-				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
+		for(var/i=1, i<=length(mark_owner.hive.resin_marks))
+			Goober = mark_owner.hive.resin_marks[i]
+			if(Goober.createdby == mark_owner.nicknumber)
+				promptuser = tgui_input_list(mark_owner, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
 				break
 			i++
 		if(promptuser == "No")
 			return
 		else if(promptuser == "Yes")
 			qdel(Goober)
-			if(X.make_marker(target_turf))
+			if(mark_owner.make_marker(target_turf))
 				apply_cooldown()
 				return TRUE
-	else if(X.make_marker(target_turf))
+	else if(mark_owner.make_marker(target_turf))
 		apply_cooldown()
 		return TRUE
 

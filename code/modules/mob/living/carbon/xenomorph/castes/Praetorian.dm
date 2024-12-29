@@ -103,3 +103,36 @@
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
 	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))
 	return
+
+
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/acidball_user = owner
+	if (!acidball_user.check_state() || acidball_user.action_busy)
+		return
+
+	if (!action_cooldown_check())
+		return
+	if (!check_and_use_plasma_owner())
+		return
+
+	var/turf/current_turf = get_turf(acidball_user)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+
+	apply_cooldown()
+
+	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
+	grenade.forceMove(get_turf(acidball_user))
+	grenade.throw_atom(A, 5, SPEED_SLOW, acidball_user, TRUE)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	return ..()

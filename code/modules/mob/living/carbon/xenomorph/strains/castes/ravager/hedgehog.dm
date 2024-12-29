@@ -128,49 +128,39 @@
 		shards = min(max_shards, shards + shards_per_slash)
 	return
 
-
+// ABILITY CODE
 
 /datum/action/xeno_action/onclick/spike_shield/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/shield_user = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!xeno.check_state())
+	if (!shield_user.check_state())
 		return
 
-	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = shield_user.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(shield_user, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
 		return
 	behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
+	shield_user.visible_message(SPAN_XENODANGER("[shield_user] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
 
 	// Add our shield
-	var/datum/xeno_shield/hedgehog_shield/shield = xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
+	var/datum/xeno_shield/hedgehog_shield/shield = shield_user.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
 	if (shield)
-		shield.owner = xeno
+		shield.owner = shield_user
 		shield.shrapnel_amount = shield_shrapnel_amount
-		xeno.overlay_shields()
+		shield_user.overlay_shields()
 
-	xeno.create_shield(shield_duration, "shield2")
+	shield_user.create_shield(shield_duration, "shield2")
 	shield_active = TRUE
 	button.icon_state = "template_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()
 	return ..()
-
-/datum/action/xeno_action/onclick/spike_shield/action_cooldown_check()
-	if (shield_active) // If active shield, return FALSE so that this action does not get carried out
-		return FALSE
-	else if (cooldown_timer_id == TIMER_ID_NULL)
-		var/mob/living/carbon/xenomorph/xeno = owner
-		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-		return behavior.check_shards(shard_cost)
-	return FALSE
-
 /datum/action/xeno_action/onclick/spike_shield/proc/remove_shield()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -191,75 +181,55 @@
 	return
 
 /datum/action/xeno_action/activable/rav_spikes/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/hedgehog_rav = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(hedgehog_rav.loc) || !hedgehog_rav.check_state())
 		return
 
-	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = hedgehog_rav.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(hedgehog_rav, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
 		return
 	behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
+	hedgehog_rav.visible_message(SPAN_XENOWARNING("[hedgehog_rav] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
 
 	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
-	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
+	var/obj/projectile/projectile = new /obj/projectile(hedgehog_rav.loc, create_cause_data(initial(hedgehog_rav.caste_type), hedgehog_rav))
 
 	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
 
 	projectile.generate_bullet(ammo_datum)
 
-	projectile.fire_at(target, xeno, xeno, ammo_datum.max_range, ammo_datum.shell_speed)
-	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)
+	projectile.fire_at(target, hedgehog_rav, hedgehog_rav, ammo_datum.max_range, ammo_datum.shell_speed)
+	playsound(hedgehog_rav, 'sound/effects/spike_spray.ogg', 25, 1)
 
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/rav_spikes/action_cooldown_check()
-	if(!owner)
-		return FALSE
-	if (cooldown_timer_id == TIMER_ID_NULL)
-		var/mob/living/carbon/xenomorph/xeno = owner
-		if(!istype(xeno))
-			return FALSE
-		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-		return behavior.check_shards(shard_cost)
-	else
-		return FALSE
-
 /datum/action/xeno_action/onclick/spike_shed/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/spike_shedder = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!xeno.check_state())
+	if (!spike_shedder.check_state())
 		return
 
-	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = spike_shedder.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(spike_shedder, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
 		return
 	behavior.use_shards(shard_cost)
 	behavior.lock_shards()
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
-	xeno.spin_circle()
-	create_shrapnel(get_turf(xeno), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(xeno.caste_type), owner), TRUE)
-	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)
+	spike_shedder.visible_message(SPAN_XENOWARNING("[spike_shedder] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
+	spike_shedder.spin_circle()
+	create_shrapnel(get_turf(spike_shedder), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(spike_shedder.caste_type), owner), TRUE)
+	playsound(spike_shedder, 'sound/effects/spike_spray.ogg', 25, 1)
 
 	apply_cooldown()
 	return ..()
-
-/datum/action/xeno_action/onclick/spike_shed/action_cooldown_check()
-	if (cooldown_timer_id == TIMER_ID_NULL)
-		var/mob/living/carbon/xenomorph/xeno = owner
-		var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
-		return behavior.check_shards(shard_cost)
-	else
-		return FALSE

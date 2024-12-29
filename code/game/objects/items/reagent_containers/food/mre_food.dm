@@ -5,13 +5,15 @@
 	icon_state = "entree"
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	var/contents_food
+	var/no_packet_label = FALSE
 	var/food_list = list()
 
 /obj/item/mre_food_packet/Initialize(mapload, ...)
 	. = ..()
 	contents_food = pick(food_list)
-	var/obj/item/reagent_container/food/snacks/food = contents_food
-	name += " ([food.name])"
+	if(!no_packet_label)
+		var/obj/item/reagent_container/food/snacks/food = contents_food
+		name += " ([food.name])"
 
 /obj/item/mre_food_packet/ex_act()
 	deconstruct(FALSE)
@@ -748,7 +750,7 @@
 //WY GENERAL RATION
 
 /obj/item/mre_food_packet/entree/wy_colonist
-	name = "\improper WY brand ration main dish"
+	name = "\improper W-Y brand ration main dish"
 	desc = "Probably the most edible component of it, contains main nutrition contents."
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 	icon_state = "wy_main"
@@ -759,6 +761,28 @@
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/spaghettichunks,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_entree/grilledchickenbreast,
 	)
+
+//WY EMERGENCY RATION
+
+/obj/item/mre_food_packet/wy/cookie_brick
+	name = "emergency food packet (cookie briquette)"
+	desc = "A brick of a cookie, designed to be stored for prolonged periods of time, in extreme conditions, but still tastes like a compressed buttery cookie."
+	icon_state = "cookie_brick"
+	no_packet_label = TRUE
+	food_list = list(/obj/item/reagent_container/food/snacks/mre_food/wy_emergency_cookie)
+
+/obj/item/reagent_container/food/snacks/mre_food/wy_emergency_cookie
+	name = "\improper W-Y brand emergency nutrition briquette"
+	desc = "A brick of a cookie, designed to be stored for prolonged periods of time, in extreme conditions, but still tastes like a compressed buttery cookie."
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
+	icon_state = "cookie_brick_open"
+
+/obj/item/reagent_container/food/snacks/mre_food/wy_emergency_cookie/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 12)
+	reagents.add_reagent("bread", 12)
+	reagents.add_reagent("sugar", 4)
+
 
 //TWE
 

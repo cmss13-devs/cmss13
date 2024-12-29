@@ -225,7 +225,7 @@
 
 /obj/item/storage/box/MRE/WY
 
-	name = "\improper WY brand ration pack"
+	name = "\improper W-Y brand ration pack"
 	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods."
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"

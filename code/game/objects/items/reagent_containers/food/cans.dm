@@ -384,7 +384,7 @@
 /obj/item/reagent_container/food/drinks/cans/bugjuice
 	name = "\improper Weyland-Yutani Bug Juice Protein Drink"
 	desc = "W-Y brand plastic bottle full of toxic looking green goo, tastes like kiwi, but you are more than sure that there is none of them there."
-	desc_lore = "'Bug Juice' Protein Drink, more commonly labeled Bug Juice, was an inexpensive and calorific beverage made with farmed and processed insects such as cockroaches, mealworms, and beetles. Offered by a variety of manufacturers, Bug Juice was packaged in cartons, and was widely consumed on the Frontier. It was classified as both a drink and a foodstuff, and was a source of protein and water."
+	desc_lore = "'Bug Juice' Protein Drink, more commonly labeled Bug Juice, is an inexpensive and calorific beverage made with farmed and processed insects such as cockroaches, mealworms, and beetles. Offered by a variety of manufacturers, Bug Juice is packaged in cartons and bottles, and is widely consumed on the Frontier. It is classified as both a drink and a foodstuff, and is a source of protein and water."
 	icon_state = "wy_bug_juice"
 	crushed_icon = "wy_bug_juice_crushed"
 	has_open_icon = TRUE

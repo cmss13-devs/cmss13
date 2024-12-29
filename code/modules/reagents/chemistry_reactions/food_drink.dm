@@ -197,14 +197,14 @@
 	name = "Electrolyte Orange Beverage"
 	id = "electrolyte_orange_beverage"
 	result = "orangejuice"
-	required_reagents = list("dehydrated_orange_beverage" = 1, "water" = 5)
+	required_reagents = list("electrolyte_orange_beverage" = 1, "water" = 5)
 	result_amount = 5
 
 /datum/chemical_reaction/electrolyte_lemonline_beverage
 	name = "Electrolyte Lemon-Lime Beverage"
 	id = "electrolyte_lemonlime_beverage"
 	result = "lemon_lime"
-	required_reagents = list("dehydrated_lemonlime_beverage" = 1, "water" = 5)
+	required_reagents = list("electrolyte_lemonlime_beverage" = 1, "water" = 5)
 	result_amount = 5
 
 /datum/chemical_reaction/hazelnut_beverage

@@ -204,28 +204,28 @@
 	button.icon_state = dash_user.selected_ability == src ? "template_on" : "template"
 
 	var/list/target_mobs = list()
-	var/list/L = orange(1, dash_user)
-	for (var/mob/living/carbon/H in L)
-		if (!isxeno_human(H) || dash_user.can_not_harm(H))
+	var/list/ability_range = orange(1, dash_user)
+	for (var/mob/living/carbon/targets in ability_range)
+		if (!isxeno_human(targets) || dash_user.can_not_harm(targets))
 			continue
 
-		if (!(H in target_mobs))
-			target_mobs += H
+		if (!(targets in target_mobs))
+			target_mobs += targets
 
 	dash_user.visible_message(SPAN_XENODANGER("[dash_user] slashes its claws through the area around it!"), SPAN_XENODANGER("We slash our claws through the area around us!"))
 	dash_user.spin_circle()
 
-	for (var/mob/living/carbon/H in target_mobs)
-		if (H.stat)
+	for (var/mob/living/carbon/targets in target_mobs)
+		if (targets.stat)
 			continue
 
-		if (!isxeno_human(H) || dash_user.can_not_harm(H))
+		if (!isxeno_human(targets) || dash_user.can_not_harm(targets))
 			continue
 
 
-		dash_user.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
-		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
+		dash_user.flick_attack_overlay(targets, "slash")
+		H.apply_armoured_damage(get_xeno_damage_slash(targets, damage), ARMOR_MELEE, BRUTE)
+		playsound(get_turf(targets), "alien_claw_flesh", 30, 1)
 
 	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = dash_user.behavior_delegate

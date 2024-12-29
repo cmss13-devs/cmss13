@@ -388,11 +388,11 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "abC" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 4
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
 	},
-/turf/open/desert/rock/deep/transition,
-/area/desert_dam/interior/caves/temple)
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -402,19 +402,11 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"abE" = (
-/obj/structure/xenoautopsy/tank/broken/yautja,
-/turf/open/desert/rock/deep/rock3,
-/area/desert_dam/interior/caves/temple)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
-"abG" = (
-/obj/structure/xenoautopsy/tank/broken/yautja,
-/turf/open/shuttle/red,
-/area/desert_dam/interior/caves/temple)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
@@ -451,10 +443,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"abP" = (
-/obj/structure/xenoautopsy/tank/broken/yautja,
-/turf/open/desert/rock/deep/rock4,
-/area/desert_dam/interior/caves/temple)
 "abQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -497,10 +485,6 @@
 /obj/structure/largecrate/random,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
-"abY" = (
-/obj/structure/showcase/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
 "abZ" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -524,10 +508,6 @@
 	},
 /turf/closed/wall/indestructible/invisible,
 /area/desert_dam/exterior/river/riverside_east)
-"ace" = (
-/obj/structure/closet/yautja,
-/turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
 "acf" = (
 /obj/structure/surface/table,
 /turf/open/floor/whitegreen/west,
@@ -541,12 +521,6 @@
 "ach" = (
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/valley/valley_labs)
-"aci" = (
-/obj/structure/bed/chair/comfy/yautja{
-	dir = 1
-	},
-/turf/open/desert/rock/deep/transition/north,
-/area/desert_dam/interior/caves/temple)
 "acj" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -558,17 +532,6 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river/riverside_east)
-"acl" = (
-/obj/item/tool/pickaxe/drill,
-/obj/structure/closet/yautja,
-/turf/open/desert/rock/deep/transition/northeast,
-/area/desert_dam/interior/caves/temple)
-"acm" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
 "acn" = (
 /obj/item/trash/eat,
 /turf/open/asphalt,
@@ -5562,6 +5525,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"ays" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 1
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/caves/temple)
 "ayt" = (
 /obj/structure/janitorialcart,
 /turf/open/floor/plating,
@@ -35169,6 +35138,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown3/west,
 /area/desert_dam/interior/dam_interior/disposals)
+"duR" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/shuttle/red,
+/area/desert_dam/interior/caves/temple)
 "duU" = (
 /obj/structure/machinery/computer/med_data/laptop,
 /obj/structure/surface/table/woodentable/fancy,
@@ -43283,6 +43256,10 @@
 	},
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
+"ivQ" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/temple)
 "iwh" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -46612,6 +46589,10 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_central_south)
+"pNG" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/desert/rock/deep/rock4,
+/area/desert_dam/interior/caves/temple)
 "pOv" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -46857,6 +46838,10 @@
 	},
 /turf/open/shuttle/can_surgery/red,
 /area/desert_dam/interior/dam_interior/hanger)
+"qmy" = (
+/obj/structure/closet/yautja,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "qmU" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
@@ -48315,6 +48300,12 @@
 /obj/item/folder/yellow,
 /turf/open/floor/dark,
 /area/desert_dam/interior/dam_interior/office)
+"teR" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4
+	},
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/caves/temple)
 "thd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -49674,6 +49665,11 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_security)
+"vYZ" = (
+/obj/item/tool/pickaxe/drill,
+/obj/structure/closet/yautja,
+/turf/open/desert/rock/deep/transition/northeast,
+/area/desert_dam/interior/caves/temple)
 "wav" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt,
@@ -49996,6 +49992,10 @@
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/whitered/west,
 /area/desert_dam/building/medical/office1)
+"wFU" = (
+/obj/structure/showcase/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/desert_dam/interior/caves/temple)
 "wGI" = (
 /obj/structure/stairs{
 	dir = 8
@@ -55125,7 +55125,7 @@ bht
 bht
 bht
 bht
-acm
+abC
 afc
 dTs
 dTs
@@ -102871,7 +102871,7 @@ dTs
 dTs
 dTs
 aBL
-ace
+qmy
 qJU
 aBE
 aBE
@@ -103805,7 +103805,7 @@ aeT
 aeT
 aeT
 dTs
-acl
+vYZ
 iwy
 iwy
 ayC
@@ -104521,7 +104521,7 @@ ooQ
 aCk
 aBE
 aBE
-abC
+teR
 aBS
 aCk
 aBE
@@ -104748,7 +104748,7 @@ aBE
 aBE
 aAv
 ngw
-abY
+wFU
 jon
 qJU
 aCk
@@ -105210,7 +105210,7 @@ aBE
 dTs
 aBL
 kAJ
-aci
+ays
 aAv
 azC
 kOR
@@ -105444,7 +105444,7 @@ dTs
 dTs
 aBS
 uso
-aci
+ays
 aCk
 aBL
 aBL
@@ -107091,9 +107091,9 @@ aBL
 dTs
 dTs
 aBL
-abP
+pNG
 aBV
-abE
+ivQ
 aBL
 aBL
 dTs
@@ -107325,9 +107325,9 @@ aBL
 dTs
 dTs
 aBL
-abG
+duR
 xUU
-abG
+duR
 aBL
 dTs
 dTs

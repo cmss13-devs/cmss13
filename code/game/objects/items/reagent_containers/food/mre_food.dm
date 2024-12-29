@@ -783,7 +783,6 @@
 	reagents.add_reagent("bread", 12)
 	reagents.add_reagent("sugar", 4)
 
-
 //TWE
 
 /obj/item/mre_food_packet/twe

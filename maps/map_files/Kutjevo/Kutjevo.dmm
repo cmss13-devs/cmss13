@@ -2996,6 +2996,8 @@
 "era" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/item/defenses/handheld/tesla_coil,
+/obj/item/storage/box/MRE/WY,
+/obj/item/storage/box/MRE/WY,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "erX" = (

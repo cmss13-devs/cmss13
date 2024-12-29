@@ -4868,7 +4868,7 @@
 /area/strata/ag/interior/outpost/engi)
 "axr" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/MRE/WY,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -5448,7 +5448,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aAw" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/MRE/WY,
 /obj/item/tool/crowbar,
 /obj/structure/barricade/handrail/strata{
 	dir = 4

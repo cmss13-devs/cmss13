@@ -87,7 +87,7 @@
 
 /obj/item/ammo_box/magazine/misc/mre/wy
 	name = "\improper box of W-Y brand rations"
-	desc = "A box of basic packed foods, comes with all sorts of W-Y branded snacks. Feeding Better Worlds."
+	desc = "A box of basic packed foods, comes with all sorts of W-Y branded snacks. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
 	icon_state = "wy_food_crate"
 	magazine_type = /obj/item/storage/box/MRE/WY
 	overlay_content = "_wy_mre"

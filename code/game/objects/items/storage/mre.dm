@@ -224,9 +224,8 @@
 	new /obj/item/tool/kitchen/utensil/mre_spork/fsr(src)
 
 /obj/item/storage/box/MRE/WY
-
 	name = "\improper W-Y brand ration pack"
-	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods."
+	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"
 	icon_opened = "wy_mealpackopened"

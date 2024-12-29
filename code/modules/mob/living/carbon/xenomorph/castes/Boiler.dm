@@ -99,17 +99,18 @@
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
 
+// ABILITY CODE
 
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/lancer_user = owner
 
-	if (!istype(xeno) || !xeno.check_state())
+	if (!istype(lancer_user) || !lancer_user.check_state())
 		return
 
 	if (!activated_once && !action_cooldown_check())
 		return
 
-	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(lancer_user.loc))
 		return
 
 	if (!activated_once)
@@ -118,8 +119,8 @@
 		if (!check_and_use_plasma_owner())
 			return
 
-		xeno.create_empower()
-		xeno.visible_message(SPAN_XENODANGER("[xeno] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
+		lancer_user.create_empower()
+		lancer_user.visible_message(SPAN_XENODANGER("[lancer_user] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
 		activated_once = TRUE
 		stack()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
@@ -131,7 +132,7 @@
 		var/range = base_range + stacks*range_per_stack
 		var/damage = base_damage + stacks*damage_per_stack
 		var/turfs_visited = 0
-		for (var/turf/turf in get_line(get_turf(xeno), affected_atom))
+		for (var/turf/turf in get_line(get_turf(lancer_user), affected_atom))
 			if(turf.density || turf.opacity)
 				break
 
@@ -154,9 +155,9 @@
 
 			turfs_visited++
 
-			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", xeno)
+			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", lancer_user)
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
+		lancer_user.visible_message(SPAN_XENODANGER("[lancer_user] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
 		remove_stack_effects("We feel our speed return to normal!")
 		return TRUE
 
@@ -218,40 +219,40 @@
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/shroud_user = owner
 	if (!isxeno(owner))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!xeno.check_state())
+	if (!shroud_user.check_state())
 		return
 
 	if(sound_play)
-		playsound(xeno,"acid_strike", 35, 1)
+		playsound(shroud_user,"acid_strike", 35, 1)
 		sound_play = FALSE
 		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
 
-	if (!do_after(xeno, xeno.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
-		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our gas shroud."))
+	if (!do_after(shroud_user, shroud_user.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
+		to_chat(shroud_user, SPAN_XENODANGER("We decide to cancel our gas shroud."))
 		return
 
-	playsound(xeno,"acid_sizzle", 50, 1)
+	playsound(shroud_user,"acid_sizzle", 50, 1)
 
-	if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+	if(shroud_user.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_acid
-	else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+	else if(shroud_user.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
-		CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
+		CRASH("Globber has unknown ammo [shroud_user.ammo]! Oh no!")
 	var/datum/cause_data/cause_data = create_cause_data("acid shroud gas", owner)
-	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
+	spicy_gas.set_up(1, 0, get_turf(shroud_user), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We dump our acid through our pores, creating a shroud of gas!"))
+	to_chat(shroud_user, SPAN_XENOHIGHDANGER("We dump our acid through our pores, creating a shroud of gas!"))
 
 	for (var/action_type in action_types_to_cd)
-		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
+		var/datum/action/xeno_action/xeno_action = get_action(shroud_user, action_type)
 		if (!istype(xeno_action))
 			continue
 

@@ -46,6 +46,8 @@
 		/obj/item/clothing/suit/storage/bomber,
 		/obj/item/clothing/suit/storage/bomber/alt,
 		/obj/item/clothing/suit/storage/snow_suit/liaison,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt,
 		/obj/item/clothing/suit/storage/labcoat,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
@@ -84,6 +86,8 @@
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/head/beret/cm/black/civilian,
 		/obj/item/clothing/head/beret/cm/white/civilian,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat/alt,
 	)
 
 /datum/equipment_preset/wy/New()
@@ -145,6 +149,7 @@
 /datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/blue(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/blue(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_IN_BACK)
@@ -167,6 +172,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/secure/briefcase(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/black(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/black(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_IN_BACK)

@@ -3,6 +3,9 @@
 /obj/item/ammo_box
 	name = "\improper generic ammo box"
 	icon = 'icons/obj/items/weapons/guns/ammo_boxes/boxes_and_lids.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/ammo_boxes.dmi'
+	)
 	icon_state = "base"
 	w_class = SIZE_HUGE
 	var/empty = FALSE

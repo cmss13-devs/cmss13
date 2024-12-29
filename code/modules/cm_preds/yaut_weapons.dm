@@ -103,13 +103,13 @@
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
-				door.Open()
+				door.open()
 		else
 			user.visible_message(SPAN_DANGER("[user] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
-				door.Close()
+				door.close()
 
 /obj/item/weapon/bracer_attachment/attack_self(mob/living/carbon/human/user)
 	..()
@@ -269,7 +269,7 @@
 
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"
-	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
 
@@ -1267,7 +1267,6 @@
 	. = ..()
 	source = null
 
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
@@ -1354,6 +1353,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+	update_mouse_pointer(M, FALSE)
 
 	var/datum/action/predator_action/bracer/caster/caster_action
 	for(caster_action as anything in M.actions)

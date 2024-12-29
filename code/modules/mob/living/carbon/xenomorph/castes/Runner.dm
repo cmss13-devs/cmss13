@@ -35,7 +35,7 @@
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER
 	desc = "A small red alien that looks like it could run fairly quickly..."
-	icon = 'icons/mob/xenos/runner.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/runner.dmi'
 	icon_state = "Runner Walking"
 	icon_size = 64
 	layer = MOB_LAYER
@@ -66,8 +66,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/runner.dmi'
-	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_1/runner.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/runner.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Runner_1","Runner_2","Runner_3")

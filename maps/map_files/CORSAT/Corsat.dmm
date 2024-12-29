@@ -2269,7 +2269,7 @@
 "aiR" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/card,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/gamma/hangar/security)
 "aiS" = (
@@ -4288,6 +4288,7 @@
 "ard" = (
 /obj/structure/showcase{
 	icon_state = "broadcast receiver";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Subspace Receiver"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -4295,6 +4296,7 @@
 "are" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -4324,6 +4326,7 @@
 "ark" = (
 /obj/structure/showcase{
 	icon_state = "comm_server";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Communications Server"
 	},
 /obj/structure/machinery/light,
@@ -6108,7 +6111,7 @@
 /area/corsat/sigma/hangar/id)
 "ayr" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -6840,7 +6843,7 @@
 /area/corsat/sigma/airlock/south)
 "aAS" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/hangar/security)
 "aAT" = (
@@ -7197,6 +7200,7 @@
 "aCq" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/plate,
@@ -10560,6 +10564,7 @@
 "aOS" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /obj/structure/platform_decoration/metal/almayer/east{
@@ -12964,6 +12969,7 @@
 "aXq" = (
 /obj/structure/showcase{
 	icon_state = "relay";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Telecommunication Relay"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -14652,7 +14658,7 @@
 /area/corsat/sigma/hangar/security)
 "bcw" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 1
 	},
 /obj/structure/machinery/light,
@@ -16244,6 +16250,7 @@
 "bjb" = (
 /obj/structure/showcase{
 	icon_state = "hub";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Telecommunication Hub"
 	},
 /turf/open/floor/almayer/tcomms,
@@ -22072,7 +22079,8 @@
 /area/corsat/omega/maint)
 "bHz" = (
 /obj/structure/showcase{
-	icon_state = "bus"
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/almayer/tcomms,
 /area/corsat/sigma/southeast/telecomm)
@@ -22197,7 +22205,7 @@
 /area/corsat/gamma/engineering)
 "bJx" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/corsat/red/north,
 /area/corsat/gamma/hangar/cargo)
 "bJA" = (
@@ -22735,7 +22743,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/maint)
 "bLD" = (
-/obj/structure/closet/l3closet/janitor,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/omega/maint)
 "bLE" = (
@@ -24329,7 +24337,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "bSK" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/corsat/redcorner,
 /area/corsat/sigma/hangar/checkpoint)
 "bSM" = (
@@ -25651,7 +25659,7 @@
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bYU" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/control)
 "bYW" = (
@@ -25801,7 +25809,7 @@
 "bZz" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 1
 	},
 /turf/open/floor/corsat/red,
@@ -28535,6 +28543,7 @@
 "eMI" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat,
@@ -28585,7 +28594,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ePL" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/biodome/virology)
 "eQR" = (
@@ -36155,9 +36164,7 @@
 /area/corsat/sigma/biodome)
 "mJm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/guestpass{
-	reason = "Visitor"
-	},
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/theta/biodome/complex)
 "mJq" = (
@@ -37610,6 +37617,7 @@
 "olB" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/lightplate,
@@ -38868,6 +38876,7 @@
 "pJP" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /obj/structure/machinery/light{
@@ -41709,7 +41718,7 @@
 /turf/open/floor/corsat/bluegrey/southeast,
 /area/corsat/gamma/hangar/flightcontrol)
 "sFD" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/biodome/virology)
@@ -44149,6 +44158,7 @@
 "vic" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/lightplate,
@@ -45142,6 +45152,7 @@
 "wnB" = (
 /obj/structure/showcase{
 	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
 	name = "Processor Unit"
 	},
 /turf/open/floor/corsat/plate,

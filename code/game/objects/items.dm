@@ -90,13 +90,8 @@
 	var/list/actions
 	/// list of paths of action datums to give to the item on New().
 	var/list/actions_types
-
-	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
-
 	/// for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/gas_transfer_coefficient = 1
-	/// for chemicals/diseases
-	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
@@ -274,6 +269,9 @@
 				if("classic")
 					icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 					item_state = new_item_state ? new_item_state : "c_" + item_state
+				if("urban")
+					icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+					item_state = new_item_state ? new_item_state : "u_" + item_state
 		if(new_protection)
 			min_cold_protection_temperature = new_protection
 		else

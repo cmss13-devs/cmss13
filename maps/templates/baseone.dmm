@@ -102,9 +102,8 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /obj/structure/pipes/vents/pump{
 	dir = 8

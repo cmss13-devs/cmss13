@@ -8481,12 +8481,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
-"exZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/lv522/oob)
 "eym" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -51089,7 +51083,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-exZ
+tiQ
 tiQ
 tiQ
 vtc

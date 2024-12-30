@@ -545,6 +545,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/datum/squad/squad in squads)
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
+	mixed_squads = shuffle(mixed_squads)
 
 	var/preferred_squad
 	if(human?.client?.prefs?.preferred_squad)
@@ -556,11 +557,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(preferred_squad == "None")
-			if(squad.put_marine_in_squad(human))
-				return
-
-		else if(squad.name == preferred_squad || squad.equivalent_name == preferred_squad) //fav squad or faction equivalent has a spot for us, no more searching needed.
+		if(squad.name == preferred_squad || squad.equivalent_name == preferred_squad) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))
 				return
 

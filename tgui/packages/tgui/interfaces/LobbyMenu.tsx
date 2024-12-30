@@ -1,5 +1,5 @@
 import { randomInteger } from 'common/random';
-import { BooleanLike } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { storage } from 'common/storage';
 import {
   createContext,
@@ -17,6 +17,7 @@ import {
   Box,
   Button as NativeButton,
   Flex,
+  Icon,
   Modal,
   Section,
   Stack,
@@ -102,13 +103,11 @@ export const LobbyMenu = () => {
     >
       <audio src={resolveAsset('load.mp3')} ref={onLoadPlayer} />
       <Window.Content
-        className={`LobbyScreen ${
-          filterDisabled ? '' : 'filterEnabled'
-        } ${disableAnimations}`}
-        style={{
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
+        className={classes([
+          'LobbyScreen',
+          !filterDisabled && 'filterEnabled',
+          disableAnimations,
+        ])}
         fitted
       >
         <LobbyContext.Provider
@@ -239,9 +238,7 @@ const LobbyButtons = (props: {
     xenomorph_enabled,
   } = data;
 
-  const [xenoName] = useState(
-    `${xeno_prefix}-${randomInteger(0, 999)}${xeno_postfix}`,
-  );
+  const [xenoNumber] = useState(`${randomInteger(0, 999)}`);
 
   return (
     <Section
@@ -300,7 +297,7 @@ const LobbyButtons = (props: {
                           animationDelay: '1.4s',
                         }}
                       >
-                        {xenoName}
+                        {`${xeno_prefix}-${xenoNumber}${xeno_postfix}`}
                       </Box>
                     </Stack.Item>
                   </Stack>
@@ -316,6 +313,11 @@ const LobbyButtons = (props: {
           index={1}
           onClick={() => act('tutorial')}
           disabled={!tutorials_ready}
+          tooltip={
+            !tutorials_ready
+              ? 'Tutorials can only be started after the game is running.'
+              : ''
+          }
           icon="book-open"
         >
           Tutorial
@@ -365,30 +367,24 @@ const LobbyButtons = (props: {
 
         {round_start ? (
           <Stack.Item>
-            <Stack>
-              <Stack.Item grow>
-                <LobbyButton
-                  index={5}
-                  disabled={!!readied}
-                  onClick={() => act('ready')}
-                  icon={xenomorph_enabled ? 'virus' : 'check'}
-                  color={xenomorph_enabled ? 'purple' : undefined}
-                  tooltip={xenomorph_enabled ? 'Ready as Xenomorph' : undefined}
-                >
-                  Ready
-                </LobbyButton>
-              </Stack.Item>
-              <Stack.Item grow>
-                <LobbyButton
-                  index={5}
-                  disabled={!readied}
-                  onClick={() => act('unready')}
-                  icon="xmark"
-                >
-                  Not Ready
-                </LobbyButton>
-              </Stack.Item>
-            </Stack>
+            <LobbyButton
+              index={5}
+              selected={!!readied}
+              onClick={() => act(readied ? 'unready ' : 'ready')}
+              icon={readied ? 'check' : 'xmark'}
+              tooltip={
+                xenomorph_enabled ? 'Ready with Xenomorph enabled' : undefined
+              }
+            >
+              <Box inline>
+                <Stack justify="space-between">
+                  <Stack.Item>{readied ? 'Unready' : 'Ready'}</Stack.Item>
+                  <Stack.Item>
+                    {xenomorph_enabled && <Icon name="virus" mr="auto" />}
+                  </Stack.Item>
+                </Stack>
+              </Box>
+            </LobbyButton>
           </Stack.Item>
         ) : (
           <>
@@ -551,7 +547,7 @@ const TimedDivider = () => {
         ref.current!.style.display = 'block';
       }, 1500);
     }
-  });
+  }, [themeDisable]);
 
   return (
     <Stack.Item>

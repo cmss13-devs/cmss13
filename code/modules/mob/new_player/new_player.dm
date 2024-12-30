@@ -39,6 +39,8 @@
 			AttemptLateSpawn(href_list["job_selected"])
 			return
 
+/mob/new_player/var/datum/tutorial_menu/tutorial_menu
+
 /mob/new_player/proc/tutorial_menu()
 	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
 		to_chat(src, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
@@ -52,8 +54,9 @@
 		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
 		return
 
-	var/datum/tutorial_menu/menu = new(src)
-	menu.ui_interact(src)
+	if(!tutorial_menu)
+		tutorial_menu = new(src)
+	tutorial_menu.ui_interact(src)
 
 /mob/new_player/proc/attempt_observe()
 	if(src != usr)

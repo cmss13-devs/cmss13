@@ -150,6 +150,9 @@
   font-family: monospace;
   font-weight: 700;
 
+  background-position: 'center';
+  background-size: 'cover';
+
   .bgBackground {
     background-position: center;
     background-size: cover;
@@ -171,9 +174,15 @@
     width: 24px;
     height: 24px;
     margin-left: -0.25em;
-    margin-top: 0.25em;
     margin-right: 0.25em;
     margin-bottom: -0.25em;
+  }
+
+  .Button__content {
+    .Icon {
+      vertical-align: middle;
+      margin-bottom: 3px;
+    }
   }
 }
 

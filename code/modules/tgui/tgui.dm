@@ -89,6 +89,9 @@
  *
  * Open this UI (and initialize it with data).
  *
+ * Args:
+ * preinitialized: bool - if TRUE, we will not attempt to force strict mode on the tgui's window datum
+ *
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
 /datum/tgui/proc/open(preinitialized = FALSE)

@@ -3,12 +3,12 @@
 	prefix = FALSE
 
 /datum/asset/simple/lobby_art/register()
-	var/icon = SSlobby_art.selected_file_name
+	var/icon_string = "config/lobby_art/[SSlobby_art.selected_file_name].png"
 
-	if(!icon)
+	if(!icon_string || !fexists(icon_string))
 		return
 
-	var/asset = icon("config/lobby_art/[icon].png")
+	var/asset = icon(icon_string)
 	if (!asset)
 		return
 

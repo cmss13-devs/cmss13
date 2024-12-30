@@ -34,7 +34,7 @@
 			neighbor = locate() in adjacent_loc
 			if(!neighbor)
 				neighbor = new(adjacent_loc)
-	return INITIALIZE_HINT_LATELOAD
+	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/structure/roof/LateInitialize() //we use late init to allow for lazy nodes to spawn first on mapload
 	. = ..()
@@ -49,12 +49,12 @@
 	roof_master_node.connect(loc)
 
 /obj/structure/roof/Destroy(force, ...)
-    if(linked_master)
-        linked_master.remove_roof(src)
-    linked_master = null;
-    for(var/mob/mob as anything in GLOB.player_list)
-        mob.client?.images -= normal_image
-    return ..()
+	if(linked_master)
+		linked_master.remove_roof(src)
+	linked_master = null;
+	for(var/mob/mob as anything in GLOB.player_list)
+		mob.client?.images -= normal_image
+	return ..()
 
 /obj/structure/roof/proc/add_default_image(subsystem, mob/mob)
 	SIGNAL_HANDLER
@@ -114,13 +114,13 @@
 	var/location
 
 /datum/roof_master_node/Destroy(force, ...)
-    if(connected_nodes)
-        for(var/obj/effect/roof_node/roof_node in connected_nodes)
-            qdel(roof_node)
-    if(connected_roof)
-        for(var/obj/structure/roof/roof in connected_roof)
-            qdel(roof)
-    return ..()
+	if(connected_nodes)
+		for(var/obj/effect/roof_node/roof_node in connected_nodes)
+			qdel(roof_node)
+	if(connected_roof)
+		for(var/obj/structure/roof/roof in connected_roof)
+			qdel(roof)
+	return ..()
 
 /datum/roof_master_node/proc/add_under_roof(mob/living/living) //mob crossed connected node
 	if(living in mobs_under)
@@ -165,7 +165,7 @@
 		unprocesed_nodes += node
 
 
-	while(unprocesed_nodes.len)
+	while(length(unprocesed_nodes))
 		var/obj/effect/roof_node/node = popleft(unprocesed_nodes)
 		var/list/new_nodes = node.link_master(src)
 		if(new_nodes)
@@ -176,7 +176,7 @@
 	for(var/obj/structure/roof/roof in location)
 		unprocesed_roofs += roof
 
-	while(unprocesed_roofs.len)
+	while(length(unprocesed_roofs))
 		var/obj/structure/roof/roof = popleft(unprocesed_roofs)
 		var/list/new_roofs = roof.link_master(src)
 		if(new_roofs)

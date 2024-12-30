@@ -12,10 +12,12 @@
 	icon_state = "paper"
 	item_state = "paper"
 	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
 	)
+	item_state_slots = list(WEAR_HEAD = "paper")
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
@@ -916,10 +918,16 @@
 	name = "Colonial Space Grunts"
 	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
 
-/obj/item/paper/colonial_grunts/Initialize(mapload, ...)
+/obj/item/paper/colonial_grunts/Initialize(mapload, photo_list)
+	..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/item/paper/colonial_grunts/LateInitialize()
 	. = ..()
 	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
-	update_icon()
+
+/obj/item/paper/colonial_grunts/update_icon()
+	return // Keep original icon_state
 
 /obj/item/paper/liaison_brief
 	name = "Liaison Colony Briefing"

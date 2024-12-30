@@ -1,4 +1,4 @@
-#define XENO_DEEVOLVE_COOLDOWN 5 MINUTES
+#define XENO_DEEVOLVE_COOLDOWN 4 MINUTES
 
 /**
  * A component that should be on all xenos that should be prevented from de-evolution manipulation.

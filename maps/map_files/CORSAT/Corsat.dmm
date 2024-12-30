@@ -195,6 +195,10 @@
 "aaS" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
+"aaT" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat/yellow/northeast,
+/area/corsat/sigma/south/robotics)
 "aaU" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
@@ -10548,12 +10552,6 @@
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/sigma/south/complex)
-"aOQ" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/inaccessible)
 "aOR" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/platform_decoration/metal/almayer/north{
@@ -19603,10 +19601,6 @@
 /area/corsat/sigma/south/robotics)
 "bxJ" = (
 /turf/open/floor/corsat/yellow/north,
-/area/corsat/sigma/south/robotics)
-"bxK" = (
-/obj/structure/surface/rack,
-/turf/open/floor/corsat/yellow/northeast,
 /area/corsat/sigma/south/robotics)
 "bxL" = (
 /obj/structure/surface/rack,
@@ -80592,7 +80586,7 @@ ylo
 ylo
 ylo
 qIU
-aOQ
+qIU
 qIU
 ylo
 ylo
@@ -93474,7 +93468,7 @@ eRX
 bwW
 ydU
 auJ
-bxK
+aaT
 evv
 uYe
 aMi

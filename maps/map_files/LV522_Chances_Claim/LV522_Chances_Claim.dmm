@@ -10312,7 +10312,7 @@
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
 	pixel_x = 5;
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
@@ -32640,7 +32640,7 @@
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
 	pixel_x = 5;
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrownfull2,

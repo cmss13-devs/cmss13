@@ -13,6 +13,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/minigun
@@ -26,9 +28,6 @@
 /obj/item/weapon/gun/minigun/Initialize(mapload, spawn_empty)
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
-
-/obj/item/weapon/gun/minigun/get_mouse_pointer()
-	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
@@ -82,8 +81,11 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 	fire_sound = 'sound/weapons/gun_m60.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
+
 	current_mag = /obj/item/ammo_magazine/m60
 	w_class = SIZE_LARGE
 	force = 25
@@ -100,20 +102,16 @@
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
-	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
+	var/cover_open = FALSE //if the gun's feed-cover is open or not.
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
-/obj/item/weapon/gun/m60/get_mouse_pointer()
-	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
-
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 27, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)
-
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()

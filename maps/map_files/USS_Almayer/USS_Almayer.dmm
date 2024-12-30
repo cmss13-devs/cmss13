@@ -150,58 +150,32 @@
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/living/pilotbunks)
 "aav" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/cargo,
 /area/almayer/hallways/hangar)
 "aaw" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
-"aax" = (
-/obj/structure/dropship_equipment/fuel/fuel_enhancer,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
-"aay" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
-"aaz" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
-"aaA" = (
-/obj/structure/machinery/light,
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/hangar)
-"aaB" = (
+"aax" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
-"aaC" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
-"aaD" = (
+"aay" = (
 /obj/effect/landmark/start/doctor,
 /obj/effect/landmark/late_join/doctor,
 /obj/effect/landmark/start/field_doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
+"aaC" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -221,14 +195,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
-"aaG" = (
-/obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	autoname = 0;
-	c_tag = "AI - Records";
-	dir = 8
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -237,53 +203,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
-"aaI" = (
-/obj/structure/machinery/computer/tech_control{
-	density = 0;
-	pixel_y = 16
-	},
-/turf/open/floor/almayer/no_build/ai_floors,
-/area/almayer/command/airoom)
-"aaJ" = (
-/obj/structure/prop/server_equipment/yutani_server{
-	density = 0;
-	desc = "A powerful server tower housing various AI functions.";
-	name = "server tower";
-	pixel_y = 16
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
-"aaK" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/closet/l3closet/scientist,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
-"aaL" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/closet/l3closet/scientist,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
-"aaM" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/closet/l3closet/scientist,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/medical/medical_science)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -6058,6 +5977,13 @@
 "aMU" = (
 /turf/open/floor/almayer/red,
 /area/almayer/command/lifeboat)
+"aMY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
 "aNc" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -9743,6 +9669,11 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_fore_hallway)
+"bqF" = (
+/obj/structure/dropship_equipment/fuel/fuel_enhancer,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "bqH" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -11515,6 +11446,15 @@
 	icon_state = "W"
 	},
 /turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
+"bGu" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bGw" = (
 /obj/structure/bed/chair{
@@ -13450,6 +13390,14 @@
 "bVd" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
+"bVe" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/medical_science)
 "bVn" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -21007,6 +20955,14 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/green/east,
 /area/almayer/hallways/lower/port_midship_hallway)
+"eGr" = (
+/obj/structure/machinery/camera/autoname/almayer/containment/ares{
+	autoname = 0;
+	c_tag = "AI - Records";
+	dir = 8
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "eGH" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -28520,6 +28476,15 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer/green/north,
 /area/almayer/living/grunt_rnr)
+"hTl" = (
+/obj/structure/prop/server_equipment/yutani_server{
+	density = 0;
+	desc = "A powerful server tower housing various AI functions.";
+	name = "server tower";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "hTt" = (
 /obj/structure/machinery/brig_cell/cell_1{
 	pixel_x = 32;
@@ -36799,6 +36764,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_s)
+"lmw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/medical_science)
 "lmz" = (
 /turf/closed/wall/almayer/aicore/hull,
 /area/space)
@@ -42387,6 +42363,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_umbilical)
+"nDo" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/medical/medical_science)
 "nDy" = (
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
@@ -46579,6 +46567,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
+"pmV" = (
+/obj/structure/machinery/computer/tech_control{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/ai_floors,
+/area/almayer/command/airoom)
 "pnh" = (
 /obj/structure/ladder{
 	height = 2;
@@ -57831,6 +57826,11 @@
 /obj/effect/landmark/late_join/chief_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
+"tQL" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "tQV" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/south1)
@@ -89591,8 +89591,8 @@ oZp
 eXq
 vvp
 aYd
-aaz
-aax
+aaw
+bqF
 aat
 pcl
 oRJ
@@ -89794,9 +89794,9 @@ gEg
 dRD
 bdV
 bvf
-aaA
+tQL
 bcm
-aav
+bGu
 bvf
 fKt
 xyw
@@ -89997,9 +89997,9 @@ lkf
 eXq
 ooh
 pcl
-aaB
-aay
-aaw
+aax
+aav
+aMY
 pcl
 xNb
 aYt
@@ -99721,7 +99721,7 @@ bwG
 rUq
 rUq
 sab
-aaD
+aay
 izk
 pQc
 cWr
@@ -101472,7 +101472,7 @@ jFf
 vkp
 jrM
 mWs
-aaK
+lmw
 vOy
 dyb
 tsM
@@ -101675,7 +101675,7 @@ vqZ
 vkp
 rDr
 usy
-aaL
+nDo
 vOy
 glB
 vkp
@@ -101878,7 +101878,7 @@ foP
 sZy
 vEr
 irU
-aaM
+bVe
 vOy
 ggl
 jjS
@@ -126084,8 +126084,8 @@ daz
 kfU
 kfU
 daz
-aaI
-aaG
+pmV
+eGr
 qQS
 qQS
 rby
@@ -127708,7 +127708,7 @@ daz
 kfU
 kfU
 daz
-aaJ
+hTl
 mIJ
 xDC
 yaQ

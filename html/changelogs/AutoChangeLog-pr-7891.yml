@@ -1,5 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Mobs no longer get unnested when the wall that they are on gets upgraded."
-  - bugfix: "Mobs now regain their original pixel offset upon being unnested even when jittering."

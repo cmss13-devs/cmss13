@@ -17,7 +17,6 @@ import {
   Box,
   Button as NativeButton,
   Flex,
-  Icon,
   Modal,
   Section,
   Stack,
@@ -376,14 +375,7 @@ const LobbyButtons = (props: {
                 xenomorph_enabled ? 'Ready with Xenomorph enabled' : undefined
               }
             >
-              <Box inline>
-                <Stack justify="space-between">
-                  <Stack.Item>{readied ? 'Unready' : 'Ready'}</Stack.Item>
-                  <Stack.Item>
-                    {xenomorph_enabled && <Icon name="virus" mr="auto" />}
-                  </Stack.Item>
-                </Stack>
-              </Box>
+              {readied ? 'Unready' : 'Ready'}
             </LobbyButton>
           </Stack.Item>
         ) : (

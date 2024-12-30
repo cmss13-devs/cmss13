@@ -7,7 +7,7 @@
 	icon_state = "black"
 	item_state = "black"
 	siemens_coefficient = 0.6
-	permeability_coefficient = 0.05
+
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
@@ -84,7 +84,7 @@
 	icon_state = "yellow"
 	item_state = "ygloves"
 	siemens_coefficient = 0
-	permeability_coefficient = 0.01
+
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/techofficer/commander

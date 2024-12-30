@@ -440,6 +440,10 @@
 	walltype = WALL_CULT
 	color = "#3c3434"
 
+/turf/closed/wall/cult/hunting_grounds
+	name = "wall"
+	hull = TRUE
+
 /turf/closed/wall/cult/make_girder(destroyed_girder)
 	return
 

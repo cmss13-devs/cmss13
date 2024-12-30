@@ -1,0 +1,4 @@
+author: "Drathek Nanu"
+delete-after: True
+changes:
+  - rscadd: "Added maplint to check whether pipes run under constructed walls"

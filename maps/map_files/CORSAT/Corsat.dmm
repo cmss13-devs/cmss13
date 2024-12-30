@@ -195,10 +195,6 @@
 "aaS" = (
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/gamma/hangar)
-"aaT" = (
-/obj/structure/surface/rack,
-/turf/open/floor/corsat/yellow/northeast,
-/area/corsat/sigma/south/robotics)
 "aaU" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/gamma/hangar)
@@ -19601,6 +19597,10 @@
 /area/corsat/sigma/south/robotics)
 "bxJ" = (
 /turf/open/floor/corsat/yellow/north,
+/area/corsat/sigma/south/robotics)
+"bxK" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat/yellow/northeast,
 /area/corsat/sigma/south/robotics)
 "bxL" = (
 /obj/structure/surface/rack,
@@ -93468,7 +93468,7 @@ eRX
 bwW
 ydU
 auJ
-aaT
+bxK
 evv
 uYe
 aMi

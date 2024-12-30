@@ -593,44 +593,12 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
-"acm" = (
-/obj/structure/surface/rack,
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	pixel_x = 5;
-	registered_name = "John Smith"
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/landing_zone_1/ceiling)
 "acn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
-"aco" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/structure/machinery/light,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/landing_zone_1/ceiling)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -639,250 +607,14 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
-"acr" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/lv522/indoors/c_block/garage)
-"acs" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/stamp/denied{
-	pixel_x = -11;
-	pixel_y = 8
-	},
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	pixel_x = 5;
-	registered_name = "John Smith"
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/c_block/cargo)
-"act" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"acu" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
 "acv" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/containers)
-"acw" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	layer = 3.1;
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"acx" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/lv522/indoors/c_block/garage)
-"acy" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 4;
-	pixel_y = 21
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/central_streets)
-"acz" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 4;
-	pixel_y = 21
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"acA" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -2;
-	pixel_y = -4
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"acB" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	layer = 3.1;
-	pixel_x = 2;
-	pixel_y = 20
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"acC" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
-"acD" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/colony_streets/east_central_street)
 "acE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/bridge)
-"acF" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	layer = 3.1;
-	pixel_x = 4;
-	pixel_y = 21
-	},
-/turf/open/asphalt/cement/cement3,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"acG" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"acH" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 4;
-	pixel_y = 21
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"acI" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"acJ" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"acK" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/nw_rockies)
-"acL" = (
-/obj/structure/closet/crate/trashcart,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 10
-	},
-/turf/open/asphalt/cement/cement12,
-/area/lv522/outdoors/nw_rockies)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -5403,6 +5135,19 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
+"cQm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/garage)
 "cQv" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -10561,6 +10306,17 @@
 /obj/item/seeds/potatoseed,
 /turf/open/floor/prison/greenfull/northwest,
 /area/lv522/indoors/b_block/hydro)
+"fDF" = (
+/obj/structure/surface/rack,
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	pixel_x = 5;
+	registered_name = "John Smith"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1/ceiling)
 "fEF" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/radiator_tile2,
@@ -13384,6 +13140,18 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
+"hgM" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/nw_rockies)
 "hgQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/browncorner/north,
@@ -13781,6 +13549,17 @@
 /obj/structure/bed/chair,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
+"hvE" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/nw_rockies)
 "hwf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -13828,6 +13607,17 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_street)
+"hxY" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "hyb" = (
 /obj/item/ammo_magazine/pistol/m1911{
 	pixel_x = 9;
@@ -16469,6 +16259,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/hallway)
+"iVm" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "iVy" = (
 /obj/structure/machinery/sensortower{
 	pixel_x = 6
@@ -17890,6 +17691,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
+"jGa" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "jGe" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 8;
@@ -18171,6 +17983,25 @@
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
+"jOw" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "jOx" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -21792,6 +21623,18 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/containers)
+"lFO" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	layer = 3.1;
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "lGv" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -23838,6 +23681,18 @@
 /obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"mJQ" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	layer = 3.1;
+	pixel_x = 2;
+	pixel_y = 20
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "mJS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26130,6 +25985,17 @@
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/asphalt/cement/cement4,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"nQQ" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 4;
+	pixel_y = 21
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "nQT" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/plating,
@@ -26361,6 +26227,17 @@
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
+"nWq" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "nWD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -27080,6 +26957,27 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
+"opt" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1/ceiling)
 "opO" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/prison,
@@ -29600,6 +29498,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
+"pOm" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	layer = 3.1;
+	pixel_x = 4;
+	pixel_y = 21
+	},
+/turf/open/asphalt/cement/cement3,
+/area/lv522/outdoors/colony_streets/north_east_street)
 "pOs" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -31560,6 +31470,17 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"qKr" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 4;
+	pixel_y = 21
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/central_streets)
 "qLa" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -31601,6 +31522,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan1,
 /area/lv522/indoors/lone_buildings/chunk)
+"qLQ" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "qMd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -32698,6 +32630,21 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/east_central_street)
+"rfK" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/stamp/denied{
+	pixel_x = -11;
+	pixel_y = 8
+	},
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	pixel_x = 5;
+	registered_name = "John Smith"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/indoors/c_block/cargo)
 "rfW" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/glasses/sunglasses,
@@ -33916,6 +33863,17 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/hallway)
+"rMz" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 4;
+	pixel_y = 21
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "rMD" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/corsat/plate,
@@ -36160,6 +36118,17 @@
 /obj/structure/platform_decoration/metal/almayer/southwest,
 /turf/open/gm/river,
 /area/lv522/oob)
+"sRY" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "sSi" = (
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -40760,6 +40729,25 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
+"vfC" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/east_central_street)
 "vfK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -43670,6 +43658,18 @@
 	icon_state = "62"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
+"wzt" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/garage)
 "wzx" = (
 /obj/item/tool/pickaxe/silver,
 /turf/open/floor/prison,
@@ -55519,7 +55519,7 @@ tFx
 tFx
 nuU
 fDj
-aco
+opt
 tFx
 tFx
 fLF
@@ -55738,7 +55738,7 @@ ien
 veQ
 sbF
 aFf
-acm
+fDF
 tKS
 mvP
 yhU
@@ -60444,7 +60444,7 @@ wYa
 fXx
 rMF
 tSL
-acy
+qKr
 tSL
 tSL
 rMF
@@ -61393,7 +61393,7 @@ oVO
 gEB
 qqJ
 gXR
-acL
+hgM
 wbt
 wbt
 rWS
@@ -61806,7 +61806,7 @@ gEB
 frZ
 gXR
 gXR
-acK
+hvE
 bHA
 bHA
 uSo
@@ -67659,7 +67659,7 @@ srm
 jmG
 kkP
 wly
-acs
+rfK
 jmG
 jmG
 kie
@@ -69439,7 +69439,7 @@ fwo
 hQU
 xZE
 xZE
-acH
+nQQ
 qSH
 trV
 qSH
@@ -69645,7 +69645,7 @@ jXp
 jlh
 xZE
 xZE
-acI
+jGa
 qSH
 trV
 qSH
@@ -70263,7 +70263,7 @@ jYu
 kdf
 xZE
 xZE
-acJ
+jOw
 qSH
 trV
 umR
@@ -72951,7 +72951,7 @@ vGp
 vGp
 vGp
 ecq
-acG
+nWq
 vGp
 qSH
 qSH
@@ -73983,7 +73983,7 @@ oiA
 ecq
 vTx
 qJU
-acF
+pOm
 vTx
 vTx
 vTx
@@ -75066,11 +75066,11 @@ xXg
 oLg
 aGE
 uvC
-acC
-acB
+vfC
+mJQ
 kug
 dEP
-acz
+rMz
 xXg
 vNk
 vNk
@@ -75477,7 +75477,7 @@ bmg
 xXg
 oLg
 xXg
-acB
+mJQ
 xXg
 lWW
 xXg
@@ -75486,7 +75486,7 @@ xXg
 xXg
 xXg
 xXg
-acu
+hxY
 rHX
 cKo
 xvB
@@ -75684,16 +75684,16 @@ igT
 oLg
 gIg
 ceG
-acD
+sRY
 xXg
 kzr
 kug
-acA
+iVm
 xXg
 xXg
 xXg
 xXg
-act
+qLQ
 nDI
 xvB
 kEQ
@@ -75898,7 +75898,7 @@ uuD
 uuD
 uuD
 uuD
-acw
+lFO
 gIg
 imT
 xvl
@@ -79196,7 +79196,7 @@ vjn
 tID
 uaI
 kxq
-acr
+cQm
 cIA
 uKw
 dKd
@@ -80223,7 +80223,7 @@ ngd
 ryk
 wao
 pzj
-acx
+wzt
 uaI
 xCY
 cUG

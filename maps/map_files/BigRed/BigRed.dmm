@@ -9,18 +9,9 @@
 	},
 /area/space)
 "aac" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 7;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/generic,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/s)
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/bigredv2/outside/c)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -181,25 +172,14 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaM" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 7;
-	pixel_y = 3;
-	layer = 3.1
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 1
 	},
-/obj/effect/decal/cleanable/generic,
-/obj/item/stack/sheet/cardboard{
-	pixel_x = 2;
-	pixel_y = -5;
-	layer = 3.01
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/s)
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/c)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -276,27 +256,29 @@
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
 "abb" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 10;
-	pixel_y = 6
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/s)
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/c)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abd" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/s)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/c)
 "abe" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
-/area/bigredv2/outside/s)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/c)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -404,11 +386,12 @@
 /turf/open/floor/dark,
 /area/bigredv2/landing/console)
 "abz" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 1
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
 	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/s)
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
 "abA" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -469,15 +452,25 @@
 /turf/open/floor/darkgreen2/southeast,
 /area/bigredv2/outside/space_port)
 "abL" = (
-/obj/item/tool/warning_cone,
-/obj/structure/barricade/handrail/wire{
-	dir = 1
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/s)
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/general_offices)
 "abM" = (
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/caves_north)
+"abN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/c)
 "abO" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_north)
@@ -514,9 +507,12 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abU" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/bigredv2/outside/c)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "abV" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_north)
@@ -528,12 +524,11 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/e)
 "abX" = (
-/obj/item/stack/cable_coil/cut,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/c)
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "abY" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -562,14 +557,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
-"acc" = (
-/obj/item/tool/warning_cone,
-/obj/structure/flora/grass/desert/lightgrass_1,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/bigredv2/outside/c)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -589,33 +576,12 @@
 "ach" = (
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
-"aci" = (
-/obj/effect/decal/strata_decals/grime/grime1{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/bigredv2/outside/c)
 "acj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
-"ack" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/bigredv2/outside/c)
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -655,15 +621,6 @@
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
-"act" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/bigredv2/outside/c)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -683,30 +640,12 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"acy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/bigredv2/outside/c)
 "acz" = (
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "acA" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
-"acB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/bigredv2/outside/c)
 "acC" = (
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
@@ -714,33 +653,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/bigredv2/outside/c)
 "acF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acG" = (
-/obj/effect/decal/cleanable/vomit{
-	icon_state = "vomit_4"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/bigredv2/outside/c)
 "acH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -768,30 +685,10 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"acL" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/bigredv2/outside/c)
 "acM" = (
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acN" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/bigredv2/outside/c)
-"acO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
-/area/bigredv2/outside/c)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -830,11 +727,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/outside/c)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -847,13 +739,6 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
-"ada" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/c)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -909,73 +794,6 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"adn" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 10;
-	pixel_y = 6
-	},
-/obj/item/stack/sheet/cardboard{
-	pixel_x = 2;
-	pixel_y = -5;
-	layer = 3.01
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/c)
-"ado" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 7;
-	pixel_y = -6
-	},
-/obj/item/trash/eat{
-	pixel_x = -9;
-	pixel_y = 10
-	},
-/obj/effect/decal/cleanable/generic,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/c)
-"adp" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 2;
-	pixel_y = -4
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
-"adq" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -6;
-	pixel_y = 12
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 7;
-	pixel_y = 3;
-	layer = 3.1
-	},
-/obj/effect/landmark/corpsespawner/colonist,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
 "adr" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1012,32 +830,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"adx" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -11;
-	pixel_y = -4;
-	layer = 3.2
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 7;
-	pixel_y = 16;
-	layer = 3.1
-	},
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/trash/hotdog{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
 "ady" = (
 /obj/structure/bed/chair,
 /turf/open/floor/darkish,
@@ -1074,21 +866,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
-"adF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -6;
-	pixel_y = 3
-	},
-/obj/effect/decal/cleanable/generic,
-/turf/open/floor/wood,
-/area/bigredv2/outside/bar)
 "adG" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
@@ -1116,43 +893,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"adK" = (
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -6;
-	pixel_y = 6;
-	layer = 3.1
-	},
-/obj/effect/decal/cleanable/generic,
-/obj/item/trash/cheesie{
-	pixel_y = 6;
-	pixel_x = 9
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
 "adL" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"adM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -6;
-	pixel_y = -4;
-	layer = 3.1
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
 "adN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/white,
@@ -1186,71 +932,9 @@
 /obj/item/clothing/suit/storage/CMB,
 /turf/open/floor/floor4,
 /area/bigredv2/outside/marshal_office)
-"adU" = (
-/obj/item/trash/hotdog{
-	pixel_x = -12;
-	pixel_y = -11
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = 13
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
-"adV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -6;
-	pixel_y = -4
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
 "adW" = (
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
-"adX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 5;
-	layer = 3.01;
-	pixel_y = -7
-	},
-/obj/item/trash/eat{
-	pixel_x = 2;
-	pixel_y = 10
-	},
-/obj/item/trash/eat{
-	pixel_x = -9;
-	pixel_y = -5
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
-"adY" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -8;
-	pixel_y = -4
-	},
-/obj/effect/decal/cleanable/generic,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1373,17 +1057,6 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
-"aet" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -2;
-	pixel_y = -4
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1498,25 +1171,6 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
-"aeR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/trashcart{
-	pixel_x = -2;
-	pixel_y = -1
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -3;
-	pixel_y = 2
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1569,25 +1223,6 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
-"afe" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/trashcart{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 2;
-	pixel_y = 1
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/bar)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1598,23 +1233,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"afh" = (
-/obj/effect/decal/strata_decals/grime/grime4,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 9;
-	layer = 3.01;
-	pixel_y = 1
-	},
-/obj/item/trash/hotdog{
-	pixel_x = -5;
-	pixel_y = 1
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/nw)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1652,40 +1270,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
-"afo" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -6;
-	pixel_y = -4;
-	layer = 3.1
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 8;
-	layer = 3.01;
-	pixel_y = 17
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/nw)
-"afp" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
-"afq" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "xgib4"
-	},
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1790,14 +1374,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
-"afK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/crowbar{
-	pixel_x = -13
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send"
@@ -1807,13 +1383,6 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
-"afN" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1833,10 +1402,6 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
-"afR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/delivery,
-/area/bigredv2/outside/general_offices)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1957,25 +1522,9 @@
 	},
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
-"agp" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = 30
-	},
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "agq" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/n)
-"agr" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "ags" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/n)
@@ -2029,40 +1578,11 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"agE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
-"agF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
-"agG" = (
-/obj/item/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"agI" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1;
-	name = "\improper Dormitories EVA";
-	icon_state = "door_open";
-	density = 0
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/delivery,
-/area/bigredv2/outside/general_offices)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -2110,12 +1630,6 @@
 "agQ" = (
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/xenobiology)
-"agR" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "agS" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -2185,21 +1699,6 @@
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"ahg" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
-"ahh" = (
-/obj/structure/surface/table,
-/obj/item/paper_bin,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "ahi" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
@@ -2234,27 +1733,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"aho" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/obj/structure/surface/table,
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "ahp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
-"ahq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -2384,44 +1868,13 @@
 "ahT" = (
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
-"ahU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
-	pixel_x = 7;
-	pixel_y = -9
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "ahV" = (
 /turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/nw)
-"ahW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor,
-/area/bigredv2/outside/general_offices)
 "ahX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
-"ahY" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
-"ahZ" = (
-/obj/structure/surface/table,
-/obj/structure/bedsheetbin{
-	pixel_y = 8;
-	pixel_x = 7
-	},
-/obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -2488,14 +1941,6 @@
 /obj/structure/bed/roller,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/caves/lambda/xenobiology)
-"aim" = (
-/obj/structure/surface/table,
-/obj/structure/bedsheetbin{
-	pixel_y = 10;
-	pixel_x = 4
-	},
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "ain" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
@@ -2506,10 +1951,6 @@
 "aio" = (
 /turf/open/floor/darkpurplecorners2/west,
 /area/bigredv2/caves/lambda/xenobiology)
-"aip" = (
-/obj/item/shard/shrapnel/bone_chips,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/general_offices)
 "aiq" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/dark,
@@ -2547,20 +1988,6 @@
 "aiw" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
-"aix" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
-"aiy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
-	pixel_x = -11;
-	pixel_y = 12
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/dark,
-/area/bigredv2/outside/general_offices)
 "aiz" = (
 /turf/open/mars/mars_dirt_13,
 /area/bigredv2/outside/nw)
@@ -4118,10 +3545,20 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"apO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "apQ" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_store)
+"apS" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
 "apT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/alarm{
@@ -4332,6 +3769,13 @@
 	},
 /turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/filtration_cave_cas)
+"aqQ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "aqR" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/freezerfloor,
@@ -4886,10 +4330,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"atF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "atG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
+"atH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -5007,6 +4463,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
+"aud" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 30
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -13526,6 +12991,13 @@
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
+"biV" = (
+/obj/item/stack/cable_coil/cut,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/c)
 "bja" = (
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/se)
@@ -13594,6 +13066,9 @@
 /area/bigredv2/outside/s)
 "bjB" = (
 /turf/open/mars/mars_dirt_8,
+/area/bigredv2/outside/s)
+"bjC" = (
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/s)
 "bjH" = (
 /turf/open/mars/mars_dirt_10,
@@ -15306,6 +14781,23 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"bsw" = (
+/obj/item/trash/hotdog{
+	pixel_x = -12;
+	pixel_y = -11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = 13
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
 "bsB" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
@@ -19403,6 +18895,14 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
+"dsn" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib4"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "dsU" = (
 /obj/item/trash/cheesie,
 /obj/item/trash/pistachios,
@@ -20030,6 +19530,24 @@
 /obj/item/stack/folding_barricade,
 /turf/open/mars,
 /area/bigredv2/outside/c)
+"dZl" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -6;
+	pixel_y = 6;
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/cheesie{
+	pixel_y = 6;
+	pixel_x = 9
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "dZL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -20801,6 +20319,23 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_telecomm_cas)
+"eOf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/trash/eat{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
 "eOS" = (
 /turf/closed/wall/solaris{
 	damage = 1870;
@@ -21144,6 +20679,13 @@
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
+"fia" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/c)
 "fik" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -21673,6 +21215,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"fOV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/c)
 "fPe" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/west,
@@ -21865,6 +21416,27 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/hydroponics)
+"fXZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 5;
+	layer = 3.01;
+	pixel_y = -7
+	},
+/obj/item/trash/eat{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/item/trash/eat{
+	pixel_x = -9;
+	pixel_y = -5
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
 "fYH" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
@@ -22026,6 +21598,12 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
+"giY" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
 "gjB" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random{
@@ -22174,6 +21752,17 @@
 /obj/structure/cargo_container/arious/rightmid,
 /turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
+"gqJ" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "gqS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/tool,
@@ -22710,6 +22299,14 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"gUA" = (
+/obj/item/tool/warning_cone,
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/c)
 "gVl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -23643,6 +23240,22 @@
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
+"ibn" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 2;
+	pixel_y = -5;
+	layer = 3.01
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
 "ibx" = (
 /obj/item/shard/shrapnel,
 /obj/item/shard,
@@ -23775,6 +23388,15 @@
 /obj/item/ammo_box/magazine/misc/flares/empty,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"igb" = (
+/obj/effect/decal/cleanable/vomit{
+	icon_state = "vomit_4"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/c)
 "igD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed,
@@ -23893,6 +23515,23 @@
 	},
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
+"ing" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 9;
+	layer = 3.01;
+	pixel_y = 1
+	},
+/obj/item/trash/hotdog{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/nw)
 "ino" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/floor/plating/plating_catwalk,
@@ -24107,6 +23746,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
+"izJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/c)
 "izT" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood,
@@ -24244,6 +23892,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/space_port)
+"iJu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
+	pixel_x = -11;
+	pixel_y = 12
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "iJF" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
@@ -25709,6 +25367,29 @@
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
+"kle" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 7;
+	pixel_y = 3;
+	layer = 3.1
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "kli" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_20,
@@ -25818,6 +25499,11 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"krR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "krV" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/mars,
@@ -26685,6 +26371,15 @@
 /obj/item/shard,
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/n)
+"lun" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
+	pixel_x = 7;
+	pixel_y = -9
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "luA" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor/plating/platingdmg3/west,
@@ -27421,6 +27116,14 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/e)
+"mgX" = (
+/obj/structure/surface/table,
+/obj/item/paper_bin,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "mhF" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -27769,6 +27472,13 @@
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
+"mAv" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "mAY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
@@ -27876,6 +27586,16 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz1_north_cas)
+"mGy" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Dormitories EVA";
+	icon_state = "door_open";
+	density = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/general_offices)
 "mGS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28104,6 +27824,18 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
+"mSi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "mSz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -28446,6 +28178,18 @@
 	},
 /turf/open/floor/carpet9_4/west,
 /area/bigredv2/outside/bar)
+"nms" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "nmU" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer,
@@ -28849,6 +28593,10 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
+"nIx" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/bigredv2/outside/s)
 "nIS" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/donut_box,
@@ -28917,6 +28665,17 @@
 /obj/structure/cable,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"nNS" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "nOe" = (
 /obj/structure/toilet{
 	dir = 1
@@ -29054,6 +28813,19 @@
 /obj/item/trash/burger,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"nWE" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
 "nWG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -30098,6 +29870,13 @@
 /obj/structure/surface/table,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"oXv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/bigredv2/outside/c)
 "oXH" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -30231,6 +30010,13 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
+"pdT" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "pdW" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/outside/virology)
@@ -30387,6 +30173,14 @@
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/c)
+"poL" = (
+/obj/structure/surface/table,
+/obj/structure/bedsheetbin{
+	pixel_y = 10;
+	pixel_x = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "poS" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
@@ -31944,6 +31738,32 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
+"qRj" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -11;
+	pixel_y = -4;
+	layer = 3.2
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 7;
+	pixel_y = 16;
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/trash/hotdog{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/ne)
 "qRm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -32284,6 +32104,10 @@
 	},
 /turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/outside/engineering)
+"ria" = (
+/obj/item/shard/shrapnel/bone_chips,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "rie" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/stack/cable_coil/cut{
@@ -32499,6 +32323,26 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
+"rvG" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 7;
+	pixel_y = 3;
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 2;
+	pixel_y = -5;
+	layer = 3.01
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
 "rvP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -33215,6 +33059,25 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/living)
+"scH" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/trashcart{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
 "scP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33612,6 +33475,19 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"svb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -6;
+	pixel_y = -4;
+	layer = 3.1
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
 "swl" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/mars,
@@ -35153,6 +35029,13 @@
 	},
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
+"tVE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "tWf" = (
 /obj/structure/cargo_container/arious/leftmid,
 /turf/open/mars_cave/mars_dirt_4,
@@ -36009,6 +35892,15 @@
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/mars,
 /area/bigredv2/outside/s)
+"uVH" = (
+/obj/structure/surface/table,
+/obj/structure/bedsheetbin{
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/general_offices)
 "uWo" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -36084,6 +35976,32 @@
 "vby" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/e)
+"vbN" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/bigredv2/outside/bar)
+"vbO" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/s)
 "vbS" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/mars,
@@ -36427,6 +36345,27 @@
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port_lz2)
+"vsz" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -6;
+	pixel_y = -4;
+	layer = 3.1
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 8;
+	layer = 3.01;
+	pixel_y = 17
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/nw)
 "vsS" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/prop/server_equipment/yutani_server{
@@ -36984,6 +36923,14 @@
 	},
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
+"vVt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/crowbar{
+	pixel_x = -13
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "vVF" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -5;
@@ -37199,6 +37146,14 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"whb" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "whp" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -38394,6 +38349,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"xtB" = (
+/obj/item/tool/warning_cone,
+/obj/structure/barricade/handrail/wire{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
 "xul" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -38440,6 +38402,18 @@
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/whitepurple/west,
 /area/bigredv2/caves/lambda/research)
+"xvW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/c)
 "xwo" = (
 /obj/structure/disposalpipe/junction,
 /turf/open/mars_cave/mars_cave_2,
@@ -38552,6 +38526,13 @@
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /turf/open/mars_cave/mars_dirt_4,
 /area/space)
+"xCX" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
 "xDO" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/oob)
@@ -38632,6 +38613,25 @@
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/lz2_south_cas)
+"xIY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/trashcart{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/bar)
 "xJn" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
@@ -50979,7 +50979,7 @@ fWH
 aeI
 ajy
 vCl
-afh
+ing
 alu
 aqw
 azv
@@ -51196,7 +51196,7 @@ aiw
 aiw
 xIt
 gyv
-afo
+vsz
 ngo
 aqw
 aye
@@ -56023,9 +56023,9 @@ tWA
 lBc
 eRI
 mxC
-abX
+biV
 eRI
-abd
+bjC
 bjB
 bkq
 bjH
@@ -56457,7 +56457,7 @@ bhi
 bhi
 bhI
 oqY
-acc
+gUA
 aIn
 bjy
 jdQ
@@ -56674,7 +56674,7 @@ bhi
 bhi
 raQ
 gtt
-aci
+aaM
 dGw
 bjy
 bka
@@ -56891,7 +56891,7 @@ dbi
 dex
 dex
 fyo
-ack
+xvW
 aIn
 bjy
 bka
@@ -57108,9 +57108,9 @@ dbi
 qby
 stZ
 qeC
-act
+izJ
 eRI
-abd
+bjC
 bjy
 bkr
 bjy
@@ -57325,9 +57325,9 @@ dbi
 qby
 qby
 tOJ
-acy
+fOV
 hip
-abe
+nIx
 qqK
 rIu
 xsH
@@ -57542,8 +57542,8 @@ dbi
 kjY
 dZL
 olK
-acB
-abU
+abb
+aac
 ykB
 ykB
 vNk
@@ -57759,9 +57759,9 @@ bhi
 auW
 unC
 wup
-act
+izJ
 eRI
-abd
+bjC
 bjy
 bjy
 bjy
@@ -57976,9 +57976,9 @@ aIn
 xPg
 bhL
 wup
-act
+izJ
 aIn
-abz
+giY
 bjy
 bjy
 bjy
@@ -57990,8 +57990,8 @@ bjx
 bjx
 bjx
 ixy
-abb
-aaM
+vbO
+rvG
 axX
 axX
 bru
@@ -58193,9 +58193,9 @@ aIn
 xPg
 aIn
 wup
-act
+izJ
 aIn
-abL
+xtB
 bjy
 bjy
 bjz
@@ -58209,7 +58209,7 @@ bjA
 bjA
 bjA
 jxV
-aac
+nWE
 axX
 brv
 bos
@@ -58410,9 +58410,9 @@ aIn
 xPg
 aIn
 wup
-act
+izJ
 aIn
-abz
+giY
 bjy
 bjy
 bjA
@@ -58627,9 +58627,9 @@ bhi
 auW
 dgy
 umN
-acE
+abN
 dgy
-abd
+bjC
 ssI
 bkp
 bjA
@@ -59061,7 +59061,7 @@ aBR
 aBR
 aBR
 jYb
-acG
+igb
 aIn
 bjy
 bjy
@@ -59278,7 +59278,7 @@ aBR
 aBR
 aBR
 oYO
-acL
+abd
 htb
 rIu
 bGP
@@ -59495,7 +59495,7 @@ uuB
 uuB
 aBR
 oYO
-acN
+fia
 xNI
 uDM
 dFr
@@ -59712,7 +59712,7 @@ aBR
 aBR
 aBR
 lQb
-acO
+oXv
 sWp
 bjH
 bkd
@@ -59929,7 +59929,7 @@ bfI
 bfI
 bfI
 bfI
-acW
+abe
 aCN
 aCN
 bhU
@@ -60363,7 +60363,7 @@ aMc
 aHF
 aHF
 aHF
-ada
+abz
 vIQ
 aVp
 vIQ
@@ -64701,7 +64701,7 @@ bgc
 bgc
 bgK
 asH
-adn
+ibn
 bhU
 bhU
 asv
@@ -64875,9 +64875,9 @@ anJ
 hsq
 gKM
 xlD
-adM
+svb
 anJ
-adF
+vbN
 gzj
 aEO
 pGU
@@ -64918,7 +64918,7 @@ bgc
 bgt
 bgL
 asv
-ado
+eOf
 aHF
 rHD
 asv
@@ -65089,7 +65089,7 @@ rdH
 uvL
 iXV
 anJ
-aeR
+xIY
 qkn
 tXa
 fZA
@@ -65292,21 +65292,21 @@ ahS
 aku
 aoq
 apd
-ahW
-ahq
-agR
+tVE
+whb
+abX
 apd
 apd
 apd
 apd
-afN
-afK
-afp
+aqQ
+vVt
+krR
 bGX
 oHu
 ars
 anJ
-afe
+scH
 fiI
 pdP
 kAD
@@ -65525,8 +65525,8 @@ ahf
 anJ
 fRP
 hsq
-adX
-adU
+fXZ
+bsw
 anJ
 aNS
 aEO
@@ -65959,7 +65959,7 @@ nwe
 gzm
 ako
 nih
-adY
+nms
 sqt
 anJ
 aEa
@@ -66177,7 +66177,7 @@ azd
 ako
 aAJ
 cCY
-adV
+mSi
 anJ
 kuj
 gqF
@@ -66377,7 +66377,7 @@ xQd
 ako
 djV
 mfG
-ahY
+apO
 aqR
 tFt
 ako
@@ -66594,7 +66594,7 @@ aao
 ako
 jNE
 pdB
-ahZ
+uVH
 taD
 kGK
 ako
@@ -66811,16 +66811,16 @@ aao
 ako
 opn
 oEz
-aim
+poL
 kGK
 wnl
 ako
 vjW
-agr
+abU
 tTd
-afR
+abL
 apd
-afq
+dsn
 atE
 ako
 czE
@@ -67028,12 +67028,12 @@ aao
 ako
 jNE
 oMD
-aip
+ria
 ueM
 uVd
 ako
 tjx
-agE
+atF
 atE
 ako
 jwU
@@ -67275,7 +67275,7 @@ gbA
 ebT
 gbA
 buF
-adp
+gqJ
 anT
 aQb
 quU
@@ -67679,13 +67679,13 @@ hqO
 tdE
 aou
 iwo
-aix
+apS
 tbl
 tbl
 gdy
 tNa
-agF
-agp
+atH
+aud
 ako
 atE
 aoq
@@ -68346,7 +68346,7 @@ ycW
 arD
 arD
 aMk
-aet
+nNS
 anU
 aCZ
 aCZ
@@ -68764,11 +68764,11 @@ aao
 ako
 aov
 apl
-aiy
-ahU
-ahg
-agI
-agG
+iJu
+lun
+xCX
+mGy
+mAv
 qnj
 oCg
 ask
@@ -68983,7 +68983,7 @@ aox
 apk
 apU
 aoB
-ahh
+mgX
 aml
 apn
 wAd
@@ -69200,7 +69200,7 @@ sOq
 pWp
 ojs
 bPq
-aho
+pdT
 ako
 asV
 aoB
@@ -73123,8 +73123,8 @@ aCc
 aMk
 apo
 pbM
-adK
-adq
+dZl
+kle
 anW
 voz
 wBK
@@ -73341,7 +73341,7 @@ aMk
 apo
 dgi
 nQF
-adx
+qRj
 anW
 vfW
 nuQ

@@ -320,9 +320,9 @@
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_frontline_mode(owner)
-	if(G.frontline_enabled)
+	var/obj/item/weapon/gun/smartgun/gun = holder_item
+	gun.toggle_frontline_mode(owner)
+	if(gun.frontline_enabled)
 		action_icon_state = "frontline_toggle_on"
 	else
 		action_icon_state = "frontline_toggle_off"
@@ -842,8 +842,6 @@
 	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This Variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
-	ammo_primary //Toggled ammo type
-	ammo_secondary //Toggled ammo type
 	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target/ap
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt

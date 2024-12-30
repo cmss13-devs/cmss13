@@ -25,6 +25,10 @@
 
 	for(var/icon in GLOB.player_list)
 		add_default_image(SSdcs, icon)
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/roof/LateInitialize() //we use late init to allow for lazy nodes to spawn first on mapload
+	. = ..()
 	if(lazy_nodes) //creates new node on each surounding tile if there is not one already
 		var/obj/effect/roof_node/neighbor = locate() in loc
 		if(!neighbor)
@@ -34,10 +38,6 @@
 			neighbor = locate() in adjacent_loc
 			if(!neighbor)
 				neighbor = new(adjacent_loc)
-	return INITIALIZE_HINT_ROUNDSTART
-
-/obj/structure/roof/LateInitialize() //we use late init to allow for lazy nodes to spawn first on mapload
-	. = ..()
 	if(linked_master)
 		return
 	for(var/direction in CARDINAL_ALL_DIRS) //this searches if there is lattice with master already, to work with runtime creation

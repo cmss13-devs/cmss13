@@ -1250,8 +1250,12 @@
 	desc = "Black camo Fatigues usually used on night operations.  UNIQUE DONOR ITEM."
 	icon_state = "hunkuni"
 	worn_state = "hunkuni"
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
+	)
 	item_state_slots = list(
 		WEAR_L_HAND = "marine_jumpsuit",
 		WEAR_R_HAND = "marine_jumpsuit"
@@ -1261,31 +1265,21 @@
 	. = ..()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
-			icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi'
 			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
 			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 		if("snow")
-			icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi'
 			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
 			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
 		if("desert")
-			icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi'
 			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
 			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
 		if("classic")
-			icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi'
 			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
 			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
 		if("urban")
-			icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi'
 			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
 			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
-	
+
 /obj/item/clothing/under/marine/fluff/leeeverett //CKEY=theflagbearer (UNIQUE)
 	name = "Rugged Outfit"
 	desc = "It's covered in blood and smells terrible. Who died in this?"

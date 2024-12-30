@@ -1,0 +1,5 @@
+author: "Geevies"
+delete-after: True
+changes:
+  - rscadd: "Added some text feedback to the RPG buddy loading system for when it isn't wielded or if it's already loaded"
+  - bugfix: "Fixed the RPG buddy loading system being able to load invalid magazines into the launcher"

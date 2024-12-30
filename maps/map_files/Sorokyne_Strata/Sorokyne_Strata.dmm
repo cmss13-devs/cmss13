@@ -17,6 +17,15 @@
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
+"aae" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -89,6 +98,15 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata/cyan2/east,
+/area/strata/ag/interior/outpost/canteen/bar)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -105,6 +123,13 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aay" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/outpost/canteen/bar)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -145,6 +170,15 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaE" = (
+/obj/structure/mirror{
+	pixel_y = 24
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/strata/orange_tile,
+/area/strata/ag/interior/mining_outpost/central)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -156,6 +190,12 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aaH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/orange_tile,
+/area/strata/ag/interior/mining_outpost/central)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -179,6 +219,14 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaN" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2;
+	name = "\improper Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/mining_outpost/central)
 "aaO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
@@ -218,6 +266,12 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/mining_outpost/canteen)
 "aaW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -232,6 +286,10 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaY" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/mining_outpost/canteen)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -304,6 +362,18 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abm" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/condiment/saltshaker,
+/turf/open/floor/strata/white_cyan1,
+/area/strata/ag/interior/mining_outpost/canteen)
+"abn" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 9
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/strata/ag/interior/mining_outpost/canteen)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -2930,13 +3000,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/exterior/paths/flight_control_exterior)
-"anq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/machinery/power/apc/no_power/south,
-/turf/open/floor/strata/white_cyan1/east,
-/area/strata/ag/interior/mining_outpost/canteen)
 "anr" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
@@ -3411,12 +3474,6 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/central)
-"aqd" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/strata/ag/interior/mining_outpost/canteen)
 "aqe" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -3437,13 +3494,6 @@
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/mining_outpost/central)
-"aqi" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/item/stool,
-/turf/open/floor/strata/white_cyan1,
-/area/strata/ag/interior/mining_outpost/canteen)
 "aqj" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2
@@ -3511,14 +3561,6 @@
 /obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
-"aqA" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/reagent_container/food/condiment/saltshaker,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/white_cyan1,
-/area/strata/ag/interior/mining_outpost/canteen)
 "aqB" = (
 /obj/item/storage/box/nade_box/tear_gas,
 /obj/structure/closet/secure_closet/security/soro,
@@ -3556,12 +3598,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/flight_control_exterior)
-"aqT" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/white_cyan1,
-/area/strata/ag/interior/mining_outpost/canteen)
 "aqU" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/strata/floor3,
@@ -3988,16 +4024,6 @@
 /obj/item/frame/firstaid_arm_assembly,
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
-"asX" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 9
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/strata/ag/interior/mining_outpost/canteen)
 "asY" = (
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/strata/fake_wood,
@@ -4243,12 +4269,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/interior/jungle/structures/research)
-"aui" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/interior/mining_outpost/maintenance)
 "auj" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4
@@ -5064,10 +5084,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/mining_outpost/central)
-"ayo" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/closed/wall/strata_outpost,
-/area/strata/ag/interior/mining_outpost/central)
 "ayp" = (
 /obj/structure/machinery/weather_siren{
 	dir = 4;
@@ -5327,13 +5343,6 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/strata/orange_tile,
-/area/strata/ag/interior/mining_outpost/central)
-"azM" = (
-/obj/structure/mirror{
-	pixel_y = 24
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/orange_tile,
 /area/strata/ag/interior/mining_outpost/central)
 "azO" = (
@@ -8786,15 +8795,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/flight_control_exterior)
-"aTW" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ag/interior/outpost/canteen/bar)
 "aTX" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
@@ -9042,12 +9042,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/flight_control_exterior)
-"aVx" = (
-/obj/structure/barricade/wooden{
-	dir = 8
-	},
-/turf/open/floor/strata/cyan2/east,
-/area/strata/ag/interior/outpost/canteen/bar)
 "aVy" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_container/food/drinks/flask,
@@ -16977,12 +16971,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/med)
-"cnm" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/closed/wall/strata_outpost,
-/area/strata/ag/interior/outpost/canteen/bar)
 "cnp" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/strata/cyan2/east,
@@ -17065,13 +17053,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
-"coh" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/strata/cyan2/east,
-/area/strata/ag/interior/outpost/canteen/bar)
 "coi" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/power/apc/no_power/north,
@@ -22982,12 +22963,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/structures/monitoring)
-"jEB" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/interior/outpost/security)
 "jEO" = (
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
@@ -28556,13 +28531,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/restricted)
-"rhg" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/white_cyan1,
-/area/strata/ag/interior/mining_outpost/canteen)
 "rhk" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4
@@ -30138,12 +30106,6 @@
 "toV" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/strata/ug/interior/jungle/tearlake)
-"tpo" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
-	},
-/turf/open/floor/strata/white_cyan1/east,
-/area/strata/ag/interior/mining_outpost/canteen)
 "tpW" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/effect/landmark/monkey_spawn,
@@ -40986,7 +40948,7 @@ coQ
 wsC
 vtJ
 xSJ
-tpo
+aaV
 nwN
 hjW
 hjW
@@ -41161,7 +41123,7 @@ xSJ
 nnO
 nnO
 xSJ
-bUs
+qUW
 bLw
 bWy
 bWy
@@ -41336,7 +41298,7 @@ xSJ
 egf
 xSJ
 mgM
-bUs
+qUW
 ctB
 bXW
 aqf
@@ -41511,7 +41473,7 @@ xSJ
 vNl
 eNO
 xSJ
-anq
+aaY
 aCl
 crY
 crY
@@ -41686,7 +41648,7 @@ xSJ
 nnO
 nnO
 xSJ
-bUs
+qUW
 axK
 crY
 fwi
@@ -41861,7 +41823,7 @@ akw
 alL
 qUW
 qUW
-bUs
+qUW
 jyE
 aqg
 arh
@@ -41870,9 +41832,9 @@ asf
 atu
 aLl
 cbj
-bZW
-ayo
-azM
+bZV
+ctC
+aaE
 aBs
 ctC
 aDO
@@ -42036,7 +41998,7 @@ alp
 jOl
 anl
 apl
-rhg
+anl
 jOl
 jOl
 ari
@@ -42045,9 +42007,9 @@ bXe
 atv
 crY
 avz
-bZV
-pEF
-aMB
+bZW
+aaN
+aaH
 aBt
 ctC
 aDO
@@ -42211,7 +42173,7 @@ bRY
 aky
 bRY
 aky
-aqd
+bRY
 aky
 jOl
 crY
@@ -42386,7 +42348,7 @@ alq
 and
 alq
 and
-aqi
+alq
 brS
 jOl
 bWi
@@ -42561,7 +42523,7 @@ akx
 ale
 akx
 apS
-aqA
+abm
 aky
 jOl
 aqh
@@ -42736,7 +42698,7 @@ aky
 bRY
 aky
 bRY
-aqT
+aky
 brS
 jOl
 crY
@@ -42911,7 +42873,7 @@ alx
 alf
 anF
 apU
-asX
+abn
 aky
 avA
 ctC
@@ -43086,7 +43048,7 @@ xdE
 xdE
 xdE
 xdE
-aui
+xdE
 avv
 xdE
 xdE
@@ -43261,7 +43223,7 @@ cpo
 cpo
 cpo
 cpo
-akA
+cpo
 aos
 aos
 aos
@@ -55866,7 +55828,7 @@ ijo
 ijo
 ijo
 ijo
-jEB
+ijo
 bYk
 ijo
 ijo
@@ -58687,8 +58649,8 @@ cka
 lzT
 ckI
 sbU
-aTW
-aVx
+aay
+aae
 aXa
 aac
 aac
@@ -58862,8 +58824,8 @@ ckb
 ckK
 nJh
 aMn
-cnm
-coh
+ckK
+aau
 aXc
 aYW
 bbv

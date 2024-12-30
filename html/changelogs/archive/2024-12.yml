@@ -461,3 +461,33 @@
   thevandie:
   - rscadd: Grey and Beige trenchcoats to the CL vendor
   - rscadd: Brown and Black fedoras to the CL vendor
+2024-12-30:
+  Blundir:
+  - bugfix: phone missing inhand sprites
+  Blundir, medjic, 3raz3rr, Crowford:
+  - rscadd: hugger and larva tanks now actually have an alive hugger and a dead larva
+      inside them on destroy
+  - rscadd: 'yautja: beds, chairs, microwaves, soda/chem/booze dispensers, sleeper/scanner/autodoc,
+      freezer, refrigerator, air tank, computer, vendors, gibber, food grinder, hugger
+      tank, closet, water/fuel tanks, juicer assets and objects'
+  - rscadd: unique yautja full set of normal tools, replaced tools in yautja toolbelt
+      with them
+  - rscadd: yautja windows
+  - rscadd: yautja new statues
+  - rscadd: decorative xeno skulls for yautja locations
+  - bugfix: preds not being able to use chem master and chem dispenser on their ship
+  - bugfix: preds not having access to vendors on their ship
+  - rscdel: unused yautja ship map
+  - mapadd: added tons of new assets on LV624, New Varadero, Trijent Dam, Yautja ship
+  harryob:
+  - rscadd: the preview dummy now correctly wears gear chosen in the gear select menu
+  realforest2001:
+  - imageadd: Updated all the biosuit sprites to use the modern version rather than
+      legacy.
+  - imageadd: Updated the biosuit locker sprites to use a consistent base scheme.
+  - rscdel: Removed Janitor biosuits.
+  - maptweak: Updated a couple places using the wrong biosuit lockers, and replaced
+      janitor ones.
+  - code_imp: Changed some parts of disease code so it respects armor_bio more.
+  - rscadd: Makes CBRN and Biosuit hoods protect from gas, as would be expected.
+  - balance: Biosuit hood armor_bio increased to match the biosuit itself.

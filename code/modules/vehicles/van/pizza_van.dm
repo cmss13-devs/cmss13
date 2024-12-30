@@ -19,30 +19,32 @@
 	icon = 'icons/obj/vehicles/pizza_van.dmi'
 	icon_state = "van_base"
 
-//PRESET: no hardpoints
-/obj/effect/vehicle_spawner/box_van/pizza_van/spawn_vehicle()
+	vehicle_type = /obj/vehicle/multitile/box_van/pizza_van
+
+/obj/effect/vehicle_spawner/box_van/spawn_vehicle(obj/vehicle/multitile/spawning)
+	load_misc(spawning)
+	load_hardpoints(spawning)
+	handle_direction(spawning)
+	spawning.update_icon()
 
 //PRESET: wheels installed, destroyed
-/obj/effect/vehicle_spawner/box_van/pizza_van/decrepit/spawn_vehicle()
-	var/obj/vehicle/multitile/box_van/pizza_van/PIZZA = new (loc)
+/obj/effect/vehicle_spawner/box_van/decrepit/pizza_van
+	name = "Pizza-Galaxy Van Spawner"
+	icon = 'icons/obj/vehicles/pizza_van.dmi'
+	icon_state = "van_base"
 
-	load_misc(PIZZA)
-	load_hardpoints(PIZZA)
-	handle_direction(PIZZA)
-	load_damage(PIZZA)
-	PIZZA.update_icon()
-
-/obj/effect/vehicle_spawner/box_van/pizza_van/decrepit/load_hardpoints(obj/vehicle/multitile/box_van/pizza_van/V)
-	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+	vehicle_type = /obj/vehicle/multitile/box_van/pizza_van
+	hardpoints = list(
+		/obj/item/hardpoint/locomotion/van_wheels,
+	)
 
 //PRESET: wheels installed
-/obj/effect/vehicle_spawner/box_van/pizza_van/fixed/spawn_vehicle()
-	var/obj/vehicle/multitile/box_van/pizza_van/PIZZA = new (loc)
+/obj/effect/vehicle_spawner/box_van/fixed/pizza_van
+	name = "Pizza-Galaxy Van Spawner"
+	icon = 'icons/obj/vehicles/pizza_van.dmi'
+	icon_state = "van_base"
 
-	load_misc(PIZZA)
-	load_hardpoints(PIZZA)
-	handle_direction(PIZZA)
-	PIZZA.update_icon()
-
-/obj/effect/vehicle_spawner/box_van/pizza_van/fixed/load_hardpoints(obj/vehicle/multitile/box_van/pizza_van/V)
-	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+	vehicle_type = /obj/vehicle/multitile/box_van/pizza_van
+	hardpoints = list(
+		/obj/item/hardpoint/locomotion/van_wheels,
+	)

@@ -9,10 +9,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"ab" = (
-/obj/structure/machinery/faxmachine/corporate,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
 "ac" = (
 /obj/structure/target/syndicate,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -2847,7 +2843,7 @@ FD
 FD
 FD
 zO
-ab
+zO
 FD
 FD
 FD

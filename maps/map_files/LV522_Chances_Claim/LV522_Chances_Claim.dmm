@@ -605,6 +605,13 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv522/indoors/a_block/hallway)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -8487,12 +8494,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
-"exZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/lv522/oob)
 "eym" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -14590,13 +14591,6 @@
 /obj/structure/closet/radiation,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
-"hXW" = (
-/obj/item/storage/firstaid/adv/empty,
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/floor/prison/blue/north,
-/area/lv522/indoors/a_block/hallway)
 "hYf" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks)
@@ -51098,7 +51092,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-exZ
+tiQ
 tiQ
 tiQ
 vtc
@@ -76288,7 +76282,7 @@ uAv
 tDS
 gdO
 swY
-hXW
+aco
 uuH
 pej
 pqU

@@ -26,12 +26,31 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "aae" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/prison,
+/area/fiorina/tumor/aux_engi)
+"aaf" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/rank/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
+/turf/open/floor/wood,
+/area/fiorina/station/civres_blue)
+"aag" = (
+/obj/structure/janitorialcart,
+/obj/item/clothing/head/bio_hood{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
+"aah" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"aaf" = (
+"aai" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
@@ -10620,13 +10639,6 @@
 	},
 /turf/open/floor/prison/greenblue/east,
 /area/fiorina/station/botany)
-"igQ" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
-/turf/open/floor/wood,
-/area/fiorina/station/civres_blue)
 "igV" = (
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison/floor_plate,
@@ -11731,10 +11743,6 @@
 	},
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
-"iXV" = (
-/obj/structure/closet/l3closet/general,
-/turf/open/floor/prison,
-/area/fiorina/tumor/aux_engi)
 "iYa" = (
 /turf/open/floor/prison/bluecorner/west,
 /area/fiorina/station/chapel)
@@ -24549,14 +24557,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
-"sQr" = (
-/obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood/janitor{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/disco)
 "sQv" = (
 /obj/structure/platform/metal/almayer,
 /obj/item/clothing/gloves/botanic_leather,
@@ -39054,7 +39054,7 @@ agi
 agi
 agi
 agi
-aaf
+aai
 agi
 agi
 agi
@@ -43389,7 +43389,7 @@ svP
 nMm
 hvL
 svP
-iXV
+aae
 jlk
 jlk
 kXs
@@ -46744,7 +46744,7 @@ mDz
 toE
 mDz
 toE
-igQ
+aaf
 dFH
 xJw
 bQM
@@ -68152,7 +68152,7 @@ qBe
 qBe
 sWw
 qBe
-sQr
+aag
 qBe
 qBe
 qBe
@@ -81287,7 +81287,7 @@ xeO
 xeO
 xeO
 xeO
-aae
+aah
 xeO
 xeO
 xeO

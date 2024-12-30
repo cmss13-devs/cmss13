@@ -8,7 +8,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
 	item_state = "surgical_tray"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 	w_class = SIZE_LARGE //Should not fit in backpacks
 	storage_slots = 14
 	max_storage_space = 24

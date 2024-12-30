@@ -231,17 +231,16 @@
 	. = ..()
 	if(remaining_gel >= 100)
 		icon_state = base_icon_state
-		return
 	if(remaining_gel > 50)
 		icon_state = "[base_icon_state]_75"
-		return
 	if(remaining_gel > 25)
 		icon_state = "[base_icon_state]_50"
-		return
 	if(remaining_gel > 0)
 		icon_state = "[base_icon_state]_25"
-		return
-	icon_state = "[base_icon_state]_0"
+	else
+		icon_state = "[base_icon_state]_0"
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()

@@ -529,7 +529,7 @@
 
 /obj/item/storage/box/matches/attackby(obj/item/tool/match/W as obj, mob/user as mob)
 	if(istype(W) && !W.heat_source && !W.burnt)
-		W.light_match()
+		W.light_match(user)
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"

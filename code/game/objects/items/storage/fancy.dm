@@ -22,11 +22,13 @@
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
+	var/no_item_state_override = FALSE
 	var/plural = "s"
 
 /obj/item/storage/fancy/update_icon()
 	icon_state = "[icon_type]box[length(contents)]"
-	item_state = "[icon_type]box[length(contents)]"
+	if(!no_item_state_override)
+		item_state = "[icon_type]box[length(contents)]"
 
 /obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
@@ -393,9 +395,9 @@
 				user.apply_damage(3, BURN, pick("r_hand", "l_hand"))
 				if((user.pain.feels_pain) && prob(25))
 					user.emote("scream")
-				W.light_match()
+				W.light_match(user)
 			else
-				W.light_match()
+				W.light_match(user)
 				to_chat(user, SPAN_NOTICE("You light \the [W] on \the [src]."))
 	else
 		to_chat(user, SPAN_NOTICE("\The [W] fails to light."))
@@ -427,6 +429,8 @@
 // VIAL BOX
 
 /obj/item/storage/fancy/vials
+	name = "vial storage box"
+	desc = "A place to store your fragile vials when you are not using them."
 	icon = 'icons/obj/items/vialbox.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -435,8 +439,7 @@
 	icon_state = "vialbox0"
 	item_state = "vialbox"
 	icon_type = "vial"
-	name = "vial storage box"
-	desc = "A place to store your fragile vials when you are not using them."
+	no_item_state_override = TRUE
 	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
@@ -480,8 +483,8 @@
 	desc = "A locked box for keeping things away from children."
 	icon = 'icons/obj/items/vialbox.dmi'
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
 	icon_state = "vialbox0"
 	item_state = "vialbox"
@@ -494,7 +497,6 @@
 /obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
 	var/total_contents = length(src.contents) - itemremoved
 	src.icon_state = "vialbox[total_contents]"
-	src.item_state = "vialbox[total_contents]"
 	src.overlays.Cut()
 	if (!broken)
 		overlays += image(icon, src, "led[locked]")
@@ -507,9 +509,6 @@
 /obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	update_icon()
-	user.update_inv_l_hand()
-	user.update_inv_r_hand()
-
 // Trading Card Pack
 
 /obj/item/storage/fancy/trading_card

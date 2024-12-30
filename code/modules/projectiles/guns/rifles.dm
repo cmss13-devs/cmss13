@@ -2134,7 +2134,7 @@
 ///OWLF GEAR
 /obj/item/weapon/gun/rifle/xm51/avp
 	name = "\improper ZX-76A Double Barrel Shotgun"
-	desc = "Manufactured by Weyland-Yutani, the ZX-76 was designed alongside the VP-78 for the Next Generation Combat Initiative, a program designed to modernize the USCM's armaments, while the VP-78 has already been adopted, albeit with a slow roll out, the ZX-76 is still undergoing field testing due to a number of issues, most of them relating to the gun's complex loading system and heavy weight, while still undergoing trial, OWLF took intrest in the ZX-76, having lacked a dedicated shotgun at the time, they acquired and modified some of them for their needs."
+	desc = "."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
@@ -2187,10 +2187,10 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr
-	name = "\improper M41A/2 pulse rifle"
-	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. Given only to elite units."
-	icon_state = "xr81c"
-	item_state = "xr81c"
+	name = "\improper XR81C rifle"
+	desc = "."
+	icon_state = "xr81"
+	item_state = "xr81"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	current_mag = /obj/item/ammo_magazine/rifle/xr
 
@@ -2214,6 +2214,9 @@
 		/obj/item/attachable/heavy_barrel,
 	)
 
+
+/obj/item/weapon/gun/rifle/xr/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 36, "muzzle_y" = 16,"rail_x" = 19, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr/set_gun_config_values()
 	..()

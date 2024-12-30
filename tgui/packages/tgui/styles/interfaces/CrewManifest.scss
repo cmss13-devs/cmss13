@@ -1,0 +1,51 @@
+@use '../colors.scss';
+
+$departmental-colors: (
+  'Command': #114dc1,
+  'Command Support': #114dc1,
+  'Alpha': #db2626,
+  'Bravo': #c68610,
+  'Charlie': #aa55aa,
+  'Delta': #007fcf,
+  'Echo' #3eb489,
+  'Foxtrot': #c47a50,
+  'Intel': #045f26,
+  'Military Police': #991818,
+  'Engineering': #c67519,
+  'Requisitions': #593616,
+  'Medbay': #15903a,
+  'Other': #707070,
+);
+
+$status-colors: (
+  'active': colors.$green,
+  'inactive': colors.$yellow,
+  'incarcerated': colors.$orange,
+  'deceased': colors.$red,
+);
+
+@each $dept, $color in $departmental-colors {
+  .text-dept-#{to-lower-case($dept)} {
+    color: $color !important;
+  }
+  .bg-dept-#{to-lower-case($dept)} {
+    background-color: $color !important;
+  }
+  .border-dept-#{to-lower-case($dept)} {
+    border-color: $color !important;
+    .Section {
+      &__title {
+        border-color: $color;
+      }
+      &__titleText {
+        color: $color;
+      }
+    }
+  }
+}
+
+@each $status, $color in $status-colors {
+  .manifest-indicator-#{$status} {
+    color: $color !important;
+  }
+}

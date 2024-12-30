@@ -205,6 +205,7 @@
 /datum/equipment_preset/cia/owlf
 
 	name = "OWLF Field Agent"
+	assignment = JOB_OWLF
 	rank = "Paramilitary Operations Officers"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_CIV
@@ -241,6 +242,7 @@
 /datum/equipment_preset/cia/owlf/sci
 	name = "OWLF Science Officer"
 	rank = "Specialized Skills Officer"
+	assignment = JOB_OWLF_SCI
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_CDOC
 	minimap_background = "background_civillian"

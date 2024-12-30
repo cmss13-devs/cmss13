@@ -52,9 +52,8 @@
     if(linked_master)
         linked_master.remove_roof(src)
     linked_master = null;
-    for(var/icon in GLOB.player_list)
-        var/mob/mob = icon
-        mob.client.images -= normal_image
+    for(var/mob/mob as anything in GLOB.player_list)
+        mob.client?.images -= normal_image
     return ..()
 
 /obj/structure/roof/proc/add_default_image(subsystem, mob/mob)

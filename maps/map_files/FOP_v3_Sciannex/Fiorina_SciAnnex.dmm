@@ -24,9 +24,36 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "aae" = (
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	registered_name = "John Smith"
+	},
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aaf" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/prison,
+/area/fiorina/tumor/aux_engi)
+"aag" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/rank/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
+/turf/open/floor/wood,
+/area/fiorina/station/civres_blue)
+"aah" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
+"aai" = (
+/obj/structure/janitorialcart,
+/obj/item/clothing/head/bio_hood{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -10610,13 +10637,6 @@
 	},
 /turf/open/floor/prison/greenblue/east,
 /area/fiorina/station/botany)
-"igQ" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
-/turf/open/floor/wood,
-/area/fiorina/station/civres_blue)
 "igV" = (
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison/floor_plate,
@@ -11721,10 +11741,6 @@
 	},
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
-"iXV" = (
-/obj/structure/closet/l3closet/general,
-/turf/open/floor/prison,
-/area/fiorina/tumor/aux_engi)
 "iYa" = (
 /turf/open/floor/prison/bluecorner/west,
 /area/fiorina/station/chapel)
@@ -24539,14 +24555,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
-"sQr" = (
-/obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood/janitor{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/disco)
 "sQv" = (
 /obj/structure/platform/metal/almayer,
 /obj/item/clothing/gloves/botanic_leather,
@@ -29892,14 +29900,6 @@
 	},
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco/east_disco)
-"xbp" = (
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "xbr" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/prison/green/north,
@@ -43379,7 +43379,7 @@ svP
 nMm
 hvL
 svP
-iXV
+aaf
 jlk
 jlk
 kXs
@@ -46734,7 +46734,7 @@ mDz
 toE
 mDz
 toE
-igQ
+aag
 dFH
 xJw
 bQM
@@ -68142,7 +68142,7 @@ qBe
 qBe
 sWw
 qBe
-sQr
+aai
 qBe
 qBe
 qBe
@@ -72436,7 +72436,7 @@ mok
 mxQ
 pRx
 tOM
-xbp
+aae
 xhV
 gbf
 fOT
@@ -83197,7 +83197,7 @@ nGZ
 nGZ
 qaL
 fDJ
-aae
+aah
 uYi
 cUd
 cUd

@@ -615,6 +615,32 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
+"acr" = (
+/obj/structure/surface/rack,
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	pixel_x = 5;
+	registered_name = "John Smith"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1/ceiling)
+"acs" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/stamp/denied{
+	pixel_x = -11;
+	pixel_y = 8
+	},
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	pixel_x = 5;
+	registered_name = "John Smith"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/indoors/c_block/cargo)
 "acv" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
@@ -8489,12 +8515,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
-"exZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/lv522/oob)
 "eym" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -10320,17 +10340,6 @@
 /obj/item/seeds/potatoseed,
 /turf/open/floor/prison/greenfull/northwest,
 /area/lv522/indoors/b_block/hydro)
-"fDF" = (
-/obj/structure/surface/rack,
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	pixel_x = 5;
-	registered_name = "John Forklift"
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/prison/greenfull/east,
-/area/lv522/landing_zone_1/ceiling)
 "fEF" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/radiator_tile2,
@@ -32644,21 +32653,6 @@
 	},
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/east_central_street)
-"rfK" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/stamp/denied{
-	pixel_x = -11;
-	pixel_y = 8
-	},
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	pixel_x = 5;
-	registered_name = "John Forklift"
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/c_block/cargo)
 "rfW" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/glasses/sunglasses,
@@ -51097,7 +51091,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-exZ
+tiQ
 tiQ
 tiQ
 vtc
@@ -55752,7 +55746,7 @@ ien
 veQ
 sbF
 aFf
-fDF
+acr
 tKS
 mvP
 yhU
@@ -67673,7 +67667,7 @@ srm
 jmG
 kkP
 wly
-rfK
+acs
 jmG
 jmG
 kie

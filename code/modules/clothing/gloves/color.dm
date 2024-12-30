@@ -4,7 +4,7 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
@@ -16,7 +16,6 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 	siemens_coefficient = 1 //Set to a default of 1, gets overridden in New()
-	permeability_coefficient = 0.05
 
 /obj/item/clothing/gloves/fyellow/New()
 	siemens_coefficient = pick(0,0.5,0.5,0.5,0.5,0.75,1.5)

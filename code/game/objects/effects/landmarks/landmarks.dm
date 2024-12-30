@@ -113,6 +113,14 @@
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
 
+///hunting grounds
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner
+	name = "hunt spawner"
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	name = "hunt spawner xeno"
+
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
 	. = ..()
 	GLOB.monkey_spawns += src
@@ -213,6 +221,10 @@
 
 /obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
 	. = ..()
+
+	var/area/area = get_area(src)
+	area.unoviable_timer = FALSE
+
 	GLOB.queen_spawns += src
 
 /obj/effect/landmark/queen_spawn/Destroy()
@@ -232,15 +244,11 @@
 	return ..()
 
 /obj/effect/landmark/xeno_hive_spawn
-	name = "xeno hive spawn"
+	name = "xeno vs xeno hive spawn"
 	icon_state = "hive_spawn"
 
 /obj/effect/landmark/xeno_hive_spawn/Initialize(mapload, ...)
 	. = ..()
-
-	var/area/area = get_area(src)
-	area.unoviable_timer = FALSE
-
 	GLOB.xeno_hive_spawns += src
 
 /obj/effect/landmark/xeno_hive_spawn/Destroy()
@@ -278,6 +286,7 @@
 	anchored = TRUE
 	var/job
 	var/squad
+	var/job_list
 
 /obj/effect/landmark/start/Initialize(mapload, ...)
 	. = ..()
@@ -287,6 +296,15 @@
 			LAZYADD(GLOB.spawns_by_squad_and_job[squad][job], src)
 		else
 			LAZYADD(GLOB.spawns_by_job[job], src)
+	if(job_list)
+		for(var/job_from_list in job_list)
+			if(squad)
+				LAZYINITLIST(GLOB.spawns_by_squad_and_job[squad])
+				LAZYADD(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
+			else
+				LAZYADD(GLOB.spawns_by_job[job_from_list], src)
+	else
+		return
 
 /obj/effect/landmark/start/Destroy()
 	if(job)
@@ -294,6 +312,14 @@
 			LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job], src)
 		else
 			LAZYREMOVE(GLOB.spawns_by_job[job], src)
+	if(job_list)
+		for(var/job_from_list in job_list)
+			if(squad)
+				LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
+				LAZYREMOVE(GLOB.latejoin_by_squad[squad][job_from_list], src)
+			else
+				LAZYREMOVE(GLOB.spawns_by_job[job_from_list], src)
+				LAZYREMOVE(GLOB.latejoin_by_job[job_from_list], src)
 	return ..()
 
 /obj/effect/landmark/start/AISloc
@@ -343,10 +369,10 @@
 	job = /datum/job/logistics/engineering/whiskey
 
 /obj/effect/landmark/start/whiskey/maint
-	job = /datum/job/logistics/tech/maint/whiskey
+	job = /datum/job/logistics/maint/whiskey
 
 /obj/effect/landmark/start/whiskey/tech
-	job = /datum/job/logistics/tech //Need to create a WO variant in the future
+	job = /datum/job/logistics/otech //Need to create a WO variant in the future
 
 //****************************************** MILITARY POLICE- HONOR-GUARD ************************************************/
 /obj/effect/landmark/start/whiskey/warrant
@@ -413,6 +439,7 @@
 	var/squad
 	/// What job should latejoin on this landmark
 	var/job
+	var/job_list
 
 /obj/effect/landmark/late_join/alpha
 	name = "alpha late join"
@@ -435,6 +462,9 @@
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
 
+/obj/effect/landmark/late_join/dzho_automaton
+	name = "dzho automaton late join"
+	job = JOB_UPP_JOE
 
 /obj/effect/landmark/late_join/cmo
 	name = "Chief Medical Officer late join"
@@ -468,12 +498,17 @@
 	name = "Chief Military Police late join"
 	job = JOB_CHIEF_POLICE
 
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)
 		LAZYADD(GLOB.latejoin_by_squad[squad], src)
 	else if(job)
 		LAZYADD(GLOB.latejoin_by_job[job], src)
+	else if(job_list)
+		for(var/job_to_add in job_list)
+			LAZYADD(GLOB.latejoin_by_job[job_to_add], src)
+
 	else
 		GLOB.latejoin += src
 
@@ -482,9 +517,45 @@
 		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
 	else if(job)
 		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
+	else if(job_list)
+		for(var/job_to_add in job_list)
+			LAZYREMOVE(GLOB.latejoin_by_job[job_to_add], src)
 	else
 		GLOB.latejoin -= src
 	return ..()
+
+
+/obj/effect/landmark/late_join/responder/uscm
+	name = "USCM HC Fax Responder late join"
+	job = JOB_FAX_RESPONDER_USCM_HC
+
+/obj/effect/landmark/late_join/responder/uscm/provost
+	name = "USCM Provost Fax Responder late join"
+	job = JOB_FAX_RESPONDER_USCM_PVST
+
+/obj/effect/landmark/late_join/responder/wey_yu
+	name = "W-Y Fax Responder late join"
+	job = JOB_FAX_RESPONDER_WY
+
+/obj/effect/landmark/late_join/responder/upp
+	name = "UPP Fax Responder late join"
+	job = JOB_FAX_RESPONDER_UPP
+
+/obj/effect/landmark/late_join/responder/twe
+	name = "TWE Fax Responder late join"
+	job = JOB_FAX_RESPONDER_TWE
+
+/obj/effect/landmark/late_join/responder/clf
+	name = "CLF Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CLF
+
+/obj/effect/landmark/late_join/responder/cmb
+	name = "CMB Fax Responder late join"
+	job = JOB_FAX_RESPONDER_CMB
+
+/obj/effect/landmark/late_join/responder/press
+	name = "Press Fax Responder late join"
+	job = JOB_FAX_RESPONDER_PRESS
 
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms

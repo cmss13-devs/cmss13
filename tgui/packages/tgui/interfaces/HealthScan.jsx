@@ -120,7 +120,7 @@ export const HealthScan = (props) => {
                       ? 'Myocardial rupture, surgical intervention required'
                       : 'Permanently deceased'
                     : Synthetic
-                      ? 'Central power system shutdown, reboot possible'
+                      ? 'Central power system shutdown, reboot with a reset key possible'
                       : 'Cardiac arrest, defibrillation possible'}
                 </Box>
               </LabeledList.Item>

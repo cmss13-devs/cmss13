@@ -97,6 +97,7 @@ CIVILIAN
 /datum/skills/civilian/survivor/pmc/medic
 	name = "Survivor PMC Medic"
 	additional_skills = list(
+		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
@@ -109,6 +110,7 @@ CIVILIAN
 /datum/skills/civilian/survivor/pmc/engineer
 	name = "Survivor PMC Engineer"
 	additional_skills = list(
+		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
@@ -118,6 +120,23 @@ CIVILIAN
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
+	)
+
+/datum/skills/civilian/survivor/pmc/lead
+	name = "Survivor PMC Team Leader"
+	additional_skills = list(
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_FIREARMS = SKILL_FIREARMS_EXPERT,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/doctor
@@ -216,6 +235,40 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
+/datum/skills/civilian/survivor/wy_pilot
+	name = "Survivor - Weyland Yutani - Pilot"
+	additional_skills = list(
+		SKILL_PILOT = SKILL_PILOT_EXPERT,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+	)
+
+/datum/skills/civilian/survivor/paramedic
+	name = "Survivor - Paramedic"
+	additional_skills = list(
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
+		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
+/datum/skills/civilian/survivor/fire_fighter
+	name = "Survivor - Fire Protection Specialist"
+	additional_skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+	)
+
+/datum/skills/civilian/survivor/pizza_delivery_driver
+	name = "Survivor - Pizza Galaxy Delivery Driver"
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
 /datum/skills/civilian/survivor/gangleader
 	name = "Survivor Gang Leader"
 	additional_skills = list(
@@ -223,4 +276,17 @@ CIVILIAN
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+	)
+
+/datum/skills/civilian/fax_responder
+	name = "Comms Relay Worker" //Used for fax responder presets, allowing use of appropriate HUDs and basics.
+	skills = list(
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
+		SKILL_POLICE = SKILL_POLICE_MAX,
 	)

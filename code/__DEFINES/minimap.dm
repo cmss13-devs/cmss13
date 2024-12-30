@@ -1,4 +1,3 @@
-
 #define MINIMAP_FLAG_XENO (1<<0)
 #define MINIMAP_FLAG_USCM (1<<1)
 #define MINIMAP_FLAG_PMC (1<<2)
@@ -17,12 +16,15 @@
 #define MINIMAP_FLAG_XENO_RENEGADE (1<<15)
 #define MINIMAP_FLAG_ALL (1<<16) - 1
 
-///Converts the overworld x and y to minimap x and y values
+///The minimap zoom scale
 #define MINIMAP_SCALE 2
+///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_PIXEL_FROM_WORLD(val) (val * MINIMAP_SCALE - 3)
 
-//actual size of a users screen in pixels
+///The actual size of a users screen in pixels
 #define SCREEN_PIXEL_SIZE 480
+///The actual size of the minimap in pixels
+#define MINIMAP_PIXEL_SIZE 512
 
 GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
@@ -68,7 +70,6 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_SOF "#400000"
 #define MINIMAP_SQUAD_INTEL "#053818"
 
-
 //Prison
 #define MINIMAP_AREA_CELL_MAX "#570101ee"
 #define MINIMAP_AREA_CELL_HIGH "#a54b01ee"
@@ -79,3 +80,16 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
 #define TACMAP_BASE_OCCLUDED "Occluded"
 #define TACMAP_BASE_OPEN "Open"
+
+// Hybrisa
+#define MINIMAP_AREA_COLONY_STREETS "#4e6d67ae"
+#define MINIMAP_AREA_COLONY_SPACE_PORT "#a54b01ee"
+#define MINIMAP_AREA_COLONY_HOSPITAL "#029982e7"
+#define MINIMAP_AREA_COLONY_ENGINEERING "#888404e7"
+#define MINIMAP_AREA_COLONY_MARSHALLS "#880404e7"
+#define MINIMAP_AREA_COLONY_RESANDCOM "#91bdcfe7"
+#define MINIMAP_AREA_HYBRISACAVES "#390192ee"
+#define MINIMAP_AREA_HYBRISARESEARCH "#856600ee"
+#define MINIMAP_AREA_DERELICT "#920190ee"
+#define MINIMAP_AREA_OOB "#3a3a3a"
+#define MINIMAP_AREA_COMMS "#00b3ffe7"

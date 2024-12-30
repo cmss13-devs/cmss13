@@ -1,0 +1,15 @@
+.theme-crtblue {
+  .HairPicker {
+    .Stack--horizontal > .Picker:first-of-type {
+      margin-left: 6px;
+    }
+
+    .Picker.Active {
+      outline: 4px solid #8ac8ff;
+    }
+
+    .Picker img {
+      background: white;
+    }
+  }
+}

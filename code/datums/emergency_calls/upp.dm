@@ -64,37 +64,37 @@
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
-		arm_equipment(H, /datum/equipment_preset/upp/leader, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/leader/dressed, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Combat Synthetic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, /datum/equipment_preset/upp/synth, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/synth/dressed, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, /datum/equipment_preset/upp/medic, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/medic/dressed, TRUE, TRUE)
 	else if(engineers < engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Sapper of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, /datum/equipment_preset/upp/sapper, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/sapper/dressed, TRUE, TRUE)
 	else if(heavies < max_heavies && ((!heavy_pick && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY)) || (heavy_pick && HAS_FLAG(H.client.prefs.toggles_ert, (PLAY_HEAVY|PLAY_SMARTGUNNER)))) && check_timelock(H.client, heavy_pick ? list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN) : JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Sergeant of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		var/equipment_path = /datum/equipment_preset/upp/specialist
+		var/equipment_path = /datum/equipment_preset/upp/specialist/dressed
 		if(heavy_pick)
 			if(HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER))
-				equipment_path = pick(/datum/equipment_preset/upp/specialist, /datum/equipment_preset/upp/machinegunner)
+				equipment_path = pick(/datum/equipment_preset/upp/specialist/dressed, /datum/equipment_preset/upp/machinegunner/dressed)
 			else if(HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && !HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY))
-				equipment_path = /datum/equipment_preset/upp/machinegunner
+				equipment_path = /datum/equipment_preset/upp/machinegunner/dressed
 		arm_equipment(H, equipment_path, TRUE, TRUE)
 	else if(smartgunners < max_smartgunners && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		to_chat(H, SPAN_ROLE_HEADER("You are a sergeant of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, /datum/equipment_preset/upp/machinegunner, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/machinegunner/dressed, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, /datum/equipment_preset/upp/soldier, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/soldier/dressed, TRUE, TRUE)
 
 	print_backstory(H)
 

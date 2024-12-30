@@ -121,6 +121,88 @@
 	transverse  =  3
 	long    =  0
 
+/obj/effect/attach_point/weapon/dropship_upp
+	ship_tag = DROPSHIP_MORANA
+
+/obj/effect/attach_point/weapon/dropship_upp/left_wing
+	name = "port wing weapon attach point"
+	icon_state = "equip_base_l_wing"
+	attach_id = 1
+	dir = WEST
+	firing_arc_min = -3
+	firing_arc_max =  3
+	transverse  = -3
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp/left_fore
+	name = "port fore weapon attach point"
+	attach_id = 2
+	dir = NORTH
+	firing_arc_min = -6
+	firing_arc_max =  0
+	transverse  =  0
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp/right_fore
+	name = "starboard fore weapon attach point"
+	attach_id = 3
+	dir = NORTH
+	firing_arc_min =  0
+	firing_arc_max =  6
+	transverse  =  0
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp/right_wing
+	name = "starboard wing weapon attach point"
+	icon_state = "equip_base_r_wing";
+	attach_id = 4
+	dir = EAST
+	firing_arc_min = -3
+	firing_arc_max =  3
+	transverse  =  3
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp2
+	ship_tag = DROPSHIP_DEVANA
+
+/obj/effect/attach_point/weapon/dropship_upp2/left_wing
+	name = "port wing weapon attach point"
+	icon_state = "equip_base_l_wing"
+	attach_id = 1
+	dir = WEST
+	firing_arc_min = -3
+	firing_arc_max =  3
+	transverse  = -3
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp2/left_fore
+	name = "port fore weapon attach point"
+	attach_id = 2
+	dir = NORTH
+	firing_arc_min = -6
+	firing_arc_max =  0
+	transverse  =  0
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp2/right_fore
+	name = "starboard fore weapon attach point"
+	attach_id = 3
+	dir = NORTH
+	firing_arc_min =  0
+	firing_arc_max =  6
+	transverse  =  0
+	long    =  0
+
+/obj/effect/attach_point/weapon/dropship_upp2/right_wing
+	name = "starboard wing weapon attach point"
+	icon_state = "equip_base_r_wing";
+	attach_id = 4
+	dir = EAST
+	firing_arc_min = -3
+	firing_arc_max =  3
+	transverse  =  3
+	long    =  0
+
 /obj/effect/attach_point/crew_weapon
 	name = "crew compartment attach point"
 	base_category = DROPSHIP_CREW_WEAPON
@@ -143,6 +225,18 @@
 /obj/effect/attach_point/crew_weapon/dropship3/floor
 	plane = FLOOR_PLANE
 
+/obj/effect/attach_point/crew_weapon/dropship_upp
+	ship_tag = DROPSHIP_MORANA
+
+/obj/effect/attach_point/crew_weapon/dropship_upp/floor
+	plane = FLOOR_PLANE
+
+/obj/effect/attach_point/crew_weapon/dropship_upp2
+	ship_tag = DROPSHIP_DEVANA
+
+/obj/effect/attach_point/crew_weapon/dropship_upp2/floor
+	plane = FLOOR_PLANE
+
 /obj/effect/attach_point/electronics
 	name = "electronic system attach point"
 	base_category = DROPSHIP_ELECTRONICS
@@ -158,9 +252,15 @@
 /obj/effect/attach_point/electronics/dropship3
 	ship_tag = DROPSHIP_SAIPAN
 
+/obj/effect/attach_point/electronics/dropship_upp
+	ship_tag = DROPSHIP_MORANA
+
+/obj/effect/attach_point/electronics/dropship_upp2
+	ship_tag = DROPSHIP_DEVANA
+
 /obj/effect/attach_point/fuel
 	name = "engine system attach point"
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP
 
@@ -172,6 +272,12 @@
 
 /obj/effect/attach_point/fuel/dropship3
 	ship_tag = DROPSHIP_SAIPAN
+
+/obj/effect/attach_point/fuel/dropship_upp
+	ship_tag = DROPSHIP_MORANA
+
+/obj/effect/attach_point/fuel/dropship_upp2
+	ship_tag = DROPSHIP_DEVANA
 
 
 /obj/effect/attach_point/computer
@@ -185,3 +291,6 @@
 
 /obj/effect/attach_point/computer/dropship3
 	ship_tag = DROPSHIP_SAIPAN
+
+/obj/effect/attach_point/computer/dropship_upp
+	ship_tag = DROPSHIP_MORANA

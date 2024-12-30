@@ -514,6 +514,16 @@ Make sure their actual health updates immediately.*/
 		set_stat(UNCONSCIOUS)
 		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
 
+/mob/living/carbon/xenomorph/adjustBruteLoss(amount)
+	if(status_flags & GODMODE)
+		return //godmode
+	bruteloss = max(bruteloss + amount, 0)
+
+/mob/living/carbon/xenomorph/adjustFireLoss(amount)
+	if(status_flags & GODMODE)
+		return //godmode
+	fireloss = max(fireloss + amount, 0)
+
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()
 	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.

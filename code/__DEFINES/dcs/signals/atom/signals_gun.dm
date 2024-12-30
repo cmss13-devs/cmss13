@@ -17,9 +17,9 @@
 #define COMSIG_GUN_INTERRUPT_FIRE "gun_interrupt_fire"
 
 //Signals for automatic fire at component
-#define COMSIG_AUTOMATIC_SHOOTER_START_SHOOTING_AT "start_shooting_at"
-#define COMSIG_AUTOMATIC_SHOOTER_STOP_SHOOTING_AT "stop_shooting_at"
-#define COMSIG_AUTOMATIC_SHOOTER_SHOOT "shoot"
+#define COMSIG_AUTO_START_SHOOTING_AT "auto_start_shooting_at"
+#define COMSIG_AUTO_STOP_SHOOTING_AT "auto_stop_shooting_at"
+#define COMSIG_AUTO_SHOOT "auto_shoot"
 
 //Signals for gun auto fire component
 #define COMSIG_GET_BURST_FIRE "get_burst_fire"
@@ -31,4 +31,4 @@
 	#define COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE (1<<1) //hard stop firing
 
 /// Called when IFF is toggled on or off
-#define COMSIG_GUN_IFF_TOGGLED "gun_iff_toggled"
+#define COMSIG_GUN_ALT_IFF_TOGGLED "gun_iff_toggled"

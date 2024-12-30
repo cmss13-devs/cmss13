@@ -281,6 +281,11 @@
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
 
+/obj/structure/bed/chair/comfy/yautja
+	name = "alien chair"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	debris = list(/obj/item/stack/sheet/mineral/sandstone/runed)
+
 /obj/structure/bed/chair/comfy/alpha
 	icon_state = "comfychair_alpha"
 	name = "Alpha squad chair"
@@ -532,7 +537,7 @@
 /obj/structure/bed/chair/hunter
 	name = "hunter chair"
 	desc = "An exquisitely crafted chair for a large humanoid hunter."
-	icon = 'icons/turf/walls/hunter.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "chair"
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'

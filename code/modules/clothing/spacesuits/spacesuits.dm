@@ -10,13 +10,12 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
-	permeability_coefficient = 0.01
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|BLOCKSHARPOBJ
@@ -40,7 +39,6 @@
 	)
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.02
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	allowed = list(/obj/item/device/flashlight,/obj/item/tank/emergency_oxygen)
 	slowdown = 3

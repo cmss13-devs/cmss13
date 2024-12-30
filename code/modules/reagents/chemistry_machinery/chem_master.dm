@@ -400,6 +400,11 @@
 	if(connected)
 		connected = null
 
+/obj/structure/machinery/chem_master/yautja
+	name = "chemical distributor"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
+
 /obj/structure/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
 	req_skill = null

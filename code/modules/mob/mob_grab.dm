@@ -41,6 +41,10 @@
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
+			var/data = SEND_SIGNAL(user.pulling, COMSIG_MOVABLE_PULLED, src)
+			if(!(data & COMPONENT_IGNORE_ANCHORED) && user.pulling.anchored)
+				user.stop_pulling()
+				return
 			var/move_dir = get_dir(user.pulling.loc, T)
 			step(user.pulling, move_dir)
 			var/mob/living/pmob = user.pulling

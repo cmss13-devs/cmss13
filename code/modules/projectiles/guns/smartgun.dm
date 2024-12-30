@@ -5,26 +5,38 @@
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
 	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56"
 	item_state = "m56"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
+
 	fire_sound = "gun_smartgun"
 	fire_rattle = "gun_smartgun_rattle"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
+
 	current_mag = /obj/item/ammo_magazine/smartgun
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	var/obj/item/smartgun_battery/battery = null
-	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)
-	var/requires_power = TRUE
-	/// Whether the smartgun requires a battery
-	var/requires_battery = TRUE
-	/// Whether the smartgun requires a harness to use
-	var/requires_harness = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	gun_category = GUN_CATEGORY_HEAVY
+	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
+	auto_retrieval_slot = WEAR_J_STORE
+	start_semiauto = FALSE
+	start_automatic = TRUE
+
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
@@ -35,17 +47,37 @@
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
+	attachable_allowed = list(
+		/obj/item/attachable/smartbarrel,
+		/obj/item/attachable/flashlight,
+	)
+
+	var/obj/item/smartgun_battery/battery = null
+	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)
+	var/requires_power = TRUE
+	/// Whether the smartgun requires a battery
+	var/requires_battery = TRUE
+	/// Whether the smartgun requires a harness to use
+	var/requires_harness = TRUE
+
+	/// The current normal ammo datum
 	var/datum/ammo/ammo_primary //Toggled ammo type
+	/// The current AP ammo datum
 	var/datum/ammo/ammo_secondary //Toggled ammo type
+	/// Non-Frontline mode normal ammo datum
 	var/datum/ammo/ammo_primary_def = /datum/ammo/bullet/smartgun
+	/// Non-Frontline mode AP ammo datum
 	var/datum/ammo/ammo_secondary_def = /datum/ammo/bullet/smartgun/armor_piercing
-	///Frontline mode changes the SG to use 2 new bullet types (alt) for each variant of the SG in order to change falloff/damage/range parameters.
+	/// Frontline mode normal ammo datum
 	var/datum/ammo/ammo_primary_alt = /datum/ammo/bullet/smartgun/alt
+	/// Frontline mode AP ammo datum
 	var/datum/ammo/ammo_secondary_alt = /datum/ammo/bullet/smartgun/armor_piercing/alt
+	/// Whether IFF mode is toggled on
 	var/iff_enabled = TRUE //Begin with the safety on.
-	///This controls if frontline mode is enabled roundstart. E.g. var/frontline_enabled = FALSE means the SG starts with frontline mode disabled.
-	var/frontline_enabled = FALSE
-	var/secondary_toggled = 0 //which ammo we use
+	/// Whether Frontline mode is toggled on
+	var/frontline_enabled = FALSE //Begin with Frontline mode off.
+	/// Whether we are using AP ammo currently
+	var/secondary_toggled = FALSE
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
 	var/auto_fire = 0
@@ -58,22 +90,6 @@
 	var/long_range_cooldown = 2
 	var/recycletime = 120
 	var/cover_open = FALSE
-
-	unacidable = 1
-	explo_proof = TRUE
-
-	attachable_allowed = list(
-		/obj/item/attachable/smartbarrel,
-		/obj/item/attachable/flashlight,
-	)
-
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_category = GUN_CATEGORY_HEAVY
-	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
-	auto_retrieval_slot = WEAR_J_STORE
-	start_semiauto = FALSE
-	start_automatic = TRUE
-
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary_def = GLOB.ammo_list[ammo_primary_def] //Gun initialize calls replace_ammo() so we need to set these first.
@@ -833,7 +849,7 @@
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
 	ammo_secondary_alt = /datum/ammo/bullet/smartgun/holo_target/ap/alt
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/twe_guns.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
 	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)

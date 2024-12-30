@@ -6,18 +6,20 @@
 	icon_state = "binoculars"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	force = 5
 	w_class = SIZE_SMALL
 	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	var/tile_offset = 11
 	var/viewsize = 12
 	var/hvh_tile_offset = 6 //same as miniscopes
 	var/hvh_zoom_viewsize = 7
-
-	//matter = list("metal" = 50,"glass" = 50)
 
 /obj/item/device/binoculars/Initialize()
 	. = ..()
@@ -28,7 +30,7 @@
 
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
 	else
 		zoom(user, tile_offset, viewsize)

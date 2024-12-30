@@ -281,6 +281,11 @@
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
 
+/obj/structure/bed/chair/comfy/yautja
+	name = "alien chair"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	debris = list(/obj/item/stack/sheet/mineral/sandstone/runed)
+
 /obj/structure/bed/chair/comfy/alpha
 	icon_state = "comfychair_alpha"
 	name = "Alpha squad chair"
@@ -386,12 +391,12 @@
 
 /obj/structure/bed/chair/dropship/passenger/Initialize()
 	. = ..()
-	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
+	chairbar = image(icon, "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/Initialize()
 	. = ..()
-	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
+	chairbar = image(icon, "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 
@@ -532,7 +537,7 @@
 /obj/structure/bed/chair/hunter
 	name = "hunter chair"
 	desc = "An exquisitely crafted chair for a large humanoid hunter."
-	icon = 'icons/turf/walls/hunter.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "chair"
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
@@ -542,7 +547,11 @@
 /obj/item/weapon/twohanded/folded_metal_chair //used for when someone picks up the chair
 	name = "metal folding chair"
 	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_righthand.dmi'
+	)
 	icon_state = "folding_chair"
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")

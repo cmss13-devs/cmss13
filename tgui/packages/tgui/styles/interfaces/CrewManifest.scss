@@ -2,19 +2,20 @@
 
 $departmental-colors: (
   'Command': #114dc1,
-  'Command Support': #114dc1,
+  'Auxiliary': #5281df,
+  'Marines': #5a722d,
   'Alpha': #db2626,
   'Bravo': #c68610,
   'Charlie': #aa55aa,
   'Delta': #007fcf,
-  'Echo' #3eb489,
+  'Echo': #3eb489,
   'Foxtrot': #c47a50,
   'Intel': #045f26,
-  'Military Police': #991818,
+  'Security': #991818,
   'Engineering': #c67519,
   'Requisitions': #593616,
-  'Medbay': #15903a,
-  'Other': #707070,
+  'Medical': #2d7c44,
+  'Miscellaneous': #707070,
 );
 
 $status-colors: (

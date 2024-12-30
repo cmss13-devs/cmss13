@@ -8,7 +8,7 @@ type ManifestData = {
   Auxiliary?: Crew[];
   Security?: Crew[];
   Engineering?: Crew[];
-  Requisition?: Crew[];
+  Requisitions?: Crew[];
   Medical?: Crew[];
   Marines?: Crew[];
   Miscellaneous?: Crew[];
@@ -25,6 +25,10 @@ type Crew = {
 export const ManifestSection = (props, context) => {
   const { act, data } = useBackend<ManifestData>();
 
+  if (!data) {
+    return <Section>No data available.</Section>;
+  }
+
   // Remove OOC_status from the department list
   const manifestDepartments = Object.keys(data).filter(
     key => key !== 'OOC_status'
@@ -35,9 +39,12 @@ export const ManifestSection = (props, context) => {
       {manifestDepartments.length === 0 && 'There are no crew active.'}
       {manifestDepartments.map((dept) => {
         const deptCrew = data[dept];
-        if (!deptCrew || deptCrew.length === 0) {
+
+        // Ensure deptCrew is an array
+        if (!Array.isArray(deptCrew) || deptCrew.length === 0) {
           return null;
         }
+
         return (
           <Section
             key={dept}
@@ -47,6 +54,9 @@ export const ManifestSection = (props, context) => {
             backgroundColor="rgba(10, 10, 10, 0.75)">
             <Table>
               {deptCrew.map((crewmate) => {
+                if (!crewmate || typeof crewmate !== 'object') {
+                  return null;
+                }
                 return (
                   <TableRow
                     key={crewmate.name}

@@ -1,4 +1,0 @@
-author: "SpypigDev"
-delete-after: True
-changes:
-  - bugfix: "no longer forces pill bottles to begin emptying on a click"

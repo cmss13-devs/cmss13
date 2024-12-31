@@ -122,19 +122,6 @@
 
 		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
 
-
-/obj/structure/machinery/door/airlock/open(forced)
-	. = ..()
-	if(!forced)
-		send_status()
-
-
-/obj/structure/machinery/door/airlock/close(forced)
-	. = ..()
-	if(!forced)
-		send_status()
-
-
 /obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	if(new_frequency)
@@ -257,7 +244,7 @@
 	if (istype(I, /obj/item/card/id))
 		attack_hand(user)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)

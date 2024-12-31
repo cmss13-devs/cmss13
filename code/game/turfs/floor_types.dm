@@ -265,6 +265,7 @@
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
 	var/covered = TRUE
+	var/covered_icon_state = "catwalk"
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 	. = ..()
@@ -275,7 +276,7 @@
 /turf/open/floor/plating/plating_catwalk/update_icon()
 	. = ..()
 	if(covered)
-		overlays += image(icon, src, "catwalk", CATWALK_LAYER)
+		overlays += image(icon, src, covered_icon_state, CATWALK_LAYER)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
@@ -322,19 +323,13 @@
 /turf/open/floor/plating/plating_catwalk/aicore
 	icon = 'icons/turf/floors/aicore.dmi'
 	icon_state = "ai_plating_catwalk"
-
-/turf/open/floor/plating/plating_catwalk/aicore/update_icon()
-	. = ..()
-	if(covered)
-		overlays += image(icon, src, "ai_catwalk", CATWALK_LAYER)
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
+	covered_icon_state = "ai_catwalk"
 
 /turf/open/floor/plating/plating_catwalk/aicore/white
 	icon_state = "w_ai_plating_catwalk"
-
-/turf/open/floor/plating/plating_catwalk/aicore/white/update_icon()
-	. = ..()
-	if(covered)
-		overlays += image(icon, src, "w_ai_catwalk", CATWALK_LAYER)
+	covered_icon_state = "w_ai_catwalk"
 
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"
@@ -350,7 +345,8 @@
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
@@ -367,6 +363,48 @@
 
 /turf/open/floor/almayer/blue/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/almayer/black
+	icon_state = "black"
+
+/turf/open/floor/almayer/black/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/black/north
+	dir = NORTH
+
+/turf/open/floor/almayer/black/east
+	dir = EAST
+
+/turf/open/floor/almayer/black/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/black/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer/black/west
+	dir = WEST
+
+/turf/open/floor/almayer/blackcorner
+	icon_state = "blackcorner"
+
+/turf/open/floor/almayer/blackcorner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/blackcorner/east
+	dir = EAST
+
+/turf/open/floor/almayer/blackcorner/west
+	dir = WEST
+
+/turf/open/floor/almayer/blackfull
+	icon_state = "blackfull"
+
+/turf/open/floor/almayer/blackfull/west
+	dir = WEST
+
+/turf/open/floor/almayer/black/northwest
+	dir = NORTHWEST
 
 /turf/open/floor/almayer/cargo
 	icon_state = "cargo"
@@ -986,6 +1024,9 @@
 /turf/open/floor/almayer/research/containment/corner_var2
 	icon_state = "containment_corner_variant_2"
 
+/turf/open/floor/almayer/research/containment/corner_var1/north
+	dir = NORTH
+
 /turf/open/floor/almayer/research/containment/corner_var1/east
 	dir = EAST
 
@@ -1007,7 +1048,8 @@
 /turf/open/floor/almayer/research/containment/floor2/west
 	dir = WEST
 
-
+/turf/open/floor/almayer/fake_outerhull
+	icon_state = "outerhull"
 
 
 //Outerhull
@@ -1430,6 +1472,9 @@
 
 /turf/open/floor/prison/darkbrown3/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/prison/darkbrown3/southeast
+	dir = SOUTHEAST
 
 /turf/open/floor/prison/darkbrowncorners2
 	icon_state = "darkbrowncorners2"
@@ -1962,6 +2007,9 @@
 /turf/open/floor/prison/darkbrown3/northwest
 	dir = NORTHWEST
 
+/turf/open/floor/prison/darkbrown3/northeast
+	dir = NORTHEAST
+
 /turf/open/floor/prison/darkpurple2/northwest
 	dir = NORTHWEST
 
@@ -2082,6 +2130,15 @@
 /turf/open/floor/prison/whitepurplefull
 	icon_state = "whitepurplefull"
 
+/turf/open/floor/prison/ramptop
+	icon_state = "ramptop"
+
+/turf/open/floor/prison/ramptop/north
+	dir = NORTH
+
+/turf/open/floor/prison/ramptop/east
+	dir = EAST
+
 // Mechbay
 /turf/open/floor/mech_bay_recharge_floor
 	name = "Mech Bay Recharge Station"
@@ -2099,11 +2156,14 @@
 
 /turf/open/floor/interior
 	icon = 'icons/turf/floors/interior.dmi'
+	icon_state = null
 
 /turf/open/floor/interior/wood
 	name = "wooden floor"
 	icon_state = "oldwood1"
 	tile_type = /obj/item/stack/tile/wood
+	breakable_tile = FALSE // wood-broken icon_state does not exist in this icon
+	burnable_tile = FALSE // wood-broken icon_state does not exist in this icon
 
 /turf/open/floor/interior/wood/is_wood_floor()
 	return TRUE
@@ -2687,6 +2747,19 @@
 /turf/open/floor/corsat/yellowcorner/east
 	dir = EAST
 
+/turf/open/floor/corsat/box
+	icon_state = "box"
+
+/turf/open/floor/corsat/officetiles
+	icon_state = "officetiles"
+
+/turf/open/floor/corsat/spiralblueoffice
+	icon_state = "spiralblueoffice"
+	light_color = "#0090ff"
+	light_on = 1
+	light_power = 2
+	light_range = 4
+
 /turf/open/floor/grey_dark2
 	color = "#525151"
 	icon_state = "dark2"
@@ -3260,6 +3333,66 @@
 /turf/open/floor/carpet9_4/west
 	dir = WEST
 
+/turf/open/floor/carpetside
+	icon_state = "carpetside"
+
+/turf/open/floor/carpetside/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/carpetside/north
+	dir = NORTH
+
+/turf/open/floor/carpetside/east
+	dir = EAST
+
+/turf/open/floor/carpetside/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/carpetside/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/carpetside/west
+	dir = WEST
+
+/turf/open/floor/carpetside/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/bcarpet01
+	icon_state = "bcarpet01"
+
+/turf/open/floor/bcarpet01/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet02
+	icon_state = "bcarpet02"
+
+/turf/open/floor/bcarpet02/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet03
+	icon_state = "bcarpet03"
+
+/turf/open/floor/bcarpet03/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet07
+	icon_state = "bcarpet07"
+
+/turf/open/floor/bcarpet07/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet08
+	icon_state = "bcarpet08"
+
+/turf/open/floor/bcarpet08/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/bcarpet09
+	icon_state = "bcarpet09"
+
+/turf/open/floor/bcarpet09/southeast
+	dir = SOUTHEAST
+
 /turf/open/floor/chapel/west
 	dir = WEST
 
@@ -3492,7 +3625,7 @@
 	icon_state = "blueyellowfull"
 
 /turf/open/floor/cafeteria
-	icon_state = "cafeteria"
+	icon_state = "cafeteriaold"
 
 /turf/open/floor/cmo
 	icon_state = "cmo"
@@ -3571,3 +3704,22 @@
 
 /turf/open/floor/yellowfull
 	icon_state = "yellowfull"
+
+/turf/open/floor/corsat/squareswood/pred
+	icon_state = "squareswood"
+
+/turf/open/floor/corsat/squareswood/pred/north
+	dir = NORTH
+
+/turf/open/floor/strata/gray_multi_tiles/pred
+	color = "#5e5d5d"
+	icon_state = "multi_tiles"
+
+/turf/open/floor/strata/gray_multi_tiles/south/pred
+	dir = SOUTH
+
+/turf/open/floor/cult/pred
+	icon_state = "cult"
+
+/turf/open/gm/grass/grass2/pred
+	icon_state = "grass2"

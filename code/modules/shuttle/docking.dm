@@ -194,7 +194,7 @@
 
 	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
-		if(!(old_turfs[old_turfs[i]] & MOVE_CONTENTS | MOVE_TURF))
+		if(!(old_turfs[old_turfs[i]] & (MOVE_CONTENTS|MOVE_TURF)))
 			continue
 		var/turf/oldT = old_turfs[i]
 		var/turf/newT = new_turfs[i]

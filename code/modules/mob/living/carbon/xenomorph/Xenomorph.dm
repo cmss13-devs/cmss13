@@ -370,6 +370,7 @@
 	vis_contents += wound_icon_holder
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
+	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
 	if(old_xeno)
 		src.nicknumber = old_xeno.nicknumber
 		src.life_kills_total = old_xeno.life_kills_total

@@ -91,7 +91,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "ahz" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "brflowers_1"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -1605,7 +1605,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "crT" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "fullgrass_1"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -2022,7 +2022,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_dunes)
 "cXA" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "lavendergrass_1"
 	},
 /mob/living/simple_animal/cat/Runtime{
@@ -3912,7 +3912,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "fRP" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "brflowers_3"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -4793,9 +4793,7 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles"
-	},
+/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -10344,6 +10342,7 @@
 /area/kutjevo/interior/colony_central)
 "pLN" = (
 /obj/structure/surface/table/almayer,
+/obj/item/clock,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pLS" = (
@@ -11530,8 +11529,7 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi{
-	icon_state = "kutjevo_goggles";
+/obj/item/clothing/glasses/thermal/syndi/kutjevo{
 	pixel_y = -2
 	},
 /turf/open/floor/kutjevo/multi_tiles/east,
@@ -12132,6 +12130,10 @@
 	explo_proof = 1;
 	pixel_y = 7
 	},
+/obj/item/clock{
+	pixel_x = -21;
+	pixel_y = 17
+	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med/pano)
 "sMg" = (
@@ -12614,7 +12616,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "tye" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "sparsegrass_2"
 	},
 /turf/open/gm/dirt2,
@@ -12827,7 +12829,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "tMH" = (
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -13100,7 +13102,7 @@
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/med)
 "ujo" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "ujT" = (
@@ -13198,7 +13200,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
 "uri" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "fullgrass_3"
 	},
 /turf/open/gm/grass/grass1/weedable,
@@ -13405,7 +13407,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east_tech)
 "uIQ" = (
-/obj/structure/flora/bush/ausbushes/ppflowers{
+/obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "sparsegrass_3"
 	},
 /turf/open/gm/dirtgrassborder2,
@@ -14862,7 +14864,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 4;
 	pixel_y = 7
 	},

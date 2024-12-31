@@ -4,10 +4,11 @@
 	damage_cap = 650 // Bigger = more endurable
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
-/obj/structure/machinery/door/airlock/multi_tile/close() //Nasty as hell O(n^2) code but unfortunately necessary
+/obj/structure/machinery/door/airlock/multi_tile/close(forced = FALSE) //Nasty as hell O(n^2) code but unfortunately necessary
 	for(var/turf/turf_tile in locs)
 		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			if(vehicle_tile) return 0
+			addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+			return FALSE
 
 	return ..()
 
@@ -115,16 +116,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/secure2_glass/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
-
-/obj/structure/machinery/door/airlock/multi_tile/shuttle
-	name = "Shuttle Podlock"
-	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
-	icon_state = "pdoor1"
-	opacity = TRUE
-	openspeed = 12
-	req_access = null
-	not_weldable = 1
-
 
 // ALMAYER
 
@@ -277,12 +268,12 @@
 		control.status = SHUTTLE_DOOR_UNLOCKED
 		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
 		return
-	..()
+	. = ..()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced=FALSE)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock(forced = FALSE)
 	if(is_reserved_level(z) && !forced)
 		return // in orbit
-	..()
+	return ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)
@@ -397,7 +388,7 @@
 	open(TRUE)
 	lock(TRUE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close()
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/close(forced = FALSE)
 	. = ..()
 	for(var/turf/self_turf as anything in locs)
 		var/turf/projected = get_ranged_target_turf(self_turf, throw_dir, 1)
@@ -647,3 +638,150 @@
 	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
 	opacity = FALSE
 	glass = TRUE
+
+// Hybrisa
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa
+	openspeed = 4
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1generic.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname
+	req_access = null
+	opacity = FALSE
+	glass = TRUE
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1generic_solid.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+
+// Medical
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1medidoor.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1medidoor_solid.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical_solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
+
+// Personal
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1personaldoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+// Personal White
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_white
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1personaldoor_glass_white.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_white/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_2x1personaldoor_white.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal_solid_white/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+// Black Research Doors
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double
+	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/solid
+	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE

@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "AMR sniper spec magazines reduced to 2 for the box."
+  - balance: "requistions amr sniper spec magazine order reduced to 3 mags."

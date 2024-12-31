@@ -1,14 +1,15 @@
 GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 
-var/list/departments = list(
-	"Command" = GLOB.ROLES_CIC,
-	"Auxiliary" = GLOB.ROLES_AUXIL_SUPPORT,
-	"Security" = GLOB.ROLES_POLICE,
-	"Engineering" = GLOB.ROLES_ENGINEERING,
-	"Requisitions" = GLOB.ROLES_REQUISITION,
-	"Medical" = GLOB.ROLES_MEDICAL,
-	"Miscellaneous" = GLOB.ROLES_MISC
-)
+/datum/crew_manifest
+	var/list/departments = list(
+		"Command" = GLOB.ROLES_CIC,
+		"Auxiliary" = GLOB.ROLES_AUXIL_SUPPORT,
+		"Security" = GLOB.ROLES_POLICE,
+		"Engineering" = GLOB.ROLES_ENGINEERING,
+		"Requisitions" = GLOB.ROLES_REQUISITION,
+		"Medical" = GLOB.ROLES_MEDICAL,
+		"Miscellaneous" = GLOB.ROLES_MISC
+	)
 
 /datum/crew_manifest/ui_static_data(mob/user)
 	. = ..()

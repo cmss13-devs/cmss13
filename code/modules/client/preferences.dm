@@ -356,14 +356,14 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Always Pick Random Appearance:</b> <a href='byond://?_src_=prefs;preference=rand_body'><b>[be_random_body ? "Yes" : "No"]</b></a><br><br>"
 
 			dat += "<h2><b><u>Physical Information:</u></b>"
-			dat += "<a href='byond://_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
-			dat += "<b>Age:</b> <a href='byond://_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
-			dat += "<b>Gender:</b> <a href='byond://_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
+			dat += "<a href='byond://?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
+			dat += "<b>Age:</b> <a href='byond://?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
+			dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
 
 			dat += "<b>Skin Color:</b> [skin_color]<br>"
 			dat += "<b>Body Size:</b> [body_size]<br>"
 			dat += "<b>Body Muscularity:</b> [body_type]<br>"
-			dat += "<b>Edit Body:</b> <a href='byond://_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
+			dat += "<b>Edit Body:</b> <a href='byond://?_src_=prefs;preference=body;task=input'><b>Picker</b></a><br><br>"
 
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits'><b>Character Traits</b></a>"
 			dat += "<br>"
@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<span class='square' style='background-color: #[num2hex(r_gradient, 2)][num2hex(g_gradient, 2)][num2hex(b_gradient)];'></span>"
 				dat += "<br>"
 
-			dat += "<b>Edit Hair:</b> <a href='byond://_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br><br>"
+			dat += "<b>Edit Hair:</b> <a href='byond://?_src_=prefs;preference=hair;task=input'><b>Picker</b></a><br><br>"
 
 			dat += "<b>Eye:</b> "
 			dat += "<a href='byond://?_src_=prefs;preference=eyes;task=input'>"
@@ -538,16 +538,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<div id='column2'>"
 				dat += "<h2><b><u>Equipment Setup:</u></b></h2>"
 				if(owner.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
-					dat += "<b>Legacy Gear:</b> <a href='byond://_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
-				dat += "<b>Translator Type:</b> <a href='byond://_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
-				dat += "<b>Mask Style:</b> <a href='byond://_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
-				dat += "<b>Mask Accessory:</b> <a href='byond://_src_=prefs;preference=pred_accessory_type;task=input'><b>([predator_accessory_type])</b></a><br>"
-				dat += "<b>Armor Style:</b> <a href='byond://_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
-				dat += "<b>Greave Style:</b> <a href='byond://_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
-				dat += "<b>Mask Material:</b> <a href='byond://_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
-				dat += "<b>Armor Material:</b> <a href='byond://_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
-				dat += "<b>Greave Material:</b> <a href='byond://_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
-				dat += "<b>Caster Material:</b> <a href='byond://_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
+					dat += "<b>Legacy Gear:</b> <a href='byond://?_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
+				dat += "<b>Translator Type:</b> <a href='byond://?_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
+				dat += "<b>Mask Style:</b> <a href='byond://?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
+				dat += "<b>Mask Accessory:</b> <a href='byond://?_src_=prefs;preference=pred_accessory_type;task=input'><b>([predator_accessory_type])</b></a><br>"
+				dat += "<b>Armor Style:</b> <a href='byond://?_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
+				dat += "<b>Greave Style:</b> <a href='byond://?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
+				dat += "<b>Mask Material:</b> <a href='byond://?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
+				dat += "<b>Armor Material:</b> <a href='byond://?_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
+				dat += "<b>Greave Material:</b> <a href='byond://?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
+				dat += "<b>Caster Material:</b> <a href='byond://?_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
 				dat += "</div>"
 
 				dat += "<div id='column3'>"
@@ -629,9 +629,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Toggle Being Able to Hurt Yourself: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
-					</b> <a href='byond://_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Automatic Shove: \
-					</b> <a href='byond://_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTO_SHOVE_OFF]'><b>[toggle_prefs & TOGGLE_AUTO_SHOVE_OFF ? "Off" : "On"]</b></a><br>"
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTO_SHOVE_OFF]'><b>[toggle_prefs & TOGGLE_AUTO_SHOVE_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Ability Deactivation: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ABILITY_DEACTIVATION_OFF]'><b>[toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Directional Assist: \
@@ -651,10 +651,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Toggle Vendors Vending to Hands: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Semi-Auto Ammo Display Limiter: \
-					</b> <a href='byond://_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AMMO_DISPLAY_TYPE]'><b>[toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "On" : "Off"]</b></a><br>"
-			dat += "<a href='byond://src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
-			dat += "<a href='byond://src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
-			dat += "<a href='byond://src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>"
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AMMO_DISPLAY_TYPE]'><b>[toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE ? "On" : "Off"]</b></a><br>"
+			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
+			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Dual Wield Functionality</a><br>"
+			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>"
 		if(MENU_SPECIAL) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
@@ -669,25 +669,25 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "</div>"
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Hunting Ground ERT Settings:</u></b></h2>"
-			dat += "<b>Spawn as Mercenary:</b> <a href='byond://_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_MERC]'><b>[toggles_ert_pred & PLAY_MERC ? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Spawn as Royal Marine:</b> <a href='byond://_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_TWE]'><b>[toggles_ert_pred & PLAY_TWE ? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Spawn as UPP:</b> <a href='byond://_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_UPP]'><b>[toggles_ert_pred & PLAY_UPP ? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Spawn as CLF:</b> <a href='byond://_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_CLF]'><b>[toggles_ert_pred & PLAY_CLF ? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Spawn as Xeno T2:</b> <a href='byond://_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T2]'><b>[toggles_ert_pred & PLAY_XENO_T2 ? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Spawn as Xeno T3:</b> <a href='byond://_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T3]'><b>[toggles_ert_pred & PLAY_XENO_T3 ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Mercenary:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_MERC]'><b>[toggles_ert_pred & PLAY_MERC ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Royal Marine:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_TWE]'><b>[toggles_ert_pred & PLAY_TWE ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as UPP:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_UPP]'><b>[toggles_ert_pred & PLAY_UPP ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as CLF:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_CLF]'><b>[toggles_ert_pred & PLAY_CLF ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Xeno T2:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T2]'><b>[toggles_ert_pred & PLAY_XENO_T2 ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Xeno T3:</b> <a href='byond://?_src_=prefs;preference=toggles_ert_pred;flag=[PLAY_XENO_T3]'><b>[toggles_ert_pred & PLAY_XENO_T3 ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 			dat += "</body>"
 			if(owner.check_whitelist_status(WHITELIST_FAX_RESPONDER))
 				dat += "<div id='column3'>"
 				dat += "<h2><b><u>Fax Responder Names:</u></b></h2>"
-				dat += "<b>USCM High Command:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=uscm'><b>[fax_name_uscm]</b></a><br>"
-				dat += "<b>USCM Provost:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=pvst'><b>[fax_name_pvst]</b></a><br>"
-				dat += "<b>Weyland-Yutani:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=wy'><b>[fax_name_wy]</b></a><br>"
-				dat += "<b>UPP Command:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=upp'><b>[fax_name_upp]</b></a><br>"
-				dat += "<b>TWE Command:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=twe'><b>[fax_name_twe]</b></a><br>"
-				dat += "<b>Colonial Marshal Bureau:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
-				dat += "<b>Free Press:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
-				dat += "<b>CLF Command:</b> <a href='byond://_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
+				dat += "<b>USCM High Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=uscm'><b>[fax_name_uscm]</b></a><br>"
+				dat += "<b>USCM Provost:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=pvst'><b>[fax_name_pvst]</b></a><br>"
+				dat += "<b>Weyland-Yutani:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=wy'><b>[fax_name_wy]</b></a><br>"
+				dat += "<b>UPP Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=upp'><b>[fax_name_upp]</b></a><br>"
+				dat += "<b>TWE Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=twe'><b>[fax_name_twe]</b></a><br>"
+				dat += "<b>Colonial Marshal Bureau:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
+				dat += "<b>Free Press:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
+				dat += "<b>CLF Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
 
 	dat += "</div></body>"
 

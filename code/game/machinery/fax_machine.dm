@@ -470,7 +470,7 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	msg_admin += SPAN_STAFF_IC("Receiving fax via secure connection ... <a href='byond://?FaxView=\ref[faxcontents]'>view message</a>")
 
 	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>[the_target_department]: </font></b>")
-	msg_ghost += "Receiving fax via secure connection ... <a href='byond://FaxView=\ref[faxcontents]'>view message</a>"
+	msg_ghost += "Receiving fax via secure connection ... <a href='byond://?FaxView=\ref[faxcontents]'>view message</a>"
 
 	send_fax(faxcontents)
 

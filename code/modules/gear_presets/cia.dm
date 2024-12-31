@@ -202,7 +202,7 @@
 
 //OWLF, CIA Subset
 
-/datum/equipment_preset/cia/owlf
+/datum/equipment_preset/cia/owlf/field
 
 	name = "OWLF Field Agent"
 	assignment = JOB_OWLF

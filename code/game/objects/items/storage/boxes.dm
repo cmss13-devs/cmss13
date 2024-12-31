@@ -348,6 +348,11 @@
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
+/obj/item/storage/box/monkeycubes/yautja
+	name = "weird cube box"
+	desc = "Some box with unknown language label on it."
+	icon_state = "box_of_doom"
+
 /obj/item/storage/box/ids
 	name = "box of spare IDs"
 	desc = "Has so many empty IDs."

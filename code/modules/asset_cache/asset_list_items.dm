@@ -295,6 +295,7 @@
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/belt,
 		/obj/item/storage/pill_bottle,
+		/obj/item/weapon,
 	)
 
 /datum/asset/spritesheet/vending_products/register()
@@ -316,13 +317,19 @@
 		if(icon_state in icon_states(icon_file))
 			if(is_path_in_list(current_product, additional_preload_icons))
 				item = new current_product()
-				new_icon = getFlatIcon(item)
-				new_icon.Scale(32,32)
+				if(ispath(current_product, /obj/item/weapon))
+					new_icon = icon(item.icon, item.icon_state, SOUTH)
+					var/new_color = initial(item.color)
+					if(!isnull(new_color) && new_color != "#FFFFFF")
+						new_icon.Blend(new_color, ICON_MULTIPLY)
+				else
+					new_icon = getFlatIcon(item)
+					new_icon.Scale(32,32)
 				qdel(item)
 			else
 				new_icon = icon(icon_file, icon_state, SOUTH)
 				var/new_color = initial(item.color)
-				if (!isnull(new_color) && new_color != "#FFFFFF")
+				if(!isnull(new_color) && new_color != "#FFFFFF")
 					new_icon.Blend(new_color, ICON_MULTIPLY)
 		else
 			if(ispath(current_product, /obj/effect/essentials_set))

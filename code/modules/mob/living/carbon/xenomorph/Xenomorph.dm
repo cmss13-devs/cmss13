@@ -309,6 +309,9 @@
 
 	bubble_icon = "alien"
 
+	//vars used by xenomorpher
+	var/mob_heal_standing = 0
+	var/mob_heal_resting = 0
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars

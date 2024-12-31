@@ -59,6 +59,12 @@
 	build_type = /obj/effect/alien/resin/special/eggmorph
 	build_icon_state = "eggmorph_preview"
 
+/datum/construction_template/xenomorph/xenomorpher
+	name = XENO_STRUCTURE_XENOMORPHER
+	description = "A xenomorph structure that allows them to change their nature in exchange for biomass."
+	build_type = /obj/effect/alien/resin/special/xenomorpher
+	build_icon_state = "pool_preview"
+
 /datum/construction_template/xenomorph/recovery
 	name = XENO_STRUCTURE_RECOVERY
 	description = "Hastily recovers the strength of sisters resting around it."

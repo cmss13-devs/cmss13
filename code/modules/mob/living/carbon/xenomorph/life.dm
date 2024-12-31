@@ -347,9 +347,9 @@ Make sure their actual health updates immediately.*/
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						heal_wounds(caste.heal_resting * regeneration_multiplier, recoveryActual)
+						heal_wounds(mob_heal_resting + (caste.heal_resting * regeneration_multiplier), recoveryActual)
 				else
-					heal_wounds(caste.heal_standing * regeneration_multiplier, recoveryActual)
+					heal_wounds(mob_heal_standing + (caste.heal_standing * regeneration_multiplier), recoveryActual)
 				updatehealth()
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)

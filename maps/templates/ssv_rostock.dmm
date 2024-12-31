@@ -38,7 +38,7 @@
 /obj/structure/largecrate/random/barrel/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
+	dir = 4
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
@@ -95,6 +95,18 @@
 	},
 /turf/open/floor/strata/red1,
 /area/rostock/lower_deck/prep)
+"aan" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lowerdeck_maint/p_m)
+"aao" = (
+/obj/item/tool/wet_sign,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lowerdeck_maint/p_m)
 "aaQ" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/bridge{
@@ -443,7 +455,9 @@
 	icon_state = "NW-out";
 	pixel_y = 2
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/corsat/lightplate,
 /area/rostock/lower_deck/bathroom)
 "apK" = (
@@ -1311,12 +1325,6 @@
 	},
 /turf/open/floor/prison/darkyellow2,
 /area/rostock/lower_deck/engineering_lower_access)
-"aTL" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer/aicore/reinforced,
-/area/rostock/airoom)
 "aTQ" = (
 /obj/structure/machinery/landinglight/upp_ds2/delaytwo{
 	dir = 1
@@ -4901,11 +4909,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/rostock/security/brig_holding_area)
-"dMx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/corsat/spiralplate,
-/area/rostock/lowerdeck_maint/p_m)
 "dMB" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -8931,6 +8934,9 @@
 "gPw" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "gPJ" = (
@@ -12142,6 +12148,9 @@
 "jcr" = (
 /obj/structure/largecrate/random/barrel/red,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "jcT" = (
@@ -12973,6 +12982,7 @@
 	req_one_access = list(230, 240);
 	dir = 2
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/bathroom)
 "jJh" = (
@@ -15876,12 +15886,6 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/req)
-"lUb" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer/upp/reinforced,
-/area/rostock/security/brig_holding_area)
 "lUc" = (
 /obj/effect/decal/floor_symbol/westface/west,
 /turf/open/floor/strata/floor2,
@@ -17942,12 +17946,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/req)
-"nHf" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer/upp/reinforced/outer,
-/area/rostock/command/armory)
 "nHp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/cell_stripe/east,
@@ -18921,16 +18919,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
-"ozS" = (
-/obj/structure/mirror{
-	pixel_y = 32
-	},
-/obj/structure/sink{
-	pixel_y = 24
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/corsat/plate,
-/area/rostock/lower_deck/bathroom)
 "oAk" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/darkyellow2/north,
@@ -20780,6 +20768,9 @@
 /obj/structure/sign/safety/waterhazard{
 	pixel_x = 15;
 	pixel_y = 32
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
@@ -23530,10 +23521,6 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
-"sbg" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer/upp,
-/area/rostock/lower_deck/bathroom)
 "sbu" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep/toxic,
@@ -24239,6 +24226,9 @@
 "sDX" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "sEt" = (
@@ -25014,6 +25004,9 @@
 "tmV" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "tnh" = (
@@ -43577,9 +43570,9 @@ bLg
 gxu
 ion
 aaf
-dMx
-sbg
-ozS
+naT
+cnm
+hix
 apy
 wih
 pxe
@@ -44668,8 +44661,8 @@ toq
 eyu
 khK
 naT
-ays
-eyu
+aao
+aan
 jIK
 eRZ
 vSv
@@ -48057,7 +48050,7 @@ amf
 amf
 msL
 guf
-lUb
+guf
 guf
 tgF
 gAs
@@ -51759,7 +51752,7 @@ nbf
 tEy
 tEy
 tEy
-aTL
+tEy
 tEy
 tEy
 tEy
@@ -51960,7 +51953,7 @@ cEi
 cEi
 pmY
 xDI
-nHf
+pNi
 pNi
 pNi
 pNi

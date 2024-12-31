@@ -125,6 +125,10 @@
         }
       }
     }
+
+    .gnarp {
+      background-image: url('../assets/gnarp-dark.svg');
+    }
   }
 }
 
@@ -167,7 +171,7 @@
   }
 
   .gnarp {
-    background-image: url('../assets/gnarp.svg');
+    background-image: url('../assets/gnarp-light.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 24px 24px;

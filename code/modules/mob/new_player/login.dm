@@ -70,9 +70,6 @@
 	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
 
-/mob/new_player/ui_static_data(mob/user)
-	. = ..()
-
 	.["lobby_author"] = SSlobby_art.author
 
 /mob/new_player/ui_assets(mob/user)

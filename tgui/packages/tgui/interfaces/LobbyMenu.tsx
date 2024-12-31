@@ -369,7 +369,7 @@ const LobbyButtons = (props: {
             <LobbyButton
               index={5}
               selected={!!readied}
-              onClick={() => act(readied ? 'unready ' : 'ready')}
+              onClick={() => act(readied ? 'unready' : 'ready')}
               icon={readied ? 'check' : 'xmark'}
               tooltip={
                 xenomorph_enabled ? 'Ready with Xenomorph enabled' : undefined

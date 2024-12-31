@@ -303,6 +303,8 @@
 	health -= damage
 	healthcheck()
 
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+
 /obj/effect/alien/egg/proc/healthcheck()
 	if(health <= 0)
 		Burst(TRUE)

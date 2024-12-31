@@ -19,6 +19,22 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
+"aad" = (
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	registered_name = "John Smith"
+	},
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aae" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/station/research_cells/west)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -5393,14 +5409,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"ejM" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/MRE/WY{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/turf/open/floor/prison/darkpurplefull2,
-/area/fiorina/station/research_cells/west)
 "ekb" = (
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_tram)
@@ -29884,14 +29892,6 @@
 	},
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco/east_disco)
-"xbp" = (
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "xbr" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/prison/green/north,
@@ -64302,7 +64302,7 @@ hqD
 kXk
 gnY
 cKa
-ejM
+aae
 dVA
 rhf
 sWX
@@ -72428,7 +72428,7 @@ mok
 mxQ
 pRx
 tOM
-xbp
+aad
 xhV
 gbf
 fOT

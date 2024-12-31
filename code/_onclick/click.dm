@@ -148,7 +148,7 @@
 	if(W)
 		var/attackby_result = A.attackby(W, src, mods)
 		var/afterattack_result
-		if(!(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK) && A && !QDELETED(A))
+		if(!QDELETED(A) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
 			// in case the attackby slept
 			if(!W)
 				if(!isitem(A) && !issurface(A))

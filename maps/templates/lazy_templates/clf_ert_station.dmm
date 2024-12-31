@@ -173,10 +173,6 @@
 /obj/structure/machinery/light/small/built,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
-"fk" = (
-/obj/structure/pipes/vents/pump,
-/turf/closed/wall/wood,
-/area/adminlevel/ert_station/clf_station)
 "fx" = (
 /obj/structure/largecrate/supply/medicine/blood,
 /turf/open/floor/wood,
@@ -3418,7 +3414,7 @@ ZI
 AP
 vn
 ZI
-fk
+ZI
 cx
 xM
 ZI

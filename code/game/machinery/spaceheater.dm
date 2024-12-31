@@ -72,7 +72,7 @@
 			close_browser(user, "spaceheater")
 			user.unset_interaction()
 	else
-		..()
+		. = ..()
 	return
 
 /obj/structure/machinery/space_heater/attack_hand(mob/user as mob)

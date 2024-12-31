@@ -30,6 +30,7 @@
 		if(SLOT_LEGS)
 			if(!attacked_carbon.legcuffed)
 				apply_legcuffs(attacked_carbon, user)
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/restraint/proc/place_handcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 25, 1, 4)

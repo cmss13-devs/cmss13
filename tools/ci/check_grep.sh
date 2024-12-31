@@ -222,7 +222,7 @@ fi;
 
 section "516 HREF Syntax"
 part "href syntax"
-if $grep "href[\s='\"\\]*\?" $code_files; then
+if $grep "href[\s='\"\\\\]*\?" $code_files; then
 	echo
     echo -e "${RED}ERROR: BYOND requires internal href links to begin with \"byond://\".${NC}"
 	st=1

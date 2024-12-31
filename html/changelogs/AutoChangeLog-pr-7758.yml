@@ -1,0 +1,7 @@
+author: "Syndro101"
+delete-after: True
+changes:
+  - rscadd: "Added a new area for the sector relay."
+  - mapadd: "Added new offices for Fax Responders."
+  - maptweak: "Renamed the old map."
+  - bugfix: "Fax responders no longer count to round end."

@@ -1025,7 +1025,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		..()
+		. = ..()
 		if(W.force && !(W.flags_item & NOBLUDGEON))
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 			update_health(W.force)

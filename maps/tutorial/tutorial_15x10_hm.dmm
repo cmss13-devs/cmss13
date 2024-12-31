@@ -8,9 +8,14 @@
 /turf/open/floor/almayer/sterile_green,
 /area/misc/tutorial/no_baselight)
 "b" = (
-/obj/structure/surface/table/almayer,
+/obj/structure/bed/medevac_stretcher/prop{
+	breakable = 0;
+	unslashable = 1
+	},
 /turf/open/floor/almayer/sterile_green_side,
-/area/misc/tutorial/no_baselight)
+/area/misc/tutorial/no_baselight{
+	ceiling = 0.1
+	})
 "c" = (
 /obj/effect/landmark/tutorial_bottom_left,
 /obj/structure/machinery/light{

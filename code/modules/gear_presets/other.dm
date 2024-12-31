@@ -1037,3 +1037,14 @@
 	new_human.gender = pick(MALE, FEMALE)
 	var/mob_name = "Dummy"
 	new_human.change_real_name(new_human, mob_name)
+
+/datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc
+	name = "Chief Medical Officer (NPC)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "[random_name(new_human.gender)]"
+	new_human.change_real_name(new_human, mob_name)
+	var/datum/preferences/preferences = new
+	preferences.randomize_appearance(new_human)

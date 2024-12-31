@@ -117,6 +117,7 @@
 	..()
 	if(mob.loc == src.loc && buckling_sound && mob.buckled)
 		playsound(src, buckling_sound, 20)
+		SEND_SIGNAL(src, COMSIG_LIVING_BED_BUCKLED, mob)
 
 /obj/structure/bed/Move(NewLoc, direct)
 	. = ..()
@@ -319,6 +320,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	accepts_bodybag = TRUE
 	var/stretcher_activated
 	var/view_range = 5
+	var/prop
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
 	var/faction = FACTION_MARINE
@@ -326,6 +328,11 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/medevac_stretcher/upp
 	name = "UPP medevac stretcher"
 	faction = FACTION_UPP
+
+/obj/structure/bed/medevac_stretcher/prop
+	prop = TRUE
+	foldabletype = null
+	stretcher_activated = TRUE
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)
@@ -372,6 +379,10 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 
 	if(user == buckled_mob)
 		to_chat(user, SPAN_WARNING("You can't reach the beacon activation button while buckled to [src]."))
+		return
+
+	if(prop)
+		to_chat(user, SPAN_NOTICE("[src]'s beacon locked on default setting!"))
 		return
 
 	if(stretcher_activated)

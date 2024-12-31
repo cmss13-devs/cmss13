@@ -3,7 +3,7 @@
 	desc = "Learn the basic skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_1"
 	icon_state = "medic"
-	//required_tutorial = "marine_basic_1"
+	required_tutorial = "marine_basic_100"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 4
 

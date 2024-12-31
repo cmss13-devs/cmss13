@@ -22,7 +22,7 @@
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_3"
 	icon_state = "medic"
-	//required_tutorial = "marine_hm_1"
+	//required_tutorial = "marine_hm_100"
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
 	// holder for the CMO NPC
@@ -56,9 +56,9 @@
 	var/list/difficulties = list(TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE, TUTORIAL_HM_INJURY_SEVERITY_SEVERE, TUTORIAL_HM_INJURY_SEVERITY_FATAL, TUTORIAL_HM_INJURY_SEVERITY_EXTREME, TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 
 	/// Max amount of agents per survival wave
-	var/max_survival_agents = 5
+	var/max_survival_agents = 3
 
-	var/min_survival_agents = 3
+	var/min_survival_agents = 1
 	/// Current survival wave
 	var/survival_wave = 0
 	/// Difficulty factor per survival wave, increasing both the amount of agents and requested items
@@ -108,16 +108,19 @@
 			stage = TUTORIAL_HM_PHASE_RESUPPLY
 			survival_wave++
 			survival_difficulty = pick(TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE)
-			min_survival_agents = 3
+			min_survival_agents = 1
+			max_survival_agents = 3
 			begin_supply_phase()
 			return
 	survival_wave++
-	if(rand() < (1/500)) // mass cas every 1/5
+	if(rand() < (1/10))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
 		for(var/i in 1 to 2)
 			var/current_difficulty = survival_difficulty
 			if(current_difficulty != TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 				survival_difficulty = next_in_list(current_difficulty, difficulties)
+		min_survival_agents = 4
+		max_survival_agents = 6
 		playsound(tutorial_mob.loc, 'sound/effects/siren.ogg', 50)
 		slower_message_to_player("Warning! Mass-Casualty event detected!")
 	else if((rand() < TUTORIAL_HM_DIFFICULTY_INCREASE) && !(survival_wave <= 2)) // two round grace period
@@ -163,7 +166,7 @@
 
 	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 
-	for(var/i in 3 to (round(rand(min_survival_agents, max_survival_agents))))
+	for(var/i in 1 to (round(rand(min_survival_agents, max_survival_agents))))
 		var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 		arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 		var/turf/dropoff_point = loc_from_corner(round(rand(6, 8), 1), round(rand(1, 3)))
@@ -195,6 +198,7 @@
 	target.updatehealth()
 	target.UpdateDamageIcon()
 	RegisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
+	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	//sleep(25)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/eval_agent_status()
@@ -291,11 +295,18 @@
 			active_agents -= active_agent
 			handle_speech(active_agent)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent)
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
 
+	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
-	agent.balloon_alert_to_viewers("[agent.name] fully treated!")
-	playsound(agent.loc, 'sound/machines/terminal_success.ogg', 20)
+	agent.updatehealth()
+	if(bypass)
+	else if(agent.undefibbable == TRUE)
+		agent.balloon_alert_to_viewers("[agent.name] permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		playsound(agent.loc, 'sound/items/defib_failed.ogg', 20)
+	else
+		agent.balloon_alert_to_viewers("[agent.name] fully treated!")
+		playsound(agent.loc, 'sound/machines/terminal_success.ogg', 20)
 	agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
@@ -327,6 +338,7 @@
 	active_agent.UpdateDamageIcon()
 	active_agents |= active_agent
 	RegisterSignal(active_agent, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
+	RegisterSignal(active_agent, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/hint_requested(mob/living/target, mob/living/user)
@@ -334,7 +346,35 @@
 	if(target == user)
 		return
 
+/datum/tutorial/marine/hospital_corpsman_freeplay/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
 
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevacbed)
+
+	var/list/statusmessage = list()
+
+	for(var/datum/reagent/medical/chemical in target.reagents.reagent_list)
+		if(chemical.volume >= chemical.overdose_critical)
+			statusmessage |= "Critical [chemical.name] overdose detected"
+	for(var/datum/internal_organ/organ in target.internal_organs)
+		if(organ.damage >= organ.min_broken_damage)
+			if(locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list)
+				statusmessage |= "Ruptured [organ.name] detected"
+			else
+				medevacbed.balloon_alert_to_viewers("Organ damage detected! Please stabilize patient with Peridaxon before transit.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+				playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
+				return
+
+	if(length(statusmessage) > 0)
+		medevacbed.balloon_alert_to_viewers("[pick(statusmessage)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
+		playsound(medevacbed.loc, pick(90;'sound/machines/ping.ogg',10;'sound/machines/juicer.ogg'), 20)
+		spawn(2.7 SECONDS)
+		flick("winched_stretcher", medevacbed)
+		make_agent_leave(target, TRUE)
+		medevacbed.update_icon()
+	else
+		medevacbed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
+		return
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/process(delta_time)
 
@@ -393,16 +433,19 @@
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 3))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 3))
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
+	var/obj/structure/bed/medevac_stretcher/prop/medevacbed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
 	//prepdoor.setDir(2)
 	prepdoor.req_one_access = null
 	prepdoor.req_access = null
 	//prepdoor = new(loc_from_corner(4, 1))
 	add_to_tracking_atoms(prepdoor)
+	add_to_tracking_atoms(medevacbed)
+	RegisterSignal(medevacbed, COMSIG_LIVING_BED_BUCKLED, PROC_REF(simulate_evac))
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_npcs()
 
 	CMOnpc = new(loc_from_corner(7, 7))
-	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo)
+	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc)
 
 /datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
 	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)

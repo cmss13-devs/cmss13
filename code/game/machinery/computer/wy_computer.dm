@@ -46,6 +46,10 @@
 	. = ..()
 	get_targets()
 
+/obj/structure/machinery/computer/wy_intranet/Destroy()
+	targets = null
+	..()
+
 /obj/structure/machinery/computer/wy_intranet/proc/get_targets()
 	targets = list()
 	for(var/obj/structure/machinery/door/target_door in GLOB.machines)

@@ -294,7 +294,7 @@
 
 /obj/item/ammo_box/magazine/m10/drum
 	name = "magazine box (Drum m10 x 10)"
-	overlay_ammo_type = "_ext"
+	overlay_ammo_type = "_drum"
 	overlay_content = "_hv"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/drum

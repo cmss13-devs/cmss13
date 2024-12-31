@@ -17727,8 +17727,9 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/p_a_hallway)
 "nAZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/weldingtool,
+/obj/structure/machinery/computer/cryopod/upp{
+	dir = 8
+	},
 /turf/open/floor/strata/floor2,
 /area/rostock/req)
 "nBz" = (

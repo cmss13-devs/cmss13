@@ -330,6 +330,7 @@
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		if(new_xeno)
 			qdel(new_xeno)
+			
 		if(organ_value != 0)
 			var/obj/item/organ/xeno/organ = new()
 			organ.forceMove(src)

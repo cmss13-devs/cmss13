@@ -481,7 +481,7 @@
 	// If the user is unconscious or dead.
 	if(user.stat)
 		return
-	if(!ishuman(user)  && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(over_object == user && in_range(src, user))

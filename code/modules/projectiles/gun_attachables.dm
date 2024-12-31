@@ -125,7 +125,7 @@ Defined in conflicts.dm of the #defines folder.
 	*/
 	if(G.attachments[slot])
 		var/obj/item/attachable/A = G.attachments[slot]
-		A.Detach(detaching_gub = G)
+		A.Detach(detaching_gun = G)
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/M = src.loc
@@ -169,33 +169,33 @@ Defined in conflicts.dm of the #defines folder.
 		// Apply bullet traits from attachment to gun's current projectile
 		G.in_chamber.apply_bullet_trait(L)
 
-/obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
-	if(!istype(detaching_gub)) return //Guns only
+/obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	if(!istype(detaching_gun)) return //Guns only
 
 	if(user)
-		detaching_gub.on_detach(user, src)
+		detaching_gun.on_detach(user, src)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
-		activate_attachment(detaching_gub, null, TRUE)
+		activate_attachment(detaching_gun, null, TRUE)
 
-	detaching_gub.attachments[slot] = null
-	detaching_gub.recalculate_attachment_bonuses()
+	detaching_gun.attachments[slot] = null
+	detaching_gun.recalculate_attachment_bonuses()
 
-	for(var/X in detaching_gub.actions)
+	for(var/X in detaching_gun.actions)
 		var/datum/action/DA = X
 		if(DA.target == src)
 			qdel(X)
 			break
 
-	forceMove(get_turf(detaching_gub))
+	forceMove(get_turf(detaching_gun))
 
 	if(sharp)
-		detaching_gub.sharp = 0
+		detaching_gun.sharp = 0
 
 	for(var/trait in gun_traits)
-		REMOVE_TRAIT(detaching_gub, trait, TRAIT_SOURCE_ATTACHMENT(slot))
+		REMOVE_TRAIT(detaching_gun, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
-		if(!detaching_gub.in_chamber)
+		if(!detaching_gun.in_chamber)
 			break
 		var/list/L
 		if(istext(entry))
@@ -203,7 +203,7 @@ Defined in conflicts.dm of the #defines folder.
 		else
 			L = list(entry) + traits_to_give[entry]
 		// Remove bullet traits of attachment from gun's current projectile
-		detaching_gub.in_chamber._RemoveElement(L)
+		detaching_gun.in_chamber._RemoveElement(L)
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
@@ -584,9 +584,9 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/mateba/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	..()
-	detaching_gub.attachable_offset["muzzle_x"] = 20
+	detaching_gun.attachable_offset["muzzle_x"] = 20
 
 /obj/item/attachable/mateba/dark
 	icon_state = "mateba_medium_a"
@@ -767,6 +767,7 @@ Defined in conflicts.dm of the #defines folder.
 		attached_gun.set_light_range(attached_gun.light_range + light_mod)
 		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
 		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
+			attached_gun.set_light_color(COLOR_WHITE)
 			attached_gun.set_light_on(TRUE)
 			light_on = TRUE
 			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON
@@ -878,9 +879,9 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	G.AddElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
-/obj/item/attachable/magnetic_harness/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/magnetic_harness/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	. = ..()
-	detaching_gub.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
+	detaching_gun.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
 /obj/item/attachable/magnetic_harness/lever_sling
 	name = "R4T magnetic sling" //please don't make this attachable to any other guns...
@@ -902,10 +903,10 @@ Defined in conflicts.dm of the #defines folder.
 	G.attachable_offset["under_y"] = 12
 
 
-/obj/item/attachable/magnetic_harness/lever_sling/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/magnetic_harness/lever_sling/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	. = ..()
-	detaching_gub.attachable_offset["under_x"] = 24
-	detaching_gub.attachable_offset["under_y"] = 16
+	detaching_gun.attachable_offset["under_x"] = 24
+	detaching_gun.attachable_offset["under_y"] = 16
 
 /obj/item/attachable/magnetic_harness/lever_sling/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..() // We are forcing attach_icon skin
@@ -919,6 +920,9 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
 	return .
 
@@ -958,9 +962,9 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	RegisterSignal(gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(handle_attachment_recalc))
 
-/obj/item/attachable/scope/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/scope/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	. = ..()
-	UnregisterSignal(detaching_gub, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+	UnregisterSignal(detaching_gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
 
 /// Due to the bipod's interesting way of handling stat modifications, this is necessary to prevent exploits.
@@ -1181,7 +1185,6 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/New()
 	..()
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 	accuracy_unwielded_mod = 0
 
@@ -1195,7 +1198,7 @@ Defined in conflicts.dm of the #defines folder.
 	))
 
 /obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(do_after(user, 4, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		allows_movement = 1
 		. = ..()
 
@@ -2208,6 +2211,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/stock/mod88
@@ -2328,6 +2334,9 @@ Defined in conflicts.dm of the #defines folder.
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
 			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
 	return .
 
 /obj/item/attachable/m4ra_barrel_custom
@@ -2357,6 +2366,9 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 		if("classic")
 			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
 	return .
 
@@ -2702,9 +2714,9 @@ Defined in conflicts.dm of the #defines folder.
 		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
 
 // When taking it off we want to undo everything not statwise
-/obj/item/attachable/stock/revolver/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/stock/revolver/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = detaching_gub
+	var/obj/item/weapon/gun/revolver/m44/R = detaching_gun
 	if(!istype(R))
 		return 0
 
@@ -3462,20 +3474,20 @@ Defined in conflicts.dm of the #defines folder.
 
 	RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
 
-/obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
-	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
+/obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	UnregisterSignal(detaching_gun, COMSIG_ITEM_DROPPED)
 
 	//clear out anything related to full auto switching
 	full_auto_switch = FALSE
 	old_firemode = null
-	for(var/item_action in detaching_gub.actions)
+	for(var/item_action in detaching_gun.actions)
 		var/datum/action/item_action/bipod/toggle_full_auto_switch/target_action = item_action
 		if(target_action.target == src)
 			qdel(item_action)
 			break
 
 	if(bipod_deployed)
-		undeploy_bipod(detaching_gub, user)
+		undeploy_bipod(detaching_gun, user)
 	..()
 
 /obj/item/attachable/bipod/update_icon()

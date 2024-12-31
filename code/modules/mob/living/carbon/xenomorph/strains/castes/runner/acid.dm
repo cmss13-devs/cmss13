@@ -85,7 +85,7 @@
 		modify_acid(acid_slash_regen_standing)
 
 /datum/behavior_delegate/runner_acider/on_life()
-	if(acid_amount <= acid_gen_cap)
+	if(acid_amount < acid_gen_cap)
 		modify_acid(acid_passive_regen)
 	if(!bound_xeno)
 		return

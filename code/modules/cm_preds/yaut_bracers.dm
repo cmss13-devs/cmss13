@@ -9,7 +9,7 @@
 	)
 
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
 	flags_cold_protection = BODY_FLAG_HANDS

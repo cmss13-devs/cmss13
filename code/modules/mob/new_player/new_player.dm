@@ -255,7 +255,7 @@
 
 	if(!client.prefs?.preview_dummy)
 		client.prefs.update_preview_icon()
-	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
+	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.observer_starts + GLOB.latejoin)), client.prefs.preview_dummy)
 	observer.set_lighting_alpha_from_pref(client)
 	spawning = TRUE
 	observer.started_as_observer = TRUE
@@ -267,7 +267,7 @@
 		to_chat(src, SPAN_NOTICE("Now teleporting."))
 		observer.forceMove(spawn_point.loc)
 	else
-		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
+		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verbs to jump if needed."))
 	observer.icon = 'icons/mob/humans/species/r_human.dmi'
 	observer.icon_state = "anglo_example"
 	observer.alpha = 127

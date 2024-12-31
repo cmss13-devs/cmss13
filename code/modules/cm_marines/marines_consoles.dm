@@ -146,7 +146,7 @@
 			if(target_id_card)
 				if(target_id_card.registered_name != origin_name || target_id_card.assignment != origin_assignment)
 					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
-					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+					target_id_card.name = text("[target_id_card.registered_name]'s [target_id_card.id_type] ([target_id_card.assignment])")
 					if(target_id_card.registered_name != origin_name)
 						log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>", key_name_admin(user))
 					if(target_id_card.assignment != origin_assignment)
@@ -475,7 +475,7 @@
 			usr.put_in_hands(target_id_card)
 		if(operable()) // Powered. Make comp proceed ejection
 			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
-			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+			target_id_card.name = text("[target_id_card.registered_name]'s [target_id_card.id_type] ([target_id_card.assignment])")
 			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
 			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
@@ -1106,12 +1106,20 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
 				// 00-09: High Command
+				JOB_UPP_GENERAL = 00,
+				JOB_UPP_LT_GENERAL = 00,
+				JOB_UPP_MAY_GENERAL = 00,
+				JOB_UPP_BRIG_GENERAL = 00,
 				JOB_UPP_KOL_OFFICER = 00,
 				// 10-19: Command Team
+				JOB_UPP_KOL_OFFICER = 10,
+				JOB_UPP_LTKOL_OFFICER = 10,
+				JOB_UPP_CO_OFFICER = 10, //The actual CO role.
 				JOB_UPP_MAY_OFFICER = 10,
 				JOB_UPP_KPT_OFFICER = 11,
 				JOB_UPP_SRLT_OFFICER = 13,
 				JOB_UPP_LT_OFFICER = 14,
+				JOB_UPP_PILOT = 15,
 				// 20-29: Commandos
 				JOB_UPP_COMMANDO_LEADER = 20,
 				JOB_UPP_COMMANDO_MEDIC = 21,

@@ -443,7 +443,7 @@
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -666,7 +666,7 @@
 				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
-		..()
+		. = ..()
 
 
 /obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
@@ -942,11 +942,12 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 20-29: Aux Command
 				JOB_AUXILIARY_OFFICER = 20,
 				JOB_SYNTH = 21,
-				JOB_CAS_PILOT = 22,
-				JOB_DROPSHIP_PILOT = 23,
-				JOB_DROPSHIP_CREW_CHIEF = 24,
-				JOB_INTEL = 25,
-				JOB_TANK_CREW = 26,
+				JOB_SHIP_SYNTH = 22,
+				JOB_CAS_PILOT = 23,
+				JOB_DROPSHIP_PILOT = 24,
+				JOB_DROPSHIP_CREW_CHIEF = 25,
+				JOB_INTEL = 26,
+				JOB_TANK_CREW = 27,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,

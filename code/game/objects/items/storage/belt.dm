@@ -1545,6 +1545,9 @@
 		/obj/item/ammo_magazine/rifle/xm51,
 		/obj/item/ammo_magazine/handful,
 	)
+		cant_hold = list(
+		/obj/item/weapon/gun/rifle/xm51/avp, // HONKed currently
+	)
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = 10,

@@ -10548,12 +10548,6 @@
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/sigma/south/complex)
-"aOQ" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/inaccessible)
 "aOR" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/platform_decoration/metal/almayer/north{
@@ -80593,7 +80587,7 @@ ylo
 ylo
 ylo
 qIU
-aOQ
+qIU
 qIU
 ylo
 ylo

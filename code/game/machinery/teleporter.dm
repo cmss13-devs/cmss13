@@ -79,7 +79,7 @@
 
 			src.add_fingerprint(usr)
 	else
-		..()
+		. = ..()
 
 	return
 

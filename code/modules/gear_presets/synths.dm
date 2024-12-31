@@ -69,16 +69,25 @@
 	minimap_icon = "synth"
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/marine/satchel
-	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/industrial
-
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+
+/datum/equipment_preset/synth/uscm/ship
+
+	name = "USCM Synthetic - Ship Operations"
+	assignment = JOB_SHIP_SYNTH
+
+/datum/equipment_preset/synth/uscm/ship/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 
 //*****************************************************************************************************/
 
@@ -92,16 +101,24 @@
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/satchel
-	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/industrial
-
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+
+/datum/equipment_preset/synth/uscm/councillor/ship
+	name = "USCM Synthetic Councillor - Ship Operations"
+	assignment = JOB_SHIP_SYNTH
+
+/datum/equipment_preset/synth/uscm/councillor/ship/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 
 //*****************************************************************************************************/
 
@@ -239,14 +256,14 @@
 /datum/equipment_preset/synth/survivor/scientist_synth
 	name = "Survivor - Synthetic - Scientist Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/bio_hood,
+		WEAR_HEAD = /obj/item/clothing/head/bio_hood/synth,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/chem,
 		WEAR_IN_BACK = /obj/item/reagent_container/glass/beaker/vial/random/good,
 		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
-		WEAR_JACKET = /obj/item/clothing/suit/bio_suit,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/synthbio,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_HAND = /obj/item/device/motiondetector,

@@ -13,7 +13,6 @@
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.10
-	permeability_coefficient = 0.50
 
 	var/hanging = 0
 
@@ -43,7 +42,7 @@
 	name = "medical mask"
 	icon_state = "medical"
 	item_state = "medical"
-	permeability_coefficient = 0.01
+
 
 
 
@@ -414,4 +413,4 @@
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.10
-	permeability_coefficient = 0.50
+

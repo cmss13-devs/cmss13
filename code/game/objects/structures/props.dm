@@ -1025,7 +1025,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		..()
+		. = ..()
 		if(W.force && !(W.flags_item & NOBLUDGEON))
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 			update_health(W.force)
@@ -1098,7 +1098,7 @@
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"
 	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 

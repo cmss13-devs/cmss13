@@ -19,7 +19,7 @@
 			. += "Curently contains [xenomorpher_charges] bodies."
 
 
-obj/effect/alien/resin/special/xenomorpher/proc/mutate(mob/living/carbon/xenomorph/xeno, selected_mutation)
+/obj/effect/alien/resin/special/xenomorpher/proc/mutate(mob/living/carbon/xenomorph/xeno, selected_mutation)
 
 	var/mutation_price = 1
 	switch(selected_mutation)
@@ -93,7 +93,7 @@ obj/effect/alien/resin/special/xenomorpher/proc/mutate(mob/living/carbon/xenomor
 	update_icon()
 
 
-obj/effect/alien/resin/special/xenomorpher/attack_alien(mob/living/carbon/xenomorph/user)
+/obj/effect/alien/resin/special/xenomorpher/attack_alien(mob/living/carbon/xenomorph/user)
 	if(isxeno(user))
 		if(user.a_intent == INTENT_HARM)
 			return ..()
@@ -130,7 +130,7 @@ obj/effect/alien/resin/special/xenomorpher/attack_alien(mob/living/carbon/xenomo
 	playsound(loc, 'sound/effects/acidpool.ogg', 25, 1)
 
 
-obj/effect/alien/resin/special/xenomorpher/attackby(obj/item/I, mob/user)
+/obj/effect/alien/resin/special/xenomorpher/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(!isxeno(user))

@@ -202,7 +202,7 @@
 
 //OWLF, CIA Subset
 
-/datum/equipment_preset/cia/owlf/field
+/datum/equipment_preset/cia/owlf
 
 	name = "OWLF Field Agent"
 	assignment = JOB_OWLF
@@ -214,7 +214,7 @@
 	idtype = /obj/item/card/id
 
 
-/datum/equipment_preset/cia/owlf/field/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/cia/owlf/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/owlf_mask(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)

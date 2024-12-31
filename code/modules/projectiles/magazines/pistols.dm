@@ -362,6 +362,6 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper VP76 Magazine"
 	default_ammo = /datum/ammo/bullet/pistol/powerful
 	caliber = "10mm"
-	icon_state = "vp78"
+	icon_state = "vp76"
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/pistol/vp76

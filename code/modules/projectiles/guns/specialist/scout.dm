@@ -12,8 +12,20 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+
 	unacidable = TRUE
 	explo_proof = TRUE
+	force = 26
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	map_specific_decoration = TRUE
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/m4ra,
 		/obj/item/ammo_magazine/rifle/m4ra/ap,
@@ -27,12 +39,7 @@
 		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
 
 	)
-
-	fire_sound = 'sound/weapons/gun_m4ra.ogg'
-	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
-	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
-	force = 26
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
@@ -53,18 +60,12 @@
 		/obj/item/attachable/flashlight/grip,
 	)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	map_specific_decoration = TRUE
-	aim_slowdown = SLOWDOWN_ADS_QUICK
-	flags_item = TWOHANDED|NO_CRYO_STORE
-
 /obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/m4ra_barrel_custom/integrated = new(src)
 	integrated.flags_attach_features &= ~ATTACH_REMOVABLE
 	integrated.Attach(src)
 	update_attachable(integrated.slot)
-
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 23, "rail_y" = 21, "under_x" = 30, "under_y" = 11, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)

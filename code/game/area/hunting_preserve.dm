@@ -5,7 +5,7 @@
 	icon_state = "green"
 	ambience_exterior = AMBIENCE_JUNGLE
 	weather_enabled = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
 	resin_construction_allowed = FALSE
 	can_build_special = FALSE
 	is_resin_allowed = TRUE

@@ -9,7 +9,7 @@
 	)
 
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
 	flags_cold_protection = BODY_FLAG_HANDS
@@ -853,6 +853,8 @@
 			return
 		caller.put_in_active_hand(caster)
 		caster_deployed = TRUE
+		if(caller.client?.prefs.custom_cursors)
+			caller.client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/plasma_caster_mouse.dmi'
 		to_chat(caller, SPAN_NOTICE("You activate your plasma caster. It is in [caster.mode] mode."))
 		playsound(src, 'sound/weapons/pred_plasmacaster_on.ogg', 15, TRUE)
 
@@ -939,7 +941,7 @@
 	if(boomer.stat)
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 		return
-	if(istype(grounds, /area/yautja_grounds)) //Hunted need mask to escape
+	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 		return
 
@@ -1007,7 +1009,7 @@
 		if(boomer.stat)
 			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 			return
-		if(istype(grounds, /area/yautja_grounds)) // Hunted need mask to escape
+		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
 			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
 			return
 		if(exploding)

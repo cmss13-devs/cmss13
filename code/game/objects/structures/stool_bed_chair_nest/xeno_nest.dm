@@ -50,6 +50,8 @@
 	if(buckled_mob == current_mob)
 		current_mob.pixel_y = buckling_y["[dir]"]
 		current_mob.pixel_x = buckling_x["[dir]"]
+		current_mob.old_y = buckling_y["[dir]"]
+		current_mob.old_x = buckling_x["[dir]"]
 		current_mob.dir = turn(dir, 180)
 		ADD_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 		pixel_y = buckling_y["[dir]"]
@@ -273,8 +275,6 @@
 		return
 	resisting = FALSE
 	resisting_ready = FALSE
-	buckled_mob.pixel_y = 0
-	buckled_mob.old_y = 0
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	REMOVE_TRAIT(buckled_mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob

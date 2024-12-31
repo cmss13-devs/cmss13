@@ -188,12 +188,19 @@
 	var/list/limbs = target.limbs
 	var/amount_of_parts = round(rand(1, 6))
 
-	for(var/i in 1 to amount_of_parts)
-		var/obj/limb/selectedlimb = pick(limbs)
-		var/damageamount = (round(rand((40 * survival_difficulty), (50 * survival_difficulty))))
-		selectedlimb.take_damage(round((damageamount * damageamountsplit) / amount_of_parts), round((damageamount * (1 - damageamountsplit)) / amount_of_parts))
-		if((damageamount > 30) && (rand()) < (survival_difficulty / 10))
-			selectedlimb.fracture()
+	var/patienttype = pick(75;1,15;2,10;3) // 75% chance for mundane damage, 15% for organ damage, 10% for toxin
+	if(patienttype >= 1)
+		for(var/i in 1 to amount_of_parts)
+			var/obj/limb/selectedlimb = pick(limbs)
+			var/damageamount = (round(rand((40 * survival_difficulty), (50 * survival_difficulty))))
+			selectedlimb.take_damage(round((damageamount * damageamountsplit) / amount_of_parts), round((damageamount * (1 - damageamountsplit)) / amount_of_parts))
+			if((damageamount > 30) && (rand()) < (survival_difficulty / 10))
+				selectedlimb.fracture()
+	if(patienttype == 2)
+		var/datum/internal_organ/organ = pick(target.internal_organs)
+		target.apply_internal_damage(round(rand(1,(survival_difficulty*3.75))), "[organ.name]")
+	if(patienttype == 3)
+		target.setToxLoss(round(rand(1,10*survival_difficulty)))
 
 	target.updatehealth()
 	target.UpdateDamageIcon()

@@ -13,9 +13,7 @@
 	unslashable = 1
 	},
 /turf/open/floor/almayer/sterile_green_side,
-/area/misc/tutorial/no_baselight{
-	ceiling = 0.1
-	})
+/area/misc/tutorial/no_baselight/open)
 "c" = (
 /obj/effect/landmark/tutorial_bottom_left,
 /obj/structure/machinery/light{

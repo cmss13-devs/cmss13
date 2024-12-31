@@ -178,3 +178,6 @@
 
 /area/misc/tutorial/no_baselight
 	base_lighting_alpha = 0
+
+/area/misc/tutorial/no_baselight/open
+	ceiling = CEILING_NONE

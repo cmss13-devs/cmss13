@@ -28,7 +28,6 @@ export const CrewManifest = (props, context) => {
   const departmentOrder = [
     'Command',
     'Auxiliary',
-    'Security',
     'Alpha',
     'Bravo',
     'Charlie',
@@ -37,6 +36,7 @@ export const CrewManifest = (props, context) => {
     'Foxtrot',
     'Intel',
     'Marines',
+    'Security',
     'Engineering',
     'Requisitions',
     'Medical',

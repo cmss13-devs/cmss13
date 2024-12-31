@@ -1,4 +1,3 @@
-import { map } from 'common/collections';
 import { Fragment, useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -9,7 +8,6 @@ import {
   NumberInput,
   Section,
   Stack,
-  Table,
   Tabs,
 } from '../components';
 import { Window } from '../layouts';
@@ -30,45 +28,9 @@ export const CardMod = (props) => {
             </Tabs.Tab>
           </Tabs>
           {tab2 === 1 && <CardContent />}
-          {tab2 === 2 && <CrewManifest />}
         </Box>
       </Window.Content>
     </Window>
-  );
-};
-
-export const CrewManifest = (props) => {
-  const { act, data } = useBackend();
-  const { manifest = {} } = data;
-  return (
-    <Section
-      title="Crew Manifest"
-      buttons={
-        <Button
-          icon="print"
-          onClick={() =>
-            act('PRG_print', {
-              mode: 0,
-            })
-          }
-        >
-          Print
-        </Button>
-      }
-    >
-      {map(manifest, (entries, department) => (
-        <Section key={department} level={2} title={department}>
-          <Table>
-            {entries.map((entry) => (
-              <Table.Row key={entry.name} className="candystripe">
-                <Table.Cell bold>{entry.name}</Table.Cell>
-                <Table.Cell>({entry.rank})</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table>
-        </Section>
-      ))}
-    </Section>
   );
 };
 

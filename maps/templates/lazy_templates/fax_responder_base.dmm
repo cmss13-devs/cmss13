@@ -324,6 +324,11 @@
 	pixel_x = -8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/documentation/highcom/upp{
+	pixel_y = 20;
+	pixel_x = 8;
+	density = 0
+	},
 /turf/open/floor/darkgreen2/north,
 /area/adminlevel/ert_station/fax_response_station)
 "cV" = (
@@ -455,8 +460,8 @@
 	pixel_y = -6;
 	pixel_x = 6
 	},
-/obj/item/tool/pen/fountain{
-	pixel_x = -5
+/obj/item/tool/pen/multicolor/provost{
+	pixel_x = -4
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
@@ -566,6 +571,11 @@
 	pixel_y = 24;
 	pixel_x = -7
 	},
+/obj/structure/filingcabinet/documentation/highcom/press{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
+	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "fJ" = (
@@ -609,6 +619,11 @@
 	density = 0;
 	pixel_y = 20;
 	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/wy{
+	pixel_x = 8;
+	pixel_y = 20;
+	density = 0
 	},
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -664,6 +679,11 @@
 	pixel_x = -8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/documentation/highcom/twe{
+	pixel_y = 20;
+	pixel_x = 8;
+	density = 0
+	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "gX" = (
@@ -909,7 +929,7 @@
 	pixel_y = 3;
 	pixel_x = 5
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 4
 	},
 /turf/open/floor/corsat/white/east,
@@ -1002,7 +1022,7 @@
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "ky" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = -13;
 	pixel_y = 2
 	},
@@ -1312,7 +1332,12 @@
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 24;
-	pixel_x = -9
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/uscm{
+	pixel_y = 24;
+	pixel_x = 8;
+	density = 0
 	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1842,6 +1867,11 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
+	},
+/obj/structure/filingcabinet/documentation/highcom/clf{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2403,7 +2433,7 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 4
 	},
 /turf/open/floor/darkgreen2,
@@ -2792,7 +2822,7 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/provost{
 	pixel_x = 4
 	},
 /turf/open/floor/almayer/blue,
@@ -3267,7 +3297,7 @@
 	pixel_y = -6;
 	pixel_x = -11
 	},
-/obj/item/tool/pen/fountain,
+/obj/item/tool/pen/multicolor/fountain,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "HE" = (
@@ -4322,7 +4352,7 @@
 	pixel_y = -6;
 	pixel_x = -9
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 4
 	},
 /turf/open/floor/wood,
@@ -4530,7 +4560,12 @@
 /obj/structure/filingcabinet{
 	density = 0;
 	pixel_y = 24;
-	pixel_x = -9
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/provost{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
 	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4539,6 +4574,11 @@
 	density = 0;
 	pixel_y = 24;
 	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/cmb{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
 	},
 /turf/open/floor/shiva/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4709,7 +4749,7 @@
 	pixel_y = -6;
 	pixel_x = -8
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/provost{
 	pixel_x = 4
 	},
 /turf/open/floor/shiva/blue/southwest,

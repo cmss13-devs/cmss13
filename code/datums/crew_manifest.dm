@@ -1,7 +1,11 @@
 GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 
 /datum/crew_manifest
-	var/list/departments = list(
+	var/list/departments = list()
+
+/datum/crew_manifest/New()
+	. = ..()
+	departments = list(
 		"Command" = GLOB.ROLES_CIC,
 		"Auxiliary" = GLOB.ROLES_AUXIL_SUPPORT,
 		"Security" = GLOB.ROLES_POLICE,

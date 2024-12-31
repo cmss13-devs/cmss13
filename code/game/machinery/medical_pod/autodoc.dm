@@ -905,7 +905,16 @@
 			updateUsrDialog()
 		add_fingerprint(usr)
 
+/obj/structure/machinery/autodoc_console/yautja
+	name = "medical pod console"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
 	desc = "A much more expensive model of autodoc modified with an A.I. diagnostic unit. The result is a much simpler, point-and-click interface that anyone, regardless of training, can use. Often employed in autodoc systems deployed to military front lines for soldiers to use."
 	skilllock = null
+
+/obj/structure/machinery/medical_pod/autodoc/yautja
+	name = "alien automated medical pod"
+	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

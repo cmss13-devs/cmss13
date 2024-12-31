@@ -10548,12 +10548,6 @@
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/sigma/south/complex)
-"aOQ" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/inaccessible)
 "aOR" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/platform_decoration/metal/almayer/north{
@@ -22743,7 +22737,7 @@
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/maint)
 "bLD" = (
-/obj/structure/closet/l3closet/janitor,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/omega/maint)
 "bLE" = (
@@ -25659,7 +25653,7 @@
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bYU" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat/yellow,
 /area/corsat/omega/control)
 "bYW" = (
@@ -28594,7 +28588,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ePL" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/biodome/virology)
 "eQR" = (
@@ -41718,7 +41712,7 @@
 /turf/open/floor/corsat/bluegrey/southeast,
 /area/corsat/gamma/hangar/flightcontrol)
 "sFD" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/biodome/virology)
@@ -80593,7 +80587,7 @@ ylo
 ylo
 ylo
 qIU
-aOQ
+qIU
 qIU
 ylo
 ylo

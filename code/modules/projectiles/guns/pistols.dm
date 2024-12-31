@@ -11,6 +11,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+
 	matter = list("metal" = 2000)
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
@@ -41,9 +43,6 @@
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
 		cock(user)
-
-/obj/item/weapon/gun/pistol/get_mouse_pointer()
-	return 'icons/effects/mouse_pointer/pistol_mouse.dmi'
 
 /obj/item/weapon/gun/pistol/set_gun_config_values()
 	..()

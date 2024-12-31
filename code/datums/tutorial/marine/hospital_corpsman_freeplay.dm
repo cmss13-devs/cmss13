@@ -308,6 +308,7 @@
 	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
 	agent.updatehealth()
 	if(bypass)
+		continue
 	else if(agent.undefibbable == TRUE)
 		agent.balloon_alert_to_viewers("[agent.name] permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(agent.loc, 'sound/items/defib_failed.ogg', 20)

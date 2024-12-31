@@ -38,6 +38,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Green Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_green, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Expedition Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Liaison's Winter Coat", 0, /obj/item/clothing/suit/storage/snow_suit/liaison, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Beige Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Grey Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Grey Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Brown Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
@@ -72,8 +74,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("HATS", 0, null, null, null),
 	list("Black Beret", 0, /obj/item/clothing/head/beret/cm/black/civilian, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 	list("White Beret", 0, /obj/item/clothing/head/beret/cm/white/civilian, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-	list("Fedora", 0, /obj/item/clothing/head/fedora, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
+	list("Brown Fedora", 0, /obj/item/clothing/head/hybrisa/synth_detective_hat, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+	list("Black Fedora", 0, /obj/item/clothing/head/hybrisa/synth_detective_hat/alt, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+	list("Grey Fedora", 0, /obj/item/clothing/head/fedora, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/clothing/dress/corporate_liaison

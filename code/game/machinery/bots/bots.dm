@@ -87,10 +87,10 @@
 					health -= W.force * W.demolition_mod * fire_dam_coeff
 				if("brute")
 					health -= W.force * W.demolition_mod * brute_dam_coeff
-			..()
+			. = ..()
 			healthcheck()
 		else
-			..()
+			. = ..()
 
 /obj/structure/machinery/bot/bullet_act(obj/projectile/Proj)
 	health -= Proj.ammo.damage

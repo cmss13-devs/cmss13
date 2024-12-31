@@ -139,7 +139,6 @@
 
 /obj/item/device/radio/headset/examine(mob/user as mob)
 	if(ishuman(user) && loc == user)
-		user.set_interaction(src)
 		tgui_interact(user)
 	return ..()
 

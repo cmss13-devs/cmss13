@@ -5,6 +5,12 @@
 	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
 	item_state = "empty"
+	item_state_slots = list(WEAR_AS_GARB = "injector")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	flags_atom = FPRINT
 	matter = list("plastic" = 300)
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -242,6 +248,13 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
 	maptext_label = "UZ"
+
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
+	icon_state = uses_left ? "stimpack" : "stimpack0"
+	if((isstorage(loc) || ismob(loc)) && display_maptext)
+		maptext = SPAN_LANGCHAT("[maptext_label]")
+	else
+		maptext = ""
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "white autoinjector"

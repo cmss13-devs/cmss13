@@ -204,6 +204,8 @@
 		/obj/item/clothing/suit/storage/bomber,
 		/obj/item/clothing/suit/storage/bomber/alt,
 		/obj/item/clothing/suit/storage/snow_suit/liaison,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt,
 		/obj/item/clothing/suit/storage/labcoat,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
@@ -242,12 +244,15 @@
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/head/beret/cm/black/civilian,
 		/obj/item/clothing/head/beret/cm/white/civilian,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat/alt,
 	)
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/black, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
 

@@ -299,7 +299,8 @@
 	// Driver needs access
 		var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 		if(!requiresID() || (driver && allowed(driver)))
-			open(TRUE)
+			if(operating != DOOR_OPERATING_OPENING)
+				open(TRUE)
 			return FALSE
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
@@ -324,6 +325,17 @@
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(!unacidable)
+		if(vehicle_resistant)
+			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		else
+			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+			qdel(src)
+	return FALSE
+
+/obj/structure/machinery/door/poddoor/hybrisa/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
 		if(vehicle_resistant)
 			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))

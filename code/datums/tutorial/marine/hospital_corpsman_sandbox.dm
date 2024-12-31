@@ -307,14 +307,13 @@
 	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
 	agent.updatehealth()
-	if(bypass)
-		continue
-	else if(agent.undefibbable == TRUE)
-		agent.balloon_alert_to_viewers("[agent.name] permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
-		playsound(agent.loc, 'sound/items/defib_failed.ogg', 20)
-	else
-		agent.balloon_alert_to_viewers("[agent.name] fully treated!")
-		playsound(agent.loc, 'sound/machines/terminal_success.ogg', 20)
+	if(!(bypass))
+		if(agent.undefibbable == TRUE)
+			agent.balloon_alert_to_viewers("[agent.name] permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+			playsound(agent.loc, 'sound/items/defib_failed.ogg', 20)
+		else
+			agent.balloon_alert_to_viewers("[agent.name] fully treated!")
+			playsound(agent.loc, 'sound/machines/terminal_success.ogg', 20)
 	agents -= agent
 	QDEL_IN(agent, 2.5 SECONDS)
 	animate(agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)

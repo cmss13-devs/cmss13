@@ -53,7 +53,7 @@
 
 /obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
-	icon_state = "book_dark"
+	icon_state = "rdbook"
 	item_state = "book_dark"
 	author = "Randall Varn, Einstein Engines Senior Mechanic"
 	title = "APLU \"Ripley\" Construction and Operation Manual"
@@ -131,7 +131,7 @@
 
 /obj/item/book/manual/research_and_development
 	name = "Research and Development 101"
-	icon_state = "book_white"
+	icon_state = "rdbook"
 	item_state = "book_white"
 	author = "Dr. L. Ight"
 	title = "Research and Development 101"
@@ -175,7 +175,7 @@
 /obj/item/book/manual/marine_law
 	name = "Marine Law"
 	desc = "A set of guidelines for keeping law and order on military vessels."
-	icon_state = "book_law"
+	icon_state = "bookSpaceLaw"
 	item_state = "book_law"
 	author = "USCM High Command"
 	title = "Marine Law"
@@ -265,8 +265,8 @@
 
 /obj/item/book/manual/engineering_guide
 	name = "Engineering Textbook"
-	icon_state = "book_engineering"
-	item_state = "book_engineering"
+	icon_state = "book_engineering2"
+	item_state = "book_engineering2"
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
 
@@ -285,7 +285,7 @@
 
 /obj/item/book/manual/chef_recipes
 	name = "Chef Recipes"
-	icon_state = "book_green"
+	icon_state = "cooked_book"
 	item_state = "book_green"
 	author = "Victoria Ponsonby"
 	title = "Chef Recipes"
@@ -345,7 +345,7 @@
 
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes"
-	icon_state = "book_red"
+	icon_state = "barbook"
 	item_state = "book_red"
 	author = "Sir John Rose"
 	title = "Barman Recipes"
@@ -446,7 +446,7 @@
 
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
-	icon_state = "book_particle"
+	icon_state = "bookNuclear"
 	item_state = "book_particle"
 	author = "The Colonial Liberation Front"
 	title = "Fission Mailed: Nuclear Sabotage 101"
@@ -499,7 +499,7 @@
 
 /obj/item/book/manual/atmospipes
 	name = "Pipes and You: Getting To Know Your Scary Tools"
-	icon_state = "book_piping"
+	icon_state = "pipingbook"
 	item_state = "book_piping"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "Pipes and You: Getting To Know Your Scary Tools"
@@ -608,7 +608,7 @@
 
 /obj/item/book/manual/evaguide
 	name = "EVA Gear and You: Not Spending All Day Inside"
-	icon_state = "book_blue"
+	icon_state = "evabook"
 	item_state = "book_blue"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "EVA Gear and You: Not Spending All Day Inside"
@@ -681,7 +681,7 @@
 
 /obj/item/book/manual/hydroponics_beekeeping
 	name = "The Ins and Outs of Apiculture - A Precise Art"
-	icon_state = "book_green"
+	icon_state = "bookHydroponicsBees"
 	item_state = "book_green"
 	author = "Beekeeper Dave"
 	title = "The Ins and Outs of Apiculture - A Precise Art"

@@ -174,7 +174,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "[initial(icon_state)]_burnt"
 	item_state = "[initial(item_state)]_burnt"
 	var/mob/holder = loc
-	if(holder)
+	if(ismob(holder))
 		holder.update_inv_l_hand()
 		holder.update_inv_r_hand()
 	turn_light(toggle_on = FALSE)

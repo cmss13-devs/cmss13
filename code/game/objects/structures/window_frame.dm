@@ -193,7 +193,7 @@
 	if(istype(W, sheet_type))
 		to_chat(user, SPAN_WARNING("You can't repair this window."))
 		return
-	..()
+	. = ..()
 
 /obj/structure/window_frame/colony
 	icon_state = "col_window0_frame"

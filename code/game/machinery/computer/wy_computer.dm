@@ -73,7 +73,7 @@
 
 // ------ WY Intranet Console UI ------ //
 
-/obj/structure/machinery/computer/wy_intranet/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/wy_intranet/attack_hand(mob/user)
 	if(..() || !allowed(usr) || inoperable())
 		return FALSE
 

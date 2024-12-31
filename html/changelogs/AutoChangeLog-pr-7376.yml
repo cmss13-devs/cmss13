@@ -1,6 +1,0 @@
-author: "GoldenDarkness55"
-delete-after: True
-changes:
-  - balance: "Cooldown multiplier for interrupting remote building raised from 2 to 3"
-  - balance: "Queen remote building modifier raised from 1 to 1.5 (slower, around 2.3-2.5s), cooldown raised from 2s to 4s"
-  - balance: "Resin Whisperer remote building modifier raised from 2 to 2.5 (slower, around 2.5s), cooldown raised from 1s to 2.5s"

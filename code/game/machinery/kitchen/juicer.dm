@@ -29,6 +29,10 @@
 	. = ..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 
+/obj/structure/machinery/juicer/Destroy()
+	QDEL_NULL(beaker)
+	return ..()
+
 /obj/structure/machinery/juicer/update_icon()
 	icon_state = "juicer"+num2text(!QDELETED(beaker))
 	return
@@ -156,6 +160,10 @@
 		qdel(O)
 		if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 			break
+
+/obj/structure/machinery/juicer/yautja
+	name = "bone grinder"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/closet/crate/juice
 

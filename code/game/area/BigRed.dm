@@ -313,7 +313,7 @@
 	icon = 'icons/turf/area_kutjevo.dmi'
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	soundscape_interval = 0
 
@@ -527,6 +527,7 @@
 /area/bigredv2/outside/telecomm/lz2_cave
 	name = "\improper Central Grounds Communications Relay"
 	is_landing_zone = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/telecomm/n_cave
 	name = "\improper North Cave Communications Relay"
@@ -652,7 +653,6 @@
 	minimap_color = MINIMAP_AREA_LZ
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 
 /area/bigredv2/landing/console
 	name = "\improper LZ1 'Telecomms'"

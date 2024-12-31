@@ -295,7 +295,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "wz" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "yd" = (
 /turf/open/floor/whiteblue/southeast,
@@ -344,7 +344,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "ES" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "Gu" = (
 /obj/structure/closet/wardrobe,

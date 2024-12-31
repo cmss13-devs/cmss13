@@ -57,8 +57,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/xenos/lurker.dmi'
-	icon_xenonid = 'icons/mob/xenonids/lurker.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/lurker.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/lurker.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

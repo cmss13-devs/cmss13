@@ -1,0 +1,4 @@
+author: "casperr04"
+delete-after: True
+changes:
+  - rscadd: "Squad Leader pointer arrows are now colored based on the color of the squad."

@@ -1,5 +1,6 @@
 /obj/effect/decal
 	plane = FLOOR_PLANE
+	anchored = TRUE
 
 // Used for spray that you spray at walls, tables, hydrovats etc
 /obj/effect/decal/spraystill

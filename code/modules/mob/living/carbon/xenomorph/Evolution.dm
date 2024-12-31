@@ -316,20 +316,27 @@
 	return
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste)
+	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
+
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 	
 	if(!istype(new_xeno))
-		//Something went horribly wrong!
+		//Something went horribly wrong
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		if(new_xeno)
 			qdel(new_xeno)
+		if(organ_value != 0)
+			var/obj/item/organ/xeno/organ = new()
+			organ.forceMove(src)
+			organ.research_value = organ_value
+			organ.caste_origin = caste_type
+			organ.icon_state = get_organ_icon()
 		return FALSE
-
-	var/obj/item/organ/xeno/organ = locate() in src
-	if(!isnull(organ))
-		qdel(organ)
 
 	new_xeno.built_structures = built_structures.Copy()
 	built_structures = null

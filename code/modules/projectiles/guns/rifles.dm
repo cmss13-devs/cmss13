@@ -2187,36 +2187,44 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr
-	name = "\improper XR81C rifle"
+	name = "\improper XR81-C rifle"
 	desc = "."
 	icon_state = "xr81"
 	item_state = "xr81"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	current_mag = /obj/item/ammo_magazine/rifle/xr
-
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_FAST
 	map_specific_decoration = FALSE
-	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
-
-	random_spawn_chance = 100
-	random_spawn_rail = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
+	starting_attachment_types = list()
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/rifle/incendiary,
+		/obj/item/ammo_magazine/rifle/explosive,
+		/obj/item/ammo_magazine/rifle/le,
+		/obj/item/ammo_magazine/rifle/ap,
+	)
+	attachable_allowed = list(
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/magnetic_harness,
-	)
-	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/heavy_barrel,
-	)
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/extinguisher,
+		)
 
+/obj/item/weapon/gun/rifle/m41a/elite/xr/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19, "rail_x" = 16, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
 
-/obj/item/weapon/gun/rifle/xr/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 36, "muzzle_y" = 16,"rail_x" = 19, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr/set_gun_config_values()
 	..()

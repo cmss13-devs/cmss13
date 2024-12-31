@@ -4,7 +4,11 @@ import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 
 type ManifestData = {
-  [department: string]: Crew[]; // Dynamic keys for each department
+  departments_with_jobs: {
+    [department: string]: string[]; // Role order for each department
+  };
+} & {
+  [department: string]: Crew[]; // Dynamic keys for departments
 };
 
 type Crew = {
@@ -15,7 +19,7 @@ type Crew = {
 };
 
 export const CrewManifest = (props, context) => {
-  const { act, data, staticData } = useBackend<ManifestData>();
+  const { act, data } = useBackend<ManifestData>();
 
   if (!data || Object.keys(data).length === 0) {
     return <Section>No crew manifest available.</Section>;
@@ -50,15 +54,6 @@ export const CrewManifest = (props, context) => {
     );
   });
 
-  // Get the role order for sorting crew within each department
-  const getRoleOrder = (department: string): string[] => {
-    // Replace with actual role order from staticData if provided
-    const defaultRoleOrder =
-      staticData?.departments_with_jobs?.[department] || [];
-    return defaultRoleOrder;
-  };
-
-  // Render each department as its own section
   return (
     <Window width={500} height={700}>
       <Window.Content className="CrewManifest">
@@ -68,15 +63,14 @@ export const CrewManifest = (props, context) => {
               return null;
             }
 
-            // Sort crew within the department based on role order
-            const roleOrder = getRoleOrder(department);
+            // Get the role order for this department
+            const roleOrder = staticData?.departments_with_jobs?.[department] || [];
+
+            // Sort crew within the department dynamically
             const sortedCrewList = [...crewList].sort((a, b) => {
               const rankA = roleOrder.indexOf(a.rank);
               const rankB = roleOrder.indexOf(b.rank);
-              return (
-                (rankA === -1 ? Infinity : rankA) -
-                (rankB === -1 ? Infinity : rankB)
-              );
+              return (rankA === -1 ? Infinity : rankA) - (rankB === -1 ? Infinity : rankB);
             });
 
             return (
@@ -113,7 +107,12 @@ export const CrewManifest = (props, context) => {
                       >
                         {crew.rank}
                       </TableCell>
-                      <TableCell textAlign="right" width="5%" pr="3%" pt="10px">
+                      <TableCell
+                        textAlign="right"
+                        width="5%"
+                        pr="3%"
+                        pt="10px"
+                      >
                         <Tooltip content={crew.is_active}>
                           <Icon
                             name="circle"

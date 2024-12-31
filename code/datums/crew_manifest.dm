@@ -10,9 +10,6 @@ var/list/departments = list(
 	"Miscellaneous" = GLOB.ROLES_MISC
 )
 
-/datum/crew_manifest/New()
-	. = ..()
-
 /datum/crew_manifest/ui_static_data(mob/user)
 	. = ..()
 	var/list/marine_roles_by_squad = GLOB.ROLES_SQUAD_ALL

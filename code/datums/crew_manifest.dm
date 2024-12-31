@@ -22,9 +22,7 @@ var/list/departments = list(
 	// Populate departments_with_jobs with role orders
 	for(var/department in departments)
 		var/list/jobs = departments[department]
-		departments_with_jobs[department] = jobs.Copy() // Send a copy of the job order
-
-	// Add the role order to static data
+		departments_with_jobs[department] = jobs.Copy()
 
 	.["departments_with_jobs"] = departments_with_jobs
 	.["departments"] = departments

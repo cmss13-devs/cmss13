@@ -43,16 +43,17 @@ export const CrewManifest = (props, context) => {
     'Miscellaneous',
   ];
 
-  // Sort departments based on the predefined order
-  const sortedDepartments = Object.entries(data).sort(([deptA], [deptB]) => {
-    const indexA = departmentOrder.indexOf(deptA);
-    const indexB = departmentOrder.indexOf(deptB);
-
-    // Departments not in the predefined order appear at the end
-    return (
-      (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB)
-    );
-  });
+  // Sort departments based on the predefined order, excluding "departments_with_jobs"
+  const sortedDepartments = Object.entries(data)
+    .filter(([key]) => key !== 'departments_with_jobs')
+    .sort(([deptA], [deptB]) => {
+      const indexA = departmentOrder.indexOf(deptA);
+      const indexB = departmentOrder.indexOf(deptB);
+      return (
+        (indexA === -1 ? Infinity : indexA) -
+        (indexB === -1 ? Infinity : indexB)
+      );
+    });
 
   return (
     <Window width={500} height={700}>
@@ -64,13 +65,18 @@ export const CrewManifest = (props, context) => {
             }
 
             // Get the role order for this department
-            const roleOrder = staticData?.departments_with_jobs?.[department] || [];
+            const roleOrder = data.departments_with_jobs[department] || [];
 
-            // Sort crew within the department dynamically
+            const supervisorRank = roleOrder[0];
+
+            // Crew sorting
             const sortedCrewList = [...crewList].sort((a, b) => {
               const rankA = roleOrder.indexOf(a.rank);
               const rankB = roleOrder.indexOf(b.rank);
-              return (rankA === -1 ? Infinity : rankA) - (rankB === -1 ? Infinity : rankB);
+              return (
+                (rankA === -1 ? Infinity : rankA) -
+                (rankB === -1 ? Infinity : rankB)
+              );
             });
 
             return (
@@ -87,7 +93,7 @@ export const CrewManifest = (props, context) => {
                   {sortedCrewList.map((crew) => (
                     <TableRow
                       key={crew.name}
-                      bold={false} // Adjust based on logic for "head" or supervisors
+                      bold={crew.rank === supervisorRank}
                       overflow="hidden"
                     >
                       <TableCell
@@ -107,12 +113,7 @@ export const CrewManifest = (props, context) => {
                       >
                         {crew.rank}
                       </TableCell>
-                      <TableCell
-                        textAlign="right"
-                        width="5%"
-                        pr="3%"
-                        pt="10px"
-                      >
+                      <TableCell textAlign="right" width="5%" pr="3%" pt="10px">
                         <Tooltip content={crew.is_active}>
                           <Icon
                             name="circle"
@@ -120,9 +121,9 @@ export const CrewManifest = (props, context) => {
                               'manifest-indicator-' +
                               crew.is_active
                                 .toLowerCase()
-                                .replace(/\*/g, '') // Removes asterisks
-                                .replace(/\s/g, '-') // Replaces spaces with dashes
-                                .replace(/:.*?$/, '') // Removes everything after a colon
+                                .replace(/\*/g, '')
+                                .replace(/\s/g, '-')
+                                .replace(/:.*?$/, '')
                             }
                           />
                         </Tooltip>

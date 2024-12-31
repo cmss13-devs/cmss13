@@ -871,7 +871,7 @@
 
 /obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)
 	. = ..()
-	toggle_frontline_mode()
+	toggle_frontline_mode(src)
 
 /obj/item/weapon/gun/smartgun/pve/set_gun_config_values()
 	..()

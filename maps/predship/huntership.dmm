@@ -1067,7 +1067,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/juicer,
+/obj/structure/machinery/juicer/yautja,
 /turf/open/shuttle/predship,
 /area/yautja)
 "cM" = (

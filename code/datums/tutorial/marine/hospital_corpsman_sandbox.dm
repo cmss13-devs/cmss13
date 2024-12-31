@@ -4,7 +4,7 @@
 #define TUTORIAL_HM_PHASE_RESUPPLY 2	//! Pauses gameplay, opens the prep room, and allows resupply time, happens at random
 #define TUTORIAL_HM_PHASE_NIGHTMARE 3	//! Simulates a Mass-Casualty event, 3-5 patients with severe damage levels
 
-/// How quickly HM tutorial freeplay difficulty increases over time (and how likely a Mass-Cas becomes)
+/// How quickly HM tutorial sandbox difficulty increases over time (and how likely a Mass-Cas becomes)
 #define TUTORIAL_HM_DIFFICULTY_INCREASE (1/2)
 
 /* Injury Severity Levels */
@@ -17,7 +17,7 @@
 #define TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM 12	//! No limit on injury types, damage ranging from 500-600, extremely rare outside of Mass-Cas events
 
 
-/datum/tutorial/marine/hospital_corpsman_freeplay
+/datum/tutorial/marine/hospital_corpsman_sandbox
 	name = "Marine - Hospital Corpsman (Sandbox) - Beta"
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_3"
@@ -66,7 +66,7 @@
 
 	var/boobootimer
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/start_tutorial(mob/starting_mob)
+/datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
 		return
@@ -88,12 +88,12 @@
 //
 // Mass-Cas random rounds
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/uniform()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/uniform()
 	SIGNAL_HANDLER
 
 	slower_message_to_player("Gear up in your prefered HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/handle_round_progression()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_round_progression()
 
 	var/difficultyupgradewarning = null
 
@@ -134,7 +134,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(spawn_agents)), 2 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/end_supply_phase()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prepdoor)
 	var/turf/boundry = get_turf(loc_from_corner(4, 1))
@@ -147,7 +147,7 @@
 	remove_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up)
 	handle_round_progression()
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/begin_supply_phase()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/begin_supply_phase()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prepdoor)
 	prepdoor.unlock(TRUE)
@@ -162,7 +162,7 @@
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
 
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/spawn_agents()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/spawn_agents()
 
 	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 
@@ -182,7 +182,7 @@
 	if((survival_difficulty >= TUTORIAL_HM_INJURY_SEVERITY_FATAL) && (rand() <= 0.75))
 		boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/simulate_condition(mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_condition(mob/living/carbon/human/target)
 
 	var/damageamountsplit = ((round(rand(1, 100))) / 100)
 	var/list/limbs = target.limbs
@@ -208,7 +208,7 @@
 	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	//sleep(25)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/eval_agent_status()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
 
 	//for(var/i in 1 to length(agents))
 	for(var/mob/living/carbon/human/target in agents)
@@ -222,7 +222,7 @@
 			active_agents |= target
 			move_active_agents()
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/handle_speech(mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_speech(mob/living/carbon/human/target)
 
 	var/list/helpme = list()
 
@@ -241,7 +241,7 @@
 
 	target.say("[pick(helpme)]")
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/move_dragging_agent()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_dragging_agent()
 
 	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
 
@@ -270,14 +270,14 @@
 			handle_speech(dragging_agent)
 			make_dragging_agent_leave(dragging_agent)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
 
 	dragging_agent.density = 0
 	dragging_agents -= dragging_agent
 	QDEL_IN(dragging_agent, 2.5 SECONDS)
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/move_active_agents()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_active_agents()
 
 	agent_spawn_location = get_turf(loc_from_corner(12, 2)) // fix this
 
@@ -302,7 +302,7 @@
 			active_agents -= active_agent
 			handle_speech(active_agent)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
 
 	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
@@ -322,7 +322,7 @@
 	if((length(agents)) == 0)
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/eval_booboo_agent()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_booboo_agent()
 
 	var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 	arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
@@ -348,12 +348,12 @@
 	RegisterSignal(active_agent, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/hint_requested(mob/living/target, mob/living/user)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/hint_requested(mob/living/target, mob/living/user)
 
 	if(target == user)
 		return
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevacbed)
 
@@ -383,14 +383,14 @@
 		playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/process(delta_time)
+/datum/tutorial/marine/hospital_corpsman_sandbox/process(delta_time)
 
 	if((length(dragging_agents)) > 0)
 		move_dragging_agent()
 	if((length(active_agents)) > 0)
 		move_active_agents()
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
 
 	if(!(armor in cleanup))
 		cleanup |= armor // marks item for removal once the dummy is ready
@@ -400,7 +400,7 @@
 		cleanup -= armor
 		QDEL_IN(armor, 1 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/tutorial_close()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/tutorial_close()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine_dummy)
@@ -427,7 +427,7 @@
 
 
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/init_mob()
+/datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 	tutorial_mob.set_skills(/datum/skills/combat_medic)
@@ -435,7 +435,7 @@
 	tutorial_mob.job = JOB_SQUAD_MEDIC
 
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/init_map()
+/datum/tutorial/marine/hospital_corpsman_sandbox/init_map()
 
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 3))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 3))
@@ -449,12 +449,12 @@
 	add_to_tracking_atoms(medevacbed)
 	RegisterSignal(medevacbed, COMSIG_LIVING_BED_BUCKLED, PROC_REF(simulate_evac))
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_npcs()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_npcs()
 
 	CMOnpc = new(loc_from_corner(7, 7))
 	arm_equipment(CMOnpc, /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc)
 
-/datum/tutorial/marine/hospital_corpsman_freeplay/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
 	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 	dragging_agent.a_intent = INTENT_DISARM
 
@@ -602,7 +602,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 	action_icon_state = "walkman_next"
 	var/datum/weakref/tutorial
 
-/datum/action/hm_tutorial/sandbox/ready_up/New(Target, override_icon_state, datum/tutorial/marine/hospital_corpsman_freeplay/selected_tutorial)
+/datum/action/hm_tutorial/sandbox/ready_up/New(Target, override_icon_state, datum/tutorial/marine/hospital_corpsman_sandbox/selected_tutorial)
 	. = ..()
 	tutorial = WEAKREF(selected_tutorial)
 
@@ -611,7 +611,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 	if(!tutorial)
 		return
 
-	var/datum/tutorial/marine/hospital_corpsman_freeplay/selected_tutorial = tutorial.resolve()
+	var/datum/tutorial/marine/hospital_corpsman_sandbox/selected_tutorial = tutorial.resolve()
 
 	selected_tutorial.end_supply_phase()
 

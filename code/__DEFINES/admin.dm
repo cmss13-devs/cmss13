@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(note_categories, list("Admin", "Merit", "Whitelist"))
 #define CC_REPLY(user) "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=[REF(user)]'>RPLY</a>)"
 #define OBSERVER_JMP(observer, atom) atom ? "(<a href='byond://?src=[REF(observer)];jumptocoord=1;X=[atom.x];Y=[atom.y];Z=[atom.z]'>JMP</a>)" : ""
 #define ARES_MARK(user) "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresMark=[REF(user)]'>MARK</a>)"
-#define ARES_REPLY(user, ref) "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresReply=[REF(user)];AresRef=[ref]'>RPLY</a>)"
+#define ARES_REPLY(user, ref) "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresReply=[REF(user)];AresRef=[ref]'>RPLY</a>)"
 #define ADMIN_VIEW_BUG_REPORT(datum) "<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];view_bug_report=[REF(datum)]'>VIEW REPORT</a>"
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)

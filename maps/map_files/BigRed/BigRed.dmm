@@ -8,35 +8,6 @@
 	icon_state = "pwall"
 	},
 /area/space)
-"aac" = (
-/obj/structure/prop/almayer/cannon_cables{
-	name = "\improper Cables"
-	},
-/obj/structure/cryofeed{
-	color = "silver";
-	desc = "A bewildering tangle of machinery and pipes.";
-	name = "coolant feed"
-	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "A big air filter.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
-	icon_state = "fuel_enhancer";
-	layer = 5;
-	name = "Air filter";
-	pixel_x = -3;
-	pixel_y = 1
-	},
-/obj/structure/machinery/portable_atmospherics/powered/scrubber{
-	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
-	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
-	icon_state = "cooling_system";
-	layer = 4;
-	name = "\improper Air Condenser";
-	pixel_x = -5;
-	pixel_y = 25
-	},
-/turf/open/shuttle/escapepod/floor1,
-/area/bigredv2/oob)
 "aad" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -196,11 +167,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
-"aaM" = (
-/obj/structure/surface/table,
-/obj/item/storage/box/MRE/WY,
-/turf/open/floor/plating,
-/area/bigredv2/caves/eta/research)
 "aaN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
@@ -276,23 +242,10 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"abb" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/storage/box/MRE/WY,
-/obj/item/storage/box/donkpockets{
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/turf/open/floor/whitegreen,
-/area/bigredv2/caves/lambda/virology)
 "abc" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"abd" = (
-/obj/structure/closet/l3closet,
-/turf/open/floor/white,
-/area/bigredv2/outside/virology)
 "abf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/dark,
@@ -8353,6 +8306,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
+"aNa" = (
+/obj/structure/closet/l3closet,
+/turf/open/floor/white,
+/area/bigredv2/outside/virology)
 "aNb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -10413,6 +10370,15 @@
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/light,
 /turf/open/floor/whitegreen/southwest,
+/area/bigredv2/caves/lambda/virology)
+"aWb" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/MRE/WY,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/turf/open/floor/whitegreen,
 /area/bigredv2/caves/lambda/virology)
 "aWc" = (
 /obj/structure/surface/table/reinforced,
@@ -16231,6 +16197,11 @@
 "bAs" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/darkyellow2/west,
+/area/bigredv2/caves/eta/research)
+"bAu" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/MRE/WY,
+/turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
 "bAv" = (
 /obj/structure/machinery/light{
@@ -33451,6 +33422,35 @@
 "sus" = (
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/caves_research)
+"suD" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Cables"
+	},
+/obj/structure/cryofeed{
+	color = "silver";
+	desc = "A bewildering tangle of machinery and pipes.";
+	name = "coolant feed"
+	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	desc = "A big air filter.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
+	icon_state = "fuel_enhancer";
+	layer = 5;
+	name = "Air filter";
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	desc = "Critical part of an HVAC system. Compresses refridgerant to send off to air cooling coils.";
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
+	icon_state = "cooling_system";
+	layer = 4;
+	name = "\improper Air Condenser";
+	pixel_x = -5;
+	pixel_y = 25
+	},
+/turf/open/shuttle/escapepod/floor1,
+/area/bigredv2/oob)
 "suL" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -43432,7 +43432,7 @@ aFw
 aFt
 fxa
 aoD
-abd
+aNa
 aNc
 aoD
 aQz
@@ -51124,7 +51124,7 @@ rIl
 uSf
 ldh
 llS
-aac
+suD
 ijU
 rIl
 aao
@@ -51558,7 +51558,7 @@ rIl
 uSf
 olT
 llS
-aac
+suD
 ijU
 rIl
 aao
@@ -66308,7 +66308,7 @@ ocp
 wXz
 bAa
 aOJ
-aaM
+bAu
 bAX
 aBv
 bBp
@@ -66524,7 +66524,7 @@ bzm
 bzu
 bzO
 bAb
-aaM
+bAu
 bAL
 bAX
 aBv
@@ -84670,7 +84670,7 @@ aSr
 aTG
 bQi
 aVz
-abb
+aWb
 aob
 aao
 aao

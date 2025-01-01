@@ -202,7 +202,7 @@
 	kit_typepath = /obj/item/storage/box/spec/pyro
 
 /datum/specialist_set/heavy
-	name = "Heavy Armor Set (HvH Only)"
+	name = "Heavy Armor Set"
 	role_name = "Heavy"
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"

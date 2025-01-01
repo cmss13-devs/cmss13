@@ -2145,7 +2145,7 @@
 	if(!customname)
 		return
 
-	var/reply_log = "<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>" //Add replies so that mods know what the hell is goin on with the RP
+	var/reply_log = "<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>" //Add replies so that mods know what the hell is goin on with the RP
 
 	var/faction_ghost_header
 	var/faction_prefix

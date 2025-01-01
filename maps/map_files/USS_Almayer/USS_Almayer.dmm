@@ -192,23 +192,9 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "aaB" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/obj/structure/machinery/light,
-/obj/structure/surface/table/almayer,
-/obj/structure/sign/safety/rewire{
-	pixel_x = -17;
-	pixel_y = -25
-	},
-/obj/structure/sign/prop3{
-	pixel_x = -32
-	},
-/obj/structure/machinery/faxmachine/uscm/almayer{
-	sub_name = "SEA"
-	},
-/turf/open/floor/strata/faux_metal,
-/area/almayer/shipboard/sea_office)
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -216,7 +202,7 @@
 "aaD" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
+/area/almayer/engineering/lower/workshop)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -238,8 +224,8 @@
 /area/almayer/stair_clone)
 "aaG" = (
 /obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer/plate,
-/area/almayer/engineering/lower/workshop)
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -248,83 +234,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
-"aaI" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/pen{
-	pixel_y = -17
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = -16
-	},
-/obj/structure/machinery/faxmachine/uscm/almayer{
-	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
-	sub_name = "Requisitions";
-	gender = "female";
-	radio_alert_tag = ":U"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/req)
-"aaJ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm/almayer{
-	sub_name = "Conference Room"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/offices)
-"aaK" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
-	sub_name = "AI Core";
-	pixel_y = 8
-	},
-/obj/structure/transmitter/rotary{
-	name = "AI Core Telephone";
-	phone_category = "ARES";
-	phone_color = "blue";
-	phone_id = "AI Core";
-	pixel_x = 8;
-	pixel_y = -8
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
-"aaL" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/sign/safety/terminal{
-	pixel_x = -17
-	},
-/obj/structure/machinery/faxmachine/corporate/liaison/almayer,
-/obj/item/paper/liaison_brief{
-	pixel_y = 8;
-	pixel_x = -4
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
-"aaM" = (
-/obj/structure/machinery/faxmachine{
-	sub_name = "Combat Correspondent";
-	department = "USS Almayer"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer/plate,
-/area/almayer/command/combat_correspondent)
-"aaN" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
-/turf/open/floor/wood/ship,
-/area/almayer/shipboard/brig/chief_mp_office)
-"aaO" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer{
-	sub_name = "Intel Office";
-	radio_alert_tag = ":T"
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -340,88 +249,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
-"aaQ" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig{
-	sub_name = "Permanent Confinement"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/red,
-/area/almayer/shipboard/brig/perma)
-"aaR" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/command{
-	sub_name = "Conference Room"
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aaS" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/upper/fore_hallway)
-"aaT" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer,
-/area/almayer/command/lifeboat)
-"aaU" = (
-/obj/structure/surface/rack{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
-	density = 0;
-	sub_name = "Reception";
-	pixel_y = 32
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
-"aaV" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig{
-	sub_name = "Processing"
-	},
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/redfull,
-/area/almayer/shipboard/brig/processing)
-"aaW" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/command{
-	sub_name = "CIC";
-	radio_alert_tag = ":V"
-	},
-/obj/item/device/megaphone,
-/obj/structure/machinery/computer/cameras/almayer_brig{
-	desc = "Used to access the various cameras in the security brig.";
-	dir = 8;
-	layer = 2.99;
-	name = "brig cameras console";
-	pixel_x = 17;
-	pixel_y = 12
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
-"aaX" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
-	name = "Commanding Officer's Fax Machine";
-	pixel_x = -4;
-	pixel_y = 3;
-	radio_alert_tag = ":P"
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/commandbunks)
 "aaY" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -1540,6 +1367,15 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper)
+"aiQ" = (
+/obj/structure/machinery/faxmachine{
+	sub_name = "Combat Correspondent";
+	department = "USS Almayer"
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer/plate,
+/area/almayer/command/combat_correspondent)
 "aiR" = (
 /obj/structure/stairs{
 	dir = 8;
@@ -3555,6 +3391,23 @@
 	},
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer/redfull,
+/area/almayer/command/cic)
+"awH" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "CIC";
+	radio_alert_tag = ":V"
+	},
+/obj/item/device/megaphone,
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	desc = "Used to access the various cameras in the security brig.";
+	dir = 8;
+	layer = 2.99;
+	name = "brig cameras console";
+	pixel_x = 17;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awQ" = (
 /obj/structure/surface/table/almayer,
@@ -9020,6 +8873,14 @@
 "bju" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"bjv" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -9263,6 +9124,17 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
 /area/almayer/living/basketball)
+"blw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/lighter,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Conference Room"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/offices)
 "blA" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/orange/north,
@@ -20830,6 +20702,22 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/cic_hallway)
+"eAG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/pen{
+	pixel_y = -17
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = -16
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
+	sub_name = "Requisitions";
+	gender = "female";
+	radio_alert_tag = ":U"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/req)
 "eAI" = (
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/engineering/lower/engine_core)
@@ -21140,6 +21028,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
+"eHx" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "Conference Room"
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
 "eHy" = (
 /obj/structure/machinery/conveyor{
 	id = "lower_garbage"
@@ -24231,6 +24126,22 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cichallway)
+"gba" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
+	sub_name = "AI Core";
+	pixel_y = 8
+	},
+/obj/structure/transmitter/rotary{
+	name = "AI Core Telephone";
+	phone_category = "ARES";
+	phone_color = "blue";
+	phone_id = "AI Core";
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "gbg" = (
 /obj/structure/sign/safety/terminal{
 	pixel_x = 14;
@@ -26118,6 +26029,18 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
+"gQk" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/safety/terminal{
+	pixel_x = -17
+	},
+/obj/structure/machinery/faxmachine/corporate/liaison/almayer,
+/obj/item/paper/liaison_brief{
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "gQF" = (
 /obj/structure/bed/chair/comfy{
 	buckling_y = 2;
@@ -33000,6 +32923,11 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
+"jIT" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
+/turf/open/floor/wood/ship,
+/area/almayer/shipboard/brig/chief_mp_office)
 "jIV" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -39466,6 +39394,19 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
+"muV" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
+	name = "Commanding Officer's Fax Machine";
+	pixel_x = -4;
+	pixel_y = 3;
+	radio_alert_tag = ":P"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "muW" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/hallways/upper/midship_hallway)
@@ -48114,6 +48055,16 @@
 /obj/item/device/flashlight/lamp/on,
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/living/briefing)
+"pUD" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Processing"
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/redfull,
+/area/almayer/shipboard/brig/processing)
 "pVh" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -49021,6 +48972,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/panic)
+"qmP" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Intel Office";
+	radio_alert_tag = ":T"
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/computerlab)
 "qmR" = (
 /obj/structure/window/reinforced/ultra{
 	pixel_y = -12
@@ -54427,6 +54386,17 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
+"stO" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Permanent Confinement"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/red,
+/area/almayer/shipboard/brig/perma)
 "stP" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer/plate,
@@ -63074,6 +63044,24 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
+"vRa" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/obj/structure/machinery/light,
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/safety/rewire{
+	pixel_x = -17;
+	pixel_y = -25
+	},
+/obj/structure/sign/prop3{
+	pixel_x = -32
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "SEA"
+	},
+/turf/open/floor/strata/faux_metal,
+/area/almayer/shipboard/sea_office)
 "vRb" = (
 /turf/open/floor/almayer/uscm/directional/southwest,
 /area/almayer/command/cic)
@@ -66311,6 +66299,18 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/lower_medical_medbay)
+"xdA" = (
+/obj/structure/surface/rack{
+	density = 0;
+	pixel_y = 16
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
+	density = 0;
+	sub_name = "Reception";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "xdJ" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -77974,7 +77974,7 @@ sPF
 qPD
 qPD
 uQm
-aaQ
+stO
 xkd
 teE
 xJT
@@ -79593,7 +79593,7 @@ rqS
 cak
 vrM
 tpn
-aaV
+pUD
 bju
 wdF
 wdF
@@ -84061,7 +84061,7 @@ awz
 awz
 nID
 wPF
-aaR
+eHx
 uKd
 oER
 awz
@@ -85088,7 +85088,7 @@ sCQ
 wIC
 wtY
 aTg
-aaN
+jIT
 wIC
 aCA
 pdp
@@ -85583,7 +85583,7 @@ xyw
 xyw
 xyw
 xyw
-aaD
+aaB
 xyw
 xyw
 xyw
@@ -89334,7 +89334,7 @@ aov
 wVW
 awA
 ayr
-aaW
+awH
 aPD
 asc
 azW
@@ -90538,7 +90538,7 @@ cZe
 cmr
 iNk
 agj
-aaX
+muV
 hvH
 qck
 eRi
@@ -95226,7 +95226,7 @@ pcs
 fCW
 fCW
 tTZ
-aaS
+bjv
 tTZ
 dNj
 dNj
@@ -101397,7 +101397,7 @@ izk
 xIQ
 vyp
 aQF
-aaJ
+blw
 aRy
 aTr
 aTZ
@@ -102142,7 +102142,7 @@ lXl
 yiu
 bBH
 fKh
-aaL
+gQk
 trU
 oNY
 fdx
@@ -108420,7 +108420,7 @@ ryn
 ryn
 ryn
 mOi
-aaU
+xdA
 qQS
 uUB
 aqU
@@ -108832,7 +108832,7 @@ qyA
 kXu
 jHC
 liJ
-aaO
+qmP
 uoH
 aHq
 xIj
@@ -109534,7 +109534,7 @@ bEs
 bIs
 bdm
 rbY
-aaI
+eAG
 bOK
 bPD
 bYa
@@ -111886,7 +111886,7 @@ pKH
 oIB
 fXE
 kaS
-aaM
+aiQ
 oIB
 cnm
 yat
@@ -114411,7 +114411,7 @@ bOT
 dLt
 bRe
 iFD
-aaB
+vRa
 vub
 bPL
 bCM
@@ -118875,7 +118875,7 @@ uZF
 xoj
 xoj
 osI
-aaG
+aaD
 fie
 pUj
 xoj
@@ -119992,7 +119992,7 @@ eky
 aDQ
 pyy
 eky
-aaT
+aaG
 eky
 dLc
 aDQ
@@ -128165,7 +128165,7 @@ qpY
 daz
 drU
 itg
-aaK
+gba
 kRQ
 our
 ebN

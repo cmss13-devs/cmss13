@@ -95,7 +95,7 @@
 	item_state = "chef"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.50
+
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	allowed = list (
 		/obj/item/tool/kitchen/knife,

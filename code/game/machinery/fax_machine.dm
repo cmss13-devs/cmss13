@@ -625,7 +625,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 					P.name = "faxed message ([faxcontents.paper_name])"
 				P.info = "[faxcontents.data]"
 				P.update_icon()
-				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+				var/image/stampoverlay = image('icons/obj/items/paper_temp.dmi')
 				var/encrypted = FALSE
 
 				switch(network)

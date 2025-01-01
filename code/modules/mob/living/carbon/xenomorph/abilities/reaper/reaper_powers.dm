@@ -138,7 +138,7 @@
 	if(victim.status_flags & XENO_HOST)
 		for(var/obj/item/alien_embryo/embryo in victim)
 			if(HIVE_ALLIED_TO_HIVE(xeno.hivenumber, embryo.hivenumber))
-				to_chat(xeno, SPAN_WARNING("A sister is still growing inside this one, we should refrain from harvesting them yet."))
+				to_chat(xeno, SPAN_XENOWARNING("A sister is still growing inside this one, we should refrain from harvesting them yet."))
 				return
 
 	var/obj/limb/target_limb = victim.get_limb(check_zone(xeno.zone_selected))
@@ -206,7 +206,7 @@
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and swallows it whole!"), \
 		SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
 		limb.droplimb(FALSE, TRUE, "flesh harvest")
-		reaper.modify_flesh_plasma(harvest_gain)
+		xeno.modify_flesh_plasma(harvest_gain)
 	reaper.pause_decay = TRUE
 	xeno.harvesting = FALSE
 
@@ -246,7 +246,7 @@
 	SPAN_XENOWARNING("We plunge our inner jaw into [victim]'s chest and consume their organs!"))
 	victim.chestburst = 2
 	victim.update_burst()
-	reaper.modify_flesh_plasma(harvest_gain * 2)
+	xeno.modify_flesh_plasma(harvest_gain * 2)
 	reaper.pause_decay = TRUE
 	xeno.harvesting = FALSE
 
@@ -255,8 +255,7 @@
 
 /datum/action/xeno_action/activable/replenish/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/mob/living/carbon/carbon = target
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
+	var/mob/living/carbon/xenomorph/xeno_carbon = target
 
 	if(!action_cooldown_check())
 		return
@@ -267,38 +266,82 @@
 	if(!check_plasma_owner())
 		return
 
-	if(reaper.flesh_plasma < flesh_plasma_cost)
-		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma!"))
+	if(!istype(xeno_carbon))
 		return
 
-	if(!isxeno(carbon) || !xeno.can_not_harm(carbon))
+	if(xeno.flesh_plasma < flesh_plasma_cost)
+		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [flesh_plasma_cost - xeno.flesh_plasma] more!"))
+		return
+
+	if(!xeno.can_not_harm(xeno_carbon))
 		to_chat(xeno, SPAN_XENODANGER("We must target an ally!"))
 		return
 
-	if(get_dist(xeno, target) > range)
+	if(get_dist(xeno, xeno_carbon) > range)
 		to_chat(xeno, SPAN_WARNING("They are too far away!"))
 		return
 
-	if(carbon.stat == DEAD)
+	if(xeno_carbon.stat == DEAD)
 		to_chat(xeno, SPAN_XENODANGER("We cannot heal the dead!"))
 		return
 
-	if(!xeno.Adjacent(carbon) && carbon != xeno)
+	if(SEND_SIGNAL(xeno_carbon, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot help [xeno_carbon] when they're on fire!"))
+		return
+
+	if(xeno_carbon.health >= xeno_carbon.maxHealth)
+		to_chat(xeno, SPAN_XENOWARNING("[xeno_carbon] is already at max health!"))
+		return
+
+	if(xeno_carbon != xeno && !xeno.Adjacent(xeno_carbon))
+		plas_mod = 1
 		var/obj/effect/alien/weeds/user_weeds = locate() in xeno.loc
-		var/obj/effect/alien/weeds/target_weeds = locate() in carbon.loc
-		if((!user_weeds && !target_weeds) && (user_weeds.linked_hive.hivenumber != xeno.hivenumber && target_weeds.linked_hive.hivenumber != xeno.hivenumber))
+		var/obj/effect/alien/weeds/target_weeds = locate() in xeno_carbon.loc
+		if((!user_weeds && !target_weeds))
 			to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on weeds!"))
 			return
+		if(user_weeds.linked_hive.hivenumber != xeno.hivenumber && target_weeds.linked_hive.hivenumber != xeno.hivenumber)
+			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on allied weeds!"))
+			return
+	else
+		plas_mod = 0.5
 
-	xeno.face_atom(carbon)
+	xeno.face_atom(xeno_carbon)
 
-	use_plasma_owner()
+	var/recovery_amount = xeno_carbon.maxHealth * 0.15 // 15% of the Xeno's max health feels like a good value for semi-ranged healing
+
+	if(islarva(xeno_carbon) && islesserdrone(xeno_carbon))
+		recovery_amount = xeno_carbon.maxHealth * 0.3 // 15% on these ones ain't much, so let them get 30% instead
+
+	else if(isfacehugger(xeno_carbon))
+		recovery_amount = xeno_carbon.maxHealth // Can as well just fully heal them if you choose to waste the flesh plasma on them
+
+	if(xeno_carbon.health < 0)
+		recovery_amount = (xeno_carbon.maxHealth * 0.05) + abs(xeno_carbon.health) // If they're in crit, get them out of it but heal less
+
+	xeno_carbon.gain_health(recovery_amount)
+	xeno_carbon.updatehealth()
+	xeno_carbon.xeno_jitter(1 SECONDS)
+	xeno_carbon.flick_heal_overlay(3 SECONDS, "#c5bc81")
+
+	if(xeno_carbon == xeno)
+		xeno.visible_message(SPAN_XENOWARNING("[xeno]'s wounds emit a foul scent and close up faster!"), \
+		SPAN_XENOWARNING("We absorb flesh plasma, healing some of our injuries!"))
+	else if(xeno.Adjacent(xeno_carbon))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]'s wounds, causing them to close up faster!"), \
+		SPAN_XENOWARNING("We use flesh plasma to heal [xeno_carbon]'s wounds!"))
+		to_chat(xeno_carbon, SPAN_XENOWARNING("[xeno] smears a pale ooze onto our wounds, causing them to close up faster!"))
+	else if(!xeno.Adjacent(xeno_carbon))
+		xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]'s wounds close up faster!"), \
+		SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]'s wounds from afar!"))
+		to_chat(xeno_carbon, SPAN_XENOWARNING("The weeds beneath us shudder as a pale ooze forms on our wounds, causing them to close up faster!"))
+
+	use_plasma_owner(plasma_cost * plas_mod)
 	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/onclick/emit_mist/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 	var/datum/effect_system/smoke_spread/reaper_mist/cloud = new /datum/effect_system/smoke_spread/reaper_mist
 
 	if(!isxeno(owner))
@@ -313,19 +356,21 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(reaper.flesh_plasma < flesh_plasma_cost)
-		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma!"))
+	if(xeno.flesh_plasma < flesh_plasma_cost)
+		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [flesh_plasma_cost - xeno.flesh_plasma] more!"))
 		return
 
 	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
 	cloud.set_up(3, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
 	cloud.start()
+	xeno.emote("roar")
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly green mist!"), \
-		SPAN_XENOWARNING("We consume flesh plasma and breath a cloud of mist!"))
+		SPAN_XENOWARNING("We breath a cloud of mist of evaporated flesh plasma!"))
 
-	reaper.modify_flesh_plasma(-flesh_plasma_cost)
+	xeno.modify_flesh_plasma(-flesh_plasma_cost)
 	apply_cooldown()
 	return ..()
+
 
 // Strain Powers
 

@@ -737,7 +737,7 @@
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/tox_damage = 1
-	var/toxin_amount = 1
+	var/tox_amount = 1
 
 /obj/effect/particle_effect/smoke/reaper_mist/Initialize(mapload, amount, datum/cause_data/cause_data)
 	if(istype(cause_data))
@@ -748,6 +748,9 @@
 			set_hive_data(src, new_hive_number)
 
 	return ..()
+
+/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/affected_mob)
+	return
 
 /obj/effect/particle_effect/smoke/reaper_mist/affect(mob/living/carbon/affected_mob)
 	. = ..()
@@ -771,28 +774,38 @@
 
 	affected_mob.last_damage_data = cause_data
 
-	if(isxeno(affected_mob))
-		var/mob/living/carbon/xenomorph/affected_xeno = affected_mob
-		if(!isreaper(affected_xeno))
-			affected_xeno.Slow(2)
-	else
-		if(!issynth(affected_mob))
-			affected_mob.Slow(1)
-			affected_mob.reagents.add_reagent("sepsicine", toxin_amount)
-			affected_mob.reagents.set_source_mob(src, /datum/reagent/toxin/sepsicine)
+	var/mob/living/carbon/xenomorph/affected_xeno = affected_mob
+	if(isxeno(affected_mob) && !isreaper(affected_xeno)) // Reapers get to ignore effects for sovl
+		if(isqueen(affected_xeno))
+			if(prob(10))
+				to_chat(affected_xeno, SPAN_XENODANGER("We feel lethargic, but manage to push through!"))
+			affected_xeno.set_effect(1, SLOW)
+		else
+			if(prob(10))
+				to_chat(affected_xeno, SPAN_XENOHIGHDANGER("We feel *very* lethargic!"))
+			affected_xeno.set_effect(1, SUPERSLOW)
 
-	if(affected_mob.coughedtime < world.time && !affected_mob.stat && !affected_mob.lastpuke)
-		affected_mob.coughedtime = world.time + 2 SECONDS
-		if(ishuman(affected_mob) && !issynth(affected_mob))
-			if(prob(40))
-				affected_mob.emote("cough")
-			else if(prob(20))
-				affected_mob.emote("gasp")
-			else if(prob(20))
-				to_chat(affected_mob, SPAN_DANGER("You feel lightheaded and sick!"))
-		if(isxeno(affected_mob))
-			if(prob(50))
-				to_chat(affected_mob, SPAN_XENODANGER("We feel very lethargic!"))
+	if(!issynth(affected_mob))
+		affected_xeno.set_effect(2, SLOW)
+		affected_mob.apply_damage(2, OXY)
+		affected_mob.apply_damage(tox_damage, TOX)
+		affected_mob.reagents.add_reagent("sepsicine", tox_amount)
+		affected_mob.reagents.set_source_mob(src, /datum/reagent/toxin/sepsicine)
+
+		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
+			affected_mob.coughedtime = world.time + 2 SECONDS
+			if(ishuman(affected_mob))
+				if(prob(30))
+					if(prob(50))
+						affected_mob.emote("cough")
+					else
+						affected_mob.emote("gasp")
+				else if(prob(30))
+					to_chat(affected_mob, SPAN_DANGER("You feel lightheaded!"))
+					affected_mob.set_effect(2, DAZE)
+				else if(prob(30))
+					to_chat(affected_mob, SPAN_DANGER("The smell makes you feel sick!"))
+					affected_mob.apply_damage(tox_damage, TOX)
 
 	affected_mob.last_damage_data = cause_data
 	return TRUE

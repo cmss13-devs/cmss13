@@ -91,6 +91,10 @@
 
 	// Reaper vars
 	var/harvesting = FALSE // So you can't harvest multiple corpses at once
+
+	var/flesh_plasma = 0
+	var/flesh_plasma_max = 600
+
 	var/list/corpses_hauled = list()
 	var/corpse_no = 0
 	var/corpse_max = 4
@@ -102,9 +106,18 @@
 
 /mob/living/carbon/xenomorph/reaper/get_status_tab_items()
 	. = ..()
+	. += "Flesh Plasma: [flesh_plasma]/[flesh_plasma_max]"
 	. += "Hauled Corpses: [corpse_no] / [corpse_max]"
+	. += ""
 	. += "Stored Huggers: [huggers_cur] / [huggers_max]"
 	. += "Stored Eggs: [eggs_cur] / [eggs_max]"
+
+/mob/living/carbon/xenomorph/reaper/proc/modify_flesh_plasma(amount)
+	flesh_plasma += amount
+	if(flesh_plasma > flesh_plasma_max)
+		flesh_plasma = flesh_plasma_max
+	if(flesh_plasma < 0)
+		flesh_plasma = 0
 
 /mob/living/carbon/xenomorph/reaper/get_examine_text(mob/user)
 	. = ..()
@@ -353,8 +366,6 @@
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
-	var/flesh_plasma = 0
-	var/flesh_plasma_max = 600
 	var/passive_flesh_regen = 1 // Base value for passive regen, this is not modified by abilities
 	var/passive_flesh_multi= 1
 	var/passive_multi_max = 5
@@ -371,13 +382,6 @@
 	unpause_incoming = FALSE
 	pause_dur = 5 SECONDS
 
-/datum/behavior_delegate/base_reaper/proc/modify_flesh_plasma(amount)
-	flesh_plasma += amount
-	if(flesh_plasma > flesh_plasma_max)
-		flesh_plasma = flesh_plasma_max
-	if(flesh_plasma < 0)
-		flesh_plasma = 0
-
 /datum/behavior_delegate/base_reaper/proc/modify_passive_mult(amount)
 	passive_flesh_multi += amount
 	if(passive_flesh_multi > passive_multi_max)
@@ -385,17 +389,16 @@
 	if(passive_flesh_multi < 1)
 		passive_flesh_multi = 1
 
-/datum/behavior_delegate/base_reaper/append_to_stat()
-	. = ..()
-	. += "Flesh Plasma: [flesh_plasma]"
-	. += "Passive Gain: [passive_flesh_regen * passive_flesh_multi]"
-
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	modify_passive_mult(1)
 
-/datum/behavior_delegate/base_reaper/on_life()
+/datum/behavior_delegate/base_reaper/on_kill_mob()
+	if(!unpause_incoming == TRUE)
+		pause_decay = TRUE
 
-	modify_flesh_plasma(passive_flesh_regen * passive_flesh_multi)
+/datum/behavior_delegate/base_reaper/on_life()
+	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
+	reaper.modify_flesh_plasma(passive_flesh_regen * passive_flesh_multi)
 
 	mult_decay()
 	if(pause_decay == TRUE && unpause_incoming == FALSE)
@@ -404,6 +407,10 @@
 
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
-	var/percentage_flesh = round((flesh_plasma / flesh_plasma_max) * 100, 10)
+	var/percentage_flesh = round((reaper.flesh_plasma / reaper.flesh_plasma_max) * 100, 10)
 	if(percentage_flesh)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_flesh]")
+
+/datum/behavior_delegate/base_reaper/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()

@@ -12,7 +12,7 @@
 
 /datum/action/xeno_action/activable/haul_corpse
 	name = "Haul Corpse"
-	action_icon_state = "flesh_harvest"
+	action_icon_state = "haul_corpse"
 	macro_path = /datum/action/xeno_action/verb/verb_haul_corpse
 	action_type = XENO_ACTION_CLICK
 
@@ -29,14 +29,17 @@
 
 /datum/action/xeno_action/activable/replenish
 	name = "Replenish"
-	action_icon_state = "prae_cleave_action"
+	action_icon_state = "warden_heal"
 	macro_path = /datum/action/xeno_action/verb/verb_replenish
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 5 SECONDS
+	plasma_cost = 100
 
 	var/range = 3
-	var/flesh_plasma_cost = 200
+	var/flesh_plasma_cost = 100
+	var/plas_mod = 0.5
+	var/heal_message = 0
 
 /datum/action/xeno_action/onclick/emit_mist
 	name = "Emit Mist"

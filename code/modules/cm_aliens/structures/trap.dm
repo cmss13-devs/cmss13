@@ -188,6 +188,12 @@
 			clear_tripwires()
 		if(RESIN_TRAP_MIST)
 			trap_type_name = "mist"
+			for(var/mob/living/carbon/victim in range(1,loc))
+				if(victim.ally_of_hivenumber(hivenumber))
+					continue
+				victim.apply_effect(get_xeno_stun_duration(victim, 1), STUN)
+				to_chat(victim, SPAN_DANGER("The sudden release of pressurized mist staggers you!"))
+			sleep(2)
 			smoke_system.set_up(2, 0, src.loc)
 			smoke_system.start()
 			set_state()
@@ -245,10 +251,9 @@
 
 	if(isreaper(xeno))
 		var/mob/living/carbon/xenomorph/reaper/reaper = xeno
-		var/datum/behavior_delegate/base_reaper/reaper_behavior = reaper.behavior_delegate
 
-		if(reaper_behavior.flesh_plasma < 100)
-			to_chat(reaper, SPAN_XENOWARNING("You do not have enough flesh plasma for this."))
+		if(reaper.flesh_plasma < 100)
+			to_chat(reaper, SPAN_XENOWARNING("You do not have enough flesh plasma for this, you need [100 - reaper.flesh_plasma] more."))
 			return XENO_NO_DELAY_ACTION
 
 		to_chat(reaper, SPAN_XENONOTICE("You begin charging the resin trap with toxic mist."))
@@ -259,13 +264,13 @@
 		if(trap_type != RESIN_TRAP_EMPTY)
 			return XENO_NO_DELAY_ACTION
 
-		if(reaper_behavior.flesh_plasma < 100)
+		if(reaper.flesh_plasma < 100)
 			return XENO_NO_DELAY_ACTION
 
 		smoke_system = new /datum/effect_system/smoke_spread/reaper_mist()
 
 		setup_tripwires()
-		reaper_behavior.flesh_plasma -= 100
+		reaper.flesh_plasma -= 100
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_MIST)
 		cause_data = create_cause_data("resin mist trap", reaper)

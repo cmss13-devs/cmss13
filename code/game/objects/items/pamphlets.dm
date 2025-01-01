@@ -93,12 +93,12 @@
 /obj/item/pamphlet/skill/spotter/on_use(mob/living/carbon/human/user)
 	. = ..()
 	user.rank_fallback = "ass"
-	user.assigned_equipment_preset.minimap_icon = "spotter"
 	user.hud_set_squad()
-	user.update_minimap_icon()
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
+	ID.minimap_icon_override = "spotter"
+	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
 /obj/item/pamphlet/skill/loader
@@ -134,12 +134,12 @@
 /obj/item/pamphlet/skill/loader/on_use(mob/living/carbon/human/user)
 	. = ..()
 	user.rank_fallback = "load"
-	user.assigned_equipment_preset.minimap_icon = "loader"
 	user.hud_set_squad()
-	user.update_minimap_icon()
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Loader")
+	ID.minimap_icon_override = "loader"
+	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Loader")
 
 /obj/item/pamphlet/skill/k9_handler
@@ -172,11 +172,11 @@
 	. = ..()
 	user.rank_fallback = "medk9"
 	user.hud_set_squad()
-	user.assigned_equipment_preset.minimap_icon = "medic_k9"
-	user.update_minimap_icon()
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "K9 Handler")
+	ID.minimap_icon_override = "medic_k9"
+	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "K9 Handler")
 
 /obj/item/pamphlet/skill/machinegunner

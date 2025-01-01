@@ -1,6 +1,0 @@
-author: "Zenith, Frans_Feiffer"
-delete-after: True
-changes:
-  - rscadd: "Added M10 Auto Pistol, new belt, magazines and boxes to standard marine vendors"
-  - bugfix: "fixes the m39 holster sprites not showing correct camo"
-  - soundadd: "added new M10 gunshot sound"

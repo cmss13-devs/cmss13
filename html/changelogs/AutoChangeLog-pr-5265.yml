@@ -1,9 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Reorganises how paperwork gets image references, and moves them to a new folder."
-  - rscadd: "Added prefab paperwork forms for use by Military Police and the Corporate Liaison."
-  - imageadd: "Added a dark background often used by staff faxes for easy referencing."
-  - imageadd: "Updated WY and USCM logos to higher quality versions."
-  - code_imp: "Reorganises the fountain pen into a subtype of obj/item/tool/pen/multicolor to make the functionality usable in multiple pens."
-  - rscadd: "Adds a provost pen, a variant of multicolor pen that can switch between Black, White, Orange, Blue, Green and Red. Intended for use in filling out MP forms."

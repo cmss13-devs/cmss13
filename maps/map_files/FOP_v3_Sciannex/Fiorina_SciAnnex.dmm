@@ -29888,7 +29888,7 @@
 /obj/item/card/id/silver/clearance_badge/cl{
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)

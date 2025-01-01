@@ -128,7 +128,7 @@
 						else
 							src.name = "Wired Windoor Assembly"
 			else
-				..()
+				. = ..()
 
 		if("02")
 
@@ -241,7 +241,7 @@
 
 
 			else
-				..()
+				. = ..()
 
 	//Update to reflect changes(if applicable)
 	update_icon()

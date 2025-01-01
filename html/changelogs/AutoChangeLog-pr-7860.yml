@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - server: "the server can now support 516 clients - be aware that the current version (516.1648) has some crashing issues, and you may not want to update yet. the server can also be hosted on 516 versions, but this will force all clients to use 516"

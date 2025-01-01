@@ -41,19 +41,19 @@
 			return list[index]
 	return
 
-//Checks for specific types in a list
-/proc/is_type_in_list(atom/A, list/L)
-	for(var/type in L)
-		if(istype(A, type))
-			return 1
-	return 0
+///Checks if the needle atom is any type in the type_list
+/proc/is_type_in_list(atom/needle, list/type_list)
+	for(var/type in type_list)
+		if(istype(needle, type))
+			return TRUE
+	return FALSE
 
-//Checks for specific paths in a list
-/proc/is_path_in_list(atom/A, list/L)
-	for(var/path in L)
-		if(ispath(A, path))
-			return 1
-	return 0
+///Checks if the needle path derives from any in the path_list
+/proc/is_path_in_list(needle, list/path_list)
+	for(var/path in path_list)
+		if(ispath(needle, path))
+			return TRUE
+	return FALSE
 
 //Removes any null entries from the list
 /proc/listclearnulls(list/list)

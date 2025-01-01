@@ -2,7 +2,7 @@
 /obj/effect/attach_point
 	name = "equipment attach point"
 	desc = "A place where heavy equipment can be installed with a powerloader."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "equip_base"
 	unacidable = TRUE
 	anchored = TRUE

@@ -486,13 +486,14 @@
 	relativewall_neighbours()
 	var/area/area = get_area(src)
 	area?.current_resin_count--
+	var/turf/base_turf = loc
 	spawn(0)
-		var/turf/current_turf
+		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)
-			current_turf = get_step(loc, cardinal)
-			if(!istype(current_turf))
+			adjacent_turf = get_step(base_turf, cardinal)
+			if(!istype(adjacent_turf))
 				continue
-			for(var/obj/structure/mineral_door/resin/door in current_turf)
+			for(var/obj/structure/mineral_door/resin/door in adjacent_turf)
 				door.check_resin_support()
 	. = ..()
 

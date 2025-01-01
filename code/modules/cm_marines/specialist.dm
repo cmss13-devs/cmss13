@@ -59,9 +59,9 @@
 	/// What is the role title that should go on ID cards
 	VAR_PROTECTED/role_name = "" as text
 	/// How many more of this spec set can be picked from spec vendors
-	VAR_PRIVATE/available_vendor_num = 1 as num
+	VAR_PROTECTED/available_vendor_num = 1 as num
 	/// How many more of this spec set can be picked from /obj/item/spec_kit
-	VAR_PRIVATE/available_kit_num = 2 as num
+	VAR_PROTECTED/available_kit_num = 2 as num
 	/// What skill tier to give the person redeeming the set
 	VAR_PROTECTED/skill_to_give = SKILL_SPEC_DEFAULT as num
 	/// What trait to give the person redeeming the set
@@ -80,6 +80,7 @@
 /datum/specialist_set/proc/post_round_start()
 	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
 		available_vendor_num = 0
+		available_kit_num = 0
 
 /datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -207,10 +208,11 @@
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18
+	available_vendor_num = 0
+	available_kit_num = 0
 
 
 /datum/specialist_set/heavy/post_round_start()
 	if(SSticker && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
 		available_vendor_num = 4
-	else
-		available_vendor_num = 0
+		available_kit_num = 5

@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 
 GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	list("WEAPONS SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
-	list("Heavy Armor Set (HvH Only)", 0, /obj/item/storage/box/spec/B18, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+	list("Heavy Armor Set", 0, /obj/item/storage/box/spec/B18, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 ))
 
 

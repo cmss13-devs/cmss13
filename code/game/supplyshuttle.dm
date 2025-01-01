@@ -376,7 +376,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		else
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
 			return
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/supply/asrs/contraband_buyable()
 	return can_order_contraband && !black_market_lockout

@@ -519,7 +519,7 @@
 			var/obj/item/card/id/card = H.get_idcard()
 			if(card)
 				card.registered_name = H.real_name
-				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
+				card.name = "[card.registered_name]'s [card.id_type] ([card.assignment])"
 
 	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
 

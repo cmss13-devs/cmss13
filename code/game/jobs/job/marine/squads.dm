@@ -1,8 +1,6 @@
 //This datum keeps track of individual squads. New squads can be added without any problem but to give them
 //access you must add them individually to access.dm with the other squads. Just look for "access_alpha" and add the new one
 
-//Note: some important procs are held by the job controller, in job_controller.dm.
-//In particular, get_lowest_squad() and randomize_squad()
 /datum/squad_type //Majority of this is for a follow-on PR to fully flesh the system out and add more bits for other factions.
 	var/name = "Squad Type"
 	var/lead_name
@@ -604,7 +602,7 @@
 
 	if(paygrade)
 		id_card.paygrade = paygrade
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(target_mob.wear_l_ear, target_mob.wear_r_ear)
 	if(headset && radio_freq)
@@ -625,7 +623,7 @@
 
 	id_card.access -= src.access
 	id_card.assignment = target_mob.job
-	id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
+	id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
 
 	forget_marine_in_squad(target_mob)
 

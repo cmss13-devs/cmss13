@@ -173,10 +173,6 @@
 /obj/structure/machinery/light/small/built,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
-"fk" = (
-/obj/structure/pipes/vents/pump,
-/turf/closed/wall/wood,
-/area/adminlevel/ert_station/clf_station)
 "fx" = (
 /obj/structure/largecrate/supply/medicine/blood,
 /turf/open/floor/wood,
@@ -1461,7 +1457,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "OG" = (
-/obj/item/storage/belt/shotgun/full/quackers,
+/obj/item/toy/inflatable_duck,
 /turf/open/gm/river,
 /area/adminlevel/ert_station/clf_station)
 "OK" = (
@@ -3418,7 +3414,7 @@ ZI
 AP
 vn
 ZI
-fk
+ZI
 cx
 xM
 ZI

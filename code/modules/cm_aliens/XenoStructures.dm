@@ -15,7 +15,7 @@
 /obj/effect/alien/resin
 	name = "resin"
 	desc = "Looks like some kind of slimy growth."
-	icon_state = "Resin1"
+	icon_state = "weeds"
 	anchored = TRUE
 	health = 200
 	unacidable = TRUE
@@ -404,6 +404,7 @@
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
 

@@ -1,9 +1,0 @@
-author: "realforest2001, Blundir"
-delete-after: True
-changes:
-  - rscadd: "Added the Synthetic Reset Key an engineering skill defib that only works on Synthetics. The reset key fits into engi kits, tool pouch/belt."
-  - rscadd: "added the reset key to all upp/clf/pmc/contractor/forecon loadouts, to synth/comtech/CE/MT/XO vendors."
-  - balance: "Synthetics are no longer revivable via defib, now you need the reset key for that specifically."
-  - imageadd: "Sprites by Blundir."
-  - balance: "Hazmat joes now spawn with a box of inflatable walls, instead of having backpack filled with them."
-  - code_imp: "Changed how defibs handle who can use them, adding variables for skill checks."

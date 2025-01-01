@@ -556,6 +556,9 @@
 	else
 		prefs.custom_cursors = FALSE
 		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+		mouse_pointer_icon = initial(mouse_pointer_icon)
+
+	prefs.save_preferences()
 
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"

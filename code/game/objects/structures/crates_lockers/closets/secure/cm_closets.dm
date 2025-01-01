@@ -24,11 +24,11 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_CO)
 	desc = "A safe for the Commanding Officer to store any equipment they need to have ready at a moment's notice. There's a note inside saying that whatever was inside it before was moved out."
-	icon = 'icons/obj/structures/marine_closet.dmi'
-	icon_state = "commander_safe"
-	icon_opened = "commander_safe_open"
-	icon_closed = "commander_safe"
-	icon_locked = "commander_safe"
+	icon = 'icons/obj/structures/safes.dmi'
+	icon_state = "safe"
+	icon_opened = "safe-open"
+	icon_closed = "safe"
+	icon_locked = "safe"
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()

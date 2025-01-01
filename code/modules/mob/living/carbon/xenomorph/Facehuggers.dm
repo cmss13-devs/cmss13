@@ -8,6 +8,9 @@
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
 	icon = 'icons/mob/xenos/effects.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
+	)
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
@@ -43,7 +46,7 @@
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
@@ -83,7 +86,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 
-	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL && stat != DEAD)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
@@ -417,9 +420,6 @@
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()
-	if(stat == DEAD)
-		return
-
 	if(attached && !impregnated)
 		return
 
@@ -430,6 +430,9 @@
 	if(death_timer)
 		deltimer(death_timer)
 	death_timer = null
+
+	if(stat == DEAD)
+		return
 
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"

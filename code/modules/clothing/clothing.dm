@@ -29,7 +29,7 @@
 	if(length(ties))
 		.+= " with [english_list(ties)] attached"
 	if(LAZYLEN(accessories) > length(ties))
-		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
+		.+= ". <a href='byond://?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
@@ -345,7 +345,7 @@
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
 	flags_equip_slot = SLOT_FEET
-	permeability_coefficient = 0.50
+
 	slowdown = SHOES_SLOWDOWN
 	blood_overlay_type = "feet"
 	item_icons = list(

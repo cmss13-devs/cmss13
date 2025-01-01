@@ -77,7 +77,7 @@
 /obj/effect/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop) || istype(I, /obj/item/tool/soap))
 		return
-	..()
+	. = ..()
 
 
 

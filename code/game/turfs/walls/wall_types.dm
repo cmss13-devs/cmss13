@@ -771,7 +771,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	if(!hull)
 		var/area/area = get_area(src)
 		if(area)
-			AddComponent(/datum/component/resin_cleanup)
 			if(area.linked_lz)
 				AddComponent(/datum/component/resin_cleanup)
 			area.current_resin_count++

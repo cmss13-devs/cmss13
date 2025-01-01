@@ -32,12 +32,12 @@
 
 	var/max_acid = 1000
 	var/caboom_timer = 20
-	var/acid_slash_regen_lying = 10
-	var/acid_slash_regen_standing = 16
+	var/acid_slash_regen_lying = 8
+	var/acid_slash_regen_standing = 14
 	var/acid_passive_regen = 1
 	var/acid_gen_cap = 400 //Ammount of acid from wich passive acid generation stops
 
-	var/melt_acid_cost = 50
+	var/melt_acid_cost = 75
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
 	var/caboom_loop = 1

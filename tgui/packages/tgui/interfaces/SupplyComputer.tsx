@@ -610,7 +610,7 @@ const BlackMarketMenu = () => {
         <Stack vertical>
           <Stack.Item>
             <Stack justify="center">
-              <Image src={resolveAsset('cmblogo.png')} />
+              <Image src={resolveAsset('logo_cmb.png')} />
             </Stack>
           </Stack.Item>
           <Stack.Item>

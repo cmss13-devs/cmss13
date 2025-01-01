@@ -1,6 +1,0 @@
-author: "SASoperative"
-delete-after: True
-changes:
-  - code_imp: "Updated item names, icons, and descriptions"
-  - imageadd: "Replaces old donator sprites"
-  - imagedel: "Deletes unused old donator sprites"

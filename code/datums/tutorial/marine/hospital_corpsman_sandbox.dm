@@ -30,13 +30,7 @@
 
 	/// Current step of the tutorial we're at
 	var/stage = TUTORIAL_HM_PHASE_PREP
-	/// Current "remind" timer after which the agent will remind player of its request
-	var/remind_timer
 
-	/// List of line 'agents', aka the dummies requesting items, sorted by line order
-	/// During normal stages there is one per stage (except for Forgot stage),
-	/// During Survival mode there would usually be two: one at the counter, and one moving.
-	/// The agents are mapped to a list of item types requested.
 	var/list/mob/living/carbon/human/realistic_dummy/agents = list()
 
 	var/list/mob/living/carbon/human/dragging_agents = list()
@@ -77,17 +71,6 @@
 	slower_message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
-// plan
-//
-// Medical Supply Room
-// Entering seperate room
-//
-// Up to 5 marines walk in with random injuries
-// severity ranging from 1-4
-// occasionally Marines walk in with boo-boos
-//
-// Mass-Cas random rounds
-
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/uniform()
 	SIGNAL_HANDLER
 
@@ -112,8 +95,11 @@
 			max_survival_agents = 3
 			begin_supply_phase()
 			return
+	if(rand() < (1/5))
+		begin_supply_phase()
+		return
 	survival_wave++
-	if(rand() < (1/10))
+	if((rand() < (1/10)) && !(survival_wave <= 3))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
 		for(var/i in 1 to 2)
 			var/current_difficulty = survival_difficulty
@@ -371,6 +357,10 @@
 				playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
 				return
 
+	if(tutorial_mob == target)
+		medevacbed.balloon_alert_to_viewers("Error! Unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		playsound(medevacbed.loc, 'sound/machines/twobeep.ogg', 20)
+		return
 	if(length(statusmessage) > 0)
 		medevacbed.balloon_alert_to_viewers("[pick(statusmessage)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
 		playsound(medevacbed.loc, pick(90;'sound/machines/ping.ogg',10;'sound/machines/juicer.ogg'), 20)
@@ -433,12 +423,13 @@
 	tutorial_mob.set_skills(/datum/skills/combat_medic)
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
 	tutorial_mob.job = JOB_SQUAD_MEDIC
+	tutorial_mob.forceMove(get_turf(loc_from_corner(0,1))) // spawn point
 
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_map()
 
-	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 3))
-	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 3))
+	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 0))
+	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
 	var/obj/structure/bed/medevac_stretcher/prop/medevacbed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
 	//prepdoor.setDir(2)

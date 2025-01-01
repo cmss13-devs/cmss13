@@ -1,76 +1,51 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	on = 1;
-	needs_power = 0
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/misc/tutorial/no_baselight)
-"b" = (
-/obj/structure/bed/medevac_stretcher/prop{
-	breakable = 0;
-	unslashable = 1
-	},
-/turf/open/floor/almayer/sterile_green_side,
-/area/misc/tutorial/no_baselight/open)
-"c" = (
-/obj/effect/landmark/tutorial_bottom_left,
-/obj/structure/machinery/light{
-	needs_power = 0
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/misc/tutorial/no_baselight)
-"d" = (
-/obj/structure/bed/chair/comfy/beige,
-/turf/open/floor/almayer/dark_sterile,
-/area/misc/tutorial/no_baselight)
-"e" = (
-/turf/open/floor/almayer/sterile_green_side/east,
-/area/misc/tutorial/no_baselight)
-"g" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted{
-	req_access = null;
-	req_one_access = null
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/misc/tutorial/no_baselight)
-"j" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	lights = 0;
-	not_weldable = 1;
-	heavy = 1;
-	needs_power = 0;
-	use_power = 0;
-	breakable = 0;
-	unslashable = 1;
-	req_one_access = null
-	},
-/turf/closed/wall/almayer/white/hull,
-/area/misc/tutorial/no_baselight)
-"n" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp{
-	on = 1
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/misc/tutorial/no_baselight)
-"o" = (
-/turf/open/floor/almayer/sterile_green,
-/area/misc/tutorial/no_baselight)
-"p" = (
+"al" = (
 /obj/structure/machinery/light{
 	dir = 1;
 	on = 1;
 	needs_power = 0
 	},
-/turf/open/floor/almayer/sterile_green_corner/north,
+/obj/structure/sign/safety/biohazard{
+	pixel_x = -17
+	},
+/obj/structure/closet/crate/medical,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/turf/open/floor/prison/whitegreen/northwest,
 /area/misc/tutorial/no_baselight)
-"q" = (
-/obj/structure/foamed_metal,
-/turf/open/floor/almayer/sterile_green,
+"cd" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2,
+/turf/open/floor/prison/whitegreen/southeast,
 /area/misc/tutorial/no_baselight)
-"s" = (
+"cM" = (
+/obj/structure/bed/chair/comfy/teal,
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/misc/tutorial/no_baselight)
+"dr" = (
+/obj/structure/machinery/cm_vending/sorted/medical/bolted{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"eA" = (
+/turf/open/floor/prison/whitegreen/north,
+/area/misc/tutorial/no_baselight)
+"fl" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/northeast,
+/area/misc/tutorial/no_baselight)
+"gQ" = (
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 6;
 	pixel_y = 6
@@ -91,65 +66,87 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/device/healthanalyzer,
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
-	dir = 1;
-	on = 1;
-	needs_power = 0
-	},
-/turf/open/floor/almayer/sterile_green,
+/turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
-"t" = (
-/obj/structure/window/framed/almayer/white/hull,
-/turf/open/floor/almayer/sterile_green,
-/area/misc/tutorial/no_baselight)
-"v" = (
+"hs" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 1
 	},
-/turf/open/floor/almayer/dark_sterile,
+/turf/open/floor/prison/whitegreenfull,
 /area/misc/tutorial/no_baselight)
-"w" = (
-/turf/open/floor/almayer/sterile_green_side/north,
+"hE" = (
+/obj/structure/window/framed/almayer/white/hull,
+/turf/open/floor/prison/whitegreenfull,
 /area/misc/tutorial/no_baselight)
-"x" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/recharger,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
+"iO" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	needs_power = 0
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/misc/tutorial/no_baselight)
+"kG" = (
+/obj/structure/foamed_metal,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial/no_baselight)
+"lm" = (
+/obj/structure/coatrack{
+	pixel_x = 10
+	},
+/obj/structure/coatrack{
+	icon_state = "coat_cmo";
+	pixel_x = 10;
+	color = "#a2a2a2"
+	},
+/turf/open/floor/prison/whitegreen/southeast,
+/area/misc/tutorial/no_baselight)
+"md" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docdecal2";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/misc/tutorial/no_baselight)
+"mf" = (
 /obj/structure/machinery/light{
 	dir = 1;
 	on = 1;
 	needs_power = 0
 	},
-/turf/open/floor/almayer/sterile_green_corner,
+/turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
-"E" = (
-/obj/structure/machinery/chem_dispenser/corpsman,
-/obj/structure/machinery/light{
-	dir = 4;
-	on = 1;
-	needs_power = 0
+"nm" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/misc/tutorial/no_baselight)
+"nJ" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docdecal1";
+	color = "#d3d3d3"
 	},
-/turf/open/floor/almayer/sterile_green,
+/turf/open/floor/prison/whitegreen/east,
 /area/misc/tutorial/no_baselight)
-"F" = (
-/obj/structure/bed,
-/obj/item/bedsheet/medical,
-/turf/open/floor/almayer/sterile_green_corner/east,
-/area/misc/tutorial/no_baselight)
-"H" = (
-/obj/structure/machinery/cm_vending/sorted/medical/bolted{
-	req_access = null;
-	req_one_access = null
+"pc" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 5
 	},
-/turf/open/floor/almayer/sterile_green,
+/obj/item/tool/pen{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/item/clothing/head/cmo{
+	pixel_x = -8;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/whitegreen,
 /area/misc/tutorial/no_baselight)
-"I" = (
-/turf/open/floor/almayer/dark_sterile,
-/area/misc/tutorial/no_baselight)
-"K" = (
+"rb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
 	dir = 2;
 	locked = 1;
@@ -158,10 +155,254 @@
 	},
 /turf/closed/wall/almayer/white/hull,
 /area/misc/tutorial/no_baselight)
-"O" = (
+"rt" = (
+/obj/structure/machinery/light{
+	needs_power = 0
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2,
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"se" = (
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/bodybag{
+	pixel_x = 12;
+	pixel_y = 5
+	},
+/obj/item/bodybag{
+	pixel_x = 18;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/whitegreen/north,
+/area/misc/tutorial/no_baselight)
+"sZ" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty,
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
+/turf/open/floor/prison/whitegreen/southwest,
+/area/misc/tutorial/no_baselight)
+"tv" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	on = 1;
+	needs_power = 0
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomright";
+	color = "#d3d3d3"
+	},
+/obj/structure/machinery/recharger,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/whitegreen/northeast,
+/area/misc/tutorial/no_baselight)
+"uG" = (
+/obj/structure/closet/secure_closet/medical_doctor,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/misc/tutorial/no_baselight)
+"wb" = (
+/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/misc/tutorial/no_baselight)
+"wM" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/misc/tutorial/no_baselight)
+"xm" = (
+/turf/open/floor/prison/whitegreen/northeast,
+/area/misc/tutorial/no_baselight)
+"xD" = (
+/obj/structure/bed/medevac_stretcher/prop{
+	breakable = 0;
+	unslashable = 1
+	},
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight/open)
+"xV" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	on = 1;
+	needs_power = 0
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreen/southeast,
+/area/misc/tutorial/no_baselight)
+"Bg" = (
+/turf/open/floor/prison/whitegreen/west,
+/area/misc/tutorial/no_baselight)
+"Br" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	on = 1;
+	needs_power = 0
+	},
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/misc/tutorial/no_baselight)
+"Cv" = (
+/obj/structure/machinery/smartfridge/chemistry{
+	networked = 0;
+	needs_power = 0;
+	req_one_access = null
+	},
+/obj/structure/machinery/light{
+	needs_power = 0;
+	dir = 8
+	},
+/turf/open/floor/prison/whitegreen/northwest,
+/area/misc/tutorial/no_baselight)
+"Dx" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/obj/structure/machinery/light{
+	needs_power = 0;
+	dir = 8
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/prison/whitegreen/southwest,
+/area/misc/tutorial/no_baselight)
+"DH" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomright";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/misc/tutorial/no_baselight)
+"EK" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	on = 1
+	},
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"Gm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/megaphone{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/obj/effect/hybrisa/decal/colorable_rug{
+	color = "#3f5b41";
+	dir = 1;
+	pixel_y = -11;
+	name = "rubber mat";
+	pixel_x = 24
+	},
+/obj/item/tool/stamp/cmo{
+	pixel_y = -2
+	},
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"Gx" = (
+/turf/open/floor/prison/whitegreen/east,
+/area/misc/tutorial/no_baselight)
+"GE" = (
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/misc/tutorial/no_baselight)
+"HH" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	on = 1;
+	needs_power = 0
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomright";
+	color = "#d3d3d3"
+	},
+/obj/structure/machinery/chem_dispenser/corpsman,
+/turf/open/floor/prison/whitegreen/northeast,
+/area/misc/tutorial/no_baselight)
+"LQ" = (
+/obj/structure/machinery/light{
+	needs_power = 0
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"MG" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 3
+	},
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"MV" = (
+/obj/structure/bed/portable_surgery,
+/obj/effect/hybrisa/decal/warning/redandwhite_W,
+/obj/effect/hybrisa/decal/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/hybrisa/decal/warning/redandwhite_E{
+	pixel_x = 1
+	},
+/obj/effect/hybrisa/decal/warning/redandwhite_S,
+/turf/open/floor/prison/whitegreenfull,
+/area/misc/tutorial/no_baselight)
+"NI" = (
+/obj/structure/window/framed/almayer/white/hull,
+/turf/open/floor/almayer/sterile_green,
+/area/misc/tutorial/no_baselight)
+"RB" = (
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/structure/closet/secure_closet/chemical,
+/turf/open/floor/prison/whitegreen/southeast,
+/area/misc/tutorial/no_baselight)
+"Sf" = (
 /turf/closed/wall/almayer/white/hull,
 /area/misc/tutorial/no_baselight)
-"P" = (
+"Ss" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -14
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4";
+	pixel_y = 2
+	},
+/obj/item/tool/wet_sign{
+	layer = 6;
+	pixel_y = 18
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/misc/tutorial/no_baselight)
+"ST" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	lights = 0;
 	not_weldable = 1;
@@ -172,218 +413,268 @@
 	unslashable = 1;
 	req_one_access = null
 	},
-/turf/open/floor/almayer/dark_sterile,
+/turf/open/floor/prison/whitegreenfull,
 /area/misc/tutorial/no_baselight)
-"Q" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	on = 1;
-	needs_power = 0
+"TP" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_y = 9;
+	pixel_x = 14
 	},
-/turf/open/floor/almayer/dark_sterile,
+/turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
-"R" = (
-/obj/structure/bed,
-/obj/item/bedsheet/medical,
-/turf/open/floor/almayer/sterile_green_corner/west,
+"Un" = (
+/obj/structure/machinery/xenoanalyzer,
+/turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
-"V" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer/dark_sterile,
-/area/misc/tutorial/no_baselight)
-"X" = (
+"Wd" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/turf/open/floor/almayer/sterile_green,
+/turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
-"Y" = (
-/turf/open/floor/almayer/sterile_green_side/west,
-/area/misc/tutorial/no_baselight)
-"Z" = (
-/obj/structure/bed,
-/obj/item/bedsheet/medical,
-/obj/structure/machinery/light{
-	needs_power = 0
+"We" = (
+/obj/structure/noticeboard{
+	pixel_y = 30
 	},
-/turf/open/floor/almayer/sterile_green_side,
+/turf/open/floor/prison/whitegreen/northwest,
+/area/misc/tutorial/no_baselight)
+"Wn" = (
+/obj/effect/decal/medical_decals{
+	dir = 8;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/misc/tutorial/no_baselight)
+"WR" = (
+/obj/structure/machinery/chem_dispenser/medbay,
+/turf/open/floor/prison/whitegreen/northwest,
+/area/misc/tutorial/no_baselight)
+"Xb" = (
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"Xf" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/obj/effect/decal/medical_decals{
+	dir = 8;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/misc/tutorial/no_baselight)
+"Xn" = (
+/obj/structure/prop/hybrisa/misc/trash/blue{
+	pixel_y = 12
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/misc/tutorial/no_baselight)
+"YY" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	lights = 0;
+	not_weldable = 1;
+	heavy = 1;
+	needs_power = 0;
+	use_power = 0;
+	breakable = 0;
+	unslashable = 1;
+	req_one_access = null
+	},
+/turf/closed/wall/almayer/white/hull,
+/area/misc/tutorial/no_baselight)
+"ZE" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/turf/open/floor/prison/whitegreen,
+/area/misc/tutorial/no_baselight)
+"ZH" = (
+/turf/open/floor/prison/sterile_white,
 /area/misc/tutorial/no_baselight)
 
 (1,1,1) = {"
-O
-O
-O
-O
-O
-O
-O
-K
-O
-O
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+rb
+Sf
+Sf
 "}
 (2,1,1) = {"
-O
-q
-q
-q
-O
-s
-I
-I
-c
-O
+Sf
+WR
+iO
+nm
+NI
+Cv
+Bg
+Bg
+Dx
+Sf
 "}
 (3,1,1) = {"
-O
-q
-q
-q
-O
-X
-I
-I
-H
-O
+Sf
+Un
+ZH
+MG
+NI
+gQ
+ZH
+ZH
+dr
+Sf
 "}
 (4,1,1) = {"
-O
-q
-q
-q
-O
-o
-I
-I
-g
-O
+Sf
+eA
+ZH
+ZE
+NI
+Wd
+ZH
+ZH
+Xb
+Sf
 "}
 (5,1,1) = {"
-O
-q
-q
-q
-O
-a
-I
-I
-E
-O
+Sf
+xm
+Gx
+RB
+NI
+HH
+nJ
+md
+xV
+Sf
 "}
 (6,1,1) = {"
-O
-j
-O
-O
-O
-O
-I
-v
-O
-O
+Sf
+YY
+NI
+Sf
+Sf
+Sf
+wM
+hs
+Sf
+Sf
 "}
 (7,1,1) = {"
-O
-I
-I
-O
-p
-Y
-Y
-Y
-R
-O
+Sf
+We
+uG
+Sf
+al
+Ss
+Bg
+Bg
+sZ
+Sf
 "}
 (8,1,1) = {"
-O
-Q
-V
-t
-w
-I
-o
-I
-Z
-O
+Sf
+Br
+Gm
+hE
+TP
+ZH
+Gx
+ZH
+rt
+Sf
 "}
 (9,1,1) = {"
-O
-d
-V
-t
-w
-o
-o
-o
-b
-O
+Sf
+cM
+pc
+hE
+Xn
+Xb
+MV
+eA
+xD
+Sf
 "}
 (10,1,1) = {"
-O
-Q
-n
-t
-w
-I
-o
-I
-Z
-O
+Sf
+mf
+EK
+hE
+se
+ZH
+Bg
+ZH
+LQ
+Sf
 "}
 (11,1,1) = {"
-O
-I
-I
-O
-x
-e
-e
-e
-F
-O
+Sf
+fl
+lm
+Sf
+tv
+GE
+DH
+GE
+cd
+Sf
 "}
 (12,1,1) = {"
-O
-j
-O
-O
-O
-P
-O
-P
-O
-O
+Sf
+YY
+Sf
+Sf
+Sf
+ST
+Sf
+ST
+Sf
+Sf
 "}
 (13,1,1) = {"
-O
-q
-q
-q
-O
-I
-O
-I
-O
-O
+Sf
+kG
+kG
+kG
+Sf
+Wn
+Sf
+Xf
+Sf
+Sf
 "}
 (14,1,1) = {"
-O
-q
-q
-q
-O
-I
-I
-I
-O
-O
+Sf
+kG
+kG
+kG
+Sf
+wb
+ZH
+ZH
+Sf
+Sf
 "}
 (15,1,1) = {"
-O
-O
-O
-O
-O
-O
-O
-O
-O
-O
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
+Sf
 "}

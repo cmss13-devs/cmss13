@@ -56,7 +56,7 @@ const LobbyContext = createContext<LobbyContextType>({
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { lobby_author } = data;
+  const { lobby_author, upp_enabled } = data;
 
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
@@ -94,16 +94,19 @@ export const LobbyMenu = () => {
     );
   }
 
+  const themeToUse = themeDisabled
+    ? 'weyland_yutani'
+    : upp_enabled
+      ? 'crtred'
+      : 'crtgreen';
+
   return (
-    <Window
-      theme={themeDisabled ? 'weyland_yutani' : 'crtgreen'}
-      fitted
-      scrollbars={false}
-    >
+    <Window theme={themeToUse} fitted scrollbars={false}>
       <audio src={resolveAsset('load.mp3')} ref={onLoadPlayer} />
       <Window.Content
         className={classes([
           'LobbyScreen',
+          !themeDisabled && 'crtTheme',
           !filterDisabled && 'filterEnabled',
           disableAnimations,
         ])}
@@ -254,7 +257,7 @@ const LobbyButtons = (props: {
               <Box height="68px">
                 <Box
                   style={{
-                    backgroundImage: `url("${resolveAsset('uscm.png')}")`,
+                    backgroundImage: `url("${resolveAsset(upp_enabled ? 'upp.png' : 'uscm.png')}")`,
                   }}
                   width="67px"
                   className="loadEffect"

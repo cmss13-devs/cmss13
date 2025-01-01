@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(lobby_art)
 	selected_file_name = lobby_arts[index]
 
 	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	if(length(lobby_authors) && length(lobby_authors) > index)
+	if(length(lobby_authors) && length(lobby_authors) >= index)
 		author = lobby_authors[index]
 
 	for(var/client/client as anything in GLOB.clients)

@@ -30,6 +30,7 @@
 		ui.close()
 
 	winset(src, "lobby_browser", "is-disabled=false;is-visible=true")
+	winset(src, "mapwindow.status_bar", "is-visible=false")
 	lobby_window = new(client, "lobby_browser")
 	lobby_window.initialize(
 		assets = list(
@@ -69,6 +70,9 @@
 	.["xenomorph_enabled"] = GLOB.master_mode == /datum/game_mode/colonialmarines::name && client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH) || client.prefs.get_job_priority(JOB_XENOMORPH_QUEEN))
 	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
+
+/mob/new_player/ui_static_data(mob/user)
+	. = ..()
 
 	.["lobby_author"] = SSlobby_art.author
 

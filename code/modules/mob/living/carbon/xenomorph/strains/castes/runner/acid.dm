@@ -37,7 +37,7 @@
 	var/acid_passive_regen = 1
 	var/acid_gen_cap = 400 //Ammount of acid from wich passive acid generation stops
 
-	var/melt_acid_cost = 75
+	var/melt_acid_cost = 100
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
 	var/caboom_loop = 1

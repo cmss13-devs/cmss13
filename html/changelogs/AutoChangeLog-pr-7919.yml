@@ -1,5 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscadd: "faction cryo consoles"
-  - bugfix: "ares no longer announces when non marine factions enter cryo"

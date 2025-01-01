@@ -34,6 +34,11 @@
 	var/charge_use = 5
 	can_block_movement = TRUE
 
+	var/list/actions_list = list(
+		"global" = null,
+		VEHICLE_DRIVER = null
+	)
+
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------

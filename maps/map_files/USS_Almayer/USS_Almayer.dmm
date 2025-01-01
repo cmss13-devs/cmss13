@@ -132,57 +132,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
 "aas" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
-"aat" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
-"aau" = (
-/turf/closed/wall/almayer/reinforced/temphull,
-/area/almayer/living/pilotbunks)
-"aav" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
-"aaw" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/hallways/hangar)
-"aax" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = -8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aay" = (
-/obj/structure/filingcabinet{
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
-"aaz" = (
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 24;
-	density = 0
-	},
-/turf/open/floor/almayer/red/north,
-/area/almayer/shipboard/brig/processing)
-"aaA" = (
 /obj/structure/machinery/keycard_auth,
 /obj/structure/surface/table/reinforced/black,
 /obj/item/clock{
@@ -191,6 +140,57 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"aat" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
+"aau" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/living/pilotbunks)
+"aav" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
+"aaw" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
+"aax" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/hangar)
+"aay" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaz" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaA" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -80579,7 +80579,7 @@ cmM
 tzd
 tzd
 sgi
-aaz
+aaA
 wSm
 kAL
 xkd
@@ -85251,7 +85251,7 @@ gwR
 sTm
 tdT
 qyo
-aax
+aay
 qwp
 ora
 laO
@@ -85657,7 +85657,7 @@ wjq
 wjq
 rHc
 qyo
-aay
+aaz
 qwp
 vGA
 uwN
@@ -89608,9 +89608,9 @@ oZp
 eXq
 vvp
 aYd
-aav
+aaw
 bqF
-aas
+aat
 pcl
 oRJ
 fTm
@@ -90014,8 +90014,8 @@ lkf
 eXq
 ooh
 pcl
-aaw
-aat
+aax
+aav
 aMY
 pcl
 xNb
@@ -90118,7 +90118,7 @@ ajm
 wVW
 arP
 alX
-aaA
+aas
 aAF
 azZ
 aIf

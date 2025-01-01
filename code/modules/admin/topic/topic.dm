@@ -1324,7 +1324,7 @@
 		GLOB.fax_contents += fax_message // save a copy
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		GLOB.PressFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
+		GLOB.PressFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1412,7 +1412,7 @@
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		GLOB.USCMFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
+		GLOB.USCMFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>USCM FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1498,7 +1498,7 @@
 		if(!customname)
 			return
 
-		GLOB.WYFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.WYFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1585,7 +1585,7 @@
 		if(!customname)
 			return
 
-		GLOB.TWEFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.TWEFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>THREE WORLD EMPIRE FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1671,7 +1671,7 @@
 		if(!customname)
 			return
 
-		GLOB.UPPFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.UPPFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1757,7 +1757,7 @@
 		if(!customname)
 			return
 
-		GLOB.CLFFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.CLFFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1843,7 +1843,7 @@
 		if(!customname)
 			return
 
-		GLOB.CMBFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.CMBFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(user.key)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "

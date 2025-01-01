@@ -3442,7 +3442,7 @@
 /obj/structure/sign/prop2{
 	pixel_y = 30
 	},
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
+/obj/structure/machinery/faxmachine/uscm/highcom{
 	name = "Chinook Fax Machine";
 	department = "Chinook 91 GSO Station";
 	pixel_y = 5

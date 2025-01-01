@@ -22595,7 +22595,7 @@
 /area/lv522/indoors/a_block/corpo/glass)
 "mhn" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/uscm,
 /obj/structure/machinery/light{
 	dir = 1
 	},

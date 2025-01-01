@@ -65,7 +65,7 @@
 		<body>
 			<center><h1>Area Air Control</h1></center>
 			<font color="red">[status]</font><br>
-			<a href="?src=\ref[src];scan=1">Scan</a>
+			<a href="byond://?src=\ref[src];scan=1">Scan</a>
 			<table border="1" width="90%">"}
 	for(var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in connectedscrubbers)
 		dat += {"

@@ -61,9 +61,6 @@
 /// From /obj/item/device/flashlight/pen/attack(): (mob/living/user, mob/living/carbon/human/being)
 #define COMSIG_LIVING_PENLIGHT_USED "living_penlight_used"
 
-/// From /obj/item/device/hintscanner/attack(): (mob/living/target, mob/living/user)
-#define COMSIG_LIVING_TUTORIAL_HINT_REQUESTED "living_tutorial_hint_requested"
-
 /// from /datum/component/shimmy_around/proc/on_mob_move to determine if layer should be reset
 #define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
 	/// Sent when a shimmy component is currently overriding the layer

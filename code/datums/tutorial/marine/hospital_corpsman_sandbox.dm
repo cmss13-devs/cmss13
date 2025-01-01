@@ -18,11 +18,11 @@
 
 
 /datum/tutorial/marine/hospital_corpsman_sandbox
-	name = "Marine - Hospital Corpsman (Sandbox) - Beta"
-	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
+	name = "Marine - Hospital Corpsman (Sandbox)"
+	desc = "Test your medical skills against an endless wave of wounded Marines!"
 	tutorial_id = "marine_hm_3"
 	icon_state = "medic"
-	//required_tutorial = "marine_hm_100"
+	tutorial_id = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
 	// holder for the CMO NPC
@@ -55,7 +55,7 @@
 	var/min_survival_agents = 1
 	/// Current survival wave
 	var/survival_wave = 0
-	/// Difficulty factor per survival wave, increasing both the amount of agents and requested items
+
 	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_MINOR
 
 	var/boobootimer
@@ -159,7 +159,6 @@
 		agents[active_agent] = dropoff_point
 		active_agent.a_intent = INTENT_DISARM
 		simulate_condition(active_agent)
-		RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
 		var/obj/item/clothing/suit/storage/marine/medium/armor = active_agent.get_item_by_slot(WEAR_JACKET)
 		RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(item_cleanup))
 
@@ -332,12 +331,6 @@
 	active_agents |= active_agent
 	RegisterSignal(active_agent, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
 	RegisterSignal(active_agent, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
-	RegisterSignal(active_agent, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, PROC_REF(hint_requested))
-
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/hint_requested(mob/living/target, mob/living/user)
-
-	if(target == user)
-		return
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_evac(datum/source, mob/living/carbon/human/target)
 
@@ -432,6 +425,10 @@
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prepdoor = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
 	var/obj/structure/bed/medevac_stretcher/prop/medevacbed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
+	var/obj/structure/machinery/smartfridge/smartfridge = locate(/obj/structure/machinery/smartfridge) in get_turf(loc_from_corner(0, 3))
+
+	var/obj/item/storage/pill_bottle/imialky/ia = new /obj/item/storage/pill_bottle/imialky
+	smartfridge.add_local_item(ia)
 	//prepdoor.setDir(2)
 	prepdoor.req_one_access = null
 	prepdoor.req_access = null
@@ -448,6 +445,12 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/init_dragging_agent(mob/living/carbon/human/dragging_agent)
 	arm_equipment(dragging_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
 	dragging_agent.a_intent = INTENT_DISARM
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/Destroy(force)
+	STOP_PROCESSING(SSfastobj, src)
+	QDEL_LIST(agents)
+	QDEL_LIST(dragging_agents)
+	return ..()
 
 //------------GEAR VENDOR---------------
 
@@ -606,33 +609,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic_sandbox, list(
 
 	selected_tutorial.end_supply_phase()
 
-/obj/item/device/hintscanner
-	name = "\improper HF3 hint scanner"
-	icon_state = "hydro"
-	item_state = "analyzer"
-	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
-	)
-	desc = "A hand-held body scanner able to provide guidance on how best to restore the vital signs of a subject. Able to broadcast health information directly between sister-devices."
-	flags_equip_slot = SLOT_WAIST
-	flags_item = NOBLUDGEON
-	throwforce = 3
-	w_class = SIZE_SMALL
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 10
+#undef TUTORIAL_HM_PHASE_PREP
+#undef TUTORIAL_HM_PHASE_MAIN
+#undef TUTORIAL_HM_PHASE_RESUPPLY
+#undef TUTORIAL_HM_PHASE_NIGHTMARE
 
-/obj/item/device/hintscanner/attack(mob/living/target, mob/living/user)
+#undef TUTORIAL_HM_DIFFICULTY_INCREASE
 
-	to_chat(user, SPAN_NOTICE("[user] has analyzed [target]'s vitals."))
-	SEND_SIGNAL(target, COMSIG_LIVING_TUTORIAL_HINT_REQUESTED, src)
-	playsound(src.loc, 'sound/machines/chime.ogg', 50)
-	return
-
-// TO DO LIST
-//
-// custom chems in vendors
-// random arrivals of patients
-// more vocalisations
-// the medhinter
+#undef TUTORIAL_HM_INJURY_SEVERITY_BOOBOO
+#undef TUTORIAL_HM_INJURY_SEVERITY_MINOR
+#undef TUTORIAL_HM_INJURY_SEVERITY_ROUTINE
+#undef TUTORIAL_HM_INJURY_SEVERITY_SEVERE
+#undef TUTORIAL_HM_INJURY_SEVERITY_FATAL
+#undef TUTORIAL_HM_INJURY_SEVERITY_EXTREME
+#undef TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM

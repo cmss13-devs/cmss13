@@ -195,6 +195,7 @@
 /obj/effect/landmark/start/doctor,
 /obj/effect/landmark/late_join/doctor,
 /obj/effect/landmark/start/field_doctor,
+/obj/effect/landmark/late_join/field_doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "aaC" = (

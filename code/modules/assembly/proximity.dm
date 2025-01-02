@@ -40,7 +40,6 @@
 		return
 
 	if(isyautja(AM))
-		to_chat(src, "prox")
 		return
 
 	if(has_moved_recently(AM))
@@ -56,7 +55,6 @@
 /obj/item/device/assembly/prox_sensor/proc/sense()
 
 	if(isyautja(src))
-		to_chat(src, "sense")
 		return
 
 	var/turf/mainloc = get_turf(src)

@@ -33,14 +33,14 @@
 		t1 += "Operator: [last_configurator]<br>"
 
 	if (locked)
-		t1 += "<a href='?src=\ref[src];login=1'>Swipe ID</a><hr>"
+		t1 += "<a href='byond://?src=\ref[src];login=1'>Swipe ID</a><hr>"
 	else
-		t1 += "<a href='?src=\ref[src];logout=1'>Block</a><hr>"
+		t1 += "<a href='byond://?src=\ref[src];logout=1'>Block</a><hr>"
 
 		t1 += "Access requirement is set to "
-		t1 += one_access ? "<a style='color: green' href='?src=\ref[src];one_access=1'>ONE</a><hr>" : "<a style='color: red' href='?src=\ref[src];one_access=1'>ALL</a><hr>"
+		t1 += one_access ? "<a style='color: green' href='byond://?src=\ref[src];one_access=1'>ONE</a><hr>" : "<a style='color: red' href='byond://?src=\ref[src];one_access=1'>ALL</a><hr>"
 
-		t1 += conf_access == null ? "<font color=red>All</font><br>" : "<a href='?src=\ref[src];access=all'>All</a><br>"
+		t1 += conf_access == null ? "<font color=red>All</font><br>" : "<a href='byond://?src=\ref[src];access=all'>All</a><br>"
 
 		t1 += "<br>"
 
@@ -49,13 +49,13 @@
 			var/aname = get_access_desc(acc)
 
 			if (!LAZYLEN(conf_access) || !(acc in conf_access))
-				t1 += "<a href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+				t1 += "<a href='byond://?src=\ref[src];access=[acc]'>[aname]</a><br>"
 			else if(one_access)
-				t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+				t1 += "<a style='color: green' href='byond://?src=\ref[src];access=[acc]'>[aname]</a><br>"
 			else
-				t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+				t1 += "<a style='color: red' href='byond://?src=\ref[src];access=[acc]'>[aname]</a><br>"
 
-	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
+	t1 += text("<p><a href='byond://?src=\ref[];close=1'>Close</a></p>\n", src)
 
 	show_browser(user, t1, "Access Control", "airlock_electronics")
 	onclose(user, "airlock_electronics")

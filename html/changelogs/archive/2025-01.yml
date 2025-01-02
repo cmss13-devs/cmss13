@@ -41,3 +41,19 @@
   - rscadd: Adds a provost pen, a variant of multicolor pen that can switch between
       Black, White, Orange, Blue, Green and Red. Intended for use in filling out MP
       forms.
+2025-01-02:
+  Blundir:
+  - rscadd: hud icon for loader
+  - rscadd: minimap/orbit icons for loader and spotter
+  - bugfix: upp political commisar having incorrect minimap/orbit icon
+  - bugfix: k9 handler pamphlet making all corpsmen have minimap/orbit icon of k9
+      handler instead of corpsman one
+  Drathek:
+  - balance: Loader pamphlet now only increases endurance to 2
+  harryob:
+  - server: the server can now support 516 clients - be aware that the current version
+      (516.1648) has some crashing issues, and you may not want to update yet. the
+      server can also be hosted on 516 versions, but this will force all clients to
+      use 516
+  realforest2001:
+  - rscadd: Fax responder preset listening bugs no longer broadcast to ghosts.

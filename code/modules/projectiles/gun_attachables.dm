@@ -2837,7 +2837,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/Initialize()
 	. = ..()
-	grenade_pass_flags = PASS_HIGH_OVER|PASS_MOB_THRU
+	grenade_pass_flags = PASS_HIGH_OVER|PASS_MOB_THRU|PASS_OVER
 
 /obj/item/attachable/attached_gun/grenade/New()
 	..()

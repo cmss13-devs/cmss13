@@ -83,7 +83,7 @@
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/surface/table/holotable/wood
 	name = "table"

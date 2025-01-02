@@ -11,6 +11,14 @@
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/clock{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -8716,6 +8724,9 @@
 /area/fiorina/station/power_ring)
 "gPs" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/clock{
+	pixel_y = 9
+	},
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "gPS" = (
@@ -10594,8 +10605,8 @@
 "igQ" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "igV" = (
@@ -11703,7 +11714,7 @@
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
 "iXV" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "iYa" = (
@@ -18656,7 +18667,7 @@
 /area/fiorina/tumor/ice_lab)
 "omb" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
@@ -23862,6 +23873,7 @@
 /area/fiorina/station/disco)
 "spR" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/clock,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "sqx" = (
@@ -24521,7 +24533,7 @@
 /area/fiorina/tumor/civres)
 "sQr" = (
 /obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood/janitor{
+/obj/item/clothing/head/bio_hood{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -26757,9 +26769,8 @@
 /area/fiorina/tumor/aux_engi)
 "uEh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -29877,7 +29888,7 @@
 /obj/item/card/id/silver/clearance_badge/cl{
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -55972,7 +55983,7 @@ azZ
 xLi
 xLi
 oZf
-tYU
+aac
 knW
 fop
 xLi

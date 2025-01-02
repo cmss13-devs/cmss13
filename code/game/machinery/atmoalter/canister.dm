@@ -29,6 +29,9 @@
 	canister_color = "blue"
 	can_label = 0
 
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
 /obj/structure/machinery/portable_atmospherics/canister/phoron
 	name = "Canister \[Phoron\]"
 	icon_state = "orange"
@@ -101,7 +104,7 @@ update_flag
 		visible_message(SPAN_DANGER("[user] hits [src] with [W]!"))
 		update_health(W.force)
 		src.add_fingerprint(user)
-	..()
+	. = ..()
 
 	SSnano.nanomanager.update_uis(src) // Update all NanoUIs attached to src
 

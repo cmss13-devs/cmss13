@@ -36,8 +36,8 @@
 	icon_state = "wooden_pole"
 	item_state = "wooden_pole"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
 	)
 	force = 20
 	attack_speed = 1.5 SECONDS
@@ -144,14 +144,6 @@
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/katana
 	stored_item = new /obj/item/weapon/sword/katana
 
-// IN SHOTGUNS.DM!!
-
-/*obj/item/weapon/pole/fancy_cane/gun
-	name = "fancy cane"
-	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
-	force = 15 // hollow
-*/
-
 /obj/item/research//Makes testing much less of a pain -Sieve
 	name = "research"
 	icon = 'icons/obj/items/stock_parts.dmi'
@@ -165,10 +157,6 @@
 	force = 10
 	throwforce = 2
 	w_class = SIZE_LARGE
-
-
-
-
 
 /obj/item/evidencebag
 	name = "evidence bag"
@@ -301,3 +289,18 @@
 	w_class = SIZE_MASSIVE
 	flags_equip_slot = SLOT_BACK
 	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
+
+/obj/item/clock
+	name = "digital clock"
+	desc = "A battery powered clock, able to keep time within about 5 seconds... it was never that accurate."
+	icon = 'icons/obj/items/devices.dmi'
+	icon_state = "digital_clock"
+	force = 3
+	throwforce = 2
+	throw_speed = 1
+	throw_range = 4
+	w_class = SIZE_SMALL
+
+/obj/item/clock/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The [src] reads: [GLOB.current_date_string] - [worldtime2text()]")

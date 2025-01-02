@@ -38,6 +38,11 @@
 /obj/item/device/assembly/prox_sensor/HasProximity(atom/movable/AM)
 	if((!holder && !secured) || !scanning || cooldown>0 || delaying)
 		return
+
+	if(isyautja(AM))
+		to_chat(src, "prox")
+		return
+
 	if(has_moved_recently(AM))
 		sense()
 
@@ -49,6 +54,11 @@
 
 
 /obj/item/device/assembly/prox_sensor/proc/sense()
+
+	if(isyautja(src))
+		to_chat(src, "sense")
+		return
+
 	var/turf/mainloc = get_turf(src)
 	mainloc.visible_message(SPAN_DANGER("You hear a proximity sensor beep!"), SPAN_DANGER("You hear a proximity sensor beep!"))
 	playsound(mainloc, 'sound/machines/twobeep.ogg', 50, 1)

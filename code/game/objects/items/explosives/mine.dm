@@ -326,6 +326,11 @@
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
 
+/obj/item/explosive/mine/custom/try_to_prime(mob/living/carbon/hunter)
+	if(isyautja(hunter))
+		to_chat(hunter, SPAN_NOTICE("You carefully avoid stepping on the human hunting trap."))
+		return
+
 /obj/item/explosive/mine/sebb
 	name = "\improper G2 Electroshock grenade"
 	icon_state = "grenade_sebb_planted"

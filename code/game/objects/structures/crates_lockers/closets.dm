@@ -77,8 +77,9 @@
 
 /obj/structure/closet/proc/dump_contents()
 
-	for(var/obj/I in src)
-		I.forceMove(loc)
+	if(!istype(src, /obj/structure/closet/bodybag)) // accounts for bodybag refactor
+		for(var/obj/I in src)
+			I.forceMove(loc)
 
 	for(var/mob/M in src)
 		M.forceMove(loc)

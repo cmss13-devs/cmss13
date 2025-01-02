@@ -21,11 +21,14 @@
 			deploy_bodybag(user, T)
 
 /obj/item/bodybag/proc/deploy_bodybag(mob/user, atom/location)
-	var/obj/structure/closet/bodybag/R = new unfolded_path(location, src)
-	R.add_fingerprint(user)
-	R.open(user)
+	if(src.contents.len == 0)
+		new unfolded_path(src)
+	var/obj/structure/closet/bodybag/deployed = locate(unfolded_path) in src.contents
+	deployed.forceMove(user.loc)
 	user.temp_drop_inv_item(src)
-	qdel(src)
+	forceMove(deployed)
+	deployed.add_fingerprint(user)
+	deployed.open(user)
 
 
 /obj/item/bodybag/cryobag
@@ -169,11 +172,13 @@
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
 		if(!ishuman(usr)) return
-		if(length(contents)) return 0
+		var/obj/item/undeployed = locate(item_path) in src.contents
+		if(!(undeployed))
+			undeployed = new item_path(src.contents)
+		else if(length(contents) > 1) return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
-		var/obj/item/I = new item_path(get_turf(src), src)
-		usr.put_in_hands(I)
-		qdel(src)
+		usr.put_in_hands(undeployed)
+		forceMove(undeployed)
 
 
 

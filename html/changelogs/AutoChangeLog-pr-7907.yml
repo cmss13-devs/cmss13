@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes giant lizard manual pounce keys."
-  - bugfix: "Giant Lizards can now see in the dark when controlled by a player."

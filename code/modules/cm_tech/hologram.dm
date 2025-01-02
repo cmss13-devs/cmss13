@@ -72,7 +72,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
-		M.client.mouse_pointer_icon = mouse_icon
 
 	return COMPONENT_OVERRIDE_VIEW
 

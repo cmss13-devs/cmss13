@@ -38,5 +38,5 @@
 		return
 	if(istype(I, /obj/item/circuitboard/machine) && !istype(I, /obj/item/circuitboard/machine/telecomms/relay/tower))
 		return
-	..()
+	. = ..()
 

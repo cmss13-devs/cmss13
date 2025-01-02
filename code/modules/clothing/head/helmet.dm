@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/tool/pen = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/pen/blue = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/pen/red = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
-	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
+	/obj/item/tool/pen/multicolor/fountain = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/tan = NO_GARB_OVERRIDE,
@@ -1643,7 +1643,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	force = 0 //"The M3 MOPP mask would be a normal weapon if you were to hit someone with it."
 	throwforce = 0
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = BLOCKSHARPOBJ|BLOCKGASEFFECT
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR

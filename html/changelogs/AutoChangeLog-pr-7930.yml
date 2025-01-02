@@ -1,0 +1,4 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - rscadd: "Added EMS red and green uniform and jumpsuit, and holobadge to synthetic uniform vendor. Added a briefcase to the uniform vendor."

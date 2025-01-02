@@ -491,10 +491,6 @@
 "abs" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/north1)
-"abt" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/closed/wall/almayer,
-/area/almayer/living/gym)
 "abu" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -93374,7 +93370,7 @@ oes
 eWs
 abD
 wFR
-abt
+wfE
 abc
 rkz
 aaN

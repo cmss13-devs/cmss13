@@ -793,7 +793,7 @@ const RenderCategory = (props: {
       {relevant_items.map((item) => (
         <>
           <RenderPack key={item.name} pack={item} />
-          <hr />
+          <Divider />
         </>
       ))}
     </Stack>
@@ -959,7 +959,7 @@ const RenderPack = (props: {
             </Stack.Item>
             {viewContents && (
               <Stack.Item>
-                <hr />
+                <Divider />
                 <Stack vertical>
                   {item.contains.map((item) => (
                     <Stack.Item key={item.name}>

@@ -428,7 +428,7 @@
 	var/obj/structure/machinery/smartfridge/smartfridge = locate(/obj/structure/machinery/smartfridge) in get_turf(loc_from_corner(0, 3))
 
 	var/obj/item/storage/pill_bottle/imialky/ia = new /obj/item/storage/pill_bottle/imialky
-	smartfridge.add_local_item(ia)
+	smartfridge.add_local_item(ia) //I have won, but at what cost?
 	//prepdoor.setDir(2)
 	prepdoor.req_one_access = null
 	prepdoor.req_access = null

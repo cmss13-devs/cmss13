@@ -378,6 +378,12 @@
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
+"kg" = (
+/obj/structure/machinery/cm_vending/sorted/medical/tutorial{
+	invisibility = 255
+	},
+/turf/open/floor/plating,
+/area/space)
 "kn" = (
 /obj/docking_port/stationary/emergency_response/idle_port3,
 /turf/open/floor/plating,
@@ -1198,6 +1204,9 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
+"Hl" = (
+/turf/open/floor/plating,
+/area/space)
 "HL" = (
 /obj/structure/sign/catclock{
 	pixel_x = 32
@@ -1977,6 +1986,9 @@
 "YP" = (
 /turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
+"YR" = (
+/turf/open/floor/plating,
+/area/tdome/tdome1)
 "YU" = (
 /turf/closed/wall,
 /area/adminlevel/ert_station)
@@ -1999,6 +2011,11 @@
 /obj/item/storage/box/monkeycubes,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/ert_station)
+"Zi" = (
+/turf/closed/wall/almayer/outer{
+	name = "reinforced hull"
+	},
+/area/space)
 "Zp" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy,
@@ -7417,7 +7434,7 @@ aa
 aC
 aa
 ak
-Zd
+YR
 Ee
 Ee
 Ee
@@ -8330,14 +8347,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-aa
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+aC
 aC
 aC
 aC
@@ -8482,7 +8499,7 @@ as
 as
 as
 as
-as
+TT
 as
 as
 as
@@ -8634,13 +8651,13 @@ as
 as
 as
 as
+TT
 as
-as
-as
-as
-as
-as
-as
+Zi
+Zi
+Zi
+Zi
+Zi
 aa
 aC
 aa
@@ -8786,13 +8803,13 @@ as
 as
 as
 as
+TT
 as
-as
-as
-as
-as
-as
-as
+Zi
+Hl
+Hl
+Hl
+Zi
 aa
 aC
 aa
@@ -8938,13 +8955,13 @@ as
 as
 as
 as
+TT
 as
-as
-as
-as
-as
-as
-as
+Zi
+Hl
+kg
+Hl
+Zi
 aa
 aC
 aa
@@ -9090,13 +9107,13 @@ as
 as
 as
 as
+TT
 as
-as
-as
-as
-as
-as
-as
+Zi
+Hl
+Hl
+Hl
+Zi
 aa
 aC
 aa
@@ -9242,13 +9259,13 @@ as
 as
 as
 as
+TT
 as
-as
-as
-as
-as
-as
-as
+Zi
+Zi
+Zi
+Zi
+Zi
 aa
 aC
 aa
@@ -9394,7 +9411,7 @@ as
 as
 as
 as
-as
+TT
 as
 as
 as
@@ -9546,14 +9563,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-aa
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+aC
 aC
 aa
 ds

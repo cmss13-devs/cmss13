@@ -499,7 +499,9 @@
 	icon_state = "triagedecalbottomright";
 	color = "#d3d3d3"
 	},
-/obj/structure/machinery/recharger,
+/obj/structure/machinery/recharger{
+	needs_power = 0
+	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/whitegreen/northeast,
 /area/misc/tutorial/no_baselight)

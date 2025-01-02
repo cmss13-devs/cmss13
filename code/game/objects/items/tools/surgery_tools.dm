@@ -229,18 +229,21 @@
 
 /obj/item/tool/surgery/bonegel/update_icon(mob/user)
 	. = ..()
-	if(remaining_gel >= 100)
-		icon_state = base_icon_state
-	if(remaining_gel > 50)
-		icon_state = "[base_icon_state]_75"
-	if(remaining_gel > 25)
-		icon_state = "[base_icon_state]_50"
-	if(remaining_gel > 0)
-		icon_state = "[base_icon_state]_25"
-	else
-		icon_state = "[base_icon_state]_0"
-	user.update_inv_l_hand()
-	user.update_inv_r_hand()
+	switch(remaining_gel)
+		if(100 to INFINITY)
+			icon_state = base_icon_state
+		if(60 to 99)
+			icon_state = "[base_icon_state]_75"
+		if(30 to 59)
+			icon_state = "[base_icon_state]_50"
+		if(5 to 29)
+			icon_state = "[base_icon_state]_25"
+		if(0 to 4)
+			icon_state = "[base_icon_state]_0"
+
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()

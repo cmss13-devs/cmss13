@@ -3,6 +3,7 @@
 #define MENU_CO "co"
 #define MENU_SYNTHETIC "synth"
 #define MENU_YAUTJA "yautja"
+#define MENU_YOUNG_BLOOD "youngblood"
 #define MENU_MENTOR "mentor"
 #define MENU_SETTINGS "settings"
 #define MENU_SPECIAL "special"
@@ -340,6 +341,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_PREDATOR))
 		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja</b></a> - "
+	else
+		dat += "<a[current_menu == MENU_YOUNG_BLOOD ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=yautja\"><b>Yautja Youngblood</b></a> - "
 	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
@@ -653,20 +656,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Colonial Marshal Bureau:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
 				dat += "<b>Free Press:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
 				dat += "<b>CLF Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
-				dat += "</div>"
-				dat += "</body>"
-			if(!owner.check_whitelist_status(WHITELIST_YAUTJA))
-				dat += "<h2><b><u>Youngblood Predator Preferences:</u></b></h2>"
-				dat += "<b>Yautja Gender:</b> <a href='byond://?_src_=prefs;preference=pred_gender;task=input'><b>[predator_gender == MALE ? "Male" : "Female"]</b></a><br><br>"
-				dat += "<b>Yautja Quill Style:</b> <a href='byond://?_src_=prefs;preference=pred_hair;task=input'><b>[predator_h_style]</b></a><br>"
-				dat += "<b>Yautja Skin Color:</b> <a href='byond://?_src_=prefs;preference=pred_skin;task=input'><b>[predator_skin_color]</b></a><br>"
-				dat += "<b>Mask Style:</b> <a href='byond://?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
-				dat += "<b>Armor Style:</b> <a href='byond://?_src_=prefs;preference=pred_armor_type;task=input'><b>([predator_armor_type])</b></a><br>"
-				dat += "<b>Greave Style:</b> <a href='byond://?_src_=prefs;preference=pred_boot_type;task=input'><b>([predator_boot_type])</b></a><br>"
-				dat += "<b>Mask Material:</b> <a href='byond://?_src_=prefs;preference=pred_mask_mat;task=input'><b>[predator_mask_material]</b></a><br>"
-				dat += "<b>Armor Material:</b> <a href='byond://?_src_=prefs;preference=pred_armor_mat;task=input'><b>[predator_armor_material]</b></a><br>"
-				dat += "<b>Greave Material:</b> <a href='byond://?_src_=prefs;preference=pred_greave_mat;task=input'><b>[predator_greave_material]</b></a><br>"
-				dat += "<b>Caster Material:</b> <a href='byond://?_src_=prefs;preference=pred_caster_mat;task=input'><b>[predator_caster_material]</b></a>"
 				dat += "</div>"
 
 
@@ -1954,6 +1943,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					pred_picker.tgui_interact(user)
 					return
 
+				if("youngblood")
+					if(!owner.check_whitelist_status(WHITELIST_PREDATOR))
+						return
+
+					pred_picker.tgui_interact(user)
+					return
+
 	ShowChoices(user)
 	return 1
 
@@ -2274,6 +2270,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 #undef MENU_CO
 #undef MENU_SYNTHETIC
 #undef MENU_YAUTJA
+#undef MENU_YOUNG_BLOOD
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL

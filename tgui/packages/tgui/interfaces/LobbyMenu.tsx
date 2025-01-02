@@ -484,7 +484,7 @@ const LobbyButtons = (props: {
                 >
                   <Flex>
                     <Flex.Item>
-                      <Box className="gnarp" inline />
+                      <Box className="pred" inline />
                     </Flex.Item>
                     <Flex.Item>Join the Hunt</Flex.Item>
                   </Flex>

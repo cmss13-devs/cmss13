@@ -19,14 +19,6 @@ export const CardMod = (props) => {
     <Window width={450} height={520} resizable>
       <Window.Content scrollable>
         <Box>
-          <Tabs fluid>
-            <Tabs.Tab selected={tab2 === 1} onClick={() => setTab2(1)}>
-              Access Modifcation
-            </Tabs.Tab>
-            <Tabs.Tab selected={tab2 === 2} onClick={() => setTab2(2)}>
-              Crew Manifest
-            </Tabs.Tab>
-          </Tabs>
           {tab2 === 1 && <CardContent />}
         </Box>
       </Window.Content>

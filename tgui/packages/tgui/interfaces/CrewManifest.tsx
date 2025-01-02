@@ -109,25 +109,39 @@ export const CrewManifest = (props, context) => {
               backgroundColor="rgba(10, 10, 10, 0.75)"
             >
               <Table>
-                {filteredCrewList.map((crew) => (
+                {filteredCrewList.map((crew, index) => (
                   <TableRow
                     key={crew.name}
                     bold={crew.rank === supervisorRank}
                     overflow="hidden"
+                    className={index % 2 === 0 ? 'row-even' : 'row-odd'}
                   >
-                    <TableCell width="50%" textAlign="center" pt="10px" nowrap>
+                    <TableCell
+                      width="50%"
+                      textAlign="center"
+                      pt="5px"
+                      pb="5px"
+                      nowrap
+                    >
                       {crew.name}
                     </TableCell>
                     <TableCell
                       width="45%"
                       textAlign="right"
                       pr="2%"
-                      pt="10px"
+                      pt="5px"
+                      pb="5px"
                       nowrap
                     >
                       {crew.rank}
                     </TableCell>
-                    <TableCell textAlign="right" width="5%" pr="3%" pt="10px">
+                    <TableCell
+                      textAlign="right"
+                      width="5%"
+                      pr="3%"
+                      pt="5px"
+                      pb="5px"
+                    >
                       <Tooltip content={crew.is_active}>
                         <Icon
                           name="circle"

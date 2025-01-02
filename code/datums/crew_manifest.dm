@@ -42,11 +42,11 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 
 		var/name = record_entry.fields["name"]
 		var/rank = record_entry.fields["rank"]
-		var/squad = lowertext(record_entry.fields["squad"])
+		var/squad = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank))
 			continue
 
-		var/department_name = null
+		var/entry_dept = null
 		var/list/entry = list(
 			"name" = name,
 			"rank" = rank,
@@ -54,25 +54,25 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 			"is_active" = record_entry.fields["p_stat"]
 		)
 
-		for(var/department in departments)
-			if(department in GLOB.ROLES_SQUAD_ALL)
+		for(var/iterated_dept in departments)
+			if(iterated_dept in GLOB.ROLES_SQUAD_ALL)
 				//Check for exact squad match
-				if(isnull(squad) || lowertext(squad) != lowertext(department))
+				if(isnull(squad) || lowertext(squad) != lowertext(iterated_dept))
 					continue
-			var/list/jobs = departments[department]
+			var/list/jobs = departments[iterated_dept]
 			if(rank in jobs)
-				department_name = department
+				entry_dept = iterated_dept
 				break
 
 		// Assign to department if rank matches or fallback for unrecognized rank
-			if(rank in jobs || isnull(department_name))
-				department_name = department
+			if(isnull(entry_dept) && squad)
+				entry_dept = squad
 				break
 
-		if(department_name)
-			if(!data[department_name])
-				data[department_name] = list()
-			data[department_name] += list(entry)
+		if(entry_dept)
+			if(!data[entry_dept])
+				data[entry_dept] = list()
+			data[entry_dept] += list(entry)
 		else
 			if(!data["Miscellaneous"])
 				data["Miscellaneous"] = list()

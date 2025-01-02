@@ -25,6 +25,14 @@ $status-colors: (
   'deceased': colors.$red,
 );
 
+.row-even {
+  background-color: rgba(128, 128, 128, 0.1); // Light background for even rows
+}
+
+.row-odd {
+  background-color: rgba(0, 0, 0, 0.1); // Dark background for odd rows
+}
+
 @each $dept, $color in $departmental-colors {
   .text-dept-#{to-lower-case($dept)} {
     color: $color !important;

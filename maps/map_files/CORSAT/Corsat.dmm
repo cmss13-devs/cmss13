@@ -19586,7 +19586,6 @@
 /area/corsat/sigma/south/robotics)
 "bxK" = (
 /obj/structure/surface/rack,
-/obj/item/holder/drone,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/sigma/south/robotics)
 "bxL" = (

@@ -167,34 +167,62 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "aay" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_x = 4;
+	pixel_y = 6
 	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = -8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/req)
 "aaz" = (
-/obj/structure/filingcabinet{
-	pixel_x = -8
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 7;
+	pixel_x = 5
 	},
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/bluefull,
-/area/almayer/command/cichallway)
+/obj/effect/spawner/random/tool,
+/obj/item/tool/hand_labeler,
+/obj/item/clipboard,
+/obj/effect/landmark/map_item,
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/req)
 "aaA" = (
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 24;
+/obj/structure/filingcabinet/documentation/uscm_mp,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/sea_office)
+"aaB" = (
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_y = 16;
 	density = 0
 	},
-/turf/open/floor/almayer/red/north,
-/area/almayer/shipboard/brig/processing)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/alpha_bravo_shared)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -214,6 +242,24 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 6
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = -8
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/corporateliaison)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -222,6 +268,62 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/largecrate/supply/supplies/wy_emergency_food,
+/turf/open/floor/almayer/red/north,
+/area/almayer/maint/upper/u_a_p)
+"aaJ" = (
+/obj/structure/filingcabinet/documentation/liaison,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
+"aaK" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/obj/item/book/manual/chef_recipes,
+/obj/structure/sign/safety/coffee{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/prison/kitchen,
+/area/almayer/living/captain_mess)
+"aaL" = (
+/obj/structure/machinery/keycard_auth{
+	pixel_y = 25
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	density = 0;
+	pixel_x = 8;
+	icon_state = "chestdrawer"
+	},
+/turf/open/floor/almayer/red/northeast,
+/area/almayer/shipboard/brig/chief_mp_office)
+"aaM" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaN" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaO" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -237,6 +339,67 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
+"aaQ" = (
+/obj/structure/machinery/photocopier{
+	pixel_y = 12
+	},
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 8;
+	icon_state = "chestdrawer"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
+"aaR" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/machinery/power/apc/almayer/west,
+/obj/structure/sign/safety/rewire{
+	pixel_x = -17;
+	pixel_y = 17
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/shipboard/brig/evidence_storage)
+"aaS" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 10
+	},
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 10;
+	pixel_x = 16
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/cafeteria_officer)
+"aaT" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/silver/east,
+/area/almayer/living/cafeteria_officer)
+"aaU" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/structure/filingcabinet/security{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 8
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "aaY" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -1179,20 +1342,6 @@
 /area/almayer/living/cafeteria_officer)
 "agY" = (
 /turf/open/floor/almayer/plate,
-/area/almayer/living/cafeteria_officer)
-"ahc" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/wy_mre,
-/obj/item/storage/box/wy_mre,
-/turf/open/floor/almayer,
-/area/almayer/living/cafeteria_officer)
-"ahe" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/item/storage/box/donkpockets,
-/turf/open/floor/almayer/silver/east,
 /area/almayer/living/cafeteria_officer)
 "ahf" = (
 /obj/structure/surface/table/almayer,
@@ -6326,16 +6475,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/aft_hallway)
-"aPD" = (
-/obj/structure/machinery/photocopier{
-	pixel_y = 12
-	},
-/obj/structure/filingcabinet/documentation/uscm_mp{
-	pixel_x = 8;
-	icon_state = "chestdrawer"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "aPE" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -12485,15 +12624,6 @@
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
 	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/req)
-"bNB" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/wy_mre,
-/obj/effect/spawner/random/tool,
-/obj/item/tool/hand_labeler,
-/obj/item/clipboard,
-/obj/effect/landmark/map_item,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bNC" = (
@@ -21625,24 +21755,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
-"eVR" = (
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 18
-	},
-/obj/structure/machinery/power/apc/almayer/west,
-/obj/structure/sign/safety/rewire{
-	pixel_x = -17;
-	pixel_y = 17
-	},
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 18;
-	density = 0;
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/shipboard/brig/evidence_storage)
 "eVT" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -23637,10 +23749,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
-"fOz" = (
-/obj/structure/filingcabinet/documentation/uscm_mp,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/sea_office)
 "fOK" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera,
@@ -28713,26 +28821,6 @@
 "hXb" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/charlie_delta_shared)
-"hXd" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_box/magazine/misc/mre{
-	pixel_x = 4;
-	pixel_y = 15
-	},
-/obj/item/storage/box/wy_mre{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -7;
-	pixel_y = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha_bravo_shared)
 "hXg" = (
 /obj/vehicle/powerloader,
 /obj/structure/platform/metal/almayer/east,
@@ -34817,16 +34905,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/engineering/laundry)
-"kxL" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/largecrate/random/mini/wooden{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/storage/box/uscm_mre,
-/obj/item/storage/box/uscm_mre,
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/squads/req)
 "kxP" = (
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/mp_bunks)
@@ -35870,18 +35948,6 @@
 /obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/lower_medical_medbay)
-"kSH" = (
-/obj/structure/sign/prop1{
-	pixel_y = 32
-	},
-/obj/structure/filingcabinet/security{
-	pixel_x = -8
-	},
-/obj/structure/filingcabinet/documentation/uscm_mp{
-	pixel_x = 8
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/commandbunks)
 "kSU" = (
 /obj/structure/transmitter/no_dnd{
 	name = "Requisition Telephone";
@@ -43987,13 +44053,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
-"olM" = (
-/obj/structure/filingcabinet/documentation/uscm{
-	pixel_y = 16;
-	density = 0
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "olN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
@@ -51837,23 +51896,6 @@
 "rth" = (
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"rtt" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular{
-	pixel_y = 6
-	},
-/obj/item/storage/box/drinkingglasses{
-	pixel_x = -8
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -10;
-	pixel_y = 14
-	},
-/obj/item/storage/box/wy_mre{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/corporateliaison)
 "rtA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/pen{
@@ -56209,18 +56251,6 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
-"tiF" = (
-/obj/structure/machinery/keycard_auth{
-	pixel_y = 25
-	},
-/obj/structure/filingcabinet/documentation/military_police{
-	pixel_y = 16;
-	density = 0;
-	pixel_x = 8;
-	icon_state = "chestdrawer"
-	},
-/turf/open/floor/almayer/red/northeast,
-/area/almayer/shipboard/brig/chief_mp_office)
 "tiI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/syringes{
@@ -57352,10 +57382,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
-"tFJ" = (
-/obj/structure/largecrate/supply/supplies/mre,
-/turf/open/floor/almayer/red/north,
-/area/almayer/maint/upper/u_a_p)
 "tFO" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/almayer/red/north,
@@ -57927,17 +57953,6 @@
 "tTC" = (
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"tTD" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/uscm_mre,
-/obj/item/storage/box/uscm_mre,
-/obj/item/book/manual/chef_recipes,
-/obj/structure/sign/safety/coffee{
-	pixel_x = 15;
-	pixel_y = -32
-	},
-/turf/open/floor/prison/kitchen,
-/area/almayer/living/captain_mess)
 "tTG" = (
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -64683,10 +64698,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
-"wvo" = (
-/obj/structure/filingcabinet/documentation/liaison,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "wvu" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/target{
@@ -79354,7 +79365,7 @@ lrq
 vjB
 gIz
 tpn
-eVR
+aaR
 cak
 vrM
 tpn
@@ -80579,7 +80590,7 @@ cmM
 tzd
 tzd
 sgi
-aaA
+aaO
 wSm
 kAL
 xkd
@@ -84242,7 +84253,7 @@ woy
 laO
 nRH
 wIC
-tiF
+aaL
 vAG
 opF
 pDW
@@ -85251,7 +85262,7 @@ gwR
 sTm
 tdT
 qyo
-aay
+aaM
 qwp
 ora
 laO
@@ -85657,7 +85668,7 @@ wjq
 wjq
 rHc
 qyo
-aaz
+aaN
 qwp
 vGA
 uwN
@@ -89303,7 +89314,7 @@ wVW
 awA
 ayr
 awH
-aPD
+aaQ
 asc
 azW
 aqN
@@ -90100,7 +90111,7 @@ cmr
 cmr
 mVA
 agj
-kSH
+aaU
 hvH
 nTA
 kWR
@@ -94192,7 +94203,7 @@ aTE
 aTG
 aVr
 aUC
-tTD
+aaK
 aET
 ngf
 bAH
@@ -99478,7 +99489,7 @@ rdZ
 bCs
 pBG
 rLp
-rtt
+aaG
 pBG
 vpf
 mRU
@@ -101568,7 +101579,7 @@ sPc
 xIQ
 sab
 pQc
-olM
+aaB
 aRy
 aRy
 eXr
@@ -103328,7 +103339,7 @@ xIj
 xIj
 bBH
 fKh
-wvo
+aaJ
 nQA
 nQA
 vEG
@@ -107361,7 +107372,7 @@ jsA
 uqs
 ael
 afK
-ahc
+aaS
 air
 ael
 sgH
@@ -107564,7 +107575,7 @@ sPa
 mSo
 ael
 afL
-ahe
+aaT
 aij
 ael
 xIj
@@ -108467,7 +108478,7 @@ aMO
 qGc
 hxe
 rth
-hXd
+aaD
 guW
 aQM
 rth
@@ -109508,7 +109519,7 @@ bPD
 bYa
 bPD
 jOk
-bNB
+aaz
 tiE
 xGo
 bYu
@@ -113167,7 +113178,7 @@ fnI
 cwo
 scH
 nzO
-kxL
+aay
 hpS
 gyE
 nzt
@@ -114905,7 +114916,7 @@ hSk
 hSk
 uIv
 jWh
-tFJ
+aaI
 wSB
 uBG
 yat
@@ -114984,7 +114995,7 @@ cdm
 bCM
 rbF
 qlz
-fOz
+aaA
 skn
 bTx
 bTx

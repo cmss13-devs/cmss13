@@ -740,8 +740,17 @@
 
 	if(!hull)
 		var/area/area = get_area(src)
-		if(area && area.linked_lz)
-			AddComponent(/datum/component/resin_cleanup)
+		if(area)
+			if(area.linked_lz)
+				AddComponent(/datum/component/resin_cleanup)
+			area.current_resin_count++
+
+/turf/closed/wall/resin/Destroy(force)
+	. = ..()
+
+	if(!hull)
+		var/area/area = get_area(src)
+		area?.current_resin_count--
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER

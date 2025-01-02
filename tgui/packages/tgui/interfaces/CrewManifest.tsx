@@ -58,7 +58,7 @@ export const CrewManifest = (props, context) => {
     });
 
   return (
-    <Window width={500} height={700}>
+    <Window width={550} height={800}>
       <Window.Content className="CrewManifest" scrollable>
         <Section>
           <Input
@@ -118,9 +118,10 @@ export const CrewManifest = (props, context) => {
                   >
                     <TableCell
                       width="50%"
-                      textAlign="center"
+                      textAlign="left"
                       pt="5px"
                       pb="5px"
+                      pl="10px"
                       nowrap
                     >
                       {crew.name}
@@ -138,9 +139,10 @@ export const CrewManifest = (props, context) => {
                     <TableCell
                       textAlign="right"
                       width="5%"
-                      pr="3%"
+                      pr="5px"
                       pt="5px"
                       pb="5px"
+                      pl="10px"
                     >
                       <Tooltip content={crew.is_active}>
                         <Icon

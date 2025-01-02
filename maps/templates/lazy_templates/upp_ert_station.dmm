@@ -622,7 +622,6 @@
 /area/adminlevel/ert_station/upp_station)
 "lg" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";

@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added a maplint for duplicate identical platforms"
+  - maptweak: "Fixed duplicate platforms on CORSAT, Desert_Dam, Fiorina, Kutjevo, Hybrisa, and the UPP ERT station"

@@ -43,9 +43,6 @@
 	icon_state = "medical"
 	item_state = "medical"
 
-
-
-
 //REBREATHER
 
 /obj/item/clothing/mask/rebreather

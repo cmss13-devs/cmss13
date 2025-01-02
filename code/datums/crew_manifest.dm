@@ -64,6 +64,11 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 				department_name = department
 				break
 
+		// Assign to department if rank matches or fallback for unrecognized rank
+			if(rank in jobs || isnull(department_name))
+				department_name = department
+				break
+
 		if(department_name)
 			if(!data[department_name])
 				data[department_name] = list()

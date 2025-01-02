@@ -11,17 +11,19 @@ $departmental-colors: (
   'Echo': #49ad70,
   'Foxtrot': #9b6546,
   'Intel': #06923a,
-  'Security': #991818,
+  'Security': #a82828,
   'Engineering': #c67519,
   'Requisitions': #9b724d,
-  'Medical': #2d7c44,
+  'Medical': #379c54,
   'Miscellaneous': #9c9c9c,
 );
 
 $status-colors: (
   'active': colors.$green,
-  'inactive': colors.$yellow,
-  'incarcerated': colors.$orange,
+  'inactive': colors.$orange,
+  'ssd': colors.$yellow,
+  'unfit': colors.$pink,
+  'disabled': colors.$grey,
   'deceased': colors.$red,
 );
 

@@ -198,22 +198,24 @@
 	products = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 20,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
+		/obj/item/storage/fancy/cigarettes/spirit = 15,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 15,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
 		/obj/item/storage/fancy/cigarettes/wypacket = 15,
 		/obj/item/storage/fancy/cigarettes/trading_card = 15,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 		/obj/item/storage/fancy/cigarettes/blackpack = 10,
 		/obj/item/storage/fancy/cigar/tarbacks = 5,
-
 		/obj/item/storage/box/matches = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo = 5,
-
 	)
 
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
+		/obj/item/storage/fancy/cigarettes/spirit = 50,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 50,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
 		/obj/item/storage/fancy/cigarettes/wypacket = 30,
 		/obj/item/storage/fancy/cigarettes/trading_card = 35,
@@ -223,7 +225,6 @@
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
-
 	)
 
 /obj/structure/machinery/vending/security
@@ -343,6 +344,15 @@
 	products = list(/obj/item/tool/kitchen/tray = 8,/obj/item/tool/kitchen/utensil/fork = 6,/obj/item/tool/kitchen/knife = 3,/obj/item/reagent_container/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2,/obj/item/reagent_container/food/condiment/saltshaker = 4,/obj/item/reagent_container/food/condiment/peppermill = 4,/obj/item/reagent_container/food/condiment/enzyme = 1,/obj/item/reagent_container/food/condiment = 8)
 	contraband = list(/obj/item/tool/kitchen/utensil/spoon = 2,/obj/item/tool/kitchen/utensil/knife = 2,/obj/item/tool/kitchen/rollingpin = 2, /obj/item/tool/kitchen/knife/butcher = 2)
 
+/obj/structure/machinery/vending/dinnerware/yautja
+	name = "dinnerplate dispenser"
+	desc = "A kitchen and restaurant equipment vendor."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	hacking_safety = TRUE
+
+/obj/structure/machinery/vending/dinnerware/yautja/checking_id()
+	return FALSE
+
 /obj/structure/machinery/vending/sovietsoda
 	name = "\improper BODA"
 	desc = "An old sweet water vending machine, how did this end up here?"
@@ -442,7 +452,7 @@
 		/obj/item/tool/pen = 10,
 		/obj/item/tool/pen/blue = 10,
 		/obj/item/tool/pen/red = 10,
-		/obj/item/tool/pen/fountain = 3,
+		/obj/item/tool/pen/multicolor/fountain = 3,
 		/obj/item/storage/fancy/cigarettes/trading_card = 20,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 50,
@@ -473,7 +483,7 @@
 		/obj/item/tool/pen = 2,
 		/obj/item/tool/pen/blue = 2,
 		/obj/item/tool/pen/red = 2,
-		/obj/item/tool/pen/fountain = 30,
+		/obj/item/tool/pen/multicolor/fountain = 30,
 		/obj/item/storage/fancy/cigarettes/trading_card = 30,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 5,

@@ -30,6 +30,13 @@
 "ae" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
+"af" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave/yautja{
+	pixel_y = 7
+	},
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
 "ag" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt,
@@ -46,10 +53,30 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/research)
+"aj" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table,
+/obj/structure/machinery/juicer/yautja{
+	pixel_x = -11;
+	pixel_y = 8
+	},
+/obj/item/stack/yautja_rope{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
 "ak" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "al" = (
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
+"am" = (
+/obj/structure/closet/yautja,
+/obj/item/tool/wirecutters/yautja,
+/obj/item/tool/crowbar/yautja,
+/obj/item/tool/wrench/yautja,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "an" = (
@@ -132,6 +159,12 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
+"aB" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 8
+	},
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
 "aC" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -175,6 +208,10 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
+"aI" = (
+/obj/structure/xenoautopsy/tank/broken/yautja,
+/turf/open/floor/whitepurple/northeast,
+/area/lv624/lazarus/research)
 "aJ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -195,6 +232,9 @@
 	id = "science_blast";
 	name = "Science Wing Lockdown";
 	pixel_x = 25
+	},
+/obj/structure/showcase/yautja{
+	dir = 8
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
@@ -242,6 +282,10 @@
 "aQ" = (
 /obj/item/clothing/glasses/regular,
 /turf/open/floor/white,
+/area/lv624/lazarus/research)
+"aR" = (
+/obj/structure/xenoautopsy/tank/hugger/yautja,
+/turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aS" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -425,7 +469,7 @@ ao
 ab
 as
 ak
-ec
+af
 ab
 ao
 ao
@@ -442,7 +486,7 @@ aq
 ar
 gM
 aO
-aE
+aj
 ar
 aW
 aX
@@ -453,7 +497,7 @@ aa
 (4,1,1) = {"
 aa
 ai
-al
+aI
 ax
 al
 aG
@@ -470,13 +514,13 @@ aa
 (5,1,1) = {"
 aa
 ai
-al
+aR
 al
 aD
 ar
-al
+aB
 ak
-al
+am
 ar
 aY
 aX

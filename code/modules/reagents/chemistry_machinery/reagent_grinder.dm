@@ -152,7 +152,7 @@
 			var/anything = 0
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
 				anything = 1
-				beaker_contents += "[R.volume] - [R.name] <A href='?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
+				beaker_contents += "[R.volume] - [R.name] <A href='byond://?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='byond://?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
 			if(!anything)
 				beaker_contents += "Nothing<br>"
 
@@ -163,14 +163,14 @@
 	[beaker_contents]<hr>
 	"}
 		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
-			dat += "<A href='?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
-			dat += "<A href='?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
 		if(LAZYLEN(holdingitems) > 0)
-			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
 		if(beaker)
-			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
 		if(!linked_storage && tether_range > 0)
-			dat += "<A href='?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
 	else
 		dat += "Please wait..."
 	show_browser(user, "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")

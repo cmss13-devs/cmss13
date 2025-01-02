@@ -599,7 +599,6 @@
 		burn_amount *= 0.5
 
 	apply_damage(burn_amount, BURN)
-	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
 	updatehealth()
 	return TRUE
 

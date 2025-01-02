@@ -1639,7 +1639,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Yz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/clf{
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/prison_station/pirate_note/clfship,

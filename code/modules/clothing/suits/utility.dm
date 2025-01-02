@@ -61,7 +61,7 @@
 
 /obj/item/clothing/suit/fire/firefighter
 	icon_state = "firesuit"
-	item_state = "firefighter"
+	item_state = "fire_suit"
 
 /*
  * Bomb protection
@@ -169,6 +169,8 @@
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.90

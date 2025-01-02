@@ -1,7 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "hud icon for loader"
-  - rscadd: "minimap/orbit icons for loader and spotter"
-  - bugfix: "upp political commisar having incorrect minimap/orbit icon"
-  - bugfix: "k9 handler pamphlet making all corpsmen have minimap/orbit icon of k9 handler instead of corpsman one"

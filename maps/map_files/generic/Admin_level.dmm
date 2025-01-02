@@ -18,6 +18,11 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/space/basic,
 /area/space)
+"af" = (
+/turf/closed/wall/almayer/outer{
+	name = "reinforced hull"
+	},
+/area/space)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -26,6 +31,15 @@
 	},
 /turf/open/floor/tdome/northeast,
 /area/tdome)
+"ah" = (
+/turf/open/floor/plating,
+/area/space)
+"ai" = (
+/obj/structure/machinery/cm_vending/sorted/medical/tutorial{
+	invisibility = 255
+	},
+/turf/open/floor/plating,
+/area/space)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
@@ -33,6 +47,9 @@
 /area/adminlevel/ert_station)
 "ak" = (
 /turf/closed/wall/almayer/outer,
+/area/tdome/tdome1)
+"al" = (
+/turf/open/floor/plating,
 /area/tdome/tdome1)
 "an" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -378,12 +395,6 @@
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
-"kg" = (
-/obj/structure/machinery/cm_vending/sorted/medical/tutorial{
-	invisibility = 255
-	},
-/turf/open/floor/plating,
-/area/space)
 "kn" = (
 /obj/docking_port/stationary/emergency_response/idle_port3,
 /turf/open/floor/plating,
@@ -1204,9 +1215,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
-"Hl" = (
-/turf/open/floor/plating,
-/area/space)
 "HL" = (
 /obj/structure/sign/catclock{
 	pixel_x = 32
@@ -1986,9 +1994,6 @@
 "YP" = (
 /turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
-"YR" = (
-/turf/open/floor/plating,
-/area/tdome/tdome1)
 "YU" = (
 /turf/closed/wall,
 /area/adminlevel/ert_station)
@@ -2011,11 +2016,6 @@
 /obj/item/storage/box/monkeycubes,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/ert_station)
-"Zi" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/space)
 "Zp" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy,
@@ -7434,7 +7434,7 @@ aa
 aC
 aa
 ak
-YR
+al
 Ee
 Ee
 Ee
@@ -8653,11 +8653,11 @@ as
 as
 TT
 as
-Zi
-Zi
-Zi
-Zi
-Zi
+af
+af
+af
+af
+af
 aa
 aC
 aa
@@ -8805,11 +8805,11 @@ as
 as
 TT
 as
-Zi
-Hl
-Hl
-Hl
-Zi
+af
+ah
+ah
+ah
+af
 aa
 aC
 aa
@@ -8957,11 +8957,11 @@ as
 as
 TT
 as
-Zi
-Hl
-kg
-Hl
-Zi
+af
+ah
+ai
+ah
+af
 aa
 aC
 aa
@@ -9109,11 +9109,11 @@ as
 as
 TT
 as
-Zi
-Hl
-Hl
-Hl
-Zi
+af
+ah
+ah
+ah
+af
 aa
 aC
 aa
@@ -9261,11 +9261,11 @@ as
 as
 TT
 as
-Zi
-Zi
-Zi
-Zi
-Zi
+af
+af
+af
+af
+af
 aa
 aC
 aa

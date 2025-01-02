@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Added scaling to the plasma cost of basic resin constructions when an area is at least 40% saturated."
+  - admin: "Niche messaging for sealing off dead bodies now only applies to revivable bodies"
+  - refactor: "Refactored some resin construction code"

@@ -199,6 +199,7 @@ img {
 body.dark {
 	background-color: #131313;
 	color: #b2c4dd;
+	scrollbar-color: #3b3b3b #1c1c1c;
 	scrollbar-base-color: #1c1c1c;
 	scrollbar-face-color: #3b3b3b;
 	scrollbar-3dlight-color: #252525;

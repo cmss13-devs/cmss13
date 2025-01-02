@@ -98,9 +98,11 @@
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
+	var/turf/my_turf = get_turf(src)
+
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
-		A.forceMove(get_turf(loc))
+		A.forceMove(my_turf)
 		A.acid_damage = 0 //Reset the acid damage
 		if(ismob(A))
 			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
@@ -109,8 +111,8 @@
 		if(isobj(A))
 			var/obj/O = A
 			if(O.unacidable)
-				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
+				O.forceMove(my_turf)
+				O.throw_atom(pick(RANGE_TURFS(1, src)), 1, SPEED_FAST)
 
 	. = ..(cause)
 

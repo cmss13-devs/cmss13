@@ -17,12 +17,18 @@
 			hud_icon_state = "teamleader"
 		if(JOB_TWE_RMC_MARKSMAN)
 			hud_icon_state = "marksman"
+		if(JOB_TWE_RMC_MEDIC)
+			hud_icon_state = "medic"
 		if(JOB_TWE_RMC_RIFLEMAN)
 			hud_icon_state = "rifleman"
 		if(JOB_TWE_RMC_SMARTGUNNER)
 			hud_icon_state = "smartgunner"
 		if(JOB_TWE_RMC_BREACHER)
 			hud_icon_state = "breacher"
+		if(JOB_TWE_RMC_CAPTAIN)
+			hud_icon_state = "commander"
+		if(JOB_TWE_RMC_MAJOR)
+			hud_icon_state = "major"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
 

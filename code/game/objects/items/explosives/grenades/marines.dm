@@ -936,3 +936,11 @@
 	burn_level = BURN_LEVEL_TIER_8
 	radius = 3
 	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/nerve_gas/xeno/rmc
+	name = "\improper R2175/CN20 grenade"
+	desc = "A small grenade containing a vial of deadly nerve gas. Usually knocks out the targets for long enough to allow RMCs to take them out. You sense your Drill Instructor's screaming in the back of your head, mentioning something about a gas mask. It is set to detonate in 3.5 seconds."
+	icon_state = "rmc_grenade_gas"
+	det_time = 35
+	item_state = "grenade_smoke"//temp icon
+	underslug_launchable = TRUE

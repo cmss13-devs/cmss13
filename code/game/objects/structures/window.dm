@@ -252,6 +252,7 @@
 			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
 
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 		return
 
 	if(W.flags_item & NOBLUDGEON) return
@@ -296,7 +297,7 @@
 				update_nearby_icons()
 				step(src, get_dir(user, src))
 		healthcheck(1, 1, 1, user, W)
-		..()
+		return ..()
 	return
 
 /obj/structure/window/proc/is_full_window()
@@ -673,6 +674,11 @@
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
 	opacity = TRUE
 
+/obj/structure/window/framed/colony/reinforced/yautja
+	name = "alien reinforced window"
+	icon_state = "pred_window0"
+	basestate = "pred_window"
+
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
@@ -684,6 +690,10 @@
 	health = 1000000 //Failsafe, shouldn't matter
 
 
+/obj/structure/window/framed/colony/reinforced/hull/yautja
+	name = "alien hull window"
+	icon_state = "pred_window0"
+	basestate = "pred_window"
 
 //Chigusa windows
 

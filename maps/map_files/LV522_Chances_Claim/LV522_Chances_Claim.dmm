@@ -8481,12 +8481,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
-"exZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/lv522/oob)
 "eym" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -10318,7 +10312,7 @@
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
 	pixel_x = 5;
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
@@ -32646,7 +32640,7 @@
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
 	pixel_x = 5;
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrownfull2,
@@ -51089,7 +51083,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-exZ
+tiQ
 tiQ
 tiQ
 vtc

@@ -153,7 +153,7 @@
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return
-	..()
+	. = ..()
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -161,6 +161,9 @@
 	desc = "A water tank"
 	icon_state = "watertank"
 	chemical = "water"
+
+/obj/structure/reagent_dispensers/watertank/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
@@ -371,6 +374,9 @@
 	if(!reinforced)
 		reagents.source_mob = flame_cause_data?.weak_mob
 		explode()
+
+/obj/structure/reagent_dispensers/fueltank/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/reagent_dispensers/fueltank/gas
 	name = "gastank"

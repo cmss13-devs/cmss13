@@ -72,6 +72,7 @@
 		/obj/item/clothing/under/colonist/workwear/khaki,
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
+		/obj/item/clothing/under/colonist/workwear/blue,
 	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -85,6 +86,8 @@
 		/obj/item/clothing/suit/storage/bomber,
 		/obj/item/clothing/suit/storage/bomber/alt,
 		/obj/item/clothing/suit/storage/snow_suit/liaison,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt,
 		/obj/item/clothing/suit/storage/labcoat,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
@@ -123,6 +126,8 @@
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/head/beret/cm/black/civilian,
 		/obj/item/clothing/head/beret/cm/white/civilian,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat,
+		/obj/item/clothing/head/hybrisa/synth_detective_hat/alt,
 	)
 
 /datum/equipment_preset/uscm_ship/liaison/New()
@@ -452,7 +457,7 @@
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer, /obj/item/clothing/suit/storage/jacket/marine/dress)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
@@ -524,6 +529,7 @@
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+		/obj/item/clothing/suit/storage/jacket/marine/dress,
 	)
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)

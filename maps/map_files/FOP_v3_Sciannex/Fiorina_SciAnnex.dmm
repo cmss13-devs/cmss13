@@ -19,6 +19,14 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
+"aad" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzII)
+"aae" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -67146,7 +67154,7 @@ fAf
 nZB
 nZB
 nZB
-fAf
+aad
 nZB
 nZB
 nZB
@@ -83183,7 +83191,7 @@ nGZ
 nGZ
 qaL
 fDJ
-fDJ
+aae
 uYi
 cUd
 cUd

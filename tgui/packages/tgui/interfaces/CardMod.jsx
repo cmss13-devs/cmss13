@@ -18,9 +18,7 @@ export const CardMod = (props) => {
   return (
     <Window width={450} height={520} resizable>
       <Window.Content scrollable>
-        <Box>
-          {tab2 === 1 && <CardContent />}
-        </Box>
+        <Box>{tab2 === 1 && <CardContent />}</Box>
       </Window.Content>
     </Window>
   );

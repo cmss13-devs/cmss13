@@ -1944,7 +1944,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					return
 
 				if("youngblood")
-					if(!owner.check_whitelist_status(WHITELIST_PREDATOR))
+					if(owner.check_whitelist_status(WHITELIST_PREDATOR))
 						return
 
 					pred_picker.tgui_interact(user)

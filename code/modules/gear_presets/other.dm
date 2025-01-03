@@ -1,6 +1,7 @@
 /datum/equipment_preset/other
 	name = "Other"
 	languages = list(LANGUAGE_ENGLISH)
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 
 //*****************************************************************************************************/
 

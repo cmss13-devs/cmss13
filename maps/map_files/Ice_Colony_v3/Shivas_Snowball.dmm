@@ -17,6 +17,12 @@
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
+"aaf" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/oob)
 "aag" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -51,6 +57,12 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
+"aam" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "aan" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -27802,7 +27814,7 @@ cQW
 cQW
 cQW
 cQW
-cQW
+aam
 cQW
 cQW
 cQW
@@ -54238,7 +54250,7 @@ puZ
 puZ
 puZ
 puZ
-puZ
+aaf
 "}
 (187,1,1) = {"
 acH

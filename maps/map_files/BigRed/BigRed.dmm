@@ -557,6 +557,12 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
+"acc" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -576,12 +582,24 @@
 "ach" = (
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"aci" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "acj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"ack" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39908,7 +39926,7 @@ aao
 aao
 aao
 aao
-aao
+ack
 aao
 aao
 aao
@@ -46268,7 +46286,7 @@ bie
 bie
 bie
 bmM
-bie
+aci
 bie
 bie
 bie
@@ -58283,7 +58301,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+acc
 jrD
 jrD
 jrD

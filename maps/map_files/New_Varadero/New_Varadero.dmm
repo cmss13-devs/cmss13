@@ -84,6 +84,25 @@
 /obj/structure/pipes/unary/freezer/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
+"aap" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"aaq" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"aar" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -9772,12 +9791,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "hRs" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "hRv" = (
@@ -35387,7 +35401,7 @@ qul
 qul
 qul
 qHc
-mJe
+aaq
 xCn
 xCn
 oPQ
@@ -54238,7 +54252,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+aap
 wUU
 "}
 (132,1,1) = {"
@@ -56458,7 +56472,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aar
 wlB
 wlB
 wlB

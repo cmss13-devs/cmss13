@@ -457,6 +457,12 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
+"acc" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -787,6 +793,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -26205,7 +26217,7 @@ aPf
 aKf
 aKf
 aVK
-aKb
+adl
 aKb
 hUs
 hUs
@@ -50383,7 +50395,7 @@ wpw
 wpw
 wpw
 lBw
-wpw
+acc
 wpw
 ajY
 ifF

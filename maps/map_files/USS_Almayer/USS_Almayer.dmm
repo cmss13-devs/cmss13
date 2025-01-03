@@ -39932,7 +39932,8 @@
 /obj/item/clipboard,
 /obj/item/storage/lockbox/loyalty,
 /obj/item/storage/briefcase,
-/obj/item/storage/box/wycaps/obj/item/reagent_container/spray/pepper,
+/obj/item/storage/box/wycaps,
+/obj/item/reagent_container/spray/pepper,
 /obj/item/device/eftpos{
 	eftpos_name = "Weyland-Yutani EFTPOS scanner"
 	},

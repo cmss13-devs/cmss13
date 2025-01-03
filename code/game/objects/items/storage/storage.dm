@@ -271,8 +271,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		if(!GLOB.item_storage_box_cache[isb_index])
-			var/datum/item_storage_box/box = new()
+		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache[isb_index]
+		if(QDELETED(ISB))
+			ISB = new()
 			var/matrix/M_start = matrix()
 			var/matrix/M_continue = matrix()
 			var/matrix/M_end = matrix()
@@ -280,13 +281,12 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			M_continue.Scale((endpoint-startpoint-stored_cap_width*2)/32,1)
 			M_continue.Translate(startpoint+stored_cap_width+(endpoint-startpoint-stored_cap_width*2)/2 - 16,0)
 			M_end.Translate(endpoint-stored_cap_width,0)
-			box.start.apply_transform(M_start)
-			box.continued.apply_transform(M_continue)
-			box.end.apply_transform(M_end)
-			box.index = isb_index
-			GLOB.item_storage_box_cache[isb_index] = box
+			ISB.start.apply_transform(M_start)
+			ISB.continued.apply_transform(M_continue)
+			ISB.end.apply_transform(M_end)
+			ISB.index = isb_index
+			GLOB.item_storage_box_cache[isb_index] = ISB
 
-		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache[isb_index]
 		stored_ISB = ISB
 
 		storage_start.overlays += ISB.start
@@ -520,17 +520,20 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (storage_slots)
 		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, mob/user)
 	if(!istype(W))
 		return FALSE
 
-	_item_removal(W, new_location)
+	_item_removal(W, new_location, user)
 	return TRUE
 
 ///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
-/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location, mob/user)
 	for(var/mob/M in can_see_content())
 		if(M.client)
 			M.client.remove_from_screen(W)
@@ -553,6 +556,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		W.maptext = ""
 	W.on_exit_storage(src)
 	update_icon()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 	W.mouse_opacity = initial(W.mouse_opacity)
 
 //This proc is called when you want to place an item into the storage item.
@@ -652,7 +658,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	storage_close(user)
 	for (var/obj/item/I in contents)
-		remove_from_storage(I, T)
+		remove_from_storage(I, T, user)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 	if (use_sound)
@@ -709,7 +715,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		item_obj = contents[length(contents)]
 	if(!istype(item_obj))
 		return
-	remove_from_storage(item_obj, tile)
+	remove_from_storage(item_obj, tile, user)
 	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
@@ -736,7 +742,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
-						handle_item_insertion(new_handful, TRUE,user)
+						handle_item_insertion(new_handful, TRUE, user)
 						update_icon(-transferred_handfuls)
 					else
 						break
@@ -766,7 +772,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	for(var/obj/item/new_item in origin_storage)
 		if(!has_room(new_item))
 			break
-		origin_storage.remove_from_storage(new_item)
+		origin_storage.remove_from_storage(new_item, user)
 		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)
@@ -838,8 +844,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	QDEL_NULL(storage_start)
 	QDEL_NULL(storage_continue)
 	QDEL_NULL(storage_end)
-	QDEL_NULL(stored_ISB)
 	QDEL_NULL(closer)
+	stored_ISB = null
 	return ..()
 
 /obj/item/storage/emp_act(severity)

@@ -192,6 +192,10 @@
 	if(!mob)
 		return
 
+	if(istype(mob, /mob/new_player))
+		var/mob/new_player/new_player = mob
+		new_player.initialize_lobby_screen()
+
 	for(var/I in mob.open_uis)
 		var/datum/nanoui/ui = I
 		if(!QDELETED(ui))
@@ -232,7 +236,8 @@
 	if(split_width - desired_width < 240)
 		desired_width = split_width - 240
 
-	if (text2num(map_size[1]) == desired_width)
+	if (text2num(map_size[1]) == desired_width || split_width == 0)
+		// If split_width is 0, it likely means they are minimized and we don't know what the window size would be
 		// Nothing to do
 		return
 

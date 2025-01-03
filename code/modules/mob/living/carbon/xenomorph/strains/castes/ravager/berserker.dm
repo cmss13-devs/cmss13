@@ -249,8 +249,8 @@
 
 	// Fling
 	var/facing = get_dir(clothesline_user, target)
-	var/turf/turf = clothesline_user.loc
-	var/turf/temp = clothesline_user.loc
+	var/turf/turf = get_turf(clothesline_user)
+	var/turf/temp = turf
 
 	for (var/step in 0 to fling_distance-1)
 		temp = get_step(turf, facing)

@@ -106,6 +106,9 @@
 
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
+	if (!A)
+		return
+
 	var/mob/living/carbon/xenomorph/acidball_user = owner
 	if (!acidball_user.check_state() || acidball_user.action_busy)
 		return

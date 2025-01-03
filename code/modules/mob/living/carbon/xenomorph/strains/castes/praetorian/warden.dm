@@ -327,8 +327,8 @@
 	warden.visible_message(SPAN_XENODANGER("[warden] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
 	warden.emote("roar")
 
-	var/throw_target_turf = get_step(warden.loc, facing)
-	var/turf/behind_turf = get_step(warden.loc, reversefacing)
+	var/throw_target_turf = get_step(warden, facing)
+	var/turf/behind_turf = get_step(warden, reversefacing)
 	if(!(behind_turf.density))
 		throw_target_turf = behind_turf
 

@@ -61,29 +61,35 @@ let bigButtons = [
 	{
 		name: "Changelog",
 		command: "Changelog",
-		class: "changelog"
+		class: "changelog",
+		icon: "list-ul"
 	},
 	{
 		name: "Rules",
-		command: "rules"
+		command: "rules",
+		icon: "scale-balanced"
 	},
 	{
 		name: "Wiki",
-		command: "wiki"
+		command: "wiki",
+		icon: "book"
 	},
 	{
 		name: "Forum",
-		command: "forum"
+		command: "forum",
+		icon: "envelope"
 	},
 	{
 		name: "Submit Bug",
 		command: "submit-bug",
-		class: "bug-button"
+		class: "bug-button",
+		icon: "bug"
 	},
 	{
 		name: "Discord",
 		command: "discord",
-		class: "discord-button"
+		class: "discord-button",
+		icon: "comments"
 	}
 ]
 
@@ -1051,10 +1057,19 @@ for(var key in bigButtons) {
 	if(button.class) {
 		buttonElement.className = buttonElement.className + " " + button.class;
 	}
-	buttonElement.textContent = button.name;
 	buttonElement.onclick = function() {
 		Byond.command(button.command)
 	};
+
+	if(button.icon) {
+		let icon = document.createElement("i");
+		icon.className = "fa-solid fa-" + button.icon
+
+		buttonElement.appendChild(icon)
+	}
+
+	let text = document.createTextNode(button.name);
+	buttonElement.appendChild(text);
 
 	topButtons.appendChild(buttonElement);
 }

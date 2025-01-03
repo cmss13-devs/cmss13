@@ -89,6 +89,10 @@ img {
 	flex-grow: 1;
 }
 
+i {
+	padding-right: 3px;
+}
+
 .discord-button {
 	background-color: #7289da;
 }

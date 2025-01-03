@@ -388,6 +388,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),

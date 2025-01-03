@@ -868,8 +868,8 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
-	icon_state = "wy_joliet_shopsteward"
-	worn_state = "wy_joliet_shopsteward"
+	icon_state = "steward"
+	worn_state = "steward"
 	has_sensor = UNIFORM_HAS_SENSORS
 
 /obj/item/clothing/under/tshirt
@@ -1091,6 +1091,10 @@
 /obj/item/clothing/under/rank/frontier
 	name = "\improper frontier jumpsuit"
 	desc = "A cargo jumpsuit dressed down for full range of motion and state-of-the-art frontier temperature control. It's the best thing an engineer can wear in the Outer Veil."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	icon_state = "cargo_light"
 	worn_state = "cargo_light"
 	displays_id = FALSE

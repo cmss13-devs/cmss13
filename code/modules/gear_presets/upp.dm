@@ -17,6 +17,9 @@
 	scaled = FALSE
 	faction_menu = FACTION_UPP
 	minimum_playtime_as_job = 0
+	total_positions = 8
+	spawn_positions = 8
+	allow_additional = 1
 
 	gear_preset = /datum/equipment_preset/upp/soldier
 
@@ -99,10 +102,15 @@
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 
+/datum/job/antag/upp/rifleman/set_spawn_positions(count)
+	spawn_positions = max((floor(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)
+
 /datum/job/antag/upp/rifleman
 	title = JOB_UPP
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/upp/soldier
+	total_positions = -1
+	spawn_positions = -1
 
 /datum/equipment_preset/upp/soldier/dressed
 	name = "UPP Soldier"
@@ -278,7 +286,27 @@
 	title = JOB_UPP_MEDIC
 	gear_preset = /datum/equipment_preset/upp/medic
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	total_positions = 16
+	spawn_positions = 16
+	allow_additional = 1
 
+/datum/job/antag/upp/cryo/medic/get_total_positions(latejoin=0)
+	var/slots = medic_slot_formula(get_total_marines())
+
+	if(slots <= total_positions_so_far)
+		slots = total_positions_so_far
+	else
+		total_positions_so_far = slots
+
+	if(latejoin)
+		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+			if(target_squad)
+				target_squad.roles_cap[title] = slots
+
+/datum/job/antag/upp/cryo/medic/set_spawn_positions(count)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[title] = medic_slot_formula(count)
 
 /datum/equipment_preset/upp/medic
 	name = "UPP Medic (Cryo)"
@@ -477,10 +505,34 @@
 	)
 
 //*****************************************************************************************************/
+
 /datum/job/antag/upp/sapper
 	title = JOB_UPP_ENGI
 	gear_preset = /datum/equipment_preset/upp/sapper
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	total_positions = 12
+	spawn_positions = 12
+	allow_additional = 1
+
+/datum/job/antag/upp/sapper/get_total_positions(latejoin=0)
+	var/slots = engi_slot_formula(get_total_marines())
+
+	if(slots <= total_positions_so_far)
+		slots = total_positions_so_far
+	else
+		total_positions_so_far = slots
+
+	if(latejoin)
+		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+			if(target_squad)
+				target_squad.roles_cap[title] = slots
+
+	return (slots*4)
+
+/datum/job/antag/upp/sapper/set_spawn_positions(count)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[title] = engi_slot_formula(count)
 
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper (Cryo)"
@@ -785,6 +837,26 @@
 	title = JOB_UPP_SPECIALIST
 	gear_preset = /datum/equipment_preset/upp/machinegunner
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	total_positions = 4
+	spawn_positions = 4
+	allow_additional = 1
+	scaled = 1
+
+/datum/job/antag/upp/machinegunner/get_total_positions(latejoin = 0)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = spec_slot_formula(get_total_marines())
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
+
+/datum/job/antag/upp/machinegunner/set_spawn_positions(count)
+	spawn_positions = spec_slot_formula(count)
+
 
 /datum/equipment_preset/upp/machinegunner
 	name = "UPP Machinegunner (Cryo)"
@@ -935,6 +1007,8 @@
 	title = JOB_UPP_LEADER
 	gear_preset = /datum/equipment_preset/upp/leader
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	total_positions = 4
+	spawn_positions = 4
 
 /datum/equipment_preset/upp/leader
 	name = "UPP Squad Leader (Cryo)"
@@ -1135,6 +1209,30 @@
 //  Support Roles    //
 //=================//
 
+/datum/job/antag/upp/military_police
+	title = JOB_UPP_POLICE
+	gear_preset = /datum/equipment_preset/upp/military_police
+	selection_class = "job_mp"
+	total_positions = 5
+	spawn_positions = 5
+	allow_additional = 1
+	scaled = 1
+
+/datum/job/antag/upp/military_police/get_total_positions(latejoin = 0)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = mp_slot_formula(get_total_marines())
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
+
+/datum/job/antag/upp/military_police/set_spawn_positions(count)
+	return mp_slot_formula(count)
+
 /datum/equipment_preset/upp/military_police
 	name = "UPP Military Police (Cryo)"
 
@@ -1144,11 +1242,6 @@
 	role_comm_title = "MP"
 	minimap_icon = "upp_mp"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
-
-/datum/job/antag/upp/military_police
-	title = JOB_UPP_POLICE
-	gear_preset = /datum/equipment_preset/upp/military_police
-	selection_class = "job_mp"
 
 /datum/equipment_preset/upp/military_police/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -1317,6 +1410,25 @@
 	title = JOB_UPP_LT_DOKTOR
 	selection_class = "job_cmo"
 	gear_preset = /datum/equipment_preset/upp/doctor
+	total_positions = 5
+	spawn_positions = 5
+	allow_additional = 1
+	scaled = 1
+
+/datum/job/antag/upp/doctor/get_total_positions(latejoin = 0)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = doc_slot_formula(get_total_marines())
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
+
+/datum/job/antag/upp/doctor/set_spawn_positions(count)
+	spawn_positions = doc_slot_formula(count)
 
 /datum/equipment_preset/upp/doctor
 	name = "UPP Doktor (Cryo)"
@@ -1487,7 +1599,25 @@
 	title = JOB_UPP_SUPPLY
 	selection_class = "job_ct"
 	gear_preset = /datum/equipment_preset/upp/supply
+	total_positions = 2
+	spawn_positions = 2
+	allow_additional = 1
+	scaled = 1
 
+/datum/job/antag/upp/supply/get_total_positions(latejoin = 0)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = ct_slot_formula(get_total_marines())
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
+
+/datum/job/antag/upp/supply/set_spawn_positions(count)
+	return ct_slot_formula(count)
 
 /datum/equipment_preset/upp/supply
 	name = "UPP Logistics Technician (Cryo)"
@@ -1592,6 +1722,31 @@
 //====================//
 //  Field Officers  //
 //================//
+
+/datum/job/antag/upp/officer //this is placeholder for stuff that is supposed to be the same for all officers
+	title = JOB_UPP_SRLT_OFFICER
+	selection_class = "job_command"
+	gear_preset = /datum/equipment_preset/upp/officer
+	total_positions = 4
+	spawn_positions = 4
+	allow_additional = 1
+	scaled = FALSE
+
+/datum/job/antag/upp/officer/get_total_positions(latejoin = 0)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = so_slot_formula(get_total_marines())
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
+
+/datum/job/antag/upp/officer/set_spawn_positions(count)
+	return so_slot_formula(count)
+
 /datum/equipment_preset/upp/officer
 	name = "UPP Mladshiy Leytenant (Cryo)"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1602,11 +1757,6 @@
 	role_comm_title = "Lt."
 	minimap_icon = "upp_lt"
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
-
-
-/datum/job/antag/upp/officer //this is placeholder for stuff that is supposed to be the same for all officers
-	title = JOB_UPP_SRLT_OFFICER
-	selection_class = "job_command"
 
 /datum/equipment_preset/upp/officer/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -1623,7 +1773,6 @@
 /datum/equipment_preset/upp/officer/dressed
 	name = "UPP Lieutenant"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 
 /datum/equipment_preset/upp/officer/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -1784,6 +1933,8 @@
 /datum/job/antag/upp/officer/senior
 	title = JOB_UPP_SRLT_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/senior
+	total_positions = 1
+	spawn_positions = 1
 
 /datum/equipment_preset/upp/officer/senior
 	name = "UPP Starshiy Leytenant (Cryo)"
@@ -1942,6 +2093,8 @@
 /datum/job/antag/upp/officer/kapitan
 	title = JOB_UPP_KPT_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/kapitan
+	total_positions = 1
+	spawn_positions = 1
 
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan (Cryo)"
@@ -2315,6 +2468,8 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 	title = JOB_UPP_LTKOL_OFFICER
 	gear_preset = /datum/equipment_preset/upp/officer/flag/podpolkovnik
+	total_positions = 1
+	spawn_positions = 1
 
 
 /datum/equipment_preset/upp/officer/flag/podpolkovnik
@@ -2661,6 +2816,21 @@
 	gear_preset = /datum/equipment_preset/upp/synth
 
 	flags_whitelist =  WHITELIST_SYNTHETIC
+
+/datum/job/antag/upp/synth/get_total_positions(latejoin = 0)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = synth_slot_formula(get_total_marines())
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
+
+/datum/job/antag/upp/synth/set_spawn_positions(count)
+	spawn_positions = synth_slot_formula(count)
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"
@@ -3741,6 +3911,8 @@
 	title = JOB_UPP_COMMISSAR
 	selection_class = "job_cl"
 	gear_preset = /datum/equipment_preset/upp/commissar
+	total_positions = 1
+	spawn_positions = 1
 
 /datum/equipment_preset/upp/commissar
 	name = "UPP Political Commissar (Cryo)"

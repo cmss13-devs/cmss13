@@ -847,6 +847,10 @@
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
+
+	if(!.)
+		return
+
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
 	M.IgniteMob(TRUE)
 	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))

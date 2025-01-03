@@ -198,7 +198,7 @@ export const HairPickerElement = (props: {
         <>
           <Input
             placeholder="Search..."
-            onChange={(_, val) => setSearch(val)}
+            onChange={(_, val) => setSearch(val.toLowerCase())}
           />
           {color && (
             <Button onClick={() => (setColor ? setColor(action) : null)}>
@@ -216,7 +216,10 @@ export const HairPickerElement = (props: {
     >
       <Stack wrap="wrap" height={height}>
         {hair
-          .filter((val) => search.length === 0 || val.name.includes(search))
+          .filter(
+            (val) =>
+              search.length === 0 || val.name.toLowerCase().includes(search),
+          )
           .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map((hair) => (
             <Stack.Item

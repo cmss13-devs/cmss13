@@ -50,6 +50,8 @@
 #define COMSIG_LIMB_SUTURE_CHECK "limb_suture_check"
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
+/// From /datum/element/suturing/proc/suture()
+#define COMSIG_LIMB_FULLY_SUTURED "limb_fully_sutured"
 
 //from /datum/nmtask/mapload/proc/initialize_boundary_contents()
 #define COMSIG_NIGHTMARE_TAINTED_BOUNDS "nightmare_tainted_bounds"

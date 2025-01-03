@@ -1002,7 +1002,6 @@
 	name = "Tutorial (Fed)"
 	underfed = FALSE
 
-
 /datum/equipment_preset/uscm/tutorial_rifleman
 	name = "Tutorial Rifleman"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1013,6 +1012,15 @@
 	skills = /datum/skills/pfc/crafty
 	minimap_icon = "private"
 
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/tutorial_rifleman/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "[random_name(new_human.gender)]"
+	new_human.change_real_name(new_human, mob_name)
+	var/datum/preferences/preferences = new
+	preferences.randomize_appearance(new_human)
+
 /datum/equipment_preset/uscm/tutorial_rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
@@ -1021,3 +1029,22 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
+/datum/equipment_preset/uscm/tutorial_rifleman/mrdummy
+	name = "Tutorial Rifleman (Dummy)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/tutorial_rifleman/mrdummy/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "Dummy"
+	new_human.change_real_name(new_human, mob_name)
+
+/datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc
+	name = "Chief Medical Officer (NPC)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "[random_name(new_human.gender)]"
+	new_human.change_real_name(new_human, mob_name)
+	var/datum/preferences/preferences = new
+	preferences.randomize_appearance(new_human)

@@ -186,6 +186,9 @@
 /obj/item/device/helmet_visor/welding_visor/tanker
 	helmet_overlay = "tanker_weld_visor"
 
+/obj/item/device/helmet_visor/welding_visor/goon
+	helmet_overlay = "goon_weld_visor"
+
 #define NVG_VISOR_USAGE(delta_time) (power_cell.use(power_use * (delta_time ? delta_time : 1)))
 
 /obj/item/device/helmet_visor/night_vision

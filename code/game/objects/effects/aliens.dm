@@ -265,12 +265,12 @@
 
 	stun_duration = 0
 	damage_amount = 0
-	fire_level_to_extinguish = 15
+	fire_level_to_extinguish = 13
 	time_to_live = 2 SECONDS
 	destroy_cades = FALSE
 
 	var/slow_duration = 2 // Is 2 seconds for some reason.
-	var/plasma_amount = 100
+	var/plasma_amount = 80
 
 /obj/effect/xenomorph/spray/plasma/friendly_spray(mob/living/carbon/carbone)
 	if(isxeno(carbone))

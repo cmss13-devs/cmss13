@@ -102,7 +102,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	plasma_cost = 160
-	xeno_cooldown = 3 SECONDS
+	xeno_cooldown = 4 SECONDS
 
 	spray_type = ACID_SPRAY_LINE
 	spray_distance = 6

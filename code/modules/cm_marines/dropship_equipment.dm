@@ -3,7 +3,7 @@
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
 	var/shorthand
@@ -297,6 +297,11 @@
 		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
 	else if (linked_shuttle.id == DROPSHIP_SAIPAN)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_SAIPAN)
+	else if (linked_shuttle.id == DROPSHIP_MORANA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_MORANA)
+	else if (linked_shuttle.id == DROPSHIP_DEVANA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_DEVANA)
+
 
 
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
@@ -462,7 +467,7 @@
 //================= FUEL EQUIPMENT =================//
 
 /obj/structure/dropship_equipment/fuel
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
 
@@ -627,7 +632,7 @@
 /// CAS Dropship weaponry, used for aerial bombardment
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
-	icon = 'icons/obj/structures/props/dropship_equipment64.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
 	bound_height = 64
@@ -836,12 +841,13 @@
 	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
 	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
 	point_cost = 200
+	fire_mission_only = FALSE
 	shorthand = "LCH"
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()

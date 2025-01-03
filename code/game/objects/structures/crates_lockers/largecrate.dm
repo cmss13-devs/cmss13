@@ -74,7 +74,7 @@
 /obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/cow
 	name = "cow crate"
@@ -83,7 +83,7 @@
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/cow(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/goat
 	name = "goat crate"
@@ -92,7 +92,7 @@
 /obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/chick
 	name = "chicken crate"
@@ -103,7 +103,7 @@
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
 			new /mob/living/simple_animal/chick(loc)
-	..()
+	. = ..()
 
 
 // CM largecrates
@@ -236,6 +236,7 @@
 /obj/structure/largecrate/random/barrel
 	name = "blue barrel"
 	desc = "A blue storage barrel."
+	icon = 'icons/obj/structures/barrels.dmi'
 	icon_state = "barrel_blue"
 	var/strap_overlay = "+straps"
 	parts_type = /obj/item/stack/sheet/metal
@@ -273,7 +274,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 /proc/generate_barrel_states()
 	var/list/rbarrel_center_states = list()
-	var/icon/icon = new('icons/obj/structures/crates.dmi')
+	var/icon/icon = new('icons/obj/structures/barrels.dmi')
 	var/list/icon_list = icon_states(icon)
 	for(var/state in icon_list)
 		if(findtext(state,"+cap"))
@@ -338,6 +339,26 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	desc = "A white storage barrel."
 	icon_state = "barrel_white"
 
+/obj/structure/largecrate/random/barrel/medical
+	name = "white barrel"
+	desc = "A white storage barrel."
+	icon_state = "barrel_medical"
+
+/obj/structure/largecrate/random/barrel/black
+	name = "black barrel"
+	desc = "A black storage barrel."
+	icon_state = "barrel_wy"
+
+/obj/structure/largecrate/random/barrel/brown
+	name = "brown barrel"
+	desc = "A brown storage barrel."
+	icon_state = "barrel_tan"
+
+/obj/structure/largecrate/random/barrel/purewhite
+	name = "white barrel"
+	desc = "A white storage barrel."
+	icon_state = "barrel_purewhite"
+
 /obj/structure/largecrate/random/secure
 	name = "secure supply crate"
 	desc = "A secure crate."
@@ -346,7 +367,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 /obj/structure/largecrate/random/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if (!strapped)
-		..()
+		. = ..()
 		return
 
 	if (!W.sharp)

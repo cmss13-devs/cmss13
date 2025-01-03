@@ -3,6 +3,9 @@
 	icon = 'icons/turf/floors/filtration.dmi'
 	icon_state = "filtrationside"
 
+/turf/open/floor/filtrationside/is_plasteel_floor()
+	return FALSE
+
 /turf/open/floor/filtrationside/southwest
 	dir = SOUTHWEST
 
@@ -34,6 +37,10 @@
 /turf/open/floor/coagulation
 	name = "coagulation"
 	icon = 'icons/turf/floors/coagulation.dmi'
+	icon_state = null
+
+/turf/open/floor/coagulation/is_plasteel_floor()
+	return FALSE
 
 /turf/open/floor/coagulation/icon0_0
 	icon_state = "0,0"
@@ -158,7 +165,7 @@
 	return
 
 /obj/structure/filtration/machine_32x64
-	icon = 'icons/obj/structures/props/32x64.dmi'
+	icon = 'icons/obj/structures/props/industrial/32x64.dmi'
 	density = TRUE
 	anchored = TRUE
 	bound_width = 32
@@ -173,7 +180,7 @@
 	return
 
 /obj/structure/filtration/machine_96x96
-	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon = 'icons/obj/structures/props/industrial/96x96.dmi'
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
@@ -190,7 +197,7 @@
 	return
 
 /obj/structure/filtration/machine_64x96
-	icon = 'icons/obj/structures/props/64x96.dmi'
+	icon = 'icons/obj/structures/props/industrial/64x96.dmi'
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
@@ -207,7 +214,7 @@
 	return
 
 /obj/structure/filtration/machine_64x128
-	icon = 'icons/obj/structures/props/64x128.dmi'
+	icon = 'icons/obj/structures/props/industrial/64x128.dmi'
 	//bound_x = 96
 	//bound_y = 96
 	density = TRUE
@@ -227,7 +234,7 @@
 	name = "coagulation arm"
 	desc = "An axel with four sides, made to spin to help filter the water."
 	density = TRUE
-	icon = 'icons/obj/structures/props/coagulation_arm.dmi'
+	icon = 'icons/obj/structures/props/industrial/coagulation_arm.dmi'
 	icon_state = "arm"
 	layer = ABOVE_MOB_LAYER + 0.1
 	bound_width = 96
@@ -237,7 +244,7 @@
 	name = "flocculation arm"
 	desc = "A long metal filtering rod on an axel, made to spin for flocculation."
 	density = TRUE
-	icon = 'icons/obj/structures/props/flacculation_arm.dmi'
+	icon = 'icons/obj/structures/props/industrial/flacculation_arm.dmi'
 	icon_state = "flacculation_arm"
 	bound_height = 32
 	bound_width = 128
@@ -246,13 +253,13 @@
 /obj/structure/filtration/collector_pipes
 	name = "collection pipes"
 	desc = "A series of pipes collecting water from the river to take it to the plant for filtration."
-	icon = 'icons/obj/structures/props/pipes.dmi'
+	icon = 'icons/obj/structures/props/industrial/pipes.dmi'
 	icon_state = "upper_1" //use instances to set the types.
 	bound_height = 32
 	bound_width = 64
 
 /obj/structure/filtration/machine_96x96
-	icon = 'icons/obj/structures/props/96x96.dmi'
+	icon = 'icons/obj/structures/props/industrial/96x96.dmi'
 
 /obj/structure/filtration/machine_96x96/distribution
 	name = "Waste Distribution System"

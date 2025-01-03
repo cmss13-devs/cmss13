@@ -144,10 +144,6 @@ SUBSYSTEM_DEF(ticker)
 
 	REDIS_PUBLISH("byond.round", "type" = "round-start")
 
-	for(var/client/C in GLOB.admins)
-		remove_verb(C, GLOB.roundstart_mod_verbs)
-	GLOB.admin_verbs_minor_event -= GLOB.roundstart_mod_verbs
-
 	return TRUE
 
 /// Try to effectively setup gamemode and start now
@@ -259,9 +255,6 @@ SUBSYSTEM_DEF(ticker)
 	SSatoms.lateinit_roundstart_atoms()
 
 	CHECK_TICK
-
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		INVOKE_ASYNC(np, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc), TRUE)
 
 	setup_economy()
 
@@ -380,7 +373,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(graceful)
 		to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Shutting down...")]</h3>")
-		world.Reboot(FALSE)
+		world.Reboot()
 		return
 
 	if(!delay)
@@ -403,7 +396,7 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Rebooting World. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
-	world.Reboot(TRUE)
+	world.Reboot()
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	if(!GLOB.RoleAuthority)
@@ -425,7 +418,8 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/M = J.spawn_in_player(player)
 		if(istype(M))
 			J.equip_job(M)
-			EquipCustomItems(M)
+			if(player.ckey in GLOB.donator_items)
+				to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
 			if(M.client)
 				var/client/C = M.client
@@ -455,7 +449,9 @@ SUBSYSTEM_DEF(ticker)
 				captainless = FALSE
 			if(player.job)
 				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
-				EquipCustomItems(player)
+				if(player.ckey in GLOB.donator_items)
+					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+
 			if(player.client)
 				var/client/C = player.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)

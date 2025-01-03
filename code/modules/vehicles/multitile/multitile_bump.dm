@@ -258,12 +258,6 @@
 /obj/structure/prop/dam/torii/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
-/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
 /obj/structure/flora/tree/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE

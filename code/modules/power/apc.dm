@@ -161,12 +161,17 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		set_broken()
 
 /obj/structure/machinery/power/apc/Destroy()
+	area.power_light = 0
+	area.power_equip = 0
+	area.power_environ = 0
+	area.power_change()
+
 	if(terminal)
 		terminal.master = null
 		terminal = null
 	QDEL_NULL(cell)
 	area = null
-	. = ..()
+	return ..()
 
 
 // TGUI SHIT \\
@@ -330,6 +335,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut
 /obj/structure/machinery/power/apc/power_change()
+	update_icon()
 	return
 
 /obj/structure/machinery/power/apc/proc/make_terminal()
@@ -428,7 +434,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 									//2 if we need to update the overlays
 	if(!update)
 		return
-	
+
 	set_light(0)
 
 	if(update & 1) //Updating the icon state
@@ -478,7 +484,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
 				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
 				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
-			
+
 			switch(charging)
 				if(APC_NOT_CHARGING)
 					set_light_color(LIGHT_COLOR_RED)
@@ -1334,13 +1340,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				L.on = 1
 				L.broken()
 				sleep(1)
-
-/obj/structure/machinery/power/apc/Destroy()
-	area.power_light = 0
-	area.power_equip = 0
-	area.power_environ = 0
-	area.power_change()
-	. = ..()
 
 /obj/structure/machinery/power/apc/wires_cut
 	icon_state = "apcewires_mapicon"

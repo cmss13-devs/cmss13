@@ -45,10 +45,6 @@
 	stat |= BROKEN
 	update_icon()
 
-/obj/structure/machinery/prop/almayer/computer/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/prop/almayer/computer/update_icon()
 	..()
 	icon_state = initial(icon_state)
@@ -274,7 +270,7 @@
 
 //What is this even doing? Why is it making a new item?
 /obj/structure/machinery/cryobag_recycler/attackby(obj/item/W, mob/user) //Hope this works. Don't see why not.
-	..()
+	. = ..()
 	if (istype(W, /obj/item))
 		if(W.name == "used stasis bag") //possiblity for abuse, but fairly low considering its near impossible to rename something without VV
 			var/obj/item/bodybag/cryobag/R = new /obj/item/bodybag/cryobag //lets give them the bag considering having it unfolded would be a pain in the ass.
@@ -283,7 +279,7 @@
 			qdel(W)
 			user.put_in_hands(R)
 			return TRUE
-	..()
+	. = ..()
 
 /obj/structure/closet/basketball
 	name = "athletic wardrobe"

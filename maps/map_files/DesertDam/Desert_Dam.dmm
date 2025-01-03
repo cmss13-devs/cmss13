@@ -49069,7 +49069,6 @@
 "uKX" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/central_tunnel)
@@ -50301,7 +50300,6 @@
 "xlt" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "xlE" = (

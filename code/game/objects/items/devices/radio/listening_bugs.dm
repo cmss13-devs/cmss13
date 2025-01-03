@@ -1,14 +1,3 @@
-#define DISGUISE_REMOVE "remove disguise"
-#define DISGUISE_RADIO "radio"
-#define DISGUISE_PEN "pen"
-#define DISGUISE_FOUNTAIN_PEN "fountain pen"
-#define DISGUISE_ACCESS_TUNER "access tuner"
-#define DISGUISE_WHISTLE "whistle"
-#define DISGUISE_MASS_SPEC "mass-spectrometer"
-#define DISGUISE_CAMERA "camera"
-#define DISGUISE_ZIPPO "zippo lighter"
-#define DISGUISE_TAPE_RECORDER "tape recorder"
-
 /obj/item/device/radio/listening_bug
 	name = "listening device"
 	desc = "A small, and disguisable, listening device."
@@ -33,6 +22,8 @@
 	/// The ID tag of the device, for identification.
 	var/nametag = "Device"
 	inherent_traits = list(TRAIT_HEARS_FROM_CONTENTS)
+	/// Whether or not this listening bug plays to ghosts depending on preferences or not at all.
+	var/bug_broadcast_level = LISTENING_BUG_PREF
 
 /obj/item/device/radio/listening_bug/ui_data(mob/user)
 	var/list/data = list()
@@ -91,7 +82,7 @@
 	var/processed_verb = "[SPAN_RED("\[LSTN [nametag]\]")] [verb]"
 	if(broadcasting)
 		if(get_dist(src, M) <= 7)
-			talk_into(M, msg, null, processed_verb, speaking, listening_device = TRUE)
+			talk_into(M, msg, null, processed_verb, speaking, listening_device = bug_broadcast_level)
 
 /obj/item/device/radio/listening_bug/afterattack(atom/target_atom, mob/user as mob, proximity)
 	if(!ready_to_disguise)
@@ -287,6 +278,7 @@
 	name = "Comms Relay Device"
 	subspace_switchable = FALSE
 	broadcasting = TRUE
+	bug_broadcast_level = LISTENING_BUG_NEVER //Don't want fax responder devices broadcasting to ghosts because it will duplicate a lot of messages every round all the time.
 
 /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 	frequency = FAX_WY_FREQ

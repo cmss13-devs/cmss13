@@ -730,11 +730,8 @@
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	..()
-	if(!isRemoteControlling(user))
-		if(cam)
-			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		user.reset_view(null)
-		concurrent_users -= WEAKREF(user)
+	if(user.interactee == src)
+		user.unset_interaction()
 
 //returns the helmet the human is wearing
 /obj/structure/machinery/computer/overwatch/proc/get_helm_from_target(mob/living/carbon/human/target)

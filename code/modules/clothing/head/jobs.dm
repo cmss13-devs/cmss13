@@ -113,30 +113,3 @@
 /obj/item/clothing/head/surgery/orange
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is orange."
 	icon_state = "surgcap_orange"
-
-//Detective
-
-/obj/item/clothing/head/det_hat
-	name = "hat"
-	desc = "Someone who wears this will look very smart."
-	icon_state = "detective"
-	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
-	)
-	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	siemens_coefficient = 0.9
-	flags_armor_protection = 0
-
-/obj/item/clothing/head/det_hat/black
-	icon_state = "detective2"

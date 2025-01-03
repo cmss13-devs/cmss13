@@ -6,6 +6,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Blue Suit Pants", 0, /obj/item/clothing/under/liaison_suit/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Brown Suit Pants", 0, /obj/item/clothing/under/liaison_suit/brown, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("White Suit Pants", 0, /obj/item/clothing/under/liaison_suit/corporate_formal, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Grey Suit Pants", 0, /obj/item/clothing/under/hybrisa/detective/grey, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Detective Suit Pants", 0, /obj/item/clothing/under/hybrisa/detective, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Tan Suit", 0, /obj/item/clothing/under/liaison_suit, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Charcoal Suit", 0, /obj/item/clothing/under/liaison_suit/charcoal, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's White Suit", 0, /obj/item/clothing/under/liaison_suit/formal, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -39,7 +41,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Expedition Windbreaker", 0, /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Liaison's Winter Coat", 0, /obj/item/clothing/suit/storage/snow_suit/liaison, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Beige Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-	list("Grey Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Brown Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/brown, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+	list("Grey Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/grey, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Grey Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 	list("Brown Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
@@ -56,7 +59,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 
 	list("GLASSES", 0, null, null, null),
 	list("BiMex Shades", 0, /obj/item/clothing/glasses/sunglasses/big, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
-	list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+	list("Gold Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+	list("Silver Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator/silver, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 	list("Sunglasses", 0, /obj/item/clothing/glasses/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 	list("Prescription Sunglasses", 0, /obj/item/clothing/glasses/sunglasses/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 	list("Prescription Glasses", 0, /obj/item/clothing/glasses/regular/hipster, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
@@ -72,11 +76,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dress_corporate_liaison, list(
 	list("Corporate Boots", 0, /obj/item/clothing/shoes/marine/corporate, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 
 	list("HATS", 0, null, null, null),
+	list("Company Baseball Cap", 0, /obj/item/clothing/head/cmcap/wy_cap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 	list("Black Beret", 0, /obj/item/clothing/head/beret/cm/black/civilian, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 	list("White Beret", 0, /obj/item/clothing/head/beret/cm/white/civilian, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-	list("Brown Fedora", 0, /obj/item/clothing/head/hybrisa/synth_detective_hat, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-	list("Black Fedora", 0, /obj/item/clothing/head/hybrisa/synth_detective_hat/alt, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-	list("Grey Fedora", 0, /obj/item/clothing/head/fedora, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+	list("Tan Fedora", 0, /obj/item/clothing/head/hybrisa/fedora, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+	list("Brown Fedora", 0, /obj/item/clothing/head/hybrisa/fedora/brown, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+	list("Grey Fedora", 0, /obj/item/clothing/head/hybrisa/fedora/grey, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/clothing/dress/corporate_liaison

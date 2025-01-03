@@ -127,3 +127,109 @@
 	if (!shards_locked)
 		shards = min(max_shards, shards + shards_per_slash)
 	return
+
+// ABILITY CODE
+
+/datum/action/xeno_action/onclick/spike_shield/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/shield_user = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!shield_user.check_state())
+		return
+
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = shield_user.behavior_delegate
+	if (!behavior.check_shards(shard_cost))
+		to_chat(shield_user, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		return
+	behavior.use_shards(shard_cost)
+
+	shield_user.visible_message(SPAN_XENODANGER("[shield_user] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
+
+	// Add our shield
+	var/datum/xeno_shield/hedgehog_shield/shield = shield_user.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
+	if (shield)
+		shield.owner = shield_user
+		shield.shrapnel_amount = shield_shrapnel_amount
+		shield_user.overlay_shields()
+
+	shield_user.create_shield(shield_duration, "shield2")
+	shield_active = TRUE
+	button.icon_state = "template_active"
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
+
+	apply_cooldown()
+	return ..()
+/datum/action/xeno_action/onclick/spike_shield/proc/remove_shield()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if (!shield_active)
+		return
+
+	shield_active = FALSE
+	button.icon_state = "template"
+
+	for (var/datum/xeno_shield/shield in xeno.xeno_shields)
+		if (shield.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)
+			shield.on_removal()
+			qdel(shield)
+			break
+
+	to_chat(xeno, SPAN_XENODANGER("We feel our shard shield dissipate!"))
+	xeno.overlay_shields()
+	return
+
+/datum/action/xeno_action/activable/rav_spikes/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/hedgehog_rav = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(hedgehog_rav.loc) || !hedgehog_rav.check_state())
+		return
+
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = hedgehog_rav.behavior_delegate
+	if (!behavior.check_shards(shard_cost))
+		to_chat(hedgehog_rav, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		return
+	behavior.use_shards(shard_cost)
+
+	hedgehog_rav.visible_message(SPAN_XENOWARNING("[hedgehog_rav] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
+
+	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
+	var/obj/projectile/projectile = new /obj/projectile(hedgehog_rav.loc, create_cause_data(initial(hedgehog_rav.caste_type), hedgehog_rav))
+
+	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
+
+	projectile.generate_bullet(ammo_datum)
+
+	projectile.fire_at(target, hedgehog_rav, hedgehog_rav, ammo_datum.max_range, ammo_datum.shell_speed)
+	playsound(hedgehog_rav, 'sound/effects/spike_spray.ogg', 25, 1)
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/spike_shed/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/spike_shedder = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!spike_shedder.check_state())
+		return
+
+	var/datum/behavior_delegate/ravager_hedgehog/behavior = spike_shedder.behavior_delegate
+	if (!behavior.check_shards(shard_cost))
+		to_chat(spike_shedder, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		return
+	behavior.use_shards(shard_cost)
+	behavior.lock_shards()
+
+	spike_shedder.visible_message(SPAN_XENOWARNING("[spike_shedder] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
+	spike_shedder.spin_circle()
+	create_shrapnel(get_turf(spike_shedder), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(spike_shedder.caste_type), owner), TRUE)
+	playsound(spike_shedder, 'sound/effects/spike_spray.ogg', 25, 1)
+
+	apply_cooldown()
+	return ..()

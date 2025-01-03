@@ -22,7 +22,7 @@
 				if("head")
 					return "[skin_color]_[limb_name]"
 				if("groin")
-					return "[skin_color]_[limb_name]_[body_size]"
+					return "[skin_color]_[limb_name]"
 
 		if(!S.special_body_types)
 			switch(limb_name)

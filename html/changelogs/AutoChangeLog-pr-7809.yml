@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed the lz_weeding flag not doing anything"
-  - refactor: "Refactored and documented defines for the distress signal game mode"

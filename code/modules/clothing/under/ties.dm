@@ -113,6 +113,8 @@
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+	)
+	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
@@ -684,6 +686,7 @@
 		/obj/item/device/multitool,
 		/obj/item/tool/shovel/etool,
 		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/device/defibrillator/synthetic,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small
@@ -993,6 +996,11 @@
 /obj/item/clothing/accessory/holobadge/cord
 	icon_state = "holobadge-cord"
 	flags_equip_slot = SLOT_FACE
+	accessory_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+	)
 
 /obj/item/clothing/accessory/holobadge/attack_self(mob/user)
 	..()

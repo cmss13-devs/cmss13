@@ -55,7 +55,7 @@
 /obj/structure/lamarr/attackby(obj/item/W as obj, mob/user as mob)
 	health -= W.force * W.demolition_mod
 	healthcheck()
-	..()
+	. = ..()
 	return
 
 /obj/structure/lamarr/attack_hand(mob/user as mob)
@@ -80,11 +80,6 @@
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
 	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
-	item_state_slots = list(WEAR_AS_GARB = "lamarr")
-	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
-	)
 	sterile = TRUE
 	gender = FEMALE
 	black_market_value = 50

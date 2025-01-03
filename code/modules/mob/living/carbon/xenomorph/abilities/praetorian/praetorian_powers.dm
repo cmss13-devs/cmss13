@@ -287,7 +287,7 @@
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
 	abduct_user.emote("roar")
 
-	var/throw_target_turf = get_step(abduct_user.loc, facing)
+	var/throw_target_turf = get_step(abduct_user, facing)
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
@@ -722,6 +722,9 @@
 	return ..()
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
+	if (!A)
+		return
+
 	var/mob/living/carbon/xenomorph/acidball_user = owner
 	if (!acidball_user.check_state() || acidball_user.action_busy)
 		return

@@ -581,7 +581,7 @@ world
 		A.overlays.Remove(src)
 
 /mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
-	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
+	var/image/I = image('icons/mob/do_afters.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)
 			I.pixel_x = 8

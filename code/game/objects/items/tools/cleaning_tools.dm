@@ -77,7 +77,7 @@
 /obj/effect/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop) || istype(I, /obj/item/tool/soap))
 		return
-	..()
+	. = ..()
 
 
 
@@ -127,6 +127,10 @@
 	desc = "A cheap bar of soap. Doesn't smell."
 	gender = PLURAL
 	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "soap"
 	w_class = SIZE_TINY
 	throwforce = 0
@@ -165,9 +169,11 @@
 /obj/item/tool/soap/weyland_yutani
 	desc = "A Weyland-Yutani brand bar of soap. Smells of phoron."
 	icon_state = "soapnt"
+	item_state = "soapnt"
 
 /obj/item/tool/soap/deluxe
 	icon_state = "soapdeluxe"
+	item_state = "soapdeluxe"
 
 /obj/item/tool/soap/deluxe/Initialize()
 	. = ..()
@@ -176,3 +182,4 @@
 /obj/item/tool/soap/syndie
 	desc = "An untrustworthy bar of soap. Smells of fear."
 	icon_state = "soapsyndie"
+	item_state = "soapsyndie"

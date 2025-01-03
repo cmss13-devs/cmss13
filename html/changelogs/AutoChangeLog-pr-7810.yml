@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Internal organs now delete properly"
-  - bugfix: "An observer waypoint is ensured when a z-level is destroyed (such as for Hivewars)"
-  - bugfix: "Fixed various runtimes when a z-level is destroyed"

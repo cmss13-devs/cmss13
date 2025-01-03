@@ -89,6 +89,7 @@
 /obj/item/device/defibrillator/upgraded
 	name = "upgraded emergency defibrillator"
 	icon_state = "adv_defib"
+	item_state = "adv_defib"
 	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant, not damaging the heart."
 
 	blocked_by_suit = FALSE

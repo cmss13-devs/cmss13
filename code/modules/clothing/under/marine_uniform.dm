@@ -21,6 +21,7 @@
 	siemens_coefficient = 0.9
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"
+	var/snow_name = " snow uniform"
 	layer = UPPER_ITEM_LAYER
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi',
@@ -34,7 +35,7 @@
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-			name += " snow uniform"
+			name += snow_name
 		else
 			name += " uniform"
 	if(!(flags_atom & NO_GAMEMODE_SKIN))
@@ -43,6 +44,8 @@
 
 /obj/item/clothing/under/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
@@ -57,6 +60,9 @@
 			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
 			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi'
 			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
+		if("urban")
+			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi'
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
@@ -178,9 +184,8 @@
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_jumpsuit = FALSE
 	specialty = "chief MP"
-	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
@@ -190,7 +195,10 @@
 	worn_state = "pilot_flightsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+	specialty = "pilot officer"
+	snow_name = " snow bodysuit"
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
+	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"
@@ -275,6 +283,8 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	item_state_slots = list(WEAR_BODY = "EC_jumpsuit")
@@ -621,6 +631,36 @@
 	desc = "A set of Civilian-style Brown vest and orange pants. The material is surprisingly decent, something not often worn by the civilians of the UPP for two reasons: They typically can't afford such clothing, and if they can, it paints a target on their back."
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
+
+//=========================//CMB\\================================\\
+
+
+/obj/item/clothing/under/marine/veteran/cmb
+	name = "\improper CMB Riot Control uniform"
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, designed to be used by units of riot supression on the distant worlds, under colonial jurisdiction."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
+	icon_state = "cmb_swat_uniform"
+	worn_state = "cmb_swat_uniform"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/marine/veteran/cmb,
+		/obj/item/clothing/suit/storage/marine/MP,
+		/obj/item/clothing/suit/storage/CMB,
+		/obj/item/clothing/suit/armor/riot/marine,
+		/obj/item/clothing/suit/armor/vest/security,
+		/obj/item/clothing/suit/storage/hazardvest,
+	)
+
+/obj/item/clothing/under/marine/veteran/cmb/marshal
+	name = "\improper CMB Riot Control Marshal uniform"
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, the gold insignia on this one suggests it being used by a commanding personnel during riot control."
+	icon_state = "cmb_swatleader_uniform"
+	worn_state = "cmb_swatleader_uniform"
+
 
 //=========================//Freelancer\\================================\\
 
@@ -1131,6 +1171,17 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
 	)
 
+/obj/item/clothing/under/rank/synthetic/upp_joe
+	name = "android suit"
+	desc = "Uniform designed for UPP security synthetics."
+	icon_state = "upp_joe"
+	worn_state = "upp_joe"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi',
+	)
+	flags_item = NO_CRYO_STORE
+
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
 	desc = "A cheap uniform made for Synthetic labor. Tomorrow, Together."
@@ -1369,3 +1420,4 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
+

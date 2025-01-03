@@ -49,6 +49,8 @@
 	var/buttoned = TRUE
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
 	)
 
 
@@ -151,6 +153,11 @@
 	name = "snow suit"
 	desc = "A standard snow suit. It can protect the wearer from extreme cold."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
@@ -299,7 +306,7 @@
 		/obj/item/device/walkman,
 	)
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
 	)
 
 
@@ -309,7 +316,7 @@
 	icon_state = "snowsuit_liaison"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 
 /obj/item/clothing/suit/storage/snow_suit/liaison/modified

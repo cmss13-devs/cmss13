@@ -117,7 +117,7 @@
 /area/lv624/lazarus/medbay)
 "nG" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "og" = (
 /turf/open/gm/dirt,
@@ -187,7 +187,7 @@
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "xM" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/south_medbay_road)
 "ym" = (
 /obj/structure/flora/jungle/plantbot1,

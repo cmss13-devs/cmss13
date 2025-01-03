@@ -9,6 +9,7 @@ import {
   ColorBox,
   DmIcon,
   Dropdown,
+  Input,
   Modal,
   Section,
   Stack,
@@ -187,12 +188,18 @@ export const HairPickerElement = (props: {
 
   const scrollRef = createRef<HTMLDivElement>();
 
+  const [search, setSearch] = useState('');
+
   return (
     <Section
       title={name}
       scrollable
       buttons={
         <>
+          <Input
+            placeholder="Search..."
+            onChange={(_, val) => setSearch(val)}
+          />
           {color && (
             <Button onClick={() => (setColor ? setColor(action) : null)}>
               <ColorBox color={color} mr={1} />
@@ -208,26 +215,29 @@ export const HairPickerElement = (props: {
       }}
     >
       <Stack wrap="wrap" height={height}>
-        {hair.map((hair) => (
-          <Stack.Item
-            key={hair.name}
-            className={`Picker${active === hair.icon ? ' Active' : ''}`}
-          >
-            <Tooltip content={hair.name}>
-              <Box
-                position="relative"
-                onClick={() => action({ name: hair.name })}
-              >
-                <DmIcon
-                  icon={icon}
-                  icon_state={`${hair.icon}_s`}
-                  height="64px"
-                  width="64px"
-                />
-              </Box>
-            </Tooltip>
-          </Stack.Item>
-        ))}
+        {hair
+          .filter((val) => search.length === 0 || val.name.includes(search))
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map((hair) => (
+            <Stack.Item
+              key={hair.name}
+              className={`Picker${active === hair.icon ? ' Active' : ''}`}
+            >
+              <Tooltip content={hair.name}>
+                <Box
+                  position="relative"
+                  onClick={() => action({ name: hair.name })}
+                >
+                  <DmIcon
+                    icon={icon}
+                    icon_state={`${hair.icon}_s`}
+                    height="64px"
+                    width="64px"
+                  />
+                </Box>
+              </Tooltip>
+            </Stack.Item>
+          ))}
       </Stack>
     </Section>
   );

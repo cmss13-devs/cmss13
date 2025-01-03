@@ -72,11 +72,11 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		if(entry_dept)
 			if(!data[entry_dept])
 				data[entry_dept] = list()
-			data[entry_dept] += list(entry)
+			LAZYADD(data[entry_dept], list(entry))
 		else
 			if(!data["Miscellaneous"])
 				data["Miscellaneous"] = list()
-			data["Miscellaneous"] += list(entry)
+			LAZYADD(data["Miscellaneous"], list(entry))
 
 	return data
 

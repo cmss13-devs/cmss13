@@ -70,6 +70,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
+	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
@@ -655,6 +656,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				dat += "<b>Colonial Marshal Bureau:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=cmb'><b>[fax_name_cmb]</b></a><br>"
 				dat += "<b>Free Press:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=press'><b>[fax_name_press]</b></a><br>"
 				dat += "<b>CLF Command:</b> <a href='byond://?_src_=prefs;preference=fax_name;task=input;fax_faction=clf'><b>[fax_name_clf]</b></a><br>"
+
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<b>Spawn as Hostile:</b> <a href='?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Non-Hostile:</b> <a href='?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
 
 	dat += "</div></body>"
 
@@ -1819,6 +1826,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("toggles_ert_pred")
 					var/flag = text2num(href_list["flag"])
 					toggles_ert_pred ^= flag
+
+				if("toggles_survivor")
+					var/flag = text2num(href_list["flag"])
+					toggles_survivor ^= flag
+					if(!HAS_FLAG(toggles_survivor, PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE))
+						// Neither hostile nor non-hostile: Invert the other
+						if(flag == PLAY_SURVIVOR_NON_HOSTILE)
+							toggles_survivor ^= PLAY_SURVIVOR_HOSTILE
+						else
+							toggles_survivor ^= PLAY_SURVIVOR_NON_HOSTILE
 
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION

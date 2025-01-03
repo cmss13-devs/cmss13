@@ -2,8 +2,9 @@
     {
     "type": "pick", "name": "uppcrash",
     "choices": [
-        { "weight": 10, "type": "def", "values": { "lvevent": "none" } },
-        { "weight": 4, "type": "def", "values": { "lvevent": "uppcrash" } }
+        { "weight": 5, "type": "def", "values": { "lvevent": "none" } },
+        { "weight": 4, "type": "def", "values": { "lvevent": "uppcrash" } },
+        { "weight": 1, "type": "def", "values": { "lvevent": "clfpods" } }
     ]
     }
 ]

@@ -47,7 +47,7 @@
 /obj/structure/prop/dam/truck
 	name = "truck"
 	desc = "An old truck, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "truck"
 	bound_height = 64
 	bound_width = 64
@@ -70,7 +70,7 @@
 /obj/structure/prop/dam/van
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -82,7 +82,7 @@
 
 /obj/structure/prop/dam/crane
 	name = "cargo crane"
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "crane"
 	bound_height = 64
 	bound_width = 64
@@ -774,7 +774,7 @@
 /obj/structure/prop/vehicles
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -1025,7 +1025,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		..()
+		. = ..()
 		if(W.force && !(W.flags_item & NOBLUDGEON))
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 			update_health(W.force)
@@ -1091,14 +1091,14 @@
 /obj/structure/prop/invuln/rope
 	name = "rope"
 	desc = "A secure rope looks like someone might've been hiding out on those rocks."
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"
 	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 

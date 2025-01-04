@@ -249,7 +249,7 @@
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	..()
+	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
@@ -259,8 +259,6 @@
 		user.spin(5, 1)
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
 
-	return
-
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes."
@@ -269,7 +267,7 @@
 
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"
-	desc = "A large staff with a sharp curve at the top. Commonly wielded by the shamans that roam the desert steppe."
+	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
 
@@ -604,7 +602,7 @@
 		SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You were interrupted before you could finish your work!"))
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 ///Records status of flaying attempts and handles progress.
 /datum/flaying_datum
@@ -1267,7 +1265,6 @@
 	. = ..()
 	source = null
 
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
@@ -1354,6 +1351,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+	update_mouse_pointer(M, FALSE)
 
 	var/datum/action/predator_action/bracer/caster/caster_action
 	for(caster_action as anything in M.actions)

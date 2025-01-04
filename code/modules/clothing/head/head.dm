@@ -239,6 +239,10 @@
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
 			item_icons[WEAR_AS_GARB] = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_garb_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
+			item_icons[WEAR_AS_GARB] = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_garb_by_map/urban.dmi'
 
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
@@ -367,7 +371,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/tool/pen = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/blue = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/tool/pen/red = PREFIX_HAT_GARB_OVERRIDE,
-	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
+	/obj/item/tool/pen/multicolor/fountain = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = "welding-c",
 	/obj/item/clothing/glasses/mgoggles = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/prescription = PREFIX_HAT_GARB_OVERRIDE,
@@ -445,6 +449,9 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 /obj/item/clothing/head/cmcap/Destroy()
 	QDEL_NULL(pockets)
@@ -693,6 +700,9 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine major white beret"
@@ -996,10 +1006,14 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
 		if("desert")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			item_icons[WEAR_HEAD]= 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
+
 
 /obj/item/clothing/head/durag/Initialize(mapload, ...)
 	. = ..()

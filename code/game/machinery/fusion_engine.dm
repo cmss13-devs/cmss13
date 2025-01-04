@@ -20,8 +20,6 @@
 	power_machine = TRUE
 	throwpass = FALSE
 
-	///Whether the reactor is functional
-	var/is_on = TRUE
 	///Whether the reactor is on the ship
 	var/is_ship_reactor = FALSE
 	///If the generator is overloaded
@@ -347,17 +345,17 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			return
 
-		to_chat(user, SPAN_WARNING("You start [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		to_chat(user, SPAN_WARNING("You start [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
 
 		if(inoperable())
-			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be overloaded."))
+			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be [overloaded ? "restored" : "overloaded"]."))
 			return
 
 		set_overloading(!overloaded)
-		to_chat(user, SPAN_WARNING("You finish [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
-		log_game("[key_name(user)] has [overloaded ? "restored the safeties of" : "overloaded"] a generator.")
+		to_chat(user, SPAN_WARNING("You finish [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		log_game("[key_name(user)] has [overloaded ? "overloaded" : "restored the safeties of"] a generator.")
 		return
 
 	. = ..()

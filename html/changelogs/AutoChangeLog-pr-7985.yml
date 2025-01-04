@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - imageadd: "resprites all beret object icons and makes them match the onmob sprites, beret format standartization"

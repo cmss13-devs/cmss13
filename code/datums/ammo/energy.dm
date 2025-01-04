@@ -104,9 +104,6 @@
 	icon_state = "ion"
 	damage_type = BURN
 
-/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/living/hit_mob, obj/projectile/hit_projectile)
-	hit_mob.Stun(2)
-
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"
 	icon_state = "ion"

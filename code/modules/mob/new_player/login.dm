@@ -116,6 +116,15 @@
 				client.player_data.tgui_interact(src)
 			return TRUE
 
+		if("statistic")
+			if(!SSentity_manager.ready)
+				to_chat(src, SPAN_WARNING("DB is still starting up, please wait"))
+				return FALSE
+
+			if(client?.player_data?.player_entity)
+				client.player_data.player_entity.tgui_interact(src)
+			return TRUE
+
 		if("manifest")
 			ViewManifest()
 			return TRUE

@@ -334,6 +334,9 @@ const LobbyButtons = (props: {
         <LobbyButton index={3} onClick={() => act('playtimes')} icon="list-ul">
           View Playtimes
         </LobbyButton>
+        <LobbyButton index={3} onClick={() => act('statistic')} icon="list-ul">
+          View Statistic
+        </LobbyButton>
 
         <TimedDivider />
 

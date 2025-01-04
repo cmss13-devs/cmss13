@@ -35,6 +35,26 @@
 	paint_type = "full_camo"
 	icon_state = "full_camo"
 
+/obj/item/facepaint/sniper/snow
+	name = "fullbody paint snow"
+	paint_type = "full_camo_snow"
+	icon_state = "full_camo_snow"
+
+/obj/item/facepaint/sniper/desert
+	name = "fullbody paint desert"
+	paint_type = "full_camo_desert"
+	icon_state = "full_camo_desert"
+
+/obj/item/facepaint/sniper/jungle
+	name = "fullbody paint jungle"
+	paint_type = "full_camo_jungle"
+	icon_state = "full_camo_jungle"
+
+/obj/item/facepaint/sniper/urban
+	name = "fullbody paint urban"
+	paint_type = "full_camo_urban"
+	icon_state = "full_camo_urban"
+
 /obj/item/facepaint/skull
 	name = "skull paint"
 	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."

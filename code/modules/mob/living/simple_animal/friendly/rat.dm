@@ -52,9 +52,9 @@
 	response_harm = "stamps on"
 	holder_type = /obj/item/holder/rat/white/Milky
 
-/*
-    Specific Pets for Frozen's Rat Collecting Competition
-*/
+
+//Specific Pets for Frozen's Rat Collecting Competition
+
 /mob/living/simple_animal/mouse/rat/pet
 	name = "Pet Rat"
 	desc = "This is someone's pet rat. I wonder what it's doing here."
@@ -72,9 +72,9 @@
 	icon_state = "rat_white"
 	holder_type = /obj/item/holder/rat/pet/ikit
 
-/*
-    Spawning those rats from cheese.
-*/
+
+//Spawning those rats from cheese.
+
 /obj/item/reagent_container/food/snacks/cheesewedge/attack_self(mob/user)
 	if(!user.client || user.client.spawned_pet)
 		return ..()

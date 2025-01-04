@@ -177,15 +177,16 @@
 	name = "Old Timmy"
 	desc = "An ancient looking rat from the old days of the colony."
 
+/obj/item/holder/rat/pet
+	name = "Pet Rat"
+	desc = "This is someone's pet rat. I wonder what it's doing here."
 
-/obj/item/holder/rat/marvin
+/obj/item/holder/rat/pet/marvin
 	name = "Marvin"
 	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	icon_state = "rat_black"
 
 /obj/item/holder/rat/pet/ikit
 	name = "Ikit"
 	desc = "An albino rat with a tiny collar around it's neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
 	icon_state = "rat_white"
-
-/obj/item/holder/rat/pet/black
-	icon_state = "rat_black"

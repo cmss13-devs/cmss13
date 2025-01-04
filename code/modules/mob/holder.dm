@@ -178,9 +178,9 @@
 	desc = "An ancient looking rat from the old days of the colony."
 
 
-/obj/item/holder/rat/pet
-	name = "Pet Rat"
-	desc = "This is someone's pet rat. I wonder what it's doing here."
+/obj/item/holder/rat/marvin
+	name = "Marvin"
+	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
 
 /obj/item/holder/rat/pet/ikit
 	name = "Ikit"

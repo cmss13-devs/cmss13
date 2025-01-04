@@ -217,6 +217,16 @@
 	. = ..()
 	bracers.healing_capsule()
 
+/datum/action/predator_action/bracer/breachcharge
+	name = "Create Breaching Charge"
+	action_icon_state = "claim_equipment"
+	listen_signal = COMSIG_KB_YAUTJA_BCHARGE
+	active = PREDATOR_ACTION_ON_CLICK
+
+/datum/action/predator_action/bracer/breachcharge/action_activate()
+	. = ..()
+	bracers.breaching_charge()
+
 /datum/action/predator_action/bracer/translator
 	name = "Use Translator"
 	action_icon_state = "translator"

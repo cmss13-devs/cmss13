@@ -417,6 +417,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<b>Show Job Gear:</b> <a href='byond://?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
 			dat += "<b>Background:</b> <a href='byond://?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br><br>"
+			dat += "<b>Night Vision Color:</b> <<a href='byond://?_src_=prefs;preference=prefnvg;task=input'><b>[night_vision_preference]</b></a><br>"
 
 			dat += "<b>Custom Loadout:</b> "
 			var/total_cost = 0

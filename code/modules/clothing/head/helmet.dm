@@ -261,6 +261,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/squad = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/candle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/facehugger = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/facehugger/lamarr = NO_GARB_OVERRIDE,
 	/obj/item/toy/crayon/red = NO_GARB_OVERRIDE,
 	/obj/item/toy/crayon/orange = NO_GARB_OVERRIDE,
@@ -559,12 +560,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
 	if(camera)
 		camera.c_tag = mob.name
+		camera.status = TRUE
 	if(active_visor)
 		recalculate_visors(mob)
 	..()
 
 /obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
 	. = ..()
+	if(camera)
+		camera.status = FALSE
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
 			if(F.light_on)
@@ -694,16 +698,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
-
-/obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
-	. = ..()
-	if(camera)
-		camera.status = TRUE
-
-/obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
-	. = ..()
-	if(camera)
-		camera.status = FALSE
 
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()

@@ -33,7 +33,7 @@
 
 /obj/item/defenses/handheld/proc/connect()
 	if(dropped && !TR)
-		TR = new defense_type
+		TR = new defense_type(src)
 		if(!TR.HD)
 			TR.HD = src
 			return TRUE

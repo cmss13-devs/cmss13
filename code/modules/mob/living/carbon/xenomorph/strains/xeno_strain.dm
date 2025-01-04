@@ -104,26 +104,29 @@
 	set category = "Alien"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
-	if(!can_take_strain(reset=TRUE))
+	if(!can_take_strain(reset = TRUE))
 		return
 
-	if(world.time < next_strain_reset)
+	if(!COOLDOWN_FINISHED(src, next_strain_reset))
 		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
 		return
 	
 	// Show the user the strain's description, and double check that they want it.
-	if(alert(usr, "Are you sure?", "Reset Strain", "Yes", "No") != "Yes")
+	if(tgui_alert(src, "Are you sure?", "Reset Strain", list("Yes", "No")) != "Yes")
 		return
+
 	// One more time after they confirm.
-	if(!can_take_strain(reset=TRUE))
+	if(!can_take_strain(reset = TRUE))
 		return
 
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(caste_type)
-	if(new_xeno)
-		new_xeno.xeno_jitter(1.5 SECONDS)
-		// If it applied successfully, add it to the logs.
-		log_strain("[new_xeno.name] reset their strain.")
-		new_xeno.next_strain_reset = world.time + 40 MINUTES
+	if(!new_xeno)
+		return
+
+	new_xeno.xeno_jitter(1.5 SECONDS)
+	// If it applied successfully, add it to the logs.
+	log_strain("[new_xeno.name] reset their strain.")
+	COOLDOWN_START(new_xeno, next_strain_reset, 40 MINUTES)
 
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)

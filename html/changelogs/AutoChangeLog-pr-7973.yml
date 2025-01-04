@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Preset corpses and pizza ERTs now have correct paygrade displays."

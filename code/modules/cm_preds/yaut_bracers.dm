@@ -1104,6 +1104,43 @@
 	return TRUE
 #undef YAUTJA_CREATE_CAPSULE_COOLDOWN
 
+/obj/item/clothing/gloves/yautja/hunter/verb/breaching_charge()
+	set name = "Create Breaching Charge"
+	set category = "Yautja.Utility"
+	set desc = "Create a breaching charge for destroying structures."
+	set src in usr
+	. = breaching_charge_internal(usr, FALSE)
+
+#define YAUTJA_CREATE_CHARGE_COOLDOWN "yautja_create_charge_cooldown"
+/obj/item/clothing/gloves/yautja/hunter/proc/breaching_charge_internal(mob/caller, forced = FALSE)
+	if(caller.is_mob_incapacitated())
+		return FALSE
+
+	. = check_random_function(caller, forced)
+	if(.)
+		return
+
+	if(caller.get_active_hand())
+		to_chat(caller, SPAN_WARNING("Your active hand must be empty!"))
+		return FALSE
+
+	if(TIMER_COOLDOWN_CHECK(src, YAUTJA_CREATE_CHARGE_COOLDOWN))
+		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_CREATE_CHARGE_COOLDOWN))
+		to_chat(caller, SPAN_WARNING("You recently synthesized a breaching charge. A new breaching charge will be available in [remaining_time]."))
+		return FALSE
+
+	if(!drain_power(caller, 1000))
+		return FALSE
+
+	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CHARGE_COOLDOWN, 4 MINUTES)
+
+	to_chat(caller, SPAN_NOTICE("You feel your bracer vibrate as it produces a breaching charge."))
+	var/obj/item/explosive/plastic/breaching_charge/plasma/O = new(caller)
+	caller.put_in_active_hand(O)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
+	return TRUE
+#undef YAUTJA_CREATE_CHARGE_COOLDOWN
+
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disc()
 	set name = "Call Smart-Disc"
 	set category = "Yautja.Weapons"

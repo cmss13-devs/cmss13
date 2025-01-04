@@ -96,11 +96,12 @@
 
 /datum/ammo/bullet/shrapnel/plasma
 	name = "plasma wave"
+	debilitate = list(2,2,0,0,0,1,0,0)
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 	accuracy = HIT_ACCURACY_TIER_MAX
 	damage = 15
-	icon_state = "shrapnel_plasma"
+	icon_state = "ion"
 	damage_type = BURN
 
 /datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/living/hit_mob, obj/projectile/hit_projectile)

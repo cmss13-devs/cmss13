@@ -385,12 +385,12 @@
 	overlay_image = "plasma-active"
 	w_class = SIZE_SMALL
 	angle = 55
-	timer = 5
-	min_timer = 5
+	timer = 3
+	min_timer = 3
 	penetration = 0.60
 	deploying_time = 10
 	flags_item = NOBLUDGEON|ITEM_PREDATOR
-	shrapnel_volume = 10
+	shrapnel_volume = 20
 	shrapnel_type = /datum/ammo/bullet/shrapnel/plasma
 	explosion_strength = 90
 

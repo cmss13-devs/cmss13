@@ -206,6 +206,13 @@
 	full_name = "Create Healing Capsule"
 	keybind_signal = COMSIG_KB_YAUTJA_CAPSULE
 
+/datum/keybinding/yautja/bracer_hunter/breaching_charge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "bcharge"
+	full_name = "Create Breaching Charge"
+	keybind_signal = COMSIG_KB_YAUTJA_BCHARGE
+
 /datum/keybinding/yautja/bracer_hunter/call_disc
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

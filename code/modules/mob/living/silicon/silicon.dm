@@ -83,12 +83,7 @@
 
 // this function displays the stations manifest in a separate window
 /mob/living/silicon/proc/show_station_manifest()
-	var/dat
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest(1) // make it monochrome
-	dat += "<br>"
-	src << browse(dat, "window=airoster")
-	onclose(src, "airoster")
+	GLOB.crew_manifest.open_ui(src)
 
 //can't inject synths
 /mob/living/silicon/can_inject(mob/user, error_msg)

@@ -876,10 +876,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"
 	set category = "Ghost.View"
-
-	var/dat = GLOB.data_core.get_manifest()
-
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"

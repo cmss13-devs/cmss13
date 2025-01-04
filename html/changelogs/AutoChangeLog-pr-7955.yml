@@ -1,0 +1,4 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - ui: "Changed the crew manifest to TGUI."

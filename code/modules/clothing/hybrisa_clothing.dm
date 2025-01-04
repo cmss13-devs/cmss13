@@ -258,13 +258,12 @@
 	)
 	icon_state = "science_outfit"
 	worn_state = "science_outfit"
-	permeability_coefficient = 0.50
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = FALSE
@@ -657,7 +656,6 @@
 	item_state = "firefighter_oversuit"
 	uniform_restricted = null
 	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.50
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

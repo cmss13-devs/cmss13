@@ -115,14 +115,14 @@
 	dat += "<body>"
 
 	var/color = "#008800"
-	var/add_dat = "<A href='?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
+	var/add_dat = "<A href='byond://?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='byond://?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
 	switch(note_category)
 		if(NOTE_MERIT)
 			color = "#9e3dff"
-			add_dat = "<A href='?src=\ref[usr];add_merit_info=[target]'>Add Merit Note</A><br>"
+			add_dat = "<A href='byond://?src=\ref[usr];add_merit_info=[target]'>Add Merit Note</A><br>"
 		if(NOTE_WHITELIST)
 			color = "#324da5"
-			add_dat = "<A href='?src=\ref[usr];add_wl_info=[target]'>Add Whitelist Note</A><br>"
+			add_dat = "<A href='byond://?src=\ref[usr];add_wl_info=[target]'>Add Whitelist Note</A><br>"
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, target))
 	for(var/datum/view_record/note_view/N as anything in NL)
@@ -137,7 +137,7 @@
 		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		///Can remove notes from anyone other than yourself, unless you're the host. So long as you have deletion access anyway.
 		if((can_del && target != get_player_from_key(key)) || ishost(usr))
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"
 
 		dat += "<br><br>"
 

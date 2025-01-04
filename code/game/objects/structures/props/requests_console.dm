@@ -5,10 +5,6 @@
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "req_comp0"
 
-/obj/structure/machinery/requests_console/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/requests_console/update_icon()
 	if(stat & NOPOWER)
 		if(icon_state != "req_comp_off")

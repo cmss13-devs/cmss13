@@ -1,0 +1,4 @@
+author: "Awan"
+delete-after: True
+changes:
+  - bugfix: "Fixed some gearsets having improper radio/chat prefixes."

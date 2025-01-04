@@ -171,10 +171,6 @@
 	else if(ismob(A))
 		..()
 
-/obj/structure/machinery/optable/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/optable/update_icon()
 	if(inoperable())
 		icon_state = "table2-idle"
@@ -285,3 +281,6 @@
 		return FALSE
 
 	return TRUE
+
+/obj/structure/machinery/optable/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

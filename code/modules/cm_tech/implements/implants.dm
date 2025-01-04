@@ -2,6 +2,10 @@
 	name = "implant box"
 	desc = "A sterile metal lockbox housing hypodermic implant injectors."
 	icon = 'icons/obj/items/storage/kits.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi',
+	)
 	icon_state = "implantbox"
 	use_sound = "toolbox"
 	storage_slots = 5

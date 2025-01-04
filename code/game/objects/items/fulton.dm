@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		return
 
 /obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
-	return
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE 
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)

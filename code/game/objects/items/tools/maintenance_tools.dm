@@ -67,35 +67,35 @@
 	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
 	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
+	/// If the item should be assigned a random color
+	var/random_color = TRUE
 
 
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
-	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
-		if ("red")
-			icon_state = "screwdriver2"
-			item_state = "screwdriver"
+	if(!random_color)
+		return
+	switch(pick("blue","red","green","yellow","orange","black"))
 		if ("blue")
 			icon_state = "screwdriver"
-			item_state = "screwdriver_blue"
-		if ("purple")
-			icon_state = "screwdriver3"
-			item_state = "screwdriver_purple"
-		if ("brown")
-			icon_state = "screwdriver4"
-			item_state = "screwdriver_brown"
+			item_state = "screwdriver"
+		if ("red")
+			icon_state = "screwdriver2"
+			item_state = "screwdriver2"
 		if ("green")
-			icon_state = "screwdriver5"
-			item_state = "screwdriver_green"
-		if ("cyan")
-			icon_state = "screwdriver6"
-			item_state = "screwdriver_cyan"
+			icon_state = "screwdriver3"
+			item_state = "screwdriver3"
 		if ("yellow")
-			icon_state = "screwdriver7"
-			item_state = "screwdriver_yellow"
+			icon_state = "screwdriver4"
+			item_state = "screwdriver4"
+		if ("orange")
+			icon_state = "screwdriver5"
+			item_state = "screwdriver5"
+		if ("black")
+			icon_state = "tac_screwdriver"
+			item_state = "tac_screwdriver"
 
-	if (prob(75))
-		src.pixel_y = rand(0, 16)
+
 	return
 
 
@@ -155,6 +155,7 @@
 	name = "tactical wirecutters"
 	desc = "This heavy-duty pair seems more fit for cutting barbed wire, but it'll work splendidly on electrical wires."
 	icon_state = "tac_cutters"
+	item_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))

@@ -154,7 +154,7 @@
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "rat_white"
 	w_class = SIZE_TINY
-	flags_equip_slot = null
+	flags_equip_slot = SLOT_EAR
 
 /obj/item/holder/rat/white
 	icon_state = "rat_white"

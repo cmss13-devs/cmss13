@@ -49,7 +49,7 @@
 	plasma_cost = 0
 
 	// Config options
-	distance = 4
+	distance = 5
 	knockdown = FALSE
 	freeze_self = FALSE
 
@@ -59,7 +59,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_flurry
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 3 SECONDS
+	xeno_cooldown = 4 SECONDS
 
 /datum/action/xeno_action/activable/tail_jab
 	name = "Tail Jab"
@@ -68,6 +68,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 7 SECONDS
+	charge_time = 1 SECONDS
 
 /datum/action/xeno_action/activable/headbite
 	name = "Headbite"

@@ -103,6 +103,28 @@
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
+	var/list/blacklist_caste = list(XENO_CASTE_HIVELORD)
+	var/list/whitelist_build = list(
+		/datum/resin_construction/resin_turf/wall,
+		/datum/resin_construction/resin_turf/wall/thick,
+		/datum/resin_construction/resin_turf/wall/queen,
+		/datum/resin_construction/resin_turf/membrane,
+		/datum/resin_construction/resin_turf/membrane/thick,
+		/datum/resin_construction/resin_turf/membrane/queen,
+		/datum/resin_construction/resin_turf/wall/reflective,
+		/datum/resin_construction/resin_obj/door,
+		/datum/resin_construction/resin_obj/door/thick,
+		/datum/resin_construction/resin_obj/door/queen,
+	)
+
+	if(istype(A, /obj/effect/alien/weeds/node/designer/speed))
+		if(!(caste_type in blacklist_caste))
+			wait_time -= ((RC.build_time * caste.build_time_mult) / 2)
+
+	if(istype(A, /obj/effect/alien/weeds/node/designer/cost))
+		if(locate(RC.type) in whitelist_build)
+			total_resin_cost -= (total_resin_cost / 2)
+
 	var/obj/warning
 	var/succeeded = TRUE
 	if(resin_construct.build_overlay_icon)

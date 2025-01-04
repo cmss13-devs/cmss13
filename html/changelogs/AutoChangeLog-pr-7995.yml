@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - bugfix: "CAS no longer has infinite night vision, contact research for matrix upgrades today!"

@@ -38,6 +38,8 @@
 		/obj/item/clothing/under/colonist/workwear/pink,
 		/obj/item/clothing/under/colonist/workwear/green,
 		/obj/item/clothing/under/colonist/workwear/blue,
+		/obj/item/clothing/under/hybrisa/detective,
+		/obj/item/clothing/under/hybrisa/detective/grey,
 	)
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
@@ -52,7 +54,8 @@
 		/obj/item/clothing/suit/storage/bomber/alt,
 		/obj/item/clothing/suit/storage/snow_suit/liaison,
 		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat,
-		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/brown,
+		/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/grey,
 		/obj/item/clothing/suit/storage/labcoat,
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
 		/obj/item/clothing/suit/storage/jacket/marine/vest,
@@ -72,6 +75,7 @@
 		/obj/item/clothing/accessory/gold,
 		/obj/item/clothing/accessory/horrible,
 		/obj/item/clothing/glasses/sunglasses/big,
+		/obj/item/clothing/glasses/sunglasses/aviator/silver,
 		/obj/item/clothing/glasses/sunglasses/aviator,
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/glasses/sunglasses/prescription,
@@ -88,11 +92,12 @@
 		/obj/item/clothing/shoes/marine/corporate,
 	)
 	dress_hat = list(
-		/obj/item/clothing/head/fedora,
+		/obj/item/clothing/head/cmcap/wy_cap,
 		/obj/item/clothing/head/beret/cm/black/civilian,
 		/obj/item/clothing/head/beret/cm/white/civilian,
-		/obj/item/clothing/head/hybrisa/synth_detective_hat,
-		/obj/item/clothing/head/hybrisa/synth_detective_hat/alt,
+		/obj/item/clothing/head/hybrisa/fedora,
+		/obj/item/clothing/head/hybrisa/fedora/brown,
+		/obj/item/clothing/head/hybrisa/fedora/grey,
 	)
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/new_human, randomise)

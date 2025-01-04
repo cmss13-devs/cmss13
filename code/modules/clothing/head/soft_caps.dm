@@ -113,14 +113,6 @@
 	icon_state = "secsoft"
 	cap_color = "sec"
 
-/obj/item/clothing/head/soft/sec/corp
-	name = "corporate security cap"
-	desc = "It's baseball hat in corporate colors."
-	icon_state = "corpsoft"
-	cap_color = "corp"
-
-
-
 //marine cap
 
 /obj/item/clothing/head/soft/marine

@@ -98,3 +98,12 @@
       faction.
   harryob, tyeagg (uscm logo), blundir (upp logo):
   - rscadd: added a new lobby screen
+2025-01-04:
+  Blundir:
+  - imagedel: folder sprites reverted to previous set
+  Nanu, Wei (SleepyNecrons, Esslenek), Spartanbobby, HarryOb:
+  - imageadd: Fixes, tweaks and resprites the body types and muscularity plus the
+      skin tones for humans in the game. Female torso's are now a thing as well, as
+      that is brought back. You can now be a man and have a female body, and vice
+      versa. Try not to get catfished Marines. Underwear and Bra's have also been
+      tweaked to fit new models. Sprites created by Wei.

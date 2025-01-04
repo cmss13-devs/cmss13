@@ -191,6 +191,13 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/start/field_doctor,
+/obj/effect/landmark/late_join/field_doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -99738,7 +99745,7 @@ bwG
 rUq
 rUq
 sab
-sab
+aaB
 izk
 pQc
 cWr

@@ -62,14 +62,14 @@
 
 /mob/living/simple_animal/mouse/rat/pet/marvin
 	name = "Marvin"
-	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	desc = "A sleek well kept rat with a tiny collar around its neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
 	body_color = "black"
 	icon_state = "rat_black"
 	holder_type = /obj/item/holder/rat/pet/marvin
 
 /mob/living/simple_animal/mouse/rat/pet/ikit
 	name = "Ikit"
-	desc = "An albino rat with a tiny collar around it's neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
+	desc = "An albino rat with a tiny collar around its neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
 	body_color = "white"
 	icon_state = "rat_white"
 	holder_type = /obj/item/holder/rat/pet/ikit

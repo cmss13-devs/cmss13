@@ -87,12 +87,6 @@
 
 	adopts_squad_color = FALSE
 
-/obj/item/clothing/gloves/marine/techofficer/commander
-	name = "commanding officer's gloves"
-	desc = "You may like these gloves, but THEY think you are unworthy of them."
-	icon_state = "captain"
-	item_state = "egloves"
-
 /obj/item/clothing/gloves/marine/specialist
 	name = "\improper B18 defensive gauntlets"
 	desc = "A pair of heavily armored gloves."

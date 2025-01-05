@@ -25,6 +25,9 @@
 		B.health -= rand(2, 5)
 		B.update_health(1)
 
+/datum/ammo/bullet/shrapnel/hit_lying
+	hits_lying_mobs = TRUE
+
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
 	icon_state = "rubber_pellets"

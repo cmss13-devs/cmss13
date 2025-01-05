@@ -37,6 +37,10 @@
 	var/acid_passive_regen = 1
 	var/acid_gen_cap = 400 //Ammount of acid from wich passive acid generation stops
 
+	var/combat_acid_regen = 1 //how much acid runners passivly generate per tick in combat
+	var/combat_gen_timer = 50 //deci-seconds acid gen is active after a slash
+	var/combat_gen_active = FALSE //this defines if the combat acid generation is on or off
+
 	var/melt_acid_cost = 100
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
@@ -54,10 +58,14 @@
 	if(acid_amount < 0)
 		acid_amount = 0
 
-/datum/behavior_delegate/runner_acider/append_to_stat() //The uniqe status pannel info for Acid Runner is handelt here.
+/datum/behavior_delegate/runner_acider/append_to_stat() //The status pannel info for Acid Runner is handelt here.
 	. = list()
+	var/combat_gen_text = "Inactive"
 	. += "Acid: [acid_amount]/[max_acid]"
 	. += "Acid generation cap: [acid_gen_cap]"
+	if(combat_gen_active)
+		combat_gen_text = "Active"
+	. += "Battle acid generation: [combat_gen_text]"
 	if(caboom_trigger)
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
@@ -84,9 +92,14 @@
 			return
 		modify_acid(acid_slash_regen_standing)
 
+		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_STOPPABLE) //this calls for the prov to turn combat acid gen off after a set time passes
+		combat_gen_active = TRUE //turns combat acid regen on
+
 /datum/behavior_delegate/runner_acider/on_life()
 	if(acid_amount < acid_gen_cap)
 		modify_acid(acid_passive_regen)
+	if(combat_gen_active == TRUE)
+		modify_acid(combat_acid_regen)
 	if(!bound_xeno)
 		return
 	if(bound_xeno.stat == DEAD)
@@ -171,3 +184,6 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
 		return FALSE
 	return ..()
+
+/datum/behavior_delegate/runner_acider/proc/combat_gen_end()
+	combat_gen_active = FALSE

@@ -307,6 +307,19 @@
 	// Designer stuff
 	var/list/speed_node_list = list()
 	var/list/cost_node_list = list()
+	var/list/whitelist_build = list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/wall/thick,
+	/datum/resin_construction/resin_turf/wall/queen,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_turf/membrane/thick,
+	/datum/resin_construction/resin_turf/membrane/queen,
+	/datum/resin_construction/resin_turf/wall/reflective,
+	/datum/resin_construction/resin_obj/door,
+	/datum/resin_construction/resin_obj/door/thick,
+	/datum/resin_construction/resin_obj/door/queen,
+	)
+	var/list/blacklist_caste = list(XENO_CASTE_HIVELORD)
 
 	var/icon_xeno
 	var/icon_xenonid

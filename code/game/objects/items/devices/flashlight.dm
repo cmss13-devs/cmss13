@@ -7,7 +7,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
 	)
 	icon_state = "flashlight"
-	item_state = "flashlight"
+	item_state = ""
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -576,8 +576,13 @@
 /obj/item/device/flashlight/lantern
 	name = "lantern"
 	icon_state = "lantern"
+	item_state = ""
 	desc = "A mining lantern."
 	light_range = 6 // luminosity when on
+	light_color = "#d69c46"
+
+/obj/item/device/flashlight/lantern/on
+	on = TRUE
 
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
@@ -624,7 +629,7 @@
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 		var/turf/target_turf = get_turf(src)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 

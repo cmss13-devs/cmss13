@@ -168,7 +168,7 @@
 	//Admin messaging
 	var/area/area = get_area(location)
 	var/where = "[area.name]|[location.x], [location.y]"
-	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/whereLink = "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 	var/data = " [created_volume] volume -> fuel: [light.fuel] range: [light.light_range] power: [light.light_power]"
 
 	if(holder.my_atom.fingerprintslast)

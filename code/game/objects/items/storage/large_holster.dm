@@ -16,7 +16,7 @@
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
@@ -108,7 +108,7 @@
 	can_hold = list(/obj/item/weapon/sword/machete)
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
@@ -156,6 +156,8 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -168,9 +170,11 @@
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
 	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
-	icon_state = "ceremonial_sword_holster"
+	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
 	force = 12
 	flags_equip_slot = SLOT_WAIST
@@ -191,6 +195,7 @@
 		/obj/item/weapon/gun/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15,
 		/obj/item/weapon/gun/pistol/skorpion,
+		/obj/item/weapon/gun/pistol/m10,
 	)
 	///Guns have a hud offset that throws the vis_contents alignment off.
 	var/gun_offset = 0
@@ -282,6 +287,9 @@
 		if("snow")
 			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/snow.dmi'
 			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/urban.dmi'
+			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/urban.dmi'
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
 	QDEL_NULL(active_fuel)

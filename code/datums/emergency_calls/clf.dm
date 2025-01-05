@@ -4,7 +4,7 @@
 /datum/emergency_call/clf
 	name = "Colonial Liberation Front (Squad)"
 	mob_max = 10
-	arrival_message = "'Attention, you are tresspassing on our soverign territory. Expect no forgiveness.'"
+	arrival_message = "'Attention, you are trespassing on our sovereign territory. Expect no forgiveness.'"
 	objectives = "Assault the USCM, and sabotage as much as you can. Ensure any survivors escape in your custody."
 	probability = 20
 	hostility = TRUE

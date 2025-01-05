@@ -55,20 +55,20 @@
 /obj/structure/machinery/bot/floorbot/interact(mob/user as mob)
 	var/dat
 	dat += "<TT><B>Automatic Station Floor Repairer v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
+	dat += "Status: <A href='byond://?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel is [src.open ? "opened" : "closed"]<BR>"
 	dat += "Tiles left: [src.amount]<BR>"
 	dat += "Behvaiour controls are [src.locked ? "locked" : "unlocked"]<BR>"
 	if(!src.locked || isRemoteControlling(user))
-		dat += "Improves floors: <A href='?src=\ref[src];operation=improve'>[src.improvefloors ? "Yes" : "No"]</A><BR>"
-		dat += "Finds tiles: <A href='?src=\ref[src];operation=tiles'>[src.eattiles ? "Yes" : "No"]</A><BR>"
-		dat += "Make singles pieces of metal into tiles when empty: <A href='?src=\ref[src];operation=make'>[src.maketiles ? "Yes" : "No"]</A><BR>"
+		dat += "Improves floors: <A href='byond://?src=\ref[src];operation=improve'>[src.improvefloors ? "Yes" : "No"]</A><BR>"
+		dat += "Finds tiles: <A href='byond://?src=\ref[src];operation=tiles'>[src.eattiles ? "Yes" : "No"]</A><BR>"
+		dat += "Make singles pieces of metal into tiles when empty: <A href='byond://?src=\ref[src];operation=make'>[src.maketiles ? "Yes" : "No"]</A><BR>"
 		var/bmode
 		if (src.targetdirection)
 			bmode = dir2text(src.targetdirection)
 		else
 			bmode = "Disabled"
-		dat += "<BR><BR>Bridge Mode : <A href='?src=\ref[src];operation=bridgemode'>[bmode]</A><BR>"
+		dat += "<BR><BR>Bridge Mode : <A href='byond://?src=\ref[src];operation=bridgemode'>[bmode]</A><BR>"
 
 	show_browser(user, dat, "Repairbot v1.0 controls", "autorepair")
 	return
@@ -95,7 +95,7 @@
 				to_chat(user, SPAN_WARNING("Access denied."))
 		src.updateUsrDialog()
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/bot/floorbot/Topic(href, href_list)
 	if(..())

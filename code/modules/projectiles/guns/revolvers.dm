@@ -10,7 +10,17 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+
 	matter = list("metal" = 2000)
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
+	gun_category = GUN_CATEGORY_HANDGUN
+	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
+	movement_onehanded_acc_penalty_mult = 3
+	has_empty_icon = FALSE
+	has_open_icon = TRUE
+	current_mag = /obj/item/ammo_magazine/internal/revolver
+
 	fire_sound = 'sound/weapons/gun_44mag_v4.ogg'
 	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
 	cocked_sound = 'sound/weapons/gun_revolver_spun.ogg'
@@ -19,17 +29,11 @@
 	var/hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	var/spin_sound = 'sound/effects/spin.ogg'
 	var/thud_sound = 'sound/effects/thud.ogg'
-	var/trick_delay = 4 SECONDS
 	var/list/cylinder_click = list('sound/weapons/gun_empty.ogg')
+
+	var/trick_delay = 4 SECONDS
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
-	gun_category = GUN_CATEGORY_HANDGUN
-	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
-	movement_onehanded_acc_penalty_mult = 3
-	has_empty_icon = FALSE
-	has_open_icon = TRUE
-	current_mag = /obj/item/ammo_magazine/internal/revolver
 
 /obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -415,7 +419,7 @@
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
 
-/obj/item/weapon/gun/revolver/m44/custom/pkd_special/set_gun_config_values()
+/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_config_values()
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2

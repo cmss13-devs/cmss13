@@ -493,7 +493,7 @@
 
 	var/datum/supply_order/new_order = new()
 	new_order.ordernum = GLOB.supply_controller.ordernum++
-	new_order.object = GLOB.supply_packs_datums[nuketype]
+	new_order.objects = list(GLOB.supply_packs_datums[nuketype])
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order

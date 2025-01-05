@@ -537,16 +537,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 	if(GLOB.player_entities["[ckey]"])
 		return GLOB.player_entities["[ckey]"]
-	var/datum/player_entity/P = new()
-	P.ckey = ckey
-	P.entity_name = ckey
-	GLOB.player_entities["[ckey]"] = P
-	return P
+	var/datum/player_entity/p_entity = new()
+	p_entity.ckey = ckey
+	GLOB.player_entities["[ckey]"] = p_entity
+	return p_entity
 
+//Returning it back... the last what I wanted to do... but our DB game side enginee had his own ideas on that.
 /proc/save_player_entities()
 	for(var/key_ref in GLOB.player_entities)
-		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
-		// P.save_statistics()
+		var/datum/player_entity/p_entity = GLOB.player_entities["[key_ref]"]
+		p_entity.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_admins("STATISTICS: Statistics saving complete.")
 

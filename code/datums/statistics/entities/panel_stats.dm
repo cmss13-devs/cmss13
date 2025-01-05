@@ -8,12 +8,17 @@
 /datum/player_entity/ui_state(mob/user)
 	return GLOB.always_state
 
+/datum/player_entity/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(isliving(user))
+		return UI_CLOSE
+
 /datum/player_entity/ui_data(mob/user, datum/entity/statistic_round/viewing_round = GLOB.round_statistics)
-	var/list/data = list()
-	data["data_tabs"] = list()
+	. = list()
+	.["data_tabs"] = list()
 	if(viewing_round)
-		data["round"] = viewing_round.cached_tgui_data
-		data["data_tabs"] += "Round"
+		.["round"] = viewing_round.cached_tgui_data
+		.["data_tabs"] += "Round"
 
 	if(length(medals))
 		var/list/medal_list = list()
@@ -27,10 +32,10 @@
 				"giver" = sanitize(medal.giver_name),
 			))
 
-		data["medals"] = medal_list
-		data["data_tabs"] += "Medals"
+		.["medals"] = medal_list
+		.["data_tabs"] += "Medals"
 
-	data["factions"] = list()
+	.["factions"] = list()
 	for(var/faction_to_get in statistics)
 		var/datum/statistic_groups/group = statistics[faction_to_get]
 		var/list/nemesis = list()
@@ -113,8 +118,8 @@
 			))
 
 		if(length(total_statistics))
-			data["data_tabs"] += group.group_name
-			data["factions"][group.group_name] = list(
+			.["data_tabs"] += group.group_name
+			.["factions"][group.group_name] = list(
 				"name" = group.group_name,
 				"nemesis" = nemesis,
 				"total_deaths" = length(group.statistic_deaths),
@@ -123,7 +128,6 @@
 				"top_statistics" = top_statistics,
 				"statistics_list" = statistics_list,
 			)
-	return data
 
 /datum/entity/statistic_round/process()
 	var/list/all_participants_list = list()

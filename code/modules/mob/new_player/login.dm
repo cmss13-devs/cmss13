@@ -122,6 +122,7 @@
 				return FALSE
 
 			if(client?.player_data?.player_entity)
+				client.player_data.player_entity.try_recalculate()
 				client.player_data.player_entity.tgui_interact(src)
 			return TRUE
 

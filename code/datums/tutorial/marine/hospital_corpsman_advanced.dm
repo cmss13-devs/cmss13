@@ -1738,6 +1738,82 @@
 			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 			marine_dummy.rejuvenate()
 
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/section_4()
+
+	slower_message_to_player("<b>Section 4: Specialized Treatments</b>.")
+	slower_message_to_player("Section 4 will cover treatment methods for uncommon, but still life-threatening afflictions a HM may come across on the field.")
+
+/datum/tutorial/marine/hospital_corpsman_advanced/proc/medevacs(datum/source, obj/structure/closet/bodybag/stasisbag)
+
+	switch(stage)
+		if(0)
+			slower_message_to_player("<b>Section 4.1: Medical Evacuations, Stasis</b>.")
+			slower_message_to_player("Despite the vast skillset of a Marine Hospital Corpsman, the condition of some patients occasionally fall beyond your abilities of care.")
+
+			stage++
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 16 SECONDS)
+			return
+
+		if(1)
+			slower_message_to_player("Namely, a HM is unable to repair organ damage, bone fractures, <u>SEVERE</u> overdoses, or <b>Larva Infections</b>.")
+			slower_message_to_player("In these situations, you should defer treatment to a <u>trained Doctor</u> or <u>Synthetic</u> on the field.")
+			slower_message_to_player("If no Doctor or Synthetic is immediately available, or if a patient has been infected with an <b>Alien Larva (Hugged)</b>, you will need to perform a <b>Medical Evacuation (MedEvac)</b>.")
+
+			stage++
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 22 SECONDS)
+			return
+
+		if(2)
+			slower_message_to_player("<b>MedEvacs</b>, in general terms, describe the process of transporting a patient from the field, to the Almayer medbay for treatment.")
+			slower_message_to_player("Primarily, this is done with a <b>MedEvac Bed</b>! One of which has just appeared in the tutorial chamber!")
+
+			slower_message_to_player("<b>MedEvac Beds</b> work by sending a signal to an overhead dropship, commonly dropship <b>Normandy</b>, allowing for a secured patient to be airlifted and transported back to the Almayer at record pace for treatment!")
+
+			var/obj/structure/bed/medevac_stretcher/prop/medevac = new(loc_from_corner(2, 1))
+			add_to_tracking_atoms(medevac)
+			add_highlight(medevac, COLOR_GREEN)
+
+			stage++
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 25 SECONDS)
+			return
+
+		if(3)
+			marine_dummy.say("Doc, I've been hugged!")
+
+			slower_message_to_player("For example, our good friend Pvt Dummy insists that they've been 'hugged' (Infected) by an Alien Facehugger, and will require <u>URGENT</u> surgery to prevent a chestbursting.")
+			slower_message_to_player("Since we are unable to carry out a Larva removal surgery ourselves, we must <b>MedEvac</b> Pvt Dummy as soon as possible!")
+			slower_message_to_player("First, we must place Pvt Dummy into a <b>Stasis Bag</b>, a fully enclosing cover that slows the internals of Pvt Dummy.")
+			slower_message_to_player(" A <b>Stasis Bag</b> greatly reduces the growth-rate of Alien Larva inside of a patient (as well as extends the time until he chestbursts), giving the Almayer Doctors more time to operate without incident.")
+			slower_message_to_player("Pick up the <b>Stasis Bag</b> from the desk, and press <b>[retrieve_bind("activate_inhand")]</b> to deploy it!")
+
+			var/obj/item/bodybag/cryobag/cryobag = new(loc_from_corner(0, 4))
+			add_highlight(cryobag, COLOR_GREEN)
+
+			stage++
+			RegisterSignal(tutorial_mob, COMSIG_MOB_ITEM_BODYBAG_DEPLOYED, PROC_REF(medevacs))
+			return
+
+		if(4)
+			UnregisterSignal(tutorial_mob, COMSIG_MOB_ITEM_BODYBAG_DEPLOYED)
+			add_highlight(stasisbag, COLOR_GREEN)
+			add_to_tracking_atoms(stasisbag)
+
+			slower_message_to_player("Excellent, now, drag Pvt Dummy over the <b>Stasis Bag</b> and click anywhere over the bag to <u>zip it closed</u>!")
+
+			slower_message_to_player("Now that Pvt Dummy is secured in the <b>Stasis Bag</b>, drag the closed bag to the <b>MedEvac Bed</b> and secure it within by clicking and dragging your mouse from the Stasis Bag to the Medevac Bed while next to both.")
+
+			stage++
+			RegisterSignal(stasisbag, COMSIG_LIVING_SET_BUCKLED, PROC_REF(medevacs))
+			return
+
+		if(5)
+			UnregisterSignal(source, COMSIG_LIVING_SET_BUCKLED)
+			slower_message_to_player("While this is just a simulation, in a real situation, you would next attempt to contact the <b>Close-Air-Support Pilot</b> over <b>Medical Comms</b> or via a direct phonecall, and notify them that your MedEvac beacon is active, as well as the <u>condition and urgency of the patient</u>.")
+			slower_message_to_player("MedEvac beds <u>MUST</u> be deployed outdoors to function, always make sure you are <u>OUTSIDE</u> when using the MedEvac system.")
+
+			stage = 0
+
+
 /datum/tutorial/marine/hospital_corpsman_advanced/proc/tutorial_close()
 	SIGNAL_HANDLER
 

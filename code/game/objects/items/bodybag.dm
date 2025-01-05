@@ -29,6 +29,7 @@
 	forceMove(deployed)
 	deployed.add_fingerprint(user)
 	deployed.open(user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_BODYBAG_DEPLOYED, deployed)
 
 
 /obj/item/bodybag/cryobag

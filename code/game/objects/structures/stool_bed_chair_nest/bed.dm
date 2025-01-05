@@ -87,6 +87,9 @@
 	if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
 	add_fingerprint(user)
+	var/mob/living/carbon/human/containedmob = locate() in B.contents
+	if(containedmob)
+		SEND_SIGNAL(src, COMSIG_LIVING_BED_BUCKLED, containedmob)
 
 /obj/structure/bed/unbuckle()
 	if(buckled_bodybag)

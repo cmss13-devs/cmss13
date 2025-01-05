@@ -22,7 +22,6 @@
 	desc = "Test your medical skills against an endless wave of wounded Marines!"
 	tutorial_id = "marine_hm_3"
 	icon_state = "medic"
-	tutorial_id = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
 	// holder for the CMO NPC
@@ -189,9 +188,15 @@
 
 	target.updatehealth()
 	target.UpdateDamageIcon()
-	RegisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(make_agent_leave))
+	RegisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(final_health_checks))
 	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	//sleep(25)
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks()
+
+	//for(var/obj/limb/limb in target.limbs)
+	//	if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
+
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
 

@@ -198,3 +198,5 @@
 
 /// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
 #define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"
+/// From /obj/item/bodybag/proc/deploy_bodybag() : (mob/user, obj/structure/closet/bodybag/deployed)
+#define COMSIG_MOB_ITEM_BODYBAG_DEPLOYED "mob_bodybag_deployed"

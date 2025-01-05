@@ -1,22 +1,3 @@
-/client
-	var/datum/entity/clan_player/clan_info
-
-/client/load_player_data_info(datum/entity/player/player)
-	set waitfor = FALSE
-
-	. = ..()
-	if(GLOB.RoleAuthority && check_whitelist_status(WHITELIST_PREDATOR))
-		clan_info = GET_CLAN_PLAYER(player.id)
-		clan_info.sync()
-
-		if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
-			clan_info.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
-			clan_info.permissions |= CLAN_PERMISSION_ALL
-		else
-			clan_info.permissions &= ~CLAN_PERMISSION_ADMIN_MANAGER // Only the leader can manage the ancients
-
-		clan_info.save()
-
 /client/proc/usr_create_new_clan()
 	set name = "Create New Clan"
 	set category = "Debug"

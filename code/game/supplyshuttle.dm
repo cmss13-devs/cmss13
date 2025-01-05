@@ -1407,7 +1407,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
 			dat += "Raised<br>"
-			dat += "<a href='?src=\ref[src];lower_platform=1'>Lower platform</a><br>"
+			dat += "<a href='byond://?src=\ref[src];lower_platform=1'>Lower platform</a><br>"
 		else
 			dat += "Lowered"
 			dat += "<br><hr>"
@@ -1418,7 +1418,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					if(order.has_vehicle_lock())
 						dat += order.failure_message
 					else
-						dat += "<a href='?src=\ref[src];get_vehicle=\ref[order]'>[order.name]</a><br>"
+						dat += "<a href='byond://?src=\ref[src];get_vehicle=\ref[order]'>[order.name]</a><br>"
 			else
 				dat += "No vehicles are available for retrieval."
 

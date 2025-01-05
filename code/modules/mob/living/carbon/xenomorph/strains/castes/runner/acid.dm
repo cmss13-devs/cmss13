@@ -38,7 +38,7 @@
 	var/acid_gen_cap = 400 //Ammount of acid from wich passive acid generation stops
 
 	var/combat_acid_regen = 1 //how much acid runners passivly generate per tick in combat
-	var/combat_gen_timer = 50 //deci-seconds acid gen is active after a slash
+	var/combat_gen_timer = 30 //deci-seconds acid gen is active after a slash
 	var/combat_gen_active = FALSE //this defines if the combat acid generation is on or off
 
 	var/melt_acid_cost = 100
@@ -92,7 +92,7 @@
 			return
 		modify_acid(acid_slash_regen_standing)
 
-		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_STOPPABLE) //this calls for the prov to turn combat acid gen off after a set time passes
+		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //this calls for the proc to turn combat acid gen off after a set time passes
 		combat_gen_active = TRUE //turns combat acid regen on
 
 /datum/behavior_delegate/runner_acider/on_life()

@@ -127,12 +127,12 @@
 	..()
 	if(stat & BROKEN)
 		icon_state = "body_scannerconsole-p"
+		return
+	if(stat & NOPOWER)
+		spawn(rand(0, 15))
+			icon_state = "body_scannerconsole-p"
 	else
-		if (stat & NOPOWER)
-			spawn(rand(0, 15))
-				src.icon_state = "body_scannerconsole-p"
-		else
-			icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 
 

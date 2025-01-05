@@ -5094,7 +5094,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/starboard)
 "aGH" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aGN" = (
@@ -9660,7 +9660,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bpT" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
 "bpV" = (
@@ -11148,7 +11148,7 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/living/cryo_cells)
 "bEc" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bEd" = (
@@ -12481,7 +12481,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bNA" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
 	},
@@ -21148,7 +21148,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/computer/supplycomp/vehicle,
+/obj/structure/machinery/computer/supply/asrs/vehicle,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "eLu" = (
@@ -35668,7 +35668,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -52615,7 +52615,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -52623,7 +52623,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 5;
 	pixel_y = -2
@@ -54295,7 +54295,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -54303,7 +54303,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -57368,7 +57368,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "tFS" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32

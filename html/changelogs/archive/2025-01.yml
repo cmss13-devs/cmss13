@@ -107,3 +107,16 @@
       that is brought back. You can now be a man and have a female body, and vice
       versa. Try not to get catfished Marines. Underwear and Bra's have also been
       tweaked to fit new models. Sprites created by Wei.
+2025-01-05:
+  Awan:
+  - bugfix: Fixed some gearsets having improper radio/chat prefixes.
+  Blundir:
+  - imageadd: resprites all beret object icons and makes them match the onmob sprites,
+      beret format standartization
+  nauticall:
+  - ui: Changed the crew manifest to TGUI.
+  private-tristan:
+  - bugfix: CAS no longer has infinite night vision, contact research for matrix upgrades
+      today!
+  realforest2001:
+  - bugfix: Preset corpses and pizza ERTs now have correct paygrade displays.

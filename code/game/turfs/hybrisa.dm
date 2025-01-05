@@ -10,6 +10,9 @@
 	icon = 'icons/turf/floors/hybrisafloors.dmi'
 	icon_state = "hybrisa"
 
+/turf/open/floor/hybrisa/is_plasteel_floor()
+	return FALSE
+
 /turf/open/floor/plating/engineer_ship
 	icon = 'icons/turf/floors/engineership.dmi'
 	burnable_tile = FALSE

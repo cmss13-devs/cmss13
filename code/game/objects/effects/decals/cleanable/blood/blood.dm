@@ -46,7 +46,7 @@
 	. = ..()
 	// Check if the blood is dry and only humans
 	// can make footprints
-	if(!amount || !ishuman(AM))
+	if(!amount || !ishuman(AM) || QDELETED(AM))
 		return
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))

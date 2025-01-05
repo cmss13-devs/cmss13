@@ -190,6 +190,13 @@
 	desc = "A scrap of paper, you think some of the words might still be readable."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
+	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	w_class = SIZE_TINY
 
 /obj/item/document_objective/report
@@ -197,6 +204,13 @@
 	desc = "A written report from someone for their supervisor about the status of some kind of project."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_p_words"
+	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	w_class = SIZE_TINY
 	reading_time = 60
 	objective_type = /datum/cm_objective/document/progress_report

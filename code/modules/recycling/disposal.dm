@@ -130,7 +130,7 @@
 		if(length(S.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You empty [S] into [src]."))
 			for(var/obj/item/O in S.contents)
-				S.remove_from_storage(O, src)
+				S.remove_from_storage(O, src, user)
 			S.update_icon()
 			update()
 			return

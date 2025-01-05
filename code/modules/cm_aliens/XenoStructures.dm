@@ -373,7 +373,7 @@
 		W.update_connections()
 		W.update_icon()
 
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
@@ -382,8 +382,10 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
-	if(area && area.linked_lz)
-		AddComponent(/datum/component/resin_cleanup)
+	if(area)
+		if(area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
+		area.current_resin_count++
 
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
@@ -482,14 +484,17 @@
 
 /obj/structure/mineral_door/resin/Destroy()
 	relativewall_neighbours()
-	var/turf/U = loc
+	var/area/area = get_area(src)
+	area?.current_resin_count--
+	var/turf/base_turf = loc
 	spawn(0)
-		var/turf/T
-		for(var/i in GLOB.cardinals)
-			T = get_step(U, i)
-			if(!istype(T)) continue
-			for(var/obj/structure/mineral_door/resin/R in T)
-				R.check_resin_support()
+		var/turf/adjacent_turf
+		for(var/cardinal in GLOB.cardinals)
+			adjacent_turf = get_step(base_turf, cardinal)
+			if(!istype(adjacent_turf))
+				continue
+			for(var/obj/structure/mineral_door/resin/door in adjacent_turf)
+				door.check_resin_support()
 	. = ..()
 
 /obj/structure/mineral_door/resin/proc/healthcheck()

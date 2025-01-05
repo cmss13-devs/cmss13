@@ -11,7 +11,8 @@
 
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
-	icon_state ="bookEngineering"
+	icon_state = "book_engineering"
+	item_state = "book_engineering"
 	author = "Engineering Encyclopedia"
 	title = "Station Repairs and Construction"
 
@@ -31,7 +32,8 @@
 
 /obj/item/book/manual/engineering_hacking
 	name = "Hacking"
-	icon_state ="bookHacking"
+	icon_state = "book_hacking"
+	item_state = "book_hacking"
 	author = "Engineering Encyclopedia"
 	title = "Hacking"
 
@@ -51,7 +53,8 @@
 
 /obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
-	icon_state ="book"
+	icon_state = "rdbook"
+	item_state = "book_dark"
 	author = "Randall Varn, Einstein Engines Senior Mechanic"
 	title = "APLU \"Ripley\" Construction and Operation Manual"
 
@@ -129,6 +132,7 @@
 /obj/item/book/manual/research_and_development
 	name = "Research and Development 101"
 	icon_state = "rdbook"
+	item_state = "book_white"
 	author = "Dr. L. Ight"
 	title = "Research and Development 101"
 
@@ -149,7 +153,8 @@
 /obj/item/book/manual/security_space_law
 	name = "Standard Operating Procedure"
 	desc = "A set of USCM guidelines for keeping law and order on their vessels."
-	icon_state = "bookSpaceLaw"
+	icon_state = "book_sop"
+	item_state = "book_sop"
 	author = "USCM High Command"
 	title = "Standard Operating Procedure"
 
@@ -171,6 +176,7 @@
 	name = "Marine Law"
 	desc = "A set of guidelines for keeping law and order on military vessels."
 	icon_state = "bookSpaceLaw"
+	item_state = "book_law"
 	author = "USCM High Command"
 	title = "Marine Law"
 
@@ -191,7 +197,8 @@
 /obj/item/book/manual/surgery
 	name = "Surgical Reference Manual"
 	desc = "A quick reference manual for surgical procedures."
-	icon_state = "bookMedical"
+	icon_state = "book_medical"
+	item_state = "book_medical"
 	author = "Weyland-Yutani Medicine Department"
 	title = "Surgical Reference Manual"
 
@@ -212,7 +219,8 @@
 /obj/item/book/manual/medical_diagnostics_manual
 	name = "WY Medical Diagnostics Manual"
 	desc = "First, do no harm. A detailed medical practitioner's guide."
-	icon_state = "bookMedical"
+	icon_state = "book_medical"
+	item_state = "book_medical"
 	author = "Weyland-Yutani Medicine Department"
 	title = "WY Medical Diagnostics Manual"
 
@@ -257,7 +265,8 @@
 
 /obj/item/book/manual/engineering_guide
 	name = "Engineering Textbook"
-	icon_state ="bookEngineering2"
+	icon_state = "book_engineering2"
+	item_state = "book_engineering2"
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
 
@@ -277,6 +286,7 @@
 /obj/item/book/manual/chef_recipes
 	name = "Chef Recipes"
 	icon_state = "cooked_book"
+	item_state = "book_green"
 	author = "Victoria Ponsonby"
 	title = "Chef Recipes"
 
@@ -336,6 +346,7 @@
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes"
 	icon_state = "barbook"
+	item_state = "book_red"
 	author = "Sir John Rose"
 	title = "Barman Recipes"
 
@@ -391,6 +402,7 @@
 /obj/item/book/manual/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
+	item_state ="book_red"
 	author = "Weyland-Yutani"
 	title = "The Film Noir: Proper Procedures for Investigations"
 
@@ -434,7 +446,8 @@
 
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
-	icon_state ="bookNuclear"
+	icon_state = "bookNuclear"
+	item_state = "book_particle"
 	author = "The Colonial Liberation Front"
 	title = "Fission Mailed: Nuclear Sabotage 101"
 
@@ -487,6 +500,7 @@
 /obj/item/book/manual/atmospipes
 	name = "Pipes and You: Getting To Know Your Scary Tools"
 	icon_state = "pipingbook"
+	item_state = "book_piping"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "Pipes and You: Getting To Know Your Scary Tools"
 	dat = {"<html>
@@ -595,6 +609,7 @@
 /obj/item/book/manual/evaguide
 	name = "EVA Gear and You: Not Spending All Day Inside"
 	icon_state = "evabook"
+	item_state = "book_blue"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "EVA Gear and You: Not Spending All Day Inside"
 	dat = {"<html>
@@ -666,7 +681,8 @@
 
 /obj/item/book/manual/hydroponics_beekeeping
 	name = "The Ins and Outs of Apiculture - A Precise Art"
-	icon_state ="bookHydroponicsBees"
+	icon_state = "bookHydroponicsBees"
+	item_state = "book_green"
 	author = "Beekeeper Dave"
 	title = "The Ins and Outs of Apiculture - A Precise Art"
 	dat = {"<html>
@@ -698,7 +714,8 @@
 
 /obj/item/book/manual/orbital_cannon_manual
 	name = "USCM Orbital Bombardment System Manual"
-	icon_state = "bookEngineering"
+	icon_state = "book_engineering"
+	item_state = "book_engineering"
 	author = "USCM R&D"
 	title = "USCM Orbital Bombardment System Manual"
 

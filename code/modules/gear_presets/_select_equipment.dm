@@ -298,8 +298,13 @@
 				icon.color = minimap_icon[icons]
 			background.overlays += icon
 	else
-		var/iconstate = minimap_icon ? minimap_icon : "unknown"
-		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+		var/obj/item/card/id/ID = user.get_idcard()
+		var/icon_to_use
+		if(ID.minimap_icon_override)
+			icon_to_use = ID.minimap_icon_override
+		else
+			icon_to_use = minimap_icon ? minimap_icon : "unknown"
+		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = icon_to_use)
 		icon.appearance_flags = RESET_COLOR
 		background.overlays += icon
 

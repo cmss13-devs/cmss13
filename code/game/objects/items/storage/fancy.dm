@@ -22,10 +22,13 @@
 	name = "donut box"
 	desc = "A box where round, heavenly, holey pastries reside."
 	var/icon_type = "donut"
+	var/no_item_state_override = FALSE
 	var/plural = "s"
 
 /obj/item/storage/fancy/update_icon()
 	icon_state = "[icon_type]box[length(contents)]"
+	if(!no_item_state_override)
+		item_state = "[icon_type]box[length(contents)]"
 
 /obj/item/storage/fancy/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
@@ -305,6 +308,10 @@
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi'
+	)
 	throwforce = 2
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
@@ -364,7 +371,6 @@
 	name = "\improper Lucky Strikes matchbook"
 	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
 	icon_state = "mpacket"
-	item_state = "zippo"
 	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_type = "match"
 	item_state_slots = list(WEAR_AS_GARB = "matches_mre")
@@ -389,9 +395,9 @@
 				user.apply_damage(3, BURN, pick("r_hand", "l_hand"))
 				if((user.pain.feels_pain) && prob(25))
 					user.emote("scream")
-				W.light_match()
+				W.light_match(user)
 			else
-				W.light_match()
+				W.light_match(user)
 				to_chat(user, SPAN_NOTICE("You light \the [W] on \the [src]."))
 	else
 		to_chat(user, SPAN_NOTICE("\The [W] fails to light."))
@@ -423,11 +429,17 @@
 // VIAL BOX
 
 /obj/item/storage/fancy/vials
-	icon = 'icons/obj/items/vialbox.dmi'
-	icon_state = "vialbox0"
-	icon_type = "vial"
 	name = "vial storage box"
 	desc = "A place to store your fragile vials when you are not using them."
+	icon = 'icons/obj/items/vialbox.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
+	icon_state = "vialbox0"
+	item_state = "vialbox"
+	icon_type = "vial"
+	no_item_state_override = TRUE
 	is_objective = TRUE
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
@@ -471,11 +483,11 @@
 	desc = "A locked box for keeping things away from children."
 	icon = 'icons/obj/items/vialbox.dmi'
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
 	icon_state = "vialbox0"
-	item_state = "box"
+	item_state = "vialbox"
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.
@@ -497,7 +509,6 @@
 /obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	update_icon()
-
 // Trading Card Pack
 
 /obj/item/storage/fancy/trading_card

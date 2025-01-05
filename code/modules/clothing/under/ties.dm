@@ -113,6 +113,8 @@
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+	)
+	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)

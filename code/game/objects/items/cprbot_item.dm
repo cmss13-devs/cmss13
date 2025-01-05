@@ -53,35 +53,6 @@
 			to_chat(user, SPAN_WARNING("The [welder_tool] needs to be on!"))
 			return
 
-		if(!welder_tool.remove_fuel(5, user))  // Ensure the welder has enough fuel to operate
-			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
-			return
-
-		playsound(src, 'sound/items/Welder.ogg', 25, 1)
-
-		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			return
-
-		var/obj/item/cprbot_item/new_cprbot_item = new /obj/item/cprbot_item(loc)
-
-		if(user)
-			if(!user.put_in_active_hand(new_cprbot_item))
-				if(!user.put_in_inactive_hand(new_cprbot_item))
-					new_cprbot_item.forceMove(loc)
-		else
-			new_cprbot_item.forceMove(loc)
-
-/obj/item/cprbot_broken/attackby(obj/item/attacked_by, mob/living/user)
-	if(iswelder(attacked_by))
-		if(!HAS_TRAIT(attacked_by, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-
-		var/obj/item/tool/weldingtool/welder_tool = attacked_by
-		if(!welder_tool.isOn())
-			to_chat(user, SPAN_WARNING("The [welder_tool] needs to be on!"))
-			return
-
 		if(!welder_tool.remove_fuel(5, user))  // Ensure enough fuel is available
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return

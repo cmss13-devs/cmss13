@@ -380,12 +380,16 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "abB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/west_tunnel)
+"abC" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -395,6 +399,13 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"abE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
@@ -49077,13 +49088,6 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
-"uKX" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "uLr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50309,12 +50313,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
-"xlt" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/west_tunnel)
 "xlE" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -56952,7 +56950,7 @@ aQW
 aQW
 aQW
 aQW
-abB
+abE
 aQW
 aQW
 aQW
@@ -60775,7 +60773,7 @@ cLX
 cLX
 cLX
 cLX
-xlt
+abB
 wrz
 cfl
 bkj
@@ -67794,7 +67792,7 @@ cdo
 cla
 dNl
 clU
-uKX
+abC
 wjR
 ceK
 cxe

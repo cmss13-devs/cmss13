@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(tgui)
 	if(length(user?.tgui_open_uis) == 0)
 		return count
 	for(var/datum/tgui/ui in user.tgui_open_uis)
-		if(isnull(src_object) || ui.src_object == src_object)
+		if((isnull(src_object) || ui.src_object == src_object) && ui.closeable)
 			ui.close()
 			count++
 	return count

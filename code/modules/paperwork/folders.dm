@@ -3,6 +3,10 @@
 	desc = "A folder."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi'
+		)
 	w_class = SIZE_SMALL
 	var/updateicon = 0//If they spawn with premade papers, update icon
 

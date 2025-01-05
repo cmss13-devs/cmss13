@@ -221,6 +221,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Brown Suit Pants", 12, /obj/item/clothing/under/liaison_suit/brown, null, VENDOR_ITEM_REGULAR),
 	list("White Suit Pants", 12, /obj/item/clothing/under/liaison_suit/corporate_formal, null, VENDOR_ITEM_REGULAR),
 	list("Working Joe Uniform", 36, /obj/item/clothing/under/rank/synthetic/joe, null, VENDOR_ITEM_REGULAR),
+	list("EMS Uniform - Red", 12, /obj/item/clothing/under/hybrisa/paramedic/red, null, VENDOR_ITEM_REGULAR),
+	list("EMS Uniform - Green", 12, /obj/item/clothing/under/hybrisa/paramedic, null, VENDOR_ITEM_REGULAR),
 
 	list("GLASSES", 0, null, null, null),
 	list("HealthMate HUD", 12, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_REGULAR),
@@ -330,6 +332,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("USCM Poncho (Black)", 12, /obj/item/clothing/accessory/poncho/black, null, VENDOR_ITEM_REGULAR),
 	list("USCM Poncho (Blue)", 12, /obj/item/clothing/accessory/poncho/blue, null, VENDOR_ITEM_REGULAR),
 	list("USCM Poncho (Purple)", 12, /obj/item/clothing/accessory/poncho/purple, null, VENDOR_ITEM_REGULAR),
+	list("EMS Jumpsuit - Red", 12, /obj/item/clothing/suit/hybrisa/EMT_red_utility, null, VENDOR_ITEM_REGULAR),
+	list("EMS Jumpsuit - Green", 12, /obj/item/clothing/suit/hybrisa/EMT_green_utility, null, VENDOR_ITEM_REGULAR),
 
 
 	list("BACKPACK", 0, null, null, null),
@@ -356,6 +360,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Red Tie", 6, /obj/item/clothing/accessory/red, null, VENDOR_ITEM_REGULAR),
 	list("Purple Tie", 6, /obj/item/clothing/accessory/purple, null, VENDOR_ITEM_REGULAR),
 	list("Dress Gloves", 6, /obj/item/clothing/gloves/marine/dress, null, VENDOR_ITEM_REGULAR),
+	list("Holobadge", 6, /obj/item/clothing/accessory/holobadge, null, VENDOR_ITEM_REGULAR),
+	list("Briefcase", 12, /obj/item/storage/, null, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake

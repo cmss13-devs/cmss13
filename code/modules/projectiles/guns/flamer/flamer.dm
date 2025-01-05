@@ -77,11 +77,12 @@
 	else
 		. += "There's no tank in [src]!"
 
-/obj/item/weapon/gun/flamer/update_icon()
+/obj/item/weapon/gun/flamer/update_icon(mob/user)
 	..()
 
 	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
 	var/new_icon_state = base_gun_icon
+
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state

@@ -933,6 +933,9 @@
 	icon = 'icons/turf/floors/aicore.dmi'
 	icon_state = "ai_floor1"
 
+/turf/open/floor/almayer/aicore/is_plasteel_floor()
+	return FALSE
+
 /turf/open/floor/almayer/aicore/glowing
 	icon_state = "ai_floor2"
 	light_color = "#d69c46"
@@ -1113,6 +1116,9 @@
 	icon_state = "floor"
 	name = "ice colony floor"
 	plating_type = /turf/open/floor/plating/icefloor
+
+/turf/open/floor/icefloor/is_plasteel_floor()
+	return FALSE
 
 /turf/open/floor/icefloor/shuttle_floor6
 	icon = 'icons/turf/shuttle.dmi'

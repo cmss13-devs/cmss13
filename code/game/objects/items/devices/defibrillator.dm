@@ -2,6 +2,10 @@
 	name = "emergency defibrillator"
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
 	icon_state = "defib"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	item_state = "defib"
 	icon = 'icons/obj/items/medical_tools.dmi'
 	flags_atom = FPRINT|CONDUCT
@@ -320,7 +324,7 @@
 	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
 	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
 	icon_state = "reset_key"
-	item_state = "defib"
+	item_state = "synth_reset_key"
 	w_class = SIZE_SMALL
 	charge_cost = 1000
 	force = 0

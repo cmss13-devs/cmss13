@@ -126,16 +126,7 @@
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
 					P.info += contents
-				else
-					printing = TRUE
-					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-					sleep(40)
-					var/obj/item/paper/P = new /obj/item/paper(src.loc)
-					P.name = text("Crew Manifest ([])", worldtime2text())
-					P.info = {"<center><h4>Crew Manifest</h4></center>
-						<br>
-						[GLOB.data_core.get_manifest(TRUE)]
-					"}
+
 				visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
 				printing = FALSE
 				return TRUE
@@ -304,7 +295,6 @@
 	var/list/data = list()
 	data["station_name"] = MAIN_SHIP_NAME
 	data["weyland_access"] = is_weyland
-	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
 
 	var/list/departments
 	if(is_weyland)

@@ -1177,7 +1177,7 @@
 //Only an onmob for the skull
 /obj/item/clothing/accessory/limb/skeleton
 	name = "How did you get this?"
-	desc = "A bone from a human."
+	desc = "A bone that appears to be of human origin."
 	icon = 'icons/obj/items/skeleton.dmi'
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
@@ -1185,6 +1185,7 @@
 	slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+	var/loosejaw = FALSE
 
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
@@ -1220,7 +1221,7 @@
 
 /obj/item/clothing/accessory/limb/skeleton/head
 	name = "skull"
-	icon_state = "skull"
+	icon_state = "skull2"
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/limb/skeleton/head/spine

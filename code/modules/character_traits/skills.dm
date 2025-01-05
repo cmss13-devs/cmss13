@@ -94,8 +94,8 @@
 	trait_name = "Loader Training"
 	trait_desc = "Boosts the endurance skill by 1."
 	skill = SKILL_ENDURANCE
-	skill_cap = SKILL_ENDURANCE_MASTER
-	skill_increment = SKILL_ENDURANCE_MASTER
+	skill_cap = SKILL_ENDURANCE_TRAINED
+	skill_increment = 1
 
 /datum/character_trait/skills/k9_handler
 	trait_name = "K9 Handler Training"

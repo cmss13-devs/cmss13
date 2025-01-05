@@ -115,9 +115,6 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds/Initialize()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_OPENED, PROC_REF(open))
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds/Initialize()
-	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_CLOSED, PROC_REF(close))
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment

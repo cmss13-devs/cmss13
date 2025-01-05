@@ -30,7 +30,7 @@
 			. += SPAN_NOTICE("\The [src] can be removed with \a [english_list(tool_output)].")
 
 
-/turf/open/floor/plating/is_plasteel_floor()
+/turf/open/floor/is_plasteel_floor()
 	return TRUE
 
 ////////////////////////////////////////////

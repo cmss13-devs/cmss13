@@ -30,8 +30,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
 	)
-	icon_state = "trashbag0"
-	item_state = "trashbag"
+	icon_state = "trashbag"
 
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
@@ -43,19 +42,23 @@
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 	flags_equip_slot = NONE
 
-/obj/item/storage/bag/trash/update_icon()
+/obj/item/storage/bag/trash/update_icon(mob/living/carbon/human/user)
 	var/sum_storage_cost = 0
 	for(var/obj/item/item in contents)
 		sum_storage_cost += item.get_storage_cost()
 
 	if(!sum_storage_cost)
-		icon_state = "trashbag0"
+		icon_state = "trashbag_empty"
+		item_state = "trashbag_empty"
 	else if(sum_storage_cost < floor(max_storage_space * 0.35))
-		icon_state = "trashbag1"
+		icon_state = "trashbag_small"
+		item_state = "trashbag_small"
 	else if(sum_storage_cost < floor(max_storage_space * 0.7))
-		icon_state = "trashbag2"
+		icon_state = "trashbag_mid"
+		item_state = "trashbag_mid"
 	else
-		icon_state = "trashbag3"
+		icon_state = "trashbag_full"
+		item_state = "trashbag_full"
 
 // -----------------------------
 // Plastic Bag

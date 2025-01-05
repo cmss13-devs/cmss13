@@ -45,7 +45,11 @@
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
-	item_state = "electronic"
+	item_state = "light_replacer"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

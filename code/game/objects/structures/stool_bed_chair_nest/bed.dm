@@ -30,8 +30,7 @@
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/bed/update_icon()
@@ -245,7 +244,12 @@
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
 	icon = 'icons/obj/structures/rollerbed.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "folded"
+	item_state = "rbed"
 	w_class = SIZE_SMALL //Fits in a backpack
 	drag_delay = 1 //Pulling something on wheels is easy
 	matter = list("plastic" = 5000)
@@ -321,6 +325,7 @@
 	name = "portable surgical bed"
 	desc = "A collapsed surgical bed that can be carried around."
 	icon_state = "surgical_folded"
+	item_state = "sbed"
 	rollertype = /obj/structure/bed/portable_surgery
 	matter = list("plastic" = 6000)
 
@@ -425,6 +430,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	name = "medevac stretcher"
 	desc = "A collapsed medevac stretcher that can be carried around."
 	icon_state = "stretcher_folded"
+	item_state = "mvbed"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
 

@@ -622,7 +622,6 @@
 /area/adminlevel/ert_station/upp_station)
 "lg" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	icon_state = "hr_kutjevo";
@@ -2480,6 +2479,7 @@
 	pixel_y = -3;
 	pixel_x = 16
 	},
+/obj/structure/machinery/faxmachine/upp,
 /turf/open/floor/strata/green3/north,
 /area/adminlevel/ert_station/upp_station)
 "UB" = (

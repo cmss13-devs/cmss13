@@ -196,9 +196,10 @@
 	//Focus half the blast on one organ
 	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
-	pain.apply_pain(b_loss * 0.5, BRUTE)
-	pain.apply_pain(f_loss * 0.5, BURN)
+	if(take_blast)
+		update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
+	pain?.apply_pain(b_loss * 0.5, BRUTE)
+	pain?.apply_pain(f_loss * 0.5, BURN)
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5
@@ -1053,9 +1054,7 @@
 	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
-	var/dat = GLOB.data_core.get_manifest()
-
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"

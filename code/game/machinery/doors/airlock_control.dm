@@ -128,15 +128,6 @@
 		frequency = new_frequency
 		radio_connection = SSradio.add_object(src, frequency, RADIO_AIRLOCK)
 
-
-/obj/structure/machinery/door/airlock/Initialize()
-	. = ..()
-	if(frequency)
-		set_frequency(frequency)
-
-	update_icon()
-	start_processing()
-
 /obj/structure/machinery/airlock_sensor
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"

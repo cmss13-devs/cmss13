@@ -515,10 +515,6 @@
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
 
-/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
-	. = ..()
-	. += "It is currently set to <b>[gun_firemode]</b>."
-
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -567,6 +563,7 @@
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
 	if(ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		. += "It is currently set to <b>[gun_firemode]</b>."
 		if(rounds)
 			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else

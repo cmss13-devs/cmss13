@@ -2,7 +2,7 @@
 	name = "combat sword"
 	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
 	icon_state = "mercsword"
-	item_state = "machete"
+	item_state = "mercsword"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/swords_righthand.dmi',
@@ -30,11 +30,13 @@
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
+	item_state = "ceremonial"
 
 /obj/item/weapon/sword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
+	item_state = "machete"
 
 /obj/item/weapon/sword/machete/attack_self(mob/user)
 	if(user.action_busy)
@@ -57,6 +59,7 @@
 	name = "\improper M2100 \"Ngájhe\" machete"
 	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
 	icon_state = "arnold-machete"
+	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_11
 
 /obj/item/weapon/sword/hefa
@@ -123,7 +126,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
 	icon_state = "throwing_knife"
-	item_state = "combat_knife"
+	item_state = "throwing_knife"
 	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -243,7 +246,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-		)
+	)
 
 /obj/item/weapon/straight_razor
 	name = "straight razor"

@@ -17,6 +17,9 @@
 	var/thick_hiveweed = FALSE // if this is set, the thick variants will only work on hiveweeds
 	var/can_build_on_doors = TRUE // if it can be built on a tile with an open door or not
 
+	/// Whether this construction gets more expensive the more saturated the area is
+	var/scaling_cost = FALSE
+
 /datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
@@ -115,6 +118,7 @@
 	desc = "A resin wall, able to block passage."
 	construction_name = "resin wall"
 	cost = XENO_RESIN_WALL_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin
 	build_animation_effect = /obj/effect/resin_construct/weak
@@ -124,6 +128,7 @@
 	desc = "A thick resin wall, stronger than regular walls."
 	construction_name = "thick resin wall"
 	cost = XENO_RESIN_WALL_THICK_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thick
@@ -132,8 +137,8 @@
 	name = "Queen Resin Wall"
 	desc = "A resin wall, able to block passage. Constructed type depends on weeds."
 	construction_name = "queen resin wall"
-
 	cost = XENO_RESIN_WALL_QUEEN_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin
 	build_path_thick = /turf/closed/wall/resin/thick
@@ -155,6 +160,7 @@
 	desc = "Resin membrane that can be seen through."
 	construction_name = "resin membrane"
 	cost = XENO_RESIN_MEMBRANE_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane
 	build_animation_effect = /obj/effect/resin_construct/transparent/weak
@@ -164,6 +170,7 @@
 	desc = "Resin membrane that can be seen through. Constructed type depends on weeds."
 	construction_name = "queen resin membrane"
 	cost = XENO_RESIN_MEMBRANE_QUEEN_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane
 	build_path_thick = /turf/closed/wall/resin/membrane/thick
@@ -175,6 +182,7 @@
 	desc = "Strong resin membrane that can be seen through."
 	construction_name = "thick resin membrane"
 	cost = XENO_RESIN_MEMBRANE_THICK_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane/thick
 	build_animation_effect = /obj/effect/resin_construct/transparent/thick
@@ -185,6 +193,7 @@
 	desc = "A resin door that only sisters may pass."
 	construction_name = "resin door"
 	cost = XENO_RESIN_DOOR_COST
+	scaling_cost = TRUE
 
 	build_path = /obj/structure/mineral_door/resin
 	build_animation_effect = /obj/effect/resin_construct/door
@@ -215,6 +224,7 @@
 	desc = "A resin door that only sisters may pass. Constructed type depends on weeds."
 	construction_name = "queen resin door"
 	cost = XENO_RESIN_DOOR_QUEEN_COST
+	scaling_cost = TRUE
 
 	build_path = /obj/structure/mineral_door/resin
 	build_path_thick = /obj/structure/mineral_door/resin/thick
@@ -226,6 +236,7 @@
 	desc = "A thick resin door, which is more durable, that only sisters may pass."
 	construction_name = "thick resin door"
 	cost = XENO_RESIN_DOOR_THICK_COST
+	scaling_cost = TRUE
 
 	build_path = /obj/structure/mineral_door/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thickdoor

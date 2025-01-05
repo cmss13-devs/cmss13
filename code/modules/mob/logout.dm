@@ -1,5 +1,6 @@
 /mob/Logout()
 	SEND_SIGNAL(src, COMSIG_MOB_LOGOUT)
+	remove_all_indicators()
 	SSnano.nanomanager.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	if(interactee)
 		unset_interaction()

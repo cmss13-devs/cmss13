@@ -12,6 +12,7 @@
 	emote_see = list("shakes its head", "shivers")
 	speak_chance = 1
 	turns_per_move = 10
+	holder_type = /obj/item/holder/corgi
 	meat_type = /obj/item/reagent_container/food/snacks/meat/corgi
 	meat_amount = 3
 	response_help  = "pets the"
@@ -24,12 +25,25 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
+/mob/living/simple_animal/corgi/MouseDrop(atom/over_object)
+	if(!CAN_PICKUP(usr, src))
+		return ..()
+	var/mob/living/carbon/H = over_object
+	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
+
+	if(H.a_intent == INTENT_HELP)
+		get_scooped(H)
+		return
+	else
+		return ..()
+
 //IAN! SQUEEEEEEEEE~
 /mob/living/simple_animal/corgi/Ian
 	name = "Ian"
 	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
 	desc = "It's a corgi."
+	holder_type = /obj/item/holder/corgi/Ian
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	response_help  = "pets"
@@ -164,6 +178,7 @@
 	icon_state = "lisa"
 	icon_living = "lisa"
 	icon_dead = "lisa_dead"
+	holder_type = /obj/item/holder/corgi/Lisa
 	response_help  = "pets"
 	response_disarm = "bops"
 	response_harm   = "kicks"

@@ -114,6 +114,8 @@
 				SPAN_NOTICE("You slather \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
+			user.update_inv_l_hand()
+			user.update_inv_r_hand()
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You crudely reinforce the bones in [target]'s [surgery.affected_limb.display_name] like [improvised_desc]."),

@@ -21,7 +21,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
-/obj/item/clothing/suit/storage/marine/light/fluff/Initialize(mapload)
+/obj/item/clothing/head/helmet/marine/fluff/Initialize(mapload)
 	. = ..()
 	item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 

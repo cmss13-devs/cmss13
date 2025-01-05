@@ -229,16 +229,21 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
 // Resin
-/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
+/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)
 	if(!..())
 		return FALSE
-	var/mob/living/carbon/xenomorph/X = owner
-	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
-	if(A.z != X.z)
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(isstorage(target.loc))
+		return FALSE
+	if(xeno_owner.contains(target))
+		return FALSE
+	if(istype(target, /atom/movable/screen))
+		return FALSE
+	if(target.z != xeno_owner.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
-	switch(X.build_resin(A, thick, make_message, plasma_cost != 0, build_speed_mod))
+	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
 				apply_cooldown_override(xeno_cooldown * 3)

@@ -83,6 +83,7 @@
 /obj/item/organ/heart
 	name = "heart"
 	icon_state = "heart-on"
+	item_state = "heart"
 	organ_tag = "heart"
 	fresh = 6 // Juicy.
 	dead_icon = "heart-off"
@@ -92,6 +93,7 @@
 /obj/item/organ/lungs
 	name = "lungs"
 	icon_state = "lungs"
+	item_state = "lungs"
 	gender = PLURAL
 	organ_tag = "lungs"
 	organ_type = /datum/internal_organ/lungs
@@ -99,6 +101,7 @@
 /obj/item/organ/kidneys
 	name = "kidneys"
 	icon_state = "kidneys"
+	item_state = "kidney"
 	gender = PLURAL
 	organ_tag = "kidneys"
 	organ_type = /datum/internal_organ/kidneys
@@ -115,6 +118,7 @@
 /obj/item/organ/liver
 	name = "liver"
 	icon_state = "liver"
+	item_state = "liver"
 	organ_tag = "liver"
 	organ_type = /datum/internal_organ/liver
 
@@ -122,6 +126,7 @@
 	name = "acidic heart"
 	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often."
 	icon_state = "heart_t1"
+	item_state = "heart_t1"
 	organ_tag = "heart"
 	black_market_value = 60
 	///value of the organ in the recycler, heavily varies from size and tier

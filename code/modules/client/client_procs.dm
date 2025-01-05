@@ -445,6 +445,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 
+	if(CONFIG_GET(flag/ooc_country_flags))
+		spawn if(src)
+			ip2country(address, src)
+
 	//////////////
 	//DISCONNECT//
 	//////////////

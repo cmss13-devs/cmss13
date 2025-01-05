@@ -7,6 +7,7 @@
 	faction = FACTION_COLONIST
 	languages = list()
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
@@ -95,6 +96,7 @@
 	idtype = /obj/item/card/id/silver/clearance_badge
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/doctor/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -138,6 +140,7 @@
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/scientist/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -182,6 +185,7 @@
 	assignment = "Security Officer"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -326,6 +330,7 @@
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
 	)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/prison_guard/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -444,6 +449,7 @@
 		ACCESS_WY_COLONIAL,
 		ACCESS_WY_GENERAL,
 	)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -461,7 +467,7 @@
 /datum/equipment_preset/corpse/colonist
 	name = "Corpse - Colonist"
 
-/datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/colonist/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
@@ -611,6 +617,7 @@
 	idtype = /obj/item/card/id/data
 	rank = JOB_CLF
 	faction = FACTION_CLF
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/clf/New()
 	. = ..()
@@ -1443,6 +1450,7 @@
 	assignment = "Civilian - Medical Doctor"
 	idtype = /obj/item/card/id/silver/clearance_badge
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse/load_gear(mob/living/carbon/human/new_human)
 
@@ -1480,6 +1488,7 @@
 	assignment = "Xenobiologist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist/load_gear(mob/living/carbon/human/new_human)
 	var/random_gear = rand(1,50)
@@ -1518,6 +1527,7 @@
 	assignment = "Xenoarchaeologist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/load_gear(mob/living/carbon/human/new_human)
 	var/random_gear = rand(1,55)

@@ -1,6 +1,7 @@
 /datum/equipment_preset/other
 	name = "Other"
 	languages = list(LANGUAGE_ENGLISH)
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 
 //*****************************************************************************************************/
 
@@ -565,6 +566,7 @@
 	assignment = "Pizza Deliverer"
 	rank = FACTION_PIZZA
 	skills = /datum/skills/civilian
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_PIZZA
 
 /datum/equipment_preset/other/pizza/New()

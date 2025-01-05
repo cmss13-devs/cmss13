@@ -107,11 +107,6 @@
 	pixel_y = oy
 	icon_state = "[base_icon_state]_installed"
 
-/obj/structure/machinery/sentry_holder/Destroy()
-	QDEL_NULL(deployed_turret)
-
-	. = ..()
-
 /obj/structure/machinery/sentry_holder/colony
 	desc = "A box that deploys a sentry turret for protection of the residents in the area."
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony

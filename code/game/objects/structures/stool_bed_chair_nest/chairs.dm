@@ -20,9 +20,8 @@
 	if(!can_rotate)
 		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
 
-/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+/obj/structure/bed/chair/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 
@@ -446,7 +445,7 @@
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
 
-/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/living/M, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/M, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()

@@ -112,6 +112,9 @@
 ** PRESETS
 */
 /obj/vehicle/multitile/van/pre_movement()
+	if(locate(/obj/effect/alien/weeds) in loc)
+		move_momentum *= momentum_loss_on_weeds_factor
+
 	. = ..()
 
 	for(var/I in mobs_under)
@@ -170,14 +173,6 @@
 	QDEL_NULL(lighting_holder)
 
 	return ..()
-
-
-/obj/vehicle/multitile/van/pre_movement()
-	if(locate(/obj/effect/alien/weeds) in loc)
-		move_momentum *= momentum_loss_on_weeds_factor
-
-	. = ..()
-
 
 /obj/vehicle/multitile/van/attackby(obj/item/O, mob/user)
 	if(user.z != z)

@@ -106,10 +106,12 @@
 	var/apply_danger_level = 1
 	var/post_alert = 1
 
-
-
 /obj/structure/machinery/alarm/Initialize(mapload, direction, building = 0)
 	. = ..()
+
+	set_frequency(frequency)
+	if (!master_is_operating())
+		elect_master()
 
 	if(building)
 		if(loc)
@@ -133,7 +135,6 @@
 
 	first_run()
 
-
 /obj/structure/machinery/alarm/proc/first_run()
 	alarm_area = get_area(src)
 	area_uid = alarm_area.uid
@@ -147,13 +148,6 @@
 	TLV["other"] = list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] = list(ONE_ATMOSPHERE*0.80,ONE_ATMOSPHERE*0.90,ONE_ATMOSPHERE*1.10,ONE_ATMOSPHERE*1.20) /* kpa */
 	TLV["temperature"] = list(T0C-26, T0C, T0C+40, T0C+66) // K
-
-
-/obj/structure/machinery/alarm/Initialize()
-	. = ..()
-	set_frequency(frequency)
-	if (!master_is_operating())
-		elect_master()
 
 /obj/structure/machinery/alarm/Destroy()
 	if(alarm_area.master_air_alarm == src)
@@ -1016,10 +1010,6 @@ table tr:first-child th:first-child { border: none;}
 				qdel(src)
 
 	return ..()
-
-/obj/structure/machinery/alarm/power_change()
-	..()
-	update_icon()
 
 /obj/structure/machinery/alarm/get_examine_text(mob/user)
 	. = ..()

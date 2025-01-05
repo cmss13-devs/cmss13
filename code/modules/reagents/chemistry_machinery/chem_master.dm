@@ -52,11 +52,6 @@
 			deconstruct(FALSE)
 			return
 
-
-/obj/structure/machinery/chem_master/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/chem_master/update_icon()
 	if(stat & BROKEN)
 		icon_state = (beaker?"mixer1_b":"mixer0_b")

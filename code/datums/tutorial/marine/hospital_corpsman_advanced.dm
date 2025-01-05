@@ -1803,11 +1803,13 @@
 			slower_message_to_player("Now that Pvt Dummy is secured in the <b>Stasis Bag</b>, drag the closed bag to the <b>MedEvac Bed</b> and secure it within by clicking and dragging your mouse from the Stasis Bag to the Medevac Bed while next to both.")
 
 			stage++
-			RegisterSignal(stasisbag, COMSIG_LIVING_SET_BUCKLED, PROC_REF(medevacs))
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac)
+			RegisterSignal(medevac, COMSIG_LIVING_BED_BUCKLED, PROC_REF(medevacs))
 			return
 
 		if(5)
-			UnregisterSignal(source, COMSIG_LIVING_SET_BUCKLED)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac)
+			UnregisterSignal(medevac, COMSIG_LIVING_BED_BUCKLED)
 			slower_message_to_player("While this is just a simulation, in a real situation, you would next attempt to contact the <b>Close-Air-Support Pilot</b> over <b>Medical Comms</b> or via a direct phonecall, and notify them that your MedEvac beacon is active, as well as the <u>condition and urgency of the patient</u>.")
 			slower_message_to_player("MedEvac beds <u>MUST</u> be deployed outdoors to function, always make sure you are <u>OUTSIDE</u> when using the MedEvac system.")
 
@@ -1826,8 +1828,6 @@
 
 
 	tutorial_end_in(15 SECONDS)
-
-
 
 // Helpers
 
@@ -1930,17 +1930,10 @@
 
 // TO DO LIST
 //
-// apply slower messages
-//
-// fix helpers
-//
-// apply marine_dummy instead of marine_dummy
-//
 // Section 1 - Stabilizing Types of Organ Damage
 // 1.5 Liver and Kidney Damage
 //
 // Section 4 - Specialized Treatments
-// 4.1 Medical Evacuations, Stasis
 // 4.2 Genetic Damage
 // 4.3 Extreme Overdoses
 // 4.4 Synthetic Limb Repair

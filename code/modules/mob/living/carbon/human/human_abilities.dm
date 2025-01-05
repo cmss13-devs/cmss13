@@ -153,7 +153,7 @@
 	name = "Psychic Radiance"
 	action_icon_state = "cultist_channel_hivemind"
 
-/datum/action/xeno_action/onclick/psychic_radiance/use_ability(atom/A)
+/datum/action/xeno_action/psychic_radiance/use_ability(atom/A)
 	. = ..()
 	if(!ishuman(owner))
 		return FALSE

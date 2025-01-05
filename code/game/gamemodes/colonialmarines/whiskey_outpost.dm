@@ -275,7 +275,7 @@
 			to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 			to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
 
-/datum/game_mode/xenovs/get_winners_states()
+/datum/game_mode/whiskey_outpost/get_winners_states()
 	var/end_icon = "draw"
 	var/musical_track
 	switch(round_finished)

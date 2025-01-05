@@ -1214,6 +1214,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "View global and player statistics tied to the game."
 
 	if(client?.player_data?.player_entity)
+		client.player_data.player_entity.try_recalculate()
 		client.player_data.player_entity.tgui_interact(src)
 
 /mob/dead/observer/get_status_tab_items()

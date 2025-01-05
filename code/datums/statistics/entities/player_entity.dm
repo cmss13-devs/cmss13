@@ -25,49 +25,35 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic)
 	)
 
 /proc/track_statistic_earned(faction, statistic_type, general_name, statistic_name, value, datum/entity/player/player)
-	if(!player || !faction || !statistic_type || !general_name || !statistic_name)
+	set waitfor = FALSE
+
+	if(!player || !player.player_entity || !faction || !statistic_type || !general_name || !statistic_name)
 		return
 
 	if(!(faction in (FACTION_LIST_ALL + list(STATISTIC_TYPE_GLOBAL))))
 		faction = FACTION_NEUTRAL
 
-	var/datum/entity/statistic/statistic = player.player_entity?.get_statistic(faction, statistic_type, general_name, statistic_name)
+	var/datum/player_entity/player_entity = player.player_entity
+	var/datum/statistic_groups/match_group = player_entity.statistics[faction]
+	var/datum/entity/statistic/statistic = player_entity.get_statistic(faction, statistic_type, general_name, statistic_name)
 	if(statistic)
 		statistic.value += value
-		statistic.save()
+		if(match_group)
+			match_group.waiting_for_recalculate = TRUE
 		return
 
-	DB_FILTER(/datum/entity/statistic, DB_AND(
-		DB_COMP("player_id", DB_EQUALS, player.id),
-		DB_COMP("faction", DB_EQUALS, faction),
-		DB_COMP("statistic_type", DB_EQUALS, statistic_type),
-		DB_COMP("general_name", DB_EQUALS, general_name),
-		DB_COMP("statistic_name", DB_EQUALS, statistic_name)),
-		CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(track_statistic_earned_callback), faction, statistic_type, general_name, statistic_name, value, player.id))
+	if(!match_group)
+		return
 
-/proc/track_statistic_earned_callback(faction, statistic_type, general_name, statistic_name, value, player_id, list/datum/entity/statistic/statistics)
-	if(!length(statistics))
-		var/datum/entity/statistic/statistic = DB_ENTITY(/datum/entity/statistic)
-		statistic.faction = faction
-		statistic.statistic_type = statistic_type
-		statistic.general_name = general_name
-		statistic.statistic_name = statistic_name
-		statistic.value = value
-		statistic.player_id = player_id
-		statistic.save()
-	else
-		var/datum/entity/statistic/real_stat = statistics[statistics.len]
-		statistics.len--
-		for(var/datum/entity/statistic/clone as anything in statistics)
-			if(clone.value < real_stat.value)
-				clone.delete()
-				log_runtime("found duplicated table [faction], [statistic_type], [general_name], [statistic_name]") // Check for bug persist
-			else
-				real_stat.delete()
-				real_stat = clone
-
-		real_stat.value += value
-		real_stat.save()
+	statistic = DB_ENTITY(/datum/entity/statistic)
+	statistic.faction = faction
+	statistic.statistic_type = statistic_type
+	statistic.general_name = general_name
+	statistic.statistic_name = statistic_name
+	statistic.value = value
+	statistic.player_id = player.id
+	match_group.load_statistic_group(list(statistic), FALSE)
+	match_group.waiting_for_recalculate = TRUE
 
 /////////////////////////////////////////////////////////////////////////////////////
 //Statistic groups
@@ -81,6 +67,9 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic)
 	var/list/statistic_deaths = list()
 	var/list/statistic_info = list()
 	var/list/statistic_all = list()
+
+	// Don't recalculate if we didn't gather any data
+	var/waiting_for_recalculate = FALSE
 
 BSQL_PROTECT_DATUM(/datum/statistic_groups)
 
@@ -98,8 +87,7 @@ BSQL_PROTECT_DATUM(/datum/statistic_groups)
 			nemesis.nemesis_name = statistic.cause_name
 			nemesis.value = causes[statistic.cause_name]
 
-/datum/statistic_groups/proc/load_statistic(list/datum/entity/statistic/statistics)
-	statistic_all = list()
+/datum/statistic_groups/proc/load_statistic_group(list/datum/entity/statistic/statistics, recalculate = TRUE)
 	for(var/datum/entity/statistic/statistic as anything in statistics)
 		if(!statistic_all[statistic.statistic_type])
 			statistic_all[statistic.statistic_type] = list()
@@ -109,9 +97,9 @@ BSQL_PROTECT_DATUM(/datum/statistic_groups)
 
 		statistic.sync()
 		statistic_all[statistic.statistic_type][statistic.general_name] += statistic
-	recalculate_statistic()
+	recalculate_statistic_group(recalculate)
 
-/datum/statistic_groups/proc/recalculate_statistic()
+/datum/statistic_groups/proc/recalculate_statistic_group(recalculate)
 	for(var/subtype in statistic_all)
 		var/datum/player_statistic/statistic = statistic_info[subtype]
 		if(!statistic)
@@ -121,7 +109,7 @@ BSQL_PROTECT_DATUM(/datum/statistic_groups)
 			statistic.owner = src
 			statistic_info[subtype] = statistic
 		statistic.statistic_all = statistic_all[subtype]
-		statistic.load_statistic()
+		statistic.load_statistic(recalculate)
 
 /////////////////////////////////////////////////////////////////////////////////////
 //Player detail statistic
@@ -139,7 +127,7 @@ BSQL_PROTECT_DATUM(/datum/statistic_groups)
 
 BSQL_PROTECT_DATUM(/datum/player_statistic)
 
-/datum/player_statistic/proc/load_statistic()
+/datum/player_statistic/proc/load_statistic(recalculate)
 	for(var/subtype in statistic_all)
 		var/datum/player_statistic_detail/statistic = statistics[subtype]
 		if(!statistic)
@@ -149,7 +137,8 @@ BSQL_PROTECT_DATUM(/datum/player_statistic)
 			statistic.owner = src
 			statistics[subtype] = statistic
 		statistic.statistics = statistic_all[subtype]
-	recalculate_statistic()
+	if(recalculate)
+		recalculate_statistic()
 
 /datum/player_statistic/proc/recalculate_statistic()
 	var/list/potential_top_statistic = list("", 0)
@@ -195,7 +184,6 @@ BSQL_PROTECT_DATUM(/datum/player_statistic_nemesis)
 //Player Entity
 
 /datum/player_entity
-	var/entity_name
 	var/ckey
 	var/datum/entity/player/player = null
 	var/list/datum/entity/statistic/medal/medals = list()
@@ -204,23 +192,35 @@ BSQL_PROTECT_DATUM(/datum/player_statistic_nemesis)
 BSQL_PROTECT_DATUM(/datum/player_entity)
 
 /datum/player_entity/proc/get_statistic(faction, statistic_type, general_name, statistic_name)
-	var/datum/statistic_groups/match_statistic = statistics[faction]
-	if(!match_statistic)
+	var/datum/statistic_groups/match_group = statistics[faction]
+	if(!match_group)
 		return FALSE
 
-	var/datum/player_statistic/match_statistic_type = match_statistic.statistic_info[statistic_type]
-	if(!match_statistic_type)
+	var/list/refs_holder = match_group.statistic_all[statistic_type]
+	if(!refs_holder || !refs_holder[general_name])
 		return FALSE
 
-	var/datum/player_statistic_detail/match_detail_statistic = match_statistic_type.statistics[general_name]
-	if(!match_detail_statistic)
-		return FALSE
-
-	for(var/datum/entity/statistic/statistic as anything in match_detail_statistic.statistics)
+	for(var/datum/entity/statistic/statistic as anything in refs_holder[general_name])
 		if(statistic.statistic_name != statistic_name)
 			continue
 		return statistic
 	return FALSE
+
+/datum/player_entity/proc/try_recalculate()
+	for(var/faction_to_get as anything in statistics)
+		var/datum/statistic_groups/statistic_group = statistics[faction_to_get]
+		if(statistic_group.waiting_for_recalculate)
+			statistic_group.recalculate_statistic_group(TRUE)
+
+//Oh god, praise shit DB management system, that force us to do that... rather than do it every time we log stat.
+/datum/player_entity/proc/save_statistics()
+	for(var/faction_to_get as anything in statistics)
+		var/datum/statistic_groups/statistic_group = statistics[faction_to_get]
+		for(var/statistic_type as anything in statistic_group.statistic_all)
+			var/list/refs_holder = statistic_group.statistic_all[statistic_type]
+			for(var/general_name as anything in refs_holder)
+				for(var/datum/entity/statistic/statistic as anything in refs_holder[general_name])
+					statistic.save()// You still looking here? Your soul doomed
 
 /datum/player_entity/proc/setup_entity()
 	set waitfor = FALSE
@@ -230,8 +230,7 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 			var/datum/statistic_groups/new_group = statistics[faction_to_get]
 			if(!new_group)
 				new_group = new()
-//				new_group.group_name = GLOB.faction_datums[faction_to_get].name // FUCK YOU
-				// FUCK YOU x2
+//				new_group.group_name = GLOB.faction_datums[faction_to_get].name // One day... dream come true...
 				new_group.group_name = faction_to_get
 				new_group.group_parameter = faction_to_get
 				new_group.player = src
@@ -245,7 +244,7 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 			DB_FILTER(/datum/entity/statistic, DB_AND(
 			DB_COMP("player_id", DB_EQUALS, player.id),
 			DB_COMP("faction", DB_EQUALS, faction_to_get)),
-			CALLBACK(new_group, TYPE_PROC_REF(/datum/statistic_groups, load_statistic)))
+			CALLBACK(new_group, TYPE_PROC_REF(/datum/statistic_groups, load_statistic_group)))
 
 		DB_FILTER(/datum/entity/statistic/medal, DB_COMP("player_id", DB_EQUALS, player.id), CALLBACK(src, TYPE_PROC_REF(/datum/player_entity, statistic_load_medals)))
 

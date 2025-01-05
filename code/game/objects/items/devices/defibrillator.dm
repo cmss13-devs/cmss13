@@ -390,7 +390,7 @@
 
 /obj/item/device/defibrillator/synthetic/hyperdyne/noskill
 	name = "SMART Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
 	icon_state = "hyper_reset_ns_key"
 	noskill = TRUE
 

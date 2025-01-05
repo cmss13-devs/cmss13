@@ -3,7 +3,10 @@
 	gender = PLURAL
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "notebook"
-	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+		)
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_range = 2
@@ -22,6 +25,7 @@
 	if(!cover_color)
 		cover_color = pick(cover_colors)
 	icon_state = initial(icon_state) + "_[cover_color]"
+	item_state = initial(icon_state) + "_[cover_color]"
 
 	for(var/i = 1 to paper_left)
 		new /obj/item/paper(src)

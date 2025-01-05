@@ -1,4 +1,21 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/filtration/machine_32x64/indestructible{
+	bound_height = 32;
+	icon_state = "solo_tank_empty"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/kutjevo/multi_tiles/southwest,
+/area/kutjevo/interior/colony_South/power2)
+"aab" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/defenses/handheld/tesla_coil,
+/obj/item/storage/box/MRE/WY,
+/obj/item/storage/box/MRE/WY,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/construction)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -2121,17 +2138,6 @@
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
-"ddZ" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/filtration/machine_32x64/indestructible{
-	bound_height = 32;
-	icon_state = "solo_tank_empty"
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/kutjevo/multi_tiles/southwest,
-/area/kutjevo/interior/colony_South/power2)
 "deo" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -2993,13 +2999,6 @@
 /obj/item/tool/crowbar/red,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
-"era" = (
-/obj/structure/closet/crate/freezer/rations,
-/obj/item/defenses/handheld/tesla_coil,
-/obj/item/storage/box/MRE/WY,
-/obj/item/storage/box/MRE/WY,
-/turf/open/floor/kutjevo/colors/purple,
-/area/kutjevo/interior/construction)
 "erX" = (
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/auto_turf/sand/layer0,
@@ -36577,7 +36576,7 @@ lxc
 fyF
 fyF
 oUP
-era
+aab
 xNf
 rGm
 oUP
@@ -40804,7 +40803,7 @@ owt
 mLw
 tRi
 vdD
-ddZ
+aaa
 mcv
 ouR
 ouR

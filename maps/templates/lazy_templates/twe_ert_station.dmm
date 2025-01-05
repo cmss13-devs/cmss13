@@ -1,6 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/twe,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/royal_marines_station)
+"ab" = (
+/obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/misc/mre/twe{
 	pixel_y = 12;
 	pixel_x = -8
@@ -11,7 +17,18 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
-"ab" = (
+"ac" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnchips{
+	pixel_y = 11
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ae" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/mre_food/twe_side/nigirisushi{
 	pixel_y = 5;
@@ -20,14 +37,10 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm_snack/sushi,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
-"ac" = (
+"af" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/MRE/TWE,
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/royal_marines_station)
-"ad" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
 "ai" = (
 /obj/structure/machinery/light{
@@ -2010,13 +2023,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
-"UZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/mre_food/twe_entree/fishnchips{
-	pixel_y = 11
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/ert_station/royal_marines_station)
 "Va" = (
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "4,9"
@@ -2032,12 +2038,6 @@
 /turf/closed/shuttle/twe_dropship{
 	icon_state = "5,15"
 	},
-/area/adminlevel/ert_station/royal_marines_station)
-"VA" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/faxmachine/uscm/brig,
-/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "VG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
@@ -2403,14 +2403,14 @@ WS
 TY
 yK
 Sv
-ac
+af
 Sv
 gS
 TY
 TY
 TY
 gS
-aa
+ab
 Sv
 Sv
 uq
@@ -2551,7 +2551,7 @@ wt
 kh
 Uv
 ZA
-UZ
+ac
 kh
 Uv
 dK
@@ -2598,7 +2598,7 @@ kh
 kh
 Uv
 ZA
-ab
+ae
 kh
 Uv
 RF
@@ -3741,7 +3741,7 @@ yK
 XF
 OE
 WS
-VA
+aa
 kO
 kL
 ps

@@ -2,8 +2,13 @@
 /obj/item/storage/box/MRE
 	name = "\improper USCM MRE"
 	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
-	icon_state = "mealpack"
 	icon = 'icons/obj/items/storage/mre.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
+	icon_state = "mealpack"
+	item_state = "mealpack"
 	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 4

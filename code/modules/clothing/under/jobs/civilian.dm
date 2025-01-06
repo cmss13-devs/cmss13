@@ -105,7 +105,6 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
 	)
-	permeability_coefficient = 0.50
 
 /obj/item/clothing/under/rank/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."

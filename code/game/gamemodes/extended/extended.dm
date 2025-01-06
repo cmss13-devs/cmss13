@@ -33,15 +33,10 @@
 	return
 
 /datum/game_mode/extended/declare_completion()
-	announce_ending()
+	. = ..()
+
 	var/musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 	world << musical_track
-
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-		GLOB.round_statistics.log_round_statistics()
 
 	calculate_end_statistics()
 	declare_completion_announce_predators()

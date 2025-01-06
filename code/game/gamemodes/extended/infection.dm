@@ -114,15 +114,10 @@
 			round_checkwin = 0
 
 /datum/game_mode/infection/declare_completion()
-	announce_ending()
+	. = ..()
+
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
-
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
-		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()

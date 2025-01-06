@@ -171,7 +171,6 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		if(!length(round.current_map.victories))
 			round.current_map.victories = list()
 		round.current_map.victories[round_finished]++
-		round.current_map.save()
 		round.end_round_player_population = length(GLOB.clients)
 
 		round.log_round_statistics()

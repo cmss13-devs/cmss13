@@ -1,10 +1,10 @@
 GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
-
-/obj/structure/machinery/computer/ordercomp/upp
+/obj/structure/machinery/computer/supply/asrs/upp
+/obj/structure/machinery/computer/supply/asrs/upp
 	name = "UPP Supply ordering console"
 	circuit = /obj/item/circuitboard/computer/ordercomp/upp
 
-/obj/structure/machinery/computer/ordercomp/upp/Initialize()
+/obj/structure/machinery/computer/supply/asrs/upp/Initialize()
 	. = ..()
 	linked_supply_controller = GLOB.supply_controller_upp
 	asrs_name = "General Supply Storage"

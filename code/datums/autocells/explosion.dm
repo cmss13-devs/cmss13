@@ -287,6 +287,9 @@ as having entered the turf.
 	if(power >= 150) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/60)
 
+	new /obj/effect/light_flash(epicenter, FLASH_LIGHT_RANGE, FLASH_LIGHT_POWER, COLOR_WHITE, FLASH_LIGHT_DURATION, 1)
+
+
 	E.power = power
 	E.power_falloff = falloff
 	E.falloff_shape = falloff_shape

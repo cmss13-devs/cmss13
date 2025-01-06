@@ -557,6 +557,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 //Returning it back... the last what I wanted to do... but our DB game side enginee had his own ideas on that.
 /proc/save_player_entities()
 	set waitfor = FALSE
+	set bakcground = TRUE
 	for(var/key_ref in GLOB.player_entities)
 		CHECK_TICK
 		var/datum/player_entity/p_entity = GLOB.player_entities["[key_ref]"]

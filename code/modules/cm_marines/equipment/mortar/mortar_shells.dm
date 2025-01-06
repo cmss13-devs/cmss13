@@ -45,7 +45,7 @@
 	item_state = "mortar_ammo_frag"
 
 /obj/item/mortar_shell/frag/detonate(turf/T)
-	create_shrapnel(T, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/hit_lying)
+	create_shrapnel(T, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 

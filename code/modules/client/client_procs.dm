@@ -554,17 +554,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.player_entities["[ckey]"] = p_entity
 	return p_entity
 
-//Returning it back... the last what I wanted to do... but our DB game side enginee had his own ideas on that.
-/proc/save_player_entities()
-	set waitfor = FALSE
-	set background = TRUE
-	for(var/key_ref in GLOB.player_entities)
-		CHECK_TICK
-		var/datum/player_entity/p_entity = GLOB.player_entities["[key_ref]"]
-		p_entity.save_statistics()
-	log_debug("STATISTICS: Statistics saving complete.")
-	message_admins("STATISTICS: Statistics saving complete.")
-
 /client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
 		return

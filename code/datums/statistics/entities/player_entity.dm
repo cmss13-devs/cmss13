@@ -41,6 +41,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic)
 	var/datum/entity/statistic/statistic = player_entity.get_statistic(faction, statistic_type, general_name, statistic_name)
 	if(statistic)
 		statistic.value += value
+		statistic.save()
 		if(statistics_group)
 			statistics_group.waiting_for_recalculate = TRUE
 		return
@@ -55,6 +56,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic)
 	statistic.statistic_name = statistic_name
 	statistic.value = value
 	statistic.player_id = player.id
+	statistic.save()
 	statistics_group.load_statistic_group(list(statistic), FALSE)
 	statistics_group.waiting_for_recalculate = TRUE
 
@@ -218,20 +220,8 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 	for(var/faction_to_get in statistics_groups)
 		var/datum/grouped_statistic/statistics_group = statistics_groups[faction_to_get]
 		if(statistics_group.waiting_for_recalculate)
+			statistics_group.waiting_for_recalculate = FALSE
 			statistics_group.recalculate_statistic_group(TRUE)
-
-/datum/player_entity/proc/save_statistics()
-	statistic_logged = TRUE
-	for(var/faction_to_get in statistics_groups)
-		CHECK_TICK
-		var/datum/grouped_statistic/statistics_group = statistics_groups[faction_to_get]
-		for(var/statistic_type in statistics_group.statistic_all)
-			CHECK_TICK
-			var/list/refs_holder = statistics_group.statistic_all[statistic_type]
-			for(var/general_name in refs_holder)
-				CHECK_TICK
-				for(var/datum/entity/statistic/statistic as anything in refs_holder[general_name])
-					statistic.save()// You still looking here? Your soul doomed
 
 /datum/player_entity/proc/setup_entity()
 	set waitfor = FALSE

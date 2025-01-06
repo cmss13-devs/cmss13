@@ -147,16 +147,12 @@
 }
 
 .LobbyScreen {
-  font-family: monospace;
+  font-family: chakrapetch-bold;
+  line-height: 100%;
   font-size: large;
 
   background-position: 'center';
   background-size: 'cover';
-
-  .styledText {
-    font-family: chakrapetch-bold;
-    line-height: 100%;
-  }
 
   .bgBackground {
     background-position: center;

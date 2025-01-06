@@ -226,7 +226,6 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 		GLOB.round_statistics.death_stats_list += new_death
 
 	new_death.save()
-	new_death.detach()
 	return new_death
 
 /mob/proc/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)

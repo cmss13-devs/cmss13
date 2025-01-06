@@ -1337,15 +1337,17 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	name = "M540-B Armored Recon Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/arc
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
+/obj/structure/machinery/computer/supply/asrs/vehicle/Initialize()
 	. = ..()
 
 	if(!GLOB.VehicleElevatorConsole)
 		GLOB.VehicleElevatorConsole = src
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Destroy()
-	GLOB.VehicleElevatorConsole = null
-	return ..()
+	if(GLOB.VehicleElevatorConsole == src)
+		GLOB.VehicleElevatorConsole = null
+
+	. = ..()
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/attack_hand(mob/living/carbon/human/H as mob)
 	if(inoperable())

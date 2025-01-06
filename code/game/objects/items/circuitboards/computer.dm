@@ -223,7 +223,7 @@
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
-	build_path = /obj/structure/machinery/computer/supplycomp/vehicle
+	build_path = /obj/structure/machinery/computer/supply/asrs/vehicle
 
 /obj/item/circuitboard/computer/operating
 	name = "Circuit board (Operating Computer)"

@@ -20,9 +20,9 @@
 		.["round"] = viewing_round.cached_tgui_data
 		.["data_tabs"] += "Round"
 
-	if(length(medals))
+	if(length(statistics_medals))
 		var/list/medal_list = list()
-		for(var/datum/entity/statistic/medal/medal as anything in medals)
+		for(var/datum/entity/statistic_medal/medal as anything in statistics_medals)
 			medal_list += list(list(
 				"round_id" = "[medal.round_id]",
 				"medal_type" = medal.medal_type,
@@ -36,17 +36,17 @@
 		.["data_tabs"] += "Medals"
 
 	.["factions"] = list()
-	for(var/faction_to_get in statistics)
-		var/datum/statistic_groups/group = statistics[faction_to_get]
+	for(var/faction_to_get in statistics_groups)
+		var/datum/grouped_statistic/statistics_group = statistics_groups[faction_to_get]
 		var/list/nemesis = list()
 		var/list/death_list = list()
 		var/list/top_statistics = list()
 		var/list/total_statistics = list()
 		var/list/statistics_list = list()
-		if(group.nemesis)
-			nemesis = list("name" = group.nemesis.nemesis_name, "value" = group.nemesis.value)
+		if(statistics_group.nemesis)
+			nemesis = list("name" = statistics_group.nemesis.nemesis_name, "value" = statistics_group.nemesis.value)
 
-		for(var/datum/entity/statistic_death/statistic_death as anything in group.statistic_deaths)
+		for(var/datum/entity/statistic_death/statistic_death as anything in statistics_group.statistic_deaths)
 			if(length(death_list) >= STATISTICS_DEATH_LIST_LEN)
 				break
 
@@ -78,16 +78,16 @@
 				"z" = statistic_death.z,
 			))
 
-		for(var/group_subtype in group.statistic_info)
+		for(var/group_subtype in statistics_group.statistics_infos)
 			var/list/statistic_info = list()
-			var/datum/player_statistic/player_statistic = group.statistic_info[group_subtype]
-			if(player_statistic.statistic_name == STATISTIC_TYPE_CASTE || player_statistic.statistic_name == STATISTIC_TYPE_JOB)
-				for(var/subtype in player_statistic.total)
-					total_statistics += list(list("name" = subtype, "value" = player_statistic.total[subtype]))
+			var/datum/player_statistic/statistics_info = statistics_group.statistics_infos[group_subtype]
+			if(statistics_info.statistic_name == STATISTIC_TYPE_CASTE || statistics_info.statistic_name == STATISTIC_TYPE_JOB)
+				for(var/subtype in statistics_info.total_statistic)
+					total_statistics += list(list("name" = subtype, "value" = statistics_info.total_statistic[subtype]))
 
-			if(player_statistic.top_statistic)
+			if(statistics_info.top_statistic)
 				var/list/top_statistic_list = list()
-				var/datum/player_statistic_detail/detail_statistic = player_statistic.top_statistic
+				var/datum/player_statistic_detail/detail_statistic = statistics_info.top_statistic
 				for(var/datum/entity/statistic/top_statistic_entity as anything in detail_statistic.statistics)
 					top_statistic_list += list(list("name" = top_statistic_entity.statistic_name, "value" = top_statistic_entity.value))
 
@@ -96,8 +96,8 @@
 					"statistics" = top_statistic_list,
 				))
 
-			for(var/statistic_subtype in player_statistic.statistics)
-				var/datum/player_statistic_detail/detail_statistic = player_statistic.statistics[statistic_subtype]
+			for(var/statistic_subtype in statistics_info.statistics_details)
+				var/datum/player_statistic_detail/detail_statistic = statistics_info.statistics_details[statistic_subtype]
 				var/list/subtype_statistics = list()
 				var/list/subtype_top_statistics = list()
 				for(var/datum/entity/statistic/statistic as anything in detail_statistic.statistics)
@@ -113,16 +113,16 @@
 				))
 
 			statistics_list += list(list(
-				"name" = player_statistic.statistic_name,
+				"name" = statistics_info.statistic_name,
 				"value" = statistic_info,
 			))
 
 		if(length(total_statistics))
-			.["data_tabs"] += group.group_name
-			.["factions"][group.group_name] = list(
-				"name" = group.group_name,
+			.["data_tabs"] += statistics_group.group_name
+			.["factions"][statistics_group.group_name] = list(
+				"name" = statistics_group.group_name,
 				"nemesis" = nemesis,
-				"total_deaths" = length(group.statistic_deaths),
+				"total_deaths" = length(statistics_group.statistic_deaths),
 				"death_list" = death_list,
 				"total_statistics" = total_statistics,
 				"top_statistics" = top_statistics,

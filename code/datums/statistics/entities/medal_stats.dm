@@ -1,4 +1,5 @@
-/datum/entity/statistic/medal
+/datum/entity/statistic_medal
+	var/player_id
 	var/round_id
 	var/medal_type
 	var/recipient_name
@@ -7,10 +8,10 @@
 	var/giver_name
 	var/giver_player_id
 
-BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
+BSQL_PROTECT_DATUM(/datum/entity/statistic_medal)
 
 /datum/entity_meta/statistic_medal
-	entity_type = /datum/entity/statistic/medal
+	entity_type = /datum/entity/statistic_medal
 	table_name = "player_statistic_medal"
 	field_types = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
@@ -37,7 +38,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 	var/id
 
 /datum/entity_view_meta/statistic_medal_ordered
-	root_record_type = /datum/entity/statistic/medal
+	root_record_type = /datum/entity/statistic_medal
 	destination_entity = /datum/view_record/statistic_medal
 	fields = list(
 		"player_id",
@@ -56,7 +57,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 	if(!new_medal_type || !new_recipient || new_recipient.statistic_exempt || !new_recipient_role || !new_citation || !giver)
 		return
 
-	var/datum/entity/statistic/medal/new_medal = DB_ENTITY(/datum/entity/statistic/medal)
+	var/datum/entity/statistic_medal/new_medal = DB_ENTITY(/datum/entity/statistic_medal)
 	var/datum/entity/player/player_entity = get_player_from_key(new_recipient.ckey)
 	if(player_entity)
 		new_medal.player_id = player_entity.id
@@ -77,7 +78,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 	if(recipient_player)
 		track_statistic_earned(new_recipient.faction, STATISTICS_MEDALS, 1, recipient_player)
 
-	medals += new_medal
+	statistics_medals += new_medal
 	new_medal.save()
 	new_medal.detach()
 
@@ -94,9 +95,9 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic/medal)
 		track_statistic_earned(recipient.faction, STATISTICS_MEDALS, 1, recipient_player)
 
 	var/round_id = SSperf_logging.round?.id
-	for(var/datum/entity/statistic/medal/new_medal as anything in medals)
+	for(var/datum/entity/statistic_medal/new_medal as anything in statistics_medals)
 		if(new_medal.round_id == round_id && new_medal.recipient_name == recipient.real_name && new_medal.medal_type == medal_type && new_medal.citation == citation)
-			medals -= new_medal
+			statistics_medals -= new_medal
 			new_medal.delete()
 			break
 	return TRUE

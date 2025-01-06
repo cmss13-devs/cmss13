@@ -86,6 +86,7 @@ BSQL_PROTECT_DATUM(/datum/grouped_statistic)
 		statistic_deaths += statistic
 		if(!statistic.cause_name)
 			continue
+
 		causes[statistic.cause_name]++
 		if(causes[statistic.cause_name] > nemesis.value)
 			nemesis.nemesis_name = statistic.cause_name
@@ -100,18 +101,22 @@ BSQL_PROTECT_DATUM(/datum/grouped_statistic)
 			statistic_all[statistic.statistic_type][statistic.general_name] = list()
 
 		statistic.sync()
-		statistic_all[statistic.statistic_type][statistic.general_name] += statistic
+		statistic_all[statistic.statistic_type][statistic.general_name] |= statistic
+
 	recalculate_statistic_group(recalculate)
 
 /datum/grouped_statistic/proc/recalculate_statistic_group(recalculate)
 	for(var/subtype in statistic_all)
-		var/datum/player_statistic/statistics_info = statistics_infos[subtype]
-		if(!statistics_info)
-			statistics_info = new()
-			statistics_info.statistic_name = subtype
-			statistics_info.statistic_all = statistic_all[subtype]
-			statistics_infos[subtype] = statistics_info
-		statistics_info.load_statistic(recalculate)
+		if(statistics_infos[subtype])
+			if(recalculate)
+				statistics_infos[subtype].recalculate_statistic()
+			continue
+
+		var/datum/player_statistic/statistics_info = new()
+		statistics_info.statistic_name = subtype
+		statistics_info.statistic_all = statistic_all[subtype]
+		statistics_info.load_statistic()
+		statistics_infos[subtype] = statistics_info
 
 /////////////////////////////////////////////////////////////////////////////////////
 //Player detail statistic
@@ -127,19 +132,27 @@ BSQL_PROTECT_DATUM(/datum/grouped_statistic)
 
 BSQL_PROTECT_DATUM(/datum/player_statistic)
 
-/datum/player_statistic/proc/load_statistic(recalculate)
+/datum/player_statistic/proc/load_statistic()
 	for(var/subtype in statistic_all)
-		var/datum/player_statistic_detail/detail_statistic = statistics_details[subtype]
-		if(!detail_statistic)
-			detail_statistic = new()
-			detail_statistic.detail_name = subtype
-			statistics_details[subtype] = detail_statistic
+		if(statistics_details[subtype])
+			continue
+
+		var/datum/player_statistic_detail/detail_statistic = new()
+		detail_statistic.detail_name = subtype
+		statistics_details[subtype] = detail_statistic
 		detail_statistic.statistics = statistic_all[subtype]
-	if(recalculate)
-		recalculate_statistic()
+
+	recalculate_statistic()
 
 /datum/player_statistic/proc/recalculate_statistic()
 	total_statistic.Cut()
+	for(var/subtype in statistic_all)
+		for(var/datum/entity/statistic/statistic as anything in statistic_all[subtype])
+			if(total_statistic[statistic.statistic_name])
+				total_statistic[statistic.statistic_name] += statistic.value
+			else
+				total_statistic[statistic.statistic_name] = statistic.value
+
 	var/list/potential_top_statistic = list("", 0)
 	for(var/subtype in statistics_details)
 		var/datum/player_statistic_detail/detail_statistic = statistics_details[subtype]
@@ -149,18 +162,14 @@ BSQL_PROTECT_DATUM(/datum/player_statistic)
 				if(potential_statistic.value <= statistic.value)
 					top = FALSE
 					break
+
 			if(top)
 				detail_statistic.top_values_statistics += potential_statistic
+
 		if(potential_top_statistic[2] < length(detail_statistic.top_values_statistics))
 			potential_top_statistic = list(detail_statistic, length(detail_statistic.top_values_statistics))
-	top_statistic = potential_top_statistic[1]
 
-	for(var/subtype in statistic_all)
-		for(var/datum/entity/statistic/statistic as anything in statistic_all[subtype])
-			if(total_statistic[statistic.statistic_name])
-				total_statistic[statistic.statistic_name] += statistic.value
-			else
-				total_statistic[statistic.statistic_name] = statistic.value
+	top_statistic = potential_top_statistic[1]
 
 /datum/player_statistic_detail
 	var/detail_name
@@ -206,19 +215,18 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 	return FALSE
 
 /datum/player_entity/proc/try_recalculate()
-	for(var/faction_to_get as anything in statistics_groups)
+	for(var/faction_to_get in statistics_groups)
 		var/datum/grouped_statistic/statistics_group = statistics_groups[faction_to_get]
 		if(statistics_group.waiting_for_recalculate)
 			statistics_group.recalculate_statistic_group(TRUE)
 
-//Oh god, praise shit DB management system, that force us to do that... rather than do it every time we log stat.
 /datum/player_entity/proc/save_statistics()
 	statistic_logged = TRUE
-	for(var/faction_to_get as anything in statistics_groups)
+	for(var/faction_to_get in statistics_groups)
 		var/datum/grouped_statistic/statistics_group = statistics_groups[faction_to_get]
-		for(var/statistic_type as anything in statistics_group.statistic_all)
+		for(var/statistic_type in statistics_group.statistic_all)
 			var/list/refs_holder = statistics_group.statistic_all[statistic_type]
-			for(var/general_name as anything in refs_holder)
+			for(var/general_name in refs_holder)
 				for(var/datum/entity/statistic/statistic as anything in refs_holder[general_name])
 					statistic.save()// You still looking here? Your soul doomed
 

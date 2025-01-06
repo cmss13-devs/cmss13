@@ -5,6 +5,8 @@
 	var/total_victories
 	var/list/victories
 
+BSQL_PROTECT_DATUM(/datum/entity/statistic_map)
+
 /datum/entity_meta/statistic_map
 	entity_type = /datum/entity/statistic_map
 	table_name = "maps"

@@ -97,8 +97,8 @@ export const LobbyMenu = () => {
   const themeToUse = themeDisabled
     ? 'weyland_yutani'
     : upp_enabled
-      ? 'crtred'
-      : 'crtgreen';
+      ? 'crtlobbyred'
+      : 'crtlobby';
 
   return (
     <Window theme={themeToUse} fitted scrollbars={false}>
@@ -134,45 +134,51 @@ export const LobbyMenu = () => {
               icon="cog"
               onClick={() => {
                 setModal(
-                  <Section
-                    p={5}
-                    title="Lobby Settings"
-                    buttons={
-                      <Button icon="xmark" onClick={() => setModal(false)} />
-                    }
-                  >
-                    <Stack>
-                      <Stack.Item>
-                        <Button
-                          icon="tv"
-                          onClick={() => {
-                            storage.set(
-                              'lobby-filter-disabled',
-                              !filterDisabled,
-                            );
-                            setFilterDisabled(!filterDisabled);
-                            setModal(false);
-                          }}
-                          tooltip="Removes the CRT filter background"
-                        >
-                          {`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
-                        </Button>
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button
-                          icon="bolt"
-                          onClick={() => {
-                            storage.set('lobby-theme-disabled', !themeDisabled);
-                            setThemeDisabled(!themeDisabled);
-                            setModal(false);
-                          }}
-                          tooltip="Totally removes the CRT theme, including the filter"
-                        >
-                          {`${themeDisabled ? 'Enable' : 'Disable'} CRT Theme`}
-                        </Button>
-                      </Stack.Item>
-                    </Stack>
-                  </Section>,
+                  <Box className="styledText">
+                    <Section
+                      p={5}
+                      title="Lobby Settings"
+                      buttons={
+                        <Button icon="xmark" onClick={() => setModal(false)} />
+                      }
+                      className="styledText"
+                    >
+                      <Stack>
+                        <Stack.Item>
+                          <Button
+                            icon="tv"
+                            onClick={() => {
+                              storage.set(
+                                'lobby-filter-disabled',
+                                !filterDisabled,
+                              );
+                              setFilterDisabled(!filterDisabled);
+                              setModal(false);
+                            }}
+                            tooltip="Removes the CRT filter background"
+                          >
+                            {`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button
+                            icon="bolt"
+                            onClick={() => {
+                              storage.set(
+                                'lobby-theme-disabled',
+                                !themeDisabled,
+                              );
+                              setThemeDisabled(!themeDisabled);
+                              setModal(false);
+                            }}
+                            tooltip="Totally removes the CRT theme, including the filter"
+                          >
+                            {`${themeDisabled ? 'Enable' : 'Disable'} CRT Theme`}
+                          </Button>
+                        </Stack.Item>
+                      </Stack>
+                    </Section>
+                  </Box>,
                 );
               }}
             />

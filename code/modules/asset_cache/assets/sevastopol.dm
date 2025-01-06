@@ -13,9 +13,15 @@
 		"chakrapetch-bold.ttf" = file("tgui/packages/chakrapetch/chakrapetch-bold.ttf"),
 		"chakrapetch-regular.woff2" = file("tgui/packages/chakrapetch/chakrapetch-regular.woff2"),
 		"chakrapetch-regular.ttf" = file("tgui/packages/chakrapetch/chakrapetch-regular.ttf"),
-		"chakrapetch-semibold.woff2" = file("tgui/packages/chakrapetch/chakrapetch-semibold.woff2"),
-		"chakrapetch-semibold.ttf" = file("tgui/packages/chakrapetch/chakrapetch-semibold.ttf"),
 	)
 	parents = list(
 		"chakrapetch.css" = file("tgui/packages/chakrapetch/chakrapetch.css")
+	)
+
+/datum/asset/simple/namespaced/monofonto
+	assets = list(
+		"monofonto.ttf" = file("tgui/packages/monofonto/monofonto.ttf")
+	)
+	parents = list(
+		"monofonto.css" = file("tgui/packages/monofonto/monofonto.css")
 	)

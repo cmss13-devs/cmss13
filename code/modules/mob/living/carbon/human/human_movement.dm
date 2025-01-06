@@ -15,7 +15,7 @@
 
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply MST effects
 	var/wear_slowdown_reduction = 0
-	var/slowdown_multiplier
+	var/slowdown_multiplier = 0
 
 	reducible_tally += max(pain.pain_slowdown, stamina.stamina_slowdown) // Get the highest slowdown and apply that
 
@@ -49,16 +49,6 @@
 	if(hungry >= 50) //Level where a yellow food pip shows up, aka hunger level 3 at 250 nutrition and under
 		reducible_tally += hungry/50 //Goes from a slowdown of 1 all the way to 2 for total starvation
 
-	//Equipment slowdowns
-	if(w_uniform)
-		reducible_tally += w_uniform.slowdown
-		wear_slowdown_reduction += w_uniform.movement_compensation
-
-	if(wear_suit)
-		reducible_tally += wear_suit.slowdown
-		wear_slowdown_reduction += wear_suit.movement_compensation
-		slowdown_multiplier = wear_suit.armor_slowdown_multiplier
-
 	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
 	if(bodytemperature < species.cold_level_1 && !isyautja(src))
@@ -71,7 +61,19 @@
 	if(shield_slowdown)
 		reducible_tally += shield_slowdown
 
-	reducible_tally = reducible_tally * (1 + slowdown_multiplier)
+	if(wear_suit)
+		slowdown_multiplier = wear_suit.armor_slowdown_multiplier
+
+	reducible_tally = reducible_tally * (1 + slowdown_multiplier) //Applying slowdown_multiplier after the slowdowns its supposed to apply to, and BEFORE the ones that it isnt.
+
+	//Equipment slowdowns
+	if(w_uniform)
+		reducible_tally += w_uniform.slowdown
+		wear_slowdown_reduction += w_uniform.movement_compensation
+
+	if(wear_suit)
+		reducible_tally += wear_suit.slowdown
+		wear_slowdown_reduction += wear_suit.movement_compensation
 
 	//Compile reducible tally and send it to total tally. Cannot go more than 1 units faster from the reducible tally!
 	. += max(-0.7, reducible_tally)

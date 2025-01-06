@@ -205,7 +205,13 @@ function createStatusTab(name, end) {
 		this.blur();
 	};
 	B.id = name;
-	B.textContent = name;
+
+	var textNode = document.createElement("span");
+	textNode.textContent = name;
+	textNode.className = "small-button-text";
+
+	B.appendChild(textNode);
+
 	B.className = "button";
 	//ORDERING ALPHABETICALLY
 
@@ -215,9 +221,6 @@ function createStatusTab(name, end) {
 			break;
 		case "MC":
 			B.style.order = 2;
-			break;
-		case "Panel Options":
-			B.style.order = 999;
 			break;
 		default:
 			B.style.order = name.charCodeAt(0);

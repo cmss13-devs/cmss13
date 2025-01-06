@@ -191,7 +191,7 @@ export const LobbyMenu = () => {
               />
             </Stack.Item>
           </Stack>
-          <Box className="bgLoad authorAttrib">
+          <Box className="bgLoad authorAttrib styledText">
             {lobby_author ? `Art by ${lobby_author}` : ''}
           </Box>
         </LobbyContext.Provider>

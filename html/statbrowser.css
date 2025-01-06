@@ -1,5 +1,6 @@
 body {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: chakrapetch-regular, Geneva, Tahoma, sans-serif;
+	line-height: 110%;
 	font-size: 12px;
 	margin: 0 !important;
 	padding: 0 !important;
@@ -80,6 +81,11 @@ img {
 	border: 0;
 	border-bottom: 0.1667em solid transparent;
 	border-radius: 0.25em 0.25em 0 0;
+}
+
+.small-button-text {
+	font-family: sevastopol;
+	font-size: 20px;
 }
 
 .top-button {

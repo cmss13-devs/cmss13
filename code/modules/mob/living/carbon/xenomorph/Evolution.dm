@@ -253,6 +253,49 @@
 
 	return TRUE
 
+/mob/living/carbon/xenomorph/proc/Transmute()
+	set name = "Transmute"
+	set desc = "Transmute into a different caste of the same tier"
+	set category = "Alien"
+
+	if(!check_state())
+		return
+	if(is_ventcrawling)
+		to_chat(src, SPAN_XENOWARNING("You can't trasnmute here."))
+		return
+	if(!isturf(loc))
+		to_chat(src, SPAN_XENOWARNING("You can't trasnmute here."))
+		return
+	if(health < maxHealth)
+		to_chat(src, SPAN_XENOWARNING("We are too weak to trasnmute, we must regain our health first."))
+		return
+	if(tier == 0 || tier == 4)
+		to_chat(src, SPAN_XENOWARNING("We can't trasnmute."))
+		return
+	if(lock_evolve)
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't trasnmute."))
+		return FALSE
+
+	var/newcaste
+	var/list/options = list()
+	
+	if(tier == 1)
+		options = XENO_T1_CASTES
+	else if (tier == 2)
+		options = XENO_T2_CASTES
+	else if (tier == 3)
+		options = XENO_T3_CASTES
+
+	newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "Transmute", options, theme="hive_status")
+
+	if(!newcaste)
+		return
+
+	transmute(newcaste)
+
 // The queen de-evo, but on yourself.
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"

@@ -210,6 +210,7 @@
 	var/list/be_special_flags = list(
 		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
 		"Agent" = BE_AGENT,
+		"Be King" = BE_KING,
 	)
 	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", be_special_flags)
 	if(!role)

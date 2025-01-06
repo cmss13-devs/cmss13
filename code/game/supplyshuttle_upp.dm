@@ -1,6 +1,5 @@
 GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /obj/structure/machinery/computer/supply/asrs/upp
-/obj/structure/machinery/computer/supply/asrs/upp
 	name = "UPP Supply ordering console"
 	circuit = /obj/item/circuitboard/computer/ordercomp/upp
 
@@ -8,8 +7,6 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	. = ..()
 	linked_supply_controller = GLOB.supply_controller_upp
 	asrs_name = "General Supply Storage"
-	form_shipname = "<h3>General Supply Storage Form</h3><hr>"
-	asrs_is_busy_text = "General Supply Storage is working on order"
 
 /obj/structure/machinery/computer/supply/upp
 	name = "UPP supply console"
@@ -19,9 +16,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /obj/structure/machinery/computer/supply/upp/Initialize()
 	. = ..()
-	form_shipname = "<h3>General Supply Storage Form</h3><hr>"
 	asrs_name = "General Supply Storage"
-	asrs_is_busy_text = "General Supply Storage is working on order"
 
 /obj/item/paper/manifest/upp
 	name = "UPP Supply Manifest"

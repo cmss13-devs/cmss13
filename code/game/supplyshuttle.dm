@@ -109,12 +109,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	icon_state = "request"
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/ordercomp
-	var/last_viewed_group = "categories"
-	var/first_time = TRUE
 	var/datum/controller/supply/linked_supply_controller
 	var/faction = FACTION_MARINE
-	var/form_shipname = ""
-	var/asrs_is_busy_text = "ASRS is busy"
 	var/asrs_name = "Automated Storage and Retrieval System"
 
 	/// What message should be displayed to the user when the UI is accessed
@@ -125,6 +121,18 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	/// What the user currently has in their cart
 	var/current_order = list()
+
+/obj/structure/machinery/computer/supply/Initialize()
+	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
+	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
+
 
 /obj/structure/machinery/computer/supply/attack_hand(mob/user)
 	if(..())
@@ -149,7 +157,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	.["system_message"] = system_message
 
-	.["points"] = GLOB.supply_controller.points
+	.["points"] = linked_supply_controller.points
 
 	.["current_order"] = list()
 	for(var/pack_type in current_order)
@@ -160,7 +168,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		.["current_order"] += list(list_pack)
 
-	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
 	.["shuttle_status"] = "lowered"
 	if (shuttle.has_arrive_time())
 		.["shuttle_status"] = "moving"
@@ -182,7 +190,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /obj/structure/machinery/computer/supply/ui_static_data(mob/user)
 	. = ..()
 
-	.["categories"] = GLOB.supply_controller.all_supply_groups
+	.["categories"] = linked_supply_controller.all_supply_groups
 
 	.["all_items"] = list()
 	.["valid_categories"] = list()
@@ -195,6 +203,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			continue
 
 		if(isnull(pack.contains) && isnull(pack.containertype))
+			continue
+
+		if(!(pack.group in linked_supply_controller.all_supply_groups))
 			continue
 
 		if(!pack.contraband && length(pack.group))
@@ -257,7 +268,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				return TRUE
 
 			var/cost_to_use = pack.dollar_cost ? pack.dollar_cost : pack.cost
-			var/points_to_use = pack.dollar_cost ? GLOB.supply_controller.black_market_points : GLOB.supply_controller.points
+			var/points_to_use = pack.dollar_cost ? linked_supply_controller.black_market_points : linked_supply_controller.points
 			var/used_to_use = pack.dollar_cost ? used_dollars : used_points
 
 			var/available_points = points_to_use - used_to_use
@@ -299,7 +310,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			var/assignment = human_user.get_assignment()
 
 			var/datum/supply_order/supply_order = new
-			supply_order.ordernum = GLOB.supply_controller.ordernum++
+			supply_order.ordernum = linked_supply_controller.ordernum++
 			supply_order.objects = to_order
 			supply_order.reason = reason
 			supply_order.orderedby = id_name
@@ -308,7 +319,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			print_form(supply_order)
 
-			GLOB.supply_controller.requestlist += supply_order
+			linked_supply_controller.requestlist += supply_order
 			system_message = "Thanks for your request. The cargo team will process it as soon as possible."
 			return TRUE
 
@@ -372,19 +383,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/can_order_contraband = FALSE
 	var/black_market_lockout = FALSE
 
-
-
-/obj/structure/machinery/computer/supply/asrs/Initialize()
-	. = ..()
-	switch(faction)
-		if(FACTION_MARINE)
-			linked_supply_controller = GLOB.supply_controller
-		if(FACTION_UPP)
-			linked_supply_controller = GLOB.supply_controller_upp
-		else
-			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
-	form_shipname = "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
-	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
 
 /obj/structure/machinery/computer/supply/asrs/Destroy()
 	. = ..()
@@ -674,34 +672,34 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(!buyer.is_buyable(pack))
 			continue
 
-		if(GLOB.supply_controller.points - pack.cost < 0)
+		if(buyer.linked_supply_controller.points - pack.cost < 0)
 			continue
 
-		if(GLOB.supply_controller.black_market_points - pack.dollar_cost < 0)
+		if(buyer.linked_supply_controller.black_market_points - pack.dollar_cost < 0)
 			continue
 
-		GLOB.supply_controller.points -= pack.cost
-		GLOB.supply_controller.black_market_points -= pack.dollar_cost
+		buyer.linked_supply_controller.points -= pack.cost
+		buyer.linked_supply_controller.black_market_points -= pack.dollar_cost
 
-		if(GLOB.supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
+		if(buyer.linked_supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
 			// black market heat added is crate heat +- up to 25% of crate heat
-			GLOB.supply_controller.black_market_heat = clamp(GLOB.supply_controller.black_market_heat + pack.crate_heat + (pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100)
+			buyer.linked_supply_controller.black_market_heat = clamp(buyer.linked_supply_controller.black_market_heat + pack.crate_heat + (pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100)
 
 		ordered += pack
 
 	for(var/datum/supply_packs/pack as anything in ordered)
 		pack.cost = floor(pack.cost * SUPPLY_COST_MULTIPLIER)
 
-	if(GLOB.supply_controller.black_market_heat == 100)
-		GLOB.supply_controller.black_market_investigation()
+	if(buyer.linked_supply_controller.black_market_heat == 100)
+		buyer.linked_supply_controller.black_market_investigation()
 
 	if(length(ordered))
 		if(objects ~! ordered)
 			buyer.system_message = "Could not purchase all items. Available items have been purchased."
 
 		objects = ordered
-		GLOB.supply_controller.requestlist -= src
-		GLOB.supply_controller.shoppinglist += src
+		buyer.linked_supply_controller.requestlist -= src
+		buyer.linked_supply_controller.shoppinglist += src
 		return TRUE
 
 /datum/controller/supply
@@ -1151,7 +1149,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					to_order += pack
 
 			var/datum/supply_order/supply_order = new
-			supply_order.ordernum = GLOB.supply_controller.ordernum++
+			supply_order.ordernum = linked_supply_controller.ordernum++
 			supply_order.objects = to_order
 			supply_order.orderedby = id_name
 			supply_order.orderedby_rank = assignment
@@ -1194,7 +1192,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					system_message = "Unable to approve order, order remains in Requests."
 					return TRUE
 				if("deny")
-					GLOB.supply_controller.requestlist -= order
+					linked_supply_controller.requestlist -= order
 					qdel(order)
 
 					return TRUE
@@ -1213,11 +1211,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			return TRUE
 
 		if("force_launch")
-			GLOB.supply_controller.shuttle.force_launch()
+			linked_supply_controller.shuttle.force_launch()
 			return TRUE
 
 		if("cancel_launch")
-			GLOB.supply_controller.shuttle.cancel_launch()
+			linked_supply_controller.shuttle.cancel_launch()
 			return TRUE
 
 /obj/structure/machinery/computer/supply/asrs/ui_assets(mob/user)

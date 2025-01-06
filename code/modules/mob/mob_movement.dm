@@ -94,9 +94,10 @@
 	var/mob/living/living_mob
 	if(isliving(mob))
 		living_mob = mob
-
+	to_chat(usr, "Tried to move: [world.time]") //for debugging, will be removed
 	if(world.time < next_movement)
 		return
+	to_chat(usr, "And succesfully moved: [world.time]") //for debugging, will be removed
 	if(living_mob && living_mob.body_position == LYING_DOWN && mob.crawling)
 		return
 
@@ -222,6 +223,7 @@
 		mob.move_intentionally = FALSE
 		moving = FALSE
 		next_movement = world.time + move_delay
+		to_chat(usr, "With [move_delay] of move_delay, next mimimum worldtime to move should be: [next_movement]") //for debugging, will be removed
 	return
 
 ///Process_Spacemove

@@ -227,6 +227,7 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 		for(var/statistic_type in statistics_group.statistic_all)
 			var/list/refs_holder = statistics_group.statistic_all[statistic_type]
 			for(var/general_name in refs_holder)
+				CHECK_TICK
 				for(var/datum/entity/statistic/statistic as anything in refs_holder[general_name])
 					statistic.save()// You still looking here? Your soul doomed
 

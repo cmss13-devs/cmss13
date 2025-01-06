@@ -146,8 +146,6 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 
 	save()
 
-	save_player_entities()
-
 /datum/entity/statistic_round/proc/track_hijack_participant(faction, amount = 1)
 	if(!faction)
 		return

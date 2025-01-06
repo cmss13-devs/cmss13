@@ -25,9 +25,9 @@ var local_fontsize;
 try {
 	local_fontsize = localStorage.getItem("fontsize");
 } catch (error) {
-	local_fontsize = 12;
+	local_fontsize = 14;
 }
-var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 12; // in px, also determines line height and category header sizes for the verb menus
+var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 14; // in px, also determines line height and category header sizes for the verb menus
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];

@@ -133,7 +133,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
 	LAZYADD(linked_supply_controller.bound_supply_computer_list, src)
 
-
 /obj/structure/machinery/computer/supply/attack_hand(mob/user)
 	if(..())
 		return
@@ -384,7 +383,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/black_market_lockout = FALSE
 
 
-/obj/structure/machinery/computer/supply/asrs/Destroy()
+/obj/structure/machinery/computer/supply/Destroy()
 	. = ..()
 	LAZYREMOVE(linked_supply_controller.bound_supply_computer_list, src)
 

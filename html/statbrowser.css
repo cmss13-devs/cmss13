@@ -87,10 +87,22 @@ img {
 	margin-left: 0;
 	margin-right: 0;
 	flex-grow: 1;
+
+	height: 16px;
+}
+
+.top-button-text {
+	font-family: sevastopol;
+	font-size: 24px;
+}
+
+.top-button-text>i {
+	font-size: 14px;
+	padding-top: 3px;
 }
 
 i {
-	padding-right: 3px;
+	padding-right: 5px;
 }
 
 .discord-button {

@@ -254,25 +254,29 @@ const LobbyButtons = (props: {
         <Stack.Item>
           <Stack>
             <Stack.Item>
-              <Box height="68px">
-                <Box
-                  style={{
-                    backgroundImage: `url("${resolveAsset(upp_enabled ? 'upp.png' : 'uscm.png')}")`,
-                  }}
-                  width="67px"
-                  className="loadEffect"
-                  onClick={() => {
-                    setHidden(true);
-                  }}
-                />
-              </Box>
+              <Stack vertical justify="space-around" height="100%">
+                <Stack.Item>
+                  <Box height="68px">
+                    <Box
+                      style={{
+                        backgroundImage: `url("${resolveAsset(upp_enabled ? 'upp.png' : 'uscm.png')}")`,
+                      }}
+                      width="67px"
+                      className="loadEffect"
+                      onClick={() => {
+                        setHidden(true);
+                      }}
+                    />
+                  </Box>
+                </Stack.Item>
+              </Stack>
             </Stack.Item>
             <Stack.Item minWidth="200px">
               <Stack vertical>
                 <Stack.Item>
                   <Stack justify="center">
                     <Stack.Item>
-                      <Box className="typeEffect">Welcome,</Box>
+                      <Box className="typeEffect styledText">Welcome,</Box>
                     </Stack.Item>
                   </Stack>
                 </Stack.Item>
@@ -280,7 +284,7 @@ const LobbyButtons = (props: {
                   <Stack justify="center">
                     <Stack.Item>
                       <Box
-                        className="typeEffect"
+                        className="typeEffect styledText"
                         style={{
                           animationDelay: '1.4s',
                         }}
@@ -294,7 +298,7 @@ const LobbyButtons = (props: {
                   <Stack justify="center">
                     <Stack.Item>
                       <Box
-                        className="typeEffect hiveEffect"
+                        className="typeEffect styledText"
                         style={{
                           animationDelay: '1.4s',
                         }}
@@ -582,9 +586,19 @@ const LobbyButton = (props: LobbyButtonProps) => {
       }}
     >
       <Button fluid className={'distinctButton ' + className} {...rest}>
-        {children}
+        <StyledText>{children}</StyledText>
       </Button>
     </Stack.Item>
+  );
+};
+
+const StyledText = (props: PropsWithChildren) => {
+  const { children } = props;
+
+  return (
+    <Box inline className="styledText">
+      {children}
+    </Box>
   );
 };
 

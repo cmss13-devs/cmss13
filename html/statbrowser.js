@@ -1061,15 +1061,21 @@ for(var key in bigButtons) {
 		Byond.command(button.command)
 	};
 
+	let innerTextDiv = document.createElement("span");
+
 	if(button.icon) {
 		let icon = document.createElement("i");
 		icon.className = "fa-solid fa-" + button.icon
 
-		buttonElement.appendChild(icon)
+		innerTextDiv.appendChild(icon)
 	}
 
+	innerTextDiv.className = "top-button-text";
+
 	let text = document.createTextNode(button.name);
-	buttonElement.appendChild(text);
+	innerTextDiv.appendChild(text);
+
+	buttonElement.appendChild(innerTextDiv);
 
 	topButtons.appendChild(buttonElement);
 }

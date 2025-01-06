@@ -147,12 +147,18 @@
 }
 
 .LobbyScreen {
-  font-size: large;
   font-family: monospace;
-  font-weight: 700;
+  font-size: large;
 
   background-position: 'center';
   background-size: 'cover';
+
+  .styledText {
+    font-family: sevastopol;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 75%;
+  }
 
   .bgBackground {
     background-position: center;

@@ -5,7 +5,6 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /obj/structure/machinery/computer/supply/asrs/upp/Initialize()
 	. = ..()
-	linked_supply_controller = GLOB.supply_controller_upp
 	asrs_name = "General Supply Storage"
 
 /obj/structure/machinery/computer/supply/upp

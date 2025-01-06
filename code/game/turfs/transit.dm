@@ -15,7 +15,7 @@
 		return
 
 	if(!istype(old_loc, /turf/open/space))
-		var/turf/projected = get_ranged_target_turf(crosser.loc, dir, 10)
+		var/turf/projected = get_ranged_target_turf(crosser, dir, 10)
 
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 
@@ -106,7 +106,7 @@
 	//we didn't find a turf to drop them... This shouldn't happen usually
 	if(crosser.can_paradrop()) //don't delete them if they were supposed to paradrop
 		to_chat(crosser, SPAN_BOLDWARNING("Your harness got stuck and you got thrown back in the dropship."))
-		var/turf/projected = get_ranged_target_turf(crosser.loc, turn(dir, 180), 15)
+		var/turf/projected = get_ranged_target_turf(crosser, turn(dir, 180), 15)
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 		return
 	return ..() // they couldn't be dropped, just delete them

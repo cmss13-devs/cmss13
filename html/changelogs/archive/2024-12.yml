@@ -1,0 +1,545 @@
+2024-12-02:
+  Blundir:
+  - rscadd: different joe types have different death sounds
+  - bugfix: hazman joe having emote panel ui with incorrect ui theme
+  - bugfix: hazman joe having voice lines too loud
+  - soundadd: added 201 new lines total for hazmat and normal joes combined
+  realforest2001:
+  - rscadd: Added CO to MP timelocks, and ASO to command timelocks.
+2024-12-03:
+  BOBAMA:
+  - bugfix: missing paygrades, remove CL tracker on hvh headsets, pmcs on longer get
+      all marine announcements by default
+  Blundir:
+  - rscadd: type 23 shotgun shell boxes and crafting of them
+  - rscadd: type 23 shotgun rounds to black market
+  CapCamIII:
+  - balance: The ME3 welding tool can now be used for most tasks now.
+  Drathek:
+  - bugfix: Fix squad overlay sometimes not getting removed when helmet exceeded its
+      helmet garb overlay slots
+  - rscdel: Remove some effectively dead code attempting to add hugger damage to helmets
+  - rscadd: Dropship airlocks that force close now also throw objects (and vehicles)
+      out of their way
+  - rscadd: Airlocks can crush more xeno structures if they somehow got placed there
+  - bugfix: Fix doors sometimes ignoring force call (namely dropship airlocks)
+  - bugfix: Fix doors not checking their turfs correctly (for example it wouldn't
+      throw mobs in its own turf)
+  - refactor: Refactor some door code
+  - bugfix: Fix vehicles in airlocks not being handled correctly (never autoclosing
+      again)
+  - bugfix: Fix runtime edgecase when ghostizing something that has no player_details
+      somehow
+  Steelpoint:
+  - rscadd: Members of UPP squads will now appear in their own unique sub-menu for
+      observers.
+  - rscadd: UPP squad icons are properly colour-coded in the observer menu.
+  blackdragonTOW:
+  - bugfix: Fixed Synth K9 Bino vision targeting
+  realforest2001:
+  - bugfix: Fixes UPP CO whitelist not working.
+  - code_imp: Tidies up some back-end code.
+  zzzmike:
+  - qol: USCM notice sent when intel points for non-xeno non-yautja corpses are maxed
+      out
+  - qol: hijack wording more clear for newbies
+2024-12-04:
+  Steelpoint:
+  - bugfix: Fixed accidental loss of UPP Commanding Officer access to their personal
+      equipment vendors.
+  efzapa:
+  - spellcheck: Changed the old "Exec. Suvp." Paygrade Prefix to "Exec. Spvsr."
+2024-12-05:
+  Drathek:
+  - rscadd: Chestbursters now have spawn protections for 1s (godmode, evasion, and
+      ignores fire)
+  - rscadd: Dense structures (and coffins) now prevent machinery doors from closing.
+  - bugfix: Fixed an edgecase with pushing vehicles by dropship launch would incorrectly
+      push west if it was only 1 tile in.
+  - bugfix: Fix code mistakes involving bitwise OR
+  - balance: Sentry flamer ammo now actually applies its initial damage (~30) to non-immune
+      xenos
+  - balance: AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE are now actually required for a vehicle
+      damage multiplier
+  - code_imp: Bitwise OR mistakes like this are now linted against
+  Red-byte3D:
+  - qol: The king now also has the ability to disable or enable automatic shoving
+      of things in its way
+  neeshacark:
+  - rscadd: OT can now take the bad leg trait.
+  realforest2001, Blundir:
+  - rscadd: Added the Synthetic Reset Key an engineering skill defib that only works
+      on Synthetics. The reset key fits into engi kits, tool pouch/belt.
+  - rscadd: added the reset key to all upp/clf/pmc/contractor/forecon loadouts, to
+      synth/comtech/CE/MT/XO vendors.
+  - balance: Synthetics are no longer revivable via defib, now you need the reset
+      key for that specifically.
+  - imageadd: Sprites by Blundir.
+  - balance: Hazmat joes now spawn with a box of inflatable walls, instead of having
+      backpack filled with them.
+  - code_imp: Changed how defibs handle who can use them, adding variables for skill
+      checks.
+  thevandie:
+  - rscadd: ties to the Research Consultant and both Lawyers.
+2024-12-06:
+  zzzmike:
+  - rscdel: Replaced outdated tip with new one
+2024-12-07:
+  Drathek:
+  - bugfix: Fix airlock door spam allowing doors to remain open again
+2024-12-08:
+  HeresKozmos:
+  - mapadd: Added naturally spawning resin walls, doors and sparse sticky resin for
+      aesthetic purposes.
+  - maptweak: Slightly moved some map items around a short distance (about 1-2 tiles
+      or so*).
+  Steelpoint:
+  - rscadd: UPP Requisition Vendors may now vend UPP shotgun ammo boxes.
+2024-12-09:
+  L0pz:
+  - rscadd: Added a fax machine to requisitions. It's a girl, by the way.
+2024-12-11:
+  Blundir, Drathek, ItsVyzo, CzHa, forest2001:
+  - refactor: reorganized and cleaned many dmis in icons folder
+  - rscdel: inflatable duck can no longer have ammo
+  - rscdel: removed a huge dozen of extremely outdated legacy bay items
+  - imagedel: removed majority of left unused, duplicate and legacy sprites from the
+      codebase
+  - imageadd: es7 in belt holstered sprite
+  - imageadd: m39 pmc in belt holstered sprite
+  - imageadd: warden's uniform now has camo variants
+  - imageadd: dcc's jacket now has camo variants
+  - imageadd: type 71, type 71-F and type 71 commando suit storage icons by CzHa (discord
+      tag .cpol)
+  - bugfix: mp uniforms not having working onmob camo sprites
+  - bugfix: mob looking handcuffed while just holding cuffs in hand
+  - bugfix: rank pins/boards and other accessories not being visible on object sprite
+  - bugfix: pdt bracelet looking like a blue tie on the uniform
+  - bugfix: officer uniform not having working camo sprites
+  - bugfix: m39 not having custom sprites on belt for camo variants
+  - bugfix: taser having positions in hands wrong
+  - bugfix: inhands for shotgun shells not working
+  - bugfix: emp grenades now use correct (non legacy) icon
+  Drathek:
+  - bugfix: Fixed doors considering shutters as blocking
+2024-12-12:
+  BeagleGaming1:
+  - code_imp: Changed gamemode flags to datums
+  - admin: Changed gamemode flags from many buttons to one UI
+  IroquoisLou:
+  - rscadd: Added the rank of colour sergeant to the RMC, to give the RMC, a Staff
+      Sergeant equivalent
+  - rscdel: Removed the japanese title's from the RMC ranks
+  Steelpoint:
+  - rscadd: The character setup page will now display your character wearing the correct
+      uniform for the UPP job you have selected as your job preference. This should
+      only occur during the faction clash game mode.
+  harryob:
+  - bugfix: leveled riflemen slots are no longer used up by dummies
+  nauticall:
+  - rscadd: Adds CIA agents to the game. These are disguised as either civilians,
+      liaisons, or people in other factions and have a plethora of tools to achieve
+      any objectives they might be assigned to.
+  - rscdel: Deletes the UAAC-TIS from the game.
+2024-12-13:
+  cuberound:
+  - bugfix: MODE_NO_ATTACK_DEAD now prevents harm from explosions and flames correctly
+  joookschad:
+  - rscdel: Removed IO squad vendor access. They can still use standard vendors for
+      cosmetics and uniforms.
+  lanse12:
+  - spellcheck: fixed a 1 letter typo in king ability
+  zzzmike:
+  - rscdel: Xeno tackle messaging no longer cares if the target is horizontal or not
+      (because being horizontal has no bearing on tackles)
+2024-12-14:
+  Drulikar:
+  - balance: Queen prevents round end even when in a tunnel
+  - bugfix: Fixed check_queen_status checking any queen not just queens that matter
+      to round end
+  harryob:
+  - bugfix: some random preference verbs weren't saving the preference
+  - bugfix: pmc goon squads and vaiso squads can now correctly use their shuttles
+      to return home
+  realforest2001:
+  - rscadd: Fax Responder platform now includes faxes sent before it loaded.
+2024-12-15:
+  Blundir:
+  - rscdel: limits colossal sandwich to 15 layers
+  Drathek:
+  - balance: Eggs that are in a linked lz area can now get weed killed by the initial
+      dropship
+  - bugfix: Fixed the lz_weeding flag not doing anything
+  - refactor: Refactored and documented defines for the distress signal game mode
+  - bugfix: Internal organs now delete properly
+  - bugfix: An observer waypoint is ensured when a z-level is destroyed (such as for
+      Hivewars)
+  - bugfix: Fixed various runtimes when a z-level is destroyed
+2024-12-16:
+  Adamix147:
+  - bugfix: Fixed windoors access at medbay
+  - bugfix: Removed unnecesary APC from Solaris
+  Drdodo:
+  - rscadd: Added custom HealthMate HUDs to CMO vendor which combine HealthMate and
+      Reagent scanner HUDs that requires research skill to use
+  - qol: Removed the old reagent scanner and healthmate HUDs from the CMO vendor
+  KaiserBlackwood:
+  - rscadd: Added a standard choice of pouches
+  - rscadd: Added more point-buy equipment to the UPP vendor
+  - rscadd: Added UPP grenade packets
+  - rscadd: Added UPP grenade belts
+  - rscadd: Added UPP SL Weapon Kit
+  - rscdel: Removed attachments from UPP Gear Vendors (Frontline Roles)
+  - bugfix: Fixed prices in UPP vendors
+  - qol: Streamlined gear/uniform vendors for UPP
+  - spellcheck: renamed "Motion Detector" to "UPP Motion Detector" in UPP Frontline
+      Roles Vendors
+  Katskan:
+  - balance: Adds overwatch to G1/2
+  - balance: Makes overwatch skill give you the green pointy arrows
+  - balance: Lets overwatch skill give you the ability to use tacmaps instead of leadership
+  Steelpoint:
+  - rscadd: UPP squad attachment, ammo and equipment vendors have been added to the
+      game for event use.
+  - rscadd: A Type-19 submachinegun gun case has been added to the UPP requisitions
+      vendor as a restricted weapon item, which can be issued to UPP soldiers as requested.
+  - rscadd: Addition of Type-19 magazines, extended magazines and ammo boxes to UPP
+      requisiton vendors.
+  - rscadd: A PPSh-17b submachinegun gun case has been added to the game. Intended
+      to be spawned as a rare weapon, owing to its (in-universe) collectors and old
+      firearm enthusiasts value.
+  TheManWithNoHands:
+  - balance: rebalanced highdamagenapalm for the tank flamer to change its projectile
+      speed from 1 to 1.5
+  - balance: gives the M56 Cupola autofire instead of burst, lowering its fire delay
+      to 0.3
+  - balance: gives the M92T grenade launcher PASS_HIGH_OVER and PASS_MOB_THRU bullet
+      properties
+  Venuska1117:
+  - code_imp: Add "Delay" option for balloon alerts to prevent notification spam.
+  - qol: Added Balloon Alerts to notify player that crest is lowered when trying to
+      use Tail Swing or Fortify.
+  cuberound:
+  - qol: OT and GP removed (till proper place for them is made) from HvH gamemode
+  ihatethisengine:
+  - balance: scout's engineering skill is now 1.
+  - rscadd: remote flight control respects factions
+  realforest2001:
+  - rscadd: Added listening devices relaying information from key areas to the Fax
+      Responders.
+  - rscadd: Added Fax Responder name preferences in Special Roles section of character
+      preferences.
+  - rscadd: Added the correct factions to Fax Responder faction_groups, so they get
+      correct announcements.
+  - rscadd: Added health huds to Fax Responders.
+  - code_imp: Overhauled the backend code for the various ARES related UIs, centralising
+      most interface data to one proc.
+2024-12-17:
+  BlackCrystalic:
+  - bugfix: Fix of multitile setDir caused by another source rather than try_rotate...
+  Blundir:
+  - rscadd: UPP unique dogtags sprite
+  - rscadd: ID card now mentions what it is (dogtags, card or badge) instead of calling
+      everything "ID card"
+  - rscadd: Upp Dzho Automaton/Fighting Joe and his uniform
+  - bugfix: fixed working joe not having eye intent set by default
+  - rscadd: CMB Riot Control Unit ERT, it can also be called via marshal distress
+      beacon
+  - rscadd: added CMB riot control berets, uniforms, helmet, armors, visor
+  - rscadd: CMB survivors on Fiorina have been swapped with Riot Control analogue
+  - rscadd: Marshals (not deputies) now have unique Spearhead revolver capable of
+      doing revolver tricks
+  - rscadd: revolvers capable of revolver tricks now have a bit of description about
+      it
+  - rscadd: M16 ext mags, currenly only used by CMB Riot Control
+  - rscadd: CMB version of M51 shotgun, that comes with new rubber buckshot ammo
+  - rscadd: M16,XM177,MP5 modernized looking versions to fit better the logic and
+      aesthetics
+  - rscadd: visual effects and sound when blocking
+  - balance: made spearhead normalpoint bullet be more balanced (added 15 damage)
+      in relation to the hp variant
+  - balance: 'riot grenade launcher can now also shoot: sebb, smokes (non lethal),
+      flahbangs, airburst smoke'
+  - balance: the Colonial Marshal now has the same endurance skill as Deputy (Marshal
+      had lower)
+  - rscdel: CMB can no longer see marine squad hud by default
+  - bugfix: CMB squad hud now exists and works
+  - bugfix: m81 gl now has suit storage and inhand sprites
+  - bugfix: CMB survivors now all have CMB faction and faction group
+  - bugfix: fixed incorrect attachment placement on Spearhead revolver
+  - bugfix: XM51 being impossible to rack
+  - maptweak: added CMB riot gear on Solaris Ridge to CMB Armory, instead of the generic
+      riot gear
+  - maptweak: added CMB riot gear on Trijent Dam to CMB Armory, instead of the generic
+      riot gear
+  - maptweak: added CMB riot gear locker in UA armory on Fiorina, also added one CMB
+      riot officer corpse on the map
+  - imageadd: resprite of CMB badge, CMB badge now has unique icons on the mob
+  - imageadd: new lobby art image from Substance20 (the image itself is rather old,
+      also needs server side edit)
+  - imageadd: proper inhand sprites for m81 gl
+  - rscadd: new xeno gib animations and gib remains for almost all castes
+  - bugfix: xeno gib animations looping weirdly
+  Cuberound Blundir:
+  - balance: PKP gets build in bipod
+  - imageadd: PKP bipod
+  Drathek:
+  - bugfix: Fixed asset transport errors if the space grunts paper is mapped in
+  ICA-usernameisunavailable:
+  - bugfix: The Super Tophat now fits properly.
+  Joe Lampost, Beaglegaming, harryob, Thwomper, Nanu308:
+  - rscadd: Added Different equipment pre-sets only for use inside a hunting ground
+      map as part of ERTs
+  - rscadd: Adds a hunts master console that can spawn ERTs every 20 minutes
+  - rscadd: Adds another console for predators to use to spawn hunting ground lazy
+      templates
+  - bugfix: Fixed the lighting on lazy templates (thanks harry)
+  - soundadd: added a sound for spawing in as an ERT member on the hunting grounds
+  - mapadd: added a new type of lazy_template for hunting grounds
+  - bugfix: dirtgrassborder now has the correct north and south
+  LTNTS:
+  - rscadd: new dummy tablet sprite
+  Steelpoint:
+  - rscadd: Adds the T37 Medium Machine Gun to the UPP's arsenal. The T37 is an alternative
+      variant of the M2C HMG, it is a stationary emplacement (that can not be redeployed)
+      that has a slower rate of fire compared to the M2C, but it can fire for a far
+      longer period of time before overheating. This is a purely defensive weapon,
+      and it must be pre-placed on a map by a mapper.
+  - rscadd: The UPP Pilot has been added as a job-role for the Faction Clash gamemode.
+  TheGamerdk:
+  - rscadd: COs have a new variant of their armor to choose from
+  Tyranicranger4:
+  - qol: Makes Resin Salve only go on CD after successful activations, not attempted
+      ones
+  - qol: Removes the chat notification for Resin Salve going off CD (it's a 0.5 second
+      CD)
+  bobama:
+  - balance: solaris pmc insert is less common now
+  - bugfix: pmcs actually no longer get all marine announcements
+  cuberound:
+  - rscadd: toggleble flag to prevent c4s on human for gamemodes
+  - bugfix: anti stripmode flag prevents buckling to roller beds and closing into
+      bags to move dead or crit bodies of enemy faction
+2024-12-18:
+  Tsurupeta:
+  - rscadd: Added saving of the preferences for ambience/lobby music/game volume.
+2024-12-19:
+  BOBAMA:
+  - balance: Recruiter, Engineer, and CLF survivors now have ammo for their weapons.
+  - balance: Engineer survivors sometimes do not get tool belts.
+  - bugfix: Survivors should now more consistently spawn with ALL of their intended
+      gear.
+  - bugfix: CLF and Goon survivors should no longer spawn with duplicate gear.
+  Blundir:
+  - rscadd: blade runner revolvers and holdout pistol now have unique sprite in belt
+      and fit gun belts
+  - rscadd: officer (SO) helmet now has sprite matching the armor on different maps
+  - bugfix: broken icons
+  - bugfix: es4 now fits gun belts
+  - bugfix: wrapped burrito/hotdog/burger having no trash wrapper
+  Steelpoint:
+  - rscadd: The UPP Pilot and Dzho Automaton roles will properly appear on your character
+      setup screen if you select those roles.
+2024-12-20:
+  Blundir:
+  - rscadd: digital table clock that shows time and date
+  - rscadd: cat clock now shows time
+  - mapadd: added digital clock to majority of mpas
+  Detective-Google:
+  - bugfix: fixed duplicate windoors on the reqline
+  Drathek:
+  - bugfix: Actually fixed asset transport errors if the space grunts paper is mapped
+      in.
+  TheGamerdk:
+  - bugfix: Synths and people with robotics limbs can now get de-limbed.
+  ihatethisengine:
+  - rscadd: Overwatch can hear speech and see emotes.
+2024-12-21:
+  Drathek:
+  - bugfix: Suppressed a div by 0 error when autofit viewport tries to fit the window
+      while minimized
+  - balance: Hunting ground deaths no longer counts against larva queue
+  - bugfix: Fixed a runtime when generating SEA appearance for an imaginary friend
+  Venuska1117, Drathek:
+  - balance: Early game Queen Building Buff, now allows queen to upgrade structures
+      to "Thicker" version.
+2024-12-22:
+  AmoryBlaine, Crowford:
+  - rscadd: American Spirit cigarettes
+  JackieEstegado:
+  - bugfix: Facehugger resin traps no longer refill themselves with dead huggers.
+2024-12-23:
+  harryob:
+  - code_imp: Christmas Festivizer now only applies on Christmas Eve and Day.
+2024-12-24:
+  KaiserBlackwood:
+  - bugfix: puts correct path in wear_back function of shields.
+  Stakeyng:
+  - rscadd: Synth reset key fits in construction belt, tool webbing, and engineer
+      kit pouch
+2024-12-25:
+  Drathek:
+  - bugfix: Various decals are now properly anchored
+  - bugfix: Fixed xenos being able to interact with cards (at least without thumbs)
+  - bugfix: Fixed m56d being unable to be reloaded in gun form
+  - bugfix: Fixed xenos being able to mousedrop mob/items into closets/crates/lockers
+  - rscdel: Removed a to_chat for failing to toggle_open verb
+  - bugfix: Fixed pounce and grab methods to pull something anchored (e.g. ovi queen)
+  Nomoresolvalou, Thwomper:
+  - rscadd: Added staff and longaxe weapons to the elite yautja vendor.
+  - imageadd: Adds onmob sprites for the longaxe.
+  - spellcheck: Changes hunter staff description to be more in line with other weapons.
+  dadlips:
+  - maptweak: Replaced all guest pass terminals
+  realforest2001:
+  - bugfix: Yautja can now correctly un-mark dead people.
+  sg2002:
+  - bugfix: players with no squad preference get correctly put into random squads
+2024-12-27:
+  Drathek:
+  - bugfix: Fixed locking satchel unlocked overlay not appearing on top
+  ihatethisengine:
+  - bugfix: Fixed some issues with overwatch.
+2024-12-28:
+  HIDgamer:
+  - rscadd: Added CPR Buddy 9000 to the experimental vendor.
+  VileBeggar:
+  - rscadd: Weapons now have custom crosshairs. They're optional and can be turned
+      off in the preferences menu.
+  Zenith, mikoka wei, Drathek, Nanu, Cuberound, Almings, Crowford, Blundir, dimdimich1996:
+  - rscadd: added a new map LV_759_Hybrisa_Prospera.
+  - rscadd: Many new varied survivor types unique to Hybrisa - with many new clothing
+      types & sprites mostly done by wei
+  - rscadd: Massive amount of new props with new sprites (some edits of current props,
+      credits to the original artists).
+  - rscadd: Unique "Derelict-Ship" or "Engineer" tile-set by "mikoka wei" (amazing
+      stuff).
+  - rscadd: Destructible vehicles.
+  - rscadd: Unique "Electric-Fence" system around the map with button to turn on/off.
+  - rscadd: New drivable "Box-Vans" with unique interior & sounds.
+  - rscadd: New gun - FN P90, with two versions, the regular colony version and a
+      TWE version, sprites originally from TGMC and edited by "Almings".
+  - rscadd: Massive amount of new sounds for atmosphere.
+  - rscadd: Two new weathers "Light & Very light" unique rain weather, and rain sounds.
+  - rscadd: '"Phoneboxes" you can hide inside, like a locker.'
+  - rscadd: Hospital roller beds, with unique variants that can drop a corpse (non-foldable).
+  - rscadd: New "Rat" simple-mob type with unique sprites.
+  - rscadd: Urban camo rework and fix, added all the missing sprites and proper functionality,
+      resprites all the urban armor and clothing
+  - bugfix: many guns having no mob suit storage sprite if there is no mag in a gun
+2024-12-29:
+  Blundir:
+  - bugfix: fixed santa hat missing inhands
+  - bugfix: santa hat hiding all hair instead of just top hair
+  Drathek:
+  - rscadd: Weapons now display their map camo in vendors
+  GoldenDarkness55:
+  - rscadd: Slowing neuro shrapnel effect to OT achieved by adding 30 neurotoxin plasma
+      to the beaker with iron. 0.8s slow per shard hit up to 6s max
+  - rscadd: Hornet (holo) shrapnel effect to OT achieved by adding 10 sulfuric acid
+      to the beaker with iron
+  - balance: Reduced the divide on incendiary OT shards from 4 to 2
+  - balance: Raised holo stacks per hornet shrapnel hit from 10 to 20.
+  IroquoisLou:
+  - qol: Changed USASF CO's to LACN CO.
+  JackieEstegado:
+  - bugfix: Mobs no longer get unnested when the wall that they are on gets upgraded.
+  - bugfix: Mobs now regain their original pixel offset upon being unnested even when
+      jittering.
+  Joe Lampost:
+  - bugfix: Fixes the escape from the hunting grounds
+  Lansaen512:
+  - spellcheck: Fixed some typos in the clf distress beacon message.
+  Lukas-Seltz:
+  - bugfix: Fixed the CE vendor to be able to vend out what you should be able to.
+  NessiePendragon:
+  - rscadd: Added service jacket to CO vendor.
+  realforest2001:
+  - rscadd: Added a speed penalty to incomplete Yautja field surgery.
+  - bugfix: Fixes giant lizard manual pounce keys.
+  - bugfix: Giant Lizards can now see in the dark when controlled by a player.
+  thevandie:
+  - rscadd: Grey and Beige trenchcoats to the CL vendor
+  - rscadd: Brown and Black fedoras to the CL vendor
+2024-12-30:
+  Blundir:
+  - bugfix: phone missing inhand sprites
+  Blundir, medjic, 3raz3rr, Crowford:
+  - rscadd: hugger and larva tanks now actually have an alive hugger and a dead larva
+      inside them on destroy
+  - rscadd: 'yautja: beds, chairs, microwaves, soda/chem/booze dispensers, sleeper/scanner/autodoc,
+      freezer, refrigerator, air tank, computer, vendors, gibber, food grinder, hugger
+      tank, closet, water/fuel tanks, juicer assets and objects'
+  - rscadd: unique yautja full set of normal tools, replaced tools in yautja toolbelt
+      with them
+  - rscadd: yautja windows
+  - rscadd: yautja new statues
+  - rscadd: decorative xeno skulls for yautja locations
+  - bugfix: preds not being able to use chem master and chem dispenser on their ship
+  - bugfix: preds not having access to vendors on their ship
+  - rscdel: unused yautja ship map
+  - mapadd: added tons of new assets on LV624, New Varadero, Trijent Dam, Yautja ship
+  harryob:
+  - rscadd: the preview dummy now correctly wears gear chosen in the gear select menu
+  realforest2001:
+  - imageadd: Updated all the biosuit sprites to use the modern version rather than
+      legacy.
+  - imageadd: Updated the biosuit locker sprites to use a consistent base scheme.
+  - rscdel: Removed Janitor biosuits.
+  - maptweak: Updated a couple places using the wrong biosuit lockers, and replaced
+      janitor ones.
+  - code_imp: Changed some parts of disease code so it respects armor_bio more.
+  - rscadd: Makes CBRN and Biosuit hoods protect from gas, as would be expected.
+  - balance: Biosuit hood armor_bio increased to match the biosuit itself.
+2024-12-31:
+  BasilHerb:
+  - rscadd: Added a new SG mode, 'Frontline mode', which uses Alt IFF for the USCM,
+      PMC & RMC SGs.
+  - rscadd: Ability to switch ammo types with IFF off.
+  - rscadd: Added balloon alerts to all SG toggles (the floaty text)
+  - rscadd: AP bullets on all SG variants (M56D, M56T, etc.) should now be yellow,
+      just like on the M56B for consistency.
+  - rscadd: SG now fires blue tracers when not on frontline mode (variants for AP
+      and precision), along with blue muzzle flash, etc. as a visual cue for when
+      frontline mode is off/on.
+  - rscadd: sprites both for when frontline mode is enabled and disabled.
+  - balance: SG on frontline mode adjusted to have moderately weaker than Mk2 DPS,
+      and 7 tiles of effective range.
+  - code_imp: Added Alt IFF component
+  - soundadd: Added Alt IFF sound
+  - refactor: Refactored datum/action to have cooldown capabilities on base type
+  - bugfix: Fixed listen_signal never getting unregistered for actions
+  Blundir:
+  - bugfix: fixed normal juicer having yautja skin
+  Drathek:
+  - bugfix: Fix cursor getting stuck on when disabling custom cursors
+  - bugfix: Fix gun cursor getting stuck on when unwielding immediately after shooting
+  - bugfix: Fix xeno action queue (not used) not respecting custom cursor preference
+  - bugfix: Fix railgun (not used) not respecting custom cursor setting
+  - bugfix: Fix railgun (not used) not unregistering a signal correctly
+  - bugfix: Fix custom cursor resetting when vaulting over barricades
+  - refactor: Refactored gun getters for custom icons to vars and some gun var ordering
+  Drathek Nanu:
+  - rscadd: Added maplint to check whether pipes run under constructed walls
+  Geevies:
+  - rscadd: Added some text feedback to the RPG buddy loading system for when it isn't
+      wielded or if it's already loaded
+  - bugfix: Fixed the RPG buddy loading system being able to load invalid magazines
+      into the launcher
+  Laser9:
+  - maptweak: Replaced all forklift ID names with generic names.
+  QuickLode:
+  - rscadd: Adds the Ship Operations Synthetic. This ship-oriented Synthetic assists
+      the USS Almayer with various tasks and improves the atmosphere of the vessel,
+      they maintain the entire ship and act as its pilot. This role is enabled if
+      there is no Survivor Synthetic present. Huge thanks to Drathek for roleauthority
+      code!
+  - rscadd: Changes role selection color of WJ to be slightly darker to differentiate
+      from Synthetics.
+  - code_imp: restructured lobby role selection menu to accomadate new role
+  SASoperative:
+  - code_imp: Updated item names, icons, and descriptions
+  - imageadd: Replaces old donator sprites
+  - imagedel: Deletes unused old donator sprites
+  ihatethisengine:
+  - bugfix: fixed another bug with overwatch.

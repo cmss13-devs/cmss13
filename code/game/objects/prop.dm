@@ -27,10 +27,10 @@
 
 /obj/item/prop/laz_top
 	name = "lazertop"
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	icon_state = "laptop-gun"
-	item_state = ""
 	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
+	icon_state = "laptop-gun"
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	item_state = ""
 	w_class = SIZE_SMALL
 	garbage = TRUE
 
@@ -96,54 +96,49 @@
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
-	icon = 'icons/obj/items/items.dmi'
+	desc = "A miniature table flag of the United Americas, representing all of North, South, and Central America."
+	icon = 'icons/obj/items/table_decorations.dmi'
 	icon_state = "uaflag"
 	force = 0.5
 	w_class = SIZE_SMALL
-	desc = "A miniature table flag of the United Americas, representing all of North, South, and Central America."
 
 /obj/item/prop/tableflag/uscm
 	name = "USCM table flag"
-	icon_state = "uscmflag"
 	desc = "A miniature table flag of the United States Colonial Marines. 'Semper Fi' is written on the flag's bottom."
+	icon_state = "uscmflag"
 
 /obj/item/prop/tableflag/uscm2
 	name = "USCM historical table flag"
-	icon_state = "uscmflag2"
 	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
+	icon_state = "uscmflag2"
 
 /obj/item/prop/tableflag/upp
 	name = "UPP table flag"
-	icon_state = "uppflag"
 	desc = "A miniature table flag of the Union of Progressive Peoples, consisting of 17 yellow stars, surrounding the bigger one in the middle on scarlet field."
+	icon_state = "uppflag"
 
 /obj/item/prop/flower_vase
 	name = "flower vase"
-	icon_state = "flowervase"
-	w_class = SIZE_SMALL
 	desc = "An empty glass flower vase."
+	icon_state = "flowervase"
+	icon = 'icons/obj/items/table_decorations.dmi'
+	w_class = SIZE_SMALL
 
 /obj/item/prop/flower_vase/bluewhiteflowers
 	name = "vase of blue and white flowers"
-	icon_state = "bluewhiteflowers"
 	desc = "A flower vase filled with blue and white roses."
+	icon_state = "bluewhiteflowers"
 
 /obj/item/prop/flower_vase/redwhiteflowers
 	name = "vase of red and white flowers"
-	icon_state = "redwhiteflowers"
 	desc = "A flower vase filled with red and white roses."
+	icon_state = "redwhiteflowers"
 
 /obj/item/prop/colony/usedbandage
 	name = "dirty bandages"
 	desc = "Some used gauze."
 	icon_state = "bandages_prop"
-	icon = 'icons/monkey_icos.dmi'
-
-/obj/item/prop/colony/folded_bedroll
-	name = "folded bedroll"
-	desc = "a folded up bedroll"
-	icon_state = "bedroll"
-	icon = 'icons/monkey_icos.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 
 /obj/item/prop/colony/used_flare
 	name = "flare"
@@ -167,7 +162,7 @@
 	name = "portable game kit"
 	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
 	icon_state = "game_kit"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 
 /obj/item/prop/gripper
 	name = "magnetic gripper"
@@ -195,7 +190,7 @@
 /obj/item/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, IF YOU SEE THIS THERE IS A PROBLEM IN THE PROP.DM FILE MAKE A BUG REPORT "
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "hangarbox"
 
 /obj/item/prop/almayer/box
@@ -251,7 +246,7 @@
 /obj/item/prop/magazine
 	name = "generic prop magazine"
 	desc = "A Magazine with a picture of a pretty girl on it..wait isn't that my mom?"
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	icon_state = "poster15"
 	throw_speed = SPEED_FAST
 	throw_range = 5
@@ -281,6 +276,7 @@
 	desc = "some generic hardcover book, probably sucked"
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "bookSpaceLaw"
+	item_state = "book_red"
 
 /obj/item/prop/magazine/book/spacebeast
 	name = "\improper Space Beast, by Robert Morse"
@@ -326,3 +322,25 @@
 /obj/item/prop/magazine/boots/n055
 	name = "Boots!: Issue No.55"
 	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing.'"
+
+// Massive Digger by dimdimich1996
+
+/obj/structure/prop/invuln/dense/excavator
+	name = "Model 30 Light Excavator"
+	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice orange color."
+	icon = 'icons/obj/structures/props/digger.dmi'
+	icon_state = "digger_orange"
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/invuln/dense/excavator/gray
+	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice gray color."
+	icon_state = "digger_gray"
+
+/obj/structure/prop/invuln/dense/excavator/Initialize()
+	. = ..()
+	if(dir & (SOUTH|NORTH))
+		bound_height = 192
+		bound_width = 96
+	else
+		bound_height = 96
+		bound_width = 192

@@ -6,7 +6,7 @@
 
 /obj/structure/prop/rock
 	name = "rock(s)"
-	icon = 'icons/obj/structures/props/rocks.dmi'
+	icon = 'icons/obj/structures/props/natural/rocks.dmi'
 	icon_state = "rock"//go figure
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava."
 

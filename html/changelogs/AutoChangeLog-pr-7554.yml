@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Eggs that lose their hive weeds will now turn fragile (like egg carrier eggs) lasting 5 minutes."
-  - bugfix: "Fixed an exploit allowing egg carrier eggs to last indefinitely."
-  - bugfix: "Fixed the inability to examine planted eggs from further than one tile."

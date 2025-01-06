@@ -8,10 +8,11 @@
 	var/armor_laser = 0
 	var/armor_energy = 0
 	var/armor_bomb = 0
-	var/armor_bio = 0
+	var/armor_bio = 0 // Protection from neuro
 	var/armor_rad = 0
-	var/armor_internaldamage = 0
-	var/movement_compensation = 0
+	var/armor_internaldamage = 0 // Protection from bonebreaks, IB, organ damage
+	var/movement_compensation = 0 // Counters slowdown from wielded guns
+	var/armor_slowdown_multiplier = 0 // Heavier armors worsen slowdown penalties
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
 	var/list/restricted_accessory_slots = list()

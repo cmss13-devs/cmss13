@@ -56,6 +56,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_SUPER_LIGHT
 	storage_slots = 3
 	siemens_coefficient = 0.7
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
@@ -284,6 +285,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_NONE
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -463,6 +465,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_NONE
 	storage_slots = 2
 
 /obj/item/clothing/suit/storage/marine/light/padded
@@ -621,6 +624,7 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_VERY_LIGHT
 	light_power = 4
 	light_range = 5
 
@@ -668,6 +672,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	slowdown = SLOWDOWN_ARMOR_HEAVY
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_LIGHT
 	specialty = "B18 defensive"
 	unacidable = TRUE
 	var/injections = 4
@@ -711,6 +716,7 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	slowdown = SLOWDOWN_ARMOR_HEAVY
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3-G4 grenadier"
 	unacidable = TRUE
 	light_range = 5
@@ -721,6 +727,7 @@
 	icon_state = "demolitionist"
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_NONE
 	specialty = "M3-T light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
@@ -731,6 +738,7 @@
 	icon_state = "scout_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_slowdown_multiplier = SLOWDOWN_ARMOR_NONE
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE

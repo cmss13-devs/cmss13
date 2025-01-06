@@ -38,6 +38,8 @@
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
+BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
+
 /datum/entity_meta/statistic_round
 	entity_type = /datum/entity/statistic_round
 	table_name = "rounds"

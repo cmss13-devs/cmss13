@@ -445,9 +445,6 @@ Works together with spawning an observer, noted above.
 	if(aghosted)
 		src.aghosted = TRUE
 
-	if(client && client.player_data)
-		client.player_data.setup_statistics()
-
 	SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZE)
 
 	var/mob/dead/observer/ghost = new(loc, src) //Transfer safety to observer spawning proc.

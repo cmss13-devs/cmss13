@@ -120,3 +120,9 @@
       today!
   realforest2001:
   - bugfix: Preset corpses and pizza ERTs now have correct paygrade displays.
+2025-01-06:
+  Blundir:
+  - rscadd: added seegson, hyperdyne and makeshift synth reset keys and added them
+      to corresponding factions
+  harryob:
+  - rscadd: the req ordering console has a new ui

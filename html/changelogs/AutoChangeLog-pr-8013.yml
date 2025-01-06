@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "added seegson, hyperdyne and makeshift synth reset keys and added them to corresponding factions"

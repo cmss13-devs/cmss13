@@ -145,7 +145,7 @@
 
 /obj/item/circuitboard/computer/ordercomp/upp
 	name = "Circuit board (UPP Supply ordering console)"
-	build_path = /obj/structure/machinery/computer/ordercomp/upp
+	build_path = /obj/structure/machinery/computer/supply/upp
 
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
@@ -157,7 +157,7 @@
 
 /obj/item/circuitboard/computer/supplycomp/upp
 	name = "Circuit board (General Supply Storage console)"
-	build_path = /obj/structure/machinery/computer/supplycomp/upp
+	build_path = /obj/structure/machinery/computer/supply/asrs/upp
 
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (ASRS console)"

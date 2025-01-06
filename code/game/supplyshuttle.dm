@@ -109,6 +109,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	icon_state = "request"
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/ordercomp
+	var/last_viewed_group = "categories"
+	var/first_time = TRUE
+	var/datum/controller/supply/linked_supply_controller
+	var/faction = FACTION_MARINE
+	var/form_shipname = ""
+	var/asrs_is_busy_text = "ASRS is busy"
+	var/asrs_name = "Automated Storage and Retrieval System"
 
 	/// What message should be displayed to the user when the UI is accessed
 	var/system_message = null
@@ -364,13 +371,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/can_order_contraband = FALSE
 	var/black_market_lockout = FALSE
-	var/last_viewed_group = "categories"
-	var/first_time = TRUE
-	var/datum/controller/supply/linked_supply_controller
-	var/faction = FACTION_MARINE
-	var/form_shipname = ""
-	var/asrs_is_busy_text = "ASRS is busy"
-	var/asrs_name = "Automated Storage and Retrieval System"
+
 
 
 /obj/structure/machinery/computer/supply/asrs/Initialize()

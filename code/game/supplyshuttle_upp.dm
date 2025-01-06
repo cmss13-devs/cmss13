@@ -11,13 +11,13 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	form_shipname = "<h3>General Supply Storage Form</h3><hr>"
 	asrs_is_busy_text = "General Supply Storage is working on order"
 
-/obj/structure/machinery/computer/supplycomp/upp
+/obj/structure/machinery/computer/supply/upp
 	name = "UPP supply console"
 	desc = "A console for the General Supply Storage"
 	circuit = /obj/item/circuitboard/computer/supplycomp/upp
 	faction = FACTION_UPP
 
-/obj/structure/machinery/computer/supplycomp/upp/Initialize()
+/obj/structure/machinery/computer/supply/upp/Initialize()
 	. = ..()
 	form_shipname = "<h3>General Supply Storage Form</h3><hr>"
 	asrs_name = "General Supply Storage"

@@ -35,9 +35,9 @@
 	return ..()
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = loc
-	T = get_step(T, SOUTH)
-	return T
+	var/turf/target = get_turf(src)
+	target = get_step(target, SOUTH)
+	return target
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over() //we don't do this here
 	return
@@ -45,7 +45,7 @@
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/flip_back()
 	return
 
-/obj/structure/machinery/cm_vending/ex_act(severity)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_LOW)
 		if(prob(25))
 			malfunction()
@@ -119,11 +119,6 @@
 			vend_fail()
 			return FALSE
 		budget_points -= L[2]
-
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = get_turf(src)
-	T = get_step(T, SOUTH)
-	return T
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),

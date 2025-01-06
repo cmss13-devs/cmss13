@@ -29,16 +29,30 @@
 	flags_atom |= USES_HEARING
 
 /obj/item/device/assembly_holder/proc/attach_special(obj/O, mob/user)
-	return
+	if(!O)
+		return FALSE
+	if(!O.IsSpecialAssembly())
+		return FALSE
 
-/obj/item/device/assembly_holder/proc/process_activation(obj/item/device/D)
-	return
+/obj/item/device/assembly_holder/proc/process_activation(obj/item/device/D, normal = TRUE, special = TRUE)
+	if(!D)
+		return FALSE
+	if(!secured)
+		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
+	if((normal) && (a_right) && (a_left))
+		if(a_right != D)
+			a_right.pulsed(0)
+		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've qdel'd the assembly
+			a_left.pulsed(0)
+	if(master)
+		master.receive_signal()
+	return TRUE
 
 /obj/item/device/assembly_holder/proc/detached()
 	return
 
 /obj/item/device/assembly_holder/IsAssemblyHolder()
-	return 1
+	return TRUE
 
 /obj/item/device/assembly_holder/proc/attach(obj/item/device/D, obj/item/device/D2, mob/user)
 	if((!D)||(!D2)) return 0
@@ -63,10 +77,6 @@
 	usr.put_in_hands(src)
 
 	return 1
-
-/obj/item/device/assembly_holder/attach_special(obj/O, mob/user)
-	if(!O) return
-	if(!O.IsSpecialAssembly()) return 0
 
 /obj/item/device/assembly_holder/update_icon()
 	overlays.Cut()
@@ -181,19 +191,6 @@
 			a_right.forceMove(T)
 			a_right = null
 		qdel(src)
-
-/obj/item/device/assembly_holder/process_activation(obj/D, normal = 1, special = 1)
-	if(!D) return 0
-	if(!secured)
-		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
-	if((normal) && (a_right) && (a_left))
-		if(a_right != D)
-			a_right.pulsed(0)
-		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've qdel'd the assembly
-			a_left.pulsed(0)
-	if(master)
-		master.receive_signal()
-	return 1
 
 /obj/item/device/assembly_holder/hear_talk(mob/living/M as mob, msg)
 	if(a_right)

@@ -21,14 +21,6 @@
 	if(player.check_whitelist_status(WHITELIST_FAX_RESPONDER))
 		LAZYADD(., "responder")
 
-/client/load_player_data_info(datum/entity/player/player)
-	. = ..()
-
-	if(isSenator(src))
-		add_verb(src, /client/proc/whitelist_panel)
-	if(isCouncil(src))
-		add_verb(src, /client/proc/other_records)
-
 /client
 	var/datum/whitelist_panel/wl_panel
 

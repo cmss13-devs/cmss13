@@ -1124,6 +1124,16 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/deep_storage/gunslinger_holster
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	contains = list(
+		/obj/item/storage/belt/gun/m44/gunslinger,
+		/obj/item/storage/belt/gun/m44/gunslinger,
+	)
+	dollar_cost = 20
+	crate_heat = 4
+	containertype = /obj/structure/largecrate/black_market
+
 /* --- MISCELLANEOUS --- */
 
 /*

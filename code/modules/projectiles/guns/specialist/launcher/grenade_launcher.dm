@@ -165,7 +165,12 @@
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
-
+		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				gun_user.balloon_alert(gun_user, "help intent safety")
+				click_empty(gun_user)
+			return FALSE
 
 /obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.
 	if(able_to_fire(user))

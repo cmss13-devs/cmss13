@@ -110,6 +110,7 @@
 				to_chat(src, "DB is still starting up, please wait")
 				return
 			if(client?.player_data?.player_entity)
+				client.player_data.player_entity.try_recalculate()
 				client.player_data.player_entity.tgui_interact(src)
 			return 1
 

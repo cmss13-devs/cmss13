@@ -223,8 +223,10 @@ BSQL_PROTECT_DATUM(/datum/player_entity)
 /datum/player_entity/proc/save_statistics()
 	statistic_logged = TRUE
 	for(var/faction_to_get in statistics_groups)
+		CHECK_TICK
 		var/datum/grouped_statistic/statistics_group = statistics_groups[faction_to_get]
 		for(var/statistic_type in statistics_group.statistic_all)
+			CHECK_TICK
 			var/list/refs_holder = statistics_group.statistic_all[statistic_type]
 			for(var/general_name in refs_holder)
 				CHECK_TICK

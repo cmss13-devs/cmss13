@@ -336,6 +336,8 @@
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
+	S["lastchangelog"] >> lastchangelog
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -555,6 +557,8 @@
 	S["custom_cursors"] << custom_cursors
 
 	S["completed_tutorials"] << tutorial_list_to_savestring()
+
+	S["lastchangelog"] << lastchangelog
 
 	return TRUE
 

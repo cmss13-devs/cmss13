@@ -353,19 +353,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("generate() not implemented for [type]!")
 
-
-/datum/asset/css
-	_abstract = /datum/asset/css
-
-	/// The name of the stylesheet
-	var/name
-
-/datum/asset/css/send(client)
-	return SSassets.transport.send_assets(client, "[name].css")
-
-/datum/asset/css/register()
-	
-
 /datum/asset/changelog_item
 	_abstract = /datum/asset/changelog_item
 	var/item_filename

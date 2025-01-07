@@ -75,7 +75,7 @@
 /// From /obj/item/proc/dig_out_shrapnel() : ()
 #define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"
 
-// From /obj/limb/proc/apply_splints() : (obj/item/stack/medical/splint/splint, mob/living/user, mob/living/carbon/human/target)
+// From /obj/limb/proc/apply_splints() : (mob/living/user, obj/limb/target_limb)
 #define COMSIG_HUMAN_SPLINT_APPLIED "human_splint_applied"
 
 /// From /obj/item/reagent_container/pill/attack() : (mob/living/carbon/human/attacked_mob)

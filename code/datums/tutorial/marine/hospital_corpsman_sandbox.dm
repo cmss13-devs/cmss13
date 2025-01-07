@@ -59,6 +59,9 @@
 
 	var/boobootimer
 
+	var/list/mob/living/carbon/human/realistic_dummy/agent_healing_tasks = list()
+
+
 /datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
@@ -192,11 +195,59 @@
 	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	//sleep(25)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target)
 
-	//for(var/obj/limb/limb in target.limbs)
-	//	if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
+	var/list/healing_tasks = list()
+	UnregisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED)
+	var/list/injury_type = list()
+	for(var/obj/limb/limb in target.limbs)
+		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
+			injury_type |= "fracture"
+			healing_tasks[limb] = injury_type
+			RegisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(health_tasks_handler))
+	for(var/obj/limb/limb in target.limbs)
+		for(var/datum/wound/wound as anything in limb.wounds)
+			if(wound.internal)
+				injury_type |= "IB"
+				healing_tasks[limb] = injury_type
+				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler))
+	agent_healing_tasks[target] = healing_tasks
 
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(datum/source, mob/living/carbon/human/realistic_dummy/target, datum/surgery/surgery)
+
+	//if(source, /obj/limb)
+	//	UnregisterSignal(source, COMSIG_HUMAN_SPLINT_APPLIED)
+	var/list/healing_tasks = agent_healing_tasks[target]
+	var/list/injury_type = list()
+	var/obj/limb/limb
+	if(istype(source, /obj/limb)) // swaps around the variables from COMSIG_HUMAN_SPLINT_APPLIED to make them consistent
+		limb = source
+		var/target_redirect = limb.owner
+		health_tasks_handler(target, target_redirect)
+		return
+	if(surgery) // if this was called by a limb with ongoing surgery
+		limb = surgery.affected_limb
+		if(surgery.name == "Internal Bleeding Repair")
+			for(limb in healing_tasks)
+				injury_type = healing_tasks[surgery.affected_limb]
+				injury_type -= "IB"
+				injury_type |= "suture"
+		if(surgery.name == "Suture Incision")
+			for(limb in healing_tasks)
+				injury_type = healing_tasks[surgery.affected_limb]
+				if("suture" in injury_type)
+					//UnregisterSignal(surgery.affected_limb, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
+					injury_type -= "suture"
+	for(limb in healing_tasks)
+		injury_type = healing_tasks[limb]
+		if(("fracture" in injury_type))
+			injury_type -= "fracture"
+		if(!(length(injury_type)) && (limb)) // makes sure something DID exist on the list
+			healing_tasks[limb] = null
+	listclearnulls(healing_tasks)
+	if(!(length(healing_tasks)))
+		UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
+		make_agent_leave(target)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
 

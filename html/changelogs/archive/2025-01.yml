@@ -126,3 +126,7 @@
       to corresponding factions
   harryob:
   - rscadd: the req ordering console has a new ui
+2025-01-07:
+  Git-Nivrak:
+  - rscadd: Xenomorphs can now reset their strain, first use is free then it can be
+      done once every 40 minutes.

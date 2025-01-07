@@ -755,9 +755,16 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
-		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
-		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
+		playsound(H, 'sound/weapons/alien_tail_attack.ogg', 25, 1)
+		if(H.hand)
+			H.apply_armoured_damage(rand(caste.melee_damage_lower, caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "r_hand")
+		else
+			H.apply_armoured_damage(rand(caste.melee_damage_lower, caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "l_hand")
+		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to their hand!"))
+		if(body_position == STANDING_UP)
+			animation_attack_on(H)
+			emote("hiss")
+		flick_attack_overlay(H, "tail")
 		return FALSE
 	return TRUE
 

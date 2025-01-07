@@ -1156,3 +1156,36 @@
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/lemonpie,
 		/obj/item/reagent_container/food/snacks/mre_food/uscm_dessert/limepie,
 	)
+
+//WY
+
+/obj/item/mre_food_packet/upp
+	icon = 'icons/obj/items/food/mre_food/upp.dmi'
+
+///ENTREE
+
+/obj/item/mre_food_packet/upp/upp/snack
+	name = "\improper IRP snack"
+	desc = "An IRP snack, some nutritious snack to be eaten in a breaktime."
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
+	icon_state = "upp_snack"
+	food_list = list(
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/bakedfish,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/smokyribs,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/ham,
+		/obj/item/reagent_container/food/snacks/mre_food/wy_entree/beefstake,
+	)
+
+/obj/item/reagent_container/food/snacks/mre_food/upp_snack
+	icon = 'icons/obj/items/food/mre_food/wy.dmi'
+
+/obj/item/reagent_container/food/snacks/mre_food/upp_snack/driedfish
+	name = "baked salmon"
+	icon_state = "baked fish"
+	desc = "A creamy baked wild salmon, contains just the right amount of vitamin D3 you might need for the next four days."
+
+/obj/item/reagent_container/food/snacks/mre_food/wy_entree/bakedfish/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 14)
+	reagents.add_reagent("cream", 2)
+	reagents.add_reagent("sodiumchloride", 2)

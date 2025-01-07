@@ -249,11 +249,31 @@
 	new /obj/item/reagent_container/food/drinks/cans/bugjuice(src)
 
 /obj/item/storage/box/MRE/WY/pickflavor()
-	side = pick(/obj/item/reagent_container/food/snacks/packaged_burger, /obj/item/reagent_container/food/snacks/packaged_burrito)
+	side = pick(
+		/obj/item/reagent_container/food/snacks/packaged_burger,
+		/obj/item/reagent_container/food/snacks/packaged_burrito,
+	)
 	dessert = pick(
 		/obj/item/reagent_container/food/snacks/eat_bar,
 		/obj/item/reagent_container/food/snacks/wrapped/booniebars,
 		/obj/item/reagent_container/food/snacks/wrapped/barcardine,
 		/obj/item/reagent_container/food/snacks/wrapped/chunk,
-		)
+	)
 	return ..()
+
+/obj/item/storage/box/MRE/UPP
+	name = "\improper UPP IRP ration pack"
+	desc = "An Individual Meal Ration, mainly composed of a selection of canned food, despite being heavier, it has proven to be a lot more reliable."
+	icon_state = "upp_mealpack"
+	icon_closed = "upp_mealpack"
+	icon_opened = "upp_mealpackopened"
+	entree = /obj/item/mre_food_packet/entree/wy_colonist
+	side = null
+	snack = /obj/item/reagent_container/food/snacks/packaged_hdogs
+	dessert = null
+	should_have_beverage = FALSE
+	should_have_cigarettes = FALSE
+	should_have_matches = FALSE
+	should_have_spread = FALSE
+	should_have_cookie = FALSE
+	should_have_utencil = FALSE

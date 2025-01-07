@@ -69,7 +69,7 @@
 	name = "\improper box of UPP military rations"
 	desc = "A box of rations. Tastes like homeland."
 	icon_state = "upp_food_crate"
-	// magazine_type = /obj/item/storage/box/MRE/UPP
+	magazine_type = /obj/item/storage/box/MRE/UPP
 	overlay_content = "_upp_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/upp/empty

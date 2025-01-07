@@ -420,6 +420,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abw" = (
+/obj/item/storage/box/MRE/UPP,
+/turf/open/floor/almayer/plate,
+/area/strata/ag/exterior/marsh/crash)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -2873,6 +2877,7 @@
 "amg" = (
 /obj/structure/surface/rack,
 /obj/item/spacecash/c500,
+/obj/item/storage/box/MRE/UPP,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/research)
 "ami" = (
@@ -16817,6 +16822,7 @@
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "clo" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/UPP,
 /turf/open/floor/almayer/plate,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "clr" = (
@@ -21948,6 +21954,7 @@
 /area/strata/ag/exterior/marsh/relay_marshes)
 "imV" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/UPP,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "imZ" = (
@@ -36632,7 +36639,7 @@ gZp
 oeA
 oeA
 mKX
-oeA
+abw
 cXU
 bhO
 bhO

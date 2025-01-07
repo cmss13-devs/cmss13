@@ -1,0 +1,6 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "misc ranks are now shown as icons in ooc"
+  - rscadd: "rank icons now work in asay and mentorsay chats"
+  - bugfix: "fixed some broken ranks icons not working"

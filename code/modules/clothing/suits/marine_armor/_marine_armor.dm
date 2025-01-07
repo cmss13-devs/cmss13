@@ -325,7 +325,7 @@
 /obj/item/clothing/suit/storage/marine/MP/general
 	name = "\improper M3 pattern general officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
-	icon_state = "general"
+	icon_state = "golden"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
@@ -335,7 +335,7 @@
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
 	specialty = "M3 pattern general"
-	item_state_slots = list(WEAR_JACKET = "general")
+	item_state_slots = list(WEAR_JACKET = "golden")
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 

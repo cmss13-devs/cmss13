@@ -980,6 +980,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_NAME_OVERRIDE
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security)
 
+/obj/item/clothing/head/helmet/marine/leader/CO/general
+	name = "\improper M11 pattern ceremonial helmet"
+	desc = "A special M11 pattern ceremonial helmet worn occasionally by general officers of the USCM."
+	icon_state = "golden"
+	item_state = "golden"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+	specialty = "M11 pattern ceremonial"
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
 /obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern MP helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."

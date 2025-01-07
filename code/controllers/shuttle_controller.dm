@@ -4,7 +4,6 @@
 	var/list/locs_crash
 
 /datum/controller/shuttle_controller/process()
-
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
 

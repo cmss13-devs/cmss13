@@ -21,7 +21,7 @@
 
 	vehicle_type = /obj/vehicle/multitile/box_van/pizza_van
 
-/obj/effect/vehicle_spawner/box_van/spawn_vehicle(obj/vehicle/multitile/spawning)
+/obj/effect/vehicle_spawner/box_van/pizza_van/spawn_vehicle(obj/vehicle/multitile/spawning)
 	load_misc(spawning)
 	load_hardpoints(spawning)
 	handle_direction(spawning)

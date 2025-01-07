@@ -471,13 +471,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
 			if(FLOATING_PENETRATION_TIER_2)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
+				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen25]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
 			if(FLOATING_PENETRATION_TIER_3)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen35]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
 			if(FLOATING_PENETRATION_TIER_4)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
+				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen45]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
 	return ..()
 

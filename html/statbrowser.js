@@ -263,7 +263,7 @@ function sortVerbs() {
 	});
 }
 
-window.onresize = function () {
+window.onload = window.onresize = function () {
 	under_menu.style.height = menu.clientHeight + "px";
 };
 

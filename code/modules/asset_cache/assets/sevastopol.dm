@@ -17,11 +17,3 @@
 	parents = list(
 		"chakrapetch.css" = file("tgui/packages/chakrapetch/chakrapetch.css")
 	)
-
-/datum/asset/simple/namespaced/monofonto
-	assets = list(
-		"monofonto.ttf" = file("tgui/packages/monofonto/monofonto.ttf")
-	)
-	parents = list(
-		"monofonto.css" = file("tgui/packages/monofonto/monofonto.css")
-	)

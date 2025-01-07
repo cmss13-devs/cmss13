@@ -392,7 +392,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
 			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
 			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
-			get_asset_datum(/datum/asset/simple/namespaced/monofonto),
 		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),

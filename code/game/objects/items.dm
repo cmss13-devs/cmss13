@@ -90,13 +90,8 @@
 	var/list/actions
 	/// list of paths of action datums to give to the item on New().
 	var/list/actions_types
-
-	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
-
 	/// for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/gas_transfer_coefficient = 1
-	/// for chemicals/diseases
-	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
@@ -340,7 +335,7 @@
 
 	if(isstorage(loc))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, user.loc, user)
 
 	throwing = 0
 
@@ -948,8 +943,8 @@
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
-	SPAN_NOTICE("You peer through \the [zoom_device]."))
+	user.visible_message(SPAN_NOTICE("[user] peers through [zoom_device]."),
+	SPAN_NOTICE("You peer through [zoom_device]."))
 	zoom = !zoom
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)

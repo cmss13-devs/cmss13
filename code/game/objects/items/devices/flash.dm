@@ -2,7 +2,7 @@
 	name = "flash"
 	desc = "Used for blinding and being an asshole. Recharges one flash every 30 seconds. You must wait 1 second between uses for the capacitor to recharge."
 	icon_state = "flash"
-	item_state = "flash_device" //Replace me later
+	item_state = "flash_device1" //Replace me later (Yes sir! *Salute*)
 	throwforce = 5
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
@@ -21,6 +21,7 @@
 /obj/item/device/flash/update_icon()
 	if(broken)
 		icon_state = "[icon_state]_burnt"
+		item_state = "flashburnt1"
 
 /obj/item/device/flash/get_examine_text(mob/user)
 	. = ..()
@@ -132,6 +133,8 @@
 			return
 
 		do_flash(M, user, FALSE)
+
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 //AOE flash
 

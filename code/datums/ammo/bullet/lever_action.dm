@@ -66,11 +66,11 @@
 /datum/ammo/bullet/lever_action/xm88/pen20
 	penetration = ARMOR_PENETRATION_TIER_4
 
-/datum/ammo/bullet/lever_action/xm88/pen30
+/datum/ammo/bullet/lever_action/xm88/pen25
 	penetration = ARMOR_PENETRATION_TIER_5
 
-/datum/ammo/bullet/lever_action/xm88/pen40
+/datum/ammo/bullet/lever_action/xm88/pen35
 	penetration = ARMOR_PENETRATION_TIER_7
 
-/datum/ammo/bullet/lever_action/xm88/pen50
+/datum/ammo/bullet/lever_action/xm88/pen45
 	penetration = ARMOR_PENETRATION_TIER_9

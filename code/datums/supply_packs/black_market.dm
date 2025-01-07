@@ -861,7 +861,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 /datum/supply_packs/contraband/ammo/bizon
 	name = "Magazines box (Type 64, 10x mags)"
 	dollar_cost = 40
-	contains = list(/obj/item/ammo_box/magazine/type64,)
+	contains = list(/obj/item/ammo_box/magazine/type64)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m1911

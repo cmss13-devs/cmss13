@@ -336,6 +336,7 @@ SUBSYSTEM_DEF(hijack)
 			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
 
 /datum/controller/subsystem/hijack/proc/superheat_engine_room()
+	xeno_announcement("Every sense in our form is screaming... the ship's reactors are almost ready to explode!")
 	engine_room_superheated = TRUE
 	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
@@ -347,6 +348,7 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()
 	ares_sd_announced = TRUE
+	xeno_announcement("A shiver goes down our carapace as we feel the approaching end... The ship's reactors are halfway prepared to explode!")
 	marine_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
@@ -364,6 +366,7 @@ SUBSYSTEM_DEF(hijack)
 	sleep(7 SECONDS)
 	shakeship(2, 10, TRUE)
 
+	xeno_announcement("DISABLE IT! NOW!")
 	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
 	sleep(5 SECONDS)
 

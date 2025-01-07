@@ -222,7 +222,7 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_death)
 		else if(ishuman(src))
 			track_statistic_earned(new_death.faction_name, STATISTIC_TYPE_JOB, new_death.cause_name, ff_type ? STATISTICS_DEATH_FF : STATISTICS_DEATH, 1, player_entity)
 
-	if(GLOB.round_statistics)
+	if(GLOB.round_statistics && new_death.cause_name != "existing")
 		GLOB.round_statistics.death_stats_list += new_death
 
 	new_death.save()

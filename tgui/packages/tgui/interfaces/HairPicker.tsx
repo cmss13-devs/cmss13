@@ -198,7 +198,7 @@ export const HairPickerElement = (props: {
         <>
           <Input
             placeholder="Search..."
-            onChange={(_, val) => setSearch(val.toLowerCase())}
+            onInput={(_, val) => setSearch(val.toLowerCase())}
           />
           {color && (
             <Button onClick={() => (setColor ? setColor(action) : null)}>

@@ -19,7 +19,7 @@ body {
 .menu-container {
 	background-color: #F0F0F0;
 	position: fixed;
-	top: 32px;
+	top: 35px;
 	width: 100%;
 	z-index: 100;
 	display: flex;

@@ -147,6 +147,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/be_random_body = 0 //whether we have a random appearance every round
 	var/gender = MALE //gender of character (well duh)
+	var/body_presentation
+
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
@@ -1896,9 +1898,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					save_preferences()
 					save_character()
 					save_cooldown = world.time + 50
-					var/mob/new_player/np = user
-					if(istype(np))
-						np.new_player_panel_proc()
 
 				if("reload")
 					if(reload_cooldown > world.time)
@@ -1922,9 +1921,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("changeslot")
 					load_character(text2num(href_list["num"]))
 					close_load_dialog(user)
-					var/mob/new_player/np = user
-					if(istype(np))
-						np.new_player_panel_proc()
 
 					update_all_pickers(user)
 
@@ -2017,6 +2013,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
+	character.body_presentation = get_body_presentation()
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes
@@ -2098,6 +2095,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	character.skin_color = skin_color
 	character.body_type = body_type
 	character.body_size = body_size
+	character.body_presentation = get_body_presentation()
 
 	character.r_eyes = r_eyes
 	character.g_eyes = g_eyes
@@ -2264,6 +2262,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	picker_ui = SStgui.get_open_ui(user, traits_picker)
 	picker_ui?.send_update()
+
+/datum/preferences/proc/get_body_presentation()
+	return body_presentation || gender
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

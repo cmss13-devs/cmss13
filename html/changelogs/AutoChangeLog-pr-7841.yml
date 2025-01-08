@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - rscadd: "Xenomorphs can now reset their strain, first use is free then it can be done once every 40 minutes."

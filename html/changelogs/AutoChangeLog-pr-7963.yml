@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Fax responder preset listening bugs no longer broadcast to ghosts."

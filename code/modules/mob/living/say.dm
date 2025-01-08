@@ -154,8 +154,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	//RUCM START
 	if(!length(tts_heard_list))
-		tts_heard_list = list(list(), list())
-		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), tts_voice, tts_voice_filter, tts_heard_list, FALSE, 0, tts_voice_pitch, speaking_noise)
+		tts_heard_list = list(list(), list(), list())
+		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(message), tts_voice, tts_voice_filter, tts_heard_list, FALSE, 0, tts_voice_pitch, "", speaking_noise)
 	//RUCM END
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone

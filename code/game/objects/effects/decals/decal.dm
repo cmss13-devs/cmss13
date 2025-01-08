@@ -28,4 +28,3 @@
 		overlay.pixel_y = pixel_y
 	applied_turf.overlays += overlay
 	qdel(src)
-	return

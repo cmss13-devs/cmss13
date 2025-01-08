@@ -186,7 +186,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	UnregisterSignal(operator, list(
 		COMSIG_PARENT_QDELETING,
-		COMSIG_MOVABLE_PRE_MOVE,
+		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOB_POST_CLICK
 	))
 	operator.update_sight()
@@ -224,7 +224,12 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /mob/hologram/railgun
 	name = "Camera"
 	density = FALSE
-	mouse_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
+
+/mob/hologram/railgun/handle_view(mob/M, atom/target)
+	. = ..()
+
+	if(M.client?.prefs?.custom_cursors)
+		M.client.mouse_pointer_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 /mob/hologram/railgun/Initialize(mapload, mob/M)
 	. = ..()

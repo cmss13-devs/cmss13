@@ -105,6 +105,18 @@
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds
+	name = "Preserve Shutter"
+	id = "Yautja Preserve"
+	needs_power = FALSE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_OPENED, PROC_REF(open))
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_CLOSED, PROC_REF(close))
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
 
@@ -165,7 +177,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft
 	name = "Anti-Theft Shutters"

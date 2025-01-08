@@ -91,7 +91,7 @@
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
-		..()
+		. = ..()
 	return
 
 /obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
@@ -267,8 +267,12 @@
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
 	icon = 'icons/obj/items/storage/boxes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
 	icon_state = "inf_box"
-	item_state = "syringe_kit"
+	item_state = "box"
 	max_storage_space = 21
 
 /obj/item/storage/briefcase/inflatable/Initialize()

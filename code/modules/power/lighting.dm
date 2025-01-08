@@ -118,7 +118,7 @@
 			src.transfer_fingerprints_to(newlight)
 			qdel(src)
 			return
-	..()
+	. = ..()
 
 /obj/structure/machinery/light_construct/small
 	name = "small light fixture frame"
@@ -278,7 +278,7 @@
 		if("tube")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 6
+					pixel_y = 19
 				if(EAST)
 					pixel_x = 6
 				if(WEST)
@@ -286,7 +286,7 @@
 		if("bulb")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 23
+					pixel_y = 19
 				if(EAST)
 					pixel_x = 10
 				if(WEST)
@@ -661,6 +661,10 @@
 
 /obj/item/light_bulb
 	icon = 'icons/obj/items/lighting.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	force = 2
 	throwforce = 5
 	w_class = SIZE_SMALL
@@ -698,6 +702,10 @@
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	item_state = "contvapour"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	matter = list("glass" = 100)
 	brightness = 5
 

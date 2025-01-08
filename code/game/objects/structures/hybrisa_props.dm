@@ -1961,13 +1961,13 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
 	icon_state = "latticefull"
 
-/obj/effect/decal/hybrisa/hybrisa/lattice
+/obj/effect/decal/hybrisa/lattice
 	name = "structural lattice"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
 	layer = TURF_LAYER
 
-/obj/effect/decal/hybrisa/hybrisa/lattice/full
+/obj/effect/decal/hybrisa/lattice/full
 	icon_state = "latticefull"
 
 // Cargo Containers extended
@@ -2505,7 +2505,7 @@
 /obj/structure/prop/hybrisa/misc/urinal/dark
 	icon_state = "small_urinal_dark"
 
-/obj/effect/decal/hybrisa/hybrisa/deco_edging
+/obj/effect/decal/hybrisa/deco_edging
 	name = "decorative concrete edging"
 	desc = "Decorative edging for bordering stuff, very fancy."
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
@@ -2514,7 +2514,7 @@
 	anchored = TRUE
 	layer = TURF_LAYER
 
-/obj/effect/decal/hybrisa/hybrisa/deco_edging/corner
+/obj/effect/decal/hybrisa/deco_edging/corner
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "stone_edging_deco"
 	density = FALSE

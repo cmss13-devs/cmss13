@@ -2,10 +2,22 @@
 
 /obj/effect/decal
 	name = "you should not be seeing this!"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/decal/Initialize()
-	if(!loc)
+	.=..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/decal/LateInitialize()
+	. = ..()
+	var/turf/applied_turf = get_turf(src)
+
+	if(!applied_turf)
 		qdel(src)
-	else
-		loc.icon += icon
-		qdel(src)
+		return
+	var/image/overlay = icon(icon,icon_state, dir)
+	applied_turf.overlays += icon(icon,icon_state, dir)
+	qdel(src)
+	return

@@ -28,7 +28,7 @@ export const Statistic = () => {
       theme={'crtblue'}
     >
       <Window.Content scrollable className="StatisticMenu">
-        <Flex direction="column" height="100%">
+        <Flex direction="column">
           <Flex.Item>
             <Tabs fluid textAlign="center" className="tabs-horizontal">
               {data_tabs.map((tab) => (

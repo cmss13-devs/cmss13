@@ -1,7 +1,0 @@
-author: "Diegoflores31"
-delete-after: True
-changes:
-  - balance: "Shrapnell accuracy and damage increased"
-  - balance: "Shrapnell now does 60% bonus damage to xenomorphs"
-  - balance: "Shrapnell slows xenomorphs on hit"
-  - balance: "Custom rockets will now shoot their shrapnell on a 90 degree angle"

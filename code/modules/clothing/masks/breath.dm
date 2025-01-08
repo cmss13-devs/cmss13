@@ -340,17 +340,17 @@
 	set category = "Object"
 	set src in usr
 	if(usr.stat == DEAD)
-			return
+		return
 
 	adjust = !adjust
-		if(adjust)
-			to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
-			icon_state += "_alt"
-		else
-			to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
-			icon_state = original_state
+	if(adjust)
+		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+		icon_state += "_alt"
+	else
+		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+		icon_state = original_state
 
-		update_clothing_icon(src) // Update the on-mob icon.
+	update_clothing_icon(src) // Update the on-mob icon.
 
 /obj/item/clothing/mask/neckerchief/gray
 	icon_state = "neckerchief_gray"

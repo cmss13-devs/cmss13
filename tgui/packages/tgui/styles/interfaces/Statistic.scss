@@ -3,6 +3,10 @@ $separator-color: colors.$primary !default;
 
 .StatisticMenu {
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
 
   .TilesInititalizator {
     display: grid;

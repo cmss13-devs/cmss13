@@ -16,8 +16,6 @@
 
 /obj/effect/decal/LateInitialize()
 	. = ..()
-	if(keep_as_object)
-		return
 	var/turf/applied_turf = get_turf(src)
 
 	if(!applied_turf)

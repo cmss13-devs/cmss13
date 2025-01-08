@@ -112,6 +112,8 @@
 			if(client?.player_data?.player_entity)
 				client.player_data.player_entity.try_recalculate()
 				client.player_data.player_entity.tgui_interact(src)
+			else
+				to_chat(src, SPAN_INFO("Statistic not loaded, try again later!"))
 			return 1
 
 		if("ready")

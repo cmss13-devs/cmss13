@@ -1213,6 +1213,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(client?.player_data?.player_entity)
 		client.player_data.player_entity.try_recalculate()
 		client.player_data.player_entity.tgui_interact(src)
+	else
+		to_chat(src, SPAN_INFO("Statistic not loaded, try again later!"))
 
 /mob/dead/observer/get_status_tab_items()
 	. = ..()

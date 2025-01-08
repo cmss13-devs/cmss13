@@ -272,7 +272,7 @@
 	assignment = "Royal Marines Corpsman"
 	rank = JOB_TWE_RMC_MEDIC
 
-	minimap_icon = "rmc_rifleman"
+	minimap_icon = "rmc_medic"
 
 	skills = /datum/skills/rmc/medic
 

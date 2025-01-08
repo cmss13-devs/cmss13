@@ -22,9 +22,19 @@
 	available_points_to_display = 0
 
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_USE_VENDOR_FLAGS
+	var/faction = FACTION_MARINE
+	var/datum/controller/supply/linked_supply_controller
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, PROC_REF(populate_products))
 	if(!GLOB.VehicleGearConsole)
 		GLOB.VehicleGearConsole = src
@@ -35,9 +45,9 @@
 	return ..()
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = loc
-	T = get_step(T, SOUTH)
-	return T
+	var/turf/target = get_turf(src)
+	target = get_step(target, SOUTH)
+	return target
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over() //we don't do this here
 	return
@@ -45,7 +55,7 @@
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/flip_back()
 	return
 
-/obj/structure/machinery/cm_vending/ex_act(severity)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_LOW)
 		if(prob(25))
 			malfunction()
@@ -87,9 +97,9 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(GLOB.supply_controller.tank_points) //we steal points from GLOB.supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points_to_display = GLOB.supply_controller.tank_points
-		GLOB.supply_controller.tank_points = 0
+	if(linked_supply_controller.tank_points) //we steal points from GLOB.supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+		available_points_to_display = linked_supply_controller.tank_points
+		linked_supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
 
 	var/list/ui_listed_products = get_listed_products(user)
@@ -119,11 +129,6 @@
 			vend_fail()
 			return FALSE
 		budget_points -= L[2]
-
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = get_turf(src)
-	T = get_step(T, SOUTH)
-	return T
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),

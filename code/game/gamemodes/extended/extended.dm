@@ -8,7 +8,7 @@
 	var/next_research_allocation = 0
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 
-/datum/game_mode/announce()
+/datum/game_mode/extended/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
 
 /datum/game_mode/extended/get_roles_list()

@@ -333,16 +333,16 @@
 	actions_types = list(/datum/action/item_action/toggle)
 
 	/obj/item/clothing/mask/neckerchief/ui_action_click()
-		adjust()
+	adjust()
 
 	/obj/item/clothing/mask/neckerchief/verb/adjust()
-		set name = "Adjust"
-		set category = "Object"
-		set src in usr
-		if(usr.stat == DEAD)
+	set name = "Adjust"
+	set category = "Object"
+	set src in usr
+	if(usr.stat == DEAD)
 			return
 
-		adjust = !adjust
+	adjust = !adjust
 		if(adjust)
 			to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
 			icon_state += "_alt"
@@ -353,49 +353,49 @@
 		update_clothing_icon(src) // Update the on-mob icon.
 
 	/obj/item/clothing/mask/neckerchief/gray
-		icon_state = "neckerchief_gray"
-		item_state = "neckerchief_gray"
-		original_state = "neckerchief_gray"
+	icon_state = "neckerchief_gray"
+	item_state = "neckerchief_gray"
+	original_state = "neckerchief_gray"
 
 	/obj/item/clothing/mask/neckerchief/green
-		icon_state = "neckerchief_green"
-		item_state = "neckerchief_green"
-		original_state = "neckerchief_green"
+	icon_state = "neckerchief_green"
+	item_state = "neckerchief_green"
+	original_state = "neckerchief_green"
 
 	/obj/item/clothing/mask/neckerchief/black
-		icon_state = "neckerchief_black"
-		item_state = "neckerchief_black"
-		original_state = "neckerchief_black"
+	icon_state = "neckerchief_black"
+	item_state = "neckerchief_black"
+	original_state = "neckerchief_black"
 
 	/obj/item/clothing/mask/neckerchief/alpha
-		icon_state = "neckerchief_alpha"
-		item_state = "neckerchief_alpha"
-		original_state = "neckerchief_alpha"
+	icon_state = "neckerchief_alpha"
+	item_state = "neckerchief_alpha"
+	original_state = "neckerchief_alpha"
 
 	/obj/item/clothing/mask/neckerchief/bravo
-		icon_state = "neckerchief_bravo"
-		item_state = "neckerchief_bravo"
-		original_state = "neckerchief_bravo"
+	icon_state = "neckerchief_bravo"
+	item_state = "neckerchief_bravo"
+	original_state = "neckerchief_bravo"
 
 	/obj/item/clothing/mask/neckerchief/charlie
-		icon_state = "neckerchief_charlie"
-		item_state = "neckerchief_charlie"
-		original_state = "neckerchief_charlie"
+	icon_state = "neckerchief_charlie"
+	item_state = "neckerchief_charlie"
+	original_state = "neckerchief_charlie"
 
 	/obj/item/clothing/mask/neckerchief/delta
-		icon_state = "neckerchief_delta"
-		item_state = "neckerchief_delta"
-		original_state = "neckerchief_delta"
+	icon_state = "neckerchief_delta"
+	item_state = "neckerchief_delta"
+	original_state = "neckerchief_delta"
 
 	/obj/item/clothing/mask/neckerchief/echo
-		icon_state = "neckerchief_echo"
-		item_state = "neckerchief_echo"
-		original_state = "neckerchief_echo"
+	icon_state = "neckerchief_echo"
+	item_state = "neckerchief_echo"
+	original_state = "neckerchief_echo"
 
 	/obj/item/clothing/mask/neckerchief/foxtrot
-		icon_state = "neckerchief_foxtrot"
-		item_state = "neckerchief_foxtrot"
-		original_state = "neckerchief_foxtrot"
+	icon_state = "neckerchief_foxtrot"
+	item_state = "neckerchief_foxtrot"
+	original_state = "neckerchief_foxtrot"
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"

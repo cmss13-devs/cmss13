@@ -8,7 +8,7 @@
 	var/keep_as_object = FALSE
 
 /obj/effect/decal/Initialize()
-	.=..()
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/decal/LateInitialize()

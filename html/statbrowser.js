@@ -968,6 +968,17 @@ function draw_verbs(cat) {
 			})
 		}
 	}
+
+	table.style.width = table.offsetWidth + "px";
+	table.style.height = table.offsetHeight + "px";
+
+	window.addEventListener("resize", function() {
+		table.style.width = null
+		table.style.height = null
+
+		table.style.width = table.offsetWidth + "px";
+		table.style.height = table.offsetHeight + "px";
+	})
 }
 
 function set_theme(which) {

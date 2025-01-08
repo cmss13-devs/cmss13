@@ -102,7 +102,8 @@ BSQL_PROTECT_DATUM(/datum/grouped_statistic)
 		if(!statistic_all[statistic.statistic_type][statistic.general_name])
 			statistic_all[statistic.statistic_type][statistic.general_name] = list()
 
-		statistic.sync()
+		if(recalculate)
+			statistic.sync()
 		statistic_all[statistic.statistic_type][statistic.general_name] |= statistic
 
 	recalculate_statistic_group(recalculate)

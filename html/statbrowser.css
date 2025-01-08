@@ -99,12 +99,24 @@ img {
 
 .top-button-text {
 	font-family: sevastopol;
-	font-size: 24px;
+	font-size: 20px;
 }
 
 .top-button-text>i {
+	display: none;
 	font-size: 14px;
 	padding-top: 3px;
+}
+
+
+@media only screen and (min-width: 430px) {
+	.top-button-text {
+		font-size: 24px;
+
+		&>i {
+			display: inline;
+		}
+	}
 }
 
 i {
@@ -164,6 +176,7 @@ i {
 
 .grid-item:hover {
 	color: #003399;
+	height: 1.27em;
 	z-index: 1;
 }
 
@@ -180,7 +193,6 @@ i {
 
 .grid-item-text:hover {
 	position: absolute;
-	top: -1.33em;
 	white-space: normal;
 	background-color: #ececec;
 }

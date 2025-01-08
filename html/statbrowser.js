@@ -954,31 +954,9 @@ function draw_verbs(cat) {
 			header.textContent = cat;
 			header.style.fontSize = current_fontsize + 4 + "px";
 			content.appendChild(header);
-			let table = content.appendChild(additions[cat]);
-
-			table.style.width = table.offsetWidth + "px";
-			table.style.height = table.offsetHeight + "px";
-
-			window.addEventListener("resize", function() {
-				table.style.width = null
-				table.style.height = null
-
-				table.style.width = table.offsetWidth + "px";
-				table.style.height = table.offsetHeight + "px";
-			})
+			content.appendChild(additions[cat]);
 		}
 	}
-
-	table.style.width = table.offsetWidth + "px";
-	table.style.height = table.offsetHeight + "px";
-
-	window.addEventListener("resize", function() {
-		table.style.width = null
-		table.style.height = null
-
-		table.style.width = table.offsetWidth + "px";
-		table.style.height = table.offsetHeight + "px";
-	})
 }
 
 function set_theme(which) {

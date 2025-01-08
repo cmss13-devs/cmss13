@@ -49,7 +49,7 @@
 		skin_color_icon = H.skin_color
 		body_type_icon = H.body_type
 
-	icon_state = "[get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, name, skin_color_icon)]"
+	icon_state = "[get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, name, skin_color_icon, H.body_presentation)]"
 	setDir(SOUTH)
 	apply_transform(turn(transform, rand(70,130)))
 

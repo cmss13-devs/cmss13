@@ -18,6 +18,10 @@
 		qdel(src)
 		return
 	var/image/overlay = icon(icon,icon_state, dir)
+	if(pixel_x)
+		overlay.pixel_x = pixel_x
+	if(pixel_y)
+		overlay.pixel_y = pixel_y
 	applied_turf.overlays += icon(icon,icon_state, dir)
 	qdel(src)
 	return

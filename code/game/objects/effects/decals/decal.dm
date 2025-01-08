@@ -9,6 +9,9 @@
 
 /obj/effect/decal/Initialize()
 	. = ..()
+	if(keep_as_object)
+		return
+
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/decal/LateInitialize()

@@ -51,9 +51,11 @@
 	var/action_name = "lesser_sacrifice"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/activable/lesser_sacrifice/use_ability(atom/atom)
+/datum/action/xeno_action/activable/lesser_sacrifice/use_ability(atom/atom_target)
+	. = ..()
+
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/mob/living/carbon/xenomorph/target = atom
+	var/mob/living/carbon/xenomorph/target = atom_target
 
 	if(!istype(target))
 		return

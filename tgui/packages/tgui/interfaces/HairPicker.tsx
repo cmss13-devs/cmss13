@@ -225,6 +225,7 @@ export const HairPickerElement = (props: {
             <Stack.Item
               key={hair.name}
               className={`Picker${active === hair.icon ? ' Active' : ''}`}
+              height="fit-content"
             >
               <Tooltip content={hair.name}>
                 <Box

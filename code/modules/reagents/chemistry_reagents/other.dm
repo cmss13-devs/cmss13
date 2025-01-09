@@ -1069,3 +1069,20 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/forensic_spray
+	name = "Forensic Spray"
+	id = "forensic_spray"
+	description = "A dye-containing spray that binds to the skin oils left behind by fingerprints."
+	reagent_state = LIQUID
+	color = "#79847a"
+	chemclass = CHEM_CLASS_RARE
+
+/datum/reagent/forensic_spray/reaction_obj(obj/reacting_on, volume)
+	if(!istype(reacting_on, /obj/effect/decal/prints))
+		return
+
+	var/obj/effect/decal/prints/reacting_prints = reacting_on
+	reacting_prints.toggle_visibility()
+
+	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, toggle_visibility)), 1 MINUTES)

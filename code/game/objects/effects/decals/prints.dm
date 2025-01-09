@@ -3,6 +3,8 @@
 	gender = PLURAL
 	icon = 'icons/effects/fingerprints.dmi'
 	icon_state = "prints"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	unacidable = TRUE
 
@@ -78,6 +80,16 @@
 	information += criminal_squad
 
 	return information
+
+/// Toggles between the prints being hidden and shown, including in the context menu
+/obj/effect/decal/prints/proc/toggle_visibility()
+	if(alpha == 255)
+		animate(src, time = 2 SECONDS, alpha = 0)
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		return
+
+	animate(src, time = 2 SECONDS, alpha = 255)
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 
 /obj/effect/decal/prints/Destroy()
 	SSclues.prints_list -= src

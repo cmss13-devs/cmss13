@@ -359,7 +359,7 @@
 	switch_fuel(active_fuel, user)
 	to_chat(user, SPAN_NOTICE("You hear a loud hiss as the fuelpack selects [active_fuel.name] as the next tank."))
 	balloon_alert(user, "[active_fuel.name] selected!")
-	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
+	playsound(src, 'sound/machines/steampressure2.ogg', 25, TRUE)
 
 	return TRUE
 
@@ -371,11 +371,18 @@
 	cycle_fuel(usr)
 
 
+/*controls most of the logic for adding and removing fuel
+  aswell as a lot of the logic for removing the tank and
+  throwing it into nullspace() for storage purposes.
+*/
 /obj/item/storage/large_holster/fuelpack/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large))
 		if(length(tanks) < 3)
 			add_fuel(A)
 			return
+
+		for(var/obj/item/ammo_magazine/flamer_tank/large in tanks)
+			to_chat(user, SPAN_NOTICE("The [large.name] tank is [floor(large.get_ammo_percent())]% full."))
 		var/obj/item/ammo_magazine/flamer_tank/large/removed_fuel = tgui_input_list(user, "Which tank do you want to replace?", "Replace a Tank", tanks)
 		if(!removed_fuel)
 			return
@@ -385,11 +392,14 @@
 		user.temp_drop_inv_item(A)
 		A.moveToNullspace()
 		switch_fuel(A, user)
+		playsound(user, 'sound/machines/steampressure1.ogg', 25, TRUE)
 
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/custom/large))
 		if(length(tanks) < 3)
 			add_fuel(A)
 			return
+		for(var/obj/item/ammo_magazine/flamer_tank/large in tanks)
+			to_chat(user, SPAN_NOTICE("The [large.name] tank is [floor(large.get_ammo_percent())]% full."))
 		var/obj/item/ammo_magazine/flamer_tank/custom/large/removed_fuel = tgui_input_list(user, "Which tank do you want to replace?", "Replace a Tank", tanks)
 		if(!removed_fuel)
 			return
@@ -406,9 +416,11 @@
 
 	. = ..()
 
+
 // getter for the current status of our active_fuel
 /obj/item/storage/large_holster/fuelpack/proc/set_active_fuel(new_fuel)
 	active_fuel = new_fuel
+
 
 // when add_fuel is called
 /obj/item/storage/large_holster/fuelpack/proc/add_fuel(obj/item/ammo_magazine/flamer_tank/new_tank)
@@ -416,11 +428,13 @@
 	if(!active_fuel)
 		set_active_fuel(new_tank)
 
+
 // when remove_fuel is called
 /obj/item/storage/large_holster/fuelpack/proc/remove_fuel(old_fuel)
 	tanks -= old_fuel
 	if(active_fuel == old_fuel)
 		set_active_fuel(null)
+
 
 // when switch_fuel is called
 /obj/item/storage/large_holster/fuelpack/proc/switch_fuel(A, user)
@@ -439,14 +453,17 @@
 		for(var/obj/item/ammo_magazine/flamer_tank/custom/large in tanks)
 			. += "The [large.reagents] tank is [floor(large.get_ammo_percent())]% full."
 
+
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1
+
 
 /datum/action/item_action/specialist/toggle_fuel/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Fuel Type"
 	button.name = name
 	update_button_icon()
+
 
 /datum/action/item_action/specialist/toggle_fuel/update_button_icon()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item

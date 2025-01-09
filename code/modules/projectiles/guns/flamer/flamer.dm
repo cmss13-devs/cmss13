@@ -404,6 +404,7 @@
 /obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
 	if(fuelpack)
 		fuelpack.cycle_fuel(user)
+		playsound(src, 'sound/machines/steampressure2.ogg', 25, TRUE)
 
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
@@ -442,11 +443,11 @@
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 13, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if (!link_fuelpack(user) && !current_mag)
+	if(!link_fuelpack(user) && !current_mag)
 		to_chat(user, SPAN_WARNING("You must equip the specialized Broiler-T back harness or load in a fuel tank to use this incinerator unit!"))
 		click_empty(user)
 		return
-	if (fuelpack)
+	if(fuelpack)
 		// Check we're actually firing the right fuel tank
 		if(current_mag != fuelpack.active_fuel)
 			if(current_mag == null)

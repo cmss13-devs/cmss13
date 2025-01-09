@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - rscadd: "added client settings to the statbrowser - under the \"Options\" buttn"

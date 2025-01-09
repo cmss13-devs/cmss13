@@ -1568,6 +1568,7 @@
 #include "code\modules\asset_cache\assets\icon_ref_map.dm"
 #include "code\modules\asset_cache\assets\lobby.dm"
 #include "code\modules\asset_cache\assets\medals.dm"
+#include "code\modules\asset_cache\assets\sevastopol.dm"
 #include "code\modules\asset_cache\assets\tgfont.dm"
 #include "code\modules\asset_cache\assets\tgui.dm"
 #include "code\modules\asset_cache\assets\vending.dm"

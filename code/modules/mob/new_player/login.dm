@@ -35,6 +35,7 @@
 	lobby_window.initialize(
 		assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
+				get_asset_datum(/datum/asset/simple/namespaced/chakrapetch)
 			)
 	)
 

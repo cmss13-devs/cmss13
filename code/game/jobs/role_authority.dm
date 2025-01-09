@@ -562,12 +562,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad
-
-	if(!lowest || !lowest.put_marine_in_squad(human))
-		var/datum/squad/marine/cryo/last_squad = locate() in squads
-		if(!last_squad || !last_squad.put_marine_in_squad(human))
-			to_world("Warning! Bug in get_random_squad()!")
-		return
+	if(!lowest)
+		lowest = locate(/datum/squad/marine/cryo) in squads
+	lowest.put_marine_in_squad(human)
 	return
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)

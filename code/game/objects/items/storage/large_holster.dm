@@ -254,22 +254,22 @@
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	icon_state = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
-	var/obj/item/ammo_magazine/flamer_tank/large/fuel
-	var/obj/item/ammo_magazine/flamer_tank/large/B/fuelB
-	var/obj/item/ammo_magazine/flamer_tank/large/X/fuelX
 	var/obj/item/ammo_magazine/flamer_tank/large/active_fuel
 	var/obj/item/weapon/gun/flamer/M240T/linked_flamer
+	var/list/tanks = list()
 	var/toggling = FALSE
 	var/image/flamer_overlay
-	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
+	//actions_types = list(/datum/action/item_action/specialist/test_toggle_fuel)
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
-	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
-	fuelB = new /obj/item/ammo_magazine/flamer_tank/large/B()
-	fuelX = new /obj/item/ammo_magazine/flamer_tank/large/X()
-	active_fuel = fuel
+	tanks = list(
+		new /obj/item/ammo_magazine/flamer_tank/large,
+		new /obj/item/ammo_magazine/flamer_tank/large/B,
+		new /obj/item/ammo_magazine/flamer_tank/large/X,
+	)
+	set_active_fuel(tanks[1])
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi', "+m240t")
 
 /obj/item/storage/large_holster/fuelpack/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -292,10 +292,8 @@
 			item_icons[WEAR_BACK] = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/urban.dmi'
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
+	QDEL_NULL(tanks)
 	QDEL_NULL(active_fuel)
-	QDEL_NULL(fuel)
-	QDEL_NULL(fuelB)
-	QDEL_NULL(fuelX)
 	if(linked_flamer)
 		linked_flamer.fuelpack = null
 		linked_flamer = null
@@ -314,8 +312,7 @@
 /obj/item/storage/large_holster/fuelpack/dropped(mob/user)
 	if(linked_flamer)
 		linked_flamer.fuelpack = null
-		if(linked_flamer.current_mag in list(fuel, fuelB, fuelX))
-			linked_flamer.current_mag = null
+		linked_flamer.current_mag = null
 		linked_flamer.update_icon()
 		linked_flamer = null
 	..()
@@ -332,9 +329,9 @@
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)
 	..()
-	do_toggle_fuel(user)
+	cycle_fuel(user)
 
-/obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(mob/user)
+/obj/item/storage/large_holster/fuelpack/proc/cycle_fuel(mob/user)
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 
@@ -353,23 +350,16 @@
 	if(!active_fuel)
 		return
 
-	// Toggle to the next one
-
-	// Handles toggling of fuel. Snowflake way of changing action icon. Change icon, update action icon, change icon back
-	if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X))
-		active_fuel = fuel
-	else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/B))
-		active_fuel = fuelX
+// this is how the fuel is cycled manually via commands
+	var/current_index = tanks.Find(active_fuel)
+	if(current_index == length(tanks))
+		set_active_fuel(tanks[1])
 	else
-		active_fuel = fuelB
-
-	for(var/datum/action/action_added as anything in actions)
-		action_added.update_button_icon()
-
-	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
+		set_active_fuel(tanks[current_index + 1])
+	switch_fuel(active_fuel, user)
+	to_chat(user, SPAN_NOTICE("You hear a loud hiss as the fuelpack selects [active_fuel.name] as the next tank."))
+	balloon_alert(user, "[active_fuel.name] selected!")
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-	linked_flamer.current_mag = active_fuel
-	linked_flamer.update_icon()
 
 	return TRUE
 
@@ -378,44 +368,65 @@
 	set desc = "Toggle between the fuel types."
 	set category = "Pyro"
 	set src in usr
-	do_toggle_fuel(usr)
+	cycle_fuel(usr)
 
 
 /obj/item/storage/large_holster/fuelpack/attackby(obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large/))
+	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large))
+		if(length(tanks) < 3)
+			add_fuel(A)
+			return
+		var/obj/item/ammo_magazine/flamer_tank/large/removed_fuel = tgui_input_list(user, "Which tank do you want to replace?", "Replace a Tank", tanks)
+		if(!removed_fuel)
+			return
+		remove_fuel(removed_fuel)
+		removed_fuel.forceMove(get_turf(user))
+		add_fuel(A)
+		user.temp_drop_inv_item(A)
+		A.moveToNullspace()
 		switch_fuel(A, user)
-		return
+
+	if(istype(A, /obj/item/ammo_magazine/flamer_tank/custom/large))
+		if(length(tanks) < 3)
+			add_fuel(A)
+			return
+		var/obj/item/ammo_magazine/flamer_tank/custom/large/removed_fuel = tgui_input_list(user, "Which tank do you want to replace?", "Replace a Tank", tanks)
+		if(!removed_fuel)
+			return
+		remove_fuel(removed_fuel)
+		removed_fuel.forceMove(get_turf(user))
+		add_fuel(A)
+		user.temp_drop_inv_item(A)
+		A.moveToNullspace()
+		switch_fuel(A, user)
 
 	var/obj/item/weapon/gun/flamer/M240T/F = A
-	if(istype(F) && !(F.fuelpack))
+	if(istype(F) && !(src.linked_flamer))
 		F.link_fuelpack(user)
-		if(F.current_mag && !(F.current_mag in list(fuel,fuelB,fuelX)))
-			to_chat(user, SPAN_WARNING("\The [F.current_mag] is ejected by the Broiler-T back harness and replaced with \the [active_fuel]!"))
-			F.unload(user, drop_override = TRUE)
-			F.current_mag = active_fuel
-			F.update_icon()
 
 	. = ..()
 
-/obj/item/storage/large_holster/fuelpack/proc/switch_fuel(obj/item/ammo_magazine/flamer_tank/large/new_fuel, mob/user)
-	// Switch out the currently stored fuel and drop it
-	if(istype(new_fuel, /obj/item/ammo_magazine/flamer_tank/large/X/))
-		fuelX.forceMove(get_turf(user))
-		fuelX = new_fuel
-	else if(istype(new_fuel, /obj/item/ammo_magazine/flamer_tank/large/B/))
-		fuelB.forceMove(get_turf(user))
-		fuelB = new_fuel
-	else
-		fuel.forceMove(get_turf(user))
-		fuel = new_fuel
-	visible_message("[user] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
-	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [floor(new_fuel.get_ammo_percent())]% fuel.")
-	user.temp_drop_inv_item(new_fuel)
-	new_fuel.moveToNullspace() //necessary to not confuse the storage system
+// getter for the current status of our active_fuel
+/obj/item/storage/large_holster/fuelpack/proc/set_active_fuel(new_fuel)
+	active_fuel = new_fuel
+
+// when add_fuel is called
+/obj/item/storage/large_holster/fuelpack/proc/add_fuel(obj/item/ammo_magazine/flamer_tank/new_tank)
+	tanks += new_tank
+	if(!active_fuel)
+		set_active_fuel(new_tank)
+
+// when remove_fuel is called
+/obj/item/storage/large_holster/fuelpack/proc/remove_fuel(old_fuel)
+	tanks -= old_fuel
+	if(active_fuel == old_fuel)
+		set_active_fuel(null)
+
+// when switch_fuel is called
+/obj/item/storage/large_holster/fuelpack/proc/switch_fuel(A, user)
+	linked_flamer.current_mag = active_fuel
+	linked_flamer.update_icon()
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-	// If the fuel being switched is the active one, set it as new_fuel until it gets toggled
-	if(istype(new_fuel, active_fuel))
-		active_fuel = new_fuel
 
 
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
@@ -423,12 +434,10 @@
 	if(length(contents))
 		. += "It is storing a M240-T incinerator unit."
 	if (get_dist(user, src) <= 1)
-		if(fuel)
-			. += "The [fuel.caliber] currently contains: [floor(fuel.get_ammo_percent())]% fuel."
-		if(fuelB)
-			. += "The [fuelB.caliber] currently contains: [floor(fuelB.get_ammo_percent())]% fuel."
-		if(fuelX)
-			. += "The [fuelX.caliber] currently contains: [floor(fuelX.get_ammo_percent())]% fuel."
+		for(var/obj/item/ammo_magazine/flamer_tank/large in tanks)
+			. += "The [large.caliber] tank is [floor(large.get_ammo_percent())]% full."
+		for(var/obj/item/ammo_magazine/flamer_tank/custom/large in tanks)
+			. += "The [large.reagents] tank is [floor(large.get_ammo_percent())]% full."
 
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1

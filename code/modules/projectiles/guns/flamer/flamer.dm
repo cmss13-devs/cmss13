@@ -403,7 +403,7 @@
 
 /obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
 	if(fuelpack)
-		fuelpack.do_toggle_fuel(user)
+		fuelpack.cycle_fuel(user)
 
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
@@ -448,11 +448,14 @@
 		return
 	if (fuelpack)
 		// Check we're actually firing the right fuel tank
-		if (current_mag != fuelpack.active_fuel)
-			// This was a manually loaded fuel tank
-			if (current_mag && !(current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
-				to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
-				unload(user, drop_override = TRUE)
+		if(current_mag != fuelpack.active_fuel)
+			if(current_mag == null)
+				to_chat(user, SPAN_WARNING("\The Broiler-T back harness churns to life, and dispenses \the [fuelpack.active_fuel] into the active canister slot!"))
+				current_mag = fuelpack.active_fuel
+				update_icon()
+				return .()
+			to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
+			unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
 			update_icon()
 	return ..()
@@ -465,7 +468,7 @@
 	..()
 
 /obj/item/weapon/gun/flamer/M240T/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	if (fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
+	if(fuelpack)
 		to_chat(user, SPAN_WARNING("The incinerator tank is locked in place. It cannot be removed."))
 		return
 	..()

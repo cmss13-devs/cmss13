@@ -9,7 +9,7 @@
 	)
 
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
 	flags_cold_protection = BODY_FLAG_HANDS
@@ -853,6 +853,8 @@
 			return
 		caller.put_in_active_hand(caster)
 		caster_deployed = TRUE
+		if(caller.client?.prefs.custom_cursors)
+			caller.client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/plasma_caster_mouse.dmi'
 		to_chat(caller, SPAN_NOTICE("You activate your plasma caster. It is in [caster.mode] mode."))
 		playsound(src, 'sound/weapons/pred_plasmacaster_on.ogg', 15, TRUE)
 
@@ -879,7 +881,7 @@
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
-	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
+	message_admins(FONT_SIZE_XL("<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	T = get_turf(src)

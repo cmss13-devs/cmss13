@@ -655,7 +655,6 @@
 		add_firemode(GUN_FIREMODE_BURSTFIRE)
 		add_firemode(GUN_FIREMODE_AUTOMATIC)
 
-
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
@@ -843,6 +842,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
@@ -1310,9 +1311,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
+
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
+
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	starting_attachment_types = list(/obj/item/attachable/bipod)
@@ -1336,7 +1340,6 @@
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
-
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()
@@ -1635,9 +1638,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -1998,9 +2004,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/shotgun_mouse.dmi'
+
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
+
 	current_mag = /obj/item/ammo_magazine/rifle/xm51
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
@@ -2016,6 +2025,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/xm51,
 	)
+
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_SHOTGUN

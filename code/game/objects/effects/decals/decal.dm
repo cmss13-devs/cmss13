@@ -26,7 +26,5 @@
 		overlay.pixel_x = pixel_x
 	if(pixel_y)
 		overlay.pixel_y = pixel_y
-	if(color)
-		overlay.color = color
 	applied_turf.overlays += overlay
 	qdel(src)

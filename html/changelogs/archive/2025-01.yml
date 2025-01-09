@@ -98,3 +98,50 @@
       faction.
   harryob, tyeagg (uscm logo), blundir (upp logo):
   - rscadd: added a new lobby screen
+2025-01-04:
+  Blundir:
+  - imagedel: folder sprites reverted to previous set
+  Nanu, Wei (SleepyNecrons, Esslenek), Spartanbobby, HarryOb:
+  - imageadd: Fixes, tweaks and resprites the body types and muscularity plus the
+      skin tones for humans in the game. Female torso's are now a thing as well, as
+      that is brought back. You can now be a man and have a female body, and vice
+      versa. Try not to get catfished Marines. Underwear and Bra's have also been
+      tweaked to fit new models. Sprites created by Wei.
+2025-01-05:
+  Awan:
+  - bugfix: Fixed some gearsets having improper radio/chat prefixes.
+  Blundir:
+  - imageadd: resprites all beret object icons and makes them match the onmob sprites,
+      beret format standartization
+  nauticall:
+  - ui: Changed the crew manifest to TGUI.
+  private-tristan:
+  - bugfix: CAS no longer has infinite night vision, contact research for matrix upgrades
+      today!
+  realforest2001:
+  - bugfix: Preset corpses and pizza ERTs now have correct paygrade displays.
+2025-01-06:
+  Blundir:
+  - rscadd: added seegson, hyperdyne and makeshift synth reset keys and added them
+      to corresponding factions
+  harryob:
+  - rscadd: the req ordering console has a new ui
+2025-01-07:
+  Git-Nivrak:
+  - rscadd: Xenomorphs can now reset their strain, first use is free then it can be
+      done once every 40 minutes.
+2025-01-08:
+  Blundir:
+  - rscadd: misc ranks are now shown as icons in ooc
+  - rscadd: rank icons now work in asay and mentorsay chats
+  - bugfix: fixed some broken ranks icons not working
+  Diegoflores31:
+  - balance: Shrapnell accuracy and damage increased
+  - balance: Shrapnell now does 60% bonus damage to xenomorphs
+  - balance: Shrapnell slows xenomorphs on hit
+  - balance: Custom rockets will now shoot their shrapnell on a 90 degree angle
+  cuberound:
+  - rscadd: UPP req  console, dropship part fabricato and tank part fabricator
+2025-01-09:
+  AndroBetel:
+  - spellcheck: Formatting of M10 auto pistol.

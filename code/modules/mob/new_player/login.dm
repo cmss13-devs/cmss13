@@ -237,6 +237,7 @@
 		if("keyboard")
 			playsound_client(client, get_sfx("keyboard"), vol = 20)
 
+/// Join as a 'xeno' - set us up in the larva queue
 /mob/new_player/proc/observe_for_xeno()
 	if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
 		client.prefs.be_special |= BE_ALIEN_AFTER_DEATH

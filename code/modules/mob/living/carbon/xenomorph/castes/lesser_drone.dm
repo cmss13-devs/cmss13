@@ -24,6 +24,9 @@
 	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
 	max_build_dist = 1
+//RUCM START
+	tackle_chance = 5 // RNG ISSUE
+//RUCM END
 
 	tackle_min = 4
 	tackle_max = 5
@@ -46,6 +49,9 @@
 	icon_state = "Lesser Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 0
+//RUCM START
+	layer = ABOVE_LYING_MOB_LAYER
+//RUCM END
 	mob_flags = NOBIOSCAN
 	mob_size = MOB_SIZE_XENO_VERY_SMALL
 	life_value = 0

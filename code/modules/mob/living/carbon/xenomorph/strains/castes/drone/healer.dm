@@ -265,6 +265,11 @@
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()
 
+//RUCM START
+	target.add_xeno_shield(xeno.health * transfer_mod, XENO_SHIELD_SACRIFICE)
+	target.overlay_shields()
+//RUCM END
+
 	target.xeno_jitter(1 SECONDS)
 	target.flick_heal_overlay(3 SECONDS, "#44253d")
 

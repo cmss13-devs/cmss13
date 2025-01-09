@@ -52,13 +52,26 @@
 
 /obj/item/ammo_magazine/pistol/m1911
 	name = "\improper M1911 magazine (.45)"
+	desc = "A magazine for the legendary M1911 pistol. Holds eight standard rounds."
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 7
+	max_rounds = 8
 	gun_type = /obj/item/weapon/gun/pistol/m1911
+	ammo_band_icon = "+m4a345_band"
+	ammo_band_icon_empty = "+m4a345_band_e"
 
+/obj/item/ammo_magazine/pistol/m1911/highimpact
+	name = "\improper M1911 high-impact magazine (.45)"
+	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive rounds that can briefly knock people down."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
+/obj/item/ammo_magazine/pistol/m1911/highimpact/ap
+	name = "\improper M1911 high-impact armor-piercing magazine (.45)"
+	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive armor-piercing rounds that can briefly knock people down."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
 //-------------------------------------------------------
 //88M4 based off VP70
 
@@ -163,10 +176,10 @@
 //-------------------------------------------------------
 //DEAGLE //This one is obvious.
 
-/obj/item/ammo_magazine/pistol/heavy
-	name = "\improper Desert Eagle magazine (.50)"
+/obj/item/ammo_magazine/pistol/deagle
+	name = "\improper Desert Eagle magazine (.44)"
 	default_ammo = /datum/ammo/bullet/pistol/deagle
-	caliber = ".50"
+	caliber = ".44"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "deagle"
 	max_rounds = 7
@@ -174,23 +187,24 @@
 	ammo_band_icon = "+deagle_band"
 	ammo_band_icon_empty = "+deagle_band_e"
 
-/obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
+/obj/item/ammo_magazine/pistol/deagle/super //Commander's variant
 	name = "\improper Heavy Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
+	caliber = ".50AE"
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super
+	default_ammo = /datum/ammo/bullet/pistol/heavy/deagle
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
 
-/obj/item/ammo_magazine/pistol/heavy/super/highimpact
+/obj/item/ammo_magazine/pistol/deagle/super/highimpact
 	name = "\improper High Impact Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with a synthesized osmium and lead alloy to stagger absolutely anything they hit. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact
+	default_ammo = /datum/ammo/bullet/pistol/heavy/deagle/highimpact
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
-/obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
+/obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+	default_ammo = /datum/ammo/bullet/pistol/heavy/deagle/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
@@ -235,7 +249,7 @@
 
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	default_ammo = /datum/ammo/bullet/pistol/heavy/deagle/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"

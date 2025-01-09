@@ -1349,9 +1349,9 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy/super,
-		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
+		/obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/deagle/super,
+		/obj/item/ammo_magazine/pistol/deagle/super/highimpact,
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
@@ -1410,6 +1410,15 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
+/obj/item/storage/belt/gun/m4a3/m1911/commander/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/custom())
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
 /obj/item/storage/belt/gun/m4a3/m1911/socom/black
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 	item_icons = list(
@@ -1421,30 +1430,30 @@
 
 /obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
 
 /obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co())
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/m4a3/heavy/co_golden/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co/gold())
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/m4a3/highpower/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower())

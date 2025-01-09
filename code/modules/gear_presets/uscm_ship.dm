@@ -487,10 +487,10 @@
 			if(CO_GUN_MATEBA_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
 				kit = /obj/item/storage/mateba_case/captain/council
+			if(CO_GUN_M1911)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
 			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)

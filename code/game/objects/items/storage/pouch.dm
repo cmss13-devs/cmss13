@@ -435,7 +435,7 @@
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/ammo_magazine/revolver,
 	)
 

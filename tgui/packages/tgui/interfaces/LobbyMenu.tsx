@@ -101,6 +101,7 @@ export const LobbyMenu = () => {
         }
         p={3}
         title={'Confirm'}
+        width="600px"
       >
         <Box>
           <Stack vertical>

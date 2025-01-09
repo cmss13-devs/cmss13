@@ -370,10 +370,9 @@
 	set src in usr
 	cycle_fuel(usr)
 
-
 /*controls most of the logic for adding and removing fuel
-  aswell as a lot of the logic for removing the tank and
-  throwing it into nullspace() for storage purposes.
+aswell as a lot of the logic for removing the tank and
+throwing it into nullspace() for storage purposes.
 */
 /obj/item/storage/large_holster/fuelpack/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large))
@@ -416,11 +415,9 @@
 
 	. = ..()
 
-
 // getter for the current status of our active_fuel
 /obj/item/storage/large_holster/fuelpack/proc/set_active_fuel(new_fuel)
 	active_fuel = new_fuel
-
 
 // when add_fuel is called
 /obj/item/storage/large_holster/fuelpack/proc/add_fuel(obj/item/ammo_magazine/flamer_tank/new_tank)
@@ -428,20 +425,17 @@
 	if(!active_fuel)
 		set_active_fuel(new_tank)
 
-
 // when remove_fuel is called
 /obj/item/storage/large_holster/fuelpack/proc/remove_fuel(old_fuel)
 	tanks -= old_fuel
 	if(active_fuel == old_fuel)
 		set_active_fuel(null)
 
-
 // when switch_fuel is called
 /obj/item/storage/large_holster/fuelpack/proc/switch_fuel(A, user)
 	linked_flamer.current_mag = active_fuel
 	linked_flamer.update_icon()
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
-
 
 /obj/item/storage/large_holster/fuelpack/get_examine_text(mob/user)
 	. = ..()
@@ -453,17 +447,14 @@
 		for(var/obj/item/ammo_magazine/flamer_tank/custom/large in tanks)
 			. += "The [large.reagents] tank is [floor(large.get_ammo_percent())]% full."
 
-
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1
-
 
 /datum/action/item_action/specialist/toggle_fuel/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Fuel Type"
 	button.name = name
 	update_button_icon()
-
 
 /datum/action/item_action/specialist/toggle_fuel/update_button_icon()
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item

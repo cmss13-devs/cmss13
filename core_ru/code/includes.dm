@@ -73,6 +73,7 @@
 #include "game\objects\items\toys\toys.dm"
 #include "game\objects\items\weapons\st_equip.dm"
 #include "game\objects\items\weapons\st_hammer_stacks.dm"
+#include "game\objects\items\pamphlets.dm"
 #include "game\turfs\closed.dm"
 #include "modules\asset_cache\asset_list_items.dm"
 #include "modules\battlepass\challenges\_battlepass_challenge.dm"
@@ -165,3 +166,5 @@
 #include "modules\vehicles\multitile\hardpoints\support\smoke.dm"
 #include "modules\vehicles\multitile\tank\tank.dm"
 #include "modules\mob\living\carbon\xenomorph\abilities\queen\queen_powers.dm"
+#include "modules\character_trait\character_trait.dm"
+#include "modules\character_trait\skills.dm"

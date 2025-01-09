@@ -95,6 +95,12 @@
 
 
 
+/obj/item/clothing/shoes/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
+
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
@@ -327,6 +333,12 @@
 	ignore_z = TRUE
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
+
+/obj/item/device/radio/headset/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -1098,6 +1110,17 @@
 			if(CLAN_RANK_ADMIN_INT)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
+
+/obj/item/tool/yautja_cleaner
+	name = "cleanser gel vial"
+	desc = "Used for dissolving the gear of the fallen whilst in the field."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "blue_gel"
+	force = 0
+	throwforce = 1
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+	black_market_value = 150
 
 /obj/item/storage/medicomp
 	name = "medicomp"

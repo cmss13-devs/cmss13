@@ -317,6 +317,8 @@
 		. += desc
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
+	if(flags_item & ITEM_DISSOLVING)
+		. += SPAN_WARNING("It is currently dissolving into bits!")
 
 /obj/item/attack_hand(mob/user)
 	if (!user)
@@ -354,7 +356,9 @@
 /obj/item/attackby(obj/item/W, mob/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
-
+	if((istype(W, /obj/item/tool/yautja_cleaner)))
+		if(handle_dissolve(src))
+			return
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
@@ -1124,6 +1128,46 @@
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
 
+/obj/item/proc/handle_dissolve(obj/item/melting)
+	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You have no idea what this even does..."))
+		return FALSE
+	if(istype(melting, /obj/item/tool/yautja_cleaner))
+		to_chat(usr, SPAN_WARNING("You cannot dissolve more dissolving fluid..."))
+		return FALSE
+	if(usr.alpha < 255)
+		to_chat(usr, SPAN_BOLDWARNING("It would not be safe to attempt this while cloaked!"))
+		return FALSE
+	if(anchored)
+		to_chat(usr, SPAN_WARNING("\The [src] cannot be moved by any means, why dissolve it?"))
+		return FALSE
+
+	var/mob/living/location = loc
+	var/mob/living/loc_loc = loc.loc
+	if(istype(location) || istype(loc_loc))
+		to_chat(usr, SPAN_WARNING("You cannot dissolve this while it is being held!"))
+		return FALSE
+
+	dissolve()
+	return TRUE
+
+/obj/item/proc/dissolve()
+	usr.visible_message(SPAN_DANGER("[usr] uncaps a vial and begins to pour out a vibrant blue liquid over \the [src]!"), \
+				SPAN_NOTICE("You begin to spread dissolving gel onto \the [src]!"))
+	if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		usr.visible_message(SPAN_DANGER("[usr] pours blue liquid all over \the [src]!"), \
+					SPAN_NOTICE("You cover \the [src] with dissolving gel!"))
+		playsound(src.loc, 'sound/effects/acid_sizzle1.ogg', 25)
+		add_filter("dissolve_gel", 1, list("type" = "outline", "color" = "#3333FFff", "size" = 1))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 15 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[src] crumbles into pieces!")), 15 SECONDS)
+		flags_item |= ITEM_DISSOLVING
+		log_attack("[key_name(usr)] dissolved [src] with Yautja Cleaner!")
+		return TRUE
+	else
+		usr.visible_message(SPAN_WARNING("[usr] stops pouring liquid on to \the [src]!"), \
+					SPAN_WARNING("You decide not to cover \the [src] with dissolving gel."))
+		return FALSE
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return

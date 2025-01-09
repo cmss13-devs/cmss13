@@ -87,6 +87,12 @@
 
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/techofficer/fancy
+	name = "deluxe combat gloves"
+	desc = "Combat gloves finished in an almost golden-looking fabric. Insulated, fashionable, and capable of protecting the soft hands it's likely wrapped around."
+	icon_state = "captain"
+	item_state = "captain"
+
 /obj/item/clothing/gloves/marine/specialist
 	name = "\improper B18 defensive gauntlets"
 	desc = "A pair of heavily armored gloves."

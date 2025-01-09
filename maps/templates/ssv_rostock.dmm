@@ -118,19 +118,19 @@
 	icon_state = "NE-out"
 	},
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/mono,
 /area/space)
 "aar" = (
 /obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/space)
 "aas" = (
 /obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/space)
@@ -139,14 +139,14 @@
 	icon_state = "NW-out"
 	},
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/mono,
 /area/space)
 "aau" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/space)
@@ -156,14 +156,14 @@
 "aaw" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/space)
 "aax" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/space)
@@ -174,7 +174,7 @@
 "aaz" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/space)
@@ -183,21 +183,21 @@
 	icon_state = "SE-out"
 	},
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/mono,
 /area/space)
 "aaB" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/space)
 "aaC" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/space)
@@ -206,7 +206,7 @@
 	icon_state = "SW-out"
 	},
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/mono,
 /area/space)
@@ -3547,7 +3547,7 @@
 "cAn" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -4721,7 +4721,7 @@
 "dxR" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/rostock/req)
@@ -5758,7 +5758,7 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -17128,7 +17128,7 @@
 /area/rostock/lifeboat)
 "mRd" = (
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -17632,7 +17632,7 @@
 "nnt" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/rostock/req)
@@ -19322,7 +19322,7 @@
 "oJq" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -21809,7 +21809,7 @@
 /area/rostock/hangar/hangarbay)
 "qAA" = (
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
@@ -23910,7 +23910,7 @@
 "siL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -24305,7 +24305,7 @@
 /area/rostock/req)
 "sAS" = (
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -28504,7 +28504,7 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/rostock/req)
@@ -29145,7 +29145,7 @@
 "wjh" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
-	id = "supply_elevator_railing"
+	id = "supply_elevator_gear_upp"
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/rostock/req)
@@ -30740,7 +30740,7 @@
 /area/rostock/engineering/main_area)
 "xyA" = (
 /obj/structure/machinery/gear{
-	id = "supply_elevator_gear"
+	id = "supply_elevator_gear_upp"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"

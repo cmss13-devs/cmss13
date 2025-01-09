@@ -51,6 +51,9 @@
 	var/caboom_burn_range_ratio = 100
 	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid
 
+	var/drool_applied_recently = FALSE
+	var/mutable_appearance/drool_applied_icon
+
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)
 	acid_amount += amount
 	if(acid_amount > max_acid)
@@ -94,6 +97,7 @@
 
 		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //this calls for the proc to turn combat acid gen off after a set time passes
 		combat_gen_active = TRUE //turns combat acid regen on
+		drool_applied_recently = TRUE //turns the overlay on
 
 /datum/behavior_delegate/runner_acider/on_life()
 	if(acid_amount < acid_gen_cap)
@@ -187,3 +191,32 @@
 
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end()
 	combat_gen_active = FALSE
+
+	drool_applied_recently = FALSE
+	bound_xeno.update_icons()
+
+/datum/behavior_delegate/runner_acider/on_update_icons()
+	if(!drool_applied_icon)
+		drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi',"Acider Runner Walking")
+
+	bound_xeno.overlays -= drool_applied_icon
+	drool_applied_icon.overlays.Cut()
+
+	if(!drool_applied_recently)
+		return
+
+	if(bound_xeno.stat == DEAD)
+		drool_applied_icon.icon_state = "Acider Runner Dead"
+	else if(bound_xeno.body_position == LYING_DOWN)
+		if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
+			drool_applied_icon.icon_state = "Acider Runner Sleeping"
+		else
+			drool_applied_icon.icon_state = "Acider Runner Knocked Down"
+	else
+		drool_applied_icon.icon_state = "Acider Runner Walking"
+
+	bound_xeno.overlays += drool_applied_icon
+
+/datum/behavior_delegate/runner_acider/proc/un_drool()
+	drool_applied_recently = FALSE
+	bound_xeno.update_icons()

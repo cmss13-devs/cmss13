@@ -156,6 +156,7 @@
 #include "modules\vehicles\walker.dm"
 #include "modules\vehicles\walker_vendor.dm"
 #include "modules\vehicles\walker_verbs.dm"
+#include "modules\vehicles\walker_wm88_helper.dm"
 #include "modules\vehicles\multitile\multitile.dm"
 #include "modules\vehicles\multitile\multitile_verbs.dm"
 #include "modules\vehicles\multitile\apc\apc.dm"

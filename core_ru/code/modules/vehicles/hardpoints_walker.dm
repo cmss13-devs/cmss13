@@ -277,6 +277,18 @@
 
 	projectile_traits = list()
 
+/obj/item/walker_gun/shotgun8g
+	name = "M32 Mounted Shotgun"
+	desc = "8 Gauge shotgun firing wave of AP bullets ineffective at distance, mounted on military walkers for devastation pacify"
+	icon_state = "mech_shotgun8g_parts"
+	equip_state = "redy_shotgun8g"
+	fire_sound = list('sound/weapons/gun_type23.ogg')
+	magazine_type = /obj/item/ammo_magazine/walker/shotgun8g
+	fire_delay = 11
+	scatter_value = 0
+	automatic = FALSE
+
+
 /obj/item/walker_gun/flamer
 	name = "F40 \"Hellfire\" Flamethower"
 	desc = "Powerful flamethower, that can send any unprotected target straight to hell."
@@ -400,6 +412,15 @@
 	default_ammo = /datum/ammo/bullet/walker/machinegun
 	gun_type = /obj/item/walker_gun/hmg
 
+/obj/item/ammo_magazine/walker/shotgun8g
+	name = "M32 Mounted Shotgun Magazine"
+	desc = "A armament M32 magazine"
+	icon_state = "mech_shotgun8g_ammo"
+	max_rounds = 60
+	default_ammo = /datum/ammo/bullet/walker/shotgun8g
+	gun_type = /obj/item/walker_gun/shotgun8g
+
+
 /obj/item/ammo_magazine/walker/flamer
 	name = "F40 UT-Napthal Canister"
 	desc = "Canister for mounted flamethower"
@@ -497,6 +518,41 @@
 	penetration= ARMOR_PENETRATION_TIER_5
 	accuracy = -HIT_ACCURACY_TIER_3
 
+/datum/ammo/bullet/walker/shotgun8g
+	name = "8 gauge buckshot shell"
+	icon_state = "buckshot"
+
+	accurate_range = 2 //запрет на дальнюю стрельбу, нанесет только ~30 урона из-за промахов разброса, в дистанции два тайла спереди спокойно сносит 160 квине/раве
+	max_range = 6 //Возможно, следует поднять макс дальность до 6; в тоже время оно вообще не должно стреляться в даль
+	damage = 60 //вообще, у дроби 8g 75 урона, но мех не должен прям гнобить при попадании даже небронированные цели, шотган для самообороны
+	damage_falloff = DAMAGE_FALLOFF_TIER_6 //5 фэлл офа,фиг, а не дальнее поражение с высоким уроном
+	penetration= ARMOR_PENETRATION_TIER_2 //нулевое бронепробитие в оригинале
+	bonus_projectiles_type = /datum/ammo/bullet/walker/shotgun8g/spread
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3 //у меха проблема с мелкими целями, больших в упор спокойно дамажит, дрон же получит 1 дробинку и оглушится, подставляя, но не нанося серьезного ущерба
+
+/datum/ammo/bullet/walker/shotgun8g/spread
+	name = "additional 8 gauge buckshot"
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+
+
+/datum/ammo/bullet/walker/shotgun8g/on_hit_mob(mob/M,obj/projectile/P)
+	knockback(M,P, 3)
+
+/datum/ammo/bullet/walker/shotgun8g/knockback_effects(mob/living/living_mob)
+	if(iscarbonsizexeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
+		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
+		target.Stun(0.5)
+		target.apply_effect(1, SUPERSLOW)
+		target.apply_effect(2, SLOW)
+	else
+		if(!isyautja(living_mob)) //Not predators.
+			living_mob.apply_effect(1, SUPERSLOW)
+			living_mob.apply_effect(2, SLOW)
+			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+
 ////////////////
 // MEGALODON HARDPOINTS // END
 ////////////////
@@ -510,6 +566,17 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M56 Double-Barrel ammo crate"
+	group = "Vehicle Ammo"
+
+/datum/supply_packs/ammo_M32_walker
+	name = "M32 Mounted Shotgun magazines crate"
+	contains = list(
+		/obj/item/ammo_magazine/walker/shotgun8g,
+		/obj/item/ammo_magazine/walker/shotgun8g,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M32 Mounted Shotgun ammo crate"
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_M30_walker

@@ -172,6 +172,14 @@
 					if(!client)
 						return FALSE
 
+					if(tgui_alert(
+						src,
+						"Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!",
+						"Player Setup",
+						list("Yes", "No")) != "Yes")
+
+						return
+
 					if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
 						client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
 						to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))

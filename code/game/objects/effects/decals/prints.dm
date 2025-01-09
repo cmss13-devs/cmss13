@@ -5,6 +5,7 @@
 	icon_state = "prints"
 	anchored = TRUE
 	unacidable = TRUE
+	keep_as_object = TRUE
 
 	var/description = null
 

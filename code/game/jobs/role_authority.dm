@@ -564,7 +564,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			lowest = squad
 
 	if(!lowest || !lowest.put_marine_in_squad(human))
-		to_world("Warning! Bug in get_random_squad()!")
+		var/datum/squad/marine/cryo/last_squad = locate() in squads
+		if(!last_squad || !last_squad.put_marine_in_squad(human))
+			to_world("Warning! Bug in get_random_squad()!")
 		return
 	return
 

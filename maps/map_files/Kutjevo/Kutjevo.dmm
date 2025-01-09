@@ -2128,7 +2128,6 @@
 	bound_height = 32;
 	icon_state = "solo_tank_empty"
 	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_South/power2)

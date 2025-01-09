@@ -1,0 +1,147 @@
+2025-01-01:
+  BlackCrystalic:
+  - bugfix: starting of reactor overload message now give right info
+  Geevies:
+  - rscadd: Added a Loader assistant role to the Demolition specialist
+  Git-Nivrak:
+  - rscdel: Removed non-combat click delay, interacting with items not on your person
+      should be significantly smoother
+  - balance: Clicking on the floor (open turfs) with an item will no longer cause
+      a click delay
+  Red-byte3D:
+  - balance: AMR sniper spec magazines reduced to 2 for the box.
+  - balance: requistions amr sniper spec magazine order reduced to 3 mags.
+  Syndro101:
+  - rscadd: Added a new area for the sector relay.
+  - mapadd: Added new offices for Fax Responders.
+  - maptweak: Renamed the old map.
+  - bugfix: Fax responders no longer count to round end.
+  Zenith, Frans_Feiffer:
+  - rscadd: Added M10 Auto Pistol, new belt, magazines and boxes to standard marine
+      vendors
+  - bugfix: fixes the m39 holster sprites not showing correct camo
+  - soundadd: added new M10 gunshot sound
+  casperr04:
+  - rscadd: Squad Leader pointer arrows are now colored based on the color of the
+      squad.
+  cuberound:
+  - rscadd: faction cryo consoles
+  - bugfix: ares no longer announces when non marine factions enter cryo
+  harryob:
+  - ui: adds a pretty tgui for pred prefs
+  realforest2001:
+  - code_imp: Reorganises how paperwork gets image references, and moves them to a
+      new folder.
+  - rscadd: Added prefab paperwork forms for use by Military Police and the Corporate
+      Liaison.
+  - imageadd: Added a dark background often used by staff faxes for easy referencing.
+  - imageadd: Updated WY and USCM logos to higher quality versions.
+  - code_imp: Reorganises the fountain pen into a subtype of obj/item/tool/pen/multicolor
+      to make the functionality usable in multiple pens.
+  - rscadd: Adds a provost pen, a variant of multicolor pen that can switch between
+      Black, White, Orange, Blue, Green and Red. Intended for use in filling out MP
+      forms.
+2025-01-02:
+  Blundir:
+  - rscadd: hud icon for loader
+  - rscadd: minimap/orbit icons for loader and spotter
+  - bugfix: upp political commisar having incorrect minimap/orbit icon
+  - bugfix: k9 handler pamphlet making all corpsmen have minimap/orbit icon of k9
+      handler instead of corpsman one
+  Drathek:
+  - balance: Loader pamphlet now only increases endurance to 2
+  harryob:
+  - server: the server can now support 516 clients - be aware that the current version
+      (516.1648) has some crashing issues, and you may not want to update yet. the
+      server can also be hosted on 516 versions, but this will force all clients to
+      use 516
+  realforest2001:
+  - rscadd: Fax responder preset listening bugs no longer broadcast to ghosts.
+2025-01-03:
+  Awan:
+  - qol: If you examine a radio that is on your person it's menu listing all frequencies
+      will now pop up.
+  Drathek:
+  - balance: Added scaling to the plasma cost of basic resin constructions when an
+      area is at least 40% saturated.
+  - admin: Niche messaging for sealing off dead bodies now only applies to revivable
+      bodies
+  - refactor: Refactored some resin construction code
+  - balance: The PKD special burst values have changed for non-"Double" (l_series)
+      variants
+  - code_imp: Code no longer uses proc redefinitions with a few exceptions for global
+      macros
+  - bugfix: Fixed various things like all backpacks (instead of just JIMA flags) processing
+  - rscadd: Added a maplint for duplicate identical platforms
+  - maptweak: Fixed duplicate platforms on CORSAT, Desert_Dam, Fiorina, Kutjevo, Hybrisa,
+      and the UPP ERT station
+  - bugfix: Fixed various runtimes caused by explosions and throw_atom code
+  Katskan:
+  - rscadd: Added EMS red and green uniform and jumpsuit, and holobadge to synthetic
+      uniform vendor. Added a briefcase to the uniform vendor.
+  LC4492:
+  - spellcheck: Fixed typos in the "items" file, where on the proc to "zoom", the
+      text had an extra "the" that resulted in a wrong display on chat.
+  - rscadd: made facehugger visible on helmet
+  - rscadd: mouse can now be equipped on ear slot and head slot, in ear slot it'd
+      be seen as sitting on your shoulder
+  - code_imp: Changed the combat flashlight's light range to 6 tiles instead of the
+      normal 5, to make it actually a little better than a normal flashlight. Added
+      a yellowish light color to the lantern (which can be found in colonies), to
+      make it more unique.
+  - imageadd: 'Added new and updated "in_hands" icon sprites, with the list being,
+      but not limited to: Clipboard, binoculars (All camos), mortar Shells (All types),
+      space cleaner spray, plant B gone spray, plastic stack, anesthetic and OT canister
+      tanks, flashlight, lantern, mortar (All camos) and more.'
+  efzapa:
+  - mapadd: All Faction ERT Stations now have a Fax Machine linked to their respective
+      faction.
+  harryob, tyeagg (uscm logo), blundir (upp logo):
+  - rscadd: added a new lobby screen
+2025-01-04:
+  Blundir:
+  - imagedel: folder sprites reverted to previous set
+  Nanu, Wei (SleepyNecrons, Esslenek), Spartanbobby, HarryOb:
+  - imageadd: Fixes, tweaks and resprites the body types and muscularity plus the
+      skin tones for humans in the game. Female torso's are now a thing as well, as
+      that is brought back. You can now be a man and have a female body, and vice
+      versa. Try not to get catfished Marines. Underwear and Bra's have also been
+      tweaked to fit new models. Sprites created by Wei.
+2025-01-05:
+  Awan:
+  - bugfix: Fixed some gearsets having improper radio/chat prefixes.
+  Blundir:
+  - imageadd: resprites all beret object icons and makes them match the onmob sprites,
+      beret format standartization
+  nauticall:
+  - ui: Changed the crew manifest to TGUI.
+  private-tristan:
+  - bugfix: CAS no longer has infinite night vision, contact research for matrix upgrades
+      today!
+  realforest2001:
+  - bugfix: Preset corpses and pizza ERTs now have correct paygrade displays.
+2025-01-06:
+  Blundir:
+  - rscadd: added seegson, hyperdyne and makeshift synth reset keys and added them
+      to corresponding factions
+  harryob:
+  - rscadd: the req ordering console has a new ui
+2025-01-07:
+  Git-Nivrak:
+  - rscadd: Xenomorphs can now reset their strain, first use is free then it can be
+      done once every 40 minutes.
+2025-01-08:
+  Blundir:
+  - rscadd: misc ranks are now shown as icons in ooc
+  - rscadd: rank icons now work in asay and mentorsay chats
+  - bugfix: fixed some broken ranks icons not working
+  Diegoflores31:
+  - balance: Shrapnell accuracy and damage increased
+  - balance: Shrapnell now does 60% bonus damage to xenomorphs
+  - balance: Shrapnell slows xenomorphs on hit
+  - balance: Custom rockets will now shoot their shrapnell on a 90 degree angle
+  cuberound:
+  - rscadd: UPP req  console, dropship part fabricato and tank part fabricator
+2025-01-09:
+  AndroBetel:
+  - spellcheck: Formatting of M10 auto pistol.

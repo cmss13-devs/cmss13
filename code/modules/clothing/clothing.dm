@@ -29,7 +29,7 @@
 	if(length(ties))
 		.+= " with [english_list(ties)] attached"
 	if(LAZYLEN(accessories) > length(ties))
-		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
+		.+= ". <a href='byond://?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
@@ -44,8 +44,18 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if(drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
+	//only forward to the attached accessory if the clothing is equipped (not in a storage)
+	if(LAZYLEN(accessories) && loc == user)
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armor vests with medals, but can't hurt in general.
+		for(var/obj/item/clothing/accessory/A in accessories)
+			if(A.attack_hand(user))
+				delegated = TRUE
+		if(delegated)
+			return
+
+	if(drag_unequip && ishuman(usr) && loc == user) //make it harder to accidentally undress yourself
 		return
+
 	..()
 
 /obj/item/clothing/hear_talk(mob/M, msg)
@@ -459,6 +469,11 @@
 	return null
 
 /obj/item/clothing/clicked(mob/user, list/mods)
+	if(mods["alt"] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		for(var/V in verbs)
+			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
+				return
+
 	var/obj/item/storage/internal/pockets = get_pockets()
 	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		pockets.open(user)

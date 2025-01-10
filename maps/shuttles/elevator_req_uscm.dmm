@@ -1,14 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/floor/plating/bare_catwalk,
-/area/supply/dock/uscm)
+/area/shuttle/elevator_req_uscm)
 "b" = (
 /obj/docking_port/mobile/marine_dropship/req_uscm,
 /turf/open/floor/plating/bare_catwalk,
-/area/supply/dock/uscm)
+/area/shuttle/elevator_req_uscm)
 "s" = (
 /turf/open/floor/almayer/test_floor5,
-/area/supply/dock/uscm)
+/area/shuttle/elevator_req_uscm)
 
 (1,1,1) = {"
 a

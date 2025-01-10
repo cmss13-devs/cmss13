@@ -262,6 +262,14 @@
 	name = "\improper Devana Landing Zone"
 	icon_state = "away2"
 
+////
+
+/area/shuttle/elevator_req_uscm
+	name = "Requisition ASRS"
+	icon_state = "shuttle"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 255
+
 //DISTRESS SHUTTLES
 
 /area/shuttle/distress

@@ -1,5 +1,5 @@
 import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
-import { BooleanLike } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { createRef, useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -84,7 +84,9 @@ export const HairPicker = () => {
 
   return (
     <Window width={400} height={height} theme={'crtblue'}>
-      <Window.Content className="HairPicker">
+      <Window.Content
+        className={classes(['HairPicker', colorPicker && 'ModalOpen'])}
+      >
         <HairPickerElement
           name="Hair"
           icon={hair_icon}
@@ -236,6 +238,7 @@ export const HairPickerElement = (props: {
                     icon_state={`${hair.icon}_s`}
                     height="64px"
                     width="64px"
+                    style={{ filter: `drop-shadow(0px 1000px 0 ${color})` }}
                   />
                 </Box>
               </Tooltip>

@@ -407,7 +407,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
-	for(var/obj/structure/machinery/computer/supply/asrs/computer as anything in linked_supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer in linked_supply_controller.bound_supply_computer_list)
 		if(computer.can_order_contraband)
 			linked_supply_controller.black_market_enabled = TRUE
 			return
@@ -417,7 +417,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /// Prevents use of black market, even if it is otherwise enabled. If any computer has black market locked out, it applies across all of the currently established ones.
 /obj/structure/machinery/computer/supply/asrs/proc/lock_black_market(market_locked = FALSE)
-	for(var/obj/structure/machinery/computer/supply/asrs/computer as anything in linked_supply_controller.bound_supply_computer_list)
+	for(var/obj/structure/machinery/computer/supply/asrs/computer in linked_supply_controller.bound_supply_computer_list)
 		if(market_locked)
 			computer.black_market_lockout = TRUE
 

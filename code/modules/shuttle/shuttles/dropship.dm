@@ -159,8 +159,8 @@
 	name = "Elevator ASRS"
 	id = ELEVATOR_REQ_USCM
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
-	automated_hangar_id = ELEVATOR_REQ_USCM
-	automated_lz_id = ELEVATOR_REQ_USCM_ADMIN
+	var/elevator_id = ELEVATOR_REQ_USCM
+	var/pit_id = ELEVATOR_REQ_USCM_ADMIN
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/Initialize(mapload)
 	. = ..()
@@ -172,9 +172,9 @@
 /obj/docking_port/mobile/marine_dropship/req_uscm/proc/swap_station()
 	var/obj/docking_port/stationary/dockedAt = get_docked()
 	if(dockedAt.id == automated_hangar_id)
-		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
+		SSshuttle.moveShuttle(id, pit_id, TRUE)
 	else
-		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
+		SSshuttle.moveShuttle(id, elevator_id, TRUE)
 
 
 /obj/docking_port/mobile/marine_dropship/check()

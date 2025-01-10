@@ -81,6 +81,7 @@
 		data["organ"] = TRUE
 		data["caste"] = caste_of_organ
 		data["value"] = organ.research_value
+		data["credits"] = organ.credit_value
 	else
 		data["organ"] = FALSE
 	data["upgrades"] = list()

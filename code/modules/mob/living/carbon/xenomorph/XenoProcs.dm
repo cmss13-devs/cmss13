@@ -596,7 +596,7 @@
 		return FALSE
 
 	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
-		burn_amount *= 0.5
+		return
 
 	apply_damage(burn_amount, BURN)
 	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))

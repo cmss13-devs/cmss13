@@ -196,7 +196,7 @@
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN * potency)
+	M.pain.apply_pain(PROPERTY_PAINING_PAIN * 10 * potency)
 
 /datum/chem_property/negative/paining/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!(..()))
@@ -475,6 +475,66 @@
 /datum/chem_property/negative/addictive/process_critical(mob/living/M, potency = 1, delta_time)
 	M.disabilities |= NERVOUS
 
+
+//properties with combat uses
+/datum/chem_property/positive/disrupting
+	name = PROPERTY_DISRUPTING
+	code = "DSR"
+	description = "Disrupts certain neurological processes related to communication in animals."
+	rarity = PROPERTY_UNCOMMON
+	cost_penalty = FALSE
+
+/datum/chem_property/positive/disrupting/process(mob/living/M, potency = 1)
+	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
+
+/datum/chem_property/positive/disrupting/process_overdose(mob/living/M, potency = 1)
+	M.apply_internal_damage(potency, "brain")
+
+/datum/chem_property/positive/disrupting/process_critical(mob/living/M, potency = 1)
+	M.apply_effect(potency, PARALYZE)
+
+/datum/chem_property/positive/disrupting/reaction_mob(mob/M, method=TOUCH, volume, potency)
+	if(!isxeno(M))
+		return
+	var/mob/living/carbon/xenomorph/xeno = M
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
+
+/datum/chem_property/positive/neutralizing
+	name = PROPERTY_NEUTRALIZING
+	code = "NEU"
+	description = "Neutralizes certain reactive chemicals and plasmas on contact. Unsafe to administer intravenously."
+	rarity = PROPERTY_UNCOMMON
+	category = PROPERTY_TYPE_IRRITANT
+	cost_penalty = FALSE
+
+/datum/chem_property/positive/neutralizing/process(mob/living/M, potency = 1)
+	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
+
+/datum/chem_property/positive/neutralizing/process_overdose(mob/living/M, potency = 1)
+	M.apply_damages(0, POTENCY_MULTIPLIER_MEDIUM * potency, potency)
+
+/datum/chem_property/positive/neutralizing/process_critical(mob/living/M, potency = 1)
+	M.apply_internal_damage(potency, "liver")
+
+/datum/chem_property/positive/neutralizing/reaction_mob(mob/M, method=TOUCH, volume, potency)
+	if(!isliving(M))
+		return
+	var/mob/living/L = M
+	L.ExtinguishMob() //Extinguishes mobs on contact
+	if(isxeno(L))
+		var/mob/living/carbon/xenomorph/xeno = M
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
+
+/datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
+	if(!istype(T))
+		return
+	for(var/obj/flamer_fire/F in T) //Extinguishes fires and acid
+		qdel(F)
+	for(var/obj/effect/xenomorph/acid/A in T)
+		qdel(A)
+
+
 //PROPERTY_DISABLED (in generation)
 /datum/chem_property/negative/hemositic
 	name = PROPERTY_HEMOSITIC
@@ -495,14 +555,14 @@
 		return
 	..()
 	var/mob/living/carbon/C = M
-	C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_VHIGH * potency, 0)
+	C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_HIGH * potency, 0)
 	holder.volume++
 
 /datum/chem_property/negative/hemositic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/C = M
-	C.blood_volume = max(C.blood_volume-10*potency,0)
+	C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_VHIGH * potency, 0)
 	holder.volume += potency * POTENCY_MULTIPLIER_MEDIUM
 
 /datum/chem_property/negative/hemositic/process_critical(mob/living/M, potency = 1, delta_time)

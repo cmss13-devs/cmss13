@@ -18,19 +18,6 @@
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
-	dress_under = list(
-	)
-	dress_over = list(
-	)
-	dress_extra = list(
-	)
-	dress_gloves = list(
-	)
-	dress_shoes = list(
-	)
-	dress_hat = list(
-	) //now left blank for the future, but still left in case people want to give survivors unique options from the dress vendor
-
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new

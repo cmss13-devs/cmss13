@@ -13,19 +13,6 @@
 	minimap_icon = "cl"
 	minimap_background = "background_civillian"
 
-	dress_under = list(
-	)
-	dress_over = list(
-	)
-	dress_extra = list(
-	)
-	dress_gloves = list(
-	)
-	dress_shoes = list(
-	)
-	dress_hat = list(
-	) //now left blank for the future, but still left in case people want to give them unique options from the dress vendor
-
 /datum/equipment_preset/wy/New()
 	. = ..()
 	access += get_access(ACCESS_LIST_WY_BASE)

@@ -171,19 +171,6 @@
 	skills = /datum/skills/researcher
 	minimap_icon = "goon_sci"
 
-	dress_under = list(
-	)
-	dress_over = list(
-	)
-	dress_extra = list(
-	)
-	dress_gloves = list(
-	)
-	dress_shoes = list(
-	)
-	dress_hat = list(
-	) //now left blank for the future, but still left in case people want to give them unique options from the dress vendor
-
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science, WEAR_EYES)

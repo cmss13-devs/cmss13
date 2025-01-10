@@ -16,7 +16,7 @@
 	/// The window that we display the main menu in
 	var/datum/tgui_window/lobby_window
 
-	/// The message that we are displaying to the user
+	/// The message that we are displaying to the user. If a list, each list element is displayed on its own line
 	var/lobby_confirmation_message
 
 	/// The callback that we will execute when the user confirms the message

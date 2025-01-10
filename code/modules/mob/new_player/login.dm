@@ -169,7 +169,10 @@
 			if(SSticker.mode.check_xeno_late_join(src))
 				var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
 				if(!new_xeno)
-					lobby_confirmation_message = "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!"
+					lobby_confirmation_message = list(
+						"Are you sure you wish to observe to be a xeno candidate?",
+						"When you observe, you will not be able to join as marine.",
+						"It might also take some time to become a xeno or responder!")
 					execute_on_confirm = CALLBACK(src, PROC_REF(observe_for_xeno))
 
 				else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
@@ -210,7 +213,7 @@
 			return TRUE
 
 		if("ready")
-			if( (SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
+			if((SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
 				ready = TRUE
 				GLOB.readied_players++
 
@@ -225,13 +228,13 @@
 
 		if("confirm")
 			lobby_confirmation_message = null
-			execute_on_confirm.Invoke()
-
+			execute_on_confirm?.Invoke()
 			execute_on_confirm = null
 			return TRUE
 
 		if("unconfirm")
 			lobby_confirmation_message = null
+			execute_on_confirm = null
 			return TRUE
 
 		if("keyboard")

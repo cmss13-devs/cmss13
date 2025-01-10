@@ -36,7 +36,7 @@ type LobbyData = {
   round_start: BooleanLike;
   readied: BooleanLike;
 
-  confirmation_message?: string;
+  confirmation_message?: string | string[];
 
   upp_enabled: BooleanLike;
   xenomorph_enabled: BooleanLike;
@@ -101,11 +101,16 @@ export const LobbyMenu = () => {
         }
         p={3}
         title={'Confirm'}
-        width="600px"
       >
         <Box>
           <Stack vertical>
-            <Stack.Item>{confirmation_message}</Stack.Item>
+            {Array.isArray(confirmation_message) ? (
+              confirmation_message.map((element, index) => (
+                <Stack.Item key={index}>{element}</Stack.Item>
+              ))
+            ) : (
+              <Stack.Item>{confirmation_message}</Stack.Item>
+            )}
           </Stack>
           <Stack justify="center">
             <Stack.Item>

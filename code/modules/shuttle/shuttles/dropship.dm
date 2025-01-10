@@ -160,6 +160,10 @@
 	id = ELEVATOR_REQ_USCM
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 
+/obj/docking_port/mobile/marine_dropship/req_uscm/Initialize(mapload)
+	. = ..()
+	GLOB.supply_controller.new_shuttle = src
+
 /obj/docking_port/mobile/marine_dropship/req_uscm/get_transit_path_type()
 	return /turf/open/space/transit/dropship/req
 

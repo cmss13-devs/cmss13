@@ -122,6 +122,9 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	/// What the user currently has in their cart
 	var/current_order = list()
 
+	//The new shuttle system
+	var/obj/docking_port/stationary/marine_dropship/supply_shuttle
+
 /obj/structure/machinery/computer/supply/Initialize()
 	. = ..()
 	switch(faction)
@@ -746,6 +749,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/obj/item/paper/manifest/manifest_to_print = /obj/item/paper/manifest
 	var/obj/structure/machinery/computer/supply/asrs/bound_supply_computer_list
 
+	var/obj/docking_port/stationary/marine_dropship/new_shuttle
+
 	var/list/all_supply_groups = list(
 		"Operations",
 		"Weapons",
@@ -939,7 +944,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 //Buyin
 /datum/controller/supply/proc/buy()
-	var/area/area_shuttle = shuttle?.get_location_area()
+	var/area/area_shuttle = shuttle_new?.get_location_area()
 	if(!area_shuttle || !length(shoppinglist))
 		return
 

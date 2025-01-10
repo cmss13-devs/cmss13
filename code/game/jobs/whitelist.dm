@@ -21,14 +21,6 @@
 	if(player.check_whitelist_status(WHITELIST_FAX_RESPONDER))
 		LAZYADD(., "responder")
 
-/client/load_player_data_info(datum/entity/player/player)
-	. = ..()
-
-	if(isSenator(src))
-		add_verb(src, /client/proc/whitelist_panel)
-	if(isCouncil(src))
-		add_verb(src, /client/proc/other_records)
-
 /client
 	var/datum/whitelist_panel/wl_panel
 
@@ -126,6 +118,7 @@ GLOBAL_LIST_INIT(yaut_flags, list(
 GLOBAL_LIST_INIT(misc_flags, list(
 	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
 	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Dzho Automaton", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Fax Responder", bitflag = WHITELIST_FAX_RESPONDER, permission = WL_PANEL_RIGHT_MANAGER),
 ))
 

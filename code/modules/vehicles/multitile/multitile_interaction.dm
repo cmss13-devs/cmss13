@@ -297,7 +297,7 @@
 	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 		return
 
-	if(ammo_flags & AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE)
+	if(ammo_flags & (AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE))
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)

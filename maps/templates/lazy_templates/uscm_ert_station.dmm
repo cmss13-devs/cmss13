@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
 "ab" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Hallway";
@@ -11,6 +16,18 @@
 /area/adminlevel/ert_station/uscm_station)
 "ac" = (
 /obj/structure/morgue,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/bolted{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/uscm_station)
+"ae" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine/uscm,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "af" = (
@@ -27,6 +44,13 @@
 /area/adminlevel/ert_station/uscm_station)
 "ah" = (
 /turf/open/floor/almayer/plating_striped,
+/area/adminlevel/ert_station/uscm_station)
+"ai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper_bin/wy,
+/obj/item/tool/pen/clicky,
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "ak" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2066,7 +2090,7 @@
 "yx" = (
 /obj/structure/prop/dam/crane,
 /obj/structure/prop{
-	icon = 'icons/obj/structures/props/almayer_props64.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi';
 	icon_state = "cooling_system";
 	name = "Damaged FS/ACS-9 cooling system";
 	desc = "A cooling system for the Tripoli. It produces additional cooling reducing delays between launch. The pipes are crooked and bent,  hoses are sliced open, and that's not even mentioning the bullet holes. Looks to be an older model as well.";
@@ -7395,9 +7419,9 @@ Zp
 Zp
 qE
 zK
-Hc
-Hc
-Hc
+MJ
+ad
+MJ
 MJ
 Ky
 Qv
@@ -7447,9 +7471,9 @@ Zp
 Zp
 qE
 zK
-Lo
-Lo
-Hc
+ai
+ae
+aa
 MJ
 Ky
 PH

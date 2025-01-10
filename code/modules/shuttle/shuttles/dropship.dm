@@ -330,13 +330,13 @@
 	name = "Requisition Bay ASRS"
 	id = ELEVATOR_REQ_USCM
 	auto_open = TRUE
-//	roundstart_template = /datum/map_template/shuttle/requisition_elevator
+//	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
 
 /obj/docking_port/stationary/marine_dropship/req_uscm_admin
 	name = "Requisition Bay Admin Zone"
 	id = ELEVATOR_REQ_USCM
 	auto_open = TRUE
-	roundstart_template = /datum/map_template/shuttle/requisition_elevator
+	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
@@ -387,7 +387,7 @@
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
 
-/datum/map_template/shuttle/requisition_elevator
+/datum/map_template/shuttle/elevator_req_uscm
 	name = "Elevator ASRS"
 	shuttle_id = ELEVATOR_REQ_USCM
 

@@ -63,3 +63,68 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+
+/datum/action/xeno_action/onclick/charge_spit/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/spitter_charge = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!istype(spitter_charge) || !spitter_charge.check_state())
+		return
+
+	if (buffs_active)
+		to_chat(spitter_charge, SPAN_XENOHIGHDANGER("We cannot stack this!"))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	to_chat(spitter_charge, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
+	to_chat(spitter_charge, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
+	spitter_charge.create_custom_empower(icolor = "#93ec78", ialpha = 200, small_xeno = TRUE)
+	spitter_charge.balloon_alert(spitter_charge, "our next spit will be stronger", text_color = "#93ec78")
+	buffs_active = TRUE
+	spitter_charge.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/spatter] // shitcode is my city
+	spitter_charge.speed_modifier -= speed_buff_amount
+	spitter_charge.armor_modifier += armor_buff_amount
+	spitter_charge.recalculate_speed()
+	spitter_charge.recalculate_armor()
+
+	/// Though the ability's other buffs are supposed to last for its duration, it's only supposed to enhance one spit.
+	RegisterSignal(spitter_charge, COMSIG_XENO_POST_SPIT, PROC_REF(disable_spatter))
+
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/charge_spit/proc/disable_spatter()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/spitter_charge = owner
+	if(spitter_charge.ammo == GLOB.ammo_list[/datum/ammo/xeno/acid/spatter])
+		to_chat(spitter_charge, SPAN_XENOWARNING("Our acid glands empty out and return back to normal. We will once more fire long-ranged weak spits."))
+		spitter_charge.balloon_alert(spitter_charge, "our spits are back to normal", text_color = "#93ec78")
+		spitter_charge.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid] // el codigo de mierda es mi ciudad
+	UnregisterSignal(spitter_charge, COMSIG_XENO_POST_SPIT)
+
+/datum/action/xeno_action/onclick/charge_spit/proc/remove_effects()
+	var/mob/living/carbon/xenomorph/spitter_charge = owner
+
+	if (!istype(spitter_charge))
+		return
+
+	spitter_charge.speed_modifier += speed_buff_amount
+	spitter_charge.armor_modifier -= armor_buff_amount
+	spitter_charge.recalculate_speed()
+	spitter_charge.recalculate_armor()
+	to_chat(spitter_charge, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
+	disable_spatter()
+	buffs_active = FALSE
+
+/datum/action/xeno_action/activable/tail_stab/spitter/use_ability(atom/A)
+	var/target = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.reagents.add_reagent("molecularacid", 2)
+		carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/molecular_acid)

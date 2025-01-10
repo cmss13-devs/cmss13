@@ -555,12 +555,10 @@
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 
 /datum/chem_property/neutral/viscous/reset_reagent()
-	holder.chemfiresupp = initial(holder.chemfiresupp)
 	holder.radiusmod = initial(holder.radiusmod)
 	..()
 
 /datum/chem_property/neutral/viscous/update_reagent()
-	holder.chemfiresupp = TRUE
 	holder.radiusmod -= 0.025 * level
 	..()
 

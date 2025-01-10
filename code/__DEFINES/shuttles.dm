@@ -118,6 +118,7 @@
 #define DROPSHIP_DEVANA "dropship_devana"
 
 #define ELEVATOR_REQ_USCM "elevator_req_uscm"
+#define ELEVATOR_REQ_USCM_ADMIN "elevator_req_uscm_admin"
 
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"

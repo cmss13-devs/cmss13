@@ -159,6 +159,8 @@
 	name = "Elevator ASRS"
 	id = ELEVATOR_REQ_USCM
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	automated_hangar_id = ELEVATOR_REQ_USCM
+	automated_lz_id = ELEVATOR_REQ_USCM_ADMIN
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/Initialize(mapload)
 	. = ..()
@@ -166,6 +168,13 @@
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/get_transit_path_type()
 	return /turf/open/space/transit/dropship/req
+
+/obj/docking_port/mobile/marine_dropship/req_uscm/proc/swap_station()
+	var/obj/docking_port/stationary/dockedAt = get_docked()
+	if(dockedAt.id == automated_hangar_id)
+		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
+	else
+		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
 
 
 /obj/docking_port/mobile/marine_dropship/check()
@@ -338,7 +347,7 @@
 
 /obj/docking_port/stationary/marine_dropship/req_uscm_admin
 	name = "Requisition Bay Admin Zone"
-	id = ELEVATOR_REQ_USCM
+	id = ELEVATOR_REQ_USCM_ADMIN
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
 

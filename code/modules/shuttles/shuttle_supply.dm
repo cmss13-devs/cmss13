@@ -166,8 +166,6 @@
 
 		elevator_animation.vis_contents.Cut()
 
-		if (!at_station()) //at centcom
-			handle_sell()
 		recharging = 0
 
 /datum/shuttle/ferry/supply/proc/handle_sell()

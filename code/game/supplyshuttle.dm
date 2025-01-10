@@ -878,7 +878,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 // Called when the elevator is lowered.
 /datum/controller/supply/proc/sell()
-	var/area/area_shuttle = shuttle.get_location_area()
+	var/area/area_shuttle = new_shuttle.shuttle_areas[1]
 	if(!area_shuttle)
 		return
 
@@ -1190,16 +1190,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					return TRUE
 
 		if("send")
-			var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-
-			if(shuttle.at_station())
-				if (shuttle.forbidden_atoms_check())
-					system_message = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons."
-					return TRUE
-				shuttle.launch(src)
-				return TRUE
-
-			shuttle.launch(src)
 			linked_supply_controller.new_shuttle.swap_station()
 			return TRUE
 

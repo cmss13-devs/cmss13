@@ -161,10 +161,13 @@
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 	var/elevator_id = ELEVATOR_REQ_USCM
 	var/pit_id = ELEVATOR_REQ_USCM_ADMIN
+	faction = FACTION_MARINE
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/Initialize(mapload)
 	. = ..()
-	GLOB.supply_controller.new_shuttle = src
+	switch(faction)
+		if(FACTION_MARINE)
+			GLOB.supply_controller.new_shuttle = src
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/get_transit_path_type()
 	return /turf/open/space/transit/dropship/req
@@ -405,6 +408,22 @@
 	id = ELEVATOR_REQ_USCM_ADMIN
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
+	faction = FACTION_MARINE
+	var/datum/controller/supply/linked_supply_controller
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin/Initialize(mapload)
+	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+	linked_supply_controller.sell()
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	. = ..()
+	linked_supply_controller.buy()
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

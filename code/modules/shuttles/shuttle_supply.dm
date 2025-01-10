@@ -100,13 +100,11 @@
 			return //someone cancelled the launch
 
 		if (at_station())
-			raise_railings()
 			sleep(12)
 			if(forbidden_atoms_check())
 				//cancel the launch because of forbidden atoms. announce over supply channel?
 				moving_status = SHUTTLE_IDLE
 				playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/buzz-two.ogg', 50, 0)
-				lower_railings()
 				return
 		else //at centcom
 			linked_supply_controller.buy()
@@ -138,7 +136,6 @@
 			NW.icon_state = "supply_elevator_lowering"
 			NE.icon_state = "supply_elevator_lowering"
 			animate(elevator_animation, pixel_x = 160, pixel_y = -80, time = 2 SECONDS)
-			start_gears(SOUTH)
 			sleep(21)
 			SW.icon_state = "supply_elevator_lowered"
 			SE.icon_state = "supply_elevator_lowered"
@@ -147,7 +144,6 @@
 			sleep(70)
 		else
 			playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_raising.ogg', 50, 0)
-			start_gears(NORTH)
 			sleep(70)
 			SW.icon_state = "supply_elevator_raising"
 			SE.icon_state = "supply_elevator_raising"
@@ -162,7 +158,6 @@
 			move(away_area, destination)
 
 		moving_status = SHUTTLE_IDLE
-		stop_gears()
 
 		for(var/turf/vis_turf in elevator_animation.vis_contents)
 			for(var/atom/movable/vis_content in vis_turf.contents)
@@ -173,11 +168,7 @@
 
 		if (!at_station()) //at centcom
 			handle_sell()
-		else
-			lower_railings()
-
-		spawn(0)
-			recharging = 0
+		recharging = 0
 
 /datum/shuttle/ferry/supply/proc/handle_sell()
 	linked_supply_controller.sell() // fix this make it expandable
@@ -195,35 +186,3 @@
 //returns 1 if the shuttle is idle and we can still mess with the cargo shopping list
 /datum/shuttle/ferry/supply/proc/idle()
 	return (moving_status == SHUTTLE_IDLE)
-
-/datum/shuttle/ferry/supply/proc/raise_railings()
-	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
-		if(M.id == railing_id && !M.density)
-			effective = 1
-			spawn()
-				M.close()
-	if(effective)
-		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
-
-/datum/shuttle/ferry/supply/proc/lower_railings()
-	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
-		if(M.id == railing_id && M.density)
-			effective = 1
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
-	if(effective)
-		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
-
-/datum/shuttle/ferry/supply/proc/start_gears(direction = 1)
-	for(var/obj/structure/machinery/gear/M in GLOB.machines)
-		if(M.id == gear_id)
-			spawn()
-				M.icon_state = "gear_moving"
-				M.setDir(direction)
-
-/datum/shuttle/ferry/supply/proc/stop_gears()
-	for(var/obj/structure/machinery/gear/M in GLOB.machines)
-		if(M.id == gear_id)
-			spawn()
-				M.icon_state = "gear"

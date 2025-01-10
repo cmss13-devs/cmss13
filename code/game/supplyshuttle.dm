@@ -1105,10 +1105,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	.["used_points"] = used_points
 	.["used_dollars"] = used_dollars
 
-	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-	.["can_launch"] = shuttle.can_launch()
-	.["can_force"] = shuttle.can_force()
-	.["can_cancel"] = shuttle.can_cancel()
+	var/obj/docking_port/mobile/marine_dropship/req_uscm/shuttle = linked_supply_controller.new_shuttle
+	.["can_launch"] = shuttle.canMove()
+	.["can_force"] = FALSE//shuttle.can_force() need to figure this out with the new shuttle what it even does
+	.["can_cancel"] = FALSE//shuttle.can_cancel()
 
 	.["black_market"] = can_order_contraband
 	.["mendoza_status"] = linked_supply_controller.mendoza_status

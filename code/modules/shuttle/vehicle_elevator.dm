@@ -37,7 +37,7 @@
 		// Play the 'raising' sound effect at the destination docking port manually.
 		// `landing_sound` can't be used since that only plays on the elevator itself,
 		// and this sound file is too long for that either way.
-		playsound(destination, 'sound/machines/asrs_raising.ogg', 60)
+		playsound(destination, 'sound/machines/asrs_raising.ogg', 60) //might just change it on the shuttle FIX ME
 		return
 
 	// If the elevator *is* in the vehicle bay, close the railings and start the gears when it leaves.

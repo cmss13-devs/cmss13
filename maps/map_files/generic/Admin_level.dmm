@@ -18,6 +18,10 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/space/basic,
 /area/space)
+"af" = (
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin,
+/turf/open/space/basic,
+/area/space)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -11523,7 +11527,7 @@ aa
 fn
 as
 as
-as
+af
 as
 as
 fn

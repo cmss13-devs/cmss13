@@ -155,6 +155,14 @@
 /obj/docking_port/mobile/marine_dropship/devana/get_transit_path_type()
 	return /turf/open/space/transit/dropship/devana
 
+/obj/docking_port/mobile/marine_dropship/req_uscm
+	name = "Elevator ASRS"
+	id = ELEVATOR_REQ_USCM
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+/obj/docking_port/mobile/marine_dropship/req_uscm/get_transit_path_type()
+	return /turf/open/space/transit/dropship/req
+
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
@@ -318,6 +326,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
 
+/obj/docking_port/stationary/marine_dropship/req_uscm
+	name = "Requisition Bay ASRS"
+	id = ELEVATOR_REQ_USCM
+	auto_open = TRUE
+//	roundstart_template = /datum/map_template/shuttle/requisition_elevator
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin
+	name = "Requisition Bay Admin Zone"
+	id = ELEVATOR_REQ_USCM
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/requisition_elevator
+
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
 
@@ -366,5 +386,9 @@
 /datum/map_template/shuttle/devana
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
+
+/datum/map_template/shuttle/requisition_elevator
+	name = "Elevator ASRS"
+	shuttle_id = ELEVATOR_REQ_USCM
 
 

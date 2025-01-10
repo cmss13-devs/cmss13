@@ -2,6 +2,10 @@
 "a" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/supply/dock/uscm)
+"b" = (
+/obj/docking_port/mobile/marine_dropship/req_uscm,
+/turf/open/floor/plating/bare_catwalk,
+/area/supply/dock/uscm)
 "s" = (
 /turf/open/floor/almayer/test_floor5,
 /area/supply/dock/uscm)
@@ -23,7 +27,7 @@ a
 (3,1,1) = {"
 a
 a
-a
+b
 a
 a
 "}

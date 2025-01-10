@@ -276,6 +276,10 @@
 	shuttle_tag = DROPSHIP_DEVANA
 	dir = SOUTH
 
+/turf/open/space/transit/dropship/req
+	shuttle_tag = ELEVATOR_REQ_USCM
+	dir = SOUTH
+
 /turf/open/space/transit/south
 	dir = SOUTH
 

@@ -191,6 +191,10 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/docking_port/stationary/marine_dropship/req_uscm,
+/turf/open/floor/almayer/empty/requisitions,
+/area/almayer/squads/req)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -111531,7 +111535,7 @@ pjG
 boA
 bpR
 bpR
-bpR
+aaB
 bpR
 bpR
 bxh

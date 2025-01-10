@@ -298,7 +298,7 @@
 #define POTENCY_MULTIPLIER_EXTREME 10
 
 //used in speed_modifier component
-#define HUMAN_STAMINA_MULTIPLIER 5
+#define HUMAN_STAMINA_MULTIPLIER 3
 
 /*
 	Chemical explosions/fires

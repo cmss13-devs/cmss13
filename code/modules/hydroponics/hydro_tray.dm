@@ -189,8 +189,8 @@
 		if(draw_warnings) update_icon() //Harvesting would fail to set alert icons properly.
 		return
 
-	// Advance plant age.
-	if(prob(30)) age += 1 * HYDRO_SPEED_MULTIPLIER
+	// Advance plant age, as long as it is not lacking food or water
+	if(prob(30) && nutrilevel > 0 && waterlevel > 0) age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
 	if(seed.immutable == -1)
@@ -211,14 +211,11 @@
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.
-	// Checks if there are sufficient enough nutrients, if not the plant dies.
 	var/healthmod = rand(1,3) * HYDRO_SPEED_MULTIPLIER
 	if(seed.requires_nutrients && prob(35))
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
-	if(nutrilevel < 1)
-		plant_health = 0
 
 	// Check that pressure, heat are all within bounds.
 	// First, handle an open system or an unconnected closed system.
@@ -704,7 +701,7 @@
 	toxins = 0
 	yield_mod = 0
 	mutation_mod = 0
-	waterlevel = 0
+	waterlevel = 100
 	nutrilevel = 0
 	pestlevel = 0
 	weedlevel = 0

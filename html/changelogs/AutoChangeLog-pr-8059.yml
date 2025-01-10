@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - qol: "Adds messaging when larva and host both survive surgery"

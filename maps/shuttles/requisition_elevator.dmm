@@ -1,0 +1,43 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating/bare_catwalk,
+/area/supply/dock/uscm)
+"s" = (
+/turf/open/floor/almayer/test_floor5,
+/area/supply/dock/uscm)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+s
+a
+s
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+s
+a
+s
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+"}

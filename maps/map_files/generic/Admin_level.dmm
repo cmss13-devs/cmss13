@@ -135,9 +135,6 @@
 	name = "reinforced hull"
 	},
 /area/centcom/living)
-"dw" = (
-/turf/open/floor/almayer/test_floor5,
-/area/supply/dock/uscm)
 "dy" = (
 /turf/open/floor/wood,
 /area/centcom/living)
@@ -157,9 +154,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew7,
 /area/space)
-"ej" = (
-/turf/open/floor/plating/bare_catwalk,
-/area/supply/dock/uscm)
 "ev" = (
 /turf/open/floor/carpet/edge/northwest,
 /area/centcom/living)
@@ -11223,11 +11217,11 @@ aa
 aC
 aa
 fn
-ej
-ej
-ej
-ej
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11375,11 +11369,11 @@ aa
 aC
 aa
 fn
-ej
-dw
-ej
-dw
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11527,11 +11521,11 @@ aa
 aC
 aa
 fn
-ej
-ej
-ej
-ej
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11679,11 +11673,11 @@ aa
 aC
 aa
 fn
-ej
-dw
-ej
-dw
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11831,11 +11825,11 @@ aa
 aC
 aa
 fn
-ej
-ej
-ej
-ej
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn

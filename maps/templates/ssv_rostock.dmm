@@ -113,204 +113,6 @@
 	},
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/req)
-"aaq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
-	},
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/mono,
-/area/space)
-"aar" = (
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer,
-/area/space)
-"aas" = (
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/cargo_arrow,
-/area/space)
-"aat" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
-	},
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/mono,
-/area/space)
-"aau" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer,
-/area/space)
-"aav" = (
-/turf/open/floor/almayer/empty/requisitions,
-/area/space)
-"aaw" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer,
-/area/space)
-"aax" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/cargo_arrow/west,
-/area/space)
-"aay" = (
-/obj/effect/landmark/supply_elevator,
-/turf/open/floor/almayer/empty/requisitions,
-/area/space)
-"aaz" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/cargo_arrow/east,
-/area/space)
-"aaA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/mono,
-/area/space)
-"aaB" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer,
-/area/space)
-"aaC" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/cargo_arrow/north,
-/area/space)
-"aaD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
-	},
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
-/turf/open/floor/almayer/mono,
-/area/space)
-"aaE" = (
-/obj/structure/closet/crate/construction,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/stack/sheet/metal/small_stack,
-/obj/item/stack/sheet/metal/small_stack,
-/obj/item/stack/sheet/plasteel/small_stack,
-/obj/item/stack/sheet/plasteel/small_stack,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaF" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaG" = (
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/structure/closet/crate/freezer/rations{
-	desc = "A crate of UPP food rations.";
-	name = "UPP food Rations"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaH" = (
-/obj/structure/closet/crate/supply,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/obj/item/weapon/gun/smg/bizon,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaI" = (
-/obj/structure/closet/crate/explosives,
-/obj/item/weapon/gun/pistol/t73,
-/obj/item/weapon/gun/pistol/t73,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaJ" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaK" = (
-/obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaL" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/item/weapon/gun/shotgun/type23,
-/obj/item/weapon/gun/shotgun/type23,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaM" = (
-/obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaN" = (
-/obj/item/stack/folding_barricade/three,
-/obj/item/stack/folding_barricade/three,
-/obj/item/stack/folding_barricade/three,
-/obj/item/stack/folding_barricade/three,
-/obj/structure/closet/crate/construction,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"aaO" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
 "aaQ" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/bridge{
@@ -3545,9 +3347,8 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
 "cAn" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_gear_upp"
+/obj/structure/machinery/door/poddoor/railing/upp{
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -4719,9 +4520,8 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/engineering/reactor)
 "dxR" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_gear_upp"
+/obj/structure/machinery/door/poddoor/railing/upp{
+	dir = 2
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/rostock/req)
@@ -5757,9 +5557,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_gear_upp"
-	},
+/obj/structure/machinery/door/poddoor/railing/upp,
 /turf/open/floor/almayer,
 /area/rostock/req)
 "eja" = (
@@ -17127,13 +16925,11 @@
 /turf/open/floor/strata/red3/southeast,
 /area/rostock/lifeboat)
 "mRd" = (
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
+/obj/structure/machinery/gear/upp,
 /turf/open/floor/almayer/mono,
 /area/rostock/req)
 "mRq" = (
@@ -17630,9 +17426,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upper_deck/hallway)
 "nnt" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_gear_upp"
+/obj/structure/machinery/door/poddoor/railing/upp{
+	dir = 4
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/rostock/req)
@@ -19320,9 +19115,8 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "oJq" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4;
-	id = "supply_elevator_gear_upp"
+/obj/structure/machinery/door/poddoor/railing/upp{
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -21808,15 +21602,13 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "qAA" = (
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/machinery/gear/upp,
 /turf/open/floor/almayer/mono,
 /area/rostock/req)
 "qAB" = (
@@ -23908,9 +23700,8 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/prep)
 "siL" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 2;
-	id = "supply_elevator_gear_upp"
+/obj/structure/machinery/door/poddoor/railing/upp{
+	dir = 2
 	},
 /turf/open/floor/almayer,
 /area/rostock/req)
@@ -24304,13 +24095,11 @@
 /turf/open/floor/strata/orange_icorner/west,
 /area/rostock/req)
 "sAS" = (
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/structure/machinery/gear/upp,
 /turf/open/floor/almayer/mono,
 /area/rostock/req)
 "sAZ" = (
@@ -28503,9 +28292,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	id = "supply_elevator_gear_upp"
-	},
+/obj/structure/machinery/door/poddoor/railing/upp,
 /turf/open/floor/almayer/cargo_arrow,
 /area/rostock/req)
 "vQn" = (
@@ -29143,9 +28930,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_a)
 "wjh" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8;
-	id = "supply_elevator_gear_upp"
+/obj/structure/machinery/door/poddoor/railing/upp{
+	dir = 8
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/rostock/req)
@@ -30739,15 +30525,13 @@
 /turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/main_area)
 "xyA" = (
-/obj/structure/machinery/gear{
-	id = "supply_elevator_gear_upp"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/machinery/gear/upp,
 /turf/open/floor/almayer/mono,
 /area/rostock/req)
 "xyL" = (
@@ -59541,11 +59325,11 @@ ofW
 ofW
 ofW
 ofW
-aaF
-aaL
-aaF
-aaF
-aaE
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59723,11 +59507,11 @@ ofW
 ofW
 ofW
 ofW
-aaN
-aaF
-aaI
-aaH
-aaF
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -59905,11 +59689,11 @@ ofW
 ofW
 ofW
 ofW
-aaF
-aaF
-aaJ
-aaG
-aaF
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -60087,11 +59871,11 @@ ofW
 ofW
 ofW
 ofW
-aaO
-aaM
-aaF
-aaF
-aaG
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -60269,11 +60053,11 @@ ofW
 ofW
 ofW
 ofW
-aaF
-aaF
-aaK
-aaG
-aaF
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -60821,13 +60605,13 @@ ofW
 ofW
 ofW
 ofW
-aaA
-aau
-aau
-aax
-aau
-aau
-aaq
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -61003,13 +60787,13 @@ ofW
 ofW
 ofW
 ofW
-aaB
-aav
-aav
-aav
-aav
-aav
-aar
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -61185,13 +60969,13 @@ ofW
 ofW
 ofW
 ofW
-aaB
-aav
-aav
-aav
-aav
-aav
-aar
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -61367,13 +61151,13 @@ ofW
 ofW
 ofW
 ofW
-aaC
-aav
-aav
-aay
-aav
-aav
-aas
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -61549,13 +61333,13 @@ ofW
 ofW
 ofW
 ofW
-aaB
-aav
-aav
-aav
-aav
-aav
-aar
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -61731,13 +61515,13 @@ ofW
 ofW
 ofW
 ofW
-aaB
-aav
-aav
-aav
-aav
-aav
-aar
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW
@@ -61913,13 +61697,13 @@ ofW
 ofW
 ofW
 ofW
-aaD
-aaw
-aaw
-aaz
-aaw
-aaw
-aat
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
+ofW
 ofW
 ofW
 ofW

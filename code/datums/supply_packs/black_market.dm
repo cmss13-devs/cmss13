@@ -354,10 +354,10 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	name = "Desert Eagle crate (x4 magazines included)"
 	contains = list(
 		/obj/item/weapon/gun/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/deagle,
-		/obj/item/ammo_magazine/pistol/deagle,
-		/obj/item/ammo_magazine/pistol/deagle,
-		/obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy,
 	)
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market

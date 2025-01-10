@@ -216,7 +216,7 @@
 	item_state = "deagle"
 	fire_sound = 'sound/weapons/gun_DE50.ogg'
 	firesound_volume = 40
-	current_mag = /obj/item/ammo_magazine/pistol/deagle
+	current_mag = /obj/item/ammo_magazine/pistol/heavy
 	force = 13
 
 	attachable_allowed = list(
@@ -251,7 +251,7 @@
 	name = "polished Desert Eagle"
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
-	current_mag = /obj/item/ammo_magazine/pistol/deagle/super/highimpact
+	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	black_market_value = 100
 
 /obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values()

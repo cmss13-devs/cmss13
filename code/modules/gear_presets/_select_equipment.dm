@@ -571,7 +571,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	if(!M) return
 
 	var/list/merc_sidearms = list(
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,

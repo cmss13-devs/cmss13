@@ -1,7 +1,7 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bookshelf.dmi'
 	icon_state = "book-0"
 	anchored = TRUE
 	density = TRUE
@@ -51,7 +51,7 @@
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
 	else
-		..()
+		. = ..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
 	if(length(contents))

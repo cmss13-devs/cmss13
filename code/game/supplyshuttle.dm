@@ -110,6 +110,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/ordercomp
 	var/datum/controller/supply/linked_supply_controller
+	var/railing_id = "supply_elevator_railing"
+	var/gear_id = "supply_elevator_gear"
 	var/faction = FACTION_MARINE
 	var/asrs_name = "Automated Storage and Retrieval System"
 
@@ -167,24 +169,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		.["current_order"] += list(list_pack)
 
-	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-	.["shuttle_status"] = "lowered"
-	if (shuttle.has_arrive_time())
-		.["shuttle_status"] = "moving"
-		return
-
-	if (shuttle.at_station() )
+	var/obj/docking_port/mobile/marine_dropship/req_uscm/shuttle = linked_supply_controller.new_shuttle
+	.["shuttle_status"] = "moving"
+	if (shuttle.get_docked().id == shuttle.elevator_id)
 		.["shuttle_status"] = "raised"
-
-		switch(shuttle.docking_controller?.get_docking_status())
-			if ("docked")
-				.["shuttle_status"] = "raised"
-			if ("undocked")
-				.["shuttle_status"] = "lowered"
-			if ("docking")
-				.["shuttle_status"] = "raising"
-			if ("undocking")
-				.["shuttle_status"] = "lowering"
+	if (shuttle.get_docked().id == shuttle.pit_id)
+		.["shuttle_status"] = "lowered"
 
 /obj/structure/machinery/computer/supply/ui_static_data(mob/user)
 	. = ..()
@@ -386,6 +376,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /obj/structure/machinery/computer/supply/Destroy()
 	. = ..()
 	LAZYREMOVE(linked_supply_controller.bound_supply_computer_list, src)
+
 
 /obj/structure/machinery/computer/supply/asrs/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/spacecash))

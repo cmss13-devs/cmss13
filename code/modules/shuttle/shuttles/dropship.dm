@@ -171,7 +171,7 @@
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/proc/swap_station()
 	var/obj/docking_port/stationary/dockedAt = get_docked()
-	if(dockedAt.id == automated_hangar_id)
+	if(dockedAt.id == elevator_id)
 		SSshuttle.moveShuttle(id, pit_id, TRUE)
 	else
 		SSshuttle.moveShuttle(id, elevator_id, TRUE)
@@ -343,6 +343,7 @@
 	name = "Requisition Bay ASRS"
 	id = ELEVATOR_REQ_USCM
 	auto_open = TRUE
+
 //	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
 
 /obj/docking_port/stationary/marine_dropship/req_uscm_admin

@@ -113,3 +113,38 @@
 /obj/item/clothing/head/surgery/orange
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is orange."
 	icon_state = "surgcap_orange"
+
+//Detective
+
+/obj/item/clothing/head/fedora
+	name = "\improper tan fedora"
+	desc = "A classic tan fedora."
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+	)
+	icon_state = "fedora_tan"
+	item_state = "fedora_tan"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
+/obj/item/clothing/head/fedora/brown
+	name = "\improper brown fedora"
+	desc = "A classic brown fedora."
+	icon_state = "fedora_brown"
+	item_state = "fedora_brown"
+
+/obj/item/clothing/head/fedora/grey
+	name = "\improper grey fedora"
+	desc = "A classic grey fedora."
+	icon_state = "fedora_grey"
+	item_state = "fedora_grey"

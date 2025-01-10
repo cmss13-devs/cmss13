@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("Beret, Black", 12, /obj/item/clothing/head/beret/cm/black, null, VENDOR_ITEM_REGULAR),
 	list("Beret, White", 12, /obj/item/clothing/head/beret/cm/white, null, VENDOR_ITEM_REGULAR),
 	list("Bio Hood", 12, /obj/item/clothing/head/bio_hood/synth, null, VENDOR_ITEM_REGULAR),
-	list("Fedora", 12, /obj/item/clothing/head/hybrisa/fedora/grey, null, VENDOR_ITEM_REGULAR),
+	list("Fedora", 12, /obj/item/clothing/head/fedora/grey, null, VENDOR_ITEM_REGULAR),
 
 	list("HELMET", 0, null, null, null),
 	list("UM4 Helmet", 12, /obj/item/clothing/head/helmet/marine/veteran/UPP, null, VENDOR_ITEM_REGULAR),

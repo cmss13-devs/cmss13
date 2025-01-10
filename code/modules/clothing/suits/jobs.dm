@@ -136,6 +136,43 @@
 		/obj/item/tool/pen,
 	)
 
+//Detective
+/obj/item/clothing/suit/storage/CMB/trenchcoat
+	name = "\improper tan trench-coat"
+	desc = "A worn, tan, old style trench-coat. A classic of noir style apparel."
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
+	icon_state = "trench_tan"
+	item_state = "trench_tan"
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/brown
+
+	name = "\improper brown trench-coat"
+	desc = "A worn, brown, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	icon_state = "trench_brown"
+	item_state = "trench_brown"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/grey
+	name = "\improper grey trench-coat"
+	desc = "A worn, brown, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	icon_state = "trench_grey"
+	item_state = "trench_grey"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/police
+	name = "\improper tan police trench-coat"
+	desc = "A light tan coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
+	icon_state = "detective"
+	item_state = "detective"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/police/black
+	name = "\improper black police trench-coat"
+	desc = "A light black coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
+	icon_state = "detective2"
+	item_state = "detective2"
+
 //Forensics
 /obj/item/clothing/suit/storage/forensics
 	name = "jacket"

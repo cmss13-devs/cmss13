@@ -60,33 +60,6 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-// Detective Suit
-
-/obj/item/clothing/under/hybrisa/detective
-	name = "\improper detective suit pants"
-	desc = "A washed out white shirt with a black tie and brown slacks."
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
-	)
-	icon_state = "detective_brown"
-	worn_state = "detective_brown"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-
-
-/obj/item/clothing/under/hybrisa/detective/grey
-	name = "\improper grey suit pants"
-	desc = "A washed out white shirt with a red tie and black slacks."
-	icon_state = "detective_grey"
-	worn_state = "detective_grey"
-
 // Paramedic
 
 /obj/item/clothing/under/hybrisa/paramedic
@@ -330,28 +303,6 @@
 	icon_state = "helmet_brown"
 	item_state = "helmet_brown"
 
-/obj/item/clothing/head/cmcap/wy_cap
-	name = "\improper Weyland-Yutani cap"
-	desc = "A dark cap enscribed with the Weyland-Yutani 'Wings' logo, representing corporate justice."
-	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
-	)
-	icon_state = "newcorpo_cap"
-	item_state = "newcorpo_cap"
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NO_FLAGS
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN
-
 // CMB Police Hats
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new
@@ -463,41 +414,6 @@
 	)
 	icon_state = "pizzagalaxy_cap"
 	item_state = "pizzagalaxy_cap"
-
-// Detective Hat
-
-/obj/item/clothing/head/hybrisa/fedora
-	name = "\improper tan fedora"
-	desc = "A classic tan fedora."
-	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
-	)
-	icon_state = "fedora_tan"
-	item_state = "fedora_tan"
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NO_FLAGS
-
-/obj/item/clothing/head/hybrisa/fedora/brown
-	name = "\improper brown fedora"
-	desc = "A classic brown fedora."
-	icon_state = "fedora_brown"
-	item_state = "fedora_brown"
-
-/obj/item/clothing/head/hybrisa/fedora/grey
-	name = "\improper grey fedora"
-	desc = "A classic grey fedora."
-	icon_state = "fedora_grey"
-	item_state = "fedora_grey"
 
 // Helmets
 
@@ -877,32 +793,6 @@
 	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
 	uniform_restricted = null
-
-// Detective Trench-coat
-
-/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat
-	name = "\improper beige trench-coat"
-	desc = "A worn, beige, old style trench-coat. A classic of noir style apparel."
-	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
-	)
-	icon_state = "trench_tan"
-	item_state = "trench_tan"
-	uniform_restricted = null
-
-/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/brown
-
-	name = "\improper grey trench-coat"
-	desc = "A worn, brown, old style trench-coat. A classic of noir style apparel."
-	icon_state = "trench_brown"
-	item_state = "trench_brown"
-
-/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/grey
-	name = "\improper grey trench-coat"
-	desc = "A worn, brown, old style trench-coat. A classic of noir style apparel."
-	icon_state = "trench_grey"
-	item_state = "trench_grey"
 
 // Executive Trench-coat
 

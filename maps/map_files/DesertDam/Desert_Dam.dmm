@@ -21304,7 +21304,7 @@
 /area/desert_dam/building/security/prison)
 "bWO" = (
 /obj/item/reagent_container/food/drinks/flask/detflask,
-/obj/item/clothing/head/hybrisa/fedora/brown,
+/obj/item/clothing/head/fedora/brown,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)

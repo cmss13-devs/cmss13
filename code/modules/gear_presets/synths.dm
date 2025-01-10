@@ -449,12 +449,12 @@
 /datum/equipment_preset/synth/survivor/detective_synth
 	name = "Survivor - Synthetic - Detective Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/hybrisa/fedora/brown,
+		WEAR_HEAD = /obj/item/clothing/head/fedora/brown,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/hybrisa/detective,
+		WEAR_BODY = /obj/item/clothing/under/detective,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/brown,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/CMB/trenchcoat/police,
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full/synth,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,

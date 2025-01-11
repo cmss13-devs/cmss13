@@ -116,6 +116,8 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/under/detective/neutral
+	name = "brown suit pants"
 
 /obj/item/clothing/under/detective/grey
 	name = "\improper grey suit pants"

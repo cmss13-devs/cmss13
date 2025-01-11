@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Brown Suit Pants", 0, /obj/item/clothing/under/liaison_suit/brown, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("White Suit Pants", 0, /obj/item/clothing/under/liaison_suit/corporate_formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Grey Suit Pants", 0, /obj/item/clothing/under/detective/grey, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-	list("Worn Suit", 0, /obj/item/clothing/under/detective, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Worn Suit", 0, /obj/item/clothing/under/detective/neutral, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Tan Suit", 0, /obj/item/clothing/under/liaison_suit, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Charcoal Suit", 0, /obj/item/clothing/under/liaison_suit/charcoal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's White Suit", 0, /obj/item/clothing/under/liaison_suit/formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),

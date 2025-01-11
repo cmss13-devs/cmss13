@@ -557,9 +557,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
-"acc" = (
-/turf/open/floor/asteroidwarning/southwest,
-/area/bigredv2/caves_research)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -579,20 +576,12 @@
 "ach" = (
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
-"aci" = (
-/turf/open/floor/asteroidwarning/west{
-	dir = 2
-	},
-/area/bigredv2/caves_research)
 "acj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
-"ack" = (
-/turf/open/floor/asteroidwarning/southeast,
-/area/bigredv2/caves_research)
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -632,9 +621,6 @@
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
-"act" = (
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/caves_research)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -654,21 +640,12 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"acy" = (
-/obj/structure/machinery/sensortower{
-	pixel_x = -9
-	},
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/caves_research)
 "acz" = (
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "acA" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
-"acB" = (
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/caves_research)
 "acC" = (
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
@@ -676,17 +653,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acE" = (
-/turf/open/floor/asteroidwarning/northwest,
-/area/bigredv2/caves_research)
 "acF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
-"acG" = (
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/caves_research)
 "acH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -714,13 +685,16 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
-"acL" = (
-/turf/open/floor/asteroidwarning/northeast,
-/area/bigredv2/caves_research)
 "acM" = (
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acN" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/bigredv2/outside/filtration_cave_cas)
+"acO" = (
+/turf/open/floor/plating/asteroidwarning/south,
+/area/bigredv2/outside/filtration_cave_cas)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -759,6 +733,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acW" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/bigredv2/outside/filtration_cave_cas)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -771,6 +748,9 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
+"ada" = (
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/filtration_cave_cas)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -826,6 +806,21 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"adn" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -9
+	},
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/filtration_cave_cas)
+"ado" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/filtration_cave_cas)
+"adp" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/bigredv2/outside/filtration_cave_cas)
+"adq" = (
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/filtration_cave_cas)
 "adr" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -862,6 +857,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"adx" = (
+/turf/open/floor/asteroidwarning/northeast,
+/area/bigredv2/outside/filtration_cave_cas)
 "ady" = (
 /obj/structure/bed/chair,
 /turf/open/floor/darkish,
@@ -68229,9 +68227,9 @@ aao
 jrD
 jrD
 jrD
-acE
-act
-acc
+jrD
+jrD
+jrD
 jcR
 jrD
 jrD
@@ -68446,9 +68444,9 @@ aao
 jrD
 jrD
 jrD
-acG
-acy
-aci
+jrD
+jrD
+jrD
 jrD
 jrD
 jrD
@@ -68663,9 +68661,9 @@ aao
 jrD
 jrD
 jrD
-acL
-acB
-ack
+jrD
+jrD
+jrD
 jrD
 jrD
 jrD
@@ -70169,9 +70167,9 @@ fOx
 fOx
 fOx
 fOx
-fOx
-fOx
-fOx
+adp
+ada
+acN
 fOx
 fOx
 fOx
@@ -70386,9 +70384,9 @@ fOx
 fOx
 fOx
 fOx
-fOx
-fOx
-fOx
+adq
+adn
+acO
 fOx
 fOx
 fOx
@@ -70603,9 +70601,9 @@ fOx
 fOx
 fOx
 fOx
-fOx
-fOx
-fOx
+adx
+ado
+acW
 fOx
 dov
 fOx

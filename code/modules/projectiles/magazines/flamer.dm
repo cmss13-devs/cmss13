@@ -257,12 +257,12 @@
 //tanks printable by the research biomass machine
 /obj/item/ammo_magazine/flamer_tank/custom/upgraded
 	name = "upgraded custom incinerator tank"
-	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for bigger capacity and stronger fuels."
+	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for stronger fuels at the cost of fuel efficiency."
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
-	max_rounds = 200
+	max_rounds = 100
 	max_range = 7
-	fuel_pressure = 1
+	fuel_pressure = 2
 	max_duration = 50
 	max_intensity = 60
 	custom = TRUE

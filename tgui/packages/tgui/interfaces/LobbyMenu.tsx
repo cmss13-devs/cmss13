@@ -97,8 +97,8 @@ export const LobbyMenu = () => {
   const themeToUse = themeDisabled
     ? 'weyland_yutani'
     : upp_enabled
-      ? 'crtred'
-      : 'crtgreen';
+      ? 'crtlobbyred'
+      : 'crtlobby';
 
   return (
     <Window theme={themeToUse} fitted scrollbars={false}>
@@ -134,45 +134,51 @@ export const LobbyMenu = () => {
               icon="cog"
               onClick={() => {
                 setModal(
-                  <Section
-                    p={5}
-                    title="Lobby Settings"
-                    buttons={
-                      <Button icon="xmark" onClick={() => setModal(false)} />
-                    }
-                  >
-                    <Stack>
-                      <Stack.Item>
-                        <Button
-                          icon="tv"
-                          onClick={() => {
-                            storage.set(
-                              'lobby-filter-disabled',
-                              !filterDisabled,
-                            );
-                            setFilterDisabled(!filterDisabled);
-                            setModal(false);
-                          }}
-                          tooltip="Removes the CRT filter background"
-                        >
-                          {`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
-                        </Button>
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Button
-                          icon="bolt"
-                          onClick={() => {
-                            storage.set('lobby-theme-disabled', !themeDisabled);
-                            setThemeDisabled(!themeDisabled);
-                            setModal(false);
-                          }}
-                          tooltip="Totally removes the CRT theme, including the filter"
-                        >
-                          {`${themeDisabled ? 'Enable' : 'Disable'} CRT Theme`}
-                        </Button>
-                      </Stack.Item>
-                    </Stack>
-                  </Section>,
+                  <Box className="styledText">
+                    <Section
+                      p={5}
+                      title="Lobby Settings"
+                      buttons={
+                        <Button icon="xmark" onClick={() => setModal(false)} />
+                      }
+                      className="styledText"
+                    >
+                      <Stack>
+                        <Stack.Item>
+                          <Button
+                            icon="tv"
+                            onClick={() => {
+                              storage.set(
+                                'lobby-filter-disabled',
+                                !filterDisabled,
+                              );
+                              setFilterDisabled(!filterDisabled);
+                              setModal(false);
+                            }}
+                            tooltip="Removes the CRT filter background"
+                          >
+                            {`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Button
+                            icon="bolt"
+                            onClick={() => {
+                              storage.set(
+                                'lobby-theme-disabled',
+                                !themeDisabled,
+                              );
+                              setThemeDisabled(!themeDisabled);
+                              setModal(false);
+                            }}
+                            tooltip="Totally removes the CRT theme, including the filter"
+                          >
+                            {`${themeDisabled ? 'Enable' : 'Disable'} CRT Theme`}
+                          </Button>
+                        </Stack.Item>
+                      </Stack>
+                    </Section>
+                  </Box>,
                 );
               }}
             />
@@ -191,7 +197,7 @@ export const LobbyMenu = () => {
               />
             </Stack.Item>
           </Stack>
-          <Box className="bgLoad authorAttrib">
+          <Box className="bgLoad authorAttrib styledText">
             {lobby_author ? `Art by ${lobby_author}` : ''}
           </Box>
         </LobbyContext.Provider>
@@ -254,25 +260,29 @@ const LobbyButtons = (props: {
         <Stack.Item>
           <Stack>
             <Stack.Item>
-              <Box height="68px">
-                <Box
-                  style={{
-                    backgroundImage: `url("${resolveAsset(upp_enabled ? 'upp.png' : 'uscm.png')}")`,
-                  }}
-                  width="67px"
-                  className="loadEffect"
-                  onClick={() => {
-                    setHidden(true);
-                  }}
-                />
-              </Box>
+              <Stack vertical justify="space-around" height="100%">
+                <Stack.Item>
+                  <Box height="68px">
+                    <Box
+                      style={{
+                        backgroundImage: `url("${resolveAsset(upp_enabled ? 'upp.png' : 'uscm.png')}")`,
+                      }}
+                      width="67px"
+                      className="loadEffect"
+                      onClick={() => {
+                        setHidden(true);
+                      }}
+                    />
+                  </Box>
+                </Stack.Item>
+              </Stack>
             </Stack.Item>
             <Stack.Item minWidth="200px">
               <Stack vertical>
                 <Stack.Item>
                   <Stack justify="center">
                     <Stack.Item>
-                      <Box className="typeEffect">Welcome,</Box>
+                      <Box className="typeEffect styledText">Welcome,</Box>
                     </Stack.Item>
                   </Stack>
                 </Stack.Item>
@@ -280,7 +290,7 @@ const LobbyButtons = (props: {
                   <Stack justify="center">
                     <Stack.Item>
                       <Box
-                        className="typeEffect"
+                        className="typeEffect styledText"
                         style={{
                           animationDelay: '1.4s',
                         }}
@@ -294,7 +304,7 @@ const LobbyButtons = (props: {
                   <Stack justify="center">
                     <Stack.Item>
                       <Box
-                        className="typeEffect hiveEffect"
+                        className="typeEffect styledText"
                         style={{
                           animationDelay: '1.4s',
                         }}
@@ -582,9 +592,19 @@ const LobbyButton = (props: LobbyButtonProps) => {
       }}
     >
       <Button fluid className={'distinctButton ' + className} {...rest}>
-        {children}
+        <StyledText>{children}</StyledText>
       </Button>
     </Stack.Item>
+  );
+};
+
+const StyledText = (props: PropsWithChildren) => {
+  const { children } = props;
+
+  return (
+    <Box inline className="styledText">
+      {children}
+    </Box>
   );
 };
 

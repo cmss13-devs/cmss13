@@ -120,3 +120,45 @@
       today!
   realforest2001:
   - bugfix: Preset corpses and pizza ERTs now have correct paygrade displays.
+2025-01-06:
+  Blundir:
+  - rscadd: added seegson, hyperdyne and makeshift synth reset keys and added them
+      to corresponding factions
+  harryob:
+  - rscadd: the req ordering console has a new ui
+2025-01-07:
+  Git-Nivrak:
+  - rscadd: Xenomorphs can now reset their strain, first use is free then it can be
+      done once every 40 minutes.
+2025-01-08:
+  Blundir:
+  - rscadd: misc ranks are now shown as icons in ooc
+  - rscadd: rank icons now work in asay and mentorsay chats
+  - bugfix: fixed some broken ranks icons not working
+  Diegoflores31:
+  - balance: Shrapnell accuracy and damage increased
+  - balance: Shrapnell now does 60% bonus damage to xenomorphs
+  - balance: Shrapnell slows xenomorphs on hit
+  - balance: Custom rockets will now shoot their shrapnell on a 90 degree angle
+  cuberound:
+  - rscadd: UPP req  console, dropship part fabricato and tank part fabricator
+2025-01-09:
+  AndroBetel:
+  - spellcheck: Formatting of M10 auto pistol.
+2025-01-10:
+  FebrezeNinja:
+  - bugfix: Added a missing reference check to flight/ui_act
+  harryob:
+  - rscadd: added client settings to the statbrowser - under the "Options" buttn
+  - ui: added a search bar to the portable crew monitor
+  private-tristan:
+  - bugfix: Neuraline no longer generates in recipes, and is unobtainable from botany.
+  zzzmike:
+  - qol: Adds messaging when larva and host both survive surgery
+2025-01-11:
+  Blundir:
+  - rscadd: different xeno spits now have different icon depending on their damage
+  - imageadd: new neurotoxin spit sprite
+  - imageadd: new predalien action icons
+  Git-Nivrak:
+  - rscadd: Added another combat technician helmet option

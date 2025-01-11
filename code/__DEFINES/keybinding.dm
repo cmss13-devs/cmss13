@@ -167,6 +167,7 @@
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
+#define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 
 // Yautja
 

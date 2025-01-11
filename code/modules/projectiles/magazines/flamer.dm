@@ -260,7 +260,7 @@
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for stronger fuels at the cost of fuel efficiency."
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
-	max_rounds = 100
+	max_rounds = 200
 	max_range = 5
 	fuel_pressure = 2
 	max_duration = 50

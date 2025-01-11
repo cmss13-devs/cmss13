@@ -204,7 +204,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(isnull(pack.contains) && isnull(pack.containertype))
 			continue
 
-		if(!(pack.group in linked_supply_controller.all_supply_groups))
+		if(!(pack.group in list() + linked_supply_controller.all_supply_groups + linked_supply_controller.contraband_supply_groups))
 			continue
 
 		if(!pack.contraband && length(pack.group))
@@ -1125,31 +1125,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	. = ..()
 
 	.["contraband_categories"] = linked_supply_controller.contraband_supply_groups
-	for(var/pack_type in GLOB.supply_packs_datums)
-		var/datum/supply_packs/pack = GLOB.supply_packs_datums[pack_type]
-
-		if(!pack.buyable)
-			continue
-
-		if(isnull(pack.contains) && isnull(pack.containertype))
-			continue
-
-		if(!(pack.group in linked_supply_controller.contraband_supply_groups))
-			continue
-
-		var/list_pack = pack.get_list_representation()
-
-		if(length(pack.group))
-			if(!.["categories_to_objects"][pack.group])
-				.["categories_to_objects"][pack.group] = list()
-
-			.["categories_to_objects"][pack.group] += list(
-				list_pack
-			)
-
-		.["all_items"] += list(
-			list_pack
-		)
 
 /obj/structure/machinery/computer/supply/asrs/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

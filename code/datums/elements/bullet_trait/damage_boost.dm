@@ -2,6 +2,8 @@ GLOBAL_LIST_INIT(damage_boost_turfs, typecacheof(/turf))
 
 GLOBAL_LIST_INIT(damage_boost_turfs_xeno, typecacheof(/turf/closed/wall/resin))
 
+GLOBAL_LIST_INIT(damage_boost_doors_xeno, typecacheof(/obj/structure/mineral_door/resin))
+
 GLOBAL_LIST_INIT(damage_boost_breaching, typecacheof(list(
 	/obj/structure/machinery/door,
 	/obj/structure/mineral_door,
@@ -19,6 +21,8 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(list(
 )))
 
 GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
+
+GLOBAL_LIST_INIT(daamge_boost_rwall, typecacheof(/turf/closed/wall/r_wall))
 
 /datum/element/bullet_trait_damage_boost
 	element_flags = ELEMENT_DETACH|ELEMENT_BESPOKE

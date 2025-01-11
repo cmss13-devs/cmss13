@@ -3203,8 +3203,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
 		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching), // 1242 damage
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons),
+		BULLET_TRAIT_ENTRY_ID("xeno_door", /datum/element/bullet_trait_damage_boost, 0.5, GLOB.damage_boost_doors_xeno) // 621 one tap for normal two tap for thick  
 	))
 
 /obj/item/attachable/attached_gun/shotgun/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)

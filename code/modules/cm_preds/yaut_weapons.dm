@@ -751,8 +751,8 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 
-	passive_block = 15
-	readied_block = 30
+	passive_block = 20
+	readied_block = 40
 
 	blocks_on_back = FALSE
 

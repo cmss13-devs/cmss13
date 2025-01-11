@@ -278,7 +278,7 @@
 	if (pounceAction.can_be_shield_blocked)
 		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
 			var/mob/living/carbon/human/H = M
-			if(H.check_shields(15, "the pounce")) //Human shield block.
+			if(H.check_shields(15, "the pounce", dir)) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("We slam into [H]!"), null, 5)
 				KnockDown(1)

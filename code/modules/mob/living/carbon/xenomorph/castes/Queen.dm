@@ -34,13 +34,13 @@
 
 	spit_delay = 25
 
-	tackle_min = 2
-	tackle_max = 6
+	tackle_min = 3
+	tackle_max = 7
 	tackle_chance = 55
 
 	aura_strength = 4
-	tacklestrength_min = 5
-	tacklestrength_max = 6
+	tacklestrength_min = 4
+	tacklestrength_max = 5
 
 	minimum_xeno_playtime = 9 HOURS
 	minimum_evolve_time = 0

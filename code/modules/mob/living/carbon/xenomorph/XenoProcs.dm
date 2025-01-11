@@ -554,42 +554,23 @@
 	if(pipe)
 		handle_ventcrawl(pipe)
 
-/mob/living/carbon/xenomorph/proc/attempt_tackle(mob/M, tackle_mult = 1, tackle_min_offset = 0, tackle_max_offset = 0, tackle_bonus = 0)
-	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
-	if(!TC)
-		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
-		LAZYSET(tackle_counter, M, TC)
-		RegisterSignal(M, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(tackle_handle_lying_changed))
+/mob/living/carbon/xenomorph/proc/attempt_tackle(mob/target, tackle_mult = 1, tackle_min_offset = 0, tackle_max_offset = 0, tackle_bonus = 0)
+	var/datum/component/tackle_counter/tackle_counter =  target.GetComponent(/datum/component/tackle_counter)
 
-	if (TC.tackle_reset_id)
-		deltimer(TC.tackle_reset_id)
-		TC.tackle_reset_id = null
+	if(!tackle_counter)
+		tackle_counter = target.AddComponent(/datum/component/tackle_counter)
 
-	. = TC.attempt_tackle(tackle_bonus)
-	if (!. || (M.status_flags & XENO_HOST))
-		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-	else
-		reset_tackle(M)
+	tackle_counter.tackle()
 
-/mob/living/carbon/xenomorph/proc/tackle_handle_lying_changed(mob/living/M, body_position)
-	SIGNAL_HANDLER
-	if(body_position != LYING_DOWN)
-		return
+	if(tackle_counter.tackles >= tackle_max + tackle_max_offset)
+		. = TRUE
+	else if (tackle_counter.tackles < tackle_min + tackle_min_offset)
+		. = FALSE
+	else if (prob(tackle_chance * tackle_mult))
+		. = TRUE
 
-	// Infected mobs do not have their tackle counter reset if
-	// they get knocked down or get up from a knockdown
-	if(M.status_flags & XENO_HOST)
-		return
-
-	reset_tackle(M)
-
-/mob/living/carbon/xenomorph/proc/reset_tackle(mob/M)
-	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
-	if (TC)
-		qdel(TC)
-		LAZYREMOVE(tackle_counter, M)
-		UnregisterSignal(M, COMSIG_LIVING_SET_BODY_POSITION)
-
+	if(.)
+		tackle_counter.reset_tackle()
 
 /mob/living/carbon/xenomorph/burn_skin(burn_amount)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

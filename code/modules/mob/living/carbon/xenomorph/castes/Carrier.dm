@@ -28,11 +28,11 @@
 	huggers_max = 16
 	eggs_max = 8
 
-	tackle_min = 2
-	tackle_max = 4
+	tackle_min = 4
+	tackle_max = 6
 	tackle_chance = 50
-	tacklestrength_min = 4
-	tacklestrength_max = 5
+	tacklestrength_min = 2
+	tacklestrength_max = 2
 
 	aura_strength = 2
 	hugger_delay = 20

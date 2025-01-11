@@ -22,6 +22,11 @@
 	caste_desc = "A fast, powerful backline combatant."
 	evolves_to = list(XENO_CASTE_RAVAGER)
 
+	tackle_min = 3
+	tackle_max = 7
+	tacklestrength_min = 1
+	tacklestrength_max = 2
+
 	heal_resting = 1.5
 
 	minimum_evolve_time = 9 MINUTES

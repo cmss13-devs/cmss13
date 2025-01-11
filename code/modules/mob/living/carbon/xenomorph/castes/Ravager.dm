@@ -14,11 +14,11 @@
 	speed = XENO_SPEED_TIER_3
 	heal_standing = 0.66
 
-	tackle_min = 2
-	tackle_max = 5
+	tackle_min = 3
+	tackle_max = 6
 	tackle_chance = 35
-	tacklestrength_min = 4
-	tacklestrength_max = 5
+	tacklestrength_min = 3
+	tacklestrength_max = 4
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_LURKER)

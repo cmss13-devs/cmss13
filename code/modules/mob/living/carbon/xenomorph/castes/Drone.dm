@@ -28,10 +28,10 @@
 	weed_level = WEED_LEVEL_STANDARD
 	max_build_dist = 1
 
-	tackle_min = 2
-	tackle_max = 4
-	tacklestrength_min = 3
-	tacklestrength_max = 4
+	tackle_min = 4
+	tackle_max = 6
+	tacklestrength_min = 2
+	tacklestrength_max = 2
 
 	aura_strength = 2
 

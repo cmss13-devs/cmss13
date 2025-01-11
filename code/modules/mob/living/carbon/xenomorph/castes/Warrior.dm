@@ -20,8 +20,11 @@
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
 
-	tackle_min = 2
-	tackle_max = 4
+	tackle_min = 3
+	tackle_max = 5
+
+	tacklestrength_min = 1
+	tacklestrength_max = 2
 
 	agility_speed_increase = -0.9
 

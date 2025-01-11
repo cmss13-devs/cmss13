@@ -429,6 +429,7 @@
 #include "code\datums\components\shimmy_around.dm"
 #include "code\datums\components\speed_modifier.dm"
 #include "code\datums\components\status_effect_component.dm"
+#include "code\datums\components\tackle_counter.dm"
 #include "code\datums\components\temporary_mute.dm"
 #include "code\datums\components\toxin_buildup.dm"
 #include "code\datums\components\tutorial_status.dm"

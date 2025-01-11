@@ -22,8 +22,11 @@
 	aura_strength = 3
 	spit_delay = 20
 
-	tackle_min = 2
-	tackle_max = 5
+	tackle_min = 3
+	tackle_max = 6
+
+	tacklestrength_min = 1
+	tacklestrength_max = 2
 	tackle_chance = 45
 
 	available_strains = list(

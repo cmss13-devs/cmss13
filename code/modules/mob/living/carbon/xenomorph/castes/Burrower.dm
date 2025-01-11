@@ -22,11 +22,11 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/burrower_base
 
-	tackle_min = 3
-	tackle_max = 5
+	tackle_min = 4
+	tackle_max = 6
 	tackle_chance = 40
-	tacklestrength_min = 4
-	tacklestrength_max = 5
+	tacklestrength_min = 3
+	tacklestrength_max = 4
 
 	burrow_cooldown = 20
 	tunnel_cooldown = 70

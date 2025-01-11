@@ -19,8 +19,10 @@
 
 	minimum_evolve_time = 15 MINUTES
 
-	tackle_min = 2
-	tackle_max = 6
+	tackle_min = 3
+	tackle_max = 7
+	tacklestrength_min = 1
+	tacklestrength_max = 2
 	tackle_chance = 25
 
 	evolution_allowed = FALSE

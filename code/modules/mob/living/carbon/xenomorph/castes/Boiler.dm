@@ -27,11 +27,11 @@
 	// 3x fire damage
 	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
 
-	tackle_min = 2
-	tackle_max = 6
+	tackle_min = 3
+	tackle_max = 7
 	tackle_chance = 25
-	tacklestrength_min = 3
-	tacklestrength_max = 4
+	tacklestrength_min = 2
+	tacklestrength_max = 3
 
 	minimum_evolve_time = 15 MINUTES
 

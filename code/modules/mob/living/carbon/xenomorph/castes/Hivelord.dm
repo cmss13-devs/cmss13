@@ -26,11 +26,11 @@
 	behavior_delegate_type = /datum/behavior_delegate/hivelord_base
 	max_build_dist = 1
 
-	tackle_min = 2
-	tackle_max = 4
+	tackle_min = 4
+	tackle_max = 6
 	tackle_chance = 45
-	tacklestrength_min = 4
-	tacklestrength_max = 5
+	tacklestrength_min = 2
+	tacklestrength_max = 2
 
 	aura_strength = 2.5
 

@@ -18,11 +18,11 @@
 	deevolves_to = list(XENO_CASTE_LARVA)
 	acid_level = 1
 
-	tackle_min = 4
-	tackle_max = 4
+	tackle_min = 6
+	tackle_max = 6
 	tackle_chance = 50
-	tacklestrength_min = 4
-	tacklestrength_max = 4
+	tacklestrength_min = 3
+	tacklestrength_max = 3
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 	minimap_icon = "sentinel"

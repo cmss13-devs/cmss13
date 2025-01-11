@@ -149,7 +149,7 @@
 	value_upgrade = 500 //not useful enough to be expensive
 	clearance_req = 2
 	change_purchase = -50
-	maximum_price = 250
+	maximum_price = 200
 	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
 /datum/research_upgrades/armor

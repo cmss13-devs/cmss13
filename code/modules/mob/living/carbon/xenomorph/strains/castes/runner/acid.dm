@@ -65,7 +65,8 @@
 	. = list()
 	var/combat_gen_text = "Inactive"
 	. += "Acid: [acid_amount]/[max_acid]"
-	. += "Acid generation cap: [acid_gen_cap]"
+	if(acid_amount >= acid_gen_cap)
+		. += "Passive acid generation cap ([acid_gen_cap]) reached"
 	if(combat_gen_active)
 		combat_gen_text = "Active"
 	. += "Battle acid generation: [combat_gen_text]"

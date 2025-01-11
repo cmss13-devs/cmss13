@@ -134,12 +134,11 @@
 
 /datum/research_upgrades/item/flamer_tank
 	name = "Upgraded Incinerator Tank"
-	desc = "An upgraded incinerator tank, with larger capacity and able to handle stronger fuels."
-	value_upgrade = 300
-	clearance_req = 1
-	change_purchase = 100
-	minimum_price = 100
-	maximum_price = 1000
+	desc = "An upgraded incinerator tank, able to handle stronger fuels at the cost of fuel efficiency."
+	value_upgrade = 2000 
+	clearance_req = 4
+	change_purchase = -200
+	mainimum_price = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
@@ -147,11 +146,10 @@
 /datum/research_upgrades/item/flamer_tank/smoke
 	name = "Upgraded Incinerator Smoke Tank"
 	desc = "An upgraded incinerator smoke tank with a larger capacity."
-	value_upgrade = 100 //not useful enough to be expensive
-	clearance_req = 1
-	change_purchase = 50
-	minimum_price = 100
-	maximum_price = 500
+	value_upgrade = 500 //not useful enough to be expensive
+	clearance_req = 2
+	change_purchase = -50
+	maximum_price = 250
 	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
 /datum/research_upgrades/armor

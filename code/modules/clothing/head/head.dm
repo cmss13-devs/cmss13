@@ -125,7 +125,6 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
-	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/tan/Initialize(mapload, ...)
 	. = ..()

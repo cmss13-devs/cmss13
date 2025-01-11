@@ -25,6 +25,13 @@
 		/obj/item/tool/surgery/surgicaldrill,
 		/obj/item/tool/surgery/circular_saw,
 		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/FixOVein,
+		/obj/item/tool/surgery/bonesetter,
+		/obj/item/roller,
+		/obj/item/tool/surgery/bonegel,
+		/obj/item/stack/nanopaste,
+		/obj/item/reagent_container/blood/,
+		/obj/item/reagent_container/spray/cleaner,
 
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
@@ -32,6 +39,7 @@
 		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,

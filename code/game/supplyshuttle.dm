@@ -204,7 +204,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(isnull(pack.contains) && isnull(pack.containertype))
 			continue
 
-		if(!(pack.group in list() + linked_supply_controller.all_supply_groups + linked_supply_controller.contraband_supply_groups))
+		if(!(pack.group in (list() + linked_supply_controller.all_supply_groups + linked_supply_controller.contraband_supply_groups)))
 			continue
 
 		if(!pack.contraband && length(pack.group))

@@ -244,7 +244,7 @@
 	max_rounds = 250
 
 	max_intensity = 60
-	max_range = 8
+	max_range = 7
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/smoke
@@ -261,7 +261,7 @@
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
 	max_rounds = 100
-	max_range = 7
+	max_range = 5
 	fuel_pressure = 2
 	max_duration = 50
 	max_intensity = 60

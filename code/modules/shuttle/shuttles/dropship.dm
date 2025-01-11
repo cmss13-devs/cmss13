@@ -159,9 +159,25 @@
 	name = "Elevator ASRS"
 	id = ELEVATOR_REQ_USCM
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+	var/elevator_id = ELEVATOR_REQ_USCM
+	var/pit_id = ELEVATOR_REQ_USCM_ADMIN
+	faction = FACTION_MARINE
+
+/obj/docking_port/mobile/marine_dropship/req_uscm/Initialize(mapload)
+	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			GLOB.supply_controller.new_shuttle = src
 
 /obj/docking_port/mobile/marine_dropship/req_uscm/get_transit_path_type()
 	return /turf/open/space/transit/dropship/req
+
+/obj/docking_port/mobile/marine_dropship/req_uscm/proc/swap_station()
+	var/obj/docking_port/stationary/dockedAt = get_docked()
+	if(dockedAt.id == elevator_id)
+		SSshuttle.moveShuttle(id, pit_id, TRUE)
+	else
+		SSshuttle.moveShuttle(id, elevator_id, TRUE)
 
 
 /obj/docking_port/mobile/marine_dropship/check()
@@ -330,13 +346,84 @@
 	name = "Requisition Bay ASRS"
 	id = ELEVATOR_REQ_USCM
 	auto_open = TRUE
+	var/railing_id = "supply_elevator_railing"
+	var/gear_id = "supply_elevator_gear"
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	.=..()
+	raise_railings()
+	start_gears()
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/on_departure(obj/docking_port/mobile/departing_shuttle)
+	.=..()
+	stop_gears()
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+	start_gears()
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+	stop_gears()
+	lower_railings()
+
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/proc/raise_railings()
+	var/effective = 0
+	for(var/obj/structure/machinery/door/poddoor/railing in GLOB.machines)
+		if(railing.id == railing_id && !railing.density)
+			effective = TRUE
+			spawn()
+				railing.close()
+	if(effective)
+		playsound(src, 'sound/machines/elevator_openclose.ogg', 50, 0)
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/proc/lower_railings()
+	var/effective = 0
+	for(var/obj/structure/machinery/door/poddoor/railing in GLOB.machines)
+		if(railing.id == railing_id && railing.density)
+			effective = TRUE
+			INVOKE_ASYNC(railing, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+	if(effective)
+		playsound(src, 'sound/machines/elevator_openclose.ogg', 50, 0)
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/proc/start_gears(direction = 1)
+	for(var/obj/structure/machinery/gear/gear in GLOB.machines)
+		if(gear.id == gear_id)
+			spawn()
+				gear.icon_state = "gear_moving"
+				gear.setDir(direction)
+
+/obj/docking_port/stationary/marine_dropship/req_uscm/proc/stop_gears()
+	for(var/obj/structure/machinery/gear/gear in GLOB.machines)
+		if(gear.id == gear_id)
+			spawn()
+				gear.icon_state = "gear"
+
+
 //	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
 
 /obj/docking_port/stationary/marine_dropship/req_uscm_admin
 	name = "Requisition Bay Admin Zone"
-	id = ELEVATOR_REQ_USCM
+	id = ELEVATOR_REQ_USCM_ADMIN
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/elevator_req_uscm
+	faction = FACTION_MARINE
+	var/datum/controller/supply/linked_supply_controller
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin/Initialize(mapload)
+	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+	linked_supply_controller.sell()
+
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	. = ..()
+	linked_supply_controller.buy()
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

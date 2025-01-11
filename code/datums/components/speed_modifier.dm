@@ -84,8 +84,8 @@
 		return
 	if(!increase_speed)
 		speeds["speed"] += speed_modifier * 0.075
-	else //increasing speed is more effective than decreasing speed
-		speeds["speed"] -= speed_modifier * 0.1
+	else //increasing speed is less effective than decreasing speed
+		speeds["speed"] -= speed_modifier * 0.05
 
 #undef MAX_ALPHA
 #undef GLOW_COLOR

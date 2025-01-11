@@ -196,7 +196,7 @@
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN * 10 * potency)
+	M.pain.apply_pain(PROPERTY_PAINING_PAIN * potency)
 
 /datum/chem_property/negative/paining/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!(..()))

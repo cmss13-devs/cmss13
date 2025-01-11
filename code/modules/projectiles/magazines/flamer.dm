@@ -244,7 +244,7 @@
 	max_rounds = 250
 
 	max_intensity = 60
-	max_range = 7
+	max_range = 8
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/smoke

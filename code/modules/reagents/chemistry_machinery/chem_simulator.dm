@@ -273,6 +273,7 @@
 				reference_property = reference_prop
 			if(!reference_property)
 				to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
+			update_costs()
 				return
 		if("simulate")
 			if(!ready)

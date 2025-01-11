@@ -18,6 +18,9 @@
 	var/handfuls_icon = 'icons/obj/items/weapons/guns/ammo_boxes/handfuls.dmi'
 	var/magazines_icon = 'icons/obj/items/weapons/guns/ammo_boxes/magazines.dmi'
 	var/flames_icon = 'icons/obj/items/weapons/guns/ammo_boxes/misc.dmi'
+	var/obj/item/ammo_magazine/magazine_type = /obj/item/ammo_magazine/rifle //moving it here so that spare rounds also inherit it
+	var/num_of_magazines = 10
+	var/handfuls = FALSE
 
 //---------------------GENERAL PROCS
 
@@ -81,9 +84,6 @@
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
 	var/overlay_content = "_reg"
-	var/obj/item/ammo_magazine/magazine_type = /obj/item/ammo_magazine/rifle
-	var/num_of_magazines = 10
-	var/handfuls = FALSE
 	var/icon_state_deployed = null
 	var/handful = "shells" //used for 'magazine' boxes that give handfuls to determine what kind for the sprite
 	can_explode = TRUE
@@ -276,6 +276,7 @@
 	var/bullet_amount = 600
 	var/max_bullet_amount = 600
 	var/caliber = "10x24mm"
+	num_of_magazines = 15
 	can_explode = TRUE
 
 /obj/item/ammo_box/rounds/empty

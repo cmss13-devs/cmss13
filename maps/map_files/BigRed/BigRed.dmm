@@ -557,6 +557,9 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
+"acc" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/bigredv2/caves_research)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -576,12 +579,20 @@
 "ach" = (
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"aci" = (
+/turf/open/floor/asteroidwarning/west{
+	dir = 2
+	},
+/area/bigredv2/caves_research)
 "acj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/warnplate,
 /area/bigredv2/outside/space_port)
+"ack" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/bigredv2/caves_research)
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -621,6 +632,9 @@
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"act" = (
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/caves_research)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -640,12 +654,21 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"acy" = (
+/obj/structure/machinery/sensortower{
+	pixel_x = -9
+	},
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/caves_research)
 "acz" = (
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "acA" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
+"acB" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/caves_research)
 "acC" = (
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
@@ -653,11 +676,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acE" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/bigredv2/caves_research)
 "acF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acG" = (
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/caves_research)
 "acH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -685,6 +714,9 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"acL" = (
+/turf/open/floor/asteroidwarning/northeast,
+/area/bigredv2/caves_research)
 "acM" = (
 /obj/structure/surface/table,
 /turf/open/floor/white,
@@ -8308,12 +8340,6 @@
 "aMR" = (
 /turf/open/mars/mars_dirt_13,
 /area/bigredv2/outside/e)
-"aMT" = (
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/caves_lambda)
-"aMV" = (
-/turf/open/floor/asteroidwarning/southeast,
-/area/bigredv2/caves_lambda)
 "aMW" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -9684,9 +9710,6 @@
 "aSi" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/e)
-"aSm" = (
-/turf/open/floor/asteroidwarning/northeast,
-/area/bigredv2/caves_lambda)
 "aSn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_6,
@@ -9953,9 +9976,6 @@
 "aTu" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/e)
-"aTv" = (
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/caves_lambda)
 "aTy" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/mars,
@@ -26727,12 +26747,6 @@
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/outside/medical)
-"lMw" = (
-/obj/structure/machinery/sensortower{
-	pixel_x = -9
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/caves_lambda)
 "lMC" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -28553,10 +28567,6 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
-"nFH" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/caves_lambda)
 "nGl" = (
 /obj/structure/bed/bedroll{
 	dir = 10
@@ -68219,9 +68229,9 @@ aao
 jrD
 jrD
 jrD
-jrD
-jrD
-jrD
+acE
+act
+acc
 jcR
 jrD
 jrD
@@ -68436,9 +68446,9 @@ aao
 jrD
 jrD
 jrD
-jrD
-jrD
-jrD
+acG
+acy
+aci
 jrD
 jrD
 jrD
@@ -68653,9 +68663,9 @@ aao
 jrD
 jrD
 jrD
-jrD
-jrD
-jrD
+acL
+acB
+ack
 jrD
 jrD
 jrD
@@ -78563,9 +78573,9 @@ tQw
 ahw
 tQw
 tQw
-nFH
-aTv
-aMT
+aSn
+gXp
+gXp
 tQw
 tQw
 ujC
@@ -78780,9 +78790,9 @@ tQw
 tQw
 xFZ
 xFZ
-aSm
-lMw
-aMT
+gXp
+gXp
+gXp
 tQw
 tQw
 ujC
@@ -78998,8 +79008,8 @@ eFh
 aao
 aao
 aao
-aSm
-aMV
+tQw
+tQw
 tQw
 aao
 aao

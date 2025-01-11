@@ -155,3 +155,10 @@
   - bugfix: Neuraline no longer generates in recipes, and is unobtainable from botany.
   zzzmike:
   - qol: Adds messaging when larva and host both survive surgery
+2025-01-11:
+  Blundir:
+  - rscadd: different xeno spits now have different icon depending on their damage
+  - imageadd: new neurotoxin spit sprite
+  - imageadd: new predalien action icons
+  Git-Nivrak:
+  - rscadd: Added another combat technician helmet option

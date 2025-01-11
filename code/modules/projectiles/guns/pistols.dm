@@ -161,7 +161,7 @@
 /obj/item/weapon/gun/pistol/m1911/socom/custom
 	name = "\improper M1911C service pistol"
 	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
-	icon_state = "1911c"
+	icon_state = "m1911c"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 

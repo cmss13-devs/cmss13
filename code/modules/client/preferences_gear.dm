@@ -37,25 +37,13 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Eyepatch, black"
 	path = /obj/item/clothing/glasses/eyepatch
 
-/datum/gear/eyewear/eyepatch/left
-	display_name = "Eyepatch, black flipped"
-	path = /obj/item/clothing/glasses/eyepatch/left
-
 /datum/gear/eyewear/eyepatch/white
 	display_name = "Eyepatch, white"
 	path = /obj/item/clothing/glasses/eyepatch/white
 
-/datum/gear/eyewear/eyepatch/white/left
-	display_name = "Eyepatch, white flipped"
-	path = /obj/item/clothing/glasses/eyepatch/white/left
-
 /datum/gear/eyewear/eyepatch/green
 	display_name = "Eyepatch, green"
 	path = /obj/item/clothing/glasses/eyepatch/green
-
-/datum/gear/eyewear/eyepatch/green/left
-	display_name = "Eyepatch, green flipped"
-	path = /obj/item/clothing/glasses/eyepatch/green/left
 
 /datum/gear/eyewear/rpg_glasses
 	display_name = "Marine RPG Glasses"
@@ -82,10 +70,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Ballistic goggles, black"
 	path = /obj/item/clothing/glasses/mgoggles/black
 
-/datum/gear/eyewear/goggles_black/prescription
-	display_name = "Prescription ballistic goggles, black"
-	path = /obj/item/clothing/glasses/mgoggles/black/prescription
-
 /datum/gear/eyewear/goggles_orange
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
@@ -94,74 +78,33 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Ballistic goggles, red"
 	path = /obj/item/clothing/glasses/mgoggles/red
 
-/datum/gear/eyewear/goggles_red/prescription
-	display_name = "Prescription ballistic goggles, red"
-	path = /obj/item/clothing/glasses/mgoggles/red/prescription
-
 /datum/gear/eyewear/goggles_blue
 	display_name = "Ballistic goggles, blue"
 	path = /obj/item/clothing/glasses/mgoggles/blue
-
-/datum/gear/eyewear/goggles_blue/prescription
-	display_name = "Prescription ballistic goggles, blue"
-	path = /obj/item/clothing/glasses/mgoggles/blue/prescription
 
 /datum/gear/eyewear/goggles_purple
 	display_name = "Ballistic goggles, purple"
 	path = /obj/item/clothing/glasses/mgoggles/purple
 
-/datum/gear/eyewear/goggles_purple/prescription
-	display_name = "Prescription ballistic goggles, purple"
-	path = /obj/item/clothing/glasses/mgoggles/purple/prescription
-
 /datum/gear/eyewear/goggles_yellow
 	display_name = "Ballistic goggles, yellow"
 	path = /obj/item/clothing/glasses/mgoggles/yellow
-
-/datum/gear/eyewear/goggles_yellow/prescription
-	display_name = "Prescription ballistic goggles, yellow"
-	path = /obj/item/clothing/glasses/mgoggles/yellow/prescription
-
-/datum/gear/eyewear/goggles_orange/prescription
-	display_name = "Prescription ballistic goggles, orange"
-	path = /obj/item/clothing/glasses/mgoggles/orange/prescription
 
 /datum/gear/eyewear/goggles2
 	display_name = "Ballistic goggles, M1A1"
 	path = /obj/item/clothing/glasses/mgoggles/v2
 
-/datum/gear/eyewear/goggles2/prescription
-	display_name = "Prescription ballistic goggles, M1A1"
-	path = /obj/item/clothing/glasses/mgoggles/v2/prescription
-
 /datum/gear/eyewear/goggles2/blue
 	display_name = "Ballistic goggles, M1A1 blue"
 	path = /obj/item/clothing/glasses/mgoggles/v2/blue
-
-/datum/gear/eyewear/goggles2/blue/prescription
-	display_name = "Prescription ballistic goggles, M1A1 blue"
-	path = /obj/item/clothing/glasses/mgoggles/v2/blue/prescription
 
 /datum/gear/eyewear/goggles2/polarized_blue
 	display_name = "Polarized Ballistic goggles, M1A1 blue"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_blue
 
-/datum/gear/eyewear/goggles2/polarized_blue/prescription
-	display_name = "Prescription Polarized ballistic goggles, M1A1 blue"
-	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription
-
 /datum/gear/eyewear/goggles2/polarized_orange
 	display_name = "Polarized Ballistic goggles, M1A1 orange"
 	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange
-
-/datum/gear/eyewear/goggles2/polarized_orange/prescription
-	display_name = "Prescription Polarized ballistic goggles, M1A1 orange"
-	path = /obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription
-
-/datum/gear/eyewear/bimex_shades
-	display_name = "BiMex personal shades"
-	path = /obj/item/clothing/glasses/sunglasses/big
-	cost = 4
 
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"
@@ -169,12 +112,12 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	cost = 4
 
 /datum/gear/eyewear/new_bimex
-	display_name = "BiMex tactical shades, yellow"
+	display_name = "BiMex polarized shades, yellow"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex
 	cost = 4
 
 /datum/gear/eyewear/new_bimex/bronze
-	display_name = "BiMex tactical shades, bronze"
+	display_name = "BiMex polarized shades, bronze"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
 	cost = 4
 
@@ -293,36 +236,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/mask/neckerchief/foxtrot
 	display_name = "Neckerchief, foxtrot"
 	path = /obj/item/clothing/mask/neckerchief/foxtrot
-
-/datum/gear/mask/smock_classic
-	display_name = "Smock, classic" // much like the scarves, but larger - different design.
-	path = /obj/item/clothing/mask/tornscarf/smock/classic
-	cost = 4
-
-/datum/gear/mask/smock_jungle
-	display_name = "Smock, jungle"
-	path = /obj/item/clothing/mask/tornscarf/smock
-	cost = 4
-
-/datum/gear/mask/smock_snow
-	display_name = "Smock, snow"
-	path = /obj/item/clothing/mask/tornscarf/smock/snow
-	cost = 4
-
-/datum/gear/mask/smock_desert
-	display_name = "Smock, desert"
-	path = /obj/item/clothing/mask/tornscarf/smock/desert
-	cost = 4
-
-/datum/gear/mask/smock_urban
-	display_name = "Smock, urban"
-	path = /obj/item/clothing/mask/tornscarf/smock/urban
-	cost = 4
-
-/datum/gear/mask/smock_black
-	display_name = "Smock, black"
-	path = /obj/item/clothing/mask/tornscarf/smock/black
-	cost = 4
 
 /datum/gear/mask/keffiyeh
 	display_name = "Keffiyeh" // Traditional middle-eastern headdress, works like a balaclava/scarf.
@@ -510,6 +423,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/helmet_garb/netting/jungle
 	display_name = "Jungle Helmet netting"
 	path = /obj/item/prop/helmetgarb/netting/jungle
+
+/datum/gear/helmet_garb/netting/urban
+	display_name = "Urban Helmet netting"
+	path = /obj/item/prop/helmetgarb/netting/urban
 
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
@@ -760,71 +677,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Box of Prideful Crayons"
 	path = /obj/item/storage/box/pride
 
-/datum/gear/plush
-	category = "Plushies"
-	cost = 4
-
-/datum/gear/plush/random
-	display_name = "Random plush"
-	path = /obj/item/toy/plush/random_plushie
-	cost = 2
-
-/datum/gear/plush/farwa
-	display_name = "Farwa plush"
-	path = /obj/item/toy/plush/farwa
-
-/datum/gear/plush/barricade
-	display_name = "Barricade plush"
-	path = /obj/item/toy/plush/barricade
-
-/datum/gear/plush/bee
-	display_name = "Bee plush"
-	path = /obj/item/toy/plush/bee
-
-/datum/gear/plush/shark
-	display_name = "Shark plush"
-	path = /obj/item/toy/plush/shark
-
-/datum/gear/plush/moth
-	display_name = "Moth plush"
-	path = /obj/item/toy/plush/moth
-
-/datum/gear/plush/rock
-	display_name = "Rock plush"
-	path = /obj/item/toy/plush/rock
-
-/datum/gear/plush/therapy
-	display_name = "Therapy plush"
-	path = /obj/item/toy/plush/therapy
-
-/datum/gear/plush/therapy/red
-	display_name = "Therapy plush (Red)"
-	path = /obj/item/toy/plush/therapy/red
-
-/datum/gear/plush/therapy/blue
-	display_name = "Therapy plush (Blue)"
-	path = /obj/item/toy/plush/therapy/blue
-
-/datum/gear/plush/therapy/green
-	display_name = "Therapy plush (Green)"
-	path = /obj/item/toy/plush/therapy/green
-
-/datum/gear/plush/therapy/orange
-	display_name = "Therapy plush (Orange)"
-	path = /obj/item/toy/plush/therapy/orange
-
-/datum/gear/plush/therapy/purple
-	display_name = "Therapy plush (Purple)"
-	path = /obj/item/toy/plush/therapy/purple
-
-/datum/gear/plush/therapy/yellow
-	display_name = "Therapy plush (Yellow)"
-	path = /obj/item/toy/plush/therapy/yellow
-
-/datum/gear/plush/therapy/random
-	display_name = "Therapy plush (???)"
-	path = /obj/item/toy/plush/therapy/random_color
-
 /datum/gear/weapon
 	category = "Weapons"
 	cost = 4
@@ -888,12 +740,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "M44 Custom Revolver"
 	path = /obj/item/weapon/gun/revolver/m44/custom
 	allowed_origins = USCM_ORIGINS
-
-/datum/gear/weapon/model_37_revolver_black
-	display_name = "S&W .38 model 37 Custom revolver"
-	path = /obj/item/weapon/gun/revolver/small/black
-	allowed_origins = USCM_ORIGINS
-	cost = 4
 
 /datum/gear/drink
 	category = "Canned drinks"
@@ -1298,27 +1144,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	allowed_origins = USCM_ORIGINS
 
 /datum/gear/misc/patch_uscm
-	display_name = "USCM shoulder patch"
-	path = /obj/item/clothing/accessory/patch
+	display_name = "Falling Falcons shoulder patch, Alpha"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/alpha
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
-
-/datum/gear/misc/patch_uscm/falcon
-	display_name = "Falling Falcons shoulder patch"
-	path = /obj/item/clothing/accessory/patch/falcon
-
-/datum/gear/misc/patch_uscm/falconalt
-	display_name = "Falling Falcons UA shoulder patch"
-	path = /obj/item/clothing/accessory/patch/falconalt
-
-/datum/gear/misc/patch_uscm/falconlarge
-	display_name = "Falling Falcons large chest patch"
-	path = /obj/item/clothing/accessory/patch/falconlarge
-
-/datum/gear/misc/patch_uscm/falcon_squad_alpha
-	display_name = "Falling Falcons shoulder patch, Alpha"
-	path = /obj/item/clothing/accessory/patch/falcon/squad/alpha
 
 /datum/gear/misc/patch_uscm/falcon_squad_bravo
 	display_name = "Falling Falcons shoulder patch, Bravo"
@@ -1335,6 +1165,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/patch_uscm/falcon_squad_echo
 	display_name = "Falling Falcons shoulder patch, Echo"
 	path = /obj/item/clothing/accessory/patch/falcon/squad/echo
+
+/datum/gear/misc/patch_uscm/falcon_squad_foxtrot
+	display_name = "Falling Falcons shoulder patch, Foxtrot"
+	path = /obj/item/clothing/accessory/patch/falcon/squad/foxtrot
 
 /datum/gear/misc/patch_uscm/uapatch
 	display_name = "United Americas shoulder patch"
@@ -1365,11 +1199,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/weapon/straight_razor
 	cost = 2
 
-/datum/gear/misc/swiss_army_knife
-	display_name = "Colonial Companion Mk. II"
-	path = /obj/item/weapon/swiss_army_knife
-	cost = 7 // Expensive because it's literally a multi-tool, wirecutters, screwdriver, knife.
-
 // Civilian only
 
 /datum/gear/civilian
@@ -1394,17 +1223,20 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Three World Empire shoulder patch"
 	path = /obj/item/clothing/accessory/patch/twe
 
-/datum/gear/civilian/patch/upp_alt
-	display_name = "Union of Progressive Peoples shoulder patch, gold"
-	path = /obj/item/clothing/accessory/patch/upp/alt
+/datum/gear/civilian/patch/cec
+	display_name = "Cosmos Exploration Corps shoulder patch"
+	path = /obj/item/clothing/accessory/patch/cec_patch
 
-/datum/gear/civilian/patch/som
-	display_name = "Sons of Mars shoulder patch"
-	path = /obj/item/clothing/accessory/patch/sons_of_mars
+/datum/gear/civilian/patch/clf
+	display_name = "Colonial Liberation Front shoulder patch"
+	path = /obj/item/clothing/accessory/patch/clf_patch
 
-/datum/gear/civilian/patch/merc_patch
-	display_name = "Old Freelancer shoulder patch"
-	path = /obj/item/clothing/accessory/patch/merc_patch
+// Old Bimex - now civilian only
+
+/datum/gear/civilian/eyewear/bimex_shades
+	display_name = "BiMex personal shades"
+	path = /obj/item/clothing/glasses/sunglasses/big
+	cost = 4
 
 // Cheap Civilian shades - colorful!
 
@@ -1496,3 +1328,57 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/civilian/shoes/rainbow
 	display_name = "rainbow shoes"
 	path = /obj/item/clothing/shoes/rainbow
+
+// Plushies - either civilian only or removed completely perhaps...
+
+/datum/gear/civilian/plush/farwa
+	display_name = "Farwa plush"
+	path = /obj/item/toy/plush/farwa
+
+/datum/gear/civilian/plush/barricade
+	display_name = "Barricade plush"
+	path = /obj/item/toy/plush/barricade
+
+/datum/gear/civilian/plush/bee
+	display_name = "Bee plush"
+	path = /obj/item/toy/plush/bee
+
+/datum/gear/civilian/plush/shark
+	display_name = "Shark plush"
+	path = /obj/item/toy/plush/shark
+
+/datum/gear/civilian/plush/moth
+	display_name = "Moth plush"
+	path = /obj/item/toy/plush/moth
+
+/datum/gear/civilian/plush/rock
+	display_name = "Rock plush"
+	path = /obj/item/toy/plush/rock
+
+/datum/gear/civilian/plush/therapy
+	display_name = "Therapy plush"
+	path = /obj/item/toy/plush/therapy
+
+/datum/gear/civilian/plush/therapy/red
+	display_name = "Therapy plush (Red)"
+	path = /obj/item/toy/plush/therapy/red
+
+/datum/gear/civilian/plush/therapy/blue
+	display_name = "Therapy plush (Blue)"
+	path = /obj/item/toy/plush/therapy/blue
+
+/datum/gear/civilian/plush/therapy/green
+	display_name = "Therapy plush (Green)"
+	path = /obj/item/toy/plush/therapy/green
+
+/datum/gear/civilian/plush/therapy/orange
+	display_name = "Therapy plush (Orange)"
+	path = /obj/item/toy/plush/therapy/orange
+
+/datum/gear/civilian/plush/therapy/purple
+	display_name = "Therapy plush (Purple)"
+	path = /obj/item/toy/plush/therapy/purple
+
+/datum/gear/civilian/plush/therapy/yellow
+	display_name = "Therapy plush (Yellow)"
+	path = /obj/item/toy/plush/therapy/yellow

@@ -479,9 +479,9 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women loyal to the Three World Empire, An older style symbol of the TWE."
 	icon_state = "twepatch"
 
-/obj/item/clothing/accessory/patch/falconlarge
-	name = "USCM Falling Falcons chest patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+/obj/item/clothing/accessory/patch/uscmlarge
+	name = "USCM large chest patch"
+	desc = "A fire-resistant chest patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconsbigpatch"
 
 /obj/item/clothing/accessory/patch/wy
@@ -513,46 +513,74 @@
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Alpha Squad's bold red"
 	icon_state = "fallingfalcons_alpha"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_alpha")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/bravo
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Bravo Squad's bold yellow."
 	icon_state = "fallingfalcons_bravo"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_bravo")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/charlie
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Charlie Squad's deep purple."
 	icon_state = "fallingfalcons_charlie"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_charlie")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/delta
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Delta Squad's striking blue."
 	icon_state = "fallingfalcons_delta"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_delta")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/falcon/squad/echo
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Echo Squad's vivid green."
 	icon_state = "fallingfalcons_echo"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_echo")
+	flags_obj = OBJ_IS_HELMET_GARB
 
-/obj/item/clothing/accessory/patch/sons_of_mars
-	name = "Sons of Mars patch"
-	desc = "An old, worn fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Sons of Mars, a resistance group that fought against corporate control on Mars. Though not forgotten, the patch serves as a reminder of a time when Martian rebels stood defiant, a symbol of rebellion largely overlooked in today's era."
-	icon_state = "sompatch"
+/obj/item/clothing/accessory/patch/falcon/squad/foxtrot
+	name = "USCM Falling Falcons patch"
+	desc = "A fire-resistant shoulder patch, a squad patch worn by the Falling Falcons—2nd Battalion, 4th Brigade, USCM. Stitched in Foxtrot Squad's boring brown."
+	icon_state = "fallingfalcons_foxtrot"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalcons_foxtrot")
+	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/accessory/patch/cec_patch
+	name = "CEC patch"
+	desc = "An old, worn and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
+	icon_state = "cecpatch"
+	item_state_slots = list(WEAR_AS_GARB = "cecpatch")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/freelancer_patch
 	name = "Freelancer's Guild patch"
 	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and blue background. Worn by a skilled mercenary of the Freelancers, a well-equipped group for hire across the outer colonies, known for their professionalism and neutrality. This patch is a personal memento from the wearer’s time with the group, representing a life spent navigating the dangerous world of mercenary contracts."
 	icon_state = "mercpatch"
+	item_state_slots = list(WEAR_AS_GARB = "mercpatch")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/merc_patch
 	name = "Old Freelancer's Guild patch"
-	desc = "An old, worn fire-resistant circular patch featuring a white skull on a vertically split black and red background. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
+	desc = "A faded old, worn fire-resistant circular patch featuring a white skull on a vertically split black and red background. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
 	icon_state = "mercpatch_red"
+	item_state_slots = list(WEAR_AS_GARB = "mercpatch_red")
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/accessory/patch/medic_patch
 	name = "Field Medic patch"
 	desc = "A circular patch featuring a red cross on a white background with a bold red outline. Universally recognized as a symbol of aid and neutrality, it is worn by medics across the colonies. Whether a sign of true medical expertise, a keepsake, or merely a decoration, its presence offers a glimmer of hope in dire times."
 	icon_state = "medicpatch"
+
+/obj/item/clothing/accessory/patch/clf_patch
+	name = "CLF patch"
+	desc = "A circular, fire-resistant patch with a white border. The design features three white stars and a tricolor background: green, black, and red, symbolizing the Colonial Liberation Front's fight for independence and unity. This patch is worn by CLF fighters as a badge of defiance against corporate and governmental oppression, representing their struggle for a free and self-determined colonial future. Though feared and reviled by some, it remains a powerful symbol of resistance and revolution."
+	icon_state = "clfpatch"
 
 // Misc
 

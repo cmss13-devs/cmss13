@@ -29,13 +29,15 @@
 
 /obj/item/prop/helmetgarb/netting/desert
 	name = "desert combat netting"
-	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
 	icon_state = "netting_desert"
 
 /obj/item/prop/helmetgarb/netting/jungle
 	name = "jungle combat netting"
-	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
 	icon_state = "netting_jungle"
+
+/obj/item/prop/helmetgarb/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"
 
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"

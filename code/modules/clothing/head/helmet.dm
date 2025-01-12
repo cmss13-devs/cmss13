@@ -250,6 +250,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/prescription_bottle = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/raincover = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/raincover/jungle = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/raincover/desert = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/raincover/urban = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object

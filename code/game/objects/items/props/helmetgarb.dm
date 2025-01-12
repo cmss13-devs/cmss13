@@ -91,12 +91,14 @@
 
 /obj/item/prop/helmetgarb/raincover/jungle
 	name = "jungle raincover"
-	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
 	icon_state = "raincover_jungle"
+
+/obj/item/prop/helmetgarb/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
 
 /obj/item/prop/helmetgarb/raincover/urban
 	name = "urban raincover"
-	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
 	icon_state = "raincover_urban"
 
 /obj/item/prop/helmetgarb/rabbitsfoot

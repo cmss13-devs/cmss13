@@ -460,6 +460,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Jungle Rain cover"
 	path = /obj/item/prop/helmetgarb/raincover/jungle
 
+/datum/gear/helmet_garb/raincover/desert
+	display_name = "Desert Rain cover"
+	path = /obj/item/prop/helmetgarb/raincover/desert
+
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
 	path = /obj/item/prop/helmetgarb/raincover/urban
@@ -1174,6 +1178,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "United Americas shoulder patch"
 	path = /obj/item/clothing/accessory/patch/ua
 
+/datum/gear/misc/patch_uscm/uasquare
+	display_name = "United Americas flag shoulder patch"
+	path = /obj/item/clothing/accessory/patch/uasquare
+
 /datum/gear/misc/patch_uscm/medic_patch
 	display_name = "Field Medic shoulder patch"
 	path = /obj/item/clothing/accessory/patch/medic_patch
@@ -1210,6 +1218,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/accessory/patch/wy
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/civilian/patch/wysquare
+	display_name = "Weyland-Yutani shoulder patch"
+	path = /obj/item/clothing/accessory/patch/wysquare
 
 /datum/gear/civilian/patch/wy_white
 	display_name = "Weyland-Yutani shoulder patch, white"

@@ -469,6 +469,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, An economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
 	icon_state = "uapatch"
 
+/obj/item/clothing/accessory/patch/uasquare
+	name = "United Americas patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, An economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
+	icon_state = "uasquare"
+
 /obj/item/clothing/accessory/patch/falconalt
 	name = "USCM Falling Falcons UA patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
@@ -488,6 +493,11 @@
 	name = "Weyland-Yutani patch"
 	desc = "A fire-resistant black shoulder patch featuring the Weyland-Yutani logo. A symbol of loyalty to the corporation, or perhaps ironic mockery, depending on your viewpoint."
 	icon_state = "wypatch"
+
+/obj/item/clothing/accessory/patch/wysquare
+	name = "Weyland-Yutani patch"
+	desc = "A fire-resistant black shoulder patch featuring the Weyland-Yutani logo. A symbol of loyalty to the corporation, or perhaps ironic mockery, depending on your viewpoint."
+	icon_state = "wysquare"
 
 /obj/item/clothing/accessory/patch/wy_faction
 	name = "Weyland-Yutani patch" // For WY factions like PMC's - on the right shoulder rather then left.

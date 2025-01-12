@@ -252,7 +252,7 @@
 	return ..()
 
 /datum/action/xeno_action/activable/design_cost_node/proc/remove_oldest_cost_node(mob/living/carbon/xenomorph/xeno)
-	if(xeno.cost_node_list.len > 0)
+	if(length(xeno.cost_node_list) > 0)
 		var/obj/effect/alien/weeds/node/designer/cost/oldest_cost_node = xeno.cost_node_list[1]
 		if(oldest_cost_node)
 			var/turf/old_cost_loc = get_turf(oldest_cost_node.loc) // Get the turf of the oldest node

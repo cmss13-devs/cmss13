@@ -7,7 +7,6 @@
 	desc = "Weird black weeds..."
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
-	var/icon_state_weeds //Change icon_state for weeds/node subtype.
 
 	gender = PLURAL
 	anchored = TRUE
@@ -29,6 +28,7 @@
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/turf/weeded_turf
+	var/icon_state_weeds //Change icon_state for weeds/node subtype.
 
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null

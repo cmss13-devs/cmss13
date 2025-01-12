@@ -214,27 +214,27 @@
 	var/toggled_state = "eyepatch_left"
 	actions_types = list(/datum/action/item_action/toggle)
 
-	/obj/item/clothing/glasses/eyepatch/ui_action_click()
-		toggle_state()
+/obj/item/clothing/glasses/eyepatch/ui_action_click()
+	toggle_state()
 
-	/obj/item/clothing/glasses/eyepatch/verb/toggle_state()
-		set name = "Toggle Eyepatch State"
-		set category = "Object"
-		set src in usr
-		if(usr.stat == DEAD)
-			return
+/obj/item/clothing/glasses/eyepatch/verb/toggle_state()
+	set name = "Toggle Eyepatch State"
+	set category = "Object"
+	set src in usr
+	if(usr.stat == DEAD)
+		return
 
-		toggled = !toggled
-		if(toggled)
-			icon_state = toggled_state
-			item_state = toggled_state
-			to_chat(usr, SPAN_NOTICE("You flip the eyepatch to the left side."))
-		else
-			icon_state = original_state
-			item_state = original_state
-			to_chat(usr, SPAN_NOTICE("You flip the eyepatch to the right side."))
+	toggled = !toggled
+	if(toggled)
+		icon_state = toggled_state
+		item_state = toggled_state
+		to_chat(usr, SPAN_NOTICE("You flip the eyepatch to the left side."))
+	else
+		icon_state = original_state
+		item_state = original_state
+		to_chat(usr, SPAN_NOTICE("You flip the eyepatch to the right side."))
 
-		update_clothing_icon(src) // Updates the on-mob appearance
+	update_clothing_icon(src) // Updates the on-mob appearance
 
 /obj/item/clothing/glasses/eyepatch/left
 	parent_type = /obj/item/clothing/glasses/eyepatch

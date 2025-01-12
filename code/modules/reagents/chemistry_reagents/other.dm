@@ -1083,6 +1083,6 @@
 		return
 
 	var/obj/effect/decal/prints/reacting_prints = reacting_on
-	reacting_prints.toggle_visibility()
+	reacting_prints.set_visiblity(TRUE)
 
-	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, toggle_visibility)), 1 MINUTES)
+	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visiblity), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)

@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - bugfix: "Neuraline no longer generates in recipes, and is unobtainable from botany."

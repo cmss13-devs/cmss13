@@ -142,3 +142,16 @@
   - balance: Custom rockets will now shoot their shrapnell on a 90 degree angle
   cuberound:
   - rscadd: UPP req  console, dropship part fabricato and tank part fabricator
+2025-01-09:
+  AndroBetel:
+  - spellcheck: Formatting of M10 auto pistol.
+2025-01-10:
+  FebrezeNinja:
+  - bugfix: Added a missing reference check to flight/ui_act
+  harryob:
+  - rscadd: added client settings to the statbrowser - under the "Options" buttn
+  - ui: added a search bar to the portable crew monitor
+  private-tristan:
+  - bugfix: Neuraline no longer generates in recipes, and is unobtainable from botany.
+  zzzmike:
+  - qol: Adds messaging when larva and host both survive surgery

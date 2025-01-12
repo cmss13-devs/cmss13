@@ -2061,7 +2061,7 @@
 /obj/item/weapon/gun/rifle/xm51/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 30, GLOB.damage_boost_turfs), //2550, 2 taps colony walls
-		BULLET_TRAIT_ENTRY_ID("rwalls", /datum/element/bullet_trait_damage_boost, 0.44, GLOB.daamge_boost_rwall), // 1147, 7 taps for rwall
+		BULLET_TRAIT_ENTRY_ID("rwalls", /datum/element/bullet_trait_damage_boost, 0.51, GLOB.daamge_boost_rwall), // 1147, 7 taps for rwall
 		BULLET_TRAIT_ENTRY_ID("xeno turfs", /datum/element/bullet_trait_damage_boost, 0.23, GLOB.damage_boost_turfs_xeno), //2550*0.23 = 586, 2 taps resin walls, 3 taps thick resin
 		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 15, GLOB.damage_boost_breaching), //1275, enough to 1 tap airlocks
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons) //510, 4 shots to take out a pylon

@@ -3,6 +3,34 @@
 	density = TRUE
 	opacity = TRUE
 
+/turf/closed/attack_hand(mob/user)
+	var/turf/above_current = locate(x, y, z + 1)
+	var/turf/above_user = locate(user.x, user.y, user.z + 1)
+
+	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space))
+		return
+
+	while(istype(above_current, /turf/closed))
+		above_current = locate(above_current.x, above_current.y, above_current.z)
+		above_user = locate(above_user.x, above_user.y, above_user.z)
+
+		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space))
+			return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
+		SPAN_WARNING("You start climbing up the \the [src]."))
+
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] climbs up \the [src]."),\
+		SPAN_WARNING("You climb up \the [src]."))
+
+	user.forceMove(above_current)
+	return
+
+
 /turf/closed/insert_self_into_baseturfs()
 	return
 

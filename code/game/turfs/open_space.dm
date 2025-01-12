@@ -9,29 +9,63 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	mouse_opacity 	= MOUSE_OPACITY_TRANSPARENT
 
 /turf/open_space
-    name = "open space"
-    icon_state = "transparent"
-    baseturfs = /turf/open_space
-    plane = OPEN_SPACE_PLANE
+	name = "open space"
+	icon_state = "transparent"
+	baseturfs = /turf/open_space
+	plane = OPEN_SPACE_PLANE
 
 /turf/open_space/Initialize()
-    return INITIALIZE_HINT_LATELOAD
+	return INITIALIZE_HINT_LATELOAD
 
 /turf/open_space/LateInitialize()
-    update_vis_contents()
+	update_vis_contents()
 
 /turf/open_space/proc/update_vis_contents()
-    vis_contents.Cut()
-    vis_contents += GLOB.openspace_backdrop_one_for_all
-    var/turf/below = locate(x, y, z-1)
+	vis_contents.Cut()
+	vis_contents += GLOB.openspace_backdrop_one_for_all
+	var/turf/below = locate(x, y, z-1)
 
-    if(below)
-        vis_contents += below
+	if(below)
+		vis_contents += below
 
 /turf/open_space/multiz_new(dir)
-    if(dir == DOWN)
-        update_vis_contents()
+	if(dir == DOWN)
+		update_vis_contents()
 
 /turf/open_space/multiz_del(dir)
-    if(dir == DOWN)
-        update_vis_contents()
+	if(dir == DOWN)
+		update_vis_contents()
+
+/turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
+	. = ..()
+
+	var/height = 1
+	var/turf/below = locate(x, y, z-1)
+
+	while(istype(below, /turf/open_space))
+		below = locate(below.x, below.y, below.z-1)
+		height++
+
+	entered_movable.forceMove(below)
+	entered_movable.onZImpact(below, height)
+
+/turf/open_space/attack_hand(mob/user)
+	var/turf/current_turf = locate(x, y, z)
+
+	if(istype(current_turf, /turf/open_space))
+		user.visible_message(SPAN_WARNING("[user] starts climbing down."),\
+			SPAN_WARNING("You start climbing down."))
+
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_WARNING("You were interrupted!"))
+			return
+
+		user.visible_message(SPAN_WARNING("[user] climbs down."),\
+			SPAN_WARNING("You climb down."))
+
+		var/turf/below = locate(x, y, z-1)
+		while(istype(below, /turf/open_space))
+			below = locate(x, y, z-1)
+
+		user.forceMove(below)
+		return

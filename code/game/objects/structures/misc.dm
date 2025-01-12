@@ -205,9 +205,45 @@
 	density = FALSE
 	opacity = FALSE
 
+/obj/structure/stairs/multiz
+	var/direction
+
+/obj/structure/stairs/multiz/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+
+/obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
+	if(!istype(enterer, /mob))
+		return
+
+	RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
+	RegisterSignal(enterer, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
+
+/obj/structure/stairs/multiz/proc/on_leave(atom/movable/mover, atom/oldloc, newDir)
+	SIGNAL_HANDLER
+	if(mover.loc == loc)
+		return
+	UnregisterSignal(mover, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED))
+
+/obj/structure/stairs/multiz/proc/on_premove(atom/movable/mover, atom/newLoc)
+	SIGNAL_HANDLER
+
+	if(direction == UP && get_dir(src, newLoc) != dir || direction == DOWN && get_dir(src, newLoc) != REVERSE_DIR(dir))
+		return
+
+	var/z_diff = direction == UP ? 1 : -1
+	var/turf/target_turf = get_step(src, direction == UP ? dir : REVERSE_DIR(dir))
+	var/turf/above_or_below = locate(target_turf.x, target_turf.y, target_turf.z + z_diff)
+	
+	mover.forceMove(above_or_below)
+
+	return COMPONENT_CANCEL_MOVE
+
 /obj/structure/stairs/multiz/up
+	direction = UP
 
 /obj/structure/stairs/multiz/down
+	direction = DOWN
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'

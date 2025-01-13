@@ -93,7 +93,7 @@
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/burst
 
 /obj/effect/landmark/corpsespawner/wygoon/kutjevo
-	name = "Weyland-Yutani Kutjevo Corporate Security "
+	name = "Weyland-Yutani Kutjevo Corporate Security"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/kutjevo
 
 

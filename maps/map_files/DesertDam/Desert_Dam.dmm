@@ -3106,7 +3106,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	turf_flags = 16
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "anK" = (

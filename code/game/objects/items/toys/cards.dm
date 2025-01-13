@@ -108,7 +108,7 @@
 	if(usr.stat || !Adjacent(usr))
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	var/mob/living/carbon/human/user = usr
@@ -133,11 +133,12 @@
 
 	handle_draw_cards(usr)
 
-/obj/item/toy/deck/proc/handle_draw_cards(mob/mob)
-	if(mob.stat || !ishuman(mob) || !Adjacent(mob))
+/obj/item/toy/deck/proc/handle_draw_cards(mob/living/carbon/user)
+	if(user.stat || !Adjacent(user))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 
 	var/cards_length = length(cards)
 	if(!cards_length)
@@ -179,10 +180,13 @@
 	set category = "Object"
 	set src in view(1)
 
-	if(usr.stat || !ishuman(usr) || !Adjacent(usr))
+	if(usr.stat || !Adjacent(usr))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		return
+
+	var/mob/living/carbon/user = usr
 
 	var/cards_length = length(cards)
 	if(!cards_length)
@@ -209,6 +213,9 @@
 	set src in view(1)
 
 	if(usr.stat || !Adjacent(usr))
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(!length(cards))
@@ -258,7 +265,10 @@
 	if(!usr || !over)
 		return
 
-	if(!ishuman(over) || get_dist(usr, over) > 3)
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		return
+
+	if(get_dist(usr, over) > 3)
 		return
 
 	if(!length(cards))
@@ -321,7 +331,10 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.stat || !ishuman(usr))
+	if(usr.stat)
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	pile_state = !pile_state
@@ -334,7 +347,10 @@
 	set desc = "Sort this hand by deck's initial order."
 	set src in usr
 
-	if(usr.stat || !ishuman(usr))
+	if(usr.stat)
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
@@ -419,9 +435,13 @@
 	user.visible_message(SPAN_NOTICE("\The [user] [concealed ? "conceals" : "reveals"] their hand."), SPAN_NOTICE("You [concealed ? "conceal" : "reveal"] your hand."))
 
 /obj/item/toy/handcard/MouseDrop(atom/over)
-	if(usr != over || !Adjacent(usr))
+	if(usr != over || !Adjacent(over))
 		return
 	if(ismob(loc))
+		return
+	if(usr.stat)
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(isstorage(loc))

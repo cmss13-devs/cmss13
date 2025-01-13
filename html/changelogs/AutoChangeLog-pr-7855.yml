@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed a runtime when generating SEA appearance for an imaginary friend"

@@ -47,6 +47,14 @@
 	var/signfont = "Times New Roman"
 	var/crayonfont = "Comic Sans MS"
 
+	/// If this paper imports a prefab on instance.
+	var/is_prefab = FALSE
+	/// Category of the paper.
+	var/document_category
+	/// Name of the document.
+	var/document_title
+	var/datum/prefab_document/doc_datum_type
+
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
 /obj/item/paper/Initialize(mapload, photo_list)
@@ -61,6 +69,8 @@
 
 	update_icon()
 	updateinfolinks()
+	if(is_prefab)
+		compile_paper()
 
 /obj/item/paper/update_icon()
 	switch(icon_state)
@@ -208,8 +218,8 @@
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
 	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
-		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
-	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
+		addtofield(i, "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=[i]'>write</A></font>", 1)
+	info_links = info_links + "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=end'>write</A></font>"
 
 
 /obj/item/paper/proc/clearpaper()
@@ -221,82 +231,88 @@
 	update_icon()
 
 
-/obj/item/paper/proc/parsepencode(t, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
+/obj/item/paper/proc/parsepencode(paper_text, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 
-	t = replacetext(t, "\[center\]", "<center>")
-	t = replacetext(t, "\[/center\]", "</center>")
-	t = replacetext(t, "\[br\]", "<BR>")
-	t = replacetext(t, "\[b\]", "<B>")
-	t = replacetext(t, "\[/b\]", "</B>")
-	t = replacetext(t, "\[i\]", "<I>")
-	t = replacetext(t, "\[/i\]", "</I>")
-	t = replacetext(t, "\[u\]", "<U>")
-	t = replacetext(t, "\[/u\]", "</U>")
-	t = replacetext(t, "\[large\]", "<font size=\"4\">")
-	t = replacetext(t, "\[/large\]", "</font>")
-	t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
-	t = replacetext(t, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
-	t = replacetext(t, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[GLOB.game_year]")]</i></font>")
-	t = replacetext(t, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
-	t = replacetext(t, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
-	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
+	paper_text = replacetext(paper_text, "\[center\]", "<center>")
+	paper_text = replacetext(paper_text, "\[/center\]", "</center>")
+	paper_text = replacetext(paper_text, "\[br\]", "<BR>")
+	paper_text = replacetext(paper_text, "\[b\]", "<B>")
+	paper_text = replacetext(paper_text, "\[/b\]", "</B>")
+	paper_text = replacetext(paper_text, "\[i\]", "<I>")
+	paper_text = replacetext(paper_text, "\[/i\]", "</I>")
+	paper_text = replacetext(paper_text, "\[u\]", "<U>")
+	paper_text = replacetext(paper_text, "\[/u\]", "</U>")
+	paper_text = replacetext(paper_text, "\[large\]", "<font size=\"4\">")
+	paper_text = replacetext(paper_text, "\[/large\]", "</font>")
+	paper_text = replacetext(paper_text, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
+	paper_text = replacetext(paper_text, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
+	paper_text = replacetext(paper_text, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[GLOB.game_year]")]</i></font>")
+	paper_text = replacetext(paper_text, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
+	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
+	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
 
-	t = replacetext(t, "\[h1\]", "<H1>")
-	t = replacetext(t, "\[/h1\]", "</H1>")
-	t = replacetext(t, "\[h2\]", "<H2>")
-	t = replacetext(t, "\[/h2\]", "</H2>")
-	t = replacetext(t, "\[h3\]", "<H3>")
-	t = replacetext(t, "\[/h3\]", "</H3>")
+	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")
+	paper_text = replacetext(paper_text, "\[/h1\]", "</H1>")
+	paper_text = replacetext(paper_text, "\[h2\]", "<H2>")
+	paper_text = replacetext(paper_text, "\[/h2\]", "</H2>")
+	paper_text = replacetext(paper_text, "\[h3\]", "<H3>")
+	paper_text = replacetext(paper_text, "\[/h3\]", "</H3>")
 
 	if(!iscrayon)
-		t = replacetext(t, "\[*\]", "<li>")
-		t = replacetext(t, "\[hr\]", "<HR>")
-		t = replacetext(t, "\[small\]", "<font size = \"1\">")
-		t = replacetext(t, "\[/small\]", "</font>")
-		t = replacetext(t, "\[list\]", "<ul>")
-		t = replacetext(t, "\[/list\]", "</ul>")
-		t = replacetext(t, "\[table\]", "<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>")
-		t = replacetext(t, "\[/table\]", "</td></tr></table>")
-		t = replacetext(t, "\[grid\]", "<table>")
-		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
-		t = replacetext(t, "\[row\]", "</td><tr>")
-		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
-		t = replacetext(t, "\[wy\]", "<img src = [asset.get_url_mappings()["wylogo.png"]]>")
-		t = replacetext(t, "\[uscm\]", "<img src = [asset.get_url_mappings()["uscmlogo.png"]]>")
-		t = replacetext(t, "\[upp\]", "<img src = [asset.get_url_mappings()["upplogo.png"]]>")
-		t = replacetext(t, "\[cmb\]", "<img src = [asset.get_url_mappings()["cmblogo.png"]]>")
+		paper_text = replacetext(paper_text, "\[*\]", "<li>")
+		paper_text = replacetext(paper_text, "\[hr\]", "<HR>")
+		paper_text = replacetext(paper_text, "\[small\]", "<font size = \"1\">")
+		paper_text = replacetext(paper_text, "\[/small\]", "</font>")
+		paper_text = replacetext(paper_text, "\[list\]", "<ul>")
+		paper_text = replacetext(paper_text, "\[/list\]", "</ul>")
+		paper_text = replacetext(paper_text, "\[table\]", "<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>")
+		paper_text = replacetext(paper_text, "\[/table\]", "</td></tr></table>")
+		paper_text = replacetext(paper_text, "\[grid\]", "<table>")
+		paper_text = replacetext(paper_text, "\[/grid\]", "</td></tr></table>")
+		paper_text = replacetext(paper_text, "\[row\]", "</td><tr>")
+		paper_text = replacetext(paper_text, "\[cell\]", "<td>")
+		paper_text = replacetext(paper_text, "\[wy\]", "<img src = [asset.get_url_mappings()["logo_wy.png"]]>")
+		paper_text = replacetext(paper_text, "\[wy_inv\]", "<img src = [asset.get_url_mappings()["logo_wy_inv.png"]]>")
+		paper_text = replacetext(paper_text, "\[uscm\]", "<img src = [asset.get_url_mappings()["logo_uscm.png"]]>")
+		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")
+		paper_text = replacetext(paper_text, "\[cmb\]", "<img src = [asset.get_url_mappings()["logo_cmb.png"]]>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[t]</font>"
+		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[paper_text]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
-		t = replacetext(t, "\[*\]", "")
-		t = replacetext(t, "\[hr\]", "")
-		t = replacetext(t, "\[small\]", "")
-		t = replacetext(t, "\[/small\]", "")
-		t = replacetext(t, "\[list\]", "")
-		t = replacetext(t, "\[/list\]", "")
-		t = replacetext(t, "\[table\]", "")
-		t = replacetext(t, "\[/table\]", "")
-		t = replacetext(t, "\[row\]", "")
-		t = replacetext(t, "\[cell\]", "")
-		t = replacetext(t, "\[logo\]", "")
+		paper_text = replacetext(paper_text, "\[*\]", "")
+		paper_text = replacetext(paper_text, "\[hr\]", "")
+		paper_text = replacetext(paper_text, "\[small\]", "")
+		paper_text = replacetext(paper_text, "\[/small\]", "")
+		paper_text = replacetext(paper_text, "\[list\]", "")
+		paper_text = replacetext(paper_text, "\[/list\]", "")
+		paper_text = replacetext(paper_text, "\[table\]", "")
+		paper_text = replacetext(paper_text, "\[/table\]", "")
+		paper_text = replacetext(paper_text, "\[row\]", "")
+		paper_text = replacetext(paper_text, "\[cell\]", "")
+		paper_text = replacetext(paper_text, "\[wy\]", "")
+		paper_text = replacetext(paper_text, "\[wy_inv\]", "")
+		paper_text = replacetext(paper_text, "\[uscm\]", "")
+		paper_text = replacetext(paper_text, "\[upp\]", "")
+		paper_text = replacetext(paper_text, "\[cmb\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[t]</b></font>"
+		paper_text = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[paper_text]</b></font>"
 
-// t = replacetext(t, "#", "") // Junk converted to nothing!
 
-//Count the fields
+	//Count the fields
+	calculate_fields(paper_text)
+	return paper_text
+
+/obj/item/paper/proc/calculate_fields(message)
+	var/check_text = message ? message : info
 	var/laststart = 1
 	while(1)
-		var/i = findtext(t, "<span class=\"paper_field\">", laststart)
+		var/i = findtext(check_text, "<span class=\"paper_field\">", laststart)
 		if(i==0)
 			break
 		laststart = i+1
 		fields = min(fields+1, MAX_FIELDS)
 		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
-	return t
-
 
 /obj/item/paper/proc/openhelp(mob/user as mob)
 	var/dat = {"<HTML>
@@ -347,6 +363,32 @@
 			else
 				to_chat(user, SPAN_DANGER("You must hold \the [P] steady to burn \the [src]."))
 
+/obj/item/paper/verb/seal_paper()
+	set name = "Seal paper"
+	set category = "Object"
+	set src in usr
+
+	if(tgui_alert(usr, "Are you sure you wish to seal this document? Note: This will prevent the edit of any fields on the paper, excluding the end of the page.", "Confirm", list("Yes", "No"), 20 SECONDS) != "Yes")
+		return FALSE
+	info = replacetext(info, "<span class=\"paper_field\">", "<span class=\"sealed_paper_field\">")
+	calculate_fields()
+	updateinfolinks()
+	return TRUE
+
+/obj/item/paper/proc/compile_paper()
+	if(!is_prefab)
+		return FALSE
+	if(!document_category || !doc_datum_type)
+		return FALSE
+
+	var/datum/prefab_document/prefab = new doc_datum_type
+	info = prefab.contents
+	qdel(prefab)
+
+	calculate_fields()
+	updateinfolinks()
+	update_icon()
+	return TRUE
 
 /obj/item/paper/Topic(href, href_list)
 	..()
@@ -614,7 +656,7 @@
 	. = ..()
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	info = "<center> <img src = [asset.get_url_mappings()["upplogo.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+	info = "<center> <img src = [asset.get_url_mappings()["logo_upp.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
 
 /obj/item/paper/crumpled
 	name = "paper scrap"
@@ -636,7 +678,7 @@
 	. = ..()
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	info = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
+	info = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
@@ -645,7 +687,7 @@
 	. = ..()
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	info = "<center><img src = [asset.get_url_mappings()["uscmlogo.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
+	info = "<center><img src = [asset.get_url_mappings()["logo_uscm.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
@@ -684,7 +726,7 @@
 			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
 		C = GLOB.chemical_reagents_list["[random_chem]"]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	var/txt = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
@@ -944,4 +986,4 @@
 		info = file2text(placeholder)
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["wylogo.png"])
+	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])

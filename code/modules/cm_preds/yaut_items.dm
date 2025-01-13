@@ -207,7 +207,7 @@
 	icon_state = "y-boots1_ebony"
 
 	unacidable = TRUE
-	permeability_coefficient = 0.01
+
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
@@ -485,7 +485,7 @@
 /obj/structure/machinery/hunting_ground_selection
 	name = "hunter flight console"
 	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 	breakable = FALSE
@@ -541,7 +541,7 @@
 /obj/structure/machinery/hunt_ground_spawner
 	name = "huntsmasters console"
 	desc = "A console for creating hunts."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 	breakable = FALSE
@@ -628,20 +628,21 @@
 		escaped = FALSE
 
 /obj/structure/machinery/hunt_ground_escape/attackby(obj/item/attacking_item, mob/user)
-	. = ..()
-	var/obj/item/clothing/mask/gas/yautja/hunter/mask = attacking_item
 	if(escaped)
 		to_chat(user, SPAN_NOTICE("The shutter is already open."))
 		return
 
-	if(mask.loc != user)
-		to_chat(user, SPAN_WARNING("You cannot scan [mask] without holding it."))
+	if(attacking_item.loc != user)
+		to_chat(user, SPAN_WARNING("You cannot scan [attacking_item] without holding it."))
 		return
 
 	if(user.action_busy)
 		return
 
-	to_chat(user, SPAN_DANGER("You hold the [mask] up to the console and it begins to scan..."))
+	if(!istype(attacking_item, /obj/item/clothing/mask/gas/yautja/hunter))
+		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
+		return
+	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
 	message_all_yautja("Prey is trying to escape the hunting grounds.")
 
 	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -1176,7 +1177,7 @@
 //Only an onmob for the skull
 /obj/item/clothing/accessory/limb/skeleton
 	name = "How did you get this?"
-	desc = "A bone from a human."
+	desc = "A bone that appears to be of human origin."
 	icon = 'icons/obj/items/skeleton.dmi'
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
@@ -1184,6 +1185,7 @@
 	slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
+	var/loosejaw = FALSE
 
 /obj/item/clothing/accessory/limb/skeleton/l_arm
 	name = "arm bone"
@@ -1219,7 +1221,7 @@
 
 /obj/item/clothing/accessory/limb/skeleton/head
 	name = "skull"
-	icon_state = "skull"
+	icon_state = "skull2"
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/limb/skeleton/head/spine
@@ -1242,3 +1244,132 @@
 		to_chat(user, SPAN_NOTICE("Why would you try attaching this to your clothing?"))
 		return
 	. = ..()
+
+/// SKULLS
+/obj/item/skull
+	name = "skull"
+	icon = 'icons/obj/items/hunter/prey_skulls.dmi'
+	unacidable = TRUE
+
+/obj/item/skull/queen
+	name = "Queen skull"
+	desc = "Skull of a prime hive ruler, mother to many."
+	icon_state = "queen_skull"
+
+/obj/item/skull/king
+	name = "King skull"
+	desc = "Skull of a militant hive ruler, lord of destruction."
+	icon_state = "king_skull"
+
+/obj/item/skull/lurker
+	name = "Lurker skull"
+	desc = "Skull of a stealthy xenomorph, a nocturnal entity."
+	icon_state = "lurker_skull"
+
+/obj/item/skull/hunter
+	name = "Hunter skull"
+	desc = "Skull of a stealthy xenomorph, an ambushing predator."
+	icon_state = "hunter_skull"
+
+/obj/item/skull/deacon
+	name = "Deacon skull"
+	desc = "Skull of an unusual xenomorph, a mysterious specimen."
+	icon_state = "deacon_skull"
+
+/obj/item/skull/corroder
+	name = "Corroder skull"
+	desc = "Skull of an acidic xenomorph, a boiling menace."
+	icon_state = "spitter_skull"
+
+/obj/item/skull/warrior
+	name = "Warrior skull"
+	desc = "Skull of a strong xenomorph, a swift fighter."
+	icon_state = "warrior_skull"
+
+/// TOOLS
+
+/obj/item/tool/crowbar/yautja
+	name = "\improper yautja crowbar"
+	desc = "Used to remove floors and to pry open doors, made of an unusual alloy."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bar"
+	item_state = "bar"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/wrench/yautja
+	name = "\improper alien wrench"
+	desc = "A wrench with many common uses. Made of some bizarre alien bones."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wrench"
+	item_state = "wrench"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/wirecutters/yautja
+	name = "\improper alien wirecutters"
+	desc = "This cuts wires, also flesh. Made of some razorsharp animal teeth."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "wirescutter"
+	item_state = "wirescutter"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/screwdriver/yautja
+	name = "\improper alien screwdriver"
+	desc = "Some hightech screwing abilities."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "screwdriver"
+	item_state = "screwdriver"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	force = 7
+	random_color = FALSE
+
+/obj/item/device/multitool/yautja
+	name = "\improper alien multitool"
+	desc = "Top notch alien tech for B&E through hacking."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "multitool"
+	item_state = "multitool"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
+/obj/item/tool/weldingtool/yautja
+	name = "\improper alien chem welding tool"
+	desc = "A complex chemical welding device, keep away from youngblood."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "welder"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	force = 10
+	throwforce = 15
+	max_fuel = 150	//The max amount of fuel the welder can hold
+
+/obj/item/storage/belt/utility/pred
+	name = "\improper alien toolbelt"
+	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "utilitybelt_pred"
+	item_state = "utility"
+
+/obj/item/storage/belt/utility/pred/full/fill_preset_inventory()
+	new /obj/item/tool/screwdriver/yautja(src)
+	new /obj/item/tool/wrench/yautja(src)
+	new /obj/item/tool/weldingtool/yautja(src)
+	new /obj/item/tool/crowbar/yautja(src)
+	new /obj/item/tool/wirecutters/yautja(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/device/multitool/yautja(src)

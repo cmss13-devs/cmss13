@@ -1,0 +1,6 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "different xeno spits now have different icon depending on their damage"
+  - imageadd: "new neurotoxin spit sprite"
+  - imageadd: "new predalien action icons"

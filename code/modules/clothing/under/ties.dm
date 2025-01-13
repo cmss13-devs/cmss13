@@ -1085,10 +1085,10 @@ Wrist Accessories
 	switch(slot)
 		if(ACCESSORY_SLOT_WRIST_L)
 			slot = ACCESSORY_SLOT_WRIST_R
-			to_chat(user, SPAN_NOTICE("The [src] will be worn on the right wrist."))
+			to_chat(user, SPAN_NOTICE("[src] will be worn on the right wrist."))
 		if(ACCESSORY_SLOT_WRIST_R)
 			slot = ACCESSORY_SLOT_WRIST_L
-			to_chat(user, SPAN_NOTICE("The [src] will be worn on the left wrist."))
+			to_chat(user, SPAN_NOTICE("[src] will be worn on the left wrist."))
 
 /obj/item/clothing/accessory/wrist/watch
 	name = "digital wrist watch"

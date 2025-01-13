@@ -5,8 +5,6 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "floor"
 	turf_flags = TURF_BURNABLE|TURF_BREAKABLE
-	var/broken = FALSE
-	var/burnt = FALSE
 	var/mineral = "metal"
 	var/image/wet_overlay
 
@@ -53,7 +51,7 @@
 /turf/open/floor/fire_act(exposed_temperature, exposed_volume)
 	if(turf_flags & TURF_HULL)
 		return
-	if(!burnt && prob(5))
+	if(!(turf_flags & TURF_BURNT) && prob(5))
 		burn_tile()
 	else if(prob(1))
 		make_plating()
@@ -87,10 +85,10 @@
 /turf/open/floor/proc/break_tile()
 	if(!(turf_flags & TURF_BREAKABLE)  || turf_flags & TURF_HULL)
 		return
-	if(broken)
+	if(turf_flags & TURF_BROKEN)
 		return
 
-	broken = TRUE
+	turf_flags |= TURF_BROKEN
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
 	else if(is_light_floor())
@@ -108,10 +106,10 @@
 /turf/open/floor/proc/burn_tile()
 	if(!(turf_flags & TURF_BURNABLE) || turf_flags & TURF_HULL)
 		return
-	if(broken || burnt)
+	if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 		return
 
-	burnt = TRUE
+	turf_flags |= TURF_BURNT
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
 	else if(is_plasteel_floor())
@@ -129,8 +127,8 @@
 /turf/open/floor/proc/make_plating()
 	set_light(0)
 	intact_tile = FALSE
-	broken = FALSE
-	burnt = FALSE
+	turf_flags &= ~TURF_BURNT
+	turf_flags &= ~TURF_BROKEN
 	ChangeTurf(plating_type)
 
 /turf/open/floor/attackby(obj/item/hitting_item, mob/user)
@@ -141,7 +139,7 @@
 		return weeds.attackby(hitting_item,user)
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
-		if(broken || burnt)
+		if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else
 			if(tool_flags & BREAK_CROWBAR)

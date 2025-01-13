@@ -1193,7 +1193,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CMB
-	additional_hud_types = MOB_HUD_FACTION_MARINE
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1214,7 +1214,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_NSPA
-	additional_hud_types = MOB_HUD_FACTION_TWE
+	additional_hud_types = list(MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/almayer/highcom

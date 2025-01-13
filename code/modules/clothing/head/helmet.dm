@@ -1147,6 +1147,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "lead_helmet"
 	item_state = "lead_helmet"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
+	desc = "A basic skull-helm worn by corporate security assets. This variant is worn comes with a wider brim to protect the user from the harsh climate of the desert."
+	icon_state = "kutjevo_helmet"
+	item_state = "kutjevo_helmet"
+
 //FIORINA / UA RIOT CONTROL HELMET//
 
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot

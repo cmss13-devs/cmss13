@@ -1,0 +1,6 @@
+author: "BOBAMAx"
+delete-after: True
+changes:
+  - imageadd: "added kutjevo themed goon uniforms and helmets"
+  - maptweak: "replaced dead goons on kutjevo with kutjevo goons"
+  - maptweak: "replaced kutjevo WY sec survivor with kutjevo goon survivor"

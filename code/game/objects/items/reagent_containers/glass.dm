@@ -293,16 +293,17 @@
 			return
 		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
+/obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
-	set name = "flush tank"
+	set name = "Flush Tank"
 	set src in usr
+
 	if(usr.is_mob_incapacitated()) return
 	if(src.reagents.total_volume == 0)
-		to_chat(user, SPAN_WARNING("It's already empty!"))
+		to_chat(usr, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return

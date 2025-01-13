@@ -14,9 +14,11 @@ endmap
 
 map lv624
 	default
+	voteweight 0.5
 endmap
 
 map bigredv2
+	voteweight 0.5
 endmap
 
 map prison_station_fop

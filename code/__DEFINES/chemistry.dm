@@ -132,6 +132,7 @@
 #define PROPERTY_CARDIOTOXIC "cardiotoxic"
 #define PROPERTY_NEUROTOXIC "neurotoxic"
 #define PROPERTY_HYPERMETABOLIC "hypermetabolic"
+#define PROPERTY_IGNITING "igniting"
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"

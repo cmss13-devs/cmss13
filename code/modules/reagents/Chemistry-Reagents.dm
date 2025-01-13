@@ -105,14 +105,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					M.reagents.add_reagent(self.id, self.volume * 0.5)
 
 		for(var/datum/chem_property/property in self.properties)
-			var/potency = property.level * 0.5
+			var/potency = property.level * property.potency_multiplier
 			property.reaction_mob(M, method, volume, potency)
 
 	return TRUE
 
 /datum/reagent/proc/reaction_obj(obj/O, volume)
 	for(var/datum/chem_property/P in properties)
-		var/potency = P.level * 0.5
+		var/potency = P.level * P.potency_multiplier
 		P.reaction_obj(O, volume, potency)
 	//By default we transfer a small part of the reagent to the object
 	//if it can hold reagents. nope!
@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /datum/reagent/proc/reaction_turf(turf/T, volume)
 	for(var/datum/chem_property/P in properties)
-		var/potency = P.level * 0.5
+		var/potency = P.level * P.potency_multiplier
 		P.reaction_turf(T, volume, potency)
 	return
 

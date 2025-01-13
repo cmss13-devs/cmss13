@@ -711,8 +711,9 @@
 /// Checks if any of the reagents contained within are harmful
 /datum/reagents/proc/contains_harmful_substances()
 	for(var/datum/reagent/reagent as anything in reagent_list)
-		for(var/datum/chem_property/negative/negative_property in reagent.properties)
-			return TRUE
+		for(var/datum/chem_property/property as anything in reagent.properties)
+			if(property.can_cause_harm())
+				return TRUE
 
 /turf/proc/reset_chemexploded()
 	chemexploded = FALSE

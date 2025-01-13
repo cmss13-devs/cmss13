@@ -773,12 +773,20 @@
 	durationmod_per_level = -0.1
 	radiusmod_per_level = -0.01
 
+	var/ignite_threshold = 4
+
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
-		if(potency > 4)
+		if(potency > ignite_threshold)
 			L.IgniteMob(TRUE)
+
+/datum/chem_property/positive/fire/oxidizing/can_cause_harm()
+	. = ..()
+
+	if(level * potency_multiplier > ignite_threshold)
+		return TRUE
 
 /datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING

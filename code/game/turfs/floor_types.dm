@@ -148,6 +148,9 @@
 /turf/open/floor/plating/asteroidwarning/west
 	dir = WEST
 
+/turf/open/floor/plating/asteroidwarning/south
+	dir = SOUTH
+
 /turf/open/floor/plating/platingdmg2
 	icon_state = "platingdmg2"
 

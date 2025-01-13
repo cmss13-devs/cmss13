@@ -479,6 +479,8 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
 #define ACCESSORY_SLOT_TROPHY "Trophy"
 #define ACCESSORY_SLOT_MASK "Mask"
+#define ACCESSORY_SLOT_WRIST_L "Left wrist"
+#define ACCESSORY_SLOT_WRIST_R "Right wrist"
 
 /// Used for uniform armor inserts.
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"

@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - soundadd: "SEA jingle when they join the game"

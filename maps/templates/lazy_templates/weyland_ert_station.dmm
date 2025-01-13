@@ -1,4 +1,36 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 1
+	},
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/mre/pmc{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/ammo_box/magazine/misc/mre/pmc{
+	pixel_x = -1;
+	pixel_y = 11
+	},
+/turf/open/floor/corsat/brown/west,
+/area/adminlevel/ert_station/weyland_station)
+"ab" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 12
+	},
+/turf/open/floor/corsat/whitetan,
+/area/adminlevel/ert_station/weyland_station)
+"ac" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 6;
+	pixel_y = 16
+	},
+/turf/open/floor/corsat/blue/west,
+/area/adminlevel/ert_station/weyland_station)
 "al" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -425,11 +457,6 @@
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
 /turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/weyland_station)
-"gL" = (
-/obj/structure/surface/table,
-/obj/item/storage/box/wy_mre,
-/turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "gW" = (
 /obj/structure/machinery/chem_dispenser,
@@ -1384,14 +1411,6 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/redcorner/west,
-/area/adminlevel/ert_station/weyland_station)
-"vU" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 1
-	},
-/turf/open/floor/corsat/brown/west,
 /area/adminlevel/ert_station/weyland_station)
 "vW" = (
 /obj/structure/pipes/vents/pump{
@@ -3194,10 +3213,6 @@
 /obj/structure/bed/chair/comfy/orange,
 /turf/open/floor/corsat/blue/north,
 /area/adminlevel/ert_station/weyland_station)
-"Yv" = (
-/obj/structure/surface/table/reinforced/black,
-/turf/open/floor/corsat/blue/west,
-/area/adminlevel/ert_station/weyland_station)
 "YB" = (
 /obj/structure/machinery/photocopier{
 	density = 0;
@@ -3464,7 +3479,7 @@ Ux
 QT
 rN
 zH
-Yv
+ac
 ap
 fX
 Vm
@@ -4473,7 +4488,7 @@ Xj
 fX
 ho
 kV
-gL
+ab
 fX
 kA
 RZ
@@ -4496,7 +4511,7 @@ Vp
 Vp
 yH
 Ud
-vU
+aa
 gC
 zT
 jm

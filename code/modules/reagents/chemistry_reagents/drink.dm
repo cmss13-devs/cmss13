@@ -176,6 +176,12 @@
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 
+/datum/reagent/drink/milk/coconut
+	name = "Coconut Milk"
+	id = "coconutmilk"
+	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
+	color = "#DFDFC7" // rgb: 223, 223, 199
+
 /datum/reagent/drink/milk/cream
 	name = "Cream"
 	id = "cream"
@@ -655,4 +661,10 @@
 	chemclass = CHEM_CLASS_RARE
 	adj_temp = 5
 
-
+/datum/reagent/drink/bugjuice
+	name = "Bug Juice"
+	id = "bugjuice"
+	description = "Soda drink made from all kinds of insects, very nutritious."
+	nutriment_factor = 2 * FOOD_METABOLISM
+	color = "#2ca314" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_SPECIAL

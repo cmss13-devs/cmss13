@@ -191,10 +191,41 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/surface/rack,
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_m_p)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_m_p)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -214,6 +245,16 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/req)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -222,6 +263,101 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/obj/effect/spawner/random/tool,
+/obj/item/tool/hand_labeler,
+/obj/item/clipboard,
+/obj/effect/landmark/map_item,
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/req)
+"aaJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/alpha_bravo_shared)
+"aaK" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 6
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = -8
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/corporateliaison)
+"aaL" = (
+/obj/structure/largecrate/supply/supplies/wy_emergency_food,
+/turf/open/floor/almayer/red/north,
+/area/almayer/maint/upper/u_a_p)
+"aaM" = (
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/prop{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/janitor.dmi';
+	icon_state = "trashbag_full";
+	name = "trash bag";
+	pixel_x = 5;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/orange/southwest,
+/area/almayer/engineering/upper_engineering/port)
+"aaN" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/MRE,
+/obj/item/storage/box/MRE,
+/obj/item/book/manual/chef_recipes,
+/obj/structure/sign/safety/coffee{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/prison/kitchen,
+/area/almayer/living/captain_mess)
+"aaO" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 10
+	},
+/obj/item/storage/box/MRE/WY{
+	pixel_y = 10;
+	pixel_x = 16
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/cafeteria_officer)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -237,6 +373,16 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
+"aaQ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/silver/east,
+/area/almayer/living/cafeteria_officer)
 "aaY" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -1179,20 +1325,6 @@
 /area/almayer/living/cafeteria_officer)
 "agY" = (
 /turf/open/floor/almayer/plate,
-/area/almayer/living/cafeteria_officer)
-"ahc" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/wy_mre,
-/obj/item/storage/box/wy_mre,
-/turf/open/floor/almayer,
-/area/almayer/living/cafeteria_officer)
-"ahe" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/item/storage/box/donkpockets,
-/turf/open/floor/almayer/silver/east,
 /area/almayer/living/cafeteria_officer)
 "ahf" = (
 /obj/structure/surface/table/almayer,
@@ -12485,15 +12617,6 @@
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
 	},
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/req)
-"bNB" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/wy_mre,
-/obj/effect/spawner/random/tool,
-/obj/item/tool/hand_labeler,
-/obj/item/clipboard,
-/obj/effect/landmark/map_item,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bNC" = (
@@ -28713,26 +28836,6 @@
 "hXb" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/charlie_delta_shared)
-"hXd" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_box/magazine/misc/mre{
-	pixel_x = 4;
-	pixel_y = 15
-	},
-/obj/item/storage/box/wy_mre{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -7;
-	pixel_y = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha_bravo_shared)
 "hXg" = (
 /obj/vehicle/powerloader,
 /obj/structure/platform/metal/almayer/east,
@@ -34817,16 +34920,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/engineering/laundry)
-"kxL" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/structure/largecrate/random/mini/wooden{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/storage/box/uscm_mre,
-/obj/item/storage/box/uscm_mre,
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/squads/req)
 "kxP" = (
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/mp_bunks)
@@ -35664,17 +35757,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
-"kOJ" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_m_p)
 "kOR" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -51837,23 +51919,6 @@
 "rth" = (
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"rtt" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular{
-	pixel_y = 6
-	},
-/obj/item/storage/box/drinkingglasses{
-	pixel_x = -8
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -10;
-	pixel_y = 14
-	},
-/obj/item/storage/box/wy_mre{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/corporateliaison)
 "rtA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/pen{
@@ -52611,25 +52676,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_a_p)
-"rJh" = (
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 5;
-	pixel_y = -2
-	},
-/turf/open/floor/almayer/orange/southwest,
-/area/almayer/engineering/upper_engineering/port)
 "rJj" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -54290,26 +54336,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/evidence_storage)
-"ssk" = (
-/obj/structure/surface/rack,
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/prop{
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
-	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag_full";
-	name = "trash bag";
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/l_m_p)
 "ssU" = (
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer/orange,
@@ -57352,10 +57378,6 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
-"tFJ" = (
-/obj/structure/largecrate/supply/supplies/mre,
-/turf/open/floor/almayer/red/north,
-/area/almayer/maint/upper/u_a_p)
 "tFO" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/almayer/red/north,
@@ -57927,17 +57949,6 @@
 "tTC" = (
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"tTD" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/uscm_mre,
-/obj/item/storage/box/uscm_mre,
-/obj/item/book/manual/chef_recipes,
-/obj/structure/sign/safety/coffee{
-	pixel_x = 15;
-	pixel_y = -32
-	},
-/turf/open/floor/prison/kitchen,
-/area/almayer/living/captain_mess)
 "tTG" = (
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -94192,7 +94203,7 @@ aTE
 aTG
 aVr
 aUC
-tTD
+aaN
 aET
 ngf
 bAH
@@ -99478,7 +99489,7 @@ rdZ
 bCs
 pBG
 rLp
-rtt
+aaK
 pBG
 vpf
 mRU
@@ -102226,7 +102237,7 @@ ljG
 tSp
 bJt
 xbg
-ssk
+aaB
 lyW
 ajZ
 bdH
@@ -102833,7 +102844,7 @@ bDs
 gSk
 vSp
 lHG
-kOJ
+aaD
 mgb
 mgb
 lyW
@@ -107361,7 +107372,7 @@ jsA
 uqs
 ael
 afK
-ahc
+aaO
 air
 ael
 sgH
@@ -107564,7 +107575,7 @@ sPa
 mSo
 ael
 afL
-ahe
+aaQ
 aij
 ael
 xIj
@@ -108467,7 +108478,7 @@ aMO
 qGc
 hxe
 rth
-hXd
+aaJ
 guW
 aQM
 rth
@@ -109508,7 +109519,7 @@ bPD
 bYa
 bPD
 jOk
-bNB
+aaI
 tiE
 xGo
 bYu
@@ -113167,7 +113178,7 @@ fnI
 cwo
 scH
 nzO
-kxL
+aaG
 hpS
 gyE
 nzt
@@ -114905,7 +114916,7 @@ hSk
 hSk
 uIv
 jWh
-tFJ
+aaL
 wSB
 uBG
 yat
@@ -115512,7 +115523,7 @@ xXa
 pZK
 cKL
 jbH
-rJh
+aaM
 jWh
 pld
 vhb

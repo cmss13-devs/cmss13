@@ -1410,6 +1410,9 @@
 /turf/open/floor/almayer/blackfull
 	icon_state = "blackfull"
 
+/turf/open/floor/almayer/blackfull/west
+	dir = WEST
+
 /turf/open/floor/almayer/blackfull2
 	icon_state = "blackfull2"
 

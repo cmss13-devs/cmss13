@@ -519,9 +519,9 @@
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	value = 1
 
-/datum/chem_property/negative/igniting/process(mob/living/M, potency, delta_time)
+/datum/chem_property/negative/igniting/process(mob/living/reacting_mob, potency, delta_time)
 	. = ..()
 
-	M.adjust_fire_stacks(max(M.fire_stacks, potency * 30))
-	M.IgniteMob(TRUE)
-	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+	reacting_mob.adjust_fire_stacks(max(reacting_mob.fire_stacks, potency * 30))
+	reacting_mob.IgniteMob(TRUE)
+	to_chat(reacting_mob, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))

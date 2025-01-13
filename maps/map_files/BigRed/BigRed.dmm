@@ -557,6 +557,10 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
+"acc" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port_lz2)
 "acd" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
@@ -575,6 +579,10 @@
 /area/bigredv2/outside/space_port)
 "ach" = (
 /turf/open/floor/plating/warnplate,
+/area/bigredv2/outside/space_port)
+"aci" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "acj" = (
 /obj/structure/machinery/light{
@@ -44660,7 +44668,7 @@ aah
 aah
 aah
 aek
-aaf
+aci
 aaf
 aaf
 acJ
@@ -48012,7 +48020,7 @@ eWd
 eWd
 eWd
 eWd
-eWd
+acc
 eWd
 eWd
 eWd

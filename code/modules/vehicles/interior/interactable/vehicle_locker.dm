@@ -55,7 +55,7 @@
 	if (!ishuman(H) || H.is_mob_restrained())
 		return
 
-	if(!role_restriction.Find(H.job))
+	if(role_restriction && !role_restriction.Find(H.job))
 		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
@@ -88,7 +88,7 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
+	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return TRUE
 
@@ -106,7 +106,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
+	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if (container.handle_mousedrop(user, over_object))
@@ -119,7 +119,7 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
+	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	return container.attackby(W, user)
@@ -205,7 +205,7 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
+	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(istype(W, /obj/item/storage/surgical_tray))
@@ -223,7 +223,7 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
+	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return TRUE
 
@@ -241,7 +241,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
+	if(role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(!has_tray)
@@ -264,7 +264,7 @@
 	if(H.is_mob_incapacitated())
 		return
 
-	if(!role_restriction.Find(H.job))
+	if(role_restriction && !role_restriction.Find(H.job))
 		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 

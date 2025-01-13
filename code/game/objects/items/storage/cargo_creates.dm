@@ -13,39 +13,4 @@
 	bypass_w_limit = list(
 		/obj/item/ammo_box,
 	)
-
-
-/obj/structure/vehicle_locker/cargo_create/ammo/Initialize()
-	. = ..()
-	can_hold = list(
-		/obj/item/ammo_box,
-	)
-	storage_slots = null
-	max_w_class = SIZE_MASSIVE
-	w_class = SIZE_MASSIVE
-	max_storage_space = 40
-	bypass_w_limit = list(
-		/obj/item/ammo_box,
-	)
-
-/obj/item/storage/internal/cargo_create
-	can_hold = list(
-	)
-	storage_slots = null
-	max_w_class = SIZE_MASSIVE
-	w_class = SIZE_MASSIVE
-	max_storage_space = 40
-	bypass_w_limit = list(
-	)
-
-/obj/item/storage/internal/ammo
-	can_hold = list(
-		/obj/item/ammo_box,
-	)
-	storage_slots = null
-	max_w_class = SIZE_MASSIVE
-	w_class = SIZE_MASSIVE
-	max_storage_space = 40
-	bypass_w_limit = list(
-		/obj/item/ammo_box,
-	)
+	role_restriction = null

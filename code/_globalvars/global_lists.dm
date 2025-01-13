@@ -251,7 +251,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/y
 GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
 
 	//NVG colors
-GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "YELLOW", "Orange", "Red", "Blue"))
+GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "Yellow", "Orange", "Red", "Blue"))
 	//Armor styles
 GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
 

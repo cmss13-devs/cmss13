@@ -1557,22 +1557,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/new_nvg_color = tgui_input_list(user, "Choose the color of your night-vision", "Character Preferences", GLOB.nvg_color_list)
 					if(!new_nvg_color)
 						return
+					var/list/nv_color_list = list(
+						"Green" = NV_COLOR_GREEN,
+						"White" = NV_COLOR_WHITE,
+						"Yellow" = NV_COLOR_YELLOW,
+						"Orange" = NV_COLOR_ORANGE,
+						"Red" = NV_COLOR_RED,
+						"Blue" = NV_COLOR_BLUE
+					)
+					night_vision_color = nv_color_list[new_nvg_color]
 					night_vision_preference = new_nvg_color
-					switch(new_nvg_color)
-						if("Green")
-							night_vision_color = NV_COLOR_GREEN
-						if("White")
-							night_vision_color = NV_COLOR_WHITE
-						if("YELLOW")
-							night_vision_color = NV_COLOR_YELLOW
-						if("Orange")
-							night_vision_color = NV_COLOR_ORANGE
-						if("Red")
-							night_vision_color = NV_COLOR_RED
-						if("Blue")
-							night_vision_color = NV_COLOR_BLUE
-						else
-							night_vision_color = NV_COLOR_GREEN
 
 				if("prefarmor")
 					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)

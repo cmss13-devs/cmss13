@@ -785,7 +785,7 @@
 /datum/chem_property/positive/fire/oxidizing/can_cause_harm()
 	. = ..()
 
-	if(level * potency_multiplier > ignite_threshold)
+	if(level * level_to_potency_multiplier > ignite_threshold)
 		return TRUE
 
 /datum/chem_property/positive/fire/flowing

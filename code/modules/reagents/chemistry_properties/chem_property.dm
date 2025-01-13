@@ -15,7 +15,7 @@
 	/// a cost penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
 	var/cost_penalty = TRUE
 
-	var/potency_multiplier = 0.5
+	var/level_to_potency_multiplier = 0.5
 
 /datum/chem_property/Destroy()
 	holder = null

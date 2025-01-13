@@ -1,0 +1,6 @@
+author: "Killfish"
+delete-after: True
+changes:
+  - rscadd: "Added a crappy wrist watch to loadout selector for 1 point. Now you have an IC way to check the time!"
+  - code_imp: "Altered accessory extra examine text to be a bit more flexible."
+  - imageadd: "Added one slight recolor of PDT bracelet as a crappy watch, adds dmi file for future wrist items that currently uses a scarf icon as a placeholder."

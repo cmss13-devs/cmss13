@@ -1,6 +1,7 @@
-/obj/structure/vehicle_locker/cargo_create/ammo //proof of concept it needs common ancestor with vehicle locker but that one is just so cool
+/obj/structure/vehicle_locker/supply_container/ammo //proof of concept it needs common ancestor with vehicle locker but that one is just so cool
 	icon = 'icons/obj/structures/M8_SUPPLY_CONTAINER.dmi'
 	icon_state = "m8"
+	name = "m8 supply container"
 	anchored = FALSE
 	density = TRUE
 	can_hold = list(

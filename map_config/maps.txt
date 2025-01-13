@@ -56,6 +56,7 @@ map sorokyne_strata
 endmap
 
 map lv522_chances_claim
+	voteweight 0.5
 endmap
 
 map lv759_hybrisa_prospera

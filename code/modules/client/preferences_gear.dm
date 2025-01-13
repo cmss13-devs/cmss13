@@ -1212,7 +1212,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/accessory/wrist/watch
 	cost = 1 // Cheap and crappy
 
-
 // Civilian only
 
 /datum/gear/civilian

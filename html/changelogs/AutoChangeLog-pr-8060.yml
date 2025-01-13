@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - rscadd: "fingerprints must now be revealed by forensic spray. they disappear after a minute"

@@ -1,5 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - ui: "adds a search bar for hair/facial hair picking, also sorts them alphabetically"
-  - ui: "if you're on 516, the hair/facial hair picker now previews hair color too"

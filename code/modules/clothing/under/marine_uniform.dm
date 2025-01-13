@@ -522,7 +522,12 @@
 		/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,
 		/obj/item/clothing/suit/armor/vest/security,
 		/obj/item/clothing/suit/storage/hazardvest,
-	)
+		/obj/item/clothing/suit/storage/labcoat,
+		/obj/item/clothing/suit/storage/jacket/marine,
+		/obj/item/clothing/suit/storage/CMB/trenchcoat,
+		/obj/item/clothing/suit/storage/windbreaker,
+		/obj/item/clothing/suit/storage/snow_suit,
+	) //if you remove this, it allows you to wear the marine M3 armor over the pmc fatigues
 
 /obj/item/clothing/under/marine/veteran/pmc/leader
 	name = "\improper PMC command fatigues"
@@ -798,8 +803,8 @@
 	has_sensor = UNIFORM_NO_SENSORS
 
 /obj/item/clothing/under/colonist
-	name = "colonist uniform"
-	desc = "A stylish gray-green jumpsuit - standard issue for colonists."
+	name = "colonist jumpsuit"
+	desc = "A stylish gray-green jumpsuit. Standard issue for unspecialized Wey-Yu colonists."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
@@ -807,6 +812,12 @@
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = UNIFORM_HAS_SENSORS
+
+/obj/item/clothing/under/colonist/administrator
+	name = "administrator uniform"
+	desc = "An office grey polo with a Wey-Yu badge on the chest. Worn by administrators on colonies owned by the Company."
+	icon_state = "colony_admin"
+	worn_state = "colony_admin"
 
 /obj/item/clothing/under/colonist/workwear
 	name = "grey workwear"
@@ -856,28 +867,6 @@
 	icon_state = "clf_uniform"
 	worn_state = "clf_uniform"
 
-/obj/item/clothing/under/colonist/ua_civvies
-	name = "\improper UA gray utility uniform"
-	desc = "A stylish gray jumpsuit - standard issue for UA civilian support personnel."
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
-	)
-	icon_state = "ua_civvies"
-	worn_state = "ua_civvies"
-	has_sensor = UNIFORM_HAS_SENSORS
-
-/obj/item/clothing/under/colonist/wy_davisone
-	name = "\improper UA brown utility uniform"
-	desc = "A stylish brown jumpsuit - standard issue for UA civilian support personnel."
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
-	)
-	icon_state = "wy_davisone"
-	worn_state = "wy_davisone"
-	has_sensor = UNIFORM_HAS_SENSORS
-
 /obj/item/clothing/under/colonist/white_service
 	name = "white service uniform"
 	desc = "A white dress shirt and tie with sleek pants. Standard clothing for anyone on professional business."
@@ -889,15 +878,15 @@
 	worn_state = "CO_service"
 	has_sensor = UNIFORM_HAS_SENSORS
 
-/obj/item/clothing/under/colonist/wy_joliet_shopsteward
+/obj/item/clothing/under/colonist/steward
 	name = "steward utilities"
 	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewards."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
 	)
-	icon_state = "wy_joliet_shopsteward"
-	worn_state = "wy_joliet_shopsteward"
+	icon_state = "steward"
+	worn_state = "steward"
 	has_sensor = UNIFORM_HAS_SENSORS
 
 /obj/item/clothing/under/tshirt
@@ -1116,37 +1105,58 @@
 	worn_state = "k9_dogtags"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/rank/synthetic/frontier
+/obj/item/clothing/under/rank/frontier
 	name = "\improper frontier jumpsuit"
 	desc = "A cargo jumpsuit dressed down for full range of motion and state-of-the-art frontier temperature control. It's the best thing an engineer can wear in the Outer Veil."
-	icon_state = "synth_cargo_light"
-	worn_state = "synth_cargo_light"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
+	icon_state = "cargo_light"
+	worn_state = "cargo_light"
 	displays_id = FALSE
 
-/obj/item/clothing/under/rank/synthetic/utility
-	name = "\improper UA utility uniform"
+/obj/item/clothing/under/rank/utility
+	name = "\improper Green utility uniform"
 	desc = "A green-on-green utility uniform, popularly issued to UA contract workers on the frontier."
-	icon_state = "synth_green_utility"
-	worn_state = "synth_green_utility"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
+	icon_state = "green_utility"
+	worn_state = "green_utility"
 	displays_id = FALSE
 
-/obj/item/clothing/under/rank/synthetic/utility/yellow
-	name = "\improper utility uniform"
+/obj/item/clothing/under/rank/utility/yellow
+	name = "\improper Yellow utility uniform"
 	desc = "A grey utility uniform with yellow suspenders, made for shipside crew."
-	icon_state = "synth_yellow_utility"
-	worn_state = "synth_yellow_utility"
+	icon_state = "yellow_utility"
+	worn_state = "yellow_utility"
 
-/obj/item/clothing/under/rank/synthetic/utility/red
-	name = "\improper utility uniform"
+/obj/item/clothing/under/rank/utility/red
+	name = "\improper Red utility uniform"
 	desc = "A grey utility uniform with red suspenders and blue jeans, the sign of a veteran laborer, or someone not paid by the hour."
-	icon_state = "synth_red_utility"
-	worn_state = "synth_red_utility"
+	icon_state = "red_utility"
+	worn_state = "red_utility"
 
-/obj/item/clothing/under/rank/synthetic/utility/blue
-	name = "\improper utility uniform"
+/obj/item/clothing/under/rank/utility/blue
+	name = "\improper Blue utility uniform"
 	desc = "A blue utility uniform with teal suspenders and rugged pants."
-	icon_state = "synth_blue_utility"
-	worn_state = "synth_blue_utility"
+	icon_state = "blue_utility"
+	worn_state = "blue_utility"
+
+/obj/item/clothing/under/rank/utility/gray
+	name = "\improper Gray utility uniform"
+	desc = "A stylish gray jumpsuit, popularly issued to UA contract workers on the frontier."
+	icon_state = "grey_utility"
+	worn_state = "grey_utility"
+
+/obj/item/clothing/under/rank/utility/brown
+	name = "\improper Brown utility uniform"
+	desc = "A stylish brown jumpsuit, popularly issued to UA contract workers on the frontier."
+	icon_state = "brown_utility"
+	worn_state = "brown_utility"
+	has_sensor = UNIFORM_HAS_SENSORS
 
 /obj/item/clothing/under/rank/synthetic/councillor
 	name = "\improper USCM Pristine Support Uniform"

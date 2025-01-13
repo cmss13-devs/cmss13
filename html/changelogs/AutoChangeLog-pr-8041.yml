@@ -1,0 +1,4 @@
+author: "Yayyay007"
+delete-after: True
+changes:
+  - bugfix: "Fixes check status using your own name when using it on others"

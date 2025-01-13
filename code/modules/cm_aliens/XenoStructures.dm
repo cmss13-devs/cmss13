@@ -984,7 +984,7 @@
 			if(cur_hive_num == hive_number)
 				xeno_announcement(SPAN_XENOANNOUNCE("The hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		announced_paused = FALSE
 		icon_state = "growing"

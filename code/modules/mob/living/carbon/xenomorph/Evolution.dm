@@ -261,22 +261,22 @@
 	if(!check_state())
 		return
 	if(is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("You can't trasnmute here."))
+		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
 		return
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("You can't trasnmute here."))
+		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
 		return
 	if(health < maxHealth)
-		to_chat(src, SPAN_XENOWARNING("We are too weak to trasnmute, we must regain our health first."))
+		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
 		return
 	if(tier == 0 || tier == 4)
-		to_chat(src, SPAN_XENOWARNING("We can't trasnmute."))
+		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
 		return
 	if(lock_evolve)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
-			to_chat(src, SPAN_WARNING("We can't trasnmute."))
+			to_chat(src, SPAN_WARNING("We can't transmute."))
 		return FALSE
 
 	var/newcaste

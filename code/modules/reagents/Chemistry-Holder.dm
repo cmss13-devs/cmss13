@@ -708,6 +708,12 @@
 	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
 
+/// Checks if any of the reagents contained within are harmful
+/datum/reagents/proc/contains_harmful_substances()
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		for(var/datum/chem_property/negative/negative_property in reagent.properties)
+			return TRUE
+
 /turf/proc/reset_chemexploded()
 	chemexploded = FALSE
 

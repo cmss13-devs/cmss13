@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - bugfix: "coif not hiding your face when it should've"
+  - bugfix: "bandana hiding facial hair forever"

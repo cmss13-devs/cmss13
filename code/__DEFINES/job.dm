@@ -64,20 +64,25 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
+
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
+#define JOB_CIVIL_ROLES    /datum/timelock/civil
+#define JOB_CIVIL_ROLES_LIST   list(JOB_COMBAT_REPORTER)
+
 #define JOB_MESS_SERGEANT "Mess Technician"
 #define JOB_SYNTH "Synthetic"
+#define JOB_SHIP_SYNTH "Ship Operations Synthetic"
 #define JOB_SYNTH_K9 "Synthetic K9"
 #define JOB_WORKING_JOE "Working Joe"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
 #define JOB_SO "Staff Officer"
+#define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_COMMAND_ROLES /datum/timelock/command
-#define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO)
+#define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO, JOB_AUXILIARY_OFFICER)
 GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
-#define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
 #define JOB_CAS_PILOT "Gunship Pilot"
 #define JOB_DROPSHIP_PILOT "Dropship Pilot"
 #define JOB_TANK_CREW "Tank Crew"
@@ -92,7 +97,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WARDEN "Military Warden"
 #define JOB_CHIEF_POLICE "Chief MP"
 #define JOB_POLICE_ROLES /datum/timelock/mp
-#define JOB_POLICE_ROLES_LIST    list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+#define JOB_POLICE_ROLES_LIST    list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE, JOB_CO)
 
 #define JOB_SEA "Senior Enlisted Advisor"
 
@@ -214,6 +219,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define ROLES_WY_CORPORATE list(JOB_EXECUTIVE_SUPERVISOR, JOB_EXECUTIVE_SPECIALIST, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_JUNIOR_EXECUTIVE, JOB_TRAINEE)
 #define ROLES_WY_LEADERSHIP list(JOB_DIRECTOR, JOB_PMC_DIRECTOR, JOB_CHIEF_EXECUTIVE, JOB_DIVISION_MANAGER, JOB_ASSISTANT_MANAGER)
 
+#define JOB_CORPORATE_ROLES /datum/timelock/corporate
+#define JOB_CORPORATE_ROLES_LIST list(JOB_CORPORATE_LIAISON, JOB_WO_CORPORATE_LIAISON, JOB_DIRECTOR, JOB_PMC_DIRECTOR, JOB_CHIEF_EXECUTIVE, JOB_DIVISION_MANAGER, JOB_ASSISTANT_MANAGER, JOB_EXECUTIVE_SUPERVISOR, JOB_EXECUTIVE_SPECIALIST, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_JUNIOR_EXECUTIVE, JOB_TRAINEE)
+
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_TECH "WY Corporate Security Technician"
@@ -246,8 +254,26 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CMB_SYN "CMB Investigative Synthetic"
 #define JOB_CMB_ICC "Interstellar Commerce Commission Corporate Liaison"
 #define JOB_CMB_OBS "Interstellar Human Rights Observer"
+#define JOB_CMB_RIOT "CMB Riot Control Officer"
+#define JOB_CMB_MED "CMB Medical Technician"
+#define JOB_CMB_ENG "CMB Breaching Technician"
+#define JOB_CMB_SWAT "CMB SWAT Specialist"
+#define JOB_CMB_RSYN "CMB Riot Control Synthetic"
 
 #define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
+#define CMB_RIOT_LIST list(JOB_CMB_TL, JOB_CMB_RIOT, JOB_CMB_MED, JOB_CMB_ENG, JOB_CMB_SWAT)
+
+//-------- NSPA --------//
+#define JOB_NSPA_CST "NSPA Constable"
+#define JOB_NSPA_SC "NSPA Senior Constable"
+#define JOB_NSPA_SGT "NSPA Sergeant"
+#define JOB_NSPA_INSP "NSPA Inspector"
+#define JOB_NSPA_CINSP "NSPA Chief Inspector"
+#define JOB_NSPA_CMD "NSPA Commander"
+#define JOB_NSPA_DCO "NSPA Deputy Commissioner"
+#define JOB_NSPA_COM "NSPA Commissioner"
+
+#define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SC, JOB_NSPA_SGT)
 
 //-------- FORECON --------//
 
@@ -271,8 +297,10 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_LT_OFFICER "UPP Mladshiy Leytenant"
 #define JOB_UPP_SUPPLY "UPP Logistics Technician"
 #define JOB_UPP_LT_DOKTOR "UPP Leytenant Doktor"
+#define JOB_UPP_PILOT "UPP Pilot"
 #define JOB_UPP_SRLT_OFFICER "UPP Starshiy Leytenant"
 #define JOB_UPP_KPT_OFFICER "UPP Kapitan"
+#define JOB_UPP_CO_OFFICER "UPP Komandir"
 #define JOB_UPP_MAY_OFFICER "UPP Mayjor"
 #define JOB_UPP_LTKOL_OFFICER "UPP Podpolkovnik"
 #define JOB_UPP_KOL_OFFICER "UPP Polkovnik"
@@ -280,11 +308,17 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_MAY_GENERAL "UPP General Leytenant"
 #define JOB_UPP_LT_GENERAL "UPP General Polkovnik"
 #define JOB_UPP_GENERAL "UPP General Armii"
+#define SQUAD_UPP_1 "Akula"
+#define SQUAD_UPP_2 "Bizon"
+#define SQUAD_UPP_3 "Chayka"
+#define SQUAD_UPP_4 "Delfin"
+#define SQUAD_UPP_5 "UPPKdo"
 
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 #define JOB_UPP_SUPPORT_SYNTH "UPP Support Synthetic"
+#define JOB_UPP_JOE "Dzho Automaton"
 
-#define UPP_JOB_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
+#define UPP_JOB_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_PILOT, JOB_UPP_SUPPLY, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_CO_OFFICER, JOB_UPP_SUPPORT_SYNTH, JOB_UPP_JOE, JOB_UPP_COMMISSAR)
 #define UPP_JOB_GRUNT_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_CREWMAN)
 
 #define JOB_UPP_COMMANDO "UPP Junior Kommando"
@@ -354,9 +388,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_RIOT_CHIEF "Chief Riot Control"
 
 #define RIOT_JOB_LIST list(JOB_RIOT, JOB_RIOT_CHIEF)
-//-------- UAAC --------//
-#define JOB_TIS_IO "UAAC-TIS Intelligence Officer"
-#define JOB_TIS_SA "UAAC-TIS Special Agent"
+//-------- CIA --------//
+#define JOB_CIA "Intelligence Analyst"
+#define JOB_CIA_LIAISON "Intelligence Liaison Officer"
 
 #define TIS_JOB_LIST list(JOB_TIS_SA, JOB_TIS_IO)
 //-------- DUTCH'S DOZEN --------//
@@ -368,6 +402,22 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define DUTCH_JOB_LIST list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
+//---------- RESPONDERS ----------//
+/// This root job should never appear ingame, it's used to select the character slot.
+#define JOB_FAX_RESPONDER "Fax Responder"
+#define JOB_FAX_RESPONDER_USCM_HC "USCM-HC Communications Officer"
+#define JOB_FAX_RESPONDER_USCM_PVST "Provost Communications Officer"
+#define JOB_FAX_RESPONDER_WY "WY Communications Executive"
+#define JOB_FAX_RESPONDER_UPP "UPP Communications Officer"
+#define JOB_FAX_RESPONDER_TWE "TWE Communications Officer"
+#define JOB_FAX_RESPONDER_CLF "CLF Information Correspondant"
+#define JOB_FAX_RESPONDER_CMB "CMB Deputy Operations Officer"
+#define JOB_FAX_RESPONDER_PRESS "Free Press Relay Operator"
+
+#define FAX_RESPONDER_JOB_LIST list(JOB_FAX_RESPONDER_USCM_HC, JOB_FAX_RESPONDER_USCM_PVST, JOB_FAX_RESPONDER_WY, JOB_FAX_RESPONDER_UPP, JOB_FAX_RESPONDER_TWE, JOB_FAX_RESPONDER_CLF, JOB_FAX_RESPONDER_CMB, JOB_FAX_RESPONDER_PRESS)
+
+
+//---------- ANTAG ----------//
 #define JOB_PREDATOR "Predator"
 #define JOB_XENOMORPH    "Xenomorph"
 #define JOB_XENOMORPH_QUEEN  "Queen"
@@ -378,6 +428,12 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)
 #define JOB_PLAYTIME_TIER_4  (175 HOURS)
+#define JOB_PLAYTIME_TIER_5  (350 HOURS)
+#define JOB_PLAYTIME_TIER_6  (600 HOURS)
+#define JOB_PLAYTIME_TIER_7  (1000 HOURS)
+#define JOB_PLAYTIME_TIER_8  (1500 HOURS)
+#define JOB_PLAYTIME_TIER_9  (2100 HOURS)
+#define JOB_PLAYTIME_TIER_10 (2800 HOURS)
 
 #define XENO_NO_AGE  -1
 #define XENO_YOUNG 0
@@ -404,4 +460,4 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 ///For denying certain traits being applied to people. ie. bad leg
 ///'Grunt' lists are for people who wouldn't logically get the bad leg trait, ie. UPP marine counterparts.
-#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, ROLES_WY_GOONS, ROLES_WY_PMC_ALL)
+#define JOB_ERT_GRUNT_LIST list(DUTCH_JOB_LIST, RIOT_JOB_LIST, PROVOST_JOB_LIST, CMB_GRUNT_LIST, CLF_JOB_LIST, UPP_JOB_GRUNT_LIST, UPP_COMMANDO_JOB_LIST, CONTRACTOR_JOB_LIST, ROLES_WY_GOONS, ROLES_WY_PMC_ALL, CMB_RIOT_LIST)

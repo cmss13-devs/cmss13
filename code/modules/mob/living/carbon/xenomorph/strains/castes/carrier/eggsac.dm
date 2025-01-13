@@ -91,7 +91,6 @@
 /datum/action/xeno_action/active_toggle/generate_egg
 	name = "Generate Eggs (50)"
 	action_icon_state = "lay_egg"
-	ability_name = "generate egg"
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 50
 	plasma_use_per_tick = 15

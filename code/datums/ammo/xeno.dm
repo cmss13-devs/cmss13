@@ -61,7 +61,7 @@
 				return
 
 		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
+			M.apply_effect(4, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
@@ -127,7 +127,6 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 5
 	max_range = 5
-	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_4
 
 /datum/ammo/xeno/toxin/shotgun/New()
@@ -138,11 +137,12 @@
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
 
+	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/acid
 	name = "acid spit"
-	icon_state = "xeno_acid"
+	icon_state = "xeno_acid_weak"
 	sound_hit  = "acid_hit"
 	sound_bounce = "acid_bounce"
 	damage_type = BURN
@@ -166,7 +166,7 @@
 
 /datum/ammo/xeno/acid/spatter
 	name = "acid spatter"
-
+	icon_state = "xeno_acid_strong"
 	damage = 30
 	max_range = 6
 
@@ -179,7 +179,7 @@
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
-
+	icon_state = "xeno_acid_strong"
 	accuracy = HIT_ACCURACY_TIER_10 + HIT_ACCURACY_TIER_5
 	max_range = 8
 	damage = 30
@@ -191,7 +191,7 @@
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
-
+	icon_state = "xeno_acid_normal"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32

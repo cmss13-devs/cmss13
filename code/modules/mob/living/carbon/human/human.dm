@@ -54,6 +54,7 @@
 /mob/living/carbon/human/Destroy()
 	SSround_recording.recorder.stop_tracking(src)
 	remove_from_all_mob_huds()
+	despawn_fax_responder()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
@@ -117,7 +118,7 @@
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
 	if(faction == FACTION_MARINE)
 		. += ""
-		. += "<a href='?MapView=1'>View Tactical Map</a>"
+		. += "<a href='byond://?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -195,9 +196,10 @@
 	//Focus half the blast on one organ
 	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
-	pain.apply_pain(b_loss * 0.5, BRUTE)
-	pain.apply_pain(f_loss * 0.5, BURN)
+	if(take_blast)
+		update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
+	pain?.apply_pain(b_loss * 0.5, BRUTE)
+	pain?.apply_pain(f_loss * 0.5, BURN)
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5
@@ -397,7 +399,7 @@
 	if(href_list["item"])
 		if(!usr.is_mob_incapacitated() && Adjacent(usr))
 			if(href_list["item"] == "id")
-				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 					to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 					return
 				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
@@ -406,7 +408,7 @@
 						if(stat == DEAD)
 							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
 							DT.dogtag_taken = TRUE
-							DT.icon_state = "dogtag_taken"
+							DT.icon_state = DT.tags_taken_icon
 							var/obj/item/dogtag/D = new(loc)
 							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
@@ -422,8 +424,8 @@
 			if(!usr.action_busy || skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				var/slot = href_list["item"]
 				var/obj/item/what = get_item_by_slot(slot)
-				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
-					if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) || (what in list(head, wear_suit, w_uniform, shoes)))
+				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+					if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_strip_essentials) || (what in list(head, wear_suit, w_uniform, shoes)))
 						to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 						return
 				if(what)
@@ -434,7 +436,7 @@
 
 	if(href_list["sensor"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
-			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't tweak the sensors of a crit or dead member of another faction!"))
 				return
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [key_name(usr)]</font>")
@@ -540,7 +542,7 @@
 							if(hasHUD(usr,"security") || isobserver(usr))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
-								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+								to_chat(usr, "<a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -576,7 +578,7 @@
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
 					to_chat(usr, comment_markup)
 					if(!isobserver(usr))
-						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+						to_chat(usr, "<a href='byond://?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -609,7 +611,7 @@
 					else
 						var/new_com_i = length(R.fields["comments"]) + 1
 						R.fields["comments"]["[new_com_i]"] = new_comment
-					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 
 	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -664,7 +666,7 @@
 									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
 									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-									to_chat(usr, "<a href='?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
+									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
 
 			if(!read)
@@ -693,7 +695,7 @@
 										counter++
 									if(counter == 1)
 										to_chat(usr, "No comment found")
-									to_chat(usr, "<a href='?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
+									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -772,6 +774,21 @@
 					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 						tgui_interact(usr)
 					break
+
+	if(href_list["check_status"])
+		if(!usr.Adjacent(src))
+			return
+		var/mob/living/carbon/human/user = usr
+		user.check_status(src)
+
+	if(href_list["use_stethoscope"])
+		var/mob/living/carbon/human/user = usr
+		var/obj/item/clothing/accessory/stethoscope/stethoscope = locate() in user.w_uniform
+		if(!stethoscope || !user.Adjacent(src))
+			return
+
+		stethoscope.attack(src, user)
+
 	..()
 	return
 
@@ -990,57 +1007,54 @@
 		if(prob(30)) // Spam chat less
 			to_chat(src, SPAN_HIGHDANGER("Your movement jostles [W] in your [organ.display_name] painfully."))
 
-/mob/living/carbon/human/verb/check_status()
-	set category = "Object"
-	set name = "Check Status"
-	set src in view(1)
-	var/self = (usr == src)
-	var/msg = ""
-
-
-	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return
+/mob/living/carbon/human/proc/check_status(mob/living/carbon/human/target)
+	if(is_dead() || is_mob_restrained())
+		return
+	///Final message detailing injuries on the target.
+	var/msg
+	///Is the target the user or somebody else?
+	var/self = (target == src)
+	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [src]."]"))
 
 	if(self)
-		var/list/L = get_broken_limbs() - list("chest","head","groin")
-		if(length(L) > 0)
-			msg += "Your [english_list(L)] [length(L) > 1 ? "are" : "is"] broken\n"
-	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
-	if(toxloss > 20)
-		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
-	if(is_bleeding())
-		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body\n"
+		var/list/broken_limbs = target.get_broken_limbs() - list("chest","head","groin")
+		if(length(broken_limbs))
+			msg += "Your [english_list(broken_limbs)] [length(broken_limbs) > 1 ? "are" : "is"] broken.\n"
+	if(target.toxloss > 20)
+		msg += "[self ? "Your" : "Their"] skin is slightly green.\n"
+
+	if(target.is_bleeding())
+		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body.\n"
 
 	if(!self && skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
-			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
+		for(var/datum/effects/bleeding/internal/internal_bleed in target.effects_list)
+			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name].\n"
 
-	if(stat == UNCONSCIOUS)
-		msg += "They seem to be unconscious\n"
-	else if(stat == DEAD)
-		if(src.check_tod() && is_revivable())
-			msg += "They're not breathing"
-		else
-			if(has_limb("head"))
-				msg += "Their eyes have gone blank, there are no signs of life"
+	switch(target.stat)
+		if(DEAD)
+			if(target.check_tod() && target.is_revivable())
+				msg += "They're not breathing."
 			else
-				msg += "They are definitely dead"
-	else
-		msg += "[self ? "You're":"They're"] alive and breathing"
+				if(has_limb("head"))
+					msg += "Their eyes have gone blank, there are no signs of life."
+				else
+					msg += "They are definitely dead."
+		if(UNCONSCIOUS)
+			msg += "They seem to be unconscious.\n"
+		if(CONSCIOUS)
+			msg += "[self ? "You're" : "They're"] alive and breathing."
 
-
-	to_chat(usr,SPAN_WARNING(msg))
+	to_chat(src, SPAN_WARNING(msg))
 
 
 /mob/living/carbon/human/verb/view_manifest()
 	set name = "View Crew Manifest"
 	set category = "IC"
 
-	if(faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
-	var/dat = GLOB.data_core.get_manifest()
-
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"
@@ -1678,7 +1692,7 @@
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
 	HTML += "<hr />"
-	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
 	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
 
@@ -1750,3 +1764,38 @@
 
 	return .
 
+/// generates realistic-ish pulse output based on preset levels.
+/// method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate
+/mob/living/carbon/human/proc/get_pulse(method)
+	var/temp = 0 //see setup.dm:694
+
+	if(species && species.flags & NO_BLOOD)
+		pulse = PULSE_NONE //No blood, no pulse.
+
+	else if(stat == DEAD || status_flags & FAKEDEATH)
+		pulse = PULSE_NONE //That's it, you're dead, nothing can influence your pulse
+
+	else if(floor(blood_volume) <= BLOOD_VOLUME_BAD) //How much blood do we have
+		pulse = PULSE_THREADY //not enough :(
+
+	else
+		pulse = PULSE_NORM
+
+	switch(pulse)
+		if(PULSE_NONE)
+			return "0"
+		if(PULSE_SLOW)
+			temp = rand(40, 60)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_NORM)
+			temp = rand(60, 90)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_FAST)
+			temp = rand(90, 120)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_FASTER)
+			temp = rand(120, 160)
+			return num2text(method ? temp : temp + rand(-10, 10))
+		if(PULSE_THREADY)
+			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
+// output for machines^ ^^^^^^^output for people^^^^^^^^^

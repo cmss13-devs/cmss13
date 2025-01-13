@@ -76,3 +76,8 @@
 /datum/controller/subsystem/mapping/proc/get_mainship_center()
 	var/mainship_z = levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
 	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), mainship_z)
+
+// Prefer not to use this one too often
+/datum/controller/subsystem/mapping/proc/get_ground_center()
+	var/ground_z = levels_by_trait(ZTRAIT_GROUND)[1]
+	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), ground_z)

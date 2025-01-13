@@ -29,8 +29,6 @@
 /obj/item/storage/box/spec/demolitionist/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
 	new /obj/item/clothing/head/helmet/marine/M3T(src)
-	new /obj/item/clothing/head/helmet/marine/M3T(src)
-	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/weapon/gun/launcher/rocket(src)
 	new /obj/item/ammo_magazine/rocket(src)
@@ -45,6 +43,41 @@
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/device/binoculars(src)
 
+	// loader
+	new /obj/item/storage/box/kit/loader(src)
+
+/obj/item/storage/box/kit/loader
+	name = "\improper Loader Kit"
+	desc = "A large kit containing all the supplies needed to turn a Private into the loading assistant for a Demolitions Specialist.\
+	\nA little infographic series shows how reloading should be done:\
+	\nStep One: Grab the Rocket\
+	\nStep Two: Position yourself behind the Specialist\
+	\nStep Three: Ensure the Specialist is wielding their Launcher\
+	\nStep Four: Load the Rocket into the Launcher\
+	\nStep Five: Stand clear of the back-blast"
+	pro_case_overlay = "loader"
+
+/obj/item/storage/box/kit/loader/fill_preset_inventory()
+	// wearables
+	new /obj/item/clothing/suit/storage/marine/M3T(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
+	new /obj/item/storage/backpack/marine/rocketpack(src)
+
+	// a little bit of extra ammo
+	new /obj/item/ammo_magazine/rocket(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/ammo_magazine/rocket/wp(src)
+
+	// equipment
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/device/binoculars(src)
+
+	// skills
+	new /obj/item/pamphlet/skill/loader(src)
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"
@@ -77,9 +110,6 @@
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
 	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
-	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
-	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
-	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/storage/backpack/marine/smock(src)
@@ -295,7 +325,7 @@
 		qdel(src)
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"
-	pro_case_overlay = "mou53"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/mou53_sapper/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/double/mou53(src)
@@ -323,7 +353,7 @@
 
 /obj/item/storage/box/kit/machinegunner
 	name = "\improper M2C Heavy Gunner Kit"
-	pro_case_overlay = "hmg"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/machinegunner/fill_preset_inventory()
 	new /obj/item/storage/box/m56d/m2c(src)
@@ -337,7 +367,7 @@
 /obj/item/storage/box/kit/defensegunner
 	name = "\improper M56D Defense Gunner Kit"
 	icon_state = "pro_case_large"
-	pro_case_overlay = "m56d"
+	pro_case_overlay = "dots"
 
 /obj/item/storage/box/kit/defensegunner/fill_preset_inventory()
 	new /obj/item/storage/box/m56d_hmg(src)
@@ -454,7 +484,7 @@
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
-	pro_case_overlay = "intel"
+	pro_case_overlay = "jtac"
 
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
@@ -465,7 +495,7 @@
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
-	pro_case_overlay = "grenadier"
+	pro_case_overlay = "engi"
 
 /obj/item/storage/box/kit/mini_grenadier/fill_preset_inventory()
 	new /obj/item/storage/belt/grenade/full(src)
@@ -506,7 +536,7 @@
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"
-	pro_case_overlay = "smart"
+	pro_case_overlay = "crayon"
 
 /obj/item/storage/box/kit/exp_trooper/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/smart(src)
@@ -521,7 +551,7 @@
 
 /obj/item/storage/box/kit/honorguard
 	name = "\improper Honor Guard Kit"
-	pro_case_overlay = "honor_guard"
+	pro_case_overlay = "shield"
 
 /obj/item/storage/box/kit/honorguard/fill_preset_inventory()
 	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
@@ -580,3 +610,16 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+
+
+/obj/item/storage/box/kit/UPP_leader_AR
+	name = "\improper Type 71-F Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/UPP_leader_AR/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/type71/flamer(src)
+	new /obj/item/attachable/reflex(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)

@@ -322,8 +322,8 @@
 
 	// Fling
 	var/facing = get_dir(xeno, carbon)
-	var/turf/turf = xeno.loc
-	var/turf/temp = xeno.loc
+	var/turf/turf = get_turf(xeno)
+	var/turf/temp = turf
 
 	for (var/step in 0 to fling_distance-1)
 		temp = get_step(turf, facing)
@@ -448,7 +448,7 @@
 		shield.shrapnel_amount = shield_shrapnel_amount
 		xeno.overlay_shields()
 
-	xeno.create_shield(shield_duration)
+	xeno.create_shield(shield_duration, "shield2")
 	shield_active = TRUE
 	button.icon_state = "template_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)

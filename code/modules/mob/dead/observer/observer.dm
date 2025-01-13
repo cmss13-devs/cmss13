@@ -63,8 +63,10 @@
 	var/datum/action/minimap/observer/minimap
 	///The last message for this player with their larva queue information
 	var/larva_queue_cached_message
-	///Used to bypass time of death checks such as when being selected for larva.
+	///Used to bypass time of death checks such as when being selected for larva
 	var/bypass_time_of_death_checks = FALSE
+	///Used to bypass time of death checks for a successful hug
+	var/bypass_time_of_death_checks_hugger = FALSE
 
 	alpha = 127
 
@@ -478,7 +480,8 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
-	var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
+	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
+	var/new_tod = exempt_tod ? 1 : ghost.timeofdeath
 
 	// if they died as facehugger or lesser drone, bypass typical TOD checks
 	ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
@@ -497,8 +500,8 @@ Works together with spawning an observer, noted above.
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
 
+	if(ghost.client?.player_details)
 		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
-
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)
@@ -545,7 +548,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		log_game("[key_name_admin(client)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize((is_nested && nest && !QDELETED(nest))) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		SEND_SIGNAL(src, COMSIG_LIVING_GHOSTED, ghost)
-		if(ghost && !should_block_game_interaction(src))
+		if(ghost && !should_block_game_interaction(src, include_hunting_grounds=TRUE))
 			ghost.timeofdeath = world.time
 
 			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
@@ -554,7 +557,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
 			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
-			ghost.client?.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			if(ghost.client)
+				ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+			else if(persistent_ckey)
+				var/datum/player_details/details = GLOB.player_details[persistent_ckey]
+				if(details)
+					details.larva_queue_time = max(details.larva_queue_time, new_tod)
+
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
 			nest.ghost_of_buckled_mob = ghost
@@ -867,10 +876,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"
 	set category = "Ghost.View"
-
-	var/dat = GLOB.data_core.get_manifest()
-
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"
@@ -1133,6 +1139,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_responder()
+	set category = "Ghost.Join"
+	set name = "Join as a Fax Responder"
+	set desc = "If you are whitelisted, you'll be able to join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_fax_responder_late_join(src))
+		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"
@@ -1252,11 +1272,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(ismob(target))
 		if(!jump_tag)
 			jump_tag = "FLW"
-		return "(<a href='?src=\ref[src];track=\ref[target]'>[jump_tag]</a>)"
+		return "(<a href='byond://?src=\ref[src];track=\ref[target]'>[jump_tag]</a>)"
 	if(!jump_tag)
 		jump_tag = "JMP"
 	var/turf/turf = get_turf(target)
-	return "(<a href='?src=\ref[src];jumptocoord=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>[jump_tag]</a>)"
+	return "(<a href='byond://?src=\ref[src];jumptocoord=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>[jump_tag]</a>)"
 
 /mob/dead/observer/point_to(atom/A in view())
 	if(!(client?.prefs?.toggles_chat & CHAT_DEAD))

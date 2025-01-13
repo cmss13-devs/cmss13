@@ -1034,6 +1034,12 @@
 		animate_hatch_king()
 		STOP_PROCESSING(SSobj, src)
 
+#undef STAGE_GROWING
+#undef STAGE_HALFWAY
+#undef STAGE_VOTE
+#undef STAGE_PICK
+#undef STAGE_BEFORE_HATCH
+#undef STAGE_HATCH
 
 /// Causes the halfway announcements and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()

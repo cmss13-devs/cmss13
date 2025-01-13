@@ -7,6 +7,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	unacidable = TRUE
+	keep_as_object = TRUE
 
 	var/description = null
 

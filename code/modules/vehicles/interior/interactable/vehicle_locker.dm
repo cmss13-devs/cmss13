@@ -18,16 +18,12 @@
 	var/list/role_restriction = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 
 	var/obj/item/storage/internal/container
-
-/obj/structure/vehicle_locker/Initialize()
-	. = ..()
-	container = new(src)
-	container.storage_slots = null
-	container.max_w_class = SIZE_MEDIUM
-	container.w_class = SIZE_MASSIVE
-	container.max_storage_space = 40
-	container.use_sound = null
-	container.bypass_w_limit = list(/obj/item/weapon/gun,
+	var/storage_slots = null
+	var/max_w_class = null
+	var/w_class = SIZE_MASSIVE
+	var/max_storage_space = 40
+	var/use_sound = null
+	var/list/bypass_w_limit = list(/obj/item/weapon/gun,
 									/obj/item/storage/backpack/general_belt,
 									/obj/item/storage/large_holster/machete,
 									/obj/item/storage/belt,
@@ -36,6 +32,18 @@
 									/obj/item/ammo_magazine/hardpoint,
 									/obj/item/tool/weldpack
 									)
+	var/list/can_hold = null
+
+/obj/structure/vehicle_locker/Initialize()
+	. = ..()
+	container = new(src)
+	container.storage_slots = storage_slots
+	container.max_w_class = max_w_class
+	container.w_class = w_class
+	container.max_storage_space = max_storage_space
+	container.use_sound = use_sound
+	container.bypass_w_limit = bypass_w_limit
+	container.can_hold = can_hold
 	flags_atom |= USES_HEARING
 
 /obj/structure/vehicle_locker/verb/empty_storage()
@@ -127,12 +135,12 @@
 //Cosmetically opens/closes the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.
 /obj/structure/vehicle_locker/on_pocket_open(first_open)
 	if(first_open)
-		icon_state = "locker_open"
+		icon_state = "[icon_state]_open"
 		playsound(src.loc, 'sound/handling/hinge_squeak1.ogg', 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/on_pocket_close(watchers)
 	if(!watchers)
-		icon_state = "locker"
+		icon_state = initial(icon_state)
 		playsound(src.loc, "toolbox", 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/tank
@@ -161,7 +169,7 @@
 	if(has_tray)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "locker_open"
+		icon_state = "[icon_state]_open"
 
 /obj/structure/vehicle_locker/med/Initialize()
 	. = ..()

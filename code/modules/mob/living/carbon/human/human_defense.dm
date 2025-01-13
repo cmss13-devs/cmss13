@@ -126,7 +126,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			return TRUE
 
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/yautja/chained/combistick) && prob(33))
+		if(combistick && istype(r_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
 			var/obj/item/weapon/yautja/chained/combistick/C = r_hand
 			if(C.on)
 				return TRUE

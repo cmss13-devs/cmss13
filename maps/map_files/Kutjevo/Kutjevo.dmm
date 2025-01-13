@@ -12,6 +12,16 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "aac" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/filtration/machine_32x64/indestructible{
+	bound_height = 32;
+	icon_state = "solo_tank_empty"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/kutjevo/multi_tiles/southwest,
+/area/kutjevo/interior/colony_South/power2)
+"aad" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
@@ -2139,17 +2149,6 @@
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
-"ddZ" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/filtration/machine_32x64/indestructible{
-	bound_height = 32;
-	icon_state = "solo_tank_empty"
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/kutjevo/multi_tiles/southwest,
-/area/kutjevo/interior/colony_South/power2)
 "deo" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -16092,7 +16091,7 @@ dxF
 dxF
 dxF
 dxF
-aac
+aad
 dxF
 dxF
 dxF
@@ -40820,7 +40819,7 @@ owt
 mLw
 tRi
 vdD
-ddZ
+aac
 mcv
 ouR
 ouR

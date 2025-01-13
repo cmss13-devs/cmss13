@@ -150,10 +150,10 @@
 	user.set_interaction(src)
 	var/dat = ""
 	if(temphtml)
-		dat = "[temphtml]<BR><BR><A href='?src=\ref[src];clear=1'>Main Menu</A>"
+		dat = "[temphtml]<BR><BR><A href='byond://?src=\ref[src];clear=1'>Main Menu</A>"
 	else if(!beaker)
 		dat += "Please insert beaker.<BR>"
-		dat += "<A href='?src=\ref[user];mach_close=pandemic'>Close</A>"
+		dat += "<A href='byond://?src=\ref[user];mach_close=pandemic'>Close</A>"
 	else
 		var/datum/reagent/blood/Blood = null
 		for(var/datum/reagent/blood/B in beaker.reagents.reagent_list)
@@ -186,12 +186,12 @@
 								D = GLOB.archive_diseases[A.GetDiseaseID()]
 								disease_creation = A.GetDiseaseID()
 								if(D.name == "Unknown")
-									dat += "<b><a href='?src=\ref[src];name_disease=[A.GetDiseaseID()]'>Name Disease</a></b><BR>"
+									dat += "<b><a href='byond://?src=\ref[src];name_disease=[A.GetDiseaseID()]'>Name Disease</a></b><BR>"
 
 							if(!D)
 								CRASH("We weren't able to get the advance disease from the archive.")
 
-							dat += "<b>Disease Agent:</b> [D?"[D.agent] - <A href='?src=\ref[src];create_virus_culture=[disease_creation]'>Create virus culture bottle</A>":"none"]<BR>"
+							dat += "<b>Disease Agent:</b> [D?"[D.agent] - <A href='byond://?src=\ref[src];create_virus_culture=[disease_creation]'>Create virus culture bottle</A>":"none"]<BR>"
 							dat += "<b>Common name:</b> [(D.name||"none")]<BR>"
 							dat += "<b>Description: </b> [(D.desc||"none")]<BR>"
 							dat += "<b>Spread:</b> [(D.spread||"none")]<BR>"
@@ -224,14 +224,14 @@
 							var/datum/disease/D = new type(0, null)
 							disease_name = D.name
 
-						dat += "<li>[disease_name] - <A href='?src=\ref[src];create_vaccine=[type]'>Create vaccine bottle</A></li>"
+						dat += "<li>[disease_name] - <A href='byond://?src=\ref[src];create_vaccine=[type]'>Create vaccine bottle</A></li>"
 					dat += "</ul><BR>"
 				else
 					dat += "nothing<BR>"
 			else
 				dat += "nothing<BR>"
-		dat += "<BR><A href='?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && length(beaker.reagents.reagent_list)) ? "-- <A href='?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
-		dat += "<A href='?src=\ref[user];mach_close=pandemic'>Close</A>"
+		dat += "<BR><A href='byond://?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && length(beaker.reagents.reagent_list)) ? "-- <A href='byond://?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
+		dat += "<A href='byond://?src=\ref[user];mach_close=pandemic'>Close</A>"
 
 	show_browser(user, "<TITLE>[name]</TITLE><BR>[dat]", name, "pandemic")
 	return
@@ -252,5 +252,5 @@
 		update_icon()
 
 	else
-		..()
+		. = ..()
 	return

@@ -71,9 +71,9 @@
 	..()
 	if(stat & NOPOWER)
 		dump_everything()
-		isUV = 0
-	update_icon()
-
+		if(isUV)
+			isUV = FALSE
+			update_icon()
 
 /obj/structure/machinery/suit_storage_unit/ex_act(severity)
 	switch(severity)
@@ -92,7 +92,7 @@
 	if(..())
 		return
 	if(stat & NOPOWER)
-		dat+= "<HR><BR><A href='?src=\ref[user];mach_close=suit_storage_unit'>Close panel</A>"
+		dat+= "<HR><BR><A href='byond://?src=\ref[user];mach_close=suit_storage_unit'>Close panel</A>"
 		return
 	if(isUV) //The thing is running its cauterisation cycle. You have to wait.
 		dat += SET_CLASS("<B>Unit is cauterising contents with UV ray. Please wait.</B>", INTERFACE_RED)
@@ -105,24 +105,24 @@
 
 		dat += "<font color='black'>Helmet storage compartment: <B>[inserted_helmet ? inserted_helmet.name : "</font><font color ='grey'>No helmet detected."]</B></font><BR>"
 		if(inserted_helmet && isopen)
-			dat += "<A href='?src=\ref[src];dispense_helmet=1'>Dispense helmet</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];dispense_helmet=1'>Dispense helmet</A><BR>"
 
 		dat += "<font color='black'>Suit storage compartment: <B>[inserted_suit ? inserted_suit.name : "</font><font color ='grey'>No exosuit detected."]</B></font><BR>"
 		if(inserted_suit && isopen)
-			dat += "<A href='?src=\ref[src];dispense_suit=1'>Dispense suit</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];dispense_suit=1'>Dispense suit</A><BR>"
 
 		dat += "<font color='black'>Breathmask storage compartment: <B>[inserted_mask ? inserted_mask.name : "</font><font color ='grey'>No breathmask detected."]</B></font><BR>"
 		if(inserted_mask  && isopen)
-			dat += "<A href='?src=\ref[src];dispense_mask=1'>Dispense mask</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];dispense_mask=1'>Dispense mask</A><BR>"
 
 		dat += "<font color='black'>Tank storage compartment: <B>[inserted_tank ? inserted_tank.name : "</font><font color ='grey'>No tank detected."]</B></font><BR>"
 		if(inserted_tank  && isopen)
-			dat += "<A href='?src=\ref[src];dispense_tank=1'>Dispense tank</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];dispense_tank=1'>Dispense tank</A><BR>"
 
-		dat+= "<HR><font color='black'>Unit is: [isopen ? "Open" : "Closed"] - <A href='?src=\ref[src];toggle_open=1'>[isopen ? "Close" : "Open"] Unit</A></font><BR>"
+		dat+= "<HR><font color='black'>Unit is: [isopen ? "Open" : "Closed"] - <A href='byond://?src=\ref[src];toggle_open=1'>[isopen ? "Close" : "Open"] Unit</A></font><BR>"
 
-		dat += "<A href='?src=\ref[src];start_UV=1'>Start Disinfection cycle</A><BR>"
-		dat += "<BR><BR><A href='?src=\ref[user];mach_close=suit_storage_unit'>Close control panel</A>"
+		dat += "<A href='byond://?src=\ref[src];start_UV=1'>Start Disinfection cycle</A><BR>"
+		dat += "<BR><BR><A href='byond://?src=\ref[user];mach_close=suit_storage_unit'>Close control panel</A>"
 
 	show_browser(user, dat, "Suit Storage Unit", "suit_storage_unit", "size=400x500")
 	return

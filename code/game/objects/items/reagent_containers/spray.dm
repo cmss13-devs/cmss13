@@ -245,3 +245,12 @@
 /obj/item/reagent_container/spray/hydro/Initialize()
 	. = ..()
 	reagents.add_reagent("ammonia", src.volume)
+
+/obj/item/reagent_container/spray/investigation
+	name = "forensic spray"
+	desc = /datum/reagent/forensic_spray::description
+
+/obj/item/reagent_container/spray/investigation/Initialize()
+	. = ..()
+
+	reagents.add_reagent(/datum/reagent/forensic_spray::id, volume)

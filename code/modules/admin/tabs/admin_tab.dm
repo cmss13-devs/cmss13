@@ -175,9 +175,9 @@
 		dat += "<br><br>"
 
 	dat += "<br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
@@ -281,9 +281,10 @@
 
 	var/channel = "ADMIN:"
 	channel = "[admin_holder.rank]:"
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/client as anything in GLOB.admins)
 		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
-			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
+			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -390,10 +391,10 @@
 	channel = "[admin_holder.rank]:"
 	if(check_rights(R_MOD|R_ADMIN,0))
 		color = "mentorstaff"
-
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM><EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mentor_say()
 	var/msg = input(src, null, "mentorsay \"text\"") as text|null
@@ -532,20 +533,20 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
 		<BR>
 		"}
 
@@ -566,9 +567,9 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
 		Forcibly removes vehicle clamp from vehicle selected from a list. Drops it under the vehicle.<BR>
-		<A href='?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
 		Fully restores vehicle modules and hull health.<BR>
 		"}
 
@@ -586,21 +587,21 @@
 
 /datum/admins/proc/in_view_panel()
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
 
-		<A href='?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
 		<BR>
 		"}
 

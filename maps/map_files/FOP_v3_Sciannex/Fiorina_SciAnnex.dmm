@@ -26,12 +26,20 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "aae" = (
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	registered_name = "John Smith"
+	},
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
+"aaf" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"aaf" = (
+"aag" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
@@ -10567,12 +10575,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"ifB" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "ifJ" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -29902,14 +29904,6 @@
 	},
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco/east_disco)
-"xbp" = (
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "xbr" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/prison/green/north,
@@ -39054,7 +39048,7 @@ agi
 agi
 agi
 agi
-aaf
+aag
 agi
 agi
 agi
@@ -59031,7 +59025,7 @@ mEO
 oou
 aFZ
 blI
-ifB
+axW
 pFE
 uFx
 lud
@@ -72446,7 +72440,7 @@ mok
 mxQ
 pRx
 tOM
-xbp
+aae
 xhV
 gbf
 fOT
@@ -81287,7 +81281,7 @@ xeO
 xeO
 xeO
 xeO
-aae
+aaf
 xeO
 xeO
 xeO

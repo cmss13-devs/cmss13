@@ -388,11 +388,10 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "abC" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/west_tunnel)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -402,11 +401,23 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"abE" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
+"abG" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
@@ -49084,13 +49095,6 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
-"uKX" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/disposalpipe/segment,
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "uLr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50316,12 +50320,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
-"xlt" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/asphalt/cement/cement1,
-/area/desert_dam/interior/dam_interior/west_tunnel)
 "xlE" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -55125,7 +55123,7 @@ bht
 bht
 bht
 bht
-abC
+abG
 afc
 dTs
 dTs
@@ -60782,7 +60780,7 @@ cLX
 cLX
 cLX
 cLX
-xlt
+abC
 wrz
 cfl
 bkj
@@ -67801,7 +67799,7 @@ cdo
 cla
 dNl
 clU
-uKX
+abE
 wjR
 ceK
 cxe

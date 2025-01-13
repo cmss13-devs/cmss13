@@ -4,6 +4,7 @@
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
+	item_state = "binoculars"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
@@ -12,6 +13,9 @@
 	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
+	/// If FALSE won't change icon_state to a camo marine bino.
+	var/uses_camo = TRUE
+	var/raised = FALSE
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
@@ -30,10 +34,32 @@
 
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
+
+	if(raised)
+		set_raised(FALSE, user)
+	else
+		set_raised(TRUE, user)
+
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_long_range_sentry))
 		zoom(user, hvh_tile_offset, hvh_zoom_viewsize)
 	else
 		zoom(user, tile_offset, viewsize)
+
+/obj/item/device/binoculars/proc/set_raised(to_raise, mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+
+	if(!to_raise)
+		raised = FALSE
+		item_state = icon_state
+	else if(!COOLDOWN_FINISHED(user, zoom_cooldown))
+		item_state = icon_state
+	else
+		raised = TRUE
+		item_state = item_state + "_eyes"
+
+	user.update_inv_r_hand()
+	user.update_inv_l_hand()
 
 /obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
 	. = ..()
@@ -46,6 +72,7 @@
 /obj/item/device/binoculars/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 	UnregisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION)
+	set_raised(FALSE, user)
 
 /obj/item/device/binoculars/proc/interaction_handler()
 	return COMPONENT_HUMAN_MOVEMENT_KEEP_USING
@@ -61,6 +88,7 @@
 	gender = NEUTER
 	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
+	item_state = "rangefinder"
 	var/laser_cooldown = 0
 	var/cooldown_duration = 200 //20 seconds
 	var/obj/effect/overlay/temp/laser_coordinate/coord

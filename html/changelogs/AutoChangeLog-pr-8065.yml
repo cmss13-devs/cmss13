@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "you can't accidentally end up ghosting when trying to join as xeno when no larva are available"

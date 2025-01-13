@@ -523,10 +523,10 @@
 		/obj/item/clothing/suit/armor/vest/security,
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/suit/storage/labcoat,
-		/obj/item/clothing/suit/storage/jacket/marine/,
-		/obj/item/clothing/suit/storage/CMB/trenchcoat/,
-		/obj/item/clothing/suit/storage/windbreaker/,
-		/obj/item/clothing/suit/storage/snow_suit/,
+		/obj/item/clothing/suit/storage/jacket/marine,
+		/obj/item/clothing/suit/storage/CMB/trenchcoat,
+		/obj/item/clothing/suit/storage/windbreaker,
+		/obj/item/clothing/suit/storage/snow_suit,
 	) //if you remove this, it allows you to wear the marine M3 armor over the pmc fatigues
 
 /obj/item/clothing/under/marine/veteran/pmc/leader

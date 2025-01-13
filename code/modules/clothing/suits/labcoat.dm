@@ -30,7 +30,7 @@
 		/obj/item/roller,
 		/obj/item/tool/surgery/bonegel,
 		/obj/item/stack/nanopaste,
-		/obj/item/reagent_container/blood/,
+		/obj/item/reagent_container/blood,
 		/obj/item/reagent_container/spray/cleaner,
 
 		/obj/item/storage/fancy/cigarettes,

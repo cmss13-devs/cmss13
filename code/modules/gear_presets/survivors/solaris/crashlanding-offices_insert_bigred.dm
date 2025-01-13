@@ -12,7 +12,7 @@
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	minimap_icon = "private"
+	minimap_icon = "pmc_gun"
 	minimap_background = "background_pmc"
 
 	access = list(
@@ -79,7 +79,7 @@
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 	skills = /datum/skills/civilian/survivor/pmc/engineer
-	minimap_icon = "engi"
+	minimap_icon = "mt"
 
 /datum/equipment_preset/survivor/pmc/engineer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/cct/hvh, WEAR_L_EAR)
@@ -120,6 +120,7 @@
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
 	rank = JOB_EXECUTIVE_SUPERVISOR
+	minimap_icon = "exec_super"
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction = FACTION_WY

@@ -376,6 +376,9 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	rank = JOB_EXECUTIVE
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -387,7 +390,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_icon = "cl"
-	minimap_background = "background_civillian"
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human, client/mob_client)
 	if(paygrades.len == 1)

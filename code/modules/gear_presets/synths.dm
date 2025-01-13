@@ -182,6 +182,7 @@
 
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -499,7 +500,6 @@
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
-	minimap_background = "background_pmc"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,

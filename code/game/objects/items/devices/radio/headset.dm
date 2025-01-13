@@ -369,8 +369,8 @@
 			marker_flags = MINIMAP_FLAG_USCM
 		else if(hud_type == MOB_HUD_FACTION_UPP)
 			marker_flags = MINIMAP_FLAG_UPP
-		else if(hud_type == MOB_HUD_FACTION_PMC)
-			marker_flags = MINIMAP_FLAG_PMC
+		else if(hud_type == MOB_HUD_FACTION_PMC || MOB_HUD_FACTION_WY)
+			marker_flags = MINIMAP_FLAG_WY
 		else if(hud_type == MOB_HUD_FACTION_CLF)
 			marker_flags = MINIMAP_FLAG_CLF
 
@@ -992,8 +992,10 @@
 /obj/item/device/radio/headset/distress/WY
 	name = "WY corporate headset"
 	desc = "A headset commonly worn by WY corporate personnel."
+	icon_state = "wy_headset"
 	frequency = WY_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+	hud_type = MOB_HUD_FACTION_WY
 
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"

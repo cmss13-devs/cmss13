@@ -135,9 +135,11 @@
 	icon_state = "labcoat_tox"
 
 /obj/item/clothing/suit/storage/labcoat/officer
-	//name = "Medical officer's labcoat"
+	name = "Chief Medical Officer's labcoat"
+	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's labcoat"

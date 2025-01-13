@@ -244,3 +244,61 @@
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
+
+/mob/verb/look_up()
+	set name = "Look Up"
+	set category = "IC"
+
+	if(!istype(/mob/living))
+		return
+
+	var/turf/above = locate(x, y, z+1)
+
+	if(!istype(above, /turf/open_space))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
+		return
+
+	observed_turf = above
+
+	RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(look_up_mob_move_or_look))
+	RegisterSignal(above, COMSIG_PARENT_QDELETING, PROC_REF(look_up_handle_deletion))
+	
+	if(client)
+		RegisterSignal(client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(look_up_reset_view))
+
+	reset_view()
+
+/mob/proc/look_up_reset_view()
+	SIGNAL_HANDLER
+
+	if (client)
+		client.perspective = EYE_PERSPECTIVE
+		client.eye = observed_turf
+
+/mob/proc/look_up_mob_move_or_look(mob/mover, actually_moving, direction, specific_direction)
+	SIGNAL_HANDLER
+	
+	if(!actually_moving)
+		return
+	
+	UnregisterSignal(observed_turf, COMSIG_PARENT_QDELETING)
+	observed_turf = null
+	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
+
+	if(client)
+		UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+
+	reset_view()
+	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK
+
+/mob/proc/look_up_handle_deletion()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(observed_turf, COMSIG_PARENT_QDELETING)
+	observed_turf = null
+	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
+
+	if(client)
+		UnregisterSignal(client, COMSIG_CLIENT_RESET_VIEW)
+
+	reset_view()

@@ -49,6 +49,7 @@
 	item_verbs = null
 	luminosity_sources = null
 	focus = null
+	observed_turf = null
 
 /mob/Initialize()
 	if(!faction_group)

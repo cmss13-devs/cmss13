@@ -3,7 +3,9 @@
 	name = "space"
 	icon_state = "0"
 	plane = PLANE_SPACE
-	layer = SPACE_LAYER
+	layer = UNDER_TURF_LAYER
+	can_bloody = FALSE
+	supports_surgery = FALSE
 
 /turf/open/space/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(FALSE)

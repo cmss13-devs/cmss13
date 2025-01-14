@@ -201,7 +201,6 @@
 	icon_state = "bptube1"
 	base_state = "bptube"
 	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
-	bulb_colour = COLOR_SOFT_BLUE
 
 /obj/structure/machinery/light/spot
 	name = "spotlight"

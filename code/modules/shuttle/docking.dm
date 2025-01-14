@@ -184,7 +184,7 @@
 			else
 				old_ceiling.baseturfs -= custom_ceiling
 
-	for(var/i in 1 to moved_atoms.len)
+	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK
 		var/atom/movable/moved_object = moved_atoms[i]
 		if(QDELETED(moved_object))

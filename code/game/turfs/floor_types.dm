@@ -2160,6 +2160,9 @@
 	base_icon = "roof"
 	name = "roof"
 
+	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
+	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
+
 	blend_turfs = list(/turf/closed/wall, /turf/open/floor/roof)
 	noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment)
 

@@ -30,19 +30,7 @@
     "traits": [
         {
             "Ground": true,
-            "Up": 1,
             "Baseturf": "/turf/open/ice"
-        },
-        {
-            "Ground": true,
-            "Down": -1,
-            "Up": 1,
-            "Baseturf": "/turf/open/openspace"
-        },
-        {
-            "Ground": true,
-            "Down": -1,
-            "Baseturf": "/turf/open/openspace"
         }
     ],
     "xvx_hives": {

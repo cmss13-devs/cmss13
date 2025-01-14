@@ -29,13 +29,7 @@
     "traits": [
         {
             "Ground": true,
-            "Up": 1,
             "Baseturf": "/turf/open/gm/dirt"
-        },
-        {
-            "Ground": true,
-            "Down": -1,
-            "Baseturf": "/turf/open/openspace"
         }
     ],
     "nightmare_path": "maps/Nightmare/maps/LV624/",

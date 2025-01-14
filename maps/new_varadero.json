@@ -38,13 +38,7 @@
     "traits": [
         {
             "Ground": true,
-            "Up": 1,
             "Baseturf": "/turf/open/auto_turf/sand_white"
-        },
-        {
-            "Ground": true,
-            "Down": -1,
-            "Baseturf": "/turf/open/openspace"
         }
     ],
     "xvx_hives": {

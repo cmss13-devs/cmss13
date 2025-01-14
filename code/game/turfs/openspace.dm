@@ -71,6 +71,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open/openspace/Initialize(mapload) // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 //TODO (MULTIZ): IMPROVE IT, REMOVE THAT AND DO IT OTHER WAY, LIKE PROC [ON_OPENSPACE_UNDERNEATH] THAT WE CALL TO ALL SHIT ON THIS TURF WHEN IT"S CREATED
+/*
 	pass_flags = GLOB.pass_flags_cache[type]// fix for passflags
 	if (isnull(pass_flags))
 		pass_flags = new()
@@ -78,7 +79,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
-
 	for(var/obj/structure/locked_stuff in contents)
 		if(!locked_stuff.anchored)
 			continue
@@ -97,6 +97,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			locked_stuff.ex_act(50, DOWN)
 		else
 			locked_stuff.ex_act(200, DOWN)
+*/
 
 	. = ..()
 

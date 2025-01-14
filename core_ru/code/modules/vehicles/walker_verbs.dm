@@ -81,9 +81,6 @@
 		return FALSE
 
 	var/obj/item/walker_gun/hardpoint = tgui_input_list(usr, "Select a hardpoint to eject magazine.", "Eject Magazine", acceptible_modules)
-	if(!hardpoint)
-		return FALSE
-
 	if(!hardpoint || !hardpoint.ammo)
 		return FALSE
 

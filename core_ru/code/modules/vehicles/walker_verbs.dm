@@ -1,11 +1,9 @@
-/obj/vehicle/walker/proc/exit_walker(mob/user_mob)
+/obj/vehicle/walker/proc/exit_walker()
 	set name = "Eject"
 	set category = "Vehicle"
 
-	if(!user_mob)
-		user_mob = usr
-
-	if(!user_mob || !istype(user_mob))
+	var/mob/user = usr
+	if(!istype(user))
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
@@ -33,14 +31,12 @@
 	return TRUE
 
 
-/obj/vehicle/walker/proc/toggle_lights(mob/user_mob)
+/obj/vehicle/walker/proc/toggle_lights()
 	set name = "Lights on/off"
 	set category = "Vehicle"
 
-	if(!user_mob)
-		user_mob = usr
-
-	if(!user_mob || !istype(user_mob))
+	var/mob/user = usr
+	if(!istype(user))
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
@@ -57,14 +53,12 @@
 	return TRUE
 
 
-/obj/vehicle/walker/proc/eject_magazine(mob/user_mob)
+/obj/vehicle/walker/proc/eject_magazine()
 	set name = "Eject Magazine"
 	set category = "Vehicle"
 
-	if(!user_mob)
-		user_mob = usr
-
-	if(!user_mob || !istype(user_mob))
+	var/mob/user = usr
+	if(!istype(user))
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
@@ -91,14 +85,12 @@
 	return TRUE
 
 
-/obj/vehicle/walker/proc/get_stats(mob/user_mob)
+/obj/vehicle/walker/proc/get_stats()
 	set name = "Status Display"
 	set category = "Vehicle"
 
-	if(!user_mob)
-		user_mob = usr
-
-	if(!user_mob || !istype(user_mob))
+	var/mob/user = usr
+	if(!istype(user))
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
@@ -107,14 +99,12 @@
 	tgui_interact(user_mob)
 	return TRUE
 
-/obj/vehicle/walker/proc/toggle_zoom(mob/user_mob)
+/obj/vehicle/walker/proc/toggle_zoom()
 	set name = "Zoom on/off"
 	set category = "Vehicle"
 
-	if(!user_mob)
-		user_mob = usr
-
-	if(!user_mob || !istype(user_mob))
+	var/mob/user = usr
+	if(!istype(user))
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))

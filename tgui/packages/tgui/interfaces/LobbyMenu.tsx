@@ -36,6 +36,8 @@ type LobbyData = {
   round_start: BooleanLike;
   readied: BooleanLike;
 
+  confirmation_message?: string | string[];
+
   upp_enabled: BooleanLike;
   xenomorph_enabled: BooleanLike;
   predator_enabled: BooleanLike;
@@ -56,7 +58,7 @@ const LobbyContext = createContext<LobbyContextType>({
 export const LobbyMenu = () => {
   const { act, data } = useBackend<LobbyData>();
 
-  const { lobby_author, upp_enabled } = data;
+  const { lobby_author, upp_enabled, confirmation_message } = data;
 
   const onLoadPlayer = useRef<HTMLAudioElement>(null);
 
@@ -81,6 +83,44 @@ export const LobbyMenu = () => {
       setDisableAnimations(true);
     }, 10000);
   }, []);
+
+  useEffect(() => {
+    if (!confirmation_message) return;
+
+    setModal(
+      <Section
+        buttons={
+          <Button
+            mb={5}
+            onClick={() => {
+              setModal!(false);
+              act('unconfirm');
+            }}
+            icon={'x'}
+          />
+        }
+        p={3}
+        title={'Confirm'}
+      >
+        <Box>
+          <Stack vertical>
+            {Array.isArray(confirmation_message) ? (
+              confirmation_message.map((element, index) => (
+                <Stack.Item key={index}>{element}</Stack.Item>
+              ))
+            ) : (
+              <Stack.Item>{confirmation_message}</Stack.Item>
+            )}
+          </Stack>
+          <Stack justify="center">
+            <Stack.Item>
+              <Button onClick={() => act('confirm')}>Confirm</Button>
+            </Stack.Item>
+          </Stack>
+        </Box>
+      </Section>,
+    );
+  }, [confirmation_message]);
 
   const [hidden, setHidden] = useState<boolean>(false);
 
@@ -420,27 +460,7 @@ const LobbyButtons = (props: {
                   <LobbyButton
                     index={6}
                     icon="viruses"
-                    onClick={() => {
-                      setModal(
-                        <ModalConfirm>
-                          <Box>
-                            <Stack vertical>
-                              <Stack.Item>
-                                Are you sure want to attempt joining as a
-                                Xenomorph?
-                              </Stack.Item>
-                            </Stack>
-                            <Stack justify="center">
-                              <Stack.Item>
-                                <Button onClick={() => act('late_join_xeno')}>
-                                  Confirm
-                                </Button>
-                              </Stack.Item>
-                            </Stack>
-                          </Box>
-                        </ModalConfirm>,
-                      );
-                    }}
+                    onClick={() => act('late_join_xeno')}
                   >
                     Join the Hive
                   </LobbyButton>

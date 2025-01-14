@@ -26,20 +26,12 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "aae" = (
-/obj/item/card/id/silver/clearance_badge/cl{
-	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
-	name = "certified powerloader operator card";
-	registered_name = "John Smith"
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
-"aaf" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"aag" = (
+"aaf" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhupplz1"
 	},
@@ -29904,6 +29896,14 @@
 	},
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/disco/east_disco)
+"xbp" = (
+/obj/item/card/id/silver/clearance_badge/cl{
+	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
+	name = "certified powerloader operator card";
+	registered_name = "John Smith"
+	},
+/turf/open/floor/prison/bluefull,
+/area/fiorina/station/power_ring)
 "xbr" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/prison/green/north,
@@ -39048,7 +39048,7 @@ agi
 agi
 agi
 agi
-aag
+aaf
 agi
 agi
 agi
@@ -72440,7 +72440,7 @@ mok
 mxQ
 pRx
 tOM
-aae
+xbp
 xhV
 gbf
 fOT
@@ -81281,7 +81281,7 @@ xeO
 xeO
 xeO
 xeO
-aaf
+aae
 xeO
 xeO
 xeO

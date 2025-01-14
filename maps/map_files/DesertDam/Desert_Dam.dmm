@@ -388,11 +388,11 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "abC" = (
-/obj/item/reagent_container/food/drinks/flask/detflask,
-/obj/item/clothing/head/fedora,
-/obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/interior/wood,
-/area/desert_dam/building/security/detective)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -402,12 +402,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"abE" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/open/desert/rock/deep/transition/west,
-/area/desert_dam/interior/dam_interior/hanger)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
@@ -21326,6 +21320,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/vault2/northeast,
 /area/desert_dam/building/security/prison)
+"bWO" = (
+/obj/item/reagent_container/food/drinks/flask/detflask,
+/obj/item/clothing/head/fedora,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/security/detective)
 "bWP" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/sand_overlay/sand2{
@@ -55123,7 +55123,7 @@ bht
 bht
 bht
 bht
-abE
+abC
 afc
 dTs
 dTs
@@ -59626,7 +59626,7 @@ hrM
 aVB
 aXE
 aZJ
-abC
+bWO
 bjI
 oJW
 aVB

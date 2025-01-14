@@ -787,16 +787,16 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
-"ada" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/head/fedora,
-/turf/open/floor/wood,
-/area/bigredv2/outside/marshal_office)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"adc" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/clothing/head/fedora,
+/turf/open/floor/wood,
+/area/bigredv2/outside/marshal_office)
 "add" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -60744,7 +60744,7 @@ asc
 acq
 jAR
 aeu
-ada
+adc
 afs
 adW
 acp

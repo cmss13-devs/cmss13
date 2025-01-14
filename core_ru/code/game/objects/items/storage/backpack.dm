@@ -1,10 +1,10 @@
 /obj/item/storage/backpack/marine/satchel/rto/pickup(mob/M, silent)
-	if(M.job == JOB_SQUAD_TEAM_LEADER)
+	if(M.job == JOB_SQUAD_TEAM_LEADER || M.job == JOB_SQUAD_LEADER)
 		give_action(M, /datum/action/human_action/activable/droppod)
 	..()
 
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/living/M)
-	if(M.job == JOB_SQUAD_TEAM_LEADER)
+	if(M.job == JOB_SQUAD_TEAM_LEADER || M.job == JOB_SQUAD_LEADER)
 		for(var/datum/action/human_action/activable/droppod/S in M.actions)
 			S.remove_from(M)
 			break

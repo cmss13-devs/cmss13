@@ -212,7 +212,8 @@
 				return
 			if(!(current_gear.slot && new_human.equip_to_slot_or_del(new current_gear.path, current_gear.slot)))
 				var/obj/equipping_gear = new current_gear.path
-				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)
+				if(!new_human.equip_to_slot_if_possible(equipping_gear, WEAR_IN_BACK, disable_warning = TRUE))
+					equipping_gear.forceMove(get_turf(new_human))
 
 	//Gives ranks to the ranked
 	var/current_rank = paygrades[1]

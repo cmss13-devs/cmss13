@@ -355,7 +355,6 @@
 	name = "\improper M3 pattern commanding officer armor"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
 	icon_state = "co"
-	item_state = "co"
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	storage_slots = 3
 	flags_atom = NO_NAME_OVERRIDE

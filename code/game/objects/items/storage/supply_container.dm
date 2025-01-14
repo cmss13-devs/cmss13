@@ -13,7 +13,7 @@
 	role_restriction = null
 
 /obj/structure/vehicle_locker/supply_container/ammo //proof of concept it needs common ancestor with vehicle locker but that one is just so cool
-	storage_slots = 15
+	storage_slots = 14
 	can_hold = list(
 		/obj/item/ammo_box,
 	)

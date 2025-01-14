@@ -31,7 +31,7 @@ export const LoadoutPicker = () => {
   const [selected, setSelected] = useState(categories[0]);
 
   return (
-    <Window height={485} width={610} theme="crtblue">
+    <Window height={485} width={910} theme="crtblue">
       <Window.Content className="LoadoutPicker">
         <Stack fill>
           <Stack.Item>

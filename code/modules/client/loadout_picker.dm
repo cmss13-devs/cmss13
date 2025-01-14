@@ -1,6 +1,8 @@
 /datum/loadout_picker/ui_static_data(mob/user)
 	. = ..()
 
+	var/job = user.client?.prefs.get_high_priority_job()
+
 	.["categories"] = list()
 	for(var/category in GLOB.gear_datums_by_category)
 		var/list/datum/gear/gears = GLOB.gear_datums_by_category[category]
@@ -9,9 +11,16 @@
 
 		for(var/gear_key as anything in gears)
 			var/datum/gear/gear = gears[gear_key]
+
+			if(length(gear.allowed_roles) && !(job in gear.allowed_roles))
+				continue
+
 			items += list(
 				list("name" = gear.display_name, "type" = gear.type, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
 			)
+
+		if(!length(items))
+			continue
 
 		.["categories"] += list(
 			list("name" = category, "items" = items)
@@ -35,7 +44,7 @@
 		points += gear.cost
 
 		.["loadout"] += list(
-			list("name" = gear.display_name, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
+			list("name" = gear.display_name, "type" = gear.type, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
 		)
 
 	.["points"] = points

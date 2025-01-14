@@ -7,24 +7,24 @@
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
-		src = user_mob.interactee
+		src = user.interactee
 
 	if(zoom)
 		unzoom()
 
-	if(user_mob.client)
-		user_mob.client.mouse_pointer_icon = initial(user_mob.client.mouse_pointer_icon)
+	if(user.client)
+		user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
 
-	user_mob.unset_interaction()
-	user_mob.loc = get_turf(src)
-	user_mob.reset_view(null)
-	remove_verb(user_mob.client, verb_list)
-	UnregisterSignal(user_mob, COMSIG_MOB_RESISTED)
+	user.unset_interaction()
+	user.loc = get_turf(src)
+	user.reset_view(null)
+	remove_verb(user.client, verb_list)
+	UnregisterSignal(user, COMSIG_MOB_RESISTED)
 
 	if(module_map[WALKER_HARDPOIN_LEFT])
-		module_map[WALKER_HARDPOIN_LEFT].unregister_signals(user_mob)
+		module_map[WALKER_HARDPOIN_LEFT].unregister_signals(user)
 	if(module_map[WALKER_HARDPOIN_RIGHT])
-		module_map[WALKER_HARDPOIN_RIGHT].unregister_signals(user_mob)
+		module_map[WALKER_HARDPOIN_RIGHT].unregister_signals(user)
 
 	seats[VEHICLE_DRIVER] = null
 	update_icon()
@@ -40,7 +40,7 @@
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
-		src = user_mob.interactee
+		src = user.interactee
 
 	if(lights)
 		lights = FALSE
@@ -62,7 +62,7 @@
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
-		src = user_mob.interactee
+		src = user.interactee
 
 	var/list/acceptible_modules = list()
 	if(module_map[WALKER_HARDPOIN_LEFT]?.ammo)
@@ -71,7 +71,7 @@
 		acceptible_modules += module_map[WALKER_HARDPOIN_RIGHT]
 
 	if(!length(acceptible_modules))
-		to_chat(user_mob, "Not found magazines to eject")
+		to_chat(user, "Not found magazines to eject")
 		return FALSE
 
 	var/obj/item/walker_gun/hardpoint = tgui_input_list(usr, "Select a hardpoint to eject magazine.", "Eject Magazine", acceptible_modules)
@@ -80,7 +80,7 @@
 
 	hardpoint.ammo.forceMove(get_turf(src))
 	hardpoint.ammo = null
-	to_chat(user_mob, SPAN_WARNING("WARNING! [hardpoint.name] ammo magazine deployed."))
+	to_chat(user, SPAN_WARNING("WARNING! [hardpoint.name] ammo magazine deployed."))
 	visible_message("[name]'s systems ejected used magazine.","")
 	return TRUE
 
@@ -94,9 +94,9 @@
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
-		src = user_mob.interactee
+		src = user.interactee
 
-	tgui_interact(user_mob)
+	tgui_interact(user)
 	return TRUE
 
 /obj/vehicle/walker/proc/toggle_zoom()
@@ -108,7 +108,7 @@
 		return FALSE
 
 	if(!istype(src, /obj/vehicle/walker))
-		src = user_mob.interactee
+		src = user.interactee
 
 	if(zoom)
 		unzoom()

@@ -482,6 +482,7 @@
 	explo_proof = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
 	map_specific_decoration = TRUE
+	start_automatic = TRUE
 
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
@@ -609,11 +610,6 @@
 	. = ..()
 	if(iff_enabled)
 		modify_fire_delay(FIRE_DELAY_TIER_12)
-		add_firemode(GUN_FIREMODE_AUTOMATIC)
-
-	else
-		add_firemode(GUN_FIREMODE_BURSTFIRE)
-		add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H

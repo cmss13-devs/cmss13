@@ -556,7 +556,7 @@ function draw_mc() {
 		if (part[2]) {
 			var a = document.createElement("a");
 			a.href =
-				"?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
+				"byond://?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
 			a.textContent = part[1];
 			td2.appendChild(a);
 		} else {

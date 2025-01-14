@@ -533,9 +533,9 @@
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
+		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
 		linked_human = null
 		is_locked = FALSE
-		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
 
 /obj/item/weapon/gun/rifle/m46c/pickup(user)
 	if(!linked_human)

@@ -203,8 +203,8 @@
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
 
-	for(var/gear_item in gear)
-		var/datum/gear/gear = GLOB.gear_datums_by_name[gear_item]
+	for(var/gear_type in gear)
+		var/datum/gear/gear = GLOB.gear_datums_by_type[gear_type]
 		var/obj/item/item = new gear.path()
 
 		if(!preview_dummy.equip_to_appropriate_slot(item))

@@ -9746,7 +9746,6 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "OT" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 4
 	},

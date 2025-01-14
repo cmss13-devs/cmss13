@@ -1,19 +1,24 @@
 GLOBAL_LIST_EMPTY(gear_datums_by_category)
+
 GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
+GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_type, /datum/gear)
+
 
 /proc/populate_gear_list()
 	var/datum/gear/G
 	for(var/gear_type in subtypesof(/datum/gear))
 		G = new gear_type()
-		if(!G.display_name)
+		if(!G.path)
 			continue //Skipping parent types that are not actual items.
+		if(!G.display_name)
+			G.display_name = capitalize(strip_improper(G.path::name))
 		if(!G.category)
 			log_debug("Improper gear datum: [gear_type].")
 			continue
-		if(G.display_name in GLOB.gear_datums_by_name)
-			log_debug("Duplicate gear datum name: [G.display_name].")
-			continue
 		LAZYSET(GLOB.gear_datums_by_category[G.category], "[G.display_name] [G.cost == 1 ? "(1 point)" : "([G.cost] points)"]", G)
+		GLOB.gear_datums_by_type[G.type] = G
+
+		// it's okay if this gets clobbered by duplicate names, it's just used for a best guess to convert old names to types
 		GLOB.gear_datums_by_name[G.display_name] = G
 
 /datum/gear

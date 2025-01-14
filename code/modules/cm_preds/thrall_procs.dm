@@ -120,8 +120,6 @@
 		return
 	else
 		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = T.gloves
-		var/hair = T.h_style
-		var/fhair = T.f_style
 
 		linked_bracer = thrall_gloves
 		thrall_gloves.linked_bracer = src

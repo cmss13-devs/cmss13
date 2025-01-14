@@ -135,6 +135,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("PATCHES (DISCRETIONARY)", 0, null, null, null),
 		list("Falling Falcons Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 0, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
+		list("Falling Falcons Challenge Coin", 0, /obj/item/coin/silver/falcon, null, VENDOR_ITEM_REGULAR)
 ))
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer

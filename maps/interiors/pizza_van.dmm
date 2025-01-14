@@ -3,19 +3,19 @@
 /obj/structure/interior_wall/pizza_van{
 	icon_state = "back_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "e" = (
 /obj/structure/interior_wall/pizza_van{
 	icon_state = "back_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "f" = (
 /obj/effect/vehicle_roof/pizza_van{
 	icon_state = "front_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "h" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -32,7 +32,7 @@
 /obj/effect/vehicle_roof/pizza_van{
 	icon_state = "front_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "j" = (
 /obj/structure/interior_wall/pizza_van,
@@ -43,7 +43,7 @@
 /obj/effect/vehicle_roof/pizza_van{
 	icon_state = "roof_4"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "n" = (
 /obj/structure/interior_wall/pizza_van{
@@ -52,7 +52,7 @@
 	layer = 5.2;
 	alpha = 50
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "o" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
@@ -72,13 +72,13 @@
 /obj/effect/vehicle_roof/pizza_van{
 	icon_state = "roof_5"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "s" = (
 /obj/structure/interior_wall/pizza_van{
 	icon_state = "back_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "t" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -111,13 +111,13 @@
 /obj/effect/vehicle_roof/pizza_van{
 	icon_state = "front_roof_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "w" = (
 /obj/effect/vehicle_roof/pizza_van{
 	icon_state = "front_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "y" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -152,7 +152,7 @@
 	layer = 5.2;
 	alpha = 50
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "M" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -178,7 +178,7 @@
 /turf/open/shuttle/vehicle/med/gray,
 /area/interior/vehicle/pizza_van)
 "O" = (
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "V" = (
 /obj/structure/interior_wall/pizza_van{
@@ -187,7 +187,7 @@
 	layer = 5.2;
 	alpha = 50
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 
 (1,1,1) = {"

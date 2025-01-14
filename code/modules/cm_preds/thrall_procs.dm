@@ -120,20 +120,22 @@
 		return
 	else
 		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = T.gloves
+		var/hair = T.h_style
+		var/fhair = T.f_style
 
 		linked_bracer = thrall_gloves
 		thrall_gloves.linked_bracer = src
 		thrall_gloves.owner = T
 		thrall_gloves.verbs += /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
 		T.client?.init_verbs()
-
+		T.set_species("Thrall")
+		T.allow_gun_usage = FALSE
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)
 			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 		to_chat(T, SPAN_WARNING("\The [thrall_gloves] locks around your wrist with a sharp click."))
 		to_chat(T, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
-		T.species.acid_blood_dodge_chance = 70
 		if(thrall_gloves.notification_sound)
 			playsound(thrall_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -212,6 +214,7 @@
 		to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
 
 #define THRALL_CREATE_STIM_COOLDOWN "thrall_create_stim_cooldown"
+
 /obj/item/clothing/gloves/yautja/thrall/verb/create_stim()
 	set name = "Create Stimulant"
 	set category = "Yautja.Thrall"

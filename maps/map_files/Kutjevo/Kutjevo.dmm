@@ -12,21 +12,59 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "aac" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/filtration/machine_32x64/indestructible{
-	bound_height = 32;
-	icon_state = "solo_tank_empty"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/kutjevo/multi_tiles/southwest,
-/area/kutjevo/interior/colony_South/power2)
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
 "aad" = (
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/botany)
+"aae" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
+"aaf" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/botany)
+"aag" = (
+/obj/structure/machinery/door_control/brbutton{
+	health = null;
+	id = "kutjevo_medlock_west";
+	idle_power_usage = 0;
+	explo_proof = 1;
+	name = "Medical West Lock Override";
+	pixel_y = 22;
+	range = 15
+	},
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/med)
+"aah" = (
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction)
+"aai" = (
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/colors/purple/edge/north,
+/area/kutjevo/interior/construction)
+"aaj" = (
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner/west,
+/area/kutjevo/interior/complex/med/operating)
+"aak" = (
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/operating)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -2149,6 +2187,16 @@
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
+"ddZ" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/filtration/machine_32x64/indestructible{
+	bound_height = 32;
+	icon_state = "solo_tank_empty"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/kutjevo/multi_tiles/southwest,
+/area/kutjevo/interior/colony_South/power2)
 "deo" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -3644,17 +3692,6 @@
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/colony_South/power2)
-"foI" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 20
-	},
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/multi_tiles/east,
-/area/kutjevo/interior/complex/botany)
 "fpj" = (
 /obj/item/trash/hotdog,
 /turf/open/auto_turf/sand/layer2,
@@ -4414,10 +4451,6 @@
 /obj/item/tool/wrench,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
-"gEc" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/colors/cyan/inner_corner/west,
-/area/kutjevo/interior/complex/med/operating)
 "gEe" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibarm"
@@ -4774,10 +4807,6 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
-"hkq" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/interior/construction)
 "hkO" = (
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/complex/botany)
@@ -6678,10 +6707,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/exterior/Northwest_Colony)
-"kuL" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/colors/purple/edge/north,
-/area/kutjevo/interior/construction)
 "kuM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -6789,19 +6814,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east_tech)
-"kBb" = (
-/obj/structure/machinery/door_control/brbutton{
-	health = null;
-	id = "kutjevo_medlock_west";
-	idle_power_usage = 0;
-	explo_proof = 1;
-	name = "Medical West Lock Override";
-	pixel_y = 22;
-	range = 15
-	},
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/tan/grey_edge/north,
-/area/kutjevo/interior/complex/med)
 "kBm" = (
 /obj/structure/closet/crate,
 /obj/effect/landmark/objective_landmark/close,
@@ -8129,10 +8141,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
-"mCf" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/colors/cyan/tile,
-/area/kutjevo/interior/complex/med/operating)
 "mCo" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -10362,10 +10370,6 @@
 /obj/item/clock,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
-"pLS" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/colors/red,
-/area/kutjevo/interior/complex/botany)
 "pMw" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
@@ -11723,10 +11727,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
-"scY" = (
-/obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/interior/complex/botany)
 "sdn" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 4;
@@ -16091,7 +16091,7 @@ dxF
 dxF
 dxF
 dxF
-aad
+aae
 dxF
 dxF
 dxF
@@ -30642,7 +30642,7 @@ vDS
 vDS
 vDS
 vDS
-scY
+aac
 jrJ
 vDS
 lHs
@@ -31414,7 +31414,7 @@ qpg
 oVt
 kkH
 rQa
-gEc
+aaj
 cbg
 mqG
 gNI
@@ -31748,7 +31748,7 @@ fSm
 uEk
 kkH
 eAC
-mCf
+aak
 cbg
 ogo
 gRi
@@ -31788,7 +31788,7 @@ nnf
 aqO
 xOU
 tFh
-foI
+aaf
 nvd
 emn
 kDS
@@ -31815,7 +31815,7 @@ kDS
 cAt
 cAt
 cAt
-scY
+aac
 wnw
 lry
 sZz
@@ -32817,7 +32817,7 @@ ycN
 cpj
 tRp
 pSs
-pLS
+aad
 tRp
 brL
 kDS
@@ -32937,7 +32937,7 @@ lCu
 oVX
 jzl
 jzl
-kBb
+aag
 uTj
 abS
 snr
@@ -34487,7 +34487,7 @@ qpZ
 nCM
 kDS
 kDS
-scY
+aac
 arG
 fiE
 fyD
@@ -37098,7 +37098,7 @@ xyF
 wLt
 alo
 vfr
-hkq
+aah
 dKO
 euj
 euj
@@ -37598,7 +37598,7 @@ fyF
 fyF
 lxc
 kFF
-kuL
+aai
 euj
 fMd
 ssj
@@ -40819,7 +40819,7 @@ owt
 mLw
 tRi
 vdD
-aac
+ddZ
 mcv
 ouR
 ouR

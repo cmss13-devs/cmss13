@@ -91,13 +91,41 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
 "aaq" = (
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aar" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced,
+/obj/item/clothing/head/fedora/grey,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aas" = (
+/obj/structure/coatrack,
+/obj/item/clothing/head/fedora/grey{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aat" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz1"
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
-"aar" = (
+"aau" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "hvhuscmlz2"
 	},
@@ -9790,10 +9818,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
-"hRs" = (
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "hRv" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/sand_white/layer1,
@@ -12353,22 +12377,6 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
-"jQG" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced,
-/obj/item/clothing/head/fedora,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "jQM" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -19187,14 +19195,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior_protected/vessel)
-"pBo" = (
-/obj/structure/coatrack,
-/obj/item/clothing/head/fedora{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/security)
 "pBx" = (
 /obj/item/device/flashlight,
 /turf/open/floor/shiva/yellow,
@@ -35401,7 +35401,7 @@ qul
 qul
 qul
 qHc
-aaq
+aat
 xCn
 xCn
 oPQ
@@ -50531,7 +50531,7 @@ wVf
 wVf
 tiw
 vPi
-pBo
+aas
 wVf
 wVf
 hXv
@@ -56472,7 +56472,7 @@ wlB
 wlB
 wlB
 wlB
-aar
+aau
 wlB
 wlB
 wlB
@@ -59144,10 +59144,10 @@ avD
 mqe
 mqe
 avD
-hRs
+aaq
 cHV
 wsG
-hRs
+aaq
 avD
 mqe
 mqe
@@ -63691,7 +63691,7 @@ brT
 bsf
 bsf
 avD
-jQG
+aar
 aan
 aak
 oKy

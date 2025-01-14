@@ -773,7 +773,7 @@
 	durationmod_per_level = -0.1
 	radiusmod_per_level = -0.01
 
-	var/ignite_threshold = 4
+	var/static/ignite_threshold = 4
 
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M

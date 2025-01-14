@@ -92,6 +92,10 @@
 	name = "Burst Weyland-Yutani Corporate Security Lead"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/burst
 
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo
+	name = "Weyland-Yutani Kutjevo Corporate Security"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/kutjevo
+
 
 ///CM specific jobs///
 

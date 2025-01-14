@@ -1,4 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - qol: "Dropship autopilot settings can be modified during refuel/recharge"

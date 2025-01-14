@@ -398,7 +398,9 @@
 /area/bigredv2/outside/space_port)
 "abC" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs{
+	dir = 1
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "abD" = (
@@ -450,7 +452,9 @@
 /area/bigredv2/caves)
 "abM" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs{
+	dir = 1
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "abN" = (
@@ -522,7 +526,7 @@
 /area/bigredv2/caves)
 "abY" = (
 /obj/structure/stairs/multiz/up{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/floor/dark,
@@ -1569,6 +1573,13 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"afX" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "afY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -4477,8 +4488,10 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/bigredv2/outside/medical)
 "aqv" = (
-/obj/structure/stairs/multiz/down,
 /obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /turf/open/floor/dark,
 /area/bigredv2/caves)
 "aqw" = (
@@ -4493,8 +4506,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
 "aqy" = (
-/obj/structure/stairs/multiz/down,
 /obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /turf/open/floor/dark,
 /area/bigredv2/caves)
 "aqz" = (
@@ -4517,6 +4532,13 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/caves)
+"aqC" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "aqD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy{
@@ -4942,6 +4964,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/caves)
+"arW" = (
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/turf/open/floor/whitegreenfull,
+/area/bigredv2/outside/medical)
 "arX" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/structure/machinery/light{
@@ -6049,6 +6077,11 @@
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open_space,
 /area/bigredv2/caves)
+"avB" = (
+/obj/structure/ladder/multiz,
+/obj/structure/ladder/multiz,
+/turf/open/floor/wood,
+/area/bigredv2/caves)
 "avC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -6323,16 +6356,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
-"awx" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/dark,
-/area/bigredv2/caves)
-"awy" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/dark,
-/area/bigredv2/caves)
 "awz" = (
 /obj/item/ashtray/bronze{
 	pixel_x = -7
@@ -6653,6 +6676,10 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/medical)
+"axz" = (
+/obj/structure/ladder/multiz,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/caves)
 "axA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
@@ -7043,7 +7070,7 @@
 /area/bigredv2/outside/medical)
 "ayP" = (
 /obj/structure/stairs/multiz/down{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/dark,
@@ -7252,7 +7279,7 @@
 "azz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/stairs/multiz/down{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/floor/dark,
@@ -7962,8 +7989,10 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "aBY" = (
-/obj/structure/stairs/multiz/up,
 /obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aBZ" = (
@@ -7975,8 +8004,10 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "aCb" = (
-/obj/structure/stairs/multiz/up,
 /obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aCc" = (
@@ -8128,7 +8159,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "aCI" = (
 /obj/structure/stairs/multiz/up{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor,
@@ -8583,12 +8614,16 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
 "aEk" = (
-/obj/structure/stairs/multiz/down,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor,
 /area/bigredv2/caves)
 "aEl" = (
-/obj/structure/stairs/multiz/down,
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor,
 /area/bigredv2/caves)
@@ -8735,9 +8770,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "aES" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
+/obj/structure/stairs/multiz/down,
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/white,
 /area/bigredv2/caves)
@@ -8757,9 +8790,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aEV" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
+/obj/structure/stairs/multiz/down,
 /turf/open/floor/white,
 /area/bigredv2/caves)
 "aEW" = (
@@ -8797,9 +8828,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aFc" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
+/obj/structure/stairs/multiz/down,
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/white,
 /area/bigredv2/caves)
@@ -10329,7 +10358,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "aKj" = (
 /obj/structure/stairs/multiz/down{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/white,
@@ -10408,7 +10437,7 @@
 /area/bigredv2/caves)
 "aKB" = (
 /obj/structure/stairs/multiz/down{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
 /turf/open/floor/white,
@@ -12108,7 +12137,7 @@
 /area/bigredv2/outside/general_store)
 "aPP" = (
 /obj/structure/stairs/multiz/up{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/dark,
@@ -14355,7 +14384,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bbq" = (
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/space/basic,
 /area/bigredv2/outside/admin_building)
@@ -26116,8 +26147,8 @@
 /turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
 "iev" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
+/obj/structure/stairs{
+	dir = 4
 	},
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
@@ -30945,9 +30976,7 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/filtration_cave_cas)
 "nsc" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
+/obj/structure/stairs/multiz/up,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "nsm" = (
@@ -35343,7 +35372,7 @@
 /area/bigredv2/outside/s)
 "rNG" = (
 /obj/structure/stairs/multiz/up{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
 /turf/open/floor,
@@ -36659,6 +36688,9 @@
 "tcI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
+/obj/structure/ladder/multiz,
+/obj/structure/ladder/multiz,
+/obj/structure/ladder/multiz,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "tcP" = (
@@ -41221,7 +41253,9 @@
 /turf/open/floor/greengrid,
 /area/bigredv2/caves/lambda/research)
 "xKG" = (
-/obj/structure/stairs/multiz/up,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/space/basic,
 /area/bigredv2/outside/admin_building)
@@ -107354,7 +107388,7 @@ aof
 aof
 aof
 aof
-abC
+afX
 abC
 abC
 abr
@@ -107571,7 +107605,7 @@ aof
 aof
 aof
 aof
-abM
+aqC
 abM
 abM
 abs
@@ -108627,8 +108661,8 @@ aqL
 asc
 alu
 alu
-iev
-iev
+arW
+arW
 alu
 alu
 alu
@@ -156179,7 +156213,7 @@ aoS
 ino
 mkp
 aoS
-awx
+aqv
 aRD
 aRD
 hPE
@@ -156396,7 +156430,7 @@ mkp
 ino
 ino
 axm
-awy
+aqy
 ydE
 ydE
 aaD
@@ -170466,7 +170500,7 @@ wvk
 cop
 aIG
 aPz
-alG
+avB
 gNH
 aFC
 aMU
@@ -219292,7 +219326,7 @@ mEC
 wvk
 pdW
 pdW
-pdW
+axz
 pdW
 pdW
 pdW

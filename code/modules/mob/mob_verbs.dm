@@ -249,7 +249,7 @@
 	set name = "Look Up"
 	set category = "IC"
 
-	if(!istype(/mob/living))
+	if(!istype(src, /mob/living))
 		return
 
 	var/turf/above = locate(x, y, z+1)

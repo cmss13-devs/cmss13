@@ -276,6 +276,10 @@
 	unacidable = TRUE
 	layer = LADDER_LAYER
 
-/obj/structure/ladder/multiz/up
+/obj/structure/ladder/multiz/LateInitialize()
+	. = ..()
 
-/obj/structure/ladder/multiz/down
+	up = locate(/obj/structure/ladder) in locate(x, y, z + 1)
+	down = locate(/obj/structure/ladder) in locate(x, y, z - 1)
+
+	update_icon()

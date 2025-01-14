@@ -57,7 +57,7 @@
 	return TRUE
 
 
-/obj/vehicle/walker/proc/eject_magazine(mob/user_mob, obj/item/walker_gun/hardpoint)
+/obj/vehicle/walker/proc/eject_magazine(mob/user_mob)
 	set name = "Eject Magazine"
 	set category = "Vehicle"
 
@@ -70,20 +70,19 @@
 	if(!istype(src, /obj/vehicle/walker))
 		src = user_mob.interactee
 
+	var/list/acceptible_modules = list()
+	if(module_map[WALKER_HARDPOIN_LEFT]?.ammo)
+		acceptible_modules += module_map[WALKER_HARDPOIN_LEFT]
+	if(module_map[WALKER_HARDPOIN_RIGHT]?.ammo)
+		acceptible_modules += module_map[WALKER_HARDPOIN_RIGHT]
+
+	if(!length(acceptible_modules))
+		to_chat(user_mob, "Not found magazines to eject")
+		return FALSE
+
+	var/obj/item/walker_gun/hardpoint = tgui_input_list(usr, "Select a hardpoint to eject magazine.", "Eject Magazine", acceptible_modules)
 	if(!hardpoint)
-		var/list/acceptible_modules = list()
-		if(module_map[WALKER_HARDPOIN_LEFT]?.ammo)
-			acceptible_modules += module_map[WALKER_HARDPOIN_LEFT]
-		if(module_map[WALKER_HARDPOIN_RIGHT]?.ammo)
-			acceptible_modules += module_map[WALKER_HARDPOIN_RIGHT]
-
-		if(!length(acceptible_modules))
-			to_chat(user_mob, "Not found magazines to eject")
-			return FALSE
-
-		hardpoint = tgui_input_list(usr, "Select a hardpoint to eject magazine.", "Eject Magazine", acceptible_modules)
-		if(!hardpoint)
-			return FALSE
+		return FALSE
 
 	if(!hardpoint || !hardpoint.ammo)
 		return FALSE

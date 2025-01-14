@@ -48,8 +48,8 @@
 	equip_state = "redy_wm88"
 	fire_sound = list('sound/weapons/gun_boomslang_fire.ogg')
 	magazine_type = /obj/item/ammo_magazine/walker/wm88
-	var/basic_fire_delay = 13
-	fire_delay = 13
+	var/basic_fire_delay = 16
+	fire_delay = 16
 	scatter_value = 0
 	automatic = TRUE
 	var/overheat_reset_cooldown = 3 SECONDS

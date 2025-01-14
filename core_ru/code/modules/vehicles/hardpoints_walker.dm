@@ -20,11 +20,10 @@
 	var/list/fire_sound = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')
 	var/fire_delay = 0
 	var/last_fire = 0
-	var/burst = 1
 
 	w_class = 12.0
 
-	var/muzzle_flash 	= "muzzle_flash"
+	var/muzzle_flash = "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 	var/list/projectile_traits = list()
 	var/automatic = TRUE
@@ -45,7 +44,7 @@
 	ammo = new magazine_type
 
 	if(automatic)
-		AddComponent(/datum/component/automatedfire/autofire, fire_delay, fire_delay, burst, GUN_FIREMODE_AUTOMATIC, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
+		AddComponent(/datum/component/automatedfire/autofire, fire_delay, fire_delay, 1, GUN_FIREMODE_AUTOMATIC, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing)))
 
 /obj/item/walker_gun/proc/register_signals(mob/user)
 	if(automatic)
@@ -195,7 +194,7 @@
 */
 	if(!owner.firing_arc(target))
 		return FALSE
-	
+
 	var/obj/projectile/P = create_bullet(user)
 	playsound(get_turf(owner), pick(fire_sound), 60)
 	target = simulate_scatter(target, P)
@@ -259,8 +258,7 @@
 	icon_state = "mech_smartgun_parts"
 	equip_state = "redy_smartgun"
 	magazine_type = /obj/item/ammo_magazine/walker/smartgun
-	burst = 3
-	fire_delay = 3
+	fire_delay = 1
 
 	projectile_traits = list(/datum/element/bullet_trait_iff)
 
@@ -271,8 +269,7 @@
 	equip_state = "redy_minigun"
 	fire_sound = list('sound/weapons/gun_minigun.ogg')
 	magazine_type = /obj/item/ammo_magazine/walker/hmg
-	fire_delay = 7
-	burst = 3
+	fire_delay = 2
 	scatter_value = 25
 
 	projectile_traits = list()

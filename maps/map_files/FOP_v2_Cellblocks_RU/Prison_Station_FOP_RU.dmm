@@ -47989,10 +47989,6 @@
 	icon_state = "bluecorner"
 	},
 /area/prison/residential/north)
-"eFP" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/wood,
-/area/prison/residential/north)
 "eGr" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/prison,
@@ -64497,7 +64493,7 @@
 "tah" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
+/turf/open/floor/plating/prison,
 /area/prison/residential/north)
 "tau" = (
 /obj/effect/decal/cleanable/dirt,
@@ -69597,10 +69593,6 @@
 	},
 /turf/open/floor/wood,
 /area/prison/parole/protective_custody)
-"xFD" = (
-/obj/structure/window/framed/prison,
-/turf/open/space/basic,
-/area/prison/residential/north)
 "xGk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -79890,7 +79882,7 @@ irh
 qvD
 aGv
 eEP
-xFD
+ruu
 tQh
 tQh
 tQh
@@ -80102,7 +80094,7 @@ uts
 irh
 oyo
 eEP
-xFD
+ruu
 dJh
 fNG
 pwH
@@ -80322,7 +80314,7 @@ bLV
 awM
 mEh
 edy
-eFP
+avm
 aAO
 aAO
 aAO
@@ -80526,7 +80518,7 @@ cAA
 irh
 tmx
 hQW
-xFD
+ruu
 rEg
 tSc
 aHN
@@ -80738,7 +80730,7 @@ vjW
 cAA
 hLP
 tTf
-xFD
+ruu
 rEg
 cSo
 aHN
@@ -80950,7 +80942,7 @@ ayC
 azN
 aBu
 tGy
-xFD
+ruu
 rEg
 voY
 awM
@@ -81162,7 +81154,7 @@ aGv
 cAA
 gTX
 lUS
-xFD
+ruu
 rEg
 jEt
 aHO
@@ -81374,7 +81366,7 @@ kNt
 wHX
 wfx
 nyO
-xFD
+ruu
 wKH
 aHP
 aHP

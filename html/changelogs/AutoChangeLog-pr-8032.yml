@@ -1,4 +1,0 @@
-author: "BOBAMAx"
-delete-after: True
-changes:
-  - bugfix: "fixed smart minitank flush verb showing a list of all on-screen mobs"

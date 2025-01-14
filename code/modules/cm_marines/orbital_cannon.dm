@@ -310,6 +310,10 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 				return TRUE
 
 			var/obj/structure/ob_ammo/OA = PC.loaded
+			if(!OA.can_be_used())
+				to_chat(user, SPAN_WARNING("\The [src] can't be accepted."))
+				return
+
 			if(OA.is_solid_fuel)
 				if(fuel_amt >= 6)
 					to_chat(user, SPAN_WARNING("\The [src] can't accept more solid fuel."))
@@ -377,6 +381,10 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	. = ..()
 	. += "Moving this will require some sort of lifter."
 
+
+/obj/structure/ob_ammo/proc/can_be_used()
+	return TRUE
+
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
 	var/warhead_kind
@@ -390,7 +398,45 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	// Note that the warhead should be cleared of location by the firing proc,
 	// then auto-delete at the end of the warhead_impact implementation
 
+/obj/structure/ob_ammo/warhead/attackby(obj/item/held_object, mob/user)
+	if(armed)
+		if(HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
+			var/skill_factor = 60 - user.skills.get_skill_level(SKILL_ENGINEER) * 10
+			if(do_after(user, skill_factor, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+				if(prob(skill_factor))
+					to_chat(user, SPAN_NOTICE("You seems to done fatal mistake to \the [src]. There nowhere to run now."))
+					spawn(15 SECONDS)
+						armed = TRUE
+						warhead_impact(get_turf(src))
+				else
+					armed = FALSE
+					to_chat(user, SPAN_NOTICE("You have successfully disarmed \the [src]."))
+			else if (prob(5))
+				armed = TRUE
+				warhead_impact(get_turf(src))
+
+	. = ..()
+
+	if(armed && prob(5))
+		warhead_impact(get_turf(src))
+
+/obj/structure/ob_ammo/warhead/Move()
+	. = ..()
+	if(!armed)
+		return
+
+	if(armed_target_z == z)
+		warhead_impact(get_turf(src))
+
+	if(prob(5))
+		warhead_impact(get_turf(src))
+
+/obj/structure/ob_ammo/warhead/can_be_used()
+	return !armed
+
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target, warhead_mode)
+	if(armed)
+		return TRUE
 	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 

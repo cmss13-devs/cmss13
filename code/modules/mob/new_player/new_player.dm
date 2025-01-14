@@ -1,5 +1,11 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 /mob/new_player
+	invisibility = 101
+	density = FALSE
+	anchored = TRUE
+	sight = BLIND
+	universal_speak = TRUE
+	stat = DEAD
+
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
 	///The last message for this player with their larva queue information
@@ -7,72 +13,24 @@
 	///The time when the larva_queue_cached_message should be considered stale
 	var/larva_queue_message_stale_time
 
-	invisibility = 101
+	/// The window that we display the main menu in
+	var/datum/tgui_window/lobby_window
 
-	density = FALSE
-	anchored = TRUE
-	universal_speak = TRUE
-	stat = DEAD
+	/// The message that we are displaying to the user. If a list, each list element is displayed on its own line
+	var/lobby_confirmation_message
+
+	/// The callback that we will execute when the user confirms the message
+	var/datum/callback/execute_on_confirm
 
 /mob/new_player/Initialize()
 	. = ..()
-	GLOB.new_player_list += src
 	GLOB.dead_mob_list -= src
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 /mob/new_player/Destroy()
 	if(ready)
 		GLOB.readied_players--
-	GLOB.new_player_list -= src
 	return ..()
-
-/mob/new_player/verb/new_player_panel()
-	set src = usr
-	if(client && client.player_entity)
-		client.player_entity.update_panel_data(null)
-		new_player_panel_proc()
-
-
-/mob/new_player/proc/new_player_panel_proc(refresh = FALSE)
-	if(!client)
-		return
-
-	var/tempnumber = rand(1, 999)
-	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""
-	var/prefix_text = (client.xeno_prefix) ? client.xeno_prefix : "XX"
-	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
-	var/round_start = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
-
-	var/output = "<div align='center'>Welcome,"
-	output +="<br><b>[(client.prefs && client.prefs.real_name) ? client.prefs.real_name : client.key]</b>"
-	output +="<br><b>[xeno_text]</b>"
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=tutorial'>Tutorial</A></p>"
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
-
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_playtimes'>View Playtimes</A></p>"
-
-	if(round_start)
-		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=unready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
-		output += "<b>Be Xenomorph:</b> [(client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH))) ? "Yes" : "No"]"
-
-	else
-		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
-		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
-		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
-		if(GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name)
-			output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_upp'>Join the UPP!</A></p>"
-		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
-		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
-			if(SSticker.mode.check_predator_late_join(src, FALSE)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
-		if(SSticker.mode.check_fax_responder_late_join(src, FALSE)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_faxes'>Respond to Faxes</A></p>"
-
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=observe'>Observe</A></p>"
-
-	output += "</div>"
-	if (refresh)
-		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 500 : 610];can_close=0;can_minimize=0")
-	return
 
 /mob/new_player/Topic(href, href_list[])
 	. = ..()
@@ -82,138 +40,6 @@
 		return
 
 	switch(href_list["lobby_choice"])
-		if("show_preferences")
-			// Otherwise the preview dummy will runtime
-			// because atoms aren't initialized yet
-			if(SSticker.current_state < GAME_STATE_PREGAME)
-				to_chat(src, "Game is still starting up, please wait")
-				return
-			if(!SSentity_manager.ready)
-				to_chat(src, "DB is still starting up, please wait")
-				return
-			client.prefs.ShowChoices(src)
-			return 1
-
-		if("show_playtimes")
-			if(!SSentity_manager.ready)
-				to_chat(src, "DB is still starting up, please wait")
-				return
-			if(client.player_data)
-				client.player_data.tgui_interact(src)
-			return 1
-
-		if("ready")
-			if( (SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
-				ready = TRUE
-				GLOB.readied_players++
-
-			new_player_panel_proc()
-
-		if("unready")
-			if((SSticker.current_state <= GAME_STATE_PREGAME) && ready) // Make sure we don't ready up after the round has started
-				ready = FALSE
-				GLOB.readied_players--
-
-			new_player_panel_proc()
-
-		if("refresh")
-			new_player_panel_proc(TRUE)
-
-		if("observe")
-			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
-				return
-			if(tgui_alert(src, "Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
-				attempt_observe()
-				return TRUE
-
-		if("late_join")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(SSticker.mode.flags_round_type & MODE_NO_LATEJOIN)
-				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
-				return
-
-			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
-				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
-					tutorial_menu()
-					return
-
-			late_choices()
-
-		if("late_join_upp")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(SSticker.mode.flags_round_type & MODE_NO_LATEJOIN)
-				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
-				return
-
-			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
-				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
-					tutorial_menu()
-					return
-
-			late_choices_upp()
-
-		if("late_join_xeno")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(tgui_alert(src, "Are you sure you want to attempt joining as a xenomorph?", "Confirmation", list("Yes", "No")) == "Yes")
-				if(!client)
-					return TRUE
-				if(SSticker.mode.check_xeno_late_join(src))
-					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)
-					if(!new_xeno)
-						if(tgui_alert(src, "Are you sure you wish to observe to be a xeno candidate? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!", "Player Setup", list("Yes", "No")) == "Yes")
-							if(!client)
-								return TRUE
-							if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
-								client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
-								to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
-							attempt_observe()
-					else if(!istype(new_xeno, /mob/living/carbon/xenomorph/larva))
-						SSticker.mode.transfer_xeno(src, new_xeno)
-						close_spawn_windows()
-
-		if("late_join_pred")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(tgui_alert(src, "Are you sure you want to attempt joining as a predator?", "Confirmation", list("Yes", "No")) == "Yes")
-				if(SSticker.mode.check_predator_late_join(src, FALSE))
-					close_spawn_windows()
-					SSticker.mode.attempt_to_join_as_predator(src)
-				else
-					to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
-					new_player_panel()
-
-		if("late_join_faxes")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(alert(src,"Are you sure you want to attempt joining as a Fax Responder?","Confirmation","Yes","No") == "Yes" )
-				if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
-					close_spawn_windows()
-					SSticker.mode.attempt_to_join_as_fax_responder(src, TRUE)
-				else
-					to_chat(src, SPAN_WARNING("You are no longer able to join as a Fax Responder."))
-					new_player_panel()
-
-
-		if("manifest")
-			ViewManifest()
-
-		if("hiveleaders")
-			ViewHiveLeaders()
-
 		if("SelectedJob")
 			if(!GLOB.enter_allowed)
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
@@ -222,11 +48,7 @@
 			AttemptLateSpawn(href_list["job_selected"])
 			return
 
-		if("tutorial")
-			tutorial_menu()
-
-		else
-			new_player_panel()
+/mob/new_player/var/datum/tutorial_menu/tutorial_menu
 
 /mob/new_player/proc/tutorial_menu()
 	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
@@ -241,8 +63,9 @@
 		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
 		return
 
-	var/datum/tutorial_menu/menu = new(src)
-	menu.ui_interact(src)
+	if(!tutorial_menu)
+		tutorial_menu = new(src)
+	tutorial_menu.ui_interact(src)
 
 /mob/new_player/proc/attempt_observe()
 	if(src != usr)
@@ -500,9 +323,8 @@
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"
 	dat += "<h4><center>Crew Manifest:</center></h4>"
-	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/new_player/proc/ViewHiveLeaders()
 	if(!GLOB.hive_leaders_tgui)

@@ -1,7 +1,7 @@
-#define SUNKEN_DELAY_PER_RANGE 0.2 SECONDS
+#define SUNKEN_DELAY_PER_RANGE 0.1 SECONDS
 #define SUNKEN_MAX_RANGE 12
 #define SUNKEN_MIN_RANGE 2
-#define SUNKEN_COOLDOWN 6 SECONDS
+#define SUNKEN_COOLDOWN 4 SECONDS
 
 /datum/construction_template/xenomorph/sunken_colony
 	name = XENO_STRUCTURE_SUNKEN
@@ -48,52 +48,48 @@
 	range_bounds = RECT(x, y, SUNKEN_MAX_RANGE, SUNKEN_MAX_RANGE)
 
 /obj/effect/alien/resin/special/sunken_colony/process()
-	if (world.time > next_strike)
+	if(world.time > next_strike)
 		check_targets()
 
 /obj/effect/alien/resin/special/sunken_colony/proc/check_targets()
-	if (!range_bounds)
+	if(!range_bounds)
 		range_bounds = RECT(x, y, SUNKEN_MAX_RANGE, SUNKEN_MAX_RANGE)
 
 	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
-	if (isnull(targets) || !length(targets))
+	if(!length(targets))
 		return
 
-	var/target = pick(targets)
-	if (isnull(target))
+	var/atom/movable/target = pick(targets)
+	if(QDELETED(target))
 		return
 
 	HasProximity(target)
 
-/obj/effect/alien/resin/special/sunken_colony/HasProximity(atom/movable/AM as mob|obj)
-
-	if (!linked_hive)
+/obj/effect/alien/resin/special/sunken_colony/HasProximity(atom/movable/target_atom)
+	if(!linked_hive)
 		return
 
-	if (!is_ground_level(AM.z))
+	var/distance = get_dist(src, target_atom)
+	if(distance <= SUNKEN_MIN_RANGE)
 		return
 
-	var/distance = get_dist(src, AM)
-	if (distance <= SUNKEN_MIN_RANGE)
+	if(!iscarbon(target_atom) || ismonkey(target_atom))
 		return
 
-	if (iscarbon(AM))
-		var/mob/living/carbon/C = AM
-		if (ismonkey(C)) // lesser hosts arent dangerous to us
-			return
-		if (C.stat == DEAD || linked_hive.is_ally(C) || C.status_flags & XENO_HOST)
-			return
+	var/mob/living/carbon/target_carbon = target_atom
+	if(target_carbon.is_mob_incapacitated() || linked_hive.is_ally(target_carbon) || target_carbon.status_flags & XENO_HOST)
+		return
 
 	flick("s_hitting", src)
 
 	var/strike_delay = SUNKEN_DELAY_PER_RANGE * distance
 
 	next_strike = world.time + SUNKEN_COOLDOWN
-	spawn(0.2 SECONDS)
-		distance = get_dist(src, AM)
+	spawn(SUNKEN_DELAY_PER_RANGE)
+		distance = get_dist(src, target_carbon)
 		if(distance > SUNKEN_MIN_RANGE)
 			playsound(loc, strike_sound, 25, 1)
-			new /obj/effect/impale(get_turf(AM), damage, strike_delay)
+			new /obj/effect/impale(get_turf(target_carbon), damage, strike_delay)
 
 //Underground strike effect
 /obj/effect/impale

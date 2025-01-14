@@ -34,9 +34,6 @@
 	hivelord.plasmapool_modifier = 0.5 // -50% plasma pool
 	hivelord.tacklestrength_max = 6 // increase by +1
 
-	hivelord.recalculate_everything()
-	ADD_TRAIT(hivelord, TRAIT_ABILITY_SIGHT_IGNORE_REST, TRAIT_SOURCE_STRAIN)
-
 /datum/behavior_delegate/hivelord_designer
 	name = "Designer Hivelord Behavior Delegate"
 

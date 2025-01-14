@@ -522,6 +522,9 @@
 /datum/chem_property/negative/igniting/process(mob/living/reacting_mob, potency, delta_time)
 	. = ..()
 
+	if(!.)
+		return
+
 	reacting_mob.adjust_fire_stacks(max(reacting_mob.fire_stacks, potency * 30))
 	reacting_mob.IgniteMob(TRUE)
 	to_chat(reacting_mob, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))

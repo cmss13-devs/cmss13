@@ -169,6 +169,10 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define OBJ_IS_HELMET_GARB (1<<2)
 /// can you customize the description/name of the thing?
 #define OBJ_UNIQUE_RENAME (1<<3)
+#define OBJ_BLOCK_Z_OUT_DOWN (1<<4)
+#define OBJ_BLOCK_Z_OUT_UP (1<<5)
+#define OBJ_BLOCK_Z_IN_DOWN (1<<6)
+#define OBJ_BLOCK_Z_IN_UP (1<<7)
 
 // For reinforced table status
 #define RTABLE_WEAKENED 1

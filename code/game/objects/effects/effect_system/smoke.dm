@@ -89,10 +89,18 @@
 	var/turf/start_turf = get_turf(src)
 	if(!start_turf)
 		return
-	for(var/i in GLOB.cardinals)
+	for(var/i in GLOB.cardinals + UP + DOWN)
 		if(direction && i != direction)
 			continue
-		var/turf/cur_turf = get_step(start_turf, i)
+		var/turf/cur_turf
+		if(i & UP || i & DOWN)
+			cur_turf = get_step_multiz(start_turf, i)
+			if(!cur_turf)
+				continue
+			if(start_turf.z < cur_turf.z ? cur_turf.antipierce : start_turf.antipierce)
+				continue
+		else
+			cur_turf = get_step(start_turf, i)
 		if(check_airblock(start_turf, cur_turf)) //smoke can't spread that way
 			continue
 		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in cur_turf // Check for existing smoke and act accordingly

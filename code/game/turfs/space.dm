@@ -1,16 +1,76 @@
-
-
-
-
-
-
 /turf/open/space
 	icon = 'icons/turf/floors/space.dmi'
-	name = "\proper space"
+	name = "space"
 	icon_state = "0"
-	can_bloody = FALSE
-	layer = UNDER_TURF_LAYER
-	supports_surgery = FALSE
+	plane = PLANE_SPACE
+	layer = SPACE_LAYER
+
+/turf/open/space/Initialize(mapload, ...)
+	SHOULD_CALL_PARENT(FALSE)
+
+	vis_contents.Cut() //removes inherited overlays
+
+	if(flags_atom & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
+
+	GLOB.turfs += src
+
+	if(opacity)
+		directional_opacity = ALL_CARDINALS
+
+	pass_flags = GLOB.pass_flags_cache[type]
+	if(isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		GLOB.pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/open/space/LateInitialize()
+	SHOULD_CALL_PARENT(FALSE)
+	if(!istype(src, /turf/open/space/transit))
+		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
+	multiz_turfs()
+
+/turf/open/space/multiz_turfs()
+	var/turf/turf = SSmapping.get_turf_above(src)
+	if(turf)
+		turf.multiz_turf_new(src, DOWN)
+	turf = SSmapping.get_turf_below(src)
+	if(turf)
+		turf.multiz_turf_new(src, UP)
+
+/turf/open/space/zPassIn(atom/movable/A, direction, turf/source)
+	if(direction == DOWN)
+		for(var/obj/contained_object in contents)
+			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+				return FALSE
+		return TRUE
+	if(direction == UP)
+		for(var/obj/contained_object in contents)
+			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
+				return FALSE
+		return TRUE
+	return FALSE
+
+/turf/open/space/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)
+	if(A.anchored && !allow_anchored_movement)
+		return FALSE
+	if(direction == DOWN)
+		for(var/obj/contained_object in contents)
+			if(contained_object.flags_obj & OBJ_BLOCK_Z_OUT_DOWN)
+				return FALSE
+		return TRUE
+	if(direction == UP)
+		for(var/obj/contained_object in contents)
+			if(contained_object.flags_obj & OBJ_BLOCK_Z_OUT_UP)
+				return FALSE
+		return TRUE
+	return FALSE
 
 /turf/open/space/basic/New() //Do not convert to Initialize
 	//This is used to optimize the map loader
@@ -22,19 +82,14 @@
 		if(O.level == 1)
 			O.hide(FALSE)
 
-/turf/open/space/Initialize(mapload, ...)
-	. = ..()
-	if(!istype(src, /turf/open/space/transit))
-		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-
 /turf/open/space/attack_hand(mob/user)
-	if ((user.is_mob_restrained() || !( user.pulling )))
+	if((user.is_mob_restrained() || !( user.pulling )))
 		return
-	if (user.pulling.anchored || !isturf(user.pulling.loc))
+	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return
-	if ((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
+	if((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
 		return
-	if (ismob(user.pulling))
+	if(ismob(user.pulling))
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
@@ -46,22 +101,22 @@
 
 /turf/open/space/attackby(obj/item/C, mob/user)
 
-	if (istype(C, /obj/item/stack/rods))
+	if(istype(C, /obj/item/stack/rods))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			return
 		var/obj/item/stack/rods/R = C
-		if (R.use(1))
+		if(R.use(1))
 			to_chat(user, SPAN_NOTICE(" Constructing support lattice ..."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			ReplaceWithLattice()
 		return
 
-	if (istype(C, /obj/item/stack/tile/plasteel))
+	if(istype(C, /obj/item/stack/tile/plasteel))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			var/obj/item/stack/tile/plasteel/S = C
-			if (S.get_amount() < 1)
+			if(S.get_amount() < 1)
 				return
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
@@ -75,48 +130,18 @@
 
 // Ported from unstable r355
 
-/turf/open/space/Entered(atom/movable/A)
+/turf/open/space/Entered(atom/movable/arrived, old_loc)
 	..()
-	if ((!(A) || src != A.loc)) return
+	if((!(arrived) || src != arrived.loc) || !length(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
+		return
 
-	inertial_drift(A)
+	inertial_drift(arrived)
 
 	if(SSticker.mode)
+		if(arrived.z > 6)
+			return
 
-
-		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(ticker.mode.name == "nuclear emergency") return
-		if(A.z > 6) return
-		if(A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE - 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE - 1))
-
-			if(istype(A, /obj/item/disk/nuclear)) // Don't let nuke disks travel Z levels  ... And moving this shit down here so it only fires when they're actually trying to change z-level.
-				qdel(A) //The disk's Dispose() proc ensures a new one is created
-				return
-
-			var/list/disk_search = A.search_contents_for(/obj/item/disk/nuclear)
-			if(length(disk_search))
-				if(istype(A, /mob/living))
-					var/mob/living/MM = A
-					if(MM.client && !MM.stat)
-						to_chat(MM, SPAN_WARNING("Something you are carrying is preventing you from leaving. Don't play stupid; you know exactly what it is."))
-						if(MM.x <= TRANSITIONEDGE)
-							MM.inertia_dir = 4
-						else if(MM.x >= world.maxx -TRANSITIONEDGE)
-							MM.inertia_dir = 8
-						else if(MM.y <= TRANSITIONEDGE)
-							MM.inertia_dir = 1
-						else if(MM.y >= world.maxy -TRANSITIONEDGE)
-							MM.inertia_dir = 2
-					else
-						for(var/obj/item/disk/nuclear/N in disk_search)
-							disk_search -= N
-							qdel(N)//Make the disk respawn it is on a clientless mob or corpse
-				else
-					for(var/obj/item/disk/nuclear/N in disk_search)
-						disk_search -= N
-						qdel(N)//Make the disk respawn if it is floating on its own
-				return
-
+		if(arrived.x <= TRANSITIONEDGE || arrived.x >= (world.maxx - TRANSITIONEDGE - 1) || arrived.y <= TRANSITIONEDGE || arrived.y >= (world.maxy - TRANSITIONEDGE - 1))
 			var/move_to_z = src.z
 			var/safety = 1
 
@@ -129,27 +154,72 @@
 			if(!move_to_z)
 				return
 
-			A.z = move_to_z
+			arrived.z = move_to_z
 
 			if(src.x <= TRANSITIONEDGE)
-				A.x = world.maxx - TRANSITIONEDGE - 2
-				A.y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+				arrived.x = world.maxx - TRANSITIONEDGE - 2
+				arrived.y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
 
-			else if (A.x >= (world.maxx - TRANSITIONEDGE - 1))
-				A.x = TRANSITIONEDGE + 1
-				A.y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+			else if(arrived.x >= (world.maxx - TRANSITIONEDGE - 1))
+				arrived.x = TRANSITIONEDGE + 1
+				arrived.y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
 
-			else if (src.y <= TRANSITIONEDGE)
-				A.y = world.maxy - TRANSITIONEDGE -2
-				A.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+			else if(src.y <= TRANSITIONEDGE)
+				arrived.y = world.maxy - TRANSITIONEDGE -2
+				arrived.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
-			else if (A.y >= (world.maxy - TRANSITIONEDGE - 1))
-				A.y = TRANSITIONEDGE + 1
-				A.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-
-
+			else if(arrived.y >= (world.maxy - TRANSITIONEDGE - 1))
+				arrived.y = TRANSITIONEDGE + 1
+				arrived.x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
 			spawn (0)
-				if ((A && A.loc))
-					A.loc.Entered(A)
+				if((arrived && arrived.loc))
+					arrived.loc.Entered(arrived)
+
+// Black & invisible to the mouse. used by vehicle interiors
+/turf/open/void
+	name = "void"
+	icon = 'icons/turf/floors/space.dmi'
+	icon_state = "black"
+	turf_flags = NO_FLAGS
+	mouse_opacity = FALSE
+
+/turf/open/void/Initialize(mapload, ...)
+	SHOULD_CALL_PARENT(FALSE)
+
+	vis_contents.Cut() //removes inherited overlays
+
+	if(flags_atom & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
+
+	GLOB.turfs += src
+
+	if(opacity)
+		directional_opacity = ALL_CARDINALS
+
+	pass_flags = GLOB.pass_flags_cache[type]
+	if(isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		GLOB.pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+
+	multiz_turfs()
+	return INITIALIZE_HINT_NORMAL
+
+/turf/open/void/LateInitialize()
+	SHOULD_CALL_PARENT(FALSE)
+
+/turf/open/void/multiz_turfs()
+	var/turf/turf = SSmapping.get_turf_above(src)
+	if(turf)
+		turf.multiz_turf_new(src, DOWN)
+	turf = SSmapping.get_turf_below(src)
+	if(turf)
+		turf.multiz_turf_new(src, UP)
+
+/turf/open/void/densy
+	density = TRUE
+	opacity = TRUE

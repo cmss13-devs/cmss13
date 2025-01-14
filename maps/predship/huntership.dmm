@@ -454,7 +454,7 @@
 /area/yautja)
 "bN" = (
 /turf/closed/wall/cult{
-	hull = 1;
+	hull_tile = 1;
 	name = "runed hull"
 	},
 /area/yautja)

@@ -18,6 +18,7 @@
 		mind = null
 
 	QDEL_NULL(skills)
+	QDEL_NULL(shadow)
 	QDEL_NULL_LIST(actions)
 	QDEL_NULL_LIST(viruses)
 	resistances?.Cut()
@@ -904,12 +905,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 		if(istype(img))
 			img.appearance_flags &= ~PIXEL_SCALE
 
-/mob/proc/trainteleport(atom/destination)
+/mob/proc/trainteleport(atom/destination, z_move_flags)
 	if(!destination || anchored)
 		return FALSE //Gotta go somewhere and be able to move
 	if(!pulling)
-		return forceMove(destination) //No need for a special proc if there's nothing being pulled.
-	pulledby?.stop_pulling() //The leader of the choo-choo train breaks the pull
+		return zMove(target = destination, z_move_flags = ZMOVE_STAIRS_FLAGS) //No need for a special proc if there's nothing being pulled.
+
 	var/list/conga_line = list()
 	var/end_of_conga = FALSE
 	var/mob/S = src
@@ -945,30 +946,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 				var/mob/buckled_mob = O.buckled_mob
 				if(!buckled_mob.pulling)
 					continue
-				buckled_mob.stop_pulling() //No support for wheelchair trains yet.
 			var/obj/structure/bed/B = O
 			if(istype(B) && B.buckled_bodybag)
 				conga_line += B.buckled_bodybag
 			end_of_conga = TRUE //Only mobs can continue the cycle.
-	var/area/new_area = get_area(destination)
 	for(var/atom/movable/AM in conga_line)
-		var/oldLoc
-		if(AM.loc)
-			oldLoc = AM.loc
-			AM.loc.Exited(AM,destination)
-		AM.loc = destination
-		AM.loc.Entered(AM,oldLoc)
-		var/area/old_area
-		if(oldLoc)
-			old_area = get_area(oldLoc)
-		if(new_area && old_area != new_area)
-			new_area.Entered(AM,oldLoc)
-		for(var/atom/movable/CR in destination)
-			if(CR in conga_line)
-				continue
-			CR.Crossed(AM)
-		if(oldLoc)
-			AM.Moved(oldLoc)
+		AM.zMove(target = destination, z_move_flags = ZMOVE_STAIRS_FLAGS)
 
 	return TRUE
 
@@ -1035,6 +1018,30 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/update_stat()
 	return
 
+/mob/forceMove()
+	. = ..()
+	if(!.)
+		return
+
+	if(shadow)
+		shadow.update_look(src)
+
+/mob/Move()
+	. = ..()
+	if(!.)
+		return
+
+	if(shadow)
+		shadow.update_look(src)
+
+/mob/zMove(dir, turf/target, z_move_flags)
+	. = ..()
+	if(!.)
+		return
+
+	if(shadow)
+		shadow.update_look(src)
+
 /// Send src back to the lobby as a `/mob/new_player()`
 /mob/proc/send_to_lobby()
 	var/mob/new_player/new_player = new
@@ -1045,3 +1052,62 @@ note dizziness decrements automatically in the mob's Life() proc.
 	mind.transfer_to(new_player)
 
 	qdel(src)
+
+/obj/shadow
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 0
+	var/high = 0
+	var/max_high = 3
+
+/obj/shadow/can_z_move(direction, turf/start, turf/destination, z_move_flags = ZMOVE_FLIGHT_FLAGS, mob/living/rider)
+	return FALSE
+
+/obj/shadow/check_eye(mob/living/user)
+	if(user.is_mob_incapacitated() || user.blinded || user.body_position == LYING_DOWN || !user.client)
+		if(user.interactee == src)
+			user.unset_interaction()
+		QDEL_NULL(user.shadow)
+
+/obj/shadow/on_set_interaction(mob/living/user)
+	RegisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION, PROC_REF(interaction_handler))
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
+	RegisterSignal(user, COMSIG_XENO_OVERWATCH_XENO, TYPE_PROC_REF(/atom/movable, on_unset_interaction))
+
+	var/turf/above = SSmapping.get_turf_above(user.loc)
+	to_chat(user, SPAN_NOTICE("You look up."))
+	user.reset_view(src)
+	if(above && above.turf_flags & TURF_TRANSPARENT)
+		forceMove(above)
+	else
+		to_chat(src, SPAN_NOTICE("You can see [above]."))
+
+/obj/shadow/on_unset_interaction(mob/living/user)
+	UnregisterSignal(user, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION)
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+
+	to_chat(user, SPAN_NOTICE("You stop looking up."))
+	user.reset_view(0)
+	user.client?.change_view(GLOB.world_view_size, src)
+	QDEL_NULL(user.shadow)
+
+/obj/shadow/proc/update_look(mob/living/user)
+	if(user.client?.eye != src)
+		user.reset_view(src)
+
+	var/turf/above = get_turf(user)
+	for(var/i in 1 to high)
+		above = SSmapping.get_turf_above(above)
+		if(above && above.turf_flags & TURF_TRANSPARENT)
+			forceMove(above)
+		else
+			if(i == 1)
+				forceMove(user.loc)
+			to_chat(user, SPAN_NOTICE("You can see [above] in [i] floors."))
+			break
+
+/obj/shadow/proc/interaction_handler()
+	return COMPONENT_HUMAN_MOVEMENT_KEEP_USING
+
+/obj/shadow/proc/handle_view(datum/owner,atom/target)
+	if(target != src)
+		return COMPONENT_OVERRIDE_VIEW

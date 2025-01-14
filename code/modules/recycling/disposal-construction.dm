@@ -156,12 +156,10 @@
 			return /obj/structure/disposalpipe/sortjunction
 		if(10)
 			return /obj/structure/disposalpipe/sortjunction/flipped
-///// Z-Level stuff
 		if(11)
-			return /obj/structure/disposalpipe/up
+			return /obj/structure/disposalpipe/trunk/multiz
 		if(12)
-			return /obj/structure/disposalpipe/down
-///// Z-Level stuff
+			return /obj/structure/disposalpipe/trunk/multiz/down
 		if(13)
 			return /obj/structure/disposalpipe/tagger
 		if(14)

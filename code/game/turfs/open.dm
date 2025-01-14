@@ -19,7 +19,9 @@
 	update_icon()
 
 /turf/open/update_icon()
-	overlays.Cut()
+	. = ..()
+	if(!.)
+		return
 
 	add_cleanable_overlays()
 
@@ -149,21 +151,23 @@
 			if(3)
 				. += "Well Done."
 
-// Black & invisible to the mouse. used by vehicle interiors
-/turf/open/void
-	name = "void"
-	icon = 'icons/turf/floors/space.dmi'
-	icon_state = "black"
-	mouse_opacity = FALSE
-	can_bloody = FALSE
-	supports_surgery = FALSE
+//direction is direction of travel of A
+/turf/open/zPassIn(atom/movable/A, direction, turf/source)
+	if(direction == DOWN)
+		for(var/obj/O in contents)
+			if(O.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+				return FALSE
+		return TRUE
+	return FALSE
 
-/turf/open/void/vehicle
-	density = TRUE
-	opacity = TRUE
-
-/turf/open/void/is_weedable()
-	return NOT_WEEDABLE
+//direction is direction of travel of A
+/turf/open/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)
+	if(direction == UP)
+		for(var/obj/O in contents)
+			if(O.flags_obj & OBJ_BLOCK_Z_OUT_UP)
+				return FALSE
+		return TRUE
+	return FALSE
 
 /turf/open/river
 	can_bloody = FALSE
@@ -174,6 +178,8 @@
 	name = "grass"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "grass1"
+
+	antipierce = 5
 
 /turf/open/organic/grass/astroturf
 	desc = "It'll get in your shoes no matter what you do."
@@ -188,12 +194,16 @@
 	is_groundmap_turf = TRUE
 	minimap_color = MINIMAP_MARS_DIRT
 
+	antipierce = 5
+
 
 /turf/open/mars_cave
 	name = "cave"
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_cave_1"
 	is_groundmap_turf = TRUE
+
+	antipierce = 5
 
 /turf/open/mars_cave/Initialize(mapload, ...)
 	. = ..()
@@ -284,6 +294,8 @@
 	icon_state = "mars_dirt_1"
 	minimap_color = MINIMAP_DIRT
 
+	antipierce = 5
+
 /turf/open/mars_dirt/Initialize(mapload, ...)
 	. = ..()
 	var/r = rand(0, 32)
@@ -361,6 +373,8 @@
 	icon = 'icons/turf/floors/beach.dmi'
 	supports_surgery = FALSE
 
+	antipierce = 15
+
 /turf/open/beach/Entered(atom/movable/AM)
 	..()
 
@@ -412,6 +426,8 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 	is_groundmap_turf = TRUE
+
+	antipierce = 10
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
 
@@ -661,7 +677,8 @@
 	..()
 	update_overlays()
 
-/turf/open/gm/river/proc/update_overlays()
+/turf/open/gm/river/update_overlays()
+	. = ..()
 	overlays.Cut()
 	if(no_overlay)
 		return
@@ -914,6 +931,8 @@
 	icon_state = "ice_floor"
 	baseturfs = /turf/open/ice
 
+	antipierce = 5
+
 
 //Randomize ice floor sprite
 /turf/open/ice/Initialize(mapload, ...)
@@ -931,6 +950,8 @@
 	icon = 'icons/turf/floors/asphalt.dmi'
 	icon_state = "sunbleached_asphalt"
 	baseturfs = /turf/open/asphalt
+
+	antipierce = 10
 
 /turf/open/asphalt/tile
 	icon_state = "tile"
@@ -1036,6 +1057,8 @@
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
 	baseturfs = /turf/open/jungle
+
+	antipierce = 10
 
 /turf/open/jungle/Initialize(mapload, ...)
 	. = ..()

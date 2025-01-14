@@ -27,7 +27,24 @@
     "monkey_types": [
         "yiren"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1,
+            "Baseturf": "/turf/open/ice"
+        },
+        {
+            "Ground": true,
+            "Down": -1,
+            "Up": 1,
+            "Baseturf": "/turf/open/openspace"
+        },
+        {
+            "Ground": true,
+            "Down": -1,
+            "Baseturf": "/turf/open/openspace"
+        }
+    ],
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,

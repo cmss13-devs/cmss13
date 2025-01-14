@@ -51,16 +51,16 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "i" = (
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "j" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "back_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "l" = (
 /obj/structure/interior_wall/tank{
@@ -69,13 +69,13 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "r" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "u" = (
 /obj/structure/prop/tank{
@@ -91,31 +91,31 @@
 /obj/structure/interior_wall/tank{
 	layer = 2
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "y" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "back_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "B" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "C" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "front_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "D" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "back_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "G" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
@@ -143,7 +143,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "J" = (
 /obj/structure/prop/tank{

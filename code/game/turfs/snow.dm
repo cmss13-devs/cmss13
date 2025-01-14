@@ -10,6 +10,8 @@
 	is_groundmap_turf = TRUE
 	scorchable = TRUE
 
+	antipierce = 5
+
 	//PLACING/REMOVING/BUILDING
 /turf/open/snow/attackby(obj/item/I, mob/user)
 

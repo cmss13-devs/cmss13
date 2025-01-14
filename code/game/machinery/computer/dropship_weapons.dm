@@ -706,22 +706,12 @@
 			continue
 		if(!LT.signal_loc)
 			return FALSE
-		var/turf/TU = get_turf(LT.signal_loc)
-		var/area/targ_area = get_area(LT.signal_loc)
-		var/is_outside = FALSE
-		if(is_ground_level(TU.z))
-			switch(targ_area.ceiling)
-				if(CEILING_NONE)
-					is_outside = TRUE
-				if(CEILING_GLASS)
-					is_outside = TRUE
-		if(!is_outside && !cavebreaker) //cavebreaker doesn't care
-			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
-			return FALSE
-		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
-			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
-			return FALSE
-		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
+		var/turf/signal_loc = get_turf(LT.signal_loc)
+		var/turf/roof = get_highest_turf(signal_loc)
+		if(signal_loc != roof.air_strike(5, signal_loc, 1, TRUE))
+			to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+			return
+		if(!DEW.ammo_equipped.can_fire_at(signal_loc, weapon_operator))
 			return FALSE
 
 		DEW.open_fire(LT.signal_loc)

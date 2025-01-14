@@ -26,6 +26,26 @@
 	. = ..()
 	recipes = GLOB.rod_recipes
 
+/obj/item/stack/rods/attack_self(mob/user)
+	var/turf/target = get_step(user, user.dir)
+	if(!target || !istype(target, /turf/open/openspace))
+		return ..()
+
+	var/obj/structure/lattice/support_structure = locate(/obj/structure/lattice) in target
+	if(support_structure)
+		return ..()
+
+	if(ishuman(user) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
+		return ..()
+
+	if(get_amount() < 4)
+		return ..()
+
+	to_chat(user, SPAN_NOTICE("Constructing support lattice ..."))
+	playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
+	new /obj/structure/lattice(target)
+	use(4)
+
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	if (!iswelder(W))
 		return ..()

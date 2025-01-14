@@ -19,6 +19,34 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	///If can be detected on motion detectors.
 	var/motion_sensed = FALSE
 
+/mob/hologram/up()
+	set name = "Move Upwards"
+	set category = "IC"
+
+	var/turf/above = SSmapping.get_turf_above(get_turf(src))
+	if(!above || istype(above, /turf/closed) || allow_turf_entry(src, above) & COMPONENT_TURF_DENY_MOVEMENT)
+		to_chat(src, SPAN_NOTICE("There nowhere to go."))
+		return
+
+	if(zMove(UP, z_move_flags = ZMOVE_FEEDBACK))
+		to_chat(src, SPAN_NOTICE("You move upwards."))
+
+/mob/hologram/down()
+	set name = "Move Down"
+	set category = "IC"
+
+	var/turf/below = SSmapping.get_turf_below(get_turf(src))
+	if(!below || istype(below, /turf/closed) || !allow_turf_entry(src, below))
+		to_chat(src, SPAN_NOTICE("There nowhere to go."))
+		return
+
+	if(zMove(DOWN, z_move_flags = ZMOVE_FEEDBACK))
+		to_chat(src, SPAN_NOTICE("You move down."))
+
+/mob/hologram/proc/allow_turf_entry(mob/self, turf/crossing_turf)
+	SIGNAL_HANDLER
+	return COMPONENT_TURF_ALLOW_MOVEMENT
+
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
 

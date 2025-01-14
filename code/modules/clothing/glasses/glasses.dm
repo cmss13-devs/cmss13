@@ -340,14 +340,14 @@
 	. = ..()
 
 	obj_glass_overlay = new()
-	obj_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_ICON
+	obj_glass_overlay.vis_flags = VIS_INHERIT_ICON|VIS_INHERIT_PLANE|VIS_INHERIT_ID
 	obj_glass_overlay.icon_state = "discovision_glass"
 	obj_glass_overlay.layer = FLOAT_LAYER
 	vis_contents += obj_glass_overlay
 
 	mob_glass_overlay = new()
 	mob_glass_overlay.icon = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi'
-	mob_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+	mob_glass_overlay.vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_PLANE|VIS_INHERIT_ID
 	mob_glass_overlay.icon_state = "discovision_glass"
 	mob_glass_overlay.layer = FLOAT_LAYER
 

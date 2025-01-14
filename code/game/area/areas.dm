@@ -130,7 +130,7 @@
 				continue
 			if(istype(current, /turf/closed/wall))
 				var/turf/closed/wall/current_wall = current
-				if(!current_wall.hull)
+				if(!current_wall.hull_tile)
 					openable_turf_count++
 					continue
 

@@ -99,7 +99,7 @@
 		return FALSE
 
 	user.add_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
-	var/atom/blocker = LinkBlocked(user, U, T, list(src))
+	var/atom/blocker = LinkBlocked(user, U, T, forget = list(src))
 	user.remove_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
 
 	if(blocker)

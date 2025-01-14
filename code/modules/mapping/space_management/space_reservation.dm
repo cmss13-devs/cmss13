@@ -46,7 +46,7 @@
 	pre_cordon_distance = 7
 
 /datum/turf_reservation/interior
-	turf_type = /turf/open/void/vehicle
+	turf_type = /turf/open/void
 
 /datum/turf_reservation/proc/Release()
 	bottom_left_turfs.Cut()

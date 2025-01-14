@@ -17,13 +17,13 @@
 	icon_state = "background_1"
 	},
 /obj/effect/vehicle_roof/van,
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "f" = (
 /obj/structure/interior_wall/van{
 	icon_state = "front_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "h" = (
 /obj/structure/bed/chair/comfy{
@@ -39,7 +39,7 @@
 /obj/structure/interior_wall/van{
 	icon_state = "front_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "j" = (
 /obj/structure/interior_wall/van{
@@ -48,7 +48,7 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "n" = (
 /obj/structure/interior_wall/van{
@@ -57,7 +57,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "o" = (
 /obj/structure/bed/chair/comfy,
@@ -73,7 +73,7 @@
 /obj/effect/vehicle_roof/van{
 	icon_state = "roof_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "s" = (
 /obj/structure/bed/chair/comfy,
@@ -114,19 +114,19 @@
 	icon_state = "front_roof_1"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield,
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "w" = (
 /obj/structure/interior_wall/van{
 	icon_state = "front_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "x" = (
 /obj/structure/interior_wall/van{
 	icon_state = "back_2"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "y" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -144,13 +144,13 @@
 /obj/structure/interior_wall/van{
 	icon_state = "back_1"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "E" = (
 /obj/structure/interior_wall/van{
 	icon_state = "back_3"
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "F" = (
 /obj/structure/interior_wall/van{
@@ -159,7 +159,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "G" = (
 /obj/structure/bed/chair/comfy{
@@ -174,7 +174,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "M" = (
 /obj/structure/bed/chair/comfy,
@@ -187,7 +187,7 @@
 /turf/open/shuttle/vehicle/floor_1_2,
 /area/interior/vehicle/van)
 "O" = (
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "V" = (
 /obj/structure/interior_wall/van{
@@ -196,7 +196,7 @@
 	layer = 5.2;
 	pixel_y = 32
 	},
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 
 (1,1,1) = {"

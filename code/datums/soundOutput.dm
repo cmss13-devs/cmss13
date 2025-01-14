@@ -46,9 +46,12 @@
 						return // Invalid location
 					S.falloff /= 2
 					owner_turf = candidate
+			else if (owner_turf.z != T.z)
+				S.falloff /= 2
+
 			S.x = T.x - owner_turf.x
-			S.y = 0
-			S.z = T.y - owner_turf.y
+			S.y = T.y - owner_turf.y
+			S.z = T.z - owner_turf.z
 		S.y += T.y_s_offset
 		S.x += T.x_s_offset
 		S.echo = SOUND_ECHO_REVERB_ON //enable environment reverb for positional sounds
@@ -81,6 +84,7 @@
 		soundscape_playlist = target_area.soundscape_playlist
 
 	var/sound/S = sound(null,1,0,SOUND_CHANNEL_AMBIENCE)
+	var/list/echo_list = new(18)
 
 	if(ambience == target_ambience)
 		if(!force_update)
@@ -95,19 +99,11 @@
 	S.status = status_flags
 
 	if(target_area)
-		var/muffle
-		if(target_area.ceiling_muffle)
-			switch(target_area.ceiling)
-				if(CEILING_NONE)
-					muffle = 0
-				if(CEILING_GLASS)
-					muffle = MUFFLE_MEDIUM
-				if(CEILING_METAL)
-					muffle = MUFFLE_HIGH
-				else
-					S.volume = 0
-		muffle += target_area.base_muffle
-		S.echo = list(muffle)
+		S.environment = target_area.sound_environment
+	echo_list[ECHO_ROOM] = get_muffle(target_area, SSmapping.get_turf_above(get_turf(owner.mob)))
+	if(!echo_list[ECHO_ROOM])
+		S.volume = 0
+	S.echo = echo_list
 	sound_to(owner, S)
 
 

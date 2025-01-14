@@ -108,10 +108,6 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	if(istype(T, /turf/open/space)) // No firing into space
 		return FALSE
 
-	if(protected_by_pylon(TURF_PROTECTION_OB, T))
-		to_chat(H, SPAN_WARNING("[icon2html(src)] This area is too reinforced to fire into."))
-		return FALSE
-
 	if(next_fire > world.time)
 		to_chat(H, SPAN_WARNING("[icon2html(src)] The barrel is still hot! Wait [SPAN_BOLD((next_fire - world.time)/10)] more seconds before firing."))
 		return FALSE
@@ -164,14 +160,16 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	addtimer(CALLBACK(src, PROC_REF(land_shot), T, H.client, warning_zone, I), 10 SECONDS)
 
-/obj/structure/machinery/computer/railgun/proc/land_shot(turf/T, client/firer, obj/effect/warning/droppod/warning_zone, image/to_remove)
+/obj/structure/machinery/computer/railgun/proc/land_shot(turf/target_turf, client/firer, obj/effect/warning/droppod/warning_zone, image/to_remove)
 	if(warning_zone)
 		qdel(warning_zone)
 
 	if(firer)
 		firer.images -= to_remove
-		playsound(T, 'sound/machines/railgun/railgun_impact.ogg', sound_range = 75)
-		cell_explosion(T, power, power/range, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("railgun", firer.mob))
+		var/turf/roof = get_highest_turf(target_turf)
+		target_turf = roof.air_strike(15, target_turf, 1)
+		playsound(target_turf, 'sound/machines/railgun/railgun_impact.ogg', sound_range = 75)
+		cell_explosion(target_turf, power, power/range, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("railgun", firer.mob))
 
 /obj/structure/machinery/computer/railgun/proc/remove_current_operator()
 	SIGNAL_HANDLER
@@ -260,17 +258,15 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	H.see_invisible = SEE_INVISIBLE_MINIMUM
 	return COMPONENT_OVERRIDE_UPDATE_SIGHT
 
-/mob/hologram/railgun/proc/allow_turf_entry(mob/self, turf/to_enter)
-	SIGNAL_HANDLER
+/mob/hologram/railgun/allow_turf_entry(mob/self, turf/crossing_turf)
+	. = ..()
 
-	if(protected_by_pylon(TURF_PROTECTION_OB, to_enter))
+	var/turf/roof = get_highest_turf(crossing_turf)
+	if(crossing_turf != roof.air_strike(15, crossing_turf, 1, TRUE))
 		to_chat(linked_mob, SPAN_WARNING("[icon2html(src)] This area is too reinforced to enter."))
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(to_enter, /turf/closed/wall))
-		var/turf/closed/wall/W = to_enter
-		if(W.hull)
+	if(istype(crossing_turf, /turf/closed/wall))
+		var/turf/closed/wall/W = crossing_turf
+		if(W.hull_tile)
 			return COMPONENT_TURF_DENY_MOVEMENT
-
-	return COMPONENT_TURF_ALLOW_MOVEMENT
-

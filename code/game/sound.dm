@@ -13,12 +13,34 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
+	var/zrange = 0
 	var/list/echo = new /list(18)
 	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
+
+/datum/sound_template/proc/get_hearers()
+	var/list/hearers_to_return = list()
+	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
+	hearers_to_return += SSquadtree.players_in_range(zone, z)
+	if(zrange)
+		var/turf/initial_turf = locate(x, y, z)
+		var/turf/upper_turf = initial_turf
+		var/turf/below_turf = initial_turf
+		var/turf/potential_turf
+		for(var/i = 1 to zrange)
+			zone = SQUARE(x, y, range / i)
+			potential_turf = SSmapping.get_turf_above(upper_turf)
+			if(potential_turf)
+				upper_turf = potential_turf
+				hearers_to_return += SSquadtree.players_in_range(zone, upper_turf.z)
+			potential_turf = SSmapping.get_turf_below(upper_turf)
+			if(potential_turf)
+				below_turf = potential_turf
+				hearers_to_return += SSquadtree.players_in_range(zone, below_turf.z)
+	return hearers_to_return
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1
@@ -37,7 +59,7 @@
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset)
+/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset, zrange = 1)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -60,6 +82,7 @@
 		template.echo[pos] = echo[pos]
 	template.y_s_offset = y_s_offset
 	template.x_s_offset = x_s_offset
+	template.zrange = zrange
 	if(vary != FALSE)
 		if(vary > 1)
 			template.frequency = vary
@@ -185,11 +208,25 @@
 			hearers += M.client
 	SSsound.queue(template, hearers)
 
+/proc/get_muffle(area/target_area, turf/target_turf)
+	var/muffle
+	if(istype(target_turf, /turf/open/openspace) || istype(target_turf, /turf/open/floor/glass))
+		muffle = 0
+	else if(istype(target_turf, /turf/open/floor/roof/metal) || istype(target_turf, /turf/open/floor/roof/sheet) || istype(target_turf, /turf/open/floor/roof/ship_hull))
+		muffle = MUFFLE_HIGH
+	else if(istype(target_turf, /turf/closed))
+		muffle = MUFFLE_MEDIUM
+	else
+		muffle = MUFFLE_LOW
+	return muffle
+
 // The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
 /proc/get_sfx(sound)
 	if(istext(sound))
 		switch(sound)
 			// General effects
+			if("bodyfall")
+				sound = pick('sound/effects/bodyfall1.ogg','sound/effects/bodyfall2.ogg','sound/effects/bodyfall3.ogg','sound/effects/bodyfall4.ogg')
 			if("shatter")
 				sound = pick('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg')
 			if("windowshatter") //meaty window shattering sound

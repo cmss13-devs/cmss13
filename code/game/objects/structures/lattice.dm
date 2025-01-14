@@ -6,12 +6,11 @@
 	density = FALSE
 	anchored = TRUE
 	layer = LATTICE_LAYER
-	plane = FLOOR_PLANE
 	// flags = CONDUCT
 
 /obj/structure/lattice/Initialize()
 	. = ..()
-	if(!istype(src.loc, /turf/open/space))
+	if(!istype(src.loc, /turf/open/space) && !istype(src.loc, /turf/open/openspace))
 		return INITIALIZE_HINT_QDEL
 	for(var/obj/structure/lattice/LAT in src.loc)
 		if(LAT != src)
@@ -58,6 +57,10 @@
 		if(WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("Slicing lattice joints..."))
 		deconstruct()
+	if(istype(C, /obj/item/stack/sheet/metal))
+		var/turf/T = get_turf(src)
+		T.attackby(C, user)
+		return
 	return
 
 /obj/structure/lattice/deconstruct(disassembled = TRUE)

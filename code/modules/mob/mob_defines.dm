@@ -1,9 +1,12 @@
 /mob
 	density = TRUE
+	vis_flags = VIS_INHERIT_PLANE
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	var/obj/shadow/shadow = null
+	var/is_ventcrawling = 0
 	var/mob_flags = NO_FLAGS
 	var/datum/mind/mind
 
@@ -37,7 +40,6 @@
 	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
 	var/sdisabilities = 0 //Carbon
 	var/disabilities = 0 //Carbon
-	var/atom/movable/pulling = null
 	var/next_move = null
 	var/next_move_slowdown = 0 // Amount added during the next movement_delay(), then is reset.
 	var/speed = 0 //Speed that modifies the movement delay of a given mob

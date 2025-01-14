@@ -39,6 +39,7 @@ Buildable meters
 #define PIPE_SCRUBBERS_MANIFOLD 34
 #define PIPE_SUPPLY_MANIFOLD4W 35
 #define PIPE_SCRUBBERS_MANIFOLD4W 36
+#define PIPE_MULTIZ 37
 
 #define PIPE_SUPPLY_CAP 41
 #define PIPE_SCRUBBERS_CAP 42
@@ -106,6 +107,8 @@ Buildable meters
 			src.pipe_type = PIPE_UVENT
 		else if(istype(make_from, /obj/structure/pipes/valve))
 			src.pipe_type = PIPE_MVALVE
+		else if(istype(make_from, /obj/structure/pipes/multiz))
+			src.pipe_type = PIPE_MULTIZ
 		else if(istype(make_from, /obj/structure/pipes/binary/pump/high_power))
 			src.pipe_type = PIPE_VOLUME_PUMP
 		else if(istype(make_from, /obj/structure/pipes/binary/pump))
@@ -490,6 +493,14 @@ Buildable meters
 			if (pipename)
 				new_pipe.name = pipename
 			new_pipe.level = pipelevel
+
+		if(PIPE_MULTIZ)
+			var/obj/structure/pipes/multiz/M = new( src.loc)
+			M.setDir(dir)
+			M.valid_directions = list(pipe_dir)
+			if(pipename)
+				M.name = pipename
+			M.level = pipelevel
 
 		if(PIPE_PUMP) //gas pump
 			new_pipe = new /obj/structure/pipes/binary/pump(loc)

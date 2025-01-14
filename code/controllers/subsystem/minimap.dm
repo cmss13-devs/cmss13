@@ -43,6 +43,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/controller/subsystem/minimaps/Initialize(start_timeofday)
 	for(var/level in 1 to length(SSmapping.z_list))
+		CHECK_TICK
 		minimaps_by_z["[level]"] = new /datum/hud_displays
 		if(!is_ground_level(level) && !is_mainship_level(level))
 			continue
@@ -54,6 +55,7 @@ SUBSYSTEM_DEF(minimaps)
 		var/ymax = 1
 
 		for(var/xval in 1 to world.maxx)
+			CHECK_TICK
 			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
 				var/turf/location = locate(xval, yval, level)
 				if(location.z != level)

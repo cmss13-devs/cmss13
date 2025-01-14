@@ -30,7 +30,18 @@
         "stok"
     ],
     "environment_traits": { "Fog": true },
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1,
+            "Baseturf": "/turf/open/auto_turf/sand_white/layer0"
+        },
+        {
+            "Ground": true,
+            "Down": -1,
+            "Baseturf": "/turf/open/openspace"
+        }
+    ],
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,

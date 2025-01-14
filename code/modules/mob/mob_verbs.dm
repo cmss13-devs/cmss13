@@ -214,33 +214,67 @@
 	set_face_dir(WEST)
 
 
+/atom/movable/proc/stop_pulling()
+	return
 
-/mob/verb/stop_pulling()
+/mob/stop_pulling()
+	if(!pulling)
+		return
+
+	REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
+	var/mob/M = pulling
+	pulling.pulledby = null
+	pulling = null
+
+	grab_level = 0
+	if(client)
+		client.recalculate_move_delay()
+		// When you stop pulling a mob after you move a tile with it your next movement will still include
+		// the grab delay so we have to fix it here (we love code)
+		client.next_movement = world.time + client.move_delay
+	if(hud_used && hud_used.pull_icon)
+		hud_used.pull_icon.icon_state = "pull0"
+	if(istype(r_hand, /obj/item/grab))
+		temp_drop_inv_item(r_hand)
+	else if(istype(l_hand, /obj/item/grab))
+		temp_drop_inv_item(l_hand)
+	if(istype(M))
+		if(M.client)
+			//resist_grab uses long movement cooldown durations to prevent message spam
+			//so we must undo it here so the victim can move right away
+			M.client.next_movement = world.time
+		M.update_transform(TRUE)
+
+/mob/verb/stop_pulling_verb()
 
 	set name = "Stop Pulling"
 	set category = "IC"
 
-	if(pulling)
-		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
-		var/mob/M = pulling
-		pulling.pulledby = null
-		pulling = null
+	stop_pulling()
 
-		grab_level = 0
-		if(client)
-			client.recalculate_move_delay()
-			// When you stop pulling a mob after you move a tile with it your next movement will still include
-			// the grab delay so we have to fix it here (we love code)
-			client.next_movement = world.time + client.move_delay
-		if(hud_used && hud_used.pull_icon)
-			hud_used.pull_icon.icon_state = "pull0"
-		if(istype(r_hand, /obj/item/grab))
-			temp_drop_inv_item(r_hand)
-		else if(istype(l_hand, /obj/item/grab))
-			temp_drop_inv_item(l_hand)
-		if(istype(M))
-			if(M.client)
-				//resist_grab uses long movement cooldown durations to prevent message spam
-				//so we must undo it here so the victim can move right away
-				M.client.next_movement = world.time
-			M.update_transform(TRUE)
+/mob/verb/lookup()
+	set name = "Look Up"
+	set category = "IC"
+
+	if(!shadow)
+		shadow = new(loc)
+		set_interaction(shadow)
+
+	if(shadow.high >= shadow.max_high)
+		to_chat(src, SPAN_NOTICE("You can't look up more."))
+	else
+		shadow.high++
+		client.change_view(GLOB.world_view_size - shadow.high, shadow)
+
+/mob/verb/stoplookup()
+	set name = "Look Down"
+	set category = "IC"
+
+	if(!shadow || shadow.high == 1)
+		if(interactee == shadow)
+			unset_interaction()
+		else
+			QDEL_NULL(shadow)
+		to_chat(src, SPAN_NOTICE("You can't look down more."))
+	else
+		shadow.high--

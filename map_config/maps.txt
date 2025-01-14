@@ -25,6 +25,7 @@ endmap
 
 map fiorina_sciannex
 	minplayers 130
+	disabled
 endmap
 
 map corsat
@@ -35,11 +36,11 @@ endmap
 
 map desert_dam
 	minplayers 130
+	disabled
 endmap
 
 map ice_colony_v2
-	minplayers 130
-	voteweight 0
+	minplayers 40
 	disabled
 endmap
 
@@ -51,6 +52,7 @@ endmap
 
 map sorokyne_strata
 	minplayers 130
+	disabled
 endmap
 
 map lv522_chances_claim
@@ -58,9 +60,11 @@ endmap
 
 map lv759_hybrisa_prospera
 	minplayers 130
+	disabled
 endmap
 
 map new_varadero
+	disabled
 endmap
 
 map whiskey_outpost_v2

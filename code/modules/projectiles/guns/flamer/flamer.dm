@@ -262,6 +262,7 @@
 	var/turf/first_turf = turfs[1]
 	var/turf/second_turf = turfs[2]
 	var/ammount_required = (min(length(turfs), smoke_range) * use_multiplier) // the ammount of units that this click requires
+	var/turf/prev_turf = source_turf
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
@@ -274,7 +275,7 @@
 			break
 		else
 			var/obj/effect/particle_effect/smoke/chem/checker = new()
-			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf, prev_turf)
 			if(blocked)
 				break
 
@@ -287,6 +288,7 @@
 			var/datum/effect_system/smoke_spread/chem/smoke = new()
 			smoke.set_up(to_disperse, 1, loca = turf)
 			smoke.start()
+		prev_turf = turf
 		sleep(4)
 
 		distance++
@@ -316,6 +318,7 @@
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
 	var/ammount_required = (min(length(turfs), foam_range) * use_multiplier) // the ammount of units that this click requires
+	var/turf/prev_turf = source_turf
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
@@ -328,7 +331,7 @@
 			break
 		else
 			var/obj/effect/particle_effect/foam/checker = new()
-			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf, prev_turf)
 			if(blocked)
 				break
 
@@ -340,6 +343,7 @@
 			var/datum/effect_system/foam_spread/foam = new()
 			foam.set_up(1, turf, metal_foam = FOAM_METAL_TYPE_IRON)
 			foam.start()
+		prev_turf = turf
 		sleep(2)
 
 		distance++

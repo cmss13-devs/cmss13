@@ -3106,7 +3106,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "anK" = (
@@ -4735,7 +4735,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/engi)
 "auY" = (
@@ -6798,7 +6798,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aDU" = (
@@ -6828,7 +6828,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/omega)
 "aEe" = (
@@ -9025,7 +9025,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/lz2)
 "aNZ" = (
@@ -12571,7 +12571,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/engi)
 "bfn" = (
@@ -44305,7 +44305,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/lz1)
 "lcy" = (
@@ -45469,7 +45469,7 @@
 /turf/closed/wall/hangar{
 	name = "Elevator Shaft";
 	unacidable = 1;
-	hull = 1
+	hull_tile = 1
 	},
 /area/shuttle/trijent_shuttle/lz2)
 "nET" = (

@@ -5,7 +5,7 @@
 	anchored = FALSE
 	density = TRUE
 	can_hold = list()
-	storage_slots = null
+	storage_slots = 30
 	max_w_class = SIZE_MASSIVE
 	w_class = SIZE_MASSIVE
 	max_storage_space = 40
@@ -13,6 +13,7 @@
 	role_restriction = null
 
 /obj/structure/vehicle_locker/supply_container/ammo //proof of concept it needs common ancestor with vehicle locker but that one is just so cool
+	storage_slots = 15
 	can_hold = list(
 		/obj/item/ammo_box,
 	)

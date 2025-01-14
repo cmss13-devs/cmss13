@@ -23,6 +23,7 @@
 	var/w_class = SIZE_MASSIVE
 	var/max_storage_space = 40
 	var/use_sound = null
+	var/row_length = 7
 	var/list/bypass_w_limit = list(/obj/item/weapon/gun,
 									/obj/item/storage/backpack/general_belt,
 									/obj/item/storage/large_holster/machete,
@@ -44,6 +45,7 @@
 	container.use_sound = use_sound
 	container.bypass_w_limit = bypass_w_limit
 	container.can_hold = can_hold
+	container.row_length = row_length
 	flags_atom |= USES_HEARING
 
 /obj/structure/vehicle_locker/verb/empty_storage()

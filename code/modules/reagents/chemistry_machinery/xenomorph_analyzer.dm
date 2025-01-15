@@ -81,6 +81,7 @@
 		data["organ"] = TRUE
 		data["caste"] = caste_of_organ
 		data["value"] = organ.research_value
+		data["credits"] = organ.credit_value
 	else
 		data["organ"] = FALSE
 	data["upgrades"] = list()
@@ -117,7 +118,7 @@
 		if("process_organ")
 			if(!busy)
 				busy = TRUE
-				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 3 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value, organ.credit_value), 3 SECONDS)
 				flick("xeno_analyzer_on_moving", src)
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 				QDEL_NULL(organ)
@@ -137,11 +138,11 @@
 	organ.forceMove(get_turf(src))
 	organ = null
 
-/obj/structure/machinery/xenoanalyzer/proc/process_organ(biomass_points_to_add)
+/obj/structure/machinery/xenoanalyzer/proc/process_organ(biomass_points_to_add, credits_to_add)
 	biomass_points += biomass_points_to_add
 	icon_state = "xeno_analyzer"
 	busy = FALSE
-
+	GLOB.chemical_data.update_credits(credits_to_add)
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user)
 	if(stat & NOPOWER)

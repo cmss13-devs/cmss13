@@ -31669,12 +31669,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/se)
-"ofX" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/s)
 "ogt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -109141,7 +109135,7 @@ unC
 wup
 izJ
 eRI
-ofX
+bjD
 bjy
 bjy
 bjy
@@ -110009,7 +110003,7 @@ dgy
 umN
 abN
 dgy
-ofX
+giY
 ssI
 bkp
 bjA

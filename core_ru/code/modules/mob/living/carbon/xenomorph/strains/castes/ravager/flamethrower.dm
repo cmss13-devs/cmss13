@@ -1,6 +1,6 @@
 /datum/xeno_strain/flamethrower
 	name = "Flamethrower"
-	description = "Youre losing your charge and empover as armor, but gain FLAME! Shall your enemies BURN down to ashes! It's a goddamn dragon! Run! RUUUUN!"
+	description = "Youre losing your charge and empower as armor, but gain FLAME! Shall your enemies BURN down to ashes! It's a goddamn dragon! Run! RUUUUN!"
 	flavor_description = "Run, Hide - death will come to every host anyway! It's a goddamn dragon! Run! RUUUUN!"
 
 	actions_to_remove = list(

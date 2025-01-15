@@ -685,7 +685,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	category = "Weapons"
 	cost = 4
 
-/datum/gear/weapon/type_80_Bayonet
+/datum/gear/weapon/type_80_bayonet
 	display_name = "Type 80 Bayonet"
 	path = /obj/item/attachable/bayonet/upp_replica
 

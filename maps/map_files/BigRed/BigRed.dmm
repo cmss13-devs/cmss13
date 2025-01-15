@@ -719,6 +719,18 @@
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acN" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
+"acO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -757,6 +769,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acW" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -39916,7 +39934,7 @@ aao
 aao
 aao
 aao
-aao
+acW
 aao
 aao
 aao
@@ -46276,7 +46294,7 @@ bie
 bie
 bie
 bmM
-bie
+acO
 bie
 bie
 bie
@@ -58291,7 +58309,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+acN
 jrD
 jrD
 jrD

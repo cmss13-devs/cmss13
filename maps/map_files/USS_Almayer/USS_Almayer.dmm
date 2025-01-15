@@ -191,6 +191,10 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/docking_port/stationary/marine_dropship/req_uscm,
+/turf/open/floor/almayer/empty/requisitions,
+/area/almayer/squads/req)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -9651,7 +9655,7 @@
 /area/almayer/squads/req)
 "bpR" = (
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station/uscm)
+/area/almayer/squads/req)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -9954,10 +9958,6 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/squads/req)
-"bsK" = (
-/obj/effect/landmark/supply_elevator,
-/turf/open/floor/almayer/empty/requisitions,
-/area/supply/station/uscm)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -111535,7 +111535,7 @@ pjG
 boA
 bpR
 bpR
-bsK
+aaB
 bpR
 bpR
 bxh

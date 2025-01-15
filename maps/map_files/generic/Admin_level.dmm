@@ -18,6 +18,10 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/space/basic,
 /area/space)
+"af" = (
+/obj/docking_port/stationary/marine_dropship/req_uscm_admin,
+/turf/open/space/basic,
+/area/space)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -135,9 +139,6 @@
 	name = "reinforced hull"
 	},
 /area/centcom/living)
-"dw" = (
-/turf/open/floor/almayer/test_floor5,
-/area/supply/dock/uscm)
 "dy" = (
 /turf/open/floor/wood,
 /area/centcom/living)
@@ -157,9 +158,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew7,
 /area/space)
-"ej" = (
-/turf/open/floor/plating/bare_catwalk,
-/area/supply/dock/uscm)
 "ev" = (
 /turf/open/floor/carpet/edge/northwest,
 /area/centcom/living)
@@ -11223,11 +11221,11 @@ aa
 aC
 aa
 fn
-ej
-ej
-ej
-ej
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11375,11 +11373,11 @@ aa
 aC
 aa
 fn
-ej
-dw
-ej
-dw
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11527,11 +11525,11 @@ aa
 aC
 aa
 fn
-ej
-ej
-ej
-ej
-ej
+as
+as
+af
+as
+as
 fn
 aa
 fn
@@ -11679,11 +11677,11 @@ aa
 aC
 aa
 fn
-ej
-dw
-ej
-dw
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn
@@ -11831,11 +11829,11 @@ aa
 aC
 aa
 fn
-ej
-ej
-ej
-ej
-ej
+as
+as
+as
+as
+as
 fn
 aa
 fn

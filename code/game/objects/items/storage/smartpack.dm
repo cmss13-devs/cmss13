@@ -2,7 +2,7 @@
 
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42  backpack"
-	desc = "A joint project between the USCM and Wey-Yu. It is said to be top-class engineering and state of the art technology."
+	desc = "A joint project between the USCM and Wey-Yu. It is said to be top-class engineering and state of the art technology with a built in shoulder-lamp."
 	item_state = "smartpack"
 	icon_state = "smartpack"
 	icon = 'icons/obj/items/clothing/backpack/smartpack.dmi'

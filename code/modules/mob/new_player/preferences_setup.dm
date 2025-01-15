@@ -203,8 +203,8 @@
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
 
-	for(var/gear_item in gear)
-		var/datum/gear/gear = GLOB.gear_datums_by_name[gear_item]
+	for(var/gear_type in gear)
+		var/datum/gear/gear = GLOB.gear_datums_by_type[gear_type]
 		var/obj/item/item = new gear.path()
 
 		if(!preview_dummy.equip_to_appropriate_slot(item))
@@ -239,11 +239,14 @@
 		rotate_right.screen_loc = "preview:1:-16,0"
 	owner.add_to_screen(rotate_right)
 
-/datum/preferences/proc/job_pref_to_gear_preset()
-	var/high_priority
+/// Returns the role that is selected on High
+/datum/preferences/proc/get_high_priority_job()
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
-			high_priority = job
+			return job
+
+/datum/preferences/proc/job_pref_to_gear_preset()
+	var/high_priority = get_high_priority_job()
 
 	switch(high_priority)
 		// USCM JOBS

@@ -1,6 +1,8 @@
 /datum/loadout_picker/ui_static_data(mob/user)
 	. = ..()
 
+	var/job = user.client?.prefs.get_high_priority_job()
+
 	.["categories"] = list()
 	for(var/category in GLOB.gear_datums_by_category)
 		var/list/datum/gear/gears = GLOB.gear_datums_by_category[category]
@@ -9,9 +11,16 @@
 
 		for(var/gear_key as anything in gears)
 			var/datum/gear/gear = gears[gear_key]
+
+			if(length(gear.allowed_roles) && !(job in gear.allowed_roles))
+				continue
+
 			items += list(
-				list("name" = gear.display_name, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
+				list("name" = gear.display_name, "type" = gear.type, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
 			)
+
+		if(!length(items))
+			continue
 
 		.["categories"] += list(
 			list("name" = category, "items" = items)
@@ -31,11 +40,11 @@
 	.["loadout"] = list()
 
 	for(var/item in prefs.gear)
-		var/datum/gear/gear = GLOB.gear_datums_by_name[item]
+		var/datum/gear/gear = GLOB.gear_datums_by_type[item]
 		points += gear.cost
 
 		.["loadout"] += list(
-			list("name" = gear.display_name, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
+			list("name" = gear.display_name, "type" = gear.type, "cost" = gear.cost, "icon" = gear.path::icon, "icon_state" = gear.path::icon_state)
 		)
 
 	.["points"] = points
@@ -49,26 +58,34 @@
 
 	switch(action)
 		if("add")
-			var/datum/gear/gear = GLOB.gear_datums_by_name[params["name"]]
+			var/picked_type = text2path(params["type"])
+			if(!picked_type)
+				return
+
+			var/datum/gear/gear = GLOB.gear_datums_by_type[picked_type]
 			if(!istype(gear))
 				return
 
 			var/total_cost = 0
 			for(var/gear_name in prefs.gear)
-				total_cost += GLOB.gear_datums_by_name[gear_name].cost
+				total_cost += GLOB.gear_datums_by_type[gear_name].cost
 
 			total_cost += gear.cost
 			if(total_cost > MAX_GEAR_COST)
 				return
 
-			prefs.gear += gear.display_name
+			prefs.gear += gear.type
 
 		if("remove")
-			var/datum/gear/gear = GLOB.gear_datums_by_name[params["name"]]
+			var/picked_type = text2path(params["type"])
+			if(!picked_type)
+				return
+
+			var/datum/gear/gear = GLOB.gear_datums_by_type[picked_type]
 			if(!istype(gear))
 				return
 
-			prefs.gear -= gear.display_name
+			prefs.gear -= gear.type
 
 	prefs.ShowChoices(ui.user)
 	return TRUE

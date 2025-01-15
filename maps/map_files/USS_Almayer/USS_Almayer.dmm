@@ -51401,7 +51401,6 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/lower/engine_core)
 "rlf" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/synthcloset)
 "rlh" = (

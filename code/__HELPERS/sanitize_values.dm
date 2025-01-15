@@ -89,17 +89,25 @@
 	var/running_cost = 0
 
 	for(var/gear_option in gear)
-		if(!GLOB.gear_datums_by_name[gear_option])
+		var/gear_type = text2path(gear_option)
+		if(!gear_type)
+			var/datum/gear/attempted_gear = GLOB.gear_datums_by_name[gear_option]
+			if(!attempted_gear)
+				to_chat(user, SPAN_WARNING("Your [gear_option] was removed from your loadout as it is no longer a valid gear option."))
+				continue
+			gear_type = attempted_gear.type
+		if(!GLOB.gear_datums_by_type[gear_type])
+			to_chat(user, SPAN_WARNING("Your [gear_option] was removed from your loadout as it is no longer a valid gear option."))
 			continue
 
-		var/datum/gear/gear_datum = GLOB.gear_datums_by_name[gear_option]
+		var/datum/gear/gear_datum = GLOB.gear_datums_by_type[gear_type]
 		var/new_total = running_cost + gear_datum.cost
 
 		if(new_total > MAX_GEAR_COST)
-			to_chat(user, SPAN_WARNING("Your [gear_option] was removed from your loadout as it exceeded the point limit."))
+			to_chat(user, SPAN_WARNING("Your [gear_datum.display_name] was removed from your loadout as it exceeded the point limit."))
 			continue
 
 		running_cost = new_total
-		sanitized_gear += gear_option
+		sanitized_gear += gear_type
 
 	return sanitized_gear

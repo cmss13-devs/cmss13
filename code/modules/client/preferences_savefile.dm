@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 29
+#define SAVEFILE_VERSION_MAX 30
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -191,6 +191,21 @@
 				hair_style = "Longer Fringe"
 
 		S["hair_style_name"] << hair_style
+
+	if(savefile_version < 30)
+
+		var/list/existing_gear
+		S["gear"] >> existing_gear
+
+		var/list/new_list = list()
+		for(var/entry in existing_gear)
+			var/datum/gear/gear = GLOB.gear_datums_by_name[entry]
+			if(!gear)
+				continue
+
+			new_list += "[gear.type]"
+
+		S["gear"] = new_list
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -785,7 +800,7 @@
 	S["gen_record"] << gen_record
 	S["be_special"] << be_special
 	S["organ_data"] << organ_data
-	S["gear"] << gear
+	S["gear"] << save_gear(gear)
 	S["origin"] << origin
 	S["faction"] << faction
 	S["religion"] << religion
@@ -845,6 +860,16 @@
 				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
+/datum/preferences/proc/save_gear()
+	var/string_list = list()
+
+	for(var/gear_type in gear)
+		string_list += "[gear_type]"
+
+	return string_list
+
+
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

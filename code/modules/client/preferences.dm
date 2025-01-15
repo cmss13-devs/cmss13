@@ -425,10 +425,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			if(length(gear))
 				dat += "<br>"
 				for(var/i = 1; i <= length(gear); i++)
-					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
+					var/datum/gear/G = GLOB.gear_datums_by_type[gear[i]]
 					if(G)
 						total_cost += G.cost
-						dat += "[gear[i]] ([G.cost] points)<br>"
+						dat += "[G.display_name] ([G.cost] points)<br>"
 
 				dat += "<b>Used:</b> [total_cost] points"
 			else

@@ -29,6 +29,9 @@
 	available_strains = list(
 		/datum/xeno_strain/berserker,
 		/datum/xeno_strain/hedgehog,
+//RUCM START
+		/datum/xeno_strain/flamethrower,
+//RUCM END
 	)
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 

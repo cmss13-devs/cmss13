@@ -689,7 +689,7 @@
 	new_human.set_species(SPECIES_ZOMBIE)
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/new_human)
-	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
+	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/rank/utility/gray, /obj/item/clothing/under/rank/utility/brown, /obj/item/clothing/under/colonist/steward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
 	new_human.equip_to_slot_or_del(new uniform_path, WEAR_BODY)
 	var/shoe_path = pick(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/leather, /obj/item/clothing/shoes/jackboots)
 	new_human.equip_to_slot_or_del(new shoe_path, WEAR_FEET)

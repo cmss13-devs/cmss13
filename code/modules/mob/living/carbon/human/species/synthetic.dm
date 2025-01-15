@@ -38,8 +38,8 @@
 		"brain" = /datum/internal_organ/brain/prosthetic,
 		)
 
-	knock_down_reduction = 5
-	stun_reduction = 5
+	knock_down_reduction = 2.5
+	stun_reduction = 2.5
 	acid_blood_dodge_chance = 25
 
 	inherent_verbs = list(

@@ -213,6 +213,7 @@
 	alpha = 255
 
 /atom/movable/screen/plane_master/openspace_backdrop/Initialize()
+	. = ..()
 	filters = list()
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -10)
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -15)

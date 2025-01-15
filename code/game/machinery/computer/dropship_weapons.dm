@@ -438,6 +438,9 @@
 			return TRUE
 
 		if("nvg-enable")
+			if(upgraded != MATRIX_NVG)
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				return FALSE
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
 

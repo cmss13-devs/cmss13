@@ -353,7 +353,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("generate() not implemented for [type]!")
 
-
 /datum/asset/changelog_item
 	_abstract = /datum/asset/changelog_item
 	var/item_filename

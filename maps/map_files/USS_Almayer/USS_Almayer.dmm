@@ -5094,7 +5094,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/starboard)
 "aGH" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aGN" = (
@@ -9651,7 +9651,7 @@
 /area/almayer/squads/req)
 "bpR" = (
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station)
+/area/supply/station/uscm)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -9660,7 +9660,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bpT" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
 "bpV" = (
@@ -9957,7 +9957,7 @@
 "bsK" = (
 /obj/effect/landmark/supply_elevator,
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station)
+/area/supply/station/uscm)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -11148,7 +11148,7 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/living/cryo_cells)
 "bEc" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bEd" = (
@@ -12481,7 +12481,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bNA" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
 	},
@@ -16462,7 +16462,7 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/structure/machinery/cm_vending/clothing/dress/corporate_liaison,
+/obj/structure/machinery/cm_vending/clothing/corporate_liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "cPg" = (
@@ -21148,7 +21148,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/computer/supplycomp/vehicle,
+/obj/structure/machinery/computer/supply/asrs/vehicle,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "eLu" = (
@@ -39932,6 +39932,7 @@
 /obj/item/clipboard,
 /obj/item/storage/lockbox/loyalty,
 /obj/item/storage/briefcase,
+/obj/item/storage/box/wycaps,
 /obj/item/reagent_container/spray/pepper,
 /obj/item/device/eftpos{
 	eftpos_name = "Weyland-Yutani EFTPOS scanner"
@@ -42244,7 +42245,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/clothing/glasses/monocle,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -7;
 	pixel_y = -2
@@ -57368,7 +57368,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "tFS" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32

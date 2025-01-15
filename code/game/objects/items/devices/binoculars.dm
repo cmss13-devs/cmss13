@@ -333,20 +333,11 @@
 	if(targeted_atom.z == 0)
 		return
 
-	var/turf/TU = get_turf(targeted_atom)
-	var/area/targ_area = get_area(targeted_atom)
-	if(!istype(TU)) return
-	var/is_outside = FALSE
-	switch(targ_area.ceiling)
-		if(CEILING_NONE)
-			is_outside = TRUE
-		if(CEILING_GLASS)
-			is_outside = TRUE
-
-	if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
-		is_outside = FALSE
-
-	if(!is_outside && !range_mode) //rangefinding works regardless of ceiling
+	var/turf/target_turf = get_turf(targeted_atom)
+	if(!istype(target_turf))
+		return
+	var/turf/roof = get_highest_turf(target_turf)
+	if(target_turf != roof.air_strike(5, target_turf, 1, TRUE) && !range_mode)
 		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 		return
 	if(user.action_busy)
@@ -356,7 +347,7 @@
 	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
 		return
 	if(range_mode)
-		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
+		var/obj/effect/overlay/temp/laser_coordinate/LT = new (target_turf, las_name, user)
 		coord = LT
 		last_x = obfuscate_x(coord.x)
 		last_y = obfuscate_y(coord.y)
@@ -368,12 +359,12 @@
 				break
 	else
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
-		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
+		var/obj/effect/overlay/temp/laser_target/LT = new (target_turf, las_name, user, tracking_id)
 		laser = LT
 
 		var/turf/userloc = get_turf(user)
-		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). [ADMIN_JMP(userloc)]")
-		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]).")
+		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). [ADMIN_JMP(userloc)]")
+		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)

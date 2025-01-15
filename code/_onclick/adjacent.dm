@@ -29,7 +29,7 @@
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
 		return TRUE
-	if(get_dist(src,T0) > 1)
+	if(get_dist(src,T0) > 1 || z != T0.z)
 		return FALSE
 
 	if(T0.x == x || T0.y == y)
@@ -65,7 +65,7 @@ Quick adjacency (to turf):
 	if(T0 == src)
 		return TRUE
 
-	if(get_dist(src,T0) > 1)
+	if(get_dist(src,T0) > 1 || z != T0.z)
 		return FALSE
 
 	return TRUE

@@ -26,7 +26,7 @@
 		dummy_obj.icon = 'icons/obj/vehicles/arc.dmi'
 		dummy_obj.icon_state = "antenna_cover_0"
 		dummy_obj.dir = owner.dir
-		dummy_obj.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
+		dummy_obj.vis_flags = VIS_INHERIT_LAYER|VIS_INHERIT_PLANE|VIS_INHERIT_ID
 		owner.vis_contents += dummy_obj
 		flick("antenna_extending", dummy_obj)
 		sleep(deploy_animation_time)
@@ -43,7 +43,7 @@
 		dummy_obj.icon = 'icons/obj/vehicles/arc.dmi'
 		dummy_obj.icon_state = "antenna_cover_0"
 		dummy_obj.dir = owner.dir
-		dummy_obj.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
+		dummy_obj.vis_flags = VIS_INHERIT_LAYER|VIS_INHERIT_PLANE|VIS_INHERIT_ID
 		owner.vis_contents += dummy_obj
 		flick("antenna_retracting", dummy_obj)
 		sleep(deploy_animation_time)

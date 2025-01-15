@@ -10,7 +10,7 @@
 /turf/open/floor,
 /area/interior/vehicle/arc)
 "sE" = (
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 "yX" = (
 /obj/effect/landmark/interior/spawn/telephone{
@@ -78,7 +78,7 @@
 /area/interior/vehicle/arc)
 "Rb" = (
 /obj/structure/prop/vehicle/arc,
-/turf/open/void/vehicle,
+/turf/open/void/densy,
 /area/space)
 
 (1,1,1) = {"

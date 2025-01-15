@@ -10,6 +10,8 @@
 	is_groundmap_turf = TRUE
 	scorchable = TRUE
 
+	antipierce = 5
+
 	//PLACING/REMOVING/BUILDING
 /turf/open/snow/attackby(obj/item/I, mob/user)
 
@@ -63,7 +65,6 @@
 //Update icon
 /turf/open/snow/update_icon(update_full, skip_sides)
 	icon_state = "snow_[bleed_layer]"
-	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 	switch(bleed_layer)
 		if(0)
 			name = "dirt floor"

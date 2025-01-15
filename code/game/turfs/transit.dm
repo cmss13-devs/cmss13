@@ -62,7 +62,8 @@
 					break
 			if(found_dense)
 				continue
-			if(protected_by_pylon(TURF_PROTECTION_MORTAR, turf))
+			var/turf/roof = get_highest_turf(turf)
+			if(turf != roof.air_strike(1, turf, 1, TRUE))
 				continue
 			valid_turfs += turf
 		var/turf/deploy_turf

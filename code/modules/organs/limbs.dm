@@ -4,7 +4,7 @@
 /obj/limb
 	name = "limb"
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
-	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR | VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_PLANE|VIS_INHERIT_ID
 	var/icon_name = null
 	var/body_part = null
 	var/icon_position = 0

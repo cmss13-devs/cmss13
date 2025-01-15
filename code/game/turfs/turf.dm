@@ -26,6 +26,19 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
+	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_ID
+
+	var/base_icon
+
+	///Blending
+	var/list/wall_connections = list("0", "0", "0", "0")
+	var/neighbors_list = 0
+	var/special_icon = TRUE
+	var/list/blend_turfs = list()
+	var/list/noblend_turfs = list() //Turfs to avoid blending with
+	var/list/blend_objects = list() // Objects which to blend with
+	var/list/noblend_objects = list() //Objects to avoid blending with (such as children of listed blend objects.
+
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 	var/list/linked_pylons
@@ -42,9 +55,14 @@
 	 */
 	var/list/obj/effect/decal/cleanable/cleanables
 
+	var/antipierce = 2
+
 	var/list/baseturfs = /turf/baseturf_bottom
 	var/changing_turf = FALSE
 	var/chemexploded = FALSE // Prevents explosion stacking
+
+	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	var/hull_tile = 0
 
 	var/turf_flags = NO_FLAGS
 
@@ -96,15 +114,32 @@
 	if(light_power && light_range)
 		update_light()
 
+	if(opacity)
+		directional_opacity = ALL_CARDINALS
+
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
+	else
+		//Get area light
+		var/area/current_area = loc
+		if(current_area?.lighting_effect)
+			overlays += current_area.lighting_effect
+		multiz_turfs()
+		if(!special_icon)
+			update_connections(TRUE)
+		update_icon()
+	return INITIALIZE_HINT_NORMAL
+
+/turf/LateInitialize()
+	SHOULD_CALL_PARENT(FALSE)
 	//Get area light
 	var/area/current_area = loc
 	if(current_area?.lighting_effect)
 		overlays += current_area.lighting_effect
-
-	if(opacity)
-		directional_opacity = ALL_CARDINALS
-
-	return INITIALIZE_HINT_NORMAL
+	multiz_turfs()
+	if(!special_icon)
+		update_connections(FALSE)
+	update_icon()
 
 /turf/Destroy(force)
 	if(hybrid_lights_affecting)
@@ -116,6 +151,12 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
+	var/turf/T = SSmapping.get_turf_above(src)
+	if(T)
+		T.multiz_turf_del(src, DOWN)
+	T = SSmapping.get_turf_below(src)
+	if(T)
+		T.multiz_turf_del(src, UP)
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		C.cleanup_cleanable()
@@ -131,6 +172,11 @@
 	flags_atom &= ~INITIALIZED
 	..()
 
+/turf/setDir(newDir)
+	..()
+	update_connections(FALSE)
+	update_icon()
+
 /turf/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
@@ -142,11 +188,12 @@
 		return FALSE
 	. = ..()
 
+/turf/proc/update_overlays()
+	if(QDELETED(src))
+		return
+
 /turf/ex_act(severity)
 	return 0
-
-/turf/proc/update_icon() //Base parent. - Abby
-	return
 
 /// Call to move a turf from its current area to a new one
 /turf/proc/change_area(area/old_area, area/new_area)
@@ -163,6 +210,31 @@
 /// Allows for reactions to an area change without inherently requiring change_area() be called (I hate maploading)
 /turf/proc/on_change_area(area/old_area, area/new_area)
 	transfer_area_lighting(old_area, new_area)
+
+/turf/proc/multiz_turf_del(turf/T, dir)
+	if(turf_flags & TURF_TRANSPARENT)
+		if(dir != DOWN)
+			return
+		update_multi_z()
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+	if(turf_flags & TURF_TRANSPARENT)
+		if(dir != DOWN)
+			return
+		update_multi_z()
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
+
+/turf/proc/multiz_turfs()
+	var/turf/turf = SSmapping.get_turf_above(src)
+	if(turf)
+		turf.multiz_turf_new(src, DOWN)
+	turf = SSmapping.get_turf_below(src)
+	if(turf)
+		turf.multiz_turf_new(src, UP)
+		var/list/baseturfsold = list(/turf/open/openspace)
+		baseturfsold += baseturfs
+		baseturfs = baseturfsold
 
 /turf/proc/add_cleanable_overlays()
 	for(var/cleanable_type in cleanables)
@@ -220,7 +292,12 @@
 			mover.Collide(A)
 			return FALSE
 
-	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
+	for(var/atom/movable/thing as anything in contents)
+		if(thing == mover || thing == mover.loc) // Multi tile objects and moving out of other objects
+			continue
+		thing.Cross(mover)
+
+		// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
 	if(!mover.move_intentionally)
 		// Check objects in adjacent turf EAST/WEST
 		if(fd1 && fd1 != fdir)
@@ -281,16 +358,85 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/A)
-	if(!istype(A))
+/turf/Entered(atom/movable/arrived, old_loc, list/old_locs)
+	if(!istype(arrived))
 		return
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
-	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, arrived, old_loc)
+	SEND_SIGNAL(arrived, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
 	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
+		E.on_turf_entered(arrived)
+	return TRUE
+
+//zPassIn doesn't necessarily pass an atom!
+//direction is direction of travel of air
+/turf/proc/zPassIn(atom/movable/A, direction, turf/source)
+	return FALSE
+
+//direction is direction of travel of air
+/turf/proc/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)
+	return FALSE
+
+/// Precipitates a movable (plus whatever buckled to it) to lower z levels if possible and then calls zImpact()
+/turf/proc/zFall(atom/movable/falling, levels = 1, force = FALSE, falling_from_move = FALSE)
+	var/direction = DOWN
+	var/turf/target = get_step_multiz(src, direction)
+	if(!target)
+		return FALSE
+	var/isliving = isliving(falling)
+	if(!isliving && !isobj(falling))
+		return
+	if(isliving)
+		var/mob/living/falling_living = falling
+		//relay this mess to whatever the mob is buckled to.
+		if(falling_living.buckled)
+			falling = falling_living.buckled
+	if(!falling_from_move && falling.currently_z_moving)
+		return
+	if(!force && !falling.can_z_move(direction, src, target, ZMOVE_FALL_FLAGS))
+		falling.set_currently_z_moving(FALSE, TRUE)
+		return FALSE
+
+	// So it doesn't trigger other zFall calls. Cleared on zMove.
+	falling.set_currently_z_moving(CURRENTLY_Z_FALLING)
+
+	if(falling.can_paradrop() && levels > 2)
+		playsound(get_turf(falling), "rustle", 50, 1, 6)
+
+	if(istype(falling, /mob))
+		var/mob/mob = falling
+		mob.trainteleport(target)
+	else
+		falling.zMove(null, target, ZMOVE_CHECK_PULLEDBY)
+	target.zImpact(falling, levels, src)
+
+///Called each time the target falls down a z level possibly making their trajectory come to a halt. see __DEFINES/movement.dm.
+/turf/proc/zImpact(atom/movable/falling, levels = 1, turf/prev_turf)
+	var/flags_fall = NO_FLAGS
+	var/list/falling_movables = falling.get_z_move_affected()
+	var/list/falling_mov_names
+	for(var/atom/movable/falling_mov as anything in falling_movables)
+		falling_mov_names += falling_mov.name
+	for(var/i in contents)
+		var/atom/thing = i
+		flags_fall |= thing.intercept_zImpact(falling_movables, levels)
+		if(flags_fall & FALL_STOP_INTERCEPTING)
+			break
+	if(prev_turf && !(flags_fall & FALL_NO_MESSAGE))
+		for(var/mov_name in falling_mov_names)
+			prev_turf.visible_message(SPAN_DANGER("[mov_name] falls through [prev_turf]!"))
+	if(!(flags_fall & FALL_INTERCEPTED) && zFall(falling, levels + 1))
+		return FALSE
+	for(var/atom/movable/falling_mov as anything in falling_movables)
+		if(!(flags_fall & FALL_RETAIN_PULL))
+			falling_mov.stop_pulling()
+		if(!(flags_fall & FALL_INTERCEPTED))
+			falling_mov.onZImpact(src, levels)
+		if(falling_mov.pulledby && (falling_mov.z != falling_mov.pulledby.z || get_dist(falling_mov, falling_mov.pulledby) > 1))
+			falling_mov.pulledby.stop_pulling()
+	return TRUE
 
 /turf/proc/is_plating()
 	return 0
@@ -388,14 +534,19 @@
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
-			path = /turf/open/floor/plating
+			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
+		if(/turf/open/space/basic)
+			path = /turf/open/space
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
 
 	var/pylons = linked_pylons
+	var/old_weeds = weeds
 
 	var/list/old_baseturfs = baseturfs
+
+	var/old_dynamic_lumcount = dynamic_lumcount
 
 	//static lighting
 	var/old_lighting_object = static_lighting_object
@@ -415,15 +566,16 @@
 		var/datum/A = i
 		SEND_SIGNAL(A, COMSIG_ATOM_TURF_CHANGE, src)
 
+	W.linked_pylons = pylons
+	W.weeds = old_weeds
+
 	if(new_baseturfs)
 		W.baseturfs = new_baseturfs
 	else
 		W.baseturfs = old_baseturfs
 
-	W.linked_pylons = pylons
-
 	W.hybrid_lights_affecting = old_hybrid_lights_affecting
-	W.dynamic_lumcount = dynamic_lumcount
+	W.dynamic_lumcount = old_dynamic_lumcount
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -452,6 +604,7 @@
 		W.overlays += thisarea.lighting_effect
 
 	W.levelupdate()
+	multiz_turfs()
 	return W
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
@@ -514,89 +667,107 @@
 /turf/proc/can_be_dissolved()
 	return 0
 
+/turf/proc/air_strike(protection_penetration, turf/target_turf, landing_type = 0, checking = FALSE)
+	if(landing_type == 1 && src == target_turf)
+		return src
+
+	var/turf/turf_above = SSmapping.get_turf_above(src)
+	if(protection_penetration <= 0)
+		if(turf_above)
+			return turf_above
+		return src
+
+	if(!checking)
+		if(turf_above && !istype(turf_above, /turf/open/openspace))
+			if(landing_type == 2)
+				return turf_above
+			if(!turf_above.hull_tile)
+				turf_above.ceiling_debris(protection_penetration)
+				turf_above.ChangeTurf(/turf/open/openspace)
+
+	protection_penetration -= get_pylon_protection_level()
+	if(hull_tile)
+		protection_penetration -= 10
+	else
+		protection_penetration -= antipierce
+
+	var/turf/turf_below = SSmapping.get_turf_below(src)
+	if(!turf_below)
+		return src
+	else
+		return turf_below.air_strike(protection_penetration, target_turf, checking, landing_type)
+
 /turf/proc/ceiling_debris_check(size = 1)
 	return
 
-/turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
-	if(ceiling_debrised)
+/turf/proc/ceiling_debris(size = 1)
+	var/turf/below_turf = SSmapping.get_turf_below(src)
+	if(ceiling_debrised || !below_turf)
 		return
 
-	var/area/A = get_area(src)
-	if(!A.ceiling)
-		return
-
-	var/amount = size
 	var/spread = floor(sqrt(size)*1.5)
-
-	var/list/turfs = list()
-	for(var/turf/open/floor/F in range(spread, src))
+	var/list/turfs = list(below_turf)
+	for(var/turf/open/floor/F in range(below_turf, spread))
 		turfs += F
 
-	switch(A.ceiling)
-		if(CEILING_GLASS)
-			playsound(src, "sound/effects/Glassbr1.ogg", 60, 1)
-			spawn(8)
-				if(amount >1)
-					visible_message(SPAN_BOLDNOTICE("Shards of glass rain down from above!"))
-				for(var/i=1, i<=amount, i++)
-					new /obj/item/shard(pick(turfs))
-					new /obj/item/shard(pick(turfs))
-		if(CEILING_METAL, CEILING_REINFORCED_METAL)
-			playsound(src, "sound/effects/metal_crash.ogg", 60, 1)
-			spawn(8)
-				if(amount >1)
-					visible_message(SPAN_BOLDNOTICE("Pieces of metal crash down from above!"))
-				for(var/i=1, i<=amount, i++)
-					new /obj/item/stack/sheet/metal(pick(turfs))
-		if(CEILING_UNDERGROUND_ALLOW_CAS, CEILING_UNDERGROUND_BLOCK_CAS, CEILING_DEEP_UNDERGROUND)
-			playsound(src, "sound/effects/meteorimpact.ogg", 60, 1)
-			spawn(8)
-				if(amount >1)
-					visible_message(SPAN_BOLDNOTICE("Chunks of rock crash down from above!"))
-				for(var/i=1, i<=amount, i++)
-					new /obj/item/ore(pick(turfs))
-					new /obj/item/ore(pick(turfs))
-		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS, CEILING_UNDERGROUND_METAL_BLOCK_CAS, CEILING_DEEP_UNDERGROUND_METAL)
-			playsound(src, "sound/effects/metal_crash.ogg", 60, 1)
-			spawn(8)
-				for(var/i=1, i<=amount, i++)
-					new /obj/item/stack/sheet/metal(pick(turfs))
-					new /obj/item/ore(pick(turfs))
+	if(istype(src, /turf/open/floor/glass))
+		playsound(below_turf, "sound/effects/Glassbr1.ogg", 60, 1)
+		spawn(8)
+			if(size > 1)
+				below_turf.visible_message(SPAN_BOLDNOTICE("Shards of glass rain down from above!"))
+			for(var/i = 1 to size)
+				new /obj/item/shard(pick(turfs))
+				new /obj/item/shard(pick(turfs))
+	else if(istype(src, /turf/open/floor/roof/metal) || istype(src, /turf/open/floor/roof/sheet) || istype(src, /turf/open/floor/roof/ship_hull))
+		playsound(below_turf, "sound/effects/metal_crash.ogg", 60, 1)
+		spawn(8)
+			if(size > 1)
+				below_turf.visible_message(SPAN_BOLDNOTICE("Pieces of metal crash down from above!"))
+			for(var/i = 1 to size)
+				new /obj/item/stack/sheet/metal(pick(turfs))
+	else if(istype(src, /turf/open/desert/rock) || istype(src, /turf/closed/wall/mineral))
+		playsound(below_turf, "sound/effects/meteorimpact.ogg", 60, 1)
+		spawn(8)
+			if(size > 1)
+				below_turf.visible_message(SPAN_BOLDNOTICE("Chunks of rock crash down from above!"))
+			for(var/i = 1 to size)
+				new /obj/item/ore(pick(turfs))
+				new /obj/item/ore(pick(turfs))
+	else if(istype(src, /turf/open) || istype(src, /turf/closed))
+		playsound(below_turf, "sound/effects/metal_crash.ogg", 60, 1)
+		spawn(8)
+			for(var/i = 1 to size)
+				new /obj/item/stack/sheet/metal(pick(turfs))
+				new /obj/item/stack/sheet/metal(pick(turfs))
+
 	ceiling_debrised = TRUE
 
 /turf/proc/ceiling_desc(mob/user)
-
-	if(LAZYLEN(linked_pylons))
-		switch(get_pylon_protection_level())
-			if(TURF_PROTECTION_MORTAR)
-				return "The ceiling above is made of light resin. Doesn't look like it's going to stop much."
-			if(TURF_PROTECTION_CAS)
-				return "The ceiling above is made of resin. Seems about as strong as a cavern roof."
-			if(TURF_PROTECTION_OB)
-				return "The ceiling above is made of thick resin. Nothing is getting through that."
-
-	var/area/A = get_area(src)
-	switch(A.ceiling)
-		if(CEILING_GLASS)
-			return "The ceiling above is glass. That's not going to stop anything."
-		if(CEILING_METAL)
-			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
-		if(CEILING_UNDERGROUND_ALLOW_CAS)
-			return "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much."
-		if(CEILING_UNDERGROUND_BLOCK_CAS)
-			return "It is underground. The cavern roof lies above. Can probably stop most ordnance."
-		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
-			return "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much."
-		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
-			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
-		if(CEILING_DEEP_UNDERGROUND)
-			return "It is deep underground. The cavern roof lies above. Nothing is getting through that."
-		if(CEILING_DEEP_UNDERGROUND_METAL)
-			return "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that."
-		if(CEILING_REINFORCED_METAL)
-			return "The ceiling above is heavy reinforced metal. Nothing is getting through that."
+	if(length(linked_pylons))
+		var/protection_level = get_pylon_protection_level()
+		if(protection_level < 10)
+			return "The ceiling above is made of light resin. Doesn't look like it's going to stop much."
+		if(protection_level < 20)
+			return "The ceiling above is made of resin. Seems about as strong as a cavern roof."
 		else
-			return "It is in the open."
+			return "The ceiling above is made of thick resin. Nothing is getting through that."
+
+	var/turf/ceiling = get_step_multiz(src, UP)
+	if(!ceiling || istype(ceiling, /turf/open/openspace) || istype(ceiling, /turf/open/space/openspace))
+		return "It is in the open."
+	if(ceiling.hull_tile)
+		return "The ceiling above is made of thick material. Nothing is getting through that."
+	if(ceiling.turf_flags & TURF_TRANSPARENT)
+		return "The ceiling above is glass. That's not going to stop anything."
+	if(ceiling.antipierce < 3)
+		return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
+	if(ceiling.antipierce < 4)
+		return "The roof lies above. Doesn't look like it's going to stop much."
+	if(ceiling.antipierce < 6)
+		return "The thin roof lies above. Can probably stop most ordnance."
+	if(ceiling.antipierce < 11)
+		return "The very thin roof lies above. Almost nothing is getting through that."
+	return "The ceiling above is made of thick material. Nothing is getting through that."
 
 /turf/proc/wet_floor()
 	return
@@ -725,18 +896,13 @@
 	return FALSE
 
 /turf/proc/get_pylon_protection_level()
-	var/protection_level = TURF_PROTECTION_NONE
-	for (var/atom/pylon in linked_pylons)
-		if (pylon.loc != null)
+	var/protection_level = 0
+	for(var/atom/pylon in linked_pylons)
+		if(pylon.loc != null && istype(pylon, /obj/effect/alien/resin/special/pylon))
 			var/obj/effect/alien/resin/special/pylon/P = pylon
-
-			if(!istype(P))
-				continue
-
-			if(P.protection_level > protection_level)
-				protection_level = P.protection_level
+			protection_level += P.protection_level
 		else
-			LAZYREMOVE(linked_pylons, pylon)
+			linked_pylons -= pylon
 
 	return protection_level
 
@@ -870,3 +1036,36 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/on_atom_created(atom/created_atom)
+	return
+
+/turf/proc/handle_transpare_turf()
+	layer = OPENSPACE_LAYER
+	plane = TRANSPARENT_FLOOR_PLANE
+	vis_contents += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
+
+	var/turf/below_turf = below()
+	if(below_turf)
+		vis_contents += below_turf
+	update_multi_z()
+
+///Updates the viscontents or underlays below this tile.
+/turf/proc/update_multi_z()
+	var/turf/below_turf = below()
+	if(!below_turf)
+		vis_contents.Cut()
+		var/turf/path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
+		if(!ispath(path))
+			path = text2path(path)
+			if(!ispath(path))
+				warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+				path = /turf/open/space
+		var/mutable_appearance/underlay_appearance = mutable_appearance(initial(path.icon), initial(path.icon_state), layer = TURF_LAYER-0.02, plane = PLANE_SPACE)
+		underlay_appearance.appearance_flags = RESET_ALPHA | RESET_COLOR
+		underlays += underlay_appearance
+
+/turf/handle_fall(mob/faller, forced)
+	if(!forced)
+		return
+	playsound(src, get_sfx("bodyfall"), 50, 1)

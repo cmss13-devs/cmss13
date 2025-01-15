@@ -4,7 +4,39 @@
 /atom/Cross(atom/movable/AM)
 	return TRUE
 
-/atom/Exit(atom/movable/AM)
+/**
+ * An atom is attempting to exit this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXIT]
+ */
+/atom/Exit(atom/movable/leaving, direction)
+	// Don't call `..()` here, otherwise `Uncross()` gets called.
+	// See the doc comment on `Uncross()` to learn why this is bad.
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, leaving, direction) & COMPONENT_ATOM_BLOCK_EXIT)
+		return FALSE
+
+	return TRUE
+
+/**
+ * An atom has entered this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_ENTERED]
+ */
+/atom/Entered(atom/movable/arrived, old_loc, list/old_locs)
+	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, arrived, old_loc, old_locs)
+	SEND_SIGNAL(arrived, COMSIG_ATOM_ENTERING, src, old_loc, old_locs)
+
+/**
+ * An atom has exited this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXITED]
+ */
+/atom/Exited(atom/movable/gone, direction)
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_EXITED, gone, direction) & COMPONENT_ATOM_BLOCK_EXIT)
+		return FALSE
+
 	return TRUE
 
 /*
@@ -55,24 +87,32 @@
 
 	return NO_BLOCKED_MOVEMENT
 
-/atom/movable/Move(NewLoc, direct)
+/atom/movable/Move(atom/NewLoc, direction)
 	// If Move is not valid, exit
-	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
 		return FALSE
 
-	var/atom/oldloc = loc
+	var/atom/old_loc = loc
 	var/old_dir = dir
-
+	if(!old_loc.Exited(src, NewLoc))
+		return
 	. = ..()
-	if (flags_atom & DIRLOCK)
+	if(flags_atom & DIRLOCK)
 		setDir(old_dir)
-	else if(old_dir != direct)
-		setDir(direct)
+	else if(old_dir != direction)
+		setDir(direction)
 	l_move_time = world.time
-	if ((oldloc != loc && oldloc && oldloc.z == z))
-		last_move_dir = get_dir(oldloc, loc)
-	if (.)
-		Moved(oldloc, direct)
+	if((old_loc != loc && old_loc && old_loc.z == z))
+		last_move_dir = get_dir(old_loc, loc)
+	if(.)
+		Moved(old_loc, direction)
+
+	if(currently_z_moving)
+		if(. && loc == NewLoc)
+			var/turf/pitfall = get_turf(src)
+			pitfall.zFall(src, falling_from_move = TRUE)
+		else
+			set_currently_z_moving(FALSE, TRUE)
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)
@@ -164,3 +204,37 @@
 /mob/doMove(atom/destination)
 	. = ..()
 	langchat_image?.loc = src
+
+///Moves a mob upwards in z level
+/mob/verb/up()
+	set name = "Move Upwards"
+	set category = "IC"
+
+	var/turf/current_turf = get_turf(src)
+	var/turf/above_turf = SSmapping.get_turf_above(current_turf)
+
+	var/ventcrawling_flag = is_ventcrawling ? ZMOVE_VENTCRAWLING : 0
+	if(!above_turf)
+		to_chat(src, SPAN_WARNING("There's nowhere to go in that direction!"))
+		return
+
+	if(can_z_move(DOWN, above_turf, current_turf, ZMOVE_FALL_FLAGS|ventcrawling_flag)) //Will we fall down if we go up?
+		if(buckled)
+			to_chat(src, SPAN_WARNING("[buckled] is not capable of flight."))
+		else
+			to_chat(src, SPAN_WARNING("You are not Superman."))
+		return
+
+	if(zMove(UP, z_move_flags = ZMOVE_FLIGHT_FLAGS|ZMOVE_FEEDBACK|ventcrawling_flag))
+		to_chat(src, SPAN_NOTICE("You move upwards."))
+
+///Moves a mob down a z level
+/mob/verb/down()
+	set name = "Move Down"
+	set category = "IC"
+
+	var/ventcrawling_flag = is_ventcrawling ? ZMOVE_VENTCRAWLING : 0
+	if(zMove(DOWN, z_move_flags = ZMOVE_FLIGHT_FLAGS|ZMOVE_FEEDBACK|ventcrawling_flag))
+		to_chat(src, SPAN_NOTICE("You move down."))
+	return FALSE
+

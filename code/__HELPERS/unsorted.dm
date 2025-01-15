@@ -135,9 +135,14 @@
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
+/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, turf/prev_turf, list/atom/forget)
 	if (!mover)
 		return null
+
+	if(prev_turf && target_turf.z != prev_turf.z)
+		var/turf/stoping_us = target_turf.z < prev_turf.z ? prev_turf : target_turf
+		if(stoping_us.antipierce > 1)
+			return stoping_us
 
 	/// the actual dir between the start and target turf
 	var/fdir = get_dir(start_turf, target_turf)
@@ -1233,10 +1238,9 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
  * Returns:
  * list - turfs from start_atom (in/exclusive) to end_atom (inclusive)
  */
-/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
+/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE, step_count_z)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
-	var/start_z = start_turf.z
 
 	var/list/line = list()
 	if(include_start_atom)
@@ -1249,14 +1253,20 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	//as step_count and step size (1) are known can pre-calculate a lerp step, tiny number (1e-5) for rounding consistency
 	var/step_x = (end_turf.x - start_turf.x) / step_count + 1e-5
 	var/step_y = (end_turf.y - start_turf.y) / step_count + 1e-5
+	var/step_z = end_turf.z - start_turf.z
+	if(step_z)
+		step_z = step_z / (step_count_z ? step_count_z : step_count) + 1e-5
 
 	//locate() truncates the fraction, adding 0.5 so its effectively rounding to nearest coords for free
 	var/x = start_turf.x + 0.5
 	var/y = start_turf.y + 0.5
+	var/z = start_turf.z + 0.5
 	for(var/step in 1 to (step_count - 1)) //increment then locate() skips start_turf (in 1), since end_turf is known can skip that step too (step_count - 1)
 		x += step_x
 		y += step_y
-		line += locate(x, y, start_z)
+		z += step_z
+
+		line += locate(x, y, round(z))
 
 	line += end_turf
 

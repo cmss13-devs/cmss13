@@ -146,7 +146,9 @@
 	light_system = STATIC_LIGHT
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness = 8 // luminosity when on, also used in power calculation
+	var/brightness = 6 // power usage and light range when on
+	var/bulb_power = 1 // basically the light_power of the emitted light source
+	var/bulb_colour = COLOR_WHITE
 	var/status = LIGHT_OK // LIGHT_OK, _EMPTY, _BURNED or _BROKEN
 	var/flickering = 0
 	var/light_type = /obj/item/light_bulb/tube // the type of light item
@@ -322,7 +324,13 @@
 /obj/structure/machinery/light/proc/update(trigger = 1)
 	update_icon()
 	if(on)
-		if(luminosity != brightness)
+		var/brightness_set = brightness
+		var/power_set = bulb_power
+		var/color_set = bulb_colour
+		if(color)
+			color_set = color
+		var/matching = light && brightness_set == light.light_range && power_set == light.light_power && color_set == light.light_color
+		if(!matching)
 			switchcount++
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
@@ -336,9 +344,11 @@
 					icon_state = "[base_state]-burned"
 					on = 0
 					set_light(0)
+			else if(prob(min(60, (switchcount ^ 4) * 0.01)))
+				flicker()
 			else
 				update_use_power(USE_POWER_ACTIVE)
-				set_light(brightness)
+				set_light(l_range = brightness_set, l_power = power_set, l_color = color_set)
 	else
 		update_use_power(USE_POWER_NONE)
 		set_light(0)
@@ -466,6 +476,7 @@
 	if(!src.needs_power)
 		return A.lightswitch
 	return A.lightswitch && A.power_light
+
 
 /obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
 	if(flickering) return

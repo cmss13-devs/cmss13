@@ -217,27 +217,35 @@ CULT
 
 	var/obj/structure/droppod/tech/assigned_droppod
 
-/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(turf/T)
+/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(turf/target)
 	var/mob/living/carbon/human/H = owner
 	if(assigned_droppod)
 		return
 
-	if(!(T in view(H)))
+	if(!(target in view(H)))
 		to_chat(H, SPAN_WARNING("This target can't be seen!"))
 		return
 
-	if(get_dist(T, H) > 5)
+	if(get_dist(target, H) > 5)
 		to_chat(H, SPAN_WARNING("This target is too far away!"))
 		return
 
-	if(!(is_ground_level(T.z)))
+	if(!(is_ground_level(target.z)))
 		to_chat(H, SPAN_WARNING("The droppod cannot land here!"))
 		return
 
-	if(protected_by_pylon(TURF_PROTECTION_CAS, T))
+	var/turf/roof = get_highest_turf(target)
+	if(target != roof.air_strike(1, target, 1, TRUE))
 		to_chat(H, SPAN_WARNING("The droppod cannot punch through an organic ceiling!"))
 		return
 
+	if(isclosedturf(target))
+		to_chat(H, SPAN_WARNING("The droppod cannot land in walls!"))
+		return
+
+	if(locate(/obj/structure/droppod/tech) in target)
+		to_chat(H, SPAN_WARNING("Other droppod is already here!"))
+		return
 	return TRUE
 
 

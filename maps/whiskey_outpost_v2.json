@@ -8,6 +8,11 @@
     "disable_ship_map": true,
     "nightmare_path": "maps/Nightmare/maps/Whiskey_Outpost_v2/",
     "camouflage": "desert",
+    "traits": [
+        {
+            "Baseturf": "/turf/open/gm/dirt"
+        }
+    ],
     "gamemodes": [
         "Whiskey Outpost"
     ]

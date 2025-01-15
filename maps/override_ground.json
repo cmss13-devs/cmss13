@@ -10,7 +10,12 @@
     "monkey_types": [
         "neaera"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Baseturf": "/turf/open/floor/plating"
+        }
+    ],
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

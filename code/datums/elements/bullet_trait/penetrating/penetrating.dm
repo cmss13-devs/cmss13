@@ -40,5 +40,5 @@
 	if(!istype(T))
 		return COMPONENT_BULLET_PASS_THROUGH
 
-	if(!T.hull)
+	if(!T.hull_tile)
 		return COMPONENT_BULLET_PASS_THROUGH

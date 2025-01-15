@@ -1081,11 +1081,11 @@
 	icon = 'icons/turf/walls/engineership.dmi'
 	icon_state = "metal"
 	walltype = WALL_HUNTERSHIP
-	hull = TRUE
+	hull_tile = TRUE
 
 /turf/closed/wall/engineership/destructible
 	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, with enough force they could break."
-	hull = FALSE
+	hull_tile = FALSE
 	damage_cap = HEALTH_WALL_ULTRA_REINFORCED
 	baseturfs = /turf/open/floor/plating/engineer_ship
 
@@ -1097,7 +1097,7 @@
 	icon = 'icons/turf/walls/kutjevorockdark.dmi'
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
-	hull = TRUE
+	hull_tile = TRUE
 	baseturfs = /turf/open/floor/plating/hybrisa_rock
 
 // Marshalls
@@ -1118,7 +1118,7 @@
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED
-	hull = TRUE
+	hull_tile = TRUE
 
 // Research
 
@@ -1145,7 +1145,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/research/reinforced/hull
-	hull = TRUE
+	hull_tile = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1174,7 +1174,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/reinforced/hull
-	hull = TRUE
+	hull_tile = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1203,7 +1203,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/hospital/reinforced/hull
-	hull = TRUE
+	hull_tile = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1232,7 +1232,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/office/reinforced/hull
-	hull = TRUE
+	hull_tile = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1261,7 +1261,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull
-	hull = TRUE
+	hull_tile = TRUE
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -1285,4 +1285,4 @@
 	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED
-	hull = TRUE
+	hull_tile = TRUE

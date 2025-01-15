@@ -41,6 +41,9 @@
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
 
+	// Stairs multitile shitcode
+	var/z_interactiong_blocked = FALSE
+
 	move_delay = VEHICLE_SPEED_STATIC
 	// The next world.time when the vehicle can move
 	var/next_move = 0

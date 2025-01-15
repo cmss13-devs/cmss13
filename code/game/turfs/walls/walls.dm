@@ -5,14 +5,16 @@
 	icon_state = "0"
 	opacity = TRUE
 	layer = WALL_LAYER
-	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
-	var/hull = 0
 	var/walltype = WALL_METAL
 	/// when walls smooth with one another, the type of junction each wall is.
 	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
+
+	antipierce = 3
+
+	baseturfs = /turf/open/floor/plating
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -31,8 +33,6 @@
 
 	var/current_bulletholes = null
 	var/image/bullet_overlay = null
-	var/list/wall_connections = list("0", "0", "0", "0")
-	var/neighbors_list = 0
 	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
@@ -41,34 +41,12 @@
 	var/obj/effect/acid_hole/acided_hole
 	var/acided_hole_dir = SOUTH
 
-	var/special_icon = 0
-	var/list/blend_turfs = list(/turf/closed/wall)
-	var/list/noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
-	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
-	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
-
-/turf/closed/wall/Initialize(mapload, ...)
-	. = ..()
-	// Defer updating based on neighbors while we're still loading map
-	if(mapload && . != INITIALIZE_HINT_QDEL)
-		return INITIALIZE_HINT_LATELOAD
-	// Otherwise do it now, but defer icon update to late if it's going to happen
-	update_connections(TRUE)
-	if(. != INITIALIZE_HINT_LATELOAD)
-		update_icon()
-
-/turf/closed/wall/LateInitialize()
-	. = ..()
-	// By default this assumes being used for map late init
-	// We update without cascading changes as each wall will be updated individually
-	update_connections(FALSE)
-	update_icon()
-
-
-/turf/closed/wall/setDir(newDir)
-	..()
-	update_connections(FALSE)
-	update_icon()
+	special_icon = 0
+	neighbors_list = 0
+	blend_turfs = list(/turf/closed/wall)
+	noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
+	blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
+	noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
 /turf/closed/wall/ChangeTurf(newtype, ...)
 	QDEL_NULL(acided_hole)
@@ -125,7 +103,7 @@
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
 
-	if(!hull && user.claw_type >= claws_minimum && !acided_hole)
+	if(!hull_tile && user.claw_type >= claws_minimum && !acided_hole)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		if(damage >= (damage_cap - (damage_cap / XENO_HITS_TO_DESTROY_WALL)))
@@ -158,7 +136,7 @@
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
-	if(hull)
+	if(hull_tile)
 		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
 		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
 
@@ -196,7 +174,7 @@
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam, mob/M)
-	if(hull) //Hull is literally invincible
+	if(hull_tile) //Hull is literally invincible
 		return
 	if(!dam)
 		return
@@ -230,7 +208,7 @@
 // Walls no longer spawn a metal sheet when destroyed to reduce clutter and
 // improve visual readability.
 /turf/closed/wall/proc/dismantle_wall(devastated = 0, explode = 0)
-	if(hull) //Hull is literally invincible
+	if(hull_tile) //Hull is literally invincible
 		return
 	if(devastated)
 		make_girder(TRUE)
@@ -242,7 +220,7 @@
 	ScrapeAway()
 
 /turf/closed/wall/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
-	if(hull)
+	if(hull_tile)
 		return
 	var/location = get_step(get_turf(src), explosion_direction) // shrapnel will just collide with the wall otherwise
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
@@ -268,7 +246,7 @@
 	return
 
 /turf/closed/wall/get_explosion_resistance()
-	if(hull)
+	if(hull_tile)
 		return 1000000
 
 	return (damage_cap - damage)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
@@ -277,7 +255,7 @@
 	if(melting)
 		to_chat(user, SPAN_WARNING("The wall is already burning with thermite!"))
 		return
-	if(hull)
+	if(hull_tile)
 		return
 	melting = TRUE
 
@@ -322,7 +300,7 @@
 //Interactions
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
-		if((istype(src, /turf/closed/wall/r_wall)) || hull)
+		if((istype(src, /turf/closed/wall/r_wall)) || hull_tile)
 			to_chat(M, SPAN_WARNING("This [name] is far too strong for you to destroy."))
 			return
 		else
@@ -351,7 +329,7 @@
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
 		if(attacking_item.heat_source >= 1000)
-			if(hull)
+			if(hull_tile)
 				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 			else
 				if(iswelder(attacking_item))
@@ -367,7 +345,7 @@
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
 			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
-		if(hull)
+		if(hull_tile)
 			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
 			return
 
@@ -418,7 +396,7 @@
 		new /obj/structure/prop/brazier/frame/full/torch(src)
 		qdel(attacking_item)
 
-	if(hull)
+	if(hull_tile)
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [attacking_item]."))
 		return
 
@@ -597,4 +575,4 @@
 	return TRUE
 
 /turf/closed/wall/can_be_dissolved()
-	return !hull
+	return !hull_tile

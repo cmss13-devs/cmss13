@@ -377,7 +377,48 @@
 		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
 		icon_state = original_state
 
-	update_clothing_icon(src) // Update the on-mob icon.
+	update_clothing_icon(src)
+
+/obj/item/clothing/mask/neckerchief/squad
+	var/dummy_icon_state = "neckerchief_%SQUAD%"
+	item_state = "neckerchief_%SQUAD%"
+	original_state = "neckerchief_%SQUAD%"
+
+
+	var/static/list/valid_icon_states
+
+/obj/item/clothing/mask/neckerchief/squad/Initialize(mapload, ...)
+	. = ..()
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
+
+/obj/item/clothing/mask/neckerchief/squad/update_clothing_icon()
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/mask/neckerchief/squad/pickup(mob/user, silent)
+	. = ..()
+	adapt_to_squad()
+
+/obj/item/clothing/mask/neckerchief/squad/equipped(mob/user, slot, silent)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_icon), TRUE)
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/mask/neckerchief/squad/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_SET_SQUAD)
+
+/obj/item/clothing/mask/neckerchief/squad/proc/adapt_to_squad()
+	var/squad_color = "gray"
+	var/mob/living/carbon/human/wearer = loc
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("neckerchief_[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	icon_state = replacetext("[initial(dummy_icon_state)][adjust ? "_alt" : ""]", "%SQUAD%", squad_color)
+	item_state = replacetext("[initial(item_state)][adjust ? "_alt" : ""]", "%SQUAD%", squad_color)
 
 /obj/item/clothing/mask/neckerchief/gray
 	icon_state = "neckerchief_gray"
@@ -394,32 +435,32 @@
 	item_state = "neckerchief_black"
 	original_state = "neckerchief_black"
 
-/obj/item/clothing/mask/neckerchief/alpha
+/obj/item/clothing/mask/neckerchief/squad/alpha
 	icon_state = "neckerchief_alpha"
 	item_state = "neckerchief_alpha"
 	original_state = "neckerchief_alpha"
 
-/obj/item/clothing/mask/neckerchief/bravo
+/obj/item/clothing/mask/neckerchief/squad/bravo
 	icon_state = "neckerchief_bravo"
 	item_state = "neckerchief_bravo"
 	original_state = "neckerchief_bravo"
 
-/obj/item/clothing/mask/neckerchief/charlie
+/obj/item/clothing/mask/neckerchief/squad/charlie
 	icon_state = "neckerchief_charlie"
 	item_state = "neckerchief_charlie"
 	original_state = "neckerchief_charlie"
 
-/obj/item/clothing/mask/neckerchief/delta
+/obj/item/clothing/mask/neckerchief/squad/delta
 	icon_state = "neckerchief_delta"
 	item_state = "neckerchief_delta"
 	original_state = "neckerchief_delta"
 
-/obj/item/clothing/mask/neckerchief/echo
+/obj/item/clothing/mask/neckerchief/squad/echo
 	icon_state = "neckerchief_echo"
 	item_state = "neckerchief_echo"
 	original_state = "neckerchief_echo"
 
-/obj/item/clothing/mask/neckerchief/foxtrot
+/obj/item/clothing/mask/neckerchief/squad/foxtrot
 	icon_state = "neckerchief_foxtrot"
 	item_state = "neckerchief_foxtrot"
 	original_state = "neckerchief_foxtrot"

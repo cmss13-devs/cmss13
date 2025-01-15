@@ -213,29 +213,9 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Neckerchief, black"
 	path = /obj/item/clothing/mask/neckerchief/black
 
-/datum/gear/mask/neckerchief/alpha
-	display_name = "Neckerchief, alpha"
-	path = /obj/item/clothing/mask/neckerchief/alpha
-
-/datum/gear/mask/neckerchief/bravo
-	display_name = "Neckerchief, bravo"
-	path = /obj/item/clothing/mask/neckerchief/bravo
-
-/datum/gear/mask/neckerchief/charlie
-	display_name = "Neckerchief, charlie"
-	path = /obj/item/clothing/mask/neckerchief/charlie
-
-/datum/gear/mask/neckerchief/delta
-	display_name = "Neckerchief, delta"
-	path = /obj/item/clothing/mask/neckerchief/delta
-
-/datum/gear/mask/neckerchief/echo
-	display_name = "Neckerchief, echo"
-	path = /obj/item/clothing/mask/neckerchief/echo
-
-/datum/gear/mask/neckerchief/foxtrot
-	display_name = "Neckerchief, foxtrot"
-	path = /obj/item/clothing/mask/neckerchief/foxtrot
+/datum/gear/mask/neckerchief/squad
+	display_name = "Neckerchief, squad specific"
+	path = /obj/item/clothing/mask/neckerchief/squad
 
 /datum/gear/mask/keffiyeh
 	display_name = "Keffiyeh" // Traditional middle-eastern headdress, works like a balaclava/scarf.

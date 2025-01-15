@@ -33,7 +33,7 @@
 
 /turf/open/space/LateInitialize()
 	SHOULD_CALL_PARENT(FALSE)
-	if(!istype(src, /turf/open/space/transit))
+	if(!istype(src, /turf/open/space/transit) && !istype(src, /turf/open/space/openspace))
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 	multiz_turfs()

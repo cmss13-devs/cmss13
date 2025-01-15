@@ -1,10 +1,10 @@
 GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdrop, new)
 
 /atom/movable/openspace_backdrop
-	name = "openspace_backdrop"
-	anchored = TRUE
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "grey"
+	name = "openspace_backdrop"
+	anchored = TRUE
 	plane = OPENSPACE_BACKDROP_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_INHERIT_PLANE
@@ -15,6 +15,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	icon_state = "invisible"
 	baseturfs = /turf/open/openspace
 	antipierce = 0
+
+/turf/open/space/openspace/update_icon()
+	return
 
 /turf/open/space/openspace/Initialize(mapload) // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 	. = ..()
@@ -65,6 +68,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	baseturfs = /turf/open/openspace
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	antipierce = 0
+
+/turf/open/openspace/update_icon()
+	return
 
 /turf/open/openspace/is_weedable()
 	return NOT_WEEDABLE

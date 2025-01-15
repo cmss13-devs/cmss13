@@ -100,10 +100,9 @@ SUBSYSTEM_DEF(vote)
 				if(choices["Continue Playing"] >= greatest_votes)
 					greatest_votes = choices["Continue Playing"]
 	. = list()
-	if(greatest_votes)
-		for(var/option in choices_adjusted)
-			if(choices_adjusted[option] == greatest_votes)
-				. += option
+	for(var/option in choices_adjusted)
+		if(choices_adjusted[option] == greatest_votes)
+			. += option
 	return .
 
 
@@ -275,12 +274,10 @@ SUBSYSTEM_DEF(vote)
 				for(var/mode_type in config.gamemode_cache)
 					var/datum/game_mode/cur_mode = mode_type
 					if(initial(cur_mode.config_tag))
-						cur_mode = new mode_type
 						var/vote_cycle_met = !initial(cur_mode.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(cur_mode.vote_cycle) == 0)
-						var/min_players_met = length(GLOB.clients) >= cur_mode.required_players
-						if(initial(cur_mode.votable) && vote_cycle_met && min_players_met)
+						var/population_met = (!initial(cur_mode.population_min) || initial(cur_mode.population_min) < length(GLOB.clients)) && (!initial(cur_mode.population_max) || initial(cur_mode.population_max) > length(GLOB.clients))
+						if(initial(cur_mode.votable) && vote_cycle_met && population_met)
 							choices += initial(cur_mode.config_tag)
-						qdel(cur_mode)
 			if("groundmap")
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'
@@ -307,6 +304,8 @@ SUBSYSTEM_DEF(vote)
 
 				choices.Add(maps)
 				if(!length(choices))
+					if(on_end)
+						on_end.Invoke()
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
 
@@ -329,6 +328,8 @@ SUBSYSTEM_DEF(vote)
 					maps += i
 				choices.Add(maps)
 				if(length(choices) < 2)
+					if(on_end)
+						on_end.Invoke()
 					return FALSE
 			if("custom")
 				question = input(usr, "What is the vote for?")
@@ -344,6 +345,8 @@ SUBSYSTEM_DEF(vote)
 					randomize_entries = TRUE
 
 			else
+				if(on_end)
+					on_end.Invoke()
 				return FALSE
 
 		if(randomize_entries)

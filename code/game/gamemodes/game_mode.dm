@@ -115,8 +115,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	return TRUE
 
 /datum/game_mode/proc/adjust_ammo_values()
-	for(var/ammo in GLOB.ammo_list)
-		if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		for(var/ammo in GLOB.ammo_list)
 			GLOB.ammo_list[ammo].setup_faction_clash_values()
 
 /datum/game_mode/proc/get_affected_zlevels()

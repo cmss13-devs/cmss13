@@ -1410,6 +1410,15 @@
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 	new /obj/item/ammo_magazine/pistol/m1911(src)
 
+/obj/item/storage/belt/gun/m4a3/m1911/commander/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/custom())
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
 /obj/item/storage/belt/gun/m4a3/m1911/socom/black
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 	item_icons = list(

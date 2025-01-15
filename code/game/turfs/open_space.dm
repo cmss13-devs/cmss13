@@ -49,6 +49,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	entered_movable.forceMove(below)
 	entered_movable.onZImpact(below, height)
 
+
+/turf/open_space/attack_alien(mob/user)
+	attack_hand(user)
+
 /turf/open_space/attack_hand(mob/user)
 	var/turf/current_turf = locate(x, y, z)
 

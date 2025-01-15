@@ -247,6 +247,7 @@
 
 /obj/structure/machinery/m56d_hmg/auto/Initialize()
 	. = ..()
+	burst_scatter_mult = 0
 	for(var/turf/T in range(cadeblockers_range, src))
 		var/obj/structure/blocker/anti_cade/CB = new(T)
 		CB.hmg = src
@@ -434,9 +435,6 @@
 	var/obj/item/ammo_magazine/m2c/ammo_magazine = new /obj/item/ammo_magazine/m2c(src.loc)
 	ammo_magazine.current_rounds = 0
 	ammo_magazine.update_icon()
-
-/obj/structure/machinery/m56d_hmg/auto/get_scatter()
-	return 0
 
 // ACTIVE COOLING
 

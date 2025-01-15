@@ -270,7 +270,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/headwear
 	category = "Headwear"
-	cost = 3
+	cost = 2
 	slot = WEAR_HEAD
 
 /datum/gear/headwear/durag_black

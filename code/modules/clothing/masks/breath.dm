@@ -177,7 +177,7 @@
 	var/dummy_icon_state = "scarf_%SQUAD%"
 	item_state = "scarf_%SQUAD%"
 	original_state = "scarf_%SQUAD%"
-
+	icon_state = "scarf_squad"
 
 	var/static/list/valid_icon_states
 
@@ -383,6 +383,7 @@
 	var/dummy_icon_state = "neckerchief_%SQUAD%"
 	item_state = "neckerchief_%SQUAD%"
 	original_state = "neckerchief_%SQUAD%"
+	icon_state = "neckerchief_squad"
 
 
 	var/static/list/valid_icon_states

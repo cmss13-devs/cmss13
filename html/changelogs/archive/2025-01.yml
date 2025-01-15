@@ -243,3 +243,7 @@
   realforest2001:
   - bugfix: Human Psychic Radiance now works as intended.
   - bugfix: Containment Cell consoles no longer have text overlayed on their sprites.
+2025-01-15:
+  harryob:
+  - balance: synthetic gun restrictions now apply to spray bottles containing reagents
+      with negative chemical properties

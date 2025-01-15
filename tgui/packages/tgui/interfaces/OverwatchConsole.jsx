@@ -629,7 +629,9 @@ const SupplyDrop = (props) => {
               width="100%"
               icon="box"
               color="yellow"
-              onClick={() => act('dropsupply', { x: supplyX, y: supplyY, z: supplyZ })}
+              onClick={() =>
+                act('dropsupply', { x: supplyX, y: supplyY, z: supplyZ })
+              }
             >
               Launch
             </Button>
@@ -711,7 +713,7 @@ const OrbitalBombardment = (props) => {
               width="100%"
               icon="bomb"
               color="red"
-              onClick={() => act('dropbomb', { x: OBX, y: OBY , z: OBZ})}
+              onClick={() => act('dropbomb', { x: OBX, y: OBY, z: OBZ })}
             >
               Fire
             </Button>
@@ -720,7 +722,9 @@ const OrbitalBombardment = (props) => {
               width="100%"
               icon="save"
               color="yellow"
-              onClick={() => act('save_coordinates', { x: OBX, y: OBY, z: OBZ })}
+              onClick={() =>
+                act('save_coordinates', { x: OBX, y: OBY, z: OBZ })
+              }
             >
               Save
             </Button>

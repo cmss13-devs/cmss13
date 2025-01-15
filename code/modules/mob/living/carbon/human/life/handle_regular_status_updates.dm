@@ -9,12 +9,6 @@
 		blinded = TRUE
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
-		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
-			death(last_damage_data)
-			blinded = TRUE
-			silent = 0
-			return 1
-
 		if(regular_update)
 			if(hallucination)
 				if(hallucination >= 20)

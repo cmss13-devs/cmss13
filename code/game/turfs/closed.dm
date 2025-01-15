@@ -11,8 +11,8 @@
 		return
 
 	while(istype(above_current, /turf/closed))
-		above_current = locate(above_current.x, above_current.y, above_current.z)
-		above_user = locate(above_user.x, above_user.y, above_user.z)
+		above_current = locate(above_current.x, above_current.y, above_current.z+1)
+		above_user = locate(above_user.x, above_user.y, above_user.z+1)
 
 		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space))
 			return

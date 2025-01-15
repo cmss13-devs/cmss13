@@ -281,6 +281,10 @@
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
 		icon_state = original_state
 		flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.wear_mask == src)
+			H.update_hair()
 
 	update_clothing_icon(src)
 

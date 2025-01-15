@@ -61,6 +61,7 @@
 
 	assignment = JOB_PMC_STANDARD
 	rank = JOB_PMC_STANDARD
+	minimap_icon = "pmc_gun"
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
@@ -203,6 +204,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DETAINER
 	rank = JOB_PMC_DETAINER
+	minimap_icon = "pmc_mp"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
@@ -510,7 +512,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_INVESTIGATOR
 	rank = JOB_PMC_INVESTIGATOR
-	minimap_icon = "pmc_td"
+	minimap_icon = "pmc_mi"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/medic/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
@@ -852,6 +854,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_LEAD_INVEST
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
+	minimap_icon = "tissa"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
@@ -1103,6 +1106,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_SNIPER
 	paygrades = list(PAY_SHORT_PMC_WS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Spc"
+	minimap_icon = "pmc_spec"
 	skills = /datum/skills/pmc/specialist
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
@@ -1223,6 +1227,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_CREWMAN
 	rank = JOB_PMC_CREWMAN
+	minimap_icon = "pmc_vc"
 	paygrades = list(PAY_SHORT_PMC_VS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/tank_crew
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1353,6 +1358,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_XENO_HANDLER
 	paygrades = list(PAY_SHORT_PMC_XS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "XH"
+	minimap_icon = "pmc_handler"
 	skills = /datum/skills/pmc/xeno_handler
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -1678,7 +1684,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 
-	minimap_icon = "engi"
+	minimap_icon = "mt"
 
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct

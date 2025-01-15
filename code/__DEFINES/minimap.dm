@@ -1,6 +1,6 @@
 #define MINIMAP_FLAG_XENO (1<<0)
 #define MINIMAP_FLAG_USCM (1<<1)
-#define MINIMAP_FLAG_PMC (1<<2)
+#define MINIMAP_FLAG_WY (1<<2)
 #define MINIMAP_FLAG_UPP (1<<3)
 #define MINIMAP_FLAG_CLF (1<<4)
 #define MINIMAP_FLAG_YAUTJA (1<<5)

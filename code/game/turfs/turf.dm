@@ -66,7 +66,7 @@
 	///hybrid lights affecting this turf
 	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
 
-  vis_flags = VIS_INHERIT_PLANE
+	vis_flags = VIS_INHERIT_PLANE
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons

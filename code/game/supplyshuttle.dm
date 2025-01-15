@@ -28,6 +28,16 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply/station/upp
 	name = "Supply Shuttle UPP"
 
+/area/supply/station/upp/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/area/supply/station/upp/LateInitialize()
+	. = ..()
+	var/datum/shuttle/ferry/supply/shuttle = SSoldshuttle.shuttle_controller.shuttles["Supply upp"]
+	shuttle.area_station = src
+
+
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"

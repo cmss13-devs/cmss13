@@ -817,7 +817,7 @@
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.armor_modifier += target_armor_buff
 		buffing_target.recalculate_armor()
-		addtimer(CALLBACK(buffing_target, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
+		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_rage)), armor_buffs_duration)
 

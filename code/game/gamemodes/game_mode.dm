@@ -11,8 +11,6 @@
  *
  */
 
-GLOBAL_DATUM(round_statistics, /datum/entity/statistic/round)
-GLOBAL_LIST_INIT_TYPED(player_entities, /datum/entity/player_entity, list())
 GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique tracking_ids to tacbinos and signal flares
 /datum/game_mode
 	var/name = "invalid"
@@ -32,8 +30,6 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
-	var/datum/entity/statistic/round/round_stats = null
-
 	var/list/roles_to_roll
 
 	var/corpses_to_spawn = 0
@@ -45,6 +41,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/New()
 	..()
+	initialize_gamemode_modifiers()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
 
@@ -78,9 +75,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		spawn_static_comms()
 	if(corpses_to_spawn)
 		generate_corpses()
-	initialize_gamemode_modifiers()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
-	return 1
+	return TRUE
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
 /datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
@@ -132,15 +128,11 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	return
 
 /datum/game_mode/proc/announce_ending()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 /datum/game_mode/proc/declare_completion()
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_round_end()
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
@@ -167,8 +159,28 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
 
+	announce_ending()
 
-	return 0
+	var/list/winners_info = get_winners_states()
+
+	if(GLOB.round_statistics)
+		var/datum/entity/statistic_round/round = GLOB.round_statistics
+		round.game_mode = name
+		round.round_length = world.time
+		round.round_result = round_finished
+		if(!length(round.current_map.victories))
+			round.current_map.victories = list()
+		round.current_map.victories[round_finished]++
+		round.end_round_player_population = length(GLOB.clients)
+
+		round.log_round_statistics()
+		round.track_round_end()
+
+	calculate_end_statistics()
+	show_end_statistics(winners_info[1])
+
+/datum/game_mode/proc/get_winners_states()
+	return list("draw")
 
 /datum/game_mode/proc/calculate_end_statistics()
 	for(var/i in GLOB.alive_mob_list)
@@ -184,13 +196,13 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 				record_playtime(M.client.player_data, M.job, type)
 
 /datum/game_mode/proc/show_end_statistics(icon_state)
-	GLOB.round_statistics.update_panel_data()
+	GLOB.round_statistics.process()
 	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			give_action(M, /datum/action/show_round_statistics, null, icon_state)
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/get_players_for_role(role, override_jobbans = 0)
 	var/list/players = list()

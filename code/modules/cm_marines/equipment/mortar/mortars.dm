@@ -33,6 +33,8 @@
 	var/fixed = FALSE
 	/// if true, blows up the shell immediately
 	var/ship_side = FALSE
+	/// The max range the mortar can fire at
+	var/max_range = 50
 
 	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
@@ -391,6 +393,9 @@
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < 10)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too close to your mortar."))
 		return FALSE
+	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)
+		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too far from your mortar."))
+		return FALSE
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using this mortar."))
 		return FALSE
@@ -403,6 +408,7 @@
 /obj/structure/mortar/wo
 	fixed = TRUE
 	offset_per_turfs = 50 // The mortar is located at the edge of the map in WO, This to to prevent mass FF
+	max_range = 999
 
 //The portable mortar item
 /obj/item/mortar_kit

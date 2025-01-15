@@ -776,11 +776,6 @@
 /obj/item/tool/hand_labeler,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
-"adc" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/head/det_hat,
-/turf/open/floor/wood,
-/area/bigredv2/outside/marshal_office)
 "add" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -3217,7 +3212,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/closed/wall/solaris,
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Dormitories EVA Maintenance";
+	welded = 1
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "ami" = (
 /obj/structure/surface/table/woodentable,
@@ -3468,8 +3467,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/breakroom)
 "amZ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/solaris,
+/turf/open/space/basic,
 /area/bigredv2/outside/general_offices)
 "ana" = (
 /obj/structure/surface/table,
@@ -11283,10 +11281,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
-"aNa" = (
-/obj/structure/closet/l3closet/general,
-/turf/open/floor/white,
-/area/bigredv2/outside/virology)
 "aNb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -15961,7 +15955,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/s)
 "bjD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16222,10 +16216,6 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"blg" = (
-/obj/structure/machinery/computer/ordercomp,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blh" = (
@@ -94795,7 +94785,7 @@ aFw
 aFt
 fxa
 aoD
-aNa
+aNc
 aNc
 aoD
 aQz
@@ -101994,7 +101984,7 @@ ugc
 atA
 bkl
 aZO
-blg
+aZu
 axL
 bsI
 bme
@@ -108500,7 +108490,7 @@ stZ
 qeC
 izJ
 eRI
-ofX
+bjD
 bjy
 bkr
 bjy
@@ -112108,7 +112098,7 @@ asc
 acq
 jAR
 aeu
-adc
+agO
 afs
 adW
 acp
@@ -117991,7 +117981,7 @@ ako
 asP
 xqy
 apc
-auV
+ako
 apc
 eSO
 jwU
@@ -118208,7 +118198,7 @@ ako
 vjW
 atE
 atE
-ovq
+ako
 apc
 dsn
 atE
@@ -118859,7 +118849,7 @@ ako
 bqA
 atG
 auc
-ako
+auV
 wyh
 aop
 apc

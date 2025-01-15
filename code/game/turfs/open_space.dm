@@ -9,8 +9,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	mouse_opacity 	= MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/openspace_backdrop/Destroy()
-	if(openspace_backdrop_one_for_all == src)
-		openspace_backdrop_one_for_all = null
+	if(GLOB.openspace_backdrop_one_for_all == src)
+		GLOB.openspace_backdrop_one_for_all = null
 
 	. = ..()
 

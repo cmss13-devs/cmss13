@@ -197,7 +197,7 @@
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_5
 	penetration = ARMOR_PENETRATION_TIER_2
-	.=..()
+	. = ..()
 
 /datum/ammo/bullet/machinegun/auto/set_bullet_traits()
 	return

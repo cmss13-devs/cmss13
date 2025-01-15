@@ -34,6 +34,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(below)
 		vis_contents += below
 
+
 /turf/open_space/multiz_new(dir)
 	if(dir == DOWN)
 		update_vis_contents()

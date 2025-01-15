@@ -17,6 +17,21 @@
 		/obj/item/reagent_container/pill,
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/cautery,
+		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgicaldrill,
+		/obj/item/tool/surgery/circular_saw,
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/FixOVein,
+		/obj/item/tool/surgery/bonesetter,
+		/obj/item/roller,
+		/obj/item/tool/surgery/bonegel,
+		/obj/item/stack/nanopaste,
+		/obj/item/reagent_container/blood,
+		/obj/item/reagent_container/spray/cleaner,
 
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
@@ -24,6 +39,7 @@
 		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -49,6 +65,8 @@
 	var/buttoned = TRUE
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
 	)
 
 
@@ -151,6 +169,11 @@
 	name = "snow suit"
 	desc = "A standard snow suit. It can protect the wearer from extreme cold."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
@@ -299,7 +322,7 @@
 		/obj/item/device/walkman,
 	)
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
 	)
 
 
@@ -309,7 +332,7 @@
 	icon_state = "snowsuit_liaison"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 
 /obj/item/clothing/suit/storage/snow_suit/liaison/modified

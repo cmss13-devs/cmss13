@@ -14,8 +14,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/obj/item/phone/attached_to
 	var/atom/tether_holder
 
-	var/obj/structure/transmitter/calling
-	var/obj/structure/transmitter/caller
+	var/obj/structure/transmitter/outbound_call
+	var/obj/structure/transmitter/inbound_call
 
 	var/next_ring = 0
 
@@ -68,7 +68,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		icon_state = "[base_icon_state]_ear"
 		return
 
-	if(caller)
+	if(inbound_call)
 		icon_state = "[base_icon_state]_ring"
 	else
 		icon_state = base_icon_state
@@ -184,8 +184,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(TRANSMITTER_UNAVAILABLE(T))
 		return
 
-	calling = T
-	T.caller = src
+	outbound_call = T
+	outbound_call.inbound_call = src
 	T.last_caller = src.phone_id
 	T.update_icon()
 
@@ -276,13 +276,13 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			else
 				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
 
-	if(calling)
-		calling.caller = null
-		calling = null
+	if(outbound_call)
+		outbound_call.inbound_call = null
+		outbound_call = null
 
-	if(caller)
-		caller.calling = null
-		caller = null
+	if(inbound_call)
+		inbound_call.outbound_call = null
+		inbound_call = null
 
 	if(timeout_timer_id)
 		deltimer(timeout_timer_id)
@@ -301,7 +301,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/transmitter/process()
-	if(caller)
+	if(inbound_call)
 		if(!attached_to)
 			STOP_PROCESSING(SSobj, src)
 			return
@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 				visible_message(SPAN_WARNING("[src] rings vigorously!"))
 				next_ring = world.time + 3 SECONDS
 
-	else if(calling)
+	else if(outbound_call)
 		var/obj/structure/transmitter/T = get_calling_phone()
 		if(!T)
 			STOP_PROCESSING(SSobj, src)
@@ -345,10 +345,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	update_icon()
 
 /obj/structure/transmitter/proc/get_calling_phone()
-	if(calling)
-		return calling
-	else if(caller)
-		return caller
+	if(outbound_call)
+		return outbound_call
+	else if(inbound_call)
+		return inbound_call
 
 	return
 
@@ -394,8 +394,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "telephone"
 	icon = 'icons/obj/structures/phone.dmi'
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
 	)
 	icon_state = "rpb_phone"
 

@@ -258,12 +258,6 @@
 /obj/structure/prop/dam/torii/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
-/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
 /obj/structure/flora/tree/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
@@ -325,6 +319,17 @@
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(!unacidable)
+		if(vehicle_resistant)
+			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		else
+			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+			qdel(src)
+	return FALSE
+
+/obj/structure/machinery/door/poddoor/hybrisa/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
 		if(vehicle_resistant)
 			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))

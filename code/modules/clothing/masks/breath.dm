@@ -13,7 +13,6 @@
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.10
-	permeability_coefficient = 0.50
 
 	var/hanging = 0
 
@@ -43,9 +42,6 @@
 	name = "medical mask"
 	icon_state = "medical"
 	item_state = "medical"
-	permeability_coefficient = 0.01
-
-
 
 //REBREATHER
 
@@ -75,7 +71,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEALLHAIR|HIDEEARS
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
@@ -95,7 +91,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEALLHAIR|HIDEEARS
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
@@ -111,8 +107,7 @@
 	set src in usr
 	if(usr.stat == DEAD)
 		return
-
-	flags_inv_hide ^= HIDEFACE|HIDELOWHAIR
+	flags_inv_hide ^= HIDEFACE
 	pulled = !pulled
 	if(pulled)
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
@@ -154,7 +149,7 @@
 	)
 	original_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	flags_inv_hide = HIDEFACE
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
@@ -267,4 +262,4 @@
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.10
-	permeability_coefficient = 0.50
+

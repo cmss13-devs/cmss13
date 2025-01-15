@@ -82,10 +82,10 @@
 			continue
 		xeno_in_range.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(raging == TRUE)
-			xeno_in_range.gain_health(15)
+			xeno_in_range.gain_health(25)
 			transferred_healing += 25
 		else
-			xeno_in_range.gain_health(8)
+			xeno_in_range.gain_health(15)
 			transferred_healing += 15
 
 

@@ -111,9 +111,13 @@
 
 		if("name")
 			var/picked_name = params["name"]
+			var/datum/entity/player/player = ui.user.client?.player_data
 
 			picked_name = reject_bad_name(picked_name)
 			if(!picked_name)
+				return
+
+			if(!player.check_whitelist_status(WHITELIST_PREDATOR))
 				return
 
 			prefs.predator_name = picked_name
@@ -123,7 +127,11 @@
 
 		if("age")
 			var/age = params["age"]
+			var/datum/entity/player/player = ui.user.client?.player_data
 			if(!isnum(age))
+				return
+
+			if(!player.check_whitelist_status(WHITELIST_PREDATOR))
 				return
 
 			age = clamp(age, 175, 3000)
@@ -134,7 +142,11 @@
 
 		if("flavor_text")
 			var/text = tgui_input_text(ui.user, "Choose your Predator's flavor text:", "Flavor Text", multiline = TRUE)
+			var/datum/entity/player/player = ui.user.client?.player_data
 			if(!text)
+				return
+
+			if(!player.check_whitelist_status(WHITELIST_PREDATOR))
 				return
 
 			prefs.predator_flavor_text = text
@@ -149,6 +161,9 @@
 		if("yautja_status")
 			var/datum/entity/player/player = ui.user.client?.player_data
 			if(!player)
+				return
+
+			if(!player.check_whitelist_status(WHITELIST_PREDATOR))
 				return
 
 			var/list/options = list(WHITELIST_NORMAL)
@@ -221,7 +236,11 @@
 
 		if("caster_material")
 			var/material = params["material"]
+			var/datum/entity/player/player = ui.user.client?.player_data
 			if(!material || !(material in PRED_MATERIALS))
+				return
+
+			if(!player.check_whitelist_status(WHITELIST_PREDATOR))
 				return
 
 			prefs.predator_caster_material = material

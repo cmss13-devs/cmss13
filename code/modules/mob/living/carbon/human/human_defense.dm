@@ -93,7 +93,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
+/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", direction, combistick=0)
 	var/block_effect = /obj/effect/block
 	var/owner_turf = get_turf(src)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
@@ -105,8 +105,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(l_hand.IsShield() && istype(l_hand,/obj/item/weapon/shield)) // Activable shields
 			var/obj/item/weapon/shield/S = l_hand
 			var/shield_blocked_l = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				S.lower_shield(src)
+			if(istype(S, /obj/item/weapon/shield/riot/yautja))
+				shield_blocked_l = S.directional_block(src, direction)
+			else if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack.
 				shield_blocked_l = TRUE
 			else if(prob(S.passive_block))
 				shield_blocked_l = TRUE
@@ -134,9 +135,10 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield)) // Activable shields
 			var/obj/item/weapon/shield/S = r_hand
 			var/shield_blocked_r = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
+			if(istype(S, /obj/item/weapon/shield/riot/yautja))
+				shield_blocked_r = S.directional_block(src, direction)
+			else if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack.
 				shield_blocked_r = TRUE
-				S.lower_shield(src)
 			else if(prob(S.passive_block))
 				shield_blocked_r = TRUE
 
@@ -187,7 +189,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 	var/hit_area = affecting.display_name
 
-	if((user != src) && check_shields(I.force, "the [I.name]"))
+	if((user != src) && check_shields(I.force, "the [I.name]", I.dir))
 		return FALSE
 
 	if(LAZYLEN(I.attack_verb))
@@ -296,7 +298,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 	O.throwing = FALSE //it hit, so stop moving
 
-	if ((!launch_meta_valid || LM.thrower != src) && check_shields(impact_damage, "[O]"))
+	if ((!launch_meta_valid || LM.thrower != src) && check_shields(impact_damage, "[O]", LM.thrower.dir)) //unsure how to get the direction of the object directly, so just uses the throwe's direction
 		return
 
 	var/obj/limb/affecting = get_limb(zone)

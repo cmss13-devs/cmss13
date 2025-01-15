@@ -469,6 +469,16 @@
 	deployment_sound = 'sound/weapons/scims_alt_on.ogg'
 	retract_sound = 'sound/weapons/scims_alt_off.ogg'
 
+/obj/item/bracer_attachments/shield
+	name ="shield bracer attachment"
+	desc ="A large tribal shield made of a strange metal alloy. The face of the shield bears three skulls, two human, one alien."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "shield"
+	item_state = "shield"
+	attached_weapon_type = /obj/item/weapon/shield/riot/yautja/bracer_shield
+	deployment_sound = 'sound/weapons/wristblades_on.ogg'
+	retract_sound = 'sound/weapons/wristblades_off.ogg'
+
 /obj/item/clothing/gloves/yautja/hunter/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/bracer_attachments))
 		return ..()

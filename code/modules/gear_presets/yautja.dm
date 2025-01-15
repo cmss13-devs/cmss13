@@ -43,6 +43,10 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material, clan_rank), WEAR_HANDS)
 
+/datum/equipment_preset/yautja/load_preset(mob/living/carbon/human/new_human, randomise, count_participant, client/mob_client, show_job_gear)
+	. = ..()
+	new_human.marine_buyable_categories[YAUTJA_CAN_BUY_BRACER_ATTACHMENT] = 2
+
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.gender = MALE

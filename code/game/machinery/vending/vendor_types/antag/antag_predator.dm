@@ -19,9 +19,10 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("The Crushing Longaxe", 0, /obj/item/weapon/twohanded/yautja/glaive/longaxe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("Bracer Attachments", 0, null, null, null),
-		list("Wrist Blades", 0,list(/obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("Wrist Blades", 0,/obj/item/bracer_attachments/wristblades, YAUTJA_CAN_BUY_BRACER_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("The Fearsome Scimitars", 0, list(/obj/item/bracer_attachments/scimitars, /obj/item/bracer_attachments/scimitars), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Steadfast Shield", 0, /obj/item/bracer_attachments/shield, YAUTJA_CAN_BUY_BRACER_ATTACHMENT, VENDOR_ITEM_RECOMMENDED),
 
 		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
 		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -58,9 +59,10 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("The Crushing Longaxe", 0, /obj/item/weapon/twohanded/yautja/glaive/longaxe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("Bracer Attachments", 0, null, null, null),
-		list("Wrist Blades", 0,list(/obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("Wrist Blades", 0,/obj/item/bracer_attachments/wristblades, YAUTJA_CAN_BUY_BRACER_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("The Fearsome Scimitars", 0, list(/obj/item/bracer_attachments/scimitars, /obj/item/bracer_attachments/scimitars), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Steadfast Shield", 0, /obj/item/bracer_attachments/shield, YAUTJA_CAN_BUY_BRACER_ATTACHMENT, VENDOR_ITEM_RECOMMENDED),
 
 		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
 		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

@@ -279,12 +279,6 @@
 	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
 
-/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
-	name = "strange crystal"
-	chemname = "thwong"
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "crystal"
-	color = "#c44541"
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/attack(mob/M as mob, mob/user as mob)
 	var/mob/living/carbon/human/thrall = M

@@ -211,43 +211,6 @@
 		to_chat(master, SPAN_WARNING("Your bracer beeps, your thrall is punished."))
 		to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
 
-#define THRALL_CREATE_STIM_COOLDOWN "thrall_create_stim_cooldown"
-
-/obj/item/clothing/gloves/yautja/thrall/verb/create_stim()
-	set name = "Create Stimulant"
-	set category = "Yautja.Thrall"
-	set desc = "Dispense a crystal containing chemicals to aid you in combat"
-	set src in usr
-	. = create_stim_internal(usr, FALSE)
-
-/obj/item/clothing/gloves/yautja/thrall/proc/create_stim_internal(mob/caller, forced = FALSE)
-	if(caller.is_mob_incapacitated())
-		return FALSE
-
-	if(.)
-		return
-
-	if(caller.get_active_hand())
-		to_chat(caller, SPAN_WARNING("Your active hand must be empty!"))
-		return FALSE
-
-	if(TIMER_COOLDOWN_CHECK(src, THRALL_CREATE_STIM_COOLDOWN))
-		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, THRALL_CREATE_STIM_COOLDOWN))
-		to_chat(caller, SPAN_WARNING("You recently synthesized a crystal. A new crystal will be available in [remaining_time]."))
-		return FALSE
-
-	if(!drain_power(caller, 400))
-		return FALSE
-
-	S_TIMER_COOLDOWN_START(src, THRALL_CREATE_STIM_COOLDOWN, 2 MINUTES)
-
-	to_chat(caller, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
-	var/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall/crystal = new(caller)
-	caller.put_in_active_hand(crystal)
-	playsound(src, 'sound/machines/click.ogg', 15, 1)
-	return TRUE
-#undef THRALL_CREATE_STIM_COOLDOWN
-
 /obj/item/clothing/gloves/yautja/hunter/verb/self_destruct_thrall()
 	set name = "Self Destruct Thrall (!)"
 	set desc = "Stun and trigger the self destruct device inside of your thrall's bracers. They have failed you. Show no mercy."

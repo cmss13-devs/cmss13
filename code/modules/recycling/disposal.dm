@@ -699,7 +699,7 @@
 	if(istype(T, /turf/open/floor)) //intact floor, pop the tile
 		var/turf/open/floor/F = T
 		if(!F.intact_tile)
-			if(!F.broken && !F.burnt)
+			if(!(F.turf_flags & TURF_BROKEN) && !(F.turf_flags & TURF_BURNT))
 				new F.tile_type(H, 1, F.type)
 			F.make_plating()
 

@@ -256,9 +256,33 @@
 	item_state = "keffiyeh"
 	original_state = "keffiyeh"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	pulled = FALSE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/ui_action_click()
+	pull_keffiyeh_down()
+
+/obj/item/clothing/mask/rebreather/scarf/keffiyeh/verb/pull_keffiyeh_down()
+	set name = "Pull Up/Down"
+	set category = "Object"
+	set src in usr
+	if(usr.stat == DEAD)
+		return
+
+	pulled = !pulled
+	if(pulled)
+		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
+		icon_state += "_down"
+		flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	else
+		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
+		icon_state = original_state
+		flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
+
+	update_clothing_icon(src)
 
 /obj/item/clothing/mask/rebreather/scarf/keffiyeh/white
 	icon_state = "keffiyeh_white"

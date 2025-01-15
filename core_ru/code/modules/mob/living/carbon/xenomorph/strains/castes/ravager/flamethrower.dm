@@ -14,6 +14,7 @@
 /datum/xeno_strain/flamethrower/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
 	ravager.armor_modifier -= XENO_ARMOR_MOD_MED
 	ravager.recalculate_everything()
+	ravager.desc = "It's a goddamn dragon! Run! RUUUUN!"
 
 
 /datum/action/xeno_action/verb/verb_breathe_fire()

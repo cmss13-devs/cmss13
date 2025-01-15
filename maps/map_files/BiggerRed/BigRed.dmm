@@ -20418,12 +20418,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/lz1_telecomm_cas)
-"bRC" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "reactor_meltdown"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "bRK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
@@ -20788,13 +20782,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
-"cns" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "se-checkpoint"
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "cnF" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/asteroidwarning/west,
@@ -21316,12 +21303,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"cQi" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "medbay-v3"
-	},
-/turf/open/floor/asteroidwarning,
-/area/bigredv2/outside/c)
 "cQO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -22608,9 +22589,6 @@
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "ejp" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "filtration_restored"
-	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/s)
 "eju" = (
@@ -23129,12 +23107,6 @@
 "eMX" = (
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/caves_lambda)
-"eNx" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lambda-cave-mushroom"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "eNN" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/open/floor/plating/platingdmg3/west,
@@ -23403,12 +23375,6 @@
 "fbf" = (
 /turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/sw)
-"fbB" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "crashlanding-eva"
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/bar)
 "fcG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/firecloset,
@@ -24581,12 +24547,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
-"gri" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "containerroom_xenos"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/nw/ceiling)
 "grM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/bedroll{
@@ -24796,12 +24756,6 @@
 "gAF" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves)
-"gAK" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "chapel_cult"
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/chapel)
 "gAX" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -25147,12 +25101,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/lambda_cave_cas)
-"gWv" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "eta_carp"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/caves/eta/xenobiology)
 "gWD" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/space_port_lz2)
@@ -26943,12 +26891,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/c)
-"jdj" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "crashlanding-offices"
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/c)
 "jdN" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/mars,
@@ -28375,15 +28317,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/darkredcorners2,
 /area/bigredv2/caves/eta/xenobiology)
-"kxr" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/obj/effect/landmark/nightmare{
-	insert_tag = "dorms_party"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/dorms)
 "kyz" = (
 /obj/structure/transmitter/colony_net{
 	dir = 4;
@@ -29366,12 +29299,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"lFR" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "viro_open"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "lGt" = (
 /turf/open/floor/delivery,
 /area/bigredv2/caves/eta/living)
@@ -29503,12 +29430,6 @@
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
-"lOY" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "etatunnel_open"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "lPg" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/n)
@@ -29668,12 +29589,6 @@
 "mai" = (
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/caves)
-"maB" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "viro-rock_open"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/virology)
 "maD" = (
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
@@ -31580,12 +31495,6 @@
 /obj/item/tool/warning_cone,
 /turf/open/mars,
 /area/bigredv2/outside/s)
-"nZd" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz1cave_flank"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/space_port)
 "nZB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
@@ -31597,12 +31506,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
-"obf" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lambda-graveyard"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/se)
 "obB" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
@@ -32470,12 +32373,6 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
-"oVq" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz1entrance_v2"
-	},
-/turf/open/mars,
-/area/bigredv2/outside/nw)
 "oWc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -34709,12 +34606,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
-"reL" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "vault_v2"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "rfL" = (
 /obj/item/shard,
 /turf/open/floor/whitegreencorner,
@@ -35342,12 +35233,6 @@
 	},
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
-"rNs" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "tcomms_open"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "rNy" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -36384,12 +36269,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
-"sIh" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lambda-cave-extratunnel"
-	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "sIp" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /obj/effect/decal/cleanable/ash{
@@ -36577,12 +36456,6 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"sXd" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "prison_breakout"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/marshal_office)
 "sXf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
@@ -40189,12 +40062,6 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/mars,
 /area/bigredv2/outside/c)
-"wHg" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz1north_mining"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/space_port)
 "wHx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -40389,12 +40256,6 @@
 "wQC" = (
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_lambda)
-"wRl" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "admin_pmc"
-	},
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/admin_building)
 "wRo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/suit/armor/riot{
@@ -41266,12 +41127,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/c)
-"xLz" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "lz1containers_scramble"
-	},
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/space_port)
 "xLM" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -41327,12 +41182,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
-"xOk" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "cargo_containers"
-	},
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/cargo)
 "xPg" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/mars_cave/mars_dirt_4,
@@ -43753,7 +43602,7 @@ aao
 aao
 aao
 aao
-rNs
+aao
 aao
 aao
 xmy
@@ -51904,7 +51753,7 @@ aao
 aao
 aao
 aao
-lOY
+aao
 aao
 uHQ
 oRK
@@ -54923,7 +54772,7 @@ kgx
 kgx
 kgx
 aao
-bRC
+aao
 aao
 aao
 aao
@@ -71176,7 +71025,7 @@ eDS
 aao
 vVZ
 aao
-cns
+pcF
 aao
 aao
 aao
@@ -81551,7 +81400,7 @@ aMV
 tQw
 aao
 aao
-sIh
+aao
 aao
 aao
 aao
@@ -83260,7 +83109,7 @@ aao
 aao
 jgW
 aig
-reL
+aao
 aao
 anI
 anI
@@ -86290,7 +86139,7 @@ aao
 aao
 aao
 aao
-eNx
+aao
 aao
 aao
 aao
@@ -93910,7 +93759,7 @@ aao
 aao
 aao
 aao
-lFR
+aao
 aao
 aao
 aao
@@ -97786,7 +97635,7 @@ iFr
 wra
 hby
 meb
-oVq
+aeI
 aeI
 jHK
 aeI
@@ -97824,7 +97673,7 @@ aoD
 aoD
 aoD
 aoD
-maB
+aoD
 aoD
 aoD
 aoD
@@ -97984,7 +97833,7 @@ acw
 acw
 aam
 aam
-xLz
+aam
 aam
 aam
 aam
@@ -98672,7 +98521,7 @@ axv
 anp
 anp
 anp
-gri
+anp
 mbY
 siG
 hEr
@@ -99050,7 +98899,7 @@ wcs
 aae
 aae
 aae
-wHg
+aae
 aah
 pXM
 aaU
@@ -101111,7 +100960,7 @@ asK
 asK
 bkz
 asK
-xOk
+asK
 gWD
 ftY
 kcH
@@ -101887,7 +101736,7 @@ aae
 aae
 aae
 aae
-nZd
+aae
 aae
 aae
 aaq
@@ -102803,7 +102652,7 @@ alu
 alu
 alu
 alu
-cQi
+aHD
 aCM
 aBR
 aMc
@@ -105599,7 +105448,7 @@ tJl
 acp
 acp
 acp
-sXd
+acp
 sgd
 oEY
 aGy
@@ -106952,7 +106801,7 @@ apC
 apC
 apC
 apC
-wRl
+apC
 aHF
 aHD
 aBR
@@ -110302,7 +110151,7 @@ aCe
 aCe
 aCe
 aCe
-gWv
+aCe
 aao
 aao
 aao
@@ -111906,7 +111755,7 @@ ayY
 axG
 ayY
 ayY
-kxr
+aFN
 asJ
 asJ
 aua
@@ -114993,7 +114842,7 @@ aHF
 dyX
 aHF
 dyX
-jdj
+aHF
 aHF
 aHF
 awp
@@ -116033,7 +115882,7 @@ mbz
 anJ
 anJ
 anJ
-fbB
+anJ
 amn
 amn
 amn
@@ -123010,7 +122859,7 @@ atP
 atP
 atP
 atb
-gAK
+atb
 bja
 bes
 bes
@@ -123020,7 +122869,7 @@ bes
 bes
 bes
 bes
-obf
+awd
 awd
 aao
 aao

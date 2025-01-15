@@ -1014,7 +1014,7 @@
 	var/msg
 	///Is the target the user or somebody else?
 	var/self = (target == src)
-	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [src]."]"))
+	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [target.name]."]"))
 
 	if(self)
 		var/list/broken_limbs = target.get_broken_limbs() - list("chest","head","groin")
@@ -1054,9 +1054,7 @@
 	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
-	var/dat = GLOB.data_core.get_manifest()
-
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"

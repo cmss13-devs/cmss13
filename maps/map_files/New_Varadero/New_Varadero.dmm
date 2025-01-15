@@ -12352,7 +12352,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/window/reinforced,
-/obj/item/clothing/head/fedora,
+/obj/item/clothing/head/fedora/grey,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "jQM" = (
@@ -19175,7 +19175,7 @@
 /area/varadero/interior_protected/vessel)
 "pBo" = (
 /obj/structure/coatrack,
-/obj/item/clothing/head/fedora{
+/obj/item/clothing/head/fedora/grey{
 	pixel_x = -1;
 	pixel_y = 15
 	},

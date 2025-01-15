@@ -62,6 +62,7 @@
 #define MODE_RANDOM_HIVE (1<<12)// Makes Join-as-Xeno choose a hive to join as burrowed larva at random rather than at user's input..
 #define MODE_THUNDERSTORM (1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
 #define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses, increase armor bullet/bomb/internal damage protection
+#define MODE_SUNSET (1<<15) // Has a sunset on the ground Z at the start of the round
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
@@ -321,3 +322,6 @@ DEFINE_BITFIELD(whitelist_status, list(
 GLOBAL_VAR(last_ares_callout)
 
 GLOBAL_VAR(last_qm_callout)
+
+/// Registered a single time, used to determine sunrise stuff
+GLOBAL_VAR(sunrise_starting_time)

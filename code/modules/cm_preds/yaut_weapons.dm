@@ -990,6 +990,11 @@
 	if(refund) spikes++
 	return TRUE
 
+/obj/item/weapon/gun/launcher/spike/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1002,6 +1007,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
+
+/obj/item/weapon/gun/energy/yautja/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/tool/yautja_cleaner))
+		if(handle_dissolve())
+			return
+	..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"

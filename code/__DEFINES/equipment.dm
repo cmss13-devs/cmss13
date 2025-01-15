@@ -92,6 +92,8 @@
 #define FORCEDROP_CONDITIONAL (1<<14)
 /// Overrides smartgunner not being able to wear backpacks
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
+/// Is in the process of falling apart.
+#define ITEM_DISSOLVING (1<<16)
 //==========================================================================================
 
 

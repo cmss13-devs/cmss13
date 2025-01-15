@@ -84,6 +84,12 @@
 /obj/structure/pipes/unary/freezer/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
+"aap" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -31969,7 +31975,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aap
 hdh
 jQa
 jQa

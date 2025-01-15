@@ -83,10 +83,10 @@
 		xeno_in_range.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(raging == TRUE)
 			xeno_in_range.gain_health(15)
-			transferred_healing += 15
+			transferred_healing += 30
 		else
 			xeno_in_range.gain_health(8)
-			transferred_healing += 8
+			transferred_healing += 15
 
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/add_base_fury(amount)

@@ -229,7 +229,7 @@
 /area/shiva/interior/colony/s_admin)
 "jP" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/head/soft/sec/corp{
+/obj/item/clothing/head/cmcap/wy_cap{
 	pixel_y = 10
 	},
 /obj/item/tool/stamp/hos,

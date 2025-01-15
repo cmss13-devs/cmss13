@@ -20,6 +20,33 @@
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
 
+/datum/sound_template/proc/get_hearers()
+	var/list/hearers_to_return = list()
+	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
+	hearers_to_return += SSquadtree.players_in_range(zone, z)
+	
+	var/datum/space_level/original_level = SSmapping.get_level(z)
+	var/turf/above = locate(x, y, z + 1)
+	while(above)
+		var/datum/space_level/above_level = SSmapping.get_level(above.z)
+		for(var/trait in original_level.traits)
+			if(!(trait in above_level.traits))
+				break
+		hearers_to_return += SSquadtree.players_in_range(zone, z + 1)
+		above = locate(above.x, above.y, above.z + 1)
+
+	var/turf/below = locate(x, y, z - 1)
+	while(below)
+		var/datum/space_level/below_level = SSmapping.get_level(below.z)
+		for(var/trait in original_level.traits)
+			if(!(trait in below_level.traits))
+				break
+		hearers_to_return += SSquadtree.players_in_range(zone, z-1)
+		below = locate(below.x, below.y, below.z - 1)
+
+
+	return hearers_to_return
+
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++

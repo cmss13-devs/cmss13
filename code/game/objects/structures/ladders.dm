@@ -275,3 +275,11 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+
+/obj/structure/ladder/multiz/LateInitialize()
+	. = ..()
+
+	up = locate(/obj/structure/ladder) in locate(x, y, z + 1)
+	down = locate(/obj/structure/ladder) in locate(x, y, z - 1)
+
+	update_icon()

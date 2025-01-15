@@ -1443,6 +1443,7 @@
 #include "code\game\turfs\kutjevo.dm"
 #include "code\game\turfs\light.dm"
 #include "code\game\turfs\open.dm"
+#include "code\game\turfs\open_space.dm"
 #include "code\game\turfs\shale.dm"
 #include "code\game\turfs\shiva.dm"
 #include "code\game\turfs\snow.dm"

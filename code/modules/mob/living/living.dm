@@ -698,3 +698,4 @@
 	if(body_position == LYING_DOWN)
 		return
 	return ..()
+

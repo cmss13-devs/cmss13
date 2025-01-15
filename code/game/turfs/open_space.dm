@@ -8,12 +8,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane           = OPENSPACE_BACKDROP_PLANE
 	mouse_opacity 	= MOUSE_OPACITY_TRANSPARENT
 
-/atom/movable/openspace_backdrop/Destroy()
-	if(GLOB.openspace_backdrop_one_for_all == src)
-		GLOB.openspace_backdrop_one_for_all = null
-
-	. = ..()
-
 /turf/open_space
 	name = "open space"
 	icon_state = "transparent"

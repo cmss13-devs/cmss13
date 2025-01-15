@@ -15,10 +15,15 @@ GLOBAL_LIST_EMPTY(bug_reports)
 //datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
+GLOBAL_LIST_EMPTY(upp_flat_tacmap_data)
+GLOBAL_LIST_INIT(faction_flat_tacmap_data, list(FACTION_MARINE, FACTION_XENOMORPH, FACTION_UPP, FACTION_PMC, FACTION_WY, FACTION_CLF, FACTION_CONTRACTOR, FACTION_MARSHAL, FACTION_FREELANCER, FACTION_WY_DEATHSQUAD, FACTION_MERCENARY, FACTION_DUTCH, FACTION_PIRATE, FACTION_YAUTJA, FACTION_TWE ))
+
 
 //datum containing the svg overlay coords in array format.
 GLOBAL_LIST_EMPTY(uscm_svg_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_svg_tacmap_data)
+GLOBAL_LIST_EMPTY(upp_svg_tacmap_data)
+GLOBAL_LIST_INIT(faction_tacmap_data, list(FACTION_MARINE, FACTION_XENOMORPH, FACTION_UPP, FACTION_PMC, FACTION_WY, FACTION_CLF, FACTION_CONTRACTOR, FACTION_MARSHAL, FACTION_FREELANCER, FACTION_WY_DEATHSQUAD, FACTION_MERCENARY, FACTION_DUTCH, FACTION_PIRATE, FACTION_YAUTJA, FACTION_TWE ))
 
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 GLOBAL_LIST_EMPTY(larva_burst_by_hive)

@@ -121,6 +121,11 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
 	cost = 4
 
+/datum/gear/eyewear/bimex_shades
+	display_name = "BiMex personal shades"
+	path = /obj/item/clothing/glasses/sunglasses/big
+	cost = 4
+
 /datum/gear/eyewear/sunglasses
 	display_name = "Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
@@ -1165,7 +1170,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/misc/patch_uscm/medic_patch
 	display_name = "Field Medic shoulder patch"
 	path = /obj/item/clothing/accessory/patch/medic_patch
-	allowed_origins = list(ORIGIN_CIVILIAN, USCM_ORIGINS, ORIGIN_UPP)
 
 /datum/gear/misc/family_photo
 	display_name = "Family photo"
@@ -1227,13 +1231,6 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 /datum/gear/civilian/patch/clf
 	display_name = "Colonial Liberation Front shoulder patch"
 	path = /obj/item/clothing/accessory/patch/clf_patch
-
-// Old Bimex - now civilian only
-
-/datum/gear/civilian/eyewear/bimex_shades
-	display_name = "BiMex personal shades"
-	path = /obj/item/clothing/glasses/sunglasses/big
-	cost = 4
 
 // Cheap Civilian shades - colorful!
 

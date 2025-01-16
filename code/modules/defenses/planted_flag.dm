@@ -3,7 +3,7 @@
 
 /obj/structure/machinery/defenses/planted_flag
 	name = "\improper JIMA planted flag"
-	icon = 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi'
+	icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
 	desc = "A planted flag with the iconic USCM flag plastered all over it, you feel a burst of energy by its mere sight."
 	handheld_type = /obj/item/defenses/handheld/planted_flag
 	disassemble_time = 10
@@ -12,7 +12,7 @@
 	var/buff_intensity = PLANTED_FLAG_BUFF
 	health = 200
 	health_max = 200
-	var/alternative_icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
+	var/alternative_icon = 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi'
 
 	can_be_near_defense = TRUE
 
@@ -25,10 +25,10 @@
 	)
 
 	proc/toggle_icon()
-		if(icon == 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi')
+		if(icon == 'icons/obj/structures/machinery/defenses/planted_flag.dmi')
 			icon = alternative_icon
 		else
-			icon = 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi'
+			icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
 		update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()

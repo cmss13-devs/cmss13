@@ -118,10 +118,10 @@
 		bound_xeno.overlay_shields()
 
 /datum/behavior_delegate/ravager_base/override_intent(mob/living/carbon/target_carbon)
-    . = ..()
+	. = ..()
 
-    if(!isxeno_human(target_carbon))
-        return
+	if(!isxeno_human(target_carbon))
+		return
 
-    if(mid_charge)
-        return INTENT_HARM
+	if(mid_charge)
+		return INTENT_HARM

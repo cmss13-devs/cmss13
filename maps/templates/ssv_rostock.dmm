@@ -56,10 +56,6 @@
 	},
 /turf/open/floor/strata/red3,
 /area/rostock/lower_deck/prep)
-"aai" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep,
-/turf/open/floor/strata/floor3,
-/area/rostock/lower_deck/prep)
 "aaj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -74,26 +70,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/strata/red3/north,
-/area/rostock/lower_deck/prep)
-"aal" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/strata/red4/north,
-/area/rostock/lower_deck/prep)
-"aam" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/poster/clf{
-	pixel_x = 31
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/strata/red1,
 /area/rostock/lower_deck/prep)
 "aan" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -113,6 +89,66 @@
 	},
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/req)
+"aaq" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata,
+/area/rostock/command/hallway)
+"aar" = (
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lower_deck/prep)
+"aas" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/red1,
+/area/rostock/lower_deck/prep)
+"aat" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/strata/red4/west,
+/area/rostock/lower_deck/prep)
+"aau" = (
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep,
+/turf/open/floor/strata,
+/area/rostock/lower_deck/prep)
+"aav" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lower_deck/prep)
+"aaw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/red4/north,
+/area/rostock/lower_deck/prep)
+"aax" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -20
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/rostock/lower_deck/p_a_hallway)
+"aay" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lower_deck/prep)
+"aaz" = (
+/obj/structure/platform/metal/strata,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/hangar/pilotbunk)
 "aaQ" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/bridge{
@@ -2138,9 +2174,6 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/m_hallway)
 "bCg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -2263,6 +2296,10 @@
 /area/rostock/hangar/hangarbay)
 "bHY" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/upp_squad,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 40;
+	pixel_y = 27
+	},
 /turf/open/floor/strata/red3/north,
 /area/rostock/lower_deck/prep)
 "bIj" = (
@@ -3519,9 +3556,6 @@
 /obj/item/tool/pen{
 	pixel_x = 6
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 34;
 	pixel_y = -8
@@ -4189,10 +4223,6 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/strata/north,
-/obj/effect/landmark/start/upp{
-	job_list = list("UPP Pilot");
-	name = "UPP Pilot"
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/pilotbunk)
 "dmR" = (
@@ -4548,9 +4578,6 @@
 /turf/open/floor/strata/orange_cover,
 /area/rostock/hangar/hangarbay)
 "dzk" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/sign/safety/bridge{
 	pixel_y = 32
 	},
@@ -5679,9 +5706,6 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/lifeboat)
 "epo" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
 /obj/structure/sign/flag/upp{
 	pixel_y = 28
 	},
@@ -6187,6 +6211,9 @@
 /turf/open/floor/strata/blue4/west,
 /area/rostock/lower_deck/m_hallway)
 "eJl" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/red4/west,
 /area/rostock/lower_deck/m_hallway)
 "eJA" = (
@@ -6972,6 +6999,9 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
 "fjU" = (
@@ -7003,9 +7033,6 @@
 /turf/open/floor/prison/cell_stripe/west,
 /area/rostock/engineering/main_area)
 "fkV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -11894,9 +11921,6 @@
 /turf/open/floor/prison/darkbrown3,
 /area/rostock/req)
 "iVQ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/sign/safety/east{
 	pixel_y = 32;
 	pixel_x = 14
@@ -15663,6 +15687,9 @@
 	department = "Rostock Brig";
 	network = "UPP Encrypted Network"
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
 "lNv" = (
@@ -17893,12 +17920,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/cell_stripe/east,
 /area/rostock/engineering/main_area)
-"nHB" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/security/headquarters_storage)
 "nHU" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -18677,18 +18698,6 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/lower_deck/kitchen)
-"osO" = (
-/obj/structure/medical_supply_link,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/obj/structure/machinery/light{
-	invisibility = 101
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
-/turf/open/floor/corsat/spiralplate,
-/area/rostock/lower_deck/prep)
 "otX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -18956,9 +18965,6 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "oDK" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "oEk" = (
@@ -19448,13 +19454,6 @@
 "oSB" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/vehiclehangar)
-"oTu" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	density = 0;
-	pixel_y = 26
-	},
-/turf/open/floor/corsat/cargo,
-/area/rostock/hangar/pilotbunk)
 "oTE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -19680,13 +19679,12 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "pfz" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
 /obj/structure/machinery/light{
 	dir = 4;
 	invisibility = 101
 	},
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "pgf" = (
@@ -19884,12 +19882,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
-"pkr" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/rostock/medical/prep)
 "pkD" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -20854,9 +20846,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/prep)
 "pXn" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "pXX" = (
@@ -23140,12 +23130,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
 /area/rostock/railgun/starboard)
-"rNy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/strata/red1,
-/area/rostock/lower_deck/prep)
 "rNC" = (
 /turf/closed/wall/almayer/white,
 /area/rostock/medical/prep)
@@ -23439,9 +23423,6 @@
 "rZV" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/megaphone,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 34;
 	pixel_y = -8
@@ -24565,9 +24546,6 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/m_hallway)
 "sWD" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -24879,6 +24857,9 @@
 /area/rostock/lower_deck/bathroom)
 "tlg" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
 "tlq" = (
@@ -25235,6 +25216,10 @@
 /obj/item/clothing/accessory/storage/surg_vest,
 /obj/item/tool/portadialysis,
 /obj/item/clothing/glasses/hud/health,
+/obj/structure/machinery/light/small{
+	dir = 4;
+	light_color = "#ccecff"
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/storage)
 "tyB" = (
@@ -25359,12 +25344,6 @@
 "tBX" = (
 /turf/open/floor/corsat/squares,
 /area/rostock/lower_deck/p_hallway)
-"tDM" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/strata/red4/west,
-/area/rostock/lower_deck/prep)
 "tEy" = (
 /turf/closed/wall/almayer/aicore/reinforced,
 /area/rostock/airoom)
@@ -26507,10 +26486,6 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
-	light_color = "#ccecff"
-	},
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/storage)
 "uvG" = (
@@ -26663,6 +26638,10 @@
 /area/rostock/lifeboat)
 "uEI" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/upp_squad,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 40;
+	pixel_y = -30
+	},
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "uEN" = (
@@ -27151,6 +27130,9 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
 	pixel_y = 12
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/strata/blue3,
 /area/rostock/command/cic)
@@ -27756,9 +27738,8 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/port_aft_accessway)
 "vtX" = (
-/obj/structure/machinery/cm_vending/gear/antag_guns{
-	name = "\improper Automated Guns Rack"
-	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/toolkit/empty,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "vuV" = (
@@ -29093,12 +29074,10 @@
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "woC" = (
-/obj/structure/medical_supply_link,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = -1
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "woG" = (
@@ -29557,9 +29536,6 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/req)
 "wHB" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/sign/safety/conference_room{
 	pixel_y = 32;
 	pixel_x = 14
@@ -31356,9 +31332,6 @@
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "yfV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/sign/safety/maint{
 	pixel_x = 15;
 	pixel_y = 32
@@ -31451,6 +31424,9 @@
 	icon_state = "SE-out";
 	pixel_x = 1;
 	pixel_y = -1
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/command/hallway)
@@ -37846,12 +37822,12 @@ fVw
 mZS
 eyD
 nog
-vtX
+aay
 uNW
 eTm
 cGb
 pXk
-vtX
+aav
 uNW
 eTm
 jVs
@@ -38392,17 +38368,17 @@ fVw
 poe
 lBo
 mNS
-vtX
+ljJ
 faR
 eTm
 mJF
 woC
-vtX
+ljJ
 faR
 eTm
 pyD
 woC
-vtX
+ljJ
 faR
 eTm
 exb
@@ -38943,12 +38919,12 @@ faR
 eTm
 lri
 woC
-vtX
+ljJ
 faR
 eTm
 pyD
-osO
-vtX
+woC
+aar
 faR
 eTm
 exb
@@ -39484,17 +39460,17 @@ fVw
 poe
 lBo
 mNS
-vtX
+ljJ
 faR
 eTm
 nbv
 woC
-vtX
+ljJ
 wyD
 eKc
 pyD
 woC
-vtX
+ljJ
 faR
 eTm
 efV
@@ -40218,7 +40194,7 @@ eKH
 eyD
 bHY
 aak
-kZL
+aau
 aah
 uEI
 eyD
@@ -40399,9 +40375,9 @@ rZj
 ljJ
 eyD
 jgP
-aal
-xBG
-tDM
+aak
+aau
+aah
 qlU
 eyD
 tRw
@@ -40581,9 +40557,9 @@ oKR
 tqt
 eyD
 uOh
-aam
-aai
-rNy
+aak
+aau
+aah
 uOh
 eyD
 pXn
@@ -40762,11 +40738,11 @@ eyD
 eyD
 lba
 eyD
-eyD
-eyD
-eyD
-lba
-lba
+aas
+aaw
+xBG
+aat
+aas
 eyD
 eyD
 eyD
@@ -40943,7 +40919,7 @@ wQv
 dER
 wQv
 wQv
-wQv
+aax
 vWY
 iDQ
 cnL
@@ -47137,7 +47113,7 @@ xgw
 xgw
 xgw
 rNC
-pkr
+fwP
 jCp
 sir
 qpJ
@@ -49315,7 +49291,7 @@ aDM
 fjh
 jSu
 wNx
-nHB
+xvW
 vwN
 xvW
 lzQ
@@ -50055,7 +50031,7 @@ umW
 hfC
 jKU
 pvT
-cEi
+aaq
 hsv
 hqV
 lyz
@@ -55608,7 +55584,7 @@ tPw
 riG
 ltW
 iFY
-oTu
+yaJ
 ddi
 xuU
 pVb
@@ -56337,7 +56313,7 @@ wtZ
 glA
 iFY
 dmB
-pOn
+aaz
 tRR
 sLI
 sLI

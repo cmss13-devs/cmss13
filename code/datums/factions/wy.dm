@@ -2,15 +2,15 @@
 	name = "Weyland-Yutani Corporation"
 	faction_tag = FACTION_WY
 
-/datum/faction/wy/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/wy/modify_hud_holder(image/holder, mob/living/carbon/human/user)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
-	var/_role
-	if(H.mind)
-		_role = H.job
-	else if(ID)
-		_role = ID.rank
-	switch(_role)
+	var/obj/item/card/id/id_card = user.get_idcard()
+	var/role
+	if(user.mind)
+		role = user.job
+	else if(id_card)
+		role = id_card.rank
+	switch(role)
 		if(JOB_WY_GOON)
 			hud_icon_state = "goon_normal"
 		if(JOB_WY_GOON_LEAD)

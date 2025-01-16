@@ -537,6 +537,16 @@
 	desc = "It says it is a plush on the tag, at least."
 	icon_state = "rock"
 
+/obj/item/toy/plush/gnarp
+	name = "gnarp plush"
+	desc = "gnarp gnarp."
+	icon_state = "gnarp"
+
+/obj/item/toy/plush/gnarp/alt
+	name = "gnarp plush"
+	desc = "gnarp gnarp."
+	icon_state = "gnarp_alt"
+
 /obj/item/toy/plush/therapy
 	name = "therapy plush"
 	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles."

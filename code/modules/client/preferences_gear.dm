@@ -1344,9 +1344,13 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Shark plush"
 	path = /obj/item/toy/plush/shark
 
-/datum/gear/civilian/plush/moth
-	display_name = "Moth plush"
-	path = /obj/item/toy/plush/moth
+/datum/gear/civilian/plush/gnarp
+	display_name = "Gnarp plush"
+	path = /obj/item/toy/plush/gnarp
+
+/datum/gear/civilian/plush/gnarp/alt
+	display_name = "Gnarp plush, alt"
+	path = /obj/item/toy/plush/gnarp/alt
 
 /datum/gear/civilian/plush/rock
 	display_name = "Rock plush"

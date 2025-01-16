@@ -98,6 +98,12 @@
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 1.5 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 1.5 SECONDS)
 
+/obj/structure/machinery/defenses/planted_flag/attackby(obj/item/W, mob/user)
+	if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		toggle_icon()
+		return TRUE
+	return ..()
+
 /obj/structure/machinery/defenses/planted_flag/range
 	name = "extended JIMA planted flag"
 	health = 150

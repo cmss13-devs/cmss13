@@ -118,7 +118,7 @@
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
 	if(faction == FACTION_MARINE)
 		. += ""
-		. += "<a href='?MapView=1'>View Tactical Map</a>"
+		. += "<a href='byond://?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -196,9 +196,10 @@
 	//Focus half the blast on one organ
 	var/mob/attack_source = last_damage_data?.resolve_mob()
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
-	pain.apply_pain(b_loss * 0.5, BRUTE)
-	pain.apply_pain(f_loss * 0.5, BURN)
+	if(take_blast)
+		update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
+	pain?.apply_pain(b_loss * 0.5, BRUTE)
+	pain?.apply_pain(f_loss * 0.5, BURN)
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5
@@ -398,7 +399,7 @@
 	if(href_list["item"])
 		if(!usr.is_mob_incapacitated() && Adjacent(usr))
 			if(href_list["item"] == "id")
-				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 					to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 					return
 				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
@@ -407,7 +408,7 @@
 						if(stat == DEAD)
 							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
 							DT.dogtag_taken = TRUE
-							DT.icon_state = "dogtag_taken"
+							DT.icon_state = DT.tags_taken_icon
 							var/obj/item/dogtag/D = new(loc)
 							D.fallen_references = list(DT.registered_ref)
 							D.fallen_names = list(DT.registered_name)
@@ -423,8 +424,8 @@
 			if(!usr.action_busy || skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				var/slot = href_list["item"]
 				var/obj/item/what = get_item_by_slot(slot)
-				if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
-					if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) || (what in list(head, wear_suit, w_uniform, shoes)))
+				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+					if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_strip_essentials) || (what in list(head, wear_suit, w_uniform, shoes)))
 						to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 						return
 				if(what)
@@ -435,7 +436,7 @@
 
 	if(href_list["sensor"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
-			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't tweak the sensors of a crit or dead member of another faction!"))
 				return
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [key_name(usr)]</font>")
@@ -541,7 +542,7 @@
 							if(hasHUD(usr,"security") || isobserver(usr))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
-								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+								to_chat(usr, "<a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -577,7 +578,7 @@
 						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
 					to_chat(usr, comment_markup)
 					if(!isobserver(usr))
-						to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+						to_chat(usr, "<a href='byond://?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -610,7 +611,7 @@
 					else
 						var/new_com_i = length(R.fields["comments"]) + 1
 						R.fields["comments"]["[new_com_i]"] = new_comment
-					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 
 	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -665,7 +666,7 @@
 									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
 									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-									to_chat(usr, "<a href='?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
+									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
 
 			if(!read)
@@ -694,7 +695,7 @@
 										counter++
 									if(counter == 1)
 										to_chat(usr, "No comment found")
-									to_chat(usr, "<a href='?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
+									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
@@ -1013,7 +1014,7 @@
 	var/msg
 	///Is the target the user or somebody else?
 	var/self = (target == src)
-	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [src]."]"))
+	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [target.name]."]"))
 
 	if(self)
 		var/list/broken_limbs = target.get_broken_limbs() - list("chest","head","groin")
@@ -1050,12 +1051,10 @@
 	set name = "View Crew Manifest"
 	set category = "IC"
 
-	if(faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
-	var/dat = GLOB.data_core.get_manifest()
-
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"
@@ -1693,7 +1692,7 @@
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
 	HTML += "<hr />"
-	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
 	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
 
@@ -1767,7 +1766,7 @@
 
 /// generates realistic-ish pulse output based on preset levels.
 /// method == GETPULSE_HAND is for hands, GETPULSE_TOOL is for machines, more accurate
-/mob/living/carbon/human/proc/get_pulse(method) 
+/mob/living/carbon/human/proc/get_pulse(method)
 	var/temp = 0 //see setup.dm:694
 
 	if(species && species.flags & NO_BLOOD)

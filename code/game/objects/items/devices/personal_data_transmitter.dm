@@ -13,10 +13,10 @@
 	icon_state = "pdt_locator_tube"
 	w_class = SIZE_SMALL
 
-	var/obj/item/clothing/accessory/pdt_bracelet/linked_bracelet
+	var/obj/item/clothing/accessory/wrist/pdt_bracelet/linked_bracelet
 	var/obj/item/cell/crap/battery
 
-/obj/item/device/pdt_locator_tube/Initialize(mapload, obj/item/clothing/accessory/pdt_bracelet/bracelet)
+/obj/item/device/pdt_locator_tube/Initialize(mapload, obj/item/clothing/accessory/wrist/pdt_bracelet/bracelet)
 	. = ..()
 	if(bracelet)
 		linked_bracelet = bracelet
@@ -142,18 +142,24 @@
 	QDEL_NULL(battery)
 	return ..()
 
-/obj/item/clothing/accessory/pdt_bracelet
+/obj/item/clothing/accessory/wrist/pdt_bracelet
 	name = "\improper PDT bracelet"
 	desc = "A personal data transmitter bracelet, also known as a PDT, is a form of personal locator typically surgically implanted into the body of extrasolar colonists, among others. Its purpose is to allow rapid location of the associated personnel anywhere within a certain radius of the receiving equipment, sometimes up to 30km distance. This bracelet forms part of the PDT/L variant, which is a wearable version of the PDT technology. Both it and the linked locator tube share a serial number for ease of detection in case of mixup."
+	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
+	icon_state = ""
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi'
+	)
 	var/dummy_icon_state = "pdt_watch"
 	var/copied_serial_number = null
 
-/obj/item/clothing/accessory/pdt_bracelet/get_examine_text(mob/user)
+/obj/item/clothing/accessory/wrist/pdt_bracelet/get_examine_text(mob/user)
 	. = ..()
 	if(!isxeno(user) && (get_dist(user, src) < 2 || isobserver(user)) && copied_serial_number)
 		. += SPAN_INFO("The serial number is [copied_serial_number].")
 
-/obj/item/clothing/accessory/pdt_bracelet/Initialize()
+/obj/item/clothing/accessory/wrist/pdt_bracelet/Initialize()
 	. = ..()
 	icon_state = "[dummy_icon_state]_[rand(0, 2)]"
 
@@ -163,14 +169,14 @@
 	desc_lore = "This kit was distributed in the 200th (Season 4) Issue of the Boots! magazine, 'Privates die without their battlebuddy!', to drive up sales. Many have noted the poor battery life of these units, leading many to speculate that these were faulty units that were repackaged and shipped off to various USCM-adjacent mil-surplus good stores. The Department of the Navy Observation in Photographs (DNOP) has not released a statement regarding these theories."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pdt_box"
-	can_hold = list(/obj/item/device/pdt_locator_tube, /obj/item/clothing/accessory/pdt_bracelet)
+	can_hold = list(/obj/item/device/pdt_locator_tube, /obj/item/clothing/accessory/wrist/pdt_bracelet)
 	foldable = /obj/item/stack/sheet/cardboard
 	storage_slots = 3
 	w_class = SIZE_SMALL
 	max_w_class = SIZE_SMALL
 
 /obj/item/storage/box/pdt_kit/fill_preset_inventory()
-	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/pdt_bracelet(src))
+	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/wrist/pdt_bracelet(src))
 	new /obj/item/cell/crap(src) //it not fitting is intentional
 
 /// THE ADVANCED VERSION... ADMIN SPAWN ONLY... USES TGUI RADAR... ///
@@ -180,14 +186,14 @@
 	desc = "Contains a PDT/L set, consisting of the advanced PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
 
 /obj/item/storage/box/pdt_kit/advanced/fill_preset_inventory()
-	new /obj/item/device/pdt_locator_tube/advanced(src, new /obj/item/clothing/accessory/pdt_bracelet/advanced(src))
+	new /obj/item/device/pdt_locator_tube/advanced(src, new /obj/item/clothing/accessory/wrist/pdt_bracelet/advanced(src))
 	new /obj/item/cell/crap(src) //it not fitting is intentional
 
 /obj/item/device/pdt_locator_tube/advanced
 	name = "advanced PDT locator tube"
 	var/datum/radar/advanced_pdtl/radar
 
-/obj/item/device/pdt_locator_tube/advanced/Initialize(mapload, obj/item/clothing/accessory/pdt_bracelet/bracelet)
+/obj/item/device/pdt_locator_tube/advanced/Initialize(mapload, obj/item/clothing/accessory/wrist/pdt_bracelet/bracelet)
 	. = ..()
 	radar = new /datum/radar/advanced_pdtl(src)
 
@@ -202,5 +208,5 @@
 /obj/item/device/pdt_locator_tube/advanced/locate_bracelet(mob/user)
 	radar.tgui_interact(user)
 
-/obj/item/clothing/accessory/pdt_bracelet/advanced
+/obj/item/clothing/accessory/wrist/pdt_bracelet/advanced
 	name = "advanced PDT bracelet"

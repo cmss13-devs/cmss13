@@ -1,6 +1,6 @@
 /mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/is_a_synth = issynth(src)
-	ghostize() 
+	ghostize()
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
 			continue
@@ -49,7 +49,7 @@
 	GLOB.alive_human_list -= src
 
 	if(!gibbed)
-		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))
+		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath))
 			if(!(species.flags & IS_SYNTHETIC)) // Synths wont perma
 				status_flags |= PERMANENTLY_DEAD
 		if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //their eyes need to be 'offline'

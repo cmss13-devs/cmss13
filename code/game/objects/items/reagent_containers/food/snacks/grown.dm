@@ -91,18 +91,6 @@
 	filling_color = "#E6E8DA"
 	plantname = "potato"
 
-/obj/item/reagent_container/food/snacks/grown/potato/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/C = W
-		if(C.use(5))
-			to_chat(user, SPAN_NOTICE("You add some cable to the potato and slide it inside the battery encasing."))
-			var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(user.loc)
-			pocell.maxcharge = src.potency * 10
-			pocell.charge = pocell.maxcharge
-			qdel(src)
-			return
-
 /obj/item/reagent_container/food/snacks/grown/grapes
 	name = "bunch of grapes"
 	desc = "Nutritious!"
@@ -346,7 +334,7 @@
 /obj/item/reagent_container/food/snacks/grown/banana
 	name = "banana"
 	desc = "It's an excellent prop for a comedy."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "banana"
 	item_state = "banana"
 	filling_color = "#FCF695"

@@ -2008,7 +2008,7 @@
 "VA" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/faxmachine/twe,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "VG" = (

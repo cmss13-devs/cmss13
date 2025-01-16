@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "fixes voiding of decals with negative values"

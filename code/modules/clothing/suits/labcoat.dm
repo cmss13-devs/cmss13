@@ -151,15 +151,29 @@
 	icon_state = "labcoat_tox"
 
 /obj/item/clothing/suit/storage/labcoat/officer
-	//name = "Medical officer's labcoat"
+	name = "Chief Medical Officer's labcoat"
+	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's labcoat"
 	desc = "A high-quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
+
+/obj/item/clothing/suit/storage/labcoat/wy
+	name = "W-Y researcher's labcoat"
+	desc = "A high-quality corporate labcoat, seemingly worn by science consultants and researchers alike. Built using robust materials for engaging dangerous experiments."
+	icon_state = "wy_rc_labcoat"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+	)
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"

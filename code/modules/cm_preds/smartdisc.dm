@@ -30,8 +30,8 @@
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
 	if(L)
-		throw_atom(L.loc, 4, SPEED_FAST, usr)
-	throw_atom(usr, 12, SPEED_SLOW, usr)
+		throw_atom(get_turf(L), 4, SPEED_FAST, user)
+	throw_atom(user, 12, SPEED_SLOW, user)
 	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
@@ -60,7 +60,7 @@
 	return L
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/attack_self(mob/user)
-	..()
+	. = ..()
 
 	if(active)
 		return
@@ -72,9 +72,9 @@
 	to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
 	activate(user)
 	add_fingerprint(user)
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/carbon_user = user
+	if(istype(carbon_user) && !carbon_user.throw_mode)
+		carbon_user.toggle_throw_mode(THROW_MODE_NORMAL)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/activate(mob/user)
 	if(active)
@@ -103,8 +103,8 @@
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom)
 	if(isyautja(hit_atom))
-		var/mob/living/carbon/human/H = hit_atom
-		if(H.put_in_hands(src))
+		var/mob/living/carbon/human/hooman = hit_atom
+		if(hooman.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
 			throwing = FALSE
 		return
@@ -157,6 +157,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	..()
+
 /mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(check_drift = 0)
 	return 1
 
@@ -174,14 +175,15 @@
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/death()
-	visible_message("\The [src] stops whirring and spins out onto the floor.")
-	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
-	..()
+	visible_message("[src] stops whirring and spins out onto the floor.")
+	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(loc)
+	. = ..()
 	spawn(1)
-		if(src) qdel(src)
+		if(src)
+			qdel(src)
 
 /mob/living/simple_animal/hostile/smartdisc/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
-	visible_message("\The [src] explodes!")
+	visible_message("[src] explodes!")
 	..(cause, icon_gib,1)
 	spawn(1)
 		if(src)
@@ -199,7 +201,7 @@
 			var/mob/living/L = A
 			if(L.faction == faction)
 				continue
-			else if(L in friends)
+			else if(WEAKREF(L) in friends)
 				continue
 			else if(isyautja(L))
 				continue
@@ -239,7 +241,7 @@
 	if(!stat)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
-				target_mob = FindTarget()
+				target_mob_ref = WEAKREF(FindTarget())
 
 			if(HOSTILE_STANCE_ATTACK)
 				MoveToTarget()
@@ -248,26 +250,29 @@
 				AttackTarget()
 
 /mob/living/simple_animal/hostile/smartdisc/AttackTarget()
-	stop_automated_movement = 1
+	stop_automated_movement = TRUE
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!target_mob || SA_attackable(target_mob))
 		LoseTarget()
-		return 0
+		return FALSE
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)
 		stance = HOSTILE_STANCE_IDLE
-		return 0
+		return FALSE
 	if(get_dist(src, target_mob) <= 1) //Attacking
 		AttackingTarget()
-		return 1
+		return TRUE
 
 /mob/living/simple_animal/hostile/smartdisc/AttackingTarget()
-	if(QDELETED(target_mob))  return
-	if(!Adjacent(target_mob))  return
+	var/mob/living/target_mob = target_mob_ref?.resolve()
+	if(!target_mob)
+		return
+	if(!Adjacent(target_mob))
+		return
 	if(isliving(target_mob))
-		var/mob/living/L = target_mob
-		L.attack_animal(src)
+		target_mob.attack_animal(src)
 		if(prob(5))
-			L.apply_effect(3, WEAKEN)
-			L.visible_message(SPAN_DANGER("\The [src] viciously slashes at \the [L]!"))
-			log_attack("[key_name(L)] was knocked down by [src]")
-		log_attack("[key_name(L)] was attacked by [src]")
-		return L
+			target_mob.apply_effect(3, WEAKEN)
+			target_mob.visible_message(SPAN_DANGER("[src] viciously slashes at [target_mob]!"))
+			log_attack("[key_name(target_mob)] was knocked down by [src]")
+		log_attack("[key_name(target_mob)] was attacked by [src]")
+		return target_mob

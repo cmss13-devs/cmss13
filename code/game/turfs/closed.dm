@@ -19,7 +19,7 @@
 /turf/closed/cordon
 	name = "world border"
 	icon = 'icons/turf/shuttle.dmi'
-	icon_state = "pclosed"
+	icon_state = "pwall"
 	layer = ABOVE_TURF_LAYER
 	baseturfs = /turf/closed/cordon
 
@@ -126,7 +126,7 @@
 	icon_state = "Corner"
 
 /turf/closed/ice/secret/junction
-	icon_state = "T-Junction"
+	icon_state = "T_Junction"
 
 /turf/closed/ice/secret/intersection
 	icon_state = "Intersection"
@@ -175,7 +175,7 @@
 	icon_state = "Corner"
 
 /turf/closed/ice/thin/secret/junction
-	icon_state = "T-Junction"
+	icon_state = "T_Junction"
 
 /turf/closed/ice/thin/secret/intersection
 	icon_state = "Intersection"
@@ -405,3 +405,15 @@
 
 /turf/closed/shuttle/transit/r_end
 	icon_state = "swall8"
+
+// Hybrisa Shuttles
+
+/turf/closed/shuttle/dropship2/WY/HorizonRunner
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport."
+	icon = 'icons/turf/dropship4.dmi'
+
+/turf/closed/shuttle/dropship2/WY/StarGlider
+	name = "\improper WY-LWI StarGlider SG-200"
+	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
+	icon = 'icons/turf/dropship4.dmi'

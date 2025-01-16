@@ -12,6 +12,7 @@
 	var/buff_intensity = PLANTED_FLAG_BUFF
 	health = 200
 	health_max = 200
+	var/alternative_icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
 
 	can_be_near_defense = TRUE
 
@@ -23,6 +24,12 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+	proc/toggle_icon()
+		if(icon == 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi')
+			icon = alternative_icon
+		else
+			icon = 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi'
+		update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()

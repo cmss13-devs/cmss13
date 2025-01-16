@@ -995,6 +995,7 @@
 		
 	if(hatched)
 		STOP_PROCESSING(SSobj, src)
+		return
 
 	var/groundside_humans = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -1026,6 +1027,8 @@
 		stage = STAGE_VOTE
 	else if (stage == STAGE_VOTE && time_to_hatch <= 40 SECONDS)
 		roll_candidates()
+		votes = null
+		candidates = null
 		stage = STAGE_PICK
 	else if (stage == STAGE_PICK && time_to_hatch <= 20 SECONDS)
 		start_hatching()
@@ -1095,7 +1098,7 @@
 	if(!candidate.client)
 		return FALSE
 	
-	return candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH
+	return candidate.client.prefs.be_special & BE_KING
 
 #undef KING_PLAYTIME_HOURS
 
@@ -1209,7 +1212,7 @@
 	message_admins("Failed to find a client for the King, releasing as freed mob.")
 	
 
-/// Starts the hatching in one minute, otherwise immediately if expedited
+/// Starts the hatching in twenty seconds, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)
 	if(expedite)
 		animate_hatch_king()

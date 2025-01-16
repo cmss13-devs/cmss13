@@ -97,7 +97,7 @@
 	skill_cap = SKILL_ENDURANCE_TRAINED
 	skill_increment = 1
 
- /datum/character_trait/skills/mortar
+/datum/character_trait/skills/mortar
 	trait_name = "Mortar Training"
 	trait_desc = "Boosts the engineering skill by 1 and JTAC skill by 2."
 	skill = SKILL_ENGINEER

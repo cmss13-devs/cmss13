@@ -528,6 +528,7 @@
 
 	if (!ismob(target_atom))
 		apply_cooldown_override(impale_click_miss_cooldown)
+		update_button_icon()
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
@@ -644,6 +645,7 @@
 
 	if (!ismob(target_atom))
 		apply_cooldown_override(tail_click_miss_cooldown)
+		update_button_icon()
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))

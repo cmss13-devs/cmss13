@@ -329,8 +329,8 @@
 	charge_cost = 1000
 	force = 0
 	throwforce = 0
-	skill_to_check_alt = SKILL_ENGINEER
-	skill_level_alt = SKILL_ENGINEER_ENGI
+	skill_to_check = SKILL_ENGINEER
+	skill_level = SKILL_ENGINEER_ENGI
 	blocked_by_suit = FALSE
 	should_spark = FALSE
 

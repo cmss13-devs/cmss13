@@ -588,7 +588,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	detaching_gun.attachable_offset["muzzle_x"] = 20
 
-/obj/item/attachable/mateba/dark
+/obj/item/attachable/mateba/silver
+	icon_state = "mateba_medium_s"
+
+/obj/item/attachable/mateba/gold
 	icon_state = "mateba_medium_a"
 
 /obj/item/attachable/mateba/long
@@ -608,7 +611,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/long/dark
+/obj/item/attachable/mateba/long/silver
+	icon_state = "mateba_long_s"
+
+/obj/item/attachable/mateba/long/gold
 	icon_state = "mateba_long_a"
 
 /obj/item/attachable/mateba/short
@@ -627,7 +633,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/short/dark
+/obj/item/attachable/mateba/short/silver
+	icon_state = "mateba_short_s"
+
+/obj/item/attachable/mateba/short/gold
 	icon_state = "mateba_short_a"
 
 // ======== Rail attachments ======== //

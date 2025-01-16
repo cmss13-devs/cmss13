@@ -369,7 +369,7 @@
 			marker_flags = MINIMAP_FLAG_USCM
 		else if(hud_type == MOB_HUD_FACTION_UPP)
 			marker_flags = MINIMAP_FLAG_UPP
-		else if(hud_type == MOB_HUD_FACTION_PMC || MOB_HUD_FACTION_WY)
+		else if(hud_type == MOB_HUD_FACTION_PMC || hud_type == MOB_HUD_FACTION_WY)
 			marker_flags = MINIMAP_FLAG_WY
 		else if(hud_type == MOB_HUD_FACTION_CLF)
 			marker_flags = MINIMAP_FLAG_CLF

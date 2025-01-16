@@ -93,11 +93,11 @@
 	name = "Projected Resin (100)"
 	action_icon_state = "secrete_resin"
 	plasma_cost = 100
-	xeno_cooldown = 4 SECONDS
+	xeno_cooldown = 2 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
-	build_speed_mod = 1.5
+	build_speed_mod = 1.2
 
 	var/boosted = FALSE
 
@@ -136,7 +136,7 @@
 		addtimer(CALLBACK(src, PROC_REF(disable_boost)), boost_duration)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
-	xeno_cooldown = 4 SECONDS
+	xeno_cooldown = 3 SECONDS
 	plasma_cost = 100
 	boosted = FALSE
 	thick = FALSE

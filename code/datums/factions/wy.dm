@@ -42,4 +42,4 @@
 		if(JOB_DIRECTOR)
 			hud_icon_state = "director"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "wy_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', user, "wy_[hud_icon_state]")

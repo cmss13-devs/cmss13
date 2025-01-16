@@ -84,46 +84,6 @@
 /obj/structure/pipes/unary/freezer/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
-"aap" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced,
-/obj/item/clothing/head/fedora/grey,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
-"aaq" = (
-/obj/structure/surface/table,
-/obj/item/prop/helmetgarb/flair_uscm,
-/obj/item/storage/box/MRE{
-	pixel_x = -4;
-	pixel_y = 13
-	},
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/laundry)
-"aar" = (
-/obj/structure/coatrack,
-/obj/item/clothing/head/fedora/grey{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/security)
-"aas" = (
-/obj/structure/closet/crate/supply,
-/obj/item/storage/box/MRE/WY,
-/obj/item/storage/beer_pack,
-/obj/item/spacecash,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -12379,6 +12339,22 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
+"jQG" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced,
+/obj/item/clothing/head/fedora/grey,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
 "jQM" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -19197,6 +19173,14 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior_protected/vessel)
+"pBo" = (
+/obj/structure/coatrack,
+/obj/item/clothing/head/fedora/grey{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
 "pBx" = (
 /obj/item/device/flashlight,
 /turf/open/floor/shiva/yellow,
@@ -19571,6 +19555,15 @@
 /obj/item/tool/wirecutters/clippers,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
+"pPf" = (
+/obj/structure/surface/table,
+/obj/item/prop/helmetgarb/flair_uscm,
+/obj/item/storage/box/MRE{
+	pixel_x = -4;
+	pixel_y = 13
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/laundry)
 "pPl" = (
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidwarning,
@@ -23585,6 +23578,13 @@
 /obj/structure/machinery/autolathe,
 /turf/open/floor/shiva/purple/west,
 /area/varadero/interior/research)
+"sKz" = (
+/obj/structure/closet/crate/supply,
+/obj/item/storage/box/MRE/WY,
+/obj/item/storage/beer_pack,
+/obj/item/spacecash,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "sKC" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -42898,7 +42898,7 @@ nfv
 nfv
 aFh
 uNq
-aaq
+pPf
 sBX
 etv
 cto
@@ -50517,7 +50517,7 @@ wVf
 wVf
 tiw
 vPi
-aar
+pBo
 wVf
 wVf
 hXv
@@ -54453,7 +54453,7 @@ wlB
 jwX
 aQN
 aQN
-aas
+sKz
 wlB
 tez
 tmZ
@@ -63677,7 +63677,7 @@ brT
 bsf
 bsf
 avD
-aap
+jQG
 aan
 aak
 oKy

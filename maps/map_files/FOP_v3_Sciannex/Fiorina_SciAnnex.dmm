@@ -19,14 +19,6 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
-"aad" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/MRE/WY{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/turf/open/floor/prison/darkpurplefull2,
-/area/fiorina/station/research_cells/west)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -5401,6 +5393,14 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"ejM" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/WY{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/station/research_cells/west)
 "ekb" = (
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_tram)
@@ -64296,7 +64296,7 @@ hqD
 kXk
 gnY
 cKa
-aad
+ejM
 dVA
 rhf
 sWX

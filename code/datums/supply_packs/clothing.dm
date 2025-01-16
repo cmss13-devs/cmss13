@@ -96,18 +96,6 @@
 	containername = "Shoulder Holster Crate"
 	group = "Clothing"
 
-/datum/supply_packs/gunslinger_holster
-	contains = list(
-		/obj/item/storage/belt/gun/m44/gunslinger,
-		/obj/item/storage/belt/gun/m44/gunslinger,
-	)
-	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
-	cost = 20
-	contraband = 1
-	containertype = /obj/structure/closet/crate
-	containername = "Cowboy Costume Crate"
-	group = "Clothing"
-
 /datum/supply_packs/officer_outfits//lmao this shit is so hideously out of date
 	contains = list(
 		/obj/item/clothing/under/rank/qm_suit,

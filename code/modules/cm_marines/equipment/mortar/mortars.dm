@@ -34,7 +34,9 @@
 	/// if true, blows up the shell immediately
 	var/ship_side = FALSE
 	/// The max range the mortar can fire at
-	var/max_range = 50
+	var/max_range = 75
+	/// The min range the mortar can fire at
+	var/min_range = 25
 
 	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
@@ -390,7 +392,7 @@
 	if(test_dial_y + test_targ_y > world.maxy || test_dial_y + test_targ_y < 0)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE
-	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < 10)
+	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < min_range)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is too close to your mortar."))
 		return FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)

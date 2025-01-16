@@ -17524,12 +17524,6 @@
 "dmA" = (
 /turf/open/floor/almayer,
 /area/almayer/living/synthcloset)
-"dmE" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/incendiary,
-/obj/item/mortar_shell/incendiary,
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
 "dmF" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -27709,12 +27703,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
-"hAc" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/flare,
-/obj/item/mortar_shell/flare,
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
 "hAf" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/north,
@@ -27785,10 +27773,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/lower/vehiclehangar)
-"hBz" = (
-/obj/item/mortar_kit,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/squads/req)
 "hBF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -41230,12 +41214,6 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig/lobby)
-"ngw" = (
-/obj/structure/surface/rack,
-/obj/item/mortar_shell/frag,
-/obj/item/mortar_shell/frag,
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
 "ngA" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -67738,8 +67716,7 @@
 /area/almayer/maint/hull/lower/p_bow)
 "xId" = (
 /obj/structure/surface/rack,
-/obj/item/mortar_shell/he,
-/obj/item/mortar_shell/he,
+/obj/item/storage/box/spec/mortar,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "xIj" = (
@@ -111124,7 +111101,7 @@ bdl
 bEi
 bZr
 bmD
-ngw
+bNP
 pjG
 boz
 bpR
@@ -111530,7 +111507,7 @@ bdl
 bEl
 wup
 bmD
-hBz
+bmD
 pjG
 boA
 bpR
@@ -111733,7 +111710,7 @@ bdl
 buz
 bZr
 bmD
-dmE
+bNP
 pjG
 boz
 bpR
@@ -111936,7 +111913,7 @@ bdl
 bEm
 bZr
 bmD
-hAc
+bNP
 pjG
 boz
 bpR

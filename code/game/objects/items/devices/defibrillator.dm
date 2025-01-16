@@ -353,6 +353,10 @@
 	if(ready)
 		icon_state += "_on"
 
+/obj/item/device/defibrillator/synthetic/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You need some electronics and circuitry understanding to use this.")
+
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
 		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))

@@ -2849,7 +2849,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/gun/pistol/t73/leader,
+/obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
 "Do" = (
@@ -3635,11 +3635,12 @@
 	color = "#6b675e"
 	},
 /obj/structure/showcase{
-	desc = "A console used by the Hunters for navigation purposes.";
-	dir = 4;
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	dir = 8;
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "cameras";
-	name = "Radar Console"
+	icon_state = "terminal";
+	name = "Radar Console";
+	pixel_x = -7
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
@@ -5835,7 +5836,7 @@ bL
 bL
 cP
 uO
-VT
+cR
 tn
 ah
 dI

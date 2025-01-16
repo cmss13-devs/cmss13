@@ -117,13 +117,17 @@
 /datum/asset/simple/paper
 	keep_local_name = TRUE
 	assets = list(
-		"wylogo.png" = 'html/images/wylogo.png',
-		"uscmlogo.png" = 'html/images/uscmlogo.png',
-		"upplogo.png" = 'html/images/upplogo.png',
-		"cmblogo.png" = 'html/images/cmblogo.png',
-		"faxwylogo.png" = 'html/images/faxwylogo.png',
-		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
-		"colonialspacegruntsEZ.png" = 'html/images/colonialspacegruntsEZ.png',
+		"logo_wy.png" = 'html/paper_assets/logo_wy.png',
+		"logo_wy_inv.png" = 'html/paper_assets/logo_wy_inv.png',
+		"logo_uscm.png" = 'html/paper_assets/logo_uscm.png',
+		"logo_provost.png" = 'html/paper_assets/logo_provost.png',
+		"logo_upp.png" = 'html/paper_assets/logo_upp.png',
+		"logo_cmb.png" = 'html/paper_assets/logo_cmb.png',
+		"background_white.jpg" = 'html/paper_assets/background_white.jpg',
+		"background_dark.jpg" = 'html/paper_assets/background_dark.jpg',
+		"background_dark2.jpg" = 'html/paper_assets/background_dark2.jpg',
+		"background_dark_fractal.png" = 'html/paper_assets/background_dark_fractal.png',
+		"colonialspacegruntsEZ.png" = 'html/paper_assets/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat
@@ -254,6 +258,7 @@
 	var/list/icon_data = list(
 		list("Mar", null),
 		list("ass", "hudsquad_ass"),
+		list("load", "hudsquad_load"),
 		list("Eng", "hudsquad_engi"),
 		list("Med", "hudsquad_med"),
 		list("medk9", "hudsquad_medk9"),
@@ -295,6 +300,7 @@
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/belt,
 		/obj/item/storage/pill_bottle,
+		/obj/item/weapon,
 	)
 
 /datum/asset/spritesheet/vending_products/register()
@@ -316,13 +322,19 @@
 		if(icon_state in icon_states(icon_file))
 			if(is_path_in_list(current_product, additional_preload_icons))
 				item = new current_product()
-				new_icon = getFlatIcon(item)
-				new_icon.Scale(32,32)
+				if(ispath(current_product, /obj/item/weapon))
+					new_icon = icon(item.icon, item.icon_state, SOUTH)
+					var/new_color = initial(item.color)
+					if(!isnull(new_color) && new_color != "#FFFFFF")
+						new_icon.Blend(new_color, ICON_MULTIPLY)
+				else
+					new_icon = getFlatIcon(item)
+					new_icon.Scale(32,32)
 				qdel(item)
 			else
 				new_icon = icon(icon_file, icon_state, SOUTH)
 				var/new_color = initial(item.color)
-				if (!isnull(new_color) && new_color != "#FFFFFF")
+				if(!isnull(new_color) && new_color != "#FFFFFF")
 					new_icon.Blend(new_color, ICON_MULTIPLY)
 		else
 			if(ispath(current_product, /obj/effect/essentials_set))

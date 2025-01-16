@@ -5040,7 +5040,7 @@
 "aVB" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -6260,7 +6260,7 @@
 "bYO" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -6291,7 +6291,7 @@
 "cbk" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -7240,7 +7240,7 @@
 	pixel_x = 7;
 	pixel_y = 5
 	},
-/obj/item/clothing/head/fedora{
+/obj/item/clothing/head/fedora/grey{
 	pixel_x = -6;
 	pixel_y = 12
 	},
@@ -8712,7 +8712,7 @@
 "fof" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -9227,7 +9227,7 @@
 "fXp" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
@@ -23566,7 +23566,7 @@
 "xyY" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi';
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},

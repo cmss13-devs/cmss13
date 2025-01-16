@@ -268,11 +268,11 @@
 		var/search_pda = 1
 
 		for(var/A in searching)
-			if( search_id && istype(A,/obj/item/card/id) )
+			if(search_id && istype(A, /obj/item/card/id))
 				var/obj/item/card/id/ID = A
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
-					ID.name = "[newname]'s ID Card ([ID.assignment])"
+					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
 					if(!search_pda) break
 					search_id = 0
 	return 1
@@ -381,7 +381,7 @@
 
 	if(key)
 		if(include_link && C)
-			. += "<a href='?priv_msg=[C.ckey]'>"
+			. += "<a href='byond://?priv_msg=[C.ckey]'>"
 
 		. += key
 
@@ -1694,12 +1694,15 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
-/proc/should_block_game_interaction(atom/target)
+/proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
 	if(is_admin_level(target.z))
 		return TRUE
 
 	var/area/target_area = get_area(target)
 	if(target_area?.block_game_interaction)
+		return TRUE
+
+	if(include_hunting_grounds && target_area?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS)
 		return TRUE
 
 	return FALSE

@@ -443,8 +443,12 @@ a.purple:hover {
 	background-color: #7cd115;
 }
 
-.job_working_joe {
+.job_ship_synth {
 	background-color: #7cd115;
+}
+
+.job_working_joe {
+	background-color: #6eba12;
 }
 
 .job_command {

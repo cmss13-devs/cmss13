@@ -212,6 +212,9 @@
 			return FALSE
 
 	if(ishuman(target))
+		if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/no_body_c4))
+			to_chat(user, SPAN_WARNING("This feels wrong, you do not want to do it."))
+			return FALSE
 		var/mob/living/carbon/human/H = target
 		if(user.faction == H.faction)
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
@@ -320,6 +323,7 @@
 	name = "breaching charge"
 	desc = "An explosive device used to break into areas while protecting the user from the blast as well as deploying deadly shrapnel on the other side."
 	icon_state = "satchel-charge"
+	item_state = "satchel-charge"
 	overlay_image = "satchel-active"
 	w_class = SIZE_SMALL
 	angle = 55
@@ -396,3 +400,7 @@
 		return FALSE
 	. = ..()
 
+/obj/item/explosive/plastic/hybrisa/mining
+	var/id = 1
+	anchored = TRUE
+	unacidable = TRUE

@@ -1,0 +1,4 @@
+author: "Crowford"
+delete-after: True
+changes:
+  - imageadd: "replaced trap1, trap0, trapacid1, trapacid2, trapacid3 and trap gas with better sprites."

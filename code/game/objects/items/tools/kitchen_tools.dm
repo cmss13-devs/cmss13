@@ -315,4 +315,5 @@
 	desc = "Can opener"
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "can_opener"
+	w_class = SIZE_SMALL
 	inherent_traits = list(TRAIT_TOOL_CAN_OPENER)

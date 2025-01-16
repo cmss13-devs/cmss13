@@ -1245,6 +1245,7 @@
 #include "code\game\objects\items\reagent_containers\robot_parts.dm"
 #include "code\game\objects\items\reagent_containers\spray.dm"
 #include "code\game\objects\items\reagent_containers\syringes.dm"
+#include "code\game\objects\items\reagent_containers\food\canned_food.dm"
 #include "code\game\objects\items\reagent_containers\food\cans.dm"
 #include "code\game\objects\items\reagent_containers\food\condiment.dm"
 #include "code\game\objects\items\reagent_containers\food\drinks.dm"

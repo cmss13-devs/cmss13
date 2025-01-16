@@ -268,12 +268,16 @@
 	icon_closed = "upp_mealpack"
 	icon_opened = "upp_mealpackopened"
 	entree = /obj/item/mre_food_packet/entree/wy_colonist
-	side = null
-	snack = /obj/item/reagent_container/food/snacks/packaged_hdogs
-	dessert = null
+	side = /obj/item/mre_food_packet/upp/snack
+	snack = /obj/item/mre_food_packet/upp/snack
+	dessert = /obj/item/mre_food_packet/upp/dessert
 	should_have_beverage = FALSE
 	should_have_cigarettes = FALSE
 	should_have_matches = FALSE
 	should_have_spread = FALSE
 	should_have_cookie = FALSE
-	should_have_utencil = FALSE
+	should_have_utencil = TRUE
+
+
+/obj/item/storage/box/MRE/UPP/choose_utencil()
+	new /obj/item/tool/kitchen/utensil/pspoon(src)

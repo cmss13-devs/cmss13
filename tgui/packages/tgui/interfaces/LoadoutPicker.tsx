@@ -17,6 +17,7 @@ type LoadoutPickerData = {
 
 type LoadoutItem = {
   name: string;
+  type: string;
   cost: number;
   icon: string;
   icon_state: string;
@@ -30,7 +31,7 @@ export const LoadoutPicker = () => {
   const [selected, setSelected] = useState(categories[0]);
 
   return (
-    <Window height={485} width={610} theme="crtblue">
+    <Window height={485} width={910} theme="crtblue">
       <Window.Content className="LoadoutPicker">
         <Stack fill>
           <Stack.Item>
@@ -92,7 +93,7 @@ const ItemRender = (props: {
 }) => {
   const { item, loadout } = props;
 
-  const { icon, icon_state, name, cost } = item;
+  const { icon, icon_state, name, cost, type } = item;
 
   const { data, act } = useBackend<LoadoutPickerData>();
 
@@ -105,7 +106,7 @@ const ItemRender = (props: {
       <Stack.Item>
         <Button
           tooltip={name}
-          onClick={() => act(loadout ? 'remove' : 'add', { name: name })}
+          onClick={() => act(loadout ? 'remove' : 'add', { type: type })}
           disabled={!loadout && atLimit}
           width="78px"
           height="74px"

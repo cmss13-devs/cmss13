@@ -79,47 +79,53 @@ const SquadPanel = (props) => {
 
   return (
     <>
-      <Collapsible title="Main Dashboard" fontSize="16px">
-        <MainDashboard />
-      </Collapsible>
-
-      <Collapsible title="Squad Roles" fontSize="16px">
-        <RoleTable />
-      </Collapsible>
-
-      <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
-        <Tabs.Tab
-          selected={category === 'monitor'}
-          icon="heartbeat"
-          onClick={() => setCategory('monitor')}
-        >
-          Squad Monitor
-        </Tabs.Tab>
-        {!!data.can_launch_crates && (
-          <Tabs.Tab
-            selected={category === 'supply'}
-            icon="wrench"
-            onClick={() => setCategory('supply')}
-          >
-            Supply Drop
-          </Tabs.Tab>
-        )}
-        {!!data.can_launch_obs && (
-          <Tabs.Tab
-            selected={category === 'ob'}
-            icon="bomb"
-            onClick={() => setCategory('ob')}
-          >
-            Orbital Bombardment
-          </Tabs.Tab>
-        )}
-        <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
-          Tactical Map
-        </Tabs.Tab>
-      </Tabs>
-      {category === 'monitor' && <SquadMonitor />}
-      {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-      {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
+      <Stack fill vertical>
+        <Stack.Item>
+          <Collapsible title="Main Dashboard" fontSize="16px">
+            <MainDashboard />
+          </Collapsible>
+        </Stack.Item>
+        <Stack.Item>
+          <Collapsible title="Squad Roles" fontSize="16px">
+            <RoleTable />
+          </Collapsible>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
+            <Tabs.Tab
+              selected={category === 'monitor'}
+              icon="heartbeat"
+              onClick={() => setCategory('monitor')}
+            >
+              Squad Monitor
+            </Tabs.Tab>
+            {!!data.can_launch_crates && (
+              <Tabs.Tab
+                selected={category === 'supply'}
+                icon="wrench"
+                onClick={() => setCategory('supply')}
+              >
+                Supply Drop
+              </Tabs.Tab>
+            )}
+            {!!data.can_launch_obs && (
+              <Tabs.Tab
+                selected={category === 'ob'}
+                icon="bomb"
+                onClick={() => setCategory('ob')}
+              >
+                Orbital Bombardment
+              </Tabs.Tab>
+            )}
+            <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
+              Tactical Map
+            </Tabs.Tab>
+          </Tabs>
+        </Stack.Item>
+        {category === 'monitor' && <SquadMonitor />}
+        {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
+        {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
+      </Stack>
     </>
   );
 };
@@ -403,7 +409,7 @@ const SquadMonitor = (props) => {
 
   return (
     <Section
-      height="80%"
+      pb="1.5%"
       fill
       fontSize="14px"
       title="Monitor"
@@ -458,7 +464,7 @@ const SquadMonitor = (props) => {
         value={marineSearch}
         onInput={(e, value) => setMarineSearch(value)}
       />
-      <Section m="2px" height="95%" fill scrollable>
+      <Section m="2px" mb="4px" fill height="95%" scrollable>
         <Table>
           <Table.Row bold fontSize="14px">
             <Table.Cell textAlign="center">Name</Table.Cell>
@@ -595,7 +601,7 @@ const SupplyDrop = (props) => {
   }
 
   return (
-    <Section fontSize="14px" title="Supply Drop">
+    <Section fill fontSize="14px" title="Supply Drop">
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
           <LabeledControls mb="5px">
@@ -647,6 +653,7 @@ const SupplyDrop = (props) => {
         </Stack.Item>
         <SavedCoordinates forSupply />
       </Stack>
+      <Divider horizontal />
     </Section>
   );
 };
@@ -668,7 +675,7 @@ const OrbitalBombardment = (props) => {
   }
 
   return (
-    <Section fontSize="14px" title="Orbital Bombardment">
+    <Section fill fontSize="14px" title="Orbital Bombardment">
       <Stack justify={'space-between'} m="10px">
         <Stack.Item fontSize="14px">
           <LabeledControls mb="5px">
@@ -719,6 +726,7 @@ const OrbitalBombardment = (props) => {
         </Stack.Item>
         <SavedCoordinates forOB />
       </Stack>
+      <Divider horizontal />
     </Section>
   );
 };

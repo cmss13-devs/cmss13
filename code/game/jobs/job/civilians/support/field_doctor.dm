@@ -9,7 +9,7 @@
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
-	entry_message_body = {"You are a field doctor tasked with keeping the marines healthy and strong in the field. Usually in the form of surgery."}
+	entry_message_body = "You are a <a href='"+WIKI_PLACEHOLDER+"'>Field Doctor</a> tasked with keeping the marines healthy and strong in the field. Usually in the form of surgery."
 
 AddTimelock(/datum/job/civilian/field_doctor, list(
 	JOB_MEDIC_ROLES = 5 HOURS

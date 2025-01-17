@@ -394,7 +394,7 @@
 
 /datum/hivebuff/game_ender_caste
 	name = "His Grace"
-	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn.."
+	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn."
 	tier = HIVEBUFF_TIER_MAJOR
 	radial_icon = "king"
 	
@@ -416,6 +416,7 @@
 
 	if(!hive.hive_location)
 		special_fail_message = "You must first construct a hive core."
+		return FALSE
 
 	return !hive.has_hatchery
 

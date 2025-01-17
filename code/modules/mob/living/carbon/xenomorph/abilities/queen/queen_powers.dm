@@ -63,61 +63,15 @@
 
 	SEND_SIGNAL(target_xeno, COMSIG_XENO_DEEVOLVE)
 
-	var/obj/item/organ/xeno/organ = locate() in target_xeno
-	if(!isnull(organ))
-		qdel(organ)
+	var/mob/living/carbon/xenomorph/new_xeno = target_xeno.transmute(newcaste)
 
-	var/level_to_switch_to = target_xeno.get_vision_level()
-	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
+	if(new_xeno)
+		message_admins("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
+		log_admin("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
 
-	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(target_xeno), target_xeno)
+		if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
+			user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
 
-	if(!istype(new_xeno))
-		//Something went horribly wrong!
-		to_chat(user_xeno, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
-		if(new_xeno)
-			qdel(new_xeno)
-		return
-
-	new_xeno.built_structures = target_xeno.built_structures.Copy()
-	target_xeno.built_structures = null
-
-	if(target_xeno.mind)
-		target_xeno.mind.transfer_to(new_xeno)
-	else
-		new_xeno.key = target_xeno.key
-		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
-			new_xeno.client.pixel_x = 0
-			new_xeno.client.pixel_y = 0
-
-	//Regenerate the new mob's name now that our player is inside
-	new_xeno.generate_name()
-	if(new_xeno.client)
-		new_xeno.set_lighting_alpha(level_to_switch_to)
-
-	// If the player has lost the Deevolve verb before, don't allow them to do it again
-	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in target_xeno.verbs))
-		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
-
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [target_xeno]."), \
-	SPAN_XENODANGER("[user_xeno] makes us regress into your previous form."))
-
-	if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
-		user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
-
-	message_admins("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
-	log_admin("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
-
-	target_xeno.transfer_observers_to(new_xeno)
-
-	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
-		GLOB.round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
-	SSround_recording.recorder.stop_tracking(target_xeno)
-	SSround_recording.recorder.track_player(new_xeno)
-
-	qdel(target_xeno)
 	return
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)

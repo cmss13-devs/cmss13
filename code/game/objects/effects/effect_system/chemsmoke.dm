@@ -57,10 +57,11 @@
 	targetTurfs = new()
 
 	//build affected area list
-	for(var/turf/T in view(range, location))
+	FOR_DVIEW(var/turf/T, range, location, HIDE_INVISIBLE_OBSERVER)
 		//cull turfs to circle
 		if(cheap_pythag(T.x - location.x, T.y - location.y) <= range)
 			targetTurfs += T
+	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
 	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
@@ -86,7 +87,7 @@
 	last_reaction_signature = reaction_signature
 
 	var/where = "[A.name]|[location.x], [location.y]"
-	var/whereLink = "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/whereLink = "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
 		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")

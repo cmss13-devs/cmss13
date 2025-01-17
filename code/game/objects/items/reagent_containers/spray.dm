@@ -2,6 +2,10 @@
 	name = "spray bottle"
 	desc = "A spray bottle, with an unscrewable top."
 	icon = 'icons/obj/items/spray.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "spray"
 	item_state = "cleaner"
 	flags_atom = OPENCONTAINER|FPRINT
@@ -15,17 +19,18 @@
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	matter = list("plastic" = 500)
 	transparent = TRUE
-	var/spray_size = 3
-	var/list/spray_sizes = list(1,3)
-	var/safety = FALSE
 	volume = 250
+	has_set_transfer_action = FALSE
+	///How many tiles the spray will move
+	var/spray_size = 3
+	/// The spray_size based on the transfer amount
+	var/list/spray_sizes = list(1,3)
+	/// Whether you can spray the bottle
+	var/safety = FALSE
+	/// The world.time it was last used
 	var/last_use = 1
+	/// The delay between uses
 	var/use_delay = 0.5 SECONDS
-
-
-/obj/item/reagent_container/spray/Initialize()
-	. = ..()
-	verbs -= /obj/item/reagent_container/verb/set_APTFT
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
@@ -63,17 +68,24 @@
 		return
 
 	last_use = world.time
-	Spray_at(A, user)
 
-	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
+	if(Spray_at(A, user))
+		playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
 
 /obj/item/reagent_container/spray/proc/Spray_at(atom/A, mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		if(!human_user.allow_gun_usage && reagents.contains_harmful_substances())
+			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return FALSE
+
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)
 	reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
 	D.color = mix_color_from_reagents(D.reagents.reagent_list)
 	D.source_user = user
 	D.move_towards(A, 3, spray_size)
+	return TRUE
 
 /obj/item/reagent_container/spray/attack_self(mob/user)
 	..()
@@ -213,6 +225,10 @@
 /obj/item/reagent_container/spray/plantbgone // -- Skie
 	name = "Plant-B-Gone"
 	desc = "Kills those pesky weeds!"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
+	)
 	icon_state = "plantbgone"
 	item_state = "plantbgone"
 	volume = 100
@@ -236,3 +252,12 @@
 /obj/item/reagent_container/spray/hydro/Initialize()
 	. = ..()
 	reagents.add_reagent("ammonia", src.volume)
+
+/obj/item/reagent_container/spray/investigation
+	name = "forensic spray"
+	desc = /datum/reagent/forensic_spray::description
+
+/obj/item/reagent_container/spray/investigation/Initialize()
+	. = ..()
+
+	reagents.add_reagent(/datum/reagent/forensic_spray::id, volume)

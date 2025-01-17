@@ -41,11 +41,16 @@
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
+			var/data = SEND_SIGNAL(user.pulling, COMSIG_MOVABLE_PULLED, src)
+			if(!(data & COMPONENT_IGNORE_ANCHORED) && user.pulling.anchored)
+				user.stop_pulling()
+				return
 			var/move_dir = get_dir(user.pulling.loc, T)
 			step(user.pulling, move_dir)
 			var/mob/living/pmob = user.pulling
 			if(istype(pmob))
 				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, move_dir, move_dir)
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 
 /obj/item/grab/attack_self(mob/user)
@@ -97,8 +102,9 @@
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
-	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
+	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 

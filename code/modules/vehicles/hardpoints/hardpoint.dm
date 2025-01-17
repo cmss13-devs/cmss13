@@ -154,7 +154,7 @@
 	return ..()
 
 /obj/item/hardpoint/ex_act(severity)
-	if(owner || indestructible)
+	if(owner || explo_proof)
 		return
 
 	take_damage(severity / 2)
@@ -336,7 +336,7 @@
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader

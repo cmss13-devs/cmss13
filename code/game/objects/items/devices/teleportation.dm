@@ -37,7 +37,7 @@
 		<A href='byond://?src=\ref[src];freq=2'>+</A>
 		<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
-		<A href='?src=\ref[src];refresh=1'>Refresh</A>
+		<A href='byond://?src=\ref[src];refresh=1'>Refresh</A>
 		"}
 	show_browser(user, dat, "Persistent Signal Locator", "radio")
 	onclose(user, "radio")
@@ -152,7 +152,7 @@
 			else
 				L["[com.id] (Inactive)"] = com.locked
 	var/list/turfs = list( )
-	for(var/turf/T in orange(10))
+	for(var/turf/T as anything in ORANGE_TURFS(10, src))
 		if(T.x>world.maxx-8 || T.x<8) continue //putting them at the edge is dumb
 		if(T.y>world.maxy-8 || T.y<8) continue
 		turfs += T

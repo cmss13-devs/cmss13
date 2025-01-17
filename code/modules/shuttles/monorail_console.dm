@@ -8,4 +8,4 @@
 	shuttle_type = SHUTTLE_GROUND
 	skip_time_lock = TRUE
 	unacidable = 1
-	exproof = 1
+	explo_proof = TRUE

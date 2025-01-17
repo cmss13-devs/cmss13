@@ -8,7 +8,7 @@
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/cavebreaker = FALSE //ignore caves and other restrictions?
@@ -38,6 +38,11 @@
 
 	var/registered = FALSE
 
+/obj/structure/machinery/computer/dropship_weapons/New()
+	..()
+	if(firemission_envelope)
+		firemission_envelope.linked_console = src
+
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
@@ -49,17 +54,14 @@
 	AddComponent(/datum/component/camera_manager)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
-/obj/structure/machinery/computer/dropship_weapons/New()
-	..()
-	if(firemission_envelope)
-		firemission_envelope.linked_console = src
+/obj/structure/machinery/computer/dropship_weapons/Destroy()
+	. = ..()
+	QDEL_NULL(firemission_envelope)
+	QDEL_NULL(tacmap)
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
-
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -317,6 +319,23 @@
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, defense.range_bounds, defense.loc.z)
 				return TRUE
 
+		if("auto-deploy")
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+
+				if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+					var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+					sentry.auto_deploy = !sentry.auto_deploy
+					return TRUE
+
+				if(istype(equipment, /obj/structure/dropship_equipment/mg_holder))
+					var/obj/structure/dropship_equipment/mg_holder/mg = equipment
+					mg.auto_deploy = !mg.auto_deploy
+				return TRUE
+
 		if("clear-camera")
 			set_camera_target(null)
 			return TRUE
@@ -419,6 +438,9 @@
 			return TRUE
 
 		if("nvg-enable")
+			if(upgraded != MATRIX_NVG)
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				return FALSE
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
 
@@ -890,13 +912,13 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
 
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	QDEL_NULL(firemission_envelope)
-	QDEL_NULL(tacmap)
+/obj/structure/machinery/computer/dropship_weapons/dropship3
+	name = "\improper 'Saipan' weapons controls"
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_SAIPAN
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
-
 	if(!configuration)
 		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return

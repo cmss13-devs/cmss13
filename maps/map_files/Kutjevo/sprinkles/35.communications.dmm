@@ -198,8 +198,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/kutjevo/grey/plate,

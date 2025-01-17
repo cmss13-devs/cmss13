@@ -14,6 +14,14 @@
 /datum/job/special/provost/inspector
 	title = JOB_PROVOST_INSPECTOR
 
+//Provost Inspector
+/datum/job/special/provost/inspector/chief
+	title = JOB_PROVOST_CINSPECTOR
+
+//Provost Marshal
+/datum/job/special/provost/marshal/deputy
+	title = JOB_PROVOST_DMARSHAL
+
 //Provost Marshal
 /datum/job/special/provost/marshal
 	title = JOB_PROVOST_MARSHAL

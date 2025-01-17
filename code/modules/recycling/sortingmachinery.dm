@@ -1,7 +1,7 @@
 /obj/structure/bigDelivery
 	desc = "A big wrapped package."
 	name = "large parcel"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "deliverycloset"
 	var/obj/wrapped = null
 	density = TRUE
@@ -71,7 +71,7 @@
 /obj/structure/bigDelivery/update_icon()
 	overlays = new()
 	if(nameset || examtext)
-		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_label")
+		var/image/I = new/image('icons/obj/structures/crates.dmi',"delivery_label")
 		if(icon_state == "deliverycloset")
 			I.pixel_x = 2
 			if(label_y == null)
@@ -84,7 +84,7 @@
 			I.pixel_y = -3
 		overlays += I
 	if(src.sortTag)
-		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_tag")
+		var/image/I = new/image('icons/obj/structures/crates.dmi',"delivery_tag")
 		if(icon_state == "deliverycloset")
 			if(tag_x == null)
 				tag_x = rand(-2, 3)
@@ -108,7 +108,7 @@
 /obj/item/smallDelivery
 	desc = "A small wrapped package."
 	name = "small parcel"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "deliverycrate3"
 	var/obj/item/wrapped = null
 	var/sortTag = null
@@ -180,12 +180,12 @@
 /obj/item/smallDelivery/update_icon()
 	overlays = new()
 	if((nameset || examtext) && icon_state != "deliverycrate1")
-		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_label")
+		var/image/I = new/image('icons/obj/structures/crates.dmi',"delivery_label")
 		if(icon_state == "deliverycrate5")
 			I.pixel_y = -1
 		overlays += I
 	if(src.sortTag)
-		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_tag")
+		var/image/I = new/image('icons/obj/structures/crates.dmi',"delivery_tag")
 		switch(icon_state)
 			if("deliverycrate1")
 				I.pixel_y = -5
@@ -212,7 +212,7 @@
 
 /obj/item/packageWrap
 	name = "package wrapper"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
 	var/amount = 50
@@ -326,6 +326,7 @@
 	name = "destination tagger"
 	desc = "Used to set the destination of properly wrapped packages."
 	icon_state = "dest_tagger"
+	icon = 'icons/obj/items/tools.dmi'
 	var/currTag = 0
 
 	w_class = SIZE_SMALL
@@ -338,7 +339,7 @@
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
 	for(var/i = 1, i <= length(GLOB.tagger_locations), i++)
-		dat += "<td><a href='?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
+		dat += "<td><a href='byond://?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
 
 		if (i%4==0)
 			dat += "</tr><tr>"

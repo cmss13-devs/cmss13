@@ -126,9 +126,7 @@
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "u" = (
-/obj/structure/machinery/power/apc/nocharge{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "w" = (

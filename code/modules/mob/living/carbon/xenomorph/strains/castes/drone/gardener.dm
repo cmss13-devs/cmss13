@@ -40,7 +40,6 @@
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
 	action_icon_state = "gardener_plant"
-	ability_name = "plant resin fruit"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/plant_resin_fruit
 	action_type = XENO_ACTION_CLICK
@@ -123,7 +122,6 @@
 /datum/action/xeno_action/onclick/change_fruit
 	name = "Change Fruit"
 	action_icon_state = "blank"
-	ability_name = "change fruit"
 	plasma_cost = 0
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
@@ -224,7 +222,6 @@
 /datum/action/xeno_action/activable/resin_surge
 	name = "Resin Surge (75)"
 	action_icon_state = "gardener_resin_surge"
-	ability_name = "resin surge"
 	plasma_cost = 75
 	xeno_cooldown = 10 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
@@ -338,7 +335,6 @@
 
 /datum/action/xeno_action/onclick/plant_weeds/gardener
 	name = "Plant Hardy Weeds (125)"
-	ability_name = "Plant Hardy Weeds"
 	action_icon_state = "plant_gardener_weeds"
 	plasma_cost = 125
 	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
@@ -366,7 +362,7 @@
 
 /datum/behavior_delegate/drone_gardener/on_update_icons()
 	if(!fruit_sac_overlay_icon)
-		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi', "Gardener Drone Walking")
+		fruit_sac_overlay_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi', "Gardener Drone Walking")
 
 	bound_xeno.overlays -= fruit_sac_overlay_icon
 	fruit_sac_overlay_icon.overlays.Cut()

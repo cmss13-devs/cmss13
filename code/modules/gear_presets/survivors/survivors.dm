@@ -14,7 +14,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 	minimap_icon = "surv"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+	minimap_background = "background_civillian"
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
@@ -37,7 +37,6 @@
 	var/obj/item/clothing/under/uniform = new_human.w_uniform
 	if(istype(uniform))
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
-		uniform.sensor_faction = FACTION_COLONIST
 	return ..()
 
 /*
@@ -64,6 +63,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -92,6 +92,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -189,8 +190,13 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	assignment = "CMB Deputy"
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
+	minimap_icon = "deputy"
+	minimap_background = "background_cmb"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
+	rank = JOB_CMB
+	faction = FACTION_MARSHAL
+	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -237,13 +243,15 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	add_survivor_weapon_civilian(new_human)
+
+	add_survivor_weapon_civilian(new_human) //40 percent chance to equip a weapon in hand with ammo in belt slot
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST) //Attempt to equip a toolbelt in belt slot. Will delete itself if the above proc equiped an ammo belt.
+
 	add_ice_colony_survivor_equipment(new_human)
 	..()
 
@@ -256,6 +264,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -290,6 +299,9 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_LIST_SURVIVOR_WY
+	rank = JOB_EXECUTIVE
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -299,8 +311,31 @@ Everything bellow is a parent used as a base for one or multiple maps.
 		ACCESS_WY_EXEC,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-
 	survivor_variant = CORPORATE_SURVIVOR
+	minimap_icon = "cl"
+	minimap_background = "background_goon"
+
+/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+	if(paygrades.len == 1)
+		return paygrades[1]
+	var/playtime
+	if(!mob_client)
+		playtime = JOB_PLAYTIME_TIER_1
+	else
+		playtime = get_job_playtime(mob_client, JOB_CORPORATE_LIAISON)
+		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
+			playtime = JOB_PLAYTIME_TIER_1
+	var/final_paygrade
+	for(var/current_paygrade as anything in paygrades)
+		var/required_time = paygrades[current_paygrade]
+		if(required_time - playtime > 0)
+			break
+		final_paygrade = current_paygrade
+	if(!final_paygrade)
+		. = "???"
+		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
+
+	return final_paygrade
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/field(new_human), WEAR_BODY)
@@ -334,7 +369,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND) //will sometimes prevent add_random_survivor_equipment() from equiping first aid kit or fire axe.
 	add_survivor_weapon_civilian(new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	..()
@@ -372,6 +407,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
+	minimap_icon = "obs"
+	minimap_background = "background_cmb"
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
@@ -398,6 +435,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
+	minimap_icon = "icc"
+	minimap_background = "background_cmb"
 
 	survivor_variant = CORPORATE_SURVIVOR
 

@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - bugfix: "stops people from buckling others when they are knocked out etc."

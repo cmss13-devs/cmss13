@@ -51,15 +51,18 @@
 /datum/action/xeno_action/activable/apply_salve
 	name = "Apply Resin Salve"
 	action_icon_state = "apply_salve"
-	ability_name = "Apply Resin Salve"
 	var/health_transfer_amount = 100
 	var/max_range = 1
 	var/damage_taken_mod = 0.75
 	macro_path = /datum/action/xeno_action/verb/verb_apply_salve
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
+	no_cooldown_msg = TRUE
+	if(!action_cooldown_check())
+		return
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
 	return ..()
@@ -120,13 +123,15 @@
 	if(target_is_healer)
 		damage_taken_mod = 1
 
+	for(var/datum/action/xeno_action/activable/apply_salve/source_action in actions)
+		source_action.apply_cooldown()
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
 	updatehealth()
-	new /datum/effects/heal_over_time(target_xeno, amount, 10, 1)
+	new /datum/effects/heal_over_time(target_xeno, heal_amount = amount)
 	target_xeno.xeno_jitter(1 SECONDS)
-	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
+	target_xeno.flick_heal_overlay(5 SECONDS, "#00be6f")
 	to_chat(target_xeno, SPAN_XENOWARNING("[src] covers our wounds with a regenerative resin salve. We feel reinvigorated!"))
 	to_chat(src, SPAN_XENOWARNING("We regurgitate our vital fluids and some plasma to create a regenerative resin salve and apply it to [target_xeno]'s wounds. We feel weakened..."))
 	playsound(src, "alien_drool", 25)
@@ -135,7 +140,7 @@
 	if(!target_is_healer && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)
 	update_icons()
-	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /datum/behavior_delegate/drone_healer
 	name = "Healer Drone Behavior Delegate"
@@ -148,7 +153,7 @@
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)
-		salve_applied_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi',"Healer Drone Walking")
+		salve_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi',"Healer Drone Walking")
 
 	bound_xeno.overlays -= salve_applied_icon
 	salve_applied_icon.overlays.Cut()
@@ -203,7 +208,6 @@
 /datum/action/xeno_action/activable/healer_sacrifice
 	name = "Sacrifice"
 	action_icon_state = "screech"
-	ability_name = "sacrifice"
 	var/max_range = 1
 	var/transfer_mod = 0.75 // only transfers 75% of current healer's health
 	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice
@@ -256,6 +260,9 @@
 		return
 
 	xeno.say(";MY LIFE FOR THE QUEEN!!!")
+
+	if(target.health < 0)
+		target.gain_health(abs(target.health)) // gets them out of crit first
 
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()

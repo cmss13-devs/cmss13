@@ -223,7 +223,7 @@
 
 	if(istype(O, ammo))
 		var/obj/item/ammo_magazine/M = O
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) || user.action_busy)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || user.action_busy)
 			return
 
 		if(ammo.current_rounds)
@@ -313,7 +313,7 @@
 	new_projectile.damage *= damage_mult
 	new_projectile.accuracy *= accuracy_mult
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
-	new_projectile.fire_at(target, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
+	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), target))
 	ammo.current_rounds--
 	track_shot()
@@ -519,26 +519,22 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
 	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
-/obj/structure/machinery/defenses/sentry/premade/deployable/wy
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 	name = "WY 5-GSE3 Static Turret"
-	desc = "An old static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
+	desc = "A state-of-the-art, high-tech static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
 	icon = 'icons/obj/structures/machinery/defenses/wy_static.dmi'
 	defense_type = "Static"
 	sentry_type = "wy_sentry"
-	health = 350
-	health_max = 350
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY)
-	fire_delay = 0.6 SECONDS
-	damage_mult = 2
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY, FACTION_NSPA)
 
-/obj/structure/machinery/defenses/sentry/premade/deployable/wy/Initialize()
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy/Initialize()
 	. = ..()
 	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
@@ -899,6 +895,12 @@
 	sentry_range = 3
 	omni_directional = TRUE
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
+
+/obj/structure/machinery/defenses/sentry/omni
+	name = "\improper UA 571-D omnidirectional sentry gun"
+	omni_directional = TRUE
+	damage_mult = 0.7
+	sentry_range = 4
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

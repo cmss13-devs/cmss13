@@ -3,6 +3,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 /datum/chemical_data
 	var/rsc_credits = 0
 	var/clearance_level = 1
+	///credits gained from survivor clearance cards
+	var/credits_gained = 0
 	var/clearance_x_access = FALSE
 	var/reached_x_access = FALSE
 	var/has_new_properties = FALSE

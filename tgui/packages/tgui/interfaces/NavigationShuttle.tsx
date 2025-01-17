@@ -261,7 +261,7 @@ const DoorControls = () => {
 };
 
 export const DisabledScreen = (props) => {
-  const { data, act } = useBackend<NavigationProps>();
+  const { data } = useBackend<NavigationProps>();
 
   const disabled_text = data.mission_accomplished
     ? 'Auto-navigation protocol completed - return home complete. Shuttle disabled.'
@@ -341,7 +341,7 @@ const RenderScreen = (props) => {
 export const NavigationShuttle = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Window theme="crtgreen" height={505} width={700}>
+    <Window theme="crtlobby" height={505} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 1 && <DisabledScreen />}
         {data.is_disabled === 0 && <RenderScreen />}

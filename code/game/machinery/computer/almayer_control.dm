@@ -184,7 +184,7 @@
 				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
 				return FALSE
 			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
-			if(!input || !(user in view(1,src)) || !COOLDOWN_FINISHED(src, cooldown_central))
+			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
 			high_command_announce(input, user)
@@ -211,7 +211,7 @@
 				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_TIMELEFT(src, cooldown_message)/10] second\s to pass between announcements."))
 				return FALSE
 			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(user in view(1,src)))
+			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
@@ -278,7 +278,7 @@
 			for(var/client/admin_client as anything in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin_client.admin_holder.rights)
 					admin_client << 'sound/effects/sos-morse-code.ogg'
-			message_admins("[key_name(user)] has requested Self-Destruct! [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[user]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+			message_admins("[key_name(user)] has requested Self-Destruct! [CC_MARK(user)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[user]'>GRANT</A>) (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 			to_chat(user, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, cooldown_destruct, COOLDOWN_COMM_DESTRUCT)
 			. = TRUE

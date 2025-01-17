@@ -133,6 +133,7 @@
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL,
 	)
 	time = 4 SECONDS

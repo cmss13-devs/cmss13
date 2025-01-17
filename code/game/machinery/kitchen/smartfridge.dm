@@ -72,11 +72,11 @@
 /obj/structure/machinery/smartfridge/power_change()
 	..()
 	if( !(stat & NOPOWER) )
-		src.ispowered = TRUE
+		ispowered = TRUE
 		icon_state = icon_on
 	else
 		spawn(rand(0, 15))
-			src.ispowered = FALSE
+			ispowered = FALSE
 			icon_state = icon_off
 
 //*******************
@@ -117,7 +117,7 @@
 		var/plants_loaded = 0
 		for(var/obj/G in P.contents)
 			if(accept_check(G))
-				P.remove_from_storage(G,src)
+				P.remove_from_storage(G, src)
 				add_local_item(G)
 				plants_loaded++
 		if(plants_loaded)
@@ -350,7 +350,7 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
@@ -364,7 +364,7 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
@@ -377,7 +377,7 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
-			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()

@@ -81,6 +81,8 @@
 				if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 					buffer_blood_loss = 0
 					return FALSE
+				if(SEND_SIGNAL(affected_human, COMSIG_BLEEDING_PROCESS, FALSE) & COMPONENT_BLEEDING_CANCEL)
+					return FALSE
 		affected_mob.drip(buffer_blood_loss)
 		buffer_blood_loss = 0
 
@@ -110,6 +112,8 @@
 		var/mob/living/carbon/human/affected_human = affected_mob
 		if(istype(affected_human))
 			if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
+				return FALSE
+			if(SEND_SIGNAL(affected_human, COMSIG_BLEEDING_PROCESS, TRUE) & COMPONENT_BLEEDING_CANCEL)
 				return FALSE
 
 	blood_loss = max(blood_loss, 0) // Bleeding shouldn't give extra blood even if its only 1 tick

@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
 	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
 	":r" = RADIO_CHANNEL_PROVOST, ".r" = RADIO_CHANNEL_PROVOST, "#r" = RADIO_CHANNEL_PROVOST,
+	":s" = RADIO_CHANNEL_CIA, ".s" = RADIO_CHANNEL_CIA,
 
 	":I" = RADIO_CHANNEL_INTERCOM, ".I" = RADIO_CHANNEL_INTERCOM, "#I" = RADIO_CHANNEL_INTERCOM,
 	":H" = RADIO_CHANNEL_DEPARTMENT, ".H" = RADIO_CHANNEL_DEPARTMENT, "#H" = RADIO_CHANNEL_DEPARTMENT,
@@ -49,6 +50,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":K" = SQUAD_SOF, ".K" = SQUAD_SOF, "#K" = RADIO_CHANNEL_WY_WO,
 	":Q" = RADIO_CHANNEL_ROYAL_MARINE, ".Q" = RADIO_CHANNEL_ROYAL_MARINE,
 	":R" = RADIO_CHANNEL_PROVOST, ".R" = RADIO_CHANNEL_PROVOST, "#R" = RADIO_CHANNEL_PROVOST,
+	":S" = RADIO_CHANNEL_CIA, ".S" = RADIO_CHANNEL_CIA,
 ))
 
 /proc/channel_to_prefix(channel)
@@ -61,6 +63,24 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /proc/prefix_to_channel(prefix)
 	return GLOB.department_radio_keys[prefix]
+
+/proc/filter_message(client/user, message)
+	if(!config.word_filter_regex)
+		return TRUE
+
+	if(config.word_filter_regex.Find(message))
+		to_chat(user,
+			html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
+			)
+		to_chat(user,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = "\n<font color='red' size='4'><b>Your message has been automatically filtered due to its contents. Trying to circumvent this filter will get you banned.</b></font>",
+			)
+		SEND_SOUND(user, sound('sound/effects/adminhelp_new.ogg'))
+		log_admin("[user.ckey] triggered the chat filter with the following message: [message].")
+		return FALSE
+
+	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
@@ -78,6 +98,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
+
+	if(!filter_message(src, message))
+		return
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
 
@@ -117,21 +140,28 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					var/mob/M = I
 					listening += M
 					hearturfs += M.locs[1]
-					for(var/obj/O in M.contents)
-						var/obj/item/clothing/worn_item = O
-						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
-							listening_obj |= O
+					for(var/obj/hearing_obj in M.contents)
+						var/obj/item/clothing/worn_item = hearing_obj
+						if((hearing_obj.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
+							listening_obj |= hearing_obj
+							for(var/obj/item/interior_object in hearing_obj.contents)
+								if(HAS_TRAIT(interior_object, TRAIT_HEARS_FROM_CONTENTS))
+									listening_obj |= interior_object
 				else if(istype(I, /obj/structure/surface))
 					var/obj/structure/surface/table = I
 					hearturfs += table.locs[1]
-					for(var/obj/O in table.contents)
-						if(O.flags_atom & USES_HEARING)
-							listening_obj |= O
+					for(var/obj/hearing_obj in table.contents)
+						if(hearing_obj.flags_atom & USES_HEARING)
+							listening_obj |= hearing_obj
 				else if(istype(I, /obj/))
-					var/obj/O = I
-					hearturfs += O.locs[1]
-					if(O.flags_atom & USES_HEARING)
-						listening_obj |= O
+					var/obj/hearing_obj = I
+					hearturfs += hearing_obj.locs[1]
+					if(hearing_obj.flags_atom & USES_HEARING)
+						listening_obj |= hearing_obj
+						for(var/obj/item/interior_object in hearing_obj.contents)
+							if(HAS_TRAIT(interior_object, TRAIT_HEARS_FROM_CONTENTS))
+								listening_obj |= interior_object
+
 
 			for(var/mob/M as anything in GLOB.player_list)
 				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
@@ -152,9 +182,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-		for(var/obj/O as anything in listening_obj)
-			if(O) //It's possible that it could be deleted in the meantime.
-				O.hear_talk(src, message, verb, speaking, italics)
+		for(var/obj/hearing_obj as anything in listening_obj)
+			if(hearing_obj) //It's possible that it could be deleted in the meantime.
+				hearing_obj.hear_talk(src, message, verb, speaking, italics)
 
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)

@@ -1,6 +1,11 @@
 /obj/item/storage/bible
 	name = "bible"
 	desc = "Apply to head repeatedly."
+	icon = 'icons/obj/items/books.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
+	)
 	icon_state ="bible"
 	throw_speed = SPEED_FAST
 	throw_range = 5

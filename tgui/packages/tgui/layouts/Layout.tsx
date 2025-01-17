@@ -21,7 +21,8 @@ type Props = Partial<{
   BoxProps;
 
 export function Layout(props: Props) {
-  const { className, theme = 'nanotrasen', children, ...rest } = props;
+  const { className, theme = 'weyland_yutani', children, ...rest } = props;
+  document.documentElement.className = `theme-${theme}`;
 
   return (
     <div className={'theme-' + theme}>

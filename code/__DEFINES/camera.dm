@@ -6,6 +6,9 @@
 #define CAMERA_NET_BRIG "Brig"
 #define CAMERA_NET_ALAMO "Alamo"
 #define CAMERA_NET_NORMANDY "Normandy"
+#define CAMERA_NET_SAIPAN "Saipan"
+#define CAMERA_NET_MORANA "Morana"
+#define CAMERA_NET_DEVANA "Devana"
 #define CAMERA_NET_COLONY "Colony"
 #define CAMERA_NET_ARES "ARES"
 

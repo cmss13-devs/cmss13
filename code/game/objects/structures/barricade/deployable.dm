@@ -31,7 +31,7 @@
 	if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
@@ -103,6 +103,11 @@
 		WEAR_J_STORE = "folding"
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 
 	var/list/stack_health = list()
 

@@ -29,7 +29,7 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/west_river)
 "aj" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "al" = (
@@ -50,7 +50,7 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/west_river)
 "au" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/west_jungle)
 "aw" = (
 /turf/open/gm/coast/beachcorner/south_west,

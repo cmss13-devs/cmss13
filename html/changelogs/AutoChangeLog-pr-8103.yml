@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - qol: "OW Consoles are scrollable"
+  - bugfix: "Fixed eslint not checking jsx files"

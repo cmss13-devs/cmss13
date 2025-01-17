@@ -21,11 +21,12 @@ type TutorialCategory = {
 type BackendContext = {
   tutorial_categories: TutorialCategory[];
   completed_tutorials: string[];
+  locked_tutorials: string[];
 };
 
 export const TutorialMenu = (props) => {
   const { data, act } = useBackend<BackendContext>();
-  const { tutorial_categories, completed_tutorials } = data;
+  const { tutorial_categories, completed_tutorials, locked_tutorials } = data;
   const [chosenTutorial, setTutorial] = useState<Tutorial | null>(null);
   const [categoryIndex, setCategoryIndex] = useState('Space Station 13');
   return (
@@ -77,6 +78,9 @@ export const TutorialMenu = (props) => {
                                 : 'default'
                             }
                             width="100%"
+                            disabled={
+                              !(locked_tutorials.indexOf(tutorial.id) === -1)
+                            }
                             key={tutorial.id}
                             onClick={() => setTutorial(tutorial)}
                           >

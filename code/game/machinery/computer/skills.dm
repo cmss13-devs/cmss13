@@ -28,7 +28,7 @@
 			O.forceMove(src)
 			scan = O
 			to_chat(user, "You insert [O].")
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/skills/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -43,16 +43,16 @@
 	var/dat
 
 	if (temp)
-		dat = "<TT>[temp]</TT><BR><BR><A href='?src=\ref[src];choice=Clear Screen'>Clear Screen</A>"
+		dat = "<TT>[temp]</TT><BR><BR><A href='byond://?src=\ref[src];choice=Clear Screen'>Clear Screen</A>"
 	else
-		dat = "Confirm Identity: <A href='?src=\ref[src];choice=Confirm Identity'>[scan ? scan.name : "----------"]</A><HR>"
+		dat = "Confirm Identity: <A href='byond://?src=\ref[src];choice=Confirm Identity'>[scan ? scan.name : "----------"]</A><HR>"
 		if (authenticated)
 			switch(screen)
 				if(1.0)
 					dat += {"
 <p style='text-align:center;'>"}
-					dat += "<A href='?src=\ref[src];choice=Search Records'>Search Records</A><BR>"
-					dat += "<A href='?src=\ref[src];choice=New Record (General)'>New Record</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];choice=Search Records'>Search Records</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];choice=New Record (General)'>New Record</A><BR>"
 					dat += {"
 </p>
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -62,32 +62,32 @@
 </table>
 <table style="text-align:center;" border="1" cellspacing="0" width="100%">
 <tr>
-<th><A href='?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=fingerprint'>Fingerprints</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=fingerprint'>Fingerprints</A></th>
 </tr>"}
 					if(!isnull(GLOB.data_core.general))
 						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
 							for(var/datum/data/record/E in GLOB.data_core.security)
-							dat += "<tr><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
+							dat += "<tr><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
 							dat += "<td>[R.fields["id"]]</td>"
 							dat += "<td>[R.fields["rank"]]</td>"
 						dat += "</table><hr width='75%' />"
-					dat += "<A href='?src=\ref[src];choice=Record Maintenance'>Record Maintenance</A><br><br>"
-					dat += "<A href='?src=\ref[src];choice=Log Out'>{Log Out}</A>"
+					dat += "<A href='byond://?src=\ref[src];choice=Record Maintenance'>Record Maintenance</A><br><br>"
+					dat += "<A href='byond://?src=\ref[src];choice=Log Out'>{Log Out}</A>"
 				if(2.0)
 					dat += "<B>Records Maintenance</B><HR>"
-					dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 				if(3.0)
 					dat += "<CENTER><B>Employment Record</B></CENTER><BR>"
 					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						dat += "<table><tr><td> \
-						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
-						Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-						Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-						Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
+						Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
+						ID: <A href='byond://?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
+						Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
+						Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
+						Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
 						Physical Status: [active1.fields["p_stat"]]<BR>\n \
 						Mental Status: [active1.fields["m_stat"]]<BR><BR>\n \
 						Employment/skills summary:<BR> [decode(active1.fields["notes"])]<BR></td> \
@@ -95,10 +95,10 @@
 						<img src=side.png height=80 width=80 border=4></td></tr></table>"
 					else
 						dat += "<B>General Record Lost!</B><BR>"
-					dat += "\n<A href='?src=\ref[src];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='?src=\ref[src];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[src];choice=Return'>Back</A><BR>"
+					dat += "\n<A href='byond://?src=\ref[src];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='byond://?src=\ref[src];choice=Print Record'>Print Record</A><BR>\n<A href='byond://?src=\ref[src];choice=Return'>Back</A><BR>"
 				if(4.0)
 					if(!length(Perp))
-						dat += "ERROR.  String could not be located.<br><br><A href='?src=\ref[src];choice=Return'>Back</A>"
+						dat += "ERROR.  String could not be located.<br><br><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 					else
 						dat += {"
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -120,14 +120,14 @@
 							if(istype(Perp[i+1],/datum/data/record/))
 								var/datum/data/record/E = Perp[i+1]
 								crimstat = E.fields["criminal"]
-							dat += "<tr style=background-color:#00FF7F><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
+							dat += "<tr style=background-color:#00FF7F><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
 							dat += "<td>[R.fields["id"]]</td>"
 							dat += "<td>[R.fields["rank"]]</td>"
 							dat += "<td>[crimstat]</td></tr>"
 						dat += "</table><hr width='75%' />"
-						dat += "<br><A href='?src=\ref[src];choice=Return'>Return to index.</A>"
+						dat += "<br><A href='byond://?src=\ref[src];choice=Return'>Return to index.</A>"
 		else
-			dat += "<A href='?src=\ref[src];choice=Log In'>{Log In}</A>"
+			dat += "<A href='byond://?src=\ref[src];choice=Log In'>{Log In}</A>"
 	show_browser(user, dat, "Employment Records", "secure_rec", "size=600x400")
 	onclose(user, "secure_rec")
 	return
@@ -251,20 +251,21 @@ What a mess.*/
 			if ("Delete All Records")
 				temp = ""
 				temp += "Are you sure you wish to delete all Employment records?<br>"
-				temp += "<a href='?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
-				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
+				temp += "<a href='byond://?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
+				temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Employment records deleted."
+				msg_admin_niche("[key_name_admin(usr)] deleted all employment records.")
 
 			if ("Delete Record (ALL)")
-				if (active1)
+				if(istype(active1, /datum/data/record))
 					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
-					temp += "<a href='?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
-					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
+					temp += "<a href='byond://?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
+					temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 //RECORD CREATE
 			if ("New Record (General)")
 				active1 = CreateGeneralRecord()
@@ -275,63 +276,75 @@ What a mess.*/
 				switch(href_list["field"])
 					if("name")
 						if (istype(active1, /datum/data/record))
-							var/t1 = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
-							if ((!( t1 ) || !length(trim(t1)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
+							var/new_value = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
+							if ((!( new_value ) || !length(trim(new_value)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
 								return
-							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
-							active1.fields["name"] = t1
+							message_admins("[key_name(usr)] changed the employment record name of [active1.fields["name"]] to [new_value]")
+							active1.fields["name"] = new_value
+
 					if("id")
 						if (istype(active1, /datum/data/record))
-							var/t1 = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+							var/new_value = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
-							active1.fields["id"] = t1
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record id for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							active1.fields["id"] = new_value
 
 					if("sex")
 						if (istype(active1, /datum/data/record))
+							var/new_value = "Male"
 							if (active1.fields["sex"] == "Male")
-								active1.fields["sex"] = "Female"
-							else
-								active1.fields["sex"] = "Male"
+								new_value = "Female"
+							active1.fields["sex"] = new_value
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record sex for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+
 					if("age")
 						if (istype(active1, /datum/data/record))
-							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if ((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+							var/new_value = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
-							active1.fields["age"] = t1
+							active1.fields["age"] = new_value
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record age for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+
 					if("rank")
+						if(istype(active1, /datum/data/record))
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
-							temp = "<h5>Occupation:</h5>"
-							temp += "<ul>"
-							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
-							temp += "</ul>"
-						else
-							alert(usr, "You do not have the required rank to do this!")
+							if(GLOB.uscm_highcom_paygrades.Find(rank))
+								temp = "<h5>Occupation:</h5>"
+								temp += "<ul>"
+								for(var/rank in GLOB.joblist)
+									temp += "<li><a href='byond://?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
+								temp += "</ul>"
+							else
+								alert(usr, "You do not have the required rank to do this!")
+
 					if("species")
 						if (istype(active1, /datum/data/record))
-							var/t1 = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+							var/new_value = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
-							active1.fields["species"] = t1
+							active1.fields["species"] = new_value
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record species for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
 
 //TEMPORARY MENU FUNCTIONS
 			else//To properly clear as per clear screen.
 				temp=null
 				switch(href_list["choice"])
 					if ("Change Rank")
-						if (active1)
-							active1.fields["rank"] = href_list["rank"]
-							if(href_list["rank"] in GLOB.joblist)
-								active1.fields["real_rank"] = href_list["real_rank"]
+						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+							var/new_value = href_list["rank"]
+							active1.fields["rank"] = new_value
+							if(new_value in GLOB.joblist)
+								active1.fields["real_rank"] = new_value
+							message_admins("[key_name_admin(usr)] changed the employment record rank for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
 
 					if ("Delete Record (ALL) Execute")
-						if (active1)
+						if(istype(active1, /datum/data/record))
 							for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									GLOB.data_core.medical -= R
 									qdel(R)
+							msg_admin_niche("[key_name_admin(usr)] deleted all employment records for [active1.fields["name"]] ([active1.fields["id"]]).")
 							QDEL_NULL(active1)
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."
@@ -349,20 +362,27 @@ What a mess.*/
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
+					msg_admin_niche("The employment record name of [R.fields["name"]] was scrambled!")
 					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"] = pick("Male", "Female")
+					msg_admin_niche("The employment record sex of [R.fields["name"]] was scrambled!")
 				if(3)
 					R.fields["age"] = rand(5, 85)
+					msg_admin_niche("The employment record age of [R.fields["name"]] was scrambled!")
 				if(4)
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
+					msg_admin_niche("The employment record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					msg_admin_niche("The employment record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					msg_admin_niche("The employment record mental state of [R.fields["name"]] was scrambled!")
 			continue
 
 		else if(prob(1))
+			msg_admin_niche("The employment record of [R.fields["name"]] was lost!")
 			GLOB.data_core.security -= R
 			qdel(R)
 			continue

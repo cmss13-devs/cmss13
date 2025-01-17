@@ -23,7 +23,7 @@
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 	for(var/obj/item/hardpoint/H in hardpoints)
 		. += "There is \a [H] module installed on [src]."
@@ -100,7 +100,7 @@
 
 /obj/item/hardpoint/holder/attackby(obj/item/O, mob/user)
 	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 
@@ -113,7 +113,7 @@
 		return
 
 	if(istype(O, /obj/item/hardpoint))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 

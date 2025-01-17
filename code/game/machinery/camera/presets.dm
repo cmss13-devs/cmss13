@@ -67,6 +67,13 @@
 		status = FALSE
 	kick_viewers()
 
+/obj/structure/machinery/camera/vehicle/update_icon()
+	. = ..()
+	if(stat & EMPED)
+		icon_state = "vehicle_cameraemp"
+	else
+		icon_state = "vehicle_camera"
+
 // AUTONAME
 
 /obj/structure/machinery/camera/autoname
@@ -78,6 +85,9 @@
 
 /obj/structure/machinery/camera/autoname/almayer/dropship_two
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_NORMANDY)
+
+/obj/structure/machinery/camera/autoname/almayer/dropship_three
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_RESEARCH)
 
 /obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
@@ -164,5 +174,5 @@
 	network = list(CAMERA_NET_SIMULATION)
 	invuln = TRUE
 	view_range = 14
-	use_power = FALSE
+	use_power = USE_POWER_NONE
 	invisibility = INVISIBILITY_MAXIMUM

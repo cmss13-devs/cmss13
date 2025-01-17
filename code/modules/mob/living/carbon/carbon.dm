@@ -74,7 +74,7 @@
 
 /mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
-	if(body_position == LYING_DOWN)
+	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -98,9 +98,11 @@
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
+	var/turf/my_turf = get_turf(src)
+
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
-		A.forceMove(get_turf(loc))
+		A.forceMove(my_turf)
 		A.acid_damage = 0 //Reset the acid damage
 		if(ismob(A))
 			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
@@ -109,8 +111,8 @@
 		if(isobj(A))
 			var/obj/O = A
 			if(O.unacidable)
-				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
+				O.forceMove(my_turf)
+				O.throw_atom(pick(RANGE_TURFS(1, src)), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -156,29 +158,61 @@
 
 	. = ..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
+/mob/living/carbon/attack_hand(mob/target_mob as mob)
+	if(!istype(target_mob, /mob/living/carbon)) return
 
-	if(M.mob_flags & SURGERY_MODE_ON && M.a_intent & (INTENT_HELP|INTENT_DISARM))
-		var/datum/surgery/current_surgery = active_surgeries[M.zone_selected]
+	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))
+		var/datum/surgery/current_surgery = active_surgeries[target_mob.zone_selected]
 		if(current_surgery)
-			if(current_surgery.attempt_next_step(M, null))
+			if(current_surgery.attempt_next_step(target_mob, null))
 				return TRUE
 		else
-			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
-			if(affecting && initiate_surgery_moment(null, src, affecting, M))
+			var/obj/limb/affecting = get_limb(check_zone(target_mob.zone_selected))
+			if(affecting && initiate_surgery_moment(null, src, affecting, target_mob))
 				return TRUE
 
-	for(var/datum/disease/D in viruses)
-		if(D.spread_by_touch())
-			M.contract_disease(D, 0, 1, CONTACT_HANDS)
+	if(can_pass_disease() && target_mob.can_pass_disease())
+		for(var/datum/disease/virus in viruses)
+			if(virus.spread_by_touch())
+				target_mob.contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
-	for(var/datum/disease/D in M.viruses)
-		if(D.spread_by_touch())
-			contract_disease(D, 0, 1, CONTACT_HANDS)
+		for(var/datum/disease/virus in target_mob.viruses)
+			if(virus.spread_by_touch())
+				contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
-	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
+	target_mob.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
+
+/// Whether or not a mob can pass diseases to another, or receive said diseases.
+/mob/proc/can_pass_disease()
+	return TRUE
+
+/mob/living/carbon/human/can_pass_disease()
+	// Multiplier for checked pieces.
+	var/mult = 0
+	// Total amount of bio protection
+	var/total_prot = 0
+	// Super bio armor
+	var/bio_hardcore = 0
+
+	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
+
+	for(var/obj/item/clothing/worn_item in worn_clothes)
+		total_prot += worn_item.armor_bio
+		mult++
+		if(worn_item.armor_bio == CLOTHING_ARMOR_HARDCORE)
+			bio_hardcore++
+
+	if(!mult)
+		return FALSE
+
+	if(bio_hardcore >= 2)
+		return FALSE
+
+	var/perc = (total_prot / mult)
+	if(!prob(perc))
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) //godmode
@@ -379,7 +413,7 @@
 
 		if(!lastarea)
 			lastarea = get_area(src.loc)
-		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
+		if(istype(loc, /turf/open/space))
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
@@ -388,13 +422,17 @@
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
-			animation_attack_on(target)
-			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
+			animation_attack_on(target, 6)
+			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
+			if(alpha >= 50)
+				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
-			animation_attack_on(target)
-			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
+			animation_attack_on(target, 6)
+			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
+			if(alpha >= 50)
+				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
@@ -425,28 +463,6 @@
 			continue
 
 		observer.client.add_to_screen(action.button)
-
-//generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0 //see setup.dm:694
-	switch(src.pulse)
-		if(PULSE_NONE)
-			return "0"
-		if(PULSE_SLOW)
-			temp = rand(40, 60)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_NORM)
-			temp = rand(60, 90)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_FAST)
-			temp = rand(90, 120)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_2FAST)
-			temp = rand(120, 160)
-			return num2text(method ? temp : temp + rand(-10, 10))
-		if(PULSE_THREADY)
-			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
-// output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
@@ -508,7 +524,7 @@
 		last_special = world.time + 100
 		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),\
 		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
-		if(do_after(src, 1200, INTERRUPT_ALL^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
 			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\

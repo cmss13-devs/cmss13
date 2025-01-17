@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "The PKD special burst values have changed for non-\"Double\" (l_series) variants"
-  - code_imp: "Code no longer uses proc redefinitions with a few exceptions for global macros"
-  - bugfix: "Fixed various things like all backpacks (instead of just JIMA flags) processing"

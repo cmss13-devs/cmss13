@@ -1,8 +1,0 @@
-author: "LC4492"
-delete-after: True
-changes:
-  - spellcheck: "Fixed typos in the \"items\" file, where on the proc to \"zoom\", the text had an extra \"the\" that resulted in a wrong display on chat."
-  - rscadd: "made facehugger visible on helmet"
-  - rscadd: "mouse can now be equipped on ear slot and head slot, in ear slot it'd be seen as sitting on your shoulder"
-  - code_imp: "Changed the combat flashlight's light range to 6 tiles instead of the normal 5, to make it actually a little better than a normal flashlight. Added a yellowish light color to the lantern (which can be found in colonies), to make it more unique."
-  - imageadd: "Added new and updated \"in_hands\" icon sprites, with the list being, but not limited to: Clipboard, binoculars (All camos), mortar Shells (All types), space cleaner spray, plant B gone spray, plastic stack, anesthetic and OT canister tanks, flashlight, lantern, mortar (All camos) and more."

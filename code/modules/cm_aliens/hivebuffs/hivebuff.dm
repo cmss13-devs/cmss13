@@ -103,9 +103,9 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
 
-	// if(!_check_danger())
-	// 	to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
-	// 	return FALSE
+	if(!_check_danger())
+		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
+		return FALSE
 
 	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
@@ -513,7 +513,7 @@
 
 	engage_flavourmessage = "The Queen has blessed us with adaptability."
 	duration = 0
-	cost = 0
+	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "shield_m"
 

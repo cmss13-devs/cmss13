@@ -186,10 +186,19 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/machinery/status_display{
+	pixel_y = -30
+	},
+/turf/open/floor/almayer/silver2/south,
+/area/almayer/command/cic)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/turf/open/floor/almayer/silver2smooth3/south,
+/area/almayer/command/cic)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -209,6 +218,12 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/flooredgesmooth2/north,
+/area/almayer/command/cic)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -217,6 +232,35 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/flooredgesmooth3/north,
+/area/almayer/command/cic)
+"aaJ" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 28
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
+"aaK" = (
+/turf/open/floor/almayer/flooredgesmooth3/south,
+/area/almayer/command/cic)
+"aaL" = (
+/turf/open/floor/almayer/flooredgesmooth2/south,
+/area/almayer/command/cic)
+"aaM" = (
+/turf/open/floor/almayer/silver2smooth3/north,
+/area/almayer/command/cic)
+"aaN" = (
+/turf/open/floor/almayer/silver2smooth2/north,
+/area/almayer/command/cic)
+"aaO" = (
+/turf/open/floor/almayer/silver2smooth2/east,
+/area/almayer/command/cic)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -760,21 +804,6 @@
 "aet" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/starboard_garden)
-"aeu" = (
-/obj/structure/machinery/status_display{
-	pixel_y = -30
-	},
-/turf/open/floor/almayer/silver2/south,
-/area/almayer/command/cic)
-"aev" = (
-/turf/open/floor/almayer/silver2smooth3/south,
-/area/almayer/command/cic)
-"aew" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/flooredgesmooth2/north,
-/area/almayer/command/cic)
 "aex" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 6;
@@ -782,12 +811,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
-"aey" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/flooredgesmooth3/north,
-/area/almayer/command/cic)
 "aez" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer/plate,
@@ -807,21 +830,10 @@
 "aeC" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
-"aeD" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_x = 28
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
 "aeE" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/shipboard/starboard_missiles)
-"aeF" = (
-/turf/open/floor/almayer/flooredgesmooth3/south,
-/area/almayer/command/cic)
 "aeG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
@@ -907,9 +919,6 @@
 /obj/structure/machinery/computer/emails,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/officer_study)
-"aeS" = (
-/turf/open/floor/almayer/flooredgesmooth2/south,
-/area/almayer/command/cic)
 "aeT" = (
 /obj/structure/stairs{
 	dir = 1
@@ -921,12 +930,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper)
-"aeU" = (
-/turf/open/floor/almayer/silver2smooth3/north,
-/area/almayer/command/cic)
-"aeV" = (
-/turf/open/floor/almayer/silver2smooth2/north,
-/area/almayer/command/cic)
 "aeW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
@@ -969,9 +972,6 @@
 /obj/item/device/binoculars,
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/starboard_missiles)
-"afc" = (
-/turf/open/floor/almayer/silver2smooth2/east,
-/area/almayer/command/cic)
 "afj" = (
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/engine,
@@ -88910,7 +88910,7 @@ bFA
 aov
 wVW
 arR
-afc
+aaO
 atO
 atO
 awt
@@ -89319,7 +89319,7 @@ awA
 ayr
 awH
 aPD
-aeU
+aaM
 azW
 aqN
 aAC
@@ -90132,11 +90132,11 @@ qEk
 ajm
 wVW
 arP
-aeF
+aaK
 aas
 alX
 azZ
-aew
+aaG
 hkG
 wVW
 fvB
@@ -90335,12 +90335,12 @@ qEk
 ato
 wVW
 aKF
-aeS
+aaL
 hxm
 alX
 alX
-aey
-aeu
+aaI
+aaB
 wVW
 fvB
 qEk
@@ -90743,7 +90743,7 @@ wVW
 vTu
 alX
 alX
-aeD
+aaJ
 alX
 aIf
 aED
@@ -91552,13 +91552,13 @@ aJw
 aBX
 aBX
 laV
-aeV
+aaN
 ayL
 aAf
 aLM
 wlE
 alX
-aev
+aaD
 laV
 aBX
 aKa

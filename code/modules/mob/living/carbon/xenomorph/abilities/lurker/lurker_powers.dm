@@ -192,7 +192,7 @@
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
-	vamp.rush_target_ref = null
+	QDEL(vamp.rush_target_ref)
 	target.sway_jitter(times = 2)
 	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
@@ -204,11 +204,11 @@
 /datum/action/xeno_action/activable/pounce/rush/proc/on_end_rush()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
-	if(!vamp.rush_target_ref)
+	if(!vamp.rush_target_ref || QDELETED(vamp.rush_target_ref))
 		return
 
 	var/mob/living/target = vamp.rush_target_ref.resolve()
-	vamp.rush_target_ref = null
+	QDEL(vamp.rush_target_ref)
 	if(!target)
 		return
 	if(!xeno.check_state())

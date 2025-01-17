@@ -27,6 +27,7 @@
 	var/should_have_spread = TRUE
 	var/should_have_beverage = TRUE
 	var/should_have_utencil = TRUE
+	//If mre should include name of entree in its own name
 	var/has_main_name = TRUE
 	var/isopened = FALSE
 
@@ -267,8 +268,8 @@
 	icon_state = "upp_mealpack"
 	icon_closed = "upp_mealpack"
 	icon_opened = "upp_mealpackopened"
-	entree = /obj/item/mre_food_packet/entree/wy_colonist
-	side = /obj/item/mre_food_packet/upp/snack
+	entree = null
+	side = null
 	snack = /obj/item/mre_food_packet/upp/snack
 	dessert = /obj/item/mre_food_packet/upp/dessert
 	should_have_beverage = FALSE
@@ -281,3 +282,18 @@
 
 /obj/item/storage/box/MRE/UPP/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/pspoon(src)
+
+/obj/item/storage/box/MRE/WY/pickflavor()
+	entree = pick(
+		/obj/item/reagent_container/food/snacks/eat_bar,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk,
+	)
+	side = pick(
+		/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/pasta,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/buckwheat,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/rice,
+	)
+	return ..()

@@ -338,6 +338,17 @@
 	color = COLOR_WHITE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
+/datum/reagent/buckwheat
+	name = "Buckwheat"
+	id = "buckwheat"
+	description = "A grain porridge made out of buckwheat."
+	reagent_state = SOLID
+	nutriment_factor = 1 * REAGENTS_METABOLISM
+	color = COLOR_BROWN
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
 /datum/reagent/cherryjelly
 	name = "Cherry Jelly"
 	id = "cherryjelly"

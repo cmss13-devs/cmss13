@@ -1,15 +1,26 @@
 /obj/item/reagent_container/food/drinks/cans
 	var/open = FALSE
+	//If it needs can opener to be opened
 	var/needs_can_opener = FALSE
 	var/crushed = FALSE
+	//Can be crushed
 	var/crushable = TRUE
+	//Can open sound
 	var/open_sound = 'sound/effects/canopen.ogg'
+	//Can open message
 	var/open_message = "You open the drink with an audible pop!"
+	//Eating sound
 	var/consume_sound = 'sound/items/drink.ogg'
+	//What this object is, used during interactions
 	var/object_fluff = "drink"
+	//If can transfer reagents to food
 	var/food_interactable = FALSE
+	//If can has a dedicated crushed icon
 	var/crushed_icon = null
+	//If can has a dedicated open icon
 	var/has_open_icon = FALSE
+	//Should item be deleted on being empty
+	var/delete_on_empty = FALSE
 	gulp_size = 10
 	icon = 'icons/obj/items/food/drinkcans.dmi'
 	item_icons = list(
@@ -191,6 +202,11 @@
 		icon_state = crushed_icon
 	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
 	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
+
+/obj/item/reagent_container/food/drinks/cans/on_reagent_change()
+	. = ..()
+	if(delete_on_empty && !reagents.total_volume)
+		qdel(src)
 
 //SODA
 

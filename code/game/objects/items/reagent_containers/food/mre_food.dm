@@ -540,7 +540,6 @@
 	. = ..()
 	update_icon()
 
-
 /obj/item/reagent_container/food/drinks/cans/spread/cheese/Initialize()
 	. = ..()
 	reagents.add_reagent("cheese", 4)

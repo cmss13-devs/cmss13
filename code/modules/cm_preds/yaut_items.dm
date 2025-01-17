@@ -588,7 +588,10 @@
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
+	COOLDOWN_START(src, yautja_hunt_cooldown, 1 MINUTES)
+
+	if(COOLDOWN_FINISHED(src, yautja_hunt_cooldown))
+		message_all_yautja("A new hunt may be called.")
 
 /obj/structure/machinery/hunt_ground_escape
 	name = "preserve shutter console"

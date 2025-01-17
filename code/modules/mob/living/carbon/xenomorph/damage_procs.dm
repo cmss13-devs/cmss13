@@ -310,6 +310,10 @@
 
 /mob/living/carbon/xenomorph/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
+//RUCM START
+	if(!.)
+		return
+//RUCM END
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B)
 			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occurred.
@@ -318,6 +322,10 @@
 
 /mob/living/carbon/xenomorph/handle_flamer_fire_crossed(obj/flamer_fire/fire)
 	. = ..()
+//RUCM START
+	if(!.)
+		return
+//RUCM END
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire
 			if(!armor_deflection_debuff) //Only applies the xeno armor shred reset when the debuff isn't present or was recently removed.

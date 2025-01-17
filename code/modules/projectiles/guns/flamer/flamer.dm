@@ -570,6 +570,9 @@
 	//Fire duration increases with fuel usage
 	firelevel = R.durationfire + fuel_pressure*R.durationmod
 	burnlevel = R.intensityfire
+//RUCM START
+	friendlydetection = R.friendlydetection
+//RUCM END
 
 	//are we in weather??
 	update_in_weather_status()
@@ -647,9 +650,16 @@
 		if(!(sig_result & COMPONENT_NO_IGNITE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+/*
 					ignited_morb.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 				else
 					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+*/
+//RUCM START
+					ignited_morb.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent, src)
+				else
+					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent, src)
+//RUCM END
 
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
@@ -735,8 +745,19 @@
 		to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
 		return
 
+/*
 	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
+*/
+//RUCM START
+	if(!friendlydetection)
+		M.last_damage_data = weapon_cause_data
+		M.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	else
+		if(M.getFireLoss() < 400)// We don't want fire rav do nasty dirty gameplay
+			M.last_damage_data = weapon_cause_data
+			M.apply_damage(burn_damage, BURN) //This makes fire stronk.
+//RUCM END
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.
@@ -776,7 +797,12 @@
 		qdel(src)
 		return PROCESS_KILL
 	var/damage = burnlevel*delta_time
+/*
 	T.flamer_fire_act(damage)
+*/
+//RUCM START
+	T.flamer_fire_act(damage, weapon_cause_data, src)
+//RUCM END
 
 	if(!firelevel)
 		qdel(src)

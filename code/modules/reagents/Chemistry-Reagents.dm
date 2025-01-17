@@ -244,6 +244,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	objective_value = C.objective_value
 	original_id = C.original_id
 	chemfiresupp = C.chemfiresupp
+//RUCM START
+	friendlydetection = C.friendlydetection
+//RUCM END
 	radiusmod = C.radiusmod
 	durationmod = C.durationmod
 	intensitymod = C.intensitymod

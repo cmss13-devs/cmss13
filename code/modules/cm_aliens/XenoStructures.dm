@@ -45,7 +45,14 @@
 	if(health <= 0)
 		deconstruct(FALSE)
 
-/obj/effect/alien/resin/flamer_fire_act()
+/obj/effect/alien/resin/flamer_fire_act(dam, datum/cause_data/flame_cause_data, obj/flamer_fire/fire)
+//RUCM START
+	if(fire.friendlydetection)
+		var/mob/living/user = flame_cause_data.resolve_mob()
+		var/mob/living/constructor = construction_data.resolve_mob()
+		if(istype(user) && istype(constructor) && HIVE_ALLIED_TO_HIVE(user.hivenumber, constructor.hivenumber))
+			return
+//RUCM END
 	health -= 50
 	healthcheck()
 
@@ -385,7 +392,13 @@
 	if(area && area.linked_lz)
 		AddComponent(/datum/component/resin_cleanup)
 
-/obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
+/obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data, obj/flamer_fire/fire)
+//RUCM START
+	if(fire.friendlydetection)
+		var/mob/living/user = flame_cause_data.resolve_mob()
+		if(istype(user) && HIVE_ALLIED_TO_HIVE(user.hivenumber, hivenumber))
+			return
+//RUCM END
 	health -= dam
 	healthcheck()
 

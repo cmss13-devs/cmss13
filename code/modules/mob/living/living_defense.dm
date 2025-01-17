@@ -193,7 +193,13 @@
 /mob/living/fire_act()
 	TryIgniteMob(2)
 
-/mob/living/proc/TryIgniteMob(fire_stacks, datum/reagent/R)
+/mob/living/proc/TryIgniteMob(fire_stacks, datum/reagent/R, obj/flamer_fire/fire)
+//RUCM START
+	if(fire.friendlydetection)
+		var/mob/living/user = fire.weapon_cause_data.resolve_mob()
+		if(istype(user) && user.ally_of_hivenumber(hivenumber))
+			return FALSE
+//RUCM END
 	adjust_fire_stacks(fire_stacks, R)
 	if (!IgniteMob())
 		adjust_fire_stacks(-fire_stacks)
@@ -220,8 +226,24 @@
 
 /mob/living/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
+//RUCM START
+	if(!.)
+		return
+	if(fire.friendlydetection)
+		var/mob/living/user = fire.weapon_cause_data.resolve_mob()
+		if(istype(user) && user.ally_of_hivenumber(hivenumber))
+			return FALSE
+//RUCM END
 	fire.set_on_fire(src)
 
 /mob/living/handle_flamer_fire_crossed(obj/flamer_fire/fire)
 	. = ..()
+//RUCM START
+	if(!.)
+		return
+	if(fire.friendlydetection)
+		var/mob/living/user = fire.weapon_cause_data.resolve_mob()
+		if(istype(user) && user.ally_of_hivenumber(hivenumber))
+			return FALSE
+//RUCM END
 	fire.set_on_fire(src)

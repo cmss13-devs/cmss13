@@ -406,9 +406,16 @@
 	if(health <= 0)
 		deconstruct(FALSE)
 
-/obj/effect/alien/weeds/flamer_fire_act(dam)
+/obj/effect/alien/weeds/flamer_fire_act(dam, datum/cause_data/flame_cause_data, obj/flamer_fire/fire)
 	if(explo_proof)
 		return
+
+//RUCM START
+	if(fire.friendlydetection)
+		var/mob/living/user = flame_cause_data.resolve_mob()
+		if(istype(user) && (linked_hive && HIVE_ALLIED_TO_HIVE(user.hivenumber, linked_hive.hivenumber)))
+			return
+//RUCM END
 
 	. = ..()
 	if(!QDELETED(src))

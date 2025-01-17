@@ -337,7 +337,13 @@
 	health -= 40
 	healthcheck()
 
-/obj/structure/bed/nest/flamer_fire_act()
+/obj/structure/bed/nest/flamer_fire_act(dam, datum/cause_data/flame_cause_data, obj/flamer_fire/fire)
+//RUCM START
+	if(fire.friendlydetection)
+		var/mob/living/user = flame_cause_data.resolve_mob()
+		if(istype(user) && HIVE_ALLIED_TO_HIVE(user.hivenumber, hivenumber))
+			return
+//RUCM END
 	deconstruct()
 
 /obj/structure/bed/nest/Destroy()

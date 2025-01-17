@@ -642,10 +642,20 @@ Parameters are passed from New.
 	return TAILSTAB_COOLDOWN_NONE
 
 /atom/proc/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
+/*
 	return
+*/
+//RUCM START
+	return TRUE
+//RUCM END
 
 /atom/proc/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+/*
 	return
+*/
+//RUCM START
+	return TRUE
+//RUCM END
 
 /atom/proc/get_orbit_size()
 	var/icon/I = icon(icon, icon_state, dir)

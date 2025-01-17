@@ -751,7 +751,9 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
-	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
+	if(stat == DEAD)
+		return TRUE
+	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
@@ -759,7 +761,7 @@
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
-	if(stat != DEAD && issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
+	if(issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
 		var/mob/living/carbon/human/synthetic/puller_synth = puller
 		if(puller_synth.ally_of_hivenumber(hivenumber))
 			return TRUE

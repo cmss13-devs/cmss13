@@ -2,7 +2,11 @@
 	var/canopened = FALSE
 	var/crushed = FALSE
 	gulp_size = 10
-	icon = 'icons/obj/items/drinkcans.dmi'
+	icon = 'icons/obj/items/food/drinkcans.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
@@ -297,6 +301,10 @@
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
 	center_of_mass = "x=15;y=8"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
@@ -489,7 +497,7 @@
 	name = "\improper Vanilla Souto"
 	desc = "When most soft drinks say 'vanilla,' they really mean their classic flavor with a bit of vanilla added. NOT THE SOUTO CORPORATION, BABY! This bad boy is filled to the brim with 100% pure carbonated vanilla extract! It tastes terrible. Canned in Havana."
 	icon_state = "souto_vanilla"
-	item_state = "souto_canilla"
+	item_state = "souto_vanilla"
 
 /obj/item/reagent_container/food/drinks/cans/souto/vanilla/Initialize()
 	. = ..()
@@ -533,6 +541,7 @@
 	name = "\improper Weyland-Yutani Aspen Beer"
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
+	item_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()

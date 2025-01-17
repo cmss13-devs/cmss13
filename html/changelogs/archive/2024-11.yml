@@ -477,3 +477,36 @@
   - code_imp: Merge hook installer now can handle duplicate/old hook installs
   irakligabunia:
   - rscdel: Removes access to pred for legacy WL holders
+2024-11-30:
+  Drathek:
+  - code_imp: Missing Icons unit test now instantiates items and generally tests more
+      icon_states
+  - code_imp: Unit tests can now log warnings that appear as a separate collapsed
+      list but do not fail checks
+  - bugfix: Fixed various hardrefs and missing icons
+  - bugfix: Pipes retain their dir when picked up, no longer go invisible when re-anchored,
+      and reconnect when re-anchored.
+  - bugfix: Disabled various admin only pistols from being equipped in pistol belts
+      since they only honk their underlay
+  - refactor: Giant lizards and parent types now use weakrefs
+  - refactor: Removed has_gamemode_skin and renamed NO_SNOW_TYPE to NO_GAMEMODE_SKIN
+  - refactor: Removed uses_skin_color in favor of the existing flag HAS_SKIN_COLOR
+  - maptweak: Fixed droppod floors on trijent elevator, lifeboats, corsat, and bigred
+  - imageadd: Added missing unlocked overlay to lockable satchel
+  - imageadd: Restored the missing overlays to spike launcher
+  - imageadd: Tweaked the old sample jars and samples
+  - admin: Admin spawned predators now have random skin color
+  Steelpoint:
+  - bugfix: Fix bug on UPP Synth Snowflake Vendor that prevented some items being
+      vended.
+  - rscadd: UPP Commanders will have access to a set of custom vendors, similar to
+      the vendors the USCM Commanders have access to.
+  - rscadd: UPP vendors have been added. Equilivants to the surplus marine vendor
+      and cargo vendors.
+  cuberound:
+  - qol: HvH roundstart AI announcements
+  ihatethisengine:
+  - rscadd: You can use the camera with one hand. You still need to turn it on. It
+      keeps broadcasting even if dropped, but loses range. Xeno can turn the camera
+      off by slashing it.
+  - rscadd: You can unanchor TV with a wrench

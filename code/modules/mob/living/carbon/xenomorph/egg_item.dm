@@ -3,7 +3,12 @@
 	name = "egg"
 	desc = "Some sort of egg."
 	icon = 'icons/mob/xenos/effects.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/xeno_items_righthand.dmi',
+	)
 	icon_state = "egg_item"
+	item_state = "xeno_egg"
 	w_class = SIZE_MASSIVE
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON

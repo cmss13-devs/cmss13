@@ -6,7 +6,7 @@
 	name = "\improper M4A3 magazine (9mm)"
 	desc = "A pistol magazine."
 	caliber = "9mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a3"
 	max_rounds = 12
 	w_class = SIZE_SMALL
@@ -66,6 +66,7 @@
 	name = "\improper 88M4 AP magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "88m4"
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
@@ -113,7 +114,7 @@
 	default_ammo = /datum/ammo/bullet/pistol/rubber/stun
 	caliber = "9mm"
 	desc = "Holds 19 rounds of specialized Conductive 9mm. Electrostatic propulsion in the ES-4 functions by propelling an cV9mm round, at a proportionally slower velocity to maintain a higher kinetic energy transfer rate. All this turns a penetrative round into a less-than-lethal round."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/wy.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "es4"
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/es4
@@ -125,6 +126,7 @@
 	name = "\improper VP78 magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "vp78"
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/pistol/vp78
@@ -165,7 +167,7 @@
 	name = "\improper Desert Eagle magazine (.50)"
 	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "deagle"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
@@ -198,7 +200,7 @@
 	name = "\improper NP92 magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9x18mm Makarov"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "np92mag"
 	max_rounds = 12
 	gun_type = /obj/item/weapon/gun/pistol/np92
@@ -207,7 +209,7 @@
 	name = "\improper NPZ92 magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9x18mm Makarov"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "npz92mag"
 	max_rounds = 12
 
@@ -215,7 +217,7 @@
 	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
 	default_ammo = /datum/ammo/bullet/pistol/tranq
 	caliber = "9x18mm Makarov"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "npz92tranqmag"
 	max_rounds = 12
 
@@ -226,7 +228,7 @@
 	name = "\improper Type 73 magazine (7.62x25mm Tokarev)"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = "7.62x25mm Tokarev"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t73
@@ -235,7 +237,7 @@
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t73/leader
@@ -247,7 +249,7 @@
 	name = "\improper KT-42 magazine (.44)"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".44"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "kt42"
 	max_rounds = 16
 	gun_type = /obj/item/weapon/gun/pistol/kt42
@@ -260,7 +262,7 @@
 	desc = "A surprisingly small magazine, holding .22 bullets. No Kolibri, but it's getting there."
 	default_ammo = /datum/ammo/bullet/pistol/tiny
 	caliber = ".22"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "holdout"
 	max_rounds = 5
 	w_class = SIZE_TINY
@@ -273,7 +275,7 @@
 	desc = "A small D18 magazine storing 7 9mm bullets. How is it even this small?"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a3" // placeholder
 	max_rounds = 7
 	w_class = SIZE_TINY
@@ -289,7 +291,7 @@
 	name = "\improper MK-45 Automagnum magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/highpower
 	caliber = ".45"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "highpower"
 	max_rounds = 13
 	gun_type = /obj/item/weapon/gun/pistol/highpower
@@ -309,7 +311,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper Auto-9 magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "88m4" //PLACEHOLDER
 	max_rounds = 50
 	gun_type = /obj/item/weapon/gun/pistol/auto9
@@ -336,7 +338,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper SU-6 Smartpistol magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/smart
 	caliber = ".45"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "smartpistol"
 	max_rounds = 15
 	gun_type = /obj/item/weapon/gun/pistol/smart
@@ -348,7 +350,45 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	name = "\improper CZ-81 20-round magazine (.32ACP)"
 	desc = "A .32ACP caliber magazine for the CZ-81."
 	caliber = ".32ACP"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/pistol/skorpion
 	max_rounds = 20
+
+//-------------------------------------------------------
+/*
+M10 Auto Pistol: A compact machine pistol that sacrifices accuracy for an impressive fire rate, shredding close-range targets with ease.
+With a 40-round magazine, it can keep up sustained fire in tense situations, though its high recoil and low stability make it tricky to control.
+Unlike other pistols, it can be equipped with limited mods (small muzzle, magazine, and optics) but has no burst-fire option.
+*/
+
+/obj/item/ammo_magazine/pistol/m10
+	name = "\improper M10 HV magazine (10x20mm)"
+	desc = "A compact 40-round high-velocity magazine, designed for rapid reloads and reliable performance in close-quarters combat."
+	default_ammo = /datum/ammo/bullet/smg/m39
+	caliber = "10x20mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
+	icon_state = "m10"
+	bonus_overlay = "m10_overlay"
+	max_rounds = 40
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/extended
+	name = "\improper M10 HV extended magazine (10x20mm)"
+	desc = "A 78-round high-velocity magazine, offering additional firepower for sustained engagements without significantly increasing reload time."
+	default_ammo = /datum/ammo/bullet/smg/m39
+	caliber = "10x20mm"
+	icon_state = "m10_ext"
+	bonus_overlay = "m10_ex_overlay"
+	max_rounds = 78
+	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/drum
+	name = "\improper M10 HV drum magazine (10x20mm)"
+	desc = "High-capacity 92-round drum magazine designed for prolonged firefights, delivering maximum ammunition capacity at the cost of a longer reload."
+	default_ammo = /datum/ammo/bullet/smg/m39
+	caliber = "10x20mm"
+	icon_state = "m10_drum"
+	bonus_overlay = "m10_drum_overlay"
+	max_rounds = 92
+	gun_type = /obj/item/weapon/gun/pistol/m10

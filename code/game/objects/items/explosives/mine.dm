@@ -34,6 +34,8 @@
 	. = ..()
 	if(map_deployed)
 		deploy_mine(null)
+	else
+		cause_data = create_cause_data(initial(name))
 
 /obj/item/explosive/mine/Destroy()
 	QDEL_NULL(tripwire)

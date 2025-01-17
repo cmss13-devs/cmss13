@@ -76,6 +76,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
 #define CMB_FREQ 1220
+#define CIA_FREQ 1225
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
@@ -106,6 +107,11 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 //Listening Bugs (1290-1291)
 #define BUG_A_FREQ 1290
 #define BUG_B_FREQ 1291
+
+//Listening Bugs (1296-1300)
+#define FAX_WY_FREQ 1296
+#define FAX_USCM_HC_FREQ 1297
+#define FAX_USCM_PVST_FREQ 1298
 
 //General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
@@ -154,6 +160,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
 	RADIO_CHANNEL_ROYAL_MARINE = RMC_FREQ,
+	RADIO_CHANNEL_CIA = CIA_FREQ,
 
 	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
 	RADIO_CHANNEL_PROVOST = PVST_FREQ,
@@ -210,6 +217,10 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 	RADIO_CHANNEL_BUG_A = BUG_A_FREQ,
 	RADIO_CHANNEL_BUG_B = BUG_B_FREQ,
+
+	RADIO_CHANNEL_FAX_WY = FAX_WY_FREQ,
+	RADIO_CHANNEL_FAX_USCM_HC = FAX_USCM_HC_FREQ,
+	RADIO_CHANNEL_FAX_USCM_PVST = FAX_USCM_PVST_FREQ,
 ))
 
 // Response Teams
@@ -226,6 +237,9 @@ GLOBAL_LIST_INIT(radiochannels, list(
 
 //Listening Device Frequencies
 #define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
+
+//Fax Responder internal monitor frequencies
+#define FAX_RESP_FREQS list(FAX_WY_FREQ, FAX_USCM_HC_FREQ, FAX_USCM_PVST_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
@@ -278,6 +292,7 @@ SUBSYSTEM_DEF(radio)
 		"[WY_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
+		"[CIA_FREQ]" = "ciaradio",
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",
 		"[BRAVO_FREQ]" = "bravoradio",
@@ -304,6 +319,9 @@ SUBSYSTEM_DEF(radio)
 		"[CLF_ENGI_FREQ]" = "opforeng",
 		"[CLF_MED_FREQ]" = "opformed",
 		"[CLF_CCT_FREQ]" = "opforcct",
+		"[FAX_WY_FREQ]" = "airadio",
+		"[FAX_USCM_HC_FREQ]" = "aiprivradio",
+		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

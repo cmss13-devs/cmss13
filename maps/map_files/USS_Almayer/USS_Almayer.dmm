@@ -218,12 +218,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
-"aaG" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/flooredgesmooth2/north,
-/area/almayer/command/cic)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -232,12 +226,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
-"aaI" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/flooredgesmooth3/north,
-/area/almayer/command/cic)
 "aaJ" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -245,12 +233,6 @@
 	pixel_x = 28
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
-"aaK" = (
-/turf/open/floor/almayer/flooredgesmooth3/south,
-/area/almayer/command/cic)
-"aaL" = (
-/turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/command/cic)
 "aaM" = (
 /turf/open/floor/almayer/silver2smooth3/north,
@@ -276,6 +258,29 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
+"aaQ" = (
+/turf/open/floor/almayer/flooredge/north,
+/area/almayer/command/cic)
+"aaR" = (
+/turf/open/floor/almayer/flooredge/east,
+/area/almayer/command/cic)
+"aaS" = (
+/turf/open/floor/almayer/flooredge/west,
+/area/almayer/command/cic)
+"aaT" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/whistle,
+/obj/item/storage/fancy/cigarettes/kpack,
+/obj/item/device/binoculars,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "exposed01-supply"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
+"aaU" = (
+/turf/open/floor/almayer/flooredge,
+/area/almayer/command/cic)
 "aaY" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -3398,13 +3403,6 @@
 "awC" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/port_missiles)
-"awD" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/whistle,
-/obj/item/storage/fancy/cigarettes/kpack,
-/obj/item/device/binoculars,
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "awE" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -46171,13 +46169,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
-"pbs" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4;
-	layer = 3.25
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "pbV" = (
 /turf/open/floor/almayer/emerald2/north,
 /area/almayer/command/cic)
@@ -88104,7 +88095,7 @@ awm
 avS
 nwD
 asR
-pbs
+aqN
 pbV
 aPB
 aJG
@@ -88306,9 +88297,9 @@ lQG
 oPE
 alZ
 auT
-aBR
-awD
-bZJ
+aaR
+aaR
+aaR
 aRt
 axp
 aPI
@@ -88508,11 +88499,11 @@ alX
 avY
 alX
 alX
+aaU
+aas
 alX
-vNW
-pON
-vRb
-alX
+azZ
+aaQ
 alX
 alX
 avY
@@ -88711,11 +88702,11 @@ alX
 aqN
 avY
 alX
+aaU
+hxm
 alX
-paL
-euV
-mJu
 alX
+aaQ
 alX
 avY
 aqN
@@ -88914,11 +88905,11 @@ aaO
 atO
 atO
 awt
-aqN
-rKd
-aAA
-xMB
-aqN
+alX
+aaS
+aaS
+aaS
+alX
 ays
 atO
 atO
@@ -89727,9 +89718,9 @@ ayI
 wVW
 wbX
 avY
-avY
-aAE
-avY
+aBR
+aaT
+bZJ
 wlE
 gvq
 wVW
@@ -89931,7 +89922,7 @@ sOi
 aqN
 aqN
 aqN
-aqN
+aAE
 aqN
 aDv
 aqN
@@ -90132,11 +90123,11 @@ qEk
 ajm
 wVW
 arP
-aaK
-aas
-alX
-azZ
-aaG
+avY
+vNW
+pON
+vRb
+wlE
 hkG
 wVW
 fvB
@@ -90335,11 +90326,11 @@ qEk
 ato
 wVW
 aKF
-aaL
-hxm
-alX
-alX
-aaI
+avY
+paL
+euV
+mJu
+wlE
 aaB
 wVW
 fvB
@@ -90539,9 +90530,9 @@ hrm
 wVW
 rOC
 aqN
-aqN
-aqN
-aqN
+rKd
+aAA
+xMB
 aDv
 aEC
 wVW

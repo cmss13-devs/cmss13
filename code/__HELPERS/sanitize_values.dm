@@ -101,7 +101,7 @@
 			continue
 
 		var/datum/gear/gear_datum = GLOB.gear_datums_by_type[gear_type]
-		var/new_total = running_cost + gear_datum.cost
+		var/new_total = running_cost + gear_datum.fluff_cost
 
 		if(new_total > MAX_GEAR_COST)
 			to_chat(user, SPAN_WARNING("Your [gear_datum.display_name] was removed from your loadout as it exceeded the point limit."))

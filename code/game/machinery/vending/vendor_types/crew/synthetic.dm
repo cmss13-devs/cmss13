@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic
 	category = "Synthetic"
 	allowed_roles = list(JOB_SYNTH, JOB_SHIP_SYNTH)
-	cost = 0
+	fluff_cost = 0
 
 /datum/gear/synthetic/uscm
 	category = "Synthetic - USCM Uniforms"

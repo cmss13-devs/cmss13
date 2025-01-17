@@ -42,6 +42,9 @@
 	/// Under what faction menu the job gets displayed in lobby
 	var/faction_menu = FACTION_NEUTRAL //neutral to cover uscm jobs for now as loads of them are under civil and stuff mainly ment for other faction
 
+	/// How many points people with this role selected get to pick from
+	var/loadout_points = 0
+
 /datum/job/New()
 	. = ..()
 

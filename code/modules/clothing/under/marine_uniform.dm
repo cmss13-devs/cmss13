@@ -264,7 +264,6 @@
 	specialty = "USCM officer"
 	flags_atom = FPRINT
 
-
 /obj/item/clothing/under/marine/officer/general
 	name = "general uniform"
 	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."

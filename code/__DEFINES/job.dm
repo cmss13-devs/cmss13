@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
 #define JOB_WY_GOON_RESEARCHER "WY Research Consultant"
 
-#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON)
+#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON, JOB_WY_GOON_RESEARCHER)
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"

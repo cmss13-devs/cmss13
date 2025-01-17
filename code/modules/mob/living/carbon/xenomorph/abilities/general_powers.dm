@@ -440,6 +440,7 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
+	var/list/pounce_end_callbacks = list(CALLBACK(src, PROC_REF(on_end_pounce)))
 	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, end_throw_callbacks = pounce_end_callbacks, collision_callbacks = pounce_callbacks)
 	X.update_icons()
 
@@ -447,6 +448,9 @@
 	..()
 
 	return TRUE
+
+/datum/action/xeno_action/activable/pounce/proc/on_end_pounce()
+	return
 
 // Massive, customizable spray_acid
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)

@@ -144,10 +144,6 @@
 
 // VAMPIRE LURKER
 
-/datum/action/xeno_action/activable/pounce/rush/New()
-	. = ..()
-	pounce_end_callbacks = list(CALLBACK(src, PROC_REF(on_end_rush)))
-
 /datum/action/xeno_action/activable/pounce/rush/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
@@ -182,7 +178,7 @@
 	. = ..(carbon_target)
 
 	if(!.)
-		qdel(vamp.rush_target_ref)
+		vamp.rush_target_ref = null
 		return
 
 	if(xeno.can_not_harm(carbon_target))
@@ -192,7 +188,7 @@
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
-	qdel(vamp.rush_target_ref)
+	vamp.rush_target_ref = null
 	target.sway_jitter(times = 2)
 	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
@@ -201,14 +197,14 @@
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
 
-/datum/action/xeno_action/activable/pounce/rush/proc/on_end_rush()
+/datum/action/xeno_action/activable/pounce/rush/on_end_pounce()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
-	if(!vamp.rush_target_ref || QDELETED(vamp.rush_target_ref))
+	if(!vamp.rush_target_ref)
 		return
 
 	var/mob/living/target = vamp.rush_target_ref.resolve()
-	qdel(vamp.rush_target_ref)
+	vamp.rush_target_ref = null
 	if(!target)
 		return
 	if(!xeno.check_state())

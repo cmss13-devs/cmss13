@@ -1,0 +1,5 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - bugfix: "Light replacer received some modifications. Wrenches and Wirecutters now face outwards, so they will not mix with the character's clothes.  Working Joe PDA is now similar to the command tablet. All buckets have been re-positioned to look better. Levels the height of double-holding the mateba with other revolvers on the code. Replaces the current wood stack with a ported and resprited version from Aurora. Fixes riot shield facing the opposite of the intended direction in some specific positions. Tweaks the position of the Maintenance Jack so it will not snap."
+  - imageadd: "Added new in_hand wood stack, ported from Aurora and resprited to match with our current wood object."

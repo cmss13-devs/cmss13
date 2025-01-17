@@ -78,55 +78,55 @@ const SquadPanel = (props) => {
   const [category, setCategory] = useSharedState('selected', 'monitor');
 
   return (
-    <>
-      <Stack fill vertical>
-        <Stack.Item>
-          <Collapsible title="Main Dashboard" fontSize="16px">
-            <MainDashboard />
-          </Collapsible>
-        </Stack.Item>
-        <Stack.Item>
-          <Collapsible title="Squad Roles" fontSize="16px">
-            <RoleTable />
-          </Collapsible>
-        </Stack.Item>
-        <Stack.Item grow>
-          <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
+    <Stack fill vertical>
+      <Stack.Item>
+        <Collapsible title="Main Dashboard" fontSize="16px">
+          <MainDashboard />
+        </Collapsible>
+      </Stack.Item>
+      <Stack.Item>
+        <Collapsible title="Squad Roles" fontSize="16px">
+          <RoleTable />
+        </Collapsible>
+      </Stack.Item>
+      <Stack.Item>
+        <Tabs fluid pr="0" pl="0" mb="0" fontSize="16px">
+          <Tabs.Tab
+            selected={category === 'monitor'}
+            icon="heartbeat"
+            onClick={() => setCategory('monitor')}
+          >
+            Squad Monitor
+          </Tabs.Tab>
+          {!!data.can_launch_crates && (
             <Tabs.Tab
-              selected={category === 'monitor'}
-              icon="heartbeat"
-              onClick={() => setCategory('monitor')}
+              selected={category === 'supply'}
+              icon="wrench"
+              onClick={() => setCategory('supply')}
             >
-              Squad Monitor
+              Supply Drop
             </Tabs.Tab>
-            {!!data.can_launch_crates && (
-              <Tabs.Tab
-                selected={category === 'supply'}
-                icon="wrench"
-                onClick={() => setCategory('supply')}
-              >
-                Supply Drop
-              </Tabs.Tab>
-            )}
-            {!!data.can_launch_obs && (
-              <Tabs.Tab
-                selected={category === 'ob'}
-                icon="bomb"
-                onClick={() => setCategory('ob')}
-              >
-                Orbital Bombardment
-              </Tabs.Tab>
-            )}
-            <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
-              Tactical Map
+          )}
+          {!!data.can_launch_obs && (
+            <Tabs.Tab
+              selected={category === 'ob'}
+              icon="bomb"
+              onClick={() => setCategory('ob')}
+            >
+              Orbital Bombardment
             </Tabs.Tab>
-          </Tabs>
-        </Stack.Item>
+          )}
+          <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
+            Tactical Map
+          </Tabs.Tab>
+        </Tabs>
+      </Stack.Item>
+      <Stack.Item grow>
         {category === 'monitor' && <SquadMonitor />}
         {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
         {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
-      </Stack>
-    </>
+      </Stack.Item>
+    </Stack>
   );
 };
 
@@ -247,7 +247,7 @@ const RoleTable = (props) => {
   } = data;
 
   return (
-    <Table m="1px" fontSize="12px" bold>
+    <Table pb="4px" m="1px" fontSize="12px" bold>
       <Table.Row>
         <Table.Cell textAlign="center" p="4px">
           Squad Leader

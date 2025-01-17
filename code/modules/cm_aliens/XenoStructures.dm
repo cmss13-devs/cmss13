@@ -1118,7 +1118,7 @@
 		votes[choice] = 1
 
 /// Initiates a vote that will end in 20 seconds to vote for the King. Hatching will then begin in 1 minute unless expedited.
-/obj/effect/alien/resin/king_cocoon/proc/start_vote(expedite = FALSE)
+/obj/effect/alien/resin/king_cocoon/proc/start_vote()
 	rolling_candidates = TRUE
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 

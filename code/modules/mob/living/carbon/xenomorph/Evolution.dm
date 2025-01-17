@@ -253,7 +253,7 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/Transmute()
+/mob/living/carbon/xenomorph/proc/transmute_verb()
 	set name = "Transmute"
 	set desc = "Transmute into a different caste of the same tier"
 	set category = "Alien"
@@ -289,12 +289,12 @@
 	else if (tier == 3)
 		options = XENO_T3_CASTES
 
-	newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "Transmute", options, theme="hive_status")
+	newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
 
 	if(!newcaste)
 		return
 
-	transmute(newcaste)
+	transmute(newcaste, "We transmute into a new form.")
 
 // The queen de-evo, but on yourself.
 /mob/living/carbon/xenomorph/verb/Deevolve()
@@ -358,7 +358,7 @@
 	
 	return
 
-/mob/living/carbon/xenomorph/proc/transmute(newcaste)
+/mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
 	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
@@ -408,7 +408,7 @@
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
-	SPAN_XENODANGER("We regress into our previous form."))
+	SPAN_XENODANGER(message))
 
 	transfer_observers_to(new_xeno)
 

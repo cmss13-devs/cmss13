@@ -103,9 +103,9 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
 
-	if(!_check_danger())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
-		return FALSE
+	// if(!_check_danger())
+	// 	to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
+	// 	return FALSE
 
 	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
@@ -394,7 +394,7 @@
 
 /datum/hivebuff/game_ender_caste
 	name = "His Grace"
-	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."
+	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn.."
 	tier = HIVEBUFF_TIER_MAJOR
 	radial_icon = "king"
 	
@@ -413,6 +413,9 @@
 	if(locate(/mob/living/carbon/xenomorph/king) in hive.totalXenos)
 		special_fail_message = "Only one King may exist at a time."
 		return FALSE
+
+	if(!hive.hive_location)
+		special_fail_message = "You must first construct a hive core."
 
 	return !hive.has_hatchery
 
@@ -436,6 +439,9 @@
 				for(var/obj/structure/struct in turf_to_check)
 					if(struct.density)
 						failed = TRUE
+						break
+				for(var/obj/effect/alien/resin/special in turf_to_check)
+					failed = TRUE
 					break
 		if(!failed)
 			spawn_turf = potential_turf
@@ -507,12 +513,17 @@
 
 	engage_flavourmessage = "The Queen has blessed us with adaptability."
 	duration = 0
-	cost = 2
+	cost = 0
 	number_of_required_pylons = 2
 	radial_icon = "shield_m"
 
 /datum/hivebuff/adaptability/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	add_verb(xeno, /mob/living/carbon/xenomorph/proc/Transmute)
+	if(xeno.caste.tier > 3)
+		return
+
+	add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
+	var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+	transmute_action.give_to(xeno)
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"

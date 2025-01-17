@@ -293,16 +293,17 @@
 			return
 		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
+/obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
-	set name = "flush tank"
+	set name = "Flush Tank"
 	set src in usr
+
 	if(usr.is_mob_incapacitated()) return
 	if(src.reagents.total_volume == 0)
-		to_chat(user, SPAN_WARNING("It's already empty!"))
+		to_chat(usr, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return
@@ -323,6 +324,7 @@
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units."
 	icon_state = "beakerlarge"
+	item_state = "beakerlarge"
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
@@ -332,6 +334,7 @@
 	name = "large silver beaker"
 	desc = "A large silver beaker. Can hold up to 240 units. The beaker itself acts as a silver catalyst."
 	icon_state = "beakersilver"
+	item_state = "beakersilver"
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
@@ -351,6 +354,7 @@
 	name = "high-capacity beaker"
 	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
 	icon_state = "beakerbluespace"
+	item_state = "beakerbluespace"
 	matter = list("glass" = 10000)
 	volume = 300
 	amount_per_transfer_from_this = 10
@@ -361,6 +365,7 @@
 	name = "vial"
 	desc = "A small glass vial. Can hold up to 30 units."
 	icon_state = "vial"
+	item_state = "vial"
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
@@ -489,8 +494,13 @@
 	name = "Hydrogen canister"
 	desc = "A canister containing pressurized hydrogen. Can be used to refill storage tanks."
 	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	icon_state = "canister_hydrogen"
-	item_state = "anesthetic"
+	item_state = "canister_hydrogen"
 	amount_per_transfer_from_this = 100
 	possible_transfer_amounts = list(50,100,200,300,400)
 	volume = 400
@@ -510,24 +520,28 @@
 	name = "Ammonia canister"
 	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
+	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
 	name = "Methane canister"
 	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
 	icon_state = "canister_methane"
+	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
 	name = "Polytrinic acid canister"
 	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
 	icon_state = "canister_pacid"
+	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
 	name = "Oxygen canister"
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
+	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
@@ -640,6 +654,7 @@
 	name = "mop bucket"
 	desc = "A larger bucket, typically used with a mop. Holds 240 units"
 	icon_state = "mopbucket"
+	item_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
@@ -651,6 +666,7 @@
 	name = "janitorial bucket"
 	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
 	icon_state = "janibucket"
+	item_state = "janibucket"
 	matter = list("metal" = 8000)
 	volume = 500
 

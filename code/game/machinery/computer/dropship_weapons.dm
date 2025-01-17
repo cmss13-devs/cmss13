@@ -38,6 +38,11 @@
 
 	var/registered = FALSE
 
+/obj/structure/machinery/computer/dropship_weapons/New()
+	..()
+	if(firemission_envelope)
+		firemission_envelope.linked_console = src
+
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
@@ -49,17 +54,14 @@
 	AddComponent(/datum/component/camera_manager)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
-/obj/structure/machinery/computer/dropship_weapons/New()
-	..()
-	if(firemission_envelope)
-		firemission_envelope.linked_console = src
+/obj/structure/machinery/computer/dropship_weapons/Destroy()
+	. = ..()
+	QDEL_NULL(firemission_envelope)
+	QDEL_NULL(tacmap)
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
-
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -436,6 +438,9 @@
 			return TRUE
 
 		if("nvg-enable")
+			if(upgraded != MATRIX_NVG)
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				return FALSE
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
 
@@ -913,13 +918,7 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_SAIPAN
 
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	QDEL_NULL(firemission_envelope)
-	QDEL_NULL(tacmap)
-
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
-
 	if(!configuration)
 		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return

@@ -137,6 +137,11 @@
 	user.set_interaction(src)
 	tgui_interact(user)
 
+/obj/item/device/radio/headset/examine(mob/user as mob)
+	if(ishuman(user) && loc == user)
+		tgui_interact(user)
+	return ..()
+
 /obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
@@ -364,8 +369,8 @@
 			marker_flags = MINIMAP_FLAG_USCM
 		else if(hud_type == MOB_HUD_FACTION_UPP)
 			marker_flags = MINIMAP_FLAG_UPP
-		else if(hud_type == MOB_HUD_FACTION_PMC)
-			marker_flags = MINIMAP_FLAG_PMC
+		else if(hud_type == MOB_HUD_FACTION_PMC || hud_type == MOB_HUD_FACTION_WY)
+			marker_flags = MINIMAP_FLAG_WY
 		else if(hud_type == MOB_HUD_FACTION_CLF)
 			marker_flags = MINIMAP_FLAG_CLF
 
@@ -987,8 +992,11 @@
 /obj/item/device/radio/headset/distress/WY
 	name = "WY corporate headset"
 	desc = "A headset commonly worn by WY corporate personnel."
+	icon_state = "wy_headset"
 	frequency = WY_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_WY
 
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"

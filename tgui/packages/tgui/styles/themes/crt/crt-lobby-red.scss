@@ -1,0 +1,14 @@
+@use 'sass:meta';
+
+@use '../../base.scss' with (
+  $color-bg: #000011,
+  $color-fg: #d62c2c
+);
+
+@use '../crt.scss' with (
+  $font-family: chakrapetch-bold
+);
+
+.theme-crtlobbyred {
+  @extend %theme-crt;
+}

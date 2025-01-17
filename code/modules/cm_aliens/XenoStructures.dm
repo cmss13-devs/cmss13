@@ -1012,8 +1012,8 @@
 	if(groundside_humans < 12)
 		// Too few marines are now groundside, hatch immediately
 		start_vote()
-		addtimer(CALLBACK(PROC_REF(roll_candidates)), 20 SECONDS)
-		addtimer(CALLBACK(PROC_REF(start_hatching), expedite=TRUE), 25 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(roll_candidates)), 20 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(start_hatching), TRUE), 25 SECONDS)
 		STOP_PROCESSING(SSobj, src)
 		return
 

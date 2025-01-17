@@ -12,5 +12,9 @@
 	if((1 - thermal_protection) > 0.0001)
 		bodytemperature += BODYTEMP_HEATING_MAX
 		recalculate_move_delay = TRUE
+//RUCM START
+		if(fire_reagent.friendlydetection && getFireLoss() > 400)
+			return
+//RUCM END
 		var/dmg = armor_damage_reduction(GLOB.marine_fire, fire_reagent.intensityfire / HUMAN_BURN_DIVIDER)
 		apply_damage(dmg, BURN)

@@ -664,8 +664,19 @@
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
+/*
 		ignited_morb.last_damage_data = weapon_cause_data
 		ignited_morb.apply_damage(firedamage, BURN)
+*/
+//RUCM START
+		if(!friendlydetection)
+			ignited_morb.last_damage_data = weapon_cause_data
+			ignited_morb.apply_damage(firedamage, BURN)
+		else
+			if(ignited_morb.getFireLoss() < 400)// We don't want fire rav do nasty dirty gameplay
+				ignited_morb.last_damage_data = weapon_cause_data
+				ignited_morb.apply_damage(firedamage, BURN) //This makes fire stronk.
+//RUCM END
 		animation_flash_color(ignited_morb, tied_reagent.burncolor) //pain hit flicker
 
 		var/msg = "Augh! You are roasted by the flames!"
@@ -734,9 +745,16 @@
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
+/*
 				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
 				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+*/
+//RUCM START
+				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent, src)
+			else
+				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent, src)
+//RUCM END
 
 	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
 		burn_damage = 0

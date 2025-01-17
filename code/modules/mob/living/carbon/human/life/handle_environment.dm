@@ -28,6 +28,11 @@
 		if(status_flags & GODMODE)
 			return 1 //Godmode
 
+//RUCM START
+		if(getFireLoss() > 400)
+			return
+//RUCM END
+
 		if(bodytemperature > species.heat_level_3)
 			take_overall_damage(burn = HEAT_DAMAGE_LEVEL_3, used_weapon = "High Body Temperature")
 			pain.apply_pain(HEAT_DAMAGE_LEVEL_3, BURN)

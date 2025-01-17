@@ -411,7 +411,7 @@
 		return
 
 //RUCM START
-	if(fire.friendlydetection)
+	if(fire && fire.friendlydetection)
 		var/mob/living/user = flame_cause_data.resolve_mob()
 		if(istype(user) && (linked_hive && HIVE_ALLIED_TO_HIVE(user.hivenumber, linked_hive.hivenumber)))
 			return

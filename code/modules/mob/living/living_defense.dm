@@ -195,7 +195,7 @@
 
 /mob/living/proc/TryIgniteMob(fire_stacks, datum/reagent/R, obj/flamer_fire/fire)
 //RUCM START
-	if(fire.friendlydetection)
+	if(fire && fire.friendlydetection)
 		var/mob/living/user = fire.weapon_cause_data.resolve_mob()
 		if(istype(user) && user.ally_of_hivenumber(hivenumber))
 			return FALSE

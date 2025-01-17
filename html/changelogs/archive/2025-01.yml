@@ -269,3 +269,21 @@
       repurposed as armor for generals.
   - rscadd: Added additional vending options to the CO vendor.
   - bugfix: fixed co and so uniforms not having working camo variants
+2025-01-17:
+  Blundir:
+  - rscadd: WY research consultant labcoat
+  - rscadd: WY research consultant now has a coherent set of items at their disposal
+  - rscadd: WY research new looks
+  - bugfix: fixes WY research consultant not having their gun spawn
+  Lagomorphica:
+  - balance: Dancer praetorian has lost it's acid.
+  - balance: Dancer praetorian tail-trip and impale now have a small cooldown on miss.
+  Red-byte3D:
+  - rscdel: Removed shipside operations synthetic
+  - balance: Queen building buffed back to 2 seconds while boosted. 3 seconds while
+      the buff has ran out
+  - balance: The base synthetic stun resistances have been cut in half, from 5 to
+      2.5
+  - balance: Synthetic smart-pack no longer is an exoskeleton nor has any abilities
+      other then a built in light and is a normal backpack.
+  - spellcheck: Description and name of the smart pack changed

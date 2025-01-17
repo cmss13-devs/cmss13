@@ -304,7 +304,7 @@
 
 	var/space = container.reagents.maximum_volume - container.reagents.total_volume
 	if(!space || cycle >= cycle_limit) //We done boys
-		stop_program(1)
+		stop_program()
 		update_icon()
 		return
 

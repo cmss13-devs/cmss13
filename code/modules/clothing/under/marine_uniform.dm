@@ -264,6 +264,7 @@
 	specialty = "USCM officer"
 	flags_atom = FPRINT
 
+
 /obj/item/clothing/under/marine/officer/general
 	name = "general uniform"
 	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
@@ -352,20 +353,20 @@
 	worn_state = "CO_service"
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/under/marine/officer/formal/white
-	name = "Commanding Officer's white formal uniform"
-	desc = "A well-ironed USCM officer uniform in brilliant white with gold accents, intended for parades or hot weather. Wear this with pride."
-	icon_state = "CO_formal_white"
-	worn_state = "CO_formal_white"
-	specialty = "captain's white formal"
+/obj/item/clothing/under/marine/officer/formal/gray
+	name = "Commanding Officer's gray formal uniform"
+	desc = "A well-ironed USCM officer uniform  intended for parades or hot weather. Wear this with pride."
+	icon_state = "co_gray"
+	worn_state = "co_gray"
+	specialty = "captain's gray formal"
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/under/marine/officer/formal/black
-	name = "Commanding Officer's gray formal uniform"
-	desc = "A well-ironed USCM officer uniform in subdued gray with gold accents, intended for more formal or somber events. Wear this with pride."
-	icon_state = "CO_formal_black"
-	worn_state = "CO_formal_black"
-	specialty = "captain's gray formal"
+/obj/item/clothing/under/marine/officer/formal/turtleneck
+	name = "Commanding Officer's turtleneck uniform"
+	desc = "A well-ironed USCM officer uniform intended for more formal or somber events. Wear this with pride."
+	icon_state = "co_turtleneck"
+	worn_state = "co_turtleneck"
+	specialty = "captain's turtleneck"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/dress

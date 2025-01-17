@@ -26,6 +26,7 @@
 
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
+	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -817,7 +818,7 @@
 	skills = /datum/skills/commander
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
-	utility_gloves = list(/obj/item/clothing/gloves/marine/techofficer/commander)
+	utility_gloves = list(/obj/item/clothing/gloves/marine)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
 
 	service_hat = list(/obj/item/clothing/head/beret/cm)

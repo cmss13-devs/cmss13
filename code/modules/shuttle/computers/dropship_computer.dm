@@ -465,7 +465,7 @@
 			to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))
 			return
 
-	if(use_factions && shuttle.faction != faction) //someone trying href
+	if(use_factions && shuttle && shuttle.faction != faction) //someone trying href
 		return FALSE
 
 	switch(action)

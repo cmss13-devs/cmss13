@@ -241,6 +241,7 @@
 		/obj/item/explosive/grenade/flashbang = 4,
 		/obj/item/weapon/gun/energy/taser = 4,
 		/obj/item/reagent_container/spray/pepper = 4,
+		/obj/item/reagent_container/spray/investigation = 4,
 		/obj/item/weapon/baton = 4,
 		/obj/item/device/flashlight = 4,
 		/obj/item/storage/belt/security/MP = 4,

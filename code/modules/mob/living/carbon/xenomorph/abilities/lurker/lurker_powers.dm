@@ -182,7 +182,7 @@
 	. = ..(carbon_target)
 
 	if(!.)
-		vamp.rush_target_ref = null
+		qdel(vamp.rush_target_ref)
 		return
 
 	if(xeno.can_not_harm(carbon_target))

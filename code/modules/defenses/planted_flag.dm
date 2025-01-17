@@ -24,12 +24,12 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
-	proc/toggle_icon()
-		if(icon == 'icons/obj/structures/machinery/defenses/planted_flag.dmi')
-			icon = alternative_icon
-		else
-			icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
-		update_icon()
+/obj/structure/machinery/defenses/planted_flag/proc/toggle_icon()
+	if(icon == 'icons/obj/structures/machinery/defenses/planted_flag.dmi')
+		icon = alternative_icon
+	else
+		icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
+	update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()

@@ -1011,8 +1011,11 @@
 
 	if(groundside_humans < 12)
 		// Too few marines are now groundside, hatch immediately
-		start_vote(expedite = TRUE)
+		start_vote()
+		addtimer(CALLBACK(PROC_REF(roll_candidates)), 20 SECONDS)
+		addtimer(CALLBACK(PROC_REF(start_hatching), expedite=TRUE), 25 SECONDS)
 		STOP_PROCESSING(SSobj, src)
+		return
 
 	time_to_hatch -= delta_time SECONDS
 
@@ -1027,8 +1030,6 @@
 		stage = STAGE_VOTE
 	else if (stage == STAGE_VOTE && time_to_hatch <= 40 SECONDS)
 		roll_candidates()
-		votes = null
-		candidates = null
 		stage = STAGE_PICK
 	else if (stage == STAGE_PICK && time_to_hatch <= 20 SECONDS)
 		start_hatching()
@@ -1144,11 +1145,8 @@
  * Then all other living xenos not meeting the playtime requirement are asked.
  * Then all other xeno observer candidates not meeting the playtime requirement are asked.
  * Then finally if after all that, the search is given up and will ultimately result in a freed King mob.
- *
- * Arguments:
- * * expedite: Whether hatching should begin in a minute or immediately after a candidate is found.
  */
-/obj/effect/alien/resin/king_cocoon/proc/roll_candidates(expedite = FALSE)
+/obj/effect/alien/resin/king_cocoon/proc/roll_candidates()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 
 	var/primary_votes = 0
@@ -1214,6 +1212,8 @@
 
 /// Starts the hatching in twenty seconds, otherwise immediately if expedited
 /obj/effect/alien/resin/king_cocoon/proc/start_hatching(expedite = FALSE)
+	votes = null
+	candidates = null
 	if(expedite)
 		animate_hatch_king()
 		return

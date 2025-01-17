@@ -673,7 +673,8 @@
 			ignited_morb.last_damage_data = weapon_cause_data
 			ignited_morb.apply_damage(firedamage, BURN)
 		else
-			if(ignited_morb.getFireLoss() < 400)// We don't want fire rav do nasty dirty gameplay
+			var/mob/living/user = weapon_cause_data.resolve_mob()
+			if(!(istype(user) && user.ally_of_hivenumber(ignited_morb.hivenumber)) && ignited_morb.getFireLoss() < 400)// We don't want fire rav do nasty dirty gameplay
 				ignited_morb.last_damage_data = weapon_cause_data
 				ignited_morb.apply_damage(firedamage, BURN) //This makes fire stronk.
 //RUCM END
@@ -772,7 +773,8 @@
 		M.last_damage_data = weapon_cause_data
 		M.apply_damage(burn_damage, BURN) //This makes fire stronk.
 	else
-		if(M.getFireLoss() < 400)// We don't want fire rav do nasty dirty gameplay
+		var/mob/living/user = weapon_cause_data.resolve_mob()
+		if(!(istype(user) && user.ally_of_hivenumber(M.hivenumber)) && M.getFireLoss() < 400)// We don't want fire rav do nasty dirty gameplay
 			M.last_damage_data = weapon_cause_data
 			M.apply_damage(burn_damage, BURN) //This makes fire stronk.
 //RUCM END

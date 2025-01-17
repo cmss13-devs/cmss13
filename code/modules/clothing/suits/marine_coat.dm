@@ -241,7 +241,7 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless
 	name = "commanding officer's jacket"
-	desc = "A patchless version of the officer jacket, its presence is still domnineering."
+	desc = "A patchless version of the officer jacket, its presence is still domineering"
 	icon_state = "co_plain"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon

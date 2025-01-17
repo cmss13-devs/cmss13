@@ -144,9 +144,16 @@
 
 // VAMPIRE LURKER
 
+/datum/action/xeno_action/activable/pounce/rush/New()
+	. = ..()
+	pounce_end_callbacks = list(CALLBACK(src, PROC_REF(on_end_rush)))
+
 /datum/action/xeno_action/activable/pounce/rush/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
+		return
+
+	if(target == xeno)
 		return
 
 	if(!isturf(xeno.loc))
@@ -168,15 +175,24 @@
 	if(!iscarbon(carbon_target) || carbon_target.stat == DEAD)
 		to_chat(xeno, SPAN_XENOWARNING("We need a target to rush at, hostile or not."))
 		return FALSE
+
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	vamp.rush_target_ref = WEAKREF(carbon_target)
+
 	. = ..(carbon_target)
+
 	if(!.)
+		vamp.rush_target_ref = null
 		return
+
 	if(xeno.can_not_harm(carbon_target))
 		xeno.emote("needshelp")
 
-/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
+/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //rush effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	vamp.rush_target_ref = null
 	target.sway_jitter(times = 2)
 	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
@@ -184,6 +200,22 @@
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
+
+/datum/action/xeno_action/activable/pounce/rush/proc/on_end_rush()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	if(!vamp.rush_target_ref)
+		return
+
+	var/mob/living/target = vamp.rush_target_ref.resolve()
+	vamp.rush_target_ref = null
+	if(!target)
+		return
+	if(!xeno.check_state())
+		return
+	if(target.stat == DEAD || xeno.can_not_harm(target) || !xeno.Adjacent(target))
+		return
+	additional_effects(target)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner

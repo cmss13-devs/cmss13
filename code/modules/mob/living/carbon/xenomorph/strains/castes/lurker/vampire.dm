@@ -16,12 +16,13 @@
 		/datum/action/xeno_action/activable/tail_jab,
 		/datum/action/xeno_action/activable/headbite,
 	)
+	behavior_delegate_type = /datum/behavior_delegate/lurker_vampire
 
 /datum/xeno_strain/vampire/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
 	lurker.plasmapool_modifier = 0
 	lurker.health_modifier -= XENO_HEALTH_MOD_MED
 	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
-	lurker.armor_modifier += XENO_ARMOR_MOD_MED
+	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
 	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	lurker.attack_speed_modifier -= 2
 
@@ -30,3 +31,8 @@
 	lurker.execute_hud = TRUE
 
 	lurker.recalculate_everything()
+
+/datum/behavior_delegate/lurker_vampire
+	name = "Lurker Vampire Behavior Delegate"
+
+	var/datum/weakref/rush_target_ref = null //who are we targeting with the rush ability, used to strike them even if we didn't land exactly on top of them

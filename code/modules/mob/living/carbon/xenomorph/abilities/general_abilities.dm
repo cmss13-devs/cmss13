@@ -223,6 +223,7 @@
 
 	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
+	var/list/pounce_end_callbacks = null // Callbacks to call when the pounce (throw) ends
 
 /datum/action/xeno_action/activable/pounce/New()
 	. = ..()

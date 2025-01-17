@@ -699,7 +699,6 @@
 	var/duration_per_level = 0
 
 /datum/chem_property/positive/fire/reset_reagent()
-	holder.chemfiresupp = initial(holder.chemfiresupp)
 	holder.radiusmod = initial(holder.radiusmod)
 	holder.durationmod = initial(holder.durationmod)
 	holder.intensitymod = initial(holder.intensitymod)
@@ -711,8 +710,6 @@
 	..()
 
 /datum/chem_property/positive/fire/update_reagent()
-	holder.chemfiresupp = TRUE
-
 	holder.radiusmod += radiusmod_per_level * level
 	holder.durationmod += durationmod_per_level * level
 	holder.intensitymod += intensitymod_per_level * level
@@ -768,6 +765,14 @@
 	value = 1
 	intensity_per_level = 6
 	duration_per_level = -2
+
+/datum/chem_property/positive/fire/oxidizing/reset_reagent()
+	holder.chemfiresupp = initial(holder.chemfiresupp)
+	..()
+
+/datum/chem_property/positive/fire/oxidizing/update_reagent()
+	holder.chemfiresupp = TRUE
+	..()
 
 	intensitymod_per_level = 0.2
 	durationmod_per_level = -0.1

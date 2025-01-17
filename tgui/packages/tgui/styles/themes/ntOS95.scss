@@ -83,8 +83,14 @@ $scrollbar-color-multiplier: 1;
     background-color: white;
     outline: base.em(2px) inset #c3c3c3;
     color: black;
-    &__input:-ms-input-placeholder {
-      color: black;
+    &__input {
+      &::placeholder {
+        color: black;
+      }
+
+      &:-ms-input-placeholder {
+        color: black;
+      }
     }
   }
 

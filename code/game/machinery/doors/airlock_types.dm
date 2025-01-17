@@ -566,9 +566,49 @@
 /obj/structure/machinery/door/airlock/almayer/generic/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/generic/rusted
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/rusted_white
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/white_rusted_solid.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/white_rusted_solid.dmi'
+
 /obj/structure/machinery/door/airlock/almayer/generic/glass
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/glass/rusted_window
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_window.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/glass/rusted_window_small
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_windowsmall.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/glass/rusted_window
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_window.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/glass/rusted_window_small
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/rusted_door_windowsmall.dmi'
 	opacity = FALSE
 	glass = TRUE
 
@@ -860,10 +900,10 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return
 
-/obj/structure/machinery/door/airlock/dropship_hatch/unlock()
-	if(is_reserved_level(z)) // in flight
-		return
-	..()
+/obj/structure/machinery/door/airlock/dropship_hatch/unlock(forced = FALSE)
+	if(is_reserved_level(z) && !forced) // in flight
+		return FALSE
+	return ..()
 
 /obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
 
@@ -917,3 +957,126 @@
 	dir = SOUTH
 
 
+// Hybrisa
+
+/obj/structure/machinery/door/airlock/hybrisa
+	openspeed = 4
+
+/obj/structure/machinery/door/airlock/hybrisa/generic
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_generic_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname
+	req_access = null
+	opacity = FALSE
+	glass = TRUE
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/hybrisa/generic_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_generic.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+
+// Medical
+
+/obj/structure/machinery/door/airlock/hybrisa/medical
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_medidoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/hybrisa/medical/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/hybrisa/medical_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_medidoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/hybrisa/medical_solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
+
+// Personal
+
+/obj/structure/machinery/door/airlock/hybrisa/personal
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_personaldoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname
+	autoname = TRUE
+	req_access = null
+	opacity = TRUE
+	glass = FALSE
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+// Personal White
+
+/obj/structure/machinery/door/airlock/hybrisa/personal_white
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_personaldoor_glass_white.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/hybrisa/personal_white/autoname
+	autoname = TRUE
+	req_access = null
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid_white
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/hybrisa/hybrisa_personaldoor_white.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
+
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid_white/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)

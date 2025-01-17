@@ -76,13 +76,6 @@
 		icon_state = initial(icon_state)
 		icon_state += "0"
 
-
-
-/obj/structure/machinery/computer/power_change()
-	..()
-	update_icon()
-
-
 /obj/structure/machinery/computer/proc/set_broken()
 	stat |= BROKEN
 	update_icon()
@@ -127,7 +120,7 @@
 		src.attack_hand(user)
 	return ..()
 
-/obj/structure/machinery/computer/attack_hand()
+/obj/structure/machinery/computer/attack_hand(mob/living/user)
 	. = ..()
 	if(!.) //not broken or unpowered
 		if(ishuman(usr))

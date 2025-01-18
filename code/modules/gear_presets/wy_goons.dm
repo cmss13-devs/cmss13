@@ -154,16 +154,17 @@
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_medic
 	minimap_icon = "goon_medic"
+	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 
 /datum/equipment_preset/goon/medic/kutjevo
 	name = "Weyland-Yutani Corporate Security Medic (Kutjevo Camo)"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
-	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
+	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo/medic
 
 /datum/equipment_preset/goon/medic/hybrisa
 	name = "Weyland-Yutani Corporate Security Medic (Hybrisa Camo)"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
-	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
+	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
 
 /datum/equipment_preset/goon/medic/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)

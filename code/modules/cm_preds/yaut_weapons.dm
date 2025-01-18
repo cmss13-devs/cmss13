@@ -824,8 +824,6 @@
 	)
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	worn_x_dimension = 64
-	worn_y_dimension = 64
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	throwforce = MELEE_FORCE_TIER_3
@@ -855,6 +853,8 @@
 
 	for(var/turf/target_turf in target_turfs)
 		for(var/mob/living/target_mob in target_turf)
+			if(target_mob == target)
+				continue
 			attack(target_mob, user, primary=FALSE)
 		
 

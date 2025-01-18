@@ -370,8 +370,8 @@
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	icon_state = "overwatch_gear"
 	item_icons = list(
-		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_EAR = "cam_gear",

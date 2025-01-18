@@ -319,16 +319,28 @@
 
 /datum/action/xeno_action/onclick/send_thoughts/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/thought_sender = owner
-	plasma_cost = 0
-	var/list/options = list("Psychic Radiance(100)", "Psychic Whisper(0)", "Give Order(100)",)
+	var/static/list/options = list(
+		"Psychic Radiance (100)" = icon(/datum/action/xeno_action::icon_file, "psychic_radiance"),
+		"Psychic Whisper (0)" = icon(/datum/action/xeno_action::icon_file, "psychic_whisper"),
+		"Give Order (100)" = icon(/datum/action/xeno_action::icon_file, "queen_order")
+	)
 
-	var/choice = tgui_input_list(thought_sender, "Communicate", "Send Thoughts",  options, theme="hive_status")
+	var/choice
+	if(thought_sender.client?.prefs.no_radials_preference)
+		choice = tgui_input_list(thought_sender, "Communicate", "Send Thoughts", options, theme="hive_status")
+	else
+		choice = show_radial_menu(thought_sender, thought_sender?.client.eye, options)
+
+	if(!choice)
+		return
+
+	plasma_cost = 0
 	switch(choice)
-		if("Psychic Radiance(100)")
+		if("Psychic Radiance (100)")
 			psychic_radiance()
-		if("Psychic Whisper(0)")
+		if("Psychic Whisper (0)")
 			psychic_whisper()
-		if("Give Order(100)")
+		if("Give Order (100)")
 			queen_order()
 	return ..()
 

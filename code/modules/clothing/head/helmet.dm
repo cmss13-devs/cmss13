@@ -1147,18 +1147,28 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi'
 	)
-	icon_state = "helmet"
-	item_state = "helmet"
+	icon_state = "sec_helmet"
+	item_state = "sec_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
+	desc = "A basic skull-helm worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. This one has a medical cross across the front."
+	icon_state = "sec_medic_helmet"
+	item_state = "sec_medic_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead
 	desc = "A basic skull-helm worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
-	icon_state = "lead_helmet"
-	item_state = "lead_helmet"
+	icon_state = "sec_lead_helmet"
+	item_state = "sec_lead_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
 	desc = "A basic skull-helm worn by corporate security assets. This variant is worn comes with a wider brim to protect the user from the harsh climate of the desert."
-	icon_state = "kutjevo_helmet"
-	item_state = "kutjevo_helmet"
+	icon_state = "sec_helmet_kutjevo"
+	item_state = "sec_helmet_kutjevo"
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo/medic
+	desc = "A basic skull-helm worn by corporate security assets. This variant is worn comes with a wider brim to protect the user from the harsh climate of the desert. This one has a medical cross across the front."
+	icon_state = "sec_medic_helmet_kutjevo"
+	item_state = "sec_medic_helmet_kutjevo"
 
 //FIORINA / UA RIOT CONTROL HELMET//
 

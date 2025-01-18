@@ -811,6 +811,38 @@
 				caught_item.sway_jitter(3, 6)
 		busy_fishing = FALSE
 
+/obj/item/weapon/twohanded/yautja/greatsword
+	name = "great sword"
+	desc = "A massive, razor sharp blade with mysterious writings carved into it."
+	icon = 'icons/obj/items/hunter/pred_gear64x64.dmi'
+	icon_state = "greatsword"
+	item_state = "greatsword"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear64x64.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand64x64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand64x64.dmi'
+	)
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	force = MELEE_FORCE_TIER_5
+	force_wielded = MELEE_FORCE_TIER_11
+	throwforce = MELEE_FORCE_TIER_5
+	embeddable = FALSE
+	sharp = IS_SHARP_ITEM_BIG
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
+	attack_speed = 20
+
+/obj/item/weapon/twohanded/yautja/greatsword/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 50, 50)
+
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
 	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."

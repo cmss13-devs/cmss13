@@ -67,7 +67,7 @@
 		if(10) // Colonist
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie/royal_marine(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/bomber/alt(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_joliet_shopsteward(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/steward(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/royal_marine(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack(new_human), WEAR_BACK)
 	add_survivor_weapon_civilian(new_human)
@@ -267,7 +267,7 @@
 		if(1 to 30) // Firefighter
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
@@ -276,7 +276,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_R_HAND)
 		if(30 to 50) // (Rare)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
@@ -637,7 +637,7 @@
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/trucker, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator/silver, WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber/grey, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
@@ -646,7 +646,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated, WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/frontier, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/frontier, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
@@ -847,7 +847,12 @@
 /datum/equipment_preset/survivor/hybrisa/corporate_goon
 	name = "Survivor - Hybrisa - Weyland-Yutani - Corporate Security Guard"
 	assignment = "Weyland-Yutani - Corporate Security Guard"
+	assignment = JOB_WY_GOON
+	rank = JOB_WY_GOON
+	minimap_icon = "goon_standard"
+	minimap_background = "background_goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
@@ -862,7 +867,7 @@
 	switch(choice)
 		if(1 to 10)
 			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/wy_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/wy_cap, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -1059,7 +1064,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/pizzabox/pizza_galaxy/mystery(new_human.back), WEAR_IN_BACK)
 		if(4) // Fire Protection
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
@@ -1074,7 +1079,7 @@
 		if(6) // Landing Pad Attendant Synth
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs, WEAR_R_EAR)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/utility/yellow, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/yellow, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest, WEAR_JACKET)
@@ -1088,7 +1093,7 @@
 		if(7) // Bartender
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bowlerhat, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette, WEAR_FACE)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/detective_synth_uniform/alt, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/grey, WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/tequila, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/cognac, WEAR_IN_BACK)
@@ -1231,10 +1236,10 @@
 	var/choice = rand(1,2)
 	switch(choice)
 		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/synth_detective_hat, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/fedora, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/blue, WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/detective_synth_uniform, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
@@ -1244,10 +1249,10 @@
 			new_human.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_BACK)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/synth_detective_hat/alt, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/fedora/grey, WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/detective_synth_uniform/alt, WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/grey, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)

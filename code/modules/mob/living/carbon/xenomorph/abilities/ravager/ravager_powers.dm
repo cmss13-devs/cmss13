@@ -322,8 +322,8 @@
 
 	// Fling
 	var/facing = get_dir(xeno, carbon)
-	var/turf/turf = xeno.loc
-	var/turf/temp = xeno.loc
+	var/turf/turf = get_turf(xeno)
+	var/turf/temp = turf
 
 	for (var/step in 0 to fling_distance-1)
 		temp = get_step(turf, facing)

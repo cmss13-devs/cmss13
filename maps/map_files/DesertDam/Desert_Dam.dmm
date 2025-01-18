@@ -21310,7 +21310,7 @@
 /area/desert_dam/building/security/prison)
 "bWO" = (
 /obj/item/reagent_container/food/drinks/flask/detflask,
-/obj/item/clothing/head/det_hat,
+/obj/item/clothing/head/fedora,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
@@ -49075,7 +49075,6 @@
 "uKX" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/central_tunnel)
@@ -50307,7 +50306,6 @@
 "xlt" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs,
-/obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "xlE" = (

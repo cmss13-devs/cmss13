@@ -220,6 +220,15 @@ if $grep '\.proc/' $code_x_515 ; then
     st=1
 fi;
 
+section "516 HREF Syntax"
+part "href syntax"
+if $grep "href[\s='\"\\\\]*\?" $code_files; then
+	echo
+    echo -e "${RED}ERROR: BYOND requires internal href links to begin with \"byond://\".${NC}"
+	st=1
+fi;
+
+
 if [ "$pcre2_support" -eq 1 ]; then
 	section "regexes requiring PCRE2"
 	part "long list formatting"

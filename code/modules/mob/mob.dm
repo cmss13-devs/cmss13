@@ -374,13 +374,19 @@
 	reset_view(null)
 
 /mob/proc/point_to_atom(atom/A, turf/T)
-	//Squad Leaders and above have reduced cooldown and get a bigger arrow
-	if(check_improved_pointing())
-		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src, A)
-	else
+	var/mob/living/carbon/human/mob = src
+	var/datum/squad/squad = null
+	if(ishuman(mob))
+		squad = mob.assigned_squad
+	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
 		recently_pointed_to = world.time + 50
 		new /obj/effect/overlay/temp/point(T, src, A)
+	else
+		recently_pointed_to = world.time + 10
+		if(isnull(squad)) //If they get the big arrow but aren't in a squad, they get the default green arrow
+			new /obj/effect/overlay/temp/point/big(T, src, A)
+		else
+			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
@@ -420,17 +426,26 @@
 	. = ..()
 	if(.)
 		return
+
 	if(href_list["mach_close"])
 		var/t1 = href_list["mach_close"]
 		unset_interaction()
 		close_browser(src, t1)
+		return TRUE
 
 	if(href_list["flavor_more"])
 		show_browser(usr, "<BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
 		onclose(usr, "[name]")
+		return TRUE
+
 	if(href_list["flavor_change"])
 		update_flavor_text()
-	return
+		return TRUE
+
+	if(href_list["preference"])
+		if(client)
+			client.prefs.process_link(src, href_list)
+		return TRUE
 
 /mob/proc/swap_hand()
 	hand = !hand
@@ -497,11 +512,11 @@
 	var/refid = REF(src)
 	. += {"
 		<br><font size='1'>
-			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
-			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
-			TOXIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
-			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
-			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
+			BRUTE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
+			FIRE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
+			TOXIN:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
+			OXY:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
+			CLONE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 		</font>
 	"}
 
@@ -977,15 +992,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 				GLOB.alive_mob_list -= src
 				GLOB.dead_mob_list += src
 	return ..()
-
-/mob/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(href_list["preference"])
-		if(client)
-			client.prefs.process_link(src, href_list)
-		return TRUE
 
 /mob/proc/reset_perspective(atom/A)
 	if(!client)

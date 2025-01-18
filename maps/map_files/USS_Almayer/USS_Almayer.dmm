@@ -166,6 +166,31 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
+"aay" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaz" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cichallway)
+"aaA" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/shipboard/brig/processing)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -5069,7 +5094,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/starboard)
 "aGH" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aGN" = (
@@ -6302,7 +6327,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/aft_hallway)
 "aPD" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/machinery/photocopier{
+	pixel_y = 12
+	},
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 8;
+	icon_state = "chestdrawer"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aPE" = (
@@ -9620,7 +9651,7 @@
 /area/almayer/squads/req)
 "bpR" = (
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station)
+/area/supply/station/uscm)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -9629,7 +9660,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bpT" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
 "bpV" = (
@@ -9926,7 +9957,7 @@
 "bsK" = (
 /obj/effect/landmark/supply_elevator,
 /turf/open/floor/almayer/empty/requisitions,
-/area/supply/station)
+/area/supply/station/uscm)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -11117,7 +11148,7 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/living/cryo_cells)
 "bEc" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bEd" = (
@@ -12450,7 +12481,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bNA" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /obj/structure/sign/safety/galley{
 	pixel_x = -17
 	},
@@ -16431,7 +16462,7 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/structure/machinery/cm_vending/clothing/dress/corporate_liaison,
+/obj/structure/machinery/cm_vending/clothing/corporate_liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "cPg" = (
@@ -21117,7 +21148,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/computer/supplycomp/vehicle,
+/obj/structure/machinery/computer/supply/asrs/vehicle,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "eLu" = (
@@ -21600,15 +21631,15 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/structure/filingcabinet{
-	density = 0;
-	pixel_x = 8;
-	pixel_y = 18
-	},
 /obj/structure/machinery/power/apc/almayer/west,
 /obj/structure/sign/safety/rewire{
 	pixel_x = -17;
 	pixel_y = 17
+	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
@@ -23607,9 +23638,7 @@
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "fOz" = (
-/obj/structure/target{
-	name = "punching bag"
-	},
+/obj/structure/filingcabinet/documentation/uscm_mp,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/sea_office)
 "fOK" = (
@@ -35639,7 +35668,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -35848,7 +35877,7 @@
 /obj/structure/filingcabinet/security{
 	pixel_x = -8
 	},
-/obj/structure/filingcabinet/medical{
+/obj/structure/filingcabinet/documentation/uscm_mp{
 	pixel_x = 8
 	},
 /turf/open/floor/wood/ship,
@@ -39903,6 +39932,7 @@
 /obj/item/clipboard,
 /obj/item/storage/lockbox/loyalty,
 /obj/item/storage/briefcase,
+/obj/item/storage/box/wycaps,
 /obj/item/reagent_container/spray/pepper,
 /obj/item/device/eftpos{
 	eftpos_name = "Weyland-Yutani EFTPOS scanner"
@@ -42215,7 +42245,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/clothing/glasses/monocle,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -7;
 	pixel_y = -2
@@ -43959,21 +43988,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
 "olM" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
+/obj/structure/filingcabinet/documentation/uscm{
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
@@ -52598,7 +52615,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -52606,7 +52623,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 5;
 	pixel_y = -2
@@ -54278,7 +54295,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -54286,7 +54303,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -56196,6 +56213,12 @@
 /obj/structure/machinery/keycard_auth{
 	pixel_y = 25
 	},
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	density = 0;
+	pixel_x = 8;
+	icon_state = "chestdrawer"
+	},
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/shipboard/brig/chief_mp_office)
 "tiI" = (
@@ -57345,7 +57368,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "tFS" = (
-/obj/structure/machinery/computer/supplycomp,
+/obj/structure/machinery/computer/supply/asrs,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
@@ -64661,7 +64684,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south1)
 "wvo" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet/documentation/liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "wvu" = (
@@ -80556,7 +80579,7 @@ cmM
 tzd
 tzd
 sgi
-bju
+aaA
 wSm
 kAL
 xkd
@@ -85228,7 +85251,7 @@ gwR
 sTm
 tdT
 qyo
-tsy
+aay
 qwp
 ora
 laO
@@ -85634,7 +85657,7 @@ wjq
 wjq
 rHc
 qyo
-tsy
+aaz
 qwp
 vGA
 uwN

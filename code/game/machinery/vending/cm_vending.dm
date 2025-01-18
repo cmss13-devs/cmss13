@@ -73,12 +73,7 @@ IN_USE used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
-/obj/structure/machinery/power_change(area/master_area = null)
-	..()
-	update_icon()
-
 /obj/structure/machinery/cm_vending/update_icon()
-
 	//restoring sprite to initial
 	overlays.Cut()
 	//icon_state = initial(icon_state) //shouldn't be needed but just in case
@@ -772,7 +767,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		. = redeem_token(W, user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
@@ -1472,7 +1467,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				spawned += new itemspec_item(loc)
 		if(throw_objects)
 			for(var/atom/movable/spawned_atom in spawned)
-				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)
+				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(ORANGE_TURFS(4, src)), 4, SPEED_FAST)
 	stat &= ~IN_USE
 	if(destroy)
 		qdel(src)

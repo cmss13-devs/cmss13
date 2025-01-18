@@ -215,7 +215,7 @@
 		visible_message(SPAN_DANGER("<B>[src] was hit by [I].</B>"))
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(aforce)
-		return 1
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 	else
 		return try_to_activate_door(user)
 

@@ -287,3 +287,24 @@
   - balance: Synthetic smart-pack no longer is an exoskeleton nor has any abilities
       other then a built in light and is a normal backpack.
   - spellcheck: Description and name of the smart pack changed
+2025-01-18:
+  Blundir:
+  - rscadd: now all WY jobs have a hud icon and a minimap icon
+  - bugfix: fixed corporate survs having incorrect faction
+  - imageadd: WY headset is now white
+  LC4492:
+  - bugfix: Light replacer received some modifications. Wrenches and Wirecutters now
+      face outwards, so they will not mix with the character's clothes.  Working Joe
+      PDA is now similar to the command tablet. All buckets have been re-positioned
+      to look better. Levels the height of double-holding the mateba with other revolvers
+      on the code. Replaces the current wood stack with a ported and resprited version
+      from Aurora. Fixes riot shield facing the opposite of the intended direction
+      in some specific positions. Tweaks the position of the Maintenance Jack so it
+      will not snap.
+  - imageadd: Added new in_hand wood stack, ported from Aurora and resprited to match
+      with our current wood object.
+  MistChristmas:
+  - qol: OW Consoles are scrollable
+  - bugfix: Fixed eslint not checking jsx files
+  Nomoresolvalou, Thwomper:
+  - imageadd: Added a new predator mask and mask attachment

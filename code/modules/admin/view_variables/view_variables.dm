@@ -256,7 +256,7 @@
 					</div>
 				</td>
 				<td width='80%'>
-					<input type='text' id='filter' name='filter_text' value='' onkeyup='handle_keyup()' onblur='handle_keyup()' style='width:100%;'>
+					<input type='search' id='filter' name='filter_text' value='' onkeyup='handle_keyup()' onblur='handle_keyup()' style='width:100%;'>
 				</td>
 			</tr>
 		</table>

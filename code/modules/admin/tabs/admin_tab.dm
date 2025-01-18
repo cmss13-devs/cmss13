@@ -162,7 +162,7 @@
 	</div>
 	</td>
 	<td width='80%'>
-	<input type='text' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
 	</td>
 	</tr>
 	</table>

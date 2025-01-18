@@ -172,7 +172,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 	<B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
 	</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span>
 	<br>
-	<input type='text' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
 	<br>
 	<table border=1 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
 	"}
@@ -206,7 +206,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 	var/data = {"
 	<b>Sticky Bans:</b> [add_sticky] [find_sticky]
 	<br>
-	<input type='text' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
 	<br>
 	<table border=1 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
 	"}

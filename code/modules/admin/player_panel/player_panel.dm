@@ -172,7 +172,7 @@
 			</tr>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:300px;'>
+					<b>Search:</b> <input type='search' id='filter' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:300px;'>
 				</td>
 			</tr>
 		</table>
@@ -326,7 +326,7 @@
 	<br>
 	Round Duration: <b>[floor(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</b>
 	<br>
-	<input type='text' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
 	<table rules=all frame=void border=0 cellspacing=5 cellpadding=3 id='searchable'>
 	"}
 

@@ -936,9 +936,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 GLOBAL_LIST_INIT(community_awards, get_community_awards())
 
-/client
-	var/list/community_awards = list()
-
 /proc/get_community_awards()
 	var/list/awards_file = file2list("config/community_awards.txt")
 	var/list/processed_awards = list()

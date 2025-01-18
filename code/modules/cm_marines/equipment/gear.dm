@@ -379,12 +379,11 @@
 	)
 	flags_equip_slot = SLOT_EAR
 	var/obj/structure/machinery/camera/camera
-	///Refs of observing consoles
-	var/list/overwatch_consoles = list()
 
 /obj/item/device/overwatch_camera/Initialize(mapload, ...)
 	. = ..()
 	camera = new /obj/structure/machinery/camera/overwatch(src)
+	AddComponent(/datum/component/overwatch_console_control)
 
 /obj/item/device/overwatch_camera/Destroy()
 	QDEL_NULL(camera)

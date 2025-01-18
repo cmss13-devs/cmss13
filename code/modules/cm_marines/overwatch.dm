@@ -62,33 +62,13 @@
 	return ..()
 
 /obj/structure/machinery/computer/overwatch/proc/connect_holder(new_holder)
-	if(istype(new_holder, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helm = new_holder
-		helm.overwatch_consoles += WEAKREF(src)
-	else if(istype(new_holder, /obj/item/device/overwatch_camera))
-		var/obj/item/device/overwatch_camera/ow = new_holder
-		ow.overwatch_consoles += WEAKREF(src)
-	else
-		return
 	camera_holder = new_holder
-	camera_holder.flags_atom |= (USES_HEARING|USES_SEEING)
+	SEND_SIGNAL(camera_holder, COMSIG_OW_CONSOLE_OBSERVE_START, WEAKREF(src))
 	RegisterSignal(camera_holder, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
 	RegisterSignal(camera_holder, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
 
 /obj/structure/machinery/computer/overwatch/proc/disconnect_holder()
-	if(istype(camera_holder, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helm = camera_holder
-		helm.overwatch_consoles -= WEAKREF(src)
-		if(length(helm.overwatch_consoles) == 0)
-			helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
-	else if(istype(camera_holder, /obj/item/device/overwatch_camera))
-		var/obj/item/device/overwatch_camera/ow = camera_holder
-		ow.overwatch_consoles -= WEAKREF(src)
-		if(length(ow.overwatch_consoles) == 0)
-			ow.flags_atom &= ~(USES_HEARING|USES_SEEING)
-	else
-		camera_holder = null
-		return
+	SEND_SIGNAL(camera_holder, COMSIG_OW_CONSOLE_OBSERVE_END, WEAKREF(src))
 	UnregisterSignal(camera_holder, COMSIG_BROADCAST_HEAR_TALK)
 	UnregisterSignal(camera_holder, COMSIG_BROADCAST_SEE_EMOTE)
 	camera_holder = null

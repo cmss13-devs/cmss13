@@ -424,6 +424,7 @@
 #include "code\datums\components\label.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\overlay_lighting.dm"
+#include "code\datums\components\overwatch_console_control.dm"
 #include "code\datums\components\rename.dm"
 #include "code\datums\components\resin_cleanup.dm"
 #include "code\datums\components\shimmy_around.dm"

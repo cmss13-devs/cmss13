@@ -23,6 +23,8 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+	var/faction = FACTION_MARINE
+	var/datum/cas_signal/signal
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -39,6 +41,7 @@
 /obj/structure/machinery/defenses/planted_flag/Destroy()
 	. = ..()
 	range_bounds = null
+	deactivate_signal()
 
 /obj/structure/machinery/defenses/planted_flag/update_icon()
 	..()
@@ -53,13 +56,29 @@
 	else
 		overlays += "[defense_type] planted_flag_off"
 
+/obj/structure/machinery/defenses/planted_flag/proc/activate_signal()
+	if(faction && GLOB.cas_groups[faction])
+		signal = new(src)
+		signal.target_id = ++GLOB.cas_tracking_id_increment
+		name = "["X"]-[signal.target_id] [src]"
+		signal.name = name
+		signal.linked_cam = new(loc, name)
+		GLOB.cas_groups[faction].add_signal(signal)
+
+/obj/structure/machinery/defenses/planted_flag/proc/deactivate_signal()
+	if(signal)
+		GLOB.cas_groups[faction].remove_signal(signal)
+		QDEL_NULL(signal)
+
 /obj/structure/machinery/defenses/planted_flag/power_on_action()
 	apply_area_effect()
 	start_processing()
+	activate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
 
 /obj/structure/machinery/defenses/planted_flag/power_off_action()
 	stop_processing()
+	deactivate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
 
 /obj/structure/machinery/defenses/planted_flag/process()
@@ -130,6 +149,8 @@
 		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
 	)
 
+	faction = FACTION_WY
+
 /obj/structure/machinery/defenses/planted_flag/wy/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 2 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 2 SECONDS)
@@ -148,6 +169,8 @@
 	selected_categories = list(
 		SENTRY_CATEGORY_IFF = FACTION_UPP,
 	)
+
+	faction = FACTION_UPP
 
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"

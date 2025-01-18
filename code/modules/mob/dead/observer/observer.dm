@@ -924,7 +924,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	GLOB.xeno_tacmap_status.tgui_interact(src)
 
 /mob/dead/observer/verb/view_faxes()
-	set name = "View Faxes"
+	set name = "View Sent Faxes"
 	set desc = "View faxes from this round"
 	set category = "Ghost.View"
 

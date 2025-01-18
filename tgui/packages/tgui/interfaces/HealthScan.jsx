@@ -188,8 +188,8 @@ export const HealthScan = (props) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        {limbs_damaged ? <ScannerLimbs /> : null}
         {has_chemicals ? <ScannerChems /> : null}
+        {limbs_damaged ? <ScannerLimbs /> : null}
         {damaged_organs?.length && bodyscanner ? <ScannerOrgans /> : null}
         {diseases ? (
           <Section title="Diseases">

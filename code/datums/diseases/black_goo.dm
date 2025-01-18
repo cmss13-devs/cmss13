@@ -232,7 +232,7 @@
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with their [name]."),
 			SPAN_DANGER("You force [D] open with your [name]."))
-			D.Open()
+			D.open()
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo
 	name = "strange bottle"
@@ -280,6 +280,10 @@
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
 	gender = PLURAL
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL
@@ -301,12 +305,12 @@
 /obj/item/storage/fancy/blackgoo/get_examine_text(mob/user)
 	. = ..()
 	. += "A strange looking metal container..."
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		. += "There are no bottles left inside it."
-	else if(contents.len == 1)
+	else if(length(contents) == 1)
 		. += "There is one bottle left inside it."
 	else
-		. += "There are [src.contents.len] bottles inside the container."
+		. += "There are [length(src.contents)] bottles inside the container."
 
 
 /obj/item/storage/fancy/blackgoo/Initialize()

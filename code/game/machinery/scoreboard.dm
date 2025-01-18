@@ -16,8 +16,7 @@
 	update_display()
 
 /obj/structure/machinery/scoreboard/proc/update_display()
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 
 	var/score_state = "s[( floor(scoreleft/10) > scoreleft/10 ? floor(scoreleft/10)-1 : floor(scoreleft/10) )]a"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
@@ -48,7 +47,7 @@
 /obj/structure/machinery/scoreboard_button
 	name = "scoreboard button"
 	desc = "A remote control button to reset a scoreboard."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	var/id = null
 	var/active = 0

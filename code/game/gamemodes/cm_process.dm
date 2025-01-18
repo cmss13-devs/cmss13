@@ -40,12 +40,12 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	set waitfor = 0
 	sleep(2 SECONDS)
 	GLOB.fallen_list += GLOB.fallen_list_cross
-	if(GLOB.fallen_list.len)
+	if(length(GLOB.fallen_list))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
 		dat += SPAN_CENTERBOLD("In memoriam of our fallen soldiers: <br>")
-		for(var/i = 1 to GLOB.fallen_list.len)
-			if(i != GLOB.fallen_list.len)
+		for(var/i = 1 to length(GLOB.fallen_list))
+			if(i != length(GLOB.fallen_list))
 				dat += "[GLOB.fallen_list[i]], "
 			else
 				dat += "[GLOB.fallen_list[i]].<br>"
@@ -87,20 +87,20 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_medal_awards()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(GLOB.medal_awards.len)
+	if(length(GLOB.medal_awards))
 		var/dat = "<br>"
 		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")
 		for(var/recipient in GLOB.medal_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient]
-			for(var/i in 1 to recipient_award.medal_names.len)
+			for(var/i in 1 to length(recipient_award.medal_names))
 				dat += "<br><b>[recipient_award.recipient_rank] [recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'."
 		to_world(dat)
-	if(GLOB.jelly_awards.len)
+	if(length(GLOB.jelly_awards))
 		var/dat = "<br>"
 		dat +=  SPAN_ROUNDBODY("<br>Royal Jelly Awards:")
 		for(var/recipient in GLOB.jelly_awards)
 			var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient]
-			for(var/i in 1 to recipient_award.medal_names.len)
+			for(var/i in 1 to length(recipient_award.medal_names))
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
@@ -186,7 +186,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_xenos = 0
 	for(var/i in GLOB.living_xeno_list)
 		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
 			num_xenos++
 	return num_xenos
 
@@ -195,7 +195,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_xenos = 0
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
 			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M
 				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
@@ -225,7 +225,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	for(var/i in GLOB.alive_human_list)
 		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space))
+		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station))
 			if(M.faction in FACTION_LIST_WY)
 				num_pmcs++
 			else if(M.faction == FACTION_MARINE)
@@ -238,7 +238,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	for(var/i in GLOB.alive_human_list)
 		var/mob/M = i
-		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space))
+		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station))
 			if(M.faction == FACTION_MARINE)
 				num_marines++
 
@@ -252,9 +252,9 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_headcount = 0
 
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(current_human.z && (current_human.z in z_levels) && !istype(current_human.loc, /turf/open/space)))
+		if(!(current_human.z && (current_human.z in z_levels) && !istype(current_human.loc, /turf/open/space) && !istype(current_human.loc, /area/adminlevel/ert_station/fax_response_station)))
 			continue
-		if(current_human.faction in FACTION_LIST_WY || current_human.job == "Corporate Liaison") //The CL is assigned the USCM faction for gameplay purposes
+		if((current_human.faction in FACTION_LIST_WY) || current_human.job == "Corporate Liaison") //The CL is assigned the USCM faction for gameplay purposes
 			num_WY++
 			num_headcount++
 			continue

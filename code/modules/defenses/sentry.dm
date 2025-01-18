@@ -12,7 +12,7 @@
 	var/list/targets = list() // Lists of current potential targets
 	var/list/other_targets = list() //List of special target types to shoot at, if needed.
 	var/atom/movable/target = null
-	var/datum/shape/rectangle/range_bounds
+	var/datum/shape/range_bounds
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/last_fired = 0
 	var/fire_delay = 4
@@ -85,7 +85,7 @@
 	if(!targets)
 		return FALSE
 
-	if(!target && targets.len)
+	if(!target && length(targets))
 		target = pick(targets)
 
 	get_target(target)
@@ -93,17 +93,17 @@
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
-		range_bounds = RECT(x, y, 8, 8)
+		range_bounds = SQUARE(x, y, 8)
 		return
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x + 4, y, 7, 7)
+			range_bounds = SQUARE(x + 4, y, 7)
 		if(WEST)
-			range_bounds = RECT(x - 4, y, 7, 7)
+			range_bounds = SQUARE(x - 4, y, 7)
 		if(NORTH)
-			range_bounds = RECT(x, y + 4, 7, 7)
+			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
-			range_bounds = RECT(x, y - 4, 7, 7)
+			range_bounds = SQUARE(x, y - 4, 7)
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER
@@ -223,7 +223,7 @@
 
 	if(istype(O, ammo))
 		var/obj/item/ammo_magazine/M = O
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) || user.action_busy)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || user.action_busy)
 			return
 
 		if(ammo.current_rounds)
@@ -290,7 +290,7 @@
 		if(actual_fire(A))
 			break
 
-	if(targets.len)
+	if(length(targets))
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 	if(!engaged_timer)
@@ -313,7 +313,7 @@
 	new_projectile.damage *= damage_mult
 	new_projectile.accuracy *= accuracy_mult
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
-	new_projectile.fire_at(target, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
+	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), target))
 	ammo.current_rounds--
 	track_shot()
@@ -350,7 +350,7 @@
 	if(!targets.Find(new_target))
 		targets.Add(new_target)
 
-	if(!targets.len)
+	if(!length(targets))
 		return
 
 	var/list/conscious_targets = list()
@@ -405,7 +405,7 @@
 				continue
 
 		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
-		if(!path.len || get_dist(src, A) > sentry_range)
+		if(!length(path) || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null
 			targets.Remove(A)
@@ -457,9 +457,9 @@
 			else
 				conscious_targets += M
 
-	if(conscious_targets.len)
+	if(length(conscious_targets))
 		target = pick(conscious_targets)
-	else if(unconscious_targets.len)
+	else if(length(unconscious_targets))
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing
@@ -519,26 +519,22 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	. = ..()
 	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
-/obj/structure/machinery/defenses/sentry/premade/deployable/wy
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 	name = "WY 5-GSE3 Static Turret"
-	desc = "An old static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
+	desc = "A state-of-the-art, high-tech static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
 	icon = 'icons/obj/structures/machinery/defenses/wy_static.dmi'
 	defense_type = "Static"
 	sentry_type = "wy_sentry"
-	health = 350
-	health_max = 350
-	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY)
-	fire_delay = 0.6 SECONDS
-	damage_mult = 2
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY, FACTION_NSPA)
 
-/obj/structure/machinery/defenses/sentry/premade/deployable/wy/Initialize()
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy/Initialize()
 	. = ..()
 	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
@@ -614,17 +610,17 @@
 	var/dbl_range = range * 2
 
 	if(omni_directional)
-		range_bounds = RECT(x, y, dbl_range, dbl_range)
+		range_bounds = SQUARE(x, y, dbl_range)
 		return
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x+range, y, dbl_range, dbl_range)
+			range_bounds = SQUARE(x+range, y, dbl_range)
 		if(WEST)
-			range_bounds = RECT(x-range, y, dbl_range, dbl_range)
+			range_bounds = SQUARE(x-range, y, dbl_range)
 		if(NORTH)
-			range_bounds = RECT(x, y+range, dbl_range, dbl_range)
+			range_bounds = SQUARE(x, y+range, dbl_range)
 		if(SOUTH)
-			range_bounds = RECT(x, y-range, dbl_range, dbl_range)
+			range_bounds = SQUARE(x, y-range, dbl_range)
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -672,13 +668,13 @@
 /obj/structure/machinery/defenses/sentry/dmr/set_range()
 	switch(dir)
 		if(EAST)
-			range_bounds = RECT(x + (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x + (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE)
 		if(WEST)
-			range_bounds = RECT(x - (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x - (SENTRY_SNIPER_RANGE/2), y, SENTRY_SNIPER_RANGE)
 		if(NORTH)
-			range_bounds = RECT(x, y + (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x, y + (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE)
 		if(SOUTH)
-			range_bounds = RECT(x, y - (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE, SENTRY_SNIPER_RANGE)
+			range_bounds = SQUARE(x, y - (SENTRY_SNIPER_RANGE/2), SENTRY_SNIPER_RANGE)
 
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
@@ -899,6 +895,12 @@
 	sentry_range = 3
 	omni_directional = TRUE
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
+
+/obj/structure/machinery/defenses/sentry/omni
+	name = "\improper UA 571-D omnidirectional sentry gun"
+	omni_directional = TRUE
+	damage_mult = 0.7
+	sentry_range = 4
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

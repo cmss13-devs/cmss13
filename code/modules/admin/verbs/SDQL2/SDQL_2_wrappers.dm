@@ -179,7 +179,7 @@
 	sleep(Delay)
 
 /proc/_list_add(list/L, ...)
-	if (args.len < 2)
+	if (length(args) < 2)
 		return
 	L += args.Copy(2)
 
@@ -199,7 +199,7 @@
 	return L.Join(Glue, Start, End)
 
 /proc/_list_remove(list/L, ...)
-	if (args.len < 2)
+	if (length(args) < 2)
 		return
 	L -= args.Copy(2)
 

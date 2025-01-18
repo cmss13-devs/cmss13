@@ -1,0 +1,3 @@
+help: "Please replace open turfs with subtypes instead because ScrapeAway will revert any map var edits. See suggestions at end..."
+/turf/open:
+  banned_variables: true

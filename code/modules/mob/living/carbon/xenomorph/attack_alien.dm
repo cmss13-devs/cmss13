@@ -34,7 +34,6 @@
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s grab is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Our grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return XENO_ATTACK_ACTION
 
 			if(Adjacent(attacking_xeno)) //Logic!
@@ -64,7 +63,6 @@
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Our slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return XENO_ATTACK_ACTION
 
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
@@ -186,7 +184,6 @@
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s tackle is blocked by [src]'s shield!"), \
 				SPAN_DANGER("We tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return XENO_ATTACK_ACTION
 			attacking_xeno.flick_attack_overlay(src, "disarm")
 
@@ -210,12 +207,8 @@
 				knocked_down = TRUE
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				if (body_position == LYING_DOWN)
-					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src], but they are already down!"), \
-					SPAN_DANGER("We try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				else
-					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src]"), \
-					SPAN_DANGER("We try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src]!"), \
+				SPAN_DANGER("We try to tackle [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				knocked_down = FALSE
 
 			attacking_xeno.attack_log += "\[[time_stamp()]\] <font color='red'>[knocked_down ? "S" : "Uns"]uccessfully tackled [key_name(src)]</font>"
@@ -258,14 +251,16 @@
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
+			M.animation_attack_on(src)
 			//Somehow we will deal no damage on this attack
 			if(!damage)
 				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				M.animation_attack_on(src)
+
 				M.visible_message(SPAN_DANGER("[M] lunges at [src]!"), \
 				SPAN_DANGER("We lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
+			handle_blood_splatter(get_dir(M.loc, loc))
 			last_damage_data = create_cause_data(initial(M.name), M)
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"), \
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -364,9 +359,9 @@
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] apart!"), SPAN_DANGER("We stab \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys \the [src] with its tail!"), SPAN_DANGER("We destroy \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] stabs \the [src] with its razor sharp tail!"), SPAN_DANGER("We stab \the [src] with our razor sharp tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes \the [src] with its tail!"), SPAN_DANGER("We strike \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		xeno.apply_damage(5)
@@ -512,6 +507,12 @@
 	health -= damage_dealt
 	healthcheck()
 	return XENO_ATTACK_ACTION
+
+/obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/M)
+	if(electrified && !cut)
+		electrocute_mob(M, get_area(breaker_switch), src, 0.75)
+	return ..()
+
 
 //Slashin mirrors
 /obj/structure/mirror/attack_alien(mob/living/carbon/xenomorph/M)
@@ -777,8 +778,8 @@
 			message = "We have wrested away remote control of the metal crawler! Rejoice!"
 		else
 			message = "We have wrested away remote control of the metal bird! Rejoice!"
-			if(!GLOB.resin_lz_allowed)
-				set_lz_resin_allowed(TRUE)
+			if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+				MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 		to_chat(M, SPAN_XENONOTICE("We interact with the machine and disable remote control."))
 		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)
@@ -798,6 +799,13 @@
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
+		if(shuttle_tag == DROPSHIP_SAIPAN)
+			ship_id = "sh_dropship3"
+		if(shuttle_tag == DROPSHIP_MORANA)
+			ship_id = "sh_dropship4"
+		if(shuttle_tag == DROPSHIP_DEVANA)
+			ship_id = "sh_dropship5"
+
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in GLOB.machines)
 			if(D.id == ship_id)
@@ -854,11 +862,11 @@
 	return attack_hand(M)
 
 /obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!is_lit)
-		to_chat(M, "Why bother? It's just some weird metal thing.")
+	if(!is_on)
+		to_chat(M, SPAN_WARNING("Why bother? It's just some weird metal thing."))
 		return XENO_NO_DELAY_ACTION
 	if(damaged)
-		to_chat(M, "It's already damaged.")
+		to_chat(M, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
@@ -871,8 +879,6 @@
 
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
-
-
 
 //Digging up snow
 /turf/open/snow/attack_alien(mob/living/carbon/xenomorph/M)

@@ -23,7 +23,7 @@
 			continue
 		heal_candidates += X
 	last_healed = world.time
-	if(!heal_candidates.len)
+	if(!length(heal_candidates))
 		return
 	var/mob/living/carbon/xenomorph/picked_candidate = pick(heal_candidates)
 	picked_candidate.visible_message(SPAN_HELPFUL("\The [picked_candidate] glows as a warm aura envelops them."), \

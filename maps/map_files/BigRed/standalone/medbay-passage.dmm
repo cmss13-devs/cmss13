@@ -4,59 +4,36 @@
 /area/template_noop)
 "c" = (
 /obj/structure/sign/safety/medical{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "d" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "e" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "f" = (
 /obj/structure/sign/safety/medical{
-	pixel_x = 0;
 	pixel_y = 32
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "h" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "i" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "l" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "m" = (
 /obj/effect/decal/cleanable/dirt,
@@ -65,20 +42,14 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "n" = (
 /obj/structure/stairs/perspective{
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "w" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -86,10 +57,7 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "R" = (
 /turf/closed/wall/solaris/reinforced,
@@ -99,24 +67,17 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Operations"
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "T" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
+/turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "X" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 
 (1,1,1) = {"

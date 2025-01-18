@@ -1,12 +1,15 @@
 // /obj/effect/landmark/survivor_spawner/shivas_assistant_manager
 // panic_room_insert_shivas.dmm
 
-/datum/equipment_preset/survivor/wy/asstmanager
+/datum/equipment_preset/survivor/corporate/asstmanager
 	name = "Survivor - Corporate Assistant Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = PAY_SHORT_WYC7
+	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Assistant Operations Manager"
+	minimap_background = "background_wy_management"
+	minimap_icon = "ass_man"
+	rank = JOB_ASSISTANT_MANAGER
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
@@ -28,7 +31,7 @@
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/wy/asstmanager/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/corporate/asstmanager/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)

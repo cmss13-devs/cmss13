@@ -1,5 +1,5 @@
 /obj/item/hardpoint/support/flare_launcher
-	name = "M-87F Flare Launcher"
+	name = "\improper M-87F Flare Launcher"
 	desc = "A support module for APCs that shoots flares."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 

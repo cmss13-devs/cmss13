@@ -332,7 +332,7 @@ world
 /proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE, appearance_flags = FALSE)
 	// Loop through the underlays, then overlays, sorting them into the layers list
 	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
-		for (var/i in 1 to process.len) { \
+		for (var/i in 1 to length(process)) { \
 			var/image/current = process[i]; \
 			if (!current) { \
 				continue; \
@@ -347,7 +347,7 @@ world
 				} \
 				current_layer = base_layer + appearance.layer + current_layer / 1000; \
 			} \
-			for (var/index_to_compare_to in 1 to layers.len) { \
+			for (var/index_to_compare_to in 1 to length(layers)) { \
 				var/compare_to = layers[index_to_compare_to]; \
 				if (current_layer < layers[compare_to]) { \
 					layers.Insert(index_to_compare_to, current); \
@@ -403,7 +403,7 @@ world
 
 	var/curblend = appearance.blend_mode || defblend
 
-	if(appearance.overlays.len || appearance.underlays.len)
+	if(length(appearance.overlays) || length(appearance.underlays))
 		var/icon/flat = icon(flat_template)
 		// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed
 		var/list/layers = list()
@@ -556,7 +556,7 @@ world
 /proc/sort_atoms_by_layer(list/atoms)
 	// Comb sort icons based on levels
 	var/list/result = atoms.Copy()
-	var/gap = result.len
+	var/gap = length(result)
 	var/swapped = 1
 	while (gap > 1 || swapped)
 		swapped = 0
@@ -564,14 +564,13 @@ world
 			gap = floor(gap / 1.3) // 1.3 is the emperic comb sort coefficient
 		if(gap < 1)
 			gap = 1
-		for(var/i = 1; gap + i <= result.len; i++)
+		for(var/i = 1; gap + i <= length(result); i++)
 			var/atom/l = result[i] //Fucking hate
 			var/atom/r = result[gap+i] //how lists work here
 			if(l.layer > r.layer) //no "result[i].layer" for me
 				result.Swap(i, gap + i)
 				swapped = 1
 	return result
-
 
 /image/proc/flick_overlay(atom/A, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
@@ -582,7 +581,7 @@ world
 		A.overlays.Remove(src)
 
 /mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
-	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
+	var/image/I = image('icons/mob/do_afters.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)
 			I.pixel_x = 8

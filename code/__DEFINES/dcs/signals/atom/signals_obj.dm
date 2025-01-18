@@ -2,6 +2,10 @@
 // Sent after the limb has taken damage
 #define COMSIG_LIMB_TAKEN_DAMAGE "limb_taken_damage"
 
+// From /datum/effects/bleeding/internal/process_mob() and /datum/effects/bleeding/external/process_mob()
+#define COMSIG_BLEEDING_PROCESS "bleeding_process"
+	#define COMPONENT_BLEEDING_CANCEL (1<<0)
+
 /// From /obj/effect/alien/weeds/Initialize()
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
 /// From /obj/effect/alien/weeds/Initialize()
@@ -27,6 +31,9 @@
 
 #define COMSIG_STRUCTURE_WRENCHED "structure_wrenched"
 #define COMSIG_STRUCTURE_UNWRENCHED "structure_unwrenched"
+/// from /obj/structure/Collided() if not overriden for /datum/component/shimmy_around
+#define COMSIG_STRUCTURE_COLLIDED "structure_collided"
+
 #define COMSIG_TENT_COLLAPSING "tent_collapsing"
 
 /// from /obj/proc/afterbuckle()

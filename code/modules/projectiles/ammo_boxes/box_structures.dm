@@ -32,13 +32,13 @@
 	if(!item_box.handfuls)
 		if(item_box.overlay_ammo_type)
 			overlays += image(text_markings_icon, icon_state = "base_type[item_box.overlay_ammo_type]") //adding base color stripes
-		if(item_box.contents.len == item_box.num_of_magazines)
+		if(length(item_box.contents) == item_box.num_of_magazines)
 			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]")
-		else if(item_box.contents.len > (item_box.num_of_magazines/2))
+		else if(length(item_box.contents) > (item_box.num_of_magazines/2))
 			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_3")
-		else if(item_box.contents.len > (item_box.num_of_magazines/4))
+		else if(length(item_box.contents) > (item_box.num_of_magazines/4))
 			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_2")
-		else if(item_box.contents.len > 0)
+		else if(length(item_box.contents) > 0)
 			overlays += image(magazines_icon, icon_state = "magaz[item_box.overlay_content]_1")
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
@@ -101,9 +101,9 @@
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
-			. +=  SPAN_INFO("It has roughly [floor(AM.current_rounds/5)] handfuls remaining.")
+			. +=  SPAN_INFO("It has roughly [floor(AM.current_rounds/AM.transfer_handful_amount)] handfuls remaining.")
 	else
-		. +=  SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines].")
+		. +=  SPAN_INFO("It has [length(item_box.contents)] magazines out of [item_box.num_of_magazines].")
 	if(burning)
 		. +=  SPAN_DANGER("It's on fire and might explode!")
 
@@ -111,7 +111,7 @@
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
-	if(item_box.contents.len)
+	if(length(item_box.contents))
 		if(!item_box.handfuls)
 			var/obj/item/ammo_magazine/AM = pick(item_box.contents)
 			item_box.contents -= AM
@@ -133,7 +133,7 @@
 		if(istypestrict(W,item_box.magazine_type))
 			if(istype(W, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = W
-				if(flare_pack.contents.len < flare_pack.max_storage_space)
+				if(length(flare_pack.contents) < flare_pack.max_storage_space)
 					to_chat(user, SPAN_WARNING("[W] is not full."))
 					return
 				var/flare_type
@@ -158,7 +158,7 @@
 				if(cell.charge != cell.maxcharge)
 					to_chat(user, SPAN_WARNING("[W] needs to be fully charged before it can be stored in [src]."))
 					return
-			if(item_box.contents.len < item_box.num_of_magazines)
+			if(length(item_box.contents) < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W
 				to_chat(user, SPAN_NOTICE("You put \a [W] into [src]"))

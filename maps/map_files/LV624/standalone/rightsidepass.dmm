@@ -25,7 +25,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "hc" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "jd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -96,28 +96,22 @@
 /area/lv624/ground/jungle/east_jungle)
 "tn" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirt{
-	icon_state = "desert_dug"
-	},
+/turf/open/gm/dirt/desert_dug,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tJ" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tN" = (
-/turf/open/gm/dirt{
-	icon_state = "desert3"
-	},
+/turf/open/gm/dirt/desert3,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tT" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "ww" = (
-/turf/open/gm/dirt{
-	icon_state = "desert2"
-	},
+/turf/open/gm/dirt/desert2,
 /area/lv624/ground/river/east_river)
 "zT" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Cf" = (
@@ -180,7 +174,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Ov" = (
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "Pb" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -196,15 +190,13 @@
 /area/lv624/ground/jungle/east_jungle)
 "PE" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "PV" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/east_river)
 "PZ" = (
-/turf/open/gm/dirt{
-	icon_state = "desert0"
-	},
+/turf/open/gm/dirt/desert0,
 /area/lv624/ground/jungle/east_jungle)
 "Qb" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -225,9 +217,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/jungle/east_jungle)
 "Wq" = (
-/turf/open/gm/dirt{
-	icon_state = "desert2"
-	},
+/turf/open/gm/dirt/desert2,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "WK" = (
 /obj/structure/flora/bush/ausbushes/reedbush,

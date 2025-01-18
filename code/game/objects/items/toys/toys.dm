@@ -16,6 +16,10 @@
 
 /obj/item/toy
 	icon = 'icons/obj/items/toy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/toys_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/toys_righthand.dmi'
+	)
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
@@ -91,7 +95,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "syndballoon"
 	item_state = "syndballoon"
 	w_class = SIZE_LARGE
@@ -123,8 +127,11 @@
 /obj/item/toy/crayon
 	name = "crayon"
 	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
-	icon = 'icons/obj/items/crayons.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonred"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/crayons.dmi',
+		)
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "colored")
 	black_market_value = 5
@@ -241,6 +248,7 @@
 /obj/item/toy/prize
 	icon_state = "ripleytoy"
 	var/cooldown = 0
+	w_class = SIZE_TINY
 
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user)
@@ -315,12 +323,16 @@
 	desc = "Mini-Mecha action figure! Collect them all! 11/11."
 	icon_state = "phazonprize"
 
+
 /obj/item/toy/inflatable_duck
 	name = "inflatable duck"
 	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"
 	item_state = "inflatable"
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	black_market_value = 20
 
@@ -375,7 +387,7 @@
 /obj/item/toy/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	throwforce = 3
@@ -400,7 +412,6 @@
 /obj/item/toy/bikehorn/rubberducky
 	name = "rubber ducky"
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
-	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "rubberducky"
 	item_state = "rubberducky"
 
@@ -479,7 +490,7 @@
 /obj/item/toy/plush
 	name = "generic plushie"
 	desc = "perfectly generic"
-	icon = 'icons/obj/items/plush.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
 	COOLDOWN_DECLARE(last_hug_time)
@@ -497,13 +508,14 @@
 	name = "Farwa plush"
 	desc = "A Farwa plush doll. It's soft and comforting!"
 	icon_state = "farwa"
+	item_state = "farwaplush"
 	black_market_value = 25
 
 /obj/item/toy/plush/barricade
 	name = "plushie barricade"
 	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
 	icon_state = "barricade"
-	item_state = "cade_plush"
+	item_state = "plushie_cade"
 
 /obj/item/toy/plush/shark //A few more generic plushies to increase the size of the plushie loot pool
 	name = "shark plush"
@@ -657,6 +669,3 @@
 		icon_state = "runner_beret"
 		return
 	icon_state = "runner"
-
-/obj/item/toy/plush/shark/alt
-	icon_state = "shark_alt"

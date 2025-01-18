@@ -15,7 +15,7 @@
 		if(3)
 			fontsize_style = "large"
 
-	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
 			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.hivenumber == hivenumber)) //Only living and connected xenos
@@ -26,7 +26,7 @@
 	if(text == "" || !hivenumber)
 		return //Logic
 
-	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/living in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/xenomorph/xeno = living.current
 			if(istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
@@ -264,7 +264,7 @@
 
 /mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
-	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
+	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
@@ -310,7 +310,7 @@
 				return
 
 
-	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("We [pounceAction.ability_name] onto [M]!"), null, 5)
+	visible_message(SPAN_DANGER("[src] [pounceAction.action_text] onto [M]!"), SPAN_XENODANGER("We [pounceAction.action_text] onto [M]!"), null, 5)
 
 	if (pounceAction.knockdown)
 		M.KnockDown(pounceAction.knockdown_duration)
@@ -336,7 +336,7 @@
 	pounced_mob(L)
 
 /mob/living/carbon/xenomorph/proc/pounced_obj(obj/O)
-	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
+	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
@@ -370,13 +370,13 @@
 
 //Bleuugh
 /mob/living/carbon/xenomorph/proc/empty_gut()
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		for(var/atom/movable/S in stomach_contents)
 			stomach_contents.Remove(S)
 			S.acid_damage = 0 //Reset the acid damage
 			S.forceMove(get_true_turf(src))
 
-	if(contents.len) //Get rid of anything that may be stuck inside us as well
+	if(length(contents)) //Get rid of anything that may be stuck inside us as well
 		for(var/atom/movable/A in contents)
 			A.forceMove(get_true_turf(src))
 
@@ -392,7 +392,7 @@
 	update_sight()
 
 /mob/living/carbon/xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		if(victim)
 			stomach_contents.Remove(victim)
 			victim.acid_damage = 0
@@ -408,7 +408,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in our belly that needs regurgitating."))
 
-/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
+/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -447,6 +447,8 @@
 				if(P.chair_state != DROPSHIP_CHAIR_BROKEN)
 					has_obstacle = TRUE
 					break
+			else if(istype(O, /obj/structure/bed/nest) && ignore_nest)
+				continue
 			else
 				has_obstacle = TRUE
 				break
@@ -614,8 +616,10 @@
 			return "Moderate"
 		if(3 to 3.9)
 			return "Strong"
-		if(4 to INFINITY)
+		if(4 to 4.9)
 			return "Very Strong"
+		if(4.9 to INFINITY)
+			return "Overwhelming"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
 	if(!target)

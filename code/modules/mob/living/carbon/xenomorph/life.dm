@@ -11,7 +11,7 @@
 	..()
 
 	// replace this by signals or trait signals
-	if(is_zoomed && (stat || body_position == LYING_DOWN))
+	if(!HAS_TRAIT(src, TRAIT_ABILITY_SIGHT_IGNORE_REST) && is_zoomed && (stat || body_position == LYING_DOWN))
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
@@ -61,7 +61,7 @@
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -220,7 +220,7 @@
 
 /mob/living/carbon/xenomorph/proc/handle_stomach_contents()
 	//Deal with dissolving/damaging stuff in stomach.
-	if(stomach_contents.len)
+	if(length(stomach_contents))
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
 				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
@@ -481,7 +481,7 @@ Make sure their actual health updates immediately.*/
 	if(status_flags & GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)
-	else if(xeno_shields.len != 0)
+	else if(length(xeno_shields) != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
 	else
@@ -509,10 +509,22 @@ Make sure their actual health updates immediately.*/
 	if(!gibbing)
 		med_hud_set_health()
 
+	update_wounds()
+
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
 		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
+
+/mob/living/carbon/xenomorph/adjustBruteLoss(amount)
+	if(status_flags & GODMODE)
+		return //godmode
+	bruteloss = max(bruteloss + amount, 0)
+
+/mob/living/carbon/xenomorph/adjustFireLoss(amount)
+	if(status_flags & GODMODE)
+		return //godmode
+	fireloss = max(fireloss + amount, 0)
 
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()

@@ -55,7 +55,7 @@
 	var/list/CL = null
 	if(O && islist(O))
 		CL = O
-		if (CL.len == 1)
+		if (length(CL) == 1)
 			C = CL[1]
 	else if(O && istype(O, /obj/structure/machinery/camera))
 		C = O
@@ -73,7 +73,7 @@
 			var/list/srcs  = alarm[3]
 			if (origin in srcs)
 				srcs -= origin
-			if (srcs.len == 0)
+			if (length(srcs) == 0)
 				cleared = 1
 				L -= I
 	return !cleared
@@ -85,7 +85,7 @@
 	var/active_alarms = 0
 	for (var/cat in src.alarms)
 		var/list/L = src.alarms[cat]
-		if(L.len) active_alarms = 1
+		if(length(L)) active_alarms = 1
 	if(active_alarms)
 		icon_state = "alert:2"
 	else

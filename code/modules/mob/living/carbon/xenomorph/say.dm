@@ -22,14 +22,14 @@
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
-		if(can_hivemind_speak && copytext(message,1,2) == ";" && languages.len)
+		if(can_hivemind_speak && copytext(message,1,2) == ";" && length(languages))
 			for(var/datum/language/L in languages)
 				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
 		var/channel_prefix = copytext(message, 1, 3)
-		if(languages.len)
+		if(length(languages))
 			for(var/datum/language/L in languages)
 				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
 					verb = L.speech_verb
@@ -105,6 +105,9 @@
 
 	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		return
+
+	if(!filter_message(src, message))
 		return
 
 	log_hivemind("[key_name(src)] : [message]")

@@ -113,7 +113,7 @@
 		return
 
 	if(xeno.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("We cannot use tail swipe with our crest lowered."))
+		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its tail in a wide circle!"), \
@@ -155,7 +155,7 @@
 		return
 
 	if(xeno.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("We cannot use fortify with our crest lowered."))
+		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	if(!xeno.check_state())
@@ -183,6 +183,7 @@
 	return ..()
 
 /datum/action/xeno_action/activable/fortify/action_activate()
+	. = ..()
 	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify && xeno.selected_ability != src)

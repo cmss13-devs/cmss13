@@ -4,7 +4,7 @@
 /obj/structure/morgue
 	name = "morgue"
 	desc = "Used to keep bodies in until someone fetches them."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morgue1"
 	dir = EAST
 	density = TRUE
@@ -31,7 +31,7 @@
 	if(morgue_open)
 		icon_state = "[morgue_type]0"
 	else
-		if(contents.len > 1) //not counting the morgue tray
+		if(length(contents) > 1) //not counting the morgue tray
 			icon_state = "[morgue_type]2"
 		else
 			icon_state = "[morgue_type]1"
@@ -131,7 +131,7 @@
 /obj/structure/morgue_tray
 	name = "morgue tray"
 	desc = "Apply corpse before closing."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
 	density = TRUE
@@ -217,7 +217,7 @@
 	if(cremating)
 		return
 
-	if(contents.len <= 1) //1 because the tray is inside.
+	if(length(contents) <= 1) //1 because the tray is inside.
 		visible_message(SPAN_DANGER("You hear a hollow crackle."))
 	else
 		visible_message(SPAN_DANGER("You hear a roar as the crematorium activates."))

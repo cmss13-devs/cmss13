@@ -44,7 +44,7 @@
 	if(!LAZYLEN(locs_land))
 		return TRUE
 
-	if(!main_doors.len && !controls.len)
+	if(!length(main_doors) && !length(controls))
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
@@ -58,7 +58,7 @@
 		for(var/obj/vehicle/multitile/M in D.loc)
 			if(M) return 0
 
-		for(var/turf/T in D.locate_filler_turfs())
+		for(var/turf/T in D.locs)
 			for(var/obj/vehicle/multitile/M in T)
 				if(M) return 0
 
@@ -164,7 +164,7 @@
 	var/int_rot = locs_move[T_int]
 	var/turf/T_trg
 	var/trg_rot
-	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+	if(!length(locs_land)) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
 		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
@@ -218,8 +218,8 @@
 
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
-			if(X && X.stat != DEAD)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
@@ -349,7 +349,7 @@
 			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
-			if(crash_turfs.len) T_trg = pick(crash_turfs)
+			if(length(crash_turfs)) T_trg = pick(crash_turfs)
 			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 

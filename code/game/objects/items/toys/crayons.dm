@@ -61,6 +61,62 @@
 	colorName = "rainbow"
 	uses = 0
 
+/obj/item/toy/crayon/pride/lesbian
+	icon_state = "crayonlesbian"
+	crayon_color = "#bd1471"
+	shade_color = "#d46b15"
+	colorName = "lesbian"
+	uses = 0
+
+/obj/item/toy/crayon/pride/gay
+	icon_state = "crayongay"
+	crayon_color = "#33cc9e"
+	shade_color = "#7f1fa5"
+	colorName = "gay"
+	uses = 0
+
+/obj/item/toy/crayon/pride/bi
+	icon_state = "crayonbi"
+	crayon_color = "#c01b6e"
+	shade_color = "#281dc5"
+	colorName = "bisexual"
+	uses = 0
+
+/obj/item/toy/crayon/pride/pan
+	icon_state = "crayonpan"
+	crayon_color = "#da1778"
+	shade_color = "#229bff"
+	colorName = "pansexual"
+	uses = 0
+
+/obj/item/toy/crayon/pride/ace
+	icon_state = "crayonace"
+	crayon_color = "#272727"
+	shade_color = "#570c3e"
+	colorName = "asexual"
+	uses = 0
+
+/obj/item/toy/crayon/pride/trans
+	icon_state = "crayontrans"
+	crayon_color = "#f57ecd"
+	shade_color = "#4bbdeb"
+	colorName = "transgender"
+	uses = 0
+
+/obj/item/toy/crayon/pride/enby
+	icon_state = "crayonenby"
+	crayon_color = "#272727"
+	shade_color = "#e9cf3a"
+	colorName = "nonbinary"
+	uses = 0
+
+/obj/item/toy/crayon/pride/fluid
+	icon_state = "crayonfluid"
+	crayon_color = "#b64791"
+	shade_color = "#000FFF"
+	colorName = "genderfluid"
+	uses = 0
+
 /obj/item/toy/crayon/rainbow/attack_self(mob/living/user)
 	..()
 	crayon_color = input(user, "Please select the main color.", "Crayon color") as color

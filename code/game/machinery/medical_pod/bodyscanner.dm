@@ -127,12 +127,12 @@
 	..()
 	if(stat & BROKEN)
 		icon_state = "body_scannerconsole-p"
+		return
+	if(stat & NOPOWER)
+		spawn(rand(0, 15))
+			icon_state = "body_scannerconsole-p"
 	else
-		if (stat & NOPOWER)
-			spawn(rand(0, 15))
-				src.icon_state = "body_scannerconsole-p"
-		else
-			icon_state = initial(icon_state)
+		icon_state = initial(icon_state)
 
 
 
@@ -333,7 +333,7 @@
 			open = "Open<br>"
 
 		var/unknown_body = 0
-		if (e.implants.len)
+		if (length(e.implants))
 			for(var/I in e.implants)
 				if(is_type_in_list(I,known_implants))
 					imp += "[I] implanted<br>"
@@ -390,3 +390,9 @@
 	dat += "</body></html>"
 	return dat
 
+/obj/structure/machinery/medical_pod/bodyscanner/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/body_scanconsole/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "sleeperconsole"

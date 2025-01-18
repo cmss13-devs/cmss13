@@ -35,7 +35,7 @@
 			scanner = O
 			to_chat(user, "You insert [O].")
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -56,16 +56,16 @@
 	var/dat
 
 	if (temp)
-		dat = text("<TT>[]</TT><BR><BR><A href='?src=\ref[];choice=Clear Screen'>Clear Screen</A>", temp, src)
+		dat = text("<TT>[]</TT><BR><BR><A href='byond://?src=\ref[];choice=Clear Screen'>Clear Screen</A>", temp, src)
 	else
 		switch(screen)
 			if(1.0)
 				dat += {"
 <p style='text-align:center;'>"}
-				dat += text("<A href='?src=\ref[];choice=Search Records'>Search Records</A><BR>", src)
-				dat += text("<A href='?src=\ref[];choice=New Record (General)'>New Record</A><BR>", src)
+				dat += text("<A href='byond://?src=\ref[];choice=Search Records'>Search Records</A><BR>", src)
+				dat += text("<A href='byond://?src=\ref[];choice=New Record (General)'>New Record</A><BR>", src)
 				if(scanner)
-					dat += text("<A href='?src=\ref[];choice=read_fingerprint'>Read Fingerprint</A><BR>", src)
+					dat += text("<A href='byond://?src=\ref[];choice=read_fingerprint'>Read Fingerprint</A><BR>", src)
 				dat += {"
 </p>
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -75,9 +75,9 @@
 </table>
 <table style="text-align:center;" border="1" cellspacing="0" width="100%">
 <tr>
-<th><A href='?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
 <th>Criminal Status</th>
 </tr>"}
 				if(!isnull(GLOB.data_core.general))
@@ -103,35 +103,35 @@
 							if("")
 								background = "'background-color:#FFFFFF;'"
 								crimstat = "No Record."
-						dat += text("<tr style=[]><td><A href='?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
+						dat += text("<tr style=[]><td><A href='byond://?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
 						dat += text("<td>[]</td>", R.fields["id"])
 						dat += text("<td>[]</td>", R.fields["rank"])
 						dat += text("<td>[]</td></tr>", crimstat)
 					dat += "</table><hr width='75%' />"
-				dat += text("<A href='?src=\ref[];choice=Record Maintenance'>Record Maintenance</A><br><br>", src)
+				dat += text("<A href='byond://?src=\ref[];choice=Record Maintenance'>Record Maintenance</A><br><br>", src)
 			if(2.0)
 				dat += "<B>Records Maintenance</B><HR>"
-				dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 			if(3.0)
 				dat += "<CENTER><B>Security Record</B></CENTER><BR>"
 				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 					dat += text("<table><tr><td> \
-					Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
+					Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
 					ID: [active1.fields["id"]]<BR>\n \
-					Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-					Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-					Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
+					Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
+					Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
+					Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
 					Physical Status: [active1.fields["p_stat"]]<BR>\n \
 					Mental Status: [active1.fields["m_stat"]]<BR></td> \
 					<td align = center valign = top>Photo:<br> \
-					<table><td align = center><img src=front.png height=80 width=80 border=4><BR><A href='?src=\ref[src];choice=Edit Field;field=photo front'>Update front photo</A></td> \
-					<td align = center><img src=side.png height=80 width=80 border=4><BR><A href='?src=\ref[src];choice=Edit Field;field=photo side'>Update side photo</A></td></table> \
+					<table><td align = center><img src=front.png height=80 width=80 border=4><BR><A href='byond://?src=\ref[src];choice=Edit Field;field=photo front'>Update front photo</A></td> \
+					<td align = center><img src=side.png height=80 width=80 border=4><BR><A href='byond://?src=\ref[src];choice=Edit Field;field=photo side'>Update side photo</A></td></table> \
 					</td></tr></table>")
 				else
 					dat += "<B>General Record Lost!</B><BR>"
 				if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
 					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n \
-								Criminal Status: <A href='?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
+								Criminal Status: <A href='byond://?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
 								Incidents: [active2.fields["incident"]]<BR>\n \
 								\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", \
 								src, active2.fields["criminal"])
@@ -141,7 +141,7 @@
 							var/comment = active2.fields["comments"][com_i]
 							var/comment_markup = text("<b>[] / [] ([])</b>\n", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
 							if (isnull(comment["deleted_by"]))
-								comment_markup += text("<a href='?src=\ref[];choice=Delete Entry;del_c=[]'>Delete comment</a>", src, counter)
+								comment_markup += text("<a href='byond://?src=\ref[];choice=Delete Entry;del_c=[]'>Delete comment</a>", src, counter)
 								comment_markup += text("<br />[]", comment["entry"])
 							else
 								comment_markup += text("<br /><i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
@@ -149,14 +149,14 @@
 							dat += "[comment_markup]<br /><br />"
 					else
 						dat += "No comments<br><br>"
-					dat += text("<a href='?src=\ref[];choice=Add Entry'>Add comment</a><br /><br />", src)
+					dat += text("<a href='byond://?src=\ref[];choice=Add Entry'>Add comment</a><br /><br />", src)
 				else
 					dat += "<B>Security Record Lost!</B><BR>"
-					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
-				dat += text("\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src)
+					dat += text("<A href='byond://?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
+				dat += text("\n<A href='byond://?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='byond://?src=\ref[];choice=Return'>Back</A><BR>", src, src)
 			if(4.0)
-				if(!Perp.len)
-					dat += text("ERROR.  String could not be located.<br><br><A href='?src=\ref[];choice=Return'>Back</A>", src)
+				if(!length(Perp))
+					dat += text("ERROR.  String could not be located.<br><br><A href='byond://?src=\ref[];choice=Return'>Back</A>", src)
 				else
 					dat += {"
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -172,7 +172,7 @@
 <th>Rank</th>
 <th>Criminal Status</th>
 </tr> "}
-					for(var/i=1, i<=Perp.len, i += 2)
+					for(var/i=1, i<=length(Perp), i += 2)
 						var/crimstat = ""
 						var/datum/data/record/R = Perp[i]
 						if(istype(Perp[i+1],/datum/data/record/))
@@ -195,12 +195,12 @@
 							if("")
 								background = ""
 								crimstat = "No Record."
-						dat += text("<tr style=[]><td><A href='?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
+						dat += text("<tr style=[]><td><A href='byond://?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
 						dat += text("<td>[]</td>", R.fields["id"])
 						dat += text("<td>[]</td>", R.fields["rank"])
 						dat += text("<td>[]</td></tr>", crimstat)
 					dat += "</table><hr width='75%' />"
-					dat += text("<br><A href='?src=\ref[];choice=Return'>Return to index.</A>", src)
+					dat += text("<br><A href='byond://?src=\ref[];choice=Return'>Return to index.</A>", src)
 			if(5)
 				dat += generate_fingerprint_menu()
 
@@ -271,16 +271,16 @@ What a mess.*/
 				Perp = new/list()
 				t1 = lowertext(t1)
 				var/list/components = splittext(t1, " ")
-				if(components.len > 5)
+				if(length(components) > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in GLOB.data_core.general)
 					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
-					for(var/i = 1, i<=components.len, i++)
+					for(var/i = 1, i<=length(components), i++)
 						if(findtext(temptext,components[i]))
 							var/prelist = new/list(2)
 							prelist[1] = R
 							Perp += prelist
-				for(var/i = 1, i<=Perp.len, i+=2)
+				for(var/i = 1, i<=length(Perp), i+=2)
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
 						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
@@ -347,24 +347,25 @@ What a mess.*/
 			if ("Delete All Records")
 				temp = ""
 				temp += "Are you sure you wish to delete all Security records?<br>"
-				temp += "<a href='?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
-				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
+				temp += "<a href='byond://?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
+				temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Security records deleted."
+				msg_admin_niche("[key_name_admin(usr)] deleted all security records.")
 
 			if ("Add Entry")
 				if (!(istype(active2, /datum/data/record)))
 					return
 				var/a2 = active2
-				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || active2 != a2))
+				var/new_value = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
+				if((!new_value || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || active2 != a2))
 					return
 				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
-				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
+				var/new_comment = list("entry" = new_value, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 				if(istype(usr,/mob/living/carbon/human))
 					var/mob/living/carbon/human/U = usr
 					new_comment["created_by"] = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
@@ -374,6 +375,7 @@ What a mess.*/
 					var/new_com_i = length(active2.fields["comments"]) + 1
 					active2.fields["comments"]["[new_com_i]"] = new_comment
 				to_chat(usr, text("You have added a new comment to the Security Record of [].", active2.fields["name"]))
+				msg_admin_niche("[key_name_admin(usr)] added a security comment for [active1.fields["name"]] ([active1.fields["id"]]): [new_value].")
 
 			if ("Delete Entry")
 				if(!islist(active2.fields["comments"]))
@@ -406,50 +408,58 @@ What a mess.*/
 				switch(href_list["field"])
 					if("name")
 						if (istype(active1, /datum/data/record))
-							var/t1 = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
-							if (!t1 || active1 != a1)
+							var/new_value = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
+							if (!new_value || active1 != a1)
 								return
-							message_admins("[key_name(usr)] has changed the record name of [active1.fields["name"]] to [t1]")
-							active1.fields["name"] = t1
+							message_admins("[key_name(usr)] changed the security record name of [active1.fields["name"]] to [new_value]")
+							active1.fields["name"] = new_value
+
 					if("sex")
 						if (istype(active1, /datum/data/record))
+							var/new_value = "Male"
 							if (active1.fields["sex"] == "Male")
-								active1.fields["sex"] = "Female"
-							else
-								active1.fields["sex"] = "Male"
+								new_value = "Female"
+							active1.fields["sex"] = new_value
+							msg_admin_niche("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
+
 					if("age")
 						if (istype(active1, /datum/data/record))
-							var/t1 = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if (!t1 || active1 != a1)
+							var/new_value = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
+							if (!new_value || active1 != a1)
 								return
-							active1.fields["age"] = t1
+							active1.fields["age"] = new_value
+							msg_admin_niche("[key_name(usr)] changed the security record age of [active1.fields["name"]] to [new_value]")
+
 					if("criminal")
 						if (istype(active2, /datum/data/record))
 							temp = "<h5>Criminal Status:</h5>"
 							temp += "<ul>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=none'>None</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=arrest'>*Arrest*</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=incarcerated'>Incarcerated</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=released'>Released</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=suspect'>Suspect</a></li>"
-							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
+							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=none'>None</a></li>"
+							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=arrest'>*Arrest*</a></li>"
+							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=incarcerated'>Incarcerated</a></li>"
+							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=released'>Released</a></li>"
+							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=suspect'>Suspect</a></li>"
+							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
 							temp += "</ul>"
+
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 						if (istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
-								temp += "<li><a href='?src=\ref[src];choice=Change Occupation;rank=[rank]'>[rank]</a></li>"
+								temp += "<li><a href='byond://?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
 							alert(usr, "You do not have the required rank to do this!")
+
 					if("species")
 						if (istype(active1, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active1 != a1)
+							var/new_value = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if (!new_value || active1 != a1)
 								return
-							active1.fields["species"] = t1
+							active1.fields["species"] = new_value
+							msg_admin_niche("[key_name(usr)] changed the security record species of [active1.fields["name"]] to [new_value]")
 
 
 //TEMPORARY MENU FUNCTIONS
@@ -457,14 +467,17 @@ What a mess.*/
 				temp=null
 				switch(href_list["choice"])
 					if ("Change Rank")
-						if (active1)
-							active1.fields["rank"] = href_list["rank"]
-							if(href_list["rank"] in GLOB.joblist)
-								active1.fields["real_rank"] = href_list["real_rank"]
+						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+							var/new_value = href_list["rank"]
+							active1.fields["rank"] = new_value
+							if(new_value in GLOB.joblist)
+								active1.fields["real_rank"] = new_value
+							message_admins("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
 
 					if ("Change Criminal Status")
-						if (active2)
-							switch(href_list["criminal2"])
+						if(istype(active2, /datum/data/record))
+							var/new_value = href_list["criminal2"]
+							switch(new_value)
 								if("none")
 									active2.fields["criminal"] = "None"
 								if("arrest")
@@ -480,6 +493,8 @@ What a mess.*/
 
 							for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 								H.sec_hud_set_security_status()
+
+							message_admins("[key_name(usr)] changed the security record criminal status of [active1.fields["name"]] to [new_value]")
 
 	add_fingerprint(usr)
 	updateUsrDialog()
@@ -498,9 +513,9 @@ What a mess.*/
 		dat += "Description: [prints.description]<BR><hr><BR>"
 		dat += "</td></tr></table>"
 
-	dat += "<a href='?src=\ref[src];choice=print_report'>Print Evidence</a><BR>"
-	dat += "<a href='?src=\ref[src];choice=return_menu'>Return</a><BR>"
-	dat += "<a href='?src=\ref[src];choice=return_clear'>Clear Print and Return</a>"
+	dat += "<a href='byond://?src=\ref[src];choice=print_report'>Print Evidence</a><BR>"
+	dat += "<a href='byond://?src=\ref[src];choice=return_menu'>Return</a><BR>"
+	dat += "<a href='byond://?src=\ref[src];choice=return_clear'>Clear Print and Return</a>"
 
 	return dat
 
@@ -521,20 +536,27 @@ What a mess.*/
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
+					msg_admin_niche("The security record name of [R.fields["name"]] was scrambled!")
 					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
 					R.fields["sex"] = pick("Male", "Female")
+					msg_admin_niche("The security record sex of [R.fields["name"]] was scrambled!")
 				if(3)
 					R.fields["age"] = rand(5, 85)
+					msg_admin_niche("The security record age of [R.fields["name"]] was scrambled!")
 				if(4)
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
+					msg_admin_niche("The security record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					msg_admin_niche("The security record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					msg_admin_niche("The security record mental state of [R.fields["name"]] was scrambled!")
 			continue
 
 		else if(prob(1))
+			msg_admin_niche("The security record of [R.fields["name"]] was lost!")
 			GLOB.data_core.security -= R
 			qdel(R)
 			continue

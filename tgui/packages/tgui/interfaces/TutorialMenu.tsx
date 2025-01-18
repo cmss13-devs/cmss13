@@ -21,11 +21,12 @@ type TutorialCategory = {
 type BackendContext = {
   tutorial_categories: TutorialCategory[];
   completed_tutorials: string[];
+  locked_tutorials: string[];
 };
 
 export const TutorialMenu = (props) => {
   const { data, act } = useBackend<BackendContext>();
-  const { tutorial_categories, completed_tutorials } = data;
+  const { tutorial_categories, completed_tutorials, locked_tutorials } = data;
   const [chosenTutorial, setTutorial] = useState<Tutorial | null>(null);
   const [categoryIndex, setCategoryIndex] = useState('Space Station 13');
   return (
@@ -60,25 +61,33 @@ export const TutorialMenu = (props) => {
                 {tutorial_categories.map(
                   (tutorial_category) =>
                     tutorial_category.name === categoryIndex &&
-                    tutorial_category.tutorials.map((tutorial) => (
-                      <div style={{ paddingBottom: '12px' }} key={tutorial.id}>
-                        <Button
-                          fontSize="15px"
-                          textAlign="center"
-                          selected={tutorial === chosenTutorial}
-                          color={
-                            completed_tutorials.indexOf(tutorial.id) === -1
-                              ? 'good'
-                              : 'default'
-                          }
-                          width="100%"
+                    tutorial_category.tutorials
+                      .sort((a, b) => (a.name < b.name ? -1 : 1))
+                      .map((tutorial) => (
+                        <div
+                          style={{ paddingBottom: '12px' }}
                           key={tutorial.id}
-                          onClick={() => setTutorial(tutorial)}
                         >
-                          {tutorial.name}
-                        </Button>
-                      </div>
-                    )),
+                          <Button
+                            fontSize="15px"
+                            textAlign="center"
+                            selected={tutorial === chosenTutorial}
+                            color={
+                              completed_tutorials.indexOf(tutorial.id) === -1
+                                ? 'good'
+                                : 'default'
+                            }
+                            width="100%"
+                            disabled={
+                              !(locked_tutorials.indexOf(tutorial.id) === -1)
+                            }
+                            key={tutorial.id}
+                            onClick={() => setTutorial(tutorial)}
+                          >
+                            {tutorial.name}
+                          </Button>
+                        </div>
+                      )),
                 )}
               </Section>
             </Stack.Item>

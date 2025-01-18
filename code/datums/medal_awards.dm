@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, usr)
 
 	// Inform staff of success
-	message_admins("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
+	message_admins("[key_name_admin(usr)] awarded a <a href='byond://?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, giving_mob)
 
 	// Inform staff of success
-	message_admins("[key_name_admin(giving_mob)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
+	message_admins("[key_name_admin(giving_mob)] awarded a <a href='byond://?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 			recipient_player.track_medal_earned(medal_type, recipient_mob, recipient_caste, citation, usr)
 
 	// Inform staff of success
-	message_admins("[key_name_admin(usr)] awarded a <a href='?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
+	message_admins("[key_name_admin(usr)] awarded a <a href='byond://?medals_panel=1'>[medal_type]</a> to [chosen_recipient] for: \'[citation]\'.")
 
 	return TRUE
 
@@ -402,7 +402,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		to_chat(usr, "Error: Could not find the [is_marine_medal ? "marine" : "xeno"] awards for '[recipient_name]'!")
 		return FALSE
 
-	if(index < 1 || index > recipient_award.medal_names.len)
+	if(index < 1 || index > length(recipient_award.medal_names))
 		to_chat(usr, "Error: Index [index] is out of bounds!")
 		return FALSE
 
@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	// Either entirely delete the award from the list, or just remove the entry if there are multiple
 	var/medal_type = recipient_award.medal_names[index]
 	var/citation = recipient_award.medal_citations[index]
-	if(recipient_award.medal_names.len == 1)
+	if(length(recipient_award.medal_names) == 1)
 		if(is_marine_medal)
 			GLOB.medal_awards.Remove(recipient_name)
 		else
@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 			recipient_player.untrack_medal_earned(medal_type, recipient_mob, citation)
 
 	// Inform staff of success
-	message_admins("[key_name_admin(usr)] deleted [recipient_name]'s <a href='?medals_panel=1'>[medal_type]</a> for: \'[citation]\'.")
+	message_admins("[key_name_admin(usr)] deleted [recipient_name]'s <a href='byond://?medals_panel=1'>[medal_type]</a> for: \'[citation]\'.")
 
 	return TRUE
 

@@ -5,9 +5,13 @@
 /obj/item/ammo_magazine/flamer_tank
 	name = "incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. Handle with care."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/flamers.dmi'
 	icon_state = "flametank_custom"
 	item_state = "flametank"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	max_rounds = 100
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.
@@ -78,7 +82,7 @@
 	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
 		return ..()
 
-	if(!target.reagents || target.reagents.reagent_list.len < 1)
+	if(!target.reagents || length(target.reagents.reagent_list) < 1)
 		to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
@@ -133,7 +137,7 @@
 /obj/item/ammo_magazine/flamer_tank/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It contains:")
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
@@ -244,7 +248,7 @@
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/smoke
-	name = "Custom incinerator smoke tank"
+	name = "custom incinerator smoke tank"
 	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
 	matter = list("metal" = 3750)
 	flamer_chem = null
@@ -252,7 +256,7 @@
 
 //tanks printable by the research biomass machine
 /obj/item/ammo_magazine/flamer_tank/custom/upgraded
-	name = "Upgraded custom incinerator tank"
+	name = "upgraded custom incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for bigger capacity and stronger fuels."
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
@@ -264,7 +268,7 @@
 	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
-	name = "Large custom incinerator smoke tank"
+	name = "large custom incinerator smoke tank"
 	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it. This one has been outfitted with an upgraded internal compressor, allowing for bigger capacity."
 	matter = list("metal" = 50) //no free metal
 	flamer_chem = null

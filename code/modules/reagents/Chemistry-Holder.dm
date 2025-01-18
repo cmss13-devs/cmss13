@@ -39,13 +39,13 @@
 	var/total_transfered = 0
 	var/current_list_element = 1
 
-	current_list_element = rand(1,reagent_list.len)
+	current_list_element = rand(1,length(reagent_list))
 
 	while(total_transfered != amount)
 		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !reagent_list.len) break
+		if(total_volume <= 0 || !length(reagent_list)) break
 
-		if(current_list_element > reagent_list.len) current_list_element = 1
+		if(current_list_element > length(reagent_list)) current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		remove_reagent(current_reagent.id, 1)
@@ -62,17 +62,17 @@
 	var/total_transfered = 0
 	var/current_list_element = 1
 
-	current_list_element = rand(1, reagent_list.len)
+	current_list_element = rand(1, length(reagent_list))
 
 	while(total_transfered != amount)
 		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !reagent_list.len) break
+		if(total_volume <= 0 || !length(reagent_list)) break
 
-		if(current_list_element > reagent_list.len) current_list_element = 1
+		if(current_list_element > length(reagent_list)) current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		if(current_reagent.id == reagent_to_ignore)
-			if(reagent_list.len == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
+			if(length(reagent_list) == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
 			if(current_list_element == 1)
 				current_reagent = reagent_list[current_list_element + 1] //if the selected reagent was number 1, we don't want it trying to draw id.0, so we add 1
 			else
@@ -222,90 +222,80 @@
 	return amount
 
 /datum/reagents/proc/metabolize(mob/M, alien, delta_time)
-	for(var/datum/reagent/R in reagent_list)
-		if(M && R && !QDELETED(R))
-			R.on_mob_life(M, alien, delta_time)
+	for(var/datum/reagent/reagent in reagent_list)
+		if(M && reagent && !QDELETED(reagent))
+			reagent.on_mob_life(M, alien, delta_time)
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
-	if(!my_atom) return
-	if(my_atom.flags_atom & NOREACT) return //Yup, no reactions here. No siree.
+	if(!my_atom)
+		return
+	if(my_atom.flags_atom & NOREACT)
+		return //Yup, no reactions here. No siree.
 
-	var/reaction_occurred = 0
+	var/reaction_occurred = FALSE
 	do
-		reaction_occurred = 0
-		for(var/datum/reagent/R in reagent_list) // Usually a small list
-			if(R.original_id) //Prevent synthesised chem variants from being mixed
-				for(var/datum/reagent/O in reagent_list)
-					if(O.id == R.id)
+		reaction_occurred = FALSE
+		for(var/datum/reagent/reagent in reagent_list) // Usually a small list
+			if(reagent.original_id) //Prevent synthesised chem variants from being mixed
+				for(var/datum/reagent/current in reagent_list)
+					if(current.id == reagent.id)
 						continue
-					else if(O.original_id == R.original_id || O.id == R.original_id)
+					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
-						reagent_list -= R
-						O.volume += R.volume
-						qdel(R)
+						reagent_list -= reagent
+						current.volume += reagent.volume
+						qdel(reagent)
 						break
-			for(var/reaction in GLOB.chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
-
-				if(!reaction)
-					continue
-
-				var/datum/chemical_reaction/C = reaction
-
-				var/total_required_reagents = C.required_reagents.len
+			for(var/datum/chemical_reaction/reaction in GLOB.chemical_reactions_filtered_list[reagent.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
+				var/total_required_reagents = length(reaction.required_reagents)
 				var/total_matching_reagents = 0
 				var/total_required_catalysts = 0
-				if(C.required_catalysts)
-					total_required_catalysts = C.required_catalysts.len
+				if(reaction.required_catalysts)
+					total_required_catalysts = length(reaction.required_catalysts)
 				var/total_matching_catalysts= 0
-				var/matching_container = 0
-				var/matching_other = 0
+				var/matching_container = FALSE
 				var/list/multipliers = new/list()
 
-				for(var/B in C.required_reagents)
-					if(!has_reagent(B, C.required_reagents[B]))
+				for(var/required_reagent in reaction.required_reagents)
+					if(!has_reagent(required_reagent, reaction.required_reagents[required_reagent]))
 						break
 					total_matching_reagents++
-					multipliers += floor(get_reagent_amount(B) / C.required_reagents[B])
-				for(var/B in C.required_catalysts)
-					if(B == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
+					multipliers += floor(get_reagent_amount(required_reagent) / reaction.required_reagents[required_reagent])
+				for(var/catalyst in reaction.required_catalysts)
+					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
 						total_matching_catalysts++
 						continue
-					if(!has_reagent(B, C.required_catalysts[B]))
+					if(!has_reagent(catalyst, reaction.required_catalysts[catalyst]))
 						break
 					total_matching_catalysts++
 
-				if(isliving(my_atom) && !C.mob_react) //Makes it so some chemical reactions don't occur in mobs
+				if(isliving(my_atom) && !reaction.mob_react) //Makes it so some chemical reactions don't occur in mobs
 					continue
 
-				if(!C.required_container)
-					matching_container = 1
+				if(!reaction.required_container)
+					matching_container = TRUE
+				else if(ispath(my_atom.type, reaction.required_container))
+					matching_container = TRUE
 
-				else
-					if(my_atom.type == C.required_container)
-						matching_container = 1
-
-				if(!C.required_other)
-					matching_other = 1
-
-				if(total_matching_reagents == total_required_reagents && total_matching_catalysts == total_required_catalysts && matching_container && matching_other)
+				if(total_matching_reagents == total_required_reagents && total_matching_catalysts == total_required_catalysts && matching_container)
 					var/multiplier = min(multipliers)
 					var/preserved_data = null
-					for(var/B in C.required_reagents)
+					for(var/required_reagent in reaction.required_reagents)
 						if(!preserved_data)
-							preserved_data = get_data(B)
-						remove_reagent(B, (multiplier * C.required_reagents[B]), safety = 1)
+							preserved_data = get_data(required_reagent)
+						remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
 
-					var/created_volume = C.result_amount*multiplier
-					if(C.result)
+					var/created_volume = reaction.result_amount*multiplier
+					if(reaction.result)
 
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
-						add_reagent(C.result, C.result_amount*multiplier)
-						set_data(C.result, preserved_data)
+						add_reagent(reaction.result, reaction.result_amount*multiplier)
+						set_data(reaction.result, preserved_data)
 
 						//add secondary products
-						for(var/S in C.secondary_results)
-							add_reagent(S, C.result_amount * C.secondary_results[S] * multiplier)
+						for(var/secondary_result in reaction.secondary_results)
+							add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * multiplier)
 
 					var/list/seen = viewers(4, get_turf(my_atom))
 					for(var/mob/M in seen)
@@ -313,8 +303,8 @@
 
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
-					C.on_reaction(src, created_volume)
-					reaction_occurred = 1
+					reaction.on_reaction(src, created_volume)
+					reaction_occurred = TRUE
 					break
 
 	while(reaction_occurred)
@@ -628,17 +618,25 @@
 		return
 
 	if(my_atom) //It exists outside of null space.
-		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
-			if(R.id == "iron")
-				shards += floor(R.volume)
-			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
+		for(var/datum/reagent/reagent in reagent_list) // if you want to do extra stuff when other chems are present, do it here
+			if(reagent.id == "iron")
+				shards += floor(reagent.volume)
+			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
+			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/neuro
 
 		// some upper limits
 		if(shards > max_ex_shards)
 			shards = max_ex_shards
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
+		if(ispath(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
 			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / HORNET_SHARDS_MAX_REDUCTION
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / NEURO_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
 		if(ex_falloff < EXPLOSION_MIN_FALLOFF)
@@ -690,7 +688,7 @@
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
-		smoke.start()
+		smoke.start(intensity, max_fire_int)
 		smoke = null
 
 	exploded = TRUE // clears reagents after all reactions processed
@@ -709,6 +707,13 @@
 
 	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
+
+/// Checks if any of the reagents contained within are harmful
+/datum/reagents/proc/contains_harmful_substances()
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		for(var/datum/chem_property/property as anything in reagent.properties)
+			if(property.can_cause_harm())
+				return TRUE
 
 /turf/proc/reset_chemexploded()
 	chemexploded = FALSE

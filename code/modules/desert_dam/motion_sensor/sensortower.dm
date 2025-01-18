@@ -16,8 +16,8 @@
 	unacidable = TRUE   //NOPE.jpg
 	needs_power = FALSE
 	idle_power_usage = 1000
+	is_on = FALSE  //Is this damn thing on or what?
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = FALSE  //Is this damn thing on or what?
 	var/fail_rate = 15 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 50 //Check for failure every this many ticks
 	//The sensor tower fails more often since it is experimental.
@@ -25,6 +25,10 @@
 
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
+
+/obj/structure/machinery/sensortower/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "sensor_tower")
 
 
 /obj/structure/machinery/sensortower/update_icon()
@@ -101,7 +105,7 @@
 
 	add_fingerprint(user)
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return FALSE
 
@@ -135,7 +139,7 @@
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
 			var/obj/item/tool/weldingtool/WT = O
@@ -159,7 +163,7 @@
 
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -176,7 +180,7 @@
 				return TRUE
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -228,10 +232,6 @@
 		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"), \
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
-
-/obj/structure/machinery/sensortower/power_change()
-	..()
-	update_icon()
 
 /* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
 Higher severity explosion will damage the sensor tower more

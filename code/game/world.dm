@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
 
 	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
-	#ifndef UNIT_TESTS
+	#if !defined(UNIT_TESTS) && !defined(AUTOWIKI)
 	world.log = file("[GLOB.log_directory]/dd.log")
 	#endif
 	backfill_runtime_log()
@@ -222,6 +222,9 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		return json_encode(response)
 
 /world/Reboot(reason)
+	if(reason == 1 || reason == 2) // host/topic
+		return
+
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
@@ -269,7 +272,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 /world/proc/load_tm_message()
 	var/datum/getrev/revdata = GLOB.revdata
-	if(revdata.testmerge.len)
+	if(length(revdata.testmerge))
 		GLOB.current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()

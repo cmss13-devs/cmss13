@@ -38,10 +38,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "hW" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/northwest,
 /area/lv624/ground/barrens/containers)
 "iS" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
@@ -82,7 +79,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "pd" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "pC" = (
@@ -207,10 +204,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "JZ" = (
 /obj/structure/fence,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
 "KX" = (
 /turf/open/gm/dirt,
@@ -224,7 +218,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "Oe" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "Pd" = (

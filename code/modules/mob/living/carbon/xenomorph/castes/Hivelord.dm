@@ -47,7 +47,7 @@
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
-	icon = 'icons/mob/xenos/hivelord.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/hivelord.dmi'
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
@@ -71,6 +71,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 		/datum/action/xeno_action/onclick/tacmap,
 		)
 
@@ -79,8 +80,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
-	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/hivelord.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/hivelord.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")

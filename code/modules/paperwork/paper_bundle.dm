@@ -44,8 +44,8 @@
 	else
 		if(HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/toy/crayon))
 			close_browser(usr, name) //Closes the dialog
-		if(page < contents.len)
-			page = contents.len
+		if(page < length(contents))
+			page = length(contents)
 		P = contents[page]
 		P.attackby(W, user)
 
@@ -95,15 +95,15 @@
 	switch(screen)
 		if(0)
 			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='byond://?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(1)
-			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='byond://?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='byond://?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(2)
-			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='byond://?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
 			dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
 	if(istype(src[page], /obj/item/paper))
 		var/obj/item/paper/P = src[page]
@@ -148,8 +148,8 @@
 			page--
 			playsound(src.loc, "pageturn", 15, 1)
 		if(href_list["remove"])
-			if(contents.len < page)
-				page = contents.len
+			if(length(contents) < page)
+				page = length(contents)
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
 			to_chat(usr, SPAN_NOTICE("You remove the [W.name] from the bundle."))
@@ -175,6 +175,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
+/obj/item/paper_bundle/proc/operator[](index_num)
+	return contents[index_num]
+
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
 	set category = "Object"
@@ -198,7 +201,7 @@
 	qdel(src)
 
 /obj/item/paper_bundle/update_icon()
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
 		icon_state = I.icon_state
 		overlays = I.overlays

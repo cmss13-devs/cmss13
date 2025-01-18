@@ -12,7 +12,7 @@
 /obj/structure/filingcabinet
 	name = "filing cabinet"
 	desc = "A large cabinet with drawers."
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
 	anchored = TRUE
@@ -49,7 +49,7 @@
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
 	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
-		..()
+		. = ..()
 	else
 		for(var/allowed_type in allowed_types)
 			if(istype(P, allowed_type))
@@ -64,14 +64,14 @@
 				to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
 
 	user.set_interaction(src)
 	var/dat = "<center><table>"
 	for(var/obj/item/P in src)
-		dat += "<tr><td><a href='?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
+		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 	dat += "</table></center>"
 	show_browser(user, dat, name, "filingcabinet", "size=350x300")
 

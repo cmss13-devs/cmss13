@@ -267,6 +267,41 @@
 /obj/item/ammo_box/magazine/M16/ap/empty
 	empty = TRUE
 
+//-----------------------M10 Pistol Mag Boxes-----------------------
+
+/obj/item/ammo_box/magazine/m10
+	name = "magazine box (M10 x 12)"
+	icon_state = "base_m10"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_reg"
+	overlay_gun_type = "_m10"
+	overlay_content = "_hv"
+	num_of_magazines = 22
+	magazine_type = /obj/item/ammo_magazine/pistol/m10
+
+/obj/item/ammo_box/magazine/m10/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/extended
+	name = "magazine box (Ext m10 x 10)"
+	overlay_ammo_type = "_ext"
+	overlay_content = "_hv"
+	num_of_magazines = 14
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/extended
+
+/obj/item/ammo_box/magazine/m10/extended/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/drum
+	name = "magazine box (Drum m10 x 10)"
+	overlay_ammo_type = "_drum"
+	overlay_content = "_hv"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/drum
+
+/obj/item/ammo_box/magazine/m10/drum/empty
+	empty = TRUE
+
 //-----------------------M4A3 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/m4a3
@@ -495,6 +530,18 @@
 	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 /obj/item/ammo_box/magazine/m2c/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m2c/t37
+	name = "\improper ammo box (T37 x 8)"
+	icon_state = "base_t37"
+	overlay_ammo_type = ""
+	overlay_gun_type = "_t37"
+	overlay_content = "_t37"
+	magazine_type = /obj/item/ammo_magazine/m2c/t37
+	num_of_magazines = 8
+
+/obj/item/ammo_box/magazine/m2c/t37/empty
 	empty = TRUE
 
 //-----------------------M41AE2 Ammo Box-----------------------
@@ -979,6 +1026,27 @@
 /obj/item/ammo_box/magazine/fp9000/empty
 	empty = TRUE
 
+//-----------------------FN P90 SMG Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/p90
+	name = "magazine box (FN P90 x 12)"
+	icon_state = "base_fn"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = ""
+	overlay_gun_type = "_fnfp9000"
+	overlay_content = "_fn"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/p90
+
+/obj/item/ammo_box/magazine/p90/update_icon()
+	if(overlays)
+		overlays.Cut()
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
+
+/obj/item/ammo_box/magazine/p90/empty
+	empty = TRUE
+
 //-----------------------MAR30/40 Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mar30
@@ -1002,7 +1070,7 @@
 
 /obj/item/ammo_box/magazine/mar30/ext
 	name = "magazine box (MAR30/40 Ext x 8)"
-	overlay_gun_type = "_mar40"
+	overlay_gun_type = "_mar30"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/mar40/extended
 

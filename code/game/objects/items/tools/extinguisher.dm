@@ -4,7 +4,12 @@
 /obj/item/tool/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+	)
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
@@ -72,7 +77,7 @@
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
-		return FALSE
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return ..()
 
@@ -153,13 +158,13 @@
 	var/list/unpicked_targets = list()
 
 	for(var/a in 0 to (EXTINGUISHER_WATER_USE_AMT-1))
-		if (!unpicked_targets.len)
+		if (!length(unpicked_targets))
 			unpicked_targets += targets
 		var/turf/TT = pick(unpicked_targets)
 		unpicked_targets -= TT
 		INVOKE_ASYNC(src, PROC_REF(release_liquid), TT, user)
 
-	if(istype(user.loc, /turf/open/space) || (user.lastarea && user.lastarea.has_gravity == 0))
+	if(istype(user.loc, /turf/open/space))
 		user.inertia_dir = get_dir(target, user)
 		step(user, user.inertia_dir)
 	return

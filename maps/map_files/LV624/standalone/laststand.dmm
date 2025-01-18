@@ -15,9 +15,7 @@
 /obj/structure/largecrate/supply/ammo/shotgun{
 	pixel_y = 8
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "ah" = (
 /turf/closed/wall/wood,
@@ -30,9 +28,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "ak" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "al" = (
 /obj/structure/bed/alien,
@@ -51,9 +47,7 @@
 	},
 /obj/item/tool/kitchen/knife/butcher,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
+/turf/open/floor/wood/wood_broken4,
 /area/lv624/ground/caves/north_central_caves)
 "ao" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -70,9 +64,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "ap" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
 "aq" = (
 /obj/structure/closet/crate,
@@ -93,9 +85,7 @@
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/turf/open/floor/carpet{
-	icon_state = "bcarpet08"
-	},
+/turf/open/floor/carpet/bcarpet08,
 /area/lv624/ground/caves/north_central_caves)
 "au" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -106,15 +96,11 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aw" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "ay" = (
 /obj/structure/closet/cabinet,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "aA" = (
 /obj/structure/barricade/sandbags/wired,
@@ -126,9 +112,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aC" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
+/turf/open/floor/wood/wood_broken4,
 /area/lv624/ground/caves/north_central_caves)
 "aD" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -183,9 +167,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aP" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
 "aQ" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -195,23 +177,17 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/carpet{
-	icon_state = "bcarpet01"
-	},
+/turf/open/floor/carpet/bcarpet01,
 /area/lv624/ground/caves/north_central_caves)
 "aR" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/carpet{
-	icon_state = "bcarpet02"
-	},
+/turf/open/floor/carpet/bcarpet02,
 /area/lv624/ground/caves/north_central_caves)
 "aS" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/candle,
-/turf/open/floor/carpet{
-	icon_state = "bcarpet03"
-	},
+/turf/open/floor/carpet/bcarpet03,
 /area/lv624/ground/caves/north_central_caves)
 "aU" = (
 /obj/effect/decal/cleanable/blood,
@@ -224,9 +200,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aW" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "aZ" = (
 /obj/structure/window_frame/wood,
@@ -243,9 +217,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "bc" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "bd" = (
 /obj/structure/closet/crate,
@@ -270,16 +242,12 @@
 "jP" = (
 /obj/item/weapon/gun/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "jQ" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
 "lJ" = (
 /obj/structure/curtain/red,
@@ -291,9 +259,7 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "mu" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -317,9 +283,7 @@
 	pixel_x = 1;
 	pixel_y = 9
 	},
-/turf/open/floor/carpet{
-	icon_state = "bcarpet09"
-	},
+/turf/open/floor/carpet/bcarpet09,
 /area/lv624/ground/caves/north_central_caves)
 "pH" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -355,9 +319,7 @@
 "EY" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/turf/open/floor/carpet{
-	icon_state = "bcarpet07"
-	},
+/turf/open/floor/carpet/bcarpet07,
 /area/lv624/ground/caves/north_central_caves)
 "Ic" = (
 /obj/structure/bed/chair/wood/normal{
@@ -372,31 +334,23 @@
 /area/lv624/ground/caves/north_central_caves)
 "Ms" = (
 /obj/structure/barricade/sandbags/wired,
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
 "ND" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern,
 /obj/structure/barricade/sandbags/wired,
 /obj/item/weapon/baseballbat/metal,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "OT" = (
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "Td" = (
 /obj/structure/barricade/sandbags/wired,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "UM" = (
 /obj/structure/bed/alien,

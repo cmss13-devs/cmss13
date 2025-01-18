@@ -6,15 +6,24 @@
 /obj/item/weapon/gun/flamer
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	icon_state = "m240"
 	item_state = "m240"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
+
+	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
+	fire_sound = ""
+
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
-	fire_sound = ""
-	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
-	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
@@ -68,11 +77,12 @@
 	else
 		. += "There's no tank in [src]!"
 
-/obj/item/weapon/gun/flamer/update_icon()
+/obj/item/weapon/gun/flamer/update_icon(mob/user)
 	..()
 
 	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
 	var/new_icon_state = base_gun_icon
+
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state
@@ -203,7 +213,7 @@
 /obj/item/weapon/gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
@@ -234,7 +244,7 @@
 
 /obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/source_turf = get_turf(user)
@@ -251,7 +261,7 @@
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
 	var/turf/second_turf = turfs[2]
-	var/ammount_required = (min(turfs.len, smoke_range) * use_multiplier) // the ammount of units that this click requires
+	var/ammount_required = (min(length(turfs), smoke_range) * use_multiplier) // the ammount of units that this click requires
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
@@ -294,7 +304,7 @@
 
 /obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
 		return
 
 	var/source_turf = get_turf(user)
@@ -305,7 +315,7 @@
 
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
-	var/ammount_required = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that this click requires
+	var/ammount_required = (min(length(turfs), foam_range) * use_multiplier) // the ammount of units that this click requires
 	for(var/turf/turf in turfs)
 
 		if(chemical.volume < ammount_required)
@@ -378,7 +388,7 @@
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 

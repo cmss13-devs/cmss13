@@ -14,6 +14,7 @@
 	/// The history of all atoms that were hovered over while the mouse was depressed
 	var/list/mouse_trace_history
 	var/list/lmb_last_mousedown_mods
+	var/datum/entity/clan_player/clan_info
 
 /client/MouseDown(atom/A, turf/T, skin_ctl, params)
 	ignore_next_click = FALSE
@@ -88,7 +89,7 @@
 	if(mods["left"])
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DRAG, src_obj, over_obj, params)
 
-	var/atom/last_atom = LAZYACCESS(mouse_trace_history, mouse_trace_history.len)
+	var/atom/last_atom = LAZYACCESS(mouse_trace_history, length(mouse_trace_history))
 	if(over_obj == last_atom)
 		return
 

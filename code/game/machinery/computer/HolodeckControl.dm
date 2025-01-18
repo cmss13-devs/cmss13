@@ -14,6 +14,12 @@
 /turf/open/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
+/turf/open/floor/holofloor/cult
+	icon_state = "cult"
+
+/turf/open/floor/holofloor/cult/south
+	dir = SOUTH
+
 /turf/open/floor/holofloor/grass
 	name = "lush grass"
 	icon_state = "grass1"
@@ -77,22 +83,13 @@
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/surface/table/holotable/wood
 	name = "table"
 	desc = "A square piece of wood standing on four wooden legs. It can not move."
 	icon_state = "woodtable"
 	table_prefix = "wood"
-
-/obj/structure/holostool
-	name = "stool"
-	desc = "Apply butt."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "stool"
-	anchored = TRUE
-	flags_atom = FPRINT
-
 
 /obj/item/clothing/gloves/boxing/hologlove
 	name = "boxing gloves"
@@ -127,7 +124,7 @@
 /obj/structure/holohoop
 	name = "basketball hoop"
 	desc = "Boom, Shakalaka!"
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "hoop"
 	anchored = TRUE
 	density = TRUE

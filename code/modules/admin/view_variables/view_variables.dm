@@ -86,7 +86,7 @@
 	var/list/variable_html = list()
 	if(islist)
 		var/list/L = D
-		for(var/i in 1 to L.len)
+		for(var/i in 1 to length(L))
 			var/key = L[i]
 			var/value
 			if(IS_NORMAL_LIST(L) && IS_VALID_ASSOC_KEY(key))
@@ -227,7 +227,7 @@
 					</td>
 					<td width='50%'>
 						<div align='center'>
-							<a id='refresh_link' href='?_src_=vars;datumrefresh=[refid];[HrefToken()]'>Refresh</a>
+							<a id='refresh_link' href='byond://?_src_=vars;datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 							<form>
 								<select name="file" size="1"
 									onchange="handle_dropdown(this)"

@@ -87,7 +87,7 @@
 /datum/emergency_call/contractors/covert
 	name = "Military Contractors (Covert) (Hostile to WY)"
 	mob_max = 7
-	probability = 0
+	probability = 20
 	max_medics = 1
 	max_engineers = 1
 	max_heavies = 1
@@ -115,9 +115,7 @@
 		check_objective_info()
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(GLOB.world_view_size)
+	M.transfer_to(H, TRUE)
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H

@@ -27,6 +27,7 @@
 #define HUNTER_CLAN "25" //Displays a colored icon to represent ingame Hunter Clans
 #define HUNTER_HUD "26" //Displays various statuses on mobs for Hunters to identify targets
 #define HOLOCARD_HUD "27" //Displays the holocards set by medical personnel
+#define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -44,9 +45,12 @@
 #define MOB_HUD_FACTION_TWE 13
 #define MOB_HUD_FACTION_CLF 14
 #define MOB_HUD_FACTION_PMC 15
-#define MOB_HUD_HUNTER 16
-#define MOB_HUD_HUNTER_CLAN 17
-#define MOB_HUD_EXECUTE 18
+#define MOB_HUD_FACTION_CMB 16
+#define MOB_HUD_FACTION_NSPA 17
+#define MOB_HUD_HUNTER 18
+#define MOB_HUD_HUNTER_CLAN 19
+#define MOB_HUD_EXECUTE 20
+#define MOB_HUD_NEW_PLAYER 21
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"
@@ -54,6 +58,7 @@
 #define TRACKER_LZ "track_lz"
 #define TRACKER_CO "track_co"
 #define TRACKER_XO "track_xo"
+#define TRACKER_CMP "track_cmp"
 #define TRACKER_CL "track_cl"
 
 #define TRACKER_ASL "_asl" // Alpha Squad Leader

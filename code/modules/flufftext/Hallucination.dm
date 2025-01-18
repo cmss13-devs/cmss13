@@ -54,13 +54,13 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							slots_free += ui_datum.ui_storage1
 						if(!H.r_store)
 							slots_free += ui_datum.ui_storage2
-					if(slots_free.len)
+					if(length(slots_free))
 						halitem.screen_loc = pick(slots_free)
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
-								halitem.icon_state = "revolver"
+								halitem.icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
+								halitem.icon_state = "m44r"
 								halitem.name = "Revolver"
 							if(2) //c4
 								halitem.icon = 'icons/obj/items/assemblies.dmi'
@@ -69,11 +69,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								if(prob(25))
 									halitem.icon_state = "c4small_1"
 							if(3) //sword
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/swords.dmi'
 								halitem.icon_state = "sword1"
 								halitem.name = "Sword"
 							if(4) //stun baton
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 								halitem.icon_state = "stunbaton"
 								halitem.name = "Stun Baton"
 							if(5) //emag
@@ -97,7 +97,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 
 						switch(rand(1,3))
@@ -161,7 +161,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 						switch(rand(1,3))
 							if(1)
@@ -203,18 +203,18 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		"Play Charades","Oxygen","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
 
 		if(mid_txts)
-			while(mid_txts.len)
+			while(length(mid_txts))
 				var/mid_txt = pick(mid_txts)
 				mocktxt += mid_txt
 				mid_txts -= mid_txt
 
-		while(buttons.len)
+		while(length(buttons))
 
 			var/button = pick(buttons)
 
 			var/button_txt = pick(possible_txt)
 
-			mocktxt += "<a href='?src=\ref[src];[button]'>[button_txt]</a><br>"
+			mocktxt += "<a href='byond://?src=\ref[src];[button]'>[button_txt]</a><br>"
 
 			buttons -= button
 			possible_txt -= button_txt
@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 		clone = H
 		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
 
-// if(!possible_clones.len) return
+// if(!length(possible_clones)) return
 // clone = pick(possible_clones)
 	if(!clone) return
 

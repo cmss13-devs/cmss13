@@ -73,12 +73,7 @@ IN_USE used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
-/obj/structure/machinery/power_change(area/master_area = null)
-	..()
-	update_icon()
-
 /obj/structure/machinery/cm_vending/update_icon()
-
 	//restoring sprite to initial
 	overlays.Cut()
 	//icon_state = initial(icon_state) //shouldn't be needed but just in case
@@ -97,8 +92,9 @@ IN_USE used for vending/denying
 		apply_transform(A)
 
 /obj/structure/machinery/cm_vending/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
+
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -153,7 +149,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
 
-	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && hackable)
+	if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && hackable)
 		. += SPAN_NOTICE("You believe you can hack this one to remove the access requirements.")
 
 /obj/structure/machinery/cm_vending/proc/hack_access(mob/user)
@@ -247,7 +243,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//M94 flare packs handling
 	else if(istype(item_to_stock, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/flare_pack = item_to_stock
-		if(flare_pack.contents.len < flare_pack.max_storage_space)
+		if(length(flare_pack.contents) < flare_pack.max_storage_space)
 			to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
 			return
 		var/flare_type
@@ -272,7 +268,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//Machete holsters handling
 	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-		if(AR.pockets && AR.pockets.contents.len)
+		if(AR.pockets && length(AR.pockets.contents))
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 			return FALSE
@@ -300,7 +296,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(AM.current_rounds != AM.max_rounds)
 				to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
 				return
-		else if(A.contents.len < A.num_of_magazines)
+		else if(length(A.contents) < A.num_of_magazines)
 			to_chat(user, SPAN_WARNING("[A] is not full."))
 			return
 		else
@@ -317,14 +313,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 	//Marine armor handling
 	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
 		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
-		if(AR.pockets && AR.pockets.contents.len)
+		if(AR.pockets && length(AR.pockets.contents))
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
 			return FALSE
 	//Marine helmet handling
 	else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/H = item_to_stock
-		if(H.pockets && H.pockets.contents.len)
+		if(H.pockets && length(H.pockets.contents))
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
@@ -378,7 +374,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //------------INTERACTION PROCS---------------
 
 /obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/user)
-	if(stat & TIPPED_OVER || indestructible)
+	if(stat & TIPPED_OVER || unslashable)
 		to_chat(user, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
@@ -541,7 +537,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 			var/turf/target_turf = get_appropriate_vend_turf(user)
 			if(vend_flags & VEND_CLUTTER_PROTECTION)
-				if(target_turf.contents.len > 25)
+				if(length(target_turf.contents) > 25)
 					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 					vend_fail()
 					return FALSE
@@ -565,48 +561,28 @@ GLOBAL_LIST_EMPTY(vending_products)
 								to_chat(user, SPAN_WARNING("Only specialists can take specialist sets."))
 								vend_fail()
 								return FALSE
+
 							else if(!user.skills || user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_TRAINED)
 								to_chat(user, SPAN_WARNING("You already have a specialization."))
 								vend_fail()
 								return FALSE
+
 							var/p_name = itemspec[1]
-							if(!GLOB.available_specialist_sets.Find(p_name))
+							if(!(p_name in GLOB.specialist_set_name_dict))
+								return
+
+							if(GLOB.specialist_set_name_dict[p_name].get_available_vendor_num() <= 0)
 								to_chat(user, SPAN_WARNING("That set is already taken."))
 								vend_fail()
 								return FALSE
+
 							var/obj/item/card/id/card = human_user.get_idcard()
-							if(!card?.check_biometrics(user))
+							if(!istype(card) || !card.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
-							var/specialist_assignment
-							switch(p_name)
-								if("Scout Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-									specialist_assignment = "Scout"
-								if("Sniper Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-									specialist_assignment = "Sniper"
-									GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
-								if("Anti-materiel Sniper Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-									specialist_assignment = "Heavy Sniper"
-									GLOB.available_specialist_sets -= "Sniper Set"
-								if("Demolitionist Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
-									specialist_assignment = "Demo"
-								if("Heavy Grenadier Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
-									specialist_assignment = "Grenadier"
-								if("Pyro Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
-									specialist_assignment = "Pyro"
-								else
-									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
-									vend_fail()
-									return FALSE
-							card.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
-							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), card.assignment)
-							GLOB.available_specialist_sets -= p_name
+
+							GLOB.specialist_set_name_dict[p_name].redeem_set(human_user)
+
 						else if(vendor_role.Find(JOB_SYNTH))
 							if(user.job != JOB_SYNTH)
 								to_chat(user, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
@@ -678,7 +654,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		to_chat(user, SPAN_WARNING("You need to set [src] back upright first."))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & MAINT)
@@ -705,7 +681,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & REPAIR_STEP_ONE)
@@ -722,7 +698,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(iswire(W))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		var/obj/item/stack/cable_coil/CC = W
@@ -745,7 +721,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(W, /obj/item/stack/sheet/metal))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		var/obj/item/stack/sheet/metal/M = W
@@ -768,7 +744,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		var/obj/item/device/multitool/MT = W
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)
@@ -791,7 +767,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		. = redeem_token(W, user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
@@ -852,6 +828,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 				.["theme"] = VENDOR_THEME_UPP
 			if(FACTION_CLF)
 				.["theme"] = VENDOR_THEME_CLF
+			if(FACTION_YAUTJA)
+				.["theme"] = VENDOR_THEME_YAUTJA
 	.["show_points"] = show_points | use_snowflake_points
 
 /obj/structure/machinery/cm_vending/ui_assets(mob/user)
@@ -990,10 +968,24 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
 			tmp_list += list(list(initial(IBP.box.name), floor(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
 
-	//Putting Ammo and other boxes on the bottom of the list as per player preferences
-	if(tmp_list.len > 0)
+	//For every item that goes into a box, check if the box is already listed in the vendor and if so, update its amount
+	var/list/box_list = list()
+	if(length(tmp_list))
+		for(var/list/tmp_item as anything in tmp_list)
+			var/item_found = FALSE
+			for(var/list/product as anything in listed_products)
+				if(tmp_item[3] == product[3]) //We found a box we already have!
+					product[2] = tmp_item[2] //Update box amount
+					item_found = TRUE
+					break
+			if(!item_found)
+				//We will be adding this box item at the end of the list
+				box_list += list(tmp_item)
+
+	//Putting Ammo and other boxes on the bottom of the list if they haven't been accounted for already
+	if(length(box_list))
 		listed_products += list(list("BOXES", -1, null, null))
-		for(var/list/L as anything in tmp_list)
+		for(var/list/L as anything in box_list)
 			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
@@ -1222,6 +1214,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/magazine/lever_action/training/empty = /obj/item/ammo_box/magazine/lever_action/training,
 		/obj/item/ammo_box/magazine/lever_action/tracker/empty = /obj/item/ammo_box/magazine/lever_action/tracker,
 		/obj/item/ammo_box/magazine/lever_action/marksman/empty = /obj/item/ammo_box/magazine/lever_action/marksman,
+		/obj/item/ammo_box/magazine/lever_action/xm88/empty = /obj/item/ammo_box/magazine/lever_action/xm88,
 
 		/obj/item/ammo_box/rounds/smg/empty = /obj/item/ammo_box/rounds/smg,
 		/obj/item/ammo_box/rounds/smg/ap/empty = /obj/item/ammo_box/rounds/smg/ap,
@@ -1293,7 +1286,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		var/obj/item/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
 		if(islist(item_ref)) // multi-vending
-			item_ref = item_ref[1]
+			var/list/ref_list = item_ref
+			item_ref = ref_list[1]
 
 		var/is_category = item_ref == null
 
@@ -1351,7 +1345,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vend_delay)
 			overlays.Cut()
-			icon_state = "[initial(icon_state)]_vend"
+			flick("[initial(icon_state)]_vend", src)
 			if(vend_sound)
 				playsound(loc, vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vend_delay)
@@ -1473,7 +1467,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				spawned += new itemspec_item(loc)
 		if(throw_objects)
 			for(var/atom/movable/spawned_atom in spawned)
-				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)
+				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(ORANGE_TURFS(4, src)), 4, SPEED_FAST)
 	stat &= ~IN_USE
 	if(destroy)
 		qdel(src)

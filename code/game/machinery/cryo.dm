@@ -30,6 +30,8 @@
 	start_processing()
 
 /obj/structure/machinery/cryo_cell/Destroy()
+	if(occupant)
+		go_out()
 	QDEL_NULL(beaker)
 	. = ..()
 
@@ -114,7 +116,7 @@
 
 	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
 	var/beakerContents = list()
-	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			beakerContents += list(list("name" = R.name, "volume" = R.volume))
 	data["beakerContents"] = beakerContents
@@ -186,17 +188,11 @@
 	. = ..()
 	if((occupant || on) && operable())
 		update_use_power(USE_POWER_ACTIVE)
-		update_icon()
 
 /obj/structure/machinery/cryo_cell/update_icon()
 	icon_state = initial(icon_state)
 	var/is_on = on && operable()
 	icon_state = "[icon_state]-[is_on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
-
-/obj/structure/machinery/cryo_cell/Destroy()
-	if(occupant)
-		go_out()
-	. = ..()
 
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
 	if(!occupant)

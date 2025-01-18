@@ -71,7 +71,7 @@
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
 	code = "REP"
-	description = "Repairs cybernetic organs by <B>REDACTED</B>."
+	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
 	value = 2
@@ -435,7 +435,7 @@
 		if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			L.take_damage(0, potency)
 			return
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			var/obj/implanted_object = pick(L.implants)
 			if(implanted_object)
 				L.implants -= implanted_object
@@ -604,7 +604,7 @@
 		if(ghost?.client)
 			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -773,12 +773,20 @@
 	durationmod_per_level = -0.1
 	radiusmod_per_level = -0.01
 
+	var/static/ignite_threshold = 4
+
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
-		if(potency > 4)
+		if(potency > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
 			L.IgniteMob(TRUE)
+
+/datum/chem_property/positive/fire/oxidizing/can_cause_harm()
+	. = ..()
+
+	if(level * LEVEL_TO_POTENCY_MULTIPLIER > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
+		return TRUE
 
 /datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING
@@ -949,10 +957,6 @@
 /datum/chem_property/positive/aiding/process(mob/living/M, potency = 1, delta_time)
 	M.disabilities = 0
 	M.sdisabilities = 0
-	M.status_flags &= ~DISFIGURED
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.name = H.get_visible_name()
 
 /datum/chem_property/positive/aiding/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.confused = max(M.confused, 20 * potency) //Confusion and some toxins

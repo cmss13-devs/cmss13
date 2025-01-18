@@ -1,6 +1,6 @@
 /obj/structure/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "This device is used to trigger station functions, which require multiple swipes of an ID card to authenticate."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	unacidable = TRUE
@@ -37,7 +37,7 @@
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
 					event_source.confirmed = 1
-					event_source.event_confirmed_by = usr
+					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
@@ -64,16 +64,16 @@
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
 		if(!CONFIG_GET(flag/ert_admin_call_only))
-			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
+			dat += "<li><A href='byond://?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
 		dat += "</ul>"
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
+		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
 	show_browser(user, dat, name, "keycard_auth")
 	return
 
@@ -238,12 +238,12 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
 		dat += "</ul>"
 		show_browser(user, dat, name, "keycard_auth", "size=500x300")
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
+		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
 		show_browser(user, dat, name, "keycard_auth", "size=500x300")
 	return
 

@@ -148,6 +148,10 @@
 		return
 	if(living_mob.body_position == LYING_DOWN && !living_mob.can_crawl)
 		return
+	if(living_mob.body_position == LYING_DOWN && isxeno(mob.pulledby))
+		next_movement = world.time + 20 //Good Idea
+		to_chat(src, SPAN_NOTICE("You cannot crawl while a xeno is grabbing you."))
+		return
 
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)
@@ -191,7 +195,7 @@
 				for(var/zone in extremities)
 					if(!(human.get_limb(zone)))
 						extremities.Remove(zone)
-				if(extremities.len < 4)
+				if(length(extremities) < 4)
 					return
 			//now crawl
 			mob.crawling = TRUE
@@ -261,12 +265,12 @@
 
 		if(istype(src,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
 			var/mob/living/carbon/human/H = src
-			if((istype(turf,/turf/open/floor)) && (src.lastarea.has_gravity == 0) && !(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
+			if((istype(turf,/turf/open/floor)) && !(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 				continue
 
 
 		else
-			if((istype(turf,/turf/open/floor)) && (src.lastarea && src.lastarea.has_gravity == 0)) // No one else gets a chance.
+			if(istype(turf,/turf/open/floor)) // No one else gets a chance.
 				continue
 
 

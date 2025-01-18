@@ -5,13 +5,17 @@
 /obj/item/weapon/gun/boltaction
 	name = "\improper Basira-Armstrong bolt-action hunting rifle"
 	desc = "Named after its eccentric designers, the Basira-Armstrong is a cheap but reliable civilian bolt-action rifle frequently found in the outer colonies. Despite its legally-mandated limited magazine capacity, its light weight and legendary accuracy makes it popular among hunters and competitive shooters."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
-	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
-	fire_sound = 'sound/weapons/gun_boltaction.ogg'
-	var/open_bolt_sound ='sound/weapons/handling/gun_boltaction_open.ogg'
-	var/close_bolt_sound ='sound/weapons/handling/gun_boltaction_close.ogg'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "boltaction"
 	item_state = "hunting"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 5
@@ -34,7 +38,13 @@
 	wield_delay = WIELD_DELAY_NORMAL
 	civilian_usable_override = TRUE
 	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
-	indestructible = TRUE
+	explo_proof = TRUE
+
+	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
+	fire_sound = 'sound/weapons/gun_boltaction.ogg'
+	var/open_bolt_sound ='sound/weapons/handling/gun_boltaction_open.ogg'
+	var/close_bolt_sound ='sound/weapons/handling/gun_boltaction_close.ogg'
+
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.
@@ -42,7 +52,7 @@
 	var/has_openbolt_icon = TRUE
 
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 18, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 20, "stock_y" = 9)
 
 /obj/item/weapon/gun/boltaction/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -129,7 +139,7 @@
 
 		The 'pitter-patter' of 'rain' that the crews heard was in fact multiple rifles failing to penetrate through the vehicle's external armor. Once a number of the anti-materiel rifles were examined, it was deemed a high priority to produce a Corps version. In the process, the rifles were designed for a higher calibre then that of the rebel versions, so the M707 would be capable of penetrating the light vehicle armor of their UPP peers in the event of another Dog War or Tientsin."}
 
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overridden with camos
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi' // overridden with camos
 	icon_state = "vulture"
 	item_state = "vulture"
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'

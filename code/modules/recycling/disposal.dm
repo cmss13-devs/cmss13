@@ -65,7 +65,7 @@
 	start_processing()
 
 /obj/structure/machinery/disposal/Destroy()
-	if(contents.len)
+	if(length(contents))
 		eject()
 	trunk = null
 	return ..()
@@ -86,7 +86,7 @@
 	add_fingerprint(user)
 	if(mode <= 0) //It's off
 		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-			if(contents.len > 0)
+			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
 			if(mode == DISPOSALS_OFF) //It's off but still not unscrewed
@@ -103,7 +103,7 @@
 			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
-			if(contents.len > 0)
+			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
 			var/obj/item/tool/weldingtool/W = I
@@ -130,7 +130,7 @@
 		if(length(S.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You empty [S] into [src]."))
 			for(var/obj/item/O in S.contents)
-				S.remove_from_storage(O, src)
+				S.remove_from_storage(O, src, user)
 			S.update_icon()
 			update()
 			return
@@ -139,7 +139,7 @@
 	if(istype(grab_effect)) //Handle grabbed mob
 		if(ismob(grab_effect.grabbed_thing))
 			var/mob/grabbed_mob = grab_effect.grabbed_thing
-			if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
+			if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disposable_mobs) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
 				to_chat(user, SPAN_WARNING("You can't fit that in there!"))
 				return FALSE
 			var/max_grab_size = user.mob_size
@@ -184,7 +184,7 @@
 
 ///Mouse drop another mob or self
 /obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
-	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(user, TRAIT_CRAWLER)) || narrow_tube)
+	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disposable_mobs) && !HAS_TRAIT(user, TRAIT_CRAWLER)) || narrow_tube)
 		to_chat(user, SPAN_WARNING("Looks a little bit too tight in there!"))
 		return FALSE
 
@@ -339,7 +339,7 @@
 		return
 
 	//Check for items in disposal - occupied light
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-full")
 
 	//Charging and ready light
@@ -356,7 +356,7 @@
 
 	flush_count++
 	if(flush_count >= flush_after_ticks)
-		if(contents.len)
+		if(length(contents))
 			if(mode == DISPOSALS_CHARGED)
 				spawn(0)
 					flush()
@@ -372,7 +372,7 @@
 	else if(disposal_pressure >= SEND_PRESSURE)
 		mode = DISPOSALS_CHARGED //If full enough, switch to ready mode
 		update()
-		if(!contents.len)
+		if(!length(contents))
 			//Full and nothing to flush - stop processing!
 			stop_processing()
 	else
@@ -1106,7 +1106,8 @@
 		name = initial(name)
 
 /obj/structure/disposalpipe/tagger/attackby(obj/item/I, mob/user)
-	if(..())
+	. = ..()
+	if(.)
 		return
 
 	if(istype(I, /obj/item/device/destTagger))

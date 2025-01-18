@@ -40,8 +40,8 @@
 	user.set_interaction(src)
 	var/t = "<TT>"
 
-	t += "<BR><HR><A href='?src=\ref[src];update=1'>Refresh</A>"
-	t += "<BR><HR><A href='?src=\ref[src];close=1'>Close</A>"
+	t += "<BR><HR><A href='byond://?src=\ref[src];update=1'>Refresh</A>"
+	t += "<BR><HR><A href='byond://?src=\ref[src];close=1'>Close</A>"
 
 	if(!powernet)
 		t += SPAN_DANGER("No connection")
@@ -57,7 +57,7 @@
 
 		t += "<FONT SIZE=-1>"
 
-		if(L.len > 0)
+		if(length(L) > 0)
 			var/total_demand = 0
 			t += "Area    Eqp./Lgt./Env.  Load   Cell<HR>"
 

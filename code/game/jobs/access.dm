@@ -61,7 +61,7 @@
 	gen_access()
 	if(!islist(req_access)) return 1//something's very wrong
 	var/L[] = req_access
-	if(!L.len && (!req_one_access || !req_one_access.len)) return 1//no requirements
+	if(!length(L) && !LAZYLEN(req_one_access)) return 1//no requirements
 	if(!I) return
 
 	var/list/A = I.GetAccess()
@@ -69,7 +69,7 @@
 		if(!(i in A))
 			return FALSE//doesn't have this access
 
-	if(req_one_access && req_one_access.len)
+	if(LAZYLEN(req_one_access))
 		for(var/i in req_one_access)
 			if(i in A)
 				return TRUE//has an access from the single access list
@@ -80,14 +80,14 @@
 	gen_access()
 	if(!req_access  && !req_one_access) return 1
 	if(!islist(req_access)) return 1
-	if(!req_access.len && !islist(req_one_access))
+	if(!length(req_access) && !islist(req_one_access))
 		return TRUE
-	if(!req_access.len && (!req_one_access || !req_one_access.len)) return 1
+	if(!length(req_access) && !LAZYLEN(req_one_access)) return 1
 	if(!islist(L)) return
 	var/i
 	for(i in req_access)
 		if(!(i in L)) return //doesn't have this access
-	if(req_one_access && req_one_access.len)
+	if(LAZYLEN(req_one_access))
 		for(i in req_one_access)
 			if(i in L) return 1//has an access from the single access list
 		return

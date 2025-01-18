@@ -101,7 +101,7 @@
 		if(VV_RESTORE_DEFAULT)
 			to_chat(src, "Finding items...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
+			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -116,7 +116,7 @@
 			var/list/varsvars = vv_parse_text(O, new_value)
 			var/pre_processing = new_value
 			var/unique
-			if (varsvars?.len)
+			if (LAZYLEN(varsvars))
 				unique = tgui_alert(usr, "Process vars unique to each instance, or same for all?", "Variable Association", list("Unique", "Same"))
 				if(unique == "Unique")
 					unique = TRUE
@@ -127,7 +127,7 @@
 
 			to_chat(src, "Finding items...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
+			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -155,7 +155,7 @@
 			var/type = value["type"]
 			to_chat(src, "Finding items...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
+			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -173,7 +173,7 @@
 		else
 			to_chat(src, "Finding items...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
+			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue

@@ -211,7 +211,7 @@
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
-			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
+			id.name = "[id.registered_name]'s [id.id_type] ([id.assignment])"
 			H.equip_to_slot_or_del(id, WEAR_ID)
 			H.update_inv_wear_id()
 	else
@@ -277,7 +277,7 @@
 		remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
 		remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
 
-		if(generated_account.transaction_log.len)
+		if(length(generated_account.transaction_log))
 			var/datum/transaction/T = generated_account.transaction_log[1]
 			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 		account_user.mind.store_memory(remembered_info)
@@ -343,6 +343,21 @@
 
 
 	show_browser(usr, "<TT>[str]</TT>", "Ticker Count", "tickercount")
+
+/client/proc/allow_browser_inspect()
+	set category = "Debug"
+	set name = "Allow Browser Inspect"
+	set desc = "Allow browser debugging via inspect"
+
+	if(!check_rights(R_DEBUG) || !isclient(src))
+		return
+
+	if(byond_version < 516)
+		to_chat(src, SPAN_WARNING("You can only use this on 516!"))
+		return
+
+	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
+	winset(src, "", "browser-options=byondstorage,find,devtools")
 
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)

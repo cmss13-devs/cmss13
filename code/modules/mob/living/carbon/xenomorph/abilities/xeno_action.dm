@@ -1,7 +1,5 @@
 /datum/action/xeno_action
 	icon_file = 'icons/mob/hud/actions_xeno.dmi'
-	var/ability_name // Our name
-
 	var/plasma_cost = 0
 	var/macro_path
 	var/action_type = XENO_ACTION_CLICK // Determines how macros interact with this action. Defines are in xeno.dm in the defines folder.
@@ -51,6 +49,7 @@
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
 /datum/action/xeno_action/proc/use_ability(atom/target)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
@@ -62,10 +61,10 @@
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
 	if(!owner)
 		return
-	var/mob/living/carbon/xenomorph/X = owner
-	if (ability_name && GLOB.round_statistics)
-		GLOB.round_statistics.track_ability_usage(ability_name)
-		X.track_ability_usage(ability_name, X.caste_type)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (name && GLOB.round_statistics)
+		GLOB.round_statistics.track_ability_usage(name)
+		xeno.track_ability_usage(name, xeno.caste_type)
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
@@ -129,10 +128,17 @@
 /// A wrapper for use_ability that sends a signal
 /datum/action/xeno_action/proc/use_ability_wrapper(...)
 	// TODO: make hidden a part of can_use_action
-	if(!hidden && can_use_action() && use_ability(arglist(args)))
+	if(!can_use_action())
+		SEND_SIGNAL(src, COMSIG_XENO_FAILED_ACTION_USED, owner)
+		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_XENO_PRE_ACTION_USED, owner)
+
+	if(!hidden && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
 		return TRUE
 
+	SEND_SIGNAL(src, COMSIG_XENO_FAILED_ACTION_USED, owner)
 	return FALSE
 
 // For actions that do something on each life tick
@@ -150,6 +156,7 @@
 // For non-activable Xeno actions, this is used to
 // actually DO the action.
 /datum/action/xeno_action/activable/action_activate()
+	. = ..()
 	if(!owner)
 		return
 	if(hidden)
@@ -160,21 +167,19 @@
 			return // We clicked the same ability in a very short time
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
-		to_chat(xeno, "You will no longer use [ability_name] with \
-			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(xeno, "You will no longer use [name] with [xeno.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		xeno.selected_ability = null
+		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
 	else
-		to_chat(xeno, "You will now use [ability_name] with \
-			[xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(xeno, "You will now use [name] with [xeno.get_ability_mouse_name()].")
 		if(xeno.selected_ability)
 			xeno.selected_ability.action_deselect()
 			if(xeno.selected_ability.charge_time)
 				xeno.selected_ability.stop_charging_ability()
 		button.icon_state = "template_on"
-		xeno.selected_ability = src
+		xeno.set_selected_ability(src)
 		xeno.deselect_timer = world.time + 5 // Half a second
 		if(charges != NO_ACTION_CHARGES)
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
@@ -189,7 +194,7 @@
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()
 	if(xeno.selected_ability == src)
-		xeno.selected_ability = null
+		xeno.set_selected_ability(null)
 	if(macro_path)
 		remove_verb(xeno, macro_path)
 
@@ -201,6 +206,7 @@
 	no_cooldown_msg = TRUE
 
 /datum/action/xeno_action/onclick/action_activate()
+	. = ..()
 	use_ability_wrapper(null)
 
 // Adds a cooldown to this
@@ -260,7 +266,7 @@
 
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.
-/datum/action/xeno_action/proc/action_cooldown_check()
+/datum/action/xeno_action/action_cooldown_check()
 	return (cooldown_timer_id == TIMER_ID_NULL) && (!charge_time || charge_ready)
 
 // What occurs when a cooldown ends NATURALLY. Ties into ability_cooldown_over, which tells the source Xeno
@@ -362,17 +368,6 @@
 	deltimer(charge_timer_id)
 	charge_timer_id = TIMER_ID_NULL
 
-// Helper proc to get an action on a target Xeno by type.
-// Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, typepath)
-	if (!istype(X))
-		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
-
-	for (var/datum/action/xeno_action/XA in X.actions)
-		if (istype(XA, typepath))
-			return XA
-	return null
-
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.
 /proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
@@ -420,6 +415,7 @@
 	return FALSE
 
 /datum/action/xeno_action/active_toggle/action_activate()
+	. = ..()
 	toggle_toggle()
 
 /datum/action/xeno_action/active_toggle/life_tick()
@@ -454,3 +450,6 @@
 	track_xeno_ability_stats()
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))
+
+#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

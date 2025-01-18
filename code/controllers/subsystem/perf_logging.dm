@@ -26,8 +26,8 @@ SUBSYSTEM_DEF(perf_logging)
 			if(SS?.cost > 0.1)
 				currentrun += SS
 
-	while(currentrun.len)
-		var/datum/controller/subsystem/SS = currentrun[currentrun.len]
+	while(length(currentrun))
+		var/datum/controller/subsystem/SS = currentrun[length(currentrun)]
 		currentrun.len--
 		var/datum/entity/mc_controller/C = controller_assoc[SS.type]
 		new_record(SS, C)

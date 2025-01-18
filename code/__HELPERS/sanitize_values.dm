@@ -6,6 +6,12 @@
 			return number
 	return default
 
+/proc/sanitize_float(number, min = 0, max = 1, default = 0)
+	if(isnum(number))
+		if(min <= number && number <= max)
+			return number
+	return default
+
 /proc/sanitize_text(text, default="")
 	if(istext(text))
 		return text
@@ -20,7 +26,7 @@
 /proc/sanitize_inlist(value, list/List, default)
 	if(value in List) return value
 	if(default) return default
-	if(List && List.len)return List[1]
+	if(LAZYLEN(List))return List[1]
 
 /proc/sanitize_list(list/List, list/filter = list(null), default = list())
 	if(!islist(List))
@@ -77,3 +83,23 @@
 			if(65 to 70) . += ascii2text(ascii+32) //letters A to F - translates to lowercase
 			else return default
 	return .
+
+/proc/sanitize_gear(list/gear, client/user)
+	var/list/sanitized_gear = list()
+	var/running_cost = 0
+
+	for(var/gear_option in gear)
+		if(!GLOB.gear_datums_by_name[gear_option])
+			continue
+
+		var/datum/gear/gear_datum = GLOB.gear_datums_by_name[gear_option]
+		var/new_total = running_cost + gear_datum.cost
+
+		if(new_total > MAX_GEAR_COST)
+			to_chat(user, SPAN_WARNING("Your [gear_option] was removed from your loadout as it exceeded the point limit."))
+			continue
+
+		running_cost = new_total
+		sanitized_gear += gear_option
+
+	return sanitized_gear

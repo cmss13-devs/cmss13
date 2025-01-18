@@ -49,9 +49,21 @@
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/flamethrower/tank_flamer
-	flamer_reagent_id = "napalmx"
-
+	flamer_reagent_id = "highdamagenapalm"
 	max_range = 8
+	shell_speed = 1.5
+
+/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/turf, datum/cause_data/cause_data)
+	if(!istype(turf))
+		return
+
+	var/datum/reagent/napalm/high_damage/reagent = new()
+	new /obj/flamer_fire(turf, cause_data, reagent, 1)
+
+	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread
+	landingsmoke.set_up(1, 0, turf, null, 4, cause_data)
+	landingsmoke.start()
+	landingsmoke = null
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
@@ -173,7 +185,7 @@
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 1)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2)
 	))
 
 /datum/ammo/souto
@@ -200,7 +212,7 @@
 	if(!M || M == P.firer) return
 	if(M.throw_mode && !M.get_active_hand()) //empty active hand and we're in throw mode. If so we catch the can.
 		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
-			if(P.contents.len == 1)
+			if(length(P.contents) == 1)
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(GLOB.world_view_size, P)) //find all people in view.
@@ -214,7 +226,7 @@
 			H.apply_effect(15, DAZE)
 			H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)
-		if(P.contents.len)
+		if(length(P.contents))
 			drop_can(P.loc, P) //We make a can at the location.
 
 /datum/ammo/souto/on_hit_obj(obj/O,obj/projectile/P)
@@ -230,7 +242,7 @@
 	drop_can(P.loc, P) //We make a can at the location.
 
 /datum/ammo/souto/proc/drop_can(loc, obj/projectile/P)
-	if(P.contents.len)
+	if(length(P.contents))
 		for(var/obj/item/I in P.contents)
 			I.forceMove(loc)
 	randomize_projectile(P)

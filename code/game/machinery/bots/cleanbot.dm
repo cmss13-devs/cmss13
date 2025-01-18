@@ -83,17 +83,17 @@
 Status: []<BR>
 Behaviour controls are [src.locked ? "locked" : "unlocked"]<BR>
 Maintenance panel is [src.open ? "opened" : "closed"]"},
-text("<A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A>"))
+text("<A href='byond://?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A>"))
 	if(!src.locked || isRemoteControlling(user))
-		dat += text({"<BR>Cleans Blood: []<BR>"}, text("<A href='?src=\ref[src];operation=blood'>[src.blood ? "Yes" : "No"]</A>"))
-		dat += text({"<BR>Patrol station: []<BR>"}, text("<A href='?src=\ref[src];operation=patrol'>[src.should_patrol ? "Yes" : "No"]</A>"))
-	// dat += text({"<BR>Beacon frequency: []<BR>"}, text("<A href='?src=\ref[src];operation=freq'>[src.beacon_freq]</A>"))
+		dat += text({"<BR>Cleans Blood: []<BR>"}, text("<A href='byond://?src=\ref[src];operation=blood'>[src.blood ? "Yes" : "No"]</A>"))
+		dat += text({"<BR>Patrol station: []<BR>"}, text("<A href='byond://?src=\ref[src];operation=patrol'>[src.should_patrol ? "Yes" : "No"]</A>"))
+	// dat += text({"<BR>Beacon frequency: []<BR>"}, text("<A href='byond://?src=\ref[src];operation=freq'>[src.beacon_freq]</A>"))
 	if(src.open && !src.locked)
 		dat += text({"
 Odd looking screw twiddled: []<BR>
 Weird button pressed: []"},
-text("<A href='?src=\ref[src];operation=screw'>[src.screwloose ? "Yes" : "No"]</A>"),
-text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"]</A>"))
+text("<A href='byond://?src=\ref[src];operation=screw'>[src.screwloose ? "Yes" : "No"]</A>"),
+text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"]</A>"))
 
 	show_browser(user, dat, "Cleaner v1.0 controls", "autocleaner")
 	onclose(user, "autocleaner")
@@ -180,7 +180,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		if (!should_patrol)
 			return
 
-		if (!patrol_path || patrol_path.len < 1)
+		if (LAZYLEN(patrol_path) < 1)
 			var/datum/radio_frequency/frequency = SSradio.return_frequency(beacon_freq)
 
 			if(!frequency) return
@@ -204,20 +204,20 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 
 		return
 
-	if(target && path.len == 0)
+	if(target && length(path) == 0)
 		spawn(0)
 			if(!src || !target) return
 			src.path = AStar(src.loc, src.target.loc, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
 			if (!path) path = list()
-			if(src.path.len == 0)
+			if(length(src.path) == 0)
 				src.oldtarget = src.target
 				target.targeted_by = null
 				src.target = null
 		return
-	if(src.path.len > 0 && src.target && (src.target != null))
+	if(length(src.path) > 0 && src.target && (src.target != null))
 		step_to(src, src.path[1])
 		src.path -= src.path[1]
-	else if(src.path.len == 1)
+	else if(length(src.path) == 1)
 		step_to(src, target)
 
 	if(src.target && (src.target != null))
@@ -231,7 +231,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	src.oldloc = src.loc
 
 /obj/structure/machinery/bot/cleanbot/proc/patrol_move()
-	if (src.patrol_path.len <= 0)
+	if (length(src.patrol_path) <= 0)
 		return
 
 	var/next = src.patrol_path[1]

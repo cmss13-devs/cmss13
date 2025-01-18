@@ -90,17 +90,17 @@
 		updateUsrDialog()
 		return 0
 
-	if(holdingitems && holdingitems.len >= limit)
+	if(LAZYLEN(holdingitems) >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return 1
 
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
-		if(B.contents.len > 0)
+		if(length(B.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
 			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 			for(var/obj/item/I in B)
-				if(holdingitems && holdingitems.len >= limit)
+				if(LAZYLEN(holdingitems) >= limit)
 					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 					break
 				else
@@ -152,7 +152,7 @@
 			var/anything = 0
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
 				anything = 1
-				beaker_contents += "[R.volume] - [R.name] <A href='?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
+				beaker_contents += "[R.volume] - [R.name] <A href='byond://?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='byond://?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
 			if(!anything)
 				beaker_contents += "Nothing<br>"
 
@@ -163,14 +163,14 @@
 	[beaker_contents]<hr>
 	"}
 		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
-			dat += "<A href='?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
-			dat += "<A href='?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
-		if(holdingitems && holdingitems.len > 0)
-			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
+		if(LAZYLEN(holdingitems) > 0)
+			dat += "<A href='byond://?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
 		if(beaker)
-			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
 		if(!linked_storage && tether_range > 0)
-			dat += "<A href='?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
 	else
 		dat += "Please wait..."
 	show_browser(user, "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
@@ -357,7 +357,7 @@
 			if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 
-		if(O.reagents.reagent_list.len == 0)
+		if(length(O.reagents.reagent_list) == 0)
 			remove_object(O)
 
 	//Sheets

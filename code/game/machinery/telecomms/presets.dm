@@ -26,6 +26,8 @@
 /obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
 	return
 
+GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
+
 /obj/structure/machinery/telecomms/relay/preset/tower
 	name = "TC-4T telecommunications tower"
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
@@ -44,10 +46,14 @@
 	freq_listening = DEPT_FREQS
 
 /obj/structure/machinery/telecomms/relay/preset/tower/Initialize()
+	GLOB.all_static_telecomms_towers += src
 	. = ..()
-
 	if(z)
 		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
+
+/obj/structure/machinery/telecomms/relay/preset/tower/Destroy()
+	GLOB.all_static_telecomms_towers -= src
+	. = ..()
 
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
@@ -122,7 +128,7 @@
 			return
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = I
@@ -160,7 +166,7 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/faction
 	name = "UPP telecommunications relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away. This one is intercepting and rebroadcasting UPP frequencies."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "relay"
 	id = "UPP Relay"
 	hide = TRUE
@@ -185,16 +191,6 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/colony
 	freq_listening = list(COLONY_FREQ)
 	faction_shorthand = "colony"
-
-GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
-
-/obj/structure/machinery/telecomms/relay/preset/tower/Initialize()
-	GLOB.all_static_telecomms_towers += src
-	. = ..()
-
-/obj/structure/machinery/telecomms/relay/preset/tower/Destroy()
-	GLOB.all_static_telecomms_towers -= src
-	. = ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
 	name = "TC-3T static telecommunications tower"
@@ -301,10 +297,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if((stat & NOPOWER))
 		if(on)
 			toggle_state()
-		on = 0
-		update_icon()
-	else
-		update_icon()
+			on = FALSE
+			update_icon()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
 	..()
@@ -458,7 +452,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ)
 
 //Buses
 
@@ -604,7 +598,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/allinone
 	name = "Telecommunications Mainframe"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommunications processing."
 	density = TRUE

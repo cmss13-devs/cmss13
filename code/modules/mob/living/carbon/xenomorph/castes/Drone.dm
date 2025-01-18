@@ -21,7 +21,7 @@
 
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD) //Add more here separated by commas
-	deevolves_to = list("Larva")
+	deevolves_to = list(XENO_CASTE_LARVA)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
@@ -48,7 +48,7 @@
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
 	desc = "An alien drone"
-	icon = 'icons/mob/xenos/drone.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
@@ -76,13 +76,14 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xeno = 'icons/mob/xenos/drone.dmi'
-	icon_xenonid = 'icons/mob/xenonids/drone.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_1/drone.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/drone.dmi'
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 /mob/living/carbon/xenomorph/drone/tutorial
+	AUTOWIKI_SKIP(TRUE)
 
 /mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)

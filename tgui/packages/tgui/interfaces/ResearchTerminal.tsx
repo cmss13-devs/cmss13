@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { classes } from '../../common/react';
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
 import { BoxProps } from '../components/Box';
@@ -31,69 +30,6 @@ interface TerminalProps {
   photocopier_error: number;
   printer_toner: number;
 }
-
-const PurchaseDocs = () => {
-  const { data, act } = useBackend<TerminalProps>();
-  const [purchaseSelection, setPurchaseSelection] = useState('0');
-  const clearance_level = data.clearance_level;
-  const all_levels = ['1', '2', '3', '4', '5'];
-  const costs = { '1': 7, '2': 9, '3': 11, '4': 13, '5': 15 };
-  const available_levels = Array.from(Array(clearance_level).keys()).map((x) =>
-    (x + 1).toString(),
-  );
-
-  return (
-    <Stack vertical>
-      <Stack.Item>
-        <span>Purchase Reports</span>
-        <hr />
-      </Stack.Item>
-
-      <Stack.Item>
-        <Flex justify="space-between" fill={1} className="purchase-flex">
-          {all_levels.map((x) => {
-            const isDisabled =
-              !available_levels.includes(x) || costs[x] > data.rsc_credits;
-            return (
-              <Flex.Item key={x}>
-                <Button
-                  className={classes([
-                    !available_levels.includes(x) && 'HiddenButton',
-                  ])}
-                  disabled={isDisabled}
-                  onClick={() => setPurchaseSelection(x)}
-                >
-                  Level {x} {costs[x]}CR
-                </Button>
-              </Flex.Item>
-            );
-          })}
-        </Flex>
-      </Stack.Item>
-      <hr />
-      {purchaseSelection !== '0' && (
-        <Flex.Item>
-          <ConfirmationDialogue
-            onConfirm={() => {
-              act('purchase_document', {
-                purchase_document: purchaseSelection,
-              });
-              setPurchaseSelection('0');
-            }}
-            onCancel={() => setPurchaseSelection('0')}
-          >
-            <span>
-              Are you sure you want to purchase a level{' '}
-              <u>{purchaseSelection}</u> document?
-              <br />
-              It will cost <u>{costs[purchaseSelection]}</u> credits.
-            </span>
-          </ConfirmationDialogue>
-        </Flex.Item>
-      )}
-    </Stack>
-  );
-};
 
 interface ConfirmationProps extends BoxProps {
   readonly onConfirm: () => any;
@@ -486,7 +422,6 @@ const ResearchManager = (props: {
         </Stack.Item>
       </Stack>
       <hr />
-      <PurchaseDocs />
       <ImproveClearanceConfirmation
         isConfirm={isConfirm}
         setConfirm={setConfirm}

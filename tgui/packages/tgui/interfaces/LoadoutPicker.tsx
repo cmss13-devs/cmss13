@@ -46,7 +46,7 @@ export const LoadoutPicker = () => {
               <Section title={selected.name} fill width="100%" scrollable>
                 <Stack wrap>
                   {selected.items.map((item) => (
-                    <Stack.Item key={item.name} className="ItemPicker">
+                    <Stack.Item key={item.type} className="ItemPicker">
                       <ItemRender item={item} />
                     </Stack.Item>
                   ))}
@@ -122,8 +122,8 @@ const Sidebar = (props: {
           scrollable
         >
           <Stack wrap width="180px" height="165px">
-            {fluff_gear.map((item) => (
-              <Stack.Item key={item.type} className="ItemPicker">
+            {fluff_gear.map((item, index) => (
+              <Stack.Item key={index} className="ItemPicker">
                 <ItemRender item={item} loadout />
               </Stack.Item>
             ))}

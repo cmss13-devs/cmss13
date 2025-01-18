@@ -14,12 +14,12 @@ function updateFilter(){
 	}
 	var filter = input_form.value.toLowerCase();
 	input_form.value = filter;
-	var table = document.getElementById('searchable');
-	var alt_style = 'norm';
 	if (filter === last_filter) {
 		// An event triggered an update but nothing has changed.
 		return;
 	}
+	var table = document.getElementById('searchable');
+	var alt_style = 'norm';
 	for(var i = 0; i < table.rows.length; i++){
 		try{
 			var row = table.rows[i];

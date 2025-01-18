@@ -3,8 +3,9 @@
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
-
 	minimap_icon = "synth"
+	skills = /datum/skills/synthetic
+	var/preset_generation_support = FALSE
 
 /datum/equipment_preset/synth/New()
 	. = ..()
@@ -35,19 +36,15 @@
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.allow_gun_usage = FALSE
 
-	if(iscolonysynthetic(new_human) && !isworkingjoe(new_human))
-		new_human.set_skills(/datum/skills/colonial_synthetic)
-		return
+	if(preset_generation_support)
+		switch(new_human.client?.prefs?.synthetic_type)
+			if(SYNTH_GEN_ONE, SYNTH_GEN_TWO)
+				new_human.set_skills(/datum/skills/colonial_synthetic)
+			else
+				new_human.set_skills(/datum/skills/synthetic)
+	else
+		new_human.set_skills(skills)
 
-	if(!mob_client)
-		new_human.set_skills(/datum/skills/synthetic)
-		return
-
-	switch(mob_client.prefs.synthetic_type)
-		if(SYNTH_GEN_ONE, SYNTH_GEN_TWO)
-			new_human.set_skills(/datum/skills/colonial_synthetic)
-		else
-			new_human.set_skills(/datum/skills/synthetic)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm
@@ -58,6 +55,7 @@
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
 	role_comm_title = "Syn"
+	preset_generation_support = TRUE
 
 	minimap_icon = "synth"
 
@@ -605,7 +603,7 @@
 	minimap_icon = "joe"
 
 	skills = /datum/skills/working_joe
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_JAPANESE, LANGUAGE_SPANISH)
 	/// Used to set species when loading race
 	var/joe_type = SYNTH_WORKING_JOE
 
@@ -618,9 +616,6 @@
 	new_human.set_species(joe_type)
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
-	if(prob(5))
-		new_human.grad_style = "None" //No gradients for Working Joes
-		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
 	new_human.r_eyes = 0
 	new_human.g_eyes = 0
 	new_human.b_eyes = 0
@@ -696,6 +691,7 @@
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
 	minimap_background = "background_upp"
+	skills = /datum/skills/dzho_automaton
 	faction_group = list(FACTION_UPP)
 	faction = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
@@ -709,16 +705,16 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/cct(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/upp/dzho(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket/janibucket(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/mop(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/hyperdyne(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.back), WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human.back), WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human.back), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket/janibucket(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/mop(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/hyperdyne(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human), WEAR_IN_R_STORE)
 
 /datum/equipment_preset/synth/working_joe/upp/load_skills(mob/living/carbon/human/new_human)
 	. = ..()
@@ -729,9 +725,6 @@
 	new_human.set_species(joe_type)
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
-	if(prob(5))
-		new_human.grad_style = "None" //No gradients for Working Joes
-		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
 	new_human.r_eyes = 0
 	new_human.g_eyes = 0
 	new_human.b_eyes = 0
@@ -864,8 +857,8 @@
 	new_human.set_species(SYNTH_INFILTRATOR)
 
 /datum/equipment_preset/synth/infiltrator/load_skills(mob/living/carbon/human/new_human)
-		new_human.set_skills(/datum/skills/infiltrator_synthetic)
-		new_human.allow_gun_usage = TRUE
+	new_human.set_skills(/datum/skills/infiltrator_synthetic)
+	new_human.allow_gun_usage = TRUE
 
 /datum/equipment_preset/synth/infiltrator/load_gear(mob/living/carbon/human/new_human)
 	add_random_synth_infiltrator_equipment(new_human)

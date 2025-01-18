@@ -1,6 +1,0 @@
-author: "nauticall"
-delete-after: True
-changes:
-  - imageadd: "Resprited the CO armor to a new design. Old CO armor sprites have been repurposed as armor for generals."
-  - rscadd: "Added additional vending options to the CO vendor."
-  - bugfix: "fixed co and so uniforms not having working camo variants"

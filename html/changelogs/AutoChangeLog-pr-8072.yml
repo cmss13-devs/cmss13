@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Flaming Shrapnel now has 20 AP (from 50)"
+  - bugfix: "OT special shrapnel is now properly affected by the cap, meaning that you can only have 16 shrapnel (from 32)"

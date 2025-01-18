@@ -80,6 +80,12 @@
 "aal" = (
 /turf/open/floor/plating,
 /area/rostock/lifeboat)
+"aam" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/rostock/command/cic)
 "aan" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -131,10 +137,6 @@
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/upp_squad_prep,
 /turf/open/floor/strata,
 /area/rostock/lower_deck/prep)
-"aav" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/corsat/spiralplate,
-/area/rostock/lower_deck/prep)
 "aaw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -150,14 +152,108 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/p_a_hallway)
 "aay" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/toolbox/mechanical,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -17;
+	pixel_y = 7
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "aaz" = (
 /obj/structure/platform/metal/strata,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/pilotbunk)
+"aaA" = (
+/turf/open/floor/corsat/purple/north,
+/area/rostock/command/cic)
+"aaB" = (
+/turf/open/floor/corsat/blue/northwest,
+/area/rostock/command/cic)
+"aaC" = (
+/turf/open/floor/corsat/blue/north,
+/area/rostock/command/cic)
+"aaD" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	req_one_access = list(232, 240);
+	name = "\improper Fuel Storage - B Pod"
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/lower_deck/engineering_lower_access)
+"aaE" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	req_one_access = list(232, 240);
+	name = "\improper Fuel Storage - A Pod"
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/lower_deck/engineering_lower_access)
+"aaF" = (
+/turf/open/floor/strata/orange_icorner/east,
+/area/rostock/lower_deck/prep)
+"aaG" = (
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Response Team Automated Equipment Rack"
+	},
+/turf/open/floor/strata/orange_edge,
+/area/rostock/lower_deck/prep)
+"aaH" = (
+/turf/open/floor/strata/orange_icorner/west,
+/area/rostock/lower_deck/prep)
+"aaI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 2
+	},
+/turf/open/floor/corsat/red/southwest,
+/area/rostock/command/cic)
+"aaJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 2
+	},
+/turf/open/floor/corsat/red,
+/area/rostock/command/cic)
+"aaK" = (
+/turf/open/floor/strata/orange_edge/east,
+/area/rostock/lower_deck/prep)
+"aaL" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/prop/almayer/computers/mission_planning_system{
+	density = 0;
+	pixel_x = -11
+	},
+/turf/open/floor/strata/blue3/east,
+/area/rostock/command/cic)
+"aaM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/red3/west,
+/area/rostock/lower_deck/prep)
+"aaN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lower_deck/prep)
+"aaO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/red3/east,
+/area/rostock/lower_deck/prep)
+"aaP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/turf/open/floor/strata/red3/west,
+/area/rostock/lower_deck/prep)
 "aaQ" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/bridge{
@@ -169,13 +265,39 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
+"aaR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lower_deck/prep)
+"aaS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/strata/red3/east,
+/area/rostock/lower_deck/prep)
 "aaT" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = -11
 	},
 /turf/open/floor/strata/blue4/north,
 /area/rostock/command/cic)
+"aaU" = (
+/turf/open/floor/strata/cyan3/east,
+/area/rostock/lower_deck/prep)
+"aaV" = (
+/turf/open/floor/strata/cyan4/north,
+/area/rostock/lower_deck/prep)
+"aaW" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/lower_deck/p_a_hallway)
 "acI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -244,7 +366,8 @@
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	pixel_y = 3
+	pixel_y = 18;
+	pixel_x = -8
 	},
 /turf/open/floor/strata/blue4/west,
 /area/rostock/command/cic)
@@ -411,9 +534,8 @@
 /turf/open/floor/corsat/red/east,
 /area/rostock/lower_deck/starboard_umbilical)
 "akk" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp{
-	pixel_y = 9
+/obj/structure/bed/chair{
+	dir = 4
 	},
 /turf/open/floor/strata/blue3/east,
 /area/rostock/command/cic)
@@ -723,9 +845,6 @@
 "axU" = (
 /obj/structure/machinery/light{
 	dir = 4
-	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 36
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -1356,9 +1475,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
-"aTX" = (
-/turf/open/floor/strata/floor3,
-/area/rostock/lower_deck/prep)
 "aUt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/sofa/south/grey/left{
@@ -1515,7 +1631,11 @@
 	pixel_x = -13;
 	pixel_y = 31
 	},
-/turf/open/floor/strata/cyan4/north,
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack"
+	},
+/turf/open/floor/strata/cyan3/north,
 /area/rostock/lower_deck/prep)
 "bbY" = (
 /obj/effect/spawner/random/toolbox,
@@ -1722,9 +1842,11 @@
 	pixel_y = 13
 	},
 /obj/structure/transmitter/upp_net/rotary{
-	phone_id = "Rostock CIC";
+	phone_id = "Rostock CIC Telephone";
 	pixel_y = -1;
-	pixel_x = 8
+	pixel_x = 8;
+	name = "Rostock CIC Telephone";
+	phone_category = "Command"
 	},
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/rostock/command/cic)
@@ -2026,7 +2148,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor/corsat/blue/east,
+/turf/open/floor/corsat/blue/northeast,
 /area/rostock/command/cic)
 "bxM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2324,7 +2446,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/turf/open/floor/corsat/plate,
+/turf/open/floor/corsat/brown/southeast,
 /area/rostock/command/cic)
 "bJs" = (
 /turf/open/floor/corsat/marked,
@@ -2425,7 +2547,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/corsat/theta,
+/turf/open/floor/corsat/red/west,
 /area/rostock/command/cic)
 "bMB" = (
 /obj/structure/machinery/power/apc/power/south,
@@ -2457,7 +2579,6 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "bNV" = (
-/obj/structure/machinery/computer/crew/upp,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/rostock/command/cic)
 "bNX" = (
@@ -2499,7 +2620,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
 "bPd" = (
-/turf/open/floor/corsat/sigma,
+/turf/open/floor/corsat/purple/east,
 /area/rostock/command/cic)
 "bPr" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -3235,11 +3356,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep/toxic,
 /area/space)
-"ctT" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/strata/multi_tiles/west,
-/area/rostock/lower_deck/m_hallway)
 "cun" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -4016,12 +4132,19 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/upper_deck/hallway)
 "deD" = (
-/obj/structure/machinery/computer/crew/upp,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/corsat/purple/west,
+/obj/structure/surface/table/reinforced/almayer_B{
+	layer = 2.6
+	},
+/obj/structure/transmitter/upp_net/rotary{
+	phone_id = "Bizon Overwatch Telephone";
+	name = "Bizon Overwatch Telephone";
+	phone_category = "Command"
+	},
+/turf/open/floor/corsat/brown/west,
 /area/rostock/command/cic)
 "deP" = (
 /turf/open/floor/strata/red3/northeast,
@@ -4712,12 +4835,6 @@
 "dEP" = (
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/command/cic)
-"dER" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/rostock/lower_deck/p_a_hallway)
 "dFb" = (
 /obj/structure/window/framed/upp/reinforced,
 /turf/open/floor/plating,
@@ -5333,7 +5450,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/turf/open/floor/corsat/red/east,
+/turf/open/floor/corsat/red/southeast,
 /area/rostock/command/cic)
 "edl" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -5636,6 +5753,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/cm_vending/sorted/attachments/upp_squad,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "epA" = (
@@ -6129,6 +6247,9 @@
 "eJb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/strata/blue4/west,
 /area/rostock/lower_deck/m_hallway)
@@ -7017,13 +7138,20 @@
 /obj/structure/surface/table/reinforced/almayer_B{
 	layer = 2.6
 	},
-/obj/structure/machinery/computer/overwatch/upp{
-	dir = 4;
-	pixel_x = -4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 2
+	},
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 8;
+	network = list("Rostock");
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/structure/machinery/computer/overwatch/upp{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = -1
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -7391,6 +7519,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
 /turf/open/floor/strata/green3,
 /area/rostock/lower_deck/prep)
 "fDZ" = (
@@ -7555,9 +7687,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/prep)
-"fMS" = (
-/turf/open/floor/strata/multi_tiles,
-/area/rostock/lower_deck/prep)
 "fMV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -7666,6 +7795,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
 /turf/open/floor/strata/green3/north,
 /area/rostock/lower_deck/prep)
 "fUW" = (
@@ -7748,7 +7881,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/floor/corsat/brown,
 /area/rostock/command/cic)
 "fXS" = (
 /turf/open/floor/corsat/purple/north,
@@ -7790,10 +7923,11 @@
 /obj/structure/surface/table/reinforced/almayer_B{
 	layer = 2.6
 	},
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4;
-	network = list("Rostock");
-	pixel_x = 4
+/obj/structure/machinery/computer/overwatch/upp{
+	pixel_x = 10;
+	pixel_y = -7;
+	name = "Secondary Overwatch Console";
+	dir = 1
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -8250,6 +8384,9 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "grM" = (
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Response Team Automated Equipment Rack"
+	},
 /turf/open/floor/strata/cyan3/north,
 /area/rostock/lower_deck/prep)
 "grV" = (
@@ -8395,7 +8532,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/ammunition_storage)
 "gxw" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/cic)
 "gxI" = (
 /obj/structure/pipes/vents/pump{
@@ -8478,7 +8615,7 @@
 /turf/open/floor/corsat/cargo,
 /area/rostock/railgun)
 "gDB" = (
-/turf/open/floor/corsat/gamma,
+/turf/open/floor/corsat/blue/west,
 /area/rostock/command/cic)
 "gEC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8569,13 +8706,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/briefing)
-"gHR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/turf/open/floor/strata/orange_cover,
-/area/rostock/lower_deck/prep)
 "gIe" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -8725,7 +8855,14 @@
 	},
 /obj/structure/machinery/computer/overwatch/upp{
 	dir = 4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 8;
+	network = list("Rostock");
+	pixel_x = -4;
+	pixel_y = -7
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -8743,7 +8880,7 @@
 /turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/command/armory)
 "gOx" = (
-/obj/structure/filingcabinet,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/blue3/east,
 /area/rostock/command/cic)
 "gOE" = (
@@ -9053,11 +9190,13 @@
 /turf/open/floor/darkish,
 /area/rostock/railgun/starboard)
 "gZQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -17
 	},
-/turf/open/floor/strata/orange_edge/east,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "gZZ" = (
 /obj/structure/machinery/light{
@@ -9403,12 +9542,6 @@
 "hjw" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/command/cic)
-"hjP" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/strata/blue3/east,
-/area/rostock/lower_deck/m_hallway)
 "hke" = (
 /turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/repairbay)
@@ -10928,8 +11061,15 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "inH" = (
-/obj/structure/machinery/computer/crew/upp,
-/turf/open/floor/corsat/brown/west,
+/obj/structure/surface/table/reinforced/almayer_B{
+	layer = 2.6
+	},
+/obj/structure/transmitter/upp_net/rotary{
+	phone_id = "Chayka Overwatch Telephone";
+	name = "Chayka Overwatch Telephone";
+	phone_category = "Command"
+	},
+/turf/open/floor/corsat/purple/west,
 /area/rostock/command/cic)
 "inK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12657,11 +12797,10 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -24
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/blue3/east,
 /area/rostock/command/cic)
 "jCp" = (
@@ -12684,13 +12823,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
-"jCG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/turf/open/floor/strata/cyan3/east,
-/area/rostock/lower_deck/prep)
 "jCP" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "upp_up1";
@@ -12830,7 +12962,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/firecloset,
 /turf/open/floor/strata/blue3/east,
 /area/rostock/command/cic)
 "jIK" = (
@@ -13293,7 +13424,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor/corsat/brown/west,
+/turf/open/floor/corsat/purple/northwest,
 /area/rostock/command/cic)
 "jXB" = (
 /turf/closed/wall/almayer/upp/reinforced/outer,
@@ -13452,8 +13583,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "kea" = (
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
-/turf/open/floor/strata/floor3,
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack"
+	},
+/turf/open/floor/strata/orange_edge,
 /area/rostock/lower_deck/prep)
 "kep" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -14167,14 +14301,14 @@
 /obj/structure/surface/table/reinforced/almayer_B{
 	layer = 2.6
 	},
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4;
-	network = list("Rostock");
-	pixel_x = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/machinery/computer/overwatch/upp{
+	pixel_x = 10;
+	pixel_y = 2;
+	name = "Secondary Overwatch Console"
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -14655,7 +14789,7 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/lower_deck/starboard_umbilical)
 "kXl" = (
-/turf/open/floor/corsat/plate,
+/turf/open/floor/corsat/purple/northeast,
 /area/rostock/command/cic)
 "kXD" = (
 /obj/structure/machinery/light{
@@ -14829,6 +14963,9 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/bunk)
 "lfY" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -20
+	},
 /turf/open/floor/strata/blue4/north,
 /area/rostock/lower_deck/p_a_hallway)
 "lgm" = (
@@ -14977,18 +15114,6 @@
 "lmA" = (
 /turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/hangar/pilotbunk)
-"lmI" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard{
-	base_pixel_x = 20;
-	pixel_x = 5
-	},
-/obj/item/paper{
-	pixel_x = 5
-	},
-/obj/item/tool/pen,
-/turf/open/floor/strata/blue3/east,
-/area/rostock/command/cic)
 "lnd" = (
 /obj/structure/machinery/pipedispenser,
 /turf/open/floor/corsat/marked,
@@ -15405,10 +15530,12 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/hangar/hangarbay)
 "lIw" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
@@ -15751,6 +15878,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/engineering_lower_access)
 "lXH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
 /turf/open/floor/strata/red3/west,
 /area/rostock/lower_deck/prep)
 "lXJ" = (
@@ -15786,6 +15917,10 @@
 /obj/item/clothing/head/helmet/marine/veteran/UPP{
 	pixel_x = -4;
 	pixel_y = -8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 3
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
@@ -17134,13 +17269,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
-"niz" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/camera,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/turf/open/floor/strata/blue3/east,
-/area/rostock/command/cic)
 "niF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -17674,7 +17802,7 @@
 /area/rostock/medical/storage)
 "nFZ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
@@ -17980,12 +18108,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
 "nTx" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 3
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -17;
+	pixel_y = -7
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
@@ -18959,12 +19085,6 @@
 	},
 /turf/open/floor/strata/green4/north,
 /area/rostock/command/hallway)
-"oKR" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
-/turf/open/floor/strata/floor3,
-/area/rostock/lower_deck/prep)
 "oKW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime2,
@@ -19099,7 +19219,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/corsat/omega,
+/turf/open/floor/corsat/brown/east,
 /area/rostock/command/cic)
 "oPk" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -19339,9 +19459,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/briefing)
-"oYo" = (
-/turf/open/floor/strata/orange_icorner,
-/area/rostock/lower_deck/prep)
 "oYt" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 8;
@@ -19782,10 +19899,11 @@
 /obj/structure/surface/table/reinforced/almayer_B{
 	layer = 2.6
 	},
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 8;
-	network = list("Rostock");
-	pixel_x = -4
+/obj/structure/machinery/computer/overwatch/upp{
+	pixel_x = -6;
+	pixel_y = -7;
+	name = "Secondary Overwatch Console";
+	dir = 1
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -20622,7 +20740,13 @@
 /area/rostock/lower_deck/prep)
 "pXn" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/strata/floor3,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/regular/empty,
+/obj/item/storage/firstaid/regular/empty,
+/turf/open/floor/strata/cyan3/north,
 /area/rostock/lower_deck/prep)
 "pXX" = (
 /obj/structure/largecrate/random/case/double,
@@ -22271,10 +22395,17 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "rkm" = (
-/obj/structure/machinery/computer/crew/upp,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/surface/table/reinforced/almayer_B{
+	layer = 2.6
+	},
+/obj/structure/transmitter/upp_net/rotary{
+	phone_id = "Akula Overwatch Telephone";
+	name = "Akula Overwatch Telephone";
+	phone_category = "Command"
 	},
 /turf/open/floor/corsat/red/east,
 /area/rostock/command/cic)
@@ -22693,7 +22824,14 @@
 	},
 /obj/structure/machinery/computer/overwatch/upp{
 	dir = 8;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 4;
+	network = list("Rostock");
+	pixel_x = 4;
+	pixel_y = -7
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -22751,9 +22889,8 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/m_hallway)
 "rEt" = (
-/obj/structure/pipes/vents/pump/on{
-	dir = 4
-	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/strata/blue4/north,
 /area/rostock/command/cic)
 "rEC" = (
@@ -23123,13 +23260,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
-"rZj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/turf/open/floor/strata/cyan1,
-/area/rostock/lower_deck/prep)
 "rZD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera,
@@ -23284,16 +23414,11 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "sep" = (
-/obj/structure/machinery/cm_vending/gear/antag{
-	hacked = 1;
-	name = "\improper Response Team Automated Gear Rack"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/poster/clf{
-	pixel_x = 31
-	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/toolkit/empty,
+/obj/item/storage/toolkit/empty,
+/obj/item/storage/toolkit/empty,
+/obj/item/storage/toolkit/empty,
 /turf/open/floor/strata/floor3,
 /area/rostock/lower_deck/prep)
 "sey" = (
@@ -23969,10 +24094,6 @@
 /area/rostock/medical/lobby)
 "sJj" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/under/marine/veteran/UPP,
-/obj/item/clothing/under/marine/veteran/UPP,
-/obj/item/clothing/under/marine/veteran/UPP,
-/obj/item/clothing/under/marine/veteran/UPP,
 /obj/item/clothing/suit/storage/marine/faction/UPP,
 /obj/item/clothing/suit/storage/marine/faction/UPP,
 /obj/item/clothing/suit/storage/marine/faction/UPP,
@@ -25213,6 +25334,9 @@
 	pixel_x = -28;
 	pixel_y = 4
 	},
+/obj/structure/pipes/vents/pump/on{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/cic)
 "tMn" = (
@@ -25286,7 +25410,7 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/glasses/welding,
-/turf/open/floor/strata/floor3,
+/turf/open/floor/strata/orange_edge,
 /area/rostock/lower_deck/prep)
 "tPw" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
@@ -25344,18 +25468,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
-"tRw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/structure/sign/flag/upp{
-	dir = 1;
-	pixel_y = 26;
-	pixel_x = -17
-	},
-/turf/open/floor/strata/orange_icorner/north,
-/area/rostock/lower_deck/prep)
 "tRC" = (
 /obj/structure/window/framed/upp/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -25745,7 +25857,14 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "udu" = (
-/obj/structure/machinery/computer/crew/upp,
+/obj/structure/surface/table/reinforced/almayer_B{
+	layer = 2.6
+	},
+/obj/structure/transmitter/upp_net/rotary{
+	phone_id = "Delfin Overwatch Telephone";
+	name = "Delfin Overwatch Telephone";
+	phone_category = "Command"
+	},
 /turf/open/floor/corsat/blue/east,
 /area/rostock/command/cic)
 "udy" = (
@@ -26522,16 +26641,13 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "uNW" = (
-/obj/structure/machinery/cm_vending/gear/antag{
-	hacked = 1;
-	name = "\improper Response Team Automated Gear Rack"
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/structure/sign/poster/clf{
 	pixel_x = -30
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "uOa" = (
@@ -26710,9 +26826,7 @@
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/upper_deck/hallway)
 "uUH" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
-	},
+/obj/structure/closet/firecloset,
 /turf/open/floor/strata/blue4/west,
 /area/rostock/command/cic)
 "uUP" = (
@@ -26936,14 +27050,14 @@
 /obj/structure/surface/table/reinforced/almayer_B{
 	layer = 2.6
 	},
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 8;
-	network = list("Rostock");
-	pixel_x = -4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/machinery/computer/overwatch/upp{
+	pixel_x = -10;
+	pixel_y = 2;
+	name = "Secondary Overwatch Console"
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -27144,6 +27258,11 @@
 /area/rostock/upper_deck/hallway)
 "vhw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	pixel_y = -1
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/prep)
 "vit" = (
@@ -27449,8 +27568,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/port_aft_accessway)
 "vtX" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/toolkit/empty,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "vuV" = (
@@ -28009,9 +28127,6 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/accessway)
-"vQw" = (
-/turf/open/floor/strata/orange_edge/north,
-/area/rostock/lower_deck/prep)
 "vQP" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/sign/safety/landingzone{
@@ -30024,7 +30139,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/turf/open/floor/corsat/purple/west,
+/turf/open/floor/corsat/brown/southwest,
 /area/rostock/command/cic)
 "xre" = (
 /obj/effect/decal/floor_symbol/westface/northwest,
@@ -30283,6 +30398,10 @@
 /turf/open/floor/strata,
 /area/rostock/upper_deck/hallway)
 "xBG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
 /turf/open/floor/strata/red3/east,
 /area/rostock/lower_deck/prep)
 "xBK" = (
@@ -30908,13 +31027,20 @@
 /obj/structure/surface/table/reinforced/almayer_B{
 	layer = 2.6
 	},
-/obj/structure/machinery/computer/overwatch/upp{
-	dir = 8;
-	pixel_x = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 2
+	},
+/obj/structure/machinery/computer/cameras/almayer_network{
+	dir = 4;
+	network = list("Rostock");
+	pixel_x = 4;
+	pixel_y = 12
+	},
+/obj/structure/machinery/computer/overwatch/upp{
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = -1
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
@@ -34592,11 +34718,11 @@ eIV
 eIV
 eIV
 eIV
-bLT
+aaE
 iqy
 ePY
 ePY
-bLT
+aaD
 eIV
 eIV
 eIV
@@ -37135,12 +37261,12 @@ hEe
 hEe
 hEe
 vBE
-wzo
-wzo
-ctT
-ctT
-ctT
-ctT
+hEe
+hEe
+iVp
+iVp
+iVp
+iVp
 bss
 jbu
 hoe
@@ -37492,12 +37618,12 @@ eyD
 nog
 aay
 uNW
-eTm
+vtX
 cGb
 pXk
-aav
+vtX
 uNW
-eTm
+vtX
 jVs
 cVY
 vtX
@@ -37671,7 +37797,7 @@ vNW
 fVw
 uKC
 rFP
-fMS
+aDz
 vjb
 kjQ
 fMy
@@ -37685,7 +37811,7 @@ vhw
 fMy
 swd
 vjb
-fMS
+mnX
 xtL
 mrp
 azT
@@ -39675,19 +39801,19 @@ qez
 eyD
 xTf
 jlx
-jlx
 rEp
 eyD
 cgf
 aaj
+aaP
 lXH
+aaM
 aag
 cgf
 eyD
-oYo
-dsX
-dsX
 xLA
+dsX
+aaF
 eyD
 cGi
 hAv
@@ -39857,19 +39983,19 @@ ffU
 eyD
 grM
 kZL
-kZL
 eKH
 eyD
 bHY
 aak
+aaR
 aau
+aaN
 aah
 uEI
 eyD
-vQw
-kZL
-aTX
 qlo
+kZL
+aaG
 eyD
 cGi
 hAv
@@ -40038,19 +40164,19 @@ fVw
 etv
 eyD
 bbt
-jCG
-rZj
+kZL
 ljJ
 eyD
 jgP
 aak
+aaR
 aau
+aaN
 aah
 qlU
 eyD
-tRw
 gZQ
-gHR
+kZL
 kea
 eyD
 agn
@@ -40220,19 +40346,19 @@ fVw
 vJo
 eyD
 pXn
-sep
-oKR
+kZL
 tqt
 eyD
 uOh
 aak
+aaR
 aau
+aaN
 aah
 uOh
 eyD
-pXn
 sep
-oKR
+kZL
 tPq
 eyD
 cGi
@@ -40401,21 +40527,21 @@ vNW
 fVw
 oGW
 eyD
-eyD
-eyD
-eyD
-lba
+aaV
+aaU
+rEp
 eyD
 aas
 aaw
+aaS
 xBG
+aaO
 aat
 aas
 eyD
-eyD
-eyD
-eyD
-lba
+xLA
+aaK
+aaH
 eyD
 jFX
 hAv
@@ -40582,12 +40708,12 @@ lnz
 vNW
 iDQ
 wQv
-ghH
+aaW
 wQv
-dER
 wQv
 wQv
 aax
+wQv
 vWY
 iDQ
 cnL
@@ -40595,7 +40721,7 @@ cnL
 cnL
 fVw
 lfY
-hjP
+uaD
 uaD
 uaD
 eJb
@@ -52971,7 +53097,7 @@ hZn
 hZn
 rEt
 gOx
-gOx
+aaL
 gOx
 jCb
 aeC
@@ -52980,8 +53106,8 @@ mSC
 aeJ
 aaT
 jIk
-lmI
-niz
+akk
+akk
 akk
 uUH
 hZn
@@ -53166,7 +53292,7 @@ efy
 efy
 bmb
 lIw
-bWb
+aam
 pxQ
 qjG
 qjG
@@ -53707,7 +53833,7 @@ ygL
 quG
 iMw
 unT
-nrA
+aaA
 cKi
 yhz
 hjw
@@ -54429,13 +54555,13 @@ wdD
 hjw
 tKG
 bMi
-bJp
+aaI
 wSi
 bNV
 vqj
 bky
 imU
-kXl
+aaB
 gDB
 yhz
 hjw
@@ -54611,13 +54737,13 @@ wdD
 hjw
 tKG
 qgQ
-fXQ
+aaJ
 wYt
 dNI
 vph
 dNI
 unT
-nrA
+aaC
 cKi
 yhz
 hjw

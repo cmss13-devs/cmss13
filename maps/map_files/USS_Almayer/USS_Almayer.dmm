@@ -131,10 +131,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/starboard)
-"aas" = (
-/obj/effect/landmark/map_item,
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "aat" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -218,6 +214,9 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/turf/open/floor/almayer/flooredge/north,
+/area/almayer/command/cic)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -226,7 +225,33 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/machinery/prop/almayer/CICmap/table,
+/obj/item/prop/tableflag/uscm{
+	pixel_y = 12
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/cic)
 "aaJ" = (
+/turf/open/floor/almayer/flooredge/west,
+/area/almayer/command/cic)
+"aaK" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/keycard_auth,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
+"aaL" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/whistle,
+/obj/item/storage/fancy/cigarettes/kpack,
+/obj/item/device/binoculars,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "exposed01-supply"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
+"aaM" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
@@ -234,14 +259,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
-"aaM" = (
-/turf/open/floor/almayer/silver2smooth3/north,
-/area/almayer/command/cic)
 "aaN" = (
-/turf/open/floor/almayer/silver2smooth2/north,
+/obj/effect/landmark/map_item,
+/turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aaO" = (
-/turf/open/floor/almayer/silver2smooth2/east,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
@@ -259,27 +286,25 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
 "aaQ" = (
-/turf/open/floor/almayer/flooredge/north,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/ashtray/glass{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/structure/machinery/keycard_auth,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "aaR" = (
-/turf/open/floor/almayer/flooredge/east,
+/turf/open/floor/almayer/flooredge,
 /area/almayer/command/cic)
 "aaS" = (
-/turf/open/floor/almayer/flooredge/west,
+/turf/open/floor/almayer/silver2smooth3/north,
 /area/almayer/command/cic)
 "aaT" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/whistle,
-/obj/item/storage/fancy/cigarettes/kpack,
-/obj/item/device/binoculars,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	icon_state = "exposed01-supply"
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/silver2smooth2/north,
 /area/almayer/command/cic)
 "aaU" = (
-/turf/open/floor/almayer/flooredge,
+/turf/open/floor/almayer/silver2smooth2/east,
 /area/almayer/command/cic)
 "aaY" = (
 /obj/structure/lattice,
@@ -4011,13 +4036,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
-"azZ" = (
-/obj/structure/machinery/prop/almayer/CICmap/table,
-/obj/item/prop/tableflag/uscm{
-	pixel_y = 12
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "aAd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -4387,15 +4405,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/synthcloset)
-"aBR" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/ashtray/glass{
-	pixel_x = 8;
-	pixel_y = -6
-	},
-/obj/structure/machinery/keycard_auth,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
 "aBS" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -13817,9 +13826,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/combat_correspondent)
 "bZJ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/keycard_auth,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/flooredge/east,
 /area/almayer/command/cic)
 "bZO" = (
 /obj/structure/machinery/light{
@@ -27594,13 +27601,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"hxm" = (
-/obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/cic)
 "hxG" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -88297,9 +88297,9 @@ lQG
 oPE
 alZ
 auT
-aaR
-aaR
-aaR
+bZJ
+bZJ
+bZJ
 aRt
 axp
 aPI
@@ -88499,11 +88499,11 @@ alX
 avY
 alX
 alX
-aaU
-aas
+aaR
+aaN
 alX
-azZ
-aaQ
+aaI
+aaG
 alX
 alX
 avY
@@ -88702,11 +88702,11 @@ alX
 aqN
 avY
 alX
-aaU
-hxm
+aaR
+aaO
 alX
 alX
-aaQ
+aaG
 alX
 avY
 aqN
@@ -88901,14 +88901,14 @@ bFA
 aov
 wVW
 arR
-aaO
+aaU
 atO
 atO
 awt
 alX
-aaS
-aaS
-aaS
+aaJ
+aaJ
+aaJ
 alX
 ays
 atO
@@ -89310,7 +89310,7 @@ awA
 ayr
 awH
 aPD
-aaM
+aaS
 azW
 aqN
 aAC
@@ -89718,9 +89718,9 @@ ayI
 wVW
 wbX
 avY
-aBR
-aaT
-bZJ
+aaQ
+aaL
+aaK
 wlE
 gvq
 wVW
@@ -90734,7 +90734,7 @@ wVW
 vTu
 alX
 alX
-aaJ
+aaM
 alX
 aIf
 aED
@@ -91543,7 +91543,7 @@ aJw
 aBX
 aBX
 laV
-aaN
+aaT
 ayL
 aAf
 aLM

@@ -826,22 +826,48 @@
 	inhand_y_dimension = 64
 	worn_x_dimension = 64
 	worn_y_dimension = 64
-	force = MELEE_FORCE_TIER_5
-	force_wielded = MELEE_FORCE_TIER_11
-	throwforce = MELEE_FORCE_TIER_5
+	force = MELEE_FORCE_TIER_3
+	force_wielded = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_3
 	embeddable = FALSE
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
-	attack_speed = 20
+	attack_speed = 14
 
-/obj/item/weapon/twohanded/yautja/greatsword/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/twohanded/yautja/greatsword/attack(mob/living/target, mob/living/carbon/human/user, primary=TRUE)
 	. = ..()
 	if(!.)
 		return
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 50, 50)
+
+
+	if(!primary)
+		return
+
+	var/width
+	var/height
+	var/offset_x 
+	var/offset_y 
+
+	if(user.dir & (NORTH|SOUTH))
+		width = 3
+		height = 1
+		offset_x = -1
+		offset_y = 0
+	else
+		width = 1
+		height = 3
+		offset_x = 0
+		offset_y = -1
+
+	for(var/turf/target_turf in CORNER_BLOCK_OFFSET(get_turf(target), width, height, offset_x, offset_y))
+		for(var/mob/living/target_mob in target_turf)
+			attack(target_mob, user, primary=FALSE)
+		
+
 
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"

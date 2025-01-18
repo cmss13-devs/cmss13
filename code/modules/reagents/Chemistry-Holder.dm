@@ -633,9 +633,9 @@
 			shards = max_ex_shards
 		if(ispath(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
 			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
-		if(ispath(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
 			shards = max_ex_shards / HORNET_SHARDS_MAX_REDUCTION
-		if(ispath(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
 			shards = max_ex_shards / NEURO_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power

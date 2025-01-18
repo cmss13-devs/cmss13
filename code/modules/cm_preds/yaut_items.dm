@@ -1278,12 +1278,42 @@
 /obj/item/skull/corroder
 	name = "Corroder skull"
 	desc = "Skull of an acidic xenomorph, a boiling menace."
-	icon_state = "spitter_skull"
+	icon_state = "corroder_skull"
 
 /obj/item/skull/warrior
 	name = "Warrior skull"
 	desc = "Skull of a strong xenomorph, a swift fighter."
 	icon_state = "warrior_skull"
+
+/obj/item/skull/defender
+	name = "Defender skull"
+	desc = "Skull of a sturdy xenomorph, a bulwark of the hive."
+	icon_state = "defender_skull"
+
+/obj/item/skull/praetorian
+	name = "Praetorian skull"
+	desc = "Skull of a strong xenomorph, jack of all trades, vanguard to the Queen."
+	icon_state = "praetorian_skull"
+
+/obj/item/skull/drone
+	name = "Drone skull"
+	desc = "Skull of a weak xenomorph, a common worker of the hive."
+	icon_state = "drone_skull"
+
+/obj/item/skull/runner
+	name = "Runner skull"
+	desc = "Skull of a swift xenomorph, a speedy menance of the hive."
+	icon_state = "runner_skull"
+
+/obj/item/skull/sentinel
+	name = "Sentinel skull"
+	desc = "Skull of an acidic xenomorph, a tricky ranged fighter."
+	icon_state = "sentinel_skull"
+
+/obj/item/skull/spitter
+	name = "Spitter skull"
+	desc = "Skull of an highly acidic xenomorph, a venomous ranged fighter."
+	icon_state = "spitter_skull"
 
 /// TOOLS
 

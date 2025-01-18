@@ -53,3 +53,16 @@
 			cooldown = world.time
 	else
 		..()
+
+/obj/item/weapon/shield/riot/yautja/ancient
+	name = "ancient shield"
+	desc = "A large, ancient shield made from an unknown golden alloy, gleaming with a luminous brilliance. Its worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon = 'icons/obj/items/weapons/melee/shields.dmi'
+	icon_state = "ancient_shield"
+	base_icon_state = "ancient_shield"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+	)
+	item_state = "ancient_shield"

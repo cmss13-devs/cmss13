@@ -563,6 +563,12 @@
 	item_state = "kutjevo_uniform"
 	worn_state = "kutjevo_uniform"
 
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments and has gold armbands denoting the team leader."
+	icon_state = "lead_kutjevo_uniform"
+	item_state = "lead_kutjevo_uniform"
+	worn_state = "lead_kutjevo_uniform"
+
 //=========================//UPP\\================================\\
 
 /obj/item/clothing/under/marine/veteran/bear

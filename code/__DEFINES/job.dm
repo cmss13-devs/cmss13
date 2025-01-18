@@ -209,13 +209,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_EXECUTIVE "Corporate Executive"
 #define JOB_SENIOR_EXECUTIVE "Corporate Senior Executive"
 #define JOB_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_LEGAL_SPECIALIST "Corporate Legal Specialist"
 #define JOB_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_LEGAL_SUPERVISOR "Corporate Legal Supervisor"
 #define JOB_ASSISTANT_MANAGER "Corporate Assistant Manager"
 #define JOB_DIVISION_MANAGER "Corporate Division Manager"
 #define JOB_CHIEF_EXECUTIVE "Corporate Chief Executive"
 #define JOB_DIRECTOR "W-Y Director"
 
-#define ROLES_WY_CORPORATE list(JOB_EXECUTIVE_SUPERVISOR, JOB_EXECUTIVE_SPECIALIST, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_JUNIOR_EXECUTIVE, JOB_TRAINEE)
+#define ROLES_WY_CORPORATE list(JOB_EXECUTIVE_SUPERVISOR, JOB_LEGAL_SUPERVISOR, JOB_EXECUTIVE_SPECIALIST, JOB_LEGAL_SPECIALIST, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_JUNIOR_EXECUTIVE, JOB_TRAINEE)
 #define ROLES_WY_LEADERSHIP list(JOB_DIRECTOR, JOB_PMC_DIRECTOR, JOB_CHIEF_EXECUTIVE, JOB_DIVISION_MANAGER, JOB_ASSISTANT_MANAGER)
 
 #define JOB_CORPORATE_ROLES /datum/timelock/corporate
@@ -224,10 +226,12 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- WY Goons --------//
 #define JOB_WY_GOON "WY Corporate Security"
 #define JOB_WY_GOON_TECH "WY Corporate Security Technician"
+#define JOB_WY_GOON_MEDIC "WY Corporate Security Medic"
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
-#define JOB_WY_GOON_RESEARCHER "WY Research Consultant"
+#define JOB_WY_RESEARCHER "WY Research Consultant"
+#define JOB_WY_RESEARCH_LEAD "WY Senior Research Consultant"
 
-#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON, JOB_WY_GOON_RESEARCHER)
+#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD)
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"

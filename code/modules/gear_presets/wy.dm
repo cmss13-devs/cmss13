@@ -72,6 +72,8 @@
 
 /datum/equipment_preset/wy/exec_spec/lawyer
 	name = "Corporate - E - Lawyer"
+	assignment = JOB_LEGAL_SPECIALIST
+	rank = JOB_LEGAL_SPECIALIST
 
 /datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
@@ -95,6 +97,8 @@
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
 	name = "Corporate - F - Lawyer"
+	assignment = JOB_LEGAL_SUPERVISOR
+	rank = JOB_LEGAL_SUPERVISOR
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)

@@ -21,6 +21,17 @@
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 	)
 
+/datum/skills/wy_goon_medic
+	name = "Corporate Security First Responder"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+	)
+
 /datum/skills/wy_goon_lead
 	name = "Corporate Security Leader"
 	skills = list(

@@ -82,7 +82,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/goon/chem_retrieval/print_backstory(mob/living/carbon/human/backstory_human)
-	if(backstory_human.job == JOB_WY_GOON_RESEARCHER)
+	if(backstory_human.job == JOB_WY_RESEARCHER)
 		to_chat(backstory_human, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a wealthy family."))
 		to_chat(backstory_human, SPAN_BOLD("Joining the ranks of Weyland-Yutani was the perfect way to further your research goals."))
 		to_chat(backstory_human, SPAN_BOLD("You have a very in depth understanding of xenomorphs."))

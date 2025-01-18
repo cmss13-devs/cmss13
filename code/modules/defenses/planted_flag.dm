@@ -25,6 +25,7 @@
 
 	var/faction = FACTION_MARINE
 	var/datum/cas_signal/signal
+	var/luminosity_strength = 5
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -72,11 +73,13 @@
 
 /obj/structure/machinery/defenses/planted_flag/power_on_action()
 	apply_area_effect()
+	set_light(luminosity_strength)
 	start_processing()
 	activate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
 
 /obj/structure/machinery/defenses/planted_flag/power_off_action()
+	set_light(0)
 	stop_processing()
 	deactivate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
@@ -118,6 +121,7 @@
 	disassemble_time = 1.5 SECONDS
 	handheld_type = /obj/item/defenses/handheld/planted_flag/range
 	defense_type = "Range"
+	luminosity_strength = 7
 
 /obj/structure/machinery/defenses/planted_flag/warbanner
 	name = "JIMA planted warbanner"

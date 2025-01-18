@@ -355,7 +355,7 @@
 
 /obj/item/device/defibrillator/synthetic/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("You need some electronics and circuitry understanding to use this.")
+	. += SPAN_NOTICE("You need some knowledge of electronics and circuitry to use this.")
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))

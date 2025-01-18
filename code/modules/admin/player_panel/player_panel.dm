@@ -269,7 +269,7 @@
 	</body></html>
 	"}
 
-	show_browser(usr, dat, "User Panel", "players", "size=600x480")
+	show_browser(usr, dat, "User Panel", "players", "size=640x480")
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
@@ -339,8 +339,8 @@
 				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[H.ckey]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
 				dat += "<td>[H.faction]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[H]'>F</a></td>"
-				dat += "<td><a href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[H]'>PP</a></td></tr>"
+				dat += "<td>[ADMIN_FLW(H)]</td>"
+				dat += "<td>[ADMIN_PP(H)]</tr>"
 
 	if(length(SSticker.mode.survivors))
 		dat += "<tr class='title'><td><h2>Survivors</h2></td></tr>"
@@ -350,8 +350,8 @@
 			if(M)
 				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><a href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</a></td></tr>"
+				dat += "<td>[ADMIN_FLW(M)]</td>"
+				dat += "<td>[ADMIN_PP(M)]</tr>"
 
 	if(length(SSticker.mode.xenomorphs))
 		dat += "<tr class='title'><td><h2>Aliens</h2></td></tr>"
@@ -361,8 +361,8 @@
 				var/location = get_area(M.loc)
 				dat += "<tr><td><A href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 				dat += "<td>[location]</td>"
-				dat += "<td><a href='byond://?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><a href='byond://?src=\ref[src];[HrefToken()];adminplayeropts=\ref[M]'>PP</a></td></tr>"
+				dat += "<td>[ADMIN_FLW(M)]</td>"
+				dat += "<td>[ADMIN_PP(M)]</tr>"
 
 	dat += "</table>"
 

@@ -33,8 +33,8 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 /datum/authority/branch/role
 	var/name = "Role Authority"
 
-	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
-	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
+	var/list/datum/job/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
+	var/list/datum/job/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.

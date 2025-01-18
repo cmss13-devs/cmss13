@@ -3,7 +3,7 @@
 	delay_mod = FIRE_DELAY_TIER_11
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 	var/normal_damage_mod = BULLET_DAMAGE_MULT_TIER_6
-	var/shotgun_damage_mod = BULLET_DAMAGE_MULT_TIER_1
+	var/shotgun_damage_mod = BULLET_DAMAGE_MULT_TIER_2
 
 /obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
 	if(G.gun_category == GUN_CATEGORY_SHOTGUN)
@@ -21,7 +21,7 @@
 
 	delay_mod = FIRE_DELAY_TIER_LMG
 	normal_damage_mod = BULLET_DAMAGE_MULT_TIER_8
-	shotgun_damage_mod = BULLET_DAMAGE_MULT_TIER_2
+	shotgun_damage_mod = BULLET_DAMAGE_MULT_TIER_4
 
 /obj/item/attachable/stock/rifle/collapsible/xm52
 	name = "\improper XM52 stock"

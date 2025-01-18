@@ -15,11 +15,9 @@
 /datum/tech/droppod/item/experimentals/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
 
-	if(!H || !D)
-		return
-	if(H.job == JOB_SQUAD_MEDIC)
-		.["Advanced Defibrillator"] = /obj/item/device/defibrillator/compact_adv
-	if(H.job == JOB_SQUAD_ENGI)
+	if(!H || skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		.["incision management system"] = /obj/item/tool/surgery/scalpel/manager
+	if(!H || skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		.["Breaching Hammer"] = /obj/item/weapon/twohanded/breacher
 
 	.["Experimental Hoverpack"] = /obj/item/hoverpack

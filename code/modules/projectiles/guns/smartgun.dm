@@ -571,6 +571,7 @@
 		if(!auto_fire)
 			STOP_PROCESSING(SSobj, src)
 
+/* RUCM CHANGE
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co
 	name = "\improper M56C 'Cavalier' smartgun"
@@ -668,6 +669,7 @@
 /obj/item/weapon/gun/smartgun/co/proc/remove_idlock()
 	SIGNAL_HANDLER
 	linked_human = null
+*/
 
 /obj/item/weapon/gun/smartgun/dirty
 	name = "\improper M56D 'Dirty' smartgun"

@@ -458,7 +458,7 @@
 	add_pmcs = TRUE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
 	freq = PMC_FREQ
 
 /obj/structure/machinery/computer/groundside_operations/arc

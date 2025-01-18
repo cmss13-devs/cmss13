@@ -847,23 +847,13 @@
 	if(!primary)
 		return
 
-	var/width
-	var/height
-	var/offset_x 
-	var/offset_y 
 
-	if(user.dir & (NORTH|SOUTH))
-		width = 3
-		height = 1
-		offset_x = -1
-		offset_y = 0
-	else
-		width = 1
-		height = 3
-		offset_x = 0
-		offset_y = -1
 
-	for(var/turf/target_turf in CORNER_BLOCK_OFFSET(get_turf(target), width, height, offset_x, offset_y))
+	var/turf/root = get_turf(user)
+	var/facing = get_dir(user, target)
+	var/list/target_turfs = list(get_step(root, facing), get_step(root, turn(facing, 45)), get_step(root, turn(facing, -45)))
+
+	for(var/turf/target_turf in target_turfs)
 		for(var/mob/living/target_mob in target_turf)
 			attack(target_mob, user, primary=FALSE)
 		

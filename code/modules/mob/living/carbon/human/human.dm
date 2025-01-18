@@ -1801,6 +1801,11 @@
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/human/onZImpact(turf/impact_turf, height)
+	if(isyautja(src))
+		return
+
+	. = ..()
+
 	KnockDown(height * 5)
 	Stun(height * 5)
 

@@ -3,6 +3,9 @@
 	density = TRUE
 	opacity = TRUE
 
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
 /turf/closed/attack_hand(mob/user)
 	var/turf/above_current = locate(x, y, z + 1)
 	var/turf/above_user = locate(user.x, user.y, user.z + 1)

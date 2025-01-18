@@ -3,7 +3,6 @@
 	faction = FACTION_WY
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
-	faction = FACTION_WY
 	faction_group = list(FACTION_WY)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_goon"

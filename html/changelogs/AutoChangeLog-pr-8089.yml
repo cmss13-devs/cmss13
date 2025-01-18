@@ -1,7 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "WY research consultant labcoat"
-  - rscadd: "WY research consultant now has a coherent set of items at their disposal"
-  - rscadd: "WY research new looks"
-  - bugfix: "fixes WY research consultant not having their gun spawn"

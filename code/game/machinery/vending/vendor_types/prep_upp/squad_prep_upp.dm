@@ -19,18 +19,6 @@
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", floor(scale * 6), /obj/item/ammo_magazine/rifle/type71/ap, VENDOR_ITEM_REGULAR),
 
-		list("STANDARD AMMUNITION", -1, null, null),
-		list("Type 71 Magazine (5.45x39mm)", floor(scale * 20), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
-		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 20), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 40), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Slug Shells (8g)", floor(scale * 40), /obj/item/ammo_magazine/handful/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Flechette Shells (8g)", floor(scale * 40), /obj/item/ammo_magazine/handful/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
-
-		list("PISTOL AMMUNITION", -1, null, null),
-		list("Type 73 Magazine (7.62x25mm Tokarev)", floor(scale * 10), /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
-		list("ZHNK-72 Speed Loader (7.62x38mmR)", floor(scale * 10), /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
-		list("NP92 Magazine (9x18mm Makarov)", floor(scale * 10), /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
-
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
 		list("Type-19 stick magazine (7.62x25mm)", floor(scale * 6), /obj/item/ammo_magazine/smg/pps43, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
@@ -132,7 +120,7 @@
 
 //--------------UPP SQUAD GUN  VENDOR--------------
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_guns
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns
 	name = "\improper UnionAraratCorp Squad Weapons Rack"
 	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by any Union Soldier."
 	icon_state = "upp_guns"
@@ -153,11 +141,11 @@
 		list("Type 23 Riot Shotgun", floor(scale * 10), /obj/item/weapon/gun/shotgun/type23, VENDOR_ITEM_REGULAR),
 
 		list("REGULAR AMMUNITION", -1, null, null),
-		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 35), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Slug Shells (8g)", floor(scale * 35), /obj/item/ammo_magazine/handful/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Flechette Shells (8g)", floor(scale * 25), /obj/item/ammo_magazine/handful/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
 		list("Type 71 Magazine (5.45x39mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Buckshot Shells (8g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Slugs (8g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Flechette Shells (8g)", floor(scale * 3), /obj/item/ammo_magazine/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
 		list("Type 73 Pistol", floor(scale * 10), /obj/item/weapon/gun/pistol/t73, VENDOR_ITEM_REGULAR),

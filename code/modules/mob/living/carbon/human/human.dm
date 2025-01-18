@@ -1800,17 +1800,18 @@
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
-/mob/living/carbon/human/ZImpactDamage(turf/T, levels)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
+/mob/living/carbon/human/ZImpactDamage(turf/impact_turf, levels)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
 		return
 
+	var/size_multiplyer = mob_size + 1
 	on_fall(TRUE)
 	if(can_paradrop() && levels > 2)
-		KnockDown(levels * 2)
-		to_chat(src, SPAN_DANGER("You land safely"))
+		KnockDown(levels * size_multiplyer)
+		to_chat(src, SPAN_DANGER("You almost land safely"))
 		return
 
-	var/damage = rand(10, 20)
+	var/damage = rand(10, 20) * size_multiplyer
 	var/obj/limb/affecting
 
 	switch(pick(list("ankle","wrist","head","knee","elbow")))
@@ -1825,7 +1826,7 @@
 		if("head")
 			affecting = get_limb("head")
 
-	visible_message(SPAN_DANGER("[src] crashes into [T] with a sickening noise!"))
+	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"))
 	if(affecting)
 		to_chat(src, SPAN_DANGER("You land heavily on your [affecting.display_name]!"))
 		affecting.take_damage(damage, 0)
@@ -1835,7 +1836,7 @@
 	else
 		to_chat(src, SPAN_DANGER("You land heavily!"))
 		apply_damage(damage, BRUTE)
-	KnockDown(levels * 2)
+	KnockDown(levels * size_multiplyer)
 
 	UpdateDamageIcon()
 	updatehealth()

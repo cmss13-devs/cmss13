@@ -264,7 +264,7 @@
 		to_chat(src, SPAN_NOTICE("You can't look up more."))
 	else
 		shadow.high++
-		client.change_view(GLOB.world_view_size - shadow.high, shadow)
+//		client.change_view(GLOB.world_view_size - shadow.high, shadow) solve later some issue with it
 
 /mob/verb/stoplookup()
 	set name = "Look Down"

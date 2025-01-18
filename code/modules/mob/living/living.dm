@@ -732,20 +732,21 @@
 		return buckled.set_currently_z_moving(value)
 	return ..()
 
-/mob/living/onZImpact(turf/T, levels, message = TRUE)
-	ZImpactDamage(T, levels)
+/mob/living/onZImpact(turf/impact_turf, levels, message = TRUE)
+	ZImpactDamage(impact_turf, levels)
 	message = FALSE
 	return ..()
 
-/mob/living/proc/ZImpactDamage(turf/T, levels)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
+/mob/living/proc/ZImpactDamage(turf/impact_turf, levels)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
 		return
 
-	var/damage = rand(10, 20)
-	visible_message(SPAN_DANGER("[src] crashes into [T] with a sickening noise!"), \
-					usr, SPAN_DANGER("You crash into [T] with a sickening noise!"))
+	var/size_multiplyer = mob_size + 1
+	var/damage = rand(10, 20) * size_multiplyer
+	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"), \
+					usr, SPAN_DANGER("You crash into [impact_turf] with a sickening noise!"))
 	apply_damage((damage * levels) ** 1.5, BRUTE)
-	KnockDown(levels * 2)
+	KnockDown(levels * size_multiplyer)
 	on_fall(TRUE)
 
 /mob/proc/on_fall(forced)

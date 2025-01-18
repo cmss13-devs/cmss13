@@ -18,23 +18,19 @@
 	opacity = FALSE
 	var/force_open_above = FALSE // replaces the turf above this stair obj with /turf/open/openspace
 	var/terminator_mode = STAIR_TERMINATOR_NO
-	var/turf/listeningTo
+	var/turf/listening_to
 
 /obj/structure/stairs/Initialize(mapload)
 	if(force_open_above)
 		force_open_above()
 		build_signal_listener()
 
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_EXITED = TYPE_PROC_REF(/obj/structure/stairs, on_move)
-	)
-
-	AddElement(/datum/element/connect_loc, loc_connections)
+	AddElement(/datum/element/connect_loc, list(COMSIG_ATOM_EXITED = TYPE_PROC_REF(/obj/structure/stairs, on_move)))
 
 	. = ..()
 
 /obj/structure/stairs/Destroy()
-	listeningTo = null
+	listening_to = null
 	. = ..()
 
 /obj/structure/stairs/proc/on_move(datum/source, atom/movable/leaving, direction)
@@ -63,24 +59,24 @@
 			climber.zMove(target = target, z_move_flags = ZMOVE_STAIRS_FLAGS)
 
 /obj/structure/stairs/proc/build_signal_listener()
-	if(listeningTo)
-		UnregisterSignal(listeningTo, COMSIG_TURF_MULTIZ_NEW)
-	var/turf/open/openspace/T = get_step_multiz(get_turf(src), UP)
-	RegisterSignal(T, COMSIG_TURF_MULTIZ_NEW, PROC_REF(on_multiz_new))
-	listeningTo = T
+	if(listening_to)
+		UnregisterSignal(listening_to, COMSIG_TURF_MULTIZ_NEW)
+	var/turf/open/openspace/above = get_step_multiz(get_turf(src), UP)
+	RegisterSignal(above, COMSIG_TURF_MULTIZ_NEW, PROC_REF(on_multiz_new))
+	listening_to = above
 
 /obj/structure/stairs/proc/force_open_above()
-	var/turf/open/openspace/T = get_step_multiz(get_turf(src), UP)
-	if(T && !istype(T))
-		T.ChangeTurf(/turf/open/openspace)
+	var/turf/open/openspace/above = get_step_multiz(get_turf(src), UP)
+	if(above && !istype(above))
+		above.ChangeTurf(/turf/open/openspace)
 
 /obj/structure/stairs/proc/on_multiz_new(turf/source, dir)
 	SIGNAL_HANDLER
 
 	if(dir == UP)
-		var/turf/open/openspace/T = get_step_multiz(get_turf(src), UP)
-		if(T && !istype(T))
-			T.ChangeTurf(/turf/open/openspace)
+		var/turf/open/openspace/above = get_step_multiz(get_turf(src), UP)
+		if(above && !istype(above))
+			above.ChangeTurf(/turf/open/openspace)
 
 /obj/structure/stairs/intercept_zImpact(list/falling_movables, levels = 1)
 	. = ..()
@@ -90,10 +86,10 @@
 /obj/structure/stairs/proc/isTerminator() //If this is the last stair in a chain and should move mobs up
 	if(terminator_mode != STAIR_TERMINATOR_AUTOMATIC)
 		return (terminator_mode == STAIR_TERMINATOR_YES)
-	var/turf/T = get_turf(src)
-	if(!T)
+	var/turf/below = get_turf(src)
+	if(!below)
 		return FALSE
-	var/turf/them = get_step(T, dir)
+	var/turf/them = get_step(below, dir)
 	if(!them)
 		return FALSE
 	for(var/obj/structure/stairs/S in them)

@@ -1161,12 +1161,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "sec_lead_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
-	desc = "A basic skull-helm worn by corporate security assets. This variant is worn comes with a wider brim to protect the user from the harsh climate of the desert."
+	desc = "A basic skull-helm worn by corporate security assets. This variant comes with a wider brim to protect the user from the harsh climate of the desert."
 	icon_state = "sec_helmet_kutjevo"
 	item_state = "sec_helmet_kutjevo"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo/medic
-	desc = "A basic skull-helm worn by corporate security assets. This variant is worn comes with a wider brim to protect the user from the harsh climate of the desert. This one has a medical cross across the front."
+	desc = "A basic skull-helm worn by corporate security assets. This variant comes with a wider brim to protect the user from the harsh climate of the desert and has a medical cross across the front."
 	icon_state = "sec_medic_helmet_kutjevo"
 	item_state = "sec_medic_helmet_kutjevo"
 

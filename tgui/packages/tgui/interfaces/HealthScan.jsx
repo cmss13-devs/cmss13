@@ -189,38 +189,6 @@ export const HealthScan = (props) => {
           </LabeledList>
         </Section>
         {has_chemicals ? <ScannerChems /> : null}
-        {limbs_damaged ? <ScannerLimbs /> : null}
-        {damaged_organs?.length && bodyscanner ? <ScannerOrgans /> : null}
-        {diseases ? (
-          <Section title="Diseases">
-            <LabeledList>
-              {diseases.map((disease) => (
-                <LabeledList.Item
-                  key={disease.name}
-                  label={disease.name[0].toUpperCase() + disease.name.slice(1)}
-                >
-                  <Box inline bold={1}>
-                    Type : {disease.type}, possible cure : {disease.cure}
-                  </Box>
-                  <Box inline width={'5px'} />
-                  <Box inline>
-                    <ProgressBar
-                      width="200px"
-                      value={disease.stage / disease.max_stage}
-                      ranges={{
-                        good: [-Infinity, 20],
-                        average: [20, 50],
-                        bad: [50, Infinity],
-                      }}
-                    >
-                      Stage:{disease.stage}/{disease.max_stage}
-                    </ProgressBar>
-                  </Box>
-                </LabeledList.Item>
-              ))}
-            </LabeledList>
-          </Section>
-        ) : null}
         <Section>
           <LabeledList>
             {has_blood ? (
@@ -266,6 +234,38 @@ export const HealthScan = (props) => {
             </NoticeBox>
           ) : null}
         </Section>
+        {limbs_damaged ? <ScannerLimbs /> : null}
+        {damaged_organs?.length && bodyscanner ? <ScannerOrgans /> : null}
+        {diseases ? (
+          <Section title="Diseases">
+            <LabeledList>
+              {diseases.map((disease) => (
+                <LabeledList.Item
+                  key={disease.name}
+                  label={disease.name[0].toUpperCase() + disease.name.slice(1)}
+                >
+                  <Box inline bold={1}>
+                    Type : {disease.type}, possible cure : {disease.cure}
+                  </Box>
+                  <Box inline width={'5px'} />
+                  <Box inline>
+                    <ProgressBar
+                      width="200px"
+                      value={disease.stage / disease.max_stage}
+                      ranges={{
+                        good: [-Infinity, 20],
+                        average: [20, 50],
+                        bad: [50, Infinity],
+                      }}
+                    >
+                      Stage:{disease.stage}/{disease.max_stage}
+                    </ProgressBar>
+                  </Box>
+                </LabeledList.Item>
+              ))}
+            </LabeledList>
+          </Section>
+        ) : null}
         {advice ? (
           <Section title="Medication Advice">
             <Stack vertical>

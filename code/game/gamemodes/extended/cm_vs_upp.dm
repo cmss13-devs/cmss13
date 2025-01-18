@@ -150,8 +150,8 @@
 	marine_announcement("Ceasefire ends in one minute.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/proc/ceasefire_end()
-	marine_announcement("Ceasefire is over.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-	marine_announcement("Ceasefire is over.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("Ceasefire is over. Combat operations may commence.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("Ceasefire is over. Combat operations may commence.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = FALSE)
 
 

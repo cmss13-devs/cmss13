@@ -997,8 +997,3 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Cheap wrist watch"
 	path = /obj/item/clothing/accessory/wrist/watch
 	cost = 1 // Cheap and crappy
-
-/datum/gear/misc/cheese
-	display_name = "Cheese"
-	path = /obj/item/reagent_container/food/snacks/cheesewedge/mature
-	cost = 1

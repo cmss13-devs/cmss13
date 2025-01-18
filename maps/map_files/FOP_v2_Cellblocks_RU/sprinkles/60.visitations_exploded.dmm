@@ -1,9 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aI" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
 "bR" = (
 /obj/structure/pipes/vents/scrubber{
@@ -14,10 +11,7 @@
 	},
 /obj/item/shard/shrapnel,
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkredcorners2"
-	},
+/turf/open/floor/prison/darkredcorners2/east,
 /area/prison/visitation)
 "ch" = (
 /obj/structure/pipes/vents/scrubber{
@@ -60,10 +54,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/east,
 /area/prison/visitation)
 "eF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -87,10 +78,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkredcorners2"
-	},
+/turf/open/floor/prison/darkredcorners2/east,
 /area/prison/visitation)
 "fj" = (
 /obj/effect/decal/cleanable/blood,
@@ -147,10 +135,7 @@
 	},
 /area/prison/visitation)
 "kP" = (
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/northwest,
 /area/prison/visitation)
 "lb" = (
 /obj/structure/machinery/light/double/blue{
@@ -192,10 +177,7 @@
 	pixel_x = -13;
 	pixel_y = 14
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
 "nd" = (
 /obj/structure/machinery/computer/secure_data,
@@ -205,10 +187,7 @@
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
 "ni" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -223,10 +202,7 @@
 /area/prison/visitation)
 "nZ" = (
 /obj/structure/filingcabinet,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
 "ol" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -247,25 +223,16 @@
 	},
 /area/prison/visitation)
 "qt" = (
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/northeast,
 /area/prison/visitation)
 "qy" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/southwest,
 /area/prison/visitation)
 "rh" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/east,
 /area/prison/visitation)
 "rZ" = (
 /turf/closed/wall/r_wall/prison,
@@ -275,17 +242,11 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/northwest,
 /area/prison/visitation)
 "ua" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/southeast,
 /area/prison/visitation)
 "uC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -335,9 +296,7 @@
 	},
 /area/prison/visitation)
 "xn" = (
-/turf/open/floor/prison{
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2,
 /area/prison/visitation)
 "yq" = (
 /obj/item/shard{
@@ -461,17 +420,11 @@
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/item_pool_spawner/prison_lock,
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
 "OV" = (
 /obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison{
-	dir = 9;
-	icon_state = "darkred2"
-	},
+/turf/open/floor/prison/darkred2/northwest,
 /area/prison/visitation)
 "Ri" = (
 /obj/effect/decal/cleanable/dirt,
@@ -549,10 +502,7 @@
 	network = list("PRISON")
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
 "ZE" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,

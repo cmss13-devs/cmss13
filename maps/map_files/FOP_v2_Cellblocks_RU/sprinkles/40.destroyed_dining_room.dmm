@@ -20,10 +20,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "at" = (
 /obj/item/prop/helmetgarb/spent_buckshot,
@@ -215,10 +212,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "fs" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -387,9 +381,7 @@
 /area/prison/canteen)
 "ig" = (
 /obj/structure/window_frame/prison/reinforced,
-/turf/open/floor/prison{
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull,
 /area/prison/canteen)
 "ij" = (
 /obj/structure/bed/chair,
@@ -445,10 +437,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "jh" = (
 /obj/structure/pipes/vents/pump{
@@ -485,9 +474,7 @@
 /area/prison/canteen)
 "jZ" = (
 /obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/prison{
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull,
 /area/prison/canteen)
 "kr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -582,9 +569,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/prison/kitchen)
 "om" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -594,10 +579,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "oz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -686,10 +668,7 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/canteen)
 "qT" = (
 /obj/effect/landmark/objective_landmark/close,
@@ -1158,10 +1137,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "BK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -1201,10 +1177,7 @@
 	dir = 2;
 	name = "Canteen"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "CR" = (
 /obj/item/reagent_container/food/drinks/bottle/vodka,
@@ -1385,10 +1358,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "Hb" = (
 /obj/effect/decal/cleanable/blood,
@@ -1401,10 +1371,7 @@
 "Hy" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "IC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1513,10 +1480,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "KI" = (
 /obj/structure/bed/chair{
@@ -1589,10 +1553,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "Mo" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1665,18 +1626,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "kitchen"
-	},
+/turf/open/floor/prison/kitchen,
 /area/prison/kitchen)
 "NC" = (
 /obj/structure/window_frame/prison/reinforced,
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/prison{
-	icon_state = "greenfull"
-	},
+/turf/open/floor/prison/greenfull,
 /area/prison/canteen)
 "NH" = (
 /obj/effect/landmark/crap_item,
@@ -1726,10 +1683,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "OC" = (
 /obj/effect/decal/cleanable/blood,
@@ -1898,10 +1852,7 @@
 	},
 /area/prison/canteen)
 "TQ" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "Ua" = (
 /obj/structure/sink{
@@ -1913,10 +1864,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/machinery/light/small,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "Ur" = (
 /obj/structure/stairs/perspective{
@@ -2035,10 +1983,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/canteen)
 "Xf" = (
 /obj/effect/decal/cleanable/blood,
@@ -2080,10 +2025,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison/sterile_white/southwest,
 /area/prison/kitchen)
 "XQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{

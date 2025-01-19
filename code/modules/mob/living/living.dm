@@ -744,7 +744,7 @@
 	var/damage = rand(10, 20) * mob_size
 	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"), \
 					usr, SPAN_DANGER("You crash into [impact_turf] with a sickening noise!"))
-	apply_damage((damage * levels) ** 1.5, BRUTE)
+	apply_damage(damage * levels, BRUTE)
 	KnockDown(levels * mob_size)
 	on_fall(TRUE)
 

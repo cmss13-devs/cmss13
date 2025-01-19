@@ -41,22 +41,24 @@
 
 	if(isTerminator() && get_dir(source, direction) == dir)
 		leaving.set_currently_z_moving(CURRENTLY_Z_ASCENDING)
+		leaving.setDir(dir)
 		INVOKE_ASYNC(src, PROC_REF(stair_ascend), leaving, dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/stairs/proc/stair_ascend(atom/movable/climber, direction)
-	var/turf/checking = get_step_multiz(get_turf(src), UP)
-	if(!istype(checking))
+	var/turf/our_loc = get_turf(src)
+	var/turf/checking = get_step_multiz(our_loc, UP)
+	if(!istype(checking) || !checking.zPassIn(climber, UP, our_loc))
 		return
-	if(!checking.zPassIn(climber, UP, get_turf(src)))
+	checking = get_step_multiz(our_loc, (direction|UP))
+	if(!checking.zPassIn(climber, UP, our_loc))
 		return
-	var/turf/target = get_step_multiz(get_turf(src), (direction|UP))
-	if(istype(target) && !climber.can_z_move(DOWN, target, z_move_flags = ZMOVE_FALL_FLAGS)) //Don't throw them into a tile that will just dump them back down.
+	if(!climber.can_z_move(DOWN, checking, z_move_flags = ZMOVE_FALL_FLAGS)) //Don't throw them into a tile that will just dump them back down.
 		if(istype(climber, /mob))
 			var/mob/mob = climber
-			mob.trainteleport(target, z_move_flags = ZMOVE_STAIRS_FLAGS)
+			mob.trainteleport(checking, z_move_flags = ZMOVE_STAIRS_FLAGS)
 		else
-			climber.zMove(target = target, z_move_flags = ZMOVE_STAIRS_FLAGS)
+			climber.zMove(target = checking, z_move_flags = ZMOVE_STAIRS_FLAGS)
 
 /obj/structure/stairs/proc/build_signal_listener()
 	if(listening_to)

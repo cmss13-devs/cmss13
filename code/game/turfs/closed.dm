@@ -7,47 +7,41 @@
 	attack_hand(user)
 
 /turf/closed/attack_hand(mob/user)
-	var/turf/above_current = get_step_multiz(src, UP)
-	var/turf/above_user = get_step_multiz(get_turf(user), UP)
-	if(above_user.antipierce)
-		to_chat(user, SPAN_WARNING("There nowhere to go"))
-		return
-
 	// For now, later if special lader too much, we can do something easier
 	if(!istype(user, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_WARNING("You are not hero!"))
 		return
 
-	if(istype(above_current, /turf/closed))
-		var/climb_distance = 1
-		if(istype(user, /mob/living/carbon/xenomorph) && user.mob_size < MOB_SIZE_XENO_SMALL)
-			climb_distance = world.maxz
+	var/turf/our_loc = get_turf(src)
+	var/turf/checking = get_step_multiz(our_loc, UP)
+	if(!istype(checking) || !checking.zPassIn(user, UP, our_loc))
+		to_chat(user, SPAN_WARNING("You can't climb here!"))
+		return
 
-		for(var/current_z = 1 to climb_distance)
-			above_current = get_step_multiz(above_current, UP)
-			above_user = get_step_multiz(above_user, UP)
-			if(above_user.antipierce)
-				to_chat(user, SPAN_WARNING("There nowhere to go"))
-				return
-			if(istype(above_current, /turf/closed))
-				continue
-			break
-
-	if(istype(above_current, /turf/closed))
-		to_chat(user, SPAN_WARNING("You can't reach it"))
+	checking = get_step_multiz(src, UP)
+	if(!checking.zPassIn(user, UP, our_loc))
+		to_chat(user, SPAN_WARNING("You can't climb here!"))
 		return
 
 	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
 		SPAN_WARNING("You start climbing up the \the [src]."))
 
-	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, user.mob_size * 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
+	our_loc = get_turf(src)
+	checking = get_step_multiz(our_loc, UP)
+	if(!checking.zPassIn(user, UP, our_loc))
+		return
+
+	checking = get_step_multiz(src, UP)
+	if(!checking.zPassIn(user, UP, our_loc))
+		return
+
+	user.zMove(target = checking, z_move_flags = ZMOVE_STAIRS_FLAGS)
 	user.visible_message(SPAN_WARNING("[user] climbs up \the [src]."),\
 		SPAN_WARNING("You climb up \the [src]."))
-
-	user.forceMove(above_current)
 	return
 
 /turf/closed/insert_self_into_baseturfs()

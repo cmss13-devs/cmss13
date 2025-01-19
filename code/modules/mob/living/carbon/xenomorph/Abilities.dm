@@ -194,8 +194,8 @@
 /datum/action/xeno_action/activable/break_roof
 	name = "Break Roof"
 	action_icon_state = "gut"
-	plasma_cost = 0
 	xeno_cooldown = 1 MINUTES
+	plasma_cost = 0
 
 /datum/action/xeno_action/activable/break_roof/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

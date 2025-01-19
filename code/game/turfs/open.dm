@@ -167,13 +167,10 @@
 			var/fd1 = fdir&(fdir-1) // X-component if fdir diagonal, 0 otherwise
 			var/fd2 = fdir - fd1 // Y-component if fdir diagonal, fdir otherwise
 			var/blocking_dir = BlockedPassDirs(mover, fdir)
-			var/obstacle
-			var/atom/A
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 				mover.Collide(src)
 				return FALSE
-			for(obstacle in src) //Then, check atoms in the target turf
-				A = obstacle
+			for(var/atom/A as anything in src) //Then, check atoms in the target turf
 				if (!istype(A) || !A.can_block_movement)
 					continue
 				blocking_dir |= A.BlockedPassDirs(mover, fdir)

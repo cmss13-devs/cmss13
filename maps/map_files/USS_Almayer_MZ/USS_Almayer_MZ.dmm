@@ -344,7 +344,8 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Left";
-	name = "\improper ARES Mainframe Shutters"
+	name = "\improper ARES Mainframe Shutters";
+	plane = -7
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -915,12 +916,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/port_fore_hallway)
-"age" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 5
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "agf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -2624,7 +2619,6 @@
 /turf/open/floor/plating,
 /area/almayer/maint/upper/u_m_s)
 "ash" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	autoname = 0;
 	c_tag = "AI - Records";
@@ -12791,9 +12785,6 @@
 	dir = 1;
 	terminator_mode = 0
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/plating/almayer,
 /area/almayer/stair_clone)
 "bzZ" = (
@@ -16837,7 +16828,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = -24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -19368,7 +19359,6 @@
 	name = "server tower";
 	pixel_y = 16
 	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ctO" = (
@@ -23332,7 +23322,8 @@
 "cWY" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters"
+	name = "\improper ARES Inner Chamber Shutters";
+	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/laser{
@@ -24580,9 +24571,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/stairs{
 	icon_state = "ramptop";
 	terminator_mode = 0;
@@ -25726,7 +25714,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -26981,7 +26969,8 @@
 "ech" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsLower";
-	name = "\improper ARES Core Shutters"
+	name = "\improper ARES Core Shutters";
+	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/public{
 	alert_id = "AresStairs";
@@ -33702,7 +33691,8 @@
 "hpj" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters"
+	name = "\improper ARES Inner Chamber Shutters";
+	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
@@ -34724,10 +34714,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_s)
-"hRk" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/plating,
-/area/almayer/powered/agent)
 "hRp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36766,7 +36752,7 @@
 	name = "ARES Mainframe Lockdown";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_one_access_txt = "200;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
@@ -37690,7 +37676,9 @@
 	req_access = null;
 	req_one_access_txt = "91;92"
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore{
+	plane = -6
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "jwR" = (
@@ -39777,10 +39765,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
-"kAr" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/closed/wall/almayer/aicore/hull,
-/area/almayer/command/airoom)
 "kAK" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -41150,7 +41134,8 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Right";
-	name = "\improper ARES Mainframe Shutters"
+	name = "\improper ARES Mainframe Shutters";
+	plane = -7
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -42438,7 +42423,8 @@
 "lOO" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters"
+	name = "\improper ARES Inner Chamber Shutters";
+	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/terminal{
@@ -44345,7 +44331,6 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/upper_engineering/starboard)
 "mLo" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /obj/structure/machinery/computer/tech_control{
 	density = 0;
 	pixel_y = 16
@@ -45468,7 +45453,8 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "ARES JoeCryo";
-	name = "\improper ARES Synth Bay Shutters"
+	name = "\improper ARES Synth Bay Shutters";
+	plane = -7
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -46078,7 +46064,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
@@ -47031,12 +47017,6 @@
 	},
 /turf/open/floor/almayer/redcorner/east,
 /area/almayer/shipboard/brig/processing)
-"nYg" = (
-/obj/structure/pipes/vents/pump/no_boom{
-	welded = 1
-	},
-/turf/open/floor/plating,
-/area/almayer/powered/agent)
 "nYh" = (
 /turf/open/floor/almayer/mono,
 /area/almayer/command/securestorage)
@@ -52068,12 +52048,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
-"qCf" = (
-/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
-	dir = 8
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "qCD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54745,7 +54719,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = 24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/east,
 /area/almayer/command/airoom)
@@ -63728,7 +63702,7 @@
 	name = "ARES Operations Shutter";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_silver/west,
 /area/almayer/command/airoom)
@@ -157390,13 +157364,13 @@ hjf
 hjf
 hjf
 hjf
-nYg
-hRk
-kAr
+blK
+blK
+hjf
 mLo
 ash
-jmy
-age
+pGJ
+pGJ
 bZh
 acd
 iXX
@@ -157492,7 +157466,7 @@ hjf
 diH
 diH
 nBq
-ygu
+bFV
 bOU
 diH
 fea
@@ -158158,11 +158132,11 @@ hjf
 hjf
 hjf
 hjf
-nYg
-hRk
-kAr
+blK
+blK
+hjf
 ctK
-qCf
+bFV
 jmy
 lnN
 pGJ

@@ -39,14 +39,6 @@
 		stat |= BROKEN
 	update_icon()
 
-
-// has the door power situation changed, if so update icon.
-/obj/structure/machinery/door_display/power_change()
-	..()
-	update_icon()
-	return
-
-
 // open/closedoor checks if door_display has power, if so it checks if the
 // linked door is open/closed (by density) then opens it/closes it.
 
@@ -96,13 +88,13 @@
 
 	// Open/Close Door
 	if (open)
-		data += "<a href='?src=\ref[src];open=0'>Close Door</a><br/>"
+		data += "<a href='byond://?src=\ref[src];open=0'>Close Door</a><br/>"
 	else
-		data += "<a href='?src=\ref[src];open=1'>Open Door</a><br/>"
+		data += "<a href='byond://?src=\ref[src];open=1'>Open Door</a><br/>"
 
 	data += "<br/>"
 
-	data += "<br/><a href='?src=\ref[user];mach_close=computer'>Close Display</a>"
+	data += "<br/><a href='byond://?src=\ref[user];mach_close=computer'>Close Display</a>"
 	data += "</TT></BODY></HTML>"
 
 	return data
@@ -217,9 +209,6 @@
 	//And they deserve a rampage after being locked up for so long
 	open_shutter(TRUE)
 	open_door(TRUE)
-
-/obj/structure/machinery/door_display/update_icon()
-	return
 
 // TGUI \\
 

@@ -731,7 +731,7 @@
 	else if(istype(O,/obj/item/tool/shovel) || istype(O,/obj/item/tank))
 		return
 	else
-		..()
+		. = ..()
 
 #undef HYDRO_SPEED_MULTIPLIER
 #undef HYDRO_WATER_CONSUMPTION_MULTIPLIER

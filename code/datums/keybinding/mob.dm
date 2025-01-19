@@ -220,3 +220,35 @@
 	if(.)
 		return
 	user.movement_locked = FALSE
+
+/datum/keybinding/mob/look_up
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "look_up"
+	full_name = "Look Up"
+	description = ""
+	keybind_signal = COMSIG_KB_MOB_LOOK_UP
+
+/datum/keybinding/mob/look_up/down(client/user)
+	. = ..()
+	if (.)
+		return
+	var/mob/user_mob = user.mob
+	user_mob.lookup()
+	return TRUE
+
+/datum/keybinding/mob/look_down
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "look_down"
+	full_name = "Look Down"
+	description = ""
+	keybind_signal = COMSIG_KB_MOB_LOOK_DOWN
+
+/datum/keybinding/mob/look_down/down(client/user)
+	. = ..()
+	if (.)
+		return
+	var/mob/user_mob = user.mob
+	user_mob.stoplookup()
+	return TRUE

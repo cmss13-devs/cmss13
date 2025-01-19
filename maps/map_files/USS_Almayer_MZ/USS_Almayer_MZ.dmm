@@ -18746,7 +18746,6 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/structure/machinery/cm_vending/clothing/dress/corporate_liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "coY" = (

@@ -42,6 +42,20 @@
 /datum/chem_property/neutral/excreting/pre_process(mob/living/M)
 	return list(REAGENT_PURGE = level)
 
+/datum/chem_property/neutral/excreting/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 1.2*(potency*2)*volume
+	processing_tray.weedlevel += 1*(potency*2)*volume
+	processing_tray.nutrilevel += -0.25*(potency*2)*volume
+	processing_tray.potency_counter += 5*(potency*2)*volume
+	if (processing_tray.potency_counter >= 100 && rand(0,potency*2) > 0)
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.potency += rand(1,potency*2)
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
+		processing_tray.potency_counter = 0
 /datum/chem_property/neutral/nutritious
 	name = PROPERTY_NUTRITIOUS
 	code = "NTR"
@@ -67,6 +81,16 @@
 /datum/chem_property/neutral/nutritious/update_reagent()
 	holder.nutriment_factor += level
 	..()
+
+/datum/chem_property/neutral/nutritious/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.weedlevel += 0.5*(potency*2)*volume
+	processing_tray.pestlevel += 0.5*(potency*2)*volume
+	processing_tray.plant_health += 0.5*(potency*2)*volume
+	processing_tray.yield_mod += 0.05*(potency*2)*volume
+
 
 /datum/chem_property/neutral/ketogenic
 	name = PROPERTY_KETOGENIC
@@ -332,6 +356,16 @@
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
 
+/datum/chem_property/neutral/fluffing/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.yield_mod += 0.2*(potency*2)*volume
+	processing_tray.nutrilevel += -0.5*(potency*2)*volume
+	var/water_added = 0
+	var/water_input = -0.1*(potency*2)*volume
+	water_added += water_input
+	processing_tray.waterlevel += water_input
 /datum/chem_property/neutral/allergenic
 	name = PROPERTY_ALLERGENIC
 	code = "ALG"

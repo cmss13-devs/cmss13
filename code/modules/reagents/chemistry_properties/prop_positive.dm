@@ -41,6 +41,13 @@
 /datum/chem_property/positive/anticorrosive/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_VHIGH*potency, 0, POTENCY_MULTIPLIER_VHIGH*potency) //Massive brute/tox damage
 
+/datum/chem_property/positive/anticorrosive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.toxins > 0)
+		processing_tray.toxins += -1*(potency*2)
+
 /datum/chem_property/positive/neogenetic
 	name = PROPERTY_NEOGENETIC
 	code = "NGN"
@@ -836,6 +843,25 @@
 	M.take_limb_damage(brute = 0.5 * potency)
 	M.apply_internal_damage(potency, "liver")
 
+/datum/chem_property/positive/crystallization/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.seed.harvest_repeat == 1)
+		return
+	processing_tray.weedlevel += 0.8*(10-(potency*2))*volume
+	processing_tray.nutrilevel += -0.8*(10-(potency*2))*volume
+	processing_tray.repeat_harvest_counter += 5*(potency*2)*volume
+	if (processing_tray.repeat_harvest_counter >= 100)
+		if (rand(0,2) < 2)
+			processing_tray.repeat_harvest_counter += -1*rand(20,50)
+			return
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.harvest_repeat = 1
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] begins to shimmer with a color out of space"))
+		processing_tray.potency_counter = 0
+
 //properties with combat uses
 /datum/chem_property/positive/disrupting
 	name = PROPERTY_DISRUPTING
@@ -958,6 +984,11 @@
 	M.apply_effect(20 * potency, PARALYZE) //Total DNA collapse // That's some long goddamn stun
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 	M.apply_damage(1.5 * potency * delta_time, CLONE)
+
+/datum/chem_property/positive/aiding/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency = 1, volume = 1)
+	. = ..()
+	processing_tray?.mutation_mod += -4*(potency*2)*volume
+
 
 /datum/chem_property/positive/oxygenating
 	name = PROPERTY_OXYGENATING

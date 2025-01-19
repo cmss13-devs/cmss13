@@ -44,99 +44,20 @@
 
 	// Seed details/line data.
 	var/datum/seed/seed = null // The currently planted seed
+	/// used in property/Excreting/reaction_hydro_tray and other potency increasing methods
+	var/potency_counter = 0
+	/// used in property/photosensative/reaction_hydro_tray to set repeat harvest on
+	var/repeat_harvest_counter = 0
+	/// used in purpleplasma/rection_hydro_tray to reduce production time
+	var/production_time_counter = 0
+	///used in darkacidic reaction_hydro tray to add chems to plant
+	var/chem_add_counter = 0
+
+
 
 	// Reagent information for process(), consider moving this to a controller along
 	// with cycle information under 'mechanical concerns' at some point.
 
-	// remove me
-	var/global/list/toxic_reagents = list(
-		"anti_toxin" =  -2,
-		"arithrazine" = -1.5,
-		"carbon" =  -1,
-		"silicon" = -0.5,
-		"chlorine" = 1.5,
-		"sulphuric acid" =    1.5,
-		"fuel" = 2,
-		"toxin" =    2,
-		"radium" =   2,
-		"dinitroaniline" =  2,
-		"mutagen" =  2.5,
-		"fluorine" = 2.5,
-		"pacid" =    3,
-		"plantbgone" =   3,
-		"chlorine trifluoride" = 8
-		)// remove me
-	var/global/list/nutrient_reagents = list(
-		"milk" = 0.1,
-		"phosphorus" =   0.1,
-		"sugar" =    0.1,
-		"sodawater" =    0.1,
-		"beer" = 0.25,
-		"nutriment" =    1,
-		"adminordrazine" =  1,
-		"eznutrient" =   1,
-		"robustharvest" =   1,
-		"left4zed" = 1,
-		"ammonia" =  2,
-		"diethylamine" = 3
-		)// remove me
-	var/global/list/weedkiller_reagents = list(
-		"plantbgone" =  -8,
-		"dinitroaniline" = -6,
-		"adminordrazine" = -5,
-		"pacid" =   -4,
-		"fluorine" =    -4,
-		"chlorine" =    -3,
-		"sulphuric acid" =   -2,
-		"phosphorus" =  -2,
-		"sugar" =    2
-		)// remove me
-	var/global/list/pestkiller_reagents = list(
-		"adminordrazine" = -5,
-		"dinitroaniline" = -3,
-		"diethylamine" =   -2,
-		"sugar" =    2
-		)// remove me
-	var/global/list/water_reagents = list(
-		"water" =    1,
-		"adminordrazine" =  1,
-		"milk" = 0.9,
-		"beer" = 0.7,
-		"flourine" =    -0.5,
-		"chlorine" =    -0.5,
-		"phosphorus" =  -0.5,
-		"water" =    1,
-		"sodawater" =    1,
-		)
-
-	// remove me
-	var/global/list/beneficial_reagents = list(
-		"beer" =    list( -0.05, 0,   0   ),
-		"fluorine" =    list( -2, 0,   0   ),
-		"chlorine" =    list( -1, 0,   0   ),
-		"phosphorus" =  list( -0.75, 0,   0   ),
-		"sodawater" =   list(  0.1,  0,   0   ),
-		"sulphuric acid" =   list( -1, 0,   0   ),
-		"pacid" =   list( -2, 0,   0   ),
-		"plantbgone" =  list( -2, 0,   0.2 ),
-		"dinitroaniline" = list( -0.5,  0,   0.1 ),
-		"ammonia" = list(  0.5,  0,   0   ),
-		"diethylamine" =   list(  2, 0,   0   ),
-		"nutriment" =   list(  0.5,  0.1,   0 ),
-		"radium" =  list( -1.5,  0,   0.2 ),
-		"adminordrazine" = list(  1, 1,   1   ),
-		"robustharvest" =  list(  0, 0.2, 0   ),
-		"left4zed" =    list(  0, 0,   0.2 )
-		)
-	// remove me
-	// Mutagen list specifies minimum value for the mutation to take place, rather
-	// than a bound as the lists above specify.
-	var/global/list/mutagenic_reagents = list(
-		"ryetalyn" =  -8,
-		"arithrazine" = -6,
-		"radium" =  8,
-		"mutagen" = 15
-		)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/Initialize()
 	. = ..()
@@ -278,50 +199,16 @@
 //Process reagents being input into the tray.
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
 
-	if(!reagents) return
+	if(!reagents)
+		return
 
 	if(reagents.total_volume <= 0)
 		return
 
 	reagents.trans_to(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
-
-	for(var/datum/reagent/R in temp_chem_holder.reagents.reagent_list)
-
-		var/reagent_total = temp_chem_holder.reagents.get_reagent_amount(R.id)
-
-		if(seed && !dead)
-			//Handle some general level adjustments.
-			if(toxic_reagents[R.id])
-				toxins += toxic_reagents[R.id]  * reagent_total
-			if(weedkiller_reagents[R.id])
-				weedlevel += weedkiller_reagents[R.id] * reagent_total
-			if(pestkiller_reagents[R.id])
-				pestlevel += pestkiller_reagents[R.id] * reagent_total
-
-			// Beneficial reagents have a few impacts along with health buffs.
-			if(beneficial_reagents[R.id])
-				plant_health += beneficial_reagents[R.id][1]    * reagent_total
-				yield_mod += beneficial_reagents[R.id][2] * reagent_total
-				mutation_mod += beneficial_reagents[R.id][3] * reagent_total
-
-			// Mutagen is distinct from the previous types and mostly has a chance of proccing a mutation.
-			if(mutagenic_reagents[R.id])
-				mutation_level += reagent_total*mutagenic_reagents[R.id]+mutation_mod
-
-		// Handle nutrient refilling.
-		if(nutrient_reagents[R.id])
-			nutrilevel += nutrient_reagents[R.id]  * reagent_total
-
-		// Handle water and water refilling.
-		var/water_added = 0
-		if(water_reagents[R.id])
-			var/water_input = water_reagents[R.id] * reagent_total
-			water_added += water_input
-			waterlevel += water_input
-
-		// Water dilutes toxin level.
-		if(water_added > 0)
-			toxins -= floor(water_added/4)
+	for(var/datum/reagent/processed_reagent in temp_chem_holder.reagents.reagent_list)
+		for(var/datum/chem_property/chem_property in processed_reagent?.properties)
+			chem_property.reaction_hydro_tray(src , level/2 , processed_reagent.volume)
 
 	temp_chem_holder.reagents.clear_reagents()
 	check_level_sanity()
@@ -351,6 +238,14 @@
 		age = 0
 		sampled = 0
 		mutation_mod = 0
+		///resets these counters when the plant is harvested and removed from tray
+		potency_counter = 0
+		repeat_harvest_counter = 0
+		production_time_counter = 0
+		chem_add_counter = 0
+
+
+
 
 	check_level_sanity()
 	update_icon()
@@ -370,6 +265,14 @@
 	age = 0
 	yield_mod = 0
 	mutation_mod = 0
+	///resets these counters when the plant is harvested and removed from tray
+	potency_counter = 0
+	repeat_harvest_counter = 0
+	production_time_counter = 0
+	chem_add_counter = 0
+
+
+
 
 	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
 	check_level_sanity()

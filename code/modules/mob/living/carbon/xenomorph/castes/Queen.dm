@@ -768,15 +768,13 @@
 		if(synthhead.status & LIMB_DESTROYED)
 			return FALSE
 
-	if(locate(/obj/item/alien_embryo) in victim) //Maybe they ate it??
-		var/mob/living/carbon/human/human_victim = victim
-		if(human_victim.status_flags & XENO_HOST)
-			if(victim.stat != DEAD) //Not dead yet.
-				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
-				return FALSE
-			else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
-				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
-				return FALSE
+	if(victim.status_flags & XENO_HOST)
+		if(victim.stat != DEAD) //Not dead yet.
+			to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
+			return FALSE
+		else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
+			to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
+			return FALSE
 
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
@@ -803,6 +801,13 @@
 			return FALSE
 		if(!check_plasma(200))
 			return FALSE
+		if(victim.status_flags & XENO_HOST)
+			if(victim.stat != DEAD) //Not dead yet.
+				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
+				return FALSE
+			else if(istype(human_victim) && (world.time <= human_victim.timeofdeath + human_victim.revive_grace_period)) //Dead, but the host can still hatch, possibly.
+				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
+				return FALSE
 
 		use_plasma(200)
 

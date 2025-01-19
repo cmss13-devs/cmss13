@@ -13,8 +13,10 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here
-	var/list/contract_chems = list() //3 chemicals that you get to pick
-	var/next_reroll = null//when will next reroll happen
+	//chemicals that you get to pick
+	var/list/contract_chems = list()
+	///when will next reroll happen, time
+	var/next_reroll = null
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()

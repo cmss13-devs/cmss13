@@ -720,29 +720,29 @@
 /obj/item/paper/research_notes/proc/generate()
 	is_objective = TRUE
 	if(!note_type)
-		note_type = pick(prob(50);"synthesis",prob(35);"grant")
-	var/datum/reagent/generated/C
+		note_type = pick_weight(list("synthesis" = 7, "grant" = 3))
+	var/datum/reagent/generated/chemical_to_generate
 	if(note_type == "synthesis")
-		C = data
-		if(!C)
-			C = new /datum/reagent/generated
-			C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
-			C.generate_name()
-			C.chemclass = CHEM_CLASS_ULTRA
-			C.gen_tier = rand(1, 2)
-			C.generate_stats()
-			GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
-			GLOB.chemical_reagents_list[C.id] = C
-			C.generate_assoc_recipe()
+		chemical_to_generate = data
+		if(!chemical_to_generate)
+			chemical_to_generate = new /datum/reagent/generated
+			chemical_to_generate.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+			chemical_to_generate.generate_name()
+			chemical_to_generate.chemclass = CHEM_CLASS_ULTRA
+			chemical_to_generate.gen_tier = rand(1, 2)
+			chemical_to_generate.generate_stats()
+			GLOB.chemical_gen_classes_list["tau"] += chemical_to_generate.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+			GLOB.chemical_reagents_list[chemical_to_generate.id] = chemical_to_generate
+			chemical_to_generate.generate_assoc_recipe()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
-			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
-			name = "Synthesis of [C.name]"
+			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[chemical_to_generate.id]
+			name = "Synthesis of [chemical_to_generate.name]"
 			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
-			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
+			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
@@ -754,16 +754,16 @@
 					var/U = G.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
-				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
-				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
+				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE
-			if(C.chemfiresupp)
+			if(chemical_to_generate.chemfiresupp)
 				is_volatile = TRUE
 			else
-				for(var/datum/chem_property/P in C.properties)
+				for(var/datum/chem_property/P in chemical_to_generate.properties)
 					if(P.volatile)
 						is_volatile = TRUE
 						break
@@ -774,7 +774,7 @@
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
-			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
+			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(chemical_to_generate.properties)] effects during testing of [chemical_to_generate.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)

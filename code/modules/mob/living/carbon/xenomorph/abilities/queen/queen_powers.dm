@@ -800,22 +800,32 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
-	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
-		if(mob && mob.client)
-			if(isxeno(mob))
-				shake_camera(mob, 10, 1)
-			else
-				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
-	FOR_DVIEW_END
+	var/list/target_refs = list(owner)
+	var/turf/next = get_step_multiz(owner, UP)
+	if(next)
+		target_refs += next
+	next = get_step_multiz(owner, DOWN)
+	if(next)
+		target_refs += next
+	for(var/atom/target_ref as anything in target_refs)
+		FOR_DVIEW(var/mob/mob, owner != target_ref ? floor(world.view/2) : world.view, owner, HIDE_INVISIBLE_OBSERVER)
+			if(mob && mob.client)
+				if(isxeno(mob))
+					shake_camera(mob, 10, 1)
+				else
+					shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+		FOR_DVIEW_END
 
 	var/list/mobs_in_view = list()
-	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
-		mobs_in_view += M
-	FOR_DOVIEW_END
-	for(var/mob/living/carbon/M in orange(10, xeno))
-		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
-			continue
-		M.handle_queen_screech(xeno, mobs_in_view)
+	for(var/atom/target_ref as anything in target_refs)
+		FOR_DOVIEW(var/mob/living/carbon/M, owner != target_ref ? 4 : 7, target_ref, HIDE_INVISIBLE_OBSERVER)
+			mobs_in_view += M
+		FOR_DOVIEW_END
+	for(var/atom/target_ref as anything in target_refs)
+		for(var/mob/living/carbon/M in orange(owner != target_ref ? 6 : 10, target_ref))
+			if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
+				continue
+			M.handle_queen_screech(xeno, mobs_in_view)
 
 	apply_cooldown()
 
@@ -826,6 +836,38 @@
 	if(!action_cooldown_check())
 		return
 	if(xeno.queen_gut(target))
+		apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/activable/break_roof
+	name = "Break Roof"
+	action_icon_state = "gut"
+	xeno_cooldown = 1 MINUTES
+	plasma_cost = 0
+
+/datum/action/xeno_action/activable/break_roof/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	if(!action_cooldown_check())
+		return
+
+	var/action = tgui_input_list(usr, "What turf you want to break", "Clear Turf", list("Above", "Below"))
+	var/turf/target_turf
+	switch(action)
+		if("Above")
+			target_turf = SSmapping.get_turf_above(xeno)
+		if("Below")
+			target_turf = SSmapping.get_turf_below(xeno)
+
+	if(!target_turf)
+		to_chat(src, SPAN_XENOWARNING("There no turf!"))
+		return
+
+	if(target_turf.antipierce > 5 && islist(target_turf.baseturfs) ? !istype(target_turf.baseturfs[1], /turf/open/openspace) : !istype(target_turf.baseturfs, /turf/open/openspace))
+		to_chat(src, SPAN_XENOWARNING("[target_turf] is too strong for our claws to break!"))
+		return
+
+	if(do_after(src, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_turf))
+		target_turf.ChangeTurf(/turf/open/openspace, list())
 		apply_cooldown()
 	return ..()
 

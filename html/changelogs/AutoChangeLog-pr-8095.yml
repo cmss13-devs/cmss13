@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "on 516, sometimes the storage backend would not find your preferences correctly. this is fixed, but you still need to be on version 516.1650+"

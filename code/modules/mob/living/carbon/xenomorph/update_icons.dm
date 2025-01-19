@@ -328,20 +328,26 @@
 
 	var/health_threshold
 	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
+
+	var/new_icon_state
+
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
-			wound_icon_holder.icon_state = "none"
+			new_icon_state = "none"
 		else if(body_position == LYING_DOWN)
 			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-				wound_icon_holder.icon_state = "[caste.caste_type]_rest_[health_threshold]"
+				new_icon_state = "[caste.caste_type]_rest_[health_threshold]"
 			else
-				wound_icon_holder.icon_state = "[caste.caste_type]_downed_[health_threshold]"
+				new_icon_state = "[caste.caste_type]_downed_[health_threshold]"
 		else if(!handle_special_state())
-			wound_icon_holder.icon_state = "[caste.caste_type]_walk_[health_threshold]"
+			new_icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
-			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
+			new_icon_state = handle_special_wound_states(health_threshold)
 	if(organ_removed)
-		wound_icon_holder.icon_state = "[caste.caste_type]_dissection"
+		new_icon_state = "[caste.caste_type]_dissection"
+
+	if(new_icon_state != wound_icon_holder.icon_state)
+		wound_icon_holder.icon_state = new_icon_state
 
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj

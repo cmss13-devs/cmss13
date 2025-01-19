@@ -508,6 +508,8 @@ Make sure their actual health updates immediately.*/
 	if(!gibbing)
 		med_hud_set_health()
 
+	update_wounds()
+
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)

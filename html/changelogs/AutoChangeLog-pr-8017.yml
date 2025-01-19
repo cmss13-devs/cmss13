@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Human Psychic Radiance now works as intended."
-  - bugfix: "Containment Cell consoles no longer have text overlayed on their sprites."

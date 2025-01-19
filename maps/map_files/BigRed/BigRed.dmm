@@ -776,7 +776,7 @@
 /area/bigredv2/outside/telecomm)
 "adc" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/head/det_hat,
+/obj/item/clothing/head/fedora,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "add" = (

@@ -741,7 +741,7 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
 		return
 
-	var/damage = rand(10, 20) * mob_size
+	var/damage = rand(10, 20) ** ((10 + mob_size) / 10)
 	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"), \
 					usr, SPAN_DANGER("You crash into [impact_turf] with a sickening noise!"))
 	apply_damage(damage * levels, BRUTE)

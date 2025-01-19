@@ -1,9 +1,8 @@
-import { useState } from 'react';
-
 import { useBackend } from '../backend';
 import {
   Box,
   Button,
+  Collapsible,
   Divider,
   Dropdown,
   Flex,
@@ -28,10 +27,10 @@ export const XenomorphExtractor = () => {
     is_processing,
   } = data;
   const dropdownOptions = categories;
-  const [selectedTab, setSelectedTab] = useState('NONE');
+  const [selectedTab, setSelectedTab] = useSharedState('NONE');
 
   return (
-    <Window width={850} height={800} theme="crtyellow">
+    <Window width={850} height={850} theme="crtyellow">
       <Window.Content scrollable>
         <Section>
           <Stack fill vertical>
@@ -71,8 +70,8 @@ export const XenomorphExtractor = () => {
             <NoticeBox notice>Biomass accepted. Ready to analyze.</NoticeBox>
           )}
         </Section>
-        <Section
-          title="Process Queue"
+        <Collapsible
+          title={'Process Queue'}
           buttons={
             <Button
               onClick={() => act('toggle_processing')}
@@ -83,35 +82,37 @@ export const XenomorphExtractor = () => {
             </Button>
           }
         >
-          <Flex direction={'column-reverse'}>
-            {print_queue === null ? (
-              <span>
-                <Box>Queue is empty</Box>
-              </span>
-            ) : (
-              print_queue.map((print_queue) => (
-                <>
-                  <Flex.Item key={print_queue.name}>
-                    <Box bold italic>
-                      {print_queue.name}
-                      <Button
-                        fluid
-                        onClick={() => act('stop_processing')}
-                        bold
-                        ml={120}
-                        top={'-5px'}
-                        textAlign={'center'}
-                      >
-                        Cancel
-                      </Button>
-                    </Box>
-                  </Flex.Item>
-                  <Divider />
-                </>
-              ))
-            )}
-          </Flex>
-        </Section>
+          <Section mx={3}>
+            <Flex direction={'column-reverse'}>
+              {print_queue === null ? (
+                <span>
+                  <Box>Queue is empty</Box>
+                </span>
+              ) : (
+                print_queue.map((print_queue) => (
+                  <>
+                    <Flex.Item key={print_queue.name}>
+                      <Box bold italic>
+                        {print_queue.name}
+                        <Button
+                          fluid
+                          onClick={() => act('stop_processing')}
+                          bold
+                          ml={120}
+                          top={'-5px'}
+                          textAlign={'center'}
+                        >
+                          Cancel
+                        </Button>
+                      </Box>
+                    </Flex.Item>
+                    <Divider />
+                  </>
+                ))
+              )}
+            </Flex>
+          </Section>
+        </Collapsible>
         <Divider />
         <Section title={<span> Select Technology to print.</span>}>
           <Box ml={1}>
@@ -119,6 +120,8 @@ export const XenomorphExtractor = () => {
               selected={selectedTab}
               options={dropdownOptions}
               onSelected={(value) => setSelectedTab(value)}
+              color={'black'}
+              dropdownTextColor="#ffbf00"
             />
           </Box>
           <Flex height="200%" direction="row">

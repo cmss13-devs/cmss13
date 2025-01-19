@@ -400,6 +400,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "hbarrel_a"
 	hud_offset_mod = -3
 
+/* RUCM CHANGE
 /obj/item/attachable/heavy_barrel/New()
 	..()
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
@@ -414,6 +415,7 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		damage_mod = BULLET_DAMAGE_MULT_TIER_6
 	..()
+*/
 
 /obj/item/attachable/compensator
 	name = "recoil compensator"

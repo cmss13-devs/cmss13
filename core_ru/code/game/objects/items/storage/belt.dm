@@ -193,3 +193,7 @@
 /obj/item/storage/belt/gun/xm52/on_stored_atom_del(atom/movable/item)
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm52))
 		magazines--
+
+/obj/item/storage/belt/marine/smartgunner/m56c/fill_preset_inventory()
+	new /obj/item/ammo_magazine/smartgun/m56c(src)
+	new /obj/item/ammo_magazine/smartgun/m56c(src)

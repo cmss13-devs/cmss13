@@ -143,7 +143,12 @@
 		far_sight = TRUE
 		if(user)
 			if(user.client)
+/*
 				user.client.change_view(8, src)
+*/
+//RUCM START
+				user.client.change_view(9, src)
+//RUCM END
 		START_PROCESSING(SSobj, src)
 	else
 		linked_smartgun = null

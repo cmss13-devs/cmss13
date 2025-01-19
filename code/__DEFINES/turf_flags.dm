@@ -6,6 +6,7 @@
 /// If a turf is a reserved turf
 #define RESERVATION_TURF (1<<2)
 #define TURF_TRANSPARENT (1<<3)
+#define TURF_NO_MULTIZ_SUPPORT (1<<4)
 
 //ChangeTurf options to change its behavior
 #define CHANGETURF_DEFER_CHANGE (1<<0)

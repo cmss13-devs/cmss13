@@ -229,10 +229,15 @@
 	var/turf/turf = SSmapping.get_turf_above(src)
 	if(turf)
 		turf.multiz_turf_new(src, DOWN)
+		if(!(turf.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
+			var/list/baseturfsold = list(/turf/open/openspace)
+			baseturfsold |= turf.baseturfs
+			turf.baseturfs = baseturfsold
+
 	turf = SSmapping.get_turf_below(src)
 	if(turf)
 		turf.multiz_turf_new(src, UP)
-		if(turf.turf_flags & TURF_MULTIZ && turf_flags & TURF_MULTIZ)
+		if(!(turf.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
 			var/list/baseturfsold = list(/turf/open/openspace)
 			baseturfsold |= baseturfs
 			baseturfs = baseturfsold

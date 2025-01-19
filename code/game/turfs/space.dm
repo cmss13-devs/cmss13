@@ -2,7 +2,7 @@
 	icon = 'icons/turf/floors/space.dmi'
 	name = "space"
 	icon_state = "0"
-	turf_flags = NO_FLAGS
+	turf_flags = TURF_NO_MULTIZ_SUPPORT
 	plane = PLANE_SPACE
 	layer = UNDER_TURF_LAYER
 	can_bloody = FALSE

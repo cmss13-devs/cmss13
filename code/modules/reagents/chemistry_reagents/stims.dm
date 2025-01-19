@@ -38,7 +38,7 @@
 	properties = list(
 		PROPERTY_MUSCLESTIMULATING = 40,
 		PROPERTY_PAINKILLING = 3,
-		PROPERTY_NUTRITIOUS = 1,
+		PROPERTY_NUTRITIOUS = 2,
 	)
 
 /datum/reagent/stimulant/brain_stimulant

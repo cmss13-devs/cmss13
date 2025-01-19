@@ -164,7 +164,6 @@
 #define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
 #define PROPERTY_HEMOSTATIC "hemostatic"
 #define PROPERTY_NERVESTIMULATING "nerve-stimulating"
-#define PROPERTY_ANTISTUN "antistun"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"
 #define PROPERTY_HEPATOPEUTIC "hepatopeutic"
@@ -208,6 +207,7 @@
 #define PROPERTY_RAVENING "ravening"
 #define PROPERTY_CURING "curing"
 #define PROPERTY_OMNIPOTENT "omnipotent"
+#define PROPERTY_ANTISTUN "antistun"
 #define PROPERTY_RADIUS "radius" // Fire related admin property
 #define PROPERTY_INTENSITY "intensity" // Fire related admin property
 #define PROPERTY_DURATION "duration" // Fire related admin property

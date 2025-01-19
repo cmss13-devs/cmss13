@@ -203,7 +203,6 @@
 	M.adjust_effect(potency*-1, PARALYZE)
 	M.adjust_effect(potency*-1, STUN)
 	M.adjust_effect(potency*-1, WEAKEN)
-	M.adjust_effect(-0.5*potency, STUN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)

@@ -769,6 +769,7 @@
 			return FALSE
 
 	if(victim.status_flags & XENO_HOST)
+		var/mob/living/carbon/human/human_victim = victim
 		if(victim.stat != DEAD) //Not dead yet.
 			to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
 			return FALSE
@@ -802,6 +803,7 @@
 		if(!check_plasma(200))
 			return FALSE
 		if(victim.status_flags & XENO_HOST)
+			var/mob/living/carbon/human/human_victim = victim
 			if(victim.stat != DEAD) //Not dead yet.
 				to_chat(src, SPAN_XENOWARNING("The host and child are still alive!"))
 				return FALSE

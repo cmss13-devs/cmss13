@@ -212,7 +212,8 @@
 		return FALSE
 
 	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
+		return
 
 	if(limb.status & LIMB_DESTROYED)
 		return FALSE

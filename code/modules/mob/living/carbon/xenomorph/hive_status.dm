@@ -938,7 +938,7 @@
 
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
 		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
 	if(length(totalXenos) <= 0)

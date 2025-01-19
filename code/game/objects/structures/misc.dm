@@ -332,6 +332,8 @@
 	
 	if(actual_turf)
 		mover.forceMove(actual_turf)
+		if(!(mover.flags_atom & DIRLOCK))
+			mover.setDir(direction == UP ? dir : REVERSE_DIR(dir))
 
 	return COMPONENT_CANCEL_MOVE
 

@@ -13,7 +13,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open/space/openspace
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "invisible"
-	turf_flags = NO_FLAGS
+	turf_flags = TURF_TRANSPARENT
 	baseturfs = /turf/open/openspace
 	antipierce = 0
 
@@ -32,17 +32,18 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open/space/openspace/ex_act(severity, explosion_direction)
 	return
 
-/turf/open/space/openspace/zPassIn(atom/movable/A, direction, turf/source)
-	if(direction == DOWN)
-		for(var/obj/contained_object in contents)
-			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
-				return FALSE
-		return TRUE
-	if(direction == UP)
-		for(var/obj/contained_object in contents)
-			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
-				return FALSE
-		return TRUE
+/turf/open/space/openspace/zPassIn(atom/movable/mover, direction, turf/source)
+	switch(direction)
+		if(DOWN)
+			for(var/obj/contained_object in contents)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+					return FALSE
+			return TRUE
+		if(UP)
+			for(var/obj/contained_object in contents)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
+					return FALSE
+			return TRUE
 	return FALSE
 
 /turf/open/space/openspace/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)
@@ -68,6 +69,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	icon_state = "invisible"
 	baseturfs = /turf/open/openspace
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	turf_flags = TURF_TRANSPARENT
 	antipierce = 0
 
 /turf/open/openspace/update_icon()
@@ -180,16 +182,17 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	zFall(movable)
 
 /turf/open/openspace/zPassIn(atom/movable/A, direction, turf/source)
-	if(direction == DOWN)
-		for(var/obj/contained_object in contents)
-			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
-				return FALSE
-		return TRUE
-	if(direction == UP)
-		for(var/obj/contained_object in contents)
-			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
-				return FALSE
-		return TRUE
+	switch(direction)
+		if(DOWN)
+			for(var/obj/contained_object in contents)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+					return FALSE
+			return TRUE
+		if(UP)
+			for(var/obj/contained_object in contents)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
+					return FALSE
+			return TRUE
 	return FALSE
 
 /turf/open/openspace/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)

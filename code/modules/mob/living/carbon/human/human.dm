@@ -1804,14 +1804,13 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
 		return
 
-	var/size_multiplyer = mob_size + 1
 	on_fall(TRUE)
 	if(can_paradrop() && levels > 2)
-		KnockDown(levels * size_multiplyer)
+		KnockDown(levels * mob_size)
 		to_chat(src, SPAN_DANGER("You almost land safely"))
 		return
 
-	var/damage = rand(10, 20) * size_multiplyer
+	var/damage = rand(10, 20) * mob_size
 	var/obj/limb/affecting
 
 	switch(pick(list("ankle","wrist","head","knee","elbow")))
@@ -1836,7 +1835,7 @@
 	else
 		to_chat(src, SPAN_DANGER("You land heavily!"))
 		apply_damage(damage, BRUTE)
-	KnockDown(levels * size_multiplyer)
+	KnockDown(levels * mob_size)
 
 	UpdateDamageIcon()
 	updatehealth()

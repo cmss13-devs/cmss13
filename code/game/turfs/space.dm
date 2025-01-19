@@ -48,16 +48,17 @@
 		turf.multiz_turf_new(src, UP)
 
 /turf/open/space/zPassIn(atom/movable/A, direction, turf/source)
-	if(direction == DOWN)
-		for(var/obj/contained_object in contents)
-			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
-				return FALSE
-		return TRUE
-	if(direction == UP)
-		for(var/obj/contained_object in contents)
-			if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
-				return FALSE
-		return TRUE
+	switch(direction)
+		if(DOWN)
+			for(var/obj/contained_object in contents)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+					return FALSE
+			return TRUE
+		if(UP)
+			for(var/obj/contained_object in contents)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
+					return FALSE
+			return TRUE
 	return FALSE
 
 /turf/open/space/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)

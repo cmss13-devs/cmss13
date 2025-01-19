@@ -741,12 +741,11 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
 		return
 
-	var/size_multiplyer = mob_size + 1
-	var/damage = rand(10, 20) * size_multiplyer
+	var/damage = rand(10, 20) * mob_size
 	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"), \
 					usr, SPAN_DANGER("You crash into [impact_turf] with a sickening noise!"))
 	apply_damage((damage * levels) ** 1.5, BRUTE)
-	KnockDown(levels * size_multiplyer)
+	KnockDown(levels * mob_size)
 	on_fall(TRUE)
 
 /mob/proc/on_fall(forced)

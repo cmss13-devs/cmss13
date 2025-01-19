@@ -10,11 +10,11 @@
 	Note that in all cases the neighbor is handled simply; this is usually the user's mob, in which case it is up to you
 	to check that the mob is not inside of something
 */
-/atom/proc/Adjacent(atom/neighbor) // basic inheritance, unused
+/atom/proc/Adjacent(atom/neighbor, ignore_zlevel_difference) // basic inheritance, unused
 	return FALSE
 
 // Not a sane use of the function and (for now) indicative of an error elsewhere
-/area/Adjacent(atom/neighbor)
+/area/Adjacent(atom/neighbor, ignore_zlevel_difference)
 	CRASH("Call to /area/Adjacent(), unimplemented proc")
 
 
@@ -25,11 +25,11 @@
 	* If you are diagonally adjacent, ensure you can pass through at least one of the mutually adjacent square.
 		* Passing through in this case ignores anything with the throwpass flag, such as tables, racks, and morgue trays.
 */
-/turf/Adjacent(atom/neighbor, atom/target = null, list/ignore_list)
+/turf/Adjacent(atom/neighbor, ignore_zlevel_difference, atom/target = null, list/ignore_list)
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
 		return TRUE
-	if(get_dist(src,T0) > 1 || z != T0.z)
+	if(get_dist(src,T0) > 1 || (!ignore_zlevel_difference && z != T0.z))
 		return FALSE
 
 	if(T0.x == x || T0.y == y)
@@ -78,7 +78,7 @@ Quick adjacency (to turf):
 	Note: Multiple-tile objects are created when the bound_width and bound_height are creater than the tile size.
 	This is not used in stock /tg/station currently.
 */
-/atom/movable/Adjacent(atom/neighbor)
+/atom/movable/Adjacent(atom/neighbor, ignore_zlevel_difference)
 	if(neighbor == loc)
 		return TRUE
 	if(!isturf(loc))
@@ -86,27 +86,27 @@ Quick adjacency (to turf):
 	for(var/turf/T in locs)
 		if(isnull(T))
 			continue
-		if(T.Adjacent(neighbor,src))
+		if(T.Adjacent(neighbor, ignore_zlevel_difference, src))
 			return TRUE
 	return FALSE
 
 // This is necessary for storage items not on your person.
-/obj/item/Adjacent(atom/neighbor, recurse = 1)
+/obj/item/Adjacent(atom/neighbor, ignore_zlevel_difference, recurse = 1)
 	if(neighbor == loc || (loc && neighbor == loc.loc))
 		return TRUE
 
 	// Internal storages have special relationships with the object they are connected to and we still want two depth adjacency for storages
 	if(istype(loc?.loc, /obj/item/storage/internal) && recurse > 0)
-		return loc.loc.Adjacent(neighbor, recurse)
+		return loc.loc.Adjacent(neighbor, ignore_zlevel_difference, recurse)
 
 	if(issurface(loc))
-		return loc.Adjacent(neighbor, recurse) //Surfaces don't count as storage depth.
+		return loc.Adjacent(neighbor, ignore_zlevel_difference, recurse) //Surfaces don't count as storage depth.
 	else if(istype(loc, /obj/item))
 		if(recurse > 0)
-			return loc.Adjacent(neighbor, recurse - 1)
+			return loc.Adjacent(neighbor, ignore_zlevel_difference, recurse - 1)
 		return FALSE
 	else if(isxeno(loc)) //Xenos don't count as storage depth.
-		return loc.Adjacent(neighbor, recurse)
+		return loc.Adjacent(neighbor, ignore_zlevel_difference, recurse)
 	return ..()
 
 /*
@@ -117,7 +117,7 @@ Quick adjacency (to turf):
 	This can be safely removed if border firedoors are ever moved to be on top of doors
 	so they can be interacted with without opening the door.
 */
-/obj/structure/machinery/door/Adjacent(atom/neighbor)
+/obj/structure/machinery/door/Adjacent(atom/neighbor, ignore_zlevel_difference)
 	var/obj/structure/machinery/door/firedoor/border_only/BOD = locate() in loc
 	if(BOD)
 		BOD.throwpass = 1 // allow click to pass
@@ -150,6 +150,9 @@ Quick adjacency (to turf):
 		else if( !border_only ) // dense, not on border, cannot pass over
 			return FALSE
 	return TRUE
+
+/turf/closed/Adjacent(atom/neighbor, ignore_zlevel_difference, atom/target = null, list/ignore_list)
+	. = ..(neighbor, TRUE)
 
 /*
  * handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers

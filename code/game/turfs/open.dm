@@ -152,12 +152,35 @@
 				. += "Well Done."
 
 //direction is direction of travel of A
-/turf/open/zPassIn(atom/movable/A, direction, turf/source)
-	if(direction == DOWN)
-		for(var/obj/O in contents)
-			if(O.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+/turf/open/zPassIn(atom/movable/mover, direction, turf/source)
+	switch(direction)
+		if(DOWN)
+			for(var/obj/O in contents)
+				if(O.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
+					return FALSE
+			return TRUE
+		if(UP)
+			var/fdir = get_dir(mover, src)
+			if (!fdir)
+				return TRUE
+
+			var/fd1 = fdir&(fdir-1) // X-component if fdir diagonal, 0 otherwise
+			var/fd2 = fdir - fd1 // Y-component if fdir diagonal, fdir otherwise
+			var/blocking_dir = BlockedPassDirs(mover, fdir)
+			var/obstacle
+			var/atom/A
+			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				mover.Collide(src)
 				return FALSE
-		return TRUE
+			for(obstacle in src) //Then, check atoms in the target turf
+				A = obstacle
+				if (!istype(A) || !A.can_block_movement)
+					continue
+				blocking_dir |= A.BlockedPassDirs(mover, fdir)
+				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					if(!mover.Collide(A))
+						return FALSE
+			return TRUE
 	return FALSE
 
 //direction is direction of travel of A

@@ -462,6 +462,7 @@
 /atom/movable/proc/onZImpact(turf/impacted_turf, levels, message = TRUE)
 	if(message)
 		visible_message(SPAN_DANGER("[src] crashes into [impacted_turf]!"))
+/* TODO (MULTIZ): Make something to deal with it, like teammates catches (CATCH ME THEN!) or damage dealing
 	var/atom/highest = impacted_turf
 	for(var/atom/hurt_atom as anything in impacted_turf.contents)
 		if(!hurt_atom.density)
@@ -471,3 +472,4 @@
 				highest = hurt_atom
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 	return TRUE
+*/

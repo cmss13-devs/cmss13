@@ -1,0 +1,31 @@
+{
+    "map_name": "USS Almayer",
+    "map_path": "map_files/USS_Almayer_MZ",
+    "map_file": "USS_Almayer_MZ.dmm",
+    "webmap_url": "Almayer",
+    "traits": [
+        {
+            "Marine Main Ship": true,
+            "Up": 1,
+            "Baseturf": "/turf/open/floor/plating"
+        },
+        {
+            "Marine Main Ship": true,
+            "Down": -1,
+            "Up": 1,
+            "Baseturf": "/turf/open/openspace"
+        },
+        {
+            "Marine Main Ship": true,
+            "Down": -1,
+            "Up": 1,
+            "Baseturf": "/turf/open/openspace"
+        },
+        {
+            "Marine Main Ship": true,
+            "Down": -1,
+            "Baseturf": "/turf/open/openspace"
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/USS_Almayer_MZ/"
+}

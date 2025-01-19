@@ -261,8 +261,12 @@
 	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+	WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	)
 	specialty = "USCM officer"
-	flags_atom = FPRINT
+	flags_atom = FPRINT && NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/general
 	name = "general uniform"

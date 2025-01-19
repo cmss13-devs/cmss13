@@ -179,7 +179,7 @@
 	)
 	flags = REAGENT_TYPE_MEDICAL
 
-/datum/reagent/medical/neuraline //injected by neurostimulator implant
+/datum/reagent/medical/neuraline //injected by neurostimulator implant, should be unobtainable outside of injectors.
 	name = "Neuraline"
 	id = "neuraline"
 	description = "A chemical cocktail tailored to enhance or dampen specific neural processes."
@@ -189,7 +189,7 @@
 	overdose = 2
 	overdose_critical = 3
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_NERVESTIMULATING = 5)
+	properties = list(PROPERTY_ANTISTUN = 5)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
 /datum/reagent/medical/arithrazine

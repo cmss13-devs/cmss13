@@ -38,6 +38,7 @@
 	properties = list(
 		PROPERTY_MUSCLESTIMULATING = 40,
 		PROPERTY_PAINKILLING = 3,
+		PROPERTY_NUTRITIOUS = 1,
 	)
 
 /datum/reagent/stimulant/brain_stimulant
@@ -46,7 +47,7 @@
 	description = "A highly experimental CNS stimulant."
 	color = "#a800ff"
 	properties = list(
-		PROPERTY_NERVESTIMULATING = 30,
+		PROPERTY_ANTISTUN = 30,
 		PROPERTY_PAINKILLING = 6,
 		PROPERTY_NEUROSHIELDING = 13,
 	)
@@ -63,7 +64,7 @@
 		During the metabolism of this drug, dysfunctional organs will work normally."}
 	color = "#00ffa8"
 	properties = list(
-		PROPERTY_NERVESTIMULATING = 2,
+		PROPERTY_ANTISTUN = 2,
 		PROPERTY_MUSCLESTIMULATING = 2,
 		PROPERTY_PAINKILLING = 100,
 		PROPERTY_BONEMENDING = 100,

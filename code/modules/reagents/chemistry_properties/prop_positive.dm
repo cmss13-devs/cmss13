@@ -163,12 +163,13 @@
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
-	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
+	description = "Increases neuron communication speed across synapses resulting in improved reaction time and awareness, but also decreasing muscular control."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, potency = 1)
+	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_VVLOW * potency
 	M.adjust_effect(potency*-1, PARALYZE)
 	M.adjust_effect(potency*-1, STUN)
 	M.adjust_effect(potency*-1, WEAKEN)
@@ -193,17 +194,35 @@
 		M.set_effect(0, STUN)
 		M.set_effect(0, DAZE)
 
+/// Unobtainable version of NST for stims, no side effects.
+/datum/chem_property/positive/nervestimulating/antistun
+	name = PROPERTY_ANTISTUN
+	rarity = PROPERTY_DISABLED
+
+/datum/chem_property/positive/nervestimulating/antistun/process(mob/living/M, potency = 1)
+	M.adjust_effect(potency*-1, PARALYZE)
+	M.adjust_effect(potency*-1, STUN)
+	M.adjust_effect(potency*-1, WEAKEN)
+	M.adjust_effect(-0.5*potency, STUN)
+	if(potency > CREATE_MAX_TIER_1)
+		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
+		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
-	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
+	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength and hunger. High doses might exhaust the cardiac muscles."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	M.nutrition = max (0, M.nutrition - potency * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 

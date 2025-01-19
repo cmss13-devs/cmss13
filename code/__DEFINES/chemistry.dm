@@ -164,6 +164,7 @@
 #define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
 #define PROPERTY_HEMOSTATIC "hemostatic"
 #define PROPERTY_NERVESTIMULATING "nerve-stimulating"
+#define PROPERTY_ANTISTUN "antistun"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"
 #define PROPERTY_HEPATOPEUTIC "hepatopeutic"

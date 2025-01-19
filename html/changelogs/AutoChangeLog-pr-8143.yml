@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "Added search bars to stickyban panel, unban panel, view notes, view other notes, antagonists panel"
+  - ui: "Fixed follow button in antagonists panel"
+  - ui: "Fixed clear button not refreshing filters for old player panel, and view variables"

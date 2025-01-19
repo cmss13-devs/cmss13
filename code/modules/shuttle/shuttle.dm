@@ -498,7 +498,7 @@
 
 /// Requests the proper sound ambience to play in the shuttle based on its state
 /obj/docking_port/mobile/proc/get_sound_ambience()
-	if(in_flight())
+	if(in_flight() && mode != SHUTTLE_PREARRIVAL)
 		return ambience_flight
 	return ambience_idle
 
@@ -627,13 +627,14 @@
 	var/obj/docking_port/stationary/S = get_docked()
 	S?.on_dock_ignition(src)
 	if(ignition_sound)
-		playsound(return_center_turf(), ignition_sound, 60, 0, falloff=4)
+		playsound(return_center_turf(), ignition_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_AMB)
 	return
 
 /obj/docking_port/mobile/proc/on_prearrival()
 	if(destination)
 		destination.on_prearrival(src)
-	playsound(return_center_turf(), landing_sound, 60, 0)
+	if(!istype(src, /obj/docking_port/mobile/marine_dropship))
+		playsound(return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_AMB)
 	return
 
 /obj/docking_port/mobile/proc/on_crash()
@@ -1028,6 +1029,7 @@
 	return cooldown_coeff
 
 /obj/docking_port/mobile/proc/in_flight()
+	/*
 	switch(mode)
 		if(SHUTTLE_CALL,SHUTTLE_RECALL)
 			return TRUE
@@ -1035,6 +1037,11 @@
 			return FALSE
 		else
 			return FALSE // hmm
+	*/
+	// A replacement way a part of the logic for dropship airlocks (for when a shuttle is idle but in transit)
+	if(istype(get_docked(), /obj/docking_port/stationary/transit))
+		return TRUE
+	return FALSE
 
 /obj/docking_port/mobile/emergency/in_flight()
 	switch(mode)

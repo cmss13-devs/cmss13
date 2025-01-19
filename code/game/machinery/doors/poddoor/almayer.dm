@@ -72,3 +72,36 @@
 	density = TRUE
 	opacity = TRUE
 	vehicle_resistant = TRUE
+
+/obj/structure/machinery/door/poddoor/almayer/airlock
+	density = TRUE
+	opacity = TRUE
+	unacidable = TRUE
+	var/linked_inner_dropship_airlock_id = "generic"
+	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner = null
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/LateInitialize()
+	for(var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_airlock in GLOB.dropship_airlock_docking_ports)
+		if(linked_inner_dropship_airlock_id == inner_airlock.dropship_airlock_id)
+			linked_inner = inner_airlock
+			linked_inner.poddoors += src
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/Destroy()
+	if(linked_inner)
+		linked_inner.poddoors -= src
+	. = ..()
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/open()
+	if(linked_inner?.open_outer_airlock)
+		return
+	. = ..()
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/almayer_one
+	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/almayer_two
+	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO

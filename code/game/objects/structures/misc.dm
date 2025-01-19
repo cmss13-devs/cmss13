@@ -323,11 +323,15 @@
 	if(direction == UP && get_dir(src, newLoc) != dir || direction == DOWN && get_dir(src, newLoc) != REVERSE_DIR(dir))
 		return
 
-	var/z_diff = direction == UP ? 1 : -1
 	var/turf/target_turf = get_step(src, direction == UP ? dir : REVERSE_DIR(dir))
-	var/turf/above_or_below = locate(target_turf.x, target_turf.y, target_turf.z + z_diff)
+	var/turf/actual_turf
+	if(direction == UP)
+		actual_turf = SSmapping.get_turf_above(target_turf)
+	else
+		actual_turf = SSmapping.get_turf_below(target_turf)
 	
-	mover.forceMove(above_or_below)
+	if(actual_turf)
+		mover.forceMove(actual_turf)
 
 	return COMPONENT_CANCEL_MOVE
 

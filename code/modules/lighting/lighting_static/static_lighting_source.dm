@@ -234,7 +234,7 @@
 				corners[T.lighting_corner_NW] = 0
 			turfs += T
 
-			var/turf/above = locate(T.x, T.y, T.z + 1)
+			var/turf/above = SSmapping.get_turf_above(T)
 
 			while(above && istype(above, /turf/open_space))
 				if (!above.lighting_corners_initialised)
@@ -244,11 +244,11 @@
 				corners[above.lighting_corner_SW] = 0
 				corners[above.lighting_corner_NW] = 0
 
-				above = locate(above.x, above.y, above.z + 1)
+				above = SSmapping.get_turf_above(above)
 
 			turfs += above
 
-			var/turf/below = locate(T.x, T.y, T.z - 1)
+			var/turf/below = SSmapping.get_turf_below(T)
 			var/turf/previous = T
 
 			while(below && istype(previous, /turf/open_space))
@@ -260,7 +260,7 @@
 				corners[below.lighting_corner_NW] = 0
 
 				previous = below
-				below = locate(below.x, below.y, below.z + 1)
+				below = SSmapping.get_turf_below(below)
 
 		source_turf.luminosity = oldlum
 

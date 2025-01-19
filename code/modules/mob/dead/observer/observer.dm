@@ -660,12 +660,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
 		return
 
-	var/static/list/allowed_ztraits = list(ZTRAIT_GROUND)
-	// Only allow multiz travel in maps which might have more than one z level to prevent ghosts from going out of bounds
-	if(!((z+1) in SSmapping.levels_by_any_trait(allowed_ztraits)))
-		return
+	var/turf/above = SSmapping.get_turf_above(get_turf(src))
 
-	usr.forceMove(locate(x, y, z+1))
+	if(above)
+		usr.forceMove(above)
 
 /mob/dead/observer/verb/teleport_z_down()
 	set category = "Ghost"
@@ -676,12 +674,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
 		return
 
-	var/static/list/allowed_ztraits = list(ZTRAIT_GROUND)
-	// Only allow multiz travel in maps which might have more than one z level to prevent ghosts from going out of bounds
-	if(!((z-1) in SSmapping.levels_by_any_trait(allowed_ztraits)))
-		return
+	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 
-	usr.forceMove(locate(x, y, z-1))
+	if(below)
+		usr.forceMove(below)
 
 /mob/dead/observer/verb/dead_teleport_area()
 	set category = "Ghost"

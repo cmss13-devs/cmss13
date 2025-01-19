@@ -7,28 +7,17 @@
 	attack_hand(user)
 
 /turf/closed/attack_hand(mob/user)
-	var/turf/above_current = locate(x, y, z + 1)
-	var/turf/above_user = locate(user.x, user.y, user.z + 1)
-	var/datum/space_level/original_level = SSmapping.get_level(z)
+	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
+	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
 
-	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space))
+	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 		return
 
-	var/datum/space_level/above_level = SSmapping.get_level(above_current.z)
-	for(var/trait in original_level.traits)
-		if(!(trait in above_level.traits))
-			return
-
 	while(istype(above_current, /turf/closed))
-		above_current = locate(above_current.x, above_current.y, above_current.z+1)
-		above_user = locate(above_user.x, above_user.y, above_user.z+1)
+		above_current = SSmapping.get_turf_above(get_turf(above_current))
+		above_user = SSmapping.get_turf_above(get_turf(above_user))
 
-		above_level = SSmapping.get_level(above_current.z)
-		for(var/trait in original_level.traits)
-			if(!(trait in above_level.traits))
-				return
-
-		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space))
+		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 			return
 
 	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\

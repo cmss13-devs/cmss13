@@ -82,11 +82,22 @@
 	var/ground_z = levels_by_trait(ZTRAIT_GROUND)[1]
 	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), ground_z)
 
-/datum/controller/subsystem/mapping/proc/same_z_traits(z1, z2)
-	var/datum/space_level/first_z = SSmapping.get_level(z1)
-	var/datum/space_level/second_z = SSmapping.get_level(z2)
-	for(var/trait in first_z.traits)
-		if(!(trait in second_z.traits))
+// Returns true if they are on the same map if the map is multiz
+/datum/controller/subsystem/mapping/proc/same_z_map(z1, z2)
+	if(z1 == z2)
+		return TRUE
+	
+	var/diff = z2 - z1
+	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN  
+
+	for(var/step in 1 to abs(diff))
+		if(!level_trait(z1, direction))
 			return FALSE
 
-	return TRUE
+		z1 += diff > 0 ? 1 : -1
+
+		if(z1 == z2)
+			return TRUE
+
+	return FALSE 
+		

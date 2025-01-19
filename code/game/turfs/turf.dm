@@ -84,8 +84,8 @@
 
 	levelupdate()
 
-	var/turf/above = locate(x, y, z+1)
-	var/turf/below = locate(x, y, z-1)
+	var/turf/above = SSmapping.get_turf_above(src)
+	var/turf/below = SSmapping.get_turf_below(src)
 
 	if(above)
 		above.multiz_new(dir=DOWN)
@@ -131,8 +131,8 @@
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		C.cleanup_cleanable()
 
-	var/turf/above = locate(x, y, z+1)
-	var/turf/below = locate(x, y, z-1)
+	var/turf/above = SSmapping.get_turf_above(src)
+	var/turf/below = SSmapping.get_turf_below(src)
 	if(above)
 		above.multiz_del(dir=DOWN)
 	

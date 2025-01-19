@@ -55,7 +55,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	attack_hand(user)
 
 /turf/open_space/attack_hand(mob/user)
-	var/turf/current_turf = locate(x, y, z)
+	var/turf/current_turf = get_turf(src)
 
 	if(istype(current_turf, /turf/open_space))
 		user.visible_message(SPAN_WARNING("[user] starts climbing down."),\
@@ -68,9 +68,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		user.visible_message(SPAN_WARNING("[user] climbs down."),\
 			SPAN_WARNING("You climb down."))
 
-		var/turf/below = locate(x, y, z-1)
+		var/turf/below = SSmapping.get_turf_below(current_turf)
 		while(istype(below, /turf/open_space))
-			below = locate(x, y, z-1)
+			below = SSmapping.get_turf_below(below)
 
 		user.forceMove(below)
 		return

@@ -31,6 +31,7 @@ GLOBAL_DATUM_INIT(openspace_shadow_one_for_all, /atom/movable/openspace_backdrop
 
 /turf/open/space/openspace/LateInitialize()
 	. = ..()
+	vis_contents += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
 	handle_transpare_turf()
 
 /turf/open/space/openspace/ex_act(severity, explosion_direction)
@@ -119,6 +120,7 @@ GLOBAL_DATUM_INIT(openspace_shadow_one_for_all, /atom/movable/openspace_backdrop
 /turf/open/openspace/LateInitialize()
 	SHOULD_CALL_PARENT(FALSE)
 	multiz_turfs()
+	vis_contents += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
 	handle_transpare_turf()
 
 /turf/open/openspace/attackby(obj/item/using_obj, mob/user)

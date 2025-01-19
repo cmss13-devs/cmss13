@@ -320,4 +320,3 @@
 	desc = "A pamphlet used to quickly impart vital knowledge of how to shoot big guns and spot for them."
 	icon_state = "pamphlet_vulture"
 	trait_to_give = TRAIT_VULTURE_USER
-

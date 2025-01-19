@@ -174,15 +174,30 @@
 
 	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
 	vamp.rush_target_ref = WEAKREF(carbon_target)
-
+	RegisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(rushing_turf))
 	. = ..(carbon_target)
 
 	if(!.)
 		vamp.rush_target_ref = null
+		UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
 		return
 
 	if(xeno.can_not_harm(carbon_target))
 		xeno.emote("needshelp")
+
+/datum/action/xeno_action/activable/pounce/rush/proc/rushing_turf(mob/movable_mob, turf/new_loc)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	if(!vamp.rush_target_ref)
+		return
+
+	var/mob/living/target = vamp.rush_target_ref.resolve()
+	if(!target)
+		return
+
+	if(target in new_loc) //don't wanna jump on top of them
+		return COMPONENT_CANCEL_MOVE
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //rush effects
 	var/mob/living/carbon/target = living_target
@@ -200,6 +215,7 @@
 /datum/action/xeno_action/activable/pounce/rush/on_end_pounce()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
 	if(!vamp.rush_target_ref)
 		return
 

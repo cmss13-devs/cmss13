@@ -46,7 +46,7 @@
 // General effects
 	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
-	affected_mob.make_dizzy(12)
+	affected_mob.make_dizzy(8)
 	for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
 		affected_mob.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 

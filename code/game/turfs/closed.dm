@@ -13,6 +13,11 @@
 		to_chat(user, SPAN_WARNING("There nowhere to go"))
 		return
 
+	// For now, later if special lader too much, we can do something easier
+	if(!istype(user, /mob/living/carbon/xenomorph))
+		to_chat(user, SPAN_WARNING("You are not hero!"))
+		return
+
 	if(istype(above_current, /turf/closed))
 		var/climb_distance = 1
 		if(istype(user, /mob/living/carbon/xenomorph) && user.mob_size < MOB_SIZE_XENO_SMALL)
@@ -35,7 +40,7 @@
 	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
 		SPAN_WARNING("You start climbing up the \the [src]."))
 
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 

@@ -308,3 +308,21 @@
   - bugfix: Fixed eslint not checking jsx files
   Nomoresolvalou, Thwomper:
   - imageadd: Added a new predator mask and mask attachment
+2025-01-19:
+  Blundir:
+  - rscadd: synth reset key no longer has medical skillock and has a hint to it being
+      engi skill locked in description
+  - balance: change synth key skill level from engi to trained (you can use key after
+      reading engi pamphlet)
+  - bugfix: fixed wl check on UPP synth not working
+  Git-Nivrak:
+  - code_imp: Xeno wounds now update every time they take damage
+  cuberound:
+  - bugfix: UPP abovehead text respects squad color
+  private-tristan:
+  - balance: Flaming Shrapnel now has 20 AP (from 50)
+  - bugfix: OT special shrapnel is now properly affected by the cap, meaning that
+      you can only have 16 shrapnel (from 32)
+  realforest2001:
+  - rscadd: USCM Synthetics now have an enlisted rank. (Master Sergeant and Master
+      Gunnery Sergeant)

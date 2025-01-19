@@ -353,7 +353,7 @@
 		return
 
 	if(byond_version < 516)
-		to_chat(src, SPAN_WARNING("You can only use this on 515!"))
+		to_chat(src, SPAN_WARNING("You can only use this on 516!"))
 		return
 
 	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))

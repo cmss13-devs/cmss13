@@ -257,10 +257,7 @@ const Misc = (props) => {
         </LabeledList.Item>
         <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
       </LabeledList>
-      {implants ||
-      hugged ||
-      core_fracture ||
-      (lung_ruptured && bodyscanner) ? (
+      {implants || hugged || core_fracture || (lung_ruptured && bodyscanner) ? (
         <Divider />
       ) : null}
       {implants && detail_level !== 1 ? (
@@ -338,7 +335,8 @@ const MedicalAdvice = (props) => {
           </Stack.Item>
         ))}
       </Stack>
-    </Section>);
+    </Section>
+  );
 };
 
 const ScannerChems = (props) => {

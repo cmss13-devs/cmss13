@@ -140,7 +140,7 @@
 	inertial_drift(arrived)
 
 	if(SSticker.mode)
-		if(arrived.z > 6)
+		if(arrived.z == 1)
 			return
 
 		if(arrived.x <= TRANSITIONEDGE || arrived.x >= (world.maxx - TRANSITIONEDGE - 1) || arrived.y <= TRANSITIONEDGE || arrived.y >= (world.maxy - TRANSITIONEDGE - 1))

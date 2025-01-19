@@ -36,10 +36,20 @@
 	plane = OPENSPACE_BACKDROP_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_MULTIPLY
-	alpha = 255
 
-/atom/movable/screen/plane_master/openspace_backdrop/Initialize(mapload)
+///Indicate when above is open in multi-z
+/atom/movable/screen/plane_master/openspace_shadow
+	name = "open space shadow plane master"
+	plane = OPENSPACE_SHADOW_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_GAME
+
+/atom/movable/screen/plane_master/openspace_backlit/Initialize(mapload)
 	. = ..()
+	add_filter("first_stage", 1, drop_shadow_filter(color = "#ffffffaa", size = -5))
+	add_filter("second_stage", 2, drop_shadow_filter(color = "#ffffffaa", size = -10))
+	add_filter("third_stage", 3, drop_shadow_filter(color = "#ffffffaa", size = -15))
 
 ///For any transparent multi-z tiles we want to render
 /atom/movable/screen/plane_master/transparent

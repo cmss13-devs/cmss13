@@ -142,6 +142,13 @@
 	update_icon()
 
 /turf/Destroy(force)
+	var/turf/T = SSmapping.get_turf_above(src)
+	if(T)
+		T.multiz_turf_del(src, DOWN)
+	T = SSmapping.get_turf_below(src)
+	if(T)
+		T.multiz_turf_del(src, UP)
+
 	if(hybrid_lights_affecting)
 		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
 			LAZYREMOVE(mask.affecting_turfs, src)
@@ -151,12 +158,6 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
-	var/turf/T = SSmapping.get_turf_above(src)
-	if(T)
-		T.multiz_turf_del(src, DOWN)
-	T = SSmapping.get_turf_below(src)
-	if(T)
-		T.multiz_turf_del(src, UP)
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		C.cleanup_cleanable()
@@ -211,33 +212,37 @@
 /turf/proc/on_change_area(area/old_area, area/new_area)
 	transfer_area_lighting(old_area, new_area)
 
-/turf/proc/multiz_turf_del(turf/T, dir)
+/turf/proc/multiz_turf_del(turf/source, direction)
 	if(turf_flags & TURF_TRANSPARENT)
-		if(dir != DOWN)
-			return
-		update_multi_z()
-	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
+		if(direction == DOWN)
+			update_multi_z()
+	if(direction == UP && !(source.turf_flags & TURF_TRANSPARENT) && !(turf_flags & TURF_TRANSPARENT))
+		vis_contents -= GLOB.openspace_shadow_one_for_all
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, source, direction)
 
-/turf/proc/multiz_turf_new(turf/T, dir)
+/turf/proc/multiz_turf_new(turf/source, direction)
 	if(turf_flags & TURF_TRANSPARENT)
-		if(dir != DOWN)
-			return
-		update_multi_z()
-	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
+		if(direction == DOWN)
+			update_multi_z()
+	if(direction == UP && !(source.turf_flags & TURF_TRANSPARENT) && !(turf_flags & TURF_TRANSPARENT))
+		vis_contents |= GLOB.openspace_shadow_one_for_all
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, source, direction)
 
 /turf/proc/multiz_turfs()
-	var/turf/turf = SSmapping.get_turf_above(src)
-	if(turf)
-		turf.multiz_turf_new(src, DOWN)
-		if(!(turf.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
+	var/turf/turf_inform = SSmapping.get_turf_above(src)
+	if(turf_inform)
+		turf_inform.multiz_turf_new(src, DOWN)
+		if(!(turf_inform.turf_flags & TURF_TRANSPARENT) && !(turf_flags & TURF_TRANSPARENT))
+			vis_contents |= GLOB.openspace_shadow_one_for_all
+		if(!(turf_inform.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
 			var/list/baseturfsold = list(/turf/open/openspace)
-			baseturfsold |= turf.baseturfs
-			turf.baseturfs = baseturfsold
+			baseturfsold |= turf_inform.baseturfs
+			turf_inform.baseturfs = baseturfsold
 
-	turf = SSmapping.get_turf_below(src)
-	if(turf)
-		turf.multiz_turf_new(src, UP)
-		if(!(turf.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
+	turf_inform = SSmapping.get_turf_below(src)
+	if(turf_inform)
+		turf_inform.multiz_turf_new(src, UP)
+		if(!(turf_inform.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
 			var/list/baseturfsold = list(/turf/open/openspace)
 			baseturfsold |= baseturfs
 			baseturfs = baseturfsold
@@ -1051,22 +1056,17 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	plane = TRANSPARENT_FLOOR_PLANE
 	vis_contents += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
 
-	var/turf/below_turf = below()
+	var/turf/below_turf = get_step_multiz(src, DOWN)
 	if(below_turf)
 		vis_contents += below_turf
 	update_multi_z()
 
 ///Updates the viscontents or underlays below this tile.
 /turf/proc/update_multi_z()
-	var/turf/below_turf = below()
+	var/turf/below_turf = get_step_multiz(src, DOWN)
 	if(!below_turf)
 		vis_contents.Cut()
 		var/turf/path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
-		if(!ispath(path))
-			path = text2path(path)
-			if(!ispath(path))
-				warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
-				path = /turf/open/space
 		var/mutable_appearance/underlay_appearance = mutable_appearance(initial(path.icon), initial(path.icon_state), layer = TURF_LAYER-0.02, plane = PLANE_SPACE)
 		underlay_appearance.appearance_flags = RESET_ALPHA | RESET_COLOR
 		underlays += underlay_appearance

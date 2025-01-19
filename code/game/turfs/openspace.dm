@@ -1,4 +1,5 @@
 GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdrop, new)
+GLOBAL_DATUM_INIT(openspace_shadow_one_for_all, /atom/movable/openspace_backdrop/shadow, new)
 
 /atom/movable/openspace_backdrop
 	icon = 'icons/turf/open_space.dmi'
@@ -7,8 +8,11 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	anchored = TRUE
 	plane = OPENSPACE_BACKDROP_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	vis_flags = VIS_INHERIT_PLANE
-	alpha = 150
+	vis_flags = NO_FLAGS
+
+/atom/movable/openspace_backdrop/shadow
+	name = "openspace_shadow"
+	plane = OPENSPACE_SHADOW_PLANE
 
 /turf/open/space/openspace
 	icon = 'icons/turf/open_space.dmi'

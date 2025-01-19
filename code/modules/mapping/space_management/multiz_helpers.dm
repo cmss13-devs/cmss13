@@ -15,23 +15,17 @@
 	if(us.z == them.z)
 		return get_dir(us, them)
 	else
-		var/turf/T = us.above()
+		var/turf/T = get_step_multiz(us, UP)
 		var/dir = NONE
 		if(T && (T.z == them.z))
 			dir = UP
 		else
-			T = us.below()
+			T = get_step_multiz(us, DOWN)
 			if(T && (T.z == them.z))
 				dir = DOWN
 			else
 				return get_dir(us, them)
 		return (dir | get_dir(us, them))
-
-/turf/proc/above()
-	return get_step_multiz(src, UP)
-
-/turf/proc/below()
-	return get_step_multiz(src, DOWN)
 
 /proc/get_lowest_turf(turf/us)
 	var/next = SSmapping.get_turf_below(us)

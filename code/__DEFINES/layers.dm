@@ -209,11 +209,13 @@
 
 #define PLANE_SPACE -9
 
-#define TRANSPARENT_FLOOR_PLANE -6
-#define OPENSPACE_BACKDROP_PLANE -5 //Black square just over openspace plane to guaranteed cover all in openspace turf
-
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
-#define FLOOR_PLANE -7
+#define FLOOR_PLANE -8
+
+#define TRANSPARENT_FLOOR_PLANE -7
+#define OPENSPACE_BACKDROP_PLANE -6 //Black square just over openspace plane to guaranteed cover all in openspace turf
+#define OPENSPACE_SHADOW_PLANE -5
+
 /// Game Plane, where most of the game objects reside
 #define GAME_PLANE -4
 /// Above Game Plane. For things which are above game objects, but below screen effects.

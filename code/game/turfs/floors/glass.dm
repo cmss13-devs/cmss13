@@ -6,6 +6,7 @@
 	base_icon = "glass-0"
 	special_icon = TRUE
 	antipierce = 1
+	turf_flags = TURF_TRANSPARENT
 	baseturfs = /turf/open/openspace
 	plating_type = null
 
@@ -15,7 +16,6 @@
 	var/health = 100
 
 /turf/open/floor/glass/Initialize(mapload)
-	turf_flags |= TURF_TRANSPARENT
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 

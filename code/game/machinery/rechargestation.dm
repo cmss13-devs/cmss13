@@ -118,8 +118,8 @@
 	return
 
 /obj/structure/machinery/recharge_station/inoperable(additional_flags = 0)
-    . = ..(additional_flags)
-    return (. && !current_internal_charge)
+	. = ..(additional_flags)
+	return (. && !current_internal_charge)
 
 /obj/structure/machinery/recharge_station/emp_act(severity)
 	. = ..()

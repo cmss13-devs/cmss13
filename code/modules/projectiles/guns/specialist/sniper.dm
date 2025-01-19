@@ -101,7 +101,7 @@
 		return
 
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
-	if(world.time < sniper_rifle.aimed_shot_cooldown)
+	if(world.time < sniper_rifle.aimed_shot_cooldown || !sniper_rifle.able_to_fire(human))
 		return
 
 	if(!check_can_use(target))

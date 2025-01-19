@@ -18,6 +18,43 @@ const sectionWidth = 35;
 export const HealthScan = (props) => {
   const { act, data } = useBackend();
   const {
+    detail_level,
+    species,
+    has_chemicals,
+    diseases,
+    advice,
+    limbs_damaged,
+    damaged_organs,
+  } = data;
+
+  const bodyscanner = detail_level >= 1;
+  const Synthetic = species === 'Synthetic';
+  const theme = Synthetic ? 'hackerman' : bodyscanner ? 'ntos' : 'default';
+
+  return (
+    <Window width={862} height={bodyscanner ? 700 : 600} theme={theme}>
+      <Window.Content scrollable>
+        <Stack>
+          <Stack.Item>
+            <Patient />
+            {has_chemicals ? <ScannerChems /> : null}
+            <Misc />
+            {diseases ? <Diseases /> : null}
+            {advice ? <MedicalAdvice /> : null}
+          </Stack.Item>
+          <Stack.Item>
+            {limbs_damaged ? <ScannerLimbs /> : null}
+            {damaged_organs?.length && bodyscanner ? <ScannerOrgans /> : null}
+          </Stack.Item>
+        </Stack>
+      </Window.Content>
+    </Window>
+  );
+};
+
+const Patient = (props) => {
+  const { act, data } = useBackend();
+  const {
     patient_mob,
     patient,
     dead,
@@ -53,16 +90,6 @@ export const HealthScan = (props) => {
     holocard,
   } = data;
 
-  const bloodpct = blood_amount / 560;
-
-  const healthanalyser = detail_level < 1;
-  const bodyscanner = detail_level >= 1;
-  const ghostscan = detail_level >= 2;
-
-  const Synthetic = species === 'Synthetic';
-
-  const theme = Synthetic ? 'hackerman' : bodyscanner ? 'ntos' : 'default';
-
   let holocard_message;
   if (holocard === 'red') {
     holocard_message = 'Patient needs life-saving treatment.';
@@ -75,224 +102,243 @@ export const HealthScan = (props) => {
   } else {
     holocard_message = 'Patient has no active holocard.';
   }
+
+  const ghostscan = detail_level >= 2;
+
   return (
-    <Window width={862} height={bodyscanner ? 700 : 600} theme={theme}>
-      <Window.Content scrollable>
-        <Stack>
-          <Stack.Item>
-            <Section title={'Patient: ' + patient} maxWidth={sectionWidth}>
-              {hugged && ghostscan ? (
-                <NoticeBox danger>
-                  Patient has been implanted with an alien embryo!
-                </NoticeBox>
-              ) : null}
-              {dead ? <NoticeBox danger>Patient is deceased!</NoticeBox> : null}
-              {ssd ? (
-                <NoticeBox warning color="grey">
-                  {ssd}
-                </NoticeBox>
-              ) : null}
-              <LabeledList>
-                <LabeledList.Item label="Health">
-                  {health >= 0 ? (
-                    <ProgressBar
-                      value={health / 100}
-                      ranges={{
-                        good: [0.7, Infinity],
-                        average: [0.2, 0.7],
-                        bad: [-Infinity, 0.2],
-                      }}
-                    >
-                      {health}% healthy
-                    </ProgressBar>
-                  ) : (
-                    <ProgressBar
-                      value={1 + health / 100}
-                      ranges={{
-                        bad: [-Infinity, Infinity],
-                      }}
-                    >
-                      {health}% healthy
-                    </ProgressBar>
-                  )}
-                </LabeledList.Item>
-                {dead ? (
-                  <LabeledList.Item label="Condition">
-                    <Box color={permadead ? 'red' : 'green'} bold={1}>
-                      {permadead
-                        ? heart_broken
-                          ? 'Myocardial rupture, surgical intervention required'
-                          : 'Permanently deceased'
-                        : Synthetic
-                          ? 'Central power system shutdown, reboot with a reset key possible'
-                          : 'Cardiac arrest, defibrillation possible'}
-                    </Box>
-                  </LabeledList.Item>
-                ) : null}
-                <LabeledList.Item label="Damage">
-                  <Box inline>
-                    <ProgressBar>
-                      Brute:{' '}
-                      <Box inline bold color={'red'}>
-                        {total_brute}
-                      </Box>
-                    </ProgressBar>
-                  </Box>
-                  <Box inline width={'5px'} />
-                  <Box inline>
-                    <ProgressBar>
-                      Burn:{' '}
-                      <Box inline bold color={'#ffb833'}>
-                        {total_burn}
-                      </Box>
-                    </ProgressBar>
-                  </Box>
-                  <Box inline width={'5px'} />
-                  <Box inline>
-                    <ProgressBar>
-                      Toxin:{' '}
-                      <Box inline bold color={'green'}>
-                        {toxin}
-                      </Box>
-                    </ProgressBar>
-                  </Box>
-                  <Box inline width={'5px'} />
-                  <Box inline>
-                    <ProgressBar>
-                      Oxygen:{' '}
-                      <Box inline bold color={'blue'}>
-                        {oxy}
-                      </Box>
-                    </ProgressBar>
-                  </Box>
-                  <Box inline width={'5px'} />
-                  {!!clone && (
-                    <Box inline>
-                      <ProgressBar>
-                        Clone:{' '}
-                        <Box inline color={'teal'}>
-                          {clone}
-                        </Box>
-                      </ProgressBar>
-                    </Box>
-                  )}
-                </LabeledList.Item>
-                <LabeledList.Item label="Holocard">
-                  <NoticeBox color={holocard} inline>
-                    {holocard_message}
-                  </NoticeBox>
+    <Section title={'Patient: ' + patient} maxWidth={sectionWidth}>
+      {hugged && ghostscan ? (
+        <NoticeBox danger>
+          Patient has been implanted with an alien embryo!
+        </NoticeBox>
+      ) : null}
+      {dead ? <NoticeBox danger>Patient is deceased!</NoticeBox> : null}
+      {ssd ? (
+        <NoticeBox warning color="grey">
+          {ssd}
+        </NoticeBox>
+      ) : null}
+      <LabeledList>
+        <LabeledList.Item label="Health">
+          {health >= 0 ? (
+            <ProgressBar
+              value={health / 100}
+              ranges={{
+                good: [0.7, Infinity],
+                average: [0.2, 0.7],
+                bad: [-Infinity, 0.2],
+              }}
+            >
+              {health}% healthy
+            </ProgressBar>
+          ) : (
+            <ProgressBar
+              value={1 + health / 100}
+              ranges={{
+                bad: [-Infinity, Infinity],
+              }}
+            >
+              {health}% healthy
+            </ProgressBar>
+          )}
+        </LabeledList.Item>
+        {dead ? (
+          <LabeledList.Item label="Condition">
+            <Box color={permadead ? 'red' : 'green'} bold={1}>
+              {permadead
+                ? heart_broken
+                  ? 'Myocardial rupture, surgical intervention required'
+                  : 'Permanently deceased'
+                : Synthetic
+                  ? 'Central power system shutdown, reboot with a reset key possible'
+                  : 'Cardiac arrest, defibrillation possible'}
+            </Box>
+          </LabeledList.Item>
+        ) : null}
+        <LabeledList.Item label="Damage">
+          <Box inline>
+            <ProgressBar>
+              Brute:{' '}
+              <Box inline bold color={'red'}>
+                {total_brute}
+              </Box>
+            </ProgressBar>
+          </Box>
+          <Box inline width={'5px'} />
+          <Box inline>
+            <ProgressBar>
+              Burn:{' '}
+              <Box inline bold color={'#ffb833'}>
+                {total_burn}
+              </Box>
+            </ProgressBar>
+          </Box>
+          <Box inline width={'5px'} />
+          <Box inline>
+            <ProgressBar>
+              Toxin:{' '}
+              <Box inline bold color={'green'}>
+                {toxin}
+              </Box>
+            </ProgressBar>
+          </Box>
+          <Box inline width={'5px'} />
+          <Box inline>
+            <ProgressBar>
+              Oxygen:{' '}
+              <Box inline bold color={'blue'}>
+                {oxy}
+              </Box>
+            </ProgressBar>
+          </Box>
+          <Box inline width={'5px'} />
+          {!!clone && (
+            <Box inline>
+              <ProgressBar>
+                Clone:{' '}
+                <Box inline color={'teal'}>
+                  {clone}
+                </Box>
+              </ProgressBar>
+            </Box>
+          )}
+        </LabeledList.Item>
+        <LabeledList.Item label="Holocard">
+          <NoticeBox color={holocard} inline>
+            {holocard_message}
+          </NoticeBox>
 
-                  <Button
-                    inline
-                    style={{ marginLeft: '2%' }}
-                    onClick={() => act('change_holo_card')}
-                  >
-                    Change
-                  </Button>
-                </LabeledList.Item>
-              </LabeledList>
-            </Section>
-            {has_chemicals ? <ScannerChems /> : null}
-            <Section maxWidth={sectionWidth}>
-              <LabeledList>
-                {has_blood ? (
-                  <LabeledList.Item label={'Blood Type ' + blood_type}>
-                    <Box
-                      color={
-                        bloodpct > 0.9 ? 'green' : bloodpct > 0.7 ? 'orange' : 'red'
-                      }
-                    >
-                      {Math.round(blood_amount / 5.6)}%, {blood_amount}cl
-                    </Box>
-                  </LabeledList.Item>
-                ) : null}
-                <LabeledList.Item label={'Body Temperature'}>
-                  {body_temperature}
-                </LabeledList.Item>
-                <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
-              </LabeledList>
-              {implants ||
-              hugged ||
-              core_fracture ||
-              (lung_ruptured && bodyscanner) ? (
-                <Divider />
-              ) : null}
-              {implants && detail_level !== 1 ? (
-                <NoticeBox danger>
-                  {implants} embedded object{implants > 1 ? 's' : ''} detected!
-                  {healthanalyser ? ' Advanced scanner required for location.' : ''}
-                </NoticeBox>
-              ) : null}
-              {(implants || hugged) && detail_level === 1 ? (
-                <NoticeBox danger>
-                  {implants + (hugged ? 1 : 0)} unknown bod
-                  {implants + (hugged ? 1 : 0) > 1 ? 'ies' : 'y'} detected!
-                </NoticeBox>
-              ) : null}
-              {lung_ruptured && bodyscanner ? (
-                <NoticeBox danger>Ruptured lung detected!</NoticeBox>
-              ) : null}
-              {core_fracture && healthanalyser ? (
-                <NoticeBox danger>
-                  Bone fractures detected! Advanced scanner required for location.
-                </NoticeBox>
-              ) : null}
-            </Section>
-            {diseases ? (
-              <Section title="Diseases" maxWidth={sectionWidth}>
-                <LabeledList>
-                  {diseases.map((disease) => (
-                    <LabeledList.Item
-                      key={disease.name}
-                      label={disease.name[0].toUpperCase() + disease.name.slice(1)}
-                    >
-                      <Box inline bold={1}>
-                        Type : {disease.type}, possible cure : {disease.cure}
-                      </Box>
-                      <Box inline width={'5px'} />
-                      <Box inline>
-                        <ProgressBar
-                          width="200px"
-                          value={disease.stage / disease.max_stage}
-                          ranges={{
-                            good: [-Infinity, 20],
-                            average: [20, 50],
-                            bad: [50, Infinity],
-                          }}
-                        >
-                          Stage:{disease.stage}/{disease.max_stage}
-                        </ProgressBar>
-                      </Box>
-                    </LabeledList.Item>
-                  ))}
-                </LabeledList>
-              </Section>
-            ) : null}
-            {advice ? (
-              <Section title="Medication Advice" maxWidth={sectionWidth}>
-                <Stack vertical>
-                  {advice.map((advice) => (
-                    <Stack.Item key={advice.advice}>
-                      <Box inline>
-                        <Icon name={advice.icon} ml={0.2} color={advice.color} />
-                        <Box inline width={'5px'} />
-                        {advice.advice}
-                      </Box>
-                    </Stack.Item>
-                  ))}
-                </Stack>
-              </Section>
-            ) : null}
-
-          </Stack.Item>
-          <Stack.Item>
-            {limbs_damaged ? <ScannerLimbs /> : null}
-            {damaged_organs?.length && bodyscanner ? <ScannerOrgans /> : null}
-          </Stack.Item>
-        </Stack>
-      </Window.Content>
-    </Window>
+          <Button
+            inline
+            style={{ marginLeft: '2%' }}
+            onClick={() => act('change_holo_card')}
+          >
+            Change
+          </Button>
+        </LabeledList.Item>
+      </LabeledList>
+    </Section>
   );
+};
+
+const Misc = (props) => {
+  const { data } = useBackend();
+  const {
+    blood_type,
+    blood_amount,
+    has_blood,
+    body_temperature,
+    pulse,
+    implants,
+    core_fracture,
+    lung_ruptured,
+    hugged,
+    detail_level,
+  } = data;
+  const bloodpct = blood_amount / 560;
+  const healthanalyser = detail_level < 1;
+  const bodyscanner = detail_level >= 1;
+  return (
+    <Section maxWidth={sectionWidth}>
+      <LabeledList>
+        {has_blood ? (
+          <LabeledList.Item label={'Blood Type ' + blood_type}>
+            <Box
+              color={
+                bloodpct > 0.9 ? 'green' : bloodpct > 0.7 ? 'orange' : 'red'
+              }
+            >
+              {Math.round(blood_amount / 5.6)}%, {blood_amount}cl
+            </Box>
+          </LabeledList.Item>
+        ) : null}
+        <LabeledList.Item label={'Body Temperature'}>
+          {body_temperature}
+        </LabeledList.Item>
+        <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
+      </LabeledList>
+      {implants ||
+      hugged ||
+      core_fracture ||
+      (lung_ruptured && bodyscanner) ? (
+        <Divider />
+      ) : null}
+      {implants && detail_level !== 1 ? (
+        <NoticeBox danger>
+          {implants} embedded object{implants > 1 ? 's' : ''} detected!
+          {healthanalyser ? ' Advanced scanner required for location.' : ''}
+        </NoticeBox>
+      ) : null}
+      {(implants || hugged) && detail_level === 1 ? (
+        <NoticeBox danger>
+          {implants + (hugged ? 1 : 0)} unknown bod
+          {implants + (hugged ? 1 : 0) > 1 ? 'ies' : 'y'} detected!
+        </NoticeBox>
+      ) : null}
+      {lung_ruptured && bodyscanner ? (
+        <NoticeBox danger>Ruptured lung detected!</NoticeBox>
+      ) : null}
+      {core_fracture && healthanalyser ? (
+        <NoticeBox danger>
+          Bone fractures detected! Advanced scanner required for location.
+        </NoticeBox>
+      ) : null}
+    </Section>
+  );
+};
+
+const Diseases = (props) => {
+  const { data } = useBackend();
+  const { diseases } = data;
+  return (
+    <Section title="Diseases" maxWidth={sectionWidth}>
+      <LabeledList>
+        {diseases.map((disease) => (
+          <LabeledList.Item
+            key={disease.name}
+            label={disease.name[0].toUpperCase() + disease.name.slice(1)}
+          >
+            <Box inline bold={1}>
+              Type : {disease.type}, possible cure : {disease.cure}
+            </Box>
+            <Box inline width={'5px'} />
+            <Box inline>
+              <ProgressBar
+                width="200px"
+                value={disease.stage / disease.max_stage}
+                ranges={{
+                  good: [-Infinity, 20],
+                  average: [20, 50],
+                  bad: [50, Infinity],
+                }}
+              >
+                Stage:{disease.stage}/{disease.max_stage}
+              </ProgressBar>
+            </Box>
+          </LabeledList.Item>
+        ))}
+      </LabeledList>
+    </Section>
+  );
+};
+
+const MedicalAdvice = (props) => {
+  const { data } = useBackend();
+  const { advice } = data;
+  return (
+    <Section title="Medication Advice" maxWidth={sectionWidth}>
+      <Stack vertical>
+        {advice.map((advice) => (
+          <Stack.Item key={advice.advice}>
+            <Box inline>
+              <Icon name={advice.icon} ml={0.2} color={advice.color} />
+              <Box inline width={'5px'} />
+              {advice.advice}
+            </Box>
+          </Stack.Item>
+        ))}
+      </Stack>
+    </Section>);
 };
 
 const ScannerChems = (props) => {

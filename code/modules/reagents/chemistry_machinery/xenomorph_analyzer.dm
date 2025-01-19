@@ -74,7 +74,6 @@
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()
 	data["points"] = biomass_points
-	data["credit_points"] = credit_points
 	data["current_clearance"] = GLOB.chemical_data.clearance_level
 	data["is_x_level"] = GLOB.chemical_data.reached_x_access // why just why
 
@@ -127,10 +126,6 @@
 		if("produce")
 			if(!busy)
 				start_print_upgrade(text2path(params["ref"]), usr)
-		if("receive_points")
-			if((upgrade.clearance_req > GLOB.chemical_data.clearance_level && upgrade.clearance_req != 6) || (upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access))
-				accept_points()
-				. = TRUE
 	playsound(src, 'sound/machines/keyboard2.ogg', 25, TRUE)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass(mob/user)
@@ -145,12 +140,9 @@
 
 /obj/structure/machinery/xenoanalyzer/proc/process_organ(biomass_points_to_add, credits_to_add)
 	biomass_points += biomass_points_to_add
-	credit_points += credits_to_add
 	icon_state = "xeno_analyzer"
 	busy = FALSE
-
-/obj/structure/mchinery/xenoanalyzer/proc/accept_points(credit_points)
-	GLOB.chemical_data.update_credits(credit_points)
+	GLOB.chemical_data.update_credits(credits_to_add)
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user)
 	if(stat & NOPOWER)

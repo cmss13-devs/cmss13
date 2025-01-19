@@ -764,3 +764,9 @@
 	SetRoot(0)
 	SetEyeBlur(0)
 	updatehealth()
+
+/mob/living/carbon/xenomorph/BlockedPassDirs(atom/movable/mover, target_dir)
+	var/mob/living/carbon/xenomorph/xeno = mover
+	if(istype(xeno) && (pass_flags.flags_pass & PASS_MOB_THRU || flags_pass_temp & PASS_MOB_THRU) && xeno.hivenumber == hivenumber)
+		return NO_BLOCKED_MOVEMENT
+	return ..()

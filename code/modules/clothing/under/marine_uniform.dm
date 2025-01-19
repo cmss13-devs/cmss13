@@ -254,6 +254,7 @@
 	worn_state = "uscmboiler"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "marine operations"
+	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"
@@ -261,6 +262,7 @@
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
+	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/general
 	name = "general uniform"

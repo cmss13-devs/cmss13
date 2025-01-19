@@ -176,7 +176,7 @@
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 	add_pmcs = TRUE
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
 
 /obj/item/device/cotablet/upp
 

@@ -110,7 +110,7 @@
 /obj/item/pamphlet/skill/cosmartgun
 	name = "Cavalier instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a smartgun on it."
-	icon_state = "pamphlet_machinegunner"
+	icon_state = "pamphlet_loader"
 	bypass_pamphlet_limit = TRUE
 	trait = /datum/character_trait/skills/cosmartgun
 

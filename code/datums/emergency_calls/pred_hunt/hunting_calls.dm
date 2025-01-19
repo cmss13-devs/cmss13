@@ -76,7 +76,7 @@
 	name = "Hunting Grounds - Multi Faction - Medium"
 	hunt_name = "Multi Faction (group)"
 	mob_max = 6
-	mob_min = 4
+	mob_min = 2
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 1
@@ -87,7 +87,7 @@
 	name = "Hunting Grounds - Multi Faction - Large"
 	hunt_name = "Multi Faction (large)"
 	mob_max = 8
-	mob_min = 6
+	mob_min = 3
 	max_clf = 2
 	max_upp = 1
 	max_royal_marines = 2
@@ -97,7 +97,7 @@
 	name = "Hunting Grounds - Multi Faction - Larger"
 	hunt_name = "Multi Faction (larger)"
 	mob_max = 12
-	mob_min = 6
+	mob_min = 4
 	max_clf = 2
 	max_upp = 2
 	max_royal_marines = 3

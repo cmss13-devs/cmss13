@@ -20148,7 +20148,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/turf/open/gm/dirt,
+/turf/open/floor/dark,
 /area/lv624/lazarus/landing_zones/lz2)
 "twC" = (
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -21013,7 +21013,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/turf/open/gm/dirt,
+/turf/open/floor/dark,
 /area/lv624/lazarus/landing_zones/lz2)
 "vdl" = (
 /obj/structure/stairs/perspective{

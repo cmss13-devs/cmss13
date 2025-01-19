@@ -130,6 +130,8 @@
 
 /obj/structure/stairs/constructed/attackby(obj/item/tool, mob/living/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_WRENCH) && !istype(src, /obj/structure/stairs/constructed/resin))
+		if(user.action_busy)
+			return
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
@@ -144,6 +146,8 @@
 
 /obj/structure/stairs/constructed/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.a_intent == INTENT_HARM)
+		if(user.action_busy)
+			return
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return

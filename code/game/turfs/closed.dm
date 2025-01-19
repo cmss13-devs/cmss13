@@ -12,6 +12,9 @@
 		to_chat(user, SPAN_WARNING("You are not hero!"))
 		return
 
+	if(user.action_busy)
+		return
+
 	var/turf/our_loc = get_turf(src)
 	var/turf/checking = get_step_multiz(our_loc, UP)
 	if(!istype(checking) || !checking.zPassIn(user, UP, our_loc))

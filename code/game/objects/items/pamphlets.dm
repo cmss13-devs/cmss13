@@ -120,8 +120,6 @@
 		return
 	return ..()
 
-
-
 /obj/item/pamphlet/skill/loader
 	name = "Loader instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a rocket on it."

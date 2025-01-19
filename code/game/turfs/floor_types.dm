@@ -2227,6 +2227,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "outerhull"
 	name = "hull"
+	turf_flags = NO_FLAGS
 	hull_tile = TRUE
 
 /turf/open/floor/almayer_hull/outerhull_dir

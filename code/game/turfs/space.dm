@@ -2,6 +2,7 @@
 	icon = 'icons/turf/floors/space.dmi'
 	name = "space"
 	icon_state = "0"
+	turf_flags = NO_FLAGS
 	plane = PLANE_SPACE
 	layer = UNDER_TURF_LAYER
 	can_bloody = FALSE
@@ -134,15 +135,12 @@
 
 /turf/open/space/Entered(atom/movable/arrived, old_loc)
 	..()
-	if((!(arrived) || src != arrived.loc) || !length(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
+	if((!(arrived) || src != arrived.loc) || arrived.z == 1 || !length(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
 		return
 
 	inertial_drift(arrived)
 
 	if(SSticker.mode)
-		if(arrived.z == 1)
-			return
-
 		if(arrived.x <= TRANSITIONEDGE || arrived.x >= (world.maxx - TRANSITIONEDGE - 1) || arrived.y <= TRANSITIONEDGE || arrived.y >= (world.maxy - TRANSITIONEDGE - 1))
 			var/move_to_z = src.z
 			var/safety = 1

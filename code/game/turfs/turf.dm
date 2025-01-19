@@ -232,9 +232,10 @@
 	turf = SSmapping.get_turf_below(src)
 	if(turf)
 		turf.multiz_turf_new(src, UP)
-		var/list/baseturfsold = list(/turf/open/openspace)
-		baseturfsold += baseturfs
-		baseturfs = baseturfsold
+		if(turf.turf_flags & TURF_MULTIZ && turf_flags & TURF_MULTIZ)
+			var/list/baseturfsold = list(/turf/open/openspace)
+			baseturfsold |= baseturfs
+			baseturfs = baseturfsold
 
 /turf/proc/add_cleanable_overlays()
 	for(var/cleanable_type in cleanables)

@@ -81,3 +81,12 @@
 /datum/controller/subsystem/mapping/proc/get_ground_center()
 	var/ground_z = levels_by_trait(ZTRAIT_GROUND)[1]
 	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), ground_z)
+
+/datum/controller/subsystem/mapping/proc/same_z_traits(z1, z2)
+	var/datum/space_level/first_z = SSmapping.get_level(z1)
+	var/datum/space_level/second_z = SSmapping.get_level(z2)
+	for(var/trait in first_z.traits)
+		if(!(trait in second_z.traits))
+			return FALSE
+
+	return TRUE

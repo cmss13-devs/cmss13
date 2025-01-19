@@ -60,27 +60,19 @@
 	role_comm_title = "Syn"
 
 	minimap_icon = "synth"
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/industrial
+
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
-
-/datum/equipment_preset/synth/uscm/ship
-
-	name = "USCM Synthetic - Ship Operations"
-	assignment = JOB_SHIP_SYNTH
-
-/datum/equipment_preset/synth/uscm/ship/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
 //*****************************************************************************************************/
 
@@ -92,32 +84,26 @@
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
 	role_comm_title = "Syn"
+	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/industrial
+
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
-
-/datum/equipment_preset/synth/uscm/councillor/ship
-	name = "USCM Synthetic Councillor - Ship Operations"
-	assignment = JOB_SHIP_SYNTH
-
-/datum/equipment_preset/synth/uscm/councillor/ship/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/wo
 	name = "WO Support Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/new_human)
 
@@ -182,6 +168,7 @@
 
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -229,7 +216,7 @@
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-		WEAR_BODY = /obj/item/clothing/under/colonist/ua_civvies,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility/gray,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/armband/med,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
@@ -350,7 +337,7 @@
 	name = "Survivor - Synthetic - Teacher Synth"
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
-		WEAR_BODY = /obj/item/clothing/under/colonist/wy_davisone,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility/brown,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/wy_chips/pepper,
 		WEAR_IN_BACK = /obj/item/storage/box/pdt_kit,
@@ -384,7 +371,7 @@
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/flap,
 		WEAR_FACE = /obj/item/clothing/mask/tornscarf,
-		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/utility,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility,
 		WEAR_BACK = /obj/item/storage/backpack/lightpack/five_slot,
 		WEAR_IN_BACK = /obj/item/storage/box/m94,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
@@ -401,7 +388,7 @@
 	name = "Survivor - Synthetic - Trucker Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
-		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/frontier,
+		WEAR_BODY = /obj/item/clothing/under/rank/frontier,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
 		WEAR_R_HAND = /obj/item/tool/weldingtool/hugetank,
@@ -433,7 +420,7 @@
 	equipment_to_spawn = list(
 		WEAR_R_EAR = /obj/item/clothing/ears/earmuffs,
 		WEAR_HEAD = /obj/item/clothing/head/cmcap,
-		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/utility/yellow,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility/yellow,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/storage/box/m94,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest,
@@ -449,12 +436,12 @@
 /datum/equipment_preset/synth/survivor/detective_synth
 	name = "Survivor - Synthetic - Detective Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/det_hat,
+		WEAR_HEAD = /obj/item/clothing/head/fedora/brown,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/det,
+		WEAR_BODY = /obj/item/clothing/under/detective,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/det_suit/black,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/CMB/trenchcoat/police,
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full/synth,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
@@ -499,9 +486,8 @@
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
-	minimap_background = "background_pmc"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
+		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,

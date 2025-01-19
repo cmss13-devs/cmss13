@@ -41,7 +41,8 @@
 
 	if(isTerminator() && get_dir(source, direction) == dir)
 		leaving.set_currently_z_moving(CURRENTLY_Z_ASCENDING)
-		leaving.setDir(dir)
+		if(!(leaving.flags_atom & DIRLOCK))
+			leaving.setDir(dir)
 		INVOKE_ASYNC(src, PROC_REF(stair_ascend), leaving, dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 

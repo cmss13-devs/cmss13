@@ -20,6 +20,9 @@
 		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 			return
 
+	if(user.action_busy)
+		return
+
 	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
 		SPAN_WARNING("You start climbing up the \the [src]."))
 

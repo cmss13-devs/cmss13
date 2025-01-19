@@ -42,14 +42,14 @@ Docking Port Definitions
 	COOLDOWN_DECLARE(dropship_airlock_cooldown)
 	auto_open = TRUE // for dropship doors
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/golden_arrow_one
-	name = "Golden Arrow Hangar Airlock 1 Inner"
+/obj/docking_port/stationary/marine_dropship/airlock/inner/almayer_one
+	name = "Almayer Hangar Airlock 1 Inner"
 	id = ALMAYER_A1_INNER
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/golden_arrow_two
-	name = "Golden Arrow Hangar Airlock 2 Inner"
+/obj/docking_port/stationary/marine_dropship/airlock/inner/almayer_two
+	name = "Almayer Hangar Airlock 2 Inner"
 	id = ALMAYER_A2_INNER
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO
 	roundstart_template = /datum/map_template/shuttle/normandy
@@ -60,13 +60,13 @@ Docking Port Definitions
 	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner
 	var/dropship_airlock_id = "generic"
 
-/obj/docking_port/stationary/marine_dropship/airlock/outer/golden_arrow_one
-	name = "Golden Arrow Hangar Airlock 1 Outer"
+/obj/docking_port/stationary/marine_dropship/airlock/outer/almayer_one
+	name = "Almayer Hangar Airlock 1 Outer"
 	id = ALMAYER_A1_OUTER
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO
 
-/obj/docking_port/stationary/marine_dropship/airlock/outer/golden_arrow_two
-	name = "Golden Arrow Hangar Airlock 2 Outer"
+/obj/docking_port/stationary/marine_dropship/airlock/outer/almayer_two
+	name = "Almayer Hangar Airlock 2 Outer"
 	id = ALMAYER_A2_OUTER
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO
 

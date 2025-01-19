@@ -263,7 +263,7 @@
 	worn_state = "CO_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
-	WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	)
 	specialty = "USCM officer"
 	flags_atom = FPRINT && NO_GAMEMODE_SKIN

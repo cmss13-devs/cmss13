@@ -213,7 +213,7 @@
 
 	if(mob.status_flags & XENO_HOST)
 		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
-		return
+		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
 		return FALSE
@@ -234,6 +234,10 @@
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		return FALSE
+
+	if(mob.status_flags & XENO_HOST)
+		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)

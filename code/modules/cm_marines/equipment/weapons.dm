@@ -46,6 +46,7 @@
 	new /obj/item/smartgun_battery(src)
 	new /obj/item/clothing/suit/storage/marine/smartgunner(src)
 	new /obj/item/storage/belt/marine/smartgunner(src)
+	new /obj/item/pamphlet/skill/cosmartgun(src)
 	update_icon()
 
 /obj/item/storage/box/m56c_system/update_icon()

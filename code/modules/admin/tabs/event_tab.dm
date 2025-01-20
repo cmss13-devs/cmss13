@@ -359,7 +359,7 @@
 	message_admins("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
-	set name = "View Faxes"
+	set name = "Reply to Faxes"
 	set desc = "View faxes from this round"
 	set category = "Admin.Events"
 

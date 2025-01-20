@@ -41,10 +41,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	. = ..()
 
 	var/height = 1
-	var/turf/below = locate(x, y, z-1)
+	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 
 	while(istype(below, /turf/open_space))
-		below = locate(below.x, below.y, below.z-1)
+		below = SSmapping.get_turf_below(below)
 		height++
 
 	entered_movable.forceMove(below)

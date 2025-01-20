@@ -2,6 +2,8 @@ GLOBAL_LIST_INIT(damage_boost_turfs, typecacheof(/turf))
 
 GLOBAL_LIST_INIT(damage_boost_turfs_xeno, typecacheof(/turf/closed/wall/resin))
 
+GLOBAL_LIST_INIT(damage_boost_doors_xeno, typecacheof(/obj/structure/mineral_door/resin))
+
 GLOBAL_LIST_INIT(damage_boost_breaching, typecacheof(list(
 	/obj/structure/machinery/door,
 	/obj/structure/mineral_door,
@@ -19,6 +21,31 @@ GLOBAL_LIST_INIT(damage_boost_pylons, typecacheof(list(
 )))
 
 GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
+
+GLOBAL_LIST_INIT(daamge_boost_rwall, typecacheof(list(
+	/turf/closed/wall/hybrisa/research/ribbed,
+	/turf/closed/wall/hybrisa/research/reinforced,
+	/turf/closed/wall/hybrisa/colony/ribbed,
+	/turf/closed/wall/hybrisa/colony/reinforced,
+	/turf/closed/wall/hybrisa/colony/hospital/ribbed,
+	/turf/closed/wall/hybrisa/colony/hospital/reinforced,
+	/turf/closed/wall/hybrisa/colony/office/ribbed,
+	/turf/closed/wall/hybrisa/colony/office/reinforced,
+	/turf/closed/wall/hybrisa/colony/engineering/ribbed,
+	/turf/closed/wall/hybrisa/colony/engineering/reinforced,
+	/turf/closed/wall/r_wall,
+	/turf/closed/wall/almayer/reinforced,
+	/turf/closed/wall/almayer/reinforced/temphull,
+	/turf/closed/wall/almayer/white/reinforced,
+	/turf/closed/wall/almayer/aicore/reinforced,
+	/turf/closed/wall/almayer/aicore/white/reinforced,
+	/turf/closed/wall/mineral/sandstone/runed,
+	/turf/closed/wall/strata_outpost_ribbed,
+	/turf/closed/wall/strata_outpost/reinforced,
+	/turf/closed/wall/solaris/reinforced,
+	/turf/closed/wall/dev/reinforced,
+	/turf/closed/wall/kutjevo/colony/reinforced,
+)))
 
 /datum/element/bullet_trait_damage_boost
 	element_flags = ELEMENT_DETACH|ELEMENT_BESPOKE

@@ -71,6 +71,7 @@
 	var/ert_message = "An emergency beacon has been activated"
 
 	var/time_required_for_job = 5 HOURS
+	var/time_required_for_youngblood = 40 HOURS
 
 	/// the shuttle being used by this distress call
 	var/obj/docking_port/mobile/emergency_response/shuttle
@@ -192,6 +193,11 @@
 	if(!beacons[choice] || !(beacons[choice] in SSticker.mode.picked_calls))
 		to_chat(src, "That choice is no longer available!")
 		return
+
+	if(istype(beacons[choice], /datum/emergency_call/young_bloods))
+		if((client.check_whitelist_status(src, WHITELIST_YAUTJA)) || jobban_isbanned(src, ERT_JOB_YOUNGBLOOD))
+			to_chat(src, SPAN_DANGER("You are not allowed to play this response team!"))
+			return
 
 	var/datum/emergency_call/distress = beacons[choice]
 

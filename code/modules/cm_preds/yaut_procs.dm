@@ -227,3 +227,8 @@
 	requires_power = FALSE
 	base_lighting_alpha = 255
 	flags_area = AREA_YAUTJA_GROUNDS
+
+/area/yautja/lower_deck
+	name = "\improper Yautja Ship Lower Deck"
+	icon_state = "teleporter"
+	base_lighting_alpha = 0

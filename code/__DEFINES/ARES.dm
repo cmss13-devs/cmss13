@@ -82,3 +82,5 @@
 
 /// Time until someone can respawn as Working Joe
 #define JOE_JOIN_DEAD_TIME (15 MINUTES)
+
+GLOBAL_LIST_EMPTY_TYPED(gas_vents, /obj/structure/pipes/vents/pump/no_boom/gas)

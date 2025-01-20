@@ -341,6 +341,12 @@
 "abs" = (
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
+"abt" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -78116,7 +78122,7 @@ clE
 dTs
 dTs
 dTs
-dTs
+abt
 dTs
 dTs
 dTs

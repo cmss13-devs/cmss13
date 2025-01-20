@@ -3,7 +3,7 @@
 
 
 /obj/item/clothing/under/marine
-	name = "\improper USCM uniform"
+	name = "USCM uniform"
 	desc = "Standard-issue Marine uniform. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
@@ -257,11 +257,11 @@
 	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/command
-	name = "\improper USCM officer uniform"
+	name = "USCM officer uniform"
 	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
-	specialty = "USCM officer"
+	specialty = "USCM Officer"
 	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/general

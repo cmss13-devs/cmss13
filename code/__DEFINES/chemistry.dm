@@ -207,6 +207,7 @@
 #define PROPERTY_RAVENING "ravening"
 #define PROPERTY_CURING "curing"
 #define PROPERTY_OMNIPOTENT "omnipotent"
+#define PROPERTY_ANTISTUN "antistun"
 #define PROPERTY_RADIUS "radius" // Fire related admin property
 #define PROPERTY_INTENSITY "intensity" // Fire related admin property
 #define PROPERTY_DURATION "duration" // Fire related admin property

@@ -2793,11 +2793,13 @@ Defined in conflicts.dm of the #defines folder.
 			playsound(user, gun_deactivate_sound, 30, 1)
 		G.active_attachable = null
 		icon_state = initial(icon_state)
+		G.recalculate_attachment_bonuses()
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
 			playsound(user, gun_activate_sound, 60, 1)
 		G.active_attachable = src
+		G.damage_mult = 1
 		icon_state += "-on"
 
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)

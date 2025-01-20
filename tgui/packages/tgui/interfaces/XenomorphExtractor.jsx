@@ -23,6 +23,7 @@ export const XenomorphExtractor = () => {
     upgrades,
     caste,
     value,
+    credits,
     categories,
     current_clearance,
     is_x_level,
@@ -54,7 +55,10 @@ export const XenomorphExtractor = () => {
               >
                 {!organ
                   ? 'Process Biomass'
-                  : 'Process Biomass, Expected value : ' + value}
+                  : 'Process Biomass, Expected value : ' +
+                    value +
+                    ' | Credit value : ' +
+                    credits}
               </Button>
             </Stack.Item>
             <Stack.Item>

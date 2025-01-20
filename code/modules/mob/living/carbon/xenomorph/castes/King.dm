@@ -42,6 +42,7 @@
 	small_explosives_stun = FALSE
 	counts_for_slots = FALSE
 	organ_value = 50000
+	organ_chem_value = 70
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1

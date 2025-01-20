@@ -1,6 +1,6 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
-	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
+	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time up to a certain amount. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. As you are in combat, your glands become active and produce passivly more acid until the figth is over. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
 	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
 
@@ -35,6 +35,11 @@
 	var/acid_slash_regen_lying = 8
 	var/acid_slash_regen_standing = 14
 	var/acid_passive_regen = 1
+	var/acid_gen_cap = 400 //Ammount of acid after wich passive acid generation stops
+
+	var/combat_acid_regen = 1 //how much acid runners passivly generate per tick in combat
+	var/combat_gen_timer = 80 //deci-seconds acid gen is active after a slash/tailstab
+	var/combat_gen_active = FALSE //this defines if the combat acid generation is on or off
 
 	var/melt_acid_cost = 100
 
@@ -46,6 +51,9 @@
 	var/caboom_burn_range_ratio = 100
 	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid
 
+	var/drool_applied_recently = FALSE
+	var/mutable_appearance/drool_applied_icon
+
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)
 	acid_amount += amount
 	if(acid_amount > max_acid)
@@ -53,9 +61,15 @@
 	if(acid_amount < 0)
 		acid_amount = 0
 
-/datum/behavior_delegate/runner_acider/append_to_stat()
+/datum/behavior_delegate/runner_acider/append_to_stat() //The status pannel info for Acid Runner is handelt here.
 	. = list()
-	. += "Acid: [acid_amount]"
+	var/combat_gen_text = "Inactive"
+	. += "Acid: [acid_amount]/[max_acid]"
+	if(acid_amount >= acid_gen_cap)
+		. += "Passive acid generation cap ([acid_gen_cap]) reached"
+	if(combat_gen_active)
+		combat_gen_text = "Active"
+	. += "Battle acid generation: [combat_gen_text]"
 	if(caboom_trigger)
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
@@ -82,8 +96,15 @@
 			return
 		modify_acid(acid_slash_regen_standing)
 
+		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //this calls for the proc to turn combat acid gen off after a set time passes
+		combat_gen_active = TRUE //turns combat acid regen on
+		drool_applied_recently = TRUE //turns the overlay on
+
 /datum/behavior_delegate/runner_acider/on_life()
-	modify_acid(acid_passive_regen)
+	if(acid_amount < acid_gen_cap)
+		modify_acid(acid_passive_regen)
+	if(combat_gen_active == TRUE)
+		modify_acid(combat_acid_regen)
 	if(!bound_xeno)
 		return
 	if(bound_xeno.stat == DEAD)
@@ -106,8 +127,11 @@
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
+	var/percentage_acid_cap = round((acid_gen_cap /max_acid) * 100, 10)
 	if(percentage_acid)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid]")
+	if(acid_amount >= acid_gen_cap)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
 /datum/behavior_delegate/runner_acider/handle_death(mob/M)
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
@@ -165,3 +189,31 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
 		return FALSE
 	return ..()
+
+/datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
+	combat_gen_active = FALSE //turns combat acid off
+
+	drool_applied_recently = FALSE //turns the drool overlay off
+	bound_xeno.update_icons()
+
+/datum/behavior_delegate/runner_acider/on_update_icons()
+	if(!drool_applied_icon)
+		drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi',"Acider Runner Walking")
+
+	bound_xeno.overlays -= drool_applied_icon
+	drool_applied_icon.overlays.Cut()
+
+	if(!drool_applied_recently)
+		return
+
+	if(bound_xeno.stat == DEAD)
+		drool_applied_icon.icon_state = "Acider Runner Dead"
+	else if(bound_xeno.body_position == LYING_DOWN)
+		if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
+			drool_applied_icon.icon_state = "Acider Runner Sleeping"
+		else
+			drool_applied_icon.icon_state = "Acider Runner Knocked Down"
+	else
+		drool_applied_icon.icon_state = "Acider Runner Walking"
+
+	bound_xeno.overlays += drool_applied_icon

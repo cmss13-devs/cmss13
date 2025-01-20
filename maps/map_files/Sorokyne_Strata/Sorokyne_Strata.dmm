@@ -97,6 +97,12 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/strata/ag/exterior/landing_zones/lz2)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -113,6 +119,12 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aay" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -153,6 +165,13 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaE" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -34157,7 +34176,7 @@ alz
 alz
 alz
 aac
-aac
+aay
 aac
 aac
 aac
@@ -41921,7 +41940,7 @@ jWs
 jWs
 jWs
 jWs
-jWs
+aau
 jWs
 jWs
 jWs
@@ -70540,7 +70559,7 @@ jUA
 jUA
 jUA
 cei
-chj
+aaE
 cei
 jUA
 jUA

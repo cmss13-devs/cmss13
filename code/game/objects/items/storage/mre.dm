@@ -272,6 +272,7 @@
 	side = null
 	snack = /obj/item/mre_food_packet/upp/snack
 	dessert = /obj/item/mre_food_packet/upp/dessert
+	has_main_name = FALSE
 	should_have_beverage = FALSE
 	should_have_cigarettes = FALSE
 	should_have_matches = FALSE
@@ -285,10 +286,8 @@
 
 /obj/item/storage/box/MRE/WY/pickflavor()
 	entree = pick(
-		/obj/item/reagent_container/food/snacks/eat_bar,
-		/obj/item/reagent_container/food/snacks/wrapped/booniebars,
-		/obj/item/reagent_container/food/snacks/wrapped/barcardine,
-		/obj/item/reagent_container/food/snacks/wrapped/chunk,
+		/obj/item/reagent_container/food/drinks/cans/food/meat,
+		/obj/item/reagent_container/food/drinks/cans/food/stew,
 	)
 	side = pick(
 		/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables,

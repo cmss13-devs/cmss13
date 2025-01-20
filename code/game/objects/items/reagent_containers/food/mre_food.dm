@@ -1277,6 +1277,7 @@
 	. = ..()
 	reagents.add_reagent("iron", 8)
 	reagents.add_reagent("sugar", 3)
+	reagents.add_reagent("blood", 4)
 	reagents.add_reagent("milk", 4)
 	reagents.add_reagent("honey", 3)
 

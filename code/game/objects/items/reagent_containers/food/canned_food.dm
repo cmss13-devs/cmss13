@@ -11,10 +11,33 @@
 	has_open_icon = TRUE
 	delete_on_empty = TRUE
 	gulp_size = 5
-	icon = 'icons/obj/items/food/drinkcans.dmi'
 
 /obj/item/reagent_container/food/drinks/cans/food/upp
 	icon = 'icons/obj/items/food/mre_food/upp.dmi'
+
+/obj/item/reagent_container/food/drinks/cans/food/meat
+	name = "canned beef"
+	desc = "Canned premium 100% beef. The question of, what part of cow is here exactly, is open to debate."
+	icon_state = "Canned_meat"
+
+/obj/item/reagent_container/food/drinks/cans/food/meat/Initialize()
+	. = ..()
+	reagents.add_reagent("meatprotein", 14)
+	reagents.add_reagent("sodiumchloride", 2)
+
+/obj/item/reagent_container/food/drinks/cans/food/stew
+	name = "canned stew"
+	desc = "Canned stew consisting of carrot, tomato, mushroom, meat, beans and god knows what elst, makes for a great food when heated."
+	icon_state = "Canned_stew"
+
+/obj/item/reagent_container/food/drinks/cans/food/stew/Initialize()
+	. = ..()
+	reagents.add_reagent("vegetable", 6)
+	reagents.add_reagent("meatprotein", 6)
+	reagents.add_reagent("mushroom", 3)
+	reagents.add_reagent("tomatojuice", 5)
+	reagents.add_reagent("water", 5)
+	reagents.add_reagent("sodiumchloride", 2)
 
 /obj/item/reagent_container/food/drinks/cans/food/upp/rice
 	name = "canned rice and beef"

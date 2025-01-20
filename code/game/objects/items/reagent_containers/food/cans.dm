@@ -40,6 +40,11 @@
 			icon_state += "_open"
 		update_icon()
 
+/obj/item/reagent_container/food/drinks/cans/get_examine_text(mob/user)
+	. = ..()
+	if(needs_can_opener)
+		. += SPAN_NOTICE("The can is completely sealed, you need some sort of can opener for it.")
+
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
 

@@ -200,9 +200,8 @@
 
 	//OD ratios
 	overdose = 5
-	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
-		if(prob(50 + 5*gen_tier))//Deviating from 5 gets exponentially more rare, deviation scales with chem level
-			overdose += 5
+	for(var/i=1;i<=rand(max(gen_tier*2, 4),9);i++) //We add 5 units to the overdose per cycle, min 30u, max 60u
+		overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
 		if(prob(20 + 2*gen_tier))

@@ -110,8 +110,9 @@
 					dat += "</table><hr width='75%' />"
 				dat += text("<A href='byond://?src=\ref[];choice=Record Maintenance'>Record Maintenance</A><br><br>", src)
 			if(2.0)
-				dat += "<B>Records Maintenance</B><HR>"
-				dat += "<BR><A href='byond://?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
+				dat += "<B>Records Maintenance</B><HR><BR>"
+				dat += "<A href='byond://?src=\ref[src];choice=Delete All Security Records'>Delete All Security Records</A><BR>"
+				dat += "<BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 			if(3.0)
 				dat += "<CENTER><B>Security Record</B></CENTER><BR>"
 				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
@@ -153,7 +154,9 @@
 				else
 					dat += "<B>Security Record Lost!</B><BR>"
 					dat += text("<A href='byond://?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
-				dat += text("\n<A href='byond://?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='byond://?src=\ref[];choice=Return'>Back</A><BR>", src, src)
+				dat += text("\n<A href='byond://?src=\ref[];choice=Print Record'>Print Record</A><BR>", src)
+				dat += text("\n<A href='byond://?src=\ref[];choice=Delete Record'>Delete Record</A><BR><BR>", src)
+				dat += text("\n<A href='byond://?src=\ref[];choice=Return'>Back</A><BR>", src)
 			if(4.0)
 				if(!length(Perp))
 					dat += text("ERROR.  String could not be located.<br><br><A href='byond://?src=\ref[];choice=Return'>Back</A>", src)
@@ -344,19 +347,39 @@ What a mess.*/
 					printing = null
 					updateUsrDialog()
 //RECORD DELETE
-			if ("Delete All Records")
-				temp = ""
-				temp += "Are you sure you wish to delete all Security records?<br>"
-				temp += "<a href='byond://?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
-				temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
-
+			if ("Delete All Security Records")
+				if(can_perform_restricted_actions(usr))
+					temp = ""
+					temp += "Are you sure you wish to delete all Security records?<br>This action may result in irreversible data loss.<br>"
+					temp += "<a href='byond://?src=\ref[src];choice=Purge All Records'>Yes</a>"
+					temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
+				else
+					alert(usr, "You do not have the required rank to do this!")
 			if ("Purge All Records")
 				for(var/datum/data/record/R in GLOB.data_core.security)
 					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Security records deleted."
 				msg_admin_niche("[key_name_admin(usr)] deleted all security records.")
-
+			if ("Delete Record")
+				if(can_perform_restricted_actions(usr))
+					temp = ""
+					temp += "Are you sure you wish to delete [active1.fields["name"]] record?<br>This action may result in irreversible data loss.<br>"
+					temp += "<a href='byond://?src=\ref[src];choice=Delete Personal Record'>Yes</a>"
+					temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
+				else
+					alert(usr, "You do not have the required rank to do this!")
+			if("Delete Personal Record")
+				var/record_name = active1.fields["name"]
+				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+					GLOB.data_core.general -= active1
+					qdel(active1)
+				temp = ""
+				temp += "Personal record deleted."
+				screen = 1
+				active1 = null
+				active2 = null
+				msg_admin_niche("[key_name_admin(usr)] deleted record of [record_name].")
 			if ("Add Entry")
 				if (!(istype(active2, /datum/data/record)))
 					return
@@ -444,7 +467,7 @@ What a mess.*/
 
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if (istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+						if (istype(active1, /datum/data/record) && can_perform_restricted_actions(usr))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
@@ -467,12 +490,12 @@ What a mess.*/
 				temp=null
 				switch(href_list["choice"])
 					if ("Change Rank")
-						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+						if(istype(active1, /datum/data/record) && can_perform_restricted_actions(usr))
 							var/new_value = href_list["rank"]
 							active1.fields["rank"] = new_value
 							if(new_value in GLOB.joblist)
 								active1.fields["real_rank"] = new_value
-							message_admins("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
+							message_admins("[key_name(usr)] changed the security record rank of [active1.fields["name"]] to [new_value]")
 
 					if ("Change Criminal Status")
 						if(istype(active2, /datum/data/record))
@@ -564,3 +587,14 @@ What a mess.*/
 /obj/structure/machinery/computer/secure_data/detective_computer
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "messyfiles"
+
+/obj/structure/machinery/computer/secure_data/proc/can_perform_restricted_actions(mob/user)
+	if (ishuman(user))
+		var/mob/living/carbon/human/human = user
+		var/obj/item/card/id/id_card = human.get_idcard()
+
+		if (id_card)
+			if ( (id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.uscm_highcom_paygrades))
+				return TRUE
+
+	return FALSE

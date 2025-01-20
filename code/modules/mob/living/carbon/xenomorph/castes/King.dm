@@ -83,7 +83,7 @@
 
 	for(var/mob/living/carbon/carbon in new_loc.contents)
 		var/mob/living/carbon/xenomorph/xeno = carbon
-		if(!xeno.resting && !new_loc.Enter(king, carbon))
+		if(!carbon.resting && !new_loc.Enter(king, carbon))
 			return
 		if(xeno.hivenumber == src.hivenumber && !(king.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)

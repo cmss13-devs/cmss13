@@ -84,6 +84,14 @@
 /obj/structure/pipes/unary/freezer/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
+"aap" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aaq" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "aaA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/sofa/vert/grey/top,
@@ -41725,7 +41733,7 @@ wMw
 wMw
 wMw
 wMw
-wMw
+aap
 xcE
 wMw
 wMw
@@ -55176,7 +55184,7 @@ lTg
 wlB
 wlB
 wlB
-wlB
+aaq
 wlB
 lTg
 wlB

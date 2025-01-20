@@ -192,13 +192,6 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
 "aaB" = (
-/turf/open/floor/almayer/empty/requisitions,
-/area/supply/station/uscm)
-"aaC" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
-"aaD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
@@ -216,6 +209,14 @@
 	},
 /turf/open/floor/strata/faux_metal,
 /area/almayer/shipboard/sea_office)
+"aaC" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"aaD" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -236,9 +237,9 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
 "aaG" = (
-/obj/effect/landmark/supply_elevator,
-/turf/open/floor/almayer/empty/requisitions,
-/area/supply/station/uscm)
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/lower/workshop)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -291,28 +292,6 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aaL" = (
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/obj/structure/machinery/cm_vending/clothing/corporate_liaison,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
-"aaM" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = -2
-	},
-/obj/item/weapon/pole/fancy_cane{
-	pixel_x = 5
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
-"aaN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
@@ -324,22 +303,28 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
-"aaO" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
+"aaM" = (
+/obj/structure/machinery/faxmachine{
+	sub_name = "Combat Correspondent";
+	department = "USS Almayer"
 	},
-/obj/structure/closet/cabinet,
-/obj/item/clipboard,
-/obj/item/storage/lockbox/loyalty,
-/obj/item/storage/briefcase,
-/obj/item/storage/box/wycaps,
-/obj/item/reagent_container/spray/pepper,
-/obj/item/device/eftpos{
-	eftpos_name = "Weyland-Yutani EFTPOS scanner"
-	},
-/obj/item/device/portable_vendor/corporate,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer/plate,
+/area/almayer/command/combat_correspondent)
+"aaN" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
 /turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
+/area/almayer/shipboard/brig/chief_mp_office)
+"aaO" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Intel Office";
+	radio_alert_tag = ":T"
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/computerlab)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -356,28 +341,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
 "aaQ" = (
-/obj/structure/machinery/faxmachine{
-	sub_name = "Combat Correspondent";
-	department = "USS Almayer"
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer/plate,
-/area/almayer/command/combat_correspondent)
-"aaR" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
-/turf/open/floor/wood/ship,
-/area/almayer/shipboard/brig/chief_mp_office)
-"aaS" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer{
-	sub_name = "Intel Office";
-	radio_alert_tag = ":T"
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/computerlab)
-"aaT" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer/brig{
 	sub_name = "Permanent Confinement"
@@ -388,14 +351,26 @@
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/brig/perma)
-"aaU" = (
+"aaR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
 	sub_name = "Conference Room"
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
-"aaV" = (
+"aaS" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/upper/fore_hallway)
+"aaT" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer,
+/area/almayer/command/lifeboat)
+"aaU" = (
 /obj/structure/surface/rack{
 	density = 0;
 	pixel_y = 16
@@ -407,7 +382,7 @@
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
-"aaW" = (
+"aaV" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer/brig{
 	sub_name = "Processing"
@@ -417,7 +392,7 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/brig/processing)
-"aaX" = (
+"aaW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
 	sub_name = "CIC";
@@ -434,11 +409,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
-"aaY" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
-"aaZ" = (
+"aaX" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
 	name = "Commanding Officer's Fax Machine";
@@ -451,6 +422,10 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
+"aaY" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/space)
 "aba" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	dir = 2;
@@ -9045,13 +9020,6 @@
 "bju" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
-"bjv" = (
-/obj/structure/disposalpipe/junction,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/upper/fore_hallway)
 "bjA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -9830,6 +9798,9 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
+"bpR" = (
+/turf/open/floor/almayer/empty/requisitions,
+/area/supply/station/uscm)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -10132,6 +10103,10 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/squads/req)
+"bsK" = (
+/obj/effect/landmark/supply_elevator,
+/turf/open/floor/almayer/empty/requisitions,
+/area/supply/station/uscm)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8;
@@ -16632,6 +16607,13 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/almayer/engineering/upper_engineering/starboard)
+"cOY" = (
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/obj/structure/machinery/cm_vending/clothing/corporate_liaison,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "cPg" = (
 /obj/structure/sign/safety/north{
 	pixel_x = 32;
@@ -40026,6 +40008,22 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
+"mGT" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/structure/closet/cabinet,
+/obj/item/clipboard,
+/obj/item/storage/lockbox/loyalty,
+/obj/item/storage/briefcase,
+/obj/item/storage/box/wycaps,
+/obj/item/reagent_container/spray/pepper,
+/obj/item/device/eftpos{
+	eftpos_name = "Weyland-Yutani EFTPOS scanner"
+	},
+/obj/item/device/portable_vendor/corporate,
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "mHb" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/red/east,
@@ -42325,6 +42323,21 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha_bravo_shared)
+"nBi" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/obj/item/weapon/pole/fancy_cane{
+	pixel_x = 5
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "nBw" = (
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/living/briefing)
@@ -77961,7 +77974,7 @@ sPF
 qPD
 qPD
 uQm
-aaT
+aaQ
 xkd
 teE
 xJT
@@ -79580,7 +79593,7 @@ rqS
 cak
 vrM
 tpn
-aaW
+aaV
 bju
 wdF
 wdF
@@ -84048,7 +84061,7 @@ awz
 awz
 nID
 wPF
-aaU
+aaR
 uKd
 oER
 awz
@@ -85075,7 +85088,7 @@ sCQ
 wIC
 wtY
 aTg
-aaR
+aaN
 wIC
 aCA
 pdp
@@ -85570,7 +85583,7 @@ xyw
 xyw
 xyw
 xyw
-xyw
+aaD
 xyw
 xyw
 xyw
@@ -89321,7 +89334,7 @@ aov
 wVW
 awA
 ayr
-aaX
+aaW
 aPD
 asc
 azW
@@ -90525,7 +90538,7 @@ cZe
 cmr
 iNk
 agj
-aaZ
+aaX
 hvH
 qck
 eRi
@@ -95213,7 +95226,7 @@ pcs
 fCW
 fCW
 tTZ
-bjv
+aaS
 tTZ
 dNj
 dNj
@@ -102129,7 +102142,7 @@ lXl
 yiu
 bBH
 fKh
-aaN
+aaL
 trU
 oNY
 fdx
@@ -102738,7 +102751,7 @@ lXl
 poD
 bBH
 pBG
-aaO
+mGT
 nQA
 nQA
 vEG
@@ -102948,7 +102961,7 @@ jDO
 pBG
 aYH
 cHG
-aaL
+cOY
 pBG
 mSM
 mRU
@@ -103354,7 +103367,7 @@ vEG
 pBG
 skR
 oxc
-aaM
+nBi
 pBG
 vzB
 mRU
@@ -108407,7 +108420,7 @@ ryn
 ryn
 ryn
 mOi
-aaV
+aaU
 qQS
 uUB
 aqU
@@ -108819,7 +108832,7 @@ qyA
 kXu
 jHC
 liJ
-aaS
+aaO
 uoH
 aHq
 xIj
@@ -111146,11 +111159,11 @@ bmD
 ngw
 pjG
 boz
-aaB
-aaB
-aaB
-aaB
-aaB
+bpR
+bpR
+bpR
+bpR
+bpR
 bxg
 bZr
 bKA
@@ -111349,11 +111362,11 @@ bmD
 xId
 pjG
 boz
-aaB
-aaB
-aaB
-aaB
-aaB
+bpR
+bpR
+bpR
+bpR
+bpR
 bxg
 bZr
 bNQ
@@ -111552,11 +111565,11 @@ bmD
 hBz
 pjG
 boA
-aaB
-aaB
-aaG
-aaB
-aaB
+bpR
+bpR
+bsK
+bpR
+bpR
 bxh
 bZr
 krN
@@ -111755,11 +111768,11 @@ bmD
 dmE
 pjG
 boz
-aaB
-aaB
-aaB
-aaB
-aaB
+bpR
+bpR
+bpR
+bpR
+bpR
 bxg
 bZr
 ibc
@@ -111873,7 +111886,7 @@ pKH
 oIB
 fXE
 kaS
-aaQ
+aaM
 oIB
 cnm
 yat
@@ -111958,11 +111971,11 @@ bmD
 hAc
 pjG
 boz
-aaB
-aaB
-aaB
-aaB
-aaB
+bpR
+bpR
+bpR
+bpR
+bpR
 bxg
 bZr
 xBV
@@ -114398,7 +114411,7 @@ bOT
 dLt
 bRe
 iFD
-aaD
+aaB
 vub
 bPL
 bCM
@@ -118862,7 +118875,7 @@ uZF
 xoj
 xoj
 osI
-qXk
+aaG
 fie
 pUj
 xoj
@@ -119979,7 +119992,7 @@ eky
 aDQ
 pyy
 eky
-eky
+aaT
 eky
 dLc
 aDQ

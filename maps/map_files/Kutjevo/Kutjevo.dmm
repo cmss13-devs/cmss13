@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"aab" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_pad)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -19970,7 +19978,7 @@ gAM
 gAM
 gAM
 wGH
-wGH
+aaa
 wGH
 wGH
 wGH
@@ -21035,7 +21043,7 @@ lKk
 lKk
 lKk
 lKk
-lKk
+aab
 lKk
 lKk
 lKk

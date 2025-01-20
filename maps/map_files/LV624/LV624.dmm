@@ -457,6 +457,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
+"acc" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
 "acd" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -787,6 +791,10 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
+"adl" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -31204,7 +31212,7 @@ aDv
 aDv
 aDv
 aDv
-aDv
+adl
 aDv
 aDv
 aOB
@@ -54238,7 +54246,7 @@ aGz
 aHM
 aGz
 eaJ
-aGz
+acc
 aHM
 aMq
 eaJ

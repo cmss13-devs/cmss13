@@ -594,16 +594,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
 "acm" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/reagent_container/food/drinks/flask/detflask{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/item/clothing/head/fedora,
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/lv522/indoors/a_block/security)
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_2)
 "acn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -611,13 +604,9 @@
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
 "aco" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/security/glass)
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -626,6 +615,14 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
+"acr" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/security/glass)
 "acv" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
@@ -7530,6 +7527,17 @@
 /obj/item/stack/folding_barricade,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
+"dXI" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/flask/detflask{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/fedora,
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "dXN" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -52648,7 +52656,7 @@ uiM
 uiM
 uiM
 uiM
-xcY
+aco
 uiM
 uiM
 uiM
@@ -64926,7 +64934,7 @@ jDO
 nRK
 sjy
 sjy
-aco
+acr
 hIz
 kTm
 oHR
@@ -68852,7 +68860,7 @@ sjy
 ape
 ape
 sjy
-acm
+dXI
 kRQ
 uVI
 sjy
@@ -77396,7 +77404,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78208,7 +78216,7 @@ jMy
 qGI
 uMr
 uMr
-rqn
+acm
 wDa
 vbF
 kBj

@@ -719,6 +719,14 @@
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acN" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port_lz2)
+"acO" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -44668,7 +44676,7 @@ aah
 aah
 aah
 aek
-aaf
+acO
 aaf
 aaf
 acJ
@@ -48020,7 +48028,7 @@ eWd
 eWd
 eWd
 eWd
-eWd
+acN
 eWd
 eWd
 eWd

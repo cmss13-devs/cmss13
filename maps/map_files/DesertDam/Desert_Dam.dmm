@@ -341,6 +341,10 @@
 "abs" = (
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
+"abt" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -375,6 +379,13 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/exterior/river/riverside_east)
+"abB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54081,7 +54092,7 @@ lIt
 lIt
 lIt
 lIt
-lIt
+abt
 lIt
 lIt
 lIt
@@ -56939,7 +56950,7 @@ aQW
 aQW
 aQW
 aQW
-aQW
+abB
 aQW
 aQW
 aQW

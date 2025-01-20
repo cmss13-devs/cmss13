@@ -42,6 +42,9 @@
 	/// The required level of a skill for opening this storage if it is inside another storage type
 	var/required_skill_level_for_nest_opening = null
 
+	/// How many items should be on line
+	var/row_length = 7
+
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -387,9 +390,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		space_orient_objs(numbered_contents)
 	else
 		var/row_num = 0
-		var/col_count = min(7,storage_slots) -1
-		if (adjusted_contents > 7)
-			row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+		var/col_count = min(row_length,storage_slots) -1
+		if (adjusted_contents > row_length)
+			row_num = floor((adjusted_contents-1) / row_length) // 7 is the maximum allowed width.
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 

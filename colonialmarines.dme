@@ -1295,6 +1295,7 @@
 #include "code\game\objects\items\storage\secure.dm"
 #include "code\game\objects\items\storage\smartpack.dm"
 #include "code\game\objects\items\storage\storage.dm"
+#include "code\game\objects\items\storage\supply_container.dm"
 #include "code\game\objects\items\storage\surgical_tray.dm"
 #include "code\game\objects\items\storage\toolbox.dm"
 #include "code\game\objects\items\storage\toolkit.dm"

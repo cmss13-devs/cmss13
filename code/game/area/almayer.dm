@@ -720,7 +720,7 @@
 	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL|AREA_CONTAINMENT
 
 /area/almayer/medical/containment/cell/cl
-	name = "\improper Containment"
+	name = "\improper Storage Room"
 
 /area/almayer/medical/chemistry
 	name = "\improper Medical Chemical laboratory"

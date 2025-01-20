@@ -90,6 +90,13 @@
 		var/rankname = admin_holder.rank
 		if(rankname in rank_icons)
 			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+	if(admin_holder.extra_titles?.len)
+		var/list/extra_rank_icons = icon_states('icons/ooc.dmi')
+		var/ooc_icon_state
+		for(var/srank in admin_holder.extra_titles)
+			ooc_icon_state = trim(srank)
+			if(ooc_icon_state in extra_rank_icons)
+				prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, ooc_icon_state)]"
 	if(prefix)
 		prefix = "[prefix] "
 	return prefix
@@ -142,7 +149,7 @@
 
 	var/display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = S.name
+		display_name = S.real_name
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -164,7 +171,7 @@
 	// Now handle admins
 	display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.name]/([S.key])"
+		display_name = "[S.real_name]/([S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
@@ -191,6 +198,10 @@
 
 	if(!mob)
 		return
+
+	if(istype(mob, /mob/new_player))
+		var/mob/new_player/new_player = mob
+		new_player.initialize_lobby_screen()
 
 	for(var/I in mob.open_uis)
 		var/datum/nanoui/ui = I
@@ -232,7 +243,8 @@
 	if(split_width - desired_width < 240)
 		desired_width = split_width - 240
 
-	if (text2num(map_size[1]) == desired_width)
+	if (text2num(map_size[1]) == desired_width || split_width == 0)
+		// If split_width is 0, it likely means they are minimized and we don't know what the window size would be
 		// Nothing to do
 		return
 

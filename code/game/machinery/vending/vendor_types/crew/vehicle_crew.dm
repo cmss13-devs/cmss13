@@ -22,9 +22,19 @@
 	available_points_to_display = 0
 
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_USE_VENDOR_FLAGS
+	var/faction = FACTION_MARINE
+	var/datum/controller/supply/linked_supply_controller
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller //we default to normal budget on wrong input
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, PROC_REF(populate_products))
 	if(!GLOB.VehicleGearConsole)
 		GLOB.VehicleGearConsole = src
@@ -35,9 +45,9 @@
 	return ..()
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = loc
-	T = get_step(T, SOUTH)
-	return T
+	var/turf/target = get_turf(src)
+	target = get_step(target, SOUTH)
+	return target
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over() //we don't do this here
 	return
@@ -45,7 +55,7 @@
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/flip_back()
 	return
 
-/obj/structure/machinery/cm_vending/ex_act(severity)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_LOW)
 		if(prob(25))
 			malfunction()
@@ -87,9 +97,9 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(GLOB.supply_controller.tank_points) //we steal points from GLOB.supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points_to_display = GLOB.supply_controller.tank_points
-		GLOB.supply_controller.tank_points = 0
+	if(linked_supply_controller.tank_points) //we steal points from GLOB.supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+		available_points_to_display = linked_supply_controller.tank_points
+		linked_supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
 
 	var/list/ui_listed_products = get_listed_products(user)
@@ -119,11 +129,6 @@
 			vend_fail()
 			return FALSE
 		budget_points -= L[2]
-
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/T = get_turf(src)
-	T = get_step(T, SOUTH)
-	return T
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
@@ -224,12 +229,14 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_arc, list(
 		list("M41A Magazine (10x24mm)", 12, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
+		list("M10 Auto Pistol", 2, /obj/item/weapon/gun/pistol/m10, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", 2, /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Combat Revolver", 2, /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
 		list("M4A3 Service Pistol", 2, /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
 		list("M82F Flare Gun", 2, /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
+		list("M10 HV magazine (10x20mm)", 10, /obj/item/ammo_magazine/pistol/m10, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", 10, /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Speedloader (.44)", 10, /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", 10, /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
@@ -274,6 +281,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M39 Holster Rig", 0, /obj/item/storage/belt/gun/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 M10 Holster Rig", 0, /obj/item/storage/belt/gun/m10, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 General Revolver Holster Rig", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M82F Holster Rig", 0, /obj/item/storage/belt/gun/flaregun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -353,6 +361,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/tank/ltb
+	desc = "A giant cannon firing explosive 86mm shells. You'd be lucky if this even leaves the dust of whatever you hit with it."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
@@ -363,6 +372,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/gatling
+	desc = "A primary LTAA Minigun utilizing AP ammo for tanks. The barrel spins up as it is fired, improving its fire rate and accuracy dramatically. Capable of shredding apart even the thickest walls in seconds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
@@ -370,6 +380,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/dragonflamer
+	desc = "A heavy flamer that spews out high-combustion napalm in a wide radius. The fuel burns intensely and quickly, which allows for it to be used offensively by armoured vehicles."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
@@ -377,6 +388,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/autocannon
+	desc = "An automatic cannon for tanks, capable of firing precisely even at long ranges. Loads 20mm explosive shells."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
@@ -386,12 +398,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/tankflamer
+	desc = "A small LZR-N Flamer Unit - a modified version of your bog standard flamer."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 	)
 
 /obj/effect/essentials_set/tank/tow
+	desc = "A quint rocket launcher capable of firing four rockets in quick succession."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
@@ -399,12 +413,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	)
 
 /obj/effect/essentials_set/tank/m56cupola
+	desc = "A permanently fixed M56D, firing standard issue 10x28mm rounds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 	)
 
 /obj/effect/essentials_set/tank/tankgl
+	desc = "A magazine feed grenade launcher capable of holding 10 grenades. This model loads M40 grenades."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,

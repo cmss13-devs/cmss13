@@ -69,136 +69,20 @@
 		ui.open()
 
 /obj/structure/machinery/computer/ares_console/ui_data(mob/user)
-	var/list/data = list()
+	var/list/data = datacore.get_interface_data()
 
-	data["current_menu"] = current_menu
-	data["last_page"] = last_menu
+	data["local_current_menu"] = current_menu
+	data["local_last_page"] = last_menu
 
-	data["logged_in"] = last_login
-	data["sudo"] = sudo_holder ? TRUE : FALSE
+	data["local_logged_in"] = last_login
+	data["local_sudo"] = sudo_holder ? TRUE : FALSE
 
-	data["access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [ares_auth_to_text(authentication)]."
-	data["access_level"] = authentication
+	data["local_access_text"] = "[sudo_holder ? "(SUDO)," : ""] access level [authentication], [ares_auth_to_text(authentication)]."
+	data["local_access_level"] = authentication
 
-	data["alert_level"] = GLOB.security_level
-	data["evac_status"] = SShijack.evac_status
-	data["worldtime"] = world.time
+	data["local_spying_conversation"] = deleted_1to1
+	data["local_printer_cooldown"] = !COOLDOWN_FINISHED(src, printer_cooldown)
 
-	data["access_log"] = datacore.interface_access_list
-	data["apollo_log"] = datacore.apollo_log
-
-	data["deleted_conversation"] = deleted_1to1
-
-	data["distresstime"] = datacore.ares_distress_cooldown
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
-	data["quarterstime"] = datacore.ares_quarters_cooldown
-	data["mission_failed"] = SSticker.mode.is_in_endgame
-	data["nuketimelock"] = NUCLEAR_TIME_LOCK
-	data["nuke_available"] = datacore.nuke_available
-
-	data["printer_cooldown"] = !COOLDOWN_FINISHED(src, printer_cooldown)
-
-	var/list/logged_announcements = list()
-	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
-		var/list/current_broadcast = list()
-		current_broadcast["time"] = broadcast.time
-		current_broadcast["title"] = broadcast.title
-		current_broadcast["details"] = broadcast.details
-		current_broadcast["ref"] = "\ref[broadcast]"
-		logged_announcements += list(current_broadcast)
-	data["records_announcement"] = logged_announcements
-
-	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in datacore.records_security)
-		var/list/current_alert = list()
-		current_alert["time"] = security_alert.time
-		current_alert["title"] = security_alert.title
-		current_alert["details"] = security_alert.details
-		current_alert["ref"] = "\ref[security_alert]"
-		logged_alerts += list(current_alert)
-	data["records_security"] = logged_alerts
-
-	var/list/logged_flights = list()
-	for(var/datum/ares_record/flight/flight_log as anything in datacore.records_flight)
-		var/list/current_flight = list()
-		current_flight["time"] = flight_log.time
-		current_flight["title"] = flight_log.title
-		current_flight["details"] = flight_log.details
-		current_flight["user"] = flight_log.user
-		current_flight["ref"] = "\ref[flight_log]"
-		logged_flights += list(current_flight)
-	data["records_flight"] = logged_flights
-
-	var/list/logged_bioscans = list()
-	for(var/datum/ares_record/bioscan/scan as anything in datacore.records_bioscan)
-		var/list/current_scan = list()
-		current_scan["time"] = scan.time
-		current_scan["title"] = scan.title
-		current_scan["details"] = scan.details
-		current_scan["ref"] = "\ref[scan]"
-		logged_bioscans += list(current_scan)
-	data["records_bioscan"] = logged_bioscans
-
-	var/list/logged_bombs = list()
-	for(var/datum/ares_record/bombardment/bomb as anything in datacore.records_bombardment)
-		var/list/current_bomb = list()
-		current_bomb["time"] = bomb.time
-		current_bomb["title"] = bomb.title
-		current_bomb["details"] = bomb.details
-		current_bomb["user"] = bomb.user
-		current_bomb["ref"] = "\ref[bomb]"
-		logged_bombs += list(current_bomb)
-	data["records_bombardment"] = logged_bombs
-
-	var/list/logged_deletes = list()
-	for(var/datum/ares_record/deletion/deleted as anything in datacore.records_deletion)
-		if(!istype(deleted))
-			continue
-		var/list/current_delete = list()
-		current_delete["time"] = deleted.time
-		current_delete["title"] = deleted.title
-		current_delete["details"] = deleted.details
-		current_delete["user"] = deleted.user
-		current_delete["ref"] = "\ref[deleted]"
-		logged_deletes += list(current_delete)
-	data["records_deletion"] = logged_deletes
-
-	var/list/logged_discussions = list()
-	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in datacore.records_deletion)
-		if(!istype(deleted_convo))
-			continue
-		var/list/deleted_disc = list()
-		deleted_disc["time"] = deleted_convo.time
-		deleted_disc["title"] = deleted_convo.title
-		deleted_disc["ref"] = "\ref[deleted_convo]"
-		logged_discussions += list(deleted_disc)
-	data["deleted_discussions"] = logged_discussions
-
-	var/list/logged_orders = list()
-	for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
-		if(!istype(req_order))
-			continue
-		var/list/current_order = list()
-		current_order["time"] = req_order.time
-		current_order["details"] = req_order.details
-		current_order["title"] = req_order.title
-		current_order["user"] = req_order.user
-		current_order["ref"] = "\ref[req_order]"
-		logged_orders += list(current_order)
-	data["records_requisition"] = logged_orders
-
-	var/list/logged_techs = list()
-	for(var/datum/ares_record/tech/tech_unlock as anything in datacore.records_tech)
-		var/list/current_tech = list()
-		current_tech["time"] = tech_unlock.time
-		current_tech["details"] = tech_unlock.details
-		current_tech["user"] = tech_unlock.user
-		current_tech["tier_changer"] = tech_unlock.is_tier
-		current_tech["ref"] = "\ref[tech_unlock]"
-		logged_techs += list(current_tech)
-	data["records_tech"] = logged_techs
-
-	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
 	for(var/datum/ares_record/talk_log/log as anything in datacore.records_talking)
@@ -207,18 +91,8 @@
 		if(log.user == last_login)
 			active_convo = log.conversation
 			active_ref = "\ref[log]"
-
-		var/list/current_convo = list()
-		current_convo["user"] = log.user
-		current_convo["ref"] = "\ref[log]"
-		current_convo["conversation"] = log.conversation
-		logged_convos += list(current_convo)
-
-	data["active_convo"] = active_convo
-	data["active_ref"] = active_ref
-	data["conversations"] = logged_convos
-
-	data["security_vents"] = link.get_ares_vents()
+	data["local_active_convo"] = active_convo
+	data["local_active_ref"] = active_ref
 
 	return data
 
@@ -334,6 +208,9 @@
 		if("page_deleted_1to1")
 			last_menu = current_menu
 			current_menu = "deleted_talks"
+		if("page_records_1to1")
+			last_menu = current_menu
+			current_menu = "talking_log"
 		if("page_tech")
 			last_menu = current_menu
 			current_menu = "tech_log"
@@ -456,7 +333,7 @@
 			datacore.records_talking += convo
 
 		if("clear_conversation")
-			var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+			var/datum/ares_record/talk_log/conversation = locate(params["passed_active_convo"])
 			if(!istype(conversation))
 				return FALSE
 			var/datum/ares_record/deleted_talk/deleted = new
@@ -469,7 +346,7 @@
 		if("message_ares")
 			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
-				message_ares(message, user, params["active_convo"])
+				message_ares(message, user, params["passed_active_convo"])
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])
@@ -564,7 +441,7 @@
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(user)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[user]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+			message_admins("[key_name(user)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(user)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[user]'>APPROVE</A>) (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 			to_chat(user, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
 			log_ares_security("Nuclear Ordnance Request", "Sent a request for nuclear ordnance for the following reason: [reason]", last_login)
 			if(ares_can_interface())

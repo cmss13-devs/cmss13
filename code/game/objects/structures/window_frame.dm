@@ -193,7 +193,7 @@
 	if(istype(W, sheet_type))
 		to_chat(user, SPAN_WARNING("You can't repair this window."))
 		return
-	..()
+	. = ..()
 
 /obj/structure/window_frame/colony
 	icon_state = "col_window0_frame"
@@ -315,3 +315,109 @@
 
 /obj/structure/window_frame/corsat/security
 	window_type = /obj/structure/window/framed/corsat/security
+
+
+// Hybrisa Window Frames
+
+// Research
+/obj/structure/window_frame/hybrisa/research
+	icon = 'icons/turf/walls/hybrisaresearchbrown_windows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+
+/obj/structure/window_frame/hybrisa/research/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+
+/obj/structure/window_frame/hybrisa/research/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Marshalls
+/obj/structure/window_frame/hybrisa/marshalls
+	icon = 'icons/turf/walls/hybrisa_marshalls_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/hybrisa/marshalls/reinforced
+	icon = 'icons/turf/walls/hybrisa_marshalls_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE
+
+// Colony
+/obj/structure/window_frame/hybrisa/colony
+	icon = 'icons/turf/walls/hybrisa_colony_window.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Hosptial
+
+/obj/structure/window_frame/hybrisa/colony/hospital
+	icon = 'icons/turf/walls/hybrisa_hospital_colonywindows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/hospital/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/hospital/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Offices
+
+/obj/structure/window_frame/hybrisa/colony/office
+	icon = 'icons/turf/walls/hybrisa_offices_windows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/office/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/office/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Engineering
+/obj/structure/window_frame/hybrisa/colony/engineering
+	icon = 'icons/turf/walls/hybrisa_engineering_windows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/engineering/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/engineering/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Space-Port
+/obj/structure/window_frame/hybrisa/spaceport
+	icon = 'icons/turf/walls/hybrisa_spaceport_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/hybrisa/spaceport/reinforced
+	icon = 'icons/turf/walls/hybrisa_spaceport_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE

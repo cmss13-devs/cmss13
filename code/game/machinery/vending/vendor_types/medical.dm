@@ -54,7 +54,7 @@
 /obj/structure/restock_cart
 	name = "restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/liquid_tanks.dmi'
 	icon_state = "tank_normal" // Temporary
 	var/overlay_color = rgb(252, 186, 3) // Temporary
 
@@ -82,7 +82,6 @@
 /obj/structure/restock_cart/medical
 	name = "\improper Wey-Yu restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "tank_normal" // Temporary
 
 	supplies_remaining = 20
@@ -242,7 +241,7 @@
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
-		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,,
+		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
 		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
@@ -256,6 +255,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+
+		/obj/item/reagent_container/hypospray/tricordrazine,
 
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,
@@ -274,8 +275,12 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
+	if(inoperable())
+		return .
 	if(healthscan)
 		. += SPAN_NOTICE("[src] offers assisted medical scans, for ease of use with minimal training. Present the target in front of the scanner to scan.")
+	if(allow_supply_link_restock && get_supply_link())
+		. += SPAN_NOTICE("A supply link is connected.")
 
 /obj/structure/machinery/cm_vending/sorted/medical/ui_data(mob/user)
 	. = ..()
@@ -327,8 +332,6 @@
 	if(missing_reagents <= 0)
 		return TRUE
 	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
-		if(container.reagents.total_volume == initial(container.reagents.total_volume))
-			return TRUE
 		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
 		return FALSE
 	if(chem_refill_volume < missing_reagents)
@@ -719,7 +722,7 @@
 	wrenchable = TRUE
 	hackable = TRUE
 	healthscan = FALSE
-	allow_supply_link_restock = FALSE
+	allow_supply_link_restock = TRUE
 	chem_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted

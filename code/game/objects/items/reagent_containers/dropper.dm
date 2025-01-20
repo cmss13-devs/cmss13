@@ -5,6 +5,10 @@
 	name = "Dropper"
 	desc = "A dropper. Transfers 5 units."
 	icon = 'icons/obj/items/chemistry.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "dropper0"
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(1,2,3,4,5)
@@ -62,9 +66,12 @@
 						src.reagents.reaction(safe_thing, TOUCH)
 
 					to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
-					if (src.reagents.total_volume<=0)
+					if(src.reagents.total_volume<=0)
 						filled = 0
 						icon_state = "dropper[filled]"
+						item_state = icon_state
+						user.update_inv_l_hand()
+						user.update_inv_r_hand()
 					return
 
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
@@ -83,9 +90,12 @@
 
 		trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
-		if (src.reagents.total_volume<=0)
+		if(src.reagents.total_volume<=0)
 			filled = 0
 			icon_state = "dropper[filled]"
+			item_state = icon_state
+			user.update_inv_l_hand()
+			user.update_inv_r_hand()
 
 	else
 
@@ -107,6 +117,9 @@
 
 		filled = 1
 		icon_state = "dropper[filled]"
+		item_state = icon_state
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 	return
 

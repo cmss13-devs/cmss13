@@ -615,14 +615,6 @@
 /obj/effect/acid_hole,
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/oob)
-"acr" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/security/glass)
 "acv" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/auto_turf/sand_white/layer0,
@@ -22609,6 +22601,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"mhn" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/security/glass)
 "mhs" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt,
@@ -64934,7 +64934,7 @@ jDO
 nRK
 sjy
 sjy
-acr
+mhn
 hIz
 kTm
 oHR

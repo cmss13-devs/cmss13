@@ -45,7 +45,7 @@
 		var/mob/living/carbon/human/H = M
 		if(drain_stims)
 			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
-				H.reagents.remove_reagent(stim.id, power, TRUE)
+				H.reagents.remove_reagent(stim.id, power*2, TRUE)
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
@@ -116,7 +116,7 @@
 	max_range = 6 - 1
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, TRUE, FALSE, FALSE)
+	neuro_callback.Invoke(M, effect_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"

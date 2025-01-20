@@ -110,6 +110,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/ordercomp
 	var/datum/controller/supply/linked_supply_controller
+	var/railing_id = "supply_elevator_railing"
+	var/gear_id = "supply_elevator_gear"
 	var/faction = FACTION_MARINE
 	var/asrs_name = "Automated Storage and Retrieval System"
 
@@ -167,24 +169,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		.["current_order"] += list(list_pack)
 
-	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-	.["shuttle_status"] = "lowered"
-	if (shuttle.has_arrive_time())
-		.["shuttle_status"] = "moving"
-		return
-
-	if (shuttle.at_station() )
+	var/obj/docking_port/mobile/marine_dropship/req_uscm/shuttle = linked_supply_controller.new_shuttle
+	.["shuttle_status"] = "moving"
+	if (shuttle.get_docked().id == shuttle.elevator_id)
 		.["shuttle_status"] = "raised"
-
-		switch(shuttle.docking_controller?.get_docking_status())
-			if ("docked")
-				.["shuttle_status"] = "raised"
-			if ("undocked")
-				.["shuttle_status"] = "lowered"
-			if ("docking")
-				.["shuttle_status"] = "raising"
-			if ("undocking")
-				.["shuttle_status"] = "lowering"
+	if (shuttle.get_docked().id == shuttle.pit_id)
+		.["shuttle_status"] = "lowered"
 
 /obj/structure/machinery/computer/supply/ui_static_data(mob/user)
 	. = ..()
@@ -386,6 +376,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /obj/structure/machinery/computer/supply/Destroy()
 	. = ..()
 	LAZYREMOVE(linked_supply_controller.bound_supply_computer_list, src)
+
 
 /obj/structure/machinery/computer/supply/asrs/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/spacecash))
@@ -746,6 +737,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/obj/item/paper/manifest/manifest_to_print = /obj/item/paper/manifest
 	var/obj/structure/machinery/computer/supply/asrs/bound_supply_computer_list
 
+	var/obj/docking_port/mobile/marine_dropship/req_uscm/new_shuttle
+
 	var/list/all_supply_groups = list(
 		"Operations",
 		"Weapons",
@@ -885,7 +878,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 // Called when the elevator is lowered.
 /datum/controller/supply/proc/sell()
-	var/area/area_shuttle = shuttle.get_location_area()
+	var/area/area_shuttle = new_shuttle.shuttle_areas[1]
 	if(!area_shuttle)
 		return
 
@@ -939,7 +932,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 //Buyin
 /datum/controller/supply/proc/buy()
-	var/area/area_shuttle = shuttle?.get_location_area()
+	var/area/area_shuttle = new_shuttle.shuttle_areas[1]
 	if(!area_shuttle || !length(shoppinglist))
 		return
 
@@ -1112,10 +1105,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	.["used_points"] = used_points
 	.["used_dollars"] = used_dollars
 
-	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-	.["can_launch"] = shuttle.can_launch()
-	.["can_force"] = shuttle.can_force()
-	.["can_cancel"] = shuttle.can_cancel()
+	var/obj/docking_port/mobile/marine_dropship/req_uscm/shuttle = linked_supply_controller.new_shuttle
+	.["can_launch"] = shuttle.canMove()
+	.["can_force"] = FALSE//shuttle.can_force() need to figure this out with the new shuttle what it even does
+	.["can_cancel"] = FALSE//shuttle.can_cancel()
 
 	.["black_market"] = can_order_contraband
 	.["mendoza_status"] = linked_supply_controller.mendoza_status
@@ -1197,16 +1190,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					return TRUE
 
 		if("send")
-			var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-
-			if(shuttle.at_station())
-				if (shuttle.forbidden_atoms_check())
-					system_message = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons."
-					return TRUE
-				shuttle.launch(src)
-				return TRUE
-
-			shuttle.launch(src)
+			linked_supply_controller.new_shuttle.swap_station()
 			return TRUE
 
 		if("force_launch")

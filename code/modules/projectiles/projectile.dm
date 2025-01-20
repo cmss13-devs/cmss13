@@ -621,7 +621,7 @@
 
 /obj/projectile/proc/get_effective_accuracy()
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>; distance: <b>[distance_travelled]</b>"))
+	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>;accurate_range: <b>[ammo.accurate_range]<b>; distance: <b>[distance_travelled]</b>"))
 	#endif
 
 	var/effective_accuracy = accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.

@@ -1071,6 +1071,7 @@
 	reagent_state = LIQUID
 	color = "#79847a"
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/forensic_spray/reaction_obj(obj/reacting_on, volume)
 	if(!istype(reacting_on, /obj/effect/decal/prints))

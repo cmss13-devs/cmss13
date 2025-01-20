@@ -1,7 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, Flex, Input, Modal, Section, Table } from '../components';
+import {
+  Box,
+  Button,
+  Dropdown,
+  Flex,
+  Input,
+  Modal,
+  Section,
+  Table,
+} from '../components';
 import { Window } from '../layouts';
 
 export const SecurityRecords = () => {
@@ -12,7 +21,9 @@ export const SecurityRecords = () => {
 
   const { data, act } = useBackend();
   const { records = [], user_data, scanner = {}, criminal_statuses } = data;
-  const [recordsArray, setRecordsArray] = useState(Array.isArray(records) ? records : []);
+  const [recordsArray, setRecordsArray] = useState(
+    Array.isArray(records) ? records : [],
+  );
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [editField, setEditField] = useState(null); // Field being edited
   const [editValue, setEditValue] = useState(''); // Value for input
@@ -31,10 +42,12 @@ export const SecurityRecords = () => {
 
   useEffect(() => {
     if (selectedRecord) {
-      const updatedRecord = recordsArray.find(record => record.id === selectedRecord.id);
+      const updatedRecord = recordsArray.find(
+        (record) => record.id === selectedRecord.id,
+      );
       if (updatedRecord) {
         setSelectedRecord(updatedRecord);
-      }else{
+      } else {
         goBack();
       }
     }
@@ -63,7 +76,8 @@ export const SecurityRecords = () => {
   };
 
   const handleSort = (key) => {
-    const direction = sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';
+    const direction =
+      sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';
     setSortConfig({ key, direction });
 
     const sortedRecords = [...recordsArray].sort((a, b) => {
@@ -77,8 +91,8 @@ export const SecurityRecords = () => {
 
   const filteredRecords = recordsArray.filter((record) =>
     Object.values(record).some((value) =>
-      String(value).toLowerCase().includes(filterText.toLowerCase())
-    )
+      String(value).toLowerCase().includes(filterText.toLowerCase()),
+    ),
   );
 
   //* Functions for handling modals state
@@ -118,23 +132,52 @@ export const SecurityRecords = () => {
     paddingBottom: '10px',
   };
 
-  const grayItalicStyle ={
+  const grayItalicStyle = {
     fontSize: '0.9rem',
     color: 'gray',
     fontStyle: 'italic',
   };
 
   const personalDataFields = [
-    { label: 'Name:', contentKey: 'general_name', isEditable: true, type: 'text' },
+    {
+      label: 'Name:',
+      contentKey: 'general_name',
+      isEditable: true,
+      type: 'text',
+    },
     { label: 'ID:', contentKey: 'id', isEditable: false },
-    { label: 'Rank:', contentKey: 'general_rank', isEditable: true, type: 'text' },
-    { label: 'Sex:', contentKey: 'general_sex', isEditable: true, type: 'select', options: ["Male", "Female"] },
-    { label: 'Age:', contentKey: 'general_age', isEditable: true, type: 'number' },
+    {
+      label: 'Rank:',
+      contentKey: 'general_rank',
+      isEditable: true,
+      type: 'text',
+    },
+    {
+      label: 'Sex:',
+      contentKey: 'general_sex',
+      isEditable: true,
+      type: 'select',
+      options: ['Male', 'Female'],
+    },
+    {
+      label: 'Age:',
+      contentKey: 'general_age',
+      isEditable: true,
+      type: 'number',
+    },
   ];
 
   const medicalDataFields = [
-    { label: 'Physical Status:', contentKey: 'general_p_stat', isEditable: false },
-    { label: 'Mental Status:', contentKey: 'general_m_stat', isEditable: false },
+    {
+      label: 'Physical Status:',
+      contentKey: 'general_p_stat',
+      isEditable: false,
+    },
+    {
+      label: 'Mental Status:',
+      contentKey: 'general_m_stat',
+      isEditable: false,
+    },
   ];
 
   const securityDataFields = [
@@ -148,11 +191,11 @@ export const SecurityRecords = () => {
   ];
 
   const getBackgroundColor = (status) => {
-    return criminal_statuses[status]?.background || "inherit"; // Default to white if status is missing
+    return criminal_statuses[status]?.background || 'inherit'; // Default to white if status is missing
   };
 
   const getFontColor = (status) => {
-    return criminal_statuses[status]?.font || "inherit"; // Default to white if status is missing
+    return criminal_statuses[status]?.font || 'inherit'; // Default to white if status is missing
   };
 
   const selectRecord = useCallback(
@@ -160,7 +203,7 @@ export const SecurityRecords = () => {
       act('select_record', { id: record.id });
       setSelectedRecord(record);
     },
-    [act]
+    [act],
   );
 
   const goBack = useCallback(() => {
@@ -177,10 +220,16 @@ export const SecurityRecords = () => {
           ...boxStyle,
         }}
       >
-        <span style={{ minWidth: '120px', textAlign: 'left' }}>{field.label}</span>
+        <span style={{ minWidth: '120px', textAlign: 'left' }}>
+          {field.label}
+        </span>
         {field.isEditable ? (
-          <Button onClick={() => openEditModal(field.contentKey, record[field.contentKey])}>
-          {record[field.contentKey]}
+          <Button
+            onClick={() =>
+              openEditModal(field.contentKey, record[field.contentKey])
+            }
+          >
+            {record[field.contentKey]}
           </Button>
         ) : (
           <span>{record[field.contentKey]}</span>
@@ -189,145 +238,223 @@ export const SecurityRecords = () => {
     );
   };
 
-  const renderFingerprintScannerSection = () => (
+  const renderFingerprintScannerSection = () =>
     scanner.connected ? (
       <Section title="Fingerprint Scanner">
         <Flex direction="row" gap={2}>
           <Button onClick={() => setViewFingerprintScanner(true)} color="blue">
             Open Fingerprint Scanner
           </Button>
-          <Box style={{ ...grayItalicStyle, paddingTop: "4px", paddingLeft: "5px" }}>
-                Found {scanner.count} fingerprint{scanner.count > 1 ? "s": ""}
+          <Box
+            style={{
+              ...grayItalicStyle,
+              paddingTop: '4px',
+              paddingLeft: '5px',
+            }}
+          >
+            Found {scanner.count} fingerprint{scanner.count > 1 ? 's' : ''}
           </Box>
         </Flex>
       </Section>
-    ) : null
-  );
+    ) : null;
 
   const renderFingerprintScannerView = () => (
-        <Section title="Fingerprint Scanner">
-          {scanner.count > 0 ? (
-            <>
-              <Box style={{ marginBottom: '10px' }}>
-                <strong>Fingerprints:</strong> {scanner.count}
-              </Box>
-              <Table>
-                <Table.Row header>
-                  <Table.Cell bold style={cellStyle}>Name</Table.Cell>
-                  <Table.Cell bold style={cellStyle}>Rank</Table.Cell>
-                  <Table.Cell bold style={cellStyle}>Squad</Table.Cell>
-                  <Table.Cell bold style={cellStyle}>Description</Table.Cell>
-                </Table.Row>
-                {scanner.data.map((fingerprint, index) => (
-                  <Table.Row key={index}>
-                    <Table.Cell style={cellStyle}>{fingerprint.name || 'Unknown'}</Table.Cell>
-                    <Table.Cell style={cellStyle}>{fingerprint.rank || 'Unknown'}</Table.Cell>
-                    <Table.Cell style={cellStyle}>{fingerprint.squad || 'Unknown'}</Table.Cell>
-                    <Table.Cell style={cellStyle}>{fingerprint.description || 'No Description'}</Table.Cell>
-                  </Table.Row>
-                ))}
-              </Table>
-            </>
-            ) : (
-              <Box>No fingerprints available.</Box>
-            )}
-              <Flex direction="row" gap={2} style={{ marginTop: '10px' }}>
-                <Button onClick={() => { act('print_fingerprint_report'); }} color="green">
-                  Print Fingerprint Report
-                </Button>
-                <Button onClick={() => { act('clear_fingerprints'); }} color="red">
-                  Clear Fingerprints
-                </Button>
-                <Button onClick={() => { act('eject_fingerprint_scanner'); setViewFingerprintScanner(false); }} color="blue">
-                  Eject Scanner
-                </Button>
-              </Flex>
-          <hr />
-          <Button onClick={() => setViewFingerprintScanner(false)}>Back</Button>
-        </Section>
+    <Section title="Fingerprint Scanner">
+      {scanner.count > 0 ? (
+        <>
+          <Box style={{ marginBottom: '10px' }}>
+            <strong>Fingerprints:</strong> {scanner.count}
+          </Box>
+          <Table>
+            <Table.Row header>
+              <Table.Cell bold style={cellStyle}>
+                Name
+              </Table.Cell>
+              <Table.Cell bold style={cellStyle}>
+                Rank
+              </Table.Cell>
+              <Table.Cell bold style={cellStyle}>
+                Squad
+              </Table.Cell>
+              <Table.Cell bold style={cellStyle}>
+                Description
+              </Table.Cell>
+            </Table.Row>
+            {scanner.data.map((fingerprint, index) => (
+              <Table.Row key={index}>
+                <Table.Cell style={cellStyle}>
+                  {fingerprint.name || 'Unknown'}
+                </Table.Cell>
+                <Table.Cell style={cellStyle}>
+                  {fingerprint.rank || 'Unknown'}
+                </Table.Cell>
+                <Table.Cell style={cellStyle}>
+                  {fingerprint.squad || 'Unknown'}
+                </Table.Cell>
+                <Table.Cell style={cellStyle}>
+                  {fingerprint.description || 'No Description'}
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table>
+        </>
+      ) : (
+        <Box>No fingerprints available.</Box>
+      )}
+      <Flex direction="row" gap={2} style={{ marginTop: '10px' }}>
+        <Button
+          onClick={() => {
+            act('print_fingerprint_report');
+          }}
+          color="green"
+        >
+          Print Fingerprint Report
+        </Button>
+        <Button
+          onClick={() => {
+            act('clear_fingerprints');
+          }}
+          color="red"
+        >
+          Clear Fingerprints
+        </Button>
+        <Button
+          onClick={() => {
+            act('eject_fingerprint_scanner');
+            setViewFingerprintScanner(false);
+          }}
+          color="blue"
+        >
+          Eject Scanner
+        </Button>
+      </Flex>
+      <hr />
+      <Button onClick={() => setViewFingerprintScanner(false)}>Back</Button>
+    </Section>
   );
 
   const renderRecordDetails = (record) => (
-        <Section title={`Details for ${record.general_name}`}>
-          <Flex direction="column">
-            <Flex direction="row" gap={2}>
-              <Flex.Item grow={1}>
-                <Flex direction="column">
-                  <Box textAlign="center" style={sectionHeaderStyle}>Personal Data</Box>
-                  {personalDataFields.map((field) => renderField(field, record))}
-                </Flex>
-              </Flex.Item>
-
-              <Flex.Item>
-                <Section title="Photo">
-                  <Box style={{ textAlign: 'center', padding: '10px' }}>
-                    <img
-                      src={forceReload(`${currentPhoto}.png`)}
-                      alt="Perp photo"
-                      style={{
-                        borderRadius: '4px',
-                        border: '1px solid var(--border-color)',
-                        width: '100px',
-                        height: '100px',
-                      }}
-                    />
-                    <Flex direction="row" gap={2}>
-                      <Button onClick={handleUpdatePhoto} color="blue">
-                        Update
-                      </Button>
-                      <Button onClick={changePhoto} color="green" style={{ minWidth: '60px' }}>
-                      {currentPhoto === 'front' ? 'Side' : 'Front'}
-                      </Button>
-                    </Flex>
-                  </Box>
-                </Section>
-              </Flex.Item>
-            </Flex>
-
-            <hr />
-            <Box textAlign="center" style={sectionHeaderStyle}>Medical Data</Box>
-            {medicalDataFields.map((field) => renderField(field, record))}
-
-            <hr />
-            <Box textAlign="center" style={sectionHeaderStyle}>Security Data</Box>
-            { !record.security_criminal ? (
-              <Box>
-                <Box style={{ ...grayItalicStyle, paddingTop: '5px', paddingBottom: '5px' }} >
-                  Security record not found
-                </Box>
-                <Button onClick={() => act('new_security_record', { id: record.id, name: record.general_name })} color="green">
-                  Create security record
-                </Button>
+    <Section title={`Details for ${record.general_name}`}>
+      <Flex direction="column">
+        <Flex direction="row" gap={2}>
+          <Flex.Item grow={1}>
+            <Flex direction="column">
+              <Box textAlign="center" style={sectionHeaderStyle}>
+                Personal Data
               </Box>
-            ): (
-              <>
-                {securityDataFields.map((field) => renderField(field, record))}
-                <Box style={boxStyle}>
-                  Incidents:
-                  <div
-                    // Data received from in-game system
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{
-                      __html: record.security_incident || 'None',
-                    }}
-                  />
-                </Box>
-                <hr />
-                <Box textAlign="center" style={sectionHeaderStyle}>Comments Log</Box>
-                <Box style={boxStyle}>
-                  {record.security_comments && Object.keys(record.security_comments).length > 0 ? (
-                    Object.entries(record.security_comments).map(([key, comment]) => (
-                      <Box key={key} style={{ marginBottom: '10px', padding: '5px' }}>
+              {personalDataFields.map((field) => renderField(field, record))}
+            </Flex>
+          </Flex.Item>
+
+          <Flex.Item>
+            <Section title="Photo">
+              <Box style={{ textAlign: 'center', padding: '10px' }}>
+                <img
+                  src={forceReload(`${currentPhoto}.png`)}
+                  alt="Perp photo"
+                  style={{
+                    borderRadius: '4px',
+                    border: '1px solid var(--border-color)',
+                    width: '100px',
+                    height: '100px',
+                  }}
+                />
+                <Flex direction="row" gap={2}>
+                  <Button onClick={handleUpdatePhoto} color="blue">
+                    Update
+                  </Button>
+                  <Button
+                    onClick={changePhoto}
+                    color="green"
+                    style={{ minWidth: '60px' }}
+                  >
+                    {currentPhoto === 'front' ? 'Side' : 'Front'}
+                  </Button>
+                </Flex>
+              </Box>
+            </Section>
+          </Flex.Item>
+        </Flex>
+
+        <hr />
+        <Box textAlign="center" style={sectionHeaderStyle}>
+          Medical Data
+        </Box>
+        {medicalDataFields.map((field) => renderField(field, record))}
+
+        <hr />
+        <Box textAlign="center" style={sectionHeaderStyle}>
+          Security Data
+        </Box>
+        {!record.security_criminal ? (
+          <Box>
+            <Box
+              style={{
+                ...grayItalicStyle,
+                paddingTop: '5px',
+                paddingBottom: '5px',
+              }}
+            >
+              Security record not found
+            </Box>
+            <Button
+              onClick={() =>
+                act('new_security_record', {
+                  id: record.id,
+                  name: record.general_name,
+                })
+              }
+              color="green"
+            >
+              Create security record
+            </Button>
+          </Box>
+        ) : (
+          <>
+            {securityDataFields.map((field) => renderField(field, record))}
+            <Box style={boxStyle}>
+              Incidents:
+              <div
+                // Data received from in-game system
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: record.security_incident || 'None',
+                }}
+              />
+            </Box>
+            <hr />
+            <Box textAlign="center" style={sectionHeaderStyle}>
+              Comments Log
+            </Box>
+            <Box style={boxStyle}>
+              {record.security_comments &&
+              Object.keys(record.security_comments).length > 0
+                ? Object.entries(record.security_comments).map(
+                    ([key, comment]) => (
+                      <Box
+                        key={key}
+                        style={{ marginBottom: '10px', padding: '5px' }}
+                      >
                         {comment.deleted_by ? (
                           <Box style={grayItalicStyle}>
-                            Comment deleted by {comment.deleted_by} at {comment.deleted_at || 'unknown time'}.
+                            Comment deleted by {comment.deleted_by} at{' '}
+                            {comment.deleted_at || 'unknown time'}.
                           </Box>
                         ) : (
                           <>
                             <Box fontSize="1.2rem">{comment.entry}</Box>
-                            <Box style={{ fontSize: '0.9rem', color: 'gray' }}>Created at: {comment.created_at} / {comment?.created_by?.name} ({comment?.created_by?.rank}) </Box>
+                            <Box style={{ fontSize: '0.9rem', color: 'gray' }}>
+                              Created at: {comment.created_at} /{' '}
+                              {comment?.created_by?.name} (
+                              {comment?.created_by?.rank}){' '}
+                            </Box>
                             <Button
-                              onClick={() => { act('delete_comment', { id: selectedRecord.id, key }); }}
+                              onClick={() => {
+                                act('delete_comment', {
+                                  id: selectedRecord.id,
+                                  key,
+                                });
+                              }}
                               mt={1}
                             >
                               Delete
@@ -335,112 +462,133 @@ export const SecurityRecords = () => {
                           </>
                         )}
                       </Box>
-                    ))
-                  ) : (
-                    'No comments available.'
-                  )}
-                </Box>
-                <Box style={{ ...boxStyle, paddingLeft: '2px' }}>
-                  <Button onClick={() => setCommentModalOpen(true)}>Add Comment</Button>
-                </Box>
-              </>
-            )}
-
-            <hr />
-            <Flex direction="row" gap={2}>
-
-              <Button onClick={() => act('print_personal_record', { id: record.id })} color="blue">
-                Print record
+                    ),
+                  )
+                : 'No comments available.'}
+            </Box>
+            <Box style={{ ...boxStyle, paddingLeft: '2px' }}>
+              <Button onClick={() => setCommentModalOpen(true)}>
+                Add Comment
               </Button>
-              <Button.Confirm
-                    fluid
-                    color="red"
-                    confirmColor="bad"
-                    confirmContent="Confirm?"
-                    onClick={() => act('delete_general_record', { id: record.id })}
-                  >
-                  Delete general record
-              </Button.Confirm>
-            </Flex>
+            </Box>
+          </>
+        )}
 
-            <hr />
-            <Button onClick={goBack}>Back</Button>
-          </Flex>
-        </Section>
+        <hr />
+        <Flex direction="row" gap={2}>
+          <Button
+            onClick={() => act('print_personal_record', { id: record.id })}
+            color="blue"
+          >
+            Print record
+          </Button>
+          <Button.Confirm
+            fluid
+            color="red"
+            confirmColor="bad"
+            confirmContent="Confirm?"
+            onClick={() => act('delete_general_record', { id: record.id })}
+          >
+            Delete general record
+          </Button.Confirm>
+        </Flex>
+
+        <hr />
+        <Button onClick={goBack}>Back</Button>
+      </Flex>
+    </Section>
   );
 
   const renderRecordsTable = () => (
-        <Section title="Security Records">
-          <Flex direction="row" gap={2} mb={2}>
-              <Button onClick={() => { act('new_general_record'); }} color="green">
-                New general record
+    <Section title="Security Records">
+      <Flex direction="row" gap={2} mb={2}>
+        <Button
+          onClick={() => {
+            act('new_general_record');
+          }}
+          color="green"
+        >
+          New general record
+        </Button>
+      </Flex>
+      <Flex direction="row" gap={2} mb={2}>
+        <Input
+          placeholder="Search records..."
+          value={filterText}
+          onInput={(e) => setFilterText(e.target.value)}
+          style={{ flexGrow: 1 }}
+        />
+      </Flex>
+      <Table>
+        <Table.Row header>
+          <Table.Cell
+            bold
+            style={{ cursor: 'pointer', ...cellStyle }}
+            onClick={() => handleSort('general_name')}
+          >
+            Name{' '}
+            {sortConfig.key === 'general_name' &&
+              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+          </Table.Cell>
+          <Table.Cell
+            bold
+            style={{ cursor: 'pointer', ...cellStyle }}
+            onClick={() => handleSort('id')}
+          >
+            ID{' '}
+            {sortConfig.key === 'id' &&
+              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+          </Table.Cell>
+          <Table.Cell
+            bold
+            style={{ cursor: 'pointer', ...cellStyle }}
+            onClick={() => handleSort('general_rank')}
+          >
+            Rank{' '}
+            {sortConfig.key === 'general_rank' &&
+              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+          </Table.Cell>
+          <Table.Cell
+            bold
+            style={{ cursor: 'pointer', ...cellStyle }}
+            onClick={() => handleSort('security_criminal')}
+          >
+            Status{' '}
+            {sortConfig.key === 'security_criminal' &&
+              (sortConfig.direction === 'asc' ? '▲' : '▼')}
+          </Table.Cell>
+        </Table.Row>
+        {filteredRecords.map((record) => (
+          <Table.Row
+            key={record.id}
+            style={{
+              backgroundColor: getBackgroundColor(record.security_criminal),
+              color: getFontColor(record.security_criminal),
+            }}
+          >
+            <Table.Cell style={cellStyle}>
+              <Button
+                onClick={() => {
+                  selectRecord(record);
+                }}
+              >
+                {record.general_name}
               </Button>
-          </Flex>
-          <Flex direction="row" gap={2} mb={2}>
-            <Input
-              placeholder="Search records..."
-              value={filterText}
-              onInput={(e) => setFilterText(e.target.value)}
-              style={{ flexGrow: 1 }}
-            />
-          </Flex>
-          <Table>
-            <Table.Row header>
-            <Table.Cell
-              bold
-              style={{ cursor: 'pointer', ...cellStyle }}
-              onClick={() => handleSort('general_name')}
-            >
-              Name {sortConfig.key === 'general_name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
             </Table.Cell>
-            <Table.Cell
-              bold
-              style={{ cursor: 'pointer', ...cellStyle }}
-              onClick={() => handleSort('id')}
-            >
-              ID {sortConfig.key === 'id' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+            <Table.Cell style={cellStyle}>{record.id}</Table.Cell>
+            <Table.Cell style={cellStyle}>{record.general_rank}</Table.Cell>
+            <Table.Cell style={cellStyle}>
+              {record.security_criminal}
             </Table.Cell>
-            <Table.Cell
-              bold
-              style={{ cursor: 'pointer', ...cellStyle }}
-              onClick={() => handleSort('general_rank')}
-            >
-              Rank {sortConfig.key === 'general_rank' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
-            </Table.Cell>
-            <Table.Cell
-              bold
-              style={{ cursor: 'pointer', ...cellStyle }}
-              onClick={() => handleSort('security_criminal')}
-            >
-              Status {sortConfig.key === 'security_criminal' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
-            </Table.Cell>
-            </Table.Row>
-            {filteredRecords.map((record) => (
-              <Table.Row key={record.id} style={{
-                backgroundColor: getBackgroundColor(record.security_criminal),
-                color: getFontColor(record.security_criminal),
-              }}>
-                <Table.Cell style={cellStyle}>
-                  <Button
-                    onClick={() => {
-                      selectRecord(record);
-                    }}
-                  >
-                    {record.general_name}
-                  </Button>
-                </Table.Cell>
-                <Table.Cell style={cellStyle}>{record.id}</Table.Cell>
-                <Table.Cell style={cellStyle}>{record.general_rank}</Table.Cell>
-                <Table.Cell style={cellStyle}>{record.security_criminal}</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table>
-        </Section>
+          </Table.Row>
+        ))}
+      </Table>
+    </Section>
   );
 
   const renderEditModal = () => {
     const currentField = [...personalDataFields, ...securityDataFields].find(
-      (field) => field.contentKey === editField
+      (field) => field.contentKey === editField,
     );
 
     const handleKeyDown = (e) => {
@@ -474,7 +622,11 @@ export const SecurityRecords = () => {
             {currentField?.type !== 'select' && (
               <Flex justify="space-between" mt={2}>
                 <Button onClick={closeEditModal}>Cancel</Button>
-                <Button onClick={() => handleSave(editValue)} color="green" style={{ borderColor: "green" }}>
+                <Button
+                  onClick={() => handleSave(editValue)}
+                  color="green"
+                  style={{ borderColor: 'green' }}
+                >
                   Save
                 </Button>
               </Flex>
@@ -497,7 +649,11 @@ export const SecurityRecords = () => {
           />
           <Flex justify="space-between" mt={2}>
             <Button onClick={closeCommentModal}>Cancel</Button>
-            <Button onClick={handleAddComment} color="green" style={{ borderColor: 'green' }}>
+            <Button
+              onClick={handleAddComment}
+              color="green"
+              style={{ borderColor: 'green' }}
+            >
               Add Comment
             </Button>
           </Flex>

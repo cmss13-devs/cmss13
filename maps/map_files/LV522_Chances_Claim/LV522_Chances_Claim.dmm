@@ -593,12 +593,20 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
+"acm" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_2)
 "acn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -52648,7 +52656,7 @@ uiM
 uiM
 uiM
 uiM
-xcY
+aco
 uiM
 uiM
 uiM
@@ -77396,7 +77404,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78208,7 +78216,7 @@ jMy
 qGI
 uMr
 uMr
-rqn
+acm
 wDa
 vbF
 kBj

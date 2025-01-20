@@ -17,6 +17,10 @@
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/medseceng)
+"aaf" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/lz1_valley)
 "aag" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -51,6 +55,10 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
+"aam" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "aan" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -28937,7 +28945,7 @@ kLM
 iQq
 iQq
 iQq
-iQq
+aaf
 iQq
 kLM
 kLM
@@ -29318,7 +29326,7 @@ mFm
 mFm
 mFm
 mFm
-mFm
+aam
 mFm
 mFm
 lJv

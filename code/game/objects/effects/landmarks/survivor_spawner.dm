@@ -183,7 +183,7 @@
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
 	equipment = /datum/equipment_preset/survivor/doctor/shiva
-	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth
+	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth_teal
 	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")

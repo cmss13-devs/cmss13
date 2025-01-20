@@ -1,5 +1,5 @@
 /datum/tutorial/marine/hospital_corpsman_advanced
-	name = "Marine - Hospital Corpsman (Advanced) - Not Currently Playable"
+	name = "Marine - Hospital Corpsman (Advanced)"
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_2"
 	icon_state = "medic"

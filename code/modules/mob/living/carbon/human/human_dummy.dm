@@ -93,10 +93,6 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	if((round(health*100/species.total_health, 10)) >= 70)
 		SEND_SIGNAL(src, COMSIG_HUMAN_TUTORIAL_HEALED)
 
-/mob/living/carbon/human/realistic_dummy/rejuvenate()
-	. = ..()
-	SEND_SIGNAL(src, COMSIG_HUMAN_TUTORIAL_HEALED, TRUE)
-
 /// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
 /mob/living/carbon/human/professor_dummy/Initialize()
 	. = ..()

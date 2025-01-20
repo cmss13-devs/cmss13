@@ -63,6 +63,8 @@
 
 	var/last_resupply_round = 1
 
+	var/list/premeds = list(/datum/reagent/medical/tramadol, /datum/reagent/medical/bicaridine, /datum/reagent/medical/kelotane, /datum/reagent/medical/oxycodone)
+
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -99,12 +101,12 @@
 			max_survival_agents = 3
 			begin_supply_phase()
 			return
-	if((rand() < (1/5)) && ((survival_wave + 3) >= last_resupply_round))
+	if((rand() < (1/5)) && (survival_wave >= (last_resupply_round + 3)))
 		begin_supply_phase()
 		last_resupply_round = survival_wave
 		return
 	survival_wave++
-	if((rand() < (1/10)) && !(survival_wave <= 3))
+	if((rand() < (1/10)) && (survival_wave >= 3))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
 		for(var/i in 1 to 2)
 			var/current_difficulty = survival_difficulty
@@ -192,11 +194,17 @@
 	if(patienttype == 3)
 		target.setToxLoss(round(rand(1,10*survival_difficulty)))
 
+	// premedication simulations
+	for(var/datum/reagent/medical/reagent in premeds)
+		if(pick(15;1,85;0))
+			target.reagents.add_reagent(reagent, round(rand(0, reagent.overdose - 1)))
+
 	target.updatehealth()
 	target.UpdateDamageIcon()
 	RegisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED, PROC_REF(final_health_checks))
 	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
-	//sleep(25)
+
+	RegisterSignal(target, COMSIG_LIVING_REJUVENATED, PROC_REF(make_agent_leave)) // for debugging
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target, bypass)
 
@@ -347,6 +355,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
 
+	UnregisterSignal(agent, COMSIG_LIVING_REJUVENATED)
 	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	UnregisterSignal(agent, COMSIG_HUMAN_TUTORIAL_HEALED)
 	agent.updatehealth()

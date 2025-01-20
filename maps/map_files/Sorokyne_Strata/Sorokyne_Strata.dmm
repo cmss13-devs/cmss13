@@ -97,6 +97,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/item/storage/box/MRE/UPP,
+/turf/open/floor/almayer/plate,
+/area/strata/ag/exterior/marsh/crash)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -2797,6 +2801,7 @@
 "amg" = (
 /obj/structure/surface/rack,
 /obj/item/spacecash/c500,
+/obj/item/storage/box/MRE/UPP,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/research)
 "ami" = (
@@ -4848,7 +4853,7 @@
 /area/strata/ag/interior/outpost/engi)
 "axr" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/MRE/WY,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -5426,7 +5431,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aAw" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/MRE/WY,
 /obj/item/tool/crowbar,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -16802,6 +16807,7 @@
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "clo" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/UPP,
 /turf/open/floor/almayer/plate,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "clr" = (
@@ -21942,6 +21948,7 @@
 /area/strata/ag/exterior/marsh/relay_marshes)
 "imV" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/MRE/UPP,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "imZ" = (
@@ -36632,7 +36639,7 @@ gZp
 oeA
 oeA
 mKX
-oeA
+aau
 cXU
 bhO
 bhO

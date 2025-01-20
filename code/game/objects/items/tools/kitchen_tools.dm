@@ -8,6 +8,7 @@
  * Butcher's cleaver
  * Rolling Pins
  * Trays
+ * Can openers
  */
 
 /obj/item/tool/kitchen
@@ -94,6 +95,16 @@
 	icon_state = "pspoon"
 	item_state = "pspoon"
 	attack_verb = list("attacked", "poked")
+
+/obj/item/tool/kitchen/utensil/mre_spork
+	name = "MRE spork"
+	desc = "It's a plastic brown spork. Very robust for what it is, legends tell about stranded marines who dug trenches with those."
+	icon_state = "mre_spork"
+	attack_verb = list("attacked", "poked")
+
+/obj/item/tool/kitchen/utensil/mre_spork/fsr
+	name = "FSR spork"
+	desc = "It's a plastic brown spork. Very robust for what it is, legends tell about stranded marines who dug trenches with those."
 
 /*
  * Knives
@@ -295,3 +306,14 @@
 			cooldown = world.time
 	else
 		..()
+
+/*
+ * Can opener
+ */
+/obj/item/tool/kitchen/can_opener
+	name = "Can opener"
+	desc = "Can opener"
+	icon = 'icons/obj/items/kitchen_tools.dmi'
+	icon_state = "can_opener"
+	w_class = SIZE_SMALL
+	inherent_traits = list(TRAIT_TOOL_CAN_OPENER)

@@ -186,6 +186,40 @@
 	required_reagents = list("hot_ramen" = 6, "hotsauce" = 1)
 	result_amount = 6
 
+/datum/chemical_reaction/electrolyte_grape_beverage
+	name = "Electrolyte Grape Beverage"
+	id = "electrolyte_grape_beverage"
+	result = "grapejuice"
+	required_reagents = list("dehydrated_grape_beverage" = 1, "water" = 5)
+	result_amount = 5
+
+/datum/chemical_reaction/electrolyte_orange_beverage
+	name = "Electrolyte Orange Beverage"
+	id = "electrolyte_orange_beverage"
+	result = "orangejuice"
+	required_reagents = list("electrolyte_orange_beverage" = 1, "water" = 5)
+	result_amount = 5
+
+/datum/chemical_reaction/electrolyte_lemonline_beverage
+	name = "Electrolyte Lemon-Lime Beverage"
+	id = "electrolyte_lemonlime_beverage"
+	result = "lemon_lime"
+	required_reagents = list("electrolyte_lemonlime_beverage" = 1, "water" = 5)
+	result_amount = 5
+
+/datum/chemical_reaction/hazelnut_beverage
+	name = "Hazelnut Beverage"
+	id = "hazelnut_beverage"
+	result = "coco_drink_hazelnut"
+	required_reagents = list("hazelnut_beverage" = 1, "water" = 5)
+	result_amount = 5
+
+/datum/chemical_reaction/chocolate_beverage
+	name = "Hazelnut Beverage"
+	id = "chocolate_beverage"
+	result = "coco_drink"
+	required_reagents = list("chocolate_beverage" = 1, "water" = 5)
+	result_amount = 5
 
 //*****************************************************************************************************/
 //******************************************Cocktails**************************************************/
@@ -314,6 +348,7 @@
 	required_reagents = list("potato" = 10)
 	required_catalysts = list("enzyme" = 5)
 	result_amount = 10
+
 /datum/chemical_reaction/sake
 	name = "Sake"
 	id = "sake"

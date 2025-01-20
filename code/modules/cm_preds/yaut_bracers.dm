@@ -631,6 +631,7 @@
 		return
 
 	var/mob/living/carbon/human/hunter = caller
+	var/atom/hunter_eye = hunter.client.eye
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -658,12 +659,12 @@
 			gear_on_almayer++
 		else if(is_ground_level(loc.z))
 			gear_on_planet++
-		if(hunter.z == loc.z)
-			var/dist = get_dist(hunter, loc)
+		if(hunter_eye.z == loc.z)
+			var/dist = get_dist(hunter_eye, loc)
 			if(dist < closest)
 				closest = dist
 				closest_item = tracked_item
-				direction = Get_Compass_Dir(hunter, loc)
+				direction = Get_Compass_Dir(hunter_eye, loc)
 				areaLoc = loc
 	for(var/mob/living/carbon/human/dead_yautja as anything in GLOB.yautja_mob_list)
 		if(dead_yautja.stat != DEAD)
@@ -677,11 +678,11 @@
 			dead_on_almayer++
 		else if(is_ground_level(dead_yautja.z))
 			dead_on_planet++
-		if(hunter.z == dead_yautja.z)
-			var/dist = get_dist(hunter, dead_yautja)
+		if(hunter_eye.z == dead_yautja.z)
+			var/dist = get_dist(hunter_eye, dead_yautja)
 			if(dist < closest)
 				closest = dist
-				direction = Get_Compass_Dir(hunter, dead_yautja)
+				direction = Get_Compass_Dir(hunter_eye, dead_yautja)
 				areaLoc = loc
 
 	var/output = FALSE

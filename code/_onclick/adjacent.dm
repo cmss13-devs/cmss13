@@ -152,7 +152,7 @@ Quick adjacency (to turf):
 	return TRUE
 
 /turf/closed/Adjacent(atom/neighbor, ignore_zlevel_difference, atom/target = null, list/ignore_list)
-	. = ..(neighbor, TRUE)
+	. = ..(neighbor, TRUE, target, ignore_list)
 
 /*
  * handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers

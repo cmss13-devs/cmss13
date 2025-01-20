@@ -119,7 +119,6 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
-	var/xeno_overridable = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isqueen(M) && density && !operating)
@@ -130,7 +129,7 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	. = ..()
-	if(. && !(stat & BROKEN) && xeno_overridable)
+	if(. && !(stat & BROKEN))
 		stat |= BROKEN
 		addtimer(CALLBACK(src, PROC_REF(unbreak_doors)), 10 SECONDS)
 

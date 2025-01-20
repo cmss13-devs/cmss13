@@ -202,7 +202,7 @@
 	if(!time_till)
 		CRASH("No time given to /warning_explode.")
 	var/turf/position = get_turf(src)
-	if(protected_by_pylon(TURF_PROTECTION_MORTAR, position))
+	if(position.get_pylon_protection_level() >= TURF_PROTECTION_MORTAR)
 		return
 
 	new /obj/effect/warning/explosive(position, time_till)

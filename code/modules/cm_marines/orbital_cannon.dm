@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 			return abs(GLOB.ob_type_fuel_requirements[3] - tray.fuel_amt)
 	return 0
 
-/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf)
+/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, squad_behalf, warhead_mode)
 	set waitfor = 0
 
 	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
@@ -244,8 +244,9 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 
 	var/obj/structure/ob_ammo/warhead/warhead = tray.warhead
 	tray.warhead = null
-	warhead.moveToNullspace()
-	warhead.warhead_impact(target)
+	if(warhead)
+		warhead.moveToNullspace()
+		warhead.warhead_impact(target, warhead_mode)
 
 	sleep(OB_CRASHING_DOWN)
 
@@ -309,6 +310,10 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 				return TRUE
 
 			var/obj/structure/ob_ammo/OA = PC.loaded
+			if(!OA.can_be_used())
+				to_chat(user, SPAN_WARNING("\The [src] can't be accepted."))
+				return
+
 			if(OA.is_solid_fuel)
 				if(fuel_amt >= 6)
 					to_chat(user, SPAN_WARNING("\The [src] can't accept more solid fuel."))
@@ -376,6 +381,10 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	. = ..()
 	. += "Moving this will require some sort of lifter."
 
+
+/obj/structure/ob_ammo/proc/can_be_used()
+	return TRUE
+
 /obj/structure/ob_ammo/warhead
 	name = "theoretical orbital ammo"
 	var/warhead_kind
@@ -383,10 +392,51 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/max_shake_factor
 	var/max_knockdown_time
 
+	var/armed = FALSE
+	var/armed_target_z = 0
+
 	// Note that the warhead should be cleared of location by the firing proc,
 	// then auto-delete at the end of the warhead_impact implementation
 
-/obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
+/obj/structure/ob_ammo/warhead/attackby(obj/item/held_object, mob/user)
+	if(armed)
+		if(HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
+			var/skill_factor = 60 - user.skills.get_skill_level(SKILL_ENGINEER) * 10
+			if(do_after(user, skill_factor, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+				if(prob(skill_factor))
+					to_chat(user, SPAN_NOTICE("You seems to done fatal mistake to \the [src]. There nowhere to run now."))
+					spawn(15 SECONDS)
+						armed = TRUE
+						warhead_impact(get_turf(src))
+				else
+					armed = FALSE
+					to_chat(user, SPAN_NOTICE("You have successfully disarmed \the [src]."))
+			else if (prob(5))
+				armed = TRUE
+				warhead_impact(get_turf(src))
+
+	. = ..()
+
+	if(armed && prob(5))
+		warhead_impact(get_turf(src))
+
+/obj/structure/ob_ammo/warhead/Move()
+	. = ..()
+	if(!armed)
+		return
+
+	if(armed_target_z == z)
+		warhead_impact(get_turf(src))
+
+	if(prob(5))
+		warhead_impact(get_turf(src))
+
+/obj/structure/ob_ammo/warhead/can_be_used()
+	return !armed
+
+/obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target, warhead_mode)
+	if(armed)
+		return TRUE
 	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 
@@ -427,6 +477,17 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	if(GLOB.orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic
 		target.ceiling_debris_check(5)
 		GLOB.orbital_cannon_cancellation["[cancellation_token]"] = null
+		if(warhead_mode == "admin")
+			return TRUE
+
+		var/turf/roof = get_highest_turf(target)
+		var/initial_target = target.z
+		target = roof.air_strike(20, target, warhead_mode == "proximity" ? 2 : 1)
+		if(warhead_mode == "safe" && target.z != initial_target && !istype(src, /obj/structure/ob_ammo/warhead/cluster))
+			forceMove(target)
+			armed = TRUE
+			armed_target_z = initial_target
+			return FALSE
 		return TRUE
 	return FALSE
 
@@ -543,35 +604,36 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/explosion_falloff = 150
 	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?
 
-/obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
+/obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, warhead_mode)
 	. = ..()
 	if (!.)
 		return
 
-	start_cluster(target)
+	start_cluster(target, warhead_mode)
 
-/obj/structure/ob_ammo/warhead/cluster/proc/start_cluster(turf/target)
+/obj/structure/ob_ammo/warhead/cluster/proc/start_cluster(turf/target, warhead_mode)
 	set waitfor = 0
 
 	var/range_num = 12
 	var/list/turf_list = RANGE_TURFS(range_num, target)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
 			var/turf/selected_turf = pick(turf_list)
-			if(protected_by_pylon(TURF_PROTECTION_OB, selected_turf))
+			var/turf/roof = get_highest_turf(selected_turf)
+			selected_turf = roof.air_strike(20, selected_turf, warhead_mode == "proximity" ? 2 : 1)
+			if(warhead_mode == "safe" && selected_turf.z != target.z)
+				fire_in_a_hole(selected_turf, cause_data, 5)
 				continue
-			var/area/selected_area = get_area(selected_turf)
-			if(CEILING_IS_PROTECTED(selected_area?.ceiling, CEILING_PROTECTION_TIER_4))
-				continue
-			fire_in_a_hole(selected_turf)
+			fire_in_a_hole(selected_turf, cause_data)
 
 		sleep(delay_between_clusters)
 	QDEL_IN(src, 5 SECONDS) // Leave time for last handle_ob_shake below
 
-/obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
+/obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc, datum/cause_data/cause_data, devide = 1)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power/devide, explosion_falloff/devide, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(handle_ob_shake), loc), 1 SECONDS)
 
 /obj/structure/ob_ammo/ob_fuel

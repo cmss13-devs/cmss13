@@ -281,33 +281,6 @@
 	pixel_y += rand(-3,3)
 
 
-//stairs
-
-/obj/structure/stairs
-	name = "Stairs"
-	desc = "Stairs.  You walk up and down them."
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "rampbottom"
-	gender = PLURAL
-	unslashable = TRUE
-	unacidable = TRUE
-	health = null
-	layer = ABOVE_TURF_LAYER//Being on turf layer was causing issues with cameras. This SHOULDN'T cause any problems.
-	plane = FLOOR_PLANE
-	density = FALSE
-	opacity = FALSE
-
-/obj/structure/stairs/perspective //instance these for the required icons
-	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
-	icon_state = "np_stair"
-
-/obj/structure/stairs/perspective/kutjevo
-	icon = 'icons/obj/structures/stairs/perspective_stairs_kutjevo.dmi'
-
-/obj/structure/stairs/perspective/ice
-	icon = 'icons/obj/structures/stairs/perspective_stairs_ice.dmi'
-
-
 // Prop
 /obj/structure/ore_box
 	name = "ore box"

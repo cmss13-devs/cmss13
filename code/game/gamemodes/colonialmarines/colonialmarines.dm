@@ -244,7 +244,7 @@
 	warhead.standard_falloff = 30
 	warhead.clear_delay = 3
 	warhead.double_explosion_delay = 6
-	warhead.warhead_impact(target) // This is a blocking call
+	warhead.warhead_impact(target, "admin") // This is a blocking call
 	playsound(target, 'sound/effects/smoke.ogg', vol=50, vary=1, sound_range=75)
 
 ///Spawns miasma smoke in landing zones
@@ -260,7 +260,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.hull_tile)
 					continue
 			lz_smoke += new /obj/effect/particle_effect/smoke/miasma(turf, null, new_cause_data)
 
@@ -310,7 +310,7 @@
 				if(!istype(turf, /turf/closed/wall))
 					continue
 				var/turf/closed/wall/wall = turf
-				if(wall.hull)
+				if(wall.hull_tile)
 					continue
 			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
 

@@ -623,10 +623,6 @@
 	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
 		layer = LYING_LIVING_MOB_LAYER
 
-/// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
-/mob/living/proc/on_fall()
-	return
-
 /// Changes the value of the [living/body_position] variable. Call this before set_lying_angle()
 /mob/living/proc/set_body_position(new_value)
 	if(body_position == new_value)
@@ -667,7 +663,7 @@
 	if(body_position == STANDING_UP) //force them on the ground
 		set_body_position(LYING_DOWN)
 		set_lying_angle(pick(90, 270), on_movement = TRUE)
-//		on_fall()
+		on_fall()
 
 
 /// Proc to append behavior to the condition of being floored. Called when the condition ends.
@@ -698,3 +694,66 @@
 	if(body_position == LYING_DOWN)
 		return
 	return ..()
+
+/**
+ * We want to relay the zmovement to the buckled atom when possible
+ * and only run what we can't have on buckled.zMove() or buckled.can_z_move() here.
+ * This way we can avoid esoteric bugs, copypasta and inconsistencies.
+ */
+/mob/living/zMove(dir, turf/target, z_move_flags = ZMOVE_FLIGHT_FLAGS)
+	if(buckled)
+		if(buckled.currently_z_moving)
+			return FALSE
+		if(!(z_move_flags & ZMOVE_ALLOW_BUCKLED))
+			buckled.unbuckle(src, FALSE)
+		else
+			if(!target)
+				target = can_z_move(dir, get_turf(src), null, z_move_flags, src)
+				if(!target)
+					return FALSE
+			return buckled.zMove(dir, target, z_move_flags) // Return value is a loc.
+	return ..()
+
+/mob/living/can_z_move(direction, turf/start, turf/destination, z_move_flags = ZMOVE_FLIGHT_FLAGS, mob/living/rider)
+	if(z_move_flags & ZMOVE_INCAPACITATED_CHECKS && (is_mob_incapacitated() || body_position != STANDING_UP || buckled))
+		if(z_move_flags & ZMOVE_FEEDBACK)
+			to_chat(rider || src, SPAN_WARNING("[rider ? src : "You"] can't do that right now!"))
+		return FALSE
+	if(!buckled || !(z_move_flags & ZMOVE_ALLOW_BUCKLED))
+		if(!(z_move_flags & ZMOVE_FALL_CHECKS) && (is_mob_incapacitated() || body_position != STANDING_UP || buckled) && (!rider || (rider.is_mob_incapacitated() || rider.body_position != STANDING_UP || rider.buckled)))
+			//An incorporeal mob will ignore obstacles unless it's a potential fall (it'd suck hard) or is carrying corporeal mobs.
+			//Coupled with flying/floating, this allows the mob to move up and down freely.
+			//By itself, it only allows the mob to move down.
+			z_move_flags |= ZMOVE_IGNORE_OBSTACLES
+		return ..()
+
+/mob/set_currently_z_moving(value)
+	if(buckled)
+		return buckled.set_currently_z_moving(value)
+	return ..()
+
+/mob/living/onZImpact(turf/impact_turf, levels, message = TRUE)
+	ZImpactDamage(impact_turf, levels)
+	message = FALSE
+	return ..()
+
+/mob/living/proc/ZImpactDamage(turf/impact_turf, levels)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
+		return
+
+	var/damage = rand(10, 20) ** ((10 + mob_size) / 10)
+	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"), \
+					usr, SPAN_DANGER("You crash into [impact_turf] with a sickening noise!"))
+	apply_damage(damage * levels, BRUTE)
+	KnockDown(levels * mob_size)
+	on_fall(TRUE)
+
+/mob/proc/on_fall(forced)
+	drop_l_hand()
+	drop_r_hand()
+
+/mob/living/carbon/on_fall(forced)
+	. = ..()
+	if(!loc)
+		return
+	loc.handle_fall(src, forced)

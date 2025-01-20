@@ -82,7 +82,7 @@
 
 /obj/effect/timed_event/destructible/generate_callback()
 	var/turf/closed/wall/wall = get_turf(src) // ensured by check_valid_type()
-	return VARSET_CALLBACK(wall, hull, FALSE)
+	return VARSET_CALLBACK(wall, hull_tile, FALSE)
 
 /obj/effect/timed_event/destructible/announce_event(time_to_grab)
 	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])

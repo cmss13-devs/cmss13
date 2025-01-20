@@ -26,7 +26,6 @@
 		icon_state = "[icon_prefix]_[bleed_layer]_[variant]"
 	else
 		icon_state = "[icon_prefix]_[bleed_layer]"
-	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
 	var/name_to_set
 	switch(bleed_layer)

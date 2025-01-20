@@ -29,7 +29,12 @@
         "neaera",
         "stok"
 	],
-	"traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Baseturf": "/turf/open/auto_turf/sand"
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/Kutjevo/",
     "camouflage": "desert",
     "gamemodes": [

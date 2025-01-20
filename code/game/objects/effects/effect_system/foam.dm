@@ -172,6 +172,9 @@
 	desc = "A lightweight foamed metal wall."
 	health = 45
 
+/obj/structure/foamed_metal/Adjacent(atom/neighbor, ignore_zlevel_difference)
+	. = ..(neighbor, TRUE)
+
 /obj/structure/foamed_metal/iron
 	icon_state = "ironfoam"
 	health = 70

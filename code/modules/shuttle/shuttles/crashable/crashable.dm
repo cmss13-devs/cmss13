@@ -105,10 +105,8 @@
 		if(!found_area.can_build_special)
 			return FALSE
 
-		if(istype(found_turf, /turf/closed/wall))
-			var/turf/closed/wall/found_closed_turf = found_turf
-			if(found_closed_turf.hull)
-				return FALSE
+		if(found_turf.hull_tile)
+			return FALSE
 
 		if(istype(found_turf, /turf/closed/shuttle))
 			return FALSE

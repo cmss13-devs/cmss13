@@ -3,6 +3,50 @@
 	density = TRUE
 	opacity = TRUE
 
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/closed/attack_hand(mob/user)
+	// For now, later if special lader too much, we can do something easier
+	if(!istype(user, /mob/living/carbon/xenomorph))
+		to_chat(user, SPAN_WARNING("You are not hero!"))
+		return
+
+	if(user.action_busy)
+		return
+
+	var/turf/our_loc = get_turf(src)
+	var/turf/checking = get_step_multiz(our_loc, UP)
+	if(!istype(checking) || !checking.zPassIn(user, UP, our_loc))
+		to_chat(user, SPAN_WARNING("You can't climb here!"))
+		return
+
+	checking = get_step_multiz(src, UP)
+	if(!checking.zPassIn(user, UP, our_loc))
+		to_chat(user, SPAN_WARNING("You can't climb here!"))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
+		SPAN_WARNING("You start climbing up the \the [src]."))
+
+	if(!do_after(user, user.mob_size * 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+
+	our_loc = get_turf(src)
+	checking = get_step_multiz(our_loc, UP)
+	if(!checking.zPassIn(user, UP, our_loc))
+		return
+
+	checking = get_step_multiz(src, UP)
+	if(!checking.zPassIn(user, UP, our_loc))
+		return
+
+	user.zMove(target = checking, z_move_flags = ZMOVE_STAIRS_FLAGS)
+	user.visible_message(SPAN_WARNING("[user] climbs up \the [src]."),\
+		SPAN_WARNING("You climb up \the [src]."))
+	return
+
 /turf/closed/insert_self_into_baseturfs()
 	return
 

@@ -503,9 +503,9 @@
 // Turf protection levels
 
 #define TURF_PROTECTION_NONE 0
-#define TURF_PROTECTION_MORTAR 1
-#define TURF_PROTECTION_CAS 2
-#define TURF_PROTECTION_OB 3
+#define TURF_PROTECTION_MORTAR 5
+#define TURF_PROTECTION_CAS 10
+#define TURF_PROTECTION_OB 20
 
 /// Convert a turf protection level to a ceiling protection level
 /proc/get_ceiling_protection_level(turf_protection_level)

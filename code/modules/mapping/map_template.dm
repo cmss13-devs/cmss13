@@ -20,6 +20,12 @@
 	var/list/created_atoms = list()
 	//make sure this list is accounted for/cleared if you request it from ssatoms!
 
+	///If true, any openspace turfs above the template will be replaced with ceiling_turf when loading. Should probably be FALSE for lower levels of multi-z ruins.
+	var/has_ceiling = FALSE
+	///What turf to replace openspace with when has_ceiling is true
+	var/turf/ceiling_turf = /turf/open/floor/plating
+	///What baseturfs to set when replacing openspace when has_ceiling is true
+	var/list/ceiling_baseturfs = list()
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
 	if(path)
@@ -142,6 +148,10 @@
 	//initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
 
+	if(has_ceiling)
+		var/affected_turfs = get_affected_turfs(T, FALSE)
+		generate_ceiling(affected_turfs)
+
 	log_game("[name] loaded at [T.x],[T.y],[T.z]")
 	return bounds
 
@@ -156,6 +166,12 @@
 		return RECT_TURFS(floor(width / 2), floor(height / 2), T)
 	return CORNER_BLOCK(T, width, height)
 
+/datum/map_template/proc/generate_ceiling(affected_turfs)
+	for(var/turf/turf in affected_turfs)
+		var/turf/ceiling = get_step_multiz(turf, UP)
+		if(ceiling)
+			if(istype(ceiling, /turf/open/openspace) || istype(ceiling, /turf/open/space/openspace))
+				ceiling.ChangeTurf(ceiling_turf, ceiling_baseturfs)
 
 //for your ever biggening badminnery kevinz000
 //❤ - Cyberboss

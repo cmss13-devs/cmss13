@@ -1799,3 +1799,43 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+/mob/living/carbon/human/ZImpactDamage(turf/impact_turf, levels)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impact_turf) & NO_Z_IMPACT_DAMAGE)
+		return
+
+	on_fall(TRUE)
+	if(can_paradrop() && levels > 2)
+		KnockDown(levels * mob_size)
+		to_chat(src, SPAN_DANGER("You almost land safely"))
+		return
+
+	var/damage = rand(10, 20) * mob_size
+	var/obj/limb/affecting
+
+	switch(pick(list("ankle","wrist","head","knee","elbow")))
+		if("ankle")
+			affecting = get_limb(pick("l_foot", "r_foot"))
+		if("knee")
+			affecting = get_limb(pick("l_leg", "r_leg"))
+		if("wrist")
+			affecting = get_limb(pick("l_hand", "r_hand"))
+		if("elbow")
+			affecting = get_limb(pick("l_arm", "r_arm"))
+		if("head")
+			affecting = get_limb("head")
+
+	visible_message(SPAN_DANGER("[src] crashes into [impact_turf] with a sickening noise!"))
+	if(affecting)
+		to_chat(src, SPAN_DANGER("You land heavily on your [affecting.display_name]!"))
+		affecting.take_damage(damage, 0)
+		affecting.fracture(damage)
+		if(affecting.parent)
+			affecting.parent.add_autopsy_data("Misadventure", damage)
+	else
+		to_chat(src, SPAN_DANGER("You land heavily!"))
+		apply_damage(damage, BRUTE)
+	KnockDown(levels * mob_size)
+
+	UpdateDamageIcon()
+	updatehealth()

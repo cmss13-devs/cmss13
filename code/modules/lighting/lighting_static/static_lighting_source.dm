@@ -233,6 +233,35 @@
 				corners[T.lighting_corner_SW] = 0
 				corners[T.lighting_corner_NW] = 0
 			turfs += T
+/*HERE I INTRODUCE YOU BIG TIME OVERRUN (didn't tested it, but I already see it coming), if we really need that, I'll try to rewrite that, thanks to Nivrak for this attempt, also don't use WHILE, it can kill server, if you do mistake in code
+			var/turf/above = locate(T.x, T.y, T.z + 1)
+
+			while(above && istype(above, /turf/open_space))
+				if (!above.lighting_corners_initialised)
+					above.static_generate_missing_corners()
+				corners[above.lighting_corner_NE] = 0
+				corners[above.lighting_corner_SE] = 0
+				corners[above.lighting_corner_SW] = 0
+				corners[above.lighting_corner_NW] = 0
+
+				above = locate(above.x, above.y, above.z + 1)
+
+			turfs += above
+
+			var/turf/below = locate(T.x, T.y, T.z - 1)
+			var/turf/previous = T
+
+			while(below && istype(previous, /turf/open_space))
+				if (!below.lighting_corners_initialised)
+					below.static_generate_missing_corners()
+				corners[below.lighting_corner_NE] = 0
+				corners[below.lighting_corner_SE] = 0
+				corners[below.lighting_corner_SW] = 0
+				corners[below.lighting_corner_NW] = 0
+
+				previous = below
+				below = locate(below.x, below.y, below.z + 1)
+*/
 		source_turf.luminosity = oldlum
 
 	var/list/datum/static_lighting_corner/new_corners = (corners - effect_str)

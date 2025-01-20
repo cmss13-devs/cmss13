@@ -11,7 +11,6 @@
 	var/throwforce = 1
 	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/in_use = FALSE
-	var/mob/living/buckled_mob
 	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
 	var/buckle_lying = NO_BUCKLE_LYING
 	var/can_buckle = FALSE
@@ -30,6 +29,8 @@
 	var/req_one_access_txt = null
 	///Whether or not this instance is using accesses different from initial code. Used for easy locating in map files.
 	var/access_modified = FALSE
+
+	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_ID //when this be added to vis_contents of something it inherit something.plane, important for visualisation of obj in openspace.
 
 	var/flags_obj = NO_FLAGS
 	/// set when a player uses a pen on a renamable object
@@ -239,12 +240,17 @@
 		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
 	return buckled_mob
 
-/obj/proc/unbuckle()
+/obj/proc/unbuckle(mob/living/user, can_fall = TRUE)
 	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
 		buckled_mob.clear_alert(ALERT_BUCKLED)
 		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
+
+		if(can_fall)
+			var/turf/location = buckled_mob.loc
+			if(istype(location) && !buckled_mob.currently_z_moving)
+				location.zFall(buckled_mob)
 
 		var/M = buckled_mob
 		REMOVE_TRAITS_IN(buckled_mob, TRAIT_SOURCE_BUCKLE)
@@ -252,6 +258,9 @@
 
 		afterbuckle(M)
 
+		if(!QDELETED(buckled_mob) && !buckled_mob.currently_z_moving && isturf(buckled_mob.loc)) // In the case they unbuckled to a flying movable midflight.
+			var/turf/pitfall = buckled_mob.loc
+			pitfall?.zFall(buckled_mob)
 
 /obj/proc/manual_unbuckle(mob/user as mob)
 	if(buckled_mob)

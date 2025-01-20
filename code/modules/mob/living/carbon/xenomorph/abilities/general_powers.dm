@@ -239,9 +239,6 @@
 		return FALSE
 	if(istype(target, /atom/movable/screen))
 		return FALSE
-	if(target.z != xeno_owner.z)
-		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
-		return
 	apply_cooldown()
 	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
@@ -276,11 +273,7 @@
 
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	var/turf/target_turf = get_turf(A)
-
-	if(target_turf.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
-		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
+	if(!X.hive.living_xeno_queen)
 		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
 		return
 
@@ -623,10 +616,6 @@
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
-		return FALSE
-
-	if(T.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
 	if(SSinterior.in_interior(X))

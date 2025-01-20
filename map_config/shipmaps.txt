@@ -13,5 +13,9 @@ Format:
 endmap
 
 map almayer
+	disabled
+endmap
+
+map almayer_mz
 	default
 endmap

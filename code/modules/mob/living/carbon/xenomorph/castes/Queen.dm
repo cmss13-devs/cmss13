@@ -105,7 +105,7 @@
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
 	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(allow_turf_entry))
 
 	// Default color
 	if(Q.hive.color)
@@ -122,7 +122,7 @@
 	qdel(src)
 
 /mob/hologram/queen/handle_move(mob/living/carbon/xenomorph/X, NewLoc, direct)
-	if(is_watching && (turf_weed_only(src, is_watching.loc) & COMPONENT_TURF_DENY_MOVEMENT))
+	if(is_watching && (allow_turf_entry(src, is_watching.loc) & COMPONENT_TURF_DENY_MOVEMENT))
 		return COMPONENT_OVERRIDE_MOVE
 
 	X.overwatch(stop_overwatch = TRUE)
@@ -153,7 +153,7 @@
 				forceMove(T)
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 
-	if(!isturf(loc) || (turf_weed_only(src, loc) & COMPONENT_TURF_DENY_MOVEMENT))
+	if(!isturf(loc) || (allow_turf_entry(src, loc) & COMPONENT_TURF_DENY_MOVEMENT))
 		forceMove(X.loc)
 
 	is_watching = null
@@ -164,27 +164,24 @@
 	SIGNAL_HANDLER
 	name = "[initial(src.name)] ([new_name])"
 
-/mob/hologram/queen/proc/turf_weed_only(mob/self, turf/crossing_turf)
-	SIGNAL_HANDLER
+/mob/hologram/queen/allow_turf_entry(mob/self, turf/crossing_turf)
+	. = ..()
 
 	if(!crossing_turf)
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(crossing_turf, /turf/closed/wall))
-		var/turf/closed/wall/crossing_wall = crossing_turf
-		if(crossing_wall.hull)
-			return COMPONENT_TURF_DENY_MOVEMENT
+	if(crossing_turf.hull_tile)
+		return COMPONENT_TURF_DENY_MOVEMENT
 
 	var/list/turf_area = range(3, crossing_turf)
 
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
-	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
-		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
-		if(crossing_turf_weeds)
-			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
-		return COMPONENT_TURF_ALLOW_MOVEMENT
+	if(!nearby_weeds || !HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
+		return COMPONENT_TURF_DENY_MOVEMENT
 
-	return COMPONENT_TURF_DENY_MOVEMENT
+	var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
+	if(crossing_turf_weeds)
+		crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 
 /mob/hologram/queen/proc/handle_overwatch(mob/living/carbon/xenomorph/queen/Q, atom/A, mods)
 	SIGNAL_HANDLER
@@ -220,7 +217,7 @@
 			Q.overwatch(A)
 		return COMPONENT_INTERRUPT_CLICK
 
-	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
+	if(!(allow_turf_entry(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
 
 	forceMove(T)
@@ -304,6 +301,7 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/activable/break_roof,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
@@ -334,6 +332,7 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/activable/break_roof,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro, and fits near the resin structure buttons
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro

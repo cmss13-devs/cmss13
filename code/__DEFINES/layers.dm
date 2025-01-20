@@ -37,6 +37,8 @@
 #define UNDERFLOOR_OBJ_LAYER 2.46
 /// catwalk overlay of /turf/open/floor/plating/plating_catwalk
 #define CATWALK_LAYER 2.5
+/// stairs overlay on turf
+#define STAIRS_LAYER 2.5
 /// Alien weeds and node layer
 #define WEED_LAYER 2.51
 /// Over weeds, such as blood
@@ -173,34 +175,20 @@
 
 #define CINEMATIC_LAYER 21
 
+#define OPENSPACE_LAYER 600 //Openspace layer over all
+
 /// for areas, so they appear above everything else on map file.
 #define AREAS_LAYER 999
 
-//---------- EMISSIVES -------------
-//Layering order of these is not particularly meaningful.
-//Important part is the seperation of the planes for control via plane_master
-
-/// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
-#define EMISSIVE_PLANE 90
-/// The render target used by the emissive layer.
-#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
 /// The layer you should use if you _really_ don't want an emissive overlay to be blocked.
 #define EMISSIVE_LAYER_UNBLOCKABLE 9999
 
 #define LIGHTING_BACKPLANE_LAYER 14.5
 
-#define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
-
-#define SHADOW_RENDER_TARGET "SHADOW_RENDER_TARGET"
-
-/// Plane for balloon text (text that fades up)
-#define BALLOON_CHAT_PLANE 110
 /// Bubble for typing indicators
 #define TYPING_LAYER 500
 
-#define O_LIGHTING_VISUAL_PLANE 120
 #define O_LIGHTING_VISUAL_LAYER 16
-#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
 
 #define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
 #define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station
@@ -208,7 +196,6 @@
 
 #define LIGHTING_SHADOW_LAYER 17	//Where the shadows happen
 
-#define ABOVE_LIGHTING_PLANE 150
 #define ABOVE_LIGHTING_LAYER 18
 
 /*=============================*\
@@ -218,47 +205,65 @@
 \*=============================*/
 
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
-#define LOWEST_EVER_PLANE -200
+#define LOWEST_EVER_PLANE -10
+
+#define PLANE_SPACE -9
 
 /// Floor plane, self explanatory. Used for Ambient Occlusion filter
-#define FLOOR_PLANE -7
+#define FLOOR_PLANE -8
+
+#define TRANSPARENT_FLOOR_PLANE -7
+#define OPENSPACE_BACKDROP_PLANE -6 //Black square just over openspace plane to guaranteed cover all in openspace turf
+#define OPENSPACE_SHADOW_PLANE -5
+
 /// Game Plane, where most of the game objects reside
-#define GAME_PLANE -6
+#define GAME_PLANE -4
 /// Above Game Plane. For things which are above game objects, but below screen effects.
-#define ABOVE_GAME_PLANE -5
+#define ABOVE_GAME_PLANE -3
 /// Roof plane, disappearing when entering buildings
-#define ROOF_PLANE -4
+#define ROOF_PLANE -2
 
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
 
-#define GHOST_PLANE 80
+#define GHOST_PLANE 10
+/// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
+#define EMISSIVE_PLANE 15
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
-#define LIGHTING_PLANE 100
-#define EXTERIOR_LIGHTING_PLANE 101
-#define NVG_PLANE 110
+#define LIGHTING_PLANE 20
+#define EXTERIOR_LIGHTING_PLANE 21
+#define NVG_PLANE 22
+#define O_LIGHTING_VISUAL_PLANE 23
+#define ABOVE_LIGHTING_PLANE 25
 
+/// Plane for balloon text (text that fades up)
+#define BALLOON_CHAT_PLANE 28
 ///Popup Chat Messages
-#define RUNECHAT_PLANE 501
+#define RUNECHAT_PLANE 32
 
-#define RENDER_PLANE_GAME 990
-#define RENDER_PLANE_NON_GAME 995
+#define FULLSCREEN_PLANE 35
 
-#define ESCAPE_MENU_PLANE 997
+#define HUD_PLANE 37
+#define ABOVE_HUD_PLANE 38
 
-#define RENDER_PLANE_MASTER 999
+#define CINEMATIC_PLANE 39
+
+#define RENDER_PLANE_GAME 40
+#define RENDER_PLANE_NON_GAME 41
+
+#define ESCAPE_MENU_PLANE 46
+
+#define RENDER_PLANE_MASTER 50
+
 
 //-------------------- HUD ---------------------
-#define FULLSCREEN_PLANE 900
-
-/// HUD layer defines
-#define HUD_PLANE 1000
-#define ABOVE_HUD_PLANE 1100
-
-#define CINEMATIC_PLANE 1200
 
 
 /// Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"
 #define PLANE_MASTERS_NON_MASTER "plane_masters_non_master"
+/// The render target used by the emissive layer.
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+#define SHADOW_RENDER_TARGET "SHADOW_RENDER_TARGET"
+#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"

@@ -1300,6 +1300,24 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
 
+/mob/dead/observer/up()
+	set name = "Move Upwards"
+	set category = "IC"
+
+	if(zMove(UP, z_move_flags = ZMOVE_FEEDBACK))
+		to_chat(src, SPAN_NOTICE("You move upwards."))
+
+/mob/dead/observer/down()
+	set name = "Move Down"
+	set category = "IC"
+
+	if(zMove(DOWN, z_move_flags = ZMOVE_FEEDBACK))
+		to_chat(src, SPAN_NOTICE("You move down."))
+
+/mob/dead/observer/can_z_move(direction, turf/start, turf/destination, z_move_flags = NONE, mob/living/rider)
+	z_move_flags |= ZMOVE_IGNORE_OBSTACLES  //observers do not respect these FLOORS you speak so much of.
+	return ..()
+
 /// This proc is called when a predator round is toggled by the admin verb, as well as when a ghost logs in
 /mob/dead/observer/proc/toggle_predator_action()
 	SIGNAL_HANDLER

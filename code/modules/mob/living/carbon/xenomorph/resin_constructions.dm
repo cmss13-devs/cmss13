@@ -359,3 +359,14 @@
 
 	build_path = /obj/effect/alien/weeds/node
 	build_overlay_icon = /obj/effect/warning/alien/weak
+
+/datum/resin_construction/resin_obj/stair
+	name = "Stairs"
+	desc = "A thick resin stair, can help to get up."
+	construction_name = "resin stairs"
+	cost = XENO_RESIN_STAIRS
+	build_time = 10 SECONDS
+	max_per_xeno = 2
+
+	build_path = /obj/structure/stairs/constructed/resin
+	build_animation_effect = /obj/effect/resin_construct/thick

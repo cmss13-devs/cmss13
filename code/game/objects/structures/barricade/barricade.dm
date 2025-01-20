@@ -186,6 +186,9 @@
 		return FALSE
 	return prob(max(30,(100.0*health)/maxhealth))
 
+/obj/structure/barricade/Adjacent(atom/neighbor, ignore_zlevel_difference)
+	. = ..(neighbor, TRUE)
+
 /obj/structure/barricade/attack_animal(mob/user as mob)
 	return attack_alien(user)
 

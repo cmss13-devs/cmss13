@@ -56,5 +56,5 @@
 	if(!istype(hit_wall))
 		return COMPONENT_BULLET_PASS_THROUGH
 
-	if(!hit_wall.hull)
+	if(!hit_wall.hull_tile)
 		return COMPONENT_BULLET_PASS_THROUGH

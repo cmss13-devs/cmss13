@@ -12,10 +12,6 @@
 /turf/open/shale/can_dig_xeno_tunnel()
 	return TRUE
 
-/turf/open/shale/update_icon()
-	. = ..()
-	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
-
 /turf/open/shale/Initialize(mapload, ...)
 	. = ..()
 	update_icon()

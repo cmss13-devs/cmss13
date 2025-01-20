@@ -50,15 +50,20 @@
 						SPAN_HELPFUL("You <b>perform CPR</b> on <b>[src]</b>. Repeat at least every <b>7 seconds</b>."),
 						SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."))
 				if(is_revivable() && stat == DEAD)
+					var/successful
 					if(cpr_cooldown < world.time)
 						revive_grace_period += 7 SECONDS
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
 						balloon_alert(attacking_mob, "you perform cpr")
+						successful = TRUE
+						SEND_SIGNAL(attacking_mob, COMSIG_HUMAN_CPR_PERFORMED, successful)
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
 						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
+						successful = FALSE
+						SEND_SIGNAL(attacking_mob, COMSIG_HUMAN_CPR_PERFORMED, successful)
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1

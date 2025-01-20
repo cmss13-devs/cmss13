@@ -58844,6 +58844,7 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/power/apc/almayer/south,
+/obj/structure/bed/roller/heavy,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "uoj" = (

@@ -148,7 +148,7 @@
 			else
 				attempt_process_queue()
 		if("remove_from_queue")
-			LAZYREMOVE(print_queue, params["upgrade_id"])
+			LAZYREMOVE(print_queue, text2path(params["upgrade_id"]))
 	playsound(src, 'sound/machines/keyboard2.ogg', 25, TRUE)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass(mob/user)

@@ -1,4 +1,4 @@
-import { useBackend } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import {
   Box,
   Button,
@@ -96,9 +96,13 @@ export const XenomorphExtractor = () => {
                         {print_queue.name}
                         <Button
                           fluid
-                          onClick={() => act('stop_processing')}
+                          onClick={() =>
+                            act('remove_from_queue', {
+                              upgrade_id: print_queue.id,
+                            })
+                          }
                           bold
-                          ml={120}
+                          ml={100}
                           top={'-5px'}
                           textAlign={'center'}
                         >

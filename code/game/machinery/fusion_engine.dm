@@ -472,6 +472,12 @@
 	power_generation_max = 100000 //100,000W at full capacity
 	original_fail_rate = 10
 
+/obj/structure/machinery/power/reactor/rostock
+	name = "\improper RDS-168 fusion reactor"
+	desc = "A RDS-168 Fusion Reactor."
+	is_ship_reactor = TRUE
+
+
 #undef BUILDSTATE_FUNCTIONAL
 #undef BUILDSTATE_DAMAGE_WELD
 #undef BUILDSTATE_DAMAGE_WIRE

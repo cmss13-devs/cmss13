@@ -1263,8 +1263,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 				SPAN_HELPFUL("You finish applying <b>[splint]</b> to [possessive] [display_name]."),
 				SPAN_HELPFUL("[user] finishes applying <b>[splint]</b> to your [display_name]."),
 				SPAN_NOTICE("[user] finishes applying [splint] to [possessive_their] [display_name]."))
-			SEND_SIGNAL(src, COMSIG_HUMAN_SPLINT_APPLIED, user)
 			status |= LIMB_SPLINTED
+			SEND_SIGNAL(src, COMSIG_HUMAN_SPLINT_APPLIED, user)
 			if(indestructible_splints)
 				status |= LIMB_SPLINTED_INDESTRUCTIBLE
 

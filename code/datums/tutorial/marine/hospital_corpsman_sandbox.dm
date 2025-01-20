@@ -61,6 +61,8 @@
 
 	var/list/mob/living/carbon/human/realistic_dummy/agent_healing_tasks = list()
 
+	var/last_resupply_round = 1
+
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -97,8 +99,9 @@
 			max_survival_agents = 3
 			begin_supply_phase()
 			return
-	if(rand() < (1/5))
+	if((rand() < (1/5)) && ((survival_wave + 3) >= last_resupply_round))
 		begin_supply_phase()
+		last_resupply_round = survival_wave
 		return
 	survival_wave++
 	if((rand() < (1/10)) && !(survival_wave <= 3))
@@ -195,7 +198,7 @@
 	RegisterSignal(target, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(make_agent_leave))
 	//sleep(25)
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target)
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target, bypass)
 
 	var/list/healing_tasks = list()
 	UnregisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED)
@@ -211,12 +214,13 @@
 				injury_type |= "IB"
 				healing_tasks[limb] = injury_type
 				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler))
-	agent_healing_tasks[target] = healing_tasks
+	if((!(length(healing_tasks))) || bypass)
+		make_agent_leave(target)
+	else
+		agent_healing_tasks[target] = healing_tasks
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(datum/source, mob/living/carbon/human/realistic_dummy/target, datum/surgery/surgery)
 
-	//if(source, /obj/limb)
-	//	UnregisterSignal(source, COMSIG_HUMAN_SPLINT_APPLIED)
 	var/list/healing_tasks = agent_healing_tasks[target]
 	var/list/injury_type = list()
 	var/obj/limb/limb
@@ -224,8 +228,9 @@
 		limb = source
 		var/target_redirect = limb.owner
 		health_tasks_handler(target, target_redirect)
+		UnregisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED)
 		return
-	if(surgery) // if this was called by a limb with ongoing surgery
+	if(surgery)
 		limb = surgery.affected_limb
 		if(surgery.name == "Internal Bleeding Repair")
 			for(limb in healing_tasks)
@@ -236,22 +241,19 @@
 			for(limb in healing_tasks)
 				injury_type = healing_tasks[surgery.affected_limb]
 				if("suture" in injury_type)
-					//UnregisterSignal(surgery.affected_limb, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 					injury_type -= "suture"
 	for(limb in healing_tasks)
 		injury_type = healing_tasks[limb]
-		if(("fracture" in injury_type))
+		if(("fracture" in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
 			injury_type -= "fracture"
 		if(!(length(injury_type)) && (limb)) // makes sure something DID exist on the list
-			healing_tasks[limb] = null
-	listclearnulls(healing_tasks)
+			healing_tasks -= limb
 	if(!(length(healing_tasks)))
 		UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 		make_agent_leave(target)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()
 
-	//for(var/i in 1 to length(agents))
 	for(var/mob/living/carbon/human/target in agents)
 		if(target.stat > 0) // are they awake?
 			var/mob/living/carbon/human/dragging_agent = new(target.loc)
@@ -399,7 +401,7 @@
 			statusmessage |= "Critical [chemical.name] overdose detected"
 	for(var/datum/internal_organ/organ in target.internal_organs)
 		if(organ.damage >= organ.min_broken_damage)
-			if(locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list)
+			if((locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list) || (target.stat == DEAD))
 				statusmessage |= "Ruptured [organ.name] detected"
 			else
 				medevacbed.balloon_alert_to_viewers("Organ damage detected! Please stabilize patient with Peridaxon before transit.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)

@@ -157,7 +157,7 @@
 		else
 			to_chat(user, "You hit [src] with \the [I] but to no effect.")
 	else
-		..()
+		. = ..()
 	return
 
 

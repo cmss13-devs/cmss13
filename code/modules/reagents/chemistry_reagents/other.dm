@@ -1016,7 +1016,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 0.5, PROPERTY_HALLUCINOGENIC = 6)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"

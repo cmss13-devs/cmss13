@@ -540,6 +540,12 @@
 	icon_state = "sec_headset"
 	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	locate_setting = TRACKER_CMP
+	misc_tracking = TRUE
+
+	inbuilt_tracking_options = list(
+		"Chief MP" = TRACKER_CMP,
+	)
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor
 	name = "marine honor guard radio headset"
@@ -553,6 +559,7 @@
 
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
+		"Chief MP" = TRACKER_CMP,
 		"Executive Officer" = TRACKER_XO
 	)
 

@@ -51,7 +51,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background = "background_civillian"
+	minimap_background = "background_goon"
 
 	dress_under = list(
 		/obj/item/clothing/under/liaison_suit/black,

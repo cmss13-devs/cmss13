@@ -591,19 +591,20 @@
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/dodge_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(dodge_user) || !dodge_user.check_state())
+	if(!istype(dodge_user) || !dodge_user.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
-	if (!istype(behavior))
+	if(!istype(behavior))
 		return
 
+	//Activate dodge mechanics
 	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
@@ -611,6 +612,14 @@
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
 
+	//Save the original sprite position before applying any offset
+	var/original_sprite_x = dodge_user.pixel_x
+	var/original_sprite_y = dodge_user.pixel_y
+
+	//Start afterimage sequence
+	addtimer(CALLBACK(src, PROC_REF(create_afterimage_sequence), dodge_user, duration, original_sprite_x, original_sprite_y))
+
+	//Set a timer to remove effects AFTER the full duration of the ability
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
@@ -619,20 +628,111 @@
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/dodge_remove = owner
 
-	if (!istype(dodge_remove))
+	if(!istype(dodge_remove))
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_remove.behavior_delegate
-	if (!istype(behavior))
+	if(!istype(behavior))
 		return
 
-	if (behavior.dodge_activated)
+	if(behavior.dodge_activated)
 		behavior.dodge_activated = FALSE
 		button.icon_state = "template"
 		dodge_remove.speed_modifier += speed_buff_amount
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
 		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
+
+/datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration, original_sprite_x, original_sprite_y)
+	if(!dodge_user || !dodge_user.loc)
+		return
+
+	var/afterimage_interval = 2 DECISECONDS
+	var/afterimage_count = round(duration / afterimage_interval)
+	var/turf/last_position = get_turf(dodge_user.loc)
+
+	for(var/i = 1 to afterimage_count)
+		var/turf/current_position = get_turf(dodge_user.loc)
+		if(current_position && current_position != last_position)
+			//Generate a new random offset for this iteration
+			var/random_offset_x = rand(-4, 4)
+			var/random_offset_y = rand(-4, 4)
+
+			//Reset to the original sprite position and apply the new offset
+			dodge_user.reset_position_to_original(original_sprite_x, original_sprite_y)
+			dodge_user.apply_offset(random_offset_x, random_offset_y)
+
+			//Create the afterimage with the current offset
+			create_afterimage(dodge_user, random_offset_x, random_offset_y)
+
+			last_position = current_position
+		sleep(afterimage_interval)
+
+	//Set a timer to remove all offsets AFTER ability ends.
+	addtimer(CALLBACK(dodge_user, "reset_position_to_original", original_sprite_x, original_sprite_y), 2 DECISECONDS)
+
+/proc/create_afterimage(mob/living/carbon/xenomorph/dodge_user, random_offset_x, random_offset_y)
+	if(!dodge_user || !dodge_user.loc)
+		return
+
+	var/turf/afterimage_location = get_turf(dodge_user.loc)
+	if(!afterimage_location)
+		return
+
+	//Apply directional offset based on the player's direction
+	var/directional_offset_x = 0
+	var/directional_offset_y = 0
+
+	switch(dodge_user.dir)
+		if(NORTH)
+			directional_offset_y = -16
+		if(SOUTH)
+			directional_offset_y = 16
+		if(EAST)
+			directional_offset_x = -16
+		if(WEST)
+			directional_offset_x = 16
+
+	//Create the afterimage at the current position with the offset
+	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(afterimage_location)
+	afterimage.icon = dodge_user.icon
+	afterimage.icon_state = dodge_user.icon_state
+	afterimage.color = dodge_user.color
+	afterimage.layer = dodge_user.layer
+	afterimage.dir = dodge_user.dir
+	afterimage.alpha = 150
+	afterimage.mouse_opacity = 0 // Non-interactive
+	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
+	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
+
+	//Trigger the fade-out effect for the afterimage
+	addtimer(CALLBACK(afterimage, "fade_out_afterimage"))
+
+/obj/effect/overlay/afterimage/proc/fade_out_afterimage()
+	if(!src) //Safety check
+		return
+
+	var/fade_steps = 5
+	var/fade_delay = 2 DECISECONDS
+	for(var/i = 1 to fade_steps)
+		src.alpha = round(200 * (1 - (i / fade_steps)))
+		sleep(fade_delay)
+	qdel(src)
+
+/mob/living/carbon/xenomorph/proc/reset_position_to_original(original_sprite_x, original_sprite_y)
+	// Reset the player's position to the original sprite position
+	pixel_x = original_sprite_x
+	pixel_y = original_sprite_y
+
+/mob/living/carbon/xenomorph/proc/apply_offset(random_offset_x, random_offset_y)
+	// Apply the random offset to the player's position
+	pixel_x += random_offset_x
+	pixel_y += random_offset_y
+
+/obj/effect/overlay/afterimage
+	name = "Dancer Afterimage"
+	icon = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
+	layer = MOB_LAYER
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner

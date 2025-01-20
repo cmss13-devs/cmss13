@@ -311,6 +311,8 @@
 			return /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 		if(JOB_DOCTOR)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/doctor
+		if(JOB_FIELD_DOCTOR)
+			return /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
 		if(JOB_RESEARCHER)
 			return /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 		if(JOB_NURSE)

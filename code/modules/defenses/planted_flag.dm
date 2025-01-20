@@ -12,6 +12,7 @@
 	var/buff_intensity = PLANTED_FLAG_BUFF
 	health = 200
 	health_max = 200
+	var/alternative_icon = 'icons/obj/structures/machinery/defenses/planted_flag_pride.dmi'
 
 	can_be_near_defense = TRUE
 
@@ -23,6 +24,12 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+/obj/structure/machinery/defenses/planted_flag/proc/toggle_icon()
+	if(icon == 'icons/obj/structures/machinery/defenses/planted_flag.dmi')
+		icon = alternative_icon
+	else
+		icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
+	update_icon()
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -90,6 +97,12 @@
 /obj/structure/machinery/defenses/planted_flag/proc/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 1.5 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 1.5 SECONDS)
+
+/obj/structure/machinery/defenses/planted_flag/attackby(obj/item/W, mob/user)
+	if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+		toggle_icon()
+		return TRUE
+	return ..()
 
 /obj/structure/machinery/defenses/planted_flag/range
 	name = "extended JIMA planted flag"

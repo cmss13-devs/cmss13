@@ -2,6 +2,22 @@
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
 
+/datum/keybinding/mob/look_up
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "look_up"
+	full_name = "Look Up"
+	description = ""
+	keybind_signal = COMSIG_KB_MOB_LOOK_UP
+
+/datum/keybinding/mob/look_up/down(client/user)
+	. = ..()
+	if (.)
+		return
+	var/mob/user_mob = user.mob
+	user_mob.look_up()
+	return TRUE
+
 /datum/keybinding/mob/stop_pulling
 	hotkey_keys = list("H", "Delete")
 	classic_keys = list("Delete")

@@ -651,6 +651,33 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	forceMove(tree.entrance)
 
+/mob/dead/observer/verb/teleport_z_up()
+	set category = "Ghost"
+	set name = "Move up"
+	set desc = "Move up a z level"
+
+	if(!istype(usr, /mob/dead/observer))
+		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
+		return
+
+	var/turf/above = SSmapping.get_turf_above(get_turf(src))
+
+	if(above)
+		usr.forceMove(above)
+
+/mob/dead/observer/verb/teleport_z_down()
+	set category = "Ghost"
+	set name = "Move down"
+	set desc = "Move down a z level"
+
+	if(!istype(usr, /mob/dead/observer))
+		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
+		return
+
+	var/turf/below = SSmapping.get_turf_below(get_turf(src))
+
+	if(below)
+		usr.forceMove(below)
 
 /mob/dead/observer/verb/dead_teleport_area()
 	set category = "Ghost"

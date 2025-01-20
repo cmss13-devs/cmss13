@@ -21,11 +21,17 @@
 //Offuscate y for coord system
 #define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
+//Offuscate z for the coord system
+#define obfuscate_z(z) ((z) + GLOB.obfs_z)
+
 //Deoffuscate x for coord system
 #define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
 #define deobfuscate_y(y) ((y) - GLOB.obfs_y)
+
+//Deoffuscate z for the coord system
+#define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 

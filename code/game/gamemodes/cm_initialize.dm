@@ -748,11 +748,6 @@ Additional game mode variables.
 	else
 		hive = GLOB.hive_datum[last_active_hive]
 
-	for(var/mob_name in hive.banished_ckeys)
-		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
-			return FALSE
-
 	var/list/selection_list = list()
 	var/list/selection_list_structure = list()
 
@@ -768,7 +763,7 @@ Additional game mode variables.
 			var/pylon_selection_name = pylon_name
 			while(pylon_selection_name in selection_list)
 				pylon_selection_name = "[pylon_name] ([pylon_number])"
-				pylon_number ++
+				pylon_number++
 			selection_list += pylon_selection_name
 			selection_list_structure += cycled_pylon
 

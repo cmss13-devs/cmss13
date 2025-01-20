@@ -403,7 +403,8 @@
 
 /obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
 	if(fuelpack)
-		fuelpack.do_toggle_fuel(user)
+		fuelpack.cycle_fuel(user)
+		playsound(src, 'sound/machines/steampressure2.ogg', 25, TRUE)
 
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
@@ -442,17 +443,20 @@
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 13, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if (!link_fuelpack(user) && !current_mag)
+	if(!link_fuelpack(user) && !current_mag)
 		to_chat(user, SPAN_WARNING("You must equip the specialized Broiler-T back harness or load in a fuel tank to use this incinerator unit!"))
 		click_empty(user)
 		return
-	if (fuelpack)
+	if(fuelpack)
 		// Check we're actually firing the right fuel tank
-		if (current_mag != fuelpack.active_fuel)
-			// This was a manually loaded fuel tank
-			if (current_mag && !(current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
-				to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
-				unload(user, drop_override = TRUE)
+		if(current_mag != fuelpack.active_fuel)
+			if(current_mag == null)
+				to_chat(user, SPAN_WARNING("\The Broiler-T back harness churns to life, and dispenses \the [fuelpack.active_fuel] into the active canister slot!"))
+				current_mag = fuelpack.active_fuel
+				update_icon()
+				return .()
+			to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
+			unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
 			update_icon()
 	return ..()
@@ -465,7 +469,7 @@
 	..()
 
 /obj/item/weapon/gun/flamer/M240T/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	if (fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
+	if(fuelpack)
 		to_chat(user, SPAN_WARNING("The incinerator tank is locked in place. It cannot be removed."))
 		return
 	..()

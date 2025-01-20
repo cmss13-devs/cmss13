@@ -219,7 +219,7 @@
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_MARSHAL)
 	headset_type = /obj/item/device/radio/headset/distress/CMB
 	idtype = /obj/item/card/id/marshal
-	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0, PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_2)
 
 /datum/equipment_preset/fax_responder/cmb/New()
 	. = ..()

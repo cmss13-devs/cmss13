@@ -144,9 +144,66 @@
 
 // VAMPIRE LURKER
 
-/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
+/datum/action/xeno_action/activable/pounce/rush/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!action_cooldown_check())
+		return
+
+	if(target == xeno)
+		return
+
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] from here!"))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	var/mob/living/carbon/carbon_target = target
+	if(get_dist(xeno, target) > distance)
+		to_chat(xeno, SPAN_XENOWARNING("This is too far, find a closer target."))
+		return FALSE
+	if(!iscarbon(target) || carbon_target.stat == DEAD)
+		for(var/mob/living/carbon/carbon in get_turf(target))
+			carbon_target = carbon
+			if(carbon_target.stat != DEAD)
+				break
+	if(!iscarbon(carbon_target) || carbon_target.stat == DEAD)
+		to_chat(xeno, SPAN_XENOWARNING("We need a target to rush at, hostile or not."))
+		return FALSE
+
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	vamp.rush_target_ref = WEAKREF(carbon_target)
+	RegisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(rushing_turf))
+	. = ..(carbon_target)
+
+	if(!.)
+		vamp.rush_target_ref = null
+		UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
+		return
+
+	if(xeno.can_not_harm(carbon_target))
+		xeno.emote("needshelp")
+
+/datum/action/xeno_action/activable/pounce/rush/proc/rushing_turf(mob/movable_mob, turf/new_loc)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	if(!vamp.rush_target_ref)
+		return
+
+	var/mob/living/target = vamp.rush_target_ref.resolve()
+	if(!target)
+		return
+
+	if(target.Adjacent(xeno)) //don't wanna jump on top of them, strike when within the reach
+		return COMPONENT_CANCEL_MOVE
+
+/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //rush effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	vamp.rush_target_ref = null
 	target.sway_jitter(times = 2)
 	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
@@ -154,6 +211,23 @@
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
+
+/datum/action/xeno_action/activable/pounce/rush/on_end_pounce()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/lurker_vampire/vamp = xeno.behavior_delegate
+	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
+	if(!vamp.rush_target_ref)
+		return
+
+	var/mob/living/target = vamp.rush_target_ref.resolve()
+	vamp.rush_target_ref = null
+	if(!target)
+		return
+	if(!xeno.check_state())
+		return
+	if(target.stat == DEAD || xeno.can_not_harm(target) || !xeno.Adjacent(target))
+		return
+	additional_effects(target)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -214,9 +288,10 @@
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
 			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
-			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			xeno.gain_health(30)
 			xeno.animation_attack_on(target)
+			if (!xeno.on_fire)
+				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+				xeno.gain_health(30)
 
 	xeno.emote("roar")
 	return ..()
@@ -234,6 +309,9 @@
 		return
 
 	if(distance > 2)
+		return
+
+	if (world.time <= xeno.next_move)
 		return
 
 	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)
@@ -266,11 +344,7 @@
 				break
 
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
-		if(targeted_atom == hit_target) //reward for a direct hit
-			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
-			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
-		else
-			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
+		to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
 	else
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
@@ -290,10 +364,12 @@
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
-		if (hit_target.mob_size < MOB_SIZE_BIG)
-			hit_target.KnockDown(0.5)
-		else
-			hit_target.Slow(0.5)
+
+	if (hit_target.mob_size < MOB_SIZE_BIG)
+		hit_target.KnockDown(0.5)
+	else
+		hit_target.Slow(0.5)
+
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
@@ -311,6 +387,7 @@
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
 
 	apply_cooldown()
+	xeno_attack_delay(xeno)
 	return ..()
 
 /datum/action/xeno_action/activable/tail_jab/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
@@ -374,10 +451,11 @@
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
-	xeno.gain_health(150)
-	xeno.xeno_jitter(1 SECONDS)
-	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
-	xeno.emote("roar")
+	if (!xeno.on_fire)
+		xeno.gain_health(150)
+		xeno.xeno_jitter(1 SECONDS)
+		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
+		xeno.emote("roar")
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
 	apply_cooldown()
 	return ..()

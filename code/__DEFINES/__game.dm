@@ -258,7 +258,7 @@
 
 /// Frequency stuff only works with 45kbps oggs.
 #define GET_RANDOM_FREQ rand(32000, 55000)
-
+#define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
 
 // Ceilings
 // Ceiling types

@@ -380,14 +380,23 @@
 			used_oneoff += amount
 
 /area/Entered(A,atom/OldLoc)
-	if(ismob(A))
+	if(ismob(A) && !isnewplayer(A))
 		if(!OldLoc)
 			return
-		var/mob/M = A
-		var/area/old_area = get_area(OldLoc)
-		if(old_area == src)
+		var/mob/area_entered_mod = A
+
+		var/area/new_area = get_area(area_entered_mod)
+		var/area/old_area = null
+		if(!isarea(OldLoc))
+			old_area = get_area(OldLoc)
+		else
+			old_area = OldLoc
+
+		if(old_area == src || !old_area)
 			return
-		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
+
+		SEND_SIGNAL(area_entered_mod, COMSIG_MOVABLE_ENTERED_AREA, old_area, new_area)
+		area_entered_mod?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))
 		add_machine(A)
 

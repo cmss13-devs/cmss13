@@ -123,7 +123,11 @@
 		template.file = get_sfx(soundin)
 
 	if(random_freq)
-		template.frequency = GET_RANDOM_FREQ
+		if(random_freq == "minor")
+			template.frequency = GET_RANDOM_FREQ_MINOR
+		else
+			template.frequency = GET_RANDOM_FREQ
+		
 	template.volume = vol
 	template.volume_cat = vol_cat
 	template.channel = channel

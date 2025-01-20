@@ -120,7 +120,7 @@
 	dat += ""
 	dat += "<!-- Message -->"
 	dat += "<div class=\"message-body-text\">"
-	dat += "<p>I, <span class=\"paper_field\"></span>, agree to a Confidentiality Agreement with the Weyland-Yutani (Space) Corporation that no information regarding the events that took place on the facility named <span class=\"paper_field\"></span> and subsequently the USS Almayer is to be delivered publicly. Only qualified Corporate personnel whose identities have been confirmed will receive such information.</p>"
+	dat += "<p>I, <span class=\"paper_field\"></span>, agree to a Confidentiality Agreement with the Weyland-Yutani Corporation that no information regarding the events that took place on the facility named <span class=\"paper_field\"></span> or any directly supporting facility in the immediate region is to be delivered publicly. Only qualified Corporate personnel whose identities have been confirmed will receive such information.</p>"
 	dat += "<p>"
 	dat += "Signature: <span class=\"paper_field\"></span><br>"
 	dat += "Liaison Signature: <span class=\"paper_field\"></span><br>"

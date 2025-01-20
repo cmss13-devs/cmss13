@@ -2797,8 +2797,8 @@ Defined in conflicts.dm of the #defines folder.
 			playsound(user, gun_deactivate_sound, 30, 1)
 		G.active_attachable = null
 		icon_state = initial(icon_state)
-		G.recalculate_attachment_bonuses()
 		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+		G.recalculate_attachment_bonuses()
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))

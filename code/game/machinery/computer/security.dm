@@ -495,7 +495,7 @@
 	)
 
 	var/list/rules = validators[field]
-	 // Handle strict mode: if the field is undefined, fail immediately
+	// Handle strict mode: if the field is undefined, fail immediately
 	if (strict_mode && !rules)
 		return "[field] is not a recognized property."
 

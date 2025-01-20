@@ -196,7 +196,7 @@
 	if(!target)
 		return
 
-	if(target in new_loc) //don't wanna jump on top of them
+	if(target.Adjacent(xeno)) //don't wanna jump on top of them, strike when within the reach
 		return COMPONENT_CANCEL_MOVE
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //rush effects

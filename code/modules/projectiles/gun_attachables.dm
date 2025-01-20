@@ -2786,6 +2786,10 @@ Defined in conflicts.dm of the #defines folder.
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
+/obj/item/attachable/attached_gun/proc/reset_damage_mult(obj/item/weapon/gun/gun)
+	SIGNAL_HANDLER
+	gun.damage_mult = 1
+
 /obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(G.active_attachable == src)
 		if(user)
@@ -2794,12 +2798,14 @@ Defined in conflicts.dm of the #defines folder.
 		G.active_attachable = null
 		icon_state = initial(icon_state)
 		G.recalculate_attachment_bonuses()
+		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
 			playsound(user, gun_activate_sound, 60, 1)
 		G.active_attachable = src
 		G.damage_mult = 1
+		RegisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
 
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)

@@ -391,6 +391,9 @@
 // Lurker strain flags
 #define LURKER_VAMPIRE "Vampire"
 
+// Warrior strain flags
+#define WARRIOR_BOXER "Boxer"
+
 // Ravager strain flags
 #define RAVAGER_HEDGEHOG "Hedgehog"
 #define RAVAGER_BERSERKER "Berserker"

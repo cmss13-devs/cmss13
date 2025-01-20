@@ -81,7 +81,10 @@
 @include meta.load-css('./interfaces/SidePanel.scss');
 @include meta.load-css('./interfaces/SmartFridge.scss');
 @include meta.load-css('./interfaces/SquadInfo.scss');
+@include meta.load-css('./interfaces/Statistic.scss');
+@include meta.load-css('./interfaces/StripMenu.scss');
 @include meta.load-css('./interfaces/TachyonArray.scss');
+@include meta.load-css('./interfaces/TacticalMap.scss');
 @include meta.load-css('./interfaces/Techweb.scss');
 @include meta.load-css('./interfaces/TechNode.scss');
 @include meta.load-css('./interfaces/Vending.scss');

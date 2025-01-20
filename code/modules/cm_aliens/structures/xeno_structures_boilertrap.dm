@@ -13,12 +13,9 @@
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/root_duration = 17.5
+	var/root_duration = 25
 
 	var/mob/living/carbon/xenomorph/bound_xeno // Boiler linked to this trap
-
-/obj/effect/alien/resin/boilertrap/empowered
-	root_duration = 30
 
 /obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/xenomorph/X)
 	if(mapload || !istype(X))
@@ -37,25 +34,29 @@
 	if(!isxeno(user))
 		return ..()
 	. = ..()
-	. += SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still.")
+	. += SPAN_XENOWARNING("A trap designed for a catching hosts and holding them still.")
 
 /obj/effect/alien/resin/boilertrap/fire_act()
 	. = ..()
 	qdel(src)
 
-/obj/effect/alien/resin/boilertrap/bullet_act(obj/projectile/P)
-	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+/obj/effect/alien/resin/boilertrap/bullet_act(obj/projectile/proj)
+	var/ammo_flags = proj.ammo.flags_ammo_behavior | proj.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))
 		return
 	return ..()
 
-/obj/effect/alien/resin/boilertrap/proc/trigger_trap(mob/M)
-	if(!istype(M) || !istype(bound_xeno))
+/obj/effect/alien/resin/boilertrap/proc/trigger_trap(mob/victim)
+	if(!istype(victim) || !istype(bound_xeno))
 		return
-	var/datum/effects/boiler_trap/F = new(M, bound_xeno, name)
-	QDEL_IN(F, root_duration)
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a tallhost!"))
-	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
+	var/datum/effects/boiler_trap/trap = new(victim, bound_xeno, name)
+	QDEL_IN(trap, root_duration)
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a host!"))
+	to_chat(victim, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
+
+	to_chat(bound_xeno, SPAN_XENONOTICE("We gain the tactical advantage over our opponents!"))
+	var/datum/behavior_delegate/boiler_trapper/be_del = bound_xeno.behavior_delegate
+	be_del.success_trap_buff()
 	qdel(src)
 
 /obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X)

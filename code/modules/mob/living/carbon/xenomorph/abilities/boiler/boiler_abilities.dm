@@ -92,43 +92,33 @@
 	macro_path = /datum/action/xeno_action/verb/verb_boiler_trap
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 20.5 SECONDS
+	xeno_cooldown = 18 SECONDS
 
 	/// Config
 	var/trap_ttl = 100
-	var/empowered = FALSE
-	var/empowering_charge_counter = 0
-	var/empower_charge_max = 10
 
-/datum/action/xeno_action/activable/acid_mine
-	name = "Acid Mine"
+/datum/action/xeno_action/activable/acid_mortar
+	name = "Acid Mortar"
 	action_icon_state = "acid_mine"
-	plasma_cost = 40
-	macro_path = /datum/action/xeno_action/verb/verb_acid_mine
+	plasma_cost = 60
+	macro_path = /datum/action/xeno_action/verb/verb_acid_mortar
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 5.5 SECONDS
+	xeno_cooldown = 14 SECONDS
 
-	var/empowered = FALSE
-
-	var/damage = 45
-	var/delay = 13.5
+	var/damage = 70
+	var/delay = 50
 
 /datum/action/xeno_action/activable/acid_shotgun
 	name = "Acid Shotgun"
 	action_icon_state = "acid_shotgun"
-	plasma_cost = 60
+	plasma_cost = 40
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shotgun
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 13 SECONDS
+	xeno_cooldown = 10 SECONDS
 
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
-
-/datum/action/xeno_action/onclick/toggle_long_range/trapper
-	handles_movement = FALSE
-	should_delay = FALSE
-	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/tail_stab/boiler
 	name = "Toxic Tail Stab"

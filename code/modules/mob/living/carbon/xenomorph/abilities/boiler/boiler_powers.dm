@@ -52,7 +52,7 @@
 
 			turfs_visited++
 
-			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", xeno)
+			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, "You are blasted with a stream of high-velocity acid!", xeno)
 
 		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
 		remove_stack_effects("We feel our speed return to normal!")
@@ -167,20 +167,20 @@
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!xeno.check_state())
+	if(!xeno.check_state())
 		return
 
-	if (!can_see(xeno, affected_atom, TRAPPER_VIEWRANGE))
+	if(!can_see(xeno, affected_atom))
 		to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	// 5-long line of turfs orthogonal to the line between us and our target as precisely as we can figure it
@@ -195,90 +195,75 @@
 	target_turfs += get_step(left_turf, turn(dir_between, -90))
 	target_turfs += get_step(right_turf, turn(dir_between, 90))
 
-	for (var/turf/turf in target_turfs)
-		if (!istype(turf) || turf.density)
+	for(var/turf/turf in target_turfs)
+		if(!istype(turf) || turf.density)
 			continue
 
 		var/trap_found = FALSE
-		for (var/obj/effect/alien/resin/boilertrap/boiler_trap in turf)
+		for(var/obj/effect/alien/resin/boilertrap/boiler_trap in turf)
 			trap_found = TRUE
 			break
 
-		if (trap_found)
+		if(trap_found)
 			continue
 
 		var/obj/effect/alien/resin/boilertrap/boiler_trap
-		if(empowered)
-			boiler_trap = new /obj/effect/alien/resin/boilertrap/empowered(turf, xeno)
-		else
-			boiler_trap = new /obj/effect/alien/resin/boilertrap(turf, xeno)
+		boiler_trap = new /obj/effect/alien/resin/boilertrap(turf, xeno)
 		QDEL_IN(boiler_trap, trap_ttl)
-
-	if(empowered)
-		empowered = FALSE
-		empowering_charge_counter = 0
-		button.overlays -= "+empowered"
-		var/datum/action/xeno_action/activable/acid_mine/mine = get_action(xeno, /datum/action/xeno_action/activable/acid_mine)
-		if(!mine.empowered)
-			mine.empowered = TRUE
-			mine.button.overlays += "+empowered"
-			to_chat(xeno, SPAN_XENODANGER("We tap into our reserves to prepare a stronger [mine.name]!"))
 
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/acid_mine/use_ability(atom/affected_atom)
+/datum/action/xeno_action/activable/acid_mortar/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!xeno.check_state())
+	if(!xeno.check_state())
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
 		return
 
-	if(!check_clear_path_to_target(xeno, affected_atom, TRUE, TRAPPER_VIEWRANGE))
+	if(!check_clear_path_to_target(xeno, affected_atom, TRUE))
 		to_chat(xeno, SPAN_XENOWARNING("Something is in the way!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/turf/turf = get_turf(affected_atom)
-	var/acid_bolt_message = "a bolt of acid"
-	if(empowered)
-		acid_bolt_message = "a powerful bolt of acid"
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
+	var/datum/behavior_delegate/boiler_trapper/be_del = xeno.behavior_delegate
+	if(be_del.successful_trap)
+		delay /= 2
 
-	for (var/turf/target_turf in orange(1, turf))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", xeno)
+	xeno.visible_message(SPAN_XENODANGER("[xeno] fires a bolt of acid in an arc directed at [affected_atom]!"), SPAN_XENODANGER("We fire a bolt of acid directed at [affected_atom]!"))
+	new /obj/effect/xenomorph/acid_damage_delay/boiler_mortar(turf, damage, delay, "You are burned by acid raining from above!", xeno)
 
-	if(empowered)
-		empowered = FALSE
-		button.overlays -= "+empowered"
+	for(var/turf/target_turf in orange(1, turf))
+		new /obj/effect/xenomorph/acid_damage_delay/boiler_mortar(target_turf, damage, delay, "You are burned by acid raining from above!", xeno)
 
 	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))
+	playsound(xeno.loc, "acid_spit", 25, 1)
 
 	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
@@ -291,7 +276,7 @@
 	return ..()
 
 /datum/ammo/xeno/acid_shotgun
-	name = "acid ball"
+	name = "acid spatter"
 	ping = null
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
@@ -299,18 +284,24 @@
 
 /datum/ammo/xeno/acid_shotgun/New()
 	..()
-	damage = 10
+	damage = 7
 	max_range = 5
 	damage_type = BURN
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_9
-	shrapnel_type = /datum/ammo/xeno/acid_shotgun/spread
-	shrapnel_chance = 100
+	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
+
+/datum/ammo/xeno/acid_shotgun/on_hit_mob(mob/living/carbon/target, obj/projectile/proj)
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = proj.firer
+	var/datum/behavior_delegate/boiler_trapper/be_del = xeno.behavior_delegate
+	if(be_del.successful_trap)
+		damage = 10
 
 /datum/ammo/xeno/acid_shotgun/spread
-	name = "acid ball"
+	name = "acid spatter"
 
 /datum/ammo/xeno/acid_shotgun/spread/New()
 	..()

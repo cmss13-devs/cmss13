@@ -7,7 +7,6 @@
 <6 = deadly toxic
 */
 
-
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
 	id = "ethanol"
@@ -16,7 +15,6 @@
 	nutriment_factor = 0 //So alcohol can fill you up! If they want to.
 	color = "#404030" // rgb: 64, 64, 48
 	chemfiresupp = TRUE
-	burncolor = "#6897f7"
 	burncolormod = 2
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	overdose = HIGH_REAGENTS_OVERDOSE
@@ -28,6 +26,14 @@
 	///This is when the properties are gonna hit. Drink in moderation.
 	var/effect_start = 150
 
+/**
+ * Sets only reagent ethanol to CHEM_CLASS_COMMON allowing for Turing machine to dispense it
+ *
+ * Sets ethanol to CHEM_CLASS_COMMON inheriting everything from /datum/reagent/ethanol.
+ * seems wonky to do double naming but cant have turing be super booze disp
+ */
+/datum/reagent/ethanol/ethanol
+	chemclass = CHEM_CLASS_BASIC
 
 /datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
 	//This is all way too snowflake to accurately transition to the property system so it stays here

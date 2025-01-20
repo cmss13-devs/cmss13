@@ -99,6 +99,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HUDS (CHOOSE 1)", 0, null, null, null),
@@ -134,6 +135,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 
 		list("PATCHES (DISCRETIONARY)", 0, null, null, null),
 		list("Falling Falcons Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falcon, null, VENDOR_ITEM_REGULAR),
+		list("Falling Falcons UA Shoulder Patch", 0, /obj/item/clothing/accessory/patch/falconalt, null, VENDOR_ITEM_REGULAR),
+		list("USCM Large Chest Patch", 0, /obj/item/clothing/accessory/patch/uscmlarge, null, VENDOR_ITEM_REGULAR),
 		list("USCM Shoulder Patch", 0, /obj/item/clothing/accessory/patch, null, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons Challenge Coin", 0, /obj/item/coin/silver/falcon, null, VENDOR_ITEM_REGULAR)
 ))

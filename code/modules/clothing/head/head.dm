@@ -314,7 +314,8 @@
 /obj/item/clothing/head/headband/squad
 	var/dummy_icon_state = "headband%SQUAD%" // will be prefixed with either hat_ or helmet_
 	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
-	icon_state = null
+	item_state = "headband%SQUAD%"
+	icon_state = "headband_squad"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',

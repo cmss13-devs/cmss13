@@ -593,31 +593,12 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/atmos/cargo_intake)
-"acm" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/reagent_container/food/drinks/flask/detflask{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/item/clothing/head/fedora,
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/lv522/indoors/a_block/security)
 "acn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
-"aco" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/security/glass)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -7530,6 +7511,17 @@
 /obj/item/stack/folding_barricade,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
+"dXI" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/flask/detflask{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/fedora,
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "dXN" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -22601,6 +22593,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"mhn" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/security/glass)
 "mhs" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt,
@@ -64926,7 +64926,7 @@ jDO
 nRK
 sjy
 sjy
-aco
+mhn
 hIz
 kTm
 oHR
@@ -68852,7 +68852,7 @@ sjy
 ape
 ape
 sjy
-acm
+dXI
 kRQ
 uVI
 sjy

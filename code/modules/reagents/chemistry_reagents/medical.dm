@@ -176,8 +176,10 @@
 		PROPERTY_CURING = 4,
 		PROPERTY_OCULOPEUTIC = 2,
 		PROPERTY_NEUROPEUTIC = 2,
+
 	)
 	flags = REAGENT_TYPE_MEDICAL
+
 
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"

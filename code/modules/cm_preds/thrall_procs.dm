@@ -126,7 +126,8 @@
 		thrall_gloves.owner = T
 		thrall_gloves.verbs += /obj/item/clothing/gloves/yautja/proc/buy_thrall_gear
 		T.client?.init_verbs()
-
+		T.set_species("Thrall")
+		T.allow_gun_usage = FALSE
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)
 			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
@@ -192,3 +193,62 @@
 /obj/item/clothing/gloves/yautja/thrall/bracer_message()
 	set category = "Thrall"
 	. = ..()
+
+/obj/item/clothing/gloves/yautja/hunter/verb/stun_thrall()
+	set name = "Stun Thrall"
+	set desc = "Stun your thrall when it misbehaves"
+	set category = "Yautja.Thrall"
+	set src in usr
+
+	var/mob/living/carbon/human/master = usr
+	var/mob/living/carbon/human/thrall = master.hunter_data.thrall
+	if(!thrall)
+		to_chat(master, SPAN_WARNING("You have no thrall to punish!"))
+	else if(thrall.IsStun())
+		to_chat(master, SPAN_WARNING("Your thrall is already stunned!"))
+	else
+		thrall.Stun(10 SECONDS)
+		to_chat(master, SPAN_WARNING("Your bracer beeps, your thrall is punished."))
+		to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
+
+/obj/item/clothing/gloves/yautja/hunter/verb/self_destruct_thrall()
+	set name = "Self Destruct Thrall (!)"
+	set desc = "Stun and trigger the self destruct device inside of your thrall's bracers. They have failed you. Show no mercy."
+	set category = "Yautja.Thrall"
+	set src in usr
+
+	var/mob/living/carbon/human/master = usr
+	var/mob/living/carbon/human/thrall = master.hunter_data.thrall
+	var/area/grounds = get_area(thrall)
+
+
+
+	if(master.stat == DEAD)
+		to_chat(master, SPAN_WARNING("Little too late for that now!"))
+		return
+	if(master.health < HEALTH_THRESHOLD_CRIT)
+		to_chat(master, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
+		return
+	if(master.stat)
+		to_chat(master, SPAN_WARNING("Not while you're unconscious..."))
+		return
+	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS)
+		to_chat(master, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
+		return
+	if(!thrall)
+		to_chat(master, SPAN_WARNING("You have no thrall to destroy!"))
+
+	if(exploding)
+		return
+
+	if(alert("Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Explosive Bracers", "Yes", "No") == "Yes")
+		var/area/A = get_area(thrall)
+		var/turf/T = get_turf(thrall)
+		message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
+		log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [A ? "in [A.name]":""]")
+		message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
+		to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
+		explode(thrall)
+		if(thrall.stat != DEAD)
+			thrall.Stun(10 SECONDS)
+			to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))

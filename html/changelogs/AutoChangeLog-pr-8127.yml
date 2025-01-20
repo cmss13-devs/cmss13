@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "synth reset key no longer has medical skillock and has a hint to it being engi skill locked in description"
-  - balance: "change synth key skill level from engi to trained (you can use key after reading engi pamphlet)"

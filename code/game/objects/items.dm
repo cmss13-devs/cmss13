@@ -880,8 +880,6 @@
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
-	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
@@ -893,6 +891,9 @@
 		user.client.change_view(GLOB.world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
+
+	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
+	SEND_SIGNAL(src, COMSIG_ITEM_UNZOOM, user)
 
 /obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER

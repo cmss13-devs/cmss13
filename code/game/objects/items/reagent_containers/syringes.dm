@@ -258,7 +258,7 @@
 			return
 		var/hit_area = affecting.display_name
 
-		if((user != target) && H.check_shields(7, "the [src.name]"))
+		if((user != target) && H.check_shields(7, "the [src.name]", user.dir))
 			return
 
 		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))

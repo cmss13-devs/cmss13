@@ -755,7 +755,7 @@
 
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
-			dat += {"<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
+			dat += {"<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"Now: [GLOB.master_mode]"}
 		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
@@ -1319,11 +1319,11 @@
 		GLOB.fax_contents += fax_message // save a copy
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		GLOB.PressFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
+		GLOB.PressFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax(msg_ghost = msg_ghost)
 
 		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
@@ -1402,11 +1402,11 @@
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
+		GLOB.USCMFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>USCM FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
@@ -1483,11 +1483,11 @@
 		if(!customname)
 			return
 
-		GLOB.WYFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.WYFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 
@@ -1565,11 +1565,11 @@
 		if(!customname)
 			return
 
-		GLOB.TWEFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.TWEFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>THREE WORLD EMPIRE FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
@@ -1646,11 +1646,11 @@
 		if(!customname)
 			return
 
-		GLOB.UPPFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.UPPFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
@@ -1727,11 +1727,11 @@
 		if(!customname)
 			return
 
-		GLOB.CLFFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.CLFFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
@@ -1808,11 +1808,11 @@
 		if(!customname)
 			return
 
-		GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.CMBFaxes.Add("<a href='byond://?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1b748c'>COLONIAL MARSHAL BUREAU FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
-		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 
@@ -2150,7 +2150,7 @@
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		GLOB.distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
@@ -2158,7 +2158,7 @@
 		var/mob/ref_person = href_list["distress_handheld"]
 		var/ert_name = href_list["ert_name"]
 		GLOB.distress_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to SEND [ert_name]! Launching in 10 seconds... (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
 		addtimer(CALLBACK(src, PROC_REF(accept_handheld_ert), usr, ref_person, ert_name), 10 SECONDS)
 
 	if(href_list["deny_distress_handheld"]) //Logs denied handheld distress beacons
@@ -2169,7 +2169,7 @@
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
 		GLOB.destroy_cancel = FALSE
-		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
+		message_admins("[key_name_admin(usr)] has opted to GRANT the self-destruct! Starting in 10 seconds... (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(GLOB.distress_cancel)
 				return
@@ -2194,7 +2194,7 @@
 		//make ASRS order for nuke
 		var/datum/supply_order/new_order = new()
 		new_order.ordernum = GLOB.supply_controller.ordernum++
-		new_order.object = GLOB.supply_packs_datums[nuketype]
+		new_order.objects = list(GLOB.supply_packs_datums[nuketype])
 		new_order.orderedby = ref_person
 		new_order.approvedby = "USCM High Command"
 		GLOB.supply_controller.shoppinglist += new_order
@@ -2373,7 +2373,7 @@
 
 	var/dat = ""
 	dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-	dat += "<tr align='center' bgcolor='[color]'><th colspan='[length(roles)]'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[department]dept;jobban4=\ref[M]'>[department]</a></th></tr><tr align='center'>"
+	dat += "<tr align='center' bgcolor='[color]'><th colspan='[length(roles)]'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[department]dept;jobban4=\ref[M]'>[department]</a></th></tr><tr align='center'>"
 	for(var/jobPos in roles)
 		if(!jobPos)
 			continue
@@ -2382,10 +2382,10 @@
 			continue
 
 		if(jobban_isbanned(M, job.title, P))
-			dat += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
+			dat += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 			counter++
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
+			dat += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 			counter++
 
 		if(counter >= 5) //So things dont get squiiiiished!

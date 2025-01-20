@@ -45,10 +45,6 @@
 	stat |= BROKEN
 	update_icon()
 
-/obj/structure/machinery/prop/almayer/computer/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/prop/almayer/computer/update_icon()
 	..()
 	icon_state = initial(icon_state)
@@ -119,7 +115,7 @@
 	faction = FACTION_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
 	faction = FACTION_PMC
 
 //Nonpower using props

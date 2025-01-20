@@ -426,17 +426,26 @@
 	. = ..()
 	if(.)
 		return
+
 	if(href_list["mach_close"])
 		var/t1 = href_list["mach_close"]
 		unset_interaction()
 		close_browser(src, t1)
+		return TRUE
 
 	if(href_list["flavor_more"])
 		show_browser(usr, "<BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
 		onclose(usr, "[name]")
+		return TRUE
+
 	if(href_list["flavor_change"])
 		update_flavor_text()
-	return
+		return TRUE
+
+	if(href_list["preference"])
+		if(client)
+			client.prefs.process_link(src, href_list)
+		return TRUE
 
 /mob/proc/swap_hand()
 	hand = !hand
@@ -503,11 +512,11 @@
 	var/refid = REF(src)
 	. += {"
 		<br><font size='1'>
-			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
-			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
-			TOXIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
-			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
-			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
+			BRUTE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
+			FIRE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>
+			TOXIN:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=toxin' id='toxin'>[getToxLoss()]</a>
+			OXY:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
+			CLONE:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 		</font>
 	"}
 
@@ -983,15 +992,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 				GLOB.alive_mob_list -= src
 				GLOB.dead_mob_list += src
 	return ..()
-
-/mob/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(href_list["preference"])
-		if(client)
-			client.prefs.process_link(src, href_list)
-		return TRUE
 
 /mob/proc/reset_perspective(atom/A)
 	if(!client)

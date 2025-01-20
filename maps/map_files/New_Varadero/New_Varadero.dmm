@@ -85,10 +85,34 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "aap" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced,
+/obj/item/clothing/head/fedora/grey,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/varadero/interior_protected/vessel)
+"aaq" = (
+/obj/structure/coatrack,
+/obj/item/clothing/head/fedora/grey{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aar" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"aaq" = (
+"aas" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -12347,22 +12371,6 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
-"jQG" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/window/reinforced,
-/obj/item/clothing/head/fedora,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior_protected/vessel)
 "jQM" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -19181,14 +19189,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior_protected/vessel)
-"pBo" = (
-/obj/structure/coatrack,
-/obj/item/clothing/head/fedora{
-	pixel_x = -1;
-	pixel_y = 15
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/security)
 "pBx" = (
 /obj/item/device/flashlight,
 /turf/open/floor/shiva/yellow,
@@ -41733,7 +41733,7 @@ wMw
 wMw
 wMw
 wMw
-aap
+aar
 xcE
 wMw
 wMw
@@ -50525,7 +50525,7 @@ wVf
 wVf
 tiw
 vPi
-pBo
+aaq
 wVf
 wVf
 hXv
@@ -55184,7 +55184,7 @@ lTg
 wlB
 wlB
 wlB
-aaq
+aas
 wlB
 lTg
 wlB
@@ -63685,7 +63685,7 @@ brT
 bsf
 bsf
 avD
-jQG
+aap
 aan
 aak
 oKy

@@ -56,9 +56,21 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "aam" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/candy_corn{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/fedora/grey{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/n_admin)
 "aan" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 8
@@ -80,6 +92,10 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aap" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/shiva/north,
+/area/shiva/exterior/lz2_fortress)
 "aar" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/shiva/north,
@@ -7242,22 +7258,6 @@
 	},
 /turf/open/floor/shiva/greenfull,
 /area/shiva/interior/colony/botany)
-"djJ" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/candy_corn{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/fedora{
-	pixel_x = -6;
-	pixel_y = 12
-	},
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
-	},
-/turf/open/floor/shiva/bluefull,
-/area/shiva/interior/colony/n_admin)
 "djO" = (
 /obj/item/stool,
 /turf/open/floor/shiva/yellowfull,
@@ -29326,7 +29326,7 @@ mFm
 mFm
 mFm
 mFm
-aam
+aap
 mFm
 mFm
 lJv
@@ -40842,7 +40842,7 @@ hLf
 hLf
 hLf
 vsi
-djJ
+aam
 gQx
 hLf
 bRD

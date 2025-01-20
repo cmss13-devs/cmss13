@@ -16,6 +16,7 @@
 	idtype = /obj/item/card/id/lanyard
 
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+	languages = ALL_HUMAN_LANGUAGES
 
 	var/obj/item/device/radio/headset/headset_type = /obj/item/device/radio/headset
 

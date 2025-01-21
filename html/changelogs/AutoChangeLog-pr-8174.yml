@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - qol: "Forensic spray can no longer generate in recipes, mutated plants and colony vials."

@@ -84,7 +84,7 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
-		if(affected_mob.in_stasis || affected_mob.bodytemperature < BODYTEMP_COLD_WATER_LIMIT)
+		if(affected_mob.in_stasis || affected_mob.bodytemperature < BODYTEMP_COLD_LIQUID_LIMIT)
 			if(stage < 5)
 				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less

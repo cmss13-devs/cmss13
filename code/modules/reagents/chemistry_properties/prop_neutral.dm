@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
-	if(M.bodytemperature > BODYTEMP_COLD_WATER_LIMIT)
+	if(M.bodytemperature > BODYTEMP_COLD_LIQUID_LIMIT)
 		return list(REAGENT_CANCEL = TRUE)
 	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
 

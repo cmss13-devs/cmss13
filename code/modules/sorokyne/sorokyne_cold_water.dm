@@ -56,10 +56,10 @@
 		M.apply_damage(5*dam_amount,BURN)
 
 	if (ishuman(M))
-		if (M.bodytemperature > BODYTEMP_COLD_WATER_LIMIT)
+		if (M.bodytemperature > BODYTEMP_COLD_LIQUID_LIMIT)
 			M.bodytemperature -= COLD_WATER_TEMP_EFFECT
 		else
-			M.bodytemperature = BODYTEMP_COLD_WATER_LIMIT
+			M.bodytemperature = BODYTEMP_COLD_LIQUID_LIMIT
 		if(!issynth(M))
 			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone..."))
 

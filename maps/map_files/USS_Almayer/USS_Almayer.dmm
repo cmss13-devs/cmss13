@@ -272,10 +272,10 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = 3
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver,

@@ -3174,7 +3174,7 @@
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/kutjevo/exterior/runoff_river)
 "eCB" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -5579,7 +5579,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/exterior/lz_pad)
 "iLU" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
@@ -6508,7 +6508,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/colony_central)
 "kkB" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "kkH" = (
@@ -12088,7 +12088,7 @@
 "sJm" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/machinery/vending/cigarette/colony{
+/obj/structure/machinery/vending/cigarette/wy{
 	layer = 3
 	},
 /turf/open/floor/kutjevo/multi_tiles/southeast,
@@ -12345,7 +12345,7 @@
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
 "tdG" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "tdQ" = (

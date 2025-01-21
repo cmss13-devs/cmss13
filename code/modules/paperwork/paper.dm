@@ -971,37 +971,38 @@
 
 	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
 
-	template += {"
-	Name: [general_record.fields["name"]]\[br\] `
-	ID: [general_record.fields["id"]]\[br\]
-	Sex: [general_record.fields["sex"]]\[br\]
-	Age: [general_record.fields["age"]]\[br\]
-	Rank: [general_record.fields["rank"]]\[br\]
-	Physical Status: [general_record.fields["p_stat"]]\[br\]
-	Mental Status: [general_record.fields["m_stat"]]\[br\]
-	Criminal Status: [general_record.fields["criminal"]]\[br\]
-	"}
+	if(general_record)
+		template += {"
+		Name: [general_record.fields["name"]]\[br\] `
+		ID: [general_record.fields["id"]]\[br\]
+		Sex: [general_record.fields["sex"]]\[br\]
+		Age: [general_record.fields["age"]]\[br\]
+		Rank: [general_record.fields["rank"]]\[br\]
+		Physical Status: [general_record.fields["p_stat"]]\[br\]
+		Mental Status: [general_record.fields["m_stat"]]\[br\]
+		Criminal Status: [general_record.fields["criminal"]]\[br\]
+		"}
 
-	if (security_record)
-		template += {"\[center\]\[b\]Security Data\[/b\]\[/center\]"}
-		template += {"Incidents: [security_record.fields["incident"]]\[br\]"}
-		template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
+		if (security_record)
+			template += {"\[center\]\[b\]Security Data\[/b\]\[/center\]"}
+			template += {"Incidents: [security_record.fields["incident"]]\[br\]"}
+			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
 
-		if(islist(security_record.fields["comments"]) || length(security_record.fields["comments"]) > 0)
-			for(var/com_i in security_record.fields["comments"])
-				var/comment = security_record.fields["comments"][com_i]
-				// What a wacky and jolly creation
-				// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-				var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
-				if (isnull(comment["deleted_by"]))
-					comment_markup += "[comment["entry"]]"
-				else
-					comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
-				template += {"[comment_markup]\[br\]\[br\]"}
+			if(islist(security_record.fields["comments"]) || length(security_record.fields["comments"]) > 0)
+				for(var/com_i in security_record.fields["comments"])
+					var/comment = security_record.fields["comments"][com_i]
+					// What a wacky and jolly creation
+					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
+					if (isnull(comment["deleted_by"]))
+						comment_markup += "[comment["entry"]]"
+					else
+						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
+					template += {"[comment_markup]\[br\]\[br\]"}
+			else
+				template += {"\[b\]No comments\[/b\]\[br\]"}
 		else
-			template += {"\[b\]No comments\[/b\]\[br\]"}
-	else
-		template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
+			template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
 	update_icon()

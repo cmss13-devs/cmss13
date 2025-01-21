@@ -336,7 +336,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Core Shutters";
 	pixel_x = 36;
 	pixel_y = 10;
@@ -344,7 +344,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
-	indestructible = 1;
+	explo_proof = 1;
 	name = "Core Railings";
 	needs_power = 0;
 	pixel_x = 28;
@@ -442,7 +442,7 @@
 "abg" = (
 /obj/structure/surface/table/reinforced/almayer_B{
 	climbable = 0;
-	indestructible = 1;
+	explo_proof = 1;
 	unacidable = 1;
 	unslashable = 1
 	},

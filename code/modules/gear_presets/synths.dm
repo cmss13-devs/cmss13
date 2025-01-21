@@ -398,6 +398,25 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
+/datum/equipment_preset/synth/survivor/miner_synth
+	name = "Survivor - Synthetic - Mining Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/hardhat/orange,
+		WEAR_BODY = /obj/item/clothing/under/hybrisa/kelland_mining,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/armband/engine,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/eng,
+		WEAR_EYES = /obj/item/clothing/glasses/material,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/kelland_mining,
+		WEAR_J_STORE = /obj/item/maintenance_jack,
+		WEAR_WAIST = /obj/item/storage/belt/utility/full,
+		WEAR_HANDS = /obj/item/clothing/gloves/brown,
+		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/brown,
+		WEAR_L_HAND = /obj/item/tool/pickaxe/hammer
+	)
+
+	survivor_variant = ENGINEERING_SURVIVOR
+
 /datum/equipment_preset/synth/survivor/corporate_synth
 	name = "Survivor - Synthetic - Corporate Synth"
 
@@ -423,6 +442,37 @@
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/galoshes,
 		WEAR_L_HAND = /obj/item/weapon/twohanded/spear
+	)
+
+/datum/equipment_preset/synth/survivor/fisher_synth
+	name = "Survivor - Synthetic - Fishing Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/cmcap/boonie/tan,
+		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
+		WEAR_BODY = /obj/item/clothing/under/colonist/workwear,
+		WEAR_BACK = /obj/item/storage/backpack/satchel,
+		WEAR_WAIST = /obj/item/storage/belt/utility/full,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/apron/overalls/red,
+		WEAR_IN_JACKET = /obj/item/reagent_container/spray/cleaner,
+		WEAR_HANDS = /obj/item/clothing/gloves/brown,
+		WEAR_R_HAND = /obj/item/fishing_pole,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/brown,
+		WEAR_L_HAND = /obj/item/reagent_container/food/snacks/fishable/crab
+	)
+
+/datum/equipment_preset/synth/survivor/hydro_synth
+	name = "Survivor - Synthetic - Hydroponics Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/cmcap,
+		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
+		WEAR_BODY = /obj/item/clothing/under/colonist/workwear/green,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/hyd,
+		WEAR_IN_BACK = /obj/item/tool/shovel/spade,
+		WEAR_WAIST = /obj/item/reagent_container/spray/plantbgone,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/jacket/marine/vest,
+		WEAR_HANDS = /obj/item/clothing/gloves/brown,
+		WEAR_R_HAND = /obj/item/tool/hatchet,
+		WEAR_FEET = /obj/item/clothing/shoes/brown
 	)
 
 /datum/equipment_preset/synth/survivor/chef_synth
@@ -698,6 +748,26 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_R_HAND = /obj/item/device/camera,
 		WEAR_L_HAND = /obj/item/weapon/twohanded/fireaxe
+	)
+
+	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/pilot_synth
+	name = "Survivor - Synthetic - WY Pilot Synth"
+	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "Pilot Syn"
+	equipment_to_spawn = list(
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
+		WEAR_R_EAR = /obj/item/tool/pen/clicky,
+		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/aviator/silver,
+		WEAR_HEAD = /obj/item/clothing/head/hybrisa/wy_po_cap,
+		WEAR_BODY = /obj/item/clothing/under/hybrisa/wy_pilot,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/black,
+		WEAR_IN_BACK = /obj/item/map/current_map,
+		WEAR_WAIST = /obj/item/clipboard,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/hybrisa/wy_Pilot,
+		WEAR_FEET = /obj/item/clothing/shoes/dress,
+		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
 
 	survivor_variant = CORPORATE_SURVIVOR

@@ -683,7 +683,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_aist_wy, list(
 	))
 
 /obj/effect/essentials_set/m2019
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/revolvers.dmi'
 	icon_state = "lapd_2019"
 	desc = "Properly known as the Pflager Katsumata Series-D Blaster, the M2019 is a relic of a handgun used by detectives and blade runners, having replaced the snub nose .38 detective special in 2019. Fires .44 custom packed sabot magnum rounds. Legally a revolver, the unconventional but robust internal design has made this model incredibly popular amongst collectors and enthusiasts."
 	spawned_gear_list = list(
@@ -693,7 +693,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_aist_wy, list(
 	)
 
 /obj/effect/essentials_set/pkd_ammo
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'
 	icon_state = "pkd_44"
 	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
 	spawned_gear_list = list(

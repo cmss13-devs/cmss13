@@ -4,7 +4,7 @@
 	desc = "Artifical Intelligence Diagnostic Tablet model T411. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_ARES_DEBUG, ACCESS_MARINE_AI)
 
 	/// The ID used to link all devices.

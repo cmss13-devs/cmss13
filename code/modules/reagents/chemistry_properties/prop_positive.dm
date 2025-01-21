@@ -461,7 +461,7 @@
 	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
+	M.bodytemperature = max(BODYTEMP_CRYO_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
 
 /datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, BRAIN)

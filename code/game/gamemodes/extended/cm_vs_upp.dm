@@ -13,7 +13,8 @@
 	/datum/gamemode_modifier/disable_stripdrag_enemy,
 	/datum/gamemode_modifier/indestructible_splints,
 	/datum/gamemode_modifier/mortar_laser_warning,
-	/datum/gamemode_modifier/no_body_c4)
+	/datum/gamemode_modifier/no_body_c4
+	)
 
 	taskbar_icon = 'icons/taskbar/gml_hvh.png'
 

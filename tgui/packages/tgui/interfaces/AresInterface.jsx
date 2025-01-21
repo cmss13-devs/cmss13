@@ -365,7 +365,7 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      {(access_level === 3 || access_level >= 6) && (
+      {(local_access_level === 3 || local_access_level >= 6) && (
         <Section>
           <h1 align="center">Core Security Protocols</h1>
 
@@ -406,14 +406,14 @@ const MainMenu = (props) => {
                   act('update_sentries', { chosen_iff: value })
                 }
                 width="90px"
-                disabled={access_level < 9}
+                disabled={local_access_level < 9}
                 tooltip="Change core sentries IFF settings."
               />
             </Stack.Item>
           </Stack>
         </Section>
       )}
-      {access_level >= 11 && (
+      {local_access_level >= 11 && (
         <Section>
           <h1 align="center">Maintenance Protocols</h1>
 

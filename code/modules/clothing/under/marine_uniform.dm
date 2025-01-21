@@ -552,13 +552,13 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/medic
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant functions more like medical scrubs, useful for when covered in blood."
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a red armband denoting the wearer's medical purpose."
 	icon_state = "med_uniform"
 	item_state = "med_uniform"
 	worn_state = "med_uniform"
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/engineer
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has additional clips and tool pockets for appropriately certified corporate personnel."
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant has a yellow armband denoting the wearer's technical purpose."
 	icon_state = "eng_uniform"
 	item_state = "eng_uniform"
 	worn_state = "eng_uniform"

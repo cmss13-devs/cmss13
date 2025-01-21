@@ -62,3 +62,16 @@
 
 	if(SSticker.mode)
 		SSticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
+
+/datum/job/antag/young_blood
+	title = ERT_JOB_YOUNGBLOOD
+	selection_class = "ert_job_youngblood"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
+	supervisors = "Ancients"
+	flags_whitelist = NO_FLAGS
+	gear_preset = /datum/equipment_preset/yautja/non_wl
+
+	handle_spawn_and_equip = TRUE
+
+/datum/job/antag/young_blood/leader
+	gear_preset = /datum/equipment_preset/yautja/non_wl_leader

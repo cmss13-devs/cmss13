@@ -1047,6 +1047,7 @@
 		return
 
 	if(caller.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(caller, SPAN_WARNING("This button is not for you."))
 		return
 
 	if(!HAS_TRAIT(caller, TRAIT_YAUTJA_TECH))
@@ -1056,7 +1057,7 @@
 	var/list/target_list = list()
 	for(var/mob/living/carbon/human/target_youngbloods as anything in GLOB.yautja_mob_list)
 		if(target_youngbloods.faction == FACTION_YAUTJA_YOUNG && target_youngbloods.stat != DEAD)
-			target_list += target_youngbloods
+			target_list += target_youngbloods.real_name
 
 	if(!length(target_list))
 		to_chat(caller, SPAN_NOTICE("No youngbloods are currently alive."))

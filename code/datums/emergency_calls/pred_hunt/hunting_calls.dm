@@ -194,7 +194,7 @@
 		FOR_DVIEW_END
 
 
-	if(!leader && HAS_FLAG(hunter.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES , time_required_for_youngblood))
+	if(!leader && check_timelock(hunter.client, JOB_SQUAD_ROLES && JOB_XENO_ROLES, time_required_for_youngblood))
 		leader = hunter
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, FALSE)
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood Pack Leader!"))

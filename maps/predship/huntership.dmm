@@ -593,6 +593,7 @@
 	light_color = "#F52744"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/stool,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "bP" = (
@@ -657,7 +658,16 @@
 /area/yautja)
 "bZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/yautja,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/wishsoup,
+/obj/item/tool/kitchen/utensil/spoon,
+/turf/open/shuttle/predship,
+/area/yautja/lower_deck)
+"ca" = (
+/obj/structure/bed/bedroll,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "cb" = (
@@ -1643,6 +1653,30 @@
 /obj/item/skull/lurker,
 /turf/closed/wall/huntership,
 /area/yautja)
+"dX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/stool,
+/turf/open/shuttle/predship,
+/area/yautja/lower_deck)
+"dY" = (
+/obj/structure/bed/stool,
+/turf/open/shuttle/predship,
+/area/yautja/lower_deck)
+"dZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squareswood/north,
+/area/yautja/lower_deck)
+"ea" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/predship,
+/area/yautja/lower_deck)
 "ed" = (
 /obj/structure/barricade/handrail/strata,
 /obj/effect/decal/cleanable/blood{
@@ -1666,6 +1700,7 @@
 /area/yautja/lower_deck)
 "eo" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "er" = (
@@ -3367,7 +3402,11 @@
 /turf/open/floor/light/red,
 /area/yautja/lower_deck)
 "Nb" = (
-/obj/structure/closet/yautja,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/wishsoup,
+/obj/item/tool/kitchen/utensil/spoon,
 /turf/open/shuttle/predship,
 /area/yautja/lower_deck)
 "Ng" = (
@@ -8206,7 +8245,7 @@ Rr
 Ok
 zi
 Nb
-dm
+dX
 NE
 zi
 zi
@@ -8278,7 +8317,7 @@ dm
 Ok
 zi
 bZ
-NE
+dY
 NE
 dm
 zi
@@ -8564,7 +8603,7 @@ NE
 NE
 NE
 ck
-NE
+dm
 NE
 NE
 GX
@@ -8633,7 +8672,7 @@ dv
 NE
 yM
 UT
-cg
+dZ
 cg
 cg
 cS
@@ -8702,7 +8741,7 @@ UT
 iP
 zi
 dx
-GX
+ea
 yM
 Zi
 bX
@@ -8918,7 +8957,7 @@ GM
 UT
 dC
 UT
-UT
+GM
 do
 cK
 UT
@@ -9003,7 +9042,7 @@ NE
 UT
 iP
 zi
-NE
+dm
 yM
 yM
 GX
@@ -9135,7 +9174,7 @@ dH
 zi
 fS
 dm
-NE
+dm
 NE
 NE
 NE
@@ -9366,7 +9405,7 @@ zi
 ce
 bi
 NE
-ce
+ca
 cn
 "}
 (78,1,1) = {"

@@ -32,7 +32,7 @@
 	return //No vanity items for Yautja!
 
 /datum/equipment_preset/yautja/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
+	new_human.nutrition = NUTRITION_VERYLOW //Eat before you hunt.
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	var/caster_material = "ebony"
@@ -160,9 +160,9 @@
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
 	name = "Yautja Young (non-WL)"
 	minimap_icon = "predator_young"
+	rank = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	clan_rank = CLAN_RANK_YOUNG_INT
 
 /datum/equipment_preset/yautja/non_wl/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
@@ -176,9 +176,9 @@
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
 	name = "Yautja Youngblood pack leader (non-WL)"
 	minimap_icon = "predator_young"
+	rank = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	clan_rank = CLAN_RANK_YOUNG_INT
 
 /datum/equipment_preset/yautja/non_wl_leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
@@ -186,5 +186,5 @@
 
 /datum/equipment_preset/yautja/non_wl_leader/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
-	var/new_name = "Pack Leader [new_human.real_name]"
+	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)

@@ -164,7 +164,7 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_left"
 	req_access = list(ACCESS_YAUTJA_SECURE)
-	vendor_role = list(JOB_PREDATOR)
+	vendor_role = list(ERT_JOB_YOUNGBLOOD, JOB_PREDATOR)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 

@@ -67,7 +67,7 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
 	title = "L: Whitelist Issue"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
-	message = "Staff are unable to handle most whitelist rulebreaks in-game, please make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
+	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp. Staff are unable to handle most whitelist rulebreaks in-game and you are likely to be told to make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
 
 /datum/autoreply/mentor/event
 	title = "A: Event in Progress"

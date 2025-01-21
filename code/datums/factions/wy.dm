@@ -19,6 +19,8 @@
 			hud_icon_state = "goon_sci"
 		if(JOB_WY_GOON_TECH)
 			hud_icon_state = "goon_engi"
+		if(JOB_WY_GOON_MEDIC)
+			hud_icon_state = "goon_medic"
 		if(JOB_CORPORATE_LIAISON)
 			hud_icon_state = "liaison"
 		if(JOB_EXECUTIVE)

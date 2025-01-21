@@ -33,7 +33,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/administrator(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/wy_cap(new_human), WEAR_HEAD)
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/prescription(new_human), WEAR_EYES)
 	else
@@ -55,6 +55,7 @@
 	name = "Survivor - Corporate Security Goon Medic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_MEDIC
+	rank = JOB_WY_GOON_MEDIC
 	skills = /datum/skills/civilian/survivor/goon/medic
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL)
 	minimap_icon = "goon_med"
@@ -76,14 +77,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/robust(new_human), WEAR_R_HAND) //pills packs splints and analyzer
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/corporate/no_lock, WEAR_J_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
@@ -91,6 +92,7 @@
 	name = "Survivor - Corporate Security Goon Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_TECH
+	rank = JOB_WY_GOON_TECH
 	skills = /datum/skills/civilian/survivor/goon/tech
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_ENGINEERING)
 	minimap_icon = "goon_engi"
@@ -123,6 +125,7 @@
 	name = "Survivor - Corporate Security Goon Lead"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_LEAD
+	rank = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/goon/lead
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING)
@@ -161,7 +164,7 @@
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
+		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,

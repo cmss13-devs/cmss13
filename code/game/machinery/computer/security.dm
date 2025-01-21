@@ -431,6 +431,7 @@
 					to_chat(usr, "Record not found.")
 					return
 
+				playsound(loc, 'sound/machines/print.ogg', 15, 1)
 				sleep(50)
 
 				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(src, general_record, security_record)

@@ -199,7 +199,7 @@
 	premium = list()
 	prices = list()
 
-/obj/structure/machinery/vending/cigarette/koorlander //koorlander machine, contains luckies since they either bought Lucky Strikes, or are working together
+/obj/structure/machinery/vending/cigarette/koorlander //koorlander machine, contains luckies since they either bought Lucky Strikes as a company, or are working together to survive.
 	name = "Koorlander brand cigarette machine"
 	desc = "A Koorlander brand cigarette vending machine. Comes with Lucky Strikes, Lady Fingers, Koorlander Golds of course, and a few smaller brands you've barely heard of."
 	icon_state = "koorcigs"
@@ -253,51 +253,54 @@
 		"The Food and Drug Administration would like to remind you that tobacco products cause cancer and increased fatigue.",
 	)
 
-	premium = list(/obj/item/storage/fancy/cigar/tarbacks = 5)
 	products = list(
-		/obj/item/storage/fancy/cigarettes/kpack = 15,
-		/obj/item/storage/fancy/cigarettes/lucky_strikes = 20,
-		/obj/item/storage/fancy/cigarettes/lady_finger = 10,
-		/obj/item/storage/fancy/cigarettes/spirit/yellow = 10,
-		/obj/item/storage/fancy/cigarettes/spirit = 10,
-		/obj/item/storage/fancy/cigar/tarbacktube = 20,
-
-		/obj/item/storage/fancy/cigar/matchbook/koorlander = 10,
-		/obj/item/storage/fancy/cigar/matchbook/brown = 10,
-		/obj/item/storage/box/matches = 5,
 		/obj/item/storage/fancy/cigarettes/kpack = 20,
-		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
-		/obj/item/storage/fancy/cigarettes/spirit = 15,
-		/obj/item/storage/fancy/cigarettes/spirit/yellow = 15,
-		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
-		/obj/item/storage/fancy/cigarettes/wypacket = 15,
-		/obj/item/storage/fancy/cigarettes/trading_card = 15,
-		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
-		/obj/item/storage/fancy/cigarettes/blackpack = 10,
+		/obj/item/storage/fancy/cigarettes/lucky_strikes = 20,
+		/obj/item/storage/fancy/cigarettes/lady_finger = 20,
+		/obj/item/storage/fancy/cigarettes/spirit = 10,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 10,
+		/obj/item/storage/fancy/cigar/tarbacktube = 10,
 		/obj/item/storage/fancy/cigar/tarbacks = 5,
-		/obj/item/storage/box/matches = 10,
 
+		/obj/item/storage/fancy/cigar/matchbook/koorlander = 5,
+		/obj/item/storage/fancy/cigar/matchbook/brown = 10,
 		/obj/item/tool/lighter/random = 20,
-		/obj/item/tool/lighter/zippo = 5,
+		/obj/item/tool/lighter/zippo = 10,
+		/obj/item/tool/lighter/zippo/blue = 5,
 	)
 
 	prices = list(
-		/obj/item/storage/fancy/cigarettes/kpack = 40,
-
-		/obj/item/storage/fancy/cigarettes/lucky_strikes = 25,
-		/obj/item/storage/fancy/cigarettes/lady_finger = 35,
-		/obj/item/storage/fancy/cigarettes/spirit/yellow = 35,
-		/obj/item/storage/fancy/cigarettes/spirit = 30,
-		/obj/item/storage/fancy/cigar/tarbacktube = 35,
+		/obj/item/storage/fancy/cigarettes/kpack = 18,
+		/obj/item/storage/fancy/cigarettes/lucky_strikes = 8,
+		/obj/item/storage/fancy/cigarettes/lady_finger = 11,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 12,
+		/obj/item/storage/fancy/cigarettes/spirit = 12,
+		/obj/item/storage/fancy/cigar/tarbacktube = 20,
 		/obj/item/storage/fancy/cigar/tarbacks = 50,
-		/obj/item/storage/fancy/cigar/matchbook/koorlander = 5,
-		/obj/item/storage/fancy/cigar/matchbook/brown = 5,
-		/obj/item/tool/lighter/random = 10,
-		/obj/item/tool/lighter/zippo = 25,
-
+		/obj/item/storage/fancy/cigar/matchbook/koorlander = 2,
+		/obj/item/storage/fancy/cigar/matchbook/brown = 1,
+		/obj/item/tool/lighter/random = 5,
+		/obj/item/tool/lighter/zippo = 20,
+		/obj/item/tool/lighter/zippo/blue = 30,
 	)
 
-/obj/structure/machinery/vending/cigarette/wy //WY machine, I plan to add Balaji Imperials after sprite freeze ends. I have the sprites for em, just need to add them
+/obj/structure/machinery/vending/cigarette/koorlander/free
+		prices = list(
+		/obj/item/storage/fancy/cigarettes/kpack = 0,
+		/obj/item/storage/fancy/cigarettes/lucky_strikes = 0,
+		/obj/item/storage/fancy/cigarettes/lady_finger = 0,
+		/obj/item/storage/fancy/cigarettes/spirit/yellow = 0,
+		/obj/item/storage/fancy/cigarettes/spirit = 0,
+		/obj/item/storage/fancy/cigar/tarbacktube = 0,
+		/obj/item/storage/fancy/cigar/tarbacks = 0,
+		/obj/item/storage/fancy/cigar/matchbook/koorlander = 0,
+		/obj/item/storage/fancy/cigar/matchbook/brown = 0,
+		/obj/item/tool/lighter/random = 0,
+		/obj/item/tool/lighter/zippo = 0,
+		/obj/item/tool/lighter/zippo/blue = 0,
+	)
+
+/obj/structure/machinery/vending/cigarette/wy //WY machine
 	name = "Weyland Yutani brand cigarette machine"
 	desc = "A Weyland Yutani Brand cigarette vending machine, looks like a Wey-Yu Gold pack. Comes with Emerald Greens, Wey-Yu Golds of course, Arcturian Aces, and some Three World Empire brand you've barely heard of. Executive Selects are still out of stock due to shipping issues..."
 	icon_state = "wycigs"
@@ -318,13 +321,12 @@
 		"On a budget? Buy a Bic.",
 		"Bic, making school supplies since 1945.",
 		"Emerald Greens, green as the fields of New Eden.",
-		"Emerald Greens, favorited by doctors!",
+		"Emerald Greens, favored by doctors!",
 		"You just can't beat the green!",
 		"The preferred brand of Richard Nixon!", //:smug:
 		"First again with doctors!",
-		//"Balaji Imperials, for King and Country!", //(this is for when I add Balajis, after the sprite freeze)
-		//"Life's short, smoke a 'laji!",
-		//"Balaji. Good for the national spirit.",
+		"Balaji Imperials, for King and Country!",
+		"Life's short, smoke a 'laji!",
 		"The Interstellar Commerce Commission would like to remind you that smoking kills.",
 		"The Food and Drug Administration would like to remind you that tobacco products cause cancer and increased fatigue.",
 	)
@@ -345,9 +347,8 @@
 		"You just can't beat the green!",
 		"The preferred cigarette of Richard Nixon!",
 		"First again with doctors!",
-		//"Balaji Imperials, for King and Country!",
-		//"Life's short, smoke a 'laji!",
-		//"Balaji. Good for the national spirit.",
+		"Balaji Imperials, for King and Country!",
+		"Life's short, smoke a 'laji!",
 		"The Interstellar Commerce Commission would like to remind you that smoking kills.",
 		"The Food and Drug Administration would like to remind you that tobacco products cause cancer and increased fatigue.",
 	)
@@ -355,38 +356,48 @@
 	premium = list(/obj/item/storage/fancy/cigar = 5)
 	products = list(
 		/obj/item/storage/fancy/cigarettes/wypacket = 15,
-		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
-		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
-		/obj/item/storage/fancy/cigarettes/trading_card = 1,
+		/obj/item/storage/fancy/cigarettes/emeraldgreen = 30,
+		/obj/item/storage/fancy/cigarettes/arcturian_ace = 10,
+		/obj/item/storage/fancy/cigarettes/balaji = 10,
 		/obj/item/storage/fancy/cigarettes/blackpack = 0,
 
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 10,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 10,
 		/obj/item/tool/lighter/random = 20,
-		/obj/item/tool/lighter/zippo = 5,
+		/obj/item/tool/lighter/zippo/black = 5,
+		/obj/item/tool/lighter/zippo/executive = 1,
 
 	)
 
 	prices = list(
-		/obj/item/storage/fancy/cigarettes/wypacket = 40,
-		/obj/item/storage/fancy/cigarettes/emeraldgreen = 25,
-		/obj/item/storage/fancy/cigarettes/arcturian_ace = 35,
-		/obj/item/storage/fancy/cigarettes/trading_card = 50,
-
-		/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
-		/obj/item/storage/fancy/cigarettes/spirit = 50,
-		/obj/item/storage/fancy/cigarettes/spirit/yellow = 50,
-		/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
-		/obj/item/storage/fancy/cigarettes/wypacket = 30,
-		/obj/item/storage/fancy/cigarettes/trading_card = 35,
-		/obj/item/storage/fancy/cigarettes/lady_finger = 30,
-		/obj/item/storage/fancy/cigarettes/blackpack = 75,
+		/obj/item/storage/fancy/cigarettes/wypacket = 15,
+		/obj/item/storage/fancy/cigarettes/emeraldgreen = 5,
+		/obj/item/storage/fancy/cigarettes/arcturian_ace = 8,
+		/obj/item/storage/fancy/cigarettes/balaji = 15,
+		/obj/item/storage/fancy/cigarettes/blackpack = 40,
 
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 5,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 5,
-		/obj/item/tool/lighter/random = 10,
-		/obj/item/tool/lighter/zippo = 25,
+		/obj/item/tool/lighter/random = 3,
+		/obj/item/tool/lighter/zippo/black = 15,
+		/obj/item/tool/lighter/zippo/executive = 50,
 	)
+
+/obj/structure/machinery/vending/cigarette/wy/free
+	prices = list(
+		/obj/item/storage/fancy/cigarettes/wypacket = 0,
+		/obj/item/storage/fancy/cigarettes/emeraldgreen = 0,
+		/obj/item/storage/fancy/cigarettes/arcturian_ace = 0,
+		/obj/item/storage/fancy/cigarettes/balaji = 0,
+		/obj/item/storage/fancy/cigarettes/blackpack = 0,
+
+		/obj/item/storage/fancy/cigar/matchbook/exec_select = 0,
+		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 0,
+		/obj/item/tool/lighter/random = 0,
+		/obj/item/tool/lighter/zippo/black = 0,
+		/obj/item/tool/lighter/zippo/executive = 0,
+	)
+
 
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"

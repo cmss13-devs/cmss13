@@ -342,7 +342,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "cW" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/wy/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -798,7 +798,7 @@
 /turf/open/gm/grass/grassbeach/east,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "hJ" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_y = 0;
 	pixel_x = 4;
@@ -943,7 +943,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/adminlevel/ert_station/fax_response_station)
 "jD" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/wy/free{
 	wrenchable = 0;
 	pixel_x = 13;
 	pixel_y = 16;
@@ -1056,7 +1056,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "kZ" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -1480,7 +1480,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/fax_response_station)
 "pl" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -3009,7 +3009,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "ET" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -3024,7 +3024,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "Fc" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = -6;
 	wires = 12
@@ -3202,7 +3202,7 @@
 /turf/open/gm/grass/grass1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Hh" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12

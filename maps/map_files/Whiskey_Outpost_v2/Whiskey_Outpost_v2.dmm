@@ -250,7 +250,7 @@
 /turf/open/jungle/impenetrable,
 /area/whiskey_outpost/outside/south)
 "ba" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "bb" = (

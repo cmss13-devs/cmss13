@@ -26,4 +26,4 @@
 		return
 	if(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno))
 		return
-	bound_xeno.adjustBruteLoss(5)
+	bound_xeno.adjustBruteLoss(2)

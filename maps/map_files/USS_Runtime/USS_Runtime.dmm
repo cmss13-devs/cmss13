@@ -17,7 +17,7 @@
 /obj/effect/landmark/start/requisition,
 /turf/open/floor/almayer/plating,
 /area/event)
-"g" = (
+"f" = (
 /obj/effect/landmark/start/ai_tech,
 /turf/open/floor/almayer/plating,
 /area/event)
@@ -251,7 +251,7 @@ a
 W
 F
 Q
-g
+f
 b
 b
 b

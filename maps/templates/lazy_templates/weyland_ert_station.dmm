@@ -1303,12 +1303,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
-"uF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/closed/wall/r_wall/biodome,
-/area/adminlevel/ert_station/weyland_station)
 "uG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
@@ -2600,10 +2594,6 @@
 	name = "\improper Aft Medbay Shutters"
 	},
 /turf/open/floor/corsat/marked,
-/area/adminlevel/ert_station/weyland_station)
-"PI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/r_wall/biodome,
 /area/adminlevel/ert_station/weyland_station)
 "PL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -4214,8 +4204,8 @@ IQ
 eQ
 Dr
 HM
-PI
-uF
+fX
+fX
 fX
 fX
 QT

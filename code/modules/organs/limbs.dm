@@ -105,16 +105,6 @@
 	if(owner)
 		forceMove(owner)
 
-
-
-/*
-/obj/limb/proc/get_icon(icon/race_icon, icon/deform_icon)
-	return icon('icons/mob/human.dmi',"blank")
-*/
-
-/obj/limb/process()
-		return 0
-
 /obj/limb/Destroy()
 	if(parent)
 		parent.children -= src
@@ -276,6 +266,8 @@
 							no_limb_loss, damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
+	if((brute > 0 || burn > 0) && owner && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && owner.stat == DEAD) //if they take positive damage (not healing) we prevent it
+		return 0
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -378,7 +370,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && previous_bonebreak) //delimbable only if broken before this hit
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (previous_bonebreak || (status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))) //delimbable only if broken before this hit or we're a robot limb (synths do not fracture)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -539,7 +531,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(internal && !can_bleed_internally)
 		internal = FALSE
-	if(internal && SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_INTERNAL_BLEEDING))
+	if(internal && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ib))
 		internal = FALSE
 
 
@@ -599,7 +591,6 @@ This function completely restores a damaged organ to perfect condition.
 	return FALSE
 
 /obj/limb/process()
-
 	// Process wounds, doing healing etc. Only do this every few ticks to save processing power
 	if(owner.life_tick % wound_update_accuracy == 0)
 		update_wounds()
@@ -729,7 +720,16 @@ This function completely restores a damaged organ to perfect condition.
 		body_type = owner.body_type
 
 	species = owner?.species ? owner.species : GLOB.all_species[SPECIES_HUMAN]
-	limb_gender = owner?.gender ? owner.gender : FEMALE
+	limb_gender = get_limb_gender()
+
+/obj/limb/proc/get_limb_gender()
+	return owner?.gender ? owner.gender : FEMALE
+
+/obj/limb/chest/get_limb_gender()
+	if(owner && owner.body_presentation)
+		return owner.body_presentation
+
+	return owner?.gender ? owner.gender : FEMALE
 
 /// generates a list of overlays that should be applied to the owner
 /obj/limb/proc/get_limb_icon()
@@ -1532,5 +1532,5 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
 	owner.drop_inv_item_on_ground(owner_helmet)
-	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(1, get_turf(loc))), 1, SPEED_FAST)
+	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(RANGE_TURFS(1, get_turf(owner))), 1, SPEED_FAST)
 	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)

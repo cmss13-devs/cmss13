@@ -224,3 +224,91 @@
 
 	apply_cooldown()
 	return ..()
+
+/datum/action/xeno_action/onclick/build_tunnel/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/xenomorph = owner
+	if(!xenomorph.check_state())
+		return
+
+	if(xenomorph.action_busy)
+		to_chat(xenomorph, SPAN_XENOWARNING("We should finish up what we're doing before digging."))
+		return
+
+	var/turf/turf = xenomorph.loc
+	if(!istype(turf)) //logic
+		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
+		return
+
+	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
+		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
+		return
+
+	if(locate(/obj/structure/tunnel) in xenomorph.loc)
+		to_chat(xenomorph, SPAN_XENOWARNING("There already is a tunnel here."))
+		return
+
+	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in xenomorph.loc)
+		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		return
+
+	if(xenomorph.tunnel_delay)
+		to_chat(xenomorph, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
+		return
+
+	if(xenomorph.get_active_hand())
+		to_chat(xenomorph, SPAN_XENOWARNING("We need an empty claw for this!"))
+		return
+
+	if(!xenomorph.check_plasma(plasma_cost))
+		return
+
+	var/area/AR = get_area(turf)
+
+	if(isnull(AR) || !(AR.is_resin_allowed))
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(xenomorph, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
+		to_chat(xenomorph, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+
+	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] begins digging out a tunnel entrance."), \
+	SPAN_XENONOTICE("We begin digging out a tunnel entrance."), null, 5)
+	if(!do_after(xenomorph, 10 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(xenomorph, SPAN_WARNING("Our tunnel caves in as we stop digging it."))
+		return
+	if(!xenomorph.check_plasma(plasma_cost))
+		return
+	xenomorph.visible_message(SPAN_XENONOTICE("\The [xenomorph] digs out a tunnel entrance."), \
+	SPAN_XENONOTICE("We dig out an entrance to the tunnel network."), null, 5)
+
+	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.hivenumber)
+	xenomorph.tunnel_delay = 1
+	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
+	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
+	msg = replace_non_alphanumeric_plus(msg)
+	var/description
+	if(msg)
+		description = msg
+		msg = "[msg] ([get_area_name(tunnelobj)])"
+		log_admin("[key_name(xenomorph)] has named a new tunnel \"[msg]\".")
+		msg_admin_niche("[xenomorph]/([key_name(xenomorph)]) has named a new tunnel \"[msg]\".")
+		tunnelobj.tunnel_desc = "[msg]"
+
+	if(xenomorph.hive.living_xeno_queen || xenomorph.hive.allow_no_queen_actions)
+		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.hive.totalXenos)
+			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
+			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
+			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [xenomorph] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
+
+	xenomorph.use_plasma(plasma_cost)
+	to_chat(xenomorph, SPAN_NOTICE("We will be ready to dig a new tunnel in 4 minutes."))
+	playsound(xenomorph.loc, 'sound/weapons/pierce.ogg', 25, 1)
+	apply_cooldown()
+
+	return ..()
+
+
+/datum/action/xeno_action/onclick/build_tunnel/proc/cooldown_end()
+	var/mob/living/carbon/xenomorph/xenomorph = owner
+	to_chat(xenomorph, SPAN_NOTICE("We are ready to dig a tunnel again."))
+	xenomorph.tunnel_delay = 0

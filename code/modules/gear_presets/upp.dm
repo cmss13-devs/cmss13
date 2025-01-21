@@ -2701,6 +2701,13 @@
 	gear_preset = /datum/equipment_preset/upp/synth
 
 	flags_whitelist =  WHITELIST_SYNTHETIC
+	flags_startup_parameters = ROLE_WHITELISTED
+
+/datum/job/antag/upp/synth/check_whitelist_status(mob/user)
+	if(user.client.check_whitelist_status(WHITELIST_SYNTHETIC))
+		return TRUE
+
+	return ..()
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Synthetic (Cryo)"

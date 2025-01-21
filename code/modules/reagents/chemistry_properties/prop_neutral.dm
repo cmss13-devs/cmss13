@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
-	if(M.bodytemperature > BODYTEMP_COLD_LIQUID_LIMIT)
+	if(M.bodytemperature > BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		return list(REAGENT_CANCEL = TRUE)
 	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
 
@@ -271,11 +271,11 @@
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
 		M.emote("shiver")
-	M.bodytemperature = max(T0C, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(T0C, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)

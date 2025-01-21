@@ -308,3 +308,47 @@
   - bugfix: Fixed eslint not checking jsx files
   Nomoresolvalou, Thwomper:
   - imageadd: Added a new predator mask and mask attachment
+2025-01-19:
+  Blundir:
+  - rscadd: synth reset key no longer has medical skillock and has a hint to it being
+      engi skill locked in description
+  - balance: change synth key skill level from engi to trained (you can use key after
+      reading engi pamphlet)
+  - bugfix: fixed wl check on UPP synth not working
+  Git-Nivrak:
+  - code_imp: Xeno wounds now update every time they take damage
+  cuberound:
+  - bugfix: UPP abovehead text respects squad color
+  private-tristan:
+  - balance: Flaming Shrapnel now has 20 AP (from 50)
+  - bugfix: OT special shrapnel is now properly affected by the cap, meaning that
+      you can only have 16 shrapnel (from 32)
+  realforest2001:
+  - rscadd: USCM Synthetics now have an enlisted rank. (Master Sergeant and Master
+      Gunnery Sergeant)
+2025-01-20:
+  Drathek:
+  - ui: Added search bars to stickyban panel, unban panel, view notes, view other
+      notes, antagonists panel
+  - ui: Fixed follow button in antagonists panel
+  - ui: Fixed clear button not refreshing filters for old player panel, and view variables
+  Red-byte3D:
+  - qol: Added a "Send thoughts" panel like the "Manage Hive" one, putting in psychic
+      radiance,  whisper and queen word in there.
+  - code_imp: var changes on burrower abilities and moved burrower abilities from
+      abilities.dm into burrower_abilities.dm thats alot of abilities.
+  - code_imp: Moved Queen abiliites from abilities.dm into its own respective file
+      and reworked them into procs
+  - rscdel: Removed unused queen ability code such as the beacon, the boiler gas and
+      the barricade
+  - qol: Ravager's empowered charge now bypasses intent, meaning if you are empowered
+      you will always damage the person you charge at instead of giving them a pat
+      on the back.
+2025-01-21:
+  sleepynecrons/esselnek:
+  - rscadd: New turtleneck and formal uniforms, including a council jacket and a plain
+      jacket for the CO vendor.
+  - imageadd: New sprites for the old formal black and white uniforms, falcon jacket
+      and a new plain jacket.
+  - rscadd: New uscm officer formal uniform sprite
+  - imagedel: Removes old unused suprised that this pr replaces

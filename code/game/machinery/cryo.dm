@@ -281,8 +281,8 @@
 			occupant.forceMove(get_step(loc, WEST))
 		else
 			occupant.forceMove(get_step(loc, SOUTH))
-	if(occupant.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
-		occupant.bodytemperature = BODYTEMP_COLD_DAMAGE_LIMIT
+	if(occupant.bodytemperature < BODYTEMP_CRYO_THRESHOLD)
+		occupant.bodytemperature = BODYTEMP_CRYO_THRESHOLD
 		occupant.recalculate_move_delay = TRUE
 	if(auto_eject) //Turn off and announce if auto-ejected because patient is recovered or dead.
 		on = FALSE

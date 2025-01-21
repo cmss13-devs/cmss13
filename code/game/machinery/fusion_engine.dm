@@ -22,6 +22,8 @@
 
 	///Whether the reactor is on the ship
 	var/is_ship_reactor = FALSE
+	///Whether the reactor is guaranteed to be fully repaired
+	var/is_reserved_level = FALSE
 	///If the generator is overloaded
 	var/overloaded = FALSE //Only possible during hijack once fuel is at 100%
 
@@ -62,6 +64,9 @@
 				buildstate = BUILDSTATE_DAMAGE_WIRE
 			if(6) //16%
 				buildstate = BUILDSTATE_DAMAGE_WRENCH
+
+	if(!buildstate && is_reserved_level(z))
+		buildstate = BUILDSTATE_FUNCTIONAL
 
 	if(require_fusion_cell) //Set up fuel cell if needed
 		fusion_cell = new /obj/item/fuel_cell/used(src)
@@ -475,7 +480,7 @@
 /obj/structure/machinery/power/reactor/rostock
 	name = "\improper RDS-168 fusion reactor"
 	desc = "A RDS-168 Fusion Reactor."
-	is_ship_reactor = TRUE
+	is_reserved_level = TRUE
 
 
 #undef BUILDSTATE_FUNCTIONAL

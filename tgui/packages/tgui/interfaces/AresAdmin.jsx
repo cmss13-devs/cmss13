@@ -50,8 +50,8 @@ export const AresAdmin = (props) => {
 };
 
 const { data } = useBackend();
-const { is_pda } = data;
-let remotelock = !is_pda;
+const { local_is_pda } = data;
+let remotelock = !local_is_pda;
 let remotetip = 'You cannot do this via remote console.';
 let deletetip = remotetip;
 if (!remotelock) {

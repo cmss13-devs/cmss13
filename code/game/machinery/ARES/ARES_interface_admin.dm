@@ -50,7 +50,7 @@
 		return FALSE
 	var/list/data = datacore.get_interface_data()
 
-	data["is_pda"] = FALSE
+	data["local_is_pda"] = FALSE
 
 	data["local_admin_login"] = "[admin_interface.logged_in], [user.client.admin_holder?.rank]"
 	data["admin_access_log"] = admin_interface.access_list

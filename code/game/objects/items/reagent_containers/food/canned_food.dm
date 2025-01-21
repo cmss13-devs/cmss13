@@ -10,32 +10,56 @@
 	object_fluff = "can"
 	has_open_icon = TRUE
 	delete_on_empty = TRUE
-	gulp_size = 5
 
 /obj/item/reagent_container/food/drinks/cans/food/upp
 	icon = 'icons/obj/items/food/mre_food/upp.dmi'
 
-/obj/item/reagent_container/food/drinks/cans/food/meat
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat
 	name = "canned beef"
 	desc = "Canned premium 100% beef. The question of, what part of cow is here exactly, is open to debate."
 	icon_state = "Canned_meat"
 
-/obj/item/reagent_container/food/drinks/cans/food/meat/Initialize()
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat/Initialize()
 	. = ..()
 	reagents.add_reagent("meatprotein", 14)
 	reagents.add_reagent("sodiumchloride", 2)
 
-/obj/item/reagent_container/food/drinks/cans/food/stew
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew
 	name = "canned stew"
-	desc = "Canned stew consisting of carrot, tomato, mushroom, meat, beans and god knows what elst, makes for a great food when heated."
+	desc = "Canned stew consisting of carrot, tomato, mushroom, meat, beans and god knows what else, makes for a great food when heated."
 	icon_state = "Canned_stew"
 
-/obj/item/reagent_container/food/drinks/cans/food/stew/Initialize()
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew/Initialize()
 	. = ..()
 	reagents.add_reagent("vegetable", 6)
 	reagents.add_reagent("meatprotein", 6)
 	reagents.add_reagent("mushroom", 3)
 	reagents.add_reagent("tomatojuice", 5)
+	reagents.add_reagent("water", 5)
+	reagents.add_reagent("sodiumchloride", 2)
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck
+	name = "canned fatback"
+	desc = "Canned cooked and salted pig fat, also known as speck. It is often used as a bread spread, or eaten on itself."
+	icon_state = "Canned_speck"
+	food_interactable = TRUE
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck/Initialize()
+	. = ..()
+	reagents.add_reagent("meatprotein", 14)
+	reagents.add_reagent("sodiumchloride", 5)
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/soup
+	name = "canned soup"
+	desc = "Canned soup consisting of beef boullion, potato, peas and god knows what else, makes for a great food when heated."
+	icon_state = "Canned_stew"
+	consume_sound = 'sound/items/drink.ogg'
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/soup/Initialize()
+	. = ..()
+	reagents.add_reagent("vegetable", 6)
+	reagents.add_reagent("meatprotein", 2)
+	reagents.add_reagent("potato", 6)
 	reagents.add_reagent("water", 5)
 	reagents.add_reagent("sodiumchloride", 2)
 
@@ -85,3 +109,25 @@
 	. = ..()
 	reagents.add_reagent("vegetables", 6)
 	reagents.add_reagent("sodiumchloride", 2)
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk
+	name = "canned condensed milk"
+	desc = "A milk can preserved with sugar, can be eaten on itself or added to drinks or used as an ingredient."
+	icon_state = "Canned_condensed_milk"
+	food_interactable = TRUE
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk/Initialize()
+	. = ..()
+	reagents.add_reagent("sugar", 15)
+	reagents.add_reagent("milk", 15)
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_boiled_milk
+	name = "canned boiled condensed milk"
+	desc = "A caramelized boiled milk can preserved with sugar, can be eaten on itself or added to drinks or used as an ingredient."
+	icon_state = "Canned_boiled_condensed_milk"
+	food_interactable = TRUE
+
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_boiled_milk/Initialize()
+	. = ..()
+	reagents.add_reagent("sugar", 20)
+	reagents.add_reagent("milk", 10)

@@ -3390,36 +3390,6 @@
 		icon_state = "open-hotdog"
 		item_state = "hotdog"
 
-//STUPID
-/obj/item/reagent_container/food/snacks/upp
-	name = "\improper UPP ration"
-	desc = "A sealed, freeze-dried, compressed package containing a single item of food. Commonplace in the UPP military, especially those units stationed on far-flung colonies. This one is stamped for consumption by the UPP's 'Smoldering Sons' battalion and was packaged in 2179."
-	icon_state = "upp_ration"
-	icon = 'icons/obj/items/food/mre_food/upp.dmi'
-	bitesize = 4
-
-/obj/item/reagent_container/food/snacks/upp/Initialize()
-	. = ..()
-	reagents.add_reagent("nutriment", 8)
-
-/obj/item/reagent_container/food/snacks/upp/attack_self(mob/user)
-	..()
-
-	if(package)
-		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, TRUE)
-		to_chat(user, SPAN_NOTICE("You tear off the ration seal and pull out the contents!"))
-		package = FALSE
-		var/variation = rand(1,2)
-		desc = "An extremely dried item of food, with little flavoring or coloration. Looks to be prepped for long term storage, but will expire without the packaging. Best to eat it now to avoid waste. At least things are equal."
-		switch(variation)
-			if(1)
-				name = "rationed fish"
-				icon_state = "upp_1"
-			if(2)
-				name = "rationed rice"
-				icon_state = "upp_2"
-
-
 /obj/item/reagent_container/food/snacks/eat_bar
 	name = "MEAT Bar"
 	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce. The M is printed on the side, so it just reads EAT. Guess that's where the slogan comes from."
@@ -3477,7 +3447,8 @@
 		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
-		new wrapper (user.loc)
+		if(wrapper)
+			new wrapper(user.loc)
 		icon_state = "[initial(icon_state)]-o"
 		item_state = "[initial(item_state)]-o"
 		package = 0
@@ -3545,3 +3516,28 @@
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
 	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
+
+/obj/item/reagent_container/food/snacks/wrapped/twe_bar
+	name = "ORP oat bisuit"
+	desc = "A bar of oat biscuit, has some bits of dried fruits in it. Goes well with a cup of tea."
+	icon = 'icons/obj/items/food/mre_food/twe.dmi'
+	icon_state = "cookie_bar"
+	wrapper = null
+
+/obj/item/reagent_container/food/snacks/wrapped/twe_bar/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 3)
+	reagents.add_reagent("fruit", 1)
+	reagents.add_reagent("sugar", 1)
+
+/obj/item/reagent_container/food/snacks/wrapped/upp_biscuits
+	name = "IRP army biscuits"
+	desc = "Also known as army galets. An oven baked, crunchy and salty biscuits, can be combined with some spread or eaten on themselves."
+	icon = 'icons/obj/items/food/mre_food/upp.dmi'
+	icon_state = "Biscuits_package"
+	wrapper = null
+
+/obj/item/reagent_container/food/snacks/wrapped/upp_biscuits/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 4)
+	reagents.add_reagent("sodiumchloride", 1)

@@ -911,6 +911,8 @@
 		/obj/item/reagent_container/food/snacks/mre_food/twe/side/nigirisushi,
 		/obj/item/reagent_container/food/snacks/mre_food/twe/side/nutpatty,
 		/obj/item/reagent_container/food/snacks/mre_food/twe/side/tomatochips,
+		/obj/item/reagent_container/food/snacks/mre_food/twe/side/bean_stew,
+		/obj/item/reagent_container/food/snacks/mre_food/twe/side/mushroom_soup,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/twe/side/nutpatty
@@ -923,6 +925,30 @@
 	reagents.add_reagent("vegetables", 2)
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("plantmatter", 2)
+	reagents.add_reagent("sodiumchloride", 1)
+
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/mushroom_soup
+	name = "mushroom soup"
+	icon_state = "mushroom_soup"
+	desc = "Very nourishing soup with vegetables and a mushroom flavor, will keep you warm for a long time if heated."
+
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/mushroom_soup/Initialize()
+	. = ..()
+	reagents.add_reagent("mushroom", 3)
+	reagents.add_reagent("vegetable", 3)
+	reagents.add_reagent("water", 5)
+	reagents.add_reagent("sodiumchloride", 1)
+
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/bean_stew
+	name = "beans stew"
+	icon_state = "bean_soup"
+	desc = "Very nourishing bean stew with a tomato sauce, will keep you warm for a long time if heated."
+
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/bean_stew/Initialize()
+	. = ..()
+	reagents.add_reagent("vegetable", 6)
+	reagents.add_reagent("water", 2)
+	reagents.add_reagent("tomatojuice", 4)
 	reagents.add_reagent("sodiumchloride", 1)
 
 /obj/item/reagent_container/food/snacks/mre_food/twe/side/nigirisushi
@@ -1198,12 +1224,13 @@
 	icon_state = "upp_snack"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/upp/snack/driedfish,
+		/obj/item/reagent_container/food/snacks/mre_food/upp/snack/driedfish/alt,
 		/obj/item/reagent_container/food/snacks/mre_food/upp/snack/mashed_potato,
 		/obj/item/reagent_container/food/snacks/mre_food/upp/snack/riceball,
 	)
 
 /obj/item/reagent_container/food/snacks/mre_food/upp/snack/driedfish
-	name = "dried cod"
+	name = "dried cod slice"
 	icon_state = "driedfish"
 	desc = "A dried and salted slice of cod, perfect snack for a sip of cold beer."
 
@@ -1211,6 +1238,11 @@
 	. = ..()
 	reagents.add_reagent("fish", 4)
 	reagents.add_reagent("sodiumchloride", 2)
+
+/obj/item/reagent_container/food/snacks/mre_food/upp/snack/driedfish/alt
+	name = "dried taran"
+	icon_state = "driedfish_2"
+	desc = "A dried and salted whole rutilus heckelii fish, perfect snack for a sip of cold beer."
 
 /obj/item/reagent_container/food/snacks/mre_food/upp/snack/mashed_potato
 	name = "mashed potatoes"

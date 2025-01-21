@@ -14,6 +14,7 @@
 	storage_slots = 4
 	max_w_class = 0
 	use_sound = "rip"
+	var/trash_item = /obj/item/trash/uscm_mre
 	var/icon_closed = "mealpack"
 	var/icon_opened = "mealpackopened"
 	var/entree = /obj/item/mre_food_packet/entree/uscm
@@ -23,6 +24,8 @@
 	var/should_have_drink = TRUE
 	var/should_have_cookie = TRUE
 	var/should_have_cigarettes = TRUE
+	//Used for some unique items that aren't falling under the main categories
+	var/misc_item = null
 	var/should_have_matches = TRUE
 	var/should_have_spread = TRUE
 	var/should_have_beverage = TRUE
@@ -45,6 +48,9 @@
 	new side(src)
 	new snack(src)
 	new dessert(src)
+	if(misc_item)
+		new misc_item(src)
+		storage_slots += 1
 	if(has_main_name)
 		var/obj/item/mre_food_packet/entree/packet = locate() in src //Name is determined from entree's contents_food name
 		var/obj/item/reagent_container/food/snacks/mre_food/food = packet.contents_food
@@ -135,6 +141,7 @@
 	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
 	storage_close(user)
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	new trash_item(user.loc)
 	qdel(src)
 
 /obj/item/storage/box/MRE/update_icon()
@@ -150,6 +157,7 @@
 	icon_state = "pmc_mealpack"
 	icon_closed = "pmc_mealpack"
 	icon_opened = "pmc_mealpackopened"
+	trash_item = /obj/item/trash/pmc_mre
 	should_have_spread = FALSE
 	should_have_beverage = FALSE
 	should_have_utencil = FALSE
@@ -190,12 +198,14 @@
 	icon_state = "twe_mealpack"
 	icon_closed = "twe_mealpack"
 	icon_opened = "twe_mealpackopened"
+	trash_item = /obj/item/trash/twe_mre
 	should_have_beverage = FALSE
 	should_have_utencil = FALSE
 	entree = /obj/item/mre_food_packet/entree/twe
 	side = /obj/item/mre_food_packet/twe/side
 	snack = /obj/item/mre_food_packet/twe/snack
 	dessert = /obj/item/mre_food_packet/twe/dessert
+	misc_item = /obj/item/reagent_container/food/snacks/wrapped/twe_bar
 
 /obj/item/storage/box/MRE/TWE/choose_cigarettes()
 	new /obj/item/storage/fancy/cigarettes/wypacket_4(src)
@@ -219,6 +229,7 @@
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"
+	trash_item = /obj/item/trash/merc_mre
 	entree = /obj/item/mre_food_packet/entree/merc
 	side = /obj/item/mre_food_packet/merc/side
 	snack = /obj/item/mre_food_packet/merc/snack
@@ -235,6 +246,7 @@
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"
 	icon_opened = "wy_mealpackopened"
+	trash_item = /obj/item/trash/wy_mre
 	entree = /obj/item/mre_food_packet/entree/wy_colonist
 	side = null
 	snack = /obj/item/reagent_container/food/snacks/packaged_hdogs
@@ -270,9 +282,11 @@
 	icon_opened = "upp_mealpackopened"
 	entree = null
 	side = null
+	trash_item = /obj/item/trash/upp_mre
 	snack = /obj/item/mre_food_packet/upp/snack
 	dessert = /obj/item/mre_food_packet/upp/dessert
 	has_main_name = FALSE
+	misc_item = /obj/item/reagent_container/food/snacks/wrapped/upp_biscuits
 	should_have_beverage = FALSE
 	should_have_cigarettes = FALSE
 	should_have_matches = FALSE
@@ -280,14 +294,18 @@
 	should_have_cookie = FALSE
 	should_have_utencil = TRUE
 
-
 /obj/item/storage/box/MRE/UPP/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/pspoon(src)
 
-/obj/item/storage/box/MRE/WY/pickflavor()
+/obj/item/storage/box/MRE/UPP/choose_drink()
+	new /obj/item/reagent_container/food/drinks/cans/waterbottle/upp(src)
+
+/obj/item/storage/box/MRE/UPP/pickflavor()
 	entree = pick(
-		/obj/item/reagent_container/food/drinks/cans/food/meat,
-		/obj/item/reagent_container/food/drinks/cans/food/stew,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/meat,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/stew,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/soup,
+		/obj/item/reagent_container/food/drinks/cans/food/upp/speck,
 	)
 	side = pick(
 		/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables,

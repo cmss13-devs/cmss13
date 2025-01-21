@@ -43,7 +43,9 @@
 /obj/item/reagent_container/food/drinks/cans/get_examine_text(mob/user)
 	. = ..()
 	if(needs_can_opener)
-		. += SPAN_NOTICE("The can is completely sealed, you need some sort of can opener for it.")
+		. += SPAN_NOTICE("The can is completely sealed, you need some sort of a can opener to open it.")
+	if(food_interactable)
+		. += SPAN_NOTICE("You can transfer the contents of this [object_fluff] to other foods.")
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
@@ -377,6 +379,13 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp
+	name = "\improper Gerolsteiner Bottled Sparkling Water"
+	desc = "German bottled, sparkling water popular among germanic population of UPP."
+	desc_lore = "After Gerolsteiner company becoming an intergrated state enterprise, their products became a common thing in military rations and in other places."
+	icon_state = "upp_water"
+	crushed_icon = "upp_water_crushed"
 
 /obj/item/reagent_container/food/drinks/cans/coconutmilk
 	name = "\improper Weyland-Yutani Bottled Coconut Milk"

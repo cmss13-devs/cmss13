@@ -93,14 +93,6 @@
 		icon_state = "halfarmor[armor_number]_[armor_material]"
 		LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
 
-
-
-/obj/item/clothing/shoes/yautja/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve())
-			return
-	..()
-
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
@@ -333,12 +325,6 @@
 	ignore_z = TRUE
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
-
-/obj/item/device/radio/headset/yautja/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve())
-			return
-	..()
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.

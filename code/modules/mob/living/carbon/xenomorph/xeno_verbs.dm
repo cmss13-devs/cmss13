@@ -102,6 +102,23 @@
 
 	xeno_hostile_hud = !xeno_hostile_hud
 
+/mob/living/carbon/xenomorph/verb/toggle_auto_shove()
+	set name = "Toggle Automatic Shove"
+	set desc = "Toggles whethever you will automatically shove people as the Queen"
+	set category = "Alien"
+
+
+	if (!client || !client.prefs)
+		return
+
+	client.prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
+	client.prefs.save_preferences()
+	if (client.prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen."))
+	else
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen."))
+
+
 /mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
 	set name = "Toggle Ability Deactivation"
 	set desc = "Toggles whether you can deactivate your currently active ability when re-selecting it."

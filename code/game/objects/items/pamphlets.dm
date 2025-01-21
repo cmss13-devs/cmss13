@@ -3,7 +3,13 @@
 	desc = "A pamphlet used to quickly impart vital knowledge."
 	icon = 'icons/obj/items/pamphlets.dmi'
 	icon_state = "pamphlet_written"
-	item_state = "pamphlet_written"
+	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
 	throw_range = 20
@@ -97,7 +103,87 @@
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
+	ID.minimap_icon_override = "spotter"
+	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
+
+/obj/item/pamphlet/skill/loader
+	name = "Loader instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a rocket on it."
+	icon_state = "pamphlet_loader"
+	trait = /datum/character_trait/skills/loader
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/skill/loader/can_use(mob/living/carbon/human/user)
+	var/specialist_skill = user.skills.get_skill_level(SKILL_SPEC_WEAPONS)
+	if(specialist_skill == SKILL_SPEC_ROCKET)
+		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your loader."))
+		return FALSE
+	if(specialist_skill != SKILL_SPEC_DEFAULT)
+		to_chat(user, SPAN_WARNING("You're already a specialist! Give this to a lesser trained marine."))
+		return FALSE
+
+	if(user.job != JOB_SQUAD_MARINE)
+		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		return
+
+	var/obj/item/card/id/ID = user.get_idcard()
+	if(!ID) //not wearing an ID
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+	if(!ID.check_biometrics(user))
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+
+	return ..()
+
+/obj/item/pamphlet/skill/loader/on_use(mob/living/carbon/human/user)
+	. = ..()
+	user.rank_fallback = "load"
+	user.hud_set_squad()
+
+	var/obj/item/card/id/ID = user.get_idcard()
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Loader")
+	ID.minimap_icon_override = "loader"
+	user.update_minimap_icon()
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Loader")
+
+/obj/item/pamphlet/skill/k9_handler
+	name = "K9 handler instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a Synthetic K9 Rescue unit on it."
+	icon_state = "pamphlet_k9_handler"
+	trait = /datum/character_trait/skills/k9_handler
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/skill/k9_handler/can_use(mob/living/carbon/human/user)
+	if(isk9synth(user))
+		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your handler."))
+		return FALSE
+
+	if(user.job != JOB_SQUAD_MEDIC && user.job != JOB_POLICE)
+		to_chat(user, SPAN_WARNING("This is not meant for you."))
+		return
+
+	var/obj/item/card/id/ID = user.get_idcard()
+	if(!istype(ID)) //not wearing an ID
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+	if(!ID.check_biometrics(user))
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+
+	return ..()
+
+/obj/item/pamphlet/skill/k9_handler/on_use(mob/living/carbon/human/user)
+	. = ..()
+	user.rank_fallback = "medk9"
+	user.hud_set_squad()
+
+	var/obj/item/card/id/ID = user.get_idcard()
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "K9 Handler")
+	ID.minimap_icon_override = "medic_k9"
+	user.update_minimap_icon()
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "K9 Handler")
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"

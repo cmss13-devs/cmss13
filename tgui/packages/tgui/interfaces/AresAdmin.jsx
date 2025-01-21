@@ -13,6 +13,7 @@ const PAGES = {
   delete_log: () => DeletionLogs,
   flight_log: () => FlightLogs,
   talking: () => ARESTalk,
+  talking_log: () => ActiveTalks,
   deleted_talks: () => DeletedTalks,
   read_deleted: () => ReadingTalks,
   security: () => Security,
@@ -27,15 +28,15 @@ const PAGES = {
 
 export const AresAdmin = (props) => {
   const { data } = useBackend();
-  const { current_menu, sudo } = data;
-  const PageComponent = PAGES[current_menu]();
+  const { local_current_menu, ares_sudo } = data;
+  const PageComponent = PAGES[local_current_menu]();
 
   let themecolor = 'crtyellow';
-  if (sudo >= 1) {
+  if (ares_sudo >= 1) {
     themecolor = 'crtred';
-  } else if (current_menu === 'emergency') {
+  } else if (local_current_menu === 'emergency') {
     themecolor = 'crtred';
-  } else if (current_menu === 'core_security') {
+  } else if (local_current_menu === 'core_security') {
     themecolor = 'crtred';
   }
 
@@ -97,12 +98,12 @@ const Login = (props) => {
 const MainMenu = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    sudo,
-    admin_login,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    ares_sudo,
+    local_admin_login,
     faction_options,
     sentry_setting,
   } = data;
@@ -119,7 +120,7 @@ const MainMenu = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -128,14 +129,14 @@ const MainMenu = (props) => {
               tooltipPosition="top"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
-              disabled={current_menu === 'main'}
+              disabled={local_current_menu === 'main'}
             />
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -374,7 +375,7 @@ const MainMenu = (props) => {
           <Stack.Item grow>
             <h3>Maintenance Access</h3>
           </Stack.Item>
-          {sudo === 0 && (
+          {ares_sudo === 0 && (
             <Stack.Item>
               <Button
                 icon="user-secret"
@@ -391,7 +392,7 @@ const MainMenu = (props) => {
               </Button>
             </Stack.Item>
           )}
-          {sudo >= 1 && (
+          {ares_sudo >= 1 && (
             <Stack.Item>
               <Button
                 icon="user-secret"
@@ -541,12 +542,12 @@ const MainMenu = (props) => {
 const AnnouncementLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_announcement,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -561,7 +562,7 @@ const AnnouncementLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -574,9 +575,9 @@ const AnnouncementLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -644,12 +645,12 @@ const AnnouncementLogs = (props) => {
 const BioscanLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_bioscan,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -664,7 +665,7 @@ const BioscanLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -677,9 +678,9 @@ const BioscanLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -747,12 +748,12 @@ const BioscanLogs = (props) => {
 const BombardmentLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_bombardment,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -767,7 +768,7 @@ const BombardmentLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -780,9 +781,9 @@ const BombardmentLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -854,12 +855,12 @@ const BombardmentLogs = (props) => {
 const ApolloLog = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     apollo_log,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -874,7 +875,7 @@ const ApolloLog = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -887,9 +888,9 @@ const ApolloLog = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -922,12 +923,12 @@ const ApolloLog = (props) => {
 const AccessLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    access_log,
-    admin_login,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    ares_access_log,
+    local_admin_login,
   } = data;
 
   return (
@@ -942,7 +943,7 @@ const AccessLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -955,9 +956,9 @@ const AccessLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -975,7 +976,7 @@ const AccessLogs = (props) => {
       <Section>
         <h1 align="center">Access Log</h1>
 
-        {access_log.map((login, i) => {
+        {ares_access_log.map((login, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{login}</Flex.Item>
@@ -990,12 +991,12 @@ const AccessLogs = (props) => {
 const DeletionLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_deletion,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -1010,7 +1011,7 @@ const DeletionLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1023,9 +1024,9 @@ const DeletionLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1088,13 +1089,13 @@ const DeletionLogs = (props) => {
 const ARESTalk = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    active_convo,
-    active_ref,
-    admin_login,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    local_active_convo,
+    local_active_ref,
+    local_admin_login,
   } = data;
 
   return (
@@ -1109,7 +1110,7 @@ const ARESTalk = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1122,9 +1123,9 @@ const ARESTalk = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1144,7 +1145,7 @@ const ARESTalk = (props) => {
       </Section>
 
       <Section align="center">
-        {!active_convo.length && (
+        {!local_active_convo.length && (
           <Button
             icon="pen"
             ml="auto"
@@ -1155,14 +1156,14 @@ const ARESTalk = (props) => {
             New Conversation
           </Button>
         )}
-        {active_convo.map((message, i) => {
+        {local_active_convo.map((message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{message}</Flex.Item>
             </Flex>
           );
         })}
-        {!!active_convo.length && (
+        {!!local_active_convo.length && (
           <Stack justify="center">
             <Stack.Item>
               <Button
@@ -1170,7 +1171,9 @@ const ARESTalk = (props) => {
                 ml="auto"
                 px="2rem"
                 bold
-                onClick={() => act('ares_reply', { active_convo: active_ref })}
+                onClick={() =>
+                  act('ares_reply', { local_active_convo: local_active_ref })
+                }
               >
                 Reply as ARES
               </Button>
@@ -1184,7 +1187,9 @@ const ARESTalk = (props) => {
                 tooltipPosition="top"
                 tooltip="Send a message as if you were the person logged in at the interface."
                 onClick={() =>
-                  act('fake_message_ares', { active_convo: active_ref })
+                  act('fake_message_ares', {
+                    local_active_convo: local_active_ref,
+                  })
                 }
               >
                 Send Fake Message
@@ -1203,9 +1208,9 @@ const ARESTalk = (props) => {
           fontSize="1.5rem"
           bold
           onClick={() =>
-            act('clear_conversation', { active_convo: active_ref })
+            act('clear_conversation', { local_active_convo: local_active_ref })
           }
-          disabled={!active_convo.length}
+          disabled={!local_active_convo.length}
         >
           Clear Conversation
         </Button.Confirm>
@@ -1217,12 +1222,12 @@ const ARESTalk = (props) => {
 const DeletedTalks = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     deleted_discussions,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -1237,7 +1242,7 @@ const DeletedTalks = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1250,9 +1255,9 @@ const DeletedTalks = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1268,7 +1273,7 @@ const DeletedTalks = (props) => {
       </Section>
 
       <Section>
-        <h1 align="center">Deletion Log</h1>
+        <h1 align="center">Deletion 1:1 Log</h1>
         {!!deleted_discussions.length && (
           <Flex
             className="candystripe"
@@ -1312,15 +1317,110 @@ const DeletedTalks = (props) => {
   );
 };
 
+const ActiveTalks = (props) => {
+  const { data, act } = useBackend();
+  const {
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    records_discussions,
+    local_admin_login,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={local_last_page === local_current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {ares_logged_in}, {ares_access_text}
+            <br />
+            Remote Admin: {local_admin_login}
+          </h3>
+
+          <Button.Confirm
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          >
+            Logout
+          </Button.Confirm>
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Active 1:1 Records</h1>
+        {!!records_discussions.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem"
+          >
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Deletion Time
+            </Flex.Item>
+            <Flex.Item grow bold>
+              Title
+            </Flex.Item>
+            <Flex.Item width="30rem" textAlign="center">
+              Read Record
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_discussions.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item grow italic>
+                {record.title}
+              </Flex.Item>
+              <Flex.Item width="30rem" ml="1rem" shrink="0" textAlign="center">
+                <Button
+                  icon="eye"
+                  tooltip="Read Conversation"
+                  onClick={() => act('read_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
 const ReadingTalks = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    deleted_conversation,
-    admin_login,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    local_spying_conversation,
+    local_admin_login,
   } = data;
 
   return (
@@ -1335,7 +1435,7 @@ const ReadingTalks = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1348,9 +1448,9 @@ const ReadingTalks = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1367,7 +1467,7 @@ const ReadingTalks = (props) => {
 
       <Section>
         <h1 align="center">Deleted Conversation</h1>
-        {deleted_conversation.map((message, i) => {
+        {local_spying_conversation.map((message, i) => {
           return (
             <Flex key={i} className="candystripe" p=".75rem" align="center">
               <Flex.Item bold>{message}</Flex.Item>
@@ -1382,12 +1482,12 @@ const ReadingTalks = (props) => {
 const Requisitions = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_requisition,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -1402,7 +1502,7 @@ const Requisitions = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1415,9 +1515,9 @@ const Requisitions = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1481,12 +1581,12 @@ const Requisitions = (props) => {
 const FlightLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_flight,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -1501,7 +1601,7 @@ const FlightLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1514,9 +1614,9 @@ const FlightLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1583,12 +1683,12 @@ const FlightLogs = (props) => {
 const Security = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_security,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -1603,7 +1703,7 @@ const Security = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1616,9 +1716,9 @@ const Security = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1685,11 +1785,11 @@ const Security = (props) => {
 const Emergency = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
-    admin_login,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
+    local_admin_login,
     worldtime,
     alert_level,
     distresstimelock,
@@ -1767,7 +1867,7 @@ const Emergency = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1780,9 +1880,9 @@ const Emergency = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1871,12 +1971,12 @@ const Emergency = (props) => {
 const TechLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     records_tech,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -1891,7 +1991,7 @@ const TechLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -1904,9 +2004,9 @@ const TechLogs = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -1992,12 +2092,12 @@ const TechLogs = (props) => {
 const CoreSec = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    ares_logged_in,
+    ares_access_text,
+    local_last_page,
+    local_current_menu,
     security_vents,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -2012,7 +2112,7 @@ const CoreSec = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -2025,9 +2125,9 @@ const CoreSec = (props) => {
           </Box>
 
           <h3>
-            {logged_in}, {access_text}
+            {ares_logged_in}, {ares_access_text}
             <br />
-            Remote Admin: {admin_login}
+            Remote Admin: {local_admin_login}
           </h3>
 
           <Button.Confirm
@@ -2075,12 +2175,10 @@ const CoreSec = (props) => {
 const AdminAccessLogs = (props) => {
   const { data, act } = useBackend();
   const {
-    logged_in,
-    access_text,
-    last_page,
-    current_menu,
+    local_last_page,
+    local_current_menu,
     admin_access_log,
-    admin_login,
+    local_admin_login,
   } = data;
 
   return (
@@ -2095,7 +2193,7 @@ const AdminAccessLogs = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -2107,7 +2205,7 @@ const AdminAccessLogs = (props) => {
             />
           </Box>
 
-          <h3>Remote Admin: {admin_login}</h3>
+          <h3>Remote Admin: {local_admin_login}</h3>
 
           <Button.Confirm
             icon="circle-user"
@@ -2138,7 +2236,12 @@ const AdminAccessLogs = (props) => {
 
 const AccessManagement = (props) => {
   const { data, act } = useBackend();
-  const { last_page, current_menu, access_tickets, admin_login } = data;
+  const {
+    local_last_page,
+    local_current_menu,
+    access_tickets,
+    local_admin_login,
+  } = data;
 
   return (
     <>
@@ -2152,7 +2255,7 @@ const AccessManagement = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -2164,7 +2267,7 @@ const AccessManagement = (props) => {
             />
           </Box>
 
-          <h3>Remote Admin: {admin_login}</h3>
+          <h3>Remote Admin: {local_admin_login}</h3>
 
           <Button.Confirm
             icon="circle-user"
@@ -2293,7 +2396,12 @@ const AccessManagement = (props) => {
 
 const MaintManagement = (props) => {
   const { data, act } = useBackend();
-  const { last_page, current_menu, maintenance_tickets, admin_login } = data;
+  const {
+    local_last_page,
+    local_current_menu,
+    maintenance_tickets,
+    local_admin_login,
+  } = data;
 
   return (
     <>
@@ -2307,7 +2415,7 @@ const MaintManagement = (props) => {
               tooltipPosition="top"
               tooltip="Go back"
               onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
+              disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
@@ -2319,7 +2427,7 @@ const MaintManagement = (props) => {
             />
           </Box>
 
-          <h3>Remote Admin: {admin_login}</h3>
+          <h3>Remote Admin: {local_admin_login}</h3>
 
           <Button.Confirm
             icon="circle-user"

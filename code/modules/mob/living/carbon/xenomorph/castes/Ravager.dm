@@ -40,7 +40,7 @@
 	caste_type = XENO_CASTE_RAVAGER
 	name = XENO_CASTE_RAVAGER
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/mob/xenos/ravager.dmi'
+	icon = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	icon_size = 64
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -62,8 +62,8 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	icon_xeno = 'icons/mob/xenos/ravager.dmi'
-	icon_xenonid = 'icons/mob/xenonids/ravager.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/ravager.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Ravager_1","Ravager_2","Ravager_3")
@@ -74,11 +74,12 @@
 /datum/behavior_delegate/ravager_base
 	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
 	var/slash_charge_cdr = 3 SECONDS // Amount to reduce charge cooldown by per slash
-	var/knockdown_amount = 1.3
+	var/knockdown_amount = 1.6
 	var/fling_distance = 3
 	var/empower_targets = 0
 	var/super_empower_threshold = 3
 	var/dmg_buff_per_target = 2
+	var/mid_charge = FALSE
 
 /datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon)
 	var/damage_plus
@@ -115,3 +116,12 @@
 		QDEL_NULL(rav_shield)
 		to_chat(bound_xeno, SPAN_XENODANGER("We feel our shield decay!"))
 		bound_xeno.overlay_shields()
+
+/datum/behavior_delegate/ravager_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(mid_charge)
+		return INTENT_HARM

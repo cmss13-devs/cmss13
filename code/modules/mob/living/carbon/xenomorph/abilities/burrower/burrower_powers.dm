@@ -187,44 +187,128 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
-/datum/action/xeno_action/onclick/tremor/action_cooldown_check()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	return !xeno.used_tremor
 
-/mob/living/carbon/xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
-	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED) || is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("We must be above ground to do this."))
+/datum/action/xeno_action/onclick/tremor/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/burrower_tremor = owner
+
+	if (HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
+		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if(!check_state())
+	if (burrower_tremor.is_ventcrawling)
+		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if(used_tremor)
-		to_chat(src, SPAN_XENOWARNING("We aren't ready to cause more tremors yet!"))
+	if (!action_cooldown_check())
 		return
 
-	if(!check_plasma(100)) return
+	if (!burrower_tremor.check_state())
+		return
+	if (!check_and_use_plasma_owner())
+		return
 
-	use_plasma(100)
-	playsound(loc, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	visible_message(SPAN_XENODANGER("[src] digs itself into the ground and shakes the earth itself, causing violent tremors!"), \
-	SPAN_XENODANGER("We dig into the ground and shake it around, causing violent tremors!"))
-	create_stomp() //Adds the visual effect. Wom wom wom
-	used_tremor = 1
+	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
+	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
+	burrower_tremor.create_stomp()
 
-	for(var/mob/living/carbon/carbon_target in range(7, loc))
+
+	for(var/mob/living/carbon/carbon_target in range(7, burrower_tremor))
 		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
 		shake_camera(carbon_target, 2, 3)
-		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
+		if(get_dist(burrower_tremor, carbon_target) <= 3 && !burrower_tremor.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
 				carbon_target.apply_effect(1, SLOW)
 			else
 				carbon_target.apply_effect(1, WEAKEN)
 			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
-	spawn(caste.tremor_cooldown)
-		used_tremor = 0
-		to_chat(src, SPAN_NOTICE("We gather enough strength to cause tremors again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/build_tunnel/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/xenomorph = owner
+	if(!xenomorph.check_state())
+		return
+
+	if(xenomorph.action_busy)
+		to_chat(xenomorph, SPAN_XENOWARNING("We should finish up what we're doing before digging."))
+		return
+
+	var/turf/turf = xenomorph.loc
+	if(!istype(turf)) //logic
+		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
+		return
+
+	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
+		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
+		return
+
+	if(locate(/obj/structure/tunnel) in xenomorph.loc)
+		to_chat(xenomorph, SPAN_XENOWARNING("There already is a tunnel here."))
+		return
+
+	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in xenomorph.loc)
+		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		return
+
+	if(xenomorph.tunnel_delay)
+		to_chat(xenomorph, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
+		return
+
+	if(xenomorph.get_active_hand())
+		to_chat(xenomorph, SPAN_XENOWARNING("We need an empty claw for this!"))
+		return
+
+	if(!xenomorph.check_plasma(plasma_cost))
+		return
+
+	var/area/AR = get_area(turf)
+
+	if(isnull(AR) || !(AR.is_resin_allowed))
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
+			to_chat(xenomorph, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
+		to_chat(xenomorph, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+
+	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] begins digging out a tunnel entrance."), \
+	SPAN_XENONOTICE("We begin digging out a tunnel entrance."), null, 5)
+	if(!do_after(xenomorph, 10 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(xenomorph, SPAN_WARNING("Our tunnel caves in as we stop digging it."))
+		return
+	if(!xenomorph.check_plasma(plasma_cost))
+		return
+	xenomorph.visible_message(SPAN_XENONOTICE("\The [xenomorph] digs out a tunnel entrance."), \
+	SPAN_XENONOTICE("We dig out an entrance to the tunnel network."), null, 5)
+
+	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.hivenumber)
+	xenomorph.tunnel_delay = 1
+	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
+	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
+	msg = replace_non_alphanumeric_plus(msg)
+	var/description
+	if(msg)
+		description = msg
+		msg = "[msg] ([get_area_name(tunnelobj)])"
+		log_admin("[key_name(xenomorph)] has named a new tunnel \"[msg]\".")
+		msg_admin_niche("[xenomorph]/([key_name(xenomorph)]) has named a new tunnel \"[msg]\".")
+		tunnelobj.tunnel_desc = "[msg]"
+
+	if(xenomorph.hive.living_xeno_queen || xenomorph.hive.allow_no_queen_actions)
+		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.hive.totalXenos)
+			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
+			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
+			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [xenomorph] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
+
+	xenomorph.use_plasma(plasma_cost)
+	to_chat(xenomorph, SPAN_NOTICE("We will be ready to dig a new tunnel in 4 minutes."))
+	playsound(xenomorph.loc, 'sound/weapons/pierce.ogg', 25, 1)
+	apply_cooldown()
+
+	return ..()
+
+
+/datum/action/xeno_action/onclick/build_tunnel/proc/cooldown_end()
+	var/mob/living/carbon/xenomorph/xenomorph = owner
+	to_chat(xenomorph, SPAN_NOTICE("We are ready to dig a tunnel again."))
+	xenomorph.tunnel_delay = 0

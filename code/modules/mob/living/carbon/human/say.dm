@@ -119,6 +119,9 @@
 	if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 		return
 
+	if (istype(wear_mask, /obj/item/clothing/mask/facehugger))
+		return
+
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 

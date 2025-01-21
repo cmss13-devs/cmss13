@@ -9,6 +9,7 @@
 	unacidable = TRUE
 
 	var/obj/structure/machinery/camera/cam = null
+	var/obj/item/clothing/head/helmet/marine/helm = null
 	var/datum/squad/current_squad = null
 
 	var/datum/tacmap/tacmap
@@ -17,11 +18,14 @@
 	var/is_announcement_active = TRUE
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
-	var/add_pmcs = TRUE
+	var/add_pmcs = FALSE
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
 	var/faction = FACTION_MARINE
+	var/freq = CRYO_FREQ
 	var/show_command_squad = FALSE
+
+	var/list/concurrent_users = list()
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -39,6 +43,12 @@
 	QDEL_NULL(tacmap)
 	QDEL_NULL(cam)
 	current_squad = null
+	concurrent_users = null
+	if(!helm)
+		return ..()
+	helm.overwatch_consoles -= WEAKREF(src)
+	if(length(helm.overwatch_consoles) == 0)
+		helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/proc/disable_pmc()
@@ -59,28 +69,29 @@
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
-	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
-	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
+	dat += "<BR><A href='byond://?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
+	dat += "<BR><A href='byond://?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	if(!echo_squad.active && faction == FACTION_MARINE)
-		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
+		dat += "<BR><A href='byond://?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
-		dat += "<BR><A href='?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
+		dat += "<BR><A href='byond://?src=\ref[src];operation=selectlz'>Designate Primary LZ</A><BR>"
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
 		if(show_command_squad)
-			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>Command</A><BR>"
+			dat += "Current Squad: <A href='byond://?src=\ref[src];operation=pick_squad'>Command</A><BR>"
 		else
-			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
+			dat += "Current Squad: <A href='byond://?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
 		if(current_squad || show_command_squad)
 			dat += get_overwatch_info()
 
-	dat += "<BR><A HREF='?src=\ref[user];mach_close=groundside_operations'>Close</A>"
+	dat += "<BR><A href='byond://?src=\ref[user];mach_close=groundside_operations'>Close</A>"
 	show_browser(user, dat, name, "groundside_operations", "size=600x700")
+	concurrent_users += WEAKREF(user)
 	onclose(user, "groundside_operations")
 
 /obj/structure/machinery/computer/groundside_operations/proc/get_overwatch_info()
@@ -117,7 +128,7 @@
 	else
 		dat += "No Squad selected!<BR>"
 	dat += "<br><hr>"
-	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
+	dat += "<A href='byond://?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
 
 /obj/structure/machinery/computer/groundside_operations/proc/format_list_of_marines(list/mob/living/carbon/human/marine_list, list/jobs_in_order)
@@ -183,14 +194,14 @@
 			if(current_squad)
 				if(H == current_squad.squad_leader && role != JOB_SQUAD_LEADER)
 					act_sl = " (ASL)"
-		var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+		var/marine_infos = "<tr><td><A href='byond://?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 		if(role in job_order)
 			job_order[role] += marine_infos
 		else
 			misc_text += marine_infos
 	dat += "<b>Total: [total_count] Deployed</b><BR>"
 	dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
-	dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
+	dat += "<center><b>Search:</b> <input type='search' id='filter' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:300px;'></center>"
 	dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 	dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
 	for(var/job in job_order)
@@ -299,22 +310,40 @@
 
 			if(current_squad || show_command_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
-				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
+				var/obj/item/clothing/head/helmet/marine/new_helm = get_helm_from_target(cam_target)
+				var/obj/structure/machinery/camera/new_cam = new_helm?.camera
 				if(!new_cam || !new_cam.can_use())
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
 					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+					UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+					helm.overwatch_consoles -= WEAKREF(src)
+					if(length(helm.overwatch_consoles) == 0)
+						helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
 					cam = null
+					helm = null
 					usr.reset_view(null)
 				else if(usr.client.view != GLOB.world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)
 						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+					if(helm)
+						UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+						UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+						helm.overwatch_consoles -= WEAKREF(src)
+						if(length(helm.overwatch_consoles) == 0)
+							helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+
 					cam = new_cam
+					helm = new_helm
+					helm.flags_atom |= (USES_HEARING|USES_SEEING)
 					usr.reset_view(cam)
 					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
+					RegisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
+					RegisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
 
 		if("activate_echo")
 			var/mob/living/carbon/human/human_user = usr
@@ -358,13 +387,52 @@
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		cam = null
 		user.reset_view(null)
+		concurrent_users -= WEAKREF(user)
+		if(!helm)
+			return
+		UnregisterSignal(helm, COMSIG_BROADCAST_HEAR_TALK)
+		UnregisterSignal(helm, COMSIG_BROADCAST_SEE_EMOTE)
+		helm.overwatch_consoles -= WEAKREF(src)
+		if(length(helm.overwatch_consoles) == 0)
+			helm.flags_atom &= ~(USES_HEARING|USES_SEEING)
+		helm = null
 
-//returns the helmet camera the human is wearing
-/obj/structure/machinery/computer/groundside_operations/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if(current_squad || show_command_squad)
-		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/helm = H.head
-			return helm.camera
+/obj/structure/machinery/computer/groundside_operations/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(inoperable())
+		return
+	var/target_zs = SSradio.get_available_tcomm_zs(freq)
+	if(!(z == sourcemob.z) && !((z in target_zs) && (sourcemob.z in target_zs)))
+		return
+	if(show_message_above_tv)
+		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+			sourcemob.langchat_display_image(user)
+
+/obj/structure/machinery/computer/groundside_operations/proc/transfer_emote(obj/item/camera, mob/living/sourcemob, emote, audible = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(inoperable())
+		return
+	var/target_zs = SSradio.get_available_tcomm_zs(freq)
+	if(audible && !(z == sourcemob.z) && !((z in target_zs) && (sourcemob.z in target_zs)))
+		return
+	if(show_message_above_tv)
+		langchat_speech(emote, get_mobs_in_view(7, src), skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("emote"))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
+			sourcemob.langchat_display_image(user)
+
+//returns the helmet the human is wearing
+/obj/structure/machinery/computer/groundside_operations/proc/get_helm_from_target(mob/living/carbon/human/target)
+	if(!current_squad && !show_command_squad)
+		return
+
+	if(istype(target) && istype(target.head, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helm = target.head
+		return helm
 
 /obj/structure/machinery/computer/groundside_operations/upp
 	announcement_title = UPP_COMMAND_ANNOUNCE
@@ -373,6 +441,7 @@
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_UPP
+	freq = UPP_FREQ
 
 /obj/structure/machinery/computer/groundside_operations/clf
 	announcement_title = CLF_COMMAND_ANNOUNCE
@@ -381,13 +450,16 @@
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_CLF
+	freq = CLF_FREQ
 
 /obj/structure/machinery/computer/groundside_operations/pmc
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
+	add_pmcs = TRUE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
+	freq = PMC_FREQ
 
 /obj/structure/machinery/computer/groundside_operations/arc
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'

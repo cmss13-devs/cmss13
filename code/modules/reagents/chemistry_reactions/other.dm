@@ -33,6 +33,7 @@
 	result = null
 	required_reagents = list("uranium" = 1, "iron" = 1) // Yes, laugh, it's the best recipe I could think of that makes a little bit of sense
 	result_amount = 2
+	mob_react = FALSE
 
 /datum/chemical_reaction/emp_pulse/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -155,13 +156,27 @@
 	result = null
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
 	result_amount = 3
+	mob_react = FALSE
 
 /datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(2, 1, location)
-	s.start()
-	new /obj/item/device/flashlight/flare/on/illumination/chemical(location, created_volume)
+	var/turf/location = get_turf(holder.my_atom)
+	var/datum/effect_system/spark_spread/sparker = new
+	sparker.set_up(2, 1, location)
+	sparker.start()
+	var/obj/item/device/flashlight/flare/on/illumination/chemical/light = new(holder.my_atom, created_volume)
+
+	//Admin messaging
+	var/area/area = get_area(location)
+	var/where = "[area.name]|[location.x], [location.y]"
+	var/whereLink = "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/data = " [created_volume] volume -> fuel: [light.fuel] range: [light.light_range] power: [light.light_power]"
+
+	if(holder.my_atom.fingerprintslast)
+		msg_admin_niche("[src] reaction has taken place in ([whereLink])[data]. Last associated key is [holder.my_atom.fingerprintslast].")
+		log_game("[src] reaction has taken place in ([where])[data]. Last associated key is [holder.my_atom.fingerprintslast].")
+	else
+		msg_admin_niche("[src] reaction has taken place in ([whereLink])[data]. No associated key.")
+		log_game("[src] reaction has taken place in ([where])[data]. No associated key.")
 
 /datum/chemical_reaction/chemfire
 	name = "Napalm"
@@ -373,6 +388,7 @@
 	result = null
 	required_reagents = list("fluorosurfactant" = 1, "water" = 1)
 	result_amount = 2
+	mob_react = FALSE
 
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)

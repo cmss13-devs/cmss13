@@ -1122,6 +1122,13 @@
 	flags_item = ITEM_PREDATOR
 	black_market_value = 150
 
+/obj/item/tool/yautja_cleaner/afterattack(obj/item/target, mob/user, proximity)
+	if(!isitem(target))
+		return
+	if(istype(target, /obj/item/storage) && user.a_intent !=INTENT_HARM)
+		return
+	target.handle_dissolve()
+
 /obj/item/storage/medicomp
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."

@@ -85,7 +85,7 @@
 	if(!can_take_strain())
 		return
 	// Show the user the strain's description, and double check that they want it.
-	if(tgui_alert(usr, "[initial(chosen_strain.description)]\n\nConfirm mutation?", "Choose Strain", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "[initial(chosen_strain.description)]", "Choose Strain", list("Confirm Mutation", "Cancel")) != "Confirm Mutation")
 		return
 	// One more time after they confirm.
 	if(!can_take_strain())

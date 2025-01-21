@@ -235,9 +235,10 @@
 		if(!(turf_inform.turf_flags & TURF_TRANSPARENT) && !(turf_flags & TURF_TRANSPARENT))
 			vis_contents |= GLOB.openspace_shadow_one_for_all
 		if(!(turf_inform.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
-			var/list/baseturfsold = list(/turf/open/openspace)
-			baseturfsold |= turf_inform.baseturfs
-			turf_inform.baseturfs = baseturfsold
+			if(!(/turf/open/openspace in turf_inform.baseturfs))
+				var/list/baseturfsold = list(/turf/open/openspace)
+				baseturfsold |= turf_inform.baseturfs
+				turf_inform.baseturfs = baseturfsold
 
 	turf_inform = SSmapping.get_turf_below(src)
 	if(turf_inform)

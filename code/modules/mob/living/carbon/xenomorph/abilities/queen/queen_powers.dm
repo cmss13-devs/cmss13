@@ -850,7 +850,7 @@
 	if(!action_cooldown_check())
 		return
 
-	var/action = tgui_input_list(usr, "What turf you want to break", "Clear Turf", list("Above", "Below"))
+	var/action = tgui_input_list(xeno, "What turf you want to break", "Clear Turf", list("Above", "Below"))
 	var/turf/target_turf
 	switch(action)
 		if("Above")
@@ -858,16 +858,16 @@
 		if("Below")
 			target_turf = SSmapping.get_turf_below(xeno)
 
-	if(!target_turf)
-		to_chat(src, SPAN_XENOWARNING("There no turf!"))
+	if(!target_turf || istype(target_turf, /turf/open/openspace))
+		to_chat(xeno, SPAN_XENOWARNING("There no turf!"))
 		return
 
-	if(target_turf.antipierce > 5 && islist(target_turf.baseturfs) ? !istype(target_turf.baseturfs[1], /turf/open/openspace) : !istype(target_turf.baseturfs, /turf/open/openspace))
-		to_chat(src, SPAN_XENOWARNING("[target_turf] is too strong for our claws to break!"))
+	if(target_turf.antipierce > 5 || !(/turf/open/openspace in target_turf.baseturfs))
+		to_chat(xeno, SPAN_XENOWARNING("[target_turf] is too strong for our claws to break!"))
 		return
 
-	if(do_after(src, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_turf))
-		target_turf.ChangeTurf(/turf/open/openspace, list())
+	if(do_after(xeno, target_turf.antipierce * 4, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_turf))
+		target_turf.ChangeTurf(/turf/open/openspace, list(/turf/open/openspace))
 		apply_cooldown()
 	return ..()
 

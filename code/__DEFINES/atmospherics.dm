@@ -16,10 +16,8 @@
 #define BODYTEMP_HEAT_DAMAGE_LIMIT 360.15
 /// The limit the human body can take before it starts taking damage from coldness.
 #define BODYTEMP_COLD_DAMAGE_LIMIT 260.15
-/// The limit the human body will reach in extremely cold water.
+/// The limit the human body will reach in extremely cold water (required for cryo effects).
 #define BODYTEMP_COLD_WATER_LIMIT 170
-/// The treshold required for cryo effects.
-#define BODYTEMP_CRYO_THRESHOLD 225
 
 #define ONE_ATMOSPHERE 101.325 //kPa
 

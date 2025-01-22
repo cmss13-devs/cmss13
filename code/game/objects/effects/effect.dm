@@ -1,6 +1,6 @@
 /obj/effect
 	icon = 'icons/effects/effects.dmi'
-	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/as_image = FALSE
 

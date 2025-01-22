@@ -23,6 +23,8 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 	garbage = TRUE
 
+	blocks_emissive = FALSE
+
 /obj/effect/decal/cleanable/Initialize(mapload, ...)
 	. = ..()
 	if (random_icon_states && length(src.random_icon_states) > 0)

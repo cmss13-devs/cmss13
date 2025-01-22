@@ -40,6 +40,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 
+	if(entered_movable.flags_atom & NO_ZFALL)
+		return
+
 	var/height = 1
 	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 

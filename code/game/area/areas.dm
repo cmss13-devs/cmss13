@@ -460,4 +460,6 @@
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
 
 /area/sky
+	name = "Sky"
 	icon_state = "lv-626"
+	flags_area = AREA_UNWEEDABLE

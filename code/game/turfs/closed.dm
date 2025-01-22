@@ -13,7 +13,7 @@
 	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 		return
 
-	while(istype(above_current, /turf/closed))
+	while(above_current.density)
 		above_current = SSmapping.get_turf_above(get_turf(above_current))
 		above_user = SSmapping.get_turf_above(get_turf(above_user))
 

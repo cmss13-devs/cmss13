@@ -2142,6 +2142,7 @@
 
 /turf/open/floor/almayer_hull/outerhull_dir
 	icon_state = "outerhull_dir"
+	allow_construction = FALSE
 
 /turf/open/floor/almayer_hull/outerhull_dir/southwest
 	dir = SOUTHWEST
@@ -2163,9 +2164,6 @@
 
 /turf/open/floor/almayer_hull/outerhull_dir/northwest
 	dir = NORTHWEST
-
-
-
 
 
 

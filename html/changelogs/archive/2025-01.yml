@@ -344,3 +344,28 @@
   - qol: Ravager's empowered charge now bypasses intent, meaning if you are empowered
       you will always damage the person you charge at instead of giving them a pat
       on the back.
+2025-01-21:
+  sleepynecrons/esselnek:
+  - rscadd: New turtleneck and formal uniforms, including a council jacket and a plain
+      jacket for the CO vendor.
+  - imageadd: New sprites for the old formal black and white uniforms, falcon jacket
+      and a new plain jacket.
+  - rscadd: New uscm officer formal uniform sprite
+  - imagedel: Removes old unused suprised that this pr replaces
+2025-01-22:
+  Blundir:
+  - rscadd: adds support for a headset to have multiple faction huds, instead of being
+      harcoded to one main one
+  - rscadd: 'some headsets can now see multiple huds: CL can see USCM, WY, PMC; CO,
+      XO can see USCM, WY, CMB, etc'
+  - rscadd: mp and hg headsets can now track cmp
+  - bugfix: cl having incorrect minimap/orbit icon
+  Drathek:
+  - bugfix: Fixed joining as lesser drone not always performing banishment check
+  - spellcheck: Fixed cooldown message for lesser drone having the wrong duration
+  Watermelon914:
+  - bugfix: Fixed an exploit that lets you increase your weapon's damage multiplier
+      infinitely.
+  iloveloopers:
+  - qol: Forensic spray can no longer generate in recipes, mutated plants and colony
+      vials.

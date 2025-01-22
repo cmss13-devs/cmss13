@@ -41,6 +41,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 
 	))
 
+GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
+	list("WEAPONS SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
+	list("Heavy Armor Set", 0, /obj/item/storage/box/spec/B18, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+))
+
 /obj/structure/machinery/cm_vending/gear/spec
 	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
 	desc = "An automated gear rack for Squad Weapons Specialists."
@@ -52,6 +57,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
 /obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/heavy_specialists))
+		return GLOB.cm_vending_gear_spec_heavy
 	return GLOB.cm_vending_gear_spec
 
 

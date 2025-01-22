@@ -147,7 +147,7 @@
 	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness = 8 // luminosity when on, also used in power calculation
+	var/brightness = 6 // luminosity when on, also used in power calculation
 	var/status = LIGHT_OK // LIGHT_OK, _EMPTY, _BURNED or _BROKEN
 	var/flickering = 0
 	var/light_type = /obj/item/light_bulb/tube // the type of light item
@@ -796,6 +796,7 @@
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
+	light_color = LIGHT_COLOR_FLARE
 	var/obj/docking_port/stationary/marine_dropship/linked_port = null
 
 //Don't allow blowing those up, so Marine nades don't fuck them

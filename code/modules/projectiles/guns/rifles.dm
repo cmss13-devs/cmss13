@@ -510,7 +510,7 @@
 
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 11, "rail_y" = 19, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 19, "rail_x" = 16, "rail_y" = 23, "under_x" = 23, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()

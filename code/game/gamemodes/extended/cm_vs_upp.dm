@@ -40,6 +40,8 @@
 	. = ..()
 	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash)
 	for(var/area/area in GLOB.all_areas)
+		if(is_mainship_level(area.z))
+			continue
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
 

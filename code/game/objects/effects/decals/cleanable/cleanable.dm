@@ -21,6 +21,8 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 	keep_as_object = TRUE
 
+	blocks_emissive = FALSE
+
 	garbage = TRUE
 
 /obj/effect/decal/cleanable/Initialize(mapload, ...)

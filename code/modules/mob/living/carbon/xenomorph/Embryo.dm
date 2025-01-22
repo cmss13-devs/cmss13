@@ -252,7 +252,6 @@
 			hive.increase_larva_after_burst()
 			hive.hive_ui.update_burrowed_larva()
 
-
 	new_xeno.update_icons()
 
 	new_xeno.cause_unbearable_pain(affected_mob) //the embryo is now a larva!! its so painful, ow!

@@ -184,7 +184,6 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
-
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
 
@@ -314,7 +313,6 @@
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
 	if(new_xeno)
 		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
-
 	return
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste)

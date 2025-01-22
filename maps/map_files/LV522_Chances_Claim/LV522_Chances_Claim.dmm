@@ -5140,7 +5140,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -7518,7 +7518,7 @@
 	pixel_x = -6;
 	pixel_y = 8
 	},
-/obj/item/clothing/head/det_hat,
+/obj/item/clothing/head/fedora,
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -8481,12 +8481,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
-"exZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/lv522/oob)
 "eym" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -10318,7 +10312,7 @@
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
 	pixel_x = 5;
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
@@ -13151,7 +13145,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 10
@@ -13559,7 +13553,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -13617,7 +13611,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -16269,7 +16263,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -2;
 	pixel_y = -4
@@ -17701,7 +17695,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -17993,7 +17987,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -18001,7 +17995,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -21633,7 +21627,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	layer = 3.1;
 	pixel_x = -4;
@@ -23691,7 +23685,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	layer = 3.1;
 	pixel_x = 2;
@@ -25995,7 +25989,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 4;
 	pixel_y = 21
@@ -26237,7 +26231,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -26967,7 +26961,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -26975,7 +26969,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -29508,7 +29502,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	layer = 3.1;
 	pixel_x = 4;
@@ -31480,7 +31474,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 4;
 	pixel_y = 21
@@ -31532,7 +31526,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -32646,7 +32640,7 @@
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
 	pixel_x = 5;
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrownfull2,
@@ -33873,7 +33867,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 4;
 	pixel_y = 21
@@ -36128,7 +36122,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -3;
 	pixel_y = 6
@@ -40739,7 +40733,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -40747,7 +40741,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = 3;
 	pixel_y = -2
@@ -43668,7 +43662,7 @@
 /obj/item/prop{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/janitor.dmi';
-	icon_state = "trashbag3";
+	icon_state = "trashbag_full";
 	name = "trash bag";
 	pixel_x = -4;
 	pixel_y = 6
@@ -51089,7 +51083,7 @@ tiQ
 tiQ
 tiQ
 tiQ
-exZ
+tiQ
 tiQ
 tiQ
 vtc

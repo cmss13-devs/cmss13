@@ -32,13 +32,6 @@
 			final_name = "David"
 	new_human.change_real_name(new_human, final_name)
 
-/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human)
-	. = ..()
-	if(iscolonysynthetic(new_human) && !isworkingjoe(new_human))
-		new_human.set_skills(/datum/skills/colonial_synthetic)
-
-	new_human.allow_gun_usage = FALSE
-
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.allow_gun_usage = FALSE
 
@@ -67,6 +60,7 @@
 	role_comm_title = "Syn"
 
 	minimap_icon = "synth"
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -90,6 +84,7 @@
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
 	role_comm_title = "Syn"
+	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -108,6 +103,7 @@
 /datum/equipment_preset/synth/uscm/wo
 	name = "WO Support Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/new_human)
 
@@ -172,6 +168,7 @@
 
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -219,7 +216,7 @@
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-		WEAR_BODY = /obj/item/clothing/under/colonist/ua_civvies,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility/gray,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/armband/med,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
@@ -239,14 +236,14 @@
 /datum/equipment_preset/synth/survivor/scientist_synth
 	name = "Survivor - Synthetic - Scientist Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/bio_hood,
+		WEAR_HEAD = /obj/item/clothing/head/bio_hood/synth,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/chem,
 		WEAR_IN_BACK = /obj/item/reagent_container/glass/beaker/vial/random/good,
 		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
-		WEAR_JACKET = /obj/item/clothing/suit/bio_suit,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/synthbio,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_HAND = /obj/item/device/motiondetector,
@@ -340,7 +337,7 @@
 	name = "Survivor - Synthetic - Teacher Synth"
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
-		WEAR_BODY = /obj/item/clothing/under/colonist/wy_davisone,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility/brown,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/wy_chips/pepper,
 		WEAR_IN_BACK = /obj/item/storage/box/pdt_kit,
@@ -374,7 +371,7 @@
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/flap,
 		WEAR_FACE = /obj/item/clothing/mask/tornscarf,
-		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/utility,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility,
 		WEAR_BACK = /obj/item/storage/backpack/lightpack/five_slot,
 		WEAR_IN_BACK = /obj/item/storage/box/m94,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
@@ -391,7 +388,7 @@
 	name = "Survivor - Synthetic - Trucker Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
-		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/frontier,
+		WEAR_BODY = /obj/item/clothing/under/rank/frontier,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/pamphlet/skill/powerloader,
 		WEAR_R_HAND = /obj/item/tool/weldingtool/hugetank,
@@ -423,7 +420,7 @@
 	equipment_to_spawn = list(
 		WEAR_R_EAR = /obj/item/clothing/ears/earmuffs,
 		WEAR_HEAD = /obj/item/clothing/head/cmcap,
-		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/utility/yellow,
+		WEAR_BODY = /obj/item/clothing/under/rank/utility/yellow,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
 		WEAR_IN_BACK = /obj/item/storage/box/m94,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest,
@@ -439,12 +436,12 @@
 /datum/equipment_preset/synth/survivor/detective_synth
 	name = "Survivor - Synthetic - Detective Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/det_hat,
+		WEAR_HEAD = /obj/item/clothing/head/fedora/brown,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/det,
+		WEAR_BODY = /obj/item/clothing/under/detective,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/det_suit/black,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/CMB/trenchcoat/police,
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full/synth,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
@@ -489,9 +486,8 @@
 	name = "Survivor - Synthetic - Corporate Security Synth"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
-	minimap_background = "background_pmc"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
+		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
@@ -650,7 +646,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/working_joe_pda(new_human.back), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/seegson(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/cleaner(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bucket(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/mop(new_human.back), WEAR_IN_BACK)
@@ -677,7 +673,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/joe(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/seegson(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/briefcase/inflatable/small(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher(new_human), WEAR_L_HAND)
@@ -722,7 +718,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/hyperdyne(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/lightreplacer(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/medium_stack(new_human.back), WEAR_IN_R_STORE)
@@ -731,7 +727,7 @@
 	. = ..()
 	new_human.allow_gun_usage = TRUE
 
-/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
 	new_human.h_style = "Bald"

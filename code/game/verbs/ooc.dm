@@ -90,6 +90,13 @@
 		var/rankname = admin_holder.rank
 		if(rankname in rank_icons)
 			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+	if(admin_holder.extra_titles?.len)
+		var/list/extra_rank_icons = icon_states('icons/ooc.dmi')
+		var/ooc_icon_state
+		for(var/srank in admin_holder.extra_titles)
+			ooc_icon_state = trim(srank)
+			if(ooc_icon_state in extra_rank_icons)
+				prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, ooc_icon_state)]"
 	if(prefix)
 		prefix = "[prefix] "
 	return prefix
@@ -191,6 +198,10 @@
 
 	if(!mob)
 		return
+
+	if(istype(mob, /mob/new_player))
+		var/mob/new_player/new_player = mob
+		new_player.initialize_lobby_screen()
 
 	for(var/I in mob.open_uis)
 		var/datum/nanoui/ui = I

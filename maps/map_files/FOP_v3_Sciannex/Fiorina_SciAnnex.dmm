@@ -10549,12 +10549,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"ifB" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
-/area/fiorina/oob)
 "ifJ" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -10605,8 +10599,8 @@
 "igQ" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "igV" = (
@@ -11714,7 +11708,7 @@
 /turf/open/floor/prison/blue/southeast,
 /area/fiorina/station/civres_blue)
 "iXV" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "iYa" = (
@@ -18667,7 +18661,7 @@
 /area/fiorina/tumor/ice_lab)
 "omb" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/guestpass,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "omh" = (
@@ -24533,7 +24527,7 @@
 /area/fiorina/tumor/civres)
 "sQr" = (
 /obj/structure/janitorialcart,
-/obj/item/clothing/head/bio_hood/janitor{
+/obj/item/clothing/head/bio_hood{
 	pixel_x = -4;
 	pixel_y = 5
 	},
@@ -26769,9 +26763,8 @@
 /area/fiorina/tumor/aux_engi)
 "uEh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -29889,7 +29882,7 @@
 /obj/item/card/id/silver/clearance_badge/cl{
 	desc = "Wow sorry, didn't mean to drop that in front of you, it's real, btw.";
 	name = "certified powerloader operator card";
-	registered_name = "John Forklift"
+	registered_name = "John Smith"
 	},
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
@@ -59014,7 +59007,7 @@ mEO
 oou
 aFZ
 blI
-ifB
+axW
 pFE
 uFx
 lud

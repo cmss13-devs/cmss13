@@ -3,6 +3,9 @@
 	icon = 'icons/turf/floors/filtration.dmi'
 	icon_state = "filtrationside"
 
+/turf/open/floor/filtrationside/is_plasteel_floor()
+	return FALSE
+
 /turf/open/floor/filtrationside/southwest
 	dir = SOUTHWEST
 
@@ -35,6 +38,9 @@
 	name = "coagulation"
 	icon = 'icons/turf/floors/coagulation.dmi'
 	icon_state = null
+
+/turf/open/floor/coagulation/is_plasteel_floor()
+	return FALSE
 
 /turf/open/floor/coagulation/icon0_0
 	icon_state = "0,0"

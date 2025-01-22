@@ -78,7 +78,8 @@
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_FACTION_CLASH_UPP_MAJOR
-		set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
+		roundend_ceasefire()
+
 		SSticker.roundend_check_paused = TRUE
 		addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), ROUND_END_DELAY)
 
@@ -86,6 +87,26 @@
 /datum/game_mode/extended/faction_clash/cm_vs_upp/check_finished()
 	if(round_finished)
 		return TRUE
+
+/datum/game_mode/extended/faction_clash/cm_vs_upp/proc/roundend_ceasefire()
+	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
+	switch(round_finished)
+		if(MODE_FACTION_CLASH_UPP_MAJOR)
+			marine_announcement("ALERT: All ground forces killed in action or non-responsive. Landing zone overrun. Impossible to sustain combat operations.\n\nMission Abort Authorized! Commencing automatic vessel deorbit procedure from operations zone.\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Enemy landing zone status. Under Union Military Control. Enemy ground forces. Deceased and/or in Union Military custody.\n\nMission Accomplished! Dispatching subspace signal to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+		if(MODE_FACTION_CLASH_UPP_MINOR)
+			marine_announcement("ALERT: All ground forces killed in action or non-responsive. Landing zone overrun. Impossible to sustain combat operations.\n\nMission Abort Authorized! Commencing automatic vessel deorbit procedure from operations zone.\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Enemy landing zone status. Under Union Military Control. Enemy ground forces. Deceased and/or in Union Military custody.\n\nMission Accomplished! Dispatching subspace signal to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+		if(MODE_INFESTATION_M_MAJOR)
+			marine_announcement("ALERT: Opposing Force landing zone under USCM force control. Orbital scans concludes all opposing force combat personnel are combat inoperative.\n\nMission Accomplished!\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Union landing zone compromised. Union ground forces are non-responsive. Further combat operations impossible.\n\nMission Abort Authorized\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+		if(MODE_INFESTATION_M_MINOR)
+			marine_announcement("ALERT: Opposing Force landing zone under USCM force control. Orbital scans concludes all opposing force combat personnel are combat inoperative.\n\nMission Accomplished!\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Union landing zone compromised. Union ground forces are non-responsive. Further combat operations impossible.\n\nMission Abort Authorized\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
+			marine_announcement("ALERT: Inconclusive combat outcome. Unable to assess tactical or strategic situation.\n\nDispatching automated request to High Command for further directives.\n\nSaving operational report to archive, commencing final systems scan in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("ALERT: Battle situation has developed not necessarily to the Unions advantage\n\nDispatching request for new directives to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/declare_completion()
 	announce_ending()

@@ -434,7 +434,7 @@
 
 /obj/item/weapon/gun/rifle/m46c
 	name = "\improper M46C pulse rifle"
-	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	desc = "Made in Industrialbezirk Emden by the newest subsidiary of Armat, Kramer Metallarbeiten, the Model 46 was suited to be a lighter and effective Personal Defense Weapon for both EVA and rear echelon personnel, scarce funding however meant mass production was next to impossible, with prototypes only being distributed only among the USCM's finest."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m46c"
 	item_state = "m46c"
@@ -481,7 +481,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	explo_proof = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
-	map_specific_decoration = TRUE
+	map_specific_decoration = FALSE
 	start_automatic = TRUE
 
 	var/mob/living/carbon/human/linked_human

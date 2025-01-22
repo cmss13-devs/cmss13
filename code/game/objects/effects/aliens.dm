@@ -532,7 +532,9 @@
 	var/message = null
 	var/mob/living/carbon/xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/no_sound = FALSE
+	var/effect_sound = "acid_strike"
+	var/extra_visual_effects = TRUE
+	var/damage_cades = TRUE
 
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
 	..(loc)
@@ -544,7 +546,17 @@
 	if(src.linked_xeno)
 		hivenumber = src.linked_xeno.hivenumber
 
+/obj/effect/xenomorph/acid_damage_delay/proc/extra_visual_effects()
+	var/datum/effect_system/smoke_spread/xeno_visual_acid/gas_visual
+	gas_visual = new /datum/effect_system/smoke_spread/xeno_visual_acid
+	gas_visual.set_up(1, 0, loc, null, 3)
+	gas_visual.start()
+
 /obj/effect/xenomorph/acid_damage_delay/proc/deal_damage()
+	for(var/obj/structure/barricade/cade in loc)
+		if(damage_cades)
+			cade.take_acid_damage(damage * 2)
+
 	for(var/mob/living/carbon/target in loc)
 		if(target.stat == DEAD)
 			continue
@@ -557,7 +569,7 @@
 		if(isxeno(target))
 			target.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 		else
-			target.apply_armoured_damage(damage, ARMOR_BIO, BURN, null, 15)
+			target.apply_armoured_damage(damage, ARMOR_BIO, BURN, null, 10)
 
 		if(message)
 			to_chat(target, SPAN_XENODANGER(message))
@@ -566,32 +578,12 @@
 
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
 	deal_damage()
-	if(!no_sound)
-		playsound(src.loc, "acid_strike", 25, 1)
+	if(extra_visual_effects)
+		extra_visual_effects()
+	if(effect_sound)
+		playsound(src.loc, effect_sound, 25, 1)
 	qdel(src)
 
-/obj/effect/xenomorph/acid_damage_delay/boiler_mortar
-	var/no_extra_effect = FALSE
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_mortar/deal_damage()
-	if(!no_extra_effect)
-		var/datum/effect_system/smoke_spread/xeno_visual_acid/gas_visual
-		gas_visual = new /datum/effect_system/smoke_spread/xeno_visual_acid
-		gas_visual.set_up(0, 0, loc, null, 3)
-		gas_visual.start()
-
-	for(var/obj/structure/barricade/cade in loc)
-		cade.take_acid_damage(damage * 2)
-
-	for(var/mob/living/carbon/target in loc)
-		if(target.stat == DEAD)
-			continue
-
-		if(target.ally_of_hivenumber(hivenumber))
-			continue
-
-	return ..()
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_mortar/extra
-	no_sound = TRUE
-	no_extra_effect = TRUE
+/obj/effect/xenomorph/acid_damage_delay/extra
+	effect_sound = null
+	extra_visual_effects = FALSE

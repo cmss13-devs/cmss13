@@ -15,14 +15,6 @@
 
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_acid_lance()
-	set category = "Alien"
-	set name = "Acid Lance"
-	set hidden = TRUE
-	var/action_name = "Acid Lance"
-
-	handle_xeno_macro(src, action_name)
-
 /datum/action/xeno_action/verb/verb_dump_acid()
 	set category = "Alien"
 	set name = "Dump Acid"

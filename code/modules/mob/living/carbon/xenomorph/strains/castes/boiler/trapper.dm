@@ -1,6 +1,6 @@
 /datum/xeno_strain/trapper
 	name = BOILER_TRAPPER
-	description = "You trade some health and your ability to bombard, use neurotoxin gas, and dump acid in exchange for the ability to strongly damage a target area, ensnare targets within said area, and gain improved capacity for close-range combat. Deploy Traps places a line of traps that will root targets for 2 seconds, and successfully catching targets will provide bonuses to your other two abilities for 4 seconds. Use Acid Mortar to trigger a powerful delayed AOE where you're aiming, with the trigger delay being decreased after trapping people and dealing increased damage against barricades. When in close combat with hostiles, use Acid Shotgun to deal high damage, dealing even more after trapping someone."
+	description = "You trade a chunk of health alongside your ability to bombard, use neurotoxin gas, and dump acid in exchange for the ability to strongly damage a target area, ensnare targets within said area, and gain improved capacity for close-range combat. Deploy Traps places a line of traps that will root targets for 2 seconds, and successfully catching targets will provide bonuses to your other two abilities for 4 seconds. Use Acid Mortar to trigger a powerful delayed AOE where you're aiming, dealing double damage to barricades, with the trigger delay being decreased after trapping someone. Use Acid Shotgun when in close combat to deal high damage, dealing even more after trapping someone."
 	flavor_description = "The battlefield is my canvas, this one, my painter. Melt them where they stand."
 
 	actions_to_remove = list(
@@ -25,7 +25,7 @@
 		boiler.zoom_out()
 
 	boiler.plasma_types -= PLASMA_NEUROTOXIN
-	boiler.health_modifier -= XENO_HEALTH_MOD_MED
+	boiler.health_modifier -= XENO_HEALTH_MOD_VERY_LARGE
 
 	boiler.recalculate_everything()
 
@@ -33,15 +33,15 @@
 	name = "Boiler Trapper Behavior Delegate"
 
 	var/successful_trap = FALSE
+	var/trap_buff_cooldown = FALSE
 
 /datum/behavior_delegate/boiler_trapper/proc/success_trap_buff()
-	successful_trap = TRUE
-	addtimer(CALLBACK(src, PROC_REF(success_trap_buff_remove)), 4 SECONDS)
+	if(trap_buff_cooldown != TRUE)
+		successful_trap = TRUE
+		trap_buff_cooldown = TRUE
+		addtimer(CALLBACK(src, PROC_REF(success_trap_buff_remove)), 4 SECONDS)
 
 /datum/behavior_delegate/boiler_trapper/proc/success_trap_buff_remove()
-	to_chat(bound_xeno, SPAN_XENONOTICE("We feel out tactical advantage over our foes fade."))
+	if(successful_trap != FALSE)
+		to_chat(bound_xeno, SPAN_XENONOTICE("We feel our tactical advantage over our foes fade."))
 	successful_trap = FALSE
-
-/datum/behavior_delegate/boiler_trapper/append_to_stat()
-	. = list()
-	. += "If 1, buff is active: [successful_trap]"

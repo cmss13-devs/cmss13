@@ -1,119 +1,3 @@
-/datum/action/xeno_action/activable/acid_lance/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if (!istype(xeno) || !xeno.check_state())
-		return
-
-	if (!activated_once && !action_cooldown_check())
-		return
-
-	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
-		return
-
-	if (!activated_once)
-		// Start our 'charging'
-
-		if (!check_and_use_plasma_owner())
-			return
-
-		xeno.create_empower()
-		xeno.visible_message(SPAN_XENODANGER("[xeno] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
-		activated_once = TRUE
-		stack()
-		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
-		apply_cooldown()
-		return ..()
-
-	else
-		activated_once = FALSE
-		var/range = base_range + stacks*range_per_stack
-		var/damage = base_damage + stacks*damage_per_stack
-		var/turfs_visited = 0
-		for (var/turf/turf in get_line(get_turf(xeno), affected_atom))
-			if(turf.density || turf.opacity)
-				break
-
-			var/should_stop = FALSE
-			for(var/obj/structure/structure in turf)
-				if(istype(structure, /obj/structure/window/framed))
-					var/obj/structure/window/framed/window_frame = structure
-					if(!window_frame.unslashable)
-						window_frame.deconstruct(disassembled = FALSE)
-
-				if(structure.opacity)
-					should_stop = TRUE
-					break
-
-			if (should_stop)
-				break
-
-			if (turfs_visited >= range)
-				break
-
-			turfs_visited++
-
-			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, "You are blasted with a stream of high-velocity acid!", xeno)
-
-		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
-		remove_stack_effects("We feel our speed return to normal!")
-		return TRUE
-
-/datum/action/xeno_action/activable/acid_lance/proc/stack()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
-		return
-
-	if (!activated_once)
-		return
-
-	stacks = min(max_stacks, stacks + 1)
-	if (stacks != max_stacks)
-		xeno.speed_modifier += movespeed_per_stack
-		movespeed_nerf_applied += movespeed_per_stack
-		xeno.recalculate_speed()
-		addtimer(CALLBACK(src, PROC_REF(stack)), stack_time)
-		return
-	else
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We have charged our acid lance to maximum!"))
-		return
-
-/datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if (!istype(xeno))
-		return
-
-	if (stacks <= 0)
-		return
-
-	if (message)
-		to_chat(xeno, SPAN_XENODANGER(message))
-
-	stacks = 0
-	xeno.speed_modifier -= movespeed_nerf_applied
-	movespeed_nerf_applied = 0
-	xeno.recalculate_speed()
-
-/datum/action/xeno_action/activable/acid_lance/proc/timeout()
-	if (activated_once)
-		activated_once = FALSE
-		remove_stack_effects("We have waited too long and can no longer use our acid lance!")
-
-
-/datum/action/xeno_action/activable/acid_lance/action_cooldown_check()
-	return (activated_once || ..())
-
-/datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
-	. = ..()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!action_cooldown_check()) // activate c/d only if we already spit
-		for (var/action_type in action_types_to_cd)
-			var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
-			if (!istype(xeno_action))
-				continue
-
-			xeno_action.apply_cooldown_override(cooldown_duration)
-
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -180,6 +64,9 @@
 		to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
 		return
 
+	if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		return
+
 	if(!check_and_use_plasma_owner())
 		return
 
@@ -209,6 +96,7 @@
 
 		var/obj/effect/alien/resin/boilertrap/boiler_trap
 		boiler_trap = new /obj/effect/alien/resin/boilertrap(turf, xeno)
+		playsound(affected_atom, "alien_resin_build", 15, 0)
 		QDEL_IN(boiler_trap, trap_ttl)
 
 	apply_cooldown()
@@ -233,6 +121,9 @@
 		to_chat(xeno, SPAN_XENOWARNING("Something is in the way!"))
 		return
 
+	if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		return
+
 	if(!check_and_use_plasma_owner())
 		return
 
@@ -240,13 +131,16 @@
 
 	var/datum/behavior_delegate/boiler_trapper/be_del = xeno.behavior_delegate
 	if(be_del.successful_trap)
+		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a bolt of acid in a low arc directed at [affected_atom]!"), SPAN_XENODANGER("We fire a bolt of acid directed at [affected_atom]!"))
+	else
+		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a bolt of acid in a high arc directed at [affected_atom]!"), SPAN_XENODANGER("We fire a bolt of acid directed at [affected_atom]!"))
+	if(be_del.successful_trap)
 		delay /= 2
-
-	xeno.visible_message(SPAN_XENODANGER("[xeno] fires a bolt of acid in an arc directed at [affected_atom]!"), SPAN_XENODANGER("We fire a bolt of acid directed at [affected_atom]!"))
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_mortar(turf, damage, delay, "You are burned by acid raining from above!", xeno)
+		be_del.successful_trap = FALSE
+	new /obj/effect/xenomorph/acid_damage_delay(turf, damage, delay, "You are burned by acid raining from above!", xeno)
 
 	for(var/turf/target_turf in orange(1, turf))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_mortar(target_turf, damage, delay, "You are burned by acid raining from above!", xeno)
+		new /obj/effect/xenomorph/acid_damage_delay/extra(target_turf, damage, delay, "You are burned by acid raining from above!", xeno)
 
 	apply_cooldown()
 	return ..()
@@ -284,7 +178,7 @@
 
 /datum/ammo/xeno/acid_shotgun/New()
 	..()
-	damage = 7
+	damage = 6
 	max_range = 5
 	damage_type = BURN
 	accuracy = HIT_ACCURACY_TIER_8
@@ -298,7 +192,8 @@
 	var/mob/living/carbon/xenomorph/xeno = proj.firer
 	var/datum/behavior_delegate/boiler_trapper/be_del = xeno.behavior_delegate
 	if(be_del.successful_trap)
-		damage = 10
+		damage = 9
+		be_del.successful_trap = FALSE
 
 /datum/ammo/xeno/acid_shotgun/spread
 	name = "acid spatter"

@@ -21,7 +21,7 @@
 		return
 
 	log_debug("Attempting load of template [template.name] as new event Z-Level as requested by [name]")
-	var/datum/space_level/loaded = template.load_new_z(traits = ZTRAITS_GROUND)
+	var/datum/space_level/loaded = template.load_new_z(traits = ZTRAITS_MAIN_SHIP)
 	if(!loaded?.z_value)
 		log_debug("Failed to load the template to a Z-Level!")
 
@@ -61,14 +61,14 @@
 	var/no_upp_left = TRUE
 	var/no_uscm_left = TRUE
 	var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))
-	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
-			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
-				var/mob/living/carbon/human/H = M
-				if(!H.handcuffed)
-					if(H.faction == FACTION_UPP)
+	for(var/mob/mob in GLOB.player_list)
+		if(mob.z && (mob.z in z_levels) && mob.stat != DEAD && !istype(mob.loc, /turf/open/space))
+			if(ishuman(mob) && !isyautja(mob) && !(mob.status_flags & XENO_HOST) && !iszombie(mob))
+				var/mob/living/carbon/human/human = mob
+				if(!human.handcuffed)
+					if(human.faction == FACTION_UPP)
 						no_upp_left = FALSE
-					if(H.faction == FACTION_MARINE)
+					if(human.faction == FACTION_MARINE)
 						no_uscm_left = FALSE
 					if(!no_upp_left && !no_uscm_left)
 						return

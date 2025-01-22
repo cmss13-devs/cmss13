@@ -1,7 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "adds support for a headset to have multiple faction huds, instead of being harcoded to one main one"
-  - rscadd: "some headsets can now see multiple huds: CL can see USCM, WY, PMC; CO, XO can see USCM, WY, CMB, etc"
-  - rscadd: "mp and hg headsets can now track cmp"
-  - bugfix: "cl having incorrect minimap/orbit icon"

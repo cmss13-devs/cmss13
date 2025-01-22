@@ -157,6 +157,9 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -20
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/p_a_hallway)
 "aay" = (
@@ -891,9 +894,6 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/upperdeck_maint/p_a)
 "axU" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
@@ -3363,6 +3363,9 @@
 	icon_state = "pottedplant_21";
 	layer = 3.1;
 	pixel_y = 11
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/headquarters_lobby)
@@ -14957,6 +14960,9 @@
 "lfY" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -20
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/strata/blue4/north,
 /area/rostock/lower_deck/p_a_hallway)
@@ -39538,15 +39544,15 @@ sSi
 kER
 kER
 kER
-kER
+sSi
 axU
 kER
 kER
 kER
 kER
 iQL
-sSi
 kER
+sSi
 kER
 kER
 kER

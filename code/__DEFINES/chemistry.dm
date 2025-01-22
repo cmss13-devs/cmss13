@@ -132,6 +132,7 @@
 #define PROPERTY_CARDIOTOXIC "cardiotoxic"
 #define PROPERTY_NEUROTOXIC "neurotoxic"
 #define PROPERTY_HYPERMETABOLIC "hypermetabolic"
+#define PROPERTY_IGNITING "igniting"
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"
@@ -325,3 +326,5 @@
 #define INCENDIARY_SHARDS_MAX_REDUCTION	2
 #define HORNET_SHARDS_MAX_REDUCTION 2
 #define NEURO_SHARDS_MAX_REDUCTION 2
+
+#define LEVEL_TO_POTENCY_MULTIPLIER 0.5

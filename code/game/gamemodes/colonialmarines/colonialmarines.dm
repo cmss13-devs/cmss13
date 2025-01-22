@@ -380,14 +380,14 @@
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.xeno_queen_timer)
+		for(var/faction_to_get in FACTION_LIST_ALL)
+			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+			var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+			if(!faction_module.xeno_queen_timer)
 				continue
 
-			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+			if(!faction_module.living_xeno_queen && faction_module.xeno_queen_timer < world.time)
+				xeno_message("The Hive is ready for a new Queen to evolve.", 3, faction)
 
 		if(!active_lz && world.time > lz_selection_timer)
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
@@ -419,10 +419,12 @@
 			round_checkwin = 0
 
 		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
-			for(var/hivenumber in GLOB.hive_datum)
-				hive = GLOB.hive_datum[hivenumber]
-				hive.evolution_without_ovipositor = FALSE
-				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
+			for(var/faction_to_get in FACTION_LIST_ALL)
+				var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_module(FACTION_MODULE_HIVE_MIND)
+				if(!faction_module.xeno_queen_timer)
+					continue
+				faction_module.evolution_without_ovipositor = FALSE
+				if(faction_module.living_xeno_queen && !faction_module.living_xeno_queen.ovipositor)
 					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
@@ -539,31 +541,32 @@
 			.[2]++
 	return .
 
-/datum/game_mode/colonialmarines/check_queen_status(hivenumber, immediately = FALSE)
+/datum/game_mode/colonialmarines/check_queen_status(datum/faction/faction, immediately = FALSE)
 	if(!(flags_round_type & MODE_INFESTATION))
 		return
 
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.need_round_end_check && !hive.can_delay_round_end())
+	if(faction.need_round_end_check && !faction.can_delay_round_end())
 		return
 
 	if(!immediately)
 		//We want to make sure that another queen didn't die in the interim.
-		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(check_queen_status), faction, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
 		return
 
 	if(round_finished)
 		return
 
-	for(var/cur_number in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_number]
-		if(hive.need_round_end_check && !hive.can_delay_round_end())
+	for(var/faction_to_get in FACTION_LIST_ALL)
+		var/datum/faction/current_faction = GLOB.faction_datums[faction_to_get]
+		if(current_faction.need_round_end_check && !current_faction.can_delay_round_end())
 			continue
-		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
-			//Some Queen is alive, we shouldn't end the game yet
+		var/datum/faction_module/hive_mind/faction_module = current_faction.get_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module.living_xeno_queen && !should_block_game_interaction(faction_module.living_xeno_queen.loc))
 			return
 
-	if(length(hive.totalXenos) <= 3)
+		faction = current_faction
+
+	if(length(faction.total_mobs) <= 3)
 		round_finished = MODE_INFESTATION_M_MAJOR
 	else
 		round_finished = MODE_INFESTATION_M_MINOR

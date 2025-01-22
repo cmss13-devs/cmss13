@@ -1044,7 +1044,7 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/")
 			return
 		if(usr.client)
-			usr.client.cmd_admin_change_their_hivenumber(H)
+			usr.client.cmd_admin_change_their_faction(H)
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN)) return

@@ -142,8 +142,6 @@
 	if(assignment)
 		ID.name += " ([assignment])"
 	ID.access = access.Copy(1, 0)
-	ID.faction = faction
-	ID.faction_group = faction_group.Copy()
 	ID.assignment = assignment
 	ID.rank = rank
 	ID.registered_name = new_human.real_name
@@ -153,8 +151,6 @@
 	ID.paygrade = load_rank(new_human, mob_client) || ID.paygrade
 	ID.uniform_sets = uniform_sets
 	new_human.equip_to_slot_or_del(ID, WEAR_ID)
-	new_human.faction = faction
-	new_human.faction_group = faction_group.Copy()
 	if(new_human.mind)
 		new_human.mind.name = new_human.real_name
 		// Bank account details handled in generate_money_account()
@@ -165,6 +161,25 @@
 	new_human.set_languages(languages)
 
 /datum/equipment_preset/proc/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
+	if(!istype(new_human, /mob/living/carbon/human/dummy))
+		var/datum/faction/mob_faction
+		if(!faction)
+			mob_faction = GLOB.faction_datums[FACTION_NEUTRAL]
+		else
+			mob_faction = GLOB.faction_datums[faction]
+
+		if(mob_faction && (!new_human.faction || force_update_faction))
+			mob_faction.add_mob(new_human)
+			if(mob_faction.organ_faction_iff_tag_type)
+				if(new_human.organ_faction_tag)
+					QDEL_NULL(new_human.organ_faction_tag)
+				new_human.organ_faction_tag = new mob_faction.organ_faction_iff_tag_type(new_human, mob_faction)
+
+			if(mob_faction.faction_iff_tag_type)
+				if(new_human.faction_tag)
+					QDEL_NULL(new_human.faction_tag)
+				new_human.faction_tag = new mob_faction.faction_iff_tag_type(new_human, mob_faction)
+
 	if(!new_human.hud_used)
 		new_human.create_hud()
 

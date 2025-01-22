@@ -40,4 +40,4 @@
 		if(!check_rights(R_DEBUG|R_ADMIN))
 			return
 
-		usr.client.cmd_admin_change_their_hivenumber(src)
+		usr.client.cmd_admin_change_their_faction(src)

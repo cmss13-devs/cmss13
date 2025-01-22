@@ -596,13 +596,13 @@
 	var/dmg = FALSE
 
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
-		if(driver && get_target_lock(driver.faction))
+		if(driver && ally_faction(driver.faction))
 			apply_effect(0.5, WEAKEN)
 		else
 			apply_effect(1, WEAKEN)
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
 		dmg = TRUE
-		if(get_target_lock(driver.faction))
+		if(ally_faction(driver.faction))
 			apply_effect(0.5, WEAKEN)
 			apply_damage(5 + rand(0, 5), BRUTE, no_limb_loss = TRUE)
 			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING(SPAN_BOLD("*YOU RAMMED AN ALLY AND HURT THEM!*")))
@@ -625,7 +625,7 @@
 		playsound(loc, "punch", 25, 1)
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
-		if(faction == driver.faction)
+		if(ally_faction(driver.faction))
 			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies

@@ -15,7 +15,6 @@
 	allow_additional = TRUE
 	late_joinable = TRUE
 	scaled = FALSE
-	faction_menu = FACTION_UPP
 	minimum_playtime_as_job = 0
 
 	gear_preset = /datum/equipment_preset/upp/soldier

@@ -441,6 +441,8 @@
 	var/job
 	var/job_list
 
+	var/faction_to_get
+
 /obj/effect/landmark/late_join/alpha
 	name = "alpha late join"
 	squad = SQUAD_MARINE_1
@@ -501,29 +503,37 @@
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
-	if(squad)
-		LAZYADD(GLOB.latejoin_by_squad[squad], src)
-	else if(job)
-		LAZYADD(GLOB.latejoin_by_job[job], src)
-	else if(job_list)
-		for(var/job_to_add in job_list)
-			LAZYADD(GLOB.latejoin_by_job[job_to_add], src)
+	var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+	if(faction)
+		if(squad)
+			LAZYADD(faction.late_join_landmarks[squad], src)
+			return
+		else if(job)
+			LAZYADD(faction.late_join_landmarks[job], src)
+			return
+		else if(job_list)
+			for(var/job_to_add in job_list)
+				LAZYADD(faction.late_join_landmarks[job_to_add], src)
+			return
 
-	else
-		GLOB.latejoin += src
+	GLOB.latejoin += src
 
 /obj/effect/landmark/late_join/Destroy()
-	if(squad)
-		LAZYREMOVE(GLOB.latejoin_by_squad[squad], src)
-	else if(job)
-		LAZYREMOVE(GLOB.latejoin_by_job[job], src)
-	else if(job_list)
-		for(var/job_to_add in job_list)
-			LAZYREMOVE(GLOB.latejoin_by_job[job_to_add], src)
-	else
-		GLOB.latejoin -= src
-	return ..()
+	. = ..()
+	var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+	if(faction)
+		if(squad)
+			faction.late_join_landmarks[squad] -= src
+			return
+		else if(job)
+			faction.late_join_landmarks[job] -= src
+			return
+		else if(job_list)
+			for(var/job_to_add in job_list)
+				faction.late_join_landmarks[job_to_add] -= src
+			return
 
+	GLOB.latejoin -= src
 
 /obj/effect/landmark/late_join/responder/uscm
 	name = "USCM HC Fax Responder late join"

@@ -158,8 +158,9 @@
 
 	var/job = null // Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
 	var/comm_title = ""
-	var/faction = FACTION_NEUTRAL
-	var/faction_group
+
+	var/faction_to_get = null
+	var/datum/faction/faction = null
 
 	var/looc_overhead = FALSE
 

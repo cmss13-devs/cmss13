@@ -31,12 +31,15 @@
 	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
 
+	QDEL_NULL(organ_faction_tag)
+	QDEL_NULL(faction_tag)
+	faction = null
+
 	tgui_open_uis = null
 	buckled = null
 	skincmds = null
 	item_verbs = null
 	interactee = null
-	faction_group = null
 	lastarea = null
 	langchat_listeners = null
 	langchat_image = null
@@ -51,8 +54,8 @@
 	focus = null
 
 /mob/Initialize()
-	if(!faction_group)
-		faction_group = list(faction)
+	if(faction_to_get)
+		faction = GLOB.faction_datums[faction_to_get]
 
 	GLOB.last_mob_gid++
 	gid = GLOB.last_mob_gid

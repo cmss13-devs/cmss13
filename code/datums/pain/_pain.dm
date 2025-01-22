@@ -285,9 +285,8 @@
 
 /datum/pain/proc/oxyloss_drag(mob/living/source, mob/puller)
 	SIGNAL_HANDLER
-	if(isxeno(puller) && source.stat == UNCONSCIOUS)
-		var/mob/living/carbon/xenomorph/xeno_puller = puller
-		if(source.ally_of_hivenumber(xeno_puller.hivenumber))
+	if(source.stat == UNCONSCIOUS)
+		if(source.ally_faction(puller.faction))
 			return
 		if(source.get_species())
 			var/mob/living/carbon/human/H = source
@@ -298,7 +297,7 @@
 	SIGNAL_HANDLER
 	if(source.chestburst)
 		return
-	if(source.ally_of_hivenumber(devourer.hivenumber))
+	if(source.ally_faction(devourer.faction))
 		return
 	oxy_kill(source)
 	return COMPONENT_CANCEL_DEVOUR

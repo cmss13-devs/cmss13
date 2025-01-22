@@ -40,6 +40,12 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 	var/hardcore = FALSE
 
+	var/datum/faction/faction_won = null
+
+	var/list/active_roles_mappings_pool = list()
+	var/list/active_roles_pool = list()
+	var/list/factions_pool = list()
+
 	///Whether or not the fax response station has loaded.
 	var/loaded_fax_base = FALSE
 
@@ -47,6 +53,14 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	..()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
+
+	for(var/faction_to_get in FACTION_LIST_ALL)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(length(faction.roles_list[name]))
+			factions_pool[faction.code_identificator] = faction.code_identificator
+			active_roles_mappings_pool += faction.role_mappings[name]
+			for(var/i in faction.roles_list[name])
+				active_roles_pool += i
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")

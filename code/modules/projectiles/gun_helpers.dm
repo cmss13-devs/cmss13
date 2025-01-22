@@ -166,7 +166,7 @@ DEFINES in setup.dm, referenced here.
 				"Event",
 				"UPP Armsmaster", //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
 			) return TRUE
-		switch(user.faction)
+		switch(user.faction.code_identificator)
 			if(
 				FACTION_WY_DEATHSQUAD,
 				FACTION_PMC,
@@ -174,11 +174,7 @@ DEFINES in setup.dm, referenced here.
 				FACTION_FREELANCER,
 			) return TRUE
 
-		for(var/faction in user.faction_group)
-			if(faction in FACTION_LIST_WY)
-				return TRUE
-
-		if(user.faction in FACTION_LIST_WY)
+		if(user.faction.code_identificator in FACTION_LIST_WY)
 			return TRUE
 
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
@@ -543,7 +539,7 @@ DEFINES in setup.dm, referenced here.
 					items_in_slot = get_item_by_slot(active_hand.preferred_storage[storage])
 				else
 					items_in_slot = list(get_item_by_slot(active_hand.preferred_storage[storage]))
-				
+
 				for(var/item_in_slot in items_in_slot)
 					if(istype(item_in_slot, storage))
 						var/slot = active_hand.preferred_storage[storage]
@@ -560,7 +556,7 @@ DEFINES in setup.dm, referenced here.
 								slot = WEAR_IN_HELMET
 							if(WEAR_FEET)
 								slot = WEAR_IN_SHOES
-						
+
 						if(equip_to_slot_if_possible(active_hand, slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
 							return TRUE
 		if(w_uniform)

@@ -470,27 +470,27 @@ Additional game mode variables.
 		else
 			available_xenos_non_ssd += cur_xeno
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(hive.hardcore)
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module.hardcore)
 			continue
-		if(!hive.stored_larva)
+		if(!faction_module.stored_larva)
 			continue
 		// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
 		// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
-		if(hive.hive_location && GLOB.xeno_queue_candidate_count > 0)
+		if(faction_module.hive_location && GLOB.xeno_queue_candidate_count > 0)
 			continue
-		if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
+		if(!faction_module.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
 			continue
 
 		if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
 			available_xenos |= "any buried larva"
-			LAZYADD(available_xenos["any buried larva"], hive)
+			LAZYADD(available_xenos["any buried larva"], faction.name)
 		else
-			var/larva_option = "buried larva ([hive])"
+			var/larva_option = "buried larva ([faction.name])"
 			available_xenos += larva_option
-			available_xenos[larva_option] = list(hive)
+			available_xenos[larva_option] = list(faction)
 
 	if(!length(available_xenos) || (instant_join && !length(available_xenos_non_ssd)))
 		var/is_new_player = isnewplayer(xeno_candidate)
@@ -556,12 +556,12 @@ Additional game mode variables.
 			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
 			return FALSE
 
-		var/datum/hive_status/cur_hive
-		for(var/hive_num in GLOB.hive_datum)
-			cur_hive = GLOB.hive_datum[hive_num]
-			for(var/mob_name in cur_hive.banished_ckeys)
-				if(cur_hive.banished_ckeys[mob_name] == candidate_observer.ckey)
-					candidate_observer.larva_queue_cached_message += "\nNOTE: You are banished from the [cur_hive] and you may not rejoin unless \
+
+		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+			for(var/mob_name in faction.banished_ckeys)
+				if(faction.banished_ckeys[mob_name] == candidate_observer.ckey)
+					candidate_observer.larva_queue_cached_message += "\nNOTE: You are banished from the [faction] and you may not rejoin unless \
 						the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from."
 					break
 		to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
@@ -574,8 +574,9 @@ Additional game mode variables.
 		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
-			var/datum/hive_status/picked_hive = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
-			if(picked_hive.stored_larva)
+			var/datum/faction/faction = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
+			var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+			if(faction_module.stored_larva)
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
 					if(isnewplayer(xeno_candidate))
@@ -585,19 +586,19 @@ Additional game mode variables.
 						to_chat(xeno_candidate, SPAN_WARNING("You must wait at least [XENO_JOIN_DEAD_LARVA_TIME / 600] minute\s before rejoining the game as a buried larva!"))
 						return FALSE
 
-				for(var/mob_name in picked_hive.banished_ckeys)
-					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
+				for(var/mob_name in faction.banished_ckeys)
+					if(faction.banished_ckeys[mob_name] == xeno_candidate.ckey)
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [faction], you may not rejoin unless the Queen re-admits you or dies."))
 						return FALSE
 
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/noob = xeno_candidate
 					noob.close_spawn_windows()
 
-				if(picked_hive.hive_location)
-					picked_hive.hive_location.spawn_burrowed_larva(xeno_candidate)
+				if(faction_module.hive_location)
+					faction_module.hive_location.spawn_burrowed_larva(xeno_candidate)
 				else if((world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
-					picked_hive.do_buried_larva_spawn(xeno_candidate)
+					faction_module.do_buried_larva_spawn(xeno_candidate)
 				else
 					to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
 					return FALSE

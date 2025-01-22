@@ -56,7 +56,7 @@
 /mob/living/simple_animal/hostile/proc/evaluate_target(mob/living/target)
 	if(target.stat)
 		return FALSE
-	if((target.faction == faction || (target.faction in faction_group)) && !attack_same)
+	if(target.ally_faction(faction) && !attack_same)
 		return FALSE
 	if(WEAKREF(target) in friends)
 		return FALSE

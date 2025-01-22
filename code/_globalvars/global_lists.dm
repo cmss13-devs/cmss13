@@ -230,8 +230,6 @@ GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
 		else
 			LAZYADDASSOCLIST(., num2text(initial(caste.minimum_evolve_time)), caste)
 
-GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
-
 // Posters
 GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
@@ -472,26 +470,6 @@ GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
 	for(var/datum/surgery/T as anything in GLOB.surgeries_list)
 		mobtypes["[T]"] = typecacheof(T.target_mobtypes)
 	return mobtypes
-
-/proc/setup_custom_event_info()
-	//faction event messages
-	var/list/custom_event_info_list = list()
-	var/datum/custom_event_info/CEI = new /datum/custom_event_info
-	CEI.faction = "Global" //the old public one for whole server to see
-	custom_event_info_list[CEI.faction] = CEI
-	for(var/T in FACTION_LIST_HUMANOID)
-		CEI = new /datum/custom_event_info
-		CEI.faction = T
-		custom_event_info_list[T] = CEI
-
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		CEI = new /datum/custom_event_info
-		CEI.faction = hive.internal_faction
-		custom_event_info_list[hive.name] = CEI
-
-	return custom_event_info_list
 
 /proc/setup_taskbar_icons()
 	var/list/png_list = flist("icons/taskbar")

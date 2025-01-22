@@ -1,14 +1,14 @@
 GLOBAL_LIST_INIT_TYPED(faction_datums, /datum/faction, setup_faction_list())
 
 /proc/setup_faction_list()
-	var/list/faction_datums_list = list()
-	for(var/T in typesof(/datum/faction))
-		var/datum/faction/F = new T
-		faction_datums_list[F.faction_tag] = F
-	return faction_datums_list
+	. = list()
+	for(var/path in typesof(/datum/faction))
+		var/datum/faction/faction = new path()
+		.[faction.code_identificator] = faction
+		faction.relations_datum.generate_relations_helper()
 
-/proc/get_faction(faction = FACTION_MARINE)
-	var/datum/faction/F = GLOB.faction_datums[faction]
-	if(F)
-		return F
-	return GLOB.faction_datums[FACTION_NEUTRAL]
+GLOBAL_LIST_INIT_TYPED(custom_event_info_list, /datum/custom_event_info, setup_custom_event_info())
+
+/proc/setup_custom_event_info()
+	. = list()
+	.["glob"] = new /datum/custom_event_info(null, "Global", "glob")

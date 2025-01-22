@@ -1,6 +1,5 @@
 /datum/faction/wy
 	name = "Weyland-Yutani Corporation"
-	faction_tag = FACTION_WY
 
 /datum/faction/wy/modify_hud_holder(image/holder, mob/living/carbon/human/user)
 	var/hud_icon_state

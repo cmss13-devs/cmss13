@@ -35,6 +35,7 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 
 	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
 	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
+	var/list/roles_by_faction
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
@@ -93,6 +94,7 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 
 	roles_by_path = list()
 	roles_by_name = list()
+	roles_by_faction = list()
 	roles_for_mode = list()
 	for(var/role in roles_all) //Setting up our roles.
 		var/datum/job/J = new role()
@@ -126,11 +128,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/datum/game_mode/G = SSticker.mode
 	roles_for_mode = list()
-	for(var/role_name in G.get_roles_list())
-		var/datum/job/J = roles_by_name[role_name]
-		if(!J)
-			continue
-		roles_for_mode[role_name] = J
+	for(var/faction_to_get in FACTION_LIST_ALL)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(length(faction.roles_list[SSticker.mode.name]))
+			for(var/role_name in faction.roles_list[SSticker.mode.name])
+				var/datum/job/job = roles_by_name[role_name]
+				if(!job)
+					continue
+				roles_for_mode[role_name] = job
+				roles_by_faction[role_name] = faction.code_identificator
 
 	// Also register game mode specific mappings to standard roles
 	role_mappings = list()
@@ -357,29 +363,31 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	assign_role(M, marine_job)
 
-/datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
-	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin))
-			M.job = J.title
-			J.current_positions++
+/datum/authority/branch/role/proc/assign_role(mob/new_player/player, datum/job/job, latejoin = FALSE)
+	if(ismob(player) && istype(job))
+		var/datum/faction/faction = GLOB.faction_datums[roles_by_faction[job.title]]
+		var/check_result = check_role_entry(player, job, faction, latejoin)
+		if(!check_result)
+			player.job = job.title
+			job.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
-	if(jobban_isbanned(M, J.title))
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/player, datum/job/job, datum/faction/faction, latejoin = FALSE)
+	if(jobban_isbanned(player, job.title))
 		return FALSE
-	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
+	if(job.role_ban_alternative && jobban_isbanned(player, job.role_ban_alternative))
 		return FALSE
-	if(!J.can_play_role(M.client))
+	if(!job.can_play_role(player.client))
 		return FALSE
-	if(!J.check_whitelist_status(M))
+	if(!job.check_whitelist_status(player))
 		return FALSE
-	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+	if(job.total_positions != -1 && job.get_total_positions(latejoin) <= job.current_positions)
 		return FALSE
-	if(latejoin && !J.late_joinable)
+	if(latejoin && !job.late_joinable)
 		return FALSE
-	if(faction && faction != J.faction_menu)
-		return FALSE
-
+/*	PART 2: Limitations in case of gamemode limitations
+	if(!SSautobalancer.can_join(faction))
+		return FALSE */
 	return TRUE
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.

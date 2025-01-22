@@ -54,16 +54,16 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_change_hivenumber()
+/client/proc/cmd_admin_change_faction()
 	set category = "Debug"
-	set name = "Change Hivenumber"
+	set name = "Change faction"
 
-	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change Hivenumber", GLOB.living_xeno_list)
+	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change faction", GLOB.living_xeno_list)
 	if(!istype(X))
 		to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 		return
 
-	cmd_admin_change_their_hivenumber(X)
+	cmd_admin_change_their_faction(X)
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"

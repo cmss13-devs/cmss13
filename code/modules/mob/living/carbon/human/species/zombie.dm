@@ -42,9 +42,6 @@
 /datum/species/zombie/handle_post_spawn(mob/living/carbon/human/zombie)
 	zombie.set_languages(list("Zombie"))
 
-	zombie.faction = FACTION_ZOMBIE
-	zombie.faction_group = list(FACTION_ZOMBIE)
-
 	if(zombie.l_hand) zombie.drop_inv_item_on_ground(zombie.l_hand, FALSE, TRUE)
 	if(zombie.r_hand) zombie.drop_inv_item_on_ground(zombie.r_hand, FALSE, TRUE)
 	if(zombie.wear_id) qdel(zombie.wear_id)

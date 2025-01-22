@@ -6,41 +6,39 @@
 		to_chat(usr, "Only administrators may use this command.")
 		return
 
-	if(!LAZYLEN(GLOB.custom_event_info_list))
+	if(!length(GLOB.custom_event_info_list))
 		to_chat(usr, "custom_event_info_list is not initialized, tell a dev.")
 		return
 
 	var/list/temp_list = list()
 
+	var/datum/custom_event_info/event_info
 	for(var/T in GLOB.custom_event_info_list)
-		var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[T]
-		temp_list["[CEI.msg ? "(x) [CEI.faction]" : CEI.faction]"] = CEI.faction
+		event_info = GLOB.custom_event_info_list[T]
+		temp_list["[event_info.msg ? "(x) [event_info.name]" : event_info.name]"] = event_info.name
 
-	var/faction = tgui_input_list(usr, "Select faction. Ghosts will see only \"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", temp_list)
-	if(!faction)
+	var/event_info_get = temp_list[tgui_input_list(usr, "Select faction. Ghosts will see only \"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", temp_list)]
+	if(!event_info_get)
 		return
 
-	faction = temp_list[faction]
-
-	if(!GLOB.custom_event_info_list[faction])
-		to_chat(usr, "Error has occurred, [faction] category is not found.")
+	event_info = GLOB.custom_event_info_list[event_info_get]
+	if(!event_info)
+		to_chat(usr, "Error has occurred, [event_info_get] category is not found.")
 		return
 
-	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
-
-	var/input = input(usr, "Enter the custom event message for \"[faction]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[faction] Event Message", CEI.msg) as message|null
+	var/input = input(usr, "Enter the custom event message for \"[event_info_get]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[event_info_get] Event Message", event_info.msg) as message|null
 	if(isnull(input))
 		return
 
 	if(input == "" || !input)
-		CEI.msg = ""
-		message_admins("[key_name_admin(usr)] has removed the event message for \"[faction]\" category.")
+		event_info.msg = ""
+		message_admins("[key_name_admin(usr)] has removed the event message for \"[event_info_get]\" category.")
 		return
 
-	CEI.msg = html_encode(input)
-	message_admins("[key_name_admin(usr)] has changed the event message for \"[faction]\" category.")
+	event_info.msg = html_encode(input)
+	message_admins("[key_name_admin(usr)] has changed the event message for \"[event_info_get]\" category.")
 
-	CEI.handle_event_info_update(faction)
+	event_info.handle_event_info_update()
 
 /client/proc/get_whitelisted_clients()
 	set name = "Find Whitelisted Players"

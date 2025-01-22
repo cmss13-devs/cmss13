@@ -45,13 +45,10 @@
 	//updating atom HUD
 	refresh_huds()
 
-	if(isnewplayer(src))
-		check_event_info()
-	else if(isxeno(src))
-		var/mob/living/carbon/xenomorph/X = src
-		check_event_info(X.hive.name)
-	else if(!isobserver(src) && faction)
-		check_event_info(faction)
+	if(client)
+		check_event_info("Global", client)
+		if(!isobserver(src) && faction)
+			check_event_info(faction.code_identificator, client)
 
 	if(client.player_details)
 		for(var/foo in client.player_details.post_login_callbacks)

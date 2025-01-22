@@ -1,6 +1,5 @@
 /datum/faction/uscm
 	name = "United States Colonial Marines"
-	faction_tag = FACTION_MARINE
 
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/datum/squad/squad = current_human.assigned_squad

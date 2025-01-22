@@ -402,19 +402,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	tgui_panel.initialize()
 	tgui_say.initialize()
 
-	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
-	CEI.show_player_event_info(src)
-
-	if(mob && !isobserver(mob) && !isnewplayer(mob))
-		if(isxeno(mob))
-			var/mob/living/carbon/xenomorph/X = mob
-			if(X.hive && GLOB.custom_event_info_list[X.hive])
-				CEI = GLOB.custom_event_info_list[X.hive]
-				CEI.show_player_event_info(src)
-
-		else if(mob.faction && GLOB.custom_event_info_list[mob.faction])
-			CEI = GLOB.custom_event_info_list[mob.faction]
-			CEI.show_player_event_info(src)
+	check_event_info("Global", src)
+	if(mob && !isobserver(mob) && !isnewplayer(mob) && mob.faction)
+		check_event_info(mob.faction.code_identificator, src)
 
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")

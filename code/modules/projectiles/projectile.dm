@@ -863,7 +863,7 @@
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
-			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group)\
+			|| proj.runtime_iff_group && ally_faction(proj.runtime_iff_group)\
 		)
 			return FALSE
 		if(mobility_aura)

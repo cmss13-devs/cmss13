@@ -330,19 +330,21 @@
 
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
-/client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H in GLOB.living_mob_list)
-	set name = "Change Hivenumber"
+/client/proc/cmd_admin_change_their_faction(mob/living/carbon/H)
+	set name = "Change Faction"
 	set category = null
 
 	if(!istype(H))
 		return
 
-	var/list/hives = list()
-	for(var/hivenumber in GLOB.hive_datum)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		hives += list("[hive.name]" = hive.hivenumber)
+	var/list/datum/faction/factions = list()
+	for(var/faction_to_get in FACTION_LIST_ALL)
+		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
+		LAZYSET(factions, faction_to_set.name, faction_to_set)
 
-	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
+	var/choice = tgui_input_list(src, "Select a faction.", "Change Faction", factions)
+	if(!choice)
+		return FALSE
 
 	if(!H)
 		to_chat(usr, "This mob no longer exists")
@@ -350,24 +352,20 @@
 
 	if(isxeno(H))
 		var/mob/living/carbon/xenomorph/X = H
-		X.set_hive_and_update(hives[newhive])
+		X.set_hive_and_update(factions[choice])
 	else
 		var/was_leader = FALSE
-		if(H.hivenumber)
-			var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
-			if(H == hive.leading_cult_sl)
+		if(H.faction)
+			if(H == H.faction.leading_cult_sl)
 				was_leader = TRUE
-			hive.leading_cult_sl = null
+			H.faction.leading_cult_sl = null
 
-		H.hivenumber = hives[newhive]
+		factions[choice].add_mob(H)
 
-		var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
-		H.faction = hive.internal_faction
+		if(was_leader && (!H.faction.leading_cult_sl || H.faction.leading_cult_sl.stat == DEAD))
+			H.faction.leading_cult_sl = H
 
-		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
-			hive.leading_cult_sl = H
-
-	message_admins("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
+	message_admins("[key_name(src)] changed faction of [H] to [choice].")
 
 
 /client/proc/cmd_admin_change_their_name(mob/living/carbon/carbon in GLOB.living_mob_list)

@@ -30,7 +30,7 @@
 			return
 
 		//only can clamp friendly vehicles
-		if(!get_target_lock(user.faction_group))
+		if(!ally_faction(user.faction))
 			to_chat(user, SPAN_WARNING("You can attach clamp to vehicles of your faction only."))
 			return
 
@@ -294,7 +294,7 @@
 
 	//IFF bullets magically stop themselves short of hitting friendly vehicles,
 	//because both sentries and smartgun users keep trying to shoot through them
-	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
+	if(P.runtime_iff_group && ally_faction(P.runtime_iff_group))
 		return
 
 	if(ammo_flags & (AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE))
@@ -408,7 +408,7 @@
 		if(door_locked && health > 0) //check if lock on and actually works
 			if(ishuman(M))
 				var/mob/living/carbon/human/user = M
-				if(!allowed(user) || !get_target_lock(user.faction_group)) //if we are human, we check access and faction
+				if(!allowed(user) || !ally_faction(user.faction))	//if we are human, we check access and faction
 					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 					return
 			else
@@ -475,7 +475,7 @@
 /obj/vehicle/multitile/proc/handle_fitting_pulled_atom(mob/living/carbon/human/user, atom/dragged_atom)
 	if(!ishuman(user))
 		return
-	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+	if(door_locked && health > 0 && (!allowed(user) || !ally_faction(user.faction)))
 		to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 		return
 

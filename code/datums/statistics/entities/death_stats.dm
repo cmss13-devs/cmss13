@@ -100,7 +100,7 @@
 
 	new_death.role_name = get_role_name()
 	new_death.mob_name = real_name
-	new_death.faction_name = faction
+	new_death.faction_name = faction.code_identificator
 	new_death.is_xeno = FALSE
 	new_death.area_name = area.name
 

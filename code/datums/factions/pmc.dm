@@ -1,6 +1,5 @@
 /datum/faction/pmc
 	name = "Private Military Company"
-	faction_tag = FACTION_PMC
 
 /datum/faction/pmc/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state

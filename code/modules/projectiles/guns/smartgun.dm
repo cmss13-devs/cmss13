@@ -560,7 +560,7 @@
 	for(var/mob/living/M in orange(range, user)) // orange allows sentry to fire through gas and darkness
 		if((M.stat & DEAD)) continue // No dead or non living.
 
-		if(M.get_target_lock(user.faction_group)) continue
+		if(M.ally_faction(user.faction)) continue
 		if(angle > 0)
 			var/opp
 			var/adj

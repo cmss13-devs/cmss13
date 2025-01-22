@@ -40,9 +40,7 @@
 	else
 		switch(newrank)
 			if("Weyland-Yutani")
-
-				H.faction = FACTION_WY
-				H.faction_group = FACTION_LIST_WY
+				GLOB.faction_datums[FACTION_WY].add_mob(H)
 
 				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", (list("Keep Skillset") +GLOB.RoleAuthority.roles_by_name))
 				if(!newskillset || newskillset == "Keep Skillset")
@@ -165,6 +163,8 @@
 			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
 		GLOB.gear_name_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client, show_job_gear)
 
-	if(M.faction)
-		M.check_event_info(M.faction)
+	if(mob_client)
+		check_event_info("Global", mob_client)
+		if(!isobserver(M) && M.faction)
+			check_event_info(M.faction.code_identificator, mob_client)
 	return

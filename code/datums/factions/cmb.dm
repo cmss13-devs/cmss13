@@ -1,6 +1,5 @@
 /datum/faction/cmb
 	name = "Colonial Marshal Bureau"
-	faction_tag = FACTION_MARSHAL
 
 /datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state

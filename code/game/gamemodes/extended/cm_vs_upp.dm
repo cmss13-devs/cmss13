@@ -12,10 +12,10 @@
 /datum/game_mode/extended/faction_clash/cm_vs_upp/pre_setup()
 	. = ..()
 	GLOB.round_should_check_for_win = FALSE
-	var/datum/powernet/PN = new() // we create our own powernet, with tetris and vodka
-	PN.powernet_name = "rostock"
-	GLOB.powernets += PN
-	GLOB.powernets_by_name["rostock"] = PN
+	var/datum/powernet/powernet = new() // we create our own powernet, with tetris and vodka
+	powernet.powernet_name = "rostock"
+	GLOB.powernets += powernet
+	GLOB.powernets_by_name["rostock"] = powernet
 	var/datum/map_template/template = SSmapping.map_templates[upp_ship]
 	if(!template)
 		return
@@ -40,6 +40,8 @@
 	. = ..()
 	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash)
 	for(var/area/area in GLOB.all_areas)
+		if(is_mainship_level(area.z))
+			continue
 		area.base_lighting_alpha = 150
 		area.update_base_lighting()
 
@@ -58,23 +60,24 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	var/no_upp_left = TRUE
-	var/no_uscm_left = TRUE
+	var/upp_left = 0
+	var/uscm_left = 0
+	var/loss_threshold = 5
 	var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))
 	for(var/mob/mob in GLOB.player_list)
 		if(mob.z && (mob.z in z_levels) && mob.stat != DEAD && !istype(mob.loc, /turf/open/space))
 			if(ishuman(mob) && !isyautja(mob) && !(mob.status_flags & XENO_HOST) && !iszombie(mob))
 				var/mob/living/carbon/human/human = mob
-				if(!human.handcuffed)
+				if(!human.handcuffed && !human.resting)
 					if(human.faction == FACTION_UPP)
-						no_upp_left = FALSE
+						upp_left ++
 					if(human.faction == FACTION_MARINE)
-						no_uscm_left = FALSE
-					if(!no_upp_left && !no_uscm_left)
+						uscm_left ++
+					if(upp_left >= loss_threshold && uscm_left >= loss_threshold)
 						return
 
-	if(no_upp_left || no_uscm_left)
-		if(no_upp_left)
+	if(upp_left < loss_threshold || uscm_left < loss_threshold)
+		if(upp_left < loss_threshold)
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_FACTION_CLASH_UPP_MAJOR

@@ -828,9 +828,6 @@
 	if(!new_hive)
 		return FALSE
 
-	for(var/trait in _status_traits) // They can't keep getting away with this!!!
-		REMOVE_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
-
 	new_hive.add_xeno(src)
 
 	for(var/trait in new_hive.hive_inherant_traits)

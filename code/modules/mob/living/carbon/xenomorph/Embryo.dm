@@ -252,6 +252,7 @@
 			hive.increase_larva_after_burst()
 			hive.hive_ui.update_burrowed_larva()
 
+
 	new_xeno.update_icons()
 
 	new_xeno.cause_unbearable_pain(affected_mob) //the embryo is now a larva!! its so painful, ow!
@@ -266,6 +267,8 @@
 				window_flash(new_xeno.client)
 
 		SSround_recording.recorder.track_player(new_xeno)
+		if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
+			ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
 
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")

@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - bugfix: "Warrior no more decap infected marines that infected within do_after duration (there two stages for decap, all two got check)"

@@ -63,7 +63,7 @@
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 30
-	penetration = ARMOR_PENETRATION_TIER_10 //molten metal pierces your armor
+	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
 	. = ..()

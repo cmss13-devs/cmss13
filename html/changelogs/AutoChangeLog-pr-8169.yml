@@ -1,0 +1,6 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "Boiler neurotoxin now quickly purges research stimulants."
+  - balance: "Boiler's neurotoxin tailstab now inflicts 4 more neurotoxin duration (16 to 20). Acid Tailstab is unaffected."
+  - qol: "Duration of dizziness caused by neurotoxin has been reduced."

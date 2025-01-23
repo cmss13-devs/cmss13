@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "adds light and a permanent CAS signal to JIMA flag."

@@ -728,13 +728,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
-"aqJ" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/upperdeck_maint/p_a)
 "arn" = (
 /obj/item/reagent_container/food/snacks/sausage,
 /obj/item/reagent_container/food/snacks/sausage,
@@ -1156,9 +1149,7 @@
 	pixel_y = 5;
 	randpixel = 0
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
 "aHj" = (
@@ -1429,9 +1420,7 @@
 /turf/closed/wall/almayer/upp/reinforced/outer,
 /area/rostock/engineering/reactor)
 "aQo" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "aQJ" = (
@@ -1469,18 +1458,14 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "aSm" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/armory)
 "aSn" = (
@@ -2017,9 +2002,7 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "bpE" = (
@@ -2856,10 +2839,8 @@
 /turf/open/floor/strata,
 /area/rostock/upper_deck/hallway)
 "bVO" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/machinery/power/apc/power/north,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "bWb" = (
@@ -2889,9 +2870,7 @@
 	dir = 5
 	},
 /obj/structure/machinery/light,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun)
 "bXo" = (
@@ -3041,10 +3020,8 @@
 /area/rostock/req)
 "cdV" = (
 /obj/structure/platform,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "cej" = (
@@ -3255,9 +3232,7 @@
 /turf/open/floor/strata/purp3/southwest,
 /area/rostock/lower_deck/p_a_hallway)
 "cot" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-4"
-	},
+/obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "coz" = (
@@ -3387,6 +3362,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_one_access = list(230, 240)
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "cvr" = (
@@ -4365,9 +4341,7 @@
 /area/rostock/req)
 "dnh" = (
 /obj/item/stack/rods,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "dnF" = (
@@ -4450,10 +4424,8 @@
 /obj/structure/platform_decoration{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "dsN" = (
@@ -4696,9 +4668,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/command/hallway)
 "dzF" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "dAb" = (
@@ -4752,9 +4722,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "dBI" = (
@@ -4875,9 +4843,7 @@
 	density = 0;
 	pixel_y = 23
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "dGo" = (
@@ -4972,9 +4938,7 @@
 	dir = 8;
 	layer = 2.7
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/astronavigation)
 "dKM" = (
@@ -5169,9 +5133,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/hangarbay)
 "dRn" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-8"
-	},
+/obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "dRD" = (
@@ -5487,9 +5449,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "eef" = (
@@ -6222,9 +6182,7 @@
 /turf/open/floor/carpet,
 /area/rostock/command/dining)
 "eGM" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-8"
-	},
+/obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "eHf" = (
@@ -6441,9 +6399,7 @@
 /obj/item/trash/syndi_cakes{
 	pixel_y = 20
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "ePO" = (
@@ -6786,11 +6742,9 @@
 /turf/open/space/basic,
 /area/space)
 "fbW" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/port_aft_accessway)
 "fcc" = (
@@ -7635,9 +7589,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2-4"
-	},
+/obj/effect/decal/heavy_cable/node_n_e_s,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun/starboard)
 "fHR" = (
@@ -7655,9 +7607,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "fIL" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "fJM" = (
@@ -7927,10 +7877,8 @@
 /area/rostock/upperdeck_maint/p_a)
 "fYQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "fYU" = (
@@ -8093,9 +8041,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "ggg" = (
@@ -8183,9 +8129,7 @@
 	pixel_x = 4;
 	pixel_y = 5
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-4-8"
-	},
+/obj/effect/decal/heavy_cable/node_n_w_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "gjt" = (
@@ -8326,10 +8270,8 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "gpL" = (
@@ -8340,10 +8282,8 @@
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/upper_deck/hallway)
 "gpW" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "gqo" = (
@@ -8351,9 +8291,7 @@
 /turf/open/floor/strata/orange_icorner/north,
 /area/rostock/req)
 "gqt" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "gqI" = (
@@ -8500,9 +8438,7 @@
 /area/rostock/security/brig_office)
 "guL" = (
 /obj/item/stack/sheet/metal,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "gva" = (
@@ -9898,10 +9834,8 @@
 	dir = 9;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "hAv" = (
@@ -9961,9 +9895,7 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "hCC" = (
@@ -10303,11 +10235,9 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/effect/decal/cleanable/generic,
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/starboard_aft_accessway)
 "hOX" = (
@@ -10532,10 +10462,8 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/railgun)
 "hTR" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/bed/chair,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "hUf" = (
@@ -10708,9 +10636,7 @@
 /turf/open/floor/strata/red1,
 /area/rostock/hangar/hangarbay)
 "idi" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "ido" = (
@@ -10768,16 +10694,12 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/security/brig_holding_area)
 "ieG" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/starboard_aft_accessway)
 "ieO" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "ieX" = (
@@ -11012,9 +10934,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "inn" = (
@@ -11098,9 +11018,7 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "inY" = (
@@ -11483,9 +11401,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-8"
-	},
+/obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "iDX" = (
@@ -12057,9 +11973,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "iZR" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "jaD" = (
@@ -12105,9 +12019,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/p_hallway)
 "jbs" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
 "jbu" = (
@@ -13697,9 +13609,7 @@
 /area/rostock/upperdeck_maint/p_m)
 "kiK" = (
 /obj/structure/machinery/light,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-4"
-	},
+/obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun/starboard)
 "kiO" = (
@@ -13770,9 +13680,7 @@
 /area/rostock/upperdeck_maint/p_a)
 "kly" = (
 /obj/structure/largecrate/random/barrel/red,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "klM" = (
@@ -14013,9 +13921,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "kub" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/armory)
 "kui" = (
@@ -14664,9 +14570,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun/starboard)
 "kTU" = (
@@ -15066,9 +14970,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
 "ljR" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2-8"
-	},
+/obj/effect/decal/heavy_cable/node_s_w_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "lkx" = (
@@ -15278,14 +15180,12 @@
 /turf/open/floor/strata/orange_edge/north,
 /area/rostock/lifeboat)
 "lvK" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/starboard_aft_accessway)
 "lvL" = (
@@ -15325,10 +15225,8 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2-4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/node_n_s_e_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "lyz" = (
@@ -15881,10 +15779,8 @@
 	dir = 6;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "lYb" = (
@@ -15905,13 +15801,11 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "lYd" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/item/trash/cigbutt{
 	pixel_x = -6;
 	pixel_y = -9
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "lYe" = (
@@ -16027,10 +15921,8 @@
 /area/rostock/lowerdeck_maint/s_f)
 "mdA" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/m_hallway)
 "mdQ" = (
@@ -16890,9 +16782,7 @@
 /obj/item/tool/wirecutters{
 	pixel_y = -7
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
 "mSC" = (
@@ -17324,9 +17214,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/kitchen)
 "nmI" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/lower_aft_corridor)
 "nnl" = (
@@ -17489,9 +17377,6 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/repairbay)
 "nvT" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "0-4"
-	},
 /obj/structure/sign/safety/west{
 	pixel_y = 32
 	},
@@ -17502,6 +17387,7 @@
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_y = -32
 	},
+/obj/effect/decal/heavy_cable/node_east,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
 "nwa" = (
@@ -17573,9 +17459,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun)
 "nAH" = (
@@ -17661,9 +17545,7 @@
 	dir = 5;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "nDn" = (
@@ -17683,15 +17565,11 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "nDz" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "nDK" = (
@@ -17743,10 +17621,8 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/engineering/starboard_aft_accessway)
 "nFJ" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/largecrate/random/barrel/white,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "nFM" = (
@@ -17961,13 +17837,11 @@
 /turf/open/floor/strata,
 /area/rostock/command/astronavigation)
 "nPv" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/machinery/light/small{
 	dir = 8;
 	light_color = "#ffd4d4"
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "nPw" = (
@@ -18263,12 +18137,10 @@
 /turf/open/floor/strata/green3,
 /area/rostock/req)
 "odd" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "odq" = (
@@ -18374,9 +18246,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "oik" = (
@@ -18634,9 +18504,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "ovt" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
 "ovG" = (
@@ -19312,10 +19180,8 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/command/hallway)
 "oRQ" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "oRU" = (
@@ -19501,12 +19367,10 @@
 	pixel_y = 23;
 	density = 0
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = -24
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "pcK" = (
@@ -20150,11 +20014,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
 "pAq" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/metal/strata,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "pAM" = (
@@ -20348,9 +20210,7 @@
 	dir = 10;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/astronavigation)
 "pIe" = (
@@ -20755,10 +20615,8 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/engineering/port_aft_accessway)
 "pYX" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/port_aft_accessway)
 "pZl" = (
@@ -20782,9 +20640,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/s_a_hallway)
 "pZW" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "pZY" = (
@@ -20884,9 +20740,7 @@
 /turf/open/floor/strata/green4,
 /area/rostock/lower_deck/p_a_hallway)
 "qeV" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/main_area)
 "qfi" = (
@@ -22160,10 +22014,8 @@
 /area/rostock/engineering/main_area)
 "rbI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/item/stack/sheet/metal,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "rbP" = (
@@ -22211,20 +22063,16 @@
 /area/rostock/lower_deck/cryogenics)
 "rdE" = (
 /obj/structure/platform,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2-4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/node_n_w_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "rdO" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/item/stack/rods{
 	pixel_y = 9
 	},
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/starboard_aft_accessway)
 "rdU" = (
@@ -23005,9 +22853,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/engineering/starboard_aft_accessway)
 "rOw" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun/starboard)
 "rPx" = (
@@ -23016,9 +22862,6 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/kitchen)
 "rPM" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/ladder,
 /obj/structure/sign/safety/ladder{
 	pixel_x = 8;
@@ -23036,9 +22879,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/engineering/main_area)
 "rQg" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-4-8"
-	},
+/obj/effect/decal/heavy_cable/node_n_w_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "rQs" = (
@@ -23378,9 +23219,7 @@
 /area/rostock/lower_deck/prep)
 "sey" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun)
 "seC" = (
@@ -23590,9 +23429,7 @@
 /area/rostock/command/hallway)
 "skh" = (
 /obj/structure/largecrate/random/barrel/white,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "skl" = (
@@ -24147,10 +23984,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/m_hallway)
 "sNQ" = (
@@ -24219,9 +24054,7 @@
 /turf/open/floor/strata/purp1,
 /area/rostock/lower_deck/s_a_hallway)
 "sRw" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "sRW" = (
@@ -24495,14 +24328,12 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
 "tfL" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp{
 	pixel_x = 3;
 	pixel_y = 1
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "tgn" = (
@@ -24522,10 +24353,8 @@
 /area/rostock/upperdeck_maint/p_f)
 "thb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "thm" = (
@@ -24696,9 +24525,7 @@
 	dir = 10;
 	layer = 3.1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "tmM" = (
@@ -24735,9 +24562,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_f)
 "toe" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "toq" = (
@@ -25258,9 +25083,7 @@
 	layer = 2.9;
 	dir = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "tMi" = (
@@ -25594,9 +25417,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-8"
-	},
+/obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "tXi" = (
@@ -25894,9 +25715,7 @@
 	dir = 6;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "uhx" = (
@@ -26040,9 +25859,7 @@
 	icon_state = "S";
 	layer = 2
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "unU" = (
@@ -26154,9 +25971,7 @@
 	pixel_y = -15;
 	pixel_x = 11
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "usE" = (
@@ -26460,9 +26275,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "uJl" = (
@@ -26635,21 +26448,17 @@
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/lower_deck/cryogenics)
 "uPl" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/item/stack/sheet/metal,
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/starboard_aft_accessway)
 "uPm" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/item/trash/cigbutt{
 	pixel_x = -6;
 	pixel_y = -9
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "uPK" = (
@@ -27794,9 +27603,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/prep)
 "vIk" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "vIu" = (
@@ -27964,13 +27771,11 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/p_a_hallway)
 "vOl" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
 	},
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/port_aft_accessway)
 "vOu" = (
@@ -28191,9 +27996,7 @@
 	dir = 9;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "vTq" = (
@@ -28307,10 +28110,8 @@
 /area/rostock/req)
 "vXU" = (
 /obj/structure/platform_decoration,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "vYe" = (
@@ -28419,9 +28220,7 @@
 /turf/open/floor/strata,
 /area/rostock/security/headquarters_lobby)
 "waS" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/engineering_lower_access)
 "wbd" = (
@@ -28930,10 +28729,8 @@
 /turf/open/floor/corsat/arrow_west,
 /area/rostock/hangar/repairbay)
 "wuk" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/prop/broken_arcade,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "wut" = (
@@ -28964,9 +28761,7 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/lifeboat)
 "wwx" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-8"
-	},
+/obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "wxc" = (
@@ -28991,9 +28786,7 @@
 	dir = 6;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "wxS" = (
@@ -29127,9 +28920,7 @@
 /area/rostock/engineering/starboard_aft_accessway)
 "wCp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2-4"
-	},
+/obj/effect/decal/heavy_cable/node_n_e_s,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/railgun)
 "wCy" = (
@@ -29318,11 +29109,9 @@
 /turf/open/floor/strata/green4/north,
 /area/rostock/lifeboat)
 "wKk" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/blocker/invisible_wall,
 /obj/structure/platform/metal/strata/north,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "wKN" = (
@@ -29474,9 +29263,7 @@
 	dir = 10;
 	layer = 3.51
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "wSP" = (
@@ -29543,9 +29330,7 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/lower_deck/starboard_umbilical)
 "wUF" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-8"
-	},
+/obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "wUJ" = (
@@ -29615,9 +29400,7 @@
 /area/rostock/lifeboat)
 "wYt" = (
 /obj/structure/platform,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "wZb" = (
@@ -29740,9 +29523,6 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "xdT" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/ladder,
 /obj/structure/sign/safety/ladder{
 	pixel_x = 8;
@@ -29875,9 +29655,7 @@
 	pixel_x = 16;
 	pixel_y = -16
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "xjd" = (
@@ -29987,9 +29765,7 @@
 "xpg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/m_hallway)
 "xpv" = (
@@ -30103,9 +29879,7 @@
 	pixel_x = -6;
 	pixel_y = -9
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_a)
 "xsk" = (
@@ -30404,10 +30178,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/starboard_aft_accessway)
 "xEn" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/hallway)
 "xEG" = (
@@ -30422,11 +30194,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "xGp" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/effect/spawner/random/attachment,
 /obj/effect/spawner/random/gun/upp_secondary/highchance,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "xGx" = (
@@ -30462,12 +30232,10 @@
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "xIw" = (
@@ -30635,21 +30403,17 @@
 /turf/open/floor/plating,
 /area/rostock/lower_deck/s_a_hallway)
 "xPa" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-8"
-	},
 /obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "xPe" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
-	},
 /obj/structure/machinery/light/small{
 	dir = 1;
 	light_color = "#ffd4d4"
 	},
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/port_aft_accessway)
 "xPS" = (
@@ -30806,13 +30570,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/hallway)
 "xWv" = (
@@ -31133,9 +30895,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "yhC" = (
@@ -39538,7 +39298,7 @@ clB
 clB
 mcx
 rkU
-vHK
+mmS
 pUt
 sSi
 kER
@@ -40718,7 +40478,7 @@ iFa
 iFa
 iFa
 tHu
-aqJ
+guL
 oxy
 arL
 gFw
@@ -46815,7 +46575,7 @@ vTq
 iFa
 vTb
 ofg
-idi
+ofg
 vmc
 qzp
 qzp

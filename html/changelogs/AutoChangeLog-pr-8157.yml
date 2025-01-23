@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "TGUI Input fields now have their clear button restored on 516"

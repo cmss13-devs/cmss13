@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - code_imp: "changed strain alert() to tgui_alert(), \"Yes\" and \"No\" got changed to \"Confirm Mutation\" and \"Cancel\"."

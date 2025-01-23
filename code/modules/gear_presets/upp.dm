@@ -4006,7 +4006,7 @@
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	access = list(
-		ACCESS_UPP_GENERAL
+		ACCESS_UPP_GENERAL,
 	)
 
 /datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/new_human)

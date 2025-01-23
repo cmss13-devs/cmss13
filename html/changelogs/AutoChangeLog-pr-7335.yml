@@ -1,0 +1,7 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "gamemode adjustable ammo values"
+  - balance: "reduces accurate range of all ammo to 10 on HvH, extra tile reduction per 5 ap. makes ap ammo better at close range and solves off screen combat in a good way"
+  - balance: "increases MOU firedelay to 1.2 second from 0.25 on HvH"
+  - balance: "reduces explosion stun and damage and adds slow on HvH"

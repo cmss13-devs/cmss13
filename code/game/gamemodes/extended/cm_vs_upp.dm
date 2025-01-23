@@ -162,8 +162,8 @@
 	if(round_started > 0) //we enter here on shipspawn but do not want this
 		return
 	.=..()
-	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-	marine_announcement("First troops have landed on the colony! Five minute long cease fire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("First troops have landed on the colony! Five minute long ceasefire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("First troops have landed on the colony! Five minute long ceasefire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
 	addtimer(CALLBACK(src,PROC_REF(ceasefire_warning)), 4 MINUTES)
 	addtimer(CALLBACK(src,PROC_REF(ceasefire_end)), 5 MINUTES)
@@ -177,6 +177,7 @@
 	marine_announcement("Ceasefire is over. Combat operations may commence.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
 	marine_announcement("Ceasefire is over. Combat operations may commence.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = FALSE)
+	GLOB.round_should_check_for_win = TRUE
 
 
 

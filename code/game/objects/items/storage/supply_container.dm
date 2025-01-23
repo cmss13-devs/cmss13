@@ -21,3 +21,16 @@
 	bypass_w_limit = list(
 		/obj/item/ammo_box,
 	)
+
+/obj/structure/vehicle_locker/supply_container/intel
+	icon_state = "duffel-deployed"
+	name = "deployed duffel bag"
+	row_length = 10
+	storage_slots = 30
+	can_hold = list(
+		/obj/item/paper,
+		/obj/item/clipboard,
+		/obj/item/document_objective/paper,
+		/obj/item/document_objective,
+		/obj/item/disk/objective,
+	)

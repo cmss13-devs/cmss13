@@ -138,7 +138,7 @@
 
 /turf/open/floor/light/broken
 	icon_state = "light_broken"
-	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_BROKEN
+	turf_flags = parent_type::turf_flags|TURF_BROKEN
 
 /turf/open/floor/light/broken/red
 	state = LIGHT_FLOOR_COLOR_RED

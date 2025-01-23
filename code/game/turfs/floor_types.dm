@@ -92,7 +92,7 @@
 
 /turf/open/floor/plating/burnt_platingdmg3
 	icon_state = "platingdmg3"
-	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_BURNT
+	turf_flags = parent_type::turf_flags|TURF_BURNT
 
 /turf/open/floor/plating/burnt_platingdmg3/west
 	dir = WEST
@@ -1990,7 +1990,7 @@
 
 /turf/open/floor/almayer/no_build
 	allow_construction = FALSE
-	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_HULL
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/almayer/no_build/ai_floors
 	icon_state = "ai_floors"
@@ -2031,7 +2031,7 @@
 
 /turf/open/floor/almayer/aicore/no_build
 	allow_construction = FALSE
-	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_HULL
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/almayer/aicore/no_build/ai_arrow
 	icon_state = "ai_arrow"
@@ -2062,7 +2062,7 @@
 
 /turf/open/floor/almayer/aicore/glowing/no_build
 	allow_construction = FALSE
-	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_HULL
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range
 	icon_state = "ai_floor3"

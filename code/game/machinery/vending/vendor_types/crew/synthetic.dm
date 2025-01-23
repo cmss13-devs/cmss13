@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic
 	category = "Other"
-	allowed_roles = list(JOB_SYNTH, JOB_SHIP_SYNTH)
+	allowed_roles = list(JOB_SYNTH)
 
 	fluff_cost = 0
 	loadout_cost = 12

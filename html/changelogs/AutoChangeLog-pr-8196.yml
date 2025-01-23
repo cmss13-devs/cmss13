@@ -1,0 +1,4 @@
+author: "Mikrel0712"
+delete-after: True
+changes:
+  - rscadd: "Hijack now automatically calls General Quarters"

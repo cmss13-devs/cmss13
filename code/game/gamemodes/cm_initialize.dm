@@ -53,7 +53,6 @@ Additional game mode variables.
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
 	var/xeno_starting_num = 0 //To clamp starting xenos.
 	var/xeno_bypass_timer = 0 //Bypass the five minute timer before respawning.
-	var/xeno_queen_deaths = 0 //How many times the alien queen died.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
@@ -299,23 +298,14 @@ Additional game mode variables.
 	var/list/options = get_fax_responder_slots(responder_candidate)
 	if(!options || !options.len)
 		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
-		if(from_lobby)
-			var/mob/new_player/lobbied = responder_candidate
-			lobbied.new_player_panel()
 		return FALSE
 
 	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
 		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
-		if(from_lobby)
-			var/mob/new_player/lobbied = responder_candidate
-			lobbied.new_player_panel()
 		return FALSE
 
 	if(!transform_fax_responder(responder_candidate, choice))
-		if(from_lobby)
-			var/mob/new_player/lobbied = responder_candidate
-			lobbied.new_player_panel()
 		return FALSE
 
 	if(responder_candidate)
@@ -330,9 +320,8 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_fax_responder")
 		return FALSE
 	if(!loaded_fax_base)
-		loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+		load_fax_base()
 		if(!loaded_fax_base)
-			log_debug("Error loading fax response base!")
 			return FALSE
 
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
@@ -353,9 +342,16 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
 	SSticker.minds += new_responder.mind
 
-	message_admins(FONT_SIZE_XL(SPAN_RED("([new_responder.key]) joined as a [sub_job], [new_responder.real_name].")))
+	message_admins(FONT_SIZE_XL(SPAN_RED("[key_name(new_responder)] joined as a [sub_job].")))
 	new_responder.add_fax_responder()
 
+	return TRUE
+
+/datum/game_mode/proc/load_fax_base()
+	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
+	if(!loaded_fax_base)
+		log_debug("Error loading fax response base!")
+		return FALSE
 	return TRUE
 
 
@@ -752,11 +748,6 @@ Additional game mode variables.
 	else
 		hive = GLOB.hive_datum[last_active_hive]
 
-	for(var/mob_name in hive.banished_ckeys)
-		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
-			return FALSE
-
 	var/list/selection_list = list()
 	var/list/selection_list_structure = list()
 
@@ -772,7 +763,7 @@ Additional game mode variables.
 			var/pylon_selection_name = pylon_name
 			while(pylon_selection_name in selection_list)
 				pylon_selection_name = "[pylon_name] ([pylon_number])"
-				pylon_number ++
+				pylon_number++
 			selection_list += pylon_selection_name
 			selection_list_structure += cycled_pylon
 
@@ -856,6 +847,8 @@ Additional game mode variables.
 		while(spawn_list_map[spawn_name])
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
+
+	original.sight = BLIND
 
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 	if(hive.living_xeno_queen)

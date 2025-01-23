@@ -203,7 +203,7 @@
 				/obj/item/storage/belt/champion,\
 				/obj/item/tool/soap/deluxe,\
 				/obj/item/tool/pickaxe/silver,\
-				/obj/item/tool/pen/invisible,\
+				/obj/item/tool/pen/white,\
 				/obj/item/explosive/grenade/smokebomb,\
 				/obj/item/corncob,\
 				/obj/item/poster,\
@@ -580,7 +580,7 @@
 	name = "random orbital warhead"
 	desc = "This is a random orbital warhead."
 	icon = 'icons/obj/items/new_assemblies.dmi'
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "ob_warhead_1"
 	spawn_on_roundstart = TRUE
 

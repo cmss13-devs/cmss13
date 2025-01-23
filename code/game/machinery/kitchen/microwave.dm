@@ -49,11 +49,6 @@
 		// impure carbon. ~Z
 		acceptable_items |= /obj/item/holder
 
-/obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
-
 //*******************
 //*   Item Adding
 //********************/
@@ -382,3 +377,8 @@
 			dispose()
 
 	return TRUE
+
+/obj/structure/machinery/microwave/yautja
+	name = "alien microwave"
+	desc = "Dark alloy sinister machine that heats up cold food."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

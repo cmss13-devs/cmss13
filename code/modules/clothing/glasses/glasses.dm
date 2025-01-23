@@ -230,6 +230,7 @@
 	name = "Optical Material Scanners"
 	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
+	icon_state = "material"
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
 	)
@@ -479,6 +480,8 @@
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
+	var/message_up = "You push the goggles up."
+	var/message_down = "You pull the goggles down."
 	garbage = FALSE
 
 /obj/item/clothing/glasses/mgoggles/prescription
@@ -583,17 +586,32 @@
 
 	activated = !activated
 	if(activated)
-		to_chat(user, SPAN_NOTICE("You pull the goggles down."))
+		to_chat(user, SPAN_NOTICE(message_down))
 		icon_state = active_icon_state
 		if(prescription == TRUE && user.head == attached_item)
 			ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 	else
-		to_chat(user, SPAN_NOTICE("You push the goggles up."))
+		to_chat(user, SPAN_NOTICE(message_up))
 		icon_state = inactive_icon_state
 		if(prescription == TRUE)
 			REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
 
 	attached_item.update_icon()
+
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield
+	name = "\improper TC2 CMB riot shield"
+	desc = "Yellowish protective glass piece, can be lifted up when needed, makes you see everything in yellow."
+	icon_state = "swat_shield"
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
+	active_icon_state = "swat_shield"
+	inactive_icon_state = "swat_shield_up"
+	activated = TRUE
+	message_up = "You lift the visor up."
+	message_down = "You lower the visor down."
+	flags_equip_slot = null
 
 //welding goggles
 
@@ -739,6 +757,11 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
+/obj/item/clothing/glasses/sunglasses/aviator/silver
+	name = "aviator shades"
+	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
+	icon_state = "aviator_silver"
+
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
@@ -747,6 +770,11 @@
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	flags_obj = OBJ_IS_HELMET_GARB
+
+/obj/item/clothing/glasses/sunglasses/sechud/blue
+	name = "Security HUD-Glasses"
+	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
+	icon_state = "sunhud_blue"
 
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
 	name = "Prescription Security HUD-Glasses"

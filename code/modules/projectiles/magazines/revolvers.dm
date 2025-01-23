@@ -10,6 +10,10 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/revolvers.dmi'
 	icon_state = "m44"
 	item_state = "generic_speedloader"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	w_class = SIZE_SMALL
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44
@@ -91,7 +95,7 @@
 /obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshal ert - ok sure :)
 	name = "\improper Spearhead speed loader (.357)"
 	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshals on colonies with wildlife, or weakly-hulled space stations."
-	default_ammo = /datum/ammo/bullet/revolver/small
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
 	icon_state = "cmb"
 
 /**
@@ -206,7 +210,7 @@
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/ammo_magazine/internal/revolver/cmb
-	default_ammo = /datum/ammo/bullet/revolver/small
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
 	caliber = ".357"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 

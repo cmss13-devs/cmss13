@@ -66,6 +66,11 @@
 #define RADIO_CHANNEL_BUG_A "Listening Device A"
 #define RADIO_CHANNEL_BUG_B "Listening Device B"
 
+//Fax Responder Bugs
+#define RADIO_CHANNEL_FAX_WY "WY Monitor"
+#define RADIO_CHANNEL_FAX_USCM_HC "USCM-HC Monitor"
+#define RADIO_CHANNEL_FAX_USCM_PVST "Provost Monitor"
+
 //1-Channel ERTs
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"
@@ -75,3 +80,8 @@
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
 
+
+// Listening bug broadcast setting. Whether or not it plays only to ghosts with preferences, or doesn't show to ghosts at all.
+#define NOT_LISTENING_BUG 0
+#define LISTENING_BUG_PREF 1
+#define LISTENING_BUG_NEVER 2

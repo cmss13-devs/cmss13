@@ -54,7 +54,6 @@
 	data["all_modifiers"] = modifiers
 	return data
 
-
 /datum/modifiers_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -65,7 +64,7 @@
 
 	if(action != "set_modifier_state")
 		return FALSE
-	to_chat(user, SPAN_NOTICE("You have [params["state"] ? "enabled" : "disabled" ] [params["name"]] modifier."))
+
 	message_admins("[key_name_admin(user)] has [params["state"] ? "enabled" : "disabled" ] [params["name"]] modifier.")
 	MODE_SET_MODIFIER(text2path(params["path"]), params["state"])
 	update_static_data(user, ui)

@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "CIA operatives can purchase more tranquilizers from their vendor"
+  - balance: "Tranq gun does 60 stamina damage (from 30) per hit"

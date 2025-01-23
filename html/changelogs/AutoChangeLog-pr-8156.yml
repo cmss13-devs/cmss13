@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - qol: "Biomass printer is now significantly quicker at processing acidic hearts and printing items."

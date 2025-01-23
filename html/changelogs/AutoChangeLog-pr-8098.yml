@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - code_imp: "Humans now check for death on updatehealth, meaning they die as soon as they cross the 200 damage mark."

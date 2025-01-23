@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - qol: "properly adjusted access rights on UPP cryo troops"

@@ -10,8 +10,8 @@
 	var/obj/item/device/clue_scanner/scanner = null
 	var/rank = null
 	var/screen = 1
-	var/datum/data/record/active1 = null
-	var/datum/data/record/active2 = null
+	var/datum/data/record/selected_general = null
+	var/datum/data/record/selected_security = null
 	var/a_id = null
 	var/temp = null
 	var/printing = null
@@ -114,31 +114,31 @@
 				dat += "<BR><A href='byond://?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 			if(3.0)
 				dat += "<CENTER><B>Security Record</B></CENTER><BR>"
-				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+				if ((istype(selected_general, /datum/data/record) && GLOB.data_core.general.Find(selected_general)))
 					dat += text("<table><tr><td> \
-					Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-					ID: [active1.fields["id"]]<BR>\n \
-					Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-					Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-					Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
-					Physical Status: [active1.fields["p_stat"]]<BR>\n \
-					Mental Status: [active1.fields["m_stat"]]<BR></td> \
+					Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[selected_general.fields["name"]]</A><BR> \
+					ID: [selected_general.fields["id"]]<BR>\n \
+					Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[selected_general.fields["sex"]]</A><BR>\n \
+					Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[selected_general.fields["age"]]</A><BR>\n \
+					Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[selected_general.fields["rank"]]</A><BR>\n \
+					Physical Status: [selected_general.fields["p_stat"]]<BR>\n \
+					Mental Status: [selected_general.fields["m_stat"]]<BR></td> \
 					<td align = center valign = top>Photo:<br> \
 					<table><td align = center><img src=front.png height=80 width=80 border=4><BR><A href='byond://?src=\ref[src];choice=Edit Field;field=photo front'>Update front photo</A></td> \
 					<td align = center><img src=side.png height=80 width=80 border=4><BR><A href='byond://?src=\ref[src];choice=Edit Field;field=photo side'>Update side photo</A></td></table> \
 					</td></tr></table>")
 				else
 					dat += "<B>General Record Lost!</B><BR>"
-				if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
+				if ((istype(selected_security, /datum/data/record) && GLOB.data_core.security.Find(selected_security)))
 					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n \
 								Criminal Status: <A href='byond://?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
-								Incidents: [active2.fields["incident"]]<BR>\n \
+								Incidents: [selected_security.fields["incident"]]<BR>\n \
 								\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", \
-								src, active2.fields["criminal"])
-					if(islist(active2.fields["comments"]))
+								src, selected_security.fields["criminal"])
+					if(islist(selected_security.fields["comments"]))
 						var/counter = 1
-						for(var/com_i in active2.fields["comments"])
-							var/comment = active2.fields["comments"][com_i]
+						for(var/com_i in selected_security.fields["comments"])
+							var/comment = selected_security.fields["comments"][com_i]
 							var/comment_markup = text("<b>[] / [] ([])</b>\n", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
 							if (isnull(comment["deleted_by"]))
 								comment_markup += text("<a href='byond://?src=\ref[];choice=Delete Entry;del_c=[]'>Delete comment</a>", src, counter)
@@ -213,10 +213,10 @@ What a mess.*/
 /obj/structure/machinery/computer/secure_data/Topic(href, href_list)
 	if(..())
 		return
-	if (!( GLOB.data_core.general.Find(active1) ))
-		active1 = null
-	if (!( GLOB.data_core.security.Find(active2) ))
-		active2 = null
+	if (!( GLOB.data_core.general.Find(selected_general) ))
+		selected_general = null
+	if (!( GLOB.data_core.security.Find(selected_security) ))
+		selected_security = null
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isSilicon(usr)))
 		usr.set_interaction(src)
 		switch(href_list["choice"])
@@ -238,8 +238,8 @@ What a mess.*/
 
 			if ("Return")
 				screen = 1
-				active1 = null
-				active2 = null
+				selected_general = null
+				selected_security = null
 
 			if("read_fingerprint")
 				screen = 5
@@ -290,8 +290,8 @@ What a mess.*/
 
 			if("Record Maintenance")
 				screen = 2
-				active1 = null
-				active2 = null
+				selected_general = null
+				selected_security = null
 
 			if ("Browse Record")
 				var/datum/data/record/R = locate(href_list["d_rec"])
@@ -302,8 +302,8 @@ What a mess.*/
 					for(var/datum/data/record/E in GLOB.data_core.security)
 						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
 							S = E
-					active1 = R
-					active2 = S
+					selected_general = R
+					selected_security = S
 					screen = 3
 
 
@@ -312,10 +312,10 @@ What a mess.*/
 					printing = 1
 					var/datum/data/record/record1 = null
 					var/datum/data/record/record2 = null
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-						record1 = active1
-					if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
-						record2 = active2
+					if ((istype(selected_general, /datum/data/record) && GLOB.data_core.general.Find(selected_general)))
+						record1 = selected_general
+					if ((istype(selected_security, /datum/data/record) && GLOB.data_core.security.Find(selected_security)))
+						record2 = selected_security
 					sleep(50)
 					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
@@ -355,80 +355,83 @@ What a mess.*/
 				temp = "All Security records deleted."
 
 			if ("Add Entry")
-				if (!(istype(active2, /datum/data/record)))
+				if (!(istype(selected_security, /datum/data/record)))
 					return
-				var/a2 = active2
+				var/a2 = selected_security
 				var/new_value = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if((!new_value || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || active2 != a2))
+				if((!new_value || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isSilicon(usr))) || selected_security != a2))
 					return
 				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 				var/new_comment = list("entry" = new_value, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
 				if(istype(usr,/mob/living/carbon/human))
 					var/mob/living/carbon/human/U = usr
 					new_comment["created_by"] = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
-				if(!islist(active2.fields["comments"]))
-					active2.fields["comments"] = list("1" = new_comment)
+				if(!islist(selected_security.fields["comments"]))
+					selected_security.fields["comments"] = list("1" = new_comment)
 				else
-					var/new_com_i = length(active2.fields["comments"]) + 1
-					active2.fields["comments"]["[new_com_i]"] = new_comment
-				to_chat(usr, text("You have added a new comment to the Security Record of [].", active2.fields["name"]))
-				msg_admin_niche("[key_name_admin(usr)] added a security comment for [active1.fields["name"]] ([active1.fields["id"]]): [new_value].")
+					var/new_com_i = length(selected_security.fields["comments"]) + 1
+					selected_security.fields["comments"]["[new_com_i]"] = new_comment
+				to_chat(usr, text("You have added a new comment to the Security Record of [].", selected_security.fields["name"]))
+				msg_admin_niche("[key_name_admin(usr)] added a security comment for [selected_general.fields["name"]] ([selected_general.fields["id"]]): [new_value].")
 
 			if ("Delete Entry")
-				if(!islist(active2.fields["comments"]))
+				if(!islist(selected_security.fields["comments"]))
 					return
-				if(active2.fields["comments"][href_list["del_c"]])
-					var/updated_comments = active2.fields["comments"]
+				if(selected_security.fields["comments"][href_list["del_c"]])
+					var/updated_comments = selected_security.fields["comments"]
 					var/deleter = ""
 					if(istype(usr,/mob/living/carbon/human))
 						var/mob/living/carbon/human/U = usr
 						deleter = "[U.get_authentification_name()] ([U.get_assignment()])"
 					updated_comments[href_list["del_c"]]["deleted_by"] = deleter
 					updated_comments[href_list["del_c"]]["deleted_at"] = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
-					active2.fields["comments"] = updated_comments
-					to_chat(usr, text("You have deleted a comment from the Security Record of [].", active2.fields["name"]))
+					selected_security.fields["comments"] = updated_comments
+					to_chat(usr, text("You have deleted a comment from the Security Record of [].", selected_security.fields["name"]))
 //RECORD CREATE
 			if ("New Record (Security)")
-				if ((istype(active1, /datum/data/record) && !( istype(active2, /datum/data/record) )))
-					active2 = CreateSecurityRecord(active1.fields["name"], active1.fields["id"])
+				if ((istype(selected_general, /datum/data/record) && !( istype(selected_security, /datum/data/record) )))
+					selected_security = CreateSecurityRecord(selected_general.fields["name"], selected_general.fields["id"])
 					screen = 3
 
 			if ("New Record (General)")
-				active1 = CreateGeneralRecord()
-				active2 = null
+				selected_general = CreateGeneralRecord()
+				selected_security = null
 
 //FIELD FUNCTIONS
 			if ("Edit Field")
 				if (is_not_allowed(usr))
 					return
-				var/a1 = active1
+				var/a1 = selected_general
 				switch(href_list["field"])
 					if("name")
-						if (istype(active1, /datum/data/record))
-							var/new_value = reject_bad_name(input(usr, "Please input name:", "Secure. records", active1.fields["name"]) as text|null)
-							if (!new_value || active1 != a1)
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = reject_bad_name(input(usr, "Please input name:", "Secure. records", selected_general.fields["name"]) as text|null)
+							if (!new_value || selected_general != a1)
 								return
-							message_admins("[key_name(usr)] changed the security record name of [active1.fields["name"]] to [new_value]")
-							active1.fields["name"] = new_value
+							selected_general.fields["name"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							message_admins("[key_name(usr)] changed the security record name of [selected_general.fields["name"]] to [new_value]")
 
 					if("sex")
-						if (istype(active1, /datum/data/record))
+						if (istype(selected_general, /datum/data/record))
 							var/new_value = "Male"
-							if (active1.fields["sex"] == "Male")
+							if (selected_general.fields["sex"] == "Male")
 								new_value = "Female"
-							active1.fields["sex"] = new_value
-							msg_admin_niche("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
+							selected_general.fields["sex"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name(usr)] changed the security record sex of [selected_general.fields["name"]] to [new_value]")
 
 					if("age")
-						if (istype(active1, /datum/data/record))
-							var/new_value = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if (!new_value || active1 != a1)
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = input("Please input age:", "Secure. records", selected_general.fields["age"], null)  as num
+							if (!new_value || selected_general != a1)
 								return
-							active1.fields["age"] = new_value
-							msg_admin_niche("[key_name(usr)] changed the security record age of [active1.fields["name"]] to [new_value]")
+							selected_general.fields["age"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name(usr)] changed the security record age of [selected_general.fields["name"]] to [new_value]")
 
 					if("criminal")
-						if (istype(active2, /datum/data/record))
+						if (istype(selected_security, /datum/data/record))
 							temp = "<h5>Criminal Status:</h5>"
 							temp += "<ul>"
 							temp += "<li><a href='byond://?src=\ref[src];choice=Change Criminal Status;criminal2=none'>None</a></li>"
@@ -441,7 +444,7 @@ What a mess.*/
 
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if (istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+						if (istype(selected_general, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
@@ -451,12 +454,13 @@ What a mess.*/
 							alert(usr, "You do not have the required rank to do this!")
 
 					if("species")
-						if (istype(active1, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!new_value || active1 != a1)
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please enter race:", "General records", selected_general.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if (!new_value || selected_general != a1)
 								return
-							active1.fields["species"] = new_value
-							msg_admin_niche("[key_name(usr)] changed the security record species of [active1.fields["name"]] to [new_value]")
+							selected_general.fields["species"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name(usr)] changed the security record species of [selected_general.fields["name"]] to [new_value]")
 
 
 //TEMPORARY MENU FUNCTIONS
@@ -464,34 +468,41 @@ What a mess.*/
 				temp=null
 				switch(href_list["choice"])
 					if ("Change Rank")
-						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+						if(istype(selected_general, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							var/new_value = href_list["rank"]
-							active1.fields["rank"] = new_value
+							selected_general.fields["rank"] = new_value
 							if(new_value in GLOB.joblist)
-								active1.fields["real_rank"] = new_value
-							message_admins("[key_name(usr)] changed the security record sex of [active1.fields["name"]] to [new_value]")
+								selected_general.fields["real_rank"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							message_admins("[key_name(usr)] changed the security record sex of [selected_general.fields["name"]] to [new_value]")
 
 					if ("Change Criminal Status")
-						if(istype(active2, /datum/data/record))
+						if(istype(selected_security, /datum/data/record))
 							var/new_value = href_list["criminal2"]
 							switch(new_value)
 								if("none")
-									active2.fields["criminal"] = "None"
+									selected_security.fields["criminal"] = "None"
 								if("arrest")
-									active2.fields["criminal"] = "*Arrest*"
+									selected_security.fields["criminal"] = "*Arrest*"
 								if("incarcerated")
-									active2.fields["criminal"] = "Incarcerated"
+									selected_security.fields["criminal"] = "Incarcerated"
 								if("released")
-									active2.fields["criminal"] = "Released"
+									selected_security.fields["criminal"] = "Released"
 								if("suspect")
-									active2.fields["criminal"] = "Suspect"
+									selected_security.fields["criminal"] = "Suspect"
 								if("njp")
-									active2.fields["criminal"] = "NJP"
+									selected_security.fields["criminal"] = "NJP"
 
-							for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-								H.sec_hud_set_security_status()
-
-							message_admins("[key_name(usr)] changed the security record criminal status of [active1.fields["name"]] to [new_value]")
+							// try and avoid looping over every single human mob just for a sec status update
+							var/datum/weakref/criminal_ref = selected_security["ref"]
+							var/mob/living/carbon/human/criminal = criminal_ref.resolve()
+							if(criminal)
+								criminal.sec_hud_set_security_status()
+							else // safety fallback
+								for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+									H.sec_hud_set_security_status()
+							GLOB.data_core.manifest_updated_security_record(selected_security)
+							message_admins("[key_name(usr)] changed the security record criminal status of [selected_general.fields["name"]] to [new_value]")
 
 	add_fingerprint(usr)
 	updateUsrDialog()

@@ -521,6 +521,7 @@
 										R.fields["criminal"] = setcriminal
 										modified = 1
 										sec_hud_set_security_status()
+										GLOB.data_core.manifest_updated_security_record(R)
 
 
 			if(!modified)
@@ -611,6 +612,7 @@
 					else
 						var/new_com_i = length(R.fields["comments"]) + 1
 						R.fields["comments"]["[new_com_i]"] = new_comment
+					GLOB.data_core.manifest_updated_security_record(R)
 					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 
 	if(href_list["medical"])
@@ -626,7 +628,7 @@
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)
-						for(var/datum/data/record/R in GLOB.data_core.general)
+						for(var/datum/data/record/R in GLOB.data_core.general) //should this be medical???
 							if(R.fields["id"] == E.fields["id"])
 
 								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"], list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel"))
@@ -635,7 +637,7 @@
 									if(setmedical != "Cancel")
 										R.fields["p_stat"] = setmedical
 										modified = 1
-
+										GLOB.data_core.manifest_updated_general_record(R)
 										spawn()
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
@@ -723,6 +725,7 @@
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
+									GLOB.data_core.manifest_updated_medical_record(R)
 
 	if(href_list["medholocard"])
 		change_holo_card(usr)

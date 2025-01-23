@@ -13,8 +13,8 @@
 	var/authenticated = null
 	var/rank = null
 	var/screen = null
-	var/datum/data/record/active1 = null
-	var/datum/data/record/active2 = null
+	var/datum/data/record/selected_general = null
+	var/datum/data/record/selected_medical = null
 	var/a_id = null
 	var/temp = null
 	var/printing = null
@@ -79,26 +79,26 @@
 				if(3.0)
 					dat += text("<B>Records Maintenance</B><HR>\n<A href='byond://?src=\ref[];back=1'>Backup To Disk</A><BR>\n<A href='byond://?src=\ref[];u_load=1'>Upload From disk</A><BR>\n<A href='byond://?src=\ref[];del_all=1'>Delete All Records</A><BR>\n<BR>\n<A href='byond://?src=\ref[];screen=1'>Back</A>", src, src, src, src)
 				if(4.0)
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+					if ((istype(selected_general, /datum/data/record) && GLOB.data_core.general.Find(selected_general)))
 						dat += "<CENTER><B>Medical Record</B></CENTER><BR>"
-						dat += "<table><tr><td>Name: [active1.fields["name"]] \
-								ID: [active1.fields["id"]]<BR>\n \
-								Sex: <A href='byond://?src=\ref[src];field=sex'>[active1.fields["sex"]]</A><BR>\n \
-								Age: <A href='byond://?src=\ref[src];field=age'>[active1.fields["age"]]</A><BR>\n \
-								Physical Status: <A href='byond://?src=\ref[src];field=p_stat'>[active1.fields["p_stat"]]</A><BR>\n \
-								Mental Status: <A href='byond://?src=\ref[src];field=m_stat'>[active1.fields["m_stat"]]</A><BR></td><td align = center valign = top> \
+						dat += "<table><tr><td>Name: [selected_general.fields["name"]] \
+								ID: [selected_general.fields["id"]]<BR>\n \
+								Sex: <A href='byond://?src=\ref[src];field=sex'>[selected_general.fields["sex"]]</A><BR>\n \
+								Age: <A href='byond://?src=\ref[src];field=age'>[selected_general.fields["age"]]</A><BR>\n \
+								Physical Status: <A href='byond://?src=\ref[src];field=p_stat'>[selected_general.fields["p_stat"]]</A><BR>\n \
+								Mental Status: <A href='byond://?src=\ref[src];field=m_stat'>[selected_general.fields["m_stat"]]</A><BR></td><td align = center valign = top> \
 								Photo:<br><img src=front.png height=64 width=64 border=5><img src=side.png height=64 width=64 border=5></td></tr></table>"
 					else
 						dat += "<B>General Record Lost!</B><BR>"
-					if ((istype(src.active2, /datum/data/record) && GLOB.data_core.medical.Find(src.active2)))
-						dat += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: <A href='byond://?src=\ref[src];field=b_type'>[active2.fields["b_type"]]</A><BR>\n<BR>\nMinor Disabilities: <A href='byond://?src=\ref[src];field=mi_dis'>[active2.fields["mi_dis"]]</A><BR>\nDetails: <A href='byond://?src=\ref[src];field=mi_dis_d'>[active2.fields["mi_dis_d"]]</A><BR>\n<BR>\nMajor Disabilities: <A href='byond://?src=\ref[src];field=ma_dis'>[active2.fields["ma_dis"]]</A><BR>\nDetails: <A href='byond://?src=\ref[src];field=ma_dis_d'>[active2.fields["ma_dis_d"]]</A><BR>\n<BR>\nAllergies: <A href='byond://?src=\ref[src];field=alg'>[active2.fields["alg"]]</A><BR>\nDetails: <A href='byond://?src=\ref[src];field=alg_d'>[active2.fields["alg_d"]]</A><BR>\n<BR>\nCurrent Diseases: <A href='byond://?src=\ref[src];field=cdi'>[active2.fields["cdi"]]</A> (per disease info placed in log/comment section)<BR>\nDetails: <A href='byond://?src=\ref[src];field=cdi_d'>[active2.fields["cdi_d"]]</A><BR>\n<BR>\nImportant Notes:<BR>\n\t<A href='byond://?src=\ref[src];field=notes'>[decode(src.active2.fields["notes"])]</A><BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+					if ((istype(src.selected_medical, /datum/data/record) && GLOB.data_core.medical.Find(src.selected_medical)))
+						dat += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: <A href='byond://?src=\ref[src];field=b_type'>[selected_medical.fields["b_type"]]</A><BR>\n<BR>\nMinor Disabilities: <A href='byond://?src=\ref[src];field=mi_dis'>[selected_medical.fields["mi_dis"]]</A><BR>\nDetails: <A href='byond://?src=\ref[src];field=mi_dis_d'>[selected_medical.fields["mi_dis_d"]]</A><BR>\n<BR>\nMajor Disabilities: <A href='byond://?src=\ref[src];field=ma_dis'>[selected_medical.fields["ma_dis"]]</A><BR>\nDetails: <A href='byond://?src=\ref[src];field=ma_dis_d'>[selected_medical.fields["ma_dis_d"]]</A><BR>\n<BR>\nAllergies: <A href='byond://?src=\ref[src];field=alg'>[selected_medical.fields["alg"]]</A><BR>\nDetails: <A href='byond://?src=\ref[src];field=alg_d'>[selected_medical.fields["alg_d"]]</A><BR>\n<BR>\nCurrent Diseases: <A href='byond://?src=\ref[src];field=cdi'>[selected_medical.fields["cdi"]]</A> (per disease info placed in log/comment section)<BR>\nDetails: <A href='byond://?src=\ref[src];field=cdi_d'>[selected_medical.fields["cdi_d"]]</A><BR>\n<BR>\nImportant Notes:<BR>\n\t<A href='byond://?src=\ref[src];field=notes'>[decode(src.selected_medical.fields["notes"])]</A><BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
 						var/counter = 1
-						while(active2.fields[text("com_[]", counter)])
+						while(selected_medical.fields[text("com_[]", counter)])
 							var/current_index = text("com_[]", counter)
-							if(findtext(active2.fields[current_index], "<BR>"))
-								dat += text("[]<BR><A href='byond://?src=\ref[];del_c=[]'>Delete Entry</A><BR><BR>", active2.fields[current_index], src, counter)
+							if(findtext(selected_medical.fields[current_index], "<BR>"))
+								dat += text("[]<BR><A href='byond://?src=\ref[];del_c=[]'>Delete Entry</A><BR><BR>", selected_medical.fields[current_index], src, counter)
 							else
-								dat += text("[]<BR><BR>", active2.fields[current_index])
+								dat += text("[]<BR><BR>", selected_medical.fields[current_index])
 							counter++
 						dat += text("<A href='byond://?src=\ref[];add_c=1'>Add Entry</A><BR><BR>", src)
 						dat += text("<A href='byond://?src=\ref[];del_r=1'>Delete Record (Medical Only)</A><BR><BR>", src)
@@ -137,11 +137,11 @@
 	if(..())
 		return
 
-	if (!( GLOB.data_core.general.Find(src.active1) ))
-		src.active1 = null
+	if (!( GLOB.data_core.general.Find(src.selected_general) ))
+		src.selected_general = null
 
-	if (!( GLOB.data_core.medical.Find(src.active2) ))
-		src.active2 = null
+	if (!( GLOB.data_core.medical.Find(src.selected_medical) ))
+		src.selected_medical = null
 
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
@@ -174,21 +174,21 @@
 		else if (href_list["logout"])
 			src.authenticated = null
 			src.screen = null
-			src.active1 = null
-			src.active2 = null
+			src.selected_general = null
+			src.selected_medical = null
 
 		else if (href_list["login"])
 
 			if (isRemoteControlling(usr))
-				src.active1 = null
-				src.active2 = null
+				src.selected_general = null
+				src.selected_medical = null
 				src.authenticated = usr.name
 				src.rank = "AI"
 				src.screen = 1
 
 			else if (istype(src.scan, /obj/item/card/id))
-				src.active1 = null
-				src.active2 = null
+				src.selected_general = null
+				src.selected_medical = null
 
 				if (src.check_access(src.scan))
 					src.authenticated = src.scan.registered_name
@@ -202,8 +202,8 @@
 				if(src.screen < 1)
 					src.screen = 1
 
-				src.active1 = null
-				src.active2 = null
+				src.selected_general = null
+				src.selected_medical = null
 
 			if (href_list["del_all"])
 				src.temp = text("Are you sure you wish to delete all records?<br>\n\t<A href='byond://?src=\ref[];temp=1;del_all2=1'>Yes</A><br>\n\t<A href='byond://?src=\ref[];temp=1'>No</A><br>", src, src)
@@ -213,153 +213,167 @@
 				temp = "All records deleted."
 
 			if (href_list["field"])
-				var/a1 = active1
-				var/a2 = active2
+				var/a1 = selected_general
+				var/a2 = selected_medical
 				switch(href_list["field"])
 					if("sex")
-						if (istype(active1, /datum/data/record))
+						if (istype(selected_general, /datum/data/record))
 							var/new_value = "Male"
-							if (active1.fields["sex"] == "Male")
+							if (selected_general.fields["sex"] == "Male")
 								new_value = "Female"
-							active1.fields["sex"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record sex for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_general.fields["sex"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record sex for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("age")
-						if (istype(active1, /datum/data/record))
-							var/new_value = input("Please input age:", "Med. records", active1.fields["age"], null)  as num
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = input("Please input age:", "Med. records", selected_general.fields["age"], null)  as num
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_general != a1))
 								return
-							active1.fields["age"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record age for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_general.fields["age"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record age for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("mi_dis")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please input minor disabilities list:", "Med. records", active2.fields["mi_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please input minor disabilities list:", "Med. records", selected_medical.fields["mi_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["mi_dis"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record minor disabilities list for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["mi_dis"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record minor disabilities list for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("mi_dis_d")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please summarize minor dis.:", "Med. records", active2.fields["mi_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please summarize minor dis.:", "Med. records", selected_medical.fields["mi_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["mi_dis_d"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record minor disabilities desc for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["mi_dis_d"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record minor disabilities desc for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("ma_dis")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please input major diabilities list:", "Med. records", active2.fields["ma_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please input major diabilities list:", "Med. records", selected_medical.fields["ma_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["ma_dis"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record major disabilities list for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["ma_dis"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record major disabilities list for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("ma_dis_d")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please summarize major dis.:", "Med. records", active2.fields["ma_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please summarize major dis.:", "Med. records", selected_medical.fields["ma_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["ma_dis_d"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record major disabilities desc for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["ma_dis_d"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record major disabilities desc for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("alg")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please state allergies:", "Med. records", active2.fields["alg"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please state allergies:", "Med. records", selected_medical.fields["alg"], null)  as text)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["alg"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record allergies list for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["alg"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record allergies list for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("alg_d")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please summarize allergies:", "Med. records", active2.fields["alg_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please summarize allergies:", "Med. records", selected_medical.fields["alg_d"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["alg_d"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record allergies desc for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["alg_d"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record allergies desc for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("cdi")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please state diseases:", "Med. records", active2.fields["cdi"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please state diseases:", "Med. records", selected_medical.fields["cdi"], null)  as text)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["cdi"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record disabilities list for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["cdi"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record disabilities list for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("cdi_d")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(trim(strip_html(input("Please summarize diseases:", "Med. records", active2.fields["cdi_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(trim(strip_html(input("Please summarize diseases:", "Med. records", selected_medical.fields["cdi_d"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["cdi_d"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record disabilities desc for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["cdi_d"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record disabilities desc for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("notes")
-						if (istype(active2, /datum/data/record))
-							var/new_value = copytext(html_encode(trim(input("Please summarize notes:", "Med. records", html_decode(active2.fields["notes"]), null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+						if (istype(selected_medical, /datum/data/record))
+							var/new_value = copytext(html_encode(trim(input("Please summarize notes:", "Med. records", html_decode(selected_medical.fields["notes"]), null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 								return
-							active2.fields["notes"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] set the medical record notes for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_medical.fields["notes"] = new_value
+							GLOB.data_core.manifest_updated_medical_record(selected_medical)
+							msg_admin_niche("[key_name_admin(usr)] set the medical record notes for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 					if("p_stat")
-						if (istype(active1, /datum/data/record))
+						if (istype(selected_general, /datum/data/record))
 							temp = text("<B>Physical Condition:</B><BR>\n\t<A href='byond://?src=\ref[];temp=1;p_stat=deceased'>*Deceased*</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;p_stat=ssd'>*SSD*</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;p_stat=active'>Active</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;p_stat=unfit'>Physically Unfit</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;p_stat=disabled'>Disabled</A><BR>", src, src, src, src, src)
 					if("m_stat")
-						if (istype(active1, /datum/data/record))
+						if (istype(selected_general, /datum/data/record))
 							temp = text("<B>Mental Condition:</B><BR>\n\t<A href='byond://?src=\ref[];temp=1;m_stat=insane'>*Insane*</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;m_stat=unstable'>*Unstable*</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;m_stat=watch'>*Watch*</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;m_stat=stable'>Stable</A><BR>", src, src, src, src)
 					if("b_type")
-						if (istype(active2, /datum/data/record))
+						if (istype(selected_medical, /datum/data/record))
 							temp = text("<B>Blood Type:</B><BR>\n\t<A href='byond://?src=\ref[];temp=1;b_type=an'>A-</A> <A href='byond://?src=\ref[];temp=1;b_type=ap'>A+</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;b_type=bn'>B-</A> <A href='byond://?src=\ref[];temp=1;b_type=bp'>B+</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;b_type=abn'>AB-</A> <A href='byond://?src=\ref[];temp=1;b_type=abp'>AB+</A><BR>\n\t<A href='byond://?src=\ref[];temp=1;b_type=on'>O-</A> <A href='byond://?src=\ref[];temp=1;b_type=op'>O+</A><BR>", src, src, src, src, src, src, src, src)
 
 
 			if (href_list["p_stat"])
-				if(istype(active1, /datum/data/record))
+				if(istype(selected_general, /datum/data/record))
 					switch(href_list["p_stat"])
 						if("deceased")
-							active1.fields["p_stat"] = "*Deceased*"
+							selected_general.fields["p_stat"] = "*Deceased*"
 						if("ssd")
-							active1.fields["p_stat"] = "*SSD*"
+							selected_general.fields["p_stat"] = "*SSD*"
 						if("active")
-							active1.fields["p_stat"] = "Active"
+							selected_general.fields["p_stat"] = "Active"
 						if("unfit")
-							active1.fields["p_stat"] = "Physically Unfit"
+							selected_general.fields["p_stat"] = "Physically Unfit"
 						if("disabled")
-							active1.fields["p_stat"] = "Disabled"
-					msg_admin_niche("[key_name_admin(usr)] set the medical record physical state for [active1.fields["name"]] ([active1.fields["id"]]) to [href_list["p_stat"]].")
+							selected_general.fields["p_stat"] = "Disabled"
+					GLOB.data_core.manifest_updated_general_record(selected_general)
+					msg_admin_niche("[key_name_admin(usr)] set the medical record physical state for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [href_list["p_stat"]].")
 
 			if (href_list["m_stat"])
-				if(istype(active1, /datum/data/record))
+				if(istype(selected_general, /datum/data/record))
 					switch(href_list["m_stat"])
 						if("insane")
-							active1.fields["m_stat"] = "*Insane*"
+							selected_general.fields["m_stat"] = "*Insane*"
 						if("unstable")
-							active1.fields["m_stat"] = "*Unstable*"
+							selected_general.fields["m_stat"] = "*Unstable*"
 						if("watch")
-							active1.fields["m_stat"] = "*Watch*"
+							selected_general.fields["m_stat"] = "*Watch*"
 						if("stable")
-							active1.fields["m_stat"] = "Stable"
-					msg_admin_niche("[key_name_admin(usr)] set the medical record mental state for [active1.fields["name"]] ([active1.fields["id"]]) to [href_list["m_stat"]].")
+							selected_general.fields["m_stat"] = "Stable"
+					GLOB.data_core.manifest_updated_general_record(selected_general)
+					msg_admin_niche("[key_name_admin(usr)] set the medical record mental state for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [href_list["m_stat"]].")
 
 			if (href_list["b_type"])
-				if(istype(active2, /datum/data/record))
+				if(istype(selected_medical, /datum/data/record))
 					switch(href_list["b_type"])
 						if("an")
-							active2.fields["b_type"] = "A-"
+							selected_medical.fields["b_type"] = "A-"
 						if("bn")
-							active2.fields["b_type"] = "B-"
+							selected_medical.fields["b_type"] = "B-"
 						if("abn")
-							active2.fields["b_type"] = "AB-"
+							selected_medical.fields["b_type"] = "AB-"
 						if("on")
-							active2.fields["b_type"] = "O-"
+							selected_medical.fields["b_type"] = "O-"
 						if("ap")
-							active2.fields["b_type"] = "A+"
+							selected_medical.fields["b_type"] = "A+"
 						if("bp")
-							active2.fields["b_type"] = "B+"
+							selected_medical.fields["b_type"] = "B+"
 						if("abp")
-							active2.fields["b_type"] = "AB+"
+							selected_medical.fields["b_type"] = "AB+"
 						if("op")
-							active2.fields["b_type"] = "O+"
-					msg_admin_niche("[key_name_admin(usr)] set the medical record blood type for [active1.fields["name"]] ([active1.fields["id"]]) to [active2.fields["b_type"]].")
+							selected_medical.fields["b_type"] = "O+"
+					GLOB.data_core.manifest_updated_medical_record(selected_medical)
+					msg_admin_niche("[key_name_admin(usr)] set the medical record blood type for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [selected_medical.fields["b_type"]].")
 
 			if (href_list["del_r"])
-				if(istype(active2, /datum/data/record))
+				if(istype(selected_medical, /datum/data/record))
 					temp = text("Are you sure you wish to delete the record (Medical Portion Only)?<br>\n\t<A href='byond://?src=\ref[];temp=1;del_r2=1'>Yes</A><br>\n\t<A href='byond://?src=\ref[];temp=1'>No</A><br>", src, src)
 
 			if (href_list["del_r2"])
-				msg_admin_niche("[key_name_admin(usr)] deleted the medical record for [active1.fields["name"]] ([active1.fields["id"]]).")
-				QDEL_NULL(active2)
+				msg_admin_niche("[key_name_admin(usr)] deleted the medical record for [selected_general.fields["name"]] ([selected_general.fields["id"]]).")
+				QDEL_NULL(selected_medical)
 
 			if (href_list["d_rec"])
 				var/datum/data/record/R = locate(href_list["d_rec"])
@@ -370,15 +384,15 @@
 				for(var/datum/data/record/E in GLOB.data_core.medical)
 					if ((E.fields["ref"] == R.fields["ref"] || E.fields["id"] == R.fields["id"]))
 						M = E
-				src.active1 = R
-				src.active2 = M
+				src.selected_general = R
+				src.selected_medical = M
 				src.screen = 4
 
 			if (href_list["new"])
-				if ((istype(src.active1, /datum/data/record) && !( istype(src.active2, /datum/data/record) )))
+				if ((istype(src.selected_general, /datum/data/record) && !( istype(src.selected_medical, /datum/data/record) )))
 					var/datum/data/record/R = new /datum/data/record(  )
-					R.fields["name"] = src.active1.fields["name"]
-					R.fields["id"] = src.active1.fields["id"]
+					R.fields["name"] = src.selected_general.fields["name"]
+					R.fields["id"] = src.selected_general.fields["id"]
 					R.name = text("Medical Record #[]", R.fields["id"])
 					R.fields["b_type"] = "Unknown"
 					R.fields["mi_dis"] = "None"
@@ -391,43 +405,45 @@
 					R.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 					R.fields["notes"] = "No notes."
 					GLOB.data_core.manifest_inject_medical_record(R)
-					src.active2 = R
+					src.selected_medical = R
 					src.screen = 4
 
 			if (href_list["add_c"])
-				if (!( istype(active2, /datum/data/record) ))
+				if (!( istype(selected_medical, /datum/data/record) ))
 					return
-				var/a2 = active2
+				var/a2 = selected_medical
 				var/new_value = copytext(trim(strip_html(input("Add Comment:", "Med. records", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active2 != a2))
+				if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_medical != a2))
 					return
 				var/counter = 1
-				while(active2.fields[text("com_[]", counter)])
+				while(selected_medical.fields[text("com_[]", counter)])
 					counter++
-				active2.fields[text("com_[counter]")] = text("Made by [authenticated] ([rank]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[new_value]")
-				msg_admin_niche("[key_name_admin(usr)] added a medical comment for [active1.fields["name"]] ([active1.fields["id"]]): [new_value].")
+				selected_medical.fields[text("com_[counter]")] = text("Made by [authenticated] ([rank]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[new_value]")
+				GLOB.data_core.manifest_updated_medical_record(selected_medical)
+				msg_admin_niche("[key_name_admin(usr)] added a medical comment for [selected_general.fields["name"]] ([selected_general.fields["id"]]): [new_value].")
 
 			if (href_list["del_c"])
-				if ((istype(active2, /datum/data/record) && active2.fields[text("com_[]", href_list["del_c"])]))
-					msg_admin_niche("[key_name_admin(usr)] deleted a medical comment for [active1.fields["name"]] ([active1.fields["id"]]): [active2.fields[text("com_[]", href_list["del_c"])]].")
-					active2.fields[text("com_[]", href_list["del_c"])] = text("Deleted entry by [authenticated] ([rank]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]")
+				if ((istype(selected_medical, /datum/data/record) && selected_medical.fields[text("com_[]", href_list["del_c"])]))
+					selected_medical.fields[text("com_[]", href_list["del_c"])] = text("Deleted entry by [authenticated] ([rank]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]")
+					GLOB.data_core.manifest_updated_medical_record(selected_medical)
+					msg_admin_niche("[key_name_admin(usr)] deleted a medical comment for [selected_general.fields["name"]] ([selected_general.fields["id"]]): [selected_medical.fields[text("com_[]", href_list["del_c"])]].")
 
 			if (href_list["search"])
 				var/t1 = stripped_input(usr, "Search String: (Name, DNA, or ID)", "Med. records")
 				if ((!( t1 ) || usr.stat || !( src.authenticated ) || usr.is_mob_restrained() || ((!in_range(src, usr)) && (!isRemoteControlling(usr)))))
 					return
-				src.active1 = null
-				src.active2 = null
+				src.selected_general = null
+				src.selected_medical = null
 				t1 = lowertext(t1)
 				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 					if ((lowertext(R.fields["name"]) == t1 || t1 == lowertext(R.fields["id"])))
-						src.active2 = R
-				if (!active2)
+						src.selected_medical = R
+				if (!selected_medical)
 					temp = "Could not locate record [t1]."
 				else
 					for(var/datum/data/record/E in GLOB.data_core.general)
-						if ((E.fields["name"] == src.active2.fields["name"] || E.fields["id"] == src.active2.fields["id"]))
-							src.active1 = E
+						if ((E.fields["name"] == src.selected_medical.fields["name"] || E.fields["id"] == src.selected_medical.fields["id"]))
+							src.selected_general = E
 					src.screen = 4
 
 			if (href_list["print_p"])
@@ -435,10 +451,10 @@
 					src.printing = 1
 					var/datum/data/record/record1 = null
 					var/datum/data/record/record2 = null
-					if ((istype(src.active1, /datum/data/record) && GLOB.data_core.general.Find(src.active1)))
-						record1 = active1
-					if ((istype(src.active2, /datum/data/record) && GLOB.data_core.medical.Find(src.active2)))
-						record2 = active2
+					if ((istype(src.selected_general, /datum/data/record) && GLOB.data_core.general.Find(src.selected_general)))
+						record1 = selected_general
+					if ((istype(src.selected_medical, /datum/data/record) && GLOB.data_core.medical.Find(src.selected_medical)))
+						record2 = selected_medical
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
@@ -465,8 +481,8 @@
 				if(!(src.printing))
 					src.printing = 1
 					var/datum/data/record/record
-					if ((istype(src.active1, /datum/data/record) && GLOB.data_core.general.Find(src.active1)))
-						record = active1
+					if ((istype(src.selected_general, /datum/data/record) && GLOB.data_core.general.Find(src.selected_general)))
+						record = selected_general
 					if(!record) return
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)

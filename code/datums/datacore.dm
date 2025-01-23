@@ -22,7 +22,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			if(H.job in jobs_to_check)
 				manifest_inject(H)
 
-/datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
+/datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat, squad_name)
 	var/datum/data/record/foundrecord
 
 	var/use_name = isnull(ref)
@@ -43,6 +43,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			foundrecord.fields["real_rank"] = rank
 		if(p_stat)
 			foundrecord.fields["p_stat"] = p_stat
+		if(squad_name)
+			foundrecord.fields["squad"] = squad_name
 		if(!use_name)
 			if(name)
 				foundrecord.fields["name"] = name
@@ -134,9 +136,28 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	QDEL_NULL(target)
 	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
 
+// Used for ensuring injected records flag for updates
 /datum/datacore/proc/manifest_inject_medical_record(datum/data/record/record)
 	medical += record
 	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
+
+/datum/datacore/proc/manifest_inject_general_record(datum/data/record/record)
+	general += record
+	update_flags |= FLAG_DATA_CORE_GENERAL_UPDATED
+
+/datum/datacore/proc/manifest_inject_security_record(datum/data/record/record)
+	security += record
+	update_flags |= FLAG_DATA_CORE_SECURITY_UPDATED
+
+// Currently do nothing except flag, could do something in future
+/datum/datacore/proc/manifest_updated_medical_record(datum/data/record/record)
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
+
+/datum/datacore/proc/manifest_updated_general_record(datum/data/record/record)
+	update_flags |= FLAG_DATA_CORE_GENERAL_UPDATED
+
+/datum/datacore/proc/manifest_updated_security_record(datum/data/record/record)
+	update_flags |= FLAG_DATA_CORE_SECURITY_UPDATED
 
 /datum/datacore/proc/manifest_delete(mob/living/carbon/human/target)
 	//Delete them from datacore.

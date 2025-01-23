@@ -655,10 +655,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_squad.update_free_mar()
 
 		var/marine_ref = WEAKREF(transfer_marine)
-		for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest
-			if(t.fields["ref"] == marine_ref)
-				t.fields["squad"] = new_squad.name
-				break
+		GLOB.data_core.manifest_modify(ref=marine_ref, squad_name=new_squad.name)
 
 		transfer_marine.hud_set_squad()
 

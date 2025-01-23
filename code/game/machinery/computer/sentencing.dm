@@ -205,7 +205,7 @@
 				found_record.fields["incident"] += "<BR> \
 												Crime: [incident.charges_to_string()].<BR> \
 												Notes: [incident.notes].<BR>"
-
+				GLOB.data_core.manifest_updated_security_record(found_record)
 				break
 
 	var/obj/item/paper/incident/paper = new /obj/item/paper/incident(loc)

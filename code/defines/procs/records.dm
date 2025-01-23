@@ -15,7 +15,7 @@
 	general_record.fields["faction"] = "Unknown"
 	general_record.fields["mob_faction"] = "Unknown"
 	general_record.fields["religion"] = "Unknown"
-	GLOB.data_core.general += general_record
+	GLOB.data_core.manifest_inject_general_record(general_record)
 	return general_record
 
 /proc/CreateSecurityRecord(name as text, id as text)
@@ -24,7 +24,7 @@
 	security_record.fields["id"] = id
 	security_record.name = text("Security Record #[id]")
 	security_record.fields["incidents"] = "None"
-	GLOB.data_core.security += security_record
+	GLOB.data_core.manifest_inject_security_record(security_record)
 	return security_record
 
 /proc/create_medical_record(mob/living/carbon/human/person)
@@ -46,5 +46,5 @@
 	medical_record.fields["autodoc_data"] = list()
 	medical_record.fields["autodoc_manual"] = list()
 	medical_record.fields["ref"] = WEAKREF(person)
-	GLOB.data_core.medical += medical_record
+	GLOB.data_core.manifest_inject_medical_record(medical_record)
 	return medical_record

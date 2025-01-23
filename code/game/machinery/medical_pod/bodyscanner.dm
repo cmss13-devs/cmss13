@@ -158,36 +158,37 @@
 		return
 
 	var/mob/living/carbon/human/H = connected.occupant
-	var/datum/data/record/N = null
+	var/datum/data/record/occupant_medical_record = null
 	var/human_ref = WEAKREF(H)
 	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 		if (R.fields["ref"] == human_ref)
-			N = R
-	if(isnull(N))
-		N = create_medical_record(H)
+			occupant_medical_record = R
+	if(isnull(occupant_medical_record))
+		occupant_medical_record = create_medical_record(H)
 	var/list/od = connected.get_occupant_data()
 	var/dat
 	dat = format_occupant_data(od)
-	N.fields["last_scan_time"] = od["stationtime"]
+	occupant_medical_record.fields["last_scan_time"] = od["stationtime"]
 	// I am sure you are wondering why this is still here. And indeed why the rest of the autodoc html shit is here.
 	// The answer is : it is used in the medical records computer to print out the results of their last scan data
 	// Do I want to make it so that data from a tgui static data proc can go into a piece of paper? no
 	// Do I want to remove the feature from medical records computers? no
 	// and so here we are.
-	N.fields["last_scan_result"] = dat
+	occupant_medical_record.fields["last_scan_result"] = dat
 
 	if (!last_health_display)
 		last_health_display = new(H)
 	else
 		last_health_display.target_mob = H
 
-	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
-	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
+	occupant_medical_record.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
+	occupant_medical_record.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))
 	playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
 
 	last_health_display.look_at(user, DETAIL_LEVEL_BODYSCAN, bypass_checks = TRUE)
 
+	GLOB.data_core.manifest_updated_medical_record(occupant_medical_record)
 	return
 
 /obj/structure/machinery/medical_pod/bodyscanner/proc/get_occupant_data()

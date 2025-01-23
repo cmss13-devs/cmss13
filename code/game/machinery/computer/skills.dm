@@ -10,7 +10,7 @@
 	var/authenticated = null
 	var/rank = null
 	var/screen = null
-	var/datum/data/record/active1 = null
+	var/datum/data/record/selected_general = null
 	var/a_id = null
 	var/temp = null
 	var/printing = null
@@ -81,16 +81,16 @@
 					dat += "<BR><A href='byond://?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 				if(3.0)
 					dat += "<CENTER><B>Employment Record</B></CENTER><BR>"
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
+					if ((istype(selected_general, /datum/data/record) && GLOB.data_core.general.Find(selected_general)))
 						dat += "<table><tr><td> \
-						Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-						ID: <A href='byond://?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
-						Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-						Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-						Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
-						Physical Status: [active1.fields["p_stat"]]<BR>\n \
-						Mental Status: [active1.fields["m_stat"]]<BR><BR>\n \
-						Employment/skills summary:<BR> [decode(active1.fields["notes"])]<BR></td> \
+						Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[selected_general.fields["name"]]</A><BR> \
+						ID: <A href='byond://?src=\ref[src];choice=Edit Field;field=id'>[selected_general.fields["id"]]</A><BR>\n \
+						Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[selected_general.fields["sex"]]</A><BR>\n \
+						Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[selected_general.fields["age"]]</A><BR>\n \
+						Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[selected_general.fields["rank"]]</A><BR>\n \
+						Physical Status: [selected_general.fields["p_stat"]]<BR>\n \
+						Mental Status: [selected_general.fields["m_stat"]]<BR><BR>\n \
+						Employment/skills summary:<BR> [decode(selected_general.fields["notes"])]<BR></td> \
 						<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4> \
 						<img src=side.png height=80 width=80 border=4></td></tr></table>"
 					else
@@ -138,8 +138,8 @@ What a mess.*/
 /obj/structure/machinery/computer/skills/Topic(href, href_list)
 	if(..())
 		return
-	if (!( GLOB.data_core.general.Find(active1) ))
-		active1 = null
+	if (!( GLOB.data_core.general.Find(selected_general) ))
+		selected_general = null
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 		switch(href_list["choice"])
@@ -161,7 +161,7 @@ What a mess.*/
 
 			if ("Return")
 				screen = 1
-				active1 = null
+				selected_general = null
 
 			if("Confirm Identity")
 				if (scan)
@@ -180,16 +180,16 @@ What a mess.*/
 			if("Log Out")
 				authenticated = null
 				screen = null
-				active1 = null
+				selected_general = null
 
 			if("Log In")
 				if (isRemoteControlling(usr))
-					src.active1 = null
+					src.selected_general = null
 					src.authenticated = usr.name
 					src.rank = "AI"
 					src.screen = 1
 				else if (istype(scan, /obj/item/card/id))
-					active1 = null
+					selected_general = null
 					if(check_access(scan))
 						authenticated = scan.registered_name
 						rank = scan.paygrade
@@ -221,7 +221,7 @@ What a mess.*/
 
 			if("Record Maintenance")
 				screen = 2
-				active1 = null
+				selected_general = null
 
 			if ("Browse Record")
 				var/datum/data/record/R = locate(href_list["d_rec"])
@@ -229,7 +229,7 @@ What a mess.*/
 					temp = "Record Not Found!"
 				else
 					for(var/datum/data/record/E in GLOB.data_core.security)
-					active1 = R
+					selected_general = R
 					screen = 3
 
 			if ("Print Record")
@@ -238,9 +238,9 @@ What a mess.*/
 					sleep(50)
 					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Employment Record</B></CENTER><BR>"
-					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-						P.info += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<BR>\nSex: [active1.fields["sex"]]<BR>\nAge: [active1.fields["age"]]<BR>\nPhysical Status: [active1.fields["p_stat"]]<BR>\nMental Status: [active1.fields["m_stat"]]<BR>\nEmployment/Skills Summary:<BR>\n[decode(active1.fields["notes"])]<BR>"
-						P.name = "Employment Record ([active1.fields["name"]])"
+					if ((istype(selected_general, /datum/data/record) && GLOB.data_core.general.Find(selected_general)))
+						P.info += "Name: [selected_general.fields["name"]] ID: [selected_general.fields["id"]]<BR>\nSex: [selected_general.fields["sex"]]<BR>\nAge: [selected_general.fields["age"]]<BR>\nPhysical Status: [selected_general.fields["p_stat"]]<BR>\nMental Status: [selected_general.fields["m_stat"]]<BR>\nEmployment/Skills Summary:<BR>\n[decode(selected_general.fields["notes"])]<BR>"
+						P.name = "Employment Record ([selected_general.fields["name"]])"
 					else
 						P.info += "<B>General Record Lost!</B><BR>"
 						P.name = "Employment Record (???)"
@@ -259,52 +259,56 @@ What a mess.*/
 				temp = "All Employment records deleted."
 
 			if ("Delete Record (ALL)")
-				if(istype(active1, /datum/data/record))
+				if(istype(selected_general, /datum/data/record))
 					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
 					temp += "<a href='byond://?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
 					temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 //RECORD CREATE
 			if ("New Record (General)")
-				active1 = CreateGeneralRecord()
+				selected_general = CreateGeneralRecord()
 
 //FIELD FUNCTIONS
 			if ("Edit Field")
-				var/a1 = active1
+				var/a1 = selected_general
 				switch(href_list["field"])
 					if("name")
-						if (istype(active1, /datum/data/record))
-							var/new_value = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
-							if ((!( new_value ) || !length(trim(new_value)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = reject_bad_name(input("Please input name:", "Secure. records", selected_general.fields["name"], null)  as text)
+							if ((!( new_value ) || !length(trim(new_value)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || selected_general != a1)
 								return
-							message_admins("[key_name(usr)] changed the employment record name of [active1.fields["name"]] to [new_value]")
-							active1.fields["name"] = new_value
+							selected_general.fields["name"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							message_admins("[key_name(usr)] changed the employment record name of [selected_general.fields["name"]] to [new_value]")
 
 					if("id")
-						if (istype(active1, /datum/data/record))
-							var/new_value = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = copytext(trim(sanitize(input("Please input id:", "Secure. records", selected_general.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_general != a1))
 								return
-							msg_admin_niche("[key_name_admin(usr)] changed the employment record id for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
-							active1.fields["id"] = new_value
+							selected_general.fields["id"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record id for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 
 					if("sex")
-						if (istype(active1, /datum/data/record))
+						if (istype(selected_general, /datum/data/record))
 							var/new_value = "Male"
-							if (active1.fields["sex"] == "Male")
+							if (selected_general.fields["sex"] == "Male")
 								new_value = "Female"
-							active1.fields["sex"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] changed the employment record sex for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_general.fields["sex"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record sex for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 
 					if("age")
-						if (istype(active1, /datum/data/record))
-							var/new_value = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = input("Please input age:", "Secure. records", selected_general.fields["age"], null)  as num
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_general != a1))
 								return
-							active1.fields["age"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] changed the employment record age for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_general.fields["age"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record age for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 
 					if("rank")
-						if(istype(active1, /datum/data/record))
+						if(istype(selected_general, /datum/data/record))
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 							if(GLOB.uscm_highcom_paygrades.Find(rank))
 								temp = "<h5>Occupation:</h5>"
@@ -316,28 +320,30 @@ What a mess.*/
 								alert(usr, "You do not have the required rank to do this!")
 
 					if("species")
-						if (istype(active1, /datum/data/record))
-							var/new_value = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
+						if (istype(selected_general, /datum/data/record))
+							var/new_value = copytext(trim(sanitize(input("Please enter race:", "General records", selected_general.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
+							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || selected_general != a1))
 								return
-							active1.fields["species"] = new_value
-							msg_admin_niche("[key_name_admin(usr)] changed the employment record species for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+							selected_general.fields["species"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							msg_admin_niche("[key_name_admin(usr)] changed the employment record species for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 
 //TEMPORARY MENU FUNCTIONS
 			else//To properly clear as per clear screen.
 				temp=null
 				switch(href_list["choice"])
 					if ("Change Rank")
-						if(istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
+						if(istype(selected_general, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							var/new_value = href_list["rank"]
-							active1.fields["rank"] = new_value
+							selected_general.fields["rank"] = new_value
 							if(new_value in GLOB.joblist)
-								active1.fields["real_rank"] = new_value
-							message_admins("[key_name_admin(usr)] changed the employment record rank for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
+								selected_general.fields["real_rank"] = new_value
+							GLOB.data_core.manifest_updated_general_record(selected_general)
+							message_admins("[key_name_admin(usr)] changed the employment record rank for [selected_general.fields["name"]] ([selected_general.fields["id"]]) to [new_value].")
 
 					if ("Delete Record (ALL) Execute")
-						GLOB.data_core.manifest_delete_medical_record(active1)
-						active1 = null
+						GLOB.data_core.manifest_delete_medical_record(selected_general)
+						selected_general = null
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."
 

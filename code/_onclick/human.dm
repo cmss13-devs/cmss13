@@ -160,3 +160,13 @@
 	target.update_transform(TRUE)
 
 
+/mob/living/carbon/human/RangedAttack(atom/A)
+	. = ..()
+
+	if(.)
+		return
+
+	var/turf/target_turf = get_turf(get_step(src, Get_Compass_Dir(src, A)))
+	
+	if(istype(target_turf, /turf/open_space))
+		return target_turf.attack_hand(src)

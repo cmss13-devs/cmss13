@@ -1120,7 +1120,7 @@
 
 /obj/structure/machinery/door/airlock/upp/medical/solid
 	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/upp/upp_medigreendoor_glass.dmi'
+	icon = 'icons/obj/structures/doors/upp/upp_medigreendoor.dmi'
 	opacity = TRUE
 	glass = FALSE
 

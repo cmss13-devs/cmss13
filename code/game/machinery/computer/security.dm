@@ -494,7 +494,7 @@ What a mess.*/
 									selected_security.fields["criminal"] = "NJP"
 
 							// try and avoid looping over every single human mob just for a sec status update
-							var/datum/weakref/criminal_ref = selected_security["ref"]
+							var/datum/weakref/criminal_ref = selected_security.fields["ref"]
 							var/mob/living/carbon/human/criminal = criminal_ref.resolve()
 							if(criminal)
 								criminal.sec_hud_set_security_status()

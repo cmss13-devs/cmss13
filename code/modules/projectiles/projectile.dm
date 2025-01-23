@@ -11,7 +11,7 @@
 	density = FALSE
 	unacidable = TRUE
 	anchored = TRUE //You will not have me, space wind!
-	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
+	flags_atom = NOINTERACT|NO_ZFALL //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER

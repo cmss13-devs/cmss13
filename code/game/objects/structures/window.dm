@@ -1054,6 +1054,28 @@
 
 //UPP windows
 
+/obj/structure/window/framed/upp_ship
+	name = "window"
+	icon = 'icons/turf/walls/upp_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship
+
+/obj/structure/window/framed/upp_ship/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/reinforced
+
+/obj/structure/window/framed/upp_ship/hull
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+//	icon_state = "upp_rwindow0"
+
+//UPP almayer retexture windows
+
 /obj/structure/window/framed/upp
 	name = "window"
 	icon = 'icons/turf/walls/upp_almayer_windows.dmi'

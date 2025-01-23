@@ -392,6 +392,7 @@
 #define WALL_DEVWALL_R "devwall_r"
 #define WALL_HUNTERSHIP "metal"//DMI specific name
 #define WALL_AICORE "aiwall"
+#define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"
 
 //Defines for dropship weapon gimbals

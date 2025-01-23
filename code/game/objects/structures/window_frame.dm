@@ -318,6 +318,20 @@
 
 //upp frames
 
+/obj/structure/window_frame/upp_ship
+	icon = 'icons/turf/walls/upp_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+
+/obj/structure/window_frame/upp_ship/reinforced
+	reinforced = TRUE
+
+/obj/structure/window_frame/upp_ship/hull
+	unslashable = TRUE
+	unacidable = TRUE
+
+//upp almayer retexture frames
+
 /obj/structure/window_frame/upp
 	icon = 'icons/turf/walls/upp_almayer_windows.dmi'
 	icon_state = "upp_window0_frame"

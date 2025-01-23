@@ -271,8 +271,29 @@
 	hull = 1
 	walltype = WALL_SULACO
 
+//UPP almayer retexture walls.
 
-//UPP walls.
+/turf/closed/wall/upp_ship
+	damage = 0
+	damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	opacity = TRUE
+	density = TRUE
+	walltype = WALL_UPP_SHIP
+	icon = 'icons/turf/walls/upp_walls.dmi'
+	icon_state = "uppwall_interior"
+
+/turf/closed/wall/upp_ship/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "uppwall_reinforced"
+
+/turf/closed/wall/upp_ship/reinforced/outer
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "uppwall_hull"
+
+//UPP almayer retexture walls.
 
 /turf/closed/wall/almayer/upp
 	walltype = WALL_UPP_BASE

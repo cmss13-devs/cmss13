@@ -581,21 +581,13 @@
 
 //Collector box. For if you want to have a box for a collection of niche items.
 
-/obj/item/storage/fancy/collector //Unused base so it can be easier modified and reused
+/obj/item/storage/fancy/collector //Unused base so it can be easier modified and reused for other things
 	name = "\improper Small collectors case"
 	desc = "A small case to collect things. Usefull to present your collection and to make sure it wont get lost"
 	icon = 'icons/obj/items/storage/collector.dmi'
 	icon_state = "collector_case_small"
 	item_state = "collector_case_small"
 	storage_slots = 4
-
-/obj/item/storage/fancy/collector/big
-	name = "\improper Small collectors case"
-	desc = "A small case to collect things. Usefull to present your collection and to make sure it wont get lost"
-	icon = 'icons/obj/items/storage/collector.dmi'
-	icon_state = "collector_case_big"
-	item_state = "collector_case_big"
-	storage_slots = 8
 
 /obj/item/storage/fancy/collector/feathers
 	name = "\improper Small feather collection"
@@ -615,33 +607,5 @@
 /obj/item/storage/fancy/collector/feathers/update_icon()
 	overlays = list() //resets list
 	overlays += image('icons/obj/items/storage/collector.dmi',"collector_box_small")
-	for(var/obj/item/prop/helmetgarb/lucky_feather/feather in contents)
-		overlays += image('icons/obj/items/storage/collector.dmi',feather.caseName)
-
-/obj/item/storage/fancy/collector/big/feathers
-	name = "\improper Large feather collection"
-	desc = "A large pristine case to protect a collection of old collectibel feathers. Some are made from cheap plastic, but you can spot some actual duck downs inbetween them as well. Truley a rare collection its owner can be proud of."
-	can_hold = list(/obj/item/prop/helmetgarb/lucky_feather/red,
-		/obj/item/prop/helmetgarb/lucky_feather/blue,
-		/obj/item/prop/helmetgarb/lucky_feather/yellow,
-		/obj/item/prop/helmetgarb/lucky_feather/purple,
-		/obj/item/prop/helmetgarb/lucky_feather/green,
-		/obj/item/prop/helmetgarb/lucky_feather/brown,
-		/obj/item/prop/helmetgarb/lucky_feather/dark_green,
-		/obj/item/prop/helmetgarb/lucky_feather/dark_blue)
-
-/obj/item/storage/fancy/collector/big/feathers/fill_preset_inventory()
-	new /obj/item/prop/helmetgarb/lucky_feather/red(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/blue(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/purple(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/yellow(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/green(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/brown(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/dark_green(src)
-	new /obj/item/prop/helmetgarb/lucky_feather/dark_blue(src)
-
-/obj/item/storage/fancy/collector/big/feathers/update_icon()
-	overlays = list() //resets list
-	overlays += image('icons/obj/items/storage/collector.dmi',"collector_box_big")
 	for(var/obj/item/prop/helmetgarb/lucky_feather/feather in contents)
 		overlays += image('icons/obj/items/storage/collector.dmi',feather.caseName)

@@ -211,6 +211,9 @@
 /turf/open/floor/plating/almayer/no_build
 	allow_construction = FALSE
 
+/turf/open/floor/plating/almayer/no_build/is_weedable()
+	return NOT_WEEDABLE
+
 /turf/open/floor/plating/airless
 	icon_state = "plating"
 	name = "airless plating"

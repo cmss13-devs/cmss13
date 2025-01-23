@@ -401,7 +401,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "abD" = (
 /obj/effect/decal/cleanable/blood{
@@ -455,7 +455,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "abN" = (
 /obj/effect/decal/warning_stripes{
@@ -529,7 +529,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "abZ" = (
 /turf/open/mars_cave/mars_cave_10,
@@ -1577,7 +1577,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "afY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -4494,7 +4494,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aqw" = (
 /turf/open/floor/white,
@@ -4512,7 +4512,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aqz" = (
 /obj/structure/window/framed/solaris,
@@ -4539,7 +4539,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "aqD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4970,7 +4970,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/turf/open/floor/whitegreenfull,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/medical)
 "arX" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -6362,13 +6362,13 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/asteroidfloor/north,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/lz2_south_cas)
 "awy" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/filtration_cave_cas)
 "awz" = (
 /obj/item/ashtray/bronze{
@@ -7082,18 +7082,12 @@
 "ayN" = (
 /turf/open/floor/delivery,
 /area/bigredv2/outside/medical)
-"ayO" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/bigredv2/outside/filtration_cave_cas)
 "ayP" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "ayQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7302,7 +7296,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "azA" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
@@ -7759,12 +7753,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw/ceiling)
-"aBb" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/outside/filtration_cave_cas)
 "aBc" = (
 /obj/item/clothing/suit/armor/riot{
 	pixel_y = -5;
@@ -7957,13 +7945,13 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/asteroidwarning/east,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/caves_east)
 "aBJ" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/lambda_cave_cas)
 "aBK" = (
 /obj/structure/closet/wardrobe/medic_white,
@@ -8035,7 +8023,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/bar)
 "aBZ" = (
 /obj/structure/bed/stool,
@@ -8050,7 +8038,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/bar)
 "aCc" = (
 /turf/open/mars_cave/mars_dirt_4,
@@ -8181,18 +8169,6 @@
 /obj/structure/plasticflaps,
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/research)
-"aCB" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/bigredv2/outside/lambda_cave_cas)
-"aCC" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/outside/lambda_cave_cas)
 "aCD" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open/floor,
@@ -8219,7 +8195,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/dorms)
 "aCJ" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
@@ -8519,12 +8495,6 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/whitegreen,
 /area/sky)
-"aDG" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/bigredv2/outside/lambda_cave_cas)
 "aDH" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/structure/machinery/camera/autoname{
@@ -8563,12 +8533,6 @@
 	},
 /turf/open/floor/plating,
 /area/sky)
-"aDM" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/outside/lambda_cave_cas)
 "aDN" = (
 /obj/item/clothing/gloves/latex{
 	pixel_y = 5;
@@ -8696,14 +8660,14 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aEl" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aEm" = (
 /obj/structure/sink{
@@ -8868,7 +8832,7 @@
 "aES" = (
 /obj/structure/stairs/multiz/down,
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aET" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8887,7 +8851,7 @@
 /area/bigredv2/outside/hydroponics)
 "aEV" = (
 /obj/structure/stairs/multiz/down,
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aEW" = (
 /obj/item/tool/hatchet,
@@ -8926,7 +8890,7 @@
 "aFc" = (
 /obj/structure/stairs/multiz/down,
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aFd" = (
 /obj/structure/flora/jungle/plantbot1{
@@ -10485,7 +10449,7 @@
 	dir = 4
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aKk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -10564,7 +10528,7 @@
 	dir = 4
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer/no_build,
 /area/sky)
 "aKC" = (
 /obj/structure/pipes/vents/pump{
@@ -12260,7 +12224,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "aPS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -14508,7 +14472,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/space/basic,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "bbs" = (
 /obj/structure/surface/rack,
@@ -20418,7 +20382,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/lambda_cave_cas)
 "bKY" = (
 /obj/structure/fence,
@@ -23047,7 +23011,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/asphalt/cement,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/filtration_cave_cas)
 "eER" = (
 /obj/structure/machinery/power/port_gen/pacman/super,
@@ -23087,12 +23051,6 @@
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
-"eGq" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/caves)
 "eGB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -24943,7 +24901,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/caves)
 "gHH" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -26194,7 +26152,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/turf/open/floor/whitegreenfull,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/medical)
 "ieD" = (
 /obj/structure/surface/rack,
@@ -27597,7 +27555,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/delivery,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/lz2_south_cas)
 "jOj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28643,12 +28601,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"kNa" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/bigredv2/caves)
 "kNc" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_cave_2,
@@ -30501,7 +30453,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/asphalt/cement,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/lambda_cave_cas)
 "mRD" = (
 /obj/structure/surface/table,
@@ -30975,7 +30927,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "nsc" = (
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/medical)
 "nsm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33126,7 +33078,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/delivery,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/lambda_cave_cas)
 "pJn" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -35289,7 +35241,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
-/turf/open/floor,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/dorms)
 "rOK" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
@@ -41131,7 +41083,7 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space/basic,
+/turf/open/floor/plating/almayer/no_build,
 /area/bigredv2/outside/admin_building)
 "xLd" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -72127,9 +72079,9 @@ aao
 aao
 aao
 aao
-aBb
+awy
 eEO
-ayO
+awy
 awy
 vVZ
 vVZ
@@ -78385,9 +78337,9 @@ aao
 aao
 aao
 aBd
-aCC
-aCB
-aCB
+aBJ
+aBJ
+aBJ
 aBJ
 aBd
 aBd
@@ -120736,9 +120688,9 @@ bes
 bes
 aao
 kBn
-eGq
-kNa
-kNa
+gHD
+gHD
+gHD
 gHD
 aao
 aao
@@ -126994,9 +126946,9 @@ aao
 aao
 gNH
 aao
-aDM
+pJd
 mRz
-aDG
+pJd
 bKV
 dTB
 rGD

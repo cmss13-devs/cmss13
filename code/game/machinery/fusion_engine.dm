@@ -480,7 +480,6 @@
 /obj/structure/machinery/power/reactor/rostock
 	name = "\improper RDS-168 fusion reactor"
 	desc = "A RDS-168 Fusion Reactor."
-	is_reserved_level = TRUE
 
 
 #undef BUILDSTATE_FUNCTIONAL

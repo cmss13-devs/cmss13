@@ -183,16 +183,14 @@
 /turf/open/floor/corsat/blue/north,
 /area/rostock/command/cic)
 "aaD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
-	req_one_access = list(232, 240);
-	name = "\improper Fuel Storage - B Pod"
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng_solid{
+	name = "Fuel Storage - B Pod"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
 "aaE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
-	req_one_access = list(232, 240);
-	name = "\improper Fuel Storage - A Pod"
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng_solid{
+	name = "Fuel Storage - A Pod"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
@@ -355,6 +353,20 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun/starboard)
+"abd" = (
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng_solid{
+	dir = 1;
+	name = "Engineering Storage"
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/engineering/main_area)
+"abe" = (
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng{
+	dir = 1;
+	name = "Workshop"
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/engineering/main_area)
 "abf" = (
 /obj/structure/sign/safety/tram{
 	pixel_x = -18;
@@ -410,19 +422,6 @@
 /obj/structure/machinery/door/airlock/upp/engi/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
-"abo" = (
-/obj/structure/window/framed/upp_ship,
-/obj/structure/machinery/door/airlock/multi_tile/upp/medical/autoname{
-	req_one_access = null
-	},
-/turf/open/floor/plating,
-/area/rostock/medical/lobby)
-"abp" = (
-/obj/structure/machinery/door/airlock/multi_tile/upp/medical/autoname{
-	req_one_access = null
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/rostock/medical/lobby)
 "acI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -2635,7 +2634,7 @@
 /turf/open/floor/carpet,
 /area/rostock/command/co)
 "bNm" = (
-/turf/open/floor/upp_hull/outerhull_dir/northwest,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northwest,
 /area/rostock/lowerdeck_maint/p_a)
 "bNJ" = (
 /obj/vehicle/powerloader/jd{
@@ -4510,7 +4509,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/rostock,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "dtF" = (
@@ -4904,7 +4903,7 @@
 	icon_state = "rostock7";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "dIC" = (
 /obj/structure/largecrate/random/case/double,
@@ -7007,7 +7006,7 @@
 	name = "umbilical wall"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/upp_hull/outerhull_dir/east,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/east,
 /area/rostock/lifeboat)
 "fje" = (
 /turf/closed/wall/upp_ship/reinforced,
@@ -7747,7 +7746,7 @@
 /turf/open/floor/corsat/red,
 /area/rostock/railgun)
 "fSj" = (
-/turf/open/floor/upp_hull/outerhull_dir/northeast,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northeast,
 /area/space)
 "fSF" = (
 /obj/effect/decal/warning_stripes{
@@ -8002,7 +8001,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "gec" = (
-/turf/open/floor/upp_hull/outerhull_dir/southeast,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southeast,
 /area/space)
 "gey" = (
 /obj/structure/disposalpipe/segment,
@@ -8481,7 +8480,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/rostock/ert_dock/port)
 "gxt" = (
-/turf/open/floor/upp_hull/outerhull_dir/west,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/west,
 /area/space)
 "gxu" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -10873,7 +10872,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/s_a_hallway)
 "ilq" = (
-/turf/open/floor/upp_hull/outerhull_dir/southwest,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southwest,
 /area/space)
 "ilx" = (
 /obj/structure/platform{
@@ -11420,7 +11419,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/hangarbay)
 "iFa" = (
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "iFK" = (
 /obj/structure/machinery/power/apc/power/east,
@@ -11569,7 +11568,7 @@
 	icon_state = "rostock4";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "iMu" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -11843,7 +11842,7 @@
 	desc = "The bort number of the ship stenciled on the hull, used to identify the vessel's base assignment.";
 	pixel_y = -12
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "iVV" = (
 /obj/structure/machinery/cryopod{
@@ -12459,7 +12458,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/chemistry)
 "jtG" = (
-/turf/open/floor/upp_hull/outerhull_dir,
+/turf/open/floor/upp_hull_rostock/outerhull_dir,
 /area/space)
 "jtH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15100,7 +15099,7 @@
 	name = "umbilical wall"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/upp_hull/outerhull_dir/west,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/west,
 /area/rostock/lifeboat)
 "ltI" = (
 /obj/effect/projector{
@@ -15197,9 +15196,6 @@
 "lzs" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/upp/medical/autoname{
-	req_one_access = null
-	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/lobby)
 "lzF" = (
@@ -17693,7 +17689,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/starboard_umbilical)
 "nMU" = (
-/turf/open/floor/upp_hull/outerhull_dir/northwest,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northwest,
 /area/space)
 "nMY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -20280,7 +20276,7 @@
 /turf/open/floor/strata/green3/east,
 /area/rostock/command/hallway)
 "pNs" = (
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/rostock/command/cic)
 "pNt" = (
 /obj/structure/surface/table/almayer,
@@ -22246,7 +22242,7 @@
 	desc = "The bort number of the ship stenciled on the hull, used to identify the vessel's base assignment.";
 	pixel_y = -12
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "roK" = (
 /obj/structure/bed/chair/comfy,
@@ -23144,7 +23140,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/upperdeck_maint/p_a)
 "seH" = (
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/rostock,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "seY" = (
@@ -23868,7 +23864,7 @@
 	icon_state = "rostock6";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "sMo" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -24121,7 +24117,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "sZn" = (
-/turf/open/floor/upp_hull/outerhull_dir/east,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/east,
 /area/space)
 "sZo" = (
 /obj/item/trash/uscm_mre{
@@ -25590,7 +25586,7 @@
 	icon_state = "rostock2";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "uhn" = (
 /obj/structure/platform,
@@ -26305,7 +26301,7 @@
 	icon_state = "rostock5";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "uPc" = (
 /obj/structure/machinery/cryopod{
@@ -26595,7 +26591,7 @@
 	icon_state = "rostock1";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "vaA" = (
 /obj/structure/surface/rack,
@@ -26682,7 +26678,7 @@
 	icon_state = "rostock3";
 	name = "SSV Rostock"
 	},
-/turf/open/floor/upp_hull,
+/turf/open/floor/upp_hull_rostock,
 /area/space)
 "vbf" = (
 /obj/effect/decal/warning_stripes{
@@ -27649,10 +27645,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "vPx" = (
-/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
-	req_one_access_txt = list(232, 240);
-	req_access = null;
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/engi/solid/autoname{
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
@@ -27670,7 +27664,7 @@
 /area/rostock/engineering/main_area)
 "vPO" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/power/reactor/rostock,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "vPR" = (
@@ -27862,7 +27856,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "vTq" = (
-/turf/open/floor/upp_hull/outerhull_dir/north,
+/turf/open/floor/upp_hull_rostock/outerhull_dir/north,
 /area/space)
 "vTB" = (
 /obj/structure/platform{
@@ -37815,12 +37809,12 @@ rPO
 wXC
 biQ
 sVt
-sVt
+abe
 biQ
 flA
 flA
 sVt
-sVt
+abd
 flA
 flA
 sry
@@ -42756,7 +42750,7 @@ iFa
 iFa
 iFa
 iFa
-jtG
+ilq
 ofW
 ofW
 ofW
@@ -43485,7 +43479,7 @@ iFa
 iFa
 iFa
 iFa
-jtG
+ilq
 ofW
 ofW
 ofW
@@ -45998,7 +45992,7 @@ pkD
 dPb
 lkN
 aIo
-abo
+lWt
 jsB
 wTm
 qFF
@@ -46179,8 +46173,8 @@ gnU
 bQe
 kqh
 lkN
-abp
-abo
+oNT
+lWt
 sWD
 wTm
 pQS
@@ -52476,9 +52470,9 @@ ikp
 qjG
 qjG
 xTh
-iFa
-iFa
-jtG
+sZn
+sZn
+gec
 ofW
 ofW
 ofW
@@ -55201,7 +55195,7 @@ hZn
 ltN
 ltN
 ltN
-iFa
+jtG
 ofW
 ofW
 ofW

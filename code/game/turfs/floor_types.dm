@@ -2173,6 +2173,39 @@
 
 //Outerhull UPP
 
+/turf/open/floor/upp_hull_rostock
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp_rostock"
+	name = "hull"
+	hull_floor = TRUE
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir
+	icon_state = "outerhull_dir_upp_rostock"
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+//Outerhull Reskin Almayer UPP
+
 /turf/open/floor/upp_hull
 	icon = 'icons/turf/walls/upp_hull.dmi'
 	icon_state = "outerhull_upp"

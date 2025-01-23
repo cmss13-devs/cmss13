@@ -885,7 +885,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/upp/sec
 	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/upp/upp_2x1secdoor_glass.dmi'
+	icon = 'icons/obj/structures/doors/upp/upp_2x1secgreendoor_glass.dmi'
 	opacity = FALSE
 	glass = TRUE
 	req_one_access = list(ACCESS_UPP_SECURITY, ACCESS_UPP_LEADERSHIP)
@@ -901,4 +901,26 @@
 	req_one_access = list(ACCESS_UPP_SECURITY, ACCESS_UPP_LEADERSHIP)
 
 /obj/structure/machinery/door/airlock/multi_tile/upp/sec_solid/autoname
+	autoname = TRUE
+
+// --- UPP Engineering Door --- //
+
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/upp_2x1engdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = list(ACCESS_UPP_ENGINEERING, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng_solid
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/upp_2x1enggreendoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_one_access = list(ACCESS_UPP_ENGINEERING, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/door/airlock/multi_tile/upp/eng_solid/autoname
 	autoname = TRUE

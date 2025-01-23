@@ -42,6 +42,9 @@
 /turf/open/floor/prison/darkred2/southeast,
 /area/prison/security/checkpoint/highsec/n)
 "ca" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
 /turf/open/floor/prison/red/southeast,
 /area/prison/hallway/central/west)
 "dh" = (
@@ -98,10 +101,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/checkpoint/highsec/n)
 "hK" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "hN" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -113,10 +113,7 @@
 	pixel_x = -10;
 	pixel_y = -8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "ib" = (
 /turf/closed/wall/prison,
@@ -199,10 +196,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "mK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -274,10 +268,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/north)
 "pq" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -327,10 +318,7 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "sV" = (
 /obj/structure/filingcabinet,
@@ -398,6 +386,9 @@
 "uV" = (
 /obj/structure/bed/chair/office{
 	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 8
 	},
 /turf/open/floor/prison/red/northeast,
 /area/prison/hallway/central/west)
@@ -502,10 +493,7 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "Dn" = (
 /turf/closed/wall/r_wall/prison,
@@ -530,10 +518,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "GU" = (
 /obj/structure/machinery/disposal,
@@ -573,10 +558,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "Jy" = (
 /obj/structure/bed/chair/office,
@@ -597,10 +579,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "KM" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
@@ -704,10 +683,7 @@
 	dir = 8
 	},
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "QF" = (
 /obj/structure/machinery/power/apc{
@@ -850,10 +826,7 @@
 	dir = 8
 	},
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean2"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 
 (1,1,1) = {"

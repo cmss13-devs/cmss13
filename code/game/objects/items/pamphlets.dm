@@ -116,7 +116,7 @@
 
 /obj/item/pamphlet/skill/cosmartgun/can_use(mob/living/carbon/human/user)
 	if(user.job != JOB_CO)
-		to_chat(user, "Only the commanding officer can use this.")
+		to_chat(user, SPAN_WARNING("Only the Commanding Officer can use this."))
 		return
 	return ..()
 

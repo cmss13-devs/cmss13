@@ -98,17 +98,15 @@
 /*
  * Detective
  */
-/obj/item/clothing/under/det
-	name = "hard-worn suit"
-	desc = "Someone who wears this means business."
-	icon_state = "detective"
-	item_state = "det"
+/obj/item/clothing/under/detective
+	name = "\improper detective suit pants"
+	desc = "A washed out white shirt with a black tie and brown slacks."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
+	icon_state = "detective_brown"
+	worn_state = "detective_brown"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -117,10 +115,15 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	siemens_coefficient = 0.9
 
-/obj/item/clothing/under/det/black
-	icon_state = "detective2"
+/obj/item/clothing/under/detective/neutral
+	name = "brown suit pants"
+
+/obj/item/clothing/under/detective/grey
+	name = "\improper grey suit pants"
+	desc = "A washed out white shirt with a red tie and black slacks."
+	icon_state = "detective_grey"
+	worn_state = "detective_grey"
 
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."

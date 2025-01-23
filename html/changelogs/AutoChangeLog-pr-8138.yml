@@ -1,0 +1,7 @@
+author: "sleepynecrons/esselnek"
+delete-after: True
+changes:
+  - rscadd: "New turtleneck and formal uniforms, including a council jacket and a plain jacket for the CO vendor."
+  - imageadd: "New sprites for the old formal black and white uniforms, falcon jacket and a new plain jacket."
+  - rscadd: "New uscm officer formal uniform sprite"
+  - imagedel: "Removes old unused suprised that this pr replaces"

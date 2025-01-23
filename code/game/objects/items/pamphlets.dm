@@ -3,7 +3,13 @@
 	desc = "A pamphlet used to quickly impart vital knowledge."
 	icon = 'icons/obj/items/pamphlets.dmi'
 	icon_state = "pamphlet_written"
-	item_state = "pamphlet_written"
+	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
 	throw_range = 20
@@ -100,6 +106,19 @@
 	ID.minimap_icon_override = "spotter"
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
+
+/obj/item/pamphlet/skill/cosmartgun
+	name = "Cavalier instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a smartgun on it."
+	icon_state = "pamphlet_loader"
+	bypass_pamphlet_limit = TRUE
+	trait = /datum/character_trait/skills/cosmartgun
+
+/obj/item/pamphlet/skill/cosmartgun/can_use(mob/living/carbon/human/user)
+	if(user.job != JOB_CO)
+		to_chat(user, SPAN_WARNING("Only the Commanding Officer can use this."))
+		return
+	return ..()
 
 /obj/item/pamphlet/skill/loader
 	name = "Loader instructional pamphlet"

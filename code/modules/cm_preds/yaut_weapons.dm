@@ -841,7 +841,6 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 50, 50)
 
-
 	if(!primary)
 		return
 

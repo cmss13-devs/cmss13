@@ -88,10 +88,15 @@
 	icon_state = "rosary"
 	item_state_slots = list(WEAR_AS_GARB = "rosary")
 
-/obj/item/prop/helmetgarb/lucky_feather
+/obj/item/prop/helmetgarb/lucky_feather //Need unused base for feathers or other stuff wont work.
+	name = "\improper Lucky Feather"
+	desc = "A plain grey feather. While there is nothing special about it, it is still nice to look at."
+	icon_state = "lucky_feather"
+	item_state_slots = list(WEAR_AS_GARB = "lucky_feather")
+
+/obj/item/prop/helmetgarb/lucky_feather/red
 	name = "\improper Red Lucky Feather"
 	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."
-	icon_state = "lucky_feather"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather")
 	color = "red"
 

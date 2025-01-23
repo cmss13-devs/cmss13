@@ -54,3 +54,5 @@
 #define DUAL_WIELD_SWAP 1
 ///Do nothing when dual wielding
 #define DUAL_WIELD_NONE 2
+
+#define MAX_SAVE_SLOTS 10

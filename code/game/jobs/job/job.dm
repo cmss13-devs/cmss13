@@ -261,17 +261,6 @@
 
 		human.job = title //TODO Why is this a mob variable at all?
 
-		if(gear_preset_whitelist[job_whitelist])
-			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-			var/generated_account = generate_money_account(human)
-			announce_entry_message(human, generated_account, whitelist_status) //Tell them their spawn info.
-			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
-		else
-			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-			var/generated_account = generate_money_account(human)
-			announce_entry_message(human, generated_account) //Tell them their spawn info.
-			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
-
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			GLOB.RoleAuthority.randomize_squad(human)
 
@@ -296,6 +285,19 @@
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)
 
+		load_loadout(M)
+
+		if(gear_preset_whitelist[job_whitelist])
+			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account, whitelist_status) //Tell them their spawn info.
+			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
+		else
+			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account) //Tell them their spawn info.
+			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
+
 		for(var/cardinal in GLOB.cardinals)
 			var/obj/structure/machinery/cryopod/pod = locate() in get_step(human, cardinal)
 			if(pod)
@@ -308,6 +310,22 @@
 		SSround_recording.recorder.track_player(human)
 
 	return TRUE
+
+/// If we have one, equip our mob with their job gear
+/datum/job/proc/load_loadout(mob/living/carbon/human/new_human)
+	if(!new_human.client || !new_human.client.prefs)
+		return
+
+	var/equipment_slot = new_human.client.prefs.get_active_loadout(title)
+	if(!length(equipment_slot))
+		return
+
+	for(var/gear_type in equipment_slot)
+		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
+		if(!current_gear)
+			continue
+
+		current_gear.equip_to_user(new_human)
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)

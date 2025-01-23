@@ -186,12 +186,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 //------------SNOWFLAKE VENDOR---------------
 
 /datum/gear/synthetic
-	category = "Synthetic"
+	category = "Other"
 	allowed_roles = list(JOB_SYNTH, JOB_SHIP_SYNTH)
+
 	fluff_cost = 0
+	loadout_cost = 12
 
 /datum/gear/synthetic/uscm
-	category = "Synthetic - USCM Uniforms"
+	category = "USCM Uniforms"
 
 /datum/gear/synthetic/uscm/medical_blue
 	path = /obj/item/clothing/under/rank/medical/blue
@@ -233,7 +235,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/under/marine/mp/darker
 
 /datum/gear/synthetic/civilian
-	category = "Synthetic - Civilian Uniforms"
+	category = "Civilian Uniforms"
 
 /datum/gear/synthetic/civilian/white_tshirt_brown_jeans
 	path = /obj/item/clothing/under/tshirt/w_br
@@ -281,7 +283,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/under/liaison_suit/corporate_formal
 
 /datum/gear/synthetic/glasses
-	category = "Synthetic - Glasses"
+	category = "Glasses"
 
 /datum/gear/synthetic/glasses/marine_rpg
 	path = /obj/item/clothing/glasses/regular
@@ -293,7 +295,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/glasses/sunglasses
 
 /datum/gear/synthetic/shoes
-	category = "Synthetic - Shoes"
+	category = "Shoes"
 
 /datum/gear/synthetic/shoes/black
 	path = /obj/item/clothing/shoes/marine
@@ -320,7 +322,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/shoes/yellow
 
 /datum/gear/synthetic/headwear
-	category = "Synthetic - Headwear"
+	category = "Headwear"
 
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie
@@ -365,7 +367,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/head/fedora/grey
 
 /datum/gear/synthetic/helmet
-	category = "Synthetic - Helmet"
+	category = "Helmet"
 
 /datum/gear/synthetic/helmet/marine
 	path = /obj/item/clothing/head/helmet/marine
@@ -383,7 +385,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/head/helmet/marine/desert
 
 /datum/gear/synthetic/mask
-	category = "Synthetic - Mask"
+	category = "Mask"
 
 /datum/gear/synthetic/mask/surgical
 	path = /obj/item/clothing/mask/surgical
@@ -422,7 +424,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/mask/tornscarf/black
 
 /datum/gear/synthetic/suit
-	category = "Synthetic - Suit"
+	category = "Suit"
 
 /datum/gear/synthetic/suit/bomber
 	path = /obj/item/clothing/suit/storage/bomber
@@ -497,7 +499,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/suit/storage/jacket/marine/vest/grey
 
 /datum/gear/synthetic/backpack
-	category = "Synthetic - Backpack"
+	category = "Backpack"
 
 /datum/gear/synthetic/backpack/industrial
 	path = /obj/item/storage/backpack/industrial

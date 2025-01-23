@@ -203,12 +203,14 @@
 	for (var/datum/character_trait/character_trait as anything in preview_dummy.traits)
 		character_trait.unapply_trait(preview_dummy)
 
-	for(var/gear_type in gear)
-		var/datum/gear/gear = GLOB.gear_datums_by_type[gear_type]
-		var/obj/item/item = new gear.path()
+	var/gear_to_preview = gear.Copy()
+	var/loadout_to_preview = get_active_loadout()
+	if(loadout_to_preview)
+		gear_to_preview += loadout_to_preview
 
-		if(!preview_dummy.equip_to_appropriate_slot(item))
-			qdel(item)
+	for(var/gear_type in gear_to_preview)
+		var/datum/gear/gear = GLOB.gear_datums_by_type[gear_type]
+		gear.equip_to_user(preview_dummy, override_checks = TRUE, drop_instead_of_del = FALSE)
 
 	arm_equipment(preview_dummy, J, FALSE, FALSE, owner, show_job_gear)
 
@@ -244,6 +246,8 @@
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
 			return job
+
+	return JOB_SQUAD_MARINE
 
 /datum/preferences/proc/job_pref_to_gear_preset()
 	var/high_priority = get_high_priority_job()

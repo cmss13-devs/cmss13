@@ -194,18 +194,23 @@
 
 	if(savefile_version < 30)
 
-		var/list/existing_gear
-		S["gear"] >> existing_gear
+		for(var/i in 1 to MAX_SAVE_SLOTS)
+			S.cd = "/character[i]"
 
-		var/list/new_list = list()
-		for(var/entry in existing_gear)
-			var/datum/gear/gear = GLOB.gear_datums_by_name[entry]
-			if(!gear)
-				continue
+			var/list/existing_gear
+			S["gear"] >> existing_gear
 
-			new_list += "[gear.type]"
+			var/list/new_list = list()
+			for(var/entry in existing_gear)
+				var/datum/gear/gear = GLOB.gear_datums_by_name[entry]
+				if(!gear)
+					continue
 
-		S["gear"] = new_list
+				new_list += "[gear.type]"
+
+			S["gear"] = new_list
+
+		S.cd = "/"
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
@@ -353,6 +358,8 @@
 
 	S["lastchangelog"] >> lastchangelog
 
+	S["job_loadout"] >> loadout
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -432,7 +439,8 @@
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
-	vars["fps"] = fps
+
+	loadout = sanitize_loadout(loadout, owner)
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -574,6 +582,8 @@
 	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	S["lastchangelog"] << lastchangelog
+
+	S["job_loadout"] << save_loadout(loadout)
 
 	return TRUE
 
@@ -801,6 +811,7 @@
 	S["be_special"] << be_special
 	S["organ_data"] << organ_data
 	S["gear"] << save_gear(gear)
+	S["job_loadout"] << save_loadout(loadout)
 	S["origin"] << origin
 	S["faction"] << faction
 	S["religion"] << religion
@@ -860,16 +871,6 @@
 				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
-
-/datum/preferences/proc/save_gear()
-	var/string_list = list()
-
-	for(var/gear_type in gear)
-		string_list += "[gear_type]"
-
-	return string_list
-
-
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

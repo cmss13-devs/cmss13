@@ -123,6 +123,8 @@
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
+	if(!client?.prefs.update_slot(player_rank.title))
+		return
 
 	spawning = TRUE
 	close_spawn_windows()

@@ -411,6 +411,9 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
 	var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[player.job]
+
+	player.client?.prefs.update_slot(J.title, 10 SECONDS)
+
 	if(J.job_options && player?.client?.prefs?.pref_special_job_options[J.title])
 		J.handle_job_options(player.client.prefs.pref_special_job_options[J.title])
 	if(J.handle_spawn_and_equip)

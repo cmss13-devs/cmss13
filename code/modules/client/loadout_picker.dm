@@ -11,10 +11,8 @@
 		var/fluff_items = list()
 		var/loadout_items = list()
 
-		for(var/gear_key as anything in gears)
-			var/datum/gear/gear = gears[gear_key]
-
-			if(length(gear.allowed_roles) && !(job in gear.allowed_roles))
+		for(var/datum/gear/gear as anything in gears)
+			if(job && length(gear.allowed_roles) && !(job in gear.allowed_roles))
 				continue
 
 			if(gear.loadout_cost)
@@ -38,9 +36,8 @@
 				list("name" = category, "items" = loadout_items)
 			)
 
-	.["selected_job"] = job
-	.["max_job_points"] = GLOB.RoleAuthority.roles_by_name[job].loadout_points
 	.["max_fluff_points"] = MAX_GEAR_COST
+	.["max_save_slots"] = MAX_SAVE_SLOTS
 
 /datum/loadout_picker/ui_data(mob/user)
 	. = ..()
@@ -62,14 +59,20 @@
 
 	.["loadout"] = list()
 	var/loadout_points = 0
-	for(var/item in prefs.loadout)
+	for(var/item in prefs.get_active_loadout())
 		var/datum/gear/gear = GLOB.gear_datums_by_type[item]
 		loadout_points += gear.loadout_cost
 
-		.["fluff_gear"] += list(
+		.["loadout"] += list(
 			gear.get_list_representation()
 		)
 	.["loadout_points"] = loadout_points
+	.["selected_loadout_slot"] = prefs.selected_loadout_slot
+
+	var/job = prefs.get_high_priority_job()
+
+	.["selected_job"] = job
+	.["max_job_points"] = job ? GLOB.RoleAuthority.roles_by_name[job].loadout_points : 0
 
 /datum/loadout_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -101,18 +104,20 @@
 
 				prefs.gear += gear.type
 
+				prefs.ShowChoices()
 				return TRUE
 
+			var/loadout_list = prefs.get_active_loadout()
+
 			var/total_cost = 0
-			for(var/gear_type in prefs.loadout)
+			for(var/gear_type in loadout_list)
 				total_cost += GLOB.gear_datums_by_type[gear_type].loadout_cost
 
 			total_cost += gear.loadout_cost
 			if(total_cost > GLOB.RoleAuthority.roles_by_name[job].loadout_points)
 				return FALSE
 
-			prefs.loadout += gear.type
-			return TRUE
+			loadout_list += gear.type
 
 		if("remove")
 			var/picked_type = text2path(params["type"])
@@ -127,9 +132,17 @@
 				prefs.gear -= gear.type
 
 			if(gear.loadout_cost)
-				prefs.loadout -= gear.type
+				var/loadout_list = prefs.get_active_loadout()
+				loadout_list -= gear.type
 
-			return TRUE
+		if("slot")
+			var/picked_slot = text2num(params["picked"])
+			if(!picked_slot)
+				return
+
+			picked_slot = clamp(picked_slot, 1, MAX_SAVE_SLOTS)
+
+			prefs.selected_loadout_slot = picked_slot
 
 	prefs.ShowChoices(ui.user)
 	return TRUE

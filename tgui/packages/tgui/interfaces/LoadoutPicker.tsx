@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, DmIcon, Section, Stack } from '../components';
+import { Box, Button, Divider, DmIcon, Section, Stack } from '../components';
 import { Window } from '../layouts';
 import { Loader } from './common/Loader';
 
 type LoadoutPickerData = {
+  fluff_gear: LoadoutItem[];
   fluff_categories: Category[];
   fluff_points: number;
   max_fluff_points: number;
-  fluff_gear: LoadoutItem[];
 
+  loadout: LoadoutItem[];
   loadout_categories: Category[];
+  loadout_points: number;
+  selected_job: string;
+  max_job_points: number;
+  selected_loadout_slot: number;
+  max_save_slots: number;
 };
 
 type Category = {
@@ -23,58 +29,23 @@ type LoadoutItem = {
   name: string;
   type: string;
   fluff_cost: number;
+  loadout_cost: number;
+
   icon: string;
   icon_state: string;
 };
 
 export const LoadoutPicker = () => {
-  const { data } = useBackend<LoadoutPickerData>();
-
-  const { fluff_categories, loadout_categories } = data;
-
-  const [selected, setSelected] = useState<Category | undefined>();
-
-  return (
-    <Window height={485} width={910} theme="crtblue">
-      <Window.Content className="LoadoutPicker">
-        <Stack fill>
-          <Stack.Item>
-            <Sidebar setSelected={setSelected} selected={selected!} />
-          </Stack.Item>
-          <Stack.Item grow>
-            {selected && (
-              <Section title={selected.name} fill width="100%" scrollable>
-                <Stack wrap>
-                  {selected.items.map((item) => (
-                    <Stack.Item key={item.type} className="ItemPicker">
-                      <ItemRender item={item} />
-                    </Stack.Item>
-                  ))}
-                </Stack>
-              </Section>
-            )}
-          </Stack.Item>
-        </Stack>
-      </Window.Content>
-    </Window>
-  );
-};
-
-const Sidebar = (props: {
-  readonly setSelected: (_) => void;
-  readonly selected: Category;
-}) => {
-  const { data } = useBackend<LoadoutPickerData>();
+  const { act, data } = useBackend<LoadoutPickerData>();
 
   const {
     fluff_categories,
     loadout_categories,
-    fluff_points,
-    max_fluff_points,
-    fluff_gear,
+    selected_loadout_slot,
+    max_save_slots,
   } = data;
 
-  const { selected, setSelected } = props;
+  const [selected, setSelected] = useState<Category | undefined>();
 
   const [menu, setMenu] = useState<'fluff' | 'loadout'>('fluff');
 
@@ -87,21 +58,118 @@ const Sidebar = (props: {
   }, [fluff_categories, menu]);
 
   return (
+    <Window height={600} width={865} theme="crtblue">
+      <Window.Content className="LoadoutPicker">
+        <Stack fill>
+          <Stack.Item>
+            <Sidebar
+              setSelected={setSelected}
+              selected={selected!}
+              setMenu={setMenu}
+              menu={menu}
+            />
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack vertical fill>
+              {menu === 'loadout' && (
+                <Stack.Item>
+                  <Stack fill justify="space-evenly">
+                    {Array.from({ length: max_save_slots }).map((_, val) => (
+                      <Stack.Item key={val}>
+                        <Button
+                          selected={selected_loadout_slot === val + 1}
+                          onClick={() => act('slot', { picked: val + 1 })}
+                          fluid
+                        >
+                          Slot {val + 1}
+                        </Button>
+                      </Stack.Item>
+                    ))}
+                  </Stack>
+                </Stack.Item>
+              )}
+              {selected && (
+                <Stack.Item grow>
+                  <Section title={selected.name} fill width="100%" scrollable>
+                    <Stack wrap>
+                      {selected.items.map((item) => (
+                        <Stack.Item key={item.type} className="ItemPicker">
+                          <ItemRender item={item} />
+                        </Stack.Item>
+                      ))}
+                    </Stack>
+                  </Section>
+                </Stack.Item>
+              )}
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Window.Content>
+    </Window>
+  );
+};
+
+const Sidebar = (props: {
+  readonly setSelected: (_) => void;
+  readonly selected: Category;
+  readonly setMenu: (_) => void;
+  readonly menu: 'fluff' | 'loadout';
+}) => {
+  const { data } = useBackend<LoadoutPickerData>();
+
+  const {
+    fluff_categories,
+    loadout_categories,
+    fluff_points,
+    max_fluff_points,
+    loadout_points,
+    max_job_points,
+    fluff_gear,
+    selected_job,
+    loadout,
+  } = data;
+
+  const { setSelected, selected, setMenu, menu } = props;
+
+  const toMap = menu === 'fluff' ? fluff_categories : loadout_categories;
+
+  return (
     <Stack vertical fill>
       <Stack.Item>
         <Stack>
-          <Stack.Item>
-            <Button icon={'shirt'}>Fluff</Button>
+          <Stack.Item grow>
+            <Button
+              fluid
+              icon={'person-rifle'}
+              onClick={() => setMenu('loadout')}
+            >
+              Loadout
+            </Button>
           </Stack.Item>
-          <Stack.Item>
-            <Button icon={'person-rifle'}>Loadout</Button>
+          <Stack.Item grow>
+            <Button fluid icon={'shirt'} onClick={() => setMenu('fluff')}>
+              Fluff
+            </Button>
           </Stack.Item>
         </Stack>
       </Stack.Item>
       <Stack.Item>
         <Section scrollable height="220px">
           <Stack vertical height="200px">
-            {fluff_categories.map((category) => (
+            {menu === 'loadout' && (
+              <>
+                <Stack.Item>
+                  <Box>{selected_job}</Box>
+                </Stack.Item>
+                <Divider />
+              </>
+            )}
+            {!toMap.length && (
+              <Stack.Item>
+                <Box>No loadout for this role.</Box>
+              </Stack.Item>
+            )}
+            {toMap.map((category) => (
               <Stack.Item key={category.name}>
                 <Button
                   fluid
@@ -117,12 +185,16 @@ const Sidebar = (props: {
       </Stack.Item>
       <Stack.Item grow>
         <Section
-          title={`Loadout (${fluff_points}/${max_fluff_points} points)`}
+          title={
+            menu === 'fluff'
+              ? `Gear (${fluff_points}/${max_fluff_points} points)`
+              : `Loadout (${loadout_points}/${max_job_points} points)`
+          }
           height="100%"
           scrollable
         >
           <Stack wrap width="180px" height="165px">
-            {fluff_gear.map((item, index) => (
+            {(menu === 'fluff' ? fluff_gear : loadout).map((item, index) => (
               <Stack.Item key={index} className="ItemPicker">
                 <ItemRender item={item} loadout />
               </Stack.Item>
@@ -140,13 +212,16 @@ const ItemRender = (props: {
 }) => {
   const { item, loadout } = props;
 
-  const { icon, icon_state, name, fluff_cost, type } = item;
+  const { icon, icon_state, name, fluff_cost, loadout_cost, type } = item;
 
   const { data, act } = useBackend<LoadoutPickerData>();
 
-  const { fluff_points: points, max_fluff_points: max_points } = data;
+  const { fluff_points, max_fluff_points, loadout_points, max_job_points } =
+    data;
 
-  const atLimit = points + fluff_cost > max_points;
+  const atLimit = loadout_cost
+    ? loadout_points + loadout_cost > max_job_points
+    : fluff_points + fluff_cost > max_fluff_points;
 
   return (
     <Stack>
@@ -170,7 +245,7 @@ const ItemRender = (props: {
             fallback={<Loader />}
           />
           <Box position="absolute" bottom="0px">
-            {fluff_cost}
+            {fluff_cost ? fluff_cost : loadout_cost}
           </Box>
         </Button>
       </Stack.Item>

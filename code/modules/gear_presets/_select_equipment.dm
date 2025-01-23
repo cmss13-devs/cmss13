@@ -203,17 +203,7 @@
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
 	for(var/gear_type in new_human.client.prefs.gear)
 		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
-		if(current_gear)
-			if(current_gear.allowed_roles && !(assignment in current_gear.allowed_roles))
-				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Role"))
-				return
-			if(current_gear.allowed_origins && !(new_human.origin in current_gear.allowed_origins))
-				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Origin"))
-				return
-			if(!(current_gear.slot && new_human.equip_to_slot_or_del(new current_gear.path, current_gear.slot)))
-				var/obj/equipping_gear = new current_gear.path
-				if(!new_human.equip_to_slot_if_possible(equipping_gear, WEAR_IN_BACK, disable_warning = TRUE))
-					equipping_gear.forceMove(get_turf(new_human))
+		current_gear.equip_to_user(new_human)
 
 	//Gives ranks to the ranked
 	var/current_rank = paygrades[1]

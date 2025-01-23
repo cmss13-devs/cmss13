@@ -21,8 +21,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	"whitefull"
 ))
 
-#define MAX_SAVE_SLOTS 10
-
 /datum/preferences
 	var/client/owner
 	var/atom/movable/screen/preview/preview_front
@@ -275,7 +273,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/list/gear
 
 	/// Loadout items that the user is equipped with on spawn.
-	var/list/loadout
+	VAR_PRIVATE/list/loadout
+
+	var/selected_loadout_slot = 1
 
 
 /datum/preferences/New(client/C)
@@ -1019,6 +1019,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("input")
 					var/priority = text2num(href_list["target_priority"])
 					SetJob(user, href_list["text"], priority)
+					ShowChoices(user)
+					update_all_pickers(user)
 				else
 					SetChoices(user)
 			return TRUE
@@ -2304,3 +2306,63 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			else
 				name = "[pick(GLOB.first_names_male_clf)] [pick(GLOB.last_names_clf)]"
 	return name
+
+/// If the role being equipped into has role-specific loadout, offer the player the option to change their slot
+/datum/preferences/proc/update_slot(picked_job, timeout = FALSE)
+	if(!(picked_job in GLOB.roles_with_gear))
+		return TRUE
+
+	var/loadout_for_role = has_loadout_for_role(picked_job)
+	if(!loadout_for_role)
+		return TRUE
+
+	var/options = list()
+
+	for(var/slot in loadout_for_role)
+		options["Slot [slot]"] = slot
+
+	owner.mob.sight = BLIND
+	var/selected = tgui_input_list(owner, "You have loadout available - which slot would you like to use?", "Slot Selection", options, theme = "crtgreen", timeout = timeout)
+	owner.mob.sight = owner.mob::sight
+
+	if(!selected)
+		return FALSE
+
+
+	selected_loadout_slot = options[selected]
+	return TRUE
+
+
+/// Gets the currently selected loadout of the provided job, or the job selected on "High"
+/datum/preferences/proc/get_active_loadout(job)
+	if(!job)
+		job = get_high_priority_job()
+
+	if(!job)
+		return
+
+	if(!islist(loadout[job]))
+		loadout[job] = list()
+
+	if(!islist(loadout[job]["[selected_loadout_slot]"]))
+		loadout[job]["[selected_loadout_slot]"] = list()
+
+	return loadout[job]["[selected_loadout_slot]"]
+
+/// If the user has any loadout pre-selected for the given role
+/datum/preferences/proc/has_loadout_for_role(job)
+	if(!job)
+		return
+
+	if(!loadout[job])
+		return
+
+	var/slots_with_stuff = list()
+	for(var/slot in loadout[job])
+		if(length(loadout[job][slot]))
+			slots_with_stuff += slot
+
+	if(!length(slots_with_stuff))
+		return
+
+	return slots_with_stuff

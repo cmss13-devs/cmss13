@@ -3,6 +3,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_category)
 GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_type, /datum/gear)
 
+GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /proc/populate_gear_list()
 	var/datum/gear/G
@@ -20,6 +21,10 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_type, /datum/gear)
 
 		// it's okay if this gets clobbered by duplicate names, it's just used for a best guess to convert old names to types
 		GLOB.gear_datums_by_name[G.display_name] = G
+
+		if(G.allowed_roles)
+			for(var/allowed_role in G.allowed_roles)
+				GLOB.roles_with_gear |= allowed_role
 
 /datum/gear
 
@@ -58,6 +63,30 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_type, /datum/gear)
 		"icon" = path::icon,
 		"icon_state" = path::icon_state
 	)
+
+/// Attempt to wear this equipment, in the given slot if possible. If not, any slot is used.
+/datum/gear/proc/equip_to_user(mob/living/carbon/human/user, override_checks = FALSE, drop_instead_of_del = TRUE)
+	if(!override_checks && allowed_roles && !(user.job in allowed_roles))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role"))
+		return
+
+	if(!override_checks && allowed_origins && !(user.origin in allowed_origins))
+		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Origin"))
+		return
+
+	if(!(slot && user.equip_to_slot_or_del(new path, slot)))
+		var/obj/equipping_gear = new path
+		if(user.equip_to_appropriate_slot(equipping_gear))
+			return
+
+		if(user.equip_to_slot_if_possible(equipping_gear, WEAR_IN_BACK, disable_warning = TRUE))
+			return
+
+		if(drop_instead_of_del)
+			equipping_gear.forceMove(get_turf(user))
+			return
+
+		qdel(equipping_gear)
 
 /datum/gear/eyewear
 	category = "Eyewear"

@@ -845,8 +845,6 @@
 	if(!primary)
 		return
 
-
-
 	var/turf/root = get_turf(user)
 	var/facing = get_dir(user, target)
 	var/list/target_turfs = list(get_step(root, facing), get_step(root, turn(facing, 45)), get_step(root, turn(facing, -45)))
@@ -857,8 +855,6 @@
 				continue
 			attack(target_mob, user, primary=FALSE)
 		
-
-
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
 	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."

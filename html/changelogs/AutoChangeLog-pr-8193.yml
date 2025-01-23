@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Changed Mentor AutoReplies to use the admin autoresponse system."

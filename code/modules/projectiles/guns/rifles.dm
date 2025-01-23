@@ -478,27 +478,11 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 	)
-	// CO rifle is guaranteed kitted out
-	random_spawn_chance = 100
-	random_spawn_rail = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/scope/mini,
-	)
-	random_spawn_under = list(
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/attached_gun/shotgun,
-	)
-	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/extended_barrel,
-	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	explo_proof = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
 	map_specific_decoration = TRUE
+	start_automatic = TRUE
 
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
@@ -506,7 +490,6 @@
 
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
-	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_id_lock)
 	. = ..()
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
@@ -532,17 +515,16 @@
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_amount(BURST_AMOUNT_TIER_4)
-	set_burst_delay(FIRE_DELAY_TIER_12)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_8
-	scatter = SCATTER_AMOUNT_TIER_8
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	set_burst_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	fa_max_scatter = SCATTER_AMOUNT_TIER_7
 
 /obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
 	. = ..()
@@ -595,26 +577,6 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/item_action/m46c/toggle_id_lock/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle ID lock"
-	action_icon_state = "id_lock_locked"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/m46c/toggle_id_lock/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
-	protag_gun.toggle_lock()
-	if(protag_gun.is_locked)
-		action_icon_state = "id_lock_locked"
-	else
-		action_icon_state = "id_lock_unlocked"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-
 // -- ability actions procs -- \\
 
 /obj/item/weapon/gun/rifle/m46c/proc/toggle_lock(mob/user)
@@ -633,7 +595,6 @@
 		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
 		return
 
-	gun_firemode = GUN_FIREMODE_SEMIAUTO
 	iff_enabled = !iff_enabled
 	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
@@ -648,12 +609,6 @@
 	. = ..()
 	if(iff_enabled)
 		modify_fire_delay(FIRE_DELAY_TIER_12)
-		remove_firemode(GUN_FIREMODE_BURSTFIRE)
-		remove_firemode(GUN_FIREMODE_AUTOMATIC)
-
-	else
-		add_firemode(GUN_FIREMODE_BURSTFIRE)
-		add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(mob/living/carbon/human/H)
 	linked_human = H

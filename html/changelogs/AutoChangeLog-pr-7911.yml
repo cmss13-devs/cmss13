@@ -1,0 +1,5 @@
+author: "blackcrystall"
+delete-after: True
+changes:
+  - code_imp: "randomize_squad code qol"
+  - bugfix: "In case if for some reason we have less open slots in squads for jobs than jobs aval in total, we put in to cryo squad in assumption that this their marine did cryo"

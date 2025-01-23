@@ -280,7 +280,7 @@
 		to_chat(user, SPAN_WARNING("The colony-wide lockdown has already been lifted."))
 		return
 	. = ..()
-	marine_announcement("The colony-wide lockdown protocols have been lifted.")
+	faction_announcement("The colony-wide lockdown protocols have been lifted.")
 	used = TRUE
 
 // Research
@@ -297,5 +297,5 @@
 		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown has already been lifted."))
 		return
 	. = ..()
-	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
+	faction_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
 	used = TRUE

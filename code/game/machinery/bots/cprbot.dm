@@ -189,7 +189,7 @@
 
 /obj/structure/machinery/bot/cprbot/proc/valid_cpr_target(mob/living/carbon/human/patient)
 	// Check if the patient is a valid target for CPR
-	return patient.stat == DEAD && patient.check_tod() && patient.is_revivable() && patient.get_target_lock(iff_signal) && ishuman_strict(patient)
+	return patient.stat == DEAD && patient.check_tod() && patient.is_revivable() && patient.ally_faction(iff_signal) && ishuman_strict(patient)
 
 /obj/structure/machinery/bot/cprbot/proc/find_and_move_to_patient()
 	var/list/potential_patients = list()

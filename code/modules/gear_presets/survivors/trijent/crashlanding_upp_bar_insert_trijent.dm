@@ -7,8 +7,7 @@
 	rank = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
-	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	job_faction = FACTION_UPP
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "173/RECON"
@@ -182,8 +181,7 @@
 	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	rank = JOB_UPP_SUPPORT_SYNTH
-	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	job_faction = FACTION_UPP
 	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp

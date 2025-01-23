@@ -95,8 +95,6 @@
 	///How much blood the mob can have
 	var/limit_blood = BLOOD_VOLUME_MAXIMUM
 
-	var/hivenumber
-
 	var/datum/pain/pain //Pain datum for the mob, set on New()
 	var/datum/stamina/stamina
 

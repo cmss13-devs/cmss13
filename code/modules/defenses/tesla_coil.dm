@@ -20,14 +20,6 @@
 
 	has_camera = FALSE
 
-	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
-	)
-
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_MARINE,
-	)
-
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()
@@ -78,7 +70,7 @@
 			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
 			continue
 
-		if(M.get_target_lock(faction_group))
+		if(M.ally_faction(faction))
 			continue
 
 		targets += M

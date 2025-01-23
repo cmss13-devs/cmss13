@@ -1,9 +1,8 @@
 /datum/equipment_preset/goon
 	name = "WY Goons"
-	faction = FACTION_WY
+	job_faction = FACTION_WY
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
-	faction_group = list(FACTION_WY)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_goon"
 

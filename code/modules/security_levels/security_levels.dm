@@ -34,7 +34,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 				if(announce)
 					var/name = "SELF-DESTRUCT SYSTEMS ACTIVE"
 					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED. PROCEED TO THE SELF-DESTRUCT CHAMBER FOR CONTROL ROD INSERTION."
-					marine_announcement(input, name, 'sound/AI/selfdestruct_short.ogg', logging = log)
+					faction_announcement(input, name, 'sound/AI/selfdestruct_short.ogg', logging = log)
 				GLOB.security_level = SEC_LEVEL_DELTA
 
 /proc/get_security_level()

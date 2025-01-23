@@ -180,8 +180,7 @@ Everything below isn't used or out of place.
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	job_faction = FACTION_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL)
 	minimap_icon = "goon_standard"

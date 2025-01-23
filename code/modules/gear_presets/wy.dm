@@ -2,10 +2,9 @@
 	name = "WY"
 	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
 
-	faction = FACTION_WY
+	job_faction = FACTION_WY
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver
-	faction_group = FACTION_LIST_WY
 	skills = /datum/skills/civilian
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY

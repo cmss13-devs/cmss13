@@ -355,7 +355,7 @@
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
-		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+		faction_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
@@ -406,7 +406,7 @@
 
 						var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
 						var/name = "Automated Security Authority Announcement"
-						marine_announcement(input, name, 'sound/AI/commandreport.ogg')
+						faction_announcement(input, name, 'sound/AI/commandreport.ogg')
 						for(var/i in GLOB.living_xeno_list)
 							var/mob/M = i
 							sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))

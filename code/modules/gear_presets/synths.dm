@@ -53,7 +53,7 @@
 /datum/equipment_preset/synth/uscm
 	name = "USCM Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
+	job_faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
@@ -79,7 +79,6 @@
 /datum/equipment_preset/synth/uscm/councillor
 	name = "USCM Synthetic Councillor"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
@@ -124,8 +123,7 @@
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic - Classic Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	job_faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
 	rank = JOB_SYNTH_SURVIVOR
@@ -459,8 +457,7 @@
 	assignment = JOB_CMB_SYN
 	rank = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	job_faction = FACTION_MARSHAL
 	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
@@ -600,8 +597,7 @@
 /datum/equipment_preset/synth/working_joe
 	name = "Synthetic - Working Joe"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
-	faction_group = list(FACTION_MARINE)
+	job_faction = FACTION_MARINE
 	assignment = JOB_WORKING_JOE
 	rank = JOB_WORKING_JOE
 
@@ -699,8 +695,7 @@
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
 	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP)
-	faction = FACTION_UPP
+	job_faction = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
 
 /datum/equipment_preset/synth/working_joe/upp/load_gear(mob/living/carbon/human/new_human)
@@ -755,7 +750,7 @@
 
 /datum/equipment_preset/synth/survivor/cultist_synth
 	name = "Cultist - Xeno Cultist Synthetic"
-	faction = FACTION_XENOMORPH
+	job_faction = FACTION_XENOMORPH
 	minimap_icon = "cult_synth"
 	minimap_background = "background_cultist"
 
@@ -785,7 +780,7 @@
 
 /datum/equipment_preset/synth/survivor/midwife
 	name = "Fun - Xeno Cultist Midwife (Synthetic)"
-	faction = FACTION_XENOMORPH
+	job_faction = FACTION_XENOMORPH
 
 /datum/equipment_preset/synth/survivor/midwife/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -823,7 +818,7 @@
 /datum/equipment_preset/synth/infiltrator
 	name = "Infiltrator Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_NEUTRAL
+	job_faction = FACTION_NEUTRAL
 	assignment = JOB_COLONIST
 	rank = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic

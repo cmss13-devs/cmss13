@@ -17,14 +17,6 @@
 
 	can_be_near_defense = TRUE
 
-	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
-	)
-
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_MARINE,
-	)
-
 
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()
@@ -107,7 +99,7 @@
 		return
 
 	var/mob/living/carbon/M = A
-	if(M.get_target_lock(faction))
+	if(M.ally_faction(faction))
 		return
 
 	var/list/turf/path = get_line(src, linked_bell)

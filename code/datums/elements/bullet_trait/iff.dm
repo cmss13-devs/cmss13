@@ -33,7 +33,7 @@
 /datum/element/bullet_trait_iff/proc/check_iff(datum/target, mob/living/carbon/human/projectile_target)
 	SIGNAL_HANDLER
 
-	if(projectile_target.get_target_lock(iff_group))
+	if(projectile_target.ally_faction(iff_group))
 		return COMPONENT_SKIP_MOB
 
 /datum/element/bullet_trait_iff/proc/set_iff(datum/target, mob/living/carbon/human/firer)
@@ -45,12 +45,9 @@
 // We have a "cache" to avoid getting ID card iff every shot,
 // The cache is reset when the user drops their ID
 /datum/element/bullet_trait_iff/proc/get_user_iff_group(mob/living/carbon/human/user)
-	if(!ishuman(user))
-		return user?.faction_group
-
 	var/iff_group = LAZYACCESS(iff_group_cache, user)
 	if(isnull(iff_group))
-		iff_group = user.get_id_faction_group()
+		iff_group = user.faction
 		LAZYSET(iff_group_cache, user, iff_group)
 		// Remove them from the cache if they are deleted
 		RegisterSignal(user, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(handle_id_equip))

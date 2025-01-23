@@ -2,8 +2,7 @@
 
 /datum/equipment_preset/survivor/cmb
 	name = "Survivor - Colonial Marshal"
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	job_faction = FACTION_MARSHAL
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
 	minimap_background = "background_cmb"
@@ -18,8 +17,6 @@
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = "CMB Riot Control Officer"
 	idtype = /obj/item/card/id/deputy/riot
 	rank = JOB_CMB_RIOT
@@ -86,13 +83,12 @@
 // cmb synth (of note /datum/equipment_preset/synth/survivor/cmb_synth also exists)
 /datum/equipment_preset/synth/survivor/cmb
 	flags = EQUIPMENT_PRESET_STUB
+	job_faction = FACTION_MARSHAL
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth
 	name = "Survivor - Synthetic - CMB Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB Syn"
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Riot Control Synthetic"
 	rank = JOB_CMB_RSYN

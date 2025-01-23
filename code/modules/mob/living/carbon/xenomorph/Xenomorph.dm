@@ -61,8 +61,6 @@
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 
-	var/obj/item/iff_tag/iff_tag = null
-
 	var/static/list/walking_state_cache = list()
 	var/has_walking_icon_state = FALSE
 
@@ -135,9 +133,6 @@
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
 
-	// Hive-related vars
-	var/datum/hive_status/hive
-	hivenumber = XENO_HIVE_NORMAL
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 
 	// Variables that can be mutated
@@ -818,9 +813,6 @@
 
 /mob/living/carbon/xenomorph/get_pull_miltiplier()
 	return pull_multiplier
-
-/mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
-	faction = new_faction
 
 //Call this function to set the hive and do other cleanup
 /mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)

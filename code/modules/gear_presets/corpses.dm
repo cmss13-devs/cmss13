@@ -4,7 +4,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_COLONIST
 	rank = JOB_COLONIST
-	faction = FACTION_COLONIST
+	job_faction = FACTION_COLONIST
 	languages = list()
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
@@ -273,7 +273,6 @@
 	name = "Corpse - Corporate Liaison"
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
-	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	xenovictim = TRUE
@@ -350,7 +349,6 @@
 	name = "Corpse - Colony Division Manager"
 	assignment = "Colonial Division Manager"
 	rank = JOB_DIVISION_MANAGER
-	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_WY_GENERAL,
@@ -386,7 +384,6 @@
 	name = "Corpse - Colony Administrator"
 	assignment = "Colonial Administrator"
 	rank = JOB_DIRECTOR
-	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -575,7 +572,6 @@
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	faction_group = FACTION_LIST_WY
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,
@@ -616,7 +612,7 @@
 	assignment = JOB_CLF
 	idtype = /obj/item/card/id/data
 	rank = JOB_CLF
-	faction = FACTION_CLF
+	job_faction = FACTION_CLF
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/clf/New()
@@ -656,7 +652,7 @@
 	idtype = /obj/item/card/id/dogtag/upp
 	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_0)
 	rank = JOB_UPP
-	faction = FACTION_UPP
+	job_faction = FACTION_UPP
 
 /datum/equipment_preset/corpse/upp/New()
 	. = ..()
@@ -688,8 +684,7 @@
 	name = "Corpse - Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_PMC_STANDARD
-	faction = FACTION_PMC
-	faction_group = FACTION_LIST_WY
+	job_faction = FACTION_PMC
 	rank = JOB_PMC_STANDARD
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
@@ -816,7 +811,7 @@
 	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
 	rank = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
-	faction = FACTION_FREELANCER
+	job_faction = FACTION_FREELANCER
 
 /datum/equipment_preset/corpse/freelancer/New()
 	. = ..()
@@ -918,7 +913,7 @@
 	name = "Corpse - Dutch Dozen Rifleman"
 	assignment = "Dutch Dozen Rifleman"
 	idtype = /obj/item/card/id/silver
-	faction = FACTION_DUTCH
+	job_faction = FACTION_DUTCH
 	xenovictim = FALSE
 
 /datum/equipment_preset/corpse/dutchrifle/New()
@@ -951,7 +946,7 @@
 	name = "Corpse - Pizza Deliverer"
 	assignment = "Pizza Deliverer"
 	idtype = /obj/item/card/id/silver
-	faction = FACTION_PIZZA
+	job_faction = FACTION_PIZZA
 	xenovictim = FALSE
 
 /datum/equipment_preset/corpse/pizza/New()
@@ -989,7 +984,7 @@
 	name = "Corpse - Gladiator"
 	assignment = "Gladiator"
 	idtype = /obj/item/card/id/dogtag
-	faction = FACTION_GLADIATOR
+	job_faction = FACTION_GLADIATOR
 	xenovictim = FALSE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -1032,7 +1027,6 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -1351,12 +1345,11 @@
 
 	name = "Corpse - NSPA Constable"
 	assignment = "NSPA Constable"
-	faction_group = FACTION_LIST_SURVIVOR_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/nspa_silver
-	faction = FACTION_NSPA
+	job_faction = FACTION_NSPA
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable/load_gear(mob/living/carbon/human/new_human)

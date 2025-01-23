@@ -1,7 +1,6 @@
 /datum/equipment_preset/uscm_event
 	name = "USCM (Event Roles)"
-	faction = FACTION_MARINE
-	faction_group = FACTION_LIST_MARINE
+	job_faction = FACTION_MARINE
 	minimum_age = 30
 	languages = list(LANGUAGE_ENGLISH)
 

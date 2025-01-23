@@ -4,7 +4,7 @@
 	assignment = JOB_CLF
 	rank = FACTION_CLF
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
-	faction = FACTION_CLF
+	job_faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
 	minimap_background = "background_clf"
 	idtype = /obj/item/card/id/data
@@ -1105,7 +1105,6 @@
 
 /datum/equipment_preset/clf/soldier/hunted
 	name = "CLF Soldier (Hunted)"
-	faction = FACTION_HUNTED
 
 /datum/equipment_preset/clf/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/clf/jumpsuit = new()
@@ -1129,7 +1128,6 @@
 
 /datum/equipment_preset/clf/leader/hunted
 	name = "CLF Leader (Hunted)"
-	faction = FACTION_HUNTED
 
 
 /datum/equipment_preset/clf/leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -1158,7 +1156,6 @@
 
 /datum/equipment_preset/clf/engineer/hunted
 	name = "CLF Engineer (Hunted)"
-	faction = FACTION_HUNTED
 
 /datum/equipment_preset/clf/engineer/hunted/load_gear(mob/living/carbon/human/new_human)
 

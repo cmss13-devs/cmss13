@@ -173,13 +173,13 @@ SUBSYSTEM_DEF(hijack)
 
 	message += "\nDue to low orbit, extra fuel is required for non-surface evacuations.\nMaintain fueling functionality for optimal evacuation conditions."
 
-	marine_announcement(message, HIJACK_ANNOUNCE)
+	faction_announcement(message, HIJACK_ANNOUNCE)
 
 ///Called when an area power status is changed to announce that it has been changed
 /datum/controller/subsystem/hijack/proc/announce_area_power_change(area/changed_area)
 	var/message = "[changed_area] - [changed_area.power_equip ? "Online" : "Offline"]"
 
-	marine_announcement(message, HIJACK_ANNOUNCE)
+	faction_announcement(message, HIJACK_ANNOUNCE)
 
 ///Called to announce to xenos the state of evacuation progression
 /datum/controller/subsystem/hijack/proc/announce_progress()
@@ -200,31 +200,30 @@ SUBSYSTEM_DEF(hijack)
 	if(marine_warning_areas)
 		marine_warning_areas = copytext(marine_warning_areas, 1, -2)
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(!length(hive.totalXenos))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(!length(faction.total_mobs))
 			continue
 
 		switch(announce)
 			if(1)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), faction, XENO_HIJACK_ANNOUNCE)
 			if(2)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are half way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls are half way towards their goals. Disable the following areas: [xeno_warning_areas]"), faction, XENO_HIJACK_ANNOUNCE)
 			if(3)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are three quarters of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls are three quarters of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), faction, XENO_HIJACK_ANNOUNCE)
 			if(4)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls have completed their goals!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("The talls have completed their goals!"), faction, XENO_HIJACK_ANNOUNCE)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat early launch is now available. Recommendation: wait for 100% fuel for safety purposes.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			faction_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat early launch is now available. Recommendation: wait for 100% fuel for safety purposes.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			faction_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			faction_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
-			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
+			faction_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
@@ -299,7 +298,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct()
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
-	marine_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
+	faction_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/reactor/source, new_overloading)
 	SIGNAL_HANDLER
@@ -347,7 +346,7 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()
 	ares_sd_announced = TRUE
-	marine_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
+	faction_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
@@ -364,7 +363,7 @@ SUBSYSTEM_DEF(hijack)
 	sleep(7 SECONDS)
 	shakeship(2, 10, TRUE)
 
-	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
+	faction_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
 	sleep(5 SECONDS)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')

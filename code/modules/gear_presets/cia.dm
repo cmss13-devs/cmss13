@@ -5,7 +5,7 @@
 	assignment = JOB_CIA
 	skills = /datum/skills/cia
 	languages = ALL_HUMAN_LANGUAGES
-	faction = FACTION_MARINE
+	job_faction = FACTION_MARINE
 
 /datum/equipment_preset/cia/New()
 	. = ..()

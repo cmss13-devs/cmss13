@@ -426,16 +426,14 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			revive_enabled = check_tod() && is_revivable()
 
 		var/holder2_set = 0
-		if(hivenumber)
-			holder4.icon_state = "hudalien"
+		if(faction)
+			if(istype(faction, /datum/faction/xenomorph))
+				holder4.icon_state = "hudalien"
 
-			if(GLOB.hive_datum[hivenumber])
-				var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
-				if(hive)
-					if(hive.color)
-						holder4.color = hive.color
-					if(hive.leading_cult_sl == src)
+				if(faction)
+					if(faction.color)
+						holder4.color = faction.color
+					if(faction.leading_cult_sl == src)
 						holder4.icon_state = "hudalien_leader"
 
 		if(status_flags & XENO_HOST)
@@ -444,10 +442,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			var/obj/item/alien_embryo/E = locate(/obj/item/alien_embryo) in src
 			if(E)
 				holder3.icon_state = "infected[E.stage]"
-				var/datum/hive_status/hive = GLOB.hive_datum[E.hivenumber]
-
-				if(hive && hive.color)
-					holder3.color = hive.color
+				if(E.faction && E.faction.color)
+					holder3.color = E.faction.color
 
 				if(stat == DEAD || status_flags & FAKEDEATH)
 					holder2.alpha = 100
@@ -591,10 +587,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
-		if (Q && Q.observed_xeno == src)
+	if(stat != DEAD && faction)
+		var/mob/living/carbon/xenomorph/queen/xeno_queen = faction.living_xeno_queen
+		if(xeno_queen && xeno_queen.observed_xeno == src)
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
@@ -617,9 +612,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if (age)
 		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
 		holder.overlays += J
-	if(hive && hivenumber != XENO_HIVE_NORMAL)
+	if(faction && faction.code_identificator != FACTION_XENOMORPH_NORMAL)
 		var/image/J = image('icons/mob/hud/hud.dmi', src, "hudalien_xeno")
-		J.color = hive.color
+		J.color = faction.color
 		holder.overlays += J
 
 //Sec HUDs
@@ -675,8 +670,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	return
 
 /mob/living/carbon/human/hud_set_squad()
-	var/datum/faction/F = get_faction(faction)
-	var/image/holder = hud_list[F.hud_type]
+	if(!faction || !faction.hud_type)
+		return
+	var/image/holder = hud_list[faction.hud_type]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 

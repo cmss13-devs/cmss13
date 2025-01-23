@@ -45,12 +45,12 @@
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN, FACTION_UPP),
+		SENTRY_CATEGORY_IFF = list(FACTION_ALLY, SENTRY_FACTION_OWN),
 	)
 
 	selected_categories = list(
 		// SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = FACTION_MARINE,
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_OWN,
 	)
 
 /obj/structure/machinery/defenses/sentry/Initialize()
@@ -365,7 +365,7 @@
 				targets.Remove(A)
 				continue
 
-			if(M.get_target_lock(faction_group) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED) || M.is_ventcrawling)
+			if(M.ally_faction(faction) || M.invisibility || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED) || M.is_ventcrawling)
 				if(M == target)
 					target = null
 				targets.Remove(M)
@@ -475,11 +475,6 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
-/obj/structure/machinery/defenses/sentry/premade/Initialize()
-	. = ..()
-	if(selected_categories[SENTRY_CATEGORY_IFF])
-		selected_categories[SENTRY_CATEGORY_IFF] = FACTION_MARINE
-
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
@@ -521,11 +516,6 @@
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
 
-/obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
-	. = ..()
-	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
-	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
-
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 	name = "WY 5-GSE3 Static Turret"
 	desc = "A state-of-the-art, high-tech static, semi-automated turret with AI targeting capabilities from Weyland-Yutani."
@@ -533,11 +523,6 @@
 	defense_type = "Static"
 	sentry_type = "wy_sentry"
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_WY, FACTION_NSPA)
-
-/obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy/Initialize()
-	. = ..()
-	choice_categories[SENTRY_CATEGORY_IFF] = list(SENTRY_FACTION_COLONY, SENTRY_FACTION_WEYLAND)
-	selected_categories[SENTRY_CATEGORY_IFF] = SENTRY_FACTION_COLONY
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer
 	name = "\improper UA-635C Static Gauss Turret"
@@ -652,14 +637,6 @@
 	accuracy_mult = 4
 	damage_mult = 2
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
-
-	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
-	)
-
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_MARINE,
-	)
 
 
 /obj/structure/machinery/defenses/sentry/dmr/handle_rof(level)
@@ -830,9 +807,6 @@
 	omni_directional = TRUE
 	handheld_type = /obj/item/defenses/handheld/sentry/wy
 	ammo = new /obj/item/ammo_magazine/sentry/wy
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
-	)
 
 /obj/structure/machinery/defenses/sentry/mini/wy
 	name = "WY 14-GRA2 Mini Sentry"
@@ -847,9 +821,6 @@
 	hack_time = 25 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/wy/mini
 	ammo = new /obj/item/ammo_magazine/sentry/wy/mini
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
-	)
 
 /obj/structure/machinery/defenses/sentry/dmr/wy
 	name = "WY 2-ADT-A3 Heavy Sentry"
@@ -866,9 +837,6 @@
 	sentry_range = 8
 	handheld_type = /obj/item/defenses/handheld/sentry/wy
 	ammo = new /obj/item/ammo_magazine/sentry/wy
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
-	)
 
 /obj/structure/machinery/defenses/sentry/upp
 	name = "UPP SDS-R3 Sentry Gun"
@@ -881,9 +849,6 @@
 	disassemble_time = 5 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/upp
 	ammo = new /obj/item/ammo_magazine/sentry/upp
-	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_UPP,
-	)
 
 /obj/structure/machinery/defenses/sentry/upp/light
 	name = "UPP SDS-R8 Light Sentry"

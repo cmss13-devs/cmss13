@@ -6,6 +6,7 @@
 	var/faction_flags = NO_FLAGS
 
 	var/hud_type = FACTION_HUD
+	var/color = "#22888a"
 
 	var/relations_pregen[] = RELATIONS_NEUTRAL
 	var/datum/faction_module/relations/relations_datum
@@ -85,12 +86,10 @@
 		return FALSE
 
 	// Hard times, so basicaly if you organical... domain faction... You can figure it out on your self, without HIGH tech shit.
-	if(organ_faction_tag || (faction.faction_flags & FACTION_ORGANICAL_DOMAIN && ally_faction.faction_flags & FACTION_ORGANICAL_DOMAIN))
-		if(organ_faction_tag)
-			return ally_faction.organ_faction_tag_is_ally(organ_faction_tag)
-	else if(faction_tag)
-		return ally_faction.faction_tag_is_ally(faction_tag)
-	return FALSE
+	if(organ_faction_tag)
+		. += ally_faction.organ_faction_tag_is_ally(organ_faction_tag)
+	if(faction_tag)
+		. += ally_faction.faction_tag_is_ally(faction_tag)
 
 /datum/faction/proc/organ_faction_tag_is_ally(obj/item/faction_tag/organ/organ_tag)
 	if(organ_tag.faction == src)

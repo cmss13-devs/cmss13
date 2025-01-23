@@ -5,7 +5,6 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	rank = JOB_MARINE
-	faction_group = list(FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	auto_squad_name = SQUAD_FORECON
 	ert_squad = TRUE

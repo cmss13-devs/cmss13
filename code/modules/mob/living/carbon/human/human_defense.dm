@@ -353,41 +353,6 @@ Contains most of the procs that are called when a mob is attacked by something
 		if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
 			affecting.embed(I)
 
-/mob/living/carbon/human/proc/get_id_faction_group()
-	var/obj/item/card/id/C = wear_id
-	if(!istype(C))
-		C = get_active_hand()
-	if(!istype(C))
-		return null
-
-	return C.faction_group
-
-/mob/living/proc/get_target_lock(access_to_check)
-	if(isnull(access_to_check))
-		return
-
-	var/compare_group = faction_group
-
-	if(!islist(access_to_check))
-		return access_to_check in compare_group
-
-	var/list/overlap = compare_group & access_to_check
-	return length(overlap)
-
-/mob/living/carbon/human/get_target_lock(access_to_check)
-	if(isnull(access_to_check))
-		return
-
-	var/id_group = get_id_faction_group()
-	if(!id_group)
-		return ..()
-
-	if(!islist(access_to_check))
-		return access_to_check in id_group
-
-	var/list/overlap = id_group & access_to_check
-	return length(overlap)
-
 /mob/living/carbon/human/handle_flamer_fire_crossed(obj/flamer_fire/fire)
 	. = ..()
 	switch(fire.fire_variant)

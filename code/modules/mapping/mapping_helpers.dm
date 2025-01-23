@@ -61,7 +61,7 @@
 		? "Structural collapse detected in [announcement_areas]. Be advised that new routes may be accessible." \
 		: "Geological shifts detected in [announcement_areas]. Be advised that new routes may be accessible."
 
-	marine_announcement(marine_announcement_text, "Priority Announcement")
+	faction_announcement(marine_announcement_text, "Priority Announcement")
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
 		? "The shattered metal of this place has collapsed, providing new routes in [announcement_areas]." \
@@ -91,7 +91,7 @@
 		? "Structural collapse detected in [announcement_areas], allowing dismantlement. Be advised that new routes may be created." \
 		: "Geological shifts detected in [announcement_areas], allowing excavation. Be advised that new routes may be created."
 
-	marine_announcement(marine_announcement_text, "Priority Announcement")
+	faction_announcement(marine_announcement_text, "Priority Announcement")
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
 		? "The shattered metal of this place has collapsed, and we can create routes through [announcement_areas]." \

@@ -47,11 +47,11 @@
 		if(relations[code_identificator] == null || relations[code_identificator] > 1000)
 			continue
 		var/datum/faction/faction = GLOB.faction_datums[code_identificator]
-		relations_mapping += list(list("name" = faction.name, "desc" = faction.desc, "color" = faction.ui_color, "value" = relations[code_identificator]))
+		relations_mapping += list(list("name" = faction.name, "desc" = faction.desc, "color" = faction.color, "value" = relations[code_identificator]))
 
 	.["actions"] = source != src ? TRUE : FALSE
 
-	.["faction_color"] = faction.ui_color
+	.["faction_color"] = faction.color
 	.["faction_relations"] = relations_mapping
 
 /datum/faction_module/relations/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

@@ -18,8 +18,8 @@
 	var/list/paygrades = list("???")
 	var/role_comm_title
 	var/minimum_age
-	var/faction = FACTION_NEUTRAL
-	var/list/faction_group
+	var/job_faction = FACTION_NEUTRAL
+	var/force_update_faction = TRUE
 	var/origin_override
 
 	var/minimap_icon = "private"
@@ -75,9 +75,6 @@
 		UNIFORM_VEND_DRESS_SHOES = dress_shoes,
 		UNIFORM_VEND_DRESS_EXTRA = dress_extra
 	)
-
-	if(!faction_group)
-		faction_group = list(faction)
 
 	//load_appearance()
 /datum/equipment_preset/proc/load_race(mob/living/carbon/human/new_human, client/mob_client)

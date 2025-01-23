@@ -6,7 +6,6 @@
 	role_comm_title = "FORECON"
 	minimap_background = "background_forecon"
 	rank = JOB_SURVIVOR
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -286,7 +285,6 @@
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - Synthetic - FORECON Synth"
 	assignment = JOB_FORECON_SYN
-	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens

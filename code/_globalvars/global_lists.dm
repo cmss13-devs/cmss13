@@ -203,23 +203,6 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
 GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
-//Xeno hives
-GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
-	XENO_HIVE_NORMAL = new /datum/hive_status(),
-	XENO_HIVE_CORRUPTED = new /datum/hive_status/corrupted(),
-	XENO_HIVE_ALPHA = new /datum/hive_status/alpha(),
-	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),
-	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
-	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
-	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
-	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
-	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
-	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
-	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
-	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
-	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
-))
-
 GLOBAL_VAR_INIT(king_acquisition_time, 1 HOURS + 30 MINUTES + rand(0, 25) MINUTES)
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
 

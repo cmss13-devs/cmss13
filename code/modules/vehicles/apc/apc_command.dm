@@ -187,11 +187,11 @@
 	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
 		if(techpod_access_settings_override)
 			return TRUE
-		else if(user.get_target_lock(techpod_faction_requirement))
+		else if(user.ally_faction(techpod_faction_requirement))
 			return TRUE
 	else
 		if(techpod_access_settings_override)
-			if(user.get_target_lock(techpod_faction_requirement))
+			if(user.ally_faction(techpod_faction_requirement))
 				return TRUE
 		else
 			return TRUE

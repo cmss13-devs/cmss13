@@ -137,7 +137,7 @@
 				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG || !(usr in dview(1, src)))
 					return FALSE
 
-				marine_announcement(input)
+				faction_announcement(input)
 				message_admins("[key_name(usr)] has made a command announcement.")
 				log_announcement("[key_name(usr)] has announced the following: [input]")
 				cooldown_message = world.time

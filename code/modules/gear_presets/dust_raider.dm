@@ -2,7 +2,7 @@
 	name = "Dust Raider"
 	idtype = /obj/item/card/id/dogtag
 	languages = list(LANGUAGE_ENGLISH)
-	faction = FACTION_MARINE
+	job_faction = FACTION_MARINE
 
 
 /datum/equipment_preset/dust_raider/load_name(mob/living/carbon/human/new_human)

@@ -31,17 +31,14 @@
 	if(!istype(attempt_harm_mob))
 		return FALSE
 
-	if(!hive)
-		hive = GLOB.hive_datum[hivenumber]
-
-	if(!hive)
+	if(!faction)
 		return FALSE
 
-	if(hivenumber == XENO_HIVE_RENEGADE)
+	if(faction.code_identificator == XENO_HIVE_RENEGADE)
 		var/datum/hive_status/corrupted/renegade/renegade_hive = hive
 		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
 
-	return hive.is_ally(attempt_harm_mob)
+	return attempt_harm_mob.ally_faction(faction)
 
 // need this to set the data for walls/eggs/huggers when they are initialized
 /proc/set_hive_data(atom/focused_atom, hivenumber)

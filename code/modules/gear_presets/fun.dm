@@ -12,7 +12,7 @@
 /datum/equipment_preset/fun/pirate
 	name = "Fun - Pirate"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_PIRATE
+	job_faction = FACTION_PIRATE
 
 	skills = /datum/skills/pfc/crafty
 
@@ -75,8 +75,7 @@
 
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE
-	faction = FACTION_HEFA
-	faction_group = list(FACTION_HEFA, FACTION_MARINE)
+	job_faction = FACTION_HEFA
 
 	// Cooperate!
 	idtype = /obj/item/card/id/gold
@@ -245,8 +244,7 @@
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
-	faction = FACTION_MARINE
-	faction_group = FACTION_LIST_MARINE
+	job_faction = FACTION_MARINE
 	assignment = "Santa"
 
 	skills = null
@@ -416,7 +414,7 @@
 /datum/equipment_preset/fun/monkey
 	name = "Fun - Monkey"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_MONKEY
+	job_faction = FACTION_MONKEY
 
 	uses_special_name = TRUE
 

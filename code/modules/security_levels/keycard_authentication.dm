@@ -271,7 +271,7 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 		text_timeleft = "[timeleft] seconds"
 	var/input = "Station shutter locks lifting in [text_timeleft] per manual override."
 	var/title = announce_title
-	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
+	faction_announcement(input, title, 'sound/AI/commandreport.ogg')
 	for(var/mob/M in GLOB.player_list)
 		if(isxeno(M))
 			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))

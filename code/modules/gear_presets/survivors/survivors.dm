@@ -7,8 +7,7 @@
 	languages = list(LANGUAGE_ENGLISH)
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/lanyard
-	faction = FACTION_SURVIVOR
-	faction_group = list(FACTION_SURVIVOR)
+	job_faction = FACTION_SURVIVOR
 	origin_override = ORIGIN_CIVILIAN
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -195,8 +194,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
 	rank = JOB_CMB
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	job_faction = FACTION_MARSHAL
 	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -298,10 +296,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
-	faction_group = FACTION_LIST_SURVIVOR_WY
 	rank = JOB_EXECUTIVE
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	job_faction = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -432,7 +428,6 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
-	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
 	minimap_icon = "icc"

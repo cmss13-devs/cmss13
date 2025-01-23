@@ -5,8 +5,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/civilian/survivor/clf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_CLF
-	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
+	job_faction = FACTION_CLF
 	minimap_background = "background_clf"
 	minimap_icon = "clf_mil"
 	access = list(ACCESS_CIVILIAN_PUBLIC)

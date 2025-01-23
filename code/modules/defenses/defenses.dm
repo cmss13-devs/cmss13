@@ -10,7 +10,6 @@
 	use_power = USE_POWER_NONE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
-	var/list/faction_group
 	var/health_max = 200
 	var/turned_on = FALSE
 	var/mob/owner_mob = null
@@ -39,9 +38,16 @@
 	/// laptop which is currently linked to the sentry
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
-	var/list/choice_categories = list()
+	var/list/choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_ALLY, SENTRY_FACTION_OWN),
+	)
 
-	var/list/selected_categories = list()
+	var/list/selected_categories = list(
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_OWN,
+	)
+
+	var/faction_to_get
+	var/datum/faction/faction
 
 
 /obj/structure/machinery/defenses/Initialize()
@@ -125,7 +131,7 @@
 		selected_categories[category] = selection
 		switch(category)
 			if(SENTRY_CATEGORY_IFF)
-				handle_iff(selection)
+				sentry_iff_mode = selection
 				return TRUE
 		return FALSE
 
@@ -134,25 +140,6 @@
 			nickname = selection
 			return TRUE
 	return FALSE
-
-/**
- * Update the IFF status of this structure.
- * @param selection: faction selection string.
- */
-/obj/structure/machinery/defenses/proc/handle_iff(selection)
-	switch(selection)
-		if(FACTION_MARINE)
-			faction_group = FACTION_LIST_MARINE
-		if(SENTRY_FACTION_HUMAN)
-			faction_group = FACTION_LIST_HUMANOID
-		if(SENTRY_FACTION_COLONY)
-			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
-		if(SENTRY_FACTION_WEYLAND)
-			faction_group = FACTION_LIST_MARINE_WY
-		if(FACTION_WY)
-			faction_group = FACTION_LIST_WY
-		if(FACTION_UPP)
-			faction_group = FACTION_LIST_UPP
 
 
 /obj/structure/machinery/defenses/start_processing()

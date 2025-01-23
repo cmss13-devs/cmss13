@@ -50,7 +50,7 @@
 		dat += SPAN_ALERT("[msg]<br>")
 		to_world(dat)
 	else
-		for(var/mob/creature in faction.totalM_mobs)
+		for(var/mob/creature in faction.total_mobs)
 			show_player_event_info(creature.client)
 
 /proc/check_event_info(category = "glob", client/user)

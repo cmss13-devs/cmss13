@@ -1013,7 +1013,7 @@
 
 	var/list/defectors = list()
 	var/list/datum/weakref/personal_allies = list()
-
+/*
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	xeno.add_language(LANGUAGE_ENGLISH)
@@ -1156,6 +1156,7 @@
 
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 	latejoin_burrowed = FALSE
+*/
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
@@ -1243,7 +1244,7 @@
 	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
 	return FALSE
 
-/datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)
+/datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)/*
 	if(xeno == attempt_harm_mob)
 		return TRUE //you cannot hurt yourself...
 	if(!xeno.iff_tag)
@@ -1260,7 +1261,7 @@
 		if(faction in attempt_harm_mob.faction_group)
 			return TRUE //cannot attack mob if iff is set to at least one of its factions
 	return FALSE
-
+*/
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
 
@@ -1311,7 +1312,7 @@
 		return
 	if(!(faction in FACTION_LIST_HUMANOID))
 		return
-
+/*
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
 		if(!xeno.iff_tag)
 			continue
@@ -1323,8 +1324,8 @@
 			continue
 		INVOKE_ASYNC(src, PROC_REF(give_defection_choice), xeno, faction)
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
-
-/datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
+*/
+/datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)/*
 	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
@@ -1338,8 +1339,8 @@
 	xeno.adjustBruteLoss(50)
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
-
-/datum/hive_status/corrupted/proc/handle_defectors(faction)
+*/
+/datum/hive_status/corrupted/proc/handle_defectors(faction)/*
 	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
 		if(!xeno.iff_tag)
 			continue
@@ -1356,7 +1357,7 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
-
+*/
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)
 	personal_allies += WEAKREF(ally)
 	ally.status_flags |= CORRUPTED_ALLY

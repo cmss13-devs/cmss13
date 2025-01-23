@@ -5,7 +5,7 @@
 	skills = /datum/skills/synth_k9
 	minimap_icon = "synth_k9"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
+	job_faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH_K9
 	rank = "Synthetic K9"

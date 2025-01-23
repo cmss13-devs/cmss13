@@ -1,7 +1,6 @@
 /datum/equipment_preset/cmb
 	name = "Colonial Marshal"
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	job_faction = FACTION_MARSHAL
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -806,8 +805,7 @@
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
-	faction = FACTION_MARSHAL
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
+	job_faction = FACTION_MARSHAL
 	minimap_icon = "private"
 	minimap_background = "background_cmb"
 

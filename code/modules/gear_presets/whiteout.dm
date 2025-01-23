@@ -2,7 +2,7 @@
 	name = "Whiteout Team Operative (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
-	faction = FACTION_WY_DEATHSQUAD
+	job_faction = FACTION_WY_DEATHSQUAD
 	assignment = "Whiteout Team Operative"
 	role_comm_title = "WO"
 	rank = FACTION_WY_DEATHSQUAD

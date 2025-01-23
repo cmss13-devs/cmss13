@@ -82,7 +82,7 @@
 	update_icon(node)
 
 	if(!(tech_flags & TECH_FLAG_NO_ANNOUNCE) && announce_message && announce_name)
-		marine_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg', logging = ARES_LOG_NONE)
+		faction_announcement(announce_message, announce_name, 'sound/misc/notice2.ogg', logging = ARES_LOG_NONE)
 
 	return TRUE
 

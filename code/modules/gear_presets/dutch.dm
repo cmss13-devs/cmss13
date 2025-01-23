@@ -5,7 +5,7 @@
 	paygrades = list(PAY_SHORT_DTC = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_RIFLEMAN
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_DUTCH
+	job_faction = FACTION_DUTCH
 
 	skills = /datum/skills/dutchmerc
 

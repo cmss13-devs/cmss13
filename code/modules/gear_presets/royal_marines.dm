@@ -1,7 +1,6 @@
 /datum/equipment_preset/twe
 	name = "Three World Empire"
-	faction = FACTION_TWE
-	faction_group = list(FACTION_TWE, FACTION_MARINE)
+	job_faction = FACTION_TWE
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_twe"
 
@@ -355,7 +354,6 @@
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted
 	name = "TWE Royal Marine Commando (Hunted)"
-	faction = FACTION_HUNTED
 
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -391,7 +389,6 @@
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted
 	name = "TWE Royal Marine Commando TL (Hunted)"
-	faction = FACTION_HUNTED
 
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -431,7 +428,6 @@
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted
 	name = "TWE Royal Marine Commando Officer (Hunted)"
-	faction = FACTION_HUNTED
 
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted/load_gear(mob/living/carbon/human/new_human)

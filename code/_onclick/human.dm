@@ -104,7 +104,7 @@
 			var/obj/item/back_item = xeno.back
 			if(xeno.stat != DEAD) // If the Xeno is alive, fight back
 				var/mob/living/carbon/carbon_user = user
-				if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+				if(!carbon_user || !carbon_user.ally_faction(xeno.faction))
 					carbon_user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
 					playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))

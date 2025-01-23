@@ -78,7 +78,7 @@
 			if(checked_living.body_position == LYING_DOWN && projectile_to_fire.original != checked_living)
 				continue
 
-			if(checked_living.ally_mob(user))
+			if(checked_living.ally_faction(user.faction))
 				if(HAS_TRAIT(checked_living, TRAIT_CLOAKED))
 					continue
 				if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)

@@ -38,7 +38,6 @@ interface SentrySpec {
   health: number;
   health_max: number;
   kills: number;
-  iff_status: string[];
   camera_available: number;
 }
 

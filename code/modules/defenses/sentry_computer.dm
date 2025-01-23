@@ -358,7 +358,6 @@
 		sentry_holder["camera_available"] = defense.has_camera && defense.placed
 		sentry_holder["selection_state"] = list()
 		sentry_holder["kills"] = defense.kills
-		sentry_holder["iff_status"] = defense.faction_group
 		sentry_holder["health"] = defense.health
 
 		for(var/category in defense.selected_categories)

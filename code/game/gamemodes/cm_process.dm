@@ -158,7 +158,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	// The announcement to all Humans.
 	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
 	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
-	marine_announcement(input, name)
+	faction_announcement(input, name)
 
 /datum/game_mode/proc/announce_bioscans()
 	//Depending on how either side is doing, we speed up the bioscans

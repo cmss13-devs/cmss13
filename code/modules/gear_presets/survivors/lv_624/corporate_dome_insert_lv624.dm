@@ -8,7 +8,6 @@
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "LV-624 Corporate Liaison"
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,

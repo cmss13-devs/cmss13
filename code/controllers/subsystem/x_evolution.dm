@@ -15,26 +15,21 @@ SUBSYSTEM_DEF(xevolution)
 	var/force_boost_power = FALSE // Debugging only
 
 /datum/controller/subsystem/xevolution/Initialize(start_timeofday)
-	var/datum/hive_status/HS
-	for(var/hivenumber in GLOB.hive_datum)
-		HS = GLOB.hive_datum[hivenumber]
-		boost_power[HS.hivenumber] = 1
-		overridden_power[HS.hivenumber] = FALSE
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		boost_power[faction_to_get] = 1
+		overridden_power[faction_to_get] = FALSE
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
-	var/datum/hive_status/HS
-	for(var/hivenumber in GLOB.hive_datum)
-		HS = GLOB.hive_datum[hivenumber]
-		if(!HS)
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+		if(overridden_power[faction_to_get])
 			continue
 
-		if(overridden_power[HS.hivenumber])
-			continue
-
-		if(!HS.dynamic_evolution)
-			boost_power[HS.hivenumber] = HS.evolution_rate + HS.evolution_bonus
-			HS.hive_ui.update_burrowed_larva()
+		if(!faction_module.dynamic_evolution)
+			boost_power[faction_to_get] = faction_module.evolution_rate + faction_module.evolution_bonus
+			faction_module.update_burrowed_larva()
 			continue
 
 		var/boost_power_new
@@ -45,25 +40,25 @@ SUBSYSTEM_DEF(xevolution)
 			boost_power_new = 1
 
 			//Add on any bonuses from thie hivecore after applying upgrade progress
-			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_CORE))
+			boost_power_new += (0.5 * faction_module.has_special_structure(XENO_STRUCTURE_CORE))
 
 		boost_power_new = clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 
-		boost_power_new += HS.evolution_bonus
+		boost_power_new += faction_module.evolution_bonus
 		if(!force_boost_power)
-			boost_power[HS.hivenumber] = boost_power_new
+			boost_power[faction_to_get] = boost_power_new
 
 		//Update displayed Evilution, which is under larva apparently
-		HS.hive_ui.update_burrowed_larva()
+		faction_module.update_burrowed_larva()
 
-/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(hivenumber)
-	return boost_power[hivenumber]
+/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(faction_to_get)
+	return boost_power[faction_to_get]
 
-/datum/controller/subsystem/xevolution/proc/override_power(hivenumber, power, override)
-	var/datum/hive_status/hive_status = GLOB.hive_datum[hivenumber]
-	boost_power[hivenumber] = power
-	overridden_power[hivenumber] = override
-	hive_status.hive_ui.update_burrowed_larva()
+/datum/controller/subsystem/xevolution/proc/override_power(faction_to_get, power, override)
+	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_module(FACTION_MODULE_HIVE_MIND)
+	boost_power[faction_to_get] = power
+	overridden_power[faction_to_get] = override
+	faction_module.update_burrowed_larva()
 
 #undef EVOLUTION_INCREMENT_TIME
 #undef BOOST_POWER_MIN

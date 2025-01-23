@@ -235,7 +235,7 @@
 	message_admins("Distress beacon: '[name]' activated [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(!quiet_launch)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
+		faction_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
@@ -255,7 +255,7 @@
 		candidates = list()
 
 		if(!quiet_launch)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+			faction_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
 	//We've got enough!
@@ -285,7 +285,7 @@
 					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
 	if(announce_incoming)
-		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+		faction_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 	message_admins("Distress beacon: [src.name] finalized, setting up candidates. [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"].")
 
@@ -345,9 +345,9 @@
 	candidates = list()
 	if(arrival_message && announce_incoming)
 		if(prob(chance_hidden))
-			marine_announcement(static_message, "Intercepted Transmission:")
+			faction_announcement(static_message, "Intercepted Transmission:")
 		else
-			marine_announcement(arrival_message, "Intercepted Transmission:")
+			faction_announcement(arrival_message, "Intercepted Transmission:")
 
 	for(var/datum/mind/spawned as anything in members)
 		if(ishuman(spawned.current))

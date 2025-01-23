@@ -327,12 +327,11 @@
 
 	name = "Survivor - Hybrisa - NSPA Constable"
 	assignment = "NSPA Constable"
-	faction_group = FACTION_LIST_SURVIVOR_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/nspa_silver
-	faction = FACTION_NSPA
+	job_faction = FACTION_NSPA
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -773,7 +772,6 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_5, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_6, PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_7, PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_8)
-	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC,)
 
@@ -852,8 +850,7 @@
 	minimap_icon = "goon_standard"
 	minimap_background = "background_goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	job_faction = FACTION_WY
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
@@ -926,7 +923,6 @@
 	assignment = "Weyland-Yutani - Commercial Pilot"
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
-	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/gold
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL,ACCESS_WY_EXEC)

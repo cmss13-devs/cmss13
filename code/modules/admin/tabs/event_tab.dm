@@ -516,7 +516,7 @@
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order
 
-	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	faction_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
 	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 
@@ -571,37 +571,44 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/faction = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA) + list("Everyone (-Yautja)")))
-	if(!faction)
+
+	var/list/datum/faction/factions = list()
+	LAZYSET(factions, "All Humans", "Everyone (-Yautja)")
+	for(var/faction_to_get in FACTION_LIST_HUMANOID)
+		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
+		LAZYSET(factions, faction_to_set.name, faction_to_set)
+
+	var/choice = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", factions)
+	if(!choice)
 		return
+
 	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
 	if(!input)
 		return
-	var/customname = input(usr, "Pick a title for the announcement. Confirm empty text for \"[faction] Update\" title.", "Title") as text|null
+	var/customname = input(usr, "Pick a title for the announcement. Confirm empty text for \"[choice] Update\" title.", "Title") as text|null
 	if(isnull(customname))
 		return
 	if(!customname)
-		customname = "[faction] Update"
-	if(faction == FACTION_MARINE)
+		customname = "[choice] Update"
+
+	if(choice == "Everyone (-Yautja)")
+		faction_announcement(input, customname, 'sound/AI/commandreport.ogg', choice)
+	else if(choice == FACTION_MARINE)
 		for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 			if(!(C.inoperable()))
-				var/obj/item/paper/P = new /obj/item/paper( C.loc )
+				var/obj/item/paper/P = new /obj/item/paper(C.loc)
 				P.name = "'[customname].'"
 				P.info = input
 				P.update_icon()
 				C.messagetitle.Add("[customname]")
 				C.messagetext.Add(P.info)
-
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
-			if(alert("Do you want PMCs (not Death Squad) to see this announcement?",,"Yes","No") == "Yes")
-				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, TRUE)
-			else
-				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
+			faction_announcement(input, customname, 'sound/AI/commandreport.ogg', factions[choice])
 	else
-		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
+		faction_announcement(input, customname, 'sound/AI/commandreport.ogg', factions[choice])
 
-	message_admins("[key_name_admin(src)] has created \a [faction] command report")
-	log_admin("[key_name_admin(src)] [faction] command report: [input]")
+	message_admins("[key_name_admin(src)] has created a [choice] command report")
+	log_admin("[key_name_admin(src)] [choice] command report: [input]")
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "Report: Queen Mother"
@@ -612,35 +619,27 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/hives = list()
-	for(var/hivenumber in GLOB.hive_datum)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		hives += list("[hive.name]" = hive.hivenumber)
+	var/list/datum/faction/factions = list()
+	LAZYSET(factions, "All Hives", "Everyone")
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
+		LAZYSET(factions, faction_to_set.name, faction_to_set)
 
-	hives += list("All Hives" = "everything")
-	var/hive_choice = tgui_input_list(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", hives)
-	if(!hive_choice)
-		return FALSE
-
-	var/hivenumber = hives[hive_choice]
-
+	var/choice = tgui_input_list(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", factions)
+	if(!choice)
+		return
 
 	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
 	if(!input)
-		return FALSE
+		return
 
-	var/hive_prefix = ""
-	if(GLOB.hive_datum[hivenumber])
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		hive_prefix = "[hive.prefix] "
-
-	if(hivenumber == "everything")
-		xeno_announcement(input, hivenumber, HIGHER_FORCE_ANNOUNCE)
+	if(choice != "All Hives")
+		xeno_announcement(input, factions[choice], SPAN_ANNOUNCEMENT_HEADER_BLUE("[factions[choice].prefix][QUEEN_MOTHER_ANNOUNCE]"))
 	else
-		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
+		xeno_announcement(input, choice, HIGHER_FORCE_ANNOUNCE)
 
-	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
-	log_admin("[key_name_admin(src)] Queen Mother ([hive_choice]): [input]")
+	message_admins("[key_name_admin(src)] has created a [choice] Queen Mother report")
+	log_admin("[key_name_admin(src)] Queen Mother ([choice]): [input]")
 
 /client/proc/cmd_admin_create_AI_report()
 	set name = "Report: ARES Comms"
@@ -725,7 +724,7 @@
 	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
+	faction_announcement(SPAN_YAUTJABOLDBIG(input), YAUTJA_ANNOUNCE, sound('sound/misc/notice1.ogg'), GLOB.faction_datums[FACTION_YAUTJA])
 	message_admins("[key_name_admin(src)] has created a predator ship AI report")
 	log_admin("[key_name_admin(src)] predator ship AI report: [input]")
 

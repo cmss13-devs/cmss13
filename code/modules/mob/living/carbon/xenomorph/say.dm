@@ -99,11 +99,11 @@
 
 	hivemind_broadcast(message, hive)
 
-/mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)
-	if(!message || stat || !hive)
+/mob/living/carbon/proc/hivemind_broadcast(message, datum/faction_module/hive_mind/faction_module)
+	if(!message || stat)
 		return
 
-	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
+	if(!faction_module.living_xeno_queen && !SSticker?.mode?.hardcore && !faction_module.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
@@ -112,48 +112,43 @@
 
 	log_hivemind("[key_name(src)] : [message]")
 
-	var/track = ""
-	var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
-	var/overwatch_src = XENO_OVERWATCH_SRC_HREF
-	var/overwatch_insert = ""
-	var/ghostrend
-	var/rendered
+	for(var/mob/creature in GLOB.dead_mob_list)
+		if(!creature.client)
+			continue
+		if(!creature.client.prefs || !(creature.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND))
+			continue
 
-	for (var/mob/S in GLOB.player_list)
-		var/hear_hivemind = 0
-		if(ishuman(S))
-			var/mob/living/carbon/human/Hu = S
-			if(Hu.hivenumber)
-				hear_hivemind = Hu.hivenumber
+		var/mob/living/carbon/xenomorph/zenomorph = creature
+		var/track = "(<a href='byond://?src=\ref[creature];track=\ref[src]'>F</a>)"
+		var/final_message
+		if(isqueen(src))
+			var/mob/hologram/queen/queen_eye = client?.eye
+			if(istype(queen_eye))
+				track += " (<a href='byond://?src=\ref[creature];track=\ref[queen_eye]'>E</a>)"
+			final_message = SPAN_XENOQUEEN("Hivemind, [name][track] hisses, <span class='normal'>'[message]'</span>")
+		else if(faction_module.leading_cult_sl == src)
+			final_message = SPAN_XENOQUEEN("Hivemind, [name][track] hisses, <span class='normal'>'[message]'</span>")
+		else if(istype(zenomorph) && IS_XENO_LEADER(zenomorph))
+			final_message = SPAN_XENOLEADER("Hivemind, Leader [name][track] hisses, <span class='normal'>'[message]'</span>")
+		else
+			final_message = SPAN_XENO("Hivemind, [name][track] hisses, <span class='normal'>'[message]'</span>")
+		creature.show_message(final_message, SHOW_MESSAGE_AUDIBLE)
 
-		if(!QDELETED(S) && (isxeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
-			var/mob/living/carbon/xenomorph/X = src
-			if(istype(S,/mob/dead/observer))
-				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
-					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
-					if(isqueen(src))
-						var/mob/hologram/queen/queen_eye = client?.eye
-						if(istype(queen_eye))
-							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					else if(hive.leading_cult_sl == src)
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					else if(istype(X) && IS_XENO_LEADER(X))
-						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					else
-						ghostrend = SPAN_XENO("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
+	for(var/mob/creature in faction.total_mobs)
+		if(!creature.client)
+			continue
 
-			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
-				if(isxeno(src) && isxeno(S))
-					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
+		var/mob/living/carbon/xenomorph/zenomorph = creature
+		var/overwatch_insert = ""
+		var/final_message
+		if(isxeno(src) && isxeno(creature))
+			overwatch_insert = " (<a href='byond://?src=\ref[creature];[XENO_OVERWATCH_TARGET_HREF]=\ref[src];[XENO_OVERWATCH_SRC_HREF]=\ref[creature]'>watch</a>)"
 
-				if(isqueen(src) || hive.leading_cult_sl == src)
-					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				else if(istype(X) && IS_XENO_LEADER(X))
-					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				else
-					rendered = SPAN_XENO("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-
-				S.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
+		if(isqueen(src) || faction.leading_cult_sl == src)
+			final_message = SPAN_XENOQUEEN("Hivemind, [name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+		else if(istype(zenomorph) && IS_XENO_LEADER(zenomorph))
+			final_message = SPAN_XENOLEADER("Hivemind, Leader [name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+		else
+			final_message = SPAN_XENO("Hivemind, [name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+		creature.show_message(final_message, SHOW_MESSAGE_AUDIBLE)
 

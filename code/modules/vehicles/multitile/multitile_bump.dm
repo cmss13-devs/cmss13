@@ -543,13 +543,13 @@
 				V.take_damage_type(TIER_3_RAM_DAMAGE_TAKEN, "blunt", src)
 				playsound(V, 'sound/effects/metal_crash.ogg', 35)
 				return FALSE
-		else if(driver && get_target_lock(driver.faction))
+		else if(driver && ally_faction(driver.faction))
 			apply_effect(0.5, WEAKEN)
 		else
 			apply_effect(1, WEAKEN)
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
-		if(get_target_lock(driver.faction))
+		if(ally_faction(driver.faction))
 			apply_effect(0.5, WEAKEN)
 		else
 			apply_effect(2, WEAKEN)

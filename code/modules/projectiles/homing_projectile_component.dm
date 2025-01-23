@@ -15,7 +15,7 @@
 		var/mob/living/carbon/human/human_target = homing_target
 		var/obj/projectile/projectile = parent
 		if(SEND_SIGNAL(parent, COMSIG_BULLET_CHECK_MOB_SKIPPING, human_target) & COMPONENT_SKIP_MOB\
-			|| projectile.runtime_iff_group && human_target.get_target_lock(projectile.runtime_iff_group)\
+			|| projectile.runtime_iff_group && human_target.ally_faction(projectile.runtime_iff_group)\
 		)
 			return COMPONENT_INCOMPATIBLE
 

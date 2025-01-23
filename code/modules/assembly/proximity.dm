@@ -70,7 +70,7 @@
 	if(scanning)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/M in range(range,mainloc))
-			if(M.get_target_lock(iff_signal))
+			if(M.ally_faction(iff_signal))
 				continue
 			HasProximity(M)
 

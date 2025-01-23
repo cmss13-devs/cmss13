@@ -35,7 +35,7 @@
 	assignment = "Freelancer"
 	rank = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
-	faction = FACTION_FREELANCER
+	job_faction = FACTION_FREELANCER
 
 /datum/equipment_preset/other/freelancer/New()
 	. = ..()
@@ -239,7 +239,6 @@
 
 /datum/equipment_preset/other/freelancer/standard/hunted
 	name = "Freelancer (Hunted)"
-	faction = FACTION_HUNTED
 
 /datum/equipment_preset/other/freelancer/standard/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
@@ -262,7 +261,6 @@
 
 /datum/equipment_preset/other/freelancer/leader/hunted
 	name = "Freelancer Leader (Hunted)"
-	faction = FACTION_HUNTED
 
 
 /datum/equipment_preset/other/freelancer/leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -293,7 +291,7 @@
 	assignment = "Elite Mercenary"
 	rank = "Mercenary"
 	idtype = /obj/item/card/id/centcom
-	faction = FACTION_MERCENARY
+	job_faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/elite_merc/New()
 	. = ..()
@@ -326,7 +324,6 @@
 	assignment = "Mercenary Miner"
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite
-	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/elite_merc/standard/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add unique backpacks and satchels
@@ -363,7 +360,6 @@
 	assignment = "Mercenary Heavy"
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/heavy
-	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/elite_merc/heavy/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
@@ -403,7 +399,6 @@
 	assignment = "Mercenary Engineer"
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/engineer
-	faction = FACTION_MERCENARY
 
 
 /datum/equipment_preset/other/elite_merc/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -457,7 +452,6 @@
 	assignment = "Mercenary Medic"
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/medic
-	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/elite_merc/medic/load_gear(mob/living/carbon/human/new_human)
 	//webbing
@@ -503,7 +497,6 @@
 	assignment = "Mercenary Warlord"
 	rank = "Mercenary"
 	skills = /datum/skills/mercenary/elite/leader
-	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/elite_merc/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -535,7 +528,7 @@
 /datum/equipment_preset/other/business_person
 	name = "Business Person"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_MARINE
+	job_faction = FACTION_MARINE
 	idtype = /obj/item/card/id/silver/cl
 	assignment = "Corporate Representative"
 	rank = "Corporate Representative"
@@ -567,7 +560,7 @@
 	rank = FACTION_PIZZA
 	skills = /datum/skills/civilian
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
-	faction = FACTION_PIZZA
+	job_faction = FACTION_PIZZA
 
 /datum/equipment_preset/other/pizza/New()
 	. = ..()
@@ -612,7 +605,7 @@
 	assignment = FACTION_SOUTO
 	rank = "Souto Man"
 	skills = /datum/skills/souto
-	faction = FACTION_SOUTO
+	job_faction = FACTION_SOUTO
 
 /datum/equipment_preset/other/souto/New()
 	. = ..()
@@ -649,10 +642,17 @@
 	rank = FACTION_ZOMBIE
 	languages = list("Zombie")
 	skills = null //no restrictions
-	faction = FACTION_ZOMBIE
+
+	job_faction = FACTION_ZOMBIE
 
 //Overloading the function to be able to spawn gear first
 /datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/new_human, randomise = FALSE)
+	GLOB.faction_datums[job_faction].add_mob(new_human)
+	if(new_human.faction?.organ_faction_iff_tag_type)
+		if(new_human.organ_faction_tag)
+			QDEL_NULL(new_human.organ_faction_tag)
+		new_human.organ_faction_tag = new new_human.faction.organ_faction_iff_tag_type(new_human, new_human.faction)
+
 	if(randomise)
 		load_name(new_human)
 	load_skills(new_human) //skills are set before equipment because of skill restrictions on certain clothes.
@@ -702,7 +702,8 @@
 
 	assignment = "Bestiarius"
 	rank = FACTION_GLADIATOR
-	faction = FACTION_GLADIATOR
+
+	job_faction = FACTION_GLADIATOR
 
 /datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -785,7 +786,7 @@
 
 /datum/equipment_preset/other/xeno_cultist
 	name = "Cultist - Xeno Cultist"
-	faction = FACTION_XENOMORPH
+	job_faction = FACTION_XENOMORPH
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = /obj/item/card/id/lanyard
 	skills = /datum/skills/civilian/survivor
@@ -921,7 +922,7 @@
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
-	faction = FACTION_NEUTRAL
+	job_faction = FACTION_NEUTRAL
 
 /datum/equipment_preset/other/tank/New()
 	. = ..()
@@ -961,8 +962,6 @@
 	minimum_age = 25
 	skills = /datum/skills/tank_crew
 
-	faction = FACTION_NEUTRAL
-
 /datum/equipment_preset/other/tank/trainee/New()
 	. = ..()
 	access = list(
@@ -988,9 +987,8 @@
 
 /datum/equipment_preset/tutorial
 	name = "Tutorial"
-	faction = FACTION_MARINE
+	job_faction = FACTION_MARINE
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction_group = FACTION_LIST_MARINE
 	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id
 	/// If the player should start out underfed

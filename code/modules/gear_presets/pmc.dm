@@ -1,11 +1,9 @@
 
 /datum/equipment_preset/pmc
 	name = "PMC"
-	faction = FACTION_PMC
+	job_faction = FACTION_PMC
 	rank = FACTION_PMC
 	idtype = /obj/item/card/id/pmc
-	faction = FACTION_PMC
-	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_pmc"
 	var/human_versus_human = FALSE
@@ -1351,8 +1349,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/xeno_handler
 	name = "Weyland-Yutani PMC (Xeno Handler)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-	faction_group = FACTION_LIST_MARINE_WY
 
 	assignment = JOB_PMC_XENO_HANDLER
 	rank = JOB_PMC_XENO_HANDLER

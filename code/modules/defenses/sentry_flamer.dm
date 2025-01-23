@@ -11,12 +11,12 @@
 
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_ALLY, SENTRY_FACTION_OWN),
 	)
 
 	selected_categories = list(
 		SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = FACTION_MARINE,
+		SENTRY_CATEGORY_IFF = SENTRY_FACTION_OWN,
 	)
 
 /obj/structure/machinery/defenses/sentry/flamer/handle_rof(level)
@@ -115,10 +115,6 @@
 	sentry_range = 6
 	omni_directional = TRUE
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/wy
-	selected_categories = list(
-		SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
-	)
 
 /obj/structure/machinery/defenses/sentry/flamer/wy/destroyed_action()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
@@ -146,10 +142,6 @@
 	ammo = new /obj/item/ammo_magazine/sentry_flamer/upp
 	sentry_type = "upp_flamer"
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/upp
-	selected_categories = list(
-		SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = FACTION_UPP,
-	)
 
 /obj/structure/machinery/defenses/sentry/flamer/upp/destroyed_action()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")

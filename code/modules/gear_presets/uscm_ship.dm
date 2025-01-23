@@ -1,7 +1,6 @@
 /datum/equipment_preset/uscm_ship
 	name = "USCM (ship roles)"
-	faction = FACTION_MARINE
-	faction_group = FACTION_LIST_MARINE
+	job_faction = FACTION_MARINE
 	minimum_age = 20
 	languages = list(LANGUAGE_ENGLISH)
 
@@ -26,8 +25,7 @@
 
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
-	faction = FACTION_WY
-	faction_group =	FACTION_LIST_MARINE_WY
+	job_faction = FACTION_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver/cl

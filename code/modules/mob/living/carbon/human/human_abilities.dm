@@ -272,11 +272,11 @@ CULT
 	if(!(copytext(message, -1) in ENDING_PUNCT))
 		message += "."
 
-	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
-	if(!istype(hive))
+	var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+	if(!istype(faction_module))
 		return
 
-	H.hivemind_broadcast(message, hive)
+	H.hivemind_broadcast(message, faction_module)
 
 /datum/action/human_action/activable/cult/obtain_equipment
 	name = "Obtain Equipment"

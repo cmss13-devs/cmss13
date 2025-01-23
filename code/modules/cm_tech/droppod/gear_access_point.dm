@@ -48,11 +48,11 @@
 	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
 		if(access_settings_override) //everyone allowed to grab stuff
 			return TRUE
-		else if(user.get_target_lock(faction_requirement)) //only it's faction group allowed
+		else if(user.ally_faction(faction_requirement)) //only it's faction group allowed
 			return TRUE
 	else
 		if(access_settings_override)
-			if(user.get_target_lock(faction_requirement)) //vica versa for extended and other modes, allowed by default, not allowed with override
+			if(user.ally_faction(faction_requirement)) //vica versa for extended and other modes, allowed by default, not allowed with override
 				return TRUE
 		else
 			return TRUE

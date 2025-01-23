@@ -289,7 +289,7 @@
 			. += SPAN_NOTICE("\nRest on the ground to restore 5% of your health every second.")
 			. += SPAN_NOTICE("You're able to pounce targets by using [get_ability_mouse_name()].")
 			. += SPAN_NOTICE("You will aggressively maul targets that are prone. Any click on yourself will be passed down to mobs below you, so feel free to click on your sprite in order to attack pounced targets.")
-	else if((user.faction in faction_group))
+	else if(ally_faction(user.faction))
 		desc = "[initial(desc)] There's a hint of warmth in them."
 	else
 		desc = initial(desc)
@@ -330,10 +330,11 @@
 	if(stat == DEAD)
 		return
 
-	if(!(attacking_mob.faction in faction_group) && !is_eating)
+	var/ally = ally_faction(attacking_mob.faction)
+	if(!ally && !is_eating)
 		Retaliate()
 
-	if(attacking_mob.a_intent == INTENT_HELP && (attacking_mob.faction in faction_group))
+	if(attacking_mob.a_intent == INTENT_HELP && ally)
 		if(on_fire)
 			adjust_fire_stacks(-5, min_stacks = 0)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
@@ -443,7 +444,7 @@
 		stop_automated_movement = FALSE
 		//if there's a friend on the same tile as us, don't bother getting up (cute!)
 		var/mob/living/carbon/friend = locate(/mob/living/carbon) in get_turf(src)
-		if((friend?.faction in faction_group) && resting)
+		if(friend && ally_faction(friend.faction) && resting)
 			chance_to_rest = 0
 
 		if(prob(chance_to_rest))
@@ -508,7 +509,7 @@
 	if(stance <= HOSTILE_STANCE_ALERT && !food_target && COOLDOWN_FINISHED(src, calm_cooldown))
 		var/intruder_in_sight = FALSE
 		for(var/mob/living/carbon/intruder in view(5, src))
-			if((intruder.faction in faction_group) || intruder.stat != CONSCIOUS || ismonkey(intruder) || intruder.alpha <= 200)
+			if(ally_faction(intruder.faction) || intruder.stat != CONSCIOUS || ismonkey(intruder) || intruder.alpha <= 200)
 				continue
 
 			intruder_in_sight = TRUE
@@ -664,11 +665,11 @@
 		playsound(loc,'sound/items/eatfood.ogg', 25, 1)
 
 	for(var/mob/living/carbon/nearest_mob in view(7, src))
-		if(nearest_mob != food.last_dropped_by || (nearest_mob.faction in faction_group))
+		if(nearest_mob != food.last_dropped_by || ally_faction(nearest_mob.faction))
 			continue
 		face_atom(nearest_mob)
 		manual_emote("stares curiously at [nearest_mob].")
-		faction_group += nearest_mob.faction_group
+		organ_faction_tag.factions |= nearest_mob.faction
 		break
 
 	health += maxHealth * 0.15
@@ -707,7 +708,7 @@
 	food_target_ref = null
 	is_eating = FALSE
 	//snagging the food while you're right next to the mob makes it very angry
-	if(get_dist(src, food_holder) <= 2 && !(food_holder.faction in faction_group))
+	if(get_dist(src, food_holder) <= 2 && !ally_faction(food_holder.faction))
 		Retaliate()
 		return TRUE
 
@@ -807,7 +808,7 @@
 			return
 		//don't stop retreating if there are non-friendly carbons in view
 		for(var/mob/living/carbon/hostile_mob in view(7, src))
-			if(hostile_mob.faction in faction_group)
+			if(ally_faction(hostile_mob.faction))
 				continue
 			MoveTo(hostile_mob, 10, TRUE, 2 SECONDS, FALSE)
 			retreat_attempts++
@@ -929,7 +930,7 @@
 	playsound(loc, "giant_lizard_hiss", 25)
 	pounced_mob.KnockDown(0.5)
 	step_to(src, pounced_mob)
-	if(!client && !(pounced_mob.faction in faction_group))
+	if(!client && !ally_faction(pounced_mob.faction))
 		ravagingattack(pounced_mob)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf(turf/turf_target)

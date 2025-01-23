@@ -1,10 +1,8 @@
 /datum/equipment_preset/contractor
 	name = "Military Contractor"
-	faction = FACTION_CONTRACTOR
+	job_faction = FACTION_CONTRACTOR
 	rank = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
-	faction = FACTION_CONTRACTOR
-	faction_group = list(FACTION_CONTRACTOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/contractor
@@ -66,7 +64,6 @@
 	assignment = "VAIPO Mercenary"
 	rank = JOB_CONTRACTOR_ST
 	skills = /datum/skills/contractor
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/standard/load_gear(mob/living/carbon/human/new_human)
 
@@ -175,7 +172,6 @@
 	assignment = "VAIPO Automatic Rifleman"
 	rank = JOB_CONTRACTOR_MG
 	skills = /datum/skills/contractor/heavy
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/heavy/load_gear(mob/living/carbon/human/new_human)
 
@@ -237,7 +233,6 @@
 	assignment = "VAIPO Engineering Specialist"
 	rank = JOB_CONTRACTOR_ENGI
 	skills = /datum/skills/contractor/engi
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
@@ -283,7 +278,6 @@
 	assignment = "VAIMS Medical Specialist"
 	rank = JOB_CONTRACTOR_MEDIC
 	skills = /datum/skills/contractor/medic
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing
@@ -329,7 +323,6 @@
 	assignment = "VAIPO Team Leader"
 	rank = JOB_CONTRACTOR_TL
 	skills = /datum/skills/contractor/leader
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/duty/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -378,7 +371,6 @@
 
 	assignment = "VAIPO Support Synthetic"
 	rank = JOB_CONTRACTOR_SYN
-	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/contractor/duty/synth/load_skills(mob/living/carbon/human/new_human)
@@ -470,7 +462,6 @@
 	assignment = "VAISO Mercenary"
 	rank = JOB_CONTRACTOR_COVST
 	skills = /datum/skills/contractor
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/load_gear(mob/living/carbon/human/new_human)
 
@@ -579,7 +570,6 @@
 	assignment = "VAISO Automatic Rifleman"
 	rank = JOB_CONTRACTOR_COVMG
 	skills = /datum/skills/contractor/heavy
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/heavy/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -630,7 +620,6 @@
 	assignment = "VAISO Engineering Specialist"
 	rank = JOB_CONTRACTOR_COVENG
 	skills = /datum/skills/contractor/engi
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
@@ -677,7 +666,6 @@
 	assignment = "VAIMS Medical Specialist"
 	rank = JOB_CONTRACTOR_COVMED
 	skills = /datum/skills/contractor/medic
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing
@@ -724,7 +712,6 @@
 	assignment = "VAISO Team Leader"
 	rank = JOB_CONTRACTOR_COVTL
 	skills = /datum/skills/contractor/leader
-	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -775,7 +762,6 @@
 	assignment = "VAISO Support Synthetic"
 	rank = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
-	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/contractor/covert/synth/load_skills(mob/living/carbon/human/new_human)

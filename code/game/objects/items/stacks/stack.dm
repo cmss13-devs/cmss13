@@ -211,7 +211,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(usr.action_busy)
 				return
 			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
-			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
+			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."),
 				SPAN_NOTICE("You start assembling \a [R.title]."))
 			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return

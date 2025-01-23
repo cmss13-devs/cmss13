@@ -56,7 +56,7 @@
 			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-			user.visible_message("[user.name] deconstructs [src].", \
+			user.visible_message("[user.name] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			deconstruct()
@@ -76,7 +76,7 @@
 			if("bulb")
 				src.icon_state = "bulb-construct-stage1"
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
-		user.visible_message("[user.name] removes the wiring from [src].", \
+		user.visible_message("[user.name] removes the wiring from [src].",
 			"You remove the wiring from [src].", "You hear a noise.")
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		return
@@ -91,7 +91,7 @@
 				if("bulb")
 					src.icon_state = "bulb-construct-stage2"
 			src.stage = 2
-			user.visible_message("[user.name] adds wires to [src].", \
+			user.visible_message("[user.name] adds wires to [src].",
 				"You add wires to [src].")
 		return
 
@@ -103,7 +103,7 @@
 				if("bulb")
 					src.icon_state = "bulb-empty"
 			src.stage = 3
-			user.visible_message("[user.name] closes [src]'s casing.", \
+			user.visible_message("[user.name] closes [src]'s casing.",
 				"You close [src]'s casing.", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
@@ -433,7 +433,7 @@
 	else if(status == LIGHT_EMPTY)
 		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //If it's a screwdriver open it.
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user.visible_message("[user.name] opens [src]'s casing.", \
+			user.visible_message("[user.name] opens [src]'s casing.",
 				"You open [src]'s casing.", "You hear a noise.")
 			var/obj/structure/machinery/light_construct/newlight = null
 			switch(fitting)

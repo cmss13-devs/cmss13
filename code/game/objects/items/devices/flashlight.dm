@@ -122,11 +122,11 @@
 
 		if(being == user) //they're using it on themselves
 			being.flash_eyes()
-			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
+		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."),
 							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
 		if(ishuman_strict(being)) //robots and aliens are unaffected
@@ -182,7 +182,7 @@
 				return // they have no organs somehow
 			if(being == user) //they're using it on themselves
 				being.flash_eyes()
-				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 				return
 			if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
@@ -446,7 +446,7 @@
 		if(!on)
 			return
 		var/hand = user.hand ? "l_hand" : "r_hand"
-		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),
 		SPAN_WARNING("You snuff out [src], singing your hand."))
 		user.apply_damage(7, BURN, hand)
 		burn_out()

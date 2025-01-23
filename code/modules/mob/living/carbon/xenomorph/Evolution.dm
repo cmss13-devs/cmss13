@@ -102,7 +102,7 @@
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
-	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."), \
+	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
@@ -181,7 +181,7 @@
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
@@ -312,7 +312,7 @@
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
 	if(new_xeno)
 		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
-	
+
 	return
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste)
@@ -324,7 +324,7 @@
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
-	
+
 	if(!istype(new_xeno))
 		//Something went horribly wrong
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
@@ -364,7 +364,7 @@
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
 	SPAN_XENODANGER("We regress into our previous form."))
 
 	transfer_observers_to(new_xeno)

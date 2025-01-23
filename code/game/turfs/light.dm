@@ -90,8 +90,8 @@
 	if(!broken)
 		playsound(src, "windowshatter", 25, 1)
 		xeno_attacker.animation_attack_on(src)
-		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"), \
-		SPAN_DANGER("You smash \the [src]!"), \
+		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"),
+		SPAN_DANGER("You smash \the [src]!"),
 		SPAN_DANGER("You hear broken glass!"), 5)
 		broken = TRUE
 		update_icon()

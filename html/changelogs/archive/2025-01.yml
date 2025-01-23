@@ -369,3 +369,14 @@
   iloveloopers:
   - qol: Forensic spray can no longer generate in recipes, mutated plants and colony
       vials.
+2025-01-23:
+  Blundir:
+  - bugfix: people that don't understand xeno speech won't see random letters from
+      the words xenos say
+  Nomoresolvalou, Justlat:
+  - imageadd: Added a new mask attachment for predators
+  Ultimate-Fluff:
+  - bugfix: Replaced the red pixel on the HOS's beret with the an appropriate golden
+      pixel.
+  thevandie:
+  - bugfix: fixed a sprite bug with the VP78

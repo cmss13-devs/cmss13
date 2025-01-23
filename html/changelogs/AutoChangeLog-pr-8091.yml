@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "people that don't understand xeno speech won't see random letters from the words xenos say"

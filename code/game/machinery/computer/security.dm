@@ -351,11 +351,8 @@ What a mess.*/
 				temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
-				for(var/datum/data/record/R in GLOB.data_core.security)
-					GLOB.data_core.security -= R
-					qdel(R)
+				GLOB.data_core.manifest_delete_all_security()
 				temp = "All Security records deleted."
-				msg_admin_niche("[key_name_admin(usr)] deleted all security records.")
 
 			if ("Add Entry")
 				if (!(istype(active2, /datum/data/record)))
@@ -532,34 +529,7 @@ What a mess.*/
 	if(inoperable())
 		return
 
-	for(var/datum/data/record/R in GLOB.data_core.security)
-		if(prob(10/severity))
-			switch(rand(1,6))
-				if(1)
-					msg_admin_niche("The security record name of [R.fields["name"]] was scrambled!")
-					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
-				if(2)
-					R.fields["sex"] = pick("Male", "Female")
-					msg_admin_niche("The security record sex of [R.fields["name"]] was scrambled!")
-				if(3)
-					R.fields["age"] = rand(5, 85)
-					msg_admin_niche("The security record age of [R.fields["name"]] was scrambled!")
-				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
-					msg_admin_niche("The security record criminal status of [R.fields["name"]] was scrambled!")
-				if(5)
-					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
-					msg_admin_niche("The security record physical state of [R.fields["name"]] was scrambled!")
-				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
-					msg_admin_niche("The security record mental state of [R.fields["name"]] was scrambled!")
-			continue
-
-		else if(prob(1))
-			msg_admin_niche("The security record of [R.fields["name"]] was lost!")
-			GLOB.data_core.security -= R
-			qdel(R)
-			continue
+	GLOB.data_core.manifest_security_emp_act(severity)
 
 /obj/structure/machinery/computer/secure_data/detective_computer
 	icon = 'icons/obj/structures/machinery/computer.dmi'

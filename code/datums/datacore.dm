@@ -8,6 +8,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/locked[] = list()
 	var/leveled_riflemen = 0
 	var/leveled_riflemen_max = 7
+	var/update_flags = NONE
 
 /datum/datacore/proc/manifest(nosleep = 0)
 	spawn()
@@ -25,7 +26,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/datum/data/record/foundrecord
 
 	var/use_name = isnull(ref)
-	for(var/datum/data/record/record_entry in GLOB.data_core.general)
+	for(var/datum/data/record/record_entry in general)
 		if(use_name)
 			if(record_entry.fields["name"] == name)
 				foundrecord = record_entry
@@ -45,8 +46,114 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(!use_name)
 			if(name)
 				foundrecord.fields["name"] = name
+		update_flags |= FLAG_DATA_CORE_GENERAL_UPDATED
 		return TRUE
 	return FALSE
+
+/datum/datacore/proc/manifest_delete_all_medical()
+	msg_admin_niche("[key_name_admin(usr)] deleted all medical records.")
+	QDEL_LIST(medical)
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
+
+/datum/datacore/proc/manifest_medical_emp_act(severity)
+	for(var/datum/data/record/R as anything in medical)
+		if(prob(10/severity))
+			switch(rand(1,6))
+				if(1)
+					msg_admin_niche("The medical record name of [R.fields["name"]] was scrambled!")
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
+				if(2)
+					R.fields["sex"] = pick("Male", "Female")
+					msg_admin_niche("The medical record sex of [R.fields["name"]] was scrambled!")
+				if(3)
+					R.fields["age"] = rand(5, 85)
+					msg_admin_niche("The medical record age of [R.fields["name"]] was scrambled!")
+				if(4)
+					R.fields["b_type"] = pick("A-", "B-", "AB-", "O-", "A+", "B+", "AB+", "O+")
+					msg_admin_niche("The medical record blood type of [R.fields["name"]] was scrambled!")
+				if(5)
+					R.fields["p_stat"] = pick("*SSD*", "Active", "Physically Unfit", "Disabled")
+					msg_admin_niche("The medical record physical state of [R.fields["name"]] was scrambled!")
+				if(6)
+					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					msg_admin_niche("The medical record mental state of [R.fields["name"]] was scrambled!")
+			continue
+
+		else if(prob(1))
+			msg_admin_niche("The medical record of [R.fields["name"]] was lost!")
+			medical -= R
+			qdel(R)
+			continue
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
+
+/datum/datacore/proc/manifest_delete_all_security()
+	msg_admin_niche("[key_name_admin(usr)] deleted all security records.")
+	QDEL_LIST(security)
+
+	update_flags |= FLAG_DATA_CORE_SECURITY_UPDATED
+
+/datum/datacore/proc/manifest_security_emp_act(severity)
+	for(var/datum/data/record/R in security)
+		if(prob(10/severity))
+			switch(rand(1,6))
+				if(1)
+					msg_admin_niche("The employment record name of [R.fields["name"]] was scrambled!")
+					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
+				if(2)
+					R.fields["sex"] = pick("Male", "Female")
+					msg_admin_niche("The employment record sex of [R.fields["name"]] was scrambled!")
+				if(3)
+					R.fields["age"] = rand(5, 85)
+					msg_admin_niche("The employment record age of [R.fields["name"]] was scrambled!")
+				if(4)
+					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
+					msg_admin_niche("The employment record criminal status of [R.fields["name"]] was scrambled!")
+				if(5)
+					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
+					msg_admin_niche("The employment record physical state of [R.fields["name"]] was scrambled!")
+				if(6)
+					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
+					msg_admin_niche("The employment record mental state of [R.fields["name"]] was scrambled!")
+			continue
+
+		else if(prob(1))
+			msg_admin_niche("The employment record of [R.fields["name"]] was lost!")
+			security -= R
+			qdel(R)
+			continue
+	update_flags |= FLAG_DATA_CORE_SECURITY_UPDATED
+
+/datum/datacore/proc/manifest_delete_medical_record(datum/data/record/target)
+	if(!istype(target, /datum/data/record))
+		return
+	for(var/datum/data/record/R as anything in medical)
+		if ((R.fields["name"] == target.fields["name"] || R.fields["id"] == target.fields["id"]))
+			medical -= R
+			qdel(R)
+	msg_admin_niche("[key_name_admin(usr)] deleted all employment records for [target.fields["name"]] ([target.fields["id"]]).")
+	QDEL_NULL(target)
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
+
+/datum/datacore/proc/manifest_inject_medical_record(datum/data/record/record)
+	medical += record
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED
+
+/datum/datacore/proc/manifest_delete(mob/living/carbon/human/target)
+	//Delete them from datacore.
+	var/target_ref = WEAKREF(target)
+	for(var/datum/data/record/R as anything in medical)
+		if((R.fields["ref"] == target_ref))
+			medical -= R
+			qdel(R)
+	for(var/datum/data/record/T in security)
+		if((T.fields["ref"] == target_ref))
+			security -= T
+			qdel(T)
+	for(var/datum/data/record/G in general)
+		if((G.fields["ref"] == target_ref))
+			general -= G
+			qdel(G)
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED|FLAG_DATA_CORE_SECURITY_UPDATED|FLAG_DATA_CORE_GENERAL_UPDATED
 
 /datum/datacore/proc/manifest_inject(mob/living/carbon/human/target)
 	var/assignment
@@ -110,7 +217,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		record_medical.fields["notes"] = target.med_record
 	else
 		record_medical.fields["notes"] = "No notes found."
-	medical += record_medical
+	manifest_inject_medical_record(record_medical)
 
 	//Security Record
 	var/datum/data/record/record_security = new()
@@ -148,6 +255,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	else
 		record_locked.fields["exploit_record"] = "No additional information acquired."
 	locked += record_locked
+	update_flags |= FLAG_DATA_CORE_MEDICAL_UPDATED|FLAG_DATA_CORE_SECURITY_UPDATED|FLAG_DATA_CORE_GENERAL_UPDATED
 
 
 /proc/get_id_photo(mob/living/carbon/human/H)

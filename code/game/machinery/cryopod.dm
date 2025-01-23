@@ -356,20 +356,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	//Handle job slot/tater cleanup.
 	GLOB.RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
 
-	var/occupant_ref = WEAKREF(occupant)
-	//Delete them from datacore.
-	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-		if((R.fields["ref"] == occupant_ref))
-			GLOB.data_core.medical -= R
-			qdel(R)
-	for(var/datum/data/record/T in GLOB.data_core.security)
-		if((T.fields["ref"] == occupant_ref))
-			GLOB.data_core.security -= T
-			qdel(T)
-	for(var/datum/data/record/G in GLOB.data_core.general)
-		if((G.fields["ref"] == occupant_ref))
-			GLOB.data_core.general -= G
-			qdel(G)
+	GLOB.data_core.manifest_delete(occupant)
 
 	icon_state = "body_scanner_open"
 	set_light(0)

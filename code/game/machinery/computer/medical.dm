@@ -209,12 +209,8 @@
 				src.temp = text("Are you sure you wish to delete all records?<br>\n\t<A href='byond://?src=\ref[];temp=1;del_all2=1'>Yes</A><br>\n\t<A href='byond://?src=\ref[];temp=1'>No</A><br>", src, src)
 
 			if (href_list["del_all2"])
-				for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-					GLOB.data_core.medical -= R
-					qdel(R)
-					//Foreach goto(494)
+				GLOB.data_core.manifest_delete_all_medical()
 				temp = "All records deleted."
-				msg_admin_niche("[key_name_admin(usr)] deleted all medical records.")
 
 			if (href_list["field"])
 				var/a1 = active1
@@ -394,7 +390,7 @@
 					R.fields["cdi"] = "None"
 					R.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 					R.fields["notes"] = "No notes."
-					GLOB.data_core.medical += R
+					GLOB.data_core.manifest_inject_medical_record(R)
 					src.active2 = R
 					src.screen = 4
 
@@ -499,34 +495,7 @@
 	if(inoperable())
 		return
 
-	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-		if(prob(10/severity))
-			switch(rand(1,6))
-				if(1)
-					msg_admin_niche("The medical record name of [R.fields["name"]] was scrambled!")
-					R.fields["name"] = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
-				if(2)
-					R.fields["sex"] = pick("Male", "Female")
-					msg_admin_niche("The medical record sex of [R.fields["name"]] was scrambled!")
-				if(3)
-					R.fields["age"] = rand(5, 85)
-					msg_admin_niche("The medical record age of [R.fields["name"]] was scrambled!")
-				if(4)
-					R.fields["b_type"] = pick("A-", "B-", "AB-", "O-", "A+", "B+", "AB+", "O+")
-					msg_admin_niche("The medical record blood type of [R.fields["name"]] was scrambled!")
-				if(5)
-					R.fields["p_stat"] = pick("*SSD*", "Active", "Physically Unfit", "Disabled")
-					msg_admin_niche("The medical record physical state of [R.fields["name"]] was scrambled!")
-				if(6)
-					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
-					msg_admin_niche("The medical record mental state of [R.fields["name"]] was scrambled!")
-			continue
-
-		else if(prob(1))
-			msg_admin_niche("The medical record of [R.fields["name"]] was lost!")
-			GLOB.data_core.medical -= R
-			qdel(R)
-			continue
+	GLOB.data_core.manifest_medical_emp_act(severity)
 
 
 /obj/structure/machinery/computer/med_data/laptop

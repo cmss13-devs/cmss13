@@ -478,14 +478,6 @@
 /datum/chem_property/negative/addictive/process_critical(mob/living/M, potency = 1, delta_time)
 	M.disabilities |= NERVOUS
 
-//properties with combat uses
-/datum/chem_property/negative/disrupting
-	name = PROPERTY_DISRUPTING
-	code = "DSR"
-	description = "Disrupts certain neurological processes related to communication in animals."
-	rarity = PROPERTY_UNCOMMON
-	cost_penalty = FALSE
-
 //PROPERTY_DISABLED (in generation)
 /datum/chem_property/negative/hemositic
 	name = PROPERTY_HEMOSITIC

@@ -1,7 +1,10 @@
-/datum/faction/cmb
+/datum/faction/uscm/cmb
 	name = "Colonial Marshal Bureau"
+	code_identificator = FACTION_CMB
 
-/datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+	faction_iff_tag_type = /obj/item/faction_tag/uscm/cmb
+
+/datum/faction/uscm/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/_role
@@ -32,3 +35,4 @@
 			hud_icon_state = "spec"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "cmb_[hud_icon_state]")
+

@@ -1,7 +1,9 @@
-/datum/faction/royal_marines_commando
-	name = "Royal Marines Commando"
+/datum/faction/threewe/royal_commando
+	name = "Three World Empire Royal Commando"
+	desc = "No information given, please update your local data."
+	code_identificator = FACTION_TWE
 
-/datum/faction/royal_marines_commando/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+/datum/faction/threewe/royal_commando/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/dogtag/ID = H.get_idcard()
 	var/_role
@@ -25,7 +27,7 @@
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
 
-/datum/faction/royal_marines_commando/get_antag_guns_snowflake_equipment()
+/datum/faction/threewe/royal_commando/get_antag_guns_snowflake_equipment()
 	return list(
 		list("PRIMARY FIREARMS", 0, null, null, null),
 		list("F903A1 Rifle", 20, /obj/item/weapon/gun/rifle/rmc_f90, null, VENDOR_ITEM_REGULAR),

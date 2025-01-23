@@ -1,9 +1,7 @@
 /datum/faction
-	var/name = NAME_FACTION_NEUTRAL
+	var/name = "Neutral Faction"
 	var/desc = "Neutral Faction"
-
 	var/code_identificator = FACTION_NEUTRAL
-	var/faction_flags = NO_FLAGS
 
 	var/hud_type = FACTION_HUD
 	var/color = "#22888a"

@@ -1,5 +1,13 @@
 /datum/faction/uscm
 	name = "United States Colonial Marines"
+	desc = "The USCM is divided into three overarching branches, called the Marine Space Forces: Sol, overseeing the core colonies and earth, the largest of the three; Eridani, operating among the Chinese and American colonised arms; Herculis, going through the Anglo-Japanese arms and the outer fringes. Each branch operates independently, but all are responsible for protecting American space territory and working together in that goal. \
+	There is also a fourth group, the Reserves, which is stationed mostly on earth and serves to reinforce the other branches. They have not seen any active use yet, but who knows what the future holds. Marine Space Force, Herculis, Chinook 91 GSO station is a military space station in geosynchronous orbit around the colony world Georgia 525 (70 Ophiuchi A V), and is the headquarters for the Herculis branch of the USCM. Under its control are the 4th Colonial Marine Division, 4th Colonial Marine Brigade, 4th Aerospace Wing, and 1st Colonial Support Group of the USCM. \
+	Chinook 91 reports directly to O'Neill station in Earth-Lunar space. The O'Neill station is the main communication base between the three branches. Supervising orders from the homeworld, controlling the First Fleet and rare joint operations. It is an extremely vital station and well guarded by the First Fleet in all its might. Tithonis Mountain on Bernice 378 is another large garrison of USCM troops, such as the 1st Colonial Support Group, and there are more minor garrisons along the Anglo-Japanese arm. The 2nd Company of the 2nd Battalion of the 4th Brigade, the Falling Falcons, and the USS Almayer are stationed in Herculis."
+	code_identificator = FACTION_USCM
+
+	relations_pregen = RELATIONS_FACTION_USCM
+
+	faction_iff_tag_type = /obj/item/faction_tag/uscm
 
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/datum/squad/squad = current_human.assigned_squad

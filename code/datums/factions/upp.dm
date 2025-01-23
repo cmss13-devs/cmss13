@@ -1,5 +1,13 @@
 /datum/faction/upp
 	name = "Union of Progressive Peoples"
+	desc = "A wide-reaching and powerful socialist authoritarian state. The UPP acts as the political and ideological rival of the United States and the UA. Though they have a relatively large presence on Earth (particularly in the Eastern sphere), the UPP is also largely active in colonizing the frontier. \
+	While the United Americas have never engaged the UPP in an official war, hostilities broke out between a USCM Task Force and a UPP Expeditionary Force during Operation Canton in mid 2165. The engagement ended in a ceasefire. The reason was fears that the conflict would spread to the more densely populated Sol System. \
+	The incident greatly enraged many senior officials in the UPP, who viewed the battle of Canton as an attempt by the United States to annex UPP sovereign territory. “Such an insult (referring to Canton) can only be repaid in American blood. Mark my words, this will happen”, Kolonel Ganbaatar of the UPP Armed Forces was quoted saying in May 2168."
+	code_identificator = FACTION_UPP
+
+	relations_pregen = RELATIONS_FACTION_UPP
+
+	faction_iff_tag_type = /obj/item/faction_tag/upp
 
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state

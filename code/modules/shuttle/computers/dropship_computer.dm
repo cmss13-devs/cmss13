@@ -361,7 +361,7 @@
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	if(istype(xeno))
 		hivenumber = xeno.hivenumber
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)

@@ -346,7 +346,7 @@
 /datum/hive_leaders/ui_data(mob/user)
 	var/list/data = list()
 
-	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/main_hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
 	var/list/queens = list()
 	if(main_hive.living_xeno_queen)
 		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))

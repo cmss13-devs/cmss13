@@ -916,7 +916,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "View Xeno Tacmap"
 	set category = "Ghost.View"
 
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
 	if(!hive || !length(hive.totalXenos))
 		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
 		return

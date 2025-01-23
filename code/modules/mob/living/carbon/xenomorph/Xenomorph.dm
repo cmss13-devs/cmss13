@@ -815,7 +815,7 @@
 	return pull_multiplier
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = FACTION_XENOMORPH_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
 		return FALSE

@@ -157,14 +157,14 @@
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
 	var/slow_amt = 8
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 
 /obj/effect/alien/resin/sticky/Initialize(mapload, hive)
 	. = ..()
 	if (hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
@@ -181,8 +181,8 @@
 /obj/effect/alien/resin/sticky/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hivenumber = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -196,7 +196,7 @@
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/damage = 8
 	var/penetration = 50
 
@@ -213,7 +213,7 @@
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	setDir(pick(GLOB.alldirs))
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
@@ -231,8 +231,8 @@
 /obj/effect/alien/resin/spike/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hivenumber = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -359,13 +359,14 @@
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
 	var/close_delay = 100
-	var/hivenumber = XENO_HIVE_NORMAL
+
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER
 	tiles_with = list(/obj/structure/mineral_door/resin)
 
-/obj/structure/mineral_door/resin/Initialize(mapload, hive)
+/obj/structure/mineral_door/resin/Initialize(mapload, _faction_to_get)
 	. = ..()
 	relativewall()
 	relativewall_neighbours()
@@ -378,7 +379,7 @@
 
 	set_hive_data(src, hivenumber)
 
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
@@ -540,8 +541,8 @@
 /obj/structure/mineral_door/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hivenumber = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 /obj/structure/mineral_door/resin/thick
@@ -558,7 +559,7 @@
 	icon_state = "acid_pillar_idle"
 
 	health = HEALTH_RESIN_XENO_ACID_PILLAR
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	should_track_build = TRUE
 	anchored = TRUE
 
@@ -575,7 +576,7 @@
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSprocessing, src)
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 
@@ -697,7 +698,7 @@
 	pixel_y = -16
 
 	health = HEALTH_RESIN_XENO_SHIELD_PILLAR
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	anchored = TRUE
 
 	var/decay_rate = AMOUNT_PER_TIME(1, 10 SECONDS)
@@ -881,7 +882,7 @@
 	/// The mob picked as a candidate to be the King
 	var/client/chosen_candidate
 	/// The hive associated with this cocoon
-	var/hive_number = XENO_HIVE_NORMAL
+	var/hive_number = FACTION_XENOMORPH_NORMAL
 	/// Whether the cocoon has hatched
 	var/hatched = FALSE
 	/// Current running timer
@@ -1238,7 +1239,7 @@
 
 	var/can_prime = FALSE
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 
 /obj/item/explosive/grenade/alien/Initialize(mapload, hivenumber)
 	. = ..()
@@ -1310,7 +1311,7 @@
 
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/source
 	var/direction = null
 	var/range = 0

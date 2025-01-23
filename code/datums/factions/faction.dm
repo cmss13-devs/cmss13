@@ -2,11 +2,13 @@
 	var/name = NAME_FACTION_NEUTRAL
 	var/desc = "Neutral Faction"
 
-	var/code_identificator = "nfo"
+	var/code_identificator = FACTION_NEUTRAL
 	var/faction_flags = NO_FLAGS
 
 	var/hud_type = FACTION_HUD
 	var/color = "#22888a"
+	var/faction_orders = ""
+	var/prefix = ""
 
 	var/relations_pregen[] = RELATIONS_NEUTRAL
 	var/datum/faction_module/relations/relations_datum
@@ -28,9 +30,15 @@
 	var/latejoin_enabled = TRUE
 	var/force_spawning = FALSE
 
+	var/list/datum/faction_module/faction_modules = list()
+
 /datum/faction/New()
 	relations_datum = new(src)
 	GLOB.custom_event_info_list[code_identificator] = new /datum/custom_event_info(src, null, code_identificator)
+
+/datum/faction/proc/get_faction_module(module_required)
+	if(module_required in faction_modules)
+		return faction_modules[module_required]
 
 /datum/faction/proc/add_mob(mob/living/carbon/creature)
 	if(!istype(creature))

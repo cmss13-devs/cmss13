@@ -473,28 +473,22 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	// Mostly replicated code from observer.dm.hive_status()
-	var/list/hives = list()
-	var/datum/hive_status/last_hive_checked
+	var/list/datum/faction/factions = list()
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
+		if(!length(faction_to_set.total_mobs) && !length(faction_to_set.total_dead_mobs))
+			continue
+		LAZYSET(factions, faction_to_set.name, faction_to_set)
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(length(hive.totalXenos) > 0 || length(hive.total_dead_xenos) > 0)
-			hives += list("[hive.name]" = hive.hivenumber)
-			last_hive_checked = hive
-
-	if(!length(hives))
+	if(!length(factions))
 		to_chat(src, SPAN_ALERT("There seem to be no hives at the moment."))
 		return
-	else if(length(hives) > 1) // More than one hive, display an input menu for that
-		var/faction = tgui_input_list(src, "Select which hive to award", "Hive Choice", hives, theme="hive_status")
-		if(!faction)
-			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
-			return
-		last_hive_checked = GLOB.hive_datum[hives[faction]]
 
-	give_jelly_award(last_hive_checked, as_admin=TRUE)
+	var/choice = tgui_input_list(src, "Select which hive to award", "Hive Choice", factions, theme = "hive_status")
+	if(!choice)
+		return
+
+	give_jelly_award(factions[choice], as_admin = TRUE)
 
 /client/proc/give_nuke()
 	if(!check_rights(R_ADMIN))

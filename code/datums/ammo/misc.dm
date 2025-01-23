@@ -297,7 +297,7 @@
 	name = "hugger shell"
 	ping = null
 	damage_type = BRUTE
-	var/hugger_hive = XENO_HIVE_NORMAL
+	var/hugger_hive = FACTION_XENOMORPH_NORMAL
 	icon_state = "smoke_shell"
 
 	damage = 15

@@ -172,11 +172,11 @@
 		message_admins("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
 		var/mob/transformed
-		var/hivenumber = XENO_HIVE_NORMAL
+		var/datum/faction/faction = GLOG.faction_datums[FACTION_XENOMORPH_NORMAL]
 
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
-			hivenumber = X.hivenumber
+			faction = X.faction
 
 		switch(href_list["simplemake"])
 			if("observer") transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
@@ -215,9 +215,9 @@
 			if("parrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
 			if("polyparrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
 
-		if(isxeno(transformed) && hivenumber)
+		if(isxeno(transformed))
 			var/mob/living/carbon/xenomorph/X = transformed
-			X.set_hive_and_update(hivenumber)
+			X.set_hive_and_update(faction)
 
 	/////////////////////////////////////new ban stuff
 	else if(href_list["unbanf"])

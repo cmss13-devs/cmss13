@@ -106,7 +106,7 @@
 			if(!choice)
 				return
 
-			var/list/targets = factions[choice].totalMobs
+			var/list/targets = factions[choice].total_mobs
 			for(var/mob/living/carbon/mob in targets)
 				var/area/area = get_area(mob)
 				if(mob.stat == DEAD || area.statistic_exempt)
@@ -116,7 +116,7 @@
 				to_chat(owner, SPAN_ALERT("No alive mobs of [choice] faction were found. Aborting."))
 				return
 
-			if(alert(owner, "[length(targets)] mobs of [choice] faction were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", owner.auto_lang(LANGUAGE_CONFIRM), owner.auto_lang(LANGUAGE_YES), owner.auto_lang(LANGUAGE_NO)) != owner.auto_lang(LANGUAGE_YES))
+			if(alert(owner, "[length(targets)] mobs of [choice] faction were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirm", "yes", "No") != "Yes")
 				return
 
 			for(var/mob/mob in targets)

@@ -34,18 +34,17 @@
 	if(!faction)
 		return FALSE
 
-	if(faction.code_identificator == XENO_HIVE_RENEGADE)
-		var/datum/hive_status/corrupted/renegade/renegade_hive = hive
+	if(faction.code_identificator == FACTION_XENOMORPH_RENEGADE)
+		var/datum/hive_status/corrupted/renegade/renegade_hive = faction
 		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
 
 	return attempt_harm_mob.ally_faction(faction)
 
 // need this to set the data for walls/eggs/huggers when they are initialized
-/proc/set_hive_data(atom/focused_atom, hivenumber)
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if (hive.color)
-		focused_atom.color = hive.color
-	focused_atom.name = "[lowertext(hive.prefix)][focused_atom.name]"
+/proc/set_hive_data(atom/focused_atom, datum/hive_status/faction)
+	if(faction.color)
+		focused_atom.color = faction.color
+	focused_atom.name = "[lowertext(faction.prefix)][focused_atom.name]"
 
 /proc/get_xeno_stun_duration(mob/stun_mob, duration)
 	if(iscarbonsizexeno(stun_mob))

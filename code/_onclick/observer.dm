@@ -60,10 +60,10 @@
 						do_observe(target)
 						return FALSE
 
-				if(xeno.hive)
-					for(var/mob_name in xeno.hive.banished_ckeys)
-						if(xeno.hive.banished_ckeys[mob_name] == ckey)
-							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
+				if(xeno.faction)
+					for(var/mob_name in xeno.faction.banished_ckeys)
+						if(xeno.faction.banished_ckeys[mob_name] == ckey)
+							to_chat(src, SPAN_WARNING("You are banished from the [xeno.faction], you may not rejoin unless the Queen re-admits you or dies."))
 							do_observe(target)
 							return FALSE
 

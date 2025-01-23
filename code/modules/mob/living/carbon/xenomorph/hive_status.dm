@@ -7,7 +7,7 @@
 	/// Short Hive ID as string used in stats reporting
 	var/reporting_id = "normal"
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
@@ -172,7 +172,7 @@
 	LAZYINITLIST(used_hivebuffs)
 	LAZYINITLIST(active_endgame_pylons)
 
-	if(hivenumber != XENO_HIVE_NORMAL)
+	if(hivenumber != FACTION_XENOMORPH_NORMAL)
 		return
 
 	if(!evolution_menu_images)
@@ -715,7 +715,7 @@
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
-				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
+				xeno.set_hive_and_update(FACTION_XENOMORPH_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				if(length(xeno.stomach_contents))
@@ -736,7 +736,7 @@
 		if(A && A.hivenumber != hivenumber)
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
-			embryo.hivenumber = XENO_HIVE_FORSAKEN
+			embryo.hivenumber = FACTION_XENOMORPH_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
@@ -1041,7 +1041,7 @@
 /datum/hive_status/bravo
 	name = "Bravo Hive"
 	reporting_id = "bravo"
-	hivenumber = XENO_HIVE_BRAVO
+	hivenumber = FACTION_XENOMORPH_NORMAL
 	prefix = "Bravo "
 	color = "#ffff80"
 	ui_color = "#99994d"
@@ -1090,7 +1090,7 @@
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
 	reporting_id = "forsaken"
-	hivenumber = XENO_HIVE_FORSAKEN
+	hivenumber = FACTION_XENOMORPH_FORSAKEN
 	prefix = "Forsaken "
 	color = "#cc8ec4"
 	ui_color = "#cc8ec4"

@@ -279,7 +279,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 
 GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL))
 
-/proc/give_jelly_award(datum/hive_status/hive, as_admin = FALSE)
+/proc/give_jelly_award(datum/faction/faction, as_admin = FALSE)
 	if(!hive)
 		return FALSE
 
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/list/possible_recipients = list()
 	var/list/recipient_castes = list()
 	var/list/recipient_mobs = list()
-	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in faction.total_mobs + faction.total_dead_mobs)
 		if(xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
 			continue
 		if(xeno.tier == 0) // Don't award larva or facehuggers
@@ -300,16 +300,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		recipient_castes[recipient_name] = xeno.caste_type
 		recipient_mobs[recipient_name] = xeno
 		possible_recipients += recipient_name
-	for(var/mob/living/carbon/xenomorph/xeno in hive.total_dead_xenos)
-		if(xeno.persistent_ckey == usr.persistent_ckey) // Don't award previous selves
-			continue
-		if(xeno.tier == 0) // Don't award larva or facehuggers
-			if(!as_admin || !isqueen(xeno))  // Don't award queens unless admin (She is tier 0 for whatever reason)
-				continue
-		var/recipient_name = xeno.real_name
-		recipient_castes[recipient_name] = xeno.caste_type
-		recipient_mobs[recipient_name] = xeno
-		possible_recipients += recipient_name
+
 	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients, theme="hive_status")
 	if(!chosen_recipient)
 		return FALSE
@@ -338,7 +329,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/recipient_ckey = recipient_mob.persistent_ckey
 	var/posthumous = !isliving(recipient_mob) || recipient_mob.stat == DEAD
 	if(!as_admin) // Don't need to check for giver mob in admin mode
-		for(var/mob/mob in hive.totalXenos)
+		for(var/mob/mob in hive.total_mobs)
 			if(mob == usr)
 				// Giver: Increment their medals given stat
 				giver_mob = mob

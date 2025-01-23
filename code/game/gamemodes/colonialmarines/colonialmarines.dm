@@ -382,7 +382,7 @@
 	if(!round_finished)
 		for(var/faction_to_get in FACTION_LIST_ALL)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-			var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 			if(!faction_module.xeno_queen_timer)
 				continue
 
@@ -420,12 +420,12 @@
 
 		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
 			for(var/faction_to_get in FACTION_LIST_ALL)
-				var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_module(FACTION_MODULE_HIVE_MIND)
+				var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_faction_module(FACTION_MODULE_HIVE_MIND)
 				if(!faction_module.xeno_queen_timer)
 					continue
 				faction_module.evolution_without_ovipositor = FALSE
 				if(faction_module.living_xeno_queen && !faction_module.living_xeno_queen.ovipositor)
-					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
+					to_chat(faction_module.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
@@ -531,12 +531,12 @@
 		return .
 
 	// Ensure there is no queen
-	var/datum/hive_status/hive
-	for(var/cur_number in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_number]
-		if(hive.need_round_end_check && !hive.can_delay_round_end())
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(faction.need_round_end_check && !faction.can_delay_round_end())
 			continue
-		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module.living_xeno_queen && !should_block_game_interaction(faction_module.living_xeno_queen.loc))
 			//Some Queen is alive, we shouldn't end the game yet
 			.[2]++
 	return .
@@ -556,11 +556,11 @@
 	if(round_finished)
 		return
 
-	for(var/faction_to_get in FACTION_LIST_ALL)
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/faction/current_faction = GLOB.faction_datums[faction_to_get]
 		if(current_faction.need_round_end_check && !current_faction.can_delay_round_end())
 			continue
-		var/datum/faction_module/hive_mind/faction_module = current_faction.get_module(FACTION_MODULE_HIVE_MIND)
+		var/datum/faction_module/hive_mind/faction_module = current_faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(faction_module.living_xeno_queen && !should_block_game_interaction(faction_module.living_xeno_queen.loc))
 			return
 
@@ -692,11 +692,11 @@
 	var/list/counted_xenos = list()
 
 	//organize our hives and castes in a readable and standard way | don't forget our pooled larva
-	for(var/hive in ALL_XENO_HIVES)
-		counted_xenos[hive] = list()
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		counted_xenos[faction_to_get] = list()
 		for(var/caste in ALL_XENO_CASTES)
-			counted_xenos[hive][caste] = 0
-		counted_xenos[hive]["Pooled Larva"] = GLOB.hive_datum[hive].stored_larva
+			counted_xenos[faction_to_get][caste] = 0
+		counted_xenos[faction_to_get]["Pooled Larva"] = GLOB.faction_datums[faction_to_get].stored_larva
 
 	//Run through all our clients
 	//add up our marines by job type, surv numbers, and non-standard humans we don't care too much about
@@ -713,7 +713,7 @@
 					counted_humans["Non-Standard Humans"][player_client.mob.job]++
 			else if(isxeno(player_client.mob))
 				var/mob/living/carbon/xenomorph/xeno = player_client.mob
-				counted_xenos[xeno.hivenumber][xeno.caste_type]++
+				counted_xenos[xeno.faction.code_identificator][xeno.caste_type]++
 
 	var/list/total_data = list("special round status" = special_round_status, "round time" = duration2text(), "counted humans" = counted_humans, "counted xenos" = counted_xenos)
 	running_round_stats = running_round_stats + list(total_data)

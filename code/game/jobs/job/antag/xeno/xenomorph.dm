@@ -23,7 +23,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	transform_to_xeno(H, XENO_HIVE_NORMAL)
+	transform_to_xeno(H, FACTION_XENOMORPH_NORMAL)
 
 /datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, hive_index)
 	var/datum/mind/new_xeno = human_to_transform.mind

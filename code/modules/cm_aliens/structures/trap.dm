@@ -12,7 +12,7 @@
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
-	var/hivenumber = XENO_HIVE_NORMAL //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the trap)
+	var/hivenumber = FACTION_XENOMORPH_NORMAL //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the trap)
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
 	var/created_by // ckey
@@ -29,7 +29,7 @@
 
 	cause_data = create_cause_data("resin trap", X)
 	set_hive_data(src, hivenumber)
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/obj/effect/alien/weeds/node/weed = locate() in loc
@@ -55,8 +55,8 @@
 /obj/effect/alien/resin/trap/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hivenumber = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 

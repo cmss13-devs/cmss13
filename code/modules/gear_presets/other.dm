@@ -821,7 +821,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/new_human, hivenumber = XENO_HIVE_NORMAL)
+/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/new_human, hivenumber = FACTION_XENOMORPH_NORMAL)
 	if(SSticker.mode && new_human.mind)
 		SSticker.mode.xenomorphs += new_human.mind
 

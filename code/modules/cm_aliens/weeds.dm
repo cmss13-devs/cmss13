@@ -25,8 +25,9 @@
 	var/spread_on_semiweedable = FALSE
 	var/block_structures = BLOCK_NOTHING
 
-	var/datum/hive_status/linked_hive = null
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
+	var/datum/faction/faction
+
 	var/turf/weeded_turf
 
 	// Which node is responsible for keeping this weed patch alive?
@@ -36,7 +37,7 @@
 	. = ..()
 
 	if(node)
-		linked_hive = node.linked_hive
+		faction = node.faction
 		if(use_node_strength)
 			weed_strength = node.weed_strength
 		node_range = node.node_range
@@ -44,17 +45,15 @@
 			name = "hive [name]"
 			health = WEED_HEALTH_HIVE
 		node.add_child(src)
-		hivenumber = linked_hive.hivenumber
+		faction_to_get = faction.code_identificator
 		spread_on_semiweedable = node.spread_on_semiweedable
 		if(weed_strength < WEED_LEVEL_HIVE && spread_on_semiweedable)
 			name = "hardy [name]"
 			health = WEED_HEALTH_HARDY
 		block_structures = node.block_structures
 		fruit_growth_multiplier = node.fruit_growth_multiplier
-	else
-		linked_hive = GLOB.hive_datum[hivenumber]
 
-	set_hive_data(src, hivenumber)
+	set_hive_data(src, faction)
 	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
@@ -83,7 +82,7 @@
 		COMSIG_ATOM_TURF_CHANGE,
 		COMSIG_MOVABLE_TURF_ENTERED
 	), PROC_REF(set_turf_weeded))
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(faction.code_identificator == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
@@ -100,9 +99,9 @@
 /obj/effect/alien/weeds/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
-		linked_hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+		faction_to_get = FACTION_XENOMORPH_FORSAKEN
+		faction = GLOB.faction_datums[faction_to_get]
+		set_hive_data(src, faction)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -181,8 +180,8 @@
 
 	var/weed_slow = weed_strength
 
-	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
-		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this
+	if(crossing_mob.ally_faction(faction))
+		if((crossing_mob.faction != faction) && prob(7)) // small chance for allied mobs to get a message indicating this
 			to_chat(crossing_mob, SPAN_NOTICE("The weeds seem to reshape themselves around your feet as you walk on them."))
 		return
 
@@ -238,7 +237,7 @@
 				continue
 			else if(W.weed_strength >= WEED_LEVEL_HIVE)
 				continue
-			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
+			else if (W.faction == node.faction && W.weed_strength >= node.weed_strength)
 				continue
 
 			old_fruit = locate() in T
@@ -361,7 +360,7 @@
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
-	if(!explo_proof && !HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, hivenumber))
+	if(!explo_proof && !attacking_xeno.ally_faction(faction))
 		attacking_xeno.animation_attack_on(src)
 		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5)
@@ -515,13 +514,13 @@
 	overlay_node = TRUE
 	overlays += staticnode
 
-/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
-	if (istype(hive))
-		linked_hive = hive
-	else if (istype(xeno) && xeno.hive)
-		linked_hive = xeno.hive
+/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/faction/_faction)
+	if(istype(_faction))
+		faction = _faction
+	else if (istype(xeno) && xeno.faction)
+		faction = xeno.faction
 	else
-		linked_hive = GLOB.hive_datum[hivenumber]
+		faction = GLOB.faction_datums[faction_to_get]
 
 	for(var/obj/effect/alien/weeds/weed in loc)
 		if(weed != src)
@@ -582,13 +581,13 @@
 	health = NODE_HEALTH_STANDARD
 
 /obj/effect/alien/weeds/node/alpha
-	hivenumber = XENO_HIVE_ALPHA
+	faction_to_get = FACTION_XENOMORPH_ALPHA
 
 /obj/effect/alien/weeds/node/feral
-	hivenumber = XENO_HIVE_FERAL
+	faction_to_get = FACTION_XENOMORPH_FERAL
 
 /obj/effect/alien/weeds/node/forsaken
-	hivenumber = XENO_HIVE_FORSAKEN
+	faction_to_get = FACTION_XENOMORPH_FORSAKEN
 
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE

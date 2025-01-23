@@ -252,14 +252,15 @@ DEFINE_BITFIELD(whitelist_status, list(
 //=================================================
 
 // Faction names
-#define FACTION_NEUTRAL "Neutral"
-#define FACTION_MARINE "USCM"
-#define FACTION_SURVIVOR "Survivor"
-#define FACTION_UPP "UPP"
-#define FACTION_TWE "TWE"
-#define FACTION_WY "Wey-Yu"
-#define FACTION_CLF "CLF"
-#define FACTION_PMC "PMC"
+#define FACTION_NEUTRAL "nfo"
+#define FACTION_USCM "uscm"
+#define FACTION_MARINE "cmf"
+#define FACTION_SURVIVOR "surv"
+#define FACTION_UPP "upp"
+#define FACTION_TWE "twe"
+#define FACTION_WY "wy"
+#define FACTION_CLF "clf"
+#define FACTION_PMC "pmc"
 #define FACTION_CONTRACTOR "VAI"
 #define FACTION_MARSHAL "Colonial Marshal"
 #define FACTION_NSPA "NSPA"
@@ -309,18 +310,6 @@ DEFINE_BITFIELD(whitelist_status, list(
 
 #define FACTION_LIST_ALL FACTION_LIST_HUMANOID + FACTION_LIST_XENOMORPH
 
-// Xenomorphs
-#define FACTION_PREDALIEN "Predalien"
-
-#define FACTION_XENOMORPH "Xenomorph"
-#define FACTION_XENOMORPH_CORRPUTED "Corrupted Xenomoprh"
-#define FACTION_XENOMORPH_ALPHA "Alpha Xenomorph"
-#define FACTION_XENOMORPH_BRAVO "Bravo Xenomorph"
-#define FACTION_XENOMORPH_CHARLIE "Charlie Xenomorph"
-#define FACTION_XENOMORPH_DELTA "Delta Xenomorph"
-
-#define FACTION_LIST_XENOMORPH list(FACTION_XENOMORPH, FACTION_XENOMORPH_CORRPUTED, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA)
-
 // Faction allegiances within a certain faction.
 
 #define FACTION_ALLEGIANCE_USCM_COMMANDER list("Doves", "Hawks", "Magpies", "Unaligned")
@@ -330,3 +319,53 @@ DEFINE_BITFIELD(whitelist_status, list(
 GLOBAL_VAR(last_ares_callout)
 
 GLOBAL_VAR(last_qm_callout)
+
+//NAMES
+#define NAME_FACTION_NEUTRAL "Neutral Faction"
+//USCM
+#define NAME_FACTION_USCM "United States Colonial Marines"
+#define NAME_FACTION_MARINE "Colonial Marines"
+#define NAME_FACTION_CMB "Colonial Marshal Bureau"
+#define NAME_FACTION_MARSOC "Marine Special Operations Command"
+//CONTRACTOR
+#define NAME_FACTION_CONTRACTOR "Vanguard's Arrow Incorporated"
+//WY
+#define NAME_FACTION_WY "Weyland-Yutani"
+#define NAME_FACTION_PMC "Private Military Company"
+#define NAME_FACTION_WY_DEATHSQUAD "Corporate Commandos"
+//UPP
+#define NAME_FACTION_UPP "Union of Progressive Peoples"
+//CLF
+#define NAME_FACTION_CLF "Colonial Liberation Front"
+//COLON
+#define NAME_FACTION_COLONIST "Colonists"
+//OTHER
+#define NAME_FACTION_RESS "Royal Empire of the Shining Sun"
+#define NAME_FACTION_TWE "Royal Marines Commando"
+#define NAME_FACTION_MERCENARY "Mercenary Group"
+#define NAME_FACTION_FREELANCER "Freelancer Mercenaries"
+#define NAME_FACTION_HEFA "HEFA Knights"
+#define NAME_FACTION_DUTCH "Dutch's Dozen"
+#define NAME_FACTION_PIRATE "Pirates of Free Space"
+#define NAME_FACTION_GLADIATOR "Gladiators"
+#define NAME_FACTION_PIZZA "Pizza Galaxy"
+#define NAME_FACTION_SOUTO "Souto Space"
+#define NAME_FACTION_THREEWE "Three World Empire"
+//ZOMBIE
+#define NAME_FACTION_ZOMBIE "Zombie Horde"
+//YAUTJA
+#define NAME_FACTION_YAUTJA "Yautja Hanting Groop"
+//XENOS
+#define NAME_FACTION_XENOMORPH "Xenomorphs"
+#define NAME_FACTION_XENOMORPH_NORMAL "Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_CORRUPTED "Corrupted Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_ALPHA "Alpha Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_BRAVO "Bravo Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_CHARLIE "Charlie Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_DELTA "Delta Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_FERAL "Feral Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_FORSAKEN "Forsaken Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_TAMED "Tamed Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_MUTATED "Mutated Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_YAUTJA "Yautja Xenomorph Hive"
+#define NAME_FACTION_XENOMORPH_RENEGADE "Renegade Xenomorph Hive"

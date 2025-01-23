@@ -29,7 +29,7 @@
 	unsuitable_atoms_damage = 15
 	attack_same = TRUE
 	faction = FACTION_XENOMORPH
-	hivenumber = XENO_HIVE_NORMAL
+	hivenumber = FACTION_XENOMORPH_NORMAL
 	wall_smash = 1
 	minbodytemp = 0
 	heat_damage_per_tick = 20

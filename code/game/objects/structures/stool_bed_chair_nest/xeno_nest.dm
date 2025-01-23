@@ -16,16 +16,17 @@
 	var/resisting_ready = 0
 	var/nest_resist_time = 1200
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
-	var/hivenumber = XENO_HIVE_NORMAL
 	var/force_nest = FALSE
 
-/obj/structure/bed/nest/Initialize(mapload, hive)
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
+
+/obj/structure/bed/nest/Initialize(mapload, _faction_to_get)
 	. = ..()
 
-	if (hive)
-		hivenumber = hive
+	if(_faction_to_get)
+		faction_to_get = _faction_to_get
 
-	set_hive_data(src, hivenumber)
+	set_hive_data(src, GLOB.faction_datums[faction_to_get])
 
 	buckling_y = list("[NORTH]" = 27, "[SOUTH]" = -19, "[EAST]" = 3, "[WEST]" = 3)
 	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = 18, "[WEST]" = -17)
@@ -79,11 +80,11 @@
 
 /obj/structure/bed/nest/alpha
 	color = "#ff4040"
-	hivenumber = XENO_HIVE_ALPHA
+	faction_to_get = FACTION_XENOMORPH_ALPHA
 
 /obj/structure/bed/nest/forsaken
 	color = "#cc8ec4"
-	hivenumber = XENO_HIVE_FORSAKEN
+	faction_to_get = FACTION_XENOMORPH_FORSAKEN
 
 /obj/structure/bed/nest/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
@@ -97,7 +98,7 @@
 		return
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon = user
-		if(HIVE_ALLIED_TO_HIVE(carbon.hivenumber, hivenumber))
+		if(carbon.ally_faction(GLOB.faction_datums[faction_to_get]))
 			to_chat(user, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	if(buckled_mob)
@@ -148,12 +149,12 @@
 
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+		if(!X.faction.unnesting_allowed && !isxeno_builder(X) && X.ally_faction(GLOB.faction_datums[faction_to_get]))
 			to_chat(X, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))
 		var/mob/living/carbon/H = user
-		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
+		if(H.ally_faction(GLOB.faction_datums[faction_to_get]))
 			to_chat(H, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 

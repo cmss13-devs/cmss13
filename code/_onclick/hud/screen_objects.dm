@@ -491,16 +491,17 @@
 	if(mods["alt"] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
-	if(!user.hive)
+	if(!user.faction)
 		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
-	if(!user.hive.living_xeno_queen)
+	var/datum/faction_module/hive_mind/faction_module = user.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
-	user.hive.mark_ui.update_all_data()
-	user.hive.mark_ui.open_mark_menu(user)
+	faction_module.mark_ui.update_all_data()
+	faction_module.mark_ui.open_mark_menu(user)
 
 /atom/movable/screen/queen_locator
 	name = "queen locator"
@@ -519,22 +520,23 @@
 		var/area/current_area = get_area(user)
 		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
-	if(!user.hive)
+	if(!user.faction)
 		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
+	var/datum/faction_module/hive_mind/faction_module = user.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(mods["alt"])
 		var/list/options = list()
-		if(user.hive.living_xeno_queen)
+		if(faction_module.living_xeno_queen)
 			// Don't need weakrefs to this or the hive core, since there's only one possible target.
 			options["Queen"] = list(null, TRACKER_QUEEN)
 
-		if(user.hive.hive_location)
+		if(faction_module.hive_location)
 			options["Hive Core"] = list(null, TRACKER_HIVE)
 
-		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
+		for(var/mob/living/carbon/xenomorph/leader in faction_module.xeno_leader_list)
 			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)
 
-		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
+		var/list/sorted_tunnels = sort_list_dist(faction_module.tunnels, get_turf(user))
 		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
 			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
 
@@ -545,12 +547,12 @@
 			tracker_type = selected_data[2] // Tracker category
 		return
 
-	if(!user.hive.living_xeno_queen)
+	if(!faction_module.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
-	user.overwatch(user.hive.living_xeno_queen)
+	user.overwatch(faction_module.living_xeno_queen)
 
 // Reset to the defaults
 /atom/movable/screen/queen_locator/proc/reset_tracking()

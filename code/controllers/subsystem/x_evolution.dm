@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(xevolution)
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-		var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(overridden_power[faction_to_get])
 			continue
 
@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(xevolution)
 	return boost_power[faction_to_get]
 
 /datum/controller/subsystem/xevolution/proc/override_power(faction_to_get, power, override)
-	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_module(FACTION_MODULE_HIVE_MIND)
+	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_faction_module(FACTION_MODULE_HIVE_MIND)
 	boost_power[faction_to_get] = power
 	overridden_power[faction_to_get] = override
 	faction_module.update_burrowed_larva()

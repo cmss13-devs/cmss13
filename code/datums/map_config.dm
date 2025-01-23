@@ -60,7 +60,7 @@
 
 	var/list/monkey_types = list(/mob/living/carbon/human/monkey)
 
-	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
+	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, FACTION_XENOMORPH_NORMAL = 0)
 
 	var/vote_cycle = 1
 

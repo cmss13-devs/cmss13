@@ -35,7 +35,7 @@
 	var/strength = 5
 	var/attached = FALSE
 	var/leaping = FALSE //Is actually attacking someone?
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
 

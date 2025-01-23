@@ -128,7 +128,7 @@
 		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
 		hive_cores += C
 
-/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL, should_spawn_nest = TRUE)
+/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = FACTION_XENOMORPH_NORMAL, should_spawn_nest = TRUE)
 	if(should_spawn_nest)
 		var/mob/living/carbon/human/original = ghost_mind.current
 
@@ -158,7 +158,7 @@
 		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = FACTION_XENOMORPH_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures

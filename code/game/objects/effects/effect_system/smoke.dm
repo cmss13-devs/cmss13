@@ -503,7 +503,7 @@
 	spread_speed = 6
 	smokeranking = SMOKE_RANK_BOILER
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)

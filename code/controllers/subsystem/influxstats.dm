@@ -52,11 +52,12 @@ SUBSYSTEM_DEF(influxstats)
 	return result
 
 /datum/controller/subsystem/influxstats/proc/run_special_round_statistics()
-	for(var/hive_tag in GLOB.hive_datum)
-		var/datum/hive_status/hive = GLOB.hive_datum[hive_tag]
-		SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = hive.reporting_id), list("count" = hive.stored_larva))
-		var/burst_larvas = GLOB.larva_burst_by_hive[hive] || 0
-		SSinfluxdriver.enqueue_stats("burst_larva", list("hive" = hive.reporting_id), list("count" = burst_larvas))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = faction.code_identificator), list("count" = faction_module.stored_larva))
+		var/burst_larvas = GLOB.larva_burst_by_hive[faction.code_identificator] || 0
+		SSinfluxdriver.enqueue_stats("burst_larva", list("hive" = faction.code_identificator), list("count" = burst_larvas))
 
 /datum/controller/subsystem/influxstats/proc/run_round_statistics()
 	var/datum/entity/statistic/round/stats = SSticker?.mode?.round_stats
@@ -134,12 +135,10 @@ SUBSYSTEM_DEF(influxstats)
 		else if(ishuman(mob))
 			team = "humans_others"
 		else if(isxeno(mob))
-			var/mob/living/xeno_enabled_mob = mob
-			var/datum/hive_status/hive = GLOB.hive_datum[xeno_enabled_mob.hivenumber]
-			if(!hive)
+			if(!mob.faction)
 				team = "xenos_others"
 			else
-				team = "xenos_[hive.reporting_id]"
+				team = "xenos_[mob.faction.code_identificator]"
 		else
 			team = "others"
 		LAZYINITLIST(team_job_stats[team])

@@ -106,7 +106,7 @@
 			if(stepped_turf.density)
 				direction_to_put_nest = get_dir(stepped_turf, owner)
 				return
-	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to an vertical surface."), 7, XENO_HIVE_NORMAL)
+	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to an vertical surface."), 7, FACTION_XENOMORPH_NORMAL)
 	qdel(owner)
 	qdel(src)
 

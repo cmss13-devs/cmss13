@@ -193,7 +193,7 @@
 	if(!is_ground_level(parent_mob.z))
 		return
 
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+	var/datum/hive_status/hive = GLOB.hive_datum[FACTION_XENOMORPH_FORSAKEN]
 	weed_appearance.color = hive.color
 
 /// SIGNAL_HANDLER for COMSIG_LIVING_PREIGNITION of weeds

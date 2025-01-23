@@ -362,7 +362,7 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
+/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(FACTION_XENOMORPH_NORMAL), bypass_checks = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
 	if(length(possible_xenomorphs) < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
@@ -471,7 +471,7 @@ Additional game mode variables.
 
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-		var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(faction_module.hardcore)
 			continue
 		if(!faction_module.stored_larva)
@@ -574,7 +574,7 @@ Additional game mode variables.
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/faction/faction = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
-			var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 			if(faction_module.stored_larva)
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
@@ -658,34 +658,31 @@ Additional game mode variables.
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
-	//Step 1 - pick a Hive
 	var/list/active_hives = list()
-	var/datum/hive_status/hive
-	var/last_active_hive = 0
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(length(hive.totalXenos) <= 0)
+	var/datum/faction/faction
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		faction = GLOB.faction_datums[faction_to_get]
+		if(!length(faction.total_mobs))
 			continue
-		active_hives[hive.name] = hive.hivenumber
-		last_active_hive = hive.hivenumber
+		active_hives[faction.name] = faction
 
-	if(length(active_hives) <= 0)
+	if(!length(active_hives))
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
 		return FALSE
 
 	if(length(active_hives) > 1)
-		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme = "hive_status")
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
 			return
-		hive = GLOB.hive_datum[active_hives[hive_picked]]
+		faction = active_hives[hive_picked]
 	else
-		hive = GLOB.hive_datum[last_active_hive]
+		faction = active_hives[pick(active_hives)]
 
 	//We have our Hive picked, time to figure out what we can join via
 	var/list/available_facehugger_sources = list()
 
-	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.total_mobs)
 		if(carrier.huggers_cur > carrier.huggers_reserved)
 			var/area_name = get_area_name(carrier)
 			var/descriptive_name = "[carrier.name] in [area_name]"
@@ -726,16 +723,14 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
 	var/list/active_hives = list()
-	var/datum/hive_status/hive
-	var/last_active_hive = 0
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(length(hive.totalXenos) <= 0)
+	var/datum/faction/faction
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		faction = GLOB.faction_datums[faction_to_get]
+		if(!length(faction.total_mobs))
 			continue
-		active_hives[hive.name] = hive.hivenumber
-		last_active_hive = hive.hivenumber
+		active_hives[faction.name] = faction
 
-	if(length(active_hives) <= 0)
+	if(!length(active_hives))
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
 		return FALSE
 
@@ -744,23 +739,24 @@ Additional game mode variables.
 		if(!hive_picked)
 			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
 			return FALSE
-		hive = GLOB.hive_datum[active_hives[hive_picked]]
+		faction = active_hives[hive_picked]
 	else
-		hive = GLOB.hive_datum[last_active_hive]
+		faction = active_hives[pick(active_hives)]
 
-	for(var/mob_name in hive.banished_ckeys)
-		if(hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [hive], you may not rejoin unless the Queen re-admits you or dies."))
+	for(var/mob_name in faction.banished_ckeys)
+		if(faction.banished_ckeys[mob_name] == xeno_candidate.ckey)
+			to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [faction], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
 
 	var/list/selection_list = list()
 	var/list/selection_list_structure = list()
 
-	if(hive.hive_location?.lesser_drone_spawns >= 1)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.hive_location?.lesser_drone_spawns >= 1)
 		selection_list += "hive core"
-		selection_list_structure += hive.hive_location
+		selection_list_structure += faction_module.hive_location
 
-	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in hive.hive_structures[XENO_STRUCTURE_PYLON])
+	for(var/obj/effect/alien/resin/special/pylon/cycled_pylon as anything in faction_module.hive_structures[XENO_STRUCTURE_PYLON])
 		if(cycled_pylon.lesser_drone_spawns >= 1)
 			var/pylon_number = 1
 			var/pylon_name = "[cycled_pylon.name] at [get_area(cycled_pylon)]"
@@ -831,7 +827,7 @@ Additional game mode variables.
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(mob/player, hivenumber = FACTION_XENOMORPH_NORMAL)
 	RETURN_TYPE(/turf)
 	var/datum/mind/ghost_mind = player.mind
 	var/mob/living/original = ghost_mind.current
@@ -879,7 +875,7 @@ Additional game mode variables.
 	transform_queen(ghost_mind, QS, hivenumber)
 	return QS
 
-/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = FACTION_XENOMORPH_NORMAL)
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)

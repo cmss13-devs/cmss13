@@ -20,7 +20,7 @@
 
 	var/tunnel_desc = "" //description added by the hivelord.
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/datum/hive_status/hive
 
 	health = 140
@@ -48,7 +48,7 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
@@ -57,9 +57,9 @@
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
 		hive.tunnels -= src
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
-		hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+		hivenumber = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
+		hive = GLOB.hive_datum[FACTION_XENOMORPH_FORSAKEN]
 		hive.tunnels += src
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)

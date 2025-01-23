@@ -29,7 +29,7 @@
 	if(hive_ref)
 		linked_hive = hive_ref
 	else
-		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		linked_hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
 
 	set_hive_data(src, linked_hive.hivenumber)
 

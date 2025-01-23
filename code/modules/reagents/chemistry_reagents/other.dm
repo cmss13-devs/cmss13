@@ -1004,7 +1004,7 @@
 		if(data_properties && data_properties["hive_number"])
 			embryo.hivenumber = data_properties["hive_number"]
 		else
-			embryo.hivenumber = XENO_HIVE_NORMAL
+			embryo.hivenumber = FACTION_XENOMORPH_NORMAL
 		to_chat(H, SPAN_WARNING("Your stomach cramps and you suddenly feel very sick!"))
 
 /datum/reagent/plasma/neurotoxin

@@ -2,7 +2,7 @@
 //LAST EDIT: APOPHIS 22MAY16
 
 //Send a message to all xenos. Mostly used in the deathgasp display
-/proc/xeno_message(message = null, size = 3, hivenumber = XENO_HIVE_NORMAL)
+/proc/xeno_message(message = null, size = 3, datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
 	if(!message)
 		return
 
@@ -18,18 +18,18 @@
 	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.hivenumber == hivenumber)) //Only living and connected xenos
+			if(M && istype(M) && !M.stat && M.client && (!faction || M.faction == faction)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Sends a maptext alert to xenos.
-/proc/xeno_maptext(text = "", title_text = "", hivenumber = XENO_HIVE_NORMAL)
-	if(text == "" || !hivenumber)
+/proc/xeno_maptext(text = "", title_text = "", datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
+	if(text == "" || !faction)
 		return //Logic
 
 	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/living in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/xenomorph/xeno = living.current
-			if(istype(xeno) && !xeno.stat && xeno.client && xeno.hivenumber == hivenumber) //Only living and connected xenos
+			if(istype(xeno) && !xeno.stat && xeno.client && xeno.faction == faction) //Only living and connected xenos
 				playsound_client(xeno.client, 'sound/voice/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
 				xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
@@ -140,8 +140,8 @@
 		else
 			. += "Special Structure Destruction: QUEEN"
 
-		if(hive.hive_orders)
-			. += "Hive Orders: [hive.hive_orders]"
+		if(hive.faction_orders)
+			. += "Hive Orders: [hive.faction_orders]"
 		else
 			. += "Hive Orders: -"
 

@@ -76,7 +76,7 @@
 	hud_possible = list(XENO_STATUS_HUD)
 	var/mob/is_watching
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/next_point = 0
 
 	var/point_delay = 1 SECONDS
@@ -379,12 +379,12 @@
 /mob/living/carbon/xenomorph/queen/forsaken
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_FORSAKEN
+	hivenumber = FACTION_XENOMORPH_FORSAKEN
 
 /mob/living/carbon/xenomorph/queen/forsaken/combat_ready
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_FORSAKEN
+	hivenumber = FACTION_XENOMORPH_FORSAKEN
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/alpha
@@ -395,7 +395,7 @@
 /mob/living/carbon/xenomorph/queen/bravo
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_BRAVO
+	hivenumber = FACTION_XENOMORPH_NORMAL
 
 /mob/living/carbon/xenomorph/queen/charlie
 	AUTOWIKI_SKIP(TRUE)
@@ -452,28 +452,27 @@
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
 		generate_and_set_nicknumber()
-	var/name_prefix = hive.prefix
 	if(queen_aged)
 		age_xeno()
 		switch(age)
 			if(XENO_YOUNG)
-				name = "[name_prefix]Young Queen" //Young
+				name = "[faction.prefix]Young Queen" //Young
 			if(XENO_NORMAL)
-				name = "[name_prefix]Queen"  //Regular
+				name = "[faction.prefix]Queen"  //Regular
 			if(XENO_MATURE)
-				name = "[name_prefix]Elder Queen"  //Mature
+				name = "[faction.prefix]Elder Queen"  //Mature
 			if(XENO_ELDER)
-				name = "[name_prefix]Elder Empress"  //Elite
+				name = "[faction.prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT)
-				name = "[name_prefix]Ancient Empress" //Ancient
+				name = "[faction.prefix]Ancient Empress" //Ancient
 			if(XENO_PRIME)
-				name = "[name_prefix]Prime Empress" //Primordial
+				name = "[faction.prefix]Prime Empress" //Primordial
 	else
 		age = XENO_NORMAL
 		if(client)
 			hud_update()
 
-		name = "[name_prefix]Immature Queen"
+		name = "[faction.prefix]Immature Queen"
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -485,7 +484,7 @@
 
 
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = hive.color
+	color = faction.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -596,13 +595,13 @@
 
 	var/txt = strip_html(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders",""))
 	if(txt)
-		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, hivenumber)
-		xeno_message("<B>\""+txt+"\"</B>", 3, hivenumber)
-		xeno_maptext(txt, "Hive Orders Updated", hivenumber)
-		hive.hive_orders = txt
+		xeno_message("<B>The Queen's will overwhelms your instincts...</B>", 3, faction)
+		xeno_message("<B>\""+txt+"\"</B>", 3, faction)
+		xeno_maptext(txt, "Hive Orders Updated", faction)
+		faction.faction_orders = txt
 		log_hiveorder("[key_name(usr)] has set the Hive Order to: [txt]")
 	else
-		hive.hive_orders = ""
+		faction.faction_orders = ""
 
 	last_special = world.time + 15 SECONDS
 

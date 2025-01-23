@@ -724,7 +724,7 @@
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	repair_materials = list()
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
@@ -735,7 +735,7 @@
 	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
 
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(faction_to_get == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	if(!hull)
@@ -755,8 +755,8 @@
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		faction_to_get = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, faction_to_get)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -791,7 +791,7 @@
 /turf/closed/wall/resin/tutorial
 	name = "tutorial resin wall"
 	desc = "Weird slime solidified into a wall. Remarkably resilient."
-	hivenumber = XENO_HIVE_TUTORIAL
+	faction_to_get = XENO_HIVE_TUTORIAL
 
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return
@@ -809,9 +809,7 @@
 	if(!istype(X))
 		return FALSE
 
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
-	return hive.is_ally(X)
+	return X.ally_faction(GLOB.faction_datums[faction_to_get])
 
 /turf/closed/wall/resin/membrane/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -952,13 +950,13 @@
 	drag_delay = 4
 
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 
-/obj/structure/alien/movable_wall/Initialize(mapload, hive)
+/obj/structure/alien/movable_wall/Initialize(mapload, _faction_to_get)
 	. = ..()
-	if(hive)
-		hivenumber = hive
-		set_hive_data(src, hive)
+	if(_faction_to_get)
+		faction_to_get = _faction_to_get
+		set_hive_data(src, faction_to_get)
 	recalculate_structure()
 	update_tied_turf(loc)
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
@@ -1024,7 +1022,7 @@
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
-	if (M.hivenumber == hivenumber)
+	if (M.faction.code_identificator == faction_to_get)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
@@ -1095,7 +1093,7 @@
 
 	if(isxeno(mover))
 		var/mob/living/carbon/xenomorph/X = mover
-		if(X.hivenumber != hivenumber || X.throwing)
+		if(X.faction.code_identificator != faction_to_get || X.throwing)
 			return
 
 		if(X.pulling == src)
@@ -1240,7 +1238,7 @@
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
-	if (M.hivenumber == hivenumber)
+	if (M.faction.code_identificator == faction_to_get)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)

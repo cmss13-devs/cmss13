@@ -426,15 +426,14 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			revive_enabled = check_tod() && is_revivable()
 
 		var/holder2_set = 0
-		if(faction)
-			if(istype(faction, /datum/faction/xenomorph))
-				holder4.icon_state = "hudalien"
+		if(istype(faction, /datum/faction/xenomorph))
+			holder4.icon_state = "hudalien"
 
-				if(faction)
-					if(faction.color)
-						holder4.color = faction.color
-					if(faction.leading_cult_sl == src)
-						holder4.icon_state = "hudalien_leader"
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			if(faction.color)
+				holder4.color = faction.color
+			if(faction_module.leading_cult_sl == src)
+				holder4.icon_state = "hudalien_leader"
 
 		if(status_flags & XENO_HOST)
 			holder2.icon_state = "hudxeno"//Observer and admin HUD only

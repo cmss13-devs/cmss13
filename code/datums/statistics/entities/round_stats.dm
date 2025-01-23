@@ -318,8 +318,6 @@
 			total_xenos_created += S.value
 		else if(S.name == FACTION_YAUTJA)
 			total_predators_spawned += S.value
-		else if(S.name == FACTION_PREDALIEN)
-			total_predators_spawned += S.value
 		else
 			total_humans_created += S.value
 
@@ -329,8 +327,6 @@
 	for(var/statistic in hijack_participants)
 		var/datum/entity/statistic/S = hijack_participants[statistic]
 		if(S.name in FACTION_LIST_XENOMORPH)
-			xeno_count_during_hijack += S.value
-		else if(S.name == FACTION_PREDALIEN)
 			xeno_count_during_hijack += S.value
 		else if(S.name == FACTION_YAUTJA)
 			continue
@@ -343,8 +339,6 @@
 	for(var/statistic in final_participants)
 		var/datum/entity/statistic/S = final_participants[statistic]
 		if(S.name in FACTION_LIST_XENOMORPH)
-			end_of_round_xenos += S.value
-		else if(S.name == FACTION_PREDALIEN)
 			end_of_round_xenos += S.value
 		else if(S.name == FACTION_YAUTJA)
 			continue

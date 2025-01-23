@@ -47,7 +47,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
 
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 
 	var/stun_duration = 1
 	var/damage_amount = 20
@@ -531,7 +531,7 @@
 	var/damage = 20
 	var/message = null
 	var/mob/living/carbon/xenomorph/linked_xeno = null
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/empowered = FALSE
 
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/xenomorph/linked_xeno = null)

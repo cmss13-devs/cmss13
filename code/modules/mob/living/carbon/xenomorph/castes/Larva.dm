@@ -77,32 +77,32 @@
 /mob/living/carbon/xenomorph/larva/corrupted
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_CORRUPTED
+	faction_to_get = FACTION_XENOMORPH_CORRUPTED
 
 /mob/living/carbon/xenomorph/larva/alpha
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_ALPHA
+	faction_to_get = FACTION_XENOMORPH_ALPHA
 
 /mob/living/carbon/xenomorph/larva/bravo
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_BRAVO
+	faction_to_get = FACTION_XENOMORPH_BRAVO
 
 /mob/living/carbon/xenomorph/larva/charlie
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_CHARLIE
+	faction_to_get = FACTION_XENOMORPH_CHARLIE
 
 /mob/living/carbon/xenomorph/larva/delta
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_DELTA
+	faction_to_get = FACTION_XENOMORPH_DELTA
 
 /mob/living/carbon/xenomorph/larva/mutated
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_MUTATED
+	faction_to_get = FACTION_XENOMORPH_MUTATED
 
 /mob/living/carbon/xenomorph/larva/predalien
 	AUTOWIKI_SKIP(TRUE)
@@ -214,9 +214,9 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 	var/progress = "" //Naming convention, three different names
 	var/name_prefix = "" // Prefix for hive
 
-	if(hive)
-		name_prefix = hive.prefix
-		color = hive.color
+	if(faction)
+		name_prefix = faction.prefix
+		color = faction.color
 
 	if(larva_state == LARVA_STATE_MATURE)
 		progress = "Mature "
@@ -228,6 +228,6 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 	//Update linked data so they show up properly
 	change_real_name(src, name)
 	//Update the hive status UI
-	if(hive)
-		var/datum/hive_status/hive_status = hive
-		hive_status.hive_ui.update_xeno_info()
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.hive_ui.update_xeno_info()

@@ -305,13 +305,12 @@ SUBSYSTEM_DEF(hijack)
 
 	if(!generator_ever_overloaded)
 		generator_ever_overloaded = TRUE
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(!length(hive.totalXenos))
+		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+			if(!length(faction.total_mobs))
 				continue
 
-			xeno_announcement(SPAN_XENOANNOUNCE("The talls may be attempting to take their ship down with them in Engineering, stop them!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The talls may be attempting to take their ship down with them in Engineering, stop them!"), faction, XENO_HIJACK_ANNOUNCE)
 
 	adjust_generator_overload_count(new_overloading ? 1 : -1)
 

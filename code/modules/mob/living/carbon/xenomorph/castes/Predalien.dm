@@ -41,7 +41,6 @@
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
-	faction = FACTION_PREDALIEN
 	claw_type = CLAW_TYPE_VERY_SHARP
 	wall_smash = TRUE
 	hardcore = FALSE

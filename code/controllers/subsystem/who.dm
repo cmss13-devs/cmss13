@@ -122,8 +122,6 @@ SUBSYSTEM_DEF(who)
 								counted_additional["uscm"]++
 								if(client_mob.job in (GLOB.ROLES_MARINES))
 									counted_additional["uscm_marines"]++
-							else
-								counted_factions[client_mob.faction]++
 
 	//Bulky section with pre writen names and desc for counts
 	factions_additional += list(list("content" = "In Lobby: [counted_additional["lobby"]]", "color" = "#777", "text" = "Player in lobby"))
@@ -137,19 +135,17 @@ SUBSYSTEM_DEF(who)
 	factions_additional += list(list("content" = "Infected Predators: [counted_additional["infected_preds"]]", "color" = "#7ABA19", "text" = "Players playing as Infected Yautja"))
 	factions_additional += list(list("content" = "Hunted In Preserve: [counted_additional["hunted"]]", "color" = "#476816", "text" = "Players playing as hunted in preserve"))
 
-	for(var/i in 1 to length(counted_factions))
-		if(!counted_factions[counted_factions[i]])
+	for(var/faction_to_get in FACTION_LIST_HUMANOID - FACTION_YAUTJA - FACTION_MARINE)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(!length(faction.total_mobs))
 			continue
-		factions_additional += list(list("content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]", "color" = "#2C7EFF", "text" = "Other"))
+		factions_additional += list(list("content" = "[faction]: [length(faction.total_mobs)]", "color" = faction.color, "text" = "[faction.desc]",))
 
-	if(counted_factions[FACTION_NEUTRAL])
-		factions_additional += list(list("content" = "[FACTION_NEUTRAL] Humans: [counted_factions[FACTION_NEUTRAL]]", "color" = "#688944", "text" = "Neutrals"))
-
-	for(var/faction_to_get in ALL_XENO_HIVES)
-		var/datum/hive_status/hive = GLOB.hive_datum[faction_to_get]
-		if(!hive || !length(hive.totalXenos))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(!faction || !length(faction.total_mobs))
 			continue
-		factions_additional += list(list("content" = "[hive.name]: [length(hive.totalXenos)]", "color" = hive.color ? hive.color : "#8200FF", "text" = "Queen: [hive.living_xeno_queen ? "Alive" : "Dead"]"))
+		factions_additional += list(list("content" = "[faction]: [length(faction.total_mobs)]", "color" = faction.color, "text" = "Queen: [faction.living_xeno_queen ? "Alive" : "Dead"]"))
 
 	src.base_data = base_data
 	src.admin_sorted_additional = admin_sorted_additional

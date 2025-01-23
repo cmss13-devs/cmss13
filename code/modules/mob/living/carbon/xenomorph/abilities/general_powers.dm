@@ -280,13 +280,14 @@
 	if(target_turf.z != X.z)
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
+	var/datum/faction_module/hive_mind/faction_module = X.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.living_xeno_queen || faction_module.living_xeno_queen.z != X.z)
 		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
 		return
 
 	var/tally = 0
 
-	for(var/obj/effect/alien/resin/marker/MRK in X.hive.resin_marks)
+	for(var/obj/effect/alien/resin/marker/MRK in faction_module.resin_marks)
 		if(MRK.createdby == X.nicknumber)
 			tally++
 	if(tally >= max_markers)
@@ -294,8 +295,8 @@
 		var/list/promptlist = list("Yes", "No")
 		var/obj/effect/alien/resin/marker/Goober = null
 		var/promptuser = null
-		for(var/i=1, i<=length(X.hive.resin_marks))
-			Goober = X.hive.resin_marks[i]
+		for(var/i=1, i<=length(faction_module.resin_marks))
+			Goober = faction_module.resin_marks[i]
 			if(Goober.createdby == X.nicknumber)
 				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
 				break
@@ -372,9 +373,11 @@
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
-	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
-		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
-			L.handle_xeno_leader_pheromones()
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(isqueen(src) && length(faction_module.xeno_leader_list) && anchored)
+			for(var/mob/living/carbon/xenomorph/L in faction_module.xeno_leader_list)
+				L.handle_xeno_leader_pheromones()
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -550,7 +553,7 @@
 		if(!T.check_xeno_trap_placement(X))
 			return
 		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(T)
-		the_replacer.hivenumber = X.hivenumber
+		the_replacer.faction = X.faction
 		the_replacer.linked_hive = X.hive
 		set_hive_data(the_replacer, X.hivenumber)
 		qdel(alien_weeds)

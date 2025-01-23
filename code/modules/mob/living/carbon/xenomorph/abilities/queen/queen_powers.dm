@@ -313,7 +313,7 @@
 		return
 	if(!xeno.check_plasma(plasma_cost_jelly))
 		return
-	if(give_jelly_award(xeno.hive))
+	if(give_jelly_award(xeno.faction))
 		xeno.use_plasma(plasma_cost_jelly)
 		return
 

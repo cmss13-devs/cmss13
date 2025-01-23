@@ -366,14 +366,14 @@ SUBSYSTEM_DEF(minimaps)
  * Fetches the datum containing an announced flattend map png reference.
  *
  * Arguments:
- * * faction: FACTION_MARINE or XENO_HIVE_NORMAL
+ * * faction: FACTION_MARINE or FACTION_XENOMORPH_NORMAL
  */
 /proc/get_tacmap_data_png(faction)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
 		map_list = GLOB.uscm_flat_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
+	else if(faction == FACTION_XENOMORPH_NORMAL)
 		map_list = GLOB.xeno_flat_tacmap_data
 	else
 		return null
@@ -389,12 +389,12 @@ SUBSYSTEM_DEF(minimaps)
  * Fetches the datum containing the latest unannounced flattend map png reference.
  *
  * Arguments:
- * * faction: FACTION_MARINE or XENO_HIVE_NORMAL
+ * * faction: FACTION_MARINE or FACTION_XENOMORPH_NORMAL
  */
 /proc/get_unannounced_tacmap_data_png(faction)
 	if(faction == FACTION_MARINE)
 		return GLOB.uscm_unannounced_map
-	else if(faction == XENO_HIVE_NORMAL)
+	else if(faction == FACTION_XENOMORPH_NORMAL)
 		return GLOB.xeno_unannounced_map
 
 	return null
@@ -403,14 +403,14 @@ SUBSYSTEM_DEF(minimaps)
  * Fetches the last set of svg coordinates for the tacmap drawing.
  *
  * Arguments:
- * * faction: which faction get the map for: FACTION_MARINE or XENO_HIVE_NORMAL
+ * * faction: which faction get the map for: FACTION_MARINE or FACTION_XENOMORPH_NORMAL
  */
 /proc/get_tacmap_data_svg(faction)
 	var/list/map_list
 
 	if(faction == FACTION_MARINE)
 		map_list = GLOB.uscm_svg_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
+	else if(faction == FACTION_XENOMORPH_NORMAL)
 		map_list = GLOB.xeno_svg_tacmap_data
 	else
 		return null
@@ -443,12 +443,12 @@ SUBSYSTEM_DEF(minimaps)
 			SSassets.transport.send_assets(user.client, unannounced.asset_key)
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL)
+	if(is_observer || istype(xeno) && xeno.faction.code_identificator == FACTION_XENOMORPH_NORMAL)
 		// Send xeno maps
-		var/datum/flattened_tacmap/latest = get_tacmap_data_png(XENO_HIVE_NORMAL)
+		var/datum/flattened_tacmap/latest = get_tacmap_data_png(FACTION_XENOMORPH_NORMAL)
 		if(latest)
 			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
+		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(FACTION_XENOMORPH_NORMAL)
 		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
 			SSassets.transport.send_assets(user.client, unannounced.asset_key)
 
@@ -456,7 +456,7 @@ SUBSYSTEM_DEF(minimaps)
  * Flattens the current map and then distributes it for the specified faction as an unannounced map.
  *
  * Arguments:
- * * faction: Which faction to distribute the map to: FACTION_MARINE or XENO_HIVE_NORMAL
+ * * faction: Which faction to distribute the map to: FACTION_MARINE or FACTION_XENOMORPH_NORMAL
  * Return:
  * * Returns a boolean value, TRUE if the operation was successful, FALSE if it was not (on cooldown generally).
  */
@@ -465,7 +465,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(!COOLDOWN_FINISHED(GLOB, uscm_flatten_map_icon_cooldown))
 			return FALSE
 		COOLDOWN_START(GLOB, uscm_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
-	else if(faction == XENO_HIVE_NORMAL)
+	else if(faction == FACTION_XENOMORPH_NORMAL)
 		if(!COOLDOWN_FINISHED(GLOB, xeno_flatten_map_icon_cooldown))
 			return FALSE
 		COOLDOWN_START(GLOB, xeno_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
@@ -488,8 +488,7 @@ SUBSYSTEM_DEF(minimaps)
 		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
 			faction_clients += client
 		else if(isxeno(client_mob))
-			var/mob/living/carbon/xenomorph/xeno = client_mob
-			if(xeno.hivenumber == faction)
+			if(client_mob.faction == faction)
 				faction_clients += client
 
 	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
@@ -502,7 +501,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(faction == FACTION_MARINE)
 		GLOB.uscm_unannounced_map = new_flat
-	else //if(faction == XENO_HIVE_NORMAL)
+	else //if(faction == FACTION_XENOMORPH_NORMAL)
 		GLOB.xeno_unannounced_map = new_flat
 
 	return TRUE
@@ -511,7 +510,7 @@ SUBSYSTEM_DEF(minimaps)
  * Globally stores svg coords for a given faction.
  *
  * Arguments:
- * * faction: which faction to save the data for: FACTION_MARINE or XENO_HIVE_NORMAL
+ * * faction: which faction to save the data for: FACTION_MARINE or FACTION_XENOMORPH_NORMAL
  * * svg_coords: an array of coordinates corresponding to an svg.
  * * ckey: the ckey of the user who submitted this
  */
@@ -520,13 +519,13 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(faction == FACTION_MARINE)
 		GLOB.uscm_svg_tacmap_data += svg_store_overlay
-	else if(faction == XENO_HIVE_NORMAL)
+	else if(faction == FACTION_XENOMORPH_NORMAL)
 		GLOB.xeno_svg_tacmap_data += svg_store_overlay
 	else
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
+#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == FACTION_XENOMORPH_NORMAL && isqueen(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -763,11 +762,11 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
-	var/faction = is_xeno ? xeno.hivenumber : user.faction
-	if(faction == FACTION_NEUTRAL && isobserver(user))
-		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
+	var/datum/faction/faction = user.faction
+	if(isobserver(user))
+		faction = allowed_flags == GLOB.faction_datums[MINIMAP_FLAG_XENO ? FACTION_XENOMORPH_NORMAL : FACTION_MARINE]
 
-	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
+	if(is_xeno && xeno.faction.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
 		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
 		map_holder = null
@@ -856,7 +855,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
-	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
+	data["canViewCanvas"] = faction == FACTION_MARINE || faction == FACTION_XENOMORPH_NORMAL
 
 	if(can_draw(faction, user))
 		data["canDraw"] = TRUE
@@ -908,7 +907,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/faction = istype(xeno) ? xeno.hivenumber : user.faction
 	var/is_observer = isobserver(user)
 	if(faction == FACTION_NEUTRAL && is_observer)
-		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
+		faction = allowed_flags == MINIMAP_FLAG_XENO ? FACTION_XENOMORPH_NORMAL : FACTION_MARINE
 	var/drawing_allowed = !is_observer && can_draw(faction, user)
 
 	switch (action)
@@ -965,7 +964,7 @@ SUBSYSTEM_DEF(minimaps)
 			var/cooldown_satisfied = FALSE
 			if(faction == FACTION_MARINE)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
-			else if(faction == XENO_HIVE_NORMAL)
+			else if(faction == FACTION_XENOMORPH_NORMAL)
 				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, xeno_canvas_cooldown)
 			if(!cooldown_satisfied)
 				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
@@ -980,7 +979,7 @@ SUBSYSTEM_DEF(minimaps)
 				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
 				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
 				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
-			else if(faction == XENO_HIVE_NORMAL)
+			else if(faction == FACTION_XENOMORPH_NORMAL)
 				GLOB.xeno_flat_tacmap_data += new_current_map
 				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
 				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
@@ -1069,7 +1068,7 @@ SUBSYSTEM_DEF(minimaps)
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)
 	switch(faction)
-		if(XENO_HIVE_NORMAL)
+		if(FACTION_XENOMORPH_NORMAL)
 			return MINIMAP_FLAG_XENO
 		if(FACTION_MARINE)
 			return MINIMAP_FLAG_USCM
@@ -1087,7 +1086,7 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_CORRUPTED
 		if(XENO_HIVE_ALPHA)
 			return MINIMAP_FLAG_XENO_ALPHA
-		if(XENO_HIVE_BRAVO)
+		if(FACTION_XENOMORPH_NORMAL)
 			return MINIMAP_FLAG_XENO_BRAVO
 		if(XENO_HIVE_CHARLIE)
 			return MINIMAP_FLAG_XENO_CHARLIE
@@ -1099,7 +1098,7 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_TAMED
 		if(XENO_HIVE_MUTATED)
 			return MINIMAP_FLAG_XENO_MUTATED
-		if(XENO_HIVE_FORSAKEN)
+		if(FACTION_XENOMORPH_FORSAKEN)
 			return MINIMAP_FLAG_XENO_FORSAKEN
 		if(XENO_HIVE_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA

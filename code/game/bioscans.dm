@@ -41,7 +41,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	/// Count all larva across all hives
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_module(FACTION_MODULE_HIVE_MIND)
+		var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_faction_module(FACTION_MODULE_HIVE_MIND)
 		larva += faction_module.stored_larva
 
 	/// Keeping track of peak numbers to determine when a side is "losing"

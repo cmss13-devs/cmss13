@@ -272,7 +272,7 @@ CULT
 	if(!(copytext(message, -1) in ENDING_PUNCT))
 		message += "."
 
-	var/datum/faction_module/hive_mind/faction_module = faction.get_module(FACTION_MODULE_HIVE_MIND)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(!istype(faction_module))
 		return
 

@@ -7,7 +7,7 @@
 	if(!istype(wave_data))
 		return
 
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
 	if(hive.slashing_allowed != XENO_SLASH_ALLOWED)
 		hive.slashing_allowed = XENO_SLASH_ALLOWED //Allows harm intent for aliens
 	var/xenos_to_spawn

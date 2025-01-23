@@ -14,7 +14,7 @@
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
 	var/on_fire = FALSE
-	var/hivenumber = XENO_HIVE_NORMAL
+	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/flags_embryo = NO_FLAGS
 	/// The weed strength that needs to be maintained in order for this egg to not decay; null disables check
 	var/weed_strength_required = WEED_LEVEL_HIVE
@@ -27,7 +27,7 @@
 	if(hive)
 		hivenumber = hive
 
-	if(hivenumber == XENO_HIVE_NORMAL)
+	if(hivenumber == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	set_hive_data(src, hivenumber)
@@ -45,8 +45,8 @@
 /obj/effect/alien/egg/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hivenumber = FACTION_XENOMORPH_FORSAKEN
+		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -325,7 +325,7 @@
 	hivenumber = XENO_HIVE_ALPHA
 
 /obj/effect/alien/egg/forsaken
-	hivenumber = XENO_HIVE_FORSAKEN
+	hivenumber = FACTION_XENOMORPH_FORSAKEN
 
 /obj/effect/alien/egg/attack_ghost(mob/dead/observer/user)
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
@@ -460,7 +460,7 @@ SPECIAL EGG USED WHEN WEEDS LOST
 	if(isnull(weed_strength_required))
 		return .
 
-	if(hivenumber != XENO_HIVE_FORSAKEN)
+	if(hivenumber != FACTION_XENOMORPH_FORSAKEN)
 		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), ORPHAN_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 
 	var/my_turf = get_turf(src)

@@ -2261,6 +2261,20 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	picker_ui = SStgui.get_open_ui(user, traits_picker)
 	picker_ui?.send_update()
 
+/// Closes all the TGUI interfaces inside the character prefs menu
+/datum/preferences/proc/close_all_pickers(mob/user)
+	var/datum/tgui/picker_ui = SStgui.get_open_ui(user, hair_picker)
+	picker_ui?.close()
+
+	picker_ui = SStgui.get_open_ui(user, body_picker)
+	picker_ui?.close()
+
+	picker_ui = SStgui.get_open_ui(user, loadout_picker)
+	picker_ui?.close()
+
+	picker_ui = SStgui.get_open_ui(user, traits_picker)
+	picker_ui?.close()
+
 /datum/preferences/proc/get_body_presentation()
 	return body_presentation || gender
 

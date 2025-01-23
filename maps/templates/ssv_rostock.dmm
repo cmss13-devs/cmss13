@@ -226,6 +226,9 @@
 "aaK" = (
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/lower_deck/prep)
+"aaL" = (
+/turf/closed/wall/upp_ship/reinforced,
+/area/rostock/medical/lobby)
 "aaM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -302,12 +305,11 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/p_a_hallway)
 "aaX" = (
-/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	req_one_access = list(234, 240);
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/req/autoname{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
 "aaY" = (
@@ -345,10 +347,23 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/medical/morgue)
-"abc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor,
-/turf/open/space/basic,
-/area/space)
+"abd" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
+	dir = 2
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/engineering/main_area)
+"abe" = (
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
+	dir = 2
+	},
+/turf/open/floor/corsat/marked,
+/area/rostock/engineering/main_area)
 "acI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -662,8 +677,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/hallway)
 "aoZ" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun/starboard)
@@ -1157,9 +1172,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "aHS" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
@@ -1212,7 +1227,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/req)
 "aJK" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/morgue)
 "aKd" = (
 /obj/structure/bookcase{
@@ -2604,9 +2619,9 @@
 /turf/open/floor/carpet,
 /area/rostock/command/xo)
 "bOm" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 8
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/ert_dock/starboard)
@@ -2615,9 +2630,9 @@
 /turf/open/floor/strata/blue3,
 /area/rostock/command/cic)
 "bOQ" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/lower_aft_corridor)
@@ -2737,9 +2752,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
@@ -2895,9 +2910,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/ammunition_storage)
 "bYl" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/corsat/marked,
@@ -3359,10 +3374,11 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
 "cvl" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
-	},
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "cvr" = (
@@ -4048,11 +4064,8 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/req)
 "daR" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1;
-	name = "Security Equipment Room";
-	req_one_access = list(233, 240);
-	req_access = list()
+/obj/structure/machinery/door/airlock/upp/sec/autoname{
+	dir = 2
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/headquarters_storage)
@@ -4163,15 +4176,15 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "dgs" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
@@ -4208,13 +4221,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/m_hallway)
-"diR" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	name = "\improper Storage"
-	},
-/turf/open/floor/corsat/marked,
-/area/rostock/lower_deck/s_a_hallway)
 "djl" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -4222,18 +4228,12 @@
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
 "djn" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/upper_deck/hallway)
-"djz" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
-	},
-/turf/open/floor/corsat/marked,
-/area/rostock/upperdeck_maint/p_m)
 "djD" = (
 /obj/structure/ladder{
 	height = 2;
@@ -4383,8 +4383,9 @@
 /turf/open/floor/strata,
 /area/rostock/upper_deck/hallway)
 "dpB" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
@@ -4554,13 +4555,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/lobby)
-"dvF" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240)
-	},
-/turf/open/floor/corsat/marked,
-/area/rostock/engineering/main_area)
 "dvX" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ffd4d4"
@@ -4635,9 +4629,9 @@
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/rostock/req)
 "dyi" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/corsat/marked,
@@ -5185,12 +5179,11 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lifeboat)
 "dTp" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Second Officers Quarters";
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_access = list(240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/command/xo)
@@ -5662,12 +5655,12 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/rostock/ert_dock/port)
 "emg" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240);
-	dir = 2
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
 "emx" = (
@@ -7097,9 +7090,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/vehiclehangar)
 "fmz" = (
-/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	req_one_access = list(234, 240)
-	},
+/obj/structure/machinery/door/airlock/upp/req/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
 "fmG" = (
@@ -7192,9 +7183,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/p_a_hallway)
-"fpf" = (
-/turf/closed/wall/almayer/white/reinforced,
-/area/rostock/medical/lobby)
 "fpu" = (
 /obj/effect/projector{
 	name = "upp_up2";
@@ -7271,9 +7259,9 @@
 /turf/open/floor/strata/orange_edge,
 /area/rostock/lower_deck/m_hallway)
 "frD" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
@@ -7383,8 +7371,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_f)
 "fxK" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
@@ -7619,14 +7607,10 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/hallway)
 "fLq" = (
-/obj/structure/machinery/door/airlock/almayer/security{
-	req_access = list();
-	req_one_access = list(232, 233, 234, 240);
-	name = "\improper Railgun Systems Room"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun/starboard)
 "fLt" = (
@@ -8245,25 +8229,17 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/hangar/hangarbay)
 "gph" = (
-/obj/structure/machinery/door/airlock/almayer/security/reinforced{
-	closeOtherId = "astroladder_n";
-	name = "\improper Astronavigational Deck";
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/upp/sec/autoname,
 /turf/open/floor/corsat/marked,
-/area/rostock/command/cic)
+/area/rostock/command/astronavigation)
 "gpt" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	id_tag = "exitor2";
-	name = "Morgue";
-	req_one_access = list(231, 240)
-	},
+/obj/structure/machinery/door/airlock/upp/medical/solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/accessway)
 "gpA" = (
@@ -8609,12 +8585,10 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/upperdeck_maint/p_a)
 "gFu" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Janitorial Storage";
-	dir = 2;
-	req_one_access = list(230, 240)
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/upp/generic{
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/p_a_hallway)
 "gFw" = (
@@ -9041,8 +9015,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "gWH" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/starboard_umbilical)
@@ -9207,16 +9181,12 @@
 /turf/open/floor/carpet,
 /area/rostock/command/dining)
 "hbZ" = (
-/obj/structure/machinery/door/airlock/almayer/security/reinforced{
-	closeOtherId = "astroladder_n";
-	name = "\improper Astronavigational Deck";
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/upp/sec/autoname,
 /turf/open/floor/corsat/marked,
-/area/rostock/command/cic)
+/area/rostock/command/astronavigation)
 "hcm" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -9463,7 +9433,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/upperdeck_maint/p_a)
 "hjn" = (
-/obj/structure/window/framed/almayer/white,
+/obj/structure/window/framed/upp_ship,
 /turf/open/floor/plating,
 /area/rostock/medical/prep)
 "hjp" = (
@@ -9962,9 +9932,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "hFm" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/vehiclehangar)
@@ -10068,12 +10038,10 @@
 /turf/open/floor/almayer/no_build,
 /area/rostock/stair_clone)
 "hJe" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	name = "Medical Storage";
-	req_one_access = list(231, 240)
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/upp/medical/solid/autoname{
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/storage)
 "hJh" = (
@@ -10212,7 +10180,7 @@
 /turf/open/floor/strata/orange_icorner,
 /area/rostock/req)
 "hOa" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/chemistry)
 "hOc" = (
 /obj/structure/machinery/vending/snack{
@@ -10264,9 +10232,9 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/kitchen)
 "hPo" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/bunk)
@@ -10800,9 +10768,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/req)
 "iid" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/upperdeck_maint/p_a)
@@ -11667,7 +11635,7 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/hangar/hangarbay)
 "iOi" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/upp_ship/reinforced,
 /area/rostock/medical/storage)
 "iOl" = (
 /obj/structure/machinery/light,
@@ -11710,11 +11678,8 @@
 /area/rostock/hangar/hangarbay)
 "iPL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/security{
-	req_access = list();
-	req_one_access = list(232, 233, 234, 240);
-	name = "\improper Railgun Systems Room";
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname{
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun)
@@ -12216,20 +12181,17 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/rostock/lower_deck/s_a_hallway)
 "jjr" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
 "jjt" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/security{
-	req_access = list();
-	req_one_access = list(232, 233, 234, 240);
-	name = "\improper Munitions Room";
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname{
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/ammunition_storage)
@@ -12556,10 +12518,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical{
-	name = "Chemistry";
-	req_one_access = list(231, 240)
-	},
+/obj/structure/machinery/door/airlock/upp/medical/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/chemistry)
 "jwz" = (
@@ -12870,9 +12829,9 @@
 /turf/open/floor/strata/blue3/east,
 /area/rostock/command/cic)
 "jIK" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/corsat/marked,
@@ -13044,8 +13003,8 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "jNo" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Bunks"
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/bunk)
@@ -13513,13 +13472,14 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/starboard_aft_accessway)
 "kfg" = (
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "BORIS Exit";
 	name = "\improper 1VAN/3 Maintenance Shutters";
 	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/airoom)
@@ -14062,13 +14022,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	req_access = list(240);
-	name = "\improper Command Section"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/command/hallway)
 "kzq" = (
@@ -15009,7 +14966,7 @@
 /turf/open/floor/corsat/red,
 /area/rostock/railgun/starboard)
 "lmj" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/accessway)
 "lmA" = (
 /turf/closed/wall/upp_ship/reinforced/outer,
@@ -15280,10 +15237,10 @@
 /area/rostock/lifeboat)
 "lDs" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/starboard_aft_accessway)
@@ -15492,10 +15449,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "lLV" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	req_access = list(240);
-	name = "\improper Command Section"
-	},
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/command/hallway)
 "lMf" = (
@@ -15714,11 +15668,8 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "lVR" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1;
-	name = "Resting Quarters";
-	req_access = list();
-	req_one_access = list(233, 240)
+/obj/structure/machinery/door/airlock/upp/sec/autoname{
+	dir = 2
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/headquarters_bunk)
@@ -15736,7 +15687,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/p_a_hallway)
 "lWt" = (
-/obj/structure/window/framed/almayer/white,
+/obj/structure/window/framed/upp_ship,
 /turf/open/floor/plating,
 /area/rostock/medical/lobby)
 "lWL" = (
@@ -15948,15 +15899,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
 /area/rostock/vehiclehangar)
-"mgz" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	req_access = list(230);
-	name = "\improper Dormitory"
-	},
-/turf/open/floor/corsat/marked,
-/area/rostock/lower_deck/s_a_hallway)
 "mhl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -16163,8 +16105,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "mqx" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16198,13 +16140,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/command/astronavigation)
 "mrF" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "exitor2";
-	name = "Morgue";
-	req_one_access = list(231, 240)
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/upp/medical/solid{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/morgue)
 "mrI" = (
@@ -16407,9 +16346,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/lower_aft_corridor)
@@ -16544,9 +16483,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	req_one_access = list(234, 240)
-	},
+/obj/structure/machinery/door/airlock/upp/req/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
 "mGW" = (
@@ -17035,7 +16972,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/m_hallway)
 "ncO" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/lobby)
 "ndK" = (
 /obj/structure/machinery/floodlight/landing/floor,
@@ -17138,8 +17075,8 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/m_hallway)
 "njE" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun)
@@ -17245,9 +17182,9 @@
 /area/rostock/req)
 "nnK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/corsat/marked,
@@ -17483,8 +17420,8 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/req)
 "nBz" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lowerdeck_maint/p_a)
@@ -17595,13 +17532,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/security/headquarters_lobby)
 "nEB" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "exitor2";
-	name = "Medical Prep";
-	req_one_access = list(231, 240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/medical/autoname{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/prep)
 "nEJ" = (
@@ -18368,11 +18302,8 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/m_hallway)
 "omu" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1;
-	name = "Interrogation";
-	req_one_access = list(233, 240);
-	req_access = list()
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname{
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/security/headquarters_interrogation)
@@ -18463,8 +18394,9 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/rostock/airoom)
 "out" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/upperdeck_maint/p_a)
@@ -18529,12 +18461,10 @@
 /area/rostock/medical/chemistry)
 "owf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Storage";
-	dir = 2;
-	req_one_access = list(230, 240)
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/upp/generic{
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "owQ" = (
@@ -18550,11 +18480,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/lower_deck/kitchen)
 "oxk" = (
-/obj/structure/machinery/door/airlock/almayer/security{
-	req_access = list();
-	req_one_access = list(232, 233, 234, 240);
-	name = "\improper Railgun Systems Room"
-	},
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun)
 "oxy" = (
@@ -18568,9 +18494,9 @@
 /turf/open/floor/prison,
 /area/rostock/hangar/repairbay)
 "oxM" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/command/hallway)
@@ -18914,10 +18840,10 @@
 /turf/closed/wall/almayer/aicore/reinforced,
 /area/rostock/airoom)
 "oKt" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/starboard_aft_accessway)
@@ -19210,7 +19136,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "oTO" = (
-/obj/structure/window/framed/almayer/white,
+/obj/structure/window/framed/upp_ship/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lock UPP";
 	name = "\improper Hangar Lockdown Blast Door"
@@ -19779,9 +19705,9 @@
 /turf/open/floor/almayer/empty/requisitions,
 /area/supply/station/upp)
 "prk" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 8
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
@@ -19940,12 +19866,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/rostock/lower_deck/bathroom)
 "pxq" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Reserve Officer Bunks";
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_access = list(240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/command/so)
@@ -19966,9 +19891,9 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/vehiclehangar)
 "pxQ" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	req_one_access = null;
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch";
 	req_access = list(240)
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -19992,8 +19917,9 @@
 /turf/open/floor/strata/green3/north,
 /area/rostock/lower_deck/prep)
 "pyR" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lifeboat)
@@ -20591,12 +20517,11 @@
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/upper_deck/hallway)
 "pYp" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bathroom";
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/upp/generic/autoname{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/bathroom)
 "pYA" = (
@@ -20976,9 +20901,9 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/rostock/lower_deck/s_a_hallway)
 "qlC" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	req_one_access = null;
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch";
 	req_access = list(240)
 	},
 /turf/open/floor/corsat/marked,
@@ -21154,9 +21079,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "qtZ" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(233, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
@@ -21490,7 +21415,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lifeboat)
 "qHf" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/upp_ship/reinforced,
 /area/rostock/medical/chemistry)
 "qHv" = (
 /obj/item/prop/colony/usedbandage{
@@ -22343,9 +22268,9 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/hangarbay)
 "rpz" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/ert_dock/port)
@@ -22475,9 +22400,9 @@
 /turf/open/floor/plating,
 /area/rostock/security/brig_office)
 "rwt" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	name = "\improper Storage"
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/upperdeck_maint/p_m)
@@ -22537,9 +22462,9 @@
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/rostock/engineering/main_area)
 "ryk" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(232, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
@@ -22787,8 +22712,8 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/security/brig_holding_area)
 "rKL" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lowerdeck_maint/p_m)
@@ -22831,7 +22756,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/railgun/starboard)
 "rNC" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/prep)
 "rNG" = (
 /obj/structure/medical_supply_link,
@@ -23252,8 +23177,9 @@
 /turf/open/floor/wood,
 /area/rostock/command/xo)
 "sfp" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/m_hallway)
@@ -23777,7 +23703,7 @@
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/hangar/hangarbay)
 "sCS" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/storage)
 "sDd" = (
 /obj/structure/surface/table/almayer,
@@ -23988,12 +23914,6 @@
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/m_hallway)
-"sNQ" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240)
-	},
-/turf/closed/wall/upp_ship,
-/area/rostock/upperdeck_maint/p_m)
 "sNZ" = (
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/upperdeck_maint/p_f)
@@ -24082,9 +24002,9 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/hangarbay)
 "sSR" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
@@ -25042,13 +24962,11 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/medical/morgue)
 "tID" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	name = "Medical Storage";
-	req_one_access = list(231, 240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/upp/medical/solid/autoname{
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/storage)
 "tJd" = (
@@ -25290,10 +25208,9 @@
 /turf/open/floor/strata/blue3,
 /area/rostock/command/cic)
 "tUx" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
+/obj/structure/machinery/door/airlock/upp/generic/solid{
 	dir = 8;
-	name = "\improper Auxillery Fuel Storage"
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/engineering_lower_access)
@@ -25438,9 +25355,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "tXA" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(230, 240);
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
 	dir = 2
 	},
 /turf/open/floor/corsat/marked,
@@ -25916,9 +25833,9 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/security/brig_entryway)
 "uqE" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lock UPP";
@@ -25975,7 +25892,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "usE" = (
-/obj/structure/window/framed/almayer/white,
+/obj/structure/window/framed/upp_ship,
 /turf/open/floor/plating,
 /area/rostock/medical/chemistry)
 "utu" = (
@@ -26023,13 +25940,10 @@
 /turf/open/floor/strata/green1,
 /area/rostock/lower_deck/prep)
 "utU" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	name = "Surgery";
-	req_one_access = list(231, 240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/upp/medical/solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/rostock/medical/surgery)
 "uuF" = (
@@ -26163,15 +26077,12 @@
 /turf/open/floor/strata/orange_edge/northwest,
 /area/rostock/req)
 "uBe" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "exitor2";
-	name = "Morgue";
-	req_one_access = list(231, 240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/medical/solid{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
-/area/rostock/medical/prep)
+/area/rostock/medical/morgue)
 "uBG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -26542,12 +26453,11 @@
 /turf/open/floor/strata/red3,
 /area/rostock/security/headquarters_lobby)
 "uTd" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Political Officers Quarters";
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_access = list(240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/command/polcom)
@@ -26595,11 +26505,8 @@
 /area/rostock/medical/surgery)
 "uVb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/security{
-	req_access = list();
-	req_one_access = list(232, 233, 234, 240);
-	name = "\improper Railgun Systems Room";
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/sec/solid/autoname{
+	dir = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun/starboard)
@@ -27304,9 +27211,9 @@
 /area/rostock/engineering/reactor)
 "vtS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Hallway";
-	req_one_access = list(230, 240);
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
 	dir = 2
 	},
 /turf/open/floor/corsat/marked,
@@ -27607,12 +27514,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "vIu" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	req_access = list(230);
-	name = "\improper Dormitory"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "vIA" = (
@@ -27787,9 +27692,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "vPx" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engineering Power Storage";
-	req_one_access = list(232, 240);
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_one_access_txt = list(232, 240);
+	req_access = null;
 	dir = 2
 	},
 /turf/open/floor/corsat/marked,
@@ -28050,12 +27955,10 @@
 /turf/open/floor/strata/purp2,
 /area/rostock/req)
 "vUU" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Command Dining Hall";
-	dir = 1;
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/upp/generic/autoname{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/rostock/command/dining)
 "vVl" = (
@@ -28997,7 +28900,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "wFB" = (
-/turf/closed/wall/almayer/white,
+/turf/closed/wall/upp_ship,
 /area/rostock/medical/surgery)
 "wFE" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -29675,12 +29578,11 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "xku" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	name = "\improper Commanding Officer's Quarters";
-	req_access = list(240)
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
+	req_access = list(240)
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/command/co)
@@ -30289,13 +30191,14 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "xKG" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = list(240);
-	req_one_access = null
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 8;
+	name = "\improper Maintenance Hatch";
+	req_access = list(240)
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "synth";
-	dir = 4;
+	dir = 8;
 	name = "\improper Synthetic Prep"
 	},
 /turf/open/floor/corsat/marked,
@@ -30392,9 +30295,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/security/brig_accessway)
 "xOA" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list(230, 240);
-	dir = 2
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 2;
+	name = "\improper Maintenance Hatch"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
@@ -36663,7 +36566,7 @@ hjf
 fVW
 jDK
 hyC
-emg
+abd
 hol
 qBk
 dCW
@@ -37027,7 +36930,7 @@ tox
 ezr
 slH
 wOa
-jjr
+abe
 hIc
 frE
 tvt
@@ -38136,7 +38039,7 @@ seH
 rmb
 dgs
 biQ
-dvF
+prk
 wXC
 vpz
 jdy
@@ -39704,7 +39607,7 @@ ati
 iLp
 uME
 xan
-mgz
+vIu
 fnW
 ygu
 sBT
@@ -40250,7 +40153,7 @@ ati
 hUW
 uME
 xan
-mgz
+vIu
 eFw
 ygu
 sBT
@@ -40796,7 +40699,7 @@ cwo
 qMC
 vss
 tGy
-mgz
+vIu
 sRb
 ygu
 sBT
@@ -40966,7 +40869,7 @@ pPQ
 pPQ
 pPQ
 pPQ
-diR
+aHS
 pPQ
 pPQ
 pPQ
@@ -43756,9 +43659,9 @@ rap
 xEG
 oxH
 hIM
-djz
+rwt
 gtH
-sNQ
+rwt
 hIM
 oQB
 xNs
@@ -45212,9 +45115,9 @@ aeM
 xEG
 oxH
 hIM
-djz
+rwt
 hIM
-djz
+rwt
 lmj
 dXR
 wDv
@@ -46687,7 +46590,7 @@ jWN
 ljO
 jvA
 eia
-ncO
+aaL
 hxq
 ggg
 jlz
@@ -46869,7 +46772,7 @@ czD
 hks
 wSf
 oyw
-ncO
+aaL
 xDu
 iaP
 iOl
@@ -47046,12 +46949,12 @@ iOi
 iOi
 iOi
 iOi
-fpf
-fpf
-fpf
-fpf
-fpf
-fpf
+aaL
+aaL
+aaL
+aaL
+aaL
+aaL
 bTD
 jqS
 qOt
@@ -60014,7 +59917,7 @@ xZl
 iCj
 myc
 ofW
-abc
+ofW
 ofW
 ofW
 ofW

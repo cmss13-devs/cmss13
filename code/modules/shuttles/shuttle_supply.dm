@@ -11,23 +11,6 @@
 			GLOB.supply_controller.supply_elevator = get_turf(src)
 		if(FACTION_UPP)
 			GLOB.supply_controller_upp.supply_elevator = get_turf(src)
-			var/datum/shuttle/ferry/supply/shuttle = SSoldshuttle.shuttle_controller.shuttles["Supply upp"]
-			if(shuttle.pick_loc())
-				shuttle.Elevator_x = shuttle.pick_loc().x
-				shuttle.Elevator_y = shuttle.pick_loc().y
-				shuttle.Elevator_z = shuttle.pick_loc().z
-				shuttle.SW = new /obj/effect/elevator(locate(shuttle.Elevator_x-2,shuttle.Elevator_y-2,shuttle.Elevator_z))
-				shuttle.SW.vis_contents += shuttle.elevator_animation
-				shuttle.SE = new /obj/effect/elevator(locate(shuttle.Elevator_x+2,shuttle.Elevator_y-2,shuttle.Elevator_z))
-				shuttle.SE.pixel_x = -128
-				shuttle.SE.vis_contents += shuttle.elevator_animation
-				shuttle.NW = new /obj/effect/elevator(locate(shuttle.Elevator_x-2,shuttle.Elevator_y+2,shuttle.Elevator_z))
-				shuttle.NW.pixel_y = -128
-				shuttle.NW.vis_contents += shuttle.elevator_animation
-				shuttle.NE = new /obj/effect/elevator(locate(shuttle.Elevator_x+2,shuttle.Elevator_y+2,shuttle.Elevator_z))
-				shuttle.NE.pixel_x = -128
-				shuttle.NE.pixel_y = -128
-				shuttle.NE.vis_contents += shuttle.elevator_animation
 		else
 			GLOB.supply_controller.supply_elevator = get_turf(src)
 	return INITIALIZE_HINT_QDEL

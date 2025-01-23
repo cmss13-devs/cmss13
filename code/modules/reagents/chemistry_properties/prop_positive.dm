@@ -700,6 +700,7 @@
 
 /datum/chem_property/positive/fire/reset_reagent()
 	holder.chemfiresupp = initial(holder.chemfiresupp)
+
 	holder.radiusmod = initial(holder.radiusmod)
 	holder.durationmod = initial(holder.durationmod)
 	holder.intensitymod = initial(holder.intensitymod)

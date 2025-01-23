@@ -13,6 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_7
 
+	available_strains = list(/datum/xeno_strain/boxer)
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)

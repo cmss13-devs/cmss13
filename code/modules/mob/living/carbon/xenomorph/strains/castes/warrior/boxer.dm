@@ -5,9 +5,7 @@
 	icon_state_prefix = "boxer"
 
 	actions_to_remove = list(
-		/datum/action/xeno_action/activable/pounce/runner,
-		/datum/action/xeno_action/activable/runner_skillshot,
-		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/hook,
@@ -28,17 +26,25 @@
 	var/focus = 0
 	var/max_focus = 10
 	var/focus_decay_time = 5 SECONDS
+	var/last_attack_time
 
-/datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
+/datum/behavior_delegate/warrior_boxer/melee_attack_additional_effects_self()
+	last_attack_time = world.time
+	gain_focus()
 
-/datum/behavior_delegate/ravager_berserker/on_life()
+/datum/behavior_delegate/warrior_boxer/on_life()
 	//we quickly focus if we are out of combat
-	if (((last_slash_time + focus_decay_time) < world.time) && !(focus <= 0))
+	if (((last_attack_time + focus_decay_time) < world.time) && !(focus <= 0))
 		lose_focus()
 
-/datum/behavior_delegate/ravager_berserker/lose_focus(amount = 2)
-	focus =- amount
+/datum/behavior_delegate/warrior_boxer/proc/lose_focus(amount = 2)
+	focus = max(0, focus - amount)
 
-/datum/behavior_delegate/ravager_berserker/append_to_stat()
+/datum/behavior_delegate/warrior_boxer/proc/gain_focus(amount = 1)
+	last_attack_time = world.time
+	if(focus < max_focus)
+		focus += amount
+
+/datum/behavior_delegate/warrior_boxer/append_to_stat()
 	. = list()
 	. += "Focus: [focus]/[max_focus]"

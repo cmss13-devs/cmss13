@@ -40,3 +40,30 @@
 	var/base_punch_damage_synth = 30
 	var/base_punch_damage_pred = 25
 	var/damage_variance = 5
+
+/datum/action/xeno_action/activable/warrior_punch/hook
+	name = "Left Hook"
+	action_icon_state = "punch"
+	macro_path = /datum/action/xeno_action/verb/verb_punch
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 5 SECONDS
+
+/datum/action/xeno_action/onclick/ironhide
+	name = "Iron Hide"
+	action_icon_state = "charge_spit"
+	macro_path = /datum/action/xeno_action/verb/verb_charge_spit
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_ACTIVATE
+	xeno_cooldown = 10 SECONDS
+	var/armor_buff = 30
+	var/duration = 5 SECONDS
+
+/datum/action/xeno_action/activable/uppercut
+	name = "Uppercut"
+	action_icon_state = "punch"
+	macro_path = /datum/action/xeno_action/verb/verb_punch
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 15 SECONDS
+	var/base_damage = 50

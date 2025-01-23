@@ -171,3 +171,93 @@
 	warrior.flick_attack_overlay(carbon, "punch")
 	shake_camera(carbon, 2, 1)
 	step_away(carbon, warrior, 2)
+
+/datum/action/xeno_action/activable/hook/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/boxer = owner
+	var/datum/behavior_delegate/warrior_boxer/boxer_behavior = boxer.behavior_delegate
+	var/focus = boxer_behavior.focus
+	var/mob/living/carbon/carbone = affected_atom
+	var/damage = max(get_xeno_damage_slash(boxer, carbone), get_xeno_damage_slash(boxer, carbone) * focus * 0.25)
+	var/distance = get_dist(boxer, affected_atom)
+
+	if (!action_cooldown_check())
+		return
+
+	if (!isxeno_human(affected_atom) || boxer.can_not_harm(affected_atom))
+		return
+
+	if (!boxer.check_state())
+		return
+
+	if (distance > 2)
+		return
+
+	apply_cooldown()
+	boxer.throw_atom(get_step_towards(carbone, boxer), 2, SPEED_SLOW, boxer)
+	if(!boxer.Adjacent(carbone))
+		on_cooldown_end()
+		return
+
+	playsound(carbone, "punch", 50, 1)
+	boxer.animation_attack_on(carbone)
+	boxer.flick_attack_overlay(carbone, "punch")
+	carbone.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest")
+	carbone.apply_effect(4, SLOW)
+	boxer_behavior.gain_focus()
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/ironhide/use_ability()
+	var/mob/living/carbon/xenomorph/boxer = owner
+	if (!action_cooldown_check())
+		return
+
+	if (!boxer.check_state())
+		return
+
+	boxer.add_filter("boxer_block", 1, list("type" = "outline", "color" = "#971515", "size" = 1))
+	boxer.armor_deflection_buff += armor_buff
+	boxer.mob_size = MOB_SIZE_BIG
+	addtimer(CALLBACK(src, PROC_REF(end_ironhide)), duration)
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/ironhide/proc/end_ironhide()
+	var/mob/living/carbon/xenomorph/boxer = owner
+	boxer.remove_filter("boxer_block")
+	boxer.armor_deflection_buff -= armor_buff
+	boxer.mob_size = initial(boxer.mob_size)
+
+/datum/action/xeno_action/activable/uppercut/use_ability(atom/affected_atom)
+	var/mob/living/carbon/carbone = affected_atom
+	var/mob/living/carbon/xenomorph/boxer = owner
+	var/datum/behavior_delegate/warrior_boxer/boxer_behavior = boxer.behavior_delegate
+	var/focus = boxer_behavior.focus
+
+	if (!action_cooldown_check())
+		return
+
+	if (!isxeno_human(affected_atom) || boxer.can_not_harm(affected_atom))
+		return
+
+	if (!boxer.check_state())
+		return
+
+	if (!boxer.Adjacent(carbone))
+		return
+
+	if(carbone.stat == DEAD)
+		return
+
+	if(HAS_TRAIT(carbone, TRAIT_NESTED))
+		return
+
+	if(focus < 5)
+		return
+
+	carbone.apply_armoured_damage(max(base_damage, base_damage * focus * 0.20), ARMOR_MELEE, BRUTE, "head")
+	carbone.apply_effect(focus * 0.4, WEAKEN)
+	boxer.throw_carbon(carbone, boxer.dir, focus * 0.5, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+	boxer_behavior.lose_focus(focus)
+	apply_cooldown()
+	return ..()

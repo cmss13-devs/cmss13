@@ -20426,6 +20426,12 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
+"bMb" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crashlanding-eva"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
 "bMf" = (
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/filtration_plant)
@@ -20460,6 +20466,12 @@
 /obj/structure/platform_decoration/metal/almayer/northwest,
 /turf/open/gm/river,
 /area/bigredv2/outside/engineering/reactor)
+"bPi" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "vault_v2"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "bPl" = (
 /obj/structure/surface/table,
 /obj/structure/transmitter/colony_net{
@@ -21295,6 +21307,12 @@
 	},
 /turf/open/floor/whitepurplecorner/north,
 /area/bigredv2/outside/medical)
+"cKY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "viro-rock_open"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/virology)
 "cLg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22056,6 +22074,12 @@
 /obj/item/bodybag,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"dDD" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "prison_breakout"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/marshal_office)
 "dEd" = (
 /obj/structure/sign/safety/biohazard{
 	pixel_x = 7;
@@ -23349,6 +23373,12 @@
 "eTr" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves_sw)
+"eTF" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1entrance_v2"
+	},
+/turf/open/mars,
+/area/bigredv2/outside/nw)
 "eTK" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/ammo_casing/bullet,
@@ -24627,6 +24657,12 @@
 "gpB" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves_research)
+"gpC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "filtration_restored"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "gpE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -24815,6 +24851,12 @@
 /obj/structure/barricade/wooden,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
+"gxY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1cave_flank"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/space_port)
 "gyb" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/mars,
@@ -25719,6 +25761,13 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"hBt" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/nightmare{
+	insert_tag = "se-checkpoint"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "hBD" = (
 /obj/structure/bed/chair,
 /turf/open/floor,
@@ -27275,6 +27324,12 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
+"jsu" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "chapel_cult"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/chapel)
 "jsL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -28306,6 +28361,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/outside/engineering)
+"kmM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lambda-cave-mushroom"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "knL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/suit/armor/riot{
@@ -32289,6 +32350,12 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"oHQ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crashlanding-offices"
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
 "oHV" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -32641,6 +32708,12 @@
 "oZQ" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/bigredv2/outside/filtration_plant)
+"paf" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "eta_carp"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/eta/xenobiology)
 "pak" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/s)
@@ -34337,6 +34410,12 @@
 	},
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
+"qLe" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1containers_scramble"
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/space_port)
 "qLk" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/mars_cave/mars_dirt_5,
@@ -35250,6 +35329,12 @@
 /obj/structure/barricade/deployable,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"rGs" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "cargo_containers"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/cargo)
 "rGz" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
@@ -35356,6 +35441,12 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/plating/warnplate/west,
 /area/bigredv2/oob)
+"rLj" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "reactor_meltdown"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "rLJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-in"
@@ -35881,6 +35972,12 @@
 /obj/structure/bed,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
+"sgA" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "tcomms_open"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "sgF" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -35952,6 +36049,12 @@
 "siM" = (
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/outside/lz1_telecomm_cas)
+"sjm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "admin_pmc"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/admin_building)
 "sjQ" = (
 /obj/item/ammo_casing/shell,
 /obj/effect/landmark/corpsespawner/colonist,
@@ -36642,6 +36745,12 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
+"sVo" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "containerroom_xenos"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/nw/ceiling)
 "sWa" = (
 /obj/item/ore{
 	pixel_x = 12;
@@ -37351,6 +37460,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/bigredv2/outside/space_port)
+"tEb" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "medbay-v3"
+	},
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/c)
 "tEc" = (
 /obj/structure/machinery/light/small,
 /turf/open/mars_cave/mars_dirt_4,
@@ -38390,6 +38505,15 @@
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"uHZ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "dorms_party"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
 "uIz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/southeast,
@@ -39445,6 +39569,12 @@
 /obj/structure/closet/crate/miningcar/yellow,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves/mining)
+"vMT" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lambda-graveyard"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/se)
 "vNh" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -39682,6 +39812,12 @@
 	},
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
+"waC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "viro_open"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "waJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -41348,6 +41484,12 @@
 /obj/structure/prop/server_equipment/yutani_server,
 /turf/open/floor/greengrid,
 /area/bigredv2/caves/lambda/research)
+"xKw" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "medbay-passage"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/admin_building)
 "xKG" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/stairs{
@@ -41364,6 +41506,12 @@
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/bar)
+"xLg" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lambda-cave-extratunnel"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "xLo" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -41837,6 +41985,12 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
+"ylm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "etatunnel_open"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "yln" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -43867,7 +44021,7 @@ aao
 aao
 aao
 aao
-aao
+sgA
 aao
 aao
 xmy
@@ -52018,7 +52172,7 @@ aao
 aao
 aao
 aao
-aao
+ylm
 aao
 uHQ
 oRK
@@ -55037,7 +55191,7 @@ kgx
 kgx
 kgx
 aao
-aao
+rLj
 aao
 aao
 aao
@@ -65878,7 +66032,7 @@ aao
 aao
 aao
 aao
-aao
+gpC
 aao
 aao
 aao
@@ -71290,7 +71444,7 @@ eDS
 aao
 vVZ
 aao
-pcF
+hBt
 aao
 aao
 aao
@@ -81665,7 +81819,7 @@ aMV
 tQw
 aao
 aao
-aao
+xLg
 aao
 aao
 aao
@@ -83374,7 +83528,7 @@ aao
 aao
 jgW
 aig
-aao
+bPi
 aao
 anI
 anI
@@ -86404,7 +86558,7 @@ aao
 aao
 aao
 aao
-aao
+kmM
 aao
 aao
 aao
@@ -94024,7 +94178,7 @@ aao
 aao
 aao
 aao
-aao
+waC
 aao
 aao
 aao
@@ -97900,7 +98054,7 @@ iFr
 wra
 hby
 meb
-aeI
+eTF
 aeI
 jHK
 aeI
@@ -97938,7 +98092,7 @@ aoD
 aoD
 aoD
 aoD
-aoD
+cKY
 aoD
 aoD
 aoD
@@ -98098,7 +98252,7 @@ acw
 acw
 aam
 aam
-aam
+qLe
 aam
 aam
 aam
@@ -98786,7 +98940,7 @@ axv
 anp
 anp
 anp
-anp
+sVo
 mbY
 siG
 hEr
@@ -101225,7 +101379,7 @@ asK
 asK
 bkz
 asK
-asK
+rGs
 gWD
 ftY
 kcH
@@ -102001,7 +102155,7 @@ aae
 aae
 aae
 aae
-aae
+gxY
 aae
 aae
 aaq
@@ -102917,7 +103071,7 @@ alu
 alu
 alu
 alu
-aHD
+tEb
 aCM
 aBR
 aMc
@@ -105713,7 +105867,7 @@ tJl
 acp
 acp
 acp
-acp
+dDD
 sgd
 oEY
 aGy
@@ -107066,7 +107220,7 @@ apC
 apC
 apC
 apC
-apC
+sjm
 aHF
 aHD
 aBR
@@ -110416,7 +110570,7 @@ aCe
 aCe
 aCe
 aCe
-aCe
+paf
 aao
 aao
 aao
@@ -112020,7 +112174,7 @@ ayY
 axG
 ayY
 ayY
-aFN
+uHZ
 asJ
 asJ
 aua
@@ -115107,7 +115261,7 @@ aHF
 dyX
 aHF
 dyX
-aHF
+oHQ
 aHF
 aHF
 awp
@@ -116147,7 +116301,7 @@ mbz
 anJ
 anJ
 anJ
-anJ
+bMb
 amn
 amn
 amn
@@ -123124,7 +123278,7 @@ atP
 atP
 atP
 atb
-atb
+jsu
 bja
 bes
 bes
@@ -123134,7 +123288,7 @@ bes
 bes
 bes
 bes
-awd
+vMT
 awd
 aao
 aao
@@ -159126,7 +159280,7 @@ aEz
 aEz
 aEz
 wvk
-apC
+xKw
 azC
 awi
 axP

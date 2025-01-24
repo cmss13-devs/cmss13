@@ -838,7 +838,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if(!C || !istype(C))
 			continue
 		// Check that sensors are present and active
-		if(!C.has_sensor || !C.sensor_mode || faction != H.faction)
+		if(!C.has_sensor || !C.sensor_mode || faction != H.faction.code_identificator)
 			continue
 
 		// Check if z-level is correct
@@ -1155,7 +1155,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if(!isyautja(human_mob))
 			continue
 
-		if(faction != human_mob.faction)
+		if(faction != human_mob.faction.code_identificator)
 			continue
 
 		// Check if z-level is correct

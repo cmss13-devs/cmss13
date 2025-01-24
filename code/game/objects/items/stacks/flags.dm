@@ -197,7 +197,7 @@
 
 /obj/item/flag/plantable/get_examine_text(mob/user)
 	. = ..()
-	if(play_warcry && user.faction == faction)
+	if(play_warcry && user.faction.code_identificator == faction)
 		. += SPAN_NOTICE("Planting the flag while in <b>HARM</b> intent will cause you to bellow out a rallying warcry!")
 
 /// Proc for turning the flag item into a structure.
@@ -234,11 +234,11 @@
 
 	// If there are more than 14 allies nearby, play a stronger rallying cry.
 	// Otherwise, play the default warcry sound if there is one. If not, play a generic flag raising sfx.
-	if(play_warcry && user.faction == faction && user.a_intent == INTENT_HARM)
+	if(play_warcry && user.faction.code_identificator == faction && user.a_intent == INTENT_HARM)
 		var/allies_nearby = 0
 		if(COOLDOWN_FINISHED(src, warcry_cooldown_item))
 			for(var/mob/living/carbon/human in orange(planted_flag, 7))
-				if(human.is_dead() || human.faction != faction)
+				if(human.is_dead() || human.faction.code_identificator != faction)
 					continue
 				allies_nearby++
 

@@ -184,6 +184,10 @@
 			continue
 		faction_to_get_list += faction_to_get
 
+	if(!length(faction_to_get_list))
+		to_chat(src, SPAN_WARNING("There no applicable factions to join."))
+		return
+
 	var/choice = tgui_input_list(src, "Choose faction to join:", "Factions", faction_to_get_list)
 	if(!choice)
 		return

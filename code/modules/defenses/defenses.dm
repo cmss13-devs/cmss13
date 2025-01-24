@@ -63,6 +63,9 @@
 		linked_laptop = null
 	if(!QDELETED(HD))
 		QDEL_NULL(HD)
+
+	faction = null
+
 	return ..()
 
 /obj/structure/machinery/defenses/proc/connect()

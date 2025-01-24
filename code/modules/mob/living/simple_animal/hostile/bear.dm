@@ -35,7 +35,7 @@
 	minbodytemp = 0
 	var/stance_step = 0
 
-	faction = FACTION_UPP
+	faction_to_get = FACTION_UPP
 
 //SPACE BEARS! SQUEEEEEEEE~  OW! FUCK! IT BIT MY HAND OFF!!
 /mob/living/simple_animal/hostile/bear/Hudson

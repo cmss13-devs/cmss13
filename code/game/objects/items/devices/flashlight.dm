@@ -661,7 +661,7 @@
 
 /obj/item/device/flashlight/flare/signal/gun/activate_signal(mob/living/carbon/human/user)
 	turn_on()
-	faction = user.faction
+	faction = user.faction.code_identificator
 	return ..()
 
 /obj/item/device/flashlight/flare/signal/debug

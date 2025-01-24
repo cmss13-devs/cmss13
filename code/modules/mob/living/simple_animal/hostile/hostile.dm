@@ -1,5 +1,4 @@
 /mob/living/simple_animal/hostile
-	faction = "hostile"
 	stop_automated_movement_when_pulled = 0
 	black_market_value = KILL_MENDOZA
 	dead_black_market_value = 25

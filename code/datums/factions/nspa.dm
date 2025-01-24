@@ -1,5 +1,7 @@
 /datum/faction/nspa
 	name = "Neroid Sector Policing Authority"
+	desc = "Warning, potential dead story teller."
+	code_identificator = FACTION_NSPA
 
 /datum/faction/nspa/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state

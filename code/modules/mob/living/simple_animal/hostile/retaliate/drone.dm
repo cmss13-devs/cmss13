@@ -47,7 +47,6 @@
 	minbodytemp = 0
 
 	var/has_loot = TRUE
-	faction = "malf_drone"
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/Initialize()
 	. = ..()

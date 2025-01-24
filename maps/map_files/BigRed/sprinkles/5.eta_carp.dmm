@@ -83,7 +83,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "t" = (
 /mob/living/simple_animal/hostile/carp{
-	faction = "neutral";
+	faction = "nfo";
 	name = "strange fish"
 	},
 /turf/open/ice,

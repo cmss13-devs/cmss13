@@ -48,7 +48,7 @@
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
-	faction = FACTION_XENOMORPH_NORMAL
+	faction_to_get = FACTION_XENOMORPH_NORMAL
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
@@ -56,6 +56,7 @@
 	var/xeno_inhand_item_offset
 	dead_black_market_value = 50
 	light_system = MOVABLE_LIGHT
+
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
@@ -439,6 +440,16 @@
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src
 	xeno_inhand_item_offset = (icon_size - 32) * 0.5
+
+	. = ..()
+
+	if(!organ_faction_tag && faction.organ_faction_iff_tag_type)
+		organ_faction_tag = new faction.organ_faction_iff_tag_type(src, faction)
+
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/trait in faction_module.hive_inherant_traits)
+		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -450,16 +461,6 @@
 	toggle_xeno_hostilehud()
 	recalculate_everything()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
-
-	. = ..()
-
-	faction.add_mob(src)
-	if(!organ_faction_tag && faction.organ_faction_iff_tag_type)
-		organ_faction_tag = new faction.organ_faction_iff_tag_type(src, faction)
-
-	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
-	for(var/trait in faction_module.hive_inherant_traits)
-		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set leader to the new mob
 	if(IS_XENO_LEADER(old_xeno))

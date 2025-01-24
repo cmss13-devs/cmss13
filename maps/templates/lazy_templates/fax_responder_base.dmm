@@ -266,7 +266,7 @@
 /obj/structure/machinery/computer/crew/alt{
 	pixel_y = 9;
 	pixel_x = -14;
-	faction = "CLF";
+	faction = "clf";
 	name = "CLF monitoring computer";
 	layer = 3.01
 	},
@@ -1113,7 +1113,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew/alt{
 	pixel_y = 0;
-	faction = "UPP";
+	faction = "upp";
 	name = "UPP monitoring computer";
 	dir = 8;
 	pixel_x = 3
@@ -1288,7 +1288,7 @@
 /obj/structure/machinery/computer/crew/alt{
 	pixel_y = -7;
 	pixel_x = -3;
-	faction = "Colonial Marshal";
+	faction = "clmr";
 	name = "CMB monitoring computer";
 	dir = 4;
 	layer = 2.99
@@ -1843,12 +1843,12 @@
 /obj/structure/machinery/computer/crew/alt{
 	pixel_y = 17;
 	pixel_x = -9;
-	faction = "Wey-Yu";
+	faction = "wy";
 	name = "WY monitoring computer"
 	},
 /obj/structure/machinery/computer/crew/alt{
 	pixel_y = 17;
-	faction = "PMC";
+	faction = "pmc";
 	name = "PMC monitoring computer";
 	pixel_x = 8
 	},
@@ -2297,7 +2297,7 @@
 /obj/structure/machinery/computer/crew/alt{
 	pixel_y = 0;
 	pixel_x = 3;
-	faction = "TWE";
+	faction = "twe";
 	name = "TWE monitoring computer";
 	dir = 8
 	},
@@ -4320,7 +4320,7 @@
 "TI" = (
 /mob/living/simple_animal/hostile/carp{
 	destroy_surroundings = 0;
-	faction = "Fax Responder";
+	faction = "fax";
 	name = "Gary"
 	},
 /turf/open/space/basic,

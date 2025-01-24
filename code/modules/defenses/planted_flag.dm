@@ -141,7 +141,7 @@
 	handheld_type = /obj/item/defenses/handheld/planted_flag/wy
 	defense_type = "WY"
 
-	faction = FACTION_WY
+	faction_to_get = FACTION_WY
 
 /obj/structure/machinery/defenses/planted_flag/wy/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 2 SECONDS)
@@ -159,7 +159,7 @@
 	handheld_type = /obj/item/defenses/handheld/planted_flag/upp
 	defense_type = "UPP"
 
-	faction = FACTION_UPP
+	faction_to_get = FACTION_UPP
 
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"

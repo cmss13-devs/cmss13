@@ -309,7 +309,7 @@
 /obj/structure/vehicle_locker/cabinet
 	name = "cabinet"
 	desc = "A cabinet securely fastened to the wall, capable of storing a variety of smaller items."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "cabinet"
 	layer = ABOVE_MOB_LAYER
 
@@ -332,7 +332,7 @@
 /obj/structure/vehicle_locker/cabinet/cups/Initialize()
 	. = ..()
 	for(var/i in 1 to 12)
-		new /obj/item/reagent_container/food/drinks/plasticcup(container)
+		new /obj/item/reagent_container/food/drinks/coffee/marine(container)
 
 /obj/structure/vehicle_locker/cabinet/cups/flip
 	icon_state = "cabinet2"

@@ -186,11 +186,13 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/research/secret/testing)
 "aaw" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
 	},
-/obj/structure/lattice,
-/turf/open/floor/almayer_hull,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/solarpanel,
 /area/space)
 "aax" = (
 /obj/structure/machinery/light/double/blue{
@@ -6725,10 +6727,10 @@
 /turf/open/floor/prison/sterile_white,
 /area/prison/residential/north)
 "avR" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 8
 	},
+/obj/structure/platform,
 /turf/open/space,
 /area/space)
 "avS" = (
@@ -6844,16 +6846,11 @@
 /turf/open/floor/wood,
 /area/prison/residential/north)
 "awl" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 4
 	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
+/obj/structure/platform{
+	pixel_y = 25
 	},
 /turf/open/space,
 /area/space)
@@ -23937,7 +23934,7 @@
 /turf/closed/wall/prison,
 /area/prison/residential/south)
 "bGV" = (
-/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform,
 /turf/open/space,
 /area/space)
 "bGW" = (
@@ -35065,7 +35062,7 @@
 /turf/open/floor/prison/yellow,
 /area/prison/cellblock/mediumsec/south)
 "cxf" = (
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 4
 	},
 /turf/open/space,
@@ -36711,7 +36708,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/east)
 "dCm" = (
-/obj/structure/platform_decoration/kutjevo,
+/obj/structure/platform_decoration,
 /turf/open/space,
 /area/space)
 "dCo" = (
@@ -37455,7 +37452,7 @@
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "euQ" = (
-/obj/structure/platform_decoration/kutjevo{
+/obj/structure/platform_decoration{
 	dir = 8
 	},
 /turf/open/space,
@@ -37950,10 +37947,10 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/maintenance/residential/access/south)
 "eYK" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
+/obj/structure/barricade/handrail/wire{
+	dir = 4
 	},
-/turf/open/space,
+/turf/open/floor/solarpanel,
 /area/space)
 "eYV" = (
 /obj/structure/toilet{
@@ -38185,6 +38182,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/r_wall/prison,
 /area/prison/cellblock/maxsec/north)
+"flp" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/wire{
+	pixel_y = 32
+	},
+/turf/open/floor/solarpanel,
+/area/space)
 "flF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
@@ -40114,9 +40120,10 @@
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "hsm" = (
-/obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth,
-/turf/open/space,
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/turf/open/floor/solarpanel,
 /area/space)
 "hsR" = (
 /obj/structure/machinery/shower{
@@ -40636,6 +40643,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/prison/holding/holding2)
+"hRV" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	pixel_y = 32
+	},
+/turf/open/floor/solarpanel,
+/area/space)
 "hRZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/wood,
@@ -40767,11 +40783,10 @@
 /turf/open/floor/almayer_hull,
 /area/space)
 "hXU" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
 	},
-/obj/structure/lattice,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/solarpanel,
 /area/space)
 "hXW" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -43985,15 +44000,10 @@
 /turf/open/floor/prison,
 /area/prison/security/head)
 "kVj" = (
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/lattice,
+/obj/structure/platform{
 	dir = 1
 	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "kVM" = (
@@ -44348,7 +44358,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/staff_research)
 "lrx" = (
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 8
 	},
 /turf/open/space,
@@ -45382,8 +45392,8 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/highsec/north/south)
 "muO" = (
-/obj/structure/platform/kutjevo/smooth,
 /obj/structure/lattice,
+/obj/structure/platform,
 /turf/open/space,
 /area/space)
 "muR" = (
@@ -47462,13 +47472,8 @@
 /turf/open/floor/plating/prison,
 /area/prison/residential/central)
 "oAO" = (
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
 	},
 /turf/open/space,
 /area/space)
@@ -48159,6 +48164,15 @@
 "pml" = (
 /turf/closed/wall/mineral/bone_resin,
 /area/prison/residential/central)
+"pmE" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/turf/open/floor/solarpanel,
+/area/space)
 "pmO" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/platform{
@@ -49387,6 +49401,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/prison/cellblock/vip)
+"qyd" = (
+/obj/structure/barricade/handrail/wire{
+	pixel_y = 32
+	},
+/turf/open/floor/solarpanel,
+/area/space)
 "qyf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -50693,7 +50713,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/nw)
 "rWS" = (
-/obj/structure/platform_decoration/kutjevo{
+/obj/structure/platform_decoration{
 	dir = 4
 	},
 /turf/open/space,
@@ -51069,10 +51089,10 @@
 /turf/open/floor/prison/green/east,
 /area/prison/hallway/staff)
 "ssT" = (
-/obj/structure/platform/kutjevo/smooth,
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 4
 	},
+/obj/structure/platform,
 /turf/open/space,
 /area/space)
 "ssZ" = (
@@ -51859,16 +51879,11 @@
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "tqB" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform{
 	dir = 8
 	},
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
+/obj/structure/platform{
+	pixel_y = 25
 	},
 /turf/open/space,
 /area/space)
@@ -53500,9 +53515,8 @@
 /turf/open/floor/prison/yellowfull,
 /area/prison/cellblock/mediumsec/north)
 "uZF" = (
-/obj/structure/lattice,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
+/obj/structure/platform{
+	pixel_y = 25
 	},
 /turf/open/space,
 /area/space)
@@ -55766,7 +55780,7 @@
 /turf/open/floor/prison,
 /area/prison/yard)
 "xxP" = (
-/obj/structure/platform_decoration/kutjevo{
+/obj/structure/platform_decoration{
 	dir = 1
 	},
 /turf/open/space,
@@ -68834,10 +68848,10 @@ aAO
 aAO
 bGV
 rzJ
-eYK
+uZF
 bGV
 rzJ
-eYK
+uZF
 aAO
 wjg
 aAO
@@ -69045,10 +69059,10 @@ dCm
 cxf
 cxf
 ssT
-hXU
+rzJ
 awl
 ssT
-hXU
+rzJ
 awl
 cxf
 cxf
@@ -69254,16 +69268,16 @@ wjg
 acL
 lxE
 muO
-kRq
-kRq
-kRq
+flp
+hsm
+hsm
 suy
-kRq
-kRq
+hsm
+hsm
 suy
-kRq
-kRq
-kRq
+hsm
+hsm
+pmE
 kVj
 acL
 acL
@@ -69466,16 +69480,16 @@ wjg
 acL
 wjg
 bGV
-kRq
-kRq
-kRq
-fvK
+qyd
 kRq
 kRq
 fvK
 kRq
 kRq
+fvK
 kRq
+kRq
+hXU
 oAO
 lxE
 acL
@@ -69678,16 +69692,16 @@ wjg
 acL
 lxE
 muO
-kRq
-kRq
-kRq
+hRV
+eYK
+eYK
 suy
-kRq
-kRq
+eYK
+eYK
 suy
-kRq
-kRq
-kRq
+eYK
+eYK
+aaw
 kVj
 acL
 acL
@@ -69893,10 +69907,10 @@ xxP
 lrx
 lrx
 avR
-aaw
+rzJ
 tqB
 avR
-aaw
+rzJ
 tqB
 lrx
 lrx
@@ -70107,9 +70121,9 @@ aAO
 bGV
 ljP
 uZF
-hsm
+bGV
 ljP
-eYK
+uZF
 aAO
 aAO
 aAO
@@ -70317,10 +70331,10 @@ dCm
 cxf
 cxf
 ssT
-hXU
+rzJ
 awl
 ssT
-hXU
+rzJ
 awl
 cxf
 cxf
@@ -70526,16 +70540,16 @@ wjg
 acL
 lxE
 muO
-kRq
-kRq
-kRq
+flp
+hsm
+hsm
 hXJ
-kRq
-kRq
+hsm
+hsm
 suy
-kRq
-kRq
-kRq
+hsm
+hsm
+pmE
 kVj
 acL
 acL
@@ -70738,16 +70752,16 @@ wjg
 acL
 wjg
 bGV
-kRq
-kRq
-kRq
-fvK
+qyd
 kRq
 kRq
 fvK
 kRq
 kRq
+fvK
 kRq
+kRq
+hXU
 oAO
 aAO
 acL
@@ -70950,16 +70964,16 @@ wjg
 acL
 lxE
 muO
-kRq
-kRq
-kRq
+hRV
+eYK
+eYK
 suy
-kRq
-kRq
+eYK
+eYK
 suy
-kRq
-kRq
-kRq
+eYK
+eYK
+aaw
 kVj
 acL
 acL
@@ -71165,10 +71179,10 @@ xxP
 lrx
 lrx
 avR
-aaw
+rzJ
 tqB
 avR
-aaw
+rzJ
 tqB
 lrx
 lrx
@@ -71378,10 +71392,10 @@ aAO
 aAO
 bGV
 rzJ
-eYK
+uZF
 bGV
 rzJ
-eYK
+uZF
 aAO
 aAO
 aAO

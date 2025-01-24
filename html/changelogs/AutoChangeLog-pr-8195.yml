@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Halved nutrition cost when cold"
-  - code_imp: "Standardize some nutrition usage into defines"

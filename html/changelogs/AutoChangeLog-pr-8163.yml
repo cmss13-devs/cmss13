@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - balance: "Removed CO's sg training by default"
-  - rscadd: "Added a smartgunner pamphlet for CO's that can only be used by the CO that they can use to use their sg and sg gear"

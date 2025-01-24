@@ -1,4 +1,0 @@
-author: "blackcrystall"
-delete-after: True
-changes:
-  - bugfix: "Bug when you use aimed shot after normal one (your gun fails able_to_fire check and don't fire, but effect accumulate), you can't premade aimed shot buffs to use it later on normal one."

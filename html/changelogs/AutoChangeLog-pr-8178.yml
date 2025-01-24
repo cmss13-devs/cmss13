@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - rscadd: "Adds a minimal ui mode for medscanners"

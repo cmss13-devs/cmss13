@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "USCM Uniform now appears with the correct name on the vendors"
-  - code_imp: "vendors now strip_improper for names"

@@ -1,5 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - rscadd: "Queen neuro spit now drains 4u of stims per hit."
-  - balance: "Sentinel's slowing spit now drains 2u of stims per hit (from 1.75u)."

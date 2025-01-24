@@ -6829,7 +6829,7 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/prison/medbay)
 "awi" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/wood,
 /area/prison/residential/north)
@@ -6945,7 +6945,7 @@
 /turf/open/floor/prison/kitchen,
 /area/prison/research)
 "awF" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/crowbar/tactical,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
@@ -7592,17 +7592,13 @@
 /area/prison/security)
 "ayS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/surface/table/woodentable{
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark,
 /turf/open/floor/wood,
 /area/prison/chapel)
 "ayT" = (
 /obj/item/stack/rods,
-/obj/structure/surface/table/woodentable{
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible/hefa,
 /turf/open/floor/wood,
 /area/prison/chapel)
@@ -8384,7 +8380,7 @@
 /turf/open/floor/prison,
 /area/prison/chapel)
 "aBJ" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = -6;
 	pixel_y = 4
@@ -8984,7 +8980,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/north/south)
 "aDT" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
@@ -9408,7 +9404,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/recreation/highsec/n)
 "aFo" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper,
 /obj/structure/machinery/light/small/blue{
 	dir = 8
@@ -9799,7 +9795,7 @@
 /turf/open/floor/prison/red/southeast,
 /area/prison/cellblock/highsec/north/north)
 "aGH" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen{
 	pixel_x = 5;
 	pixel_y = 8
@@ -10807,7 +10803,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/hangar_storage/main)
 "aKj" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/prison/residential/north)
 "aKk" = (
@@ -10890,7 +10886,7 @@
 /turf/open/floor/carpet,
 /area/prison/quarters/research)
 "aKF" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper/photograph,
 /obj/item/device/camera_film{
 	pixel_x = 8;
@@ -10931,7 +10927,7 @@
 /turf/open/floor/prison/darkred2/northeast,
 /area/prison/security/checkpoint/highsec/n)
 "aKM" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
@@ -14045,7 +14041,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/residential/central)
 "aWo" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/screwdriver/tactical,
 /turf/open/floor/wood,
 /area/prison/residential/central)
@@ -14370,7 +14366,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/hanger/main)
 "aXv" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/wood,
 /area/prison/residential/central)
@@ -23916,7 +23912,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/residential/south)
 "bGR" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "bGS" = (
@@ -24237,7 +24233,7 @@
 /turf/open/floor/prison/redcorner,
 /area/prison/cellblock/highsec/south/north)
 "bIf" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/wood,
 /area/prison/residential/south)
@@ -28015,7 +28011,7 @@
 /obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/prison,
 /area/prison/security/head)
 "bWs" = (
@@ -28027,13 +28023,13 @@
 /turf/open/floor/prison,
 /area/prison/security/head)
 "bWu" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger,
 /obj/item/device/cassette_tape/nam,
 /turf/open/floor/prison,
 /area/prison/security/head)
 "bWv" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/prison,
 /area/prison/security/head)
@@ -28379,7 +28375,7 @@
 	network = list("PRISON");
 	dir = 4
 	},
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/prison/security/head)
@@ -28631,14 +28627,14 @@
 /turf/open/floor/prison/southwest,
 /area/prison/cellblock/highsec/south/south)
 "bYA" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/card{
 	dir = 4
 	},
 /turf/open/floor/prison,
 /area/prison/security/head)
 "bYB" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/stamp/hos,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
@@ -28661,7 +28657,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/checkpoint/medsec)
 "bYG" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -28669,7 +28665,7 @@
 /turf/open/floor/carpet,
 /area/prison/security/head)
 "bYH" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen{
 	pixel_y = 4
 	},
@@ -28677,7 +28673,7 @@
 /turf/open/floor/carpet,
 /area/prison/security/head)
 "bYI" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/carpet,
 /area/prison/security/head)
@@ -29991,7 +29987,7 @@
 /turf/open/floor/prison/darkred2,
 /area/prison/security)
 "ceb" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/megaphone,
 /obj/item/reagent_container/glass/bottle/spaceacillin{
 	pixel_x = -6;
@@ -30000,7 +29996,7 @@
 /turf/open/floor/prison,
 /area/prison/security/head)
 "cec" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/taperecorder,
 /turf/open/floor/prison,
 /area/prison/security/head)
@@ -31156,7 +31152,7 @@
 /turf/open/floor/wood,
 /area/prison/security/head)
 "cim" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -31218,7 +31214,7 @@
 /turf/open/space,
 /area/space)
 "ciw" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/weapon/gun/pistol/b92fs,
 /turf/open/floor/wood,
 /area/prison/security/head)
@@ -33625,7 +33621,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "crJ" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
@@ -35915,7 +35911,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/east)
 "cNQ" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/beer_pack,
 /turf/open/floor/wood,
 /area/prison/residential/north)
@@ -36743,7 +36739,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/access/south)
 "dDC" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/sosjerky,
 /obj/effect/landmark/good_item,
 /turf/open/floor/carpet,
@@ -38118,7 +38114,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/sw)
 "fhI" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/good_item,
 /turf/open/floor/wood,
 /area/prison/residential/central)
@@ -38547,7 +38543,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/medbay/foyer)
 "fKS" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/prison/residential/south)
@@ -39123,7 +39119,7 @@
 /turf/open/floor/prison/bluefull,
 /area/prison/hallway/central/south)
 "gvc" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
@@ -39446,7 +39442,7 @@
 /turf/open/floor/prison/cell_stripe/west,
 /area/prison/cellblock/mediumsec/east)
 "gKv" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/good_item,
 /turf/open/floor/wood,
 /area/prison/residential/north)
@@ -39515,7 +39511,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "gNa" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/paper/crumpled,
 /turf/open/floor/carpet,
@@ -39668,7 +39664,7 @@
 /turf/open/floor/prison/bluefull/west,
 /area/prison/residential/north)
 "gUm" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/raisins,
 /obj/effect/landmark/good_item,
 /turf/open/floor/wood,
@@ -40297,7 +40293,7 @@
 /turf/open/floor/prison/southwest,
 /area/prison/recreation/highsec/n)
 "hDi" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/carpet,
 /area/prison/residential/north)
@@ -40820,8 +40816,8 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/ne)
 "hZU" = (
-/obj/structure/surface/table/woodentable,
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/good_item,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
@@ -40962,7 +40958,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/mediumsec/east)
 "ifF" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/good_item,
 /turf/open/floor/wood,
@@ -41514,7 +41510,7 @@
 /turf/closed/wall/prison,
 /area/prison/cellblock/lowsec/sw)
 "iEG" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/snack_bowl,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
@@ -42091,7 +42087,7 @@
 /turf/open/floor/prison/greenblue/northwest,
 /area/prison/residential/north)
 "jeD" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
 "jeZ" = (
@@ -42195,7 +42191,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/east)
 "jkt" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/prison/residential/central)
@@ -43014,7 +43010,7 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/prison/research)
 "jWH" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/ceramic_plate,
 /turf/open/floor/carpet,
 /area/prison/residential/north)
@@ -43371,7 +43367,7 @@
 /turf/open/floor/prison/red/east,
 /area/prison/cellblock/highsec/north/north)
 "kpm" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
@@ -44835,7 +44831,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "lNP" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/prison/residential/south)
 "lOa" = (
@@ -45926,7 +45922,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/nw)
 "mSc" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
@@ -48314,7 +48310,7 @@
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/north/north)
 "ppF" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/beer_pack,
 /turf/open/floor/carpet,
 /area/prison/residential/north)
@@ -48840,7 +48836,7 @@
 /area/prison/maintenance/residential/ne)
 "pOp" = (
 /obj/effect/landmark/good_item,
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/prison/residential/south)
 "pOw" = (
@@ -49251,7 +49247,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/prison/relay)
 "qpn" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/good_item,
 /turf/open/floor/wood,
 /area/prison/residential/south)
@@ -49303,7 +49299,7 @@
 /area/prison/maintenance/residential/ne)
 "qqI" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/prison/residential/south)
 "qqR" = (
@@ -50972,7 +50968,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/sw)
 "snQ" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/good_item,
 /turf/open/floor/carpet,
@@ -51232,6 +51228,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/prison/blue,
 /area/prison/residential/south)
 "sCH" = (
@@ -52904,7 +52901,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/prison/medbay)
 "uwn" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -53248,7 +53245,7 @@
 /turf/open/floor/prison/green/north,
 /area/prison/quarters/staff)
 "uNr" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/popcorn,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
@@ -53478,7 +53475,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/mediumsec/north)
 "uXA" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/good_item,
 /obj/item/paper/crumpled,
@@ -54773,7 +54770,7 @@
 /turf/open/floor/chapel,
 /area/prison/chapel)
 "wzk" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/prison/residential/north)
 "wzt" = (
@@ -55137,7 +55134,7 @@
 /turf/open/floor/prison/bluecorner/north,
 /area/prison/residential/north)
 "wRf" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,

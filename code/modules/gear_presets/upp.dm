@@ -4224,7 +4224,7 @@
 	name = "UPP Sapper (Hunted)"
 	faction = FACTION_HUNTED
 
-/datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/upp/sapper/hunted/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)

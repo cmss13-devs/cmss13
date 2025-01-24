@@ -1242,37 +1242,32 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
-	if(targloc != curloc)
-		simulate_recoil(dual_wield, user, target)
+	simulate_recoil(dual_wield, user, target)
 
-		//This is where the projectile leaves the barrel and deals with projectile code only.
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-		in_chamber = null // It's not in the gun anymore
-		INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
-		projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
-		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	//This is where the projectile leaves the barrel and deals with projectile code only.
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+	in_chamber = null // It's not in the gun anymore
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-		if(check_for_attachment_fire)
-			active_attachable.last_fired = world.time
-		else
-			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-		. = TRUE
-
-		shots_fired++
-
-		if(dual_wield && !fired_by_akimbo)
-			switch(user?.client?.prefs?.dual_wield_pref)
-				if(DUAL_WIELD_FIRE)
-					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
-				if(DUAL_WIELD_SWAP)
-					user.swap_hand()
-
+	if(check_for_attachment_fire)
+		active_attachable.last_fired = world.time
 	else
-		return TRUE
+		last_fired = world.time
+		var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+		if(fire_delay_group && delay_left > 0)
+			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+	shots_fired++
+
+	if(dual_wield && !fired_by_akimbo)
+		switch(user?.client?.prefs?.dual_wield_pref)
+			if(DUAL_WIELD_FIRE)
+				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+			if(DUAL_WIELD_SWAP)
+				user.swap_hand()
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
 	var/angle = floor(Get_Angle(user,target)) //Let's do a muzzle flash.

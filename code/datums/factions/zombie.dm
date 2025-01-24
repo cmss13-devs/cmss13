@@ -8,13 +8,6 @@
 	organ_faction_iff_tag_type = /obj/item/faction_tag/organ/zombie
 
 /datum/faction/zombie/get_join_status(mob/user, dat)
-	if(!user.client)
-		return
-
-	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
-		return
-
 	var/list/zombie_list = list()
 	if(length(GLOB.zombie_landmarks))
 		zombie_list += list("Underground Zombie" = "Underground Zombie")

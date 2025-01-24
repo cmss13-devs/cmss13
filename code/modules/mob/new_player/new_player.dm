@@ -177,68 +177,20 @@
 
 
 /mob/new_player/proc/late_choices()
-	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
-	var/mins = (mills % 36000) / 600
-	var/hours = mills / 36000
-
-	var/dat = "<html><body onselectstart='return false;'><center>"
-	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
-
-	if(SShijack)
-		switch(SShijack.evac_status)
-			if(EVACUATION_STATUS_INITIATED)
-				dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
-
-	dat += "Choose from the following open positions:<br>"
-	var/roles_show = FLAG_SHOW_ALL_JOBS
-
-	for(var/i in GLOB.RoleAuthority.roles_for_mode)
-		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction_to_set = GLOB.faction_datums[FACTION_NEUTRAL]))
+	var/list/faction_to_get_list = list()
+	for(var/faction_to_get in SSticker.mode.factions_pool)
+		var/datum/faction/faction = GLOB.faction_datums[SSticker.mode.factions_pool[faction_to_get]]
+		if(!faction.spawning_enabled || (!faction.force_spawning && !faction.weight_act[SSticker.mode.name]))
 			continue
-		var/active = 0
-		// Only players with the job assigned and AFK for less than 10 minutes count as active
-		for(var/mob/M in GLOB.player_list)
-			if(M.client && M.job == J.title)
-				active++
-		if(roles_show & FLAG_SHOW_CIC && GLOB.ROLES_CIC.Find(J.title))
-			dat += "Command:<br>"
-			roles_show ^= FLAG_SHOW_CIC
+		faction_to_get_list += faction_to_get
 
-		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && GLOB.ROLES_AUXIL_SUPPORT.Find(J.title))
-			dat += "<hr>Auxiliary Combat Support:<br>"
-			roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
+	var/choice = tgui_input_list(src, "Choose faction to join:", "Factions", faction_to_get_list)
+	if(!choice)
+		return
 
-		else if(roles_show & FLAG_SHOW_MISC && GLOB.ROLES_MISC.Find(J.title))
-			dat += "<hr>Other:<br>"
-			roles_show ^= FLAG_SHOW_MISC
+	GLOB.faction_datums[SSticker.mode.factions_pool[choice]].get_join_status(src)
 
-		else if(roles_show & FLAG_SHOW_POLICE && GLOB.ROLES_POLICE.Find(J.title))
-			dat += "<hr>Military Police:<br>"
-			roles_show ^= FLAG_SHOW_POLICE
-
-		else if(roles_show & FLAG_SHOW_ENGINEERING && GLOB.ROLES_ENGINEERING.Find(J.title))
-			dat += "<hr>Engineering:<br>"
-			roles_show ^= FLAG_SHOW_ENGINEERING
-
-		else if(roles_show & FLAG_SHOW_REQUISITION && GLOB.ROLES_REQUISITION.Find(J.title))
-			dat += "<hr>Requisitions:<br>"
-			roles_show ^= FLAG_SHOW_REQUISITION
-
-		else if(roles_show & FLAG_SHOW_MEDICAL && GLOB.ROLES_MEDICAL.Find(J.title))
-			dat += "<hr>Medbay:<br>"
-			roles_show ^= FLAG_SHOW_MEDICAL
-
-		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
-			dat += "<hr>Marines:<br>"
-			roles_show ^= FLAG_SHOW_MARINES
-
-		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=0;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
-
-	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
-
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA... ??? ~blackcrystalic hones reaction
 /mob/new_player/proc/late_choices_upp()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
 	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something

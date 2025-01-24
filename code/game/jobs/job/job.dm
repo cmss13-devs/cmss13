@@ -40,6 +40,9 @@
 	/// If TRUE, this job will spawn w/ a cryo emergency kit during evac/red alert
 	var/gets_emergency_kit = TRUE
 
+	//I don't want to change rn system how we give fucking points, so this fuckery solve issue with benos, rn this is not making dif, but in future can
+	var/faction_identificator
+
 /datum/job/New()
 	. = ..()
 

@@ -12,6 +12,8 @@
 	spawn_positions = -1
 	total_positions = -1
 
+	faction_identificator = FACTION_XENOMORPH_NORMAL
+
 /datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
 	return max((floor(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)
 
@@ -23,7 +25,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	transform_to_xeno(H, GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
+	transform_to_xeno(H, GLOB.faction_datums[faction_identificator])
 
 /datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, datum/faction/faction_to_set)
 	var/datum/mind/new_xeno = human_to_transform.mind

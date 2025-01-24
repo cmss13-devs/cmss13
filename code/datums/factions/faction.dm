@@ -19,9 +19,26 @@
 	var/list/total_dead_mobs = list() // All dead mobs linked to faction
 	var/list/late_join_landmarks = list() // Flexible latejoin landmarks per faction
 
-	var/list/role_mappings = list()
+	var/list/role_mappings = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = list(),
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list(),
+	)
 	var/list/roles_list = list()
 	var/list/coefficient_per_role = list()
+	var/weight_act = list(
+		MODE_NAME_EXTENDED = TRUE,
+		MODE_NAME_DISTRESS_SIGNAL = TRUE,
+		MODE_NAME_FACTION_CLASH = TRUE,
+		MODE_NAME_WISKEY_OUTPOST = TRUE,
+		MODE_NAME_HUNTER_GAMES = TRUE,
+		MODE_NAME_HIVE_WARS = TRUE,
+		MODE_NAME_INFECTION = TRUE,
+	)
 
 	var/list/banished_ckeys = list()
 
@@ -74,38 +91,9 @@
 
 	total_mobs -= creature
 
-/datum/faction/proc/get_join_status(mob/new_player/user, dat)/*
-	dat = "<html><body onselectstart='return false;'><center>"
-	dat += "[user.client.auto_lang(LANGUAGE_LOBBY_ROUND_TIME)]: [DisplayTimeText(world.time, language = user.client.language)]<br>"
-	dat += "[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CHOSE)]:<br>"
-	dat += additional_join_status(user)
-
-	if(!latejoin_enabled)
-		dat = "[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CLOSED)]:<br>"
-
-	else if(!SSautobalancer.can_join(src))
-		dat = "[user.client.auto_lang(LANGUAGE_JS_BALANCE_ISSUE)]:<br>"
-
-	else
-		var/list/roles = roles_list[SSticker.mode.name]
-		for(var/i in roles)
-			var/datum/job/job = GLOB.RoleAuthority.roles_by_name[i]
-			var/check_result = GLOB.RoleAuthority.check_role_entry(user, job, src, TRUE)
-			var/active = 0
-			for(var/mob/mob in GLOB.player_list)
-				if(mob.client && mob.job == job.title)
-					active++
-
-			if(check_result)
-				dat += "[job.disp_title] ([job.current_positions]): [check_result] ([user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ACTIVE)]: [active])<br>"
-			else
-				dat += "<a href='byond://?src=\ref[user];lobby_choice=SelectedJob;job_selected=[job.title]'>[job.disp_title] ([job.current_positions]) ([user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ACTIVE)]: [active])</a><br>"
-
-	dat += "</center>"
-	show_browser(user, dat, user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN), "latechoices", "size=420x700")
-*/
 /datum/faction/proc/can_delay_round_end(mob/living/carbon/creature)
 	return TRUE
+
 
 // Friend or Foe functional
 /atom/movable/proc/ally_faction(datum/faction/ally_faction)
@@ -161,6 +149,7 @@
 
 	return FALSE
 
+
 //Minor functions
 /datum/faction/proc/modify_hud_holder(image/holder, mob/living/carbon/human/creature)
 	return
@@ -170,3 +159,51 @@
 
 /datum/faction/proc/get_antag_guns_sorted_equipment()
 	return list()
+
+
+//Roles and join stuff
+/datum/faction/proc/get_role_coeff(role_name)
+	if(coefficient_per_role[role_name])
+		return coefficient_per_role[role_name]
+	return 1
+
+/datum/faction/proc/get_join_status(mob/new_player/user, dat)
+	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
+	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
+	var/mins = (mills % 36000) / 600
+	var/hours = mills / 36000
+
+	dat = "<html><body onselectstart='return false;'><center>"
+	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
+
+	dat += additional_join_status_info(user)
+
+	if(!latejoin_enabled)
+		dat = "Latejoin disabled<br>"
+//	else if(!SSautobalancer.can_join(src)) // WILL BE INTRODUCED IN STAGE 2 (another PR)
+//		dat = "Due to balance issues joining closed<br>"
+	else
+		dat += "Choose from the following open positions:<br>"
+		dat += custom_faction_job_fill(user)
+
+	dat += "</center>"
+	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
+
+/datum/faction/proc/additional_join_status_info(mob/new_player/user)
+	return
+
+/datum/faction/proc/custom_faction_job_fill(mob/new_player/user)
+	. = ""
+	var/list/roles = roles_list[SSticker.mode.name]
+	for(var/i in roles)
+		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[i]
+		var/check_result = GLOB.RoleAuthority.check_role_entry(user, job, src, TRUE)
+		var/active = 0
+		for(var/mob/mob in GLOB.player_list)
+			if(mob.client && mob.job == job.title)
+				active++
+
+		if(check_result)
+			. += "[job.disp_title] ([job.current_positions]): [check_result] (Active: [active])<br>"
+		else
+			. += "<a href='byond://?src=\ref[user];lobby_choice=SelectedJob;job_selected=[job.title]'>[job.disp_title] ([job.current_positions]) (Active: [active])</a><br>"

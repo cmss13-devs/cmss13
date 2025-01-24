@@ -9,6 +9,52 @@
 
 	faction_iff_tag_type = /obj/item/faction_tag/upp
 
+	role_mappings = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = list(),
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list(),
+	)
+	roles_list = list(
+		MODE_NAME_EXTENDED = list(),
+		MODE_NAME_DISTRESS_SIGNAL = list(),
+		MODE_NAME_FACTION_CLASH = UPP_JOB_LIST,
+		MODE_NAME_WISKEY_OUTPOST = list(),
+		MODE_NAME_HUNTER_GAMES = list(),
+		MODE_NAME_HIVE_WARS = list(),
+		MODE_NAME_INFECTION = list(),
+	)
+	coefficient_per_role = list(
+		JOB_UPP_KOL_OFFICER = 2.5,
+		JOB_UPP_MAY_OFFICER = 1.75,
+		JOB_UPP_SRLT_OFFICER = 1.5,
+		JOB_UPP_LT_OFFICER = 1.25,
+		JOB_UPP_INTEL = 1,
+		JOB_UPP_CREWMAN = 4,
+		JOB_UPP_POLICE = 0.5,
+		JOB_UPP_CORPORATE_LIAISON = 0.25,
+		JOB_UPP_COMBAT_SYNTH = 6,
+		JOB_UPP_LT_DOKTOR = 2,
+		JOB_UPP_LEADER = 1.75,
+		JOB_UPP_CONSCRIPT = 1.5,
+		JOB_UPP_SPECIALIST = 3,
+		JOB_UPP_MEDIC = 2.25,
+		JOB_UPP_ENGI = 2,
+		JOB_UPP = 1.25,
+	)
+	weight_act = list(
+		MODE_NAME_EXTENDED = FALSE,
+		MODE_NAME_DISTRESS_SIGNAL = FALSE,
+		MODE_NAME_FACTION_CLASH = TRUE,
+		MODE_NAME_WISKEY_OUTPOST = FALSE,
+		MODE_NAME_HUNTER_GAMES = FALSE,
+		MODE_NAME_HIVE_WARS = FALSE,
+		MODE_NAME_INFECTION = FALSE,
+	)
+
 	minimap_flag = MINIMAP_FLAG_UPP
 
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)

@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(influxstats)
 			team = "observers"
 		else if(!job)
 			continue
-		else if(mob.faction == FACTION_MARINE || mob.faction == FACTION_SURVIVOR)
+		else if(mob.faction.code_identificator in SSticker.mode.factions_pool)
 			team = "humans"
 			var/mob/living/carbon/human/employed_human = mob
 			if(istype(employed_human))

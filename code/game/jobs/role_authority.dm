@@ -126,7 +126,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	//===============================================================\\
 	//PART I: Get roles relevant to the mode
 
-	var/datum/game_mode/G = SSticker.mode
 	roles_for_mode = list()
 	for(var/faction_to_get in FACTION_LIST_ALL)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
@@ -141,9 +140,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Also register game mode specific mappings to standard roles
 	role_mappings = list()
 	default_roles = list()
-	if(G.role_mappings)
-		for(var/role_path in G.role_mappings)
-			var/mapped_title = G.role_mappings[role_path]
+	if(SSticker.mode.active_roles_mappings_pool)
+		for(var/role_path in SSticker.mode.active_roles_mappings_pool)
+			var/mapped_title = SSticker.mode.active_roles_mappings_pool[role_path]
 			var/datum/job/J = roles_by_path[role_path]
 			if(!J || !roles_by_name[mapped_title])
 				continue
@@ -328,16 +327,19 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 * people late joining. This weight also controls the size of local wildlife population,
 * survivors and the number of roundstart Squad Rifleman slots.
 */
-/datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
-	if(!J)
+/datum/authority/branch/role/proc/calculate_role_weight(datum/job/job)
+	if(!job)
 		return 0
-	if(GLOB.ROLES_MARINES.Find(J.title))
-		return 1
-	if(GLOB.ROLES_XENO.Find(J.title))
-		return 1
-	if(J.title == JOB_SURVIVOR)
-		return 1
-	return SHIPSIDE_ROLE_WEIGHT
+	var/datum/faction/faction = GLOB.faction_datums[job.gear_preset ? initial(job.gear_preset.job_faction) : job.faction_identificator]
+	if(!faction)
+		if(GLOB.ROLES_MARINES.Find(job.title))
+			return 1
+		if(GLOB.ROLES_XENO.Find(job.title))
+			return 1
+		if(job.title == JOB_SURVIVOR)
+			return 1
+		return SHIPSIDE_ROLE_WEIGHT
+	return faction.get_role_coeff(job)
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
 	. = roles_to_iterate
@@ -551,7 +553,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/mixed_squads = list()
 	for(var/datum/squad/squad in squads)
-		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
+		if(squad.roundstart && squad.usable && squad.faction == human.faction.code_identificator && squad.name != "Root")
 			mixed_squads += squad
 	mixed_squads = shuffle(mixed_squads)
 

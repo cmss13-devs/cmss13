@@ -95,7 +95,7 @@
 	var/roles[] = new
 	var/datum/job/J
 
-	var/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
+	var/active_role_names = SSticker.mode.active_roles_pool
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 

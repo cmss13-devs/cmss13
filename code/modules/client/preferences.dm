@@ -259,6 +259,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/unlock_content = 0
 
+	var/datum/faction/observing_faction
+
 	var/current_menu = MENU_MARINE
 
 	/// if this client has custom cursors enabled
@@ -675,9 +677,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	if(!GLOB.RoleAuthority)
 		return
 
+	if(!observing_faction)
+		observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
+
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
 	HTML += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br><br>"
+	HTML += "<b>Selected faction: [observing_faction]<br><br>"
 	HTML += "<center><a href='byond://?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -685,7 +691,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 
-	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
+	var/list/active_role_names = observing_faction.roles_list[SSticker.mode.name]
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
@@ -758,6 +764,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
+	HTML += "<center><br><a class='green' href='?_src_=prefs;preference=job;task=faction'>Change faction</a></center><br>"
+
 	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
@@ -795,9 +803,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	if(!GLOB.RoleAuthority)
 		return
 
+	if(!observing_faction)
+		observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
+
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
 	HTML += "<b>Assign character slots to jobs.</b><br>Unavailable occupations are crossed out.<br><br>"
+	HTML += "<b>Selected faction: [observing_faction]<br><br>"
 	HTML += "<center><a href='byond://?_src_=prefs;preference=job_slot;task=close'>Done</a></center><br>" // Easier to press up here.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -805,7 +817,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 
-	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
+	var/list/active_role_names = observing_faction.roles_list[SSticker.mode.name]
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
@@ -838,6 +850,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	HTML += "</td></tr></table>"
 	HTML += "</center></table><br>"
+
+	HTML += "<center><br><a class='green' href='?_src_=prefs;preference=job_slot;task=faction'>Change faction</a></center><br>"
 
 	var/b_color
 	var/msg
@@ -1011,6 +1025,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("input")
 					var/priority = text2num(href_list["target_priority"])
 					SetJob(user, href_list["text"], priority)
+				if("faction")
+					var/choice = tgui_input_list(user, "Choose faction to observer roles:", "Factions", SSticker.mode.factions_pool)
+					if(!choice)
+						return
+
+					observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[choice]]
+					SetChoices(user)
 				else
 					SetChoices(user)
 			return TRUE
@@ -1029,6 +1050,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					set_job_slots(user)
 				if("reset")
 					reset_job_slots()
+					set_job_slots(user)
+				if("faction")
+					var/choice = tgui_input_list(user, "Choose faction to observer roles:", "Factions", SSticker.mode.factions_pool)
+					if(!choice)
+						return
+
+					observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[choice]]
 					set_job_slots(user)
 				else
 					set_job_slots(user)

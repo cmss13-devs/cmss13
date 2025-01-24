@@ -88,12 +88,12 @@
 	icon_state = "rosary"
 	item_state_slots = list(WEAR_AS_GARB = "rosary")
 
-/obj/item/prop/helmetgarb/lucky_feather //Need unused base for feathers or other stuff wont work.
+/obj/item/prop/helmetgarb/lucky_feather //Need base for feathers or other stuff wont work.
 	name = "\improper Lucky Feather"
 	desc = "A plain grey feather. While there is nothing special about it, it is still nice to look at."
 	icon_state = "lucky_feather"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather")
-	var/caseName = "Feather"
+	var/caseName = "Feather" //This picks the overlay used for cases that show the feathers off.
 
 /obj/item/prop/helmetgarb/lucky_feather/red
 	name = "\improper Red Lucky Feather"

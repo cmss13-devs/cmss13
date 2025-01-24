@@ -236,7 +236,7 @@
 /*HERE I INTRODUCE YOU BIG TIME OVERRUN (didn't tested it, but I already see it coming), if we really need that, I'll try to rewrite that, thanks to Nivrak for this attempt, also don't use WHILE, it can kill server, if you do mistake in code
 			var/turf/above = locate(T.x, T.y, T.z + 1)
 
-			while(above && istype(above, /turf/open_space))
+			while(above && istype(above, /turf/open/openspace))
 				if (!above.lighting_corners_initialised)
 					above.static_generate_missing_corners()
 				corners[above.lighting_corner_NE] = 0
@@ -251,7 +251,7 @@
 			var/turf/below = locate(T.x, T.y, T.z - 1)
 			var/turf/previous = T
 
-			while(below && istype(previous, /turf/open_space))
+			while(below && istype(previous, /turf/open/openspace))
 				if (!below.lighting_corners_initialised)
 					below.static_generate_missing_corners()
 				corners[below.lighting_corner_NE] = 0

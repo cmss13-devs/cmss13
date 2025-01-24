@@ -9,6 +9,8 @@
 	. = ..()
 	if(!speaker)
 		return
+	if(!say_understands(speaker, language))
+		return
 	speaker.cast_tts(src, message, src, FALSE, null, null)
 
 /mob/hear_radio(
@@ -20,6 +22,8 @@
 	command = 0, no_paygrade = FALSE)
 	. = ..()
 	if(hard_to_hear || !speaker)
+		return
+	if(!say_understands(speaker, language))
 		return
 	speaker.cast_tts(src, message, src, FALSE, SOUND_EFFECT_RADIO, postSFX = 'modular/text_to_speech/code/sound/radio_chatter.ogg')
 

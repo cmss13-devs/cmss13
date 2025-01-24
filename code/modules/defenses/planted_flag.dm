@@ -15,6 +15,8 @@
 
 	can_be_near_defense = TRUE
 
+	var/datum/cas_signal/signal
+	var/luminosity_strength = 5
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -31,6 +33,7 @@
 /obj/structure/machinery/defenses/planted_flag/Destroy()
 	. = ..()
 	range_bounds = null
+	deactivate_signal()
 
 /obj/structure/machinery/defenses/planted_flag/update_icon()
 	..()
@@ -45,13 +48,31 @@
 	else
 		overlays += "[defense_type] planted_flag_off"
 
+/obj/structure/machinery/defenses/planted_flag/proc/activate_signal()
+	if(faction && GLOB.cas_groups[faction])
+		signal = new(src)
+		signal.target_id = ++GLOB.cas_tracking_id_increment
+		name = "["J"]-[signal.target_id] [src]"
+		signal.name = name
+		signal.linked_cam = new(loc, name)
+		GLOB.cas_groups[faction].add_signal(signal)
+
+/obj/structure/machinery/defenses/planted_flag/proc/deactivate_signal()
+	if(signal)
+		GLOB.cas_groups[faction].remove_signal(signal)
+		QDEL_NULL(signal)
+
 /obj/structure/machinery/defenses/planted_flag/power_on_action()
 	apply_area_effect()
+	set_light(luminosity_strength)
 	start_processing()
+	activate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
 
 /obj/structure/machinery/defenses/planted_flag/power_off_action()
+	set_light(0)
 	stop_processing()
+	deactivate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
 
 /obj/structure/machinery/defenses/planted_flag/process()
@@ -91,6 +112,7 @@
 	disassemble_time = 1.5 SECONDS
 	handheld_type = /obj/item/defenses/handheld/planted_flag/range
 	defense_type = "Range"
+	luminosity_strength = 7
 
 /obj/structure/machinery/defenses/planted_flag/warbanner
 	name = "JIMA planted warbanner"
@@ -119,6 +141,8 @@
 	handheld_type = /obj/item/defenses/handheld/planted_flag/wy
 	defense_type = "WY"
 
+	faction = FACTION_WY
+
 /obj/structure/machinery/defenses/planted_flag/wy/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 2 SECONDS)
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 2 SECONDS)
@@ -134,6 +158,8 @@
 	area_range = 11
 	handheld_type = /obj/item/defenses/handheld/planted_flag/upp
 	defense_type = "UPP"
+
+	faction = FACTION_UPP
 
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"

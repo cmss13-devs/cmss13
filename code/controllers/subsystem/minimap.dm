@@ -766,7 +766,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(isobserver(user))
 		faction = allowed_flags == GLOB.faction_datums[MINIMAP_FLAG_XENO ? FACTION_XENOMORPH_NORMAL : FACTION_MARINE]
 
-	if(is_xeno && xeno.faction.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
+	var/datum/faction_module/hive_mind/faction_module = user.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(is_xeno && faction_module && faction_module.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
 		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
 		map_holder = null
@@ -902,7 +903,6 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/mob/user = ui.user
-	var/mob/living/carbon/xenomorph/xeno = user
 	var/faction = user.faction
 	var/is_observer = isobserver(user)
 	if(faction == FACTION_NEUTRAL && is_observer)
@@ -1011,8 +1011,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(!isxeno(user))
 		return UI_CLOSE
 
-	var/mob/living/carbon/xenomorph/xeno = user
-	if(!xeno.hive?.living_xeno_queen?.ovipositor)
+	var/datum/faction_module/hive_mind/faction_module = user.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.living_xeno_queen?.ovipositor)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE

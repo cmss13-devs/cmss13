@@ -50,7 +50,6 @@
 	if(!evolve_checks())
 		return
 
-	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if((!faction_module.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !faction_module.allow_no_queen_evo)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
 		return

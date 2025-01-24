@@ -517,7 +517,7 @@ GLOBAL_LIST_INIT(pp_hives, pp_generate_hives())
 	. = list()
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-		.[faction.name] = faction.faction_name
+		.[faction.name] = faction.code_identificator
 
 GLOBAL_LIST_INIT(pp_limbs, list(
 	"Head" = "head",

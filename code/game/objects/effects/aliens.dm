@@ -58,14 +58,14 @@
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, _faction_to_get) //Self-deletes
+/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, faction_to_set) //Self-deletes
 	. = ..()
 
 	// Stats tracking
 	cause_data = new_cause_data
 
-	if(_faction_to_get)
-		faction_to_get = _faction_to_get
+	if(faction_to_set)
+		faction_to_get = faction_to_set
 
 	// check what's in our turf
 	for(var/atom/atm in loc)

@@ -305,7 +305,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					if(Q.faction)
 						var/datum/faction_module/hive_mind/faction_module = Q.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
-						addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
+						addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/faction_module/hive_mind, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 
 					if(GLOB.bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)

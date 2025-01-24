@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(hive_state, setup_hive_states())
 	faction = faction_to_set
 
 /datum/ui_state/hive_state/can_use_topic(src_object, mob/user)
-	if(hive.is_ally(user))
+	if(faction.faction_is_ally(user))
 		return UI_INTERACTIVE
 	return UI_CLOSE
 
@@ -37,15 +37,16 @@ GLOBAL_LIST_INIT(hive_state_queen, setup_hive_queen_states())
 
 /proc/setup_hive_queen_states()
 	. = list()
-	for(var/hivenumber in GLOB.hive_datum)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		.[hive.internal_faction] = new/datum/ui_state/hive_state/queen(hive.hivenumber)
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		.[faction.code_identificator] = new/datum/ui_state/hive_state/queen(faction)
 
 /datum/ui_state/hive_state/queen/can_use_topic(src_object, mob/user)
 	. = ..()
 	if(. == UI_CLOSE)
 		return
 
-	if(hive.living_xeno_queen == user)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.living_xeno_queen == user)
 		return UI_INTERACTIVE
 	return UI_UPDATE

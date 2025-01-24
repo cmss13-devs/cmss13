@@ -172,7 +172,7 @@
 		message_admins("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
 		var/mob/transformed
-		var/datum/faction/faction = GLOG.faction_datums[FACTION_XENOMORPH_NORMAL]
+		var/datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL]
 
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
@@ -823,8 +823,8 @@
 			return
 
 		var/list/hives = list()
-		for(var/hivenumber in GLOB.faction_datums)
-			var/datum/faction/hive = GLOB.faction_datums[hivenumber]
+		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+			var/datum/faction/hive = GLOB.faction_datums[faction_to_get]
 			hives += list("[hive.name]" = hive.code_identificator)
 
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
@@ -866,30 +866,28 @@
 			return
 
 		var/list/hives = list()
-		for(var/hivenumber in GLOB.hive_datum)
-			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-			LAZYSET(hives, hive.name, hive)
-		LAZYSET(hives, "CANCEL", null)
+		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+			hives[faction.name] = faction
+		hives["CANCEL"] = null
 
 		var/hive_name = tgui_input_list(usr, "Which Hive will he belongs to", "Make Cultist", hives)
 		if(!hive_name || hive_name == "CANCEL")
 			to_chat(usr, SPAN_ALERT("Hive choice error. Aborting."))
 
-		var/datum/hive_status/hive = hives[hive_name]
+		var/datum/faction/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 			preset.load_race(H)
-			preset.load_status(H, hive.hivenumber)
-			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
+			preset.load_status(H, hive)
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive].")
 
 		else if(href_list["makecultistleader"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 			preset.load_race(H)
-			preset.load_status(H, hive.hivenumber)
-			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
-
-		H.faction = hive.internal_faction
+			preset.load_status(H, hive)
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive].")
 
 	else if(href_list["forceemote"])
 		if(!check_rights(R_ADMIN)) return

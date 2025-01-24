@@ -26,8 +26,9 @@
 	COOLDOWN_DECLARE(spawn_cooldown)
 
 
-/obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
+/obj/effect/alien/resin/special/eggmorph/Initialize(mapload)
 	. = ..()
+
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 

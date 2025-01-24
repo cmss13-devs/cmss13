@@ -14,12 +14,12 @@
 	if(faction_to_display == "Everyone")
 		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 			for(var/mob/mob as anything in GLOB.faction_datums[faction_to_get].total_mobs)
-				if(mob.stat != CONSCIOUS)
+				if(!mob.stat || !mob.client)
 					continue
 				targets.Add(mob)
 	else
 		for(var/mob/mob as anything in faction_to_display.total_mobs)
-			if(mob.stat != CONSCIOUS)
+			if(!mob.stat || !mob.client)
 				continue
 			targets.Add(mob)
 
@@ -40,13 +40,13 @@
 		for(var/faction_to_get in FACTION_LIST_HUMANOID - FACTION_YAUTJA)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			for(var/mob/mob as anything in faction.total_mobs)
-				if(mob.stat != CONSCIOUS)
+				if(!mob.stat || !mob.client)
 					continue
 				targets.Add(mob)
 
 	else
 		for(var/mob/mob as anything in faction_to_display.total_mobs)
-			if(mob.stat != CONSCIOUS)
+			if(!mob.stat || !mob.client)
 				continue
 			targets.Add(mob)
 

@@ -15,9 +15,9 @@
 
 	var/data_initialized = FALSE
 
-	var/datum/hive_status/assoc_hive = null
+	var/datum/faction_module/hive_mind/assoc_hive = null
 
-/datum/hive_status_ui/New(datum/hive_status/hive)
+/datum/hive_status_ui/New(datum/faction_module/hive_mind/hive)
 	assoc_hive = hive
 	update_all_data()
 	START_PROCESSING(SShive_status, src)
@@ -93,7 +93,7 @@
 /datum/hive_status_ui/proc/update_burrowed_larva(send_update = TRUE)
 	burrowed_larva = assoc_hive.stored_larva
 	if(SSxevolution)
-		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
+		evilution_level = SSxevolution.get_evolution_boost_power(assoc_hive.faction_owner.code_identificator)
 	else
 		evilution_level = 1
 	if(send_update)
@@ -129,7 +129,7 @@
 		SStgui.update_uis(src)
 
 /datum/hive_status_ui/ui_state(mob/user)
-	return GLOB.hive_state[assoc_hive.internal_faction]
+	return GLOB.hive_state[assoc_hive.faction_owner.code_identificator]
 
 /datum/hive_status_ui/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -162,8 +162,8 @@
 /datum/hive_status_ui/ui_static_data(mob/user)
 	. = list()
 	.["user_ref"] = REF(user)
-	.["hive_color"] = assoc_hive.ui_color
-	.["hive_name"] = assoc_hive.name
+	.["hive_color"] = assoc_hive.faction_owner.ui_color
+	.["hive_name"] = assoc_hive.faction_owner.name
 
 /datum/hive_status_ui/proc/open_hive_status(mob/user)
 	if(!user)
@@ -181,7 +181,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "HiveStatus", "[assoc_hive.name] Status")
+		ui = new(user, src, "HiveStatus", "[assoc_hive.faction_owner] Status")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 

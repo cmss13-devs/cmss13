@@ -13,13 +13,6 @@
 	block_range = 1
 
 	var/datum/construction_template/xenomorph/template //What we're building
-	var/datum/faction/faction //Who gets what we build
-
-/obj/effect/alien/resin/construction/Initialize(mapload, faction_ref)
-	. = ..()
-	faction = faction_ref
-	if(faction?.color)
-		color = faction.color
 
 /obj/effect/alien/resin/construction/Destroy()
 	if(template && faction && (template.plasma_stored < template.plasma_required))

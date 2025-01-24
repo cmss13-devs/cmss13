@@ -101,21 +101,21 @@
 				return
 
 			var/list/mob/living/carbon/xenomorph/permit_recipients = list()
-			var/list/datum/hive_status/permit_hives = list()
+			var/list/datum/faction/permit_hives = list()
 			switch(alert(usr, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", "Xeno", "Hive", "All Xenos"))
 				if("Xeno")
 					permit_recipients += tgui_input_list(usr, "Select recipient Xenomorph:", "Armed Xenomorph", GLOB.living_xeno_list)
 					if(isnull(permit_recipients[1])) //Cancel button.
 						return
 				if("Hive")
-					permit_hives += GLOB.faction_datums[tgui_input_list(usr, "Select recipient hive:", "Armed Hive", GLOB.faction_datums)]
+					permit_hives += GLOB.faction_datums[tgui_input_list(usr, "Select recipient hive:", "Armed Hive", FACTION_LIST_XENOMORPH)]
 					if(isnull(permit_hives[1])) //Cancel button.
 						return
-					permit_recipients = permit_hives[1].totalXenos.Copy()
+					permit_recipients = permit_hives[1].total_mobs.Copy()
 				if("All Xenos")
 					permit_recipients = GLOB.living_xeno_list.Copy()
-					for(var/H in GLOB.faction_datums)
-						permit_hives += GLOB.faction_datums[H]
+					for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+						permit_hives += GLOB.faction_datums[faction_to_get]
 
 			var/list/handled_xenos = list()
 
@@ -133,12 +133,13 @@
 					to_chat(xeno, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. You could do... <b><i>so much</b></i> with this knowledge."))
 					handled_xenos += xeno
 
-			for(var/datum/hive_status/permit_hive as anything in permit_hives)
+			for(var/datum/faction/permit_hive as anything in permit_hives)
 				//Give or remove the trait from newly-born xenos in this hive.
+				var/datum/faction_module/hive_mind/faction_module = permit_hive.get_faction_module(FACTION_MODULE_HIVE_MIND)
 				if(grant == "Grant")
-					LAZYADD(permit_hive.hive_inherant_traits, TRAIT_OPPOSABLE_THUMBS)
+					faction_module.hive_inherant_traits |= TRAIT_OPPOSABLE_THUMBS
 				else
-					LAZYREMOVE(permit_hive.hive_inherant_traits, TRAIT_OPPOSABLE_THUMBS)
+					faction_module.hive_inherant_traits -= TRAIT_OPPOSABLE_THUMBS
 
 			if(!length(handled_xenos) && !length(permit_hives))
 				return

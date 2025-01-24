@@ -503,18 +503,26 @@
 	spread_speed = 6
 	smokeranking = SMOKE_RANK_BOILER
 
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
+	var/datum/faction/faction
+
 	var/gas_damage = 20
 
-/obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	if(istype(cause_data))
-		var/datum/ui_state/hive_state/cause_data_hive_state = GLOB.hive_state[cause_data.faction]
-		var/new_hive_number = cause_data_hive_state?.hivenumber
-		if(new_hive_number)
-			hivenumber = new_hive_number
-			set_hive_data(src, new_hive_number)
+/obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data, mob/source_mob)
+	if(source_mob)
+		faction = source_mob.faction
+		faction_to_get = faction.code_identificator
+	else
+		faction = GLOB.faction_datums[faction_to_get]
 
-	return ..()
+	set_hive_data(src, faction)
+
+	. = ..()
+
+/obj/effect/particle_effect/smoke/xeno_burn/Destroy()
+	faction = null
+
+	. = ..()
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/cur_turf)
 	..()
@@ -539,7 +547,7 @@
 		return FALSE
 	if(affected_mob.stat == DEAD)
 		return FALSE
-	if(affected_mob.ally_of_hivenumber(hivenumber))
+	if(affected_mob.ally_faction(faction))
 		return FALSE
 	if(isyautja(affected_mob) && prob(75))
 		return FALSE

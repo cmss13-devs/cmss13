@@ -731,16 +731,19 @@
 	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/datum/faction/faction
 
-/turf/closed/wall/resin/Initialize(mapload, mob/builder)
+/turf/closed/wall/resin/Initialize(mapload, mob/builder, datum/faction/faction_to_set)
 	. = ..()
-
-	if(istype(builder))
+	if(builder)
 		faction = builder.faction
+	else if(faction_to_set)
+		faction = faction_to_set
 
 	if(!faction)
 		faction = GLOB.faction_datums[faction_to_get]
 	else
 		faction_to_get = faction.code_identificator
+
+	set_hive_data(src, faction)
 
 	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
@@ -802,7 +805,7 @@
 /turf/closed/wall/resin/tutorial
 	name = "tutorial resin wall"
 	desc = "Weird slime solidified into a wall. Remarkably resilient."
-	faction_to_get = XENO_HIVE_TUTORIAL
+	faction_to_get = FACTION_XENOMORPH_TUTORIAL
 
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return
@@ -963,11 +966,15 @@
 
 	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 
-/obj/structure/alien/movable_wall/Initialize(mapload, _faction_to_get)
+/obj/structure/alien/movable_wall/Initialize(mapload, mob/builder, datum/faction/faction_to_set)
 	. = ..()
-	if(_faction_to_get)
-		faction_to_get = _faction_to_get
-		set_hive_data(src, faction_to_get)
+	if(builder)
+		faction_to_get = builder.faction.code_identificator
+	else if(faction_to_set)
+		faction_to_get = faction_to_set.code_identificator
+
+	set_hive_data(src, GLOB.faction_datums[faction_to_get])
+
 	recalculate_structure()
 	update_tied_turf(loc)
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
@@ -1296,7 +1303,7 @@
 				R.check_resin_support()
 
 		var/turf/closed/wall/resin/W = .
-		if (istype(W))
+		if(istype(W))
 			W.faction = transfer_ref
 			set_hive_data(W, W.faction)
 

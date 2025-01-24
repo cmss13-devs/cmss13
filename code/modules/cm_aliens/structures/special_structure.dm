@@ -20,8 +20,9 @@
 	/// Tells the structure if they are being deleted because of hijack
 	var/hijack_delete = FALSE
 
-/obj/effect/alien/resin/special/Initialize(mapload, mob/builder)
+/obj/effect/alien/resin/special/Initialize(mapload)
 	. = ..()
+
 	maxhealth = health
 
 	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
@@ -33,8 +34,8 @@
 
 /obj/effect/alien/resin/special/Destroy()
 	if(faction)
-		faction.remove_special_structure(src)
 		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.remove_special_structure(src)
 		if(faction_module.living_xeno_queen)
 			xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, faction)
 	STOP_PROCESSING(SSfastobj, src)

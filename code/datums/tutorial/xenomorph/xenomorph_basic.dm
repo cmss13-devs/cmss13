@@ -145,7 +145,7 @@
 	addtimer(CALLBACK(src, PROC_REF(cap_phase)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/cap_phase()
-	var/obj/effect/alien/resin/special/eggmorph/morpher = new(loc_from_corner(2,2), GLOB.hive_datum[XENO_HIVE_TUTORIAL])
+	var/obj/effect/alien/resin/special/eggmorph/morpher = new(loc_from_corner(2,2), null, GLOB.faction_datums[FACTION_XENOMORPH_TUTORIAL])
 	morpher.stored_huggers = 1
 	add_to_tracking_atoms(morpher)
 	add_highlight(morpher, COLOR_YELLOW)
@@ -233,7 +233,7 @@
 	update_objective("Nest the captive human!")
 	message_to_player("Drag the human next to the wall so both you and human are directly adjacent to the wall.")
 	message_to_player("With the grab selected in your hand. Click on the wall. Or click and drag the mouse from the human onto the wall. You must not move during this process.")
-	new /obj/effect/alien/resin/special/cluster(loc_from_corner(9,0), GLOB.hive_datum[XENO_HIVE_TUTORIAL])
+	new /obj/effect/alien/resin/special/cluster(loc_from_corner(9,0), null, GLOB.faction_datums[FACTION_XENOMORPH_TUTORIAL])
 
 /datum/tutorial/xenomorph/basic/proc/on_mob_nested()
 	SIGNAL_HANDLER

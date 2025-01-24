@@ -11,7 +11,6 @@
 	health = 25
 	layer = BUSH_LAYER // technically a plant amiright
 	var/picked = FALSE
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/consume_delay = 2 SECONDS
 	var/mature = FALSE
 	var/flags = 0
@@ -52,10 +51,8 @@
 
 	bound_xeno = X
 	bound_weed = W
-	hivenumber = X.hivenumber
 	RegisterSignal(W, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
-	set_hive_data(src, hivenumber)
 	//Keep timer value here
 	timer_id = addtimer(CALLBACK(src, PROC_REF(mature)), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
@@ -143,7 +140,7 @@
 		to_chat(affected_xeno, SPAN_XENODANGER("This fruit is already being picked!"))
 		return
 
-	if(affected_xeno.a_intent != INTENT_HARM && (affected_xeno.can_not_harm(bound_xeno) || affected_xeno.hivenumber == hivenumber))
+	if(affected_xeno.a_intent != INTENT_HARM && (affected_xeno.can_not_harm(bound_xeno) || affected_xeno.faction == faction))
 		var/cant_consume = prevent_consume(affected_xeno)
 		if(cant_consume)
 			return cant_consume
@@ -287,7 +284,7 @@
 		for(var/mob/living/carbon/xenomorph/Z in range(pheromone_range, loc))
 			if(Z.ignores_pheromones)
 				continue
-			if(aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+			if(aura_strength > Z.recovery_new && faction == Z.faction)
 				Z.recovery_new = aura_strength
 
 /obj/effect/alien/resin/fruit/speed

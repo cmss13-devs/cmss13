@@ -83,10 +83,10 @@
 
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)
 
-	if(!TR.faction_group) //Littly trolling for stealing marines turrets, bad boys!
-		for(var/i in user.faction_group)
-			LAZYADD(TR.faction_group, i)
-	TR.forceMove(get_turf(T))
+	if(!TR.faction)
+		TR.faction = user.faction
+		TR.faction_to_get = TR.faction.code_identificator
+	forceMove(get_turf(T))
 	TR.placed = 1
 	TR.update_icon()
 	TR.setDir(direction)

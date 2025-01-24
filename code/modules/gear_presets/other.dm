@@ -678,7 +678,6 @@
 	if(istype(uniform))
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
 	new_human.job = "Zombie"
-	new_human.faction = faction
 	return ..()
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/new_human)
@@ -821,16 +820,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/new_human, hivenumber = FACTION_XENOMORPH_NORMAL)
+/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/new_human, datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
 	if(SSticker.mode && new_human.mind)
 		SSticker.mode.xenomorphs += new_human.mind
 
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive)
-		new_human.faction = hive.internal_faction
-		if(hive.leading_cult_sl == new_human)
-			hive.leading_cult_sl = null
-	new_human.hivenumber = hivenumber
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = new_human.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module && faction_module.leading_cult_sl == new_human)
+			faction_module.leading_cult_sl = null
+
+		faction.add_mob(new_human)
+		if(faction.organ_faction_iff_tag_type)
+			if(new_human.organ_faction_tag)
+				QDEL_NULL(new_human.organ_faction_tag)
+			new_human.organ_faction_tag = new faction.organ_faction_iff_tag_type(new_human, faction)
 
 	GLOB.xeno_cultists += new_human
 
@@ -866,11 +869,11 @@
 	. = ..()
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/cultist(new_human), WEAR_EYES)
 
-/datum/equipment_preset/other/xeno_cultist/leader/load_status(mob/living/carbon/human/new_human)
+/datum/equipment_preset/other/xeno_cultist/leader/load_status(mob/living/carbon/human/new_human, datum/faction/faction)
 	. = ..()
 
-	var/datum/hive_status/hive = GLOB.hive_datum[new_human.hivenumber]
-	hive.leading_cult_sl = new_human
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.leading_cult_sl = new_human
 
 	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader)
 	for(var/type in types)

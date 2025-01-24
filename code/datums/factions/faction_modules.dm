@@ -140,11 +140,11 @@
 	var/max_buff_points = HIVE_MAX_BUFFPOINTS
 
 	/// List of references to the currently active hivebuffs
-	var/list/active_hivebuffs
+	var/list/active_hivebuffs = list()
 	/// List of references to used hivebuffs
-	var/list/used_hivebuffs
+	var/list/used_hivebuffs = list()
 	/// List of references to used hivebuffs currently on cooldown
-	var/list/cooldown_hivebuffs
+	var/list/cooldown_hivebuffs = list()
 
 	/// List of references to hive pylons active in the game world
 	var/list/active_endgame_pylons
@@ -161,22 +161,17 @@
 
 	var/mob/living/carbon/human/leader
 
-/*
 /datum/faction_module/hive_mind/New()
+	. = ..()
+
 	hive_ui = new(src)
 	mark_ui = new(src)
-	faction_ui = new(src)
-	minimap_type = faction.minimap_flag
+	minimap_type = faction_owner.minimap_flag
 	tacmap = new(src, minimap_type)
-	if(!internal_faction)
-		internal_faction = name
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
-	LAZYINITLIST(active_hivebuffs)
-	LAZYINITLIST(used_hivebuffs)
-	LAZYINITLIST(active_endgame_pylons)
 
-	if(hivenumber != FACTION_XENOMORPH_NORMAL)
+	if(faction_owner.code_identificator != FACTION_XENOMORPH_NORMAL)
 		return
 
 	if(!evolution_menu_images)
@@ -184,7 +179,7 @@
 		generate_evo_menu_images()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
-*/
+
 ///Generate the image()'s requried for the evolution radial menu.
 /datum/faction_module/hive_mind/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
@@ -956,3 +951,71 @@
 
 	if(H == leader)
 		leader = null
+
+/// Get a list of hivebuffs which can be bought now.
+/datum/faction_module/hive_mind/proc/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
+					break
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs
+
+/datum/faction_module/hive_mind/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
+/datum/faction_module/hive_mind/proc/on_queen_death() //break alliances on queen's death
+	if(allow_no_queen_actions || living_xeno_queen)
+		return
+
+	if(faction_owner.relations_datum.break_alliances())
+		xeno_message(SPAN_XENOANNOUNCE("With the death of the Queen, all alliances have been broken."), 3, faction_owner)
+
+/datum/faction_module/hive_mind/proc/override_evilution(evil, override)
+	if(SSxevolution)
+		SSxevolution.override_power(faction_owner.code_identificator, evil, override)

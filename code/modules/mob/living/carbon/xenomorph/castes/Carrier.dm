@@ -423,13 +423,14 @@
 	if(huggers_cur <= huggers_reserved)
 		to_chat(user, SPAN_WARNING("\The [src] has reserved the remaining facehuggers for themselves."))
 		return
-	if(!faction.can_spawn_as_hugger(user))
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(!huggers_cur)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	faction.spawn_as_hugger(user, src)
+	faction_module.spawn_as_hugger(user, src)
 	huggers_cur--
 
 /datum/behavior_delegate/carrier_base

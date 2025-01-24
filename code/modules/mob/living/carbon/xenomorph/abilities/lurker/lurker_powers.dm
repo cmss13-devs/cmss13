@@ -348,7 +348,7 @@
 
 	if(target_carbon.status_flags & XENO_HOST)
 		for(var/obj/item/alien_embryo/embryo in target_carbon)
-			if(HIVE_ALLIED_TO_HIVE(xeno.hivenumber, embryo.hivenumber))
+			if(xeno.ally_faction(GLOB.faction_datums[embryo.faction_to_get]))
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 

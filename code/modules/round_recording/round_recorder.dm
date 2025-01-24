@@ -67,7 +67,7 @@
 		if(X.client)
 			name_prefix = "[X.client.xeno_prefix ? X.client.xeno_prefix : "XX"]-"
 			name_postfix = X.client.xeno_postfix ? ("-" + X.client.xeno_postfix) : ""
-		player_name = "[(X.hive ? X.hive.prefix : "")][player_role] ([name_prefix][X.nicknumber][name_postfix])"
+		player_name = "[(X.faction ? X.faction.prefix : "")][player_role] ([name_prefix][X.nicknumber][name_postfix])"
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

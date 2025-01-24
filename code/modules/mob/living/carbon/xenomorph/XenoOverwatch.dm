@@ -27,7 +27,8 @@
 	if (X.caste_type == XENO_CASTE_QUEEN)
 		isQueen = TRUE
 
-	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
+	var/datum/faction_module/hive_mind/faction_module = X.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.living_xeno_queen && !faction_module.allow_no_queen_actions)
 		to_chat(X, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
@@ -44,7 +45,7 @@
 
 	var/list/possible_xenos = list()
 	for(var/mob/living/carbon/xenomorph/T in GLOB.living_xeno_list)
-		if (T != X && !should_block_game_interaction(T) && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
+		if (T != X && !should_block_game_interaction(T) && X.faction == T.faction) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
 			possible_xenos += T
 
 	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
@@ -79,10 +80,11 @@
 			if(!QDELETED(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
 	else
-		if(!hive)
+		if(!faction)
 			return
 
-		if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(!faction_module.living_xeno_queen && !faction_module.allow_no_queen_actions)
 			to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 			return
 

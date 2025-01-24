@@ -144,7 +144,7 @@
 		if(isxeno(src) && isxeno(creature))
 			overwatch_insert = " (<a href='byond://?src=\ref[creature];[XENO_OVERWATCH_TARGET_HREF]=\ref[src];[XENO_OVERWATCH_SRC_HREF]=\ref[creature]'>watch</a>)"
 
-		if(isqueen(src) || faction.leading_cult_sl == src)
+		if(isqueen(src) || faction_module.leading_cult_sl == src)
 			final_message = SPAN_XENOQUEEN("Hivemind, [name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 		else if(istype(zenomorph) && IS_XENO_LEADER(zenomorph))
 			final_message = SPAN_XENOLEADER("Hivemind, Leader [name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")

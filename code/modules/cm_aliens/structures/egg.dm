@@ -20,7 +20,7 @@
 	/// Whether to convert/orphan once EGG_BURSTING is complete
 	var/convert_on_release = FALSE
 
-/obj/effect/alien/egg/Initialize(mapload, hive)
+/obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
 	create_egg_triggers()
 
@@ -64,7 +64,7 @@
 		return
 
 	var/turf/my_turf = get_turf(src)
-	var/obj/effect/alien/egg/carrier_egg/orphan/newegg = new(my_turf, hivenumber, weed_strength_required)
+	var/obj/effect/alien/egg/carrier_egg/orphan/newegg = new(my_turf, null, faction, weed_strength_required)
 	newegg.flags_embryo = flags_embryo
 	newegg.fingerprintshidden = fingerprintshidden
 	newegg.fingerprintslast = fingerprintslast
@@ -96,9 +96,9 @@
 	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 	if(isobserver(user) || isxeno(user) && status == EGG_GROWN)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		var/current_hugger_count = hive.get_current_playable_facehugger_count();
-		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[hive.playable_hugger_limit]")] facehuggers at present."
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		var/current_hugger_count = faction_module.get_current_playable_facehugger_count();
+		. += "There are currently [SPAN_NOTICE("[current_hugger_count]")] facehuggers in the hive. The hive can support a total of [SPAN_NOTICE("[faction_module.playable_hugger_limit]")] facehuggers at present."
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)
@@ -195,7 +195,7 @@
 		if(convert_on_release)
 			convert()
 		return //Don't need to spawn a hugger, a player controls it already!
-	var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
+	var/obj/item/clothing/mask/facehugger/child = new(loc, faction)
 
 	child.flags_embryo = flags_embryo
 	flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
@@ -299,7 +299,7 @@
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM)
 	if(status == EGG_GROWN)
-		if(!can_hug(AM, hivenumber) || isyautja(AM) || issynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+		if(!can_hug(AM, faction.code_identificator) || isyautja(AM) || issynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
 		Burst(FALSE, TRUE, null)
 
@@ -307,7 +307,7 @@
 	Burst(TRUE)
 
 /obj/effect/alien/egg/alpha
-	faction_to_get = XENO_HIVE_ALPHA
+	faction_to_get = FACTION_XENOMORPH_ALPHA
 
 /obj/effect/alien/egg/forsaken
 	faction_to_get = FACTION_XENOMORPH_FORSAKEN
@@ -324,13 +324,14 @@
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
 
-	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(status != EGG_GROWN)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
+	faction_module.spawn_as_hugger(user, src)
 	Burst(FALSE, FALSE, null, TRUE)
 
 //The invisible traps around the egg to tell it there's a mob right next to it.
@@ -437,7 +438,7 @@ SPECIAL EGG USED WHEN WEEDS LOST
 
 #define ORPHAN_EGG_MAXIMUM_LIFE 6 MINUTES // Should be longer than HIVECORE_COOLDOWN
 
-/obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, hivenumber, weed_strength_required)
+/obj/effect/alien/egg/carrier_egg/orphan/Initialize(mapload, mob/builder, datum/faction/faction_to_set, weed_strength_required)
 	src.weed_strength_required = weed_strength_required
 
 	. = ..()
@@ -445,7 +446,7 @@ SPECIAL EGG USED WHEN WEEDS LOST
 	if(isnull(weed_strength_required))
 		return .
 
-	if(hivenumber != FACTION_XENOMORPH_FORSAKEN)
+	if(faction_to_get != FACTION_XENOMORPH_FORSAKEN)
 		life_timer = addtimer(CALLBACK(src, PROC_REF(start_unstoppable_decay)), ORPHAN_EGG_MAXIMUM_LIFE, TIMER_STOPPABLE)
 
 	var/my_turf = get_turf(src)
@@ -492,7 +493,7 @@ SPECIAL EGG USED WHEN WEEDS LOST
 		return
 
 	var/turf/my_turf = get_turf(src)
-	var/obj/effect/alien/egg/newegg = new(my_turf, hivenumber)
+	var/obj/effect/alien/egg/newegg = new(my_turf, null, faction)
 	newegg.flags_embryo = flags_embryo
 	newegg.fingerprintshidden = fingerprintshidden
 	newegg.fingerprintslast = fingerprintslast

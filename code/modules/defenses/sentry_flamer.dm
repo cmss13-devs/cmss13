@@ -11,7 +11,7 @@
 
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_ALLY, SENTRY_FACTION_OWN),
+		SENTRY_CATEGORY_IFF = list(SENTRY_FACTION_ALLY, SENTRY_FACTION_OWN),
 	)
 
 	selected_categories = list(
@@ -31,7 +31,7 @@
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(atom/target)
 	var/obj/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
 	new_projectile.generate_bullet(new ammo.default_ammo)
-	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
+	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction)
 	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	ammo.current_rounds--
 	track_shot()

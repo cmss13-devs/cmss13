@@ -92,7 +92,7 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	flags_area = AREA_NOTUNNEL|AREA_ALLOW_XENO_JOIN
 
-	var/hivenumber = XENO_HIVE_ALPHA
+	var/hivenumber = FACTION_XENOMORPH_ALPHA
 
 /area/adminlevel/bunker01/caves/xeno/Entered(A, atom/OldLoc)
 	. = ..()

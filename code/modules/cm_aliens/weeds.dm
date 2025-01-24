@@ -30,9 +30,9 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, datum/faction/_faction, use_node_strength=TRUE, do_spread=TRUE)
-	if(_faction)
-		faction = _faction
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, datum/faction/faction_to_set, use_node_strength=TRUE, do_spread=TRUE)
+	if(faction_to_set)
+		faction = faction_to_set
 	else if(node)
 		faction = node.faction
 
@@ -124,7 +124,7 @@
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
-/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/hive_status/hive)
+/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/faction/faction_to_set)
 	. = ..()
 	name = initial(name)
 	weed_strength = WEED_LEVEL_WEAK
@@ -246,7 +246,7 @@
 				weeds.Add(new /obj/effect/alien/weeds/weedwall(T, node))
 				continue
 			else if( istype(T, /turf/closed))
-				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
+				weeds.Add(new /obj/effect/alien/weeds(T, node, faction, TRUE, FALSE))
 				continue
 
 		if(!weed_expand_objects(T, dirn))
@@ -508,9 +508,9 @@
 	overlay_node = TRUE
 	overlays += staticnode
 
-/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/faction/_faction)
-	if(istype(_faction))
-		faction = _faction
+/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/faction/faction_to_set)
+	if(istype(faction_to_set))
+		faction = faction_to_set
 	else if (istype(xeno) && xeno.faction)
 		faction = xeno.faction
 	else

@@ -97,18 +97,14 @@
 	max_level = 6
 
 /datum/chem_property/special/ciphering/process(mob/living/M, potency = 1, delta_time)
-	if(!GLOB.hive_datum[level]) // This should probably always be valid
+	if(!GLOB.faction_datums[FACTION_LIST_XENOMORPH[level]]) // This should probably always be valid
 		return
 
 	for(var/content in M.contents)
 		if(!istype(content, /obj/item/alien_embryo))
 			continue
-		// level is a number rather than a hivenumber, which are strings
-		var/hivenumber = GLOB.hive_datum[level]
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		var/obj/item/alien_embryo/A = content
-		A.hivenumber = hivenumber
-		A.faction = hive.internal_faction
+		var/obj/item/alien_embryo/embryo = content
+		embryo.faction_to_get = FACTION_LIST_XENOMORPH[level]
 
 /datum/chem_property/special/ciphering/predator
 	name = PROPERTY_CIPHERING_PREDATOR
@@ -125,15 +121,15 @@
 	if(amount < 10)
 		return
 
-	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
+	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.faction_to_get == FACTION_LIST_XENOMORPH[level])
 		return
 
 	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
-	E.hivenumber = GLOB.hive_datum[level]
-	set_hive_data(E, GLOB.hive_datum[level])
+	E.faction_to_get = FACTION_LIST_XENOMORPH[level]
+	set_hive_data(E, GLOB.faction_datums[E.faction_to_get])
 	E.flags_embryo |= FLAG_EMBRYO_PREDATOR
 
 /datum/chem_property/special/crossmetabolizing
@@ -170,8 +166,7 @@
 		return
 	for(var/i=1,i<=max((level % 100)/10,1),i++)//10's determine number of embryos
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = min(level % 10,5) //1's determine hivenumber
-		embryo.faction = FACTION_LIST_XENOMORPH[embryo.hivenumber]
+		embryo.faction_to_get = FACTION_LIST_XENOMORPH[min(level % 10, 5)]
 
 /datum/chem_property/special/transforming
 	name = PROPERTY_TRANSFORMING

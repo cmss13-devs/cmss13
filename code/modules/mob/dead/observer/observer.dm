@@ -883,28 +883,27 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Check the status of the hive."
 	set category = "Ghost.View"
 
-	var/list/hives = list()
-	var/datum/hive_status/last_hive_checked
-
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(length(hive.totalXenos) > 0)
-			hives += list("[hive.name]" = hive.hivenumber)
-			last_hive_checked = hive
+	var/list/datum/faction/hives = list()
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(!length(faction.total_mobs))
+			continue
+		hives[faction.name] = faction
 
 	if(!length(hives))
 		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
 		return
 	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
-		last_hive_checked.hive_ui.open_hive_status(src)
+		var/datum/faction_module/hive_mind/faction_module = hives[1].get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.hive_ui.open_hive_status(src)
 	else
-		faction = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives, theme="hive_status")
-		if(!faction)
+		var/selected_hive = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives, theme="hive_status")
+		if(!selected_hive)
 			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
 			return
 
-		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
+		var/datum/faction_module/hive_mind/faction_module = hives[selected_hive].get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.hive_ui.open_hive_status(src)
 
 /mob/dead/observer/verb/view_uscm_tacmap()
 	set name = "View USCM Tacmap"
@@ -916,8 +915,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "View Xeno Tacmap"
 	set category = "Ghost.View"
 
-	var/datum/hive_status/hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
-	if(!hive || !length(hive.totalXenos))
+	var/datum/faction/hive = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL]
+	if(!length(hive.total_mobs))
 		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
 		return
 

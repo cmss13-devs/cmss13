@@ -696,7 +696,8 @@
 		counted_xenos[faction_to_get] = list()
 		for(var/caste in ALL_XENO_CASTES)
 			counted_xenos[faction_to_get][caste] = 0
-		counted_xenos[faction_to_get]["Pooled Larva"] = GLOB.faction_datums[faction_to_get].stored_larva
+		var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_faction_module(FACTION_MODULE_HIVE_MIND)
+		counted_xenos[faction_to_get]["Pooled Larva"] = faction_module.stored_larva
 
 	//Run through all our clients
 	//add up our marines by job type, surv numbers, and non-standard humans we don't care too much about

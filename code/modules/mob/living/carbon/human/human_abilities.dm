@@ -272,7 +272,7 @@ CULT
 	if(!(copytext(message, -1) in ENDING_PUNCT))
 		message += "."
 
-	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	var/datum/faction_module/hive_mind/faction_module = owner.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(!istype(faction_module))
 		return
 
@@ -338,29 +338,28 @@ CULT
 		to_chat(Hu, SPAN_WARNING("This target is too far away!"))
 		return
 
-	return H.stat != DEAD && istype(H) && ishuman_strict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
+	return H.stat != DEAD && istype(H) && ishuman_strict(H) && H.faction != Hu.faction && !isnull(get_hive())
 
 /datum/action/human_action/activable/cult_leader/proc/get_hive()
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
-	if(!hive)
+	if(!owner.faction)
 		return
 
-	if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
+	var/datum/faction_module/hive_mind/faction_module = owner.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.living_xeno_queen && !faction_module.allow_no_queen_actions)
 		return
 
-	return hive
+	return owner.faction
 
 /datum/action/human_action/activable/cult_leader/convert
 	name = "Convert"
 	action_icon_state = "cultist_channel_convert"
 
 /datum/action/human_action/activable/cult_leader/convert/use_ability(mob/M)
-	var/datum/hive_status/hive = get_hive()
+	var/datum/faction/faction = get_hive()
 
-	if(!istype(hive))
+	if(!istype(faction))
 		to_chat(owner, SPAN_DANGER("There is no Queen. You are alone."))
 		return
 
@@ -384,12 +383,12 @@ CULT
 
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 	preset.load_race(chosen)
-	preset.load_status(chosen, H.hivenumber)
+	preset.load_status(chosen, H.faction)
 
 	to_chat(chosen, SPAN_ROLE_HEADER("You are now a Xeno Cultist!"))
 	to_chat(chosen, SPAN_ROLE_BODY("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))
 
-	xeno_message("[chosen] has been converted into a cultist!", 2, hive.hivenumber)
+	xeno_message("[chosen] has been converted into a cultist!", 2, H.faction)
 
 	chosen.apply_effect(5, PARALYZE)
 	chosen.make_jittery(105)
@@ -407,9 +406,7 @@ CULT
 	if(!action_cooldown_check())
 		return
 
-	var/datum/hive_status/hive = get_hive()
-
-	if(!istype(hive))
+	if(!get_hive())
 		to_chat(owner, SPAN_DANGER("There is no Queen. You are alone."))
 		return
 

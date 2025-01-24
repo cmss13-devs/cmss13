@@ -4,7 +4,6 @@
 	var/construction_name // The name used in messages (to replace old resin2text proc)
 	var/cost
 	var/build_time = 2 SECONDS
-	var/pass_hivenumber = TRUE
 
 	var/build_overlay_icon
 	var/build_animation_effect
@@ -76,10 +75,10 @@
 
 	return TRUE
 
-/datum/resin_construction/proc/build(turf/T, hivenumber, builder)
+/datum/resin_construction/proc/build(turf/T, builder, datum/faction/faction)
 	return
 
-/datum/resin_construction/proc/check_thick_build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
+/datum/resin_construction/proc/check_thick_build(turf/build_turf, mob/living/carbon/xenomorph/builder, datum/faction/faction)
 	var/can_build_thick = TRUE
 	if(thick_hiveweed)
 		var/obj/effect/alien/weeds/weeds = locate() in build_turf
@@ -91,24 +90,15 @@
 	return FALSE
 
 // Subtype encompassing all resin constructions that are of type /obj
-/datum/resin_construction/resin_obj/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
-	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
-	if(pass_hivenumber)
-		return new path(build_turf, hivenumber, builder)
-	return new path(build_turf)
+/datum/resin_construction/resin_obj/build(turf/build_turf, mob/living/carbon/xenomorph/builder, datum/faction/faction)
+	var/path = check_thick_build(build_turf, faction, builder) ? build_path_thick : build_path
+	return new path(build_turf, builder, faction)
 
 // Subtype encompassing all resin constructions that are of type /turf
-/datum/resin_construction/resin_turf/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
-	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
+/datum/resin_construction/resin_turf/build(turf/build_turf, mob/living/carbon/xenomorph/builder, datum/faction/faction)
+	var/path = check_thick_build(build_turf, faction, builder) ? build_path_thick : build_path
 
-	build_turf.PlaceOnTop(path)
-
-	var/turf/closed/wall/resin/resin_wall = build_turf
-	if (istype(resin_wall) && pass_hivenumber)
-		resin_wall.hivenumber = hivenumber
-		resin_wall.set_resin_builder(builder)
-		set_hive_data(resin_wall, hivenumber)
-
+	build_turf.PlaceOnTop(path, builder, faction)
 	return build_turf
 
 

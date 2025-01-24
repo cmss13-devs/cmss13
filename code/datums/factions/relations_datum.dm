@@ -33,6 +33,22 @@
 /datum/faction_module/relations/proc/gain_opinion(datum/faction/target_faction, opinion)
 	relations[target_faction.code_identificator] = clamp(relations[target_faction.code_identificator] + opinion, RELATIONS_WAR[1], RELATIONS_MAX)
 
+/datum/faction_module/relations/proc/break_alliances()
+	if(!length(allies))
+		return FALSE
+
+	for(var/datum/faction/ally in allies)
+		breake_alliance(ally, TRUE)
+	return TRUE
+
+/datum/faction_module/relations/proc/breake_alliance(datum/faction/ally, force = FALSE)
+	allies -= ally
+	var/opinion_before = relations[ally.code_identificator]
+	relations[ally.code_identificator] = RELATIONS_FRIENDLY[1]
+	var/opinion_difference = opinion_before - relations[ally.code_identificator]
+	faction_announcement("Alliance with [faction] broken, opinion degrade for [opinion_difference] positions", "Relations", faction_to_display = ally)
+	faction_announcement("We broke alliance with [ally], opinion degrade for [opinion_difference] positions", "Relations", faction_to_display = faction)
+
 /datum/faction_module/relations/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, source, ui)
 	if(!ui)

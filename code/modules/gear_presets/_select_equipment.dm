@@ -160,10 +160,10 @@
 /datum/equipment_preset/proc/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(!istype(new_human, /mob/living/carbon/human/dummy))
 		var/datum/faction/mob_faction
-		if(!faction)
+		if(!job_faction)
 			mob_faction = GLOB.faction_datums[FACTION_NEUTRAL]
 		else
-			mob_faction = GLOB.faction_datums[faction]
+			mob_faction = GLOB.faction_datums[job_faction]
 
 		if(mob_faction && (!new_human.faction || force_update_faction))
 			mob_faction.add_mob(new_human)
@@ -198,7 +198,7 @@
 	load_vanity(new_human, mob_client)
 	load_traits(new_human, mob_client)
 	if(GLOB.round_statistics && count_participant)
-		GLOB.round_statistics.track_new_participant(faction)
+		GLOB.round_statistics.track_new_participant(job_faction)
 
 	new_human.assigned_equipment_preset = src
 

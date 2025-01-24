@@ -180,7 +180,6 @@
 				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relay at [get_area_name(src)]."), faction, XENO_GENERAL_ANNOUNCE)
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area_name(src)]."), faction, XENO_GENERAL_ANNOUNCE)
-		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		faction_module.hive_ui.update_pylon_status()
 	return ..()
 
@@ -193,10 +192,10 @@
 		if(!length(check_faction.total_mobs))
 			continue
 
-		if(checked_hive == faction)
+		if(check_faction == faction)
 			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area_name(src)].\n\nWe will now grow royal resin from this pylon. Hold it!"), faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area_name(src)].[faction.faction_is_ally(checked_hive) ? "" : " Stop them!"]"), faction, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area_name(src)].[faction.faction_is_ally(check_faction) ? "" : " Stop them!"]"), faction, XENO_GENERAL_ANNOUNCE)
 
 	activated = TRUE
 	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
@@ -245,15 +244,15 @@
 
 	lesser_drone_spawn_limit = 10
 
-/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/faction/faction_to_set)
+/obj/effect/alien/resin/special/pylon/core/Initialize(mapload)
 	. = ..()
 
 	// Pick the closest xeno resource activator
 
 	update_minimap_icon()
 
-	if(faction_to_set)
-		faction_to_set.set_hive_location(src, faction)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.set_hive_location(src, faction)
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -454,8 +453,9 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(datum/faction/faction)
 	sleep(HIVECORE_COOLDOWN)
-	if(faction.hivecore_cooldown) // check if its true so we don't double set it.
-		faction.hivecore_cooldown = FALSE
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.hivecore_cooldown) // check if its true so we don't double set it.
+		faction_module.hivecore_cooldown = FALSE
 		xeno_message(SPAN_XENOANNOUNCE("The weeds have recovered! A new hive core can be built!"), 3, faction)
 	else
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")

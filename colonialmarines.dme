@@ -2089,7 +2089,6 @@
 #include "code\modules\mob\living\carbon\xenomorph\Evolution.dm"
 #include "code\modules\mob\living\carbon\xenomorph\Facehuggers.dm"
 #include "code\modules\mob\living\carbon\xenomorph\hive_faction.dm"
-#include "code\modules\mob\living\carbon\xenomorph\hive_status.dm"
 #include "code\modules\mob\living\carbon\xenomorph\hive_status_ui.dm"
 #include "code\modules\mob\living\carbon\xenomorph\life.dm"
 #include "code\modules\mob\living\carbon\xenomorph\login.dm"

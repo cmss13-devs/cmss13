@@ -10,7 +10,7 @@
 	var/remove_all_actions = TRUE
 
 /datum/tutorial/xenomorph/init_mob()
-	var/mob/living/carbon/xenomorph/new_character = new starting_xenomorph_type(bottom_left_corner, null, XENO_HIVE_TUTORIAL)
+	var/mob/living/carbon/xenomorph/new_character = new starting_xenomorph_type(bottom_left_corner, null, FACTION_XENOMORPH_TUTORIAL)
 	new_character.lastarea = get_area(bottom_left_corner)
 
 	//Remove all actions from the tutorial xenomorph if remove_all_actions is TRUE

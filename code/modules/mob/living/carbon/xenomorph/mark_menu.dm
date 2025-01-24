@@ -59,7 +59,7 @@
 	.["user_nicknumber"] = X.nicknumber
 
 	var/list/mark_list_infos = list()
-	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	var/datum/faction_module/hive_mind/faction_module = user.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	for(var/type in faction_module.resin_marks)
 		var/list/entry = list()
 		var/obj/effect/alien/resin/marker/RM = type
@@ -204,3 +204,64 @@
 				selected_xeno.start_tracking_resin_mark(mark_to_force)
 				update_all_data()
 				. = TRUE
+
+//Xeno Resin Mark Shit, the very best place for it too :0)
+//Defines at the bottom of this list here will show up at the top in the mark menu
+/datum/xeno_mark_define
+	var/name = "xeno_declare"
+	var/icon_state = "empty"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+
+/datum/xeno_mark_define/fortify
+	name = "Fortify"
+	desc = "Fortify this area!"
+	icon_state = "fortify"
+
+/datum/xeno_mark_define/weeds
+	name = "Need Weeds"
+	desc = "Need weeds here!"
+	icon_state = "weed"
+
+/datum/xeno_mark_define/nest
+	name = "Nest"
+	desc = "Nest enemies here!"
+	icon_state = "nest"
+
+/datum/xeno_mark_define/hosts
+	name = "Hosts"
+	desc = "Hosts here!"
+	icon_state = "hosts"
+
+/datum/xeno_mark_define/aide
+	name = "Aide"
+	desc = "Aide here!"
+	icon_state = "aide"
+
+/datum/xeno_mark_define/defend
+	name = "Defend"
+	desc = "Defend the hive here!"
+	icon_state = "defend"
+
+/datum/xeno_mark_define/danger
+	name = "Danger Warning"
+	desc = "Caution, danger here!"
+	icon_state = "danger"
+
+/datum/xeno_mark_define/rally
+	name = "Rally"
+	desc = "Group up here!"
+	icon_state = "rally"
+
+/datum/xeno_mark_define/hold
+	name = "Hold"
+	desc = "Hold this area!"
+	icon_state = "hold"
+
+/datum/xeno_mark_define/ambush
+	name = "Ambush"
+	desc = "Ambush the enemy here!"
+	icon_state = "ambush"
+/datum/xeno_mark_define/attack
+	name = "Attack"
+	desc = "Attack the enemy here!"
+	icon_state = "attack"

@@ -457,10 +457,9 @@
 	if(!organ_faction_tag && faction.organ_faction_iff_tag_type)
 		organ_faction_tag = new faction.organ_faction_iff_tag_type(src, faction)
 
-	for(var/trait in faction.hive_inherant_traits)
-		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
-
 	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/trait in faction_module.hive_inherant_traits)
+		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set leader to the new mob
 	if(IS_XENO_LEADER(old_xeno))
@@ -475,7 +474,7 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z && faction.code_identificator != XENO_HIVE_TUTORIAL)
+	if(z && faction.code_identificator != FACTION_XENOMORPH_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
@@ -828,7 +827,8 @@
 
 	new_faction.add_mob(src)
 
-	for(var/trait in new_faction.hive_inherant_traits)
+	var/datum/faction_module/hive_mind/faction_module = new_faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/trait in faction_module.hive_inherant_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()
@@ -840,7 +840,6 @@
 	recalculate_everything()
 
 	// Update the hive status UI
-	var/datum/faction_module/hive_mind/faction_module = new_faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	faction_module.hive_ui.update_all_xeno_data()
 
 	return TRUE

@@ -51,7 +51,7 @@
 /obj/structure/machinery/defenses/bell_tower/proc/setup_tripwires()
 	clear_tripwires()
 	for(var/turf/T in orange(BELL_TOWER_RANGE, loc))
-		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction_group)
+		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction)
 		FE.linked_bell = src
 		tripwires_placed += FE
 
@@ -77,17 +77,19 @@
 	invisibility = 101
 	unacidable = TRUE
 	var/obj/structure/machinery/defenses/bell_tower/linked_bell
-	var/faction = FACTION_LIST_MARINE
+	var/datum/faction/faction
 
-/obj/effect/bell_tripwire/New(turf/T, faction = null)
-	..(T)
-	if(faction)
-		src.faction = faction
+/obj/effect/bell_tripwire/Initialize(mapload, datum/faction/faction_to_set)
+	. = ..()
+
+	if(faction_to_set)
+		faction = faction_to_set
 
 /obj/effect/bell_tripwire/Destroy()
 	if(linked_bell)
 		linked_bell.tripwires_placed -= src
 		linked_bell = null
+	faction = null
 	. = ..()
 
 /obj/effect/bell_tripwire/Crossed(atom/movable/A)
@@ -160,11 +162,11 @@
 /obj/structure/machinery/defenses/bell_tower/md/setup_tripwires()
 	md = new(src)
 	md.linked_tower = src
-	md.iff_signal = LAZYACCESS(faction_group, 1)
+	md.iff_signal = faction
 	md.toggle_active(null, FALSE)
 
 	if(!md.iff_signal)
-		md.iff_signal = FACTION_MARINE
+		md.iff_signal = GLOB.faction_datums[FACTION_MARINE]
 
 /obj/structure/machinery/defenses/bell_tower/md/clear_tripwires()
 	if(md)

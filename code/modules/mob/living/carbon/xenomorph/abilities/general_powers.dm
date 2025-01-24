@@ -552,7 +552,7 @@
 			return
 		if(!T.check_xeno_trap_placement(X))
 			return
-		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(T, null, X.faction)
+		new /obj/effect/alien/weeds(T, null, X.faction)
 		qdel(alien_weeds)
 
 	if(!X.check_plasma(plasma_cost))

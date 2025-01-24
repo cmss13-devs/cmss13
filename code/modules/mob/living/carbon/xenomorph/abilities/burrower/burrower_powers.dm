@@ -281,7 +281,7 @@
 	xenomorph.visible_message(SPAN_XENONOTICE("\The [xenomorph] digs out a tunnel entrance."), \
 	SPAN_XENONOTICE("We dig out an entrance to the tunnel network."), null, 5)
 
-	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.hivenumber)
+	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.faction)
 	xenomorph.tunnel_delay = 1
 	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
 	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
@@ -294,8 +294,9 @@
 		msg_admin_niche("[xenomorph]/([key_name(xenomorph)]) has named a new tunnel \"[msg]\".")
 		tunnelobj.tunnel_desc = "[msg]"
 
-	if(xenomorph.hive.living_xeno_queen || xenomorph.hive.allow_no_queen_actions)
-		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.hive.totalXenos)
+	var/datum/faction_module/hive_mind/faction_module = xenomorph.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.living_xeno_queen || faction_module.allow_no_queen_actions)
+		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.faction.total_mobs)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
 			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [xenomorph] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))

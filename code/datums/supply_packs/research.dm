@@ -116,7 +116,7 @@
 /datum/supply_packs/xeno_tags
 	name = "Xenomorph IFF Tag Case (x7 tags)"
 	contains = list(
-		/obj/item/storage/xeno_tag_case/full,
+		/obj/item/storage/tag_case/uscm/marine,
 	)
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure/weyland

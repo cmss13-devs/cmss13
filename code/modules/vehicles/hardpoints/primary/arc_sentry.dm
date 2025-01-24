@@ -124,7 +124,7 @@
 			purge_target(living_mob)
 			continue
 
-		if(living_mob.ally_faction(faction) || living_mob.invisibility || HAS_TRAIT(living_mob, TRAIT_ABILITY_BURROWED))
+		if(living_mob.ally_faction(owner.faction) || living_mob.invisibility || HAS_TRAIT(living_mob, TRAIT_ABILITY_BURROWED))
 			purge_target(living_mob)
 			continue
 

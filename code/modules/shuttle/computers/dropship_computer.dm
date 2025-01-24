@@ -373,7 +373,7 @@
 	if(faction_module.living_xeno_queen)
 		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(faction_module.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
 		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
-	addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
+	addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/faction_module/hive_mind, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

@@ -126,7 +126,7 @@
 			continue
 		if(xeno_in_aoe.stat == DEAD)
 			continue
-		if(xeno_in_aoe.hivenumber != xeno.hivenumber)
+		if(xeno_in_aoe.faction != xeno.faction)
 			continue
 		start_shield(xeno_in_aoe)
 		xeno.beam(xeno_in_aoe, "purple_lightning", time = 4 SECONDS)

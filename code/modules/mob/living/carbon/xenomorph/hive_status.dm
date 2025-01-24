@@ -1083,7 +1083,7 @@
 /datum/hive_status/tutorial
 	name = "Tutorial Hive"
 	reporting_id = "tutorial"
-	hivenumber = XENO_HIVE_TUTORIAL
+	hivenumber = FACTION_XENOMORPH_TUTORIAL
 	prefix = "Inquisitive "
 	latejoin_burrowed = FALSE
 

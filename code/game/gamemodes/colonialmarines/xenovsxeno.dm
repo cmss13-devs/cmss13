@@ -206,7 +206,8 @@
 	var/list/list/xenos_factions = list()
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-		if(!is_hive_living(action.get_faction_module(FACTION_MODULE_HIVE_MIND)))
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(!is_hive_living(faction_module))
 			continue
 		xenos_factions += list(faction.code_identificator = list())
 		for(var/mob/living/carbon/xenomorph/zenomorph in faction.total_mobs)

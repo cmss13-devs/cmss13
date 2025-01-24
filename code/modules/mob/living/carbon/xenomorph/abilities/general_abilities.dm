@@ -513,24 +513,26 @@
 /datum/action/xeno_action/onclick/tacmap/give_to(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 
-	hivenumber = xeno.hive.hivenumber
-	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
+	hivenumber = xeno.faction.code_identificator
+	var/datum/faction_module/hive_mind/faction_module = xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	RegisterSignal(faction_module, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
 
-	if(!xeno.hive.living_xeno_queen)
+	if(!faction_module.living_xeno_queen)
 		hide_from(xeno)
 		return
 
-	if(!xeno.hive.living_xeno_queen.ovipositor)
+	if(!faction_module.living_xeno_queen.ovipositor)
 		hide_from(xeno)
 
-	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
+	handle_new_queen(new_queen = faction_module.living_xeno_queen)
 
 /datum/action/xeno_action/onclick/tacmap/remove_from(mob/living/carbon/xenomorph/xeno)
 	. = ..()
-	UnregisterSignal(GLOB.hive_datum[hivenumber], COMSIG_HIVE_NEW_QUEEN)
+	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[hivenumber].get_faction_module(FACTION_MODULE_HIVE_MIND)
+	UnregisterSignal(faction_module, COMSIG_HIVE_NEW_QUEEN)
 
 /// handles the addition of a new queen, hiding if appropriate
-/datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+/datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/faction/hive, mob/living/carbon/xenomorph/queen/new_queen)
 	SIGNAL_HANDLER
 
 	if(tracked_queen)

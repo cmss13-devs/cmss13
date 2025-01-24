@@ -33,15 +33,10 @@
 
 	if(!faction)
 		return FALSE
-
-	if(faction.code_identificator == FACTION_XENOMORPH_RENEGADE)
-		var/datum/hive_status/corrupted/renegade/renegade_hive = faction
-		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
-
 	return attempt_harm_mob.ally_faction(faction)
 
 // need this to set the data for walls/eggs/huggers when they are initialized
-/proc/set_hive_data(atom/focused_atom, datum/hive_status/faction)
+/proc/set_hive_data(atom/focused_atom, datum/faction/faction)
 	if(faction.color)
 		focused_atom.color = faction.color
 	focused_atom.name = "[lowertext(faction.prefix)][focused_atom.name]"

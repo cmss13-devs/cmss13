@@ -26,29 +26,26 @@
 	health = 140
 	var/id = null //For mapping
 
-/obj/structure/tunnel/Initialize(mapload, h_number)
+/obj/structure/tunnel/Initialize(mapload, datum/faction/faction)
 	. = ..()
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 
-	if(h_number && GLOB.hive_datum[h_number])
-		hivenumber = h_number
-		hive = GLOB.hive_datum[h_number]
+	if(faction)
+		src.faction = faction
+		faction_to_get = faction.code_identificator
+	else
+		src.faction = GLOB.faction_datums[faction_to_get]
 
-		set_hive_data(src, h_number)
-
-		hive.tunnels += src
-
-	if(!hive)
-		hive = GLOB.hive_datum[hivenumber]
-
-		hive.tunnels += src
+	set_hive_data(src, faction)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.tunnels += src
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
 	if(resin_trap)
 		qdel(resin_trap)
 
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
+	if(faction_to_get == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	SSminimaps.add_marker(src, z, faction.minimap_flag, "xenotunnel")
@@ -67,8 +64,9 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/structure/tunnel/Destroy()
-	if(hive)
-		hive.tunnels -= src
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.tunnels -= src
+	faction = null
 
 	for(var/mob/living/carbon/xenomorph/X in contents)
 		X.forceMove(loc)
@@ -77,7 +75,7 @@
 
 /obj/structure/tunnel/proc/isfriendly(mob/target)
 	var/mob/living/carbon/C = target
-	if(istype(C) && C.ally_of_hivenumber(hivenumber))
+	if(istype(C) && C.ally_faction(faction))
 		return TRUE
 
 	return FALSE
@@ -143,12 +141,13 @@
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
-	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X) || !hive)
+	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X))
 		return FALSE
 	if(X in contents)
 		var/list/input_tunnels = list()
 
-		var/list/sorted_tunnels = sort_list_dist(hive.tunnels, get_turf(X))
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		var/list/sorted_tunnels = sort_list_dist(faction_module.tunnels, get_turf(X))
 		for(var/obj/structure/tunnel/T in sorted_tunnels)
 			if(T == src)
 				continue
@@ -238,7 +237,8 @@
 		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
-	if(!length(hive.tunnels))
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!length(faction_module.tunnels))
 		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION
 
@@ -265,7 +265,7 @@
 		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(length(hive.tunnels)) //Make sure other tunnels exist
+	if(length(faction_module.tunnels)) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)

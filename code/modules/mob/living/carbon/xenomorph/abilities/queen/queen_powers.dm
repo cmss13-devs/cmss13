@@ -350,11 +350,6 @@
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
 	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs")
-	if(queen_manager.faction.code_identificator == XENO_HIVE_CORRUPTED)
-		options += "Add Personal Ally"
-		if(length(queen_manager.faction.personal_allies))
-			options += "Remove Personal Ally"
-			options += "Clear Personal Allies"
 
 	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management",  options, theme="hive_status")
 	switch(choice)
@@ -368,12 +363,6 @@
 			give_jelly_reward(queen_manager.faction)
 		if("Exchange larva for evolution (100)")
 			give_evo_points()
-		if("Add Personal Ally")
-			add_personal_ally()
-		if("Remove Personal Ally")
-			remove_personal_ally()
-		if("Clear Personal Allies")
-			clear_personal_allies()
 		if("Purchase Buffs")
 			purchase_buffs()
 	return ..()
@@ -445,110 +434,6 @@
 	faction_module.attempt_apply_hivebuff(buffs[selection], xeno, pick(faction_module.active_endgame_pylons))
 	return TRUE
 
-/datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
-	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
-		return
-
-	if(!user_xeno.check_state())
-		return
-
-	var/datum/hive_status/corrupted/hive = user_xeno.hive
-	var/list/target_list = list()
-	if(!user_xeno.client)
-		return
-	for(var/mob/living/carbon/human/possible_target in range(7, user_xeno.client.eye))
-		if(possible_target.stat == DEAD)
-			continue
-		if(possible_target.status_flags & CORRUPTED_ALLY)
-			continue
-		if(possible_target.hivenumber)
-			continue
-		target_list += possible_target
-
-	if(!length(target_list))
-		to_chat(user_xeno, SPAN_WARNING("No talls in view."))
-		return
-	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Set Up a Personal Alliance With...", target_list, theme="hive_status")
-
-	if(!user_xeno.check_state(TRUE))
-		return
-
-	if(!target_mob)
-		return
-
-	if(target_mob.hivenumber)
-		to_chat(user_xeno, SPAN_WARNING("We cannot set up a personal alliance with a hive cultist."))
-		return
-
-	hive.add_personal_ally(target_mob)
-
-/datum/action/xeno_action/onclick/manage_hive/proc/remove_personal_ally()
-	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
-		return
-
-	if(!user_xeno.check_state())
-		return
-
-	var/datum/hive_status/corrupted/hive = user_xeno.hive
-
-	if(!length(hive.personal_allies))
-		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
-		return
-
-	var/list/mob/living/allies = list()
-	var/list/datum/weakref/dead_refs = list()
-	for(var/datum/weakref/ally_ref as anything in hive.personal_allies)
-		var/mob/living/ally = ally_ref.resolve()
-		if(ally)
-			allies += ally
-			continue
-		dead_refs += ally_ref
-
-	hive.personal_allies -= dead_refs
-
-	if(!length(allies))
-		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
-		return
-
-	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Break the Personal Alliance With...", allies, theme="hive_status")
-
-	if(!target_mob)
-		return
-
-	var/target_mob_ref = WEAKREF(target_mob)
-
-	if(!(target_mob_ref in hive.personal_allies))
-		return
-
-	if(!user_xeno.check_state(TRUE))
-		return
-
-	hive.remove_personal_ally(target_mob_ref)
-
-/datum/action/xeno_action/onclick/manage_hive/proc/clear_personal_allies()
-	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
-		return
-
-	if(!user_xeno.check_state())
-		return
-
-	var/datum/hive_status/corrupted/hive = user_xeno.hive
-	if(!length(hive.personal_allies))
-		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
-		return
-
-	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) != "Yes")
-		return
-
-	if(!length(hive.personal_allies))
-		return
-
-	hive.clear_personal_allies()
-
-
 /datum/action/xeno_action/onclick/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	var/plasma_cost_banish = 500
@@ -607,12 +492,12 @@
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 	user_xeno.faction.banished_ckeys[target_xeno.name] = target_xeno.ckey
-	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.faction, target_xeno.name), 30 MINUTES)
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 	return
 
-/datum/action/xeno_action/proc/remove_banish(datum/hive_status/hive, name)
+/datum/action/xeno_action/proc/remove_banish(datum/faction/hive, name)
 	hive.banished_ckeys.Remove(name)
 
 
@@ -753,7 +638,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(T, node, FALSE)
+	new /obj/effect/alien/weeds(T, node, X.faction, FALSE)
 	playsound(T, "alien_resin_build", 35)
 
 	recently_built_turfs += T
@@ -770,7 +655,9 @@
 	set name = "View Xeno Tacmap"
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."
 	set category = "Alien"
-	hive.tacmap.tgui_interact(src)
+
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.tacmap.tgui_interact(src)
 
 /datum/action/xeno_action/onclick/screech/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

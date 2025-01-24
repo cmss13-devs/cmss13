@@ -39,16 +39,16 @@
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
 	var/list/choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_ALLY, SENTRY_FACTION_OWN),
+		SENTRY_CATEGORY_IFF = list(SENTRY_FACTION_ALLY, SENTRY_FACTION_OWN),
 	)
 
 	var/list/selected_categories = list(
 		SENTRY_CATEGORY_IFF = SENTRY_FACTION_OWN,
 	)
 
+	var/sentry_iff_mode = SENTRY_FACTION_ALLY
 	var/faction_to_get
 	var/datum/faction/faction
-
 
 /obj/structure/machinery/defenses/Initialize()
 	. = ..()
@@ -141,7 +141,6 @@
 			return TRUE
 	return FALSE
 
-
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)
 		machine_processing = TRUE
@@ -160,8 +159,10 @@
 	if(owner_mob && owner_mob != src)
 		owner_mob.track_shot(initial(name))
 
-/obj/structure/machinery/defenses/proc/friendly_faction(factions)
-	if(factions in faction_group)
+/obj/structure/machinery/defenses/proc/friendly_faction(mob/user)
+	if(sentry_iff_mode == SENTRY_FACTION_ALLY)
+		return user.ally_faction(faction)
+	if(user.faction == faction)
 		return TRUE
 	return FALSE
 
@@ -190,9 +191,8 @@
 					return
 			if(additional_shock >= 2)
 				return
-			LAZYCLEARLIST(faction_group)
-			for(var/i in user.faction_group)
-				LAZYADD(faction_group, i)
+			faction = user.faction
+			faction_to_get = faction.code_identificator
 			to_chat(user, SPAN_WARNING("You've hacked \the [src], it's now ours!"))
 			return
 
@@ -271,9 +271,9 @@
 
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
 		var/turf/T = get_turf(src)
-		if(!faction_group) //Littly trolling for stealing marines turrets, bad boys!
-			for(var/i in user.faction_group)
-				LAZYADD(faction_group, i)
+		if(!faction)
+			faction = user.faction
+			faction_to_get = faction.code_identificator
 		power_off()
 		HD.forceMove(T)
 		transfer_label_component(HD)
@@ -353,7 +353,7 @@
 
 	add_fingerprint(user)
 
-	if(!friendly_faction(user.faction))
+	if(!friendly_faction(user))
 		return
 
 	if(!anchored)
@@ -471,7 +471,7 @@
 		return
 	if(!ishuman(usr))
 		return
-	if(!friendly_faction(usr.faction))
+	if(!friendly_faction(usr))
 		return
 	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(usr, SPAN_WARNING("You don't have the training to do this."))

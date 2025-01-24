@@ -110,7 +110,7 @@
 		//An even amount of each plasma and blood type
 		if(plasma == PLASMA_EGG)
 			//Preserve hive_number for the possible larva
-			O.reagents.add_reagent(plasma, amount / length(plasmas), list("hive_number" = hivenumber))
+			O.reagents.add_reagent(plasma, amount / length(plasmas), list("hive_number" = faction.code_identificator))
 		else
 			O.reagents.add_reagent(plasma, amount / length(plasmas))
 

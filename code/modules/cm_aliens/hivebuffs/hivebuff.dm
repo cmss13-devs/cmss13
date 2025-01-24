@@ -19,7 +19,7 @@
 	/// Timer id for cooldown duration
 	var/_timer_id_cooldown = TIMER_ID_NULL
 	/// The hive that this buff is applied to.
-	var/datum/hive_status/hive
+	var/datum/faction_module/hive_mind/hive
 	///Name of the buff, short and to the point
 	var/name = "Hivebuff"
 	/// Description of what the buff does.
@@ -69,7 +69,7 @@
 	/// _on_cease timer id
 	var/cease_timer_id
 
-/datum/hivebuff/New(datum/hive_status/xenohive)
+/datum/hivebuff/New(datum/faction_module/hive_mind/xenohive)
 	. = ..()
 	if(!xenohive || !istype(xenohive))
 		stack_trace("Hivebuff created without correct hive_status passed.")
@@ -133,7 +133,7 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE(special_fail_message))
 		return FALSE
 
-	log_admin("[key_name(purchasing_mob)] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
+	log_admin("[key_name(purchasing_mob)] of [hive.faction_owner] is attempting to purchase a hive buff: [name].")
 
 	if(!_seek_queen_approval(purchasing_mob))
 		return FALSE
@@ -158,14 +158,14 @@
 	if(!_purchase_and_deduct(purchasing_mob))
 		return
 
-	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in hive.faction_owner.total_mobs)
 		apply_buff_effects(xeno)
 
 	if(apply_on_new_xeno)
 		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
 
 	var/involved = purchasing_mob == hive.living_xeno_queen ? "[key_name_admin(purchasing_mob)]" : "[key_name_admin(purchasing_mob)] and [key_name_admin(hive.living_xeno_queen)]"
-	message_admins("[involved] of [hive.hivenumber] has purchased a hive buff: [name].")
+	message_admins("[involved] of [hive.faction_owner] has purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, src)
@@ -198,7 +198,7 @@
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
 
-	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in hive.faction_owner.total_mobs)
 		remove_buff_effects(xeno)
 
 	if(cooldown_duration)
@@ -296,7 +296,7 @@
 
 /datum/hivebuff/proc/_announce_buff_engage()
 	if(engage_flavourmessage)
-		xeno_announcement(SPAN_XENOANNOUNCE(engage_flavourmessage), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE(engage_flavourmessage), hive.faction_owner, XENO_GENERAL_ANNOUNCE)
 
 	if(marine_flavourmessage)
 		faction_announcement(marine_flavourmessage, COMMAND_ANNOUNCE, 'sound/AI/bioscan.ogg')
@@ -305,7 +305,7 @@
 	if(!duration)
 		return
 
-	for(var/mob/living/xenomorph as anything in hive.totalXenos)
+	for(var/mob/living/xenomorph as anything in hive.faction_owner.total_mobs)
 		if(!xenomorph.client)
 			continue
 		xenomorph.play_screen_text(cease_flavourmessage, override_color = "#740064")
@@ -320,7 +320,7 @@
 	if(!(src in hive.active_hivebuffs))
 		return
 	// If we're the same hive as the buff
-	if(new_xeno.hive == hive)
+	if(new_xeno.faction == hive)
 		apply_buff_effects(new_xeno)
 
 ///The actual effects of the buff to apply
@@ -361,7 +361,7 @@
 	var/value_before_buff
 
 /datum/hivebuff/evo_buff/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
-	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
+	value_before_buff = SSxevolution.get_evolution_boost_power(hive.faction_owner.code_identificator)
 	hive.override_evilution(value_before_buff * 2, TRUE)
 
 	return TRUE
@@ -408,7 +408,7 @@
 	return ..()
 
 /datum/hivebuff/game_ender_caste/handle_special_checks()
-	if(locate(/mob/living/carbon/xenomorph/king) in hive.totalXenos)
+	if(locate(/mob/living/carbon/xenomorph/king) in hive.faction_owner.total_mobs)
 		special_fail_message = "Only one King may exist at a time."
 		return FALSE
 
@@ -447,7 +447,7 @@
 		pylon.protection_level = TURF_PROTECTION_OB
 		pylon.update_icon()
 
-	new /obj/effect/alien/resin/king_cocoon(spawn_turf, hive.hivenumber)
+	new /obj/effect/alien/resin/king_cocoon(spawn_turf, hive)
 
 	return TRUE
 

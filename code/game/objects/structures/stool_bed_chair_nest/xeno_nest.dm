@@ -355,7 +355,7 @@
 	force_nest = TRUE
 	var/obj/effect/alien/resin/special/nest/linked_structure
 
-/obj/structure/bed/nest/structure/Initialize(mapload, hive, obj/effect/alien/resin/special/nest/to_link)
+/obj/structure/bed/nest/structure/Initialize(mapload, _faction_to_get, obj/effect/alien/resin/special/nest/to_link)
 	. = ..()
 	buckling_y = list("[NORTH]" = -19, "[SOUTH]" = 27, "[EAST]" = 3, "[WEST]" = 3)
 	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = -17, "[WEST]" = 18)

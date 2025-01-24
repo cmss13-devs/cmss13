@@ -80,8 +80,8 @@
 	if(SSticker.mode && SSticker.mode.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && is_mainship_level(z))
 		var/mob/last_living_human
 		var/shipside_humans_count = 0
-		var/datum/hive_status/main_hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
-		var/see_humans_on_tacmap = main_hive.see_humans_on_tacmap
+		var/datum/faction_module/hive_mind/hive_module = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL].get_faction_module(FACTION_MODULE_HIVE_MIND)
+		var/see_humans_on_tacmap = hive_module.see_humans_on_tacmap
 		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
 			if(!is_mainship_level(cur_human.z))
 				continue
@@ -91,9 +91,9 @@
 				break
 			last_living_human = cur_human
 
-		if(!see_humans_on_tacmap && shipside_humans_count < (main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
+		if(!see_humans_on_tacmap && shipside_humans_count < (hive_module.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", FACTION_XENOMORPH_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
-			main_hive.see_humans_on_tacmap = TRUE
+			hive_module.see_humans_on_tacmap = TRUE
 		if(last_living_human && shipside_humans_count <= 1 && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
 			GLOB.last_qm_callout = world.time
 			// Tell the xenos where the human is.

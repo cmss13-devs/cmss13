@@ -12,9 +12,11 @@
 	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/datum/faction/faction
 
-/obj/effect/alien/Initialize(mapload, mob/builder)
-	if(istype(builder))
+/obj/effect/alien/Initialize(mapload, mob/builder, datum/faction/faction_to_set)
+	if(builder)
 		faction = builder.faction
+	else if(faction_to_set)
+		faction = faction_to_set
 
 	if(!faction)
 		faction = GLOB.faction_datums[faction_to_get]
@@ -222,7 +224,7 @@
 		"r_foot"
 	)
 
-/obj/effect/alien/resin/spike/Initialize(mapload, hive)
+/obj/effect/alien/resin/spike/Initialize(mapload)
 	. = ..()
 	setDir(pick(GLOB.alldirs))
 
@@ -510,7 +512,6 @@
 		src.Dismantle(1)
 
 /obj/structure/mineral_door/resin/ex_act(severity)
-
 	if(!density)
 		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 
@@ -548,8 +549,9 @@
 /obj/structure/mineral_door/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
-		hivenumber = FACTION_XENOMORPH_FORSAKEN
-		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
+		faction_to_get = FACTION_XENOMORPH_FORSAKEN
+		faction = GLOB.faction_datums[faction_to_get]
+		set_hive_data(src, faction)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -577,7 +579,7 @@
 
 	var/currently_firing = FALSE
 
-/obj/effect/alien/resin/acid_pillar/Initialize(mapload, hive)
+/obj/effect/alien/resin/acid_pillar/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSprocessing, src)
 
@@ -589,7 +591,7 @@
 	if(get_dist(src, current_mob) > range)
 		return FALSE
 
-	if(current_mob.ally_of_hivenumber(hivenumber))
+	if(current_mob.ally_faction(faction))
 		if(!isxeno(current_mob))
 			return FALSE
 		if(!current_mob.on_fire)
@@ -662,7 +664,7 @@
 	info.distance_travelled++
 	info.current_turf = next_turf
 
-	new acid_type(next_turf, create_cause_data(initial(name)), hivenumber)
+	new acid_type(next_turf, create_cause_data(initial(name)), faction)
 	return TRUE
 
 /obj/effect/alien/resin/acid_pillar/Destroy()
@@ -673,7 +675,6 @@
 	return TRUE
 
 /obj/effect/alien/resin/acid_pillar/forsaken_handling()
-	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 	if(is_ground_level(z))
 		qdel(src)
@@ -706,8 +707,9 @@
 	var/shield_to_give = 50
 	var/range = 2
 
-/obj/effect/alien/resin/shield_pillar/Initialize(mapload, hive)
+/obj/effect/alien/resin/shield_pillar/Initialize(mapload)
 	. = ..()
+
 	START_PROCESSING(SSshield_pillar, src)
 
 /obj/effect/alien/resin/shield_pillar/process()
@@ -911,14 +913,11 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/king_cocoon/Initialize(mapload, hivenumber)
+/obj/effect/alien/resin/king_cocoon/Initialize(mapload)
 	. = ..()
-	if(hivenumber)
-		hive_number = hivenumber
 
 	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	faction_module.has_hatchery = TRUE
-	color = faction.color
 
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
@@ -998,7 +997,7 @@
  * * playtime_restricted: Determines whether being below KING_PLAYTIME_HOURS makes the candidate invalid
  * * skip_playtime: Determines whether being above KING_PLAYTIME_HOURS makes the candidate invalid (does nothing unless playtime_restricted is FALSE)
  */
-/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE, skip_playtime = TRUE)
+/obj/effect/alien/resin/king_cocoon/proc/is_candidate_valid(datum/faction/faction_check, mob/candidate, playtime_restricted = TRUE, skip_playtime = TRUE)
 	if(!candidate?.client)
 		return FALSE
 	if(isfacehugger(candidate) || islesserdrone(candidate))
@@ -1008,8 +1007,8 @@
 			return FALSE
 	else if(candidate.client.get_total_xeno_playtime() >= KING_PLAYTIME_HOURS && skip_playtime)
 		return FALSE // We do this under the assumption we tried it the other way already so don't ask twice
-	for(var/mob_name in hive.banished_ckeys)
-		if(hive.banished_ckeys[mob_name] == candidate.ckey)
+	for(var/mob_name in faction_check.banished_ckeys)
+		if(faction_check.banished_ckeys[mob_name] == candidate.ckey)
 			return FALSE
 	return TRUE
 
@@ -1021,8 +1020,8 @@
  * * candidate: The mob that we want to ask
  * * playtime_restricted: Determines whether being below KING_PLAYTIME_HOURS makes the candidate invalid (otherwise above)
  */
-/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/hive_status/hive, mob/candidate, playtime_restricted = TRUE)
-	if(!is_candidate_valid(hive, candidate, playtime_restricted))
+/obj/effect/alien/resin/king_cocoon/proc/try_roll_candidate(datum/faction/faction_check, mob/candidate, playtime_restricted = TRUE)
+	if(!is_candidate_valid(faction_check, candidate, playtime_restricted))
 		return FALSE
 
 	return tgui_alert(candidate, "Would you like to become the King?", "Choice", list("Yes", "No"), 10 SECONDS) == "Yes"
@@ -1047,16 +1046,15 @@
 /// Initiates a vote that will end in 20 seconds to vote for the King. Hatching will then begin in 1 minute unless expedited.
 /obj/effect/alien/resin/king_cocoon/proc/start_vote(expedite = FALSE)
 	rolling_candidates = TRUE
-	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-
-	var/list/mob/living/carbon/xenomorph/voting_candidates = hive.totalXenos.Copy() - hive.living_xeno_queen
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	var/list/mob/living/carbon/xenomorph/voting_candidates = faction.total_mobs.Copy() - faction_module.living_xeno_queen
 
 	for(var/mob/living/carbon/xenomorph/voting_candidate in voting_candidates)
-		if(!is_candidate_valid(hive, voting_candidate))
+		if(!is_candidate_valid(faction, voting_candidate))
 			voting_candidates -= voting_candidate
 
-	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
-		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
+	for(var/mob/living/carbon/xenomorph/candidate in faction.total_mobs)
+		if(is_candidate_valid(faction, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
 			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
 
 	addtimer(CALLBACK(src, PROC_REF(roll_candidates), voting_candidates, expedite), 20 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)

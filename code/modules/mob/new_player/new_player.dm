@@ -346,13 +346,13 @@
 /datum/hive_leaders/ui_data(mob/user)
 	var/list/data = list()
 
-	var/datum/hive_status/main_hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
+	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL].get_faction_module(FACTION_MODULE_HIVE_MIND)
 	var/list/queens = list()
-	if(main_hive.living_xeno_queen)
-		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
+	if(faction_module.living_xeno_queen)
+		queens += list(list("designation" = faction_module.living_xeno_queen.full_designation, "caste_type" = faction_module.living_xeno_queen.name))
 	data["queens"] = queens
 	var/list/leaders = list()
-	for(var/mob/living/carbon/xenomorph/xeno_leader in main_hive.xeno_leader_list)
+	for(var/mob/living/carbon/xenomorph/xeno_leader in faction_module.xeno_leader_list)
 		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
 	data["leaders"] = leaders
 	return data

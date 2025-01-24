@@ -20,13 +20,13 @@
 /obj/effect/alien/resin/boilertrap/empowered
 	root_duration = 30
 
-/obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/xenomorph/X)
-	if(mapload || !istype(X))
+/obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/xenomorph/builder)
+	if(mapload || !istype(builder))
 		return INITIALIZE_HINT_QDEL
-	bound_xeno = X
-	hivenumber = X.hivenumber
-	set_hive_data(src, hivenumber)
-	return ..()
+
+	. = ..()
+
+	bound_xeno = builder
 
 /obj/effect/alien/resin/boilertrap/Destroy(force)
 	bound_xeno = null

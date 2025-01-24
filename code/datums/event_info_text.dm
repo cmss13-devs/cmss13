@@ -4,10 +4,10 @@
 	var/datum/faction/faction
 	var/msg = ""
 
-/datum/custom_event_info/New(datum/faction/_faction, _name, _code_identificator)
-	if(_faction)
-		name = _faction.name
-		faction = _faction
+/datum/custom_event_info/New(datum/faction/faction_to_set, _name, _code_identificator)
+	if(faction_to_set)
+		name = faction_to_set.name
+		faction = faction_to_set
 
 	if(_name)
 		name = _name

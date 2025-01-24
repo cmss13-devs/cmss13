@@ -15,11 +15,10 @@
 		if(3)
 			fontsize_style = "large"
 
-	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
-		for(var/datum/mind/L in SSticker.mode.xenomorphs)
-			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && (!faction_to_display || M.faction_to_display == faction_to_display)) //Only living and connected xenos
-				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
+	for(var/mob/mob as anything in faction_to_display.total_mobs)
+		if(!mob.stat || !mob.client)
+			continue
+		to_chat(mob, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Sends a maptext alert to xenos.
 /proc/xeno_maptext(text = "", title_text = "", datum/faction/faction_to_display = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])

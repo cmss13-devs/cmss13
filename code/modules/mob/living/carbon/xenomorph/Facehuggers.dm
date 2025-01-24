@@ -68,7 +68,7 @@
 	set_hive_data(src, GLOB.faction_datums[faction_to_get])
 	go_active()
 
-	if(faction_to_get != XENO_HIVE_TUTORIAL)
+	if(faction_to_get != FACTION_XENOMORPH_TUTORIAL)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 
@@ -92,7 +92,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 
-	if(!death_timer && faction_to_get != XENO_HIVE_TUTORIAL && stat != DEAD)
+	if(!death_timer && faction_to_get != FACTION_XENOMORPH_TUTORIAL && stat != DEAD)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
@@ -201,7 +201,7 @@
 
 	var/mob/living/carbon/xenomorph/xeno = holder
 
-	if ((xeno.caste.hugger_nurturing || faction_to_get == XENO_HIVE_TUTORIAL) && death_timer)
+	if ((xeno.caste.hugger_nurturing || faction_to_get == FACTION_XENOMORPH_TUTORIAL) && death_timer)
 		deltimer(death_timer)
 		death_timer = null
 
@@ -313,7 +313,7 @@
 
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"
-	if(faction_to_get != XENO_HIVE_TUTORIAL) // prevent hugs from any tutorial huggers from showing up in dchat
+	if(faction_to_get != FACTION_XENOMORPH_TUTORIAL) // prevent hugs from any tutorial huggers from showing up in dchat
 		if(hug_area)
 			notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
 			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
@@ -458,7 +458,7 @@
 
 	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
-	if(faction_to_get == XENO_HIVE_TUTORIAL)
+	if(faction_to_get == FACTION_XENOMORPH_TUTORIAL)
 		addtimer(CALLBACK(src, PROC_REF(decay)), 5 SECONDS)
 	else
 		addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)

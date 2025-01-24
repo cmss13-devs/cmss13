@@ -122,7 +122,7 @@
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
 					serialized["background_icon"] = caste.minimap_background
-					serialized["hivenumber"] = xeno.hivenumber
+					serialized["hivenumber"] = xeno.faction.code_identificator
 					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
 				continue
@@ -163,8 +163,8 @@
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
 					ert_members += list(serialized)
-				else if(human.faction in FACTION_LIST_HUNTED)
-					hunted += list(serialized)
+//				else if(human.faction in FACTION_LIST_HUNTED) TODO FACTION
+//					hunted += list(serialized)
 				else if(human.faction in FACTION_LIST_UPP)
 					upp += list(serialized)
 				else if(human.faction in FACTION_LIST_CLF)

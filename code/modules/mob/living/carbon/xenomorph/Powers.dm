@@ -77,7 +77,7 @@
 			if(door.hardness == 1.5) //non thickened
 				var/oldloc = door.loc
 				qdel(door)
-				new /obj/structure/mineral_door/resin/thick (oldloc, door.hivenumber)
+				new /obj/structure/mineral_door/resin/thick (oldloc, door.faction)
 				total_resin_cost = XENO_THICKEN_DOOR_COST
 			else
 				to_chat(src, SPAN_XENOWARNING("[door] can't be made thicker."))

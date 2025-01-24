@@ -20,8 +20,9 @@
 	var/plasma_stored = 0
 	var/plasma_required_to_repair = 300
 
-/obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
+/obj/effect/alien/resin/special/cluster/Initialize(mapload)
 	. = ..()
+
 	node = place_node()
 	update_minimap_icon()
 

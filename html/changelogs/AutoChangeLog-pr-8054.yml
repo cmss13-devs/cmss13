@@ -1,4 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - bugfix: "Added a missing reference check to flight/ui_act"

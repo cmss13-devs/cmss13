@@ -8991,8 +8991,7 @@
 /obj/structure/platform{
 	density = 0;
 	dir = 10;
-	icon_state = "platform_deco";
-	plane = -5
+	icon_state = "platform_deco"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep/toxic,
@@ -9353,8 +9352,7 @@
 /obj/structure/platform{
 	density = 0;
 	dir = 9;
-	icon_state = "platform_deco";
-	plane = -5
+	icon_state = "platform_deco"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep/toxic,
@@ -17184,8 +17182,7 @@
 /obj/structure/platform{
 	density = 0;
 	dir = 5;
-	icon_state = "platform_deco";
-	plane = -5
+	icon_state = "platform_deco"
 	},
 /obj/structure/platform{
 	dir = 8;
@@ -27188,7 +27185,6 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "BORIS Main";
 	name = "\improper 1VAN/3 Core Shutters";
-	plane = -7;
 	dir = 8
 	},
 /turf/open/floor/corsat/marked,

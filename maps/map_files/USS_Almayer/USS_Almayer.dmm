@@ -11696,8 +11696,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Left";
-	name = "\improper ARES Mainframe Shutters";
-	plane = -7
+	name = "\improper ARES Mainframe Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19308,8 +19307,7 @@
 "dYU" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/cobweb{
-	dir = 8;
-	plane = -6
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/spray/cleaner{
@@ -23081,8 +23079,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "ARES JoeCryo";
-	name = "\improper ARES Synth Bay Shutters";
-	plane = -7
+	name = "\improper ARES Synth Bay Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -23557,8 +23554,7 @@
 "fMt" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/laser{
@@ -25171,7 +25167,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/clicky{
 	pixel_x = 14;
-	plane = -5;
 	pixel_y = 2
 	},
 /obj/item/tool/pen/clicky{
@@ -25394,9 +25389,7 @@
 	req_access = null;
 	req_one_access_txt = "91;92"
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore{
-	plane = -6
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "gDk" = (
@@ -29387,8 +29380,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/structure/disposalpipe/up/almayer{
 	dir = 2;
@@ -31329,8 +31321,7 @@
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_y = -3;
-	pixel_x = 4;
-	plane = -5
+	pixel_x = 4
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = 4;
@@ -31338,8 +31329,7 @@
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = -4;
-	pixel_y = -3;
-	plane = -5
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = -4;
@@ -32118,8 +32108,7 @@
 "jqP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
@@ -35428,8 +35417,7 @@
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/shower{
 	dir = 8;
-	layer = 3.10;
-	plane = -4
+	layer = 3.10
 	},
 /obj/item/tool/soap{
 	pixel_x = 2;
@@ -39605,8 +39593,7 @@
 "mAe" = (
 /obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown{
-	dir = 4;
-	plane = -6
+	dir = 4
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -39874,8 +39861,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Right";
-	name = "\improper ARES Mainframe Shutters";
-	plane = -7
+	name = "\improper ARES Mainframe Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -40451,8 +40437,7 @@
 "mRn" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/terminal{
@@ -42488,8 +42473,7 @@
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
 	pixel_x = -17;
-	pixel_y = -5;
-	plane = -5
+	pixel_y = -5
 	},
 /obj/item/device/camera_film{
 	pixel_x = -3
@@ -46007,8 +45991,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES ReceptStairs2";
-	name = "\improper ARES Reception Shutters";
-	plane = -7
+	name = "\improper ARES Reception Shutters"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -55035,8 +55018,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES ReceptStairs2";
-	name = "\improper ARES Reception Stairway Shutters";
-	plane = -7
+	name = "\improper ARES Reception Stairway Shutters"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -57346,8 +57328,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -64119,8 +64100,7 @@
 "wkM" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsLower";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/public{
 	alert_id = "AresStairs";

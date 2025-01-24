@@ -37,3 +37,7 @@
   blackcrystall:
   - rscadd: New Queen strain, the Royal Charger
   - balance: Crusher got additional damage in charge in longer run
+2025-01-24:
+  Protos-Zerg:
+  - rscadd: Scaled on Tank crew(30 pop)
+  - rscadd: Scaled on Mech Pilot(40 pop)

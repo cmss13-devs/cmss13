@@ -1,0 +1,6 @@
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
+soundfile==0.12.1
+pydub==0.25.1
+Flask==2.2.5

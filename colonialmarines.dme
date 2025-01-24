@@ -21,6 +21,7 @@
 #include "code\stylesheet.dm"
 #include "code\__DEFINES\__game.dm"
 #include "code\__DEFINES\__rust_g.dm"
+#include "modular\_rust_utils\_rust_utils.dme" // SS220 ADD
 #include "code\__DEFINES\__spacemandmm.dm"
 #include "code\__DEFINES\_bitfields.dm"
 #include "code\__DEFINES\_click.dm"

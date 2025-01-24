@@ -391,10 +391,11 @@ nanoui is used to open and update nano browser uis
 
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
 
+	// SS220 EDIT - RU fix
 	return {"
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<META content="text/html; charset=UTF-8" http-equiv=Content-Type> // SS220 EDIT - RU fix
+	<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<head>
 		<script type='text/javascript'>

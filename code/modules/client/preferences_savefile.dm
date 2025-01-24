@@ -446,7 +446,8 @@
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
-	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6, // Game, music, admin midis, lobby music
+		1, 0.5)) // SS220 TTS EDIT from "modular/text_to_speech/code/sound.dm"
 
 	return 1
 
@@ -719,6 +720,12 @@
 	if(!religion) religion = RELIGION_AGNOSTICISM
 	if(!preferred_squad) preferred_squad = "None"
 
+	// =================================
+	// SS220 EDIT - TTS
+	if(SStts220.is_enabled)
+		S["tts_seed"] >> tts_seed
+	// =================================
+
 	return 1
 
 /datum/preferences/proc/save_character()
@@ -798,6 +805,12 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
+
+	// =================================
+	// SS220 EDIT - TTS
+	if(SStts220.is_enabled)
+		S["tts_seed"] << tts_seed
+	// =================================
 
 	return 1
 

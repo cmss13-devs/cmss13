@@ -82,9 +82,10 @@
 	if (title_image)
 		title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
 
+ // SS220 EDIT - RU fix
 	return {"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<META content="text/html; charset=UTF-8" http-equiv=Content-Type> // SS220 EDIT - RU fix
+	<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
 	<head>
 		[head_content]
 	</head>

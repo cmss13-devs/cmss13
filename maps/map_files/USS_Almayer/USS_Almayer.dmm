@@ -54524,6 +54524,17 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -14;
+	pixel_y = 7
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 18
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 20;
+	pixel_x = 9
+	},
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/living/grunt_rnr)
 "swG" = (
@@ -55534,8 +55545,22 @@
 /area/almayer/shipboard/brig/cells)
 "sUE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/clock{
-	pixel_y = 8;
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 20;
+	pixel_x = 9
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 18
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup_stack{
+	pixel_y = 18;
+	pixel_x = -9
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/lid_stack{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/obj/item/trash/hybrisa/cuppa_joes_static/empty_cup{
 	pixel_x = -5
 	},
 /turf/open/floor/almayer/bluefull,
@@ -64152,11 +64177,12 @@
 /area/almayer/command/lifeboat)
 "wkH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/whistle{
-	pixel_y = 4
-	},
 /obj/structure/machinery/status_display{
 	pixel_y = 30
+	},
+/obj/item/clock{
+	pixel_y = 8;
+	pixel_x = -5
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
@@ -64899,9 +64925,10 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "wyt" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/microwave{
-	pixel_x = -2;
-	pixel_y = 7
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -4;
+	layer = 3.3;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)

@@ -64926,9 +64926,8 @@
 "wyt" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/hybrisa/coffee_machine{
-	pixel_x = -4;
-	layer = 3.3;
-	pixel_y = 12
+	pixel_x = 1;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)

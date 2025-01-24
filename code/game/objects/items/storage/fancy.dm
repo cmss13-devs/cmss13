@@ -593,7 +593,8 @@
 	name = "\improper Small feather collection"
 	desc = "A pristine case to protect a collection of old collectibel feathers. The feathers seem to be made from cheap plastic, and coverd in dust. Yet they hold deep sentimental value to some."
 	storage_slots = 4
-	can_hold = list(/obj/item/prop/helmetgarb/lucky_feather/red,
+	can_hold = list(
+		/obj/item/prop/helmetgarb/lucky_feather/red,
 		/obj/item/prop/helmetgarb/lucky_feather/blue,
 		/obj/item/prop/helmetgarb/lucky_feather/yellow,
 		/obj/item/prop/helmetgarb/lucky_feather/purple)

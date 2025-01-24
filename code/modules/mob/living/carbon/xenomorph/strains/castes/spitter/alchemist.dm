@@ -197,8 +197,9 @@
 			to_chat(target, SPAN_XENOWARNING("You feel your claws weaken!"))
 			xeno_stat_debuff(target, "slash")
 		if("Vapinine") // Drains plasma
-			target.plasma_stored = max(target.plasma_stored - (target.plasma_max * (total_pool / 100)), 0)
-			to_chat(target, SPAN_WARNING("You feel your plasma reserves being drained!"))
+			if(target.plasma_max > 0)
+				target.plasma_stored = max(target.plasma_stored - (target.plasma_max * (total_pool / 100)), 0)
+				to_chat(target, SPAN_WARNING("You feel your plasma reserves being drained!"))
 		if("Crynine") // Slows down
 			to_chat(target, SPAN_XENOWARNING("You suddenly feel lethargic!"))
 			xeno_stat_debuff(target, "speed")

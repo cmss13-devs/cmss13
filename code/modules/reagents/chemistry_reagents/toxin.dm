@@ -312,7 +312,7 @@
 	id = "xenoalch_brute"
 	description = "A blood red chemical compound of Xenomorph origin. Has cytotoxic properties resulting in necrosis of tissue, and appears to purge certain chemicals with neogenetic properties."
 	color = "#880808"
-	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_BIOCIDIC = 2)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_BIOCIDIC = 1)
 	purges_specific_chems = TRUE
 	specific_chem_purge = list(/datum/reagent/medical/bicaridine, /datum/reagent/medical/meralyne)
 
@@ -321,7 +321,7 @@
 	id = "xenoalch_burn"
 	description = "A sickly yellow chemical compound of Xenomorph origin. Has caustic properties resulting in internal chemical burns, and appears to purge certain chemicals with anti-corrosive properties."
 	color = "#FDFD96"
-	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_CORROSIVE = 2)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_CORROSIVE = 1)
 	purges_specific_chems = TRUE
 	specific_chem_purge = list(/datum/reagent/medical/kelotane, /datum/reagent/medical/dermaline)
 
@@ -339,7 +339,7 @@
 	id = "xenoalch_fire"
 	description = "."
 	color = "#CC5500"
-	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HYPERTHERMIC = 2)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HYPERTHERMIC = 3)
 
 /datum/reagent/toxin/alchemic/vapinine
 	name = "Vapinine"
@@ -353,7 +353,7 @@
 	id = "xenoalch_freeze"
 	description = "."
 	color = "#003b38"
-	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HYPOTHERMIC = 2)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HYPOTHERMIC = 3)
 	purges_specific_chems = TRUE
 	specific_chem_purge = list(/datum/reagent/medical/cryoxadone, /datum/reagent/medical/clonexadone)
 

@@ -1,3 +1,4 @@
+/* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 
 /proc/generate_alliable_factions()
@@ -11,7 +12,7 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 	.["Human"] = FACTION_LIST_HUMANOID
 
 	.["Raw"] = .["Human"] + .["Xenomorph"]
-
+*/
 /datum/hive_faction_ui
 	var/name = "Hive Faction"
 
@@ -40,7 +41,7 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 
 /datum/hive_faction_ui/ui_static_data(mob/user)
 	. = list()
-	.["glob_factions"] = GLOB.hive_alliable_factions
+	.["glob_factions"] = list()//GLOB.hive_alliable_factions
 
 /datum/hive_faction_ui/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -52,8 +53,8 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 			if(isnull(params["should_ally"]) || isnull(params["target_faction"]))
 				return
 
-			if(!(params["target_faction"] in GLOB.hive_alliable_factions["Raw"]))
-				return
+//			if(!(params["target_faction"] in GLOB.hive_alliable_factions["Raw"]))
+//				return
 
 			var/should_ally = text2num(params["should_ally"])
 			assoc_hive.change_stance(params["target_faction"], should_ally)

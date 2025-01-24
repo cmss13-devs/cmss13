@@ -515,9 +515,9 @@ GLOBAL_LIST_INIT(pp_hives, pp_generate_hives())
 
 /proc/pp_generate_hives()
 	. = list()
-	for(var/hivenumber in GLOB.hive_datum)
-		var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
-		.[H.name] = H.hivenumber
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		.[faction.name] = faction.faction_name
 
 GLOBAL_LIST_INIT(pp_limbs, list(
 	"Head" = "head",

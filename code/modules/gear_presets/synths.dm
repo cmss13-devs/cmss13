@@ -750,7 +750,7 @@
 
 /datum/equipment_preset/synth/survivor/cultist_synth
 	name = "Cultist - Xeno Cultist Synthetic"
-	job_faction = FACTION_XENOMORPH
+	job_faction = FACTION_XENOMORPH_NORMAL
 	minimap_icon = "cult_synth"
 	minimap_background = "background_cultist"
 
@@ -780,7 +780,7 @@
 
 /datum/equipment_preset/synth/survivor/midwife
 	name = "Fun - Xeno Cultist Midwife (Synthetic)"
-	job_faction = FACTION_XENOMORPH
+	job_faction = FACTION_XENOMORPH_NORMAL
 
 /datum/equipment_preset/synth/survivor/midwife/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic

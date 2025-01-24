@@ -242,7 +242,7 @@
 			if(!is_announcement_active)
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
-			if(announcement_faction != FACTION_MARINE && usr.faction != GLOB.faction_datum[announcement_faction])
+			if(announcement_faction != FACTION_MARINE && usr.faction != GLOB.faction_datums[announcement_faction])
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
@@ -260,7 +260,7 @@
 					signed = "[paygrade] [id.registered_name]"
 
 
-			faction_announcement(input, announcement_title, faction_to_display = GLOB.faction_datum[announcement_faction], signature = signed)
+			faction_announcement(input, announcement_title, faction_to_display = GLOB.faction_datums[announcement_faction], signature = signed)
 			addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
 			message_admins("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")

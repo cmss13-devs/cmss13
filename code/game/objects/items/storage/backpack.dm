@@ -55,8 +55,7 @@
 		return ..() // We don't have backpack sprites for xenoids (yet?)
 	var/mob/living/carbon/xenomorph/xeno = target_mob
 	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
-		var/mob/living/carbon/carbon_user = user
-		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
+		if(!xeno.ally_faction(user.faction))
 			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))

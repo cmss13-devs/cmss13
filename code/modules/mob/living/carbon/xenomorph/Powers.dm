@@ -173,26 +173,28 @@
 		return
 
 	var/current_area_name = get_area_name(current_turf)
-	var/obj/effect/alien/resin/construction/new_structure = new(current_turf, hive)
+	var/obj/effect/alien/resin/construction/new_structure = new(current_turf, faction)
 	new_structure.set_template(structure_template)
-	hive.add_construction(new_structure)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.add_construction(new_structure)
 
-	var/max_constructions = hive.hive_structures_limit[structure_template.name]
-	var/remaining_constructions = max_constructions - hive.get_structure_count(structure_template.name)
+	var/max_constructions = faction_module.hive_structures_limit[structure_template.name]
+	var/remaining_constructions = max_constructions - faction_module.get_structure_count(structure_template.name)
 	visible_message(SPAN_XENONOTICE("A thick substance emerges from the ground and shapes into \a [new_structure]."), \
 		SPAN_XENONOTICE("We designate a new [structure_template] construction. ([remaining_constructions]/[max_constructions] remaining)"), null, 5)
 	playsound(new_structure, "alien_resin_build", 25)
 
-	if(hive.living_xeno_queen)
-		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, hivenumber)
+	if(faction_module.living_xeno_queen)
+		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, faction)
 
 /mob/living/carbon/xenomorph/proc/make_marker(turf/target_turf)
 	if(!target_turf)
 		return FALSE
 	var/found_weeds = FALSE
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(!selected_mark)
 		to_chat(src, SPAN_NOTICE("We must have a meaning for the mark before you can make it."))
-		hive.mark_ui.open_mark_menu(src)
+		faction_module.mark_ui.open_mark_menu(src)
 		return FALSE
 	if(target_turf.z != src.z)
 		to_chat(src, SPAN_NOTICE("We have no psychic presence on that world."))
@@ -216,10 +218,10 @@
 		NM.color = "#7a21c4"
 	else
 		NM.color = "#db6af1"
-	if(hive.living_xeno_queen)
+	if(faction_module.living_xeno_queen)
 		var/current_area_name = get_area_name(target_turf)
 
-		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/X in faction.total_mobs)
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE

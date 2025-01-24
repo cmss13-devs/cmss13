@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, XENO_SABOTAGE_MEDAL, XENO_PROLIFERATION_MEDAL, XENO_REJUVENATION_MEDAL))
 
 /proc/give_jelly_award(datum/faction/faction, as_admin = FALSE)
-	if(!hive)
+	if(!faction)
 		return FALSE
 
 	if(as_admin && !check_rights(R_ADMIN))
@@ -329,7 +329,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/recipient_ckey = recipient_mob.persistent_ckey
 	var/posthumous = !isliving(recipient_mob) || recipient_mob.stat == DEAD
 	if(!as_admin) // Don't need to check for giver mob in admin mode
-		for(var/mob/mob in hive.total_mobs)
+		for(var/mob/mob in faction.total_mobs)
 			if(mob == usr)
 				// Giver: Increment their medals given stat
 				giver_mob = mob

@@ -37,12 +37,13 @@
 			handle_regular_hud_updates()
 
 /mob/living/carbon/xenomorph/proc/update_progression()
-	if(isnull(hive))
+	if(!faction)
 		return
 	var/progress_amount = 1
 	if(SSxevolution)
-		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_evo || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+		progress_amount = SSxevolution.get_evolution_boost_power(faction.code_identificator)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	var/ovipositor_check = (faction_module.allow_no_queen_evo || faction_module.evolution_without_ovipositor || (faction_module.living_xeno_queen && faction_module.living_xeno_queen.ovipositor))
 	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
 			if(!got_evolution_message)
@@ -116,12 +117,13 @@
 				else
 					use_current_aura = TRUE
 
-		if(leader_current_aura && hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(leader_current_aura && faction_module.living_xeno_queen && faction_module.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
 			use_leader_aura = TRUE
 
 		if(use_current_aura || use_leader_aura)
 			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || Z.z != z || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !Z.ally_faction(faction))
 					continue
 				if(use_leader_aura)
 					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -338,11 +340,12 @@ Make sure their actual health updates immediately.*/
 
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
-			if(!hive) return // can't heal if you have no hive, sorry bud
+			if(!faction) return // can't heal if you have no hive, sorry bud
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			if(health < maxHealth && !hardcore && is_hive_living(faction_module) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
@@ -395,20 +398,21 @@ Make sure their actual health updates immediately.*/
 		return
 
 	var/atom/movable/screen/queen_locator/locator = hud_used.locate_leader
-	if(!loc || !hive)
+	if(!loc || !faction)
 		locator.reset_tracking()
 		return
 
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	var/atom/tracking_atom
 	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
-			tracking_atom = hive.living_xeno_queen
+			tracking_atom = faction_module.living_xeno_queen
 		if(TRACKER_HIVE)
-			tracking_atom = hive.hive_location
+			tracking_atom = faction_module.hive_location
 		if(TRACKER_LEADER)
 			var/atom/leader = locator.tracking_ref?.resolve()
 			// If the leader exists, and is actually in the leader list.
-			if(leader && (leader in hive.xeno_leader_list))
+			if(leader && (leader in faction_module.xeno_leader_list))
 				tracking_atom = leader
 		if(TRACKER_TUNNEL)
 			tracking_atom = locator.tracking_ref?.resolve()

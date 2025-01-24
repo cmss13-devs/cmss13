@@ -54,7 +54,8 @@
 	M.transfer_to(new_xeno, TRUE)
 	new_xeno.set_hive_and_update(FACTION_XENOMORPH_FERAL)
 	if(hive_leader)
-		new_xeno.hive.add_hive_leader(new_xeno)
+		var/datum/faction_module/hive_mind/faction_module = new_xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.add_hive_leader(new_xeno)
 
 	QDEL_NULL(current_mob)
 

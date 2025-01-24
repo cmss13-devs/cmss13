@@ -151,10 +151,11 @@
 	if(iscarbon(speaker))
 		var/mob/living/carbon/C = speaker
 
-		if(!(C.hivenumber in GLOB.hive_datum))
+		var/datum/faction_module/hive_mind/faction_module = speaker.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(!istype(faction_module))
 			return
 
-		C.hivemind_broadcast(message, GLOB.hive_datum[C.hivenumber])
+		C.hivemind_broadcast(message, faction_module)
 
 /datum/language/apollo
 	name = LANGUAGE_APOLLO

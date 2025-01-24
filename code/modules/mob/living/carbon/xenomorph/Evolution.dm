@@ -121,7 +121,6 @@
 		if(jobban_isbanned(src, XENO_CASTE_QUEEN))
 			to_chat(src, SPAN_WARNING("You are jobbanned from the Queen role."))
 			return
-		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(faction_module.living_xeno_queen)
 			to_chat(src, SPAN_WARNING("There already is a Queen."))
 			return
@@ -149,7 +148,6 @@
 
 	var/area/xeno_area = get_area(new_xeno)
 	if(!should_block_game_interaction(new_xeno) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
-		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		switch(new_xeno.tier) //They have evolved, add them to the slot count IF they are in regular game space
 			if(2)
 				faction_module.tier_2_xenos |= new_xeno
@@ -184,8 +182,6 @@
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
-
-	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(faction_module.living_xeno_queen && faction_module.living_xeno_queen.observed_xeno == src)
 		faction_module.living_xeno_queen.overwatch(new_xeno)
 
@@ -404,7 +400,7 @@
 
 	var/burrowed_factor = min(faction_module.stored_larva, sqrt(4*faction_module.stored_larva))
 	var/totalXenos = floor(burrowed_factor)
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.total_mobs)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in faction.total_mobs)
 		if(xeno.counts_for_slots)
 			totalXenos++
 

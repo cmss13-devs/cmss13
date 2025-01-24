@@ -271,16 +271,16 @@
 	target.flick_heal_overlay(3 SECONDS, "#44253d")
 
 	target.visible_message(SPAN_XENONOTICE("[xeno] explodes in a deluge of regenerative resin salve, covering [target] in it!"))
-	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("[xeno] sacrifices itself to heal [target]!"), 2, target.faction)
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
-	if(istype(behavior_delegate) && behavior_delegate.transferred_amount >= behavior_delegate.required_transferred_amount && xeno.client && xeno.hive)
-		var/datum/hive_status/hive_status = xeno.hive
+	if(istype(behavior_delegate) && behavior_delegate.transferred_amount >= behavior_delegate.required_transferred_amount && xeno.client && xeno.faction)
+		var/datum/faction_module/hive_mind/faction_module = xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		var/turf/spawning_turf = get_turf(xeno)
-		if(!hive_status.hive_location)
-			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), xeno.client, spawning_turf), 0.5 SECONDS)
+		if(!faction_module.hive_location)
+			addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/faction_module/hive_mind, respawn_on_turf), xeno.client, spawning_turf), 0.5 SECONDS)
 		else
-			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
+			addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/faction_module/hive_mind, free_respawn), xeno.client), 5 SECONDS)
 
 	xeno.gib(create_cause_data("sacrificing itself", src))
 	return ..()

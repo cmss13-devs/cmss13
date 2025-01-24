@@ -11,7 +11,7 @@
 	QDEL_LIST(medal_list)
 
 /datum/entity/player_stats/xeno/get_playtime(type)
-	if(!type || type == FACTION_XENOMORPH)
+	if(!type || type == FACTION_XENOMORPH_NORMAL)
 		return ..()
 	if(!caste_stats_list["[type]"])
 		return 0

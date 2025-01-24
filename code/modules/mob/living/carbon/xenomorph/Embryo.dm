@@ -9,7 +9,7 @@
 	var/stage = 0
 	var/counter = 0 //How developed the embryo is, if it ages up highly enough it has a chance to burst
 	var/larva_autoburst_countdown = 20 //to kick the larva out
-	var/faction_to_get = FACTION_XENOMORPH
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/flags_embryo = FALSE // Used in /ciphering/predator property
 	/// The ckey of any player hugger that made this embryo
 	var/hugger_ckey

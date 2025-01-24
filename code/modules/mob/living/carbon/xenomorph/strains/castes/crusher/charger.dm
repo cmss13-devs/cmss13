@@ -370,7 +370,7 @@
 /mob/living/carbon/xenomorph/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		playsound(loc, "punch", 25, TRUE)
-		if(!xeno.ally_of_hivenumber(hivenumber))
+		if(!xeno.ally_faction(faction))
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([ckey])</font>")
 			log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([ckey])")

@@ -355,15 +355,18 @@
 		X.set_hive_and_update(factions[choice])
 	else
 		var/was_leader = FALSE
+		var/datum/faction_module/hive_mind/faction_module
 		if(H.faction)
-			if(H == H.faction.leading_cult_sl)
+			faction_module = H.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			if(H == faction_module.leading_cult_sl)
 				was_leader = TRUE
-			H.faction.leading_cult_sl = null
+			faction_module.leading_cult_sl = null
 
 		factions[choice].add_mob(H)
 
-		if(was_leader && (!H.faction.leading_cult_sl || H.faction.leading_cult_sl.stat == DEAD))
-			H.faction.leading_cult_sl = H
+		faction_module = H.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(was_leader && (!faction_module.leading_cult_sl || faction_module.leading_cult_sl.stat == DEAD))
+			faction_module.leading_cult_sl = H
 
 	message_admins("[key_name(src)] changed faction of [H] to [choice].")
 

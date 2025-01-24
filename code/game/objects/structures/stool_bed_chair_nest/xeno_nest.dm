@@ -149,7 +149,8 @@
 
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
-		if(!X.faction.unnesting_allowed && !isxeno_builder(X) && X.ally_faction(GLOB.faction_datums[faction_to_get]))
+		var/datum/faction_module/hive_mind/faction_module = X.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(!faction_module.unnesting_allowed && !isxeno_builder(X) && X.ally_faction(GLOB.faction_datums[faction_to_get]))
 			to_chat(X, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))

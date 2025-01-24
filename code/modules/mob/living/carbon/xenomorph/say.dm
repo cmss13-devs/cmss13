@@ -97,7 +97,7 @@
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
 		return
 
-	hivemind_broadcast(message, hive)
+	hivemind_broadcast(message, faction.get_faction_module(FACTION_MODULE_HIVE_MIND))
 
 /mob/living/carbon/proc/hivemind_broadcast(message, datum/faction_module/hive_mind/faction_module)
 	if(!message || stat)

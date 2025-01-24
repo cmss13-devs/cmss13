@@ -823,10 +823,9 @@
 			return
 
 		var/list/hives = list()
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			hives += list("[hive.name]" = hive.hivenumber)
+		for(var/hivenumber in GLOB.faction_datums)
+			var/datum/faction/hive = GLOB.faction_datums[hivenumber]
+			hives += list("[hive.name]" = hive.code_identificator)
 
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
 
@@ -835,8 +834,7 @@
 			return
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = hives[newhive]
-		embryo.faction = newhive
+		embryo.faction_to_get = hives[newhive]
 
 		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
 

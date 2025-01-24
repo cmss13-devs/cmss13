@@ -108,14 +108,14 @@
 					if(isnull(permit_recipients[1])) //Cancel button.
 						return
 				if("Hive")
-					permit_hives += GLOB.hive_datum[tgui_input_list(usr, "Select recipient hive:", "Armed Hive", GLOB.hive_datum)]
+					permit_hives += GLOB.faction_datums[tgui_input_list(usr, "Select recipient hive:", "Armed Hive", GLOB.faction_datums)]
 					if(isnull(permit_hives[1])) //Cancel button.
 						return
 					permit_recipients = permit_hives[1].totalXenos.Copy()
 				if("All Xenos")
 					permit_recipients = GLOB.living_xeno_list.Copy()
-					for(var/H in GLOB.hive_datum)
-						permit_hives += GLOB.hive_datum[H]
+					for(var/H in GLOB.faction_datums)
+						permit_hives += GLOB.faction_datums[H]
 
 			var/list/handled_xenos = list()
 

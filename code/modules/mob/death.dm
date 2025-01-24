@@ -48,6 +48,8 @@
 	if(stat == DEAD)
 		return 0
 
+	faction.remove_mob(src)
+
 	if(!gibbed)
 		visible_message("<b>[src.name]</b> [deathmessage]")
 

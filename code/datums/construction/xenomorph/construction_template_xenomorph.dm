@@ -84,10 +84,11 @@
 	if(!owner || !get_turf(owner))
 		log_debug("Constuction template ([name]) completed construction without a build location")
 		return
-	if(hive_ref)
-		hive_ref.remove_construction(owner)
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.remove_construction(owner)
 	build_loc = get_turf(owner)
-	var/obj/effect/alien/resin/special/nest/newly_builtor = new build_type(build_loc, hive_ref)
+	var/obj/effect/alien/resin/special/nest/newly_builtor = new build_type(build_loc, faction)
 	playsound(build_loc, "alien_resin_build", 25)
 	if(newly_builtor)
 		newly_builtor.pred_nest.dir = direction_to_put_nest

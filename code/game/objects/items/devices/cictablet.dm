@@ -55,7 +55,7 @@
 /obj/item/device/cotablet/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["faction"] = GLOB.faction_datum[announcement_faction].name
+	data["faction"] = GLOB.faction_datums[announcement_faction].name
 	data["cooldown_message"] = cooldown_between_messages
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
 
@@ -115,7 +115,7 @@
 					var/paygrade = get_paygrades(id.paygrade, FALSE, human_user.gender)
 					signed = "[paygrade] [id.registered_name]"
 
-			faction_announcement(input, announcement_title, faction_to_display = GLOB.faction_datum[announcement_faction], signature = signed)
+			faction_announcement(input, announcement_title, faction_to_display = GLOB.faction_datums[announcement_faction], signature = signed)
 			message_admins("[key_name(user)] has made a command announcement.")
 			log_announcement("[key_name(user)] has announced the following: [input]")
 			COOLDOWN_START(src, announcement_cooldown, cooldown_between_messages)

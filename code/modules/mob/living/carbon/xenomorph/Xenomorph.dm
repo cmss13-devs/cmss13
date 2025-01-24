@@ -48,7 +48,7 @@
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
-	faction = FACTION_XENOMORPH
+	faction = FACTION_XENOMORPH_NORMAL
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
@@ -342,12 +342,7 @@
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	if(old_xeno && old_xeno.hivenumber)
-		src.hivenumber = old_xeno.hivenumber
-	else if(hivenumber)
-		src.hivenumber = hivenumber
-
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, datum/faction/faction_to_set)
 	//putting the organ in for research
 	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
@@ -357,10 +352,6 @@
 		organ.icon_state = get_organ_icon()
 
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
-
-	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
-	if(hive)
-		hive.add_xeno(src)
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
@@ -391,14 +382,19 @@
 			old_xeno.drop_inv_item_on_ground(item)
 		old_xeno.empty_gut()
 
-		if(old_xeno.iff_tag)
-			iff_tag = old_xeno.iff_tag
-			iff_tag.forceMove(src)
-			old_xeno.iff_tag = null
+		old_xeno.faction.add_mob(src)
+		if(old_xeno.organ_faction_tag)
+			organ_faction_tag = old_xeno.organ_faction_tag
+			organ_faction_tag.forceMove(src)
+			old_xeno.faction_tag = null
 
-	if(hive)
-		for(var/trait in hive.hive_inherant_traits)
-			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+		if(old_xeno.faction_tag)
+			faction_tag = old_xeno.faction_tag
+			faction_tag.forceMove(src)
+			old_xeno.faction_tag = null
+
+	else if(faction_to_set)
+		faction = faction_to_set
 
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -457,12 +453,21 @@
 
 	. = ..()
 
-					//Set leader to the new mob
-	if(old_xeno && hive && IS_XENO_LEADER(old_xeno))
-		hive.replace_hive_leader(old_xeno, src)
+	faction.add_mob(src)
+	if(!organ_faction_tag && faction.organ_faction_iff_tag_type)
+		organ_faction_tag = new faction.organ_faction_iff_tag_type(src, faction)
+
+	for(var/trait in faction.hive_inherant_traits)
+		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+
+	//Set leader to the new mob
+	if(IS_XENO_LEADER(old_xeno))
+		faction_module.replace_hive_leader(old_xeno, src)
 
 	//Begin SStracking
-	SStracking.start_tracking("hive_[src.hivenumber]", src)
+	SStracking.start_tracking("hive_[faction.code_identificator]", src)
 
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)
@@ -470,7 +475,7 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z && hivenumber != XENO_HIVE_TUTORIAL)
+	if(z && faction.code_identificator != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
@@ -484,9 +489,9 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(hive && !should_block_game_interaction(src))
+	if(!should_block_game_interaction(src))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
-		hive.used_slots[selected_caste]++
+		faction_module.used_slots[selected_caste]++
 
 	//Statistics
 	var/area/current_area = get_area(src)
@@ -496,8 +501,8 @@
 		GLOB.round_statistics.track_new_participant(faction, 1)
 
 	// This can happen if a xeno gets made before the game starts
-	if (hive && hive.hive_ui)
-		hive.hive_ui.update_all_xeno_data()
+	if(faction_module.hive_ui)
+		faction_module.hive_ui.update_all_xeno_data()
 
 	Decorate()
 
@@ -562,15 +567,10 @@
 	//We don't have a nicknumber yet, assign one to stick with us
 	if(!nicknumber)
 		generate_and_set_nicknumber()
-	// Even if we don't have the hive datum we usually still have the hive number
-	var/datum/hive_status/in_hive = hive
-	if(!in_hive)
-		in_hive = GLOB.hive_datum[hivenumber]
-
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
 
-	var/name_prefix = in_hive.prefix
+	var/name_prefix = faction.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
 	var/number_decorator = ""
@@ -580,7 +580,7 @@
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
-		color = in_hive.color
+		color = faction.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -595,7 +595,8 @@
 	change_real_name(src, name)
 
 	// Since we updated our name we should update the info in the UI
-	in_hive.hive_ui.update_xeno_info()
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.hive_ui.update_xeno_info()
 
 /mob/living/carbon/xenomorph/proc/set_lighting_alpha_from_prefs(client/xeno_client)
 	var/vision_level = xeno_client?.prefs?.xeno_vision_level_pref
@@ -666,15 +667,16 @@
 
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
-		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
+		if(faction != xeno.faction)
+			. += "It appears to belong to [organ_faction_tag ? "the [organ_faction_tag.faction]" : "a different hive"]."
 
 	if(isxeno(user) || isobserver(user))
 		if(strain)
 			. += "It has specialized into a [strain.name]."
 
-	if(iff_tag)
+	if(faction_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+
 	if(organ_removed)
 		. += "It seems to have its carapace cut open."
 
@@ -689,10 +691,11 @@
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
-		hive.remove_hive_leader(src, light_mode = TRUE)
-	SStracking.stop_tracking("hive_[hivenumber]", src)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.remove_hive_leader(src, light_mode = TRUE)
 
-	hive?.remove_xeno(src)
+	SStracking.stop_tracking("hive_[faction.code_identificator]", src)
+
 	remove_from_all_mob_huds()
 
 	observed_xeno = null
@@ -714,8 +717,6 @@
 	if(backpack_icon_holder)
 		vis_contents -= backpack_icon_holder
 		QDEL_NULL(backpack_icon_holder)
-
-	QDEL_NULL(iff_tag)
 
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
@@ -750,7 +751,7 @@
 		return TRUE
 	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
-		if(H.ally_of_hivenumber(hivenumber))
+		if(H.ally_faction(faction))
 			return TRUE
 		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
@@ -758,7 +759,7 @@
 		return FALSE
 	if(issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
 		var/mob/living/carbon/human/synthetic/puller_synth = puller
-		if(puller_synth.ally_of_hivenumber(hivenumber))
+		if(puller_synth.ally_faction(faction))
 			return TRUE
 		puller.apply_effect(1, DAZE)
 		shake_camera(puller, 2, 1)
@@ -815,17 +816,19 @@
 	return pull_multiplier
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = FACTION_XENOMORPH_NORMAL)
-	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
-	if(!new_hive)
-		return FALSE
+/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_faction_code = FACTION_XENOMORPH_NORMAL)
+	var/datum/faction/new_faction
+	if(istype(new_faction_code, /datum/faction))
+		new_faction = new_faction_code
+	else
+		new_faction = GLOB.faction_datums[new_faction_code]
 
 	for(var/trait in _status_traits) // They can't keep getting away with this!!!
 		REMOVE_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	new_hive.add_xeno(src)
+	new_faction.add_mob(src)
 
-	for(var/trait in new_hive.hive_inherant_traits)
+	for(var/trait in new_faction.hive_inherant_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()
@@ -837,7 +840,8 @@
 	recalculate_everything()
 
 	// Update the hive status UI
-	new_hive.hive_ui.update_all_xeno_data()
+	var/datum/faction_module/hive_mind/faction_module = new_faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.hive_ui.update_all_xeno_data()
 
 	return TRUE
 
@@ -853,8 +857,9 @@
 	recalculate_pheromones()
 	recalculate_maturation()
 	update_icon_source()
-	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
-		hive.recalculate_hive() //Recalculating stuff around Queen maturing
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.living_xeno_queen && faction_module.living_xeno_queen == src)
+		faction_module.recalculate_hive() //Recalculating stuff around Queen maturing
 
 
 /mob/living/carbon/xenomorph/proc/recalculate_stats()
@@ -980,9 +985,10 @@
 	if(stat == DEAD && !QDELETED(src))
 		GLOB.living_xeno_list += src
 
-		if(hive)
-			hive.add_xeno(src)
-			hive.hive_ui.update_all_xeno_data()
+		if(faction)
+			faction.add_mob(src)
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			faction_module.hive_ui.update_all_xeno_data()
 
 	armor_integrity = 100
 	UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
@@ -1098,13 +1104,13 @@
 
 ///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
 /mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()
-	if(!hive)
+	if(!faction)
 		//If hive doesn't exist make it 0
 		nicknumber = 0
 		return
-	var/datum/hive_status/hive_status = hive
-	if(length(hive_status.available_nicknumbers))
-		nicknumber = pick_n_take(hive_status.available_nicknumbers)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(length(faction_module.available_nicknumbers))
+		nicknumber = pick_n_take(faction_module.available_nicknumbers)
 	else
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0

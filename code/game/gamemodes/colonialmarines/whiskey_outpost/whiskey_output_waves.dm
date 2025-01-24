@@ -7,9 +7,9 @@
 	if(!istype(wave_data))
 		return
 
-	var/datum/hive_status/hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
-	if(hive.slashing_allowed != XENO_SLASH_ALLOWED)
-		hive.slashing_allowed = XENO_SLASH_ALLOWED //Allows harm intent for aliens
+	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL].get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.slashing_allowed = XENO_SLASH_ALLOWED //Allows harm intent for aliens
+	faction_module.construction_allowed = XENO_QUEEN
 	var/xenos_to_spawn
 	if(wave_data.wave_type == WO_SCALED_WAVE)
 		xenos_to_spawn = max(count_marines(SSmapping.levels_by_trait(ZTRAIT_GROUND)),5) * wave_data.scaling_factor * WO_SPAWN_MULTIPLIER
@@ -59,8 +59,6 @@
 		var/spawn_loc = pick(xeno_spawns)
 		var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(userInput)
 		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
-		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
-			new_xeno.hive.construction_allowed = XENO_QUEEN
 		new_xeno.nocrit(xeno_wave)
 		xeno_pool -= userInput
 		if(isnewplayer(xeno_candidate))

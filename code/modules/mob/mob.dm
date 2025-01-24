@@ -33,7 +33,9 @@
 
 	QDEL_NULL(organ_faction_tag)
 	QDEL_NULL(faction_tag)
-	faction = null
+	if(faction)
+		faction.remove_mob(src, TRUE)
+		faction = null
 
 	tgui_open_uis = null
 	buckled = null

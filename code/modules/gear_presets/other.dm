@@ -786,7 +786,7 @@
 
 /datum/equipment_preset/other/xeno_cultist
 	name = "Cultist - Xeno Cultist"
-	job_faction = FACTION_XENOMORPH
+	job_faction = FACTION_XENOMORPH_NORMAL
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = /obj/item/card/id/lanyard
 	skills = /datum/skills/civilian/survivor

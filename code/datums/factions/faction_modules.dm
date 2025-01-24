@@ -159,6 +159,8 @@
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
+	var/mob/living/carbon/human/leader
+
 /*
 /datum/faction_module/hive_mind/New()
 	hive_ui = new(src)
@@ -938,3 +940,19 @@
 	for(var/i = 1 to partial_larva)
 		partial_larva--
 		stored_larva++
+
+/datum/faction_module/hive_mind/proc/make_leader(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	if(leader)
+		UnregisterSignal(leader, COMSIG_PARENT_QDELETING)
+
+	leader = H
+	RegisterSignal(leader, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdelete))
+
+/datum/faction_module/hive_mind/proc/handle_qdelete(mob/living/carbon/human/H)
+	SIGNAL_HANDLER
+
+	if(H == leader)
+		leader = null

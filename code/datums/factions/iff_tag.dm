@@ -28,13 +28,20 @@ DEFINE_BITFIELD(iff_flag_flags, list(
 /obj/item/faction_tag/Initialize(mapload, _faction_to_get)
 	. = ..()
 	if(_faction_to_get)
-		faction_to_get = _faction_to_get
-		faction = GLOB.faction_datums[_faction_to_get]
-		if(faction)
-			factions |= faction
-			if(ally_factions_initialize)
-				for(var/datum/faction/faction_ally in faction.relations_datum.allies)
-					factions |= faction_ally
+		if(istype(_faction_to_get, /datum/faction))
+			faction = _faction_to_get
+			faction_to_get = faction.code_identificator
+		else
+			faction_to_get = _faction_to_get
+			faction = GLOB.faction_datums[_faction_to_get]
+	else if(faction_to_get)
+		faction = GLOB.faction_datums[faction_to_get]
+
+	if(faction)
+		factions |= faction
+		if(ally_factions_initialize)
+			for(var/datum/faction/faction_ally in faction.relations_datum.allies)
+				factions |= faction_ally
 
 /obj/item/faction_tag/attack(mob/living/carbon/mob, mob/living/carbon/injector)
 	if((isxeno(mob) || ishuman(mob)) && tag_flags & INJECTABLE_TAG)

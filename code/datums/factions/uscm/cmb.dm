@@ -1,6 +1,6 @@
 /datum/faction/uscm/cmb
 	name = "Colonial Marshal Bureau"
-	code_identificator = FACTION_CMB
+	code_identificator = FACTION_MARSHAL
 
 	faction_iff_tag_type = /obj/item/faction_tag/uscm/cmb
 

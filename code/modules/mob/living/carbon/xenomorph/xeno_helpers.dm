@@ -13,11 +13,12 @@
 	return FALSE
 
 /mob/living/carbon/xenomorph/proc/can_destroy_special()
-	if(hive)
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(IS_XENO_LEADER(src))
-			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
+			if(faction_module.destruction_allowed == NORMAL_XENO || faction_module.destruction_allowed == XENO_LEADER)
 				return TRUE
-		if(hive.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
+		if(faction_module.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
 			return TRUE
 		if(isqueen(src))
 			return TRUE
@@ -61,7 +62,7 @@
 	var/count = 0
 
 	// Compare the areas.
-	for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in faction.total_mobs)
 		if(!(X in GLOB.living_xeno_list))
 			continue
 

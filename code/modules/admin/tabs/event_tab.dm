@@ -878,7 +878,7 @@
 /datum/admins/var/create_xenos_html = null
 /datum/admins/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
-		var/hive_types = jointext(ALL_XENO_HIVES, ";")
+		var/hive_types = jointext(FACTION_LIST_XENOMORPH, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")
 		create_xenos_html = file2text('html/create_xenos.html')
 		create_xenos_html = replacetext(create_xenos_html, "null /* hive paths */", "\"[hive_types]\"")

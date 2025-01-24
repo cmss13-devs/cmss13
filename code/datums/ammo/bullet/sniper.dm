@@ -251,8 +251,8 @@
 					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
 						var/mob/living/carbon/xenomorph/old_xeno = old_target.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
-						if((old_xeno.hive == new_xeno.hive) && !(old_xeno.stat)) // Must be in same hive and conscious
-							to_chat(old_xeno,SPAN_XENOLEADER("The feeling of looming danger fades as we sense that another sister has been targeted instead."))
+						if((old_xeno.faction == new_xeno.faction) && !(old_xeno.stat)) // Must be in same hive and conscious
+							to_chat(old_xeno, SPAN_XENOLEADER("The feeling of looming danger fades as we sense that another sister has been targeted instead."))
 				if(2)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(3)

@@ -4,10 +4,11 @@
 	set desc = "Check the status of our current hive."
 	set category = "Alien"
 
-	if(!hive)
+	if(!faction)
 		return
 
-	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if((!faction_module.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !faction_module.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
@@ -15,24 +16,25 @@
 		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
-	hive.hive_ui.open_hive_status(src)
+	faction_module.hive_ui.open_hive_status(src)
 
 /mob/living/carbon/xenomorph/verb/hive_alliance_status()
 	set name = "Hive Alliance Status"
 	set desc = "Check the status of your alliances."
 	set category = "Alien"
 
-	if(!hive)
+	if(!faction)
 		return
 
-	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
-		if(!iff_tag)
+	if(faction.code_identificator == FACTION_XENOMORPH_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
+		if(!faction_tag)
 			to_chat(src, SPAN_NOTICE("You are not obligated to protect anyone."))
 			return
-		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
+		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(faction_tag.factions, "no one")]."))
 		return
 
-	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if((!faction_module.living_xeno_queen || Check_WO()) && !faction_module.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
@@ -40,7 +42,7 @@
 		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
-	hive.faction_ui.tgui_interact(src)
+	faction_module.hive_ui.tgui_interact(src)
 
 /mob/living/carbon/xenomorph/verb/clear_built_structures()
 	set name = "Clear Built Structures"

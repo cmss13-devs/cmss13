@@ -59,12 +59,13 @@
 	.["user_nicknumber"] = X.nicknumber
 
 	var/list/mark_list_infos = list()
-	for(var/type in X.hive.resin_marks)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/type in faction_module.resin_marks)
 		var/list/entry = list()
 		var/obj/effect/alien/resin/marker/RM = type
 		var/mark_owner = null
 		var/mark_owner_name = null
-		for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/XX in X.faction.total_mobs)
 			if(XX.nicknumber == RM.createdby)
 				mark_owner = XX.nicknumber
 				mark_owner_name = XX.name
@@ -159,7 +160,7 @@
 			else if(isqueen(X))
 				var/mob/living/carbon/xenomorph/mark_to_destroy_owner
 				to_chat(X, SPAN_XENONOTICE("You psychically command the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
-				for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
+				for(var/mob/living/carbon/xenomorph/XX in X.faction.total_mobs)
 					if(XX.nicknumber == mark_to_destroy.createdby)
 						mark_to_destroy_owner = XX
 				to_chat(mark_to_destroy_owner, SPAN_XENONOTICE("Your [mark_to_destroy.mark_meaning.name] resin mark was commanded to be destroyed by [X.name]."))
@@ -180,13 +181,13 @@
 			var/list/possible_xenos = list()
 			possible_xenos |= FunkTownOhyea
 			for(var/mob/living/carbon/xenomorph/T in GLOB.living_xeno_list)
-				if (T != X && !should_block_game_interaction(T) && X.hivenumber == T.hivenumber)
+				if (T != X && !should_block_game_interaction(T) && X.faction == T.faction)
 					possible_xenos += T
 
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 			if(selected_xeno == FunkTownOhyea)
-				for(var/mob/living/carbon/xenomorph/forced_xeno in X.hive.totalXenos)
+				for(var/mob/living/carbon/xenomorph/forced_xeno in X.faction.total_mobs)
 					forced_xeno.stop_tracking_resin_mark(FALSE, TRUE)
 					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)

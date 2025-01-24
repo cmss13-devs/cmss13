@@ -441,8 +441,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			var/obj/item/alien_embryo/E = locate(/obj/item/alien_embryo) in src
 			if(E)
 				holder3.icon_state = "infected[E.stage]"
-				if(E.faction && E.faction.color)
-					holder3.color = E.faction.color
+				var/datum/faction/embryo_faction = GLOB.faction_datums[E.faction_to_get]
+				holder3.color = embryo_faction.color
 
 				if(stat == DEAD || status_flags & FAKEDEATH)
 					holder2.alpha = 100
@@ -519,7 +519,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /mob/living/carbon/xenomorph/proc/hud_set_marks()
 	if(!client)
 		return
-	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/obj/effect/alien/resin/marker/i in faction_module.resin_marks)
 		client.images |= i.seenMeaning
 
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
@@ -587,7 +588,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
 	if(stat != DEAD && faction)
-		var/mob/living/carbon/xenomorph/queen/xeno_queen = faction.living_xeno_queen
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		var/mob/living/carbon/xenomorph/queen/xeno_queen = faction_module.living_xeno_queen
 		if(xeno_queen && xeno_queen.observed_xeno == src)
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
@@ -680,7 +682,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		return
 
 	hud_set_new_player()
-	F.modify_hud_holder(holder, src)
+	faction.modify_hud_holder(holder, src)
 
 /mob/living/carbon/human/yautja/hud_set_squad()
 	set waitfor = FALSE

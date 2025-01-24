@@ -141,7 +141,7 @@
 	if(organ_tag.faction == src)
 		return TRUE
 
-	for(var/datum/faction/faction in organ_tag.factions + organ_tag.faction)
+	for(var/datum/faction/faction in organ_tag.factions)
 		if(relations_datum.allies[faction.code_identificator])
 			return TRUE
 	return FALSE
@@ -150,7 +150,7 @@
 	if(obj_tag.faction == src)
 		return TRUE
 
-	for(var/datum/faction/faction in obj_tag.factions + obj_tag.faction)
+	for(var/datum/faction/faction in obj_tag.factions)
 		if(relations_datum.allies[faction.code_identificator])
 			return TRUE
 	return FALSE

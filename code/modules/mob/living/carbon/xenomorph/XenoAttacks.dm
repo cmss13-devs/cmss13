@@ -32,7 +32,7 @@
 				var/obj/item/storage/backpack = back
 				if(backpack && !M.action_busy)
 					if(stat != DEAD) // If the Xeno is alive, fight back
-						if(!M.ally_of_hivenumber(hivenumber))
+						if(!M.ally_faction(faction))
 							M.KnockDown(rand(caste.tacklestrength_min, caste.tacklestrength_max))
 							playsound(M.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 							M.visible_message(SPAN_WARNING("\The [M] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
@@ -68,7 +68,7 @@
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
 			//friendly lessers, huggers and larva can be pushed around
-			if(M.ally_of_hivenumber(hivenumber) && mob_size < MOB_SIZE_XENO_SMALL && prob(85))
+			if(M.ally_faction(faction) && mob_size < MOB_SIZE_XENO_SMALL && prob(85))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_DANGER("[M] shoves [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
 				apply_effect(1, WEAKEN)
@@ -201,7 +201,7 @@
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
 			var/is_shover_queen = isqueen(M)
-			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+			var/can_resist_shove = M.faction != faction || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
 			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
 			if(can_mega_shove && !can_resist_shove || (mob_size < MOB_SIZE_XENO_SMALL && M.mob_size >= MOB_SIZE_XENO_SMALL))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)

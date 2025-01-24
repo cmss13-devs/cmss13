@@ -44,7 +44,8 @@
 	apply_strain(xeno)
 
 	xeno.update_icons()
-	xeno.hive.hive_ui.update_xeno_info()
+	var/datum/faction_module/hive_mind/faction_module = xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.hive_ui.update_xeno_info()
 
 	// Give them all of the info about the strain.
 	to_chat(xeno, SPAN_XENOANNOUNCE(description))
@@ -110,7 +111,7 @@
 	if(!COOLDOWN_FINISHED(src, next_strain_reset))
 		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
 		return
-	
+
 	// Show the user the strain's description, and double check that they want it.
 	if(tgui_alert(src, "Are you sure?", "Reset Strain", list("Yes", "No")) != "Yes")
 		return

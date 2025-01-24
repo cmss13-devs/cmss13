@@ -107,28 +107,28 @@
 	var/list/hive_spots = list()
 	for(var/hive in hives)
 		var/turf/spot = get_turf(pick(hive_spawns))
-		hive_spots[GLOB.hive_datum[hive]] = spot
+		hive_spots[hive] = spot
 		hive_spawns -= spot
 
-		current_hives += GLOB.hive_datum[hive].name
+		current_hives += GLOB.faction_datums[hive].name
 
-	for(var/datum/hive_status/hive in xenomorphs) //Build and move the xenos.
-		for(var/datum/mind/ghost_mind in xenomorphs[hive])
-			transform_xeno(ghost_mind, hive_spots[hive], hive.hivenumber, FALSE)
+	for(var/faction_to_get in xenomorphs) //Build and move the xenos.
+		for(var/datum/mind/ghost_mind in xenomorphs[faction_to_get])
+			transform_xeno(ghost_mind, hive_spots[faction_to_get], faction_to_get, FALSE)
 			ghost_mind.current.close_spawn_windows()
 
 	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
-	for(var/datum/hive_status/hive in picked_queens)
-		transform_queen(picked_queens[hive], hive_spots[hive], hive.hivenumber)
-		var/datum/mind/M = picked_queens[hive]
+	for(var/faction_to_get in picked_queens)
+		transform_queen(picked_queens[faction_to_get], hive_spots[faction_to_get], faction_to_get)
+		var/datum/mind/M = picked_queens[faction_to_get]
 		M.current.close_spawn_windows()
 
-	for(var/datum/hive_status/hive in hive_spots)
-		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
+	for(var/faction_to_get in hive_spots)
+		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[faction_to_get], GLOB.faction_datums[faction_to_get])
 		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
 		hive_cores += C
 
-/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = FACTION_XENOMORPH_NORMAL, should_spawn_nest = TRUE)
+/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, faction_to_get = FACTION_XENOMORPH_NORMAL, should_spawn_nest = TRUE)
 	if(should_spawn_nest)
 		var/mob/living/carbon/human/original = ghost_mind.current
 
@@ -150,12 +150,12 @@
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(original) //Put the initial larva in a host
 		embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
-		embryo.hivenumber = hivenumber
+		embryo.faction_to_get = faction_to_get
 
 		if(original && !original.first_xeno)
 			qdel(original)
 	else
-		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
+		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, GLOB.faction_datums[faction_to_get])
 		ghost_mind.transfer_to(L)
 
 /datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = FACTION_XENOMORPH_NORMAL)
@@ -184,8 +184,9 @@
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(world.time > round_time_larva_interval)
 				for(var/hive in hives)
-					GLOB.hive_datum[hive].stored_larva++
-					GLOB.hive_datum[hive].hive_ui.update_burrowed_larva()
+					var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[hive].get_faction_module(FACTION_MODULE_HIVE_MIND)
+					faction_module.stored_larva++
+					faction_module.hive_ui.update_burrowed_larva()
 
 				round_time_larva_interval = world.time + hive_larva_interval_gain
 
@@ -202,24 +203,17 @@
 
 
 /datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
-	var/list/list/hivenumbers = list()
-	var/datum/hive_status/HS
-	for(var/hivenumber in GLOB.hive_datum)
-		HS = GLOB.hive_datum[hivenumber]
-		hivenumbers += list(HS.name = list())
+	var/list/list/xenos_factions = list()
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(!is_hive_living(action.get_faction_module(FACTION_MODULE_HIVE_MIND)))
+			continue
+		xenos_factions += list(faction.code_identificator = list())
+		for(var/mob/living/carbon/xenomorph/zenomorph in faction.total_mobs)
+			if(zenomorph.z && (zenomorph.z in z_levels) && !istype(zenomorph.loc, /turf/open/space) && !istype(zenomorph.loc, /area/adminlevel/ert_station/fax_response_station))
+				xenos_factions[faction.code_identificator] += zenomorph
 
-	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
-			var/mob/living/carbon/xenomorph/X = M
-			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
-			if(!hive)
-				continue
-
-			if(istype(X) && is_hive_living(hive))
-				hivenumbers[hive.name].Add(X)
-
-
-	return hivenumbers
+	return xenos_factions
 
 ///////////////////////////
 //Checks to see who won///

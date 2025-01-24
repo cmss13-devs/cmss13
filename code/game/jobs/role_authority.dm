@@ -258,9 +258,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	unassigned_players = null
 
 	// Now we take spare unfilled xeno slots and make them larva NEW
-	var/datum/hive_status/hive = GLOB.hive_datum[FACTION_XENOMORPH_NORMAL]
-	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
+	if(istype(XJ))
+		var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL].get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
 		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
 
 	/*===============================================================*/

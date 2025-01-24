@@ -26,6 +26,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
 
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
@@ -35,17 +36,17 @@
 			if(XQ.ovipositor)
 				XQ.dismount_ovipositor(TRUE)
 
-			if(GLOB.hive_datum[hivenumber].stored_larva)
-				GLOB.hive_datum[hivenumber].stored_larva = floor(GLOB.hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
+			if(faction_module.stored_larva)
+				faction_module.stored_larva = floor(faction_module.stored_larva * 0.5) //Lose half on dead queen
 
-				var/list/players_with_xeno_pref = get_alien_candidates(GLOB.hive_datum[hivenumber])
-				if(players_with_xeno_pref && istype(GLOB.hive_datum[hivenumber].hive_location, /obj/effect/alien/resin/special/pylon/core))
-					var/turf/larva_spawn = get_turf(GLOB.hive_datum[hivenumber].hive_location)
+				var/list/players_with_xeno_pref = get_alien_candidates(faction)
+				if(players_with_xeno_pref && istype(faction_module.hive_location, /obj/effect/alien/resin/special/pylon/core))
+					var/turf/larva_spawn = get_turf(faction_module.hive_location)
 					var/count = 0
-					while(GLOB.hive_datum[hivenumber].stored_larva > 0 && count < length(players_with_xeno_pref)) // still some left
+					while(faction_module.stored_larva > 0 && count < length(players_with_xeno_pref)) // still some left
 						var/mob/xeno_candidate = players_with_xeno_pref[++count]
 						var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(larva_spawn)
-						new_xeno.set_hive_and_update(hivenumber)
+						new_xeno.set_hive_and_update(faction)
 
 						new_xeno.generate_name()
 						if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
@@ -55,25 +56,25 @@
 						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
 
-						GLOB.hive_datum[hivenumber].stored_larva--
-						GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+						faction_module.stored_larva--
+						faction_module.hive_ui.update_burrowed_larva()
 					if(count)
 						message_alien_candidates(players_with_xeno_pref, dequeued = count)
 
-			if(hive && hive.living_xeno_queen == src)
+			if(faction_module.living_xeno_queen == src)
 				notify_ghosts(header = "Queen Death", message = "The Queen has been slain!", source = src, action = NOTIFY_ORBIT)
-				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
-				hive.slashing_allowed = XENO_SLASH_ALLOWED
-				hive.set_living_xeno_queen(null)
+				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"), 3, faction)
+				faction_module.slashing_allowed = XENO_SLASH_ALLOWED
+				faction_module.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
-					if(!QDELETED(Q) && Q != src && Q.hivenumber == hivenumber)
-						hive.set_living_xeno_queen(Q)
+					if(!QDELETED(Q) && Q != src && Q.faction == faction)
+						faction_module.set_living_xeno_queen(Q)
 						break
-				hive.on_queen_death()
-				hive.handle_xeno_leader_pheromones()
+				faction_module.on_queen_death()
+				faction_module.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
-					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)
+					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), faction)
 					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(full_designation) ? full_designation : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else if(ispredalien(src))
@@ -83,14 +84,14 @@
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
-		if(hive && hive.living_xeno_queen)
+		if(faction_module.living_xeno_queen)
 			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED))
-				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
+				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, faction)
 
-	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
-		hive.remove_hive_leader(src)
-		if(hive.living_xeno_queen)
-			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
+	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
+		faction_module.remove_hive_leader(src)
+		if(faction_module.living_xeno_queen)
+			to_chat(faction_module.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 	SSminimaps.remove_marker(src)
@@ -105,32 +106,30 @@
 
 	// Banished xeno provide a burrowed larva on death to compensate
 	if(banished && refunds_larva_if_banished)
-		GLOB.hive_datum[hivenumber].stored_larva++
-		GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+		faction_module.stored_larva++
+		faction_module.hive_ui.update_burrowed_larva()
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
 	else if(!gibbed)
 		AddComponent(/datum/component/weed_food)
 
-	if(hive)
-		hive.remove_xeno(src)
-		// Finding the last xeno for anti-delay.
-		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
-			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
-				return
-			if(hive.hivenumber == FACTION_XENOMORPH_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
-				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
-				GLOB.last_ares_callout = world.time
-				// Tell the marines where the last one is.
-				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-				log_ares_bioscan(name, input)
-				faction_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
-				// Tell the xeno she is the last one.
-				if(X.client)
-					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
-				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
+	// Finding the last xeno for anti-delay.
+	if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
+		if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
+			return
+		if(faction.code_identificator == FACTION_XENOMORPH_NORMAL && (length(faction.total_mobs) == 1))
+			var/mob/living/carbon/xenomorph/X = faction.total_mobs[1]
+			GLOB.last_ares_callout = world.time
+			// Tell the marines where the last one is.
+			var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+			var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
+			log_ares_bioscan(name, input)
+			faction_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
+			// Tell the xeno she is the last one.
+			if(X.client)
+				to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
+			notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 	give_action(src, /datum/action/ghost/xeno)

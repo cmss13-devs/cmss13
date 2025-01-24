@@ -150,13 +150,13 @@
 		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
 	FOR_DVIEW_END
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
-	if(bound_xeno.client && bound_xeno.hive)
-		var/datum/hive_status/hive_status = bound_xeno.hive
+	if(bound_xeno.client && bound_xeno.faction)
+		var/datum/faction_module/hive_mind/faction_module = bound_xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		var/turf/spawning_turf = get_turf(bound_xeno)
-		if(!hive_status.hive_location)
-			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), bound_xeno.client, spawning_turf), 0.5 SECONDS)
+		if(!faction_module.hive_location)
+			addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/faction_module/hive_mind, respawn_on_turf), bound_xeno.client, spawning_turf), 0.5 SECONDS)
 		else
-			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
+			addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/faction_module/hive_mind, free_respawn), bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
 
 /mob/living/carbon/xenomorph/runner/ventcrawl_carry()

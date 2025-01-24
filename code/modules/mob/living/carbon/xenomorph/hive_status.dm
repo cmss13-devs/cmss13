@@ -162,7 +162,7 @@
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
-	minimap_type = faction.minimap_flag
+//	minimap_type = faction.minimap_flag
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
@@ -212,7 +212,7 @@
 	var/castes = castes_available.Join(", ")
 	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
-
+/*
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
@@ -295,7 +295,7 @@
 	if(!light_mode)
 		hive_ui.update_xeno_counts()
 		hive_ui.xeno_removed(xeno)
-
+*/
 /datum/hive_status/proc/set_living_xeno_queen(mob/living/carbon/xenomorph/queen/queen)
 	if(!queen)
 		SStracking.delete_leader("hive_[hivenumber]")
@@ -733,10 +733,10 @@
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
 			continue
 		var/obj/item/alien_embryo/A = locate() in potential_host
-		if(A && A.faction != faction)
-			continue
-		for(var/obj/item/alien_embryo/embryo in potential_host)
-			embryo.hivenumber = FACTION_XENOMORPH_FORSAKEN
+//		if(A && A.faction != faction)
+//			continue
+//		for(var/obj/item/alien_embryo/embryo in potential_host)
+//			embryo.hivenumber = FACTION_XENOMORPH_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
@@ -835,8 +835,8 @@
 	playable_hugger_limit = max(floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
-	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
-		return FALSE
+//	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+//		return FALSE
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
@@ -863,8 +863,8 @@
 		if(isfacehugger(mob))
 			current_hugger_count++
 	if(playable_hugger_limit <= current_hugger_count)
-		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
-		return FALSE
+//		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
+//		return FALSE
 
 	if(tgui_alert(user, "Are you sure you want to become a facehugger?", "Confirmation", list("Yes", "No")) != "Yes")
 		return FALSE
@@ -898,8 +898,8 @@
 	lesser_drone_limit = max(floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
-	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
-		return FALSE
+//	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+//		return FALSE
 
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
@@ -930,7 +930,7 @@
 			current_lesser_drone_count++
 
 	if(lesser_drone_limit <= current_lesser_drone_count)
-		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
+		to_chat(user, SPAN_WARNING("[faction] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
 		return FALSE
 
 	if(!user.client)
@@ -977,7 +977,7 @@
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
 	reporting_id = "corrupted"
-	hivenumber = XENO_HIVE_CORRUPTED
+//	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
 	color = "#80ff80"
 	ui_color ="#4d994d"
@@ -1135,7 +1135,7 @@
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"
 	reporting_id = "tamed"
-	hivenumber = XENO_HIVE_TAMED
+//	hivenumber = XENO_HIVE_TAMED
 	prefix = "Tamed "
 	color = "#80ff80"
 
@@ -1167,7 +1167,7 @@
 
 	if(H == leader)
 		leader = null
-
+/*
 	var/list/faction_groups = H.faction_group
 	if(faction_groups)
 		allied_factions = faction_groups.Copy()
@@ -1194,11 +1194,11 @@
 			return TRUE
 
 	return ..()
-
+*/
 /datum/hive_status/corrupted/renegade
 	name = "Renegade Hive"
 	reporting_id = "renegade"
-	hivenumber = XENO_HIVE_RENEGADE
+//	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
 	color = "#ffae00"
 	ui_color ="#ad732c"
@@ -1236,8 +1236,8 @@
 			return TRUE //cannot attack mob if iff is set to at least one of its factions
 	return FALSE
 */
-/datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
-	return ..()
+//datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
+//	return ..()
 
 /datum/hive_status/proc/on_queen_death() //break alliances on queen's death
 	if(allow_no_queen_actions || living_xeno_queen)
@@ -1265,7 +1265,7 @@
 			xeno_message(SPAN_XENOANNOUNCE("Our Queen set up an alliance with [faction]!"), 3, hivenumber)
 		else
 			xeno_message(SPAN_XENOANNOUNCE("Our Queen broke the alliance with [faction]!"), 3, hivenumber)
-
+/*
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
 		if(target_hive.name != faction)
@@ -1279,7 +1279,7 @@
 		xeno_message(SPAN_XENOANNOUNCE("We sense that [name] [living_xeno_queen ? "Queen " : ""]broke the alliance with us!"), 3, target_hive.hivenumber)
 		if(target_hive.allies[name]) //autobreak alliance on betrayal
 			target_hive.change_stance(name, FALSE)
-
+*/
 /datum/hive_status/corrupted/change_stance(faction, should_ally)
 	. = ..()
 	if(allies[faction])
@@ -1358,12 +1358,12 @@
 		xeno_message(SPAN_XENOANNOUNCE("Our Queen has broken all personal alliances with the talls! Favoritism is no more."), 3, hivenumber)
 		return
 	xeno_message(SPAN_XENOWARNING("With the death of the Queen, her friends no longer matter to us."), 3, hivenumber)
-
+/*
 /datum/hive_status/corrupted/is_ally(mob/living/living_mob)
 	if(living_mob.status_flags & CORRUPTED_ALLY)
 		return TRUE
 	return ..()
-
+*/
 /datum/hive_status/proc/override_evilution(evil, override)
 	if(SSxevolution)
 		SSxevolution.override_power(hivenumber, evil, override)

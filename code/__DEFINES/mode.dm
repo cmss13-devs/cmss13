@@ -259,6 +259,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_UPP "upp"
 #define FACTION_RESS "ress"
 #define FACTION_TWE "twe"
+#define FACTION_THREEWE "threewe"
 #define FACTION_WY "wy"
 #define FACTION_CLF "clf"
 #define FACTION_PMC "pmc"

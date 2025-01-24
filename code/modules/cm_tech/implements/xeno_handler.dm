@@ -16,7 +16,7 @@
 /datum/emergency_call/xeno_handler/spawn_items()
 	var/turf/drop_spawn = get_spawn_point(TRUE)
 	if(istype(drop_spawn))
-		new /obj/effect/alien/weeds/node(drop_spawn, null, null, GLOB.hive_datum[XENO_HIVE_TAMED]) //drop some weeds for xeno plasma regen.
+		new /obj/effect/alien/weeds/node(drop_spawn, null, null, GLOB.faction_datums[FACTION_XENOMORPH_TAMED]) //drop some weeds for xeno plasma regen.
 
 /datum/emergency_call/xeno_handler/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -24,23 +24,21 @@
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
-	var/datum/hive_status/corrupted/tamed/hive = GLOB.hive_datum[XENO_HIVE_TAMED]
-
+	var/datum/faction/tamed_hive = GLOB.faction_datums[FACTION_XENOMORPH_TAMED]
 	var/mob/living/carbon/new_mob
 	if(!leader)
 		new_mob = new/mob/living/carbon/human(spawn_loc)
 		new_mob.create_hud()
 		arm_equipment(new_mob, /datum/equipment_preset/pmc/xeno_handler, TRUE, TRUE)
 
-		hive.make_leader(new_mob)
+		var/datum/faction_module/hive_mind/faction_module = tamed_hive.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.make_leader(new_mob)
 		leader = new_mob
-
-
 	else
 		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/spitter, /mob/living/carbon/xenomorph/lurker)
-		new_mob = new picked(spawn_loc, null, XENO_HIVE_TAMED)
+		new_mob = new picked(spawn_loc, null, tamed_hive)
 		var/mob/living/carbon/xenomorph/X = new_mob
-		X.iff_tag = new /obj/item/iff_tag/pmc_handler(X)
+		X.faction_tag = new /obj/item/faction_tag/wy/pmc_handler(X, GLOB.faction_datums[FACTION_USCM])
 	if(M)
 		M.transfer_to(new_mob, TRUE)
 	else

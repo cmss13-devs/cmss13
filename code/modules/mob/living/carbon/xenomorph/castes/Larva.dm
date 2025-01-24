@@ -167,13 +167,13 @@
 	atom.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
-/proc/spawn_hivenumber_larva(atom/atom, hivenumber)
-	if(!GLOB.hive_datum[hivenumber] || isnull(atom))
+/proc/spawn_hivenumber_larva(atom/atom, datum/faction/faction)
+	if(!faction || isnull(atom))
 		return
 
 	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(atom)
 
-	larva.set_hive_and_update(hivenumber)
+	larva.set_hive_and_update(faction)
 
 	return larva
 

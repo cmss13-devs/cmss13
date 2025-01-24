@@ -556,7 +556,7 @@ function draw_mc() {
 		if (part[2]) {
 			var a = document.createElement("a");
 			a.href =
-				"?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
+				"byond://?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
 			a.textContent = part[1];
 			td2.appendChild(a);
 		} else {
@@ -782,7 +782,7 @@ function draw_tickets() {
 		if (part[2]) {
 			var a = document.createElement("a");
 			a.href =
-				"?_src_=admin_holder;admin_token=" +
+				"byond://?_src_=admin_holder;admin_token=" +
 				href_token +
 				";ahelp=" +
 				part[2] +
@@ -814,7 +814,7 @@ function draw_interviews() {
 	var manLink = document.createElement("a");
 	manLink.textContent = "Open Interview Manager Panel";
 	manLink.href =
-		"?_src_=admin_holder;admin_token=" +
+		"byond://?_src_=admin_holder;admin_token=" +
 		href_token +
 		";interview_man=1;statpanel_item_click=left";
 	manDiv.appendChild(manLink);
@@ -850,7 +850,7 @@ function draw_interviews() {
 		var a = document.createElement("a");
 		a.textContent = part["status"];
 		a.href =
-			"?_src_=admin_holder;admin_token=" +
+			"byond://?_src_=admin_holder;admin_token=" +
 			href_token +
 			";interview=" +
 			part["ref"] +

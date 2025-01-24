@@ -107,3 +107,6 @@
 		text += "Anomalous "
 	return text
 
+/// If this property can cause harm, generally
+/datum/chem_property/proc/can_cause_harm()
+	return FALSE

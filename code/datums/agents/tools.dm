@@ -163,6 +163,7 @@
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "white", "A magazine for an M1911 pistol."),
+		list("Tranquilizer Magazine", 5, /obj/item/ammo_magazine/pistol/tranq, "white", "A magazine for an tranquilizer pistol."),
 
 		list("UTILITY", 0, null, null, null),
 		list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool."),

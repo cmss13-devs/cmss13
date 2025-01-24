@@ -265,3 +265,14 @@ CLIENT_ERROR_VERSION 514
 #GITHUB_APP_API
 #REPO_NAME cmss13
 #ORG cmss13-devs
+
+## =====================================
+## SS220
+## TTS
+tts_enabled
+tts_token_silero
+tts_cache_enabled
+ffmpeg_cpuaffinity
+tts_api_url_silero
+
+## =====================================

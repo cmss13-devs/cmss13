@@ -101,9 +101,6 @@
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
 
-	if(!do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		return
-
 	if(iscarbon(carbon) && !xeno.can_not_harm(carbon) && carbon.stat != DEAD)
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] stabs [carbon] in the [target_limb ? target_limb.display_name : "chest"] with their tail!"), \
 	SPAN_XENOWARNING("We stab [carbon] in the [target_limb ? target_limb.display_name : "chest"] with our tail!"))

@@ -597,7 +597,8 @@
 		/obj/item/prop/helmetgarb/lucky_feather/red,
 		/obj/item/prop/helmetgarb/lucky_feather/blue,
 		/obj/item/prop/helmetgarb/lucky_feather/yellow,
-		/obj/item/prop/helmetgarb/lucky_feather/purple)
+		/obj/item/prop/helmetgarb/lucky_feather/purple
+		)
 
 /obj/item/storage/fancy/collector/feathers/fill_preset_inventory()
 	new /obj/item/prop/helmetgarb/lucky_feather/red(src)

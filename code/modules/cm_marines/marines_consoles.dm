@@ -843,7 +843,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if(!C || !istype(C))
 			continue
 		// Check that sensors are present and active
-		if(!C.has_sensor || !C.sensor_mode || ((faction != tracked_mob.faction) && !(tracked_mob.faction in extra_factions)))
+		if(!C.has_sensor || !C.sensor_mode || !check_faction(tracked_mob))
 			continue
 
 		// Check if z-level is correct
@@ -910,6 +910,25 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		if ("select_person")
 
 */
+
+/datum/crewmonitor/proc/check_faction(mob/living/carbon/human/target)
+	if((target.faction == faction) || (target.faction in extra_factions))
+		return TRUE
+	for(var/pos_faction in target.faction_group)
+		if((pos_faction == faction) || (pos_faction in extra_factions))
+			return TRUE
+
+	var/obj/item/card/id/id_card = target.wear_id
+	if(!id_card)
+		return FALSE
+
+	if((id_card.faction == faction) || (id_card.faction in extra_factions))
+		return TRUE
+	for(var/pos_faction in id_card.faction_group)
+		if((pos_faction == faction) || (pos_faction in extra_factions))
+			return TRUE
+
+	return FALSE
 
 /datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)

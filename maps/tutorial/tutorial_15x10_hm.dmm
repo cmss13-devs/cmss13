@@ -264,14 +264,14 @@
 /area/misc/tutorial/no_baselight)
 "zG" = (
 /obj/structure/bed/portable_surgery,
-/obj/effect/hybrisa/decal/warning/redandwhite_W,
-/obj/effect/hybrisa/decal/warning/redandwhite_N{
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
 	pixel_y = 1
 	},
-/obj/effect/hybrisa/decal/warning/redandwhite_E{
+/obj/effect/decal/hybrisa/warning/redandwhite_E{
 	pixel_x = 1
 	},
-/obj/effect/hybrisa/decal/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
 /turf/open/floor/prison/whitegreenfull,
 /area/misc/tutorial/no_baselight)
 "Bz" = (
@@ -322,7 +322,7 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
-/obj/effect/hybrisa/decal/colorable_rug{
+/obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3f5b41";
 	dir = 1;
 	pixel_y = -11;

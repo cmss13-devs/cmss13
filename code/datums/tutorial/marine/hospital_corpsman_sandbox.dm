@@ -216,12 +216,11 @@
 			injury_type |= "fracture"
 			healing_tasks[limb] = injury_type
 			RegisterSignal(limb, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(health_tasks_handler))
-	for(var/obj/limb/limb in target.limbs)
 		for(var/datum/wound/wound as anything in limb.wounds)
 			if(wound.internal)
 				injury_type |= "IB"
 				healing_tasks[limb] = injury_type
-				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler))
+				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
 	if((!(length(healing_tasks))) || bypass)
 		make_agent_leave(target)
 	else

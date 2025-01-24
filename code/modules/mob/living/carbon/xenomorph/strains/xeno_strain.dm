@@ -85,7 +85,7 @@
 	if(!can_take_strain())
 		return
 	// Show the user the strain's description, and double check that they want it.
-	if(alert(usr, "[initial(chosen_strain.description)]\n\nConfirm mutation?", "Choose Strain", "Yes", "No") != "Yes")
+	if(tgui_alert(usr, "[initial(chosen_strain.description)]", "Choose Strain", list("Confirm Mutation", "Cancel")) != "Confirm Mutation")
 		return
 	// One more time after they confirm.
 	if(!can_take_strain())
@@ -110,7 +110,7 @@
 	if(!COOLDOWN_FINISHED(src, next_strain_reset))
 		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
 		return
-	
+
 	// Show the user the strain's description, and double check that they want it.
 	if(tgui_alert(src, "Are you sure?", "Reset Strain", list("Yes", "No")) != "Yes")
 		return

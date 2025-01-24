@@ -207,7 +207,7 @@
 	else if(thrall.IsStun())
 		to_chat(master, SPAN_WARNING("Your thrall is already stunned!"))
 	else
-		thrall.Stun(10 SECONDS)
+		thrall.apply_effect(10, WEAKEN)
 		to_chat(master, SPAN_WARNING("Your bracer beeps, your thrall is punished."))
 		to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
 
@@ -250,5 +250,5 @@
 		to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 		explode(thrall)
 		if(thrall.stat != DEAD)
-			thrall.Stun(10 SECONDS)
+			thrall.apply_effect(10, WEAKEN)
 			to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))

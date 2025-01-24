@@ -170,7 +170,7 @@
 /datum/ammo/bullet/machinegun/setup_faction_clash_values()
 	. = ..()
 	accurate_range = 12 //we revert the reduction
-	accuracy += HIT_ACCURACY_TIER_3
+	accuracy += HIT_ACCURACY_TIER_4
 
 /datum/ammo/bullet/machinegun/set_bullet_traits()
 	. = ..()

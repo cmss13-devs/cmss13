@@ -49123,6 +49123,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/medical_supply_link/green{
+	pixel_y = 10;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/almayer/medical/medical_science)
 "qqS" = (

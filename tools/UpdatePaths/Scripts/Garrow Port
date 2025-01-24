@@ -1,0 +1,32 @@
+/turf/open/floor/almayer/edge : /turf/open/floor/almayer/flooredge
+/turf/open/floor/almayer/edge/east : /turf/open/floor/almayer/flooredge/east
+/turf/open/floor/almayer/edge/north : /turf/open/floor/almayer/flooredge/north
+/turf/open/floor/almayer/edge/northeast : /turf/open/floor/almayer/flooredge/northeast
+/turf/open/floor/almayer/edge/northwest : /turf/open/floor/almayer/flooredge/northwest
+/turf/open/floor/almayer/edge/southeast : /turf/open/floor/almayer/flooredge/southeast
+/turf/open/floor/almayer/edge/southwest : /turf/open/floor/almayer/flooredge/southwest
+/turf/open/floor/almayer/edge/west : /turf/open/floor/almayer/flooredge/west
+
+/turf/open/floor/almayer/edge/smooth : /turf/open/floor/almayer/flooredgesmooth
+/turf/open/floor/almayer/edge/smooth/east : /turf/open/floor/almayer/flooredgesmooth/east
+/turf/open/floor/almayer/edge/smooth/north : /turf/open/floor/almayer/flooredgesmooth/north
+/turf/open/floor/almayer/edge/smooth/northeast :
+/turf/open/floor/almayer/edge/smooth/northwest :
+/turf/open/floor/almayer/edge/smooth/south :
+/turf/open/floor/almayer/edge/smooth/southeast :
+/turf/open/floor/almayer/edge/smooth/southwest :
+/turf/open/floor/almayer/edge/smooth/west :
+
+/turf/open/floor/almayer/edge/smooth/corner :
+/turf/open/floor/almayer/edge/smooth/corner/east :
+/turf/open/floor/almayer/edge/smooth/corner/north :
+/turf/open/floor/almayer/edge/smooth/corner/west :
+/turf/open/floor/almayer/edge/smooth/endcap_left :
+/turf/open/floor/almayer/edge/smooth/endcap_left/east :
+/turf/open/floor/almayer/edge/smooth/endcap_left/north :
+/turf/open/floor/almayer/edge/smooth/endcap_left/west :
+
+/turf/open/floor/almayer/edge/smooth/endcap_right :
+/turf/open/floor/almayer/edge/smooth/endcap_right/east :
+/turf/open/floor/almayer/edge/smooth/endcap_right/north :
+/turf/open/floor/almayer/edge/smooth/endcap_right/west :

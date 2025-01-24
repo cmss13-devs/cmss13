@@ -115,3 +115,34 @@
 	name = "ARES Substrate"
 	desc = "The memory substrate of ARES, containing complex protocols and information. Limited capabilities can operate on substrate alone, without the main ARES Unit operational."
 	icon_state = "substrate"
+
+/// Sentry
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares
+	name = "UA X512-S mini sentry"
+	faction_group = FACTION_LIST_ARES_MARINE
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/Initialize()
+	link_sentry()
+	. = ..()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/Destroy()
+	delink_sentry()
+	. = ..()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/start_processing()
+	sync_iff()
+	..()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/proc/sync_iff()
+	var/datum/ares_link/ares_link = GLOB.ares_link
+	if(!ares_link || !ares_link.faction_group)
+		faction_group = FACTION_LIST_ARES_MARINE
+	faction_group = ares_link.faction_group
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/proc/link_sentry()
+	var/datum/ares_link/link = GLOB.ares_link
+	link.core_sentries += src
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/proc/delink_sentry()
+	var/datum/ares_link/link = GLOB.ares_link
+	link.core_sentries -= src

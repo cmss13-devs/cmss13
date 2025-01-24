@@ -139,3 +139,7 @@
 /datum/gamemode_modifier/no_body_c4
 	modifier_name = "No body c4"
 	modifier_desc = "Prevents c4 explosives from being planted on dead body."
+
+/datum/gamemode_modifier/only_balanced_attachments
+	modifier_name = "Only balanced attachments"
+	modifier_desc = "In squad and cargi vendors only attachmants with real drawbacks are available, still can be obtained using reqestions."

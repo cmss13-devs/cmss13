@@ -4835,23 +4835,8 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/numbertwobunks)
 "aEZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/gloves{
-	pixel_x = -4;
-	pixel_y = 13
-	},
-/obj/item/storage/box/masks{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/tool/hand_labeler{
-	pixel_x = 5;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -6;
-	pixel_y = 8
-	},
+/obj/structure/medical_supply_link/green,
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "aFa" = (
@@ -18015,12 +18000,13 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/perma)
 "dyb" = (
-/obj/structure/machinery/smartfridge/chemistry,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
+/obj/structure/disposalpipe/trunk,
+/obj/structure/machinery/disposal,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "dyd" = (
@@ -21642,10 +21628,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/evidence_storage)
 "eVT" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/structure/machinery/disposal,
+/obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/medical_science)
 "eWf" = (
@@ -22548,10 +22531,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/starboard_atmos)
-"fpT" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/medical/medical_science)
 "fpW" = (
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 32
@@ -24269,6 +24248,9 @@
 /obj/item/folder/white{
 	pixel_x = -8
 	},
+/obj/item/tool/hand_labeler{
+	pixel_y = 15
+	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/medical_science)
 "geu" = (
@@ -24547,7 +24529,8 @@
 	pixel_x = 5;
 	pixel_y = 29
 	},
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "glG" = (
@@ -34461,8 +34444,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/green,
+/obj/structure/machinery/chem_master,
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/medical_science)
 "kqt" = (
@@ -46336,9 +46318,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "pgM" = (
-/obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_x = 10;
-	pixel_y = 3
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
@@ -46768,7 +46750,6 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/medical_science)
 "prE" = (
@@ -56797,7 +56778,7 @@
 	pixel_y = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 2;
+	dir = 8;
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
@@ -101474,7 +101455,7 @@ vOy
 dyb
 tsM
 prx
-fpT
+aoM
 eVT
 kgs
 lXl

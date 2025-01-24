@@ -191,10 +191,21 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/processing)
+"aaB" = (
+/obj/structure/closet,
+/obj/item/stack/flag/blue,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/port_emb)
 "aaC" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/almayer/squads/req)
 "aaE" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -214,6 +225,11 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone)
+"aaG" = (
+/obj/structure/surface/rack,
+/obj/item/stack/flag/green,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/upper/u_m_p)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -222,6 +238,11 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper)
+"aaI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/drinkingglasses,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/captain_mess)
 "aaP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
 	dir = 2;
@@ -6641,7 +6662,9 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/box/drinkingglasses,
+/obj/structure/machinery/microwave{
+	pixel_y = 7
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
 "aRF" = (
@@ -15266,6 +15289,13 @@
 	icon_state = "pottedplant_18";
 	pixel_y = 12
 	},
+/obj/structure/transmitter/rotary{
+	name = "Commanding Officer's Office Third Line";
+	phone_category = "Offices";
+	phone_id = "Commanding Officer's Office Third Line";
+	pixel_x = 4;
+	pixel_y = 18
+	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "coJ" = (
@@ -15400,7 +15430,13 @@
 /area/almayer/shipboard/starboard_missiles)
 "cqY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/fancy/cigar/tarbacktube,
+/obj/item/storage/fancy/cigar/tarbacktube{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 10
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "crc" = (
@@ -21407,6 +21443,13 @@
 	pixel_x = -16;
 	pixel_y = 8
 	},
+/obj/structure/transmitter/rotary{
+	name = "Commanding Officer's Office Fourth Line";
+	phone_category = "Offices";
+	phone_id = "Commanding Officer's Office Fourth Line";
+	pixel_x = -4;
+	pixel_y = 18
+	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "eRu" = (
@@ -24240,7 +24283,9 @@
 /area/almayer/medical/medical_science)
 "gek" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/fancy/cigarettes/wypacket,
+/obj/item/storage/fancy/collector/feathers{
+	pixel_y = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
 "gel" = (
@@ -25304,6 +25349,7 @@
 	},
 /obj/structure/closet,
 /obj/item/clothing/head/bearpelt,
+/obj/item/stack/flag/red,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/port_emb)
 "gAS" = (
@@ -34088,6 +34134,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/stack/flag/yellow,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/port_emb)
 "kiy" = (
@@ -35887,7 +35934,8 @@
 	name = "Requisition Telephone";
 	phone_category = "Almayer";
 	phone_id = "Requisition";
-	pixel_y = 30
+	pixel_y = 30;
+	pixel_x = -8
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/req)
@@ -51098,8 +51146,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "reH" = (
+/obj/structure/transmitter/no_dnd{
+	name = "Requisition Telephone Second Line";
+	phone_category = "Almayer";
+	phone_id = "Requisition Second Line";
+	pixel_y = 30
+	},
 /obj/structure/noticeboard{
-	pixel_x = -10;
+	pixel_x = -19;
 	pixel_y = 31
 	},
 /turf/open/floor/almayer/plating/northeast,
@@ -52800,7 +52854,14 @@
 	},
 /obj/item/ashtray/bronze{
 	pixel_x = 12;
-	pixel_y = 1
+	pixel_y = -2
+	},
+/obj/structure/transmitter/rotary{
+	name = "Commanding Officer's Office Second Line";
+	phone_category = "Offices";
+	phone_id = "Commanding Officer's Office Second Line";
+	pixel_x = 16;
+	pixel_y = 8
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -53181,7 +53242,8 @@
 "rVB" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
 /obj/structure/machinery/alarm/almayer{
-	dir = 1
+	dir = 1;
+	pixel_y = -32
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_umbilical)
@@ -66717,6 +66779,7 @@
 	pixel_x = -16;
 	pixel_y = 8
 	},
+/obj/item/stack/flag/purple,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/port_emb)
 "xmP" = (
@@ -93579,7 +93642,7 @@ tsr
 tsr
 tsr
 aRE
-qVC
+aaI
 qVC
 prE
 aUw
@@ -105276,7 +105339,7 @@ jYc
 pVA
 mzV
 pML
-ivz
+aaB
 nsY
 iZd
 mgb
@@ -107187,7 +107250,7 @@ nIN
 xzh
 lZJ
 nIN
-lbO
+aaG
 gNo
 xzh
 vwj
@@ -109911,7 +109974,7 @@ gmb
 bNQ
 bNQ
 bNQ
-bNQ
+aaD
 bNQ
 bNQ
 bNQ

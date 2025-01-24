@@ -93,6 +93,7 @@
 	desc = "A plain grey feather. While there is nothing special about it, it is still nice to look at."
 	icon_state = "lucky_feather"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather")
+	var/caseName = "Feather"
 
 /obj/item/prop/helmetgarb/lucky_feather/red
 	name = "\improper Red Lucky Feather"

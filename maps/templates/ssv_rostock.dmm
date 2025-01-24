@@ -682,6 +682,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/upper_deck/hallway)
+"aci" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	name = "\improper UnionBest Food Vendor"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lower_deck/prep)
 "acI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -19591,8 +19597,9 @@
 	dir = 4;
 	invisibility = 101
 	},
-/obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp,
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	name = "\improper UnionBest Food Vendor"
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "pgf" = (
@@ -37969,7 +37976,7 @@ fVw
 poe
 lBo
 mNS
-ljJ
+aci
 faR
 eTm
 mJF
@@ -39061,7 +39068,7 @@ fVw
 poe
 lBo
 mNS
-ljJ
+aci
 faR
 eTm
 mJF

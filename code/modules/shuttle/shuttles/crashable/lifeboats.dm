@@ -143,14 +143,6 @@
 	id = "rostock-lifeboat1"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_rostock
 
-/obj/docking_port/stationary/lifeboat_dock/upp/Initialize(mapload)
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/docking_port/stationary/lifeboat_dock/upp/LateInitialize()
-	. = ..()
-	load_roundstart()
-
 /obj/docking_port/stationary/lifeboat_dock/Initialize(mapload)
 	. = ..()
 	GLOB.lifeboat_almayer_docks += src

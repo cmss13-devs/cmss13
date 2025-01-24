@@ -135,35 +135,35 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
-		list("Type 71 Pulse Rifle", floor(scale * 15), /obj/item/weapon/gun/rifle/type71, VENDOR_ITEM_REGULAR),
-		list("Type 71 Pulse Rifle Carbine", floor(scale * 5), /obj/item/weapon/gun/rifle/type71/carbine, VENDOR_ITEM_REGULAR),
-		list("Type 64 Submachinegun", floor(scale * 10), /obj/item/weapon/gun/smg/bizon/upp, VENDOR_ITEM_REGULAR),
-		list("Type 23 Riot Shotgun", floor(scale * 10), /obj/item/weapon/gun/shotgun/type23, VENDOR_ITEM_REGULAR),
+		list("Type 71 Pulse Rifle", floor(scale * 30), /obj/item/weapon/gun/rifle/type71, VENDOR_ITEM_REGULAR),
+		list("Type 71 Pulse Rifle Carbine", floor(scale * 10), /obj/item/weapon/gun/rifle/type71/carbine, VENDOR_ITEM_REGULAR),
+		list("Type 64 Submachinegun", floor(scale * 20), /obj/item/weapon/gun/smg/bizon/upp, VENDOR_ITEM_REGULAR),
+		list("Type 23 Riot Shotgun", floor(scale * 20), /obj/item/weapon/gun/shotgun/type23, VENDOR_ITEM_REGULAR),
 
 		list("REGULAR AMMUNITION", -1, null, null),
-		list("Type 71 Magazine (5.45x39mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
-		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
-		list("Box of Heavy Buckshot Shells (8g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
-		list("Box of Heavy Slugs (8g)", floor(scale * 5), /obj/item/ammo_magazine/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
-		list("Box of Heavy Flechette Shells (8g)", floor(scale * 3), /obj/item/ammo_magazine/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
+		list("Type 71 Magazine (5.45x39mm)", floor(scale * 30), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
+		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 30), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Buckshot Shells (8g)", floor(scale * 10), /obj/item/ammo_magazine/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Slugs (8g)", floor(scale * 10), /obj/item/ammo_magazine/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Flechette Shells (8g)", floor(scale * 6), /obj/item/ammo_magazine/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
-		list("Type 73 Pistol", floor(scale * 10), /obj/item/weapon/gun/pistol/t73, VENDOR_ITEM_REGULAR),
-		list("NP92 Pistol", floor(scale * 10), /obj/item/weapon/gun/pistol/np92, VENDOR_ITEM_REGULAR),
-		list("ZHNK-72 Revolver", floor(scale * 10), /obj/item/weapon/gun/revolver/upp, VENDOR_ITEM_REGULAR),
-		list("M82F Flare Gun", floor(scale * 5), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
+		list("Type 73 Pistol", floor(scale * 20), /obj/item/weapon/gun/pistol/t73, VENDOR_ITEM_REGULAR),
+		list("NP92 Pistol", floor(scale * 20), /obj/item/weapon/gun/pistol/np92, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Revolver", floor(scale * 20), /obj/item/weapon/gun/revolver/upp, VENDOR_ITEM_REGULAR),
+		list("M82F Flare Gun", floor(scale * 10), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("Type 73 Magazine (7.62x25mm Tokarev)", floor(scale * 10), /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
-		list("ZHNK-72 Speed Loader (7.62x38mmR)", floor(scale * 10), /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
-		list("NP92 Magazine (9x18mm Makarov)", floor(scale * 10), /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
+		list("Type 73 Magazine (7.62x25mm Tokarev)", floor(scale * 20), /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
+		list("ZHNK-72 Speed Loader (7.62x38mmR)", floor(scale * 20), /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
+		list("NP92 Magazine (9x18mm Makarov)", floor(scale * 20), /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", -1, null, null),
-		list("Rail Flashlight", floor(scale * 10), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
-		list("Underbarrel Flashlight Grip", floor(scale * 5), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
-		list("Underslung Grenade Launcher", floor(scale * 10), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
+		list("Rail Flashlight", floor(scale * 20), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
+		list("Underbarrel Flashlight Grip", floor(scale * 10), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
+		list("Underslung Grenade Launcher", floor(scale * 20), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
-		list("M5 Bayonet", floor(scale * 10), /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),
-		list("M94 Marking Flare Pack", floor(scale * 5), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
+		list("M5 Bayonet", floor(scale * 20), /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),
+		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)

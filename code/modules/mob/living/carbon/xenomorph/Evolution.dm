@@ -322,10 +322,6 @@
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 	if(!istype(new_xeno))
 		//Something went horribly wrong
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))

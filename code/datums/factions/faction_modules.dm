@@ -867,8 +867,8 @@
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
 
-	for(var/mob_name in banished_ckeys)
-		if(banished_ckeys[mob_name] == user.ckey)
+	for(var/mob_name in faction_owner.banished_ckeys)
+		if(faction_owner.banished_ckeys[mob_name] == user.ckey)
 			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
 

@@ -247,7 +247,7 @@
 				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.faction, XENO_GENERAL_ANNOUNCE)
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
@@ -312,7 +312,7 @@
 		stop_playing_launch_announcement_alarm()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.faction)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 		return
@@ -361,19 +361,19 @@
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL]
 	if(istype(xeno))
-		hivenumber = xeno.hivenumber
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
-	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	hive.abandon_on_hijack()
-	var/original_evilution = hive.evolution_bonus
-	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
-	if(hive.living_xeno_queen)
-		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+		faction = xeno.faction
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, faction)
+	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, faction)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.abandon_on_hijack()
+	var/original_evilution = faction_module.evolution_bonus
+	faction_module.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
+	if(faction_module.living_xeno_queen)
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(faction_module.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
 		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
-	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
+	addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

@@ -575,10 +575,12 @@ Make sure their actual health updates immediately.*/
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
 
-	if(W && W.linked_hive.is_ally(src))
+	if(W && ally_faction(W.faction))
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any
-	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
-		return FALSE //We are on the ship, but the Queen isn't
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module.living_xeno_queen && !is_mainship_level(faction_module.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
+			return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!

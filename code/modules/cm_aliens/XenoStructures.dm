@@ -9,6 +9,39 @@
 	health = 1
 	flags_obj = OBJ_ORGANIC
 
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
+	var/datum/faction/faction
+
+/obj/effect/alien/Initialize(mapload, mob/builder)
+	if(istype(builder))
+		faction = builder.faction
+
+	if(!faction)
+		faction = GLOB.faction_datums[faction_to_get]
+	else
+		faction_to_get = faction.code_identificator
+
+	set_hive_data(src, faction)
+
+	if(faction_to_get == FACTION_XENOMORPH_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+	. = ..()
+
+/obj/effect/alien/Destroy(force)
+	faction = null
+
+	. = ..()
+
+/obj/effect/alien/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		faction_to_get = FACTION_XENOMORPH_FORSAKEN
+		faction = GLOB.faction_datums[faction_to_get]
+		set_hive_data(src, faction)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /*
  * Resin
  */
@@ -157,34 +190,17 @@
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
 	var/slow_amt = 8
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
-
-/obj/effect/alien/resin/sticky/Initialize(mapload, hive)
-	. = ..()
-	if (hive)
-		hivenumber = hive
-	set_hive_data(src, hivenumber)
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
-	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
+	if(istype(H) && !H.ally_faction(faction))
 		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
 		return .
 	var/mob/living/carbon/xenomorph/X = AM
-	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
+	if(istype(X) && !X.ally_faction(faction))
 		X.next_move_slowdown = max(X.next_move_slowdown, slow_amt)
 		return .
-
-/obj/effect/alien/resin/sticky/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		hivenumber = FACTION_XENOMORPH_FORSAKEN
-		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/resin/spike
 	name = "resin spike"
@@ -196,7 +212,6 @@
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/damage = 8
 	var/penetration = 50
 
@@ -209,12 +224,7 @@
 
 /obj/effect/alien/resin/spike/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
-		hivenumber = hive
-	set_hive_data(src, hivenumber)
 	setDir(pick(GLOB.alldirs))
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
 	. = ..()
@@ -222,19 +232,11 @@
 	if(!istype(H))
 		return
 
-	if(H.ally_of_hivenumber(hivenumber))
+	if(H.ally_faction(faction))
 		return
 
 	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
 	H.last_damage_data = construction_data
-
-/obj/effect/alien/resin/spike/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		hivenumber = FACTION_XENOMORPH_FORSAKEN
-		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin
@@ -294,29 +296,28 @@
 	mark_meaning = new X.selected_mark
 	seenMeaning =  image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
 	seenMeaning.plane = ABOVE_HUD_PLANE
-	hivenumber = X.hivenumber
 	createdTime = worldtime2text()
-	X.hive.resin_marks += src
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.resin_marks += src
 
-	X.hive.mark_ui.update_all_data()
+	faction_module.mark_ui.update_all_data()
 
-	for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/XX in faction.total_mobs)
 		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
 
 	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
 
 /obj/effect/alien/resin/marker/Destroy()
-	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.resin_marks -= src
 
-	if(builder_hive)
-		builder_hive.resin_marks -= src
-
-		for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/XX in faction.total_mobs)
 			XX.built_structures -= src
 			if(!XX.client)
 				continue
 			XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
-			XX.hive.mark_ui.update_all_data()
+			faction_module.mark_ui.update_all_data()
 
 		for(var/mob/living/carbon/xenomorph/X in xenos_tracking) //no floating references :0)
 			X.stop_tracking_resin_mark(TRUE)
@@ -333,8 +334,7 @@
 /obj/effect/alien/resin/marker/get_examine_text(mob/user)
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno_createdby
-	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
-	for(var/mob/living/carbon/xenomorph/X in builder_hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in faction.total_mobs)
 		if(X.nicknumber == createdby)
 			xeno_createdby = X
 	if(isxeno(user) || isobserver(user))
@@ -361,12 +361,13 @@
 	var/close_delay = 100
 
 	var/faction_to_get = FACTION_XENOMORPH_NORMAL
+	var/datum/faction/faction
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER
 	tiles_with = list(/obj/structure/mineral_door/resin)
 
-/obj/structure/mineral_door/resin/Initialize(mapload, _faction_to_get)
+/obj/structure/mineral_door/resin/Initialize(mapload, mob/builder)
 	. = ..()
 	relativewall()
 	relativewall_neighbours()
@@ -374,12 +375,17 @@
 		W.update_connections()
 		W.update_icon()
 
-	if(hive)
-		hivenumber = hive
+	if(istype(builder))
+		faction = builder.faction
 
-	set_hive_data(src, hivenumber)
+	if(!faction)
+		faction = GLOB.faction_datums[faction_to_get]
+	else
+		faction_to_get = faction.code_identificator
 
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
+	set_hive_data(src, faction)
+
+	if(faction_to_get == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
@@ -414,14 +420,14 @@
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno_user = user
-		if (xeno_user.hivenumber != hivenumber && !xeno_user.ally_of_hivenumber(hivenumber))
+		if(!xeno_user.ally_faction(faction))
 			return
 		if(xeno_user.scuttle(src))
 			return
 		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if (C.ally_of_hivenumber(hivenumber))
+		if(!C.ally_faction(faction))
 			return ..()
 
 /obj/structure/mineral_door/resin/open()
@@ -485,6 +491,7 @@
 
 /obj/structure/mineral_door/resin/Destroy()
 	relativewall_neighbours()
+	faction = null
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
@@ -545,6 +552,7 @@
 		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
 	icon_state = "thick resin"
@@ -559,7 +567,6 @@
 	icon_state = "acid_pillar_idle"
 
 	health = HEALTH_RESIN_XENO_ACID_PILLAR
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	should_track_build = TRUE
 	anchored = TRUE
 
@@ -572,12 +579,7 @@
 
 /obj/effect/alien/resin/acid_pillar/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
-		hivenumber = hive
-	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSprocessing, src)
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 
 /obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/current_mob, position_to_get = 0)
@@ -670,7 +672,7 @@
 /obj/effect/alien/resin/acid_pillar/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
 
-/obj/effect/alien/resin/acid_pillar/proc/forsaken_handling()
+/obj/effect/alien/resin/acid_pillar/forsaken_handling()
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 	if(is_ground_level(z))
@@ -698,7 +700,6 @@
 	pixel_y = -16
 
 	health = HEALTH_RESIN_XENO_SHIELD_PILLAR
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	anchored = TRUE
 
 	var/decay_rate = AMOUNT_PER_TIME(1, 10 SECONDS)
@@ -707,14 +708,11 @@
 
 /obj/effect/alien/resin/shield_pillar/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
-		hivenumber = hive
-	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSshield_pillar, src)
 
 /obj/effect/alien/resin/shield_pillar/process()
 	for(var/mob/living/carbon/xenomorph/X in urange(range, src))
-		if((X.hivenumber != hivenumber) || X.stat == DEAD)
+		if((X.faction != faction) || X.stat == DEAD)
 			continue
 		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)
 		X.flick_heal_overlay(1 SECONDS, "#ffa800")
@@ -881,8 +879,6 @@
 
 	/// The mob picked as a candidate to be the King
 	var/client/chosen_candidate
-	/// The hive associated with this cocoon
-	var/hive_number = FACTION_XENOMORPH_NORMAL
 	/// Whether the cocoon has hatched
 	var/hatched = FALSE
 	/// Current running timer
@@ -895,19 +891,18 @@
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
 		faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-		var/datum/hive_status/hive
-		for(var/cur_hive_num in GLOB.hive_datum)
-			hive = GLOB.hive_datum[cur_hive_num]
-			if(!length(hive.totalXenos))
+		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+			var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
+			if(!length(cur_faction.total_mobs))
 				continue
-			if(cur_hive_num == hive_number)
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			if(cur_faction == faction)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), cur_faction, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_faction, XENO_GENERAL_ANNOUNCE)
 
-	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-	hive.has_hatchery = FALSE
-	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.has_hatchery = FALSE
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in faction_module.active_endgame_pylons)
 		pylon.protection_level = initial(pylon.protection_level)
 		pylon.update_icon()
 
@@ -921,9 +916,9 @@
 	if(hivenumber)
 		hive_number = hivenumber
 
-	var/datum/hive_status/hatchery_hive = GLOB.hive_datum[hive_number]
-	hatchery_hive.has_hatchery = TRUE
-	color = hatchery_hive.color
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.has_hatchery = TRUE
+	color = faction.color
 
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
@@ -935,21 +930,19 @@
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
 
 	faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	var/datum/hive_status/hive
-	for(var/cur_hive_num in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_hive_num]
-		if(!length(hive.totalXenos))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(cur_faction.total_mobs))
 			continue
-		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		if(cur_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it at all costs!"), cur_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_faction, XENO_GENERAL_ANNOUNCE)
 
 /// Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).
 /obj/effect/alien/resin/king_cocoon/proc/check_pylons()
-	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-
-	if(length(hive.active_endgame_pylons) < 2)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(length(faction_module.active_endgame_pylons) < 2)
 		qdel(src)
 		return
 
@@ -985,15 +978,14 @@
 	timer = addtimer(CALLBACK(src, PROC_REF(start_vote)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 	faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	var/datum/hive_status/hive
-	for(var/cur_hive_num in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_hive_num]
-		if(!length(hive.totalXenos))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(cur_faction.total_mobs))
 			continue
-		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		if(cur_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), cur_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_faction, XENO_GENERAL_ANNOUNCE)
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
@@ -1084,8 +1076,6 @@
  * * expedite: Whether hatching should begin in a minute or immediately after a candidate is found.
  */
 /obj/effect/alien/resin/king_cocoon/proc/roll_candidates(list/mob/living/carbon/xenomorph/voting_candidates, expedite = FALSE)
-	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-
 	var/primary_votes = 0
 	var/mob/living/carbon/xenomorph/primary_candidate
 	var/secondary_votes = 0
@@ -1101,7 +1091,7 @@
 
 	votes.Cut()
 
-	if(prob(50) && try_roll_candidate(hive, primary_candidate, playtime_restricted = TRUE))
+	if(prob(50) && try_roll_candidate(faction, primary_candidate, playtime_restricted = TRUE))
 		chosen_candidate = primary_candidate.client
 		rolling_candidates = FALSE
 		start_hatching(expedite)
@@ -1110,7 +1100,7 @@
 	voting_candidates -= primary_candidate
 
 
-	if(try_roll_candidate(hive, secondary_candidate, playtime_restricted = TRUE))
+	if(try_roll_candidate(faction, secondary_candidate, playtime_restricted = TRUE))
 		chosen_candidate = secondary_candidate.client
 		rolling_candidates = FALSE
 		start_hatching(expedite)
@@ -1120,29 +1110,30 @@
 
 	// Otherwise ask all the living xenos (minus the player(s) who got voted on earlier)
 	for(var/mob/living/carbon/xenomorph/candidate in shuffle(voting_candidates))
-		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
+		if(try_roll_candidate(faction, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
 			start_hatching(expedite)
 			return
 	// Then observers
-	var/list/observer_list_copy = shuffle(get_alien_candidates(hive))
+	var/list/observer_list_copy = shuffle(get_alien_candidates(faction))
 
 	for(var/mob/candidate in observer_list_copy)
-		if(try_roll_candidate(hive, candidate, playtime_restricted = TRUE))
+		if(try_roll_candidate(faction, candidate, playtime_restricted = TRUE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
 			start_hatching(expedite)
 			return
 	// Lastly all of the above again, without playtime requirements
-	for(var/mob/living/carbon/xenomorph/candidate in shuffle(hive.totalXenos.Copy() - hive.living_xeno_queen))
-		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/mob/living/carbon/xenomorph/candidate in shuffle(faction.total_mobs.Copy() - faction_module.living_xeno_queen))
+		if(try_roll_candidate(faction, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
 			start_hatching(expedite)
 			return
 	for(var/mob/candidate in observer_list_copy)
-		if(try_roll_candidate(hive, candidate, playtime_restricted = FALSE))
+		if(try_roll_candidate(faction, candidate, playtime_restricted = FALSE))
 			chosen_candidate = candidate.client
 			rolling_candidates = FALSE
 			start_hatching(expedite)
@@ -1157,15 +1148,14 @@
 		return
 
 	faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - ONE MINUTE.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	var/datum/hive_status/hive
-	for(var/cur_hive_num in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_hive_num]
-		if(!length(hive.totalXenos))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(cur_faction.total_mobs))
 			continue
-		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		if(cur_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately one minute."), cur_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_faction, XENO_GENERAL_ANNOUNCE)
 
 	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
@@ -1175,15 +1165,14 @@
 	addtimer(CALLBACK(src, PROC_REF(hatch_king)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 	faction_announcement("ALERT.\n\nEXTREME ENERGY INFLUX DETECTED IN [get_area_name(loc)].\n\nCAUTION IS ADVISED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	var/datum/hive_status/hive
-	for(var/cur_hive_num in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_hive_num]
-		if(!length(hive.totalXenos))
+	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(cur_faction.total_mobs))
 			continue
-		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		if(cur_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), cur_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), cur_faction, XENO_GENERAL_ANNOUNCE)
 
 /// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()
@@ -1192,7 +1181,7 @@
 
 	QDEL_LIST(blockers)
 
-	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src), null, hive_number)
+	var/mob/living/carbon/xenomorph/king/king = new(get_turf(src), null, faction)
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
 		old_mob.mind.transfer_to(king)
@@ -1210,8 +1199,8 @@
 
 /// The final step in the cocoon sequence: Resets pylon protection levels
 /obj/effect/alien/resin/king_cocoon/proc/remove_ob_protection()
-	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
-	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in hive.active_endgame_pylons)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in faction_module.active_endgame_pylons)
 		pylon.protection_level = initial(pylon.protection_level)
 		pylon.update_icon()
 
@@ -1239,11 +1228,11 @@
 
 	var/can_prime = FALSE
 
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 
-/obj/item/explosive/grenade/alien/Initialize(mapload, hivenumber)
+/obj/item/explosive/grenade/alien/Initialize(mapload, faction_to_get)
 	. = ..()
-	src.hivenumber = hivenumber
+	src.faction_to_get = faction_to_get
 
 /obj/item/explosive/grenade/alien/try_to_throw(mob/living/user)
 	if(isxeno(user))
@@ -1299,7 +1288,7 @@
 		return
 
 	E.range = range
-	E.hivenumber = hivenumber
+	E.faction_to_get = faction_to_get
 	E.source = initial(name)
 	qdel(src)
 
@@ -1311,7 +1300,7 @@
 
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/source
 	var/direction = null
 	var/range = 0
@@ -1344,7 +1333,7 @@
 		return
 	QDEL_NULL(temp)
 
-	new acid_type(in_turf, create_cause_data(source), hivenumber)
+	new acid_type(in_turf, create_cause_data(source), faction_to_get)
 
 	// Range has been reached
 	if(range <= 0)
@@ -1371,7 +1360,7 @@
 				if(2 to INFINITY)
 					E.acid_type = /obj/effect/xenomorph/spray/strong/no_stun
 
-			E.hivenumber = hivenumber
+			E.faction_to_get = faction_to_get
 			E.source = source
 
 	// We've done our duty, now die pls

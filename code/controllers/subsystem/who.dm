@@ -143,9 +143,10 @@ SUBSYSTEM_DEF(who)
 
 	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(!faction || !length(faction.total_mobs))
 			continue
-		factions_additional += list(list("content" = "[faction]: [length(faction.total_mobs)]", "color" = faction.color, "text" = "Queen: [faction.living_xeno_queen ? "Alive" : "Dead"]"))
+		factions_additional += list(list("content" = "[faction]: [length(faction.total_mobs)]", "color" = faction.color, "text" = "Queen: [faction_module.living_xeno_queen ? "Alive" : "Dead"]"))
 
 	src.base_data = base_data
 	src.admin_sorted_additional = admin_sorted_additional

@@ -183,18 +183,18 @@
 			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
 			for(var/i in 1 to huggers_cur)
 				if(prob(chance))
-					hugger = new(loc, hivenumber)
+					hugger = new(loc, faction)
 					step_away(hugger, src, 1)
 
 		var/eggs_dropped = FALSE
 		for(var/i in 1 to eggs_cur)
 			if(prob(chance))
-				new /obj/item/xeno_egg(loc, hivenumber)
+				new /obj/item/xeno_egg(loc, faction.code_identificator)
 				eggs_dropped = TRUE
 		eggs_cur = 0
 
 		if(eggs_dropped) //Checks whether or not to announce egg drop.
-			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, faction)
 
 /mob/living/carbon/xenomorph/carrier/recalculate_actions()
 	. = ..()
@@ -208,7 +208,7 @@
 	. += "Stored Eggs: [eggs_cur] / [eggs_max]"
 
 /mob/living/carbon/xenomorph/carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
-	if(F.hivenumber != hivenumber)
+	if(F.faction_to_get != faction.code_identificator)
 		to_chat(src, SPAN_WARNING("This hugger is tainted!"))
 		return
 
@@ -224,7 +224,7 @@
 		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on us."))
 
 /mob/living/carbon/xenomorph/carrier/proc/store_huggers_from_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
-	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+	if(morpher.faction != faction)
 		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
 		return
 
@@ -256,7 +256,7 @@
 	if(istype(T, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/F = T
 		if(isturf(F.loc) && Adjacent(F))
-			if(F.hivenumber != hivenumber)
+			if(F.faction_to_get != faction.code_identificator)
 				to_chat(src, SPAN_WARNING("That facehugger is tainted!"))
 				drop_inv_item_on_ground(F)
 				return
@@ -270,7 +270,7 @@
 	if(istype(T, /obj/effect/alien/resin/special/eggmorph))
 		var/obj/effect/alien/resin/special/eggmorph/morpher = T
 		if(Adjacent(morpher))
-			if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+			if(morpher.faction != faction)
 				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
 				return
 			if(on_fire)
@@ -290,7 +290,7 @@
 			to_chat(src, SPAN_WARNING("Retrieving a stored facehugger while we're on fire would burn it!"))
 			return
 
-		F = new(src, hivenumber)
+		F = new(src, faction.code_identificator)
 		huggers_cur--
 		put_in_active_hand(F)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the facehugger in our storage. Now sheltering: [huggers_cur] / [huggers_max]."))
@@ -317,7 +317,7 @@
 				A.update_button_icon()
 
 /mob/living/carbon/xenomorph/carrier/proc/store_egg(obj/item/xeno_egg/E)
-	if(E.hivenumber != hivenumber)
+	if(E.faction_to_get != faction.code_identificator)
 		to_chat(src, SPAN_WARNING("That egg is tainted!"))
 		return
 	if(eggs_cur < eggs_max)
@@ -360,7 +360,7 @@
 		if(eggs_cur <= 0)
 			to_chat(src, SPAN_WARNING("We don't have any eggs to use!"))
 			return
-		E = new(src, hivenumber)
+		E = new(src, faction.code_identificator)
 		eggs_cur--
 		update_icons()
 		put_in_active_hand(E)
@@ -393,7 +393,7 @@
 		to_chat(src, SPAN_XENONOTICE("We slide one of the children out of an egg and place them into [morpher]. Now sheltering: [eggs_cur] / [eggs_max]."))
 
 /mob/living/carbon/xenomorph/carrier/proc/morpher_safety_checks(obj/effect/alien/resin/special/eggmorph/morpher)
-	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+	if(morpher.faction != faction)
 		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
 		return FALSE
 
@@ -423,13 +423,13 @@
 	if(huggers_cur <= huggers_reserved)
 		to_chat(user, SPAN_WARNING("\The [src] has reserved the remaining facehuggers for themselves."))
 		return
-	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
+	if(!faction.can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(!huggers_cur)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
+	faction.spawn_as_hugger(user, src)
 	huggers_cur--
 
 /datum/behavior_delegate/carrier_base

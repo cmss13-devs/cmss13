@@ -5,7 +5,7 @@
 	build_type = /obj/effect/alien/resin/special
 	plasma_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	/// The hive that this structure belongs to.
-	var/datum/hive_status/hive_ref
+	var/datum/faction/faction
 	/// The range around this structure which needs to be clear for it to be constructed.
 	var/block_range = 1
 
@@ -16,10 +16,11 @@
 	if(!owner || !get_turf(owner))
 		log_debug("Constuction template ([name]) completed construction without a build location")
 		return
-	if(hive_ref)
-		hive_ref.remove_construction(owner)
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		faction_module.remove_construction(owner)
 	build_loc = get_turf(owner)
-	new build_type(build_loc, hive_ref)
+	new build_type(build_loc, faction)
 	playsound(build_loc, "alien_resin_build", 25)
 	qdel(owner)
 	qdel(src)

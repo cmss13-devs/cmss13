@@ -851,13 +851,12 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
-	var/faction = is_xeno ? xeno.hivenumber : user.faction
 
 	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
-	data["canViewCanvas"] = faction == FACTION_MARINE || faction == FACTION_XENOMORPH_NORMAL
+	data["canViewCanvas"] = user.faction.code_identificator == FACTION_MARINE || user.faction.code_identificator == FACTION_XENOMORPH_NORMAL
 
-	if(can_draw(faction, user))
+	if(can_draw(user.faction.code_identificator, user))
 		data["canDraw"] = TRUE
 		data["canViewTacmap"] = TRUE
 
@@ -904,7 +903,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/mob/user = ui.user
 	var/mob/living/carbon/xenomorph/xeno = user
-	var/faction = istype(xeno) ? xeno.hivenumber : user.faction
+	var/faction = user.faction
 	var/is_observer = isobserver(user)
 	if(faction == FACTION_NEUTRAL && is_observer)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? FACTION_XENOMORPH_NORMAL : FACTION_MARINE
@@ -1064,47 +1063,6 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/drawing/proc/on_tacmap_fire(faction)
 	distribute_current_map_png(faction)
 	last_update_time = world.time
-
-/// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
-/proc/get_minimap_flag_for_faction(faction)
-	switch(faction)
-		if(FACTION_XENOMORPH_NORMAL)
-			return MINIMAP_FLAG_XENO
-		if(FACTION_MARINE)
-			return MINIMAP_FLAG_USCM
-		if(FACTION_UPP)
-			return MINIMAP_FLAG_UPP
-		if(FACTION_WY)
-			return MINIMAP_FLAG_USCM
-		if(FACTION_CLF)
-			return MINIMAP_FLAG_CLF
-		if(FACTION_PMC)
-			return MINIMAP_FLAG_WY
-		if(FACTION_YAUTJA)
-			return MINIMAP_FLAG_YAUTJA
-		if(XENO_HIVE_CORRUPTED)
-			return MINIMAP_FLAG_XENO_CORRUPTED
-		if(XENO_HIVE_ALPHA)
-			return MINIMAP_FLAG_XENO_ALPHA
-		if(FACTION_XENOMORPH_NORMAL)
-			return MINIMAP_FLAG_XENO_BRAVO
-		if(XENO_HIVE_CHARLIE)
-			return MINIMAP_FLAG_XENO_CHARLIE
-		if(XENO_HIVE_DELTA)
-			return MINIMAP_FLAG_XENO_DELTA
-		if(XENO_HIVE_FERAL)
-			return MINIMAP_FLAG_XENO_FERAL
-		if(XENO_HIVE_TAMED)
-			return MINIMAP_FLAG_XENO_TAMED
-		if(XENO_HIVE_MUTATED)
-			return MINIMAP_FLAG_XENO_MUTATED
-		if(FACTION_XENOMORPH_FORSAKEN)
-			return MINIMAP_FLAG_XENO_FORSAKEN
-		if(XENO_HIVE_YAUTJA)
-			return MINIMAP_FLAG_YAUTJA
-		if(XENO_HIVE_RENEGADE)
-			return MINIMAP_FLAG_XENO_RENEGADE
-	return 0
 
 #undef CANVAS_COOLDOWN_TIME
 #undef FLATTEN_MAP_COOLDOWN_TIME

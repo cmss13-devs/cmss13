@@ -372,7 +372,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			job.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/player, datum/job/job, datum/faction/faction, latejoin = FALSE)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/player, datum/job/job, datum/faction/faction_to_set, latejoin = FALSE)
 	if(jobban_isbanned(player, job.title))
 		return FALSE
 	if(job.role_ban_alternative && jobban_isbanned(player, job.role_ban_alternative))
@@ -386,7 +386,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(latejoin && !job.late_joinable)
 		return FALSE
 /*	PART 2: Limitations in case of gamemode limitations
-	if(!SSautobalancer.can_join(faction))
+	if(!SSautobalancer.can_join(faction_to_set))
 		return FALSE */
 	return TRUE
 

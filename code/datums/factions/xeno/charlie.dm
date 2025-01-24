@@ -7,3 +7,11 @@
 	prefix = "Charlie "
 	color = "#bb40ff"
 	ui_color = "#702699"
+
+	minimap_flag = MINIMAP_FLAG_XENO_CHARLIE
+
+/datum/faction/xenomorph/charlie/New()
+	. = ..()
+	var/datum/faction_module/hive_mind/faction_module = get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.latejoin_burrowed = FALSE
+	faction_module.dynamic_evolution = FALSE

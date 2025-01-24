@@ -80,7 +80,7 @@
 		to_chat(xeno, SPAN_WARNING("The are no weeds to plant a fruit within!"))
 		return
 
-	if(target_weeds.hivenumber != xeno.hivenumber)
+	if(target_weeds.faction != xeno.faction)
 		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our fruit."))
 		return
 
@@ -263,8 +263,8 @@
 	var/obj/structure/mineral_door/resin/door = target_atom
 	var/turf/closed/wall/resin/wall = target_turf
 
-	var/wall_present = istype(wall) && wall.hivenumber == xeno.hivenumber
-	var/door_present = istype(door) && door.hivenumber == xeno.hivenumber
+	var/wall_present = istype(wall) && wall.faction == xeno.faction
+	var/door_present = istype(door) && door.faction == xeno.faction
 	// Is my tile either a wall or a door
 	if(door_present || wall_present)
 		var/structure_to_buff = door || wall
@@ -286,7 +286,7 @@
 			to_chat(xeno, SPAN_XENONOTICE("We haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for us to recover."))
 			xeno_cooldown = xeno_cooldown * 0.5
 
-	else if(F && F.hivenumber == xeno.hivenumber)
+	else if(F && F.faction == xeno.faction)
 		if(F.mature)
 			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
 			xeno_cooldown = xeno_cooldown * 0.5
@@ -294,13 +294,13 @@
 			to_chat(xeno, SPAN_XENONOTICE("We surge the resin around the [F], speeding its growth somewhat!"))
 			F.reduce_timer(5 SECONDS)
 
-	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
+	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.faction == xeno.faction)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"), \
 		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
 		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
-		weak_wall.hivenumber = xeno.hivenumber
-		set_hive_data(weak_wall, xeno.hivenumber)
+		weak_wall.faction = xeno.faction
+		set_hive_data(weak_wall, xeno.faction)
 
 	else if(target_turf)
 		if(channel_in_progress)
@@ -314,9 +314,9 @@
 		SPAN_XENONOTICE("We surge the deep resin, creating an unstable sticky resin patch!"), null, 5)
 		for (var/turf/targetTurf in orange(1, target_turf))
 			if(!locate(/obj/effect/alien/resin/sticky) in targetTurf)
-				new /obj/effect/alien/resin/sticky/thin/weak(targetTurf, xeno.hivenumber)
+				new /obj/effect/alien/resin/sticky/thin/weak(targetTurf, xeno)
 		if(!locate(/obj/effect/alien/resin/sticky) in target_turf)
-			new /obj/effect/alien/resin/sticky/thin/weak(target_turf, xeno.hivenumber)
+			new /obj/effect/alien/resin/sticky/thin/weak(target_turf, xeno)
 
 	else
 		xeno_cooldown = xeno_cooldown * 0.5

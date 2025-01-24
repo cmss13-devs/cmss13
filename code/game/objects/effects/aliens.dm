@@ -47,7 +47,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
 
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 
 	var/stun_duration = 1
 	var/damage_amount = 20
@@ -58,14 +58,14 @@
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
+/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, _faction_to_get) //Self-deletes
 	. = ..()
 
 	// Stats tracking
 	cause_data = new_cause_data
 
-	if(hive)
-		hivenumber = hive
+	if(_faction_to_get)
+		faction_to_get = _faction_to_get
 
 	// check what's in our turf
 	for(var/atom/atm in loc)
@@ -99,7 +99,7 @@
 		if(istype(atm, /obj/effect/alien/weeds/))
 			var/obj/effect/alien/weeds/W = atm
 
-			if( !W.linked_hive || W.linked_hive.hivenumber != hivenumber )
+			if(W.faction.code_identificator != faction_to_get)
 				W.acid_spray_act()
 				continue
 
@@ -114,7 +114,7 @@
 				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
-				if (C.ally_of_hivenumber(hivenumber))
+				if(C.ally_faction(GLOB.faction_datums[faction_to_get]))
 					continue
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
@@ -155,7 +155,7 @@
 
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
-		if(living_mob.ally_of_hivenumber(hivenumber))
+		if(living_mob.ally_faction(GLOB.faction_datums[faction_to_get]))
 			living_mob.ExtinguishMob()
 		else
 			apply_spray(living_mob)
@@ -531,7 +531,7 @@
 	var/damage = 20
 	var/message = null
 	var/mob/living/carbon/xenomorph/linked_xeno = null
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/empowered = FALSE
 
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
@@ -542,7 +542,7 @@
 	src.message = message
 	src.linked_xeno = linked_xeno
 	if(src.linked_xeno)
-		hivenumber = src.linked_xeno.hivenumber
+		faction_to_get = linked_xeno.faction.code_identificator
 	if(empowered)
 		icon_state = "boiler_bombard_danger"
 		src.empowered = empowered
@@ -556,7 +556,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(H.ally_of_hivenumber(hivenumber))
+		if(H.ally_faction(GLOB.faction_datums[faction_to_get]))
 			continue
 
 		animation_flash_color(H)
@@ -596,7 +596,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(H.ally_of_hivenumber(hivenumber))
+		if(H.ally_faction(GLOB.faction_datums[faction_to_get]))
 			continue
 
 		total_hits++

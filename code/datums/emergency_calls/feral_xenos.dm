@@ -52,7 +52,7 @@
 		new_xeno = new picked(spawn_loc)
 
 	M.transfer_to(new_xeno, TRUE)
-	new_xeno.set_hive_and_update(XENO_HIVE_FERAL)
+	new_xeno.set_hive_and_update(FACTION_XENOMORPH_FERAL)
 	if(hive_leader)
 		new_xeno.hive.add_hive_leader(new_xeno)
 

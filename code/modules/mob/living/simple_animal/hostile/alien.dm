@@ -28,8 +28,7 @@
 	max_n2 = 0
 	unsuitable_atoms_damage = 15
 	attack_same = TRUE
-	faction = FACTION_XENOMORPH
-	hivenumber = FACTION_XENOMORPH_NORMAL
+	faction_to_get = FACTION_XENOMORPH_NORMAL
 	wall_smash = 1
 	minbodytemp = 0
 	heat_damage_per_tick = 20
@@ -48,9 +47,8 @@
 	handle_icon()
 	generate_name()
 	. = ..()
-	if(hivenumber)
-		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		color = hive.color
+	if(faction)
+		color = faction.color
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
@@ -79,20 +77,19 @@
 
 /mob/living/simple_animal/hostile/alien/evaluate_target(mob/living/carbon/target)
 	. = ..()
-	if(!. || !hivenumber)
+	if(!. || !faction)
 		return
 	if(istype(target, /mob/living/simple_animal/hostile/alien))
 		var/mob/living/simple_animal/hostile/alien/alien_target = target
-		if(alien_target.hivenumber == hivenumber)
+		if(alien_target.faction == faction)
 			return FALSE
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.is_ally(target))
+	if(target.ally_faction(faction))
 		return FALSE
 
 /mob/living/simple_animal/hostile/alien/pull_response(mob/puller)
 	if(stat != DEAD && has_species(puller, "Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
-		if(H.ally_of_hivenumber(hivenumber))
+		if(H.ally_faction(faction))
 			return TRUE
 		puller.apply_effect(2, WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)

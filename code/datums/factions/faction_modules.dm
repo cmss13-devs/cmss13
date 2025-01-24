@@ -3,10 +3,22 @@
 
 	var/datum/faction/faction_owner
 
+/datum/faction_module/New(datum/faction/faction_ref)
+	faction_owner = faction_ref
+
 /datum/faction_module/proc/add_mob(mob/living/carbon/creature)
+	return
+
+/datum/faction_module/proc/remove_mob(mob/living/carbon/creature, hard = FALSE, light_mode = FALSE)
+	return
+
+
+
+#define HIVE_STARTING_BUFFPOINTS 0
+#define HIVE_MAX_BUFFPOINTS 10
 
 /datum/faction_module/hive_mind
-	var/module_code_identificator = FACTION_MODULE_HIVE_MIND
+	module_code_identificator = FACTION_MODULE_HIVE_MIND
 
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
@@ -152,7 +164,7 @@
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
-	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	minimap_type = faction.minimap_flag
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
@@ -226,7 +238,7 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/faction_module/hive_mind/remove_xeno(mob/living/carbon/creature, hard = FALSE, light_mode = FALSE)
+/datum/faction_module/hive_mind/remove_mob(mob/living/carbon/creature, hard = FALSE, light_mode = FALSE)
 	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
 	if(living_xeno_queen == creature)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null

@@ -113,7 +113,7 @@
 		xeno_t3++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/ravager)
 		var/xeno_type = pick(xeno_types)
-		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
+		new_xeno = new xeno_type(spawn_loc, null, FACTION_XENOMORPH_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
 		to_chat(new_xeno, SPAN_BOLD("You are a xeno"))
@@ -121,14 +121,14 @@
 		xeno_t2++
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/warrior)
 		var/xeno_type = pick(xeno_types)
-		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
+		new_xeno = new xeno_type(spawn_loc, null, FACTION_XENOMORPH_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		QDEL_NULL(current_mob)
 		to_chat(new_xeno, SPAN_BOLD("You are a xeno let loose on a strang "))
 	else
 		var/list/xeno_types = list(/mob/living/carbon/xenomorph/drone)
 		var/xeno_type = pick(xeno_types)
-		new_xeno = new xeno_type(spawn_loc, null, XENO_HIVE_FERAL)
+		new_xeno = new xeno_type(spawn_loc, null, FACTION_XENOMORPH_FERAL)
 		player.transfer_to(new_xeno, TRUE)
 		to_chat(new_xeno, SPAN_BOLD("You are a xeno"))
 

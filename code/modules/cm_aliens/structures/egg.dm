@@ -14,7 +14,6 @@
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
 	var/on_fire = FALSE
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
 	var/flags_embryo = NO_FLAGS
 	/// The weed strength that needs to be maintained in order for this egg to not decay; null disables check
 	var/weed_strength_required = WEED_LEVEL_HIVE
@@ -24,13 +23,7 @@
 /obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
 	create_egg_triggers()
-	if(hive)
-		hivenumber = hive
 
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
-
-	set_hive_data(src, hivenumber)
 	update_icon()
 	addtimer(CALLBACK(src, PROC_REF(Grow)), rand(EGG_MIN_GROWTH_TIME, EGG_MAX_GROWTH_TIME))
 
@@ -41,14 +34,6 @@
 	var/area/area = get_area(src)
 	if(area && area.linked_lz)
 		AddComponent(/datum/component/resin_cleanup)
-
-/obj/effect/alien/egg/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		hivenumber = FACTION_XENOMORPH_FORSAKEN
-		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of weeds to potentially orphan this egg
 /obj/effect/alien/egg/proc/on_weed_deletion()
@@ -124,7 +109,7 @@
 		qdel(src)
 		return XENO_NONCOMBAT_ACTION
 
-	if(M.hivenumber != hivenumber)
+	if(M.faction != faction)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
 			SPAN_XENOWARNING("We crush \the [src]"))
@@ -322,10 +307,10 @@
 	Burst(TRUE)
 
 /obj/effect/alien/egg/alpha
-	hivenumber = XENO_HIVE_ALPHA
+	faction_to_get = XENO_HIVE_ALPHA
 
 /obj/effect/alien/egg/forsaken
-	hivenumber = FACTION_XENOMORPH_FORSAKEN
+	faction_to_get = FACTION_XENOMORPH_FORSAKEN
 
 /obj/effect/alien/egg/attack_ghost(mob/dead/observer/user)
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info

@@ -12,7 +12,7 @@
 	if(!user_xeno.check_plasma(plasma_cost_devolve))
 		return
 
-	if(target_xeno.hivenumber != user_xeno.hivenumber)
+	if(target_xeno.faction != user_xeno.faction)
 		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] doesn't belong to your hive!"))
 		return
 	if(target_xeno.is_ventcrawling)
@@ -69,8 +69,9 @@
 		message_admins("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
 		log_admin("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
 
-		if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
-			user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
+		var/datum/faction_module/hive_mind/faction_module = user_xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module.living_xeno_queen && faction_module.living_xeno_queen.observed_xeno == target_xeno)
+			faction_module.living_xeno_queen.overwatch(new_xeno)
 
 	return
 
@@ -120,7 +121,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to grow an ovipositor."))
 		return
 
-	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
+	if(alien_weeds.faction != xeno.faction)
 		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
 		return
 
@@ -158,10 +159,10 @@
 
 	if(!action_cooldown_check())
 		return
-	var/datum/hive_status/hive = X.hive
+	var/datum/faction_module/hive_mind/faction_module = X.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(X.observed_xeno)
-		if(!length(hive.open_xeno_leader_positions) && X.observed_xeno.hive_pos == NORMAL_XENO)
-			to_chat(X, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
+		if(!length(faction_module.open_xeno_leader_positions) && X.observed_xeno.hive_pos == NORMAL_XENO)
+			to_chat(X, SPAN_XENOWARNING("You currently have [length(faction_module.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/xenomorph/T = X.observed_xeno
 		if(T == X)
@@ -169,18 +170,18 @@
 			return
 		apply_cooldown()
 		if(T.hive_pos == NORMAL_XENO)
-			if(!hive.add_hive_leader(T))
+			if(!faction_module.add_hive_leader(T))
 				to_chat(X, SPAN_XENOWARNING("Unable to add the leader."))
 				return
 			to_chat(X, SPAN_XENONOTICE("You've selected [T] as a Hive Leader."))
 			to_chat(T, SPAN_XENOANNOUNCE("[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
 		else
-			hive.remove_hive_leader(T)
+			faction_module.remove_hive_leader(T)
 			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Hive Leader."))
 			to_chat(T, SPAN_XENOANNOUNCE("[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
 	else
 		var/list/possible_xenos = list()
-		for(var/mob/living/carbon/xenomorph/T in hive.xeno_leader_list)
+		for(var/mob/living/carbon/xenomorph/T in faction_module.xeno_leader_list)
 			possible_xenos += T
 
 		if(length(possible_xenos) > 1)
@@ -254,7 +255,7 @@
 		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.faction.total_mobs, theme="hive_status")
 
 	if(!choice)
 		return
@@ -262,7 +263,7 @@
 	var/required_larva = 1
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.faction.total_mobs)
 		if(html_encode(xeno.name) == html_encode(choice))
 			target_xeno = xeno
 			break
@@ -275,7 +276,7 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph is already ready to evolve!"))
 		return
 
-	if(target_xeno.hivenumber != user_xeno.hivenumber)
+	if(target_xeno.faction != user_xeno.faction)
 		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
 		return
 
@@ -283,14 +284,15 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("What's the point? They're about to die."))
 		return
 
-	if(user_xeno.hive.stored_larva < required_larva)
+	var/datum/faction_module/hive_mind/faction_module = user_xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.stored_larva < required_larva)
 		to_chat(user_xeno, SPAN_XENOWARNING("You need at least [required_larva] burrowed larva to sacrifice one for evolution points."))
 		return
 
 	if(tgui_alert(user_xeno, "Are you sure you want to sacrifice a larva to give [target_xeno] [evo_points_per_larva] evolution points?", "Give Evolution Points", list("Yes", "No")) != "Yes")
 		return
 
-	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0 || user_xeno.hive.stored_larva < required_larva)
+	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0 || faction_module.stored_larva < required_larva)
 		return
 
 	to_chat(target_xeno, SPAN_XENOWARNING("\The [user_xeno] has given you evolution points! Use them well."))
@@ -301,7 +303,7 @@
 	else
 		target_xeno.evolution_stored += evo_points_per_larva
 
-	user_xeno.hive.stored_larva--
+	faction_module.stored_larva--
 	return
 
 
@@ -348,10 +350,9 @@
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
 	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs")
-	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
-		var/datum/hive_status/corrupted/hive = queen_manager.hive
+	if(queen_manager.faction.code_identificator == XENO_HIVE_CORRUPTED)
 		options += "Add Personal Ally"
-		if(length(hive.personal_allies))
+		if(length(queen_manager.faction.personal_allies))
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
 
@@ -364,7 +365,7 @@
 		if("De-evolve (500)")
 			de_evolve_other()
 		if("Reward Jelly (500)")
-			give_jelly_reward(queen_manager.hive)
+			give_jelly_reward(queen_manager.faction)
 		if("Exchange larva for evolution (100)")
 			give_evo_points()
 		if("Add Personal Ally")
@@ -384,7 +385,8 @@
 	var/list/names = list()
 	var/list/radial_images = list()
 	var/major_available = FALSE
-	for(var/datum/hivebuff/buff as anything in xeno.hive.get_available_hivebuffs())
+	var/datum/faction_module/hive_mind/faction_module = xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/datum/hivebuff/buff as anything in faction_module.get_available_hivebuffs())
 		var/buffname = initial(buff.name)
 		names += buffname
 		buffs[buffname] = buff
@@ -428,7 +430,7 @@
 
 	if(buffs[selection].must_select_pylon)
 		var/list/pylon_to_area_dictionary = list()
-		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in xeno.hive.active_endgame_pylons)
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in faction_module.active_endgame_pylons)
 			pylon_to_area_dictionary[get_area_name(pylon.loc)] = pylon
 
 		var/choice = tgui_input_list(xeno, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
@@ -437,10 +439,10 @@
 			to_chat(xeno, "You must choose a pylon.")
 			return FALSE
 
-		xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
+		faction_module.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
 		return TRUE
 
-	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pick(xeno.hive.active_endgame_pylons))
+	faction_module.attempt_apply_hivebuff(buffs[selection], xeno, pick(faction_module.active_endgame_pylons))
 	return TRUE
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
@@ -556,14 +558,14 @@
 	if(!user_xeno.check_plasma(plasma_cost_banish))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.faction.total_mobs, theme="hive_status")
 
 	if(!choice)
 		return
 
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.faction.total_mobs)
 		if(html_encode(xeno.name) == html_encode(choice))
 			target_xeno = xeno
 			break
@@ -576,7 +578,7 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph is already banished!"))
 		return
 
-	if(target_xeno.hivenumber != user_xeno.hivenumber)
+	if(target_xeno.faction != user_xeno.faction)
 		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
 		return
 
@@ -598,13 +600,13 @@
 		return
 
 	// Let everyone know they were banished
-	xeno_announcement("By [user_xeno]'s will, [target_xeno] has been banished from the hive!\n\n[reason]", user_xeno.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
+	xeno_announcement("By [user_xeno]'s will, [target_xeno] has been banished from the hive!\n\n[reason]", user_xeno.faction, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
 	to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
 
 	target_xeno.banished = TRUE
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
-	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
+	user_xeno.faction.banished_ckeys[target_xeno.name] = target_xeno.ckey
 	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
@@ -625,7 +627,7 @@
 	if(!user_xeno.check_plasma(plasma_cost_readmit))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to readmit:", "Re-admit", user_xeno.hive.banished_ckeys, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to readmit:", "Re-admit", user_xeno.faction.banished_ckeys, theme="hive_status")
 
 	if(!choice)
 		return
@@ -633,16 +635,16 @@
 	var/banished_ckey
 	var/banished_name
 
-	for(var/mob_name in user_xeno.hive.banished_ckeys)
-		if(user_xeno.hive.banished_ckeys[mob_name] == user_xeno.hive.banished_ckeys[choice])
-			banished_ckey = user_xeno.hive.banished_ckeys[mob_name]
+	for(var/mob_name in user_xeno.faction.banished_ckeys)
+		if(user_xeno.faction.banished_ckeys[mob_name] == user_xeno.faction.banished_ckeys[choice])
+			banished_ckey = user_xeno.faction.banished_ckeys[mob_name]
 			banished_name = mob_name
 			break
 
 	var/banished_living = FALSE
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.faction.total_mobs)
 		if(xeno.ckey == banished_ckey)
 			target_xeno = xeno
 			banished_living = TRUE
@@ -665,7 +667,7 @@
 		target_xeno.hud_update_banished()
 		target_xeno.lock_evolve = FALSE
 
-	user_xeno.hive.banished_ckeys.Remove(banished_name)
+	user_xeno.faction.banished_ckeys.Remove(banished_name)
 	return
 
 /datum/action/xeno_action/onclick/eye
@@ -736,7 +738,7 @@
 	for(var/direction in GLOB.cardinals)
 		var/turf/weed_turf = get_step(T, direction)
 		var/obj/effect/alien/weeds/W = locate() in weed_turf
-		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
+		if(W && W.faction == X.faction && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
 			node = W.parent
 			break
 

@@ -9,6 +9,8 @@
 
 	faction_iff_tag_type = /obj/item/faction_tag/uscm
 
+	minimap_flag = MINIMAP_FLAG_USCM
+
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/datum/squad/squad = current_human.assigned_squad
 	if(istype(squad))

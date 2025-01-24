@@ -381,7 +381,7 @@ Additional game mode variables.
 			var/new_queen = pick(possible_queens)
 			if(new_queen)
 				setup_new_xeno(new_queen)
-				picked_queens += list(GLOB.hive_datum[hive] = new_queen)
+				picked_queens += list(GLOB.faction_datums[hive] = new_queen)
 				LAZYREMOVE(possible_xenomorphs, new_queen)
 
 	for(var/datum/mind/A in possible_xenomorphs)
@@ -389,7 +389,7 @@ Additional game mode variables.
 			LAZYREMOVE(possible_xenomorphs, A)
 
 	for(var/hive in hives)
-		xenomorphs[GLOB.hive_datum[hive]] = list()
+		xenomorphs[hive] = list()
 
 	var/datum/mind/new_xeno
 	var/current_index = 1
@@ -398,19 +398,20 @@ Additional game mode variables.
 		if(current_index > LAZYLEN(hives))
 			current_index = 1
 
-		var/datum/hive_status/hive = GLOB.hive_datum[hives[current_index]]
+		var/datum/faction/faction = GLOB.faction_datums[hives[current_index]]
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(LAZYLEN(possible_xenomorphs)) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
 			LAZYREMOVE(possible_xenomorphs, new_xeno)
 
 			if(!new_xeno)
-				hive.stored_larva++
-				hive.hive_ui.update_burrowed_larva()
+				faction_module.stored_larva++
+				faction_module.hive_ui.update_burrowed_larva()
 				continue  //Looks like we didn't get anyone. Keep going.
 
 			setup_new_xeno(new_xeno)
 
-			xenomorphs[hive] += new_xeno
+			xenomorphs[hives[current_index]] += new_xeno
 		else //Out of candidates, fill the xeno hive with burrowed larva
 			remaining_slots = floor((xeno_starting_num - i))
 			break
@@ -419,10 +420,11 @@ Additional game mode variables.
 
 
 	if(remaining_slots)
-		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
+		var/larva_per_hive = round(remaining_slots / length(hives))
 		for(var/hivenumb in hives)
-			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
-			hive.stored_larva = larva_per_hive
+			var/datum/faction/faction = GLOB.faction_datums[hivenumb]
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			faction_module.stored_larva = larva_per_hive
 
 	/*
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
@@ -649,8 +651,8 @@ Additional game mode variables.
 		if(isnewplayer(xeno_candidate))
 			var/mob/new_player/noob = xeno_candidate
 			noob.close_spawn_windows()
-		for(var/mob_name in new_xeno.hive.banished_ckeys)
-			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+		for(var/mob_name in new_xeno.faction.banished_ckeys)
+			if(new_xeno.faction.banished_ckeys[mob_name] == xeno_candidate.ckey)
 				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
 				return FALSE
 		if(transfer_xeno(xeno_candidate, new_xeno))
@@ -682,13 +684,14 @@ Additional game mode variables.
 	//We have our Hive picked, time to figure out what we can join via
 	var/list/available_facehugger_sources = list()
 
-	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.total_mobs)
+	for(var/mob/living/carbon/xenomorph/carrier/carrier in faction.total_mobs)
 		if(carrier.huggers_cur > carrier.huggers_reserved)
 			var/area_name = get_area_name(carrier)
 			var/descriptive_name = "[carrier.name] in [area_name]"
 			available_facehugger_sources[descriptive_name] = carrier
 
-	for(var/obj/effect/alien/resin/special/eggmorph/morpher in hive.hive_structures[XENO_STRUCTURE_EGGMORPH])
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/obj/effect/alien/resin/special/eggmorph/morpher in faction_module.hive_structures[XENO_STRUCTURE_EGGMORPH])
 		if(morpher)
 			if(morpher.stored_huggers)
 				var/area_name = get_area_name(morpher)
@@ -827,16 +830,16 @@ Additional game mode variables.
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(mob/player, hivenumber = FACTION_XENOMORPH_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(mob/player, datum/faction/faction_to_set = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
 	RETURN_TYPE(/turf)
 	var/datum/mind/ghost_mind = player.mind
 	var/mob/living/original = ghost_mind.current
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.living_xeno_queen || !original || !original.client)
+	var/datum/faction_module/hive_mind/faction_module = faction_to_set.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.living_xeno_queen || !original || !original.client)
 		return
 
 	if(!length(GLOB.queen_spawns))
-		transform_queen(ghost_mind, get_turf(pick(GLOB.xeno_spawns)), hivenumber)
+		transform_queen(ghost_mind, get_turf(pick(GLOB.xeno_spawns)), faction_to_set)
 		return
 
 	// Make the list pretty
@@ -851,8 +854,8 @@ Additional game mode variables.
 
 	original.sight = BLIND
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
-	if(hive.living_xeno_queen)
+	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme = "hive_status")
+	if(faction_module.living_xeno_queen)
 		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
 		player.send_to_lobby()
 	if(!selected_spawn)
@@ -872,16 +875,16 @@ Additional game mode variables.
 		// Support maps without queen spawns
 		if(isnull(QS))
 			QS = get_turf(pick(GLOB.xeno_spawns))
-	transform_queen(ghost_mind, QS, hivenumber)
+	transform_queen(ghost_mind, QS, faction_to_set)
 	return QS
 
-/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = FACTION_XENOMORPH_NORMAL)
+/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, datum/faction/faction_to_set = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
 	var/mob/living/original = ghost_mind.current
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.living_xeno_queen || !original || !original.client)
+	var/datum/faction_module/hive_mind/faction_module = faction_to_set.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.living_xeno_queen || !original || !original.client)
 		return
 
-	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
+	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, faction_to_set)
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 

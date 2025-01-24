@@ -162,7 +162,7 @@
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
-	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	minimap_type = faction.minimap_flag
 	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
@@ -733,7 +733,7 @@
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
 			continue
 		var/obj/item/alien_embryo/A = locate() in potential_host
-		if(A && A.hivenumber != hivenumber)
+		if(A && A.faction != faction)
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			embryo.hivenumber = FACTION_XENOMORPH_FORSAKEN
@@ -820,32 +820,6 @@
 
 	stored_larva--
 	hive_ui.update_burrowed_larva()
-
-/mob/living/proc/ally_of_hivenumber(hivenumber)
-	var/datum/hive_status/indexed_hive = GLOB.hive_datum[hivenumber]
-	if(!indexed_hive)
-		return FALSE
-
-	return indexed_hive.is_ally(src)
-
-/datum/hive_status/proc/is_ally(mob/living/living_mob)
-	if(isxeno(living_mob))
-		var/mob/living/carbon/xenomorph/zenomorf = living_mob
-		if(zenomorf.hivenumber == hivenumber)
-			return !zenomorf.banished
-
-	if(!living_mob.faction)
-		return FALSE
-
-	return faction_is_ally(living_mob.faction)
-
-/datum/hive_status/proc/faction_is_ally(faction, ignore_queen_check = FALSE)
-	if(faction == internal_faction)
-		return TRUE
-	if(!ignore_queen_check && !living_xeno_queen)
-		return FALSE
-
-	return allies[faction]
 
 /datum/hive_status/proc/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
@@ -1074,7 +1048,7 @@
 /datum/hive_status/feral
 	name = "Feral Hive"
 	reporting_id = "feral"
-	hivenumber = XENO_HIVE_FERAL
+	hivenumber = FACTION_XENOMORPH_FERAL
 	prefix = "Feral "
 	color = "#828296"
 	ui_color = "#828296"

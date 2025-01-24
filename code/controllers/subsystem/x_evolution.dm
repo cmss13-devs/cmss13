@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(xevolution)
 
 		if(!faction_module.dynamic_evolution)
 			boost_power[faction_to_get] = faction_module.evolution_rate + faction_module.evolution_bonus
-			faction_module.update_burrowed_larva()
+			faction_module.hive_ui.update_burrowed_larva()
 			continue
 
 		var/boost_power_new
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(xevolution)
 			boost_power[faction_to_get] = boost_power_new
 
 		//Update displayed Evilution, which is under larva apparently
-		faction_module.update_burrowed_larva()
+		faction_module.hive_ui.update_burrowed_larva()
 
 /datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(faction_to_get)
 	return boost_power[faction_to_get]
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(xevolution)
 	var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_faction_module(FACTION_MODULE_HIVE_MIND)
 	boost_power[faction_to_get] = power
 	overridden_power[faction_to_get] = override
-	faction_module.update_burrowed_larva()
+	faction_module.hive_ui.update_burrowed_larva()
 
 #undef EVOLUTION_INCREMENT_TIME
 #undef BOOST_POWER_MIN

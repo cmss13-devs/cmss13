@@ -724,13 +724,23 @@
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	repair_materials = list()
-	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 
-/turf/closed/wall/resin/Initialize(mapload)
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
+	var/datum/faction/faction
+
+/turf/closed/wall/resin/Initialize(mapload, mob/builder)
 	. = ..()
+
+	if(istype(builder))
+		faction = builder.faction
+
+	if(!faction)
+		faction = GLOB.faction_datums[faction_to_get]
+	else
+		faction_to_get = faction.code_identificator
 
 	for(var/obj/effect/alien/weeds/node/weed_node in contents)
 		qdel(weed_node)
@@ -756,7 +766,8 @@
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
 		faction_to_get = FACTION_XENOMORPH_FORSAKEN
-		set_hive_data(src, faction_to_get)
+		faction = GLOB.faction_datums[faction_to_get]
+		set_hive_data(src, faction)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
@@ -1274,7 +1285,7 @@
 		return attack_hand(user)
 
 /turf/closed/wall/resin/ChangeTurf(newtype, ...)
-	var/hive = hivenumber
+	var/datum/faction/transfer_ref = faction
 	. = ..()
 	if(.)
 		var/turf/T
@@ -1286,8 +1297,8 @@
 
 		var/turf/closed/wall/resin/W = .
 		if (istype(W))
-			W.hivenumber = hive
-			set_hive_data(W, W.hivenumber)
+			W.faction = transfer_ref
+			set_hive_data(W, W.faction)
 
 /turf/closed/wall/resin/weak
 	name = "weak resin wall"

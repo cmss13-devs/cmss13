@@ -35,7 +35,7 @@
 	var/strength = 5
 	var/attached = FALSE
 	var/leaping = FALSE //Is actually attacking someone?
-	var/hivenumber = FACTION_XENOMORPH_NORMAL
+	var/faction_to_get = FACTION_XENOMORPH_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
 
@@ -55,21 +55,20 @@
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
 	var/icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
-/obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
+/obj/item/clothing/mask/facehugger/Initialize(mapload, datum/faction/faction_to_set)
 	. = ..()
 	var/new_icon = icon_xeno
-	if (hive)
-		hivenumber = hive
+	if(faction_to_set)
+		faction_to_get = faction_to_set.code_identificator
 
-		var/datum/hive_status/hive_s = GLOB.hive_datum[hivenumber]
-		if(HAS_TRAIT(hive_s, TRAIT_XENONID))
+		if(HAS_TRAIT(faction_to_set, TRAIT_XENONID))
 			new_icon = icon_xenonid
 
 	icon = new_icon
-	set_hive_data(src, hivenumber)
+	set_hive_data(src, GLOB.faction_datums[faction_to_get])
 	go_active()
 
-	if (hivenumber != XENO_HIVE_TUTORIAL)
+	if(faction_to_get != XENO_HIVE_TUTORIAL)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 
@@ -93,7 +92,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 
-	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL && stat != DEAD)
+	if(!death_timer && faction_to_get != XENO_HIVE_TUTORIAL && stat != DEAD)
 		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
@@ -114,7 +113,7 @@
 
 /obj/item/clothing/mask/facehugger/attack_hand(mob/user)
 	if(stat != DEAD)
-		if(!sterile && can_hug(user, hivenumber))
+		if(!sterile && can_hug(user, faction_to_get))
 			attach(user)
 		//If we're alive, don't let them pick us up, even if attach fails. Just return.
 		if(!isxeno(user))
@@ -123,7 +122,7 @@
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
 /obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
-	if(user.hivenumber != hivenumber)
+	if(user.faction.code_identificator != faction_to_get)
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
 		die()
@@ -138,7 +137,7 @@
 		return XENO_NO_DELAY_ACTION
 
 /obj/item/clothing/mask/facehugger/attack(mob/living/M, mob/user)
-	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
+	if(!can_hug(M, faction_to_get) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 		return
@@ -151,7 +150,7 @@
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 
-		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled))
+		if(!can_hug(M, faction_to_get) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled))
 			return
 
 	attach(M)
@@ -202,7 +201,7 @@
 
 	var/mob/living/carbon/xenomorph/xeno = holder
 
-	if ((xeno.caste.hugger_nurturing || hivenumber == XENO_HIVE_TUTORIAL) && death_timer)
+	if ((xeno.caste.hugger_nurturing || faction_to_get == XENO_HIVE_TUTORIAL) && death_timer)
 		deltimer(death_timer)
 		death_timer = null
 
@@ -215,7 +214,7 @@
 	return has_proximity(finder)
 
 /obj/item/clothing/mask/facehugger/proc/has_proximity(atom/movable/AM)
-	if(stat == CONSCIOUS && can_hug(AM, hivenumber))
+	if(stat == CONSCIOUS && can_hug(AM, faction_to_get))
 		attach(AM)
 		return TRUE
 	return FALSE
@@ -245,7 +244,7 @@
 	throwing = FALSE
 	rebounding = FALSE
 
-	if(leaping && can_hug(L, hivenumber))
+	if(leaping && can_hug(L, faction_to_get))
 		attach(L)
 	else if(L.density)
 		step(src, turn(dir, 180)) //We want the hugger to bounce off if it hits a mob.
@@ -258,13 +257,13 @@
 		return FALSE
 
 	for(var/mob/living/M in loc)
-		if(can_hug(M, hivenumber))
+		if(can_hug(M, faction_to_get))
 			attach(M)
 			return TRUE
 
 	var/mob/living/target
 	for(var/mob/living/M in view(3, src))
-		if(!can_hug(M, hivenumber))
+		if(!can_hug(M, faction_to_get))
 			continue
 		target = M
 		break
@@ -278,7 +277,7 @@
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
-	if(attached || !can_hug(living_mob, hivenumber))
+	if(attached || !can_hug(living_mob, faction_to_get))
 		return FALSE
 
 	// This is always going to be valid because of the can_hug check above
@@ -314,7 +313,7 @@
 
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"
-	if(hivenumber != XENO_HIVE_TUTORIAL) // prevent hugs from any tutorial huggers from showing up in dchat
+	if(faction_to_get != XENO_HIVE_TUTORIAL) // prevent hugs from any tutorial huggers from showing up in dchat
 		if(hug_area)
 			notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
 			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
@@ -323,9 +322,9 @@
 			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
 
 	if(hug_area)
-		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
+		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host at \the [hug_area]!"), 1, GLOB.faction_datums[faction_to_get])
 	else
-		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host!"), 1, hivenumber)
+		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host!"), 1, GLOB.faction_datums[faction_to_get])
 
 	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
@@ -339,13 +338,13 @@
 	if(!sterile)
 		var/embryos = 0
 		for(var/obj/item/alien_embryo/embryo in target) // already got one, stops doubling up
-			if(embryo.hivenumber == hivenumber)
+			if(embryo.faction_to_get == faction_to_get)
 				embryos++
 			else
 				qdel(embryo)
 		if(!embryos)
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
-			embryo.hivenumber = hivenumber
+			embryo.faction_to_get = faction_to_get
 			embryo.hugger_ckey = hugger_ckey
 			GLOB.player_embryo_list += embryo
 
@@ -418,7 +417,7 @@
 		var/obj/effect/alien/resin/trap/T = locate() in loc
 		if(T && T.trap_type == RESIN_TRAP_EMPTY)
 			visible_message(SPAN_XENOWARNING("[src] crawls into [T]!"))
-			T.hivenumber = hivenumber
+			T.faction_to_get = faction_to_get
 			T.set_state(RESIN_TRAP_HUGGER)
 			qdel(src)
 			return
@@ -459,7 +458,7 @@
 
 	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
-	if(hivenumber == XENO_HIVE_TUTORIAL)
+	if(faction_to_get == XENO_HIVE_TUTORIAL)
 		addtimer(CALLBACK(src, PROC_REF(decay)), 5 SECONDS)
 	else
 		addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
@@ -468,16 +467,16 @@
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 
-/proc/can_hug(mob/living/carbon/M, hivenumber)
+/proc/can_hug(mob/living/carbon/M, faction_to_get)
 	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || !M.huggable)
 		return FALSE
 
-	if(M.ally_of_hivenumber(hivenumber))
+	if(M.ally_faction(GLOB.faction_datums[faction_to_get]))
 		return FALSE
 
 	if(M.status_flags & XENO_HOST)
 		for(var/obj/item/alien_embryo/embryo in M)
-			if(embryo.hivenumber == hivenumber)
+			if(embryo.faction_to_get == faction_to_get)
 				return FALSE
 
 	//Already have a hugger? NOPE

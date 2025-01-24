@@ -246,7 +246,7 @@
 	else
 		new_xeno = new(affected_mob)
 
-	faction.add_xeno(new_xeno)
+	faction.add_mob(new_xeno)
 	if(!affected_mob.first_xeno && faction_module.hive_location)
 		faction_module.increase_larva_after_burst()
 		faction_module.hive_ui.update_burrowed_larva()

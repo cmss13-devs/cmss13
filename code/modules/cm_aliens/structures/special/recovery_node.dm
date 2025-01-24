@@ -11,7 +11,7 @@
 
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
 	. = ..()
-	if((isxeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && faction)
 		. += "Recovers the health of adjacent Xenomorphs."
 
 /obj/effect/alien/resin/special/recovery/process()
@@ -19,7 +19,7 @@
 		return
 	var/list/heal_candidates = list()
 	for(var/mob/living/carbon/xenomorph/X in orange(src, 1))
-		if(X.health >= X.maxHealth || !X.resting || X.hivenumber != linked_hive.hivenumber)
+		if(X.health >= X.maxHealth || !X.resting || X.faction != faction)
 			continue
 		heal_candidates += X
 	last_healed = world.time

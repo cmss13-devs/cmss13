@@ -5,6 +5,8 @@
 
 	faction_iff_tag_type = /obj/item/faction_tag/wy/pmc
 
+	minimap_flag = MINIMAP_FLAG_WY
+
 /datum/faction/pmc/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()

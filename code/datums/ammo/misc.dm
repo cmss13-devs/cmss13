@@ -318,5 +318,5 @@
 
 /datum/ammo/hugger_container/proc/spawn_hugger(turf/T)
 	var/obj/item/clothing/mask/facehugger/child = new(T)
-	child.hivenumber = hugger_hive
+	child.faction_to_get = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))

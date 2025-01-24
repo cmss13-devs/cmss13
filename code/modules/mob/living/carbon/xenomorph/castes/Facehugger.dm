@@ -98,7 +98,7 @@
 
 	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
 		// Become a npc once again
-		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		new /obj/item/clothing/mask/facehugger(loc, faction)
 		qdel(src)
 	return ..()
 
@@ -125,7 +125,7 @@
 		var/obj/effect/alien/resin/special/eggmorph/morpher = A
 		if(time_of_birth + 3 SECONDS > world.time)
 			return
-		if(morpher.linked_hive.hivenumber != hivenumber)
+		if(morpher.faction != faction)
 			to_chat(src, SPAN_XENOWARNING("This isn't your hive's eggmorpher!"))
 			return
 		if(morpher.stored_huggers >= morpher.huggers_max_amount)
@@ -141,7 +141,7 @@
 		if(human.body_position != LYING_DOWN)
 			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
 			return
-		if(!can_hug(human, hivenumber))
+		if(!can_hug(human, faction.code_identificator))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
@@ -150,7 +150,7 @@
 		if(human.body_position != LYING_DOWN)
 			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
 			return
-		if(!can_hug(human, hivenumber))
+		if(!can_hug(human, faction.code_identificator))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
 		handle_hug(human)
@@ -160,7 +160,7 @@
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
 /mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
-	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, faction)
 	var/did_hug = hugger.attach(human, TRUE, 1, src)
 	if(!did_hug)
 		qdel(hugger)

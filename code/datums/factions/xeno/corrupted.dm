@@ -8,6 +8,14 @@
 	color = "#80ff80"
 	ui_color ="#4d994d"
 
+	minimap_flag = MINIMAP_FLAG_XENO_CORRUPTED
+
+/datum/faction/xenomorph/corrupted/New()
+	. = ..()
+	var/datum/faction_module/hive_mind/faction_module = get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.latejoin_burrowed = FALSE
+	faction_module.dynamic_evolution = FALSE
+
 /datum/faction/xenomorph/corrupted/add_mob(mob/living/carbon/xenomorph/X)
 	. = ..()
 	X.add_language(LANGUAGE_ENGLISH)
@@ -26,17 +34,14 @@
 	prefix = "Tamed "
 	color = "#80ff80"
 
-	dynamic_evolution = FALSE
-	allow_no_queen_actions = TRUE
-	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
+	minimap_flag = MINIMAP_FLAG_XENO_TAMED
 
 /datum/faction/xenomorph/corrupted/tamed/New()
 	. = ..()
-	faction_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
-	faction_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
-
-/datum/faction/xenomorph/corrupted/tamed/add_mob(mob/living/carbon/xenomorph/xenomorph)
-	. = ..()
-	if(faction_leader)
-		xenomorph.faction = faction_leader.faction
+	var/datum/faction_module/hive_mind/faction_module = get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.dynamic_evolution = FALSE
+	faction_module.allow_no_queen_actions = TRUE
+	faction_module.allow_no_queen_evo = TRUE
+	faction_module.allow_queen_evolve = FALSE
+	faction_module.latejoin_burrowed = FALSE
+	faction_module.hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0

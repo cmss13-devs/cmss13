@@ -35,7 +35,7 @@
 	return ..()
 
 /obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.faction == faction)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
@@ -81,7 +81,7 @@
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/cluster/proc/place_node()
-	var/obj/effect/alien/weeds/node/pylon/cluster/W = new node_type(loc, null, null, linked_hive)
+	var/obj/effect/alien/weeds/node/pylon/cluster/W = new node_type(loc, null, null, faction)
 	W.resin_parent = src
 	return W
 

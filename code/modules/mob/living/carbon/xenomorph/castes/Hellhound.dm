@@ -74,8 +74,8 @@
 	weed_food_states = list("Hellhound_1","Hellhound_2","Hellhound_3")
 	weed_food_states_flipped = list("Hellhound_1","Hellhound_2","Hellhound_3")
 
-/mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, datum/faction/_faction)
-	. = ..(mapload, old_xeno, faction || FACTION_XENOMORPH_YAUTJA)
+/mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, datum/faction/faction_to_set)
+	. = ..(mapload, old_xeno, faction_to_set || FACTION_XENOMORPH_YAUTJA)
 
 	set_languages(list(LANGUAGE_HELLHOUND, LANGUAGE_YAUTJA))
 

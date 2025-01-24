@@ -32,14 +32,14 @@
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
-	if (stored_huggers && linked_hive)
+	if (stored_huggers && faction)
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
 		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
 		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
-				F = new(loc, linked_hive.hivenumber)
+				F = new(loc, faction)
 				step_away(F,src,1)
 
 	range_bounds = null
@@ -50,8 +50,9 @@
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("\nIt has <b>[stored_huggers] facehuggers within</b>, with [max(0, huggers_to_grow_max - stored_huggers)] more to grow and a total capacity of [huggers_max_amount] facehuggers (reserved: [huggers_reserved]).")
 
-		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
-		. += SPAN_NOTICE("There are currently [current_hugger_count] facehuggers in the hive. The hive can support a total of [linked_hive.playable_hugger_limit] facehuggers at present.")
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		var/current_hugger_count = faction_module.get_current_playable_facehugger_count();
+		. += SPAN_NOTICE("There are currently [current_hugger_count] facehuggers in the hive. The hive can support a total of [faction_module.playable_hugger_limit] facehuggers at present.")
 		if(stored_huggers < huggers_to_grow_max)
 			. += SPAN_NOTICE("It'll grow another facehugger in <b>[COOLDOWN_SECONDSLEFT(src, spawn_cooldown)] seconds.</b>")
 	if(isxeno(user))
@@ -107,7 +108,7 @@
 /obj/effect/alien/resin/special/eggmorph/process()
 	check_facehugger_target()
 
-	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
+	if(!faction || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
 		return
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	if(stored_huggers < huggers_to_grow_max)
@@ -131,21 +132,21 @@
 	if(!stored_huggers || issynth(AM))
 		return
 
-	if (!linked_hive)
+	if(!faction)
 		return
 
-	if(!can_hug(AM, linked_hive.hivenumber))
+	if(!can_hug(AM, faction.code_identificator))
 		return
 
 	stored_huggers = max(0, stored_huggers - 1)
 
-	var/obj/item/clothing/mask/facehugger/child = new(loc, linked_hive.hivenumber)
+	var/obj/item/clothing/mask/facehugger/child = new(loc, faction)
 	child.leap_at_nearest_target()
 
 /obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M))
 		return attack_hand(M)
-	if(!linked_hive || (M.hivenumber != linked_hive.hivenumber))
+	if(!faction || (M.faction != faction))
 		return ..(M)
 	if(stored_huggers)
 		//this way another hugger doesn't immediately spawn after we pick one up
@@ -154,7 +155,7 @@
 
 		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
 		stored_huggers = max(0, stored_huggers - 1)
-		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)
+		var/obj/item/clothing/mask/facehugger/hugger = new(loc, faction)
 		SEND_SIGNAL(M, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, hugger)
 		return XENO_NONCOMBAT_ACTION
 	..()
@@ -164,21 +165,24 @@
 	join_as_facehugger_from_this(user)
 
 /obj/effect/alien/resin/special/eggmorph/proc/get_egg_cooldown()
-	if(linked_hive?.living_xeno_queen?.ovipositor)
-		return spawn_cooldown_length_ovi
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(faction_module.living_xeno_queen?.ovipositor)
+			return spawn_cooldown_length_ovi
 	return spawn_cooldown_length
 
 /obj/effect/alien/resin/special/eggmorph/proc/join_as_facehugger_from_this(mob/dead/observer/user)
 	if(stored_huggers <= huggers_reserved)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	if(!linked_hive.can_spawn_as_hugger(user))
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.can_spawn_as_hugger(user))
 		return
 	//Need to check again because time passed due to the confirmation window
 	if(stored_huggers <= huggers_reserved)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
 		return
-	linked_hive.spawn_as_hugger(user, src)
+	faction_module.spawn_as_hugger(user, src)
 	stored_huggers--
 
 /mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
@@ -189,8 +193,8 @@
 	if(!istype(morpher))
 		return
 
-	if(morpher.linked_hive)
-		if(hivenumber != morpher.linked_hive.hivenumber)
+	if(morpher.faction)
+		if(faction != morpher.faction)
 			to_chat(usr, SPAN_WARNING("This belongs to another Hive! Yuck!"))
 			return
 

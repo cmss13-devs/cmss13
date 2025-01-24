@@ -12,7 +12,6 @@
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
-	var/hivenumber = FACTION_XENOMORPH_NORMAL //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the trap)
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
 	var/created_by // ckey
@@ -25,12 +24,9 @@
 	. = ..()
 	if(X)
 		created_by = X.ckey
-		hivenumber = X.hivenumber
+		faction_to_get = X.faction.code_identificator
 
 	cause_data = create_cause_data("resin trap", X)
-	set_hive_data(src, hivenumber)
-	if(hivenumber == FACTION_XENOMORPH_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/obj/effect/alien/weeds/node/weed = locate() in loc
 	if(weed)
@@ -51,14 +47,6 @@
 			. += "It's filled with pressurised gas."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			. += "It's filled with pressurised acid."
-
-/obj/effect/alien/resin/trap/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		hivenumber = FACTION_XENOMORPH_FORSAKEN
-		set_hive_data(src, FACTION_XENOMORPH_FORSAKEN)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)
@@ -84,7 +72,7 @@
 
 /obj/effect/alien/resin/trap/bullet_act(obj/projectile/P)
 	var/mob/living/carbon/xenomorph/X = P.firer
-	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+	if(istype(X) && X.ally_faction(GLOB.faction_datums[faction_to_get]))
 		return
 
 	. = ..()
@@ -92,7 +80,7 @@
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			if(can_hug(AM, hivenumber) && !isyautja(AM) && !issynth(AM))
+			if(can_hug(AM, faction_to_get) && !isyautja(AM) && !issynth(AM))
 				var/mob/living/L = AM
 				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
 								SPAN_DANGER("You trip on [src]!"))
@@ -105,12 +93,12 @@
 					return
 				if(H.stat == DEAD || H.body_position == LYING_DOWN)
 					return
-				if(H.ally_of_hivenumber(hivenumber))
+				if(H.ally_faction(GLOB.faction_datums[faction_to_get]))
 					return
 				trigger_trap()
 			if(isxeno(AM))
 				var/mob/living/carbon/xenomorph/X = AM
-				if(X.hivenumber != hivenumber)
+				if(X.faction.code_identificator != faction_to_get)
 					trigger_trap()
 			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
 				trigger_trap()
@@ -141,7 +129,7 @@
 	facehugger_die()
 	clear_tripwires()
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		if(X.hivenumber == hivenumber)
+		if(X.faction.code_identificator == faction_to_get)
 			to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [A.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(level)
@@ -165,8 +153,8 @@
 		if(RESIN_TRAP_HUGGER)
 			trap_type_name = "hugger"
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
-			FH.hivenumber = hivenumber
-			set_hive_data(FH, hivenumber)
+			FH.faction_to_get = faction_to_get
+			set_hive_data(FH, GLOB.faction_datums[faction_to_get])
 			set_state()
 			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
@@ -182,11 +170,11 @@
 			trap_type_name = "acid"
 			var/spray_type = get_spray_type(trap_type)
 
-			new spray_type(loc, cause_data, hivenumber)
+			new spray_type(loc, cause_data, faction_to_get)
 			for(var/turf/T in range(1,loc))
-				var/obj/effect/xenomorph/spray/SP = new spray_type(T, cause_data, hivenumber)
+				var/obj/effect/xenomorph/spray/SP = new spray_type(T, cause_data, faction_to_get)
 				for(var/mob/living/carbon/H in T)
-					if(H.ally_of_hivenumber(hivenumber))
+					if(H.ally_faction(GLOB.faction_datums[faction_to_get]))
 						continue
 					SP.apply_spray(H)
 			set_state()
@@ -194,7 +182,7 @@
 	if(!A)
 		return
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
-		if(X.hivenumber == hivenumber)
+		if(X.faction.code_identificator == faction_to_get)
 			if(destroyed)
 				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
 			else
@@ -205,7 +193,7 @@
 	tripwires = list()
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/X)
-	if(X.hivenumber != hivenumber)
+	if(X.faction.code_identificator != faction_to_get)
 		return ..()
 
 	var/trap_acid_level = 0
@@ -217,7 +205,7 @@
 	if(trap_type == RESIN_TRAP_HUGGER)
 		if(X.caste.can_hold_facehuggers)
 			set_state()
-			var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
+			var/obj/item/clothing/mask/facehugger/F = new (loc, GLOB.faction_datums[faction_to_get])
 			X.put_in_active_hand(F)
 			to_chat(X, SPAN_XENONOTICE("You remove the facehugger from [src]."))
 			return XENO_NONCOMBAT_ACTION
@@ -325,11 +313,11 @@
 		if (!istype(X))
 			return
 
-		if (X.hivenumber != hivenumber)
+		if (X.faction.code_identificator != faction_to_get)
 			to_chat(user, SPAN_XENOWARNING("This resin trap doesn't belong to your hive!"))
 			return
 
-		if (FH.hivenumber != hivenumber)
+		if (FH.faction_to_get != faction_to_get)
 			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
 			return
 

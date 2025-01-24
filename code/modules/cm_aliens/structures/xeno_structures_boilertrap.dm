@@ -65,7 +65,7 @@
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
 	if (isxeno(A))
 		var/mob/living/carbon/xenomorph/X = A
-		if (X.hivenumber != hivenumber)
+		if (X.faction != faction)
 			trigger_trap(A)
 	else if(ishuman(A))
 		trigger_trap(A)

@@ -4,6 +4,7 @@
 
 	organ_faction_iff_tag_type = /obj/item/faction_tag/organ/xenomorph/normal
 
-	evolution_without_ovipositor = FALSE
 	color = null
-	ui_color = null
+	ui_color = "#8200FF"
+
+	minimap_flag = MINIMAP_FLAG_XENO

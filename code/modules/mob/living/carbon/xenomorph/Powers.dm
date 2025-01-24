@@ -49,7 +49,7 @@
 				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [wall]. Wait until it elapse."))
 				return SECRETE_RESIN_FAIL
 
-			if (wall.hivenumber != hivenumber)
+			if (wall.faction != faction)
 				to_chat(src, SPAN_XENOWARNING("[wall] doesn't belong to your hive!"))
 				return SECRETE_RESIN_FAIL
 
@@ -66,7 +66,7 @@
 
 		else if(istype(target, /obj/structure/mineral_door/resin))
 			var/obj/structure/mineral_door/resin/door = target
-			if (door.hivenumber != hivenumber)
+			if (door.faction != faction)
 				to_chat(src, SPAN_XENOWARNING("[door] doesn't belong to your hive!"))
 				return SECRETE_RESIN_FAIL
 
@@ -144,7 +144,7 @@
 			SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [resin_construct.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
-	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
+	var/atom/new_resin = resin_construct.build(current_turf, src)
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[resin_construct.build_path], new_resin)
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))

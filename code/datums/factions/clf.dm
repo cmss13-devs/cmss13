@@ -7,6 +7,8 @@
 
 	relations_pregen = RELATIONS_FACTION_CLF
 
+	minimap_flag = MINIMAP_FLAG_CLF
+
 /datum/faction/clf/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()

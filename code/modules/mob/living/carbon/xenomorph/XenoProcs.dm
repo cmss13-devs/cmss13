@@ -2,7 +2,7 @@
 //LAST EDIT: APOPHIS 22MAY16
 
 //Send a message to all xenos. Mostly used in the deathgasp display
-/proc/xeno_message(message = null, size = 3, datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
+/proc/xeno_message(message = null, size = 3, datum/faction/faction_to_display = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
 	if(!message)
 		return
 
@@ -18,18 +18,18 @@
 	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && (!faction || M.faction == faction)) //Only living and connected xenos
+			if(M && istype(M) && !M.stat && M.client && (!faction_to_display || M.faction_to_display == faction_to_display)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Sends a maptext alert to xenos.
-/proc/xeno_maptext(text = "", title_text = "", datum/faction/faction = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
-	if(text == "" || !faction)
+/proc/xeno_maptext(text = "", title_text = "", datum/faction/faction_to_display = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
+	if(text == "" || !faction_to_display)
 		return //Logic
 
 	if(SSticker.mode && length(SSticker.mode.xenomorphs)) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/living in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/xenomorph/xeno = living.current
-			if(istype(xeno) && !xeno.stat && xeno.client && xeno.faction == faction) //Only living and connected xenos
+			if(istype(xeno) && !xeno.stat && xeno.client && xeno.faction == faction_to_display) //Only living and connected xenos
 				playsound_client(xeno.client, 'sound/voice/alien_distantroar_3.ogg', xeno.loc, 25, FALSE)
 				xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
@@ -72,11 +72,13 @@
 
 	if(caste && caste.evolution_allowed)
 		evolve_progress = "[min(stored_evolution, evolution_threshold)]/[evolution_threshold]"
-		if(hive && !hive.allow_no_queen_evo && !caste?.evolve_without_queen)
-			if(!hive.living_xeno_queen)
-				evolve_progress += " (NO QUEEN)"
-			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
-				evolve_progress += " (NO OVIPOSITOR)"
+		if(faction)
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			if(!faction_module.allow_no_queen_evo && !caste?.evolve_without_queen)
+				if(!faction_module.living_xeno_queen)
+					evolve_progress += " (NO QUEEN)"
+				else if(!(faction_module.living_xeno_queen.ovipositor || faction_module.evolution_without_ovipositor))
+					evolve_progress += " (NO OVIPOSITOR)"
 
 	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"
@@ -111,37 +113,38 @@
 		. += "Recovery: [msg_holder]"
 		. += ""
 
-	if(hive)
-		if(!hive.living_xeno_queen)
+	if(faction)
+		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		if(!faction_module.living_xeno_queen)
 			. += "Queen's Location: NO QUEEN"
 		else if(!(caste_type == XENO_CASTE_QUEEN))
-			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
+			. += "Queen's Location: [faction_module.living_xeno_queen.loc.loc.name]"
 
-		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
+		if(faction_module.slashing_allowed == XENO_SLASH_ALLOWED)
 			. += "Slashing: PERMITTED"
 		else
 			. += "Slashing: FORBIDDEN"
 
-		if(hive.construction_allowed == XENO_LEADER)
+		if(faction_module.construction_allowed == XENO_LEADER)
 			. += "Construction Placement: LEADERS"
-		else if(hive.construction_allowed == NORMAL_XENO)
+		else if(faction_module.construction_allowed == NORMAL_XENO)
 			. += "Construction Placement: ANYONE"
-		else if(hive.construction_allowed == XENO_NOBODY)
+		else if(faction_module.construction_allowed == XENO_NOBODY)
 			. += "Construction Placement: NOBODY"
 		else
 			. += "Construction Placement: QUEEN"
 
-		if(hive.destruction_allowed == XENO_LEADER)
+		if(faction_module.destruction_allowed == XENO_LEADER)
 			. += "Special Structure Destruction: LEADERS"
-		else if(hive.destruction_allowed == NORMAL_XENO)
+		else if(faction_module.destruction_allowed == NORMAL_XENO)
 			. += "Special Structure Destruction: BUILDERS and LEADERS"
-		else if(hive.construction_allowed == XENO_NOBODY)
+		else if(faction_module.construction_allowed == XENO_NOBODY)
 			. += "Construction Placement: NOBODY"
 		else
 			. += "Special Structure Destruction: QUEEN"
 
-		if(hive.faction_orders)
-			. += "Hive Orders: [hive.faction_orders]"
+		if(faction.faction_orders)
+			. += "Hive Orders: [faction.faction_orders]"
 		else
 			. += "Hive Orders: -"
 
@@ -241,12 +244,11 @@
 		. += caste.agility_speed_increase
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
-	if (W)
-		if (W.linked_hive.hivenumber == hivenumber)
-			. *= 0.95
+	if(W && ally_faction(W.faction))
+		. *= 0.95
 
 	var/obj/effect/alien/resin/sticky/fast/FR = locate(/obj/effect/alien/resin/sticky/fast) in loc
-	if (FR && FR.hivenumber == hivenumber)
+	if(FR && ally_faction(FR.faction))
 		. *= 0.8
 
 	if(superslowed)
@@ -501,9 +503,10 @@
 
 //When the Queen's pheromones are updated, or we add/remove a leader, update leader pheromones
 /mob/living/carbon/xenomorph/proc/handle_xeno_leader_pheromones()
-	if(!hive)
+	if(!faction)
 		return
-	var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	var/mob/living/carbon/xenomorph/queen/Q = faction_module.living_xeno_queen
 	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""

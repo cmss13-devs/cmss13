@@ -111,7 +111,7 @@
 	if(!turf_weeds)
 		return
 
-	if(turf_weeds.linked_hive.hivenumber == bound_xeno.hivenumber)
+	if(turf_weeds.faction == bound_xeno.faction)
 		speed_data["speed"] += weed_speed_increase
 
 /datum/behavior_delegate/hivelord_base/on_life()

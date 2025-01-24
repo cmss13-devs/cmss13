@@ -513,7 +513,7 @@
 /// If flags is 0, it will use get_minimap_flag_for_faction for this xeno
 /mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
 	if(!flags)
-		flags = get_minimap_flag_for_faction(hivenumber)
+		flags = faction.minimap_flag
 	if(IS_XENO_LEADER(src))
 		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
 		return

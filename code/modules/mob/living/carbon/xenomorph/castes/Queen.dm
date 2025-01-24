@@ -53,18 +53,18 @@
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(hive.living_xeno_queen)
-				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
+		for(var/faction_to_get in FACTION_LIST_ALL)
+			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			if(faction_module.living_xeno_queen)
+				if(faction_module.living_xeno_queen.faction == faction)
 					continue
 			for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
-				if(Q.hivenumber == hive.hivenumber && !should_block_game_interaction(Q))
-					hive.living_xeno_queen = Q
-					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
+				if(Q.faction == faction && !should_block_game_interaction(Q))
+					faction_module.living_xeno_queen = Q
+					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"), 3, faction)
 					continue outer_loop
-			hive.living_xeno_queen = null
+			faction_module.living_xeno_queen = null
 
 /mob/hologram/queen
 	name = "Queen Eye"
@@ -108,10 +108,10 @@
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
-	if(Q.hive.color)
-		color = Q.hive.color
+	if(Q.faction.color)
+		color = Q.faction.color
 
-	hivenumber = Q.hivenumber
+	hivenumber = Q.faction.code_identificator
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
@@ -178,7 +178,7 @@
 	var/list/turf_area = range(3, crossing_turf)
 
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
-	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
+	if(nearby_weeds && nearby_weeds.faction.faction_is_ally(GLOB.faction_datums[hivenumber]))
 		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
 		if(crossing_turf_weeds)
 			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
@@ -216,7 +216,7 @@
 
 	if(isxeno(A))
 		var/mob/living/carbon/xenomorph/X = A
-		if(X.ally_of_hivenumber(hivenumber))
+		if(X.ally_faction(GLOB.faction_datums[hivenumber]))
 			Q.overwatch(A)
 		return COMPONENT_INTERRUPT_CLICK
 
@@ -374,43 +374,43 @@
 /mob/living/carbon/xenomorph/queen/corrupted
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_CORRUPTED
+	faction_to_get = FACTION_XENOMORPH_CORRUPTED
 
 /mob/living/carbon/xenomorph/queen/forsaken
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = FACTION_XENOMORPH_FORSAKEN
+	faction_to_get = FACTION_XENOMORPH_FORSAKEN
 
 /mob/living/carbon/xenomorph/queen/forsaken/combat_ready
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = FACTION_XENOMORPH_FORSAKEN
+	faction_to_get = FACTION_XENOMORPH_FORSAKEN
 	queen_aged = TRUE
 
 /mob/living/carbon/xenomorph/queen/alpha
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_ALPHA
+	faction_to_get = FACTION_XENOMORPH_ALPHA
 
 /mob/living/carbon/xenomorph/queen/bravo
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = FACTION_XENOMORPH_NORMAL
+	faction_to_get = FACTION_XENOMORPH_NORMAL
 
 /mob/living/carbon/xenomorph/queen/charlie
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_CHARLIE
+	faction_to_get = FACTION_XENOMORPH_CHARLIE
 
 /mob/living/carbon/xenomorph/queen/delta
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_DELTA
+	faction_to_get = FACTION_XENOMORPH_DELTA
 
 /mob/living/carbon/xenomorph/queen/mutated
 	AUTOWIKI_SKIP(TRUE)
 
-	hivenumber = XENO_HIVE_MUTATED
+	faction_to_get = FACTION_XENOMORPH_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
 	AUTOWIKI_SKIP(FALSE)
@@ -418,9 +418,9 @@
 
 /mob/living/carbon/xenomorph/queen/Initialize()
 	. = ..()
-	SStracking.set_leader("hive_[hivenumber]", src)
+	SStracking.set_leader("hive_[faction.code_identificator]", src)
 	if(!should_block_game_interaction(src))//so admins can safely spawn Queens in Thunderdome for tests.
-		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"), 3, faction)
 		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 	set_resin_build_order(GLOB.resin_build_order_drone)
@@ -432,7 +432,8 @@
 				choose_resin_ability.update_button_icon(selected_resin)
 				break // Don't need to keep looking
 
-	if(hive.dynamic_evolution && !queen_aged)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, PROC_REF(make_combat_effective)), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else
 		make_combat_effective()
@@ -445,7 +446,7 @@
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
 		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) && !(xeno.flags_pass_temp & PASS_MOB_THRU))
 			continue
-		if(xeno.hivenumber == hivenumber && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
+		if(xeno.faction == faction && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
@@ -538,13 +539,14 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
-	if(hive && hive.living_xeno_queen == src)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(faction_module.living_xeno_queen == src)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
-		for(var/mob/living/carbon/xenomorph/queen/queen in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/queen/queen in faction.total_mobs)
 			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
-		hive.set_living_xeno_queen(next_queen) // either null or a queen
+		faction_module.set_living_xeno_queen(next_queen) // either null or a queen
 
 	return ..()
 
@@ -567,16 +569,14 @@
 					var/turf/T = loc
 					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
-						new /obj/item/xeno_egg(loc, hivenumber)
+						new /obj/item/xeno_egg(loc, faction.code_identificator)
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
-	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
-	var/xeno_leader_num = hive?.queen_leader_limit - length(hive?.open_xeno_leader_positions)
-
-	. += "Pooled Larvae: [stored_larvae]"
-	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
-	. += "Royal Resin: [hive?.buff_points]"
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	. += "Pooled Larvae: [faction_module.stored_larva]"
+	. += "Leaders: [faction_module.queen_leader_limit - length(faction_module.open_xeno_leader_positions)] / [faction_module.queen_leader_limit]"
+	. += "Royal Resin: [faction_module.buff_points]"
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
 		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
@@ -635,7 +635,7 @@
 	if(word_ability)
 		word_ability.apply_cooldown()
 
-	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
+	xeno_announcement(input, faction, "The words of the [name] reverberate in our head...")
 
 	message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
@@ -650,7 +650,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	if(!hive)
+	if(!faction)
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		CRASH("[src] attempted to toggle slashing without a linked hive")
 
@@ -663,14 +663,15 @@
 
 	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"), theme="hive_status")
 
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, hivenumber)
-		hive.slashing_allowed = XENO_SLASH_ALLOWED
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, faction)
+		faction_module.slashing_allowed = XENO_SLASH_ALLOWED
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)
-		hive.slashing_allowed = XENO_SLASH_FORBIDDEN
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, faction)
+		faction_module.slashing_allowed = XENO_SLASH_FORBIDDEN
 
 /mob/living/carbon/xenomorph/proc/do_claw_toggle_cooldown()
 	pslash_delay = FALSE
@@ -686,18 +687,19 @@
 
 	var/choice = tgui_input_list(usr, "Choose which level of construction placement freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
 
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
-		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!", hivenumber = src.hivenumber)
-		hive.construction_allowed = NORMAL_XENO
+		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!", faction_to_display = faction)
+		faction_module.construction_allowed = NORMAL_XENO
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
-		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.", hivenumber = src.hivenumber)
-		hive.construction_allowed = XENO_LEADER
+		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.", faction_to_display = faction)
+		faction_module.construction_allowed = XENO_LEADER
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
-		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to herself.", hivenumber = src.hivenumber)
-		hive.construction_allowed = XENO_QUEEN
+		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to herself.", faction_to_display = faction)
+		faction_module.construction_allowed = XENO_QUEEN
 
 /mob/living/carbon/xenomorph/proc/destruction_toggle()
 	set name = "Permit/Disallow Special Structure Destruction"
@@ -710,18 +712,19 @@
 
 	var/choice = tgui_input_list(usr, "Choose which level of destruction freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
 
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
-		xeno_message("The Queen has <b>permitted</b> the special structure destruction to all builder castes and leaders!", hivenumber = src.hivenumber)
-		hive.destruction_allowed = NORMAL_XENO
+		xeno_message("The Queen has <b>permitted</b> the special structure destruction to all builder castes and leaders!", faction_to_display = faction)
+		faction_module.destruction_allowed = NORMAL_XENO
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict special structure destruction to leaders only."))
-		xeno_message("The Queen has <b>restricted</b> the special structure destruction to leaders only.", hivenumber = src.hivenumber)
-		hive.destruction_allowed = XENO_LEADER
+		xeno_message("The Queen has <b>restricted</b> the special structure destruction to leaders only.", faction_to_display = faction)
+		faction_module.destruction_allowed = XENO_LEADER
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
-		xeno_message("The Queen has <b>forbidden</b> the special structure destruction to anyone but herself.", hivenumber = src.hivenumber)
-		hive.destruction_allowed = XENO_QUEEN
+		xeno_message("The Queen has <b>forbidden</b> the special structure destruction to anyone but herself.", faction_to_display = faction)
+		faction_module.destruction_allowed = XENO_QUEEN
 
 /mob/living/carbon/xenomorph/proc/toggle_unnesting()
 	set name = "Permit/Disallow Unnesting"
@@ -732,14 +735,14 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	hive.unnesting_allowed = !hive.unnesting_allowed
-
-	if(hive.unnesting_allowed)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	faction_module.unnesting_allowed = !faction_module.unnesting_allowed
+	if(faction_module.unnesting_allowed)
 		to_chat(src, SPAN_XENONOTICE("You have allowed everyone to unnest hosts."))
-		xeno_message("The Queen has allowed everyone to unnest hosts.", hivenumber = src.hivenumber)
+		xeno_message("The Queen has allowed everyone to unnest hosts.", faction_to_display = faction)
 	else
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
-		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.", hivenumber = src.hivenumber)
+		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.", faction_to_display = faction)
 
 /mob/living/carbon/xenomorph/queen/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	return COMPONENT_SCREECH_ACT_CANCEL
@@ -779,7 +782,7 @@
 
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
-		if(hivenumber == xeno.hivenumber)
+		if(faction == xeno.faction)
 			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
 			return FALSE
 
@@ -817,21 +820,22 @@
 		return TRUE
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
-	if(src == hive?.living_xeno_queen)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(src == faction_module.living_xeno_queen)
 		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
+		faction_module.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 
 		// Reset the banished ckey list
-		if(length(hive.banished_ckeys))
-			for(var/mob/living/carbon/xenomorph/target_xeno in hive.totalXenos)
+		if(length(faction.banished_ckeys))
+			for(var/mob/living/carbon/xenomorph/target_xeno in faction.total_mobs)
 				if(!target_xeno.ckey)
 					continue
-				for(var/mob_name in hive.banished_ckeys)
-					if(target_xeno.ckey == hive.banished_ckeys[mob_name])
+				for(var/mob_name in faction.banished_ckeys)
+					if(target_xeno.ckey == faction.banished_ckeys[mob_name])
 						target_xeno.banished = FALSE
 						target_xeno.hud_update_banished()
 						target_xeno.lock_evolve = FALSE
-			hive.banished_ckeys = list()
+			faction.banished_ckeys = list()
 
 	icon = queen_standing_icon
 	return ..()
@@ -893,12 +897,13 @@
 	bubble_icon_x_offset = 32
 	bubble_icon_y_offset = 32
 
-	for(var/mob/living/carbon/xenomorph/leader in hive.xeno_leader_list)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/mob/living/carbon/xenomorph/leader in faction_module.xeno_leader_list)
 		leader.handle_xeno_leader_pheromones()
 
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, faction)
 
-	START_PROCESSING(SShive_status, hive.hive_ui)
+	START_PROCESSING(SShive_status, faction_module.hive_ui)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_MOUNT_OVIPOSITOR)
 
@@ -946,11 +951,12 @@
 			break
 	anchored = FALSE
 
-	for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
+	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	for(var/mob/living/carbon/xenomorph/L in faction_module.xeno_leader_list)
 		L.handle_xeno_leader_pheromones()
 
 	if(!instant_dismount)
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, faction)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
 

@@ -344,13 +344,13 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	var/list/held_children_weeds = parent_node.children
 	var/cluster_loc = cluster_parent.loc
-	var/linked_hive = cluster_parent.linked_hive
+	var/faction = cluster_parent.faction
 
 	parent_node.children = list()
 
 	qdel(cluster_parent)
 
-	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
+	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, faction)
 	new_pylon.node.children = held_children_weeds
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)

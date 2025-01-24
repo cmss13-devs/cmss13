@@ -153,13 +153,13 @@
 
 	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
 		SSticker.mode.latejoin_larva_used += latejoin_larva_drop
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
-					hive.stored_larva++
-					hive.hive_ui.update_burrowed_larva()
+		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+			if(faction_module.latejoin_burrowed == TRUE)
+				if(length(faction.total_mobs) && (faction_module.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
+					faction_module.stored_larva++
+					faction_module.hive_ui.update_burrowed_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity
@@ -195,7 +195,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_NEUTRAL))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction_to_set = GLOB.faction_datums[FACTION_NEUTRAL]))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -258,7 +258,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_UPP))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction_to_set = GLOB.faction_datums[FACTION_UPP]))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active

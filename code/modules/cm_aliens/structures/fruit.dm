@@ -162,7 +162,7 @@
 		else
 			to_chat(affected_xeno, SPAN_XENOWARNING("[name] isn't ripe yet. We need to wait a little longer."))
 
-	if(affected_xeno.a_intent == INTENT_HARM && isxeno_builder(affected_xeno) || (!affected_xeno.can_not_harm(bound_xeno) && affected_xeno.hivenumber != hivenumber))
+	if(affected_xeno.a_intent == INTENT_HARM && isxeno_builder(affected_xeno) || (!affected_xeno.can_not_harm(bound_xeno) && affected_xeno.faction != faction))
 		affected_xeno.animation_attack_on(src)
 		affected_xeno.visible_message(SPAN_XENODANGER("[affected_xeno] removes [name]!"),
 		SPAN_XENODANGER("You remove [name]!"))

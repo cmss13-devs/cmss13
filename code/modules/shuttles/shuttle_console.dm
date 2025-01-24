@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				var/count = Q.count_hivemember_same_area()
 
 				// Check if at least half of the hive is onboard. If not, we don't launch.
-				if(count < length(Q.hive.totalXenos) * 0.5)
+				if(count < length(Q.faction.total_mobs) * 0.5)
 					to_chat(Q, SPAN_WARNING("More than half of your hive is not on board. Don't leave without them!"))
 					return
 
@@ -294,8 +294,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
-					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, Q.faction)
+					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."), 2, Q.faction)
 
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
@@ -303,8 +303,9 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
-					if(Q.hive)
-						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
+					if(Q.faction)
+						var/datum/faction_module/hive_mind/faction_module = Q.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+						addtimer(CALLBACK(faction_module, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 
 					if(GLOB.bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)

@@ -23,12 +23,11 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	transform_to_xeno(H, FACTION_XENOMORPH_NORMAL)
+	transform_to_xeno(H, GLOB.faction_datums[FACTION_XENOMORPH_NORMAL])
 
-/datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, hive_index)
+/datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, datum/faction/faction_to_set)
 	var/datum/mind/new_xeno = human_to_transform.mind
 	new_xeno.setup_xeno_stats()
-	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]
 
 	human_to_transform.first_xeno = TRUE
 	human_to_transform.set_stat(UNCONSCIOUS)
@@ -95,7 +94,7 @@
 
 	var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(human_to_transform) //Put the initial larva in a host
 	embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
-	embryo.hivenumber = hive.hivenumber
+	embryo.faction_to_get = faction_to_set.code_identificator
 
 
 /datum/job/antag/xenos/equip_job(mob/living/M)

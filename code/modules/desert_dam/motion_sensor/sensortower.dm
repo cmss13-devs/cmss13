@@ -72,7 +72,7 @@
 			continue
 
 		SSminimaps.remove_marker(current_xeno)
-		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|get_minimap_flag_for_faction(current_xeno.hivenumber))
+		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|current_xeno.faction.minimap_flag)
 		minimap_added += WEAKREF(current_xeno)
 
 /obj/structure/machinery/sensortower/proc/checkfailure()

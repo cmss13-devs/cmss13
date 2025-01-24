@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 		var/mob/living/carbon/xenomorph/newXeno = M
 		if(isxeno(target))
 			var/mob/living/carbon/xenomorph/X = target
-			newXeno.set_hive_and_update(X.hivenumber)
+			newXeno.set_hive_and_update(X.faction)
 
 
 	QDEL_IN(target, 0.3 SECONDS)

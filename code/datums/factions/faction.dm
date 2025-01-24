@@ -5,6 +5,7 @@
 
 	var/hud_type = FACTION_HUD
 	var/color = "#22888a"
+	var/ui_color = "#22888a"
 	var/faction_orders = ""
 	var/prefix = ""
 
@@ -28,6 +29,9 @@
 	var/latejoin_enabled = TRUE
 	var/force_spawning = FALSE
 
+	var/need_round_end_check = TRUE
+	var/minimap_flag = NO_FLAGS
+
 	var/list/datum/faction_module/faction_modules = list()
 
 /datum/faction/New()
@@ -42,6 +46,9 @@
 	if(!istype(creature))
 		return
 
+	for(var/datum/faction_module/faction_module in faction_modules)
+		faction_module.add_mob(creature)
+
 	if(creature.faction && creature.faction != src)
 		creature.faction.remove_mob(creature, TRUE)
 
@@ -53,9 +60,12 @@
 	if(!creature.statistic_exempt)
 		total_mobs |= creature
 
-/datum/faction/proc/remove_mob(mob/living/carbon/creature, hard = FALSE)
+/datum/faction/proc/remove_mob(mob/living/carbon/creature, hard = FALSE, light_mode = FALSE)
 	if(!istype(creature))
 		return
+
+	for(var/datum/faction_module/faction_module in faction_modules)
+		faction_module.remove_mob(creature, hard, light_mode)
 
 	if(hard)
 		creature.faction = null
@@ -64,6 +74,36 @@
 
 	total_mobs -= creature
 
+/datum/faction/proc/get_join_status(mob/new_player/user, dat)/*
+	dat = "<html><body onselectstart='return false;'><center>"
+	dat += "[user.client.auto_lang(LANGUAGE_LOBBY_ROUND_TIME)]: [DisplayTimeText(world.time, language = user.client.language)]<br>"
+	dat += "[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CHOSE)]:<br>"
+	dat += additional_join_status(user)
+
+	if(!latejoin_enabled)
+		dat = "[user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_CLOSED)]:<br>"
+
+	else if(!SSautobalancer.can_join(src))
+		dat = "[user.client.auto_lang(LANGUAGE_JS_BALANCE_ISSUE)]:<br>"
+
+	else
+		var/list/roles = roles_list[SSticker.mode.name]
+		for(var/i in roles)
+			var/datum/job/job = GLOB.RoleAuthority.roles_by_name[i]
+			var/check_result = GLOB.RoleAuthority.check_role_entry(user, job, src, TRUE)
+			var/active = 0
+			for(var/mob/mob in GLOB.player_list)
+				if(mob.client && mob.job == job.title)
+					active++
+
+			if(check_result)
+				dat += "[job.disp_title] ([job.current_positions]): [check_result] ([user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ACTIVE)]: [active])<br>"
+			else
+				dat += "<a href='byond://?src=\ref[user];lobby_choice=SelectedJob;job_selected=[job.title]'>[job.disp_title] ([job.current_positions]) ([user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN_ACTIVE)]: [active])</a><br>"
+
+	dat += "</center>"
+	show_browser(user, dat, user.client.auto_lang(LANGUAGE_LOBBY_LATE_JOIN), "latechoices", "size=420x700")
+*/
 /datum/faction/proc/can_delay_round_end(mob/living/carbon/creature)
 	return TRUE
 

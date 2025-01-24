@@ -3,103 +3,27 @@
 	desc = "Xenomorph hive among the all other hives."
 	code_identificator = FACTION_XENOMORPH
 
+	color = null
+	ui_color = null
+
 	organ_faction_iff_tag_type = /obj/item/faction_tag/organ/xenomorph
 	relations_pregen = RELATIONS_FACTION_XENOMORPH
 
-/datum/faction/xenomorph/faction_is_ally(datum/faction/faction)
-	if(!living_xeno_queen)
-		return FALSE
-	. = ..()
-
 /datum/faction/xenomorph/New()
 	. = ..()
-	mutators = new(src)
-	mark_ui = new(src)
-	faction_ui = new(src)
+	faction_modules += new /datum/faction_module/hive_mind(src)
+
+/datum/faction/xenomorph/faction_is_ally(datum/faction/faction)
+	var/datum/faction_module/hive_mind/faction_module = get_faction_module(FACTION_MODULE_HIVE_MIND)
+	if(!faction_module.living_xeno_queen)
+		return FALSE
+	. = ..()
 
 /datum/faction/xenomorph/can_delay_round_end(mob/living/carbon/carbon)
 	if(!faction_is_ally(GLOB.faction_datums[FACTION_MARINE]))
 		return TRUE
 	return FALSE
-
-// Adds a xeno to this hive
-/datum/faction/xenomorph/add_mob(mob/living/carbon/xenomorph/xenomorph)
-	if(!xenomorph || !istype(xenomorph))
-		return
-
-	// If the xeno is part of another hive, they should be removed from that one first
-	if(xenomorph.faction && xenomorph.faction != src)
-		xenomorph.faction.remove_mob(xenomorph, TRUE)
-
-	// Already in the hive
-	if(xenomorph in totalMobs)
-		return
-
-	// Can only have one queen.
-	if(isqueen(xenomorph))
-		if(!living_xeno_queen && !xenomorph.statistic_exempt) // Don't consider xenos in admin level
-			set_living_xeno_queen(xenomorph)
-
-	xenomorph.faction = src
-
-	if(xenomorph.hud_list)
-		xenomorph.hud_update()
-
-	if(!xenomorph.statistic_exempt)
-		totalMobs += xenomorph
-		if(xenomorph.tier == 2)
-			tier_2_xenos += xenomorph
-		else if(xenomorph.tier == 3)
-			tier_3_xenos += xenomorph
-
-	// Xenos are a fuckfest of cross-dependencies of different datums that are initialized at different times
-	// So don't even bother trying updating UI here without large refactors
-
-// Removes the xeno from the hive
-/datum/faction/xenomorph/remove_mob(mob/living/carbon/xenomorph/xenomorph, hard = FALSE, light_mode = FALSE)
-	if(!xenomorph || !istype(xenomorph))
-		return
-
-	// Make sure the xeno was in the hive in the first place
-	if(!(xenomorph in totalMobs))
-		return
-
-	if(isqueen(xenomorph))
-		if(living_xeno_queen == xenomorph)
-			var/mob/living/carbon/xenomorph/queen/next_queen
-			for(var/mob/living/carbon/xenomorph/queen/Q in totalMobs)
-				if(!Q.statistic_exempt)
-					continue
-				next_queen = Q
-				break
-
-			set_living_xeno_queen(next_queen) // either null or a queen
-
-	// We allow "soft" removals from the hive (the xeno still retains information about the hive)
-	// This is so that xenos can add themselves back to the hive if they should die or otherwise go "on leave" from the hive
-	if(hard)
-		xenomorph.faction = null
-
-	totalMobs -= xenomorph
-	if(xenomorph.tier == 2)
-		tier_2_xenos -= xenomorph
-	else if(xenomorph.tier == 3)
-		tier_3_xenos -= xenomorph
-
-	if(!light_mode)
-		faction_ui.update_xeno_counts()
-		faction_ui.xeno_removed(xenomorph)
-
-/datum/faction/xenomorph/get_faction_info(mob/user)
-	if(!user || !faction_ui)
-		return
-
-	if(!faction_ui.data_initialized)
-		faction_ui.update_all_data()
-
-	faction_ui.tgui_interact(user)
-	return TRUE
-
+/*
 /datum/faction/xenomorph/get_join_status(mob/new_player/user, dat)
 	if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(user, SPAN_WARNING(user.client.auto_lang(LANGUAGE_LOBBY_ROUND_NO_JOIN)))
@@ -111,8 +35,8 @@
 			if(new_xeno && !istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 				SSticker.mode.transfer_xenomorph(user, new_xeno)
 				user.close_spawn_windows()
-
-
+*/
+/*
 //LANDMARKS
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
@@ -383,3 +307,4 @@
 				return
 
 			xenomorph.overwatch(target_xenomorph)
+*/

@@ -25,15 +25,20 @@
 	var/spread_on_semiweedable = FALSE
 	var/block_structures = BLOCK_NOTHING
 
-	var/faction_to_get = FACTION_XENOMORPH_NORMAL
-	var/datum/faction/faction
-
 	var/turf/weeded_turf
 
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, use_node_strength=TRUE, do_spread=TRUE)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node, datum/faction/_faction, use_node_strength=TRUE, do_spread=TRUE)
+	if(_faction)
+		faction = _faction
+	else if(node)
+		faction = node.faction
+
+	if(faction)
+		faction_to_get = faction.code_identificator
+
 	. = ..()
 
 	if(node)
@@ -82,8 +87,6 @@
 		COMSIG_ATOM_TURF_CHANGE,
 		COMSIG_MOVABLE_TURF_ENTERED
 	), PROC_REF(set_turf_weeded))
-	if(faction.code_identificator == FACTION_XENOMORPH_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 	var/area/area = get_area(src)
 	if(area && area.linked_lz)
@@ -95,15 +98,6 @@
 		weeded_turf.weeds = null
 
 	T.weeds = src
-
-/obj/effect/alien/weeds/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		faction_to_get = FACTION_XENOMORPH_FORSAKEN
-		faction = GLOB.faction_datums[faction_to_get]
-		set_hive_data(src, faction)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/weeds/initialize_pass_flags(datum/pass_flags_container/PF)
 	. = ..()

@@ -9,6 +9,8 @@
 
 	faction_iff_tag_type = /obj/item/faction_tag/upp
 
+	minimap_flag = MINIMAP_FLAG_UPP
+
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()

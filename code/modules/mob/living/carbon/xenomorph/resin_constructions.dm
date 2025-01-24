@@ -56,7 +56,7 @@
 		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
 		return FALSE
 
-	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
+	if(alien_weeds.faction != X.faction)
 		to_chat(X, SPAN_WARNING("These weeds do not belong to your hive!"))
 		return FALSE
 
@@ -83,7 +83,7 @@
 	var/can_build_thick = TRUE
 	if(thick_hiveweed)
 		var/obj/effect/alien/weeds/weeds = locate() in build_turf
-		if(!weeds || weeds.hivenumber != hivenumber || weeds.weed_strength < WEED_LEVEL_HIVE)
+		if(!weeds || weeds.faction != faction || weeds.weed_strength < WEED_LEVEL_HIVE)
 			can_build_thick = FALSE
 
 	if(build_path_thick && (can_build_thick || (SEND_SIGNAL(builder, COMSIG_XENO_THICK_RESIN_BYPASS) & COMPONENT_THICK_BYPASS)))

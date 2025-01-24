@@ -20,12 +20,6 @@
 	force = 15
 	throwforce = 25
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/yautja_cleaner))
-		if(handle_dissolve())
-			return
-	..()
-
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
 	..()
 	var/mob/user = usr

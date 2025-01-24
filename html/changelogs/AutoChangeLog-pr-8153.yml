@@ -1,0 +1,8 @@
+author: "Ultimate-Fluff"
+delete-after: True
+changes:
+  - imageadd: "Synthetic Maintenance Stations now blink red if they cannot be operated under any circumstances."
+  - imageadd: "Synthetic Maintenance Stations flash green whether or not an APC is powering it to indicate it can still operate with charge."
+  - bugfix: "Synthetic Maintenance Stations now properly display the correct occupied icon state whether or not there is an APC powering the machine whilst somebody is inside."
+  - code_imp: "Fixed and added code that makes Synthetic Maintenance Stations automatically eject patients if they run out of charge while operating."
+  - code_imp: "Added code that disables patients from entering the Synthetic Maintenance Station if it has no charge left."

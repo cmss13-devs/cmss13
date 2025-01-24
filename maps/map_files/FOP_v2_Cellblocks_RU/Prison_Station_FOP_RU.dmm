@@ -1400,7 +1400,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/security/monitoring/maxsec/panopticon)
 "ael" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/organic/grass,
@@ -9179,7 +9179,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/research)
 "aEv" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "aEw" = (
@@ -18275,7 +18275,7 @@
 /area/prison/yard)
 "blp" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/organic/grass,
 /area/prison/yard)
 "blq" = (
@@ -21449,7 +21449,7 @@
 /turf/open/floor/prison/green,
 /area/prison/cellblock/lowsec/se)
 "bxO" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bxP" = (
@@ -36236,7 +36236,7 @@
 /area/prison/maintenance/residential/access/south)
 "dgk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "dgl" = (
@@ -39511,7 +39511,7 @@
 /turf/open/shuttle/escapepod/north,
 /area/prison/monorail/east)
 "gML" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "gNa" = (
@@ -46191,7 +46191,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/kitchen)
 "nhh" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/organic/grass,
 /area/prison/residential/central)
@@ -46925,10 +46925,6 @@
 	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/prison/hanger/main)
-"nXE" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/organic/grass,
-/area/prison/residential/south)
 "nXF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "South High-Security Recreation"
@@ -50953,7 +50949,7 @@
 /turf/open/floor/prison/greenfull,
 /area/prison/cleaning)
 "slT" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/organic/grass,
 /area/prison/residential/north)
@@ -55241,10 +55237,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood/wood_broken6,
 /area/prison/library)
-"wUz" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/organic/grass,
-/area/prison/residential/north)
 "wUP" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison,
@@ -63113,7 +63105,7 @@ aAO
 aAO
 avm
 duu
-wUz
+aEv
 slT
 aEv
 ruu
@@ -63183,8 +63175,8 @@ mbc
 bOP
 oZV
 gML
-nXE
-nXE
+gML
+gML
 pkV
 bGQ
 aAO
@@ -64035,7 +64027,7 @@ oWU
 bTF
 bUQ
 xNU
-nXE
+gML
 bGQ
 aAO
 aAO
@@ -64809,8 +64801,8 @@ axc
 aAO
 avm
 xSK
-wUz
-wUz
+aEv
+aEv
 aEv
 ruu
 aFi
@@ -64879,8 +64871,8 @@ bMT
 bOT
 oZV
 gML
-nXE
-nXE
+gML
+gML
 mAT
 bGQ
 aAO

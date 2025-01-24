@@ -229,6 +229,7 @@
 			continue
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
+		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
 

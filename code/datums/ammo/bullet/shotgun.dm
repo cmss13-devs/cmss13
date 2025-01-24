@@ -7,6 +7,11 @@
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
+/datum/ammo/bullet/shotgun/setup_faction_clash_values()
+	. = ..()
+	accuracy = accuracy * 2 + 85 //we revert accuracy reduction that is applied on other bullets shotguns are accurate but already have short range only
+
+
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
 	handful_state = "slug_shell"
@@ -106,6 +111,10 @@
 	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
 
+/datum/ammo/bullet/shotgun/flechette/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
+
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
 	icon_state = "flechette"
@@ -118,6 +127,10 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
+
+/datum/ammo/bullet/shotgun/flechette_spread/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
 
 /datum/ammo/bullet/shotgun/buckshot
 	name = "buckshot shell"
@@ -300,6 +313,10 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
 
+/datum/ammo/bullet/shotgun/heavy/flechette/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
+
 /datum/ammo/bullet/shotgun/heavy/flechette_spread
 	name = "additional heavy flechette"
 	icon_state = "flechette"
@@ -311,6 +328,10 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_4
+
+/datum/ammo/bullet/shotgun/heavy/flechette_spread/setup_faction_clash_values()
+	. = ..()
+	damage *= 0.7
 
 /*
 					16 GAUGE SHOTGUN AMMO

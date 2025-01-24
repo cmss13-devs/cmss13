@@ -380,3 +380,64 @@
       pixel.
   thevandie:
   - bugfix: fixed a sprite bug with the VP78
+2025-01-24:
+  BlackCrystalic:
+  - bugfix: Warrior no more decap infected marines that infected within do_after duration
+      (there two stages for decap, all two got check)
+  Drathek:
+  - balance: Halved nutrition cost when cold
+  - code_imp: Standardize some nutrition usage into defines
+  - bugfix: Fixed 3 ways to launder counterfeit money
+  - ui: TGUI Input fields now have their clear button restored on 516
+  - bugfix: Fixed an autofire exploit
+  Git-Nivrak:
+  - code_imp: Humans now check for death on updatehealth, meaning they die as soon
+      as they cross the 200 damage mark.
+  Mikrel0712:
+  - rscadd: Hijack now automatically calls General Quarters
+  Red-byte3D:
+  - balance: Removed CO's sg training by default
+  - rscadd: Added a smartgunner pamphlet for CO's that can only be used by the CO
+      that they can use to use their sg and sg gear
+  - bugfix: USCM Uniform now appears with the correct name on the vendors
+  - code_imp: vendors now strip_improper for names
+  Venuska1117:
+  - code_imp: weeds now clean turf when they spread.
+  - code_imp: changed strain alert() to tgui_alert(), "Yes" and "No" got changed to
+      "Confirm Mutation" and "Cancel".
+  blackcrystall:
+  - code_imp: randomize_squad code qol
+  - bugfix: In case if for some reason we have less open slots in squads for jobs
+      than jobs aval in total, we put in to cryo squad in assumption that this their
+      marine did cryo
+  - bugfix: Bug when you use aimed shot after normal one (your gun fails able_to_fire
+      check and don't fire, but effect accumulate), you can't premade aimed shot buffs
+      to use it later on normal one.
+  cuberound:
+  - bugfix: fixes cryo upp starting naked
+  - qol: properly adjusted access rights on UPP cryo troops
+  - rscadd: OB disabled for HvH events
+  - rscadd: gamemode adjustable ammo values
+  - balance: reduces accurate range of all ammo to 10 on HvH, extra tile reduction
+      per 5 ap. makes ap ammo better at close range and solves off screen combat in
+      a good way
+  - balance: increases MOU firedelay to 1.2 second from 0.25 on HvH
+  - balance: reduces explosion stun and damage and adds slow on HvH
+  ihatethisengine:
+  - balance: adds light and a permanent CAS signal to JIMA flag.
+  jupyterkat:
+  - rscadd: Adds a minimal ui mode for medscanners
+  private-tristan:
+  - rscadd: CIA operatives can purchase more tranquilizers from their vendor
+  - balance: Tranq gun does 60 stamina damage (from 30) per hit
+  - rscadd: Boiler neurotoxin now quickly purges research stimulants.
+  - balance: Boiler's neurotoxin tailstab now inflicts 4 more neurotoxin duration
+      (16 to 20). Acid Tailstab is unaffected.
+  - qol: Duration of dizziness caused by neurotoxin has been reduced.
+  - rscadd: Queen neuro spit now drains 4u of stims per hit.
+  - balance: Sentinel's slowing spit now drains 2u of stims per hit (from 1.75u).
+  - qol: Biomass printer is now significantly quicker at processing acidic hearts
+      and printing items.
+  realforest2001:
+  - bugfix: Fixes a looping check that spams ARES until we die.
+  - admin: Changed Mentor AutoReplies to use the admin autoresponse system.

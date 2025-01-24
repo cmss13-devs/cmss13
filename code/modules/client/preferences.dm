@@ -677,6 +677,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	if(!GLOB.RoleAuthority)
 		return
 
+	if(!length(SSticker.mode.factions_pool))
+		to_chat(src, SPAN_WARNING("There no applicable factions."))
+		return
+
 	if(!observing_faction)
 		observing_faction = GLOB.faction_datums[SSticker.mode.factions_pool[pick(SSticker.mode.factions_pool)]]
 
@@ -801,6 +805,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  */
 /datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
+		return
+
+	if(!length(SSticker.mode.factions_pool))
+		to_chat(src, SPAN_WARNING("There no applicable factions."))
 		return
 
 	if(!observing_faction)
@@ -1026,6 +1034,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/priority = text2num(href_list["target_priority"])
 					SetJob(user, href_list["text"], priority)
 				if("faction")
+					if(!length(SSticker.mode.factions_pool))
+						to_chat(src, SPAN_WARNING("There no applicable factions."))
+						return
+
 					var/choice = tgui_input_list(user, "Choose faction to observer roles:", "Factions", SSticker.mode.factions_pool)
 					if(!choice)
 						return
@@ -1052,6 +1064,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					reset_job_slots()
 					set_job_slots(user)
 				if("faction")
+					if(!length(SSticker.mode.factions_pool))
+						to_chat(src, SPAN_WARNING("There no applicable factions."))
+						return
+
 					var/choice = tgui_input_list(user, "Choose faction to observer roles:", "Factions", SSticker.mode.factions_pool)
 					if(!choice)
 						return

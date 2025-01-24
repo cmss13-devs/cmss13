@@ -463,8 +463,9 @@
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 
 	//Set leader to the new mob
-	if(IS_XENO_LEADER(old_xeno))
-		faction_module.replace_hive_leader(old_xeno, src)
+	if(old_xeno)
+		if(IS_XENO_LEADER(old_xeno))
+			faction_module.replace_hive_leader(old_xeno, src)
 
 	//Begin SStracking
 	SStracking.start_tracking("hive_[faction.code_identificator]", src)

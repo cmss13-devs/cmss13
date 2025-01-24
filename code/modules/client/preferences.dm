@@ -1420,7 +1420,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/new_xeno_prefix = input(user, "Choose your xenomorph prefix. One or two letters capitalized. Put empty text if you want to default it to 'XX'", "Xenomorph Prefix") as text|null
 					new_xeno_prefix = uppertext(new_xeno_prefix)
 
-					var/prefix_length = length(new_xeno_prefix)
+					var/prefix_length = length_char(new_xeno_prefix) //SS220 EDIT CHANGE - Cyrillic Fixes
 
 					if(prefix_length>3)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Prefix. Your Prefix can only be up to 3 letters long.")))
@@ -1435,14 +1435,14 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 							return
 
-					if(length(new_xeno_prefix)==0)
+					if(length_char(new_xeno_prefix)==0) //SS220 EDIT CHANGE - Cyrillic Fixes
 						xeno_prefix = "XX"
 						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
-						for(var/i=1, i<=length(new_xeno_prefix), i++)
-							var/ascii_char = text2ascii(new_xeno_prefix,i)
-							if(ascii_char < 65 || ascii_char > 90)
+						for(var/i=1, i<=length_char(new_xeno_prefix), i++) //SS220 EDIT CHANGE - Cyrillic Fixes
+							var/ascii_char = text2ascii_char(new_xeno_prefix,i) //SS220 EDIT CHANGE - Cyrillic Fixes
+							if(!((ascii_char >= 65 && ascii_char <= 90) || (ascii_char >= 1040 && ascii_char <= 1071 && ascii_char != 1025))) //SS220 EDIT CHANGE - Cyrillic Fixes
 								all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
@@ -1460,28 +1460,28 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(24 HOURS, playtime, 1 HOURS)] more hours to unlock xeno postfix.")))
 						return
 
-					if(length(xeno_prefix)==3)
+					if(length_char(xeno_prefix)==3) //SS220 EDIT CHANGE - Cyrillic Fixes
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 						return
 
 					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
-					if(length(new_xeno_postfix)>2)
+					if(length_char(new_xeno_postfix)>2) //SS220 EDIT CHANGE - Cyrillic Fixes
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Postfix. Your Postfix can only be up to 2 letters long.")))
 						return
-					else if(length(new_xeno_postfix)==0)
+					else if(length_char(new_xeno_postfix)==0) //SS220 EDIT CHANGE - Cyrillic Fixes
 						xeno_postfix = ""
 						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
 						var/first_char = TRUE
-						for(var/i=1, i<=length(new_xeno_postfix), i++)
-							var/ascii_char = text2ascii(new_xeno_postfix,i)
+						for(var/i=1, i<=length_char(new_xeno_postfix), i++) //SS220 EDIT CHANGE - Cyrillic Fixes
+							var/ascii_char = text2ascii_char(new_xeno_postfix,i)
 							switch(ascii_char)
 								// A  .. Z
-								if(65 to 90) //Uppercase Letters will work on first char
+								if(65 to 90, 1040 to 1071, 1025) //Uppercase Letters will work on first char  //SS220 EDIT CHANGE - Cyrillic Fixes
 
-									if(length(xeno_prefix)!=2)
+									if(length_char(xeno_prefix)!=2) //SS220 EDIT CHANGE - Cyrillic Fixes
 										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 										return
 

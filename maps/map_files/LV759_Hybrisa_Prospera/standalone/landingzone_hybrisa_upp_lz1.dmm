@@ -3536,10 +3536,6 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/dirt{
-	layer = 4;
-	plane = -6
-	},
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "tY" = (
@@ -4356,16 +4352,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4;
-	level = 1;
-	plane = -7
-	},
-/obj/structure/prop/hybrisa/misc/fake/wire/red{
-	pixel_x = 4;
-	level = 1;
-	plane = -7
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "ys" = (
@@ -4451,10 +4437,6 @@
 "yP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
-	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 4;
-	plane = -6
 	},
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -8736,10 +8718,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
-	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 4;
-	plane = -6
 	},
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)

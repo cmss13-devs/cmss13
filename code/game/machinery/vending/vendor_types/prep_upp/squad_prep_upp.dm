@@ -129,10 +129,10 @@
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_STOCK_DYNAMIC
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_guns/ui_state(mob/user)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_guns/populate_product_list(scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("Type 71 Pulse Rifle", floor(scale * 15), /obj/item/weapon/gun/rifle/type71, VENDOR_ITEM_REGULAR),

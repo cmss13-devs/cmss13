@@ -184,9 +184,15 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/language = "None" //Secondary language
 	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
-	var/night_vision_color = NV_COLOR_GREEN
 	var/night_vision_preference = "Green"
-
+	var/list/nv_color_list = list(
+						"Green" = NV_COLOR_GREEN,
+						"White" = NV_COLOR_WHITE,
+						"Yellow" = NV_COLOR_YELLOW,
+						"Orange" = NV_COLOR_ORANGE,
+						"Red" = NV_COLOR_RED,
+						"Blue" = NV_COLOR_BLUE
+					)
 		//Some faction information.
 	var/origin = ORIGIN_USCM
 	var/faction = "None" //Antag faction/general associated faction.
@@ -1557,15 +1563,6 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					var/new_nvg_color = tgui_input_list(user, "Choose the color of your night-vision", "Character Preferences", GLOB.nvg_color_list)
 					if(!new_nvg_color)
 						return
-					var/list/nv_color_list = list(
-						"Green" = NV_COLOR_GREEN,
-						"White" = NV_COLOR_WHITE,
-						"Yellow" = NV_COLOR_YELLOW,
-						"Orange" = NV_COLOR_ORANGE,
-						"Red" = NV_COLOR_RED,
-						"Blue" = NV_COLOR_BLUE
-					)
-					night_vision_color = nv_color_list[new_nvg_color]
 					night_vision_preference = new_nvg_color
 
 				if("prefarmor")

@@ -640,7 +640,6 @@
 	S["preferred_squad"] >> preferred_squad
 	S["preferred_armor"] >> preferred_armor
 	S["night_vision_preference"] >> night_vision_preference
-	S["night_vision_color"] >> night_vision_color
 	S["weyland_yutani_relation"] >> weyland_yutani_relation
 	//S["skin_style"] >> skin_style
 
@@ -794,7 +793,6 @@
 	S["preferred_squad"] << preferred_squad
 	S["preferred_armor"] << preferred_armor
 	S["night_vision_preference"] << night_vision_preference
-	S["night_vision_color"] << night_vision_color
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation

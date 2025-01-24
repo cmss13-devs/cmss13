@@ -89,7 +89,7 @@
 #define NV_COLOR_GREEN "#39FF14"
 #define NV_COLOR_WHITE "#D3D3D3"
 #define NV_COLOR_ORANGE "#FFCC66"
-#define NV_COLOR_YELLOW "#FFFF66" //crazy ? i was crazy once , they put me in a room .......
+#define NV_COLOR_YELLOW "#FFFF66" //crazy ? i was crazy once
 #define NV_COLOR_RED "#FF3333"
 #define NV_COLOR_BLUE "#66CCFF"
 

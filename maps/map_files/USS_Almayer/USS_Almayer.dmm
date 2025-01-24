@@ -15423,13 +15423,7 @@
 /area/almayer/shipboard/starboard_missiles)
 "cqY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/fancy/cigar/tarbacktube{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/storage/fancy/cigarettes/wypacket{
-	pixel_x = 10
-	},
+/obj/item/storage/fancy/cigar/tarbacktube,
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "crc" = (
@@ -24269,8 +24263,9 @@
 /area/almayer/medical/medical_science)
 "gek" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/fancy/collector/feathers{
-	pixel_y = 4
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
@@ -52225,6 +52220,7 @@
 	pixel_x = -7;
 	pixel_y = 11
 	},
+/obj/item/storage/fancy/collector/feathers,
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "rBD" = (

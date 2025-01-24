@@ -230,7 +230,7 @@
 
 /obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
 	if(current_internal_charge <= 0)
-		to_chat(M, SPAN_NOTICE(" <B>The [name] is currently out of power. Please come back later!</B>"))
+		to_chat(M, SPAN_NOTICE(SPAN_BOLD("[src] is currently out of power. Please come back later!")))
 		return
 	if (!issynth(M))
 		return FALSE

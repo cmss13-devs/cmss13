@@ -74,6 +74,8 @@
 		var/mob/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
+			if(M.stat == DEAD)
+				return
 			if( (world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir)
 				mob_move_time = world.time
 				step(M, M.last_move_dir)

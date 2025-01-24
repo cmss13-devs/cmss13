@@ -37,8 +37,8 @@
 	else
 		src.faction = GLOB.faction_datums[faction_to_get]
 
-	set_hive_data(src, faction)
-	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+	set_hive_data(src, src.faction)
+	var/datum/faction_module/hive_mind/faction_module = src.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	faction_module.tunnels += src
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in L
@@ -48,7 +48,7 @@
 	if(faction_to_get == FACTION_XENOMORPH_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-	SSminimaps.add_marker(src, z, faction.minimap_flag, "xenotunnel")
+	SSminimaps.add_marker(src, z, src.faction.minimap_flag, "xenotunnel")
 
 /obj/structure/tunnel/proc/forsaken_handling()
 	SIGNAL_HANDLER

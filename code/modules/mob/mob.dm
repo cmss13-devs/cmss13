@@ -56,8 +56,10 @@
 	focus = null
 
 /mob/Initialize()
-	if(faction_to_get)
+	if(!faction && faction_to_get)
 		faction = GLOB.faction_datums[faction_to_get]
+
+	faction.add_mob(src)
 
 	GLOB.last_mob_gid++
 	gid = GLOB.last_mob_gid

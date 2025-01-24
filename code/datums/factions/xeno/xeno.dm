@@ -1,6 +1,6 @@
 /datum/faction/xenomorph
 	name = "Xenomorphs"
-	desc = "Xenomorph hive among the all other hives."
+	desc = "Unknow biological weapon, no know place where it begun, but we all know place where it ends. For additional information required access 6X-X / XC-X or higher..."
 	code_identificator = FACTION_XENOMORPH
 
 	color = null
@@ -10,8 +10,8 @@
 	relations_pregen = RELATIONS_FACTION_XENOMORPH
 
 /datum/faction/xenomorph/New()
+	faction_modules[FACTION_MODULE_HIVE_MIND] = new /datum/faction_module/hive_mind(src)
 	. = ..()
-	faction_modules += new /datum/faction_module/hive_mind(src)
 
 /datum/faction/xenomorph/faction_is_ally(datum/faction/faction)
 	var/datum/faction_module/hive_mind/faction_module = get_faction_module(FACTION_MODULE_HIVE_MIND)

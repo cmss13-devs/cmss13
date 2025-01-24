@@ -1,5 +1,5 @@
 /datum/faction/uscm/marsoc
-	name = NAME_FACTION_MARSOC
+	name = "Marine Special Operations Command"
 	desc = "Decryption required"
 	code_identificator = FACTION_MARSOC
 

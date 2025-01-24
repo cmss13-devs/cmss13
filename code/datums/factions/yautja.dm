@@ -1,5 +1,5 @@
 /datum/faction/yautja
-	name = "Yautja Hanting Groop"
+	name = "Yautja Hunting Groop"
 	desc = "Unable to extract addition information."
 	code_identificator = FACTION_YAUTJA
 

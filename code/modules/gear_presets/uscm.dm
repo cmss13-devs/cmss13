@@ -800,6 +800,7 @@
 /datum/equipment_preset/uscm/marsoc
 	name = "Marine Raider (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
+	job_faction = FACTION_MARSOC
 	assignment = "Marine Raider"
 	rank = JOB_MARINE_RAIDER
 	role_comm_title = "Op."

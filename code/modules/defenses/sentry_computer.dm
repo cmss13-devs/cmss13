@@ -34,7 +34,6 @@
 
 	var/can_identify_target = FALSE // if the laptop should broadcast what it is shooting at
 
-	var/list/faction_group
 	var/screen_state = 0 // controls the 'loading' animation
 
 	/// The turf where the camera was last updated.
@@ -61,7 +60,6 @@
 	AddComponent(/datum/component/camera_manager)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
-	faction_group = FACTION_LIST_MARINE
 	transceiver.forceMove(src)
 	transceiver.set_frequency(SENTRY_FREQ)
 	transceiver.config(list(RADIO_CHANNEL_SENTRY=1))

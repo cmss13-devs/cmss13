@@ -764,7 +764,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	HTML += "<center><br><a class='green' href='?_src_=prefs;preference=job;task=faction'>Change faction</a></center><br>"
+	HTML += "<center><br><a class='green' href=''byond://?_src_=prefs;preference=job;task=faction'>Change faction</a></center><br>"
 
 	if(user.client?.prefs) //Just makin sure
 		var/b_color = "green"
@@ -851,7 +851,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	HTML += "</td></tr></table>"
 	HTML += "</center></table><br>"
 
-	HTML += "<center><br><a class='green' href='?_src_=prefs;preference=job_slot;task=faction'>Change faction</a></center><br>"
+	HTML += "<center><br><a class='green' href=''byond://?_src_=prefs;preference=job_slot;task=faction'>Change faction</a></center><br>"
 
 	var/b_color
 	var/msg

@@ -41,7 +41,7 @@
 	/// The range that this turret can shoot at the furthest
 	var/turret_range = 5
 	/// What factions this sentry is aligned with
-	var/faction_group = FACTION_LIST_MARINE
+	var/faction = FACTION_MARINE
 
 /obj/item/hardpoint/primary/arc_sentry/on_install(obj/vehicle/multitile/vehicle)
 	. = ..()
@@ -85,7 +85,7 @@
 
 /obj/item/hardpoint/primary/arc_sentry/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff, faction_group)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff, faction)
 	))
 
 /obj/item/hardpoint/primary/arc_sentry/fire_wrapper(atom/target, mob/living/user, params)

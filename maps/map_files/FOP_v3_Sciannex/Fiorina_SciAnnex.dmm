@@ -843,7 +843,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "aFp" = (
 /obj/structure/machinery/defenses/tesla_coil/premade/smart{
-	faction_group = list("CLF")
+	faction_to_get = "clf"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
@@ -29996,7 +29996,7 @@
 /area/fiorina/station/medbay)
 "xgx" = (
 /obj/structure/machinery/defenses/tesla_coil/premade{
-	faction_group = list("USCM")
+	faction_to_get = "clf"
 	},
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)

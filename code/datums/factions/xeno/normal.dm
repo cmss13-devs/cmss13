@@ -24,7 +24,7 @@
 	)
 	coefficient_per_role = list(
 		JOB_XENOMORPH = 8,
-		JOB_XENOMORPH_QUEEN = 16
+		JOB_XENOMORPH_QUEEN = 16,
 	)
 	weight_act = list(
 		MODE_NAME_EXTENDED = FALSE,

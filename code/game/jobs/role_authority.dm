@@ -433,8 +433,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 
 /datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
-	set waitfor = FALSE
-
 	if(!istype(new_mob) || !istype(new_job))
 		return
 
@@ -445,7 +443,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/mob/living/carbon/human/new_human = new_mob
 
-	new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
+	if(!late_join)
+		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
 
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
 		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])

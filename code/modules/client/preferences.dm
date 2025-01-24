@@ -275,6 +275,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	/// Loadout items that the user is equipped with on spawn.
 	VAR_PRIVATE/list/loadout
 
+	var/list/loadout_slot_names
+
 	var/selected_loadout_slot = 1
 
 
@@ -2255,8 +2257,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	picker_ui = SStgui.get_open_ui(user, body_picker)
 	picker_ui?.send_update()
 
+	/// the loadout picker does a lot of work in static data, so
 	picker_ui = SStgui.get_open_ui(user, loadout_picker)
-	picker_ui?.send_update()
+	picker_ui?.send_full_update()
 
 	picker_ui = SStgui.get_open_ui(user, traits_picker)
 	picker_ui?.send_update()
@@ -2333,7 +2336,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/options = list()
 
 	for(var/slot in loadout_for_role)
-		options["Slot [slot]"] = slot
+		var/string_to_use = "Slot [slot]"
+		if(loadout_slot_names[picked_job] && loadout_slot_names[picked_job][slot])
+			string_to_use = loadout_slot_names[picked_job][slot]
+		options[string_to_use] = slot
 
 	owner.mob.sight = BLIND
 	var/selected = tgui_input_list(owner, "You have loadout available - which slot would you like to use?", "Slot Selection", options, theme = "crtgreen", timeout = timeout)

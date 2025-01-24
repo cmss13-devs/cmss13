@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Divider, DmIcon, Section, Stack } from '../components';
+import {
+  Box,
+  Button,
+  Divider,
+  DmIcon,
+  Input,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 import { Loader } from './common/Loader';
 
@@ -18,6 +26,8 @@ type LoadoutPickerData = {
   max_job_points: number;
   selected_loadout_slot: number;
   max_save_slots: number;
+
+  loadout_slot_names: { [key: string]: string };
 };
 
 type Category = {
@@ -43,11 +53,14 @@ export const LoadoutPicker = () => {
     loadout_categories,
     selected_loadout_slot,
     max_save_slots,
+    loadout_slot_names,
   } = data;
 
   const [selected, setSelected] = useState<Category | undefined>();
 
   const [menu, setMenu] = useState<'fluff' | 'loadout'>('fluff');
+
+  const [renameSlot, setRenamingSlot] = useState<number | null>(null);
 
   useEffect(() => {
     if (menu === 'fluff') {
@@ -58,7 +71,7 @@ export const LoadoutPicker = () => {
   }, [fluff_categories, menu]);
 
   return (
-    <Window height={600} width={865} theme="crtblue">
+    <Window height={600} width={950} theme="crtblue">
       <Window.Content className="LoadoutPicker">
         <Stack fill>
           <Stack.Item>
@@ -75,14 +88,35 @@ export const LoadoutPicker = () => {
                 <Stack.Item>
                   <Stack fill justify="space-evenly">
                     {Array.from({ length: max_save_slots }).map((_, val) => (
-                      <Stack.Item key={val}>
-                        <Button
-                          selected={selected_loadout_slot === val + 1}
-                          onClick={() => act('slot', { picked: val + 1 })}
-                          fluid
-                        >
-                          Slot {val + 1}
-                        </Button>
+                      <Stack.Item grow key={val}>
+                        {renameSlot === val ? (
+                          <Input
+                            placeholder="Slot name..."
+                            onChange={(_, newName) => {
+                              act('name_slot', {
+                                name: newName,
+                                slot: val + 1,
+                              });
+                              setRenamingSlot(null);
+                            }}
+                          />
+                        ) : (
+                          <Button
+                            selected={selected_loadout_slot === val + 1}
+                            onClick={() => act('slot', { picked: val + 1 })}
+                            onContextMenu={(event) => {
+                              event.preventDefault();
+                              setRenamingSlot(val);
+                            }}
+                            tooltip="Right click to rename"
+                            fluid
+                          >
+                            {loadout_slot_names &&
+                            loadout_slot_names[(val + 1).toString()]
+                              ? loadout_slot_names[(val + 1).toString()]
+                              : `Slot ${val + 1}`}
+                          </Button>
+                        )}
                       </Stack.Item>
                     ))}
                   </Stack>
@@ -195,7 +229,7 @@ const Sidebar = (props: {
         >
           <Stack wrap width="180px" height="165px">
             {(menu === 'fluff' ? fluff_gear : loadout).map((item, index) => (
-              <Stack.Item key={index} className="ItemPicker">
+              <Stack.Item key={`${index}${item.type}`} className="ItemPicker">
                 <ItemRender item={item} loadout />
               </Stack.Item>
             ))}

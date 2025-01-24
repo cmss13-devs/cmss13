@@ -452,7 +452,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.job == JOB_CO)
 				captainless = FALSE
 			if(player.job)
-				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
+				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)
 				if(player.ckey in GLOB.donator_items)
 					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 

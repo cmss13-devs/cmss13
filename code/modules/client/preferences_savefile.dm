@@ -359,6 +359,7 @@
 	S["lastchangelog"] >> lastchangelog
 
 	S["job_loadout"] >> loadout
+	S["job_loadout_names"] >> loadout_slot_names
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -441,6 +442,7 @@
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
 
 	loadout = sanitize_loadout(loadout, owner)
+	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -584,6 +586,7 @@
 	S["lastchangelog"] << lastchangelog
 
 	S["job_loadout"] << save_loadout(loadout)
+	S["job_loadout_names"] << loadout_slot_names
 
 	return TRUE
 

@@ -73,6 +73,7 @@
 
 	.["selected_job"] = job
 	.["max_job_points"] = job ? GLOB.RoleAuthority.roles_by_name[job].loadout_points : 0
+	.["loadout_slot_names"] = prefs.loadout_slot_names[job]
 
 /datum/loadout_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -143,6 +144,28 @@
 			picked_slot = clamp(picked_slot, 1, MAX_SAVE_SLOTS)
 
 			prefs.selected_loadout_slot = picked_slot
+
+		if("name_slot")
+			var/name = params["name"]
+			if(!name)
+				return
+
+			name = strip_html(name, MAX_NAME_LEN)
+			if(!length(name))
+				return
+
+			var/slot = params["slot"]
+			if(!slot || !isnum(slot))
+				return
+
+			slot = clamp(slot, 1, MAX_SAVE_SLOTS)
+			if(!slot)
+				return
+
+			if(!prefs.loadout_slot_names[job])
+				prefs.loadout_slot_names[job] = list()
+
+			prefs.loadout_slot_names[job]["[slot]"] = name
 
 	prefs.ShowChoices(ui.user)
 	return TRUE

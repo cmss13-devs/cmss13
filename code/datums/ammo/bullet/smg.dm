@@ -22,6 +22,11 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	accuracy = HIT_ACCURACY_TIER_3
 
+/datum/ammo/bullet/smg/setup_faction_clash_values()
+	accuracy_range = 7 //I need to make noraml smg and m10 somewhat viable
+	penetration = ARMOR_PENETRATION_TIER_3
+	. = ..()
+
 /datum/ammo/bullet/smg/m39
 	name = "high-velocity submachinegun bullet" //i don't want all smgs to inherit 'high velocity'
 

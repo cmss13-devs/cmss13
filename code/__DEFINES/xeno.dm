@@ -407,6 +407,9 @@
 #define PRAETORIAN_WARDEN "Warden"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
+// Spitter strain flags
+#define SPITTER_ALCHEMIST "Alchemist"
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // Modifiers

@@ -15,6 +15,8 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
+	available_strains = list(/datum/xeno_strain/alchemist)
+	behavior_delegate_type = /datum/behavior_delegate/spitter_base
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
@@ -63,3 +65,6 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+
+/datum/behavior_delegate/spitter_base
+	name = "Base Spitter Behavior Delegate"

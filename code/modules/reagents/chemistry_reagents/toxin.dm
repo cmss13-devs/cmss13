@@ -283,3 +283,86 @@
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)
+
+// Spitter Alchemist Chemicals
+/datum/reagent/toxin/alchemic
+	name = "Unknown Catalyst"
+	id = "xenoalch_base"
+	description = "A highly bizarre chemical compound of Xenomorph origin. What it does exactly is seemingly impossible to discern, and it probably shouldn't exist."
+	color = "#ffffff"
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_NONE
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3)
+	// Decides if this chem purges specific chems or not
+	var/purges_specific_chems = FALSE
+	// What chems this chem purges specifically
+	var/specific_chem_purge = list()
+	var/purge_amount = 0.2
+
+/datum/reagent/toxin/alchemic/on_mob_life(mob/living/victim)
+	. = ..()
+	if(!.)
+		return
+	if(purges_specific_chems)
+		victim.reagents.remove_all_type(specific_chem_purge, purge_amount, 0, 1)
+
+/datum/reagent/toxin/alchemic/sagunine
+	name = "Sagunine"
+	id = "xenoalch_brute"
+	description = "A blood red chemical compound of Xenomorph origin. Has cytotoxic properties resulting in necrosis of tissue, and appears to purge certain chemicals with neogenetic properties."
+	color = "#880808"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_BIOCIDIC = 2)
+	purges_specific_chems = TRUE
+	specific_chem_purge = list(/datum/reagent/medical/bicaridine, /datum/reagent/medical/meralyne)
+
+/datum/reagent/toxin/alchemic/cholinine
+	name = "Cholinine"
+	id = "xenoalch_burn"
+	description = "A sickly yellow chemical compound of Xenomorph origin. Has caustic properties resulting in internal chemical burns, and appears to purge certain chemicals with anti-corrosive properties."
+	color = "#FDFD96"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_CORROSIVE = 2)
+	purges_specific_chems = TRUE
+	specific_chem_purge = list(/datum/reagent/medical/kelotane, /datum/reagent/medical/dermaline)
+
+/datum/reagent/toxin/alchemic/noctine
+	name = "Noctine"
+	id = "xenoalch_pain"
+	description = "A dark chemical compound of Xenomorph origin. Has neuropathic properties resulting in high pain induction, and appears to purge certain chemicals with painkilling properties."
+	color = "#280138"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_PAINING = 2)
+	purges_specific_chems = TRUE
+	specific_chem_purge = list(/datum/reagent/medical/paracetamol, /datum/reagent/medical/tramadol, /datum/reagent/medical/oxycodone)
+
+/datum/reagent/toxin/alchemic/pyrinine
+	name = "Pyrinine"
+	id = "xenoalch_fire"
+	description = "."
+	color = "#CC5500"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HYPERTHERMIC = 2)
+
+/datum/reagent/toxin/alchemic/vapinine
+	name = "Vapinine"
+	id = "xenoalch_bloodloss"
+	description = "."
+	color = "#45192b"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HEMOLYTIC = 0.5)
+
+/datum/reagent/toxin/alchemic/crynine
+	name = "Crynine"
+	id = "xenoalch_freeze"
+	description = "."
+	color = "#003b38"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3, PROPERTY_HYPOTHERMIC = 2)
+	purges_specific_chems = TRUE
+	specific_chem_purge = list(/datum/reagent/medical/cryoxadone, /datum/reagent/medical/clonexadone)
+
+/datum/reagent/toxin/alchemic/xenosterine
+	name = "Xenosterine"
+	id = "xenoalch_purge"
+	description = "."
+	color = "#e3dac9"
+	properties = list(PROPERTY_CROSSMETABOLIZING = 3)
+	purges_specific_chems = TRUE
+	specific_chem_purge = list(/datum/reagent/medical, /datum/reagent/generated, /datum/reagent/stimulant)
+	purge_amount = 1

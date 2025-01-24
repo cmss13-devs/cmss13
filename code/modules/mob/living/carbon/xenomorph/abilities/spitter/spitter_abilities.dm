@@ -42,3 +42,40 @@
 
 /datum/action/xeno_action/activable/tail_stab/spitter
 	name = "Corrosive Tail Stab"
+
+// Alchemist Abilities
+
+/datum/action/xeno_action/activable/tail_inject
+	name = "Tail Injection"
+	action_icon_state = "tail_attack"
+	macro_path = /datum/action/xeno_action/verb/verb_tail_injection
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	action_type = XENO_ACTION_ACTIVATE
+	plasma_cost = 50
+	xeno_cooldown = 12 SECONDS
+
+/datum/action/xeno_action/onclick/select_alchem
+	name = "Select Chemical"
+	action_icon_state = "emit_pheromones"
+	macro_path = /datum/action/xeno_action/verb/verb_select_alchem
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/onclick/produce_alchem
+	name = "Produce Chemical"
+	action_icon_state = "emit_pheromones"
+	macro_path = /datum/action/xeno_action/verb/verb_produce_alchem
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	action_type = XENO_ACTION_CLICK
+	plasma_cost = 50
+	xeno_cooldown = 3 SECONDS
+
+	var/amount = 2
+
+/datum/action/xeno_action/onclick/remove_alchem
+	name = "Remove Chemical"
+	action_icon_state = "emit_pheromones"
+	macro_path = /datum/action/xeno_action/verb/verb_remove_alchem
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	action_type = XENO_ACTION_CLICK
+	plasma_cost = 25

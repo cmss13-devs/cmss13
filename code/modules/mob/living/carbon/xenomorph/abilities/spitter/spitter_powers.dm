@@ -151,7 +151,7 @@
 	carbon.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(carbon)] with Tail Injection")
 
-	apply_cooldown(1 * (alchemist.total_pool * 0.05))
+	apply_cooldown(1 * round(alchemist.total_pool * 0.07))
 	return ..()
 
 /datum/action/xeno_action/activable/tail_inject/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)

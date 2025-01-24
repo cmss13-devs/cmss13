@@ -242,9 +242,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/nw)
-"eT" = (
-/turf/open/mars_cave/mars_cave_20,
-/area/bigredv2/outside/lz1_north_cas)
 "eV" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/mars/mars_dirt_9,
@@ -334,9 +331,6 @@
 	},
 /turf/open/floor/plating/platebot,
 /area/bigredv2/outside/space_port)
-"gI" = (
-/turf/open/mars_cave/mars_dirt_7,
-/area/bigredv2/outside/lz1_north_cas)
 "gV" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
@@ -445,12 +439,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
-"kp" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "kq" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_cave_2,
@@ -558,9 +546,6 @@
 /area/bigredv2/outside/space_port)
 "mp" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/lz1_north_cas)
 "mq" = (
@@ -703,12 +688,6 @@
 	},
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigred/ground/garage_workshop)
-"pR" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_17,
-/area/bigredv2/outside/lz1_north_cas)
 "pZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
@@ -779,18 +758,6 @@
 	pixel_x = -13
 	},
 /turf/open/mars_cave/mars_cave_17,
-/area/bigredv2/outside/lz1_north_cas)
-"rf" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_19,
-/area/bigredv2/outside/lz1_north_cas)
-"rj" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "rx" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -887,12 +854,6 @@
 /obj/structure/platform_decoration/stone/kutjevo/east,
 /turf/open/mars_cave/mars_cave_2,
 /area/space)
-"tC" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/lz1_north_cas)
 "tI" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigred/ground/garage_workshop)
@@ -1442,18 +1403,8 @@
 /area/bigredv2/outside/space_port)
 "FI" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/barricade/plasteel/wired{
-	dir = 4
-	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/outside/lz1_north_cas)
-"FN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "FS" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -2124,12 +2075,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
-"Tx" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_cave_15,
-/area/bigredv2/outside/lz1_north_cas)
 "Ty" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor/asteroidplating,
@@ -2402,12 +2347,6 @@
 "YN" = (
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
-"YO" = (
-/obj/structure/barricade/plasteel/wired{
-	dir = 4
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/lz1_north_cas)
 "YP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-in"
@@ -4435,8 +4374,8 @@ DO
 DO
 PV
 EK
-FN
-kp
+ZX
+nl
 VT
 nl
 ZZ
@@ -4539,7 +4478,7 @@ Fv
 "}
 (39,1,1) = {"
 DO
-gI
+DO
 Rh
 gq
 Rh
@@ -4592,7 +4531,7 @@ ns
 Dk
 "}
 (40,1,1) = {"
-Rh
+DO
 Rh
 Rh
 Rh
@@ -4646,7 +4585,7 @@ lQ
 kI
 "}
 (41,1,1) = {"
-aK
+DO
 Rh
 Rh
 Cd
@@ -4701,11 +4640,11 @@ so
 "}
 (42,1,1) = {"
 DO
-tC
-rf
-rj
-rj
-rj
+Rh
+Cd
+Nv
+Nv
+Nv
 FI
 VT
 If
@@ -4864,10 +4803,10 @@ YN
 (45,1,1) = {"
 DO
 DO
-YO
-pR
-Tx
-tC
+Rh
+pu
+LS
+Rh
 mp
 VT
 cB
@@ -4972,7 +4911,7 @@ so
 (47,1,1) = {"
 DO
 Rh
-Cd
+DO
 Nv
 Nv
 Sk
@@ -5025,9 +4964,9 @@ UK
 "}
 (48,1,1) = {"
 DO
-Rh
-pu
-Nv
+DO
+DO
+DO
 Nv
 Nv
 DO
@@ -5079,11 +5018,11 @@ bf
 "}
 (49,1,1) = {"
 DO
-Rh
-eT
-Nv
-Nv
-Nv
+DO
+DO
+DO
+DO
+DO
 DO
 VT
 VT
@@ -5134,10 +5073,10 @@ bf
 (50,1,1) = {"
 DO
 gq
-Rh
-eT
-Nv
-Nv
+DO
+DO
+DO
+DO
 DO
 DO
 DO
@@ -5190,8 +5129,8 @@ DO
 aK
 Rh
 Rh
-pu
-Nv
+DO
+DO
 DO
 DO
 DO

@@ -15287,14 +15287,7 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
-	pixel_y = 12
-	},
-/obj/structure/transmitter/rotary{
-	name = "Commanding Officer's Office Third Line";
-	phone_category = "Offices";
-	phone_id = "Commanding Officer's Office Third Line";
-	pixel_x = 4;
-	pixel_y = 18
+	pixel_y = 13
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -21442,13 +21435,6 @@
 /obj/item/device/flashlight/lamp/green{
 	pixel_x = -16;
 	pixel_y = 8
-	},
-/obj/structure/transmitter/rotary{
-	name = "Commanding Officer's Office Fourth Line";
-	phone_category = "Offices";
-	phone_id = "Commanding Officer's Office Fourth Line";
-	pixel_x = -4;
-	pixel_y = 18
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)

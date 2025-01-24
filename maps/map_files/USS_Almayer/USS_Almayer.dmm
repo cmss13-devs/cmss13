@@ -34444,7 +34444,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/medical_science)
 "kqt" = (

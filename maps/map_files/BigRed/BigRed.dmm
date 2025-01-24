@@ -21341,6 +21341,12 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
+"cMD" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1north_mining"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/space_port)
 "cMU" = (
 /obj/structure/surface/table,
 /obj/item/tool/pen{
@@ -99318,7 +99324,7 @@ wcs
 aae
 aae
 aae
-aae
+cMD
 aah
 pXM
 aaU

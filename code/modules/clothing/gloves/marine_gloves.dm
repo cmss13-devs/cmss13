@@ -7,7 +7,7 @@
 	icon_state = "black"
 	item_state = "black"
 	siemens_coefficient = 0.6
-	permeability_coefficient = 0.05
+
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
@@ -23,7 +23,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/adopts_squad_color = TRUE
 	/// The dmi where the grayscale squad overlays are contained
-	var/squad_overlay_icon = 'icons/mob/humans/onmob/hands_garb.dmi'
+	var/squad_overlay_icon = 'icons/mob/humans/onmob/clothing/hands_garb.dmi'
 
 /obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/current_human, slot, default_bodytype = "Default")
 	var/image/ret = ..()
@@ -63,7 +63,7 @@
 	name = "marine medical combat gloves"
 	desc = "Standard issue marine sterile gloves, offers regular protection whilst offering the user a better grip when performing medical work."
 	icon_state = "latex"
-	item_state = "lgloves"
+	item_state = "latex"
 	adopts_squad_color = FALSE
 
 
@@ -84,14 +84,14 @@
 	icon_state = "yellow"
 	item_state = "ygloves"
 	siemens_coefficient = 0
-	permeability_coefficient = 0.01
+
 	adopts_squad_color = FALSE
 
-/obj/item/clothing/gloves/marine/techofficer/commander
-	name = "commanding officer's gloves"
-	desc = "You may like these gloves, but THEY think you are unworthy of them."
+/obj/item/clothing/gloves/marine/techofficer/fancy
+	name = "deluxe combat gloves"
+	desc = "Combat gloves finished in an almost golden-looking fabric. Insulated, fashionable, and capable of protecting the soft hands it's likely wrapped around."
 	icon_state = "captain"
-	item_state = "egloves"
+	item_state = "captain"
 
 /obj/item/clothing/gloves/marine/specialist
 	name = "\improper B18 defensive gauntlets"
@@ -170,7 +170,7 @@
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
-	icon_state = "white"
+	icon_state = "marine_white"
 	item_state = "marine_white"
 	adopts_squad_color = FALSE
 

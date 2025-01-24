@@ -3,7 +3,7 @@
 /obj/item/alien_embryo
 	name = "alien embryo"
 	desc = "All slimy and yucky."
-	icon = 'icons/mob/xenos/larva.dmi'
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 	icon_state = "Embryo"
 	var/mob/living/affected_mob
 	var/stage = 0

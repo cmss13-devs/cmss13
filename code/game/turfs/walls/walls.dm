@@ -103,7 +103,7 @@
 		var/list/turf/cardinal_neighbors = list(get_step(src, NORTH), get_step(src, SOUTH), get_step(src, EAST), get_step(src, WEST))
 		for(var/turf/cardinal_turf as anything in cardinal_neighbors)
 			for(var/obj/structure/bed/nest/found_nest in cardinal_turf)
-				if(found_nest.dir == get_dir(found_nest, src))
+				if(found_nest.dir == get_dir(found_nest, src) && !density)
 					qdel(found_nest) //nests are built on walls, no walls, no nest
 
 /turf/closed/wall/MouseDrop_T(mob/current_mob, mob/user)

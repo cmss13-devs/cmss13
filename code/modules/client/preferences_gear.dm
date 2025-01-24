@@ -406,7 +406,7 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 
 /datum/gear/paperwork/pen_fountain
 	display_name = "Pen, fountain"
-	path = /obj/item/tool/pen/fountain
+	path = /obj/item/tool/pen/multicolor/fountain
 	cost = 3
 
 /datum/gear/paperwork/paper
@@ -992,3 +992,8 @@ GLOBAL_LIST_EMPTY_TYPED(gear_datums_by_name, /datum/gear)
 	display_name = "Cut-throat razor"
 	path = /obj/item/weapon/straight_razor
 	cost = 3
+
+/datum/gear/misc/watch
+	display_name = "Cheap wrist watch"
+	path = /obj/item/clothing/accessory/wrist/watch
+	cost = 1 // Cheap and crappy

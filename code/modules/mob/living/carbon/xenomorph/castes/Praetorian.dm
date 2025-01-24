@@ -67,8 +67,8 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	icon_xeno = 'icons/mob/xenos/praetorian.dmi'
-	icon_xenonid = 'icons/mob/xenonids/praetorian.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/praetorian.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Praetorian_1","Praetorian_2","Praetorian_3")

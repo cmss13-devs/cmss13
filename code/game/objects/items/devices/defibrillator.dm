@@ -2,7 +2,12 @@
 	name = "emergency defibrillator"
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
 	icon_state = "defib"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	item_state = "defib"
+	icon = 'icons/obj/items/medical_tools.dmi'
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON
 	flags_equip_slot = SLOT_WAIST
@@ -24,6 +29,7 @@
 	var/datum/effect_system/spark_spread/sparks = new
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
 	var/shock_cooldown = 0 //cooldown for shocking someone - separate to toggling
+	var/base_icon_state = "defib" //used for overlays of charge
 
 	/// Skill requirements.
 	var/skill_to_check = SKILL_MEDICAL
@@ -79,15 +85,15 @@
 	if(dcell && dcell.charge)
 		switch(floor(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
-				overlays += "+full"
+				overlays += "+[base_icon_state]full"
 			if(34 to 66)
-				overlays += "+half"
+				overlays += "+[base_icon_state]half"
 			if(3 to 33)
-				overlays += "+low"
+				overlays += "+[base_icon_state]low"
 			if(0 to 3)
-				overlays += "+empty"
+				overlays += "+[base_icon_state]empty"
 	else
-		overlays += "+empty"
+		overlays += "+[base_icon_state]empty"
 
 /obj/item/device/defibrillator/get_examine_text(mob/user)
 	. = ..()
@@ -97,7 +103,7 @@
 	currentuses = floor(dcell.charge / charge_cost)
 	if(maxuses != 1)
 		. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
@@ -170,7 +176,7 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
 		return
 
-	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
+	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
@@ -203,7 +209,7 @@
 	if(istype(G) && G.client)
 		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
-			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
+			(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here!</a>)")))
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the [fluff_tool] on [target]'s [fluff_target_part]"), \
 		SPAN_HELPFUL("You start <b>setting up</b> the [fluff_tool] on <b>[target]</b>'s [fluff_target_part]."))
@@ -291,9 +297,10 @@
 /obj/item/device/defibrillator/compact_adv
 	name = "advanced compact defibrillator"
 	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge. It does not damage the heart."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
+	base_icon_state = "compact_defib"
 	w_class = SIZE_MEDIUM
 	blocked_by_suit = FALSE
 	min_heart_damage_dealt = 0
@@ -304,27 +311,30 @@
 /obj/item/device/defibrillator/compact
 	name = "compact defibrillator"
 	desc ="This particular defibrillator has halved charge capacity compared to the standard emergency defibrillator, but can fit in your pocket."
-	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
+	base_icon_state = "compact_defib"
 	w_class = SIZE_SMALL
 	charge_cost = 99
 
 
 /obj/item/device/defibrillator/synthetic
-	name = "synthetic reset key"
+	name = "W-Y synthetic reset key"
 	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
 	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
 	icon_state = "reset_key"
-	item_state = "defib"
+	item_state = "synth_reset_key"
 	w_class = SIZE_SMALL
 	charge_cost = 1000
 	force = 0
 	throwforce = 0
-	skill_to_check_alt = SKILL_ENGINEER
-	skill_level_alt = SKILL_ENGINEER_ENGI
+	skill_to_check = SKILL_ENGINEER
+	skill_level = SKILL_ENGINEER_TRAINED
 	blocked_by_suit = FALSE
 	should_spark = FALSE
+
+	var/synthetic_type_locked = null
 
 	fluff_tool = "electrodes"
 	fluff_target_part = "insertion port"
@@ -343,6 +353,10 @@
 	if(ready)
 		icon_state += "_on"
 
+/obj/item/device/defibrillator/synthetic/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You need some knowledge of electronics and circuitry to use this.")
+
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
 		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
@@ -350,6 +364,9 @@
 	if(!ready)
 		balloon_alert(user, "activate it first!")
 		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
+		return FALSE
+	if(synthetic_type_locked && !istype(H.assigned_equipment_preset, synthetic_type_locked))
+		to_chat(user, SPAN_WARNING("You can't use [src] on this type of synthetic!"))
 		return FALSE
 	if(dcell.charge < charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] has already been used! It needs to be recharged."))
@@ -365,7 +382,32 @@
 	return TRUE
 
 /obj/item/device/defibrillator/synthetic/noskill
-	name = "SMART synthetic reset key"
+	name = "SMART W-Y synthetic reset key"
 	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
 	icon_state = "reset_key_ns"
 	noskill = TRUE
+
+/obj/item/device/defibrillator/synthetic/hyperdyne
+	name = "Hyperdyne synthetic reset key"
+	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	icon_state = "hyper_reset_key"
+
+/obj/item/device/defibrillator/synthetic/hyperdyne/noskill
+	name = "SMART Hyperdyne synthetic reset key"
+	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	icon_state = "hyper_reset_ns_key"
+	noskill = TRUE
+
+/obj/item/device/defibrillator/synthetic/seegson
+	name = "Seegson Working Joe reboot key"
+	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to a factory settings. Isn't compatible with sythetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
+	icon_state = "seeg_reset_key"
+	sound_success = 'sound/items/synth_reset_key/seegson_revive.ogg'
+	synthetic_type_locked = /datum/equipment_preset/synth/working_joe
+
+/obj/item/device/defibrillator/synthetic/makeshift
+	name = "makeshift synthetic sparker"
+	desc = "A tool resembling a synthetic reset key, but extremely crude and made from spare parts, only capable of rebooting the system of a synthetic, with a small chance of corrupting that system. It can only be used once before being reset."
+	icon_state = "makeshift_key"
+	should_spark = TRUE
+	sound_success = "sparks"

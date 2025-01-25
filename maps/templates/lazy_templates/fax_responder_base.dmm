@@ -187,6 +187,16 @@
 /obj/structure/machinery/computer/spy_camera/cmb,
 /turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
+"au" = (
+/obj/structure/machinery/cm_vending/clothing/corporate_liaison{
+	pixel_y = 24;
+	pixel_x = 16;
+	density = 0;
+	name = "\improper Corporate Wardrobe";
+	vendor_role = list("WY Communications Executive")
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
 "az" = (
 /obj/structure/machinery/cryopod/no_store{
 	pixel_y = 13
@@ -6333,7 +6343,7 @@ SS
 jr
 hC
 QD
-FB
+au
 kV
 Nd
 IG

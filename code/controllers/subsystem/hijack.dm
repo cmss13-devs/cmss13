@@ -308,7 +308,7 @@ SUBSYSTEM_DEF(hijack)
 		if(!shuttle)
 			CRASH("Warning, something went wrong at evacuation shuttles check, please review shuttles spelling")
 		else if(!is_mainship_level(shuttle.z))
-			return shuttle_id
+			return shuttle.name
 	return FALSE
 
 /datum/controller/subsystem/hijack/proc/ship_evac_blocked()

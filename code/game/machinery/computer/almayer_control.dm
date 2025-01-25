@@ -84,8 +84,8 @@
 	data["evac_status"] = SShijack.evac_status
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
 		data["evac_eta"] = SShijack.get_evac_eta()
-	data["operation_reason"] = SSevacuation.ship_evac_blocked()
-	data["operation_stage"] = SSevacuation.get_ship_operation_stage_status_panel_eta()
+	data["operation_reason"] = SShijack.ship_evac_blocked()
+	data["operation_stage"] = SShijack.get_ship_operation_stage_status_panel_eta()
 	data["operation_leaving"] = SShijack.ship_evac_blocked() ? 0 : SShijack.ship_operation_stage_status > 3
 
 	if(!length(messagetitle))

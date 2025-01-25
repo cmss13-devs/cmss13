@@ -8944,17 +8944,6 @@
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/computerlab)
-"bgB" = (
-/obj/structure/surface/table/reinforced/almayer_B{
-	explo_proof = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/machinery/faxmachine/uscm/command{
-	department = "AI Core"
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "bgC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/bed/chair/comfy/charlie{
@@ -133338,7 +133327,7 @@ bAm
 bAm
 baj
 aiJ
-bgB
+pGJ
 qbR
 baj
 bJz

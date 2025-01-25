@@ -1036,7 +1036,6 @@
 	uses_special_name = TRUE
 
 /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE, FEMALE)
 	var/mob_name = "Dummy"
 	new_human.change_real_name(new_human, mob_name)
 

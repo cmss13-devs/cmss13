@@ -643,6 +643,7 @@
 
 	S["preferred_squad"] >> preferred_squad
 	S["preferred_armor"] >> preferred_armor
+	S["night_vision_preference"] >> night_vision_preference
 	S["weyland_yutani_relation"] >> weyland_yutani_relation
 	//S["skin_style"] >> skin_style
 
@@ -695,6 +696,7 @@
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
+	night_vision_preference = sanitize_inlist(night_vision_preference, GLOB.nvg_color_list, "Green")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -794,6 +796,7 @@
 	S["weyland_yutani_relation"] << weyland_yutani_relation
 	S["preferred_squad"] << preferred_squad
 	S["preferred_armor"] << preferred_armor
+	S["night_vision_preference"] << night_vision_preference
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation

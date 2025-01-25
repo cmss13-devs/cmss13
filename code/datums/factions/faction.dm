@@ -88,6 +88,7 @@
 
 	if(hard)
 		creature.faction = null
+		total_dead_mobs -= creature
 	else
 		total_dead_mobs |= creature
 

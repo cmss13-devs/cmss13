@@ -91,7 +91,7 @@ DEFINE_BITFIELD(iff_flag_flags, list(
 /obj/item/faction_tag/organ
 	name = "Sticky Gland"
 	desc = "Strange organic object, that somehow help to be indentificated."
-	icon_state = "gland_tag"
+//	icon_state = "gland_tag"
 	tag_flags = ORGAN_TAG
 
 /obj/item/faction_tag/organ/zombie

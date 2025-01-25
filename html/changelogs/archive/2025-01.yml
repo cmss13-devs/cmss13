@@ -441,3 +441,18 @@
   realforest2001:
   - bugfix: Fixes a looping check that spams ARES until we die.
   - admin: Changed Mentor AutoReplies to use the admin autoresponse system.
+2025-01-25:
+  Red-byte3D:
+  - rscadd: Xenomorphs now get lisps if the person they bursted from had that trait
+  Ultimate-Fluff:
+  - imageadd: Synthetic Maintenance Stations now blink red if they cannot be operated
+      under any circumstances.
+  - imageadd: Synthetic Maintenance Stations flash green whether or not an APC is
+      powering it to indicate it can still operate with charge.
+  - bugfix: Synthetic Maintenance Stations now properly display the correct occupied
+      icon state whether or not there is an APC powering the machine whilst somebody
+      is inside.
+  - code_imp: Fixed and added code that makes Synthetic Maintenance Stations automatically
+      eject patients if they run out of charge while operating.
+  - code_imp: Added code that disables patients from entering the Synthetic Maintenance
+      Station if it has no charge left.

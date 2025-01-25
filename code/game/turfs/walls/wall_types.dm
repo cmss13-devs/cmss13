@@ -219,6 +219,9 @@
 	icon = 'icons/turf/walls/almayer_aicore.dmi'
 	icon_state = "aiwall"
 
+	baseturfs = /turf/open/floor/almayer/no_build/plating
+	turf_flags = parent_type::turf_flags|TURF_NO_MULTIZ_SUPPORT
+
 /turf/closed/wall/almayer/aicore/reinforced
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
@@ -727,7 +730,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
-	turf_flags = TURF_ORGANIC
+	turf_flags = parent_type::turf_flags|TURF_ORGANIC
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()

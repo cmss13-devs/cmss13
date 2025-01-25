@@ -160,7 +160,7 @@
 					return FALSE
 			return TRUE
 		if(UP)
-			if(antipierce)
+			if(antipierce && source.z != z)
 				return FALSE
 
 			var/fdir = get_dir(mover, src)

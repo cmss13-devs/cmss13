@@ -51,7 +51,8 @@
 	var/turf/checking = get_step_multiz(our_loc, UP)
 	if(!istype(checking) || !checking.zPassIn(climber, UP, our_loc))
 		return
-	checking = get_step_multiz(our_loc, (direction|UP))
+	our_loc = checking
+	checking = get_step(our_loc, direction)
 	if(!checking.zPassIn(climber, UP, our_loc))
 		return
 	if(!climber.can_z_move(DOWN, checking, z_move_flags = ZMOVE_FALL_FLAGS)) //Don't throw them into a tile that will just dump them back down.

@@ -6,7 +6,7 @@
 	base_icon = "glass-0"
 	special_icon = TRUE
 	antipierce = 1
-	turf_flags = TURF_TRANSPARENT
+	turf_flags = parent_type::turf_flags|TURF_TRANSPARENT
 	baseturfs = /turf/open/openspace
 	plating_type = null
 

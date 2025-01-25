@@ -228,7 +228,9 @@
 	icon = 'icons/turf/almayer.dmi'
 
 /turf/open/floor/plating/almayer/no_build
+	turf_flags = parent_type::turf_flags|TURF_NO_MULTIZ_SUPPORT
 	allow_construction = FALSE
+	hull_tile = TRUE
 
 /turf/open/floor/plating/airless
 	icon_state = "plating"
@@ -2011,6 +2013,7 @@
 	dir = NORTHWEST
 
 /turf/open/floor/almayer/no_build
+	turf_flags = parent_type::turf_flags|TURF_NO_MULTIZ_SUPPORT
 	allow_construction = FALSE
 	hull_tile = TRUE
 
@@ -2052,6 +2055,7 @@
 	set_light(l_color = "#d69c46")
 
 /turf/open/floor/almayer/aicore/no_build
+	turf_flags = parent_type::turf_flags|TURF_NO_MULTIZ_SUPPORT
 	allow_construction = FALSE
 	hull_tile = TRUE
 
@@ -2083,6 +2087,7 @@
 	icon_state = "ai_plates"
 
 /turf/open/floor/almayer/aicore/glowing/no_build
+	turf_flags = parent_type::turf_flags|TURF_NO_MULTIZ_SUPPORT
 	allow_construction = FALSE
 	hull_tile = TRUE
 
@@ -2227,7 +2232,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "outerhull"
 	name = "hull"
-	turf_flags = TURF_NO_MULTIZ_SUPPORT
+	turf_flags = parent_type::turf_flags|TURF_NO_MULTIZ_SUPPORT
 	hull_tile = TRUE
 
 /turf/open/floor/almayer_hull/outerhull_dir

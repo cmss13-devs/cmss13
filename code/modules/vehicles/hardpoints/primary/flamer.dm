@@ -23,7 +23,7 @@
 	use_muzzle_flash = FALSE
 
 	scatter = 5
-	fire_delay = 2.0 SECONDS
+	fire_delay = 4.0 SECONDS
 
 /obj/item/hardpoint/primary/flamer/set_bullet_traits()
 	..()

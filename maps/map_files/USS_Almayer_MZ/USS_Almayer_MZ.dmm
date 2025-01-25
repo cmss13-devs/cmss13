@@ -1374,11 +1374,6 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj/structure/machinery/faxmachine/uscm/command{
-	density = 0;
-	department = "AI Core";
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aiK" = (
@@ -8955,7 +8950,10 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/computerlab)
 "bgB" = (
-/turf/closed/wall/almayer/outer,
+/obj/structure/machinery/faxmachine/uscm/command{
+	department = "AI Core"
+	},
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/airoom)
 "bgC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12819,7 +12817,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "bAm" = (
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/securestorage)
 "bAn" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -30919,7 +30917,7 @@
 	id = "ares_vault_out";
 	name = "wycomms"
 	},
-/turf/closed/wall/almayer/outer,
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/airoom)
 "fUz" = (
 /obj/structure/disposalpipe/segment{
@@ -132658,11 +132656,11 @@ fMa
 eIW
 nQf
 akP
-bgB
-bgB
-bgB
-bgB
-bgB
+baj
+baj
+baj
+baj
+baj
 fUv
 bCr
 wzD
@@ -132754,7 +132752,7 @@ fMa
 eIW
 nQf
 eIW
-bgB
+baj
 cff
 cff
 iwx
@@ -132850,7 +132848,7 @@ aBy
 aRK
 nQf
 eIW
-bgB
+baj
 urJ
 urJ
 urJ
@@ -132946,7 +132944,7 @@ aBy
 eIW
 den
 eIW
-bgB
+baj
 bwM
 bwM
 pRv
@@ -133042,12 +133040,12 @@ aBz
 rLR
 den
 xwf
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
+baj
+baj
+baj
+baj
+baj
+baj
 pGZ
 pGZ
 pGZ
@@ -133138,7 +133136,7 @@ aBz
 aXf
 tsF
 eIW
-bgB
+baj
 cff
 cff
 cff
@@ -133234,7 +133232,7 @@ gKg
 aLi
 nQf
 eIW
-bgB
+baj
 bwM
 lQq
 bwM

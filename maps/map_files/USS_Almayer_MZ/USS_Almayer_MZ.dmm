@@ -1375,9 +1375,9 @@
 	pixel_y = 16
 	},
 /obj/structure/machinery/faxmachine/uscm/command{
-	density = 0;
 	department = "AI Core";
-	pixel_y = 32
+	pixel_y = 32;
+	density = 9
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -18311,13 +18311,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
-"ckC" = (
-/obj/structure/stairs{
-	icon_state = "ramptop";
-	terminator_mode = 0
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
-/area/almayer/command/airoom)
 "ckE" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/space)
@@ -18758,6 +18751,7 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/structure/machinery/cm_vending/clothing/corporate_liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "coY" = (
@@ -37355,7 +37349,7 @@
 	terminator_mode = 0
 	},
 /obj/structure/platform/metal/almayer/east,
-/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "joN" = (
 /obj/structure/surface/table/almayer,
@@ -107894,12 +107888,12 @@ kzC
 cKS
 eER
 ech
-eER
+pGJ
 bdz
 wqm
-ckC
 wqm
-ckC
+wqm
+wqm
 diH
 eQm
 lCC

@@ -191,7 +191,7 @@
 		guttype.targeting = AOETARGETGUT
 		to_chat(xeno, SPAN_XENOWARNING("We will now attack everyone around us during a Feral Frenzy."))
 	else
-		action_icon_result = "gut"
+		action_icon_result = "rav_shard_shed"
 		guttype.targeting = SINGLETARGETGUT
 		to_chat(xeno, SPAN_XENOWARNING("We will now focus our Feral Frenzy on one person!"))
 

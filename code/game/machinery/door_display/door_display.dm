@@ -189,6 +189,10 @@
 	req_access = list(ACCESS_MARINE_RESEARCH)
 	uses_tgui = TRUE
 
+/// Console is not designed to have text overlay.
+/obj/structure/machinery/door_display/research_cell/update_display(text)
+	return
+
 /obj/structure/machinery/door_display/research_cell/get_targets()
 	..()
 	for(var/obj/structure/machinery/flasher/F in GLOB.machines)

@@ -9,9 +9,9 @@
 
 	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < max_blood && nutrition >= 1)
+		if(blood_volume < max_blood && nutrition >= BLOOD_NUTRITION_COST)
 			blood_volume += 0.1 // regenerate blood VERY slowly
-			nutrition -= 0.25
+			nutrition -= BLOOD_NUTRITION_COST
 		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)

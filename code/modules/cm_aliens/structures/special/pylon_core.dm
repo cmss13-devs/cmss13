@@ -171,7 +171,7 @@
 
 		faction_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area_name(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 			var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
 			if(!length(check_faction.total_mobs))
 				continue
@@ -187,7 +187,7 @@
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
 	faction_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area_name(src)], biological hazard detected.\n\nDANGER: Hazard is strengthening xenomorphs, advise urgent termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
 		if(!length(check_faction.total_mobs))
 			continue

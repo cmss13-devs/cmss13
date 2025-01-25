@@ -54,7 +54,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
 
-	for(var/faction_to_get in FACTION_LIST_ALL)
+	for(var/faction_to_get in GLOB.faction_datums)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		if(length(faction.roles_list[name]))
 			factions_pool[faction.code_identificator] = faction.code_identificator

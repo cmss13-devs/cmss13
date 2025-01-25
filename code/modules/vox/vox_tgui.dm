@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(vox_panel, /datum/vox_panel_tgui, new)
 /datum/vox_panel_tgui/ui_static_data(mob/user)
 	. = list()
 	.["glob_vox_types"] = GLOB.vox_types
-	.["factions"] = FACTION_LIST_HUMANOID
+	.["factions"] = GLOB.FACTION_LIST_HUMANOID
 
 /datum/vox_panel_tgui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -40,11 +40,13 @@ GLOBAL_DATUM_INIT(vox_panel, /datum/vox_panel_tgui, new)
 			var/list/vox = GLOB.vox_types[params["vox_type"]]
 			var/message = "[params["message"]]" // Sanitize by converting into a string
 
-			var/list/to_play_to = list()
-			for(var/i in GLOB.player_list)
-				var/mob/M = i
-				if(M.stat == DEAD || (M.faction in factions))
-					to_play_to |= M.client
+			var/list/to_play_to = GLOB.observer_list.Copy()
+			for(var/faction_to_get in factions)
+				var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+				for(var/mob/creature in faction.total_mobs)
+					if(!creature.client)
+						continue
+					to_play_to += creature.client
 
 			play_sound_vox(message, to_play_to, vox, usr.client, text2num(params["volume"]))
 			var/factions_string = factions.Join(", ")

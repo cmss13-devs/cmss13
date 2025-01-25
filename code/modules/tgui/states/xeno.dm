@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(hive_state, setup_hive_states())
 
 /proc/setup_hive_states()
 	. = list()
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		.[faction.code_identificator] = new/datum/ui_state/hive_state(faction)
 
@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(hive_state_queen, setup_hive_queen_states())
 
 /proc/setup_hive_queen_states()
 	. = list()
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		.[faction.code_identificator] = new/datum/ui_state/hive_state/queen(faction)
 

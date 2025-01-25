@@ -883,27 +883,29 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Check the status of the hive."
 	set category = "Ghost.View"
 
-	var/list/datum/faction/hives = list()
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	var/list/datum/faction/factions = list()
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		if(!length(faction.total_mobs))
 			continue
-		hives[faction.name] = faction
+		factions[faction.name] = faction
 
-	if(!length(hives))
+	if(!length(factions))
 		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
 		return
-	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
-		var/datum/faction_module/hive_mind/faction_module = hives[1].get_faction_module(FACTION_MODULE_HIVE_MIND)
-		faction_module.hive_ui.open_hive_status(src)
+
+	var/datum/faction_module/hive_mind/faction_module
+	if(length(factions) == 1) // Only one hive, don't need an input menu for that
+		faction_module = factions[factions[1]].get_faction_module(FACTION_MODULE_HIVE_MIND)
 	else
-		var/selected_hive = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives, theme="hive_status")
-		if(!selected_hive)
+		var/choice = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", factions, theme = "hive_status")
+		if(!choice)
 			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
 			return
 
-		var/datum/faction_module/hive_mind/faction_module = hives[selected_hive].get_faction_module(FACTION_MODULE_HIVE_MIND)
-		faction_module.hive_ui.open_hive_status(src)
+		faction_module = factions[choice].get_faction_module(FACTION_MODULE_HIVE_MIND)
+
+	faction_module.hive_ui.open_hive_status(src)
 
 /mob/dead/observer/verb/view_uscm_tacmap()
 	set name = "View USCM Tacmap"

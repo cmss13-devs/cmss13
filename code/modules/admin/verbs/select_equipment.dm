@@ -33,10 +33,11 @@
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/R = new rankpath()
 					C.attach_accessory(H, R)
-		var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
-		if(!new_faction)
-			new_faction = FACTION_NEUTRAL
-		H.faction = new_faction
+		var/choice = tgui_input_list(usr, "Select faction.", "Faction Choice", GLOB.faction_by_name_humanoid)
+		if(!choice)
+			GLOB.faction_datums[FACTION_NEUTRAL].add_mob(H)
+		else
+			GLOB.faction_by_name_humanoid[choice].add_mob(H)
 	else
 		switch(newrank)
 			if("Weyland-Yutani")
@@ -81,10 +82,11 @@
 					I.assignment = IDtitle
 					I.name = "[I.registered_name]'s [I.id_type] ([I.assignment])"
 
-				var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
-				if(!new_faction)
-					new_faction = FACTION_NEUTRAL
-				H.faction = new_faction
+				var/choice = tgui_input_list(usr, "Select faction.", "Faction Choice", GLOB.faction_by_name_humanoid)
+				if(!choice)
+					GLOB.faction_datums[FACTION_NEUTRAL].add_mob(H)
+				else
+					GLOB.faction_by_name_humanoid[choice].add_mob(H)
 
 				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", GLOB.RoleAuthority.roles_by_name)
 				if(!newskillset)

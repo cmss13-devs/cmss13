@@ -108,13 +108,16 @@
 					if(isnull(permit_recipients[1])) //Cancel button.
 						return
 				if("Hive")
-					permit_hives += GLOB.faction_datums[tgui_input_list(usr, "Select recipient hive:", "Armed Hive", FACTION_LIST_XENOMORPH)]
+					var/choice = tgui_input_list(usr, "Select recipient hive:", "Armed Hive", GLOB.faction_by_name_xenomorphs)
+					if(!choice)
+						return
+					permit_hives += GLOB.faction_by_name_xenomorphs[choice]
 					if(isnull(permit_hives[1])) //Cancel button.
 						return
 					permit_recipients = permit_hives[1].total_mobs.Copy()
 				if("All Xenos")
 					permit_recipients = GLOB.living_xeno_list.Copy()
-					for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+					for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 						permit_hives += GLOB.faction_datums[faction_to_get]
 
 			var/list/handled_xenos = list()
@@ -336,7 +339,7 @@
 		var/mob/living/carbon/xenomorph/X
 		for(var/i = 0 to xenos_to_spawn - 1)
 			spawn_turf = pick(turfs)
-			X = new caste_type(spawn_turf, null, xeno_hive)
+			X = new caste_type(spawn_turf, null, GLOB.faction_by_name_xenomorphs[xeno_hive])
 
 			if(!X.hud_used)
 				X.create_hud()

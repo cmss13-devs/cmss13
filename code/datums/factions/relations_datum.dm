@@ -14,7 +14,7 @@
 
 /datum/faction_module/relations/proc/generate_relations_helper()
 	spawn(30 SECONDS)
-		for(var/code_identificator in FACTION_LIST_ALL)
+		for(var/code_identificator in GLOB.faction_datums)
 			if(code_identificator == faction.code_identificator)
 				relations[code_identificator] = RELATIONS_SELF
 				continue

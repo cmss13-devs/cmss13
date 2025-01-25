@@ -17,7 +17,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/get_listed_products(mob/user)
 	if(!user)
 		var/list/all_equipment = list()
-		for(var/faction_to_get in FACTION_LIST_ALL)
+		for(var/faction_to_get in GLOB.faction_datums)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			var/list/equipment = faction.get_antag_guns_sorted_equipment()
 			if(length(equipment))

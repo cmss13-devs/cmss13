@@ -135,13 +135,13 @@ SUBSYSTEM_DEF(who)
 	factions_additional += list(list("content" = "Infected Predators: [counted_additional["infected_preds"]]", "color" = "#7ABA19", "text" = "Players playing as Infected Yautja"))
 	factions_additional += list(list("content" = "Hunted In Preserve: [counted_additional["hunted"]]", "color" = "#476816", "text" = "Players playing as hunted in preserve"))
 
-	for(var/faction_to_get in FACTION_LIST_HUMANOID - FACTION_YAUTJA - FACTION_MARINE)
+	for(var/faction_to_get in GLOB.FACTION_LIST_HUMANOID - FACTION_YAUTJA - FACTION_MARINE)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		if(!length(faction.total_mobs))
 			continue
 		factions_additional += list(list("content" = "[faction]: [length(faction.total_mobs)]", "color" = faction.color, "text" = "[faction.desc]",))
 
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(!faction || !length(faction.total_mobs))

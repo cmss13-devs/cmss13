@@ -15,13 +15,13 @@ SUBSYSTEM_DEF(xevolution)
 	var/force_boost_power = FALSE // Debugging only
 
 /datum/controller/subsystem/xevolution/Initialize(start_timeofday)
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		boost_power[faction_to_get] = 1
 		overridden_power[faction_to_get] = FALSE
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(overridden_power[faction_to_get])

@@ -153,7 +153,7 @@
 
 	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
 		SSticker.mode.latejoin_larva_used += latejoin_larva_drop
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 			if(faction_module.latejoin_burrowed == TRUE)

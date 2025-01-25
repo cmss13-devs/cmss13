@@ -893,14 +893,14 @@
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
 		faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-			var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
-			if(!length(cur_faction.total_mobs))
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+			var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
+			if(!length(check_faction.total_mobs))
 				continue
-			if(cur_faction == faction)
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), cur_faction, XENO_GENERAL_ANNOUNCE)
+			if(check_faction == faction)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), check_faction, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), cur_faction, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED!"), check_faction, XENO_GENERAL_ANNOUNCE)
 
 	var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 	faction_module.has_hatchery = FALSE
@@ -929,14 +929,14 @@
 	addtimer(CALLBACK(src, PROC_REF(check_pylons)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME|TIMER_LOOP)
 
 	faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
-		if(!length(cur_faction.total_mobs))
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+		var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(check_faction.total_mobs))
 			continue
-		if(cur_faction == faction)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it at all costs!"), cur_faction, XENO_GENERAL_ANNOUNCE)
+		if(check_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it at all costs!"), check_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), cur_faction, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]."), check_faction, XENO_GENERAL_ANNOUNCE)
 
 /// Callback for a repeating 10s timer to ensure both pylons are active (otherwise delete) and counts the number of marines groundside (would cause hatching to expedite).
 /obj/effect/alien/resin/king_cocoon/proc/check_pylons()
@@ -977,14 +977,14 @@
 	timer = addtimer(CALLBACK(src, PROC_REF(start_vote)), 4 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 	faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
-		if(!length(cur_faction.total_mobs))
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+		var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(check_faction.total_mobs))
 			continue
-		if(cur_faction == faction)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), cur_faction, XENO_GENERAL_ANNOUNCE)
+		if(check_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), check_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), cur_faction, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes."), check_faction, XENO_GENERAL_ANNOUNCE)
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
@@ -1146,14 +1146,14 @@
 		return
 
 	faction_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - ONE MINUTE.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
-		if(!length(cur_faction.total_mobs))
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+		var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(check_faction.total_mobs))
 			continue
-		if(cur_faction == faction)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately one minute."), cur_faction, XENO_GENERAL_ANNOUNCE)
+		if(check_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately one minute."), check_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), cur_faction, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately one minute."), check_faction, XENO_GENERAL_ANNOUNCE)
 
 	timer = addtimer(CALLBACK(src, PROC_REF(animate_hatch_king)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
@@ -1163,14 +1163,14 @@
 	addtimer(CALLBACK(src, PROC_REF(hatch_king)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 	faction_announcement("ALERT.\n\nEXTREME ENERGY INFLUX DETECTED IN [get_area_name(loc)].\n\nCAUTION IS ADVISED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction/cur_faction = GLOB.faction_datums[faction_to_get]
-		if(!length(cur_faction.total_mobs))
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+		var/datum/faction/check_faction = GLOB.faction_datums[faction_to_get]
+		if(!length(check_faction.total_mobs))
 			continue
-		if(cur_faction == faction)
-			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), cur_faction, XENO_GENERAL_ANNOUNCE)
+		if(check_faction == faction)
+			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), check_faction, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), cur_faction, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched!"), check_faction, XENO_GENERAL_ANNOUNCE)
 
 /// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()

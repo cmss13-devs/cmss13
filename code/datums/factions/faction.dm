@@ -54,6 +54,8 @@
 /datum/faction/New()
 	relations_datum = new(src)
 	GLOB.custom_event_info_list[code_identificator] = new /datum/custom_event_info(src, null, code_identificator)
+	if(!istype(src, /datum/faction/xenomorph))
+		GLOB.faction_by_name_humanoid[name] = src
 
 /datum/faction/proc/get_faction_module(module_required)
 	if(module_required in faction_modules)

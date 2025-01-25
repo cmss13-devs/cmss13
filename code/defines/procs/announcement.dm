@@ -11,8 +11,8 @@
 //xenomorph hive announcement
 /proc/xeno_announcement(message, datum/faction/faction_to_display = GLOB.faction_datums[FACTION_XENOMORPH_NORMAL], title = QUEEN_ANNOUNCE)
 	var/list/targets = GLOB.dead_mob_list.Copy()
-	if(faction_to_display == "Everyone")
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	if(faction_to_display == "All Hives")
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 			for(var/mob/mob as anything in GLOB.faction_datums[faction_to_get].total_mobs)
 				if(!mob.stat || !mob.client)
 					continue
@@ -36,8 +36,8 @@
 			if(ARES_LOG_SECURITY)
 				log_ares_security(title, message, signature)
 
-	else if(faction_to_display == "Everyone (-Yautja)")
-		for(var/faction_to_get in FACTION_LIST_HUMANOID - FACTION_YAUTJA)
+	else if(faction_to_display == "All Humans")
+		for(var/faction_to_get in GLOB.FACTION_LIST_HUMANOID - FACTION_YAUTJA)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			for(var/mob/mob as anything in faction.total_mobs)
 				if(!mob.stat || !mob.client)

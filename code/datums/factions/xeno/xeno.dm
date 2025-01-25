@@ -11,6 +11,7 @@
 
 /datum/faction/xenomorph/New()
 	faction_modules[FACTION_MODULE_HIVE_MIND] = new /datum/faction_module/hive_mind(src)
+	GLOB.faction_by_name_xenomorphs[name] = src
 	. = ..()
 
 /datum/faction/xenomorph/faction_is_ally(datum/faction/faction)

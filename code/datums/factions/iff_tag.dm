@@ -25,15 +25,15 @@ DEFINE_BITFIELD(iff_flag_flags, list(
 	var/faction_to_get = null
 	var/datum/faction/faction = null
 
-/obj/item/faction_tag/Initialize(mapload, _faction_to_get)
+/obj/item/faction_tag/Initialize(mapload, faction_to_set)
 	. = ..()
-	if(_faction_to_get)
-		if(istype(_faction_to_get, /datum/faction))
-			faction = _faction_to_get
+	if(faction_to_set)
+		if(istype(faction_to_set, /datum/faction))
+			faction = faction_to_set
 			faction_to_get = faction.code_identificator
 		else
-			faction_to_get = _faction_to_get
-			faction = GLOB.faction_datums[_faction_to_get]
+			faction_to_get = faction_to_set
+			faction = GLOB.faction_datums[faction_to_set]
 	else if(faction_to_get)
 		faction = GLOB.faction_datums[faction_to_get]
 

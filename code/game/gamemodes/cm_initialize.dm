@@ -471,7 +471,7 @@ Additional game mode variables.
 		else
 			available_xenos_non_ssd += cur_xeno
 
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		if(faction_module.hardcore)
@@ -558,7 +558,7 @@ Additional game mode variables.
 			return FALSE
 
 
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			for(var/mob_name in faction.banished_ckeys)
 				if(faction.banished_ckeys[mob_name] == candidate_observer.ckey)
@@ -662,7 +662,7 @@ Additional game mode variables.
 /datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
 	var/list/active_hives = list()
 	var/datum/faction/faction
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		faction = GLOB.faction_datums[faction_to_get]
 		if(!length(faction.total_mobs))
 			continue
@@ -727,7 +727,7 @@ Additional game mode variables.
 /datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
 	var/list/active_hives = list()
 	var/datum/faction/faction
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		faction = GLOB.faction_datums[faction_to_get]
 		if(!length(faction.total_mobs))
 			continue

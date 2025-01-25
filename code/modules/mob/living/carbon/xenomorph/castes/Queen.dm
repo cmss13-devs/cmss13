@@ -53,7 +53,7 @@
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
-		for(var/faction_to_get in FACTION_LIST_ALL)
+		for(var/faction_to_get in GLOB.faction_datums)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 			if(faction_module.living_xeno_queen)

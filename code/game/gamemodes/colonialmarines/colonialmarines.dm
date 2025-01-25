@@ -380,7 +380,7 @@
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)
-		for(var/faction_to_get in FACTION_LIST_ALL)
+		for(var/faction_to_get in GLOB.faction_datums)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 			if(!faction_module.xeno_queen_timer)
@@ -419,7 +419,7 @@
 			round_checkwin = 0
 
 		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
-			for(var/faction_to_get in FACTION_LIST_ALL)
+			for(var/faction_to_get in GLOB.faction_datums)
 				var/datum/faction_module/hive_mind/faction_module = GLOB.faction_datums[faction_to_get].get_faction_module(FACTION_MODULE_HIVE_MIND)
 				if(!faction_module.xeno_queen_timer)
 					continue
@@ -531,7 +531,7 @@
 		return .
 
 	// Ensure there is no queen
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		if(faction.need_round_end_check && !faction.can_delay_round_end())
 			continue
@@ -556,7 +556,7 @@
 	if(round_finished)
 		return
 
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/current_faction = GLOB.faction_datums[faction_to_get]
 		if(current_faction.need_round_end_check && !current_faction.can_delay_round_end())
 			continue
@@ -692,7 +692,7 @@
 	var/list/counted_xenos = list()
 
 	//organize our hives and castes in a readable and standard way | don't forget our pooled larva
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		counted_xenos[faction_to_get] = list()
 		for(var/caste in ALL_XENO_CASTES)
 			counted_xenos[faction_to_get][caste] = 0

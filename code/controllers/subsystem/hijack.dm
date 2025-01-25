@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(hijack)
 	if(marine_warning_areas)
 		marine_warning_areas = copytext(marine_warning_areas, 1, -2)
 
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		if(!length(faction.total_mobs))
 			continue
@@ -305,7 +305,7 @@ SUBSYSTEM_DEF(hijack)
 
 	if(!generator_ever_overloaded)
 		generator_ever_overloaded = TRUE
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 			if(!length(faction.total_mobs))
 				continue

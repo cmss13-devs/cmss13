@@ -338,7 +338,7 @@
 		return
 
 	var/list/datum/faction/factions = list()
-	for(var/faction_to_get in FACTION_LIST_ALL)
+	for(var/faction_to_get in GLOB.faction_datums)
 		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
 		LAZYSET(factions, faction_to_set.name, faction_to_set)
 

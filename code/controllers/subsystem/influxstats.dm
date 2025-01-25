@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(influxstats)
 	return result
 
 /datum/controller/subsystem/influxstats/proc/run_special_round_statistics()
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		SSinfluxdriver.enqueue_stats("pooled_larva", list("hive" = faction.code_identificator), list("count" = faction_module.stored_larva))

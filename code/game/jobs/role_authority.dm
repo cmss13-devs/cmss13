@@ -127,7 +127,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	//PART I: Get roles relevant to the mode
 
 	roles_for_mode = list()
-	for(var/faction_to_get in FACTION_LIST_ALL)
+	for(var/faction_to_get in GLOB.faction_datums)
 		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
 		if(length(faction.roles_list[SSticker.mode.name]))
 			for(var/role_name in faction.roles_list[SSticker.mode.name])

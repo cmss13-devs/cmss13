@@ -474,11 +474,11 @@
 		return
 
 	var/list/datum/faction/factions = list()
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
-		if(!length(faction_to_set.total_mobs) && !length(faction_to_set.total_dead_mobs))
+	for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+		var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
+		if(!length(faction.total_mobs) && !length(faction.total_dead_mobs))
 			continue
-		LAZYSET(factions, faction_to_set.name, faction_to_set)
+		.[faction.name] = faction
 
 	if(!length(factions))
 		to_chat(src, SPAN_ALERT("There seem to be no hives at the moment."))
@@ -566,28 +566,23 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/datum/faction/factions = list()
-	LAZYSET(factions, "All Humans", "Everyone (-Yautja)")
-	for(var/faction_to_get in FACTION_LIST_HUMANOID)
-		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
-		LAZYSET(factions, faction_to_set.name, faction_to_set)
-
-	var/choice = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", factions)
+	var/choice = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", list("All Humans" = null) + GLOB.faction_by_name_humanoid)
 	if(!choice)
 		return
 
 	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
 	if(!input)
 		return
+
 	var/customname = input(usr, "Pick a title for the announcement. Confirm empty text for \"[choice] Update\" title.", "Title") as text|null
 	if(isnull(customname))
 		return
 	if(!customname)
 		customname = "[choice] Update"
 
-	if(choice == "Everyone (-Yautja)")
+	if(choice == "All Humans")
 		faction_announcement(input, customname, 'sound/AI/commandreport.ogg', choice)
-	else if(choice == FACTION_MARINE)
+	else if(GLOB.faction_by_name_humanoid[choice].code_identificator == FACTION_MARINE)
 		for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper(C.loc)
@@ -597,9 +592,9 @@
 				C.messagetitle.Add("[customname]")
 				C.messagetext.Add(P.info)
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
-			faction_announcement(input, customname, 'sound/AI/commandreport.ogg', factions[choice])
+			faction_announcement(input, customname, 'sound/AI/commandreport.ogg', GLOB.faction_by_name_humanoid[choice])
 	else
-		faction_announcement(input, customname, 'sound/AI/commandreport.ogg', factions[choice])
+		faction_announcement(input, customname, 'sound/AI/commandreport.ogg', GLOB.faction_by_name_humanoid[choice])
 
 	message_admins("[key_name_admin(src)] has created a [choice] command report")
 	log_admin("[key_name_admin(src)] [choice] command report: [input]")
@@ -613,13 +608,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/datum/faction/factions = list()
-	LAZYSET(factions, "All Hives", "Everyone")
-	for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-		var/datum/faction/faction_to_set = GLOB.faction_datums[faction_to_get]
-		LAZYSET(factions, faction_to_set.name, faction_to_set)
-
-	var/choice = tgui_input_list(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", factions)
+	var/choice = tgui_input_list(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", list("All Hives" = null) + GLOB.faction_by_name_xenomorphs, theme = "hive_status")
 	if(!choice)
 		return
 
@@ -628,7 +617,7 @@
 		return
 
 	if(choice != "All Hives")
-		xeno_announcement(input, factions[choice], SPAN_ANNOUNCEMENT_HEADER_BLUE("[factions[choice].prefix][QUEEN_MOTHER_ANNOUNCE]"))
+		xeno_announcement(input, GLOB.faction_by_name_xenomorphs[choice], SPAN_ANNOUNCEMENT_HEADER_BLUE("[GLOB.faction_by_name_xenomorphs[choice].prefix][QUEEN_MOTHER_ANNOUNCE]"))
 	else
 		xeno_announcement(input, choice, HIGHER_FORCE_ANNOUNCE)
 
@@ -878,7 +867,10 @@
 /datum/admins/var/create_xenos_html = null
 /datum/admins/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
-		var/hive_types = jointext(FACTION_LIST_XENOMORPH, ";")
+		var/list/factions = list()
+		for(var/faction_to_get in GLOB.FACTION_LIST_XENOMORPH)
+			factions += GLOB.faction_datums[faction_to_get].name
+		var/hive_types = jointext(factions, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")
 		create_xenos_html = file2text('html/create_xenos.html')
 		create_xenos_html = replacetext(create_xenos_html, "null /* hive paths */", "\"[hive_types]\"")

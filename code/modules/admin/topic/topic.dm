@@ -814,29 +814,26 @@
 		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN)) return
-		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
-		if(!istype(H))
+		var/mob/living/carbon/human/creature = locate(href_list["larvainfect"])
+		if(!istype(creature))
 			to_chat(usr, "This can only be used on instances of type /human")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
 			return
 
-		var/list/hives = list()
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-			var/datum/faction/hive = GLOB.faction_datums[faction_to_get]
-			hives += list("[hive.name]" = hive.code_identificator)
+		var/choice = tgui_input_list(usr, "Select a hive.", "Infect Larva", GLOB.faction_by_name_xenomorphs, theme = "hive_status")
+		if(!choice)
+			return
 
-		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
-
-		if(!H)
+		if(!creature)
 			to_chat(usr, "This mob no longer exists")
 			return
 
-		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.faction_to_get = hives[newhive]
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(creature)
+		embryo.faction_to_get = GLOB.faction_by_name_xenomorphs[choice].code_identificator
 
-		message_admins("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
+		message_admins("[key_name_admin(usr)] infected [key_name_admin(creature)] with a xeno ([choice]) larva.")
 
 	else if(href_list["makemutineer"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
@@ -865,29 +862,21 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/list/hives = list()
-		for(var/faction_to_get in FACTION_LIST_XENOMORPH)
-			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-			hives[faction.name] = faction
-		hives["CANCEL"] = null
-
-		var/hive_name = tgui_input_list(usr, "Which Hive will he belongs to", "Make Cultist", hives)
-		if(!hive_name || hive_name == "CANCEL")
+		var/choice = tgui_input_list(usr, "Which Hive will he belongs to", "Make Cultist", GLOB.faction_by_name_xenomorphs, theme = "hive_status")
+		if(!choice)
 			to_chat(usr, SPAN_ALERT("Hive choice error. Aborting."))
-
-		var/datum/faction/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 			preset.load_race(H)
-			preset.load_status(H, hive)
-			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive].")
+			preset.load_status(H, GLOB.faction_by_name_xenomorphs[choice])
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [GLOB.faction_by_name_xenomorphs[choice]].")
 
 		else if(href_list["makecultistleader"])
 			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 			preset.load_race(H)
-			preset.load_status(H, hive)
-			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive].")
+			preset.load_status(H, GLOB.faction_by_name_xenomorphs[choice])
+			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [GLOB.faction_by_name_xenomorphs[choice]].")
 
 	else if(href_list["forceemote"])
 		if(!check_rights(R_ADMIN)) return

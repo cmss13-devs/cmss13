@@ -66,5 +66,5 @@
 	for(var/client/admin in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 			playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] запросил вызов корпоративной охраны! Причина: <b>[message]</b> [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];cssend=\ref[user]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];csdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(usr)]")
+			message_admins("[key_name(usr)] запросил вызов корпоративной охраны! Причина: <b>[message]</b> [CC_MARK(usr)] (<A HREF='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];cssend=\ref[user]'>SEND</A>) (<A HREF='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];csdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(usr)]")
 	console_cooldown = world.time + console_cooldown_duration

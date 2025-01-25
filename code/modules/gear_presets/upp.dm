@@ -3749,6 +3749,7 @@
 	rank = JOB_UPP_COMMISSAR
 	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Commissar"
+	minimap_icon = "upp_plt"
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
 

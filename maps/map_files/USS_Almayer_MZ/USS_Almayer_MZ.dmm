@@ -1374,6 +1374,11 @@
 	density = 0;
 	pixel_y = 16
 	},
+/obj/structure/machinery/faxmachine/uscm/command{
+	density = 0;
+	department = "AI Core";
+	pixel_y = 32
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aiK" = (

@@ -557,7 +557,7 @@ const PredModal = (props: {
       return (
         <Section
           title="Mask Accessory"
-          width={20}
+          width={40}
           buttons={<Button icon="x" onClick={() => close()} />}
         >
           <Stack>

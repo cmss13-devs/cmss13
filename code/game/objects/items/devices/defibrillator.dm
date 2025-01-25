@@ -333,8 +333,8 @@
 	charge_cost = 1000
 	force = 0
 	throwforce = 0
-	skill_to_check_alt = SKILL_ENGINEER
-	skill_level_alt = SKILL_ENGINEER_ENGI
+	skill_to_check = SKILL_ENGINEER
+	skill_level = SKILL_ENGINEER_TRAINED
 	blocked_by_suit = FALSE
 	should_spark = FALSE
 
@@ -356,6 +356,10 @@
 	overlays.Cut()
 	if(ready)
 		icon_state += "_on"
+
+/obj/item/device/defibrillator/synthetic/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You need some knowledge of electronics and circuitry to use this.")
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))

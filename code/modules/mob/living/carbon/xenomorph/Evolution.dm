@@ -193,6 +193,7 @@
 		hive.living_xeno_queen.overwatch(new_xeno)
 
 	src.transfer_observers_to(new_xeno)
+	new_xeno._status_traits = src._status_traits
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
@@ -317,7 +318,7 @@
 	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
 	if(new_xeno)
 		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
-	
+
 	return
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste)
@@ -329,7 +330,6 @@
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
-	
 	if(!istype(new_xeno))
 		//Something went horribly wrong
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
@@ -373,6 +373,7 @@
 	SPAN_XENODANGER("We regress into our previous form."))
 
 	transfer_observers_to(new_xeno)
+	new_xeno._status_traits = src._status_traits
 
 	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
 		GLOB.round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.

@@ -586,3 +586,9 @@
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
 	. = ..()
 	owner.sight &= ~SEE_TURFS
+
+/mob/living/carbon/xenomorph/proc/add_abilities()
+	if(!base_actions)
+		return
+	for(var/action_path in base_actions)
+		give_action(src, action_path)

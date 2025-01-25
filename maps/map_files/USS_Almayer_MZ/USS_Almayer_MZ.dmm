@@ -1375,9 +1375,9 @@
 	pixel_y = 16
 	},
 /obj/structure/machinery/faxmachine/uscm/command{
+	density = 0;
 	department = "AI Core";
-	pixel_y = 32;
-	density = 9
+	pixel_y = 32
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -43162,7 +43162,6 @@
 /area/almayer/living/offices)
 "mhc" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
 /obj/item/device/megaphone,
 /obj/structure/machinery/computer/cameras/almayer_brig{
 	desc = "Used to access the various cameras in the security brig.";
@@ -43172,6 +43171,7 @@
 	pixel_x = 17;
 	pixel_y = 12
 	},
+/obj/structure/machinery/faxmachine/uscm/command,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "mhh" = (
@@ -56759,10 +56759,6 @@
 /area/almayer/maint/upper/u_m_s)
 "sOa" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command{
-	department = "AI Core";
-	pixel_y = 8
-	},
 /obj/structure/transmitter/rotary{
 	name = "AI Core Telephone";
 	phone_category = "ARES";
@@ -56770,6 +56766,10 @@
 	phone_id = "AI Core";
 	pixel_x = 8;
 	pixel_y = -8
+	},
+/obj/structure/machinery/faxmachine/uscm/command{
+	department = "AI Core";
+	pixel_y = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)

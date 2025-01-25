@@ -132,6 +132,9 @@
 
 	data["records_discussions"] = logged_convos
 
+	data["operation_reason"] = SSevacuation.ship_evac_blocked()
+	data["canLeave"] = SSevacuation.ship_evac_blocked() ? 0 : SSevacuation.ship_operation_stage_status > 3
+
 	var/list/security_vents = list()
 	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
 		if(!vent.vent_tag)

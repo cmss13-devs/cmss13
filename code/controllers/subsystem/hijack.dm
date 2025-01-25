@@ -87,7 +87,6 @@ SUBSYSTEM_DEF(hijack)
 	var/ship_operation_stage_status = OPERATION_DECRYO
 	var/shuttles_to_check = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
 	var/ship_evacuating = FALSE
-	var/ship_evacuating_forced = FALSE
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))

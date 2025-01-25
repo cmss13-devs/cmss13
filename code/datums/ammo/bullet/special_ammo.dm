@@ -28,6 +28,7 @@
 	max_range = 17
 	accurate_range = 12
 	effective_range_max = 12
+	penetration = min(penetration + ARMOR_PENETRATION_TIER_1, 30)
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "\improper AP smartgun tracer bullet"

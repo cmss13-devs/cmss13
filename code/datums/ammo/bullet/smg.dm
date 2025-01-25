@@ -23,7 +23,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/smg/setup_faction_clash_values()
-	accuracy_range = 7 //I need to make noraml smg and m10 somewhat viable
+	accurate_range = 7 //I need to make noraml smg and m10 somewhat viable
 	penetration = ARMOR_PENETRATION_TIER_3
 	. = ..()
 

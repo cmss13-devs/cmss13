@@ -16,8 +16,9 @@
 
 /datum/ammo/bullet/pistol/setup_faction_clash_values()
 	. = ..()
-	accuracy += 20
-	accurate_range -= 2 //we want pistols to be more accurate but only at short range
+	accuracy += HIT_ACCURACY_TIER_5
+	accurate_range -= 3 //we want pistols to be more accurate but only at short range
+	damage *= 0.7
 
 
 /datum/ammo/bullet/pistol/tiny
@@ -195,6 +196,11 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
+/datum/ammo/bullet/pistol/squash/setup_faction_clash_values()
+	accuracy = HIT_ACCURACY_TIER_2
+	. = ..()
+
+
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"
 	var/acid_per_hit = 10
@@ -271,4 +277,9 @@
 	damage = 30
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+/datum/ammo/bullet/pistol/smart/setup_faction_clash_values()
+	accuracy = HIT_ACCURACY_TIER_1
+	. = ..()
+
 

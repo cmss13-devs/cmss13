@@ -83,7 +83,8 @@
 	if(!istype(creature))
 		return
 
-	for(var/datum/faction_module/faction_module in faction_modules)
+	for(var/faction_module_to_get in faction_modules)
+		var/datum/faction_module/faction_module = faction_modules[faction_module_to_get]
 		faction_module.remove_mob(creature, hard, light_mode)
 
 	if(hard)

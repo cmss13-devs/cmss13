@@ -116,7 +116,7 @@
 	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 	nutriment_factor = 1 * FOOD_METABOLISM
-	adj_temp = -5
+	adj_temp = -1
 	target_temp = 310
 
 /datum/reagent/ethanol/vodka
@@ -424,7 +424,7 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
-	adj_temp = 15
+	adj_temp = 5
 	target_temp = 330
 
 /datum/reagent/ethanol/irish_cream
@@ -528,7 +528,7 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
-	adj_temp = 20
+	adj_temp = 5
 	target_temp = 330
 
 /datum/reagent/ethanol/barefoot
@@ -617,7 +617,7 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
-	adj_temp = 50
+	adj_temp = 5
 	target_temp = 360
 
 /datum/reagent/ethanol/devilskiss
@@ -653,7 +653,7 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
-	adj_temp = -20
+	adj_temp = -2
 	target_temp = 270
 
 /datum/reagent/ethanol/grog

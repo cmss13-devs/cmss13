@@ -189,7 +189,7 @@
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
 	color = "#AEE5E4" // rgb" 174, 229, 228
-	adj_temp = -10
+	adj_temp = -2
 	target_temp = T0C
 
 /datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
@@ -355,7 +355,7 @@
 	adj_dizzy = -5
 	adj_drowsy = -3
 	adj_sleepy = -2
-	adj_temp = 5
+	adj_temp = 1
 	target_temp = T90C
 	chemclass = CHEM_CLASS_UNCOMMON
 
@@ -395,7 +395,7 @@
 	description = "A nice and tasty beverage while you are reading your hippie books."
 	color = "#664300" // rgb: 102, 67, 0
 	adj_sleepy = 0
-	adj_temp = 5
+	adj_temp = 1
 	target_temp = T90C
 	chemclass = CHEM_CLASS_NONE
 
@@ -411,7 +411,7 @@
 	description = "A nice, strong and tasty beverage while you are reading."
 	color = "#664300" // rgb: 102, 67, 0
 	adj_sleepy = 0
-	adj_temp = 5
+	adj_temp = 1
 	target_temp = T90C
 
 /datum/reagent/drink/coffee/cafe_latte/on_mob_life(mob/living/M)
@@ -428,7 +428,7 @@
 	adj_dizzy = -2
 	adj_drowsy = -1
 	adj_sleepy = -3
-	adj_temp = 5
+	adj_temp = 1
 	target_temp = T90C
 	chemclass = CHEM_CLASS_UNCOMMON
 
@@ -653,7 +653,7 @@
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#403010" // rgb: 64, 48, 16
 	chemclass = CHEM_CLASS_RARE
-	adj_temp = 5
+	adj_temp = 1
 	target_temp = T90C
 
 

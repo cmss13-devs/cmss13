@@ -1498,6 +1498,9 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/flamer,
 		)
 
 	random_spawn_muzzle = list() //no default bayonet

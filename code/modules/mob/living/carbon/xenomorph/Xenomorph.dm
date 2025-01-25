@@ -499,7 +499,7 @@
 	if(current_area && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	if(GLOB.round_statistics && !statistic_exempt)
-		GLOB.round_statistics.track_new_participant(faction, 1)
+		GLOB.round_statistics.track_new_participant(faction.code_identificator, 1)
 
 	// This can happen if a xeno gets made before the game starts
 	if(faction_module.hive_ui)

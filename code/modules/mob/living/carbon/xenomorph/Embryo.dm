@@ -348,7 +348,7 @@
 		if(!larva_embryo.ckey && larva_embryo.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && faction_module.living_xeno_queen && faction_module.living_xeno_queen.z == loc.z)
 			larva_embryo.visible_message(SPAN_XENODANGER("[larva_embryo] quickly burrows into the ground."))
 			if(GLOB.round_statistics && !larva_embryo.statistic_exempt)
-				GLOB.round_statistics.track_new_participant(faction, -1) // keep stats sane
+				GLOB.round_statistics.track_new_participant(faction.code_identificator, -1) // keep stats sane
 			faction_module.stored_larva++
 			faction_module.hive_ui.update_burrowed_larva()
 			qdel(larva_embryo)

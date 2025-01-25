@@ -16,4 +16,4 @@
 /datum/faction/xenomorph/tut
 	name = "Tutorial Xeno"
 	desc = "Lets be honest, why the **** SOMEBODY DID IT???"
-	code_identificator = FACTION_SURVIVOR
+	code_identificator = MINIMAP_FLAG_XENO_CORRUPTED

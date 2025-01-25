@@ -1906,7 +1906,7 @@
 	req_access_txt = "200"
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/xeno_tag_case/full{
+/obj/item/storage/tag_case/full{
 	pixel_y = 8
 	},
 /obj/item/restraint/adjustable/cable/red{

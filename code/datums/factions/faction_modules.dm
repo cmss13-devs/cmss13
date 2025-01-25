@@ -147,7 +147,7 @@
 	var/list/cooldown_hivebuffs = list()
 
 	/// List of references to hive pylons active in the game world
-	var/list/active_endgame_pylons
+	var/list/active_endgame_pylons = list()
 
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
@@ -962,7 +962,7 @@
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
 
 	// First check if we any pylons which are capable of supporting hivebuffs
-	if(!LAZYLEN(active_endgame_pylons))
+	if(!length(active_endgame_pylons))
 		return
 
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
@@ -971,7 +971,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+		if(initial(possible_hivebuff.number_of_required_pylons) > length(active_endgame_pylons))
 			potential_hivebuffs -= possible_hivebuff
 			continue
 

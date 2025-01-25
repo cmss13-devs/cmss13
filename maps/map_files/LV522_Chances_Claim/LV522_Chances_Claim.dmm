@@ -5073,7 +5073,7 @@
 /area/lv522/atmos/command_centre)
 "cOA" = (
 /obj/structure/closet/crate,
-/obj/item/storage/xeno_tag_case,
+/obj/item/storage/tag_case,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 4

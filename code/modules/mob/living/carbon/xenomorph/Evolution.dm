@@ -194,7 +194,7 @@
 		new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
 
 	if(new_xeno.mind && GLOB.round_statistics)
-		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+		GLOB.round_statistics.track_new_participant(new_xeno.faction.code_identificator, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
 
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
@@ -368,7 +368,7 @@
 	new_xeno._status_traits = src._status_traits
 
 	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
-		GLOB.round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
+		GLOB.round_statistics.track_new_participant(faction.code_identificator, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.stop_tracking(src)
 	SSround_recording.recorder.track_player(new_xeno)
 

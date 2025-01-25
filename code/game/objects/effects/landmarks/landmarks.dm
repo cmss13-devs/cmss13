@@ -316,10 +316,8 @@
 		for(var/job_from_list in job_list)
 			if(squad)
 				LAZYREMOVE(GLOB.spawns_by_squad_and_job[squad][job_from_list], src)
-				LAZYREMOVE(GLOB.latejoin_by_squad[squad][job_from_list], src)
 			else
 				LAZYREMOVE(GLOB.spawns_by_job[job_from_list], src)
-				LAZYREMOVE(GLOB.latejoin_by_job[job_from_list], src)
 	return ..()
 
 /obj/effect/landmark/start/AISloc
@@ -566,6 +564,18 @@
 /obj/effect/landmark/late_join/responder/press
 	name = "Press Fax Responder late join"
 	job = JOB_FAX_RESPONDER_PRESS
+
+/proc/get_latejoin_spawn(mob/living/carbon/human/human, datum/faction/faction_assigned_spawn, assigned_squad = "other")
+	var/turf/selected_turf = get_turf(pick(GLOB.latejoin))
+	if(human && faction_assigned_spawn && assigned_squad)
+		if(length(faction_assigned_spawn.late_join_landmarks[assigned_squad]))
+			selected_turf = get_turf(pick(faction_assigned_spawn.late_join_landmarks[assigned_squad]))
+		if(!selected_turf)
+			for(var/squad in faction_assigned_spawn.late_join_landmarks)
+				if(!length(faction_assigned_spawn.late_join_landmarks[squad]))
+					continue
+				selected_turf = get_turf(pick(faction_assigned_spawn.late_join_landmarks[squad]))
+	return selected_turf
 
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms

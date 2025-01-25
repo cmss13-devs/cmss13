@@ -56,16 +56,19 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_apollo_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
 	return ..()
 
-/obj/effect/landmark/start/working_joe
-	name = JOB_WORKING_JOE
-	icon_state = "wj_spawn"
-	job = /datum/job/civilian/working_joe
-
 /datum/job/civilian/working_joe/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
 
 	if(SSticker.mode)
 		SSticker.mode.initialize_joe(M)
+
+/datum/job/civilian/working_joe/get_latejoin_turf(mob/living/carbon/human/creature)
+	return get_latejoin_spawn(creature, creature.faction, creature.job)
+
+/obj/effect/landmark/start/working_joe
+	name = JOB_WORKING_JOE
+	icon_state = "wj_spawn"
+	job = /datum/job/civilian/working_joe
 
 /datum/job/antag/upp/dzho_automaton
 	title = JOB_UPP_JOE

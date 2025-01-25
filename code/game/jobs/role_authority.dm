@@ -491,14 +491,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(isturf(late_join))
 		new_human.forceMove(late_join)
 	else if(late_join)
-		var/turf/late_join_turf
-		if(GLOB.latejoin_by_squad[assigned_squad])
-			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
-		else if(GLOB.latejoin_by_job[new_job.title])
-			late_join_turf = get_turf(pick(GLOB.latejoin_by_job[new_job.title]))
-		else
-			late_join_turf = get_turf(pick(GLOB.latejoin))
-		new_human.forceMove(late_join_turf)
+		new_human.forceMove(new_job.get_latejoin_turf(new_human))
 	else
 		var/turf/join_turf
 		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type])
@@ -507,10 +500,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.type]))
 		else if(GLOB.spawns_by_job[new_job.title])
 			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.title]))
-		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
-			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
-		else
-			join_turf = get_turf(pick(GLOB.latejoin))
+
+		if(!join_turf)
+			join_turf = new_job.get_latejoin_turf(new_human)
+
 		new_human.forceMove(join_turf)
 
 	for(var/cardinal in GLOB.cardinals)

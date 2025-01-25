@@ -286,12 +286,10 @@
 			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][type]))
 		else if(GLOB.spawns_by_job[type])
 			join_turf = get_turf(pick(GLOB.spawns_by_job[type]))
-		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
-			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
-		else if(GLOB.latejoin_by_job[title])
-			join_turf = get_turf(pick(GLOB.latejoin_by_job[title]))
-		else
-			join_turf = get_turf(pick(GLOB.latejoin))
+
+		if(!join_turf)
+			join_turf = get_latejoin_turf(human)
+
 		human.forceMove(join_turf)
 
 		for(var/cardinal in GLOB.cardinals)
@@ -325,3 +323,6 @@
 /// Called when the job owner enters deep cryogenic storage
 /datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
 	return
+
+/datum/job/proc/get_latejoin_turf(mob/living/carbon/human/creature)
+	return get_latejoin_spawn(creature, creature.faction, creature.assigned_squad?.name)

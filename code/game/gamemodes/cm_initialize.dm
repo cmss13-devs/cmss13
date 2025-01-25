@@ -325,8 +325,8 @@ Additional game mode variables.
 
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
 
-	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[sub_job]))
-	var/mob/living/carbon/human/new_responder = new(spawn_point)
+	var/mob/living/carbon/human/new_responder = new()
+	new_responder.forceMove(get_latejoin_spawn(new_responder, new_responder.faction, sub_job))
 	responder_candidate.mind.transfer_to(new_responder, TRUE)
 	new_responder.client?.prefs.copy_all_to(new_responder, JOB_FAX_RESPONDER, TRUE, TRUE)
 
@@ -1198,8 +1198,8 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_joe")
 		return
 
-	var/turf/spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_WORKING_JOE]))
-	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
+	var/mob/living/carbon/human/synthetic/new_joe = new()
+	new_joe.forceMove(get_latejoin_spawn(new_joe, new_joe.faction, JOB_WORKING_JOE))
 	joe_candidate.mind.transfer_to(new_joe, TRUE)
 	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 

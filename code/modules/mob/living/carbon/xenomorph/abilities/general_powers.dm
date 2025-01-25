@@ -747,6 +747,25 @@
 			return FALSE
 	return TRUE
 
+/datum/action/xeno_action/activable/xeno_spit/action_activate()
+    var/mob/living/carbon/xenomorph/xeno = owner
+    if(!xeno) //This is just so if we have non-xenos with acid spit, they won't drool. Dunno if it's actually needed...
+        return
+    var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
+    ..()
+    var/is_selected_now = (xeno.selected_ability == src)
+    if(!was_selected_before && is_selected_now)
+        xeno.overlays += icon('icons/mob/xenos/xeno_drooling.dmi', "Spitter-Spit")
+    else if(was_selected_before && !is_selected_now)
+        xeno.overlays -= icon('icons/mob/xenos/xeno_drooling.dmi', "Spitter-Spit")
+
+/datum/action/xeno_action/activable/xeno_spit/action_deselect()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
+	xeno.overlays -= icon('icons/mob/xenos/xeno_drooling.dmi', "Spitter-Spit")
+
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/spit_target = aim_turf ? get_turf(atom) : atom

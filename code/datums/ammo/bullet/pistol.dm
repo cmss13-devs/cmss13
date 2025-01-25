@@ -18,7 +18,7 @@
 	. = ..()
 	accuracy += HIT_ACCURACY_TIER_5
 	accurate_range -= 3 //we want pistols to be more accurate but only at short range
-	damage *= 0.7
+	damage *= 0.7 //they are accurate, but they are pisotls not gona do much even if you hit
 
 
 /datum/ammo/bullet/pistol/tiny

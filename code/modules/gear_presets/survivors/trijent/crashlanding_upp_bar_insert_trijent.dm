@@ -12,7 +12,7 @@
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "173/RECON"
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -186,7 +186,7 @@
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
-	idtype = /obj/item/card/id/dogtag
+	idtype = /obj/item/card/id/dogtag/upp
 	role_comm_title = "173/RECON Syn"
 	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"

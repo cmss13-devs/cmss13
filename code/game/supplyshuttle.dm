@@ -130,7 +130,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		else
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
 			return
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
@@ -1141,7 +1141,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
 	if(black_market_lockout)
-		temp += "<DIV ALIGN='center'><BR><img src='cmblogo.png'><BR><BR><BR><BR><FONT SIZE=4><B>Unauthorized Access Removed.<BR>This console is currently under CMB investigation.<BR>Thank you for your cooperation.</FONT></div></B>"
+		temp += "<DIV ALIGN='center'><BR><img src='logo_cmb.png'><BR><BR><BR><BR><FONT SIZE=4><B>Unauthorized Access Removed.<BR>This console is currently under CMB investigation.<BR>Thank you for your cooperation.</FONT></div></B>"
 		return
 	temp += "KHZKNHZH#0-"
 	if(!GLOB.supply_controller.mendoza_status) // he's daed

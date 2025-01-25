@@ -126,6 +126,7 @@ GLOBAL_LIST_INIT(yaut_flags, list(
 GLOBAL_LIST_INIT(misc_flags, list(
 	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
 	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Dzho Automaton", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Fax Responder", bitflag = WHITELIST_FAX_RESPONDER, permission = WL_PANEL_RIGHT_MANAGER),
 ))
 

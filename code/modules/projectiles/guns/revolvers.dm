@@ -10,7 +10,17 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/revolvers_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/pistol_mouse.dmi'
+
 	matter = list("metal" = 2000)
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
+	gun_category = GUN_CATEGORY_HANDGUN
+	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
+	movement_onehanded_acc_penalty_mult = 3
+	has_empty_icon = FALSE
+	has_open_icon = TRUE
+	current_mag = /obj/item/ammo_magazine/internal/revolver
+
 	fire_sound = 'sound/weapons/gun_44mag_v4.ogg'
 	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
 	cocked_sound = 'sound/weapons/gun_revolver_spun.ogg'
@@ -19,17 +29,11 @@
 	var/hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	var/spin_sound = 'sound/effects/spin.ogg'
 	var/thud_sound = 'sound/effects/thud.ogg'
-	var/trick_delay = 4 SECONDS
 	var/list/cylinder_click = list('sound/weapons/gun_empty.ogg')
+
+	var/trick_delay = 4 SECONDS
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
-	gun_category = GUN_CATEGORY_HANDGUN
-	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
-	movement_onehanded_acc_penalty_mult = 3
-	has_empty_icon = FALSE
-	has_open_icon = TRUE
-	current_mag = /obj/item/ammo_magazine/internal/revolver
 
 /obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -518,6 +522,10 @@
 /obj/item/weapon/gun/revolver/small/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
 
+/obj/item/weapon/gun/revolver/small/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
+
 /obj/item/weapon/gun/revolver/small/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
@@ -754,7 +762,7 @@
 	return ..()
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 23, "under_x" = 22, "under_y" = 16, "stock_x" = 20, "stock_y" = 18)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_config_values()
 	..()
@@ -767,5 +775,30 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
+/obj/item/weapon/gun/revolver/cmb/tactical
+	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
+
 /obj/item/weapon/gun/revolver/cmb/normalpoint
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb
+
+/obj/item/weapon/gun/revolver/cmb/custom
+	name = "\improper Spearhead custom autorevolver"
+	desc = "An automatic revolver chambered in .357, custom made of darker metal and with a wooden handle, clearly made for a person with taste in mind."
+	icon_state = "black_spearhead"
+	item_state = "black_spearhead"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb
+
+/obj/item/weapon/gun/revolver/cmb/custom/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
+
+/obj/item/weapon/gun/revolver/cmb/custom/unique_action(mob/user)
+	var/result = revolver_trick(user)
+	if(result)
+		to_chat(user, SPAN_NOTICE("Your badass trick inspires you. Your next few shots will be focused!"))
+		accuracy_mult = BASE_ACCURACY_MULT * 2
+		accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
+		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 3 SECONDS)
+
+/obj/item/weapon/gun/revolver/cmb/custom/tactical
+	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)

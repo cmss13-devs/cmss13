@@ -286,9 +286,10 @@
 
 	var/channel = "ADMIN:"
 	channel = "[admin_holder.rank]:"
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/client as anything in GLOB.admins)
 		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
-			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
+			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -395,10 +396,10 @@
 	channel = "[admin_holder.rank]:"
 	if(check_rights(R_MOD|R_ADMIN,0))
 		color = "mentorstaff"
-
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM><EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mentor_say()
 	var/msg = input(src, null, "mentorsay \"text\"") as text|null

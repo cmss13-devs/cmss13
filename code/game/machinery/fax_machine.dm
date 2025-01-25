@@ -75,6 +75,17 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	update_departments()
 	generate_id_tag()
 
+	if(mapload && (department in HIGHCOM_DEPARTMENTS))
+		for(var/datum/fax/fax as anything in GLOB.fax_contents)
+			if(fax.department != department)
+				continue
+
+			var/obj/item/paper/paper = new(get_turf(src))
+			paper.info = fax.data
+			paper.update_icon()
+
+			paper.stamps += "<hr><i>This paper has been sent by [fax.fax_id_tag].</i>"
+
 /obj/structure/machinery/faxmachine/proc/generate_id_tag(force = FALSE)
 	if(fixed_id_tag && !force)
 		return FALSE
@@ -656,20 +667,6 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	department = DEPARTMENT_PRESS
 	network = FAX_NET_PRESS_HC
 	target_department = "General Public"
-
-/obj/structure/machinery/faxmachine/Initialize(mapload, ...)
-	. = ..()
-
-	if(mapload && (department in HIGHCOM_DEPARTMENTS))
-		for(var/datum/fax/fax as anything in GLOB.fax_contents)
-			if(fax.department != department)
-				continue
-
-			var/obj/item/paper/paper = new(get_turf(src))
-			paper.info = fax.data
-			paper.update_icon()
-
-			paper.stamps += "<hr><i>This paper has been sent by [fax.fax_id_tag].</i>"
 
 ///The deployed fax machine backpack
 /obj/structure/machinery/faxmachine/backpack

@@ -15,7 +15,7 @@
 	name = "CIA Agent (Civilian Clothing)"
 	rank = "Intelligence Analyst"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
-	role_comm_title = PAY_SHORT_CIV
+	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
 	minimap_icon = "io"
 	idtype = /obj/item/card/id/adaptive

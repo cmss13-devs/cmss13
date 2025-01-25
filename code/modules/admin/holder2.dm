@@ -32,6 +32,9 @@ GLOBAL_PROTECT(href_token)
 	href_token = GenerateToken()
 	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
+	if(rights & R_PROFILER)
+		log_debug("Adding [ckey] to APP/admin.")
+		world.SetConfig("APP/admin", ckey, "role=admin")
 */
 
 // Letting admins edit their own permission giver is a poor idea
@@ -53,9 +56,6 @@ GLOBAL_PROTECT(href_token)
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		GLOB.admins |= C
-		if(owner.admin_holder.rights & R_PROFILER)
-			if(!world.GetConfig("admin", C.ckey))
-				world.SetConfig("APP/admin", C.ckey, "role = coder")
 
 /datum/admins/proc/disassociate()
 	if(owner)

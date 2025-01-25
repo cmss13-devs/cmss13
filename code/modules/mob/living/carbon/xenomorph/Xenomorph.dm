@@ -210,6 +210,7 @@
 	var/armor_integrity_modifier = 0
 
 	var/list/modifier_sources
+	COOLDOWN_DECLARE(next_strain_reset)
 
 	//////////////////////////////////////////////////////////////////
 	//

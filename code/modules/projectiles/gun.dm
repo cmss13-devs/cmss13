@@ -1626,6 +1626,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			to_chat(user, SPAN_WARNING("The safety is on!"))
 			gun_user.balloon_alert(gun_user, "safety on")
 			return
+
+		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				gun_user.balloon_alert(gun_user, "help intent safety")
+				click_empty(gun_user)
+			return FALSE
+
 		if(active_attachable)
 			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))

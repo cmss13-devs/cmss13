@@ -2200,7 +2200,7 @@ RUCM REMOVE END*/
 		//make ASRS order for nuke
 		var/datum/supply_order/new_order = new()
 		new_order.ordernum = GLOB.supply_controller.ordernum++
-		new_order.object = GLOB.supply_packs_datums[nuketype]
+		new_order.objects = list(GLOB.supply_packs_datums[nuketype])
 		new_order.orderedby = ref_person
 		new_order.approvedby = "USCM High Command"
 		GLOB.supply_controller.shoppinglist += new_order

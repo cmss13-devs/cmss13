@@ -395,6 +395,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
@@ -428,7 +433,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
 	update_fullscreen()
 
@@ -453,6 +458,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+
+	if(CONFIG_GET(flag/ooc_country_flags))
+		spawn if(src)
+			ip2country(address, src)
 
 	//////////////
 	//DISCONNECT//

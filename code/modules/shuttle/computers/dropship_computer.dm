@@ -14,6 +14,7 @@
 
 	// Is door control locked -- hijack
 	var/dropship_control_lost = FALSE
+	var/escape_locked = FALSE
 	var/door_control_cooldown
 
 	// Allows admins to var edit the time lock away.
@@ -119,6 +120,9 @@
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
 		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
+	if(escape_locked)
+		to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))
+		return
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
 		var/units = "seconds"

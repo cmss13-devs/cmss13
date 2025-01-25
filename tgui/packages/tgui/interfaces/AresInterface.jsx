@@ -1779,6 +1779,21 @@ const Emergency = (props) => {
         >
           Request Nuclear Device
         </Button.Confirm>
+        <Button.Confirm
+          tooltip={operation_reason}
+          icon="shuttle-space"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          onClick={() => act('operation_zone_leave')}
+          disabled={!canLeave}
+        >
+          Leave Operation Zone
+        </Button.Confirm>
       </Flex>
     </>
   );

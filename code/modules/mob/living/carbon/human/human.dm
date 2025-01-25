@@ -127,6 +127,8 @@
 		. += "Active Order: FOCUS"
 
 	if(SShijack)
+		. += "Operation Stage: [SShijack.get_ship_operation_stage_status_panel_eta()]"
+
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goals: [eta_status]"

@@ -83,6 +83,12 @@ SUBSYSTEM_DEF(hijack)
 	/// If ARES has announced the 50% point yet for SD
 	var/ares_sd_announced = FALSE
 
+	var/ship_evac_time
+	var/ship_operation_stage_status = OPERATION_DECRYO
+	var/shuttles_to_check = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
+	var/ship_evacuating = FALSE
+	var/ship_evacuating_forced = FALSE
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
@@ -100,6 +106,20 @@ SUBSYSTEM_DEF(hijack)
 	return ..()
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
+	if(SSticker.mode && SShijack.ship_operation_stage_status == OPERATION_DECRYO && ROUND_TIME > DECRYO_STAGE_TIME)
+		SShijack.ship_operation_stage_status = OPERATION_BRIEFING
+
+	if(ship_evacuating)
+		if(SHIP_ESCAPE_ESTIMATE_DEPARTURE <= 0 && ship_operation_stage_status == OPERATION_LEAVING_OPERATION_PLACE)
+			SSticker.mode.round_finished = "Marine Minor Victory"
+			ship_operation_stage_status = OPERATION_DEBRIEFING
+			ship_evacuating = FALSE
+
+		var/shuttles_report = shuttels_onboard()
+		if(shuttles_report)
+			shuttles_report += " sended against protocol, wait respond of operator..."
+			cancel_ship_evacuation(shuttles_report)
+
 	if(!SSticker?.mode?.is_in_endgame)
 		return
 
@@ -228,6 +248,19 @@ SUBSYSTEM_DEF(hijack)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
+/datum/controller/subsystem/hijack/proc/get_ship_operation_stage_status_panel_eta()
+	switch(ship_operation_stage_status)
+		if(OPERATION_DECRYO) . = "decryo"
+		if(OPERATION_BRIEFING) . = "briefing"
+		if(OPERATION_FIRST_LANDING) . = "landing"
+		if(OPERATION_IN_PROGRESS) . = "working on operation goals"
+		if(OPERATION_ENDING) . = "operation ended"
+		if(OPERATION_LEAVING_OPERATION_PLACE)
+			var/eta = SHIP_ESCAPE_ESTIMATE_DEPARTURE
+			. = "time until operation zone leave - ETA [time2text(eta, "hh:mm.ss")]"
+		if(OPERATION_DEBRIEFING) . = "accounting results"
+		if(OPERATION_CRYO) . = "moving crew to cryo"
+
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
 	switch(hijack_status)
@@ -249,6 +282,96 @@ SUBSYSTEM_DEF(hijack)
 	return "[duration2text_sec(sd_time_remaining)]"
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ EVAC STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
+
+//Begins ship runaway
+/datum/controller/subsystem/hijack/proc/initiate_ship_evacuation(force = FALSE)
+	if((force || !ship_evac_blocked()) && !ship_evacuating)
+		ship_evac_time = world.time
+		ship_evacuating = TRUE
+		ship_operation_stage_status = OPERATION_LEAVING_OPERATION_PLACE
+		GLOB.enter_allowed = FALSE
+		ai_announcement("Attention. Emergency. All personnel and marines return to the ship immediately, due to the critical situation an immediate process of departure from the area of operation is initiated, boarding shuttles will become unavailable after the [duration2text(SHIP_EVACUATION_AUTOMATIC_DEPARTURE)]!", 'sound/AI/evacuate.ogg', logging = ARES_LOG_SECURITY)
+		xeno_message_all("A wave of adrenaline swept through the hive. The creatures of flesh are trying to fly away, we must get to their iron hive now! You have only [duration2text(SHIP_EVACUATION_AUTOMATIC_DEPARTURE)] before they get out of range..")
+
+		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
+			if(is_mainship_level(cycled_status_display.z))
+				cycled_status_display.set_picture("depart")
+
+		for(var/shuttle_id in shuttles_to_check)
+			var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_id)
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/console = shuttle.getControlConsole()
+			console.escape_locked = TRUE
+		return TRUE
+
+/datum/controller/subsystem/hijack/proc/shuttels_onboard()
+	for(var/shuttle_id in shuttles_to_check)
+		var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_id)
+		if(!shuttle)
+			CRASH("Warning, something went wrong at evacuation shuttles check, please review shuttles spelling")
+		else if(!is_mainship_level(shuttle.z))
+			return shuttle_id
+	return FALSE
+
+/datum/controller/subsystem/hijack/proc/ship_evac_blocked()
+	if(get_security_level() != "red")
+		return "Required RED alert"
+	else if(!critical_faction_loses(FACTION_MARINE) && !all_faction_mobs_onboard(FACTION_MARINE))
+		return "Not all forces onboard"
+	else if(!shuttels_onboard())
+		return "All shuttles should be loaded on ship"
+	return FALSE
+
+/datum/controller/subsystem/hijack/proc/critical_faction_loses(faction)
+	var/alive = 0
+	var/dead = 0
+	for(var/mob/living/carbon/human/creature as anything in GLOB.human_mob_list)
+		if(creature.faction != faction)
+			continue
+		if(creature.stat == DEAD)
+			dead++
+		else
+			alive++
+	if(alive * 4 < dead)
+		return TRUE
+	return FALSE
+/* When faction refactor kicks in
+	if(length(GLOB.faction_datums[FACTION_MARINE].total_mobs) * 4 < length(GLOB.faction_datums[FACTION_MARINE].total_dead_mobs))
+		return TRUE
+	return FALSE */
+
+/datum/controller/subsystem/hijack/proc/all_faction_mobs_onboard(faction)
+	for(var/mob/living/carbon/human/creature as anything in GLOB.human_mob_list)
+		if(creature.faction != faction)
+			continue
+		if(creature.stat != CONSCIOUS)
+			continue
+		if(!is_mainship_level(creature.z))
+			return FALSE
+	return TRUE
+/* When faction refactor kicks in
+	for(var/mob/living/carbon/human/M in faction.total_mobs)
+		if(!is_mainship_level(M.z)))
+			return FALSE
+	return TRUE */
+
+//Cancels the evac procedure. Useful if admins do not want the marines leaving.
+/datum/controller/subsystem/hijack/proc/cancel_ship_evacuation(reason)
+	if(ship_operation_stage_status == OPERATION_LEAVING_OPERATION_PLACE)
+		ship_operation_stage_status = OPERATION_ENDING
+		ship_evacuating = FALSE
+		GLOB.enter_allowed = TRUE
+		ai_announcement(reason, 'sound/AI/evacuate_cancelled.ogg', logging = ARES_LOG_SECURITY)
+
+		for(var/shuttle_id in shuttles_to_check)
+			var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_id)
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/console = shuttle.getControlConsole()
+			console.escape_locked = FALSE
+
+		for(var/obj/structure/machinery/status_display/status_display in GLOB.machines)
+			if(is_mainship_level(status_display.z))
+				status_display.set_picture("redalert")
+		return TRUE
+
 
 /// Initiates evacuation by announcing and then prepping all lifepods/lifeboats
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()

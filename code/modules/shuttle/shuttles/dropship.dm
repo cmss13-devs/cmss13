@@ -192,7 +192,7 @@
 	if(!automated_hangar_id || !automated_lz_id || !automated_delay)
 		return
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(root_console.dropship_control_lost)
+	if(root_console.dropship_control_lost || root_console.escape_locked)
 		return
 	if(mode != SHUTTLE_IDLE)
 		return

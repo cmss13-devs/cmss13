@@ -558,12 +558,9 @@
 	name = "Survivor - Synthetic - Bartender Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/bowlerhat,
-		WEAR_FACE = /obj/item/clothing/mask/gas/fake_mustache,
-		WEAR_BODY = /obj/item/clothing/under/waiter,
-		WEAR_BACK = /obj/item/storage/backpack/satchel,
-		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/tequila,
-		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/cognac,
-		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/grenadine,
+		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/black,
+		WEAR_IN_BACK = /obj/item/clothing/mask/gas/fake_mustache,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/wcoat,
 		WEAR_IN_JACKET = /obj/item/reagent_container/food/drinks/bottle/rum,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/black,

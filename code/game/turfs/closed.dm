@@ -7,11 +7,6 @@
 	attack_hand(user)
 
 /turf/closed/attack_hand(mob/user)
-	// For now, later if special lader too much, we can do something easier
-	if(!istype(user, /mob/living/carbon/xenomorph))
-		to_chat(user, SPAN_WARNING("You are not hero!"))
-		return
-
 	if(user.action_busy)
 		return
 
@@ -29,7 +24,7 @@
 	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
 		SPAN_WARNING("You start climbing up the \the [src]."))
 
-	if(!do_after(user, user.mob_size * 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, isxeno(user) ? user.mob_size * 5 SECONDS : 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 

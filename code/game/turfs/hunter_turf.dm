@@ -5,6 +5,24 @@
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "floor"
 
+/turf/open/shuttle/dropship/predship/tile/red
+	icon_state = "hunter_red"
+
+/turf/open/shuttle/dropship/predship/tile/red2
+	icon_state = "hunter_red_2"
+
+/turf/open/shuttle/dropship/predship/tile/red3
+	icon_state = "hunter_red_3"
+
+/turf/open/shuttle/dropship/predship/tile/red4
+	icon_state = "hunter_red_4"
+
+/turf/open/shuttle/dropship/predship/tile/red5
+	icon_state = "hunter_red_5"
+
+/turf/open/shuttle/dropship/predship/tile/red6
+	icon_state = "hunter_red_6"
+
 /turf/open/shuttle/dropship/predship/bridge
 	icon_state = "hunter_bridge"
 

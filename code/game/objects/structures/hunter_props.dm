@@ -15,6 +15,10 @@
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	light_on = TRUE
+	light_color ="#ff0000"
+	light_power = 2
+	light_range = 3
 
 /obj/effect/hunter/glowing_shape/med_red_bottom
 	icon_state = "med_red_bottom"
@@ -42,6 +46,9 @@
 /obj/effect/hunter/bridge_border/corner
 	icon_state = "bridge_border_corner"
 
+/obj/effect/hunter/bridge_border/edge
+	icon_state = "bridge_border_edge"
+
 /obj/effect/hunter/bridge_border/small_stair_left
 	icon_state = "small_stair_left"
 
@@ -50,6 +57,9 @@
 
 /obj/effect/hunter/bridge_border/brown
 	icon_state = "bridge_brown_border"
+
+/obj/effect/hunter/bridge_border/brown/edge
+	icon_state = "bridge_border_brown_edge"
 
 /obj/effect/hunter/bridge_border/brown/corner
 	icon_state = "bridge_border_brown_corner"
@@ -146,8 +156,22 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/structure/prop/hunter/stairs/border/rune
+	icon_state = "border_stairs_rune"
+	light_on = TRUE
+	light_color ="#ff0000"
+	light_power = 1
+	light_range = 1
+
 /obj/structure/prop/hunter/stairs/border/stair_cut
 	icon_state = "border_stair_cut"
+
+/obj/structure/prop/hunter/stairs/border/stair_cut/rune
+	icon_state = "border_stair_rune_cut"
+	light_on = TRUE
+	light_color ="#ff0000"
+	light_power = 1
+	light_range = 1
 
 /obj/structure/prop/hunter/misc/feed
 	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
@@ -155,6 +179,27 @@
 	desc = null
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/rune
+	name = "rune"
+	desc = null
+	icon = 'icons/effects/32x32-hunter_effects.dmi'
+	icon_state = "hunter_rune"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	light_on = TRUE
+	light_color ="#ff0000"
+	light_power = 1
+	light_range = 1
+
+/obj/effect/hunter/rune/corner
+	icon_state = "hunter_rune_corner"
+
+/obj/effect/hunter/rune/corner_2
+	icon_state = "hunter_rune_corner_2"
 
 // Fake platform
 

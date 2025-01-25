@@ -1244,10 +1244,10 @@
 		return
 	. = ..()
 
-/// SKULLS
+/// Skulls & Parts
 /obj/item/skull
 	name = "skull"
-	icon = 'icons/obj/items/hunter/prey_skulls.dmi'
+	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	unacidable = TRUE
 
 /obj/item/skull/queen
@@ -1295,6 +1295,36 @@
 	desc = "Skull of a strong xenomorph, jack of all trades, vanguard to the Queen."
 	icon_state = "praetorian_skull"
 
+/obj/item/skull/crusher
+	name = "Crusher skull"
+	desc = "Skull of a strong xenomorph, jack of all trades, vanguard to the Queen."
+	icon_state = "crusher_skull"
+
+/obj/item/skull/ravager
+	name = "Ravager skull"
+	desc = "Skull of a strong xenomorph, jack of all trades, vanguard to the Queen."
+	icon_state = "ravager_skull"
+
+/obj/item/skull/boiler
+	name = "Boiler skull"
+	desc = "Skull of a strong xenomorph, jack of all trades, vanguard to the Queen."
+	icon_state = "boiler_skull"
+
+/obj/item/skull/carrier
+	name = "Carrier skull"
+	desc = "Skull of a weak xenomorph, a common worker of the hive."
+	icon_state = "carrier_skull"
+
+/obj/item/skull/hivelord
+	name = "Hivelord skull"
+	desc = "Skull of a weak xenomorph, a common worker of the hive."
+	icon_state = "hivelord_skull"
+
+/obj/item/skull/burrower
+	name = "Burrower skull"
+	desc = "Skull of a weak xenomorph, a common worker of the hive."
+	icon_state = "burrower_skull"
+
 /obj/item/skull/drone
 	name = "Drone skull"
 	desc = "Skull of a weak xenomorph, a common worker of the hive."
@@ -1314,6 +1344,18 @@
 	name = "Spitter skull"
 	desc = "Skull of an highly acidic xenomorph, a venomous ranged fighter."
 	icon_state = "spitter_skull"
+
+// PELTS
+
+/obj/item/pelt
+	name = "pelt"
+	icon = 'icons/obj/items/hunter/prey_items.dmi'
+	unacidable = TRUE
+
+/obj/item/pelt/queen
+	name = "Queen pelt"
+	desc = "The pelt of a xenomorph."
+	icon_state = "queen_pelt"
 
 /// TOOLS
 
@@ -1402,3 +1444,13 @@
 	new /obj/item/tool/wirecutters/yautja(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
+
+/obj/item/tool/hatchet/yautja
+	name = "duelling hatchet"
+	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
+	icon_state = "yautja"

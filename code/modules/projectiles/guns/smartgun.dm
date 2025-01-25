@@ -770,7 +770,7 @@
 
 /obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
 	. = ..()
-	MD.iff_signal = FACTION_PMC
+	MD.iff_signal =GLOB.faction_datums[FACTION_PMC]
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/dirty/elite
@@ -779,7 +779,7 @@
 
 /obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
 	. = ..()
-	MD.iff_signal = FACTION_WY_DEATHSQUAD
+	MD.iff_signal = GLOB.faction_datums[FACTION_WY_DEATHSQUAD]
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
@@ -801,7 +801,7 @@
 
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()
-	MD.iff_signal = FACTION_CLF
+	MD.iff_signal = GLOB.faction_datums[FACTION_CLF]
 
 /obj/item/weapon/gun/smartgun/admin
 	requires_power = FALSE
@@ -854,4 +854,4 @@
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
-	MD.iff_signal = FACTION_TWE
+	MD.iff_signal = GLOB.faction_datums[FACTION_TWE]

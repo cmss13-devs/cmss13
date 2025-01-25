@@ -1061,7 +1061,7 @@
 	set name = "View Crew Manifest"
 	set category = "IC"
 
-	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
+	if(faction.code_identificator != FACTION_MARINE && !((faction.code_identificator in FACTION_LIST_WY) || faction.code_identificator == FACTION_FAX))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
 	GLOB.crew_manifest.open_ui(src)
@@ -1074,7 +1074,7 @@
 		to_chat(src, "The game appears to have misplaced your mind datum.")
 		return
 
-	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction.code_identificator != FACTION_MARINE && !(faction.code_identificator in FACTION_LIST_WY))
 		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
 		return
 

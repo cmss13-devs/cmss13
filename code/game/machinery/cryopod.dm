@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				dept_console = GLOB.frozen_items["Eng"]
 
 
-		if(cryo_human.faction != FACTION_MARINE)
+		if(cryo_human.faction.code_identificator != FACTION_MARINE)
 			dept_console = GLOB.frozen_items[cryo_human.faction]
 
 		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
@@ -565,7 +565,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return TRUE
 	if(no_store_pod)
 		return TRUE
-	if(occupant.faction != FACTION_MARINE)
+	if(occupant.faction.code_identificator != FACTION_MARINE)
 		return TRUE
 	return FALSE
 

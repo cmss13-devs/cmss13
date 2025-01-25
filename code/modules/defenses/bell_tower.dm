@@ -162,11 +162,11 @@
 /obj/structure/machinery/defenses/bell_tower/md/setup_tripwires()
 	md = new(src)
 	md.linked_tower = src
-	md.iff_signal = faction
+	md.iff_signal = faction.code_identificator
 	md.toggle_active(null, FALSE)
 
 	if(!md.iff_signal)
-		md.iff_signal = GLOB.faction_datums[FACTION_MARINE]
+		md.iff_signal = FACTION_MARINE
 
 /obj/structure/machinery/defenses/bell_tower/md/clear_tripwires()
 	if(md)

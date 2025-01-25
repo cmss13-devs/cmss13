@@ -224,7 +224,7 @@
 		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
-		if(M.ally_faction(iff_signal))
+		if(M.ally_faction(GLOB.faction_datums[iff_signal]))
 			continue
 
 		apply_debuff(M)

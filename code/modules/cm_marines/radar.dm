@@ -228,7 +228,7 @@
 	if(!humanoid || !istype(humanoid))
 		return FALSE
 	if(..())
-		if(humanoid.faction != faction)
+		if(humanoid.faction.code_identificator != faction)
 			return FALSE
 		if(istype(humanoid.w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/uniform = humanoid.w_uniform

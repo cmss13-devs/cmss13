@@ -42,8 +42,8 @@ base = the base the marines are staging from. The ship, Whiskey Outpost etc. Non
 							"cl" = list(),
 							"misc" = list())
 
-	for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
-		if(H.faction != FACTION_MARINE || (H.z in exempt_zlevels))
+	for(var/mob/living/carbon/human/H as anything in GLOB.faction_datums[FACTION_MARINE].total_mobs)
+		if(H.z in exempt_zlevels)
 			continue
 		switch(H.job)
 			if(BLURB_USCM_COMBAT)

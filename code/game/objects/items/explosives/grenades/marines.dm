@@ -541,7 +541,7 @@
 		SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
 	planted.activate_sensors()
-	planted.iff_signal = user.faction // assuring IFF is set
+	planted.iff_signal = user.faction.code_identificator // assuring IFF is set
 	planted.pixel_x += rand(-5, 5)
 	planted.pixel_y += rand(-5, 5)
 	qdel(src)

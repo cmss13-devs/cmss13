@@ -4320,7 +4320,7 @@
 "TI" = (
 /mob/living/simple_animal/hostile/carp{
 	destroy_surroundings = 0;
-	faction = "fax";
+	faction_to_get = "fax";
 	name = "Gary"
 	},
 /turf/open/space/basic,

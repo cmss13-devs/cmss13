@@ -242,7 +242,7 @@
 			if(!is_announcement_active)
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
-			if(announcement_faction != FACTION_MARINE && usr.faction != GLOB.faction_datums[announcement_faction])
+			if(announcement_faction != FACTION_MARINE && usr.faction.code_identificator != announcement_faction)
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")

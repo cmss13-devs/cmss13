@@ -117,7 +117,7 @@
 		if(active)
 			if(user.action_busy)
 				return
-			if(user.faction == iff_signal)
+			if(user.faction.code_identificator == iff_signal)
 				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
 				SPAN_NOTICE("You start disarming [src]."))
 			else
@@ -127,7 +127,7 @@
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
 					SPAN_WARNING("You stop disarming [src]."))
 				return
-			if(user.faction != iff_signal) //ow!
+			if(user.faction.code_identificator != iff_signal) //ow!
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
@@ -205,7 +205,7 @@
 		return
 	if(L.stat == DEAD)
 		return
-	if(L.ally_faction(iff_signal))
+	if(L.ally_faction(GLOB.faction_datums[iff_signal]))
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return

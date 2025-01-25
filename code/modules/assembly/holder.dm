@@ -1,6 +1,10 @@
 /obj/item/device/assembly_holder
 	name = "Assembly"
 	icon = 'icons/obj/items/new_assemblies.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	icon_state = "holder"
 	item_state = "assembly"
 	flags_atom = FPRINT|CONDUCT

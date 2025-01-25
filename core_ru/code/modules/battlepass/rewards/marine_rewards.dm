@@ -54,6 +54,6 @@
 
 /datum/battlepass_reward/marine/toy/bikehorn
 	name = "Bike Horn"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "bike_horn"
 	item_path = /obj/item/toy/bikehorn

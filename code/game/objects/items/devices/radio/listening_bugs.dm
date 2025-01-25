@@ -32,6 +32,7 @@
 	var/prevent_snooping = FALSE
 	/// The ID tag of the device, for identification.
 	var/nametag = "Device"
+	inherent_traits = list(TRAIT_HEARS_FROM_CONTENTS)
 
 /obj/item/device/radio/listening_bug/ui_data(mob/user)
 	var/list/data = list()
@@ -244,6 +245,10 @@
 /obj/item/device/radio/listening_bug/radio_linked/hc/pvst
 	frequency = PVST_FREQ
 
+/obj/item/device/radio/listening_bug/radio_linked/cia
+	frequency = CIA_FREQ
+	req_one_access = list(ACCESS_CIA)
+
 /obj/item/device/radio/listening_bug/radio_linked/wy
 	frequency = WY_FREQ
 	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
@@ -274,3 +279,23 @@
 /obj/item/device/encryptionkey/listening_bug/freq_b
 	name = "Listening Bug Encryption Key (B)"
 	channels = list(RADIO_CHANNEL_BUG_B = TRUE)
+
+
+
+///An automatically active bug used to listen to things by a Fax Responder.
+/obj/item/device/radio/listening_bug/radio_linked/fax
+	name = "Comms Relay Device"
+	subspace_switchable = FALSE
+	broadcasting = TRUE
+
+/obj/item/device/radio/listening_bug/radio_linked/fax/wy
+	frequency = FAX_WY_FREQ
+	req_one_access = list(ACCESS_WY_SENIOR_LEAD)
+
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst
+	frequency = FAX_USCM_PVST_FREQ
+	req_one_access = list(ACCESS_MARINE_CO)
+
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc
+	frequency = FAX_USCM_HC_FREQ
+	req_one_access = list(ACCESS_MARINE_CO)

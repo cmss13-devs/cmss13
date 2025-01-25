@@ -276,24 +276,28 @@
 	equivalent_name = SQUAD_MARINE_1
 	equipment_color = "#e61919"
 	chat_color = "#e67d7d"
+	background_icon = "background_upp_alpha"
 
 /datum/squad/upp/two
 	name = SQUAD_UPP_2
 	equivalent_name = SQUAD_MARINE_2
 	equipment_color = "#ffc32d"
 	chat_color = "#ffe650"
+	background_icon = "background_upp_bravo"
 
 /datum/squad/upp/three
 	name = SQUAD_UPP_3
 	equivalent_name = SQUAD_MARINE_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
+	background_icon = "background_upp_charlie"
 
 /datum/squad/upp/four
 	name = SQUAD_UPP_4
 	equivalent_name = SQUAD_MARINE_4
 	equipment_color = "#4148c8"
 	chat_color = "#828cff"
+	background_icon = "background_upp_delta"
 
 /datum/squad/upp/kdo
 	name = SQUAD_UPP_5

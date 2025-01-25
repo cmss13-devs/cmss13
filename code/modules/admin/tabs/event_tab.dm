@@ -47,7 +47,7 @@
 	set category = "Admin.Events"
 	if(!admin_holder)
 		return
-	
+
 	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
 
 	var/list/ckeys = list()
@@ -576,7 +576,7 @@
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
 			if(alert("Do you want PMCs (not Death Squad) to see this announcement?",,"Yes","No") == "Yes")
-				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
+				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, TRUE)
 			else
 				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
 	else

@@ -242,11 +242,10 @@
 	var/mob/living/carbon/xenomorph/larva/new_xeno
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
-		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
+		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob, null, faction)
 	else
-		new_xeno = new(affected_mob)
+		new_xeno = new(affected_mob, null, faction)
 
-	faction.add_mob(new_xeno)
 	if(!affected_mob.first_xeno && faction_module.hive_location)
 		faction_module.increase_larva_after_burst()
 		faction_module.hive_ui.update_burrowed_larva()

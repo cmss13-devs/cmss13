@@ -383,7 +383,7 @@
 			old_xeno.drop_inv_item_on_ground(item)
 		old_xeno.empty_gut()
 
-		old_xeno.faction.add_mob(src)
+		faction = old_xeno.faction
 		if(old_xeno.organ_faction_tag)
 			organ_faction_tag = old_xeno.organ_faction_tag
 			organ_faction_tag.forceMove(src)
@@ -394,8 +394,11 @@
 			faction_tag.forceMove(src)
 			old_xeno.faction_tag = null
 
-	else if(faction_to_set)
-		faction = faction_to_set
+	if(!faction)
+		if(faction_to_set)
+			faction = faction_to_set
+		else if(faction_to_get)
+			faction = GLOB.faction_datums[faction_to_get]
 
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -441,8 +444,6 @@
 	GLOB.xeno_mob_list += src
 	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 
-	. = ..()
-
 	if(!organ_faction_tag && faction.organ_faction_iff_tag_type)
 		organ_faction_tag = new faction.organ_faction_iff_tag_type(src, faction)
 
@@ -461,6 +462,8 @@
 	toggle_xeno_hostilehud()
 	recalculate_everything()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+
+	. = ..()
 
 	//Set leader to the new mob
 	if(old_xeno)

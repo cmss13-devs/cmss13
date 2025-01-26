@@ -35,11 +35,15 @@
 	var/acid_slash_regen_lying = 8
 	var/acid_slash_regen_standing = 14
 	var/acid_passive_regen = 1
-	var/acid_gen_cap = 400 //Ammount of acid after wich passive acid generation stops
+	/// Amount of acid before passive (non-combat) acid generation stops
+	var/acid_gen_cap = 400
 
-	var/combat_acid_regen = 1 //how much acid runners passivly generate per tick in combat
-	var/combat_gen_timer = 80 //deci-seconds acid gen is active after a slash/tailstab
-	var/combat_gen_active = FALSE //this defines if the combat acid generation is on or off
+	/// How much acid is generated per tick in combat
+	var/combat_acid_regen = 1
+	/// Duration of combat acid generation after a slash/tailstab
+	var/combat_gen_timer = 80
+	/// Determines whether the combat acid generation is on or off
+	var/combat_gen_active = FALSE
 
 	var/melt_acid_cost = 100
 

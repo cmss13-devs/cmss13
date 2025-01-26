@@ -1374,9 +1374,8 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj/structure/machinery/faxmachine/uscm/command{
+/obj/structure/machinery/faxmachine/uscm/ai_core{
 	density = 0;
-	department = "AI Core";
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -3520,9 +3519,7 @@
 /obj/structure/sign/prop3{
 	pixel_x = -32
 	},
-/obj/structure/machinery/faxmachine/uscm{
-	department = "SEA"
-	},
+/obj/structure/machinery/faxmachine/uscm/sea,
 /turf/open/floor/strata/faux_metal,
 /area/almayer/shipboard/sea_office)
 "axS" = (
@@ -53221,9 +53218,8 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
 	},
-/obj/structure/machinery/faxmachine/uscm{
+/obj/structure/machinery/faxmachine/uscm/requistion{
 	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
-	department = "Requisitions";
 	gender = "female"
 	},
 /turf/open/floor/almayer/plate,
@@ -56723,8 +56719,7 @@
 /area/almayer/maint/upper/u_m_s)
 "sOa" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command{
-	department = "AI Core";
+/obj/structure/machinery/faxmachine/uscm/ai_core{
 	pixel_y = 8
 	},
 /obj/structure/transmitter/rotary{

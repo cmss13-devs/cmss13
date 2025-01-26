@@ -602,6 +602,15 @@ GLOBAL_LIST_EMPTY(all_faxcodes)
 	network = FAX_NET_USCM
 	target_department = DEPARTMENT_HC
 
+/obj/structure/machinery/faxmachine/uscm/requistion
+	department = "Requisitions"
+
+/obj/structure/machinery/faxmachine/uscm/ai_core
+	department = "AI Core"
+
+/obj/structure/machinery/faxmachine/uscm/sea
+	department = "SEA"
+
 /obj/structure/machinery/faxmachine/uscm/command
 	department = "CIC"
 

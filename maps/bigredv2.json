@@ -33,7 +33,25 @@
     "traits": [
         {
             "Ground": true,
+            "Up": 1,
             "Baseturf": "/turf/open/mars"
+        },
+        {
+            "Ground": true,
+            "Down": -1,
+            "Up": 1,
+            "Baseturf": "/turf/open/openspace"
+        },
+        {
+            "Ground": true,
+            "Down": -1,
+            "Up": 1,
+            "Baseturf": "/turf/open/openspace"
+        },
+        {
+            "Ground": true,
+            "Down": -1,
+            "Baseturf": "/turf/open/openspace"
         }
     ],
     "nightmare_path": "maps/Nightmare/maps/BigRed/",

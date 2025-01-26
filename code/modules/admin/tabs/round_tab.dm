@@ -13,7 +13,8 @@
 	var/cur_extra = SSticker.mode.pred_additional_max
 	var/cur_count = SSticker.mode.pred_current_num
 	var/cur_max = SSticker.mode.calculate_pred_max()
-	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = 0, integer_only = TRUE)
+	var/real_count = length(SSticker.mode.predators)
+	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] (Real: [real_count]) Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = 0, integer_only = TRUE)
 
 	if(isnull(value))
 		return

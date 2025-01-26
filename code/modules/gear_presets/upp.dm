@@ -22,6 +22,7 @@
 	allow_additional = 1
 
 	gear_preset = /datum/equipment_preset/upp/soldier
+	scaled = TRUE
 
 /datum/equipment_preset/upp
 	name = FACTION_UPP
@@ -312,6 +313,8 @@
 		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 			if(target_squad)
 				target_squad.roles_cap[title] = slots
+
+	return (slots*4)
 
 /datum/job/antag/upp/cryo/medic/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)

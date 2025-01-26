@@ -167,7 +167,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/i in roles_by_name)
 		var/datum/job/J = roles_by_name[i]
 		if(J.scaled)
-			J.set_spawn_positions(length(unassigned_players))
+			J.set_spawn_positions(length(unassigned_players)/2) //REMOVE THIS, ONL FOR THE EVENT STUFF ADD SOME CHECK
 
 	/*===============================================================*/
 

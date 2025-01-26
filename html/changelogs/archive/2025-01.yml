@@ -456,3 +456,16 @@
       eject patients if they run out of charge while operating.
   - code_imp: Added code that disables patients from entering the Synthetic Maintenance
       Station if it has no charge left.
+2025-01-26:
+  Diegoflores31:
+  - qol: Adds universal Night Vision color preferences (green by default)
+  realforest2001:
+  - rscadd: Added a button to certain fax machines to send priority faxes, with additional
+      audio cues.
+  - rscadd: Certain faxes when receiving priority messages will also trigger ARES
+      radio alerts.
+  - bugfix: Fax machine receiving a fax now plays the correct sound.
+  - rscadd: It is now possible to navigate between sending a message to an entire
+      fax department, or to any individual fax in that department.
+  - maptweak: Adds in the Fax Responder listening intercomms that I apparently deleted
+      elsewhere.

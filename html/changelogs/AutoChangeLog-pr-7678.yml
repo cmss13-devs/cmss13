@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added a button to certain fax machines to send priority faxes, with additional audio cues."
-  - rscadd: "Certain faxes when receiving priority messages will also trigger ARES radio alerts."
-  - bugfix: "Fax machine receiving a fax now plays the correct sound."
-  - rscadd: "It is now possible to navigate between sending a message to an entire fax department, or to any individual fax in that department."
-  - maptweak: "Adds in the Fax Responder listening intercomms that I apparently deleted elsewhere."

@@ -25,6 +25,8 @@
 	var/damage_taken
 	/// What killed this xeno ("m39 submachinegun")
 	var/killed_by
+	/// Round ID that this xeno died in
+	var/round_id
 
 /datum/entity/xeno_death/proc/load_data(mob/living/carbon/xenomorph/dead_xeno, datum/cause_data/death_cause)
 	map_name = SSmapping.configs[GROUND_MAP]?.map_name || "Unknown Map"
@@ -40,6 +42,7 @@
 	ckey = dead_xeno.ckey || dead_xeno.persistent_ckey || ""
 	damage_taken = dead_xeno.life_damage_taken_total || 0
 	killed_by = strip_improper(death_cause.cause_name) || "Unknown"
+	round_id = GLOB.round_id || -1
 
 	SSticker?.mode?.round_stats?.xeno_deaths += src
 	save()
@@ -61,4 +64,5 @@
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"damage_taken" = DB_FIELDTYPE_INT,
 		"killed_by" = DB_FIELDTYPE_STRING_MEDIUM,
+		"round_id" = DB_FIELDTYPE_INT,
 	)

@@ -13,8 +13,7 @@
 	entry_message_body = "You're a commissioned officer of the USCM. You are tasked with <a href='"+WIKI_PLACEHOLDER+"'>researching</a> and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to Marines without getting permission from your supervisor."
 	voiceline_chance = 30
 	voicelines = list(
-	"male_scream" = "researcher_scream_male",\
-	"male_pain" = "researcher_pain_male",
+	"male_scream" = "researcher_scream_male",
 	)
 
 /datum/job/civilian/researcher/set_spawn_positions(count)

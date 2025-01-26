@@ -401,9 +401,7 @@
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
 			// job specific
 			if("researcher_scream_male")
-				sound = pick('sound/voice/researcher_scream_1.ogg', 'sound/voice/researcher_scream_2.ogg')
-			if("researcher_pain_male")
-				sound = pick('sound/voice/researcher_pain_1.ogg', 'sound/voice/researcher_pain_2.ogg', 'sound/voice/researcher_pain_3.ogg')
+				sound = pick('sound/voice/human_ack_scream.ogg')
 			// working joe
 			if("wj_death")
 				sound = pick('sound/voice/joe/death_normal.ogg', 'sound/voice/joe/death_silence.ogg',10;'sound/voice/joe/death_tomorrow.ogg',5;'sound/voice/joe/death_dream.ogg')

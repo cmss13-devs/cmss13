@@ -210,20 +210,9 @@
 
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
 	if(ishuman_strict(user))
-		var/job_voice
 		if(user.gender == MALE)
-
-			job_voice = get_job_voiceline(user, "male_pain")
-			if(job_voice)
-				return get_sfx(job_voice)
-
 			return get_sfx("male_pain")
 		else
-
-			job_voice = get_job_voiceline(user, "female_pain")
-			if(job_voice)
-				return get_sfx(job_voice)
-
 			return get_sfx("female_pain")
 
 	if(isyautja(user))

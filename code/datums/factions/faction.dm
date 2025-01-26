@@ -65,7 +65,8 @@
 	if(!istype(creature))
 		return
 
-	for(var/datum/faction_module/faction_module in faction_modules)
+	for(var/faction_module_to_get in faction_modules)
+		var/datum/faction_module/faction_module = faction_modules[faction_module_to_get]
 		faction_module.add_mob(creature)
 
 	if(creature.faction && creature.faction != src)

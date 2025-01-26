@@ -197,7 +197,7 @@
 
 		user.animation_attack_on(target)
 /*
-	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
+		user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 */
 //RUCM START
 		user.count_statistic_stat(STATISTICS_SURGERY_AMPUTATE)

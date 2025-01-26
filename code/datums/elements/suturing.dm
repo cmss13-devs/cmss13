@@ -155,7 +155,12 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	//Add the sutures.
 	var/added_sutures = SEND_SIGNAL(target_limb, COMSIG_LIMB_ADD_SUTURES, suture_brute, suture_burn)
 	if(!added_sutures) //No suture datum to answer the signal
+/*
+		new /datum/suture_handler(target_limb)
+*/
+//RUCM START
 		new /datum/suture_handler(target_limb, suturing_item, user, target)
+//RUCM END
 		added_sutures = SEND_SIGNAL(target_limb, COMSIG_LIMB_ADD_SUTURES, suture_brute, suture_burn) //This time, with feeling.
 
 	if(added_sutures & SUTURED_FULLY)

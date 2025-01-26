@@ -33,7 +33,12 @@
 	return
 
 /datum/game_mode/extended/declare_completion()
+/*
+	announce_ending()
+*/
+//RUCM START
 	. = ..()
+//RUCM END
 
 	var/musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 	world << musical_track

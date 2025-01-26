@@ -202,19 +202,19 @@
 	if(!action_cooldown_check())
 		return
 
-	var/turf/target_turf = get_turf(A)
-	if(!target_turf)
+	var/turf/T = get_turf(A)
+	if(!T)
 		to_chat(X, SPAN_WARNING("You must select a valid turf to heal around."))
 		return
 
-	if(X.loc.z != target_turf.loc.z)
+	if(X.loc.z != T.loc.z)
 		to_chat(X, SPAN_XENOWARNING("You are too far away to do this here."))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	for(var/mob/living/carbon/xenomorph/Xa in range(4, target_turf))
+	for(var/mob/living/carbon/xenomorph/Xa in range(4, T))
 		if(!X.can_not_harm(Xa))
 			continue
 

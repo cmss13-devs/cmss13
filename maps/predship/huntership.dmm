@@ -52,7 +52,7 @@
 	},
 /area/yautja)
 "ah" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
 	pixel_y = 34;
@@ -66,7 +66,7 @@
 	pixel_y = 39;
 	pixel_x = 1
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24;
 	pixel_x = 26
@@ -165,7 +165,7 @@
 /area/yautja)
 "ar" = (
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "as" = (
@@ -182,9 +182,9 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "au" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/glowing_shape/med_red_bottom_top{
 	pixel_x = 10;
 	pixel_y = -24
@@ -212,10 +212,10 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "ay" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
 	pixel_y = 33;
@@ -259,7 +259,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "aC" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "aE" = (
@@ -278,7 +278,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "aI" = (
@@ -376,11 +376,6 @@
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
 	pixel_y = 1
 	},
-/obj/structure/pipes/portables_connector{
-	dir = 4;
-	color = "#6b675e";
-	pixel_y = -7
-	},
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -400,9 +395,9 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "aW" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/red_glow{
@@ -443,6 +438,17 @@
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
+"bf" = (
+/obj/structure/prop/brazier/frame{
+	pixel_y = 3
+	},
+/obj/item/skull/carrier{
+	pixel_x = -19;
+	pixel_y = 28;
+	anchored = 1
+	},
+/turf/open/floor/predship/hull,
+/area/yautja)
 "bi" = (
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
@@ -464,12 +470,35 @@
 /turf/open/floor/mainship_hull/gray/dir,
 /area/yautja)
 "bk" = (
-/obj/structure/platform/metal/hunter,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "bn" = (
 /turf/open/floor/corsat/box,
+/area/yautja)
+"bo" = (
+/obj/structure/platform_decoration/metal/hunter/north,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
+/obj/item/weapon/shield/riot/yautja{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 32
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 35;
+	anchored = 1;
+	pixel_x = 17
+	},
+/turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "bq" = (
 /obj/effect/hunter/rune{
@@ -482,7 +511,7 @@
 	},
 /area/yautja)
 "bu" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -500,7 +529,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -526,7 +555,7 @@
 /area/yautja)
 "bB" = (
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "bF" = (
@@ -543,7 +572,7 @@
 	},
 /area/yautja)
 "bG" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "bH" = (
@@ -570,10 +599,10 @@
 	},
 /area/yautja)
 "bN" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -582,7 +611,7 @@
 	},
 /area/yautja)
 "bO" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
@@ -599,10 +628,10 @@
 	},
 /area/yautja)
 "bP" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 4
 	},
@@ -624,9 +653,9 @@
 	pixel_y = 34;
 	pixel_x = -5
 	},
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -636,8 +665,8 @@
 	},
 /area/yautja)
 "bR" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -656,41 +685,49 @@
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy,
 /obj/item/skull/runner{
 	pixel_x = 23;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 15;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 7;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = -1;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/item/skull/sentinel{
 	pixel_x = -1;
-	pixel_y = 11
+	pixel_y = 11;
+	anchored = 1
 	},
 /obj/item/skull/sentinel{
 	pixel_x = 23;
-	pixel_y = 11
+	pixel_y = 11;
+	anchored = 1
 	},
 /obj/item/skull/sentinel{
 	pixel_x = 15;
-	pixel_y = 11
+	pixel_y = 11;
+	anchored = 1
 	},
 /obj/item/skull/sentinel{
 	pixel_x = 7;
-	pixel_y = 11
+	pixel_y = 11;
+	anchored = 1
 	},
 /turf/open/floor/corsat,
 /area/yautja)
 "bV" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -718,7 +755,7 @@
 /area/yautja)
 "bX" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -729,7 +766,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -740,12 +777,12 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "ce" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -768,9 +805,9 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "ci" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -784,6 +821,19 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/area/yautja)
+"cl" = (
+/obj/effect/hunter/rune/corner{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/hunter/east{
+	layer = 3.2;
+	pixel_y = 14
+	},
+/turf/open/shuttle/dropship/predship{
+	icon_state = "2,2";
+	dir = 1
+	},
 /area/yautja)
 "co" = (
 /obj/structure/showcase{
@@ -860,7 +910,7 @@
 	pixel_x = -6;
 	pixel_y = 24
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24;
 	pixel_x = 26;
@@ -874,7 +924,7 @@
 	pixel_y = 11;
 	layer = 3.1
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
@@ -989,7 +1039,7 @@
 /area/yautja)
 "cL" = (
 /obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -1028,7 +1078,7 @@
 /turf/open/floor/predship/hull/non_weedable_hull/northwest,
 /area/yautja)
 "cU" = (
-/obj/structure/platform/metal/hunter/west{
+/obj/structure/prop/hunter/fake_platform/hunter/west{
 	pixel_y = 6
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
@@ -1040,7 +1090,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair_right{
 	dir = 4
 	},
-/obj/effect/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 8
@@ -1057,11 +1107,11 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "dd" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/eight,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -1072,7 +1122,7 @@
 /area/yautja)
 "de" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
 	pixel_y = 24;
@@ -1090,7 +1140,7 @@
 /area/yautja)
 "dl" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_right,
-/obj/effect/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 1
@@ -1100,10 +1150,10 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/east,
 /area/yautja)
 "dq" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
@@ -1128,10 +1178,20 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "du" = (
@@ -1144,7 +1204,7 @@
 /obj/structure/machinery/door/poddoor{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/closed/wall/huntership,
 /area/yautja)
 "dz" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -1180,7 +1240,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "dF" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 8;
 	pixel_x = 2;
@@ -1201,10 +1261,10 @@
 /turf/open/space/basic,
 /area/space)
 "dM" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -1239,8 +1299,8 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "dQ" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/predship/hull,
 /area/yautja)
@@ -1275,32 +1335,7 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/structure/closet/yautja,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "dW" = (
@@ -1333,21 +1368,21 @@
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
 "dZ" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "ea" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "eb" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -1366,7 +1401,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -1377,7 +1412,7 @@
 /area/yautja)
 "ee" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -1386,9 +1421,9 @@
 /area/yautja)
 "ej" = (
 /obj/effect/hunter/bridge_border/brown,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
@@ -1438,7 +1473,7 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
 	light_power = 2;
@@ -1447,11 +1482,11 @@
 	},
 /area/yautja)
 "ep" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/three,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -1475,11 +1510,6 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "ev" = (
-/obj/structure/pipes/portables_connector{
-	dir = 8;
-	color = "#6b675e";
-	pixel_y = -6
-	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
 	pixel_y = 2
 	},
@@ -1500,19 +1530,14 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "ez" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "eA" = (
-/obj/structure/pipes/portables_connector{
-	dir = 4;
-	color = "#6b675e";
-	pixel_y = -7
-	},
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 4
 	},
@@ -1521,7 +1546,7 @@
 /area/yautja)
 "eB" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -1555,12 +1580,12 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "eG" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -1577,12 +1602,13 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "eI" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
 /obj/item/skull/warrior{
-	pixel_y = 35
+	pixel_y = 35;
+	anchored = 1
 	},
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
@@ -1669,10 +1695,10 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "eV" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24;
@@ -1697,10 +1723,15 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
+/obj/effect/hunter/rune/stripes_arrow{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = -6
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "fb" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = -6
 	},
@@ -1728,8 +1759,9 @@
 "fj" = (
 /obj/structure/bed/chair/hunter{
 	pixel_y = 10;
-	buckling_y = 7;
-	pixel_x = 17
+	buckling_y = 10;
+	pixel_x = 17;
+	buckling_x = 17
 	},
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 32;
@@ -1745,11 +1777,13 @@
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 30;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 8;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/item/skull/lurker{
 	pixel_x = 9;
@@ -1761,7 +1795,7 @@
 	},
 /obj/item/skull/drone{
 	pixel_x = 4;
-	pixel_y = 2
+	pixel_y = 4
 	},
 /obj/item/skull/warrior{
 	pixel_x = 7;
@@ -1772,8 +1806,8 @@
 	pixel_y = 12
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 8;
-	pixel_y = -5
+	pixel_x = 9;
+	pixel_y = -4
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 7;
@@ -1789,7 +1823,8 @@
 	},
 /obj/item/clothing/accessory/limb/skeleton/torso{
 	pixel_x = 17;
-	pixel_y = -3
+	pixel_y = -3;
+	layer = 3.03
 	},
 /obj/item/clothing/accessory/limb/skeleton/r_leg{
 	pixel_x = 15;
@@ -1798,6 +1833,11 @@
 /obj/item/prop/torch_frame{
 	pixel_x = -13;
 	pixel_y = -11
+	},
+/obj/item/skull/hunter{
+	pixel_x = -5;
+	pixel_y = 2;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
@@ -1818,13 +1858,13 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "fm" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "fo" = (
@@ -1855,8 +1895,8 @@
 	dir = 4;
 	pixel_x = -1
 	},
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -1866,10 +1906,10 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "fC" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -1879,8 +1919,8 @@
 	},
 /area/yautja)
 "fD" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/bedroll{
 	color = "#6b675e";
 	dir = 8
@@ -1888,7 +1928,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "fE" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -1968,14 +2008,14 @@
 /obj/effect/hunter/bridge_border/brown/small_stair_right{
 	dir = 1
 	},
-/obj/effect/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 1
 	},
 /area/yautja)
 "fQ" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
 	pixel_y = 34;
@@ -1986,7 +2026,7 @@
 	pixel_y = 39;
 	pixel_x = 1
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -2047,7 +2087,7 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "fY" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 4
@@ -2072,17 +2112,19 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "gb" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/item/skull/corroder{
 	pixel_x = 1;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /obj/item/skull/hunter{
 	pixel_x = -10;
-	pixel_y = 32
+	pixel_y = 32;
+	anchored = 1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -2091,19 +2133,19 @@
 	},
 /area/yautja)
 "gd" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja)
 "gg" = (
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "gk" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 6
 	},
@@ -2115,7 +2157,7 @@
 	},
 /area/yautja)
 "gl" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "gm" = (
@@ -2142,13 +2184,14 @@
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 32;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "go" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/west,
 /area/yautja)
@@ -2164,7 +2207,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "gq" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "gs" = (
@@ -2211,13 +2254,13 @@
 	},
 /area/yautja)
 "gK" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -2226,7 +2269,7 @@
 	},
 /area/yautja)
 "gM" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -2260,14 +2303,14 @@
 	color = "#6b675e";
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat,
 /area/yautja)
 "gT" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -2311,7 +2354,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "hc" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/bedroll{
 	color = "#6b675e";
 	dir = 8
@@ -2326,10 +2369,6 @@
 /area/yautja)
 "hf" = (
 /obj/effect/hunter/bridge_border/brown/corner,
-/obj/effect/decal/cleanable/dirt{
-	layer = 3.2;
-	color = "#bccab4"
-	},
 /obj/structure/ladder/yaujta{
 	id = "predcells";
 	height = 1;
@@ -2340,13 +2379,21 @@
 	pixel_x = 2;
 	pixel_y = 13
 	},
+/obj/effect/hunter/rune/small_arrow{
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "hk" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#212121"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "hm" = (
@@ -2401,6 +2448,11 @@
 /obj/item/explosive/grenade/spawnergrenade/hellhound,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
+"hC" = (
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/platform_decoration/metal/hunter,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
 "hD" = (
 /obj/structure/platform_decoration/metal/hunter/east{
 	layer = 3.2;
@@ -2413,7 +2465,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -2427,10 +2479,10 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "hF" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
@@ -2453,9 +2505,9 @@
 	},
 /area/yautja)
 "hJ" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/five,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -2470,7 +2522,7 @@
 /area/yautja)
 "hN" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -2503,7 +2555,7 @@
 /obj/item/clothing/suit/armor/gladiator,
 /obj/item/clothing/under/chainshirt/hunter,
 /obj/structure/closet/yautja,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "hS" = (
@@ -2517,8 +2569,8 @@
 	color = "#6b675e";
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -2530,8 +2582,8 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "hX" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -2552,9 +2604,9 @@
 	pixel_y = 34;
 	pixel_x = 7
 	},
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/one,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -2567,7 +2619,7 @@
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "ic" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/generic{
 	color = "#212121"
 	},
@@ -2612,7 +2664,7 @@
 	},
 /area/yautja)
 "in" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "ip" = (
@@ -2641,8 +2693,8 @@
 /area/yautja)
 "is" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -2660,8 +2712,8 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/item/reagent_container/food/snacks/meat{
 	pixel_y = 6
 	},
@@ -2692,7 +2744,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "iz" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/bedroll{
 	color = "#6b675e"
 	},
@@ -2713,8 +2765,8 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "iD" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat,
 /area/yautja)
 "iE" = (
@@ -2784,10 +2836,10 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "iO" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -2819,13 +2871,13 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "iR" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -2834,11 +2886,6 @@
 	},
 /area/yautja)
 "iS" = (
-/obj/structure/pipes/portables_connector{
-	dir = 8;
-	color = "#6b675e";
-	pixel_y = -6
-	},
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 8
 	},
@@ -2850,7 +2897,7 @@
 /area/yautja)
 "iT" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/floor/corsat,
 /area/yautja)
 "iU" = (
@@ -2870,7 +2917,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
 	dir = 8
 	},
-/obj/effect/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 4
@@ -2895,7 +2942,7 @@
 	},
 /area/yautja)
 "jg" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
@@ -2906,7 +2953,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "jo" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/catwalk/new_alpha,
@@ -2957,12 +3004,12 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "jx" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "jy" = (
@@ -2977,7 +3024,7 @@
 	},
 /area/yautja)
 "jA" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/yautja)
 "jB" = (
@@ -2992,14 +3039,14 @@
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
 "jE" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "jF" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
@@ -3025,7 +3072,7 @@
 	dir = 1
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -3054,7 +3101,7 @@
 	pixel_y = 11;
 	layer = 3.1
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
@@ -3066,14 +3113,14 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "jR" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#212121";
 	name = "dried blood"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat,
 /area/yautja)
 "jS" = (
@@ -3089,8 +3136,8 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/bright_red{
@@ -3178,10 +3225,10 @@
 	pixel_x = 11;
 	pixel_y = -1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 6
 	},
@@ -3205,7 +3252,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "kx" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
@@ -3227,9 +3274,9 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "kz" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/red_glow{
@@ -3243,8 +3290,8 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/mucus{
 	icon_state = "writing3";
 	color = "#20d450";
@@ -3272,7 +3319,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "kD" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
@@ -3293,14 +3340,14 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "kJ" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/space/basic,
-/area/space)
+/area/yautja)
 "kL" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -3322,8 +3369,8 @@
 	},
 /area/yautja)
 "kM" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
@@ -3372,7 +3419,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "kU" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -3386,7 +3433,7 @@
 	buckling_y = 3;
 	layer = 3.2
 	},
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
 "kX" = (
@@ -3423,20 +3470,22 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "lc" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/west{
 	pixel_x = 3;
 	layer = 3.1
 	},
 /obj/item/skull/lurker{
 	pixel_x = 17;
-	pixel_y = 37
+	pixel_y = 37;
+	anchored = 1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/item/skull/ravager{
 	pixel_x = 1;
-	pixel_y = 33
+	pixel_y = 33;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -3462,10 +3511,10 @@
 	},
 /area/yautja)
 "lg" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
@@ -3500,7 +3549,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
@@ -3517,7 +3566,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "ln" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -3532,11 +3581,11 @@
 	},
 /area/yautja)
 "lp" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/six,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -3566,9 +3615,9 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "lz" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -3577,8 +3626,8 @@
 	},
 /area/yautja)
 "lC" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/floor/corsat,
 /area/yautja)
 "lD" = (
@@ -3589,12 +3638,13 @@
 	pixel_y = 2
 	},
 /obj/item/skull/praetorian{
-	pixel_y = 4
+	pixel_y = 4;
+	anchored = 1
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
 "lF" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
@@ -3655,8 +3705,8 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/north,
 /area/yautja)
 "lT" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
 "lU" = (
@@ -3718,7 +3768,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "mn" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26;
 	layer = 3.1
@@ -3730,7 +3780,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "mo" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
@@ -3740,7 +3790,7 @@
 "mq" = (
 /obj/structure/platform/metal/kutjevo/north,
 /obj/structure/machinery/door_control{
-	id = "Yautja Armory";
+	id = "selfdestruct";
 	name = "Armory Shutters";
 	needs_power = 0;
 	pixel_x = -10;
@@ -3780,9 +3830,9 @@
 /turf/open/floor/predship/hull,
 /area/yautja)
 "mG" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -3815,7 +3865,7 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "mP" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "mQ" = (
@@ -3830,8 +3880,8 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "mS" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "mU" = (
@@ -3936,7 +3986,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 8
@@ -3946,7 +3996,7 @@
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Youngblood Kitchen"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "nv" = (
@@ -3956,6 +4006,16 @@
 /obj/item/stack/sheet/glass/large_stack,
 /obj/item/stack/sheet/glass/large_stack,
 /obj/item/stack/sheet/glass/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "nx" = (
@@ -3965,7 +4025,7 @@
 	pixel_x = 1;
 	pixel_y = 11
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
@@ -4005,7 +4065,7 @@
 	},
 /area/yautja)
 "nE" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -4015,11 +4075,6 @@
 "nG" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
 	pixel_y = 2
-	},
-/obj/structure/pipes/portables_connector{
-	dir = 4;
-	color = "#6b675e";
-	pixel_y = -7
 	},
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
@@ -4078,13 +4133,13 @@
 /turf/open/floor/predship/hull/non_weedable_hull/northeast,
 /area/yautja)
 "nP" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -4106,7 +4161,7 @@
 	pixel_y = 7;
 	buckling_y = 7
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/ice_colony/tiger_rug{
 	icon_state = "White";
 	color = "#52443b";
@@ -4120,11 +4175,13 @@
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
 /obj/item/skull/defender{
 	pixel_x = 15;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/item/skull/ravager{
 	pixel_x = 3;
-	pixel_y = 14
+	pixel_y = 14;
+	anchored = 1
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -4145,12 +4202,12 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "nW" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26;
 	layer = 3.1
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -4237,11 +4294,11 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "oj" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -4265,10 +4322,10 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "on" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
@@ -4289,6 +4346,11 @@
 	pixel_x = -1
 	},
 /turf/open/floor/corsat/squares,
+/area/yautja)
+"ov" = (
+/obj/effect/hunter/bridge_border/brown,
+/obj/effect/landmark/clan_spawn,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "oy" = (
 /obj/structure/closet/yautja{
@@ -4313,10 +4375,10 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "oE" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -4325,10 +4387,10 @@
 	},
 /area/yautja)
 "oF" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -4340,10 +4402,6 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 3.2;
-	color = "#bccab4"
-	},
 /obj/structure/ladder/yaujta{
 	id = "youngbloodprep";
 	height = 1;
@@ -4353,6 +4411,14 @@
 	light_range = 1;
 	pixel_x = -2;
 	pixel_y = 13
+	},
+/obj/effect/hunter/rune/small_arrow{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
@@ -4370,12 +4436,13 @@
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 2;
-	pixel_y = -1
+	pixel_y = -1;
+	anchored = 1
 	},
 /turf/open/floor/predship/hull,
 /area/yautja)
 "oJ" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 12
 	},
 /obj/structure/platform_decoration/metal/hunter/east{
@@ -4409,11 +4476,13 @@
 	},
 /obj/item/skull/ravager{
 	pixel_x = -14;
-	pixel_y = 30
+	pixel_y = 30;
+	anchored = 1
 	},
 /obj/item/skull/king{
 	pixel_x = 1;
-	pixel_y = 33
+	pixel_y = 33;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -4425,8 +4494,8 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "oP" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "oS" = (
@@ -4450,7 +4519,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "oV" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
@@ -4468,13 +4537,13 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "oZ" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -8
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -4486,10 +4555,22 @@
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
 	dir = 1
 	},
-/obj/effect/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5"
 	},
+/area/yautja)
+"pd" = (
+/obj/structure/platform_decoration/metal/hunter,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "pe" = (
 /obj/structure/platform/metal/stair_cut/hunter_right,
@@ -4499,9 +4580,9 @@
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "pg" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -4510,16 +4591,16 @@
 /area/yautja)
 "ph" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
 /turf/open/floor/corsat,
 /area/yautja)
 "pi" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -4528,15 +4609,15 @@
 	},
 /area/yautja)
 "pk" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/space/basic,
-/area/space)
+/area/yautja)
 "pl" = (
 /obj/structure/bed/bedroll{
 	color = "#6b675e";
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -4553,50 +4634,54 @@
 	},
 /area/yautja)
 "pn" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja)
 "po" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja)
 "pp" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/item/weapon/yautja/knife{
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 32;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "ps" = (
 /obj/item/skull/lurker{
 	pixel_x = 8;
-	pixel_y = 39
+	pixel_y = 39;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 12;
-	pixel_y = 26
+	pixel_y = 26;
+	anchored = 1
 	},
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 8
 	},
 /obj/item/skull/ravager{
 	pixel_x = -2;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "px" = (
 /obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
 	light_power = 2;
@@ -4643,8 +4728,8 @@
 	},
 /area/yautja)
 "pK" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/closed/wall/huntership,
 /area/yautja)
 "pM" = (
@@ -4652,7 +4737,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -4672,11 +4757,11 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "pN" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "pO" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/floor/corsat,
 /area/yautja)
 "pV" = (
@@ -4687,7 +4772,7 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "pX" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 11
 	},
 /obj/structure/platform_decoration/metal/hunter/east{
@@ -4701,25 +4786,14 @@
 	icon_state = "17,3"
 	},
 /area/yautja)
-"qa" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow{
-	light_on = 1;
-	light_power = 2;
-	light_range = 3;
-	light_color = "#ff0000"
-	},
-/area/yautja)
 "qc" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
 /turf/open/floor/corsat,
 /area/yautja)
 "qd" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -4729,8 +4803,8 @@
 	},
 /area/yautja)
 "qe" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "qf" = (
@@ -4752,7 +4826,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "qj" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
@@ -4814,14 +4888,14 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "qr" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "qw" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -4854,8 +4928,8 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "qB" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
 	pixel_y = 24;
@@ -4864,13 +4938,13 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "qC" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -4884,17 +4958,34 @@
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 32;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "qF" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "qJ" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 8
+	},
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
+/obj/item/weapon/shield/riot/yautja{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 32
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 35;
+	anchored = 1;
+	pixel_x = 17
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -4908,7 +4999,7 @@
 	},
 /area/yautja)
 "qQ" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "qS" = (
@@ -4930,18 +5021,18 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "qT" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "qW" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5"
 	},
 /area/yautja)
 "ra" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
@@ -4950,7 +5041,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
 	light_power = 2;
@@ -4969,10 +5060,10 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "re" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 6
 	},
@@ -4984,8 +5075,8 @@
 	},
 /area/yautja)
 "rf" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "rj" = (
@@ -4997,8 +5088,21 @@
 	},
 /area/yautja)
 "rl" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
+/area/yautja)
+"rm" = (
+/obj/effect/hunter/rune/corner{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hunter/west{
+	layer = 3.2;
+	pixel_y = 14
+	},
+/turf/open/shuttle/dropship/predship{
+	icon_state = "2,2";
+	dir = 4
+	},
 /area/yautja)
 "rp" = (
 /obj/effect/hunter/rune{
@@ -5034,12 +5138,12 @@
 	pixel_x = 2;
 	buckling_x = 2
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
 /area/yautja)
 "rA" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/prop/ice_colony/tiger_rug{
 	dir = 4;
@@ -5078,7 +5182,7 @@
 /area/yautja)
 "rG" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left,
-/obj/effect/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5"
 	},
@@ -5091,7 +5195,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "rJ" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
@@ -5125,12 +5229,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
-"rM" = (
-/obj/structure/platform/metal/hunter/west,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5"
-	},
-/area/yautja)
 "rN" = (
 /obj/item/skull/hunter{
 	pixel_x = -16;
@@ -5161,7 +5259,7 @@
 	},
 /area/yautja)
 "rU" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
@@ -5176,10 +5274,10 @@
 	},
 /area/yautja)
 "rW" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 8
 	},
@@ -5191,15 +5289,15 @@
 	},
 /area/yautja)
 "rX" = (
-/obj/effect/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5"
 	},
 /area/yautja)
 "rY" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -5208,7 +5306,7 @@
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
 /area/yautja)
 "sa" = (
@@ -5229,7 +5327,7 @@
 	},
 /area/yautja)
 "sg" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "sj" = (
@@ -5248,7 +5346,7 @@
 /obj/structure/bed/bedroll{
 	color = "#6b675e"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat,
 /area/yautja)
 "sr" = (
@@ -5259,8 +5357,8 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "st" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -5310,8 +5408,8 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
 	},
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/bright_red{
@@ -5322,7 +5420,7 @@
 	},
 /area/yautja)
 "sC" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
@@ -5339,14 +5437,14 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "sK" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -5377,7 +5475,7 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "sN" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "sO" = (
@@ -5391,7 +5489,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
@@ -5418,16 +5516,20 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "sS" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "sT" = (
 /obj/effect/hunter/bridge_border/brown,
+/obj/effect/hunter/rune/stripes_arrow{
+	pixel_x = 1;
+	pixel_y = -26
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "sU" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -5578,19 +5680,23 @@
 	},
 /obj/item/skull/hivelord{
 	pixel_x = 5;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/item/skull/boiler{
 	pixel_x = 16;
-	pixel_y = 32
+	pixel_y = 32;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = -5;
-	pixel_y = 26
+	pixel_y = 26;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = -1;
-	pixel_y = 39
+	pixel_y = 39;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -5648,21 +5754,24 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "tu" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = 26;
 	pixel_y = 24
 	},
 /obj/item/skull/defender{
-	pixel_y = 35
+	pixel_y = 35;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -11;
-	pixel_y = 30
+	pixel_y = 30;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -18;
-	pixel_y = 36
+	pixel_y = 36;
+	anchored = 1
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/catwalk/new_alpha,
@@ -5680,12 +5789,13 @@
 /obj/structure/machinery/door/poddoor{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/closed/wall/huntership,
 /area/yautja)
 "tw" = (
 /obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 4;
-	pixel_y = 12
+	pixel_x = -2;
+	pixel_y = 11;
+	anchored = 1
 	},
 /obj/item/prop/torch_frame{
 	pixel_x = 13;
@@ -5736,10 +5846,10 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "tF" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
@@ -5761,9 +5871,9 @@
 	},
 /area/yautja)
 "tH" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 4
 	},
@@ -5781,32 +5891,35 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "tK" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = -8
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "tM" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/west{
 	pixel_x = 3;
 	layer = 3.1
 	},
 /obj/item/skull/hunter{
 	pixel_x = -2;
-	pixel_y = 36
+	pixel_y = 36;
+	anchored = 1
 	},
 /obj/item/skull/hunter{
 	pixel_x = 14;
-	pixel_y = 36
+	pixel_y = 36;
+	anchored = 1
 	},
 /obj/item/skull/hunter{
 	pixel_x = 6;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -5840,12 +5953,12 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "tQ" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -5857,7 +5970,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -5899,7 +6012,7 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "ue" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "ui" = (
@@ -5911,19 +6024,19 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "uj" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja)
 "uk" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "ul" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/floor/corsat,
 /area/yautja)
 "uv" = (
@@ -5962,10 +6075,10 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "uy" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -5989,13 +6102,18 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
+/obj/effect/hunter/rune/small_arrow{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = -33
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "uI" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
@@ -6177,13 +6295,13 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "va" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "vb" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -6214,9 +6332,9 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -6242,12 +6360,12 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "vr" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -6259,7 +6377,7 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "vw" = (
@@ -6277,11 +6395,11 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "vy" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -6328,9 +6446,9 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "vE" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/space/basic,
-/area/space)
+/area/yautja)
 "vF" = (
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
@@ -6421,18 +6539,6 @@
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
-"wd" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow{
-	light_on = 1;
-	light_power = 2;
-	light_range = 3;
-	light_color = "#ff0000"
-	},
-/area/yautja)
 "wf" = (
 /obj/structure/platform_decoration/metal/hunter/west{
 	layer = 3.2;
@@ -6445,7 +6551,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/floor/predship/hull/non_weedable_hull/north,
 /area/yautja)
 "wj" = (
@@ -6453,8 +6559,8 @@
 	color = "#6b675e";
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#212121";
 	name = "dried blood"
@@ -6464,7 +6570,6 @@
 "wk" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	explo_proof = 1;
-	locked = 1;
 	name = "\improper Kitchen";
 	dir = 1
 	},
@@ -6516,7 +6621,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "wy" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 4;
 	pixel_x = -2;
@@ -6538,10 +6643,10 @@
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
 "wA" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -6550,7 +6655,7 @@
 	},
 /area/yautja)
 "wC" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
@@ -6558,7 +6663,7 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "wI" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "wJ" = (
@@ -6580,8 +6685,8 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/mucus{
 	icon_state = "mgibbl2";
 	color = "#20d450";
@@ -6613,7 +6718,7 @@
 /area/yautja)
 "wS" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "wT" = (
@@ -6630,7 +6735,7 @@
 	},
 /area/yautja)
 "wX" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/door/airlock/yautja{
 	dir = 1;
 	name = "\improper Cryo Room"
@@ -6638,7 +6743,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "xd" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -6654,7 +6759,8 @@
 	},
 /obj/item/skull/queen{
 	pixel_x = 1;
-	pixel_y = 33
+	pixel_y = 33;
+	anchored = 1
 	},
 /obj/item/clothing/head/helmet/marine/veteran/mercenary{
 	pixel_x = 5;
@@ -6673,7 +6779,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
 	light_power = 2;
@@ -6682,10 +6788,10 @@
 	},
 /area/yautja)
 "xm" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -6724,6 +6830,11 @@
 /area/yautja)
 "xt" = (
 /obj/effect/hunter/bridge_border/brown,
+/obj/effect/hunter/rune/small_arrow{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = -33
+	},
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -6731,11 +6842,11 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "xu" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -6766,8 +6877,8 @@
 	name = "dried blood";
 	pixel_x = 2
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -6831,11 +6942,13 @@
 	},
 /obj/item/skull/drone{
 	pixel_x = -16;
-	pixel_y = 35
+	pixel_y = 35;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -22;
-	pixel_y = 28
+	pixel_y = 28;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/north,
 /area/yautja)
@@ -6881,7 +6994,7 @@
 	},
 /area/yautja)
 "xM" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/shower{
 	dir = 8;
 	color = "#c1a384"
@@ -6923,10 +7036,10 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "xZ" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 6
 	},
@@ -6946,7 +7059,7 @@
 	},
 /area/yautja)
 "yc" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "yf" = (
@@ -6981,7 +7094,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
 	dir = 4
 	},
-/obj/effect/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 4
@@ -6991,8 +7104,8 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "yx" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "yy" = (
@@ -7069,10 +7182,10 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 6
 	},
@@ -7084,8 +7197,13 @@
 	},
 /area/yautja)
 "yK" = (
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
 /obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 32;
+	pixel_y = 39;
 	anchored = 1;
 	pixel_x = 1
 	},
@@ -7131,12 +7249,12 @@
 	},
 /area/yautja)
 "yV" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "yW" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
@@ -7145,7 +7263,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "yX" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 6
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
@@ -7153,7 +7271,8 @@
 "za" = (
 /obj/item/skull/queen{
 	pixel_x = -5;
-	pixel_y = 17
+	pixel_y = 17;
+	anchored = 1
 	},
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy/right,
 /turf/open/floor/corsat,
@@ -7171,7 +7290,7 @@
 	},
 /area/yautja)
 "zc" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/bedroll{
 	color = "#6b675e";
 	dir = 8
@@ -7185,7 +7304,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -7195,7 +7314,7 @@
 	},
 /area/yautja)
 "zg" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/rune{
 	dir = 8
 	},
@@ -7207,7 +7326,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
@@ -7228,12 +7347,14 @@
 	name = "alien sarcophagus";
 	pixel_x = 3
 	},
-/obj/item/weapon/twohanded/yautja/spear,
+/obj/item/weapon/twohanded/yautja/spear{
+	anchored = 1
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "zk" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -7329,8 +7450,8 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "zG" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "zI" = (
@@ -7360,12 +7481,12 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "zO" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull,
 /area/yautja)
 "zU" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 12
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
@@ -7434,7 +7555,9 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/obj/item/weapon/unathiknife,
+/obj/item/weapon/unathiknife{
+	anchored = 1
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Ag" = (
@@ -7496,9 +7619,9 @@
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "AC" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "AD" = (
@@ -7516,14 +7639,14 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "AE" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "AF" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 4
 	},
@@ -7591,7 +7714,8 @@
 	},
 /obj/item/skull/warrior{
 	pixel_x = -1;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -7603,12 +7727,12 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "AQ" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -7635,16 +7759,17 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "AV" = (
 /obj/item/skull/lurker{
 	pixel_x = 1;
-	pixel_y = 10
+	pixel_y = 10;
+	anchored = 1
 	},
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy,
 /obj/item/skull/hunter{
@@ -7654,15 +7779,18 @@
 	},
 /obj/item/skull/ravager{
 	pixel_x = 9;
-	pixel_y = 20
+	pixel_y = 20;
+	anchored = 1
 	},
 /obj/item/skull/sentinel{
 	pixel_x = 8;
-	pixel_y = 6
+	pixel_y = 6;
+	anchored = 1
 	},
 /obj/item/skull/defender{
 	pixel_x = 20;
-	pixel_y = 10
+	pixel_y = 10;
+	anchored = 1
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -7676,12 +7804,12 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "AX" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "AY" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
@@ -7695,8 +7823,8 @@
 /area/yautja)
 "Bb" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -7721,7 +7849,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Bh" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -7729,20 +7857,23 @@
 /turf/open/floor/predship/hull,
 /area/yautja)
 "Bi" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/item/skull/ravager{
 	pixel_x = -15;
-	pixel_y = 29
+	pixel_y = 29;
+	anchored = 1
 	},
 /obj/item/skull/hivelord{
 	pixel_x = 14;
-	pixel_y = 37
+	pixel_y = 37;
+	anchored = 1
 	},
 /obj/item/skull/burrower{
 	pixel_x = 17;
-	pixel_y = 22
+	pixel_y = 22;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -7802,8 +7933,8 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "Bt" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Bv" = (
@@ -7841,7 +7972,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Bw" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
@@ -7858,13 +7989,13 @@
 	},
 /area/yautja)
 "By" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -7913,7 +8044,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "BE" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -7932,16 +8063,16 @@
 	},
 /area/yautja)
 "BG" = (
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "BH" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "BI" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/item/clothing/suit/chef/classic{
 	color = "#6b675e";
 	name = "apron"
@@ -7971,7 +8102,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -7992,8 +8123,8 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -8017,7 +8148,8 @@
 /obj/item/clothing/yautja_cape/damaged{
 	color = "#692e2e";
 	layer = 2.8;
-	name = "ancient yautja cape"
+	name = "ancient yautja cape";
+	anchored = 1
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -8042,7 +8174,7 @@
 	},
 /area/yautja)
 "BW" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 8;
 	pixel_x = 2;
@@ -8051,7 +8183,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
 /area/yautja)
 "BX" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -8101,7 +8233,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -8123,7 +8255,7 @@
 /area/yautja)
 "Cj" = (
 /obj/structure/machinery/door_control{
-	id = "youngbloodlowereast";
+	id = "youngbloodupperwest";
 	pixel_y = 4;
 	name = "Lower Deck Shutters";
 	pixel_x = 21
@@ -8152,7 +8284,7 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Cs" = (
-/obj/structure/platform/metal/hunter/east{
+/obj/structure/prop/hunter/fake_platform/hunter/east{
 	pixel_y = 5
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
@@ -8162,7 +8294,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -8212,7 +8344,7 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "CB" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1;
@@ -8231,15 +8363,18 @@
 "CC" = (
 /obj/item/skull/warrior{
 	pixel_x = -4;
-	pixel_y = 37
+	pixel_y = 37;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 4;
-	pixel_y = 25
+	pixel_y = 25;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 8;
-	pixel_y = 37
+	pixel_y = 37;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -8251,8 +8386,8 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "CE" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -8325,7 +8460,7 @@
 	},
 /area/yautja)
 "CR" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -8350,8 +8485,8 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "CZ" = (
@@ -8362,12 +8497,29 @@
 	dir = 1
 	},
 /area/yautja)
+"Db" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/item/skull/defender{
+	pixel_x = -5;
+	pixel_y = 34;
+	anchored = 1
+	},
+/obj/item/skull/hivelord{
+	pixel_x = 6;
+	pixel_y = 25;
+	anchored = 1
+	},
+/turf/open/shuttle/dropship/predship/tile/red2,
+/area/yautja)
 "De" = (
 /obj/structure/curtain/leather/alt_1,
 /turf/open/floor/corsat,
 /area/yautja)
 "Di" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/generic{
 	color = "#212121"
 	},
@@ -8432,7 +8584,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Dr" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
@@ -8460,20 +8612,23 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "Dx" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/item/skull/lurker{
 	pixel_x = -21;
-	pixel_y = 26
+	pixel_y = 26;
+	anchored = 1
 	},
 /obj/item/skull/lurker{
 	pixel_x = -8;
-	pixel_y = 27
+	pixel_y = 27;
+	anchored = 1
 	},
 /obj/item/skull/hunter{
-	pixel_y = 37
+	pixel_y = 37;
+	anchored = 1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -8495,8 +8650,8 @@
 	},
 /area/yautja)
 "DG" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -8572,15 +8727,15 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "DT" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
 	pixel_y = 24;
 	layer = 3.1
 	},
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24;
 	layer = 3.1
@@ -8592,11 +8747,24 @@
 	light_color = "#ff0000"
 	},
 /area/yautja)
+"DU" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter/east{
+	layer = 3.2;
+	pixel_y = 14
+	},
+/turf/open/shuttle/dropship/predship{
+	icon_state = "3,2";
+	dir = 4
+	},
+/area/yautja)
 "DW" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -8627,13 +8795,19 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
 	light_power = 2;
 	light_range = 3;
 	light_on = 1
 	},
+/area/yautja)
+"Ef" = (
+/obj/effect/hunter/bridge_border/edge{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "Eg" = (
 /obj/effect/hunter/rune{
@@ -8644,13 +8818,13 @@
 	},
 /area/yautja)
 "Eh" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -8674,8 +8848,8 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "Em" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1;
 	color = "#cfae84";
@@ -8691,9 +8865,9 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "Eq" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -8748,8 +8922,8 @@
 	},
 /area/yautja)
 "EA" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/floor/corsat,
 /area/yautja)
 "EC" = (
@@ -8761,27 +8935,31 @@
 	},
 /area/yautja)
 "EF" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/item/skull/drone{
 	pixel_x = 17;
-	pixel_y = 28
+	pixel_y = 28;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = 11;
-	pixel_y = 37
+	pixel_y = 37;
+	anchored = 1
 	},
 /obj/item/skull/lurker{
 	pixel_x = 11;
-	pixel_y = 25
+	pixel_y = 25;
+	anchored = 1
 	},
 /obj/item/skull/crusher{
 	pixel_x = -2;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "EG" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -8815,7 +8993,8 @@
 	},
 /obj/item/skull/crusher{
 	pixel_x = -1;
-	pixel_y = 32
+	pixel_y = 32;
+	anchored = 1
 	},
 /obj/item/weapon/twohanded/yautja/glaive/alt,
 /turf/open/shuttle/dropship/predship/tile/red3,
@@ -8862,7 +9041,7 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "ET" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/item/clothing/mask/gas/yautja/hunter{
 	anchored = 1;
@@ -8891,7 +9070,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "EZ" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Fb" = (
@@ -8912,7 +9091,7 @@
 	},
 /area/yautja)
 "Ff" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#212121";
 	name = "dried blood";
@@ -8922,7 +9101,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "Fg" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
@@ -8986,7 +9165,7 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "Fn" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/space/basic,
 /area/space)
 "Fo" = (
@@ -9040,7 +9219,7 @@
 	},
 /area/yautja)
 "Fw" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4;
 	layer = 3
@@ -9054,7 +9233,7 @@
 	},
 /area/yautja)
 "Fy" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
@@ -9064,11 +9243,11 @@
 	},
 /area/yautja)
 "FA" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull,
 /area/yautja)
 "FD" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -9089,7 +9268,8 @@
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 32;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /obj/effect/hunter/rune{
 	dir = 4
@@ -9105,10 +9285,10 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "FI" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -9117,8 +9297,8 @@
 	},
 /area/yautja)
 "FL" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "FM" = (
@@ -9161,12 +9341,12 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "FV" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west{
 	pixel_x = 6;
 	layer = 3.1
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
 	pixel_y = 33;
@@ -9183,7 +9363,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "FX" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -9223,8 +9403,8 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/east,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/predship/hull/non_weedable_hull/north,
 /area/yautja)
@@ -9277,24 +9457,29 @@
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/item/skull/ravager{
 	pixel_x = 17;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
 /obj/item/skull/spitter{
 	pixel_x = -4;
-	pixel_y = 38
+	pixel_y = 38;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 7;
-	pixel_y = 38
+	pixel_y = 38;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = 1;
-	pixel_y = 27
+	pixel_y = 27;
+	anchored = 1
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Gr" = (
-/obj/effect/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 1
@@ -9304,7 +9489,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
 "Gv" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "Gw" = (
@@ -9353,7 +9538,7 @@
 	},
 /area/yautja)
 "GL" = (
-/obj/structure/platform/metal/hunter/east{
+/obj/structure/prop/hunter/fake_platform/hunter/east{
 	pixel_x = 6;
 	layer = 3.01
 	},
@@ -9367,25 +9552,29 @@
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 33;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = -13;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 29;
-	pixel_y = -14
+	pixel_y = -14;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 27;
-	pixel_y = 12
+	pixel_x = 24;
+	pixel_y = 12;
+	anchored = 1
 	},
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_x = 6
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
@@ -9396,10 +9585,12 @@
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/item/skull/ravager{
 	pixel_x = 17;
-	pixel_y = 31
+	pixel_y = 31;
+	anchored = 1
 	},
 /obj/item/skull/crusher{
-	pixel_y = 29
+	pixel_y = 29;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -9441,7 +9632,7 @@
 	},
 /area/yautja)
 "GW" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/curtain/leather/alt_1,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -9449,7 +9640,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/curtain/colorable{
 	color = "#6c4449"
@@ -9475,9 +9666,26 @@
 	light_color = "#ff0000"
 	},
 /area/yautja)
+"Hb" = (
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/item/skull/burrower{
+	pixel_x = 4;
+	pixel_y = 28;
+	anchored = 1
+	},
+/obj/item/skull/lurker{
+	pixel_x = -4;
+	pixel_y = 34;
+	anchored = 1
+	},
+/turf/open/shuttle/dropship/predship/tile/red3,
+/area/yautja)
 "Hd" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
@@ -9524,14 +9732,15 @@
 	},
 /obj/item/skull/lurker{
 	pixel_x = -7;
-	pixel_y = 8
+	pixel_y = 8;
+	anchored = 1
 	},
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
 /turf/open/floor/corsat,
 /area/yautja)
 "Hk" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -9541,29 +9750,23 @@
 "Hl" = (
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 18;
-	pixel_y = 1
+	pixel_y = 1;
+	anchored = 1
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
 "Ho" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
-"Hp" = (
-/obj/structure/platform/metal/hunter/east,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "11,5";
-	dir = 1
-	},
-/area/yautja)
 "Ht" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 6
 	},
@@ -9575,15 +9778,15 @@
 	},
 /area/yautja)
 "Hu" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Hv" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
 	pixel_y = 24;
@@ -9607,9 +9810,9 @@
 	},
 /area/yautja)
 "Hx" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/space,
-/area/space)
+/area/yautja)
 "Hz" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -9621,11 +9824,13 @@
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 5;
-	pixel_y = -1
+	pixel_y = -1;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 3;
-	pixel_y = 9
+	pixel_y = 9;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -9633,7 +9838,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -9724,7 +9929,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "HN" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull,
 /area/yautja)
 "HQ" = (
@@ -9752,7 +9957,7 @@
 	pixel_x = 8;
 	pixel_y = 9
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
 /area/yautja)
 "HV" = (
@@ -9776,7 +9981,7 @@
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
 "Ic" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26
 	},
@@ -9799,7 +10004,7 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "Ih" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
@@ -9821,23 +10026,28 @@
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy/right,
 /obj/item/skull/drone{
 	pixel_x = 4;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -3;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -10;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -17;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/item/skull/warrior{
 	pixel_x = -2;
-	pixel_y = 25
+	pixel_y = 25;
+	anchored = 1
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -9858,8 +10068,8 @@
 	dir = 1
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/bright_red{
@@ -9870,9 +10080,9 @@
 	},
 /area/yautja)
 "Iu" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -9881,12 +10091,10 @@
 	},
 /area/yautja)
 "Ix" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	explo_proof = 1;
-	locked = 1;
-	name = "\improper Research Hallway"
+/obj/effect/hunter/bridge_border/edge{
+	dir = 4
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "Iz" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -9899,8 +10107,8 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "IA" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
@@ -9917,7 +10125,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/predship/hull/non_weedable_hull/east,
 /area/yautja)
 "IJ" = (
@@ -9957,6 +10165,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "IT" = (
@@ -9981,12 +10190,12 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "IX" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -10031,11 +10240,12 @@
 	},
 /obj/item/skull/runner{
 	pixel_x = -8;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = -4;
-	pixel_y = 2
+	pixel_y = 4
 	},
 /obj/item/skull/warrior{
 	pixel_x = -5;
@@ -10050,16 +10260,8 @@
 	pixel_y = 12
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = -18;
-	pixel_y = -5
-	},
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = -12;
-	pixel_y = -5
-	},
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = -6;
-	pixel_y = -5
+	pixel_x = -17;
+	pixel_y = -4
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = -5;
@@ -10083,21 +10285,39 @@
 	pixel_y = 20
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 5;
-	pixel_y = 3
+	pixel_x = 8;
+	anchored = 1
 	},
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_x = 26
+	},
+/obj/item/skull/lurker{
+	pixel_x = 7;
+	pixel_y = 8;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "Jh" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
+"Ji" = (
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hunter/west{
+	layer = 3.2;
+	pixel_y = 14
+	},
+/turf/open/shuttle/dropship/predship{
+	icon_state = "3,2";
+	dir = 4
+	},
+/area/yautja)
 "Jj" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -10106,7 +10326,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Jl" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -10132,9 +10352,9 @@
 	},
 /area/yautja)
 "Jr" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
 	pixel_y = 24;
@@ -10144,7 +10364,7 @@
 	pixel_y = 24;
 	layer = 3.1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -10156,7 +10376,7 @@
 /obj/structure/bed/bedroll{
 	color = "#6b675e"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/generic{
 	color = "#212121"
 	},
@@ -10275,12 +10495,12 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "JP" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
 "JS" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/bridge_border/brown/corner,
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
@@ -10298,10 +10518,10 @@
 	},
 /area/yautja)
 "JU" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -10313,8 +10533,8 @@
 /obj/structure/bed/bedroll{
 	color = "#6b675e"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#212121";
 	name = "dried blood";
@@ -10324,13 +10544,13 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "JY" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
 "Kc" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/decal/cleanable/mucus{
 	icon_state = "gibarm";
@@ -10381,7 +10601,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Ki" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/hunter/bridge_border/brown,
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/bright_red{
@@ -10432,7 +10652,7 @@
 /turf/open/floor/predship/hull,
 /area/yautja)
 "Kv" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "Kw" = (
@@ -10470,10 +10690,10 @@
 	},
 /area/yautja)
 "KB" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -10498,36 +10718,10 @@
 /obj/item/frame/table/wood,
 /obj/item/frame/table/wood,
 /obj/item/frame/table/wood,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/frame/table/wood/fancy,
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "KE" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26;
 	layer = 3.1
@@ -10535,7 +10729,7 @@
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "KG" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -10557,11 +10751,11 @@
 	},
 /area/yautja)
 "KK" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -10575,10 +10769,10 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
@@ -10590,7 +10784,7 @@
 	},
 /area/yautja)
 "KN" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "KO" = (
@@ -10599,7 +10793,8 @@
 	},
 /obj/item/skull/ravager{
 	pixel_x = 1;
-	pixel_y = 32
+	pixel_y = 32;
+	anchored = 1
 	},
 /obj/item/trash/falcon_drone/emp{
 	pixel_y = 2
@@ -10610,7 +10805,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
 "KV" = (
@@ -10719,8 +10914,8 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Lr" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -10733,10 +10928,10 @@
 	},
 /area/yautja)
 "Lu" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 8
 	},
@@ -10748,7 +10943,7 @@
 	},
 /area/yautja)
 "Lv" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat,
 /area/yautja)
 "Lw" = (
@@ -10760,7 +10955,6 @@
 "Lx" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	explo_proof = 1;
-	locked = 1;
 	name = "\improper Engine Room";
 	dir = 1
 	},
@@ -10772,12 +10966,15 @@
 	},
 /obj/item/skull/carrier{
 	pixel_x = -3;
-	pixel_y = 27
+	pixel_y = 27;
+	anchored = 1
 	},
 /obj/item/skull/hunter{
 	pixel_x = 5;
-	pixel_y = 36
+	pixel_y = 36;
+	anchored = 1
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "LF" = (
@@ -10787,7 +10984,7 @@
 	},
 /area/yautja)
 "LJ" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/north,
 /area/yautja)
 "LM" = (
@@ -10797,7 +10994,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "LN" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/sink{
 	pixel_y = 14;
 	color = "#c1a384";
@@ -10848,7 +11045,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -10889,6 +11086,13 @@
 	},
 /turf/open/floor/corsat/box,
 /area/yautja)
+"LV" = (
+/obj/structure/machinery/door/airlock/yautja/secure{
+	explo_proof = 1;
+	name = "\improper Research Hallway"
+	},
+/turf/open/shuttle/dropship/predship/tile/red,
+/area/yautja)
 "LX" = (
 /obj/structure/platform_decoration/metal/hunter/west{
 	pixel_y = 6;
@@ -10908,20 +11112,8 @@
 	light_on = 1
 	},
 /area/yautja)
-"LY" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/turf/open/shuttle/dropship/predship/red_glow{
-	light_on = 1;
-	light_power = 2;
-	light_range = 3;
-	light_color = "#ff0000"
-	},
-/area/yautja)
 "LZ" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -10936,9 +11128,9 @@
 	pixel_x = 33;
 	layer = 3.2
 	},
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -10947,10 +11139,10 @@
 	},
 /area/yautja)
 "Mf" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -10959,7 +11151,7 @@
 	},
 /area/yautja)
 "Mg" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -10988,21 +11180,21 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Mr" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Ms" = (
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "Mt" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Mu" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/floor/corsat,
 /area/yautja)
 "Mv" = (
@@ -11030,9 +11222,9 @@
 	},
 /area/yautja)
 "MA" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -11081,26 +11273,30 @@
 "ME" = (
 /obj/item/skull/lurker{
 	pixel_x = -11;
-	pixel_y = 27
+	pixel_y = 27;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 9;
-	pixel_y = 14
+	pixel_y = 14;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = -1;
-	pixel_y = 22
+	pixel_y = 22;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_x = 1;
-	pixel_y = 7
+	pixel_y = 7;
+	anchored = 1
 	},
 /obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
 /turf/open/floor/corsat,
 /area/yautja)
 "MH" = (
 /obj/structure/platform_decoration/metal/hunter/east,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "MN" = (
@@ -11181,8 +11377,8 @@
 	color = "#6b675e";
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt_2,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat,
 /area/yautja)
 "Ng" = (
@@ -11205,7 +11401,7 @@
 	},
 /area/yautja)
 "Nh" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Nj" = (
@@ -11311,7 +11507,7 @@
 /obj/effect/hunter/bridge_border/brown/small_stair_right{
 	dir = 8
 	},
-/obj/effect/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 8
@@ -11338,13 +11534,14 @@
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 8;
-	pixel_y = 4
+	pixel_y = 4;
+	anchored = 1
 	},
 /turf/open/floor/predship/hull,
 /area/yautja)
 "NO" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "NQ" = (
@@ -11357,7 +11554,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "NS" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/closed/wall/huntership,
 /area/yautja)
 "NX" = (
@@ -11429,12 +11626,12 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Og" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "Ok" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -11502,13 +11699,13 @@
 	pixel_y = -1
 	},
 /turf/open/space/basic,
-/area/space)
+/area/yautja)
 "Or" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Oy" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime1,
 /obj/effect/decal/strata_decals/grime/grime3,
 /obj/structure/machinery/shower{
@@ -11524,8 +11721,8 @@
 /turf/open/shuttle/dropship/predship,
 /area/yautja)
 "OB" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "OF" = (
@@ -11559,7 +11756,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "OJ" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -11612,13 +11809,13 @@
 	},
 /area/yautja)
 "OR" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
 "OT" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -11635,9 +11832,9 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
 "OU" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 8
 	},
@@ -11650,7 +11847,7 @@
 /area/yautja)
 "OW" = (
 /obj/effect/hunter/bridge_border/brown,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -11664,7 +11861,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Pa" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/hunter/rune{
 	dir = 8
@@ -11698,16 +11895,18 @@
 	},
 /area/yautja)
 "Pc" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/item/skull/queen{
 	pixel_x = 1;
-	pixel_y = 33
+	pixel_y = 33;
+	anchored = 1
 	},
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/item/skull/ravager{
 	pixel_x = -15;
-	pixel_y = 29
+	pixel_y = 29;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -11731,7 +11930,7 @@
 	},
 /area/yautja)
 "Pg" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 1
 	},
@@ -11761,7 +11960,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Ps" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "Pu" = (
@@ -11781,7 +11980,7 @@
 	pixel_x = 32;
 	layer = 3.1
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
 	pixel_y = 24;
@@ -11857,7 +12056,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -11884,24 +12083,26 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
 "PM" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "PP" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/item/skull/lurker{
 	pixel_x = 16;
-	pixel_y = 39
+	pixel_y = 39;
+	anchored = 1
 	},
 /obj/item/skull/hunter{
 	pixel_x = 16;
-	pixel_y = 26
+	pixel_y = 26;
+	anchored = 1
 	},
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
@@ -11942,7 +12143,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "PU" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26;
 	layer = 3.1
@@ -11950,8 +12151,8 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja)
 "PW" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
@@ -11960,6 +12161,7 @@
 	dir = 4;
 	layer = 3
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Qc" = (
@@ -11979,11 +12181,11 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/floor/predship/hull/non_weedable_hull/north,
 /area/yautja)
 "Ql" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26;
 	layer = 3.1
@@ -12027,7 +12229,7 @@
 /area/yautja)
 "Qv" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/floor/predship/hull/non_weedable_hull,
 /area/yautja)
 "Qz" = (
@@ -12094,10 +12296,10 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "QH" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -12106,8 +12308,8 @@
 	},
 /area/yautja)
 "QI" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -12154,7 +12356,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -12167,7 +12369,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12194,7 +12396,8 @@
 	},
 /obj/item/weapon/sword/ceremonial{
 	pixel_y = 9;
-	pixel_x = 1
+	pixel_x = 1;
+	anchored = 1
 	},
 /obj/item/explosive/grenade/incendiary/rmc{
 	anchored = 1;
@@ -12203,7 +12406,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Rb" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/floor/corsat,
 /area/yautja)
 "Rc" = (
@@ -12238,7 +12441,7 @@
 	},
 /area/yautja)
 "Rf" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
@@ -12252,8 +12455,8 @@
 	},
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/effect/hunter/bridge_border/brown/corner,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/bright_red{
@@ -12264,7 +12467,7 @@
 	},
 /area/yautja)
 "Ri" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12275,8 +12478,8 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12296,17 +12499,18 @@
 	},
 /obj/item/skull/queen{
 	pixel_x = 1;
-	pixel_y = 33
+	pixel_y = 33;
+	anchored = 1
 	},
 /turf/open/floor/predship/hull,
 /area/yautja)
 "Rp" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -12345,7 +12549,7 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "Rv" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
@@ -12375,7 +12579,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "RA" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12396,8 +12600,8 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "RF" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "RI" = (
@@ -12411,7 +12615,7 @@
 	},
 /area/yautja)
 "RJ" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 12
 	},
 /obj/structure/platform_decoration/metal/hunter/west{
@@ -12443,16 +12647,16 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "RR" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "RT" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/eight{
 	dir = 1
 	},
@@ -12494,8 +12698,8 @@
 	dir = 4
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/bright_red{
@@ -12525,10 +12729,10 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Sc" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -12581,7 +12785,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "Sk" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Sn" = (
@@ -12617,7 +12821,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
@@ -12633,7 +12837,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "St" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/shower{
 	color = "#c1a384";
 	pixel_y = 22
@@ -12697,19 +12901,14 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "SC" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "SF" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
 	pixel_y = 1
-	},
-/obj/structure/pipes/portables_connector{
-	dir = 8;
-	color = "#6b675e";
-	pixel_y = -7
 	},
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
@@ -12725,8 +12924,8 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "SK" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = 26;
 	pixel_y = 24
@@ -12772,7 +12971,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "SW" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
@@ -12780,7 +12979,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "SX" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
@@ -12789,15 +12988,18 @@
 "SY" = (
 /obj/item/skull/defender{
 	pixel_y = 34;
-	pixel_x = -5
+	pixel_x = -5;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = 6;
-	pixel_y = 36
+	pixel_y = 36;
+	anchored = 1
 	},
 /obj/item/skull/drone{
 	pixel_x = 3;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -12833,15 +13035,16 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
+/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Tn" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26;
 	layer = 3.1
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12875,7 +13078,8 @@
 	color = "#ffd65c";
 	name = "sacred ceremonial dagger";
 	pixel_x = 32;
-	pixel_y = 34
+	pixel_y = 34;
+	anchored = 1
 	},
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
@@ -12884,8 +13088,8 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/west,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12893,8 +13097,8 @@
 /turf/open/floor/predship/hull/non_weedable_hull/north,
 /area/yautja)
 "Ty" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -12958,6 +13162,10 @@
 	dir = 4;
 	layer = 3
 	},
+/obj/effect/hunter/rune/stripes_arrow{
+	pixel_x = 1;
+	pixel_y = -26
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "TK" = (
@@ -12974,21 +13182,25 @@
 	},
 /area/yautja)
 "TM" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/item/skull/defender{
-	pixel_y = 35
+	pixel_y = 35;
+	anchored = 1
 	},
 /obj/item/skull/lurker{
 	pixel_x = -18;
-	pixel_y = 26
+	pixel_y = 26;
+	anchored = 1
 	},
 /obj/item/skull/lurker{
 	pixel_x = -11;
-	pixel_y = 36
+	pixel_y = 36;
+	anchored = 1
 	},
 /obj/item/skull/runner{
 	pixel_x = -9;
-	pixel_y = 22
+	pixel_y = 22;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -13003,13 +13215,13 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "TR" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/obj/effect/hybrisa/decal/dirt,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -13017,10 +13229,10 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "TS" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -13045,7 +13257,7 @@
 	dir = 8
 	},
 /obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/bright_red{
 	light_color = "#ff0000";
 	light_power = 2;
@@ -13054,11 +13266,11 @@
 	},
 /area/yautja)
 "Ub" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east{
 	pixel_x = -6
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
 	pixel_y = 33;
@@ -13130,7 +13342,7 @@
 	},
 /area/yautja)
 "Uj" = (
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/snack_bowl{
 	color = "#6b675e";
 	pixel_x = -1;
@@ -13146,8 +13358,8 @@
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "Un" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = 26;
 	pixel_y = 24
@@ -13200,7 +13412,7 @@
 /area/yautja)
 "Us" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/floor/predship/hull/non_weedable_hull,
 /area/yautja)
 "Ut" = (
@@ -13217,6 +13429,11 @@
 /area/yautja)
 "Uv" = (
 /obj/effect/hunter/bridge_border/brown/edge,
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Uw" = (
@@ -13236,7 +13453,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "UA" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "UB" = (
@@ -13307,6 +13524,12 @@
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
+"UL" = (
+/obj/effect/hunter/bridge_border/edge{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
+/area/yautja)
 "UM" = (
 /obj/effect/hunter/bridge_border{
 	dir = 8
@@ -13323,7 +13546,7 @@
 	},
 /area/yautja)
 "UN" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = 26;
 	pixel_y = 24
@@ -13373,7 +13596,7 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "US" = (
-/obj/structure/platform/metal/hunter/west{
+/obj/structure/prop/hunter/fake_platform/hunter/west{
 	pixel_x = -6;
 	layer = 3.01
 	},
@@ -13391,8 +13614,8 @@
 	pixel_y = 33;
 	pixel_x = -16
 	},
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
@@ -13403,7 +13626,8 @@
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/item/skull/crusher{
 	pixel_x = -1;
-	pixel_y = 29
+	pixel_y = 29;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -13448,15 +13672,18 @@
 	},
 /obj/item/weapon/sword/katana{
 	pixel_x = 20;
-	pixel_y = 8
+	pixel_y = 8;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = -7;
-	pixel_y = 10
+	pixel_y = 10;
+	anchored = 1
 	},
 /obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 2;
-	pixel_y = -1
+	pixel_x = -5;
+	pixel_y = -1;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -13464,7 +13691,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -13495,12 +13722,12 @@
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
 "Vf" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Vg" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -13517,8 +13744,8 @@
 /obj/effect/hunter/bridge_border/brown/small_stair{
 	dir = 4
 	},
-/obj/structure/platform/metal/hunter/east,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -13542,8 +13769,8 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Vs" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
@@ -13563,9 +13790,9 @@
 	pixel_x = -31;
 	layer = 3.2
 	},
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -13574,16 +13801,16 @@
 	},
 /area/yautja)
 "Vw" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "Vx" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
@@ -13615,6 +13842,10 @@
 	id = "prisonlockdown"
 	},
 /turf/open/floor/corsat/squares,
+/area/yautja)
+"VJ" = (
+/obj/effect/hunter/bridge_border/edge,
+/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "VL" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -13656,9 +13887,9 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "VQ" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -13670,7 +13901,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "VS" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
 "VT" = (
@@ -13691,7 +13922,7 @@
 	pixel_x = 8;
 	pixel_y = -7
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/northwest,
 /area/yautja)
 "VV" = (
@@ -13727,12 +13958,12 @@
 	density = 0
 	},
 /obj/structure/machinery/door_control{
-	id = "hangar";
+	id = "armory2";
 	pixel_y = 23;
 	name = "armory2";
 	pixel_x = -9
 	},
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_x = -26;
@@ -13747,12 +13978,12 @@
 	pixel_x = -2;
 	buckling_x = -2
 	},
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/south,
 /area/yautja)
 "Wf" = (
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/two,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -13777,7 +14008,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Wl" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 11
 	},
 /obj/structure/platform_decoration/metal/hunter/west{
@@ -13805,10 +14036,10 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "Ws" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -13860,7 +14091,6 @@
 "Wu" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	explo_proof = 1;
-	locked = 1;
 	name = "\improper Hangar Stairs"
 	},
 /turf/open/floor/corsat/squares,
@@ -13918,7 +14148,7 @@
 /area/yautja)
 "WG" = (
 /obj/structure/platform_decoration/metal/hunter,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -13962,6 +14192,35 @@
 /obj/item/stack/tile/carpet{
 	amount = 50
 	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
+/obj/item/frame/table/wood/fancy,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "WL" = (
@@ -13981,7 +14240,7 @@
 	},
 /area/yautja)
 "WO" = (
-/obj/structure/platform/metal/hunter/north{
+/obj/structure/prop/hunter/fake_platform/hunter/north{
 	pixel_y = 12
 	},
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -13999,6 +14258,11 @@
 	light_color = "#ff0000"
 	},
 /area/yautja)
+"WS" = (
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/platform_decoration/metal/hunter/north,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
 "WT" = (
 /obj/structure/ladder/yaujta{
 	id = "predcells";
@@ -14009,6 +14273,11 @@
 	pixel_y = 17
 	},
 /obj/effect/hunter/bridge_border/brown/corner,
+/obj/effect/hunter/rune/stripes_arrow{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = -6
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "WW" = (
@@ -14031,7 +14300,7 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "Xb" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/shower{
 	dir = 1;
 	color = "#c1a384"
@@ -14039,7 +14308,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Xc" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/east{
 	pixel_x = -6
 	},
@@ -14064,7 +14333,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Xg" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -14110,7 +14379,7 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "Xq" = (
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/mucus{
 	icon_state = "writing5";
 	color = "#20d450";
@@ -14127,8 +14396,8 @@
 /area/yautja)
 "Xx" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -14229,12 +14498,12 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "XQ" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/space,
-/area/space)
+/area/yautja)
 "XR" = (
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
@@ -14248,7 +14517,7 @@
 	},
 /area/yautja)
 "XU" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -14357,9 +14626,9 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Yj" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -14368,8 +14637,8 @@
 	},
 /area/yautja)
 "Ym" = (
-/obj/structure/platform/metal/hunter,
-/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
@@ -14377,9 +14646,15 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Yo" = (
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 32;
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
 	anchored = 1
+	},
+/obj/item/clothing/mask/gas/yautja/hunter{
+	pixel_y = 39;
+	anchored = 1;
+	pixel_x = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -14391,9 +14666,9 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "Yw" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/west,
-/obj/structure/platform/metal/hunter/east,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -14444,7 +14719,7 @@
 	},
 /area/yautja)
 "YA" = (
-/obj/structure/platform/metal/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -14457,8 +14732,8 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "YI" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/seven,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -14528,9 +14803,9 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "YX" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
@@ -14558,9 +14833,9 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "Zb" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/catwalk/corner/four,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -14585,8 +14860,8 @@
 	},
 /area/yautja)
 "Zf" = (
-/obj/structure/platform/metal/hunter/north,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Zg" = (
@@ -14602,12 +14877,12 @@
 /area/yautja)
 "Zh" = (
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "Zm" = (
@@ -14628,7 +14903,7 @@
 	},
 /area/yautja)
 "Zr" = (
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -14643,7 +14918,7 @@
 	pixel_x = -8;
 	pixel_y = -7
 	},
-/obj/effect/hybrisa/decal/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/northeast,
 /area/yautja)
 "Zy" = (
@@ -14665,10 +14940,6 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 3.2;
-	color = "#bccab4"
-	},
 /obj/structure/ladder/yaujta{
 	id = "youngbloodprep";
 	height = 1;
@@ -14678,6 +14949,10 @@
 	light_color = "#ff0000";
 	pixel_x = -2;
 	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
@@ -14697,7 +14972,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
 "ZI" = (
@@ -14706,7 +14981,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "ZK" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja)
 "ZL" = (
@@ -14739,17 +15014,17 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "ZP" = (
-/obj/structure/platform/metal/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship{
 	icon_state = "11,5";
 	dir = 8
 	},
 /area/yautja)
 "ZQ" = (
-/obj/structure/prop/hunter/catwalk/hunter_grate,
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/east,
-/obj/structure/platform/metal/hunter/west,
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/misc/feed{
 	dir = 10
 	},
@@ -14761,7 +15036,7 @@
 	},
 /area/yautja)
 "ZR" = (
-/obj/structure/platform/metal/hunter/east,
+/obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/bridge_border/brown/large_stair,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -14793,11 +15068,11 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "ZY" = (
-/obj/structure/platform/metal/hunter,
-/obj/structure/platform/metal/hunter/west,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
-/obj/structure/prop/hunter/catwalk/hunter_grate,
+/obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
 	light_power = 2;
@@ -15776,8 +16051,8 @@ Ck
 aV
 aV
 aV
-Ix
-Ix
+LV
+LV
 aV
 aV
 Ds
@@ -16421,7 +16696,7 @@ Mo
 XS
 jF
 aV
-AN
+pd
 mP
 wK
 mw
@@ -16483,9 +16758,9 @@ Gw
 aV
 aV
 RY
-gq
-hD
-Vt
+WS
+iT
+cl
 BL
 sw
 bz
@@ -16771,9 +17046,9 @@ aV
 aV
 aV
 UJ
-in
-wf
-rE
+hC
+Mu
+Ji
 xH
 Jn
 nd
@@ -16925,7 +17200,7 @@ aV
 aV
 aV
 aV
-qr
+Db
 mC
 PM
 aV
@@ -17186,7 +17461,7 @@ op
 Tr
 Si
 Si
-Si
+VJ
 hS
 OI
 YQ
@@ -17255,7 +17530,7 @@ eH
 ZL
 ZL
 ZL
-Si
+Ef
 jP
 Si
 Si
@@ -17297,10 +17572,10 @@ BL
 rB
 PI
 Rf
-rM
-rM
-rM
-rM
+rX
+rX
+rX
+rX
 yQ
 rG
 Ja
@@ -17313,11 +17588,11 @@ FR
 Ej
 pc
 yQ
-rM
-rM
 rX
 rX
-rM
+rX
+rX
+rX
 qW
 qL
 gt
@@ -17369,10 +17644,10 @@ Ol
 sX
 PI
 Fy
-Hp
-Hp
-Hp
-Hp
+Gr
+Gr
+Gr
+Gr
 Sh
 dl
 Ja
@@ -17385,11 +17660,11 @@ dz
 Ej
 fP
 Sh
-Hp
-Hp
 Gr
 Gr
-Hp
+Gr
+Gr
+Gr
 mo
 bq
 VN
@@ -17471,7 +17746,7 @@ GA
 GA
 GA
 GA
-Si
+Ix
 WL
 Si
 kO
@@ -17546,7 +17821,7 @@ DM
 Tr
 Si
 Si
-Si
+UL
 OF
 HC
 wx
@@ -17631,8 +17906,8 @@ aV
 aV
 aV
 Gn
-kb
-kb
+ov
+ov
 IS
 aV
 aV
@@ -17641,7 +17916,7 @@ VT
 Eg
 aV
 aV
-mC
+bf
 rJ
 do
 sW
@@ -17717,7 +17992,7 @@ aV
 aV
 aV
 aV
-kD
+Hb
 mC
 oV
 aV
@@ -17790,7 +18065,7 @@ nj
 dW
 JM
 Dt
-wd
+qd
 pV
 XW
 Nv
@@ -17851,9 +18126,9 @@ aV
 aV
 aV
 ba
-gq
-hD
-rE
+WS
+iT
+DU
 gV
 vn
 nd
@@ -17862,7 +18137,7 @@ cH
 tJ
 LT
 fW
-qa
+DG
 vB
 JM
 MB
@@ -17934,7 +18209,7 @@ aV
 aV
 aV
 Gz
-qa
+DG
 Ts
 aV
 aV
@@ -18006,7 +18281,7 @@ td
 WI
 aV
 fJ
-qa
+DG
 vB
 VH
 Nv
@@ -18078,7 +18353,7 @@ BL
 Jn
 IQ
 Rd
-LY
+mG
 xy
 aV
 an
@@ -18139,9 +18414,9 @@ AB
 aV
 aV
 ZI
-in
-wf
-GV
+hC
+Mu
+rm
 XL
 XV
 gD
@@ -18221,7 +18496,7 @@ zb
 pm
 TZ
 aV
-Dt
+bo
 sg
 pV
 Uf
@@ -19151,7 +19426,7 @@ aV
 Ia
 aV
 lD
-qa
+DG
 oB
 rA
 XN

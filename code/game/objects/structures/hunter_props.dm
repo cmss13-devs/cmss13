@@ -180,6 +180,7 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER
+	density = TRUE
 
 /obj/effect/hunter/rune
 	name = "rune"
@@ -202,22 +203,29 @@
 /obj/effect/hunter/rune/corner_2
 	icon_state = "hunter_rune_corner_2"
 
+/obj/effect/hunter/rune/small_arrow
+	icon_state = "small_arrow"
+
+/obj/effect/hunter/rune/stripes_arrow
+	icon_state = "stripes_arrow"
+
 // Fake platform
 
-/obj/effect/hunter/fake_platform/hunter
+/obj/structure/prop/hunter/fake_platform/hunter
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "hunter_platform"
 	name = "raised metal edge"
 	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
 	density = FALSE
 	anchored = TRUE
-	layer = TURF_LAYER
+	layer = WEED_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/hunter/fake_platform/hunter/north
+
+/obj/structure/prop/hunter/fake_platform/hunter/north
 	dir = NORTH
-/obj/effect/hunter/fake_platform/hunter/east
+/obj/structure/prop/hunter/fake_platform/hunter/east
 	dir = EAST
-/obj/effect/hunter/fake_platform/hunter/west
+/obj/structure/prop/hunter/fake_platform/hunter/west
 	dir = WEST

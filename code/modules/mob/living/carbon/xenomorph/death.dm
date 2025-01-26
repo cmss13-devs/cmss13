@@ -27,7 +27,7 @@
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
-		new /datum/entity/xeno_death(src) // Creates a stats logging entry, we don't need to do anything w/ it since it handles everything
+		new /datum/entity/xeno_death(src, cause) // Creates a stats logging entry, we don't need to do anything w/ it since it handles everything
 
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src

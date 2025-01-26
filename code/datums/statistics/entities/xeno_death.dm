@@ -23,21 +23,24 @@
 	var/ckey
 	/// How much damage this xeno took before dying
 	var/damage_taken
+	/// What killed this xeno ("m39 submachinegun")
+	var/killed_by
 
-/datum/entity/xeno_death/New(mob/living/carbon/xenomorph/dead_xeno)
+/datum/entity/xeno_death/New(mob/living/carbon/xenomorph/dead_xeno, datum/cause_data/death_cause)
 	. = ..()
-	map_name = SSmapping.configs[GROUND_MAP]?.map_name
-	x = dead_xeno.x
-	y = dead_xeno.y
-	z = dead_xeno.z
-	death_minute = floor((world.time * 0.1) / 60)
-	hive = dead_xeno.hive.name
-	caste = dead_xeno.caste.caste_type
+	map_name = SSmapping.configs[GROUND_MAP]?.map_name || "Unknown Map"
+	x = dead_xeno.x || -1
+	y = dead_xeno.y || -1
+	z = dead_xeno.z || -1
+	death_minute = floor((world.time * 0.1) / 60) || -1
+	hive = dead_xeno.hive.name || "Unknown Hive"
+	caste = dead_xeno.caste.caste_type || "Unknown"
 	strain = dead_xeno.strain?.name || "None"
 	leader = (dead_xeno in dead_xeno.hive.xeno_leader_list)
-	minutes_alive = floor((dead_xeno.creation_time * 0.1) / 60)
+	minutes_alive = floor((dead_xeno.creation_time * 0.1) / 60) || -1
 	ckey = dead_xeno.ckey || dead_xeno.persistent_ckey || ""
-	damage_taken = dead_xeno.life_damage_taken_total
+	damage_taken = dead_xeno.life_damage_taken_total || 0
+	killed_by = death_cause.cause_name || "Unknown"
 
 	SSticker?.mode?.round_stats?.xeno_deaths += src
 	save()
@@ -57,5 +60,6 @@
 		"leader" = DB_FIELDTYPE_INT,
 		"minutes_alive" = DB_FIELDTYPE_INT,
 		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
-		"damage_taken" = DB_FIELDTYPE_INT
+		"damage_taken" = DB_FIELDTYPE_INT,
+		"cause_name" = DB_FIELDTYPE_STRING_MEDIUM,
 	)

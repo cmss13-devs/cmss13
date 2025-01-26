@@ -7,7 +7,7 @@
 	dat += "body {"
 	dat += "margin:0 auto;"
 	dat += "padding:0;"
-	dat += "background-image: url('[asset.get_url_mappings()["faxbackground.jpg"]]');"
+	dat += "background-image: url('[asset.get_url_mappings()["background_white.jpg"]]');"
 	dat += "font-family: monospace;"
 	dat += "}"
 
@@ -65,12 +65,7 @@
 
 	if(show_wy_logo)
 		dat += "<div id='fax-logo'>"
-/*
-		dat += "<img src='[asset.get_url_mappings()["faxwylogo.png"]]' alt='Something fucked!'/>"
-*/
-//RUCM START
-		dat += "<img src='[asset.get_url_mappings()["wylogo.png"]]' alt='Something fucked!'/>"
-//RUCM END
+		dat += "<img src='[asset.get_url_mappings()["logo_wy.png"]]' alt='Something fucked!'/>"
 		dat += "</div>"
 
 	dat += "<div class='message-header-text'>"

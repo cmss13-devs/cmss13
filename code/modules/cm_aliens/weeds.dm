@@ -229,6 +229,7 @@
 			continue
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
 			continue
+		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
 
@@ -396,7 +397,7 @@
 	user.animation_attack_on(src)
 
 	take_damage(damage)
-	return TRUE //don't call afterattack
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/effect/alien/weeds/proc/take_damage(damage)
 	if(explo_proof)

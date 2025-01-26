@@ -1,6 +1,6 @@
 /datum/battlepass_reward/spec_token
 	name = "Specialist Token"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/economy.dmi'
 	icon_state = "coin_diamond"
 
 /datum/battlepass_reward/heap_mag

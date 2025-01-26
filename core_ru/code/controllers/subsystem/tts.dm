@@ -362,8 +362,8 @@ SUBSYSTEM_DEF(tts)
 				var/turf/turf_source = get_turf(tts_target)
 				if(turf_source)
 					play_tts(turf_source, current_target.listeners[1], audio_file, current_target.volume_offset + 60)
-					play_tts(turf_source, current_target.listeners[2], audio_file, current_target.volume_offset + 10, TTS_FLAG_RADIO)
-					play_tts(turf_source, current_target.listeners[3], audio_file, current_target.volume_offset + 10, TTS_FLAG_HIVEMIND)
+					play_tts(turf_source, current_target.listeners[2], audio_file, current_target.volume_offset + 30, TTS_FLAG_RADIO)
+					play_tts(turf_source, current_target.listeners[3], audio_file, current_target.volume_offset + 30, TTS_FLAG_HIVEMIND)
 				if(length(data) != 1)
 					var/datum/tts_request/next_target = data[2]
 					next_target.when_to_play = world.time + current_target.audio_length

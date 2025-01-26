@@ -254,6 +254,19 @@
 
 	charger_ability.stop_momentum()
 
+/obj/structure/fence/electrified/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	attack_generic(xeno,CHARGER_DAMAGE_CADE)
+	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+	if(QDELETED(src))
+		if(prob(50))
+			charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
+		return XENO_CHARGE_TRY_MOVE
+
+	charger_ability.stop_momentum()
+
 // Crates
 
 /obj/structure/largecrate/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
@@ -326,9 +339,16 @@
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 	xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([src.ckey])</font>")
 	log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([src.ckey])")
+/*
 	var/momentum_mult = 5
 	if(charger_ability.momentum == charger_ability.max_momentum)
 		momentum_mult = 8
+*/
+//RUCM START
+	var/momentum_mult = 10
+	if(charger_ability.momentum == charger_ability.max_momentum)
+		momentum_mult = 16
+//RUCM END
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
 	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
@@ -371,8 +391,8 @@
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
 			apply_effect(2, WEAKEN)
 			xeno.apply_effect(2, WEAKEN)
-			src.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
-			xeno.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
+			throw_atom(get_step(src, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
+			xeno.throw_atom(get_step(xeno, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
@@ -385,7 +405,7 @@
 			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
 			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
 			apply_effect(1, WEAKEN) // brief flicker stun
-			src.throw_atom(src.loc,1,3,xeno,TRUE)
+			throw_atom(get_turf(src), 1, 3, xeno, TRUE)
 		step(src, ram_dir, charger_ability.momentum * 0.5)
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 		return XENO_CHARGE_TRY_MOVE
@@ -398,9 +418,16 @@
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 	xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([src.ckey])</font>")
 	log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([src.ckey])")
+/*
 	var/momentum_mult = 5
 	if(charger_ability.momentum == charger_ability.max_momentum)
 		momentum_mult = 8
+*/
+//RUCM START
+	var/momentum_mult = 10
+	if(charger_ability.momentum == charger_ability.max_momentum)
+		momentum_mult = 16
+//RUCM END
 	take_overall_damage(charger_ability.momentum * momentum_mult)
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),

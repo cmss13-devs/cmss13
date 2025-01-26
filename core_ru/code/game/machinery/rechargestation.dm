@@ -125,7 +125,7 @@
 					if(istype(G) && G.client)
 						playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 						to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Кто то положил твое тело в [src.name]. Вернись в него если хочешь воскреснуть! \
-							(Verbs -> Ghost -> Re-enter corpse, или <a href='?src=\ref[G];reentercorpse=1'>нажми сюда!</a>)")))
+							(Verbs -> Ghost -> Re-enter corpse, или <a href='byond://?src=\ref[G];reentercorpse=1'>нажми сюда!</a>)")))
 					// Not ghost and not in body
 					else if (!humanoid_occupant.client)
 						for (var/mob/living/brain/synth/posibrain in GLOB.living_mob_list)

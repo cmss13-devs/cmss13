@@ -27,9 +27,4 @@
 	marine_tree = GET_TREE(TREE_MARINE)
 	xeno_tree = GET_TREE(TREE_XENO)
 
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
-	if(toggled)
-		START_PROCESSING(SSslowobj, src)
-	..()
-
 #undef RESOURCE_INCOME_TELECOMMS

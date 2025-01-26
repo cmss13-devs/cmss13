@@ -24,6 +24,7 @@
 		list("M82F Flare Gun", floor(scale * 20), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARMS", -1, null, null),
+		list("Type-19 Submachinegun", floor(scale * 3), /obj/item/storage/box/guncase/type19, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", floor(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
@@ -137,9 +138,9 @@
 		list("REGULAR AMMUNITION", -1, null, null),
 		list("Type 71 Magazine (5.45x39mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Slug Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Flechette Shells (8g)", floor(scale * 100), /obj/item/ammo_magazine/handful/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
+		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 300), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
+		list("Handful of Heavy Slug Shells (8g)", floor(scale * 300), /obj/item/ammo_magazine/handful/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
+		list("Handful of Heavy Flechette Shells (8g)", floor(scale * 300), /obj/item/ammo_magazine/handful/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
 		list("Type 73 Magazine (7.62x25mm Tokarev)", floor(scale * 40), /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Speed Loader (7.62x38mmR)", floor(scale * 40), /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
 		list("NP92 Magazine (9x18mm Makarov)", floor(scale * 40), /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
@@ -148,6 +149,8 @@
 		list("Type 71 AP Magazine (5.45x39mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/type71/ap, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
+		list("Type-19 stick magazine (7.62x25mm)", floor(scale * 12), /obj/item/ammo_magazine/smg/pps43, VENDOR_ITEM_REGULAR),
+		list("Type-19 drum magazine (7.62x25mm)", floor(scale * 1), /obj/item/ammo_magazine/smg/pps43/extended, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),
@@ -156,6 +159,10 @@
 		list("Magazine box (Type 64 Bizon x 10)", 0, /obj/item/ammo_box/magazine/type64, VENDOR_ITEM_REGULAR),
 		list("Magazine box (Type 73 Pistol x 16)", 0, /obj/item/ammo_box/magazine/type73, VENDOR_ITEM_REGULAR),
 		list("Speed loaders box (ZhNK-72 x 12)", 0, /obj/item/ammo_box/magazine/zhnk, VENDOR_ITEM_REGULAR),
+		list("Magazine box (Type19 x 12)", 0, /obj/item/ammo_box/magazine/type19, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Slugs 8g x 100)", 0, /obj/item/ammo_box/magazine/shotgun/upp, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Buckshot 8g x 100)", 0, /obj/item/ammo_box/magazine/shotgun/upp/buckshot, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Flechette 8g x 100)", 0, /obj/item/ammo_box/magazine/shotgun/upp/flechette, VENDOR_ITEM_REGULAR),
 		list("Flamer Tank Box (UT-Napthal Fuel x 8)", 0, /obj/item/ammo_box/magazine/flamer, VENDOR_ITEM_REGULAR),
 		)
 

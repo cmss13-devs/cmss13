@@ -11,21 +11,10 @@
 	tier = /datum/tier/one/additional
 
 	droppod_input_message = "Choose a deployable to retrieve from the droppod."
-/*
-/datum/tech/droppod/item/engi_czsp/pre_item_stats(mob/user)
-	. = ..()
-	. += list(list(
-		"content" = "Restricted usecase",
-		"color" = "orange",
-		"icon" = "exclamation-triangle",
-		"tooltip" = "Only usable by [JOB_SQUAD_ENGI]."
-	))
-*/
+
 /datum/tech/droppod/item/engi_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
-	if(!H || !D)
-		return
-	if(H.job == JOB_SQUAD_ENGI)
+	if(!H || skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		.["21S Tesla Coil"] = /obj/item/storage/box/combat_zone_engi_package_tesla
 		.["UA 42-F Sentry Flamer"] = /obj/item/storage/box/combat_zone_engi_package_flamer
 		.["UA 571-C Sentry Gun"] = /obj/item/storage/box/combat_zone_engi_package

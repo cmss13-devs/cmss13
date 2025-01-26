@@ -1,11 +1,6 @@
 /datum/squad
 	var/active_at = null
 
-/datum/squad/New()
-	roles_cap[JOB_SQUAD_ENGI] = 6
-	roles_cap[JOB_SQUAD_MEDIC] = 8
-	. = ..()
-
 /datum/squad/marine/bravo
 	active_at = 40
 

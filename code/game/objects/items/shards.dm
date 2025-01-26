@@ -3,6 +3,10 @@
 /obj/item/shard
 	name = "glass shard"
 	icon = 'icons/obj/items/shards.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = ""
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
@@ -87,7 +91,7 @@
 
 /obj/item/large_shrapnel/at_rocket_dud
 	name = "unexploded anti-tank rocket"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "custom_rocket_no_fuel"
 	desc = "An undetonated anti-tank rocket that probably hit something soft. You really shouldn't drop this..."
 	/// same as custom warhead
@@ -134,8 +138,8 @@
 
 /obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom)
 	. = ..()
-	var/datum/launch_metadata/LM = src.launch_metadata
-	var/user = LM.thrower
+	var/datum/launch_metadata/LM = launch_metadata
+	var/user = LM?.thrower
 	if(!detonating && prob(impact_sensitivity))
 		cause = "manually triggered"
 		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src]. Uh oh."))
@@ -168,7 +172,7 @@
 		playsound(M, 'sound/effects/meteorimpact.ogg', 35)
 		M.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket", U))
 		M.interior_crash_effect()
-		M.ex_act(1000, get_dir(U, T), create_cause_data("Anti-Tank Rocket", U))
+		M.ex_act(1000)
 		return TRUE
 	return FALSE
 

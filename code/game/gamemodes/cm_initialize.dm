@@ -178,6 +178,9 @@ Additional game mode variables.
 			if(player.client.prefs.get_job_priority(JOB_PREDATOR) > 0) //Are their prefs turned on?
 				if(!player.mind) //They have to have a key if they have a client.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
+/* RUCM REMOVE
+				player.mind.setup_human_stats()
+*/
 				player.faction = FACTION_YAUTJA
 				player.faction_group = FACTION_LIST_YAUTJA
 				players += player.mind
@@ -449,6 +452,9 @@ Additional game mode variables.
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)
 	new_xeno.roundstart_picked = TRUE
+/* RUCM REMOVE
+	new_xeno.setup_xeno_stats()
+*/
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
@@ -836,6 +842,9 @@ Additional game mode variables.
 	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
 	new_xeno.mind_initialize()
+/* RUCM REMOVE
+	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)
+*/
 	new_xeno.statistic_tracked = FALSE
 
 	// Let the round recorder know that the key has changed
@@ -1149,10 +1158,15 @@ Additional game mode variables.
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
+/*
+	return "Extended round has ended."
+*/
+//RUCM START
 	if(round_finished)
 		return "Round has ended. [round_finished]."
 	else
 		return "Round has ended due to technical reasons."
+//RUCM END
 
 /datum/game_mode/proc/get_escape_menu()
 	return "On the [SSmapping.configs[SHIP_MAP].map_name], orbiting..."

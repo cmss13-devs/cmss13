@@ -1064,12 +1064,14 @@
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
 
+//RUCM START
 	var/mob/shoot_mob = P.weapon_cause_data?.resolve_mob()
 	if(shoot_mob)
 		if(shoot_mob.faction == faction)
 			shoot_mob.track_friendly_damage(P.weapon_cause_data.cause_name, src, damage)
 		else
 			shoot_mob.track_damage(P.weapon_cause_data.cause_name, src, damage)
+//RUCM END
 
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 //RUCM START

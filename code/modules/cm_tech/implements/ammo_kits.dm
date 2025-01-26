@@ -41,7 +41,9 @@
 	uses--
 	playsound(get_turf(user), "sound/machines/fax.ogg", 5)
 
+//RUCM START
 	user.count_statistic_stat(STATISTICS_AMMO_CONVERTED)
+//RUCM END
 
 	if(uses <= 0)
 		user.drop_held_item(src)

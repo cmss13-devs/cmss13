@@ -192,9 +192,9 @@
 
 //stole my own code from techpod_vendor
 /obj/vehicle/multitile/apc/command/proc/get_access_permission(mob/living/carbon/human/user)
-	if(SSticker.mode == MODE_NAME_WISKEY_OUTPOST || GLOB.master_mode == MODE_NAME_WISKEY_OUTPOST)
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return TRUE
-	else if(SSticker.mode.name == MODE_NAME_DISTRESS_SIGNAL || GLOB.master_mode == MODE_NAME_DISTRESS_SIGNAL)
+	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
 		if(techpod_access_settings_override)
 			return TRUE
 		else if(user.get_target_lock(techpod_faction_requirement))

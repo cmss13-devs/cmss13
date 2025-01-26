@@ -27,6 +27,9 @@
 	if(tutorial_mob.mind)
 		tutorial_mob.mind_initialize()
 		tutorial_mob.mind.transfer_to(new_character, TRUE)
+/* RUCM REMOVE
+		tutorial_mob.mind.setup_human_stats()
+*/
 
 	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
 	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)

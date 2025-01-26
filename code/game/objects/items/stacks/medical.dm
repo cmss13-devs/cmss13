@@ -140,7 +140,9 @@
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
 				affecting.heal_damage(burn = heal_burn)
+//RUCM START
 				user.track_heal_damage(initial(name), affecting, heal_burn)
+//RUCM END
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
@@ -192,7 +194,9 @@
 				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, TRUE, FALSE, heal_amt * 0.5))
 					heal_amt *= 0.5
 				affecting.heal_damage(brute = heal_amt)
+//RUCM START
 				user.track_heal_damage(initial(name), affecting, heal_amt)
+//RUCM END
 				use(1)
 			if(WOUNDS_ALREADY_TREATED)
 				to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))

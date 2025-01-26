@@ -21,16 +21,30 @@
 /datum/random_fact/proc/calculate_announcement_message()
 	var/death_stat_gotten = 0
 	var/living_stat_gotten = 0
+/*
+	var/datum/entity/statistic/death/death_to_report = null
+*/
+//RUCM START
 	var/datum/entity/statistic_death/death_to_report = null
+//RUCM END
 	var/mob/mob_to_report = null
 
 	if(GLOB.round_statistics && length(GLOB.round_statistics.death_stats_list))
+/*
+		for(var/datum/entity/statistic/death/death in GLOB.round_statistics.death_stats_list)
+			if(!check_human && !death.is_xeno)
+				continue
+			if(!check_xeno && death.is_xeno)
+				continue
+*/
+//RUCM START
 		for(var/datum/entity/statistic_death/death in GLOB.round_statistics.death_stats_list)
 			var/xeno_checked = death.faction_name in FACTION_LIST_XENOMORPH
 			if(!check_human && !xeno_checked)
 				continue
 			if(!check_xeno && xeno_checked)
 				continue
+//RUCM END
 			if(death_stat_gotten < death_grab_stat(death))
 				death_to_report = death
 				death_stat_gotten = death_grab_stat(death)
@@ -83,5 +97,10 @@
 /datum/random_fact/proc/life_grab_stat(mob/fact_mob)
 	return 0
 
+/*
+/datum/random_fact/proc/death_grab_stat(datum/entity/statistic/death/fact_death)
+*/
+//RUCM START
 /datum/random_fact/proc/death_grab_stat(datum/entity/statistic_death/fact_death)
+//RUCM END
 	return 0

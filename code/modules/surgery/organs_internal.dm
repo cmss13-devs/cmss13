@@ -82,7 +82,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
+/*
+			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
+*/
+//RUCM START
 			user.count_statistic_stat(STATISTICS_SURGERY_ORGAN_REPAIR)
+//RUCM END
 			I.rejuvenate()
 			target.pain.recalculate_pain()
 			break
@@ -289,7 +294,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 	SPAN_NOTICE("You have removed [target]'s [affected.surgery_organ] with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] removed [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 
+/*
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REMOVE)
+*/
+//RUCM START
 	user.count_statistic_stat(STATISTICS_SURGERY_ORGAN_REMOVE)
+//RUCM END
 
 	//Extract the organ!
 	if(affected.surgery_organ)
@@ -479,7 +489,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 	SPAN_NOTICE("You have reattached [target]'s [affected.surgery_organ] with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] reattached [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 
+/*
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_ATTACH)
+*/
+//RUCM START
 	user.count_statistic_stat(STATISTICS_SURGERY_ORGAN_ATTACH)
+//RUCM END
 
 	var/datum/internal_organ/I = target.internal_organs_by_name[affected.surgery_organ]
 	I.cut_away = FALSE

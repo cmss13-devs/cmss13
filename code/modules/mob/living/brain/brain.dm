@@ -56,4 +56,9 @@
 /mob/living/brain/synth/ghost()
 	set desc = "Relinquish your sentience and visit the land of the past."
 
+/*
+	if(mind && mind.player_entity)
+		mind.player_entity.update_panel_data(GLOB.round_statistics)
+*/
+
 	ghostize(TRUE)

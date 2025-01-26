@@ -102,7 +102,6 @@
 #include "code\__DEFINES\sounds.dm"
 #include "code\__DEFINES\speech_channels.dm"
 #include "code\__DEFINES\stamina.dm"
-#include "code\__DEFINES\statistic.dm"
 #include "code\__DEFINES\status_effects.dm"
 #include "code\__DEFINES\strippable.dm"
 #include "code\__DEFINES\STUI.dm"

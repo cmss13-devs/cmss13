@@ -283,10 +283,12 @@
 				var/dmg = list("damage" = acid_blood_damage)
 				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, dmg) & COMPONENT_BLOCK_DAMAGE)
 					continue
+//RUCM START
 				if(faction == victim.faction)
 					track_friendly_damage("Acid", victim, acid_blood_damage)
 				else
 					track_damage("Acid", victim, acid_blood_damage)
+//RUCM END
 				i++
 				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))

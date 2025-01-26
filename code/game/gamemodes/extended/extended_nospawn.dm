@@ -1,6 +1,6 @@
 /datum/game_mode/extended/nospawn
-	name = MODE_NAME_EXTENDED_NO_SPAWN
-	config_tag = MODE_NAME_EXTENDED_NO_SPAWN
+	name = "Extended - No Spawn"
+	config_tag = "Extended - No Spawn"
 	flags_round_type = MODE_NO_LATEJOIN|MODE_NO_SPAWN
 	votable = FALSE
 

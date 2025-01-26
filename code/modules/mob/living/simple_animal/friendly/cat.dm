@@ -105,7 +105,12 @@
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
+/*
+			user.count_niche_stat(STATISTICS_NICHE_CAT)
+*/
+//RUCM START
 			user.count_statistic_stat(STATISTICS_CAT)
+//RUCM END
 
 /mob/living/simple_animal/cat/proc/handle_movement_target()
 	turns_since_scan++

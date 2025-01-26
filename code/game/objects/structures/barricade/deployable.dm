@@ -232,7 +232,12 @@
 
 		user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 		SPAN_NOTICE("You repair [src]."))
+/*
+		user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
+*/
+//RUCM START
 		user.count_statistic_stat(STATISTICS_REPAIR_CADES)
+//RUCM END
 
 		for(var/counter in 1 to length(stack_health))
 			stack_health[counter] += 200

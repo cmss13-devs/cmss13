@@ -161,17 +161,24 @@
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 
+/*
+	if(character.mind && character.mind.player_entity)
+		var/datum/entity/player_entity/player = character.mind.player_entity
+		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
+*/
+//RUCM START
 	if(character.mind && character.client.player_data)
 		var/list/xeno_playtimes = LAZYACCESS(character.client.player_data.playtime_data, "stored_xeno_playtime")
 		var/list/marine_playtimes = LAZYACCESS(character.client.player_data.playtime_data, "stored_human_playtime")
 		if(!xeno_playtimes && !marine_playtimes)
+//RUCM END
 			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 		if(character.client)
-			var/client/C = character.client
-			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+			var/client/client = character.client
+			if(client.player_data && client.player_data.playtime_loaded && length(client.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
-			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
-				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [character.job] - Current location: [get_area(character)]")
+			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
+				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
 //RUCM START

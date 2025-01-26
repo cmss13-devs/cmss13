@@ -303,6 +303,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
+/*
+	player_entity = setup_player_entity(ckey)
+*/
+
 	if(check_localhost_status())
 /*
 		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
@@ -561,10 +565,27 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 	if(GLOB.player_entities["[ckey]"])
 		return GLOB.player_entities["[ckey]"]
+/*
+	var/datum/entity/player_entity/P = new()
+	P.ckey = ckey
+	P.name = ckey
+	GLOB.player_entities["[ckey]"] = P
+	// P.setup_save(ckey)
+	return P
+
+/proc/save_player_entities()
+	for(var/key_ref in GLOB.player_entities)
+		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
+		// P.save_statistics()
+	log_debug("STATISTICS: Statistics saving complete.")
+	message_admins("STATISTICS: Statistics saving complete.")
+*/
+//RUCM START
 	var/datum/player_entity/p_entity = new()
 	p_entity.ckey = ckey
 	GLOB.player_entities["[ckey]"] = p_entity
 	return p_entity
+//RUCM END
 
 /client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
@@ -831,6 +852,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		total_xeno_playtime += get_job_playtime(src, caste)
 
 	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
+
+/*
+	if(player_entity)
+		var/past_xeno_playtime = player_entity.get_playtime(STATISTIC_XENO)
+		if(past_xeno_playtime)
+			total_xeno_playtime += past_xeno_playtime
+*/
 
 	cached_xeno_playtime = total_xeno_playtime
 

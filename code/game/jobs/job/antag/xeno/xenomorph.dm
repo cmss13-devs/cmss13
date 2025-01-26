@@ -26,7 +26,13 @@
 	transform_to_xeno(H, XENO_HIVE_NORMAL)
 
 /datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, hive_index)
+/*
+	var/datum/mind/new_xeno = human_to_transform.mind
+	new_xeno.setup_xeno_stats()
+*/
+//RUCM START
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]
+//RUCM END
 
 	human_to_transform.first_xeno = TRUE
 	human_to_transform.set_stat(UNCONSCIOUS)

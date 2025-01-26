@@ -62,8 +62,14 @@
 	if(!owner)
 		return
 	var/mob/living/carbon/xenomorph/xeno = owner
+/*
+	if (name && GLOB.round_statistics)
+		GLOB.round_statistics.track_ability_usage(name)
+*/
+//RUCM START
 	if(name)
 		xeno.track_ability_usage(name, xeno.caste_type)
+//RUCM END
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)

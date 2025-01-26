@@ -92,3 +92,6 @@
 #define STATISTICS_DESTRUCTION_WALLS	"Walls Destroyed"
 #define STATISTICS_DESTRUCTION_DOORS	"Doors Destroyed"
 #define STATISTICS_DESTRUCTION_WINDOWS	"Windows Destroyed"
+
+GLOBAL_DATUM(round_statistics, /datum/entity/statistic_round)
+GLOBAL_LIST_EMPTY_TYPED(player_entities, /datum/player_entity)

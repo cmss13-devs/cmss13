@@ -58,9 +58,9 @@
 	droppod_tech.on_pod_access(user, src)
 //RUCM END
 /obj/structure/techpod_vendor/proc/get_access_permission(mob/living/carbon/human/user)
-	if(SSticker.mode == MODE_NAME_WISKEY_OUTPOST || GLOB.master_mode == MODE_NAME_WISKEY_OUTPOST) //all WO has lifted access restrictions
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST) //all WO has lifted access restrictions
 		return TRUE
-	else if(SSticker.mode.name == MODE_NAME_DISTRESS_SIGNAL || GLOB.master_mode == MODE_NAME_DISTRESS_SIGNAL)
+	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
 		if(access_settings_override) //everyone allowed to grab stuff
 			return TRUE
 		else if(user.get_target_lock(faction_requirement)) //only it's faction group allowed

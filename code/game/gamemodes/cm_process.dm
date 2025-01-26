@@ -7,9 +7,6 @@
 #define MODE_INFESTATION_M_MINOR "Marine Minor Victory"
 #define MODE_INFESTATION_DRAW_DEATH "DRAW: Mutual Annihilation"
 
-#define MODE_WISKEY_OUTPOST_X_MAJOR		"Xenomorph Destroyed Marines"
-#define MODE_WISKEY_OUTPOST_M_MAJOR		"Marine Stay Alive"
-
 #define MODE_INFECTION_ZOMBIE_WIN "Major Zombie Victory"
 
 #define MODE_BATTLEFIELD_W_MAJOR "Wey-Yu PMC Major Success"

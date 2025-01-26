@@ -224,6 +224,7 @@
 	return TRUE
 
 
+//RUCM START
 /datum/player_action/access_statistics
 	action_tag = "access_statistics"
 	name = "Access Statistics"
@@ -232,6 +233,7 @@
 	target?.client?.player_data?.player_entity.tgui_interact(user.mob)
 
 	return TRUE
+//RUCM END
 
 
 /datum/player_action/access_admin_datum

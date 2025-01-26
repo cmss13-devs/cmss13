@@ -191,9 +191,62 @@
 #define EMERGENCY_PLATE_OD_WARNING 1
 #define EMERGENCY_PLATE_ADJUSTED_WARNING 2
 
+
 // RESEARCH UPGRADES DEFINES END
 
+// Statistics defines
+#define STATISTIC_XENO "xeno"
+#define STATISTIC_HUMAN "human"
+
+/* RUCM CHANGE
+#define STATISTICS_DEATH_LIST_LEN 10
+*/
+
+#define STATISTICS_NICHE_EXECUTION   "Executions Made"
+#define STATISTICS_NICHE_MEDALS  "Medals Received"
+#define STATISTICS_NICHE_MEDALS_GIVE "Medals Given"
+#define STATISTICS_NICHE_SHOCK   "Times Shocked"
+#define STATISTICS_NICHE_GRENADES    "Grenades Thrown"
+#define STATISTICS_NICHE_FLIGHT  "Flights Piloted"
+#define STATISTICS_NICHE_HANDCUFF    "Handcuffs Applied"
+#define STATISTICS_NICHE_PILLS   "Pills Fed"
+#define STATISTICS_NICHE_DISCHARGE   "Accidental Discharges"
+#define STATISTICS_NICHE_FULTON  "Fultons Deployed"
+#define STATISTICS_NICHE_DISK    "Disks Decrypted"
+#define STATISTICS_NICHE_UPLOAD  "Data Uploaded"
+#define STATISTICS_NICHE_CHEMS   "Chemicals Discovered"
+#define STATISTICS_NICHE_CRATES  "Supplies Airdropped"
+#define STATISTICS_NICHE_OB  "Bombardments Fired"
+
+#define STATISTICS_NICHE_CADES   "Barricades Built"
+#define STATISTICS_NICHE_UPGRADE_CADES "Barricades Upgraded"
+#define STATISTICS_NICHE_REPAIR_CADES    "Barricades Repaired"
+#define STATISTICS_NICHE_REPAIR_GENERATOR    "Generators Repaired"
+#define STATISTICS_NICHE_REPAIR_APC  "APCs Repaired"
+#define STATISTICS_NICHE_DEFENSES_BUILT "Defenses Built"
+
+#define STATISTICS_NICHE_CORGI   "Corgis Murdered"
+#define STATISTICS_NICHE_CAT "Cats Murdered"
+#define STATISTICS_NICHE_COW "Cows Murdered"
+#define STATISTICS_NICHE_CHICKEN "Chickens Murdered"
+
+#define STATISTICS_NICHE_SURGERY_BONES   "Bones Mended"
+#define STATISTICS_NICHE_SURGERY_IB  "Internal Bleedings Stopped"
+#define STATISTICS_NICHE_SURGERY_BRAIN   "Brains Mended"
+#define STATISTICS_NICHE_SURGERY_EYE "Eyes Mended"
+#define STATISTICS_NICHE_SURGERY_LARVA   "Larvae Removed"
+#define STATISTICS_NICHE_SURGERY_SHRAPNEL    "Shrapnel Removed"
+#define STATISTICS_NICHE_SURGERY_AMPUTATE    "Limbs Amputated"
+#define STATISTICS_NICHE_SURGERY_ORGAN_REPAIR    "Organs Repaired"
+#define STATISTICS_NICHE_SURGERY_ORGAN_ATTACH    "Organs Implanted"
+#define STATISTICS_NICHE_SURGERY_ORGAN_REMOVE    "Organs Harvested"
+
+#define STATISTICS_NICHE_DESTRUCTION_WALLS   "Walls Destroyed"
+#define STATISTICS_NICHE_DESTRUCTION_DOORS   "Doors Destroyed"
+#define STATISTICS_NICHE_DESTRUCTION_WINDOWS "Windows Destroyed"
+
 //Multiplier for turning points into cash
+#define DEFCON_TO_MONEY_MULTIPLIER 10000
 #define SUPPLY_TO_MONEY_MUPLTIPLIER 100
 
 //Force the config directory to be something other than "config"

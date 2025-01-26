@@ -271,21 +271,37 @@ explosion resistance exactly as much as their health
 							if(M.stat == DEAD)
 								ff_living = FALSE
 							msg_admin_ff(ff_msg, ff_living)
+/*
+							if(ishuman(firingMob))
+								var/mob/living/carbon/human/H = firingMob
+								H.track_friendly_fire(explosion_source)
+*/
+//RUCM START
 							firingMob.track_friendly_damage(initial(name), M, severity)
 							firingMob.count_statistic_stat(STATISTICS_EXPLODED_MOBS)
+//RUCM END
 						else
 							M.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
 							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
 							msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] ([location_of_mob.z],[location_of_mob.y],[location_of_mob.z])", location_of_mob.x, location_of_mob.y, location_of_mob.z)
+//RUCM START
 							firingMob.track_damage(initial(name), M, severity)
 							firingMob.count_statistic_stat(STATISTICS_EXPLODED_MOBS)
+//RUCM END
 					else if(explosion_source_mob)
 						var/mob/firingMob = explosion_source_mob
 						var/turf/location_of_mob = get_turf(firingMob)
+/*
+						if(ishuman(firingMob))
+							var/mob/living/carbon/human/H = firingMob
+							H.track_shot_hit(initial(name), M)
+*/
 						M.attack_log += "\[[time_stamp()]\] <b>[firingMob]</b> blew up <b>[M]/[M.ckey]</b> with a <b>[explosion_source]</b> in [get_area(firingMob)]."
 						msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] ([location_of_mob.z],[location_of_mob.y],[location_of_mob.z])", location_of_mob.x, location_of_mob.y, location_of_mob.z)
+//RUCM START
 						firingMob.track_damage(initial(name), M, severity)
 						firingMob.count_statistic_stat(STATISTICS_EXPLODED_MOBS)
+//RUCM END
 					else if(explosion_source)
 						M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
 					else

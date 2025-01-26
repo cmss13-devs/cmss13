@@ -2,13 +2,13 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == MODE_NAME_WISKEY_OUTPOST || GLOB.master_mode == MODE_NAME_WISKEY_OUTPOST)
+	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1
 	return 0
 
 /datum/game_mode/whiskey_outpost
-	name = MODE_NAME_WISKEY_OUTPOST
-	config_tag = MODE_NAME_WISKEY_OUTPOST
+	name = GAMEMODE_WHISKEY_OUTPOST
+	config_tag = GAMEMODE_WHISKEY_OUTPOST
 	required_players = 140
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
@@ -253,23 +253,84 @@
 //Checks if the round is over//
 ///////////////////////////////
 /datum/game_mode/whiskey_outpost/check_finished()
+/*
+	if(finished != 0)
+		return 1
+
+	return 0
+*/
+//RUCM START
 	if(round_finished)
 		return TRUE
 	return FALSE
+//RUCM END
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+/*
+/datum/game_mode/whiskey_outpost/declare_completion()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
+	if(finished == 1)
+		log_game("Round end result - xenos won")
+		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
+		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
+		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
+		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
+		world << sound('sound/misc/Game_Over_Man.ogg')
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
+			if(GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
+				GLOB.round_statistics.current_map.total_xeno_majors++
+
+	else if(finished == 2)
+		log_game("Round end result - marines won")
+		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
+		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
+		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
+		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
+		world << sound('sound/misc/hell_march.ogg')
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
+			if(GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
+				GLOB.round_statistics.current_map.total_marine_majors++
+
+	else
+		log_game("Round end result - no winners")
+		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
+		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
+		world << 'sound/misc/sadtrombone.ogg'
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
+
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+
+		GLOB.round_statistics.log_round_statistics()
+
+		round_finished = 1
+
+	calculate_end_statistics()
+
+
+	return 1
+*/
+//RUCM START
 /datum/game_mode/whiskey_outpost/announce_ending()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	switch(round_finished)
-		if(MODE_WISKEY_OUTPOST_M_MAJOR)
+		if(2)
 			to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 			to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 			to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 			to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
-		if(MODE_WISKEY_OUTPOST_X_MAJOR)
+		if(1)
 			to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
 			to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 			to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
@@ -279,25 +340,29 @@
 	var/end_icon = "draw"
 	var/musical_track
 	switch(round_finished)
-		if(MODE_WISKEY_OUTPOST_M_MAJOR)
+		if(2)
 			musical_track = 'sound/misc/hell_march.ogg'
 			end_icon = "marine_major"
-		if(MODE_WISKEY_OUTPOST_X_MAJOR)
+		if(1)
 			musical_track = 'sound/misc/Game_Over_Man.ogg'
 			end_icon = "xeno_major"
 		else
 			musical_track = 'sound/misc/sadtrombone.ogg'
 			if(GLOB.round_statistics)
 				GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
+//RUCM END
 
+/*
+/datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
+	return
+*/
+//RUCM START
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
 	return list(end_icon)
+//RUCM END
 
-///////////////////////////////
-//Other WO things to simulate//
-///////////////////////////////
 /datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)
 	var/randpick

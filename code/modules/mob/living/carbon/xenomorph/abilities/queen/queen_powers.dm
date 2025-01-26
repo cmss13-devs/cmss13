@@ -195,8 +195,8 @@
 	return ..()
 
 /datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
-	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	if(!user_xeno.check_state())
+	var/mob/living/carbon/xenomorph/queen/X = owner
+	if(!X.check_state())
 		return
 
 	if(!action_cooldown_check())
@@ -204,41 +204,47 @@
 
 	var/turf/target_turf = get_turf(A)
 	if(!target_turf)
-		to_chat(user_xeno, SPAN_WARNING("You must select a valid turf to heal around."))
+		to_chat(X, SPAN_WARNING("You must select a valid turf to heal around."))
 		return
 
-	if(user_xeno.loc.z != target_turf.loc.z)
-		to_chat(user_xeno, SPAN_XENOWARNING("You are too far away to do this here."))
+	if(X.loc.z != target_turf.loc.z)
+		to_chat(X, SPAN_XENOWARNING("You are too far away to do this here."))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	for(var/mob/living/carbon/xenomorph/target_xeno in range(4, target_turf))
-		if(!user_xeno.can_not_harm(target_xeno))
+	for(var/mob/living/carbon/xenomorph/Xa in range(4, target_turf))
+		if(!X.can_not_harm(Xa))
 			continue
 
-		if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		if(SEND_SIGNAL(Xa, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			if(verbose)
-				to_chat(user_xeno, SPAN_XENOMINORWARNING("You cannot heal [target_xeno]!"))
+				to_chat(X, SPAN_XENOMINORWARNING("You cannot heal [Xa]!"))
 			continue
 
-		if(target_xeno == user_xeno)
+		if(Xa == X)
 			continue
 
-		if(target_xeno.stat == DEAD || QDELETED(target_xeno))
+		if(Xa.stat == DEAD || QDELETED(Xa))
 			continue
 
-		if(!target_xeno.caste.can_be_queen_healed)
+		if(!Xa.caste.can_be_queen_healed)
 			continue
 
-		var/amount_heal = target_xeno.maxHealth * 0.3
-		user_xeno.track_heal_damage(null, target_xeno, amount_heal)
-		new /datum/effects/heal_over_time(target_xeno, amount_heal, 2 SECONDS, 2)
-		target_xeno.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
+/*
+		new /datum/effects/heal_over_time(Xa, Xa.maxHealth * 0.3, 2 SECONDS, 2)
+		Xa.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
+*/
+//RUCM START
+		var/amount_heal = Xa.maxHealth * 0.3
+		X.track_heal_damage(null, Xa, amount_heal)
+		new /datum/effects/heal_over_time(Xa, amount_heal, 2 SECONDS, 2)
+		Xa.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
+//RUCM END
 
 	apply_cooldown()
-	to_chat(user_xeno, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
+	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
 	return ..()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()

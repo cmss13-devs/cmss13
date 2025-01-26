@@ -95,7 +95,7 @@ RUCM REMOVE END*/
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
-		GLOB.master_mode = MODE_NAME_EXTENDED
+		GLOB.master_mode = "Extended"
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)

@@ -303,7 +303,14 @@
 		M.ghostize()
 
 	if(M.mind)
+/*
+		if(M.mind.player_entity)
+			M.track_death_calculations()
+		M.mind.player_entity = setup_player_entity(src.ckey)
+*/
+//RUCM START
 		M.track_death_calculations()
+//RUCM END
 		M.statistic_tracked = FALSE
 
 	usr.mind.transfer_to(M, TRUE)

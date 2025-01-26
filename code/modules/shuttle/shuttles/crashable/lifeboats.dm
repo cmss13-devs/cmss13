@@ -25,7 +25,9 @@
 				continue
 			survivors++
 			to_chat(survived_human, "<br><br>[SPAN_CENTERBOLD("<big>You have successfully left the [MAIN_SHIP_NAME]. You may now ghost and observe the rest of the round.</big>")]<br>")
+//RUCM START
 			survived_human.count_statistic_stat(STATISTICS_ESCAPE)
+//RUCM END
 
 /// Port Aft Lifeboat (bottom-right, doors on its left side)
 /obj/docking_port/mobile/crashable/lifeboat/port

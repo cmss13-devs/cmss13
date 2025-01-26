@@ -187,7 +187,12 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 	. = ..()
 	.["medals"] = list()
 
+/*
+	for(var/datum/view_record/medal_view/medal as anything in get_medals(user))
+*/
+//RUCM START
 	for(var/datum/view_record/statistic_medal/medal as anything in get_medals(user))
+//RUCM END
 		var/xeno_medal = FALSE
 		if(medal.medal_type in GLOB.xeno_medals)
 			xeno_medal = TRUE
@@ -206,7 +211,12 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 		.["medals"] += list(current_medal)
 
 /datum/medals_view_tgui/proc/get_medals(mob/user)
+/*
+	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id))
+*/
+//RUCM START
 	return DB_VIEW(/datum/view_record/statistic_medal, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id))
+//RUCM END
 
 
 /datum/medals_view_tgui/ui_state(mob/user)
@@ -227,7 +237,12 @@ GLOBAL_DATUM_INIT(medals_view_given_tgui, /datum/medals_view_tgui/given_medals, 
 
 
 /datum/medals_view_tgui/given_medals/get_medals(mob/user)
+/*
+	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id))
+*/
+//RUCM START
 	return DB_VIEW(/datum/view_record/statistic_medal, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id))
+//RUCM END
 
 
 /datum/medals_view_tgui/given_medals/tgui_interact(mob/user, datum/tgui/ui)

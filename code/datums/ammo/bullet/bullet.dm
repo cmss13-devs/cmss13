@@ -69,7 +69,12 @@
 	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target] WAS EXECUTED!")), \
 		SPAN_HIGHDANGER("You WERE EXECUTED!"))
 
+/*
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, firing_projectile.weapon_cause_data?.cause_name)
+*/
+//RUCM START
 	user.count_statistic_stat(STATISTICS_EXECUTION)
+//RUCM END
 
 	var/area/execution_area = get_area(execution_target)
 

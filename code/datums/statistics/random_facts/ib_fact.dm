@@ -5,5 +5,10 @@
 /datum/random_fact/ib/life_grab_stat(mob/fact_mob)
 	return fact_mob.life_ib_total
 
+/*
+/datum/random_fact/ib/death_grab_stat(datum/entity/statistic/death/fact_death)
+*/
+//RUCM START
 /datum/random_fact/ib/death_grab_stat(datum/entity/statistic_death/fact_death)
+//RUCM END
 	return fact_death.total_ib_fixed

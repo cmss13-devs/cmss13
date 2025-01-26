@@ -386,11 +386,7 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode ? SSmapping.configs[GROUND_MAP].force_mode : mode
 	else
-		GLOB.master_mode = MODE_NAME_EXTENDED
-
-	mode = config.pick_mode(GLOB.master_mode)
-	mode.setup_round_stats()
-
+		GLOB.master_mode = "Extended"
 	log_game("Saved mode is '[GLOB.master_mode]'")
 */
 //RUCM START

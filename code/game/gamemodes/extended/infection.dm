@@ -1,7 +1,7 @@
 //THIS IS A BLANK LABEL ONLY SO PEOPLE CAN SEE WHEN WE RUNNIN DIS BITCH.   Should probably write a real one one day.  Maybe.
 /datum/game_mode/infection
-	name = MODE_NAME_INFECTION
-	config_tag = MODE_NAME_INFECTION
+	name = "Infection"
+	config_tag = "Infection"
 	required_players = 0 //otherwise... no zambies
 	latejoin_larva_drop = 0
 	flags_round_type = MODE_INFECTION //Apparently without this, the game mode checker ignores this as a potential legit game mode.
@@ -114,10 +114,23 @@
 			round_checkwin = 0
 
 /datum/game_mode/infection/declare_completion()
+/*
+	announce_ending()
+*/
+//RUCM STAR
 	. = ..()
+//RUCM END
 
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
+
+/*
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+		GLOB.round_statistics.log_round_statistics()
+*/
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()

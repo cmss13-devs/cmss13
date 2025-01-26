@@ -89,7 +89,7 @@
 	new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
 	if(isxeno_human(target_mob)) //Will the runner get acid stacks
 		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in target_mob.contents
-		if(embryo?.stage >= 4) //very late stage hugged in case the runner unnests them
+		if(embryo?.stage >= 4) //Very late stage hugged in case the runner unnests them
 			return
 
 		if(target_mob.body_position == LYING_DOWN)

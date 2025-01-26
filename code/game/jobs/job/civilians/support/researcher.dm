@@ -11,7 +11,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 	entry_message_body = "You're a commissioned officer of the USCM. You are tasked with <a href='"+WIKI_PLACEHOLDER+"'>researching</a> and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to Marines without getting permission from your supervisor."
-	voiceline_chance = 60
+	voiceline_chance = 30
 	voicelines = list(
 	"male_scream" = "researcher_scream_male",\
 	"male_pain" = "researcher_pain_male",

@@ -90,8 +90,8 @@
 /datum/world_topic/shutdown_warning/Run(list/input)
 	. = ..()
 
-	message_admins(SPAN_NOTICE("[input["source"]] ([input["addr"]]), WARNING, you have aprox 30 SECONDS, server will be turned offline automaticly, because lowpop detected (<a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];denyserverreboot'>DENY</a>)"))
-	to_chat(world, SPAN_CENTERBOLD("Server will be turned offline in 30 SECONDS, because lowpop detected. Only admins can deny this action in this time frame."))
+	message_admins(SPAN_NOTICE("[input["source"]] ([input["addr"]]), WARNING, you have approximately 30 SECONDS before the server will be turned offline automaticaly due to lowpop (<a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];denyserverreboot'>DENY</a>)"))
+	to_chat(world, SPAN_CENTERBOLD("Server will be turned offline in 30 SECONDS due to lowpop. Only admins can deny this action in this time frame."))
 
 	statuscode = 200
 	response = "Request Sended"

@@ -252,7 +252,7 @@
 				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
-				message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
+				message_admins("[key_name(usr)] has requested Self-Destruct! [CC_MARK(usr)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];destroyship=\ref[usr]'>GRANT</A>) (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];sddeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
 				to_chat(usr, SPAN_NOTICE("A self-destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
 				return TRUE
@@ -351,11 +351,11 @@
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)
-				dat += "<BR><A HREF='?src=\ref[src];operation=logout'>LOG OUT</A>"
-				dat += "<BR><A HREF='?src=\ref[src];operation=changeseclevel'>Change alert level</A>"
-				dat += "<BR><A HREF='?src=\ref[src];operation=status'>Set status display</A>"
-				dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
-				dat += "<BR><A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=logout'>LOG OUT</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=changeseclevel'>Change alert level</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=status'>Set status display</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=messagelist'>Message list</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)
@@ -363,44 +363,44 @@
 					if(!isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc))
 						dat += "<BR>[SSticker.mode.active_lz.loc.loc]"
 					else
-						dat += "<BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
+						dat += "<BR><A href='byond://?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
 					dat += "<BR><hr>"
-					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
-					dat += length(GLOB.admins) > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
-					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
-					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
-					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];operation=announce'>Make an announcement</A>"
+					dat += length(GLOB.admins) > 0 ? "<BR><A href='byond://?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
+					dat += "<BR><A href='byond://?src=\ref[src];operation=award'>Award a medal</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
 					switch(SShijack.evac_status)
 						if(EVACUATION_STATUS_NOT_INITIATED)
-							dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
+							dat += "<BR><A href='byond://?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
 						if(EVACUATION_STATUS_INITIATED)
-							dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
+							dat += "<BR><A href='byond://?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
 
 			else
-				dat += "<BR><A HREF='?src=\ref[src];operation=login'>LOG IN</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=login'>LOG IN</A>"
 
 		if(STATE_EVACUATION)
-			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
+			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A href='byond://?src=\ref[src];operation=evacuation_start'>Confirm</A>"
 
 		if(STATE_EVACUATION_CANCEL)
-			dat += "Are you sure you want to cancel the evacuation of the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_cancel'>Confirm</A>"
+			dat += "Are you sure you want to cancel the evacuation of the [MAIN_SHIP_NAME]? <A href='byond://?src=\ref[src];operation=evacuation_cancel'>Confirm</A>"
 
 		if(STATE_DISTRESS)
-			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. <A HREF='?src=\ref[src];operation=distress'>Confirm</A>"
+			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. <A href='byond://?src=\ref[src];operation=distress'>Confirm</A>"
 
 		if(STATE_DESTROY)
-			dat += "Are you sure you want to trigger the self-destruct? This would mean abandoning ship. <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>"
+			dat += "Are you sure you want to trigger the self-destruct? This would mean abandoning ship. <A href='byond://?src=\ref[src];operation=destroy'>Confirm</A>"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
 			for(var/i = 1; i<=length(messagetitle); i++)
-				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
 			if (currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
 				if (authenticated)
-					dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
+					dat += "<BR><BR><A href='byond://?src=\ref[src];operation=delmessage'>Delete"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
@@ -408,7 +408,7 @@
 
 		if(STATE_DELMESSAGE)
 			if (currmsg)
-				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
+				dat += "Are you sure you want to delete this message? <A href='byond://?src=\ref[src];operation=delmessage2'>OK</A>|<A href='byond://?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
@@ -416,28 +416,28 @@
 
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
-			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A><BR>"
-			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A><BR>"
-			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A><BR>"
-			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A>"
-			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
-			dat += "<li> Line 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
-			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>None</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
+			dat += "<A href='byond://?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];operation=setstat;statdisp=message'>Message</A>"
+			dat += "<ul><li> Line 1: <A href='byond://?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
+			dat += "<li> Line 2: <A href='byond://?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
+			dat += "\[ Alert: <A href='byond://?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>None</A> |"
+			dat += " <A href='byond://?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
+			dat += " <A href='byond://?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
+			dat += " <A href='byond://?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
 
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
-			dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
-			dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
+			dat += "<A href='byond://?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
+			dat += "<A href='byond://?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 
 		if(STATE_CONFIRM_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
 			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
-			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>Swipe ID</A> to confirm change.<BR>"
+			dat += "<A href='byond://?src=\ref[src];operation=swipeidseclevel'>Swipe ID</A> to confirm change.<BR>"
 
-	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A>"
+	dat += "<BR>[(state != STATE_DEFAULT) ? "<A href='byond://?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A href='byond://?src=\ref[user];mach_close=communications'>Close</A>"
 	show_browser(user, dat, name, "communications")
 	onclose(user, "communications")
 
@@ -452,28 +452,28 @@
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)
-				dat += "<BR><A HREF='?src=\ref[src];operation=logout'>LOG OUT</A>"
-				dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
-				dat += "<BR><A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=logout'>LOG OUT</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=messagelist'>Message list</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)
-					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
-					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];operation=announce'>Make an announcement</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];operation=award'>Award a medal</A>"
 
 			else
-				dat += "<BR><A HREF='?src=\ref[src];operation=login'>LOG IN</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=login'>LOG IN</A>"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
 			for(var/i = 1; i<=length(messagetitle); i++)
-				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
+				dat += "<BR><A href='byond://?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
 
 		if(STATE_VIEWMESSAGE)
 			if (currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
 				if (authenticated)
-					dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
+					dat += "<BR><BR><A href='byond://?src=\ref[src];operation=delmessage'>Delete"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
@@ -481,13 +481,13 @@
 
 		if(STATE_DELMESSAGE)
 			if (currmsg)
-				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
+				dat += "Are you sure you want to delete this message? <A href='byond://?src=\ref[src];operation=delmessage2'>OK</A>|<A href='byond://?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
 				return FALSE
 
-	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A>"
+	dat += "<BR>[(state != STATE_DEFAULT) ? "<A href='byond://?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A href='byond://?src=\ref[user];mach_close=communications'>Close</A>"
 	show_browser(user, dat, "Communications Console", "communications", "size=400x500")
 	onclose(user, "communications")
 #undef STATE_DEFAULT

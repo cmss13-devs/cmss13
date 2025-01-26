@@ -98,7 +98,7 @@
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(DROPSHIP_CRASH)
 	var/dat = "Статус: [shuttle ? shuttle.getStatusText() : "*Missing*"]<br><br>"
 	if(shuttle)
-		dat += "<A href='?src=[REF(src)];move=infinite-transit'>Начать Эвакуацию</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];move=infinite-transit'>Начать Эвакуацию</A><br>"
 
 	show_browser(user, dat, "computer", shuttle ? shuttle.name : "shuttle", 300, 200)
 

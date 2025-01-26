@@ -77,14 +77,17 @@
 		return
 
 	/// Check if the target is a resin door and open or close it
+
 	if(istype(target_atom, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/resin_door = target_atom
-		resin_door.TryToSwitchState(owner)
-		if(resin_door.state)
-			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
-		else
-			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
-		return
+		// Either we can't remotely reinforce the door, or its already reinforced
+		if(!thick || istype(target_atom, /obj/structure/mineral_door/resin/thick))
+			var/obj/structure/mineral_door/resin/resin_door = target_atom
+			if(resin_door.TryToSwitchState(owner))
+				if(resin_door.open)
+					to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+				else
+					to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+			return
 
 	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
 	if(care_about_adjacency)

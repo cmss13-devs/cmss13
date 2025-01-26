@@ -36,21 +36,6 @@
 	var/console_cooldown
 	var/console_cooldown_duration = 10 MINUTES
 
-/datum/admins/Topic(href, href_list)
-	..()
-	if(href_list["csdeny"])
-		var/mob/ref_person = locate(href_list["csdeny"])
-		log_game("[key_name_admin(usr)] отклонил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] отклонил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]", 1)
-
-	if(href_list["cssend"])
-		var/mob/ref_person = locate(href_list["cssend"])
-		message_admins("[key_name_admin(usr)] одобрил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]")
-		marine_announcement("Вызов корпоративной охраны одобрен.", "Corporate Security Beacon", logging = ARES_LOG_SECURITY)
-		var/datum/emergency_call/goon/goon = new()
-		goon.activate(TRUE, FALSE)
-		log_game("[key_name_admin(usr)] has sent corporate security, requested by [key_name_admin(ref_person)]")
-
 /obj/structure/machinery/computer/corporate/button/attack_hand(mob/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("Прикладываю палец к сканнеру... Сейчас..."))
@@ -66,5 +51,5 @@
 	for(var/client/admin in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 			playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] запросил вызов корпоративной охраны! Причина: <b>[message]</b> [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];cssend=\ref[user]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];csdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(usr)]")
+			message_admins("[key_name(usr)] запросил вызов корпоративной охраны! Причина: <b>[message]</b> [CC_MARK(usr)] (<A HREF='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];cssend=\ref[user]'>SEND</A>) (<A HREF='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];csdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(usr)]")
 	console_cooldown = world.time + console_cooldown_duration

@@ -464,19 +464,19 @@
 
 			msg += "<span class = 'deptradio'>Criminal status:</span>"
 			if(!observer)
-				msg += "<a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
+				msg += "<a href='byond://?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
 			else
 				msg += "\[[criminal]\]\n"
 
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='byond://?src=\ref[src];secrecord=1'>\[View\]</a>"
 			if(!observer)
-				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+				msg += " <a href='byond://?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
 			else
 				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"
-		msg += "<span class = 'deptradio'>Triage holo card:</span> <a href='?src=\ref[src];medholocard=1'>\[[cardcolor]\]</a> - "
+		msg += "<span class = 'deptradio'>Triage holo card:</span> <a href='byond://?src=\ref[src];medholocard=1'>\[[cardcolor]\]</a> - "
 
 		// scan reports
 		var/datum/data/record/N = null
@@ -489,20 +489,20 @@
 			if(!(N.fields["last_scan_time"]))
 				msg += "<span class = 'deptradio'>No scan report on record</span>\n"
 			else
-				msg += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [N.fields["last_scan_time"]]</a></span>\n"
+				msg += "<span class = 'deptradio'><a href='byond://?src=\ref[src];scanreport=1'>Scan from [N.fields["last_scan_time"]]</a></span>\n"
 
 
 	if(hasHUD(user,"squadleader"))
 		var/mob/living/carbon/human/H = user
 		if(assigned_squad) //examined mob is a marine in a squad
 			if(assigned_squad == H.assigned_squad) //same squad
-				msg += "<a href='?src=\ref[src];squadfireteam=1'>\[Manage Fireteams.\]</a>\n"
+				msg += "<a href='byond://?src=\ref[src];squadfireteam=1'>\[Manage Fireteams.\]</a>\n"
 
 	if(user.Adjacent(src) && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		var/temp_msg = "<a href='?src=\ref[src];check_status=1'>\[Check Status\]</a>"
+		var/temp_msg = "<a href='byond://?src=\ref[src];check_status=1'>\[Check Status\]</a>"
 		if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && locate(/obj/item/clothing/accessory/stethoscope) in human_user.w_uniform)
-			temp_msg += " <a href='?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
+			temp_msg += " <a href='byond://?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
 		msg += "\n<span class = 'deptradio'>Medical actions: [temp_msg]\n"
 
 	if(print_flavor_text())

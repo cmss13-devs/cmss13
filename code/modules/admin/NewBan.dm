@@ -168,7 +168,14 @@ GLOBAL_DATUM(Banlist, /savefile)
 		return timeleftstring
 
 /datum/admins/proc/unbanpanel()
-	var/dat
+	var/data = {"
+	<B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
+	</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span>
+	<br>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<br>
+	<table border=1 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/players/PBV = DB_VIEW(/datum/view_record/players, DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))) // a filter
 
@@ -182,35 +189,40 @@ GLOBAL_DATUM(Banlist, /savefile)
 			expiry = "Permaban"
 		var/unban_link
 		if(ban.is_permabanned)
-			unban_link = "<a href='?src=\ref[src];[HrefToken()];unban_perma=[ban.ckey]'>(UP)</a>"
+			unban_link = "<a href='byond://?src=\ref[src];[HrefToken()];unban_perma=[ban.ckey]'>(UP)</a>"
 		else
-			unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
+			unban_link = "<A href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
 
-		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
+		data += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
 
-	dat += "</table>"
-	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
-	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
-	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
+	data += "</table>"
+
+	show_browser(usr, data, "Unban Panel", "unbanp", "size=875x400")
 
 /datum/admins/proc/stickypanel()
-	var/add_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
-	var/find_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;find_sticky=1'>Find Sticky Ban</a>"
+	var/add_sticky = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
+	var/find_sticky = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=1;find_sticky=1'>Find Sticky Ban</a>"
 
-	var/data = "<hr><b>Sticky Bans:</b> [add_sticky] [find_sticky] <table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
+	var/data = {"
+	<b>Sticky Bans:</b> [add_sticky] [find_sticky]
+	<br>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:100%;'>
+	<br>
+	<table border=1 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/stickyban/stickies = DB_VIEW(/datum/view_record/stickyban,
 		DB_COMP("active", DB_EQUALS, TRUE)
 	)
 
 	for(var/datum/view_record/stickyban/current_sticky in stickies)
-		var/whitelist_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];whitelist_ckey=1'>(WHITELIST)</a>"
-		var/remove_sticky_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];remove=1'>(REMOVE)</a>"
-		var/add_to_sticky_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];add=1'>(ADD)</a>"
+		var/whitelist_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];whitelist_ckey=1'>(WHITELIST)</a>"
+		var/remove_sticky_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];remove=1'>(REMOVE)</a>"
+		var/add_to_sticky_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];add=1'>(ADD)</a>"
 
-		var/impacted_ckey_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ckeys=1'>CKEYs</a>"
-		var/impacted_ip_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ips=1'>IPs</a>"
-		var/impacted_cid_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_cids=1'>CIDs</a>"
+		var/impacted_ckey_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ckeys=1'>CKEYs</a>"
+		var/impacted_ip_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ips=1'>IPs</a>"
+		var/impacted_cid_link = "<a href='byond://?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_cids=1'>CIDs</a>"
 
 		data += "<tr><td>[whitelist_link][remove_sticky_link][add_to_sticky_link]</td><td>Identifier: [current_sticky.identifier]</td><td>Reason: [current_sticky.reason]</td><td>Message: [current_sticky.message]</td> <td>Admin: [current_sticky.admin]</td> <td>View: [impacted_ckey_link][impacted_ip_link][impacted_cid_link]</td></tr>"
 

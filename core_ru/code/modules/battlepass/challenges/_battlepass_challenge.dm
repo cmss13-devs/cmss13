@@ -277,9 +277,5 @@ GLOBAL_LIST_INIT(challenge_condition_modules_weighted, load_condition_modules_we
 /datum/battlepass_challenge_module/proc/allow_completion()
 	return TRUE
 
-/datum/battlepass_challenge_module/Destroy()
-	challenge_ref = null
-	. = ..()
-
 
 // Задача сделать модульные челенджи по типу "Убить 2 ксеноса" + ", с m41a" + " при передозе Oxycodone"

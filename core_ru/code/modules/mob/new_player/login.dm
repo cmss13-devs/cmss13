@@ -1,7 +1,7 @@
 /mob/new_player/proc/exit_queue()
 	close_spawn_windows()
 	sleep(1 SECONDS)
-	new_player_panel()
+	initialize_lobby_screen()
 
 /mob/new_player/proc/queue_player_panel(refresh = FALSE)
 	if(!client)

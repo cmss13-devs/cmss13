@@ -236,8 +236,8 @@
 				check_win()
 			round_checkwin = 0
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 #undef XENO_FOG_DELAY_INTERVAL
 #undef FOG_DELAY_INTERVAL
@@ -286,13 +286,6 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-/datum/game_mode/crash/declare_completion()
-	. = ..()
-
-	declare_completion_announce_fallen_soldiers()
-	declare_completion_announce_xenomorphs()
-	declare_completion_announce_medal_awards()
-	declare_fun_facts()
 
 /datum/game_mode/crash/on_nuclear_diffuse(obj/structure/machinery/nuclearbomb/bomb, mob/living/carbon/xenomorph/xenomorph)
 	. = ..()

@@ -88,7 +88,7 @@
 /obj/structure/machinery/computer/nuke_disk_generator/interact(mob/user)
 	. = ..()
 	var/dat = ""
-	dat += "<div align='center'><a href='?src=[REF(src)];generate=1'>Запустить программу</a></div>"
+	dat += "<div align='center'><a href='byond://?src=[REF(src)];generate=1'>Запустить программу</a></div>"
 	dat += "<br/>"
 	dat += "<hr/>"
 	dat += "<div align='center'><h2>Статус</h2></div>"

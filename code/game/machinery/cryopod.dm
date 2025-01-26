@@ -48,7 +48,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 /obj/structure/machinery/computer/cryopod/yautja
 	cryotype = "Yautja"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "terminal"
 	z_restricted = FALSE
+
+/obj/structure/machinery/computer/cryopod/upp
+	cryotype = FACTION_UPP
 
 /obj/structure/machinery/computer/cryopod/attack_remote()
 	src.attack_hand()
@@ -67,10 +72,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/dat
 
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
-	dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-	dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
-	dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];view=1'>View objects</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];item=1'>Recover object</a>.<br>"
+	dat += "<a href='byond://?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
 
 	show_browser(user, dat, "Cryogenic Oversight Control for [cryotype]", "cryopod_console")
 
@@ -237,8 +242,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 				dept_console = GLOB.frozen_items["Med"]
 			if(JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 				dept_console = GLOB.frozen_items["Eng"]
-			if(JOB_PREDATOR)
-				dept_console = GLOB.frozen_items["Yautja"]
+
+
+		if(cryo_human.faction != FACTION_MARINE)
+			dept_console = GLOB.frozen_items[cryo_human.faction]
 
 		if(cryo_human.job in FAX_RESPONDER_JOB_LIST)
 			cryo_human.despawn_fax_responder()
@@ -557,6 +564,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(isyautja(occupant))
 		return TRUE
 	if(no_store_pod)
+		return TRUE
+	if(occupant.faction != FACTION_MARINE)
 		return TRUE
 	return FALSE
 

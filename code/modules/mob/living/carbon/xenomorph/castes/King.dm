@@ -65,6 +65,8 @@
 
 	bubble_icon = "alienroyal"
 
+	skull = /obj/item/skull/king
+
 /mob/living/carbon/xenomorph/king/get_organ_icon()
 	return "heart_t3"
 

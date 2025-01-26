@@ -1,7 +1,7 @@
 // Hunter props
 
 /obj/structure/prop/hunter
-	icon = 'icons/obj/structures/props/hunter/64x96-hunter_props.dmi'
+	icon = 'icons/effects/64x96-hunter_effects.dmi'
 	icon_state = "small_red"
 
 

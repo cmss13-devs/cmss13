@@ -11,11 +11,12 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "aac" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
-/turf/open/floor/prison/darkredfull2,
-/area/desert_dam/building/security/armory)
+/obj/structure/surface/table/woodentable,
+/obj/item/clock{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/desert_dam/building/dorms/hallway_westwing)
 "aad" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -197,12 +198,11 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_north)
 "aaR" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/clock{
-	pixel_y = 9
-	},
-/turf/open/floor/wood,
-/area/desert_dam/building/dorms/hallway_westwing)
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clock,
+/turf/open/floor/vault2/northeast,
+/area/desert_dam/building/security/prison)
 "aaS" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -239,11 +239,11 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "aaZ" = (
-/obj/structure/surface/table/reinforced,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clock,
-/turf/open/floor/vault2/northeast,
-/area/desert_dam/building/security/prison)
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/obj/item/clothing/suit/storage/marine/veteran/cmb/light,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
 "aba" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -57293,7 +57293,7 @@ bNE
 bSn
 bTo
 bSz
-aaZ
+aaR
 bYT
 bTn
 bYl
@@ -62909,7 +62909,7 @@ bRF
 bRF
 bRF
 cyH
-aac
+aaZ
 bNw
 bZL
 bZJ
@@ -92922,7 +92922,7 @@ dBr
 dZS
 dFf
 dFf
-aaR
+aac
 eaz
 dBr
 dGC

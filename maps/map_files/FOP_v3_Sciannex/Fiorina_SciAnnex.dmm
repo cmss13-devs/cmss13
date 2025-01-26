@@ -8,16 +8,16 @@
 /turf/open/space,
 /area/fiorina/oob)
 "aab" = (
-/obj/effect/landmark/corpsespawner/security/marshal/riot,
-/turf/open/floor/prison/whitegreen,
-/area/fiorina/tumor/ice_lab)
-"aac" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/clock{
 	pixel_y = 14
 	},
 /turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/tumor/ice_lab)
+"aac" = (
+/obj/effect/landmark/corpsespawner/security/marshal/riot,
+/turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
@@ -55977,7 +55977,7 @@ azZ
 xLi
 xLi
 oZf
-aac
+aab
 knW
 fop
 xLi
@@ -58093,7 +58093,7 @@ sWb
 mvp
 mvp
 cer
-aab
+aac
 mvp
 ddL
 dMT

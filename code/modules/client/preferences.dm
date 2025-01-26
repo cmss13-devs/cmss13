@@ -1349,7 +1349,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("co_career_path")
 					var/list/options = list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker")
 
-					var/new_career_path = tgui_input_list(user, "Choose your new Commander Whitelist Status.", "Commander Status", options)
+					var/new_career_path = tgui_input_list(user, "Choose your new Career Path.", "Career Path", options)
 
 					if(!new_career_path)
 						return

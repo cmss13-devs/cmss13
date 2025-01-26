@@ -399,6 +399,11 @@
 				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 			if("plush")
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
+			// job specific
+			if("researcher_scream_male")
+				sound = pick('sound/voice/researcher_scream_1.ogg', 'sound/voice/researcher_scream_2.ogg')
+			if("researcher_pain_male")
+				sound = pick('sound/voice/researcher_pain_1.ogg', 'sound/voice/researcher_pain_2.ogg', 'sound/voice/researcher_pain_3.ogg')
 			// working joe
 			if("wj_death")
 				sound = pick('sound/voice/joe/death_normal.ogg', 'sound/voice/joe/death_silence.ogg',10;'sound/voice/joe/death_tomorrow.ogg',5;'sound/voice/joe/death_dream.ogg')

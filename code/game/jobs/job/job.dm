@@ -42,6 +42,11 @@
 	/// Under what faction menu the job gets displayed in lobby
 	var/faction_menu = FACTION_NEUTRAL //neutral to cover uscm jobs for now as loads of them are under civil and stuff mainly ment for other faction
 
+	/// Job specific voicelines
+	var/list/voicelines = list()
+	/// the % chance that a job specific voiceline will play (meant to be somewhat rare)
+	var/voiceline_chance = 10
+
 /datum/job/New()
 	. = ..()
 

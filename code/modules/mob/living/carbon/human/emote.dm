@@ -23,6 +23,18 @@
 	if(is_type_in_typecache(user.species, species_type_blacklist_typecache))
 		. = FALSE
 
+/datum/emote/living/carbon/human/proc/get_job_voiceline(mob/living/carbon/human/user, voice)
+	var/datum/job/job = GLOB.joblist[user.job]
+
+	if(!job)
+		return
+	if(!prob(job.voiceline_chance))
+		return
+	if(!job.voicelines)
+		return
+
+	return job.voicelines[voice]
+
 /datum/emote/living/carbon/human/blink
 	key = "blink"
 	key_third_person = "blinks"
@@ -198,9 +210,20 @@
 
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
 	if(ishuman_strict(user))
+		var/job_voice
 		if(user.gender == MALE)
+
+			job_voice = get_job_voiceline(user, "male_pain")
+			if(job_voice)
+				return get_sfx(job_voice)
+
 			return get_sfx("male_pain")
 		else
+
+			job_voice = get_job_voiceline(user, "female_pain")
+			if(job_voice)
+				return get_sfx(job_voice)
+
 			return get_sfx("female_pain")
 
 	if(isyautja(user))
@@ -239,9 +262,20 @@
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(ishuman_strict(user))
+		var/job_voice
 		if(user.gender == MALE)
+
+			job_voice = get_job_voiceline(user, "male_scream")
+			if(job_voice)
+				return get_sfx(job_voice)
+
 			return get_sfx("male_scream")
 		else
+
+			job_voice = get_job_voiceline(user, "female_scream")
+			if(job_voice)
+				return get_sfx(job_voice)
+
 			return get_sfx("female_scream")
 	if(isyautja(user))
 		return get_sfx("pred_pain")

@@ -294,7 +294,7 @@
 	if(!num_humans)
 		marine_announcement("WARNING. WARNING. Planetary Nuke Deactivated. WARNING. WARNING. Mission Failed. WARNING. WARNING.", "Priority Alert", "Everyone (-Yautja)")
 
-/datum/game_mode/colonialmarines/get_winners_states()
+/datum/game_mode/crash/get_winners_states()
 	var/end_icon = "draw"
 	var/musical_track
 	switch(round_finished)

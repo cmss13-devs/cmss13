@@ -69,6 +69,8 @@
 	weed_food_states = list("Ravager_1","Ravager_2","Ravager_3")
 	weed_food_states_flipped = list("Ravager_1","Ravager_2","Ravager_3")
 
+	skull = /obj/item/skull/ravager
+
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base

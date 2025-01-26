@@ -51,6 +51,7 @@
 
 	royal_caste = TRUE
 
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -356,6 +357,8 @@
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
+
+	skull = /obj/item/skull/queen
 
 	var/queen_aged = FALSE
 	var/queen_age_timer_id = TIMER_ID_NULL

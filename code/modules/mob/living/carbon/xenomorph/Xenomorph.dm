@@ -254,6 +254,8 @@
 	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
 	var/organ_value = 0
 
+	var/obj/item/skull/skull = /obj/item/skull
+
 
 	//////////////////////////////////////////////////////////////////
 	//

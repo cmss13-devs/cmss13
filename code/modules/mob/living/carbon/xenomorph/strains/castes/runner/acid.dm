@@ -55,7 +55,7 @@
 	var/caboom_burn_range_ratio = 100
 	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid
 
-	var/drool_applied_recently = FALSE
+	var/drool_overlay_active = FALSE
 	var/mutable_appearance/drool_applied_icon
 
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)

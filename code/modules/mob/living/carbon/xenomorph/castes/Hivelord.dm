@@ -87,6 +87,8 @@
 	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")
 	weed_food_states_flipped = list("Hivelord_1","Hivelord_2","Hivelord_3")
 
+	skull = /obj/item/skull/hivelord
+
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"
 

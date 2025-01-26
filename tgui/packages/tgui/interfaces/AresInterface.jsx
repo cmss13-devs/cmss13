@@ -95,6 +95,8 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_sudo,
+    faction_options,
+    sentry_setting,
   } = data;
 
   return (

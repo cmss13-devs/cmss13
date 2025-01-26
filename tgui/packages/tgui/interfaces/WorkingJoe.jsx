@@ -78,6 +78,8 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_notify_sounds,
+    faction_options,
+    sentry_setting,
   } = data;
   let can_request_access = 'Yes';
   if (local_access_level > 2) {

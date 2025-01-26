@@ -222,10 +222,29 @@
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-
 /obj/structure/prop/hunter/fake_platform/hunter/north
 	dir = NORTH
 /obj/structure/prop/hunter/fake_platform/hunter/east
 	dir = EAST
 /obj/structure/prop/hunter/fake_platform/hunter/west
+	dir = WEST
+
+// Fake platform effect
+
+/obj/effect/hunter/fake_platform/hunter
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = "hunter_platform"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	density = FALSE
+	anchored = TRUE
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/fake_platform/hunter/north
+	dir = NORTH
+/obj/effect/hunter/fake_platform/hunter/east
+	dir = EAST
+/obj/effect/hunter/fake_platform/hunter/west
 	dir = WEST

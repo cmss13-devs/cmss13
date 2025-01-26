@@ -221,7 +221,8 @@
 
 /area/yautja
 	name = "\improper Yautja Ship"
-	icon_state = "teleporter"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "hunter"
 	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL

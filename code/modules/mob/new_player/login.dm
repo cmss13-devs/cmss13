@@ -114,13 +114,24 @@
 //RUCM START
 		if("battlepass")
 			if(!client.player_data?.battlepass)
-				return
+				return FALSE
 
 			if(!GLOB.current_battlepass)
 				to_chat(src, SPAN_WARNING("Please wait for battlepasses to initialize first."))
-				return
+				return FALSE
 
 			client.player_data.battlepass.tgui_interact(src)
+			return TRUE
+
+		if("statistic")
+			if(!SSentity_manager.ready)
+				to_chat(src, SPAN_WARNING("DB is still starting up, please wait"))
+				return FALSE
+
+			if(client?.player_data?.player_entity)
+				client.player_data.player_entity.try_recalculate()
+				client.player_data.player_entity.tgui_interact(src)
+			return TRUE
 //RUCM END
 
 		if("playtimes")

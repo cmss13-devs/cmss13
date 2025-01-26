@@ -5,60 +5,60 @@
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
-	gear_preset = /datum/equipment_preset/uscm_co/commander
+	gear_preset = /datum/equipment_preset/uscm_co
 
 
 /datum/job/command/commander/proc/check_career_path(client/player)
 	switch(player.prefs.co_career_path)
 		if("Infantry")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/infantry,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/infantry,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/infantry,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/infantry,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/infantry/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/infantry/council/plus,
 		)
 		if("Intel")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/intel,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/intel,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/intel,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/intel,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/intel/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/intel/council/plus,
 		)
 		if("Medical")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/medical,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/medical,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/medical,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/medical,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/medical/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/medical/council/plus,
 		)
 		if("Aviation")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/aviation,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/aviation,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/aviation,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/aviation,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/aviation/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/aviation/council/plus,
 		)
 		if("Tanker")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/tanker,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/tanker,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/tanker,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/tanker,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/tanker/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/tanker/council/plus,
 		)
 		if("Engineering")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/engineering,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/engineering,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/engineering,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/engineering,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/engineering/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/engineering/council/plus,
 		)
 		if("Logistics")
 			gear_preset_whitelist = list(
-			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander/logistics,
-			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council/logistics,
-			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus/logistics,
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/logistics,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/logistics/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/logistics/council/plus,
 			)
 
 /datum/job/command/commander/New()
 	. = ..()
 	gear_preset_whitelist = list(
-		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/commander,
-		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/commander/council,
-		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/commander/council/plus
+		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co,
+		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/council,
+		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/council/plus
 	)
 
 /datum/job/command/commander/generate_entry_message()

@@ -35,7 +35,7 @@
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy alien with an armored carapace."
-	icon = 'icons/mob/xenos/warrior.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -57,8 +57,8 @@
 
 	claw_type = CLAW_TYPE_SHARP
 
-	icon_xeno = 'icons/mob/xenos/warrior.dmi'
-	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/warrior.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
@@ -196,8 +196,8 @@
 	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
 		return FALSE
-	var/limb_time = rand(40,60)
 
+	var/limb_time = rand(40,60)
 	if(limb.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
@@ -206,8 +206,10 @@
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
-		if(mob.status_flags & XENO_HOST)
-			to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		return FALSE
+
+	if(mob.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
@@ -229,6 +231,10 @@
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
 		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		return FALSE
+
+	if(mob.status_flags & XENO_HOST)
+		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)

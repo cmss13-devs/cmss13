@@ -167,20 +167,31 @@
 			var/list/vehicle_dimensions = vehicle.get_dimensions()
 			var/height = vehicle_dimensions["height"]
 			var/width = vehicle_dimensions["width"]
-			if(vehicle.dir & EAST|WEST)
+			if(vehicle.dir & (EAST|WEST))
 				height = vehicle_dimensions["width"]
 				width = vehicle_dimensions["height"]
-			var/dir_to_push = get_dir(blocking_obj.loc, target_turf)
-			switch(dir_to_push)
-				// half width/height because the vehicle loc is centered
-				if(NORTH, NORTHEAST, NORTHWEST)
-					target_turf = locate(vehicle.x, door.y + ceil(height*0.5), vehicle.z)
-				if(SOUTH, SOUTHEAST, SOUTHWEST)
-					target_turf = locate(vehicle.x, door.y - ceil(height*0.5), vehicle.z)
-				if(EAST)
-					target_turf = locate(door.x + ceil(width*0.5), vehicle.y, vehicle.z)
-				else
-					target_turf = locate(door.x - ceil(width*0.5), vehicle.y, vehicle.z)
+			var/dir_to_push = get_dir(door_turf, target_turf)
+			// half width/height because the vehicle loc is centered
+			if(door.dir & (EAST|WEST))
+				switch(dir_to_push)
+					if(NORTH, NORTHEAST, NORTHWEST)
+						target_turf = locate(vehicle.x, door.y + ceil(height*0.5), vehicle.z)
+					if(SOUTH, SOUTHEAST, SOUTHWEST)
+						target_turf = locate(vehicle.x, door.y - ceil(height*0.5), vehicle.z)
+					if(EAST)
+						target_turf = locate(door.x + ceil(width*0.5), vehicle.y, vehicle.z)
+					else
+						target_turf = locate(door.x - ceil(width*0.5), vehicle.y, vehicle.z)
+			else // otherwise door opens east/west so favor those directions
+				switch(dir_to_push)
+					if(NORTH)
+						target_turf = locate(vehicle.x, door.y + ceil(height*0.5), vehicle.z)
+					if(SOUTH)
+						target_turf = locate(vehicle.x, door.y - ceil(height*0.5), vehicle.z)
+					if(EAST, NORTHEAST, SOUTHEAST)
+						target_turf = locate(door.x + ceil(width*0.5), vehicle.y, vehicle.z)
+					else
+						target_turf = locate(door.x - ceil(width*0.5), vehicle.y, vehicle.z)
 
 		// Now actually push it
 		blocking_obj.forceMove(target_turf)

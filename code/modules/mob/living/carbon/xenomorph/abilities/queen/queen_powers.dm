@@ -63,61 +63,15 @@
 
 	SEND_SIGNAL(target_xeno, COMSIG_XENO_DEEVOLVE)
 
-	var/obj/item/organ/xeno/organ = locate() in target_xeno
-	if(!isnull(organ))
-		qdel(organ)
+	var/mob/living/carbon/xenomorph/new_xeno = target_xeno.transmute(newcaste)
 
-	var/level_to_switch_to = target_xeno.get_vision_level()
-	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
+	if(new_xeno)
+		message_admins("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
+		log_admin("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
 
-	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(target_xeno), target_xeno)
+		if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
+			user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
 
-	if(!istype(new_xeno))
-		//Something went horribly wrong!
-		to_chat(user_xeno, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
-		if(new_xeno)
-			qdel(new_xeno)
-		return
-
-	new_xeno.built_structures = target_xeno.built_structures.Copy()
-	target_xeno.built_structures = null
-
-	if(target_xeno.mind)
-		target_xeno.mind.transfer_to(new_xeno)
-	else
-		new_xeno.key = target_xeno.key
-		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
-			new_xeno.client.pixel_x = 0
-			new_xeno.client.pixel_y = 0
-
-	//Regenerate the new mob's name now that our player is inside
-	new_xeno.generate_name()
-	if(new_xeno.client)
-		new_xeno.set_lighting_alpha(level_to_switch_to)
-
-	// If the player has lost the Deevolve verb before, don't allow them to do it again
-	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in target_xeno.verbs))
-		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
-
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [target_xeno]."), \
-	SPAN_XENODANGER("[user_xeno] makes us regress into your previous form."))
-
-	if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
-		user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
-
-	message_admins("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
-	log_admin("[key_name_admin(user_xeno)] has deevolved [key_name_admin(target_xeno)]. Reason: [reason]")
-
-	target_xeno.transfer_observers_to(new_xeno)
-
-	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
-		GLOB.round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
-	SSround_recording.recorder.stop_tracking(target_xeno)
-	SSround_recording.recorder.track_player(new_xeno)
-
-	qdel(target_xeno)
 	return
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
@@ -362,6 +316,34 @@
 	if(give_jelly_award(xeno.hive))
 		xeno.use_plasma(plasma_cost_jelly)
 		return
+
+/datum/action/xeno_action/onclick/send_thoughts/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/queen/thought_sender = owner
+	var/static/list/options = list(
+		"Psychic Radiance (100)" = icon(/datum/action/xeno_action::icon_file, "psychic_radiance"),
+		"Psychic Whisper (0)" = icon(/datum/action/xeno_action::icon_file, "psychic_whisper"),
+		"Give Order (100)" = icon(/datum/action/xeno_action::icon_file, "queen_order")
+	)
+
+	var/choice
+	if(thought_sender.client?.prefs.no_radials_preference)
+		choice = tgui_input_list(thought_sender, "Communicate", "Send Thoughts", options, theme="hive_status")
+	else
+		choice = show_radial_menu(thought_sender, thought_sender?.client.eye, options)
+
+	if(!choice)
+		return
+
+	plasma_cost = 0
+	switch(choice)
+		if("Psychic Radiance (100)")
+			psychic_radiance()
+		if("Psychic Whisper (0)")
+			psychic_whisper()
+		if("Give Order (100)")
+			queen_order()
+	return ..()
+
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
@@ -782,135 +764,226 @@
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
 
-/datum/action/xeno_action/activable/place_queen_beacon/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/Q = owner
-	if(!Q.check_state())
-		return FALSE
-
-	if(Q.action_busy)
-		return FALSE
-
-	var/turf/T = get_turf(A)
-	if(!check_turf(Q, T))
-		return FALSE
-	if(!do_after(Q, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		return FALSE
-	if(!check_turf(Q, T))
-		return FALSE
-
-	for(var/i in transported_xenos)
-		UnregisterSignal(i, COMSIG_MOVABLE_PRE_MOVE)
-
-	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
-	LAZYCLEARLIST(transported_xenos)
-	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(tunnel_xeno))
-	for(var/xeno in hive.totalXenos)
-		if(xeno == Q)
-			continue
-		tunnel_xeno(src, xeno)
-
-	addtimer(CALLBACK(src, PROC_REF(transport_xenos), T), 3 SECONDS)
-	return ..()
-
-/datum/action/xeno_action/activable/place_queen_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/xenomorph/X)
-	SIGNAL_HANDLER
-	if(X.z == owner.z)
-		to_chat(X, SPAN_XENONOTICE("You begin tunneling towards the queen beacon!"))
-		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(cancel_movement))
-		LAZYADD(transported_xenos, X)
-
-/datum/action/xeno_action/activable/place_queen_beacon/proc/transport_xenos(turf/target)
-	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
-	for(var/xeno in transported_xenos)
-		var/mob/living/carbon/xenomorph/X = xeno
-		to_chat(X, SPAN_XENONOTICE("You tunnel to the queen beacon!"))
-		UnregisterSignal(X, COMSIG_MOVABLE_PRE_MOVE)
-		if(target)
-			X.forceMove(target)
-
-/datum/action/xeno_action/activable/place_queen_beacon/proc/cancel_movement()
-	SIGNAL_HANDLER
-	return COMPONENT_CANCEL_MOVE
-
-/datum/action/xeno_action/activable/place_queen_beacon/proc/check_turf(mob/living/carbon/xenomorph/queen/Q, turf/T)
-	if(!T || T.density)
-		to_chat(Q, SPAN_XENOWARNING("You can't place a queen beacon here."))
-		return FALSE
-
-	if(T.z != Q.z)
-		to_chat(Q, SPAN_XENOWARNING("That's too far away!"))
-		return FALSE
-
-	var/obj/effect/alien/weeds/located_weeds = locate() in T
-	if(!located_weeds)
-		to_chat(Q, SPAN_XENOWARNING("You need to place the queen beacon on weeds."))
-		return FALSE
-
-	return TRUE
-
-
-/datum/action/xeno_action/activable/blockade/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/Q = owner
-	if(!Q.check_state())
-		return FALSE
-
-	if(!action_cooldown_check())
-		return FALSE
-
-	if(Q.action_busy)
-		return FALSE
-
-	var/width = initial(pillar_type.width)
-	var/height = initial(pillar_type.height)
-
-	var/turf/T = get_turf(A)
-	if(T.density)
-		to_chat(Q, SPAN_XENOWARNING("You can only construct this blockade in open areas!"))
-		return FALSE
-
-	if(T.z != owner.z)
-		to_chat(Q, SPAN_XENOWARNING("That's too far away!"))
-		return FALSE
-
-	if(!T.weeds)
-		to_chat(Q, SPAN_XENOWARNING("You can only construct this blockade on weeds!"))
-		return FALSE
-
-	if(!Q.check_plasma(plasma_cost))
-		return
-
-	var/list/alerts = list()
-	for(var/i as anything in RANGE_TURFS(floor(width/2), T))
-		alerts += new /obj/effect/warning/alien(i)
-
-	if(!do_after(Q, time_taken, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		QDEL_NULL_LIST(alerts)
-		return FALSE
-	QDEL_NULL_LIST(alerts)
-
-	if(!check_turf(Q, T))
-		return FALSE
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	var/turf/new_turf = locate(max(T.x - floor(width/2), 1), max(T.y - floor(height/2), 1), T.z)
-	to_chat(Q, SPAN_XENONOTICE("You raise a blockade!"))
-	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
-	RP.start_decay(brittle_time, decay_time)
-
-	return ..()
-
-/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/xenomorph/queen/Q, turf/T)
-	if(T.density)
-		to_chat(Q, SPAN_XENOWARNING("You can't place a blockade here."))
-		return FALSE
-
-	return TRUE
-
 /mob/living/carbon/xenomorph/proc/xeno_tacmap()
 	set name = "View Xeno Tacmap"
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."
 	set category = "Alien"
 	hive.tacmap.tgui_interact(src)
+
+/datum/action/xeno_action/onclick/screech/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+
+	if (!istype(xeno))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!xeno.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	//screech is so powerful it kills huggers in our hands
+	if(istype(xeno.r_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/hugger = xeno.r_hand
+		if(hugger.stat != DEAD)
+			hugger.die()
+
+	if(istype(xeno.l_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/hugger = xeno.l_hand
+		if(hugger.stat != DEAD)
+			hugger.die()
+
+	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
+	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
+
+	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
+		if(mob && mob.client)
+			if(isxeno(mob))
+				shake_camera(mob, 10, 1)
+			else
+				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+	FOR_DVIEW_END
+
+	var/list/mobs_in_view = list()
+	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
+		mobs_in_view += M
+	FOR_DOVIEW_END
+	for(var/mob/living/carbon/M in orange(10, xeno))
+		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
+			continue
+		M.handle_queen_screech(xeno, mobs_in_view)
+
+	apply_cooldown()
+
+	return ..()
+
+/datum/action/xeno_action/activable/gut/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	if(!action_cooldown_check())
+		return
+	if(xeno.queen_gut(target))
+		apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/send_thoughts/proc/psychic_whisper()
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+	if(xeno_player.client.prefs.muted & MUTE_IC)
+		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
+		return
+	if(!xeno_player.check_state(TRUE))
+		return
+	var/list/target_list = list()
+	for(var/mob/living/carbon/possible_target in view(7, xeno_player))
+		if(possible_target == xeno_player || !possible_target.client) continue
+		target_list += possible_target
+
+	var/mob/living/carbon/target_mob = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
+	if(!target_mob) return
+
+	if(!xeno_player.check_state(TRUE))
+		return
+
+	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Whisper")
+	if(whisper)
+		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper] (AREA: [get_area_name(target_mob)])")
+		if(!istype(target_mob, /mob/living/carbon/xenomorph))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
+		else
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
+
+		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+			if(!ghost.client || isnewplayer(ghost))
+				continue
+			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+				var/rendered_message
+				var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
+				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [xeno_player.real_name][xeno_track] to [target_mob.real_name][target_track], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
+				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+
+	return
+
+/datum/action/xeno_action/onclick/send_thoughts/proc/psychic_radiance()
+	var/radiance_plasma_cost = 100
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+
+	if(!xeno_player.check_plasma(radiance_plasma_cost))
+		return
+	if(xeno_player.client.prefs.muted & MUTE_IC)
+		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
+		return
+	if(!xeno_player.check_state(TRUE))
+		return
+	var/list/target_list = list()
+	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Radiance")
+	if(!whisper || !xeno_player.check_state(TRUE))
+		return
+	FOR_DVIEW(var/mob/living/possible_target, 12, xeno_player, HIDE_INVISIBLE_OBSERVER)
+		if(possible_target == xeno_player || !possible_target.client)
+			continue
+		target_list += possible_target
+		if(!istype(possible_target, /mob/living/carbon/xenomorph))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
+		else
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+	FOR_DVIEW_END
+	if(!length(target_list))
+		return
+	var/targetstring = english_list(target_list)
+	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	xeno_player.use_plasma(radiance_plasma_cost)
+	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper] (AREA: [get_area_name(xeno_player)])")
+	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+		if(!ghost.client || isnewplayer(ghost))
+			continue
+		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+			var/rendered_message
+			var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[SPAN_PSYTALK(whisper)]'</span>")
+			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+	return
+
+/datum/action/xeno_action/activable/queen_give_plasma/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/queen/X = owner
+	if(!X.check_state())
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	var/mob/living/carbon/xenomorph/target = A
+	if(!istype(target) || target.stat == DEAD)
+		to_chat(X, SPAN_WARNING("You must target the xeno you want to give plasma to."))
+		return
+
+	if(target == X)
+		to_chat(X, SPAN_XENOWARNING("We cannot give plasma to yourself!"))
+		return
+
+	if(!X.can_not_harm(target))
+		to_chat(X, SPAN_WARNING("You can only target xenos part of your hive!"))
+		return
+
+	if(!target.caste.can_be_queen_healed)
+		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
+		return
+
+	if(SEND_SIGNAL(target, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(X, SPAN_XENOWARNING("This xeno cannot be given plasma!"))
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	target.gain_plasma(target.plasma_max * 0.75)
+	target.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
+	apply_cooldown()
+	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
+	return ..()
+
+/datum/action/xeno_action/onclick/send_thoughts/proc/queen_order()
+	var/mob/living/carbon/xenomorph/queen/xenomorph = owner
+	var/give_order_plasma_cost = 100
+
+	if(!xenomorph.check_plasma(give_order_plasma_cost))
+		return
+	if(!xenomorph.check_state())
+		return
+	if(xenomorph.observed_xeno)
+		var/mob/living/carbon/xenomorph/target = xenomorph.observed_xeno
+		if(target.stat != DEAD && target.client)
+			if(xenomorph.check_plasma(plasma_cost))
+				var/input = stripped_input(xenomorph, "This message will be sent to the overwatched xeno.", "Queen Order", "")
+				if(!input)
+					return
+				var/queen_order = SPAN_XENOANNOUNCE("<b>[xenomorph]</b> reaches you:\"[input]\"")
+				if(!xenomorph.check_state() || !xenomorph.check_plasma(plasma_cost) || xenomorph.observed_xeno != target || target.stat == DEAD)
+					return
+				if(target.client)
+					xenomorph.use_plasma(plasma_cost)
+					to_chat(target, "[queen_order]")
+					log_admin("[queen_order]")
+					message_admins("[key_name_admin(xenomorph)] has given the following Queen order to [target]: \"[input]\"", 1)
+					xenomorph.use_plasma(give_order_plasma_cost)
+
+	else
+		to_chat(xenomorph, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
+		return
+	return
+
+/datum/action/xeno_action/onclick/queen_word/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
+	xeno.hive_message()
+	return ..()
+
+/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	xeno.xeno_tacmap()
+	return ..()
 

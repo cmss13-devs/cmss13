@@ -17281,7 +17281,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "nfR" = (
-/obj/docking_port/stationary/marine_dropship/upp_hangar_2,
+/obj/docking_port/stationary/marine_dropship/upp/hangar_2,
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "nfS" = (
@@ -18531,7 +18531,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "omj" = (
-/obj/docking_port/stationary/marine_dropship/upp_hangar_1,
+/obj/docking_port/stationary/marine_dropship/upp/hangar_1,
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "omm" = (

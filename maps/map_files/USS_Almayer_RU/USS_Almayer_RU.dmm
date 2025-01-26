@@ -66073,18 +66073,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)
-"wFz" = (
-/obj/item/prop{
-	desc = "Predecessor to the M56 the M38 was known for its extreme reliability in the field. This particular M38D is fondly remembered for its stalwart defence of the hangar bay during the Arcturian commando raid of the USS Almayer on Io.";
-	icon = 'icons/turf/whiskeyoutpost.dmi';
-	icon_state = "M56D_gun_e";
-	layer = 3.1;
-	name = "\improper M38D heavy machine gun 'Bess'";
-	pixel_x = -3;
-	pixel_y = 10
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "wFO" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = -32
@@ -90836,7 +90824,7 @@ hYG
 hYG
 aYt
 aYt
-wFz
+aYt
 bAi
 xyw
 bnH

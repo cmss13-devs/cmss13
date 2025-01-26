@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		return
 
 /obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
-	return ATTACKBY_HINT_UPDATE_NEXT_MOVE 
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
@@ -128,7 +128,12 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			transfer_fingerprints_to(F)
 			src.add_fingerprint(user)
 			F.add_fingerprint(user)
+/*
 			user.count_niche_stat(STATISTICS_NICHE_FULTON)
+*/
+//RUCM START
+			user.count_statistic_stat(STATISTICS_FULTON)
+//RUCM END
 			use(1)
 			F.faction = user.faction
 			F.deploy_fulton()

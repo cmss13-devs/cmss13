@@ -37,7 +37,6 @@
 		/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE,
 	)
 
-
 	latejoin_larva_drop = 0 //You never know
 
 	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
@@ -254,14 +253,22 @@
 //Checks if the round is over//
 ///////////////////////////////
 /datum/game_mode/whiskey_outpost/check_finished()
+/*
 	if(finished != 0)
 		return 1
 
 	return 0
+*/
+//RUCM START
+	if(round_finished)
+		return TRUE
+	return FALSE
+//RUCM END
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
+/*
 /datum/game_mode/whiskey_outpost/declare_completion()
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
@@ -312,9 +319,49 @@
 
 
 	return 1
+*/
+//RUCM START
+/datum/game_mode/whiskey_outpost/announce_ending()
+	log_game("Round end result: [round_finished]")
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
+	switch(round_finished)
+		if(2)
+			to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
+			to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
+			to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
+			to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
+		if(1)
+			to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
+			to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
+			to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
+			to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
 
+/datum/game_mode/whiskey_outpost/get_winners_states()
+	var/end_icon = "draw"
+	var/musical_track
+	switch(round_finished)
+		if(2)
+			musical_track = 'sound/misc/hell_march.ogg'
+			end_icon = "marine_major"
+		if(1)
+			musical_track = 'sound/misc/Game_Over_Man.ogg'
+			end_icon = "xeno_major"
+		else
+			musical_track = 'sound/misc/sadtrombone.ogg'
+			if(GLOB.round_statistics)
+				GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
+//RUCM END
+
+/*
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
 	return
+*/
+//RUCM START
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
+	return list(end_icon)
+//RUCM END
 
 /datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)

@@ -77,7 +77,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
+/*
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
+*/
+//RUCM START
+			user.count_statistic_stat(STATISTICS_SURGERY_ORGAN_REPAIR)
+//RUCM END
 			I.rejuvenate()
 			break
 

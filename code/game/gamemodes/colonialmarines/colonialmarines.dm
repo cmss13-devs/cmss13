@@ -581,22 +581,46 @@
 //////////////////////////////////////////////////////////////////////
 
 /datum/game_mode/colonialmarines/declare_completion()
+/*
 	announce_ending()
 	var/musical_track
+*/
+//RUCM START
+	. = ..()
+
+	declare_completion_announce_fallen_soldiers()
+	declare_completion_announce_xenomorphs()
+	declare_completion_announce_predators()
+	declare_completion_announce_medal_awards()
+	declare_fun_facts()
+
+
+	add_current_round_status_to_end_results("Round End")
+	handle_round_results_statistics_output()
+
+/datum/game_mode/colonialmarines/get_winners_states()
+//RUCM END
 	var/end_icon = "draw"
+//RUCM START
+	var/musical_track
+//RUCM END
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
+/*
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
+*/
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
+/*
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
 				GLOB.round_statistics.current_map.total_marine_majors++
+*/
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
@@ -619,21 +643,28 @@
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			end_icon = "xeno_minor"
+/*
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
+*/
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
+/*
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
+*/
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+/*
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
+*/
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
@@ -671,6 +702,8 @@
 		if(MODE_INFESTATION_DRAW_DEATH)
 			return "Round has ended. Draw."
 	return "Round has ended in a strange way."
+*/
+	return list(end_icon)
 
 /datum/game_mode/colonialmarines/proc/add_current_round_status_to_end_results(special_round_status as text)
 	var/players = GLOB.clients
@@ -725,7 +758,12 @@
 
 	var/datum/discord_embed/embed = new()
 	embed.title = "[SSperf_logging.round?.id]"
+/*
 	embed.description = "[round_stats.round_name]\n[round_stats.map_name]\n[end_round_message()]"
+*/
+//RUCM START
+	embed.description = "[GLOB.round_statistics.round_name]\n[GLOB.round_statistics.map_name]\n[end_round_message()]"
+//RUCM END
 
 	var/list/webhook_info = list()
 	webhook_info["embeds"] = list(embed.convert_to_list())

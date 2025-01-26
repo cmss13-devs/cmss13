@@ -61,7 +61,12 @@
 	inserter.drop_inv_item_to_loc(potential_disk, parent)
 	disk = potential_disk
 	to_chat(inserter, SPAN_NOTICE("You insert [potential_disk] and enter the decryption key."))
+/*
 	inserter.count_niche_stat(STATISTICS_NICHE_DISK)
+*/
+//RUCM START
+	inserter.count_statistic_stat(STATISTICS_DISK)
+//RUCM END
 
 /datum/component/disk_reader/proc/on_disk_complete(datum/source)
 	SIGNAL_HANDLER

@@ -91,7 +91,6 @@
 	playsound(src, 'sound/handling/light_on_1.ogg', 50, TRUE)
 	update_icon(user)
 
-
 /obj/item/storage/backpack/marine/smartpack/green
 	item_state = "g_smartpack"
 	icon_state = "g_smartpack"

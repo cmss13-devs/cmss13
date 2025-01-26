@@ -62,7 +62,17 @@
 			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
 					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
+/*
 			user.track_hit(initial(I.name))
+*/
+//RUCM START
+			if(user.faction == faction)
+				user.track_friendly_hit(initial(I.name))
+				user.track_friendly_damage(initial(I.name), src, d)
+			else
+				user.track_hit(initial(I.name))
+				user.track_damage(initial(I.name), src, d)
+//RUCM END
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
@@ -237,7 +247,12 @@
 			apply_effect(6, STUN)//This should work for now, more is really silly and makes you lay there forever
 			apply_effect(6, WEAKEN)
 
+/*
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
+*/
+//RUCM START
+		count_statistic_stat(STATISTICS_SHOCK)
+//RUCM END
 
 	else
 		src.visible_message(

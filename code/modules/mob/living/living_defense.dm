@@ -69,10 +69,20 @@
 	var/mob/M
 	if(launch_meta_valid && ismob(LM.thrower))
 		M = LM.thrower
+/*
 		if(damage_done > 5)
 			M.track_hit(initial(O.name))
 			if (M.faction == faction)
 				M.track_friendly_fire(initial(O.name))
+*/
+//RUCM START
+		if(M.faction == faction)
+			M.track_friendly_hit(initial(O.name))
+			M.track_friendly_damage(initial(O.name), src, damage_done)
+		else
+			M.track_hit(initial(O.name))
+			M.track_damage(initial(O.name), src, damage_done)
+//RUCM END
 		var/client/assailant = M.client
 		if(assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")

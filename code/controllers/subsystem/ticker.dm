@@ -187,6 +187,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, SPAN_BOLDNOTICE("Enjoy the game!"))
 	var/init_start = world.timeofday
+
 /* RUCM REMOVE
 	//Create and announce mode
 	mode = config.pick_mode(GLOB.master_mode)
@@ -215,17 +216,21 @@ SUBSYSTEM_DEF(ticker)
 				handle_map_reboot()
 		else
 			to_chat(world, "Attempting again...")
+
 /* RUCM REMOVE
 		QDEL_NULL(mode)
 */
+
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
+
 /* RUCMM REMOVE
 		QDEL_NULL(mode)
 */
+
 		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE

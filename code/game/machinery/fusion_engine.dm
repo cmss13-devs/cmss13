@@ -332,6 +332,9 @@
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		buildstate = BUILDSTATE_FUNCTIONAL
+//RUCM START
+		user.count_statistic_stat(STATISTICS_REPAIR_GENERATOR)
+//RUCM END
 		update_icon()
 		return
 

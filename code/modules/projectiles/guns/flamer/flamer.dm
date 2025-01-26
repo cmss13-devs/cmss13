@@ -674,10 +674,20 @@
 		else
 			to_chat(ignited_morb, SPAN_HIGHDANGER(msg))
 
+/*
 		if(weapon_cause_data)
 			var/mob/SM = weapon_cause_data.resolve_mob()
 			if(istype(SM))
 				SM.track_shot_hit(weapon_cause_data.cause_name)
+*/
+//RUCM START
+		var/mob/shoot_mob = weapon_cause_data?.resolve_mob()
+		if(shoot_mob)
+			if(shoot_mob.faction == ignited_morb.faction)
+				shoot_mob.track_friendly_damage(weapon_cause_data.cause_name, ignited_morb, firedamage)
+			else
+				shoot_mob.track_damage(weapon_cause_data.cause_name, ignited_morb, firedamage)
+//RUCM END
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 

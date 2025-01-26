@@ -266,6 +266,9 @@
 	target.apply_damage(-damage_heal_threshold, TOX)
 	target.apply_damage(-damage_heal_threshold, CLONE)
 	target.apply_damage(-target.getOxyLoss(), OXY)
+//RUCM START
+	user.track_heal_damage(initial(name), H, damage_heal_threshold * 3)
+//RUCM END
 	target.updatehealth() //Needed for the check to register properly
 
 	if(!(target.species?.flags & NO_CHEM_METABOLIZATION))

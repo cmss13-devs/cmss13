@@ -111,11 +111,24 @@
 			if("fire")
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))
+
+//RUCM START
+		if(user.faction == M.faction)
+			user.track_friendly_hit(initial(name))
+			user.track_friendly_damage(initial(name), M, power)
+		else
+			user.track_hit(initial(name))
+			user.track_damage(initial(name), M, power)
+//RUCM END
+
 		if(power > 5)
 			M.last_damage_data = create_cause_data(initial(name), user)
+/* RUCM CHANGE
 			user.track_hit(initial(name))
 			if(user.faction == M.faction)
 				user.track_friendly_fire(initial(name))
+*/
+
 		M.updatehealth()
 	else
 		var/mob/living/carbon/human/H = M

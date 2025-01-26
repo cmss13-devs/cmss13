@@ -69,7 +69,9 @@
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 
+/*
 	var/datum/entity/player_entity/player_entity = null
+*/
 
 	//Asset cache
 	// List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s

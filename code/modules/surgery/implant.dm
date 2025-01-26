@@ -295,10 +295,20 @@
 				surgery.affected_limb.implants -= S
 				target.embedded_items -= S
 				for(var/i in 1 to S.count-1)
+/*
 					user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+*/
+//RUCM START
+					user.count_statistic_stat(STATISTICS_SURGERY_SHRAPNEL)
+//RUCM END
 					var/shrap = new S.type(S.loc)
 					QDEL_IN(shrap, 30 SECONDS)
+/*
 				user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+*/
+//RUCM START
+				user.count_statistic_stat(STATISTICS_SURGERY_SHRAPNEL)
+//RUCM END
 				QDEL_IN(S, 30 SECONDS)
 		else
 			var/obj/item/obj = surgery.affected_limb.implants[1]
@@ -318,7 +328,12 @@
 
 			if(is_sharp(obj))
 				target.embedded_items -= obj
+/*
 				user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+*/
+//RUCM START
+				user.count_statistic_stat(STATISTICS_SURGERY_SHRAPNEL)
+//RUCM END
 
 			log_interact(user, target, "[key_name(user)] removed [obj] from [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
 	else

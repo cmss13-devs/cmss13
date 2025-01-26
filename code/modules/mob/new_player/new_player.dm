@@ -161,9 +161,17 @@
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 
+/*
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
+*/
+//RUCM START
+	if(character.mind && character.client.player_data)
+		var/list/xeno_playtimes = LAZYACCESS(character.client.player_data.playtime_data, "stored_xeno_playtime")
+		var/list/marine_playtimes = LAZYACCESS(character.client.player_data.playtime_data, "stored_human_playtime")
+		if(!xeno_playtimes && !marine_playtimes)
+//RUCM END
 			msg_admin_niche("NEW JOIN: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 		if(character.client)
 			var/client/client = character.client

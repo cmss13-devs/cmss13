@@ -128,6 +128,9 @@
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
+//RUCM START
+	track_heal_damage(null, target_xeno, amount * damage_taken_mod)
+//RUCM END
 	updatehealth()
 	new /datum/effects/heal_over_time(target_xeno, heal_amount = amount)
 	target_xeno.xeno_jitter(1 SECONDS)

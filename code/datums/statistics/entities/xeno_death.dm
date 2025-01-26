@@ -51,7 +51,7 @@
 	field_types = list(
 		"map_name" = DB_FIELDTYPE_STRING_MEDIUM,
 		"x" = DB_FIELDTYPE_INT,
-		"y" = DB_FIELDTPYE_INT,
+		"y" = DB_FIELDTYPE_INT,
 		"z" = DB_FIELDTYPE_INT,
 		"death_minute" = DB_FIELDTYPE_INT,
 		"hive" = DB_FIELDTYPE_STRING_MEDIUM,

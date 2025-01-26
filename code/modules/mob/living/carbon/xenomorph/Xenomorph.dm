@@ -346,6 +346,8 @@
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
+	/// The world.time when the xeno was created. Carries over between strains and evolving
+	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -503,6 +505,8 @@
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
+
+	creation_time = world.time
 
 	Decorate()
 

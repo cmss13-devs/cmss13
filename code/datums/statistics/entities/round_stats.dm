@@ -36,6 +36,9 @@
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
+	/// A list of all player xenomorph deaths, type /datum/entity/xeno_death
+	var/list/xeno_deaths = list()
+
 	// nanoui data
 	var/list/round_data = list()
 	var/list/death_data = list()
@@ -44,6 +47,7 @@
 	. = ..()
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
+	QDEL_LIST(xeno_deaths)
 	QDEL_LIST_ASSOC_VAL(abilities_used)
 	QDEL_LIST_ASSOC_VAL(final_participants)
 	QDEL_LIST_ASSOC_VAL(hijack_participants)

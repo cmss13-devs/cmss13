@@ -67,13 +67,10 @@
 
 /datum/behavior_delegate/runner_acider/append_to_stat() //The status panel info for Acid Runner is handed here.
 	. = list()
-	var/combat_gen_text = "Inactive"
 	. += "Acid: [acid_amount]/[max_acid]"
 	if(acid_amount >= acid_gen_cap)
 		. += "Passive acid generation cap ([acid_gen_cap]) reached"
-	if(combat_gen_active)
-		combat_gen_text = "Active"
-	. += "Battle acid generation: [combat_gen_text]"
+	. += "Battle acid generation: [combat_gen_active ? "Active" : "Inactive"]"
 	if(caboom_trigger)
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 

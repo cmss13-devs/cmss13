@@ -99,7 +99,7 @@
 
 		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //this calls for the proc to turn combat acid gen off after a set time passes
 		combat_gen_active = TRUE //turns combat acid regen on
-		drool_applied_recently = TRUE //turns the overlay on
+		drool_overlay_active = TRUE //turns the overlay on
 
 /datum/behavior_delegate/runner_acider/on_life()
 	if(acid_amount < acid_gen_cap)
@@ -194,7 +194,7 @@
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off
 
-	drool_applied_recently = FALSE //turns the drool overlay off
+	drool_overlay_active = FALSE //turns the drool overlay off
 	bound_xeno.update_icons()
 
 /datum/behavior_delegate/runner_acider/on_update_icons()
@@ -204,7 +204,7 @@
 	bound_xeno.overlays -= drool_applied_icon
 	drool_applied_icon.overlays.Cut()
 
-	if(!drool_applied_recently)
+	if(!drool_overlay_active)
 		return
 
 	if(bound_xeno.stat == DEAD)

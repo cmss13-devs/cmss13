@@ -293,36 +293,6 @@
 	icon_state = "fakewindows"
 	opacity = FALSE
 
-INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
-
-/turf/closed/wall/indestructible/splashscreen
-	name = "Lobby Art"
-	desc = "Assorted artworks."
-	icon = 'icons/lobby/title_loading.dmi'
-	icon_state = "title"
-	layer = FLY_LAYER
-	special_icon = TRUE
-
-/turf/closed/wall/indestructible/splashscreen/Initialize()
-	. = ..()
-	tag = "LOBBYART"
-
-/proc/force_lobby_art(art_id)
-	GLOB.displayed_lobby_art = art_id
-	var/turf/closed/wall/indestructible/splashscreen/lobby_art = locate("LOBBYART")
-	var/list/lobby_arts = CONFIG_GET(str_list/lobby_art_images)
-	var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
-	lobby_art.icon = 'icons/lobby/title.dmi'
-	lobby_art.icon_state = lobby_arts[GLOB.displayed_lobby_art]
-	lobby_art.desc = "Artwork by [lobby_authors[GLOB.displayed_lobby_art]]"
-	lobby_art.pixel_x = -288
-	lobby_art.pixel_y = -288
-	for(var/client/player in GLOB.clients)
-		if(GLOB.displayed_lobby_art != -1)
-			var/author = lobby_authors[GLOB.displayed_lobby_art]
-			if(author != "Unknown")
-				to_chat_forced(player, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
-
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
 
@@ -770,8 +740,17 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(!hull)
 		var/area/area = get_area(src)
-		if(area && area.linked_lz)
-			AddComponent(/datum/component/resin_cleanup)
+		if(area)
+			if(area.linked_lz)
+				AddComponent(/datum/component/resin_cleanup)
+			area.current_resin_count++
+
+/turf/closed/wall/resin/Destroy(force)
+	. = ..()
+
+	if(!hull)
+		var/area/area = get_area(src)
+		area?.current_resin_count--
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -1292,6 +1271,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)
 

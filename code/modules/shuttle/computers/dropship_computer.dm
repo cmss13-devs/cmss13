@@ -359,7 +359,7 @@
 
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
-
+	addtimer(CALLBACK(src, PROC_REF(hijack_general_quarters)), 10 SECONDS)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL
 	if(istype(xeno))
@@ -382,6 +382,11 @@
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
+	if(GLOB.security_level < SEC_LEVEL_RED)
+		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)
@@ -465,7 +470,7 @@
 			to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))
 			return
 
-	if(use_factions && shuttle.faction != faction) //someone trying href
+	if(use_factions && shuttle && shuttle.faction != faction) //someone trying href
 		return FALSE
 
 	switch(action)

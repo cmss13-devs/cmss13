@@ -694,7 +694,6 @@
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
 		faction_module.remove_hive_leader(src, light_mode = TRUE)
-
 	SStracking.stop_tracking("hive_[faction.code_identificator]", src)
 
 	remove_from_all_mob_huds()

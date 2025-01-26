@@ -17,6 +17,11 @@
 			mind.original = null
 		mind = null
 
+	QDEL_NULL(organ_faction_tag)
+	QDEL_NULL(faction_tag)
+	if(faction)
+		faction.remove_mob(src, TRUE)
+
 	QDEL_NULL(skills)
 	QDEL_NULL_LIST(actions)
 	QDEL_NULL_LIST(viruses)
@@ -30,11 +35,6 @@
 	QDEL_NULL(mob_panel)
 	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
-
-	QDEL_NULL(organ_faction_tag)
-	QDEL_NULL(faction_tag)
-	if(faction)
-		faction.remove_mob(src, TRUE)
 
 	tgui_open_uis = null
 	buckled = null

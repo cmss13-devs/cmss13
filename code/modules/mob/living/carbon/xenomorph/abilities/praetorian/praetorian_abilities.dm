@@ -260,7 +260,7 @@
 	action_icon_state = "tail_seize"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 0.5 SECONDS
-	xeno_cooldown = 20 SECONDS
+	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
 
 /datum/action/xeno_action/activable/valkyrie_rage
@@ -310,6 +310,21 @@
 	plasma_cost = 300
 
 	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
-	var/low_rage_range = 3
-	var/high_rage_range = 5
+	var/low_rage_range = 4
+	var/high_rage_range = 6
 	var/rejuvenate_cost = 75
+
+/datum/action/xeno_action/activable/prae_retrieve
+
+	name = "Retrieve"
+	action_icon_state = "retrieve"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 180
+
+	confing
+	var/max_distance = 7
+	var/windup = 6
+	var/retrieve_cost = 100

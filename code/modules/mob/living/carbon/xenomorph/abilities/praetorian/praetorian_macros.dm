@@ -96,3 +96,10 @@
 	set hidden = TRUE
 	var/action_name = "Fight or Flight"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_prae_retrieve()
+	set category = "Alien"
+	set name = "Retrieve"
+	set hidden = TRUE
+	var/action_name = "Retrieve"
+	handle_xeno_macro(src, action_name)

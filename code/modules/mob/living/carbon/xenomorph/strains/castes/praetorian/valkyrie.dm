@@ -18,6 +18,7 @@
 		/datum/action/xeno_action/activable/valkyrie_rage,
 		/datum/action/xeno_action/activable/high_gallop,
 		/datum/action/xeno_action/onclick/fight_or_flight,
+		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 

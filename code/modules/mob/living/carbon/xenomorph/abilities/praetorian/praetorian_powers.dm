@@ -1006,3 +1006,150 @@
 	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
 	xeno_attack_delay(extinguisher_tail)
 	return ..()
+
+
+
+
+/datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/valkyrie = owner
+	if(!istype(valkyrie))
+		return
+
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = valkyrie.behavior_delegate
+	if(!istype(behavior))
+		return
+
+	if(valkyrie.observed_xeno != null)
+		to_chat(valkyrie, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
+		return
+
+	if(!isxeno(A) || !valkyrie.can_not_harm(A))
+		to_chat(valkyrie, SPAN_XENODANGER("We must target one of our sisters!"))
+		return
+
+	if(A == valkyrie)
+		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourself!"))
+		return
+
+	if(!(A in view(7, valkyrie)))
+		to_chat(valkyrie, SPAN_XENODANGER("That sister is too far away!"))
+		return
+
+	var/mob/living/carbon/xenomorph/targetXeno = A
+
+	if(targetXeno.anchored)
+		to_chat(valkyrie, SPAN_XENODANGER("That sister cannot move!"))
+		return
+
+	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
+		if(targetXeno.mob_size > MOB_SIZE_BIG)
+			to_chat(valkyrie, SPAN_WARNING("[targetXeno] is too big to retrieve while standing up!"))
+			return
+
+	if(targetXeno.stat == DEAD)
+		to_chat(valkyrie, SPAN_WARNING("[targetXeno] is already dead!"))
+		return
+
+	if(!action_cooldown_check() || valkyrie.action_busy)
+		return
+
+	if(!valkyrie.check_state())
+		return
+
+	if(!check_plasma_owner())
+		return
+
+	if(!behavior.use_internal_fury_ability(retrieve_cost))
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	// Build our turflist
+	var/list/turf/turflist = list()
+	var/list/telegraph_atom_list = list()
+	var/facing = get_dir(valkyrie, A)
+	var/reversefacing = get_dir(A, valkyrie)
+	var/turf/T = valkyrie.loc
+	var/turf/temp = valkyrie.loc
+	for(var/x in 0 to max_distance)
+		temp = get_step(T, facing)
+		if(facing in GLOB.diagonals) // check if it goes through corners
+			var/reverse_face = GLOB.reverse_dir[facing]
+			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
+			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
+			if((!back_left || back_left.density) && (!back_right || back_right.density))
+				break
+		if(!temp || temp.density || temp.opacity)
+			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/girder)  && S.density|| istype(S, /obj/structure/machinery/door)) && S.density))
+				blocked = TRUE
+				break
+		if(blocked)
+			to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
+			return
+
+		T = temp
+
+		if(T in turflist)
+			break
+
+		turflist += T
+		facing = get_dir(T, A)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
+
+	if(!length(turflist))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))
+		return
+
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
+	valkyrie.emote("roar")
+
+	var/throw_target_turf = get_step(valkyrie, facing)
+	var/turf/behind_turf = get_step(valkyrie, reversefacing)
+	if(!(behind_turf.density))
+		throw_target_turf = behind_turf
+
+	ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+	if(windup)
+		if(!do_after(valkyrie, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+			to_chat(valkyrie, SPAN_XENOWARNING("We cancel our retrieve."))
+			apply_cooldown()
+
+			for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+				telegraph_atom_list -= XT
+				qdel(XT)
+
+			REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+
+			return
+
+	REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+
+	playsound(get_turf(valkyrie), 'sound/effects/bang.ogg', 25, 0)
+
+	var/successful_retrieve = FALSE
+	for(var/turf/target_turf in turflist)
+		if(targetXeno in target_turf)
+			successful_retrieve = TRUE
+			break
+
+	if(!successful_retrieve)
+		to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
+		return
+
+	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("We are pulled toward [valkyrie]!"))
+
+	shake_camera(targetXeno, 10, 1)
+	var/throw_dist = get_dist(throw_target_turf, targetXeno)-1
+	if(throw_target_turf == behind_turf)
+		throw_dist++
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [targetXeno] over our head with our resin hook, and they land behind us!"))
+	else
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [targetXeno] towards us with our resin hook, and they land in front of us!"))
+	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
+	apply_cooldown()
+	return ..()

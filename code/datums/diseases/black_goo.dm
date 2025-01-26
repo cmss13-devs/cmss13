@@ -159,7 +159,7 @@
 		human.jitteriness = 0
 		human.set_species(SPECIES_ZOMBIE)
 		stage = 4
-		human.faction = FACTION_ZOMBIE
+		GLOB.faction_datums[FACTION_ZOMBIE].add_mob(human)
 		zombie_is_transforming = FALSE
 
 

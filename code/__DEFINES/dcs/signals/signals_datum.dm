@@ -64,7 +64,7 @@
 // from /datum/emergency_call/proc/spawn_candidates()
 #define COMSIG_ERT_SETUP "ert_setup"
 
-// from /proc/update_living_queens() : /mob/living/carbon/xenomorph/queen
+// from /datum/faction_module/hive_mind/proc/set_living_xeno_queen() : /mob/living/carbon/xenomorph/queen
 #define COMSIG_HIVE_NEW_QUEEN "hive_new_queen"
 
 /// Fired on the lazy template datum when the template is finished loading. (list/loaded_atom_movables, list/loaded_turfs, list/loaded_areas)

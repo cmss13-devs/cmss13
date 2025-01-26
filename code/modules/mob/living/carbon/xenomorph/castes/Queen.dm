@@ -51,21 +51,6 @@
 
 	royal_caste = TRUE
 
-/proc/update_living_queens() // needed to update when you change a queen to a different hive
-	outer_loop:
-		for(var/faction_to_get in GLOB.faction_datums)
-			var/datum/faction/faction = GLOB.faction_datums[faction_to_get]
-			var/datum/faction_module/hive_mind/faction_module = faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
-			if(faction_module.living_xeno_queen)
-				if(faction_module.living_xeno_queen.faction == faction)
-					continue
-			for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
-				if(Q.faction == faction && !should_block_game_interaction(Q))
-					faction_module.living_xeno_queen = Q
-					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"), 3, faction)
-					continue outer_loop
-			faction_module.living_xeno_queen = null
-
 /mob/hologram/queen
 	name = "Queen Eye"
 	action_icon_state = "queen_exit"
@@ -493,7 +478,6 @@
 /mob/living/carbon/xenomorph/queen/set_hive_and_update(new_hivenumber)
 	if(!..())
 		return FALSE
-	update_living_queens()
 
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
 	queen_aged = TRUE

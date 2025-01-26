@@ -1374,8 +1374,9 @@
 	density = 0;
 	pixel_y = 16
 	},
-/obj/structure/machinery/faxmachine/uscm/ai_core{
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
 	density = 0;
+	sub_name = "Reception";
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -3519,7 +3520,7 @@
 /obj/structure/sign/prop3{
 	pixel_x = -32
 	},
-/obj/structure/machinery/faxmachine/uscm/sea,
+/obj/structure/machinery/faxmachine/uscm/almayer/sea,
 /turf/open/floor/strata/faux_metal,
 /area/almayer/shipboard/sea_office)
 "axS" = (
@@ -3923,9 +3924,11 @@
 "aAC" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter,
-/obj/structure/machinery/faxmachine/uscm,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Conference Room"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices)
@@ -11049,9 +11052,11 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "bse" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Processing"
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/brig/processing)
@@ -17497,13 +17502,14 @@
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "cfm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/capt{
-	name = "Commanding Officer's Fax Machine";
-	pixel_x = -4;
-	pixel_y = 3
-	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer/command/capt{
+	name = "Commanding Officer's Fax Machine";
+	pixel_x = -4;
+	pixel_y = 3;
+	radio_alert_tag = ":P"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -30152,10 +30158,12 @@
 /area/almayer/command/corporateliaison)
 "fCP" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Permanent Confinement"
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/brig/perma)
@@ -32078,7 +32086,9 @@
 /area/almayer/living/starboard_garden)
 "gBw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "Conference Room"
+	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/command/cichallway)
 "gBK" = (
@@ -32398,7 +32408,10 @@
 /area/almayer/living/grunt_rnr)
 "gKn" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
+/obj/structure/machinery/faxmachine/uscm/almayer{
+	sub_name = "Intel Office";
+	radio_alert_tag = ":T"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "gKN" = (
@@ -39122,9 +39135,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "kkt" = (
-/obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light/small,
+/obj/structure/machinery/faxmachine{
+	sub_name = "Combat Correspondent";
+	department = "USS Almayer"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/combat_correspondent)
 "kky" = (
@@ -43143,7 +43159,10 @@
 	pixel_x = 17;
 	pixel_y = 12
 	},
-/obj/structure/machinery/faxmachine/uscm/command,
+/obj/structure/machinery/faxmachine/uscm/almayer/command{
+	sub_name = "CIC";
+	radio_alert_tag = ":V"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "mhh" = (
@@ -48904,7 +48923,7 @@
 /area/almayer/engineering/laundry)
 "oWI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig/chief,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig/chief,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "oWJ" = (
@@ -53216,10 +53235,7 @@
 /obj/item/paper_bin/uscm{
 	pixel_y = -16
 	},
-/obj/structure/machinery/faxmachine/uscm/requistion{
-	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
-	gender = "female"
-	},
+/obj/structure/machinery/faxmachine/uscm/almayer/requistion,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "rkb" = (
@@ -56717,14 +56733,15 @@
 /area/almayer/maint/upper/u_m_s)
 "sOa" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/ai_core{
-	pixel_y = 8
-	},
 /obj/structure/transmitter/rotary/ares{
 	name = "AI Core Telephone";
 	phone_id = "AI Core";
 	pixel_x = 8;
 	pixel_y = -8
+	},
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
+	sub_name = "AI Core";
+	pixel_y = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -92548,10 +92565,10 @@ xzO
 xzO
 xzO
 xzO
-ige
-ige
-ige
-ige
+xzO
+xzO
+xzO
+xzO
 xzO
 xzO
 xzO
@@ -92639,6 +92656,11 @@ ige
 ige
 "}
 (257,1,1) = {"
+ige
+ige
+ige
+ige
+ige
 xzO
 xzO
 xzO
@@ -92648,15 +92670,10 @@ xzO
 xzO
 xzO
 xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
+ige
+ige
+ige
+ige
 ige
 ige
 ige
@@ -92740,15 +92757,15 @@ ige
 ige
 ige
 ige
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
-xzO
+ige
+ige
+ige
+ige
+ige
+ige
+ige
+ige
+ige
 ige
 ige
 ige
@@ -92927,100 +92944,100 @@ ige
 ige
 "}
 (260,1,1) = {"
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
+xzO
 "}
 
 (1,1,2) = {"
@@ -142312,19 +142329,19 @@ vKN
 vKN
 vKN
 vKN
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
-ige
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
+vKN
 vKN
 vKN
 vKN

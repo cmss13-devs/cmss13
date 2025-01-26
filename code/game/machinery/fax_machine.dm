@@ -713,6 +713,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 /obj/structure/machinery/faxmachine/uscm/almayer/requistion
 	department = FAX_DEPARTMENT_ALMAYER_REQUISITION
+	sub_name = "Requisitions"
+	gender = "female"
+	radio_alert_tag = ":U"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/sea
 	department = FAX_DEPARTMENT_ALMAYER_SEA

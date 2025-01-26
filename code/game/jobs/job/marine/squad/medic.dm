@@ -6,26 +6,16 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/medic
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You tend the wounds of your squad mates</a> and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
+	players_per_position = 10
+	factor = 4
+	minimal_open_positions = 12
+	maximal_open_positions = 20
 
 /datum/job/marine/medic/set_spawn_positions(count)
+	var/slots_total = ..()
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
-			target_squad.roles_cap[title] = medic_slot_formula(count)
-
-/datum/job/marine/medic/get_total_positions(latejoin=0)
-	var/slots = medic_slot_formula(get_total_marines())
-
-	if(slots <= total_positions_so_far)
-		slots = total_positions_so_far
-	else
-		total_positions_so_far = slots
-
-	if(latejoin)
-		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-			if(target_squad)
-				target_squad.roles_cap[title] = slots
-
-	return (slots*4)
+		if(target_squad && target_squad.faction == FACTION_MARINE)
+			target_squad.roles_cap[title] = slots_total/4
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC

@@ -10,6 +10,10 @@
 	var/allow_additional = 0 //Can admins modify positions to it
 	var/scaled = 0
 	var/current_positions = 0 //How many players have this job
+	var/minimal_open_positions = 1 //minimal positions open for round
+	var/maximal_open_positions = 1 //maximal positions open for round
+	var/players_per_position = 1 //how many USCM players are needed per position
+	var/factor = 1 //how many multiplications of players per position are not needed before first increment
 	var/supervisors = "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
 	var/selection_class = "" // Job Selection span class (for background color)
 
@@ -168,7 +172,7 @@
 	return ""
 
 /datum/job/proc/set_spawn_positions(count)
-	return spawn_positions
+	return job_slot_formula(count, players_per_position, 1, minimal_open_positions, maximal_open_positions )
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
@@ -229,8 +233,17 @@
 
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
-/datum/job/proc/get_total_positions(latejoin)
-	return latejoin ? total_positions : spawn_positions
+/datum/job/proc/get_total_positions(latejoin = FALSE)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = job_slot_formula(get_total_marines(), players_per_position, 1, minimal_open_positions, maximal_open_positions )
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
+		else
+			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
+	return positions
 
 /datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))

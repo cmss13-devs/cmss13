@@ -18,6 +18,10 @@
 	// job option
 	job_options = list(DOCTOR_VARIANT = "Doc", SURGEON_VARIANT = "Sur")
 	/// If this job is a doctor variant of the doctor role
+
+	players_per_position = 25
+	minimal_open_positions = 4
+	maximal_open_positions = 6
 	var/doctor = TRUE
 
 //check the job option. and change the gear preset
@@ -35,21 +39,6 @@
 		. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a doctor and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a jack of all trades in medicine: you can medicate, perform surgery and produce pharmaceuticals. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
 	else
 		. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a surgeon and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a doctor that specializes in surgery, but you are also very capable in pharmacy and triage. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
-
-/datum/job/civilian/doctor/set_spawn_positions(count)
-	spawn_positions = doc_slot_formula(count)
-
-/datum/job/civilian/doctor/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = doc_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
-	else
-		total_positions_so_far = positions
-	return positions
 
 AddTimelock(/datum/job/civilian/doctor, list(
 	JOB_MEDIC_ROLES = 1 HOURS

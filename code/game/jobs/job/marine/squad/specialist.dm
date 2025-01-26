@@ -7,21 +7,9 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/spec
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are the very rare and valuable weapon expert</a>, trained to use special equipment. You can serve a variety of roles, so choose carefully."
-
-/datum/job/marine/specialist/set_spawn_positions(count)
-	spawn_positions = spec_slot_formula(count)
-
-/datum/job/marine/specialist/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = spec_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
-	else
-		total_positions_so_far = positions
-	return positions
+	players_per_position = 20
+	minimal_open_positions = 2
+	maximal_open_positions = 4
 
 /datum/job/marine/specialist/on_cryo(mob/living/carbon/human/cryoing)
 	var/specialist_set = get_specialist_set(cryoing)

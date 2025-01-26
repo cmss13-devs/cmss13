@@ -7,21 +7,9 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/sg
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are the smartgunner.</a> Your task is to provide heavy weapons support."
-
-/datum/job/marine/smartgunner/set_spawn_positions(count)
-	spawn_positions = sg_slot_formula(count)
-
-/datum/job/marine/smartgunner/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = sg_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
-	else
-		total_positions_so_far = positions
-	return positions
+	players_per_position = 20
+	minimal_open_positions = 2
+	maximal_open_positions = 4
 
 /datum/job/marine/smartgunner/whiskey
 	title = JOB_WO_SQUAD_SMARTGUNNER

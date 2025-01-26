@@ -13,6 +13,9 @@
 	flags_whitelist = WHITELIST_JOE
 	gear_preset = /datum/equipment_preset/synth/working_joe
 	gets_emergency_kit = FALSE
+	players_per_position = 30
+	minimal_open_positions = 3
+	maximal_open_positions = 6
 
 	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
 	var/standard = TRUE
@@ -30,21 +33,6 @@
 	else
 		standard = FALSE
 		gear_preset = /datum/equipment_preset/synth/working_joe/engi
-
-/datum/job/civilian/working_joe/set_spawn_positions(count)
-	spawn_positions = working_joe_slot_formula(count)
-
-/datum/job/civilian/working_joe/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = working_joe_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
-	else
-		total_positions_so_far = positions
-	return positions
 
 /datum/job/civilian/working_joe/generate_entry_message(mob/living/carbon/human/H)
 	if(standard)

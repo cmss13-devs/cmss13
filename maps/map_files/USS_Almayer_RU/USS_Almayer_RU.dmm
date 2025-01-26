@@ -4255,8 +4255,7 @@
 "asG" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/terminal{
@@ -5555,7 +5554,6 @@
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 1;
-	plane = -4;
 	layer = 4
 	},
 /turf/open/floor/almayer/mono,
@@ -5945,7 +5943,6 @@
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 1;
-	plane = -4;
 	layer = 4
 	},
 /obj/effect/decal/warning_stripes{
@@ -7395,9 +7392,7 @@
 /area/almayer/living/numbertwobunks)
 "aFp" = (
 /obj/structure/machinery/cm_vending/own_points/experimental_tools,
-/obj/effect/decal/cleanable/cobweb{
-	plane = -4
-	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/synthcloset)
 "aFq" = (
@@ -9753,7 +9748,6 @@
 "aVH" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/surface/table/reinforced/black{
-	plane = -6.5;
 	pixel_x = -4
 	},
 /obj/item/book/manual/marine_law{
@@ -10706,9 +10700,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bcd" = (
-/obj/structure/machinery/computer/cameras/hangar{
-	plane = -4
-	},
+/obj/structure/machinery/computer/cameras/hangar,
 /obj/structure/surface/table/reinforced/black{
 	layer = 3.215
 	},
@@ -11505,9 +11497,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/structure/barricade/handrail{
-	plane = -4
-	},
+/obj/structure/barricade/handrail,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/living/synthcloset)
 "biT" = (
@@ -15103,8 +15093,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Left";
-	name = "\improper ARES Mainframe Shutters";
-	plane = -7
+	name = "\improper ARES Mainframe Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -15160,8 +15149,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/closet/secure_closet/cmdcabinet{
 	pixel_y = 28;
-	layer = 3.3;
-	plane = -4
+	layer = 3.3
 	},
 /obj/structure/machinery/door_control{
 	id = "CIC_armory";
@@ -15172,7 +15160,6 @@
 	},
 /obj/item/device/cotablet{
 	pixel_x = -1;
-	plane = -4;
 	layer = 3.4
 	},
 /obj/structure/machinery/door/window/southleft{
@@ -16479,8 +16466,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES ReceptStairs2";
-	name = "\improper ARES Reception Shutters";
-	plane = -7
+	name = "\improper ARES Reception Shutters"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -26045,16 +26031,14 @@
 	phone_category = "Command";
 	phone_id = "Combat Information Center First Line";
 	pixel_y = 12;
-	pixel_x = -5;
-	plane = -4
+	pixel_x = -5
 	},
 /obj/structure/transmitter/rotary{
 	name = "Combat Information Center Reserve Telephone";
 	phone_category = "Command";
 	phone_id = "Combat Information Center Second Line";
 	pixel_y = 2;
-	pixel_x = -5;
-	plane = -4
+	pixel_x = -5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -28068,12 +28052,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "fYf" = (
-/obj/structure/window/reinforced/toughened{
-	plane = -4
-	},
-/obj/structure/machinery/computer/med_data{
-	plane = -7
-	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/machinery/computer/med_data,
 /obj/structure/window/reinforced/toughened{
 	dir = 4
 	},
@@ -28673,8 +28653,7 @@
 	pixel_y = 32
 	},
 /obj/item/reagent_container/spray/cleaner{
-	pixel_y = 16;
-	plane = -5
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
@@ -29786,12 +29765,8 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/port_missiles)
 "gKJ" = (
-/obj/structure/window/reinforced/toughened{
-	plane = -4
-	},
-/obj/structure/machinery/computer/ordercomp{
-	plane = -7
-	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/machinery/computer/ordercomp,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "gKR" = (
@@ -33460,7 +33435,6 @@
 "itP" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/surface/table/reinforced/black{
-	plane = -6.5;
 	pixel_x = -4
 	},
 /obj/structure/window/reinforced/toughened{
@@ -33479,8 +33453,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES ReceptStairs2";
-	name = "\improper ARES Reception Stairway Shutters";
-	plane = -7
+	name = "\improper ARES Reception Stairway Shutters"
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
@@ -33666,7 +33639,6 @@
 "iyH" = (
 /obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown{
-	plane = -6;
 	dir = 4
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -35653,8 +35625,7 @@
 "jqP" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/sign/safety/laser{
@@ -37307,9 +37278,7 @@
 	req_one_access_txt = "91;92";
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore{
-	plane = -6
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "khM" = (
@@ -39575,11 +39544,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "ljs" = (
-/obj/structure/window/reinforced/toughened{
-	plane = -4
-	},
+/obj/structure/window/reinforced/toughened,
 /obj/structure/machinery/computer/tech_control{
-	plane = -4;
 	pixel_x = -1
 	},
 /turf/open/floor/almayer/plate,
@@ -40435,8 +40401,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -41018,14 +40983,12 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Alamo Remote Control Console";
 	shuttleId = "dropship_alamo";
-	plane = -4;
 	pixel_x = 15
 	},
 /obj/item/device/radio/intercom/alamo{
 	layer = 3.5;
 	pixel_x = -2;
-	pixel_y = 2;
-	plane = -4
+	pixel_y = 2
 	},
 /obj/structure/surface/table/reinforced/black{
 	layer = 3.215
@@ -42777,8 +42740,7 @@
 /obj/effect/step_trigger/ares_alert/mainframe,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Mainframe Right";
-	name = "\improper ARES Mainframe Shutters";
-	plane = -7
+	name = "\improper ARES Mainframe Shutters"
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -42877,7 +42839,6 @@
 	dir = 6
 	},
 /obj/structure/machinery/computer/tech_control{
-	plane = -4;
 	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -43340,8 +43301,7 @@
 "mRn" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
-	name = "\improper ARES Inner Chamber Shutters";
-	plane = -7
+	name = "\improper ARES Inner Chamber Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/core,
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
@@ -46646,7 +46606,6 @@
 	dir = 5
 	},
 /obj/structure/machinery/computer/tech_control{
-	plane = -4;
 	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -50990,7 +50949,6 @@
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 1;
-	plane = -4;
 	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -53182,9 +53140,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/barricade/handrail{
-	plane = -4
-	},
+/obj/structure/barricade/handrail,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/brig/cic_hallway)
 "rlh" = (
@@ -53586,19 +53542,16 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Normandy Remote Control Console";
 	shuttleId = "dropship_normandy";
-	plane = -4;
 	pixel_x = -15
 	},
 /obj/item/device/radio/intercom/normandy{
 	layer = 3.5;
 	pixel_x = 3;
-	pixel_y = 2;
-	plane = -4
+	pixel_y = 2
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
-	layer = 3.22;
-	plane = -4
+	layer = 3.22
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -54015,7 +53968,6 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES JoeCryo";
 	name = "\improper ARES Synth Bay Shutters";
-	plane = -7;
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -56205,18 +56157,10 @@
 	dir = 8
 	},
 /obj/structure/surface/rack,
-/obj/item/device/toner{
-	plane = -4
-	},
-/obj/item/device/toner{
-	plane = -4
-	},
-/obj/item/device/toner{
-	plane = -4
-	},
-/obj/item/device/toner{
-	plane = -4
-	},
+/obj/item/device/toner,
+/obj/item/device/toner,
+/obj/item/device/toner,
+/obj/item/device/toner,
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/cic)
@@ -57363,7 +57307,6 @@
 "tgE" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/surface/table/reinforced/black{
-	plane = -6.5;
 	pixel_x = -4
 	},
 /obj/item/reagent_container/food/snacks/tomatosoup{
@@ -58473,8 +58416,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsUpper";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/structure/disposalpipe/up/almayer{
 	id = "ares_vault_in";
@@ -64103,7 +64045,6 @@
 /obj/structure/machinery/prop/almayer/CICmap{
 	pixel_y = 8;
 	layer = 3.1;
-	plane = -4;
 	pixel_x = -6
 	},
 /turf/open/floor/almayer/silver,
@@ -64802,8 +64743,7 @@
 "wkM" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES StairsLower";
-	name = "\improper ARES Core Shutters";
-	plane = -7
+	name = "\improper ARES Core Shutters"
 	},
 /obj/effect/step_trigger/ares_alert/public{
 	alert_id = "AresStairs";

@@ -193,8 +193,6 @@
   - maptweak: replaced dead goons on kutjevo with kutjevo goons
   - maptweak: replaced kutjevo WY sec survivor with kutjevo goon survivor
   - bugfix: fixed smart minitank flush verb showing a list of all on-screen mobs
-  blackcrystall:
-  - rscadd: Warrior boxer strain return
   Blundir:
   - bugfix: coif not hiding your face when it should've
   - bugfix: bandana hiding facial hair forever
@@ -260,6 +258,8 @@
       safety prefs
   - bugfix: Fixed metal to plasteel alchemy via disassembling upgraded plasteel cades
   - bugfix: Fixes check status using your own name when using it on others
+  blackcrystall:
+  - rscadd: Warrior boxer strain return
   cuberound:
   - soundadd: SEA jingle when they join the game
   - balance: reverts changes to xm88 that gave it build in bc
@@ -313,13 +313,6 @@
       other then a built in light and is a normal backpack.
   - spellcheck: Description and name of the smart pack changed
 2025-01-18:
-  blackcrystall:
-  - balance: CO smartgun support unit now, deal holocards and have additional damage
-  - balance: HPR buffs
-  - balance: Tech do now skill checks, rather than hard joblocks
-  - balance: SG got sight +2, and +5 damage
-  - rscadd: New Queen strain, the Royal Charger
-  - balance: Crusher got additional damage in charge in longer run
   Blundir:
   - rscadd: now all WY jobs have a hud icon and a minimap icon
   - bugfix: fixed corporate survs having incorrect faction
@@ -340,10 +333,14 @@
   - bugfix: Fixed eslint not checking jsx files
   Nomoresolvalou, Thwomper:
   - imageadd: Added a new predator mask and mask attachment
-2025-01-19:
   blackcrystall:
+  - balance: CO smartgun support unit now, deal holocards and have additional damage
+  - balance: HPR buffs
+  - balance: Tech do now skill checks, rather than hard joblocks
+  - balance: SG got sight +2, and +5 damage
   - rscadd: New Queen strain, the Royal Charger
   - balance: Crusher got additional damage in charge in longer run
+2025-01-19:
   Blundir:
   - rscadd: synth reset key no longer has medical skillock and has a hint to it being
       engi skill locked in description
@@ -352,6 +349,9 @@
   - bugfix: fixed wl check on UPP synth not working
   Git-Nivrak:
   - code_imp: Xeno wounds now update every time they take damage
+  blackcrystall:
+  - rscadd: New Queen strain, the Royal Charger
+  - balance: Crusher got additional damage in charge in longer run
   cuberound:
   - bugfix: UPP abovehead text respects squad color
   private-tristan:
@@ -494,3 +494,8 @@
       eject patients if they run out of charge while operating.
   - code_imp: Added code that disables patients from entering the Synthetic Maintenance
       Station if it has no charge left.
+2025-01-26:
+  BlackCrystalic:
+  - rscadd: Added new statistic traking values
+  - refactor: Fully redone statistic plus save in DB
+  - ui: New TGUI for statistic

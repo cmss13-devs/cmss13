@@ -65,7 +65,7 @@
 	if(acid_amount < 0)
 		acid_amount = 0
 
-/datum/behavior_delegate/runner_acider/append_to_stat() //The status pannel info for Acid Runner is handelt here.
+/datum/behavior_delegate/runner_acider/append_to_stat() //The status panel info for Acid Runner is handed here.
 	. = list()
 	var/combat_gen_text = "Inactive"
 	. += "Acid: [acid_amount]/[max_acid]"

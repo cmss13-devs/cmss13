@@ -322,7 +322,7 @@
 	w_class = SIZE_SMALL
 	charge_cost = 99
 */
-/* RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
 /obj/item/device/defibrillator/synthetic
 	name = "W-Y synthetic reset key"
 	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."

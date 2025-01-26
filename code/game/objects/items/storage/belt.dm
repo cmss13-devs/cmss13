@@ -97,7 +97,9 @@
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
-//		/obj/item/device/defibrillator/synthetic, // RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
+		/obj/item/device/defibrillator/synthetic,
+*/
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -156,7 +158,9 @@
 		/obj/item/defenses/handheld/sentry,
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
-//		/obj/item/device/defibrillator/synthetic, // RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
+		/obj/item/device/defibrillator/synthetic,
+*/
 	)
 
 	bypass_w_limit = list(

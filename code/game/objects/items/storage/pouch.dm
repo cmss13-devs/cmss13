@@ -831,7 +831,9 @@
 		/obj/item/device/assembly = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/stock_parts = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
-//		/obj/item/device/defibrillator/synthetic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED), // RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
+		/obj/item/device/defibrillator/synthetic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+*/
 	)
 	can_hold_skill_only = TRUE
 
@@ -1268,7 +1270,9 @@
 		/obj/item/device/analyzer,
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
-//		/obj/item/device/defibrillator/synthetic, // RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
+		/obj/item/device/defibrillator/synthetic,
+*/
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -1343,7 +1347,9 @@
 	new /obj/item/device/multitool(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
-//	new /obj/item/device/defibrillator/synthetic(src) // RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
+	new /obj/item/device/defibrillator/synthetic(src)
+*/
 
 /obj/item/storage/pouch/tools/tactical/upp/dzho/fill_preset_inventory()
 	new /obj/item/tool/wrench(src)

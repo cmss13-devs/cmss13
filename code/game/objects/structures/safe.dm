@@ -247,4 +247,6 @@ FLOOR SAFES
 	new /obj/item/spacecash/c1000/counterfeit(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
 	new /obj/item/coin/platinum(src)
-//	new /obj/item/device/defibrillator/synthetic/noskill(src) // RUCM REMOVE defibrillator/synthetic
+/* RUCM REMOVE
+	new /obj/item/device/defibrillator/synthetic/noskill(src)
+*/

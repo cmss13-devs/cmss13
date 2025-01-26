@@ -275,3 +275,8 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+
+/obj/structure/ladder/yaujta
+	name = "ladder"
+	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
+	icon = 'icons/obj/structures/yaujta_ladders.dmi'

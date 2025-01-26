@@ -117,6 +117,11 @@
 
 	var/mob/living/carbon/carbon = affected_atom
 
+//RUCM START
+	if(distance > 1 && istype(punch_user.strain, /datum/xeno_strain/boxer))
+		step_towards(punch_user, carbon, 1)
+//RUCM END
+
 	if (!punch_user.Adjacent(carbon))
 		return
 
@@ -139,7 +144,15 @@
 	SPAN_XENOWARNING("We hit [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(carbon, sound, 50, 1)
+/*
 	do_base_warrior_punch(carbon, target_limb)
+*/
+//RUCM START
+	if(istype(punch_user.strain, /datum/xeno_strain/boxer))
+		do_boxer_punch(carbon, target_limb)
+	else
+		do_base_warrior_punch(carbon, target_limb)
+//RUCM END
 	apply_cooldown()
 	return ..()
 

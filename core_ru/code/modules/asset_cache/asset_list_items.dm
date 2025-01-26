@@ -1,8 +1,13 @@
 GLOBAL_LIST_INIT(battlepass_icons_list, list(
-	'icons/obj/items/items.dmi' = list(
+	'icons/obj/items/economy.dmi' = list(
 		"coin_copper", "coin_silver", "coin_gold",
 		"coin_diamond", "coin_platinum", "coin_mythril",
-		"visa", "broadcastingcamera"
+	),
+	'icons/obj/items/tools.dmi' = list(
+		"broadcastingcamera"
+	),
+	'icons/obj/items/card.dmi' = list(
+		"visa"
 	),
 	'core_ru/icons/custom/items/guns.dmi' = list(
 		"mk221_gold", "m4ra_gold", "m37_gold", "m41a_gold",

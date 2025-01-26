@@ -171,6 +171,7 @@
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)
+			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST

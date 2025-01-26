@@ -6,6 +6,10 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 /obj/item/stack/fulton
 	name = "fulton recovery device"
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "fulton"
 	amount = 20
 	max_amount = 20
@@ -58,7 +62,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		return
 
 /obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
-	return
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE 
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)

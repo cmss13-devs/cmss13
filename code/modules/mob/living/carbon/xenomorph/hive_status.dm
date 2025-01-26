@@ -82,7 +82,7 @@
 		XENO_STRUCTURE_CLUSTER = 8,
 		XENO_STRUCTURE_EGGMORPH = 6,
 //RUCM START
-		XENO_STRUCTURE_SUNKEN = 3,
+		XENO_STRUCTURE_SUNKEN = 2,
 //RUCM END
 		XENO_STRUCTURE_RECOVERY = 6,
 		XENO_STRUCTURE_PYLON = 2,
@@ -92,6 +92,9 @@
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
+//RUCM START
+		XENO_STRUCTURE_SUNKEN = /datum/construction_template/xenomorph/sunken_colony,
+//RUCM END
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
 	)
 
@@ -938,9 +941,14 @@
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
 
+	for(var/mob_name in banished_ckeys)
+		if(banished_ckeys[mob_name] == user.ckey)
+			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			return FALSE
+
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
 		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
 	if(length(totalXenos) <= 0)

@@ -60,11 +60,11 @@
 	xeno_cooldown = 0.5 SECONDS
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
+	no_cooldown_msg = TRUE
 	if(!action_cooldown_check())
 		return
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, damage_taken_mod)
-	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/verb/verb_apply_salve()
@@ -123,6 +123,8 @@
 	if(target_is_healer)
 		damage_taken_mod = 1
 
+	for(var/datum/action/xeno_action/activable/apply_salve/source_action in actions)
+		source_action.apply_cooldown()
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
@@ -152,7 +154,7 @@
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
 	if(!salve_applied_icon)
-		salve_applied_icon = mutable_appearance('icons/mob/xenos/drone_strain_overlays.dmi',"Healer Drone Walking")
+		salve_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi',"Healer Drone Walking")
 
 	bound_xeno.overlays -= salve_applied_icon
 	salve_applied_icon.overlays.Cut()
@@ -265,6 +267,11 @@
 
 	target.gain_health(xeno.health * transfer_mod)
 	target.updatehealth()
+
+//RUCM START
+	target.add_xeno_shield(xeno.health * transfer_mod, XENO_SHIELD_SACRIFICE)
+	target.overlay_shields()
+//RUCM END
 
 	target.xeno_jitter(1 SECONDS)
 	target.flick_heal_overlay(3 SECONDS, "#44253d")

@@ -1,7 +1,7 @@
 /datum/xeno_strain/stalker
-	name = "STRAIN: Lurker - Stalker"
-	description = "Вы обмениваете свою способность замедляющего удара на возможность становится невидимым в режиме ходьбы на неопределённый срок."
-	flavor_description = "О н о   х о ч е т   е с т ь . . ."
+	name = "Stalker"
+	description = "You lose your ability to slowing hosts, but you gain ability to be invisible when you stalk."
+	flavor_description = "I T   W A N T   E A T . . ."
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/lurker,
@@ -13,7 +13,7 @@
 	)
 	behavior_delegate_type = /datum/behavior_delegate/lurker_stalker
 
-/datum/xeno_strain/vampire/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
+/datum/xeno_strain/stalker/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
 	lurker.walk_speed = DEFAULT_WALK_SPEED - 2
 	lurker.health_modifier += XENO_HEALTH_MOD_SMALL
 	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
@@ -26,7 +26,7 @@
 
 /datum/behavior_delegate/lurker_stalker/handle_movement_change(new_movement_intent)
 	. = ..()
-	animate(bound_xeno, alpha = new_movement_intent > MOVE_INTENT_WALK ? initial(bound_xeno.alpha) : 15, time = 0.5 SECONDS, easing = QUAD_EASING)
+	animate(bound_xeno, alpha = new_movement_intent > MOVE_INTENT_WALK ? initial(bound_xeno.alpha) : 25, time = 1 SECONDS, easing = QUAD_EASING)
 
 /datum/action/xeno_action/activable/pounce/lurker/stalker/knockdown = TRUE
 

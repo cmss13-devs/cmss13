@@ -22,8 +22,22 @@
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
 		return
 
-	var/dat = "<html>"
-	dat += "<body>"
+	var/dat = {"
+	<table width='100%'>
+	<tr>
+	<td width='20%'>
+	<div align='center'>
+	<b>Search:</b>
+	</div>
+	</td>
+	<td width='80%'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
+	</td>
+	</tr>
+	</table>
+	<br>
+	<table border=0 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, ckey))
 	for(var/datum/view_record/note_view/N as anything in NL)
@@ -43,12 +57,11 @@
 			if(NOTE_WHITELIST)
 				color = "#324da5"
 
-		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
-		dat += "<br><br>"
+		dat += "<tr><td><font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+		dat += "</td></tr>"
 
-	dat += "<br>"
+	dat += "</table>"
 
-	dat += "</body></html>"
 	show_browser(usr, dat, "Your [category_text] Record", "ownrecords", "size=480x480")
 
 
@@ -111,18 +124,32 @@
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
 		return
 
-	var/dat = "<html>"
-	dat += "<body>"
+	var/dat = {"
+	<table width='100%'>
+	<tr>
+	<td width='20%'>
+	<div align='center'>
+	<b>Search:</b>
+	</div>
+	</td>
+	<td width='80%'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
+	</td>
+	</tr>
+	</table>
+	<br>
+	<table border=0 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/color = "#008800"
-	var/add_dat = "<A href='?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
+	var/add_dat = "<A href='byond://?src=\ref[admin_holder];[HrefToken()];add_player_info=[target]'>Add Admin Note</A><br><A href='byond://?src=\ref[admin_holder];[HrefToken()];add_player_info_confidential=[target]'>Add Confidential Admin Note</A><br>"
 	switch(note_category)
 		if(NOTE_MERIT)
 			color = "#9e3dff"
-			add_dat = "<A href='?src=\ref[usr];add_merit_info=[target]'>Add Merit Note</A><br>"
+			add_dat = "<A href='byond://?src=\ref[usr];add_merit_info=[target]'>Add Merit Note</A><br>"
 		if(NOTE_WHITELIST)
 			color = "#324da5"
-			add_dat = "<A href='?src=\ref[usr];add_wl_info=[target]'>Add Whitelist Note</A><br>"
+			add_dat = "<A href='byond://?src=\ref[usr];add_wl_info=[target]'>Add Whitelist Note</A><br>"
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, target))
 	for(var/datum/view_record/note_view/N as anything in NL)
@@ -134,18 +161,17 @@
 			continue
 		var/admin_ckey = N.admin_ckey
 
-		dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+		dat += "<tr><td><font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i> on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		///Can remove notes from anyone other than yourself, unless you're the host. So long as you have deletion access anyway.
 		if((can_del && target != get_player_from_key(key)) || ishost(usr))
-			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"
+			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];remove_wl_info=[key];remove_index=[N.id]'>Remove</A>"
 
-		dat += "<br><br>"
+		dat += "</td></tr>"
 
-	dat += "<br>"
+	dat += "</table><br>"
 	if(can_edit || ishost(src))
 		dat += add_dat
 
-	dat += "</body></html>"
 	show_browser(src, dat, "[target]'s [category_text] Notes", "otherplayersinfo", "size=480x480")
 
 GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)

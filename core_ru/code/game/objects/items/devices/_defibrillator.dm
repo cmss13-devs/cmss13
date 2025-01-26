@@ -113,7 +113,7 @@
 	maxuses = round(dcell.maxcharge / charge_cost)
 	currentuses = round(dcell.charge / charge_cost)
 	. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery. Currently it is in [defib_mode], and will take [defib_recharge/10] seconds to recharge between shocks.")
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) || !blocked_by_suit)
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) || !blocked_by_suit)
 		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
 
 /obj/item/device/defibrillator/clicked(mob/user, list/mods)

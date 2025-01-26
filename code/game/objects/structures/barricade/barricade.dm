@@ -250,7 +250,7 @@
 		return
 
 	if(item.force > force_level_absorption)
-		..()
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)

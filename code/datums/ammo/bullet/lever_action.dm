@@ -54,7 +54,7 @@
 /datum/ammo/bullet/lever_action/xm88
 	name = ".458 SOCOM round"
 
-	damage = 104
+	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6

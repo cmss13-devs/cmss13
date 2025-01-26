@@ -618,17 +618,25 @@
 		return
 
 	if(my_atom) //It exists outside of null space.
-		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
-			if(R.id == "iron")
-				shards += floor(R.volume)
-			else if(R.id == "phoron" && R.volume >= EXPLOSION_PHORON_THRESHOLD)
+		for(var/datum/reagent/reagent in reagent_list) // if you want to do extra stuff when other chems are present, do it here
+			if(reagent.id == "iron")
+				shards += floor(reagent.volume)
+			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
+			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
+				shard_type = /datum/ammo/bullet/shrapnel/neuro
 
 		// some upper limits
 		if(shards > max_ex_shards)
 			shards = max_ex_shards
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
+		if(ispath(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION) // less max incendiary shards
 			shards = max_ex_shards / INCENDIARY_SHARDS_MAX_REDUCTION
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/hornet_rounds) && shards > max_ex_shards / HORNET_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / HORNET_SHARDS_MAX_REDUCTION
+		else if(ispath(shard_type, /datum/ammo/bullet/shrapnel/neuro) && shards > max_ex_shards / NEURO_SHARDS_MAX_REDUCTION)
+			shards = max_ex_shards / NEURO_SHARDS_MAX_REDUCTION
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
 		if(ex_falloff < EXPLOSION_MIN_FALLOFF)
@@ -680,7 +688,7 @@
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
-		smoke.start()
+		smoke.start(intensity, max_fire_int)
 		smoke = null
 
 	exploded = TRUE // clears reagents after all reactions processed
@@ -699,6 +707,13 @@
 
 	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
+
+/// Checks if any of the reagents contained within are harmful
+/datum/reagents/proc/contains_harmful_substances()
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		for(var/datum/chem_property/property as anything in reagent.properties)
+			if(property.can_cause_harm())
+				return TRUE
 
 /turf/proc/reset_chemexploded()
 	chemexploded = FALSE

@@ -10,7 +10,9 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+/*RUCM REMOVE
 		/datum/action/xeno_action/onclick/tacmap,
+*/
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/onclick/emit_pheromones,
@@ -19,7 +21,9 @@
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
+/*RUCM REMOVE
 		/datum/action/xeno_action/onclick/tacmap,
+*/
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden

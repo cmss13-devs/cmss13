@@ -24,6 +24,9 @@
 	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
 	max_build_dist = 1
+//RUCM START
+	tackle_chance = 5 // RNG ISSUE
+//RUCM END
 
 	tackle_min = 4
 	tackle_max = 5
@@ -41,11 +44,14 @@
 	caste_type = XENO_CASTE_LESSER_DRONE
 	name = XENO_CASTE_LESSER_DRONE
 	desc = "An alien drone. Looks... smaller."
-	icon = 'icons/mob/xenos/drone.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Lesser Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 0
+//RUCM START
+	layer = ABOVE_LYING_MOB_LAYER
+//RUCM END
 	mob_flags = NOBIOSCAN
 	mob_size = MOB_SIZE_XENO_VERY_SMALL
 	life_value = 0
@@ -75,8 +81,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
-	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/lesser_drone.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/lesser_drone.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
@@ -106,11 +112,13 @@
 
 	xeno_jitter(25)
 
+/* RUCM CHANGE
 /mob/living/carbon/xenomorph/lesser_drone/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
 		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
+*/
 
 /mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
 	. = ..()

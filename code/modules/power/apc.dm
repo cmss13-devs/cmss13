@@ -161,12 +161,17 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		set_broken()
 
 /obj/structure/machinery/power/apc/Destroy()
+	area.power_light = 0
+	area.power_equip = 0
+	area.power_environ = 0
+	area.power_change()
+
 	if(terminal)
 		terminal.master = null
 		terminal = null
 	QDEL_NULL(cell)
 	area = null
-	. = ..()
+	return ..()
 
 
 // TGUI SHIT \\
@@ -330,6 +335,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut
 /obj/structure/machinery/power/apc/power_change()
+	update_icon()
 	return
 
 /obj/structure/machinery/power/apc/proc/make_terminal()
@@ -428,7 +434,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 									//2 if we need to update the overlays
 	if(!update)
 		return
-	
+
 	set_light(0)
 
 	if(update & 1) //Updating the icon state
@@ -478,7 +484,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				overlays += mutable_appearance(_lighting.icon, _lighting.icon_state)
 				overlays += emissive_appearance(_environ.icon, _environ.icon_state)
 				overlays += mutable_appearance(_environ.icon, _environ.icon_state)
-			
+
 			switch(charging)
 				if(APC_NOT_CHARGING)
 					set_light_color(LIGHT_COLOR_RED)
@@ -817,40 +823,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		var/mob/living/carbon/human/grabber = user
 
 		if(grabber.a_intent == INTENT_GRAB)
-
-			//Synthpack recharge
-			if((grabber.species.flags & IS_SYNTHETIC) && istype(grabber.back, /obj/item/storage/backpack/marine/smartpack))
-				var/obj/item/storage/backpack/marine/smartpack/s_pack = grabber.back
-				if(grabber.action_busy)
-					return
-
-				if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-					return
-
-				playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
-
-				if(stat & BROKEN)
-					var/datum/effect_system/spark_spread/spark = new()
-					spark.set_up(3, 1, src)
-					spark.start()
-					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
-					grabber.apply_damage(10,0, BURN)
-				else if(cell && cell.charge > 0)
-					if(!istype(s_pack))
-						return
-
-					if(s_pack.battery_charge < SMARTPACK_MAX_POWER_STORED)
-						var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - s_pack.battery_charge)
-						if(!(cell.use(charge_to_use)))
-							return
-						s_pack.battery_charge += charge_to_use
-						to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [s_pack.name] now has [s_pack.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
-						charging = APC_CHARGING
-					else
-						to_chat(user, SPAN_WARNING("[s_pack.name] is already fully charged."))
-				else
-					to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
-				return
 
 			// Yautja Bracer Recharge
 			var/obj/item/clothing/gloves/yautja/bracer = grabber.gloves
@@ -1334,13 +1306,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				L.on = 1
 				L.broken()
 				sleep(1)
-
-/obj/structure/machinery/power/apc/Destroy()
-	area.power_light = 0
-	area.power_equip = 0
-	area.power_environ = 0
-	area.power_change()
-	. = ..()
 
 /obj/structure/machinery/power/apc/wires_cut
 	icon_state = "apcewires_mapicon"

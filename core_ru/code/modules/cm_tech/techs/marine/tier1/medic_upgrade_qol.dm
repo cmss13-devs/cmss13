@@ -11,9 +11,7 @@
 
 /datum/tech/droppod/item/medic_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
-	if(!H || !D)
-		return
-	if(H.job == JOB_SQUAD_MEDIC)
+	if(!H || skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		.["Medical CZSP"] = /obj/item/storage/box/combat_zone_support_package
 	else
 		var/type_to_add = /obj/item/stack/medical/bruise_pack

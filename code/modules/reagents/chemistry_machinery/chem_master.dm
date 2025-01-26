@@ -52,11 +52,6 @@
 			deconstruct(FALSE)
 			return
 
-
-/obj/structure/machinery/chem_master/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/chem_master/update_icon()
 	if(stat & BROKEN)
 		icon_state = (beaker?"mixer1_b":"mixer0_b")
@@ -399,6 +394,11 @@
 	SIGNAL_HANDLER
 	if(connected)
 		connected = null
+
+/obj/structure/machinery/chem_master/yautja
+	name = "chemical distributor"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
 
 /obj/structure/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"

@@ -358,13 +358,13 @@
 	var/stats = ""
 	stats += "[SSticker.mode.round_finished]\n"
 	stats += "Game mode: [game_mode]\n"
-	stats += "Map name: [current_map.name]\n"
+	stats += "Map name: [current_map.map_name]\n"
 	stats += "Round time: [duration2text(round_length)]\n"
 	stats += "End round player population: [end_round_player_population]\n"
 
 	stats += "Total xenos spawned: [total_xenos_created]\n"
-	stats += "Total Preds spawned: [total_predators_spawned]\n"
-	stats += "Total Predaliens spawned: [total_predaliens]\n"
+	stats += "Total preds spawned: [total_predators_spawned]\n"
+	stats += "Total predaliens spawned: [total_predaliens]\n"
 	stats += "Total humans spawned: [total_humans_created]\n"
 
 	stats += "Xeno count during hijack: [xeno_count_during_hijack]\n"

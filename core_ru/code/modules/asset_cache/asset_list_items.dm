@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(battlepass_icons_list, list(
 		"coin_diamond", "coin_platinum", "coin_mythril",
 	),
 	'icons/obj/items/tools.dmi' = list(
-		"visa", "broadcastingcamera"
+		"broadcastingcamera"
 	),
 	'icons/obj/items/card.dmi' = list(
 		"visa"

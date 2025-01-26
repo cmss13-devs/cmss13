@@ -192,19 +192,6 @@
 			a_right = null
 		qdel(src)
 
-/obj/item/device/assembly_holder/process_activation(obj/D, normal = 1, special = 1)
-	if(!D) return 0
-	if(!secured)
-		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
-	if((normal) && (a_right) && (a_left))
-		if(a_right != D)
-			a_right.pulsed(0)
-		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've qdel'd the assembly
-			a_left.pulsed(0)
-	if(master)
-		master.receive_signal()
-	return 1
-
 /obj/item/device/assembly_holder/hear_talk(mob/living/M as mob, msg, tts_heard_list)
 	if(a_right)
 		a_right.hear_talk(M,msg, tts_heard_list = tts_heard_list)

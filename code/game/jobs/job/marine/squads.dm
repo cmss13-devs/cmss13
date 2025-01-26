@@ -348,6 +348,10 @@
 	name = "Boa"
 //###############################
 /datum/squad/New()
+//RUCM START
+	roles_cap[JOB_SQUAD_ENGI] = 6
+	roles_cap[JOB_SQUAD_MEDIC] = 8
+//RUCM END
 	. = ..()
 
 	tracking_id = SStracking.setup_trackers()

@@ -301,6 +301,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			update_icon()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
+//RUCM START
+	if(toggled)
+		START_PROCESSING(SSslowobj, src)
+//RUCM END
 	..()
 	if(inoperable())
 		handle_xeno_acquisition(get_turf(src))

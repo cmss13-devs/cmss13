@@ -35,11 +35,11 @@ GLOBAL_PROTECT(href_token)
 	if(rights & R_PROFILER)
 		log_debug("Adding [ckey] to APP/admin.")
 		world.SetConfig("APP/admin", ckey, "role=admin")
-*/
 
 // Letting admins edit their own permission giver is a poor idea
 /datum/admins/vv_edit_var(var_name, var_value)
 	return FALSE
+*/
 
 /datum/admins/proc/associate(client/C, datum/view_record/admin_holder/db_holder)
 	if(istype(C))

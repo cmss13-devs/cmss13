@@ -286,13 +286,6 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-/datum/game_mode/crash/declare_completion()
-	. = ..()
-
-	declare_completion_announce_fallen_soldiers()
-	declare_completion_announce_xenomorphs()
-	declare_completion_announce_medal_awards()
-	declare_fun_facts()
 
 /datum/game_mode/crash/on_nuclear_diffuse(obj/structure/machinery/nuclearbomb/bomb, mob/living/carbon/xenomorph/xenomorph)
 	. = ..()

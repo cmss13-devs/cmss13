@@ -125,6 +125,20 @@
 
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
 RUCM REMOVE END*/
+//RUCM START
+	if(href_list["csdeny"])
+		var/mob/ref_person = locate(href_list["csdeny"])
+		log_game("[key_name_admin(usr)] отклонил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] отклонил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]", 1)
+
+	if(href_list["cssend"])
+		var/mob/ref_person = locate(href_list["cssend"])
+		message_admins("[key_name_admin(usr)] одобрил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]")
+		marine_announcement("Вызов корпоративной охраны одобрен.", "Corporate Security Beacon", logging = ARES_LOG_SECURITY)
+		var/datum/emergency_call/goon/goon = new()
+		goon.activate(TRUE, FALSE)
+		log_game("[key_name_admin(usr)] has sent corporate security, requested by [key_name_admin(ref_person)]")
+//RUCM END
 
 //======================================================
 //Everything that has to do with evac and self-destruct.

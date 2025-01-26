@@ -36,21 +36,6 @@
 	var/console_cooldown
 	var/console_cooldown_duration = 10 MINUTES
 
-/datum/admins/Topic(href, href_list)
-	..()
-	if(href_list["csdeny"])
-		var/mob/ref_person = locate(href_list["csdeny"])
-		log_game("[key_name_admin(usr)] отклонил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] отклонил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]", 1)
-
-	if(href_list["cssend"])
-		var/mob/ref_person = locate(href_list["cssend"])
-		message_admins("[key_name_admin(usr)] одобрил вызов корпоративной охраны, запрошенный [key_name_admin(ref_person)]")
-		marine_announcement("Вызов корпоративной охраны одобрен.", "Corporate Security Beacon", logging = ARES_LOG_SECURITY)
-		var/datum/emergency_call/goon/goon = new()
-		goon.activate(TRUE, FALSE)
-		log_game("[key_name_admin(usr)] has sent corporate security, requested by [key_name_admin(ref_person)]")
-
 /obj/structure/machinery/computer/corporate/button/attack_hand(mob/user)
 	. = ..()
 	to_chat(user, SPAN_WARNING("Прикладываю палец к сканнеру... Сейчас..."))

@@ -658,6 +658,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	return ..()
 
 /obj/item/storage/backpack/marine/satchel/rto/pickup(mob/user)
+//RUCM START
+	if(user.job == JOB_SQUAD_TEAM_LEADER || user.job == JOB_SQUAD_LEADER)
+		give_action(user, /datum/action/human_action/activable/droppod)
+//RUCM END
 	. = ..()
 	autoset_phone_id(user)
 
@@ -687,6 +691,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.enabled = TRUE
 
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
+//RUCM START
+	if(user.job == JOB_SQUAD_TEAM_LEADER || user.job == JOB_SQUAD_LEADER)
+		for(var/datum/action/human_action/activable/droppod/action in user.actions)
+			action.remove_from(user)
+			break
+//RUCM END
 	. = ..()
 	autoset_phone_id(null) // Disable phone when dropped
 

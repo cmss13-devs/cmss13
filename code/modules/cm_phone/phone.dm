@@ -606,6 +606,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
 
+/obj/structure/transmitter/rotary/ares
+	phone_category = "ARES"
+	phone_color = "blue"
+
 /obj/structure/transmitter/rotary/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
 

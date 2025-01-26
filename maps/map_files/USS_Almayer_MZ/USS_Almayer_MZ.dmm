@@ -48329,10 +48329,8 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/ares{
 	name = "AI Reception Telephone";
-	phone_category = "ARES";
-	phone_color = "blue";
 	phone_id = "AI Reception"
 	},
 /turf/open/floor/almayer/no_build/ai_floors,
@@ -56722,10 +56720,8 @@
 /obj/structure/machinery/faxmachine/uscm/ai_core{
 	pixel_y = 8
 	},
-/obj/structure/transmitter/rotary{
+/obj/structure/transmitter/rotary/ares{
 	name = "AI Core Telephone";
-	phone_category = "ARES";
-	phone_color = "blue";
 	phone_id = "AI Core";
 	pixel_x = 8;
 	pixel_y = -8

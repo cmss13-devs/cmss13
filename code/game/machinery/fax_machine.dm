@@ -20,6 +20,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_DEPARTMENT_ALMAYER_BRIG "USS Almayer Brig"
 #define FAX_DEPARTMENT_ALMAYER_AICORE "USS Almayer AI Core"
 #define FAX_DEPARTMENT_GENERAL_PUBLIC "General Public"
+#define FAX_DEPARTMENT_ALMAYER_REQUISITION "USS Almayer Requisitions"
+#define FAX_DEPARTMENT_ALMAYER_SEA "USS Almayer SEA"
 
 #define FAX_NET_USCM "USCM Encrypted Network"
 #define FAX_NET_USCM_HC "USCM High Command Quantum Relay"
@@ -710,10 +712,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	radio_alert_tag = ":+"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/requistion
-	department = "Requisitions"
- 
+	department = FAX_DEPARTMENT_ALMAYER_REQUISITION
+
 /obj/structure/machinery/faxmachine/uscm/almayer/sea
-	department = "SEA"
+	department = FAX_DEPARTMENT_ALMAYER_SEA
 
 /obj/structure/machinery/faxmachine/uscm/almayer/command
 	department = FAX_DEPARTMENT_ALMAYER_COMMAND

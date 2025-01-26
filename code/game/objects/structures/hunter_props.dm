@@ -179,6 +179,7 @@
 	desc = null
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = ABOVE_MOB_LAYER
 
 /obj/effect/hunter/rune
 	name = "rune"

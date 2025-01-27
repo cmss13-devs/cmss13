@@ -5093,6 +5093,19 @@
 	dir = 4
 	},
 /area/yautja)
+"rn" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4;
+	pixel_y = 34
+	},
+/obj/structure/machinery/door_control{
+	id = "hangar2";
+	pixel_y = -18;
+	name = "Lower Deck Shutters";
+	pixel_x = 1
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
 "rp" = (
 /obj/effect/hunter/rune{
 	dir = 1
@@ -13991,6 +14004,19 @@
 	light_color = "#ff0000"
 	},
 /area/yautja)
+"VG" = (
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4;
+	pixel_y = 34
+	},
+/obj/structure/machinery/door_control{
+	id = "hangar3";
+	pixel_y = -17;
+	name = "Lower Deck Shutters";
+	pixel_x = 1
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
 "VH" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Storage Room";
@@ -21833,7 +21859,7 @@ vU
 vU
 vU
 sW
-lT
+rn
 aV
 aV
 ti
@@ -22489,7 +22515,7 @@ vU
 vU
 vU
 sW
-lT
+VG
 aV
 aV
 mW

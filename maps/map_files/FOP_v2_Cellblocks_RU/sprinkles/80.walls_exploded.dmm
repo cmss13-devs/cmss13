@@ -1,0 +1,151 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/prison/red/east,
+/area/prison/cellblock/highsec/south/south)
+"c" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/red/southeast,
+/area/prison/cellblock/highsec/south/south)
+"d" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"e" = (
+/turf/open/floor/prison/red/southwest,
+/area/prison/cellblock/highsec/south/south)
+"g" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 15;
+	pixel_y = -8
+	},
+/turf/closed/wall/prison,
+/area/prison/cellblock/highsec/south/south)
+"k" = (
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor/prison/damaged2/southwest,
+/area/prison/cellblock/highsec/south/south)
+"m" = (
+/turf/open/floor/prison/damaged2/southwest,
+/area/prison/cellblock/highsec/south/south)
+"n" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/prison/cellblock/highsec/south/south)
+"o" = (
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"p" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"q" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/prison/damaged2/southwest,
+/area/prison/cellblock/highsec/south/south)
+"v" = (
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"w" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"x" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"y" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/item/stack/rods,
+/turf/open/floor/prison/damaged2/southwest,
+/area/prison/cellblock/highsec/south/south)
+"z" = (
+/obj/item/stack/rods,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/prison/cellblock/highsec/south/south)
+"C" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/prison/cellblock/highsec/south/south)
+"J" = (
+/turf/closed/wall/prison,
+/area/prison/cellblock/highsec/south/south)
+"P" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"S" = (
+/obj/structure/surface/rack,
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"V" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/prison/cellblock/highsec/south/south)
+"X" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/prison,
+/area/prison/cellblock/highsec/south/south)
+"Y" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/damaged2/southwest,
+/area/prison/cellblock/highsec/south/south)
+
+(1,1,1) = {"
+k
+C
+n
+n
+z
+m
+e
+V
+"}
+(2,1,1) = {"
+a
+m
+m
+m
+a
+a
+c
+V
+"}
+(3,1,1) = {"
+J
+J
+v
+X
+v
+J
+J
+V
+"}
+(4,1,1) = {"
+J
+x
+P
+m
+Y
+o
+S
+g
+"}
+(5,1,1) = {"
+J
+x
+q
+w
+p
+y
+w
+d
+"}

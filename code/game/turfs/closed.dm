@@ -20,6 +20,10 @@
 		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 			return
 
+	for(var/atom/possible_blocker in above_current)
+		if(possibl_blocker.density)
+			return
+
 	if(user.action_busy)
 		return
 

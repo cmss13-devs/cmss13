@@ -2,7 +2,6 @@
 //Researcher
 /datum/job/civilian/researcher
 	title = JOB_RESEARCHER
-	spawn_positions = 2
 	supervisors = "chief medical officer"
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

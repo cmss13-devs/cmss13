@@ -1,6 +1,5 @@
 /datum/job/command/crew_chief
 	title = JOB_DROPSHIP_CREW_CHIEF
-	spawn_positions = 2
 	supervisors = "the pilot officers"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/dcc

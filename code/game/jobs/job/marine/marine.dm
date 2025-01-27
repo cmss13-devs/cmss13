@@ -1,7 +1,6 @@
 /datum/job/marine
 	supervisors = "the acting squad leader"
 	selection_class = "job_marine"
-	spawn_positions = 8
 
 /datum/job/marine/generate_entry_message(mob/living/carbon/human/current_human)
 	if(current_human.assigned_squad)

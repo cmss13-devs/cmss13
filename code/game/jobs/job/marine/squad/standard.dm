@@ -3,7 +3,6 @@
 /datum/job/marine/standard
 	title = JOB_SQUAD_MARINE
 	limited_slots = FALSE
-	spawn_positions = -1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/pfc
 
@@ -12,7 +11,7 @@
 	return ..()
 
 /datum/job/marine/standard/set_spawn_positions(count)
-	spawn_positions = max((floor(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8)
+	total_positions_so_far = max(total_positions_so_far, max((floor(count * STANDARD_MARINE_TO_TOTAL_SPAWN_RATIO)), 8))
 
 /datum/job/marine/standard/whiskey
 	title = JOB_WO_SQUAD_MARINE

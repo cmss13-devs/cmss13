@@ -1,6 +1,5 @@
 /datum/job/logistics/cargo
 	title = JOB_CARGO_TECH
-	spawn_positions = 2
 	supervisors = "the requisitions officer"
 	selection_class = "job_ct"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

@@ -1,7 +1,6 @@
 //Military Police
 /datum/job/command/police
 	title = JOB_POLICE
-	spawn_positions = 5
 	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_police/mp

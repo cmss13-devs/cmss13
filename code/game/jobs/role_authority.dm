@@ -303,9 +303,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(assign_role(NP, J))
 				assigned += role_weight
 				unassigned_players -= NP
-				// -1 check is not strictly needed here, since standard marines are
+				// limited_slots is not strictly needed here, since standard marines are
 				// supposed to have an actual spawn_positions number at this point
-				if(J.spawn_positions != -1 && J.current_positions >= J.spawn_positions)
+				if(J.limited_slots && J.current_positions >= J.total_positions_so_far)
 					roles_to_iterate -= job //Remove the position, since we no longer need it.
 					break //Maximum position is reached?
 
@@ -349,7 +349,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				continue
 
 			if(assign_role(M, J)) //Check to see if they can actually get it.
-				if(J.current_positions >= J.spawn_positions) roles_to_iterate -= j
+				if(J.current_positions >= J.total_positions_so_far) roles_to_iterate -= j
 				return roles_to_iterate
 
 	//If they fail the two passes, or no regular roles are available, they become a marine regardless.

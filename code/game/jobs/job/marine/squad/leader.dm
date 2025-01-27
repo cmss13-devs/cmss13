@@ -1,6 +1,5 @@
 /datum/job/marine/leader
 	title = JOB_SQUAD_LEADER
-	spawn_positions = 4
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/leader

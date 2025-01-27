@@ -1,7 +1,6 @@
 //Intelligence Officer
 /datum/job/command/intel
 	title = JOB_INTEL
-	spawn_positions = 3
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM Intelligence Officer (IO) (Cryo)"

@@ -22,8 +22,7 @@
 	)
 
 /datum/job/antag/predator/set_spawn_positions(count)
-	spawn_positions = max((floor(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
-	total_positions_so_far = spawn_positions
+	total_positions_so_far max((floor(count * PREDATOR_TO_TOTAL_SPAWN_RATIO)), 4)
 
 /datum/job/antag/predator/spawn_and_equip(mob/new_player/player)
 	player.spawning = TRUE

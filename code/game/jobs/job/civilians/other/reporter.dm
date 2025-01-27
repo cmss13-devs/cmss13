@@ -3,7 +3,6 @@
 
 /datum/job/civilian/reporter
 	title = JOB_COMBAT_REPORTER
-	spawn_positions = 1
 	selection_class = "job_cl"
 	supervisors = "the acting commanding officer"
 	gear_preset = /datum/equipment_preset/uscm_ship/reporter

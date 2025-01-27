@@ -1,6 +1,5 @@
 /datum/job/command/pilot/dropship_pilot
 	title = JOB_DROPSHIP_PILOT
-	spawn_positions = 1
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/dp

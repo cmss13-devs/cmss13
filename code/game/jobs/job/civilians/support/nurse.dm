@@ -1,6 +1,5 @@
 /datum/job/civilian/nurse
 	title = JOB_NURSE
-	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

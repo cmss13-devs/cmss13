@@ -1,6 +1,5 @@
 /datum/job/civilian/synthetic
 	title = JOB_SYNTH
-	spawn_positions = 1
 	supervisors = "the acting commanding officer"
 	selection_class = "job_synth"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN

@@ -1,6 +1,5 @@
 /datum/job/civilian/professor
 	title = JOB_CMO
-	spawn_positions = 1
 	supervisors = "the acting commanding officer"
 	selection_class = "job_cmo"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

@@ -1,7 +1,6 @@
 /datum/job/command
 	selection_class = "job_command"
 	supervisors = "the acting commanding officer"
-	spawn_positions = 1
 
 /datum/timelock/command
 	name = "Command Roles"

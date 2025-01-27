@@ -1,6 +1,5 @@
 /datum/job/civilian/liaison
 	title = JOB_CORPORATE_LIAISON
-	spawn_positions = 1
 	supervisors = "the Wey-Yu corporate office"
 	selection_class = "job_cl"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

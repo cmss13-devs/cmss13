@@ -1,7 +1,6 @@
 //Ordnance Technician
 /datum/job/logistics/otech
 	title = JOB_ORDNANCE_TECH
-	spawn_positions = 3
 	supervisors = "the chief engineer"
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

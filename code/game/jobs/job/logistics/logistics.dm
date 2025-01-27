@@ -1,6 +1,5 @@
 /datum/job/logistics
 	supervisors = "the auxiliary support officer"
-	spawn_positions = 1
 
 /datum/timelock/engineer
 	name = "Engineering Roles"

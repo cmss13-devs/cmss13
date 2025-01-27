@@ -54,7 +54,7 @@
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
 		var/datum/job/PJ = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ) && !PJ.spawn_positions)
+		if(istype(PJ) && !PJ.total_positions_so_far)
 			PJ.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
@@ -109,8 +109,7 @@
 	if(!role)
 		return
 	J = GLOB.RoleAuthority.roles_by_name[role]
-	var/tpos = J.spawn_positions
-	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos)
+	var/num = tgui_input_number(src, "How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]")
 	if(isnull(num))
 		return
 	if(!GLOB.RoleAuthority.modify_role(J, num))

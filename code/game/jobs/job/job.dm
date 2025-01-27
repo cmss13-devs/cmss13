@@ -5,13 +5,12 @@
 	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
 	var/limited_slots = TRUE //is there no limit to slots, used for rifleman
-	var/spawn_positions = 0 //How many players can spawn in as this job
 	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
 	var/current_positions = 0 //How many players have this job
 	var/minimal_open_positions = 1 //minimal positions open for round
 	var/maximal_open_positions = 1 //maximal positions open for round
 	var/players_per_position = 1 //how many USCM players are needed per position
-	var/factor = 1 //how many multiplications of players per position are not needed before first increment
+	var/factor = 1 //how many multiplications of players per position are not needed before first increment, players per position 10 and factor 2 means you get 3 slots open at 10 players
 	var/supervisors = "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
 	var/selection_class = "" // Job Selection span class (for background color)
 
@@ -239,7 +238,7 @@
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
 /datum/job/proc/get_total_positions(latejoin = FALSE)
-	var/positions = spawn_positions
+	var/positions = total_positions_so_far
 	if(latejoin)
 		positions = job_slot_formula(get_total_marines(), players_per_position, factor, minimal_open_positions, maximal_open_positions )
 		if(positions <= total_positions_so_far)

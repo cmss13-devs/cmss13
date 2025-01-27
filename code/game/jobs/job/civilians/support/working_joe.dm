@@ -3,7 +3,6 @@
 
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
-	spawn_positions = 6
 	supervisors = "ARES and APOLLO"
 	selection_class = "job_working_joe"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
@@ -54,7 +53,6 @@
 
 /datum/job/antag/upp/dzho_automaton
 	title = JOB_UPP_JOE
-	spawn_positions = 3
 	supervisors = "1VAN/3 and UPP command staff"
 	gear_preset = /datum/equipment_preset/synth/working_joe/upp
 	flags_startup_parameters = ROLE_WHITELISTED

@@ -9,7 +9,6 @@
 /datum/job/antag/upp
 	title = FACTION_UPP
 	selection_class = "job_synth" //setup colour
-	spawn_positions = 1
 	late_joinable = TRUE
 	faction_menu = FACTION_UPP
 	minimum_playtime_as_job = 0

@@ -1,6 +1,5 @@
 /datum/job/command/tank_crew
 	title = JOB_TANK_CREW
-	spawn_positions = 2
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm/tank
@@ -8,9 +7,9 @@
 
 /datum/job/command/tank_crew/set_spawn_positions(count)
 	if (length(GLOB.clients) >= 200)
-		spawn_positions = 2
+		total_positions_so_far = 2
 	else
-		spawn_positions = 0
+		total_positions_so_far = max(total_positions_so_far, 0)
 
 /datum/job/command/tank_crew/get_total_positions(latejoin = FALSE)
 	if(SStechtree.trees[TREE_MARINE].get_node(/datum/tech/arc).unlocked)

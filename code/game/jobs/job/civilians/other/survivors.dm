@@ -13,8 +13,7 @@
 	var/hostile = FALSE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
-	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
-	total_positions_so_far = spawn_positions
+	total_positions_so_far = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 
 /datum/job/civilian/survivor/equip_job(mob/living/survivor)
 	var/generated_account = generate_money_account(survivor)
@@ -153,11 +152,12 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	selection_class = "job_synth"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_SYNTHETIC
-	spawn_positions = 1
 	job_options = null
+	minimal_open_positions = 1
+	maximal_open_positions = 1
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return spawn_positions
+	return maximal_open_positions
 
 /datum/job/civilian/survivor/synth/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
 	if(picked_spawner.synth_equipment)
@@ -179,14 +179,14 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_COMMANDER
-	spawn_positions = 0
 	job_options = null
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	var/spawn_count = 0
 	if(length(CO_survivor_types))
-		spawn_positions = 1
-	return spawn_positions
+		spawn_count = 1
+	return spawn_count
 
 /datum/job/civilian/survivor/commanding_officer/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
 	if(picked_spawner.CO_equipment)

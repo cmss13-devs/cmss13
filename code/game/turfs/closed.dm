@@ -21,7 +21,7 @@
 			return
 
 	for(var/atom/possible_blocker in above_current)
-		if(possibl_blocker.density)
+		if(possible_blocker.density)
 			return
 
 	if(user.action_busy)

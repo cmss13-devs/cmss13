@@ -5,11 +5,8 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
-	var/broken = FALSE
-	var/burnt = FALSE
+	turf_flags = TURF_BURNABLE|TURF_BREAKABLE
 	var/mineral = "metal"
-	var/breakable_tile = TRUE
-	var/burnable_tile = TRUE
 	var/image/wet_overlay
 
 	var/tile_type = /obj/item/stack/tile/plasteel
@@ -18,7 +15,7 @@
 
 /turf/open/floor/get_examine_text(mob/user)
 	. = ..()
-	if(!hull_tile)
+	if(!(turf_flags & TURF_HULL))
 		var/tool_output = list()
 		if(tool_flags & REMOVE_CROWBAR)
 			tool_output += SPAN_GREEN("crowbar")
@@ -37,7 +34,7 @@
 
 
 /turf/open/floor/ex_act(severity, explosion_direction)
-	if(hull_tile)
+	if(turf_flags & TURF_HULL)
 		return 0
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -53,9 +50,9 @@
 	return 0
 
 /turf/open/floor/fire_act(exposed_temperature, exposed_volume)
-	if(hull_tile)
+	if(turf_flags & TURF_HULL)
 		return
-	if(!burnt && prob(5))
+	if(!(turf_flags & TURF_BURNT) && prob(5))
 		burn_tile()
 	else if(prob(1))
 		make_plating()
@@ -87,13 +84,13 @@
 	break_tile()
 
 /turf/open/floor/proc/break_tile()
-	if(!breakable_tile || hull_tile)
+	if(!(turf_flags & TURF_BREAKABLE)  || turf_flags & TURF_HULL)
 		return
-	if(broken && prob(85))
+	if(turf_flags & TURF_BROKEN)
 		make_plating()
 		return
 
-	broken = TRUE
+	turf_flags |= TURF_BROKEN
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
 	else if(is_light_floor())
@@ -109,12 +106,12 @@
 		icon_state = "grass[pick("1", "2", "3")]"
 
 /turf/open/floor/proc/burn_tile()
-	if(!burnable_tile || hull_tile)
+	if(!(turf_flags & TURF_BURNABLE) || turf_flags & TURF_HULL)
 		return
-	if(broken || burnt)
+	if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 		return
 
-	burnt = TRUE
+	turf_flags |= TURF_BURNT
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
 	else if(is_plasteel_floor())
@@ -132,19 +129,19 @@
 /turf/open/floor/proc/make_plating()
 	set_light(0)
 	intact_tile = FALSE
-	broken = FALSE
-	burnt = FALSE
+	turf_flags &= ~TURF_BURNT
+	turf_flags &= ~TURF_BROKEN
 	ChangeTurf(plating_type)
 
 /turf/open/floor/attackby(obj/item/hitting_item, mob/user)
-	if(hull_tile) //no interaction for hulls
+	if(turf_flags & TURF_HULL) //no interaction for hulls
 		return
 
 	if(weeds)
 		return weeds.attackby(hitting_item,user)
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
-		if(broken || burnt)
+		if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else
 			if(tool_flags & BREAK_CROWBAR)

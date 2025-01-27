@@ -105,7 +105,7 @@
 		if(!found_area.can_build_special)
 			return FALSE
 
-		if(found_turf.hull_tile)
+		if(found_turf.turf_flags & TURF_HULL)
 			return FALSE
 
 		if(found_turf.turf_flags & TURF_NO_MULTIZ_SUPPORT)

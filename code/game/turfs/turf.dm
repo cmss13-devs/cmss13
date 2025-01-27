@@ -66,9 +66,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	/// Whether we've broken through the ceiling yet
-	var/ceiling_debrised = FALSE
-
 	// Fishing
 	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
 
@@ -712,9 +709,12 @@
 /turf/proc/ceiling_debris_check(size = 1)
 	return
 
-/turf/proc/ceiling_debris(size = 1)
+/turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
+	if(turf_flags & TURF_DEBRISED)
+		return
+
 	var/turf/below_turf = SSmapping.get_turf_below(src)
-	if(ceiling_debrised || !below_turf)
+	if(!below_turf)
 		return
 
 	var/spread = floor(sqrt(size)*1.5)
@@ -752,7 +752,7 @@
 				new /obj/item/stack/sheet/metal(pick(turfs))
 				new /obj/item/stack/sheet/metal(pick(turfs))
 
-	ceiling_debrised = TRUE
+	turf_flags |= TURF_DEBRISED
 
 /turf/proc/ceiling_desc(mob/user)
 	if(length(linked_pylons))
@@ -1048,6 +1048,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/remove_flag(flag)
+	turf_flags &= ~flag
 
 /turf/proc/on_atom_created(atom/created_atom)
 	return

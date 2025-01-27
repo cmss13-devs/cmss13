@@ -193,6 +193,10 @@
 	icon_state = "kutjevo_goggles"
 	item_state = "kutjevo_goggles"
 
+/obj/item/clothing/glasses/kutjevo/safety
+	name = "safety goggles"
+	desc = "Goggles used to shield the eyes of workers. N95Z Rated."
+
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
 	gender = NEUTER

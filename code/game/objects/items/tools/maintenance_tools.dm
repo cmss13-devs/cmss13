@@ -679,7 +679,7 @@
 		var/turf/open/floor/flooring = attacked_obj
 
 		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent
-			if(flooring.hull_floor) //no interaction for hulls
+			if(flooring.turf_flags & TURF_HULL) //no interaction for hulls
 				return
 			if(flooring.weeds)
 				return attackby(src, user)

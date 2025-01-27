@@ -1,0 +1,4 @@
+author: "Nomoresolvalou"
+delete-after: True
+changes:
+  - bugfix: "yautja mask attachment now saves to preferences correctly"

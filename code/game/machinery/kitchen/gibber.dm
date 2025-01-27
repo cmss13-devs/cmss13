@@ -64,7 +64,7 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
-	if( !iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal) )
+	if((!iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal)) || isqueen(grabbed.grabbed_thing))
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 

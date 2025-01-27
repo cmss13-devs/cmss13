@@ -434,11 +434,11 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 3 MINUTES
+	var/decryption_time = 1 MINUTES
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
-	timeleft = 3 MINUTES
+	timeleft = 1 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL
 
 	var/list/linked_decryption_towers
@@ -475,8 +475,14 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(timing)
 				to_chat(ui.user, SPAN_INFO("[src] is impossible to disengage now!"))
 				return
-
-
+		if("toggleSafety")
+			if(decrypting)
+				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
+				return
+		if("toggleAnchor")
+			if(decrypting)
+				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
+				return
 	if(..())
 		return
 
@@ -491,6 +497,10 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 			if(!anchored)
 				to_chat(ui.user, SPAN_INFO("Engage anchors first!"))
+				return
+
+			if(safety)
+				to_chat(ui.user, SPAN_INFO("The safety is still on."))
 				return
 
 			var/area/current_area = get_area(src)
@@ -540,8 +550,13 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	if(world.time > decryption_end_time)
 		decrypting = FALSE
 		decryption_time = 0
-		announce_to_players()
+		timing = TRUE
+		GLOB.bomb_set = TRUE
+		explosion_time = world.time + timeleft
+		update_minimap_icon()
+		announce_to_players(NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
 		timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_COMPLETE
+
 		return
 
 	if(!timer_announcements_flags)
@@ -559,7 +574,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			return
 
 /obj/structure/machinery/nuclearbomb/tech/announce_to_players(timer_warning)
-	if(!decryption_time)
+	if(!decryption_time && (timer_warning != NUKE_DECRYPT_SHOW_TIMER_COMPLETE))
 		return ..()
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
@@ -575,6 +590,17 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			humans_other -= current_mob
 
 	if(timer_warning)
+		if(timer_warning == NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
+			announcement_helper("ALERT.\n\nDECRYPTION COMPLETE.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
+			announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
+			var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
+			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device has been activated. You have approximately [t_left] to abandon the hunting grounds before it activates."))
+			for(var/hivenumber in GLOB.hive_datum)
+				hive = GLOB.hive_datum[hivenumber]
+				if(!length(hive.totalXenos))
+					continue
+				xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated the hive killer at [get_area_name(loc)]! Stop it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+			return
 		announcement_helper("DECRYPTION IN [floor(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("DECRYPTION IN [floor(decryption_time/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 

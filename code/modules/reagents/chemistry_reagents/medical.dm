@@ -323,7 +323,7 @@
 /datum/reagent/medical/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-	if(M.bodytemperature < 170)
+	if(M.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		M.adjustCloneLoss(-1)
 		M.apply_damage(-1, OXY)
 		M.heal_limb_damage(1,1)

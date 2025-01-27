@@ -152,6 +152,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	data["allowed"] = allowed
 	data["being_used"] = being_used
 	data["decryption_complete"] = TRUE //this is overridden by techweb nuke UI_data later, this just makes it default to true
+	data["can_disengage"] = TRUE
 
 	return data
 
@@ -321,7 +322,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_uscm = list()
 	for(var/mob/current_mob as anything in humans_other)
-		if(current_mob.stat != CONSCIOUS || isyautja(current_mob))
+		if(current_mob.stat  == UNCONSCIOUS || isyautja(current_mob))
 			humans_other -= current_mob
 			continue
 		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
@@ -416,7 +417,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	for(var/datum/interior/interior in SSinterior.interiors)
 		if(!interior.exterior || interior.exterior.z != z)
 			continue
-	
+
 		for(var/mob/living/passenger in interior.get_passengers())
 			if(!(passenger in (alive_mobs + dead_mobs)))
 				if(passenger.stat != DEAD)
@@ -477,6 +478,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	.["decryption_time"] = duration2text_sec(decryption_time)
 
 	.["decryption_complete"] = decryption_time ? FALSE : TRUE
+	.["can_disengage"] = FALSE
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	switch(action)
@@ -593,7 +595,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	for(var/mob/current_mob as anything in humans_other)
 		var/mob/living/carbon/human/current_human = current_mob
 		if(istype(current_human)) //if it's unconsious human or yautja, we remove them
-			if(current_human.stat != CONSCIOUS || isyautja(current_human))
+			if(current_human.stat == UNCONSCIOUS || isyautja(current_human))
 				humans_other -= current_mob
 				continue
 		if(current_mob.faction == FACTION_MARINE || current_mob.faction == FACTION_SURVIVOR)

@@ -39,7 +39,8 @@
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
-	var/hud_type = MOB_HUD_FACTION_MARINE
+	var/hud_type = MOB_HUD_FACTION_MARINE //Main faction hud. This determines minimap icons and tracking stuff
+	var/list/additional_hud_types = list() //Additional faction huds, doesn't change minimap icon or similar
 	var/default_freq
 
 	///The type of minimap this headset is added to
@@ -263,6 +264,9 @@
 		if(headset_hud_on)
 			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.add_hud_to(user, src)
+			for(var/per_faction_hud in additional_hud_types)
+				var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
+				alt_hud.add_hud_to(user, src)
 			//squad leader locator is no longer invisible on our player HUD.
 			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
 				user.show_hud_tracker()
@@ -282,6 +286,10 @@
 	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = GLOB.huds[hud_type]
 		H.remove_hud_from(user, src)
+		for(var/per_faction_hud in additional_hud_types)
+			var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
+			alt_hud.remove_hud_from(user, src)
+
 		//squad leader locator is invisible again
 		if(user.hud_used && user.hud_used.locate_leader)
 			user.hide_hud_tracker()
@@ -315,6 +323,9 @@
 			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			if(headset_hud_on)
 				H.add_hud_to(usr, src)
+				for(var/per_faction_hud in additional_hud_types)
+					var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
+					alt_hud.add_hud_to(usr, src)
 				if(user.mind && (misc_tracking || user.assigned_squad) && user.hud_used?.locate_leader)
 					user.show_hud_tracker()
 				if(misc_tracking)
@@ -322,6 +333,9 @@
 				update_minimap_icon()
 			else
 				H.remove_hud_from(usr, src)
+				for(var/per_faction_hud in additional_hud_types)
+					var/datum/mob_hud/alt_hud = GLOB.huds[per_faction_hud]
+					alt_hud.remove_hud_from(usr, src)
 				if(user.hud_used?.locate_leader)
 					user.hide_hud_tracker()
 				if(misc_tracking)
@@ -511,19 +525,28 @@
 	name = "marine military police radio headset"
 	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	locate_setting = TRACKER_CMP
+	misc_tracking = TRUE
+
+	inbuilt_tracking_options = list(
+		"Chief MP" = TRACKER_CMP,
+	)
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor
 	name = "marine honor guard radio headset"
 	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	volume = RADIO_VOLUME_RAISED
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
 
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
+		"Chief MP" = TRACKER_CMP,
 		"Executive Officer" = TRACKER_XO
 	)
 
@@ -531,6 +554,7 @@
 	name = "marine chief MP radio headset"
 	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 	volume = RADIO_VOLUME_CRITICAL
 
@@ -570,7 +594,7 @@
 	icon_state = "wy_headset"
 	maximum_keys = 5
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
-
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_PMC)
 	spy_bug_type = /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 
 /obj/item/device/radio/headset/almayer/mcl/Initialize()
@@ -603,6 +627,7 @@
 	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/aist
@@ -650,8 +675,7 @@
 /obj/item/device/radio/headset/almayer/mcom/ai
 	name = "USCM AI Headset"
 	desc = "The integrated headset of a W-Y built USCM Ship AI"
-
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth/ai)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine
@@ -1025,6 +1049,7 @@
 	inbuilt_tracking_options = list(
 		"Corporate Liaison" = TRACKER_CL
 	)
+	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/distress/cbrn
 	name = "\improper CBRN headset"
@@ -1069,10 +1094,12 @@
 	name = "PMC-CMD headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #z - command, #f - medical, #e - engineering, #o - JTAC, #p - general"
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/mcom/cl)
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/distress/pmc/command/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command)
 	misc_tracking = FALSE
+	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/distress/pmc/command/director
 	name = "WY director headset"
@@ -1184,6 +1211,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CMB
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1194,6 +1222,7 @@
 	name = "\improper ICC Liaison Headset"
 	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :o - Colony, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
 	icon_state = "wy_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_WY)
 	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
 
 /obj/item/device/radio/headset/distress/NSPA
@@ -1204,6 +1233,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_NSPA
+	additional_hud_types = list(MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/almayer/highcom
@@ -1212,6 +1242,7 @@
 	icon_state = "mhc_headset"
 	frequency = HC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/provost
@@ -1220,6 +1251,7 @@
 	icon_state = "pvst_headset"
 	frequency = PVST_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/provost)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/sof
@@ -1228,6 +1260,7 @@
 	icon_state = "soc_headset"
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/almayer/sof/survivor_forecon

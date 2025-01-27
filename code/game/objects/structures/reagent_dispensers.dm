@@ -141,7 +141,7 @@
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return
-	. = ..()
+	..()
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank

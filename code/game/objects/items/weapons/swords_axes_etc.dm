@@ -31,8 +31,7 @@
 	force = MELEE_FORCE_NORMAL
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	. = ..()
-	if(.)
+	if(!..())
 		return
 
 	if(M.stuttering < 8)
@@ -64,7 +63,6 @@
 		return ..()
 	else
 		stun(target, user)
-		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/weapon/telebaton/attack_self(mob/user as mob)
 	..()

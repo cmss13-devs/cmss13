@@ -519,7 +519,7 @@
 				chair_state = DROPSHIP_CHAIR_FOLDED
 				return
 	else
-		. = ..()
+		..()
 
 
 
@@ -570,7 +570,6 @@
 	if(flags_item & WIELDED)
 		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
-	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/weapon/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
 	if(flags_item & WIELDED)

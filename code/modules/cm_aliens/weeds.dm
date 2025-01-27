@@ -397,7 +397,7 @@
 	user.animation_attack_on(src)
 
 	take_damage(damage)
-	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+	return TRUE //don't call afterattack
 
 /obj/effect/alien/weeds/proc/take_damage(damage)
 	if(explo_proof)

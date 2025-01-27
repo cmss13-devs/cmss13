@@ -140,7 +140,7 @@ FIRE ALARM
 					qdel(src)
 		return
 
-	. = ..()
+	..()
 	return
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)

@@ -384,6 +384,8 @@
 	see_in_dark = 12
 	sight |= SEE_MOBS
 	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE)
+		lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+	else if (lighting_alpha == LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	else if(lighting_alpha == LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE

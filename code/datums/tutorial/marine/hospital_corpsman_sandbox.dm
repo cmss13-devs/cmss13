@@ -47,7 +47,7 @@
 
 	var/turf/agent_spawn_location
 
-	var/list/difficulties = list(TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE, TUTORIAL_HM_INJURY_SEVERITY_SEVERE, TUTORIAL_HM_INJURY_SEVERITY_FATAL, TUTORIAL_HM_INJURY_SEVERITY_EXTREME, TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
+	var/list/difficulties = list(TUTORIAL_HM_INJURY_SEVERITY_BOOBOO, TUTORIAL_HM_INJURY_SEVERITY_MINOR, TUTORIAL_HM_INJURY_SEVERITY_ROUTINE, TUTORIAL_HM_INJURY_SEVERITY_SEVERE, TUTORIAL_HM_INJURY_SEVERITY_FATAL, TUTORIAL_HM_INJURY_SEVERITY_EXTREME, TUTORIAL_HM_INJURY_SEVERITY_MAXIMUM)
 
 	/// Max amount of agents per survival wave
 	var/max_survival_agents = 3
@@ -56,7 +56,7 @@
 	/// Current survival wave
 	var/survival_wave = 0
 
-	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_MINOR
+	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_BOOBOO
 
 	var/boobootimer
 
@@ -200,7 +200,7 @@
 	// premedication simulations
 	if(pick(15;1,85;0))
 		var/datum/reagent/medical/reagent = pick(premeds)
-		target.reagents.add_reagent(reagent, round(rand(0, reagent.overdose - 1)))
+		target.reagents.add_reagent(reagent.id, round(rand(0, reagent.overdose - 1)))
 
 	target.updatehealth()
 	target.UpdateDamageIcon()

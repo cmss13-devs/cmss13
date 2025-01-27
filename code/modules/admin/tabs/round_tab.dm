@@ -45,19 +45,20 @@
 		var/enabled = FALSE
 		if(SSnightmare.get_scenario_value("predator_round"))
 			enabled = TRUE
-		var/ret = alert("Nightmare Scenario has the upcoming round being a [(enabled ? "PREDATOR" : "NORMAL")] round. Do you want to toggle this?", "Toggle Predator Round", "Yes", "No")
+		var/ret = tgui_alert(usr, "Are you sure you want to force-toggle a predator round? Nightmare Scenario has the upcoming round as a [(enabled ? "PREDATOR" : "NORMAL")] round.", "Toggle Predator Round", list("Yes", "No"))
 		if(ret == "Yes")
 			SSnightmare.set_scenario_value("predator_round", !enabled)
+			message_admins("[key_name_admin(usr)] has [!enabled ? "allowed predators to spawn" : "prevented predators from spawning"].")
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")
+	if(tgui_alert(usr, "Are you sure you want to force-toggle a predator round? Predators are currently [(predator_round.flags_round_type & MODE_PREDATOR) ? "ENABLED" : "DISABLED"].", "Toggle Predator Round", list("Yes", "No")) != "Yes")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
-		var/datum/job/PJ = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ) && !PJ.spawn_positions)
-			PJ.set_spawn_positions(GLOB.players_preassigned)
+		var/datum/job/pred_job = GLOB.RoleAuthority.roles_for_mode[JOB_PREDATOR]
+		if(istype(pred_job) && !pred_job.spawn_positions)
+			pred_job.set_spawn_positions(GLOB.players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 	else

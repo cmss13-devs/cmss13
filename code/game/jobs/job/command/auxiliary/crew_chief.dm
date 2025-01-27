@@ -7,6 +7,8 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/dcc
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to assist</a> the pilot officer maintain the ship's dropship. You have authority only on the dropship, but you are expected to maintain order, as not to disrupt the pilot."
+	minimal_open_positions = 3
+	maximal_open_positions = 3
 
 AddTimelock(/datum/job/command/crew_chief, list(
 	JOB_SQUAD_ROLES = 5 HOURS,

@@ -466,7 +466,6 @@
 
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_map()
-	SIGNAL_HANDLER
 
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 0))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))

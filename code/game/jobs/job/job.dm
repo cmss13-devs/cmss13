@@ -174,7 +174,7 @@
 	return floor(clamp((marine_count/marine_per_slot)+ factor, min, max))
 
 
-/datum/job/proc/set_spawn_positions(count)
+/datum/job/proc/set_spawn_positions(count = get_total_marines())
 	total_positions_so_far = max(total_positions_so_far, job_slot_formula(count, players_per_position, factor, minimal_open_positions, maximal_open_positions ))
 	return total_positions_so_far
 

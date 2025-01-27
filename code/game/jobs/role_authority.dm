@@ -372,7 +372,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
-	if(J.limited_slots && J.total_positions_so_far <= J.current_positions)
+	if(J.limited_slots && J.set_spawn_positions() <= J.current_positions)
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE

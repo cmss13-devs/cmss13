@@ -14,6 +14,7 @@
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(target_squad && target_squad.faction == FACTION_MARINE)
 			target_squad.roles_cap[title] = slots_total/4
+	return slots_total
 
 /datum/job/marine/engineer/whiskey
 	title = JOB_WO_SQUAD_ENGINEER

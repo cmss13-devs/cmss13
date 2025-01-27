@@ -236,7 +236,7 @@
 /datum/job/proc/get_total_positions(latejoin = FALSE)
 	var/positions = spawn_positions
 	if(latejoin)
-		positions = job_slot_formula(get_total_marines(), players_per_position, 1, minimal_open_positions, maximal_open_positions )
+		positions = job_slot_formula(get_total_marines(), players_per_position, factor, minimal_open_positions, maximal_open_positions )
 		if(positions <= total_positions_so_far)
 			positions = total_positions_so_far
 		else

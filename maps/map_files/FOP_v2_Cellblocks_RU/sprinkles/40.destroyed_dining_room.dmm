@@ -1146,10 +1146,6 @@
 	},
 /turf/open/floor/prison/greenfull,
 /area/prison/canteen)
-"NH" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor/prison,
-/area/prison/canteen)
 "NM" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/damaged1,
@@ -1699,7 +1695,7 @@ zc
 XQ
 xl
 Fo
-NH
+zc
 BM
 oz
 zc

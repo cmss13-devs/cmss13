@@ -601,11 +601,6 @@
 /obj/structure/platform,
 /turf/open/floor/prison,
 /area/prison/hallway/central/west)
-"OE" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/good_item,
-/turf/open/floor/prison,
-/area/prison/hallway/central/west)
 "OL" = (
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON")
@@ -975,10 +970,10 @@ Ps
 Ps
 wF
 iG
-OE
-OE
 xg
-OE
+xg
+xg
+xg
 yX
 "}
 (9,1,1) = {"

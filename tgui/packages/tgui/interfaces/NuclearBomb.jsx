@@ -7,7 +7,7 @@ export const NuclearBomb = () => {
 
   const cantNuke = (!data.anchor, !!data.safety, !data.decryption_complete);
   const cantDecrypt = (!data.anchor, data.decryption_complete);
-  const cantDisengage = (!data.anchor, !data.cantDisengage);
+  const cantDisengage = (!data.anchor, !data.can_disengage);
 
   return (
     <Window theme="retro" width={350} height={250}>

@@ -6,6 +6,7 @@
 #include "_globalvars\mobs.dm"
 #include "_onclick\hud\fullscreen.dm"
 #include "controllers\subsystem\battlepass.dm"
+#include "controllers\subsystem\hijack.dm"
 #include "controllers\subsystem\playtime.dm"
 #include "controllers\subsystem\queue.dm"
 #include "controllers\subsystem\techtree.dm"

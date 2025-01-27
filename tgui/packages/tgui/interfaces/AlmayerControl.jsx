@@ -240,6 +240,47 @@ export const AlmayerControl = (_props) => {
                   </Button.Confirm>
                 )}
               </Flex.Item>
+              <Flex.Item>
+                <NoticeBox color="bad" textAlign="center">
+                  Operation Stage: {data.operation_stage}
+                </NoticeBox>
+                {data.operation_leaving === 3 && (
+                  <Button
+                    disabled={1}
+                    tooltip={data.operation_reason}
+                    fluid={1}
+                    icon="ban"
+                  >
+                    Unable to leave operation zone
+                  </Button>
+                )}
+                {data.operation_leaving === 0 && (
+                  <Button.Confirm
+                    fluid={1}
+                    color="red"
+                    icon="paper-plane"
+                    confirmColor="bad"
+                    confirmContent="Confirm?"
+                    confirmIcon="question"
+                    onClick={() => act('operation_zone_leave')}
+                  >
+                    Leave operation zone
+                  </Button.Confirm>
+                )}
+                {data.operation_leaving === 1 && (
+                  <Button.Confirm
+                    fluid={1}
+                    color="green"
+                    icon="paper-plane"
+                    confirmColor="bad"
+                    confirmContent="Confirm?"
+                    confirmIcon="question"
+                    onClick={() => act('operation_zone_return')}
+                  >
+                    Return to operation zone
+                  </Button.Confirm>
+                )}
+              </Flex.Item>
             </Section>
           </Flex>
         </Section>

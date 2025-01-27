@@ -1266,6 +1266,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			. += "Hijack Over"
 
 	if(SShijack)
+//RUCM START
+		. += "Operation Stage: [SShijack.get_ship_operation_stage_status_panel_eta()]"
+//RUCM END
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goal: [eta_status]"

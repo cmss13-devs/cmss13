@@ -84,6 +84,11 @@
 	data["evac_status"] = SShijack.evac_status
 	if(SShijack.evac_status == EVACUATION_STATUS_INITIATED)
 		data["evac_eta"] = SShijack.get_evac_eta()
+//RUCM START
+	data["operation_reason"] = SShijack.ship_evac_blocked()
+	data["operation_stage"] = SShijack.get_ship_operation_stage_status_panel_eta()
+	data["operation_leaving"] = SShijack.ship_evac_blocked() ? 0 : SShijack.ship_operation_stage_status > 3
+//RUCM END
 
 	if(!length(messagetitle))
 		data["messages"] = null
@@ -116,6 +121,17 @@
 
 		// evac stuff start \\
 
+//RUCM START
+		if("operation_zone_leave")
+			if(SShijack.initiate_ship_evacuation())
+				to_chat(usr, SPAN_WARNING("[MAIN_SHIP_NAME] will be out of signal range with colony in: [gameTimestamp("hh:mm:ss", SHIP_EVACUATION_AUTOMATIC_DEPARTURE)], [MAIN_AI_SYSTEM] still has the right to stop the completion of an operation in the event of a protocol violation!"))
+				log_game("[key_name(usr)] began shutting down the operation.")
+				message_admins("[key_name_admin(usr)] began shutting down the operation [SPAN_ORANGE("(via ARES)")].")
+				. = TRUE
+			else
+				to_chat(usr, SPAN_WARNING("ERROR, [MAIN_AI_SYSTEM] CANNOT CONFIRM THIS ACTION!"))
+				. = TRUE
+//RUCM END
 		if("evacuation_start")
 			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))

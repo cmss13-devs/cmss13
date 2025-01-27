@@ -1770,6 +1770,20 @@ const Emergency = (props) => {
         >
           Request Nuclear Device
         </Button.Confirm>
+        <Button.Confirm
+          tooltip="You cannot do this via remote console."
+          icon="shuttle-space"
+          color="red"
+          width="40vw"
+          textAlign="center"
+          fontSize="1.5rem"
+          p="1rem"
+          mt="5rem"
+          bold
+          disabled={ares_access_text}
+        >
+          Leave Operation Zone
+        </Button.Confirm>
       </Flex>
     </>
   );

@@ -93,6 +93,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 ///Triggered when the dropship first lands.
 /datum/game_mode/proc/ds_first_landed(obj/docking_port/stationary/marine_dropship)
 	SHOULD_CALL_PARENT(TRUE)
+//RUCM START
+	SShijack.ship_operation_stage_status = OPERATION_IN_PROGRESS
+//RUCM END
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
 

@@ -119,6 +119,11 @@
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
 		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
+//RUCM START
+	if(escape_locked)
+		to_chat(user, SPAN_WARNING("The dropship isn't responding to controls."))
+		return
+//RUCM END
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
 		var/units = "seconds"

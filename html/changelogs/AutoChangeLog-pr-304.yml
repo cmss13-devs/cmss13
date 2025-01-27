@@ -1,0 +1,14 @@
+author: "Arom-beep"
+delete-after: True
+changes:
+  - mapadd: "intel added on map."
+  - mapadd: "new tcomms spawn."
+  - mapadd: "tunnels for xenos added."
+  - mapadd: "sensor tower added."
+  - mapadd: "new tcomms spawn for 2nd tower."
+  - mapadd: "new room over medbay with gens and other engi stuff."
+  - mapadd: "more last stand on map, more details."
+  - mapadd: "more stuff in armory."
+  - mapadd: "more crates in tech tunnels."
+  - mapadd: "more trash in tech tunnels."
+  - mapadd: "airlocks for tech tunnels."

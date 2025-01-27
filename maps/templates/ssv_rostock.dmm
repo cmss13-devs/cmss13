@@ -3957,7 +3957,7 @@
 /turf/open/floor/strata/green3,
 /area/rostock/lower_deck/m_hallway)
 "cGz" = (
-/obj/structure/cargo_container/arious/left,
+/obj/structure/cargo_container/upp/tan/left,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "cGU" = (
@@ -5069,7 +5069,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/engineering/main_area)
 "dCR" = (
-/obj/structure/cargo_container/lockmart/mid,
+/obj/structure/cargo_container/canc/mid,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "dCW" = (
@@ -6979,7 +6979,7 @@
 /turf/open/floor/strata,
 /area/rostock/vehiclehangar)
 "faJ" = (
-/obj/structure/cargo_container/arious/right,
+/obj/structure/cargo_container/upp/tan/right,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "faR" = (
@@ -14379,7 +14379,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lifeboat)
 "kCS" = (
-/obj/structure/cargo_container/lockmart/left,
+/obj/structure/cargo_container/canc/left,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "kCV" = (
@@ -16425,7 +16425,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lower_deck/briefing)
 "msL" = (
-/obj/structure/cargo_container/seegson/left,
+/obj/structure/cargo_container/upp/left,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "msM" = (
@@ -20698,7 +20698,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/engineering/starboard_aft_accessway)
 "pVu" = (
-/obj/structure/cargo_container/arious/mid,
+/obj/structure/cargo_container/upp/tan/mid,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "pVK" = (
@@ -26518,7 +26518,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
 "uND" = (
-/obj/structure/cargo_container/seegson/mid,
+/obj/structure/cargo_container/upp/mid,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "uNF" = (
@@ -27696,7 +27696,7 @@
 /turf/open/floor/darkish,
 /area/rostock/railgun)
 "vGr" = (
-/obj/structure/cargo_container/seegson/right,
+/obj/structure/cargo_container/upp/right,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/hangar/hangarbay)
 "vGz" = (
@@ -31070,7 +31070,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lower_deck/cryogenics)
 "ykg" = (
-/obj/structure/cargo_container/lockmart/right,
+/obj/structure/cargo_container/canc/right,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "ykr" = (

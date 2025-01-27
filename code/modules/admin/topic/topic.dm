@@ -1279,8 +1279,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["PressFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["PressFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
 		if(!template_choice) return
@@ -1331,8 +1331,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["USCMFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
 		if(!template_choice) return
@@ -1382,8 +1382,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["WYFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["WYFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
 		if(!template_choice) return
@@ -1429,8 +1429,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["TWEFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["TWEFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
 		if(!template_choice) return
@@ -1476,8 +1476,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["UPPFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["UPPFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
 		if(!template_choice) return
@@ -1523,8 +1523,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["CLFFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["CLFFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
 		if(!template_choice) return
@@ -1570,8 +1570,8 @@
 			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
 			return FALSE
 
-		var/mob/living/carbon/human/H = locate(href_list["CMBFaxReply"])
-		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/mob/living/carbon/human/target_human = locate(href_list["CMBFaxReply"])
+		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(user, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
 		if(!template_choice) return

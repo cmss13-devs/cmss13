@@ -1,6 +1,0 @@
-author: "BlackCrystalic"
-delete-after: True
-changes:
-  - rscadd: "Added new statistic traking values"
-  - refactor: "Fully redone statistic plus save in DB"
-  - ui: "New TGUI for statistic"

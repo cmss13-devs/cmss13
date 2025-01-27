@@ -500,6 +500,18 @@
   - refactor: Fully redone statistic plus save in DB
   - ui: New TGUI for statistic
 2025-01-27:
+  Arom-beep:
+  - mapadd: intel added on map.
+  - mapadd: new tcomms spawn.
+  - mapadd: tunnels for xenos added.
+  - mapadd: sensor tower added.
+  - mapadd: new tcomms spawn for 2nd tower.
+  - mapadd: new room over medbay with gens and other engi stuff.
+  - mapadd: more last stand on map, more details.
+  - mapadd: more stuff in armory.
+  - mapadd: more crates in tech tunnels.
+  - mapadd: more trash in tech tunnels.
+  - mapadd: airlocks for tech tunnels.
   BlackCrystalic:
   - rscadd: Added new statistic traking values
   - refactor: Fully redone statistic plus save in DB

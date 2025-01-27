@@ -1,6 +1,5 @@
 /datum/job/civilian/nurse
 	title = JOB_NURSE
-	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"

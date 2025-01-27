@@ -4,7 +4,7 @@
 	var/disp_title  //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
-	var/total_positions = 0 //How many players can be this job
+	var/limited_slots = TRUE //is there no limit to slots, used for rifleman
 	var/spawn_positions = 0 //How many players can spawn in as this job
 	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
 	var/current_positions = 0 //How many players have this job
@@ -169,9 +169,15 @@
 		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
+/datum/job/proc/job_slot_formula(marine_count, marine_per_slot, factor, min, max)
+	if(marine_count <= marine_per_slot)
+		return min
+	return floor(clamp((marine_count/marine_per_slot)+ factor, min, max))
+
+
 /datum/job/proc/set_spawn_positions(count)
-	total_positions = job_slot_formula(count, players_per_position, factor, minimal_open_positions, maximal_open_positions )
-	return total_positions
+	total_positions_so_far = max(total_positions_so_far, job_slot_formula(count, players_per_position, factor, minimal_open_positions, maximal_open_positions ))
+	return total_positions_so_far
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
@@ -242,7 +248,7 @@
 			total_positions_so_far = positions
 	else
 		total_positions_so_far = positions
-	return positions
+	return total_positions_so_far
 
 /datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))

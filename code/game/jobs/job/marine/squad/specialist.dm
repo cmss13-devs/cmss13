@@ -1,6 +1,5 @@
 /datum/job/marine/specialist
 	title = JOB_SQUAD_SPECIALIST
-	total_positions = 4
 	spawn_positions = 4
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/spec

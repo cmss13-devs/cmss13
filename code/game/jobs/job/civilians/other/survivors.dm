@@ -4,7 +4,6 @@
 	title = JOB_SURVIVOR
 	selection_class = "job_special"
 	// For the roundstart precount, then gets further limited by set_spawn_positions.
-	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
 	job_options = SURVIVOR_VARIANT_LIST
@@ -15,7 +14,7 @@
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
-	total_positions = spawn_positions
+	total_positions_so_far = spawn_positions
 
 /datum/job/civilian/survivor/equip_job(mob/living/survivor)
 	var/generated_account = generate_money_account(survivor)
@@ -154,7 +153,6 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	selection_class = "job_synth"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_SYNTHETIC
-	total_positions = 1
 	spawn_positions = 1
 	job_options = null
 
@@ -181,14 +179,12 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_COMMANDER
-	total_positions = 0
 	spawn_positions = 0
 	job_options = null
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	if(length(CO_survivor_types))
-		total_positions = 1
 		spawn_positions = 1
 	return spawn_positions
 

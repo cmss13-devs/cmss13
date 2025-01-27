@@ -271,7 +271,7 @@ Additional game mode variables.
 
 	for(var/job in FAX_RESPONDER_JOB_LIST)
 		var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[job]
-		var/job_max = fax_responder_job.total_positions
+		var/job_max = fax_responder_job.total_positions_so_far
 		if((fax_responder_job.current_positions < job_max) && fax_responder_job.can_play_role(responder_candidate.client))
 			options += job
 	return options
@@ -1158,7 +1158,7 @@ Additional game mode variables.
 
 	// council doesn't count towards this conditional.
 	if(joe_job.get_whitelist_status(joe_candidate.client) == WHITELIST_NORMAL)
-		var/joe_max = joe_job.total_positions
+		var/joe_max = joe_job.total_positions_so_far
 		if((joe_job.current_positions >= joe_max) && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))

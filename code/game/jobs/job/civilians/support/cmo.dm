@@ -1,6 +1,5 @@
 /datum/job/civilian/professor
 	title = JOB_CMO
-	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the acting commanding officer"
 	selection_class = "job_cmo"

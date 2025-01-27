@@ -1,6 +1,5 @@
 /datum/job/command/auxiliary_officer
 	title = JOB_AUXILIARY_OFFICER
-	total_positions = 1
 	spawn_positions = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/auxiliary_officer

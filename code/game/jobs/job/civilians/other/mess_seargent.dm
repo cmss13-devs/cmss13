@@ -1,6 +1,5 @@
 /datum/job/civilian/chef
 	title = JOB_MESS_SERGEANT
-	total_positions = 2
 	spawn_positions = 1
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

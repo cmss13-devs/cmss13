@@ -76,7 +76,7 @@
 	var/datum/job/J
 	for(i in GLOB.RoleAuthority.roles_for_mode) //All the roles in the game.
 		J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(J.total_positions > 0 && J.current_positions > 0)
+		if(J.total_positions_so_far > 0 && J.current_positions > 0)
 			roles += i
 
 	to_chat(usr, SPAN_BOLDNOTICE("There is not a single taken job slot."))

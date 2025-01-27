@@ -7,7 +7,3 @@
 
 // https://docs.google.com/spreadsheets/d/1PlnIwKhq-bVWWFPoBrzWYh1mWK04pyBSQUtUMEw3qSw/edit#gid=1290768907
 
-/proc/job_slot_formula(marine_count, marine_per_slot, factor, min, max)
-	if(marine_count <= marine_per_slot)
-		return min
-	return floor(clamp((marine_count/marine_per_slot)+ factor, min, max))

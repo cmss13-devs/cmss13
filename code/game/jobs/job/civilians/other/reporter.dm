@@ -3,7 +3,6 @@
 
 /datum/job/civilian/reporter
 	title = JOB_COMBAT_REPORTER
-	total_positions = 1
 	spawn_positions = 1
 	selection_class = "job_cl"
 	supervisors = "the acting commanding officer"

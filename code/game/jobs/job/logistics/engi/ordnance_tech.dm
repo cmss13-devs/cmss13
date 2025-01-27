@@ -1,7 +1,6 @@
 //Ordnance Technician
 /datum/job/logistics/otech
 	title = JOB_ORDNANCE_TECH
-	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the chief engineer"
 	selection_class = "job_ot"

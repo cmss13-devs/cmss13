@@ -1,6 +1,5 @@
 /datum/job/logistics/cargo
 	title = JOB_CARGO_TECH
-	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the requisitions officer"
 	selection_class = "job_ct"

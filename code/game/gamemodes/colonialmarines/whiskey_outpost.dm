@@ -222,7 +222,6 @@
 		// If the job has unlimited job slots, We set the amount of slots to the amount it has at the moment this is called
 		if (J.spawn_positions < 0)
 			J.spawn_positions = J.current_positions
-			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
 	message_admins("Wave one has begun. Disabled new player game joining.")

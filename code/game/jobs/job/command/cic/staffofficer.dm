@@ -1,6 +1,5 @@
 /datum/job/command/bridge
 	title = JOB_SO
-	total_positions = 4
 	spawn_positions = 4
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so

@@ -3,7 +3,6 @@
 	gear_preset = /datum/equipment_preset/fax_responder
 	selection_class = "job_command"
 	supervisors = "CMSS13 Administration Staff"
-	total_positions = 1
 	spawn_positions = 1
 
 	late_joinable = FALSE

@@ -1,6 +1,5 @@
 /datum/job/civilian/synthetic
 	title = JOB_SYNTH
-	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the acting commanding officer"
 	selection_class = "job_synth"

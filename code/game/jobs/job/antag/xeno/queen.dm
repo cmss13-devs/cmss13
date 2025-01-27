@@ -3,7 +3,6 @@
 	role_ban_alternative = "Queen"
 	supervisors = "Queen Mother"
 	selection_class = "job_xeno_queen"
-	total_positions = 1
 	spawn_positions = 1
 	minimal_open_positions = 1
 	maximal_open_positions = 1

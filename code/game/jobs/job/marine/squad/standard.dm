@@ -2,7 +2,7 @@
 
 /datum/job/marine/standard
 	title = JOB_SQUAD_MARINE
-	total_positions = -1
+	limited_slots = FALSE
 	spawn_positions = -1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/pfc

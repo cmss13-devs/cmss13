@@ -1,7 +1,6 @@
 //Military Police
 /datum/job/command/police
 	title = JOB_POLICE
-	total_positions = 5
 	spawn_positions = 5
 	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

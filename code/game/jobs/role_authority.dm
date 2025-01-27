@@ -253,7 +253,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Now we take spare unfilled xeno slots and make them larva NEW
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
+		hive.stored_larva += max(0, (XJ.total_positions_so_far - XJ.current_positions) \
 		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
 
 	/*===============================================================*/
@@ -372,7 +372,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
-	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+	if(J.limited_slots && J.get_total_positions(latejoin) <= J.current_positions)
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
@@ -382,12 +382,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	return TRUE
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
-	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions)
+	if(istype(J) && J.limited_slots && J.get_total_positions(latejoin) >= J.current_positions)
 		J.current_positions--
 		return 1
 
 /datum/authority/branch/role/proc/free_role_admin(datum/job/job, latejoin = TRUE, user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
-	if(!istype(job) || job.total_positions == -1)
+	if(!istype(job) || !job.limited_slots)
 		return
 	if(job.current_positions < 1) //this should be filtered earlier, but we still check just in case
 		to_chat(user, "There are no [job] job slots occupied.")
@@ -421,7 +421,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return 0
 	if(amount < J.current_positions) //we should be able to slot everyone
 		return 0
-	J.total_positions = amount
 	J.total_positions_so_far = amount
 	return 1
 

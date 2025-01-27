@@ -2,7 +2,6 @@
 //Researcher
 /datum/job/civilian/researcher
 	title = JOB_RESEARCHER
-	total_positions = 2
 	spawn_positions = 2
 	supervisors = "chief medical officer"
 	selection_class = "job_researcher"

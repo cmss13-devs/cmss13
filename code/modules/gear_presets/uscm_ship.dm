@@ -26,6 +26,7 @@
 
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
+	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -51,79 +52,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background = "background_civillian"
-
-	dress_under = list(
-		/obj/item/clothing/under/liaison_suit/black,
-		/obj/item/clothing/under/liaison_suit/blue,
-		/obj/item/clothing/under/liaison_suit/brown,
-		/obj/item/clothing/under/liaison_suit/corporate_formal,
-		/obj/item/clothing/under/liaison_suit,
-		/obj/item/clothing/under/liaison_suit/charcoal,
-		/obj/item/clothing/under/liaison_suit/formal,
-		/obj/item/clothing/under/liaison_suit/blazer,
-		/obj/item/clothing/under/liaison_suit/suspenders,
-		/obj/item/clothing/under/blackskirt,
-		/obj/item/clothing/under/suit_jacket/trainee,
-		/obj/item/clothing/under/liaison_suit/ivy,
-		/obj/item/clothing/under/liaison_suit/orange,
-		/obj/item/clothing/under/liaison_suit/field,
-		/obj/item/clothing/under/colonist/workwear,
-		/obj/item/clothing/under/colonist/workwear/khaki,
-		/obj/item/clothing/under/colonist/workwear/pink,
-		/obj/item/clothing/under/colonist/workwear/green,
-	)
-	dress_over = list(
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber,
-		/obj/item/clothing/suit/storage/bomber,
-		/obj/item/clothing/suit/storage/bomber/alt,
-		/obj/item/clothing/suit/storage/snow_suit/liaison,
-		/obj/item/clothing/suit/storage/labcoat,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/vest,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
-		/obj/item/clothing/suit/storage/webbing,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_green,
-		/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant,
-	)
-	dress_extra = list(
-		/obj/item/clothing/accessory/black,
-		/obj/item/clothing/accessory/red,
-		/obj/item/clothing/accessory/purple,
-		/obj/item/clothing/accessory/blue,
-		/obj/item/clothing/accessory/green,
-		/obj/item/clothing/accessory/gold,
-		/obj/item/clothing/accessory/horrible,
-		/obj/item/clothing/glasses/sunglasses/big,
-		/obj/item/clothing/glasses/sunglasses/aviator,
-		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/glasses/sunglasses/prescription,
-		/obj/item/clothing/glasses/regular/hipster,
-	)
-	dress_gloves = list(
-		/obj/item/clothing/gloves/black,
-		/obj/item/clothing/gloves/marine/dress,
-	)
-	dress_shoes = list(
-		/obj/item/clothing/shoes/laceup,
-		/obj/item/clothing/shoes/laceup/brown,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/marine/corporate,
-	)
-	dress_hat = list(
-		/obj/item/clothing/head/fedora,
-		/obj/item/clothing/head/beret/cm/black/civilian,
-		/obj/item/clothing/head/beret/cm/white/civilian,
-	)
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/uscm_ship/liaison/New()
 	. = ..()
@@ -446,13 +375,13 @@
 	utility_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/mbcg)
 
-	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/gray, /obj/item/clothing/under/marine/officer/formal/turtleneck)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless)
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer, /obj/item/clothing/suit/storage/jacket/marine/dress)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
@@ -524,6 +453,7 @@
 	dress_over = list(
 		/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer,
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+		/obj/item/clothing/suit/storage/jacket/marine/dress,
 	)
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
@@ -888,7 +818,7 @@
 	skills = /datum/skills/commander
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
-	utility_gloves = list(/obj/item/clothing/gloves/marine/techofficer/commander)
+	utility_gloves = list(/obj/item/clothing/gloves/marine)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
 
 	service_hat = list(/obj/item/clothing/head/beret/cm)

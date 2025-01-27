@@ -256,6 +256,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 25
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/seized/p90
+	name = "FN P90 submachinegun crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+		/obj/item/ammo_magazine/smg/p90,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/seized/mp27
 	name = "MP-27 submachinegun crate (x5 magazines included)"
 	contains = list(
@@ -803,6 +816,12 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	contains = list(/obj/item/ammo_box/magazine/fp9000)
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/ammo/p90
+	name = "Magazines box (FN P90, 10x mags)"
+	dollar_cost = 30
+	contains = list(/obj/item/ammo_box/magazine/p90)
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/ammo/mp27
 	name = "Magazines box (MP-27, 12x mags)"
 	dollar_cost = 45
@@ -1102,6 +1121,16 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	name = "M44 Custom Revolver"
 	contains = list(/obj/item/weapon/gun/revolver/m44/custom)
 	dollar_cost = 70
+	crate_heat = 4
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/deep_storage/gunslinger_holster
+	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	contains = list(
+		/obj/item/storage/belt/gun/m44/gunslinger,
+		/obj/item/storage/belt/gun/m44/gunslinger,
+	)
+	dollar_cost = 20
 	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 

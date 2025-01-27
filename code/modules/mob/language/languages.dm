@@ -134,6 +134,7 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	key = "x"
+	syllables = list("sss", "sSs", "SSS")
 	flags = RESTRICTED
 
 /datum/language/xenos

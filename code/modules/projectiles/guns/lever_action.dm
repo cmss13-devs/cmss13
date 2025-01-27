@@ -158,18 +158,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 		current_mag.chamber_contents[i] = i > number_to_replace ? "empty" : current_mag.default_ammo
 	current_mag.chamber_position = current_mag.current_rounds //The position is always in the beginning [1]. It can move from there.
 
-/obj/item/weapon/gun/lever_action/proc/add_to_internal_mag(mob/user,selection) //bullets are added forward.
-	if(!current_mag)
-		return
-	current_mag.chamber_position++ //We move the position up when loading ammo. New rounds are always fired next, in order loaded.
-	current_mag.chamber_contents[current_mag.chamber_position] = selection //Just moves up one, unless the mag is full.
-	if(current_mag.current_rounds == 1 && !in_chamber) //The previous proc in the reload() cycle adds ammo, so the best workaround here,
-		update_icon() //This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
-		ready_in_chamber()
-		cock_gun(user)
-	if(user) playsound(user, reload_sound, 25, TRUE)
-	return TRUE
-
 /obj/item/weapon/gun/lever_action/proc/empty_chamber(mob/user)
 	if(!current_mag)
 		return
@@ -227,27 +215,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 		current_mag.chamber_position--
 		return in_chamber
 
-/obj/item/weapon/gun/lever_action/ready_in_chamber()
-	return ready_lever_action_internal_mag()
-
-/obj/item/weapon/gun/lever_action/reload_into_chamber(mob/user)
-	if(!active_attachable)
-		in_chamber = null
-
-		//Time to move the internal_mag position.
-		ready_in_chamber() //We're going to try and reload. If we don't get anything, icon change.
-		if(!current_mag.current_rounds && !in_chamber) //No rounds, nothing chambered.
-			update_icon()
-
-	return TRUE
-
 /obj/item/weapon/gun/lever_action/unique_action(mob/user)
 	work_lever(user)
 
 /obj/item/weapon/gun/lever_action/ready_in_chamber()
 	return
 
-/obj/item/weapon/gun/lever_action/add_to_internal_mag(mob/user, selection) //Load it on the go, nothing chambered.
+/obj/item/weapon/gun/lever_action/proc/add_to_internal_mag(mob/user, selection) //Load it on the go, nothing chambered.
 	if(!current_mag)
 		return
 	current_mag.chamber_position++
@@ -384,6 +358,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
@@ -398,9 +373,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_2 + FIRE_DELAY_TIER_11)
+	set_fire_delay(FIRE_DELAY_TIER_2)
 	lever_delay = FIRE_DELAY_TIER_3
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = 0
@@ -412,41 +387,32 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()
 	if(.)
-		RegisterSignal(src, COMSIG_ITEM_ZOOM, PROC_REF(scope_on))
-		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(scope_off))
-
-/obj/item/weapon/gun/lever_action/xm88/proc/scope_on(atom/source, mob/current_user)
-	SIGNAL_HANDLER
-
-	RegisterSignal(current_user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
-	update_mouse_pointer(current_user)
-
-/obj/item/weapon/gun/lever_action/xm88/proc/scope_off(atom/source, mob/current_user)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(current_user, COMSIG_MOB_FIRED_GUN)
-	current_user.client?.mouse_pointer_icon = null
+		RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
 
 /obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
 	. = ..()
-
-	user.client?.mouse_pointer_icon = null
-	UnregisterSignal(src, list(COMSIG_ITEM_ZOOM, COMSIG_ITEM_UNZOOM))
+	UnregisterSignal(user, COMSIG_MOB_FIRED_GUN)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_fired_mouse_pointer(mob/user)
 	SIGNAL_HANDLER
 
-	if(!user.client?.prefs.custom_cursors)
+	if(!user.client?.prefs?.custom_cursors)
 		return
 
-	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
-	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
+	user.client.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
+	addtimer(CALLBACK(src, PROC_REF(finish_update_fired_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
-/obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
-	if(user.client?.prefs.custom_cursors)
-		user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+/obj/item/weapon/gun/lever_action/xm88/proc/finish_update_fired_mouse_pointer(mob/user)
+	if(flags_item & WIELDED)
+		update_mouse_pointer(user, TRUE)
 
-/obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
+/obj/item/weapon/gun/lever_action/xm88/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs?.custom_cursors)
+		return
+
+	user.client.mouse_pointer_icon = new_cursor ? get_scaling_mouse_pointer(floating_penetration) : initial(user.client.mouse_pointer_icon)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/get_scaling_mouse_pointer(level)
 	switch(level)
 		if(FLOATING_PENETRATION_TIER_0)
 			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
@@ -460,7 +426,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 			return 'icons/effects/mouse_pointer/xm88/xm88-4.dmi'
 		else
 			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
-
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_fired_mouse_pointer(level)
 	switch(level)

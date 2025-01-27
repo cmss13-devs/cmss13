@@ -98,9 +98,11 @@
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
+	var/turf/my_turf = get_turf(src)
+
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
-		A.forceMove(get_turf(loc))
+		A.forceMove(my_turf)
 		A.acid_damage = 0 //Reset the acid damage
 		if(ismob(A))
 			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
@@ -109,8 +111,8 @@
 		if(isobj(A))
 			var/obj/O = A
 			if(O.unacidable)
-				O.forceMove(get_turf(loc))
-				O.throw_atom(pick(range(1, get_turf(loc))), 1, SPEED_FAST)
+				O.forceMove(my_turf)
+				O.throw_atom(pick(RANGE_TURFS(1, src)), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -156,29 +158,61 @@
 
 	. = ..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
+/mob/living/carbon/attack_hand(mob/target_mob as mob)
+	if(!istype(target_mob, /mob/living/carbon)) return
 
-	if(M.mob_flags & SURGERY_MODE_ON && M.a_intent & (INTENT_HELP|INTENT_DISARM))
-		var/datum/surgery/current_surgery = active_surgeries[M.zone_selected]
+	if(target_mob.mob_flags & SURGERY_MODE_ON && target_mob.a_intent & (INTENT_HELP|INTENT_DISARM))
+		var/datum/surgery/current_surgery = active_surgeries[target_mob.zone_selected]
 		if(current_surgery)
-			if(current_surgery.attempt_next_step(M, null))
+			if(current_surgery.attempt_next_step(target_mob, null))
 				return TRUE
 		else
-			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
-			if(affecting && initiate_surgery_moment(null, src, affecting, M))
+			var/obj/limb/affecting = get_limb(check_zone(target_mob.zone_selected))
+			if(affecting && initiate_surgery_moment(null, src, affecting, target_mob))
 				return TRUE
 
-	for(var/datum/disease/D in viruses)
-		if(D.spread_by_touch())
-			M.contract_disease(D, 0, 1, CONTACT_HANDS)
+	if(can_pass_disease() && target_mob.can_pass_disease())
+		for(var/datum/disease/virus in viruses)
+			if(virus.spread_by_touch())
+				target_mob.contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
-	for(var/datum/disease/D in M.viruses)
-		if(D.spread_by_touch())
-			contract_disease(D, 0, 1, CONTACT_HANDS)
+		for(var/datum/disease/virus in target_mob.viruses)
+			if(virus.spread_by_touch())
+				contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
-	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
+	target_mob.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
+
+/// Whether or not a mob can pass diseases to another, or receive said diseases.
+/mob/proc/can_pass_disease()
+	return TRUE
+
+/mob/living/carbon/human/can_pass_disease()
+	// Multiplier for checked pieces.
+	var/mult = 0
+	// Total amount of bio protection
+	var/total_prot = 0
+	// Super bio armor
+	var/bio_hardcore = 0
+
+	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
+
+	for(var/obj/item/clothing/worn_item in worn_clothes)
+		total_prot += worn_item.armor_bio
+		mult++
+		if(worn_item.armor_bio == CLOTHING_ARMOR_HARDCORE)
+			bio_hardcore++
+
+	if(!mult)
+		return FALSE
+
+	if(bio_hardcore >= 2)
+		return FALSE
+
+	var/perc = (total_prot / mult)
+	if(!prob(perc))
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) //godmode

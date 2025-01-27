@@ -20,9 +20,8 @@
 	if(!can_rotate)
 		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
 
-/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+/obj/structure/bed/chair/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
 	flags_can_pass_all_temp = PASS_OVER
 
@@ -281,6 +280,11 @@
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
 
+/obj/structure/bed/chair/comfy/yautja
+	name = "alien chair"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	debris = list(/obj/item/stack/sheet/mineral/sandstone/runed)
+
 /obj/structure/bed/chair/comfy/alpha
 	icon_state = "comfychair_alpha"
 	name = "Alpha squad chair"
@@ -441,7 +445,7 @@
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
 
-/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/living/M, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/M, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()
@@ -515,7 +519,7 @@
 				chair_state = DROPSHIP_CHAIR_FOLDED
 				return
 	else
-		..()
+		. = ..()
 
 
 
@@ -532,7 +536,7 @@
 /obj/structure/bed/chair/hunter
 	name = "hunter chair"
 	desc = "An exquisitely crafted chair for a large humanoid hunter."
-	icon = 'icons/turf/walls/hunter.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "chair"
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
@@ -566,6 +570,7 @@
 	if(flags_item & WIELDED)
 		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/weapon/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
 	if(flags_item & WIELDED)

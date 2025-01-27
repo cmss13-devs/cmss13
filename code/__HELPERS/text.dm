@@ -335,7 +335,7 @@
 		message = "Invalid location"
 	else
 		if(include_jmp_link)
-			message = "<a HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
+			message = "<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
 		else
 			message = "[get_area(A)] ([A.x], [A.y], [A.z])"
 	return message

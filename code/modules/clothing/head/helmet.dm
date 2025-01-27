@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/tool/pen = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/pen/blue = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/pen/red = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
-	/obj/item/tool/pen/fountain = NO_GARB_OVERRIDE,
+	/obj/item/tool/pen/multicolor/fountain = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/welding = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/tan = NO_GARB_OVERRIDE,
@@ -261,6 +261,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/squad = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/candle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/mask/facehugger = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/facehugger/lamarr = NO_GARB_OVERRIDE,
 	/obj/item/toy/crayon/red = NO_GARB_OVERRIDE,
 	/obj/item/toy/crayon/orange = NO_GARB_OVERRIDE,
@@ -351,12 +352,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/start_down_visor_type
 	///Refs of observing consoles
 	var/list/overwatch_consoles = list()
-
-/obj/item/clothing/head/helmet/marine/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
-	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
-
-/obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
-	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -565,12 +560,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
 	if(camera)
 		camera.c_tag = mob.name
+		camera.status = TRUE
 	if(active_visor)
 		recalculate_visors(mob)
 	..()
 
 /obj/item/clothing/head/helmet/marine/unequipped(mob/user, slot)
 	. = ..()
+	if(camera)
+		camera.status = FALSE
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
 			if(F.light_on)
@@ -694,6 +692,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	to_chat(user, SPAN_WARNING("There are no visors to swap to currently."))
 	return FALSE
 
+
+/obj/item/clothing/head/helmet/marine/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
+
+/obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
+
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
 	name = "Cycle helmet HUD"
@@ -729,6 +734,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+
+/obj/item/clothing/head/helmet/marine/welding
+	name = "\improper M10 welding helmet"
+	desc = "A modified M10 marine helmet, Features a toggleable welding screen for eye protection. Completely invisible while toggled off as opposed to the technician helmet."
+	specialty = "M10 welding"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+
 
 /obj/item/clothing/head/helmet/marine/grey
 	desc = "A standard M10 Pattern Helmet. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
@@ -951,17 +963,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
 
-/obj/item/clothing/head/helmet/marine/CO
-	name = "\improper M10 pattern commanding officer helmet"
-	desc = "A special M10 Pattern Helmet worn by Commanding Officers of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
-	icon_state = "co_officer"
-	item_state = "co_officer"
-	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-	)
+/obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			name = "\improper M10-LS pattern sniper helmet"
+			desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+
+/obj/item/clothing/head/helmet/marine/leader/CO
+	name = "\improper M11C pattern commanding officer helmet"
+	desc = "A special M11 Pattern Helmet worn by Commanding Officers of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
+	icon_state = "co"
+	item_state = "co"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
 		WEAR_R_HAND = "helmet"
@@ -970,9 +983,23 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	specialty = "M10 pattern captain"
-	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	specialty = "M11 pattern commanding officer"
+	flags_atom = NO_NAME_OVERRIDE
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced, new /obj/item/device/helmet_visor/security)
+
+/obj/item/clothing/head/helmet/marine/leader/CO/general
+	name = "\improper M11 pattern ceremonial helmet"
+	desc = "A special M11 pattern ceremonial helmet worn occasionally by general officers of the USCM."
+	icon_state = "golden"
+	item_state = "golden"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+	specialty = "M11 pattern ceremonial"
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern MP helmet"
@@ -1127,6 +1154,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "A basic skull-helm worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
 	icon_state = "lead_helmet"
 	item_state = "lead_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
+	desc = "A basic skull-helm worn by corporate security assets. This variant is worn comes with a wider brim to protect the user from the harsh climate of the desert."
+	icon_state = "kutjevo_helmet"
+	item_state = "kutjevo_helmet"
 
 //FIORINA / UA RIOT CONTROL HELMET//
 
@@ -1392,6 +1424,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 
 /obj/item/clothing/head/helmet/specrag/Initialize(mapload, ...)
@@ -1437,6 +1472,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		if("snow")
 			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 
 /obj/item/clothing/head/helmet/skullcap/jungle
@@ -1619,7 +1657,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	force = 0 //"The M3 MOPP mask would be a normal weapon if you were to hit someone with it."
 	throwforce = 0
-	flags_inventory = BLOCKSHARPOBJ
+	flags_inventory = BLOCKSHARPOBJ|BLOCKGASEFFECT
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR

@@ -2,7 +2,7 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-$font-family: monospace;
+$font-family: monospace !default;
 $background-radial-opacity: 0.2 !default;
 $scrollbar-color-multiplier: 0.5 !default;
 
@@ -171,13 +171,16 @@ $scrollbar-color-multiplier: 0.5 !default;
     border: 1px solid base.$color-fg;
   }
 
+  .NumberInput {
+    min-height: 23px;
+  }
+
   .Button:not(.Button--selected) {
     &:hover,
-    &:focus,
     &:visited,
     &:target {
-      background-color: base.$color-fg;
-      color: base.$color-bg;
+      background-color: transparent;
+      color: base.$color-fg;
     }
   }
 

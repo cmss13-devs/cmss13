@@ -30,6 +30,13 @@
 
 	. = ..()
 
+/obj/item/clothing/suit/storage/marine/ghillie/select_gamemode_skin()
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("urban")
+			name = "\improper M3-LS pattern sniper armor"
+			desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
+
 /obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
 	set name = "Prepare Position"
 	set desc = "Use the ghillie suit and the nearby environment to become near invisible."

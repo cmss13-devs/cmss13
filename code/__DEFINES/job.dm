@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WY_GOON_LEAD "WY Corporate Security Lead"
 #define JOB_WY_GOON_RESEARCHER "WY Research Consultant"
 
-#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON)
+#define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON, JOB_WY_GOON_RESEARCHER)
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
@@ -261,6 +261,18 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define CMB_GRUNT_LIST list(JOB_CMB, JOB_CMB_TL)
 #define CMB_RIOT_LIST list(JOB_CMB_TL, JOB_CMB_RIOT, JOB_CMB_MED, JOB_CMB_ENG, JOB_CMB_SWAT)
+
+//-------- NSPA --------//
+#define JOB_NSPA_CST "NSPA Constable"
+#define JOB_NSPA_SC "NSPA Senior Constable"
+#define JOB_NSPA_SGT "NSPA Sergeant"
+#define JOB_NSPA_INSP "NSPA Inspector"
+#define JOB_NSPA_CINSP "NSPA Chief Inspector"
+#define JOB_NSPA_CMD "NSPA Commander"
+#define JOB_NSPA_DCO "NSPA Deputy Commissioner"
+#define JOB_NSPA_COM "NSPA Commissioner"
+
+#define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SC, JOB_NSPA_SGT)
 
 //-------- FORECON --------//
 
@@ -415,6 +427,12 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PLAYTIME_TIER_2  (25 HOURS)
 #define JOB_PLAYTIME_TIER_3  (70 HOURS)
 #define JOB_PLAYTIME_TIER_4  (175 HOURS)
+#define JOB_PLAYTIME_TIER_5  (350 HOURS)
+#define JOB_PLAYTIME_TIER_6  (600 HOURS)
+#define JOB_PLAYTIME_TIER_7  (1000 HOURS)
+#define JOB_PLAYTIME_TIER_8  (1500 HOURS)
+#define JOB_PLAYTIME_TIER_9  (2100 HOURS)
+#define JOB_PLAYTIME_TIER_10 (2800 HOURS)
 
 #define XENO_NO_AGE  -1
 #define XENO_YOUNG 0

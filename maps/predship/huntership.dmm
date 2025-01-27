@@ -11,7 +11,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "researchlockdown"
 	},
@@ -22,7 +22,7 @@
 	dir = 6;
 	color = "#6b675e"
 	},
-/turf/open/floor/corsat/box,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "af" = (
 /obj/structure/platform_decoration/metal/hunter/north,
@@ -209,28 +209,25 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "ay" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/hunter/catwalk/hunter_grate,
-/obj/item/weapon/yautja/knife{
-	name = "sacred ceremonial dagger";
-	pixel_y = 33;
-	anchored = 1;
-	layer = 3.2;
-	pixel_x = -1
-	},
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_x = 26;
 	pixel_y = 24
 	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 36;
+/obj/structure/prop/hunter/misc/prop_armor{
+	pixel_x = -1;
+	pixel_y = 35
+	},
+/obj/item/weapon/shield/riot/yautja/ancient{
 	anchored = 1;
-	layer = 3.2
+	layer = 2.9;
+	pixel_y = 34
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -338,28 +335,14 @@
 "aO" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = -8;
-	pixel_y = 9
+	pixel_y = 9;
+	density = 0
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
 /area/yautja)
 "aQ" = (
-/obj/item/clothing/yautja_cape/ceremonial{
-	anchored = 1;
-	color = "#292b29";
-	pixel_x = 2;
-	pixel_y = 32
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "halfarmor_elder_joshuu";
-	pixel_y = 30
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 40
+/obj/structure/prop/hunter/misc/prop_armor/elder_alt{
+	pixel_y = 31
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -448,23 +431,6 @@
 	anchored = 1
 	},
 /turf/open/floor/predship/hull,
-/area/yautja)
-"bi" = (
-/obj/structure/machinery/door/airlock/yautja{
-	dir = 1;
-	name = "\improper Gladiator Hall"
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "prisonlockdown"
-	},
-/obj/effect/hunter/rune{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "3,2";
-	dir = 8
-	},
 /area/yautja)
 "bj" = (
 /turf/open/floor/mainship_hull/gray/dir,
@@ -680,50 +646,6 @@
 	pixel_y = 25
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
-/area/yautja)
-"bU" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy,
-/obj/item/skull/runner{
-	pixel_x = 23;
-	pixel_y = 24;
-	anchored = 1
-	},
-/obj/item/skull/runner{
-	pixel_x = 15;
-	pixel_y = 24;
-	anchored = 1
-	},
-/obj/item/skull/runner{
-	pixel_x = 7;
-	pixel_y = 24;
-	anchored = 1
-	},
-/obj/item/skull/runner{
-	pixel_x = -1;
-	pixel_y = 24;
-	anchored = 1
-	},
-/obj/item/skull/sentinel{
-	pixel_x = -1;
-	pixel_y = 11;
-	anchored = 1
-	},
-/obj/item/skull/sentinel{
-	pixel_x = 23;
-	pixel_y = 11;
-	anchored = 1
-	},
-/obj/item/skull/sentinel{
-	pixel_x = 15;
-	pixel_y = 11;
-	anchored = 1
-	},
-/obj/item/skull/sentinel{
-	pixel_x = 7;
-	pixel_y = 11;
-	anchored = 1
-	},
-/turf/open/floor/corsat,
 /area/yautja)
 "bV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -1064,7 +986,8 @@
 "cS" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = 8;
-	pixel_y = -7
+	pixel_y = -7;
+	density = 0
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/northwest,
 /area/yautja)
@@ -1261,23 +1184,12 @@
 	density = 0;
 	pixel_y = 4
 	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	icon_state = "halfarmor_elder_joshuu";
-	pixel_y = 30;
-	color = "#4b4a49";
-	name = "ancient clan armor"
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#4b4a49";
-	icon_state = "pred_mask_elder_n";
-	pixel_y = 40;
-	name = "ancient clan mask"
-	},
 /obj/structure/closet/crate{
 	color = "#6b675e";
 	pixel_y = 13
+	},
+/obj/structure/prop/hunter/misc/prop_armor/ancient{
+	pixel_y = 33
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -1527,18 +1439,6 @@
 	color = "#bccab4"
 	},
 /turf/open/floor/predship/hull/non_weedable_hull,
-/area/yautja)
-"eC" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Starboard Wing";
-	dir = 2
-	},
-/obj/effect/hunter/rune{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "21,5"
-	},
 /area/yautja)
 "eE" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -1813,17 +1713,17 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "fk" = (
-/obj/effect/hunter/bridge_border/brown{
+/obj/effect/hunter/bridge_border/brown/corner{
 	dir = 1
-	},
-/obj/item/reagent_container/food/snacks/meat{
-	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/corsat,
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = 5
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "fl" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -1915,7 +1815,8 @@
 /obj/structure/machinery/door_control{
 	id = "youngbloodlowereast";
 	pixel_y = 23;
-	name = "Lower Deck Shutters"
+	name = "Lower Deck Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -1954,23 +1855,8 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "fI" = (
-/obj/item/clothing/yautja_cape/ceremonial{
-	anchored = 1;
-	color = "#292b29";
-	pixel_x = 2;
+/obj/structure/prop/hunter/misc/prop_armor/elder{
 	pixel_y = 32
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "halfarmor_elder_n";
-	pixel_y = 30
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "pred_mask_elder_n";
-	pixel_y = 40
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
@@ -2035,7 +1921,8 @@
 /obj/structure/machinery/door_control{
 	id = "armory";
 	pixel_y = 23;
-	name = "armory2"
+	name = "Armory Lockdown";
+	req_one_access_txt = "392"
 	},
 /obj/effect/hunter/rune{
 	dir = 1
@@ -2201,7 +2088,7 @@
 	color = "#fbebe2";
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	dir = 4;
 	color = "#f0ebd3";
 	id = "researchlockdown"
@@ -2285,7 +2172,7 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "gQ" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -2293,7 +2180,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -2420,7 +2307,10 @@
 /area/yautja)
 "hs" = (
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/corsat/squares,
+/turf/open/floor/almayer/research/containment/corner{
+	icon = 'icons/turf/floors/corsat.dmi';
+	icon_state = "squares"
+	},
 /area/yautja)
 "hu" = (
 /obj/item/clothing/mask/gas/yautja/hunter{
@@ -2679,10 +2569,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/juicer{
-	pixel_y = 7;
+/obj/structure/machinery/juicer/yautja{
 	pixel_x = -6;
-	layer = 3
+	pixel_y = 7
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -2702,7 +2591,7 @@
 	},
 /area/yautja)
 "iu" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy,
+/obj/structure/prop/hunter/trophy_display,
 /obj/item/skull/king{
 	pixel_y = 19;
 	anchored = 1;
@@ -2968,6 +2857,27 @@
 	light_power = 2;
 	light_range = 3;
 	light_on = 1
+	},
+/area/yautja)
+"jp" = (
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Atmosphere Control Console";
+	pixel_y = 24;
+	density = 0
+	},
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
+	},
+/obj/effect/hunter/bridge_border/corner,
+/turf/open/floor/light/red{
+	color = "#c27e7e";
+	light_color = "#ff0000";
+	light_on = 1;
+	light_range = 1
 	},
 /area/yautja)
 "jq" = (
@@ -3547,8 +3457,9 @@
 /obj/structure/machinery/door_control{
 	id = "prisonlockdown";
 	pixel_y = 30;
-	name = "Lower Deck Shutters";
-	pixel_x = 1
+	name = "Prison Cell Lockdown";
+	pixel_x = 1;
+	req_one_access_txt = "390"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -3643,11 +3554,6 @@
 	light_color = "#ff0000"
 	},
 /area/yautja)
-"lC" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/corsat,
-/area/yautja)
 "lD" = (
 /obj/item/weapon/shield/riot/yautja/ancient{
 	anchored = 1;
@@ -3723,9 +3629,11 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/north,
 /area/yautja)
 "lT" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/floor/corsat,
+/obj/effect/hunter/bridge_border/brown/small_stair{
+	dir = 4;
+	pixel_y = 34
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "lU" = (
 /obj/structure/platform_decoration/metal/hunter/west{
@@ -3739,7 +3647,7 @@
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "lV" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "youngbloodlowercenter"
 	},
@@ -3759,8 +3667,8 @@
 /area/yautja)
 "ma" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "youngbloodlowereast"
+	id = "youngbloodlowereast";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -3827,7 +3735,7 @@
 	pixel_y = 23;
 	density = 0
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "mw" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
@@ -3835,7 +3743,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -4129,6 +4037,15 @@
 	pixel_y = -2;
 	color = "#52443b"
 	},
+/obj/structure/prop/hunter/misc/prop_armor/elder_alt{
+	pixel_y = 31
+	},
+/obj/item/weapon/shield/riot/yautja{
+	anchored = 1;
+	layer = 2.9;
+	pixel_y = 32;
+	pixel_x = 1
+	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
 "nL" = (
@@ -4146,7 +4063,8 @@
 "nO" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = -8;
-	pixel_y = -7
+	pixel_y = -7;
+	density = 0
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/northeast,
 /area/yautja)
@@ -4190,18 +4108,17 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
 "nR" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
-/obj/item/skull/defender{
-	pixel_x = 15;
-	pixel_y = 24;
-	anchored = 1
+/obj/effect/hunter/rune{
+	dir = 4
 	},
-/obj/item/skull/ravager{
-	pixel_x = 3;
-	pixel_y = 14;
-	anchored = 1
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "prisonlockdown"
 	},
-/turf/open/floor/corsat,
+/turf/open/shuttle/dropship/predship{
+	icon_state = "3,2";
+	dir = 8
+	},
 /area/yautja)
 "nU" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -4293,7 +4210,16 @@
 /obj/structure/machinery/door_control{
 	id = "researchlockdown";
 	pixel_y = 23;
-	name = "armory2"
+	name = "Secure Containment Cell Lockdown";
+	pixel_x = -3;
+	req_one_access_txt = "390"
+	},
+/obj/structure/machinery/door_control{
+	id = "researchlockdown2";
+	pixel_y = 23;
+	name = "Research Chamber Lockdown";
+	pixel_x = 5;
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -4305,7 +4231,7 @@
 	color = "#c1a384";
 	pixel_y = 6
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "of" = (
 /obj/structure/reagent_dispensers/fueltank/yautja,
@@ -4534,7 +4460,7 @@
 	pixel_x = -7;
 	pixel_y = 14
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "oV" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -4548,7 +4474,7 @@
 	dir = 1;
 	name = "\improper Research Containment"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "researchlockdown"
 	},
@@ -4719,7 +4645,8 @@
 /obj/structure/machinery/door_control{
 	id = "youngbloodlowerwest";
 	pixel_y = 33;
-	name = "Lower Deck Shutters"
+	name = "Lower Deck Shutters";
+	req_one_access_txt = "390"
 	},
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
@@ -4787,10 +4714,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
-"pO" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/floor/corsat,
-/area/yautja)
 "pV" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/effect/hunter/bridge_border/brown{
@@ -4814,7 +4737,7 @@
 	},
 /area/yautja)
 "qc" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
+/obj/structure/prop/hunter/trophy_display/centre,
 /turf/open/floor/corsat,
 /area/yautja)
 "qd" = (
@@ -5147,7 +5070,7 @@
 	},
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "rs" = (
 /obj/structure/closet/coffin/predator{
@@ -5263,7 +5186,7 @@
 	pixel_x = -2;
 	pixel_y = 8
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "rN" = (
 /obj/item/skull/hunter{
@@ -5275,6 +5198,14 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
 	icon_state = "smallmonitor";
 	name = "Hound Containment Monitor";
+	pixel_y = 24
+	},
+/obj/item/skull/hivelord{
+	pixel_x = 16;
+	pixel_y = 35
+	},
+/obj/item/skull/drone{
+	pixel_x = 18;
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
@@ -5333,15 +5264,16 @@
 "rY" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "hangar"
+	id = "hangar";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
 "rZ" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = -8;
-	pixel_y = 9
+	pixel_y = 9;
+	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
@@ -5413,20 +5345,10 @@
 /area/yautja)
 "sv" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "armory"
+	id = "armory";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
-/area/yautja)
-"sw" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Starboard Wing";
-	dir = 2
-	},
-/obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "20,5"
-	},
 /area/yautja)
 "sy" = (
 /obj/structure/window/framed/colony/reinforced/hull{
@@ -6073,10 +5995,6 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
-"ul" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/corsat,
-/area/yautja)
 "uv" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -6131,6 +6049,19 @@
 	},
 /obj/effect/hunter/rune,
 /turf/open/shuttle/dropship/predship/tile/red3,
+/area/yautja)
+"uA" = (
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2";
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "researchlockdown2";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/yautja)
 "uC" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -6331,9 +6262,9 @@
 	dir = 1;
 	name = "\improper Research Chamber"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
-	id = "researchlockdown"
+	id = "researchlockdown2"
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
@@ -6497,15 +6428,14 @@
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
 /area/yautja)
 "vI" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Starboard Wing";
-	dir = 8
-	},
-/obj/effect/hunter/rune{
-	dir = 8
+/obj/effect/hunter/rune,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "prisonlockdown"
 	},
 /turf/open/shuttle/dropship/predship{
-	icon_state = "17,2"
+	icon_state = "3,2";
+	dir = 1
 	},
 /area/yautja)
 "vL" = (
@@ -6639,7 +6569,7 @@
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Hound Cells"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "houndcells2";
 	dir = 4
@@ -7249,13 +7179,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
-"yL" = (
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 4;
-	pixel_y = 6
-	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
-/area/yautja)
 "yN" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
@@ -7314,7 +7237,7 @@
 	pixel_y = 17;
 	anchored = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/right,
+/obj/structure/prop/hunter/trophy_display/right,
 /turf/open/floor/corsat,
 /area/yautja)
 "zb" = (
@@ -7412,6 +7335,13 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
+"zt" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	faction = "YAUTJA";
+	name = "Yautja Hangar"
+	},
+/turf/open/floor/corsat,
 /area/yautja)
 "zw" = (
 /obj/structure/platform/metal/stair_cut/hunter_left,
@@ -7546,12 +7476,26 @@
 /obj/structure/machinery/door_control{
 	id = "youngbloodlowereast";
 	pixel_y = 34;
-	name = "Lower Deck Shutters"
+	name = "Lower Deck Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "zW" = (
 /turf/open/shuttle/dropship/predship/hunter_grate,
+/area/yautja)
+"Aa" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	pixel_x = -6;
+	density = 0
+	},
+/turf/open/floor/corsat/box,
 /area/yautja)
 "Ac" = (
 /obj/structure/surface/rack{
@@ -7620,9 +7564,31 @@
 "Ah" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = 8;
-	pixel_y = 9
+	pixel_y = 9;
+	density = 0
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
+/area/yautja)
+"Ai" = (
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Atmosphere Control Console";
+	pixel_y = 24;
+	density = 0
+	},
+/obj/effect/hunter/bridge_border/corner,
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
+	},
+/turf/open/floor/light/red{
+	color = "#c27e7e";
+	light_color = "#ff0000";
+	light_on = 1;
+	light_range = 1
+	},
 /area/yautja)
 "Aj" = (
 /obj/structure/machinery/door/airlock/yautja{
@@ -7813,7 +7779,7 @@
 	pixel_y = 10;
 	anchored = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy,
+/obj/structure/prop/hunter/trophy_display,
 /obj/item/skull/hunter{
 	anchored = 1;
 	pixel_y = 26;
@@ -7877,7 +7843,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Bc" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/right,
+/obj/structure/prop/hunter/trophy_display/right,
 /turf/open/floor/corsat,
 /area/yautja)
 "Bg" = (
@@ -8053,7 +8019,7 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "BA" = (
 /obj/structure/surface/rack{
@@ -8127,7 +8093,7 @@
 	opacity = 0;
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -8141,12 +8107,15 @@
 	},
 /area/yautja)
 "BM" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj/effect/hunter/rune/stripes_arrow{
-	pixel_x = -5;
-	pixel_y = -17
+/obj/structure/window/framed/colony/reinforced/hull/yautja,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#fbebe2"
 	},
-/turf/open/floor/corsat/box,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "researchlockdown2"
+	},
+/turf/open/floor/corsat,
 /area/yautja)
 "BP" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -8194,12 +8163,6 @@
 	color = "#3d3b3a";
 	icon_state = "pred_mask5_ebony";
 	pixel_y = 40
-	},
-/obj/item/clothing/yautja_cape/damaged{
-	color = "#692e2e";
-	layer = 2.8;
-	name = "ancient yautja cape";
-	anchored = 1
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -8305,14 +8268,6 @@
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
-"Cj" = (
-/obj/effect/step_trigger/clone_cleaner,
-/obj/effect/hunter/rune/stripes_arrow{
-	pixel_x = 5;
-	pixel_y = -17
-	},
-/turf/open/floor/corsat/box,
-/area/yautja)
 "Ck" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja{
 	pixel_y = 8
@@ -8366,7 +8321,10 @@
 "Cv" = (
 /obj/effect/alien/egg/forsaken,
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/corsat/box,
+/turf/open/floor/almayer/research/containment/corner{
+	icon = 'icons/turf/floors/corsat.dmi';
+	icon_state = "box"
+	},
 /area/yautja)
 "Cx" = (
 /obj/effect/hunter/bridge_border{
@@ -8399,17 +8357,12 @@
 "CB" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter,
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "halfarmor_elder_n";
-	pixel_y = 30
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 40
+/obj/item/weapon/yautja/knife{
+	color = "#ffd65c";
+	name = "sacred ceremonial dagger";
+	pixel_x = -1;
+	pixel_y = 32;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
@@ -8834,7 +8787,7 @@
 	},
 /area/yautja)
 "DZ" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy,
+/obj/structure/prop/hunter/trophy_display,
 /turf/open/floor/corsat,
 /area/yautja)
 "Eb" = (
@@ -8903,17 +8856,9 @@
 "Em" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "halfarmor_elder_n";
-	pixel_y = 30
-	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 40
+/obj/structure/prop/hunter/misc/prop_armor{
+	pixel_x = -1;
+	pixel_y = 33
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2,
 /area/yautja)
@@ -8975,9 +8920,11 @@
 	},
 /area/yautja)
 "EA" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/floor/corsat,
+/obj/structure/prop/hunter/fake_platform/hunter/north{
+	pixel_x = -1;
+	pixel_y = -26
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "EC" = (
 /obj/effect/hunter/rune{
@@ -9091,22 +9038,17 @@
 	pixel_y = -4;
 	color = "#9bb1be"
 	},
-/turf/open/floor/corsat/box,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "ET" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/north,
-/obj/item/clothing/mask/gas/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "pred_mask_elder_joshuu";
-	pixel_y = 40
-	},
-/obj/item/clothing/suit/armor/yautja/hunter{
-	anchored = 1;
-	color = "#cfae84";
-	icon_state = "halfarmor_elder_n";
-	pixel_y = 30
+/obj/item/weapon/yautja/knife{
+	color = "#ffd65c";
+	name = "sacred ceremonial dagger";
+	pixel_x = -1;
+	pixel_y = 32;
+	anchored = 1
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
@@ -9173,27 +9115,18 @@
 /obj/structure/machinery/door_control{
 	id = "houndcells1";
 	pixel_y = 8;
-	name = "Lower Deck Shutters";
-	pixel_x = -20
+	name = "Hound Cells Containment";
+	pixel_x = -20;
+	req_one_access_txt = "390"
 	},
 /obj/structure/machinery/door_control{
 	id = "youngbloodlowercenter";
 	pixel_y = 33;
-	name = "Lower Deck Shutters";
-	pixel_x = 1
+	name = "Hound Cells Containment";
+	pixel_x = 1;
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
-/area/yautja)
-"Fj" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Port Wing"
-	},
-/obj/effect/hunter/rune{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "17,3"
-	},
 /area/yautja)
 "Fk" = (
 /obj/effect/hunter/rune{
@@ -9517,11 +9450,6 @@
 	dir = 8
 	},
 /obj/effect/step_trigger/clone_cleaner,
-/obj/effect/hunter/rune/stripes_arrow{
-	dir = 1;
-	pixel_x = -7;
-	pixel_y = -6
-	},
 /turf/open/shuttle/dropship/predship{
 	icon_state = "2,2";
 	dir = 4
@@ -9603,11 +9531,6 @@
 	dir = 4
 	},
 /obj/effect/step_trigger/clone_cleaner,
-/obj/effect/hunter/rune/stripes_arrow{
-	dir = 1;
-	pixel_x = 9;
-	pixel_y = -6
-	},
 /turf/open/shuttle/dropship/predship{
 	icon_state = "2,2";
 	dir = 1
@@ -9710,8 +9633,8 @@
 /area/yautja)
 "GU" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "selfdestruct"
+	id = "selfdestruct";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -10024,6 +9947,23 @@
 /obj/structure/prop/hunter/stairs/border/rune,
 /turf/open/floor/corsat,
 /area/yautja)
+"HR" = (
+/obj/item/weapon/yautja/knife{
+	name = "sacred ceremonial dagger";
+	pixel_y = 34;
+	anchored = 1
+	},
+/obj/effect/hunter/rune{
+	dir = 1
+	},
+/obj/structure/prop/hunter/misc/prop_armor{
+	pixel_x = -16;
+	pixel_y = 35
+	},
+/turf/open/shuttle/dropship/predship{
+	icon_state = "17,3"
+	},
+/area/yautja)
 "HS" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -10037,7 +9977,8 @@
 "HU" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = 8;
-	pixel_y = 9
+	pixel_y = 9;
+	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
@@ -10054,8 +9995,8 @@
 	color = "#bccab4"
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "youngbloodlowerwest"
+	id = "youngbloodlowerwest";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -10105,33 +10046,16 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Ir" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/right,
-/obj/item/skull/drone{
-	pixel_x = 4;
-	pixel_y = 7;
-	anchored = 1
+/obj/effect/hunter/rune/corner{
+	dir = 1
 	},
-/obj/item/skull/drone{
-	pixel_x = -3;
-	pixel_y = 7;
-	anchored = 1
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	color = "#f0ebd3";
+	id = "prisonlockdown"
 	},
-/obj/item/skull/drone{
-	pixel_x = -10;
-	pixel_y = 7;
-	anchored = 1
+/turf/open/shuttle/dropship/predship{
+	icon_state = "2,2"
 	},
-/obj/item/skull/drone{
-	pixel_x = -17;
-	pixel_y = 7;
-	anchored = 1
-	},
-/obj/item/skull/warrior{
-	pixel_x = -2;
-	pixel_y = 25;
-	anchored = 1
-	},
-/turf/open/floor/corsat,
 /area/yautja)
 "Is" = (
 /obj/structure/surface/rack{
@@ -10233,15 +10157,14 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
 "IQ" = (
-/obj/structure/machinery/door/airlock/yautja{
-	dir = 1;
-	name = "\improper Gladiator Hall"
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/effect/hunter/rune/corner,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship{
+	icon_state = "21,2"
+	},
 /area/yautja)
 "IS" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -10483,7 +10406,7 @@
 /obj/structure/machinery/door/airlock/yautja{
 	name = "\improper Hound Cells"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "houndcells1";
 	dir = 4
@@ -10491,22 +10414,23 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "JC" = (
-/obj/structure/showcase{
-	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "smallmonitor";
-	name = "Atmosphere Control Console";
-	pixel_y = 23;
-	pixel_x = 17;
-	density = 0
-	},
 /obj/structure/machinery/door_control{
 	id = "hangar";
 	pixel_y = 23;
 	name = "Hangar Stairs Lockdown";
-	pixel_x = 17
+	pixel_x = 17;
+	req_one_access_txt = "390"
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Monitor";
+	pixel_y = 23;
+	pixel_x = 7;
+	density = 0
+	},
 /turf/open/floor/corsat/box,
 /area/yautja)
 "JF" = (
@@ -10565,7 +10489,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	color = "#fbebe2"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -10579,9 +10503,10 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "JP" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/obj/structure/prop/hunter/fake_platform/hunter,
-/turf/open/floor/corsat,
+/obj/structure/prop/hunter/fake_platform/hunter{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "JS" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -10739,7 +10664,10 @@
 /area/yautja)
 "Kt" = (
 /obj/effect/alien/weeds/node/forsaken,
-/turf/open/floor/corsat/box,
+/turf/open/floor/almayer/research/containment/corner{
+	icon = 'icons/turf/floors/corsat.dmi';
+	icon_state = "box"
+	},
 /area/yautja)
 "Ku" = (
 /turf/open/floor/predship/hull,
@@ -10994,15 +10922,15 @@
 	pixel_y = 1
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "hangar3"
+	id = "hangar3";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "Lq" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "youngbloodlowerwest"
+	id = "youngbloodlowerwest";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -11166,7 +11094,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -11399,11 +11327,6 @@
 	},
 /area/yautja)
 "MP" = (
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 36;
-	anchored = 1;
-	pixel_x = 17
-	},
 /obj/item/weapon/yautja/knife{
 	name = "sacred ceremonial dagger";
 	pixel_y = 34;
@@ -11411,6 +11334,12 @@
 	},
 /obj/effect/hunter/rune{
 	dir = 1
+	},
+/obj/item/weapon/shield/riot/yautja/ancient{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 34
 	},
 /turf/open/shuttle/dropship/predship{
 	icon_state = "17,3"
@@ -11628,8 +11557,9 @@
 /obj/structure/machinery/door_control{
 	id = "youngbloodlowercenter";
 	pixel_y = -19;
-	name = "Lower Deck Shutters";
-	pixel_x = 1
+	name = "Hound Cells Containment";
+	pixel_x = 1;
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
@@ -11658,7 +11588,7 @@
 	pixel_y = 7;
 	anchored = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
+/obj/structure/prop/hunter/trophy_display/centre,
 /turf/open/floor/corsat,
 /area/yautja)
 "Oc" = (
@@ -11859,6 +11789,17 @@
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
+"OM" = (
+/obj/structure/bed/chair/comfy/yautja{
+	dir = 4;
+	pixel_x = -7;
+	pixel_y = 8;
+	layer = 3.1;
+	buckling_x = -7;
+	buckling_y = 8
+	},
+/turf/open/shuttle/dropship/predship/tile/red3,
+/area/yautja)
 "ON" = (
 /obj/structure/machinery/computer/cryopod/yautja{
 	pixel_x = 7;
@@ -12050,7 +11991,7 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "Ps" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -12197,20 +12138,17 @@
 	pixel_y = 26;
 	anchored = 1
 	},
-/obj/item/weapon/yautja/knife{
-	name = "sacred ceremonial dagger";
-	pixel_y = 33;
-	anchored = 1;
-	layer = 3.2;
-	pixel_x = -1
-	},
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 36;
+/obj/structure/prop/hunter/misc/prop_armor{
+	pixel_y = 35
+	},
+/obj/item/weapon/shield/riot/yautja/ancient{
 	anchored = 1;
-	layer = 3.2
+	layer = 2.9;
+	pixel_x = 1;
+	pixel_y = 34
 	},
 /turf/open/shuttle/dropship/predship/red_glow{
 	light_on = 1;
@@ -12318,7 +12256,7 @@
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Qv" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
@@ -12336,10 +12274,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/juicer{
-	pixel_y = 16;
-	pixel_x = -7
-	},
 /obj/item/storage/pouch/vials,
 /obj/structure/showcase{
 	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
@@ -12349,6 +12283,10 @@
 	pixel_y = 23;
 	pixel_x = 7;
 	density = 0
+	},
+/obj/structure/machinery/juicer/yautja{
+	pixel_x = -9;
+	pixel_y = 16
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -12518,7 +12456,7 @@
 	pixel_x = 6;
 	pixel_y = -3
 	},
-/turf/open/shuttle/dropship/predship/tile/red,
+/turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "Rd" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -12708,7 +12646,7 @@
 	pixel_y = 8;
 	anchored = 1
 	},
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre,
+/obj/structure/prop/hunter/trophy_display/centre,
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_y = 7;
 	anchored = 1
@@ -12810,12 +12748,14 @@
 	icon_state = "phoronrwindow";
 	color = "#9b1818"
 	},
-/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
-/obj/structure/window/phoronreinforced{
-	color = "#9b1818"
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
+	layer = 3.1
 	},
 /obj/structure/shuttle/engine/router{
 	layer = 2.9
+	},
+/obj/structure/window/phoronreinforced{
+	color = "#9b1818"
 	},
 /turf/open/shuttle/dropship/predship/tile/red4{
 	light_on = 1;
@@ -12891,7 +12831,9 @@
 	icon_state = "phoronrwindow";
 	color = "#9b1818"
 	},
-/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja,
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
+	layer = 3.1
+	},
 /obj/structure/shuttle/engine/router{
 	layer = 2.9
 	},
@@ -13209,14 +13151,10 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "Tv" = (
-/obj/item/weapon/yautja/knife{
-	color = "#ffd65c";
-	name = "sacred ceremonial dagger";
-	pixel_x = 32;
-	pixel_y = 34;
-	anchored = 1
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/misc/prop_armor{
+	pixel_y = 35
 	},
-/obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/east,
 /area/yautja)
 "Tx" = (
@@ -13268,13 +13206,18 @@
 	pixel_y = 34;
 	anchored = 1
 	},
-/obj/item/clothing/mask/gas/yautja/hunter{
-	pixel_y = 36;
-	anchored = 1;
-	pixel_x = 17
-	},
 /obj/effect/hunter/rune{
 	dir = 1
+	},
+/obj/item/weapon/shield/riot/yautja/ancient{
+	anchored = 1;
+	layer = 2.9;
+	pixel_x = 17;
+	pixel_y = 34
+	},
+/obj/structure/prop/hunter/misc/prop_armor{
+	pixel_x = 16;
+	pixel_y = 35
 	},
 /turf/open/shuttle/dropship/predship{
 	icon_state = "17,3"
@@ -13443,7 +13386,7 @@
 	opacity = 0;
 	dir = 2
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -13554,7 +13497,7 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "Us" = (
 /obj/effect/hunter/bridge_border/brown/large_stair,
@@ -13638,8 +13581,8 @@
 /area/yautja)
 "UH" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "armory2"
+	id = "armory2";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat,
 /area/yautja)
@@ -13701,21 +13644,6 @@
 	light_power = 2;
 	light_range = 3;
 	light_on = 1
-	},
-/area/yautja)
-"UP" = (
-/obj/structure/machinery/door/airlock/yautja{
-	dir = 1;
-	name = "\improper Gladiator Hall"
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "prisonlockdown"
-	},
-/obj/effect/hunter/rune,
-/turf/open/shuttle/dropship/predship{
-	icon_state = "3,2";
-	dir = 1
 	},
 /area/yautja)
 "UQ" = (
@@ -13798,7 +13726,7 @@
 	pixel_y = -6;
 	color = "#9b1818"
 	},
-/turf/open/floor/corsat/box,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "UV" = (
 /obj/effect/hunter/bridge_border/brown/corner{
@@ -13887,7 +13815,8 @@
 /obj/structure/machinery/door_control{
 	id = "youngbloodlowerwest";
 	pixel_y = 23;
-	name = "Lower Deck Shutters"
+	name = "Lower Deck Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
@@ -13997,7 +13926,7 @@
 	name = "\improper Storage Room";
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -14080,7 +14009,8 @@
 "VU" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = 8;
-	pixel_y = -7
+	pixel_y = -7;
+	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/northwest,
@@ -14120,8 +14050,9 @@
 /obj/structure/machinery/door_control{
 	id = "armory2";
 	pixel_y = 23;
-	name = "armory2";
-	pixel_x = -9
+	name = "Secure Armory Lockdown";
+	pixel_x = -9;
+	req_one_access_txt = "392"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -14242,11 +14173,15 @@
 	},
 /area/yautja)
 "Wu" = (
-/obj/structure/machinery/door/airlock/yautja/secure{
-	explo_proof = 1;
-	name = "\improper Hangar Stairs"
+/obj/effect/hunter/catwalk/hunter_grate,
+/obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/structure/prop/hunter/fake_platform/hunter,
+/turf/open/shuttle/dropship/predship/red_glow{
+	light_on = 1;
+	light_power = 2;
+	light_range = 3;
+	light_color = "#ff0000"
 	},
-/turf/open/floor/corsat/squares,
 /area/yautja)
 "Ww" = (
 /obj/effect/decal/cleanable/dirt{
@@ -14274,18 +14209,6 @@
 /obj/structure/curtain/leather/alt_2,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
-"WC" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Starboard Wing";
-	dir = 8
-	},
-/obj/effect/hunter/rune{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "17,3"
-	},
-/area/yautja)
 "WG" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -14307,8 +14230,9 @@
 /obj/structure/machinery/door_control{
 	id = "houndcells2";
 	pixel_y = 10;
-	name = "Lower Deck Shutters";
-	pixel_x = 23
+	name = "Hound Cells Containment";
+	pixel_x = 23;
+	req_one_access_txt = "390"
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
@@ -14511,8 +14435,8 @@
 	pixel_y = 1
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	color = "#f0ebd3";
-	id = "hangar2"
+	id = "hangar2";
+	color = "#f0ebd3"
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -14589,10 +14513,25 @@
 	icon_state = "phoronrwindow";
 	color = "#9b1818"
 	},
-/obj/item/device/flashlight/slime{
-	color = "#9b1818"
-	},
 /obj/structure/shuttle/engine/heater,
+/obj/structure/showcase{
+	desc = "A teleportation console";
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	pixel_y = -3;
+	pixel_x = -7
+	},
+/obj/structure/showcase{
+	desc = "A teleportation console";
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	pixel_y = -21;
+	pixel_x = -7
+	},
 /obj/structure/window/phoronreinforced{
 	color = "#9b1818"
 	},
@@ -14629,7 +14568,7 @@
 	pixel_y = 5;
 	color = "#c1a384"
 	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
+/turf/open/floor/predship/hull,
 /area/yautja)
 "XO" = (
 /obj/structure/reagent_dispensers/watertank/yautja,
@@ -14666,25 +14605,13 @@
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
-"XV" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Port Wing";
-	dir = 1
-	},
-/obj/effect/hunter/rune{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "21,5"
-	},
-/area/yautja)
 "XW" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Prisoner Cell 3";
 	opacity = 0;
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
 	color = "#f0ebd3";
 	id = "prisonlockdown"
 	},
@@ -14801,7 +14728,7 @@
 	pixel_y = 32;
 	pixel_x = -2
 	},
-/turf/open/floor/corsat/box,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "Yw" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -14838,15 +14765,30 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 1
 	},
-/obj/item/device/flashlight/slime{
-	color = "#9b1818"
-	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow";
 	color = "#9b1818"
 	},
 /obj/structure/shuttle/engine/heater,
+/obj/structure/showcase{
+	desc = "A teleportation console";
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	pixel_y = -3;
+	pixel_x = 6
+	},
+/obj/structure/showcase{
+	desc = "A teleportation console";
+	dir = 1;
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Vent";
+	pixel_y = -21;
+	pixel_x = 6
+	},
 /obj/structure/window/phoronreinforced{
 	color = "#9b1818"
 	},
@@ -15062,7 +15004,8 @@
 "Zv" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = -8;
-	pixel_y = -7
+	pixel_y = -7;
+	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/predship/hull/non_weedable_hull/northeast,
@@ -15206,15 +15149,6 @@
 	},
 /turf/open/floor/corsat,
 /area/yautja)
-"ZU" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Port Wing";
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "20,5"
-	},
-/area/yautja)
 "ZX" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
@@ -15232,17 +15166,6 @@
 	light_power = 2;
 	light_range = 3;
 	light_color = "#ff0000"
-	},
-/area/yautja)
-"ZZ" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Port Wing"
-	},
-/obj/effect/hunter/rune{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/predship{
-	icon_state = "17,2"
 	},
 /area/yautja)
 
@@ -15848,8 +15771,8 @@ aV
 oa
 bH
 aV
-gs
-gs
+uA
+uA
 aV
 aV
 jy
@@ -16093,7 +16016,7 @@ On
 Bo
 bH
 Ha
-aV
+BM
 oF
 Zo
 wE
@@ -16175,8 +16098,8 @@ Zo
 bH
 Zo
 Ha
-aV
-xm
+BM
+Wu
 wE
 Zo
 aV
@@ -16257,8 +16180,8 @@ bH
 Zo
 bH
 Ha
-aV
-aV
+BM
+xm
 Zo
 wE
 aV
@@ -16417,19 +16340,19 @@ aV
 aV
 aV
 aV
+uA
+uA
+uA
 aV
-aV
-aV
-aV
-aV
-aV
+OM
+OM
 Vt
 Jn
 aV
 mr
 Rc
 Qq
-aV
+wE
 aV
 aV
 nn
@@ -16666,8 +16589,8 @@ fS
 Eg
 aV
 aV
-Wu
-Wu
+GO
+GO
 aV
 aV
 aV
@@ -16749,7 +16672,7 @@ PI
 Ws
 aV
 JC
-Cj
+Ok
 rY
 Zk
 co
@@ -16830,8 +16753,8 @@ sX
 PI
 dM
 aV
+Aa
 Ok
-BM
 rY
 RK
 pE
@@ -17152,12 +17075,12 @@ WS
 iT
 cl
 BL
-sw
+Ut
 bz
 rB
 xH
-Jn
-IQ
+BL
+Ir
 qr
 mC
 PM
@@ -17234,11 +17157,11 @@ sW
 ty
 rE
 gV
-eC
+pF
 gD
 XL
 XL
-vn
+XL
 IQ
 YS
 eb
@@ -17249,8 +17172,8 @@ yE
 BY
 aV
 aV
-WC
-vI
+ya
+Eg
 aV
 gk
 Ht
@@ -17494,7 +17417,7 @@ Nv
 In
 aV
 aV
-bU
+DZ
 ya
 Eg
 aV
@@ -17576,7 +17499,7 @@ MB
 cZ
 aV
 aV
-nR
+qc
 ya
 Eg
 aV
@@ -17658,7 +17581,7 @@ aV
 aV
 aV
 aV
-Ir
+Bc
 ya
 Eg
 aV
@@ -17748,7 +17671,7 @@ aV
 Bc
 ku
 NO
-Tv
+me
 gK
 lz
 lz
@@ -17830,7 +17753,7 @@ aV
 CA
 Ub
 Vh
-yc
+Tv
 Yj
 aV
 aV
@@ -17904,7 +17827,7 @@ Ah
 Xc
 lQ
 aV
-bc
+aV
 TB
 Eg
 sK
@@ -18054,8 +17977,8 @@ yN
 Vu
 rE
 xH
+vI
 BL
-UP
 BL
 aR
 Qg
@@ -18067,8 +17990,8 @@ uj
 Qv
 Mv
 BL
-UP
 BL
+vI
 rB
 PI
 Rf
@@ -18136,8 +18059,8 @@ yN
 Md
 rE
 gV
+nR
 Ol
-bi
 Ol
 LP
 wh
@@ -18149,8 +18072,8 @@ pn
 Us
 UD
 Ol
-bi
 Ol
+nR
 sX
 PI
 Fy
@@ -18232,7 +18155,7 @@ xQ
 yc
 sW
 aV
-bc
+aV
 MP
 Eg
 By
@@ -18315,14 +18238,14 @@ yc
 lQ
 aV
 aV
-VT
+HR
 IU
 fC
 aV
 fh
 CB
 NO
-Tv
+me
 Yj
 gX
 xe
@@ -18404,7 +18327,7 @@ aV
 CA
 FV
 Vh
-yc
+Tv
 Yj
 aV
 aV
@@ -18956,12 +18879,12 @@ gq
 hD
 rE
 xH
-ZU
+Ut
 bz
 BL
 BL
-Jn
-IQ
+BL
+Ir
 Rd
 mG
 xy
@@ -18971,8 +18894,8 @@ JI
 ak
 aV
 aV
-Fj
-ZZ
+ya
+Eg
 aV
 Vx
 YX
@@ -19038,11 +18961,11 @@ hC
 Mu
 rm
 XL
-XV
+pF
 gD
 sX
 gV
-vn
+XL
 IQ
 kD
 mC
@@ -19626,7 +19549,7 @@ pJ
 BL
 BL
 BL
-pJ
+BL
 LF
 Ut
 bz
@@ -19707,8 +19630,8 @@ GP
 GP
 sX
 yP
+yP
 gV
-GP
 KA
 pF
 gD
@@ -19789,8 +19712,8 @@ Qq
 aV
 GV
 XL
+XL
 vn
-aV
 aV
 aV
 Aj
@@ -20103,7 +20026,7 @@ MZ
 Km
 Ia
 Ia
-CA
+aV
 PP
 gm
 MO
@@ -20431,7 +20354,7 @@ aV
 aV
 Ia
 aV
-CA
+aV
 ay
 xn
 af
@@ -21524,9 +21447,9 @@ lv
 aV
 aV
 aV
-uV
+Ai
 aV
-uV
+jp
 aV
 aV
 Ac
@@ -21654,27 +21577,27 @@ Lf
 Mb
 sW
 sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
+in
 sW
 sW
 Xp
@@ -21735,29 +21658,29 @@ dI
 Lf
 Mb
 sW
-sW
-lC
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-pO
-lT
-sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+JP
 sW
 Xp
 GV
@@ -21817,30 +21740,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 aV
 aV
 ti
@@ -21899,30 +21822,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 qd
 ya
@@ -21981,30 +21904,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 DG
 ya
@@ -22063,30 +21986,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 DG
 ya
@@ -22145,30 +22068,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+zt
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 DG
 ya
@@ -22227,30 +22150,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 DG
 ya
@@ -22309,30 +22232,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 DG
 ya
@@ -22391,30 +22314,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 cN
 mG
 ya
@@ -22473,30 +22396,30 @@ dI
 Lf
 Mb
 sW
+EA
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 sW
-Rb
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-vU
-yL
-sW
+lT
 aV
 aV
 mW
@@ -22555,29 +22478,29 @@ dI
 Lf
 Mb
 sW
-sW
 EA
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
-ul
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
+vU
 JP
-sW
 sW
 Lj
 Vt
@@ -22638,27 +22561,27 @@ Lf
 Mb
 sW
 sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
-sW
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
+gq
 sW
 sW
 Lj
@@ -22698,7 +22621,7 @@ aV
 xD
 xD
 AS
-fk
+tO
 IJ
 he
 ZX
@@ -22781,7 +22704,7 @@ sr
 IM
 zy
 Ug
-eR
+fk
 Ss
 js
 aV

@@ -118,13 +118,13 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 /obj/structure/machinery/cm_vending/clothing/yautja/get_listed_products(mob/user)
 	return GLOB.cm_vending_equipment_yautja
 
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy
+/obj/structure/prop/hunter/trophy_display
 	icon_state = "pred_trophy_vendor_left"
 
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/centre
+/obj/structure/prop/hunter/trophy_display/centre
 	icon_state = "pred_trophy_vendor_centre"
 
-/obj/structure/machinery/cm_vending/clothing/yautja/trophy/right
+/obj/structure/prop/hunter/trophy_display/right
 	icon_state = "pred_trophy_vendor_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder

@@ -182,6 +182,23 @@
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
 
+/obj/structure/prop/hunter/misc/prop_armor
+	name = "ancient yaujta armor"
+	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon_state = "hunter_armor_prop"
+	desc = "An ancient suit of armor. It looks incredibly old, yet most likely still functional, although it's fixed to the wall, and purely used as a ceremonial adornment."
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/prop/hunter/misc/prop_armor/elder
+	icon_state = "hunter_armor_prop_2"
+
+/obj/structure/prop/hunter/misc/prop_armor/elder_alt
+	icon_state = "hunter_armor_prop_3"
+
+/obj/structure/prop/hunter/misc/prop_armor/ancient
+	icon_state = "hunter_armor_prop_4"
+
 /obj/effect/hunter/rune
 	name = "rune"
 	desc = null
@@ -248,3 +265,56 @@
 	dir = EAST
 /obj/effect/hunter/fake_platform/hunter/west
 	dir = WEST
+
+// Fake Table Gear Rank for Trophies
+
+/obj/structure/prop/hunter/trophy_display
+	name = "\improper Yautja Trophy Display Rack"
+	desc = "A trophy rack for hunters displaying their prizes."
+	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
+	icon_state = "pred_trophy_vendor_left"
+	layer = TABLE_LAYER
+	throwpass = TRUE
+	bound_width = 32
+	bound_height = 64
+	density = TRUE
+
+/obj/structure/prop/hunter/trophy_display/centre
+	icon_state = "pred_trophy_vendor_centre"
+
+/obj/structure/prop/hunter/trophy_display/right
+	icon_state = "pred_trophy_vendor_right"
+
+/obj/structure/prop/hunter/trophy_display/attackby(obj/item/attacking_item, mob/user, click_data)
+	if(!user.drop_inv_item_to_loc(attacking_item, loc))
+		return
+
+	auto_align(attacking_item, click_data)
+	user.next_move = world.time + 2
+	return TRUE
+
+/obj/structure/prop/hunter/trophy_display/proc/auto_align(obj/item/new_item, click_data)
+	if(!new_item.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
+		new_item.pixel_x = rand(-new_item.randpixel, new_item.randpixel)
+		new_item.pixel_y = rand(-new_item.randpixel, new_item.randpixel)
+		new_item.pixel_z = 0
+		return
+
+	if(!click_data)
+		return
+
+	if(!click_data["icon-x"] || !click_data["icon-y"])
+		return
+
+	// Calculation to apply new pixelshift.
+	var/mouse_x = text2num(click_data["icon-x"])-1 // Ranging from 0 to 31
+	var/mouse_y = text2num(click_data["icon-y"])-1
+
+	var/cell_x = clamp(floor(mouse_x/CELLSIZE), 0, CELLS-1) // Ranging from 0 to CELLS-1
+	var/cell_y = clamp(floor(mouse_y/CELLSIZE), 0, CELLS-1)
+
+	var/list/center = cached_key_number_decode(new_item.center_of_mass)
+
+	new_item.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
+	new_item.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
+	new_item.pixel_z = 0

@@ -11,14 +11,6 @@
 	else
 		total_positions_so_far = max(total_positions_so_far, 0)
 
-/datum/job/command/tank_crew/get_total_positions(latejoin = FALSE)
-	if(SStechtree.trees[TREE_MARINE].get_node(/datum/tech/arc).unlocked)
-		return 0
-	if(length(GLOB.clients) >= 200 || total_positions_so_far > 0)
-		return 2
-
-	return 0
-
 /obj/effect/landmark/start/tank_crew
 	name = JOB_TANK_CREW
 	job = /datum/job/command/tank_crew

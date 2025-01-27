@@ -235,19 +235,6 @@
 
 	return //Anything special that should happen to the mob upon entering the world.
 
-//This lets you scale max jobs at runtime
-//All you have to do is rewrite the inheritance
-/datum/job/proc/get_total_positions(latejoin = FALSE)
-	var/positions = total_positions_so_far
-	if(latejoin)
-		positions = job_slot_formula(get_total_marines(), players_per_position, factor, minimal_open_positions, maximal_open_positions )
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
-	else
-		total_positions_so_far = positions
-	return total_positions_so_far
 
 /datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))

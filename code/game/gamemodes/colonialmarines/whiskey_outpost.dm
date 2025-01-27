@@ -222,7 +222,7 @@
 		// If the job has unlimited job slots, We set the amount of slots to the amount it has at the moment this is called
 		if (!J.limited_slots)
 			J.limited_slots = TRUE
-		J.current_positions = J.get_total_positions(TRUE)
+		J.current_positions = J.total_positions_so_far
 	to_world("<B>New players may no longer join the game.</B>")
 	message_admins("Wave one has begun. Disabled new player game joining.")
 	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")

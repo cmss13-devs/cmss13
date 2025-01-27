@@ -372,7 +372,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
-	if(J.limited_slots && J.get_total_positions(latejoin) <= J.current_positions)
+	if(J.limited_slots && J.total_positions_so_far <= J.current_positions)
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
@@ -382,7 +382,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	return TRUE
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
-	if(istype(J) && J.limited_slots && J.get_total_positions(latejoin) >= J.current_positions)
+	if(istype(J) && J.limited_slots && J.total_positions_so_far >= J.current_positions)
 		J.current_positions--
 		return 1
 

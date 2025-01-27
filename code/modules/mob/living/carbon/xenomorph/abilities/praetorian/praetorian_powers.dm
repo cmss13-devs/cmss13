@@ -783,10 +783,9 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
 
-	if (!behavior.use_internal_fury_ability(rage_cost))
+
+	if (!behavior.use_internal_fury_ability(rage_cost) || !check_and_use_plasma_owner())
 		return
 
 	if (behavior.raging == TRUE)

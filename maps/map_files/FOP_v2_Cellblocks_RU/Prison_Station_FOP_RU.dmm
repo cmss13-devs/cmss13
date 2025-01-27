@@ -25462,10 +25462,15 @@
 /area/prison/toilet/security)
 "bML" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/newspaper,
 /turf/open/floor/prison/darkred2/southwest,
 /area/prison/monorail/east)
 "bMM" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/newspaper{
+	pixel_y = 14;
+	pixel_x = -7
+	},
 /turf/open/floor/prison/darkred2/southeast,
 /area/prison/monorail/east)
 "bMN" = (
@@ -43978,11 +43983,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/west)
-"kTY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/secure,
-/turf/closed/wall/prison,
-/area/prison/maintenance/residential/sw)
 "kUa" = (
 /obj/structure/bed/chair,
 /obj/effect/alien/weeds/node,
@@ -46453,6 +46453,10 @@
 /area/prison/residential/south)
 "nyb" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/newspaper,
+/obj/item/newspaper{
+	pixel_y = 12
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/prison/monorail/east)
 "nyk" = (
@@ -47471,6 +47475,7 @@
 /area/space)
 "oBB" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/newspaper,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/monorail/east)
 "oBG" = (
@@ -54430,6 +54435,11 @@
 "wdF" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/newspaper,
+/obj/item/newspaper{
+	pixel_y = 14;
+	pixel_x = -7
+	},
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/monorail/east)
 "wev" = (
@@ -61242,8 +61252,8 @@ bxf
 bvQ
 bvQ
 pHT
-bvQ
 buT
+bvQ
 kjG
 aEM
 eEP
@@ -61666,8 +61676,8 @@ bvQ
 bvQ
 bxf
 fxr
-bvQ
-kTY
+buT
+jYv
 bxf
 bxf
 sXt

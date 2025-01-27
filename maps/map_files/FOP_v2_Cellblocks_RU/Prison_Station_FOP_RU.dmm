@@ -18072,7 +18072,9 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "bkB" = (
@@ -25912,6 +25914,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/sw)
 "bON" = (
@@ -28195,9 +28200,6 @@
 /area/prison/cellblock/protective)
 "bWY" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/closed/wall/prison,
 /area/prison/residential/central)
 "bWZ" = (
@@ -34688,39 +34690,19 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/mediumsec/east)
 "cvH" = (
-/obj/structure/pipes/standard/manifold/visible/yellow{
-	dir = 1
-	},
 /obj/structure/machinery/meter,
-/turf/open/floor/plating/almayer,
-/area/prison/pirate)
-"cvI" = (
 /obj/structure/pipes/standard/simple/visible/yellow{
-	dir = 4
+	dir = 6
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cvJ" = (
-/obj/structure/pipes/standard/simple/visible/yellow{
-	dir = 10
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
-"cvL" = (
-/obj/structure/pipes/standard/simple/visible/yellow{
-	dir = 6
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/plating/almayer,
-/area/prison/pirate)
 "cvM" = (
-/obj/structure/pipes/standard/simple/visible/yellow{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
@@ -34799,35 +34781,20 @@
 /turf/open/floor/prison/yellow/east,
 /area/prison/cellblock/mediumsec/south)
 "cvX" = (
-/obj/structure/pipes/binary/circulator{
-	anchored = 1;
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
 	},
-/obj/effect/decal/warning_stripes,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 7
-	},
-/turf/open/floor/plating/almayer,
-/area/prison/pirate)
+/turf/open/floor/prison/sterile_white/southwest,
+/area/prison/residential/central)
 "cvY" = (
-/obj/effect/decal/warning_stripes,
-/obj/structure/machinery/power/generator,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 7
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
 	},
-/turf/open/floor/plating/almayer,
-/area/prison/pirate)
+/turf/open/floor/prison/darkred2/west,
+/area/prison/security/monitoring/medsec/central)
 "cvZ" = (
-/obj/structure/pipes/binary/circulator{
-	anchored = 1
-	},
 /obj/effect/decal/warning_stripes,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 7
-	},
+/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwa" = (
@@ -34861,18 +34828,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
-"cwh" = (
-/obj/structure/pipes/standard/simple/visible/yellow{
-	dir = 9
-	},
-/turf/open/floor/plating/almayer,
-/area/prison/pirate)
-"cwj" = (
-/obj/structure/pipes/standard/simple/insulated{
-	dir = 5
-	},
-/turf/open/floor/plating/almayer,
-/area/prison/pirate)
 "cwk" = (
 /obj/structure/sink{
 	dir = 8;
@@ -34882,29 +34837,28 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/mediumsec/south)
 "cwl" = (
-/obj/structure/pipes/standard/simple/insulated{
-	dir = 10
-	},
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
+/obj/structure/pipes/standard/simple/visible/yellow{
+	dir = 10
+	},
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwm" = (
-/obj/structure/pipes/standard/simple/insulated{
+/obj/structure/pipes/standard/simple/visible/yellow{
 	dir = 6
 	},
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwn" = (
-/obj/structure/pipes/standard/simple/insulated{
-	dir = 9
+/obj/structure/machinery/meter,
+/obj/structure/pipes/standard/simple/visible/yellow{
+	dir = 10
 	},
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwp" = (
-/obj/structure/pipes/standard/simple/visible/yellow{
-	dir = 5
-	},
+/obj/structure/pipes/standard/manifold/visible/yellow,
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwq" = (
@@ -34964,12 +34918,12 @@
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwC" = (
-/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/visible/green,
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwD" = (
 /obj/structure/machinery/meter,
-/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/visible/green,
 /turf/open/floor/plating/almayer,
 /area/prison/pirate)
 "cwE" = (
@@ -35822,9 +35776,7 @@
 	icon_state = "siding4"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 4
-	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "cHL" = (
@@ -38645,13 +38597,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison/kitchen,
 /area/prison/kitchen)
-"fOT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/turf/open/floor/plating/prison,
-/area/prison/maintenance/residential/nw)
 "fPf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -39663,12 +39608,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/ne)
-"gSg" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/turf/open/floor/prison/darkred2/west,
-/area/prison/security/monitoring/medsec/central)
 "gTr" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -39737,9 +39676,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/nw)
@@ -40841,7 +40777,6 @@
 /area/prison/maintenance/residential/ne)
 "hZU" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/surface/table/reinforced/black,
 /obj/effect/landmark/good_item,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
@@ -41126,11 +41061,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenblue/east,
 /area/prison/residential/north)
-"ilo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/prison/sterile_white/southwest,
-/area/prison/residential/central)
 "ilK" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -43425,6 +43355,13 @@
 	},
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/nw)
+"krQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/prison/maintenance/residential/sw)
 "ksa" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison,
@@ -43835,12 +43772,10 @@
 /turf/open/floor/prison/bluefull,
 /area/prison/cellblock/protective)
 "kJI" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/obj/structure/holostool,
-/turf/open/floor/prison/floor_plate,
-/area/prison/cellblock/mediumsec/north)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/prison/residential/central)
 "kJW" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/prison/floor_plate,
@@ -46728,12 +46663,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/asteroid,
 /area/prison/residential/south)
-"nLC" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
-	},
-/turf/open/floor/prison/sterile_white/southwest,
-/area/prison/residential/central)
 "nLD" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
@@ -46773,7 +46702,7 @@
 "nNc" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/item/toy/plush/shark/alt,
+/obj/item/toy/plush/shark,
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "nOj" = (
@@ -47478,6 +47407,9 @@
 /area/prison/residential/south)
 "oAs" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
 /turf/open/floor/plating/prison,
 /area/prison/residential/central)
 "oAO" = (
@@ -49401,7 +49333,7 @@
 /area/prison/library)
 "qwV" = (
 /obj/structure/window/framed/prison/reinforced/hull,
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/open/floor/plating/prison,
 /area/prison/security/armory/lethal)
 "qxE" = (
 /obj/effect/alien/weeds/node,
@@ -52401,10 +52333,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/prison/residential/central)
-"tQh" = (
-/obj/structure/window/framed/prison,
-/turf/closed/wall/prison,
-/area/prison/residential/north)
 "tQn" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating/prison,
@@ -61447,8 +61375,8 @@ dMS
 hxy
 odp
 cLg
-fOT
-bvX
+dBH
+krQ
 rMk
 rMk
 wVc
@@ -62076,7 +62004,7 @@ baK
 aYR
 aYQ
 aWr
-nLC
+cvX
 bkG
 baU
 baU
@@ -62090,7 +62018,7 @@ baU
 bbG
 baU
 baU
-ilo
+kJI
 nUH
 aWr
 aYQ
@@ -65659,7 +65587,7 @@ ezT
 aHK
 gJu
 aHL
-tQh
+ruu
 rEg
 rwg
 mvc
@@ -65871,7 +65799,7 @@ aKR
 aKR
 aKR
 uEJ
-tQh
+ruu
 rEg
 aHN
 aKr
@@ -66080,10 +66008,10 @@ qvD
 aGv
 awI
 ruu
-tQh
-tQh
-tQh
-tQh
+ruu
+ruu
+ruu
+ruu
 rEg
 hMS
 nRU
@@ -77786,7 +77714,7 @@ bwH
 bxp
 nvo
 byC
-bxk
+bvw
 nvo
 bCf
 bBy
@@ -80805,7 +80733,7 @@ cts
 ctG
 cuc
 cuE
-gSg
+cvY
 cvx
 csF
 cxF
@@ -84822,7 +84750,7 @@ oja
 jyD
 mtH
 hDZ
-kJI
+hDZ
 mIP
 ccV
 ctf
@@ -87608,9 +87536,9 @@ cio
 cui
 cio
 cvn
-cvH
+cwn
 cvT
-cwh
+cwp
 cwy
 cwV
 cxg
@@ -87820,9 +87748,9 @@ ctK
 csT
 cio
 cvo
-cvI
+crU
 cvU
-ckn
+cwg
 cwz
 cwV
 cxg
@@ -88033,8 +87961,8 @@ lwS
 cio
 cvp
 cvJ
-cvX
-cwj
+cvZ
+cwB
 cwB
 ckn
 cxg
@@ -88245,7 +88173,7 @@ cio
 cio
 cvq
 csv
-cvY
+cvZ
 cwl
 cwC
 cwX
@@ -88457,7 +88385,7 @@ cuj
 cio
 cvq
 csv
-cvY
+cvZ
 cwm
 cwD
 cwX
@@ -88668,9 +88596,9 @@ ctM
 crU
 cuJ
 crU
-cvL
+csZ
 cvZ
-cwn
+cwE
 cwE
 ckn
 cxg
@@ -88882,7 +88810,7 @@ cio
 cvt
 cvM
 cwa
-ckn
+cwg
 cwz
 cwY
 cxg

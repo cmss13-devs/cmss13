@@ -267,10 +267,7 @@
 	name = "High-Security Monitoring"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/highsec)
 "xq" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -308,10 +305,7 @@
 	name = "High-Security Monitoring"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/highsec)
 "Ad" = (
 /obj/item/ammo_casing{
@@ -338,10 +332,7 @@
 	name = "High-Security Monitoring";
 	welded = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/highsec)
 "Br" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -351,10 +342,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/highsec)
 "BQ" = (
 /obj/structure/pipes/vents/scrubber{
@@ -510,10 +498,7 @@
 	dir = 2;
 	name = "High-Security Monitoring"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/highsec)
 "QM" = (
 /obj/structure/window/framed/prison,
@@ -543,10 +528,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "High-Security Monitoring"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "darkredfull2"
-	},
+/turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/monitoring/highsec)
 "WB" = (
 /obj/effect/decal/cleanable/dirt,

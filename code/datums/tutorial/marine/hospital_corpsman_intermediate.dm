@@ -49,6 +49,7 @@
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/uniform()
+	SIGNAL_HANDLER
 
 	message_to_player("Before you're ready to take on the world as a Marine Hospital Corpsman, you should probably put some clothes on...")
 	message_to_player("Stroll on over to the outlined vendor and vend everything inside.")
@@ -101,6 +102,7 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_chest)), 22 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_chest()
+	SIGNAL_HANDLER
 
 	message_to_player("<b>Section 1.1: Internal Organ Damage (Chest)</b>.")
 
@@ -133,7 +135,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED, PROC_REF(organ_tutorial_chest_3))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_chest_3(datum/source, mob/living/carbon/human/being, mob/living/user)
-
+	SIGNAL_HANDLER
 
 	if(being != marine_dummy)
 		return
@@ -176,7 +178,7 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart_5)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_heart_5()
-
+	SIGNAL_HANDLER
 
 	marine_dummy.apply_internal_damage(12, "heart")
 	marine_dummy.setOxyLoss(15)
@@ -189,7 +191,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_heart_6(datum/source, mob/living/carbon/human/being, mob/living/user)
 	SIGNAL_HANDLER
-
 
 	if(being != marine_dummy)
 		return
@@ -248,7 +249,7 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_lungs()
-
+	SIGNAL_HANDLER
 
 	marine_dummy.rejuvenate()
 
@@ -270,9 +271,9 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_lungs_3)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_lungs_3()
+	SIGNAL_HANDLER
 
 	message_to_player("Pvt Dummys Lungs are looking rather squishy... Use your <b>Stethoscope</b> to test the condition of his <b>Lungs</b>.")
-
 
 	marine_dummy.apply_internal_damage(35, "lungs")
 	marine_dummy.setOxyLoss(15)
@@ -285,7 +286,6 @@
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
-
 
 	if(being != marine_dummy)
 		return
@@ -370,6 +370,7 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_3)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_head_3()
+	SIGNAL_HANDLER
 
 	message_to_player("<b>Brain</b> and <b>Eye</b> damage can be detected in a patient using a simple <b>Pen Light</b>!")
 	message_to_player("Pick up the <b>Pen Light</b>, then press <b>[retrieve_bind("activate_inhand")]</b> to switch its light on.")
@@ -401,7 +402,6 @@
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_head_5(datum/source, mob/living/carbon/human/being, mob/living/user)
 	SIGNAL_HANDLER
 
-
 	if(being != marine_dummy)
 		return
 	else
@@ -432,7 +432,6 @@
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_head_7(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
-
 	handle_pill_bottle(marine_dummy, "Imidazoline-Alkysine", "IA", "9", /obj/item/reagent_container/pill/imialky)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(organ_tutorial_head_7), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(ia_pill_fed_2))
@@ -448,7 +447,6 @@
 	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox)), 5 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_tox()
-
 
 	marine_dummy.rejuvenate()
 
@@ -505,6 +503,7 @@
 	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_4)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/defib_tutorial_4()
+	SIGNAL_HANDLER
 
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, marine_dummy.loc)
@@ -554,6 +553,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(defib_tutorial_6))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/defib_tutorial_6(datum/source, obj/item/picked_up)
+	SIGNAL_HANDLER
 
 	if(!(istype(picked_up, /obj/item/device/defibrillator)))
 		return
@@ -571,6 +571,7 @@
 	RegisterSignal(armor, COMSIG_ITEM_UNEQUIPPED, PROC_REF(defib_tutorial_7))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/defib_tutorial_7()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
 	UnregisterSignal(armor, COMSIG_ITEM_UNEQUIPPED)
@@ -592,7 +593,7 @@
 	RegisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED, PROC_REF(defib_tutorial_9))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/defib_tutorial_9()
-
+	SIGNAL_HANDLER
 
 	UnregisterSignal(marine_dummy, COMSIG_HUMAN_REVIVED)
 
@@ -607,6 +608,7 @@
 	addtimer(CALLBACK(src, PROC_REF(defib_tutorial_10_pre)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/defib_tutorial_10_pre()
+	SIGNAL_HANDLER
 
 	handle_pill_bottle(marine_dummy, "Bicaridine", "Bi", "11", /obj/item/reagent_container/pill/bicaridine)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(defib_tutorial_10_pre), TRUE)
@@ -729,6 +731,7 @@
 	addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 3 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/cpr_tutorial()
+	SIGNAL_HANDLER
 
 	if(stage == 0)
 		message_to_player("<b>Section 2.3: Delivering CPR</b>.")
@@ -769,7 +772,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/cpr_tutorial_1(datum/source, successful)
 	SIGNAL_HANDLER
-
 
 	if(successful != TRUE)
 		message_to_player("Bad luck! You made a mistake in the rhythm, and failed a round of CPR. You'll have to try again from the start.")
@@ -824,8 +826,7 @@
 	addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial_1)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/revival_mix_tutorial_1()
-
-
+	SIGNAL_HANDLER
 
 	if(stage == 0)
 		var/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/revivalmix = new(loc_from_corner(1,4))
@@ -899,10 +900,10 @@
 	RegisterSignal(revivalpen, COMSIG_ITEM_DRAWN_FROM_STORAGE, PROC_REF(revival_mix_tutorial_3))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/revival_mix_tutorial_3()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, revivalmix)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/empty/medic, revivalpen)
-
 
 	if(stage == 0)
 		UnregisterSignal(revivalpen, COMSIG_ITEM_DRAWN_FROM_STORAGE)
@@ -969,9 +970,9 @@
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute_2)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_brute_2()
+	SIGNAL_HANDLER
 
 	message_to_player("Oh no! Pvt Dummy has taken a large amount of <b>Brute Damage</b>! Scan him with your <b>Health Analyzer</b> for more details.")
-
 
 	marine_dummy.rejuvenate()
 	marine_dummy.apply_damage(35, BRUTE, "chest")
@@ -982,7 +983,6 @@
 
 	if(attacked_mob == tutorial_mob)
 		return
-
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -1044,6 +1044,7 @@
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_burn)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_burn()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/surgical_line, surgical_line)
 	remove_from_tracking_atoms(surgical_line)
@@ -1082,7 +1083,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_burn_3()
 
-
 	marine_dummy.rejuvenate()
 	marine_dummy.pain.feels_pain = TRUE
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/synthgraft, graft)
@@ -1101,6 +1101,7 @@
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_2)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_2()
+	SIGNAL_HANDLER
 
 	message_to_player("<b>Internal Bleeding</b> requires invasive surgical treatment. Including a <b>Surgical Incision</b>.")
 	message_to_player("While not as extensively fitted as a proper surgical kit, Combat Medics recieve a <b>Basic Surgical Case</b> for field use.")
@@ -1114,6 +1115,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(field_surgery_ib_3))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_3()
+	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
@@ -1126,6 +1128,7 @@
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_4)), 10 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_4()
+	SIGNAL_HANDLER
 
 	var/obj/item/roller/foldedroller = new(loc_from_corner(1, 4))
 	add_to_tracking_atoms(foldedroller)
@@ -1158,6 +1161,7 @@
 	RegisterSignal(marine_dummy, COMSIG_LIVING_SET_BUCKLED, PROC_REF(field_surgery_ib_7))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_6(datum/source, mob/target)
+	SIGNAL_HANDLER
 
 	if(target != marine_dummy)
 		return
@@ -1167,6 +1171,7 @@
 	message_to_player("Then, drag them next to the <b>Roller Bed</b>, and click and drag your mouse from Pvt Dummy, to the Roller bed to buckle them into it.")
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_7()
+	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_GRAB_PASSIVE) // just in case they buckle without grabbing
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_SET_BUCKLED)
@@ -1213,6 +1218,7 @@
 	addtimer(CALLBACK(src, PROC_REF(field_surgery_ib_8)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_8()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
 	remove_highlight(oxy)
@@ -1256,6 +1262,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(field_surgery_ib_10))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_10(datum/source, obj/item/picked_up)
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/scalpel, scalpel)
 
@@ -1271,8 +1278,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_ib_11(datum/source, mob/living/carbon/target, datum/surgery/surgery, obj/item/tool)
 	SIGNAL_HANDLER
-
-
 
 	if(target != marine_dummy)
 		message_to_player("Operate on the Dummy, not yourself! Try again.")
@@ -1351,6 +1356,7 @@
 	slower_message_to_player("Section 4 will cover treatment methods for uncommon, but still life-threatening afflictions a HM may come across on the field.")
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/medevacs(datum/source, obj/structure/closet/bodybag/stasisbag)
+	SIGNAL_HANDLER
 
 	switch(stage)
 		if(0)
@@ -1537,7 +1543,7 @@
 // 4.4 Synthetic Limb Repair
 // 4.5 Blood Transfusions
 //
-// Signal checks
+
 
 
 

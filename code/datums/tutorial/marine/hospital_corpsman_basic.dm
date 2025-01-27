@@ -675,7 +675,6 @@
 /datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_2()
 	SIGNAL_HANDLER
 
-
 	marine_dummy.adjustFireLoss(130)
 	message_to_player("The Dummy has taken considerable damage, and is in a lot of pain")
 	message_to_player("The flashing red healthbar above their head indicates the Dummy is in <b>Critical Condition</b>.")
@@ -730,6 +729,7 @@
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 2 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial()
+	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
 	remove_highlight(oxy)
@@ -763,6 +763,7 @@
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_2_return)), 1 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_return()
+	SIGNAL_HANDLER
 
 	message_to_player("As you can see, the Dummy has sustained minor <b>Toxin Damage</b>. Like burn damage, toxin damage is almost always spread across the body.")
 	message_to_player("The chemical <b>Dylovene</b> is used to treat Toxin Damage.")
@@ -790,7 +791,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial()
 
-
 	marine_dummy.rejuvenate()
 	marine_dummy.reagents.clear_reagents()
 
@@ -809,7 +809,7 @@
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_2)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_2()
-
+	SIGNAL_HANDLER
 
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(40)
@@ -856,6 +856,7 @@
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_6)), 6 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_6()
+	SIGNAL_HANDLER
 
 	message_to_player("A <b>Dexalin+ Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
 	message_to_player("Use the Autoinjector on Pvt Dummy by clicking on them, to administer the <b>Dexalin+</b>")
@@ -898,7 +899,6 @@
 	remove_from_tracking_atoms(dexp)
 	qdel(dexp)
 
-
 	marine_dummy.rejuvenate()
 
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 1 SECONDS)
@@ -922,7 +922,7 @@
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial_2)), 16 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_2()
-
+	SIGNAL_HANDLER
 
 	marine_dummy.adjustBruteLoss(55)
 	marine_dummy.adjustFireLoss(40)
@@ -940,7 +940,6 @@
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_3()
 	SIGNAL_HANDLER
-
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -965,6 +964,8 @@
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial_5)), 20 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_5()
+	SIGNAL_HANDLER
+
 	handle_pill_bottle(marine_dummy, "Kelotane", "Kl", "2", /obj/item/reagent_container/pill/kelotane)
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(od_tutorial_5), TRUE)

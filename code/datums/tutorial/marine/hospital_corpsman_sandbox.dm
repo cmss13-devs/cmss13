@@ -156,6 +156,7 @@
 
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/spawn_agents()
+	SIGNAL_HANDLER
 
 	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 
@@ -175,6 +176,7 @@
 		boobootimer = addtimer(CALLBACK(src, PROC_REF(eval_booboo_agent)), (rand(15,25)) SECONDS, TIMER_STOPPABLE)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/simulate_condition(mob/living/carbon/human/target)
+	SIGNAL_HANDLER
 
 	var/damageamountsplit = ((round(rand(1, 100))) / 100)
 	var/list/limbs = target.limbs
@@ -207,6 +209,7 @@
 	RegisterSignal(target, COMSIG_LIVING_REJUVENATED, PROC_REF(make_agent_leave)) // for debugging
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/final_health_checks(mob/living/carbon/human/target, bypass)
+	SIGNAL_HANDLER
 
 	var/list/healing_tasks = list()
 	UnregisterSignal(target, COMSIG_HUMAN_TUTORIAL_HEALED)
@@ -227,6 +230,7 @@
 		agent_healing_tasks[target] = healing_tasks
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(datum/source, mob/living/carbon/human/realistic_dummy/target, datum/surgery/surgery)
+	SIGNAL_HANDLER
 
 	var/list/healing_tasks = agent_healing_tasks[target]
 	var/list/injury_type = list()
@@ -353,6 +357,7 @@
 			handle_speech(active_agent)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
+	SIGNAL_HANDLER
 
 	UnregisterSignal(agent, COMSIG_LIVING_REJUVENATED)
 	UnregisterSignal(agent, COMSIG_HUMAN_SET_UNDEFIBBABLE)
@@ -374,6 +379,7 @@
 		INVOKE_ASYNC(src, PROC_REF(handle_round_progression))
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_booboo_agent()
+	SIGNAL_HANDLER
 
 	var/mob/living/carbon/human/realistic_dummy/active_agent = new(agent_spawn_location)
 	arm_equipment(active_agent, /datum/equipment_preset/uscm/tutorial_rifleman)
@@ -440,6 +446,7 @@
 		move_active_agents()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
+	SIGNAL_HANDLER
 
 	if(!(armor in cleanup))
 		cleanup |= armor // marks item for removal once the dummy is ready
@@ -448,33 +455,6 @@
 	else
 		cleanup -= armor
 		QDEL_IN(armor, 1 SECONDS)
-
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/tutorial_close()
-	SIGNAL_HANDLER
-
-	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, marine_dummy)
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
-
-	slower_message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
-	slower_message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
-	update_objective("Tutorial completed.")
-
-
-	tutorial_end_in(15 SECONDS)
-
-
-
-// Helpers
-
-// Helpers End
-
-
-// TO DO LIST
-//
-//
-
-
-
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_mob()
 	. = ..()
@@ -486,6 +466,7 @@
 
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/init_map()
+	SIGNAL_HANDLER
 
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 0))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))

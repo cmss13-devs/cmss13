@@ -1,6 +1,6 @@
 /client/proc/adjust_predator_round()
 	set name = "Adjust Predator Slots"
-	set desc = "Adjust the extra slots for predators."
+	set desc = "Adjust the slot modifier for predators."
 	set category = "Server.Round"
 
 	if(!admin_holder)
@@ -10,7 +10,7 @@
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	var/cur_extra = SSticker.mode.pred_additional_max
+	var/cur_extra = SSticker.mode.pred_count_modifier
 	var/cur_count = SSticker.mode.pred_current_num
 	var/cur_max = SSticker.mode.calculate_pred_max()
 	var/real_count = length(SSticker.mode.predators)
@@ -31,7 +31,7 @@
 		to_chat(src, SPAN_NOTICE("Aborting. Number cannot result in a max less than current pred count. (current: [cur_count]/[cur_max], current extra: [cur_extra], attempted: [value])"))
 		return
 
-	SSticker.mode.pred_additional_max = value
+	SSticker.mode.pred_count_modifier = value
 	message_admins("[key_name_admin(usr)] adjusted the additional pred amount from [cur_extra] to [value].")
 
 /datum/admins/proc/force_predator_round()

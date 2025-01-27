@@ -56,13 +56,14 @@ Additional game mode variables.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
-	var/pred_current_num = 0 //How many are there now?
-	var/pred_per_players = 80 //Preds per player
-	var/pred_start_count = 4 //The initial count of predators
-
-	var/pred_additional_max = 0
-	var/pred_leader_count = 0 //How many Leader preds are active
-	var/pred_leader_max = 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
+	/// How many predators utuilize slots currently
+	var/pred_current_num = 0
+	/// How many additional preds per client
+	var/pred_per_players = 80
+	/// The initial count of predators
+	var/pred_start_count = 6
+	/// Modifier on predator count (adjusted via Adjust-Predator-Slots)
+	var/pred_count_modifier = 0
 
 	//Some gameplay variables.
 	var/round_checkwin = 0
@@ -181,7 +182,7 @@ Additional game mode variables.
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
-	return floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count
+	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
 	if(!pred_candidate?.client)

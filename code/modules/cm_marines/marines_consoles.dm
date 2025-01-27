@@ -845,12 +845,14 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		// Check that sensors are present and active
 		if(!C.has_sensor || !C.sensor_mode || !check_faction(tracked_mob))
 			continue
+		if(tracked_mob.job in FAX_RESPONDER_JOB_LIST)
+			continue
 
 		// Check if z-level is correct
 		var/turf/pos = get_turf(tracked_mob)
 		if(!pos)
 			continue
-		if(should_block_game_interaction(tracked_mob))
+		if(should_block_game_interaction(tracked_mob, TRUE))
 			continue
 
 		// The entry for this human

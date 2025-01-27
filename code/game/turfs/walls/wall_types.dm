@@ -771,7 +771,14 @@
 /turf/closed/wall/resin/make_girder()
 	return
 
-/turf/closed/wall/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
+/turf/closed/wall/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data, obj/flamer_fire/fire)
+//RUCM START
+	if(fire && fire.friendlydetection)
+		var/mob/living/user = flame_cause_data.resolve_mob()
+		var/mob/living/constructor = construction_data.resolve_mob()
+		if(istype(user) && istype(constructor) && HIVE_ALLIED_TO_HIVE(user.hivenumber, constructor.hivenumber))
+			return
+//RUCM END
 	take_damage(dam)
 
 //this one is only for map use

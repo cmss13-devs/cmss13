@@ -153,6 +153,7 @@
 #include "modules\mob\living\carbon\xenomorph\castes\Warrior.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\behavior_delegate.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\castes\lurker\stalker.dm"
+#include "modules\mob\living\carbon\xenomorph\strains\castes\ravager\flamethrower.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\castes\lesser\sacrificer.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\castes\lesser\scout.dm"
 #include "modules\mob\living\carbon\xenomorph\strains\castes\lesser\slave.dm"

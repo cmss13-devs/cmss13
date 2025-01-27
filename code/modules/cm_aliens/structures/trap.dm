@@ -66,7 +66,13 @@
 	trap_type = RESIN_TRAP_EMPTY
 	icon_state = "trap0"
 
-/obj/effect/alien/resin/trap/flamer_fire_act()
+/obj/effect/alien/resin/trap/flamer_fire_act(dam, datum/cause_data/flame_cause_data, obj/flamer_fire/fire)
+//RUCM START
+	if(fire && fire.friendlydetection)
+		var/mob/living/user = flame_cause_data.resolve_mob()
+		if(istype(user) && HIVE_ALLIED_TO_HIVE(user.hivenumber, hivenumber))
+			return
+//RUCM END
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			burn_trap()

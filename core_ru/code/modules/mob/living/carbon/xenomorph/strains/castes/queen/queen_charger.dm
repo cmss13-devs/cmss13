@@ -4,9 +4,11 @@
 	flavor_description = "Ancient legends say, long time ago this chungus train ran over long corridors and annihilated every tall."
 
 	actions_to_remove = list(
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro,
 		/datum/action/xeno_action/onclick/screech,
 	)
 	actions_to_add = list(
+		/datum/action/xeno_action/activable/secrete_resin/hivelord/queen_macro,
 		/datum/action/xeno_action/onclick/charger_charge/queen,
 		/datum/action/xeno_action/activable/fling/charger/queen,
 	)
@@ -17,10 +19,12 @@
 	queen.health_modifier += XENO_HEALTH_MOD_VERY_LARGE
 
 	queen.mobile_aged_abilities -= /datum/action/xeno_action/onclick/screech
+	queen.mobile_abilities -= /datum/action/xeno_action/activable/secrete_resin/queen_macro
 	queen.mobile_abilities -= /datum/action/xeno_action/onclick/screech
 
 	queen.mobile_aged_abilities += /datum/action/xeno_action/onclick/charger_charge/queen
 	queen.mobile_aged_abilities += /datum/action/xeno_action/activable/fling/charger/queen
+	queen.mobile_abilities  += /datum/action/xeno_action/activable/secrete_resin/hivelord/queen_macro
 	queen.mobile_abilities += /datum/action/xeno_action/onclick/charger_charge/queen
 	queen.mobile_abilities += /datum/action/xeno_action/activable/fling/charger/queen
 

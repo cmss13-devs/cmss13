@@ -29,3 +29,6 @@
 	stun_power = 2
 	weaken_power = 0
 	slowdown = 8
+
+/datum/action/xeno_action/activable/secrete_resin/hivelord/queen_macro
+	ability_primacy = XENO_PRIMARY_ACTION_5

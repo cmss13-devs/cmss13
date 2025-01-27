@@ -233,7 +233,12 @@ const ViewClans = () => {
 const isClanElder = (clan?: number) => {
   const { data } = useBackend<YautjaData>();
 
-  const { user_clan_id, user_clan_rank, clan_elder_rank } = data;
+  const { user_clan_id, user_clan_rank, clan_elder_rank, user_is_superadmin } =
+    data;
+
+  if (user_is_superadmin) {
+    return true;
+  }
 
   if (user_clan_id !== clan) {
     return false;
@@ -249,7 +254,12 @@ const isClanElder = (clan?: number) => {
 const isClanLeader = (clan?: number) => {
   const { data } = useBackend<YautjaData>();
 
-  const { user_clan_id, user_clan_rank, clan_leader_rank } = data;
+  const { user_clan_id, user_clan_rank, clan_leader_rank, user_is_superadmin } =
+    data;
+
+  if (user_is_superadmin) {
+    return true;
+  }
 
   if (user_clan_id !== clan) {
     return false;

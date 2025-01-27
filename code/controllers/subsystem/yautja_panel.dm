@@ -178,7 +178,7 @@ SUBSYSTEM_DEF(yautja_panel)
 
 	// ------------- CLAN LEADER ONLY ACTIONS ------------- \\
 
-	if(!verify_clan_leader(current_clan_id))
+	if(!verify_clan_leader(user, current_clan_id))
 		to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 		return FALSE
 
@@ -307,7 +307,7 @@ SUBSYSTEM_DEF(yautja_panel)
 			message_admins("Yautja Clans: [key_name_admin(user)] has banished [target_ckey] from their clan for '[reason]'.")
 
 		if("move_to_clan")
-			if(!verify_council())
+			if(!verify_council(user))
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 
@@ -343,7 +343,29 @@ SUBSYSTEM_DEF(yautja_panel)
 			if(!verify_superadmin(user))
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+
+			var/input = input(user, "Please input the name of the clan to proceed.", "Delete Clan") as text|null
+			if(input != target_clan.name)
+				to_chat(user, "You have decided not to delete [target_clan.name].")
+				return FALSE
+
+			message_admins("[key_name_admin(user)] has deleted the clan [target_clan.name].")
+			to_chat(user, SPAN_NOTICE("You have deleted [target_clan.name]."))
+			var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
+
+			for(var/datum/view_record/clan_playerbase_view/CP in CPV)
+				var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player/, CP.player_id)
+				pl.sync()
+
+				pl.clan_id = null
+				pl.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
+				pl.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
+
+				pl.save()
+
+			target_clan.delete()
+			fire()
+			return TRUE
 
 	if(data_reloader)
 		fire()

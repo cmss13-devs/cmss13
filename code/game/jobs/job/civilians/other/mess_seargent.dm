@@ -2,7 +2,6 @@
 	title = JOB_MESS_SERGEANT
 	total_positions = 2
 	spawn_positions = 1
-	allow_additional = TRUE
 	scaled = TRUE
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

@@ -4,7 +4,6 @@
 	title = JOB_RESEARCHER
 	total_positions = 2
 	spawn_positions = 2
-	allow_additional = 1
 	scaled = 1
 	supervisors = "chief medical officer"
 	selection_class = "job_researcher"

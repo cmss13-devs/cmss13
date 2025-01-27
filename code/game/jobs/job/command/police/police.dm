@@ -3,7 +3,6 @@
 	title = JOB_POLICE
 	total_positions = 5
 	spawn_positions = 5
-	allow_additional = 1
 	scaled = 1
 	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

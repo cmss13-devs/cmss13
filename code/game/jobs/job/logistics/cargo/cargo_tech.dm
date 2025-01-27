@@ -2,7 +2,6 @@
 	title = JOB_CARGO_TECH
 	total_positions = 2
 	spawn_positions = 2
-	allow_additional = 1
 	scaled = 1
 	supervisors = "the requisitions officer"
 	selection_class = "job_ct"

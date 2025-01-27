@@ -2,7 +2,6 @@
 	title = JOB_CAS_PILOT
 	total_positions = 1
 	spawn_positions = 1
-	allow_additional = TRUE
 	scaled = TRUE
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

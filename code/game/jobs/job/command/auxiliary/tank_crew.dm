@@ -2,7 +2,6 @@
 	title = JOB_TANK_CREW
 	total_positions = 2
 	spawn_positions = 2
-	allow_additional = TRUE
 	scaled = TRUE
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

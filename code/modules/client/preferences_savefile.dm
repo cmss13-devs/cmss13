@@ -336,6 +336,8 @@
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
+	S["lastchangelog"] >> lastchangelog
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -556,6 +558,8 @@
 
 	S["completed_tutorials"] << tutorial_list_to_savestring()
 
+	S["lastchangelog"] << lastchangelog
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -639,6 +643,7 @@
 
 	S["preferred_squad"] >> preferred_squad
 	S["preferred_armor"] >> preferred_armor
+	S["night_vision_preference"] >> night_vision_preference
 	S["weyland_yutani_relation"] >> weyland_yutani_relation
 	//S["skin_style"] >> skin_style
 
@@ -691,6 +696,7 @@
 	undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
+	night_vision_preference = sanitize_inlist(night_vision_preference, GLOB.nvg_color_list, "Green")
 	//b_type = sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
@@ -790,6 +796,7 @@
 	S["weyland_yutani_relation"] << weyland_yutani_relation
 	S["preferred_squad"] << preferred_squad
 	S["preferred_armor"] << preferred_armor
+	S["night_vision_preference"] << night_vision_preference
 	//S["skin_style"] << skin_style
 
 	S["uplinklocation"] << uplinklocation

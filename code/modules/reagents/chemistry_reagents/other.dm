@@ -843,13 +843,7 @@
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
-
-/datum/reagent/chlorinetrifluoride/on_mob_life(mob/living/M) // Not a good idea, instantly messes you up from the inside out.
-	. = ..()
-	M.adjust_fire_stacks(max(M.fire_stacks, 15))
-	M.IgniteMob(TRUE)
-	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
 
 /datum/reagent/methane
 	name = "Methane"
@@ -1069,3 +1063,21 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/forensic_spray
+	name = "Forensic Spray"
+	id = "forensic_spray"
+	description = "A dye-containing spray that binds to the skin oils left behind by fingerprints."
+	reagent_state = LIQUID
+	color = "#79847a"
+	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/forensic_spray/reaction_obj(obj/reacting_on, volume)
+	if(!istype(reacting_on, /obj/effect/decal/prints))
+		return
+
+	var/obj/effect/decal/prints/reacting_prints = reacting_on
+	reacting_prints.set_visiblity(TRUE)
+
+	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visiblity), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)

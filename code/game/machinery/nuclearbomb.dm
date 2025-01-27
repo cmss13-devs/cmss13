@@ -434,11 +434,11 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 1 MINUTES
+	var/decryption_time = 10 MINUTES
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
-	timeleft = 1 MINUTES
+	timeleft = 3 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL
 
 	var/list/linked_decryption_towers

@@ -595,6 +595,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [floor(timeleft/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
 			var/t_left = duration2text_sec(floor(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
 			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device has been activated. You have approximately [t_left] to abandon the hunting grounds before it activates."))
+			var/datum/hive_status/hive
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				if(!length(hive.totalXenos))

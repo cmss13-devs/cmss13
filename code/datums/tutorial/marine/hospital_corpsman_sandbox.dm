@@ -21,6 +21,7 @@
 	name = "Marine - Hospital Corpsman (Sandbox)"
 	desc = "Test your medical skills against an endless wave of wounded Marines!"
 	tutorial_id = "marine_hm_3"
+	required_tutorial = "marine_basic_1"
 	icon_state = "medic"
 	tutorial_template = /datum/map_template/tutorial/s15x10/hm
 
@@ -63,7 +64,7 @@
 
 	var/last_resupply_round = 1
 
-	var/list/premeds = list(/datum/reagent/medical/tramadol, /datum/reagent/medical/bicaridine, /datum/reagent/medical/kelotane, /datum/reagent/medical/oxycodone)
+	var/list/datum/reagent/medical/premeds = list(/datum/reagent/medical/tramadol, /datum/reagent/medical/bicaridine, /datum/reagent/medical/kelotane, /datum/reagent/medical/oxycodone)
 
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
@@ -197,9 +198,9 @@
 		target.setToxLoss(round(rand(1,10*survival_difficulty)))
 
 	// premedication simulations
-	for(var/datum/reagent/medical/reagent in premeds)
-		if(pick(15;1,85;0))
-			target.reagents.add_reagent(reagent, round(rand(0, reagent.overdose - 1)))
+	if(pick(15;1,85;0))
+		var/datum/reagent/medical/reagent = pick(premeds)
+		target.reagents.add_reagent(reagent, round(rand(0, reagent.overdose - 1)))
 
 	target.updatehealth()
 	target.UpdateDamageIcon()

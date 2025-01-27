@@ -3,7 +3,7 @@
 	desc = "Learn the more advanced skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_2"
 	icon_state = "medic"
-	required_tutorial = "marine_hm_100"
+	required_tutorial = "marine_hm_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7/hm
 	var/clothing_items_to_vend = 6
 	var/ontime
@@ -35,8 +35,7 @@
 // 3.1 Surgical Damage Treatment
 // 3.2 Internal Bleeding
 //
-// Section 4 - Specialized Treatments
-// 4.1 Medical Evacuations, Stasis
+// Section 4 - Medical Evacuations, Stasis
 //
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/start_tutorial(mob/starting_mob)
@@ -151,7 +150,7 @@
 			UnregisterSignal(tutorial_mob, COMSIG_LIVING_STETHOSCOPE_USED)
 			remove_highlight(steth)
 
-			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart)), 14 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(organ_tutorial_heart)), 15 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_heart()
 
@@ -212,7 +211,7 @@
 
 	message_to_player("Feed the Dummy a <b>Dexalin Pill</b> to heal the <b>Oxygen Damage</b> created by his bruised Heart.")
 
-	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/storage/pill_bottle/dexalin)
+	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/reagent_container/pill/dexalin)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(organ_tutorial_heart_7_pre), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(dex_pill_fed))
 
@@ -234,7 +233,7 @@
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_heart_8_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
-	handle_pill_bottle(marine_dummy, "Peridaxon", "Pr", "10", /obj/item/storage/pill_bottle/peridaxon)
+	handle_pill_bottle(marine_dummy, "Peridaxon", "Pr", "10", /obj/item/reagent_container/pill/peridaxon)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(organ_tutorial_heart_8_pre), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(peri_pill_fed))
 
@@ -307,7 +306,7 @@
 
 	message_to_player("We need to counteract the immediate <b>Oxygen Damage</b> with <b>Dexalin</b>.")
 
-	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/storage/pill_bottle/dexalin)
+	handle_pill_bottle(marine_dummy, "Dexalin", "Dx", "1", /obj/item/reagent_container/pill/dexalin)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(organ_tutorial_lungs_5), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(dex_pill_fed_2))
 
@@ -324,7 +323,7 @@
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_lungs_7(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
-	handle_pill_bottle(marine_dummy, "Peridaxon", "Pr", "10", /obj/item/storage/pill_bottle/peridaxon)
+	handle_pill_bottle(marine_dummy, "Peridaxon", "Pr", "10", /obj/item/reagent_container/pill/peridaxon)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(organ_tutorial_lungs_7), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(peri_pill_fed_2))
 
@@ -350,7 +349,7 @@
 
 	marine_dummy.rejuvenate()
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head)), 12 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head)), 14 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_head()
 
@@ -359,7 +358,7 @@
 	message_to_player("While the presence of the former is sometimes debated in particular Marines, a Hospital Corpsman remains responsible for the health of both.")
 	message_to_player("Both Brain and Eye damage are directly caused as a result of excessive <b>Brute Damage Injuries</b> to head.")
 
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_2)), 19 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_head_2)), 21 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_head_2()
 
@@ -456,7 +455,7 @@
 	message_to_player("Both organs can be damaged by moving with an <b>Unsplinted Bone Fracture</b> in their respective regions, as well as from extreme amounts of <b>Brute damage</b> to either area.")
 	message_to_player("Both the Liver and Kidney are <u>extremely vulnerable</u> to <b>Toxin Damage</b> in the body.")
 	message_to_player("This includes <b>Alcohol Poisoning</b> in the case of the Liver <u>specifically</u>.")
-	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox_2)), 21 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(organ_tutorial_tox_2)), 22 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/organ_tutorial_tox_2()
 
@@ -629,7 +628,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
 	marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
 
-	addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial)), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial)), 8 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/revival_condition_tutorial()
 
@@ -669,7 +668,7 @@
 		add_highlight(marine_dummy, LIGHT_COLOR_ORANGE)
 
 		stage++
-		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 16 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 17 SECONDS)
 		return
 	if(stage == 2)
 		marine_dummy.revive_grace_period = 1.15 MINUTES // red red!!!
@@ -685,7 +684,7 @@
 		add_highlight(marine_dummy, COLOR_DARK_RED)
 
 		stage++
-		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 38 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 39 SECONDS)
 		return
 	if(stage == 3)
 		marine_dummy.revive_grace_period = 0 // BREATHE DAMN IT! BREATHE!!
@@ -699,7 +698,7 @@
 		marine_dummy.status_flags &= ~FAKESOUL // I know... what kind of man you are
 
 		stage++
-		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 19 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_1)), 20 SECONDS)
 		return
 	if(stage > 3)
 		marine_dummy.revive_grace_period = INFINITY
@@ -709,10 +708,10 @@
 
 		slower_message_to_player("The final common type of revival status you will come across, is <b>DNR</b>, or <b>Do Not Resuscitate</b>.")
 		slower_message_to_player("Indicated by a flat red line, the <b>DNR</b> icon indicates that a patient has either <b>Opted-Out</b> of being revived, or has <b>disconnected from the game</b>.")
-		slower_message_to_player("For the purposes of treatment, a <b>DNR</b> patiend should be viewed as if they were <b>Perma-Dead</b>.")
+		slower_message_to_player("For the purposes of treatment, a <b>DNR</b> patient should be viewed as if they were <b>Perma-Dead</b>.")
 
 		stage = 0
-		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_2)), 18 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_condition_tutorial_2)), 19 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/revival_condition_tutorial_2()
 
@@ -728,7 +727,7 @@
 	remove_highlight(marine_dummy)
 
 	message_to_player("Luckily for Pvt Dummy, he still has the favor of the gods, and will live again!")
-	addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 5 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/cpr_tutorial()
 	SIGNAL_HANDLER
@@ -740,7 +739,7 @@
 		slower_message_to_player("Performing CPR on a patient will both <u>reduce their Oxygen damage</u> levels, as well as slowing or preventing the rate at which they accumulate more Oxygen damage.")
 
 		stage++
-		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 23 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 24 SECONDS)
 		return
 	if(stage == 1)
 		slower_message_to_player("Most importantly, CPR can also be used on dead (but still revivable) Marines to <b>Extend their Revival Timer</b>!")
@@ -749,7 +748,7 @@
 		slower_message_to_player("You <u>MUST</u> wait at least <u>3 SECONDS</u> between rounds of CPR, otherwise you will fail the procedure.")
 
 		stage++
-		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 24 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(cpr_tutorial)), 25 SECONDS)
 		return
 	if(stage == 2)
 
@@ -793,30 +792,32 @@
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_CPR_PERFORMED)
 	slower_message_to_player("Even if you aren't playing as a Hospital Corpsman, performing CPR on critically injured Marines can still make you a lifesaver!")
 	remove_highlight(marine_dummy)
-	addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 7 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 9 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/revival_mix_tutorial()
 	SIGNAL_HANDLER
+
+	marine_dummy.rejuvenate()
 
 	if(stage == 0)
 		message_to_player("<b>Section 2.4: Assisted Revivals</b>.")
 		slower_message_to_player("As you know, to successfully revive a non-breathing patient using a <b>Defibrillator</b>, their overall damage must be <u>below 200</u> (NOT including Oxygen damage).")
 		slower_message_to_player("However, when using a <b>Defibrillator</b>, you are provided some leeway on the amount of overall damage.")
 		slower_message_to_player("When you use a <b>Defibrillator</b> on a patient, regardless of revival outcome, it will heal <u>12 damage</u> of each <u>DIFFERENT DAMAGE TYPE</u> (not including Oxygen).")
-		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 25 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 26 SECONDS)
 		stage++
 		return
 	if(stage == 1)
 		slower_message_to_player("Be warned, despite the large healing potential of the <b>Defibrillator</b>, repeated usage will apply large amounts of <b>Heart Damage</b> to the patient, requiring surgical intervention.")
 		slower_message_to_player("If the overall damage levels of a patient (not including Oxygen damage) are below 200 <u>AFTER</u> the <b>Defibrillator</b> has applied its 12 points of healing, the revival will be <b>Successful</b>!")
 
-		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 17 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 18 SECONDS)
 		stage++
 		return
 	if(stage == 2)
 		slower_message_to_player("As well as a <b>Defibrillators Healing Factor</b> of 12 damage, a chemical called <b>Epinephrine</b> (aka. Adrenaline) can be used to apply an additional 20 Points of Healing per defibrillation, per damage type!")
 
-		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 7 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revival_mix_tutorial)), 8 SECONDS)
 		stage++
 		return
 	if(stage == 3)
@@ -958,7 +959,7 @@
 	message_to_player("All Marine Hospital Corpsmen have been trained in basic surgery procedures.")
 	message_to_player("This allows you to carry out simple, but highly effective procedures to heal injured Marines far closer to the frontlines than any Doctor could.")
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute)), 18 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute)), 20 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_brute()
 
@@ -967,7 +968,7 @@
 	message_to_player("This is where <b>Surgical Damage Treatment</b> comes into play!")
 	message_to_player("Using tools like the <b>Surgical Line</b> (Brute) and <b>Synth-Graft</b> (Burn), a trained Hospital Corpsman can surgically treat damage for specific parts of the body")
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute_2)), 15 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_brute_2)), 18 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_brute_2()
 	SIGNAL_HANDLER
@@ -976,6 +977,8 @@
 
 	marine_dummy.rejuvenate()
 	marine_dummy.apply_damage(35, BRUTE, "chest")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(field_surgery_brute_3))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_brute_3(datum/source, mob/living/carbon/human/attacked_mob)
@@ -983,6 +986,9 @@
 
 	if(attacked_mob == tutorial_mob)
 		return
+
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
+	remove_highlight(healthanalyzer)
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -1024,14 +1030,12 @@
 	add_to_tracking_atoms(surgical_line)
 	add_highlight(surgical_line, COLOR_GREEN)
 
-	//add_to_tracking_atoms(mob_chest)
-
 	RegisterSignal(mob_chest, COMSIG_LIMB_FULLY_SUTURED, PROC_REF(field_surgery_brute_6))
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_brute_6()
 	SIGNAL_HANDLER
 
-	//TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/surgical_line, surgical_line)
 
 	UnregisterSignal(mob_chest, COMSIG_LIMB_FULLY_SUTURED)
@@ -1061,7 +1065,7 @@
 	add_to_tracking_atoms(graft)
 	add_highlight(graft, COLOR_ORANGE)
 
-	//TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+
 	add_highlight(mob_chest, COLOR_ORANGE)
 
 	RegisterSignal(mob_chest, COMSIG_LIMB_FULLY_SUTURED, PROC_REF(field_surgery_burn_2))
@@ -1069,7 +1073,7 @@
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_burn_2()
 	SIGNAL_HANDLER
 
-	//TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
+
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/tool/surgery/synthgraft, graft)
 
 	UnregisterSignal(mob_chest, COMSIG_LIMB_FULLY_SUTURED)
@@ -1079,7 +1083,7 @@
 
 	message_to_player("Well done! Pvt Dummy has been healed!")
 
-	addtimer(CALLBACK(src, PROC_REF(field_surgery_burn_3)), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(field_surgery_burn_3)), 3 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/field_surgery_burn_3()
 
@@ -1230,7 +1234,6 @@
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	marine_dummy.pain.feels_pain = FALSE //surgery failsafe
 
-	//TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	var/datum/wound/internal_bleeding/IB = new (0)
 	mob_chest.add_bleeding(IB, TRUE)
 	mob_chest.wounds += IB
@@ -1272,7 +1275,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
 	message_to_player("Now, make sure you are on the <b>Help Intent</b> with <b>Surgery Mode Enabled</b>, then click on Pvt Dummy while holding your Scalpel to create an incision.")
-
+	message_to_player("You <u>MUST</u> have Pvt Dummy's armor removed to carry out this surgery!")
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(field_surgery_ib_11))
 
@@ -1348,23 +1351,29 @@
 			UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 			marine_dummy.rejuvenate()
 
-			addtimer(CALLBACK(src, PROC_REF(section_4)), 3 SECONDS)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/roller, rollerdeployed)
+			remove_from_tracking_atoms(rollerdeployed)
+			rollerdeployed.unbuckle()
+			for(var/obj/item/item in rollerdeployed.contents)
+				qdel(item) // in case they tried to get clever
+			QDEL_IN(rollerdeployed, 2 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_intermediate/proc/section_4()
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/item/clothing/suit/storage/marine/medium, armor)
+			if(marine_dummy.get_item_by_slot(WEAR_JACKET) != armor)
+				marine_dummy.equip_to_slot_or_del(armor, WEAR_JACKET)
 
-	slower_message_to_player("<b>Section 4: Specialized Treatments</b>.")
-	slower_message_to_player("Section 4 will cover treatment methods for uncommon, but still life-threatening afflictions a HM may come across on the field.")
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 4 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/medevacs(datum/source, obj/structure/closet/bodybag/stasisbag)
 	SIGNAL_HANDLER
 
 	switch(stage)
 		if(0)
-			slower_message_to_player("<b>Section 4.1: Medical Evacuations, Stasis</b>.")
+			slower_message_to_player("<b>Section 4: Medical Evacuations, Stasis</b>.")
 			slower_message_to_player("Despite the vast skillset of a Marine Hospital Corpsman, the condition of some patients occasionally fall beyond your abilities of care.")
 
 			stage++
-			addtimer(CALLBACK(src, PROC_REF(medevacs)), 16 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 14 SECONDS)
 			return
 
 		if(1)
@@ -1373,7 +1382,7 @@
 			slower_message_to_player("If no Doctor or Synthetic is immediately available, or if a patient has been infected with an <b>Alien Larva (Hugged)</b>, you will need to perform a <b>Medical Evacuation (MedEvac)</b>.")
 
 			stage++
-			addtimer(CALLBACK(src, PROC_REF(medevacs)), 22 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 21 SECONDS)
 			return
 
 		if(2)
@@ -1387,10 +1396,13 @@
 			add_highlight(medevac, COLOR_GREEN)
 
 			stage++
-			addtimer(CALLBACK(src, PROC_REF(medevacs)), 25 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(medevacs)), 24 SECONDS)
 			return
 
 		if(3)
+			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac)
+			remove_highlight(medevac)
+
 			marine_dummy.say("Doc, I've been hugged!")
 
 			slower_message_to_player("For example, our good friend Pvt Dummy insists that they've been 'hugged' (Infected) by an Alien Facehugger, and will require <u>URGENT</u> surgery to prevent a chestbursting.")
@@ -1417,6 +1429,7 @@
 
 			stage++
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/bed/medevac_stretcher/prop, medevac)
+			add_highlight(medevac, COLOR_GREEN)
 			RegisterSignal(medevac, COMSIG_LIVING_BED_BUCKLED, PROC_REF(medevacs))
 			return
 
@@ -1426,10 +1439,25 @@
 			slower_message_to_player("While this is just a simulation, in a real situation, you would next attempt to contact the <b>Close-Air-Support Pilot</b> over <b>Medical Comms</b> or via a direct phonecall, and notify them that your MedEvac beacon is active, as well as the <u>condition and urgency of the patient</u>.")
 			slower_message_to_player("MedEvac beds <u>MUST</u> be deployed outdoors to function, always make sure you are <u>OUTSIDE</u> when using the MedEvac system.")
 
+			playsound(medevac.loc, 'sound/machines/ping.ogg', 20)
+			spawn(2.7 SECONDS)
+			flick("winched_stretcher", medevac)
+			QDEL_IN(marine_dummy, 2.5 SECONDS)
+			animate(marine_dummy, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
+			marine_dummy = null // godspeed, Private....
+			medevac.update_icon()
+
 			stage = 0
+
+			remove_from_tracking_atoms(medevac)
+			QDEL_IN(medevac, 3 SECONDS)
+
+			addtimer(CALLBACK(src, PROC_REF(tutorial_close)), 28 SECONDS)
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/proc/tutorial_close()
 	SIGNAL_HANDLER
+
+	playsound(tutorial_mob.loc, 'sound/theme/winning_triumph2.ogg', 20)
 
 	message_to_player("This officially completes your training to be a Marine Horpital Corpsman!")
 	message_to_player("Congratulations on getting through both tutorials so far! You are now fully capable of doing your part for the USCM!")
@@ -1535,18 +1563,6 @@
 			SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
 
 // Helpers End
-
-
-// TO DO LIST
-//
-// Section 4 - Specialized Treatments
-// 4.4 Synthetic Limb Repair
-// 4.5 Blood Transfusions
-//
-
-
-
-
 
 /datum/tutorial/marine/hospital_corpsman_intermediate/init_mob()
 	. = ..()

@@ -10,13 +10,13 @@
 	if(user.action_busy)
 		return
 
-	var/turf/our_loc = get_turf(src)
+	var/turf/our_loc = get_turf(user)
 	var/turf/checking = get_step_multiz(our_loc, UP)
 	if(!istype(checking) || !checking.zPassIn(user, UP, our_loc))
 		to_chat(user, SPAN_WARNING("You can't climb here!"))
 		return
-
-	checking = get_step_multiz(src, UP)
+	our_loc = checking
+	checking = get_step(src, UP)
 	if(!checking.zPassIn(user, UP, our_loc))
 		to_chat(user, SPAN_WARNING("You can't climb here!"))
 		return
@@ -24,17 +24,19 @@
 	user.visible_message(SPAN_WARNING("[user] starts climbing up \the [src]."),\
 		SPAN_WARNING("You start climbing up the \the [src]."))
 
-	if(!do_after(user, isxeno(user) ? user.mob_size * 5 SECONDS : 20 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, isxeno(user) ? user.mob_size * 5 SECONDS : 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
-	our_loc = get_turf(src)
+	our_loc = get_turf(user)
 	checking = get_step_multiz(our_loc, UP)
-	if(!checking.zPassIn(user, UP, our_loc))
+	if(!istype(checking) || !checking.zPassIn(user, UP, our_loc))
+		to_chat(user, SPAN_WARNING("You can't climb here!"))
 		return
-
-	checking = get_step_multiz(src, UP)
+	our_loc = checking
+	checking = get_step(src, UP)
 	if(!checking.zPassIn(user, UP, our_loc))
+		to_chat(user, SPAN_WARNING("You can't climb here!"))
 		return
 
 	user.zMove(target = checking, z_move_flags = ZMOVE_STAIRS_FLAGS)

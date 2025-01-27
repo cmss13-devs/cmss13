@@ -108,6 +108,12 @@
 		if(found_turf.hull_tile)
 			return FALSE
 
+		if(found_turf.turf_flags & TURF_NO_MULTIZ_SUPPORT)
+			return FALSE
+
+		if(!found_turf.antipierce)
+			return FALSE
+
 		if(istype(found_turf, /turf/closed/shuttle))
 			return FALSE
 

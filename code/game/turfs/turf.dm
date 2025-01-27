@@ -238,7 +238,7 @@
 			if(!(/turf/open/openspace in turf_inform.baseturfs))
 				var/list/baseturfsold = list(/turf/open/openspace)
 				baseturfsold |= turf_inform.baseturfs
-				turf_inform.baseturfs = baseturfsold
+				turf_inform.baseturfs = baseturfsold - turf_inform.type
 
 	turf_inform = SSmapping.get_turf_below(src)
 	if(turf_inform)
@@ -246,7 +246,7 @@
 		if(!(turf_inform.turf_flags & TURF_NO_MULTIZ_SUPPORT) && !(turf_flags & TURF_NO_MULTIZ_SUPPORT))
 			var/list/baseturfsold = list(/turf/open/openspace)
 			baseturfsold |= baseturfs
-			baseturfs = baseturfsold
+			baseturfs = baseturfsold - turf_inform.type
 
 /turf/proc/add_cleanable_overlays()
 	for(var/cleanable_type in cleanables)

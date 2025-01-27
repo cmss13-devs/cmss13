@@ -179,8 +179,7 @@
 		var/turf/old_ceiling = get_step_multiz(old_turf, UP)
 		if(old_ceiling)
 			if(istype(old_ceiling, custom_ceiling))
-				var/turf/open/floor/roof/old_shuttle_ceiling = old_ceiling
-				old_shuttle_ceiling.ScrapeAway()
+				old_ceiling.ScrapeAway()
 			else
 				old_ceiling.baseturfs -= custom_ceiling
 
@@ -203,20 +202,16 @@
 
 	for(var/i in 1 to length(old_turfs))
 		CHECK_TICK
-		if(!(old_turfs[old_turfs[i]] & (MOVE_CONTENTS|MOVE_TURF)))
+		var/move_mode = old_turfs[old_turfs[i]]
+		if(!(move_mode & (MOVE_CONTENTS|MOVE_TURF)))
 			continue
 		var/turf/old_turf = old_turfs[i]
 		var/turf/new_turf = new_turfs[i]
 		new_turf.lateShuttleMove(old_turf)
-		var/turf/new_ceiling = get_step_multiz(new_turf, UP)
-		if(new_ceiling)
-			if(!new_ceiling.baseturfs)
-				new_ceiling.ChangeTurf(custom_ceiling)
-			else
-				if(length(new_ceiling.baseturfs) > 1)
-					new_ceiling.baseturfs = list(new_ceiling.baseturfs[1], custom_ceiling) + new_ceiling.baseturfs.Copy(2, length(new_ceiling.baseturfs))
-				else
-					new_ceiling.baseturfs = list(custom_ceiling) + new_ceiling.baseturfs
+		if(move_mode & MOVE_TURF)
+			var/turf/new_ceiling = get_step_multiz(new_turf, UP)
+			if(new_ceiling)
+				new_ceiling.add_shuttle_roof(custom_ceiling)
 
 	for(var/i in 1 to length(moved_atoms))
 		CHECK_TICK
@@ -225,3 +220,17 @@
 			continue
 		var/turf/old_turf = moved_atoms[moved_object]
 		moved_object.lateShuttleMove(old_turf, movement_force, movement_direction)
+
+/turf/proc/add_shuttle_roof(custom_ceiling)
+	if(!islist(baseturfs))
+		return
+
+	var/initial_length = length(baseturfs)
+	baseturfs -= /turf/open/openspace
+	var/new_legnth = length(baseturfs)
+	// Assume here is openspace somwhere, so we work, in other case just skip
+	if(new_legnth != initial_length)
+		baseturfs = list(/turf/open/openspace, custom_ceiling) + baseturfs
+
+/turf/open/openspace/add_shuttle_roof(custom_ceiling)
+	ChangeTurf(custom_ceiling)

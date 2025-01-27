@@ -446,11 +446,10 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 3 MINUTES
+	var/decryption_time = 1 MINUTES
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
-	timeleft = 3 MINUTES
 	timeleft = 3 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL
 
@@ -489,8 +488,14 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(timing)
 				to_chat(ui.user, SPAN_INFO("[src] is impossible to disengage now!"))
 				return
-
-
+		if("toggleSafety")
+			if(decrypting)
+				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
+				return
+		if("toggleAnchor")
+			if(decrypting)
+				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
+				return
 	if(..())
 		return
 
@@ -590,7 +595,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			return
 
 /obj/structure/machinery/nuclearbomb/tech/announce_to_players(timer_warning)
-	if(!decryption_time)
+	if(!decryption_time && (timer_warning != NUKE_DECRYPT_SHOW_TIMER_COMPLETE))
 		return ..()
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list

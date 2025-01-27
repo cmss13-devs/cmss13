@@ -246,6 +246,14 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west
 	dir = WEST
 
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left
+	icon_state = "hunter_platform_stair"
+	dir = NORTH
+
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right
+	icon_state = "hunter_platform_stair_alt"
+	dir = NORTH
+
 // Fake platform effect
 
 /obj/effect/hunter/fake_platform/hunter

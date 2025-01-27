@@ -355,10 +355,10 @@
 /obj/structure/platform/metal/hunter/west
 	dir = WEST
 
-/obj/structure/platform/metal/stair_cut/hunter_left
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left
 	icon_state = "hunter_platform_stair"
 
-/obj/structure/platform/metal/stair_cut/hunter_right
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right
 	icon_state = "hunter_platform_stair_alt"
 
 //------------------------------------//

@@ -172,7 +172,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/hunter_left,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 24
 	},
@@ -2559,7 +2559,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "ip" = (
-/obj/structure/platform/metal/stair_cut/hunter_left,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
@@ -2913,7 +2913,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/hunter_left,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /turf/open/floor/corsat,
 /area/yautja)
 "jx" = (
@@ -4517,7 +4517,7 @@
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
 "pe" = (
-/obj/structure/platform/metal/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
@@ -7058,6 +7058,28 @@
 /obj/item/reagent_container/food/snacks/meat,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
+"yn" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/machinery/door_control{
+	id = "youngbloodlowerwest";
+	pixel_y = 24;
+	name = "Lower Deck Shutters";
+	req_one_access_txt = "390";
+	pixel_x = 4
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Hound Containment Monitor";
+	pixel_y = 24;
+	pixel_x = 4
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja)
 "yr" = (
 /obj/effect/hunter/bridge_border/brown/small_stair_left{
 	dir = 4
@@ -7344,15 +7366,15 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "zw" = (
-/obj/structure/platform/metal/stair_cut/hunter_left,
 /obj/effect/hunter/bridge_border/brown/large_stair{
-	dir = 8
+	dir = 1
 	},
+/obj/structure/prop/hunter/fake_platform/hunter,
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/turf/open/floor/predship/hull/non_weedable_hull/east,
+/turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "zx" = (
 /obj/structure/sink{
@@ -7416,7 +7438,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/obj/structure/platform/metal/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /turf/open/floor/corsat,
 /area/yautja)
 "zG" = (
@@ -7847,7 +7869,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Bg" = (
-/obj/structure/platform/metal/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 24
 	},
@@ -8442,7 +8464,7 @@
 /turf/open/floor/corsat/box,
 /area/yautja)
 "CP" = (
-/obj/structure/platform/metal/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
@@ -8883,7 +8905,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/hunter_left,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -9095,17 +9117,6 @@
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/platform_decoration/metal/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
-/area/yautja)
-"Fh" = (
-/obj/structure/platform/metal/stair_cut/hunter_right,
-/obj/effect/hunter/bridge_border/brown/large_stair{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 3.2;
-	color = "#bccab4"
-	},
-/turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja)
 "Fi" = (
 /obj/effect/decal/cleanable/dirt{
@@ -11847,6 +11858,24 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/west,
 /area/yautja)
+"OS" = (
+/obj/structure/machinery/door_control{
+	id = "youngbloodlowereast";
+	pixel_y = 24;
+	name = "Lower Deck Shutters";
+	req_one_access_txt = "390";
+	pixel_x = -4
+	},
+/obj/structure/showcase{
+	desc = "A console equipped with a radar used by the Hunters to detect gear and good hunting grounds.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "smallmonitor";
+	name = "Hound Containment Monitor";
+	pixel_y = 24;
+	pixel_x = -5
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja)
 "OT" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -12994,7 +13023,7 @@
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
-/obj/structure/platform/metal/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /obj/structure/platform_decoration/metal/hunter/east,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -14345,7 +14374,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "WX" = (
-/obj/structure/platform/metal/stair_cut/hunter_left,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
 	},
@@ -15130,7 +15159,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "ZS" = (
-/obj/structure/platform/metal/stair_cut/hunter_right,
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right,
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 1
 	},
@@ -21060,7 +21089,7 @@ aV
 aV
 aV
 aV
-sr
+yn
 IM
 aV
 aV
@@ -21539,9 +21568,9 @@ Kv
 BH
 VU
 Gv
-Fh
+pe
 UK
-cc
+zw
 Uj
 HU
 KN
@@ -22359,7 +22388,7 @@ Kv
 bk
 Zv
 jA
-zw
+ip
 CV
 tR
 jA
@@ -22864,7 +22893,7 @@ aV
 aV
 aV
 aV
-IM
+OS
 sr
 aV
 aV

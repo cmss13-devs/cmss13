@@ -112,21 +112,7 @@ Additional game mode variables.
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM
 
-//===================================================\\
 
-				//GAME MODE INITIATLIZE\\
-
-//===================================================\\
-
-/datum/game_mode/proc/initialize_special_clamps()
-	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
-	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
-
-	for(var/i in GLOB.RoleAuthority.roles_by_name)
-		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
-		if(J.scaled)
-			J.set_spawn_positions(marine_starting_num)
 
 
 //===================================================\\

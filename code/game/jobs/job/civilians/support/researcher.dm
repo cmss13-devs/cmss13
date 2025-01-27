@@ -4,7 +4,6 @@
 	title = JOB_RESEARCHER
 	total_positions = 2
 	spawn_positions = 2
-	scaled = 1
 	supervisors = "chief medical officer"
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

@@ -12,7 +12,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	late_joinable = TRUE
-	scaled = FALSE
 	faction_menu = FACTION_UPP
 	minimum_playtime_as_job = 0
 

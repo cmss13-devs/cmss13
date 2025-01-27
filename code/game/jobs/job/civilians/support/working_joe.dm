@@ -5,7 +5,6 @@
 	title = JOB_WORKING_JOE
 	total_positions = 6
 	spawn_positions = 6
-	scaled = TRUE
 	supervisors = "ARES and APOLLO"
 	selection_class = "job_working_joe"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
@@ -58,7 +57,6 @@
 	title = JOB_UPP_JOE
 	total_positions = 3 //Number is actually based on information from Colonial Marines_Operations Manual, 1IVAN/3 starts to lag if it is connected to more than 3.
 	spawn_positions = 3
-	scaled = FALSE
 	supervisors = "1VAN/3 and UPP command staff"
 	gear_preset = /datum/equipment_preset/synth/working_joe/upp
 	flags_startup_parameters = ROLE_WHITELISTED

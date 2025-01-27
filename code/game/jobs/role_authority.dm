@@ -166,8 +166,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// How many positions do we open based on total pop
 	for(var/i in roles_by_name)
 		var/datum/job/J = roles_by_name[i]
-		if(J.scaled)
-			J.set_spawn_positions(length(unassigned_players))
+		J.set_spawn_positions(length(unassigned_players))
 
 	/*===============================================================*/
 

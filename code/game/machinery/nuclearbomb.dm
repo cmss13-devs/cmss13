@@ -152,6 +152,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	data["allowed"] = allowed
 	data["being_used"] = being_used
 	data["decryption_complete"] = TRUE //this is overridden by techweb nuke UI_data later, this just makes it default to true
+	data["can_disengage"] = TRUE
 
 	return data
 
@@ -466,6 +467,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	.["decryption_time"] = duration2text_sec(decryption_time)
 
 	.["decryption_complete"] = decryption_time ? FALSE : TRUE
+	.["can_disengage"] = FALSE
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	switch(action)

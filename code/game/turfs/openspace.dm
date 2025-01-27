@@ -162,12 +162,12 @@ GLOBAL_DATUM_INIT(openspace_shadow_one_for_all, /atom/movable/openspace_backdrop
 	switch(direction)
 		if(DOWN)
 			for(var/obj/contained_object in contents)
-				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN || contained_object.density)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_DOWN)
 					return FALSE
 			return TRUE
 		if(UP)
 			for(var/obj/contained_object in contents)
-				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP || contained_object.density)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_IN_UP)
 					return FALSE
 			return TRUE
 	return FALSE
@@ -178,12 +178,12 @@ GLOBAL_DATUM_INIT(openspace_shadow_one_for_all, /atom/movable/openspace_backdrop
 	switch(direction)
 		if(DOWN)
 			for(var/obj/contained_object in contents)
-				if(contained_object.flags_obj & OBJ_BLOCK_Z_OUT_DOWN || contained_object.density)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_OUT_DOWN)
 					return FALSE
 			return TRUE
 		if(UP)
 			for(var/obj/contained_object in contents)
-				if(contained_object.flags_obj & OBJ_BLOCK_Z_OUT_UP || contained_object.density)
+				if(contained_object.flags_obj & OBJ_BLOCK_Z_OUT_UP)
 					return FALSE
 			return TRUE
 	return FALSE

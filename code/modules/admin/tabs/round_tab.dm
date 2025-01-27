@@ -14,7 +14,8 @@
 	var/cur_count = SSticker.mode.pred_current_num
 	var/cur_max = SSticker.mode.calculate_pred_max()
 	var/real_count = length(SSticker.mode.predators)
-	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] (Real: [real_count]) Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = 0, integer_only = TRUE)
+	var/possible_min = cur_count - cur_max
+	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] (Real: [real_count]) Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = possible_min, integer_only = TRUE)
 
 	if(isnull(value))
 		return
@@ -24,10 +25,10 @@
 
 	cur_count = SSticker.mode.pred_current_num // values could have changed since asking
 	cur_max = SSticker.mode.calculate_pred_max()
-	var/free_extra = max(min(cur_extra, cur_max - cur_count), 0) // how much we could potentionally reduce pred_additional_max
+	possible_min = cur_count - cur_max
 
 	// If we are reducing the count and that exceeds how much we could reduce it by
-	if(value < cur_extra && (cur_extra - value) > free_extra)
+	if(value < possible_min)
 		to_chat(src, SPAN_NOTICE("Aborting. Number cannot result in a max less than current pred count. (current: [cur_count]/[cur_max], current extra: [cur_extra], attempted: [value])"))
 		return
 

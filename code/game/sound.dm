@@ -27,12 +27,12 @@
 	
 	var/turf/above = SSmapping.get_turf_above(get_turf(src))
 	while(above)
-		hearers_to_return += SSquadtree.players_in_range(zone, z + 1)
+		hearers_to_return += SSquadtree.players_in_range(zone, above.z)
 		above = SSmapping.get_turf_above(above)
 
 	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 	while(below)
-		hearers_to_return += SSquadtree.players_in_range(zone, z-1)
+		hearers_to_return += SSquadtree.players_in_range(zone, below.z)
 		below = SSmapping.get_turf_below(below)
 	return hearers_to_return
 

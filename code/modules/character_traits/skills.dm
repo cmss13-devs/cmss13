@@ -90,7 +90,12 @@
 	trait_desc = "Gives the CO information on his smartgun"
 	skill = SKILL_SPEC_WEAPONS
 	skill_cap =  SKILL_SPEC_SMARTGUN
+/*
 	skill_increment = 7
+*/
+//RUCM START
+	skill_increment = SKILL_SPEC_SMARTGUN
+//RUCM END
 
 
 /datum/character_trait/skills/spotter

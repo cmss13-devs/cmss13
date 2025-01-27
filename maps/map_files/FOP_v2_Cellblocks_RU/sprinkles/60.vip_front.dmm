@@ -4,10 +4,7 @@
 	icon_state = "W"
 	},
 /obj/structure/inflatable/popped/door,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "bE" = (
 /obj/effect/decal/warning_stripes{
@@ -15,10 +12,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/inflatable/popped,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/west,
 /area/prison/security/monitoring/highsec)
 "bW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -34,16 +28,12 @@
 "cD" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/barricade/metal/wired,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "dk" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /obj/structure/inflatable/popped,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "dl" = (
 /obj/item/ammo_casing{
@@ -53,17 +43,12 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "dv" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "dO" = (
 /obj/structure/barricade/metal/wired{
@@ -82,19 +67,16 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "fp" = (
 /obj/item/ammo_casing{
 	icon_state = "casing_1"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged3,
+/area/prison/security/monitoring/highsec)
+"fP" = (
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/security/monitoring/highsec)
 "gf" = (
 /obj/structure/window/framed/prison,
@@ -125,9 +107,7 @@
 /area/prison/security/monitoring/highsec)
 "hO" = (
 /obj/structure/inflatable,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "im" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -174,10 +154,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/inflatable/popped,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "lt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -192,14 +169,10 @@
 	icon_state = "casing_1"
 	},
 /obj/item/stack/sheet/metal,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "mt" = (
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "nk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -220,9 +193,7 @@
 /area/prison/security/monitoring/highsec)
 "pk" = (
 /obj/effect/landmark/corpsespawner/prison_security,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "pm" = (
 /obj/structure/window/framed/prison/reinforced/hull,
@@ -240,17 +211,12 @@
 /area/prison/security/monitoring/highsec)
 "qy" = (
 /obj/structure/largecrate/random/case/double,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "re" = (
 /obj/structure/machinery/light/double/blue,
 /obj/effect/spawner/random/gun/rifle/highchance,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "rG" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -291,10 +257,7 @@
 	dir = 5
 	},
 /obj/structure/largecrate/random,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/west,
 /area/prison/security/monitoring/highsec)
 "wn" = (
 /turf/closed/wall/prison,
@@ -311,10 +274,7 @@
 /area/prison/security/monitoring/highsec)
 "xq" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "yd" = (
 /obj/item/stack/sheet/metal,
@@ -322,10 +282,7 @@
 /area/prison/security/monitoring/highsec)
 "yq" = (
 /obj/structure/inflatable,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "yw" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -373,10 +330,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "Ba" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -406,34 +360,22 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/southeast,
 /area/prison/security/monitoring/highsec)
 "CF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "CG" = (
 /obj/structure/pipes/vents/pump/on,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "DE" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "DX" = (
 /obj/effect/decal/cleanable/blood{
@@ -448,10 +390,7 @@
 /area/prison/security/monitoring/highsec)
 "EN" = (
 /obj/structure/inflatable,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/east,
 /area/prison/security/monitoring/highsec)
 "ER" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -460,10 +399,7 @@
 /area/prison/security/monitoring/highsec)
 "EW" = (
 /obj/structure/inflatable/popped/door,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/east,
 /area/prison/security/monitoring/highsec)
 "Fl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -478,10 +414,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/security/monitoring/highsec)
 "Fo" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged3,
 /area/prison/security/monitoring/highsec)
 "Ft" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -496,17 +429,12 @@
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/east,
 /area/prison/security/monitoring/highsec)
 "Gb" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/metal,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "HR" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -528,10 +456,7 @@
 /area/prison/security/monitoring/highsec)
 "Lm" = (
 /obj/structure/pipes/vents/scrubber,
-/turf/open/floor/prison{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/northeast,
 /area/prison/security/monitoring/highsec)
 "LH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -555,15 +480,10 @@
 /area/prison/security/monitoring/highsec)
 "Nc" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "ND" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "NF" = (
 /obj/structure/window/framed/prison,
@@ -614,10 +534,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "Vu" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -638,10 +555,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "Xy" = (
 /obj/effect/decal/warning_stripes{
@@ -651,25 +565,16 @@
 	icon_state = "xgibdown1"
 	},
 /obj/structure/inflatable/popped,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/west,
 /area/prison/security/monitoring/highsec)
 "XV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red,
 /area/prison/security/monitoring/highsec)
 "Yb" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "Yv" = (
 /obj/structure/barricade/metal/wired{
@@ -685,10 +590,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/southwest,
 /area/prison/security/monitoring/highsec)
 "YT" = (
 /obj/effect/decal/warning_stripes{
@@ -698,10 +600,7 @@
 	dir = 4
 	},
 /obj/structure/inflatable/popped/door,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/monitoring/highsec)
 "YV" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -721,10 +620,7 @@
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/east,
 /area/prison/security/monitoring/highsec)
 
 (1,1,1) = {"
@@ -768,9 +664,9 @@ QM
 yq
 yw
 YV
-Fo
+Yb
 cl
-Fo
+Yb
 yP
 hO
 pm
@@ -780,7 +676,7 @@ QM
 yq
 yw
 cl
-Fo
+Yb
 xq
 YV
 yP
@@ -791,7 +687,7 @@ pm
 Eh
 CF
 LH
-Fo
+Yb
 cl
 cl
 cl
@@ -885,7 +781,7 @@ Eh
 "}
 (14,1,1) = {"
 QM
-Fo
+ND
 yP
 cl
 Fo
@@ -904,14 +800,14 @@ cl
 cl
 pA
 lt
-Yb
+Nc
 NF
 "}
 (16,1,1) = {"
 QM
 ND
 yP
-Fo
+fP
 Fo
 cl
 cl

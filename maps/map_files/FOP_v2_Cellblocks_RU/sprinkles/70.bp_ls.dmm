@@ -33,18 +33,13 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "aP" = (
 /turf/open/floor/prison/darkred2/southeast,
 /area/prison/security/checkpoint/highsec/n)
 "ca" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
+/obj/structure/platform_decoration,
 /turf/open/floor/prison/red/southeast,
 /area/prison/hallway/central/west)
 "dh" = (
@@ -214,9 +209,7 @@
 	pixel_x = -10;
 	breakable = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/checkpoint/highsec/n)
 "mS" = (
 /obj/structure/pipes/vents/scrubber{
@@ -290,9 +283,7 @@
 /area/prison/security/checkpoint/highsec/n)
 "qq" = (
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged1,
 /area/prison/cellblock/highsec/north/south)
 "rj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -403,9 +394,7 @@
 /area/prison/security/checkpoint/highsec/n)
 "xg" = (
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor{
-	icon_state = "hydrofloor"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "xx" = (
 /obj/structure/machinery/computer/secure_data,
@@ -418,10 +407,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged1,
 /area/prison/storage/vip)
 "yx" = (
 /obj/structure/machinery/vending/security,
@@ -432,10 +418,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "yX" = (
 /turf/closed/wall/prison,
@@ -549,10 +532,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "Jw" = (
 /obj/structure/platform{
@@ -586,10 +566,7 @@
 	pixel_y = 20;
 	pixel_x = -4
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged1,
 /area/prison/security/checkpoint/highsec/n)
 "Lb" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -626,17 +603,12 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "OE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	icon_state = "hydrofloor"
-	},
+/turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "OL" = (
 /obj/structure/machinery/computer/cameras{

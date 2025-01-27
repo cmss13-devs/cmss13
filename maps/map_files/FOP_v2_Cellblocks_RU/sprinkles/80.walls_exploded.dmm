@@ -14,10 +14,7 @@
 /turf/open/floor/plating/prison,
 /area/prison/cellblock/highsec/south/south)
 "e" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "red"
-	},
+/turf/open/floor/prison/red/southwest,
 /area/prison/cellblock/highsec/south/south)
 "g" = (
 /obj/structure/sign/safety/maint{
@@ -28,22 +25,13 @@
 /area/prison/cellblock/highsec/south/south)
 "k" = (
 /obj/item/explosive/grenade/incendiary/molotov,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/cellblock/highsec/south/south)
 "m" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/cellblock/highsec/south/south)
 "n" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/highsec/south/south)
 "o" = (
 /obj/structure/machinery/light/small/blue{
@@ -60,10 +48,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/cellblock/highsec/south/south)
 "v" = (
 /turf/open/floor/plating/prison,
@@ -79,24 +64,15 @@
 "y" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/cellblock/highsec/south/south)
 "z" = (
 /obj/item/stack/rods,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/highsec/south/south)
 "C" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/highsec/south/south)
 "J" = (
 /turf/closed/wall/prison,
@@ -120,10 +96,7 @@
 /area/prison/cellblock/highsec/south/south)
 "Y" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/cellblock/highsec/south/south)
 
 (1,1,1) = {"

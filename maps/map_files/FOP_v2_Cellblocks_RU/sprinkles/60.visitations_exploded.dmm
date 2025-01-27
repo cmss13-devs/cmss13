@@ -95,9 +95,7 @@
 /area/prison/visitation)
 "jJ" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/visitation)
 "kP" = (
 /turf/open/floor/prison/darkred2/northwest,
@@ -113,9 +111,7 @@
 /obj/item/shard{
 	icon_state = "small"
 	},
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/visitation)
 "mg" = (
 /obj/item/shard{
@@ -225,8 +221,11 @@
 /turf/open/floor/prison,
 /area/prison/visitation)
 "we" = (
-/obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/prison,
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON")
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison/damaged2,
 /area/prison/visitation)
 "xn" = (
 /turf/open/floor/prison/darkred2,
@@ -279,9 +278,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/visitation)
 "Hu" = (
 /obj/structure/bed/chair{
@@ -290,9 +287,7 @@
 /turf/open/floor/prison,
 /area/prison/visitation)
 "HI" = (
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/visitation)
 "JK" = (
 /turf/closed/wall/prison{
@@ -300,10 +295,7 @@
 	},
 /area/prison/visitation)
 "JQ" = (
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/visitation)
 "KJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -317,10 +309,7 @@
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "damaged1"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/visitation)
 "NL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -347,9 +336,7 @@
 	dir = 4
 	},
 /obj/item/shard/shrapnel,
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged2/southwest,
 /area/prison/visitation)
 "So" = (
 /obj/structure/pipes/vents/pump{
@@ -374,9 +361,7 @@
 /turf/open/floor/prison,
 /area/prison/visitation)
 "XF" = (
-/turf/open/floor/prison{
-	icon_state = "damaged3"
-	},
+/turf/open/floor/prison/damaged1,
 /area/prison/visitation)
 "Zh" = (
 /obj/structure/flora/pottedplant,
@@ -433,7 +418,7 @@ CM
 AG
 nN
 So
-we
+Mx
 "}
 (4,1,1) = {"
 yZ
@@ -469,7 +454,7 @@ BM
 Hu
 nN
 cu
-we
+Mx
 "}
 (7,1,1) = {"
 AG
@@ -525,7 +510,7 @@ nN
 XF
 Ri
 HI
-XF
+JQ
 nN
 jJ
 nN
@@ -536,9 +521,9 @@ rZ
 nN
 CA
 Tb
-XF
-ma
 HI
+ma
+JQ
 nN
 nN
 AG
@@ -550,7 +535,7 @@ yq
 RW
 JQ
 nN
-XF
+HI
 ol
 Mx
 rZ
@@ -562,7 +547,7 @@ nN
 dW
 MD
 mY
-Zt
+we
 kP
 qy
 rZ
@@ -570,9 +555,9 @@ rZ
 (15,1,1) = {"
 rZ
 Tz
-XF
+HI
 Ds
-XF
+HI
 aI
 OV
 bR

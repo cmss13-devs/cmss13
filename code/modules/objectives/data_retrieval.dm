@@ -251,7 +251,12 @@
 	uploading = 1
 	objective.activate()
 	to_chat(user, SPAN_NOTICE("You start uploading the data."))
+/*
 	user.count_niche_stat(STATISTICS_NICHE_UPLOAD)
+*/
+//RUCM START
+	user.count_statistic_stat(STATISTICS_UPLOAD)
+//RUCM END
 
 /obj/structure/machinery/computer/objective/proc/check_if_usable(mob/living/user)
 	if(!powered())

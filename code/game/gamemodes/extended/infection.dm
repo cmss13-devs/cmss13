@@ -23,8 +23,6 @@
 /datum/game_mode/infection/post_setup()
 	initialize_post_survivor_list()
 	initialize_post_marine_gear_list()
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		np.new_player_panel_proc()
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
@@ -116,15 +114,23 @@
 			round_checkwin = 0
 
 /datum/game_mode/infection/declare_completion()
+/*
 	announce_ending()
+*/
+//RUCM STAR
+	. = ..()
+//RUCM END
+
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
 
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
 		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 		GLOB.round_statistics.log_round_statistics()
+*/
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()

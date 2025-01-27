@@ -33,8 +33,6 @@
 	var/shuttle_id = DROPSHIP_CRASH
 	var/obj/docking_port/mobile/crashmode/shuttle
 
-	var/bioscan_interval = INFINITY
-
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,7 +91,10 @@
 /datum/game_mode/crash/pre_setup()
 	if(GLOB.RoleAuthority)
 		for(var/datum/squad/squad as anything in GLOB.RoleAuthority.squads)
-			if(squad.faction == FACTION_MARINE && squad.name != "Root" && squad.name != "Alpha")
+			if(squad.faction != FACTION_MARINE)
+				continue
+
+			if(squad.name != "Root" && squad.name != SQUAD_MARINE_1)
 				squad.roundstart = FALSE
 				squad.usable = FALSE
 
@@ -235,8 +236,8 @@
 				check_win()
 			round_checkwin = 0
 
-		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
-			set_lz_resin_allowed(TRUE)
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
+			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
 #undef XENO_FOG_DELAY_INTERVAL
 #undef FOG_DELAY_INTERVAL
@@ -247,8 +248,6 @@
 
 	shuttle_landed = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
-	// We delay this a little because the shuttle takes some time to land, and we want to the xenos to know the position of the marines.
-	bioscan_interval = world.time + 30 SECONDS
 
 ///////////////////////////
 //Checks to see who won///
@@ -287,13 +286,6 @@
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
-/datum/game_mode/crash/declare_completion()
-	. = ..()
-
-	declare_completion_announce_fallen_soldiers()
-	declare_completion_announce_xenomorphs()
-	declare_completion_announce_medal_awards()
-	declare_fun_facts()
 
 /datum/game_mode/crash/on_nuclear_diffuse(obj/structure/machinery/nuclearbomb/bomb, mob/living/carbon/xenomorph/xenomorph)
 	. = ..()
@@ -302,24 +294,18 @@
 	if(!num_humans)
 		marine_announcement("WARNING. WARNING. Planetary Nuke Deactivated. WARNING. WARNING. Mission Failed. WARNING. WARNING.", "Priority Alert", "Everyone (-Yautja)")
 
-/datum/game_mode/crash/declare_completion()
-	announce_ending()
-	var/musical_track
+/datum/game_mode/crash/get_winners_states()
 	var/end_icon = "draw"
+	var/musical_track
 	switch(round_finished)
 		if(MODE_CRASH_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
 			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|MARINE MAJOR SUCCESS|"))
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_marine_victories++
-				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_CRASH_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
 			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|MARINE MINOR SUCCESS|"))
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_marine_victories++
 		if(MODE_CRASH_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
@@ -328,41 +314,18 @@
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|XENOMORPH MINOR SUCCESS|"))
 			end_icon = "xeno_minor"
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_CRASH_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
 			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|XENOMORPH MAJOR SUCCESS|"))
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_xeno_victories++
-				GLOB.round_statistics.current_map.total_xeno_majors++
 		if(MODE_GENERIC_DRAW_NUKE)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|DRAW|"))
-			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
-				GLOB.round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.game_mode = name
-		GLOB.round_statistics.round_length = world.time
-		GLOB.round_statistics.round_result = round_finished
-		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
-
-		GLOB.round_statistics.log_round_statistics()
-
-	calculate_end_statistics()
-	show_end_statistics(end_icon)
-
-	declare_completion_announce_fallen_soldiers()
-	declare_completion_announce_xenomorphs()
-	declare_completion_announce_predators()
-	declare_completion_announce_medal_awards()
-	declare_fun_facts()
-	return TRUE
+	return list(end_icon)
 
 // for the toolbox
 /datum/game_mode/crash/end_round_message()

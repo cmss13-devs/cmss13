@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
+	/client/proc/toggle_auto_shove,
 	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
@@ -284,6 +285,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
+		winset(src, "", "browser-options=byondstorage")
+
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
 	stat_panel.subscribe(src, PROC_REF(on_stat_panel_message))
@@ -299,7 +303,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
+/*
 	player_entity = setup_player_entity(ckey)
+*/
 
 	if(check_localhost_status())
 /*
@@ -391,6 +397,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
@@ -416,6 +427,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
 	send_assets()
 
@@ -423,7 +435,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
 	update_fullscreen()
 
@@ -448,6 +460,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+
+	if(CONFIG_GET(flag/ooc_country_flags))
+		spawn if(src)
+			ip2country(address, src)
 
 	//////////////
 	//DISCONNECT//
@@ -522,10 +538,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
 					if(M.client)
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 
@@ -549,6 +565,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return
 	if(GLOB.player_entities["[ckey]"])
 		return GLOB.player_entities["[ckey]"]
+/*
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
@@ -562,6 +579,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_admins("STATISTICS: Statistics saving complete.")
+*/
+//RUCM START
+	var/datum/player_entity/p_entity = new()
+	p_entity.ckey = ckey
+	GLOB.player_entities["[ckey]"] = p_entity
+	return p_entity
+//RUCM END
 
 /client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
@@ -651,7 +675,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/check_panel_loaded()
 	if(stat_panel.is_ready())
 		return
-	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='byond://?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
 
 /**
  * Handles incoming messages from the stat-panel TGUI.
@@ -829,11 +853,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
 
+/*
 	if(player_entity)
 		var/past_xeno_playtime = player_entity.get_playtime(STATISTIC_XENO)
 		if(past_xeno_playtime)
 			total_xeno_playtime += past_xeno_playtime
-
+*/
 
 	cached_xeno_playtime = total_xeno_playtime
 
@@ -902,6 +927,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 
 	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
+		return TRUE
+
+	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_STAFF(src))
 		return TRUE
 
 	if(!player_data)

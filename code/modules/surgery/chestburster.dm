@@ -166,11 +166,17 @@
 			else
 				user.apply_damage(15, BURN, "r_hand")
 
+/*
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
+*/
+//RUCM START
+		user.count_statistic_stat(STATISTICS_SURGERY_LARVA)
+//RUCM END
 		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)
+			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST

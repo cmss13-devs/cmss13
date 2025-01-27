@@ -1,0 +1,34 @@
+.theme-crtblue {
+  .HairPicker {
+    .Stack--horizontal > .Picker:first-of-type {
+      margin-left: 6px;
+    }
+
+    .Picker {
+      &.Active {
+        outline: 4px solid #8ac8ff;
+      }
+
+      & > div {
+        background: #fff;
+        overflow: hidden;
+      }
+
+      @supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
+        img {
+          transform: translateY(-1000px);
+          position: relative;
+        }
+      }
+
+      height: 66px;
+      margin-bottom: 6px;
+    }
+
+    &:not(.ModalOpen) {
+      img {
+        z-index: 3;
+      }
+    }
+  }
+}

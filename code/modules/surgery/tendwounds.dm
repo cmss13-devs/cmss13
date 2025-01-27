@@ -33,7 +33,12 @@
 /datum/surgery_step/suture_incision/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/added_sutures = SEND_SIGNAL(surgery.affected_limb, COMSIG_LIMB_ADD_SUTURES, TRUE)
 	if(!added_sutures) //No suture datum to answer the signal
+/*
 		new /datum/suture_handler(surgery.affected_limb)
+*/
+//RUCM START
+		new /datum/suture_handler(surgery.affected_limb, tool, user, target)
+//RUCM END
 		added_sutures = SEND_SIGNAL(surgery.affected_limb, COMSIG_LIMB_ADD_SUTURES, TRUE) //This time, with feeling.
 
 	if(added_sutures & SUTURED_FULLY)

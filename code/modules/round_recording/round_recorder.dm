@@ -32,7 +32,12 @@
 
 	map = SSmapping.configs[GROUND_MAP].map_name
 	gamemode = GLOB.master_mode
+/*
 	round_name = GLOB.round_statistics.name
+*/
+//RUCM START
+	round_name = GLOB.round_statistics.round_name
+//RUCM END
 
 // Record the end time of the game and export the game history
 /datum/round_recorder/proc/end_game()

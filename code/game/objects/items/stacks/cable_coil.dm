@@ -5,6 +5,10 @@
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/structures/machinery/power.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
@@ -327,6 +331,9 @@
 					return
 
 			S.heal_damage(0, 15, TRUE)
+//RUCM START
+			user.track_heal_damage(initial(name), H, 15)
+//RUCM END
 			H.pain.recalculate_pain()
 			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
 			return

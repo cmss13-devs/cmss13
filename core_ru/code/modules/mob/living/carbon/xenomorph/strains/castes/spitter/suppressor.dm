@@ -1,7 +1,7 @@
 /datum/xeno_strain/suppressor
-	name = "STRAIN: Spitter - Suppressor"
-	description = "Ты обмениваешь свою способность источать кислоту на возможность плеваться липкой резиной, цель которой - затруднять движение хостов, а в некоторых случаях и залатывать раны твоих сестёр."
-	flavor_description = "Беги от неё, прячься от неё - смерть всё равно настигнет каждого хоста, рано или поздно. И твоя роль - подавить их сопротивление перед неизбежным!"
+	name = "Suppressor"
+	description = "You lose your ability to spit your acid, in exchange you get ability to spit stiky resin for heal your sisters and slow hosts"
+	flavor_description = "Run, Hide - death will come to every host anyway, early or late. And you chosen - suppress them all!"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab/spitter,

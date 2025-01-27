@@ -2,7 +2,7 @@
 	var/real_max_positions = 0
 	for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
 		if(squad.roundstart && squad.usable && squad.faction == FACTION_MARINE && squad.name != "Root")
-			real_max_positions += squad.max_specialists
+			real_max_positions += squad.roles_cap[title]
 
 	if(real_max_positions > total_positions_so_far)
 		total_positions_so_far = real_max_positions

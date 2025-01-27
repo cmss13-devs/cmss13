@@ -281,17 +281,14 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 			H.remove_language(LANGUAGE_ENGLISH)
 			H.add_language(LANGUAGE_RUSSIAN)
-		if(7) //Highlander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)
-		if(8) //Assassin!
+		if(7) //Assassin!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(9) //Corporate guy
+		if(8) //Corporate guy
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(10) //Colonial Marshal
+		if(9) //Colonial Marshal
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
@@ -394,8 +391,13 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/huntergames/declare_completion()
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
+*/
+//RUCM START
+	. = ..()
+//RUCM END
 	var/mob/living/carbon/winner = null
 
 	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
@@ -416,6 +418,7 @@
 		to_world("<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>")
 		world << 'sound/misc/sadtrombone.ogg'
 
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
@@ -425,6 +428,7 @@
 
 
 	return 1
+*/
 
 /datum/game_mode/proc/auto_declare_completion_huntergames()
 	return

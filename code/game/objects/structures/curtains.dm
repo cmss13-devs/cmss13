@@ -68,3 +68,34 @@
 /obj/structure/curtain/red
 	name = "red curtain"
 	icon_state = "red"
+
+// Colorable
+
+/obj/structure/curtain/colorable
+	name = "curtain"
+	icon_state = "colorable"
+
+/obj/structure/curtain/colorable_transparent
+	name = "blinds"
+	icon_state = "colorable_transparent"
+	alpha = 200
+
+// Open
+
+/obj/structure/curtain/open/colorable
+	name = "curtain"
+	icon_state = "colorable"
+
+/obj/structure/curtain/open/colorable_transparent
+	name = "blinds"
+	icon_state = "colorable_transparent"
+	alpha = 200
+
+/obj/structure/curtain/open/red
+	name = "red curtain"
+	icon_state = "red"
+
+/obj/structure/curtain/Initialize()
+	. = ..()
+	if(alpha)
+		set_opacity(0)

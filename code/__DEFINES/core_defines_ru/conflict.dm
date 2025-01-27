@@ -8,8 +8,8 @@
 #define TTS_SOUND_ENABLED "Enabled"
 ///TTS preference is set to only play blips of a sound, rather than speech.
 #define TTS_SOUND_BLIPS "Blips Only"
-
-#define TTS_FILTER_XENO @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.8,aresample=%SAMPLE_RATE%,atempo=1/0.8,aformat=channel_layouts=mono [p0]; [out2] asetrate=%SAMPLE_RATE%*1.2,aresample=%SAMPLE_RATE%,atempo=1/1.2,aformat=channel_layouts=mono[p2]; [p0][0][p2] amix=inputs=3"}
+//we don't have such settings in our filters
+//#define TTS_FILTER_XENO @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.8,aresample=%SAMPLE_RATE%,atempo=1/0.8,aformat=channel_layouts=mono [p0]; [out2] asetrate=%SAMPLE_RATE%*1.2,aresample=%SAMPLE_RATE%,atempo=1/1.2,aformat=channel_layouts=mono[p2]; [p0][0][p2] amix=inputs=3"}
 
 #define TTS_HIVEMIND_ALL 3
 #define TTS_HIVEMIND_LEADERS 2

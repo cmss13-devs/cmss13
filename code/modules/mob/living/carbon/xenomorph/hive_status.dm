@@ -2,7 +2,12 @@
 	var/name = "Normal Hive"
 
 	// Used for the faction of the xenomorph. Not recommended to modify.
+/*
 	var/internal_faction
+*/
+//RUCM START
+	var/internal_faction = FACTION_XENOMORPH
+//RUCM END
 
 	/// Short Hive ID as string used in stats reporting
 	var/reporting_id = "normal"
@@ -82,7 +87,7 @@
 		XENO_STRUCTURE_CLUSTER = 8,
 		XENO_STRUCTURE_EGGMORPH = 6,
 //RUCM START
-		XENO_STRUCTURE_SUNKEN = 3,
+		XENO_STRUCTURE_SUNKEN = 2,
 //RUCM END
 		XENO_STRUCTURE_RECOVERY = 6,
 		XENO_STRUCTURE_PYLON = 2,
@@ -92,6 +97,9 @@
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
+//RUCM START
+		XENO_STRUCTURE_SUNKEN = /datum/construction_template/xenomorph/sunken_colony,
+//RUCM END
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
 	)
 
@@ -136,12 +144,30 @@
 
 	var/list/available_nicknumbers = list()
 
+
+	/// Hive buffs
+	var/buff_points = HIVE_STARTING_BUFFPOINTS
+	var/max_buff_points = HIVE_MAX_BUFFPOINTS
+
+	/// List of references to the currently active hivebuffs
+	var/list/active_hivebuffs
+	/// List of references to used hivebuffs
+	var/list/used_hivebuffs
+	/// List of references to used hivebuffs currently on cooldown
+	var/list/cooldown_hivebuffs
+
+	/// List of references to hive pylons active in the game world
+	var/list/active_endgame_pylons
+
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
 	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
 	*/
 	var/static/list/evolution_menu_images
+
+	/// Has a King hatchery
+	var/has_hatchery = FALSE
 
 /datum/hive_status/New()
 	hive_ui = new(src)
@@ -153,6 +179,10 @@
 		internal_faction = name
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
+	LAZYINITLIST(active_hivebuffs)
+	LAZYINITLIST(used_hivebuffs)
+	LAZYINITLIST(active_endgame_pylons)
+
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
@@ -733,6 +763,10 @@
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
+	// No buffs in hijack
+	for(var/datum/hivebuff/buff in active_hivebuffs)
+		buff._on_cease()
+
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
 	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
@@ -850,7 +884,7 @@
 	if(world.time < hugger_timelock)
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
-	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
+	if(!user.bypass_time_of_death_checks_hugger && world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
 		var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
@@ -912,9 +946,14 @@
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
 
+	for(var/mob_name in banished_ckeys)
+		if(banished_ckeys[mob_name] == user.ckey)
+			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			return FALSE
+
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
 		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
 	if(length(totalXenos) <= 0)
@@ -985,6 +1024,9 @@
 	name = "Corrupted Hive"
 	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
+//RUCM START
+	internal_faction = FACTION_XENOMORPH_CORRPUTED
+//RUCM END
 	prefix = "Corrupted "
 	color = "#80ff80"
 	ui_color ="#4d994d"
@@ -1012,6 +1054,9 @@
 	name = "Alpha Hive"
 	reporting_id = "alpha"
 	hivenumber = XENO_HIVE_ALPHA
+//RUCM START
+	internal_faction = FACTION_XENOMORPH_ALPHA
+//RUCM END
 	prefix = "Alpha "
 	color = "#ff4040"
 	ui_color = "#992626"
@@ -1023,6 +1068,9 @@
 	name = "Bravo Hive"
 	reporting_id = "bravo"
 	hivenumber = XENO_HIVE_BRAVO
+//RUCM START
+	internal_faction = FACTION_XENOMORPH_BRAVO
+//RUCM END
 	prefix = "Bravo "
 	color = "#ffff80"
 	ui_color = "#99994d"
@@ -1034,6 +1082,9 @@
 	name = "Charlie Hive"
 	reporting_id = "charlie"
 	hivenumber = XENO_HIVE_CHARLIE
+//RUCM START
+	internal_faction = FACTION_XENOMORPH_CHARLIE
+//RUCM END
 	prefix = "Charlie "
 	color = "#bb40ff"
 	ui_color = "#702699"
@@ -1045,6 +1096,9 @@
 	name = "Delta Hive"
 	reporting_id = "delta"
 	hivenumber = XENO_HIVE_DELTA
+//RUCM END
+	internal_faction = FACTION_XENOMORPH_DELTA
+//RUCM END
 	prefix = "Delta "
 	color = "#8080ff"
 	ui_color = "#4d4d99"
@@ -1056,6 +1110,9 @@
 	name = "Feral Hive"
 	reporting_id = "feral"
 	hivenumber = XENO_HIVE_FERAL
+//RUCM END
+	internal_faction = FACTION_XENOMORPH_FERAL
+//RUCM END
 	prefix = "Feral "
 	color = "#828296"
 	ui_color = "#828296"
@@ -1072,6 +1129,9 @@
 	name = "Forsaken Hive"
 	reporting_id = "forsaken"
 	hivenumber = XENO_HIVE_FORSAKEN
+//RUCM END
+	internal_faction = FACTION_XENOMORPH_FORSAKEN
+//RUCM END
 	prefix = "Forsaken "
 	color = "#cc8ec4"
 	ui_color = "#cc8ec4"
@@ -1379,6 +1439,65 @@
 	if(!length(personal_allies))
 		return
 	clear_personal_allies(TRUE)
+/// Hive buffs
+
+/// Get a list of hivebuffs which can be bought now.
+/datum/hive_status/proc/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
+					break
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs
+
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu
@@ -1440,3 +1559,4 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
+

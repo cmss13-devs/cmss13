@@ -2,6 +2,7 @@
 	var/datum/entity/player_shop/player_shop
 
 /datum/entity/player/proc/load_battlepass()
+	set waitfor = FALSE
 //PORT OUR SAVES
 	UNTIL(GLOB.current_battlepass)
 	if(GLOB.client_loaded_battlepasses[ckey])

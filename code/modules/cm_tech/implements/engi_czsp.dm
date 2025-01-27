@@ -52,4 +52,7 @@
 		D.forceMove(H.loc)
 
 	H.drop_held_item(src)
+//RUCM START
+	user.count_statistic_stat(STATISTICS_UPGRADE_TURRETS)
+//RUCM END
 	qdel(src)

@@ -1,1 +1,1 @@
-#define SS_INIT_ENTITYMANAGER 87
+// Empty for now

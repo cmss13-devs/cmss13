@@ -40,6 +40,8 @@
   // Expose inlined metadata
   Byond.windowId = parseMetaTag('tgui:windowId');
 
+  Byond.styleSheet = "tgui:stylesheet"
+
   // Backwards compatibility
   window.__windowId__ = Byond.windowId;
 
@@ -314,6 +316,7 @@
       var node = document.createElement('link');
       node.type = 'text/css';
       node.rel = 'stylesheet';
+      node.crossOrigin = 'anonymous';
       node.href = url;
       // Temporarily set media to something inapplicable
       // to ensure it'll fetch without blocking render

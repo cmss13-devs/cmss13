@@ -102,6 +102,19 @@
 			air.explo_proof = TRUE
 			air.unacidable = TRUE
 
+//RUCM START
+		for(var/mob/living/carbon/human/survived_human as anything in GLOB.alive_human_list) //check for lifeboats survivors
+			var/area/area = get_area(survived_human)
+			if(!survived_human)
+				continue
+			if(survived_human.stat != DEAD && (area in shuttle_areas))
+				var/turf/turf = get_turf(survived_human)
+				if(!turf || is_mainship_level(turf.z))
+					continue
+				to_chat(survived_human, "<br><br>[SPAN_CENTERBOLD("<big>You have successfully left the [MAIN_SHIP_NAME]. You may now ghost and observe the rest of the round.</big>")]<br>")
+				survived_human.count_statistic_stat(STATISTICS_ESCAPE)
+//RUCM END
+
 /obj/docking_port/mobile/crashable/escape_shuttle/crash_check()
 	. = ..()
 

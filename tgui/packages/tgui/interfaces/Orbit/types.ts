@@ -7,6 +7,7 @@ export type OrbitData = {
   survivors: Observable[];
   xenos: Observable[];
   ert_members: Observable[];
+  responders: Observable[];
   upp: Observable[];
   twe: Observable[];
   clf: Observable[];
@@ -18,6 +19,7 @@ export type OrbitData = {
   marshal: Observable[];
   synthetics: Observable[];
   predators: Observable[];
+  hunted: Observable[];
   animals: Observable[];
   dead: Observable[];
   ghosts: Observable[];
@@ -35,6 +37,7 @@ export type Observable = {
   icon?: string;
   job?: string;
   background_color?: string;
+  background_icon?: string;
   full_name: string;
   nickname?: string;
   orbiters?: number;

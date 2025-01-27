@@ -1,3 +1,7 @@
+
+GLOBAL_LIST_INIT_TYPED(admin_ranks_by_id, /datum/view_record/admin_rank, list())
+GLOBAL_PROTECT(admin_ranks_by_id)
+
 GLOBAL_LIST_INIT_TYPED(admin_ranks, /datum/view_record/admin_rank, load_ranks())
 GLOBAL_PROTECT(admin_ranks)
 
@@ -10,6 +14,7 @@ GLOBAL_PROTECT(db_admin_datums)
 	var/list/datum/view_record/admin_rank/ranks = DB_VIEW(/datum/view_record/admin_rank)
 	for(var/datum/view_record/admin_rank/rank as anything in ranks)
 		named_ranks[rank.rank_name] = rank
+		GLOB.admin_ranks_by_id["[rank.id]"] = rank
 	return named_ranks
 
 /proc/load_admins()
@@ -64,6 +69,7 @@ BSQL_PROTECT_DATUM(/datum/entity/admin_rank)
 		.["text_rights"] = flags2rights(rank.rights)
 
 /datum/view_record/admin_rank
+	var/id
 	var/rank_name
 	var/text_rights
 	var/rights = NO_FLAGS
@@ -74,6 +80,7 @@ BSQL_PROTECT_DATUM(/datum/view_record/admin_rank)
 	root_record_type = /datum/entity/admin_rank
 	destination_entity = /datum/view_record/admin_rank
 	fields = list(
+		"id",
 		"rank_name",
 		"text_rights",
 	)

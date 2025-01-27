@@ -208,8 +208,9 @@
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = list(CAMERA_NET_CORRESPONDENT)
 	stay_connected = TRUE
+	wrenchable = TRUE
 	circuit = /obj/item/circuitboard/computer/cameras/tv
-	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
+	var/obj/item/device/broadcasting/broadcastingcamera = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null
@@ -243,12 +244,44 @@
 	if(!current)
 		clear_camera()
 
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/inoperable(additional_flags = 0)
+	return ..(MAINT|additional_flags)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/attackby(obj/item/wrench, mob/user)
+	if(HAS_TRAIT(wrench, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return TRUE
+		toggle_anchored(wrench, user)
+		return TRUE
+	. = ..()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/toggle_anchored(obj/item/wrench, mob/user)
+	. = ..()
+	if(!.)
+		return
+	if(!anchored)
+		stat |= MAINT
+		clear_camera()
+		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
+	else
+		stat &= ~MAINT
+	update_icon()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/update_icon()
+	. = ..()
+	if(stat & BROKEN)
+		return
+	if(stat & MAINT)
+		icon_state = initial(icon_state)
+		icon_state += "0"
+
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
 	SIGNAL_HANDLER
 	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING, COMSIG_COMPONENT_ADDED, COMSIG_BROADCAST_HEAR_TALK, COMSIG_BROADCAST_SEE_EMOTE))
 	broadcastingcamera = null
 
-/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/broadcasting/broadcastingcamera)
 	SIGNAL_HANDLER
 	if(current.c_tag == broadcastingcamera.get_broadcast_name())
 		current = broadcastingcamera.linked_cam
@@ -275,7 +308,7 @@
 	if(inoperable())
 		return
 	if(show_message_above_tv)
-		langchat_speech(emote, get_mobs_in_view(7, src), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))
+		langchat_speech(emote, get_mobs_in_view(7, src), skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("emote"))
 	for(var/datum/weakref/user_ref in concurrent_users)
 		var/mob/user = user_ref.resolve()
 		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))

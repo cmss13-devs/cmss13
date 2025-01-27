@@ -2,7 +2,7 @@
 	name = "nanopaste"
 	singular_name = "nanite swarm"
 	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/medical_stacks.dmi'
 	icon_state = "tube"
 
 	attack_speed = 3
@@ -26,6 +26,9 @@
 		if (S && (S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			if(S.get_damage())
 				S.heal_damage(15, 15, robo_repair = 1)
+//RUCM START
+				user.track_heal_damage(initial(name), H, 30)
+//RUCM END
 				H.pain.recalculate_pain()
 				H.updatehealth()
 				use(1)

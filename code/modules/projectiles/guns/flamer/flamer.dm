@@ -6,15 +6,24 @@
 /obj/item/weapon/gun/flamer
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	icon_state = "m240"
 	item_state = "m240"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
+
+	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
+	fire_sound = ""
+
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
-	fire_sound = ""
-	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
-	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
@@ -68,11 +77,12 @@
 	else
 		. += "There's no tank in [src]!"
 
-/obj/item/weapon/gun/flamer/update_icon()
+/obj/item/weapon/gun/flamer/update_icon(mob/user)
 	..()
 
 	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
 	var/new_icon_state = base_gun_icon
+
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state
@@ -664,10 +674,20 @@
 		else
 			to_chat(ignited_morb, SPAN_HIGHDANGER(msg))
 
+/*
 		if(weapon_cause_data)
 			var/mob/SM = weapon_cause_data.resolve_mob()
 			if(istype(SM))
 				SM.track_shot_hit(weapon_cause_data.cause_name)
+*/
+//RUCM START
+		var/mob/shoot_mob = weapon_cause_data?.resolve_mob()
+		if(shoot_mob)
+			if(shoot_mob.faction == ignited_morb.faction)
+				shoot_mob.track_friendly_damage(weapon_cause_data.cause_name, ignited_morb, firedamage)
+			else
+				shoot_mob.track_damage(weapon_cause_data.cause_name, ignited_morb, firedamage)
+//RUCM END
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 

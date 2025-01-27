@@ -42,7 +42,6 @@
 	var/played = 0
 	var/midi_silenced = 0
 	var/datum/soundOutput/soundOutput
-	var/list/volume_preferences = list(1, 0.5, 1, 0.6, 1)//Game, music, admin midis, lobby music
 
 		////////////
 		//SECURITY//
@@ -70,7 +69,9 @@
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 
+/*
 	var/datum/entity/player_entity/player_entity = null
+*/
 
 	//Asset cache
 	// List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s

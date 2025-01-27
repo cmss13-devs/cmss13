@@ -1,0 +1,50 @@
+@use '../colors.scss';
+$separator-color: colors.$primary !default;
+
+.StatisticMenu {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+
+  .TilesInititalizator {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    gap: 10px;
+    overflow: hidden;
+    flex-grow: 1;
+
+    .TilesSmallItem {
+      padding: 15px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .TilesMediumItem {
+      padding: 10px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .TilesBigItem {
+      padding: 10px;
+      grid-column: span 2;
+      aspect-ratio: 2 / 1;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .TilesTitleItem {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .TilesStatItem {
+    margin-bottom: 6px;
+
+    .TilesStatLabel {
+      color: $separator-color;
+      font-weight: bold;
+    }
+  }
+}

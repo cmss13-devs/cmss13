@@ -46,6 +46,7 @@ SUBSYSTEM_DEF(who)
 		"yautja" = 0,
 		"infected_preds" = 0,
 		"humans" = 0,
+		"hunted" = 0,
 		"infected_humans" = 0,
 		"uscm" = 0,
 		"uscm_marines" = 0,
@@ -134,6 +135,7 @@ SUBSYSTEM_DEF(who)
 	factions_additional += list(list("content" = "Marines: [counted_additional["uscm_marines"]]", "color" = "#5442bd", "text" = "Players playing as Marines"))
 	factions_additional += list(list("content" = "Yautjas: [counted_additional["yautja"]]", "color" = "#7ABA19", "text" = "Players playing as Yautja"))
 	factions_additional += list(list("content" = "Infected Predators: [counted_additional["infected_preds"]]", "color" = "#7ABA19", "text" = "Players playing as Infected Yautja"))
+	factions_additional += list(list("content" = "Hunted In Preserve: [counted_additional["hunted"]]", "color" = "#476816", "text" = "Players playing as hunted in preserve"))
 
 	for(var/i in 1 to length(counted_factions))
 		if(!counted_factions[counted_factions[i]])
@@ -245,7 +247,12 @@ SUBSYSTEM_DEF(who)
 			var/rank = client.admin_holder.rank
 			if(client.admin_holder.extra_titles?.len)
 				for(var/srank in client.admin_holder.extra_titles)
+/*
 					rank += " & [srank]"
+*/
+//RUCM START
+					rank += " & [GLOB.admin_ranks_by_id["[srank]"] ? GLOB.admin_ranks_by_id["[srank]"].rank_name : srank]"
+//RUCM END
 
 			if(CLIENT_IS_STEALTHED(client))
 				admin_payload["special_color"] = "#b60d0d"

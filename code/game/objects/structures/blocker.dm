@@ -61,6 +61,42 @@
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/blocker/preserve_edge
+	name = "dense fog"
+	desc = "You think you can see a way through."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	opacity = TRUE
+
+/obj/structure/blocker/preserve_edge/attack_hand(mob/user)
+	if(isyautja(user))
+		to_chat(user, SPAN_WARNING("Why would you do this?"))///no leaving for preds
+		return
+
+	if(user.action_busy)
+		return
+
+	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("No", "Yes"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "No")
+		return
+
+	if(choice == "Yes")
+		to_chat(user, SPAN_DANGER("You begin to make your escape!"))
+
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_NOTICE("You lose your way and come back."))
+		return
+
+	announce_dchat("[user.real_name] has escaped from the hunting grounds!")
+	playsound(user, 'sound/misc/fog_escape.ogg')
+	qdel(user)
+
+/obj/structure/blocker/preserve_edge/attack_alien(user)
+	attack_hand(user)
+	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"
@@ -112,7 +148,10 @@
 	return FALSE
 
 /obj/structure/blocker/forcefield/multitile_vehicles
+//RUCM REMOVAL
+/*
 	types = list(/obj/vehicle/multitile/)
+*/
 
 
 /obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)

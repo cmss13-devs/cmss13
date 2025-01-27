@@ -92,6 +92,11 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
+/datum/ammo/proc/setup_faction_clash_values()
+	accuracy = (accuracy - 85)/2
+	penetration = min(penetration, 30) //more ap overpenatrates anyway but makes next calculation cleaner
+	accurate_range = min(accurate_range, 10 - penetration/5) //this makes AP ammo better at clsoe range (and techinicly super far range when the hitchance gets bottom caped at 5% hitchance)
+
 /datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
 
@@ -240,7 +245,7 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
+		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(turf))

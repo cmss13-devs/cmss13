@@ -25,12 +25,16 @@
 	. = ..()
 	if(istype(loc, /obj/item/device/defibrillator))
 		attach_to(loc)
+	else
+		return INITIALIZE_HINT_QDEL
 
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
 
 /obj/item/device/paddles/Destroy()
 	remove_attached()
+
+	QDEL_NULL(sparks)
 
 	. = ..()
 
@@ -44,11 +48,12 @@
 	remove_attached()
 
 	attached_to = to_attach
+	attached_to.paddles_type = src
 	icon_state = "[icon_state]_[attached_to.icon_state_for_paddles]"
 
 /obj/item/device/paddles/proc/remove_attached()
 	if(attached_to)
-		attached_to.remove_attached()
+		attached_to.paddles_type = null
 		attached_to = null
 	reset_tether()
 
@@ -127,7 +132,7 @@
 	if(istype(G) && G.client)
 		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
-			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
+			(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here!</a>)")))
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
 		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[H]</b>'s chest."))

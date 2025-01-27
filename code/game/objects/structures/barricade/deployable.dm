@@ -103,6 +103,11 @@
 		WEAR_J_STORE = "folding"
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_righthand.dmi',
+	)
 
 	var/list/stack_health = list()
 
@@ -227,7 +232,12 @@
 
 		user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 		SPAN_NOTICE("You repair [src]."))
+/*
 		user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
+*/
+//RUCM START
+		user.count_statistic_stat(STATISTICS_REPAIR_CADES)
+//RUCM END
 
 		for(var/counter in 1 to length(stack_health))
 			stack_health[counter] += 200

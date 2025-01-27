@@ -1,4 +1,10 @@
 /obj/item/restraint
+	icon = 'icons/obj/items/security.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/security_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/security_righthand.dmi'
+	)
 	/// SLOT_HANDS or SLOT_LEGS, for handcuffs or legcuffs
 	var/target_zone = SLOT_HANDS
 	/// How long to break out
@@ -24,6 +30,7 @@
 		if(SLOT_LEGS)
 			if(!attacked_carbon.legcuffed)
 				apply_legcuffs(attacked_carbon, user)
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/restraint/proc/place_handcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 25, 1, 4)
@@ -52,7 +59,12 @@
 				if(human_mob.has_limb_for_slot(WEAR_HANDCUFFS))
 					user.drop_inv_item_on_ground(src)
 					human_mob.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)
+/*
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
+*/
+//RUCM START
+					user.count_statistic_stat(STATISTICS_HANDCUFF)
+//RUCM END
 
 	else if(ismonkey(target))
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
@@ -65,7 +77,6 @@
 	name = "handcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -75,11 +86,12 @@
 	throw_range = 5
 	matter = list("metal" = 500)
 
-/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot)
+/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
-	var/image/handcuffs = overlay_image('icons/mob/mob.dmi', "handcuff1", color, RESET_COLOR)
-	ret.overlays += handcuffs
+	if(slot == WEAR_HANDCUFFS)
+		var/image/handcuffs = overlay_image('icons/mob/humans/onmob/cuffs.dmi', "handcuff1", color, RESET_COLOR)
+		ret.overlays += handcuffs
 
 	return ret
 
@@ -195,7 +207,7 @@
 	name = "xeno restraints"
 	desc = "Use this to hold xenomorphic creatures safely."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

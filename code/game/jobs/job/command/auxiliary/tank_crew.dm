@@ -9,6 +9,7 @@
 	gear_preset = /datum/equipment_preset/uscm/tank
 	entry_message_body = "Your job is to operate and maintain the ship's armored vehicles. You are in charge of representing the armored presence amongst the marines during the operation, as well as maintaining and repairing your own vehicles."
 
+/* RUCM REMOVAL
 /datum/job/command/tank_crew/set_spawn_positions(count)
 	if (length(GLOB.clients) >= 200)
 		spawn_positions = 2
@@ -22,6 +23,12 @@
 		return 2
 
 	return 0
+*/
+
+/obj/effect/landmark/start/tank_crew
+	name = JOB_TANK_CREW
+	job = /datum/job/command/tank_crew
+
 
 /obj/effect/landmark/start/tank_crew
 	name = JOB_TANK_CREW

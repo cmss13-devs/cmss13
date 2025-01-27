@@ -1,12 +1,14 @@
 /datum/equipment_preset/crash
+	name = "Special Ship Crew"
+
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 //*****************************************************************************************************//
 
 /datum/equipment_preset/synth/uscm/crash
 	name = "Special Ship Support Synthetic"
-	flags = NO_FLAGS
 
 /datum/equipment_preset/synth/uscm/crash/load_gear(mob/living/carbon/human/new_human)
 
@@ -26,7 +28,6 @@
 
 /datum/equipment_preset/crash/commander
 	name = "Special Ship Commander"
-	flags = NO_FLAGS
 
 	assignment = JOB_CRASH_CO
 	rank = JOB_CRASH_CO
@@ -39,7 +40,7 @@
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 
-	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/gray, /obj/item/clothing/under/marine/officer/formal/turtleneck)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
@@ -93,7 +94,7 @@
 	//waist
 	new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
 	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/techofficer/commander(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_L_HAND)
 	//pockets
@@ -104,7 +105,6 @@
 
 /datum/equipment_preset/crash/head_surgeron
 	name = "Special Ship Head Surgeon" //CMO
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_CRASH_CMO
@@ -140,7 +140,6 @@
 
 /datum/equipment_preset/crash/bcm
 	name = "Special Ship Crew Master" //CE
-	flags = NO_FLAGS
 
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_CRASH_CHIEF_ENGINEER
@@ -170,9 +169,8 @@
 
 //*****************************************************************************************************//
 
-/datum/equipment_preset/crash/marine/pfc
-	name = "USCM Squad Rifleman (PFC)"
-	flags = NO_FLAGS
+/datum/equipment_preset/crash/marine
+	name = "USCMCS Squad Rifleman"
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
@@ -181,7 +179,7 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
-/datum/equipment_preset/crash/marine/pfc/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/crash/marine/load_gear(mob/living/carbon/human/new_human)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine
@@ -198,8 +196,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/spec
-	name = "USCM Squad Squad Weapons Specialist"
-	flags = NO_FLAGS
+	name = "USCMCS Squad Squad Weapons Specialist"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
@@ -233,8 +230,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/sg
-	name = "USCM Squad Smartgunner"
-	flags = NO_FLAGS
+	name = "USCMCS Squad Smartgunner"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
@@ -263,8 +259,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/medic
-	name = "USCM Squad Hospital Corpsman"
-	flags = NO_FLAGS
+	name = "USCMCS Squad Hospital Corpsman"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
@@ -297,8 +292,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/sl
-	name = "USCM Squad Squad Leader"
-	flags = NO_FLAGS
+	name = "USCMCS Squad Squad Leader"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
@@ -332,8 +326,7 @@
 //*****************************************************************************************************//
 
 /datum/equipment_preset/crash/marine/engineer
-	name = "USCM Squad Combat Technician"
-	flags = NO_FLAGS
+	name = "USCMCS Squad Combat Technician"
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI

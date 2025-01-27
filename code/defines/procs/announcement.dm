@@ -30,7 +30,7 @@
 
 
 //general marine announcement
-/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = TRUE, signature, logging = ARES_LOG_MAIN)
+/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = FALSE, signature, logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/M in targets)
@@ -164,7 +164,7 @@
 		return
 
 	//RUCM START
-	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), usr, html_decode(message), "jaina", null, list(targets, list(), list(), list()), FALSE, 50)
+	INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), usr, html_decode(message), "jaina", null, list(targets, list(), list()), FALSE, 50)
 	//RUCM END
 
 	for(var/mob/T in targets)

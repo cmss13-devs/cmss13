@@ -9,9 +9,9 @@
 
 	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < max_blood && nutrition >= 1)
+		if(blood_volume < max_blood && nutrition >= BLOOD_NUTRITION_COST)
 			blood_volume += 0.1 // regenerate blood VERY slowly
-			nutrition -= 0.25
+			nutrition -= BLOOD_NUTRITION_COST
 		else if(blood_volume > max_blood)
 			blood_volume -= 0.1 // The reverse in case we've gotten too much blood in our body
 			if(blood_volume > limit_blood)
@@ -86,12 +86,13 @@
 	name_plural = "Humans"
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
-	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT
+	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR
 	mob_flags = KNOWS_TECHNOLOGY
-	uses_skin_color = TRUE
 	special_body_types = TRUE
 	fire_sprite_prefix = "Standing"
 	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
+
+	burstscreams = list(MALE = "male_preburst", FEMALE = "female_preburst")
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()

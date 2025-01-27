@@ -2,7 +2,7 @@
 	name = "legcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0
@@ -37,7 +37,12 @@
 				if(human_target.has_limb_for_slot(WEAR_LEGCUFFS))
 					user.drop_inv_item_on_ground(src)
 					human_target.equip_to_slot_if_possible(src, WEAR_LEGCUFFS, 1, 0, 1, 1)
+/*
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
+*/
+//RUCM START
+					user.count_statistic_stat(STATISTICS_HANDCUFF)
+//RUCM END
 
 	else if (ismonkey(target))
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))

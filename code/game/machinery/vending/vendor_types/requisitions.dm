@@ -25,6 +25,7 @@
 		list("M4RA Battle Rifle", floor(scale * 20), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
+		list("M10 Auto Pistol", floor(scale * 50), /obj/item/weapon/gun/pistol/m10, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", floor(scale * 50), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Combat Revolver", floor(scale * 50), /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
 		list("M4A3 Service Pistol", floor(scale * 50), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
@@ -88,6 +89,7 @@
 		list("M276 General Pistol Holster Rig", floor(scale * 10), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Knife Rig", floor(scale * 5), /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 M39 Holster Rig", floor(scale * 5), /obj/item/storage/belt/gun/m39, VENDOR_ITEM_REGULAR),
+		list("M276 M10 Holster Rig", floor(scale * 5), /obj/item/storage/belt/gun/m10, VENDOR_ITEM_REGULAR),
 		list("M276 M40 Grenade Rig", floor(scale * 2), /obj/item/storage/belt/grenade, VENDOR_ITEM_REGULAR),
 		list("M276 General Revolver Holster Rig", floor(scale * 5), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 M82F Holster Rig", floor(scale * 2), /obj/item/storage/belt/gun/flaregun, VENDOR_ITEM_REGULAR),
@@ -252,6 +254,7 @@
 		list("M4RA Magazine (10x24mm)", floor(scale * 60), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Magazine (10x24mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M10 HV magazine (10x20mm)", floor(scale * 100), /obj/item/ammo_magazine/pistol/m10, VENDOR_ITEM_REGULAR),
 		list("M44 Speed Loader (.44)", floor(scale * 80), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", floor(scale * 100), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
 
@@ -263,6 +266,8 @@
 		list("M4A3 AP Magazine (9mm)", floor(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
 		list("EXTENDED AMMUNITION", -1, null, null),
+		list("M10 HV extended magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
+		list("M10 HV drum magazine (10x20mm)", floor(scale * 8), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Extended Magazine (10x24mm)", floor(scale * 8), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
@@ -287,6 +292,9 @@
 		list("XM51 Magazine (16g)", floor(scale * 3), /obj/item/ammo_magazine/rifle/xm51, VENDOR_ITEM_REGULAR),
 
 		list("MAGAZINE BOXES", -1, null, null),
+		list("Magazine Box (M10 x 22)", 0, /obj/item/ammo_box/magazine/m10, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (Ext M10 x 14)", 0, /obj/item/ammo_box/magazine/m10/extended, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (Drum M10 x 12)", 0, /obj/item/ammo_box/magazine/m10/drum, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (M39 x 12)", 0, /obj/item/ammo_box/magazine/m39, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (AP M39 x 12)", 0, /obj/item/ammo_box/magazine/m39/ap, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (Ext M39 x 10)", 0, /obj/item/ammo_box/magazine/m39/ext, VENDOR_ITEM_REGULAR),
@@ -392,6 +400,10 @@
 		list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 6.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 6.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
+//RUCM START
+		list("Barrel Charger", 1.5, /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
+		list("Upgraded Barrel Charger", 0.5, /obj/item/attachable/heavy_barrel/upgraded, VENDOR_ITEM_REGULAR),
+//RUCM END
 
 		list("RAIL", -1, null, null),
 		list("B8 Smart-Scope", 3.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),

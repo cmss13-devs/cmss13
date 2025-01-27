@@ -1,12 +1,16 @@
 GLOBAL_LIST_INIT(cm_vending_walker, list(
 	list("WEAPONS (choose 2)", 0, null, null, null),
+	list("M88 Mounted Automated Anti-Material rifle", 0, /obj/item/walker_gun/wm88, MECH_GUN, VENDOR_ITEM_REGULAR),
 	list("M56 Double-Barrel Mounted Smartgun", 0, /obj/item/walker_gun/smartgun, MECH_GUN, VENDOR_ITEM_REGULAR),
+	list("M32 Mounted Shotgun", 0,/obj/item/walker_gun/shotgun8g, MECH_GUN, VENDOR_ITEM_REGULAR),
 	list("M30 Machine Gun", 0, /obj/item/walker_gun/hmg, MECH_GUN, VENDOR_ITEM_REGULAR),
 	list("F40 \"Hellfire\" Flamethower", 0, /obj/item/walker_gun/flamer, MECH_GUN, VENDOR_ITEM_REGULAR),
 
 	list("AMMUNITION", 0, null, null, null),
-	list("M56 Magazine", 1, /obj/item/ammo_magazine/walker/smartgun, null, VENDOR_ITEM_REGULAR),
-	list("M30 Magazine", 2, /obj/item/ammo_magazine/walker/hmg, null, VENDOR_ITEM_REGULAR),
+	list("M88 AMR Magazine", 3, /obj/item/ammo_magazine/walker/wm88, null, VENDOR_ITEM_REGULAR),
+	list("M56 Smartgun Magazine", 1, /obj/item/ammo_magazine/walker/smartgun, null, VENDOR_ITEM_REGULAR),
+	list("M32 Shotgun Magazine", 3, /obj/item/ammo_magazine/walker/shotgun8g, null, VENDOR_ITEM_REGULAR),
+	list("M30 Machinegun Magazine", 2, /obj/item/ammo_magazine/walker/hmg, null, VENDOR_ITEM_REGULAR),
 	list("F40 UT-Napthal Canister", 2, /obj/item/ammo_magazine/walker/flamer, null, VENDOR_ITEM_REGULAR),
 	// list("F40 UT-Napthal EX-type Canister", 3, /obj/item/ammo_magazine/walker/flamer/ex, null, VENDOR_ITEM_REGULAR),
 	list("F40 UT-Napthal B-type Canister", 3, /obj/item/ammo_magazine/walker/flamer/btype, null, VENDOR_ITEM_REGULAR),

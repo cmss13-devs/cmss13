@@ -5,6 +5,10 @@
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "grenade"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi',
+	)
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	flags_atom = FPRINT|CONDUCT
@@ -124,7 +128,12 @@
 /obj/item/explosive/grenade/launch_towards(datum/launch_metadata/LM)
 	if(active && ismob(LM.thrower))
 		var/mob/M = LM.thrower
+/*
 		M.count_niche_stat(STATISTICS_NICHE_GRENADES)
+*/
+//RUCM START
+		M.count_statistic_stat(STATISTICS_GRENADES)
+//RUCM END
 	. = ..()
 
 

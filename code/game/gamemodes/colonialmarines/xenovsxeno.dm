@@ -91,9 +91,13 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in GLOB.all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+	for(var/area/cur_area as anything in GLOB.all_areas)
+		if(cur_area.flags_area & AREA_UNWEEDABLE)
+			continue
+		cur_area.unoviable_timer = FALSE
 
 	open_podlocks("map_lockdown")
 
@@ -205,7 +209,7 @@
 		hivenumbers += list(HS.name = list())
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
 			var/mob/living/carbon/xenomorph/X = M
 			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
 			if(!hive)
@@ -255,13 +259,25 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/xenovs/declare_completion()
+/*
 	announce_ending()
+*/
+//RUCM START
+	. = ..()
+
+	declare_completion_announce_xenomorphs()
+	declare_fun_facts()
+
+/datum/game_mode/xenovs/get_winners_states()
+	var/end_icon = "xeno_major"
+//RUCM END
 	var/musical_track
 	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
@@ -275,16 +291,24 @@
 
 
 	return TRUE
+*/
+//RUCM START
+	return list(end_icon)
+//RUCM END
 
 /datum/game_mode/xenovs/announce_ending()
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
+*/
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
+/*
 // for the toolbox
 /datum/game_mode/xenovs/end_round_message()
 	if(round_finished)
 		return "Hive Wars Round has ended. [round_finished]"
 	return "Hive Wars Round has ended. No one has won"
+*/

@@ -97,7 +97,12 @@
 			GLOB.chemical_data.save_new_properties(S.properties)
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id])
 			if(last_used)
+/*
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
+*/
+//RUCM START
+				last_used.count_statistic_stat(STATISTICS_CHEMS)
+//RUCM END
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
 			if(P)
 				if(GLOB.chemical_data.clearance_level >= S.gen_tier)
@@ -109,7 +114,7 @@
 	else
 		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 		report.name = "Analysis of ERROR"
-		report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
+		report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
@@ -120,7 +125,7 @@
 
 	report.name = "Analysis of [name]"
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
+	report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
 	if(sample_number)
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
 	report.generate(src, admin_spawned)

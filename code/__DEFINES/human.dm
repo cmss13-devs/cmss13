@@ -116,48 +116,49 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 42
-#define DAMAGE_LAYER 41
+#define BODYPARTS_LAYER 43
+#define DAMAGE_LAYER 42
 
-#define UNDERWEAR_LAYER 40
-#define UNDERSHIRT_LAYER 39
-#define MUTANTRACE_LAYER 38
+#define UNDERWEAR_LAYER 41
+#define UNDERSHIRT_LAYER 40
+#define MUTANTRACE_LAYER 39
 
 /// For use by Hunter Flay
-#define FLAY_LAYER 37
-#define UNIFORM_LAYER 36
+#define FLAY_LAYER 38
+#define UNIFORM_LAYER 37
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
-#define TAIL_LAYER 35
+#define TAIL_LAYER 36
 
-#define ID_LAYER 34
-#define SHOES_LAYER 33
-#define GLOVES_LAYER 32
+#define ID_LAYER 35
+#define SHOES_LAYER 34
+#define GLOVES_LAYER 33
 
 /// For splint and gauze overlays
-#define MEDICAL_LAYER 31
+#define MEDICAL_LAYER 32
 
-#define SUIT_LAYER 30
-#define SUIT_GARB_LAYER 29
-#define SUIT_SQUAD_LAYER 28
-#define GLASSES_LAYER 27
-#define BELT_LAYER 26
-#define BACK_LAYER 25
-#define HAIR_LAYER 24
-#define HAIR_GRADIENT_LAYER 23
-#define SUIT_STORE_LAYER 22
-#define FACIAL_LAYER 21
-#define EARS_LAYER 20
-#define FACEMASK_LAYER 19
+#define SUIT_LAYER 31
+#define SUIT_GARB_LAYER 30
+#define SUIT_SQUAD_LAYER 29
+#define GLASSES_LAYER 28
+#define BELT_LAYER 27
+#define BACK_LAYER 26
+#define HAIR_LAYER 25
+#define HAIR_GRADIENT_LAYER 24
+#define SUIT_STORE_LAYER 23
+#define FACIAL_LAYER 22
+#define EARS_LAYER 21
+#define FACEMASK_LAYER 20
 
 /// Unrevivable headshot overlays, suicide/execution.
-#define HEADSHOT_LAYER 18
-#define HEAD_LAYER 17
-#define HEAD_SQUAD_LAYER 16
-#define HEAD_GARB_LAYER_2 15 // These actual defines are unused but this space within the overlays list is
-#define HEAD_GARB_LAYER_3 14 //  |
-#define HEAD_GARB_LAYER_4 13 //  |
-#define HEAD_GARB_LAYER_5 12 // End here
+#define HEADSHOT_LAYER 19
+#define HEAD_LAYER 18
+#define HEAD_SQUAD_LAYER 17
+#define HEAD_GARB_LAYER_6 16 // These actual defines are unused but this space within the overlays list is
+#define HEAD_GARB_LAYER_5 15 //  |
+#define HEAD_GARB_LAYER_4 14 //  |
+#define HEAD_GARB_LAYER_3 13 //  |
+#define HEAD_GARB_LAYER_2 12 // End here
 #define HEAD_GARB_LAYER 11
 
 /// For backpacks when mob is facing north
@@ -177,7 +178,8 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 42
+#define TOTAL_LAYERS 43
+#define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 
 //Synthetic Defines
@@ -188,6 +190,7 @@
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
 #define SYNTH_HAZARD_JOE "Hazard Joe"
+#define SYNTH_UPP_JOE "Dzho Automaton"
 #define SYNTH_GEN_ONE "First Generation Synthetic"
 #define SYNTH_GEN_TWO "Second Generation Synthetic"
 #define SYNTH_GEN_THREE "Third Generation Synthetic"

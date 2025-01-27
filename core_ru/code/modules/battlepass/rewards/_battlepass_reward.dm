@@ -30,5 +30,5 @@
 
 /datum/battlepass_reward/test
 	name = "Debug"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/economy.dmi'
 	icon_state = "coin_diamond"

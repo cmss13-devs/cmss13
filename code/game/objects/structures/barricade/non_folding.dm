@@ -18,6 +18,7 @@
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
+	var/refund_type = /obj/item/stack/sheet/metal
 
 	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
 
@@ -128,7 +129,12 @@
 							to_chat(user, SPAN_NOTICE("You applied a composite upgrade."))
 
 					metal.use(2)
+/*
 					user.count_niche_stat(STATISTICS_NICHE_UPGRADE_CADES)
+*/
+//RUCM START
+					user.count_statistic_stat(STATISTICS_UPGRADE_CADES)
+//RUCM END
 					update_icon()
 					return
 				else
@@ -168,7 +174,12 @@
 							to_chat(user, SPAN_NOTICE("You applied a composite upgrade."))
 
 					metal.use(2)
+/*
 					user.count_niche_stat(STATISTICS_NICHE_UPGRADE_CADES)
+*/
+//RUCM START
+					user.count_statistic_stat(STATISTICS_UPGRADE_CADES)
+//RUCM END
 					update_icon()
 					return
 
@@ -188,7 +199,7 @@
 				brute_projectile_multiplier = initial(brute_projectile_multiplier)
 				burn_multiplier = initial(burn_multiplier)
 				burn_flame_multiplier = initial(burn_flame_multiplier)
-				new stack_type (loc, 1)
+				new refund_type (loc, 1)
 				update_icon()
 				return
 

@@ -159,10 +159,6 @@ SUBSYSTEM_DEF(ticker)
 	REDIS_PUBLISH("byond.round", "type" = "round", "state" = "started")
 	//RUCM START
 
-	for(var/client/C in GLOB.admins)
-		remove_verb(C, GLOB.roundstart_mod_verbs)
-	GLOB.admin_verbs_minor_event -= GLOB.roundstart_mod_verbs
-
 	return TRUE
 
 /// Try to effectively setup gamemode and start now
@@ -191,6 +187,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, SPAN_BOLDNOTICE("Enjoy the game!"))
 	var/init_start = world.timeofday
+
 /* RUCM REMOVE
 	//Create and announce mode
 	mode = config.pick_mode(GLOB.master_mode)
@@ -219,17 +216,21 @@ SUBSYSTEM_DEF(ticker)
 				handle_map_reboot()
 		else
 			to_chat(world, "Attempting again...")
+
 /* RUCM REMOVE
 		QDEL_NULL(mode)
 */
+
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
+
 /* RUCMM REMOVE
 		QDEL_NULL(mode)
 */
+
 		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
@@ -283,9 +284,6 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		INVOKE_ASYNC(np, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc), TRUE)
-
 	setup_economy()
 
 	SSoldshuttle.shuttle_controller?.setup_shuttle_docks()
@@ -308,6 +306,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
 
 	GLOB.supply_controller.start_processing()
+	GLOB.supply_controller_upp.start_processing()
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
@@ -418,7 +417,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(graceful)
 		to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Shutting down...")]</h3>")
-		world.Reboot(FALSE)
+		world.Reboot()
 		return
 
 	if(!delay)
@@ -441,7 +440,7 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Rebooting World. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
-	world.Reboot(TRUE)
+	world.Reboot()
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	if(!GLOB.RoleAuthority)
@@ -463,7 +462,8 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/M = J.spawn_in_player(player)
 		if(istype(M))
 			J.equip_job(M)
-			EquipCustomItems(M)
+			if(player.ckey in GLOB.donator_items)
+				to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
 			if(M.client)
 				var/client/C = M.client
@@ -493,7 +493,9 @@ SUBSYSTEM_DEF(ticker)
 				captainless = FALSE
 			if(player.job)
 				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
-				EquipCustomItems(player)
+				if(player.ckey in GLOB.donator_items)
+					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+
 			if(player.client)
 				var/client/C = player.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)

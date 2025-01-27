@@ -11,8 +11,10 @@
  *
  */
 
+/*
 GLOBAL_DATUM(round_statistics, /datum/entity/statistic/round)
 GLOBAL_LIST_INIT_TYPED(player_entities, /datum/entity/player_entity, list())
+*/
 GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique tracking_ids to tacbinos and signal flares
 /datum/game_mode
 	var/name = "invalid"
@@ -32,7 +34,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/static_comms_amount = 0
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/active_lz = null
 
+/*
 	var/datum/entity/statistic/round/round_stats = null
+*/
 
 	var/list/roles_to_roll
 
@@ -40,8 +44,12 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 	var/hardcore = FALSE
 
+	///Whether or not the fax response station has loaded.
+	var/loaded_fax_base = FALSE
+
 /datum/game_mode/New()
 	..()
+	initialize_gamemode_modifiers()
 	if(taskbar_icon)
 		GLOB.available_taskbar_icons |= taskbar_icon
 
@@ -101,9 +109,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
-
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		np.new_player_panel_proc()
+	adjust_ammo_values()
 	round_time_lobby = world.time
 	log_game("Round started at [time2text(world.realtime)]")
 	log_game("Operation time at round start is [worldtime2text()]")
@@ -111,6 +117,11 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		log_game("Game mode set to [SSticker.mode] on the [SSmapping.configs[GROUND_MAP].map_name] map")
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return TRUE
+
+/datum/game_mode/proc/adjust_ammo_values()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		for(var/ammo in GLOB.ammo_list)
+			GLOB.ammo_list[ammo].setup_faction_clash_values()
 
 /datum/game_mode/proc/get_affected_zlevels()
 	if(is_in_endgame)
@@ -130,15 +141,19 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	return
 
 /datum/game_mode/proc/announce_ending()
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
+*/
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 /datum/game_mode/proc/declare_completion()
+/*
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
+*/
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
@@ -165,8 +180,36 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(surviving_total > 0)
 		log_game("Round end - total: [surviving_total]")
 
+//RUCM START
+	announce_ending()
+//RUCM END
 
+/*
 	return 0
+*/
+
+//RUCM START
+	var/list/winners_info = get_winners_states()
+
+	if(GLOB.round_statistics)
+		var/datum/entity/statistic_round/round = GLOB.round_statistics
+		round.game_mode = name
+		round.round_length = world.time
+		round.round_result = round_finished
+		if(!length(round.current_map.victories))
+			round.current_map.victories = list()
+		round.current_map.victories[round_finished]++
+		round.end_round_player_population = length(GLOB.clients)
+
+		round.log_round_statistics()
+		round.track_round_end()
+
+	calculate_end_statistics()
+	show_end_statistics(winners_info[1])
+
+/datum/game_mode/proc/get_winners_states()
+	return list("draw")
+//RUCM END
 
 /datum/game_mode/proc/calculate_end_statistics()
 	for(var/i in GLOB.alive_mob_list)
@@ -182,7 +225,12 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 				record_playtime(M.client.player_data, M.job, type)
 
 /datum/game_mode/proc/show_end_statistics(icon_state)
+/*
 	GLOB.round_statistics.update_panel_data()
+*/
+//RUCM START
+	GLOB.round_statistics.process()
+//RUCM END
 	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			give_action(M, /datum/action/show_round_statistics, null, icon_state)

@@ -49,6 +49,9 @@
 #define AREA_UNWEEDABLE (1<<4)
 /// Flags the area as having purpose by the Yautja, and exempt from gear tracking.
 #define AREA_YAUTJA_GROUNDS (1<<5)
+/// Flags the area as a hunting grounds for the Yautja, sometimes blocking game interaction.
+#define AREA_YAUTJA_HUNTING_GROUNDS (1<<6)
+
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
@@ -195,7 +198,9 @@
 #define STATISTIC_XENO "xeno"
 #define STATISTIC_HUMAN "human"
 
+/* RUCM CHANGE
 #define STATISTICS_DEATH_LIST_LEN 10
+*/
 
 #define STATISTICS_NICHE_EXECUTION   "Executions Made"
 #define STATISTICS_NICHE_MEDALS  "Medals Received"

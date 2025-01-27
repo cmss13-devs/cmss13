@@ -301,7 +301,12 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 
+/*
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+*/
+//RUCM START
+					Q.count_statistic_stat(STATISTICS_FLIGHT)
+//RUCM END
 
 					if(Q.hive)
 						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
@@ -328,7 +333,12 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				if(is_ground_level(z)) shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
+/*
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+*/
+//RUCM START
+					M.count_statistic_stat(STATISTICS_FLIGHT)
+//RUCM END
 			msg_admin_niche("[M] ([M.key]) launched \a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
 	ui_interact(usr)
@@ -417,6 +427,54 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	desc = "The flight controls for the 'Saipan' Dropship."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp
+	name = "\improper 'Morana' dropship console"
+	desc = "The remote controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_MORANA
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/onboard
+	name = "\improper 'Morana' flight controls"
+	desc = "The flight controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2
+	name = "\improper 'Devana' dropship console"
+	desc = "The remote controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_DEVANA
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/onboard
+	name = "\improper 'Devana' flight controls"
+	desc = "The flight controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
 	onboard = 1
 	density = TRUE
 

@@ -144,7 +144,12 @@
 						for(var/turf/T in view())
 							turfs += T
 						var/turf/target = pick(turfs)
+/*
 						count_niche_stat(STATISTICS_NICHE_DISCHARGE)
+*/
+//RUCM START
+						count_statistic_stat(STATISTICS_DISCHARGE)
+//RUCM END
 
 						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
 						attacking_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."

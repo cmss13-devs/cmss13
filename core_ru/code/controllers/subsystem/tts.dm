@@ -253,36 +253,15 @@ SUBSYSTEM_DEF(tts)
 			return TRUE
 	return FALSE
 
-/datum/controller/subsystem/tts/proc/play_tts(target, list/listeners, sound/audio, volume_offset = 0)
-	var/turf/turf_source = get_turf(target)
-	if(!turf_source)
-		return
-
-	for(var/mob/receiver in listeners[1])
-		if(!elligible_mob(receiver, target))
+/datum/controller/subsystem/tts/proc/play_tts(target, list/listeners, sound/audio, volume_offset = 0, flags)
+	for(var/mob/receiver in listeners)
+		if(!receiver.client || !receiver.client.prefs)
 			continue
-		var/audio_to_use = audio
-//		var/audio_to_use = (receiver.client.prefs.tts_mode == TTS_SOUND_BLIPS) ? audio_blips : audio
-		playsound_client(receiver.client, audio_to_use, turf_source, ((receiver == target)? 60 : 85) + volume_offset, vol_cat = VOLUME_TTS)
-	//Radio
-	for(var/mob/receiver in listeners[2])
-		if(!elligible_mob(receiver, target, flags = TTS_FLAG_HIVEMIND|TTS_FLAG_RADIO))
+		if(receiver.client.prefs.tts_mode == TTS_SOUND_OFF)
 			continue
-		var/audio_to_use = audio
-//		var/audio_to_use = (receiver.client.prefs.tts_mode == TTS_SOUND_BLIPS) ? audio_blips : audio
-		playsound_client(receiver.client, audio_to_use, null, ((receiver == target)? 30 : 50) + volume_offset, vol_cat = VOLUME_TTS)
-
-/datum/controller/subsystem/tts/proc/elligible_mob(mob/receiver, target, flags)
-	if(QDELING(receiver))
-		return FALSE
-	if(!receiver.client?.prefs)
-		return FALSE
-	var/tts_pref = receiver.client?.prefs.tts_mode
-	if(tts_pref == TTS_SOUND_OFF || !receiver.client)
-		return FALSE
-	if((flags & TTS_FLAG_HIVEMIND) && !should_play_hivemind_tts(receiver.client, target))
-		return FALSE
-	return TRUE
+		if((flags & TTS_FLAG_HIVEMIND) && !should_play_hivemind_tts(receiver.client, target))
+			continue
+		playsound_client(receiver.client, audio, flags ? null : target, volume_offset, vol_cat = VOLUME_TTS)
 
 #define SHIFT_DATA_ARRAY(tts_message_queue, target, data) \
 	popleft(##data); \
@@ -380,7 +359,11 @@ SUBSYSTEM_DEF(tts)
 				audio_file = new(current_target.audio_file)
 				if(current_target.start_noise)
 					playsound(tts_target, current_target.start_noise, 5, TRUE)
-				play_tts(tts_target, current_target.listeners, audio_file, current_target.volume_offset)
+				var/turf/turf_source = get_turf(tts_target)
+				if(turf_source)
+					play_tts(turf_source, current_target.listeners[1], audio_file, current_target.volume_offset + 60)
+					play_tts(turf_source, current_target.listeners[2], audio_file, current_target.volume_offset + 30, TTS_FLAG_RADIO)
+					play_tts(turf_source, current_target.listeners[3], audio_file, current_target.volume_offset + 30, TTS_FLAG_HIVEMIND)
 				if(length(data) != 1)
 					var/datum/tts_request/next_target = data[2]
 					next_target.when_to_play = world.time + current_target.audio_length
@@ -624,7 +607,7 @@ BSQL_PROTECT_DATUM(/datum/tts_request)
 
 /mob/living/carbon/xenomorph
 	speaking_noise = "alien_talk"
-	tts_voice_filter = TTS_FILTER_XENO
+//	tts_voice_filter = TTS_FILTER_XENO
 
 /mob/living/carbon/xenomorph/proc/init_voice()
 	if(!client)

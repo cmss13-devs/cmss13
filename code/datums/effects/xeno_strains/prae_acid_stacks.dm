@@ -45,8 +45,9 @@
 	if (!ishuman(affected_atom))
 		return ..()
 
-	var/mob/living/carbon/human/H = affected_atom
-	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
+	var/mob/living/carbon/human/human = affected_atom
+	if(!QDELETED(human))
+		addtimer(CALLBACK(human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 
 	return ..()
 
@@ -71,6 +72,13 @@
 
 	var/mob/living/carbon/human/H = affected_atom
 	H.apply_damage(proc_damage, BURN)
+//RUCM START
+	var/mob/cause_mob = cause_data.resolve_mob()
+	if(cause_mob.faction == H.faction)
+		cause_mob.track_friendly_damage("Acid", H, proc_damage)
+	else
+		cause_mob.track_damage("Acid", H, proc_damage)
+//RUCM END
 	to_chat(H, SPAN_XENODANGER("You feel acid eat into your skin!"))
 	qdel(src)
 	return

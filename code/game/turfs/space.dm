@@ -81,7 +81,7 @@
 	if ((!(A) || src != A.loc)) return
 */
 //RUCM START
-	if((!(A) || src != A.loc) || istype(A, /obj/effect/step_trigger/teleporter/random))
+	if((!(A) || src != A.loc) || istype(A, /obj/effect/step_trigger/teleporter/random) || !length(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
 		return
 //RUCM END
 

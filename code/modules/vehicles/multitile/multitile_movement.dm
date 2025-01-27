@@ -71,16 +71,9 @@
 	var/turf/old_turf = get_turf(src)
 	forceMove(get_step(src, direction))
 
-//RUCM START
 	var/turf/current_loc = get_turf(src)
-//RUCM END
 	for(var/obj/item/hardpoint/H in hardpoints)
-/*
-		H.on_move(old_turf, get_turf(src), direction)
-*/
-//RUCM START
 		H.on_move(old_turf, current_loc, direction)
-//RUCM END
 
 	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
@@ -106,12 +99,7 @@
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
 	rotate_bounds(deg)
-/*
-	setDir(turn(dir, deg))
-*/
-//RUCM START
 	setDir(turn(dir, deg), TRUE)
-//RUCM END
 
 	last_move_dir = dir
 
@@ -123,12 +111,10 @@
 
 	return TRUE
 
-//RUCM START
 /obj/vehicle/multitile/setDir(newdir, real_rotate = FALSE)
 	if(!real_rotate)
 		return
 	. = ..()
-//RUCM END
 
 // Increases/decreases the vehicle's momentum according to whether or not the user is steppin' on the gas or not
 /obj/vehicle/multitile/proc/update_momentum(direction)

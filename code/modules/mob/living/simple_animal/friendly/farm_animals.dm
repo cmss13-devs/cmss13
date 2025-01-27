@@ -147,7 +147,12 @@
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
+/*
 			user.count_niche_stat(STATISTICS_NICHE_COW)
+*/
+//RUCM START
+			user.count_statistic_stat(STATISTICS_COW)
+//RUCM END
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
@@ -236,12 +241,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chicken/New()
-	..()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
 	icon_state = "chicken_[body_color]"
 	icon_living = "chicken_[body_color]"
 	icon_dead = "chicken_[body_color]_dead"
+	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 	GLOB.chicken_count++
@@ -257,7 +262,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
+/*
 			user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
+*/
+//RUCM START
+			user.count_statistic_stat(STATISTICS_CHICKEN)
+//RUCM END
 
 /mob/living/simple_animal/chicken/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens

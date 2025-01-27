@@ -45,7 +45,7 @@
 		WEAR_L_HAND = "utility",
 		WEAR_R_HAND = "utility"
 		)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	gun_has_gamemode_skin = FALSE
 	holster_mode = FALSE
 	storage_slots = 10
@@ -147,7 +147,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM52 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
 	icon = 'core_ru/icons/obj/items/clothing/belts.dmi'
 	icon_state = "xm52_holster"
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	gun_has_gamemode_skin = FALSE
 	storage_slots = 8
 	max_w_class = 5
@@ -193,3 +193,7 @@
 /obj/item/storage/belt/gun/xm52/on_stored_atom_del(atom/movable/item)
 	if(istype(item, /obj/item/ammo_magazine/rifle/xm52))
 		magazines--
+
+/obj/item/storage/belt/marine/smartgunner/m56c/fill_preset_inventory()
+	new /obj/item/ammo_magazine/smartgun/m56c(src)
+	new /obj/item/ammo_magazine/smartgun/m56c(src)

@@ -2,5 +2,6 @@
 	. = ..()
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
 	new /obj/item/weapon/gun/smartgun/m56c(src)
+	new /obj/item/pamphlet/skill/cosmartgun(src)
 	new /obj/item/storage/belt/marine/smartgunner/m56c(src)
 	update_icon()

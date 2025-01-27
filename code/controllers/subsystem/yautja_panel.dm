@@ -349,23 +349,9 @@ SUBSYSTEM_DEF(yautja_panel)
 				to_chat(user, "You have decided not to delete [target_clan.name].")
 				return FALSE
 
+			delete_clan(target_clan.id)
 			message_admins("[key_name_admin(user)] has deleted the clan [target_clan.name].")
 			to_chat(user, SPAN_NOTICE("You have deleted [target_clan.name]."))
-			var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
-
-			for(var/datum/view_record/clan_playerbase_view/CP in CPV)
-				var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player/, CP.player_id)
-				pl.sync()
-
-				pl.clan_id = null
-				pl.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
-				pl.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
-
-				pl.save()
-
-			target_clan.delete()
-			fire()
-			return TRUE
 
 	if(data_reloader)
 		fire()
@@ -453,6 +439,29 @@ SUBSYSTEM_DEF(yautja_panel)
 		data["clan_id"] = clan_to_format
 
 	return data
+
+/datum/controller/subsystem/yautja_panel/proc/delete_clan(target_id)
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("yautja clan delete")
+		return PROC_BLOCKED
+
+	var/datum/entity/clan/target_clan
+	target_clan = GET_CLAN(target_id)
+	target_clan.sync()
+
+	var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_id))
+
+	for(var/datum/view_record/clan_playerbase_view/CP in CPV)
+		var/datum/entity/clan_player/pl = DB_EKEY(/datum/entity/clan_player/, CP.player_id)
+		pl.sync()
+
+		pl.clan_id = null
+		pl.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
+		pl.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
+
+		pl.save()
+
+	target_clan.delete()
 
 /datum/controller/subsystem/yautja_panel/proc/early_conclude_data_act(datum/entity/clan/target_clan, datum/entity/clan_player/target_yautja)
 	fire()

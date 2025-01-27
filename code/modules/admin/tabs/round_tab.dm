@@ -14,7 +14,7 @@
 	var/cur_count = SSticker.mode.pred_current_num
 	var/cur_max = SSticker.mode.calculate_pred_max()
 	var/real_count = length(SSticker.mode.predators)
-	var/possible_min = cur_count - cur_max
+	var/possible_min = min(cur_count - cur_max, cur_extra)
 	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] (Real: [real_count]) Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = possible_min, integer_only = TRUE)
 
 	if(isnull(value))
@@ -25,7 +25,7 @@
 
 	cur_count = SSticker.mode.pred_current_num // values could have changed since asking
 	cur_max = SSticker.mode.calculate_pred_max()
-	possible_min = cur_count - cur_max
+	possible_min = min(cur_count - cur_max, cur_extra)
 
 	// If we are reducing the count and that exceeds how much we could reduce it by
 	if(value < possible_min)

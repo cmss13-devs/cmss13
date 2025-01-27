@@ -171,7 +171,8 @@
 	return ""
 
 /datum/job/proc/set_spawn_positions(count)
-	spawn_positions = job_slot_formula(count, players_per_position, 1, minimal_open_positions, maximal_open_positions )
+	spawn_positions = job_slot_formula(count, players_per_position, factor, minimal_open_positions, maximal_open_positions )
+	return spawn_positions
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")

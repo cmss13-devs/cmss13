@@ -352,6 +352,7 @@ Make sure their actual health updates immediately.*/
 					heal_wounds(caste.heal_standing * regeneration_multiplier, recoveryActual)
 				updatehealth()
 
+/*
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)
 				var/curve_factor = armor_integrity/armor_integrity_max
 				curve_factor *= curve_factor
@@ -365,6 +366,20 @@ Make sure their actual health updates immediately.*/
 
 			if(armor_integrity > armor_integrity_max)
 				armor_integrity = armor_integrity_max
+*/
+//RUCM START
+			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && (world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY))
+				var/curve_factor = armor_integrity/armor_integrity_max
+				if(curve_factor < 1)
+					curve_factor = 1
+				if(armor_integrity/armor_integrity_max < 0.3)
+					curve_factor /= 2
+				if(body_position == LYING_DOWN || resting)
+					curve_factor *= 1.5
+
+				var/factor = ((armor_deflection / 100) * 2 MINUTES) // 100 armor is restored in 6 minutes in 2 seconds intervals
+				gain_armor_percent(100*curve_factor/factor)
+//RUCM END
 
 		else if(prob(50) && !current_aura) //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
 			plasma_stored += 0.1 * plasma_max / 100
@@ -388,6 +403,9 @@ Make sure their actual health updates immediately.*/
 		var/datum/action/A = X
 		A.update_button_icon()
 
+//RUCM START
+	med_hud_set_armor()
+//RUCM END
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
 /mob/living/carbon/xenomorph/proc/queen_locator()

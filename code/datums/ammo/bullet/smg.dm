@@ -91,6 +91,8 @@
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
 
+	damage_armor_punch = 0.75
+
 /datum/ammo/bullet/smg/ap/penetrating/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(

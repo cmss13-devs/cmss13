@@ -94,6 +94,10 @@
 	armor_integrity_damage_mult = 4
 	armor_ignore_integrity = TRUE
 
+/datum/combat_configuration/xeno
+	armor_integrity_damage_mult = 0.45
+	armor_ignore_integrity = 0
+
 /datum/combat_configuration/xeno/ranged
 
 /datum/combat_configuration/xeno/ranged/stats
@@ -106,6 +110,9 @@
 	armor_minimal_efficiency = 0
 	damage_initial_multiplier = 2
 	armor_integrity_damage_mult = 4
+
+/datum/combat_configuration/xeno/explosive
+	armor_integrity_damage_mult = 1.4
 
 /datum/combat_configuration/xeno/explosive/small
 	armor_ignore_integrity = 1

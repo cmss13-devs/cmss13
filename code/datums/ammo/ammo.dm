@@ -89,6 +89,10 @@
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
 
+/datum/ammo
+	pen_armor_punch = 0.25
+	damage_armor_punch = 0.25
+
 /datum/ammo/New()
 	set_bullet_traits()
 

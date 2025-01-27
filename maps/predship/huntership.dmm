@@ -2043,7 +2043,13 @@
 /area/yautja)
 "gd" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/mars_cave/mars_dirt_4,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "gg" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -2542,9 +2548,6 @@
 	light_range = 3;
 	light_color = "#ff0000"
 	},
-/area/yautja)
-"ia" = (
-/turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "ic" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4634,7 +4637,13 @@
 "pn" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/mars_cave/mars_dirt_4,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "po" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -4642,7 +4651,13 @@
 /obj/structure/platform_decoration/metal/hunter{
 	pixel_y = 26
 	},
-/turf/open/mars_cave/mars_dirt_4,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "pp" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -5456,9 +5471,6 @@
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/floor/corsat,
 /area/yautja)
-"sE" = (
-/turf/open/mars_cave/mars_dirt_4,
-/area/yautja)
 "sF" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/structure/platform_decoration/metal/hunter,
@@ -5659,7 +5671,13 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "tf" = (
-/turf/open/mars_cave/mars_dirt_6,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "ti" = (
 /obj/structure/showcase{
@@ -6056,7 +6074,13 @@
 "uj" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/mars_cave/mars_dirt_4,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "uk" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -7904,17 +7928,19 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
-"AX" = (
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/mars_cave/mars_dirt_5,
-/area/yautja)
 "AY" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/platform_decoration/metal/hunter/north{
 	pixel_y = 26
 	},
-/turf/open/mars_cave/mars_dirt_5,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "AZ" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
@@ -9785,7 +9811,13 @@
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter,
-/turf/open/mars_cave/mars_dirt_5,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "Hf" = (
 /obj/item/reagent_container/food/snacks/xenomeatbreadslice,
@@ -10845,7 +10877,13 @@
 	pixel_y = 26;
 	layer = 3.1
 	},
-/turf/open/mars_cave/mars_dirt_5,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "KG" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -12286,7 +12324,13 @@
 	pixel_y = 26;
 	layer = 3.1
 	},
-/turf/open/mars_cave/mars_dirt_4,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "PW" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -13084,7 +13128,13 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/structure/prop/hunter/fake_platform/hunter,
 /obj/structure/platform_decoration/metal/hunter/north,
-/turf/open/mars_cave/mars_dirt_5,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "SF" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen/yautja{
@@ -13642,10 +13692,6 @@
 	layer = 3
 	},
 /turf/open/floor/corsat,
-/area/yautja)
-"UA" = (
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/mars_cave/mars_dirt_5,
 /area/yautja)
 "UB" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -15187,7 +15233,13 @@
 /area/yautja)
 "ZK" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/mars_cave/mars_dirt_4,
+/obj/effect/hunter/catwalk/new_alpha,
+/turf/open/shuttle/bright_red{
+	light_color = "#ff0000";
+	light_power = 2;
+	light_range = 3;
+	light_on = 1
+	},
 /area/yautja)
 "ZL" = (
 /obj/effect/hunter/bridge_border,
@@ -19287,7 +19339,7 @@ Gc
 qF
 Lf
 AY
-UA
+gd
 gd
 gd
 SC
@@ -19391,7 +19443,7 @@ Qg
 PU
 tf
 tf
-ia
+tf
 uj
 Qv
 Mv
@@ -19491,9 +19543,9 @@ Ol
 LP
 wh
 KE
-sE
 tf
-sE
+tf
+tf
 pn
 Us
 UD
@@ -19593,7 +19645,7 @@ jZ
 qF
 Lf
 po
-AX
+ZK
 ZK
 ZK
 Hd

@@ -446,7 +446,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 10 MINUTES
+	var/decryption_time = 3 MINUTES
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
@@ -590,7 +590,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			return
 
 /obj/structure/machinery/nuclearbomb/tech/announce_to_players(timer_warning)
-	if(!decryption_time && (timer_warning != NUKE_DECRYPT_SHOW_TIMER_COMPLETE))
+	if(!decryption_time)
 		return ..()
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list

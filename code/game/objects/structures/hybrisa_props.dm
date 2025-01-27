@@ -1923,8 +1923,8 @@
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = UNDERFLOOR_OBJ_LAYER
 
-	/obj/effect/hybrisa/misc/fake/ex_act()
-		qdel(src)
+/obj/effect/hybrisa/misc/fake/ex_act()
+	qdel(src)
 
 /obj/effect/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"

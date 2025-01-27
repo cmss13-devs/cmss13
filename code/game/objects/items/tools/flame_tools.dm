@@ -37,7 +37,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	var/wax = 800
 
-/obj/item/tool/candle/update_icon()
+/obj/item/tool/candle/update_icon(mob/user)
 	var/i
 	if(wax>150)
 		i = 1
@@ -45,6 +45,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		i = 2
 	else i = 3
 	icon_state = "candle[i][heat_source ? "_lit" : ""]"
+	item_state = "candle[i][heat_source ? "_lit" : ""]"
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
 
 /obj/item/tool/candle/Destroy()
 	if(heat_source)
@@ -100,7 +103,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "match"
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon = 'icons/obj/items/smoking/matches.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi'
+		)
 	icon_state = "match"
+	item_state = "match"
 	var/burnt = 0
 	var/smoketime = 10 SECONDS
 	var/burnt_name = "burnt match"
@@ -111,7 +119,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	attack_verb = list("burnt", "singed")
 
 /obj/item/tool/match/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
-	if(istype(user) && istype(target, /obj/item/clothing/shoes/marine) && user.shoes == target && light_match())
+	if(istype(user) && istype(target, /obj/item/clothing/shoes/marine) && user.shoes == target && light_match(user))
 		if(prob(5))
 			user.visible_message(SPAN_NOTICE("<b>[user]</b> strikes \the [src] against their [target.name] and it splinters into pieces!"), SPAN_NOTICE("You strike \the [src] against your [target.name] and it splinters into pieces!"), max_distance = 3)
 			qdel(src)
@@ -143,24 +151,32 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	set_light_on(toggle_on)
 
-/obj/item/tool/match/proc/light_match()
+/obj/item/tool/match/proc/light_match(mob/user)
 	if(heat_source || burnt)
 		return
 	heat_source = 1000
 	playsound(src.loc,"match",15, 1, 3)
 	damtype = "burn"
 	icon_state = "[initial(icon_state)]_lit"
+	item_state = "[initial(item_state)]_lit"
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 	turn_light(toggle_on = TRUE)
 	START_PROCESSING(SSobj, src)
 	update_icon()
 	return TRUE
 
-/obj/item/tool/match/proc/burn_out(mob/user)
+/obj/item/tool/match/proc/burn_out()
 	heat_source = 0
 	burnt = 1
 	damtype = "brute"
 	icon_state = "[initial(icon_state)]_burnt"
-	item_state = "cigoff"
+	item_state = "[initial(item_state)]_burnt"
+	var/mob/holder = loc
+	if(ismob(holder))
+		holder.update_inv_l_hand()
+		holder.update_inv_r_hand()
 	turn_light(toggle_on = FALSE)
 	name = burnt_name
 	desc = "A match. This one has seen better days."
@@ -170,6 +186,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "paper match"
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon_state = "papermatch"
+	item_state = "papermatch"
 	burnt_name = "burnt paper match"
 
 //////////////////
@@ -179,14 +196,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette"
 	desc = "A roll of tobacco and fillers, wrapped in paper with a filter at the end. Apparently, inhaling the smoke makes you feel happier."
 	icon_state = "cigoff"
-	throw_speed = SPEED_AVERAGE
 	item_state = "cigoff"
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi'
 	)
+	throw_speed = SPEED_AVERAGE
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EAR | SLOT_FACE
@@ -469,10 +487,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/smoking/cigars.dmi'
 	item_state = "cigar_off"
 	item_state_slots = list(WEAR_AS_GARB = "cigar")
-	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
-	)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
@@ -668,6 +682,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi',
 	)
 	icon_state = "cigoff"
@@ -797,6 +813,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_on = "lighter_[clr]_on"
 		icon_off = "lighter_[clr]"
 		icon_state = icon_off
+		item_state = icon_off
 		LAZYSET(item_state_slots, WEAR_AS_GARB, "lighter_[clr]")
 
 /obj/item/tool/lighter/attack_self(mob/living/user)

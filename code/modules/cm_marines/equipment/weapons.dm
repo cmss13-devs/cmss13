@@ -34,7 +34,7 @@
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE
-	storage_slots = 5
+	storage_slots = 6
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = null
@@ -44,6 +44,7 @@
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
 	new /obj/item/weapon/gun/smartgun/co(src)
 	new /obj/item/smartgun_battery(src)
+	new /obj/item/pamphlet/skill/cosmartgun(src)
 	new /obj/item/clothing/suit/storage/marine/smartgunner(src)
 	new /obj/item/storage/belt/marine/smartgunner(src)
 	update_icon()

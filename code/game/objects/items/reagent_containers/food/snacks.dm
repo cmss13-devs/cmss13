@@ -364,6 +364,7 @@
 	name = "cookie"
 	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
+	item_state = "COOKIE!!!"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#DBC94F"
 
@@ -517,21 +518,6 @@
 		reagents.reaction(hit_atom, TOUCH)
 	visible_message(SPAN_WARNING("[name] has been squashed."),SPAN_WARNING("You hear a smack."))
 	qdel(src)
-
-/obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype( W, /obj/item/toy/crayon ))
-		var/obj/item/toy/crayon/C = W
-		var/clr = C.colorName
-
-		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, SPAN_NOTICE(" The egg refuses to take on this color!"))
-			return
-
-		to_chat(usr, SPAN_NOTICE(" You color \the [src] [clr]"))
-		icon_state = "egg-[clr]"
-		egg_color = clr
-	else
-		..()
 
 /obj/item/reagent_container/food/snacks/egg/blue
 	icon_state = "egg-blue"
@@ -2864,6 +2850,10 @@
 	name = "pizza box"
 	desc = "A box suited for pizzas."
 	icon = 'icons/obj/items/food/pizza.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
 	icon_state = "pizzabox1"
 
 	var/open = 0 // Is the box open?
@@ -3055,6 +3045,45 @@
 		boxes += extra
 	update_icon()
 
+// Pizza Galaxy Pizza
+
+/obj/item/pizzabox/pizza_galaxy
+	icon = 'icons/obj/items/pizza_galaxy_pizza.dmi'
+
+/obj/item/pizzabox/pizza_galaxy/margherita/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita(src)
+	boxtag = "Margherita Deluxe"
+
+/obj/item/pizzabox/pizza_galaxy/vegetable/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza(src)
+	boxtag = "Gourmet Vegatable"
+
+/obj/item/pizzabox/pizza_galaxy/mushroom/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza(src)
+	boxtag = "Mushroom Special"
+
+/obj/item/pizzabox/pizza_galaxy/meat/Initialize()
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza(src)
+	boxtag = "Meatlover's Supreme"
+
+/// Mystery Pizza, made with random ingredients!
+/obj/item/pizzabox/pizza_galaxy/mystery/Initialize(mapload, ...)
+	. = ..()
+	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery(src)
+	boxtag = "Mystery Pizza"
+
+// Pre-stacked boxes for reqs
+/obj/item/pizzabox/pizza_galaxy/mystery/stack/Initialize(mapload, ...)
+	. = ..()
+	for(var/i in 1 to 2)
+		var/obj/item/pizzabox/pizza_galaxy/mystery/extra = new(src)
+		boxes += extra
+	update_icon()
+
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////
@@ -3068,12 +3097,28 @@
 		qdel(src)
 
 // Egg + flour = dough
-/obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/reagent_container/food/snacks/flour))
+/obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W, mob/living/user, list/mods)
+	if(istype(W, /obj/item/reagent_container/food/snacks/flour))
 		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
 		qdel(W)
 		qdel(src)
+		return TRUE
+
+	if(istype(W, /obj/item/toy/crayon))
+		var/obj/item/toy/crayon/C = W
+		var/clr = C.colorName
+
+		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
+			to_chat(usr, SPAN_NOTICE("The egg refuses to take on this color!"))
+			return
+
+		to_chat(usr, SPAN_NOTICE("You color [src] [clr]"))
+		icon_state = "egg-[clr]"
+		egg_color = clr
+		return TRUE
+
+	return ..()
 
 /obj/item/reagent_container/food/snacks/dough
 	name = "dough"
@@ -3241,8 +3286,19 @@
 		new /obj/item/reagent_container/food/snacks/rawsticks(get_turf(src))
 		to_chat(user, "You cut the potato.")
 		qdel(src)
-	else
-		..()
+		return TRUE
+
+	if(istype(W, /obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/C = W
+		if(C.use(5))
+			to_chat(user, SPAN_NOTICE("You add some cable to the potato and slide it inside the battery encasing."))
+			var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(user.loc)
+			pocell.maxcharge = src.potency * 10
+			pocell.charge = pocell.maxcharge
+			qdel(src)
+			return TRUE
+
+	return ..()
 
 /obj/item/reagent_container/food/snacks/rawsticks
 	name = "raw potato sticks"
@@ -3260,6 +3316,7 @@
 	name = "Packaged Burrito"
 	desc = "A hard microwavable burrito. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "packaged-burrito"
+	item_state = "pburrito"
 	bitesize = 2
 	package = 1
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
@@ -3278,11 +3335,13 @@
 		package = 0
 		new /obj/item/trash/buritto (user.loc)
 		icon_state = "open-burrito"
+		item_state = "burrito"
 
 /obj/item/reagent_container/food/snacks/packaged_burger
 	name = "Packaged Cheeseburger"
 	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "burger"
+	item_state = "pburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	bitesize = 3
 	package = 1
@@ -3309,6 +3368,7 @@
 	name = "Packaged Hotdog"
 	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "packaged-hotdog"
+	item_state = "photdog"
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	bitesize = 2
 	package = 1
@@ -3328,6 +3388,7 @@
 		package = 0
 		new /obj/item/trash/hotdog (user.loc)
 		icon_state = "open-hotdog"
+		item_state = "hotdog"
 
 /obj/item/reagent_container/food/snacks/upp
 	name = "\improper UPP ration"
@@ -3377,6 +3438,7 @@
 	name = "Kepler Crisps"
 	desc = "'They're disturbingly good!' Now with 0% trans fat and added genuine sea salts."
 	icon_state = "kepler"
+	item_state = "kepler"
 	bitesize = 2
 	trash = /obj/item/trash/kepler
 
@@ -3389,6 +3451,7 @@
 	name = "Kepler Flamehot"
 	desc = "'They're disturbingly good!' Due to an exceptionally well-timed ad campaign with the release of Kepler Flamehot in 2165, the Kepler brand was able to overtake other confectionary Weyland products by quarter three of that year. Contains 0% trans fat."
 	icon_state = "flamehotkepler"
+	item_state = "flamehotkepler"
 	bitesize = 2
 	trash = /obj/item/trash/kepler/flamehot
 
@@ -3415,6 +3478,7 @@
 
 		new wrapper (user.loc)
 		icon_state = "[initial(icon_state)]-o"
+		item_state = "[initial(item_state)]-o"
 		package = 0
 
 //CM SNACKS
@@ -3422,6 +3486,7 @@
 	name = "\improper Boonie Bars"
 	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
 	icon_state = "boonie"
+	item_state = "boonie"
 	item_state_slots = list(WEAR_AS_GARB = "boonie-bars")
 	wrapper = /obj/item/trash/boonie
 
@@ -3434,6 +3499,7 @@
 	name = "\improper CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
+	item_state = "chunk"
 	item_state_slots = list(WEAR_AS_GARB = "chunkbox")
 	hitsound = "swing_hit"
 	force = 15
@@ -3452,6 +3518,7 @@
 	name = "HUNK crate"
 	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
 	icon_state = "hunk"
+	item_state = "hunk"
 	w_class = SIZE_MEDIUM
 	force = 35
 	throwforce = 50
@@ -3468,6 +3535,7 @@
 	name = "Barcardine Bars"
 	desc = "A bar of chocolate, it smells like the medical bay. <i>\"Chocolate always helps the pain go away.\"</i>"
 	icon_state = "barcardine"
+	item_state = "barcardine"
 	item_state_slots = list(WEAR_AS_GARB = "barcardine-bars")
 	wrapper = /obj/item/trash/barcardine
 

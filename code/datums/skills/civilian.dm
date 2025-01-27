@@ -235,6 +235,40 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
+/datum/skills/civilian/survivor/wy_pilot
+	name = "Survivor - Weyland Yutani - Pilot"
+	additional_skills = list(
+		SKILL_PILOT = SKILL_PILOT_EXPERT,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+	)
+
+/datum/skills/civilian/survivor/paramedic
+	name = "Survivor - Paramedic"
+	additional_skills = list(
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
+		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
+/datum/skills/civilian/survivor/fire_fighter
+	name = "Survivor - Fire Protection Specialist"
+	additional_skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+	)
+
+/datum/skills/civilian/survivor/pizza_delivery_driver
+	name = "Survivor - Pizza Galaxy Delivery Driver"
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+	)
+
 /datum/skills/civilian/survivor/gangleader
 	name = "Survivor Gang Leader"
 	additional_skills = list(

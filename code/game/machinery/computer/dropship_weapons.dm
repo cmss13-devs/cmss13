@@ -18,7 +18,7 @@
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
 	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
-	var/matrixcol //color of matrix, only used when we upgrade to nv
+	var/matrix_color = NV_COLOR_GREEN //color of matrix, only used when we upgrade to nv
 	var/power //level of the property
 	var/datum/cas_signal/selected_cas_signal
 	var/datum/simulator/simulation
@@ -38,6 +38,11 @@
 
 	var/registered = FALSE
 
+/obj/structure/machinery/computer/dropship_weapons/New()
+	..()
+	if(firemission_envelope)
+		firemission_envelope.linked_console = src
+
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
@@ -49,17 +54,14 @@
 	AddComponent(/datum/component/camera_manager)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
-/obj/structure/machinery/computer/dropship_weapons/New()
-	..()
-	if(firemission_envelope)
-		firemission_envelope.linked_console = src
+/obj/structure/machinery/computer/dropship_weapons/Destroy()
+	. = ..()
+	QDEL_NULL(firemission_envelope)
+	QDEL_NULL(tacmap)
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
-
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -90,7 +92,6 @@
 			W.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
 			upgraded = matrix.upgrade
-			matrixcol = matrix.matrixcol
 			power = matrix.power
 
 		else
@@ -436,7 +437,12 @@
 			return TRUE
 
 		if("nvg-enable")
-			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
+			if(upgraded != MATRIX_NVG)
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				return FALSE
+			if(user.client?.prefs?.night_vision_preference)
+				matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, matrix_color)
 			return TRUE
 
 		if("nvg-disable")
@@ -913,13 +919,7 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_SAIPAN
 
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	QDEL_NULL(firemission_envelope)
-	QDEL_NULL(tacmap)
-
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
-
 	if(!configuration)
 		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return

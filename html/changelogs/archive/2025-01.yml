@@ -469,3 +469,7 @@
       fax department, or to any individual fax in that department.
   - maptweak: Adds in the Fax Responder listening intercomms that I apparently deleted
       elsewhere.
+2025-01-27:
+  BOBAMAx:
+  - rscadd: Roundstart Xenomorph players will now burst out of map-specific bodies
+      instead of generic ones

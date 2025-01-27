@@ -147,6 +147,8 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
 
+	damage_armor_punch = 1.5
+
 /datum/ammo/bullet/revolver/mateba/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))

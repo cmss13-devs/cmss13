@@ -20,6 +20,9 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = 0
 
+	pen_armor_punch = 1.5
+	damage_armor_punch = 1.5
+
 /datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M

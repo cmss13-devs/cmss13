@@ -312,13 +312,16 @@ const Range = (props) => {
 
 const ArmourPen = (props) => {
   const { data } = useBackend();
-  const { penetration, penetration_max } = data;
+  const { penetration, penetration_max, armor_punch, punch_max } = data;
   return (
     <>
       <ProgressBar value={penetration / penetration_max} ranges={RedGreenRange}>
         Armour penetration: {penetration} / {penetration_max}
       </ProgressBar>
       <Box height="5px" />
+      <ProgressBar value={armor_punch / punch_max} ranges={RedGreenRange}>
+        Armour punch: {armor_punch} / {punch_max}
+      </ProgressBar>
     </>
   );
 };
@@ -328,7 +331,9 @@ const DamageTable = (props) => {
   const {
     damage_armor_profile_marine,
     damage_armor_profile_xeno,
+    damage_armor_profile_armorbreak,
     damage_armor_profile_headers,
+    glob_armourbreak,
   } = data;
   return (
     <Section title="Damage table">
@@ -355,6 +360,14 @@ const DamageTable = (props) => {
             <Table.Cell key={i}>{entry}</Table.Cell>
           ))}
         </Table.Row>
+        {!glob_armourbreak ? (
+          <Table.Row>
+            <Table.Cell textAlign="left">Armor break</Table.Cell>
+            {map(damage_armor_profile_armorbreak, (entry, i) => (
+              <Table.Cell key={i}>{entry}</Table.Cell>
+            ))}
+          </Table.Row>
+        ) : null}
       </Table>
     </Section>
   );

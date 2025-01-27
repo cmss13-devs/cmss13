@@ -48,12 +48,16 @@
 	penetration= ARMOR_PENETRATION_TIER_8
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+	pen_armor_punch = 0.5
+
 /datum/ammo/bullet/pistol/ap/penetrating
 	name = "wall-penetrating pistol bullet"
 	shrapnel_chance = 0
 
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
+
+	damage_armor_punch = 0.5
 
 /datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
 	. = ..()
@@ -129,6 +133,8 @@
 	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
+
+	damage_armor_punch = 1
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
 	name = "high-impact pistol bullet"

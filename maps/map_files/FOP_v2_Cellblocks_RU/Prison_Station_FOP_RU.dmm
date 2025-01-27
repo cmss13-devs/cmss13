@@ -20093,7 +20093,6 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/monorail/west)
 "bsn" = (
-/obj/structure/prop/invuln/lattice_prop,
 /obj/structure/grille,
 /turf/open/space,
 /area/space)
@@ -22191,11 +22190,6 @@
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/prison/hallway/east)
-"bAP" = (
-/obj/structure/grille,
-/obj/structure/prop/invuln/lattice_prop,
-/turf/open/space,
-/area/space)
 "bAQ" = (
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/prison/hallway/east)
@@ -24219,7 +24213,6 @@
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/hangar_barracks)
 "bIb" = (
-/obj/structure/prop/invuln/lattice_prop,
 /obj/structure/monorail,
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -34536,13 +34529,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/east,
 /area/prison/security/monitoring/medsec/central)
-"cvj" = (
-/obj/structure/monorail{
-	dir = 4
-	},
-/obj/structure/prop/invuln/lattice_prop,
-/turf/open/space,
-/area/space)
 "cvk" = (
 /obj/structure/monorail{
 	dir = 4
@@ -35359,7 +35345,6 @@
 /obj/structure/monorail{
 	dir = 6
 	},
-/obj/structure/prop/invuln/lattice_prop,
 /obj/structure/disposalpipe/segment,
 /turf/open/space,
 /area/space)
@@ -35388,18 +35373,10 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison/darkred2/northwest,
 /area/prison/security/monitoring/medsec/south)
-"cyS" = (
-/obj/structure/monorail{
-	dir = 6
-	},
-/obj/structure/prop/invuln/lattice_prop,
-/turf/open/space,
-/area/space)
 "cyT" = (
 /obj/structure/monorail{
 	dir = 9
 	},
-/obj/structure/prop/invuln/lattice_prop,
 /obj/structure/disposalpipe/segment,
 /turf/open/space,
 /area/space)
@@ -46741,7 +46718,6 @@
 /obj/structure/grille{
 	destroyed = 1
 	},
-/obj/structure/prop/invuln/lattice_prop,
 /turf/open/space,
 /area/space)
 "nQD" = (
@@ -51320,13 +51296,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/residential/nw)
-"sLI" = (
-/obj/structure/prop/invuln/lattice_prop,
-/obj/structure/monorail{
-	dir = 6
-	},
-/turf/open/space,
-/area/space)
 "sMm" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -68829,7 +68798,7 @@ aAO
 aAO
 aAO
 acL
-aAO
+acL
 aAO
 aAO
 aAO
@@ -69042,7 +69011,7 @@ aAO
 aAO
 aAO
 csR
-aAO
+acL
 aAO
 aAO
 aAO
@@ -69252,12 +69221,12 @@ aAO
 aAO
 aAO
 aAO
-aAO
-aAO
-aAO
-aAO
-aAO
-aAO
+acL
+acL
+acL
+acL
+acL
+acL
 aAO
 aAO
 aAO
@@ -69419,34 +69388,34 @@ bkW
 bqK
 wWB
 bsn
-btd
-btd
-btd
-btd
-btd
-btd
-btd
-btd
-btd
-btd
-btd
-bDE
-bDE
-bDE
-bDE
-btd
-btd
-btd
 bDE
 bDE
 bDE
 bDE
 bDE
 bDE
-btd
-btd
-btd
-btd
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
 bTP
 bVa
 nZF
@@ -69459,17 +69428,17 @@ bTP
 bVa
 bWH
 pno
-bYJ
+bTP
 aAO
 aAO
 xwy
 bDE
 bDE
-btd
-btd
-btd
-btd
-btd
+bDE
+bDE
+bDE
+bDE
+bDE
 con
 aAO
 aAO
@@ -69675,13 +69644,13 @@ gDZ
 hEQ
 aAO
 aAO
-aAO
-aAO
-aAO
-aAO
-aAO
-aAO
-aAO
+acL
+acL
+acL
+acL
+acL
+acL
+acL
 coo
 con
 aAO
@@ -69893,7 +69862,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+acL
 aAO
 coo
 con
@@ -70104,7 +70073,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+acL
 aAO
 aAO
 aAO
@@ -70315,7 +70284,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+acL
 aAO
 aAO
 aAO
@@ -70526,7 +70495,7 @@ aAO
 xwy
 aAO
 aAO
-aAO
+acL
 aAO
 aAO
 aAO
@@ -70738,7 +70707,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+acL
 aAO
 aAO
 aAO
@@ -70950,7 +70919,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+acL
 aAO
 aAO
 aAO
@@ -71161,8 +71130,8 @@ aAO
 aAO
 aAO
 aAO
-aAO
-aAO
+acL
+acL
 aAO
 aAO
 aAO
@@ -71373,8 +71342,8 @@ aAO
 aAO
 aAO
 aAO
-aAO
-aAO
+acL
+acL
 aAO
 aAO
 aAO
@@ -77775,7 +77744,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -77987,7 +77956,7 @@ acL
 acL
 acL
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -78199,7 +78168,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -80531,7 +80500,7 @@ czM
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -80743,7 +80712,7 @@ czM
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -80955,7 +80924,7 @@ czM
 acL
 acL
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -81167,7 +81136,7 @@ czM
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -81379,7 +81348,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -84983,7 +84952,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -85195,7 +85164,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -85407,7 +85376,7 @@ acL
 acL
 acL
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -85619,7 +85588,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -85831,7 +85800,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -87527,7 +87496,7 @@ cxl
 cxx
 cxz
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -87739,7 +87708,7 @@ cxl
 cxx
 cxz
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -87951,7 +87920,7 @@ cxl
 cxx
 cxz
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -88163,7 +88132,7 @@ cxn
 cxx
 cxz
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -88375,7 +88344,7 @@ cxn
 cxx
 cxz
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -91331,7 +91300,7 @@ aAO
 aAO
 acL
 acL
-aAO
+acL
 cnC
 cnD
 aAO
@@ -91543,7 +91512,7 @@ aAO
 aAO
 aAO
 acL
-sLI
+cnC
 cnD
 aAO
 aAO
@@ -93441,7 +93410,7 @@ aAO
 aAO
 acL
 acL
-aAO
+acL
 cnC
 cnD
 aAO
@@ -93651,9 +93620,9 @@ aAO
 aAO
 aAO
 aAO
-aAO
 acL
-cyS
+acL
+cnC
 cnD
 aAO
 aAO
@@ -96397,7 +96366,7 @@ cnu
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -96609,7 +96578,7 @@ cnu
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -96821,7 +96790,7 @@ cnu
 acL
 acL
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -97033,7 +97002,7 @@ cnu
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -97245,7 +97214,7 @@ cnu
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -99255,7 +99224,7 @@ aAO
 aAO
 aAO
 aAO
-aAO
+acL
 acL
 aAO
 aAO
@@ -101485,7 +101454,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -101697,7 +101666,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -101909,7 +101878,7 @@ acL
 acL
 acL
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -102121,7 +102090,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -102333,7 +102302,7 @@ aAO
 aAO
 aAO
 acL
-cvj
+cvk
 aAO
 aAO
 aAO
@@ -106951,7 +106920,7 @@ biU
 kgi
 cJg
 aXu
-bAP
+bsn
 bzS
 kPh
 wrb
@@ -106967,10 +106936,6 @@ uSr
 qJY
 gPd
 gRf
-btd
-btd
-btd
-btd
 bDE
 bDE
 bDE
@@ -106980,11 +106945,15 @@ bDE
 bDE
 bDE
 bDE
-btd
-btd
-btd
-btd
-btd
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
+bDE
 cnD
 aAO
 aAO
@@ -107375,7 +107344,7 @@ biU
 uYT
 baL
 aXt
-bAP
+bsn
 bzT
 bBd
 bBd

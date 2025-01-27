@@ -451,6 +451,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/decrypting = FALSE
 
 	timeleft = 3 MINUTES
+	timeleft = 3 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL
 
 	var/list/linked_decryption_towers
@@ -481,11 +482,16 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	.["can_disengage"] = FALSE
 
 /obj/structure/machinery/nuclearbomb/tech/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if(!ishuman(ui.user))
-		return
+	switch(action)
+		if("toggleNuke")
+			if(timing == -1)
+				return
+			if(timing)
+				to_chat(ui.user, SPAN_INFO("[src] is impossible to disengage now!"))
+				return
 
-	if(!allowed(ui.user))
-		to_chat(ui.user, SPAN_INFO("Access denied!"))
+
+	if(..())
 		return
 
 	switch(action)

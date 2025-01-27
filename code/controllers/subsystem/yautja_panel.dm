@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(yautja_panel)
 		target_player.sync()
 		target_ckey = target_player.ckey
 
-		if(!verify_superadmin() && (target_ckey == user.ckey))
+		if(!verify_superadmin(user) && (target_ckey == user.ckey))
 			to_chat(user, SPAN_WARNING("You cannot edit yourself!"))
 			return FALSE
 
@@ -221,7 +221,7 @@ SUBSYSTEM_DEF(yautja_panel)
 				to_chat(user, SPAN_WARNING("You cannot change the rank of this player, they are not in your clan!"))
 				log_debug("Target Clan: [target_yautja.clan_id], Needed Clan: [current_clan_id]")
 				return
-			if(!verify_superadmin() && ((target_yautja.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || (linked_client.clan_info.clan_rank <= target_yautja.clan_rank)))
+			if(!verify_superadmin(user) && ((target_yautja.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || (linked_client.clan_info.clan_rank <= target_yautja.clan_rank)))
 				to_chat(user, SPAN_WARNING("You can't target this person!"))
 				return
 			if(!target_yautja.clan_id)
@@ -229,7 +229,7 @@ SUBSYSTEM_DEF(yautja_panel)
 				return
 
 			var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
-			if(!verify_superadmin())
+			if(!verify_superadmin(user))
 				ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
 
 			var/datum/yautja_rank/chosen_rank
@@ -334,13 +334,13 @@ SUBSYSTEM_DEF(yautja_panel)
 			target_yautja.clan_ancillary = "None"
 
 		if("delete_player_data")
-			if(!verify_superadmin())
+			if(!verify_superadmin(user))
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
 
 		if("delete_clan")
-			if(!verify_superadmin())
+			if(!verify_superadmin(user))
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
@@ -368,7 +368,6 @@ SUBSYSTEM_DEF(yautja_panel)
 	data["clans"] = list()
 
 	data["clans"] += list(populate_clan(CLAN_NAME_CLANLESS, null))
-	data["clans"] += list(populate_clan(CLAN_NAME_CLANLESS, 0))
 	var/list/datum/view_record/clan_view/clan_list = DB_VIEW(/datum/view_record/clan_view/)
 	for(var/datum/view_record/clan_view/viewed_clan in clan_list)
 		data["clans"] += list(populate_clan("[viewed_clan.name]", viewed_clan.clan_id))

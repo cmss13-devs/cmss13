@@ -434,7 +434,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 10 MINUTES
+	var/decryption_time = 3 MINUTES
 	var/decryption_end_time = null
 	var/decrypting = FALSE
 
@@ -525,6 +525,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 					//remove signal handlers
 					decryption_end_time = null
 					announce_to_players()
+					decryption_time = min(initial(decryption_time), decryption_time + 2 MINUTES)
 					message_admins("[src]'s encryption process has been deactivated by [key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)]")
 				playsound(loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
@@ -539,9 +540,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	if(world.time > decryption_end_time)
 		decrypting = FALSE
 		decryption_time = 0
-		announce_to_players(NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
+		announce_to_players()
 		timer_announcements_flags &= ~NUKE_DECRYPT_SHOW_TIMER_COMPLETE
-		return PROCESS_KILL
+		return
 
 	if(!timer_announcements_flags)
 		return
@@ -558,7 +559,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			return
 
 /obj/structure/machinery/nuclearbomb/tech/announce_to_players(timer_warning)
-	if(!decryption_time && (timer_warning != NUKE_DECRYPT_SHOW_TIMER_COMPLETE))
+	if(!decryption_time)
 		return ..()
 
 	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
@@ -574,20 +575,6 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			humans_other -= current_mob
 
 	if(timer_warning)
-		if(timer_warning == NUKE_DECRYPT_SHOW_TIMER_COMPLETE)
-			announcement_helper("DECRYPTION COMPLETE", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
-			announcement_helper("DECRYPTION COMPLETE", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
-
-			yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nThe human purification device is able to be activated."))
-
-			var/datum/hive_status/hive
-			for(var/hivenumber in GLOB.hive_datum)
-				hive = GLOB.hive_datum[hivenumber]
-				if(!length(hive.totalXenos))
-					return
-				xeno_announcement(SPAN_XENOANNOUNCE("We get a sense of impending doom... the hive killer is ready to be activated. Our only chance now is to disable the device itself."), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
-			return
-
 		announcement_helper("DECRYPTION IN [floor(decryption_time/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 		announcement_helper("DECRYPTION IN [floor(decryption_time/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 
@@ -621,7 +608,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have started the initial phase of a hive killer at [get_area_name(loc)]! You have about [time_left] to destroy at least one of their communications relays!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 		return
 
-	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
+	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.\n\nUnexpected decryption shutdown has led to data loss.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_uscm, 'sound/misc/notice1.ogg')
 	announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE DECRYPTION HALTED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
 	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human purification device's signature has disappeared."))
 	for(var/hivenumber in GLOB.hive_datum)
@@ -630,6 +617,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The hive killer's initial phase has been halted! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
+
 /obj/structure/machinery/nuclearbomb/tech/proc/connected_comm_shutdown(obj/structure/machinery/telecomms/relay/preset/tower/telecomm_unit)
 	SIGNAL_HANDLER
 
@@ -637,4 +625,15 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		return
 
 	decrypting = FALSE
+	decryption_time = min(initial(decryption_time), decryption_time + 2 MINUTES)
 	announce_to_players()
+
+/obj/structure/machinery/nuclearbomb/tech/attack_hand(mob/user as mob)
+	if(!decrypting || !isqueen(user))
+		return ..()
+	user.visible_message(SPAN_INFO("[user] begins engulfing \the [src] with resin."), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
+	if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		decrypting = FALSE
+		decryption_time = initial(decryption_time)
+		announce_to_players()
+	return

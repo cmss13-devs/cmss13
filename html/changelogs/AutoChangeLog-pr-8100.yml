@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - code_imp: "Moved vars as debrised, hull, burnable, burnt, breakable, broken to turf_flags as TURF_DEBRISED, TURF_HULL, TURF_BURNABLE, TURF_BURNT, TURF_BREAKABLE, TURF_BROKEN"

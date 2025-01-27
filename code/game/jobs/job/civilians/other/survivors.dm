@@ -180,13 +180,13 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_COMMANDER
 	job_options = null
+	total_positions_so_far = 0
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
-	var/spawn_count = 0
 	if(length(CO_survivor_types))
-		spawn_count = 1
-	return spawn_count
+		total_positions_so_far = 1
+	return total_positions_so_far
 
 /datum/job/civilian/survivor/commanding_officer/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
 	if(picked_spawner.CO_equipment)

@@ -179,9 +179,7 @@
 	icon_state = "xgibdown1"
 	},
 /obj/item/stack/sheet/metal,
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/cellblock/highsec/north/south)
 "mz" = (
 /turf/closed/wall/r_wall/prison,
@@ -240,9 +238,7 @@
 	icon_state = "coil1";
 	name = "cable piece"
 	},
-/turf/open/floor/prison{
-	icon_state = "damaged2"
-	},
+/turf/open/floor/prison/damaged2,
 /area/prison/security/checkpoint/highsec/n)
 "nP" = (
 /obj/structure/window_frame/prison/reinforced,

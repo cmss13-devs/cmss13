@@ -1,6 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - balance: "Statistically the m46c is now equal to the mk1 and should be kept this way."
-  - balance: "The co can no longer remove the ID lock from his rifle."
-  - balance: "The m46c can now use full auto while IFF is enabled"

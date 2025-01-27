@@ -11,7 +11,7 @@
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
 	minimap_icon = "cl"
-	minimap_background = "background_civillian"
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/wy/New()
 	. = ..()
@@ -32,6 +32,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_TRAINEE
 	rank = JOB_TRAINEE
+	minimap_icon = "trainee"
 	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
@@ -43,6 +44,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_JUNIOR_EXECUTIVE
 	rank = JOB_JUNIOR_EXECUTIVE
+	minimap_icon = "junior_exec"
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec
@@ -57,6 +59,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SENIOR_EXECUTIVE
 	rank = JOB_SENIOR_EXECUTIVE
+	minimap_icon = "senior_exec"
 	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec
@@ -64,6 +67,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	rank = JOB_EXECUTIVE_SPECIALIST
+	minimap_icon = "exec_spec"
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer
@@ -86,6 +90,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	rank = JOB_EXECUTIVE_SUPERVISOR
+	minimap_icon = "exec_super"
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
@@ -108,6 +113,7 @@
 	skills = /datum/skills/civilian/manager
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
+	minimap_background = "background_wy_management"
 
 /datum/equipment_preset/wy/manager/New()
 	. = ..()
@@ -125,6 +131,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_ASSISTANT_MANAGER
 	rank = JOB_ASSISTANT_MANAGER
+	minimap_icon = "ass_man"
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/division_manager
@@ -132,6 +139,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	rank = JOB_DIVISION_MANAGER
+	minimap_icon = "div_man"
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive
@@ -139,6 +147,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	rank = JOB_CHIEF_EXECUTIVE
+	minimap_icon = "chief_man"
 	paygrades = list(PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive/New()
@@ -150,6 +159,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	rank = JOB_DIRECTOR
+	minimap_icon = "director"
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director

@@ -508,6 +508,12 @@
 	healthcheck()
 	return XENO_ATTACK_ACTION
 
+/obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/M)
+	if(electrified && !cut)
+		electrocute_mob(M, get_area(breaker_switch), src, 0.75)
+	return ..()
+
+
 //Slashin mirrors
 /obj/structure/mirror/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
@@ -856,11 +862,11 @@
 	return attack_hand(M)
 
 /obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!is_lit)
-		to_chat(M, "Why bother? It's just some weird metal thing.")
+	if(!is_on)
+		to_chat(M, SPAN_WARNING("Why bother? It's just some weird metal thing."))
 		return XENO_NO_DELAY_ACTION
 	if(damaged)
-		to_chat(M, "It's already damaged.")
+		to_chat(M, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
@@ -873,8 +879,6 @@
 
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
-
-
 
 //Digging up snow
 /turf/open/snow/attack_alien(mob/living/carbon/xenomorph/M)

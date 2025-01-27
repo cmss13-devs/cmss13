@@ -119,17 +119,11 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 
 	add_fingerprint(usr)
 
-
-/obj/structure/machinery/computer/aa_console/attack_hand(mob/user)
-	. = ..()
-	tgui_interact(user)
-
-
 // based on big copypasta from the orbital console
 // the obvious improvement here is to port to nanoui but i'm too lazy to do that from the get go
 /obj/structure/machinery/computer/aa_console/attack_hand(mob/user)
 	if(..())
-		return
+		return TRUE
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
@@ -138,3 +132,6 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("You do not have access to this."))
 		return TRUE
+
+	tgui_interact(user)
+	return TRUE

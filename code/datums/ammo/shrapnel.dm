@@ -6,24 +6,26 @@
 /datum/ammo/bullet/shrapnel
 	name = "shrapnel"
 	icon_state = "buckshot"
-	accurate_range_min = 5
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
-
-	accuracy = HIT_ACCURACY_TIER_3
-	accurate_range = 32
-	max_range = 8
-	damage = 25
-	damage_var_low = -PROJECTILE_VARIANCE_TIER_6
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_4
+	accuracy = HIT_ACCURACY_TIER_4
+	accurate_range = 7
+	max_range = 10
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
-	shrapnel_chance = 5
 
 /datum/ammo/bullet/shrapnel/on_hit_obj(obj/O, obj/projectile/P)
 	if(istype(O, /obj/structure/barricade))
 		var/obj/structure/barricade/B = O
-		B.health -= rand(2, 5)
+		B.health -= rand(5, 10)
 		B.update_health(1)
+
+/datum/ammo/bullet/shrapnel/on_hit_mob(mob/living/carbon/xeno, obj/projectile/projectile, mob/user)
+	if(!shrapnel_chance) // no shrapnell , no special effects
+		return
+	if(isxeno(xeno))
+		xeno.apply_effect(4, SLOW) // multiple hits dont stack they just renew the duration
+		xeno.apply_armoured_damage(damage * 0.6, ARMOR_BULLET, BRUTE, , penetration) // xenos have a lot of HP
 
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
@@ -39,12 +41,12 @@
 	name = ".22 hornet round"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
-	damage = 8
+	damage = 10
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 	/// inflicts this many holo stacks per bullet hit
-	var/holo_stacks = 10
+	var/holo_stacks = 20
 	/// modifies the default cap limit of 100 by this amount
 	var/bonus_damage_cap_increase = 0
 	/// multiplies the default drain of 5 holo stacks per second by this amount
@@ -59,9 +61,8 @@
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
-
 	shell_speed = AMMO_SPEED_TIER_1
-	damage = 20
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
@@ -70,10 +71,22 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/shrapnel/neuro
+	name = "neurotoxin coated shrapnel"
+	icon_state = "neurotoxin"
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+
+	shell_speed = AMMO_SPEED_TIER_1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/mob, obj/projectile/projectile)
+	if(mob.slowed < 6)
+		mob.adjust_effect(0.8, SLOW)
+
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"
 	icon_state = "shrapnelshot_bit"
-	flags_ammo_behavior = AMMO_STOPPED_BY_COVER|AMMO_BALLISTIC
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 30
 	shrapnel_chance = 15

@@ -76,7 +76,7 @@
 	return
 
 /obj/item/device/m56d_gun/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user) || !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(QDELETED(O))
@@ -515,14 +515,21 @@
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
 
-/obj/structure/machinery/m56d_hmg/get_examine_text(mob/user)
-	. = ..()
-	. += "It is currently set to <b>[gun_firemode]</b>."
-
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
+
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
+/obj/structure/machinery/m56d_hmg/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client?.mouse_pointer_icon = new_cursor ? get_mouse_pointer() : initial(user.client?.mouse_pointer_icon)
+
+///Getter proc. Returns the weapon's crosshair icon.
+/obj/structure/machinery/m56d_hmg/proc/get_mouse_pointer()
+	return 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
@@ -556,6 +563,7 @@
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
 	if(ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		. += "It is currently set to <b>[gun_firemode]</b>."
 		if(rounds)
 			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
@@ -682,6 +690,7 @@
 /obj/structure/machinery/m56d_hmg/proc/exit_interaction()
 	SIGNAL_HANDLER
 
+	update_mouse_pointer(operator, FALSE)
 	operator.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/proc/update_damage_state()
@@ -923,6 +932,7 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 
 	operator = user
+	update_mouse_pointer(operator, TRUE)
 	flags_atom |= RELAY_CLICK
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
@@ -1035,7 +1045,7 @@
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	target = object
 	if(target)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), override = TRUE)
 
 /// Print how much ammo is left to chat
 /obj/structure/machinery/m56d_hmg/proc/display_ammo()

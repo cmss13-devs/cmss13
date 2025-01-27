@@ -344,6 +344,21 @@
 
 	show_browser(usr, "<TT>[str]</TT>", "Ticker Count", "tickercount")
 
+/client/proc/allow_browser_inspect()
+	set category = "Debug"
+	set name = "Allow Browser Inspect"
+	set desc = "Allow browser debugging via inspect"
+
+	if(!check_rights(R_DEBUG) || !isclient(src))
+		return
+
+	if(byond_version < 516)
+		to_chat(src, SPAN_WARNING("You can only use this on 516!"))
+		return
+
+	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
+	winset(src, "", "browser-options=byondstorage,find,devtools")
+
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)
 

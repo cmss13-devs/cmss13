@@ -43,7 +43,7 @@
 			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
-	..()
+	. = ..()
 
 /obj/structure/ex_act(severity, direction)
 	if(explo_proof)
@@ -233,3 +233,8 @@
 		return -1
 
 	return 4 SECONDS
+
+/obj/structure/Collided(atom/movable/AM)
+	..()
+	// NOTE: We aren't requiring a parent call to ensure this signal is sent
+	SEND_SIGNAL(src, COMSIG_STRUCTURE_COLLIDED, AM)

@@ -45,10 +45,6 @@
 	stat |= BROKEN
 	update_icon()
 
-/obj/structure/machinery/prop/almayer/computer/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/prop/almayer/computer/update_icon()
 	..()
 	icon_state = initial(icon_state)
@@ -119,7 +115,7 @@
 	faction = FACTION_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_PMC
+	minimap_type = MINIMAP_FLAG_WY
 	faction = FACTION_PMC
 
 //Nonpower using props
@@ -133,7 +129,7 @@
 /obj/structure/prop/almayer/minigun_crate
 	name = "30mm ammo crate"
 	desc = "A crate full of 30mm bullets used on one of the weapon pod types for the dropship. Moving this will require some sort of lifter."
-	icon = 'icons/obj/structures/props/dropship_ammo.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
 	icon_state = "30mm_crate"
 
 /obj/structure/prop/almayer/computers
@@ -150,37 +146,37 @@
 /obj/structure/prop/almayer/computers/mission_planning_system
 	name = "\improper MPS IV computer"
 	desc = "The Mission Planning System IV (MPS IV), an enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "mps"
 
 /obj/structure/prop/almayer/computers/mapping_computer
 	name = "\improper CMPS II computer"
 	desc = "The Common Mapping Production System version II allows for sensory input from satellites and ship systems to derive planetary maps in a standardized fashion for all USCM pilots."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "mapping_comp"
 
 /obj/structure/prop/almayer/computers/sensor_computer1
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp1"
 
 /obj/structure/prop/almayer/computers/sensor_computer2
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp2"
 
 /obj/structure/prop/almayer/computers/sensor_computer3
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp3"
 
 /obj/structure/prop/almayer/missile_tube
 	name = "\improper Mk 33 ASAT launcher system"
 	desc = "Cold launch tubes that can fire a few varieties of missiles out of them, the most common being the ASAT-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
-	icon = 'icons/obj/structures/props/almayer_props96.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props96.dmi'
 	icon_state = "missiletubenorth"
 	bound_width = 32
 	bound_height = 96
@@ -202,7 +198,7 @@
 /obj/structure/prop/almayer/name_stencil
 	name = "USS Almayer"
 	desc = "The name of the ship stenciled on the hull."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "almayer0"
 	density = FALSE //dunno who would walk on it, but you know.
 	unslashable = TRUE
@@ -211,7 +207,7 @@
 /obj/structure/prop/almayer/hangar_stencil
 	name = "floor"
 	desc = "A large number stenciled on the hangar floor used to designate which dropship it is."
-	icon = 'icons/obj/structures/props/almayer_props96.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props96.dmi'
 	icon_state = "dropship1"
 	density = FALSE
 	layer = ABOVE_TURF_LAYER
@@ -220,7 +216,7 @@
 /obj/structure/prop/almayer/cannon_cables
 	name = "\improper Cannon cables"
 	desc = "Some large cables."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "cannon_cables"
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -238,7 +234,7 @@
 /obj/structure/prop/almayer/cannon_cable_connector
 	name = "\improper Cannon cable connector"
 	desc = "A connector for the large cannon cables."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
 	density = TRUE
 	unslashable = TRUE
@@ -264,7 +260,7 @@
 /obj/structure/machinery/cryobag_recycler
 	name = "cryogenic bag recycler"
 	desc = "A small tomb like structure. Capable of taking in used and opened cryobags and refill the liner and attach new sealants."
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "recycler"
 
 	density = TRUE
@@ -274,7 +270,7 @@
 
 //What is this even doing? Why is it making a new item?
 /obj/structure/machinery/cryobag_recycler/attackby(obj/item/W, mob/user) //Hope this works. Don't see why not.
-	..()
+	. = ..()
 	if (istype(W, /obj/item))
 		if(W.name == "used stasis bag") //possiblity for abuse, but fairly low considering its near impossible to rename something without VV
 			var/obj/item/bodybag/cryobag/R = new /obj/item/bodybag/cryobag //lets give them the bag considering having it unfolded would be a pain in the ass.
@@ -283,7 +279,7 @@
 			qdel(W)
 			user.put_in_hands(R)
 			return TRUE
-	..()
+	. = ..()
 
 /obj/structure/closet/basketball
 	name = "athletic wardrobe"

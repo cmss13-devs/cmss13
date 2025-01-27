@@ -21,7 +21,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
-/obj/item/clothing/suit/storage/marine/light/fluff/Initialize(mapload)
+/obj/item/clothing/head/helmet/marine/fluff/Initialize(mapload)
 	. = ..()
 	item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
 
@@ -275,10 +275,10 @@
 	)
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "juggernaut armor"
-	desc = "Some fancy looking armor. DONOR ITEM"
-	icon_state = "skinnerarmor"
-	item_state = "skinnerarmor"
+	name = "Ranger Jacket"
+	desc = "An old Kevlar Jacket. DONOR ITEM"
+	icon_state = "hunkjacket"
+	item_state = "hunkjacket"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Trenchcoat"
@@ -387,10 +387,10 @@
 	icon_state = "bio_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Elite Combat Armor"
-	desc = "A combat armor with blood stains on it from previous battles.  UNIQUE DONOR ITEM"
-	icon_state = "hecuarmor_u"
-	item_state = "hecuarmor_u"
+	name = "M3 Blackout armor"
+	desc = "An all black armor that has been customized for night operations.  UNIQUE DONOR ITEM"
+	icon_state = "hunkarmor"
+	item_state = "hunkarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/limo //CKEY=limodish (UNIQUE)
 	name = "Blood-Red Hardsuit"
@@ -728,9 +728,10 @@
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "juggernaut helmet"
-	icon_state = "skinnerhelmet"
-	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
+	name = "Ranger Beret"
+	icon_state = "hunkberet"
+	item_state = "hunkberet"
+	desc = "An old dusty beret lined with Kevlar. DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
 	name = "Fancy Helmet"
@@ -816,9 +817,9 @@
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Elite Combat Helmet"
-	icon_state = "hecuhelm_u"
-	desc = "A combat helmet, bearing the scars of many battles. UNIQUE DONOR ITEM"
+	name = "M3 Blackout helmet"
+	icon_state = "hunkhelmet"
+	desc = "An all black custom M3 helmet designed for night operations. UNIQUE DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Helmet"
@@ -1245,11 +1246,39 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Black Fatigues"
-	desc = "Black camo Fatigues usually used on Night Operations.  UNIQUE DONOR ITEM."
-	icon_state = "hecu_u"
-	worn_state = "hecu_u"
-	flags_jumpsuit = FALSE
+	name = "Ranger Fatigues"
+	desc = "Black camo Fatigues usually used on night operations.  UNIQUE DONOR ITEM."
+	icon_state = "hunkuni"
+	worn_state = "hunkuni"
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "marine_jumpsuit",
+		WEAR_R_HAND = "marine_jumpsuit"
+	)
+
+/obj/item/clothing/under/marine/fluff/sas_elite/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/under/marine/fluff/leeeverett //CKEY=theflagbearer (UNIQUE)
 	name = "Rugged Outfit"
@@ -1486,8 +1515,8 @@
 /obj/item/clothing/mask/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Compact Gas Mask"
 	desc = "A compact Gas Mask with a pure red tint to it.  UNIQUE  DONOR ITEM."
-	item_state = "hecumask_u"
-	icon_state = "hecumask_u"
+	item_state = "hunkmask"
+	icon_state = "hunkmask"
 
 /obj/item/clothing/mask/fluff/limo //CKEY=limodish
 	name = "Swat Mask"
@@ -1621,11 +1650,34 @@
 	)
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "tactical radiopack"
-	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
-	icon_state = "skinnerpack"
-	item_state = "securitypack"
-	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	name = "Ranger Pack"
+	desc = "An old camelpack with pouches for extra space. DONOR ITEM"
+	icon_state = "hunkpack"
+	item_state = "hunkpack"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_state_slots = list(
+		WEAR_L_HAND = "marinepack",
+		WEAR_R_HAND = "marinepack"
+	)
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"

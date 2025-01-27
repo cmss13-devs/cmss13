@@ -266,7 +266,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		to_chat(linked_mob, SPAN_WARNING("[icon2html(src)] This area is too reinforced to enter."))
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(to_enter, /turf/closed/wall))
-		var/turf/closed/wall/W = to_enter
+	if(istype(crossing_turf, /turf/closed/wall))
+		var/turf/closed/wall/W = crossing_turf
 		if(W.turf_flags & TURF_HULL)
 			return COMPONENT_TURF_DENY_MOVEMENT

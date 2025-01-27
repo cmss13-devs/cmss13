@@ -10,8 +10,7 @@
 	baseturfs = /turf/open/openspace
 	plating_type = null
 
-	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
-	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
+	turf_flags = NO_FLAGS
 
 	var/health = 100
 

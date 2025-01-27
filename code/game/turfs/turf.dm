@@ -709,7 +709,7 @@
 /turf/proc/ceiling_debris_check(size = 1)
 	return
 
-/turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
+/turf/proc/ceiling_debris(size = 1)
 	if(turf_flags & TURF_DEBRISED)
 		return
 

@@ -1194,7 +1194,6 @@ and you're good to go.
 		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user)
 
 	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
-	projectile_to_fire?.ammo?.max_range += projectile_max_range_add
 
 	if(params) // Apply relative clicked position from the mouse info to offset projectile
 		if(!params["click_catcher"])
@@ -1253,7 +1252,7 @@ and you're good to go.
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	in_chamber = null // It's not in the gun anymore
-	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, null, damage_mult)
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range + projectile_max_range_add, bullet_velocity, original_target, null, damage_mult)
 	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

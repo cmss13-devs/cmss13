@@ -241,6 +241,7 @@
 		var/obj/projectile/P = new /obj/projectile(curloc, original_P.weapon_cause_data)
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type])
 		P.damage *= gun_damage_mult
+		P.ammo.max_range = original_P.ammo.max_range /// fix this
 		P.accuracy = floor(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
 		P.bonus_projectile_check = 2 //It's a bonus projectile!

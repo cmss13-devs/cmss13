@@ -9,6 +9,7 @@
 
 	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
 	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
+	log_game("MUTINY - [key_name(new_human)] became a [name]")
 
 /datum/equipment_preset/other/mutiny/mutineer/leader
 	name = "Mutineer Leader"
@@ -33,6 +34,7 @@
 
 	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Loyalist!"))
 	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a loyalist.<hr>"))
+	log_game("MUTINY - [key_name(new_human)] became a [name]")
 
 /datum/equipment_preset/other/mutiny/noncombat
 	name = "Non-Combatant"
@@ -45,3 +47,4 @@
 
 	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Non-Combatant!"))
 	to_chat(new_human, SPAN_DANGER("You are not to get involved in the mutiny. You can heal either side, but must not engage or be engaged in combat.<hr>"))
+	log_game("MUTINY - [key_name(new_human)] became a [name]")

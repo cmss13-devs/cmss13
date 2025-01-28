@@ -203,7 +203,7 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	M.nutrition = max(0, M.nutrition - 0.5 * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
@@ -461,7 +461,7 @@
 	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
+	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
 
 /datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, BRAIN)

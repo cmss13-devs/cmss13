@@ -13,6 +13,8 @@
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
 	var/handle_pill_bottle_status = 0
 
+	var/list/vendor_failsafe = list()
+
 	var/mob/living/carbon/human/realistic_dummy/marine_dummy
 	var/obj/limb/chest/mob_chest
 
@@ -59,17 +61,18 @@
 	medical_vendor.req_access = list()
 	RegisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(uniform_vend))
 
-/datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/uniform_vend(datum/source)
+/datum/tutorial/marine/role_specific/hospital_corpsman_intermediate/proc/uniform_vend(datum/source, obj/structure/machinery/cm_vending/vendor, obj/item/new_item)
 	SIGNAL_HANDLER
 
 	clothing_items_to_vend--
+	vendor_failsafe |= new_item
 	if(clothing_items_to_vend <= 0)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial/medic/advanced, medical_vendor)
 		UnregisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 		medical_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 		remove_highlight(medical_vendor)
 
-		var/obj/item/storage/belt/medical/lifesaver/medbelt = locate(/obj/item/storage/belt/medical/lifesaver) in tutorial_mob.contents
+		var/obj/item/storage/belt/medical/lifesaver/medbelt = locate(/obj/item/storage/belt/medical/lifesaver) in vendor_failsafe
 		add_to_tracking_atoms(medbelt)
 		var/obj/item/device/healthanalyzer/healthanalyzer = new(loc_from_corner(0, 4))
 		add_to_tracking_atoms(healthanalyzer)

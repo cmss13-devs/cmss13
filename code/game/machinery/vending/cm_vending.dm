@@ -1363,10 +1363,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		if(islist(prod_type))
 			for(var/each_type in prod_type)
 				vendor_successful_vend_one(each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM, stack_amount)
-				SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
 		else
 			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM, stack_amount)
-			SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
 
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
@@ -1428,6 +1426,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 
 	new_item.post_vendor_spawn_hook(user)
+
+	SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, new_item, user)
 
 /obj/structure/machinery/cm_vending/proc/handle_vend(list/listed_products, mob/living/carbon/human/vending_human)
 	if(vend_flags & VEND_USE_VENDOR_FLAGS)

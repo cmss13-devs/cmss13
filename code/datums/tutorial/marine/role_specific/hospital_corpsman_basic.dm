@@ -12,7 +12,7 @@
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
 	var/handle_pill_bottle_status = 0
 
-	var/list/vendor_failsafe
+	var/list/vendor_failsafe = list()
 
 // ------------ CONTENTS ------------ //
 //
@@ -54,13 +54,11 @@
 	medical_vendor.req_access = list()
 	RegisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(uniform_vend))
 
-/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform_vend(datum/source, obj/structure/machinery/cm_vending/vendor, list/itemspec)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform_vend(datum/source, obj/structure/machinery/cm_vending/vendor, obj/item/new_item)
 	SIGNAL_HANDLER
 
 	clothing_items_to_vend--
-	var/list/vendedlist = listgetindex(itemspec,3)
-	for(var/obj/vended_item in vendedlist)
-		vendor_failsafe |= vended_item
+	vendor_failsafe |= new_item
 	if(clothing_items_to_vend <= 0)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial/medic, medical_vendor)
 		UnregisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)

@@ -26,7 +26,7 @@
 
 /datum/entity_meta/round_caste_picks/New()
 	. = ..()
-	for(var/caste_name in (ALL_XENO_CASTES - XENO_T0_CASTES))
+	for(var/caste_name in (ALL_XENO_CASTES - XENO_T0_CASTES - XENO_CASTE_HELLHOUND - XENO_CASTE_KING))
 		field_types[lowertext(replacetext(caste_name, " ", "_"))] = DB_FIELDTYPE_INT
 
 /datum/entity_meta/round_caste_picks/map(datum/entity/round_caste_picks/entity, list/values)

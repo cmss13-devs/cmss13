@@ -1,4 +1,4 @@
-/datum/tutorial/marine/hospital_corpsman_basic
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic
 	name = "Marine - Hospital Corpsman (Basic)"
 	desc = "Learn the basic skills required of a Marine Hospital Corpsman."
 	tutorial_id = "marine_hm_1"
@@ -11,6 +11,8 @@
 
 	/// For use in the handle_pill_bottle helper, should always be set to 0 when not in use
 	var/handle_pill_bottle_status = 0
+
+	var/list/vendor_failsafe
 
 // ------------ CONTENTS ------------ //
 //
@@ -30,7 +32,7 @@
 // 2.4 Overdoses
 //
 
-/datum/tutorial/marine/hospital_corpsman_basic/start_tutorial(mob/starting_mob)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
 		return
@@ -39,7 +41,7 @@
 	message_to_player("This tutorial will teach you the fundamental skills for playing as a Marine Hospital Corpsman.")
 	addtimer(CALLBACK(src, PROC_REF(uniform)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/uniform()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform()
 
 	message_to_player("<b>Section 0 - Equipment and You</b>.")
 
@@ -52,17 +54,20 @@
 	medical_vendor.req_access = list()
 	RegisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(uniform_vend))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/uniform_vend(datum/source)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/uniform_vend(datum/source, obj/structure/machinery/cm_vending/vendor, list/itemspec)
 	SIGNAL_HANDLER
 
 	clothing_items_to_vend--
+	var/list/vendedlist = listgetindex(itemspec,3)
+	for(var/obj/vended_item in vendedlist)
+		vendor_failsafe |= vended_item
 	if(clothing_items_to_vend <= 0)
 		TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial/medic, medical_vendor)
 		UnregisterSignal(medical_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND)
 		medical_vendor.req_access = list(ACCESS_TUTORIAL_LOCKED)
 		remove_highlight(medical_vendor)
 
-		var/obj/item/storage/belt/medical/lifesaver/medbelt = locate(/obj/item/storage/belt/medical/lifesaver) in tutorial_mob.contents
+		var/obj/item/storage/belt/medical/lifesaver/medbelt = locate(/obj/item/storage/belt/medical/lifesaver) in vendor_failsafe
 		add_to_tracking_atoms(medbelt)
 		add_highlight(medbelt, COLOR_GREEN)
 
@@ -73,7 +78,7 @@
 		addtimer(CALLBACK(src, PROC_REF(scanner)), 13 SECONDS)
 
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/scanner()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/scanner()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/storage/belt/medical/lifesaver, medbelt)
@@ -87,7 +92,7 @@
 	update_objective("Pick up the Health Analyzer.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(scanner_2))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/scanner_2()
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -96,7 +101,7 @@
 	message_to_player("You can use your <b>Health Analyzer</b> on wounded Marines to see the locations, severity, and types of damage they have sustained.")
 	addtimer(CALLBACK(src, PROC_REF(medihud)), 8 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/medihud()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/medihud()
 
 	message_to_player("Next, you should get to know a Medics second best friend on the field, the <b>HealthMate HUD</b>.")
 	message_to_player("The <b>HealthMate HUD</b> is an extremely useful device that fits over one eye, allowing you to scan anyones condition at a glance.")
@@ -109,7 +114,7 @@
 
 	RegisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(medihud_2))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/medihud_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/medihud_2()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_EQUIPPED_ITEM)
@@ -123,7 +128,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial)), 16 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial()
 
 	message_to_player("<b>Section 1: Basic Damage Treatment</b>")
 	message_to_player("<b>Section 1.1: Brute Damage</b>")
@@ -131,7 +136,7 @@
 	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 15 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_2(datum/source, obj/item/device/healthanalyzer)
 	SIGNAL_HANDLER
 
 	marine_dummy = new(loc_from_corner(2,2))
@@ -143,7 +148,7 @@
 	update_objective("Click on the Dummy with your Health Analyzer")
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(scanner_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/scanner_3(datum/source, mob/living/carbon/human/attacked_mob)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/scanner_3(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
 	if(attacked_mob == tutorial_mob)
@@ -157,14 +162,14 @@
 	message_to_player("<b>Bicaridine</b> is primarily given in pill form.")
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_3_pre)), 11 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_3_pre(obj/item/storage/pill_bottle)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_3_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	handle_pill_bottle(marine_dummy, "Bicaridine", "Bi", "11", /obj/item/reagent_container/pill/bicaridine)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(brute_tutorial_3_pre), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(brute_pill_fed))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_pill_fed()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_pill_fed()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL)
@@ -177,7 +182,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 9 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_4()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_4()
 	SIGNAL_HANDLER
 
 
@@ -195,7 +200,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_inject_self))
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(brute_tutorial_5_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_inject_self()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_inject_self()
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.rejuvenate()
 	living_mob.reagents.clear_reagents()
@@ -205,13 +210,13 @@
 	qdel(brute_injector)
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
 	//adds a slight grace period, so humans are not rejuved before bica is registered in their system
 
 	message_to_player("Well done!")
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_5)), 3 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_5()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5()
 	SIGNAL_HANDLER
 
 
@@ -233,7 +238,7 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(brute_tutorial_6))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_6()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_6()
 	SIGNAL_HANDLER
 
 
@@ -249,7 +254,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_7)), 14 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_7()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_7()
 	SIGNAL_HANDLER
 
 	var/obj/item/stack/medical/advanced/bruise_pack/brutekit = new(loc_from_corner(0, 4))
@@ -262,7 +267,7 @@
 	add_to_tracking_atoms(mob_chest)
 	RegisterSignal(mob_chest, COMSIG_LIMB_ADD_SUTURES, PROC_REF(brute_tutorial_8))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_8()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_8()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
@@ -277,7 +282,7 @@
 	message_to_player("Use the highlighted <b>zone selection</b> element on the bottom right of your HUD, and change your target to the <b>left arm</b> by clicking the left arm on the little man in the selection box")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_ZONE_SEL_CHANGE, PROC_REF(brute_tutorial_9))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/brute_tutorial_9(datum/source, zone_selected)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_9(datum/source, zone_selected)
 	SIGNAL_HANDLER
 
 	if(zone_selected != "l_arm")
@@ -292,7 +297,7 @@
 	add_to_tracking_atoms(mob_larm)
 	RegisterSignal(mob_larm, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/arm/l_arm, mob_larm)
@@ -322,7 +327,7 @@
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_2_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_pre(datum/source, obj/item/storage/pill_bottle)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_2_pre(datum/source, obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -332,7 +337,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_2_return)), 1 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_2_return()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_2_return()
 	SIGNAL_HANDLER
 
 	message_to_player("Unlike brute damage, <b>burn</b> damage is very rarely concentrated on one part of the body, more commonly spread across multiple limbs.")
@@ -344,7 +349,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(burn_tutorial_2_return), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(burn_tutorial_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_3()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_3()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
@@ -356,7 +361,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_4)), 11 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_4()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_4()
 	SIGNAL_HANDLER
 
 
@@ -375,7 +380,7 @@
 
 	RegisterSignal(mob_chest, COMSIG_LIMB_ADD_SUTURES, PROC_REF(burn_tutorial_5))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_5()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_5()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
@@ -395,7 +400,7 @@
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(burn_tutorial_6))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_6()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_6()
 	SIGNAL_HANDLER
 
 
@@ -415,7 +420,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(burn_inject_self))
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(burn_tutorial_7_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_inject_self()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_inject_self()
 	SIGNAL_HANDLER
 
 	var/mob/living/living_mob = tutorial_mob
@@ -427,7 +432,7 @@
 	qdel(burn_injector)
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_6)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
 	SIGNAL_HANDLER
 
 	//adds a slight grace period, so humans are not rejuved before kelo is registered in their system
@@ -443,7 +448,7 @@
 	message_to_player("Well done! This completes the basic damage treatments for brute and burn wounds.")
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial)), 3 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/bleed_tutorial()
 	message_to_player("<b>Section 1.3: Treating Bleeding</b>")
 	message_to_player("As you may have noticed earlier, severe brute damage injuries occasionally cause <b>bleeding</b> on the affected limb.")
 	message_to_player("The Human body carries a finite amount of blood, and losing blood will accumulate internal damage, eventually causing death if not treated.")
@@ -453,7 +458,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(bleed_tutorial_1)), 9 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial_1()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/bleed_tutorial_1()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	mob_chest.add_bleeding(damage_amount = 50)
@@ -464,7 +469,7 @@
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(bleed_tutorial_2))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/bleed_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/bleed_tutorial_2()
 	SIGNAL_HANDLER
 
 
@@ -483,7 +488,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 	RegisterSignal(mob_chest, COMSIG_LIMB_STOP_BLEEDING, PROC_REF(on_chest_bleed_stop))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/on_chest_bleed_stop(datum/source, external, internal)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/on_chest_bleed_stop(datum/source, external, internal)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
@@ -502,7 +507,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(shrapnel_tutorial)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/shrapnel_tutorial()
 	SIGNAL_HANDLER
 
 	message_to_player("<b>Section 1.4: Shrapnel Removal</b>")
@@ -513,39 +518,13 @@
 	add_to_tracking_atoms(knife)
 	add_highlight(knife, COLOR_GREEN)
 
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(shrapnel_tutorial_2))
+	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(shrapnel_tutorial_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/shrapnel_tutorial_3()
 	SIGNAL_HANDLER
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/attachable/bayonet, knife)
-	remove_highlight(knife)
-
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
-
-	message_to_player("When removing shrapnel from a patient, you must make sure that <b>Surgery Mode</b> is always <b>disabled</b> first.")
-	message_to_player("<b>Surgery Mode</b> is toggled on and off by clicking the highlighted button on the top left of your HUD. When it is highlighted <b>Green</b> it is <b>Enabled</b>.")
-	message_to_player("You must toggle this option off when removing shrapnel, otherwise you may accidentally create a surgical incision, which needs to be cauterized.")
-	message_to_player("Disable <b>Surgery Mode</b> by clicking the yellow and green highlighted button on the top left of your HUD")
-
-	var/datum/action/surgery_toggle = get_action(tutorial_mob, /datum/action/surgery_toggle)
-	add_to_tracking_atoms(surgery_toggle)
-	add_highlight(surgery_toggle.button)
-
-	RegisterSignal(surgery_toggle, COMSIG_LIVING_SURGERY_MODE_TOGGLED, PROC_REF(shrapnel_tutorial_3))
-
-/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_3(datum/action/source, mob/owner)
-	SIGNAL_HANDLER
-
-	if(tutorial_mob.mob_flags & SURGERY_MODE_ON)
-		return
-
-	remove_highlight(source.button)
-	UnregisterSignal(source, COMSIG_LIVING_SURGERY_MODE_TOGGLED)
-
-	message_to_player("Well done, keep surgery mode <b>Disabled</b> for the remainder of the tutorial.")
+	message_to_player("Well done!")
 	message_to_player("It seems that our friend Pvt Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
-
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/chest, mob_chest)
 
@@ -557,9 +536,8 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(shrapnel_tutorial_4))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/shrapnel_tutorial_4()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/shrapnel_tutorial_4()
 	SIGNAL_HANDLER
-
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -570,11 +548,11 @@
 	add_highlight(knife, COLOR_GREEN)
 
 	message_to_player("As you can see, the Health Analyzer is displaying the warning: <u>Recommend that the patient does not move - embedded objects.</u> This indicates that there is shrapnel somewhere in their body.")
-	message_to_player("To remove the shrapnel, keep Surgery Mode <b>Disabled</b>, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
+	message_to_player("To remove the shrapnel, make sure you are on the <b>Help Intent</b>, then click on the Dummy while holding the knife to remove their shrapnel.")
 
 	RegisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED, PROC_REF(splint_tutorial))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial()
 	SIGNAL_HANDLER
 
 	message_to_player("Well done! You have removed the Dummys shrapnel from their body.")
@@ -602,9 +580,8 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(splint_tutorial_2))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial_2()
 	SIGNAL_HANDLER
-
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
 
@@ -623,13 +600,14 @@
 	add_to_tracking_atoms(splint)
 	add_highlight(splint, COLOR_GREEN)
 
-	RegisterSignal(marine_dummy, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(splint_tutorial_3_pre))
+	RegisterSignal(tutorial_mob, COMSIG_HUMAN_SPLINT_APPLIED, PROC_REF(splint_tutorial_3_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_3_pre()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial_3_pre()
 	//cooldown to register splint application
+	UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SPLINT_APPLIED)
 	addtimer(CALLBACK(src, PROC_REF(splint_tutorial_3)), 1 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/splint_tutorial_3(/obj/limb/leg/l_leg, status)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/splint_tutorial_3(/obj/limb/leg/l_leg, status)
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/limb/leg/l_leg, mob_lleg)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/stack/medical/splint, splint)
@@ -654,14 +632,14 @@
 
 	addtimer(CALLBACK(src, PROC_REF(intermediate_damage_treatment)), 3 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/intermediate_damage_treatment()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/intermediate_damage_treatment()
 
 	message_to_player("<b>Section 2: Intermediate Damage Treatment</b>")
 	message_to_player("Now that you have a grasp on how to treat the most common forms of damage, it's time to tackle some more complex skills in the Hospital Corpsman arsenal.")
 
 	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 8 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/pain_tutorial()
 
 	message_to_player("<b>Section 2.1: Pain Levels</b>")
 	message_to_player("When treating the injuries of any patient, it is critical that you also manage their <b>Pain Levels</b>.")
@@ -672,7 +650,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_2)), 25 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/pain_tutorial_2()
 	SIGNAL_HANDLER
 
 	marine_dummy.adjustFireLoss(130)
@@ -682,7 +660,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(pain_tutorial_3_pre)), 7 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/pain_tutorial_3_pre()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/pain_tutorial_3_pre()
 	SIGNAL_HANDLER
 
 	handle_pill_bottle(marine_dummy, "Tramadol", "Tr", "5", /obj/item/reagent_container/pill/tramadol)
@@ -690,7 +668,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(pain_tutorial_3_pre), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(tram_pill_fed))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tram_pill_fed(/obj/item/reagent_container/hypospray/autoinjector/oxycodone)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tram_pill_fed(/obj/item/reagent_container/hypospray/autoinjector/oxycodone)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
@@ -708,7 +686,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject_self))
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(oxy_inject))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_inject_self()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_inject_self()
 	SIGNAL_HANDLER
 
 	var/mob/living/living_mob = tutorial_mob
@@ -721,14 +699,14 @@
 	qdel(oxy)
 	addtimer(CALLBACK(src, PROC_REF(tram_pill_fed)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_inject()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_inject()
 	//adds a slight grace period, so humans are not rejuved before oxy is registered in their system
 
 	message_to_player("Well done!")
 	message_to_player("<b>Section 2.2: Toxin Damage</b>")
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial)), 2 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial()
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
@@ -752,7 +730,7 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(tox_tutorial_2_pre))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_pre(obj/item/storage/pill_bottle)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial_2_pre(obj/item/storage/pill_bottle)
 	SIGNAL_HANDLER
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/device/healthanalyzer, healthanalyzer)
@@ -762,7 +740,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_2_return)), 1 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_2_return()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial_2_return()
 	SIGNAL_HANDLER
 
 	message_to_player("As you can see, the Dummy has sustained minor <b>Toxin Damage</b>. Like burn damage, toxin damage is almost always spread across the body.")
@@ -773,7 +751,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(tox_tutorial_2_return), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(dylo_pill_fed))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dylo_pill_fed()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/dylo_pill_fed()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
@@ -783,13 +761,13 @@
 
 	addtimer(CALLBACK(src, PROC_REF(tox_tutorial_3)), 8 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tox_tutorial_3()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tox_tutorial_3()
 	//adds a slight grace period, so humans are not rejuved before dylo is registered in their system
 
 	slower_message_to_player("<b>Section 2.3: Oxygen Damage</b>")
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial()
 
 	marine_dummy.rejuvenate()
 	marine_dummy.reagents.clear_reagents()
@@ -799,7 +777,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_1)), 6 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_1()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_1()
 
 	message_to_player("Oxygen Damage represents a lack of blood-flow to the Brain, and the bodys shutdown because of it.")
 	message_to_player("Oxygen Damage can be caused as a result of <b>Blood Loss, Internal Organ Damage</b>, and <b>Dying</b>.")
@@ -808,7 +786,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_2)), 15 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_2()
 	SIGNAL_HANDLER
 
 	marine_dummy.rejuvenate()
@@ -822,7 +800,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(oxy_tutorial_2), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(dex_pill_fed))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dex_pill_fed()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/dex_pill_fed()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
@@ -832,7 +810,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_4)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_4()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_4()
 
 	marine_dummy.rejuvenate()
 	marine_dummy.adjustOxyLoss(100)
@@ -842,7 +820,7 @@
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(oxy_tutorial_5))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_5(datum/source, mob/living/carbon/human/attacked_mob)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_5(datum/source, mob/living/carbon/human/attacked_mob)
 	SIGNAL_HANDLER
 
 	if(attacked_mob == tutorial_mob)
@@ -855,7 +833,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_6)), 6 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_6()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_6()
 	SIGNAL_HANDLER
 
 	message_to_player("A <b>Dexalin+ Autoinjector</b> has been placed into your <b>M276 Lifesaver Bag</b>.")
@@ -873,7 +851,7 @@
 
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(dexp_inject))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dexp_inject_self()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/dexp_inject_self()
 	SIGNAL_HANDLER
 
 	var/mob/living/living_mob = tutorial_mob
@@ -886,13 +864,13 @@
 	qdel(dexp)
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_5)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/dexp_inject()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/dexp_inject()
 	//adds a slight grace period, so humans are not rejuved before dexp is registered in their system
 
 	message_to_player("Well done!")
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_7)), 4 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/oxy_tutorial_7()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_tutorial_7()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use, dexp)
 	remove_highlight(dexp)
@@ -903,7 +881,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial)), 1 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial()
 	SIGNAL_HANDLER
 
 	message_to_player("<b>Section 2.4: Overdose Treatment</b>")
@@ -913,7 +891,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial_1)), 15 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_1()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_1()
 
 	message_to_player("All standard-issue Medical pills and autoinjectors will contain exactly <u>half the overdose amount</u> for their given chemical (with some exceptions).")
 	message_to_player("This means administering a Marine with two uses of the same pill or autoinjector in a short span of time will place them <u>just below the overdose amount</u>.")
@@ -921,7 +899,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial_2)), 16 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_2()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_2()
 	SIGNAL_HANDLER
 
 	marine_dummy.adjustBruteLoss(55)
@@ -938,7 +916,7 @@
 	add_highlight(healthanalyzer, COLOR_GREEN)
 	RegisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED, PROC_REF(od_tutorial_3))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_3()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_3()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(marine_dummy, COMSIG_LIVING_HEALTH_ANALYZED)
@@ -952,7 +930,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial_4)), 16 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_4()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_4()
 	SIGNAL_HANDLER
 
 	message_to_player("The effects of every overdose will have different methods of treatment depending on the chemical.")
@@ -963,7 +941,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(od_tutorial_5)), 20 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_5()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_5()
 	SIGNAL_HANDLER
 
 	handle_pill_bottle(marine_dummy, "Kelotane", "Kl", "2", /obj/item/reagent_container/pill/kelotane)
@@ -971,7 +949,7 @@
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_FAIL, PROC_REF(od_tutorial_5), TRUE)
 	RegisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN, PROC_REF(od_tutorial_6))
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/od_tutorial_6()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/od_tutorial_6()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(tutorial_mob, COMSIG_MOB_TUTORIAL_HELPER_RETURN)
@@ -1000,7 +978,7 @@
 * * pill Typepath of the pill to place into the pill bottle
 */
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/handle_pill_bottle(target, name, maptext, iconnumber, pill)
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/handle_pill_bottle(target, name, maptext, iconnumber, pill)
 	SIGNAL_HANDLER
 
 	if(handle_pill_bottle_status == 0)
@@ -1080,11 +1058,8 @@
 
 // Helpers End
 
-/datum/tutorial/marine/hospital_corpsman_basic/proc/tutorial_close()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/tutorial_close()
 	SIGNAL_HANDLER
-
-
-	UnregisterSignal(marine_dummy, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
 	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
 	message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
@@ -1093,12 +1068,12 @@
 
 	tutorial_end_in(15 SECONDS)
 
-/datum/tutorial/marine/hospital_corpsman_basic/init_mob()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/init_mob()
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/tutorial/fed)
 	tutorial_mob.set_skills(/datum/skills/combat_medic)
 
 
-/datum/tutorial/marine/hospital_corpsman_basic/init_map()
+/datum/tutorial/marine/role_specific/hospital_corpsman_basic/init_map()
 	var/obj/structure/machinery/cm_vending/clothing/tutorial/medic/medical_vendor = new(loc_from_corner(4, 4))
 	add_to_tracking_atoms(medical_vendor)

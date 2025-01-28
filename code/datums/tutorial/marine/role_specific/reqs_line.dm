@@ -9,7 +9,7 @@
 #define TUTORIAL_REQS_LINE_SURVIVAL_DIFFICULTY (1/3)
 
 /// Simulates the Requisitions Line experience for newcomers
-/datum/tutorial/marine/reqs_line
+/datum/tutorial/marine/role_specific/reqs_line
 	name = "Marine - Requistions Line"
 	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
 	icon_state = "cargotech"
@@ -130,7 +130,7 @@
 		/obj/item/ammo_magazine/rifle/xm51 = list("XM51 mag"),
 	)
 
-/datum/tutorial/marine/reqs_line/Destroy(force)
+/datum/tutorial/marine/role_specific/reqs_line/Destroy(force)
 	STOP_PROCESSING(SSfastobj, src)
 	kill_timers()
 	active_agent = null
@@ -140,7 +140,7 @@
 	qdel(line_cleaner)
 	return ..()
 
-/datum/tutorial/marine/reqs_line/init_map()
+/datum/tutorial/marine/role_specific/reqs_line/init_map()
 	var/obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial/attachies_vendor = new(loc_from_corner(2, 7))
 	add_to_tracking_atoms(attachies_vendor)
 	var/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend/tutorial/guns_vendor = new(loc_from_corner(3, 7))
@@ -161,7 +161,7 @@
 	RegisterSignal(guns_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(scan_table_for_items))
 	RegisterSignal(ammo_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(scan_table_for_items))
 
-/datum/tutorial/marine/reqs_line/init_mob()
+/datum/tutorial/marine/role_specific/reqs_line/init_mob()
 	. = ..()
 	arm_equipment(tutorial_mob, /datum/equipment_preset/uscm_ship/cargo)
 	// Remove their radio from CT preset
@@ -171,7 +171,7 @@
 	QDEL_NULL(headset)
 
 /// Refills all the vendors on stage updates so the player shouldn't run out of stock
-/datum/tutorial/marine/reqs_line/proc/restock_vendors()
+/datum/tutorial/marine/role_specific/reqs_line/proc/restock_vendors()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial, attachies_vendor)
 	restock_one_vendor(attachies_vendor)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend/tutorial, cargo_vendor)
@@ -180,12 +180,12 @@
 	restock_one_vendor(ammo_vendor)
 
 /// Refills a specific vendor to 99 items across the board
-/datum/tutorial/marine/reqs_line/proc/restock_one_vendor(obj/structure/machinery/cm_vending/vendor)
+/datum/tutorial/marine/role_specific/reqs_line/proc/restock_one_vendor(obj/structure/machinery/cm_vending/vendor)
 	for(var/list/vendspec in vendor.listed_products)
 		if(vendspec[2] >= 0)
 			vendspec[2] = 99
 
-/datum/tutorial/marine/reqs_line/process(delta_time)
+/datum/tutorial/marine/role_specific/reqs_line/process(delta_time)
 	if(stage == TUTORIAL_REQS_LINE_STAGE_SURVIVAL && !length(agents))
 		spawn_survival_wave()
 
@@ -198,7 +198,7 @@
 			agent_step(agent, EAST)
 
 /// Makes agents move on processing tick if they can. They check surroundings to ensure proper movement flow.
-/datum/tutorial/marine/reqs_line/proc/agent_step(mob/living/carbon/human/agent, dir)
+/datum/tutorial/marine/role_specific/reqs_line/proc/agent_step(mob/living/carbon/human/agent, dir)
 	var/turf/target_turf = get_step(agent, dir)
 	if(target_turf.density)
 		return FALSE
@@ -211,7 +211,7 @@
 	agent.Move(target_turf, dir)
 
 /// Creates a new agent with the given request list to queue in the line
-/datum/tutorial/marine/reqs_line/proc/spawn_agent(list/request = list(), name_prefix)
+/datum/tutorial/marine/role_specific/reqs_line/proc/spawn_agent(list/request = list(), name_prefix)
 	var/turf/target_turf = loc_from_corner(1, 2)
 	var/mob/living/carbon/human/dummy/agent = new(target_turf)
 	var/mob_name = "[name_prefix][random_name(agent.gender)]"
@@ -221,7 +221,7 @@
 	RegisterSignal(agent, COMSIG_PARENT_QDELETING, PROC_REF(clean_agent))
 
 /// Called to generate a new survival wave of agents
-/datum/tutorial/marine/reqs_line/proc/spawn_survival_wave()
+/datum/tutorial/marine/role_specific/reqs_line/proc/spawn_survival_wave()
 	survival_wave++
 	message_to_player("Wave [survival_wave]")
 	var/agents_to_spawn = min(max_survival_agents, 1 + survival_wave * TUTORIAL_REQS_LINE_SURVIVAL_DIFFICULTY * survival_difficulty)
@@ -231,7 +231,7 @@
 		spawn_survival_agent(round(items_requested))
 
 /// Called to generate a single agent and request
-/datum/tutorial/marine/reqs_line/proc/spawn_survival_agent(items_to_request)
+/datum/tutorial/marine/role_specific/reqs_line/proc/spawn_survival_agent(items_to_request)
 	var/list/request = list()
 	var/list/catalogue = list()
 	// We make a custom catalogue copy to increase weighting of already requested items;
@@ -245,7 +245,7 @@
 	spawn_agent(request, "Lv [survival_wave]. ")
 
 /// Called when an agent presents at the line window and needs to make a request
-/datum/tutorial/marine/reqs_line/proc/a_new_challenger_appears(turf/source, mob/living/carbon/human/challenger)
+/datum/tutorial/marine/role_specific/reqs_line/proc/a_new_challenger_appears(turf/source, mob/living/carbon/human/challenger)
 	SIGNAL_HANDLER
 	if(!(challenger in agents)) // Bob Vancelave NOT allowed
 		return
@@ -264,14 +264,14 @@
 	hint_timer = addtimer(CALLBACK(src, PROC_REF(send_hints)), 3 SECONDS, TIMER_STOPPABLE)
 
 /// Called when we need to remind the user of what we want served
-/datum/tutorial/marine/reqs_line/proc/remind_request()
+/datum/tutorial/marine/role_specific/reqs_line/proc/remind_request()
 	var/list/request = agents[active_agent]
 	var/speech = verbalize_request(request)
 	active_agent.say(speech)
 	remind_timer = addtimer(CALLBACK(src, PROC_REF(remind_request)), 15 SECONDS, TIMER_STOPPABLE)
 
 /// Transforms the list of required items by the agent into a string request for the user
-/datum/tutorial/marine/reqs_line/proc/verbalize_request(list/original_request)
+/datum/tutorial/marine/role_specific/reqs_line/proc/verbalize_request(list/original_request)
 	var/list/request = shuffle(original_request)
 	var/output_string = ""
 	var/counts = list() // Assoc list of how many are needed of each item
@@ -293,7 +293,7 @@
 	return output_string
 
 /// Triggered when an object is put on the table. The agent evaluates if that's something they want and reacts appropriately.
-/datum/tutorial/marine/reqs_line/proc/item_offered(turf/source, obj/item/item)
+/datum/tutorial/marine/role_specific/reqs_line/proc/item_offered(turf/source, obj/item/item)
 	SIGNAL_HANDLER
 	if(!active_agent)
 		return
@@ -324,13 +324,13 @@
 		make_agent_leave(success = TRUE)
 
 /// Re-scan the table/trade turf for any present items. We have to do this because items vended to the table do not move onto it.
-/datum/tutorial/marine/reqs_line/proc/scan_table_for_items(datum/source)
+/datum/tutorial/marine/role_specific/reqs_line/proc/scan_table_for_items(datum/source)
 	SIGNAL_HANDLER
 	var/turf/trade_turf = loc_from_corner(2, 6)
 	for(var/obj/item/item in trade_turf)
 		item_offered(source, item)
 
-/datum/tutorial/marine/reqs_line/proc/agent_pick_up(mob/agent, obj/item/item)
+/datum/tutorial/marine/role_specific/reqs_line/proc/agent_pick_up(mob/agent, obj/item/item)
 	// Actually pick the item up for the animation
 	agent.put_in_hands(item, drop_on_fail = FALSE)
 	playsound(agent, "rustle", 30)
@@ -338,7 +338,7 @@
 	agent.temp_drop_inv_item(item)
 	qdel(item)
 
-/datum/tutorial/marine/reqs_line/proc/make_agent_leave(success = FALSE)
+/datum/tutorial/marine/role_specific/reqs_line/proc/make_agent_leave(success = FALSE)
 	switch(stage)
 		if(TUTORIAL_REQS_LINE_STAGE_ATTACHIES)
 			INVOKE_ASYNC(src, PROC_REF(continue_stage_gearbox))
@@ -363,14 +363,14 @@
 	active_agent = null
 
 /// Cleanup when an agent reaches the exit
-/datum/tutorial/marine/reqs_line/proc/clean_agent(datum/source)
+/datum/tutorial/marine/role_specific/reqs_line/proc/clean_agent(datum/source)
 	SIGNAL_HANDLER
 	agents -= source
 	if(active_agent == source)
 		active_agent = null
 
 /// Cleanup the table and ground contents when an agent leaves the line
-/datum/tutorial/marine/reqs_line/proc/clean_items()
+/datum/tutorial/marine/role_specific/reqs_line/proc/clean_items()
 	var/turf/trade_turf = loc_from_corner(2, 6)
 	for(var/obj/item/item in trade_turf)
 		qdel(item)
@@ -379,7 +379,7 @@
 		qdel(item)
 
 /// Kills active timers to reset state
-/datum/tutorial/marine/reqs_line/proc/kill_timers()
+/datum/tutorial/marine/role_specific/reqs_line/proc/kill_timers()
 	if(remind_timer)
 		deltimer(remind_timer)
 		remind_timer = null
@@ -388,7 +388,7 @@
 		hint_timer = null
 
 /// Displays appropriate hints for the user based on tutorial stage
-/datum/tutorial/marine/reqs_line/proc/send_hints()
+/datum/tutorial/marine/role_specific/reqs_line/proc/send_hints()
 	switch(stage)
 		if(TUTORIAL_REQS_LINE_STAGE_ATTACHIES)
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial, attachies_vendor)
@@ -408,7 +408,7 @@
 			message_to_player("Seems the marine wanted ammo too. Grab some and high-toss it over to him, with <b>[retrieve_bind("toggle_high_throw_mode")]</b>.")
 			update_objective("Get the M41 Extended magazine and perform a high toss to give it to the forgetful marine.")
 
-/datum/tutorial/marine/reqs_line/start_tutorial(mob/starting_mob)
+/datum/tutorial/marine/role_specific/reqs_line/start_tutorial(mob/starting_mob)
 	. = ..()
 	if(!.)
 		return
@@ -423,7 +423,7 @@
 
 
 /// Called when the player is in position to start handling the line
-/datum/tutorial/marine/reqs_line/proc/user_in_position(turf/source, atom/movable/mover)
+/datum/tutorial/marine/role_specific/reqs_line/proc/user_in_position(turf/source, atom/movable/mover)
 	SIGNAL_HANDLER
 	if(mover != tutorial_mob)
 		return
@@ -432,7 +432,7 @@
 	var/list/request = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel)
 	spawn_agent(request)
 
-/datum/tutorial/marine/reqs_line/proc/continue_stage_gearbox()
+/datum/tutorial/marine/role_specific/reqs_line/proc/continue_stage_gearbox()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial, attachies_vendor)
 	remove_highlight(attachies_vendor)
 	message_to_player("Success!")
@@ -440,7 +440,7 @@
 	var/list/request = list(/obj/item/storage/box/guncase/lmg, /obj/item/explosive/grenade/high_explosive)
 	spawn_agent(request)
 
-/datum/tutorial/marine/reqs_line/proc/continue_stage_mixed()
+/datum/tutorial/marine/role_specific/reqs_line/proc/continue_stage_mixed()
 	loser_agent = active_agent
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend/tutorial, gear_vendor)
 	remove_highlight(gear_vendor)
@@ -449,7 +449,7 @@
 	var/list/request = list(/obj/item/attachable/gyro, /obj/item/storage/box/guncase/m41aMK1, /obj/item/explosive/grenade/high_explosive)
 	spawn_agent(request)
 
-/datum/tutorial/marine/reqs_line/proc/loser_got_the_item(turf/source, atom/movable/passer)
+/datum/tutorial/marine/role_specific/reqs_line/proc/loser_got_the_item(turf/source, atom/movable/passer)
 	SIGNAL_HANDLER
 	var/obj/item/prop/replacer/prop = passer
 	if(!istype(prop))
@@ -469,14 +469,14 @@
 		if(!length(request))
 			make_agent_leave(TRUE)
 
-/datum/tutorial/marine/reqs_line/proc/continue_stage_survival()
+/datum/tutorial/marine/role_specific/reqs_line/proc/continue_stage_survival()
 	mark_completed()
 	message_to_player("Success! You have completed the tutorial!")
 	update_objective("You have finished the tutorial! But there's more if you want to practice.")
 	addtimer(CALLBACK(src, PROC_REF(message_to_player), "You may stay to practice with random orders, or quit with the button at top left."), 3 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(engage_survival_mode)), 12 SECONDS)
 
-/datum/tutorial/marine/reqs_line/proc/engage_survival_mode()
+/datum/tutorial/marine/role_specific/reqs_line/proc/engage_survival_mode()
 	update_objective("Keep practicing with increasingly complex orders, or leave at any time with the button at top left.")
 	stage = TUTORIAL_REQS_LINE_STAGE_SURVIVAL
 

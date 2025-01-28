@@ -794,7 +794,7 @@
 	if(!check_plasma(200))
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
+	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
@@ -806,7 +806,7 @@
 
 		use_plasma(200)
 
-		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
+		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 

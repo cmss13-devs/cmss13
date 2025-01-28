@@ -380,8 +380,8 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
-						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"),
+						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"),
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 /obj/item/toy/bikehorn

@@ -146,15 +146,15 @@
 		if(active)
 			if(user.action_busy)
 				return
-			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
 			SPAN_NOTICE("You start disarming [src]."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 	else

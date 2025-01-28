@@ -235,7 +235,7 @@
 		affected_mob.coughedtime = world.time + 2 SECONDS
 		if(ishuman(affected_mob)) //Humans only to avoid issues
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				if(prob(50))
@@ -370,7 +370,7 @@
 		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 			affected_mob.coughedtime = world.time + next_cough
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				affected_mob.emote("cough")
@@ -565,7 +565,7 @@
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob)) //Coughing/gasping
 		affected_mob.coughedtime = world.time + 1.5 SECONDS
 		if(issynth(affected_mob))
-			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 			SPAN_DANGER("Your skin is sloughing off!"))
 		else
 			if(prob(50))

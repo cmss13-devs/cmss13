@@ -59,8 +59,8 @@
 	var/mutable_appearance/drool_applied_icon
 
 /datum/behavior_delegate/runner_acider/New()
-    . = ..()
-    drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi', "Acider Runner Walking")
+	. = ..()
+	drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi', "Acider Runner Walking")
 
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)
 	acid_amount += amount

@@ -187,9 +187,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
-"bW" = (
-/turf/template_noop,
-/area/lv759/outdoors/colony_streets/central_streets)
 "cg" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "souter_east";
@@ -2181,10 +2178,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/north_west_street)
-"Cf" = (
-/obj/structure/blocker/invisible_wall,
-/turf/closed/wall/hybrisa/marhsalls/unmeltable,
-/area/lv759/indoors/twe_souter_outpost/hangar)
 "CE" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -3118,9 +3111,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost/flight)
-"Vd" = (
-/turf/template_noop,
-/area/lv759/outdoors/colony_streets/north_street)
 "Vh" = (
 /turf/open/floor/hybrisa/metal/stripe_red/east,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -3675,7 +3665,7 @@ cV
 bQ
 br
 bc
-bW
+fZ
 "}
 (8,1,1) = {"
 Ak
@@ -3703,7 +3693,7 @@ bc
 bT
 bw
 bc
-bW
+fZ
 "}
 (9,1,1) = {"
 Ak
@@ -3731,7 +3721,7 @@ bc
 zo
 bB
 bc
-bW
+fZ
 "}
 (10,1,1) = {"
 Ak
@@ -3926,8 +3916,8 @@ MH
 Nf
 iw
 sN
-bW
-bW
+fZ
+fZ
 "}
 (17,1,1) = {"
 zZ
@@ -3954,8 +3944,8 @@ yr
 ha
 mv
 sN
-bW
-bW
+fZ
+fZ
 "}
 (18,1,1) = {"
 MX
@@ -3966,9 +3956,9 @@ Vs
 uz
 xl
 Zd
-Cf
-Cf
-Cf
+Zd
+Zd
+Zd
 Zd
 cg
 cg
@@ -3982,8 +3972,8 @@ Lh
 pn
 pn
 pn
-bW
-bW
+fZ
+fZ
 "}
 (19,1,1) = {"
 MX
@@ -4010,8 +4000,8 @@ uS
 uS
 sH
 xl
-bW
-bW
+fZ
+fZ
 "}
 (20,1,1) = {"
 MX
@@ -4038,8 +4028,8 @@ Rt
 Yy
 Zr
 xl
-bW
-bW
+fZ
+fZ
 "}
 (21,1,1) = {"
 fZ
@@ -4066,8 +4056,8 @@ yq
 Rt
 tD
 xl
-bW
-bW
+fZ
+fZ
 "}
 (22,1,1) = {"
 MX
@@ -4094,8 +4084,8 @@ Vl
 Rt
 Zr
 xl
-bW
-bW
+fZ
+fZ
 "}
 (23,1,1) = {"
 MX
@@ -4330,21 +4320,21 @@ MX
 uz
 xl
 xl
-Vd
-Vd
+fZ
+fZ
 xl
 xl
 xl
 xl
-Vd
-Vd
-Vd
-Vd
+fZ
+fZ
+fZ
+fZ
 Nj
 Nj
-Vd
-Vd
-bW
+fZ
+fZ
+fZ
 Nj
 Nj
 Nj

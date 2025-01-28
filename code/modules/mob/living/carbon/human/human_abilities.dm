@@ -498,8 +498,8 @@ CULT
 			chosen.join_mutiny(TRUE, MUTINY_MUTINEER)
 		converted.remove_from(human_owner)
 
-	human_owner.join_mutiny(TRUE, MUTINY_MUTINEER)
 	start_marine_mutiny(human_owner)
+	human_owner.join_mutiny(TRUE, MUTINY_MUTINEER)
 	remove_from(human_owner)
 
 /proc/start_marine_mutiny(mob/living/carbon/human/leader)
@@ -552,7 +552,7 @@ CULT
 			var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
 			XC.load_status(src)
 			return TRUE
-		else
+		if("REFUSE TO FIGHT")
 			var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
 			XC.load_status(src)
 			return TRUE

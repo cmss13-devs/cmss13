@@ -1,0 +1,4 @@
+author: "Noname995"
+delete-after: True
+changes:
+  - bugfix: "Молот СТ более не имеет нулевой КД атаки, спрайты СТ возвращены"

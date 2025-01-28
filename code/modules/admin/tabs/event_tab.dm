@@ -917,12 +917,15 @@
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.mob_flags & MUTINEER)
-			H.mob_flags &= ~MUTINEER
-			H.hud_set_squad()
+		if(H.mob_flags & MUTINY_MUTINEER)
+			H.mob_flags &= ~MUTINY_MUTINEER
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
 				A.remove_from(H)
+
+		H.mob_flags &= ~MUTINY_LOYALIST
+		H.mob_flags &= ~MUTINY_NONCOMBAT
+		H.hud_set_squad()
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"

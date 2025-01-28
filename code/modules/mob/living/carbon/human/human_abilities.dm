@@ -488,23 +488,71 @@ CULT
 	if(!can_use_action())
 		return
 
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/human_owner = owner
 
-	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(human_owner, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
-	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
-	var/datum/equipment_preset/other/mutineer/XC = new()
-
-	XC.load_status(H)
-	for(var/datum/action/human_action/activable/mutineer/mutineer_convert/converted in H.actions)
+	for(var/datum/action/human_action/activable/mutineer/mutineer_convert/converted in human_owner.actions)
 		for(var/mob/living/carbon/human/chosen in converted.converted)
-			XC.load_status(chosen)
-		converted.remove_from(H)
+			chosen.join_mutiny(TRUE, MUTINY_MUTINEER)
+		converted.remove_from(human_owner)
 
-	message_admins("[key_name_admin(H)] has begun the mutiny.")
-	remove_from(H)
+	start_marine_mutiny(human_owner)
+	remove_from(human_owner)
 
+/proc/start_marine_mutiny(mob/living/carbon/human/leader)
+	message_admins("[key_name_admin(leader)] has begun the mutiny.")
+	if(leader.faction == FACTION_MARINE)
+		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
+		set_security_level(SEC_LEVEL_RED, TRUE)
+
+	for(var/mob/living/carbon/human/person in GLOB.alive_human_list)
+		if(!person.client)
+			continue
+		if(person.faction != leader.faction)
+			continue
+		if(person.mob_flags & (MUTINY_MUTINEER|MUTINY_LOYALIST|MUTINY_NONCOMBAT))
+			continue
+
+		if(skillcheck(person, SKILL_POLICE, SKILL_POLICE_MAX) || (person.job in MUTINY_LOYALIST_ROLES) || (person.job in PROVOST_JOB_LIST))
+			person.join_mutiny(TRUE, MUTINY_LOYALIST)
+
+/mob/living/carbon/human/proc/join_mutiny(forced = FALSE, forced_side = MUTINY_MUTINEER)
+	if(job == JOB_WORKING_JOE)
+		return FALSE
+	if(forced)
+		switch(forced_side)
+			if(MUTINY_MUTINEER)
+				var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
+				XC.load_status(src)
+				return TRUE
+			if(MUTINY_LOYALIST)
+				var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
+				XC.load_status(src)
+				return TRUE
+			if(MUTINY_NONCOMBAT)
+				var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
+				XC.load_status(src)
+				return TRUE
+
+	var/options = list("MUTINEERS", "LOYALISTS", "REFUSE TO FIGHT")
+	if(job == JOB_SYNTH)
+		options -= "MUTINEERS"
+	switch(tgui_alert(src, "A mutiny has been started, with whom do you stand?", "Choose a Side", options))
+		if("MUTINEERS")
+			var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
+			XC.load_status(src)
+			return TRUE
+		if("LOYALISTS")
+			var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
+			XC.load_status(src)
+			return TRUE
+		if("REFUSE TO FIGHT")
+			var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
+			XC.load_status(src)
+			return TRUE
+	return FALSE
 
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button
 	name = "Cancel View"

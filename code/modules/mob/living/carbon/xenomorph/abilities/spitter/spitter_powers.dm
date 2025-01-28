@@ -70,6 +70,12 @@
 	var/datum/behavior_delegate/spitter_alchemist/alchemist = xeno.behavior_delegate
 	var/mob/living/carbon/carbon = target
 
+	if(!isxeno(xeno))
+		return
+
+	if(!istype(xeno.behavior_delegate, alchemist))
+		return
+
 	if(!action_cooldown_check())
 		return
 
@@ -79,13 +85,9 @@
 	if(get_dist(xeno, target) > 2)
 		return
 
-	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
-
-	if(ishuman(target) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
-		target_limb = carbon.get_limb("chest")
-
-
-	check_and_use_plasma_owner()
+	if(alchemist.producing_alchem)
+		to_chat(xeno, SPAN_XENOWARNING("We should wait until we've finished making chemicals!"))
+		return
 
 	var/list/turf/path = get_line(xeno, target, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
@@ -101,23 +103,26 @@
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
 
-	if(iscarbon(carbon) && !xeno.can_not_harm(carbon) && carbon.stat != DEAD)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] stabs [carbon] in the [target_limb ? target_limb.display_name : "chest"] with their tail!"), \
-	SPAN_XENOWARNING("We stab [carbon] in the [target_limb ? target_limb.display_name : "chest"] with our tail!"))
-	else
+	if(!iscarbon(target) && carbon.stat == DEAD)
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
-		apply_cooldown(cooldown_modifier = 0.2)
+		apply_cooldown(0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
 
+	if(xeno.can_not_harm(carbon) && ishuman(carbon)|| islarva(carbon)) // Don't want to try using on friendly humans or larva
+		return
+
+	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
+	if(ishuman(target) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+		target_limb = carbon.get_limb("chest")
+
 	alchemist.parse_final_alchem()
 	if(alchemist.final_alchem_reagent != null && alchemist.final_alchem_source != null)
-		to_chat(xeno, SPAN_XENOWARNING("We catalyze all our chemicals and inject them into [target]"))
 		if(isxeno(target))
 			var/mob/living/carbon/xenomorph/xenoid = target
 			alchemist.alchem_xeno_reaction(xenoid)
 
-		if(ishuman(target) && !issynth(target))
+		if(!xeno.can_not_harm(carbon) && ishuman(target) && !issynth(target) && !HAS_TRAIT(target, TRAIT_NESTED) && carbon.status_flags & XENO_HOST)
 			var/mob/living/carbon/human/humanoid = target
 			if(isyautja(humanoid))
 				humanoid.reagents.add_reagent(alchemist.final_alchem_reagent, alchemist.total_pool / 2)
@@ -125,13 +130,30 @@
 			else
 				humanoid.reagents.add_reagent(alchemist.final_alchem_reagent, alchemist.total_pool)
 				humanoid.reagents.set_source_mob(xeno, alchemist.final_alchem_source)
-		alchemist.final_alchem_info()
+		alchemist.final_alchem_info(carbon)
+		if(alchemist.total_pool > 14)
+			alchem_cooldown_modifier = alchemist.total_pool * 0.07
+		else
+			alchem_cooldown_modifier = 1
 		alchemist.empty_entire_stockpile()
+		check_and_use_plasma_owner()
 
+	if(!xeno.can_not_harm(carbon))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] stabs [carbon] in the [target_limb ? target_limb.display_name : "chest"] with their tail!"), \
+		SPAN_XENOWARNING("We stab [carbon] in the [target_limb ? target_limb.display_name : "chest"] with our tail!"))
+		playsound(carbon,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+
+		carbon.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_lower), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+		carbon.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		log_attack("[key_name(xeno)] attacked [key_name(carbon)] with Tail Injection")
+	else
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] gently jabs [carbon] with their tail!"), \
+		SPAN_XENOWARNING("We gently jab our tail into [carbon], making sure not to harm them!"))
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+		if(alchemist.final_alchem_name == null)
+			alchem_cooldown_modifier = 0.2
 	var/stab_direction
-
 	stab_direction = turn(get_dir(xeno, target), 180)
-	playsound(carbon,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
@@ -143,12 +165,7 @@
 	var/new_dir = xeno.dir
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
-	carbon.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_lower), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
-
-	carbon.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	log_attack("[key_name(xeno)] attacked [key_name(carbon)] with Tail Injection")
-
-	apply_cooldown(1 * round(alchemist.total_pool * 0.07))
+	apply_cooldown(alchem_cooldown_modifier)
 	return ..()
 
 /datum/action/xeno_action/activable/tail_inject/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
@@ -166,7 +183,7 @@
 	if(!istype(xeno.behavior_delegate, alchemist))
 		return
 
-	if(!xeno.check_state(TRUE))
+	if(!xeno.check_state())
 		return
 
 	if(alchemist.producing_alchem)
@@ -189,7 +206,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!xeno.check_state(TRUE))
+	if(!xeno.check_state())
 		return
 
 	if(alchemist.total_pool == alchemist.total_pool_cap)
@@ -208,7 +225,7 @@
 		return
 
 	alchemist.producing_alchem = TRUE
-	if(!do_after(xeno, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		alchemist.producing_alchem = FALSE
 		return
 	alchemist.producing_alchem = FALSE
@@ -230,7 +247,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!xeno.check_state(TRUE))
+	if(!xeno.check_state())
 		return
 
 	if(alchemist.total_pool == 0)

@@ -21,7 +21,9 @@
 	behavior_delegate_type = /datum/behavior_delegate/spitter_alchemist
 
 /datum/xeno_strain/alchemist/apply_strain(mob/living/carbon/xenomorph/spitter/spitter)
-	spitter.speed_modifier += XENO_SPEED_SLOWMOD_TIER_3
+	spitter.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
+	spitter.speed_modifier += XENO_SPEED_SLOWMOD_TIER_4
+	spitter.plasmapool_modifier = 0.5
 	spitter.plasma_types -= PLASMA_NEUROTOXIN
 	spitter.plasma_types += PLASMA_PHEROMONE // Alchemist Spitter got some funky shit in their alien bloodstream
 
@@ -38,15 +40,19 @@
 
 	var/current_alchem = null
 	var/producing_alchem = FALSE
+	var/slash_generation = 1
 
 	var/sagunine_present = 1
 	var/cholinine_present = 2
 	var/noctine_present = 3
 	var/alchem_combination = 0
+
 	var/final_alchem_name = null
 	var/final_alchem_reagent = null
 	var/final_alchem_source = null
+
 	var/alchem_xeno_effect = null
+	var/alchem_xeno_debuff = null
 
 /datum/behavior_delegate/spitter_alchemist/append_to_stat()
 	. = list()
@@ -58,27 +64,46 @@
 	if(noctine_pool > 0)
 		. += "Noctine stockpiled: [noctine_pool]"
 
+/datum/behavior_delegate/spitter_alchemist/melee_attack_additional_effects_self()
+	if(current_alchem == null)
+		return
+	if(total_pool == total_pool_cap)
+		return
+	total_pool += slash_generation
+	switch(current_alchem)
+		if("sagunine")
+			sagunine_pool += slash_generation
+		if("cholinine")
+			cholinine_pool += slash_generation
+		if("noctine")
+			noctine_pool += slash_generation
+
 /datum/behavior_delegate/spitter_alchemist/proc/choose_alchem(alchem)
-	if(!alchem)
-		if(current_alchem)
-			current_alchem = null
-			to_chat(bound_xeno, SPAN_XENOWARNING("We relax our body from producing chemicals!"))
-		else
-			if(bound_xeno.client.prefs && bound_xeno.client.prefs.no_radials_preference)
-				alchem = tgui_input_list(bound_xeno, "Choose a pheromone", "Pheromone Menu", "sagunine" + "cholinine" + "noctine" + "help" + "cancel", theme="hive_status")
-				if(alchem == "help")
-					to_chat(bound_xeno, SPAN_NOTICE("<br>You can choose between three unique toxic chemicals to produce with Stockpile and inject into humanoid targets with Injection, with varying effects:<br><B>Sagunine</B> - Deals brute damage and purges Bicardine and Meralyne.<br><B>Cholinine</B> - Deals burn damage and purges Kelotane and Dermaline.<br><B>Noctine</B> - Induces a fair bit of pain and purges Paracetamol, Tramadol and Oxycodone.<br>Stockpiling different chemicals causes them blend together upon Injecting someone to produce a different effect. This happens automatically and regardless of amount stored.<br><B>Experiment!</B><br>"))
-					return
-				if(!alchem || alchem == "cancel" || current_alchem || !bound_xeno.check_state(1)) //If they are stacking windows, disable all input
-					return
-			else
-				var/static/list/alchem_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Sagunine" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Cholinine" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Noctine" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-				alchem = lowertext(show_radial_menu(bound_xeno, bound_xeno.client?.eye, alchem_selections))
-				if(alchem == "help")
-					to_chat(bound_xeno, SPAN_NOTICE("<br>You can choose between three unique toxic chemicals to produce with Stockpile and inject into humanoid targets with Injection, with varying effects:<br><B>Sagunine</B> - Deals brute damage and purges Bicardine and Meralyne.<br><B>Cholinine</B> - Deals burn damage and purges Kelotane and Dermaline.<br><B>Noctine</B> - Induces a fair bit of pain and purges Paracetamol, Tramadol and Oxycodone.<br>Stockpiling different chemicals causes them blend together upon Injecting someone to produce a different effect. This happens automatically and regardless of amount stored.<br><B>Experiment!</B><br>"))
-					return
-				if(!alchem || current_alchem || !bound_xeno.check_state(1)) //If they are stacking windows, disable all input
-					return
+	if(bound_xeno.client.prefs && bound_xeno.client.prefs.no_radials_preference)
+		alchem = tgui_input_list(bound_xeno, "Choose a pheromone", "Pheromone Menu", "sagunine" + "cholinine" + "noctine" + "nothing" + "help" + "cancel", theme="hive_status")
+		if(alchem == "help")
+			to_chat(bound_xeno, SPAN_NOTICE("<br>You can choose between three unique toxic chemicals to produce with Stockpile and inject into humanoid targets with Injection, with varying effects:<br><B>Sagunine</B> - Deals brute damage and purges Bicardine and Meralyne.<br><B>Cholinine</B> - Deals burn damage and purges Kelotane and Dermaline.<br><B>Noctine</B> - Induces a fair bit of pain and purges Paracetamol, Tramadol and Oxycodone.<br>Stockpiling different chemicals causes them blend together upon Injecting someone to produce a different effect. This happens automatically and regardless of amount stored.<br><B>Experiment!</B><br>"))
+			return
+		if(alchem == "nothing")
+			if(current_alchem != null)
+				current_alchem = null
+				to_chat(bound_xeno, SPAN_XENOWARNING("We relax our body from producing chemicals!"))
+			return
+		if(!alchem || alchem == "cancel" || !bound_xeno.check_state(1)) //If they are stacking windows, disable all input
+			return
+	else
+		var/static/list/alchem_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Sagunine" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Cholinine" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Noctine" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"), "Nothing" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_center_focus"))
+		alchem = lowertext(show_radial_menu(bound_xeno, bound_xeno.client?.eye, alchem_selections))
+		if(alchem == "help")
+			to_chat(bound_xeno, SPAN_NOTICE("<br>You can choose between three unique toxic chemicals to produce with Stockpile and inject into humanoid targets with Injection, with varying effects:<br><B>Sagunine</B> - Deals brute damage and purges Bicardine and Meralyne.<br><B>Cholinine</B> - Deals burn damage and purges Kelotane and Dermaline.<br><B>Noctine</B> - Induces a fair bit of pain and purges Paracetamol, Tramadol and Oxycodone.<br>Stockpiling different chemicals causes them blend together upon Injecting someone to produce a different effect. This happens automatically and regardless of amount stored.<br><B>Experiment!</B><br>"))
+			return
+		if(alchem == "nothing")
+			if(current_alchem != null)
+				current_alchem = null
+				to_chat(bound_xeno, SPAN_XENOWARNING("We relax our body from producing chemicals!"))
+			return
+		if(!alchem || !bound_xeno.check_state(1)) //If they are stacking windows, disable all input
+			return
 	if(alchem)
 		if(alchem == current_alchem)
 			to_chat(bound_xeno, SPAN_XENOWARNING("We're already producing [alchem]!"))
@@ -88,32 +113,50 @@
 		playsound(bound_xeno.loc, "alien_drool", 25)
 
 /datum/behavior_delegate/spitter_alchemist/proc/stockpile_alchem(amount = 2, alchem = current_alchem)
+	total_pool += amount
+	var/overcap_reduction = 0
+	if(total_pool > total_pool_cap)
+		overcap_reduction = total_pool - total_pool_cap
+		total_pool -= overcap_reduction
 	switch(alchem)
 		if("sagunine")
-			sagunine_pool += amount
+			sagunine_pool += (amount - overcap_reduction)
 		if("cholinine")
-			cholinine_pool += amount
+			cholinine_pool += (amount - overcap_reduction)
 		if("noctine")
-			noctine_pool += amount
+			noctine_pool += (amount - overcap_reduction)
 
-	total_pool += amount
 	to_chat(bound_xeno, SPAN_XENOWARNING("We produce [alchem] and add it to our chemical stockpile!"))
 	playsound(bound_xeno.loc, "alien_drool", 25)
+	overcap_reduction = 0
 
 /datum/behavior_delegate/spitter_alchemist/proc/remove_alchem(alchem = current_alchem)
+	var/no_chem_to_purge = FALSE
 	switch(alchem)
 		if("sagunine")
-			total_pool -= sagunine_pool
-			sagunine_pool = 0
+			if(sagunine_pool != 0)
+				total_pool -= sagunine_pool
+				sagunine_pool = 0
+			else
+				no_chem_to_purge = TRUE
 		if("cholinine")
-			total_pool -= cholinine_pool
-			cholinine_pool = 0
+			if(cholinine_pool != 0)
+				total_pool -= cholinine_pool
+				cholinine_pool = 0
+			else
+				no_chem_to_purge = TRUE
 		if("noctine")
-			total_pool -= noctine_pool
-			noctine_pool = 0
+			if(noctine_pool != 0)
+				total_pool -= noctine_pool
+				noctine_pool = 0
+			else
+				no_chem_to_purge = TRUE
 
-	to_chat(bound_xeno, SPAN_XENOWARNING("We purge all [alchem] from our chemical stockpile!"))
-	playsound(bound_xeno.loc, "alien_drool", 25)
+	if(no_chem_to_purge)
+		to_chat(bound_xeno, SPAN_XENOWARNING("We don't have any [alchem] to purge!"))
+	else
+		to_chat(bound_xeno, SPAN_XENOWARNING("We purge all [alchem] from our chemical stockpile!"))
+		playsound(bound_xeno.loc, "alien_drool", 25)
 
 /datum/behavior_delegate/spitter_alchemist/proc/empty_entire_stockpile()
 	sagunine_pool = 0
@@ -165,69 +208,93 @@
 			final_alchem_reagent = "xenoalch_purge"
 			final_alchem_source = /datum/reagent/toxin/alchemic/xenosterine
 
-/datum/behavior_delegate/spitter_alchemist/proc/final_alchem_info()
-	switch(final_alchem_name)
-		if("Saguinine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Saguinine! It will deal brute damage and purge most chemicals that recover it!"))
-		if("Cholinine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Cholinine! It will deal burn damage and purge most chemicals that recover it!"))
-		if("Noctine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Noctine! It will induce large amounts of pain and purge most chemicals that alleviate it!"))
-		if("Pyrinine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Pyrinine! It will increase body temperature to almost burning!"))
-		if("Vapinine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Vapinine! It will drain blood!"))
-		if("Crynine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Crynine! It will decrease body temperature to almost freezing!"))
-		if("Xenosterine")
-			to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Xenosterine! It will rapidly purge any chemical that isn't a toxin!"))
+/datum/behavior_delegate/spitter_alchemist/proc/final_alchem_info(mob/living/carbon/target)
+	if(isxeno(target))
+		if(bound_xeno.can_not_harm(target))
+			switch(final_alchem_name)
+				if("Saguinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Saguinine! It restore some of our target's health!"))
+				if("Cholinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Cholinine! It restore some of our target's health!"))
+				if("Noctine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Noctine! It will temporarily harden our target's' carapace!"))
+				if("Pyrinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Pyrinine! It will temporarily strengthen our target's' claws!"))
+				if("Vapinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Vapinine! It will restore some of our target's blood!"))
+				if("Crynine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Crynine! It will temporarily increase our target's speed!"))
+				if("Xenosterine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Xenosterine! It will render our target fireproof!"))
+		else
+			switch(final_alchem_name)
+				if("Saguinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Saguinine! It harm our target slightly!"))
+				if("Cholinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Cholinine! It harm our target slightly!"))
+				if("Noctine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Noctine! It will temporarily weaken our target's' carapace!"))
+				if("Pyrinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Pyrinine! It will temporarily weaken our target's' claws!"))
+				if("Vapinine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Vapinine! It will drain some of our target's blood!"))
+				if("Crynine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Crynine! It will temporarily decrease our target's speed!"))
+				if("Xenosterine")
+					to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Xenosterine! It will temporarily block our target from their hivemind!"))
+	else
+		switch(final_alchem_name)
+			if("Saguinine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Saguinine! It will deal brute damage and purge most chemicals that recover it!"))
+			if("Cholinine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Cholinine! It will deal burn damage and purge most chemicals that recover it!"))
+			if("Noctine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Noctine! It will induce large amounts of pain and purge most chemicals that alleviate it!"))
+			if("Pyrinine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Pyrinine! It will increase body temperature to almost burning!"))
+			if("Vapinine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Vapinine! It will drain blood!"))
+			if("Crynine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Crynine! It will decrease body temperature to almost freezing!"))
+			if("Xenosterine")
+				to_chat(bound_xeno, SPAN_XENOWARNING("We catalyzed Xenosterine! It will rapidly purge any chemical that isn't a toxin!"))
 
 /datum/behavior_delegate/spitter_alchemist/proc/alchem_xeno_reaction(mob/living/carbon/xenomorph/target)
-	switch(final_alchem_name)
-		if("Saguinine") // Just does bonus damage
-			to_chat(target, SPAN_XENOWARNING("You feel like something has just ruptured!"))
-			target.apply_damage(total_pool * XVX_UNIVERSAL_DAMAGEMULT)
-		if("Cholinine") // Also just does bonus damage
-			to_chat(target, SPAN_XENOWARNING("You feel like you're burning!"))
-			target.apply_damage(total_pool * XVX_UNIVERSAL_DAMAGEMULT)
-		if("Noctine") // Weakens armor
-			to_chat(target, SPAN_XENOWARNING("You feel your chitin soften!"))
-			xeno_stat_debuff(target, "armor")
-		if("Pyrinine") // Weakens slash damage
-			to_chat(target, SPAN_XENOWARNING("You feel your claws weaken!"))
-			xeno_stat_debuff(target, "slash")
-		if("Vapinine") // Drains plasma
-			if(target.plasma_max > 0)
-				target.plasma_stored = max(target.plasma_stored - (target.plasma_max * (total_pool / 100)), 0)
-				to_chat(target, SPAN_WARNING("You feel your plasma reserves being drained!"))
-		if("Crynine") // Slows down
-			to_chat(target, SPAN_XENOWARNING("You suddenly feel lethargic!"))
-			xeno_stat_debuff(target, "speed")
-		if("Xenosterine") // Blocks hivemind
-			to_chat(target, SPAN_WARNING("Your mind has suddenly gone quiet!"))
-			target.AddComponent(/datum/component/status_effect/interference, 3 * total_pool, 15)
-
-/datum/behavior_delegate/spitter_alchemist/proc/xeno_stat_debuff(mob/living/carbon/xenomorph/victim, effect)
-	switch(effect)
-		if("slash")
-			victim.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-			victim.recalculate_damage()
-		if("armor")
-			victim.armor_modifier -= XENO_ARMOR_MOD_SMALL
-			victim.recalculate_armor()
-		if("speed")
-			victim.speed_modifier += XENO_SPEED_SLOWMOD_TIER_3
-			victim.recalculate_speed()
-	addtimer(CALLBACK(victim, PROC_REF(xeno_stat_debuff_remove), effect), total_pool)
-
-/datum/behavior_delegate/spitter_alchemist/proc/xeno_stat_debuff_remove(mob/living/carbon/xenomorph/victim, effect)
-	switch(effect)
-		if("slash")
-			victim.damage_modifier += XENO_DAMAGE_MOD_SMALL
-			victim.recalculate_damage()
-		if("armor")
-			victim.armor_modifier += XENO_ARMOR_MOD_SMALL
-			victim.recalculate_armor()
-		if("speed")
-			victim.speed_modifier -= XENO_SPEED_SLOWMOD_TIER_3
-			victim.recalculate_speed()
+	target.xeno_jitter(1 SECONDS)
+	if(!bound_xeno.can_not_harm(target))
+		switch(final_alchem_name)
+			if("Saguinine") // Just does bonus damage
+				to_chat(target, SPAN_XENOWARNING("You feel like something has just ruptured!"))
+				target.apply_damage(total_pool * XVX_UNIVERSAL_DAMAGEMULT)
+			if("Cholinine") // Also just does bonus damage
+				to_chat(target, SPAN_XENOWARNING("You feel like you're burning!"))
+				target.apply_damage(total_pool * XVX_UNIVERSAL_DAMAGEMULT)
+			if("Noctine") // Weakens armor
+				target.AddComponent(/datum/component/status_effect/xeno_stat_debuff/armor_debuff, total_pool)
+			if("Pyrinine") // Weakens slash damage
+				target.AddComponent(/datum/component/status_effect/xeno_stat_debuff/slash_debuff, total_pool)
+			if("Vapinine") // Drains plasma
+				if(target.plasma_max > 0)
+					target.plasma_stored = max(target.plasma_stored - (target.plasma_max * (total_pool / 150)), 0)
+					to_chat(target, SPAN_WARNING("You feel your plasma reserves being drained!"))
+			if("Crynine") // Slows down
+				target.AddComponent(/datum/component/status_effect/xeno_stat_debuff/speed_debuff, total_pool)
+			if("Xenosterine") // Blocks hivemind
+				target.AddComponent(/datum/component/status_effect/interference, total_pool)
+	else
+		switch(final_alchem_name)
+			if("Saguinine") // Heals a small bit
+				new /datum/effects/heal_over_time(target, heal_amount = 5 * total_pool)
+			if("Cholinine") // Also heals a small bit
+				new /datum/effects/heal_over_time(target, heal_amount = 5 * total_pool)
+			if("Noctine") // Temporarily buffs armor
+				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/armor_buff, total_pool)
+			if("Pyrinine") // Temporarily buffs slash
+				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/slash_buff, total_pool)
+			if("Vapinine") // Recovers some plasma
+				target.plasma_stored = max(target.plasma_stored + (target.plasma_max * (total_pool / 150)), 0)
+				to_chat(target, SPAN_WARNING("You feel a surge of plasma!"))
+			if("Crynine") // Temporarily boosts speed
+				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/speed_buff, total_pool)
+			if("Xenosterine") // Makes fireproof
+				target.AddComponent(/datum/component/status_effect/xeno_stat_buff/fireproof_buff, total_pool)

@@ -54,6 +54,8 @@
 	plasma_cost = 50
 	xeno_cooldown = 12 SECONDS
 
+	var/alchem_cooldown_modifier = 1
+
 /datum/action/xeno_action/onclick/select_alchem
 	name = "Select Chemical"
 	action_icon_state = "emit_pheromones"
@@ -68,9 +70,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 50
-	xeno_cooldown = 3 SECONDS
+	xeno_cooldown = 20 SECONDS
 
-	var/amount = 2
+	var/amount = 10
 
 /datum/action/xeno_action/onclick/remove_alchem
 	name = "Remove Chemical"

@@ -243,6 +243,10 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
+/// If the mob currently has a stat buffed
+#define TRAIT_STAT_BUFF "t_stat_buff"
+/// If the mob currently has a stat debuffed
+#define TRAIT_STAT_DEBUFF "t_stat_debuff"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

@@ -438,6 +438,8 @@
 #include "code\datums\components\autofire\autofire.dm"
 #include "code\datums\components\xeno\hivemind_interference.dm"
 #include "code\datums\components\xeno\shield_slash.dm"
+#include "code\datums\components\xeno\stat_buffs.dm"
+#include "code\datums\components\xeno\stat_debuffs.dm"
 #include "code\datums\components\xeno\xeno_daze.dm"
 #include "code\datums\construction\construction_template.dm"
 #include "code\datums\construction\xenomorph\construction_template_xenomorph.dm"

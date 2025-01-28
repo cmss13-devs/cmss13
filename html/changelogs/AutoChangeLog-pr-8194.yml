@@ -1,8 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Showers and drinks now do not apply as extreme of temperature differences"
-  - balance: "Cryo effects (like IB cure) now requires 210K (-63.15C) instead of 0C (273.15K)"
-  - balance: "Heat damage 1 threshold raised to 100C (373.15K) from 87C (360.15K) and heat damage 3 threshold lowered to 526C (800K) from 726C (1000K)"
-  - bugfix: "Fixed incorrect temperature change in hyperthermic properties, when exiting cryopods, and with shivering symptom"
-  - code_imp: "Reagents can now specify adj_temp and target_temp to affect body temperature"

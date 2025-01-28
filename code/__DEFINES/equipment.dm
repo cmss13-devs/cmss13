@@ -589,3 +589,12 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define PHONE_DND_ON 1
 #define PHONE_DND_OFF 0
 #define PHONE_DND_FORBIDDEN -1
+
+//===========
+// Shield (attack blocker) or not. Absolute or Directional.
+/// Not a shield
+#define SHIELD_NONE 0
+/// Blocks attacks with directional scaling.
+#define SHIELD_DIRECTIONAL 1
+// Blocks attacks from all directions equally.
+#define SHIELD_ABSOLUTE 2

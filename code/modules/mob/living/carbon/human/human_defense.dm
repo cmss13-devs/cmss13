@@ -97,6 +97,8 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/block_effect = /obj/effect/block
 	var/owner_turf = get_turf(src)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
+		if(shield_type && shield_chance)
+
 		if(combistick && istype(l_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
 			var/obj/item/weapon/yautja/chained/combistick/C = l_hand
 			if(C.on)

@@ -81,8 +81,8 @@
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	var/blocks_on_back = TRUE
 
-/obj/item/weapon/shield/riot/IsShield()
-	return 1
+	shield_type = SHIELD_DIRECTIONAL
+	shield_chance = 40
 
 /obj/item/weapon/shield/riot/attack_self(mob/user)
 	..()
@@ -116,7 +116,9 @@
 	w_class = SIZE_SMALL
 
 	attack_verb = list("shoved", "bashed")
-	var/active = 0
+
+	shield_type = SHIELD_DIRECTIONAL
+	var/active = FALSE // Changes the shield chance from 0 to 50
 
 /obj/item/weapon/shield/riot/metal
 	name = "metal riot shield"

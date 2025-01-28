@@ -3,6 +3,8 @@
 	name = "weapon"
 	hitsound = "swing_hit"
 	flags_atom = FPRINT|QUICK_DRAWABLE
+	var/shield_chance = 0
+	var/shield_type = SHIELD_NONE
 
 /obj/item/weapon/get_examine_text(mob/user)
 	. = ..()

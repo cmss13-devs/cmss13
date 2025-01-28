@@ -208,6 +208,9 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 
+	shield_type = SHIELD_ABSOLUTE
+	shield_chance = 33
+
 /obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
 	if((flags_item & WIELDED) && prob(50))
@@ -215,9 +218,6 @@
 			for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2))
 				user.setDir(i)
 				sleep(1)
-
-/obj/item/weapon/twohanded/dualsaber/IsShield()
-	if(flags_item & WIELDED) return 1
 
 /obj/item/weapon/twohanded/dualsaber/wield(mob/user)
 	. = ..()

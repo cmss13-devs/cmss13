@@ -58,6 +58,10 @@
 	var/drool_overlay_active = FALSE
 	var/mutable_appearance/drool_applied_icon
 
+/datum/behavior_delegate/runner_acider/New()
+    . = ..()
+    drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi', "Acider Runner Walking")
+
 /datum/behavior_delegate/runner_acider/proc/modify_acid(amount)
 	acid_amount += amount
 	if(acid_amount > max_acid)
@@ -198,9 +202,6 @@
 	bound_xeno.update_icons()
 
 /datum/behavior_delegate/runner_acider/on_update_icons()
-	if(!drool_applied_icon)
-		drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi',"Acider Runner Walking")
-
 	bound_xeno.overlays -= drool_applied_icon
 	drool_applied_icon.overlays.Cut()
 

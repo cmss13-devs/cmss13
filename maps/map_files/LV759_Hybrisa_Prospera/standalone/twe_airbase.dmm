@@ -1146,9 +1146,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "md" = (
-/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft{
-	plane = -5
-	},
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "me" = (
@@ -2578,13 +2576,11 @@
 	},
 /obj/structure/prop/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4;
-	level = 1;
-	plane = -7
+	level = 1
 	},
 /obj/structure/prop/hybrisa/misc/fake/wire/red{
 	pixel_x = 4;
-	level = 1;
-	plane = -7
+	level = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -3166,13 +3162,11 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/prop/hybrisa/misc/fake/wire/blue{
 	level = 1;
-	plane = -7;
 	dir = 4;
 	pixel_y = 6
 	},
 /obj/structure/prop/hybrisa/misc/fake/wire/red{
 	level = 1;
-	plane = -7;
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -3273,8 +3267,7 @@
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "WQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright{
-	layer = 4;
-	plane = -5
+	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)

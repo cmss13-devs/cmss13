@@ -620,6 +620,11 @@
 	icon_state = "briefing"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/living/offices/cryo
+	name = "\improper Support Crew Cryogenics Bay"
+	icon_state = "cryo"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/living/offices/flight
 	name = "\improper Flight Office"
 

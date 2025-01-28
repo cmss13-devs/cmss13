@@ -116,15 +116,8 @@
 	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
 	nutriment_factor = 1 * FOOD_METABOLISM
-
-/datum/reagent/ethanol/thirteenloko/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.)
-		return
-	M:drowsyness = max(0,M:drowsyness-7)
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	M.make_jittery(5)
+	adj_temp = -1
+	target_temp = 310
 
 /datum/reagent/ethanol/vodka
 	name = "Vodka"
@@ -431,13 +424,8 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 5
-
-/datum/reagent/ethanol/toxins_special/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.)
-		return
-	if(M.bodytemperature < 330)
-		M.bodytemperature = min(330, M.bodytemperature + (15 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+	adj_temp = 5
+	target_temp = 330
 
 /datum/reagent/ethanol/irish_cream
 	name = "Irish Cream"
@@ -540,12 +528,8 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 4
-
-/datum/reagent/ethanol/antifreeze/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(M.bodytemperature < 330)
-		M.bodytemperature = min(330, M.bodytemperature + (20 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+	adj_temp = 5
+	target_temp = 330
 
 /datum/reagent/ethanol/barefoot
 	name = "Barefoot"
@@ -633,13 +617,8 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 3, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 3
-
-/datum/reagent/ethanol/sbiten/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.)
-		return
-	if(M.bodytemperature < 360)
-		M.bodytemperature = min(360, M.bodytemperature + (50 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+	adj_temp = 5
+	target_temp = 360
 
 /datum/reagent/ethanol/devilskiss
 	name = "Devils Kiss"
@@ -674,13 +653,8 @@
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
-
-/datum/reagent/ethanol/iced_beer/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.)
-		return
-	if(M.bodytemperature > 270)
-		M.bodytemperature = max(270, M.bodytemperature - (20 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+	adj_temp = -2
+	target_temp = 270
 
 /datum/reagent/ethanol/grog
 	name = "Grog"

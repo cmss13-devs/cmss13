@@ -68,6 +68,11 @@
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/command/cicconference
+	name = "\improper CIC Conference Room"
+	icon_state = "cic"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/command/airoom
 	name = "\improper AI Core"
 	icon_state = "airoom"
@@ -530,11 +535,6 @@
 	icon_state = "livingspace"
 	fake_zlevel = 2
 
-/area/almayer/living/auxiliary_officer_office
-	name = "\improper Lower Deck Auxiliary Support Officer office"
-	icon_state = "livingspace"
-	fake_zlevel = 2
-
 /area/almayer/living/cryo_cells
 	name = "\improper Lower Deck Cryo Cells"
 	icon_state = "cryo"
@@ -583,6 +583,16 @@
 /area/almayer/living/officer_study
 	name = "\improper Upper Deck Officer's Study"
 	icon_state = "officerstudy"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/living/auxiliary_officer_office
+	name = "\improper Upper Deck Auxiliary Support Officer office"
+	icon_state = "livingspace"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/living/intel
+	name = "\improper Intelligence Officer's Bunks"
+	icon_state = "livingspace"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/cafeteria_port

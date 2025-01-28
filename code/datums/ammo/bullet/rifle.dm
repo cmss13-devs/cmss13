@@ -205,6 +205,7 @@
 /datum/ammo/bullet/rifle/type71/setup_faction_clash_values()
 	if(penetration <= ARMOR_PENETRATION_TIER_3) //so we only reduce AP of normal ammo here
 		penetration = ARMOR_PENETRATION_TIER_1
+	accuracy = HIT_ACCURACY_MULT_TIER_3
 	. = ..()
 
 /datum/ammo/bullet/rifle/type71/ap

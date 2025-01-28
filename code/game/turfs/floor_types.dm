@@ -53,18 +53,18 @@
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		var/obj/item/tool/weldingtool/welder = C
-		if(welder.isOn() && (broken || burnt))
+		if(welder.isOn() && (turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT))
 			if(welder.remove_fuel(0, user))
 				to_chat(user, SPAN_WARNING("You fix some dents on the broken plating."))
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 				icon_state = "plating"
-				burnt = FALSE
-				broken = FALSE
+				turf_flags &= ~TURF_BURNT
+				turf_flags &= ~TURF_BROKEN
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 		return
 	if(istype(C, /obj/item/stack/tile))
-		if(broken || burnt)
+		if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 			to_chat(user, SPAN_NOTICE("This section is too damaged to support a tile. Use a welder to fix the damage."))
 			return
 		var/obj/item/stack/tile/T = C
@@ -75,7 +75,7 @@
 		T.build(src)
 		return
 	if(istype(C, /obj/item/stack/catwalk))
-		if(broken || burnt)
+		if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 			to_chat(user, SPAN_NOTICE("This section is too damaged to support a catwalk. Use a welder to fix the damage."))
 			return
 		var/obj/item/stack/catwalk/T = C
@@ -91,8 +91,8 @@
 	return
 
 /turf/open/floor/plating/burnt_platingdmg3
-	burnt = TRUE
 	icon_state = "platingdmg3"
+	turf_flags = parent_type::turf_flags|TURF_BURNT
 
 /turf/open/floor/plating/burnt_platingdmg3/west
 	dir = WEST
@@ -326,8 +326,7 @@
 /turf/open/floor/plating/plating_catwalk/aicore
 	icon = 'icons/turf/floors/aicore.dmi'
 	icon_state = "ai_plating_catwalk"
-	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
-	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
+	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
 	covered_icon_state = "ai_catwalk"
 
 /turf/open/floor/plating/plating_catwalk/aicore/white
@@ -348,8 +347,7 @@
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-	breakable_tile = FALSE // platingdmg# icon_state does not exist in this icon
-	burnable_tile = FALSE // panelscorched icon_state does not exist in this icon
+	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
@@ -1839,7 +1837,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "plating"
 	plating_type = /turf/open/floor/tdome
-	hull_floor = TRUE
+	turf_flags = TURF_HULL
 
 /turf/open/floor/tdome/w_y0
 	icon_state = "w-y0"
@@ -1992,7 +1990,7 @@
 
 /turf/open/floor/almayer/no_build
 	allow_construction = FALSE
-	hull_floor = TRUE
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/almayer/no_build/ai_floors
 	icon_state = "ai_floors"
@@ -2033,7 +2031,7 @@
 
 /turf/open/floor/almayer/aicore/no_build
 	allow_construction = FALSE
-	hull_floor = TRUE
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/almayer/aicore/no_build/ai_arrow
 	icon_state = "ai_arrow"
@@ -2064,7 +2062,7 @@
 
 /turf/open/floor/almayer/aicore/glowing/no_build
 	allow_construction = FALSE
-	hull_floor = TRUE
+	turf_flags = parent_type::turf_flags|TURF_HULL
 
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range
 	icon_state = "ai_floor3"
@@ -2138,7 +2136,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "outerhull"
 	name = "hull"
-	hull_floor = TRUE
+	turf_flags = TURF_HULL
 
 /turf/open/floor/almayer_hull/outerhull_dir
 	icon_state = "outerhull_dir"
@@ -2263,8 +2261,7 @@
 	name = "reinforced floor"
 	icon_state = "engine"
 	intact_tile = 0
-	breakable_tile = FALSE
-	burnable_tile = FALSE
+	turf_flags = NO_FLAGS
 	baseturfs = /turf/open/floor
 
 /turf/open/floor/engine/simulator_center
@@ -2363,7 +2360,7 @@
 
 /turf/open/floor/grass/update_icon()
 	. = ..()
-	if(!broken && !burnt)
+	if(!(turf_flags & TURF_BROKEN) && !(turf_flags & TURF_BURNT))
 		if(!(icon_state in list("grass1", "grass2", "grass3", "grass4")))
 			icon_state = "grass[pick("1", "2", "3", "4")]"
 
@@ -2396,7 +2393,7 @@
 
 /turf/open/floor/carpet/update_icon()
 	. = ..()
-	if(!broken && !burnt)
+	if(!(turf_flags & TURF_BROKEN) && !(turf_flags & TURF_BURNT))
 		if(icon_state != "carpetsymbol")
 			var/connectdir = 0
 			for(var/direction in GLOB.cardinals)
@@ -3229,10 +3226,10 @@
 	icon_state = "recharge_floor"
 
 /turf/open/floor/mech_bay_recharge_floor/break_tile()
-	if(broken)
+	if(turf_flags & TURF_BROKEN)
 		return
 	ChangeTurf(/turf/open/floor/plating)
-	broken = TRUE
+	turf_flags |= TURF_BROKEN
 
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights
 	name = "shuttle landing lights"
@@ -3245,8 +3242,7 @@
 	name = "wooden floor"
 	icon_state = "oldwood1"
 	tile_type = /obj/item/stack/tile/wood
-	breakable_tile = FALSE // wood-broken icon_state does not exist in this icon
-	burnable_tile = FALSE // wood-broken icon_state does not exist in this icon
+	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
 
 /turf/open/floor/interior/wood/is_wood_floor()
 	return TRUE

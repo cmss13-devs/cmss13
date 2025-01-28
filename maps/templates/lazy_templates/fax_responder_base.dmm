@@ -16,6 +16,21 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "ab" = (
+/turf/closed/wall/kutjevo{
+	name = "cement wall";
+	desc = "A huge chunk of reinforced cement used to separate rooms.";
+	turf_flags = 16;
+	unacidable = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/upp{
+	dir = 4
+	},
+/turf/open/floor/darkgreen2/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"ad" = (
 /obj/structure/machinery/cm_vending/clothing/corporate_liaison{
 	pixel_y = 24;
 	pixel_x = 16;
@@ -25,6 +40,16 @@
 	},
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
+"ae" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/spy_camera/uscm{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -33,6 +58,15 @@
 /obj/item/tool/warning_cone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ah" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/twe{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
 "ai" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
 	anchored = 1;
@@ -40,12 +74,108 @@
 	},
 /turf/open/asphalt/cement,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"aj" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/wy,
+/turf/open/floor/corsat/white/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"ak" = (
+/turf/closed/wall/prison{
+	turf_flags = 16;
+	unacidable = 1;
+	name = "colony wall"
+	},
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"al" = (
+/turf/closed/wall/wood{
+	turf_flags = 16;
+	unacidable = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
 "am" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "an" = (
 /turf/open/auto_turf/snow/layer1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ao" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/clf{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = -10;
+	layer = 2.97
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ap" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/uscm,
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"aq" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/uscm,
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ar" = (
+/turf/closed/wall/prison{
+	turf_flags = 16;
+	unacidable = 1;
+	name = "colony wall"
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"as" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 10;
+	pixel_x = -24
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"at" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/cmb,
+/turf/open/floor/shiva/blue/northeast,
+/area/adminlevel/ert_station/fax_response_station)
 "az" = (
 /obj/structure/machinery/cryopod/no_store{
 	pixel_y = 13
@@ -567,13 +697,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/w_y2,
-/area/adminlevel/ert_station/fax_response_station)
-"fv" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/spy_camera/upp{
-	dir = 4
-	},
-/turf/open/floor/darkgreen2/northwest,
 /area/adminlevel/ert_station/fax_response_station)
 "fF" = (
 /obj/structure/filingcabinet{
@@ -1140,13 +1263,6 @@
 	},
 /turf/open/floor/darkgreen2/east,
 /area/adminlevel/ert_station/fax_response_station)
-"mi" = (
-/turf/closed/wall/prison{
-	hull = 1;
-	unacidable = 1;
-	name = "colony wall"
-	},
-/area/adminlevel/ert_station/fax_response_station)
 "mq" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/almayer{
@@ -1421,13 +1537,6 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/fax_response_station)
-"oP" = (
-/turf/closed/wall/prison{
-	hull = 1;
-	unacidable = 1;
-	name = "colony wall"
-	},
-/area/adminlevel/ert_station/fax_response_station/exterior)
 "oT" = (
 /turf/closed/void,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3176,16 +3285,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/fax_response_station)
-"GP" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/spy_camera/clf{
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10;
-	layer = 2.97
-	},
-/turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
 "GQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/coatrack,
@@ -3489,51 +3588,6 @@
 "JB" = (
 /turf/open/floor/almayer/redcorner/west,
 /area/adminlevel/ert_station/fax_response_station)
-"JF" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/folder/white{
-	pixel_x = 6;
-	pixel_y = -6;
-	layer = 3
-	},
-/obj/item/folder/red{
-	pixel_x = 6;
-	pixel_y = -1;
-	layer = 2.99
-	},
-/obj/item/folder/blue{
-	pixel_x = 6;
-	pixel_y = 4;
-	layer = 2.98
-	},
-/obj/item/folder/black{
-	pixel_x = 6;
-	pixel_y = 9;
-	layer = 2.97
-	},
-/obj/item/tool/stamp/hos{
-	name = "red stamp";
-	pixel_y = 8;
-	pixel_x = -5
-	},
-/obj/item/tool/stamp/hop{
-	name = "blue stamp";
-	pixel_x = -5
-	},
-/obj/item/tool/stamp/ce{
-	name = "yellow stamp";
-	pixel_y = -8;
-	pixel_x = -5
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/sign/poster/clf{
-	pixel_y = 10;
-	pixel_x = -24
-	},
-/turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
 "JO" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom";
@@ -3580,11 +3634,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/faxmachine/uscm/provost,
 /turf/open/floor/almayer/red,
-/area/adminlevel/ert_station/fax_response_station)
-"JY" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/spy_camera/cmb,
-/turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
 "Kc" = (
 /obj/structure/window/reinforced/toughened{
@@ -3662,12 +3711,6 @@
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/adminlevel/ert_station/fax_response_station)
-"KR" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/spy_camera/wy,
-/turf/open/floor/corsat/white/northwest,
-/area/adminlevel/ert_station/fax_response_station)
 "KT" = (
 /obj/structure/machinery/door_control/brbutton/alt{
 	pixel_x = -22;
@@ -3721,11 +3764,6 @@
 	layer = 4
 	},
 /turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
-"Mx" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/spy_camera/uscm,
-/turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
 "MA" = (
 /obj/structure/machinery/vending/coffee{
@@ -3853,15 +3891,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
-"NT" = (
-/obj/structure/machinery/light,
-/obj/structure/surface/table/woodentable/fancy,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/spy_camera/twe{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/adminlevel/ert_station/fax_response_station)
 "NU" = (
 /obj/structure/window/reinforced/toughened,
 /obj/structure/surface/table/almayer,
@@ -3921,14 +3950,6 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Os" = (
 /turf/open/floor/darkgreen2/northeast,
-/area/adminlevel/ert_station/fax_response_station)
-"OA" = (
-/turf/closed/wall/kutjevo{
-	name = "cement wall";
-	desc = "A huge chunk of reinforced cement used to separate rooms.";
-	hull = 1;
-	unacidable = 1
-	},
 /area/adminlevel/ert_station/fax_response_station)
 "OX" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
@@ -4105,12 +4126,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/adminlevel/ert_station/fax_response_station)
-"Rp" = (
-/turf/closed/wall/wood{
-	hull = 1;
-	unacidable = 1
-	},
-/area/adminlevel/ert_station/fax_response_station)
 "Rq" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -4142,11 +4157,6 @@
 "RE" = (
 /obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/corsat/white/southwest,
-/area/adminlevel/ert_station/fax_response_station)
-"RJ" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/spy_camera/uscm,
-/turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "RK" = (
 /obj/structure/pipes/vents/pump/no_boom{
@@ -4284,16 +4294,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/adminlevel/ert_station/fax_response_station)
-"Tg" = (
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/spy_camera/uscm{
-	dir = 4
-	},
-/turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "Tk" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5304,7 +5304,7 @@ an
 Iy
 yK
 Cc
-fv
+ac
 wG
 rZ
 SC
@@ -5324,7 +5324,7 @@ Vn
 jJ
 Oj
 ls
-RJ
+ap
 Qt
 fo
 wZ
@@ -5576,19 +5576,19 @@ qu
 Ry
 wl
 gX
-OA
-OA
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
+ab
+ab
 ZD
 ZD
 ZD
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
 gX
 pV
 pV
@@ -5616,7 +5616,7 @@ qu
 Ry
 wl
 gX
-OA
+ab
 Np
 VZ
 XS
@@ -5625,10 +5625,10 @@ qS
 ag
 Iq
 WG
-OA
+ab
 GD
 NK
-OA
+ab
 gX
 pV
 pV
@@ -5656,7 +5656,7 @@ qu
 Ry
 wl
 gX
-OA
+ab
 fk
 Iu
 cp
@@ -5665,10 +5665,10 @@ wQ
 Qi
 CZ
 tu
-OA
+ab
 BF
 sR
-OA
+ab
 gX
 pV
 pV
@@ -5696,7 +5696,7 @@ qu
 Ry
 wl
 gX
-OA
+ab
 Tr
 Ni
 sv
@@ -5708,7 +5708,7 @@ am
 bT
 Kx
 Wt
-OA
+ab
 gX
 pV
 pV
@@ -5724,7 +5724,7 @@ Zg
 wi
 yp
 ls
-Mx
+aq
 Qt
 fo
 wZ
@@ -5736,19 +5736,19 @@ qu
 Ry
 wl
 gX
-OA
-OA
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
+ab
+ab
 Ix
 CZ
 OX
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
 gX
 pV
 pV
@@ -5776,19 +5776,19 @@ qu
 Ry
 wl
 gX
-OA
+ab
 bw
 AV
 DZ
 QV
-OA
+ab
 fQ
 CZ
 am
-OA
+ab
 sA
 QY
-OA
+ab
 gX
 pV
 pV
@@ -5816,19 +5816,19 @@ zS
 Si
 wl
 gX
-OA
-OA
+ab
+ab
 gG
-OA
-OA
-OA
+ab
+ab
+ab
 fQ
 CZ
 am
 TC
 Fr
 ZP
-OA
+ab
 gX
 pV
 pV
@@ -5856,19 +5856,19 @@ qu
 Ry
 wl
 gX
-OA
+ab
 az
 ER
 aM
-NT
-OA
+ah
+ab
 fQ
 CZ
 tV
-OA
+ab
 yB
 yf
-OA
+ab
 gX
 pV
 pV
@@ -5896,7 +5896,7 @@ qu
 Ry
 wl
 gX
-OA
+ab
 xn
 va
 px
@@ -5905,10 +5905,10 @@ gk
 te
 CZ
 Hq
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
 gX
 pV
 pV
@@ -5936,19 +5936,19 @@ qu
 Ry
 wl
 gX
-OA
+ab
 gS
 va
 pZ
 LO
-OA
+ab
 oo
 CZ
 zg
-OA
+ab
 nn
 QY
-OA
+ab
 gX
 pV
 pV
@@ -5976,7 +5976,7 @@ qu
 Ry
 wl
 gX
-OA
+ab
 Yb
 va
 uK
@@ -5988,7 +5988,7 @@ am
 TC
 Ec
 UL
-OA
+ab
 gX
 pV
 pV
@@ -6016,19 +6016,19 @@ qu
 Ry
 wl
 gX
-OA
+ab
 yI
 yM
 kh
 Fn
-OA
+ab
 lK
 mC
 vD
-OA
+ab
 iN
 Pr
-OA
+ab
 gX
 pV
 pV
@@ -6056,19 +6056,19 @@ CW
 NX
 wl
 gX
-OA
-OA
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
+ab
+ab
 aa
 ZD
 ZD
-OA
-OA
-OA
-OA
+ab
+ab
+ab
+ab
 gX
 pV
 pV
@@ -6117,19 +6117,19 @@ pV
 pV
 pV
 gX
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
 cV
 cV
 cV
 cV
-oP
+ak
 gX
 wl
 qu
@@ -6157,19 +6157,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 MZ
 Pw
 nl
 qY
 so
 Yl
-mi
+ar
 XN
 CP
 rs
 XN
-oP
+ak
 gX
 wl
 qu
@@ -6177,7 +6177,7 @@ Ry
 wl
 gX
 IG
-KR
+aj
 mx
 zT
 Pi
@@ -6197,19 +6197,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 zJ
 Fr
 Fr
 tN
 Fr
 qv
-mi
+ar
 nP
 Ld
 mQ
 nP
-oP
+ak
 gX
 wl
 qu
@@ -6237,19 +6237,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 Vq
 Fr
 TM
 Pp
 Yx
 FF
-mi
+ar
 ai
 Ld
 mQ
 TJ
-oP
+ak
 gX
 wl
 qu
@@ -6277,19 +6277,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 of
 Fr
 Fr
 Fr
 ba
 gC
-mi
+ar
 nP
 Ld
 mQ
 nP
-oP
+ak
 gX
 wl
 qu
@@ -6317,8 +6317,8 @@ pV
 pV
 pV
 gX
-mi
-JY
+ar
+at
 hs
 wy
 tO
@@ -6329,7 +6329,7 @@ nP
 Ld
 mQ
 nP
-oP
+ak
 gX
 wl
 qu
@@ -6343,7 +6343,7 @@ SS
 jr
 hC
 QD
-ab
+ad
 kV
 Nd
 IG
@@ -6357,10 +6357,10 @@ pV
 pV
 pV
 gX
-mi
-mi
-mi
-mi
+ar
+ar
+ar
+ar
 WP
 ba
 cc
@@ -6369,7 +6369,7 @@ nP
 Ld
 mQ
 nP
-oP
+ak
 gX
 wl
 zS
@@ -6397,19 +6397,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 No
 XO
 db
 tY
 ba
 cc
-mi
+ar
 nP
 jj
 nI
 nP
-oP
+ak
 gX
 wl
 qu
@@ -6437,19 +6437,19 @@ pV
 pV
 pV
 gX
-mi
-mi
-mi
-mi
+ar
+ar
+ar
+ar
 yu
 ve
 Xo
-mi
+ar
 nP
 bI
 nI
 nP
-oP
+ak
 gX
 wl
 qu
@@ -6477,19 +6477,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 xL
 np
 IK
 Ib
 pn
 hJ
-mi
+ar
 ai
 Ld
 mQ
 TJ
-oP
+ak
 gX
 wl
 qu
@@ -6517,19 +6517,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 hh
 Cx
-mi
-mi
+ar
+ar
 cJ
-mi
-mi
+ar
+ar
 nP
 Ld
 mQ
 nP
-oP
+ak
 gX
 wl
 qu
@@ -6557,19 +6557,19 @@ pV
 pV
 pV
 gX
-mi
+ar
 Do
 pc
-mi
+ar
 Lq
 vZ
 Tc
-mi
+ar
 XN
 CP
 rs
 XN
-oP
+ak
 gX
 wl
 qu
@@ -6597,19 +6597,19 @@ pV
 pV
 pV
 gX
-mi
-mi
-mi
-mi
-mi
-mi
-mi
-mi
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
 cV
 cV
 cV
 cV
-oP
+ak
 gX
 wl
 Kr
@@ -6683,13 +6683,13 @@ QB
 QB
 QB
 QB
-Rp
-Rp
-Rp
-Rp
-Rp
-Rp
-Rp
+al
+al
+al
+al
+al
+al
+al
 gX
 wl
 qu
@@ -6723,13 +6723,13 @@ sf
 sf
 sf
 PM
-Rp
-JF
-GP
+al
+as
+ao
 GX
 cE
 Lj
-Rp
+al
 gX
 wl
 qu
@@ -6769,7 +6769,7 @@ iC
 va
 va
 rx
-Rp
+al
 gX
 wl
 qu
@@ -6803,13 +6803,13 @@ Ra
 sf
 PM
 DP
-Rp
+al
 cn
 va
 Sc
 XY
 ZP
-Rp
+al
 gX
 wl
 qu
@@ -6822,7 +6822,7 @@ wZ
 wZ
 wZ
 Ba
-Tg
+ae
 xK
 Sj
 Sj
@@ -6843,13 +6843,13 @@ sf
 sf
 PM
 dC
-Rp
+al
 XU
 Fr
 Fr
 ba
 Tk
-Rp
+al
 gX
 wl
 qu
@@ -6883,10 +6883,10 @@ xu
 hH
 Yn
 wu
-Rp
+al
 Xb
 GF
-Rp
+al
 ty
 Fr
 nd
@@ -6926,7 +6926,7 @@ ip
 WF
 vE
 Qf
-Rp
+al
 Ut
 Fr
 yh
@@ -6966,10 +6966,10 @@ YX
 hO
 Qf
 RA
-Rp
+al
 eo
 Fr
-Rp
+al
 gX
 wl
 qu
@@ -7009,7 +7009,7 @@ vE
 Xb
 ve
 UL
-Rp
+al
 gX
 wl
 qu
@@ -7046,10 +7046,10 @@ qx
 Sy
 vE
 es
-Rp
+al
 Ec
 Hh
-Rp
+al
 gX
 wl
 qu
@@ -7082,14 +7082,14 @@ lx
 qx
 ip
 XR
-Rp
-Rp
-Rp
-Rp
-Rp
+al
+al
+al
+al
+al
 yW
-Rp
-Rp
+al
+al
 gX
 wl
 qu
@@ -7125,11 +7125,11 @@ wu
 oc
 kv
 dM
-Rp
+al
 Lq
 Xz
 QV
-Rp
+al
 gX
 wl
 hd
@@ -7162,14 +7162,14 @@ QB
 QB
 QB
 QB
-Rp
-Rp
-Rp
-Rp
-Rp
-Rp
-Rp
-Rp
+al
+al
+al
+al
+al
+al
+al
+al
 gX
 wl
 wl

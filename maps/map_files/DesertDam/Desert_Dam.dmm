@@ -342,9 +342,12 @@
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "abt" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/landing_pad_two)
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/lz2)
 "abu" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -380,12 +383,17 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "abB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
 	},
+/area/shuttle/trijent_shuttle/lz2)
+"abC" = (
 /obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
 "abD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -395,11 +403,26 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"abE" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/omega)
 "abF" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/item/trash/boonie,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
+"abG" = (
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/omega)
 "abH" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
@@ -436,6 +459,13 @@
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"abP" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/engi)
 "abQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -478,6 +508,14 @@
 /obj/structure/largecrate/random,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"abY" = (
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/engi)
 "abZ" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -501,6 +539,13 @@
 	},
 /turf/closed/wall/indestructible/invisible,
 /area/desert_dam/exterior/river/riverside_east)
+"ace" = (
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/lz1)
 "acf" = (
 /obj/structure/surface/table,
 /turf/open/floor/whitegreen/west,
@@ -514,6 +559,14 @@
 "ach" = (
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/valley/valley_labs)
+"aci" = (
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hangar{
+	name = "Elevator Shaft";
+	unacidable = 1;
+	turf_flags = 16
+	},
+/area/shuttle/trijent_shuttle/lz1)
 "acj" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -525,6 +578,13 @@
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river/riverside_east)
+"acl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "acn" = (
 /obj/item/trash/eat,
 /turf/open/asphalt,
@@ -3112,14 +3172,6 @@
 /obj/structure/xenoautopsy/tank/hugger,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"anJ" = (
-/obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/lz1)
 "anK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4741,14 +4793,6 @@
 /obj/structure/flora/pottedplant,
 /turf/open/floor/whiteblue/east,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
-"auW" = (
-/obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/engi)
 "auY" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -6805,13 +6849,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"aDT" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/omega)
 "aDU" = (
 /obj/structure/flora/tree/joshua,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -6834,14 +6871,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"aEc" = (
-/obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/omega)
 "aEe" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/decal/sand_overlay/sand1{
@@ -9031,14 +9060,6 @@
 	},
 /turf/open/floor/prison/darkbrown2/west,
 /area/desert_dam/building/warehouse/loading)
-"aNY" = (
-/obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/lz2)
 "aNZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -12578,13 +12599,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
-"bfm" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/engi)
 "bfn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -44312,13 +44326,6 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_south)
-"lcj" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/lz1)
 "lcy" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -45476,13 +45483,6 @@
 	},
 /turf/open/floor/plating/warnplate/northwest,
 /area/desert_dam/exterior/valley/valley_security)
-"nEM" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/lz2)
 "nET" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -54092,7 +54092,7 @@ lIt
 lIt
 lIt
 lIt
-abt
+abC
 lIt
 lIt
 lIt
@@ -56950,7 +56950,7 @@ aQW
 aQW
 aQW
 aQW
-abB
+acl
 aQW
 aQW
 aQW
@@ -62120,7 +62120,7 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 apb
 arp
 arp
@@ -62353,14 +62353,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
-anJ
+ace
+aci
 xss
 xss
 xss
 xss
-anJ
-lcj
+aci
+ace
 dTs
 dTs
 dTs
@@ -62587,14 +62587,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 rxS
-lcj
+ace
 dTs
 dTs
 dTs
@@ -62821,14 +62821,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-lcj
+ace
 dTs
 dTs
 dTs
@@ -63055,14 +63055,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-lcj
+ace
 dTs
 dTs
 blZ
@@ -63289,14 +63289,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-lcj
+ace
 dTs
 blZ
 blZ
@@ -63523,14 +63523,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-lcj
+ace
 blZ
 blZ
 bmE
@@ -63757,14 +63757,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-lcj
+ace
 blZ
 bmm
 bmF
@@ -63991,14 +63991,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
+ace
 fmP
 fmP
 fmP
 fmP
 fmP
 fmP
-lcj
+ace
 blZ
 bmn
 bmG
@@ -64225,14 +64225,14 @@ dTs
 dTs
 dTs
 dTs
-lcj
-lcj
-lcj
-lcj
-lcj
-lcj
-lcj
-lcj
+ace
+ace
+ace
+ace
+ace
+ace
+ace
+ace
 blZ
 bmo
 bmG
@@ -66970,14 +66970,14 @@ cIq
 dfK
 cZB
 cZB
-nEM
-aNY
+abt
+abB
 aOW
 aOW
 aOW
 aOW
-aNY
-nEM
+abB
+abt
 acu
 "}
 (70,1,1) = {"
@@ -67204,14 +67204,14 @@ cIq
 dfL
 cZB
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 aRB
-nEM
+abt
 acu
 "}
 (71,1,1) = {"
@@ -67438,14 +67438,14 @@ cIq
 dfL
 cZB
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-nEM
+abt
 acu
 "}
 (72,1,1) = {"
@@ -67672,14 +67672,14 @@ cWk
 cZB
 cZB
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-nEM
+abt
 acu
 "}
 (73,1,1) = {"
@@ -67906,14 +67906,14 @@ dTs
 dTs
 dTs
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-nEM
+abt
 acu
 "}
 (74,1,1) = {"
@@ -68140,14 +68140,14 @@ dTs
 dTs
 dTs
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-nEM
+abt
 acu
 "}
 (75,1,1) = {"
@@ -68374,14 +68374,14 @@ dTs
 dTs
 dTs
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-nEM
+abt
 acu
 "}
 (76,1,1) = {"
@@ -68608,14 +68608,14 @@ dTs
 dTs
 dTs
 dTs
-nEM
+abt
 rFi
 rFi
 rFi
 rFi
 rFi
 rFi
-nEM
+abt
 acu
 "}
 (77,1,1) = {"
@@ -68842,14 +68842,14 @@ dTs
 dTs
 dTs
 dTs
-nEM
-nEM
-nEM
-nEM
-nEM
-nEM
-nEM
-nEM
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 acu
 "}
 (78,1,1) = {"
@@ -78558,14 +78558,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
-aDT
-aDT
-aDT
-aDT
-aDT
-aDT
-aDT
+abE
+abE
+abE
+abE
+abE
+abE
+abE
+abE
 dTs
 dTs
 cdF
@@ -78792,14 +78792,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 ipQ
-aDT
+abE
 dTs
 cft
 cer
@@ -79026,14 +79026,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
-aDT
+abE
 dTs
 cdF
 cdw
@@ -79260,14 +79260,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
-aDT
+abE
 dTs
 dTs
 cdE
@@ -79494,14 +79494,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
-aDT
+abE
 dTs
 dTs
 bmC
@@ -79728,14 +79728,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
-aDT
+abE
 dTs
 dTs
 cdF
@@ -79962,14 +79962,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
-aDT
+abE
 dTs
 dTs
 cdF
@@ -80196,14 +80196,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
 vHQ
-aDT
+abE
 dTs
 dTs
 aAy
@@ -80430,14 +80430,14 @@ dTs
 dTs
 dTs
 dTs
-aDT
-aEc
+abE
+abG
 aEs
 aEs
 aEs
 aEs
-aEc
-aDT
+abG
+abE
 dTs
 dTs
 dTs
@@ -80665,7 +80665,7 @@ dTs
 dTs
 dTs
 dTs
-aDT
+abE
 aEu
 chY
 ceX
@@ -83656,14 +83656,14 @@ bkj
 blj
 ato
 biy
-bfm
-bfm
-bfm
-bfm
-bfm
-bfm
-bfm
-bfm
+abP
+abP
+abP
+abP
+abP
+abP
+abP
+abP
 dTs
 dTs
 brh
@@ -83890,14 +83890,14 @@ bky
 blj
 bmJ
 biy
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 pif
-bfm
+abP
 dTs
 dTs
 brh
@@ -84124,14 +84124,14 @@ bkj
 blj
 bmJ
 biy
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bfm
+abP
 dTs
 dTs
 dTs
@@ -84358,14 +84358,14 @@ bkj
 blj
 bmJ
 biy
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bfm
+abP
 dTs
 dTs
 dTs
@@ -84592,14 +84592,14 @@ bky
 blj
 bmJ
 biy
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bfm
+abP
 dTs
 dTs
 dTs
@@ -84826,14 +84826,14 @@ bkj
 blj
 att
 biy
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bfm
+abP
 dTs
 dTs
 dTs
@@ -85060,14 +85060,14 @@ dAr
 dOZ
 biy
 biy
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bfm
+abP
 dTs
 dTs
 dTs
@@ -85294,14 +85294,14 @@ bky
 blj
 atD
 dTs
-bfm
+abP
 eyL
 eyL
 eyL
 eyL
 eyL
 eyL
-bfm
+abP
 dTs
 dTs
 dTs
@@ -85528,14 +85528,14 @@ aVZ
 aZk
 atH
 mEV
-bfm
-auW
+abP
+abY
 avj
 avj
 avj
 avj
-auW
-bfm
+abY
+abP
 aam
 dTs
 aam

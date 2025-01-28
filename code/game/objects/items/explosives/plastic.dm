@@ -201,7 +201,7 @@
 
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
-		if(W.hull)
+		if(W.turf_flags & TURF_HULL)
 			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [W]!"))
 			return FALSE
 
@@ -288,7 +288,7 @@
 	plant_target.ex_act(2000, dir, temp_cause)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
-		if(W.hull)
+		if(W.turf_flags & TURF_HULL)
 			continue
 		W.ex_act(1000 * penetration, , cause_data)
 
@@ -323,6 +323,7 @@
 	name = "breaching charge"
 	desc = "An explosive device used to break into areas while protecting the user from the blast as well as deploying deadly shrapnel on the other side."
 	icon_state = "satchel-charge"
+	item_state = "satchel-charge"
 	overlay_image = "satchel-active"
 	w_class = SIZE_SMALL
 	angle = 55
@@ -351,7 +352,7 @@
 
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/targeted_wall = target
-		if(targeted_wall.hull)
+		if(targeted_wall.turf_flags & TURF_HULL)
 			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [targeted_wall]!"))
 			return FALSE
 

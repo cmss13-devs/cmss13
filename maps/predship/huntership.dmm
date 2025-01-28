@@ -454,7 +454,7 @@
 /area/yautja)
 "bN" = (
 /turf/closed/wall/cult{
-	hull = 1;
+	turf_flags = 16;
 	name = "runed hull"
 	},
 /area/yautja)
@@ -957,8 +957,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/juicer{
-	pixel_y = 3
+/obj/structure/machinery/juicer/yautja{
+	pixel_y = 9
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -2745,9 +2745,8 @@
 	pixel_y = 8;
 	pixel_x = 23
 	},
-/obj/structure/machinery/juicer{
-	pixel_y = 6;
-	pixel_x = 3
+/obj/structure/machinery/juicer/yautja{
+	pixel_y = 9
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)

@@ -498,6 +498,7 @@ CULT
 			chosen.join_mutiny(TRUE, MUTINY_MUTINEER)
 		converted.remove_from(human_owner)
 
+	join_mutiny(TRUE, MUTINY_MUTINEER)
 	start_marine_mutiny(human_owner)
 	remove_from(human_owner)
 

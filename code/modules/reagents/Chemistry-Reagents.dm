@@ -57,6 +57,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/datum/chem_property/properties = list() //Decides properties
 	var/original_id //For tracing back
 	var/flags = 0 // Flags for misc. stuff
+	/// How much to adjust the temperature up until target_temp (positive is heating) when in a mob
+	var/adj_temp = 0
+	/// When adj_temp is used, this is the cap to the temperature
+	var/target_temp = 310
 
 	var/deleted = FALSE //If the reagent was deleted
 
@@ -140,6 +144,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	handle_processing(M, mods, delta_time)
 	holder.remove_reagent(id, custom_metabolism * delta_time)
+
+	if(adj_temp && M.bodytemperature != target_temp)
+		if(adj_temp > 0) // heating
+			M.bodytemperature = min(target_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
+		else
+			M.bodytemperature = max(target_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
+		M.recalculate_move_delay = TRUE
 
 	if(!holder)
 		return FALSE

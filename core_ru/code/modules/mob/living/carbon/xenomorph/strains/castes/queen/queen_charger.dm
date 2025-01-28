@@ -21,13 +21,21 @@
 	queen.mobile_aged_abilities -= /datum/action/xeno_action/onclick/screech
 	queen.mobile_abilities -= /datum/action/xeno_action/activable/secrete_resin/queen_macro
 	queen.mobile_abilities -= /datum/action/xeno_action/onclick/screech
+	queen.immobile_abilities -= /datum/action/xeno_action/activable/secrete_resin/remote/queen
 
 	queen.mobile_aged_abilities += /datum/action/xeno_action/onclick/charger_charge/queen
 	queen.mobile_aged_abilities += /datum/action/xeno_action/activable/fling/charger/queen
 	queen.mobile_abilities  += /datum/action/xeno_action/activable/secrete_resin/hivelord/queen_macro
 	queen.mobile_abilities += /datum/action/xeno_action/onclick/charger_charge/queen
 	queen.mobile_abilities += /datum/action/xeno_action/activable/fling/charger/queen
+	queen.immobile_abilities += /datum/action/xeno_action/activable/secrete_resin/hivelord/queen_macro
 
+	queen.mobile_build_order = GLOB.resin_build_order_hivelord
+	queen.immobile_build_order = GLOB.resin_build_order_hivelord
+
+	queen.set_resin_build_order(queen.mobile_build_order)
+
+	queen.extra_build_dist += 1
 	queen.recalculate_everything()
 
 /datum/behavior_delegate/royal_charger
@@ -72,3 +80,33 @@
 
 	// Switch icon back and then let normal icon behavior happen
 	queen.icon = queen.queen_standing_icon
+
+/mob/living/carbon/xenomorph/queen
+	var/prev_extra_build_dist
+	var/mobile_build_order
+	var/immobile_build_order
+
+	var/list/immobile_abilities = list(
+		// These already have their placement locked in:
+		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/place_construction/not_primary,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/queen_word,
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/onclick/manage_hive,
+		/datum/action/xeno_action/onclick/send_thoughts,
+		/datum/action/xeno_action/activable/info_marker/queen,
+		// Screech is typically new for this list, but its possible they never ovi and it then is forced here:
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		// These are new and their arrangement matters:
+		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/onclick/set_xeno_lead,
+		/datum/action/xeno_action/activable/queen_heal, //first macro
+		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
+		/datum/action/xeno_action/activable/expand_weeds, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
+		/datum/action/xeno_action/onclick/queen_tacmap,
+		/datum/action/xeno_action/onclick/eye,
+		/datum/action/xeno_action/onclick/give_tech_points,
+	)

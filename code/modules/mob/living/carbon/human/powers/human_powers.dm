@@ -359,7 +359,7 @@
 
 	if(!is_zoomed)
 		enable_zoom()
-		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."), \
+		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."),
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		return
 

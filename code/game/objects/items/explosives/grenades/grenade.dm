@@ -79,7 +79,7 @@
 
 	cause_data = create_cause_data(initial(name), user)
 
-	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
+	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"),
 	SPAN_WARNING("You prime \a [name]!"))
 	msg_admin_attack("[key_name(user)] primed \a grenade ([name]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'> [key_name(user)] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z])</font>")

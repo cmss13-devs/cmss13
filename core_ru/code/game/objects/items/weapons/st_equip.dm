@@ -28,54 +28,55 @@
 	var/speed_penalty = 0.85 // 15%
 	var/retrieval_slot = WEAR_J_STORE
 
-/obj/item/weapon/twohanded/st_hammer/attack(mob/M, mob/user)
+/obj/item/weapon/twohanded/st_hammer/attack(mob/target, mob/user)
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ST)
 		to_chat(user, SPAN_HIGHDANGER("[src] is too heavy for you to use!"))
 		return
-	..(M, user)
 
-	if(!isxeno(M))
+	. = ..()
+
+	if(!isxeno(target))
 		return
 
 	if(flags_item & WIELDED)
-		var/datum/effects/hammer_stacks/HS = null
-		for (var/datum/effects/hammer_stacks/hammer_stacks in M.effects_list)
-			HS = hammer_stacks
-			break
+		var/datum/effects/hammer_stacks/hammer_effect = locate() in target.effects_list
+		if(!hammer_effect)
+			hammer_effect = new /datum/effects/hammer_stacks(target)
 
-		if (HS == null)
-			HS = new /datum/effects/hammer_stacks(M)
-		HS.increment_stack_count(1, user)
-
-		if(M.stat != CONSCIOUS) // haha xeno-cricket
-			HS.increment_stack_count(4, user)
+		hammer_effect.increment_stack_count(1, user)
+		if(target.stat != CONSCIOUS) // haha xeno-cricket
+			hammer_effect.increment_stack_count(4, user)
 
 /obj/item/weapon/twohanded/st_hammer/pickup(mob/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
-	..()
+	. = ..()
 
-/obj/item/weapon/twohanded/st_hammer/proc/handle_movedelay(mob/living/M, list/movedata)
+/obj/item/weapon/twohanded/st_hammer/proc/handle_movedelay(mob/user, list/movedata)
 	SIGNAL_HANDLER
 	movedata["move_delay"] += speed_penalty
 
 /obj/item/weapon/twohanded/st_hammer/dropped(mob/user, silent)
 	. = ..()
+
 	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
-	if (!ishuman(user))
+	if(!ishuman(user))
 		return
-	if (!retrieval_check(user, retrieval_slot))
+
+	if(!retrieval_check(user, retrieval_slot))
 		return
+
 	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/twohanded/st_hammer/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
-	if (!loc || !user)
+	if(!isturf(loc) || !user)
 		return FALSE
-	if (!isturf(loc))
-		return FALSE
+
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE
+
 	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))
 		return FALSE
+
 	var/message
 	switch(retrieval_slot)
 		if(WEAR_J_STORE)
@@ -117,23 +118,27 @@
 			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
 			playsound(user.loc, 'core_ru/sound/effects/bang-bang.ogg', 25, FALSE)
 			cooldown = world.time
-	else
-		..()
-
-/obj/item/weapon/shield/montage/dropped(mob/user, silent)
-	. = ..()
-	var/mob/living/carbon/human/H = user
-	if(!istype(H))
 		return
-	if(H.back == null && istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/m40))
-		addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), H, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+	. = ..()
+
+/obj/item/weapon/shield/montage/dropped(mob/living/carbon/human/user, silent)
+	. = ..()
+
+	if(!istype(user))
+		return
+
+	if(!user.back && istype(user.wear_suit, /obj/item/clothing/suit/storage/marine/m40))
+		addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/shield/montage/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
-	if (!loc || !user)
+	if(!loc || !user)
 		return FALSE
-	if (get_dist(src,user) > 1)
+
+	if(get_dist(src, user) > 1)
 		return FALSE
-	..(user, retrieval_slot)
+
+	. = ..()
 
 
 /obj/item/weapon/shield/montage/marine

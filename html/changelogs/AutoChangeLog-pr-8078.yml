@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - qol: "Stacks inserted into storages will now try to fill other stacks"

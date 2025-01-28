@@ -1037,7 +1037,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.faction.code_identificator == faction_to_get)
@@ -1231,7 +1231,7 @@
 	..()
 	if(isxeno(AM))
 		return
-	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."),
 	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
 	if(ismob(AM))
@@ -1253,7 +1253,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.faction.code_identificator == faction_to_get)
@@ -1264,7 +1264,7 @@
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
 	SPAN_DANGER("You tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)

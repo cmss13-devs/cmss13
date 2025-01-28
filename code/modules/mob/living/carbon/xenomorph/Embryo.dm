@@ -106,7 +106,7 @@
 			if(prob(4))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(1, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -127,7 +127,7 @@
 			if(prob(5))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
+					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(2, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -143,7 +143,7 @@
 			if(prob(6))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(3, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -298,7 +298,7 @@
 	to_chat(src, SPAN_DANGER("We start bursting out of [victim]'s chest!"))
 	if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		victim.apply_effect(20, DAZE)
-	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
+	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"),
 						SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
 	sleep(30)

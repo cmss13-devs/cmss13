@@ -83,6 +83,8 @@
 	///Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
 	var/burst_scatter_mult = 4
 
+	///Modifier for how far the weapon's projectile can travel before it disappears.
+	var/projectile_max_range_add = 0
 	///What minimum range the weapon deals full damage, builds up the closer you get. 0 for no minimum.
 	var/effective_range_min = 0
 	///What maximum range the weapon deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum.
@@ -402,6 +404,7 @@
 		damage_buildup_mult += R.damage_buildup_mod
 		effective_range_min += R.range_min_mod
 		effective_range_max += R.range_max_mod
+		projectile_max_range_add += R.projectile_max_range_mod
 		recoil += R.recoil_mod
 		burst_scatter_mult += R.burst_scatter_mod
 		modify_burst_amount(R.burst_mod)
@@ -695,6 +698,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
 	data["max_range"] = max_range
+	data["projectile_max_range_add"] = projectile_max_range_add
+	data["effective_range_max_mod"] = effective_range_max
 	data["effective_range"] = effective_range
 
 	// damage table data
@@ -1189,6 +1194,7 @@ and you're good to go.
 		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user)
 
 	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
+	projectile_to_fire?.ammo?.max_range += projectile_max_range_add
 
 	if(params) // Apply relative clicked position from the mouse info to offset projectile
 		if(!params["click_catcher"])
@@ -1247,7 +1253,7 @@ and you're good to go.
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	in_chamber = null // It's not in the gun anymore
-	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, null, damage_mult)
 	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -61,9 +61,9 @@
 /turf/closed/wall/almayer/reinforced/temphull
 	name = "heavy reinforced hull"
 	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It would take a great impact to weaken this wall."
-	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "temphull"
-	hull = TRUE
+	damage_cap = HEALTH_WALL_REINFORCED
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/almayer/reinforced/temphull/Initialize()
 	. = ..()
@@ -72,7 +72,7 @@
 
 /turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
 	SIGNAL_HANDLER
-	hull = FALSE
+	turf_flags = NO_FLAGS
 	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It has been weakened by a great impact."
 
 /turf/closed/wall/almayer/outer
@@ -81,7 +81,7 @@
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
-	hull = 1 //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls
+	turf_flags = TURF_HULL //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls
 
 /turf/closed/wall/almayer/outer/gear
 	icon_state = "almayer_elevator"
@@ -115,8 +115,8 @@
 /turf/closed/wall/almayer/white/hull
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
-	hull = 1
 	icon_state = "hull"
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -237,8 +237,8 @@
 /turf/closed/wall/almayer/aicore/hull
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
-	hull = TRUE
 	icon_state = "hull"
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/almayer/aicore/white
 	walltype = WALL_AICORE
@@ -253,8 +253,8 @@
 /turf/closed/wall/almayer/aicore/white/hull
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
-	hull = TRUE
 	icon_state = "hull"
+	turf_flags = TURF_HULL
 
 
 //Sulaco walls.
@@ -263,7 +263,7 @@
 	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "sulaco"
-	hull = 0 //Can't be deconstructed
+	turf_flags = NO_FLAGS  //Can't be deconstructed
 
 	damage_cap = HEALTH_WALL
 	walltype = WALL_SULACO //Changes all the sprites and icons.
@@ -271,15 +271,15 @@
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
-	hull = 1
 	walltype = WALL_SULACO
+	turf_flags = TURF_HULL
 
 
 /turf/closed/wall/sulaco/unmeltable
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
-	hull = 1
 	walltype = WALL_SULACO
+	turf_flags = TURF_HULL
 
 
 
@@ -289,7 +289,7 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
 	opacity = TRUE
-	hull = 1
+	turf_flags = TURF_HULL
 
 
 
@@ -431,11 +431,11 @@
 
 /turf/closed/wall/mineral/bone_resin //mineral wall because, reasons bro.
 	name = "skeletal resin"
+	desc = "A wall made of molted old resin. This place is more alive than you are."
 	icon = 'icons/turf/walls/prison/bone_resin.dmi'
 	icon_state = "bone_resin"
 	walltype = WALL_BONE_RESIN
-	hull = 1
-	desc = "A wall made of molted old resin. This place is more alive than you are."
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/mineral/bone/is_weedable()
 	return NOT_WEEDABLE
@@ -452,7 +452,7 @@
 
 /turf/closed/wall/cult/hunting_grounds
 	name = "wall"
-	hull = TRUE
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/cult/make_girder(destroyed_girder)
 	return
@@ -506,12 +506,12 @@
 
 /turf/closed/wall/rock
 	name = "rock wall"
+	desc = "A rough wall of hardened rock."
 	icon = 'icons/turf/walls/cave.dmi'
 	icon_state = "cavewall"
-	desc = "A rough wall of hardened rock."
-	walltype = WALL_CAVE
-	hull = 1
 	color = "#535963"
+	walltype = WALL_CAVE
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -538,7 +538,7 @@
 	icon_state = "strata_ice"
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
-	hull = 1 //Can't break this ice.
+	turf_flags = TURF_HULL //Can't break this ice.
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
@@ -551,7 +551,7 @@
 	icon_state = "jungle_veg"
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -576,9 +576,9 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/strata_outpost/reinforced/hull
-	hull = 1
-	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	icon_state = "strata_hull"
+	turf_flags = TURF_HULL
 
 //SOLARIS RIDGE TILESET//
 
@@ -598,7 +598,7 @@
 /turf/closed/wall/solaris/reinforced/hull
 	name = "heavy reinforced colony wall"
 	icon_state = "solaris_interior_h"
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/solaris/reinforced/hull/lv522
 	name = "Colony Windbreaker"
@@ -607,7 +607,7 @@
 	name = "rock wall"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
-	hull = 1
+	turf_flags = TURF_HULL
 	baseturfs = /turf/open/mars_cave/mars_cave_2
 
 
@@ -631,7 +631,7 @@
 /turf/closed/wall/dev/reinforced/hull
 	name = "greybox hull wall"
 	desc = "Just like in the orange box! This one is indestructible."
-	hull = 1
+	turf_flags = TURF_HULL
 
 //KUTJEVO DESERT WALLS / SHARED TRIJENT TILESET
 
@@ -641,7 +641,7 @@
 	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/kutjevo/rock/border
 	icon_state = "rock_border"//no sandy edges
@@ -665,7 +665,7 @@
 	icon_state = "colonyh"
 	name = "reinforced colony wall"
 	desc = "Dusty worn down walls that were once built to last. This one is indestructible."
-	hull = 1
+	turf_flags = TURF_HULL
 
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
 /turf/closed/wall/shiva
@@ -677,7 +677,7 @@
 	icon_state = "shiva_ice"
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
-	hull = TRUE //Can't break this ice.
+	turf_flags = TURF_HULL //Can't break this ice.
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
@@ -698,7 +698,7 @@
 	icon_state = "shiva_fab_r_h"
 	desc = "It cannot be destroyed by any means you have available. Perhaps praying to the gods may help."
 	walltype = WALL_SHIVA_FAB_R
-	hull = TRUE
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/shiva/prefabricated/orange
 	icon_state = "shiva_fab_oj"
@@ -748,7 +748,7 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-	if(!hull)
+	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		if(area)
 			if(area.linked_lz)
@@ -758,7 +758,7 @@
 /turf/closed/wall/resin/Destroy(force)
 	. = ..()
 
-	if(!hull)
+	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
 
@@ -772,7 +772,7 @@
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
-	hull = TRUE
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/resin/proc/set_resin_builder(mob/M)
 	if(istype(M) && should_track_build)
@@ -1325,10 +1325,10 @@
 	icon = 'icons/turf/walls/hunter.dmi'
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/huntership/destructible
 	name = "degraded hunter wall"
 	color = "#c5beb4"
 	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
-	hull = 0
+	turf_flags = NO_FLAGS

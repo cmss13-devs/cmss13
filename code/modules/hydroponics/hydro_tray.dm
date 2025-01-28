@@ -190,7 +190,8 @@
 		return
 
 	// Advance plant age.
-	if(prob(30) && nutrilevel > 0 && waterlevel > 0) age += 1 * HYDRO_SPEED_MULTIPLIER
+	if(prob(30) && nutrilevel > 0 && waterlevel > 0)
+		 age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
 	if(seed.immutable == -1)

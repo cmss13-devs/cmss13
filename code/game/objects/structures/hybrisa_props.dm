@@ -1899,6 +1899,7 @@
 /obj/effect/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
+	icon_state = "pipe-s"
 	layer = WIRE_LAYER
 
 /obj/effect/hybrisa/misc/fake/pipes/pipe1
@@ -1921,6 +1922,7 @@
 /obj/effect/hybrisa/misc/fake/wire
 	name = "power cable"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
+	icon_state = "intactred"
 	layer = UNDERFLOOR_OBJ_LAYER
 
 /obj/effect/hybrisa/misc/fake/ex_act()

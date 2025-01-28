@@ -517,6 +517,9 @@ CULT
 
 		if(skillcheck(person, SKILL_POLICE, SKILL_POLICE_MAX) || (person.job in MUTINY_LOYALIST_ROLES) || (person.job in PROVOST_JOB_LIST))
 			person.join_mutiny(TRUE, MUTINY_LOYALIST)
+			continue
+
+		person.join_mutiny()
 
 /mob/living/carbon/human/proc/join_mutiny(forced = FALSE, forced_side = MUTINY_MUTINEER)
 	if(job == JOB_WORKING_JOE)
@@ -548,7 +551,7 @@ CULT
 			var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
 			XC.load_status(src)
 			return TRUE
-		if("REFUSE TO FIGHT")
+		else
 			var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
 			XC.load_status(src)
 			return TRUE

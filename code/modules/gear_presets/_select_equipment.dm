@@ -15,6 +15,7 @@
 	var/list/access = list()
 	var/assignment
 	var/rank
+	var/age
 	var/list/paygrades = list("???")
 	var/role_comm_title
 	var/minimum_age
@@ -93,7 +94,9 @@
 
 /datum/equipment_preset/proc/load_age(mob/living/carbon/human/new_human, client/mob_client)
 	if(minimum_age && new_human.age < minimum_age)
-		new_human.age = minimum_age
+		new_human.age = minimum_age + 2
+	else(minimum_age && age < minimum_age)
+		age = minimum_age + 2
 
 /datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)//Beagle-Code
 	if(paygrades.len == 1)

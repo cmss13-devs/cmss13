@@ -59,6 +59,9 @@ try {
 } catch (error) {
 	current_fontsize = 14;
 }
+if (isNaN(current_fontsize) || current_fontsize <= 0) {
+	current_fontsize = 14;
+}
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];

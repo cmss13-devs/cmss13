@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - bugfix: "fixes jima name stacking"

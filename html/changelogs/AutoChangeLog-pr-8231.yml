@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Synthetic Reset Key description now only says you need engineering knowledge when you actually do."

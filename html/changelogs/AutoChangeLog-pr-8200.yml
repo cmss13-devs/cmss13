@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "When 2 charger crushers collide, they now cause a tremor, knocking down and slowing nearby enemies"
+  - balance: "reduced charger collision weaken (to the charger crushers) by 1 second"

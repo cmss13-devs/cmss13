@@ -1,0 +1,4 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - rscadd: "Changed most structure lights in the game to be either an incandascent warm white/yellow, or a cold blue, depending on their bulb color."

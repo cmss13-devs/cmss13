@@ -22,21 +22,11 @@
 			O.forceMove(src)
 			scanner = O
 			to_chat(user, "You insert [O].")
-			update_static_data(usr)
 
 	. = ..()
 
-/obj/structure/machinery/computer/secure_data/ui_static_data(mob/user)
+/obj/structure/machinery/computer/secure_data/ui_data(mob/user)
 	. = ..()
-
-	if(!allowed(usr))
-		to_chat(user, SPAN_WARNING("Access denied."))
-		return
-
-	// Pass player data, only for frontend state
-	var/mob/living/carbon/human/U = usr
-	var/user_data = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
-	.["user_data"] = user_data
 
 	// Pass scanner data
 	var/list/prints_data = list()
@@ -56,18 +46,6 @@
 		"data" = prints_data,
 	)
 	.["scanner"] = scanner_status
-
-	// Define criminal statuses and colors
-	var/list/criminal_statuses = list(
-	"*Arrest*" = list("background" = "#990c28", "font" = "#ffffff"),
-	"Incarcerated" = list("background" = "#faa20a", "font" = "#ffffff"),
-	"Released" = list("background" = "#2981b3", "font" = "#ffffff"),
-	"Suspect" = list("background" = "#686A6C", "font" = "#ffffff"),
-	"NJP" = list("background" = "#b60afa", "font" = "#ffffff"),
-	"None" = list("background" = "inherit", "font" = "inherit"),
-	)
-
-	.["criminal_statuses"] = criminal_statuses
 
 	// Map security records via id
 	var/list/records = list()
@@ -268,7 +246,6 @@
 
 
 			var/name = general_record.fields["name"]
-			update_static_data(usr)
 			message_admins("[key_name(usr)] changed the record of [name]. Field [original_field] value changed to [value]")
 
 			. = TRUE
@@ -306,7 +283,6 @@
 
 			to_chat(usr, "Comment added successfully.")
 			msg_admin_niche("[key_name_admin(usr)] added security comment.")
-			update_static_data(usr)
 
 			return
 		if ("delete_comment")
@@ -341,7 +317,6 @@
 
 			to_chat(usr, "Comment deleted successfully.")
 			msg_admin_niche("[key_name_admin(usr)] deleted security comment.")
-			update_static_data(usr)
 
 		//* Records maintenance actions
 		if ("new_security_record")
@@ -350,12 +325,10 @@
 
 			if (name && id)
 				CreateSecurityRecord(name, id)
-				update_static_data(usr)
 			return
 
 		if ("new_general_record")
 			CreateGeneralRecord()
-			update_static_data(usr)
 			to_chat(usr, "You successfully created new general record")
 			msg_admin_niche("[key_name_admin(usr)] created new general record.")
 
@@ -377,7 +350,6 @@
 				GLOB.data_core.general -= general_record
 				msg_admin_niche("[key_name_admin(usr)] deleted record of [record_name].")
 				qdel(general_record)
-			update_static_data(usr)
 
 		//* Actions for ingame objects interactions
 		if("print_fingerprint_report")
@@ -405,7 +377,6 @@
 
 			scanner.update_icon()
 			to_chat(usr, "Fingerprints cleared from the scanner.")
-			update_static_data(usr)
 
 		if("eject_fingerprint_scanner")
 			if (!scanner)
@@ -415,7 +386,6 @@
 			scanner.update_icon()
 			scanner.forceMove(get_turf(src))
 			scanner = null
-			update_static_data(usr)
 		if ("print_personal_record")
 			var/id = params["id"]
 			if (!( printing ))

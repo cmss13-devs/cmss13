@@ -20,7 +20,7 @@ export const SecurityRecords = () => {
   const forceReload = (url) => `${url}?t=${Date.now()}`;
 
   const { data, act } = useBackend();
-  const { records = [], user_data, scanner = {}, criminal_statuses } = data;
+  const { records = [], scanner = {} } = data;
   const [recordsArray, setRecordsArray] = useState(
     Array.isArray(records) ? records : [],
   );
@@ -180,23 +180,28 @@ export const SecurityRecords = () => {
     },
   ];
 
+  const criminalStatuses = {
+    '*Arrest*': { background: '#990c28', font: '#ffffff' },
+    Incarcerated: { background: '#faa20a', font: '#ffffff' },
+    Released: { background: '#2981b3', font: '#ffffff' },
+    Suspect: { background: '#686A6C', font: '#ffffff' },
+    NJP: { background: '#b60afa', font: '#ffffff' },
+    None: { background: 'inherit', font: 'inherit' },
+  };
+
   const securityDataFields = [
     {
       label: 'Criminal Status:',
       contentKey: 'security_criminal',
       isEditable: true,
       type: 'select',
-      options: Object.keys(criminal_statuses),
+      options: Object.keys(criminalStatuses),
     },
   ];
 
-  const getBackgroundColor = (status) => {
-    return criminal_statuses[status]?.background || 'inherit'; // Default to white if status is missing
-  };
-
-  const getFontColor = (status) => {
-    return criminal_statuses[status]?.font || 'inherit'; // Default to white if status is missing
-  };
+  // Function to get styles based on status
+  const getStyle = (status) =>
+    criminalStatuses[status] || { background: 'inherit', font: 'inherit' };
 
   const selectRecord = useCallback(
     (record) => {
@@ -562,8 +567,8 @@ export const SecurityRecords = () => {
           <Table.Row
             key={record.id}
             style={{
-              backgroundColor: getBackgroundColor(record.security_criminal),
-              color: getFontColor(record.security_criminal),
+              backgroundColor: getStyle(record.security_criminal).background,
+              color: getStyle(record.security_criminal).font,
             }}
           >
             <Table.Cell style={cellStyle}>

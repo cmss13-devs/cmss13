@@ -733,12 +733,15 @@
 /area/adminlevel/ert_station/fax_response_station)
 "hn" = (
 /obj/structure/machinery/space_heater{
-	pixel_x = 5;
-	pixel_y = 15;
+	pixel_x = -1;
+	pixel_y = 13;
 	layer = 2.99;
 	anchored = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio/intercom/fax/uscm_hc{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "hs" = (
@@ -1129,7 +1132,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "mi" = (
 /turf/closed/wall/prison{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1;
 	name = "colony wall"
 	},
@@ -1410,7 +1413,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "oP" = (
 /turf/closed/wall/prison{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1;
 	name = "colony wall"
 	},
@@ -2197,11 +2200,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/highcom,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "xn" = (
@@ -2595,6 +2596,10 @@
 "AT" = (
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 14
+	},
+/obj/item/device/radio/intercom/fax/wy{
+	pixel_y = 24;
+	layer = 2.99
 	},
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3555,11 +3560,9 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JX" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/uscm/brig/provost{
-	pixel_y = 0
-	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/provost,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "JY" = (
@@ -3907,7 +3910,7 @@
 /turf/closed/wall/kutjevo{
 	name = "cement wall";
 	desc = "A huge chunk of reinforced cement used to separate rooms.";
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
@@ -4088,7 +4091,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Rp" = (
 /turf/closed/wall/wood{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
@@ -4506,10 +4509,13 @@
 /area/adminlevel/ert_station/fax_response_station)
 "VK" = (
 /obj/structure/machinery/space_heater{
-	pixel_x = -5;
+	pixel_x = -1;
 	pixel_y = 15;
 	layer = 2.99;
 	anchored = 1
+	},
+/obj/item/device/radio/intercom/fax/uscm_pvst{
+	pixel_y = 24
 	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)

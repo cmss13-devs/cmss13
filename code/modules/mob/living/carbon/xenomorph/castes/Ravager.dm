@@ -79,6 +79,7 @@
 	var/empower_targets = 0
 	var/super_empower_threshold = 3
 	var/dmg_buff_per_target = 2
+	var/mid_charge = FALSE
 
 /datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon)
 	var/damage_plus
@@ -115,3 +116,12 @@
 		QDEL_NULL(rav_shield)
 		to_chat(bound_xeno, SPAN_XENODANGER("We feel our shield decay!"))
 		bound_xeno.overlay_shields()
+
+/datum/behavior_delegate/ravager_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(mid_charge)
+		return INTENT_HARM

@@ -271,6 +271,9 @@
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
+	if(burn > 0 && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire))
+		burn /= 4 //reduce the flame dmg by 75% for HvH, it is still super strong
+
 	if(status & LIMB_DESTROYED)
 		return 0
 
@@ -1007,15 +1010,15 @@ This function completely restores a damaged organ to perfect condition.
 	if(!owner)
 		return
 	if (owner.handcuffed && (body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT)))
-		owner.visible_message(\
-			"\The [owner.handcuffed.name] falls off of [owner.name].",\
+		owner.visible_message(
+			"\The [owner.handcuffed.name] falls off of [owner.name].",
 			"\The [owner.handcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.handcuffed)
 
 	if (owner.legcuffed && (body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT)))
-		owner.visible_message(\
-			"\The [owner.legcuffed.name] falls off of [owner.name].",\
+		owner.visible_message(
+			"\The [owner.legcuffed.name] falls off of [owner.name].",
 			"\The [owner.legcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
@@ -1096,7 +1099,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		return
 
 	if(owner.status_flags & NO_PERMANENT_DAMAGE)
-		owner.visible_message(\
+		owner.visible_message(
 			SPAN_WARNING("[owner] withstands the blow!"),
 			SPAN_WARNING("Your [display_name] withstands the blow!"))
 		return
@@ -1123,7 +1126,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
 		if(status & (LIMB_ROBOT))
-			owner.visible_message(\
+			owner.visible_message(
 				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
 				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
 				SPAN_HIGHDANGER("You hear electrical sparking!"))
@@ -1133,7 +1136,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			spark_system.start()
 			QDEL_IN(spark_system, 1 SECONDS)
 		else
-			owner.visible_message(\
+			owner.visible_message(
 				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
 				SPAN_HIGHDANGER("You hear a sickening crack!"))
@@ -1153,7 +1156,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			broken_description = pick("broken","fracture","hairline fracture")
 			perma_injury = min_broken_damage
 	else
-		owner.visible_message(\
+		owner.visible_message(
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
 			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
 

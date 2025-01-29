@@ -73,7 +73,8 @@
 		if(faction_module.living_xeno_queen && faction_module.living_xeno_queen.observed_xeno == target_xeno)
 			faction_module.living_xeno_queen.overwatch(new_xeno)
 
-	return
+		if(new_xeno.ckey)
+			GLOB.deevolved_ckeys += new_xeno.ckey
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner

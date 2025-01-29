@@ -28,6 +28,8 @@
 
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
 
+	var/list/castes_evolved = list() // dict of any caste that has been evolved into, and how many times, "Ravager" = 5, "Warrior" = 2
+
 	var/list/participants = list() // types of /datum/entity/statistic, "[human.faction]" = 10, "xeno" = 2
 	var/list/final_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
 	var/list/hijack_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
@@ -44,6 +46,7 @@
 	. = ..()
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
+	QDEL_LIST_ASSOC_VAL(castes_evolved)
 	QDEL_LIST_ASSOC_VAL(abilities_used)
 	QDEL_LIST_ASSOC_VAL(final_participants)
 	QDEL_LIST_ASSOC_VAL(hijack_participants)
@@ -305,9 +308,17 @@
 		death_data["death_stats_list"] = new_death_list
 	track_dead_participant(new_death.faction_name)
 
+/datum/entity/statistic/round/proc/store_caste_evo_data()
+	var/datum/entity/round_caste_picks/caste_picks = SSentity_manager.tables[/datum/entity/round_caste_picks].make_new()
+	caste_picks.castes_picked = castes_evolved
+	caste_picks.save()
+
 /datum/entity/statistic/round/proc/log_round_statistics()
 	if(!GLOB.round_stats)
 		return
+
+	store_caste_evo_data()
+
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0
 	var/total_predaliens = 0

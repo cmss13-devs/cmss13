@@ -89,6 +89,7 @@
 		return
 	processing_tray.weedlevel += 0.5*(potency*2)*volume
 	processing_tray.pestlevel += 0.5*(potency*2)*volume
+	processing_tray.nutrilevel += 0.5*(potency*2)*volume
 	processing_tray.plant_health += 0.5*(potency*2)*volume
 	processing_tray.yield_mod += 0.05*(potency*2)*volume
 

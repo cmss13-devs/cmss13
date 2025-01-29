@@ -17,6 +17,16 @@
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
 
+/datum/reagent/nutriment/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.5*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 1*volume
+
+
+
 /datum/reagent/nutriment/egg
 	name = "Egg"
 	id = "egg"

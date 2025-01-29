@@ -209,8 +209,9 @@
 
 	reagents.trans_to(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
 	for(var/datum/reagent/processed_reagent in temp_chem_holder.reagents.reagent_list)
+		processed_reagent.reaction_hydro_tray_reagent(src, processed_reagent.volume)
 		for(var/datum/chem_property/chem_property in processed_reagent?.properties)
-			chem_property.reaction_hydro_tray(src , level/2 , processed_reagent.volume)
+			chem_property.reaction_hydro_tray(src, level/2, processed_reagent.volume)
 
 	temp_chem_holder.reagents.clear_reagents()
 	check_level_sanity()

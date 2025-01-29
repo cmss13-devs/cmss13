@@ -200,7 +200,7 @@
 
 	//OD ratios
 	overdose = 5
-	for(var/i=1;i<=rand(max(gen_tier*2, 4),9);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
+	for(var/i=1;i<=rand(max(gen_tier*2, 4),9);i++) //We add 5 units to the overdose per cycle, min 30u, max 60u
 		overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose

@@ -321,6 +321,26 @@
 /obj/structure/shuttle/part/dropship3/transparent/right_outer_bottom_wing
 	icon_state = "6"
 
+
+/obj/structure/shuttle/part/tripoli
+	name = "\improper Tripoli"
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "1"
+	opacity = TRUE
+
+/obj/structure/shuttle/part/tripoli/transparent
+	opacity = FALSE
+
+/obj/structure/shuttle/part/tripoli/transparent/nosecone
+	desc = "Part of the nose assembly of the UD-4 Cheyenne. Contains the forward sensor complex."
+
+/obj/structure/shuttle/part/tripoli/gunpod_prop
+	name = "\improper Tripoli"
+	desc = "The nose of a UD-4 Cheyenne dropship. Contains the AESA radar system and the chin-mounted powered gunpod containing the GAU-113/B 25mm rotary autocannon with a 900 round drum."
+	icon = 'icons/turf/dropship.dmi'
+	icon_state = "101a"
+	opacity = FALSE
+
 /obj/structure/shuttle/part/dropshipupp
 	name = "\improper Morana"
 	icon = 'icons/turf/upp_dropship.dmi'

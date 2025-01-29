@@ -919,6 +919,18 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_SAIPAN
 
+
+/obj/structure/machinery/computer/dropship_weapons/tripoli
+	name = "\improper 'Tripoli' weapons controls"
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_TRIPOLI
+
+/obj/structure/machinery/computer/dropship_weapons/tripoli/small
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "cameras"
+	density = FALSE
+
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
 	if(!configuration)
 		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))

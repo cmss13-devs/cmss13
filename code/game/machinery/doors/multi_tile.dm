@@ -324,6 +324,10 @@
 	name = "\improper Saipan cargo door"
 	icon = 'icons/obj/structures/doors/dropship3_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds4
+	name = "\improper Midway cargo door"
+	icon = 'icons/obj/structures/doors/dropship5_cargo.dmi'
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/upp
 	name = "\improper Morana cargo door"
 	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'

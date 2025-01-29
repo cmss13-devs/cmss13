@@ -95,6 +95,20 @@
 /obj/item/ammo_box/rounds/smg/heap/empty
 	empty = TRUE
 
+//----------------10x28mm Ammunition Boxes (for Smartguns)------------------
+
+/obj/item/ammo_box/rounds/smartgun
+	name = "\improper smartgun ammunition box (10x28mm)"
+	desc = "A 10x28mm ammunition box. Used to refill smartgun drum magazines. It comes with a leather strap that allows you to wear it on your back."
+	overlay_content = "_reg"
+	default_ammo = /datum/ammo/bullet/smartgun
+	caliber = "10x28mm"
+	bullet_amount = 1000
+	max_bullet_amount = 1000
+
+/obj/item/ammo_box/rounds/smartgun/empty
+	empty = TRUE
+
 //----------------5.45x39mm Ammunition Boxes (for UPP Type71 family)------------------
 
 /obj/item/ammo_box/rounds/type71

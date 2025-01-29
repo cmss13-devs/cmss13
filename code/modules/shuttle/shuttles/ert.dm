@@ -339,12 +339,6 @@
 	id = ADMIN_LANDING_PAD_6
 	roundstart_template = /datum/map_template/shuttle/response_ert
 
-/obj/docking_port/stationary/emergency_response/golden_arrow_port
-	name = "USS Golden Arrow Landing Pad 1"
-	dir = NORTH
-	id = ADMIN_LANDING_PAD_7
-	roundstart_template = /datum/map_template/shuttle/response_ert
-
 /datum/map_template/shuttle/response_ert
 	name = "Response Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT1

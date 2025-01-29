@@ -137,6 +137,15 @@
 /obj/docking_port/mobile/marine_dropship/saipan/get_transit_path_type()
 	return /turf/open/space/transit/dropship/saipan
 
+/obj/docking_port/mobile/marine_dropship/tripoli
+	name = "Tripoli"
+	id = DROPSHIP_TRIPOLI
+	width = 9
+	height = 18
+
+	dwidth = 4
+	dheight = 8
+
 /obj/docking_port/mobile/marine_dropship/morana
 	name = "Morana"
 	id = DROPSHIP_MORANA
@@ -358,6 +367,10 @@
 /datum/map_template/shuttle/saipan
 	name = "Saipan"
 	shuttle_id = DROPSHIP_SAIPAN
+
+/datum/map_template/shuttle/tripoli
+	name = "Tripoli"
+	shuttle_id = DROPSHIP_TRIPOLI
 
 /datum/map_template/shuttle/morana
 	name = "Morana"

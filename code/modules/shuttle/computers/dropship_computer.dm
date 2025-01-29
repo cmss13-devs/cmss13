@@ -655,6 +655,10 @@
 	needs_power = TRUE
 	can_change_shuttle = TRUE
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/small
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "cameras_old"
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP

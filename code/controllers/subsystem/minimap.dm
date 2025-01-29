@@ -692,6 +692,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/allowed_flags = MINIMAP_FLAG_USCM
 	/// by default the ground map - this picks the first level matching the trait. if it exists
 	var/targeted_ztrait = ZTRAIT_GROUND
+	/// the current z level within the z stack
+	var/target_z = 1
 	var/atom/owner
 
 	/// tacmap holder for holding the minimap
@@ -749,9 +751,9 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
+		if(!level[target_z])
 			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -780,9 +782,9 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(use_live_map && !map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
+		if(!level[target_z])
 			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -954,6 +956,30 @@ SUBSYSTEM_DEF(minimaps)
 		if("onDraw")
 			updated_canvas = FALSE
 
+		if("changeZ")
+			var/amount = params["amount"]
+			var/level = SSmapping.levels_by_trait(targeted_ztrait)			
+			if(!SSmapping.same_z_map(level[target_z], level[target_z+amount]))
+				return
+
+			target_z += amount
+
+			if(!level[target_z])
+				return
+
+			ui.close()
+
+			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
+			var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || istype(xeno)
+			resend_current_map_png(user)
+
+			if(use_live_map)
+				tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
+				addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
+				user.client.register_map_obj(map_holder.map)
+
+			addtimer(CALLBACK(src, PROC_REF(reopen_ui), user, ui), 1 DECISECONDS) // If it is opened too quickly the map doesn't update for some reason
+
 		if("selectAnnouncement")
 			if(!drawing_allowed)
 				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
@@ -996,6 +1022,10 @@ SUBSYSTEM_DEF(minimaps)
 			updated_canvas = FALSE
 
 	return TRUE
+
+/datum/tacmap/drawing/proc/reopen_ui(mob/user, datum/tgui/ui)
+	ui = new(user, src, "TacticalMap")
+	ui.open()
 
 /datum/tacmap/ui_status(mob/user)
 	if(!(isatom(owner)))

@@ -367,7 +367,7 @@
 	//Insert the property
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
 	P = new P.type()
-	P.level = min(P.max_level, level)
+	P.level = level
 	P.holder = src
 	LAZYADD(properties, P)
 

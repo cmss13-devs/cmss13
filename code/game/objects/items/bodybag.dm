@@ -171,6 +171,9 @@
 		return 1
 	return 0
 
+// bodybags do nothing when called to dump contents
+/obj/structure/closet/bodybag/dump_contents()
+
 /obj/structure/closet/bodybag/open()
 	. = ..()
 	update_name()
@@ -178,11 +181,13 @@
 /obj/structure/closet/bodybag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
-		if(!ishuman(usr)) return
+		if(!ishuman(usr))
+			return
 		var/obj/item/undeployed = locate(item_path) in contents
 		if(!(undeployed))
 			undeployed = new item_path(contents)
-		else if(length(contents) > 1) return 0
+		else if(length(contents) > 1)
+			return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		usr.put_in_hands(undeployed)
 		forceMove(undeployed)

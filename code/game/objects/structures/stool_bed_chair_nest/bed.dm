@@ -216,21 +216,21 @@
 /obj/structure/bed/roller/MouseDrop(atom/over_object)
 	. = ..()
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
-		var/mob/living/carbon/human/H = over_object
+		var/mob/living/carbon/human/user = over_object
 		if(length(contents) == 0)
 			new foldabletype(src)
 		var/obj/item/roller/rollerholder = locate(foldabletype) in src.contents
 		if (istype(over_object, /mob/living/carbon/human))
-			if (H == usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
-				H.put_in_hands(rollerholder)
-				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
+			if (user == usr && !user.is_mob_incapacitated() && Adjacent(user) && in_range(src, over_object))
+				user.put_in_hands(rollerholder)
+				user.visible_message(SPAN_WARNING("[user] grabs [src] from the floor!"),
 				SPAN_WARNING("You grab [src] from the floor!"))
 				forceMove(rollerholder)
 
-/obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.handcuffed)
+/obj/structure/bed/roller/buckle_mob(mob/mob, mob/user)
+	if(iscarbon(mob))
+		var/mob/living/carbon/target_mob = mob
+		if(target_mob.handcuffed)
 			to_chat(user, SPAN_DANGER("You cannot buckle someone who is handcuffed onto this bed."))
 			return
 	..()
@@ -268,6 +268,7 @@
 	..()
 	deploy_roller(user, user.loc)
 
+/// Handles the switch between a item/roller to a structure/bed/roller, and storing one within the other when not in use
 /obj/item/roller/proc/deploy_roller(mob/user, atom/location)
 	if(length(contents) == 0)
 		new rollertype(src)
@@ -328,6 +329,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	accepts_bodybag = TRUE
 	var/stretcher_activated
 	var/view_range = 5
+	/// Allows Medevac beds to act like they're working, but not interact with the Medevac system itself. Set prop variable to TRUE when you'd like to bypass regular functions on a Medevac bed
 	var/prop
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.

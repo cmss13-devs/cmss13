@@ -567,10 +567,9 @@
 
 	// restore us to consciousness
 	set_stat(CONSCIOUS)
+	regenerate_all_icons()
 
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
-
-	regenerate_all_icons()
 
 /mob/living/proc/heal_all_damage()
 	// shut down various types of badness
@@ -601,8 +600,8 @@
 /mob/living/proc/regenerate_all_icons()
 	// make the icons look correct
 	regenerate_icons()
-	med_hud_set_health()
 	med_hud_set_status()
+	med_hud_set_health()
 	med_hud_set_armor()
 	reload_fullscreens()
 	if(ishuman(src))

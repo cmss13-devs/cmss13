@@ -65,6 +65,7 @@
 	weed_food_states_flipped = list("Warrior_1","Warrior_2","Warrior_3")
 
 	skull = /obj/item/skull/warrior
+	pelt = /obj/item/pelt/warrior
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 

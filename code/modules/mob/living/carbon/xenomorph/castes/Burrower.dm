@@ -84,6 +84,7 @@
 	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
 
 	skull = /obj/item/skull/burrower
+	pelt = /obj/item/pelt/burrower
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

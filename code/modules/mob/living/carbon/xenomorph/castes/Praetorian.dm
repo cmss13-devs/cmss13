@@ -75,6 +75,7 @@
 	weed_food_states_flipped = list("Praetorian_1","Praetorian_2","Praetorian_3")
 
 	skull = /obj/item/skull/praetorian
+	pelt = /obj/item/pelt/praetorian
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"

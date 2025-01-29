@@ -357,6 +357,7 @@
 	claw_type = CLAW_TYPE_VERY_SHARP
 
 	skull = /obj/item/skull/queen
+	pelt = /obj/item/pelt/queen
 
 	var/queen_aged = FALSE
 	var/queen_age_timer_id = TIMER_ID_NULL

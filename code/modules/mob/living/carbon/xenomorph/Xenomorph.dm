@@ -256,6 +256,7 @@
 	var/organ_value = 0
 
 	var/obj/item/skull/skull = /obj/item/skull
+	var/obj/item/pelt/pelt = /obj/item/pelt
 
 
 	//////////////////////////////////////////////////////////////////

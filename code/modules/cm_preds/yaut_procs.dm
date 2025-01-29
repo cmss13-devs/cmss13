@@ -161,11 +161,10 @@
 				if(xeno_victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
-					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-					var/obj/item/skull = new xeno_victim.skull(xeno_victim.loc)
-					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
+					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
+					pelt.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-pelt"
+					skull.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-skull"
 				else if(victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))

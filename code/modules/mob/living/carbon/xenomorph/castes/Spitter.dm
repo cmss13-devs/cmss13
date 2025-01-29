@@ -65,3 +65,4 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 	skull = /obj/item/skull/spitter
+	pelt = /obj/item/pelt/spitter

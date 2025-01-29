@@ -59,7 +59,7 @@
 			if(user.skills.get_skill_level(skill_trait.secondary_skill) < skill_trait.secondary_skill_cap)
 				return
 
-			to_chat(user, SPAN_WARNING("This pamphlet is useles for you!"))
+			to_chat(user, SPAN_WARNING("This pamphlet is useless for you!"))
 			return FALSE
 
 /obj/item/pamphlet/skill/medical

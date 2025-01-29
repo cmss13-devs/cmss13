@@ -361,14 +361,11 @@
 
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
 	if(ishumansynth_strict(user))
-		var/gender = "male"
-		if(user.gender == FEMALE)
-			gender = "female"
 		switch(user.faction)
 			if(FACTION_UPP, FACTION_HUNTED_UPP)
-				return get_sfx("[gender]_upp_warcry")
+				return get_sfx("[user.gender]_upp_warcry")
 			else
-				return get_sfx("[gender]_warcry")
+				return get_sfx("[user.gender]_warcry")
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

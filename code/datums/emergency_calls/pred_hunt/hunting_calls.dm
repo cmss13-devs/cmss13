@@ -21,9 +21,9 @@
 /datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
 	if(mob_min > length(members))
-		message_all_yautja("Not enough humans in storage for the hunt you called.")
+		message_all_yautja("Not enough humans in storage for the hunt to start.")
 	else
-		message_all_yautja("Released [length(members)] humans from storage, Let the hunt commence!")
+		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
 
 /datum/emergency_call/pred/mixed/create_member(datum/mind/player, turf/override_spawn_loc)
 	set waitfor = 0
@@ -117,9 +117,9 @@
 /datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
 	if(mob_min > length(members))
-		message_all_yautja("Not enough serpents in storage for the hunt you called.")
+		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
-		message_all_yautja("Released [length(members)] serpents from storage, Let the hunt commence!")
+		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
 
 /datum/emergency_call/pred/xeno/create_member(datum/mind/player, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

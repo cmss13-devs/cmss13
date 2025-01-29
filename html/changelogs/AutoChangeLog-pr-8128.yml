@@ -1,0 +1,5 @@
+author: "Paperybirch"
+delete-after: True
+changes:
+  - rscadd: "Added reagent/ethanol/ethanol and defined its chem class as CHEM_CLASS_BASIC"
+  - bugfix: "Changed oxycodone's chem class from uncommon to CHEM_CLASS_COMMON"

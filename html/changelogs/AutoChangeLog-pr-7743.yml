@@ -1,6 +1,0 @@
-author: "QuickLode"
-delete-after: True
-changes:
-  - rscadd: "Adds the Ship Operations Synthetic. This ship-oriented Synthetic assists the USS Almayer with various tasks and improves the atmosphere of the vessel, they maintain the entire ship and act as its pilot. This role is enabled if there is no Survivor Synthetic present. Huge thanks to Drathek for roleauthority code!"
-  - rscadd: "Changes role selection color of WJ to be slightly darker to differentiate from Synthetics."
-  - code_imp: "restructured lobby role selection menu to accomadate new role"

@@ -57,6 +57,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/datum/chem_property/properties = list() //Decides properties
 	var/original_id //For tracing back
 	var/flags = 0 // Flags for misc. stuff
+	/// How much to adjust the temperature up until target_temp (positive is heating) when in a mob
+	var/adj_temp = 0
+	/// When adj_temp is used, this is the cap to the temperature
+	var/target_temp = 310
 
 	var/deleted = FALSE //If the reagent was deleted
 
@@ -105,14 +109,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					M.reagents.add_reagent(self.id, self.volume * 0.5)
 
 		for(var/datum/chem_property/property in self.properties)
-			var/potency = property.level * 0.5
+			var/potency = property.level * LEVEL_TO_POTENCY_MULTIPLIER
 			property.reaction_mob(M, method, volume, potency)
 
 	return TRUE
 
 /datum/reagent/proc/reaction_obj(obj/O, volume)
 	for(var/datum/chem_property/P in properties)
-		var/potency = P.level * 0.5
+		var/potency = P.level * LEVEL_TO_POTENCY_MULTIPLIER
 		P.reaction_obj(O, volume, potency)
 	//By default we transfer a small part of the reagent to the object
 	//if it can hold reagents. nope!
@@ -122,7 +126,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /datum/reagent/proc/reaction_turf(turf/T, volume)
 	for(var/datum/chem_property/P in properties)
-		var/potency = P.level * 0.5
+		var/potency = P.level * LEVEL_TO_POTENCY_MULTIPLIER
 		P.reaction_turf(T, volume, potency)
 	return
 
@@ -140,6 +144,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	handle_processing(M, mods, delta_time)
 	holder.remove_reagent(id, custom_metabolism * delta_time)
+
+	if(adj_temp && M.bodytemperature != target_temp)
+		if(adj_temp > 0) // heating
+			M.bodytemperature = min(target_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
+		else
+			M.bodytemperature = max(target_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time))
+		M.recalculate_move_delay = TRUE
 
 	if(!holder)
 		return FALSE
@@ -168,7 +179,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
-		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
+		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)
 		if(potency <= 0)
 			continue
 		P.process(M, potency, delta_time)
@@ -191,7 +202,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/handle_dead_processing(mob/living/M, list/mods, delta_time)
 	var/processing_in_dead = FALSE
 	for(var/datum/chem_property/P in properties)
-		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
+		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)
 		if(potency <= 0)
 			continue
 		if(P.process_dead(M, potency, delta_time))

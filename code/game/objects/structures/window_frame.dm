@@ -88,11 +88,11 @@
 		if(sheet.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more [W.name] to install a new window."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."), \
+		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."),
 		SPAN_NOTICE("You start installing a new window on the frame."))
 		playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."), \
+			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."),
 			SPAN_NOTICE("You install a new window on the frame."))
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
@@ -193,7 +193,7 @@
 	if(istype(W, sheet_type))
 		to_chat(user, SPAN_WARNING("You can't repair this window."))
 		return
-	..()
+	. = ..()
 
 /obj/structure/window_frame/colony
 	icon_state = "col_window0_frame"

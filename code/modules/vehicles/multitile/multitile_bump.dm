@@ -16,7 +16,7 @@
 
 
 /turf/closed/wall/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(!hull && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
+	if(!(turf_flags & TURF_HULL) && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		take_damage(V.wall_ram_damage)
 		V.take_damage_type(10, "blunt", src)
 		playsound(V, 'sound/effects/metal_crash.ogg', 35)
@@ -256,12 +256,6 @@
 	return FALSE
 
 /obj/structure/prop/dam/torii/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
-/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
-/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
 /obj/structure/flora/tree/handle_vehicle_bump(obj/vehicle/multitile/V)

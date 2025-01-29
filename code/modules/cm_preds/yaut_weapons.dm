@@ -249,7 +249,7 @@
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	..()
+	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
@@ -258,8 +258,6 @@
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
 		user.spin(5, 1)
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
-
-	return
 
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
@@ -437,8 +435,8 @@
 	if(user.get_active_hand() != src)
 		return
 	if(!on)
-		user.visible_message(SPAN_INFO("With a flick of their wrist, [user] extends [src]."),\
-		SPAN_NOTICE("You extend [src]."),\
+		user.visible_message(SPAN_INFO("With a flick of their wrist, [user] extends [src]."),
+		SPAN_NOTICE("You extend [src]."),
 		"You hear blades extending.")
 		playsound(src,'sound/handling/combistick_open.ogg', 50, TRUE, 3)
 		icon_state = initial(icon_state)
@@ -511,7 +509,7 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \
+			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),
 				SPAN_NOTICE(" You easily catch [src]. "))
 			return
 	..()
@@ -604,7 +602,7 @@
 		SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You were interrupted before you could finish your work!"))
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 ///Records status of flaying attempts and handles progress.
 /datum/flaying_datum

@@ -1260,7 +1260,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Senior Enlisted Advisor's Office";
 	req_access = null;
-	req_access_txt = list(19, 29)
+	req_one_access = list(19, 29)
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -3879,6 +3879,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/orange,
 /area/almayer/maint/upper/mess)
+"ajA" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	req_one_access = list(19, 29);
+	req_access = null
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/shipboard/sea_office)
 "ajB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
@@ -7077,9 +7084,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/engineering/upper_engineering)
-"auW" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/shipboard/port_point_defense)
 "auX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -16675,6 +16679,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "bTx" = (
+/obj/structure/machinery/power/apc/almayer/south,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bTy" = (
@@ -33319,7 +33324,6 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/engineering/ce_room)
 "iFD" = (
-/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/shipboard/sea_office)
 "iFH" = (
@@ -58650,15 +58654,6 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/upper_engineering/port)
-"tiR" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	access_modified = 1;
-	req_one_access = null;
-	req_one_access_txt = "7;19"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/shipboard/weapon_room)
 "tiW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -83827,7 +83822,7 @@ eQR
 uFp
 bBA
 bBA
-tiR
+bBA
 bBA
 bBA
 alU
@@ -99693,10 +99688,10 @@ azD
 azD
 azD
 wDr
-bSf
-bSf
-auW
-bSf
+bUO
+nGi
+bVd
+sYP
 bSf
 ued
 bSf
@@ -99897,9 +99892,9 @@ azD
 azD
 wDr
 wcN
-nGi
+bTO
+bTO
 bVd
-bUO
 bSf
 weC
 tZc
@@ -100102,7 +100097,7 @@ wDr
 wgR
 bTO
 bTO
-sYP
+bVd
 bSf
 cpk
 bVd
@@ -116317,7 +116312,7 @@ vub
 vub
 vub
 vub
-vub
+ajA
 vub
 vub
 vub

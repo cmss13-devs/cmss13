@@ -34,11 +34,29 @@
 	var/list/final_participants = list() // types of /datum/entity/statistic, "[mob.faction]" = 0
 	var/list/hijack_participants = list() // types of /datum/entity/statistic, "[mob.faction]" = 0
 	var/list/total_deaths = list() // types of /datum/entity/statistic, "[mob.faction]" = 0
+
+  //TODO: CHANGE IT
+	var/list/castes_evolved = list() // dict of any caste that has been evolved into, and how many times, "Ravager" = 5, "Warrior" = 2
+
 	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
+
 BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
+
+/datum/entity/statistic_round/Destroy(force)
+	. = ..()
+	QDEL_NULL(current_map)
+	QDEL_LIST(death_stats_list)
+	QDEL_LIST_ASSOC_VAL(castes_evolved)
+	QDEL_LIST_ASSOC_VAL(abilities_used)
+	QDEL_LIST_ASSOC_VAL(final_participants)
+	QDEL_LIST_ASSOC_VAL(hijack_participants)
+	QDEL_LIST_ASSOC_VAL(total_deaths)
+	QDEL_LIST_ASSOC_VAL(caste_stats_list)
+	QDEL_LIST_ASSOC_VAL(weapon_stats_list)
+	QDEL_LIST_ASSOC_VAL(job_stats_list)
 
 /datum/entity_meta/statistic_round
 	entity_type = /datum/entity/statistic_round
@@ -173,13 +191,20 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 
 	if(!total_deaths[faction])
 		setup_faction(faction)
-
 	total_deaths[faction]++
+
+
+/datum/entity/statistic_round/proc/store_caste_evo_data()
+	var/datum/entity/round_caste_picks/caste_picks = DB_ENTITY(/datum/entity/round_caste_picks)
+	caste_picks.castes_picked = castes_evolved
+	caste_picks.save()
 
 /datum/entity/statistic_round/proc/log_round_statistics()
 	save()
 	if(!GLOB.round_stats)
 		return
+
+	store_caste_evo_data()
 
 	var/total_xenos_created = 0
 	var/total_predators_spawned = 0

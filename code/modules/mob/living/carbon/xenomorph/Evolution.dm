@@ -4,6 +4,9 @@
 //All castes need an evolves_to() list in their defines
 //Such as evolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SENTINEL, XENO_CASTE_RUNNER, "Badass") etc
 
+/// A list of ckeys that have been de-evolved willingly or forcefully
+GLOBAL_LIST_EMPTY(deevolved_ckeys)
+
 /mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
@@ -198,7 +201,18 @@
 
 	if(new_xeno.mind && GLOB.round_statistics)
 		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+
 	SSround_recording.recorder.track_player(new_xeno)
+
+	// We prevent de-evolved people from being tracked for the rest of the round relating to T1s in order to prevent people
+	// Intentionally de/re-evolving to mess with the stats gathered. We don't track t2/3 because it's a legit strategy to open
+	// With a t1 into drone before de-evoing later to go t1 into another caste once survs are dead/capped
+	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys)))
+		var/caste_cleaned_key = lowertext(replacetext(castepick, " ", "_"))
+		if(!SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key])
+			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] = 1
+		else
+			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] += 1
 
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
 
@@ -314,8 +328,8 @@
 	if(new_xeno)
 		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
 
-
-	return
+	if(new_xeno.ckey)
+		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste)
 	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()

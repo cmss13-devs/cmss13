@@ -1,4 +1,5 @@
 
+
 /*boozepwr chart
 1-2 = non-toxic alcohol
 3 = medium-toxic
@@ -54,6 +55,15 @@
 		else
 			to_chat(usr, "It wasn't enough...")
 	return
+
+/**
+ * Sets only reagent ethanol to CHEM_CLASS_COMMON allowing for Turing machine to dispense it
+ *
+ * Sets ethanol to CHEM_CLASS_COMMON inheriting everything from /datum/reagent/ethanol.
+ * seems wonky to do double naming but cant have turing be super booze disp
+ */
+/datum/reagent/ethanol/ethanol
+	chemclass = CHEM_CLASS_BASIC
 
 /datum/reagent/ethanol/beer
 	name = "Beer"

@@ -140,11 +140,6 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial/slower, rgb(103, 214, 146))
 	to_chat(tutorial_mob, SPAN_NOTICE(message))
 
-/datum/tutorial/proc/left_align_message_to_player(message)
-	playsound_client(tutorial_mob.client, 'sound/machines/screen_output1.ogg', tutorial_mob.loc, 25, FALSE)
-	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial/slower/scoreboard)
-	to_chat(tutorial_mob, SPAN_NOTICE(message))
-
 /// Updates a player's objective in their status tab
 /datum/tutorial/proc/update_objective(message)
 	SEND_SIGNAL(tutorial_mob, COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE, message)

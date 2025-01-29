@@ -252,9 +252,8 @@
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src].")
 		return
 
-	if(!target.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
-		if(!(target.status_flags & FAKESOUL)) // Makes sure we dont accidentally expose something for what it truly is
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
+	if(!(target.client && (target.status_flags & FAKESOUL))) //Freak case, no client at all. This is a braindead mob (like a colonist)
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
 
 	if(isobserver(target.mind?.current) && !target.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
 		target.mind.transfer_to(target, TRUE)

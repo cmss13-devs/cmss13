@@ -26,7 +26,7 @@
 			deploy_bodybag(user, T)
 
 /obj/item/bodybag/proc/deploy_bodybag(mob/user, atom/location)
-	if(src.contents.len == 0)
+	if(length(contents) == 0)
 		new unfolded_path(src)
 	var/obj/structure/closet/bodybag/deployed = locate(unfolded_path) in src.contents
 	deployed.forceMove(user.loc)
@@ -179,9 +179,9 @@
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
 		if(!ishuman(usr)) return
-		var/obj/item/undeployed = locate(item_path) in src.contents
+		var/obj/item/undeployed = locate(item_path) in contents
 		if(!(undeployed))
-			undeployed = new item_path(src.contents)
+			undeployed = new item_path(contents)
 		else if(length(contents) > 1) return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		usr.put_in_hands(undeployed)

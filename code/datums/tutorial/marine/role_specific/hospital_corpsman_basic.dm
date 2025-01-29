@@ -205,7 +205,9 @@
 	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
 	remove_highlight(brute_injector)
-	qdel(brute_injector)
+	QDEL_IN(brute_injector, 2 SECONDS)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_4)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/brute_tutorial_5_pre()
@@ -427,7 +429,9 @@
 	message_to_player("Dont use the injector on yourself, try again.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use, burn_injector)
 	remove_highlight(burn_injector)
-	qdel(burn_injector)
+	QDEL_IN(burn_injector, 2 SECONDS)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial_6)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/burn_tutorial_7_pre()
@@ -520,6 +524,8 @@
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/shrapnel_tutorial_3()
 	SIGNAL_HANDLER
+
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
 
 	message_to_player("Well done!")
 	message_to_player("It seems that our friend Pvt Dummy is suddenly injured. Use your <b>Health Analyzer</b> to scan them.")
@@ -694,7 +700,9 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/oxycodone/one_use, oxy)
 	remove_highlight(oxy)
 	remove_from_tracking_atoms(oxy)
-	qdel(oxy)
+	QDEL_IN(oxy, 2 SECONDS)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	addtimer(CALLBACK(src, PROC_REF(tram_pill_fed)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/oxy_inject()
@@ -859,7 +867,9 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/dexalinp/one_use, dexp)
 	remove_highlight(dexp)
 	remove_from_tracking_atoms(dexp)
-	qdel(dexp)
+	QDEL_IN(dexp, 2 SECONDS)
+	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
+	UnregisterSignal(marine_dummy, COMSIG_LIVING_HYPOSPRAY_INJECTED)
 	addtimer(CALLBACK(src, PROC_REF(oxy_tutorial_5)), 4 SECONDS)
 
 /datum/tutorial/marine/role_specific/hospital_corpsman_basic/proc/dexp_inject()
@@ -1060,7 +1070,7 @@
 	SIGNAL_HANDLER
 
 	message_to_player("This officially completes your basic training to be a Marine Horpital Corpsman. However, you still have some skills left to learn!")
-	message_to_player("The <b>Hospital Corpsman <u>Advanced</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
+	message_to_player("The <b>Hospital Corpsman <u>IIntermediate</u></b> tutorial will now be unlocked in your tutorial menu. Give it a go!")
 	update_objective("Tutorial completed.")
 
 

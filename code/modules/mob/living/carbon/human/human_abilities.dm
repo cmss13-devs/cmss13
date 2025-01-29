@@ -498,20 +498,20 @@ CULT
 			chosen.join_mutiny(TRUE, MUTINY_MUTINEER)
 		converted.remove_from(human_owner)
 
-	start_marine_mutiny(human_owner)
 	human_owner.join_mutiny(TRUE, MUTINY_MUTINEER)
+	start_mutiny(human_owner.faction)
+	message_admins("[key_name_admin(leader)] has begun the mutiny.")
 	remove_from(human_owner)
 
-/proc/start_marine_mutiny(mob/living/carbon/human/leader)
-	message_admins("[key_name_admin(leader)] has begun the mutiny.")
-	if(leader.faction == FACTION_MARINE)
+/proc/start_mutiny(mutiny_faction)
+	if(mutiny_faction == FACTION_MARINE)
 		shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
 		set_security_level(SEC_LEVEL_RED, TRUE)
 
 	for(var/mob/living/carbon/human/person in GLOB.alive_human_list)
 		if(!person.client)
 			continue
-		if(person.faction != leader.faction)
+		if(person.faction != mutiny_faction)
 			continue
 		if(person.mob_flags & (MUTINY_MUTINEER|MUTINY_LOYALIST|MUTINY_NONCOMBAT))
 			continue

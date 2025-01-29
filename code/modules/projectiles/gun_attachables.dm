@@ -446,28 +446,30 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
 
 /obj/item/attachable/shotgun_choke
-	name = "full choke"
-	desc = "A tapered muzzle attachment that significantly improves the ranged performance of shotguns. It tightens the spread of shells, improves their accuracy and effective range. The cycling rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced. Not recommended for use with slugs."
+	name = "shotgun choke kit"
+	desc = "A box containing a modified choke along with a couple of differing internal parts for the M37A2 pump shotgun. It mildly tightens the spread, accuracy and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "comp"
-	attach_icon = "comp_a"
-	pixel_shift_x = 17
-	hud_offset_mod = -3
+	icon_state = "choke"
+	attach_icon = "choke_a"
+	pixel_shift_x = 18
+	pixel_shift_y = 17
+	hud_offset_mod = -1
 
 /obj/item/attachable/shotgun_choke/New()
 	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_10
+	recoil_mod = RECOIL_AMOUNT_TIER_4
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 	damage_mod = -BULLET_DAMAGE_MULT_TIER_6
 	scatter_mod = -SCATTER_AMOUNT_TIER_9
-	delay_mod = -10
+	delay_mod = -FIRE_DELAY_TIER_2
 	projectile_max_range_mod = 1
 	damage_falloff_mod = -0.3
 
 /obj/item/attachable/shotgun_choke/Attach(obj/item/weapon/gun/shotgun/pump/attaching_gun)
 	if(!istype(attaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
-	attaching_gun.pump_delay -= 7
+	attaching_gun.pump_delay -= FIRE_DELAY_TIER_5
 	attaching_gun.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("knockback_disabled", /datum/element/bullet_trait_knockback_disabled))
 	attaching_gun.fire_sound = 'sound/weapons/gun_shotgun_choke.ogg'
 
@@ -476,7 +478,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/shotgun_choke/Detach(mob/user, obj/item/weapon/gun/shotgun/pump/detaching_gun)
 	if(!istype(detaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
-	detaching_gun.pump_delay += 7
+	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
 	detaching_gun.remove_bullet_trait("knockback_disabled")
 	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
 

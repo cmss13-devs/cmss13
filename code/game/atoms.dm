@@ -426,7 +426,7 @@ Parameters are passed from New.
 
 /atom/proc/create_clone(obj/effect/projector/P) //NOTE: Use only for turfs, otherwise use create_clone_movable
 	var/turf/T = null
-	T = locate(src.x + P.vector_x, src.y + P.vector_y)
+	T = locate(src.x + P.vector_x, src.y + P.vector_y, z)
 
 	if(P.modify_turf)
 		T.appearance = src.appearance

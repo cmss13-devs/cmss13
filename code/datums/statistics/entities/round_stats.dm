@@ -47,16 +47,17 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 
 /datum/entity/statistic_round/Destroy(force)
 	. = ..()
+
 	QDEL_NULL(current_map)
 	QDEL_LIST(death_stats_list)
-	QDEL_LIST_ASSOC_VAL(castes_evolved)
-	QDEL_LIST_ASSOC_VAL(abilities_used)
-	QDEL_LIST_ASSOC_VAL(final_participants)
-	QDEL_LIST_ASSOC_VAL(hijack_participants)
-	QDEL_LIST_ASSOC_VAL(total_deaths)
-	QDEL_LIST_ASSOC_VAL(caste_stats_list)
-	QDEL_LIST_ASSOC_VAL(weapon_stats_list)
-	QDEL_LIST_ASSOC_VAL(job_stats_list)
+	castes_evolved = null
+	abilities_used = null
+	final_participants = null
+	hijack_participants = null
+	total_deaths = null
+	caste_stats_list = null
+	weapon_stats_list = null
+	job_stats_list = null
 
 /datum/entity_meta/statistic_round
 	entity_type = /datum/entity/statistic_round

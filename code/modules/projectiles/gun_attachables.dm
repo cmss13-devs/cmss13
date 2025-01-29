@@ -931,8 +931,8 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle and M44 Combat Revolver."
-	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Currently programmed for usage with the M4RA battle rifle and M44 Combat Revolver, due to their relatively lower rates of fire. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
+	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Currently programmed for usage with the M4RA battle rifle the M44 combat revolver, and the M41A MK2 pulse rifle. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
 	slot = "rail"
 	pixel_shift_y = 15
 	var/had_auto = FALSE
@@ -1207,46 +1207,6 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 	attach_icon = icon_state
-
-/obj/item/attachable/scope/mini_iff
-	name = "B9 Smart-Scope"
-	icon_state = "iffbarrel"
-	attach_icon = "iffbarrel_a"
-	desc = "An experimental B9 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle and M44 Combat Revolver."
-	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-111 Smart Scope. Currently programmed for usage with the M4RA battle rifle and M44 Combat Revolver, due to their relatively lower rates of fire. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
-	slot = "rail"
-	zoom_offset = 6
-	zoom_viewsize = 7
-	pixel_shift_y = 15
-	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
-
-/obj/item/attachable/scope/mini_iff/New()
-	..()
-	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
-	accuracy_unwielded_mod = 0
-
-	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_1
-	delay_scoped_nerf = 0
-	damage_falloff_scoped_buff = 0
-
-/obj/item/attachable/scope/mini_iff/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))
-
-/obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(do_after(user, 4, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		allows_movement = 1
-		. = ..()
-
-/obj/item/attachable/scope/mini_iff/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
-	. = ..()
-	if(G.zoom)
-		G.slowdown += dynamic_aim_slowdown
-
-/obj/item/attachable/scope/mini_iff/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
-	G.slowdown -= dynamic_aim_slowdown
-	..()
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

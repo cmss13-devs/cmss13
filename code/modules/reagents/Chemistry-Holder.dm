@@ -556,6 +556,9 @@
 	var/supplemented = 0 //for determining fire shape. Intensifying chems add, moderating chems remove.
 	var/smokerad = 0
 	var/fire_penetrating = FALSE
+	var/explosion_use_dir = FALSE
+	var/shrapnel_use_dir = FALSE
+
 	var/list/supplements = list()
 	for(var/datum/reagent/R in reagent_list)
 		if(R.explosive)
@@ -577,7 +580,9 @@
 		var/obj/item/explosive/E = my_atom
 		ex_falloff_shape = E.falloff_mode
 		angle = E.angle
-		if(E.use_dir)
+		explosion_use_dir = E.explosion_use_dir
+		shrapnel_use_dir = E.shrapnel_use_dir
+		if(E.explosion_use_dir || E.shrapnel_use_dir)
 			if(E.last_move_dir) // Higher precision for grenade and what not.
 				dir = E.last_move_dir
 			else
@@ -588,7 +593,7 @@
 	intensity = floor(intensity)
 	duration = floor(duration)
 	if(ex_power > 0)
-		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
+		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle, explosion_use_dir, shrapnel_use_dir)
 	if(intensity > 0)
 		var/firecolor = mix_burn_colors(supplements)
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating) // TODO: Implement directional flames
@@ -598,7 +603,7 @@
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
+/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle, explosion_use_dir, shrapnel_use_dir)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -644,11 +649,11 @@
 
 		//Note: No need to log here as that is done in cell_explosion()
 		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom)
-		create_shrapnel(sourceturf, shards, dir, angle, shard_type, cause_data)
+		create_shrapnel(sourceturf, shards, shrapnel_use_dir ? dir : null, angle, shard_type, cause_data)
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			addtimer(CALLBACK(my_atom.loc, TYPE_PROC_REF(/atom, ex_act), ex_power), 0.2 SECONDS)
 			ex_power = ex_power / 2
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, cause_data), 0.2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sourceturf, ex_power, ex_falloff, ex_falloff_shape, explosion_use_dir ? dir : null, cause_data), 0.2 SECONDS)
 
 		exploded = TRUE // clears reagents after all reactions processed
 

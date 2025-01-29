@@ -22,7 +22,8 @@
 							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	angle = 60
-	use_dir = TRUE
+	explosion_use_dir = TRUE
+	shrapnel_use_dir = TRUE
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
@@ -168,11 +169,14 @@
 	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
 		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
-			use_dir = TRUE
+			explosion_use_dir = TRUE
+			shrapnel_use_dir = TRUE
 			return
 		else
 			..()
-			use_dir = FALSE // Claymore defaults to radial in these case. Poor man C4
+			// Claymore defaults to radial in these case. Poor man C4
+			explosion_use_dir = FALSE
+			shrapnel_use_dir = FALSE
 			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
 
 

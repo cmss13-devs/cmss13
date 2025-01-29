@@ -26,9 +26,14 @@
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
 	var/allow_star_shape = TRUE
-	var/use_dir = FALSE
+	/// Whether explosions created care about directions
+	var/explosion_use_dir = FALSE
+	/// Whether shrapnels created care about directions
+	var/shrapnel_use_dir = FALSE
+	/// Splatter angle for shrapnels
 	var/angle = 360
-	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
+	/// Whether or not the casing can be toggled between different falloff_mode
+	var/has_blast_wave_dampener = FALSE;
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'

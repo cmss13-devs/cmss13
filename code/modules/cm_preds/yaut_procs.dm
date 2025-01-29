@@ -163,8 +163,8 @@
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
 					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
-					pelt.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-pelt"
-					skull.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-skull"
+					pelt.name = "[xeno_victim.age_prefix] [xeno_victim.real_name] [xeno_victim.caste_type] pelt"
+					skull.name = "[xeno_victim.age_prefix] [xeno_victim.real_name] [xeno_victim.caste_type] skull"
 				else if(victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))

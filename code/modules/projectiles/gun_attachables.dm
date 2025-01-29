@@ -935,6 +935,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Currently programmed for usage with the M4RA battle rifle and M44 Combat Revolver, due to their relatively lower rates of fire. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every op, just in case."
 	slot = "rail"
 	pixel_shift_y = 15
+	var/had_auto = FALSE
 
 /obj/item/attachable/alt_iff_scope/New()
 	..()
@@ -951,10 +952,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(!GetComponent(attaching_gun, /datum/component/iff_fire_prevention))
 		attaching_gun.AddComponent(/datum/component/iff_fire_prevention)
 	SEND_SIGNAL(attaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+	if((GUN_FIREMODE_AUTOMATIC in attaching_gun.gun_firemode_list))
+		had_auto = TRUE
+		attaching_gun.do_toggle_firemode(null, null, GUN_FIREMODE_SEMIAUTO)
+		attaching_gun.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/attachable/alt_iff_scope/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	. = ..()
 	SEND_SIGNAL(detaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
+	if(had_auto == TRUE)
+		detaching_gun.add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"

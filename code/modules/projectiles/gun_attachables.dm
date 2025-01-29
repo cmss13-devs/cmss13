@@ -452,9 +452,9 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "choke"
 	attach_icon = "choke_a"
-	pixel_shift_x = 18
+	pixel_shift_x = 16
 	pixel_shift_y = 17
-	hud_offset_mod = -1
+	hud_offset_mod = -2
 
 /obj/item/attachable/shotgun_choke/New()
 	..()

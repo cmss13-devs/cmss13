@@ -49,7 +49,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 5)
 
-///Changed to Common so turing will dispense. definition of common chem class "Chemicals which recipe is commonly known and made". Oxycodone is such being avaliable from med dispenser
+//Changed to Common so turing will dispense. definition of common chem class "Chemicals which recipe is commonly known and made". Oxycodone is such being avaliable from med dispenser
 /datum/reagent/medical/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"

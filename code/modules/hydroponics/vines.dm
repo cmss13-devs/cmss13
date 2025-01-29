@@ -76,22 +76,22 @@
 		if(prob(seed ? min(max(0,100 - seed.potency),100) : 50))
 			if(buckled_mob.buckled == src)
 				if(buckled_mob != user)
-					buckled_mob.visible_message(\
-						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),\
-						SPAN_NOTICE("[user.name] frees you from [src]."),\
+					buckled_mob.visible_message(
+						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),
+						SPAN_NOTICE("[user.name] frees you from [src]."),
 						SPAN_WARNING("You hear shredding and ripping."))
 				else
-					buckled_mob.visible_message(\
-						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),\
-						SPAN_NOTICE("You untangle [src] from around yourself."),\
+					buckled_mob.visible_message(
+						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),
+						SPAN_NOTICE("You untangle [src] from around yourself."),
 						SPAN_WARNING("You hear shredding and ripping."))
 			unbuckle()
 			return 1
 		else
 			var/text = pick("rips","tears","pulls")
-			user.visible_message(\
-				SPAN_NOTICE("[user.name] [text] at [src]."),\
-				SPAN_NOTICE("You [text] at [src]."),\
+			user.visible_message(
+				SPAN_NOTICE("[user.name] [text] at [src]."),
+				SPAN_NOTICE("You [text] at [src]."),
 				SPAN_WARNING("You hear shredding and ripping."))
 	return 0
 

@@ -1007,7 +1007,7 @@
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
 	apply_effect(4, WEAKEN)
-	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1016,7 +1016,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/proc/get_organ_icon()
@@ -1103,7 +1103,7 @@
 		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
 			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. We can't squeeze underneath!"))
 			return FALSE
-	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"),
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE

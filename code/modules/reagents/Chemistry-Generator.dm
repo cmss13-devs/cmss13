@@ -301,8 +301,8 @@
 				property = pick(GLOB.chemical_properties_list["positive"])
 
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
-	if P.max_level >= 1
-		level = min (P.max_level, level)
+	if (P.max_level >= 1)
+		level = min(P.max_level, level)
 
 	//Calculate what our chemical value is with our level
 	var/new_value

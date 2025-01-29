@@ -1242,7 +1242,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
-	var/start_z = start_turf.z
+	var/start_z
+
+	if(end_atom.z > start_atom.z)
+		start_z = end_atom.z
+	else
+		start_z = start_atom.z
 
 	var/list/line = list()
 	if(include_start_atom)

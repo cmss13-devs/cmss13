@@ -40,7 +40,13 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 
-	if(entered_movable.flags_atom & NO_ZFALL)
+	check_fall(entered_movable)
+
+/turf/open_space/on_throw_end(atom/movable/thrown_atom)
+	check_fall(thrown_atom)
+
+/turf/open_space/proc/check_fall(atom/movable/movable)
+	if(movable.flags_atom & NO_ZFALL)
 		return
 
 	var/height = 1
@@ -50,8 +56,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 		height++
 
-	entered_movable.forceMove(below)
-	entered_movable.onZImpact(below, height)
+	movable.forceMove(below)
+	movable.onZImpact(below, height)
 
 
 /turf/open_space/attack_alien(mob/user)

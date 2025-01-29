@@ -944,6 +944,9 @@
 	if (world.time <= stabbing_xeno.next_move)
 		return FALSE
 
+	if(stabbing_xeno.z != targetted_atom.z)
+		return
+
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
 	if(distance > stab_range)
 		return FALSE

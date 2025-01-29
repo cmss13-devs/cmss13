@@ -158,6 +158,9 @@
 	launch_towards(LM)
 
 	flags_atom &= ~NO_ZFALL
+	var/turf/end_turf = get_turf(src)
+	if(end_turf)
+		end_turf.on_throw_end(src)
 
 
 // Proc for throwing or propelling movable atoms towards a target

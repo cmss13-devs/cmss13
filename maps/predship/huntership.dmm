@@ -2497,10 +2497,6 @@
 /obj/item/frame/table/wood/poor,
 /turf/open/floor/corsat/squareswood/north,
 /area/yautja)
-"uf" = (
-/obj/structure/window/framed/colony/reinforced/hull/yautja,
-/turf/open/space/basic,
-/area/yautja)
 "uj" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -2900,7 +2896,7 @@
 	name = "\improper External Airlock"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/space,
+/turf/open/floor/strata/grey_multi_tiles,
 /area/yautja)
 "Dw" = (
 /obj/structure/stairs/perspective{
@@ -3886,9 +3882,9 @@ dI
 dI
 dI
 bj
-uf
-uf
-uf
+ah
+ah
+ah
 bj
 dI
 dI
@@ -5662,7 +5658,7 @@ bL
 Hp
 Et
 ah
-uf
+ah
 "}
 (26,1,1) = {"
 aa
@@ -5734,7 +5730,7 @@ cP
 cP
 Es
 DJ
-uf
+ah
 "}
 (27,1,1) = {"
 aa
@@ -5806,7 +5802,7 @@ bL
 uO
 Et
 ah
-uf
+ah
 "}
 (28,1,1) = {"
 aa

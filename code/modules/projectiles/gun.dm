@@ -1497,7 +1497,7 @@ and you're good to go.
 				BP = new /obj/projectile(null, create_cause_data(initial(name), user))
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
-				BP.damage *= damage_buff
+				BP.damage *= damage_buff * damage_mult
 
 				BP.bonus_projectile_check = 2
 				projectile_to_fire.bonus_projectile_check = 1

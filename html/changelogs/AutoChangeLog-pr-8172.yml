@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed joining as lesser drone not always performing banishment check"
-  - spellcheck: "Fixed cooldown message for lesser drone having the wrong duration"

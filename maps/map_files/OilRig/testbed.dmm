@@ -17,6 +17,13 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"ad" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8;
+	color = "aba39d"
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/space)
 "ae" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/almayer,
@@ -100,7 +107,7 @@
 /area/space)
 "ai" = (
 /obj/structure/lz_sign,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/plating/kutjevo,
 /area/space)
 "aj" = (
 /obj/structure/barricade/handrail/strata{
@@ -211,8 +218,8 @@
 	},
 /area/space)
 "au" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "av" = (
@@ -261,9 +268,9 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "ay" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "az" = (
@@ -331,9 +338,9 @@
 /turf/open/gm/river/desert/deep,
 /area/space)
 "aI" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "aJ" = (
@@ -390,7 +397,7 @@
 /area/space)
 "aR" = (
 /obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/almayer/bluefull,
+/turf/open/floor/prison/bluefull/west,
 /area/space)
 "aS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -410,6 +417,16 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/gm/river/desert/deep,
+/area/space)
+"aT" = (
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/space)
+"aU" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4;
+	color = "aba39d"
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/space)
 "aV" = (
 /turf/open/floor/prison/greenfull/east,
@@ -456,6 +473,13 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/lattice,
 /turf/open/gm/river/desert/deep,
+/area/space)
+"bb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d";
+	dir = 1
+	},
+/turf/open/floor/corsat/sterileplate,
 /area/space)
 "bc" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -583,21 +607,40 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"bs" = (
+/turf/open/floor/corsat/sterileplate,
+/area/space)
 "bt" = (
 /turf/open/floor/corsat/squares,
 /area/space)
 "bu" = (
-/obj/structure/prop/dam/drill{
-	layer = 3.1
-	},
-/turf/open/floor/corsat/squares,
-/area/space)
-"bv" = (
-/turf/open/floor/almayer/bluefull,
+/obj/structure/prop/broken_ladder,
+/turf/open/floor/almayer/plating,
 /area/space)
 "bw" = (
-/obj/structure/prop/dam/drill,
-/turf/open/floor/corsat/squares,
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/shuttle/escapepod/east,
+/area/space)
+"bx" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d"
+	},
+/turf/open/floor/corsat/sterileplate,
 /area/space)
 "by" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
@@ -605,16 +648,29 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "bz" = (
-/obj/structure/prop/dam/drill{
-	layer = 2.9
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
 	},
-/turf/open/floor/corsat/squares,
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/shuttle/escapepod/west,
 /area/space)
 "bA" = (
-/obj/structure/prop/dam/drill{
-	layer = 2.8
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/shuttle/escapepod,
 /area/space)
 "bB" = (
 /obj/structure/barricade/handrail/strata{
@@ -1214,9 +1270,6 @@
 "dK" = (
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/space)
-"dL" = (
-/turf/open/floor/hybrisa/tile/green_bigtile/north,
-/area/space)
 "dM" = (
 /turf/open/floor/hybrisa/tile/green_bigtile/northeast,
 /area/space)
@@ -1229,9 +1282,6 @@
 "dP" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
-/area/space)
-"dQ" = (
-/turf/open/floor/prison/greenfull,
 /area/space)
 "dR" = (
 /turf/open/floor/prison/greencorner/west,
@@ -1391,6 +1441,12 @@
 /area/space)
 "eQ" = (
 /turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"eR" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d"
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/space)
 "eS" = (
 /obj/effect/decal/warning_stripes{
@@ -1722,13 +1778,6 @@
 /obj/structure/platform/metal/strata/east,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
-"fV" = (
-/obj/structure/barricade/handrail/strata,
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/kutjevo/grey,
-/area/space)
 "fW" = (
 /obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/corsat/squares,
@@ -1878,7 +1927,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/floor/kutjevo/grey,
+/turf/open/floor/kutjevo/grey/plate,
 /area/space)
 "gp" = (
 /obj/effect/decal/warning_stripes{
@@ -1955,13 +2004,20 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/floor/kutjevo/grey,
+/turf/open/floor/kutjevo/grey/plate,
 /area/space)
 "gz" = (
 /turf/open/floor/corsat/redcorner/east,
 /area/space)
 "gA" = (
 /turf/open/floor/corsat/red/north,
+/area/space)
+"gB" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d";
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/space)
 "gC" = (
 /turf/open/floor/corsat/redcorner/north,
@@ -2032,7 +2088,7 @@
 	dir = 4;
 	layer = 4
 	},
-/turf/open/floor/kutjevo/grey,
+/turf/open/floor/kutjevo/grey/plate,
 /area/space)
 "gV" = (
 /turf/open/floor/corsat/browncorner,
@@ -2095,15 +2151,21 @@
 "hi" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
-/turf/open/gm/river/desert/deep,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "hj" = (
 /obj/structure/platform/metal/almayer,
-/turf/open/gm/river/desert/deep,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "hk" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/floor/plating,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/prison/rampbottom/north,
 /area/space)
 "hl" = (
 /turf/open/floor/prison/rampbottom/north,
@@ -2114,10 +2176,6 @@
 	color = "aba39d"
 	},
 /area/space)
-"hn" = (
-/obj/structure/platform/metal/almayer/west,
-/turf/open/floor/plating,
-/area/space)
 "ho" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/prison/floor_marked,
@@ -2126,21 +2184,668 @@
 /turf/open/floor/prison/floor_marked,
 /area/space)
 "hq" = (
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/space)
-"hr" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/plating,
+"ht" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8;
+	color = "aba39d"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/space)
-"hs" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/plating,
+"hu" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"hv" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4;
+	color = "aba39d"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"hw" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8;
+	color = "aba39d"
+	},
+/turf/open/floor/corsat/sterileplate,
+/area/space)
+"hx" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4;
+	color = "aba39d"
+	},
+/turf/open/floor/corsat/sterileplate,
+/area/space)
+"hy" = (
+/obj/structure/prop/oilrig/support_beam,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hz" = (
+/obj/structure/prop/oilrig/support_beam/blue,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hA" = (
+/obj/structure/prop/oilrig/support_beam/aqua,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hB" = (
+/obj/structure/prop/oilrig/support_beam/red,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hC" = (
+/obj/structure/prop/oilrig/support_beam/brown,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hD" = (
+/obj/structure/prop/oilrig/support_beam/green,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hE" = (
+/obj/structure/prop/oilrig/support_beam/red,
+/turf/open/floor/corsat/plate,
+/area/space)
+"hF" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hG" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 6;
+	pixel_x = 16
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_y = 19;
+	pixel_x = 16
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
+	pixel_y = -5;
+	pixel_x = 16
+	},
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5;
+	pixel_x = 16
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	layer = 4.2;
+	pixel_y = 10;
+	pixel_x = 16
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	pixel_y = 19;
+	pixel_x = 16
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hH" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 6
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_y = 19
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
+	pixel_y = -5
+	},
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	layer = 4.2;
+	pixel_y = 10
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	pixel_y = 19
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hI" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hJ" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hK" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hL" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hM" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hN" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hO" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"hP" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"hQ" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"hR" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hS" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 7;
+	pixel_x = 16
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hT" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hU" = (
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"hV" = (
+/obj/structure/machinery/door_control/colony_lockdown{
+	id = "hybrisacolonylockdown";
+	explo_proof = 1;
+	name = "Colony Exterior - Lockdown";
+	pixel_y = -5;
+	needs_power = 0
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/space)
+"hW" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hX" = (
+/turf/open/floor/prison/cell_stripe/west,
+/area/space)
+"hY" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"hZ" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ia" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"ib" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"ic" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"id" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ie" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"if" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"ig" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"ih" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ii" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ij" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"ik" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/gm/river/desert/deep,
 /area/space)
 "il" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /turf/open/gm/river/desert/deep,
+/area/space)
+"im" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"in" = (
+/turf/open/floor/prison/rampbottom/east,
+/area/space)
+"io" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"ip" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iq" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ir" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"is" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"it" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iu" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iv" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iw" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ix" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iy" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iz" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iA" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iB" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"iC" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/space)
+"iD" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iE" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iF" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iG" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/prison,
+/area/space)
+"iH" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/north,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iI" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/east,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iJ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/prison,
+/area/space)
+"iK" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iL" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/lattice,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iM" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/space)
+"iN" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/lattice,
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iO" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iP" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iQ" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/east,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iR" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/space)
+"iS" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iT" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iU" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/space)
+"iV" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/space)
+"iW" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"iX" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_x = 16
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 7;
+	pixel_x = 16
+	},
+/obj/item/lightstick/red/planted{
+	pixel_y = 15;
+	pixel_x = 16;
+	layer = 4.11
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iY" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"iZ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/east,
+/obj/structure/platform/metal/hybrisa/metalplatform2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ja" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/space)
+"jb" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/obj/structure/platform/metal/hybrisa/metalplatform2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"jc" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north,
+/obj/structure/lattice,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jd" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"je" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"jf" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/space)
+"jg" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/space)
+"jh" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ji" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
+"jj" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/plating,
+/area/space)
+"jk" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jl" = (
+/obj/structure/lattice,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/east,
+/obj/structure/platform/metal/hybrisa/metalplatform2/north,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "jm" = (
 /obj/structure/prop/structure_lattice{
@@ -2164,30 +2869,1131 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/space)
-"jP" = (
+"jn" = (
+/obj/structure/lattice,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"jo" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jp" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jq" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"jr" = (
+/obj/structure/lattice,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"js" = (
+/turf/open/floor/prison/cell_stripe/north,
+/area/space)
+"jt" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"ju" = (
+/obj/structure/prop/oilrig/support_beam/brown,
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jv" = (
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jw" = (
+/turf/open/floor/corsat/brown/northeast,
+/area/space)
+"jx" = (
+/turf/open/floor/corsat/brown/northwest,
+/area/space)
+"jy" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
+/obj/structure/prop/oilrig/support_beam/brown,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jz" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/item/lightstick/planted{
+	pixel_y = 15;
+	layer = 4.11;
+	pixel_x = 16
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"jA" = (
+/obj/structure/window/framed/hybrisa/colony/hull,
+/turf/open/floor/corsat,
+/area/space)
+"jB" = (
+/turf/open/shuttle/escapepod,
+/area/space)
+"jC" = (
+/obj/structure/shuttle/engine/heater,
+/turf/open/floor/corsat,
+/area/space)
+"jD" = (
+/turf/open/shuttle/escapepod/north,
+/area/space)
+"jE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/brown/north,
+/area/space)
+"jF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/shuttle/escapepod,
+/area/space)
+"jG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/plating,
+/area/space)
+"jH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/shuttle/escapepod/north,
+/area/space)
+"jI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/brown/east,
+/area/space)
+"jJ" = (
+/obj/structure/prop/turbine{
+	layer = 6;
+	explo_proof = 0
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"jK" = (
+/obj/structure/prop/turbine{
+	layer = 6;
+	explo_proof = 0
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	icon_state = "flammable_pipe_3";
+	pixel_x = -26;
+	pixel_y = -4;
+	layer = 4
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	icon_state = "flammable_pipe_3";
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"jL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/turf/open/floor/corsat/brown/west,
+/area/space)
+"jM" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/squares,
+/area/space)
+"jN" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"jO" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison{
+	color = "aba39d"
+	},
+/area/space)
+"jP" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/almayer/blackfull/west,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/turf/open/floor/prison,
+/area/space)
+"jQ" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"jR" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/turf/open/shuttle/escapepod/east,
+/area/space)
+"jS" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 1;
+	icon_state = "flammable_pipe_3";
+	pixel_x = -22;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12;
+	layer = 7
+	},
+/turf/open/gm/empty{
+	desc = "More than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape. "
+	},
+/area/space)
+"jT" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/turf/open/gm/empty{
+	desc = "More than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape. "
+	},
+/area/space)
+"jU" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	icon_state = "flammable_pipe_3";
+	pixel_y = 6;
+	pixel_x = 20
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12;
+	layer = 7
+	},
+/turf/open/gm/empty{
+	desc = "More than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape. "
+	},
 /area/space)
 "jV" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"jW" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/shuttle/escapepod/east,
+/area/space)
+"jX" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -12
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/turf/open/shuttle/escapepod/east,
+/area/space)
+"jY" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/brown/east,
+/area/space)
+"jZ" = (
+/obj/structure/prop/turbine{
+	layer = 6;
+	explo_proof = 0
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 5;
+	pixel_y = -6;
+	layer = 4
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 1;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -26
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"ka" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/corsat/brown/west,
+/area/space)
+"kb" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8;
+	pixel_x = -4
+	},
+/turf/open/floor/corsat,
+/area/space)
+"kc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped{
+	dir = 8;
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/plating,
+/area/space)
 "kd" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"ke" = (
+/turf/open/gm/empty{
+	desc = "More than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape. "
+	},
+/area/space)
+"kf" = (
+/obj/item/xeno_egg{
+	pixel_y = -13;
+	pixel_x = 5;
+	layer = 2.9
+	},
+/turf/open/gm/empty{
+	desc = "More than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape. "
+	},
+/area/space)
 "kg" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/space)
+"kh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/prop/hybrisa/Factory/Robotic_arm{
+	level = 5;
+	pixel_x = -15
+	},
+/turf/open/floor/almayer/plating,
+/area/space)
+"ki" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat,
+/area/space)
+"kj" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 5;
+	pixel_y = 21;
+	layer = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"kk" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	icon_state = "flammable_pipe_3";
+	pixel_x = -26;
+	pixel_y = -11;
+	layer = 4
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	icon_state = "flammable_pipe_3";
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"kl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -9
+	},
+/turf/open/floor/corsat/brown/west,
+/area/space)
+"km" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/turf/open/shuttle/escapepod/west,
+/area/space)
+"kn" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/shuttle/escapepod/west,
+/area/space)
+"ko" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -12
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe";
+	pixel_y = -12
+	},
+/turf/open/shuttle/escapepod/west,
+/area/space)
+"kp" = (
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 1;
+	icon_state = "flammable_pipe_3";
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly{
+	dir = 8;
+	pixel_y = 6;
+	pixel_x = -26
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"kq" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kr" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ks" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 7
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kt" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ku" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -2
+	},
+/turf/open/floor/corsat/brown,
+/area/space)
+"kv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/plating,
+/area/space)
+"kw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/escapepod/north,
+/area/space)
+"kx" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ky" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"kz" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"kA" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"kB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kC" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kD" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d";
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"kE" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/turf/open/floor/corsat,
+/area/space)
+"kF" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/space)
+"kG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/west,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kH" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kI" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison{
+	color = "aba39d"
+	},
+/area/space)
+"kJ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison{
+	color = "aba39d"
+	},
+/area/space)
+"kK" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kL" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kM" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/space)
+"kN" = (
+/turf/open/floor/plating/kutjevo,
+/area/space)
+"kO" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/space)
+"kP" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/space)
+"kQ" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"kR" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"kS" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"kT" = (
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"kU" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"kV" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 6
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_y = 19
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
+	pixel_y = -5
+	},
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	layer = 4.2;
+	pixel_y = 10
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	pixel_y = 19
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"kW" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 7
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"kX" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/plating/plating_catwalk/prison{
+	color = "aba39d"
+	},
+/area/space)
+"kY" = (
+/turf/open/floor/corsat/brown/southwest,
+/area/space)
+"kZ" = (
+/turf/open/floor/corsat/brown/southeast,
+/area/space)
+"la" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lb" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lc" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/space)
+"ld" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/space)
+"le" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/space)
+"lf" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/space)
+"lg" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"lh" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/turf/open/floor/prison/greenfull/east,
+/area/space)
+"li" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/turf/open/floor/prison/greenfull/east,
+/area/space)
+"lj" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/space)
+"lk" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ll" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lm" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ln" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lo" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison{
+	color = "aba39d"
+	},
+/area/space)
+"lp" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison{
+	color = "aba39d"
+	},
+/area/space)
+"lq" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lr" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 15;
+	layer = 1.3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	layer = 1.3
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ls" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lt" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomright";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"lu" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"lv" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/space)
+"lw" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/space)
+"lx" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
 /area/space)
 "ly" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/almayer/blackfull/west,
+/area/space)
+"lz" = (
+/obj/structure/prop/tower{
+	pixel_x = 17;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/floor_marked/southwest,
+/area/space)
+"lA" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lB" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lC" = (
+/turf/open/floor/hybrisa/tile/greencorner_bigtile/east,
+/area/space)
+"lD" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/space)
+"lE" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/space)
+"lF" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/space)
+"lG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lH" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lI" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	layer = 1.3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 15;
+	layer = 1.3
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"lJ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	layer = 1.3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 15;
+	layer = 1.3
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lK" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/soil_net{
+	layer = 2.8;
+	name = "safety net"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lL" = (
+/obj/structure/prop/ice_colony/soil_net{
+	layer = 2.9;
+	name = "safety net"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lM" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lN" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/prop/ice_colony/soil_net{
+	layer = 2.8;
+	name = "safety net"
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"lO" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	layer = 1.3
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_2{
+	pixel_y = 15;
+	layer = 1.3
+	},
+/obj/item/lightstick/red/planted{
+	pixel_y = 13
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"lP" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"lQ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/space)
+"lR" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/space)
+"lS" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/turf/open/floor/corsat/sterileplate,
+/area/space)
+"lT" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/turf/open/floor/corsat/sterileplate,
+/area/space)
+"lU" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/space)
+"lV" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellowfull2/east,
 /area/space)
 "mh" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
@@ -2286,8 +4092,8 @@
 /turf/open/floor/plating,
 /area/space)
 "rD" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/almayer/blackfull/west,
+/obj/structure/platform/metal/hybrisa/metalplatform4/west,
+/turf/open/floor/prison,
 /area/space)
 "rX" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -2414,7 +4220,7 @@
 /turf/open/floor/almayer/blackfull/west,
 /area/space)
 "Hh" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/prop/structure_lattice{
 	dir = 4;
 	layer = 1.5;
@@ -2423,8 +4229,8 @@
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_y = 7
 	},
-/obj/structure/platform/metal/hybrisa/metalplatform1/east,
-/turf/open/gm/river/desert/deep,
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "JV" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
@@ -2462,10 +4268,6 @@
 	},
 /turf/open/floor/almayer/blackfull/west,
 /area/space)
-"QA" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/floor/almayer/redfull2,
-/area/space)
 "QU" = (
 /turf/open/floor/almayer,
 /area/space)
@@ -2489,7 +4291,6 @@
 	layer = 1.4;
 	pixel_y = 3
 	},
-/obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	layer = 1.3
 	},
@@ -2497,6 +4298,9 @@
 	pixel_y = 15;
 	layer = 1.3
 	},
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
 /turf/open/gm/river/desert/deep,
 /area/space)
 "ZI" = (
@@ -3812,8 +5616,8 @@ np
 np
 np
 np
-np
-np
+cw
+cw
 np
 np
 pz
@@ -4061,21 +5865,21 @@ np
 np
 np
 np
-np
-cs
-At
-At
-At
-At
-At
-At
-At
-At
-At
-At
-At
-gq
-np
+ln
+lk
+kx
+kx
+kx
+kx
+kx
+kx
+kx
+kx
+kx
+kx
+kx
+kG
+ir
 np
 np
 np
@@ -4312,23 +6116,23 @@ np
 np
 np
 pz
-cs
-At
-ti
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-jV
-At
-gq
+lq
+kx
+ll
+lj
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+ld
+lc
+la
+kx
+kq
 np
 pz
 np
@@ -4558,35 +6362,35 @@ np
 np
 pz
 np
-np
-cs
-At
-At
-At
-At
-sF
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
+ln
+lk
+kx
+kx
+kx
+kx
+lr
+lo
+kI
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+kI
+kX
 Hh
-uI
-At
-At
-At
-gq
-np
+kV
+kx
+kx
+kx
+kG
+ir
 np
 np
 np
@@ -4809,37 +6613,37 @@ np
 np
 np
 np
-cs
-At
-ti
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-uK
-At
-gq
+lq
+kx
+ll
+lw
+kP
+kP
+kP
+kP
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kP
+kP
+kP
+kP
+kM
+kH
+kx
+kq
 np
 np
 np
@@ -5061,37 +6865,37 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-He
-NA
-Pm
+lH
+lD
+kI
+kN
+lt
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kT
+kQ
+kN
+kI
+ky
+kr
 np
 pz
 np
@@ -5313,11 +7117,11 @@ np
 np
 np
 np
-FL
-PL
-PL
-PL
-PL
+lI
+lE
+eV
+kN
+lu
 LO
 LR
 LO
@@ -5334,16 +7138,16 @@ LO
 LO
 LO
 LO
-aY
-aY
-aY
-QA
-aY
-PL
-PL
-PL
-ly
-mh
+LO
+LO
+LO
+LR
+LO
+kR
+kN
+eV
+kz
+ks
 bQ
 np
 np
@@ -5565,11 +7369,11 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
@@ -5578,6 +7382,11 @@ LO
 LO
 LO
 LO
+li
+aV
+aV
+aV
+le
 LO
 LO
 LO
@@ -5586,16 +7395,11 @@ LO
 LO
 LO
 LO
-LO
-LO
-LO
-LO
-aY
-PL
-PL
-PL
-ly
-Pm
+kR
+kN
+eV
+kz
+kr
 np
 np
 np
@@ -5603,7 +7407,7 @@ np
 np
 np
 np
-np
+gq
 np
 np
 np
@@ -5817,11 +7621,11 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
@@ -5829,6 +7633,13 @@ LO
 LO
 LO
 LO
+li
+aV
+lf
+ez
+lh
+aV
+le
 LO
 LO
 LO
@@ -5836,18 +7647,11 @@ LO
 LO
 LO
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-aY
-PL
-PL
-PL
-ly
-Pm
+kR
+kN
+eV
+kz
+kr
 np
 np
 np
@@ -5855,9 +7659,9 @@ np
 np
 np
 np
-np
-np
-np
+uK
+At
+gq
 np
 np
 np
@@ -6069,49 +7873,49 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
 LO
 LO
 LO
+li
+aV
+lf
+LO
+ez
+LO
+lh
+aV
+le
 LO
 LO
 LO
 LO
-bv
 LO
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-PL
-PL
-PL
-ly
+kR
+kN
+eV
+kz
+kr
+np
+np
+np
+np
+np
+np
+np
+He
+NA
 Pm
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+pz
 np
 np
 np
@@ -6321,37 +8125,37 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
 LO
 LO
 LO
+aV
+lf
+LO
+LO
+ez
+LO
+LO
+lh
+aV
 LO
 LO
 LO
 LO
-bv
 LO
 LO
-LO
-LO
-LO
-aY
-LO
-LO
-aY
-aY
-PL
-PL
-PL
-ly
-Pm
+kR
+kN
+eV
+kz
+kr
 np
 np
 pz
@@ -6359,12 +8163,12 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
+PL
+ly
+Pm
+hC
+jv
+ju
 np
 np
 np
@@ -6573,37 +8377,37 @@ np
 np
 np
 np
-FL
-PL
-PL
-PL
-PL
+lI
+lE
+eV
+kN
+lu
 LO
 LO
 LO
 LO
 LO
 LO
-LO
-LO
-bv
-bv
+aV
+ez
+ez
+ez
 aR
-bv
-bv
+ez
+ez
+ez
+aV
 LO
 LO
 LO
-aY
 LO
-aY
 LO
-aY
-PL
-PL
-PL
-ly
-mh
+LO
+kR
+kN
+eV
+kz
+ks
 bQ
 np
 np
@@ -6611,12 +8415,12 @@ np
 np
 np
 np
+PL
+ly
+Pm
 np
-np
-np
-np
-np
-np
+jv
+jv
 np
 np
 np
@@ -6825,47 +8629,47 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
 LO
 LO
 LO
+aV
+le
+LO
+LO
+ez
+LO
+LO
+li
+aV
 LO
 LO
 LO
 LO
-bv
 LO
 LO
-LO
-LO
-LO
-aY
-aY
-LO
-LO
-aY
-PL
-PL
+kR
+kN
+eV
+kz
+kr
+np
+np
+np
+np
+np
+np
+np
 PL
 ly
 Pm
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
 np
 np
 np
@@ -7077,47 +8881,47 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
 LO
 LO
 LO
+lh
+aV
+le
+LO
+ez
+LO
+li
+aV
+lf
 LO
 LO
 LO
 LO
-bv
 LO
 LO
-LO
-LO
-LO
-aY
-LO
-LO
-LO
-aY
-PL
-PL
+kR
+kN
+eV
+kz
+kr
+np
+np
+np
+np
+np
+np
+np
 PL
 ly
 Pm
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
 np
 np
 np
@@ -7329,11 +9133,11 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
@@ -7341,6 +9145,13 @@ LO
 LO
 LO
 LO
+lh
+aV
+le
+ez
+li
+aV
+lf
 LO
 LO
 LO
@@ -7348,31 +9159,24 @@ LO
 LO
 LO
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-PL
-PL
+kR
+kN
+eV
+kz
+kr
+np
+np
+np
+np
+np
+np
+np
 PL
 ly
 Pm
 np
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+pz
 np
 np
 np
@@ -7581,11 +9385,11 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
+lH
+lE
+eV
+kN
+lu
 LO
 LO
 LO
@@ -7594,6 +9398,11 @@ LO
 LO
 LO
 LO
+lh
+aV
+aV
+aV
+lf
 LO
 LO
 LO
@@ -7602,27 +9411,22 @@ LO
 LO
 LO
 LO
-LO
-LO
-LO
-LO
-LO
-PL
+kR
 ai
+eV
+kz
+kr
+np
+np
+np
+np
+np
+np
+np
 PL
 ly
-Pm
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+mh
+bQ
 np
 np
 np
@@ -7833,11 +9637,11 @@ np
 np
 np
 np
-FL
-PL
-PL
-PL
-PL
+lJ
+lE
+eV
+kN
+lu
 LO
 LR
 LO
@@ -7854,16 +9658,16 @@ LO
 LO
 LO
 LO
-aY
-aY
-aY
-QA
-aY
-PL
-PL
-PL
-ly
-mh
+LO
+LO
+LO
+LR
+LO
+kR
+kN
+eV
+kz
+ks
 bQ
 np
 np
@@ -7871,9 +9675,9 @@ np
 np
 np
 np
-np
-np
-np
+PL
+ly
+Pm
 np
 np
 np
@@ -8085,37 +9889,37 @@ np
 np
 np
 np
-uw
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-Qx
-fG
-Pm
+lH
+lF
+kJ
+kN
+lv
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kU
+kS
+kN
+kJ
+kA
+kr
 np
 pz
 np
@@ -8123,9 +9927,9 @@ np
 np
 np
 np
-np
-np
-np
+PL
+ly
+Pm
 np
 np
 np
@@ -8337,37 +10141,37 @@ np
 np
 np
 np
-JV
-oP
-sD
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-kd
-oP
-il
+lG
+kB
+lA
+lx
+kO
+kO
+kO
+kO
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kO
+kO
+kO
+kO
+kO
+kK
+kB
+kt
 np
 np
 np
@@ -8375,9 +10179,9 @@ np
 np
 np
 np
-np
-np
-np
+PL
+ly
+Pm
 np
 np
 np
@@ -8590,37 +10394,35 @@ np
 np
 np
 np
-np
-JV
-oP
-oP
-oP
-oP
-sD
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-kd
-oP
-oP
-oP
-oP
-il
-np
-np
-np
+lG
+lB
+kB
+kB
+kB
+kB
+ls
+lp
+eV
+eV
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+eV
+eV
+eV
+kK
+kB
+kB
+kB
+kB
+kL
+kC
 np
 np
 np
@@ -8629,7 +10431,9 @@ np
 np
 np
 np
-np
+PL
+ly
+Pm
 np
 np
 np
@@ -8847,24 +10651,24 @@ np
 np
 np
 pz
-np
+cs
 Xr
 au
 aI
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
+eV
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+kN
+eV
 ay
 au
-mh
+kW
 bQ
 np
 np
@@ -8879,10 +10683,10 @@ np
 np
 np
 np
-np
-np
-np
-np
+PL
+ly
+mh
+bQ
 np
 np
 np
@@ -9102,7 +10906,7 @@ gq
 uw
 bf
 bf
-aJ
+lm
 rD
 jP
 yC
@@ -9112,9 +10916,9 @@ yC
 yC
 yC
 Rw
+lg
 rD
-rD
-aB
+lb
 bf
 bf
 Pm
@@ -9131,11 +10935,11 @@ np
 np
 np
 np
+Qx
+fG
+Pm
 np
-np
-np
-np
-np
+pz
 np
 np
 np
@@ -9355,17 +11159,17 @@ oN
 bf
 bf
 aJ
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
+dj
+dw
+cF
+cF
+dI
+dj
+dw
+cF
+cF
+dI
+dj
 aB
 bf
 bf
@@ -9383,9 +11187,9 @@ np
 np
 np
 np
-np
-np
-np
+kd
+oP
+il
 np
 np
 np
@@ -9607,17 +11411,17 @@ aj
 bf
 bf
 bf
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
+dj
+dw
+cF
+cF
+dI
+dj
+dw
+cF
+cF
+dI
+dj
 bf
 bf
 bf
@@ -9635,7 +11439,7 @@ np
 np
 np
 np
-np
+il
 np
 np
 np
@@ -9859,17 +11663,17 @@ bf
 bf
 bf
 bf
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
+dj
+dw
+cF
+cF
+dI
+dj
+dw
+cF
+cF
+dI
+dj
 bf
 bf
 bf
@@ -11837,13 +13641,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+LO
+LO
+LO
+LO
+LO
 np
 np
 np
@@ -12089,13 +13893,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+LO
+LO
+LO
+LO
+LO
 np
 np
 np
@@ -12153,10 +13957,10 @@ LO
 bl
 bf
 aw
-ax
-ag
+jz
+jy
 np
-np
+hC
 np
 np
 np
@@ -12341,13 +14145,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+lQ
+LO
+LO
+LO
+LO
 np
 np
 np
@@ -12593,13 +14397,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+aT
+lQ
+LO
+LO
+LO
 np
 np
 np
@@ -12845,13 +14649,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+lU
+aT
+lQ
+LO
+LO
 np
 np
 np
@@ -13097,13 +14901,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+bs
+aT
+aT
+LO
+LO
 np
 np
 np
@@ -13349,13 +15153,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+lV
+aT
+lR
+LO
+LO
 np
 np
 np
@@ -13601,13 +15405,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+aT
+lR
+lS
+LO
+LO
 np
 np
 np
@@ -13853,13 +15657,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+aT
+lQ
+lT
+LO
+LO
 np
 np
 np
@@ -14105,13 +15909,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+lU
+aT
+lQ
+LO
+LO
 np
 np
 np
@@ -14357,13 +16161,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+bs
+aT
+aT
+LO
+LO
 np
 np
 np
@@ -14609,13 +16413,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+lV
+aT
+lR
+LO
+LO
 np
 np
 np
@@ -14861,13 +16665,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+aT
+lR
+LO
+LO
+LO
 np
 np
 np
@@ -15113,13 +16917,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+lR
+LO
+LO
+LO
+LO
 np
 np
 np
@@ -15365,13 +17169,13 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
+LO
+LO
+LO
+LO
+LO
+LO
+LO
 np
 np
 np
@@ -18795,17 +20599,17 @@ np
 np
 np
 np
+eN
+eN
+eN
+eN
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eN
+eN
+eN
+eN
+eN
 np
 np
 np
@@ -19047,17 +20851,17 @@ np
 np
 np
 np
+eV
+eV
+eV
+gB
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eV
+ad
+eV
+eV
+eN
 np
 np
 np
@@ -19276,7 +21080,7 @@ np
 np
 np
 np
-np
+hy
 np
 np
 np
@@ -19299,17 +21103,17 @@ np
 np
 np
 np
+eV
+eV
+gB
+aT
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eV
+aT
+ad
+eV
+eN
 np
 np
 np
@@ -19475,10 +21279,10 @@ bf
 bf
 ab
 al
-bQ
-np
-np
-np
+hH
+hF
+hF
+hF
 np
 np
 np
@@ -19551,17 +21355,17 @@ np
 np
 np
 np
+eV
+gB
+aT
+aU
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eV
+eR
+aT
+ad
+eN
 np
 np
 np
@@ -19727,7 +21531,10 @@ bf
 bf
 bf
 aj
-af
+jo
+hF
+hF
+hF
 np
 np
 np
@@ -19777,10 +21584,7 @@ np
 np
 np
 np
-np
-np
-np
-np
+hz
 np
 np
 np
@@ -19803,17 +21607,17 @@ np
 np
 np
 np
+ht
+aT
+aT
+bs
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+ht
+bs
+aT
+aT
+eN
 np
 np
 np
@@ -19978,11 +21782,11 @@ bl
 kg
 bf
 bf
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
 np
 np
 np
@@ -20055,17 +21859,17 @@ np
 np
 np
 np
+hu
+eR
+aT
+ad
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hu
+gB
+aT
+aU
+eN
 np
 np
 np
@@ -20229,12 +22033,12 @@ LO
 LO
 kg
 kg
-np
-np
-np
-np
-aX
-At
+hF
+hF
+hF
+hF
+jk
+jh
 gq
 np
 np
@@ -20284,7 +22088,7 @@ np
 np
 np
 np
-np
+hA
 np
 np
 np
@@ -20307,17 +22111,17 @@ np
 np
 np
 np
+hu
+hw
+eR
+aT
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hu
+aT
+aU
+bb
+eN
 np
 np
 np
@@ -20481,9 +22285,9 @@ LO
 LO
 LO
 LO
-np
-np
-np
+hF
+hF
+hF
 bf
 bf
 ab
@@ -20559,17 +22363,17 @@ np
 np
 np
 np
+hu
+bs
+bs
+aT
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hu
+aT
+bs
+bs
+eN
 np
 np
 np
@@ -20681,11 +22485,11 @@ bl
 bl
 bl
 bl
-aV
-aV
-aV
-aV
-aV
+dS
+di
+di
+di
+cW
 bl
 LO
 LO
@@ -20734,8 +22538,8 @@ bl
 bl
 LO
 kg
-np
-np
+hF
+hF
 bf
 bf
 bf
@@ -20788,7 +22592,7 @@ np
 np
 np
 np
-np
+hB
 np
 np
 np
@@ -20811,17 +22615,17 @@ np
 np
 np
 np
+hu
+hx
+gB
+aT
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hu
+aT
+ad
+bx
+eN
 np
 np
 np
@@ -20933,11 +22737,11 @@ LO
 LO
 LO
 LO
-dQ
-dQ
-dQ
-dQ
-dQ
+dT
+eL
+dk
+eK
+cX
 LO
 LO
 LO
@@ -21063,17 +22867,17 @@ np
 np
 np
 np
+hu
+gB
+aT
+aT
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hu
+eR
+aT
+ad
+eN
 np
 np
 np
@@ -21185,11 +22989,11 @@ bl
 bl
 bl
 bl
-bl
-dS
+dT
+dR
 di
-cW
-bl
+dU
+cX
 bl
 LO
 LO
@@ -21246,12 +23050,13 @@ bf
 bf
 ap
 fC
-bE
+iO
 fh
 fh
 fh
 fh
 fh
+iy
 np
 np
 np
@@ -21291,8 +23096,7 @@ np
 np
 np
 np
-np
-np
+hy
 np
 np
 np
@@ -21315,17 +23119,17 @@ np
 np
 np
 np
+hv
+aT
+aT
+aU
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hv
+bs
+aT
+aT
+eN
 np
 np
 np
@@ -21436,12 +23240,12 @@ bl
 dW
 dV
 dV
-dV
 bl
-dT
-dj
-cX
-bl
+ea
+dk
+dk
+dk
+cY
 bl
 bl
 bl
@@ -21496,19 +23300,19 @@ an
 bl
 bf
 bf
-bf
+bM
 fC
 fA
-gt
-gt
-gt
-gt
-fV
-aa
-np
-np
-np
-np
+go
+ia
+ia
+ia
+hO
+iz
+hF
+hF
+hF
+hF
 np
 np
 np
@@ -21567,17 +23371,17 @@ np
 np
 np
 np
+eV
+eR
+aT
+bs
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eV
+gB
+aT
+aU
+eN
 np
 np
 np
@@ -21688,14 +23492,14 @@ bl
 dW
 dV
 dV
-dV
+bl
 bl
 dT
 dj
 cX
 bl
+bl
 dK
-dx
 dx
 dx
 dx
@@ -21748,18 +23552,47 @@ bl
 bl
 bl
 bf
-bf
+bM
 fC
 fA
-fe
-fe
-fe
-fe
-fe
+ib
+hU
+hU
+hU
+hU
 fe
 bE
 bE
-bE
+ir
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
 np
 np
 np
@@ -21767,36 +23600,7 @@ np
 np
 np
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hC
 np
 np
 np
@@ -21819,17 +23623,17 @@ np
 np
 np
 np
+eV
+eV
+eR
+ad
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eV
+aT
+aU
+eV
+eN
 np
 np
 np
@@ -21946,8 +23750,8 @@ dT
 dj
 cX
 bl
-dL
-ds
+dK
+lC
 ds
 ds
 ds
@@ -22000,18 +23804,18 @@ eb
 dj
 bf
 bf
-bf
+bM
 fC
 fB
+gx
 fe
 fe
 fe
-fe
-fe
-fe
+hU
+hU
 bE
 bE
-fx
+is
 gd
 gd
 gd
@@ -22039,9 +23843,9 @@ gd
 gd
 gd
 gd
-bm
-np
-np
+hL
+hF
+hF
 np
 np
 np
@@ -22071,17 +23875,17 @@ np
 np
 np
 np
+eV
+eV
+eV
+eR
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eV
+aU
+eV
+eV
+eN
 np
 np
 np
@@ -22259,10 +24063,10 @@ hl
 dX
 dX
 fe
-fP
-aa
-np
-bF
+hP
+iz
+hF
+iu
 he
 fi
 fi
@@ -22292,15 +24096,15 @@ fi
 fi
 fi
 fU
-bm
+hL
+hF
 np
 np
 np
 np
 np
 np
-np
-np
+hD
 np
 np
 np
@@ -22323,17 +24127,17 @@ np
 np
 np
 np
+eN
+eN
+eN
+eN
+eN
 np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+eN
+eN
+eN
+eN
+eN
 np
 np
 np
@@ -22511,9 +24315,9 @@ hl
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hg
 fy
 PL
@@ -22545,7 +24349,7 @@ PL
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -22756,16 +24560,16 @@ an
 dj
 bf
 bf
-bf
+bM
 fC
 fA
-fe
+gx
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hg
 fy
 PL
@@ -22779,8 +24583,8 @@ fm
 fm
 fm
 fm
-fm
-fm
+dF
+dF
 fm
 fm
 fm
@@ -22797,7 +24601,7 @@ PL
 PL
 CV
 fN
-ah
+hG
 np
 np
 np
@@ -23008,10 +24812,10 @@ bl
 bl
 bl
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
@@ -23049,7 +24853,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -23260,10 +25064,10 @@ ec
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 dX
@@ -23301,7 +25105,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -23512,10 +25316,10 @@ ec
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 dX
@@ -23533,15 +25337,15 @@ LO
 LO
 LO
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+ij
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+if
 LO
 LO
 LO
@@ -23553,7 +25357,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -23764,10 +25568,10 @@ ec
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
@@ -23785,15 +25589,15 @@ LO
 LO
 LO
 LO
+eQ
 LO
+ij
+eQ
+ig
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+ij
+eQ
+eQ
 LO
 LO
 LO
@@ -23805,7 +25609,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -24016,16 +25820,16 @@ bl
 bl
 bl
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -24037,15 +25841,15 @@ LO
 LO
 LO
 LO
+eQ
+ij
+eQ
+ig
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+ij
+eQ
+ig
+eQ
 LO
 LO
 LO
@@ -24053,11 +25857,11 @@ LO
 LO
 LO
 fn
-PL
+fD
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -24268,16 +26072,16 @@ an
 dj
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -24289,15 +26093,15 @@ LO
 LO
 LO
 LO
+eQ
+eQ
+ig
 LO
+ij
+eQ
+ig
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+eQ
 LO
 LO
 LO
@@ -24305,11 +26109,11 @@ LO
 LO
 LO
 fn
-PL
+fD
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -24468,7 +26272,7 @@ cX
 bl
 dE
 dG
-dG
+lz
 dE
 dB
 ds
@@ -24527,9 +26331,9 @@ hl
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -24541,15 +26345,15 @@ LO
 LO
 LO
 LO
+eQ
+ig
 LO
+ij
+im
+ig
 LO
-LO
-LO
-pA
-LO
-LO
-LO
-LO
+ij
+eQ
 LO
 LO
 LO
@@ -24557,11 +26361,11 @@ LO
 LO
 LO
 fn
-PL
+fD
 PL
 CV
 fO
-bQ
+hH
 np
 np
 np
@@ -24779,9 +26583,9 @@ hl
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -24793,15 +26597,15 @@ LO
 LO
 LO
 LO
+eQ
 LO
+ij
+eQ
+ig
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+ij
+eQ
+eQ
 LO
 LO
 LO
@@ -24809,11 +26613,11 @@ LO
 LO
 LO
 fn
-PL
+fD
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -25031,9 +26835,9 @@ hl
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -25045,15 +26849,15 @@ LO
 LO
 LO
 LO
+eQ
+ij
+eQ
+ig
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+ij
+eQ
+ig
+eQ
 LO
 LO
 LO
@@ -25061,11 +26865,11 @@ LO
 LO
 LO
 fn
-PL
+fD
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -25276,10 +27080,10 @@ an
 dj
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
@@ -25297,15 +27101,15 @@ LO
 LO
 LO
 LO
+eQ
+eQ
+ig
 LO
+ij
+eQ
+ig
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+eQ
 LO
 LO
 LO
@@ -25317,7 +27121,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -25528,10 +27332,10 @@ bl
 bl
 bl
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 dX
@@ -25549,15 +27353,15 @@ LO
 LO
 LO
 LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+io
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+eQ
+ig
 LO
 LO
 LO
@@ -25569,7 +27373,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -25780,10 +27584,10 @@ ec
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 dX
@@ -25821,7 +27625,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -26032,10 +27836,10 @@ ec
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
@@ -26073,7 +27877,7 @@ fk
 PL
 CV
 fM
-np
+hF
 np
 np
 np
@@ -26284,16 +28088,16 @@ ec
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -26307,8 +28111,8 @@ fo
 fo
 fo
 fo
-fo
-fo
+in
+in
 fo
 fo
 fo
@@ -26325,7 +28129,7 @@ PL
 PL
 CV
 fN
-ah
+hG
 np
 np
 np
@@ -26536,16 +28340,16 @@ bl
 bl
 bl
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fP
-aa
-np
+hP
+iz
+hF
 hh
 fy
 PL
@@ -26577,7 +28381,7 @@ PL
 PL
 fg
 fM
-np
+hF
 np
 np
 np
@@ -26788,17 +28592,17 @@ an
 dj
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fP
-aa
-np
-cm
+hP
+iz
+hF
+it
 hf
 fq
 fl
@@ -26828,8 +28632,8 @@ fl
 fl
 fg
 bE
-cc
-np
+hM
+hF
 np
 np
 np
@@ -27047,11 +28851,11 @@ hl
 dX
 dX
 fe
-fP
-aa
-np
-np
-cm
+hP
+iz
+hF
+hF
+it
 gn
 gn
 gn
@@ -27080,8 +28884,8 @@ gn
 gn
 bE
 cc
-np
-np
+hF
+hF
 np
 np
 np
@@ -27299,42 +29103,42 @@ hl
 dX
 dX
 fe
-fP
-fd
-np
-np
-np
+hP
+iw
+iv
+hF
+hF
 bE
-np
+hF
 gY
 gY
 gY
-np
+hF
 bE
 dX
 dX
 bE
-np
-np
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
+hF
+hF
 bE
 dX
 dX
 bE
-np
-np
-np
-np
-fh
+hF
+hF
+hF
+hY
+hW
 bE
-fh
-np
-np
-np
+hT
+hI
+hF
+hF
 np
 np
 np
@@ -27544,49 +29348,49 @@ ed
 dj
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fe
-fV
-fd
-fh
-fh
+hU
+hO
+iw
+hW
+hW
 bE
-fh
+hW
 gZ
 gZ
 gZ
-fh
+hW
 fr
 dX
 dX
 fr
-fh
-fh
-fh
-fh
-fh
-fh
-fh
+hW
+hW
+hW
+hW
+hW
+hW
+hW
 fr
 dX
 dX
 fr
-fh
-fh
-fh
-ft
+hW
+hW
+hW
+hZ
 go
-fe
-fV
-fd
-np
-np
+hU
+hO
+hN
+hI
+hF
 np
 np
 np
@@ -27796,49 +29600,49 @@ bl
 bl
 bl
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
-fe
-fe
-gt
-gt
-gt
-gt
-gt
-gt
-gt
-gt
-gt
-gt
-dX
-dX
-gt
-gt
-gt
-gt
-gt
-gt
-gt
-gt
+hU
+hU
+ia
+ia
+ia
+ia
+ia
+ia
+ia
+ia
+ia
 gt
 dX
 dX
 gt
+ia
+ia
+ia
+ia
+ia
+ia
+ia
 gt
+dX
+dX
 gt
-gt
-gt
-fe
-fe
-fe
-fP
-aa
-np
+ia
+ia
+ia
+ia
+hU
+hU
+hU
+hO
+hJ
+hF
 np
 np
 np
@@ -28048,10 +29852,10 @@ an
 bl
 bf
 bf
-bf
+bM
 fC
 fB
-fe
+gx
 dX
 dX
 fe
@@ -28087,10 +29891,10 @@ fe
 fe
 fe
 fe
-fe
-fP
-aa
-np
+hU
+hP
+hJ
+hF
 np
 np
 np
@@ -28300,10 +30104,10 @@ bl
 bl
 bf
 bf
-bf
+iW
 fC
 fB
-fe
+gx
 dX
 dX
 dX
@@ -28339,10 +30143,10 @@ dX
 dX
 dX
 fe
-fe
-fP
-aa
-np
+hU
+hQ
+hJ
+hF
 np
 np
 np
@@ -28551,11 +30355,11 @@ bl
 bf
 bf
 bf
-bf
-fF
-ah
-hj
-fe
+bM
+iX
+hG
+iP
+gx
 dX
 dX
 dX
@@ -28591,10 +30395,10 @@ dX
 dX
 dX
 fe
-fP
-ff
-np
-np
+hP
+hR
+hK
+hF
 np
 np
 np
@@ -28803,52 +30607,52 @@ bl
 bf
 bf
 bf
-bf
-Pm
+iW
+iY
+bF
+iQ
+gx
+fe
+fe
+fe
+fe
+fe
+dX
+dX
+dX
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+dX
+dX
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+fe
+dX
+dX
+fe
+hP
+hS
+hG
 np
-hj
-fe
-fe
-fe
-fe
-fe
-fe
-dX
-dX
-dX
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-PL
-dX
-dX
-PL
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-dX
-dX
-fe
-fP
-aa
 np
-np
-np
-np
+bF
 rX
 rX
 rX
@@ -29054,52 +30858,52 @@ bf
 bf
 bf
 bf
-bf
-kd
+iW
+jd
+hF
+iS
+go
+hU
+gU
+gU
+hU
+hU
+fe
+dX
+dX
+dX
+fe
+hU
+gU
+gU
+gU
+gU
+gU
+gU
+hU
+hU
+fe
+dX
+dX
+fe
+hU
+hU
+gy
+gy
+gy
+gy
+gy
+gy
+hU
+fe
+dX
+dX
+fe
+hP
+hJ
+hF
 np
-np
-hk
-fe
-fe
-fe
-fe
-fe
-fe
-dX
-dX
-dX
-fe
-fe
-gU
-gU
-gU
-gU
-gU
-gU
-fe
-fe
-PL
-dX
-dX
-PL
-fe
-fe
-gy
-gy
-gy
-gy
-gy
-gy
-fe
-fe
-dX
-dX
-fe
-fP
-aa
-np
-np
-np
+bF
 rX
 rX
 rX
@@ -29305,57 +31109,57 @@ bl
 bf
 bf
 bf
-bf
-kd
-np
-np
-np
-LO
-hn
-fs
+iW
+jd
+hF
+hF
+iS
+in
+in
+iA
 hi
-fe
-fe
+iC
+hU
 fe
 dX
 dX
 dX
 fe
-fP
-fu
-fs
-fs
-fs
-fv
-fp
-gx
-fe
-PL
-dX
-dX
-PL
-fe
-fP
-fu
-fs
-fs
-fs
-fs
-fp
-gx
+hP
+iq
+ih
+ie
+id
+ip
+ic
+ib
+hU
 fe
 dX
 dX
 fe
-fP
-aa
-np
-np
+hU
+hP
+ik
+ih
+ie
+ie
+id
+ic
+ib
+fe
+dX
+dX
+fe
+hP
+hJ
+hF
+bF
 rX
 rX
 rX
-aM
-aM
+eN
+hE
 rX
 rX
 rX
@@ -29547,68 +31351,68 @@ bf
 bf
 bf
 bf
-np
+hF
 bf
 bf
-np
+hF
 bf
 bf
 bf
 bf
 bf
-bK
-kd
-np
-np
-np
-np
-LO
-LO
-np
-np
-hi
-fe
-fe
-dX
-dX
-dX
-fe
-fe
-kg
-fd
-fh
-ft
-kg
-kg
-kg
-fe
-eO
-eO
-eO
-eO
-fe
-kg
-kg
-fd
-fh
-fh
-ft
-kg
-kg
-eO
-eO
-eO
-eO
-kg
-kg
-np
+bP
+jd
+hF
+hF
 bF
+iT
+iR
+dj
+bE
+iF
+hi
+ib
+fe
+dX
+dX
+dX
+fe
+hU
+kg
+ii
+hW
+hZ
+kg
+kg
+kg
+hU
+eO
+eO
+eO
+eO
+fe
+kg
+kg
+ii
+hW
+hW
+hZ
+kg
+kg
+eO
+eO
+eO
+eO
+kg
+kg
+hF
+aH
 rX
 rX
-aM
-aM
-aM
-aM
+eN
+hE
+eN
+hE
 rX
 rX
 np
@@ -29799,27 +31603,27 @@ bK
 bf
 bf
 bf
-np
-bV
-bV
-np
-np
+hF
+jp
+jp
+hF
+hF
 bf
 bf
-bK
-bP
-gF
-np
-np
-np
-np
-LO
-LO
-LO
-LO
-np
+bf
+bf
+jl
+je
+je
+je
+iZ
+iU
+dE
+dE
+dj
+bE
 hj
-fe
+ib
 fe
 dX
 dX
@@ -29857,10 +31661,10 @@ kg
 kg
 rX
 rX
-aM
-aM
-aM
-aM
+eN
+eN
+hE
+eN
 rX
 rX
 np
@@ -29993,8 +31797,8 @@ bU
 aL
 aL
 aL
-kd
-cx
+jd
+lO
 bU
 aL
 aL
@@ -30052,26 +31856,26 @@ aC
 bK
 bK
 bK
-bV
-np
-np
+jp
+hF
+hF
 bK
 bK
 bP
-hs
-hr
-hq
-LO
-LO
-LO
-LO
-LO
+in
+in
+ji
+ji
+ji
+jf
+ja
+dE
 hp
 ho
-LO
-LO
-hk
-fe
+dE
+dj
+hl
+hU
 fe
 dX
 dX
@@ -30087,8 +31891,8 @@ kg
 kg
 eQ
 eN
-dX
-dX
+hX
+hX
 eN
 eQ
 kg
@@ -30099,10 +31903,10 @@ kg
 eQ
 kg
 kg
-dX
-dX
-dX
-fj
+hX
+hX
+hX
+hV
 kg
 kg
 eV
@@ -30110,8 +31914,8 @@ kg
 rX
 rX
 rX
-aM
-aM
+eN
+eN
 rX
 rX
 rX
@@ -30241,28 +32045,28 @@ np
 np
 np
 JV
-oP
-np
+jt
+hF
 bE
-np
+hF
+hF
+lP
+jt
+hF
+bE
+hF
 np
 JV
 oP
-np
+hF
 bE
-np
+hF
 np
 JV
 oP
-np
+hF
 bE
-np
-np
-JV
-oP
-np
-bE
-np
+hF
 il
 JV
 oP
@@ -30305,25 +32109,25 @@ oP
 oP
 oP
 oP
-np
-np
+hF
+hF
 oP
-oP
-oP
+jt
+jq
 hq
-LO
-LO
-LO
-LO
-LO
-LO
-LO
+jj
+jj
+jj
+jj
+jg
+iG
+dE
 hp
 hp
-LO
-LO
+dE
+iG
 hk
-fe
+hU
 fe
 fe
 dX
@@ -30366,7 +32170,7 @@ rX
 rX
 rX
 rX
-np
+cc
 np
 np
 np
@@ -30494,61 +32298,27 @@ np
 np
 np
 np
-np
+hF
 bE
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
 bE
+hF
 np
 np
 np
-np
-np
+hF
 bE
+hF
 np
 np
 np
-np
-np
+hF
 bE
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-bV
-bV
-bV
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hF
 np
 np
 np
@@ -30564,19 +32334,53 @@ np
 bV
 bV
 bV
-bV
 np
 np
 np
 np
-LO
-LO
-LO
-LO
 np
-hj
-fe
-fe
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+hF
+jr
+jn
+jn
+jn
+iK
+iK
+iK
+jb
+iV
+iM
+iM
+iJ
+iH
+iD
+iB
+gU
 fe
 eY
 mY
@@ -30617,7 +32421,7 @@ rX
 rX
 rX
 rX
-np
+cc
 np
 np
 np
@@ -30746,59 +32550,27 @@ np
 np
 np
 np
-np
+hF
 bE
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
 bE
+hF
 np
 np
 np
+hF
+hF
+lM
 np
 np
 np
-cw
-np
-np
-np
-np
+hF
 bE
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-bV
-bV
-bV
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hF
 np
 np
 np
@@ -30827,8 +32599,40 @@ np
 np
 np
 np
-fs
-fs
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+jp
+jp
+jp
+hF
+hF
+hF
+hF
+hF
+jc
+iK
+iK
+iK
+iK
+iI
+iE
+iA
+iA
 kg
 kg
 AV
@@ -30998,15 +32802,15 @@ np
 np
 np
 np
-np
+hF
 bE
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
 bE
-np
+hF
 np
 np
 np
@@ -31016,39 +32820,9 @@ np
 np
 np
 np
-np
+hF
 bE
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-bV
-bV
-bV
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hF
 np
 np
 np
@@ -31082,6 +32856,36 @@ np
 np
 np
 np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+bV
+jp
+jp
+hF
+hF
+hF
+hF
+hF
+hF
+iL
+iL
+iL
+iL
+iL
+hF
+hF
+hF
+hF
+hF
 kg
 kg
 eN
@@ -31250,15 +33054,15 @@ np
 np
 np
 np
-np
+hF
 bE
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
 bE
-np
+hF
 np
 np
 np
@@ -31268,9 +33072,9 @@ np
 cw
 np
 np
-np
+hF
 bE
-np
+hF
 np
 np
 np
@@ -31316,24 +33120,24 @@ np
 np
 bV
 bV
-bV
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-aH
+jp
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+iL
+iL
+iL
+hF
+hF
+hF
+hF
+hF
+ix
 kg
 eQ
 eN
@@ -31502,28 +33306,28 @@ np
 np
 np
 np
-np
+hF
 bE
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
 bE
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
+hF
 bE
-np
-np
+hF
+hF
 np
 np
 bD
@@ -31578,7 +33382,7 @@ np
 np
 np
 np
-np
+bV
 np
 np
 np
@@ -31753,29 +33557,29 @@ np
 np
 np
 np
-np
-bF
+hF
+ln
 bE
-bm
-np
-np
-np
-bF
+lN
+lL
+lL
+lL
+lK
 bE
-bm
-np
-np
-np
-bF
+lN
+lL
+lL
+lL
+lK
 bE
-bm
-np
-np
-np
-bF
+lN
+lL
+lL
+lL
+lK
 bE
-bm
-np
+ir
+hF
 np
 np
 kg
@@ -31802,13 +33606,13 @@ cb
 kg
 kg
 bt
+eN
+eN
 bt
 bt
 bt
-bt
-bt
-bt
-bt
+eN
+eN
 bt
 kg
 kg
@@ -31830,7 +33634,7 @@ np
 np
 np
 np
-np
+bV
 np
 np
 np
@@ -32052,17 +33856,17 @@ cn
 cb
 kg
 kg
+eX
+eN
+eV
+eV
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eV
+eV
+eN
+eX
 kg
 kg
 cb
@@ -32082,7 +33886,7 @@ np
 np
 np
 np
-np
+bV
 np
 np
 np
@@ -32303,19 +34107,19 @@ cn
 cb
 kg
 kg
+eX
+eX
+eN
+eV
+eV
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eV
+eV
+eN
+eX
+eX
 kg
 kg
 cb
@@ -32334,7 +34138,7 @@ np
 np
 np
 np
-np
+bV
 np
 np
 np
@@ -32554,21 +34358,21 @@ cn
 cb
 kg
 kg
+eX
+eX
+eX
+bt
+eN
+eN
 bt
 bt
 bt
+eN
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
 kg
 kg
 cb
@@ -32586,7 +34390,7 @@ np
 np
 np
 np
-np
+bV
 np
 np
 np
@@ -32805,23 +34609,23 @@ bF
 cb
 kg
 kg
+eX
+eX
+eX
+eX
 bt
 bt
+gV
+jI
+jI
+jI
+gI
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -32838,7 +34642,7 @@ np
 np
 np
 dr
-np
+bV
 np
 np
 np
@@ -33056,25 +34860,25 @@ bF
 cb
 kg
 kg
+eX
+eX
+eX
+eX
+eX
 bt
 bt
+ku
+ej
+ej
+jJ
+jE
 bt
 bt
-bt
-bt
-bt
-bt
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -33090,7 +34894,7 @@ np
 np
 np
 np
-np
+bV
 np
 np
 np
@@ -33307,27 +35111,27 @@ bF
 cb
 kg
 kg
+eX
+eX
+eX
+eX
+eX
+eX
 bt
 bt
+ku
+kk
+ej
+jK
+jE
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -33341,9 +35145,9 @@ np
 np
 np
 np
-np
-np
-np
+bV
+bV
+bV
 np
 np
 np
@@ -33558,29 +35362,29 @@ bF
 cb
 kg
 kg
+eX
+eX
+eX
+eX
+eX
+eX
+eX
 bt
 bt
+gX
+kl
+ka
+jL
+gK
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
+eX
+eX
+eX
 kg
 kg
 bY
@@ -33592,11 +35396,11 @@ np
 np
 np
 cs
-At
-At
-At
-At
-At
+bX
+bX
+bX
+iN
+bX
 gq
 np
 np
@@ -33820,9 +35624,9 @@ bt
 bt
 bt
 bt
+jM
 bt
-bt
-bt
+jM
 bt
 bt
 bt
@@ -34065,28 +35869,28 @@ bt
 bt
 bt
 bt
+eN
+eN
+eN
+eN
+eN
+eN
+eN
+jN
+eN
+jN
+eN
+eN
+eN
+eN
+eN
+eN
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+jx
+gM
+gM
+js
 bJ
 bJ
 bJ
@@ -34106,7 +35910,7 @@ bJ
 bJ
 bJ
 bJ
-dX
+eY
 dX
 eN
 kg
@@ -34316,30 +36120,30 @@ bt
 bt
 bt
 bt
+eN
+eN
+eV
+gB
+eV
+eV
+eV
+eV
+jO
+eV
+jO
+eV
+eV
+eV
+eV
+ad
+eV
+eN
+eN
+jw
+gI
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+js
 bf
 bf
 bf
@@ -34358,7 +36162,7 @@ bf
 bf
 bf
 bf
-dX
+eY
 dX
 dX
 dX
@@ -34568,31 +36372,31 @@ bt
 bt
 bt
 kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eV
+gB
+aT
+eV
+eV
+kD
+hu
+jQ
+hu
+jQ
+hu
+ht
+eV
+eV
+aT
+ad
+eV
+eN
 kg
-bt
-bt
-bt
-bt
-bt
+jw
+gL
+gL
+gL
+js
 bf
 bK
 bK
@@ -34610,7 +36414,7 @@ bf
 bK
 bK
 bK
-dX
+eY
 dX
 dX
 dX
@@ -34820,30 +36624,30 @@ bt
 bt
 kg
 kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+gB
+aT
+aU
+eV
+kD
+hu
+kg
+jA
+jA
+jA
+kg
+hu
+ht
+eV
+eR
+aT
+ad
+eN
 kg
 kg
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-kg
-kg
-bt
-bt
-bt
+bD
+bD
+bD
 kg
 kg
 bW
@@ -35067,37 +36871,37 @@ cp
 kg
 bC
 bC
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+gM
+gM
+gM
+gM
+kY
+eN
+aT
+aT
+bs
+kD
+hu
 kg
 kg
+km
+kb
+jR
 kg
 kg
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+hu
+ht
+bs
+aT
+aT
+eN
+jx
+gM
+gM
+gM
+gM
+gM
+js
 bJ
 bJ
 bJ
@@ -35114,7 +36918,7 @@ bf
 bJ
 bJ
 bJ
-dX
+eY
 dX
 dX
 dX
@@ -35309,9 +37113,9 @@ bC
 bC
 bD
 bD
-co
 bD
 bD
+cp
 bC
 bC
 cp
@@ -35323,33 +37127,33 @@ bt
 bt
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
+gW
+eN
+eR
+aT
+ad
+hu
 kg
 kg
-bA
+cF
 bz
-bt
+kc
 bw
 bu
 kg
 kg
+hu
+gB
+aT
+aU
+eN
+gJ
 bt
 bt
 bt
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+js
 bf
 bf
 bf
@@ -35366,7 +37170,7 @@ bf
 bf
 bf
 bf
-dX
+eY
 dX
 dX
 dX
@@ -35562,6 +37366,7 @@ bC
 bC
 cp
 bD
+cr
 cp
 bC
 bC
@@ -35569,39 +37374,38 @@ bC
 bC
 bC
 bC
-bC
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-kg
-kg
+gL
+gL
+gL
+gL
+gL
+kZ
+eN
+hw
+eR
+aT
+hu
+jA
+jB
 bA
-bz
-bt
-bw
-bu
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+jS
+ke
+jS
+jF
+jB
+jA
+hu
+aT
+aU
+bb
+eN
+jw
+gL
+gL
+gL
+gL
+gL
+js
 bK
 bK
 bK
@@ -35618,7 +37422,7 @@ bf
 bK
 bK
 bK
-dX
+eY
 dX
 dX
 dX
@@ -35822,36 +37626,36 @@ cp
 bC
 bC
 cp
-bt
-bt
-bt
-bt
+bD
+bD
+bD
 kg
 kg
 kg
-bt
-bt
-bt
-bt
+eN
+bs
+bs
+aT
+hu
+jA
+kE
+kv
+jT
+ke
+jT
+jG
+jC
+jA
+hu
+aT
+bs
+bs
+eN
 kg
 kg
-bt
-bt
-bt
-bt
-bt
 kg
-kg
-bt
-bt
-bt
-bt
-kg
-kg
-kg
-bt
-bt
-bt
+bD
+bD
 kg
 kg
 bW
@@ -36076,36 +37880,36 @@ cp
 cp
 cq
 cp
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-kg
-kg
-bA
-bz
-bt
-bw
-bu
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+gM
+gM
+gM
+kY
+eN
+hx
+gB
+aT
+hu
+jA
+jD
+kw
+jU
+kf
+jU
+jH
+jD
+jA
+hu
+aT
+ad
+bx
+eN
+jx
+gM
+gM
+gM
+gM
+gM
+js
 bJ
 bJ
 bJ
@@ -36122,7 +37926,7 @@ bf
 bJ
 bJ
 bJ
-dX
+eY
 dX
 dX
 dX
@@ -36331,33 +38135,33 @@ bt
 bt
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
+gW
+eN
+gB
+aT
+aT
+hu
 kg
 kg
-bA
-bz
-bt
-bw
 bu
+kn
+kh
+jW
+cF
 kg
 kg
+hu
+eR
+aT
+ad
+eN
+gJ
 bt
 bt
 bt
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+js
 bf
 bf
 bf
@@ -36374,7 +38178,7 @@ bf
 bf
 bf
 bf
-dX
+eY
 dX
 dX
 dX
@@ -36579,37 +38383,37 @@ cp
 bC
 bC
 bC
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+gL
+gL
+gL
+gL
+kZ
+eN
+aT
+aT
+aU
+kF
+hu
 kg
 kg
+ko
+ki
+jX
 kg
 kg
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+hu
+hv
+bs
+aT
+aT
+eN
+jw
+gL
+gL
+gL
+gL
+gL
+js
 bK
 bK
 bK
@@ -36626,7 +38430,7 @@ bf
 bK
 bK
 bK
-dX
+eY
 dX
 dX
 dX
@@ -36836,30 +38640,30 @@ bt
 bt
 kg
 kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eR
+aT
+bs
+eV
+kF
+hu
+kg
+jA
+jA
+jA
+kg
+hu
+hv
+eV
+gB
+aT
+aU
+eN
 kg
 kg
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-kg
-kg
-bt
-bt
-bt
+bD
+bD
+bD
 kg
 kg
 bW
@@ -37088,31 +38892,31 @@ bt
 bC
 bC
 kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eV
+eR
+ad
+eV
+eV
+kF
+hu
+jQ
+hu
+jQ
+hu
+hv
+eV
+eV
+aT
+aU
+eV
+eN
 kg
-bt
-bt
-bt
-bt
-bt
+jx
+gM
+gM
+gM
+js
 bf
 bJ
 bJ
@@ -37130,7 +38934,7 @@ bf
 bJ
 bJ
 bJ
-dX
+eY
 dX
 dX
 dX
@@ -37340,30 +39144,30 @@ bC
 bC
 bt
 bC
+eN
+eN
+eV
+eR
+eV
+eV
+eV
+eV
+jO
+eV
+jO
+eV
+eV
+eV
+eV
+aU
+eV
+eN
+eN
+jx
+gK
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+js
 bf
 bf
 bf
@@ -37382,7 +39186,7 @@ bf
 bf
 bf
 bf
-dX
+eY
 dX
 dX
 dX
@@ -37593,28 +39397,28 @@ bC
 bt
 bt
 bt
+eN
+eN
+eN
+eN
+eN
+eN
+eN
+jN
+eN
+jN
+eN
+eN
+eN
+eN
+eN
+eN
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+jw
+gL
+gL
+js
 bK
 bK
 bK
@@ -37634,7 +39438,7 @@ bK
 bK
 bK
 bK
-dX
+eY
 dX
 eN
 eV
@@ -37852,9 +39656,9 @@ bt
 bt
 bt
 bt
+jM
 bt
-bt
-bt
+jM
 bt
 bt
 bt
@@ -38094,29 +39898,29 @@ bC
 bC
 kg
 kg
+eX
+eX
+eX
+eX
+eX
+eX
+eX
 bt
 bt
+gV
+jY
+jI
+jY
+gI
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -38347,27 +40151,27 @@ bC
 cb
 kg
 kg
+eX
+eX
+eX
+eX
+eX
+eX
 bt
 bt
+ku
+kp
+kj
+jZ
+jE
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -38600,25 +40404,25 @@ cm
 cb
 kg
 kg
+eX
+eX
+eX
+eX
+eX
 bt
 bt
+ku
+ej
+ej
+jJ
+jE
 bt
 bt
-bt
-bt
-bt
-bt
-kg
-kg
-kg
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -38853,23 +40657,23 @@ cm
 bC
 kg
 kg
+eX
+eX
+eX
+eX
 bt
 bt
+gX
+ka
+ka
+ka
+gK
 bt
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
+eX
 kg
 kg
 cb
@@ -39106,21 +40910,21 @@ bC
 bC
 kg
 kg
+eX
+eX
+eX
+bt
+eN
+eN
 bt
 bt
 bt
+eN
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eX
+eX
+eX
 kg
 kg
 cb
@@ -39359,19 +41163,19 @@ cm
 cb
 kg
 kg
+eX
+eX
+eN
+eV
+eV
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eV
+eV
+eN
+eX
+eX
 kg
 kg
 cb
@@ -39612,17 +41416,17 @@ cm
 cb
 kg
 kg
+eX
+eN
+eV
+eV
+eN
 bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
-bt
+eN
+eV
+eV
+eN
+eX
 kg
 kg
 cb
@@ -39866,13 +41670,13 @@ cb
 kg
 kg
 bt
+eN
+eN
 bt
 bt
 bt
-bt
-bt
-bt
-bt
+eN
+eN
 bt
 kg
 kg
@@ -39939,7 +41743,7 @@ rX
 rX
 rX
 rX
-np
+bm
 np
 np
 np
@@ -40153,7 +41957,7 @@ np
 np
 np
 np
-np
+bF
 rX
 rX
 rX
@@ -40192,7 +41996,7 @@ rX
 rX
 rX
 rX
-np
+bm
 np
 np
 np
@@ -40404,7 +42208,7 @@ np
 np
 np
 np
-np
+bF
 rX
 rX
 rX
@@ -40440,8 +42244,8 @@ kg
 rX
 rX
 rX
-aM
-aM
+eN
+hE
 rX
 rX
 rX
@@ -40659,8 +42463,8 @@ np
 rX
 rX
 rX
-aM
-aM
+eN
+hE
 rX
 rX
 rX
@@ -40691,10 +42495,10 @@ kg
 kg
 rX
 rX
-aM
-aM
-aM
-aM
+eN
+hE
+eN
+hE
 rX
 rX
 np
@@ -40910,10 +42714,10 @@ np
 np
 rX
 rX
-aM
-aM
-aM
-aM
+eN
+hE
+eN
+hE
 rX
 rX
 kg
@@ -40943,10 +42747,10 @@ aH
 aH
 rX
 rX
-aM
-aM
-aM
-aM
+eN
+eN
+hE
+eN
 rX
 rX
 np
@@ -41162,14 +42966,14 @@ np
 np
 rX
 rX
-aM
-aM
-aM
-aM
+eN
+eN
+hE
+eN
 rX
 rX
+aH
 cc
-np
 np
 np
 np
@@ -41196,8 +43000,8 @@ cm
 rX
 rX
 rX
-aM
-aM
+eN
+eN
 rX
 rX
 rX
@@ -41415,11 +43219,12 @@ np
 rX
 rX
 rX
-aM
-aM
+eN
+eN
 rX
 rX
 rX
+cc
 np
 np
 np
@@ -41444,8 +43249,7 @@ np
 np
 np
 np
-np
-np
+cm
 rX
 rX
 rX
@@ -41671,6 +43475,7 @@ rX
 rX
 rX
 rX
+cc
 np
 np
 np
@@ -41697,8 +43502,7 @@ np
 np
 np
 np
-np
-np
+cm
 rX
 rX
 rX
@@ -41922,7 +43726,7 @@ rX
 rX
 rX
 rX
-np
+cc
 np
 np
 np

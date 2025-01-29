@@ -1181,3 +1181,29 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
+
+///Oil Rig Prop.
+
+/obj/structure/prop/oilrig/support_beam
+	name = "support beam"
+	desc = "Marval of human engineering, keeping a metal platform afloat on the seas of a distant alien world."
+//	color = "#FF7700"
+	icon = 'icons/obj/structures/props/oilrig/support_beam.dmi'
+	icon_state = "support_beam"
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/oilrig/support_beam/blue
+	icon_state = "support_beam_blue"
+
+/obj/structure/prop/oilrig/support_beam/green
+	icon_state = "support_beam_green"
+
+/obj/structure/prop/oilrig/support_beam/aqua
+	icon_state = "support_beam_aqua"
+
+/obj/structure/prop/oilrig/support_beam/red
+	icon_state = "support_beam_red"
+
+/obj/structure/prop/oilrig/support_beam/brown
+	icon_state = "support_beam_brown"

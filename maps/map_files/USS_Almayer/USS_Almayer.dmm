@@ -116,11 +116,8 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
-/obj/structure/sign/safety/bathunisex{
-	pixel_x = -16;
+/mob/living/simple_animal/mouse/rat/brown{
+	/obj/structure/sign/safety/bathunisex{pixel_x = -16;
 	pixel_y = 8
 	},
 /turf/open/floor/almayer/plate,

@@ -21,6 +21,13 @@
 /datum/chem_property/positive/antitoxic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.drowsyness  = max(M.drowsyness, 30)
 
+/datum/chem_property/positive/antitoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.toxins > 0)
+		processing_tray.toxins += -1*(potency*2)
+
 /datum/chem_property/positive/anticorrosive
 	name = PROPERTY_ANTICORROSIVE
 	code = "ACR"
@@ -839,6 +846,25 @@
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
 
+/datum/chem_property/positive/photosensative/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.seed.harvest_repeat == 1)
+		return
+	processing_tray.weedlevel += 0.8*(10-(potency*2))*volume
+	processing_tray.nutrilevel += -0.8*(10-(potency*2))*volume
+	processing_tray.repeat_harvest_counter += 5*(potency*2)*volume
+	if (processing_tray.repeat_harvest_counter >= 100)
+		if (rand(0,2) < 2)
+			processing_tray.repeat_harvest_counter += -1*rand(20,50)
+			return
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.harvest_repeat = 1
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] begins to shimmer with a color out of space"))
+		processing_tray.potency_counter = 0
+
 /datum/chem_property/positive/crystallization
 	name = PROPERTY_CRYSTALLIZATION
 	code = "CRL"
@@ -995,6 +1021,8 @@
 
 /datum/chem_property/positive/aiding/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency = 1, volume = 1)
 	. = ..()
+	if(!processing_tray.seed)
+		return
 	processing_tray?.mutation_mod += -4*(potency*2)*volume
 
 

@@ -306,15 +306,16 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
-/datum/seed/proc/mutate(degree, turf/source_turf)
+/datum/seed/proc/mutate(degree, turf/source_turf, mutation_level)
 
-	if(!degree || immutable > 0) return
+	if(!degree || immutable > 0)
+		return
 
 	source_turf.visible_message(SPAN_NOTICE("\The [display_name] quivers!"))
 
 	//This looks like shit, but it's a lot easier to read/change this way.
 	var/total_mutations = rand(1,1+degree)
-	for(var/i = 0;i<total_mutations;i++)
+	for(var/i in 0 to total_mutations+max(0, round(mutation_level/50)))
 		switch(rand(0,14))
 			if(0) //Plant cancer!
 				lifespan = max(0,lifespan-rand(1,5))
@@ -376,7 +377,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 											prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),
 											) = list(1,rand(1,2)))
 				if(prob(40) && chems_special)
-					chem_to_add = list(pick(chems_special) = list(3,rand(3,5)))
+					chem_to_add = list(pick(chems_special) = list(10,rand(8,15)))
+					//atropine = list(10, 8)
 				chems += chem_to_add
 
 

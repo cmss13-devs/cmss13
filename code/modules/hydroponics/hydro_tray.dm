@@ -113,17 +113,19 @@
 		return
 
 	// Advance plant age.
-	if(prob(30)) age += 1 * HYDRO_SPEED_MULTIPLIER
+	if(prob(30))
+		age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
 	if(seed.immutable == -1)
 		var/mut_prob = rand(1,100)
-		if(mut_prob <= 5) mutate(mut_prob == 1 ? 2 : 1)
+		if(mut_prob <= 10)
+			mutate(mut_prob == 1 ? 2 : 1, mutation_level)
 
 	// Other plants also mutate if enough mutagenic compounds have been added.
 	if(!seed.immutable)
-		if(prob(min(mutation_level,100)))
-			mutate((rand(100) < 15) ? 2 : 1)
+		if(prob(min(max(mutation_level, 2)/2, 100)))
+			mutate((rand(100) < 15) ? 2 : 1, mutation_level)
 			mutation_level = 0
 
 	// Maintain tray nutrient and water levels.
@@ -346,7 +348,7 @@
 
 	return
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(severity)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(severity, mutation_level)
 
 	// No seed, no mutations.
 	if(!seed)
@@ -362,8 +364,7 @@
 	// harvested yet and it's safe to assume it's restricted to this tray.
 	if(!isnull(GLOB.seed_types[seed.name]))
 		seed = seed.diverge()
-	seed.mutate(severity,get_turf(src))
-
+	seed.mutate(severity ,get_turf(src), mutation_level)
 	return
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/check_level_sanity()

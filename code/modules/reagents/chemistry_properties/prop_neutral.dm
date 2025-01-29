@@ -56,6 +56,7 @@
 		processing_tray.seed.potency += rand(1,potency*2)
 		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
 		processing_tray.potency_counter = 0
+
 /datum/chem_property/neutral/nutritious
 	name = PROPERTY_NUTRITIOUS
 	code = "NTR"
@@ -366,6 +367,7 @@
 	var/water_input = -0.1*(potency*2)*volume
 	water_added += water_input
 	processing_tray.waterlevel += water_input
+
 /datum/chem_property/neutral/allergenic
 	name = PROPERTY_ALLERGENIC
 	code = "ALG"

@@ -2,6 +2,8 @@
 	name = "shuttle"
 	icon = 'icons/turf/shuttle.dmi'
 
+	flags_obj = parent_type::flags_obj|OBJ_BLOCK_Z_IN_DOWN
+
 /obj/structure/shuttle/window
 	name = "shuttle window"
 	icon = 'icons/turf/podwindows.dmi'

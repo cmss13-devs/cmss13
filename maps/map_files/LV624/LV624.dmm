@@ -2486,7 +2486,7 @@
 	pixel_y = 14
 	},
 /obj/structure/barricade/handrail/wire,
-/turf/open/space/basic,
+/turf/open/floor/plating/almayer,
 /area/lv624/lazarus/main_hall)
 "anR" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -11386,7 +11386,7 @@
 	pixel_y = 14
 	},
 /obj/structure/barricade/handrail/wire,
-/turf/open/space/basic,
+/turf/open/floor/plating/almayer,
 /area/lv624/lazarus/main_hall)
 "dwN" = (
 /obj/structure/bed/sofa/vert/grey/bot,
@@ -14117,7 +14117,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer,
 /area/lv624/lazarus/main_hall)
 "izh" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
@@ -17984,7 +17984,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/turf/open/floor/white,
+/turf/open/floor/plating/almayer,
 /area/lv624/lazarus/main_hall)
 "pEl" = (
 /obj/effect/landmark/hunter_primary,
@@ -20148,7 +20148,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer,
 /area/lv624/lazarus/landing_zones/lz2)
 "twC" = (
 /turf/open/gm/coast/beachcorner2/north_west,
@@ -21013,7 +21013,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/turf/open/floor/dark,
+/turf/open/floor/plating/almayer,
 /area/lv624/lazarus/landing_zones/lz2)
 "vdl" = (
 /obj/structure/stairs/perspective{

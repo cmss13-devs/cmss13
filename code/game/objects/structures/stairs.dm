@@ -33,6 +33,15 @@
 	listening_to = null
 	. = ..()
 
+/obj/structure/stairs/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(target_dir == dir)
+		return NO_BLOCKED_MOVEMENT
+
+	. = ..()
+
+	if(isTerminator() && mover.z == z && target_dir == REVERSE_DIR(dir))
+		return BLOCKED_MOVEMENT
+
 /obj/structure/stairs/proc/on_move(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
 

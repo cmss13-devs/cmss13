@@ -48,7 +48,7 @@ Docking Port Definitions
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/almayer_two
+/obj/docking_port/stationary/marine_dropship/airlock/inner/almayer__two
 	name = "Almayer Hangar Airlock 2 Inner"
 	id = ALMAYER_A2_INNER
 	dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO

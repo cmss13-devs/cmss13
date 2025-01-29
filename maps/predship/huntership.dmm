@@ -9406,18 +9406,14 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/computer/crew/alt/yautja{
-	pixel_x = 26;
+	pixel_x = 28;
 	pixel_y = 1;
 	dir = 1
 	},
-/obj/structure/showcase{
-	desc = "A teleportation console";
-	dir = 1;
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "terminal";
-	name = "Radar Console";
+/obj/structure/machinery/computer/crew/alt/yautja{
+	pixel_x = 4;
 	pixel_y = 1;
-	pixel_x = 2
+	dir = 1
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
@@ -16995,7 +16991,7 @@ Bo
 bH
 Ha
 BM
-oF
+Ws
 Zo
 wE
 aV
@@ -17199,7 +17195,7 @@ Zo
 bH
 Ha
 BM
-xm
+dM
 Zo
 wE
 aV

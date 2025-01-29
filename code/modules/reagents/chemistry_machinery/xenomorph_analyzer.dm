@@ -132,7 +132,7 @@
 		if("process_organ")
 			if(!busy)
 				busy = TRUE
-				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 3 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 2 SECONDS)
 				flick("xeno_analyzer_on_moving", src)
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 				QDEL_NULL(organ)
@@ -183,7 +183,7 @@
 	technology_purchased[upgrade] += 1
 	playsound(loc, 'sound/machines/print.ogg', 25)
 	if(length(print_queue) >= 1)
-		addtimer(CALLBACK(src, PROC_REF(print_upgrade), upgrade, user), 2.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(print_upgrade), upgrade, user), 1 SECONDS)
 	else
 		queue_proccessing = FALSE
 

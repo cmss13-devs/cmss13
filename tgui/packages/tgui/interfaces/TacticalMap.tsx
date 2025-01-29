@@ -166,7 +166,7 @@ export const TacticalMap = (props) => {
                   onClick={() => tryIncrementZ()}
                   >
                     Move up
-                  </Tabs.Tab>
+                </Tabs.Tab>
                 <Tabs.Tab
                   key={PAGES.length+1}
                   color={data.isxeno ? 'purple' : 'blue'}
@@ -175,7 +175,7 @@ export const TacticalMap = (props) => {
                   onClick={() => tryDecrementZ()}
                   >
                     Move down
-                  </Tabs.Tab>
+                </Tabs.Tab>
               </Tabs>
             </Stack.Item>
           </Stack>

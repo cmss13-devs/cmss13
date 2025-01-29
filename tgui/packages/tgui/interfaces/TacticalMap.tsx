@@ -110,15 +110,13 @@ export const TacticalMap = (props) => {
   const tryIncrementZ = () => {
     act('changeZ', {
       amount: 1,
-    }
-    );
+    });
   };
 
   const tryDecrementZ = () => {
     act('changeZ', {
       amount: -1,
-    }
-    );
+    });
   };
 
   return (
@@ -162,19 +160,19 @@ export const TacticalMap = (props) => {
                   key={PAGES.length}
                   color={data.isxeno ? 'purple' : 'blue'}
                   selected={false}
-                  icon={"plus"}
+                  icon={'plus'}
                   onClick={() => tryIncrementZ()}
-                  >
-                    Move up
+                >
+                  Move up
                 </Tabs.Tab>
                 <Tabs.Tab
-                  key={PAGES.length+1}
+                  key={PAGES.length + 1}
                   color={data.isxeno ? 'purple' : 'blue'}
                   selected={false}
-                  icon={"minus"}
+                  icon={'minus'}
                   onClick={() => tryDecrementZ()}
-                  >
-                    Move down
+                >
+                  Move down
                 </Tabs.Tab>
               </Tabs>
             </Stack.Item>

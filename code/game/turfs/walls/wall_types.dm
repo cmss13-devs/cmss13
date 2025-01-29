@@ -290,7 +290,7 @@
 /turf/closed/wall/upp_ship/reinforced/outer
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
-	hull = TRUE
+	turf_flags = TURF_HULL
 	icon_state = "uppwall_hull"
 
 //UPP almayer retexture walls.
@@ -308,7 +308,7 @@
 /turf/closed/wall/almayer/upp/reinforced/outer
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
-	hull = TRUE
+	turf_flags = TURF_HULL
 	icon_state = "hull"
 
 /turf/closed/wall/strata_outpost
@@ -326,7 +326,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/strata_outpost/reinforced/hull
-	hull = 1
+	turf_flags = TURF_HULL
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 

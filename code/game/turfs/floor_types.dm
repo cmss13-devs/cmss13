@@ -2175,7 +2175,7 @@
 	icon = 'icons/turf/walls/upp_hull.dmi'
 	icon_state = "outerhull_upp_rostock"
 	name = "hull"
-	hull_floor = TRUE
+	turf_flags = TURF_HULL
 
 /turf/open/floor/upp_hull_rostock/outerhull_dir
 	icon_state = "outerhull_dir_upp_rostock"
@@ -2208,7 +2208,7 @@
 	icon = 'icons/turf/walls/upp_hull.dmi'
 	icon_state = "outerhull_upp"
 	name = "hull"
-	hull_floor = TRUE
+	turf_flags = TURF_HULL
 
 /turf/open/floor/upp_hull/outerhull_dir
 	icon_state = "outerhull_dir_upp"

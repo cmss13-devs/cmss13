@@ -675,6 +675,7 @@
 #include "code\datums\statistics\entities\player_entity.dm"
 #include "code\datums\statistics\entities\player_save.dm"
 #include "code\datums\statistics\entities\player_stats.dm"
+#include "code\datums\statistics\entities\round_caste_picks.dm"
 #include "code\datums\statistics\entities\round_stats.dm"
 #include "code\datums\statistics\entities\weapon_stats.dm"
 #include "code\datums\statistics\entities\xeno_stats.dm"

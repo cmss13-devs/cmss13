@@ -210,12 +210,12 @@
 		var/mob/living/carbon/C = M
 
 		if(watertemp == "freezing")
-			C.bodytemperature = max(80, C.bodytemperature - 80)
+			C.bodytemperature = max(T0C, C.bodytemperature - BODYTEMP_COOLING_MAX)
 			C.recalculate_move_delay = TRUE
 			to_chat(C, SPAN_WARNING("The water is freezing!"))
 			return
 		if(watertemp == "boiling")
-			C.bodytemperature = min(500, C.bodytemperature + 35)
+			C.bodytemperature = min(T90C, C.bodytemperature + BODYTEMP_HEATING_MAX)
 			C.recalculate_move_delay = TRUE
 			C.apply_damage(5, BURN)
 			to_chat(C, SPAN_DANGER("The water is searing!"))

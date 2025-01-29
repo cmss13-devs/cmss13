@@ -365,6 +365,7 @@
 				return FALSE
 			break
 	//Insert the property
+	level = min (P.max_level, level)
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
 	P = new P.type()
 	P.level = level

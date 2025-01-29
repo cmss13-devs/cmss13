@@ -630,20 +630,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "kH" = (
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/omega)
-"kO" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = null;
-	name = "\improper Elevator Lock"
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/shuttle/trijent_shuttle/omega)
+/turf/template_noop,
+/area/template_noop)
 "kT" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -1866,9 +1854,6 @@
 	},
 /turf/open/floor/white,
 /area/desert_dam/building/medical/emergency_room)
-"Ib" = (
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle/omega)
 "Ic" = (
 /turf/closed/wall,
 /area/desert_dam/building/medical/chemistry)
@@ -2090,14 +2075,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Nd" = (
-/obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hangar{
-	name = "Elevator Shaft";
-	unacidable = 1;
-	hull = 1
-	},
-/area/shuttle/trijent_shuttle/omega)
 "Nf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -2506,16 +2483,6 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/desert_dam/exterior/river/riverside_south)
-"UE" = (
-/obj/docking_port/stationary/trijent_elevator/empty{
-	id = "trijent_omega";
-	name = "Omega Elevator";
-	airlock_exit = "east";
-	airlock_area = /area/shuttle/trijent_shuttle/omega;
-	elevator_network = "B"
-	},
-/turf/open/gm/empty,
-/area/shuttle/trijent_shuttle/omega)
 "UG" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -2947,10 +2914,10 @@ jc
 jc
 "}
 (4,1,1) = {"
-Ib
-Ib
-Ib
-UE
+kH
+kH
+kH
+kH
 kH
 jc
 nF
@@ -2984,10 +2951,10 @@ NH
 jc
 "}
 (5,1,1) = {"
-Ib
-Ib
-Ib
-Ib
+kH
+kH
+kH
+kH
 kH
 jc
 nG
@@ -3021,10 +2988,10 @@ oP
 jc
 "}
 (6,1,1) = {"
-Ib
-Ib
-Ib
-Ib
+kH
+kH
+kH
+kH
 kH
 jc
 jc
@@ -3058,10 +3025,10 @@ vA
 oP
 "}
 (7,1,1) = {"
-Ib
-Ib
-Ib
-Ib
+kH
+kH
+kH
+kH
 kH
 jc
 jc
@@ -3095,10 +3062,10 @@ Ru
 vA
 "}
 (8,1,1) = {"
-Ib
-Ib
-Ib
-Ib
+kH
+kH
+kH
+kH
 kH
 jc
 jc
@@ -3132,10 +3099,10 @@ Ru
 Ru
 "}
 (9,1,1) = {"
-Ib
-Ib
-Ib
-Ib
+kH
+kH
+kH
+kH
 kH
 jc
 jc
@@ -3169,10 +3136,10 @@ Ru
 Ru
 "}
 (10,1,1) = {"
-Ib
-Ib
-Ib
-Ib
+kH
+kH
+kH
+kH
 kH
 jc
 jc
@@ -3206,10 +3173,10 @@ Ru
 Ru
 "}
 (11,1,1) = {"
-kO
-kO
-kO
-Nd
+kH
+kH
+kH
+kH
 kH
 jc
 jc

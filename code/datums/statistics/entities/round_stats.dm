@@ -112,12 +112,6 @@ BSQL_PROTECT_DATUM(/datum/entity/statistic_round)
 		START_PROCESSING(SSobj, round)
 		GLOB.round_statistics = round
 
-/datum/entity/statistic_round/Destroy()
-	QDEL_NULL_LIST(death_stats_list)
-	QDEL_NULL(current_map)
-
-	. = ..()
-
 /datum/entity/statistic_round/proc/setup_faction(faction)
 	if(!faction)
 		return

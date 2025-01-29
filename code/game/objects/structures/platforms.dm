@@ -93,7 +93,7 @@
 	if(user.pulling)
 		if(!can_climb(user))
 			return
-		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),\
+		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),
 		SPAN_WARNING("You start dragging \the [user.pulling] onto \the [src]."))
 		if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, user.pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
@@ -101,7 +101,7 @@
 			if(!can_climb(user))
 				return
 			var/turf/move_to_turf = get_step(get_turf(src), dir)
-			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),\
+			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),
 			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
 			user.pulling.forceMove(move_to_turf)
 
@@ -119,7 +119,7 @@
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
-	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
+	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."),
 	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)
 
@@ -141,7 +141,7 @@
 	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = shove_time * 0.1))
 		return
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"), \
+	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"),
 	SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, breaking_sound, 25, 1)
 	broken()

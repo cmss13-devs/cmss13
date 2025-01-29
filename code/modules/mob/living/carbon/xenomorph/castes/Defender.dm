@@ -61,6 +61,7 @@
 	weed_food_states_flipped = list("Defender_1","Defender_2","Defender_3")
 
 	skull = /obj/item/skull/defender
+	pelt = /obj/item/pelt/defender
 
 /mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)

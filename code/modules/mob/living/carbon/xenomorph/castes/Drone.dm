@@ -82,6 +82,7 @@
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 	skull = /obj/item/skull/drone
+	pelt = /obj/item/pelt/drone
 
 /mob/living/carbon/xenomorph/drone/tutorial
 	AUTOWIKI_SKIP(TRUE)

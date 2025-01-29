@@ -301,6 +301,7 @@
 				property = pick(GLOB.chemical_properties_list["positive"])
 
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
+	level = min (P.max_level, level)
 
 	//Calculate what our chemical value is with our level
 	var/new_value
@@ -365,7 +366,6 @@
 				return FALSE
 			break
 	//Insert the property
-	level = min (P.max_level, level)
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
 	P = new P.type()
 	P.level = level

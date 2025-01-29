@@ -623,7 +623,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return
 			if(user.drop_inv_item_to_loc(W, src))
 				cell = W
-				user.visible_message(SPAN_NOTICE("[user] inserts [W] into [src]!"), \
+				user.visible_message(SPAN_NOTICE("[user] inserts [W] into [src]!"),
 					SPAN_NOTICE("You insert [W] into [src]!"))
 				chargecount = 0
 				update_icon()
@@ -791,7 +791,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	else
 		if(((stat & BROKEN)) && !opened && W.force >= 5)
 			opened = APC_COVER_REMOVED
-			user.visible_message(SPAN_WARNING("[user] knocks down [src]'s cover with [W]!"), \
+			user.visible_message(SPAN_WARNING("[user] knocks down [src]'s cover with [W]!"),
 				SPAN_WARNING("You knock down [src]'s cover with [W]!"))
 			update_icon()
 		else
@@ -799,7 +799,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return attack_hand(user)
 			if(!opened && wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
 				return attack_hand(user)
-			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"), \
+			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"),
 			SPAN_DANGER("You hit [src] with \the [W]!"))
 
 /obj/structure/machinery/power/apc/deconstruct(disassembled = TRUE)

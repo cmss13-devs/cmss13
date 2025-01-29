@@ -271,14 +271,14 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
-	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] begins digging out a tunnel entrance."), \
+	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] begins digging out a tunnel entrance."),
 	SPAN_XENONOTICE("We begin digging out a tunnel entrance."), null, 5)
 	if(!do_after(xenomorph, 10 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(xenomorph, SPAN_WARNING("Our tunnel caves in as we stop digging it."))
 		return
 	if(!xenomorph.check_plasma(plasma_cost))
 		return
-	xenomorph.visible_message(SPAN_XENONOTICE("\The [xenomorph] digs out a tunnel entrance."), \
+	xenomorph.visible_message(SPAN_XENONOTICE("\The [xenomorph] digs out a tunnel entrance."),
 	SPAN_XENONOTICE("We dig out an entrance to the tunnel network."), null, 5)
 
 	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.hivenumber)

@@ -181,12 +181,12 @@
 	var/obj/item/tool/weldingtool/weldingtool = object
 
 	if(weldingtool.remove_fuel(2, user))
-		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] begins field recovering \the [src]."),
 			SPAN_NOTICE("You begin repairing the severe damages on \the [src] in an effort to restore its functions."))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		if(!do_after(user, field_recovery * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."), \
+		user.visible_message(SPAN_NOTICE("[user] field recovers \the [src], restoring it back to its original state."),
 			SPAN_NOTICE("You repair \the [src] back to a functional state."))
 		broken_gun = FALSE
 		health = 110
@@ -384,12 +384,12 @@
 			return
 
 		if(weldingtool.remove_fuel(2, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on \the [src]."),
 				SPAN_NOTICE("You begin repairing the damage on \the [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				return
-			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."),
 					SPAN_NOTICE("You repair [src]."))
 			update_health(-floor(health_max*0.2))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)

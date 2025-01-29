@@ -144,19 +144,19 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 
 			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."), \
+				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."),
 				SPAN_NOTICE("You start unscrewing [src]'s maintenance hatch."))
 				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_CROWBAR
-					user.visible_message(SPAN_NOTICE("[user] unscrews [src]'s maintenance hatch."), \
+					user.visible_message(SPAN_NOTICE("[user] unscrews [src]'s maintenance hatch."),
 					SPAN_NOTICE("You unscrew [src]'s maintenance hatch."))
 
 			else if(repair_state == FLOODLIGHT_REPAIR_SCREW)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."), \
+				user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."),
 				SPAN_NOTICE("You start screwing [src]'s maintenance hatch closed."))
 				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_SCREW)
@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 					damaged = FALSE
 					repair_state = FLOODLIGHT_REPAIR_UNSCREW
 					health = initial(health)
-					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
+					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."),
 					SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
 					if(is_on)
 						set_light(lum_value)
@@ -179,14 +179,14 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 
 			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s damaged lighting assembly out."),\
+				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s damaged lighting assembly out."),
 				SPAN_NOTICE("You start prying [src]'s damaged lighting assembly out."))
 				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
 					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_WELD
-					user.visible_message(SPAN_NOTICE("[user] pries [src]'s damaged lighting assembly out."),\
+					user.visible_message(SPAN_NOTICE("[user] pries [src]'s damaged lighting assembly out."),
 					SPAN_NOTICE("You pry [src]'s damaged lighting assembly out."))
 			return TRUE
 
@@ -228,7 +228,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 					to_chat(user, SPAN_WARNING("You need two coils of wire to replace the damaged cables."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
+				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),
 				SPAN_NOTICE("You start replacing [src]'s damaged cables."))
 				if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 					if(coil.use(2))
 						playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_SCREW
-						user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged cables."),\
+						user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged cables."),
 						SPAN_NOTICE("You replace [src]'s damaged cables."))
 			return TRUE
 
@@ -257,14 +257,14 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 				to_chat(user, replacer.failmsg)
 				return FALSE
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged lighting assembly."),\
+			user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged lighting assembly."),
 			SPAN_NOTICE("You start replacing [src]'s damaged lighting assembly."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(QDELETED(src) || repair_state == FLOODLIGHT_REPAIR_SCREW)
 					return
 				replacer.Use(user)
 				repair_state = FLOODLIGHT_REPAIR_SCREW
-				user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),\
+				user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),
 				SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
 			return TRUE
 

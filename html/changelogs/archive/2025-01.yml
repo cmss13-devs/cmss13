@@ -514,3 +514,7 @@
   realforest2001:
   - bugfix: Synthetic Reset Key description now only says you need engineering knowledge
       when you actually do.
+2025-01-29:
+  Weuyn:
+  - balance: Research stim healing properties made more expensive, epinephrine-like
+      and painkilling properties made cheaper.

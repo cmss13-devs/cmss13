@@ -1105,7 +1105,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("medevac_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1306,7 +1306,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("fulton_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 

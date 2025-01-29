@@ -48,6 +48,7 @@
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "street_off"
 	layer = BILLBOARD_LAYER
+	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/colony_floodlight/street/Initialize(mapload, ...)
 	. = ..()

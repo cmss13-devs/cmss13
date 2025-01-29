@@ -204,9 +204,7 @@
 /turf/open/floor/strata/orange_icorner/east,
 /area/rostock/lower_deck/prep)
 "aaG" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/strata/orange_edge,
 /area/rostock/lower_deck/prep)
 "aaH" = (
@@ -5311,7 +5309,7 @@
 /obj/structure/sign/safety/ladder{
 	pixel_x = 39
 	},
-/turf/closed/wall/upp_ship,
+/turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/p_a_hallway)
 "dMZ" = (
 /obj/docking_port/stationary/emergency_response/external/hangar_port_upp,
@@ -6559,12 +6557,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lower_deck/s_a_hallway)
-"eKc" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack"
-	},
-/turf/open/floor/corsat/spiralplate,
-/area/rostock/lower_deck/prep)
 "eKt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -6798,9 +6790,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/rostock/engineering/lower_aft_corridor)
 "eTm" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "eTG" = (
@@ -7653,9 +7643,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "fwP" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "fwS" = (
@@ -8616,9 +8604,7 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "grM" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/strata/cyan3/north,
 /area/rostock/lower_deck/prep)
 "grV" = (
@@ -15280,11 +15266,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack";
-	pixel_x = 32;
-	density = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "lri" = (
@@ -20915,9 +20897,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "qft" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "qfY" = (
@@ -23932,7 +23912,7 @@
 "sBx" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/soft/purple,
-/turf/closed/wall/upp_ship,
+/turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/p_a_hallway)
 "sBO" = (
 /obj/structure/bed/chair{
@@ -25083,9 +25063,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/engineering/starboard_aft_accessway)
 "tBk" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "tBm" = (
@@ -26458,11 +26436,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "uKO" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack";
-	pixel_x = -32;
-	density = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
 "uKR" = (
@@ -27970,11 +27944,7 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/rostock/req)
 "vQn" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack";
-	pixel_x = -32;
-	density = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/wood,
 /area/rostock/command/xo)
 "vQs" = (
@@ -28507,7 +28477,7 @@
 "wfO" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/spray/cleaner,
-/turf/closed/wall/upp_ship,
+/turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/p_a_hallway)
 "wfQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -29660,6 +29630,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "xex" = (
@@ -30094,9 +30065,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "xvW" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack"
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/security/headquarters_storage)
 "xwM" = (
@@ -30521,13 +30490,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/security/brig_accessway)
-"xOA" = (
-/obj/structure/machinery/door/airlock/upp/generic/solid{
-	dir = 2;
-	name = "\improper Maintenance Hatch"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/upperdeck_maint/p_a)
 "xOV" = (
 /obj/structure/window/framed/upp_ship,
 /turf/open/floor/plating,
@@ -30755,7 +30717,7 @@
 /area/rostock/engineering/main_area)
 "xYk" = (
 /obj/structure/machinery/photocopier,
-/turf/closed/wall/upp_ship/reinforced,
+/turf/open/floor/strata/red4/west,
 /area/rostock/security/headquarters_lobby)
 "xZa" = (
 /obj/structure/machinery/light{
@@ -30790,11 +30752,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/s_a_hallway)
 "yaJ" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Automated Equipment Rack";
-	density = 0;
-	pixel_y = 26
-	},
+/obj/structure/machinery/cm_vending/clothing/antag/upp,
 /turf/open/floor/corsat/cargo,
 /area/rostock/hangar/pilotbunk)
 "yaR" = (
@@ -37058,7 +37016,7 @@ rFr
 dMR
 wfO
 sBx
-tlW
+oGW
 lIZ
 cqI
 edl
@@ -39075,7 +39033,7 @@ mJF
 woC
 ljJ
 wyD
-eKc
+eTm
 pyD
 woC
 ljJ
@@ -41372,7 +41330,7 @@ arL
 feH
 oxy
 oxy
-xOA
+iid
 oxy
 arL
 hJM

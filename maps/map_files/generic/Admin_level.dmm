@@ -18,11 +18,6 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/space/basic,
 /area/space)
-"af" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/space)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -31,15 +26,6 @@
 	},
 /turf/open/floor/tdome/northeast,
 /area/tdome)
-"ah" = (
-/turf/open/floor/plating,
-/area/space)
-"ai" = (
-/obj/structure/machinery/cm_vending/sorted/medical/tutorial{
-	invisibility = 255
-	},
-/turf/open/floor/plating,
-/area/space)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
@@ -47,9 +33,6 @@
 /area/adminlevel/ert_station)
 "ak" = (
 /turf/closed/wall/almayer/outer,
-/area/tdome/tdome1)
-"al" = (
-/turf/open/floor/plating,
 /area/tdome/tdome1)
 "an" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -7428,7 +7411,7 @@ aa
 aC
 aa
 ak
-al
+Zd
 Ee
 Ee
 Ee
@@ -8341,14 +8324,14 @@ as
 as
 as
 as
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-aC
+as
+as
+as
+as
+as
+as
+as
+as
 aC
 aC
 aC
@@ -8493,14 +8476,14 @@ as
 as
 as
 as
-TT
 as
 as
 as
 as
 as
 as
-aa
+as
+as
 aC
 aa
 aa
@@ -8645,14 +8628,14 @@ as
 as
 as
 as
-TT
 as
-af
-af
-af
-af
-af
-aa
+as
+as
+as
+as
+as
+as
+as
 aC
 aa
 ds
@@ -8797,14 +8780,14 @@ as
 as
 as
 as
-TT
 as
-af
-ah
-ah
-ah
-af
-aa
+as
+as
+as
+as
+as
+as
+as
 aC
 aa
 ds
@@ -8949,14 +8932,14 @@ as
 as
 as
 as
-TT
 as
-af
-ah
-ai
-ah
-af
-aa
+as
+as
+as
+as
+as
+as
+as
 aC
 aa
 ds
@@ -9101,14 +9084,14 @@ as
 as
 as
 as
-TT
 as
-af
-ah
-ah
-ah
-af
-aa
+as
+as
+as
+as
+as
+as
+as
 aC
 aa
 ds
@@ -9253,14 +9236,14 @@ as
 as
 as
 as
-TT
 as
-af
-af
-af
-af
-af
-aa
+as
+as
+as
+as
+as
+as
+as
 aC
 aa
 ds
@@ -9405,14 +9388,14 @@ as
 as
 as
 as
-TT
 as
 as
 as
 as
 as
 as
-aa
+as
+as
 aC
 aa
 ds
@@ -9557,14 +9540,14 @@ as
 as
 as
 as
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-aC
+as
+as
+as
+as
+as
+as
+as
+as
 aC
 aa
 ds

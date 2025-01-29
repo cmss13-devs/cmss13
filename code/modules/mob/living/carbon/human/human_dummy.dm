@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 
 /mob/living/carbon/human/realistic_dummy/med_hud_set_health()
 	. = ..()
-	if((round(health*100/species.total_health, 10)) >= 70)
+	if((round(health * 100 / species.total_health, 10)) >= 70)
 		SEND_SIGNAL(src, COMSIG_HUMAN_TUTORIAL_HEALED)
 
 /// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors

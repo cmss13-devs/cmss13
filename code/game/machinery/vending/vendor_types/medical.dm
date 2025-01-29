@@ -852,21 +852,3 @@
 		list("Souto Grape", 1, /obj/item/reagent_container/food/drinks/cans/souto/grape, VENDOR_ITEM_REGULAR),
 		list("Diet Souto Grape", 1, /obj/item/reagent_container/food/drinks/cans/souto/diet/grape, VENDOR_ITEM_REGULAR)
 	)
-
-/obj/structure/machinery/cm_vending/sorted/medical/tutorial
-	name = "\improper Wey-Med Minus"
-	desc = "I'm so sorry..."
-	icon_state = "med_broken"
-
-	allow_supply_link_restock = FALSE
-
-	// please dont hurt me, this only exists so the icon for IA pill bottles will load in a Smartfridge during the HM Tutorials
-	// this should NOT appear in game EVER
-
-/obj/structure/machinery/cm_vending/sorted/medical/tutorial/populate_product_list()
-
-	listed_products = list(
-		list("TESTAMENTS AGAINST GOD", -1, null, null),
-		list("Pill Bottle (IA)", 1, /obj/item/storage/pill_bottle/imialky, VENDOR_ITEM_REGULAR),
-		list("Glass Vial", 1, /obj/item/reagent_container/glass/beaker/vial, VENDOR_ITEM_REGULAR), // may as well make vials work too
-	)

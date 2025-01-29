@@ -217,14 +217,14 @@
 	. = ..()
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
 		var/mob/living/carbon/human/H = over_object
-		if(src.contents.len == 0)
+		if(length(contents) == 0)
 			new foldabletype(src)
 		var/obj/item/roller/rollerholder = locate(foldabletype) in src.contents
 		if (istype(over_object, /mob/living/carbon/human))
-			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
+			if (H == usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
 				H.put_in_hands(rollerholder)
 				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
-				SPAN_WARNING("You grab [src] from the floor!!"))
+				SPAN_WARNING("You grab [src] from the floor!"))
 				forceMove(rollerholder)
 
 /obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
@@ -269,7 +269,7 @@
 	deploy_roller(user, user.loc)
 
 /obj/item/roller/proc/deploy_roller(mob/user, atom/location)
-	if(src.contents.len == 0)
+	if(length(contents) == 0)
 		new rollertype(src)
 	var/obj/structure/bed/roller/roller = locate(rollertype) in src.contents
 	roller.forceMove(user.loc)
@@ -390,7 +390,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		return
 
 	if(prop)
-		to_chat(user, SPAN_NOTICE("[src]'s beacon locked on default setting!"))
+		to_chat(user, SPAN_NOTICE("[src]'s beacon is locked in the [stretcher_activated ? "on" : "off"] position."))
 		return
 
 	if(stretcher_activated)

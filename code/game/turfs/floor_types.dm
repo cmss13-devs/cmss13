@@ -2140,10 +2140,13 @@
 	icon_state = "outerhull"
 	name = "hull"
 	turf_flags = TURF_HULL
+	allow_construction = FALSE
+
+/turf/open/floor/almayer_hull/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/almayer_hull/outerhull_dir
 	icon_state = "outerhull_dir"
-	allow_construction = FALSE
 
 /turf/open/floor/almayer_hull/outerhull_dir/southwest
 	dir = SOUTHWEST

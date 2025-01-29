@@ -113,6 +113,14 @@
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
 
+///hunting grounds
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner
+	name = "hunt spawner"
+
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
+	name = "hunt spawner xeno"
+
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
 	. = ..()
 	GLOB.monkey_spawns += src
@@ -454,6 +462,9 @@
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
 
+/obj/effect/landmark/late_join/dzho_automaton
+	name = "dzho automaton late join"
+	job = JOB_UPP_JOE
 
 /obj/effect/landmark/late_join/cmo
 	name = "Chief Medical Officer late join"

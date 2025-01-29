@@ -249,6 +249,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/y
 
 	//Backpacks
 GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
+
+	//NVG colors
+GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "Yellow", "Orange", "Red", "Blue"))
 	//Armor styles
 GLOBAL_LIST_INIT(armor_style_list, list("Padded" = 1, "Padless" = 2, "Ridged" = 3, "Carrier" = 4, "Skull" = 5, "Smooth" = 6, "Random"))
 
@@ -323,6 +326,10 @@ GLOBAL_LIST_INIT(wj_emotes, setup_working_joe_emotes())
 GLOBAL_LIST_EMPTY(hj_categories)
 /// dict ("category" : (emotes)) of every hj emote typepath
 GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
+/// dict ("category" : (emotes)) of every uppj emote typepath
+GLOBAL_LIST_EMPTY(uppj_categories)
+/// dict ("category" : (emotes)) of every uppj emote typepath
+GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
@@ -509,8 +516,7 @@ GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 		HUD_ORANGE = new /datum/custom_hud/orange(),
 		HUD_RED = new /datum/custom_hud/red(),
 		HUD_WHITE = new /datum/custom_hud/white(),
-		HUD_ALIEN = new /datum/custom_hud/alien(),
-		HUD_ROBOT = new /datum/custom_hud/robot()
+		HUD_ALIEN = new /datum/custom_hud/alien()
 	)
 
 /proc/setup_human_huds()
@@ -595,6 +601,19 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 
 		if(!(initial(emote.category) in GLOB.hj_categories))
 			GLOB.hj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for Hazard joe emotes and category list, returns data for uppj_emotes
+/proc/setup_upp_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & UPP_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.uppj_categories))
+			GLOB.uppj_categories += initial(emote.category)
 
 		emotes_to_add += emote
 	return emotes_to_add

@@ -4,6 +4,9 @@
 //All castes need an evolves_to() list in their defines
 //Such as evolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SENTINEL, XENO_CASTE_RUNNER, "Badass") etc
 
+/// A list of ckeys that have been de-evolved willingly or forcefully
+GLOBAL_LIST_EMPTY(deevolved_ckeys)
+
 /mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
@@ -102,7 +105,7 @@
 		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
-	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."), \
+	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
@@ -181,13 +184,14 @@
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
 
 	src.transfer_observers_to(new_xeno)
+	new_xeno._status_traits = src._status_traits
 
 	qdel(src)
 	new_xeno.xeno_jitter(25)
@@ -197,7 +201,18 @@
 
 	if(new_xeno.mind && GLOB.round_statistics)
 		GLOB.round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+
 	SSround_recording.recorder.track_player(new_xeno)
+
+	// We prevent de-evolved people from being tracked for the rest of the round relating to T1s in order to prevent people
+	// Intentionally de/re-evolving to mess with the stats gathered. We don't track t2/3 because it's a legit strategy to open
+	// With a t1 into drone before de-evoing later to go t1 into another caste once survs are dead/capped
+	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys)))
+		var/caste_cleaned_key = lowertext(replacetext(castepick, " ", "_"))
+		if(!SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key])
+			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] = 1
+		else
+			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] += 1
 
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
 
@@ -309,26 +324,39 @@
 
 	SEND_SIGNAL(src, COMSIG_XENO_DEEVOLVE)
 
+	var/mob/living/carbon/xenomorph/new_xeno = transmute(newcaste)
+	if(new_xeno)
+		log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
+
+	if(new_xeno.ckey)
+		GLOB.deevolved_ckeys += new_xeno.ckey
+
+/mob/living/carbon/xenomorph/proc/transmute(newcaste)
+	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
 
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
-
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
 	if(!istype(new_xeno))
-		//Something went horribly wrong!
+		//Something went horribly wrong
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		if(new_xeno)
 			qdel(new_xeno)
-		return
+
+		if(organ_value != 0)
+			organ = new()
+			organ.forceMove(src)
+			organ.research_value = organ_value
+			organ.caste_origin = caste_type
+			organ.icon_state = get_organ_icon()
+		return FALSE
 
 	new_xeno.built_structures = built_structures.Copy()
 	built_structures = null
-
-	log_game("EVOLVE: [key_name(src)] de-evolved into [new_xeno].")
 
 	if(mind)
 		mind.transfer_to(new_xeno)
@@ -352,10 +380,11 @@
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."), \
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
 	SPAN_XENODANGER("We regress into our previous form."))
 
 	transfer_observers_to(new_xeno)
+	new_xeno._status_traits = src._status_traits
 
 	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
 		GLOB.round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
@@ -363,7 +392,8 @@
 	SSround_recording.recorder.track_player(new_xeno)
 
 	qdel(src)
-	return
+
+	return new_xeno
 
 /mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
 	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type

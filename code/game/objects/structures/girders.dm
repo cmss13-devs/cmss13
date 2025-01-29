@@ -120,7 +120,7 @@
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
 			repair()
 			return
-	..()
+	. = ..()
 
 /obj/structure/girder/proc/change_state(obj/item/W, mob/user)
 	switch(state)

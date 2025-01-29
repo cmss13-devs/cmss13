@@ -1,8 +1,17 @@
 import { BooleanLike, classes } from 'common/react';
+import { useState } from 'react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { Button, Icon, Image, NoticeBox, Section, Stack } from '../components';
+import {
+  Button,
+  Icon,
+  Image,
+  Input,
+  NoticeBox,
+  Section,
+  Stack,
+} from '../components';
 import { Window } from '../layouts';
 
 type Data = {
@@ -68,8 +77,17 @@ const ObjectDisplay = (props) => {
   const { act, data } = useBackend<Data>();
   const { object = [], scanning, selected } = data;
 
+  const [filter, setFilter] = useState('');
+
   return (
-    <Section>
+    <Section
+      buttons={
+        <Input
+          placeholder="Search..."
+          onInput={(_, val) => setFilter(val.toLowerCase())}
+        />
+      }
+    >
       <Button
         icon="redo-alt"
         color="blue"
@@ -80,26 +98,31 @@ const ObjectDisplay = (props) => {
       </Button>
       {!object.length && !scanning && <div>No trackable signals found</div>}
       {!scanning &&
-        object.map((object) => (
-          <div
-            key={object.dev}
-            title={object.name}
-            className={classes([
-              'Button',
-              'Button--fluid',
-              'Button--color--transparent',
-              'Button--ellipsis',
-              object.ref === selected && 'Button--selected',
-            ])}
-            onClick={() => {
-              act('selecttarget', {
-                ref: object.ref,
-              });
-            }}
-          >
-            {object.name}
-          </div>
-        ))}
+        object
+          .filter(
+            (val) =>
+              filter.length <= 0 || val.name.toLowerCase().includes(filter),
+          )
+          .map((object) => (
+            <div
+              key={object.dev}
+              title={object.name}
+              className={classes([
+                'Button',
+                'Button--fluid',
+                'Button--color--transparent',
+                'Button--ellipsis',
+                object.ref === selected && 'Button--selected',
+              ])}
+              onClick={() => {
+                act('selecttarget', {
+                  ref: object.ref,
+                });
+              }}
+            >
+              {object.name}
+            </div>
+          ))}
     </Section>
   );
 };

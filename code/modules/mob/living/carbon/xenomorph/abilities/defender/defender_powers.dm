@@ -76,7 +76,7 @@
 		return
 
 	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
-	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"), \
+	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"),
 	SPAN_XENOWARNING("We ram [carbone] with our armored crest!"))
 
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
@@ -113,10 +113,10 @@
 		return
 
 	if(xeno.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("We cannot use tail swipe with our crest lowered."))
+		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its tail in a wide circle!"), \
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its tail in a wide circle!"),
 	SPAN_XENOWARNING("We sweep our tail in a wide circle!"))
 
 	if(!check_and_use_plasma_owner())
@@ -155,7 +155,7 @@
 		return
 
 	if(xeno.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("We cannot use fortify with our crest lowered."))
+		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	if(!xeno.check_state())

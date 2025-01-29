@@ -45,8 +45,8 @@
 				if(!str || !length(str))
 					to_chat(usr, SPAN_WARNING(" Invalid text."))
 					return
-				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
-				SPAN_NOTICE("You title \the [src]: \"[str]\""),\
+				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",
+				SPAN_NOTICE("You title \the [src]: \"[str]\""),
 				"You hear someone scribbling a note.")
 				name = "[name] ([str])"
 				if(!examtext && !nameset)
@@ -64,8 +64,8 @@
 					update_icon()
 				else
 					examtext = str
-				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
-				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
+				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",
+				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),
 				"You hear someone scribbling a note.")
 
 /obj/structure/bigDelivery/update_icon()
@@ -152,8 +152,8 @@
 				if(!str || !length(str))
 					to_chat(usr, SPAN_WARNING(" Invalid text."))
 					return
-				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
-				SPAN_NOTICE("You title \the [src]: \"[str]\""),\
+				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",
+				SPAN_NOTICE("You title \the [src]: \"[str]\""),
 				"You hear someone scribbling a note.")
 				name = "[name] ([str])"
 				if(!examtext && !nameset)
@@ -172,8 +172,8 @@
 					update_icon()
 				else
 					examtext = str
-				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
-				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
+				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",
+				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),
 				"You hear someone scribbling a note.")
 	return
 
@@ -212,7 +212,7 @@
 
 /obj/item/packageWrap
 	name = "package wrapper"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
 	var/amount = 50
@@ -263,8 +263,8 @@
 			O.add_fingerprint(usr)
 			src.add_fingerprint(usr)
 			src.amount--
-			user.visible_message("[user] wraps [target] with [src].",\
-			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
+			user.visible_message("[user] wraps [target] with [src].",
+			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),
 			"You hear someone taping paper around a small object.")
 	else if (istype(target, /obj/structure/closet/crate))
 		var/obj/structure/closet/crate/crate = target
@@ -290,8 +290,8 @@
 				package.wrapped = crate
 				crate.forceMove(package)
 				amount -= 3
-				user.visible_message("[user] wraps [target] with [src].",\
-				SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
+				user.visible_message("[user] wraps [target] with [src].",
+				SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),
 				"You hear someone taping paper around a large object.")
 			else if(amount < 3)
 				to_chat(user, SPAN_WARNING("You need more paper."))
@@ -303,8 +303,8 @@
 			object.welded = 1
 			object.forceMove(package)
 			amount -= 3
-			user.visible_message("[user] wraps [target] with [src].",\
-			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
+			user.visible_message("[user] wraps [target] with [src].",
+			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),
 			"You hear someone taping paper around a large object.")
 		else if(amount < 3)
 			to_chat(user, SPAN_WARNING("You need more paper."))
@@ -326,6 +326,7 @@
 	name = "destination tagger"
 	desc = "Used to set the destination of properly wrapped packages."
 	icon_state = "dest_tagger"
+	icon = 'icons/obj/items/tools.dmi'
 	var/currTag = 0
 
 	w_class = SIZE_SMALL
@@ -338,7 +339,7 @@
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
 	for(var/i = 1, i <= length(GLOB.tagger_locations), i++)
-		dat += "<td><a href='?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
+		dat += "<td><a href='byond://?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
 
 		if (i%4==0)
 			dat += "</tr><tr>"

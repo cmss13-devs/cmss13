@@ -24,7 +24,7 @@
 /obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
 	create_egg_triggers()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	if(hivenumber == XENO_HIVE_NORMAL)
@@ -37,6 +37,10 @@
 	var/turf/my_turf = get_turf(src)
 	if(my_turf?.weeds && !isnull(weed_strength_required))
 		RegisterSignal(my_turf.weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_deletion))
+
+	var/area/area = get_area(src)
+	if(area && area.linked_lz)
+		AddComponent(/datum/component/resin_cleanup)
 
 /obj/effect/alien/egg/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -114,7 +118,7 @@
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."), \
+		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."),
 		SPAN_XENONOTICE("We clear the hatched egg."))
 		playsound(src.loc, "alien_resin_break", 25)
 		qdel(src)
@@ -260,7 +264,7 @@
 		switch(status)
 			if(EGG_BURST)
 				if(user)
-					visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
+					visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."),
 						SPAN_XENONOTICE("We place the child back in to [src]."))
 					user.temp_drop_inv_item(F)
 				else
@@ -298,6 +302,8 @@
 
 	health -= damage
 	healthcheck()
+
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/effect/alien/egg/proc/healthcheck()
 	if(health <= 0)

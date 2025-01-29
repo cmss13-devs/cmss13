@@ -49,6 +49,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 5)
 
+//Changed to Common so turing will dispense. definition of common chem class "Chemicals which recipe is commonly known and made". Oxycodone is such being avaliable from med dispenser
 /datum/reagent/medical/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
@@ -58,7 +59,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 8)
 
 /datum/reagent/medical/sterilizine
@@ -188,9 +189,9 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	overdose = 2
 	overdose_critical = 3
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
-	flags = REAGENT_TYPE_MEDICAL
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
 /datum/reagent/medical/arithrazine
 	name = "Arithrazine"
@@ -323,7 +324,7 @@
 /datum/reagent/medical/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-	if(M.bodytemperature < 170)
+	if(M.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		M.adjustCloneLoss(-1)
 		M.apply_damage(-1, OXY)
 		M.heal_limb_damage(1,1)

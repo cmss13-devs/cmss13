@@ -1,6 +1,12 @@
 
 /obj/item/clothing/under/color
 	flags_jumpsuit = FALSE
+	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
+	)
 
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"
@@ -47,25 +53,25 @@
 	item_state = "y_suit"
 	worn_state = "yellow"
 
-/obj/item/clothing/under/lightbrown
+/obj/item/clothing/under/color/lightbrown
 	name = "lightbrown jumpsuit"
 	desc = "lightbrown"
 	icon_state = "lightbrown"
 	worn_state = "lightbrown"
 
-/obj/item/clothing/under/brown
+/obj/item/clothing/under/color/brown
 	name = "brown jumpsuit"
 	desc = "brown"
 	icon_state = "brown"
 	worn_state = "brown"
 
-/obj/item/clothing/under/lightred
+/obj/item/clothing/under/color/lightred
 	name = "lightred jumpsuit"
 	desc = "lightred"
 	icon_state = "lightred"
 	worn_state = "lightred"
 
-/obj/item/clothing/under/darkred
+/obj/item/clothing/under/color/darkred
 	name = "darkred jumpsuit"
 	desc = "darkred"
 	icon_state = "darkred"

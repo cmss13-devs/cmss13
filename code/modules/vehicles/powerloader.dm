@@ -84,7 +84,7 @@
 
 /obj/vehicle/powerloader/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
-		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),\
+		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),
 		SPAN_DANGER("[user] tries to move you out of [src]!"))
 		var/oldloc = loc
 		var/olddir = dir

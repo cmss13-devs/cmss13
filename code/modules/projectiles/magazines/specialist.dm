@@ -6,7 +6,7 @@
 	name = "\improper M42A marksman magazine (10x28mm Caseless)"
 	desc = "A magazine of sniper rifle ammo. An aimed shot with it will deal significant damage."
 	caliber = "10x28mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m42c" //PLACEHOLDER
 	w_class = SIZE_MEDIUM
 	max_rounds = 15
@@ -54,7 +54,7 @@
 	name = "\improper Type-88 Magazine (7.62x54mmR)"
 	desc = "A large caliber magazine for the Type-88 designated marksman rifle."
 	caliber = "7.62x54mmR"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88mag"
 	default_ammo = /datum/ammo/bullet/sniper/upp
 	max_rounds = 12
@@ -93,7 +93,7 @@
 /obj/item/ammo_magazine/smartgun
 	name = "smartgun drum"
 	caliber = "10x28mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56_drum"
 	max_rounds = 500 //Should be 500 in total.
 	w_class = SIZE_MEDIUM
@@ -104,13 +104,14 @@
 	name = "irradiated smartgun drum"
 	desc = "What at first glance appears to be a standard 500 round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
 	icon_state = "m56_drum_dirty"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting smartgun drum"
 	desc = "Holotargetting rounds for use in the royal marines commando L56A2 smartgun."
-	icon_state = "m56_drum"
+	icon_state = "m56_drum" //PLACEHOLDER
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
 //-------------------------------------------------------
@@ -128,7 +129,7 @@
 	name = "\improper 84mm high explosive rocket"
 	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter-wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "rocket"
 
 	reload_delay = 60
@@ -157,8 +158,13 @@
 		return
 	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
 	if(!in_hand || !istype(in_hand))
+		to_chat(user, SPAN_WARNING("[M] isn't holding a rocket launcher in their active hand!"))
 		return
 	if(!in_hand.current_mag)
+		to_chat(user, SPAN_WARNING("[M]'s [in_hand] is already loaded!"))
+		return
+	if(!istype(in_hand, gun_type))
+		to_chat(user, SPAN_WARNING("[src] doesn't fit into [M]'s [in_hand.name]!")) // using name here because otherwise it puts an odd 'the' in front
 		return
 	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
@@ -351,7 +357,7 @@
 	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard High-Explosive rocket for anti-personal or light-vehicle use."
 	caliber = "88mm"
 	icon_state = "hjra_explosive"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/rocket_launchers.dmi'
 
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket

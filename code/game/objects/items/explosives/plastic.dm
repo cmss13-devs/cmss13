@@ -3,6 +3,10 @@
 	desc = "Used to put holes in specific areas without too much extra hole."
 	gender = PLURAL
 	icon = 'icons/obj/items/assemblies.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
 	flags_item = NOBLUDGEON
@@ -132,15 +136,15 @@
 		if(active)
 			if(user.action_busy)
 				return
-			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
 			SPAN_NOTICE("You start disarming [src]."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 	else
@@ -197,7 +201,7 @@
 
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
-		if(W.hull)
+		if(W.turf_flags & TURF_HULL)
 			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [W]!"))
 			return FALSE
 
@@ -208,6 +212,9 @@
 			return FALSE
 
 	if(ishuman(target))
+		if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/no_body_c4))
+			to_chat(user, SPAN_WARNING("This feels wrong, you do not want to do it."))
+			return FALSE
 		var/mob/living/carbon/human/H = target
 		if(user.faction == H.faction)
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
@@ -281,7 +288,7 @@
 	plant_target.ex_act(2000, dir, temp_cause)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
-		if(W.hull)
+		if(W.turf_flags & TURF_HULL)
 			continue
 		W.ex_act(1000 * penetration, , cause_data)
 
@@ -316,6 +323,7 @@
 	name = "breaching charge"
 	desc = "An explosive device used to break into areas while protecting the user from the blast as well as deploying deadly shrapnel on the other side."
 	icon_state = "satchel-charge"
+	item_state = "satchel-charge"
 	overlay_image = "satchel-active"
 	w_class = SIZE_SMALL
 	angle = 55
@@ -344,7 +352,7 @@
 
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/targeted_wall = target
-		if(targeted_wall.hull)
+		if(targeted_wall.turf_flags & TURF_HULL)
 			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [targeted_wall]!"))
 			return FALSE
 
@@ -392,3 +400,7 @@
 		return FALSE
 	. = ..()
 
+/obj/item/explosive/plastic/hybrisa/mining
+	var/id = 1
+	anchored = TRUE
+	unacidable = TRUE

@@ -4,7 +4,12 @@
 	name = "body bag"
 	desc = "A folded bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/bodybag.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "bodybag_folded"
+	item_state = "bodybag"
 	w_class = SIZE_SMALL
 	var/unfolded_path = /obj/structure/closet/bodybag
 
@@ -31,8 +36,9 @@
 /obj/item/bodybag/cryobag
 	name = "stasis bag"
 	desc = "A folded, reusable bag designed to prevent additional damage to an occupant."
-	icon = 'icons/obj/cryobag.dmi'
-	icon_state = "bodybag_folded"
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "cryobag_folded"
+	item_state = "cryobag"
 	unfolded_path = /obj/structure/closet/bodybag/cryobag
 	matter = list("plastic" = 7500)
 	var/used = 0
@@ -105,7 +111,7 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
@@ -209,7 +215,10 @@
 	name = "stasis bag"
 	bag_name = "stasis bag"
 	desc = "A reusable plastic bag designed to prevent additional damage to an occupant."
-	icon = 'icons/obj/cryobag.dmi'
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "cryobag_closed"
+	icon_closed = "cryobag_closed"
+	icon_opened = "cryobag_open"
 	item_path = /obj/item/bodybag/cryobag
 	store_items = FALSE
 	/// the mob in stasis
@@ -313,7 +322,7 @@
 				if(!(R.fields["last_scan_time"]))
 					. += "<span class = 'deptradio'>No scan report on record</span>\n"
 				else
-					. += "<span class = 'deptradio'><a href='?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n"
+					. += "<span class = 'deptradio'><a href='byond://?src=\ref[src];scanreport=1'>Scan from [R.fields["last_scan_time"]]</a></span>\n"
 				break
 
 
@@ -366,6 +375,6 @@
 
 /obj/item/trash/used_stasis_bag
 	name = "used stasis bag"
-	icon = 'icons/obj/cryobag.dmi'
-	icon_state = "bodybag_used"
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "cryobag_used"
 	desc = "It's been ripped open. You will need to find a machine capable of recycling it."

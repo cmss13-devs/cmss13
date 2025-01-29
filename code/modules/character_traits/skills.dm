@@ -90,8 +90,7 @@
 	trait_desc = "Gives the CO information on his smartgun"
 	skill = SKILL_SPEC_WEAPONS
 	skill_cap =  SKILL_SPEC_SMARTGUN
-	skill_increment = 7
-
+	skill_increment = SKILL_SPEC_SMARTGUN
 
 /datum/character_trait/skills/spotter
 	trait_name = "Spotter Training"

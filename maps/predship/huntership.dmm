@@ -2631,12 +2631,12 @@
 	},
 /area/yautja)
 "iu" = (
-/obj/structure/prop/hunter/trophy_display,
 /obj/item/skull/king{
 	pixel_y = 19;
 	anchored = 1;
 	pixel_x = 7
 	},
+/obj/structure/prop/hunter/trophy_display/bottom_left,
 /turf/open/floor/corsat,
 /area/yautja)
 "iv" = (
@@ -3437,6 +3437,11 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
+"lb" = (
+/obj/structure/prop/hunter/trophy_display,
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/huntership,
+/area/yautja)
 "lc" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -3934,6 +3939,17 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
+/obj/item/weapon/yautja/knife,
 /obj/item/weapon/yautja/knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
@@ -4808,7 +4824,7 @@
 	},
 /area/yautja)
 "qc" = (
-/obj/structure/prop/hunter/trophy_display/centre,
+/obj/structure/prop/hunter/trophy_display/center,
 /turf/open/floor/corsat,
 /area/yautja)
 "qd" = (
@@ -6164,6 +6180,11 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
+"uG" = (
+/obj/structure/prop/hunter/trophy_display/top_right,
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/huntership,
+/area/yautja)
 "uH" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4;
@@ -7354,7 +7375,7 @@
 	pixel_y = 17;
 	anchored = 1
 	},
-/obj/structure/prop/hunter/trophy_display/right,
+/obj/structure/prop/hunter/trophy_display/bottom_right,
 /turf/open/floor/corsat,
 /area/yautja)
 "zb" = (
@@ -7896,7 +7917,6 @@
 	pixel_y = 10;
 	anchored = 1
 	},
-/obj/structure/prop/hunter/trophy_display,
 /obj/item/skull/hunter{
 	anchored = 1;
 	pixel_y = 26;
@@ -7917,6 +7937,7 @@
 	pixel_y = 10;
 	anchored = 1
 	},
+/obj/structure/prop/hunter/trophy_display/bottom_left,
 /turf/open/floor/corsat,
 /area/yautja)
 "AW" = (
@@ -7962,7 +7983,7 @@
 /turf/open/floor/corsat,
 /area/yautja)
 "Bc" = (
-/obj/structure/prop/hunter/trophy_display/right,
+/obj/structure/prop/hunter/trophy_display/bottom_right,
 /turf/open/floor/corsat,
 /area/yautja)
 "Bg" = (
@@ -8906,7 +8927,7 @@
 	},
 /area/yautja)
 "DZ" = (
-/obj/structure/prop/hunter/trophy_display,
+/obj/structure/prop/hunter/trophy_display/bottom_left,
 /turf/open/floor/corsat,
 /area/yautja)
 "Eb" = (
@@ -11432,6 +11453,11 @@
 	},
 /turf/open/floor/corsat,
 /area/yautja)
+"MG" = (
+/obj/structure/prop/hunter/trophy_display/top_center,
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/huntership,
+/area/yautja)
 "MH" = (
 /obj/structure/platform_decoration/metal/hunter/east,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -11713,7 +11739,7 @@
 	pixel_y = 7;
 	anchored = 1
 	},
-/obj/structure/prop/hunter/trophy_display/centre,
+/obj/structure/prop/hunter/trophy_display/center,
 /turf/open/floor/corsat,
 /area/yautja)
 "Oc" = (
@@ -12795,7 +12821,6 @@
 	pixel_y = 8;
 	anchored = 1
 	},
-/obj/structure/prop/hunter/trophy_display/centre,
 /obj/item/clothing/accessory/limb/skeleton/head{
 	pixel_y = 7;
 	anchored = 1
@@ -12805,6 +12830,7 @@
 	pixel_y = 22;
 	anchored = 1
 	},
+/obj/structure/prop/hunter/trophy_display/center,
 /turf/open/floor/corsat,
 /area/yautja)
 "RF" = (
@@ -16376,8 +16402,8 @@ Cv
 Cv
 Kt
 aV
-aV
-aV
+cN
+cN
 aV
 aV
 aV
@@ -18135,8 +18161,8 @@ aV
 aV
 aV
 aV
-aV
-aV
+cN
+cN
 aV
 Ia
 Ia
@@ -18730,7 +18756,7 @@ JM
 Nv
 In
 aV
-aV
+lb
 DZ
 ya
 Eg
@@ -18759,7 +18785,7 @@ aV
 ii
 aV
 aV
-aV
+cN
 aV
 aV
 aV
@@ -18832,12 +18858,12 @@ BJ
 MB
 cZ
 aV
-aV
+MG
 qc
 ya
 Eg
 aV
-aV
+lb
 iu
 tm
 Mj
@@ -18934,12 +18960,12 @@ aV
 aV
 aV
 aV
-aV
+uG
 Bc
 ya
 Eg
 aV
-aV
+MG
 RD
 Ms
 ue
@@ -19041,7 +19067,7 @@ aV
 VT
 Eg
 aV
-aV
+uG
 Bc
 ku
 NO
@@ -19959,7 +19985,7 @@ aV
 VT
 Eg
 aV
-aV
+lb
 AV
 pH
 Mr
@@ -20056,12 +20082,12 @@ aV
 aV
 aV
 aV
-aV
+lb
 DZ
 ya
 Eg
 aV
-aV
+MG
 NX
 Ms
 ue
@@ -20158,12 +20184,12 @@ XW
 Nv
 In
 aV
-aV
+MG
 qc
 ya
 Eg
 aV
-aV
+uG
 za
 qD
 pH
@@ -20260,7 +20286,7 @@ JM
 MB
 cZ
 aV
-aV
+uG
 Bc
 ya
 Eg
@@ -20289,7 +20315,7 @@ aV
 Nr
 aV
 aV
-aV
+cN
 aV
 aV
 aV
@@ -20889,8 +20915,8 @@ aV
 aV
 aV
 aV
-aV
-aV
+cN
+cN
 aV
 Ia
 Ia
@@ -22598,8 +22624,8 @@ cI
 FT
 CO
 aV
-aV
-aV
+cN
+cN
 aV
 aV
 aV

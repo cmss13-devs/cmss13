@@ -279,19 +279,29 @@
 /obj/structure/prop/hunter/trophy_display
 	name = "\improper Yautja Trophy Display Rack"
 	desc = "A trophy rack for hunters displaying their prizes."
-	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
-	icon_state = "pred_trophy_vendor_left"
+	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon_state = "pred_trophy_vendor_top_left"
 	layer = TABLE_LAYER
 	throwpass = TRUE
 	bound_width = 32
-	bound_height = 64
+	bound_height = 32
 	density = TRUE
+	climbable = TRUE
 
-/obj/structure/prop/hunter/trophy_display/centre
-	icon_state = "pred_trophy_vendor_centre"
+/obj/structure/prop/hunter/trophy_display/bottom_left
+	icon_state = "pred_trophy_vendor_bottom_left"
 
-/obj/structure/prop/hunter/trophy_display/right
-	icon_state = "pred_trophy_vendor_right"
+/obj/structure/prop/hunter/trophy_display/center
+	icon_state = "pred_trophy_vendor_center"
+
+/obj/structure/prop/hunter/trophy_display/top_center
+	icon_state = "pred_trophy_vendor_top_center"
+
+/obj/structure/prop/hunter/trophy_display/top_right
+	icon_state = "pred_trophy_vendor_top_right"
+
+/obj/structure/prop/hunter/trophy_display/bottom_right
+	icon_state = "pred_trophy_vendor_bottom_right"
 
 /obj/structure/prop/hunter/trophy_display/attackby(obj/item/attacking_item, mob/user, click_data)
 	if(!user.drop_inv_item_to_loc(attacking_item, loc))

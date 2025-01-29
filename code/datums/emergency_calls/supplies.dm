@@ -86,5 +86,5 @@
 					new /obj/item/ammo_magazine/rifle/l42a/ap(W)
 					new /obj/item/attachable/stock/carbine(W)
 					new /obj/item/attachable/stock/carbine(W)
-					new /obj/item/attachable/scope/mini_iff(W)
-					new /obj/item/attachable/scope/mini_iff(W)
+					new /obj/item/attachable/alt_iff_scope(W)
+					new /obj/item/attachable/alt_iff_scope(W)

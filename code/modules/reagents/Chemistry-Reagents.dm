@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	///all the variations of the chemical that was ever created from this exact base.
 	var/list/modified_chemicals_list = list()
 	var/flags = 0 // Flags for misc. stuff
-  var/credit_reward = 2 //credit reward for scanning
+	var/credit_reward = 2 //credit reward for scanning
 	/// How much to adjust the temperature up until target_temp (positive is heating) when in a mob
 	var/adj_temp = 0
 	/// When adj_temp is used, this is the cap to the temperature

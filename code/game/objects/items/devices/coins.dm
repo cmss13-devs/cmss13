@@ -117,7 +117,7 @@
 		comment = "tails"
 	else if(result == 2)
 		comment = "heads"
-	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]! "), \
+	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]! "),
 						SPAN_NOTICE("You throw \the [src]. It lands on [comment]! "))
 
 

@@ -249,7 +249,7 @@
 	unacidable = TRUE
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	..()
+	. = ..()
 	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
@@ -258,8 +258,6 @@
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
 		user.spin(5, 1)
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
-
-	return
 
 /obj/item/weapon/yautja/scythe/alt
 	name = "double war scythe"
@@ -604,7 +602,7 @@
 		SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You were interrupted before you could finish your work!"))
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 ///Records status of flaying attempts and handles progress.
 /datum/flaying_datum
@@ -813,6 +811,49 @@
 				caught_item.sway_jitter(3, 6)
 		busy_fishing = FALSE
 
+/obj/item/weapon/twohanded/yautja/greatsword
+	name = "great sword"
+	desc = "A massive, razor sharp blade with mysterious writings carved into it."
+	icon = 'icons/obj/items/hunter/pred_gear64x64.dmi'
+	icon_state = "greatsword"
+	item_state = "greatsword"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear64x64.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand64x64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand64x64.dmi'
+	)
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	force = MELEE_FORCE_TIER_3
+	force_wielded = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_3
+	embeddable = FALSE
+	sharp = IS_SHARP_ITEM_BIG
+	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
+	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
+	attack_speed = 14
+
+/obj/item/weapon/twohanded/yautja/greatsword/attack(mob/living/target, mob/living/carbon/human/user, primary=TRUE)
+	. = ..()
+	if(!.)
+		return
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 50, 50)
+
+	if(!primary)
+		return
+
+	var/turf/root = get_turf(user)
+	var/facing = get_dir(user, target)
+	var/list/target_turfs = list(get_step(root, facing), get_step(root, turn(facing, 45)), get_step(root, turn(facing, -45)))
+
+	for(var/turf/target_turf in target_turfs)
+		for(var/mob/living/target_mob in target_turf)
+			if(target_mob == target)
+				continue
+			attack(target_mob, user, primary=FALSE)
+		
 /obj/item/weapon/twohanded/yautja/glaive
 	name = "war glaive"
 	desc = "Two huge, powerful blades on a metallic pole. Mysterious writing is carved into the weapon."
@@ -1267,7 +1308,6 @@
 	. = ..()
 	source = null
 
-
 /obj/item/weapon/gun/energy/yautja/plasma_caster/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6)
@@ -1354,6 +1394,7 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+	update_mouse_pointer(M, FALSE)
 
 	var/datum/action/predator_action/bracer/caster/caster_action
 	for(caster_action as anything in M.actions)

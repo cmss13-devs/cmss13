@@ -85,12 +85,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("SHIPSIDE GEAR", 0, null, null, null),
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/ce, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("KN5500/2 PDA", 0, /obj/item/device/working_joe_pda/uscm, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
-		list("Tactical Compact Nailgun", 0, /obj/item/weapon/gun/smg/nailgun/compact/tactical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("Standard Equipment", 0, list(/obj/item/clothing/gloves/yellow, /obj/item/device/radio/headset/almayer/ce,  /obj/item/clothing/shoes/marine, /obj/item/clothing/glasses/welding, /obj/item/device/working_joe_pda/uscm, /obj/item/weapon/gun/smg/nailgun/compact/tactical), MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Engineer Uniform", 0, /obj/item/clothing/under/marine/officer/ce, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -244,6 +239,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Grey Scrubs", 0, /obj/item/clothing/under/rank/medical/grey, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("Chief Medical Officer's Labcoat", 0, /obj/item/clothing/suit/storage/labcoat/officer, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Medical's apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 

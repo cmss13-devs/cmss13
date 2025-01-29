@@ -78,6 +78,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 		/obj/item/storage/belt/gun/m39,
+		/obj/item/storage/belt/gun/m10,
 		/obj/item/storage/belt/gun/xm51,
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
@@ -304,7 +305,6 @@
 	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
-	item_state_slots = list(WEAR_JACKET = "mp_armor")
 	black_market_value = 20
 
 /obj/item/clothing/suit/storage/marine/MP/warden
@@ -313,7 +313,6 @@
 	icon_state = "warden"
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
 	specialty = "M3 pattern warden MP"
-	item_state_slots = list(WEAR_JACKET = "warden")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	name = "\improper M3 pattern chief MP armor"
@@ -321,13 +320,12 @@
 	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
-	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 	black_market_value = 30
 
 /obj/item/clothing/suit/storage/marine/MP/general
 	name = "\improper M3 pattern general officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
-	icon_state = "general"
+	icon_state = "golden"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
@@ -337,7 +335,7 @@
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/general)
 	specialty = "M3 pattern general"
-	item_state_slots = list(WEAR_JACKET = "general")
+	item_state_slots = list(WEAR_JACKET = "golden")
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -356,35 +354,29 @@
 /obj/item/clothing/suit/storage/marine/MP/CO
 	name = "\improper M3 pattern commanding officer armor"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."
-	icon_state = "co_officer"
-	item_state = "co_officer"
-	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
-	)
+	icon_state = "co"
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	storage_slots = 3
-	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	flags_atom = NO_NAME_OVERRIDE
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/qm_suit)
-	specialty = "M3 pattern captain"
-	item_state_slots = list(WEAR_JACKET = "co_officer")
+	specialty = "M3 pattern commanding officer"
+	item_state_slots = list(WEAR_JACKET = "co")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 	black_market_value = 35
-
-/obj/item/clothing/suit/storage/marine/MP/CO/no_pauldrons
-	icon_state = "co_light_officer"
-	item_state = "co_light_officer"
-	item_state_slots = list(WEAR_JACKET = "co_light_officer")
-
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
 	name = "\improper M3 pattern commanding officer armored coat"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	icon_state = "bridge_coat_armored"
 	item_state = "bridge_coat_armored"
 	item_state_slots = list(WEAR_JACKET = "bridge_coat_armored")
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK)
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/medium/leader
 	name = "\improper B12 pattern marine armor"

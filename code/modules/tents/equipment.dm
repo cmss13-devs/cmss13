@@ -51,14 +51,14 @@
 	return ..()
 
 /// ASRS request console
-/obj/structure/machinery/computer/ordercomp/tent
+/obj/structure/machinery/computer/supply/tent
 	icon_state = "request_wall"
 	density = FALSE
 	deconstructible = FALSE
 	needs_power = FALSE
 	explo_proof = TRUE // Goes with the tent instead
 	layer = INTERIOR_WALLMOUNT_LAYER
-/obj/structure/machinery/computer/ordercomp/tent/Initialize()
+/obj/structure/machinery/computer/supply/tent/Initialize()
 	AddComponent(/datum/component/tent_supported_object)
 	return ..()
 

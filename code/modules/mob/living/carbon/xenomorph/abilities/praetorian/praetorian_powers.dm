@@ -287,7 +287,7 @@
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
 	abduct_user.emote("roar")
 
-	var/throw_target_turf = get_step(abduct_user.loc, facing)
+	var/throw_target_turf = get_step(abduct_user, facing)
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
@@ -526,6 +526,11 @@
 	if (!dancer_user.check_state())
 		return
 
+	if (!ismob(target_atom))
+		apply_cooldown_override(impale_click_miss_cooldown)
+		update_button_icon()
+		return
+
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
 		return
@@ -638,6 +643,11 @@
 	if (!istype(dancer_user) || !dancer_user.check_state())
 		return
 
+	if (!ismob(target_atom))
+		apply_cooldown_override(tail_click_miss_cooldown)
+		update_button_icon()
+		return
+
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
 		return
@@ -722,6 +732,9 @@
 	return ..()
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
+	if (!A)
+		return
+
 	var/mob/living/carbon/xenomorph/acidball_user = owner
 	if (!acidball_user.check_state() || acidball_user.action_busy)
 		return
@@ -985,8 +998,8 @@
 	warden.visible_message(SPAN_XENODANGER("[warden] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
 	warden.emote("roar")
 
-	var/throw_target_turf = get_step(warden.loc, facing)
-	var/turf/behind_turf = get_step(warden.loc, reversefacing)
+	var/throw_target_turf = get_step(warden, facing)
+	var/turf/behind_turf = get_step(warden, reversefacing)
 	if(!(behind_turf.density))
 		throw_target_turf = behind_turf
 

@@ -15,7 +15,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"), \
+	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"),
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(slowspit_user.loc, sound_to_play, 25, 1)
@@ -47,7 +47,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"), \
+	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"),
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)

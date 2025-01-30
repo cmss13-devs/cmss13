@@ -178,7 +178,7 @@
 		if(tmp_label == "" || !tmp_label)
 			if(labelcomponent)
 				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."),
 				SPAN_NOTICE("You remove the label from \the [src]."))
 				return
 			else
@@ -186,7 +186,7 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
@@ -293,16 +293,17 @@
 			return
 		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank(mob/user)
+/obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
-	set name = "flush tank"
+	set name = "Flush Tank"
 	set src in usr
+
 	if(usr.is_mob_incapacitated()) return
 	if(src.reagents.total_volume == 0)
-		to_chat(user, SPAN_WARNING("It's already empty!"))
+		to_chat(usr, SPAN_WARNING("It's already empty!"))
 		return
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(user, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
 	update_icon() // just to be sure
 	return

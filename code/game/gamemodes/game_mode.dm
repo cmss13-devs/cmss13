@@ -105,7 +105,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
-
+	adjust_ammo_values()
 	round_time_lobby = world.time
 	log_game("Round started at [time2text(world.realtime)]")
 	log_game("Operation time at round start is [worldtime2text()]")
@@ -190,6 +190,11 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 /datum/game_mode/proc/animate_area(area/target_area, lighting_color, lighting_alpha)
 	target_area.set_base_lighting(lighting_color, lighting_alpha)
+
+/datum/game_mode/proc/adjust_ammo_values()
+	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
+		for(var/ammo in GLOB.ammo_list)
+			GLOB.ammo_list[ammo].setup_faction_clash_values()
 
 /datum/game_mode/proc/get_affected_zlevels()
 	if(is_in_endgame)

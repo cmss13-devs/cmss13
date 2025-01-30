@@ -20,10 +20,10 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
+		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"), \
+		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
 		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
 	return XENO_ATTACK_ACTION
@@ -1896,39 +1896,45 @@
 	icon_state = "wallegg_on"
 
 // Fake Pipes
-/obj/structure/prop/hybrisa/misc/fake/pipes
+/obj/effect/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	layer = TURF_LAYER
+	icon_state = "pipe-s"
+	layer = WIRE_LAYER
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
+/obj/effect/hybrisa/misc/fake/pipes/pipe1
 	icon_state = "pipe-s"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
+/obj/effect/hybrisa/misc/fake/pipes/pipe2
 	icon_state = "pipe-c"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
+/obj/effect/hybrisa/misc/fake/pipes/pipe3
 	icon_state = "pipe-j1"
 
-// Fake Wire
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
+/obj/effect/hybrisa/misc/fake/pipes/pipe4
 	icon_state = "pipe-y"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
+/obj/effect/hybrisa/misc/fake/pipes/pipe5
 	icon_state = "pipe-b"
 
-/obj/structure/prop/hybrisa/misc/fake/wire
+// Fake Wire
+
+/obj/effect/hybrisa/misc/fake/wire
 	name = "power cable"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	layer = TURF_LAYER
+	icon_state = "intactred"
+	layer = UNDERFLOOR_OBJ_LAYER
 
-/obj/structure/prop/hybrisa/misc/fake/wire/red
+/obj/effect/hybrisa/misc/fake/ex_act()
+	qdel(src)
+
+/obj/effect/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"
 
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow
+/obj/effect/hybrisa/misc/fake/wire/yellow
 	icon_state = "intactyellow"
 
-/obj/structure/prop/hybrisa/misc/fake/wire/blue
+/obj/effect/hybrisa/misc/fake/wire/blue
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
@@ -1961,13 +1967,13 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
 	icon_state = "latticefull"
 
-/obj/effect/hybrisa/decal/hybrisa/lattice
+/obj/effect/decal/hybrisa/lattice
 	name = "structural lattice"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
 	layer = TURF_LAYER
 
-/obj/effect/hybrisa/decal/hybrisa/lattice/full
+/obj/effect/decal/hybrisa/lattice/full
 	icon_state = "latticefull"
 
 // Cargo Containers extended
@@ -2505,7 +2511,7 @@
 /obj/structure/prop/hybrisa/misc/urinal/dark
 	icon_state = "small_urinal_dark"
 
-/obj/effect/hybrisa/decal/hybrisa/deco_edging
+/obj/effect/decal/hybrisa/deco_edging
 	name = "decorative concrete edging"
 	desc = "Decorative edging for bordering stuff, very fancy."
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
@@ -2514,7 +2520,7 @@
 	anchored = TRUE
 	layer = TURF_LAYER
 
-/obj/effect/hybrisa/decal/hybrisa/deco_edging/corner
+/obj/effect/decal/hybrisa/deco_edging/corner
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "stone_edging_deco"
 	density = FALSE

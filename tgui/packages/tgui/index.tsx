@@ -11,6 +11,8 @@ import './styles/themes/cardtable.scss';
 import './styles/themes/crt/crt-blue.scss';
 import './styles/themes/crt/crt-brown.scss';
 import './styles/themes/crt/crt-green.scss';
+import './styles/themes/crt/crt-lobby.scss';
+import './styles/themes/crt/crt-lobby-red.scss';
 import './styles/themes/crt/crt-red.scss';
 import './styles/themes/crt/crt-upp.scss';
 import './styles/themes/crt/crt-yellow.scss';

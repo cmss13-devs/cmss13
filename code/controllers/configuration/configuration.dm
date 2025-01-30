@@ -315,6 +315,8 @@
 
 
 /datum/controller/configuration/proc/LoadChatFilter()
+	return load_ss220_filters()	// SS220 ADD - Cyrillic speach filter
+
 	var/list/word_filter = list()
 
 	if(!fexists("[directory]/word_filter.txt"))

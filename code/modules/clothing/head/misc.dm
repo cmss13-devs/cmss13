@@ -170,16 +170,6 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
 	)
 
-/obj/item/clothing/head/fedora
-	name = "\improper fedora"
-	desc = "A sharp, stylish hat."
-	icon_state = "fedora"
-	item_state = "fedora"
-	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
-	)
-
 /obj/item/clothing/head/feathertrilby
 	name = "\improper feather trilby"
 	desc = "A sharp, stylish hat with a feather."

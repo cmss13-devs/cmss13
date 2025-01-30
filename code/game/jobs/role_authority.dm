@@ -546,9 +546,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
 
-	var/preferred_squad
-	if(human?.client?.prefs?.preferred_squad)
-		preferred_squad = human.client.prefs.preferred_squad
+	var/preferred_squad = human.client?.prefs?.preferred_squad
+	if(preferred_squad == "None")
+		preferred_squad = null
 
 	var/datum/squad/lowest
 	for(var/datum/squad/squad in mixed_squads)
@@ -556,24 +556,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(preferred_squad == "None")
+		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))
 				return
 
-		else if(squad.name == preferred_squad || squad.equivalent_name == preferred_squad) //fav squad or faction equivalent has a spot for us, no more searching needed.
-			if(squad.put_marine_in_squad(human))
-				return
-
-		if(!lowest)
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad
-
-		else if(slot_check)
-			if(squad.roles_in[slot_check] < lowest.roles_in[slot_check])
-				lowest = squad
-
-	if(!lowest || !lowest.put_marine_in_squad(human))
-		to_world("Warning! Bug in get_random_squad()!")
-		return
+	if(!lowest)
+		lowest = locate(/datum/squad/marine/cryo) in squads
+	lowest.put_marine_in_squad(human)
 	return
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)

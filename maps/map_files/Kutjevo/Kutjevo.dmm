@@ -2128,7 +2128,6 @@
 	bound_height = 32;
 	icon_state = "solo_tank_empty"
 	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_South/power2)
@@ -3635,7 +3634,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/complex/botany)
 "fpj" = (
@@ -4398,7 +4397,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "gEc" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan/inner_corner/west,
 /area/kutjevo/interior/complex/med/operating)
 "gEe" = (
@@ -4758,7 +4757,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "hkq" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "hkO" = (
@@ -6662,7 +6661,7 @@
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/exterior/Northwest_Colony)
 "kuL" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/colors/purple/edge/north,
 /area/kutjevo/interior/construction)
 "kuM" = (
@@ -6782,7 +6781,7 @@
 	pixel_y = 22;
 	range = 15
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/med)
 "kBm" = (
@@ -8113,7 +8112,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
 "mCf" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/operating)
 "mCo" = (
@@ -10346,7 +10345,7 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pLS" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "pMw" = (
@@ -11707,7 +11706,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "scY" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "sdn" = (
@@ -12829,7 +12828,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "tMH" = (
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -14864,7 +14863,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/computer/guestpass{
+/obj/structure/machinery/computer/communications{
 	dir = 4;
 	pixel_y = 7
 	},

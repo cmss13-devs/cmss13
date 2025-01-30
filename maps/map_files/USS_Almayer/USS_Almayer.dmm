@@ -3947,17 +3947,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/engine,
 /area/almayer/living/intel)
-"ajK" = (
-/obj/structure/machinery/door_control{
-	id = "ciccryo";
-	name = "Privacy Shutters";
-	pixel_x = -22;
-	pixel_y = -8;
-	req_access_txt = "19"
-	},
-/obj/structure/stairs/perspective,
-/turf/open/floor/plating,
-/area/almayer/living/bridgebunks)
 "ajL" = (
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer/test_floor5,
@@ -35805,10 +35794,6 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ciccryo";
-	name = "\improper Privacy Shutters"
-	},
 /turf/open/floor/plating,
 /area/almayer/living/bridgebunks)
 "jxX" = (
@@ -50651,14 +50636,6 @@
 /area/almayer/shipboard/brig/perma)
 "pQy" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ciccryo";
-	name = "\improper Privacy Shutters"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ciccryo";
-	name = "\improper Privacy Shutters"
-	},
 /turf/open/floor/plating,
 /area/almayer/living/bridgebunks)
 "pQz" = (
@@ -89386,7 +89363,7 @@ iVy
 qnh
 aKa
 rrB
-ajK
+tpD
 eDu
 tKr
 uNg

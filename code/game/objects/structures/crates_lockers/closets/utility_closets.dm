@@ -177,6 +177,8 @@
 	new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(src)
 	new /obj/item/clothing/under/marine/cbrn(src)
 	new /obj/item/clothing/suit/storage/marine/cbrn(src)
+	new /obj/item/storage/pouch/flamertank(src)
+	new /obj/item/clothing/mask/rebreather/scarf(src)
 	new /obj/item/clothing/gloves/marine/veteran/cbrn(src)
 
 /*

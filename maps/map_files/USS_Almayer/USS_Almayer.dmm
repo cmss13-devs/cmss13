@@ -6380,6 +6380,13 @@
 /obj/item/clothing/glasses/welding,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
+"aqf" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/vehiclehangar)
 "aqg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -31311,12 +31318,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
-"hIF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/lower/vehiclehangar)
 "hIG" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/plating_catwalk,
@@ -52217,9 +52218,11 @@
 "qyG" = (
 /obj/structure/sign/safety/hazard{
 	desc = "A sign that warns of a hazardous environment nearby";
-	name = "\improper Warning: Hazardous Environment"
+	name = "\improper Warning: Hazardous Environment";
+	pixel_x = 7;
+	pixel_y = 24
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
 "qyK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
@@ -55331,10 +55334,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
-"rMj" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/vehiclehangar)
 "rMO" = (
 /obj/structure/machinery/cryopod{
 	dir = 1
@@ -85319,7 +85318,7 @@ pQV
 hbu
 iYe
 aiX
-yfd
+lEV
 lEV
 lEV
 kgS
@@ -85522,7 +85521,7 @@ bTS
 hbu
 niR
 aiX
-adp
+lEV
 ghF
 ghF
 pHF
@@ -85725,7 +85724,7 @@ pQV
 ase
 adz
 aiX
-ads
+yfd
 vyB
 vyB
 pHF
@@ -85928,7 +85927,7 @@ gZK
 ase
 adz
 aiX
-rMj
+adp
 ghF
 vyB
 pHF
@@ -86131,7 +86130,7 @@ wdf
 ase
 adA
 aiX
-sDx
+ads
 ghF
 vyB
 pHF
@@ -86334,8 +86333,8 @@ utK
 rKA
 fuz
 aiX
-sDx
-hIF
+aqf
+ghF
 vyB
 pHF
 lEV
@@ -93056,7 +93055,7 @@ ivg
 llO
 kSv
 bcm
-emC
+hSb
 dZZ
 xmn
 uKH
@@ -94274,11 +94273,11 @@ apE
 icp
 fER
 bcm
-emC
 hVL
 bUQ
+bUQ
 uKH
-hSb
+bUQ
 kyP
 aag
 aag
@@ -95086,7 +95085,7 @@ fpW
 llO
 vml
 bcm
-emC
+bUQ
 rVc
 rVc
 uKH

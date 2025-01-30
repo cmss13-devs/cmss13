@@ -2148,7 +2148,7 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
-)
+	)
 
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/l42a,

@@ -317,6 +317,12 @@
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
 
+/turf/open/floor/plating/plating_catwalk/prison/dark
+	color = "#aba39d"
+
+/turf/open/floor/plating/plating_catwalk/prison/green
+	color = "#74ff8dff"
+
 /turf/open/floor/plating/plating_catwalk/strata
 	icon = 'icons/turf/floors/strata_floor.dmi'
 

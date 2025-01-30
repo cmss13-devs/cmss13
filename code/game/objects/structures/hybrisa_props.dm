@@ -1217,6 +1217,11 @@
 	desc = "A metal grate."
 	icon_state = "zhalfgrate1"
 
+/obj/structure/prop/hybrisa/misc/floorprops/plate
+	name = "plating"
+	desc = "A metal plate."
+	icon_state = "plating"
+
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass
 	name = "reinforced glass floor"
 	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."

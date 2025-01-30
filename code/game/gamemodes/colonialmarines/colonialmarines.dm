@@ -518,13 +518,7 @@
 		else
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
-			if(!GLOB.sunrise_starting_time)
-				GLOB.sunrise_starting_time = ROUND_TIME
-				for(var/mob/lighting_mob as anything in GLOB.player_list)
-					if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
-						lighting_mob.special_lighting = SPECIAL_LIGHTING_SUNRISE
-						lighting_mob.special_lighting_active_timer = TRUE
-						lighting_mob.special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
+			do_sunset(sunrise=TRUE)
 			ares_conclude()
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
@@ -574,13 +568,6 @@
 		round_finished = MODE_INFESTATION_M_MAJOR
 	else
 		round_finished = MODE_INFESTATION_M_MINOR
-	if(!GLOB.sunrise_starting_time) //putting a sunset call here too
-		GLOB.sunrise_starting_time = ROUND_TIME
-		for(var/mob/lighting_mob as anything in GLOB.player_list)
-			if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
-				lighting_mob.special_lighting = SPECIAL_LIGHTING_SUNRISE
-				lighting_mob.special_lighting_active_timer = TRUE
-				lighting_mob.special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
 
 ///////////////////////////////
 //Checks if the round is over//

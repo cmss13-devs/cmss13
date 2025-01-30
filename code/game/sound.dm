@@ -127,7 +127,6 @@
 			template.frequency = GET_RANDOM_FREQ_MINOR
 		else
 			template.frequency = GET_RANDOM_FREQ
-		
 	template.volume = vol
 	template.volume_cat = vol_cat
 	template.channel = channel
@@ -427,6 +426,8 @@
 				sound = pick('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
 			if("giant_lizard_hiss")
 				sound = pick('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')
+			if("evo_screech")
+				sound = pick('sound/voice/alien_echoroar_1.ogg', 'sound/voice/alien_echoroar_2.ogg', 'sound/voice/alien_echoroar_3.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

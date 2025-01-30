@@ -110,6 +110,15 @@
 	. = ..()
 	GLOB.active_areas += src
 	GLOB.all_areas += src
+	
+	var/found_same_type_area = FALSE
+	for(var/area/current_area in GLOB.all_areas_once)
+		if(istype(src, current_area.type))
+			found_same_type_area = TRUE
+			break
+		
+	if(!found_same_type_area)
+		GLOB.all_areas_once += src
 	reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
@@ -380,23 +389,14 @@
 			used_oneoff += amount
 
 /area/Entered(A,atom/OldLoc)
-	if(ismob(A) && !isnewplayer(A))
+	if(ismob(A))
 		if(!OldLoc)
 			return
-		var/mob/area_entered_mod = A
-
-		var/area/new_area = get_area(area_entered_mod)
-		var/area/old_area = null
-		if(!isarea(OldLoc))
-			old_area = get_area(OldLoc)
-		else
-			old_area = OldLoc
-
-		if(old_area == src || !old_area)
+		var/mob/M = A
+		var/area/old_area = get_area(OldLoc)
+		if(old_area == src)
 			return
-
-		SEND_SIGNAL(area_entered_mod, COMSIG_MOVABLE_ENTERED_AREA, old_area, new_area)
-		area_entered_mod?.client?.soundOutput?.update_ambience(src, null, TRUE)
+		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))
 		add_machine(A)
 

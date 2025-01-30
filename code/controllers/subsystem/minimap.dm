@@ -978,7 +978,7 @@ SUBSYSTEM_DEF(minimaps)
 				addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
 				user.client.register_map_obj(map_holder.map)
 
-			addtimer(CALLBACK(src, PROC_REF(reopen_ui), user, ui), 1 DECISECONDS) // If it is opened too quickly the map doesn't update for some reason
+			addtimer(CALLBACK(src, PROC_REF(reopen_ui), user, ui), 1 SECONDS) // If it is opened too quickly the map doesn't update for some reason
 
 		if("selectAnnouncement")
 			if(!drawing_allowed)

@@ -6743,9 +6743,6 @@
 /obj/item/storage/box/guncase/flamer{
 	pixel_y = 10
 	},
-/obj/item/storage/box/guncase/flamer{
-	pixel_y = 10
-	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "arg" = (
@@ -6773,6 +6770,21 @@
 /area/almayer/engineering/upper_engineering)
 "arh" = (
 /turf/open/floor/almayer/orangecorner/north,
+/area/almayer/engineering/upper_engineering)
+"ari" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/item/circuitboard/apc{
+	pixel_y = 10;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "arm" = (
 /turf/open/floor/almayer/orange/northeast,
@@ -116331,7 +116343,7 @@ sHI
 lOn
 qhT
 wDM
-auL
+ari
 vTv
 auL
 wDM

@@ -178,7 +178,6 @@
 	new /obj/item/clothing/under/marine/cbrn(src)
 	new /obj/item/clothing/suit/storage/marine/cbrn(src)
 	new /obj/item/clothing/gloves/marine/veteran/cbrn(src)
-	new /obj/item/clothing/head/helmet/marine/cbrn_hood(src)
 
 /*
  * Bombsuit closet

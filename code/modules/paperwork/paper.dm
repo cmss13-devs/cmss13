@@ -146,11 +146,13 @@
 		onclose(user, name)
 	return
 
-/obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+
 	if(user.zone_selected == "eyes")
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
+		if(!isyautja(M) && !isxeno(M))
+			user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
 			SPAN_NOTICE(" [user] holds up a paper and shows it to [M]. "))
-		examine(M)
+			examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
 		if(ishuman(M))

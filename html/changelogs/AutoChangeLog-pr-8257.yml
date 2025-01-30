@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - admin: "Xenomorphs are now properly logged in round_stats.log files."

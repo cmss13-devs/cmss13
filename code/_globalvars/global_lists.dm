@@ -179,7 +179,6 @@ GLOBAL_LIST_INIT_TYPED(gear_name_presets_list, /datum/equipment_preset, setup_ge
 
 GLOBAL_LIST_EMPTY(active_areas)
 GLOBAL_LIST_EMPTY(all_areas)
-GLOBAL_LIST_EMPTY(all_areas_once)
 
 GLOBAL_LIST_EMPTY(turfs)
 

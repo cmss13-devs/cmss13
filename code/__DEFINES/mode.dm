@@ -329,3 +329,6 @@ DEFINE_BITFIELD(whitelist_status, list(
 GLOBAL_VAR(last_ares_callout)
 
 GLOBAL_VAR(last_qm_callout)
+
+/// Registered a single time, used to determine sunrise stuff
+GLOBAL_VAR(sunrise_starting_time)

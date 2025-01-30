@@ -44,7 +44,8 @@
 	killed_by = strip_improper(death_cause.cause_name) || "Unknown"
 	round_id = GLOB.round_id || -1
 
-	SSticker?.mode?.round_stats?.xeno_deaths += src
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.xeno_deaths += src
 	save()
 
 /datum/entity_meta/xeno_death

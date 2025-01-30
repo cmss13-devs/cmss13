@@ -1163,9 +1163,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
-"dR" = (
-/turf/closed/wall/almayer/outer/gear,
-/area/adminlevel/ert_station/soalar_devils_station)
 "dS" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/warning_stripes{
@@ -13171,6 +13168,12 @@
 	pixel_y = 8;
 	pixel_x = -7
 	},
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 28;
+	id = "platco-privacy";
+	name = "hangar blast door control";
+	req_one_access_txt = "19;12"
+	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Qe" = (
@@ -13873,6 +13876,12 @@
 	desc = "A fallen marine's information dog tag. It looks battered and the name is worn out.";
 	pixel_y = 2;
 	name = "faded information dog tag"
+	},
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 28;
+	id = "platco-privacy";
+	name = "hangar blast door control";
+	req_one_access_txt = "19;12"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -20055,7 +20064,7 @@ uF
 uF
 uF
 uF
-dR
+ZR
 qz
 dN
 pv

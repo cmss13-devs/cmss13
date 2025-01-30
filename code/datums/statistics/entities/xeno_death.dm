@@ -34,10 +34,15 @@
 	y = dead_xeno.y || -1
 	z = dead_xeno.z || -1
 	death_minute = floor((world.time * 0.1) / 60) || -1
-	hive = dead_xeno.hive.name || "Unknown Hive"
 	caste = dead_xeno.caste.caste_type || "Unknown"
 	strain = dead_xeno.strain?.name || "None"
-	leader = (dead_xeno in dead_xeno.hive.xeno_leader_list)
+	if(dead_xeno.faction)
+		hive = dead_xeno.faction.code_identificator
+		var/datum/faction_module/hive_mind/faction_module = dead_xeno.faction.get_faction_module(FACTION_MODULE_HIVE_MIND)
+		leader = (dead_xeno in faction_module.xeno_leader_list)
+	else
+		hive = "Unknown Hive"
+		leader = FALSE
 	minutes_alive = floor(((world.time - dead_xeno.creation_time) * 0.1) / 60) || -1
 	ckey = dead_xeno.ckey || dead_xeno.persistent_ckey || ""
 	damage_taken = dead_xeno.life_damage_taken_total || 0

@@ -678,9 +678,9 @@
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
+		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
 		linked_human = null
 		is_locked = FALSE
-		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
 
 // ID lock action \\
 
@@ -855,3 +855,4 @@
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_TWE
+

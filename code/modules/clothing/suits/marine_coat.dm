@@ -31,6 +31,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/backpack/general_belt,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -237,6 +238,11 @@
 	name = "commanding officer dress blue coat"
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless
+	name = "commanding officer's jacket"
+	desc = "A patchless version of the officer jacket, its presence is still domineering"
+	icon_state = "co_plain"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
 	name = "commanding officer falcon jacket"

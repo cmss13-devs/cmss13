@@ -20,10 +20,10 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
+		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"), \
+		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
 		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
 	return XENO_ATTACK_ACTION
@@ -1961,13 +1961,13 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full
 	icon_state = "latticefull"
 
-/obj/effect/hybrisa/decal/hybrisa/lattice
+/obj/effect/decal/hybrisa/lattice
 	name = "structural lattice"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
 	layer = TURF_LAYER
 
-/obj/effect/hybrisa/decal/hybrisa/lattice/full
+/obj/effect/decal/hybrisa/lattice/full
 	icon_state = "latticefull"
 
 // Cargo Containers extended
@@ -2505,7 +2505,7 @@
 /obj/structure/prop/hybrisa/misc/urinal/dark
 	icon_state = "small_urinal_dark"
 
-/obj/effect/hybrisa/decal/hybrisa/deco_edging
+/obj/effect/decal/hybrisa/deco_edging
 	name = "decorative concrete edging"
 	desc = "Decorative edging for bordering stuff, very fancy."
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
@@ -2514,7 +2514,7 @@
 	anchored = TRUE
 	layer = TURF_LAYER
 
-/obj/effect/hybrisa/decal/hybrisa/deco_edging/corner
+/obj/effect/decal/hybrisa/deco_edging/corner
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "stone_edging_deco"
 	density = FALSE

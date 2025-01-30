@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Clarifies that VAI should not be shooting WY or getting into fights with them outside of authorized events."

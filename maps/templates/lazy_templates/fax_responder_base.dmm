@@ -1132,7 +1132,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "mi" = (
 /turf/closed/wall/prison{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1;
 	name = "colony wall"
 	},
@@ -1413,7 +1413,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "oP" = (
 /turf/closed/wall/prison{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1;
 	name = "colony wall"
 	},
@@ -3910,7 +3910,7 @@
 /turf/closed/wall/kutjevo{
 	name = "cement wall";
 	desc = "A huge chunk of reinforced cement used to separate rooms.";
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)
@@ -4091,7 +4091,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Rp" = (
 /turf/closed/wall/wood{
-	hull = 1;
+	turf_flags = 16;
 	unacidable = 1
 	},
 /area/adminlevel/ert_station/fax_response_station)

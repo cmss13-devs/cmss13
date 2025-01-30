@@ -73,8 +73,8 @@
 				user.stuttering = 10
 				user.apply_effect(10, WEAKEN)
 				B.deductcharge(B.hitcost)
-				user.visible_message( \
-					SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
+				user.visible_message(
+					SPAN_DANGER("[user] was stunned by \his wet [O]!"),
 					SPAN_DANGER("You were stunned by your wet [O]!"))
 				return
 
@@ -95,8 +95,8 @@
 	if(user.get_active_hand() != I) return //Person has switched hands or the item in their hands
 
 	O.clean_blood()
-	user.visible_message( \
-		SPAN_NOTICE("[user] washes \a [I] using \the [src]."), \
+	user.visible_message(
+		SPAN_NOTICE("[user] washes \a [I] using \the [src]."),
 		SPAN_NOTICE("You wash \a [I] using \the [src]."))
 
 

@@ -56,7 +56,7 @@ Additional game mode variables.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
-	/// How many predators utuilize slots currently
+	/// How many predators utilize slots currently
 	var/pred_current_num = 0
 	/// How many additional preds per client
 	var/pred_per_players = 80

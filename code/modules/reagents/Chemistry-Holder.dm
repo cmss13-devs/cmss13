@@ -548,7 +548,7 @@
 	var/ex_falloff = base_ex_falloff
 	var/ex_falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	var/dir = null
-	var/angle = 360
+	var/shrapnel_spread = 360
 	//For chemical fire
 	var/radius = 0
 	var/intensity = 0
@@ -556,8 +556,7 @@
 	var/supplemented = 0 //for determining fire shape. Intensifying chems add, moderating chems remove.
 	var/smokerad = 0
 	var/fire_penetrating = FALSE
-	var/explosion_use_dir = FALSE
-	var/shrapnel_use_dir = FALSE
+	var/hit_angle
 
 	var/list/supplements = list()
 	for(var/datum/reagent/R in reagent_list)
@@ -579,10 +578,9 @@
 	if(istype(my_atom, /obj/item/explosive))
 		var/obj/item/explosive/E = my_atom
 		ex_falloff_shape = E.falloff_mode
-		angle = E.angle
-		explosion_use_dir = E.explosion_use_dir
-		shrapnel_use_dir = E.shrapnel_use_dir
-		if(E.explosion_use_dir || E.shrapnel_use_dir)
+		shrapnel_spread = E.shrapnel_spread
+		hit_angle = E.hit_angle
+		if(E.use_dir)
 			if(E.last_move_dir) // Higher precision for grenade and what not.
 				dir = E.last_move_dir
 			else
@@ -593,7 +591,7 @@
 	intensity = floor(intensity)
 	duration = floor(duration)
 	if(ex_power > 0)
-		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle, explosion_use_dir, shrapnel_use_dir)
+		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, shrapnel_spread, hit_angle)
 	if(intensity > 0)
 		var/firecolor = mix_burn_colors(supplements)
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating) // TODO: Implement directional flames
@@ -603,7 +601,7 @@
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle, explosion_use_dir, shrapnel_use_dir)
+/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, shrapnel_angle, hit_angle)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -649,11 +647,11 @@
 
 		//Note: No need to log here as that is done in cell_explosion()
 		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom)
-		create_shrapnel(sourceturf, shards, shrapnel_use_dir ? dir : null, angle, shard_type, cause_data)
+		create_shrapnel(sourceturf, shards, isnum(hit_angle) ? hit_angle : dir, shrapnel_angle, shard_type, cause_data, FALSE, 0.15, isnum(hit_angle))
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			addtimer(CALLBACK(my_atom.loc, TYPE_PROC_REF(/atom, ex_act), ex_power), 0.2 SECONDS)
 			ex_power = ex_power / 2
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sourceturf, ex_power, ex_falloff, ex_falloff_shape, explosion_use_dir ? dir : null, cause_data), 0.2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, cause_data), 0.2 SECONDS)
 
 		exploded = TRUE // clears reagents after all reactions processed
 

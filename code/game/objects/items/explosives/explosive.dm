@@ -26,12 +26,12 @@
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
 	var/allow_star_shape = TRUE
-	/// Whether explosions created care about directions
-	var/explosion_use_dir = FALSE
-	/// Whether shrapnels created care about directions
-	var/shrapnel_use_dir = FALSE
-	/// Splatter angle for shrapnels
-	var/angle = 360
+	/// Whether both explosions and shrapnels use directions
+	var/use_dir = FALSE
+	/// Spread angle for shrapnels
+	var/shrapnel_spread = 360
+	/// The angle that this explosive last hits the target at, applies to projectiles, this will override dir if set
+	var/hit_angle
 	/// Whether or not the casing can be toggled between different falloff_mode
 	var/has_blast_wave_dampener = FALSE;
 	item_icons = list(

@@ -107,6 +107,8 @@
 					return
 
 			GLOB.chemical_data.complete_chemical(S)
+		for(var/datum/chem_property/scanned_property in S.properties)
+			report.name += " "+scanned_property.code+"[scanned_property.level]"
 	else
 		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 		report.name = "Analysis of ERROR"

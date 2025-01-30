@@ -10,8 +10,7 @@
 #define SIMULATION_STAGE_WAIT 2
 #define SIMULATION_STAGE_3 3
 #define SIMULATION_STAGE_4 4
-#define SIMULATION_STAGE_5 5
-#define SIMULATION_STAGE_BEGIN 6
+#define SIMULATION_STAGE_BEGIN 5
 
 /obj/structure/machinery/chem_simulator
 	name = "synthesis simulator"
@@ -261,8 +260,6 @@
 	if(simulating > SIMULATION_STAGE_OFF)
 		simulating = max(simulating - 1, SIMULATION_STAGE_FINAL)
 		switch(simulating)
-			if(SIMULATION_STAGE_5)
-				status_bar = pick("SIMULATING HUMANS","SIMULATING MONKEYS","SIMULATING BODILY FUNCTIONS","MEASURING PROPERTIES","INJECTING VIRTUAL HUMANS","TORTURING DIGITAL MONKEYS","EMULATING METABOLISM")
 			if(SIMULATION_STAGE_4)
 				status_bar = pick("SEARCHING FOR CHIMPANZEES","PLAYING CHESS WITH ARES","CONSULTING DOC","BLAMING GOD","SEARCHING FOR MY PURPOSE","SPYING ON JONES","DIVIDING BY NULL","EQUATING SPACE TIME")
 			if(SIMULATION_STAGE_3)
@@ -404,12 +401,12 @@
 		if(C)
 			for(var/component in C.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list[component]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && R.chemclass != CHEM_CLASS_HYDRO)
 					status_bar = "UNREGISTERED COMPONENTS DETECTED"
 					return FALSE
 			for(var/catalyst in C.required_catalysts)
 				var/datum/reagent/R = GLOB.chemical_reagents_list[catalyst]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id]  && R.chemclass != CHEM_CLASS_HYDRO)
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
 		if(target_property && mode != MODE_ADD)
@@ -639,7 +636,6 @@
 #undef SIMULATION_STAGE_WAIT
 #undef SIMULATION_STAGE_3
 #undef SIMULATION_STAGE_4
-#undef SIMULATION_STAGE_5
 #undef SIMULATION_STAGE_BEGIN
 
 #undef MODE_AMPLIFY

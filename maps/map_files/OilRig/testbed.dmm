@@ -280,16 +280,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
-"aA" = (
-/obj/structure/machinery/door_control/colony_lockdown{
-	id = "hybrisacolonylockdown";
-	explo_proof = 1;
-	name = "Colony Exterior - Lockdown";
-	pixel_y = -5;
-	needs_power = 0
-	},
-/turf/open/floor/almayer/redfull2,
-/area/space)
 "aB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -445,9 +435,6 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/gm/river/desert/deep,
 /area/space)
-"aY" = (
-/turf/open/floor/almayer/redfull2,
-/area/space)
 "aZ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/prop/structure_lattice{
@@ -528,6 +515,11 @@
 "bg" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
 /obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "bh" = (
@@ -595,6 +587,10 @@
 	pixel_y = 13
 	},
 /obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 9;
+	layer = 1.3
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "bq" = (
@@ -934,6 +930,11 @@
 "ce" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
 /obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "cf" = (
@@ -1135,6 +1136,11 @@
 "cV" = (
 /obj/structure/lattice,
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "cW" = (
@@ -2608,6 +2614,7 @@
 /area/space)
 "iy" = (
 /obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /turf/open/gm/river/desert/deep,
 /area/space)
 "iz" = (
@@ -2787,6 +2794,9 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "iY" = (
@@ -2919,12 +2929,18 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
+/obj/structure/lattice,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "jr" = (
 /obj/structure/lattice,
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 8
+	},
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
@@ -3646,6 +3662,9 @@
 	pixel_y = 19
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "kW" = (
@@ -3799,6 +3818,9 @@
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	layer = 1.3
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "ls" = (
@@ -3919,6 +3941,9 @@
 	pixel_y = 15;
 	layer = 1.3
 	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "lJ" = (
@@ -3933,6 +3958,9 @@
 /obj/structure/roof/hybrisa/lattice_prop/lattice_2{
 	pixel_y = 15;
 	layer = 1.3
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
 	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
@@ -4080,6 +4108,11 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "lY" = (
@@ -4757,9 +4790,413 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open/gm/river/desert/deep,
 /area/space)
+"nJ" = (
+/obj/structure/machinery/door_control/colony_lockdown{
+	id = "hybrisacolonylockdown";
+	explo_proof = 1;
+	name = "Colony Exterior - Lockdown";
+	pixel_y = -5;
+	needs_power = 0
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/space)
+"nK" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nL" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/prop/ice_colony/soil_net{
+	layer = 2.9;
+	name = "safety net"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nM" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nN" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nO" = (
+/obj/structure/platform_decoration/metal/almayer,
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nP" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nQ" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nR" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/lattice,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nS" = (
+/obj/structure/lattice,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nT" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nU" = (
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nV" = (
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nW" = (
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nX" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nY" = (
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"nZ" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
 "oa" = (
 /obj/structure/barricade/handrail/wire,
 /turf/open/gm/river/desert/deep,
+/area/space)
+"ob" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"oc" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	color = "aba39d";
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"od" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.4;
+	pixel_y = 6;
+	pixel_x = 16
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 1.5;
+	level = 3;
+	pixel_y = 19;
+	pixel_x = 16
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_1{
+	pixel_y = -5;
+	pixel_x = 16
+	},
+/obj/structure/prop/ice_colony/dense/planter_box{
+	pixel_y = -5;
+	name = "surface support";
+	layer = 1.5;
+	pixel_x = 16
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	layer = 4.2;
+	pixel_y = 10;
+	pixel_x = 16
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_3{
+	pixel_y = 19;
+	pixel_x = 16
+	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
+/obj/structure/lattice,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oe" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"of" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/obj/structure/monorail{
+	dir = 10;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"og" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	welded = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"oh" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/turf/open/floor/corsat/marked,
+/area/space)
+"oi" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"oj" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/turf/open/floor/corsat/marked,
+/area/space)
+"ok" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"ol" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4;
+	color = "aba39d"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"om" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 8;
+	color = "aba39d"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"on" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate3{
+	dir = 4
+	},
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 5;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oo" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/space)
+"op" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/turf/open/floor/prison/whitegreen/southeast,
+/area/space)
+"oq" = (
+/obj/structure/window/framed/hybrisa/colony/hospital,
+/turf/open/floor/prison/whitegreen/west,
+/area/space)
+"or" = (
+/obj/structure/window/framed/hybrisa/colony/hospital,
+/turf/open/floor/prison/whitegreen/east,
+/area/space)
+"os" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/turf/open/floor/prison/whitegreen/northwest,
+/area/space)
+"ot" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/turf/open/floor/prison/whitegreen/northeast,
+/area/space)
+"ou" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname,
+/turf/open/floor/corsat/marked,
+/area/space)
+"ov" = (
+/obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/space)
+"ow" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#8bafa4";
+	layer = 3.2
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"ox" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	welded = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"oy" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/lattice,
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oz" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oA" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oB" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?"
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oC" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/lattice,
+/obj/structure/monorail{
+	dir = 6;
+	layer = 1.3
+	},
+/turf/open/gm/river/desert/deep,
+/area/space)
+"oD" = (
+/obj/structure/machinery/big_computers/computerblack/computer2{
+	pixel_x = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"oE" = (
+/obj/structure/machinery/big_computers/computerblack/computer3,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"oF" = (
+/obj/structure/machinery/big_computers/computerblack/computer4,
+/obj/structure/machinery/door_control/colony_lockdown{
+	id = "hybrisacolonylockdown";
+	explo_proof = 1;
+	name = "Colony Exterior - Lockdown";
+	pixel_y = -5;
+	needs_power = 0
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"oG" = (
+/obj/structure/machinery/big_computers/computerblack/computer5,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/space)
+"oH" = (
+/obj/structure/machinery/big_computers/computerblack/computer2{
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
+/area/space)
+"oI" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/structure/machinery/sensortower{
+	layer = 3.1
+	},
+/turf/open/floor/prison/greenfull/east,
 /area/space)
 "oN" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
@@ -4966,6 +5403,9 @@
 	pixel_y = 7
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform4/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/space)
 "JV" = (
@@ -5037,6 +5477,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate2{
+	layer = 1
+	},
 /turf/open/gm/river/desert/deep,
 /area/space)
 "ZI" = (
@@ -7103,7 +7546,7 @@ lk
 kx
 kx
 kx
-kx
+ov
 lr
 lo
 kI
@@ -8104,7 +8547,7 @@ np
 np
 np
 np
-np
+cw
 lH
 lE
 eV
@@ -12654,12 +13097,12 @@ kg
 pK
 pK
 ej
-ej
+ok
 pK
 pK
 pK
 ej
-ej
+ok
 pK
 pK
 kg
@@ -13405,7 +13848,7 @@ LO
 LO
 LO
 LO
-ej
+og
 cJ
 cH
 cD
@@ -13419,7 +13862,7 @@ cD
 cD
 cz
 cJ
-ej
+og
 LO
 LO
 LO
@@ -13926,7 +14369,7 @@ bl
 bl
 bl
 bl
-ej
+oj
 bl
 bl
 LO
@@ -14667,17 +15110,17 @@ cD
 cz
 bl
 bl
-cG
-cC
-cy
+os
+oq
+oo
 bl
 cD
 cD
 cD
 bl
-cG
-cC
-cy
+os
+oq
+oo
 bl
 bl
 cH
@@ -15419,27 +15862,27 @@ bl
 bl
 bl
 bl
+oh
+bl
+bl
+bl
+ot
+or
+op
+bl
+bl
+oh
+bl
+bl
+ot
+or
+op
+bl
+bl
+bl
+bl
 ej
-bl
-bl
-bl
-cI
-cE
-cB
-bl
-bl
-ej
-bl
-bl
-cI
-cE
-cB
-bl
-bl
-bl
-bl
-ej
-ej
+ok
 bl
 bl
 bl
@@ -15690,8 +16133,8 @@ cC
 cC
 cC
 cC
-ej
-ej
+cC
+cy
 bl
 cG
 cC
@@ -15920,7 +16363,7 @@ bl
 cH
 cD
 cz
-ej
+ow
 cH
 cT
 cE
@@ -15944,7 +16387,7 @@ cE
 cE
 cL
 cz
-ej
+oi
 cH
 cD
 cz
@@ -16928,7 +17371,7 @@ bl
 bl
 cH
 cz
-ej
+ow
 cH
 cz
 bl
@@ -17180,7 +17623,7 @@ bl
 bl
 cH
 cz
-ej
+ow
 cH
 cz
 bl
@@ -17208,7 +17651,7 @@ bl
 cH
 cD
 cz
-ej
+og
 LO
 kg
 np
@@ -18188,7 +18631,7 @@ bl
 cH
 cD
 cz
-ej
+ow
 cH
 cK
 cC
@@ -18694,7 +19137,7 @@ bl
 bl
 bl
 ej
-ej
+ok
 bl
 bl
 bl
@@ -18715,10 +19158,10 @@ bl
 bl
 bl
 ej
-ej
+ok
 bl
 bl
-ej
+oh
 bl
 bl
 LO
@@ -18941,10 +19384,10 @@ bf
 kg
 LO
 LO
-LO
+ox
 cG
 cy
-ej
+oi
 cG
 cC
 cC
@@ -18968,7 +19411,7 @@ cC
 cC
 cC
 cy
-ej
+oi
 cG
 cy
 bl
@@ -19186,7 +19629,7 @@ np
 np
 np
 bV
-bd
+oz
 aZ
 bO
 bf
@@ -19230,7 +19673,7 @@ kg
 bf
 aw
 av
-ag
+od
 np
 np
 np
@@ -19437,7 +19880,7 @@ np
 np
 np
 bV
-bV
+nU
 bg
 ba
 bO
@@ -19452,7 +19895,7 @@ bl
 bl
 bl
 ej
-ej
+ok
 bl
 bl
 bl
@@ -19469,7 +19912,7 @@ bl
 bl
 bl
 ej
-ej
+ok
 bl
 bl
 bl
@@ -19481,9 +19924,9 @@ LO
 kg
 bf
 aw
-cg
+of
 ce
-np
+bV
 np
 np
 np
@@ -19688,8 +20131,8 @@ np
 np
 np
 bV
-bV
-bV
+nU
+nV
 bc
 aW
 bf
@@ -19734,9 +20177,9 @@ kg
 bf
 bf
 ap
-cf
+oe
+nW
 bV
-np
 np
 np
 np
@@ -19939,9 +20382,9 @@ np
 np
 np
 bV
+nU
+nV
 bV
-bV
-np
 bc
 aO
 bf
@@ -19960,14 +20403,14 @@ cD
 cD
 cD
 cz
-ej
+ou
 cH
 cD
 cD
 cD
 cD
 cz
-ej
+ou
 cH
 cD
 cD
@@ -19987,9 +20430,9 @@ bf
 bf
 aw
 cf
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -20190,11 +20633,11 @@ np
 np
 np
 bV
-bV
+nU
+nV
 bV
 np
-np
-uw
+bc
 aO
 bf
 bf
@@ -20240,9 +20683,9 @@ bf
 aw
 cf
 bV
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -20441,9 +20884,9 @@ np
 np
 np
 bV
+nU
+nV
 bV
-bV
-np
 np
 np
 uw
@@ -20480,7 +20923,7 @@ cD
 cD
 cz
 bl
-ej
+oj
 bl
 bl
 LO
@@ -20493,9 +20936,9 @@ ar
 cf
 np
 bV
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -20692,9 +21135,9 @@ np
 np
 np
 bV
+nU
+nV
 bV
-bV
-np
 np
 np
 np
@@ -20746,9 +21189,9 @@ ag
 np
 np
 bV
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -20943,9 +21386,9 @@ np
 np
 np
 bV
+nU
+nV
 bV
-bV
-np
 np
 np
 np
@@ -20999,9 +21442,9 @@ np
 np
 np
 bV
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -21194,16 +21637,16 @@ np
 np
 bV
 bV
+nU
+nV
 bV
-bV
 np
 np
 np
 np
 np
 np
-np
-uw
+bc
 aN
 bf
 bf
@@ -21217,7 +21660,7 @@ bl
 bl
 bl
 bl
-ej
+oj
 kg
 kg
 bf
@@ -21230,7 +21673,7 @@ bf
 bf
 kg
 kg
-ej
+oj
 bl
 bl
 bl
@@ -21252,9 +21695,9 @@ np
 np
 np
 bV
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -21445,18 +21888,18 @@ np
 np
 by
 bq
-bg
+oB
+oA
 bX
 bX
-At
-At
+bX
 gq
 np
 np
 np
 np
-JV
-br
+bd
+oy
 aN
 bf
 bf
@@ -21505,9 +21948,9 @@ np
 np
 np
 bV
+nY
+nW
 bV
-bV
-np
 np
 np
 np
@@ -21696,7 +22139,7 @@ np
 np
 af
 bJ
-cg
+oC
 bp
 ao
 aj
@@ -21708,8 +22151,8 @@ gq
 np
 np
 np
-JV
-br
+bd
+oy
 aN
 bK
 bf
@@ -21758,9 +22201,9 @@ At
 bX
 bX
 bX
+nX
+nT
 bX
-bX
-At
 At
 gq
 np
@@ -21960,7 +22403,7 @@ jV
 At
 At
 gq
-np
+bV
 JV
 oP
 sD
@@ -22212,7 +22655,7 @@ bJ
 bJ
 bk
 Pm
-np
+bV
 np
 np
 FL
@@ -22463,9 +22906,9 @@ bf
 bf
 bf
 bn
-jV
-At
-At
+cg
+bX
+bX
 At
 NE
 bO
@@ -23535,11 +23978,11 @@ aw
 jV
 gq
 np
-np
-np
-np
-np
-np
+nO
+nN
+nN
+nN
+iy
 np
 np
 np
@@ -23787,11 +24230,11 @@ bf
 ap
 fC
 iO
-fh
-fh
-fh
-fh
-fh
+nP
+ia
+ia
+ia
+nM
 iy
 np
 np
@@ -24040,16 +24483,16 @@ bM
 fC
 fA
 go
-ia
-ia
-ia
+hU
+hU
+hU
 hO
-iz
+nK
 hF
 hF
 hF
 hF
-np
+hF
 np
 np
 np
@@ -24299,8 +24742,8 @@ hU
 fe
 bE
 bE
-ir
-hF
+bE
+bm
 hF
 hF
 hF
@@ -26816,8 +27259,8 @@ dX
 dX
 fe
 hP
-iz
-hF
+nL
+gY
 hh
 fy
 PL
@@ -27068,8 +27511,8 @@ dX
 dX
 fe
 hP
-iz
-hF
+nL
+gY
 hh
 fy
 PL
@@ -27320,8 +27763,8 @@ dX
 dX
 fe
 hP
-iz
-hF
+nL
+gY
 hh
 fy
 PL
@@ -29115,7 +29558,7 @@ PL
 PL
 PL
 PL
-fg
+CV
 fM
 hF
 np
@@ -29366,7 +29809,7 @@ fl
 fl
 fl
 fl
-fg
+fq
 bE
 hM
 hF
@@ -29856,9 +30299,9 @@ dX
 bE
 hF
 hF
-hF
-hF
-hF
+gY
+gY
+gY
 hF
 hF
 bE
@@ -30108,9 +30551,9 @@ dX
 fr
 hW
 hW
-hW
-hW
-hW
+gZ
+gZ
+gZ
 hW
 hW
 fr
@@ -30123,7 +30566,7 @@ hW
 hZ
 go
 hU
-hO
+hP
 hN
 hI
 hF
@@ -30514,7 +30957,7 @@ LO
 LO
 LO
 bl
-dI
+oD
 dj
 dj
 dj
@@ -30766,9 +31209,9 @@ kg
 kg
 LO
 bl
-dI
+oE
 dj
-aY
+dj
 dj
 dj
 dj
@@ -31018,10 +31461,10 @@ bf
 kg
 LO
 bl
-dI
-aY
-aA
-aY
+oF
+dj
+dj
+dj
 dj
 dj
 dj
@@ -31270,9 +31713,9 @@ bf
 kg
 kg
 kg
-dI
+oG
 dj
-aY
+dj
 dj
 dj
 dj
@@ -31393,7 +31836,7 @@ rX
 rX
 rX
 rX
-np
+bm
 np
 np
 np
@@ -31522,7 +31965,7 @@ bf
 bf
 bf
 kg
-dJ
+oH
 dy
 dy
 dy
@@ -31646,7 +32089,7 @@ rX
 rX
 rX
 rX
-np
+bm
 np
 np
 np
@@ -32309,7 +32752,7 @@ bK
 bK
 bP
 cV
-bV
+nW
 bV
 np
 np
@@ -32561,8 +33004,8 @@ cU
 ZI
 ZI
 cj
-bV
-bV
+nY
+nW
 bV
 np
 np
@@ -32813,9 +33256,9 @@ il
 np
 np
 np
-np
 bV
-bV
+nY
+nW
 bV
 np
 np
@@ -32848,7 +33291,7 @@ oP
 hF
 hF
 oP
-jt
+nR
 jq
 hq
 jj
@@ -33066,10 +33509,10 @@ np
 np
 np
 np
-np
 bV
+nY
+nW
 bV
-bV
 np
 np
 np
@@ -33100,7 +33543,7 @@ np
 np
 np
 np
-hF
+iL
 jr
 jn
 jn
@@ -33319,43 +33762,43 @@ np
 np
 np
 np
+bV
+nY
+nW
+bV
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
 np
 bV
-bV
-bV
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
+nS
+nQ
 jp
-jp
-jp
-hF
+iL
 hF
 hF
 hF
@@ -33572,39 +34015,39 @@ np
 np
 np
 np
+bV
+nY
+nW
+bV
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
+np
 np
 bV
-bV
-bV
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-np
-bV
-jp
+nU
+nQ
 jp
 hF
 hF
@@ -33825,9 +34268,9 @@ np
 np
 np
 np
-np
 bV
-bV
+nY
+nW
 bV
 np
 np
@@ -33853,9 +34296,9 @@ np
 np
 np
 np
-np
 bV
-bV
+nU
+nV
 jp
 hF
 hF
@@ -34078,9 +34521,9 @@ np
 np
 np
 np
-np
 bV
-bV
+nY
+nW
 bV
 np
 np
@@ -34104,9 +34547,9 @@ bm
 np
 np
 np
-np
 bV
-bV
+nU
+nV
 bV
 np
 np
@@ -34331,9 +34774,9 @@ np
 np
 np
 np
-np
 bV
-bV
+nY
+nW
 bV
 np
 np
@@ -34354,10 +34797,10 @@ kg
 kg
 cb
 bm
-np
-np
 bV
 bV
+nU
+nV
 bV
 np
 np
@@ -34584,9 +35027,9 @@ np
 np
 np
 np
-np
 bV
-bV
+nY
+nW
 bV
 cn
 cb
@@ -34607,8 +35050,8 @@ kg
 kg
 cb
 cd
-bV
-bV
+nU
+nV
 bV
 np
 np
@@ -34837,9 +35280,9 @@ np
 np
 np
 np
-np
 bV
-cn
+nY
+on
 cb
 kg
 kg
@@ -34859,7 +35302,7 @@ eX
 kg
 kg
 cb
-cd
+nZ
 bV
 np
 np
@@ -35089,7 +35532,7 @@ np
 np
 np
 np
-np
+bV
 cn
 cb
 kg
@@ -35341,7 +35784,7 @@ np
 np
 np
 np
-bF
+cn
 cb
 kg
 kg
@@ -35895,14 +36338,14 @@ eQ
 eW
 eT
 eN
+eW
+eT
 bt
 eW
 eU
-eU
-eU
-eU
-eU
-eU
+eT
+bt
+eW
 eT
 eN
 eW
@@ -36149,11 +36592,11 @@ kg
 eN
 kg
 eQ
+eO
 eQ
 eQ
 eQ
-eQ
-eQ
+eO
 eQ
 kg
 eN
@@ -36300,7 +36743,7 @@ np
 np
 mi
 nH
-mf
+oI
 aV
 aV
 aV
@@ -36401,11 +36844,11 @@ kg
 ci
 kg
 kg
+de
 kg
 kg
 kg
-kg
-kg
+de
 kg
 kg
 ci
@@ -36653,11 +37096,11 @@ kg
 eN
 kg
 eQ
+hX
 eQ
+nJ
 eQ
-eQ
-eQ
-eQ
+hX
 eQ
 kg
 eN
@@ -36857,7 +37300,7 @@ bt
 gV
 kZ
 eN
-eN
+ol
 eV
 gB
 eV
@@ -36873,7 +37316,7 @@ eV
 eV
 ad
 eV
-eN
+ob
 eN
 jw
 gI
@@ -39881,7 +40324,7 @@ bC
 bt
 bC
 eN
-eN
+om
 eV
 eR
 eV
@@ -39897,7 +40340,7 @@ eV
 eV
 aU
 eV
-eN
+oc
 eN
 jx
 gK
@@ -43992,7 +44435,7 @@ rX
 rX
 rX
 rX
-np
+cc
 np
 np
 np
@@ -44204,7 +44647,7 @@ np
 np
 np
 np
-np
+cm
 rX
 rX
 rX
@@ -44243,7 +44686,7 @@ rX
 rX
 rX
 rX
-np
+cc
 np
 np
 np
@@ -44457,7 +44900,7 @@ np
 np
 np
 np
-np
+cm
 rX
 rX
 rX

@@ -6673,6 +6673,18 @@
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/hallways/upper/starboard)
+"aqX" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/obj/structure/machinery/recharger{
+	pixel_y = 2;
+	pixel_x = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/upper_engineering)
 "aqY" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -6681,9 +6693,84 @@
 "aqZ" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"ara" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
+	id = "engie_cbrn"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/engineering/upper_engineering)
 "arb" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
+"arc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/upper_engineering)
+"ard" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating,
+/area/almayer/engineering/upper_engineering)
+"are" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	dir = 8
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/turf/open/floor/plating,
+/area/almayer/engineering/upper_engineering)
+"arf" = (
+/obj/structure/barricade/handrail{
+	dir = 2;
+	layer = 3.1;
+	pixel_y = -1
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 1;
+	pixel_x = 3
+	},
+/obj/structure/surface/rack{
+	pixel_y = 10
+	},
+/obj/item/storage/box/guncase/flamer{
+	pixel_y = 10
+	},
+/obj/item/storage/box/guncase/flamer{
+	pixel_y = 10
+	},
+/obj/item/storage/box/guncase/flamer{
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/engineering/upper_engineering)
+"arg" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = 2
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = 2;
+	pixel_y = 9;
+	layer = 3.01
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = 2
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = 2;
+	pixel_y = 9;
+	layer = 3.01
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/engineering/upper_engineering)
 "arm" = (
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/upper_engineering)
@@ -6719,14 +6806,51 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/lower/workshop/hangar)
 "arz" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/almayer/cargo,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "arA" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/tool/crowbar,
+/obj/item/tool/warning_cone{
+	pixel_y = 6;
+	pixel_x = -12
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 6;
+	pixel_x = -12
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 16;
+	pixel_x = -12;
+	layer = 3.01
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 16;
+	pixel_x = -12;
+	layer = 3.01
+	},
+/obj/item/tool/wet_sign{
+	pixel_y = 13;
+	pixel_x = 4;
+	layer = 3.01
+	},
+/obj/item/tool/wet_sign{
+	pixel_y = 13;
+	pixel_x = 7
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 1;
+	pixel_x = 3;
+	layer = 3.03
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 1;
+	pixel_x = 10;
+	layer = 3.04
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "arF" = (
@@ -6972,17 +7096,16 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north2)
 "ats" = (
-/obj/structure/pipes/vents/pump/on,
-/turf/open/floor/almayer/orange/east,
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange/northwest,
 /area/almayer/engineering/upper_engineering)
 "att" = (
-/obj/structure/surface/table/almayer,
-/obj/item/stock_parts/matter_bin,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/item/cell/high,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/upper_engineering)
 "atu" = (
 /obj/structure/machinery/light{
@@ -7103,7 +7226,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "auy" = (
@@ -7124,32 +7246,19 @@
 /turf/open/floor/almayer/orangecorner,
 /area/almayer/engineering/upper_engineering)
 "auL" = (
-/obj/structure/surface/table/almayer,
-/obj/item/stack/sheet/plasteel{
-	amount = 10
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/closet/cbrn,
+/turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "auO" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/orange/southeast,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/upper_engineering)
 "auQ" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "auS" = (
-/obj/item/tool/warning_cone,
-/obj/item/tool/warning_cone,
-/obj/item/tool/warning_cone,
-/obj/structure/surface/table/almayer,
-/obj/item/device/lightreplacer,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/upper_engineering)
 "auT" = (
 /turf/open/floor/almayer/orangecorner/north,
@@ -7397,14 +7506,15 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awB" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	access_modified = 1;
-	dir = 1;
-	name = "\improper Engineering Storage";
-	req_one_access = null;
-	req_one_access_txt = "2;7"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	name = "\improper Hazardous Environment Equipment";
+	masterkey_resist = 1;
+	unacidable = 1;
+	req_one_access = list(2,7)
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
+	id = "engie_cbrn"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering)
 "awC" = (
@@ -7625,22 +7735,20 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
-"axB" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/plate,
-/area/almayer/engineering/upper_engineering)
 "axD" = (
-/obj/structure/closet/secure_closet/engineering_welding,
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "axE" = (
-/obj/structure/closet/toolcloset,
 /obj/structure/sign/safety/rewire{
-	pixel_x = 8;
+	pixel_x = 15;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/working_joe{
+	pixel_y = 16;
+	pixel_x = -11
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
@@ -7648,23 +7756,17 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/surface/rack,
-/obj/item/storage/backpack/industrial,
-/obj/item/storage/backpack/industrial,
-/obj/item/tool/shovel/snow,
-/turf/open/floor/almayer/plate,
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "axL" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/cell/high,
-/obj/item/clothing/glasses/welding,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor/almayer/plate,
+/obj/structure/closet/toolcloset,
+/turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "axM" = (
 /obj/structure/surface/table/almayer,
@@ -7831,10 +7933,6 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
-"ayV" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/orange/north,
-/area/almayer/engineering/upper_engineering)
 "ayW" = (
 /obj/structure/morgue{
 	dir = 8
@@ -9147,17 +9245,14 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	access_modified = 1;
-	dir = 1;
-	name = "\improper Engineering Storage";
-	no_panel = 1;
-	req_one_access = null;
-	req_one_access_txt = "2;7";
-	unacidable = 1
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
 	id = "engie_store"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	name = "\improper Engineering Storage";
+	masterkey_resist = 1;
+	unacidable = 1;
+	req_one_access = list(2,7)
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering)
@@ -9168,15 +9263,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
-	},
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
-	access_modified = 1;
-	dir = 1;
-	name = "\improper Engineering Storage";
-	no_panel = 1;
-	req_one_access = null;
-	req_one_access_txt = "2;7";
-	unacidable = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
 	id = "engie_store"
@@ -10139,11 +10225,12 @@
 /area/almayer/shipboard/starboard_point_defense)
 "aOQ" = (
 /obj/structure/closet/crate,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
+/obj/item/stack/sheet/mineral/phoron/medium_stack{
+	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
+	},
+/obj/item/stack/sheet/mineral/phoron/medium_stack{
+	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "aOR" = (
@@ -11098,7 +11185,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "engie_store";
 	name = "Emergency Storage";
-	pixel_x = -2;
+	pixel_x = -7;
 	pixel_y = 26;
 	req_one_access_txt = "6"
 	},
@@ -11106,6 +11193,13 @@
 	dir = 4;
 	pixel_x = -17;
 	pixel_y = -6
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "engie_cbrn";
+	name = "Hazard Gear Storage";
+	pixel_x = 6;
+	pixel_y = 26;
+	req_one_access_txt = "6"
 	},
 /turf/open/floor/almayer/orangecorner/north,
 /area/almayer/engineering/ce_room)
@@ -29125,13 +29219,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
-"gKZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/wet_sign,
-/obj/item/tool/wet_sign,
-/obj/item/reagent_container/spray/cleaner,
-/turf/open/floor/almayer/plate,
-/area/almayer/engineering/upper_engineering)
 "gLc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -41317,14 +41404,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
-"lXg" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/recharger,
-/obj/structure/machinery/computer/working_joe{
-	pixel_y = 16
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/engineering/upper_engineering)
 "lXl" = (
 /turf/open/floor/almayer/blue/north,
 /area/almayer/hallways/upper/midship_hallway)
@@ -61481,18 +61560,17 @@
 /area/almayer/engineering/lower)
 "uto" = (
 /obj/structure/closet/crate,
-/obj/item/stack/sheet/plasteel{
-	amount = 30;
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/pipes/vents/pump/on,
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/glass{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "utp" = (
@@ -65474,18 +65552,11 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "vTv" = (
-/obj/structure/surface/table/almayer,
-/obj/item/circuitboard/airlock,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/stack/sheet/mineral/phoron/medium_stack{
-	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
-	},
-/obj/item/stack/sheet/mineral/phoron/medium_stack{
-	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/closet/cbrn,
+/turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "vTE" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -69977,19 +70048,6 @@
 "xHp" = (
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/alpha_bravo_shared)
-"xHt" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	access_modified = 1;
-	dir = 1;
-	name = "\improper Engineering Storage";
-	req_one_access = null;
-	req_one_access_txt = "2;7"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/engineering/upper_engineering)
 "xHS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -116070,11 +116128,11 @@ cMx
 kGS
 lOn
 wCe
-alO
-alO
-alO
-alO
-alO
+wDM
+wDM
+wDM
+wDM
+wDM
 axx
 amw
 anO
@@ -116273,11 +116331,11 @@ cMx
 sHI
 lOn
 qhT
-alO
-gKZ
+wDM
+auL
 vTv
 auL
-alO
+wDM
 axy
 azh
 aBk
@@ -116476,12 +116534,12 @@ cMx
 sHI
 jao
 qhT
-alO
-arz
+wDM
+alR
 atq
-aoT
-alO
-aOG
+atq
+wDM
+aqX
 amA
 kDH
 aOB
@@ -116679,11 +116737,11 @@ cMx
 sHI
 jao
 qhT
-alO
+wDM
 arz
-atq
-aoT
-alO
+alR
+arc
+wDM
 axA
 amA
 aBl
@@ -116882,11 +116940,11 @@ cMx
 sHI
 jao
 qhT
-alO
-arz
-atq
-aoT
-alO
+wDM
+arf
+are
+ard
+wDM
 alO
 alR
 aBm
@@ -117085,13 +117143,13 @@ cMx
 uSk
 jao
 kGS
-xHt
-arm
+wDM
+arg
 ats
 auO
 awB
-axB
-ayV
+alR
+amA
 auu
 aoT
 aFm
@@ -117288,12 +117346,12 @@ bYL
 dlT
 qHD
 qhT
-alO
+wDM
 arA
 att
 auS
-alO
-lXg
+ara
+alR
 amA
 aBn
 aDm

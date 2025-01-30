@@ -41,7 +41,7 @@
 	/// How much acid is generated per tick in combat
 	var/combat_acid_regen = 1
 	/// Duration of combat acid generation after a slash/tailstab
-	var/combat_gen_timer = 80
+	var/combat_gen_timer = 60
 	/// Determines whether the combat acid generation is on or off
 	var/combat_gen_active = FALSE
 

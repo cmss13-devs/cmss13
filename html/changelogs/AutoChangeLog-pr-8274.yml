@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - bugfix: "replaced placeholder mouse named \"rat\" with an actual rats"
+  - spellcheck: "specified that Doc the mouse is actually a mouse and not a rat"

@@ -355,7 +355,7 @@
 
 
 /obj/item/storage/surgical_case/rmc_surgical_case
-	name = "RMC surgical case"
+	name = "\improper RMC surgical case"
 	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds. This one was made specifically for Royal Marine Commandos, allowing them to suture their wounds during prolonged operations.\
 		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
 		\nStep one: Open an incision at the site with the scalpel.\

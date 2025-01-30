@@ -20,6 +20,7 @@
 AddTimelock(/datum/job/command/executive, list(
 	JOB_COMMAND_ROLES = 20 HOURS,
 	JOB_SQUAD_LEADER = 10 HOURS,
+	JOB_POLICE_ROLES = 5 HOURS,
 ))
 
 /datum/job/command/executive/announce_entry_message(mob/living/carbon/human/H)

@@ -446,8 +446,8 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
 
 /obj/item/attachable/shotgun_choke
-	name = "shotgun choke kit"
-	desc = "A box containing a modified choke along with a couple of differing internal parts for the M37A2 pump shotgun. It mildly tightens the spread, accuracy and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	name = "shotgun choke"
+	desc = "A modified choke for the M37A2 pump shotgun. It mildly tightens the spread, accuracy and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "choke"

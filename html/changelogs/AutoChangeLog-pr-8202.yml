@@ -1,0 +1,4 @@
+author: "iamtheguy, quicklode"
+delete-after: True
+changes:
+  - imageadd: "new iamtheguy smartpack sprites are now in the synth vendor."

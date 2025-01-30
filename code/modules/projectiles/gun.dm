@@ -78,6 +78,8 @@
 	var/recoil = 0
 	///How much the bullet scatters when fired.
 	var/scatter = 0
+	///How much scatter is modified for bonus projectiles. Mainly used for shotguns.
+	var/bonus_proj_scatter = 0
 	/// Added velocity to fired bullet.
 	var/velocity_add = 0
 	///Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
@@ -336,6 +338,7 @@
 	aim_slowdown = initial(aim_slowdown)
 	wield_delay = initial(wield_delay)
 	projectile_max_range_add = initial(projectile_max_range_add)
+	bonus_proj_scatter = initial(bonus_proj_scatter)
 
 /// Populate traits_to_give in this proc
 /obj/item/weapon/gun/proc/set_bullet_traits()
@@ -399,6 +402,7 @@
 		accuracy_mult_unwielded += R.accuracy_unwielded_mod
 		scatter += R.scatter_mod
 		scatter_unwielded += R.scatter_unwielded_mod
+		bonus_proj_scatter += R.bonus_proj_scatter_mod
 		damage_mult += R.damage_mod
 		velocity_add += R.velocity_mod
 		damage_falloff_mult += R.damage_falloff_mod
@@ -1253,7 +1257,7 @@ and you're good to go.
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	in_chamber = null // It's not in the gun anymore
-	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range + projectile_max_range_add, bullet_velocity, original_target, null, damage_mult, projectile_max_range_add)
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range + projectile_max_range_add, bullet_velocity, original_target, null, damage_mult, projectile_max_range_add, bonus_proj_scatter)
 	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

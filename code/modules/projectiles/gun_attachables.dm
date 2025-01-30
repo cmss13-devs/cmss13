@@ -59,6 +59,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/melee_mod = 0 //Changing to a flat number so this actually doesn't screw up the calculations.
 	var/scatter_mod = 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.
+	var/bonus_proj_scatter_mod = 0 //Increses or decrease scatter for bonus projectiles. Mainly used for shotguns.
 	var/recoil_mod = 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
@@ -447,7 +448,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
-	desc = "A modified choke for the M37A2 pump shotgun. It mildly tightens the spread, accuracy and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	desc = "A modified choke for the M37A2 pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "choke"
@@ -461,8 +462,9 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = RECOIL_AMOUNT_TIER_4
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 	damage_mod = -BULLET_DAMAGE_MULT_TIER_6
-	scatter_mod = -SCATTER_AMOUNT_TIER_9
+	velocity_mod = AMMO_SPEED_TIER_1
 	delay_mod = -FIRE_DELAY_TIER_2
+	bonus_proj_scatter_mod = -SCATTER_AMOUNT_TIER_6
 	projectile_max_range_mod = 1
 	damage_falloff_mod = -0.3
 
@@ -1804,7 +1806,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
-	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
+	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy, along with slightly tightening the spread of shells. Allegedly makes a pretty good club in a fight too."
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST

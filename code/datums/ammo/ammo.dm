@@ -229,7 +229,7 @@
 		else
 			P.play_hit_effect(M)
 
-/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_P, gun_damage_mult = 1, projectile_max_range_add = 0)
+/datum/ammo/proc/fire_bonus_projectiles(obj/projectile/original_P, gun_damage_mult = 1, projectile_max_range_add = 0, bonus_proj_scatter = 0)
 	set waitfor = 0
 
 	var/turf/curloc = get_turf(original_P.shot_from)
@@ -245,7 +245,7 @@
 		original_P.give_bullet_traits(P)
 		P.bonus_projectile_check = 2 //It's a bonus projectile!
 
-		var/total_scatter_angle = P.scatter
+		var/total_scatter_angle = P.scatter + bonus_proj_scatter
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 

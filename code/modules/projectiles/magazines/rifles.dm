@@ -438,7 +438,7 @@
 	ammo_band_icon_empty = "+nsg23_band_e"
 
 /obj/item/ammo_magazine/rifle/nsg23/extended
-	name = "\improper NSG 23 high-capacity drum magazine (10x24mm)" //renamed in preparation for new sprite
+	name = "\improper NSG 23 high-capacity drum magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine. This one contains 45 bullets."
 	icon_state = "nsg23_ext"
 	item_state = "nsg23_ext"
@@ -559,7 +559,7 @@
 	ammo_band_icon_empty = "+l23_band_e"
 
 /obj/item/ammo_magazine/rifle/l23/extended
-	name = "\improper L23 high-capacity drum magazine (8.88x51mm)" //renamed in preparation for new sprite
+	name = "\improper L23 high-capacity drum magazine (8.88x51mm)"
 	desc = "An L23 assault rifle magazine. This one contains 45 bullets."
 	icon_state = "l23_ext"
 	item_state = "l23_ext"

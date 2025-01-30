@@ -585,9 +585,12 @@
 	firelevel = R.durationfire + fuel_pressure*R.durationmod
 	burnlevel = R.intensityfire
 
+	if(istype(loc, /turf/open/openspace))
+		var/turf/current_loc = loc
+		forceMove(current_loc.air_strike(0, current_loc, 0, TRUE))
+
 	//are we in weather??
 	update_in_weather_status()
-
 	update_flame()
 
 	addtimer(CALLBACK(src, PROC_REF(un_burst_flame)), 0.5 SECONDS)

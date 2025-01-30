@@ -680,16 +680,12 @@
 	if(landing_type == 1 && src == target_turf)
 		return src
 
-	var/turf/turf_above = SSmapping.get_turf_above(src)
-	if(protection_penetration <= 0)
-		if(turf_above)
-			return turf_above
-		return src
-
 	if(!checking)
+		var/turf/turf_above = SSmapping.get_turf_above(src)
 		if(turf_above && !istype(turf_above, /turf/open/openspace))
 			if(landing_type == 2)
 				return turf_above
+
 			if(!turf_above.hull_tile)
 				turf_above.ceiling_debris(protection_penetration)
 				turf_above.ChangeTurf(/turf/open/openspace)
@@ -699,6 +695,9 @@
 		protection_penetration -= 10
 	else
 		protection_penetration -= antipierce
+
+	if(protection_penetration < 0)
+		return src
 
 	var/turf/turf_below = SSmapping.get_turf_below(src)
 	if(!turf_below)

@@ -257,14 +257,14 @@
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
 			if(buckled_mob != user)
-				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),\
-					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),\
+				buckled_mob.visible_message(
+					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),
+					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),
 					SPAN_NOTICE("You hear metal clanking."))
 			else
-				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),\
-					SPAN_NOTICE("You unbuckle yourself from [src]."),\
+				buckled_mob.visible_message(
+					SPAN_NOTICE("[buckled_mob.name] unbuckled [buckled_mob.p_them()]self!"),
+					SPAN_NOTICE("You unbuckle yourself from [src]."),
 					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
@@ -325,14 +325,14 @@
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
 	if (M == user)
-		M.visible_message(\
-			SPAN_NOTICE("[M] buckles in!"),\
-			SPAN_NOTICE("You buckle yourself to [src]."),\
+		M.visible_message(
+			SPAN_NOTICE("[M] buckles in!"),
+			SPAN_NOTICE("You buckle yourself to [src]."),
 			SPAN_NOTICE("You hear metal clanking."))
 	else
-		M.visible_message(\
-			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),\
-			SPAN_NOTICE("You are buckled in to [src] by [user]."),\
+		M.visible_message(
+			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),
+			SPAN_NOTICE("You are buckled in to [src] by [user]."),
 			SPAN_NOTICE("You hear metal clanking"))
 
 /obj/Move(NewLoc, direct)
@@ -365,15 +365,6 @@
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
-
-/obj/bullet_act(obj/projectile/P)
-	//Tasers and the like should not damage objects.
-	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
-		return 0
-	bullet_ping(P)
-	if(P.ammo.damage)
-		update_health(floor(P.ammo.damage / 2))
-	return 1
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/bodytype = default_bodytype

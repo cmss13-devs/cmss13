@@ -147,7 +147,7 @@
 
 /mob/living/simple_animal/mouse/white/Doc
 	name = "Doc"
-	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+	desc = "Senior mouse researcher of the Almayer. Likes: cheese, experiments, explosions."
 	gender = MALE
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"

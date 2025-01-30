@@ -1,5 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - rscdel: "Removed non-combat click delay, interacting with items not on your person should be significantly smoother"
-  - balance: "Clicking on the floor (open turfs) with an item will no longer cause a click delay"

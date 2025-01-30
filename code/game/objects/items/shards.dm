@@ -138,8 +138,8 @@
 
 /obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom)
 	. = ..()
-	var/datum/launch_metadata/LM = src.launch_metadata
-	var/user = LM.thrower
+	var/datum/launch_metadata/LM = launch_metadata
+	var/user = LM?.thrower
 	if(!detonating && prob(impact_sensitivity))
 		cause = "manually triggered"
 		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src]. Uh oh."))
@@ -172,7 +172,7 @@
 		playsound(M, 'sound/effects/meteorimpact.ogg', 35)
 		M.at_munition_interior_explosion_effect(cause_data = create_cause_data("Anti-Tank Rocket", U))
 		M.interior_crash_effect()
-		M.ex_act(1000, get_dir(U, T), create_cause_data("Anti-Tank Rocket", U))
+		M.ex_act(1000)
 		return TRUE
 	return FALSE
 

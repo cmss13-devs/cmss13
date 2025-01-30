@@ -32,14 +32,11 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-/obj/effect/alien/resin/trap/Initialize()
-	. = ..()
-
-	var/obj/effect/alien/weeds/node/WD = locate() in loc
-	if(WD)
-		WD.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
-		WD.overlay_node = FALSE
-		WD.overlays.Cut()
+	var/obj/effect/alien/weeds/node/weed = locate() in loc
+	if(weed)
+		weed.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
+		weed.overlay_node = FALSE
+		weed.overlays.Cut()
 
 /obj/effect/alien/resin/trap/get_examine_text(mob/user)
 	if(!isxeno(user))
@@ -97,7 +94,7 @@
 		if(RESIN_TRAP_HUGGER)
 			if(can_hug(AM, hivenumber) && !isyautja(AM) && !issynth(AM))
 				var/mob/living/L = AM
-				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
+				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),
 								SPAN_DANGER("You trip on [src]!"))
 				L.apply_effect(1, WEAKEN)
 				trigger_trap()
@@ -268,7 +265,7 @@
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_GAS)
 		cause_data = create_cause_data("resin gas trap", B)
-		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin trap with acid gas!"), \
+		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin trap with acid gas!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
 	else
 		//Non-boiler acid types
@@ -300,7 +297,7 @@
 		else
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
 
-		X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin trap with acid!"), \
+		X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin trap with acid!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
 	return XENO_NO_DELAY_ACTION
 

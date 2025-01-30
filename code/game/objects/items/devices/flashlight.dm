@@ -7,7 +7,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
 	)
 	icon_state = "flashlight"
-	item_state = "flashlight"
+	item_state = ""
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -122,11 +122,11 @@
 
 		if(being == user) //they're using it on themselves
 			being.flash_eyes()
-			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+			being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."), \
+		user.visible_message(SPAN_NOTICE("[user] directs [src] to [being]'s eyes."),
 							SPAN_NOTICE("You direct [src] to [being]'s eyes."))
 
 		if(ishuman_strict(being)) //robots and aliens are unaffected
@@ -182,7 +182,7 @@
 				return // they have no organs somehow
 			if(being == user) //they're using it on themselves
 				being.flash_eyes()
-				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."), \
+				being.visible_message(SPAN_NOTICE("[being] directs [src] to [being.p_their()] eyes."),
 							SPAN_NOTICE("You wave the light in front of your eyes! Wow, that's trippy!"))
 				return
 			if(being.stat == DEAD || (being.status_flags&FAKEDEATH))
@@ -259,6 +259,7 @@
 	icon_state = "menorah"
 	item_state = "menorah"
 	light_range = 2
+	light_color = LIGHT_COLOR_CANDLE
 	w_class = SIZE_LARGE
 	on = 1
 	breaking_sound = null
@@ -270,6 +271,7 @@
 	icon_state = "candelabra"
 	force = 15
 	on = TRUE
+	light_color = LIGHT_COLOR_CANDLE
 
 	breaking_sound = null
 
@@ -285,6 +287,7 @@
 	desc = "An emergency light tube mounted onto a tripod. It seemingly lasts forever."
 	icon_state = "tripod_lamp"
 	light_range = 6//pretty good
+	light_color = LIGHT_COLOR_XENON
 	w_class = SIZE_LARGE
 	on = 1
 
@@ -446,7 +449,7 @@
 		if(!on)
 			return
 		var/hand = user.hand ? "l_hand" : "r_hand"
-		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),
 		SPAN_WARNING("You snuff out [src], singing your hand."))
 		user.apply_damage(7, BURN, hand)
 		burn_out()
@@ -576,8 +579,13 @@
 /obj/item/device/flashlight/lantern
 	name = "lantern"
 	icon_state = "lantern"
+	item_state = ""
 	desc = "A mining lantern."
 	light_range = 6 // luminosity when on
+	light_color = "#d69c46"
+
+/obj/item/device/flashlight/lantern/on
+	on = TRUE
 
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
@@ -624,7 +632,7 @@
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 		var/turf/target_turf = get_turf(src)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 

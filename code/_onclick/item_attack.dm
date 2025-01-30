@@ -9,7 +9,7 @@
 		dig_out_shrapnel(user)
 
 // No comment
-/atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
+/atom/proc/attackby(obj/item/W, mob/living/user, list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
 		return TRUE
 	SEND_SIGNAL(user, COMSIG_MOB_PARENT_ATTACKBY, src, W)
@@ -72,7 +72,7 @@
 
 	if (user.a_intent == INTENT_HELP && ((user.client?.prefs && user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY) || (user.mob_flags & SURGERY_MODE_ON)))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
+		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
 
 		return FALSE
@@ -93,7 +93,7 @@
 		var/used_verb = "attacked"
 		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
-		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."), \
+		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
 			SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."), null, 5, CHAT_TYPE_MELEE_HIT)
 
 		user.animation_attack_on(M)

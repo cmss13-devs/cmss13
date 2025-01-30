@@ -18,10 +18,10 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "af" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/weapon/gun/rifle/m4ra_custom/tactical,
 /obj/item/ammo_box/magazine/m4ra/ext{
 	pixel_y = 8
 	},
+/obj/item/weapon/gun/rifle/m4ra/tactical,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ah" = (

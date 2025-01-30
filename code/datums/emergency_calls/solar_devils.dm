@@ -47,7 +47,7 @@
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/solar_devils_station
 	probability = 0
-	mob_min = 1
+	mob_min = 3
 	mob_max = 10
 
 	max_engineers = 2

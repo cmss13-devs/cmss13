@@ -38,7 +38,7 @@
 	caste = dead_xeno.caste.caste_type || "Unknown"
 	strain = dead_xeno.strain?.name || "None"
 	leader = (dead_xeno in dead_xeno.hive.xeno_leader_list)
-	minutes_alive = floor((dead_xeno.creation_time * 0.1) / 60) || -1
+	minutes_alive = floor(((world.time - dead_xeno.creation_time) * 0.1) / 60) || -1
 	ckey = dead_xeno.ckey || dead_xeno.persistent_ckey || ""
 	damage_taken = dead_xeno.life_damage_taken_total || 0
 	killed_by = strip_improper(death_cause.cause_name) || "Unknown"
